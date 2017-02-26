@@ -3,7 +3,9 @@ Welcome to Virtel's documentation!
 
 .. toctree::
    :glob:
-   :maxdepth: 2   
+   :maxdepth: 2
+
+   test   
    
 Virtel documentation V4.56
 ==========================
