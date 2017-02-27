@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>tn201608 - Installing Virtel V4.53 from scratch &mdash; Virtel 1 documentation</title>
+  <title>Installing Virtel V4.53 from scratch &mdash; Virtel 1 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="tn201608 - Installing Virtel V4.53 from scratch" href="../TN201603/TN201603.html"/>
-        <link rel="prev" title="tn201608 - Installing Virtel V4.53 from scratch" href="../TN201601/TN201608.html"/> 
+        <link rel="next" title="TN201603" href="../TN201603/TN201603.html"/>
+        <link rel="prev" title="TN201601" href="../TN201601/TN201601.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -95,9 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201608.html">tn201608 - Installing Virtel V4.53 from scratch</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">tn201608 - Installing Virtel V4.53 from scratch</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">tn201608 - Installing Virtel V4.53 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">TN201601</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installing Virtel V4.53 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">TN201603</a></li>
 </ul>
 </li>
 </ul>
@@ -134,7 +134,7 @@
       
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
       
-    <li>tn201608 - Installing Virtel V4.53 from scratch</li>
+    <li>Installing Virtel V4.53 from scratch</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -148,9 +148,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tn201608-installing-virtel-v4-53-from-scratch">
-<h1>tn201608 - Installing Virtel V4.53 from scratch<a class="headerlink" href="#tn201608-installing-virtel-v4-53-from-scratch" title="Permalink to this headline">¶</a></h1>
-<p><strong>Cleaning up from a previous installation.</strong></p>
+  <div class="section" id="installing-virtel-v4-53-from-scratch">
+<h1>Installing Virtel V4.53 from scratch<a class="headerlink" href="#installing-virtel-v4-53-from-scratch" title="Permalink to this headline">¶</a></h1>
+<p><strong>Cleaning up from a previous installation</strong></p>
 <p>If you want to delete all the files from a previous installation use the
 following job:-:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S00</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADRDSSU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span>
@@ -167,10 +167,12 @@ following job:-:</p>
 </pre></div>
 </div>
 <p><strong>Getting the software</strong></p>
-<p>Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></p>
-<p>/VIRTEL 4.53/Produits/virtel453mvs.zip</p>
-<p>/VIRTEL 4.53/Produits/allptfs-mvs453.txt</p>
-<p>/VIRTEL 4.53/Produits/virtel453updt5380.zip</p>
+<p>Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a>-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">VIRTEL</span> <span class="mf">4.53</span><span class="o">/</span><span class="n">Produits</span><span class="o">/</span><span class="n">virtel453mvs</span><span class="o">.</span><span class="n">zip</span>
+<span class="o">/</span><span class="n">VIRTEL</span> <span class="mf">4.53</span><span class="o">/</span><span class="n">Produits</span><span class="o">/</span><span class="n">allptfs</span><span class="o">-</span><span class="n">mvs453</span><span class="o">.</span><span class="n">txt</span>
+<span class="o">/</span><span class="n">VIRTEL</span> <span class="mf">4.53</span><span class="o">/</span><span class="n">Produits</span><span class="o">/</span><span class="n">virtel453updt5380</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
 <p>Unzip “virtel453mvs.zip” into a folder on your workstation.</p>
 <p>Print off the “install.txt” document.</p>
 <p>Unzip “/VIRTEL 4.53/Produits/virtel453updt5380.zip” into a folder on
@@ -268,21 +270,21 @@ which can be accessed through port 41001. The Drag and Drop upload
 feature is supported by Chrome and Firefox only.</p>
 <p><a class="reference external" href="http://192.168.170.30:41001/">http://192.168.170.30:41001/</a></p>
 <p>The following screen image should appear:-</p>
-<p><a class="reference internal" href="../../../_images/image114.png"><img alt="image0" src="../../../_images/image114.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image110.png"><img alt="image0" src="../../../_images/image110.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
 <p>Figure Virtel Administration Portal</p>
 <p>Select Drag and Drop Upload and login with your credentials. The Drag
 and Drop Interface will be displayed.</p>
-<p><a class="reference internal" href="../../../_images/image22.png"><img alt="image1" src="../../../_images/image22.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image2.png"><img alt="image1" src="../../../_images/image2.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
 <p>Figure Virtel Upload Interface</p>
 <p>Keeping this browser window open, go to your desktop directory where you
 unzipped the virtel453updt5380.zip file:-</p>
-<p><a class="reference internal" href="../../../_images/image33.png"><img alt="image2" src="../../../_images/image33.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image31.png"><img alt="image2" src="../../../_images/image31.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
 <p>Open the sce directory and select all the files (CTRL-A). Drag this
 selection across to the browser window and drop over the SCE-DIR ICON.
 This should start an upload of all the files in the SCE directory on
 your desktop into the SCE-DIR directory of the SAMP TRSF VSAM file.
 There should be 4 files.</p>
-<p><a class="reference internal" href="../../../_images/image410.png"><img alt="image3" src="../../../_images/image410.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image4.png"><img alt="image3" src="../../../_images/image4.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
 <p>Figure Uploading Files to Virtel</p>
 <p>Repeat the exercise, but this time with the W2H directory, dragging the
 83 elements into the W2H-DIR directory.</p>
@@ -338,7 +340,7 @@ Basic health test of Virtel**</p>
 <p>From the Virtel Portal Page select “Other Applications”. An application
 menu should appear with some default applications. Note that your list
 may be different.</p>
-<p><a class="reference internal" href="../../../_images/image53.png"><img alt="image4" src="../../../_images/image53.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image5.png"><img alt="image4" src="../../../_images/image5.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
 <p>Figure Virtel Application Menu (APPLIST)</p>
 <p>Select any application that is flagged green. If no applications are
 flagged green (available) then configure you ARBO and add applications
@@ -395,7 +397,7 @@ The <strong>*ARBO VSAM*</strong> file is the main configuration file for VIRTEL.
 contains all the configuration information for Virtel elements like
 <strong>*TERMINAL, ENTRY POINTS, LINES, TRANSACTION*</strong> and <strong>*RULE*</strong>
 definitions amongst other things.</p>
-<p><a class="reference internal" href="../../../_images/image61.jpg"><img alt="image5" src="../../../_images/image61.jpg" style="width: 6.26806in; height: 3.88611in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image6.jpg"><img alt="image5" src="../../../_images/image6.jpg" style="width: 6.26806in; height: 3.88611in;" /></a></p>
 <p>Figure Lines and Domains</p>
 <p>The VSAM ARBO configuration file can be unloaded through the VIRCONF
 program. To unload a copy of the data held in the ARBO VSAM file run the
@@ -480,7 +482,7 @@ LINE that is servicing PORT 41002, and that PORT defines the CLI domain.
 So they sequence for a transaction looks like:-</p>
 <p>URL -&gt; OSA -&gt; TCPIP -&gt; VIRTEL -&gt; LINE(PORT) -&gt; DOMAIN(W2H | CLI) -&gt;
 ENTRY POINT -&gt; TRANSACTIONS -&gt; TRANSACTION.</p>
-<p><a class="reference internal" href="../../../_images/image71.jpg"><img alt="image6" src="../../../_images/image71.jpg" style="width: 6.26806in; height: 4.07778in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image7.jpg"><img alt="image6" src="../../../_images/image7.jpg" style="width: 6.26806in; height: 4.07778in;" /></a></p>
 <p>Figure Virtel Domains</p>
 <p><strong>TRANSACTION Definitions</strong></p>
 <p>As already stated transactions belong to a particular Virtel Entry Point
@@ -538,7 +540,7 @@ the LINE that identifies the CLI domain with port 41002.</p>
 (CLIWHOST)</p>
 <p>If I fire the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a> to Virtel I should get
 something like this:-</p>
-<p><a class="reference internal" href="../../../_images/image83.png"><img alt="image7" src="../../../_images/image83.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image81.png"><img alt="image7" src="../../../_images/image81.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
 <p>Figure Default CLI Transaction - Menu List</p>
 <p>Now, it is very unlikely you will see exactly the same colours against
 these applications but nevertheless you should see the same Application
@@ -635,7 +637,7 @@ is a transaction defined to Virtel.</p>
 <p>Question.</p>
 <p>If I try <a class="reference external" href="http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA">http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA</a> it doesn’t
 work. I get some messages on the browser that looks like:-</p>
-<p><a class="reference internal" href="../../../_images/image93.png"><img alt="image8" src="../../../_images/image93.png" style="width: 3.61458in; height: 1.89181in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image91.png"><img alt="image8" src="../../../_images/image91.png" style="width: 3.61458in; height: 1.89181in;" /></a></p>
 <p>Figure Transaction not found error</p>
 <p>And in the z/OS console I can see the following messages:-</p>
 <p>VIRHT51I HTTP-CLI CONNECTING CLLOC049 TO 192.168.092.047:50678</p>
@@ -705,7 +707,7 @@ the JCL below:-</p>
 application. If we start up Virtel now we should see the following
 APPMENU list display. I’ve accessed this with just the port number in my
 URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a>.</p>
-<p><a class="reference internal" href="../../../_images/image103.png"><img alt="image9" src="../../../_images/image103.png" style="width: 6.26806in; height: 3.37708in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image101.png"><img alt="image9" src="../../../_images/image101.png" style="width: 6.26806in; height: 3.37708in;" /></a></p>
 <p>Figure Updating the APPLIST menu</p>
 <p>To directly access my CICS definition I could use the fully qualified
 URL of :-</p>
@@ -758,11 +760,11 @@ printer which is associated with the terminal or relay REHVT000.</p>
 CICS systems that I know have the Virtel relay definitions defined. I
 start up VIRTEL and access the APPMENU with URL
 <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a></p>
-<p><a class="reference internal" href="../../../_images/image115.png"><img alt="image10" src="../../../_images/image115.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image111.png"><img alt="image10" src="../../../_images/image111.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
 <p>Figure Additional applications added to the CLI domain</p>
 <p>I select CICSH and hopefully can logon; yes indeed I can. In fact I can
 open another browser window and logon to TSO1A.</p>
-<p><a class="reference internal" href="../../../_images/image123.png"><img alt="image11" src="../../../_images/image123.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image121.png"><img alt="image11" src="../../../_images/image121.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
 <p>Figure CICS Session activation</p>
 <p>So now my browser is acting like a session manager with each tab
 representing a different session. Two to the mainframe, CICS and TSO,
@@ -823,14 +825,14 @@ panels. Start up Virtel and access the W2H domain using just the port
 number in the URL.</p>
 <p><a class="reference external" href="http://192.168.0.1:41001">http://192.168.0.1:41001</a></p>
 <p>You should get a screen that looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image133.png"><img alt="image12" src="../../../_images/image133.png" style="width: 6.26806in; height: 3.31736in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image131.png"><img alt="image12" src="../../../_images/image131.png" style="width: 6.26806in; height: 3.31736in;" /></a></p>
 <p>Figure Virtel W2H Administration Portal</p>
 <p>Select Admin(3270).That will take you to the 3270 administration pages.
 The first page displayed should be the configuration menu :-</p>
-<p><a class="reference internal" href="../../../_images/image143.png"><img alt="image13" src="../../../_images/image143.png" style="width: 6.26806in; height: 3.85000in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image141.png"><img alt="image13" src="../../../_images/image141.png" style="width: 6.26806in; height: 3.85000in;" /></a></p>
 <p>Figure Virtel Configuration Display</p>
 <p>Select PF2 to display the default terminal setup.</p>
-<p><a class="reference internal" href="../../../_images/image153.png"><img alt="image14" src="../../../_images/image153.png" style="width: 6.26806in; height: 4.02500in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image151.png"><img alt="image14" src="../../../_images/image151.png" style="width: 6.26806in; height: 4.02500in;" /></a></p>
 <p>So from the top down we have:-</p>
 <p>CLLOC000 – CLLOC050 terminals defined for use in the CLI domain. Note
 the CL prefix. This ties up with the TERMINAL= on the LINE definition.
@@ -897,7 +899,7 @@ the definitions that support the TERMINAL configuration.</p>
 <p>INOUT=3, -</p>
 <p>STATS=26, -</p>
 <p>REPEAT=0080</p>
-<p><a class="reference internal" href="../../../_images/image161.jpg"><img alt="image15" src="../../../_images/image161.jpg" style="width: 6.26806in; height: 4.17847in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image16.jpg"><img alt="image15" src="../../../_images/image16.jpg" style="width: 6.26806in; height: 4.17847in;" /></a></p>
 <p>Figure Terminal Overview</p>
 <p>Close the terminal screen by pressing PF3 the RETURN/ENTER key. You
 should be back to the Administration Portal.</p>
@@ -910,7 +912,7 @@ add a new terminal pool to our CLI domain capable of supporting up to
 1000 concurrent users accessing a CICS application known as CICSPROD. We
 also introduce the RULE statement to show how we can separate traffic by
 IP address. Let’s look at a schematic.</p>
-<p><a class="reference internal" href="../../../_images/image171.jpg"><img alt="image16" src="../../../_images/image171.jpg" style="width: 6.26806in; height: 5.39583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image17.jpg"><img alt="image16" src="../../../_images/image17.jpg" style="width: 6.26806in; height: 5.39583in;" /></a></p>
 <p>Figure Adding a new terminal pool</p>
 <p>Our requirement is that any user coming in on port 192.0.2.*** or
 192.0.3.*** should be routed to a particular entry point. Within this
@@ -1020,10 +1022,10 @@ it.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201603/TN201603.html" class="btn btn-neutral float-right" title="tn201608 - Installing Virtel V4.53 from scratch" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201603/TN201603.html" class="btn btn-neutral float-right" title="TN201603" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201601/TN201608.html" class="btn btn-neutral" title="tn201608 - Installing Virtel V4.53 from scratch" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201601/TN201601.html" class="btn btn-neutral" title="TN201601" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
