@@ -6,7 +6,8 @@ Virtel Installation Guide
    :maxdepth: 2
    :caption: Contents:
 
-   index
+   install
+   user
 
 
 Indices and tables

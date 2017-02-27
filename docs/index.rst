@@ -3,7 +3,7 @@ Welcome to Virtel's documentation!
 
 .. toctree::
    :glob:
-   :maxdepth: 2   
+   :maxdepth: 3   
    
    docv456
    other

@@ -6,7 +6,7 @@ Virtel User Guide
    :maxdepth: 2
    :caption: Contents:
 
-   index
+   V452UG/*
 
 
 Indices and tables
