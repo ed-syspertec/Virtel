@@ -85,9 +85,10 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../docv456.html">Virtel documentation V4.56</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../other.html">Other documentation</a></li>
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../newsletters.html">Technical Newsletters</a></li>
 </ul>
 
             
@@ -255,21 +256,21 @@ which can be accessed through port 41001. The Drag and Drop upload
 feature is supported by Chrome and Firefox only.</p>
 <p><a class="reference external" href="http://192.168.170.30:41001/">http://192.168.170.30:41001/</a></p>
 <p>The following screen image should appear:-</p>
-<p><a class="reference internal" href="../../_images/image1.png"><img alt="image0" src="../../_images/image1.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image118.png"><img alt="image0" src="../../_images/image118.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
 <p>Figure Virtel Administration Portal</p>
 <p>Select Drag and Drop Upload and login with your credentials. The Drag
 and Drop Interface will be displayed.</p>
-<p><a class="reference internal" href="../../_images/image2.png"><img alt="image1" src="../../_images/image2.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image210.png"><img alt="image1" src="../../_images/image210.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
 <p>Figure Virtel Upload Interface</p>
 <p>Keeping this browser window open, go to your desktop directory where you
 unzipped the virtel453updt5380.zip file:-</p>
-<p><a class="reference internal" href="../../_images/image3.png"><img alt="image2" src="../../_images/image3.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image35.png"><img alt="image2" src="../../_images/image35.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
 <p>Open the sce directory and select all the files (CTRL-A). Drag this
 selection across to the browser window and drop over the SCE-DIR ICON.
 This should start an upload of all the files in the SCE directory on
 your desktop into the SCE-DIR directory of the SAMP TRSF VSAM file.
 There should be 4 files.</p>
-<p><a class="reference internal" href="../../_images/image4.png"><img alt="image3" src="../../_images/image4.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image413.png"><img alt="image3" src="../../_images/image413.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
 <p>Figure Uploading Files to Virtel</p>
 <p>Repeat the exercise, but this time with the W2H directory, dragging the
 83 elements into the W2H-DIR directory.</p>
@@ -325,7 +326,7 @@ Basic health test of Virtel**</p>
 <p>From the Virtel Portal Page select “Other Applications”. An application
 menu should appear with some default applications. Note that your list
 may be different.</p>
-<p><a class="reference internal" href="../../_images/image5.png"><img alt="image4" src="../../_images/image5.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image55.png"><img alt="image4" src="../../_images/image55.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
 <p>Figure Virtel Application Menu (APPLIST)</p>
 <p>Select any application that is flagged green. If no applications are
 flagged green (available) then configure you ARBO and add applications
@@ -382,7 +383,7 @@ The <strong>*ARBO VSAM*</strong> file is the main configuration file for VIRTEL.
 contains all the configuration information for Virtel elements like
 <strong>*TERMINAL, ENTRY POINTS, LINES, TRANSACTION*</strong> and <strong>*RULE*</strong>
 definitions amongst other things.</p>
-<p><a class="reference internal" href="../../_images/image6.jpg"><img alt="image5" src="../../_images/image6.jpg" style="width: 6.26806in; height: 3.88611in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image63.jpg"><img alt="image5" src="../../_images/image63.jpg" style="width: 6.26806in; height: 3.88611in;" /></a></p>
 <p>Figure Lines and Domains</p>
 <p>The VSAM ARBO configuration file can be unloaded through the VIRCONF
 program. To unload a copy of the data held in the ARBO VSAM file run the
@@ -467,7 +468,7 @@ LINE that is servicing PORT 41002, and that PORT defines the CLI domain.
 So they sequence for a transaction looks like:-</p>
 <p>URL -&gt; OSA -&gt; TCPIP -&gt; VIRTEL -&gt; LINE(PORT) -&gt; DOMAIN(W2H | CLI) -&gt;
 ENTRY POINT -&gt; TRANSACTIONS -&gt; TRANSACTION.</p>
-<p><a class="reference internal" href="../../_images/image7.jpg"><img alt="image6" src="../../_images/image7.jpg" style="width: 6.26806in; height: 4.07778in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image73.jpg"><img alt="image6" src="../../_images/image73.jpg" style="width: 6.26806in; height: 4.07778in;" /></a></p>
 <p>Figure Virtel Domains</p>
 <p><strong>TRANSACTION Definitions</strong></p>
 <p>As already stated transactions belong to a particular Virtel Entry Point
@@ -525,7 +526,7 @@ the LINE that identifies the CLI domain with port 41002.</p>
 (CLIWHOST)</p>
 <p>If I fire the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a> to Virtel I should get
 something like this:-</p>
-<p><a class="reference internal" href="../../_images/image8.png"><img alt="image7" src="../../_images/image8.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image85.png"><img alt="image7" src="../../_images/image85.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
 <p>Figure Default CLI Transaction - Menu List</p>
 <p>Now, it is very unlikely you will see exactly the same colours against
 these applications but nevertheless you should see the same Application
@@ -622,7 +623,7 @@ is a transaction defined to Virtel.</p>
 <p>Question.</p>
 <p>If I try <a class="reference external" href="http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA">http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA</a> it doesn’t
 work. I get some messages on the browser that looks like:-</p>
-<p><a class="reference internal" href="../../_images/image9.png"><img alt="image8" src="../../_images/image9.png" style="width: 3.61458in; height: 1.89181in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image95.png"><img alt="image8" src="../../_images/image95.png" style="width: 3.61458in; height: 1.89181in;" /></a></p>
 <p>Figure Transaction not found error</p>
 <p>And in the z/OS console I can see the following messages:-</p>
 <p>VIRHT51I HTTP-CLI CONNECTING CLLOC049 TO 192.168.092.047:50678</p>
@@ -692,7 +693,7 @@ the JCL below:-</p>
 application. If we start up Virtel now we should see the following
 APPMENU list display. I’ve accessed this with just the port number in my
 URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a>.</p>
-<p><a class="reference internal" href="../../_images/image10.png"><img alt="image9" src="../../_images/image10.png" style="width: 6.26806in; height: 3.37708in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image105.png"><img alt="image9" src="../../_images/image105.png" style="width: 6.26806in; height: 3.37708in;" /></a></p>
 <p>Figure Updating the APPLIST menu</p>
 <p>To directly access my CICS definition I could use the fully qualified
 URL of :-</p>
@@ -745,11 +746,11 @@ printer which is associated with the terminal or relay REHVT000.</p>
 CICS systems that I know have the Virtel relay definitions defined. I
 start up VIRTEL and access the APPMENU with URL
 <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a></p>
-<p><a class="reference internal" href="../../_images/image11.png"><img alt="image10" src="../../_images/image11.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image119.png"><img alt="image10" src="../../_images/image119.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
 <p>Figure Additional applications added to the CLI domain</p>
 <p>I select CICSH and hopefully can logon; yes indeed I can. In fact I can
 open another browser window and logon to TSO1A.</p>
-<p><a class="reference internal" href="../../_images/image12.png"><img alt="image11" src="../../_images/image12.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image125.png"><img alt="image11" src="../../_images/image125.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
 <p>Figure CICS Session activation</p>
 <p>So now my browser is acting like a session manager with each tab
 representing a different session. Two to the mainframe, CICS and TSO,
@@ -810,14 +811,14 @@ panels. Start up Virtel and access the W2H domain using just the port
 number in the URL.</p>
 <p><a class="reference external" href="http://192.168.0.1:41001">http://192.168.0.1:41001</a></p>
 <p>You should get a screen that looks like this:-</p>
-<p><a class="reference internal" href="../../_images/image13.png"><img alt="image12" src="../../_images/image13.png" style="width: 6.26806in; height: 3.31736in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image135.png"><img alt="image12" src="../../_images/image135.png" style="width: 6.26806in; height: 3.31736in;" /></a></p>
 <p>Figure Virtel W2H Administration Portal</p>
 <p>Select Admin(3270).That will take you to the 3270 administration pages.
 The first page displayed should be the configuration menu :-</p>
-<p><a class="reference internal" href="../../_images/image14.png"><img alt="image13" src="../../_images/image14.png" style="width: 6.26806in; height: 3.85000in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image145.png"><img alt="image13" src="../../_images/image145.png" style="width: 6.26806in; height: 3.85000in;" /></a></p>
 <p>Figure Virtel Configuration Display</p>
 <p>Select PF2 to display the default terminal setup.</p>
-<p><a class="reference internal" href="../../_images/image15.png"><img alt="image14" src="../../_images/image15.png" style="width: 6.26806in; height: 4.02500in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image155.png"><img alt="image14" src="../../_images/image155.png" style="width: 6.26806in; height: 4.02500in;" /></a></p>
 <p>So from the top down we have:-</p>
 <p>CLLOC000 – CLLOC050 terminals defined for use in the CLI domain. Note
 the CL prefix. This ties up with the TERMINAL= on the LINE definition.
@@ -884,7 +885,7 @@ the definitions that support the TERMINAL configuration.</p>
 <p>INOUT=3, -</p>
 <p>STATS=26, -</p>
 <p>REPEAT=0080</p>
-<p><a class="reference internal" href="../../_images/image16.jpg"><img alt="image15" src="../../_images/image16.jpg" style="width: 6.26806in; height: 4.17847in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image163.jpg"><img alt="image15" src="../../_images/image163.jpg" style="width: 6.26806in; height: 4.17847in;" /></a></p>
 <p>Figure Terminal Overview</p>
 <p>Close the terminal screen by pressing PF3 the RETURN/ENTER key. You
 should be back to the Administration Portal.</p>
@@ -897,7 +898,7 @@ add a new terminal pool to our CLI domain capable of supporting up to
 1000 concurrent users accessing a CICS application known as CICSPROD. We
 also introduce the RULE statement to show how we can separate traffic by
 IP address. Let’s look at a schematic.</p>
-<p><a class="reference internal" href="../../_images/image17.jpg"><img alt="image16" src="../../_images/image17.jpg" style="width: 6.26806in; height: 5.39583in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image173.jpg"><img alt="image16" src="../../_images/image173.jpg" style="width: 6.26806in; height: 5.39583in;" /></a></p>
 <p>Figure Adding a new terminal pool</p>
 <p>Our requirement is that any user coming in on port 192.0.2.*** or
 192.0.3.*** should be routed to a particular entry point. Within this

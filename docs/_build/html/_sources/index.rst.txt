@@ -2,8 +2,15 @@ Welcome to Virtel's documentation!
 ==================================
 
 .. toctree::
-   :glob:
-   :maxdepth: 3   
-   
-   docv456
-   other
+   :maxdepth: 2
+   :caption: Contents:
+
+   virtel
+   newsletters
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
