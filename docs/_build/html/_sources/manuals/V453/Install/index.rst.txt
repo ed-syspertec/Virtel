@@ -1,2 +1,0 @@
-Virtel Installation Guide
-=========================

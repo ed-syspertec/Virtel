@@ -1,4 +1,156 @@
-TN201401
-========
+Automation and MVS backups
+==========================
 
-Technical newsletter 2014 details.
+Automation on the mainframe is controlled through the AUTO STC (started
+task). This is started at IPL and can be found in USER.PROCLIB.
+
+The AUTO STC controls when backups are taken of the z/OS disks. This
+control is governed through the members à0115 (Server Backups) and à0215
+(Tape Backups) in dataset SYST.AUTOCMDS.CNTL. The member name indicates
+at what time the AUTO STC will process the member. Within each member
+parameters indicate what and when a particular job will run.
+
+For example:-
+
+\* This member à0115 is processed by USER.PROCLIB(AUTO) at 01h15
+
+\*
+
+\*----- ------- --------------------------------------------------------
+
+\*MM/DD MTWTFSS Command data C
+
+\*----- ------- --------------------------------------------------------
+
+\*\*/\*\* F F AUTO,DRSET1U,DRBACKUP Backup to set 1 every Friday
+
+\*\*/\*\* T F AUTO,DRSET2U,DRBACKUP Backup to set 2 every Tuesday
+
+\*\*/01 W F AUTO,DRSET3U,DRBACKUP Backup to set 3 1st Wed of month
+
+\*\*/02 W F AUTO,DRSET3U,DRBACKUP - ditto -
+
+\*\*/03 W F AUTO,DRSET3U,DRBACKUP - ditto -
+
+\*\*/04 W F AUTO,DRSET3U,DRBACKUP - ditto -
+
+\*\*/05 W F AUTO,DRSET3U,DRBACKUP - ditto -
+
+\*\*/06 W F AUTO,DRSET3U,DRBACKUP - ditto -
+
+\*\*/07 W F AUTO,DRSET3U,DRBACKUP - ditto –
+
+This member runs at 01:15 every day and controls the execution of job
+DRSET1U. DRSET1U is JCL found in SYST.AUTOJOBS.CNTL. This JCL member is
+concatenated with JCL member DRBACKUP, also found in SYST.AUTOJOBS.CNTL.
+
+Looking at this example we can see that the AUTO STC will execute
+DRSET1U/DRBACKUP every Friday. Every Tuesday it will submit the
+DRSET2U/DRBACKUP JCL combination and on the first Wednesday of every
+month it will submit DRSET3U/DRBACKUP.
+
+**Types of backups**
+
+Two types of backups are taken – one to tapes and another to an ftp
+server. Every day at 01.15 and 02.15 the backup jobs are executed.
+Depending on the day of the week will determine if and what backup is
+taken.
+
+15. **Server Backups**
+
+These backups are ftp’d to directory on the Anaktisi VTS server. Details
+are:-
+
+Server IP 192.168.92.131
+
+Directory z10/z10set
+
+FTP security member SPTBOWL.FTP.SECURITY(SCYLLA3)
+
+**Schedule**
+
+Every Tuesday backup to z10/z10set2/vvvvvv.cckd
+
+Every Friday backup to z10/z10set1/vvvvvv.cckd
+
+Every first Wednesday of the month z10/z10set3/vvvvvv.cckd
+
+The set number is controlled by the member DRSETxU where x indicates the
+set.
+
+**02.15 Tape Backups**
+
+These are run from SYST.AUTOJOBS.CNTL, members DSSBACK2 through to
+DSSBACK6. Normally only tapes 000002 through to 000005 are used, but
+when a Thursday falls on the dates 29\ :sup:`th` through 31\ :sup:`st`
+000006 will be used.
+
+These backups are to tape and are taken on a Thursday. The tape range is
+000002 to 000006. Depending on the day of the month will dictate what
+tape is used in the backup cycle.
+
+000002 Thursday days 1 to 7
+
+000003 Thursday days 8 to 14
+
+000004 Thursday days 15 to 21
+
+000005 Thursday days 22 to 28
+
+000006 Thursday days 29 to 31
+
+So, for example, Thursday 9\ :sup:`th`, will use tape 0000003. Thursday
+28\ :sup:`th` will use tape 000005.
+
+Take care when there is a Thursday between 29th and 31\ :sup:`st.` The
+tape loader will have to have the additional 000006 cartridge inserted
+in order to correctly select the right tape.
+
+**
+VM Backups – Manual process**
+
+The process to backup the VM system is controlled through the BACKUP
+EXEC. This EXEC is accessible via the MAINT userid. The tape is kept in
+the office and is labelled 000007. This is not very satisfactory as
+there is no remote copy. The VM backup will backup up all the VM disks
+so that will include the MVS DEMO system, VSE and the LINUX environment.
+
+**VM Backup procedure**
+
+1. Vary 5A0 offline to all systems. In particular SPTDEMO. Detach from
+   SPTDEMO.
+
+2. Logon to MAINT on the VM system.
+
+3. Attach tape unit 5A0 to MAINT as 181 \_ ATT 5A0 \* 181
+
+4. Place tape 000007 into tape unit befoe running EXEC.
+
+5. Run Backup EXEC
+
+6. Reply 00C to message
+
+The process writes a SA restore deck as the first file on the tape. In
+the event of a restore this file can be IPL’d which will then load the
+stand alone restore program and run through a restore of the VM system.
+
+**Notes**
+
+Backup tapes.
+
+Ensure at least one backup tape is offsite. Do not keep all tape onsite.
+This is currently not the case for VM/VSE.
+
+FTP
+
+FTP procedure is dependant on Hercules S390 CCKDDUMP/CCKLOAD programs.
+These must be available at restore site in case of DR.
+
+Security
+
+FTP user/password for the server are hard coded in user dataset.
+
+Server
+
+IP address and not a DNS name is used for the server repository. If IP
+address changes this will have to be modified.

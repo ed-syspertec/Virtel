@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>TN201401 &mdash; Virtel 1 documentation</title>
+  <title>Automation and MVS backups &mdash; Virtel 1 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="TN201402" href="../TN201402/TN201402.html"/>
+        <link rel="next" title="Formatting VIRTEL Line Trace" href="../TN201402/TN201402.html"/>
         <link rel="prev" title="Technical Newsletters" href="../../../newsletters.html"/> 
 
   
@@ -90,16 +90,29 @@
             
                 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">TN201401</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201402/TN201402.html">TN201402</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201403/TN201403.html">TN201403</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Automation and MVS backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201402/TN201402.html">Formatting VIRTEL Line Trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201403/TN201403.html">How to use TESTVTAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201404/TN201404.html">VIRTEL SMF Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201405/TN201405.html">Multi Line WTO Support in VIRTEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 </ul>
 </li>
 </ul>
@@ -134,7 +147,7 @@
       
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
       
-    <li>TN201401</li>
+    <li>Automation and MVS backups</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -148,9 +161,106 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tn201401">
-<h1>TN201401<a class="headerlink" href="#tn201401" title="Permalink to this headline">¶</a></h1>
-<p>Technical newsletter 2014 details.</p>
+  <div class="section" id="automation-and-mvs-backups">
+<h1>Automation and MVS backups<a class="headerlink" href="#automation-and-mvs-backups" title="Permalink to this headline">¶</a></h1>
+<p>Automation on the mainframe is controlled through the AUTO STC (started
+task). This is started at IPL and can be found in USER.PROCLIB.</p>
+<p>The AUTO STC controls when backups are taken of the z/OS disks. This
+control is governed through the members à0115 (Server Backups) and à0215
+(Tape Backups) in dataset SYST.AUTOCMDS.CNTL. The member name indicates
+at what time the AUTO STC will process the member. Within each member
+parameters indicate what and when a particular job will run.</p>
+<p>For example:-</p>
+<p>* This member à0115 is processed by USER.PROCLIB(AUTO) at 01h15</p>
+<p>*</p>
+<p>*&#8212;&#8211; &#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</p>
+<p>*MM/DD MTWTFSS Command data C</p>
+<p>*&#8212;&#8211; &#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</p>
+<p>**/** F F AUTO,DRSET1U,DRBACKUP Backup to set 1 every Friday</p>
+<p>**/** T F AUTO,DRSET2U,DRBACKUP Backup to set 2 every Tuesday</p>
+<p>**/01 W F AUTO,DRSET3U,DRBACKUP Backup to set 3 1st Wed of month</p>
+<p>**/02 W F AUTO,DRSET3U,DRBACKUP - ditto -</p>
+<p>**/03 W F AUTO,DRSET3U,DRBACKUP - ditto -</p>
+<p>**/04 W F AUTO,DRSET3U,DRBACKUP - ditto -</p>
+<p>**/05 W F AUTO,DRSET3U,DRBACKUP - ditto -</p>
+<p>**/06 W F AUTO,DRSET3U,DRBACKUP - ditto -</p>
+<p>**/07 W F AUTO,DRSET3U,DRBACKUP - ditto –</p>
+<p>This member runs at 01:15 every day and controls the execution of job
+DRSET1U. DRSET1U is JCL found in SYST.AUTOJOBS.CNTL. This JCL member is
+concatenated with JCL member DRBACKUP, also found in SYST.AUTOJOBS.CNTL.</p>
+<p>Looking at this example we can see that the AUTO STC will execute
+DRSET1U/DRBACKUP every Friday. Every Tuesday it will submit the
+DRSET2U/DRBACKUP JCL combination and on the first Wednesday of every
+month it will submit DRSET3U/DRBACKUP.</p>
+<p><strong>Types of backups</strong></p>
+<p>Two types of backups are taken – one to tapes and another to an ftp
+server. Every day at 01.15 and 02.15 the backup jobs are executed.
+Depending on the day of the week will determine if and what backup is
+taken.</p>
+<ol class="arabic simple" start="15">
+<li><strong>Server Backups</strong></li>
+</ol>
+<p>These backups are ftp’d to directory on the Anaktisi VTS server. Details
+are:-</p>
+<p>Server IP 192.168.92.131</p>
+<p>Directory z10/z10set</p>
+<p>FTP security member SPTBOWL.FTP.SECURITY(SCYLLA3)</p>
+<p><strong>Schedule</strong></p>
+<p>Every Tuesday backup to z10/z10set2/vvvvvv.cckd</p>
+<p>Every Friday backup to z10/z10set1/vvvvvv.cckd</p>
+<p>Every first Wednesday of the month z10/z10set3/vvvvvv.cckd</p>
+<p>The set number is controlled by the member DRSETxU where x indicates the
+set.</p>
+<p><strong>02.15 Tape Backups</strong></p>
+<p>These are run from SYST.AUTOJOBS.CNTL, members DSSBACK2 through to
+DSSBACK6. Normally only tapes 000002 through to 000005 are used, but
+when a Thursday falls on the dates 29<sup>th</sup> through 31<sup>st</sup>
+000006 will be used.</p>
+<p>These backups are to tape and are taken on a Thursday. The tape range is
+000002 to 000006. Depending on the day of the month will dictate what
+tape is used in the backup cycle.</p>
+<p>000002 Thursday days 1 to 7</p>
+<p>000003 Thursday days 8 to 14</p>
+<p>000004 Thursday days 15 to 21</p>
+<p>000005 Thursday days 22 to 28</p>
+<p>000006 Thursday days 29 to 31</p>
+<p>So, for example, Thursday 9<sup>th</sup>, will use tape 0000003. Thursday
+28<sup>th</sup> will use tape 000005.</p>
+<p>Take care when there is a Thursday between 29th and 31<sup>st.</sup> The
+tape loader will have to have the additional 000006 cartridge inserted
+in order to correctly select the right tape.</p>
+<p>**
+VM Backups – Manual process**</p>
+<p>The process to backup the VM system is controlled through the BACKUP
+EXEC. This EXEC is accessible via the MAINT userid. The tape is kept in
+the office and is labelled 000007. This is not very satisfactory as
+there is no remote copy. The VM backup will backup up all the VM disks
+so that will include the MVS DEMO system, VSE and the LINUX environment.</p>
+<p><strong>VM Backup procedure</strong></p>
+<ol class="arabic simple">
+<li>Vary 5A0 offline to all systems. In particular SPTDEMO. Detach from
+SPTDEMO.</li>
+<li>Logon to MAINT on the VM system.</li>
+<li>Attach tape unit 5A0 to MAINT as 181 _ ATT 5A0 * 181</li>
+<li>Place tape 000007 into tape unit befoe running EXEC.</li>
+<li>Run Backup EXEC</li>
+<li>Reply 00C to message</li>
+</ol>
+<p>The process writes a SA restore deck as the first file on the tape. In
+the event of a restore this file can be IPL’d which will then load the
+stand alone restore program and run through a restore of the VM system.</p>
+<p><strong>Notes</strong></p>
+<p>Backup tapes.</p>
+<p>Ensure at least one backup tape is offsite. Do not keep all tape onsite.
+This is currently not the case for VM/VSE.</p>
+<p>FTP</p>
+<p>FTP procedure is dependant on Hercules S390 CCKDDUMP/CCKLOAD programs.
+These must be available at restore site in case of DR.</p>
+<p>Security</p>
+<p>FTP user/password for the server are hard coded in user dataset.</p>
+<p>Server</p>
+<p>IP address and not a DNS name is used for the server repository. If IP
+address changes this will have to be modified.</p>
 </div>
 
 
@@ -160,7 +270,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201402/TN201402.html" class="btn btn-neutral float-right" title="TN201402" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201402/TN201402.html" class="btn btn-neutral float-right" title="Formatting VIRTEL Line Trace" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../../../newsletters.html" class="btn btn-neutral" title="Technical Newsletters" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

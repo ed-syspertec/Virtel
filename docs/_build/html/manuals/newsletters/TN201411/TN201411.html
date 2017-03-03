@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building a customized USSTAB using Virtel’s Web Access facility &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Sharing user macros across multiple instances of Virtel" href="../TN201412/TN201412.html"/>
+        <link rel="prev" title="Taking a VTAM trace" href="../TN201410/TN201410.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201401/TN201401.html">Automation and MVS backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201402/TN201402.html">Formatting VIRTEL Line Trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201403/TN201403.html">How to use TESTVTAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201404/TN201404.html">VIRTEL SMF Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201405/TN201405.html">Multi Line WTO Support in VIRTEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Building a customized USSTAB using Virtel’s Web Access facility</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201411/TN201411.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-a-customized-usstab-using-virtels-web-access-facility">
+<h1>Building a customized USSTAB using Virtel’s Web Access facility<a class="headerlink" href="#building-a-customized-usstab-using-virtels-web-access-facility" title="Permalink to this headline">¶</a></h1>
+<p>This technical newsletter describes how to build a VTAM USSTAB
+equivalent using Web Access facility. The process will cover:-</p>
+<ul class="simple">
+<li>Modifying the tool bar.</li>
+<li>Setting the correct fonts and keys.</li>
+<li>Building a template to act as the USSTAB screen.</li>
+</ul>
+<p>All of these modifications are customised Java Script and HTML modules
+which will be kept in the default directory for the relevant Entry
+Point. In this sample the entry point EDSHOST is used. Here is what it
+looks like:-</p>
+<p><a class="reference internal" href="../../../_images/image72.jpeg"><img alt="screen1" src="../../../_images/image72.jpeg" style="width: 6.29167in; height: 5.52083in;" /></a></p>
+<p>Fig. 1 – Entry Point detail</p>
+<p>The entry point is associated with the line definition E-HTTP which
+looks like the following:-</p>
+<p><a class="reference internal" href="../../../_images/image72.jpeg"><img alt="screen1" src="../../../_images/image72.jpeg" style="width: 6.29167in; height: 5.52083in;" /></a></p>
+<p>Fig. 2 – Line detail</p>
+<p>The line and Entry Point combination will use the default transaction
+which can be found in the Entry Points transaction list. PF4 from the
+Entry Point display. In our case we default to the Entry Point name and
+therefore have set up a transaction called EDSHOST.</p>
+<p>The default transaction EDSHOST associated with the EDSHOST entry point
+will identify our default directory, EDS-DIR, where modifications will
+be uploaded to. The detail for the default transaction looks like:-</p>
+<p><a class="reference internal" href="../../../_images/image72.jpeg"><img alt="screen1" src="../../../_images/image72.jpeg" style="width: 6.29167in; height: 5.52083in;" /></a></p>
+<p>Fig. 3 – Default transaction EDSHOST</p>
+<p><strong>USSTAB template USSWSYSP</strong></p>
+<p>Template pages are the means by which VIRTEL presents host application
+data. In the customized USSTAB template called USSWSYSP, the template
+will simulate 3270 controls and actions through Java Script and HTML
+programming. Features like AJAX will also be employed in the background
+to maintain HTTP session state, however, those features will not be
+discussed in this newsletter.</p>
+<p>So to start with, this is the end result of our template customization
+and what the user will see when accessing the mainframe via the USSWSYSP
+template.</p>
+<p><a class="reference internal" href="../../../_images/image72.jpeg"><img alt="screen1" src="../../../_images/image72.jpeg" style="width: 6.29167in; height: 5.52083in;" /></a></p>
+<p>Fig. 4 – The template USSWSYSP display</p>
+<p>The URL for this template is
+<em>line_ip_address:line_port/entrypoint/:</em>USSWSYSP.HTML which in our
+case is 192.168.170.30:41003/EDSHOST/USSWSYSP.HTML. It looks very
+similar to what a VTAM USSTAB might produce. Notice that there is a tool
+bar on top with some functions and a cursor/row counter in the bottom
+right corner. To use the template, the user simply types in the name of
+an application in line 2, where the cursor is positioned. For example,
+typing in TSO and pressing enter will establish a TSO session from this
+template. If ENTER is pressed with no value on line 2 or any other key
+other than ENTER is used than an error message will be displayed.</p>
+<p><a class="reference internal" href="../../../_images/image72.jpeg"><img alt="screen1" src="../../../_images/image72.jpeg" style="width: 6.29167in; height: 5.52083in;" /></a></p>
+<p>Fig. 5 – Error message displayed as a result of pressing PFK9.</p>
+<p>So to access an application the VTAM application name is entered. Here
+we enter TSO on line 2 and press ENTER.</p>
+<p><a class="reference internal" href="../../../_images/image72.jpeg"><img alt="screen1" src="../../../_images/image72.jpeg" style="width: 6.29167in; height: 5.52083in;" /></a></p>
+<p>Fig. 6 – Establishing a TSO session</p>
+<p>After pressing enter a TSO logon panel will be presented. Note that the
+cursor/row display in the bottom right will update as data is typed into
+the line 2 row - just as you would expect from a 3270 emulation program.</p>
+<p><a class="reference internal" href="../../../_images/image72.jpeg"><img alt="screen1" src="../../../_images/image72.jpeg" style="width: 6.29167in; height: 5.52083in;" /></a></p>
+<p>Fig. 7 – TSO Logon panel</p>
+<p>When the disconnect ICON in the tool bar is pressed (Red Square) the
+screen will return to the USSWSYSP. This is because the <strong>*lastpage*</strong>
+parameter in the Entry Point definition has been set to /USSWSYSP.HTML.</p>
+<p><strong>USSWSYSP Logic</strong></p>
+<p>The template consists of some JavaScript and HTML. Most of the
+JavasSript relates to session state and presentation and should not be
+modified. Essential the template, using JavaScript, builds a 24*80 HTML
+presentation screen. On line 1 a title is displayed, see the variable
+<em>title</em> in the last &lt;script&gt; segment. Line 2 is an input line and line
+24 is an error message line.</p>
+<p>When a user presses ENTER the JavaScript <em>SubmitForm</em> function is
+triggered which analyses the input represented by the <em>zcmd</em> variable.
+If <em>zcmd</em> is blank an error message is set in variable <em>errmsg</em>. Also,
+if the command entered is not ENTER, as reflected in the <em>pfKey</em>
+variable, an error message is also set. The case logic in the
+<em>SubmitForm</em> function determines which application to logon onto. This
+may be modified to reflect the commands found in a VTAM USSTAB. In the
+sample <em>USSHSYSP.HTML</em> the command entered is not tested. It is assumed
+that it is a valid application name and in the default section of the
+CASE statement is concatenated to the WEB2AJAX url and triggered via the
+action statement at the end of the function. This will result in a logon
+process to the application entered by the user. The only change to
+behavior is if the user entered TSOA. In that case the application name
+is changed to TSO.</p>
+<p>It is here, in the CASE logic, that a user would modify USSHSYSP.HTML
+and specify all the true application test through a series of CASE
+elements and set the appropriate action. The default action should be an
+error message or default application.</p>
+<p>The other customized elements that have been changed are the
+<em>customs.js</em> and <em>w2hparm.js</em> modules. You can see in the included
+&lt;script&gt; list in USSWSYSP.HTML that the defaults for <em>custom.js</em> and
+<em>w2hparm.js</em> are not included from the w2h directory. Instead the html
+code pulls these two modules from the users default directory associated
+with the entry point.</p>
+<p>The modifications made to <em>custom.js</em> are shown in the following piece
+of code:-</p>
+<p>/*</p>
+<p>* (c)Copyright SysperTec Communication 2012 All Rights Reserved</p>
+<p>* VIRTEL Web Access customer-specific javascript functions</p>
+<p>*/</p>
+<p>function after_standardInit() {</p>
+<p>/* Remove macro buttons from the toolbar */</p>
+<p>removetoolbarbutton(&#8220;startrecording&#8221;);</p>
+<p>removetoolbarbutton(&#8220;playback&#8221;);</p>
+<p>}</p>
+<p>This customs-specific java script module removes the “startrecording”
+and “playback” tools from the tool bar.</p>
+<p>Also, the <em>w2hparm.js</em> module has been modified to change the fonts and
+keys from the defaults. The following is an example of <em>w2hparm.js</em> as
+used with USSHSYSP.HTML:-</p>
+<p>// Default Virtel Web Access settings for USSHSYSP.HTML</p>
+<p>// see w2hparmdefns in js01.js for parameters and allowable values</p>
+<p>var w2hparm = {</p>
+<p>&#8220;fontsize&#8221;:&#8221;window&#8221;,</p>
+<p>&#8220;font&#8221;:&#8221;Lucida Console&#8221;,</p>
+<p>&#8220;ctrl&#8221;:&#8221;Newline&#8221;,</p>
+<p>&#8220;enter&#8221;:&#8221;ENTER&#8221;,</p>
+<p>&#8220;shiftesc&#8221;:&#8221;ATTN&#8221;,</p>
+<p>&#8220;pause&#8221;:&#8221;CLEAR&#8221;,</p>
+<p>&#8220;esc&#8221;:&#8221;Reset&#8221;,</p>
+<p>&#8220;home&#8221;:&#8221;Home&#8221;,</p>
+<p>&#8220;end&#8221;:&#8221;ErEof&#8221;,</p>
+<p>&#8220;shiftins&#8221;:&#8221;Dup&#8221;,</p>
+<p>&#8220;shifthome&#8221;:&#8221;FieldMark&#8221;,</p>
+<p>&#8220;shiftend&#8221;:&#8221;End&#8221;,</p>
+<p>&#8220;shiftpgdn&#8221;:&#8221;PA3&#8221;,</p>
+<p>&#8220;pgup&#8221;:&#8221;PA1&#8221;,</p>
+<p>&#8220;pgdn&#8221;:&#8221;PA2&#8221;,</p>
+<p>&#8220;ctrlend&#8221;:&#8221;End&#8221;,</p>
+<p>&#8220;printstyle&#8221;:&#8221;white&#8221;,</p>
+<p>&#8220;style&#8221;:&#8221;3270&#8221;};</p>
+<p><em>USSWSYSP.HTML, customs.js</em> and <em>w2hparm.js</em> should all be uploaded to
+the default directory for the Entry Point you are using. Also, within
+that Entry Point, in this EDSHOST, there must be a transaction entry for
+the W2H-DIR directory. This is so the shipped JavaScript code can be
+accessible. Here is the list of transactions for the Entry Point
+EDSHOLT:-</p>
+<p><a class="reference internal" href="../../../_images/image92.jpeg"><img alt="screen" src="../../../_images/image92.jpeg" style="width: 6.30208in; height: 4.15625in;" /></a></p>
+<p>Fig. 8 – Transactions associated with Entry Point.</p>
+<p>The transaction details for the W2H-DIR, external name <em>w2h</em> look like
+this :-</p>
+<p><a class="reference internal" href="../../../_images/image92.jpeg"><img alt="screen" src="../../../_images/image92.jpeg" style="width: 6.30208in; height: 4.15625in;" /></a></p>
+<p>Fig. 9 – Transaction entry to access the ../w2h/ directory.</p>
+<p>Do not upload any modules to the shipped directory <em>../w2h/.</em> If you do,
+you will overwrite the Virtel defaults which would affect behavior
+globally. If you want to use the shipped defaults of custom.js and
+w2hparm.js then modify the HTML &lt;script&gt; tags in <em>USSWSYSP.HTML</em> to
+include <em>custom.js</em> and <em>w2hparm.js</em> from the distributed ../<em>w2h/</em>
+directory and not from your default EntryPoint directory.</p>
+<p>Appendix A</p>
+<p>Code for template USSWSYSP.HTML</p>
+<p>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01//EN&#8221;
+&#8220;<a class="reference external" href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>&#8220;&gt;</p>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt; &lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221; &#8211;&gt;</p>
+<p>&lt;!&#8211;</p>
+<p>$Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $</p>
+<p>Example of Home Page for VIRTEL Web Access _ USS Replacement</p>
+<p>&#8211;&gt;</p>
+<p>&lt;meta http-equiv=&#8221;X-UA-Compatible&#8221; content=&#8221;IE=edge&#8221;/&gt;</p>
+<p>&lt;meta http-equiv=&#8221;Content-Type&#8221; content=&#8221;text/html;
+charset=ISO-8859-15&#8221;&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2hparm.js&#8221;&gt;&lt;/script&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/default.js&#8221;&gt;&lt;/script&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/stk.js&#8221;&gt;&lt;/script&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/js01.js&#8221;&gt;&lt;/script&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/vir3270.js&#8221;&gt;&lt;/script&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/virajax.js&#8221;&gt;&lt;/script&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../custom.js&#8221;&gt;&lt;/script&gt;</p>
+<p>&lt;title&gt;{{{NAME-OF (VIRTEL)}}} VIRTEL Web Access&lt;/title&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body onload=&#8217;js01onload(); pageSetup(80,&#8221;{{{NAME-OF (VIRTEL)}}}&#8221;);</p>
+<p>VIR3270.init(&#8220;printReady&#8221;, 24, 80, &#8220;zcmd&#8221;); autoCapture();&#8217;&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221;&gt;</p>
+<p>function submitForm(pfkey) {</p>
+<p>var zcmd, action, errmsg, elem;</p>
+<p>zcmd = stk.trimString(document.virtelForm.zcmd.value).toUpperCase();</p>
+<p>if (pfkey == &#8220;CLEAR&#8221;) {</p>
+<p>action = &#8220;/&#8221;;</p>
+<p>} else if (pfkey != &#8220;ENTER&#8221;) {</p>
+<p>errmsg = &#8220;Invalid Key. Please enter application and press ENTER&#8221;;</p>
+<p>} else {</p>
+<p>switch (zcmd) {</p>
+<p>case &#8220;&#8221;:</p>
+<p>errmsg = &#8220;Please specify application and press ENTER&#8221;;</p>
+<p>break;</p>
+<p>case &#8220;TSOA&#8221;:</p>
+<p>action = &#8221;../w2h/WEB2AJAX.htm+TSO&#8221;;</p>
+<p>break;</p>
+<p>default:</p>
+<p>// errmsg = &#8220;LE CHOIX QUE VOUS AVEZ FAIT N&#8217;EST PAS PREVU&#8221;;</p>
+<p>action = &#8221;../w2h/WEB2AJAX.htm+&#8221;.concat(zcmd);</p>
+<p>}</p>
+<p>}</p>
+<p>if (errmsg) {</p>
+<p>elem = VIR3270.findField(1840);</p>
+<p>if (elem) elem.innerHTML = errmsg.fixlen(79).htmlcode();</p>
+<p>VIR3270.cursorOff();</p>
+<p>VIR3270.cursorHome();</p>
+<p>VIR3270.cursorOn();</p>
+<p>VIR3270.resetInhibit();</p>
+<p>}</p>
+<p>if (action) document.location.href = action;</p>
+<p>}</p>
+<p>function pageSetup(cols, virtname) {</p>
+<p>var ident1, ident2;</p>
+<p>loadCss(&#8221;../w2h/login.css&#8221;);</p>
+<p>loadCss(&#8221;../w2h/keypad.css&#8221;);</p>
+<p>loadCss(&#8221;../w2h/custom.css&#8221;);</p>
+<p>if (typeof setStatusBarRelayStatus === &#8220;function&#8221;) {</p>
+<p>fillstatusbar(cols);</p>
+<p>setStatusBarRelayStatus(virtname);</p>
+<p>if (typeof createOnResizeFn === &#8220;function&#8221;) {</p>
+<p>window.onresize = createOnResizeFn(&#8220;window&#8221;, 80, 24);</p>
+<p>window.onresize(forceResizeEvent);</p>
+<p>}</p>
+<p>} else {</p>
+<p>fillstatusbar(cols, virtname);</p>
+<p>updateFontsize(&#8220;window&#8221;, 80, 24);</p>
+<p>}</p>
+<p>document.getElementById(&#8220;printReady&#8221;).style.visibility = &#8220;visible&#8221;;</p>
+<p>}</p>
+<p>setFontsize(&#8220;window&#8221;, 80, 24);</p>
+<p>genkeypad();</p>
+<p>gentoolbar();</p>
+<p>if (typeof after_standardInit === &#8220;function&#8221;) {</p>
+<p>after_standardInit();</p>
+<p>}</p>
+<p>&lt;/script&gt;</p>
+<p>&lt;div id=&#8221;viewport&#8221; style=&#8221;-webkit-transform-origin:0
+0;-ms-transform-origin:0 0; moz-transform-origin:0 0;transform-origin:0
+0;&#8221;&gt;</p>
+<p>&lt;div id=&#8221;virsubpage&#8221;&gt;</p>
+<p>&lt;form name=&#8221;virtelForm&#8221; action=&#8221;&#8221; method=&#8221;get&#8221;&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221;&gt;</p>
+<p>var title = &#8220;Welcome to SysperTec&#8221;</p>
+<p>var blankLine = &#8216; &#8216;.concat(&#8216;&lt;br&gt;&#8217;);</p>
+<p>var screen = &#8216;&lt;pre&gt;&lt;div id=&#8221;printReady&#8221; class=&#8221;mainFont&#8221;
+style=&#8221;visibility:hidden;&#8221;&gt;&lt;span class=&#8221;NGREEN&#8221;&gt;&#8217;;</p>
+<p>screen = screen.concat(title).concat(blankLine.substring(title.length));</p>
+<p>screen = screen.concat(&#8216;&lt;/span&gt;&#8217;);</p>
+<p>screen = screen.concat(&#8216;&lt;input name=&#8221;zcmd&#8221; type=&#8221;text&#8221; size=&#8221;80&#8221;
+maxsize=&#8221;80&#8221; class=&#8221;NGREEN&#8221;&gt;&#8217;);</p>
+<p>screen = screen.concat(&#8216;&lt;span class=&#8221;NWHITE&#8221;&gt;&lt;br&gt;&#8217;);</p>
+<p>for (var i = 0; i &lt; 21; i++) {</p>
+<p>screen = screen.concat(blankLine);</p>
+<p>}</p>
+<p>screen = screen.concat(&#8216;&lt;/span&gt;&lt;span
+class=&#8221;NRED&#8221;&gt;&#8217;).concat(blankLine).concat(&#8216;&lt;/span&gt;&lt;span
+class=&#8221;NWHITE&#8221;&gt;&amp;nbsp;&#8217;)</p>
+<p>screen = screen.concat(&#8216;&lt;/span&gt;&lt;/div&gt;&lt;div id=&#8221;statusbar&#8221;
+class=&#8221;mainFont&#8221;&gt;&lt;/div&gt;&lt;/pre&gt;&#8217;);</p>
+<p>document.write(screen);</p>
+<p>&lt;/script&gt;</p>
+<p>{{{DEFINE-HTML-PFKEY &#8220;pf&#8221;}}}&lt;input name=&#8221;pf&#8221; type=&#8221;HIDDEN&#8221;
+value=&#8221;ENTER&#8221;&gt;</p>
+<p>&lt;input name=&#8221;cursorField&#8221; id=&#8221;cursorfield&#8221; type=&#8221;HIDDEN&#8221; value=&#8221;&#8220;&gt;</p>
+<p>&lt;/form&gt;</p>
+<p>&lt;/div&gt;</p>
+<p>&lt;/div&gt;</p>
+<p>&lt;script type=&#8221;text/javascript&#8221;&gt;</p>
+<p>genBhoTrigger();</p>
+<p>&lt;/script&gt;</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>Note:</p>
+<p>at the end of a line means the next line forms part of the this line</p>
+<p>The blankLine variable has 80 blanks between the quotes.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201412/TN201412.html" class="btn btn-neutral float-right" title="Sharing user macros across multiple instances of Virtel" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201410/TN201410.html" class="btn btn-neutral" title="Taking a VTAM trace" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

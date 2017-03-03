@@ -1,4 +1,214 @@
-TN201403
-========
+How to use TESTVTAM
+===================
 
-Technical newsletter 2014 details.
+***Note:** Replace SPTHOLT with your HLQ.*
+
+**Installation instructions**
+
+The following outlines the installation procedure of the TESTVTAM
+package.
+
+1. Allocate a TRS file on the mainframe with the following JCL:
+
+    //SPTHOLTT JOB (9000),'ED...HOLT...',
+
+    // NOTIFY=&SYSUID,RESTART=\*,
+
+    // CLASS=A,
+
+    // MSGCLASS=X,
+
+    // MSGLEVEL=(0,0),
+
+    // COND=(4,LT)
+
+    //\*-------------------------------------------------------------------+
+
+    //\* \|
+
+    //\* CREATE A TERSE FILE READY TO RECEIVE BINARY UPLOAD \|
+
+    //\* \|
+
+    //\*-------------------------------------------------------------------+
+
+    //DEL EXEC PGM=IEFBR14
+
+    //DDA DD DISP=(MOD,DELETE),UNIT=SYSDA,SPACE=(TRK,0),
+
+    // DSN=SPTHOLT.XMIT.LOADLIB.TRS
+
+    //S00 EXEC PGM=IEFBR14
+
+    //DDA DD DSN=SPTHOLT.XMIT.LOADLIB.TRS,DISP=(,CATLG),UNIT=SYSDA,
+
+    // SPACE=(CYL,(1,1)),DCB=(LRECL=1024,BLKSIZE=6144,RECFM=FB)
+
+    //DDB DD DSN=SPTHOLT.XMIT.LOADLIB.BIN,DISP=(,CATLG),UNIT=SYSDA,
+
+    // SPACE=(CYL,(1,1)),DCB=(LRECL=80,BLKSIZE=3120,RECFM=FB)
+
+1. Upload the binary file TESTVTAM.trs to the mainframe and unterse the
+   TRS file. The following is an example of the JCL required to unterse
+   the file.
+
+    //SPTHOLTD JOB DSSDUMP,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+
+    //S01 EXEC PGM=TRSMAIN,PARM=UNPACK
+
+    //SYSPRINT DD SYSOUT=\*
+
+    //INFILE DD DSN=SPTHOLT.XMIT.LOADLIB.TRS,DISP=SHR
+
+    //OUTFILE DD DSN=SPTHOLT.XMIT.LOADLIB.BIN,DISP=SHR
+
+1. Receive the untersed file using the TSO RECEIVE command.
+
+    receive indsn(XMIT.LOADLIB.BIN)
+
+    This will create the LOAD library HLQ.XMIT.LOADLIB which should
+    contain the following members:-
+
+    TESTVTAM
+
+1. Upload example trace dataset
+
+    The package includes a sample trace dataset VIRTRACE.TXT. This needs
+    to be uploaded to a mainframe dataset as a text file with the
+    following attributes:-
+
+    |image0|
+
+1. Add TESTVTAM procedure to a PROCLIB library
+
+    The following procedure is required in SYS1.PROCLIB:-
+
+    //TESTVTAM PROC APPLID=TESTVTAM
+
+    //IEFPROC EXEC PGM=TESTVTAM,TIME=1440,
+
+    // REGION=32M,PARM='&APPLID'
+
+    //STEPLIB DD DISP=SHR,DSN=USER.LINKLIB
+
+    //SNAPFILE DD SYSOUT=\*
+
+    //SYSUDUMP DD SYSOUT=\*
+
+    //IEFRDER DD DSN=NULLFILE,DISP=SHR <== Trace input file
+
+1. Add a VTAM definition to SYS1.VTAMLST
+
+    Add member TESTAPPL to SYS1.VTAMLST.
+
+    TESTAPPL VBUILD TYPE=APPL
+
+    TESTVTAM APPL AUTH=VPACE,ACBNAME=TESTVTAM
+
+    **Running TESTVTAM**
+
+    **Getting a 3270 trace from Virtel**
+
+    Request a Virtel Trace from the client using the following command:
+
+    *F virtel, trace,r=name\_of\_relay*
+
+    Transfer the trace file via ftp (ftp,ascii) to the Syspertec Support
+    Centre. Receive and upload the ftp file to a z/OS DSN. The format of
+    the DSN must be something like:
+
+    *SPCLIENT.PMA.CICS3WIN3.VIRTRACE*
+
+    NB. The DSN file must contain four elements:
+    SPCLIENT.XXX.YYY.VIRTRACE. If there is a RACF problem (See
+    SPTBOWL.CBT485.DISSEN.ASM(RACFDEF))
+
+1. **Start a TESTVTAM trace**
+
+    Issue the following z/OS commands:
+
+    *v net,act,id=testappl*
+
+    *s testvtam,dsn=name of the trace file. *
+
+    *For example:- s testvtam.testvtam,dsn=spclient.cicswin3.virtrace*
+
+1. **Connect to TESTVTAM with a VIRTEL W2H session**
+
+    Connect to TESTVTAM from a VIRTEL session using the correct
+    transaction to support the screen type. Normally W2H LINE on port
+    41001 using the following parameters:-
+
+    `http://192.168.170.50:41001/w2h/WEB2AJAX.htm+testvtam[?logmode=x&rows=r&cols=c <http://192.168.170.50:41001/w2h/WEB2AJAX.htm+testvtam%5b?logmode=x&rows=r&cols=c>`__]
+
+    Default Model 2
+
+    Other screen types:
+
+    x = SNX32703 \| D4A32XX3 Model3
+
+    SNX32704 \| D4A32XX4 Model4
+
+    SNX32705 \| D4A32XX5 Model5
+
+    r number of rows
+
+    c number of cols.
+
+    Example for a 3270 Model 3
+
+    http://192.168.170.50:41001/w2h/WEB2AJAX.htm+testvtam?logmode=SNX32703
+
+    Rather than use the &logmode parameter you can set up separate
+    transactions within the entry point and define a different logmode.
+    For example:-
+
+    http://192.168.170.50:41001/w2h/WEB2AJAX.htm+testvta5
+
+    Will call the TESTVTA5 transaction in your WEB2HOST entry point. In
+    that transaction the logmode would have been defined as SNA32705.
+
+1. Connect to TESTVTAM with Vista or PC COMM
+
+    Get a 3270 session to the z/OS host and from the initial VTAM logon
+    screen enter Logon TESTVTAM to establish a 3270 session with
+    TESTVTAM.
+
+1. Compare the 3270 screen image to the Virtel screen image by playing
+       through the trace on the 3270 and VIRTEL screens you should be
+       able to scan through the VTAM buffers and debug the problem. To
+       stop the trace issue the following command on the z/OS host: P
+       TESTVTAM
+
+**Notes:**
+
+Unless you know the screen type I would suggest using a standard 32\*80
+setup for a model 2
+
+Vista\|PCCOMM Configure for 32\*80 lines
+
+Virtel http://192.168.170.50:41001/w2h/WEB2AJAX.htm+testvtam
+
+You must have the correct 3270 session setup for both the 3270 session
+and VIRTEL. If you don’t then you will get buffer misalignment and error
+messages when you try to play the TESTVTAM trace. It is probably best to
+get the 3270 session working first before trying VIRTEL.
+
+Check the trace for the correct WCC command. The trace required a 3270
+model 4 screen (43\*80). Make sure that the first write is not F1
+(WRITE). If it is modify this to 7E (WRITE ERASE ALTERNATE). This will
+ensure that the first screen is displayed in 43\*80 mode \_ RB
+29/11/2013.
+
+Example of a modified trace:-
+
+--WWIV1049 VS1ET000 11D: to application TXTSY
+
+00000 7DD3D911 D2F3A2
+
+-WWIV1049 VS1ET000 11A: from application TXTSY
+
+00000 **7EC31100** A6D48581 A2A49985 948595A3 40D79996
+
+.. |image0| image:: C:\Users\Ed\Documents\GitHub\Virtel\docs\manuals\newsletters\TN201403\images/media/image1.png
+

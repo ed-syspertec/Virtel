@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Virtel JES Writer program &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Virtel Security. Using server and client certificates" href="../TN201416/TN201416.html"/>
+        <link rel="prev" title="CICS Printing problem" href="../TN201414/TN201414.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201401/TN201401.html">Automation and MVS backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201402/TN201402.html">Formatting VIRTEL Line Trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201403/TN201403.html">How to use TESTVTAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201404/TN201404.html">VIRTEL SMF Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201405/TN201405.html">Multi Line WTO Support in VIRTEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel JES Writer program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Virtel JES Writer program</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201415/TN201415.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virtel-jes-writer-program">
+<h1>Virtel JES Writer program<a class="headerlink" href="#virtel-jes-writer-program" title="Permalink to this headline">¶</a></h1>
+<p><strong>Note: This program is an internal development project and is very much
+a POC idea. It is not officially supported.</strong></p>
+<p>The Virtel JES Writer utility extracts JES2 output and writes to a
+Virtel printer relay tasks via a Virtel transaction. The JES output is
+converted to a PDF by an input scenario and the PDF can then be printed
+or saved at the user’s workstation.</p>
+<p><strong>Installation</strong></p>
+<ol class="arabic">
+<li><p class="first">Download VJRS.TRS from the Virtel FTP Server.</p>
+</li>
+<li><p class="first">Upload to the mainframe into a dataset with the following DCB
+attributes:-</p>
+<blockquote>
+<div><p>LRECL=1024,BLKSIZE=6144,RECFM=FB,</p>
+<p>DSN=HLQ.VJRS.TRS</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Run the following JCL. This will unterse the file and install the
+VJRS load library. Here is a sample of what I use. Change
+accordingly.</p>
+<blockquote>
+<div><p>//jobcard JOB 9000,&#8217;ED...HOLT...&#8217;,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID</p>
+<p>//S01 EXEC PGM=IEFBR14</p>
+<p>//DDA DD UNIT=SYSDA,</p>
+<p>// DSN=HLQ.VJRS.TEMP,DISP=(MOD,DELETE),</p>
+<p>// SPACE=(TRK,0)</p>
+<p>//S02 EXEC PGM=TRSMAIN,PARM=UNPACK</p>
+<p>//SYSPRINT DD SYSOUT=*</p>
+<p>//INFILE DD DSN=HLQ.VJRS.TRS,DISP=SHR</p>
+<p>//OUTFILE DD UNIT=SYSDA,</p>
+<p>// DSN=HLQ.VJRS.TEMP,DISP=(,CATLG),</p>
+<p>// SPACE=(CYL,(10,10),RLSE)</p>
+<p>//S03 EXEC PGM=ADRDSSU,REGION=0M,COND=(0,NE)</p>
+<p>//SYSPRINT DD SYSOUT=*</p>
+<p>//IN DD DSN=HLQ.VJRS.TEMP,DISP=SHR</p>
+<p>//OUT DD UNIT=SYSDA,VOL=SER=VVVVVV,DISP=SHR</p>
+<p>RESTORE INDDNAME(IN) -</p>
+<p>OUTDD(OUT) -</p>
+<p>DATASET(INCLUDE(**)) -</p>
+<p>RENAMEU( -</p>
+<p>(SPTHOLT.**,HLQ.**) -</p>
+<p>) -</p>
+<p>CATALOG BYPASSACS(**) NMC NSC CANCELERROR</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Authorise the load library. Use the following command:-</p>
+<blockquote>
+<div><p>SETPROG APF,ADD,DSNAME=hlq.VJRS.LOAD,VOL=vvvvvv</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Add the following JCL to SYS1.PROCLIB:-</p>
+<blockquote>
+<div><p>//VJRS PROC MAXTASKS=02</p>
+<p>//STEP1 EXEC PGM=VJES0100,PARM=&#8217;MAXTASKS=&amp;MAXTASKS&#8217;</p>
+<p>//STEPLIB DD DSN=hlq.VJRS.LOAD,DISP=SHR</p>
+<p>//SYSUDUMP DD SYSOUT=*</p>
+<p>//SYSIN DD DSN=SYS1.PARMLIB(VJRSPRNT),DISP=SHR</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Add the following VTAMLST as member APPLVJRS definition for VJRP:-</p>
+<blockquote>
+<div><p>APPLVJRS VBUILD TYPE=APPL</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;
+*</p>
+<p>* Product : Virtel Printer *</p>
+<p>* Description : Main ACB for Virtel Printer Application *</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;
+*</p>
+<p>VJRS APPL ACBNAME=VJRS,AUTH=ACQ</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Add the following configuration statements to SYS1.PARMLIB as member
+VJRSPRNT</p>
+<blockquote>
+<div><p>*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>*- PRINTER CONTROL STATEMETS FOR VJRS UTILITY. -*</p>
+<p>*- -*</p>
+<p>*- COL 1 JES DESTID -*</p>
+<p>*- COL 10 VIRTEL LU RELAY PRINTER -*</p>
+<p>*- COL 19 PRINTER TYPE -*</p>
+<p>*- S = SCS PRINTER. LU TYPE 1 -*</p>
+<p>*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>* * *</p>
+<p>EDSPRT REHIM000 S</p>
+<p>EDSPRT1 REHIM001 S</p>
+<p>EDSPRT2 REHIM002 S</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>Concatenate the hlq.VJRS.LOAD to the SERVLIB DD statement in the
+VIRTEL proc.</li>
+</ol>
+<p>…….</p>
+<p>//SERVLIB DD DISP=SHR,DSN=hlq.VJRS.LOAD</p>
+<p>// DD DISP=SHR,DSN=hlq.VIRTEL.SERVLIB</p>
+<p>…….</p>
+<ol class="arabic simple">
+<li>Assemble the VJRS scenarios into the VIRTEL load library</li>
+</ol>
+<p>Using the sample hlq.VJRS.SAMPLIB(ASMSCEN) job assemble the two VJRS
+scenarios SCVJRS00 and SCVJRS01 into the VIRTEL loadlib.</p>
+<p>**
+Virtel Configuration**</p>
+<p>To use VJRS you must create a transaction(s) in Virtel which provides a
+printer interface that converts the JES output to a PDF. This is done by
+adding an input scenario to an existing transaction. The input scenario
+will convert the JES output to a PDF by calling MAKEPDF through the
+$VIRSV interface. In our example we are using the sample scenario
+SCVJRS01 which can be found in hlq.VJRS.SAMPLIB. In our case we are
+using a TSO transaction as the recipient of the output stream from VJRS.
+SCVJRS01 is a scenario that produces landscape print. Scenario SCVJRS00
+produces portrait output.</p>
+<p>Example of Virtel TSO transaction with PDF input scenario:-</p>
+<p><a class="reference internal" href="../../../_images/image113.png"><img alt="image0" src="../../../_images/image113.png" style="width: 6.30000in; height: 4.29306in;" /></a></p>
+<p><strong>MAKEPDF configuration</strong></p>
+<p>The PDF page format and layout are controlled by text files used by the
+ZMAKEPDF program. The following files, found in vjrs.zip distribution
+file, must be uploaded to the Virtel W2H directory through the standard
+Virtel upload process.</p>
+<p>Portrait files</p>
+<p>scenvjrs-docopt.txt</p>
+<p>scenvjrs-layout.txt</p>
+<p>scenvjrs-input.txt</p>
+<p>Landscape files</p>
+<p>scenvjrs-docopt_l.txt</p>
+<p>scenvjrs-layout_l.txt</p>
+<p>scenvjrs-input_l.txt</p>
+<p>Details about the format of the files can be found in the <em>CASI CICS2PDF
+Installation and Reference</em> manual. These files are passed through to
+ZMAKEPDF through the calling of the service program VJRS0200. The
+service program is invoked from within the scenario by a VIRSV$ call
+statement.</p>
+<p><strong>Print controls</strong></p>
+<p>Print control is basic. Any detected ASA control characters are stripped
+off and replaced by a blank. Line count is controlled by the
+PDF-LINES-PER-PAGE tag.</p>
+<p><strong>Session establishment</strong></p>
+<p>To support printing any 3270 session can be used as long as an associate
+printer relay is defined. In my case I am using a TSO session to
+establish a printer connection. In the screen shot below a TSO session
+has been initiated. The LU associated with this session are REHVT000,
+the terminal session, and REHIM000 the printer session. VJRS will
+establish a VTAM session with REHIM000. Also, in the URL the transaction
+name of TSO1A has been defined. This associates the input scenario
+SCVJRS01 with the session.</p>
+<p>URL: <a class="reference external" href="http://192.168.170.30:41002/w2h/WEB2AJAX.htm+TSO1A">http://192.168.170.30:41002/w2h/WEB2AJAX.htm+TSO1A</a></p>
+<p><a class="reference internal" href="../../../_images/image24.png"><img alt="image1" src="../../../_images/image24.png" style="width: 6.30000in; height: 4.82708in;" /></a></p>
+<p>Note that there are two VIRTEL relays associated with this session. The
+terminal session, REHVT000 and an associated SCS printer relay REHIM000.
+The printer relay LU is used by VJRS to transmit the data from JES to
+VIRTEL.</p>
+<p><strong>Using VJRS</strong></p>
+<ol class="arabic">
+<li><p class="first">Activate the VTAM node</p>
+<blockquote>
+<div><p>Issue the following z/OS command to activate the VJRS VTAM
+definition:-</p>
+<p>V NET,ACT,ID=APPLVJRS</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Start the VJRS printer tasks</p>
+<blockquote>
+<div><p>S VJRS</p>
+<p>The output from the started task should look like this:-</p>
+<p>V NET,INACT,ID=APPLVJRS,I</p>
+<p>IST097I VARY ACCEPTED</p>
+<p>IST105I APPLVJRS NODE NOW INACTIVE</p>
+<p>V NET,ACT,ID=APPLVJRS</p>
+<p>IST097I VARY ACCEPTED</p>
+<p>IST093I APPLVJRS ACTIVE</p>
+<p>S VJRS</p>
+<p>$HASP100 VJRS ON STCINRDR</p>
+<p>IEF695I START VJRS WITH JOBNAME VJRS IS ASSIGNED TO USER START2</p>
+<p>, GROUP SYS1</p>
+<p>$HASP373 VJRS STARTED</p>
+<p>IEF403I VJRS - STARTED - TIME=13.37.47</p>
+<p>VJRS001I - VIRTEL JES WRITER READY</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Create some output in JES2 by running a batch job. Output should go
+to one of the defined destinations that VJRS is serving. Example
+batch job:-</p>
+<blockquote>
+<div><p>//SPTHOLTP JOB &#8216;JRPTEST1&#8217;,CLASS=A,MSGCLASS=Z,NOTIFY=SPTHOLT</p>
+<p>//STEP1 EXEC PGM=IEBGENER</p>
+<p>//SYSPRINT DD DUMMY</p>
+<p>//SYSUT2 DD SYSOUT=A,DEST=EDSPRT</p>
+<p>//SYSUT1 DD DSN=SPTHOLT.VJESPRT.ASM(TESTPRNT),DISP=SHR</p>
+<p>//SYSIN DD DUMMY</p>
+<p>Note: The MSGCLASS=Z ensures that only the Class A output is left on
+the JES queue with an associated destination of EDSPRT for the
+submitted job.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">After the job has run, output will appear on JES with a DESTID of
+EDSPRT. This will be captured by VJRS, via the JES2 SAPI interface,
+and sent to the associated Virtel LU relay. In this case LU REHIM000</p>
+</li>
+<li><p class="first">Virtel will indicate that Print Output is available by presenting the
+user with a Printer ICON in the Operator Interface Area or Taskbar on
+the Virtel Terminal screen.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../_images/image34.png"><img alt="image2" src="../../../_images/image34.png" style="width: 6.30000in; height: 4.84931in;" /></a></p>
+<p>Pressing the printer ICON will kick off the input scenario SCENFPDF
+which will convert the output to a PDF and then issue the ADOBE
+option window to open or save the file.</p>
+<p>Select the printer ICON and the input scenario will drive the
+“MAKEPDF” program which will convert the output to a PDF.</p>
+<p><a class="reference internal" href="../../../_images/image43.png"><img alt="image3" src="../../../_images/image43.png" style="width: 6.30000in; height: 5.79028in;" /></a></p>
+<p>From here the user can open or save the PDF. In our example we
+choose to open the PDF.</p>
+<p><a class="reference internal" href="../../../_images/image53.png"><img alt="image4" src="../../../_images/image53.png" style="width: 6.30000in; height: 5.79306in;" /></a></p>
+<p>Once you have finished with the PDF close the window and the Virtel
+Print Notification dialog. Note that you are still left with the
+Printer ICON in the taskbar. This enables you to reopen the print if
+required. Once you press Enter or initiate another application
+action (PFx) the Printer Icon will disappear and the Virtel session
+is now ready for the next print request.</p>
+<p><strong>Using VJRS and VIRTEL message log off load</strong></p>
+<p>In Virtel 4.54 (not available until 2015/Q1) the LOG feature enables
+the VIRTEL log to be spun off to JES2. VJRS can capture the log from
+JES2 and send it directly to the LU relay printer and in the process
+convert it to a PDF.</p>
+<p>Setting up VIRTEL to use the LOG sysout facility requires a change
+to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT
+code the following statement:-</p>
+<p>LOG=(SYSOUT,class,destination)</p>
+<p>For example, LOG=(SYSOUT,A,EDSPRT)</p>
+<p>This directs all WTOs to a SYSOUT dataset rather than the system
+console log (SYSLOG). If you want WTO messages going to both the
+system console and a SYSOUT dataset than issue the following VIRTEL
+command:-</p>
+<p>F VIRTEL,LOG=BOTH</p>
+<p>The LOG feature in Virtel 4.54 is controlled by the TCT parameters
+and a new LOG command. The new LOG command has the following
+format:-</p>
+<p>F VIRTEL,LOG=CONSOLE | SYSOUT | BOTH | SPIN</p>
+<p>LOG=CONSOLE routes all WTO message to the system console. This is
+the default action.</p>
+<p>LOG=SYSOUT routes all WTO messages to a VIRTEL SYSOUT dataset which
+is dynamically allocated.</p>
+<p>LOG=BOTH routes all WTO messages to both the system console and a
+dynamically allocated SYSOUT dataset.</p>
+<p>LOG=SPIN forces Virtel to release the current SYSOUT dataset for
+further processing and allocates a new SYSOUT dataset.</p>
+<p>Virtel will direct messages to an allocated SYSOUT data set and |
+or the console (default). If SYSOUT processing is being used you
+will see a dynamically allocated dataset in the SDSF display panel.
+Issue a “?” next to the VIRTEL started task.</p>
+<p><a class="reference internal" href="../../../_images/image63.png"><img alt="image5" src="../../../_images/image63.png" style="width: 6.30000in; height: 1.73958in;" /></a></p>
+<p>Here we can see that VIRTEL has allocated a DDNAME SYS00001. If we
+select this dataset in SDSF we can see that it is the VIRTEL message
+log that would normally be written to the system console log.</p>
+<p><a class="reference internal" href="../../../_images/image71.png"><img alt="image6" src="../../../_images/image71.png" style="width: 6.30000in; height: 2.96875in;" /></a></p>
+<p>Assuming that VJRS is running, if we spin this dataset off using the
+LOG=SPIN command, VIRTEL will release the SYSOUT dataset to JES2.
+VJRS will then capture it and send it to its destination which is
+EDSPRT. EDSPRT just happens to be the relay LU defined in VIRTEL and
+associated with the printer REHIM000.</p>
+<p>In the VIRTEL 3270 session issue the command:-</p>
+<p>F VIRTEL,LOG=SPIN</p>
+<p>In the top right of the VIRTEL window, next to the language
+indicator, a printer box will appear:-</p>
+<p><a class="reference internal" href="../../../_images/image81.png"><img alt="image7" src="../../../_images/image81.png" style="width: 6.30000in; height: 1.12500in;" /></a></p>
+<p>Pressing the printer icon will process the capture message log from
+VIRTEL and convert it to a PDF file through MAKEPDF. The PDF file
+will then be display. The message log can then be saved as a PDF
+file.</p>
+<p><a class="reference internal" href="../../../_images/image91.png"><img alt="image8" src="../../../_images/image91.png" style="width: 6.30000in; height: 4.39792in;" /></a></p>
+<p><strong>Messages and Abends</strong></p>
+<p>Module VJES0100</p>
+<p><strong>VJRS001I - VIRTEL JES WRITER READY</strong></p>
+<p>VJRS has established a SAPI interface with JES2 and is ready to
+receive output.</p>
+<p>Action: None</p>
+<p><strong>VJRS002E – (XXXX:YYYY) PRINTER TASK FAILED</strong></p>
+<p>VJRS attached printer task YYYY has failed to print print request
+YYYY. The attached task has terminated.</p>
+<p>Action: Check SYSLOG for the cause of the attached printer task
+failure. Send dump to support. Stop and restart VJRS.</p>
+<p><strong>VJRS008I – VIRTEL JES WRITER CLOSED</strong></p>
+<p>VJRS is closing due to an operator STOP command being issued.</p>
+<p>Action: None</p>
+<p><strong>VJRS009W – PRINTER TABLE FULL</strong></p>
+<p>VJRS can only support 100 printer destinations.</p>
+<p>Action: VJRS terminates with return code 4. Reduce the number of
+printer control statements.</p>
+<p><strong>VJRS010W – PPPPPPPP:LLLLLLLL – LU already defined in printer
+TTTTTTTT</strong></p>
+<p>While reading in the control statements VJRS has detected that LU
+relay LLLLLLLL is already associated with destination TTTTTTTT and
+cannot be defined to destination PPPPPPPP.</p>
+<p>Action: VJRS ignores the control statement.</p>
+<p><strong>VJRS011W – PPPPPPPP:LLLLLLLL – Waiting for printer task to
+complete</strong></p>
+<p>VJRS is shutting down and is waiting for printer PPPPPPPP on relay
+LLLLLLLL to complete.</p>
+<p>Action: None</p>
+<p>Module VJRES0101</p>
+<p><strong>VJRS103I - (RRRR:TTTT) JES WRITER STARTING FOR XXXXXXXX
+JJJJJJJJ:NNNNNNNN)</strong></p>
+<p>VJRS printer task has established a VTAM session with Virtel relay
+XXXXXXXX. RRRR is the printer request and TTTT is the printer task
+ID.</p>
+<p>Action: None</p>
+<p><strong>VJRS104I - (RRRR:TTTT) JES WRITER ENDED FOR XXXXXXXX</strong></p>
+<p>VJRS has complete writing the JES output to the Virtel relay session
+XXXXXXXX. RRRR is the printer request and TTTT is the printer task
+ID.</p>
+<p>Action: None</p>
+<p><strong>VJRS105W - (RRRR:TTTT) XXXXXXXX RC=XX RTNCD=XX FDBK2=XX</strong></p>
+<p>VJRS has incurred a SNA error in establishing a VTAM session with
+Virtel relay print LU XXXXXXX.</p>
+<p>Action: Session will be retried up to 10 times and if it still fails
+to establish a session the printer will be disabled from further
+prints. Investigate Virtel LU relay. Issue a D NET command against
+the Virtel LU printer relay and make sure it is in an ACTIVE state.</p>
+<p><strong>VJRS106W - (RRRR:TTTT) SSENSEI=XX SSENSMI=XX USENSEI=XXXX</strong></p>
+<p>Second part of VTAM session failure.</p>
+<p>Action: See message VJRS105W</p>
+<p><strong>VJRS107E - (RRRR:TTTT) VTAM SEND FAILED FOR XXXXXXXX</strong></p>
+<p>VJRS has failed to send data to the Virtel LU printer relay. RRRR is
+the printer request and TTTT is the printer task ID</p>
+<p>Action: Printer task Abends U807</p>
+<p><strong>VJRS108E - LU XXXXXXXX NOT AVAILABLE</strong></p>
+<p>VJRS printer task is unable to contact the Virtel LU printer relay
+XXXXXXXX. The RPLRTNCD code has returned X’0008’.</p>
+<p>Action: Session will be retried up to 10 times and if it still fails
+to establish a session the printer will be disabled from further
+prints. Investigate Virtel LU relay. Issue a D NET command against
+the Virtel LU printer relay and make sure it is in an ACTIVE state.</p>
+<p><strong>VJRS109E - LU XXXXXXXX INVALID</strong></p>
+<p>VJRS printer task is unable to establish a session with the Virtel
+LU printer relay XXXXXXXX. The RPLRTNCD code has returned X’1453’.</p>
+<p>Action: Session will be retried up to 10 times and if it still fails
+to establish a session the printer will be disabled from further
+prints. Investigate Virtel LU relay. Issue a D NET command against
+the Virtel LU printer relay and make sure it is in an ACTIVE state.</p>
+<p><strong>VJRS110E - LU XXXXXXXX DISABLED. ERROR COUNT EXCEEDED</strong></p>
+<p>VJRS has attempted to establish a session with the Virtel LU printer
+relay but after 10 attempts this has still failed: The printer will
+be disabled for further prints.</p>
+<p>Action: Investiagte the status of the Virtel LU printer. It must be
+in an ACTIVE state to accept sessions from VJRS.</p>
+<p>Abends</p>
+<p>U800 VJES0101 Dynamic allocation error.</p>
+<p>U801 VJES0101 I/O Error reading JES2 dataset.</p>
+<p>U802 VJES0100 VTAM ACB failed to open.</p>
+<p>U803 VJES0101 VTAM OPNDST failed.</p>
+<p>U804 VJES0101 VTAM OPNDST/ACQUIRE failed.</p>
+<p>U805 VJES0101 VTAM SIMLOGON failed.</p>
+<p>U806 VJES0101 VTAM CLSDST failed.</p>
+<p>U807 VJES0101 VTAM SEND failed.</p>
+<p>U808 VJES0100 SSOB SAPI failed.</p>
+<p>U810 VJES0101 VTAM GENCB NIB failed.</p>
+<p>U811 VJES0101 VTAM GENCB RPL failed.</p>
+<p>Bugs and Restrictions</p>
+<p>Release 0.0</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">VJRS doesn’t recover from VTAM or network issues. SNA sense code
+087D0001.</p>
+<blockquote>
+<div><p>$HASP373 VJRS STARTED</p>
+<p>IEF403I VJRS - STARTED - TIME=13.44.35</p>
+<p>VJRS001I - VIRTEL JES WRITER READY</p>
+<p>VJRS103I - (0001:0001) JES WRITER STARTING FOR EDSPRT
+(SPTHOLTP:JOB0592</p>
+<ol class="arabic simple" start="0">
+<li></li>
+</ol>
+<p>IST663I INIT OTHER REQUEST FAILED, SENSE=087D0001 223</p>
+<p>IST664I REAL OLU=SPNET.VJRS ALIAS DLU=SPNET.REHIM000</p>
+<p>IST889I SID = CA7B8B52BA578A48</p>
+<p>IST1705I SORDER = APPN FROM START OPTION</p>
+<p>IST1705I SSCPORD = PRIORITY FROM START OPTION</p>
+<p>IST894I ADJSSCPS TRIED FAILURE SENSE ADJSSCPS TRIED FAILURE SENSE</p>
+<p>IST895I ISTAPNCP 08400007</p>
+<p>IST314I END</p>
+<p>VJRS105W - (0001:0001) REHIM000 RC=04 RTNCD=10 FDBK2=01</p>
+<p>VJRS106W - (0001:0001) SSENSEI=08 SSENSMI=7D USENSEI=0001</p>
+<p>P SPVIREH</p>
+<p>VIR0009I APPLHOLT : SHUT DOWN IN PROGRESS</p>
+<p>Solution:</p>
+<p>Stop Virtel</p>
+<p>Stop VJRS</p>
+<p>Delete any output on JES2 that is targeted for Virtel</p>
+<p>Restart VIRTEL</p>
+<p>Establish LU relays – sign on to application</p>
+<p>Start VJRS</p>
+<p>Run print job again.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">VJRS doesn’t recover from Virtel Timeout. When Virtel terminal
+session times out VJRS fails to reconnect successfully to printer.</p>
+<blockquote>
+<div><p>Solution:</p>
+<p>See problem number 1.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Abend0C7 on Startup</p>
+<blockquote>
+<div><p>Solution:</p>
+<p>MAXTASKS must be two digits. 01 through to 99. Default is 05.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Fix multi page support</p>
+<blockquote>
+<div><p>Release 0.1 11/2014</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">MakePDF doesn’t support x’00’ in the data stream and issues an error
+meesage “End of block marker not found”. VJRS now checks data stream
+before sending to Virtel.</p>
+</li>
+<li><p class="first">Documentation updated. Includes description of how to incorporate
+Virtel syslog capture with VJRS.</p>
+<blockquote>
+<div><p>Release 0.2 02/2015</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic simple">
+<li>VJRS0200 recompiled with MAKEPDF version 1.2. This MAKEPDF version
+has been modified so that the watermark is not printed.</li>
+</ol>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201416/TN201416.html" class="btn btn-neutral float-right" title="Virtel Security. Using server and client certificates" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201414/TN201414.html" class="btn btn-neutral" title="CICS Printing problem" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Controlling LU Names &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="CICS Printing" href="../TN201605/TN201605.html"/>
+        <link rel="prev" title="Field Level Encryption" href="../TN201603/TN201603.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201602/TN201602.html">Installing Virtel V4.53 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Controlling LU Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201605/TN201605.html">CICS Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201606/TN201606.html">VSR in action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What&#8217;s new in Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201608/TN201608.html">Installing Virtel V4.56 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Using DNS to force LU Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Virtel 4.56 Customisation using &#8220;Options&#8221;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html#virtel-application-menu">Virtel Application menu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Controlling LU Names</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201604/TN201604.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="controlling-lu-names">
+<h1>Controlling LU Names<a class="headerlink" href="#controlling-lu-names" title="Permalink to this headline">¶</a></h1>
+<p>When a user connects to a 3270 application through VIRTEL Web Access,
+VIRTEL makes it appear to the application as if the user is connecting
+from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is
+called a <em>Logical Unit</em> or <em>LU</em>, and each LU has a unique eight
+character name (<em>LU name)</em>. VIRTEL has at its disposal a pool of LUs
+known to VTAM, whose names are specified in the VIRTEL configuration
+file (the VIRARBO file). Normally when a user connects to a 3270
+application, VIRTEL chooses any available LU from the pool.</p>
+<p>While most mainframe applications will accept a connection from any LU
+name, certain applications (particularly applications which run under
+IMS) are sensitive to the LU name because they assign permissions to the
+user based upon the LU name of the user’s terminal. LU nailing allows
+VIRTEL to assign a particular LU name to a user based upon the user’s IP
+address or upon a cookie presented by the user’s browser.</p>
+<p>This document describes the following types of LU nailing:</p>
+<ul class="simple">
+<li>LU nailing by work station name</li>
+<li>LU nailing by LU (Pre-defined terminal)</li>
+<li>LU nailing by LU (Non-predefined terminal)</li>
+<li>LU nailing by IP address</li>
+<li>LU nailing by cookie</li>
+<li>LU nailing by URL</li>
+</ul>
+<ol class="arabic simple">
+<li>**
+LU nailing using a work station name (Predefined terminals) **</li>
+</ol>
+<p>In this example we use a batch job on the user’s PC to initiate a
+session with Virtel. The batch job obtains the terminal name of the work
+station, opens a browser window and passes the work station name through
+to Virtel. With a Virtel RULE we can test the name of the workstation
+and assign a particular relay LUNAME from a Virtel terminal POOL.</p>
+<p>Here is an example of a Virtel RULE.</p>
+<p>RULE ID=ESH0000,</p>
+<p>RULESET=E-HTTP,</p>
+<p>STATUS=ACTIVE,</p>
+<p>DESC=&#8217;Rule for terminal EHPMA00&#8217;,</p>
+<p>ENTRY=EDSWHOST,</p>
+<p>PARAM=EHPMA000, /* Or EHPMA00* */</p>
+<p>NETMASK=255.255.255.255,</p>
+<p>USERDATA=(EQUAL,HOLT-W)</p>
+<p>The rule instructs Virtel to test the user data field passed in a URL
+and if it matches the string HOLT-W than to assign an LU name prefix of
+EHPMA00 and direct the terminal call to use an entry point of EDSWHOST.
+A static rule would have to be built for each unique work station name.</p>
+<p>Our EDSWHOST entry point looks like:-</p>
+<p>ENTRY ID=EDSWHOST, -</p>
+<p>DESC=&#8217;EDS WEB ENTRY POINT (USERS WITH USERDATA)&#8217;, -</p>
+<p>TRANSACT=EDSW, -</p>
+<p>TIMEOUT=0720, -</p>
+<p>ACTION=0, -</p>
+<p>EMUL=HTML, -</p>
+<p>SIGNON=VIR0020H, -</p>
+<p>MENU=VIR0021A, -</p>
+<p>EXTCOLOR=X, -</p>
+<p>ENDPAGE=CLOSE.HTM</p>
+<p>In this entry point you would define the relevant transactions. In our
+case we have defined the following:-</p>
+<p>Entry point transaction</p>
+<p>Transaction to access the /w2h directory</p>
+<p>A VTAM transaction for IMS</p>
+<p>A VTAM transaction for TSO</p>
+<p>A Virtel application transaction to support an application menu list.</p>
+<p>We reuse the EHLOC terminals that already exist for this line, but we
+will need to define a unique pool for our VTAM applications. This is
+prefixed with the EHVTS id.</p>
+<p>TRANSACT ID=EDSW-00, -</p>
+<p>NAME=EDSWHOST, -</p>
+<p>DESC=&#8217;HTML page directory (default access)&#8217;, -</p>
+<p>APPL=W2H-DIR, -</p>
+<p>TYPE=4, -</p>
+<p>TERMINAL=EHLOC, -</p>
+<p>STARTUP=2, -</p>
+<p>SECURITY=0</p>
+<p>TRANSACT ID=EDSW-20, -</p>
+<p>NAME=&#8217;w2h&#8217;, -</p>
+<p>DESC=&#8217;W2H toolkit directory (/w2h)&#8217;, -</p>
+<p>APPL=W2H-DIR, -</p>
+<p>TYPE=4, -</p>
+<p>TERMINAL=EHLOC, -</p>
+<p>STARTUP=2, -</p>
+<p>SECURITY=0</p>
+<p>TRANSACT ID=EDSW-41, -</p>
+<p>NAME=IMS, -</p>
+<p>DESC=&#8217;IMS access with userdata&#8217;, -</p>
+<p>APPL=IMS3270, -</p>
+<p>PASSTCKT=0, -</p>
+<p>TYPE=1, -</p>
+<p>TERMINAL=EHVTS, -</p>
+<p>STARTUP=1, -</p>
+<p>SECURITY=0</p>
+<p>TRANSACT ID=EDSW-42, -</p>
+<p>NAME=TSO, -</p>
+<p>DESC=&#8217;TSO access with userdata&#8217;, -</p>
+<p>APPL=TSO, -</p>
+<p>PASSTCKT=0, -</p>
+<p>TYPE=1, -</p>
+<p>TERMINAL=EHVTS, -</p>
+<p>STARTUP=1, -</p>
+<p>SECURITY=0</p>
+<p>TRANSACT ID=EDSW-90, -</p>
+<p>NAME=&#8217;applist&#8217;, -</p>
+<p>DESC=&#8217;List of applications for appmenu.htm&#8217;, -</p>
+<p>APPL=VIR0021S, -</p>
+<p>TYPE=2, -</p>
+<p>TERMINAL=EHLOC, -</p>
+<p>STARTUP=2, -</p>
+<p>SECURITY=1</p>
+<p>In VTAM we would have the following definition:-</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>* LU Test : VTAM application relays with user data. *</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>EHPMA000 APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</p>
+<p>Or for EHPMA00*</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>* LU Test : VTAM application relays with user data. *</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</p>
+<p>We also need a terminal and pool definition. Here is the pool
+definition:-</p>
+<p>TERMINAL ID=EHPMA000, -</p>
+<p>RELAY=EHPMA000, /* Or EHPMA00* */ -</p>
+<p>POOL=*STAPOOL, -</p>
+<p>DESC=&#8217;Terminal definition for EHPMA000&#8217;, -</p>
+<p>TYPE=3, -</p>
+<p>COMPRESS=2, -</p>
+<p>INOUT=3, -</p>
+<p>STATS=26, -</p>
+<p>REPEAT=<a href="#id1"><span class="problematic" id="id2">**</span></a>0001 **</p>
+<p>…and a pool definition for out static pool:-</p>
+<p>TERMINAL ID=EHVTS000, -</p>
+<p>RELAY=*STAPOOL, -</p>
+<p>DESC=&#8217;Static definition pool&#8217;, -</p>
+<p>TYPE=3, -</p>
+<p>COMPRESS=2, -</p>
+<p>INOUT=3, -</p>
+<p>STATS=26, -</p>
+<p>REPEAT=0010</p>
+<p>This setup will support up to 10 predefined terminal definitions. For
+each terminal we have to provide a static definition. Of course we could
+have used a generic terminal definition of EHPMA00* but this would only
+work for numerically sequenced terminal names – EHPMA000 – EHPMA009.</p>
+<p>Getting the PC workstation name to Virtel is through a batch job which
+fires up the default browser and passes the work station name as a user
+data parameter. Here is an example:-</p>
+<p>title Test Propagation of Userdata Parameter</p>
+<p>&#64;echo on</p>
+<p>color 1f</p>
+<p>cls</p>
+<p>SET P1=%COMPUTERNAME:~0,6%</p>
+<p>start <a class="reference external" href="http://192.168.170.33:41003/w2h/appmenu">http://192.168.170.33:41003/w2h/appmenu</a>.htm+applist+%P1% &amp;goto:eof</p>
+<p>:exit</p>
+<p>The SET command takes the first six characters of the work station name
+and passes it into the start command. Following the Virtel transaction I
+wish to execute which in this case is an APPLIST menu list.</p>
+<p>The start command will open a default browser window and connect to
+Virtel:-</p>
+<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
+<p>Figure Passing User Data toVirtel</p>
+<p>When a transaction is selected from the menu list the RULE will be
+invoked to allocate the correct LUNAME.</p>
+<p><a class="reference internal" href="../../../_images/image216.png"><img alt="image1" src="../../../_images/image216.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
+<p>Figure Selecting a LU name through a rule and work station id in the URL</p>
+<p>The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from
+the VIRTEL terminal pool associated with the Virtel line. In this case
+relay LUNAME EHPMA000 has been allocated.</p>
+<p>In the VTAM display we can see that a session has been set up using that
+LU name:-</p>
+<p>D NET,ID=EHPMA000,E</p>
+<p>IST097I DISPLAY ACCEPTED</p>
+<p>IST075I NAME = SPNET.<strong>EHPMA000</strong>, TYPE = DYNAMIC APPL 073</p>
+<p>IST486I STATUS= ACT/S, DESIRED STATE= ACTIV</p>
+<p>IST1447I REGISTRATION TYPE = CDSERVR</p>
+<p>IST1629I MODSRCH = NEVER</p>
+<p>IST977I MDLTAB=***NA*** ASLTAB=***NA***</p>
+<p>IST861I MODETAB=ISTINCLM USSTAB=***NA*** LOGTAB=***NA***</p>
+<p>IST934I DLOGMOD=SNX32702 USS LANGTAB=***NA***</p>
+<p>IST1632I VPACING = 7</p>
+<p>IST1938I APPC = NO</p>
+<p>IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE</p>
+<p>IST231I APPL MAJOR NODE = APPLSPEH</p>
+<p>IST1425I DEFINED USING MODEL EHPMA???</p>
+<p>IST654I I/O TRACE = OFF, BUFFER TRACE = OFF</p>
+<p>IST1500I STATE TRACE = OFF</p>
+<p>IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE</p>
+<p>IST228I ENCRYPTION = OPTIONAL , TYPE = DES</p>
+<p>IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO</p>
+<p>IST1552I MAC = NONE MACTYPE = NONE</p>
+<p>IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0</p>
+<p>IST1633I ASRCVLM = 1000000</p>
+<p>IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0</p>
+<p>IST1669I IPADDR..PORT 192.168.92.65..50027</p>
+<p>IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000</p>
+<p>IST206I SESSIONS:</p>
+<p>IST634I NAME STATUS SID SEND RECV VR TP NETID</p>
+<p>IST635I <strong>TSO1A005</strong> ACTIV-P CA7B8B52114E7A85 0000 0002 SPNET</p>
+<p>IST314I END</p>
+<ol class="arabic simple">
+<li>**
+Lu nailing using an LUNAME (Predefined terminal).**</li>
+</ol>
+<p>Instead of passing a work station name in the user data field of the URL
+in this example we are passing an LU name. Again with a Virtel RULE we
+can extract the user data parameter from the URL and use that as the
+Virtel relay LUNAME name. For this example the rule looks like:-</p>
+<p>RULE ID=ESH0001,</p>
+<p>RULESET=E-HTTP,</p>
+<p>STATUS=ACTIVE,</p>
+<p>DESC=&#8217;Rule for terminal EHPMA00&#8217;,</p>
+<p>ENTRY=EDSWHOST,</p>
+<p>PARAM=$URL$,</p>
+<p>NETMASK=255.255.255.255</p>
+<p>We use the special PARAM=$URL$ which indicates that the VTAM LU Name to
+be used is the user data passed in the URL.</p>
+<p><a class="reference internal" href="../../../_images/image317.png"><img alt="image2" src="../../../_images/image317.png" style="width: 6.26806in; height: 4.76736in;" /></a></p>
+<p>Figure Using $URL$ to pass a LU name in the URL.</p>
+<p>The user data in the URL, in this case EHPMA00*, will be added to each
+transaction in the APPLIST menu and used as the Virtel relay LUNAME.
+When connecting to an application VIRTEL will use the LU name defined in
+the URL. In this example we are using a generic LUNAME (This could
+support a range from EHPMA000 through to EHPMA009.</p>
+<ol class="arabic simple">
+<li>**
+Lu Nailing using an LU Name (No predefined terminal).**</li>
+</ol>
+<p>Both of the above techniques require that a relay terminal be predefined
+for each terminal. For some installations this could be a maintenance
+headache and doesn’t scale up very well. Virtel provides a feature
+whereby predefined names are not necessary. In this next example we look
+at a technique that doesn’t require terminal predefinition. Virtel will
+grab a terminal entry from a pool and use the LU name passed in the URL
+as the relay LU name. To use this setup certain conditions must be in
+place. Also note that no rules are required. Those definitions required
+are:-</p>
+<p>The HTTP Line must specify a pool name.</p>
+<p>A pool name needs to be defined.</p>
+<p>Transactions must specify $LINE$ in the “Pseudo-terminals” field.</p>
+<p>Here is the line definition:-</p>
+<p><a class="reference internal" href="../../../_images/image414.png"><img alt="image3" src="../../../_images/image414.png" style="width: 4.66650in; height: 3.16667in;" /></a></p>
+<p>Figure Line definition for non-predefined LU names.</p>
+<p>And the Pool definition:-</p>
+<p><a class="reference internal" href="../../../_images/image512.png"><img alt="image4" src="../../../_images/image512.png" style="width: 4.68750in; height: 3.15287in;" /></a></p>
+<p>Figure Pool definition for non-predefined LU Names</p>
+<p>And an example of a transaction definition. Note that the
+Psuedo-Terminal is defined as $LINE$. We have also assign a printer
+definition to this setup. So if our LU relay name was HOLTWIN7 then our
+associated printer LU would be HOLTWINP.</p>
+<p><a class="reference internal" href="../../../_images/image611.png"><img alt="image5" src="../../../_images/image611.png" style="width: 4.82292in; height: 3.24663in;" /></a></p>
+<p>Figure Transaction definition for non-predefined LU Names</p>
+<p>Accessing the transaction TSOF would be through the following URL
+forcing the relay LU NAME to HOLTWIN7. We would still have to define a
+terminal pool for *DYNPOOL, but we avoid having to define individual
+terminal definitions, or ranges of, for every static terminals.</p>
+<p><a class="reference internal" href="../../../_images/image78.png"><img alt="image6" src="../../../_images/image78.png" style="width: 6.06250in; height: 4.59154in;" /></a></p>
+<p>Figure Access a Transaction with the ForceLUNAME parameter.</p>
+<ol class="arabic simple">
+<li><a href="#id3"><span class="problematic" id="id4">**</span></a>LU Nailing using a cookie (Correspondent Sub Application) **</li>
+</ol>
+<p>Virtel also can use cookies to select a relay LU name. Virtel uses a
+cookie as a part of the “Correspondence Sub Application’. Within the
+cookie sent to Virtel is a security token. This token is used to
+identify a user and their associated VTAM LU relay name. A Correspondent
+file is used to maintain the user details. The cookie can be sent to the
+use as part of an Email from which the User selects a link to access
+Virtel or it can be part of the ‘self-registration’ process. For further
+information see <em>Virtel – How to Activate LU Nailing.</em></p>
+<ol class="arabic simple">
+<li><strong>LU Nailing by IP</strong></li>
+</ol>
+<p>This technique uses a rule to associate an IP address with an LU Name.
+The rule is associated with a line. In the example below we define a
+rule on line W-HTTP which will force a terminal connecting with IP
+address 192.168.000.039 to use LU name RHTVT001. The LU name must be
+pre-defined in a Virtel terminal pool.</p>
+<blockquote>
+<div><p>DETAIL of RULE from RULE SET: W-HTTP &#8212;&#8212;&#8212;&#8212;- Applid: SPVIRBW
+14:30:38</p>
+<p>Name ===&gt; WHT00110 Rule priority is per name</p>
+<p>Status ===&gt; ACTIVE 15 Feb 2010 14:30:35 SPTBOWL</p>
+<p>Description ===&gt; HTTP access from IP 192.168.0.39</p>
+<p>Entry point ===&gt; WEB2HOST Target Entry Point</p>
+<p>Parameter ===&gt; RHTVT001 &amp;1 value or LUNAME</p>
+<p>Trace ===&gt; 1=commands 2=data 3=partner</p>
+<p>C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH
+6=DOES NOT</p>
+<p>1 IP Subnet ===&gt; 192.168.000.039 Mask ===&gt; 255.255.255.255</p>
+<p>0 Host ===&gt;</p>
+<p>0 eMail ===&gt;</p>
+<p>0 Calling DTE ===&gt; Calling DTE address or proxy</p>
+<p>0 Called ===&gt; Called DTE address</p>
+<p>0 CUD0 (Hex) ===&gt; First 4 bytes of CUD (X25 protocol)</p>
+<p>0 User Data ===&gt;</p>
+<p>0 Days ===&gt; M: T: W: T: F: S: S:</p>
+<p>0 Start time ===&gt; H: M: S: End time ===&gt; H: M: S:</p>
+<p>P1=Update P3=Return Enter=Add</p>
+<p>P4=Activate P5=Inactivate P12=Entry P.</p>
+</div></blockquote>
+<p>Figure 7 Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx</p>
+<p>Multiple terminals can be defined with a rule by using the * suffix. In
+the following example a range of IP address is mapped to a pool of LU
+names. Address range 192.168.100.0 through to 192.168.100.255 will be
+assigned the next unused LU name in the range RHTVT1xx.</p>
+<blockquote>
+<div><p>DETAIL of RULE from RULE SET: W-HTTP &#8212;&#8212;&#8212;&#8212;- Applid: SPVIRBW
+17:53:56</p>
+<p>Name ===&gt; WHT00140 Rule priority is per name</p>
+<p>Status ===&gt; ACTIVE 15 Feb 2010 17:53:49 SPTBOWL</p>
+<p>Description ===&gt; HTTP access from IP 192.168.100.nnn</p>
+<p>Entry point ===&gt; WEB2HOST Target Entry Point</p>
+<p>Parameter ===&gt; RHTVT1* &amp;1 value or LUNAME</p>
+<p>Trace ===&gt; 1=commands 2=data 3=partner</p>
+<p>C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH
+6=DOES NOT</p>
+<p>1 IP Subnet ===&gt; 192.168.100.000 Mask ===&gt; 255.255.255.000</p>
+<p>0 Host ===&gt;</p>
+<p>0 eMail ===&gt;</p>
+<p>0 Calling DTE ===&gt; Calling DTE address or proxy</p>
+<p>0 Called ===&gt; Called DTE address</p>
+<p>0 CUD0 (Hex) ===&gt; First 4 bytes of CUD (X25 protocol)</p>
+<p>0 User Data ===&gt;</p>
+<p>0 Days ===&gt; M: T: W: T: F: S: S:</p>
+<p>0 Start time ===&gt; H: M: S: End time ===&gt; H: M: S:</p>
+<p>P1=Update P3=Return Enter=Add</p>
+<p>P4=Activate P5=Inactivate P12=Entry P.</p>
+</div></blockquote>
+<p>Figure8 Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx</p>
+<p>The new rule is named WHT00140, the “IP Subnet” field specifies the IP
+address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to
+indicate that only the first three octets of the IP address are tested
+to determine whether the rule matches the IP address of the client
+browser. The “parameter” field specifies a generic LU name RHTVT1*
+which signifies that any LU whose name begins with RHTVT1 may be
+assigned to clients whose IP address matches this rule.</p>
+<p><strong>Comparison Table</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="20%" />
+<col width="21%" />
+<col width="8%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">RULE DEFN</th>
+<th class="head">TERMINAL DEFN.</th>
+<th class="head"><p class="first">COOKIES</p>
+<p class="last">USED</p>
+</th>
+<th class="head">Terminal POOL definitions required</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>By Work Station Name in URL</td>
+<td>Yes. 1 per work station</td>
+<td>Yes. Individual or group</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>By LUNAME in URL</td>
+<td>Yes. 1 generic Rule.</td>
+<td>Yes. Individual or group</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>By using Forced LU</td>
+<td>No</td>
+<td>Pool Only</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr class="row-odd"><td>Correspondent</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr class="row-even"><td>By IP</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li></li>
+</ul>
+<p>References*</p>
+<p>ForcedLUNAME <em>Virtel - Connectivity Guide, section 2.3.1.3</em></p>
+<p>Correspondent Management <em>Virtel - How to Activate LU Nailing.</em></p>
+<p><em>Virtel - Web Access User Guide</em></p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201605/TN201605.html" class="btn btn-neutral float-right" title="CICS Printing" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201603/TN201603.html" class="btn btn-neutral" title="Field Level Encryption" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

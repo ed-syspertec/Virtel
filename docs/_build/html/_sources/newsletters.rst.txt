@@ -6,24 +6,25 @@ Technical Newsletters
 .. toctree::
    :glob:
    
-   manuals/newsletters/TN201401/*
-   manuals/newsletters/TN201402/*
-   manuals/newsletters/TN201403/*
+   manuals/newsletters/TN2014*/*   
 
 2015
 ----
 .. toctree::
    :glob:
    
-   manuals/newsletters/TN201501/*
-   manuals/newsletters/TN201502/*
-   manuals/newsletters/TN201503/*
+   manuals/newsletters/TN2015*/*   
 
 2016
 ----
 .. toctree::
    :glob:
    
-   manuals/newsletters/TN201601/*
-   manuals/newsletters/TN201602/*
-   manuals/newsletters/TN201603/*       
+   manuals/newsletters/TN2016*/*   
+
+2017
+----
+.. toctree::
+   :glob:
+   
+   manuals/newsletters/TN2017*/*            

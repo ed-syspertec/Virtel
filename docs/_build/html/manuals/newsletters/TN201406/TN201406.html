@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Taking a VIRTEL terminal trace &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Pass tickets and supporting Proxy Servers" href="../TN201407/TN201407.html"/>
+        <link rel="prev" title="Multi Line WTO Support in VIRTEL" href="../TN201405/TN201405.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201401/TN201401.html">Automation and MVS backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201402/TN201402.html">Formatting VIRTEL Line Trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201403/TN201403.html">How to use TESTVTAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201404/TN201404.html">VIRTEL SMF Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201405/TN201405.html">Multi Line WTO Support in VIRTEL</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Taking a VIRTEL terminal trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Taking a VIRTEL terminal trace</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201406/TN201406.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="taking-a-virtel-terminal-trace">
+<h1>Taking a VIRTEL terminal trace<a class="headerlink" href="#taking-a-virtel-terminal-trace" title="Permalink to this headline">¶</a></h1>
+<p>Taking a VIRTEL terminal trace enables the capture of 3270 data streams
+between the VIRTEL 3270 relay terminal and the customers VTAM
+application. The following demonstrates how to run such a trace using
+VIRTEL running in batch. Please note that VIRTEL does not need to be
+authorized, does not need to run as a started task or need any special
+security setup. The only requirement from a customer’s perspective is
+that VIRTEL does need a VTAM ACB so an entry in SYS1.VTAMLST will be
+required. This is the only setup that your customer will have to do
+outside of installing the base product.</p>
+<p>Procedure</p>
+<ol class="arabic">
+<li><p class="first">Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs.
+See the VIRTEL installation guide for details on how to download and
+install VIRTEL from the SYSPERTEC ftp site. Note that you can bypass
+“Step 5” in section 2.3 of the MVS Installation Checklist because at
+this stage we are not running VIRTEL authorized. When running the
+ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD
+will create the VTAMLST application definition member called
+VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the
+next step.</p>
+<blockquote>
+<div><p>“Step 6” Edit member VIRTCT01 can be bypassed if the default TCT
+options are acceptable. For the purposes of just running a 3270
+terminal trace this should be the case.</p>
+<p>“Steps 9 through to Steps 15” of the MVS installation guide can be
+ignored.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Copy the VTAM application definition created by ARBOLOAD to
+SYS1.VTAMLST. The example I use is listed below. This member can be
+found in the CNTL library after running the ARBOLOAD job. By default
+the member name is VIRTAPPL. The member should activated by issuing
+the following z/OS command:-</p>
+<blockquote>
+<div><p>V NET,ACT,ID=VIRTAPPL</p>
+<p>VIRTAPPL VBUILD TYPE=APPL</p>
+<p>*</p>
+<p>* Product : VIRTEL *</p>
+<p>* Description : Main ACB for VIRTEL application *</p>
+<p>*</p>
+<p>VIRTEL APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=VIRTEL</p>
+<p>*</p>
+<p>* RHTVTxxx : VTAM application relays for VIRTEL Web Access *</p>
+<p>*</p>
+<p>RHTVT??? APPL
+AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</p>
+<p>*</p>
+<p>* RHTIMxxx : Printer relays for VIRTEL Web Access terminals *</p>
+<p>*</p>
+<p>RHTIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1</p>
+<p>RHTIP??? APPL
+AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Before running VIRTEL as a batch job modify the program name to
+VIR0000 from VIR60000. Here is an example of the batch procedure I
+use. VIR6000 requires an authorized library whereas VIR0000 doesn’t.</p>
+<blockquote>
+<div><p>//SPTHOLTA JOB 1,EDHOLT,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID</p>
+<p>//VIRTEL PROC QUAL=SP000.SPVIREH,</p>
+<p>// TCT=US</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//* PROCEDURE FOR VIRTEL STARTER EDITION *</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//VIRTEL EXEC PGM=VIR0000,TIME=1440,REGION=32M,PARM=&amp;TCT &lt;</p>
+<p>//STEPLIB DD DSN=SP000.VIRT452.LOADLIB,DISP=SHR</p>
+<p>//DFHRPL DD DSN=SP000.VIRT452.LOADLIB,DISP=SHR</p>
+<p>//SERVLIB DD DSN=SP000.VIRT452.SERVLIB,DISP=SHR</p>
+<p>//VIRARBO DD DSN=&amp;QUAL..ARBO,DISP=SHR</p>
+<p>//VIRSWAP DD DSN=&amp;QUAL..SWAP,DISP=SHR</p>
+<p>//VIRHTML DD DSN=&amp;QUAL..HTML,DISP=SHR</p>
+<p>//SAMPTRSF DD DSN=&amp;QUAL..SAMP.TRSF,DISP=SHR</p>
+<p>//HTMLTRSF DD DSN=&amp;QUAL..HTML.TRSF,DISP=SHR</p>
+<p>//SYSOUT DD SYSOUT=*</p>
+<p>//VIRLOG DD SYSOUT=*</p>
+<p>//VIRTRACE DD SYSOUT=*</p>
+<p>//SYSPRINT DD SYSOUT=*</p>
+<p>//SYSUDUMP DD SYSOUT=*</p>
+<p>// PEND</p>
+<p>//S01 EXEC VIRTEL</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One
+of these defaults is the standard VTAM applications like CICS, IMS,
+NVAS and TSO. What follows is an example of tracing a web to host
+(W2H) trace of a VIRTEL W2H session between a screen and TSO. To
+begin we need to identify the related W2H line. The command “F
+jobname,lines” will display the active lines. I’m interested in web
+to host so I’m looking for the W2H line. Here is the results of my
+display:-</p>
+<blockquote>
+<div><p><a href="#id1"><span class="problematic" id="id2">**</span></a>F SPTHOLTA,LINES **</p>
+<p>+VIR0200I LINES</p>
+<p>+VIR0201I VIRTEL 4.52 APPLID=VIRTEL LINES</p>
+<p>+VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
+<p>+VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
+<p>+VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.30:41002</p>
+<p>+VIR0202I E-HTTP HTTP-EDS TCP1 192.168.170.30:41003</p>
+<p>+VIR0202I P-PCLPDF PCL2PDF TCP1 $NONE$</p>
+<p>+VIR0202I V-HTTP HTTP-VSR TCP1 192.168.170.30:41004</p>
+<p>+VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001</p>
+<p>+VIR0202I &#8212;END OF LIST&#8212;</p>
+<p>I can see that HTTP-W2H is the external name of a line and is
+attached to port 41001 on TCPIP address 192.168.170.30. Next I’ll
+open a session to TSO using those details in a web browser. The
+following url is entered:-</p>
+<p><a class="reference external" href="http://192.168.170.30:41001/w2h/WEB2AJAX.htm+TSO">http://192.168.170.30:41001/w2h/WEB2AJAX.htm+TSO</a></p>
+<p>This will display a TSO session on the web browser. The +TSO
+parameter in the URL indicates that VIRTEL should establish a
+session with the application TSO. Of course this could be any VTAM
+application that has been defined to VIRTEL through the ARBLOAD
+process. Before continuing with our TSO session we need to start the
+trace on the correct terminal/relay.</p>
+<p>Displaying the VITREL relays indicates which session have been
+establish.</p>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>F SPTHOLTA,RELAYS **</p>
+<p>+VIR0200I RELAYS</p>
+<p>+VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.52 APPLID=VIRTEL</p>
+<p>+VIR0214I TERMINAL RELAY APPLID CLIENT</p>
+<p>+VIR0214I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;</p>
+<p>+VIR0214I DEVTA015 REHVT001 TSO1A006 192.168.92.82</p>
+<p>+VIR0214I W2HIM001 REHIM001</p>
+<p>+VIR0214I &#8212;END OF LIST&#8212;</p>
+</div></blockquote>
+</li>
+</ol>
+<p>This shows a TSO session on Terminal/Relay DEVTA015/REHVT001</p>
+<p>Using this information, I can start a trace on that terminal/relay.</p>
+<p><a href="#id5"><span class="problematic" id="id6">**</span></a>F SPTHOLTA,TRACE,R=REHVT001 **</p>
+<p>+VIR0200I TRACE,R=REHVT001</p>
+<p>+VIR0062I DEVTA015 TRACE ACTIVE</p>
+<blockquote>
+<div><p>Now the TSO session can continue with and any 3270 data stream data
+will be written to the VIRTRACE dataset.</p>
+<p>To stop the trace, issue the following command:-</p>
+<p><a href="#id7"><span class="problematic" id="id8">**</span></a>F SPTHOLTA,NOTRACE,ALL **</p>
+<p>To stop the VIRTEL batch job issue the STOP command.</p>
+<p>P jobname</p>
+</div></blockquote>
+<p><strong>Notes</strong>:</p>
+<p>You can modify the ARBOLOAD to reflect your customer’s applications. For
+example, if you are using a different session manager to the default
+session manager APPLID NVAS, modify APPL= keyword in the W2H-15x
+TRANSACT entry in the ARBOLOAD control file to reflect the VTAM APPLID
+of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file.
+Resubmit the VIRTEL batch job and open a webpage with the following
+url:-</p>
+<p><a class="reference external" href="http://192.168.170.30:41001/w2h/WEB2AJAX.htm+Sessmgr">http://192.168.170.30:41001/w2h/WEB2AJAX.htm+Sessmgr</a></p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201407/TN201407.html" class="btn btn-neutral float-right" title="Pass tickets and supporting Proxy Servers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201405/TN201405.html" class="btn btn-neutral" title="Multi Line WTO Support in VIRTEL" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

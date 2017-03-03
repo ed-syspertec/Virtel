@@ -1,0 +1,785 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Virtel Security. Using server and client certificates &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="RACF Grouping Class and Virtel" href="../TN201417/TN201417.html"/>
+        <link rel="prev" title="Virtel JES Writer program" href="../TN201415/TN201415.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201401/TN201401.html">Automation and MVS backups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201402/TN201402.html">Formatting VIRTEL Line Trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201403/TN201403.html">How to use TESTVTAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201404/TN201404.html">VIRTEL SMF Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201405/TN201405.html">Multi Line WTO Support in VIRTEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Virtel Security. Using server and client certificates</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201416/TN201416.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virtel-security-using-server-and-client-certificates">
+<h1>Virtel Security. Using server and client certificates<a class="headerlink" href="#virtel-security-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h1>
+<p>In this newsletter we look at setting up Virtel to work with client and
+user certificates and to effectively remove the need for a user to
+provide a user id and password. This is equivalent to the Express Logon
+Feature (ELF) provided by Host on Demand and other telnet clients.</p>
+<p>First, let’s review what is going on behind the scenes with certificate
+authentication and X.509 certificate validation within TLS/SSL. The
+guiding principle here is that Public Key Infrastructure (PKI) requires
+that data encrypted with a public key can only be decrypted with a
+private key and data encrypted with a private key can only be decrypted
+with a public key. The secure session (https) that runs between the
+browser and Virtel uses the Application Transparent Transport Layer
+Security feature of z/OS Communications Server, also known as AT-TLS.
+AT-TLS allows socket applications to access encrypted sessions by
+invoking Secure Socket Layer (SSL) within the transport layer of the
+TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using
+parameter statements which will determine which sessions are to use
+AT-TLS.</p>
+<p>AT_TLS inserts itself in the connection between the application and
+browser. This means that the application will send and receive clear
+text over the socket interface, but data over the network is encrypted
+by system SSL. System SSL has three supported protocol levels:</p>
+<p>TLSv1</p>
+<p>SSLv2</p>
+<p>SSLv3</p>
+<p>In this configuration we will be using SSLv3.</p>
+<p>The server / client process, which in Virtel’s case is the Virtel
+started task (server) and the browser (client), implements the following
+SSL protocol or handshake during the “hello” phase of establishing a
+secure session:</p>
+<ol class="arabic simple">
+<li>The Client contacts the Server&nbsp;;</li>
+<li>The Server sends a certificate;</li>
+<li>Server authentication is performed by the Client&nbsp;;</li>
+<li>Client sends the certificate;</li>
+<li>Client authentication is performed by the Server&nbsp;;</li>
+<li>An encryption algorithm and single key is chosen to encrypt / decrypt
+data</li>
+</ol>
+<p>The purpose of the authentication is to ensure that the server/client
+are in fact who they say they are. This is to ensure that they
+server/client private and public keys haven’t been stolen and are
+purporting to be an entity that they aren’t and thereby compromising
+security. Authentication uses X.509 digital certificates. Further
+details of this handshake and the certificate exchange can be found in
+Appendix B. TLS/SSL Security z/OS Communications Server: IP
+Configuration Guide.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Certificates **</p>
+<p>What’s in a X.509 certificate?</p>
+<p>Amongst other things it includes the Distinguished Name of the Server
+(DNS), the public key of the Server, Distinguished Name of the Server
+organization issuing the certificate and the issuer’s signature. If we
+look at a certificate held with RACF we can see this information.
+Certificates are identified by a combination of LABEL, USERID or
+Certification Authority (CA).</p>
+<p>READY</p>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>RACDCERT ID(SPVIRSTC) LIST(LABEL(&#8216;VIRTEL SSL DEMO&#8217;)) **</p>
+<p>Digital certificate information for user SPVIRSTC:</p>
+<p>Label: VIRTEL SSL DEMO</p>
+<p>Certificate ID: 2Qji1+XJ2eLjw+XJ2ePF00Di4tNAxMXU1kBA</p>
+<p>Status: TRUST</p>
+<p>Start Date: 2014/07/08 00:00:00</p>
+<p>End Date: 2015/07/08 23:59:59</p>
+<p>Serial Number:</p>
+<p>&gt;05&lt;</p>
+<p>Issuer&#8217;s Name:</p>
+<p>&gt;CN=z/OS Security Server.O=SYSPERTEC.C=FR&lt;</p>
+<p>Subject&#8217;s Name:</p>
+<p>&gt;CN=RECETTE VIRTEL.T=VIRTEL Web Access.O=SYSPERTEC.C=FR&lt;</p>
+<p>Key Usage: HANDSHAKE, DATAENCRYPT</p>
+<p>Key Type: RSA</p>
+<p>Key Size: 1024</p>
+<p>Private Key: YES</p>
+<p>Ring Associations:</p>
+<p>Ring Owner: SPVIRSTC</p>
+<p>Ring:</p>
+<p>&gt;VIRTRING&lt;</p>
+<p>Similar details can be found in the browser settings. For example here
+is what Chrome displays in the HTTPS/SSL certificate database.</p>
+<p><img alt="image0" src="../../../_images/image114.png" /></p>
+<p><strong>Types of certificates.</strong></p>
+<p>Client certificate</p>
+<p>Server certificate</p>
+<p>Well-known Certificate Authority (CA) Signing certificate</p>
+<p>RACF signing certificate</p>
+<p>In this configuration we will be using self-signed server and client
+certificates. In most installation you would use server and client
+certificates signed by a well-known CA. These well-known CA certificates
+are normally available in the RACF and browser key data bases.</p>
+<p><strong>Configuring the certificates</strong></p>
+<p>The first step is to create the necessary certificates. We require a
+server certificate, a RACF signing certificate and a user certificate.</p>
+<p>In the Virtel SAMPLIB there is a member called SSLSETUP. This will
+initialize the SSL environment and create the RACF signing certificate.
+Some of the steps may or may not be relevant so you will need to
+customize SSLSETUP accordingly. For example, you might already be
+running the PAGENT started task and have RACF definitions in place to
+support the required SSL access.</p>
+<p>The following is the certificate generation statement for the RACF
+signing certificate.</p>
+<p>//DCERTCA EXEC PGM=IKJEFT01</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Delete previous signing certificate */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT CERTAUTH +</p>
+<p>DELETE(LABEL(&#8216;z/OS signing certificate&#8217;))</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//* CCERTCA : CREATE SIGNING CERTIFICATE *</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//CCERTCA EXEC PGM=IKJEFT1A</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Create a signing certificate */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT CERTAUTH +</p>
+<p>GENCERT +</p>
+<p>WITHLABEL(&#8216;z/OS signing certificate&#8217;) +</p>
+<p>SUBJECTSDN( +</p>
+<p>CN(&#8216;z/OS Security Server&#8217;) +</p>
+<p>O(&#8216;SYSPERTEC&#8217;) +</p>
+<p>C(&#8216;FR&#8217;)) +</p>
+<p>KEYUSAGE(CERTSIGN) SIZE(1024) +</p>
+<p>NOTAFTER(DATE(2026-06-30))</p>
+<p>If we list the certificate after we have created it will get the
+following:-</p>
+<p>READY</p>
+<p><a href="#id5"><span class="problematic" id="id6">**</span></a>RACDCERT CERTAUTH LIST(LABEL(&#8216;z/OS signing certificate&#8217;)) **</p>
+<p>Digital certificate information for CERTAUTH:</p>
+<p>Label: z/OS signing certificate</p>
+<p>Certificate ID: 2QiJmZmDhZmjgalh1uJAoomHlYmVh0CDhZmjiYaJg4GjhUBA</p>
+<p>Status: TRUST</p>
+<p>Start Date: 2013/07/03 00:00:00</p>
+<p>End Date: 2026/06/30 23:59:59</p>
+<p>Serial Number:</p>
+<p>&gt;00&lt;</p>
+<p>Issuer&#8217;s Name:</p>
+<p>&gt;CN=z/OS Security Server.O=SYSPERTEC.C=FR&lt;</p>
+<p>Subject&#8217;s Name:</p>
+<p>&gt;CN=z/OS Security Server.O=SYSPERTEC.C=FR&lt;</p>
+<p>Key Usage: <strong>CERTSIGN</strong></p>
+<p>Key Type: RSA</p>
+<p>Key Size: 1024</p>
+<p>Private Key: YES</p>
+<p>Ring Associations:</p>
+<p>Ring Owner: SPVIRSTC</p>
+<p>Ring:</p>
+<p>&gt;VIRTRING&lt;</p>
+<p>The key usage identifies this certificate as a signing certificate. This
+certificate will be used to sign other certificates that we generate.</p>
+<p>Next is the server certificate. Again we use RACF to generate the
+certificate and use the RACF signing certificate to “sign” it. The
+following extract is from the Virtel SAMPLIB member SSLUCERT.</p>
+<p>//CCERTIF EXEC PGM=IKJEFT1A</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Create a digital certificate */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPVIRSTC) /* VIRTEL userid */ +</p>
+<p>GENCERT +</p>
+<p>WITHLABEL(&#8216;VIRTEL SSL DEMO&#8217;) +</p>
+<p><a href="#id7"><span class="problematic" id="id8">**</span></a>SIGNWITH(CERTAUTH LABEL(&#8216;z/OS signing certificate&#8217;)) + **</p>
+<p>SUBJECTSDN( +</p>
+<p>CN(&#8216;RECETTE VIRTEL&#8217;) +</p>
+<p>T(&#8216;VIRTEL Web Access&#8217;) +</p>
+<p>O(&#8216;SYSPERTEC&#8217;) +</p>
+<p>C(&#8216;FR&#8217;)) +</p>
+<p>KEYUSAGE(HANDSHAKE DATAENCRYPT) SIZE(1024)</p>
+<p>Note how we identify the signing certificate with the SIGNWITH parameter
+using the same label information that we used when defining the RACF
+signing certificate.</p>
+<p><strong>Key rings</strong></p>
+<p>Having generated two of our certificates we now need a place to keep
+them. We place the certificates on a key ring and associate the key ring
+with the VIRTEL server RACF user id (in our case SPVIRSTC). The member
+SSLSETUP has some RACF commands to perform the key ring generation. Here
+is an extract:</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Create a keyring */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPVIRSTC) /* VIRTEL userid */ +</p>
+<p>ADDRING(VIRTRING)</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Add the certificate to the keyring */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPVIRSTC) /* VIRTEL userid */ +</p>
+<p>CONNECT( +</p>
+<p>ID(SPVIRSTC) +</p>
+<p><a href="#id9"><span class="problematic" id="id10">**</span></a>LABEL(&#8216;VIRTEL SSL DEMO&#8217;) + **</p>
+<p>RING(VIRTRING) +</p>
+<p>DEFAULT)</p>
+<p>Again it is the label that identifies the key(certificate) that we want
+to add to the key ring owned by user SPVIRSTC.</p>
+<p><strong>User Certificate</strong></p>
+<p>The next step is to create a user certificate which we will export and
+import into our browser’s key data base. In the Virtel SAMPLIB member
+SSLUCERT performs the task of creating the user certificate and creating
+an “exportable” file.</p>
+<p>//DCERTIF EXEC PGM=IKJEFT01</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Delete previous digital certificate */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPTHOLT) /* client userid */ +</p>
+<p>DELETE(LABEL(&#8216;SSL client certificate&#8217;))</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//* UCERTIF : CREATE DIGITAL CERTIFICATE FOR USER *</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//UCERTIF EXEC PGM=IKJEFT1A</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Create a digital certificate */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPTHOLT) /* client userid */ +</p>
+<p>GENCERT +</p>
+<p>WITHLABEL(&#8216;SSL client certificate&#8217;) +</p>
+<p><a href="#id11"><span class="problematic" id="id12">**</span></a>SIGNWITH(CERTAUTH LABEL(&#8216;z/OS signing certificate&#8217;)) + **</p>
+<p>SUBJECTSDN( +</p>
+<p>CN(&#8216;Ed Holt&#8217;) /* client name */ +</p>
+<p>O(&#8216;Syspertec Communication&#8217;) /* company name */ +</p>
+<p>C(&#8216;France&#8217;)) /* country */ +</p>
+<p>KEYUSAGE(HANDSHAKE) SIZE(1024)</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Export the digital certificate and private key */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPTHOLT) /* client userid */ +</p>
+<p>EXPORT(LABEL(&#8216;SSL client certificate&#8217;)) +</p>
+<p>FORMAT(PKCS12DER) +</p>
+<p>DSN(SPTHOLT.P12) +</p>
+<p>PASSWORD(&#8216;azj77sdmlizczxerghgbiadbbdbxnbsnbxiazb&#8217;)</p>
+<p>Again we sign the certificate with our RACF signing certificate. The
+user certificate is also exported to a flat file – SPTHOLT.P12 in our
+example (you can use your own naming conventions). This file must be
+downloaded to the client workstation in binary mode and imported into
+the browser’s key data base.</p>
+<p>Note that the exported certificate is associated with a password. This
+password will be required when importing the certificate on the client
+workstation.</p>
+<p>The final thing to do is to add the user certificate and the signing
+certificate to the key ring associated with the Virtel server task user
+id.</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//* Associate certificate with user id *</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//UCERTIF EXEC PGM=IKJEFT1A</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Add certificate to Server ring */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPVIRSTC) /* client userid */ +</p>
+<p>CONNECT (CERTAUTH +</p>
+<p><a href="#id13"><span class="problematic" id="id14">**</span></a>LABEL(&#8216;z/OS signing certificate&#8217;) + **</p>
+<p>RING(VIRTRING) +</p>
+<p>USAGE(CERTAUTH))</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Add certificate to Server ring */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>RACDCERT ID(SPVIRSTC) /* client userid */ +</p>
+<p>CONNECT (ID(SPTHOLT) +</p>
+<p><a href="#id15"><span class="problematic" id="id16">**</span></a>LABEL(&#8216;SSL client certificate&#8217;) + **</p>
+<p>RING(VIRTRING) +</p>
+<p>USAGE(CERTAUTH))</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>/* Refresh the RACF profiles */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
+<p>SETROPTS RACLIST(DIGTRING) REFRESH</p>
+<p>SETROPTS RACLIST(DIGTCERT) REFRESH</p>
+<p>The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate
+and the “CONNECT ID(SPTHOLT) indicates that the certificate labelled
+‘SSL client certificate’ is associated with USERID SPTHOLT. This is how
+Virtel obtains the USERID. Also, note that we refresh the RACF profiles
+related to certificates and key rings.</p>
+<p>If we list our key ring for user SPVIRSTC we should have three
+certificates.</p>
+<p>READY</p>
+<p><a href="#id17"><span class="problematic" id="id18">**</span></a>RACDCERT ID(SPVIRSTC) LISTRING(VIRTRING) **</p>
+<p>Digital ring information for user SPVIRSTC:</p>
+<p>Ring:</p>
+<p>&gt;VIRTRING&lt;</p>
+<p>Certificate Label Name Cert Owner USAGE DEFAULT</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212; &#8212;&#8212;&#8211; &#8212;&#8212;-</p>
+<p>VIRTEL SSL DEMO ID(SPVIRSTC) PERSONAL YES</p>
+<p>z/OS signing certificate CERTAUTH CERTAUTH NO</p>
+<p>SSL client certificate ID(SPTHOLT) CERTAUTH NO</p>
+<p><strong>Importing the certificate on the client work station.</strong></p>
+<p>To import the user certificate into the client workstation the P12 file
+must be downloaded in binary and then the certificate import wizard is
+run to import the certificate.</p>
+<p><img alt="image1" src="../../../_images/image25.png" /></p>
+<p>After importing the following panel is displayed:-</p>
+<p><img alt="image2" src="../../../_images/image35.png" /></p>
+<p>At this stage we have completed our certificate generation. Through the
+use of the certificates we will be able to initiate a secure session
+(https) with an application and obtain a user id.</p>
+<p>**
+PassTicket support**</p>
+<p>The next step is to obtain a pass ticket in place of a password so that
+Virtel can log on to the target application and present a user id and
+password combination on behalf of the user. The following job will
+enable PassTicket support for our target application SPCICSH and using
+user id SPVIRSTC, out Virtel server user id. This job will have to be
+customized accordingly:</p>
+<p>//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20</p>
+<p>//* RDEFINE FACILITY IRR.RTICKETSERV</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>SETROPTS CLASSACT(APPL)</p>
+<p>SETROPTS CLASSACT(PTKTDATA)</p>
+<p>SETROPTS RACLIST(PTKTDATA)</p>
+<p>SETROPTS GENERIC(PTKTDATA)</p>
+<p>RDEFINE FACILITY IRR.RTICKETSERV</p>
+<p>RDELETE PTKTDATA SPCICSH</p>
+<p>RDELETE PTKTDATA IRRPTAUTH.SPCICSH.*</p>
+<p>RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.* UACC(NONE)</p>
+<p>RDEFINE PTKTDATA <strong>SPCICSH</strong> SSIGNON(KEYMASKED(998A654FEBCDA123)) +</p>
+<p>UACC(NONE)</p>
+<p>//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>PERMIT IRR.RTICKETSERV CL(FACILITY) ID(<strong>SPVIRSTC</strong>) ACC(READ)</p>
+<p>PERMIT IRRPTAUTH.SPCICSH.* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)</p>
+<p>SETROPTS REFRESH RACLIST(PTKTDATA)</p>
+<p>SETROPTS REFRESH RACLIST(FACILITY)</p>
+<p>In order for Virtel to generate PassTickets, you must also modify your
+VIRTCT to include the parameter PASSTCK=YES and then reassemble the
+VIRTCT. See chapter 6 of the Virtel Installation Guide for more details
+on the Virtel VIRTCT.</p>
+<p>**
+PAGENT Configuration**</p>
+<p>To enable system SSL sessions to take place between the browser and the
+application we have to tell AT-TLS and SSL which sockets to intercept.
+This is configured in the pagent configuration file which can be found
+in /etc/pagent.conf. The two areas that we are interested in are the
+TTLSEnvironmentAction section and the TTLSRule section.</p>
+<p>TTLSEnvironmentAction <strong>VIRTELenvir_inSec</strong></p>
+<p>{</p>
+<p>HandshakeRole ServerWithClientAuth</p>
+<p>Trace 7</p>
+<p>TTLSKeyringParms</p>
+<p>{</p>
+<p>Keyring VIRTRING</p>
+<p>}</p>
+<p>TTLSEnvironmentAdvancedParms</p>
+<p>{</p>
+<p>SSLv2 On</p>
+<p>SSLv3 On</p>
+<p>TLSv1 On</p>
+<p>ClientAuthType SAFCheck</p>
+<p>}</p>
+<p>TTLSCipherParmsRef VIRTELcipher</p>
+<p>}</p>
+<p>…………</p>
+<p>…………</p>
+<p>…………</p>
+<p>TTLSRule VIRTELrule_in_eh</p>
+<p>{</p>
+<p>Jobname SPVIREH</p>
+<p>LocalPortRange 41002</p>
+<p>Direction Inbound</p>
+<p>TTLSGroupActionRef VIRTELgroup</p>
+<p>TTLSEnvironmentActionRef <strong>VIRTELenvir_inSec</strong></p>
+<p>}</p>
+<p>The TTLS Rule identifies Virtel Started task name via the Jobname
+parameter and also the port number that can support secured sessions _
+https. In this case it is port 41002.</p>
+<p>The rules section also identifies the environmental section. In this
+case we have selected an environment section called VIRTELenvir_insec.</p>
+<p>In VIRTELenvir_insec we identify that we want to use both server and
+client certificates –</p>
+<p><a href="#id19"><span class="problematic" id="id20">*</span></a>HandShakeRole ServerWithClientAuth *</p>
+<p>That the user certificate must be associated with a valid RACF userid –</p>
+<p><em>ClientAuthType SAFCheck</em></p>
+<p>The name of the keyring that holds the keys(certificates)</p>
+<p><em>Keyring VIRTRING</em></p>
+<p>A default pagent.conf is shipped with the SAMPLIB member SSLSETUP which
+you can use to modify accordingly to define the above SSL sections.</p>
+<p>To refresh a pagent.conf profile after you have made changes you can
+issue the following z/OS command:-</p>
+<p>F PAGENT,REFRESH</p>
+<p>**
+Virtel Configuration**</p>
+<p>The final part in our configuration is to configure Virtel to use SSL to
+obtain the user id and PassTicket support to create a password. We
+configure Virtel in the transaction associated with our target
+application, in this case the CICS application called SPCICSH.</p>
+<p><img alt="image3" src="../../../_images/image44.png" /></p>
+<p>Note that PassTicket is set to 2. This will enable Virtel to generate a
+temporary password. Security is set to 3. This indicates that Virtel
+will receive a USERID based upon the user certificate used in the
+authentication process. The TIOA at logon is a string that will logon to
+the CICS application using the user id and password values that Virtel
+has obtained.</p>
+<p>With this configuration we can logon to our CICS application without the
+user presenting any user id or password. This is very much like the
+Express Logon Facility implemented in our Telnet clients.</p>
+<p>**
+Logon Example **</p>
+<p>In the following screen shots we demonstrate logging into a CICS
+application via a secure session (https) without specifying any user
+id/password. Our initial URL is</p>
+<p><a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the
+IP address with your own installation IP address or domain name.</p>
+<p><img alt="image4" src="../../../_images/image54.png" /></p>
+<p>We are presented with a «&nbsp;&nbsp;Select a certificate&nbsp;» window from the
+browser requesting the certificate we wish to user for authenication
+purposes. We select the certificate we downloaded.</p>
+<p>The next panel is a warning panel which identifes that the certificate
+we are using has not been authenticated by a well-known CA authority. We
+are of course aware of this as we are using a RACF self signed
+certifcate.</p>
+<p><img alt="image5" src="../../../_images/image64.png" /></p>
+<p>We select Advanced and are then presented with information about the
+certifciate.</p>
+<p><img alt="image6" src="../../../_images/image72.png" /></p>
+<p>We select the “Proceed” link.</p>
+<p><img alt="image7" src="../../../_images/image82.png" /></p>
+<p>We are signed into CICS without having to specify any user id or
+password.</p>
+<p><strong>Problems</strong></p>
+<p>It is easy to miss something when configuring user certificate sign on.
+Here are some general guidelines that should help in debugging
+configuration errors.</p>
+<ol class="arabic simple">
+<li>Is AT-TLS active.</li>
+</ol>
+<p>Issue the following z/OS command – D TCPIP,,N,TTLS</p>
+<p>The response should be :-</p>
+<p>EZD0101I NETSTAT CS V1R13 TCPIP 706</p>
+<p>TTLSGRPACTION GROUP ID CONNS</p>
+<p>VIRTELGROUP 00000002 3</p>
+<p>1 OF 1 RECORDS DISPLAYED</p>
+<p>END OF THE REPORT</p>
+<ol class="arabic simple">
+<li>PAGENT return codes</li>
+</ol>
+<p>Common session startup/handshake errors are reported through messqge
+EZD1287I. In the example below we can see that the handshake has failed
+with a return code of 5003. Return codes under 5000 are generated by
+System SSL and are defined in the System SSL Programming manual. Return
+codes over 5000 are generated by AT-TLS and are defined in the IP
+Diagnosis Guide. In the following the 5013 suggests that the browser has
+sent clear text; in other words, http was used instead of https in the
+URL.</p>
+<p>BPXF024I (TCPIP) Oct 7 13:33:08 TTLS 83951769 : 15:33:08 TCPIP 367</p>
+<p>EZD1281I TTLS Map CONNID: 000006A2 LOCAL: 192.168.170.30..41002</p>
+<p>REMOTE: 192.168.92.62..57545 JOBNAME: SPVIREH USERID: SPVIRSTC TYPE:</p>
+<p>InBound STATUS: Enabled RULE: VIRTELrule_in_eh ACTIONS: VIRTELgroup</p>
+<p>VIRTELenvir_inSec **N/A**</p>
+<p>BPXF024I (TCPIP) Oct 7 13:33:08 TTLS 83951769 : 15:33:08 TCPIP 368</p>
+<p>EZD1286I TTLS Error GRPID: 00000002 ENVID: 00000000 CONNID: 000006A2</p>
+<p>LOCAL: 192.168.170.30..41002 REMOTE: 192.168.92.62..57545 JOBNAME:</p>
+<p>SPVIREH USERID: SPVIRSTC RULE: VIRTELrule_in_eh RC: 5003 Data</p>
+<p>Decryption</p>
+<p><a href="#id21"><span class="problematic" id="id22">**</span></a>EZD1287I TTLS Error RC: 5003 Data Decryption 369 **</p>
+<p>LOCAL: 192.168.170.30..41002</p>
+<p>REMOTE: 192.168.92.62..57545</p>
+<p>JOBNAME: SPVIREH RULE: VIRTELrule_in_eh</p>
+<p>USERID: SPVIRSTC GRPID: 00000002 ENVID: 00000000 CONNID: 000006A2</p>
+<p>Common PAGENT return codes:-</p>
+<p>7 No certificate</p>
+<p>8 Certificate not trusted</p>
+<p>109 No CA certificates on ring</p>
+<p>202 Keyring does not exists</p>
+<p>401 Certificate expired</p>
+<p>402/12 Client and server cannot agree cipher suite</p>
+<p>416 Virtel does not have permission to list keyring</p>
+<p>431 Certificate is revoked</p>
+<p>434 Certificate key not compatible with cipher suite</p>
+<p>435 Certificate authority unknown</p>
+<blockquote>
+<div>5003 Browser sent clear text.</div></blockquote>
+<ol class="arabic simple">
+<li>Virtel messages</li>
+</ol>
+<p>VIRHT57E LINE IS NOT SET UP FOR HTTPS</p>
+<blockquote>
+<div><p>This means that the browser has sent encypted text (https) but that
+AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT
+rules haven’t correctly identified this port as a SSL jobname/port.
+Check the /etc/pagent.conf member. The message is a bit misleading
+as there is no line setup required by Virtel.</p>
+<p>Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the
+decryption and transforms the https request into an http request
+before passing it to VIRTEL. The only case where VIRTEL is AT-TLS
+aware is when the VIRTEL transaction definition specifies SECURITY=3
+(TLS) and in this case VIRTEL will check that the session has been
+processed by AT-TLS and will issue an IOCTL to obtain the userid
+associated with the certificate.</p>
+<p>In the normal case, you should specify HandshakeRole Server,
+ClientAuthType Full, and ApplicationControlled Off in the AT-TLS
+rules, as in the example in VIRT447.SAMPLIB(SSLSETUP). VIRTEL does
+not issue an IOCTL to turn decryption on and off, so if you
+specified ApplicationControlled On then you would get VIRHT57E
+because AT-TLS has not been instructed to start decryption.</p>
+<p>If you still get an error when you have ApplicationControlled Off
+then we will need to see the SYSLOG (for the EZD TTLS messages), the
+JESMSGLG from the VIRTEL started task, and the SYSPRINT resulting
+from a z/OS command F VIRTEL,SNAP immediately after the error
+occurs. We would also like to see the exact URL which was entered at
+the browser, as well as the AT-TLS pagent.conf file.</p>
+</div></blockquote>
+<p>**
+z/OS IBM References**</p>
+<ul class="simple">
+<li><strong>SA22-7683 Security Server: RACF Security Administrator&#8217;s Guide</strong></li>
+</ul>
+<p>Chapter 21. RACF and Digital Certificates</p>
+<ul class="simple">
+<li><strong>SC24-5901 Cryptographic Services: System SSL Programming</strong></li>
+</ul>
+<p>Chapter 12. Messages and Codes</p>
+<ul class="simple">
+<li><strong>SC31-8775 Communications Server: IP Configuration Guide</strong></li>
+</ul>
+<p>Chapter 14. Policy-based networking</p>
+<p>Chapter 18. Application Transparent Transport Layer Security (AT-TLS)
+data protection</p>
+<ul class="simple">
+<li><strong>SC31-8776 Communications Server: IP Configuration Reference</strong></li>
+</ul>
+<p>Chapter 21. Policy Agent and policy applications</p>
+<ul class="simple">
+<li><strong>GC31-8782 Communications Server: IP Diagnosis Guide</strong></li>
+</ul>
+<p>Chapter 28. Diagnosing Application Transparent Transport Layer Security
+(AT-TLS)</p>
+<ul class="simple">
+<li><strong>SC31-8784 Communications Server: IP Messages: Volume 2</strong></li>
+</ul>
+<p>Chapter 10. EZD1xxxx messages</p>
+<p><strong>Virtel References</strong></p>
+<ul class="simple">
+<li><strong>VIRTEL Installation Guide</strong></li>
+</ul>
+<p>PASSTCK parameter Page 66</p>
+<ul class="simple">
+<li><strong>VIRTEL Connectivity Reference</strong></li>
+</ul>
+<p>Transactions – PassTicket Parameter Page 93</p>
+<p>Transactions – Security Parameter Page 94</p>
+<ul class="simple">
+<li><strong>VIRTEL Web Access Guide</strong></li>
+</ul>
+<p>Security – Data encryption by SSL Page 244</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201417/TN201417.html" class="btn btn-neutral float-right" title="RACF Grouping Class and Virtel" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201415/TN201415.html" class="btn btn-neutral" title="Virtel JES Writer program" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

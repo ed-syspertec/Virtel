@@ -1,0 +1,622 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running multiple instances of Virtel &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="&lt;no title&gt;" href="../TN201505/TN201505.html"/>
+        <link rel="prev" title="Dynamic Directory Interface (DDI) and administration" href="../TN201501/TN201501.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2015</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html">Dynamic Directory Interface (DDI) and administration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Running multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201506/TN201506.html">An example of using web services with Virtel Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201507/TN201507.html">Customising Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201515/TN201515.html">Using Virtel as a Secure Single Access Control Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201517/TN201517.html">Virtel Chinese Character Language Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201519/TN201519.html">Processing the VTAM USS MSG10 buffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201520/TN201520.html">Using the IBM System Logger with Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201522/TN201522.html">What’s new in Virtel 4.55</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Running multiple instances of Virtel</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201504/TN201504.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="running-multiple-instances-of-virtel">
+<h1>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h1>
+<p>For High Availability and performance reasons it is often necessary to
+run multiple copies of Virtel, preferably within separate LPARs on
+separate physical machines. This newsletter discusses the issues raised
+when implementing such a setup and how Virtel can exploit the IBM
+Sysplex technologies. In the following example there are two instances
+of Virtel running on separate physical machines sharing the same ARBO
+configuration file. The configuration looks like this:-</p>
+<p><a class="reference internal" href="../../../_images/image14.jpg"><img alt="image0" src="../../../_images/image14.jpg" style="width: 5.88542in; height: 5.21875in;" /></a></p>
+<p>Virtel is using several Sysplex technologies to achieve this
+configuration. For example, Virtel is using VTAM Generic Resources to
+facilitate access to the Virtel Administration functions from either
+instance of Virtel. VTAM generic resources can be used to distribute
+workloads across applications that perform the same task or function.
+Administration of the ARBO file is through the Virtel Administrator who
+can logon on to Virtel using the generic Virtel ACB name VIRTPLEX. This
+generic ACB enables management of the ARBO file through either VIRTEL1A
+or VIRTEL2A. This can be useful, for example, If SYSA was down for
+maintenance. VIRTEL administration could still conducted via VIRTEL2A
+access. No change would be necessary to any session management tools.</p>
+<p>Here are the relevant definitions required to support the VTAM generic
+resource within Virtel.</p>
+<p><strong>VIRTEL TCT</strong></p>
+<p>GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME</p>
+<p><strong>SYSPLEX definitions</strong></p>
+<p>The ISTGENERIC structure will have to be allocated before you can use
+VTAM generic resources. See the IBM Network Implementation Guide for
+further information on configuring the CFRM.</p>
+<p>Use the following command to display coupling allocation details for
+ISTGENERIC.</p>
+<p>D XCF,STR,STRNM=ISTGENERIC</p>
+<p><strong>VTAM displayof the generic resource</strong></p>
+<p>The results from the D NET,ID=VTAMPLEX,E identifies the two Virtel
+instances which are grouped into the generic resource name VIRTPLEX. The
+example below shows VIRTEL1A and VIRTEL2A as participating in the
+VIRTRPLEX resource name group.</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>D NET,ID=VIRTPLEX,E **</p>
+<p>IST097I DISPLAY ACCEPTED</p>
+<p>IST075I NAME = VIRTPLEX, TYPE = GENERIC RESOURCE 917</p>
+<p>IST1359I MEMBER NAME OWNING CP SELECTABLE APPC</p>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>IST1360I SPNET.VIRTEL1A ZAM1SSCP YES NO **</p>
+<p><a href="#id5"><span class="problematic" id="id6">**</span></a>IST1360I SPNET.VIRTEL2A ZAM2SSCP YES NO **</p>
+<p>IST2210I GR PREFERENCE TABLE ENTRY = **DEFAULT**</p>
+<p>IST2202I GREXIT = NO WLM = YES LOCLU = YES</p>
+<p>IST2204I LOCAPPL = YES PASSOLU = NO</p>
+<p>IST314I END</p>
+<p>When the VIRTEL*A application is display in VTAM the following messages
+are written to the console log:-</p>
+<p><a href="#id7"><span class="problematic" id="id8">**</span></a>D NET,ID=VIRTEL1A,E **</p>
+<p>IST097I DISPLAY ACCEPTED</p>
+<p>IST075I NAME = SPNET.VIRTEL1A, TYPE = APPL 925</p>
+<p>IST486I STATUS= ACT/S, DESIRED STATE= ACTIV</p>
+<p>IST1447I REGISTRATION TYPE = CDSERVR</p>
+<p><a href="#id9"><span class="problematic" id="id10">**</span></a>IST1363I GENERIC RESOURCE NAME VIRTPLEX REPRESENTS SPNET.VIRTEL1A **</p>
+<p>IST977I MDLTAB=***NA*** ASLTAB=***NA***</p>
+<p>IST861I MODETAB=***NA*** USSTAB=***NA***
+LOGTAB=***NA***</p>
+<p>IST934I DLOGMOD=***NA*** USS LANGTAB=***NA***</p>
+<p>IST1632I VPACING = 7</p>
+<p>IST1938I APPC = NO</p>
+<p>IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE</p>
+<p>IST231I APPL MAJOR NODE = APPLVIPX</p>
+<p>IST654I I/O TRACE = OFF, BUFFER TRACE = OFF</p>
+<p>IST1500I STATE TRACE = OFF</p>
+<p>IST271I JOBNAME = SPVIR1A, STEPNAME = SPVIR1A, DSPNAME = ISTEBBDB</p>
+<p>IST228I ENCRYPTION = OPTIONAL , TYPE = DES</p>
+<p>IST1563I CKEYNAME = VIRTEL1A CKEY = PRIMARY CERTIFY = NO</p>
+<p>IST1552I MAC = NONE MACTYPE = NONE</p>
+<p>IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0</p>
+<p>IST1633I ASRCVLM = 1000000</p>
+<p>IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 1280</p>
+<p>IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000</p>
+<p>IST206I SESSIONS:</p>
+<p>IST634I NAME STATUS SID SEND RECV VR TP NETID</p>
+<p>IST635I SC0TCP13 ACTIV-S CA7B8B52D125F31F 0003 0001 SPNET</p>
+<p>IST314I END</p>
+<p>Message IST1363I confirms that VIRTEL operating under the ACB of
+VIRTEL1A is associated with the VTAM resource name VIRTPLEX.</p>
+<p>**
+Using Virtel and VTAM Generic Resource Names to balance workload in a
+SYSPLEX environment.**</p>
+<p>In the following configuration we can see how the VTAM generic resource
+facility can also be used to distribute workloads across applications.
+In this example there are several CICS TOR regions within CICSA, CICSB
+and CICSC that are accessed through a VTAM generic resource name or
+CICSPLEX group name. VIRTEL uses this name to access the CICS
+application. The WLM and/or VTAM will distribute sessions across the
+members of the CICS generic resource name.</p>
+<p><a class="reference internal" href="../../../_images/image2.jpg"><img alt="image1" src="../../../_images/image2.jpg" style="width: 6.17708in; height: 6.46875in;" /></a></p>
+<p>From a High Availability aspect both CICSA and CICSB could both be down
+and service would still be provided by CICSC either through VIRTEL1A or
+VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to
+provide a HA solution. The only VIRTEL requirement is to define a VIRTEL
+transaction which targets CICSZ as the VTAM application, i.e. the VTAM
+Generic Resource or CICSPLEX group name.</p>
+<p><strong>Virtel naming conventions with multiple tasks</strong></p>
+<p>When running more than one VIRTEL STC care must be taken when defining
+the VTAM relay names that each VIRTEL tasks will use. In the above
+configuration each Virtel instance is running on a different LPAR, and
+for the HA reasons, probably on a different physical machine; however,
+the VTAM names employed must be unique. With Virtel you can define a
+single configuration within the ARBO and TCT which contains a unique
+pool of Virtel relays for each Virtel instance.</p>
+<p>Here are two possible ways to define the relay pools for multiple Virtel
+instances:</p>
+<p>The first way is to include the SYSCLONE value as part of the LU name.
+The relay definitions utilize the system symbolic SYSCLONE value in the
+IEASYMxx member of PARMLIB. The clone value is taken from the system
+symbolic &amp;SYSCLONE and is identified in the VIRTEL definitions through
+the + (plus) character:</p>
+<div class="line-block">
+<div class="line">LIST of TERMINALS &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;- Applid: VIRTEL1A
+15:11:01</div>
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">Terminal &nbsp;Repeated Relay &nbsp; &nbsp; Entry &nbsp; &nbsp; &nbsp; &nbsp;Type &nbsp; I/O &nbsp;Pool &nbsp; &nbsp; 2nd
+Relay</div>
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">CLLOC000 &nbsp;0050 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+</div>
+<div class="line-block">
+<div class="line">CLVTA000 &nbsp;0080 &nbsp; &nbsp; *W2HPOOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3</div>
+</div>
+<div class="line-block">
+<div class="line">DELOC000 &nbsp;0010 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+</div>
+<div class="line-block">
+<div class="line">DEVTA000 &nbsp;0016 &nbsp; &nbsp; *W2HPOOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3</div>
+</div>
+<div class="line-block">
+<div class="line">W2HIM000 &nbsp;0080 &nbsp; &nbsp; R+IM000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 &nbsp; &nbsp; &nbsp;1</div>
+</div>
+<div class="line-block">
+<div class="line">W2HTP000 &nbsp;0080 &nbsp; &nbsp; R+VT000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2HPOOL
+R+IM000</div>
+<div class="line"><strong>TCT definition</strong></div>
+</div>
+<p>In the configuration above there are two Virtel STCs running on
+different LPARS whose &amp;SYSCLONE values are 1A and 2A. With the same TCT
+being used for both VIRTEL1A and VIRTEL2A the following is specified in
+the common TCT:-</p>
+<div class="line-block">
+<div class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; APPLID=VIRTEL+,</div>
+<div class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SYSPLUS=YES,</div>
+</div>
+<p>This will means that the two Virtels STCs will have a VTAM APPLID of
+VIRTEL1A and VIRTEL2A. The Virtel relay LU names are R1AVT000-079 for
+LPAR 1A, and R2AVT000-079 for LPAR 2A.</p>
+<p>Note: It is recommended that only the ARBO file can be shared in this
+configuration.</p>
+<p>The VTAM definition to support this configuration would like:-</p>
+<p>APPLVIPX VBUILD TYPE=APPL</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>* Product : VIRTEL *</p>
+<p>* Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A) *</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>VIRTEL&amp;SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO), *</p>
+<p>ACBNAME=VIRTEL&amp;SYSCLONE</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>* R&amp;SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access *</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>R&amp;SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, *</p>
+<p>DLOGMOD=SNX32702,EAS=1</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>* R&amp;SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals *</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>R&amp;SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, *</p>
+<p>DLOGMOD=SCS,EAS=1</p>
+<p>R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, *</p>
+<p>DLOGMOD=DSILGMOD,EAS=1</p>
+<div class="line-block">
+<div class="line">Because this naming convention could be constraining if you want to
+use 4-character LU names, there is a second method which allows you to
+freely choose the LU names without the need to include the SYSCLONE
+characters as part of the LU name. In the next example two pools are
+defined. Pool *W1APOOL has relay names J000-J999, K000-K999,
+L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool
+*W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with
+printer names Snnn,Tnnn,Unnn) for LPAR 2:</div>
+<div class="line">Terminal &nbsp;Repeated Relay &nbsp; &nbsp; Entry &nbsp; &nbsp; &nbsp; &nbsp;Type &nbsp; I/O &nbsp;Pool &nbsp; &nbsp; 2nd
+Relay</div>
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line">CLLOC000 &nbsp;0500 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+<div class="line">CLVTA000 &nbsp;1000 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+<div class="line">CLVTB000 &nbsp;1000 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+<div class="line">CLVTC000 &nbsp;1000 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+<div class="line">DELOC000 &nbsp;0010 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+<div class="line">DEVTA000 &nbsp;0016 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
+<div class="line">W2HIP000 &nbsp;1000 &nbsp; &nbsp; P000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
+<div class="line">W2HIQ000 &nbsp;1000 &nbsp; &nbsp; Q000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
+<div class="line">W2HIR000 &nbsp;1000 &nbsp; &nbsp; R000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
+<div class="line">W2HIS000 &nbsp;1000 &nbsp; &nbsp; S000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
+<div class="line">W2HIT000 &nbsp;1000 &nbsp; &nbsp; T000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
+<div class="line">W2HIU000 &nbsp;1000 &nbsp; &nbsp; U000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
+<div class="line">W2HTJ000 &nbsp;1000 &nbsp; &nbsp; J000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W1APOOL P000</div>
+<div class="line">W2HTK000 &nbsp;1000 &nbsp; &nbsp; K000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W1APOOL Q000</div>
+<div class="line">W2HTL000 &nbsp;1000 &nbsp; &nbsp; L000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W1APOOL R000</div>
+<div class="line">W2HTM000 &nbsp;1000 &nbsp; &nbsp; M000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2APOOL S000</div>
+<div class="line">W2HTN000 &nbsp;1000 &nbsp; &nbsp; N000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2APOOL T000</div>
+<div class="line">W2HTO000 &nbsp;1000 &nbsp; &nbsp; O000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2APOOL U000</div>
+</div>
+<p>The VTAM definitions would be similar to those from the previous example
+except the &amp;SYSCLONE would be replaced by the relay characters.</p>
+<div class="line-block">
+<div class="line">APVIRT&amp;SYSCLONE. VBUILD TYPE=APPL</div>
+</div>
+<div class="line-block">
+<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+*</div>
+<div class="line">* Product &nbsp; &nbsp; : &nbsp;VIRTEL
+*</div>
+<div class="line">* Description : &nbsp;Main ACB for VIRTEL application
+*</div>
+<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+*</div>
+<div class="line">VIRTEL&amp;SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,
++</div>
+<div class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ACBNAME=VIRTEL&amp;SYSCLONE</div>
+</div>
+<div class="line-block">
+<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+*</div>
+<div class="line">* Jxxx,Kxxx &nbsp; : VTAM application relays for VIRTEL Web Access
+*</div>
+<div class="line">* Lxxx,Mxxx &nbsp; : VTAM application relays for VIRTEL Web Access
+*</div>
+</div>
+<div class="line-block">
+<div class="line">* Nxxx,Oxxx &nbsp; : VTAM application relays for VIRTEL Web Access
+*</div>
+<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+*</div>
+<div class="line">J??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
+</div>
+<div class="line-block">
+<div class="line">K??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
+</div>
+<div class="line-block">
+<div class="line">L??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
+</div>
+<div class="line-block">
+<div class="line">M??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
+</div>
+<div class="line-block">
+<div class="line">N??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
+</div>
+<div class="line-block">
+<div class="line">O??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
+</div>
+<div class="line-block">
+<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+*</div>
+<div class="line">* Pxxx,Qxxx &nbsp; : Printer relays for VIRTEL Web Access terminals
+*</div>
+<div class="line">* Rxxx,Sxxx &nbsp; : Printer relays for VIRTEL Web Access terminals
+*</div>
+</div>
+<p>* Txxx,Uxxx &nbsp; : Printer relays for VIRTEL Web Access terminals &nbsp; &nbsp; &nbsp; *</p>
+<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
+<p>P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</p>
+<p>Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</p>
+<p>R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</p>
+<div class="line-block">
+<div class="line">S??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</div>
+</div>
+<div class="line-block">
+<div class="line">T??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</div>
+</div>
+<div class="line-block">
+<div class="line">U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</div>
+</div>
+<p>**
+Using the Distributed VIPA with Virtel**</p>
+<p>Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance
+Virtel session workload across more than one Virtel STC. The
+distributing TCPIP stack will balance workload across the participating
+target TCPIP stacks. Allocation of new sessions on the IP side will
+depend on the selected SD/WLM algorithm. For example this can be a Round
+Robin policy or WLM policy workload algorithm. Access to the Virtel
+tasks is through using distributed VIPA address which is defined in a
+TCPIP profile. In the configuration above it is defined as
+192.168.170.15. The relevant PROFILE definitions for TCPIP would look
+like:-</p>
+<p>VIPADYNAMIC</p>
+<p>VIPARANGE DEFINE MOVEABLE NONDISRUPTIVE 255.255.255.0 192.168.170.20</p>
+<p>VIPADEFINE MOVE IMMED 255.255.255.0 192.168.170.15</p>
+<p>VIPADISTRIBUTE DEFINE TIMEDAFF 300 DISTMETHOD ROUNDROBIN 192.168.170.15</p>
+<p>DESTIP ALL</p>
+<p>ENDVIPADYNAMIC</p>
+<p>It is essential to include the TIMEDAFF parameter in the VIPA definition
+as this maintains session affinity. The TIMEDAFF facility ensures that a
+user will always connect to the same VIRTEL while a session is open.
+Also, it is recommended that the Virtel line W-HTTP (port 41001) is used
+for Virtel Administration and line C-HTTP (port 41002) for user access
+to applications.</p>
+<p>Line W-HTTP should be defined using the base address of the LPAR (i.e.
+the home address of the default interface) by specifying only the port
+number. For example:</p>
+<p>Local address ==&gt; :41001</p>
+<p>Line C-HTTP should be defined using the distributed VIPA address with
+port number:</p>
+<p>Local address ==&gt; 192.168.170.15:41002</p>
+<p>The Virtel Line display command displays this configuration:</p>
+<p><a href="#id11"><span class="problematic" id="id12">**</span></a>F SPVIR1A,LINES **</p>
+<p>VIR0200I LINES</p>
+<p>VIR0201I VIRTEL 4.54 APPLID=VIRTEL1A LINES</p>
+<p>VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
+<p>VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
+<p>VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.15:41002</p>
+<p>VIR0202I W-HTTP HTTP-W2H TCP1 :41001</p>
+<div class="line-block">
+<div class="line">VIR0202I &#8212;END OF LIST&#8212;</div>
+<div class="line">In this way the administrator can access a specific Virtel using port
+41001 of the appropriate LPAR’s IP address, while the users can access
+both Virtels using port 41002 on the DVIPA address.</div>
+</div>
+<p><strong>Uisng Virtel with Apache Proxy as a load balancing mechanism</strong></p>
+<p>Another way of balancing workloads across multiple Virtel instances is
+through an Apache Reverse Proxy Server. In this setup the proxy server
+load balances IP sessions across the known TCPIP stacks, very much like
+IBM’s Sysplex Distributor.</p>
+<p><a href="#id15"><span class="problematic" id="id16">|D:\\Documents\\SysperTec\\Newsletters\\Proxy Load Balancing.jpg|</span></a></p>
+<p>Again, to maintain session affinity the correct load balancing
+parameters must be used. An example from the http.conf looks like this:-</p>
+<p>#</p>
+<p># Virtel</p>
+<p>#</p>
+<p>ProxyPass / balancer://hostcluster/</p>
+<p>ProxyPassReverse / balancer://hostcluster/</p>
+<p>&lt;Proxy balancer://hostcluster&gt;</p>
+<p>BalancerMember <a class="reference external" href="http://syt00101.gzaop.local:41002">http://syt00101.gzaop.local:41002</a> retry=5</p>
+<p>BalancerMember <a class="reference external" href="http://syt00101.gzaop.local:51002">http://syt00101.gzaop.local:51002</a> retry=5</p>
+<p>ProxySet lbmethod=byrequests</p>
+<p>&lt;/Proxy&gt;</p>
+<p>For more information on setting up an Apache Proxy Server visit
+<a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html</a></p>
+<p>To use Apache as a Proxy Server it is essential that the correct
+configuration modules are loaded at startup:-</p>
+<p># LoadModule foo_module modules/mod_foo.so</p>
+<p>LoadModule authz_host_module modules/mod_authz_host.so</p>
+<p>LoadModule auth_basic_module modules/mod_auth_basic.so</p>
+<p>LoadModule authn_file_module modules/mod_authn_file.so</p>
+<p>LoadModule authz_user_module modules/mod_authz_user.so</p>
+<p>#LoadModule authz_groupfile_module modules/mod_authz_groupfile.so</p>
+<p>LoadModule include_module modules/mod_include.so</p>
+<p>LoadModule log_config_module modules/mod_log_config.so</p>
+<p>LoadModule env_module modules/mod_env.so</p>
+<p>#LoadModule mime_magic_module modules/mod_mime_magic.so</p>
+<p>#LoadModule expires_module modules/mod_expires.so</p>
+<p>LoadModule headers_module modules/mod_headers.so</p>
+<p>LoadModule unique_id_module modules/mod_unique_id.so</p>
+<p>LoadModule setenvif_module modules/mod_setenvif.so</p>
+<p><strong>LoadModule proxy_module modules/mod_proxy.so</strong></p>
+<p>LoadModule proxy_connect_module modules/mod_proxy_connect.so</p>
+<p>#LoadModule proxy_ftp_module modules/mod_proxy_ftp.so</p>
+<p>LoadModule proxy_http_module modules/mod_proxy_http.so</p>
+<p>LoadModule mime_module modules/mod_mime.so</p>
+<p>#LoadModule dav_module modules/mod_dav.so</p>
+<p>#LoadModule dav_fs_module modules/mod_dav_fs.so</p>
+<p>LoadModule autoindex_module modules/mod_autoindex.so</p>
+<p>#LoadModule asis_module modules/mod_asis.so</p>
+<p>#LoadModule info_module modules/mod_info.so</p>
+<p>LoadModule cgi_module modules/mod_cgi.so</p>
+<p>LoadModule dir_module modules/mod_dir.so</p>
+<p>LoadModule actions_module modules/mod_actions.so</p>
+<p>#LoadModule speling_module modules/mod_speling.so</p>
+<p>#LoadModule userdir_module modules/mod_userdir.so</p>
+<p>LoadModule alias_module modules/mod_alias.so</p>
+<p>#LoadModule rewrite_module modules/mod_rewrite.so</p>
+<p>#LoadModule deflate_module modules/mod_deflate.so</p>
+<p><a href="#id13"><span class="problematic" id="id14">**</span></a>LoadModule proxy_balancer_module modules/mod_proxy_balancer.so **</p>
+<p>Some other recommendations are:</p>
+<div class="line-block">
+<div class="line">* Timeouts</div>
+<div class="line">SSLDisable</div>
+<div class="line">SSLV3Timeout 18010</div>
+</div>
+<p>* Format log with router information</p>
+<div class="line-block">
+<div class="line">LogFormat &#8220;%h %l %u %t \&#8221;%r\&#8221; %&gt;s %b \&#8221;%{Referer}i\&#8221;
+\&#8221;%{User-Agent}i\&#8221; \&#8221;%{BALANCER_WORKER_ROUTE}e\&#8221;&#8221; combined</div>
+<div class="line">* set Max-Age to 12h (doesn&#8217;t work with IE)</div>
+<div class="line">or</div>
+<div class="line">* enable mod_expires and set: (this should be checked)</div>
+<div class="line">ExpiresActive On</div>
+<div class="line">ExpiresDefault &#8220;access plus 16 h&#8221;</div>
+</div>
+<p>See <a class="reference external" href="https://httpd.apache.org/docs/2.2/mod/mod_expires.html">https://httpd.apache.org/docs/2.2/mod/mod_expires.html</a> for more
+information.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201505/TN201505.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201501/TN201501.html" class="btn btn-neutral" title="Dynamic Directory Interface (DDI) and administration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

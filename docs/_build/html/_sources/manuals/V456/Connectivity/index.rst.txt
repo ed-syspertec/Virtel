@@ -1,2 +1,0 @@
-Virtel connectivity Guide
-=========================
