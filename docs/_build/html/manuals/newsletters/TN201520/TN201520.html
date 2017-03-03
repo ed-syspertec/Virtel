@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>—– ——– —————- —————– —————– &mdash; Virtel 1 documentation</title>
+  <title>Using the IBM System Logger with Virtel &mdash; Virtel 1 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="&lt;no title&gt;" href="../TN201522/TN201522.html"/>
-        <link rel="prev" title="&lt;no title&gt;" href="../TN201519/TN201519.html"/> 
+        <link rel="next" title="What’s new in Virtel 4.55" href="../TN201522/TN201522.html"/>
+        <link rel="prev" title="Processing the VTAM USS MSG10 buffer" href="../TN201519/TN201519.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -93,9 +93,16 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2015</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html">Administration with Admin (HTML)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html#dynamic-directory-interface">Dynamic Directory Interface</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html">Dynamic Directory Interface (DDI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201504/TN201504.html">Running multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201505/TN201505.html">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201506/TN201506.html">An example of using web services with Virtel Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201507/TN201507.html">Customising Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201515/TN201515.html">Using Virtel as a Secure Single Access Control Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201517/TN201517.html">Virtel Chinese Character Language Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201519/TN201519.html">Processing the VTAM USS MSG10 buffer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using the IBM System Logger with Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201522/TN201522.html">What’s new in Virtel 4.55</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
@@ -134,7 +141,7 @@
       
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
       
-    <li>&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</li>
+    <li>Using the IBM System Logger with Virtel</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -148,8 +155,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>Using the IBM System Logger with Virtel</p>
-<hr class="docutils" />
+  <div class="section" id="using-the-ibm-system-logger-with-virtel">
+<h1>Using the IBM System Logger with Virtel<a class="headerlink" href="#using-the-ibm-system-logger-with-virtel" title="Permalink to this headline">¶</a></h1>
 <p>With the latest release of Virtel, currently Release 4.55, Virtel has
 the ability to write all of its log records to IBM’s System Logger.</p>
 <p>To use this feature code LOG=LOGGER in the TCT and compile using a
@@ -160,33 +167,33 @@ SP000.SPTHOLT.DEV.LOADLIB is compatible with the
 SPTHOLT.VIRTEL.BASE455.MACLIB(VIRTERM) member.</p>
 <p>When you start Virtel it will attempt to connect to the predefined
 Virtel logstream. If the logstream doesn’t exists one will be created
-automatically. The following messages will appear in the log:-</p>
-<p>VIR0024I ATTACHING SUBTASKS</p>
-<p>IXC582I STRUCTURE VIRTEL_LOG_1 ALLOCATED BY SIZE/RATIOS. 596</p>
-<p>PHYSICAL STRUCTURE VERSION: CFF8ABE4 1865AA81</p>
-<p>STRUCTURE TYPE: LIST</p>
-<p>CFNAME: ZACF1</p>
-<p>ALLOCATION SIZE: 9 M</p>
-<p>POLICY SIZE: 9 M</p>
-<p>POLICY INITSIZE: 9 M</p>
-<p>POLICY MINSIZE: 0 K</p>
-<p>IXLCONN STRSIZE: 0 K</p>
-<p>ENTRY COUNT: 1274</p>
-<p>ELEMENT COUNT: 1179</p>
-<p>ENTRY:ELEMENT RATIO: 1 : 1</p>
-<p>ALLOCATION SIZE IS WITHIN CFRM POLICY DEFINITIONS</p>
-<p>IXL014I IXLCONN REQUEST FOR STRUCTURE VIRTEL_LOG_1 597</p>
-<p>WAS SUCCESSFUL. JOBNAME: IXGLOGR ASID: 0016</p>
-<p>CONNECTOR NAME: IXGLOGR_ZAMVS1 CFNAME: ZACF1</p>
-<p>IXL015I STRUCTURE ALLOCATION INFORMATION FOR 598</p>
-<p>STRUCTURE VIRTEL_LOG_1, CONNECTOR NAME IXGLOGR_ZAMVS1,</p>
-<p>CONNECTIVITY=DEFAULT</p>
-<p>CFNAME ALLOCATION STATUS/FAILURE REASON</p>
-<p>&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
-<p>ZACF1 STRUCTURE ALLOCATED AC001800</p>
-<p>ZACF2 PREFERRED CF ALREADY SELECTED AC001800</p>
-<p>PREFERRED CF HIGHER IN PREFLIST</p>
-<p>LOGGER CONNECTED</p>
+automatically. The following messages will appear in the log:-:</p>
+<p>VIR0024I ATTACHING SUBTASKS
+IXC582I STRUCTURE VIRTEL_LOG_1 ALLOCATED BY SIZE/RATIOS. 596
+PHYSICAL STRUCTURE VERSION: CFF8ABE4 1865AA81
+STRUCTURE TYPE: LIST
+CFNAME: ZACF1
+ALLOCATION SIZE: 9 M
+POLICY SIZE: 9 M
+POLICY INITSIZE: 9 M
+POLICY MINSIZE: 0 K
+IXLCONN STRSIZE: 0 K
+ENTRY COUNT: 1274
+ELEMENT COUNT: 1179
+ENTRY:ELEMENT RATIO: 1 : 1
+ALLOCATION SIZE IS WITHIN CFRM POLICY DEFINITIONS
+IXL014I IXLCONN REQUEST FOR STRUCTURE VIRTEL_LOG_1 597
+WAS SUCCESSFUL. JOBNAME: IXGLOGR ASID: 0016
+CONNECTOR NAME: IXGLOGR_ZAMVS1 CFNAME: ZACF1
+IXL015I STRUCTURE ALLOCATION INFORMATION FOR 598
+STRUCTURE VIRTEL_LOG_1, CONNECTOR NAME IXGLOGR_ZAMVS1,
+CONNECTIVITY=DEFAULT
+CFNAME ALLOCATION STATUS/FAILURE REASON
+&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+ZACF1 STRUCTURE ALLOCATED AC001800
+ZACF2 PREFERRED CF ALREADY SELECTED AC001800
+PREFERRED CF HIGHER IN PREFLIST
+LOGGER CONNECTED</p>
 <p>After this point all messages will be written to the logger, even
 responses to commands. Each Virtel that has LOG=LOGGER will connect to
 the structure. The last message you will see is:</p>
@@ -218,22 +225,15 @@ use the following JCL:-</p>
 <p>DATA TYPE(LOGR) REPORT(NO)</p>
 <p>LIST STRUCTURE NAME(VIRTEL_LOG_1) DETAIL(YES)</p>
 <p>LIST LOGSTREAM NAME(LOGGER.VIRTEL) DETAIL(YES)</p>
-<p>The output will look something like this:-</p>
-<p>Ext. &lt;SEQ#&gt; Lowest Blockid / Highest GMT / Highest Local / Status</p>
-<p>Highest Blockid Highest RBA System Name</p>
-<div class="section" id="id1">
-<h1>&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>*00001 A0000001 0000000000023F64 12/03/14 19:32:35 12/03/14 20:32:35</p>
-<p>0000000000047E76 00023F98 ZAMVS1</p>
-<p>A0000002 0000000000047EFC 12/03/14 21:49:42 12/03/14 22:49:42</p>
-<p>000000000006BE2C 00023FA1 ZAMVS1</p>
-<p>A0000003 000000000006BE9D 12/03/14 22:15:12 12/03/14 23:15:12</p>
-<p>000000000008FDEB 00023FB4 ZAMVS1</p>
-<p>A0000004 000000000008FE51 12/09/15 20:55:39 12/09/15 21:55:39</p>
-<p>00000000000B3D5B 00023F90 ZAMVS2</p>
-<p>A0000005 00000000000B3DE1 12/09/15 21:49:20 12/09/15 22:49:20 CURRENT</p>
-<p>00000000000CCBC7 00018E5F ZAMVS2</p>
-<p>NUMBER OF DATA SETS IN LOG STREAM: 5</p>
+<p>The output will look something like this:-:</p>
+<p>Ext. &lt;SEQ#&gt; Lowest Blockid / Highest GMT / Highest Local / Status Highest Blockid Highest RBA System Name
+&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
+<p>A0000001 0000000000023F64 12/03/14 19:32:35 12/03/14 20:32:35 0000000000047E76 00023F98 ZAMVS1
+A0000002 0000000000047EFC 12/03/14 21:49:42 12/03/14 22:49:42 000000000006BE2C 00023FA1 ZAMVS1
+A0000003 000000000006BE9D 12/03/14 22:15:12 12/03/14 23:15:12 000000000008FDEB 00023FB4 ZAMVS1
+A0000004 000000000008FE51 12/09/15 20:55:39 12/09/15 21:55:39 00000000000B3D5B 00023F90 ZAMVS2
+A0000005 00000000000B3DE1 12/09/15 21:49:20 12/09/15 22:49:20 CURRENT 00000000000CCBC7 00018E5F ZAMVS2
+NUMBER OF DATA SETS IN LOG STREAM: 5</p>
 <p>To delete the structure, run the following job:-</p>
 <p>//SPTHOLTC JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&amp;SYSUID</p>
 <p>//STEP1 EXEC PGM=IXCMIAPU,REGION=4M</p>
@@ -247,7 +247,7 @@ Virtel, issue the following command:-</p>
 <p>F VIRTEL,LOG=CONSOLE</p>
 <p>After this all Virtel messages will be written to the console.</p>
 <p>Example:-</p>
-<p><a href="#id2"><span class="problematic" id="id3">**</span></a>F SPVIR1A,LOG=CONSOLE **</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>F SPVIR1A,LOG=CONSOLE **</p>
 <p>VIR0238I VIRTEL LOG RECORDING TO CONSOLE</p>
 <p>F SPVIR1A,LINES</p>
 <p>VIR0200I LINES</p>
@@ -281,7 +281,7 @@ Virtel, issue the following command:-</p>
 <p><strong>COPY</strong></p>
 <p>Records are to be copied to the SYSLOG-format file. If COPY is not
 specified, no records are copied.</p>
-<p><a href="#id4"><span class="problematic" id="id5">**</span></a>start_date,end_date **</p>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>start_date,end_date **</p>
 <p>The starting and ending dates of the time span, both in the format
 YYYYDDD. start_date must not be later than end_date. end_date must
 not be later than today, the day the program runs. The default for
@@ -352,10 +352,10 @@ leaving something over 24 hours&#8217; worth of records in the log each time.</p
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201522/TN201522.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201522/TN201522.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.55" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201519/TN201519.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201519/TN201519.html" class="btn btn-neutral" title="Processing the VTAM USS MSG10 buffer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Customization at the Transaction level &mdash; Virtel 1 documentation</title>
+  <title>Customising Virtel in V4.56 &mdash; Virtel 1 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="&lt;no title&gt;" href="../TN201701/TN201701.html"/>
-        <link rel="prev" title="&lt;no title&gt;" href="../TN201609/TN201609.html"/> 
+        <link rel="next" title="Protecting business assets" href="../TN201701/TN201701.html"/>
+        <link rel="prev" title="Nailing LUS with an Identification scenario" href="../TN201609/TN201609.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -94,11 +94,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">**</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Customization at the Transaction level</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#print-style-sheet-pathtoprintcss-key-of-ocustom">print style sheet (“pathToPrintCss&nbsp;» key of oCustom)</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201602/TN201602.html">Installing Virtel V4.53 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201604/TN201604.html">Controlling LU Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201605/TN201605.html">CICS Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201606/TN201606.html">Virtel Screen Redesigner in action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201608/TN201608.html">Installing Virtel V4.56 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Nailing LUS with an Identification scenario</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Customising Virtel in V4.56</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
@@ -136,7 +141,7 @@
       
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
       
-    <li>Customization at the Transaction level</li>
+    <li>Customising Virtel in V4.56</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -150,8 +155,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>Customising Virtel in V4.56</p>
-<hr class="docutils" />
+  <div class="section" id="customising-virtel-in-v4-56">
+<h1>Customising Virtel in V4.56<a class="headerlink" href="#customising-virtel-in-v4-56" title="Permalink to this headline">¶</a></h1>
 <p>Virtel V4.56 introduces some enhancements to customisation. With Virtel
 4.56, customization is possible at an entry point level, effecting all
 transactions for that entry point, or a transaction level, effecting
@@ -177,8 +182,7 @@ you would modify transaction CLI-03P to point to the CLI-DIR and upload
 the modified w2hparm.js to that directory. You can retrieve the default
 w2hparm.js file by entering the following URL:-</p>
 <p><a class="reference external" href="http://myCompanyVirtel:41001/w2h/sources.zip">http://myCompanyVirtel:41001/w2h/sources.zip</a></p>
-<div class="section" id="customization-at-the-transaction-level">
-<h1>Customization at the Transaction level<a class="headerlink" href="#customization-at-the-transaction-level" title="Permalink to this headline">¶</a></h1>
+<p>&#8211;Customization at the Transaction level&#8211;</p>
 <p>Customized components are now located in a Virtel “option” directory
 identified by the new pathname /option/. By default this pathname will
 point to the recommended customised directory CLI-DIR which is located
@@ -490,8 +494,7 @@ modification of Web Access settings</em>”, in the <em>Virtel Web Access User
 Guide, chapter 1.7</em> for further details. The migration of w2hparm can
 come from several sources:- user local storage, transaction option, line
 option w2hparm.js (CLI or other), global option w2hparm.js (W2H).</p>
-<div class="section" id="print-style-sheet-pathtoprintcss-key-of-ocustom">
-<h2>print style sheet (“pathToPrintCss&nbsp;» key of oCustom)<a class="headerlink" href="#print-style-sheet-pathtoprintcss-key-of-ocustom" title="Permalink to this headline">¶</a></h2>
+<p>&#8211;print style sheet (“pathToPrintCss&nbsp;» key of oCustom)&#8211;</p>
 <p>Customize the print style.</p>
 <p><strong>help page</strong> <strong>(“</strong>&#8220;pathToHelp&#8221;&nbsp;» key of oCustom)</p>
 <p>Customize the help page.</p>
@@ -502,8 +505,7 @@ delivered with Virtel along with the relevant transactions.</p>
 the CLI-DIR which is found in the HTMLTRSF file. Do not customize the
 W2H default modules in the W2H-DIR. These will be replaced during a
 migration of Virtel so any changes or updates will be lost.</p>
-<div class="section" id="virtel-application-menu">
-<h3>Virtel Application menu<a class="headerlink" href="#virtel-application-menu" title="Permalink to this headline">¶</a></h3>
+<p>==Virtel Application menu==</p>
 <p>The Virtel application menu is a particular case of a template which
 depends on a VIRTEL transaction (“applist”) which might have an option
 field specified. For customized components applicably only to
@@ -511,8 +513,6 @@ applications associated with the menu it is recommended that a specific
 option (e.g “appmenu”) is defined for this transaction. This will avoid
 JavaScript or CSS conflicts for applications not associated the Virtel
 application menu.</p>
-</div>
-</div>
 </div>
 
 
@@ -522,10 +522,10 @@ application menu.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201701/TN201701.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201701/TN201701.html" class="btn btn-neutral float-right" title="Protecting business assets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201609/TN201609.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201609/TN201609.html" class="btn btn-neutral" title="Nailing LUS with an Identification scenario" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
