@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Virtel 4.56 Customisation using “Options” &mdash; Virtel 1 documentation</title>
+  <title>Customization at the Transaction level &mdash; Virtel 1 documentation</title>
   
 
   
@@ -118,7 +118,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>Virtel 4.56 Customisation using &#8220;Options&#8221;</li>
+    <li>Customization at the Transaction level</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -132,8 +132,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="virtel-4-56-customisation-using-options">
-<h1>Virtel 4.56 Customisation using &#8220;Options&#8221;<a class="headerlink" href="#virtel-4-56-customisation-using-options" title="Permalink to this headline">¶</a></h1>
+  <p>2016/11</p>
 <p>Virtel V4.56 introduces some enhancements to customisation. With Virtel
 4.56, customization is possible at an entry point level, effecting all
 transactions for that entry point, or a transaction level, effecting
@@ -159,7 +158,8 @@ you would modify transaction CLI-03P to point to the CLI-DIR and upload
 the modified w2hparm.js to that directory. You can retrieve the default
 w2hparm.js file by entering the following URL:-</p>
 <p><a class="reference external" href="http://myCompanyVirtel:41001/w2h/sources.zip">http://myCompanyVirtel:41001/w2h/sources.zip</a></p>
-<p>&#8211;Customization at the Transaction level&#8211;</p>
+<div class="section" id="customization-at-the-transaction-level">
+<h1>Customization at the Transaction level<a class="headerlink" href="#customization-at-the-transaction-level" title="Permalink to this headline">¶</a></h1>
 <p>Customized components are now located in a Virtel “option” directory
 identified by the new pathname /option/. By default this pathname will
 point to the recommended customised directory CLI-DIR which is located
@@ -471,7 +471,8 @@ modification of Web Access settings</em>”, in the <em>Virtel Web Access User
 Guide, chapter 1.7</em> for further details. The migration of w2hparm can
 come from several sources:- user local storage, transaction option, line
 option w2hparm.js (CLI or other), global option w2hparm.js (W2H).</p>
-<p>&#8211;print style sheet (“pathToPrintCss&nbsp;» key of oCustom)&#8211;</p>
+<div class="section" id="print-style-sheet-pathtoprintcss-key-of-ocustom">
+<h2>print style sheet (“pathToPrintCss&nbsp;» key of oCustom)<a class="headerlink" href="#print-style-sheet-pathtoprintcss-key-of-ocustom" title="Permalink to this headline">¶</a></h2>
 <p>Customize the print style.</p>
 <p><strong>help page</strong> <strong>(“</strong>&#8220;pathToHelp&#8221;&nbsp;» key of oCustom)</p>
 <p>Customize the help page.</p>
@@ -482,9 +483,8 @@ delivered with Virtel along with the relevant transactions.</p>
 the CLI-DIR which is found in the HTMLTRSF file. Do not customize the
 W2H default modules in the W2H-DIR. These will be replaced during a
 migration of Virtel so any changes or updates will be lost.</p>
-</div>
 <div class="section" id="virtel-application-menu">
-<h1>Virtel Application menu<a class="headerlink" href="#virtel-application-menu" title="Permalink to this headline">¶</a></h1>
+<h3>Virtel Application menu<a class="headerlink" href="#virtel-application-menu" title="Permalink to this headline">¶</a></h3>
 <p>The Virtel application menu is a particular case of a template which
 depends on a VIRTEL transaction (“applist”) which might have an option
 field specified. For customized components applicably only to
@@ -492,6 +492,8 @@ applications associated with the menu it is recommended that a specific
 option (e.g “appmenu”) is defined for this transaction. This will avoid
 JavaScript or CSS conflicts for applications not associated the Virtel
 application menu.</p>
+</div>
+</div>
 </div>
 
 

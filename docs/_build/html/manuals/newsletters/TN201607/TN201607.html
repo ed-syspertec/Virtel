@@ -249,7 +249,8 @@ restarted at its entry point.</p>
 <p><strong>New TRSF directory entry - DOC</strong></p>
 <p>This directory has been added to the distributed SAMP TRSF files. It
 will contain administration and other pertinent documentation files.</p>
-<p><strong>New FOREACH$/ENDFOR$ Scenario statements</strong></p>
+<p>**
+New FOREACH$/ENDFOR$ Scenario statements**</p>
 <p>Allows a FOR EACH loop in scenarios thru two new instructions: FOREACH$
 and ENDFOR$.</p>
 <p>Example:-</p>
@@ -495,7 +496,8 @@ variable operands of the COPY$ instruction prior to performing the copy.</p>
 <p>LIST=(&#8216;string1&#8217;,&#8217;*var1&#8217;,VARIABLE,&#8217;var2&#8217;)</p>
 <p>The variable VAR1 is created/modified, with &#8216;string1&#8217; copied as is, var1
 and var2 left and right trimmed.</p>
-<p><strong>Indirection on OUTPUT-FILE-TO-VARIABLE FILE=</strong></p>
+<p>**
+Indirection on OUTPUT-FILE-TO-VARIABLE FILE=**</p>
 <p>This feature allows indirection of a file name. The filename is pointed
 to by the variable *variable_name.</p>
 <p>Example:</p>
@@ -589,7 +591,8 @@ following command response:-</p>
 <p>PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000</p>
 <p>ALLOC=0001213K, FREE=0000314K, TOTAL=0001536K</p>
 <p>VIR0272I END</p>
-<p><strong>VMDT Enablement/Dis-enablement</strong></p>
+<p>**
+<a href="#id3"><span class="problematic" id="id4">**</span></a>VMDT Enablement/Dis-enablement</p>
 <p>The memory diagnostic tool is activated/deactivated through the commands
 or by TCT parameters</p>
 <p>Commands:-</p>
@@ -705,7 +708,8 @@ Virtel.</p>
 Memory diagnostics disabled.</p>
 <p>Action: Virtel continues but you should contact support. Schedule a
 restart of Virtel.</p>
-<p><strong>New diagnostic option - SNAPMSG</strong></p>
+<p>**
+New diagnostic option - SNAPMSG**</p>
 <p>The SNAPMSG enhancement allows a SNAP or DUMP to be taken whenever a
 particular message number is issued by VIRTEL. The command has an
 additional search field which can be used to identify a message with a
@@ -775,7 +779,8 @@ ABEND=ASRA TERM=CLVTA078 APPLICATION=APPLHOLT</p>
 <p>953 C: 000E5178 D: 0011CCE8</p>
 <p>953 E: 0000002E F: 0000000F</p>
 <p>953 END OF SYMPTOM DUMP</p>
-<p><strong>Virtel Logger extract and format program.</strong></p>
+<p>**
+Virtel Logger extract and format program.**</p>
 <p>VIR0002B is a program that can be run to extract the VIRTEL records from
 the System Logger. The VIRTEL log is written to the system logger when
 LOG=LOGGER is specified in the TCT.</p>
@@ -923,7 +928,7 @@ in the JCL PARM.</p>
 <p>Action : Virtel will use the IP address in the JCL PARM rather than
 default to the IP address returned by GETHOSTID.</p>
 <p><strong>D VIRTEL,LINES command response updated</strong></p>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>VIR0202I ALLOCATED IP ADDRESS =nnn.nnn.nnn.nnn **</p>
+<p><a href="#id5"><span class="problematic" id="id6">**</span></a>VIR0202I ALLOCATED IP ADDRESS =nnn.nnn.nnn.nnn **</p>
 <p>Module :VIR0002</p>
 <p>Meaning :An additional message has been added to the F VIRTEL,LINES
 command to indicate the IP address for lines that default to GETHOSTID
@@ -1059,7 +1064,8 @@ allocation return and reason codes are displayed.</p>
 <p>Action : Check the SVC99 codes to determine why the GDG could not be
 allocated. Check that the correct GDG base name is being. For additional
 support contact Technical Support.</p>
-<p><strong>USSTAB MSG10 Support</strong></p>
+<p>**
+USSTAB MSG10 Support**</p>
 <p>VIRTEL 4.55 now implements the VIR0021W USSTAB menu program. This
 program will interrogate the customers USSTAB module and create an
 equivalent 3270 MAP. The MAP will be passed to the VIR0010 routine where
@@ -1076,6 +1082,8 @@ started procedure. SAMPLIB member USSVIRT can be used to generate the
 default Virtel USSTAB USSVIRT.</p>
 <p><strong>Note: This is a chargeable feature and you should contact your sales
 representative for further details.</strong></p>
+<div class="section" id="id9">
+<h2><a href="#id7"><span class="problematic" id="id8">**</span></a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p><strong>FAQ</strong></p>
 <p><strong>Q1</strong>. My cursor disappears in a reverse video field.</p>
 <p><strong>Solution</strong></p>
@@ -1106,7 +1114,8 @@ browser cache. Now select Admin (HTML) from the Administration options
 and you should see the Administration panel.</p>
 <p><a class="reference internal" href="../../../_images/image320.png"><img alt="image2" src="../../../_images/image320.png" style="width: 6.26806in; height: 2.43611in;" /></a></p>
 <p>Figure Administration Portal</p>
-<p><strong>Q3</strong>. My customised custom.js no longer works.</p>
+<p>**
+Q3**. My customised custom.js no longer works.</p>
 <p><strong>Solution</strong></p>
 <p>Recompile your TCT with the option:-</p>
 <p>HTSETn = (OPTION-DEFAULT-COMPATIBILITY) /* n = 1-4 */</p>
@@ -1126,6 +1135,7 @@ file. Rebuild and upload you user scenarios to the new SCE-DIR.</p>
 <p>Note. It is recommended that user scenarios are maintained in a separate
 directory associated with the HTMLTRSF VSAM file. In this way they will
 not be replaced with a new release of Virtel.</p>
+</div>
 </div>
 
 
