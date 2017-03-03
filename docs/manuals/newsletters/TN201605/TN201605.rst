@@ -1,4 +1,5 @@
 CICS Printing
+
 =============
 
 In this newsletter we discuss printing from a CICS application to a
@@ -72,7 +73,7 @@ characteristics.
 
 |image0|
 
-Figure 1 Virtel Terminal Display
+Figure Virtel Terminal Display
 
 Display REHVT000 has an associate relay of REHIP000 which is defined as
 a Type = P. Type = P indicates that this is a dynamically allocated
@@ -89,11 +90,11 @@ LU REHIP000.
 
 |image1|
 
-Figure 2 CICS Display definition
+Figure CICS Display definition
 
 |image2|
 
-Figure 3 CICS Printer Definition
+Figure CICS Printer Definition
 
 Note that the characteristics for each device is determined by the
 TYpeterm association. For the printer we are using a user defined
@@ -101,7 +102,7 @@ Typeterm called IMP3270P.
 
 |image3|
 
-Figure 4 CICS Typeterm definition for the printer
+Figure CICS Typeterm definition for the printer
 
 Within the Typeterm definition the following Operation properties are
 set to enable dynamic printer acquirement and release with CICS. The
@@ -109,7 +110,7 @@ Typeterm definition is also associated with a Device type of 3270P.
 
 |image4|
 
-Figure 5 CICS Printer Operational Properties
+Figure CICS Printer Operational Properties
 
 The CICS application we use is a simple customer inquiry application
 which has a print facility. Logging onto the application using Virtel
@@ -130,7 +131,7 @@ LUs displayed in the bottom right corner.
 
 |image5|
 
-Figure 6 Logging onto CICS
+Figure Logging onto CICS
 
 After logging onto CICS we access the application by entering the
 transaction id MENU. This displays a menu list of available options with
@@ -138,14 +139,14 @@ the CICS application.
 
 |image6|
 
-Figure 7 CICS Application Menu
+Figure CICS Application Menu
 
 Option 1 is selected to bring up the customer inquiry panel and then a
 customer number is entered to bring up the relevant customer detail.
 
 |image7|
 
-Figure 8 Application inquiry display
+Figure Application inquiry display
 
 PF9 is selected to trigger a print operation. A small print ICON box
 appears in the Virtel tool bar on the right hand side and a message
@@ -154,7 +155,7 @@ request has been sent to printed id EHS0.
 
 |image8|
 
-Figure 9 Print request acknowledgment
+Figure Print request acknowledgment
 
 If we look at the Virtel log we can see the following messages.
 
@@ -171,7 +172,7 @@ Note that no pagination of formatting takes place in this display.
 
 |image9|
 
-Figure 10 Virtel printo output display
+Figure Virtel printo output display
 
 If we right click and view the source of this template we can see that
 Virtel has imbedded pagination tags as required by the CICS transaction.
@@ -181,7 +182,7 @@ of the document.
 
 |image10|
 
-Figure 11 Virtel inserted print formatting controls
+Figure Virtel inserted print formatting controls
 
 Closing this browser window and then right click and print on the
 printer template display will drive the browser printer interface. From
@@ -192,7 +193,7 @@ save it as a PDF.
 
 |image11|
 
-Figure 12 Browser Print Window
+Figure Browser Print Window
 
 One we have processed the document the browser window will close and we
 are returned to the application display. Pressing enter will clear the
@@ -200,7 +201,7 @@ print ICON and print message.
 
 |image12|
 
-Figure 13 Pressing enter to clear print request
+Figure Pressing enter to clear print request
 
 **Sharing Virtel printers**
 
@@ -214,7 +215,7 @@ after completing the print request in the CICS application.
 
 |image13|
 
-Figure 14 CICS Printer State after printing in CICS
+Figure CICS Printer State after printing in CICS
 
 From within TSO we issue the following commands to drive a GDDM print
 request towards REHIP000.
@@ -236,7 +237,7 @@ from GDDM and not CICS.
 
 |image14|
 
-Figure 15 Printer Sharing
+Figure Printer Sharing
 
 In the Virtel log we can see the following messages. This time it is
 application GDDMPRTS that is connecting to the printer and not SPCICST.
@@ -296,7 +297,7 @@ indicates a SCS print.
 
 |image15|
 
-Figure 16 Failed SCS print request
+Figure Failed SCS print request
 
 If we look into the Virtel log we can see the following messages.
 
@@ -318,7 +319,7 @@ display.
 
 |image16|
 
-Figure 17 Transaction with no input scenario
+Figure Transaction with no input scenario
 
 We can see that no input scenario is associated this application. SCS
 printing will require a scenario. Three scenarios are available:-
@@ -336,7 +337,7 @@ Virtel transaction definition and add the scenario SCENFPCL.
 
 |image17|
 
-Figure 18 Transaction with input scenario
+Figure Transaction with input scenario
 
 After restarting Virtel and repeating the print request we are presented
 with a dialog box which enables us to save the raw print data stream to
@@ -344,7 +345,7 @@ a file of file type PCL.
 
 |image18|
 
-Figure 19 Successful print with SCS
+Figure Successful print with SCS
 
 In the Virtel log we can see the following messages.
 
@@ -367,7 +368,7 @@ correctly.
 
 |image19|
 
-Figure 20 SCS Print file
+Figure SCS Print file
 
 **Correcting the Virtel definitions for SCS printing**
 
@@ -382,7 +383,7 @@ display now looks like this.
 
 |image20|
 
-Figure 21 Defining a Virtel SCS printer terminal
+Figure Defining a Virtel SCS printer terminal
 
 We also have to correct the CICS definition so that the terminal EHS0 is
 associated with the Virtel printer definition REHIM000. We use CEDA to
@@ -413,7 +414,7 @@ For 3270 printing, Virtel has an auto-print settings option.
 
 |image24|
 
-Figure 22 Auto Print Option
+Figure Auto Print Option
 
 When selected this has the effect of automatically opening the browsers
 printer support window after receiving a print request. You do not have

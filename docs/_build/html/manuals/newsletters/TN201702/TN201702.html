@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="&lt;no title&gt;" href="../TN201703/TN201703.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../TN201701/TN201701.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -118,6 +121,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
     <li>&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -132,8 +137,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>2017/02</p>
-<p><strong>Protecting Virtel Applications with Shibboleth</strong></p>
+  <p>Protecting Virtel Applications with Shibboleth</p>
+<hr class="docutils" />
 <p>This newsletter provides a summary of the configuration tasks involved
 in setting up a Shibboleth / Virtel SAML environment. It does not go
 through the Shibboleth IDP or SP installation in detail. The reader
@@ -185,8 +190,8 @@ reference.</p>
 <p>Note: that our Shibboleth testing we did not use client certificates in
 establishing a session with Virtel.</p>
 <p><strong>Flow overview</strong></p>
-<p><a class="reference internal" href="../../../_images/image19.jpg"><img alt="image0" src="../../../_images/image19.jpg" style="width: 6.26806in; height: 3.68681in;" /></a></p>
-<p>Figure 1 Overview of logon sequence</p>
+<p><a class="reference internal" href="../../../_images/image18.jpg"><img alt="image0" src="../../../_images/image18.jpg" style="width: 6.26806in; height: 3.68681in;" /></a></p>
+<p>Figure Overview of logon sequence</p>
 <ol class="arabic">
 <li><p class="first">User accesses Virtel entity through URL
 <a class="reference external" href="https://sp.syspertec.com/Virtel">https://sp.syspertec.com/Virtel</a></p>
@@ -319,7 +324,7 @@ request towards Virtel.</p>
 <p>After installing XAMPP and the Shibboleth V2 make sure that the Windows
 Service is running:-</p>
 <p><a class="reference internal" href="../../../_images/image514.png"><img alt="image4" src="../../../_images/image514.png" style="width: 6.26806in; height: 5.16806in;" /></a></p>
-<p>Figure 2 Shibboleth Window Service running.</p>
+<p>Figure Shibboleth Window Service running.</p>
 <p>**
 Shibboleth Configuration**</p>
 <p>The files modified in the Shibboleth setup for the SP are as follows:-</p>
@@ -404,12 +409,21 @@ pointed at the LDAP Server.</p>
 <p>Once configured correctly, the client can access the LDAP structures and
 build the necessary security attributes that the IDP will require.</p>
 <p><a class="reference internal" href="../../../_images/image614.png"><img alt="image5" src="../../../_images/image614.png" style="width: 6.26806in; height: 4.69306in;" /></a></p>
-<p>Figure 3 Example of the Apache DS Client</p>
+<p>Figure Example of the Apache DS Client</p>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201703/TN201703.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201701/TN201701.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

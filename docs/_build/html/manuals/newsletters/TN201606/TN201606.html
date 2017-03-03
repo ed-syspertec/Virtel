@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>VSR in action &mdash; Virtel 1 documentation</title>
+  <title>&lt;no title&gt; &mdash; Virtel 1 documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="**" href="../TN201607/TN201607.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../TN201605/TN201605.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -118,7 +121,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>VSR in action</li>
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -132,8 +137,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="vsr-in-action">
-<h1>VSR in action<a class="headerlink" href="#vsr-in-action" title="Permalink to this headline">¶</a></h1>
+  <p>Virtel Screen Redesigner in action</p>
+<hr class="docutils" />
 <p>In this newsletter we work through the Virtel Screen Redesigner and
 present an actual modernization of a 3270 application. This newsletter
 is not for the faint hearted and demands that your have a thorough
@@ -176,7 +181,7 @@ will be called MENU I create the transactions MENUCAPT and MENUAJAX.
 MENU is also the CICS transaction that invokes our 3270 MENU
 application.</p>
 <p>Our MENUCAPT transaction looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image136.png"><img alt="image0" src="../../../_images/image136.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
 <p>And our MENUAJAX transaction look like this:</p>
 <p><a class="reference internal" href="../../../_images/image219.png"><img alt="image1" src="../../../_images/image219.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
 <p>The TIOA string enables Virtel to use logon to CICS using the user
@@ -200,7 +205,7 @@ need to map out the navigability of the application and understand which
 maps are called based upon user actions. Our application looks like
 this:-</p>
 <p><a class="reference internal" href="../../../_images/image5.jpg"><img alt="image4" src="../../../_images/image5.jpg" style="width: 4.74324in; height: 3.37500in;" /></a></p>
-<p>Figure 1 - MENU Maps layout</p>
+<p>Figure - MENU Maps layout</p>
 <p><strong>Scenarios</strong></p>
 <p>Within VSR we use Virtel scenarios to analyze a 3270 screen buffer in
 order to produce the relevant HTML templates. Scenarios are loaded from
@@ -254,7 +259,7 @@ files in the development directory to CLI. The three files we move into
 CLI are <em>custom.js</em>, <em>vsr.js</em> and <em>option.vsr</em>.</p>
 <p>Note, these files are not required when modernizing in “standard” or
 production mode.</p>
-<p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 6.26806in; height: 3.90000in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image88.png"><img alt="image7" src="../../../_images/image88.png" style="width: 6.26806in; height: 3.90000in;" /></a></p>
 <p>After successfully uploading the files I close the upload window and
 refresh my VSR screen using refresh ICON in the top right corner.</p>
 <p>The next stage is to download my first CICS MAP from the mainframe and
@@ -264,13 +269,13 @@ the mainframe. I download the map as MENSET1.MAP and save it in MAP sub
 directory. Next, in section 2 of the VSR project window I enter the name
 of the map file and press the green LOAD ICON. The map loads and the
 Source map section is updated.</p>
-<p><a class="reference internal" href="../../../_images/image98.png"><img alt="image8" src="../../../_images/image98.png" style="width: 6.02083in; height: 4.78678in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image97.png"><img alt="image8" src="../../../_images/image97.png" style="width: 6.02083in; height: 4.78678in;" /></a></p>
 <p>Having loaded my CICS MAP into VSR I can now create the work bench by
 pressing the CREATE ICON in the workbench area. The workbench is filled
 with rows, each row relating to a field with my CICS Map. I save the map
 as a JSON file called menmap1.json. VSR saves workbench maps as JSON
 files so I will use the JSON suffix for saving MAP elements.</p>
-<p><a class="reference internal" href="../../../_images/image108.png"><img alt="image9" src="../../../_images/image108.png" style="width: 6.26806in; height: 4.98750in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image107.png"><img alt="image9" src="../../../_images/image107.png" style="width: 6.26806in; height: 4.98750in;" /></a></p>
 <p>At this point I can start to modernize my 3270 MENMAP1 MAP using the
 Choice column drop down. The drop down provides a variety on Virtel
 conversion and design options. These options will generate the necessary
@@ -289,7 +294,7 @@ the VSR display, section 5. This generates the Virtel tags which will
 support my modernized template. I save the template as Testmenmap1. The
 default extension of HTML will be added.</p>
 <p>My VSR window now looks like:</p>
-<p><a class="reference internal" href="../../../_images/image1113.png"><img alt="image10" src="../../../_images/image1113.png" style="width: 6.26806in; height: 6.43681in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1112.png"><img alt="image10" src="../../../_images/image1112.png" style="width: 6.26806in; height: 6.43681in;" /></a></p>
 <p><strong>Testing changes with “Test Mode”</strong></p>
 <p>One of the features of VSR is that you can view your modernization
 changes as you develop and before you commit them to standard or
@@ -307,7 +312,7 @@ template.</p>
 <p><a class="reference internal" href="../../../_images/image1211.png"><img alt="image11" src="../../../_images/image1211.png" style="width: 6.26806in; height: 4.63681in;" /></a></p>
 <p>After pressing the “render” ICON we are presented with are modernized
 screen:-</p>
-<p><a class="reference internal" href="../../../_images/image137.png"><img alt="image12" src="../../../_images/image137.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image134.png"><img alt="image12" src="../../../_images/image134.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
 <p>Nothing too exciting here. We can see that Virtel has taken the various
 elements from the Map, created the Virtel tags within the template, and
 displayed them without any special markup. Of course, the markup is down
@@ -344,12 +349,12 @@ dynamic form is called “VirtelForm”.</p>
 <p>We upload testmenmap1.html through the upload ICON in the ‘Try it’
 section to the CLI-DIR directory and we re-capture and render our
 changes to view the changes we have made. Here are the results:-</p>
-<p><a class="reference internal" href="../../../_images/image145.png"><img alt="image13" src="../../../_images/image145.png" style="width: 4.52083in; height: 4.66458in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image144.png"><img alt="image13" src="../../../_images/image144.png" style="width: 4.52083in; height: 4.66458in;" /></a></p>
 <p>Well, this confirms that our menu.css is being used to modernize our
 presentation. We continue modifying our menu.css until we get the
 desired look. We remove the Virtel logo and add our own, change a few
 other things and end up with a page that looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image155.png"><img alt="image14" src="../../../_images/image155.png" style="width: 4.69792in; height: 4.86447in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image154.png"><img alt="image14" src="../../../_images/image154.png" style="width: 4.69792in; height: 4.86447in;" /></a></p>
 <p>So we have changed the static elements of our modernized display by
 modifying the pageTop and pageBottom web elements but our dynamic middle
 section, as represented by the template tags that VSR has generated
@@ -511,12 +516,20 @@ Appendix A**</p>
 <p>*</p>
 <p>SCRNEND</p>
 <p>END</p>
-</div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201607/TN201607.html" class="btn btn-neutral float-right" title="**" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201605/TN201605.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

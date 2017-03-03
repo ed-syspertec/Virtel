@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Controlling LU Names &mdash; Virtel 1 documentation</title>
+  <title>&lt;no title&gt; &mdash; Virtel 1 documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="&lt;no title&gt;" href="../TN201605/TN201605.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../TN201603/TN201603.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -118,7 +121,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>Controlling LU Names</li>
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -132,8 +137,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="controlling-lu-names">
-<h1>Controlling LU Names<a class="headerlink" href="#controlling-lu-names" title="Permalink to this headline">¶</a></h1>
+  <p>Controlling LU Names</p>
+<hr class="docutils" />
 <p>When a user connects to a 3270 application through VIRTEL Web Access,
 VIRTEL makes it appear to the application as if the user is connecting
 from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is
@@ -291,12 +296,13 @@ and passes it into the start command. Following the Virtel transaction I
 wish to execute which in this case is an APPLIST menu list.</p>
 <p>The start command will open a default browser window and connect to
 Virtel:-</p>
-<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
-<p>Figure Passing User Data toVirtel</p>
+<p><a class="reference internal" href="../../../_images/image128.png"><img alt="image0" src="../../../_images/image128.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
+<p>Figure 1 Passing User Data toVirtel</p>
 <p>When a transaction is selected from the menu list the RULE will be
 invoked to allocate the correct LUNAME.</p>
 <p><a class="reference internal" href="../../../_images/image216.png"><img alt="image1" src="../../../_images/image216.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
-<p>Figure Selecting a LU name through a rule and work station id in the URL</p>
+<p>Figure 2 Selecting a LU name through a rule and work station id in the
+URL</p>
 <p>The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from
 the VIRTEL terminal pool associated with the Virtel line. In this case
 relay LUNAME EHPMA000 has been allocated.</p>
@@ -349,7 +355,7 @@ Virtel relay LUNAME name. For this example the rule looks like:-</p>
 <p>We use the special PARAM=$URL$ which indicates that the VTAM LU Name to
 be used is the user data passed in the URL.</p>
 <p><a class="reference internal" href="../../../_images/image317.png"><img alt="image2" src="../../../_images/image317.png" style="width: 6.26806in; height: 4.76736in;" /></a></p>
-<p>Figure Using $URL$ to pass a LU name in the URL.</p>
+<p>Figure 3Using $URL$ to pass a LU name in the URL.</p>
 <p>The user data in the URL, in this case EHPMA00*, will be added to each
 transaction in the APPLIST menu and used as the Virtel relay LUNAME.
 When connecting to an application VIRTEL will use the LU name defined in
@@ -373,22 +379,22 @@ are:-</p>
 <p>Transactions must specify $LINE$ in the “Pseudo-terminals” field.</p>
 <p>Here is the line definition:-</p>
 <p><a class="reference internal" href="../../../_images/image414.png"><img alt="image3" src="../../../_images/image414.png" style="width: 4.66650in; height: 3.16667in;" /></a></p>
-<p>Figure Line definition for non-predefined LU names.</p>
+<p>Figure 4 Line definition for non-predefined LU names.</p>
 <p>And the Pool definition:-</p>
 <p><a class="reference internal" href="../../../_images/image512.png"><img alt="image4" src="../../../_images/image512.png" style="width: 4.68750in; height: 3.15287in;" /></a></p>
-<p>Figure Pool definition for non-predefined LU Names</p>
+<p>Figure 5 Pool definition for non-predefined LU Names</p>
 <p>And an example of a transaction definition. Note that the
 Psuedo-Terminal is defined as $LINE$. We have also assign a printer
 definition to this setup. So if our LU relay name was HOLTWIN7 then our
 associated printer LU would be HOLTWINP.</p>
 <p><a class="reference internal" href="../../../_images/image611.png"><img alt="image5" src="../../../_images/image611.png" style="width: 4.82292in; height: 3.24663in;" /></a></p>
-<p>Figure Transaction definition for non-predefined LU Names</p>
+<p>Figure 6 Transaction definition for non-predefined LU Names</p>
 <p>Accessing the transaction TSOF would be through the following URL
 forcing the relay LU NAME to HOLTWIN7. We would still have to define a
 terminal pool for *DYNPOOL, but we avoid having to define individual
 terminal definitions, or ranges of, for every static terminals.</p>
 <p><a class="reference internal" href="../../../_images/image78.png"><img alt="image6" src="../../../_images/image78.png" style="width: 6.06250in; height: 4.59154in;" /></a></p>
-<p>Figure Access a Transaction with the ForceLUNAME parameter.</p>
+<p>Figure 7 Access a Transaction with the ForceLUNAME parameter.</p>
 <ol class="arabic simple">
 <li><a href="#id3"><span class="problematic" id="id4">**</span></a>LU Nailing using a cookie (Correspondent Sub Application) **</li>
 </ol>
@@ -526,12 +532,20 @@ assigned to clients whose IP address matches this rule.</p>
 <p>ForcedLUNAME <em>Virtel - Connectivity Guide, section 2.3.1.3</em></p>
 <p>Correspondent Management <em>Virtel - How to Activate LU Nailing.</em></p>
 <p><em>Virtel - Web Access User Guide</em></p>
-</div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201605/TN201605.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201603/TN201603.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

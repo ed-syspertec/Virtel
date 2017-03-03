@@ -33,7 +33,9 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../TN201703/TN201703.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -118,6 +120,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
     <li>&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -132,7 +136,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p><strong>Virtel Macros</strong></p>
+  <p>Virtel Macros</p>
+<hr class="docutils" />
 <p><strong>*Note:</strong> This Newsletter applies to Virtel 4.56(updt5484) running with
 the Virtel default parameters or in Virtel “Compatibility mode”. See
 Newsletters TN 2016-08 and TN 2016-11 for further details on how to
@@ -159,7 +164,7 @@ interface. *</p>
 displayed in the Virtel tool bar. These are the red record/stop button
 and the green triangular display button.</p>
 <p><strong>The Record function</strong></p>
-<p><a class="reference internal" href="../../../_images/image147.png"><img alt="image0" src="../../../_images/image147.png" style="width: 6.30000in; height: 1.51389in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image139.png"><img alt="image0" src="../../../_images/image139.png" style="width: 6.30000in; height: 1.51389in;" /></a></p>
 <p>Figure 1 - The Macro Record ICON</p>
 <p>The record function is an on/off button that will record key strokes.
 When recording, the ICON will flash until it is clicked at which point
@@ -183,7 +188,7 @@ The Display button**</p>
 here a context menu can be opened against each macro using the mouse
 right click. This will provide delete, edit, save as and run functions.</p>
 <p><a class="reference internal" href="../../../_images/image324.png"><img alt="image2" src="../../../_images/image324.png" style="width: 6.06335in; height: 5.36533in;" /></a></p>
-<p>Figure 3 Context menu associated with a macro</p>
+<p>Figure Context menu associated with a macro</p>
 <p><strong>Export and Import options</strong></p>
 <p>Macros can be exported or imported using the Export and Import buttons.
 On export, the macros.json file will be created. If you plan to migrate
@@ -219,7 +224,7 @@ CLI directory. A modified w2hparm.js file will be uploaded to the CLI
 directory. Using the CLI directory will avoid any changes being lost
 during a Virtel upgrade.</p>
 <p><a class="reference internal" href="../../../_images/image420.png"><img alt="image3" src="../../../_images/image420.png" style="width: 4.71111in; height: 4.41667in;" /></a></p>
-<p>Figure 4 Modified CLI-03P transaction</p>
+<p>Figure Modified CLI-03P transaction</p>
 <p>To use the DDI interface the following option must be set in the
 w2hparm.js member:-</p>
 <p>&#8220;useVirtelMacros&#8221;:true,</p>
@@ -253,12 +258,12 @@ Drag the macros.json file into the area designated by a series of dotted
 lines. This will initiate a file upload into the global directory of the
 macro repository:-</p>
 <p><a class="reference internal" href="../../../_images/image515.png"><img alt="image4" src="../../../_images/image515.png" style="width: 4.51042in; height: 3.34652in;" /></a></p>
-<p>Figure 5 The DDI Global Upload</p>
+<p>Figure The DDI Global Upload</p>
 <p>Once you have a copy in the global area, right click on the macros.json
 file to open a context menu. This menu provides some additional
 functions such as Copy, Download, Delete and Edit.</p>
 <p><a class="reference internal" href="../../../_images/image615.png"><img alt="image5" src="../../../_images/image615.png" style="width: 5.36385in; height: 3.13542in;" /></a></p>
-<p>Figure 6 Additional file functions in DDI</p>
+<p>Figure Additional file functions in DDI</p>
 <p>Selecting “Edit” will open the same editor interface that was used when
 editing macros in local storage. Here the administrator can modify the
 macros held within the macros.json file. Macros can be saved with
@@ -266,7 +271,7 @@ different names and associated with different key mappings. Options like
 Save As, Edit and Delete are available within a context menu when you
 right click on a macro.</p>
 <p><a class="reference internal" href="../../../_images/image711.png"><img alt="image6" src="../../../_images/image711.png" style="width: 5.38542in; height: 3.37360in;" /></a></p>
-<p>Figure 7 Updating macros with the Global Directory</p>
+<p>Figure Updating macros with the Global Directory</p>
 <p>**
 Making macros available to users.**</p>
 <p>Any macros an administrator creates can be made available to users
@@ -277,12 +282,12 @@ This will create an area within the DDI macro repository. Upload the
 macros.json file you wish to make available to this user by dragging the
 file into the area designated by the dotted lines. This will initiate an
 upload of the macro into the users userid area.</p>
-<p><a class="reference internal" href="../../../_images/image810.png"><img alt="image7" src="../../../_images/image810.png" style="width: 4.21875in; height: 3.59654in;" /></a></p>
-<p>Figure 8 Creating a macros.json file for a user</p>
+<p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 4.21875in; height: 3.59654in;" /></a></p>
+<p>Figure Creating a macros.json file for a user</p>
 <p>As with any file within the DDI repository a context menu can be brought
 up by right clicking on the file name.</p>
-<p><a class="reference internal" href="../../../_images/image99.png"><img alt="image8" src="../../../_images/image99.png" style="width: 4.47917in; height: 3.26309in;" /></a></p>
-<p>Figure 9 - Editing a global macro</p>
+<p><a class="reference internal" href="../../../_images/image98.png"><img alt="image8" src="../../../_images/image98.png" style="width: 4.47917in; height: 3.26309in;" /></a></p>
+<p>Figure - Editing a global macro</p>
 <p>An administrator can update any macros held within the DDI repository.
 Changes will be reflected in the user’s local storage once the user
 open’s their macro display with the “Green” ICON arrow. The following
@@ -296,7 +301,7 @@ option of modifying their User macros. Any changes will be uploaded to
 the mainframe and stored in the users’ macro area within the DDI
 repository. This keeps the user macro modifications in sync with the
 repository.</p>
-<p><a class="reference internal" href="../../../_images/image109.png"><img alt="image9" src="../../../_images/image109.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image108.png"><img alt="image9" src="../../../_images/image108.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
 <p>**
 Updating DDI macros at the Group level**</p>
 <p>To make macros available at a Group level, select the Group TAB from the
@@ -306,8 +311,8 @@ repository were macros for this group can be held. Upload the Group
 macros.json file you wish to make available to this group by dragging
 the file into the area designated by the dotted lines. This will
 initiate an upload of the Group macro.</p>
-<p><a class="reference internal" href="../../../_images/image1114.png"><img alt="image10" src="../../../_images/image1114.png" style="width: 6.30000in; height: 5.19931in;" /></a></p>
-<p>Figure 10 Macro Group Directory</p>
+<p><a class="reference internal" href="../../../_images/image1113.png"><img alt="image10" src="../../../_images/image1113.png" style="width: 6.30000in; height: 5.19931in;" /></a></p>
+<p>Figure Macro Group Directory</p>
 <p>To obtain the associated context menu right click on the file name –
 macros .json. This will provide the additional functionality to Edit,
 Download or Delete the macro.</p>
@@ -608,6 +613,13 @@ CLIWHOST</p>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../TN201703/TN201703.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

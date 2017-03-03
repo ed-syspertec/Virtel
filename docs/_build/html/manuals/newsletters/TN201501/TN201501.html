@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dynamic Directory Interface (DDI) &mdash; Virtel 1 documentation</title>
+  <title>Administration with Admin (HTML) &mdash; Virtel 1 documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="&lt;no title&gt;" href="../TN201504/TN201504.html"/>
+        <link rel="prev" title="Maintaining TRSF file sets" href="../TN201419/TN201419.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -86,8 +89,19 @@
             
             
                 <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2015</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Administration with Admin (HTML)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-directory-interface">Dynamic Directory Interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201520/TN201520.html">&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -118,7 +132,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>Dynamic Directory Interface (DDI)</li>
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Administration with Admin (HTML)</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -132,8 +148,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="dynamic-directory-interface-ddi">
-<h1>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h1>
+  <p>Dynamic Directory Interface (DDI)</p>
+<hr class="docutils" />
 <p>In this newsletter we discuss Virtel’s Dynamic Directory Interface, or
 DDI and the new Administration GUI panel that can be used to perform
 Virtel configuration. Some of these features are only available with
@@ -153,11 +169,11 @@ administration transactions.</p>
 the directory name. Static directories, as defined in the ARBO load
 configuration use the names USR-DIR, GRP-DIR and GLB-DIR.</p>
 <div class="section" id="administration-with-admin-html">
-<h2>Administration with Admin (HTML)<a class="headerlink" href="#administration-with-admin-html" title="Permalink to this headline">¶</a></h2>
+<h1>Administration with Admin (HTML)<a class="headerlink" href="#administration-with-admin-html" title="Permalink to this headline">¶</a></h1>
 <p>Virtel now supports a GUI Administration from the Portal from where
 configuration work can be performed. Selecting the Admin (HTML) will
 display the home administration panel.</p>
-<p><a class="reference internal" href="../../../_images/image116.png"><img alt="image0" src="../../../_images/image116.png" style="width: 6.30000in; height: 4.29792in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image115.png"><img alt="image0" src="../../../_images/image115.png" style="width: 6.30000in; height: 4.29792in;" /></a></p>
 <p>As with the Admin (3270) screen, the same configuration functions can be
 performed. For example, to list the lines select the lines button in the
 top left corner. A list of lines will be displayed as displayed in the
@@ -205,7 +221,7 @@ example we are copying elements from the CLI-DIR to the GLB-DIR
 directory.</p>
 </div>
 <div class="section" id="dynamic-directory-interface">
-<h2>Dynamic Directory Interface<a class="headerlink" href="#dynamic-directory-interface" title="Permalink to this headline">¶</a></h2>
+<h1>Dynamic Directory Interface<a class="headerlink" href="#dynamic-directory-interface" title="Permalink to this headline">¶</a></h1>
 <p>The DDI interface is intended for Virtel administrators who will manage
 and perform Virtel configuration work on the Virtel elements held within
 a user, group and global directory structure defined within DDI. These
@@ -358,7 +374,7 @@ directories. Check that the User, Group and Global macro directories are
 listed.</p>
 <p>If instead you use the 3270 admin panel to display the directories you
 should see something like this:</p>
-<p><a class="reference internal" href="../../../_images/image117.png"><img alt="image10" src="../../../_images/image117.png" style="width: 6.30000in; height: 2.66250in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image116.png"><img alt="image10" src="../../../_images/image116.png" style="width: 6.30000in; height: 2.66250in;" /></a></p>
 <p>Here you can see that the GLOBAL, GROUP and USER directories have been
 correctly defined in the ARBO update. Note, you cannot list the entries
 (PF4) for the Group or User macro directories in this interface. You
@@ -408,12 +424,20 @@ download directory of the associated browser.</p>
 tags). The tags will be interpreted before the download destroying the
 original source version.</p>
 </div>
-</div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201504/TN201504.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201419/TN201419.html" class="btn btn-neutral" title="Maintaining TRSF file sets" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

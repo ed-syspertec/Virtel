@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using the IBM System Logger with Virtel &mdash; Virtel 1 documentation</title>
+  <title>—– ——– —————- —————– —————– &mdash; Virtel 1 documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="&lt;no title&gt;" href="../TN201522/TN201522.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../TN201519/TN201519.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -86,8 +89,19 @@
             
             
                 <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2015</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html">Administration with Admin (HTML)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html#dynamic-directory-interface">Dynamic Directory Interface</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -118,7 +132,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>Using the IBM System Logger with Virtel</li>
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -132,8 +148,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="using-the-ibm-system-logger-with-virtel">
-<h1>Using the IBM System Logger with Virtel<a class="headerlink" href="#using-the-ibm-system-logger-with-virtel" title="Permalink to this headline">¶</a></h1>
+  <p>Using the IBM System Logger with Virtel</p>
+<hr class="docutils" />
 <p>With the latest release of Virtel, currently Release 4.55, Virtel has
 the ability to write all of its log records to IBM’s System Logger.</p>
 <p>To use this feature code LOG=LOGGER in the TCT and compile using a
@@ -206,7 +222,7 @@ use the following JCL:-</p>
 <p>Ext. &lt;SEQ#&gt; Lowest Blockid / Highest GMT / Highest Local / Status</p>
 <p>Highest Blockid Highest RBA System Name</p>
 <div class="section" id="id1">
-<h2>&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h1>&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8211;<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>*00001 A0000001 0000000000023F64 12/03/14 19:32:35 12/03/14 20:32:35</p>
 <p>0000000000047E76 00023F98 ZAMVS1</p>
 <p>A0000002 0000000000047EFC 12/03/14 21:49:42 12/03/14 22:49:42</p>
@@ -328,12 +344,20 @@ parameter &#8220;COPY(&gt;0),DELETE(&gt;1)&#8221;, it will copy records from the
 day and earlier, and will delete from the records from two days ago,
 leaving something over 24 hours&#8217; worth of records in the log each time.</p>
 </div>
-</div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201522/TN201522.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201519/TN201519.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

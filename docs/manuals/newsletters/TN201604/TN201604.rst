@@ -1,4 +1,5 @@
 Controlling LU Names
+
 ====================
 
 When a user connects to a 3270 application through VIRTEL Web Access,
@@ -277,14 +278,15 @@ Virtel:-
 
 |image0|
 
-Figure Passing User Data toVirtel
+Figure 1 Passing User Data toVirtel
 
 When a transaction is selected from the menu list the RULE will be
 invoked to allocate the correct LUNAME.
 
 |image1|
 
-Figure Selecting a LU name through a rule and work station id in the URL
+Figure 2 Selecting a LU name through a rule and work station id in the
+URL
 
 The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from
 the VIRTEL terminal pool associated with the Virtel line. In this case
@@ -378,7 +380,7 @@ be used is the user data passed in the URL.
 
 |image2|
 
-Figure Using $URL$ to pass a LU name in the URL.
+Figure 3Using $URL$ to pass a LU name in the URL.
 
 The user data in the URL, in this case EHPMA00\*, will be added to each
 transaction in the APPLIST menu and used as the Virtel relay LUNAME.
@@ -409,13 +411,13 @@ Here is the line definition:-
 
 |image3|
 
-Figure Line definition for non-predefined LU names.
+Figure 4 Line definition for non-predefined LU names.
 
 And the Pool definition:-
 
 |image4|
 
-Figure Pool definition for non-predefined LU Names
+Figure 5 Pool definition for non-predefined LU Names
 
 And an example of a transaction definition. Note that the
 Psuedo-Terminal is defined as $LINE$. We have also assign a printer
@@ -424,7 +426,7 @@ associated printer LU would be HOLTWINP.
 
 |image5|
 
-Figure Transaction definition for non-predefined LU Names
+Figure 6 Transaction definition for non-predefined LU Names
 
 Accessing the transaction TSOF would be through the following URL
 forcing the relay LU NAME to HOLTWIN7. We would still have to define a
@@ -433,7 +435,7 @@ terminal definitions, or ranges of, for every static terminals.
 
 |image6|
 
-Figure Access a Transaction with the ForceLUNAME parameter.
+Figure 7 Access a Transaction with the ForceLUNAME parameter.
 
 1. **LU Nailing using a cookie (Correspondent Sub Application) **
 

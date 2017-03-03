@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="&lt;no title&gt;" href="../TN201701/TN201701.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../TN201609/TN201609.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -86,8 +89,21 @@
             
             
                 <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">**</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Customization at the Transaction level</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#print-style-sheet-pathtoprintcss-key-of-ocustom">print style sheet (“pathToPrintCss&nbsp;» key of oCustom)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -118,6 +134,8 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
     <li>Customization at the Transaction level</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -132,7 +150,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>2016/11</p>
+  <p>Customising Virtel in V4.56</p>
+<hr class="docutils" />
 <p>Virtel V4.56 introduces some enhancements to customisation. With Virtel
 4.56, customization is possible at an entry point level, effecting all
 transactions for that entry point, or a transaction level, effecting
@@ -319,15 +338,15 @@ myHelp.html**</p>
 CLI-DIR. Changed Tile.</p>
 <p>When logging onto an application under CLIWHOST the results of the
 customised elements are displayed:-</p>
-<p><a class="reference internal" href="../../../_images/image146.png"><img alt="image0" src="../../../_images/image146.png" style="width: 3.91855in; height: 5.00347in;" /></a></p>
-<p>Figure Customised Elements at a Global Line level.</p>
+<p><a class="reference internal" href="../../../_images/image138.png"><img alt="image0" src="../../../_images/image138.png" style="width: 3.91855in; height: 5.00347in;" /></a></p>
+<p>Figure 1 Customised Elements at a Global Line level.</p>
 <p><strong>Customising at the transaction level.</strong></p>
 <p>Using the Option field with in the VIRTE VWA transaction definition we
 can specify an identifier that we be used to associate customized
 elements against a transaction. In the following definition we have
 specified “test” as our option identifier for this transaction.</p>
 <p><a class="reference internal" href="../../../_images/image225.png"><img alt="image1" src="../../../_images/image225.png" style="width: 6.26806in; height: 2.95761in;" /></a></p>
-<p>Figure 2- Transaction display with option field</p>
+<p>Figure - Transaction display with option field</p>
 <p>Clicking the “tool” ICON to the right of the option field will the
 option dialogue panel. Here the css and JavaScript elements can be
 defined and validated. These elements will only be used when the CICS
@@ -338,7 +357,7 @@ element names are “../option/custCSS.test.css” and
 whatever the Virtel administrator considers appropriate for the
 customisation:-</p>
 <p><a class="reference internal" href="../../../_images/image322.png"><img alt="image2" src="../../../_images/image322.png" style="width: 6.06725in; height: 4.40625in;" /></a></p>
-<p>Figure 3- Options Panel in Basic mode</p>
+<p>Figure - Options Panel in Basic mode</p>
 <p>Select the correct checkboxes for the desired customization in cases
 where only one customization is required and also, in case where no
 customization is required, not even the “entry point” settings, untick
@@ -398,7 +417,7 @@ the “test” option using the follow option stub file:-</p>
 <p>&#8220;pathToHelp&#8221;:&#8221;help.html&#8221;,</p>
 <p>&#8220;pathToW2hparm&#8221;:&#8221;../option/w2hparm.test.js&#8221;}</p>
 <p><a class="reference internal" href="../../../_images/image418.png"><img alt="image3" src="../../../_images/image418.png" style="width: 6.26806in; height: 4.54444in;" /></a></p>
-<p>Figure 4- Implementing transaction customization</p>
+<p>Figure - Implementing transaction customization</p>
 <p>The results of using these customized elements for this transaction is
 that:-</p>
 <ul class="simple">
@@ -500,6 +519,15 @@ application menu.</p>
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201701/TN201701.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201609/TN201609.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

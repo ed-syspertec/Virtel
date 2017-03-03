@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Processing the VTAM USS MSG10 buffer &mdash; Virtel 1 documentation</title>
+  <title>&lt;no title&gt; &mdash; Virtel 1 documentation</title>
   
 
   
@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/> 
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="—– ——– —————- —————– —————–" href="../TN201520/TN201520.html"/>
+        <link rel="prev" title="&lt;no title&gt;" href="../TN201517/TN201517.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -118,7 +121,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>Processing the VTAM USS MSG10 buffer</li>
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>&lt;no title&gt;</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -132,8 +137,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="processing-the-vtam-uss-msg10-buffer">
-<h1>Processing the VTAM USS MSG10 buffer<a class="headerlink" href="#processing-the-vtam-uss-msg10-buffer" title="Permalink to this headline">¶</a></h1>
+  <p>Processing the VTAM USS MSG10 buffer</p>
+<hr class="docutils" />
 <p><strong>Note. This is a chargeable feature and not delivered with the base
 product. The information in this newsletter is commercially significant
 and should not be distributed unless the VTAM USSMSG10 feature has been
@@ -389,26 +394,26 @@ users from those who will be restricted to only applications
 supported by the USSTAB. The new Entry Points “TIOA at Logon” to
 redisplay the VTAM USS tab after a user exits an application. The
 Entry point is restricted to only three transactions.</p>
-<p><a class="reference internal" href="../../../_images/image125.png"><img alt="image0" src="../../../_images/image125.png" style="width: 5.31250in; height: 3.06060in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image120.png"><img alt="image0" src="../../../_images/image120.png" style="width: 5.31250in; height: 3.06060in;" /></a></p>
 </li>
 </ol>
-<p>Figure 1 Line Entry</p>
+<p>Figure Line Entry</p>
 <blockquote>
 <div><p>The related terminal pool should be defined with a definitions to
 support the LUs that will maintain sessions with the VTAM
 applications. The terminal pool definitions look like:-</p>
 <p><a class="reference internal" href="../../../_images/image212.png"><img alt="image1" src="../../../_images/image212.png" style="width: 5.33850in; height: 3.16667in;" /></a></p>
 </div></blockquote>
-<p>Figure 2 Terminal Definitions</p>
+<p>Figure Terminal Definitions</p>
 <blockquote>
 <div><p>The Entry Point definition looks like the following:-</p>
 <p><a class="reference internal" href="../../../_images/image313.png"><img alt="image2" src="../../../_images/image313.png" style="width: 5.29167in; height: 3.03219in;" /></a></p>
-<p>Figure 3 Entry Point Definition</p>
+<p>Figure Entry Point Definition</p>
 <p>The transactions that are supported by this entry point are listed
 below:-</p>
 <p><a class="reference internal" href="../../../_images/image411.png"><img alt="image3" src="../../../_images/image411.png" style="width: 5.33333in; height: 3.68063in;" /></a></p>
 </div></blockquote>
-<p>Figure 4 Transaction list for the entry point</p>
+<p>Figure Transaction list for the entry point</p>
 <blockquote>
 <div><p>The first is the default transaction for the entry point – the same
 name as the entry point. Virtel, by default, will return here
@@ -416,7 +421,7 @@ whenever we exit an application. To re-display the USSTAB we set the
 “TIOA at logon” field to point to the VTAMUSS transaction EDS-16A.</p>
 <p><a class="reference internal" href="../../../_images/image59.png"><img alt="image4" src="../../../_images/image59.png" style="width: 5.76517in; height: 3.34375in;" /></a></p>
 </div></blockquote>
-<p>Figure 5 Entry Point Transaction</p>
+<p>Figure Entry Point Transaction</p>
 <blockquote>
 <div><p>The second transaction, EDS-03W, is a transaction the enables VIRTEL
 to access the W2H directory from this entry point. This is required
@@ -424,7 +429,7 @@ so that web elements can be served from the W2H directory. For
 example the HTML page “w2h/WEB2AJAX.htm”</p>
 <p><a class="reference internal" href="../../../_images/image69.png"><img alt="image5" src="../../../_images/image69.png" style="width: 5.75000in; height: 3.92804in;" /></a></p>
 </div></blockquote>
-<p>Figure 6 Directory Transaction for w2h</p>
+<p>Figure Directory Transaction for w2h</p>
 <blockquote>
 <div><p>The third and final transaction in our entry point list is the
 VTAMUSS transaction. It is this transaction that calls the VIR0021W
@@ -432,7 +437,7 @@ utility which interrogates the VTAM USSTAB load module and display a
 similar page in HTML. The transaction definition looks like:-</p>
 <p><a class="reference internal" href="../../../_images/image76.png"><img alt="image6" src="../../../_images/image76.png" style="width: 5.45833in; height: 3.72093in;" /></a></p>
 </div></blockquote>
-<p>Figure 7 - VTAMUSS transaction</p>
+<p>Figure - VTAMUSS transaction</p>
 <blockquote>
 <div>Note that “Security=1” is set which will force users to logon before
 the USSTAB is displayed. Change this to 0 if you wish to bypass this
@@ -466,7 +471,7 @@ in the logon field. See screen shot below:-</p>
 </div></blockquote>
 </li>
 </ol>
-<p>Figure 8 Updated Transaction identify USSTAB</p>
+<p>Figure Updated Transaction identify USSTAB</p>
 <blockquote>
 <div>Press PF1, PF3, PF3, PF1 to save the changes. The “usstab=ussn”
 string will be passed through to the VIRTEL application VIR0021W.
@@ -511,12 +516,20 @@ the transaction or TCT.</p>
 <p>Action : Check that the correct USSTAB has be defined and that the
 relevant load module is accessible through the VIRTEL STEPLIB
 concatenation.</p>
-</div>
 
 
            </div>
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201520/TN201520.html" class="btn btn-neutral float-right" title="—– ——– —————- —————– —————–" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201517/TN201517.html" class="btn btn-neutral" title="&lt;no title&gt;" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
