@@ -1,37 +1,37 @@
-Virtel Macros
-=============
+==================
+   Virtel Macros
+==================
 
-***Note:** This Newsletter applies to Virtel 4.56(updt5484) running with
-the Virtel default parameters or in Virtel “Compatibility mode”. See
+Note: This Newsletter applies to Virtel 4.56(updt5484 and above) running with
+the Virtel default parameters or in Virtel 4.56 “Compatibility mode”. See
 Newsletters TN 2016-08 and TN 2016-11 for further details on how to
 migrate custom.js to use the global settings in w2hparm.js. References
 to the file w2hparm.js refer to the default file found in the
 distributed W2H directory. See Appendix B in this newsletter. This file
 can be found in the distributed sources.zip file which can be downloaded
-from the SAMPTRSF. *
+from the SAMPTRSF.
 
+Introduction
+============
 Virtel macros capture keystroke operations which can subsequently be
 used to automate 3270 functions. Macros are defined within a file called
 macros.json. The file is a JavaScript array of JSON objects with each
-object representing a macro:-
+object representing a macro. Here is an example:-::
 
 {"macros":[
 {"name":"mylogon","rev":2,"def":[{"txt":"sptholt"},"ENTER",{"txt":"bastet"},"ENTER","ENTER","ENTER"],"mapping":{"key":"ctrl","keycode":76}},
 {"name":"logoff","rev":1,"def":[{"txt":"=x"},"ENTER",{"txt":"logoff"},"ENTER"],"mapping":{"key":"ctrl","keycode":79}},
-{"name":"logon","rev":2,"def":["Tab","Down",{"txt":"sptholx"},"ENTER",{"txt":"MOONRAY"},"ENTER","ENTER","ENTER"],"mapping":{"key":"alt","keycode":76}}
+{"name":"logon","rev":2,"def":["Tab","Down",{"txt":"sptholx"},"ENTER",{"txt":"MOONRAY"},"ENTER","ENTER","ENTER"],"mapping":{"key":"alt","keycode":76}}],"fmt":2}
 
-],"fmt":2}
+The macros.json file can be maintained locally, known as local mode, or can be downloaded from the host through the Virtel’s Dynamic Directory Interface (DDI). This is the remote or DDI operation mode. See: *Using macros with the DDI interface. The macros.json file is maintained through the local macro interface or by an Administrator through the DDI interface. The file can be edited outside of these interfaces but this is not recommended unless you understand the macro structure and are familiar with JavaScript. There are various synchronization options which will determine how the central DDI repository is managed with regard to the users local macros. By default Virtel maintains macros in local mode. In both modes, local and DDI, the macros.json file is stored in the browsers local storage.  
 
-By default, Virtel maintains macros in the browsers local storage.
-Macros can also be managed on the host through the use of Virtel’s
-Dynamic Directory Interface (DDI). See: *Using macros with the DDI
-interface. *
+The User Macro interface
+========================
 
 **Macros functions**
 
-You can capture and list macros by using the two macro ICON functions
-displayed in the Virtel tool bar. These are the red record/stop button
-and the green triangular display button.
+You can capture and list macros by using the two macro ICON functions displayed in the Virtel tool bar. These are the red record/stop button
+and the green/blue triangular display button. Green indicates local mode and blue DDI mode. When the ICON is blue macros will be synchronized between the users local storage and the DDI repository. The type of synchronization will depend on the options set in the w2hparm.js member. 
 
 **The Record function**
 
@@ -44,8 +44,7 @@ When recording, the ICON will flash until it is clicked at which point
 it will stop recording and save the key strokes. A save panel will be
 displayed asking for the name of the macro entry. Note that an ENTER/PFK
 key must be pressed at least once, i.e. data must be sent by some key
-operation in order to create and save an entry within the macro.JSON
-file.
+operation in order to create and save an entry within the macro.json file.
 
 |image1|
 
@@ -54,13 +53,14 @@ Figure 2 - Saving a macro
 When saving the macro you have the option of assigning a “hot key” or
 shortcut to the macro through keyboard mapping. Keyboard mapping can be
 a combination of ALT or CTRL keys and another keyboard key (F1 thru F12,
-A thru to Z). Beware that some keyboard combinations may be reserved for
+A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for
 the operating system or Virtel functions. For example, CTRL-R is a
 browser refresh option. Allocating this combination as a hotkey will
-only invoke the refresh option and not the macro.
+only invoke the refresh option and not the Virtel macro. 
 
-**
-The Display button**
+Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is off. 
+
+**The Display button**
 
 The green triangular button will display the local storage macros. From
 here a context menu can be opened against each macro using the mouse
@@ -68,7 +68,7 @@ right click. This will provide delete, edit, save as and run functions.
 
 |image2|
 
-Figure Context menu associated with a macro
+Figure 3 - Context menu associated with a macro
 
 **Export and Import options**
 
@@ -99,8 +99,10 @@ group names. The global macro level contains macros applicable to all
 users. A user may maintain macros at their user level only whereas an
 Administrator can maintain macros at all three levels.
 
-**
-DDI Installation**
+Supporting macros with DDI
+==========================
+
+**DDI Installation**
 
 In this example the DDI macro interface is turned on for transactions
 defined in the CLI custom directory, normally associated with port
@@ -113,7 +115,7 @@ during a Virtel upgrade.
 
 |image3|
 
-Figure Modified CLI-03P transaction
+Figure 4 Modified CLI-03P transaction
 
 To use the DDI interface the following option must be set in the
 w2hparm.js member:-
@@ -131,8 +133,7 @@ set. The ARBOLOAD job can be found in the CNTL or SAMPLIB library and
 can only be run when Virtel is down. This will add the relevant Virtel
 transactions and elements to support DDI.
 
-**
-Managing macros with DDI**
+**Managing macros with DDI**
 
 Obtain a “default” copy of a macros.json file. This could be one that
 has been exported from local storage. This file needs to be copied,
@@ -158,7 +159,7 @@ macro repository:-
 
 |image4|
 
-Figure The DDI Global Upload
+Figure 5 The DDI Global Upload
 
 Once you have a copy in the global area, right click on the macros.json
 file to open a context menu. This menu provides some additional
@@ -177,10 +178,9 @@ right click on a macro.
 
 |image6|
 
-Figure Updating macros with the Global Directory
+Figure 6 Updating macros with the Global Directory
 
-**
-Making macros available to users.**
+**Making macros available to users.**
 
 Any macros an administrator creates can be made available to users
 either at the Global, Group or Userid level. To make macros available at
@@ -193,14 +193,14 @@ upload of the macro into the users userid area.
 
 |image7|
 
-Figure Creating a macros.json file for a user
+Figure 7 Creating a macros.json file for a user
 
 As with any file within the DDI repository a context menu can be brought
 up by right clicking on the file name.
 
 |image8|
 
-Figure - Editing a global macro
+Figure 8 Editing a global macro
 
 An administrator can update any macros held within the DDI repository.
 Changes will be reflected in the user’s local storage once the user
@@ -218,8 +218,7 @@ repository.
 
 |image9|
 
-**
-Updating DDI macros at the Group level**
+**Updating DDI macros at the Group level**
 
 To make macros available at a Group level, select the Group TAB from the
 DDI main panel. Enter the Group name in the group name field and press
@@ -231,7 +230,7 @@ initiate an upload of the Group macro.
 
 |image10|
 
-Figure Macro Group Directory
+Figure 10 Macro Group Directory
 
 To obtain the associated context menu right click on the file name –
 macros .json. This will provide the additional functionality to Edit,
@@ -251,14 +250,11 @@ deployments etc.
 
 The “SAVE AS” function does not have the ability to re-assign key
 mapping. This can only be done through the macro editor. To clone a
-macro with a new key mapping perform the following operations:-
+macro with a new key mapping perform the following operations:-::
 
 Open macro “A”
-
 Save as “B”
-
 Open macro “B” in Editor.
-
 Save with key board mapping.
 
 **Autoupdate of macros in local storage.**
@@ -278,14 +274,12 @@ arrangement, using separate HTMLTRSF files then the
 “synchronizeVirtelMacros” option should be set to true. This ensures
 that macro changes are reflected in all DDI repositories and
 consequently associated local storage. Update the w2hparm.js file to
-include:-
+include:-::
 
 "useVirtelMacros":true,
-
 "synchronizeVirtelMacros":true,
 
-**
-Appendix A - Macro format and commands**
+**Appendix A - Macro format and commands**
 
 The format of the macro.json is embedded JSON structures. Each name
 structure represents a keystroke macro identified by the “name” keyword.
@@ -295,87 +289,45 @@ Name: The name of the macro entry.
 Rev: The “rev” is a user revision keyword.
 
 Def: The “def” keyword identifies the commands and entry values. The
-macro editor supports the following commands:-
+macro editor supports the following commands:-::
 
 -  "any string of characters to input into 3270 screen"
-
 -  move(pos)
-
 -  copy(startRow,startCol,endRow,endCol)
-
 -  paste(pos)
-
 -  paste(pos,nbRows,nbCols)
-
 -  key(keyIdentifier)
 
-**Macro example**
+**Macro example**::
 
 {"macros":[
+{"name":"SDSFLOG","rev":2,"def":["move(435)","ENTER",{"txt":"=M"},"ErEof","ENTER",{"txt":"6"},"ENTER"]},
+{"name":"SDSFDA","rev":1,"def":[77,"ENTER",53,"ENTER",100,97,"ENTER"]}],"fmt":1}
 
-{
+**Appendix – B Distributed w2hparm.js**
 
-"name":"SDSFLOG",
+The distributed w2hparm.js looks like this:-::
 
-"rev":2,
+	var w2hparm = {
+	"settingsGUI":{"version":"v2"},
+	"font":"Droid Sans Mono",
+	"fontsize":"window",
+	"ctrl":"ENTER",
+	"enter":"Newline",
+	"home":"Home",
+	"end":"ErEof",
+	"shiftins":"Dup",
+	"shifthome":"FieldMark",
+	"shiftend":"End",
+	"ctrlins":"PA1",
+	"ctrldel":"PA2",
+	"ctrlend":"End",
+	"pgup":"PF7",
+	"pgdn":"PF8",
+	"pause":"CLEAR",
+	"style":"3270"};
 
-"def":["move(435)","ENTER",{"txt":"=M"},"ErEof","ENTER",{"txt":"6"},"ENTER"]
-
-},
-
-{
-
-"name":"SDSFDA",
-
-"rev":1,
-
-"def":[77,"ENTER",53,"ENTER",100,97,"ENTER"]
-
-}
-
-],"fmt":1}
-
-**
-Appendix – B Distributed w2hparm.js**
-
-var w2hparm = {
-
-"settingsGUI":{"version":"v2"},
-
-"font":"Droid Sans Mono",
-
-"fontsize":"window",
-
-"ctrl":"ENTER",
-
-"enter":"Newline",
-
-"home":"Home",
-
-"end":"ErEof",
-
-"shiftins":"Dup",
-
-"shifthome":"FieldMark",
-
-"shiftend":"End",
-
-"ctrlins":"PA1",
-
-"ctrldel":"PA2",
-
-"ctrlend":"End",
-
-"pgup":"PF7",
-
-"pgdn":"PF8",
-
-"pause":"CLEAR",
-
-"style":"3270"};
-
-**
-Appendix – C Virtel DDI Support for Macros**
+**Appendix – C Virtel DDI Support for Macros**
 
 Virtel V4.56 Macros enhanced to include key mapping. Run ARBOLOAD with
 MACROS=YES to install feature.
@@ -387,405 +339,206 @@ Virtel V4.53 To upgrade your 4.53 system to include the new macro
 feature the following ARBO updates are required. Run this JCL to update
 your 4.53 ARBO to include the directories and transactions required for
 macros. You will also need to update transaction W2H-20 in WEB2HOST and
-changing the output scenario to ADMINVWM.
-
-//VIRARBLD JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
-
-//\*--------------------------------------------------------------\*
-
-// SET LANG=EN
-
-// SET LOAD=SP000.VIRT453.LOADLIB
-
-// SET ARBO=SP000.SPVIREH.ARBO
-
-// SET VMACROS=YES
-
-//\*--------------------------------------------------------------\*
-
-//VIRLOAD PROC PROCESS='YES-OR-NO'
-
-//VIRLOAD EXEC PGM=VIRCONF,PARM='LOAD,NOREPL,LANG=&LANG',REGION=2M
-
-//STEPLIB DD DISP=SHR,DSN=&LOAD
-
-//VIRARBO DD DISP=SHR,DSN=&ARBO
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSIN DD DDNAME=SYSIN&PROCESS
-
-//SYSINNO DD DUMMY,DCB=(RECFM=FB,LRECL=80,BLKSIZE=80)
-
-// PEND
-
-//VMACROS EXEC VIRLOAD,PROCESS=&VMACROS
-
-//SYSINYES DD \* <--START VMACROS SECTION-->
-
-\*--------------------------------------------------------------\*
-
-\*
-
-(EN)\* Definitions for VIRTEL dynamic directories
-
-(FR)\* Dbfinitions des rbpertoires VIRTEL dynamiques
-
-\*
-
-SUBDIR ID=GLB-DIR,
-
-(EN) DESC='Global files',
-
-(FR) DESC='Fichiers globaux',
-
-FSTYPE=V,
-
-DDNAME=HTMLTRSF,
-
-KEY=GLOBAL,
-
-NAMELEN=0064,
-
-AUTHUP=X,
-
-AUTHDOWN=X,
-
-AUTHDEL=X
-
-SUBDIR ID=GRP-DIR,
-
-(EN) DESC='Group files',
-
-(FR) DESC='Fichiers de groupe',
-
-FSTYPE=V,
-
-DDNAME=HTMLTRSF,
-
-KEY=%GROUP%,
-
-NAMELEN=0064,
-
-AUTHUP=X,
-
-AUTHDOWN=X,
-
-AUTHDEL=X
-
-SUBDIR ID=USR-DIR,
-
-(EN) DESC='User files',
-
-(FR) DESC='Fichiers utilisateur',
-
-FSTYPE=V,
-
-DDNAME=HTMLTRSF,
-
-KEY=%USER%,
-
-NAMELEN=0064,
-
-AUTHUP=X,
-
-AUTHDOWN=X,
-
-AUTHDEL=X
-
-\*
-
-(EN)\* Transactions to access VIRTEL dynamic directories via WEB2HOST
-
-(FR)\* Transactions pour accbder aux rbpertoires VIRTEL dynamiques via
-WEB2HOST
-
-\*
-
-TRANSACT ID=W2H-03A,
-
-NAME='w2h',
-
-(EN) DESC='Global files directory',
-
-(FR) DESC='Rbpertoire des fichiers globaux',
-
-APPL=GLB-DIR,
-
-TYPE=4,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=0,
-
-LOGMSG='/w2h/global'
-
-TRANSACT ID=W2H-03G,
-
-NAME='w2h',
-
-(EN) DESC='Group files directory',
-
-(FR) DESC='Rbpertoire des fichiers de groupe',
-
-APPL=GRP-DIR,
-
-TYPE=4,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=0,
-
-LOGMSG='/w2h/group'
-
-TRANSACT ID=W2H-03U,
-
-NAME='w2h',
-
-(EN) DESC='User files directory',
-
-(FR) DESC='Rbpertoire des fichiers utilisateur',
-
-APPL=USR-DIR,
-
-TYPE=4,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=0,
-
-LOGMSG='/w2h/user'
-
-\*
-
-(EN)\* Transactions to access VIRTEL dynamic directories via CLIWHOST
-
-(FR)\* Transactions pour accbder aux rbpertoires VIRTEL dynamiques via
-CLIWHOST
-
-\*
-
-TRANSACT ID=CLI-03A,
-
-NAME='w2h',
-
-(EN) DESC='Global files directory',
-
-(FR) DESC='Rbpertoire des fichiers globaux',
-
-APPL=GLB-DIR,
-
-TYPE=4,
-
-TERMINAL=CLLOC,
-
-STARTUP=2,
-
-SECURITY=0,
-
-LOGMSG='/w2h/global'
-
-TRANSACT ID=CLI-03G,
-
-NAME='w2h',
-
-(EN) DESC='Group files directory',
-
-(FR) DESC='Rbpertoire des fichiers de groupe',
-
-APPL=GRP-DIR,
-
-TYPE=4,
-
-TERMINAL=CLLOC,
-
-STARTUP=2,
-
-SECURITY=0,
-
-LOGMSG='/w2h/group'
-
-TRANSACT ID=CLI-03U,
-
-NAME='w2h',
-
-(EN) DESC='User files directory',
-
-(FR) DESC='Rbpertoire des fichiers utilisateur',
-
-APPL=USR-DIR,
-
-TYPE=4,
-
-TERMINAL=CLLOC,
-
-STARTUP=2,
-
-SECURITY=0,
-
-LOGMSG='/w2h/user'
-
-\*
-
-(EN)\* Transaction for the Dynamic Directory Interface application
-
-(FR)\* Transaction pour l'application Dynamic Directory Interface
-
-\*
-
-TRANSACT ID=W2H-07,
-
-NAME='dynadmin',
-
-(EN) DESC='Dynamic Directory Interface',
-
-(FR) DESC='Dynamic Directory Interface',
-
-APPL=VIR0022,
-
-TYPE=2,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=1,
-
-TRANSL=1,
-
-EXITMSGI=SCDYNADM,
-
-EXITMSGO=SCDYNADM
-
-\*
-
-(EN)\* Transaction to allow users to upload macros via CLIWHOST
-
-(FR)\* Transaction pour chargement des macros utilisateur via CLIWHOST
-
-\*
-
-TRANSACT ID=CLI-80U,
-
-NAME='uplusr',
-
-(EN) DESC='Upload user macros',
-
-(FR) DESC="Chargement des macros de l'utilisateur",
-
-APPL=VIR0041C,
-
-TYPE=2,
-
-TERMINAL=CLLOC,
-
-STARTUP=2,
-
-SECURITY=0,
-
-LOGMSG=USR-DIR
-
-\*
-
-(EN)\* Transactions to allow administrator to upload macros
-
-(FR)\* Transactions pour chargement des macros par l'administrateur
-
-\*
-
-TRANSACT ID=W2H-66,
-
-NAME='usrcap',
-
-(EN) DESC='Generate administrator upload capability token',
-
-(FR) DESC='Generation de jeton de capacitb administrateur',
-
-APPL=$NONE$,
-
-TYPE=2,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=1,
-
-TRANSL=0,
-
-TIOASTA='&/S OK &/T',
-
-EXITSTA=SCENUCAP
-
-TRANSACT ID=W2H-80A,
-
-NAME='uplglb',
-
-(EN) DESC='Upload macros (GLB-DIR directory)',
-
-(FR) DESC='Chargement des macros (rbpertoire GLB-DIR)',
-
-APPL=VIR0041C,
-
-TYPE=2,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=1,
-
-LOGMSG=GLB-DIR
-
-TRANSACT ID=W2H-80G,
-
-NAME='uplgrp',
-
-(EN) DESC='Upload macros (GRP-DIR directory)',
-
-(FR) DESC='Chargement des macros (rbpertoire GRP-DIR)',
-
-APPL=VIR0041C,
-
-TYPE=2,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=1,
-
-LOGMSG=GRP-DIR
-
-TRANSACT ID=W2H-80U,
-
-NAME='uplusr',
-
-(EN) DESC='Upload macros (USR-DIR directory)',
-
-(FR) DESC='Chargement des macros (rbpertoire USR-DIR)',
-
-APPL=VIR0041C,
-
-TYPE=2,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=1,
-
-LOGMSG=USR-DIR
-
-\*--------------------------------------------------------------\*
-
-//\* <--END VMACROS SECTION-->
+changing the output scenario to ADMINVWM.-::
+
+	//VIRARBLD JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+	//*--------------------------------------------------------------*
+	// SET LANG=EN
+	// SET LOAD=SP000.VIRT453.LOADLIB
+	// SET ARBO=SP000.SPVIREH.ARBO
+	// SET VMACROS=YES
+	//*--------------------------------------------------------------*
+	//VIRLOAD PROC PROCESS='YES-OR-NO'
+	//VIRLOAD EXEC PGM=VIRCONF,PARM='LOAD,NOREPL,LANG=&LANG',REGION=2M
+	//STEPLIB DD DISP=SHR,DSN=&LOAD
+	//VIRARBO DD DISP=SHR,DSN=&ARBO
+	//SYSPRINT DD SYSOUT=\*
+	//SYSIN DD DDNAME=SYSIN&PROCESS
+	//SYSINNO DD DUMMY,DCB=(RECFM=FB,LRECL=80,BLKSIZE=80)
+	// PEND
+	//VMACROS EXEC VIRLOAD,PROCESS=&VMACROS
+	//SYSINYES DD * <--START VMACROS SECTION-->
+	*--------------------------------------------------------------*
+	*
+	(EN)*Definitions for VIRTEL dynamic directories
+	(FR)*Dbfinitions des rbpertoires VIRTEL dynamiques
+	*
+	SUBDIR ID=GLB-DIR,
+	(EN) DESC='Global files',
+	(FR) DESC='Fichiers globaux',
+	FSTYPE=V,
+	DDNAME=HTMLTRSF,
+	KEY=GLOBAL,
+	NAMELEN=0064,
+	AUTHUP=X,
+	AUTHDOWN=X,
+	AUTHDEL=X
+	SUBDIR ID=GRP-DIR,
+	(EN) DESC='Group files',
+	(FR) DESC='Fichiers de groupe',
+	FSTYPE=V,
+	DDNAME=HTMLTRSF,
+	KEY=%GROUP%,
+	NAMELEN=0064,
+	AUTHUP=X,
+	AUTHDOWN=X,
+	AUTHDEL=X
+	SUBDIR ID=USR-DIR,
+	(EN) DESC='User files',
+	(FR) DESC='Fichiers utilisateur',
+	FSTYPE=V,
+	DDNAME=HTMLTRSF,
+	KEY=%USER%,
+	NAMELEN=0064,
+	AUTHUP=X,
+	AUTHDOWN=X,
+	AUTHDEL=X
+	*
+	(EN)*Transactions to access VIRTEL dynamic directories via WEB2HOST
+	(FR)*Transactions pour accbder aux rbpertoires VIRTEL dynamiques via WEB2HOST
+	*
+	TRANSACT ID=W2H-03A,
+	NAME='w2h',
+	(EN) DESC='Global files directory',
+	(FR) DESC='Rbpertoire des fichiers globaux',
+	APPL=GLB-DIR,
+	TYPE=4,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=0,
+	LOGMSG='/w2h/global'
+	TRANSACT ID=W2H-03G,
+	NAME='w2h',
+	(EN) DESC='Group files directory',
+	(FR) DESC='Rbpertoire des fichiers de groupe',
+	APPL=GRP-DIR,
+	TYPE=4,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=0,
+	LOGMSG='/w2h/group'
+	TRANSACT ID=W2H-03U,
+	NAME='w2h',
+	(EN) DESC='User files directory',
+	(FR) DESC='Rbpertoire des fichiers utilisateur',
+	APPL=USR-DIR,
+	TYPE=4,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=0,
+	LOGMSG='/w2h/user'
+	*
+	(EN)*Transactions to access VIRTEL dynamic directories via CLIWHOST
+	(FR)*Transactions pour accbder aux rbpertoires VIRTEL dynamiques via CLIWHOST
+	*
+	TRANSACT ID=CLI-03A,
+	NAME='w2h',
+	(EN) DESC='Global files directory',
+	(FR) DESC='Rbpertoire des fichiers globaux',
+	APPL=GLB-DIR,
+	TYPE=4,
+	TERMINAL=CLLOC,
+	STARTUP=2,
+	SECURITY=0,
+	LOGMSG='/w2h/global'
+	TRANSACT ID=CLI-03G,
+	NAME='w2h',
+	(EN) DESC='Group files directory',
+	(FR) DESC='Rbpertoire des fichiers de groupe',
+	APPL=GRP-DIR,
+	TYPE=4,
+	TERMINAL=CLLOC,
+	STARTUP=2,
+	SECURITY=0,
+	LOGMSG='/w2h/group'
+	TRANSACT ID=CLI-03U,
+	NAME='w2h',
+	(EN) DESC='User files directory',
+	(FR) DESC='Rbpertoire des fichiers utilisateur',
+	APPL=USR-DIR,
+	TYPE=4,
+	TERMINAL=CLLOC,
+	STARTUP=2,
+	SECURITY=0,
+	LOGMSG='/w2h/user'
+	*
+	(EN)*Transaction for the Dynamic Directory Interface application
+	(FR)*Transaction pour l'application Dynamic Directory Interface
+	*
+	TRANSACT ID=W2H-07,
+	NAME='dynadmin',
+	(EN) DESC='Dynamic Directory Interface',
+	(FR) DESC='Dynamic Directory Interface',
+	APPL=VIR0022,
+	TYPE=2,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=1,
+	TRANSL=1,
+	EXITMSGI=SCDYNADM,
+	EXITMSGO=SCDYNADM
+	*
+	(EN)*Transaction to allow users to upload macros via CLIWHOST
+	(FR)*Transaction pour chargement des macros utilisateur via CLIWHOST
+	*
+	TRANSACT ID=CLI-80U,
+	NAME='uplusr',
+	(EN) DESC='Upload user macros',
+	(FR) DESC="Chargement des macros de l'utilisateur",
+	APPL=VIR0041C,
+	TYPE=2,
+	TERMINAL=CLLOC,
+	STARTUP=2,
+	SECURITY=0,
+	LOGMSG=USR-DIR
+	*
+	(EN)*Transactions to allow administrator to upload macros
+	(FR)*Transactions pour chargement des macros par l'administrateur
+	*
+	TRANSACT ID=W2H-66,
+	NAME='usrcap',
+	(EN) DESC='Generate administrator upload capability token',
+	(FR) DESC='Generation de jeton de capacitb administrateur',
+	APPL=$NONE$,
+	TYPE=2,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=1,
+	TRANSL=0,
+	TIOASTA='&/S OK &/T',
+	EXITSTA=SCENUCAP
+	TRANSACT ID=W2H-80A,
+	NAME='uplglb',
+	(EN) DESC='Upload macros (GLB-DIR directory)',
+	(FR) DESC='Chargement des macros (rbpertoire GLB-DIR)',
+	APPL=VIR0041C,
+	TYPE=2,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=1,
+	LOGMSG=GLB-DIR
+	TRANSACT ID=W2H-80G,
+	NAME='uplgrp',
+	(EN) DESC='Upload macros (GRP-DIR directory)',
+	(FR) DESC='Chargement des macros (rbpertoire GRP-DIR)',
+	APPL=VIR0041C,
+	TYPE=2,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=1,
+	LOGMSG=GRP-DIR
+	TRANSACT ID=W2H-80U,
+	NAME='uplusr',
+	(EN) DESC='Upload macros (USR-DIR directory)',
+	(FR) DESC='Chargement des macros (rbpertoire USR-DIR)',
+	APPL=VIR0041C,
+	TYPE=2,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=1,
+	LOGMSG=USR-DIR
+	*--------------------------------------------------------------	*
+	<--END VMACROS SECTION-->
 
 .. |image0| image:: images/media/image1.png
    :width: 6.30000in

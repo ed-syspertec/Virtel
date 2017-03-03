@@ -36,51 +36,24 @@ Procedure
    the member name is VIRTAPPL. The member should activated by issuing
    the following z/OS command:-
 
-    V NET,ACT,ID=VIRTAPPL
+    V NET,ACT,ID=VIRTAPPL::
 
     VIRTAPPL VBUILD TYPE=APPL
-
-    \*
-    ------------------------------------------------------------------
-    \*
-
-    \* Product : VIRTEL \*
-
-    \* Description : Main ACB for VIRTEL application \*
-
-    \*
-    ------------------------------------------------------------------
-    \*
-
+    *------------------------------------------------------------------*
+    * Product : VIRTEL                                                 *
+    * Description : Main ACB for VIRTEL application                    *
+    *                                                                  *
+    *------------------------------------------------------------------*
     VIRTEL APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=VIRTEL
-
-    \*
-    ------------------------------------------------------------------
-    \*
-
-    \* RHTVTxxx : VTAM application relays for VIRTEL Web Access \*
-
-    \*
-    ------------------------------------------------------------------
-    \*
-
-    RHTVT??? APPL
-    AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
-
-    \*
-    ------------------------------------------------------------------
-    \*
-
-    \* RHTIMxxx : Printer relays for VIRTEL Web Access terminals \*
-
-    \*
-    ------------------------------------------------------------------
-    \*
-
+    *------------------------------------------------------------------*
+    * RHTVTxxx : VTAM application relays for VIRTEL Web Access         *
+    *------------------------------------------------------------------*
+    RHTVT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+    *------------------------------------------------------------------*
+    * RHTIMxxx : Printer relays for VIRTEL Web Access terminals        *
+    *------------------------------------------------------------------*
     RHTIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
-
-    RHTIP??? APPL
-    AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
+    RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 
 1. Before running VIRTEL as a batch job modify the program name to
    VIR0000 from VIR60000. Here is an example of the batch procedure I
