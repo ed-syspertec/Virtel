@@ -5,6 +5,7 @@ Welcome to Virtel's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   virtel
    newsletters
 
 Indices and tables
