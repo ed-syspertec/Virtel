@@ -39,8 +39,8 @@ NOTICE::
 
 **Table of contents**
 
-1. Summary of Amendments
-========================
+1. `Summary of Amendments`__
+============================
 
 1.1 Virtel version 4.53 (24 Sep 2014)
 -------------------------------------
@@ -63,8 +63,10 @@ NOTICE::
 1.7 Virtel version 4.47 (21 May 2012)
 -------------------------------------
 
-2. Introduction
-===============
+__ Summary_
+
+2. `Introduction`_
+==================
 
 2.1 VIRTEL modules
 ------------------
@@ -81,8 +83,8 @@ NOTICE::
 2.2.3 Workstation pre-requisites
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-3. Installing VIRTEL under MVS
-==============================
+3. `Installing VIRTEL under MVS`__
+==================================
 
 3.1 Installation procedure
 ----------------------
@@ -113,6 +115,8 @@ NOTICE::
 
 3.3 MVS installation check-list
 -------------------------------
+
+__ installmvs_
 
 4. Installing VIRTEL under VSE
 ==============================
@@ -651,6 +655,8 @@ NOTICE::
 8.3.1 Modify the VIRTCT
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _Summary:
+
 **Summary of Amendments**  
 
 VIRTEL Web Access:
@@ -981,11 +987,11 @@ Miscellaneous:
 
 -  Miscellaneous editorial corrections and enhancements
 
-Introduction
-============
+.. _Introduction:
 
-    The functionality of VIRTEL is divided into components known as
-    “modules”. The following is a list of the VIRTEL modules:
+**Introduction**
+
+    The functionality of VIRTEL is divided into components known as “modules”. The following is a list of the VIRTEL modules:
 
 -  The VIRTEL base kernel
 
@@ -1072,10 +1078,9 @@ Please refer to your license agreement for the particular terms and conditions u
 
     VIRTEL Web Access requires JavaScript to be enabled in the browser.
 
-Installing VIRTEL under
-=======================
+.. _installmvs:    
 
-    **MVS**
+**Installing VIRTEL under MVS**
 
     In the MVS environment, VIRTEL is delivered as a zipped XMIT file
     containing the VIRTEL datasets compressed in DF/ DSS dump format.
@@ -1557,11 +1562,9 @@ Installing VIRTEL under
    wish, you can activate external security using RACF, ACF2, or TOP
    SECRET; please refer to the “security chapter”, page 0.
 
-Installing VIRTEL under VSE
-===========================
+**Installing VIRTEL under VSE**
 
-    Installation of VIRTEL under VSE consists of the following steps.
-    Each step is described in detail in the sections which follow.
+Installation of VIRTEL under VSE consists of the following steps. Each step is described in detail in the sections which follow.
 
 -  Load the installation jobs into the POWER READER QUEUE
 
