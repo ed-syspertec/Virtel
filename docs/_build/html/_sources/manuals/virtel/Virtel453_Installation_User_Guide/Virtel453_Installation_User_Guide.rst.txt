@@ -18,7 +18,7 @@ Syspertec Communication
 
 `www.syspertec.com <http://www.syspertec.com/>`__
 
-NOTICE::
+.. note::
 
     Reproduction, transfer, distribution, or storage, in any form, of all or any part of 
     the contents of this document, except by prior authorization of SysperTec 
@@ -657,9 +657,13 @@ __ installmvs_
 
 .. _Summary:
 
-**Summary of Amendments**  
+1. Summary of Amendments
+========================
 
-VIRTEL Web Access:
+1.1 Virtel version 4.53 (24 Sep 2014)
+-------------------------------------
+
+*VIRTEL Web Access:*
 
 -  Allow FR-850 charset for IND$FILE transfer
 
@@ -675,7 +679,7 @@ VIRTEL Web Access:
 
    -  VALUE-OF URL and QUERY
 
-VIRTEL Web Integration:
+*VIRTEL Web Integration:*
 
 -  Additional commands for scenarios:
 
@@ -689,7 +693,7 @@ VIRTEL Web Integration:
 
    -  LABEL$
 
-Miscellaneous:
+*Miscellaneous:*
 
 -  Increased CISIZE for the data portion of the TRSF's files
 
@@ -712,13 +716,18 @@ Miscellaneous:
 
    -  SNAPMSG command to trap VIRHT6xE message
 
-VIRTEL Universal Protocol:
+1.2 Virtel version 4.52 (4 Dec 2013)
+------------------------------------   
+
+*VIRTEL Universal Protocol:*
 
 -  OTMAPRM parameter to specify security parameters for RESUME TPIPE
 
 -  Modifiable exit name for RESUME TPIPE
 
--  Selection of transaction name for RESUME TPIPE VIRTEL Web Access:
+-  Selection of transaction name for RESUME TPIPE
+
+*VIRTEL Web Access:*
 
 -  Macro management enhancements
 
@@ -730,7 +739,7 @@ VIRTEL Universal Protocol:
 
    -  VALUE-OF URL and QUERY
 
-VIRTEL Web Modernisation:
+*VIRTEL Web Modernisation:*
 
 -  Timeout specifiable for SEND$ TO-LINE
 
@@ -740,7 +749,7 @@ VIRTEL Web Modernisation:
 
    -  SEND$ MAXTIME
 
-Miscellaneous:
+*Miscellaneous:*
 
 -  VIRCONF documentation in English
 
@@ -754,22 +763,26 @@ Miscellaneous:
 
 -  Miscellaneous editorial corrections and enhancements
 
-VIRTEL Universal Protocol:
+1.3 Virtel version 4.51 (18 Jul 2013)
+-------------------------------------
 
--  Protocol ICONNECT (RESUME TPIPE) for communication with IMS VIRTEL
-   Web Access:
+*VIRTEL Universal Protocol:*
+
+-  Protocol ICONNECT (RESUME TPIPE) for communication with IMS
+
+*VIRTEL Web Access:*
 
 -  Additional HTML tags:
 
    -  NAME-OF VIRTEL-VERSION
 
-VIRTEL Web Modernisation:
+*VIRTEL Web Modernisation:*
 
 -  Additional commands for scenarios:
 
    -  COPY$ SYSTEM-TO-VARIABLE VIRTEL-VERSION
 
-Miscellaneous:
+*Miscellaneous:*
 
 -  Open and close printers on demand
 
@@ -781,7 +794,10 @@ Miscellaneous:
 
 -  Miscellaneous editorial corrections and enhancements
 
-VIRTEL Web Access:
+1.4 Virtel version 4.50 (30 Jun 2013)
+-------------------------------------
+
+*VIRTEL Web Access:*
 
 -  Passticket support
 
@@ -803,7 +819,9 @@ VIRTEL Web Access:
 
 -  Printer autoconnect
 
--  Miscellaneous ergonomic enhancements VIRTEL Web Modernisation:
+-  Miscellaneous ergonomic enhancements
+
+*VIRTEL Web Modernisation:*
 
 -  Additional commands for scenarios:
 
@@ -811,15 +829,20 @@ VIRTEL Web Access:
 
    -  COPY$ PASSTICKET
 
-MQSeries:
+*MQSeries:*
 
 -  Unique correlator for MQ requests
 
--  Message type REPLY for MQ responses Miscellaneous:
+-  Message type REPLY for MQ responses
+
+*Miscellaneous:*
 
 -  Miscellaneous editorial corrections and enhancements
 
-VIRTEL Web Access:
+1.5 Virtel version 4.49 (30 Apr 2013)
+-------------------------------------
+
+*VIRTEL Web Access:*
 
 -  Codepages 0037 and 1047 included as standard
 
@@ -849,7 +872,9 @@ VIRTEL Web Access:
 
 -  Drag and drop upload summary report
 
--  Miscellaneous ergonomic enhancements VIRTEL Web Modernisation:
+-  Miscellaneous ergonomic enhancements
+
+*VIRTEL Web Modernisation:*
 
 -  Additional commands for scenarios:
 
@@ -861,15 +886,22 @@ VIRTEL Web Access:
 
    -  VIRSV$ TRANSACTION OPTION=CLOSE
 
-SYSPLEX support:
+*SYSPLEX support:*
 
--  Allow read-only sharing of VSAM files Miscellaneous:
+-  Allow read-only sharing of VSAM files
+
+*Miscellaneous:*
 
 -  Miscellaneous editorial corrections and enhancements
 
-VIRTEL Universal Protocol:
+1.6 Virtel version 4.48 (27 Nov 2012)
+-------------------------------------
 
--  Menu program VIR0021J VIRTEL Web Access:
+*VIRTEL Universal Protocol:*
+
+-  Menu program VIR0021J
+
+*VIRTEL Web Access:*
 
 -  Connection of non-predefined VTAM LU names
 
@@ -893,7 +925,9 @@ VIRTEL Universal Protocol:
 
    -  CREATE-VARIABLE-FROM (allows a rectangle to be copied from the 3270 screen)
 
--  Miscellaneous ergonomic enhancements VIRTEL Web Modernisation:
+-  Miscellaneous ergonomic enhancements
+
+*VIRTEL Web Modernisation:*
 
 -  Support for scenarios stored in VSAM
 
@@ -921,9 +955,14 @@ VIRTEL Universal Protocol:
 
 -  Miscellaneous editorial corrections and enhancements
 
-VIRTEL Universal Protocol:
+1.7 Virtel version 4.47 (21 May 2012)
+-------------------------------------
 
--  Native TCP/IP protocol VIRTEL Web Access
+*VIRTEL Universal Protocol:*
+
+-  Native TCP/IP protocol
+
+*VIRTEL Web Access*
 
 -  Support for 3270 FieldMark and Dup characters
 
@@ -963,7 +1002,9 @@ VIRTEL Universal Protocol:
 
 -  Site customization of colors and logo (custom.css)
 
--  Miscellaneous ergonomic enhancements VIRTEL Web Modernisation:
+-  Miscellaneous ergonomic enhancements
+
+*VIRTEL Web Modernisation:*
 
 -  Screen redesigner upgrade
 
@@ -979,7 +1020,7 @@ VIRTEL Universal Protocol:
 
    -  MAP$ EXECUTE and RETURN$
 
-Miscellaneous:
+*Miscellaneous:*
 
 -  Logon screen for VTAM applications
 
@@ -989,580 +1030,571 @@ Miscellaneous:
 
 .. _Introduction:
 
-**Introduction**
+2. Introduction
+===============
 
-    The functionality of VIRTEL is divided into components known as “modules”. The following is a list of the VIRTEL modules:
+2.1 Virtel Modules
+------------------
 
--  The VIRTEL base kernel
+The functionality of VIRTEL is divided into components known as “modules”. The following is a list of the VIRTEL modules:
 
--  VIRTEL Multi-Session
+- The VIRTEL base kernel	
 
--  VIRTEL Security
+- VIRTEL Multi-Session
 
--  VIRTEL Web Access
+- VIRTEL Security
 
--  VIRTEL Web Modernisation
+- VIRTEL Web Access
 
--  VIRTEL Web Integration
+- VIRTEL Web Modernisation
 
--  VIRTEL Application - Application
+- VIRTEL Web Integration
 
--  VIRTEL XOT
+- VIRTEL Application - Application
 
--  VIRTEL Minitel / 3270
+- VIRTEL XOT
 
--  VIRTEL Compression
+- VIRTEL Minitel / 3270
 
--  VIRTEL PC / VT100
+- VIRTEL Compression
 
--  VIRTEL Network Manager (VTAM console)
+- VIRTEL PC / VT100
 
--  VIRTEL Incoming calls SMTP
+- VIRTEL Network Manager (VTAM console)
 
--  VIRTEL Incoming calls Minitel
+- VIRTEL Incoming calls SMTP
 
--  VIRTEL Incoming calls PC
+- VIRTEL Incoming calls Minitel
 
--  VIRTEL Incoming calls VTxxx
+- VIRTEL Incoming calls PC
 
--  VIRTEL Outgoing calls SMTP
+- VIRTEL Incoming calls VTxxx
 
--  VIRTEL Outgoing calls Videotex 3270
+- VIRTEL Outgoing calls SMTP
 
--  VIRTEL Outgoing calls 3174 switched X25
+- VIRTEL Outgoing calls Videotex 3270
 
--  VIRTEL Outgoing calls VTxxx
+- VIRTEL Outgoing calls 3174 switched X25
 
--  VIRTEL VIRAPI, APPC
+- VIRTEL Outgoing calls VTxxx
 
--  VIRTEL LECAM
+- VIRTEL VIRAPI, APPC
 
--  VIRTEL VIRPASS
+- VIRTEL LECAM
 
-    The VIRTEL product contains support for the base kernel and all
-    modules. The functionality of each module is activated either by
-    setting specific parameters in the VIRTCT or by the activation of
-    appropriate configuration definitions in the VIRARBO file.
+- VIRTEL VIRPASS
 
-Please refer to your license agreement for the particular terms and conditions under which you are authorised to use the various VIRTEL modules.
-------------------------------------------------------------------------------------------------------------------------------------------------
+The VIRTEL product contains support for the base kernel and all modules. The functionality of each module is activated either by setting specific parameters in the VIRTCT or by the activation of appropriate configuration definitions in the VIRARBO file.
 
-    VIRTEL operates in the MVS or VSE environments. Throughout the
-    VIRTEL documentation, the term “MVS” should be understood to include
-    OS/390 and z/OS, and the term “VSE” should be understood to include
-    VSE/ESA and z/VSE.
+.. line-block:: 
 
-    In the MVS environment, VIRTEL runs under the OS/390 or z/OS
-    operating systems. If the VIRTEL MQ interface is used, then MQSeries
-    Version 6 or later is required. Support for the cryptographic
-    functions of VIRTEL requires ICSF Version HCR7740 or later.
+*Please refer to your license agreement for the particular terms and conditions under which you are authorised to use the various VIRTEL modules.*
 
-    In the VSE environment, VIRTEL runs under the VSE/ESA or z/VSE
-    operating systems. TCP/IP access (XOT, VIRTEL Web Access) requires
-    VSE/ESA 2.5.1 or later, or any version of z/VSE.
 
-    VIRTEL Web Access requires a standard web browser on the user’s
-    workstation. Supported browsers include:
+2.2 Required Environment
+------------------------
 
--  Microsoft Internet Explorer Version 6 or above
+VIRTEL operates in the MVS or VSE environments. Throughout the VIRTEL documentation, the term “MVS” should be understood to include OS/390 and z/OS, and the term “VSE” should be understood to include VSE/ESA and z/VSE. 
 
--  Firefox Version 15 or above (for Windows 7 or Vista)
+2.2.1 MVS environment
+^^^^^^^^^^^^^^^^^^^^^
 
--  Firefox Version 17 or above (for Windows XP)
+In the MVS environment, VIRTEL runs under the OS/390 or z/OS operating systems. If the VIRTEL MQ interface is used, then MQSeries Version 6 or later is required. Support for the cryptographic functions of VIRTEL requires ICSF Version HCR7740 or later.
 
--  Chrome Version 23 or above
+2.2.2 VSE environment
+^^^^^^^^^^^^^^^^^^^^^	
 
--  Opera Version 15 or above
+In the VSE environment, VIRTEL runs under the VSE/ESA or z/VSE operating systems. TCP/IP access (XOT, VIRTEL Web Access) requires VSE/ESA 2.5.1 or later, or any version of z/VSE.
 
--  Safari Version 5 or above
+2.2.3 Workstation pre-requisities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^	
 
-    VIRTEL Web Access requires JavaScript to be enabled in the browser.
+VIRTEL Web Access requires a standard web browser on the user’s workstation. Supported browsers include:
+
+        - Microsoft Internet Explorer Version 6 or above
+
+        - Firefox Version 15 or above (for Windows 7 or Vista)
+
+        - Firefox Version 17 or above (for Windows XP)
+
+        - Chrome Version 23 or above
+
+        - Opera Version 15 or above
+
+        - Safari Version 5 or above
+
+VIRTEL Web Access requires JavaScript to be enabled in the browser.
 
 .. _installmvs:    
 
-**Installing VIRTEL under MVS**
+3. Installing VIRTEL under MVS
+==============================
 
-    In the MVS environment, VIRTEL is delivered as a zipped XMIT file
-    containing the VIRTEL datasets compressed in DF/ DSS dump format.
-    The following sections provide details of the installation method.
+3.1 Installation procedure
+--------------------------
 
-    A quick “installation check-list” to start the VIRTEL Web Access
-    function for MVS can be found at the end of this section.
+In the MVS environment, VIRTEL is delivered as a zipped XMIT file containing the VIRTEL datasets compressed in DF/ DSS dump format. The following sections provide details of the installation method.
 
-    All the VSAM and non-VSAM datasets required for the installation of
-    VIRTEL are contained in a zipped XMIT file which can be downloaded
-    from the Syspertec file server. The size of the zipped file is
-    approximately 2MB. Two JCL files ($ALOCDSU and $RESTDSU) are also
-    included in the zip file. The procedure for obtaining and uploading
-    the file is as follows:
+A quick “installation check-list” to start the VIRTEL Web Access function for MVS can be found at the end of this section.
 
-    Login to the Syspertec file server
-    `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__ using the
-    userid and password supplied to you by Syspertec. Navigate to the
-    “Public” – “VIRTEL 4.53” – “Products” folder and download the
-    virtel453mvs.zip file. Unzip this file into a folder on your
-    workstation.
+3.1.1 Restoring from the XMIT file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Run the job $ALOCDSU to allocate a sequential file named
-    userid.TRANSFER.XMIT with DCB attributes (RECFM=FB, LRECL=80):
+All the VSAM and non-VSAM datasets required for the installation of VIRTEL are contained in a zipped XMIT file which can be downloaded from the Syspertec file server. The size of the zipped file is approximately 2MB. Two JCL files ($ALOCDSU and $RESTDSU) are also     included in the zip file. The procedure for obtaining and uploading the file is as follows:
 
-+----------------+-------------------------------------------------------+----------+
-|     //\*--\*   |     BINARY FILE TRANSFER - STEP NO.1                  | \*--\*   |
-+================+=======================================================+==========+
-|     //\*--\*   |                                                       | \*--\*   |
-+----------------+-------------------------------------------------------+----------+
-|     //\*--\*   |     Function : Allocate a sequential XMIT type file   | \*--\*   |
-+----------------+-------------------------------------------------------+----------+
-|     //\*--\*   |                                                       | \*--\*   |
-+----------------+-------------------------------------------------------+----------+
+3.1.1.1 Step 1
 
-    *JCL for allocating an XMIT file (MVS)*
+Login to the Syspertec file server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__ using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.53” – “Products” folder and download the virtel453mvs.zip file. Unzip this file into a folder on your workstation.
 
-    The parameters SET VOLM=SPT001 and SET UNIT=3390 at the start of
-    this job should be changed as appropriate to match the volume on
-    which the userid.TRANSFER.XMIT dataset is to be allocated.
+3.1.1.2 Step 2
 
-    Using FTP or IND$FILE, upload the file virtel453mvs.xmit to the host
-    transfer file created in step 1. It is very important to ensure that
-    the upload is performed in binary mode. The following is an example
-    of an FTP session to perform the upload:
+Run the job $ALOCDSU to allocate a sequential file named userid.TRANSFER.XMIT with DCB attributes (RECFM=FB, LRECL=80)::
 
-    *Figure 2‑2 FTP session for uploading an XMIT file (MVS)*
+	//SPALODSU JOB 1,MSGCLASS=X,CLASS=A,NOTIFY=&SYSUID
+	//*-------------------------------------------------------------------*
+	//*--* BINARY FILE TRANSFER - STEP NO.1                            *--*
+	//*--*                                                             *--*
+	//*--* Function : Allocate a sequential XMIT type file             *--*
+	//*--*                                                             *--*
+	//*--* Following step $RESTDSU                                     *--*
+	//*--*                                                             *--*
+	//*-------------------------------------------------------------------*
+	// SET TYPE=CYL                                        /* TYPE ALLOC */
+	// SET ALLOCPRI=4                                      /* PRIM ALLOC */
+	// SET ALLOCSEC=1                                      /* SECO ALLOC */
+	// SET VOLM=SPT001                                         /* VOLUME */
+	// SET UNIT=3390                                        /* DISK UNIT */
+	//*-------------------------------------------------------------------*
+	//* DELETE OLD .XMIT file                                             *
+	//*-------------------------------------------------------------------*
+	//STEP1 EXEC PGM=IKJEFT01,PARM='DEL ''&SYSUID..TRANSFER.XMIT'''
+	//SYSTSPRT DD SYSOUT=*
+	//SYSOUT DD *
+	//SYSTSIN DD *
+	PROF                                            /* POUR GENERER CC=0 */
+	//*
+	//*-------------------------------------------------------------------*
+	//* Allocate new reception .XMIT file                                 *
+	//*-------------------------------------------------------------------*
+	//STEP2 EXEC PGM=IEFBR14
+	//SYSOUT DD *
+	//SYSUT2 DD DSN&SYSUID..TRANSFER.XMIT,
+	// UNIT=&UNIT,VOL=SER=&VOLM,DISP=(NEW,CATLG),
+	// SPACE=(&TYPE,(&ALLOCPRI,&ALLOCSEC)),
+	// DCB=(RECFM=FB,LRECL=80,BLKSIZE=3120,DSORG=PS)
+	//*
+	//*-------------------------------------------------------------------*
+	//*--* BINARY FILE TRANSFER - STEP NO.2                            *--*
+	//*--* Make a binary transfer of the given file                    *--*
+	//*--* BIN                                                         *--*
+	//*--* PUT filename.xmit TRANSFER.XMIT                             *--*
+	//*-------------------------------------------------------------------*
 
-    Run the job $RESTDSU to unpack the transfer file and to restore the
-    VIRTEL datasets by means of the ADRDSSU utility program:
+*JCL for allocating an XMIT file (MVS)*
+
+The parameters SET VOLM=SPT001 and SET UNIT=3390 at the start of this job should be changed as appropriate to match the volume on which the userid.TRANSFER.XMIT dataset is to be allocated.
+
+3.1.1.3 Step 3
+
+Using FTP or IND$FILE, upload the file virtel453mvs.xmit to the host transfer file created in step 1. It is very important to ensure that the upload is performed in binary mode. The following is an example of an FTP session to perform the upload::
+
+	C:\temp>ftp 192.168.0.1
+	Connected to 192.168.0.1.
+	220-FTPD1 IBM FTP CS V1R4 at ZOS1.COMPANY.COM, 08:41:36 on 2004-05-24.
+	220 Connection will close if idle for more than 5 minutes.
+	User (192.168.0.1:(none)): sptuser
+	331 Send password please.
+	Password:
+	230 SPTUSER is logged on. Working directory is "SPTUSER.".
+	ftp> bin
+	200 Representation type is Image
+	ftp> put virtel453mvs.xmit TRANSFER.XMIT
+	200 Port request OK.
+	125 Storing data set SPTUSER.TRANSFER.XMIT
+	250 Transfer completed successfully.
+	ftp: 4067120 bytes sent in 5,59Seconds 727,83Kbytes/sec.
+	ftp> quit
+	221 Quit command received. Goodbye.
+	C:\temp>
+
+*Figure 2‑2 FTP session for uploading an XMIT file (MVS)*
+
+3.1.1.4 Step 4    
+
+Run the job $RESTDSU to unpack the transfer file and to restore the VIRTEL datasets by means of the ADRDSSU utility program::
 
     //SPRESDSU JOB 1,MSGCLASS=X,CLASS=A,NOTIFY=&SYSUID
-
     //\*-------------------------------------------------------------------\*
-
     //\*--\* Binary File Transfer - STEP No 3 \*--\*
-
     //\*--\* \*--\*
-
     //\*--\* Function : Reception and reload of the files \*--\*
-
     //\*--\* \*--\*
-
     //\*--\* Replace '??????' by target volume serial number \*--\*
-
     //\*--\* Replace 'yourqual' by target DSN high-level qualifier
     \*--\*
-
     //\*-------------------------------------------------------------------\*
-
     //\*-------------------------------------------------------------------\*
-
     //\* Reception of the .XMIT File \*
-
     //\*-------------------------------------------------------------------\*
-
     //BATCHTS EXEC PGM=IKJEFT1A,REGION=4M
-
     //SYSPRINT DD SYSOUT=\*
-
     //SYSTSPRT DD SYSOUT=\*
-
     //XMITFILE DD DSN=&SYSUID..TRANSFER.XMIT,DISP=OLD
-
     //SYSTSIN DD \*
-
     RECEIVE INFILE(XMITFILE) DA(TRANSFER.DSSDUMP)
-
     //\*
-
     //\*-------------------------------------------------------------------\*
-
     //\* Reload of the initial files \*
-
     //\*-------------------------------------------------------------------\*
-
     //DSSREST EXEC PGM=ADRDSSU,REGION=6M,COND=(0,NE)
-
     //SYSPRINT DD SYSOUT=\*
-
     //DUMPFILE DD DSN=&SYSUID..TRANSFER.DSSDUMP,DISP=(OLD,DELETE)
     RESTORE -
+    DS(INCLUDE(SPRODUIT.VIRTEL.BASE\*.\*\*)) - 
+    OUTDYNAM(??????,3390) /* <==== VOLUME, UNIT ===== */ - 
+    RENAMEUNC( -
+    	(SPRODUIT.VIRTEL.BASE453.LOADLIB, - 
+    		yourqual.VIRT453.LOADLIB), -
+    	(SPRODUIT.VIRTEL.BASE453.MACLIB, -
+    		yourqual.VIRT453.MACLIB), - 
+    	(SPRODUIT.VIRTEL.BASE453.SAMPLIB, -
+    		yourqual.VIRT453.SAMPLIB), - 
+    	(SPRODUIT.VIRTEL.BASE453.SERVLIB, -
+    		yourqual.VIRT453.SERVLIB), -
+    	(SPRODUIT.VIRTEL.BASE453.DBRMLIB, -
+    		yourqual.VIRT453.DBRMLIB), - 
+    	(SPRODUIT.VIRTEL.BASE453.CNTL, -
+    		yourqual.VIRT453.CNTL), - 
+    	(SPRODUIT.VIRTEL.BASE453.SAMP.TRSF, -
+    		yourqual.VIRT453.SAMP.TRSF), -
+    	(SPRODUIT.VIRTEL.BASE453.CONFGEN.MACLIB, -
+    		yourqual.VIRT453.CONFGEN.MACLIB), -
+    	(SPRODUIT.VIRTEL.BASE453.FA29API.MACLIB, -
+    		yourqual.VIRT453.FA29API.MACLIB), -
+    	(SPRODUIT.VIRTEL.BASE453.SCRNAPI.MACLIB, -
+    		yourqual.VIRT453.SCRNAPI.MACLIB), -
+    	(SPRODUIT.VIRTEL.BASE453.VIRAPI.MACLIB, -
+    		yourqual.VIRT453.VIRAPI.MACLIB), - 
+    	(SPRODUIT.VIRTEL.BASE453.ARBO, -
+    		yourqual.VIRT453.ARBO), - 
+    	(SPRODUIT.VIRTEL.BASE453.CAPT, -
+    		yourqual.VIRT453.CAPT), - 
+    	(SPRODUIT.VIRTEL.BASE453.CMP3, -
+    		yourqual.VIRT453.CMP3), - 
+    	(SPRODUIT.VIRTEL.BASE453.HTML, -
+    		yourqual.VIRT453.HTML), - 
+    	(SPRODUIT.VIRTEL.BASE453.HTML.TRSF, -
+    		yourqual.VIRT453.HTML.TRSF), - 
+    	(SPRODUIT.VIRTEL.BASE453.PLUG.TRSF, -
+    		yourqual.VIRT453.PLUG.TRSF), -
+		(SPRODUIT.VIRTEL.BASE453.SWAP, -
+			yourqual.VIRT453.SWAP), -
+		(SPRODUIT.VIRTEL.BASE453.STAT, -
+			yourqual.VIRT453.STAT), -
+			) –
+	/* NULLSTORCLAS BYPASSACS(**) */ /* <==== SMS OVERRIDE ===== */ -
+	/* ADMIN TOL(ENQF) */ 			 /* <==== OPTIONAL ========= */ -
+	/* REPLACE SHR */ 				 /* <==== SI EXISTE DEJA === */ -
+		CATALOG INDD(DUMPFILE)
+	//*
+	//
+    
+*JCL for restoring from an XMIT file (MVS)*
 
-    DS(INCLUDE(SPRODUIT.VIRTEL.BASE\*.\*\*)) - OUTDYNAM(??????,3390) /\*
-    <==== VOLUME, UNIT ===== \*/ - RENAMEUNC( -
+The following changes should be made to this job before submitting it:
 
-    (SPRODUIT.VIRTEL.BASE453.LOADLIB, - yourqual.VIRT453.LOADLIB), -
+- If the VIRTEL datasets are not to be managed by SMS, alter the statement OUTDYNAM(??????,3390) to specify the volume on which the datasets are to be allocated.
 
-    (SPRODUIT.VIRTEL.BASE453.MACLIB, -
+- If the VIRTEL datasets are to be managed by SMS, remove the NULLSTORCLAS BYPASSACS(\*\*) statement and replace it by STORCLAS(classname) where classname is the name of the SMS storage class on which the VIRTEL datasets are to be allocated. Do not delete the OUTDYNAM parameter, ADRDSSU requires it even though its value is ignored for SMS.
 
-    yourqual.VIRT453.MACLIB), - (SPRODUIT.VIRTEL.BASE453.SAMPLIB, -
+- In the RENAMEUNC parameter, replace yourqual by the high-level qualifiers to be used for your VIRTEL datasets.
 
-    yourqual.VIRT453.SAMPLIB), - (SPRODUIT.VIRTEL.BASE453.SERVLIB, -
+- The ADMIN and TOL(ENQF) parameters may be uncommented if you are authorized to the necessary STGADMIN profiles.
 
-    yourqual.VIRT453.SERVLIB), - (SPRODUIT.VIRTEL.BASE453.DBRMLIB, -
+3.1.2 Applying PTFs
+^^^^^^^^^^^^^^^^^^^
 
-    yourqual.VIRT453.DBRMLIB), - (SPRODUIT.VIRTEL.BASE453.CNTL, -
+As a general rule the application of PTFs is necessary and recommended. PTFs are maintenance files which must be applied to the VIRTEL LOADLIB to correct problems which have been discovered subsequent to the building of the VIRTEL 4.53 release, or to add new function which will be included as standard in the next release. A second type of PTF consists of elements such as HTML pages, style sheets, and JavaScript files, which must be uploaded into the VIRTEL directories in the SAMPTRSF VSAM file. This type of PTF may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format.
 
-    yourqual.VIRT453.CNTL), - (SPRODUIT.VIRTEL.BASE453.SAMP.TRSF, -
+3.1.2.1 Obtaining PTFs
 
-    yourqual.VIRT453.SAMP.TRSF), -
-    (SPRODUIT.VIRTEL.BASE453.CONFGEN.MACLIB, -
+To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the “Public” – “VIRTEL 4.53” – “PTFS for version 4.53” folder, and download the ptfs-mvs453.txt file. If the file does not exist, then there are no PTFs to be applied.
 
-    yourqual.VIRT453.CONFGEN.MACLIB), -
-    (SPRODUIT.VIRTEL.BASE453.FA29API.MACLIB, -
+Alternatively, you may receive the allptfs-mvs453.txt file by e-mail from Syspertec support.
 
-    yourqual.VIRT453.FA29API.MACLIB), -
-    (SPRODUIT.VIRTEL.BASE453.SCRNAPI.MACLIB, -
+3.1.2.2 Uploading PTFs
 
-    yourqual.VIRT453.SCRNAPI.MACLIB), -
-    (SPRODUIT.VIRTEL.BASE453.VIRAPI.MACLIB, -
+The allptfs-mvs453.txt file should be uploaded in text format to member PTF453MV of the VIRTEL CNTL library.
 
-    yourqual.VIRT453.VIRAPI.MACLIB), - (SPRODUIT.VIRTEL.BASE453.ARBO, -
+For PTFs which contain elements to be uploaded to VIRTEL, first unzip the elements to a directory on your workstation. Then use the “Upload” link from the VIRTEL Web Access page at http://n.n.n.n:41001 to upload the elements one by one to the W2H-DIR directory.
 
-    yourqual.VIRT453.ARBO), - (SPRODUIT.VIRTEL.BASE453.CAPT, -
+In the case of a PTF containing a replacement SAMPTRSF file in DF/DSS XMIT format, use the procedure previously described ($ALOCDSU and $RESTDSU) to upload the file in binary and retrieve the SAMPTRSF VSAM file.
 
-    yourqual.VIRT453.CAPT), - (SPRODUIT.VIRTEL.BASE453.CMP3, -
+3.1.2.3 Applying PTFs
 
-    yourqual.VIRT453.CMP3), - (SPRODUIT.VIRTEL.BASE453.HTML, -
+The recovered PTFs are applied to the VIRTEL LOADLIB by using AMASPZAP with the IGNIDRFULL parameter. The ZAPJCL member in the VIRTEL CNTL library (shown below) performs the apply. This job should complete with return code 0000 or 0004.::
 
-    yourqual.VIRT453.HTML), - (SPRODUIT.VIRTEL.BASE453.HTML.TRSF, -
+	//VIRPTF JOB 1,ZAPJCL,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+	//*
+	//* PTF à APPLIQUER
+	//*
+	// SET LOAD=yourqual.VIRT453.LOADLIB
+	// SET CNTL=yourqual.VIRT453.CNTL
+	// SET MEMBER=PTF453MV
+	//*
+	//PTFZAP EXEC PGM=AMASPZAP,PARM='IGNIDRFULL'
+	//SYSPRINT DD SYSOUT=*
+	//SYSLIB DD DSN=&LOAD,DISP=SHR
+	//SYSIN DD DSN=&CNTL(&MEMBER),DISP=SHR
 
-    yourqual.VIRT453.HTML.TRSF), - (SPRODUIT.VIRTEL.BASE453.PLUG.TRSF, -
+*Member ZAPJCL for applying PTFs (MVS)*
 
-    *JCL for restoring from an XMIT file (MVS)*
+3.1.2.4 Restarting VIRTEL and validation of PTF level
 
-    The following changes should be made to this job before submitting
-    it:
+VIRTEL must be stopped and restarted to allow the newly-applied PTFs to take effect. The list of PTFs applied is displayed near the beginning of the SYSMSGLG dataset during VIRTEL startup by message VIR0018I, as shown in the following example::
 
--  If the VIRTEL datasets are not to be managed by SMS, alter the
-   statement OUTDYNAM(??????,3390) to specify the volume on which the
-   datasets are to be allocated.
-
--  If the VIRTEL datasets are to be managed by SMS, remove the
-   NULLSTORCLAS BYPASSACS(\*\*) statement and replace it by
-   STORCLAS(classname) where classname is the name of the SMS storage
-   class on which the VIRTEL datasets are to be allocated. Do not delete
-   the OUTDYNAM parameter, ADRDSSU requires it even though its value is
-   ignored for SMS.
-
--  In the RENAMEUNC parameter, replace yourqual by the high-level
-   qualifiers to be used for your VIRTEL datasets.
-
--  The ADMIN and TOL(ENQF) parameters may be uncommented if you are
-   authorized to the necessary STGADMIN profiles.
-
-    As a general rule the application of PTFs is necessary and
-    recommended. PTFs are maintenance files which must be applied to the
-    VIRTEL LOADLIB to correct problems which have been discovered
-    subsequent to the building of the VIRTEL 4.53 release, or to add new
-    function which will be included as standard in the next release. A
-    second type of PTF consists of elements such as HTML pages, style
-    sheets, and JavaScript files, which must be uploaded into the VIRTEL
-    directories in the SAMPTRSF VSAM file. This type of PTF may
-    sometimes be supplied as a complete replacement for the SAMPTRSF
-    file in the form of a DF/DSS dump in XMIT format.
-
-    To download PTFs from the Syspertec file server, use your web
-    browser to login to the file server as described 13, navigate to the
-    “Public” – “VIRTEL 4.53” – “PTFS for version 4.53” folder, and
-    download the allptfs-mvs453.txt file. If the file does not exist,
-    then there are no PTFs to be applied.
-
-    Alternatively, you may receive the allptfs-mvs453.txt file by e-mail
-    from Syspertec support.
-
-    The allptfs-mvs453.txt file should be uploaded in text format to
-    member PTF453MV of the VIRTEL CNTL library.
-
-    For PTFs which contain elements to be uploaded to VIRTEL, first
-    unzip the elements to a directory on your workstation. Then use the
-    “Upload” link from the VIRTEL Web Access page at
-    http://n.n.n.n:41001 to upload the elements one by one to the
-    W2H-DIR directory.
-
-    In the case of a PTF containing a replacement SAMPTRSF file in
-    DF/DSS XMIT format, use the procedure previously described ($ALOCDSU
-    and $RESTDSU) to upload the file in binary and retrieve the SAMPTRSF
-    VSAM file.
-
-    The recovered PTFs are applied to the VIRTEL LOADLIB by using
-    AMASPZAP with the IGNIDRFULL parameter. The ZAPJCL member in the
-    VIRTEL CNTL library (shown below) performs the apply. This job
-    should complete with return code 0000 or 0004.
-
-    *Member ZAPJCL for applying PTFs (MVS)*
-
-    VIRTEL must be stopped and restarted to allow the newly-applied PTFs
-    to take effect. The list of PTFs applied is displayed near the
-    beginning of the SYSMSGLG dataset during VIRTEL startup by message
-    VIR0018I, as shown in the following example:
+	VIR0018I 3876,3876A,3882,3902,3904,3906,3928,3934    
 
     *Validation of the VIRTEL PTF level*
 
-    If you already have a previous release of VIRTEL installed (version
-    4.00 or later) then you only need the datasets shown in the figure
-    below:
+3.1.3 Upgrading a previous release
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    *Datasets upgraded during release change*
+3.1.3.1 Datasets to be upgraded
 
-    For the remaining datasets, shown in the figure below, you should
-    continue to use your existing datasets, as these may contain
-    customer-specific configuration information which you do not want to
-    overwrite:
+If you already have a previous release of VIRTEL installed (version 4.00 or later) then you only need the datasets shown in the figure below::
 
-    *Datasets to be retained from previous release*
+	yourqual.VIRT453.LOADLIB
+	yourqual.VIRT453.MACLIB
+	yourqual.VIRT453.SAMPLIB
+	yourqual.VIRT453.SERVLIB
+	yourqual.VIRT453.DBRMLIB	
+	yourqual.VIRT453.CNTL
+	yourqual.VIRT453.SAMP.TRSF
+	yourqual.VIRT453.CONFGEN.MACLIB
+	yourqual.VIRT453.FA29API.MACLIB
+	yourqual.VIRT453.SCRNAPI.MACLIB
+	yourqual.VIRT453.VIRAPI.MACLIB
 
-    Note: it is also possible to copy your existing files into the files
-    of the new release using IDCAMS REPRO (or by ARBOLOAD for the
-    VIRARBO file).
+*Datasets upgraded during release change*
 
-    The procedure for upgrading from a previous release of VIRTEL
-    (version 4.00 or later) is as follows. Customers upgrading from
-    earlier releases of VIRTEL should contact Syspertec for technical
-    support.
+For the remaining datasets, shown in the figure below, you should continue to use your existing datasets, as these may containing customer-specific configuration information which you do not want to overwrite::
+	
+	yourqual.VIRTnnn.ARBO
+	yourqual.VIRTnnn.CAPT
+	yourqual.VIRTnnn.CMP3
+	yourqual.VIRTnnn.HTML
+	yourqual.VIRTnnn.HTML.TRSF
+	yourqual.VIRTnnn.SWAP
+	yourqual.VIRTnnn.STAT	
+	
+*Datasets to be retained from previous release*
 
-1.  Upload and unpack the virtel453mvs.xmit file as described in the
-    previous section.
+.. note::    
+
+    It is also possible to copy your existing files into the files of the new release using IDCAMS REPRO (or by ARBOLOAD for the VIRARBO file).
+
+3.1.3.2 Upgrade procedure
+
+The procedure for upgrading from a previous release of VIRTEL (version 4.00 or later) is as follows. Customers upgrading from  earlier releases of VIRTEL should contact Syspertec for technical support.
+
+1.  Upload and unpack the virtel453mvs.xmit file as described in the previous section.
 
 2.  Apply PTFs as described in the previous section.
 
-3.  Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new
-    VIRT453.CNTL
+3.  Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new VIRT453.CNTL
 
 4.  Reassemble your VIRTCTnn module using the ASMTCT job in VIRT453.CNTL
 
-5.  If you have any scenario or user exit modules, copy them to the
-    VIRT453.CNTL library and reassemble them using the ASMSCEN and
-    ASMEXIT jobs respectively.
+5.  If you have any scenario or user exit modules, copy them to the VIRT453.CNTL library and reassemble them using the ASMSCEN and ASMEXIT jobs respectively.
 
-6.  Add the new VIRT453.LOADLIB library to the system APF list in the
-    MVS PARMLIB and use the SETPROG command to authorize the
-    VIRT453.LOADLIB library.
+6.  Add the new VIRT453.LOADLIB library to the system APF list in the MVS PARMLIB and use the SETPROG command to authorize the VIRT453.LOADLIB library.
 
-7.  Edit your VIRTEL procedure in the MVS PROCLIB, to ensure that the
-    STEPLIB, DFHRPL, and SERVLIB DD statements reference the new
-    VIRT453.LOADLIB, and that the SAMPTRSF DD statement references the
-    new VIRT453.SAMP.TRSF dataset.
+7.  Edit your VIRTEL procedure in the MVS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRT453.LOADLIB, and that the SAMPTRSF DD statement references the new VIRT453.SAMP.TRSF dataset.
 
-8.  If upgrading from a version prior to VIRTEL 4.43, add a VIRTRACE DD
-    statement to the VIRTEL procedure, as shown in the next section.
+8.  If upgrading from a version prior to VIRTEL 4.43, add a VIRTRACE DD statement to the VIRTEL procedure, as shown in the next section.
 
-9.  If you have modified the default values for the VIRTEL Web Access
-    Settings (as described in the VIRTEL Web Access Guide), upload your
-    customized w2hparm.js file into the CLI-DIR directory and check that
-    the CLI-03P transaction (under the CLIWHOST entry point) references
-    CLI-DIR in the “Application” field. If you do not find a CLI-03P
-    transaction, run job CUSTCSS from the VIRTEL SAMPLIB.
+9.  If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide), upload your customized w2hparm.js file into the CLI-DIR directory and check that the CLI-03P transaction (under the CLIWHOST entry point) references CLI-DIR in the “Application” field. If you do not find a CLI-03P transaction, run job CUSTCSS from the VIRTEL SAMPLIB.
 
 10. Stop and restart VIRTEL.
 
-    VIRTEL can run as a JOB or as an STC. An example JCL procedure is
-    contained in member VIRTEL4 of the VIRTEL SAMPLIB. If VIRTEL is to
-    be run as an STC, this member must be copied into a system PROCLIB
-    and renamed as VIRTEL:
+3.2 Executing Virtel in an MVS environment
+------------------------------------------
 
-+----------------+-----------------------------------+--------------------------------+
-|     //VIRTEL   |     PROC QUAL=yourqual.VIRT453,   |                                |
-+================+===================================+================================+
-|     //\*       |     QUALMQ=CSQ600,                |     <-- MQSeries qualifier     |
-+----------------+-----------------------------------+--------------------------------+
-|     //         |     APPLID=,                      |     <-- Default is in VIRTCT   |
-+----------------+-----------------------------------+--------------------------------+
-|     //         |     TCT=01                        |     <-- Suffix of VIRTCT       |
-+----------------+-----------------------------------+--------------------------------+
+VIRTEL can run as a JOB or as an STC. An example JCL procedure is contained in member VIRTEL4 of the VIRTEL SAMPLIB. If VIRTEL is to be run as an STC, this member must be copied into a system PROCLIB and renamed as VIRTEL::
 
-    *VIRTEL started task JCL procedure (MVS)*
+	//VIRTEL PROC QUAL=yourqual.VIRT453,
+	//* QUALMQ=CSQ600,   <-- MQSeries qualifier
+	//  APPLID=,         <-- Default is in VIRTCT
+	//  TCT=01           <-- Suffix of VIRTCT
+	//*-------------------------------------------------------------------*
+	//* PROCEDURE LANCEMENT VIRTEL                                        *
+	//*-------------------------------------------------------------------*
+	//VIRTEL EXEC PGM=VIR6000,
+	// TIME=1440,REGION=32M,
+	// PARM=(&TCT,&APPLID)
+	//STEPLIB DD DSN=&QUAL..LOADLIB,DISP=SHR
+	//* DD DSN=&QUALMQ..SCSQANLE,DISP=SHR
+	//* DD DSN=&QUALMQ..SCSQAUTH,DISP=SHR
+	//DFHRPL DD DSN=&QUAL..LOADLIB,DISP=SHR
+	//* DD DSN=GTM.MIRES.LOADLIB,DISP=SHR
+	//SERVLIB DD DSN=&QUAL..SERVLIB,DISP=SHR
+	//VIRARBO DD DSN=&QUAL..ARBO,DISP=SHR
+	//VIRSWAP DD DSN=&QUAL..SWAP,DISP=SHR
+	//VIRSTAT DD DSN=&QUAL..STAT,DISP=SHR
+	//*VIRCMP3 DD DSN=&QUAL..CMP3,DISP=SHR
+	//*VIRCAPT DD DSN=&QUAL..CAPT,DISP=SHR
+	//VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
+	//SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
+	//HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
+	//*PLUGTRSF DD DSN=&QUAL..PLUG.TRSF,DISP=SHR
+	//SYSOUT DD SYSOUT=*
+	//VIRLOG DD SYSOUT=*
+	//VIRTRACE DD SYSOUT=*
+	//SYSPRINT DD SYSOUT=*
+	//SYSUDUMP DD SYSOUT=*
+
+*VIRTEL started task JCL procedure (MVS)*
+
+3.2.1 Required and optional files for Virtel 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
 
 -  Files STEPLIB, DFHRPL are always required
 
 -  Files VIRARBO, VIRSWAP are always required
 
--  File SERVLIB must be present if the VIRSV1 parameter is coded in the
-   VIRTCT
+-  File SERVLIB must be present if the VIRSV1 parameter is coded in the VIRTCT
 
--  File VIRSTAT must be present if the parameter STATS=YES is coded in
-   the VIRTCT
+-  File VIRSTAT must be present if the parameter STATS=YES is coded in the VIRTCT
 
--  File VIRCMP3 must be present if the parameter COMPR3=AUTO or
-   COMPR3=FIXED is coded in the VIRTCT
+-  File VIRCMP3 must be present if the parameter COMPR3=AUTO or COMPR3=FIXED is coded in the VIRTCT
 
--  File VIRCAPT must be present if the parameter FCAPT=VIRCAPT is coded
-   in the VIRTCT
+-  File VIRCAPT must be present if the parameter FCAPT=VIRCAPT is coded in the VIRTCT
 
--  File VIRHTML must be present if the parameter HTVSAM=VIRHTML is coded
-   in the VIRTCT (parameter required for clients wishing to use e-mail,
-   VIRTEL Web Access, or the Videotex Plug-In function)
+-  File VIRHTML must be present if the parameter HTVSAM=VIRHTML is coded in the VIRTCT (parameter required for clients wishing to use e-mail, VIRTEL Web Access, or the Videotex Plug-In function)
 
--  Files SAMPTRSF, HTMLTRSF must be present if referenced by the
-   parameters UFILEn (and their corresponding ACBs) in the VIRTCT
-   (required for clients wishing to use VIRTEL Web Access functions)
+-  Files SAMPTRSF, HTMLTRSF must be present if referenced by the parameters UFILEn (and their corresponding ACBs) in the VIRTCT (required for clients wishing to use VIRTEL Web Access functions)
 
--  File PLUGTRSF must be present if referenced by a parameter UFILEn
-   (and its corresponding ACB) in the VIRTCT (required for clients
-   wishing to use the Videotex Plug-In function)
+-  File PLUGTRSF must be present if referenced by a parameter UFILEn (and its corresponding ACB) in the VIRTCT (required for clients wishing to use the Videotex Plug-In function)
 
--  Files SYSOUT, VIRLOG, VIRTRACE, SYSPRINT, SYSUDUMP are always
-   required
+-  Files SYSOUT, VIRLOG, VIRTRACE, SYSPRINT, SYSUDUMP are always required
 
--  The libraries SCSQANLE, SCSQAUTH must be concatenated to the STEPLIB
-   unless these libraries are in the system link list or LPA list (only
-   for clients wishing to use VIRTEL with MQSeries)
+-  The libraries SCSQANLE, SCSQAUTH must be concatenated to the STEPLIB unless these libraries are in the system link list or LPA list (only for clients wishing to use VIRTEL with MQSeries)
 
--  The CSF.SCSFMOD0 library must be concatenated to the STEPLIB or must
-   be present in the system link list (only if the CRYPTn=(...,ICSF,...)
-   parameter is coded in the VIRTCT)
+-  The CSF.SCSFMOD0 library must be concatenated to the STEPLIB or must be present in the system link list (only if the CRYPTn=(...,ICSF,...) parameter is coded in the VIRTCT)
 
-    VIRTEL must run from an APF-authorized library if either of the
-    following is true:
+3.2.2 APF authorisation, userid and priority
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 
--  External security (RACF, TOP SECRET, or ACF2) is selected by means of
-   the SECUR parameter of the VIRTCT
+VIRTEL must run from an APF-authorized library if either of the following is true:
 
--  VIRTEL is made non-swappable by means of the DONTSWA parameter of the
-   VIRTCT
+- External security (RACF, TOP SECRET, or ACF2) is selected by means of the SECUR parameter of the VIRTCT
 
-    Normally VIRTEL is started in APF-authorized mode via the VIR6000
-    module, and in this case all of the libraries specified in the
-    STEPLIB and DFHRPL concatenations must be APF-authorised. For
-    certain specialised applications (Videotex server), the DFHRPL
-    concatenation may include screen image libraries which cannot be APF
-    authorised. In this case it is possible to start VIRTEL via the
-    module VIR0APF which can be isolated in an authorised library. In
-    this way, the other libraries declared in DFHRPL do not necessarily
-    need to be APF-authorized.
+- VIRTEL is made non-swappable by means of the DONTSWA parameter of the VIRTCT
 
-    VIRTEL must be run under a userid which has an OMVS segment defined
-    in its profile. If VIRTEL is started as an STC, define a profile in
-    the RACF STARTED class (or equivalent if using another security
-    product) to assign the VIRTEL STC to the appropriate userid.
+Normally VIRTEL is started in APF-authorized mode via the VIR6000 module, and in this case all of the libraries specified in the STEPLIB and DFHRPL concatenations must be APF-authorised. For certain specialised applications (Videotex server), the DFHRPL concatenation may include screen image libraries which cannot be APF authorised. In this case it is possible to start VIRTEL via the module VIR0APF which can be isolated in an authorised library. In this way, the other libraries declared in DFHRPL do not necessarily need to be APF-authorized.
 
-    It is necessary for VIRTEL to run at the same priority as VTAM and
-    TCP/IP. This is usually done by assigning VIRTEL to service class
-    SYSSTC in the workload manager. It is also recommended that VIRTEL
-    run non swappable (DONTSWA=YES in the VIRTCT).
+VIRTEL must be run under a userid which has an OMVS segment defined in its profile. If VIRTEL is started as an STC, define a profile in the RACF STARTED class (or equivalent if using another security product) to assign the VIRTEL STC to the appropriate userid.
 
-    VIRTEL is started by executing the command S VIRTEL from the system
-    console. Message VIR0000I indicates that the product started
-    properly.
+It is necessary for VIRTEL to run at the same priority as VTAM and TCP/IP. This is usually done by assigning VIRTEL to service class SYSSTC in the workload manager. It is also recommended that VIRTEL run non swappable (DONTSWA=YES in the VIRTCT).
 
-    VIRTEL may be stopped by issuing the following command: P VIRTEL
+3.2.3 Executing Virtel
+^^^^^^^^^^^^^^^^^^^^^^
 
-    Here is a standard “check-list” to start the WEB to HOST VIRTEL
-    function:
+VIRTEL is started by executing the command S VIRTEL from the system console. Message VIR0000I indicates that the product started properly.
 
-1. Download the following files from our FTP server
-   (http://ftp.syspertec.com)
+3.2.4 Stopping Virtel
+^^^^^^^^^^^^^^^^^^^^^    
+
+VIRTEL may be stopped by issuing the following command:-
+
+P VIRTEL
+
+3.3 MVS Installation Check-list
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
+
+Download the following files from our FTP server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__
 
    -  Virtel453mvs.zip.
 
    -  allptfs-mvs453.txt if available.
 
--  virtel453updtnnnn.zip if available.
+   -  virtel453updtnnnn.zip if available.
 
 1. Run job $ALOCDSU to create the TRANSFER.XMIT file.
 
-2. Upload the virtel453mvs.xmit file to the TRANSFER.XMIT file in binary
-   mode.
+2. Upload the virtel453mvs.xmit file to the TRANSFER.XMIT file in binary    mode.
 
-3. Edit job $RESTDSU specifying the high-level qualifiers and SMS or
-   volume serial information for the VIRTEL datasets. Run job $RESTDSU
-   to create the VIRTEL datasets yourqual.VIRT453.xxxxxx
+3. Edit job $RESTDSU specifying the high-level qualifiers and SMS or volume serial information for the VIRTEL datasets. Run job $RESTDSU to create the VIRTEL datasets yourqual.VIRT453.xxxxxx
 
-4. Apply the PTFs in the allptfs-mvs453.txt file using job ZAPJCL in the
-   VIRTEL CNTL library. If this file does not exist, skip this step.
+4. Apply the PTFs in the allptfs-mvs453.txt file using job ZAPJCL in the VIRTEL CNTL library. If this file does not exist, skip this step.
 
-5. Use the SETPROG APF command to add the VIRTEL LOADLIB to your system
-   APF authorized program library list: SETPROG
-   APF,ADD,DSN=yourqual.VIRT453.LOADLIB,VOL=volser
+5. Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list::
 
-6. Edit member VIRTCT01 in the VIRTEL CNTL library :
+   SETPROG APF,ADD,DSN=yourqual.VIRT453.LOADLIB,VOL=volser
 
-1. Set the APPLID= parameter to the VTAM ACBNAME you will use to log on
-   to VIRTEL (the suggested value is APPLID=VIRTEL)
+6. Edit member VIRTCT01 in the VIRTEL CNTL library:-
 
-2. The TCP1= parameter must match the jobname of your z/OS TCP/IP stack
-   (the suggested value TCPIP is usually correct)
+	a) Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)
 
-3. If you prefer VIRTEL to display English language panels, then set
-   LANG='E'
+	b) The TCP1= parameter must match the jobname of your z/OS TCP/IP stack (the suggested value TCPIP is usually correct)
 
-4. (e) Set the COUNTRY and DEFUTF8 parameters according to your country
-   (see `“Parameters of the VIRTCT”, <#_bookmark71>`__ `page
-   47 <#_bookmark71>`__)
+	c) If you prefer VIRTEL to display English language panels, then set LANG='E'
 
-5. Set the COMPANY ADDR1 ADDR2 LICENCE EXPIRE CODE parameters using the
-   license key supplied to you by Syspertec.
+	d) Set the COUNTRY and DEFUTF8 parameters according to your country (see `“Parameters of the VIRTCT”, <#_bookmark71>`__ `page 47 <#_bookmark71>`__)
 
-1. Run the job ASMTCT in the VIRTEL CNTL library to assemble VIRTCT01
+	e) Set the COMPANY ADDR1 ADDR2 LICENCE EXPIRE CODE parameters using the license key supplied to you by Syspertec.
+
+7. Run the job ASMTCT in the VIRTEL CNTL library to assemble VIRTCT01
    into VIRT453.LOADLIB.
 
-2. Edit member ARBOLOAD in the VIRTEL CNTL library:
+8. Edit member ARBOLOAD in the VIRTEL CNTL library:
 
-1. Change LANG=EN to LANG=FR if French language is desired
+	a) Change LANG=EN to LANG=FR if French language is desired
 
-2. Set LOAD= the name of your VIRTEL LOADLIB
+	b) Set LOAD= the name of your VIRTEL LOADLIB
 
-3. Set SAMP= the name of your VIRTEL SAMPLIB
+	c) Set SAMP= the name of your VIRTEL SAMPLIB
 
-4. Set ARBO= the name of your VIRTEL ARBO file
+	d) Set ARBO= the name of your VIRTEL ARBO file
 
-5. Set VTAMLST= the name of a your VIRTEL CNTL library. The job will
-   create a sample VTAMLST member in this library.
+	e) Set VTAMLST= the name of a your VIRTEL CNTL library. The job will create a sample VTAMLST member in this library.
 
-6. CHANGE ALL 'DBDCCICS' 'xxxxxx'
+	f) CHANGE ALL 'DBDCCICS' 'xxxxxx' where xxxxxx is the APPLID of your CICS system.
 
-    where xxxxxx is the APPLID of your CICS system.
+	Note. If you changed the APPLID of VIRTEL in step 4 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01.
 
-1. Sf you changed the APPLID of VIRTEL in step 4 from its default value
-   VIRTEL, then you must also change the ACBNAME= parameter in step
-   VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in
-   ARBOLOAD must match the value of APPLID= in VIRTCT01.
+9. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
 
-    Submit the ARBOLOAD job. This creates your VIRTEL configuration (the
-    ARBO file) and a sample VTAMLST member VIRTAPPL.
+Note: If you need to rerun the ARBOLOAD job, you must change PARM='LOAD,NOREPL' to PARM='LOAD,REPL'
 
-    Note: If you need to rerun the ARBOLOAD job, you must change
-    PARM='LOAD,NOREPL' to PARM='LOAD,REPL'
+If you wish to completely start over from the beginning, you can run the job ARBOBASE to delete and reinitialize the ARBO file, followed by a rerun of the ARBOLOAD job.
 
-    If you wish to completely start over from the beginning, you can run
-    the job ARBOBASE to delete and reinitialize the ARBO file, followed
-    by a rerun of the ARBOLOAD job.
+10. Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
 
-1. Submit the job ASMMOD from the VIRTEL CNTL library. This job
-   assembles the VIRTEL logon mode table (MODVIRT) into your
-   SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to
-   match the high-level qualifiers of your SAMPLIB dataset.
-
-2. Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from
-   the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate
-   the VTAMLST member using this command:
+11. Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command::
 
     V NET,ACT,ID=VIRTAPPL
 
-1. Edit the procedure VIRTEL4 in your VIRTEL CNTL library so that the
-   high-level qualifiers match the names you used when you loaded the
-   files in step 4. Copy the procedure to your system PROCLIB, renaming
-   it as VIRTEL.
+12. Edit the procedure VIRTEL4 in your VIRTEL CNTL library so that the high-level qualifiers match the names you used when you loaded the files in step 4. Copy the procedure to your system PROCLIB, renaming it as VIRTEL.
 
-2. Ask your security administrator to create a userid for the VIRTEL
-   started task, and to authorize this userid to access the datasets you
-   created in step 3. This userid must also have an OMVS segment which
-   authorizes VIRTEL to use TCP/IP. Your security administrator can use
-   the job RACFSTC in the VIRTEL SAMPLIB as an example.
+13. Ask your security administrator to create a userid for the VIRTEL started task, and to authorize this userid to access the datasets you created in step 3. This userid must also have an OMVS segment which    authorizes VIRTEL to use TCP/IP. Your security administrator can use the job RACFSTC in the VIRTEL SAMPLIB as an example.
 
-3. Start VIRTEL
+14. Start VIRTEL
 
-4. You can now logon to VIRTEL from a 3270 terminal using the APPLID
-   specified in the VIRTCT01, and you can display the VIRTEL Web Access
-   menu in your web browser using URL http://n.n.n.n:41001 where n.n.n.n
-   is the IP address of your z/OS system.
+You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in the VIRTCT01, and you can display the VIRTEL Web Access menu in your web browser using URL http://n.n.n.n:41001 where n.n.n.n is the IP address of your z/OS system.
 
-5. Apply any "update"maintenance from the file virtel453updtnnnn.zip
-   file according the instructions in theReadme- updtnnnn.txt file
-   included in the zip file. If the zip file does not exist, skip this
-   step.
+15. Apply any "update"maintenance from the file virtel453updtnnnn.zip file according the instructions in theReadme- updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step.
 
-6. The supplied system is configured with security disabled. If you
-   wish, you can activate external security using RACF, ACF2, or TOP
-   SECRET; please refer to the “security chapter”, page 0.
+16. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the “security chapter”, page 0.
 
-**Installing VIRTEL under VSE**
+4. Installing VIRTEL under VSE
+==============================
+
+4.1 Installation procedure
+--------------------------
 
 Installation of VIRTEL under VSE consists of the following steps. Each step is described in detail in the sections which follow.
 
@@ -1588,182 +1620,272 @@ Installation of VIRTEL under VSE consists of the following steps. Each step is d
 
 -  Define the VIRTEL start procedure
 
-    The installation jobs are delivered on an unlabeled 3480 tape
-    cartridge. To load the installation jobs into the POWER reader
-    queue, enter the command S RDR,cuu at the VSE console (where cuu
-    represents the address of the tape drive on which you have mounted
-    the cartridge). The following jobs will be loaded into your Reader
+4.1.1 Loading the installation jobs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The installation jobs are delivered on an unlabeled 3480 tape cartridge. To load the installation jobs into the POWER reader queue, enter the command S RDR,cuu at the VSE console (where cuu represents the address of the tape drive on which you have mounted the cartridge). The following jobs will be loaded into your Reader::
+
     Queue with DISP=L, CLASS=0:
 
-VIRTLIB
--------
+`VIRTLIB		| define the VIRT453.SUBLIB sublibrary`
 
-    define the VIRT453.SUBLIB sublibrary
+`VIRTCIL		| load executable modules into the CIL`
 
-VIRTCIL
--------
+VIRTSSL		| load source modules into the SSL
 
-    load executable modules into the CIL
+VIRSAPI		| load the VIRAPI macro library
 
-VIRTSSL
--------
+VIRFA29		| load the FA29 macro library
 
-    load source modules into the SSL
+VIRSAPI		| load the SCRNAPI macro library
 
-VIRAPI
-------
+VIRTVS 		| define the VSAM files, comprising the following steps:
 
-    load the VIRAPI macro library
+VIRTVS1		| define VIRARBO and VIRSWAP files
 
-VIRFA29
--------
+VIRTVS2		| initialise VIRARBO file
 
-    load the FA29 macro library
+VIRTVS3		| define VIRSTAT file
 
-VIRSAPI
--------
+VIRTVS4		| define VIRCMP3 file
 
-    load the SCRNAPI macro library
+VIRTVS5		| define VIRCAPT file
 
-VIRTVS
-------
+VIRTVS6		| define SAMPTRF file
 
-    define the VSAM files, comprising the following steps:
+VIRTVS7		| define HTMLTRF file
 
-VIRTVS1
--------
+VIRTVS8		| load SAMPTRF file
 
-    define VIRARBO and VIRSWAP files
+VIRTVS9		| define VIRHTML file
 
-VIRTVS2
--------
+VIRTCT 		| VIRTEL parameter table assembly example
 
-    initialise VIRARBO file
+VIRCONF 	| VIRARBO batch update (ARBOLOAD)
 
-VIRTVS3
--------
+VIRMOD		| VTAM mode table assembly
 
-    define VIRSTAT file
+VIRTAPPL	| VTAM application major node example
 
-VIRTVS4
--------
+VIRGROUP	| CICS resource definition example
 
-    define VIRCMP3 file
+VIRTEL 		| VIRTEL execution JCL example
 
-VIRTVS5
--------
+.. note::
 
-    define VIRCAPT file
+	You will need to modify certain of the installation jobs before submitting them. Once the jobs have been read onto the POWER queue, you can copy them to an ICCF library (using ICCF option 3224 Operations - Manage Batch Queues – Input Queue – Copy to Primary Library) or read them into your VM machine for editing.
 
-VIRTVS6
--------
+4.1.1.1 Sites installing VIRTEL for the first time
 
-    define SAMPTRF file
+Jobs VIRTLIB, VIRTCIL, VIRTSSL, VIRTVS, VIRTCT, VIRMOD, and VIRTAPPL must be executed as described below.
 
-VIRTVS7
--------
+4.1.1.2 Sites upgrading from a previous version
 
-    define HTMLTRF file
+Execute jobs VIRTLIB, VIRTCIL and VIRTSSL to create a new VIRT453.SUBLIB. Change your VIRTEL execution JCL to reference the new sublibrary You can retain your existing VSAM files.
 
-VIRTVS8
--------
+4.1.1.3 Sites using VIRTEL Web Access
 
-    load SAMPTRF file
+The files required for VIRTEL Web Access base functions are loaded in steps VIRTVS6, VIRTVS7, VIRTVS8, and VIRTVS9 of job VIRTVS. If you wish to use VIRTEL Host-Web Services to script your 3270 applications, run job VIRSAPI also.
 
-VIRTVS9
--------
+4.1.1.4 Sites using VIRTEL A2A
 
-    define VIRHTML file
+Customers wishing to use VIRTEL Application-to-Application functions should also run jobs VIRFA29 and VIRAPI.
 
-VIRTCT
-------
+4.1.2 Defining the library::
 
-    VIRTEL parameter table assembly example
+	* $$ JOB JNM=VIRTLIB,CLASS=0,DISP=L
+	* $$ LST DA
+	// JOB VIRTLIB
+	* *****************************************************************
+	* * VIRTLIB * CREATE VIRT453 LIBRARY                              *
+	* *****************************************************************
+	* *                                                               *
+	* * THIS JOB IS SUPPLIED AS AN EXAMPLE ONLY AND MUST BE MODIFIED  *
+	* * BEFORE EXECUTION                                              *
+	* *                                                               *
+	* *****************************************************************
+	// EXEC IDCAMS,SIZE=AUTO
+	 DELETE (VSE.VIRT453.LIBRARY ) -
+		CLUSTER -
+		PURGE -
+	 CATALOG (VSESP.USER.CATALOG )
+	 SET MAXCC=0
+	 DEFINE CLUSTER ( -
+		NAME (VSE.VIRT453.LIBRARY ) -
+		TRACKS (150 25) -
+		SHAREOPTIONS (3) -
+		RECORDFORMAT (NOCIFORMAT) -
+		VOLUMES (SYSWK1) -
+		NOREUSE -
+		NONINDEXED -
+		TO (99366)) -
+		DATA (NAME (VSE.VIRT453.LIBRARY.DATA ) ) -
+		CATALOG (VSESP.USER.CATALOG )
+	 IF LASTCC NE 0 THEN CANCEL JOB
+	/*
+	// OPTION STDLABEL=ADD
+	// DLBL VIRT453,'VSE.VIRT453.LIBRARY',,VSAM,CAT=VSESPUC
+	/*
+	// EXEC IESVCLUP,SIZE=AUTO
+	A VSE.VIRT453.LIBRARY VIRT453 VSESPUC OLD KEEP
+	/*
+	// EXEC LIBR,PARM='MSHP'
+		DEFINE LIB=VIRT453 REPLACE=YES
+		DEFINE SUBLIB=VIRT453.SUBLIB REPLACE=YES
+	/*
+	/&
+	* $$ EOJ
 
-VIRCONF
--------
+*VIRTLIB : JCL to define the sublibrary (VSE)*
 
-    VIRARBO batch update (ARBOLOAD)
+Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRT453.SUBLIB for version 4.53. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
 
-VIRMOD
-------
+4.1.3 Loading the executable modules::
 
-    VTAM mode table assembly
+	* $$ JOB JNM=VIRTCIL,CLASS=0,DISP=L
+	* $$ LST DA
+	// JOB VIRTCIL
+	* *****************************************************************
+	* * VIRTCIL * CATALOG PROGRAM PHASES IN CORE IMAGE LIBRARY        *
+	* *****************************************************************
+	* *                                                               *
+	* * AT THE PAUSE, ENTER YOUR DLBL AND LIBDEF FOR THE CIL SUBLIB   *
+	* *                                                               *
+	* * // DLBL VIRT453,'VSE.VIRT453.LIBRARY',,VSAM,CAT=VSESPUC       *
+	* * // LIBDEF PHASE,CATALOG=VIRT453.SUBLIB                        *
+	* *                                                               *
+	* *****************************************************************
+	// PAUSE ENTER YOUR LIBDEF PHASE STATEMENT AS IN THE ABOVE EXAMPLE
+	// OPTION CATAL
+		INCLUDE
+		(object modules)
+	/*
+	// EXEC LNKEDT,SIZE=512K
+	/&
+	* $$ EOJ
 
-VIRTAPPL
---------
+*VIRTCIL : JCL to load the executable modules (VSE)*
 
-    VTAM application major node example
+    Start the job to load the executable modules by entering the POWER command::
 
-VIRGROUP
---------
+    	R RDR,VIRTCIL
 
-    CICS resource definition example
+    When this job executes, a // PAUSE card will ask you to enter a LIBDEF statement to specify the name of the library into which the modules are to be loaded. Enter::
 
-VIRTEL
-------
+    	// LIBDEF PHASE,CATALOG=xxxxx 
 
-    VIRTEL execution JCL example
+    where xxxxx represents the name of the sublibrary you defined in the previous job.
 
-    Note: You will need to modify certain of the installation jobs
-    before submitting them. Once the jobs have been read onto the POWER
-    queue, you can copy them to an ICCF library (using ICCF option 3224
-    Operations - Manage Batch Queues – Input Queue – Copy to Primary
-    Library) or read them into your VM machine for editing.
+4.1.4 Loading the source modules::
 
-    Jobs VIRTLIB, VIRTCIL, VIRTSSL, VIRTVS, VIRTCT, VIRMOD, and VIRTAPPL
-    must be executed as described below.
+	* $$ JOB JNM=VIRTSSL,CLASS=0,DISP=L
+	* $$ LST DA
+	// JOB VIRTSSL
+	* *****************************************************************
+	* * VIRTSSL * CATALOG SOURCE BOOKS IN SSL                         *
+	* *****************************************************************
+	* *                                                               *
+	* * AT THE PAUSE, ENTER THE NAME OF THE SUB-LIBRARY               *
+	* * FOR CATALOGING THE VIRTEL SOURCE BOOKS                        *
+	* *                                                               *
+	* * EXAMPLE: // SETPARM SUB='VIRT453.SUBLIB'                      *
+	* *                                                               *
+	* *****************************************************************
+	// PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
+	// EXEC PGM=LIBR,PARM=' ACCESS SUBLIB=&SUB'
+		(source books)
+	/*
+	/&
+	* $$ EOJ
 
-    Execute jobs VIRTLIB, VIRTCIL and VIRTSSL to create a new
-    VIRT453.SUBLIB. Change your VIRTEL execution JCL to reference the
-    new sublibrary You can retain your existing VSAM files.
+*VIRTSSL : JCL to load the source modules (VSE)*
 
-    The files required for VIRTEL Web Access base functions are loaded
-    in steps VIRTVS6, VIRTVS7, VIRTVS8, and VIRTVS9 of job VIRTVS. If
-    you wish to use VIRTEL Host-Web Services to script your 3270
-    applications, run job VIRSAPI also.
+Start the job to load the source modules by entering the POWER commands::
 
-    Customers wishing to use VIRTEL Application-to-Application functions
-    should also run jobs VIRFA29 and VIRAPI.
+	R RDR,VIRTSSL
+	R RDR,VIRFA29
+	R RDR,VIRAPI
+	R RDR,VIRSAPI 
 
-    *VIRTLIB : JCL to define the sublibrary (VSE)*
+When these jobs execute, a // PAUSE card will ask you to enter a SETPARM statement specifying the name of the library into which the modules are to be loaded. Enter::
 
-    Job VIRTLIB contains an example of JCL to define the library which
-    will contain the VIRTEL executable modules and source books. This
-    job is provided as an example, and may need to be modified prior to
-    execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for
-    example VIRT453.SUBLIB for version 4.53. Parameters VOLUMES(SYSWK1),
-    and possibly the cluster name and catalog name, may need to be
-    modified.
+    // SETPARM SUB='xxxxxxx' 
 
-    *VIRTCIL : JCL to load the executable modules (VSE)*
+where  xxxxxxx represents the name of the sublibrary you defined in the first job.
 
-    Start the job to load the executable modules by entering the POWER
-    command R RDR,VIRTCIL
+::
 
-    When this job executes, a // PAUSE card will ask you to enter a
-    LIBDEF statement to specify the name of the library into which the
-    modules are to be loaded. Enter // LIBDEF PHASE,CATALOG=xxxxx where
-    xxxxx represents the name of the sublibrary you defined in the
-    previous job.
+	* $$ JOB JNM=VIRFA29,CLASS=0,DISP=L
+	* $$ LST DA
+	// JOB VIRFA29
+	* *****************************************************************
+	* * VIRFA29 * CATALOG SOURCE BOOKS FOR FA29 API                   *
+	* *****************************************************************
+	* *                                                               *
+	* * AT THE PAUSE, ENTER THE NAME OF THE SUB-LIBRARY               *
+	* * FOR THE FA29 MACRO SOURCE BOOKS                               *
+	* *                                                               *
+	* * EXAMPLE: // SETPARM SUB='VIRT453.SUBLIB'                      *
+	* *                                                               *
+	* *****************************************************************
+	// PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
+	// EXEC PGM=LIBR,PARM=' ACCESS SUBLIB=&SUB'
+		(FA29API source books)
+	/*
+	/&
+	* $$ EOJ
 
-    *VIRTSSL : JCL to load the source modules (VSE)*
+*VIRFA29 : JCL to load the FA29 macros (VSE)*
 
-    Start the job to load the source modules by entering the POWER
-    command R RDR,VIRTSSL followed by R RDR,VIRFA29 then R RDR,VIRAPI
-    and R RDR,VIRSAPI as necessary.
+::
 
-    When these jobs execute, a // PAUSE card will ask you to enter a
-    SETPARM statement specifying the name of the library into which the
-    modules are to be loaded. Enter // SETPARM SUB='xxxxxxx' where
-    xxxxxxx represents the name of the sublibrary you defined in the
-    first job.
+	* $$ JOB JNM=VIRAPI,CLASS=0,DISP=L
+	* $$ LST DA
+	// JOB VIRAPI
+	* *****************************************************************
+	* * VIRAPI * CATALOG SOURCE BOOKS FOR VIRAPI                      *
+	* *****************************************************************
+	* *                                                               *
+	* * AT THE PAUSE, ENTER THE NAME OF THE SUB-LIBRARY               *
+	* * FOR THE VIRAPI MACRO SOURCE BOOKS                             *
+	* *                                                               *
+	* * EXAMPLE: // SETPARM SUB='VIRT453.SUBLIB'                      *
+	* *                                                               *
+	* *****************************************************************
+	// PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
+	// EXEC PGM=LIBR,PARM=' ACCESS SUBLIB=&SUB'
+ 		(VIRAPI source books)
+	/*
+	/&
+	* $$ EOJ
 
-    *VIRFA29 : JCL to load the FA29 macros (VSE)*
+*VIRAPI : JCL to load the VIRAPI macros (VSE)*
 
-    *VIRAPI : JCL to load the VIRAPI macros (VSE)*
+::
 
-    *VIRSAPI : JCL to load the SCRNAPI macros (VSE)*
+	* $$ JOB JNM=VIRSAPI,CLASS=0,DISP=L
+	* $$ LST DA
+	// JOB VIRSAPI
+	* *****************************************************************
+	* * VIRSAPI * CATALOG SOURCE BOOKS FOR SCRNAPI                    *
+	* *****************************************************************
+	* *                                                               *
+	* * AT THE PAUSE, ENTER THE NAME OF THE SUB-LIBRARY               *
+	* * FOR THE SCRNAPI MACRO SOURCE BOOKS                            *
+	* *                                                               *
+	* * EXAMPLE: // SETPARM SUB='VIRT453.SUBLIB'                      *
+	* *                                                               *
+	* *****************************************************************
+	// PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
+	// EXEC PGM=LIBR,PARM=' ACCESS SUBLIB=&SUB'
+		(SCRNAPI source books)
+	/*
+	/&
+	* $$ EOJ
+
+*VIRSAPI : JCL to load the SCRNAPI macros (VSE)*
+
+4.1.5 Defining the VIRARBO and VIRSWAP files
 
     // JOB VIRTVS
 
