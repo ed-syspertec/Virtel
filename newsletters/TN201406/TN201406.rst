@@ -1,0 +1,150 @@
+Taking a VIRTEL terminal trace
+==============================
+
+Taking a VIRTEL terminal trace enables the capture of 3270 data streams
+between the VIRTEL 3270 relay terminal and the customers VTAM
+application. The following demonstrates how to run such a trace using
+VIRTEL running in batch. Please note that VIRTEL does not need to be
+authorized, does not need to run as a started task or need any special
+security setup. The only requirement from a customer’s perspective is
+that VIRTEL does need a VTAM ACB so an entry in SYS1.VTAMLST will be
+required. This is the only setup that your customer will have to do
+outside of installing the base product.
+
+Procedure
+
+1. Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs.
+   See the VIRTEL installation guide for details on how to download and
+   install VIRTEL from the SYSPERTEC ftp site. Note that you can bypass
+   “Step 5” in section 2.3 of the MVS Installation Checklist because at
+   this stage we are not running VIRTEL authorized. When running the
+   ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD
+   will create the VTAMLST application definition member called
+   VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the
+   next step.
+
+    “Step 6” Edit member VIRTCT01 can be bypassed if the default TCT
+    options are acceptable. For the purposes of just running a 3270
+    terminal trace this should be the case.
+
+    “Steps 9 through to Steps 15” of the MVS installation guide can be
+    ignored.
+
+2. Copy the VTAM application definition created by ARBOLOAD to
+   SYS1.VTAMLST. The example I use is listed below. This member can be
+   found in the CNTL library after running the ARBOLOAD job. By default
+   the member name is VIRTAPPL. The member should activated by issuing
+   the following z/OS command:-::
+
+       V NET,ACT,ID=VIRTAPPL
+
+   This VTAM definition should look like:-::    
+
+
+    VIRTAPPL VBUILD TYPE=APPL
+    *------------------------------------------------------------------*
+    * Product : VIRTEL                                                 *
+    * Description : Main ACB for VIRTEL application                    *
+    *                                                                  *
+    *------------------------------------------------------------------*
+    VIRTEL APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=VIRTEL
+    *------------------------------------------------------------------*
+    * RHTVTxxx : VTAM application relays for VIRTEL Web Access         *
+    *------------------------------------------------------------------*
+    RHTVT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+    *------------------------------------------------------------------*
+    * RHTIMxxx : Printer relays for VIRTEL Web Access terminals        *
+    *------------------------------------------------------------------*
+    RHTIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
+    RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
+
+3. Before running VIRTEL as a batch job modify the program name to
+   VIR0000 from VIR60000. Here is an example of the batch procedure I
+   use. VIR6000 requires an authorized library whereas VIR0000 doesn’t.::
+
+    //SPTHOLTA JOB 1,EDHOLT,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+    //VIRTEL PROC QUAL=SP000.SPVIREH,
+    // TCT=US
+    //*-------------------------------------------------------------------*
+    //* PROCEDURE FOR VIRTEL STARTER EDITION                              *
+    //*-------------------------------------------------------------------*
+    //VIRTEL EXEC PGM=VIR0000,TIME=1440,REGION=32M,PARM=&TCT 
+    //STEPLIB DD DSN=SP000.VIRT452.LOADLIB,DISP=SHR
+    //DFHRPL DD DSN=SP000.VIRT452.LOADLIB,DISP=SHR
+    //SERVLIB DD DSN=SP000.VIRT452.SERVLIB,DISP=SHR
+    //VIRARBO DD DSN=&QUAL..ARBO,DISP=SHR
+    //VIRSWAP DD DSN=&QUAL..SWAP,DISP=SHR
+    //VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
+    //SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
+    //HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
+    //SYSOUT DD SYSOUT=*
+    //VIRLOG DD SYSOUT=*
+    //VIRTRACE DD SYSOUT=*
+    //SYSPRINT DD SYSOUT=*
+    //SYSUDUMP DD SYSOUT=*
+    // PEND
+    //S01 EXEC VIRTEL
+
+4. Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One
+   of these defaults is the standard VTAM applications like CICS, IMS,
+   NVAS and TSO. What follows is an example of tracing a web to host
+   (W2H) trace of a VIRTEL W2H session between a screen and TSO. To
+   begin we need to identify the related W2H line. The command “F
+   jobname,lines” will display the active lines. I’m interested in web
+   to host so I’m looking for the W2H line. Here is the results of my
+   display:-::
+
+    F SPTHOLTA,LINES
+    +VIR0200I LINES
+    +VIR0201I VIRTEL 4.52 APPLID=VIRTEL LINES
+    +VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP
+    +VIR0202I -------- -------- ----- ---------
+    +VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.30:41002
+    +VIR0202I E-HTTP HTTP-EDS TCP1 192.168.170.30:41003
+    +VIR0202I P-PCLPDF PCL2PDF TCP1 $NONE$
+    +VIR0202I V-HTTP HTTP-VSR TCP1 192.168.170.30:41004
+    +VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001
+    +VIR0202I ---END OF LIST---
+
+I can see that HTTP-W2H is the external name of a line and is attached to port 41001 on TCPIP address 192.168.170.30. Next I’ll open a session to TSO using those details in a web browser. The following url is entered:-::
+
+    http://192.168.170.30:41001/w2h/WEB2AJAX.htm+TSO
+
+This will display a TSO session on the web browser. The +TSO parameter in the URL indicates that VIRTEL should establish a session with the application TSO. Of course this could be any VTAM application that has been defined to VIRTEL through the ARBLOAD process. Before continuing with our TSO session we need to start the trace on the correct terminal/relay.
+
+Displaying the VITREL relays indicates which session have been establish.::
+
+  F SPTHOLTA,RELAYS
+  +VIR0200I RELAYS
+  +VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.52 APPLID=VIRTEL
+  +VIR0214I TERMINAL RELAY APPLID CLIENT
+  +VIR0214I -------- -------- -------- ---------------
+  +VIR0214I DEVTA015 REHVT001 TSO1A006 192.168.92.82
+  +VIR0214I W2HIM001 REHIM001
+  +VIR0214I ---END OF LIST---
+
+This shows a TSO session on Terminal/Relay DEVTA015/REHVT001. Using this information, I can start a trace on that terminal/relay.::
+
+  F SPTHOLTA,TRACE,R=REHVT001 
+  +VIR0200I TRACE,R=REHVT001
+  +VIR0062I DEVTA015 TRACE ACTIVE
+
+Now the TSO session can continue with and any 3270 data stream data will be written to the VIRTRACE dataset. To stop the trace, issue the following command:-::
+
+F SPTHOLTA,NOTRACE,ALL
+
+To stop the VIRTEL batch job issue the STOP command:-::
+
+P jobname
+
+Notes:
+
+* You can modify the ARBOLOAD to reflect your customer’s applications. For
+example, if you are using a different session manager to the default
+session manager APPLID NVAS, modify APPL= keyword in the W2H-15x
+TRANSACT entry in the ARBOLOAD control file to reflect the VTAM APPLID
+of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file.
+Resubmit the VIRTEL batch job and open a webpage with the following
+url:-*::
+
+http://192.168.170.30:41001/w2h/WEB2AJAX.htm+Sessmgr

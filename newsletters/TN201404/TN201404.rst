@@ -1,0 +1,59 @@
+VIRTEL SMF Support
+===================
+
+Virtel VIRSTATS can now be written to SMF. The VIRTERM macro has been
+changed to support an additional SMF parameter. See below.
+
+Updated STATS= keyword.
+
+STATS = NO \| YES \| SMF \| (SMF,*nnn*) \| (MULTI, TERMINATE \|
+CONTINUE)
+
+The default SMF record number is 223. The user specified number *nnn*
+must be between 128 and 255.
+
+**Logic changes**
+
+VIR0000 Modified to load VIR0006A into PPI.
+
+VIR0006 Modified to call VIR0006A to write SMF record.
+
+    Must now be authorized - AC=1.
+
+VIR0006A New module which writes SMF records using SMFWTM macro.
+
+VIRTERM Macro updated to support new parameters.
+
+**Messages**
+
+VIRTERM macro.
+
+‘LE PARAMETRE “STATS(SMF,nnn)” EST INVALIDE.’
+
+VIR0612E VIRSTAT SMFWTM FAILED. RC=rc.
+
+VIR0611I VIRSTAT NOW RECORDING TO SMF.
+
+**User Actions**
+
+VIRTCTxx will have to be reassembled to implement SMF.
+
+**SMF record format.**
+
+The same as the current STATS record but prefixed by the standard SMF
+header. See Chapter 2 in the Virtel Messages and Operations manual for a
+layout of the STATS records.
+
+**SMF Printing**
+
+There is a REXX job in SPTHOLT.MVS.JCL(SMFPRINT) which will print the
+SMF records from the SYS1.MANx dataset. This could be added to the
+SAMPLIB dataset.
+
+**Notes:**
+
+Could add some additional statistics to the SMF record. For example
+memory usage.
+
+Doesn’t work with VIR60000. Authorization disabled. Need to speak to
+Serge.

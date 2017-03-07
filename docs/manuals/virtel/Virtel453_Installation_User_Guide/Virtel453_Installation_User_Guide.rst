@@ -37,626 +37,6 @@ Syspertec Communication
     and companies mentioned in this document may be trademarks or registered trademarks of 
     their respective owners.    
 
-**Table of contents**
-
-1. `Summary of Amendments`__
-============================
-
-1.1 Virtel version 4.53 (24 Sep 2014)
--------------------------------------
-
-1.2 Virtel version 4.52 (4 Dec 2013)
-------------------------------------
-
-1.3 Virtel version 4.51 (18 Jul 2013)
--------------------------------------
-
-1.4 Virtel version 4.50 (30 Jun 2013)
--------------------------------------
-
-1.5 Virtel version 4.49 (30 Apr 2013)
--------------------------------------
-
-1.6 Virtel version 4.48 (27 Nov 2012)
--------------------------------------
-
-1.7 Virtel version 4.47 (21 May 2012)
--------------------------------------
-
-__ Summary_
-
-2. `Introduction`_
-==================
-
-2.1 VIRTEL modules
-------------------
-
-2.2 Required environment
-------------------------
-
-2.2.1 MVS environment
-^^^^^^^^^^^^^^^^^^^^^
-
-2.2.2 VSE environment
-^^^^^^^^^^^^^^^^^^^^^
-
-2.2.3 Workstation pre-requisites
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-3. `Installing VIRTEL under MVS`__
-==================================
-
-3.1 Installation procedure
-----------------------
-
-3.1.1 Restoring from XMIT file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-3.1.2 Applying PTFs
-^^^^^^^^^^^^^^^^^^^
-
-3.1.3 Upgrading a previous release
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-3.2 Executing VIRTEL in an MVS environment
-------------------------------------------
-
-3.2.1 Required and optional files for VIRTEL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-3.2.2 APF authorisation, userid, and priority
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-3.2.3 Executing VIRTEL
-^^^^^^^^^^^^^^^^^^^^^^
-
-3.2.4 Stopping VIRTEL
-^^^^^^^^^^^^^^^^^^^^^
-
-3.3 MVS installation check-list
--------------------------------
-
-__ installmvs_
-
-4. Installing VIRTEL under VSE
-==============================
-
-4.1 Installation procedure
---------------------------
-
-4.1.1 Loading the installation jobs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.2 Defining the library
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.3 Loading the executable modules
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.4 Loading the source modules
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.5 Defining the VIRARBO and VIRSWAP files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.6 Initialisation of the VIRARBO file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.7 Defining the VIRSTAT file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.8 Defining the VIRCMP3 file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.9 Defining the VIRCAPT file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.10 Defining the SAMPTRF file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.11 Defining the HTMLTRF file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.12 Loading the SAMPTRF file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.13 Defining the VIRHTML file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.14 Assembling the VIRTCT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.15 Assembling the MODVIRT mode table
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.16 Updating the VIRARBO file (ARBOLOAD)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.17 Cataloging the VTAM application book
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.1.18 Defining the CICS resources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.2 Executing VIRTEL in a VSE environment
------------------------------------------
-
-4.2.1 Specifying the TCP/IP partition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.2.2 Stopping VIRTEL
-^^^^^^^^^^^^^^^^^^^^^
-
-4.3 Applying PTFs 40
---------------------
-
-4.3.1 Loading from a 3480 cartridge
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-4.3.2 Application of the PTFs
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-5. VTAM parameters
-==================
-
-5.1 VTAM parameters
--------------------
-
-5.2 Definition of the VIRTEL primary ACB
-------------------------------------------
-
-5.3 Defining the VTAM application relays
-------------------------------------------
-
-5.4 MODETAB for Minitel, X25, and APPC
-----------------------------------------
-
-5.5 USSTAB for Minitels and PC’s
---------------------------------
-
-5.6 CICS definitions
---------------------
-
-5.6.1 VIRTEL Web Access Terminals
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-5.6.2 Minitel Terminals
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6. VIRTCT
-=========
-
-6.1 Introduction 47
--------------------
-
-6.2 Parameters of the VIRTCT
-----------------------------
-
-6.2.1 ACCUEIL parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.2 ADDR1 parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.3 ADDR2 parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.4 AIC parameter
-^^^^^^^^^^^^^^^^^^^
-
-6.2.5 ANNUL parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.6 APPLID parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.7 APPSTAT parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.8 ARBO parameter
-^^^^^^^^^^^^^^^^^^^^
-
-6.2.9 BATCH1 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.10 BATCH2 parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.11 BFVSAM parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.12 BUFDATA parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.13 BUFSIZE parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.14 CHARSET parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.15 CODE parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.16 COMPANY parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.17 COMPR3 parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.18 CORRECT parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.19 COUNTRY parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.20 CRYPT1 parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.21 CRYPT2 parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.22 DEFENTR parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.23 DEFUTF8 parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.24 DIRECT parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.25 DONTSWA parameter (MVS only)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.26 EXIT1 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.27 EXIT2 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.28 EXIT3 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.29 EXIT4 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.30 EXIT5 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.31 EXIT6 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.32 EXIT7 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.33 EXIT8 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.34 EXPIRE parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.35 FASTC parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.36 FCAPT parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.37 FCMP3 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.38 GATE parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.39 GMT parameter
-^^^^^^^^^^^^^^^^^^^^
-
-6.2.40 GRNAME parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.41 GTLOAD parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.42 GTPRFE1 parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.43 GTPRFE2 parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.44 GTVSAM parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.45 GTVSKIP parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.46 GUIDE parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.47 HTFORWD parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.48 HTHEADR parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.49 HTMINI parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.50 TPARM parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.51 HTSET1 to HTSET4 parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.52 HTVSAM parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.53 IBERTEX parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.54 IGNLU parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.55 LANG parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.56 LICENCE parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.57 LOCK parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.58 MARK parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.59 MAXAPPL parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.60 MEMORY parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.61 MINITEL parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.62 MQ1 parameter
-^^^^^^^^^^^^^^^^^^^^
-
-6.2.63 MQ2 parameter
-^^^^^^^^^^^^^^^^^^^^
-
-6.2.64 MULTI parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.65 NBCVC parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.66 NBDYNAM parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.67 NBTERM parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.68 NUMTASK parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.69 OTMAPRM parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.70 OSCORE parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.71 PACKET parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.72 PASSTCK parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2 73 PREZ900 parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2 74 PRFSECU parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.75 PWPROT parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.76 RACAPPL parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.77 RAPPL parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.78 REALM parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.79 REPET parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.80 RESO parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.81 RETOUR parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.82 RNODE parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.83 SECUR parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.84 SILENCE parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.85 SNAPW parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.86 SOMMR parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.87 STATDSN parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.88 STATS parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.89 STRNO parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.90 SUITE parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.91 SWAP parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.92 SYSPLUS parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.93 TCP1 parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.94 TCP2 parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.95 TIMEOUT parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.96 TIMERQS parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.97 TITRE1 parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.98 TITRE2 parameter
-^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.99 TRACALL parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.100 TRACBIG parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.101 TRACEB parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.102 TRACEOJ parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.103 TRACEON parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.104 TRACTIM parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.105 TRAN parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.106 UFILE1 to UFILE20 parameters
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.107 VIRSECU parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.108 VIRSV1 parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.109 VSAMTYP parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.110 VTKEYS parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.111 VTOVER parameter
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-6.2.112 XM1 parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.113 XM2 parameter
-^^^^^^^^^^^^^^^^^^^^^
-
-6.2.114 ZAPH parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-6.3 Additional parameters for VSAM files
-----------------------------------------
-
-6.4 Additional parameters for batch files
------------------------------------------
-
-6.5 Example of the VIRTCT
--------------------------
-
-6.6 Assembling the VIRTCT
--------------------------
-
-6.6.1 MVS example
-^^^^^^^^^^^^^^^^^
-
-6.6.2 VSE example
-^^^^^^^^^^^^^^^^^
-
-6.7 Dynamic VIRTCT overrides
-----------------------------
-
-6.8 Applying patches via the VIRTCT
------------------------------------
-
-7. VIRCONF
-==========
-
-7.1 Introduction
-----------------
-
-7.2 JCL
--------
-
-7.2.1 Creating and uploading a new VIRARBO file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-7.2.2 Updating a VIRARBO file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-7.2.3 Unloading a VIRARBO file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-7.2.4 Verify control card syntax
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-7.2.5 Multi-language support
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-8. Security
-===========
-
-8.1 How to activate RACF security
----------------------------------
-
-8.1.1 Modify the VIRTCT
-^^^^^^^^^^^^^^^^^^^^^^^
-
-8.1.2 Add RACF definitions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-8.1.3 Refine RACF definitions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-8.2 How to activate ACF2 security
----------------------------------
-
-8.2.1 Modify the VIRTCT
-^^^^^^^^^^^^^^^^^^^^^^^
-
-8.2.2 Determine the ACF2 resource type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-8.2.3 Add ACF2 definitions
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-8.3 How to activas Top Secret (TSS) security
---------------------------------------------
-
-8.3.1 Modify the VIRTCT
-^^^^^^^^^^^^^^^^^^^^^^^
-
-.. _Summary:
-
 1. Summary of Amendments
 ========================
 
@@ -1088,7 +468,7 @@ The VIRTEL product contains support for the base kernel and all modules. The fun
 
 .. line-block:: 
 
-*Please refer to your license agreement for the particular terms and conditions under which you are authorised to use the various VIRTEL modules.*
+	*Please refer to your license agreement for the particular terms and conditions under which you are authorised to use the various VIRTEL modules.*
 
 
 2.2 Required Environment
@@ -1531,9 +911,11 @@ Download the following files from our FTP server `http://ftp.syspertec.com <http
 
 4. Apply the PTFs in the allptfs-mvs453.txt file using job ZAPJCL in the VIRTEL CNTL library. If this file does not exist, skip this step.
 
-5. Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list::
+5. Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list
 
-   SETPROG APF,ADD,DSN=yourqual.VIRT453.LOADLIB,VOL=volser
+::
+
+	SETPROG APF,ADD,DSN=yourqual.VIRT453.LOADLIB,VOL=volser
 
 6. Edit member VIRTCT01 in the VIRTEL CNTL library:-
 
@@ -1568,13 +950,17 @@ Download the following files from our FTP server `http://ftp.syspertec.com <http
 
 9. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
 
-Note: If you need to rerun the ARBOLOAD job, you must change PARM='LOAD,NOREPL' to PARM='LOAD,REPL'
+.. note::
+
+	If you need to rerun the ARBOLOAD job, you must change PARM='LOAD,NOREPL' to PARM='LOAD,REPL'
 
 If you wish to completely start over from the beginning, you can run the job ARBOBASE to delete and reinitialize the ARBO file, followed by a rerun of the ARBOLOAD job.
 
 10. Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
 
-11. Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command::
+11. Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command:
+
+::
 
     V NET,ACT,ID=VIRTAPPL
 
@@ -1627,49 +1013,51 @@ The installation jobs are delivered on an unlabeled 3480 tape cartridge. To load
 
     Queue with DISP=L, CLASS=0:
 
-`VIRTLIB		| define the VIRT453.SUBLIB sublibrary`
-
-`VIRTCIL		| load executable modules into the CIL`
-
-VIRTSSL		| load source modules into the SSL
-
-VIRSAPI		| load the VIRAPI macro library
-
-VIRFA29		| load the FA29 macro library
-
-VIRSAPI		| load the SCRNAPI macro library
-
-VIRTVS 		| define the VSAM files, comprising the following steps:
-
-VIRTVS1		| define VIRARBO and VIRSWAP files
-
-VIRTVS2		| initialise VIRARBO file
-
-VIRTVS3		| define VIRSTAT file
-
-VIRTVS4		| define VIRCMP3 file
-
-VIRTVS5		| define VIRCAPT file
-
-VIRTVS6		| define SAMPTRF file
-
-VIRTVS7		| define HTMLTRF file
-
-VIRTVS8		| load SAMPTRF file
-
-VIRTVS9		| define VIRHTML file
-
-VIRTCT 		| VIRTEL parameter table assembly example
-
-VIRCONF 	| VIRARBO batch update (ARBOLOAD)
-
-VIRMOD		| VTAM mode table assembly
-
-VIRTAPPL	| VTAM application major node example
-
-VIRGROUP	| CICS resource definition example
-
-VIRTEL 		| VIRTEL execution JCL example
++-----------+-------------------------------------------------------------+
+| Module    |  Description                                                |
++===========+=============================================================+ 
+|VIRTLIB    | define the VIRT453.SUBLIB sublibrary                        |
++-----------+-------------------------------------------------------------+
+|VIRTCIL    | load executable modules into the CIL                        |
++-----------+-------------------------------------------------------------+
+|VIRTSSL    | load source modules into the SSL                            |
++-----------+-------------------------------------------------------------+
+|VIRSAPI    | load the VIRAPI macro library                               |
++-----------+-------------------------------------------------------------+
+|VIRFA29    | load the FA29 macro library                                 |
++-----------+-------------------------------------------------------------+
+|VIRSAPI    | load the SCRNAPI macro library                              |
++-----------+-------------------------------------------------------------+
+|VIRTVS     | **VIRTVS1** - define VIRARBO and VIRSWAP files              |
+|           |                                                             |
+|           | **VIRTVS2** - initialise VIRARBO file                       | 
+|           |                                                             |
+|           | **VIRTVS3** -define VIRSTAT file                            | 
+|           |                                                             |
+|           | **VIRTVS4** - define VIRCMP3 file                           |
+|           |                                                             |
+|           | **VIRTVS5** - define VIRCAPT file                           |
+|           |                                                             |
+|           | **VIRTVS6** - define SAMPTRF file                           |
+|           |                                                             |
+|           | **VIRTVS7** - define HTMLTRF file                           |
+|           |                                                             |
+|           | **VIRTVS8** - load SAMPTRF file                             |
+|           |                                                             |
+|           | **VIRTVS9** - define VIRHTML file                           | 
++-----------+-------------------------------------------------------------+
+|VIRTCT     | VIRTEL parameter table assembly example                     |
++-----------+-------------------------------------------------------------+
+|VIRCONF    | VIRARBO batch update (ARBOLOAD)                             |
++-----------+-------------------------------------------------------------+
+|VIRMOD     | VTAM mode table assembly                                    |
++-----------+-------------------------------------------------------------+
+|VIRTAPPL   | VTAM application major node example                         |
++-----------+-------------------------------------------------------------+
+|VIRGROUP   | CICS resource definition example                            |
++-----------+-------------------------------------------------------------+
+|VIRTEL     | VIRTEL execution JCL example                                |
++-----------+-------------------------------------------------------------+
 
 .. note::
 
@@ -3124,7 +2512,9 @@ This parameter defines the characteristics of the encryption performed by VIRTEL
 
   **AES-256** - Advanced Encryption Standard, key size 256 bits (32 byte key)
 
-  Note: in this version of VIRTEL, only NONE, DES, 2TDEA, and 3TDEA are supported
+  .. note::
+
+		In this version of VIRTEL, only NONE, DES, 2TDEA, and 3TDEA are supported
 
 **algp** - The asymmetric encryption algorithm to be used by VIRTEL for encryption of session keys. The following values can be specified:
 
@@ -3138,20 +2528,25 @@ This parameter defines the characteristics of the encryption performed by VIRTEL
 
   **RSA-4096** - RSA public key encryption (4096 bit key)
 
-  Note: in this version of VIRTEL, only NONE, RSA-512, and RSA-1024 are supported.
+  .. note::
+
+		In this version of VIRTEL, only NONE, RSA-512, and RSA-1024 are supported.
 
 **engine** - The name of the encryption engine to be used. The following values can be specified:
 
   **ICSF** - VIRTEL uses the Integrated Cryptographic Service Facility of z/OS 
-  **NO-ENCRYPTION** - (default value) VIRTEL uses an internal null-encryption engine. In this case, NONE must be specified or defaulted
-                      for the cryptographic algorithms.
+
+  **NO-ENCRYPTION** - (default value) VIRTEL uses an internal null-encryption engine. In this case, NONE must be specified or defaulted for the cryptographic algorithms.
+
 **encoding** - The representation which VIRTEL will use for encrypted text. The following values can be specified:
 
   **HEX** - (default value) Encrypted data is represented in hexadecimal
 
   **BASE64** - Encrypted data is represented in base64 format
+
+  .. note::
   
-  Note: in this version of VIRTEL, only HEX is supported
+		In this version of VIRTEL, only HEX is supported
 
 **chaining** - The chaining method to be used for symmetric encryption. The following values can be specified:
 
@@ -3159,7 +2554,9 @@ This parameter defines the characteristics of the encryption performed by VIRTEL
 
   **ECB** - Electronic codebook will be used
 
-  Note: in this version of VIRTEL, only CBC is supported
+  .. note::
+
+		In this version of VIRTEL, only CBC is supported
 
 **padding** - The padding method to be used for symmetric encryption. The following values can be specified:
 
@@ -3169,7 +2566,9 @@ This parameter defines the characteristics of the encryption performed by VIRTEL
 
   **ISO10126** - Padding method using random padding bytes
 
-  Note: in this version of VIRTEL, only PKCS7 is supported
+  .. note::
+
+		In this version of VIRTEL, only PKCS7 is supported
 
 6.2.21. CRYPT2 parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3264,1429 +2663,2643 @@ The values listed above are the names of the standard tables which are always av
 may be loaded at startup time by means of the “CHARSET parameter”, page 0.
 
 6.2.24. DIRECT parameter
-DIRECT=xx Default=1C (REPRO)
-xx
-Hex code of the character of the 3270 keyboard that will be used to switch directly from one session to another. If
-DIRECT=00 then this function will be disabled.
-6. VIRTCT
-55
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	DIRECT=xx Default=1C (REPRO)
+
+**xx** - Hex code of the character of the 3270 keyboard that will be used to switch directly from one session to another. If DIRECT=00 then this function will be disabled.
+
 6.2.25. DONTSWA parameter (MVS only)
-DONTSWA=YES/NO Default=NO
-YES
-VIRTEL will attempt to set itself non-swappable. This option is only available if VIRTEL is run from an APF-authorized
-library.
-NO
-VIRTEL remains swappable
-Note: When VIRTEL is executed via program VIR6000, it is always non-swappable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	DONTSWA=YES/NO Default=NO
+
+**YES** - VIRTEL will attempt to set itself non-swappable. This option is only available if VIRTEL is run from an APF-authorized library.
+**NO** - VIRTEL remains swappable
+
+.. note::
+
+	When VIRTEL is executed via program VIR6000, it is always non-swappable
+
 6.2.26. EXIT1 parameter
-EXIT1=xx Default=' '
-xx
-Is the name of the VIREXxx module that will be called to process an incoming call packet. This exit will only function
-for lines running in GATE mode.
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	EXIT1=xx Default=' '
+
+**xx** - Is the name of the VIREXxx module that will be called to process an incoming call packet. This exit will only function for lines running in GATE mode.
+
 6.2.27. EXIT2 parameter
-EXIT2=xx Default=' '
-xx
-Is the name of the VIREXxx module that will be called when a Minitel sub-server node connects. If the line used is set
-to GATE mode this exit will process call packet CUD.
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	EXIT2=xx Default=' '
+
+**xx** - Is the name of the VIREXxx module that will be called when a Minitel sub-server node connects. If the line used is set to GATE mode this exit will process call packet CUD.
+
 6.2.28. EXIT3 parameter
-EXIT3=xx Default=' '
-xx
-Is the name of the VIREXxx module that will be called at connection time to a VTAM application from a multi-session
-screen.
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	EXIT3=xx Default=' '
+
+**xx** - Is the name of the VIREXxx module that will be called at connection time to a VTAM application from a multi-session screen.
+
 6.2.29. EXIT4 parameter
-EXIT4=xx Default=' '
-xx
-Is the name of the VIREXxx module that will be used to filter messages when a VTAM application is accessed either
-from the multi-session screen or from a Minitel sub-server node.
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	EXIT4=xx Default=' '
+
+**xx** - Is the name of the VIREXxx module that will be used to filter messages when a VTAM application is accessed either from the multi-session screen or from a Minitel sub-server node.
+
 6.2.30. EXIT5 parameter
-EXIT5=xx Default=' '
-6. VIRTCT
-56
+^^^^^^^^^^^^^^^^^^^^^^^
 
-    *Example VIRTCT*
+::
 
-    The VIRTCT must be assembled before starting VIRTEL for the first
-    time. The VIRTEL macro library must be available to the assembler.
-    In the MVS environment, the VIRTCT must be link-edited with the
-    NORENT and NOREUS options. The RENT and REUS options must NOT be
-    specified in the MVS environment. In the VSE environment,
-    PRD1.MACLIB must be specified. The resulting phase or load module
-    must be placed in a STEPLIB or SEARCH PHASE library available to the
-    VIRTEL started task.
+	EXIT5=xx Default=' '
 
-    A sample job for assembling the VIRTCT is supplied in member ASMTCT
-    of the VIRTEL SAMPLIB:
+**xx** - Is the name of the VIREXxx module that will be called to process outgoing call packets.
 
-    *VIRTCT assembly in MVS*
+6.2.31. EXIT6 parameter
+^^^^^^^^^^^^^^^^^^^^^^^
 
-    A sample job for assembling the VIRTCT is supplied on the
-    installation tape:
+::
 
-    *VIRTCT assembly in VSE*
+	EXIT6=xx Default=' '
 
-    Data may be passed to the VIRTEL procedure via the start command
-    which allows the value of certain parameters in the VIRTCT (APPLID,
-    MQ1, MQ2) to be modified. For example :
+**xx** - Is the name of the VIREXxx module that will be called to process messages bound for host applications.
 
-    The VIRTEL started task procedure should contain the TCT, APPLID,
-    and VTOVER parameters which are substituted into the PARM as shown
-    below:
+6.2.32. EXIT7 parameter
+^^^^^^^^^^^^^^^^^^^^^^^
 
-    When starting VIRTEL, you may specify values for the TCT, APPLID,
-    and VTOVER on the start command as shown in the example below:
+::
 
-    After loading VIRTCT01, VIRTEL will then:
+	EXIT7=xx Default=' '
 
--  replace the APPLID variable by the value AA4AVIRX
+**xx** - Is the name of the VIREXxx module that will be used to calculate the connection costs for external server calls.
 
--  use the value of the VTOVER variable to replace the specified
-   substitution characters % in certain VIRTCT parameters by characters
-   extracted from the VTOVER value.
+6.2.33. EXIT8 parameter
+^^^^^^^^^^^^^^^^^^^^^^^
 
-    This functionality requires that the VIRTCT should contain:
+::
 
--  a new parameter VTOVER=VTDYNAM
+	EXIT8=xx Default=' '
 
--  a new table VTDYNAM consisting of macros VTOVERH and VTOVER
+**xx** - Is the name of the VIREXxx module that will be used to process the incoming call connection packet for the HTTP server.
 
--  the presence of one or more % characters in certain VIRTCT parameters
-   which will be substituted by the corresponding characters from the
-   VTOVER parameter specified on the start command.
+6.2.34. EXPIRE parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-    For example, if the fourth character of the MQ1 and MQ2 Queue
-    Manager name and the second three characters of the MQ2 Queue Name
-    are variable, the parameters may be defined in the VIRTCT as shown
-    below:
+::
 
-+--------------------------+--------------------------------+------+
-|     MQ1=(CSQ%),          |     -> wild char in MQ1 parm   | \*   |
-+==========================+================================+======+
-|     MQ2=(CSQ%,'A%%%'),   |     -> wild char in MQ2 parm   | \*   |
-+--------------------------+--------------------------------+------+
-|     VTOVER=VTDYNAM,      |     -> new VIRTCT parm         | \*   |
-+--------------------------+--------------------------------+------+
+	EXPIRE=(YYYY,MM,JJ) Default=(2999,12,31)
 
-    At the end of the VIRTCT, define the VTDYNAM table with the rules
-    for substituting data from the VTOVER parameter. For each parameter,
-    specify the substitution character(s) to look for (TARGET), and the
-    position relative to zero of the characters to be extracted from the
-    VTOVER parameter (FROM), as shown in the example below:
+**(YYYY,MM,JJ)** - Is the expiry date of the contract specified in the key at installation time. This parameter is unique for each client and functions in relation with the following parameters: ADDR1, ADDR2, COMPANY, LICENSE and CODE.
 
-    With these definitions and VTOVER='12345', the MQ1 and MQ2
-    parameters of the VIRTCT will have the values shown below:
+6.2.35. FASTC parameter
+^^^^^^^^^^^^^^^^^^^^^^^
 
-    If an error occurs during substitution, VIRTEL will issue message
-    VIR0025E indicating the error code specified in the ERRORC parameter
-    of the VTOVER macro.
+::
 
-    The “ZAPH parameter”, page 0 of the VIRTCT allows one or more
-    patches to be applied to the VIRTEL kernel after the resident
-    modules have been loaded into memory at startup. This parameter is
-    intended to be used only under the advice of Syspertec technical
-    support personnel.
+	FASTC=YES/NO Default=NO
 
-    For example, if the VIRTCT contains the parameter:
+This parameter specifies whether VIRTEL will use the Fast Connect mode of NPSI for X25 communications.
 
-    then it refers to the table MYPTFS coded after the VIRTERM macro,
-    for example:
+**YES** - Indicates that Fast Connect mode will be used
+**NO** - Indicates that Fast Connect mode will not be used.
 
-    The format of each ZAPD instruction is as follows:
+6.2.36. FCAPT parameter
+^^^^^^^^^^^^^^^^^^^^^^^
 
-label
------
+::
 
-    PTF identifier for message VIR0066I
+	FCAPT=xxxxxxx Default= (none)
 
-progname
---------
+**xxxxxxx** - Is the DD name of the file used to save screen images captured during an external server call. To enable the screen image capture facility, specify FCAPT=VIRCAPT and include a VIRCAPT DD/DLBL statement in the VIRTEL JCL procedure. If the FCAPT parameter is omitted, the screen image capture facility is disabled.
 
-    program name
+6.2.37. FCMP3 parameter
+^^^^^^^^^^^^^^^^^^^^^^^
 
-offset
-------
+::
 
-    offset into program
+	FCMP3=xxxxxxx Default=VIRCMP3
 
-verify
-------
+**xxxxxxx** - Indicates the DD name of the file containing the screen types used in level 3 compression. To enable the level 3 compression facility, specify FCMP3=VIRCMP3 and include a VIRCMP3 DD/DLBL statement in the VIRTEL JCL procedure. The COMPR3 parameter specifies the type of compression. If COMPR3=NO is specified then the FCMP3 parameter is ignored and the VIRCMP3 file is not required.
 
-    verify value (hexadecimal digits)
+6.2.38. GATE parameter
+^^^^^^^^^^^^^^^^^^^^^^
 
-replace
--------
+::
 
-    replacement value (hexadecimal digits)
+	GATE=GENERAL/NO Default=GENERAL
 
-desc
-----
+**GENERAL** - Activates support for all types of terminal.
+**NO** - Activates support for incoming Minitel calls only.
 
-    (optional) description for message VIR0066I
+6.2.39. GMT parameter
+^^^^^^^^^^^^^^^^^^^^^
 
-VIRCONF
-=======
+::
 
-    The VIRCONF program allows a batch job to manage the VIRARBO file,
-    which is the main configuration file for VIRTEL. VIRCONF allows you
-    to:
+	GMT=(x,y) Default=(0,2)
+	GMT=(x,SYSTZ)
+	GMT=SYSTZ
+
+This parameter indicates the timezone adjustments which VIRTEL must take into account in order to generate the correct standard conformant timestamps in SMTP and HTTP headers. This parameter is also used to generate
+timestamps in local time for the VIRLOG and VIRSTAT files.
+
+**x** - The first subparameter is the number of hours which must be added to the system TOD clock value to arrive at GMT. Negative values indicate that the TOD clock is ahead of GMT, positive values indicate that the TOD clock is behind GMT. For systems which run with TOD=GMT this subparameter is 0.
+
+**y** - The second subparameter is the number of hours which must be added to GMT to arrive at the local time. Negative values indicate that local time is behind GMT (west), positive values indicate that local time is ahead of GMT (east).
+
+For example, USA EASTERN DAYLIGHT SAVINGS TIME with the TOD clock set to GMT should be coded as GMT=(0,-4). If the TOD clock is set to CENTRAL EUROPEAN TIME (GMT+1) and the local time is EUROPEAN SUMMER TIME (GMT+2) then this parameter should be coded as GMT=(-1,+2). GMT=(-1,+1) indicates that both TOD clock and local time are CENTRAL EUROPEAN TIME. 
+
+To avoid the need to modify the GMT parameter when daylight savings time is in effect, you may specify GMT=SYSTZ or GMT=(x,SYSTZ)
+
+**GMT=SYSTZ** - indicates that the TOD clock is set to GMT and that VIRTEL will obtain the timezone difference by inspecting the system local time offset. For z/OS the local time offset is specified in the CLOCKxx member of the system PARMLIB, which may be modified by the SET CLOCK command in the event of a transition between winter and summer time. For VSE the local time offset is specified by the SET ZONEDEF command in the $IPL procedure.
+
+**GMT=(x,SYSTZ)** - indicates that the TOD clock is set to GMT-x, and VIRTEL will use the system local time offset to calculate the timezone difference. In this case, x is the number of hours which must be added to the TOD clock value to arrive at GMT, and VIRTEL considers the local time to be GMT + w – x where w is the system local time offset. GMT=SYSTZ is equivalent to GMT=(0,SYSTZ).
+
+6.2.40. GRNAME parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	GRNAME=grname Default=none
+
+**grname** - The VTAM generic resource name for VIRTEL. If GRNAME is specified, VIRTEL will identify itself to VTAM using the specified generic resource name. The VTAM generic resources function allows the assignment of a generic resource name to a group of application programs that all provide the same function. VTAM automatically distributes sessions among these application programs rather than assigning all sessions to a single resource. 
+
+.. note::
+
+	Use of generic resources requires a coupling facility structure.
+
+6.2.41. GTLOAD parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	GTLOAD=nn Default=0
+
+**nn** - Indicates the number of GTM map load modules.
+
+6.2.42. GTPRFE1 parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	GTPRFE1=(x1,x2,..,xn) Default=' '
+
+**xn** - Indicates the base screen codes used in the $%F commands of GTM. Each code references one of the ‘ym’ prefixes defined in the GTPRFE2 parameter. The number of codes defined in GTPRFE1 may not exceed the number of prefixes defined in the GTPRFE2 parameter.
+
+6.2.43. GTPRFE2 parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	GTPRFE2=(y1,y2,..ym) Default=' '
+
+**ym** - Indicates base screen prefixes associated with the code ‘xn’ defined in the GTPRFE1 parameter. The number of prefixes defined in the GTPRFE2 parameter must equal the number of codes defined in GTPRFE1 + 1; the last position contains the prefix to be used if no code is specified in the $%F command or if the specified code does not exist.
+
+6.2.44. GTVSAM parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	GTVSAM=(filename,keylen,rkp,acbcard) Default=' '
+
+**filename** - Is the name of the VSAM file containing the GTM maps when these are contained in a VMO file.
+
+**keylen** - length of the VSAM key
+
+**rkp** - position relative to zero of the key in the record
+
+**acbcard** - Name of the ACB macro referenced, if the VMO file is described by a UFILEn parameter in the VIRTCT.
+
+6.2.45. GTVSKIP parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	GTVSKIP=n Default='0'
+
+**n** - Is the displacement used to localise the data in the VSAM record being read.
+
+6.2.46. GUIDE parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+
+	GUIDE=xx Default=F1 (PF1)
+
+**xx** - The 3270 AID function key which will be transmitted to the application when the Minitel user presses the [GUIDE] key. This parameter allows the definition of a general value by default that may be modified when defining the subserver nodes.
+
+GUIDE=00 allows the [GUIDE] key to display a pad offering further choices.
+
+6.2.47. HTFORWD parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+
+	HTFORWD=(proxy1,proxy2,...) Default=none
+
+**(proxy1,...)** - Specifies the IP address(es) of one or more proxy servers which forward HTTP requests to VIRTEL on behalf of clients.
+
+For all requests received from these proxies, VIRTEL obtains the client’s IP address from the iv-remote-address: or the X-Forwarded-For: HTTP header generated by the proxy. This function may also be activated on a per-line basis by specifying the proxy address in the “Calling DTE” field of a rule (see “Rules” in the VIRTEL Connectivity Reference manual).
+
+.. note::
+
+	IP addresses must include leading zeroes. For example, HTFORWD=(192.168.001.020,010.001.001.020)
+
+6.2.48. HTHEADR parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	HTHEADR=(h1,h2,...) Default=none
+
+**(h1,h2,...)** - Specifies the names of up to 5 additional HTTP headers whose value is to be made available to scenarios. The names must be specified in upper case in this parameter, although the headers in the HTTP request may be upper or lower case. Refer to the description of the COPY$ SYSTEM-TO-VARIABLE instruction in the VIRTEL Web Access Guide for further details.
+
+6.2.49. HTMINI parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	HTMINI=(len,time) Default=(40,100)
+
+The HTMINI parameter allows control over messages sent by VIRTEL Web Access applications. Certain applications may send several 3270 messages which together make up a complete screen. VIRTEL attempts to combine such messages into a single transmission to the browser, in order to avoid the need for the user to press ENTER to retrieve each message sent by the application.
+
+VIRTEL considers that a message is possibly incomplete if the following conditions are true:
+
+- The flag “restore keyboard” flag is not set in the 3270 WCC
+
+- The “start printer” flag is not set in the 3270 WCC
+
+- The message length is less than or equal to len bytes
+
+- The message does not contain an “insert cursor” command [R.Bowler : "Text hidden because the presence of an insert cursor command no longer inhibits the operation of the HTMINI parameter (see updt2717 in Virtel 4.23)"]
+
+After the arrival of a possibly incomplete message, VIRTEL waits for time hundreths of a second. If no other message has arrived during this interval, the possibly incomplete message is sent to the browser anyway. Otherwise, the possibly incomplete message is combined with the following message before sending it to the browser.
+
+6.2.50. HTPARM parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	HTPARM=(n1,n2) Default=(30000,4096000)
+
+This parameter allows you to override various VIRTEL Web Access settings. If HTPARM is specified, then all subparameters must be coded. The sub-parameters are:
+
+**n1** - HTTP segment size. Do not change from the default value of 30000 unless advised by VIRTEL support.
+
+**n2** - Maximum file size (in bytes) allowed for an IND$FILE upload. The default value 4096000 permits a maximum upload size of approximately 4MB. If the size is exceeded the user will see HTTP response code “413 Request Entity Too Large”.
+
+6.2.51. HTSET1 to HTSET4 parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	HTSETx=(option,option,...) Default=none
+
+These parameters allow various HTML processing options to be set as defaults. Each parameter has the form HTSETx = (option, option, ...) where option can take the values listed below:
+
+**HTSET1** - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES
+
+**HTSET2** - NO-ADD-TO-CHECKBOX, NO-ADD-TO-LISTBOX, DO-NOT-IGNORE-BINARY-ZEROES
+
+**HTSET3** - Reserved for future use
+
+**HTSET4** - Reserved for future use
+
+These processing options can be enabled or disabled within individual page templates via the SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags. Refer to the description of these tags in the VIRTEL Web Access Guide for the further details and for the meaning of each option.
+
+6.2.52. HTVSAM parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	HTVSAM=xxxxxxx Default= (none)
+
+**xxxxxxxx** - Indicates the DD name in the VIRTEL JCL procedure of the VSAM file used to store the names of the e-mail correspondents for VIRTEL Web Access applications. Installations using the VIRTEL Web Access feature must specify HTVSAM=VIRHTML and include a VIRHTML DD/DLBL statement in the VIRTEL JCL procedure. If no HTTP or SMTP lines are defined in the VIRTEL configuration, then the HTVSAM parameter may be omitted, and the VIRHTML file is not required.
+
+6.2.53. IBERTEX parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	IBERTEX=YES/NO Default=NO
+
+**YES** - Supports the CEPT1 (Spanish Minitel) standard.
+
+**NO** - Does not support the CEPT1 standard.
+
+6.2.54. IGNLU parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	IGNLU=(LuMch1,LuMch2,...) Default=' '
+
+**LuMchx** - The IGNLU parameter contains a list of line names which are not to be activated at VIRTEL startup time.
+
+6.2.55. LANG parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	LANG='E' Default=' '
+
+Specifies the language in which the VIRTEL administration panels are displayed. The following values are possible:
+**' '** - French language.
+**'E'** - English language.
+
+.. note::
+
+	The apostrophes are required.
+
+6.2.56. LICENCE parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	LICENCE=' ' Default=' '
+
+Is the number of the licence attributed to the client as it is specified in the installation key at the time of the installation. This code is unique for each client and functions in relation to the following parameters: ADDR1, ADDR2, COMPANY, EXPIRE and CODE.
+
+6.2.57. LOCK parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	LOCK=n Default=32767
+
+**n** - Inactivity delay in minutes, after which a VIRTEL will lock a terminal and request the user to resubmit his password.
+
+6.2.58. MARK parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	MARK=xx Default=1E(EndField)
+
+**xx** - Code of the key enabling selection of fields in a Multi-Session copy / paste operation. The default key is ‘end of field’ : Shift PA2.
+
+6.2.59. MAXAPPL parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	MAXAPPL=n Default=64
+
+**n** - The maximum number of applications or transactions that may appear in the VIRTEL Multi-Session screen. The maximum value allowed is 64.
+
+6.2.60. MEMORY parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	MEMORY=(BELOW/ABOVE[,DEBUG]) Default=BELOW
+	MEMORY=NATIVE/TEST
+
+Indicates the type of memory management used by VIRTEL:
+
+**BELOW** - Memory managed by VIRTEL, with memory obtained below the 16 megabyte line.
+
+**ABOVE** - Memory is managed by VIRTEL, with memory obtained above the 16 megabyte line.
+
+**NATIVE** - Memory managed by MVS or VSE
+
+**TEST** - NATIVE plus ability to track memory usage.
+
+MEMORY=ABOVE is recommended under MVS. MEMORY=(ABOVE,DEBUG) consumes more resources and is intended for debugging of memory corruption errors. NATIVE may produce a smaller real storage footprint for some HTML
+applications with very large numbers of terminals defined. TEST allows monitoring of memory usage by module via sub-application F4. TEST also produces a report of allocated memory via the output of the SNAP command.
+
+6.2.61. MINITEL parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	MINITEL=YES/NO Default=YES
+
+**YES** - The Minitel environment for outgoing call handling will be established.
+**NO** - No Minitels and no outgoing calls.
+
+6.2.62. MQ1 parameter
+^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	MQ1=(mqmname,'prefix',[pgmname]) Default=no MQ connection
+
+This parameter defines the characteristics of the connection to the message-queue manager (MQSeries) used by all lines which specify type MQ1.
+
+**mqmname** - The name of the message-queue manager (for example, CSQ1).
+
+**prefix** - A prefix which VIRTEL will add to all queue names. The prefix must be specified in quotes.
+
+**pgmname** - The name of the VIRTEL MQ interface program used for this connection. The following values can be specified: VIR0Q09 Interface program for MQSeries. This is the default.
+
+6.2.63. MQ2 parameter
+^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	MQ2=(mqmname,'prefix',[pgmname]) Default=no 2nd MQ connection
+
+This parameter defines the characteristics of the connection to the message-queue manager (MQSeries) used by all lines which specify type MQ2. The subparameters are the same as those of the MQ1 parameter.
+
+6.2.64. MULTI parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	MULTI=YES/NO Default=YES
+
+**YES** - Support for VIRTEL Multi-Session environment.
+**NO** - No Multi-Session.
+
+6.2.65. NBCVC parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	NBCVC=n Default=8
+
+**n** = The number of logical channels that are available for processing by VIRTEL.
+
+6.2.66. NBDYNAM parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	NBDYNAM=(t1,t2) Default=(20,0)
+
+**t1** - The number of 3270 terminals that may connect via a “dynamic terminal definition entry” (welcome mode).
+**t2** - The number of Minitel terminals that may connect via a “dynamic terminal definition”.
+
+6.2.67. NBTERM parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	NBTERM=nbterm Default=500
+
+**nbterm** - Number of terminals envisaged running in VIRTEL. This parameter allows the user to estimate the maximum number events that may be waiting for service at any one time.
+
+6.2.68. NUMTASK parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	NUMTASK=nn Default=4
+
+**nn** - The number of primary tasks waiting events on the primary VIRTEL ACB.
+
+6.2.69. OTMAPRM parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	OTMAPRM=(exitname,userid,group,password,applname) Default=(*SAMPLE*)
+
+This parameter defines the data which is passed to OTMA/IMSConnect in the header of a RESUME TPIPE request. All of the subparameters are optional. Missing subparameters are indicated by a comma.
+
+**exitname** - The identifier of the OTMA exit routine. Typical values are *SAMPLE* or *SAMPL1*. If omitted, the default value is *SAMPLE*.
+**userid, group, password, applname** - Security parameters which VIRTEL will place in the userid, group, password, and application name fields in the RESUME TPIPE header.
+
+6.2.70. OSCORE parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	OSCORE=n Default=384
+
+**n** - The number of kilobytes reserved for memory allocation by the operating system (e.g. for loading sub application modules). The default value of this parameter is calculated when this macro is assembled and is indicated by an MNOTE being issued. This value may optionally be reduced but a problem may then arise if all functions of the sub applications are used.
+
+6.2.71. PACKET parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	PACKET=n Default=128
+
+**n** - The size of the packets used for transfer over the packet switched network.
+
+6.2.72. PASSTCK parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	PASSTCK=YES Default=none
+
+This parameter activates PassTicket support in VIRTEL. The following values are possible:
+
+**YES** - VIRTEL may generate PassTickets for VIRTEL transactions which specify 1 or 2 in the PassTicket field If the PASSTCK parameter is omitted, VIRTEL will not generate PassTickets.
+
+6.2.73. PREZ900 parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	PREZ900=YES/NO Default=NO
+
+Allows VIRTEL to run on a pre-zSeries processor. Possible values are:
+
+**YES** - Specifies that the processor is a 9672, MP2000, MP3000, IS/390, or P/390. VIRTEL will not use instructions which are only available on z900 or later processors.
+
+**NO** - Specifies that VIRTEL may use all instructions available on z900 or later processors.
+
+.. note::
+
+	VIRTEL does not support 9672-G1, ES/9000, or any earlier processor.
+
+6.2.74. PRFSECU parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	PRFSECU='xxxxxxxx' Default=
+
+**xxxxxxxx** - Indicates the maximum 8 character prefix associated with the resources defined in the security management system if using RACF, TOP SECRET or ACF2.
+
+6.2.75. PWPROT parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	PWPROT=YES/NO Default=NO
+
+**YES** - Supports protected field (DARK field) for 80 column Minitels with PAD=INTEG coded. This parameter must also be specified in NPSI.
+
+**NO** - No support for the protected field (DARK field) for 80 column Minitels if PAD=INTEG.
+
+6.2.76. RACAPPL parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	RACAPPL=NONE/APPLID/GRNAME/'name' Default=NONE
+
+The RACAPPL parameter specifies the VIRTEL application name as it is known to RACF. When RACAPPL is present in the VIRTCT, VIRTEL will add an APPL= parameter to all RACROUTE VERIFY calls. RACF uses this application name for two purposes: (1) to validate that the user is authorized to access the VIRTEL application (if the RACF APPL class is active) and (2) to validate the user’s passticket using the PTKTDATA class (if the user signs on to VIRTEL using a passticket instead of a password). The possible values are:
+
+**NONE** (or omitted) - VIRTEL will not use the APPL= parameter on RACROUTE VERIFY calls. In this case RACF will use the default application name (MVSxxxx where xxxx is the 4-character SMF identifier of the z/OS system)
+
+**APPLID** - VIRTEL will use the VTAM APPLID of the VIRTEL started task (specified in the APPLID parameter of the VIRTCT) as the value of the APPL= parameter for RACF.
+
+**GRNAME** - VIRTEL will use the VTAM generic resource name of the VIRTEL started task (specified in the GRNAME parameter of the VIRTCT) as the value of the APPL= parameter for RACF. This setting may be useful in a sysplex environment. It allows all VIRTEL STCs in the sysplex to present the same application name to RACF.
+
+**'name'** - VIRTEL will use the specified name as the value of the APPL= parameter for RACF. The name must be specified in single quotes.
+
+6.2.77. RAPPL parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	RAPPL=rappl Default=USERA
+
+**rappl** - Name of the security management resource class which contains the applications resources for the Multi-Session function and for external servers. The entities in this resource class are external servers and VTAM applications. If resource $$ALLSRV is used, then all the servers defined in VIRTEL are authorised.
+
+6.2.78. REALM parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	REALM=TRANSACT/APPLID/GRNAME Default=TRANSACT
+
+This parameter specifies the name presented by VIRTEL to the browser in the HTTP basic security signon dialog. The possible values are:
+
+**TRANSACT** - the external name of the VIRTEL transaction which is requesting security. This causes the browser to issue the signon prompt for each transaction the first time the transaction is requested in a browser session.
+
+**APPLID** - the VTAM APPLID of the VIRTEL started task. With this setting VIRTEL presents the same realm name for all transactions, and thus the user sees only one signon prompt per browser session.
+
+**GRNAME** - the VTAM generic resource name of the VIRTEL started task. This setting may be useful in a sysplex environment. It allows all VIRTEL STCs in the sysplex to present the same realm name to the browser.
+
+6.2.79. REPET parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	REPET=xx Default=F2 (PF2)
+
+**xx** - The 3270 AID function key which will be transmitted to the application when a Minitel user presses the [REPETITION] key. This parameter allows the definition of a general value by default which may be modified in the sub-server node definition. A value of 00 indicates that the [REPETITION] key will not be transmitted.
+
+6.2.80. RESO parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	RESO=YES/NO Default=YES
+
+**YES** - VIRTEL’s VTAM network management sub-application will be activated.
+
+**NO** - The network management sub-application will not be used.
+
+6.2.81. RETOUR parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	RETOUR=xx Default=00
+
+**xx** = The 3270 AID function key which will be transmitted to the application when the Minitel user presses the [RETURN] key. By default the [RETURN] key is not transmitted to the application but serves to set the cursor to the beginning of the preceding field. This parameter allows for the definition of a general value by default that may be modified in the definition of the sub-server nodes.
+
+6.2.82. RNODE parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	RNODE=rnode Default=USERB
+
+**rnode** - The name of the security management resource class which contains Minitel tree structure nodes, VIRTEL subapplication names, internal names of transactions associated with entry points, and directory names for file transfer.
+
+6.2.83. SECUR parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SECUR=NO/VIRTEL/RACF/TOPS/ACF2/RACROUTE Default=NO
+
+For the MVS environment, the following options can be specified:
+
+**NO** - No security software is used to control access.
+
+**VIRTEL** - VIRTEL’s internal security management feature is used.
+
+**(RACROUTE,RACF)** - IBM’s security management product is used (via SAF).
+
+**(RACROUTE,TOPS)** - The TOP SECRET security management product is used (via SAF).
+
+**(RACROUTE,ACF2)** - The ACF2 security management system is used (via SAF).
+
+For the VSE environment, the following options can be specified:
+
+**NO** - No security software is used to control access.
+
+**VIRTEL** - VIRTEL’s internal security management feature is used.
+
+**RACROUTE** - (for z/VSE Version 3 or later) VIRTEL uses the VSE Basic Security Manager (via SAF), or the External Security Manager if specified in the VSE IPL parameters.
+
+The following options are retained for compatibility with previous releases:
+
+**RACF** - RACF without SAF.
+
+**TOPS** - TOP SECRET without SAF.
+
+**ACF2** - ACF2 with ACFDIAG (Only for VM). For MVS, this is treated as (RACROUTE,ACF2).
+
+**RACROUTE** - Multi product interface security (via SAF).
+
+If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
+
+6.2.84. SILENCE parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SILENCE=YES/NO Default=NO
+
+**YES** - Inhibits the sending of asynchronous terminal connection and disconnection messages to the log (VIR0026W, VIR0028W, VIR0051I, VIR0052I, VIR0505I, VIR0507I, VIR1551I, VIRHT51I, VIRNA51I, VIRPF28I, VIRPF51I, VIRPF52I, VIRPF99I, VIRQ912W, VIRQ922W, VIRT912W, VIRT922W). Also, messages VIR0002W and VIR0914E will be suppressed on a REQSESS request.
+
+**NO** - Enables the sending of asynchronous terminal connection and disconnection messages to the log.
+
+The VIRTEL command SILENCE can be used to dynamically modify this parameter.
+
+6.2.85. SNAPW parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SNAPW=80/132 Default=132
+
+Indicates the default presentation format for SNAP and other dumps (80 or 132 columns). This parameter can be dynamically modified by the VIRTEL SNAPW command.
+
+6.2.86. SOMMR parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SOMMR=xx Default=00
+
+**xx** - The 3270 AID function key which will be transmitted to the application when the minitel user presses the [SUMMARY] key. 
+
+By default, the [SUMMARY] key is not transmitted to the application but serves to return the user to the tree structure. This parameter allows for the definition of a default which may be modified in the sub-server node definition. Where the value specified is a ‘01’, use of the [SUMMARY] key sets the cursor on the first field to be entered in the current screen.
+
+6.2.87. STATDSN parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	STATDSN=(dsn1,dsn2,...) Default=none
+
+**dsn1,...** - Dataset names of the files to be used for recording statistics if the parameter STATS=MULTI is specified. From 2 to 10 datasets can be specified. The datasets must be cataloged.
+
+6.2.88. STATS parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	STATS=YES/NO/(MULTI,CONTINUE/TERMINATE) | SMF | (SMF,nnn) Default=YES
+
+**YES** - Statistics recording is active. Statistics will be written to a single file defined in the VIRSTAT DD or DLBL statement in the VIRTEL started task JCL. VIRTEL must be stopped periodically to allow the statistics to be copied to a history file. The VIRSTAT file is overwritten each time VIRTEL is started.
+
+**NO** - Statistics will not be recorded.
+
+**MULTI** - Statistics recording is active. Statistics are written to one of the datasets defined in the STATDSN parameter of the VIRTCT. VIRTEL rotates the datasets by switching automatically to the next dataset when the current dataset becomes full. A batch job can then be used to copy the statistics to an archive file without stopping VIRTEL. Message VIR0603I can be used by an automated operator to trigger the submission of the batch job. After copying the statistics, the batch job must empty the dataset by writing an EOF marker at the beginning, which allows VIRTEL to reuse the dataset (see member STATCOPY in the VIRTEL SAMPLIB).
+The VIRTEL STAT command allows the console operator to display the status of the VIRSTATx datasets, or to force VIRTEL to switch to the next statistics dataset.
+
+If all of the statistics datasets are full, there are two options:
+
+**STATS=(MULTI,TERMINATE)** - VIRTEL terminates, to avoid the possibility of losing any further statistics.
+
+**STATS=(MULTI,CONTINUE)** - (default) VIRTEL continues, without recording any further statistics. To restart statistics recording, run a STATCOPY batch job to empty at least one VIRSTATx dataset, then issue the STAT,I command.
+
+The STATS=MULTI option is only available in the MVS environment.
+
+**SMF.** Statistics recording is active and are written into SMF. The VIRTEL STAT command allows the console operator to display the status of the VIRSTATx datasets, or to force VIRTEL to switch to the next statistics dataset. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The options are:
+
+**STATS=SMF** - The default SMF record number is 223.
+
+**STATS=(SMF,nnn)** - The SMF record number used will be nnn. The specified number must be between 128 and 255. The STATS=SMF/(SMF,nnn) option is only available in the MVS environment.
+
+6.2.89. STRNO parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	STRNO=n Default=8
+
+**n** - Number of concurrent accesses to VSAM files.
+
+6.2.90. SUITE parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SUITE=xx Default=00
+
+**xx** - The 3270 AID function key which will be transmitted to the application when the Minitel user presses the [SUITE] function key. By default the [SUITE] function key is not transmitted to the application but serves to set the cursor to the following field. This parameter allows the definition of a general value by default that may be modified in the definition of the sub server node.
+
+6.2.91. SWAP parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SWAP=Pnn Default=P24
+
+**Pnn** - Identifies the 3270 function key that causes VIRTEL to return to the multi-session menu (for SNA terminals, the ATTN key also performs this function). This parameter may take the following parameter values P1 to P24, PA1, PA2, or CLR.
+
+6.2.92. SYSPLUS parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SYSPLUS=YES/NO Default=NO
+
+**YES** - VIRTEL will retrieve certain system symbols from z/OS. Whenever the '+' character appears in the APPLID parameter or in a terminal relay name, VIRTEL will replace the '+' by the value of the SYSCLONE symbol.
+**NO** - System symbols will not be retrieved, the '+' character will not be substituted in LU names, and the xxx-SYMBOL functionality of the NAME-OF tag and the COPY$ SYSTEM-TO-VARIABLE instruction is not active (see VIRTEL Web Access Guide).
+
+6.2.93. TCP1 parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TCP1=tcpname Default=no TCP/IP connection
+	TCP1=([tcpname],,,[maxsock],[pgmname],[adsname])
+
+This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP1.
+
+**tcpname** - The name of the TCP/IP stack. This name should match the TCPIPJOBNAME parameter in the TCPIP.TCPIP.DATA file of the TCP/IP stack, or the name of the TCP/IP started task itself if TCPIPJOBNAME is not specified. The value ANY indicates that a connection can be established which any TCP/IP stack. This parameter is ignored by the TCP/IP for VSE stack.
+
+**maxsock** - In MVS, this is the maximum number of sockets for each type TCP1 line defined in VIRTEL. If this subparameter is not specified, TCP/IP determines the number (50 by default). The maximum value allowed by VIRTEL is 65535. However, for customers using older versions of MVS (z/OS V1R4 or earlier), the TCP/IP stack enforces an upper limit of 2000 on this subparameter. Also, the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx must exceed the maxsock value. In VSE, this is the total maximum number of sockets for all VIRTEL lines of type TCP1. The TCP/IP for VSE stack currently ignores the value specified here, and uses a fixed value of 8001 instead.
+
+**pgmname** - The name of the VIRTEL TCP/IP interface program used for this connection. The following values can be specified:
+
+	**VIR0T09** - Interface program using ASYNC=EXIT mode. This is the default for MVS systems.
+
+	**VIR0T10** - Interface program using ASYNC=ECB mode. This is the default for VSE systems.
+
+**adsname** - The name which VIRTEL uses to identify itself to TCP/IP. The value * indicates that VIRTEL uses its VTAM APPLID as the address space identifier. The default value is blank, which means that TCP/IP will assign the name of the VIRTEL started task as the address space identifier. This parameter is ignored by the TCP/IP for VSE stack.
+
+6.2.94. TCP2 parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TCP2=tcpname Default=no 2nd TCP/IP connection
+	TCP2=([tcpname],,,[maxsock],[pgmname],[adsname])
+
+This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP2. The subparameters are the same as those of TCP1.
+
+6.2.95. TIMEOUT parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TIMEOUT=n Default=5
+
+**n** - Indicates in minutes the time-out after which a terminal connected to an external server will be force disconnected if no line activity is seen. A value of 0 means that the terminal will not be disconnected even if no activity is detected. The value specified here applies only when the “User time out” field in the external server definition is set to zero (see “Parameters of the external server” in the VIRTEL Connectivity Reference manual).
+
+6.2.96. TIMERQS parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TIMERQS=(n1,n2,n3,n4) Default=(5,10,5,0)
+
+This parameter indicates the timeout values (in seconds) used by VIRTEL when attempting to establish an outbound connection using the Application-to-Application API (FA29 structured field). If this parameter is specified, then all four sub-parameters must be coded. The sub-parameters are:
+
+**n1** - Timeout for VTAM connections.
+
+**n2** - Timeout for X25 connections.
+
+**n3** - Timeout for TCP/IP connections.
+
+**n4** - Reserved for future use.
+
+6.2.97. TITRE1 parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TITRE1='ccccc' Default='SYSPERTEC'
+
+**ccccc** - The first line of the Multi-Session menu screen.
+
+6.2.98. TITRE2 parameter
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TITRE2='ccccc' Default=' '
+
+**ccccc** - The second line of the Multi-Session menu screen.
+
+6.2.99. TRACALL parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TRACALL=(p1,p2,...) Default=none
+
+**p1,p2,...** - Additional categories of trace data to be included in the VIRTEL internal trace. One or more of the following values may be coded in any order:
+
+**HTTP** - Additional trace data for HTTP server
+
+**VSAM** - Additional trace data for VSAM I/O requests
+
+**XM** - Additional trace data for Cross-Memory communication
+
+6.2.100. TRACBIG parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TRACBIG=n Default=40
+
+**n** - The number of entries reserved for the VIRTEL internal trace. The value indicated corresponds to n times 256 entries.
+
+6.2.101. TRACEB parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TRACEB=nn Default=200
+
+**nn** - The number of 1K buffers reserved for buffer data associated with entries in the VIRTEL internal trace. From VIRTEL 4.20 onwards, trace data is allocated above the 16MB line if possible.
+
+6.2.102. TRACEOJ parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TRACEOJ=STANDARD/YES/NO Default=NO
+
+**STANDARD** - An automatic SNAP of the VIRTEL internal trace table will be produced at the start of VIRTEL termination.
+
+**YES** - An automatic SNAP of the VIRTEL internal trace table will be produced at the end of VIRTEL termination.
+
+**NO** - No SNAP at VIRTEL termination.
+
+6.2.103. TRACEON parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TRACEON=YES/NO Default=YES
+
+**YES** - The VIRTEL internal trace is active.
+
+**NO** - The VIRTEL internal trace is not active.
+
+6.2.104. TRACTIM parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TRACTIM=CPU/LOCAL/TOD Default=LOCAL
+
+VIRTEL uses the TOD clock to timestamp each entry in its internal trace table. This parameter specifies whether or not the SNAP command should adjust the timestamps to match the local time used in the system message log. Possible values are:
+
+**CPU** - The last column in the SNAP trace, instead of the local time or TOD time in 1/10000 of a second, contains the total used CPU time for the current TCB in 1/10000 of a second. CPU option only works on z/OS and on a machine having support for the ECTG (Extract CPU Time) instruction (i.e. Z9-109 and above).
+
+**LOCAL** - The SNAP command adjusts the timestamps in the internal trace table so that they display as local time. This is the recommended setting.
+
+**TOD** - Timestamps are not adjusted for local time.
+
+6.2.105. TRAN parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	TRAN=EVEN/ODD/NO Default=Even
+
+This parameter should be coded in the same way as for the X25MCH macro in NPSI.
+
+6.2.106. UFILE1 to UFILE20 parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	UFILEx=(ddname,acbcard,rkp,keylen,mode) Default=' '
+
+These parameters define the VSAM files used by VIRTEL for HTML directories. Each parameter has the form UFILEx = (ddname, acbcard, rkp, keylen, mode) where:
+
+    - ddname is the DD name of the file as specified in the VIRTEL start procedure.
+
+    - acbcard is the name of the ACB macro defining the access characteristics of the transfer file. This ACB macro must appear later in the VIRTCT (see “Additional parameters for VSAM files”, page 78).
+
+    - rkp represents the relative position of the key in hexadecimal. This value must match the value specified in the DEFINE CLUSTER.
+
+    - keylen represents the length of the key in hexadecimal. This value must match the value specified in the DEFINE CLUSTER.
+
+    - mode represents one of the following values (in hexadecimal):
+
+		**00** - read-only mode
+		**01** - read/write mode
+		**05** - read-only mode or read/write mode, depending on the value of the “VSAMTYP parameter”. Seen the VIRTCT.
+
+The UFILEx parameters must be defined in sequence with no intervening gaps in the suffix number x.
+
+6.2.107. VIRSECU parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	VIRSECU=YES/NO Default=NO
+
+**YES** - The VIRTEL internal security sub-application is available. To use VIRTEL security, specify VIRSECU=YES with SECUR=VIRTEL. The combination SECUR=NO, VIRSECU=YES allows online definition of Virtel security without security being active.
+
+**NO** - VIRTEL internal security is not available.
+
+6.2.108. VIRSV1 parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	VIRSV1=(vsvname) Default=none
+
+This parameter defines the characteristics of the interface to the VIRSV service request manager for service programs called from a scenario via the VIRSV$ instruction.
+
+**vsvname** - Name of the service request manager. Must be VIRSV.
+
+6.2.109. VSAMTYP parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	VSAMTYP=READONLY Default=NORMAL
+
+**READONLY** - This parameter, if specified in the VIRTCT, allows the VIRTEL started task to be run in read-only mode for VSAM files,to be used in production mode, especially in a sysplex environment. Except for the VIRSWAP work file, all other VSAM files used by VIRTEL can be opened in read-only mode.
+
+**NORMAL** - By default VIRTEL opens files in read/write mode to allow the possibility of updating certain VSAM files, such as the VIRARBO file for example.
+
+.. note::
+
+	VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see “Additional parameters for VSAM files”, page 78) and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see “UFILE1 to UFILE20”, page 75).
+
+6.2.110. VTKEYS parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	VTKEYS=xxxxxxxx Default=0
+
+**xxxxxxxx** - The name of a table added to the end of the VIRTCT allowing for redefinition of the function keys for VT100. Please refer to the member VTSAMPLE in SAMPLIB.
+
+6.2.111. VTOVER parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	VTOVER=xxxxxxxx Default=none
+
+**xxxxxxxx** - The name of a table added to the end of the VIRTCT allowing for dynamic override of certain parameters in the VIRTCT. Please refer to the section “Dynamic VIRTCT overrides”, page 81 for further details.
+
+6.2.112. XM1 parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	XM1=xmname Default=no XM connection
+	XM1=(xmname,,,,[pgmname])
+
+This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM1.
+
+.. note::
+
+	Cross-memory is supported only on MVS systems (OS/390 or z/OS). The VIRXM product from Syspertec must also be installed.
+
+**xmname** - The name of the cross-memory manager started task (VIRXM).
+
+**pgmname** - The name of the VIRTEL XM interface program used for this connection. The following values can be specified:
+
+	**VIR0X09** - Interface program for MVS systems. This is the default.
+
+6.2.113. XM2 parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	XM2=xmname Default=no 2nd XM connection
+	XM2=([xmname],,,,[pgmname])
+
+This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM2. The subparameters are the same as those of the XM1 parameter.
+
+6.2.114. ZAPH parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	ZAPH=xxxxxxxx Default=none
+
+**xxxxxxxx** - The name of a table added to the end of the VIRTCT allowing for one or more patches to be applied at startup. Please refer to the section “Applying patches via the VIRTCT”, page 82 for further details.
+
+6.3. Additional Parameters For VSAM Files
+-----------------------------------------
+
+VIRTEL uses VSAM files for storing HTML pages and for VIRTEL/PC file transfer. These VSAM files must be defined in the VIRTCT by means of a parameter UFILEx and an ACBHx macro for each file. The ACB macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:
+
+::
+
+	ACBHx ACB AM=VSAM,DDNAME=dddddddd,MACRF=(P1,P2,…....,Pn),STRNO=3
+
+- The label ACBHx must match the acbname subparameter as specified in the UFILEx parameter of the VIRTCT.
+
+- dddddddd represents the ddname of the file as it is known in the VIRTEL start up procedure.
+
+- pn represents the authorisations granted to the transfer file. The permitted values are: SEQ,DIR,OUT,LSR (for read/write mode) or SEQ,DIR,IN,LSR (for read-only mode).
+
+- The value OUT should be omitted from MACRF if you want the mode (read-only or read/write) to be determined by the value of the VSAMTYP parameter in the VIRTCT (see “VSAMTYP parameter”, page 76).
+
+6.4. Additional Parameters For Batch Files
+------------------------------------------
+
+VIRTEL uses sequential files for batch input and output when the BATCHx parameter is defined in the VIRTCT, and a batch line is present in the configuration. These sequential files must be defined in the VIRTCT by means of a pair of DCB/DCBE macros for each file. The DCB/DCBE macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:
+
+::
+
+	label DCB DDNAME=ddname,DCBE=labelx,DSORG=PS, *
+	LRECL=lrecl,RECFM=recfm,MACRF=(macrf)
+	labelx DCBE EODAD=0,RMODE31=BUFF
+
+where:
+
+**label** - corresponds to the DCB label specified in the BATCHx parameter
+
+**ddname** - corresponds to the DD name specified in the BATCHx parameter.
+
+For input files:
+
+- lrecl is 80, recfm is FB, macrf is GL.
+
+For output files:
+
+- lrecl is 133, recfm is FBA, macrf is PM.
+
+**EODAD=0** - should be specified for input files.
+
+The example below shows how to code DCB/DCBE macros when the BATCH1 parameter is specified as::
+
+	BATCH1=(SYSIN1,DCBI1,SYSOUT1,DCBO1)
+	DCBI1 DCB DDNAME=SYSIN1, SYSIN DD *
+	DCBE=DCBI1X, *
+	LRECL=80, *
+	DSORG=PS, *
+	RECFM=FB, *
+	MACRF=(GL)
+	DCBI1X DCBE EODAD=0,RMODE31=BUFF
+	DCBO1 DCB DDNAME=SYSOUT1, SYSPRINT DD *
+	DCBE=DCBO1X, *
+	LRECL=133, *
+	DSORG=PS, *
+	RECFM=FBA, *
+	MACRF=(PM)
+	DCBO1X DCBE RMODE31=BUFF
+
+6.5. Example Of The VIRTCT
+--------------------------
+
+An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB for MVS, and in the installation job VIRTCT for VSE::
+
+	PRINT GEN
+	VIRTERM TYPE=INITIAL,APPLID=VIRTEL, *
+		COMPR3=AUTO, *
+		LANG=' ', LANGUAGE FOR USER MESSAGES *
+		COUNTRY=FR, EBCDIC-ASCII TRANSLATION *
+		DEFUTF8=IBM1147, DEFAULT OUTPUT ENCODING UTF-8 *
+		CHARSET=, UTF-8: ADDITIONAL CHARSETS *
+		GMT=SYSTZ, *
+		CRYPT1=(CRYPT3270,NONE,NONE,NO-ENCRYPTION,HEX), *
+		TCP1=(TCPIP,,,250), <------ *
+		HTVSAM=VIRHTML, <------ *
+		BUFSIZE=20000, *
+		ACCUEIL=YES, *
+		DEFENTR=(PC,MINITEL), *
+		FCAPT=VIRCAPT, *
+		RETOUR=00, *	
+		SUITE=00, *
+		SOMMR=00, *
+		CORRECT=00, *
+		EXIT1=, *
+		EXIT2=, *
+		EXIT3=, *
+		EXIT5=, *
+		EXIT4=, *
+		EXIT6=, *
+		EXIT7=, *
+		STATS=YES, OU (MULTI,CONTINUE/TERMINATE) *
+		STATDSN=(VIRTEL.STATA,VIRTEL.STATB), SI STATS=MULTI *
+		FCMP3=VIRCMP3, *
+		APPSTAT=YES, *
+		DONTSWA=YES, *
+		NBDYNAM=250, *
+		TRACEB=200,TRACEON=YES,TRACBIG=40, *
+		MULTI=YES,RESO=YES,ARBO=YES,MINITEL=YES, *
+		VIRSECU=YES,SECUR=NO, VIRTEL, (RACROUTE,RACF) *
+		RAPPL=VIRTSERV,RNODE=VIRTNODE, *
+		LOCK=20000, *
+		TIMEOUT=5, *
+		FASTC=NO, *
+		UFILE1=(SAMPTRSF,ACBH1,0,10,01), *
+		UFILE2=(HTMLTRSF,ACBH2,0,10,01), *
+		UFILE3=(PLUGTRSF,ACBH3,0,10,01), *
+		GATE=GENERAL, *
+		NBCVC=32, *
+		VTKEYS=VTTABLE, VT100 : KEY REDEFINITION *
+		MEMORY=ABOVE, *
+		COMPANY='VOTRE COMPAGNIE ', VOIR LA CLE *
+		ADDR1='VOTRE ADRESSE 1 ', COMMUNIQUEE *
+		ADDR2='VOTRE ADRESSE 2 ', PAR SYSPERTEC *
+		LICENCE='TYPE DE LICENCE ', *
+		EXPIRE=(2999,12,31), *
+		CODE='XXXXXXXX', *
+		TITRE1='S Y S P E R T E C C O M M U N I C A T I O N ', *
+		TITRE2='=============== 4.2 ======================== '
+	* ============================================================
+	VTTABLE KTRANH , SAMPLE VT KEYS TRANSLATION
+		KTRAN KEY=D6D7,IS=F1,RETCODE=1 PF1
+		KTRAN KEY=D6D8,IS=F2,RETCODE=1 PF2
+		KTRAN KEY=D6D9,IS=F3,RETCODE=1 PF3
+		KTRAN KEY=D6E2,IS=F4,RETCODE=1 PF4
+		KTRAN KEY=D6E3,IS=F5,RETCODE=1 PF5
+		KTRAN KEY=D6E4,IS=F6,RETCODE=1 PF6
+		KTRAN KEY=D6E5,IS=F7,RETCODE=1 PF7
+		KTRAN KEY=D6E6,IS=F8,RETCODE=1 PF8
+		KTRAN KEY=D6E7,IS=F9,RETCODE=1 PF9
+		KTRAN KEY=D6E8,IS=7A,RETCODE=1 PF10
+		KTRAN KEY=D6E9,IS=7B,RETCODE=1 PF11
+		KTRAN KEY=D64A,IS=7C,RETCODE=1 PF12
+		KTRAN KEY=D6A7,IS=6D,RETCODE=1 CLEAR
+		KTRAN KEY=4AC8,IS=6D,RETCODE=1 CLEAR
+	*
+		KTRAN KEY=4AD2,IS=00,RETCODE=2 ERASEOF
+		KTRAN KEY=4AC1,IS=00,RETCODE=3 CURU
+		KTRAN KEY=4AC2,IS=00,RETCODE=4 CURD
+		KTRAN KEY=4AC3,IS=00,RETCODE=5 CURR
+		KTRAN KEY=4AC4,IS=00,RETCODE=6 CURL
+	* ============================================================
+	ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
+		STRNO=3
+	ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
+		STRNO=3
+	ACBH3 ACB AM=VSAM,DDNAME=PLUGTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
+		STRNO=3
+		END
+
+*Example VIRTCT*
+
+6.6. Assembling The VIRTCT
+--------------------------
+
+The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the MVS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the MVS environment. In the VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.
+
+6.6.1. MVS example
+^^^^^^^^^^^^^^^^^^
+
+A sample job for assembling the VIRTCT is supplied in member ASMTCT of the VIRTEL SAMPLIB::
+
+	//VIRTASM JOB 1,ASMTCT,MSGCLASS=X,CLASS=A,NOTIFY=&SYSUID
+	//*--------------------------------------------------------------*
+	//* GENERATION VIRTCT ET EXIT DE VIRTEL *
+	//*--------------------------------------------------------------*
+	//ASMTCT PROC OUTC=*,WORK=SYSDA,
+	// QUAL=yourqual.VIRT453,
+	// MEMBER=VIRTCT01
+	//*--------------------------------------------------------------*
+	//* ASSEMBLAGE *
+	//*--------------------------------------------------------------*
+	//ASM EXEC PGM=ASMA90,REGION=2048K,
+	// PARM='NOOBJECT,DECK,XREF(SHORT),NORENT,LIST'
+	//SYSPRINT DD SYSOUT=&OUTC
+	//SYSLIB DD DSN=&QUAL..MACLIB,DISP=SHR
+	// DD DSN=SYS1.MACLIB,DISP=SHR
+	// DD DSN=SYS1.MODGEN,DISP=SHR
+	//SYSUT1 DD UNIT=&WORK,SPACE=(1700,(400,400))
+	//SYSUT2 DD UNIT=&WORK,SPACE=(1700,(400,400))
+	//SYSUT3 DD UNIT=&WORK,SPACE=(1700,(400,400))
+	//SYSPUNCH DD DSN=&&LOADSET,UNIT=&WORK,DISP=(,PASS),
+	// SPACE=(400,(100,100))
+	//SYSIN DD DSN=&QUAL..CNTL(&MEMBER),DISP=SHR
+	//*--------------------------------------------------------------*
+	//* LINKEDIT *
+	//*--------------------------------------------------------------*
+	//LKED EXEC PGM=HEWL,REGION=2048K,COND=(7,LT,ASM),
+	// PARM='LIST,LET,XREF,NORENT'
+	//SYSPRINT DD SYSOUT=&OUTC
+	//SYSLIB DD DSN=&QUAL..LOADLIB,DISP=SHR
+	//SYSUT1 DD UNIT=&WORK,DCB=BLKSIZE=1024,SPACE=(1024,(200,20))
+	//SYSLIN DD DSN=&&LOADSET,DISP=(OLD,DELETE)
+	//SYSLMOD DD DSN=&QUAL..LOADLIB(&MEMBER),DISP=SHR
+	// PEND
+	//VIRTASM EXEC ASMTCT
+
+*VIRTCT assembly in MVS*
+
+6.6.2. VSE example
+^^^^^^^^^^^^^^^^^^
+
+A sample job for assembling the VIRTCT is supplied on the installation tape::
+
+	* $$ JOB JNM=VIRTCT,CLASS=0,DISP=D
+	* $$ LST DISP=D,CLASS=Q
+	// JOB VIRTCT
+	// DLBL VIRT453,'VSE.VIRT453.LIBRARY',,VSAM,CAT=VSESPUC
+	// LIBDEF PHASE,CATALOG=VIRT453.SUBLIB
+	// LIBDEF SOURCE,SEARCH=(VIRT453.SUBLIB,PRD1.MACLIB)
+	// OPTION CATAL,NODECK,ALIGN
+		PHASE VIRTCT01,*
+	// EXEC ASSEMBLY,SIZE=512K
+	* $$ SLI ICCF=(VIRTCT01),LIB=0037
+	/*
+	// EXEC LNKEDT,SIZE=512K
+	/*
+	/&
+	* $$ EOJ
+
+*VIRTCT assembly in VSE*
+
+6.7. Dynamic VIRTCT Overrides
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Data may be passed to the VIRTEL procedure via the start command which allows the value of certain parameters in the VIRTCT (APPLID, MQ1, MQ2) to be modified. For example the VIRTEL started task procedure should contain the TCT, APPLID, and VTOVER parameters which are substituted into the PARM as shown below::
+
+	//VIRTEL EXEC PGM=VIR0000,
+	// TIME=1440,REGION=8192K,
+	// PARM=(&TCT,&APPLID,&VTOVER)
+
+When starting VIRTEL, you may specify values for the TCT, APPLID, and VTOVER on the start command as shown in the example below::
+
+	S VIRTEL,TCT=01,APPLID=AA4AVIRX,VTOVER='12345'
+
+After loading VIRTCT01, VIRTEL will then:
+
+    - replace the APPLID variable by the value AA4AVIRX
+
+    - use the value of the VTOVER variable to replace the specified substitution characters % in certain VIRTCT parameters by characters extracted from the VTOVER value. This functionality requires that the VIRTCT should contain:
+
+        - a new parameter VTOVER=VTDYNAM
+
+        - a new table VTDYNAM consisting of macros VTOVERH and VTOVER
+
+        - the presence of one or more % characters in certain VIRTCT parameters which will be substituted by the corresponding characters from the VTOVER parameter specified on the start command.
+
+For example, if the fourth character of the MQ1 and MQ2 Queue Manager name and the second three characters of the MQ2 Queue Name are variable, the parameters may be defined in the VIRTCT as shown below::
+
+	MQ1=(CSQ%),         -> wild char in MQ1 parm *
+	MQ2=(CSQ%,'A%%%'),  -> wild char in MQ2 parm *
+	VTOVER=VTDYNAM,     -> new VIRTCT parm *
+
+At the end of the VIRTCT, define the VTDYNAM table with the rules for substituting data from the VTOVER parameter. For each parameter, specify the substitution character(s) to look for (TARGET), and the position relative to zero of the characters to be extracted from the VTOVER parameter (FROM), as shown in the example below::
+
+	VTDYNAM VTOVERH                    -> new table after the VIRTCT 
+	MQ1     VTOVER PARM=MQ1,           modify MQ1(1)                 *
+	        TARGET='%',                find % char                   *
+	        FROM=0,                    replace % with VTOVER(0)      *
+	        ERRORC=12 Virtel           RC if replace failed
+	MQ21    VTOVER PARM=(MQ2,1),TARGET='%',FROM=1
+	MQ22    VTOVER PARM=(MQ2,2),TARGET='%%%',FROM=2
+
+With these definitions and VTOVER='12345', the MQ1 and MQ2 parameters of the VIRTCT will have the values shown below::
+
+	MQ1=CSQ1,
+	MQ2=(CSQ2,'A345'),
+
+If an error occurs during substitution, VIRTEL will issue message VIR0025E indicating the error code specified in the ERRORC parameter of the VTOVER macro.
+
+6.8. Applying Patches Via The VIRTCT
+------------------------------------
+
+The “ZAPH parameter”, page 0 of the VIRTCT allows one or more patches to be applied to the VIRTEL kernel after the resident modules have been loaded into memory at startup. This parameter is intended to be used only under the advice of Syspertec technical support personnel.
+
+For example, if the VIRTCT contains the parameter::
+
+	ZAPH=MYPTFS, *
+
+then it refers to the table MYPTFS coded after the VIRTERM macro, for example::
+
+	MYPTFS   ZAPH
+	USER4611 ZAPD VIR00TAB,+246D,EC,1B,' USERMOD TO TRANSLATE TABLE '
+	PTF4618  ZAPD VIR0011D,+092A,C98C,C984,' TEMP FIX FOR SEND$ '
+
+The format of each ZAPD instruction is as follows::
+
+	label ZAPD progname,+offset,verify,replace,'desc'
+
+**label** - PTF identifier for message VIR0066I
+
+**progname** - program name
+
+**offset** - offset into program
+
+**verify** - verify value (hexadecimal digits)
+
+**replace** - replacement value (hexadecimal digits)
+
+**desc** - (optional) description for message VIR0066I
+
+
+7. VIRCONF
+==========
+
+7.1 Introduction
+----------------
+
+The VIRCONF program allows a batch job to manage the VIRARBO file, which is the main configuration file for VIRTEL. VIRCONF allows you to:
 
 -  Upload a new VIRARBO file using SYSIN cards
 
--  Add, replace, or suppress one or more definitions within an existing
-   VIRARBO file
+-  Add, replace, or suppress one or more definitions within an existing VIRARBO file
 
--  Create new définitions as SYSIN cards using an existing VIRARBO file
+-  Create new définitions as SYSIN cards using an existing VIRARBO file 
 
 -  Scan a SYSIN cards file for checking the right syntax
 
-    Below are some JCL examples to define and upload a new VIRARBO file:
+7.2 JCL
+-------
+
+Below are some JCL examples to define and upload a new VIRARBO file:-
+
+::
+
+	* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
+	* $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
+	// JOB VIRCONF DEFINE AND LOAD VIRARBO
+	// DLBL IJSYSUC,'VSESP.USER.CATALOG',,VSAM
+	// EXEC IDCAMS,SIZE=AUTO
+		DEFINE CLUSTER(NAME(VIRTEL.TESTARBO.KSDS) -
+		RECORDS(500 100) SHAREOPTIONS (4 3) -
+		RECSZ (600 4089) KEYS (9 0) -
+		VOLUMES (DOSRES) TO (99366))-
+		DATA (NAME(VIRTEL.TESTARBO.KSDS.DATA)) -
+		INDEX (NAME(VIRTEL.TESTARBO.KSDS.INDEX)) -
+		CATALOG(VSESP.USER.CATALOG)
+	IF LASTCC NE 0 THEN CANCEL JOB
+	/*
+	// LIBDEF *,SEARCH=(VIRT453.SUBLIB)
+	// DLBL VIRARBO,'VIRTEL.TESTARBO.KSDS',,VSAM,CAT=VSESPUC
+	// EXEC VIRCONF,PARM='LOAD'
+		(insert sysin control statements here)
+	/*
+	/&
+	* $$ EOJ
+
+*VIRCONF JCL in VSE to define and upload a new VIRARBO file*
+
+::
+
+	//VIRCONF JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+	//* THIS JOB DEFINES AND LOADS A NEW ARBO FILE
+	//DEFARBO EXEC PGM=IDCAMS,REGION=2M
+	//SYSPRINT DD SYSOUT=*
+		DEFINE CLUSTER(NAME(VIRTEL.TEST.ARBO) -
+		KEYS(9 0) RECSZ(100 4089) FSPC(10 10) -
+		VOL(SPT001) REC(250,50) SHR(4) SPEED) -
+		DATA (NAME(VIRTEL.TEST.ARBO.DATA) CISZ(4096)) -
+		INDEX (NAME(VIRTEL.TEST.ARBO.INDEX))
+	//RELOAD EXEC PGM=VIRCONF,COND=(0,NE,DEFARBO),PARM=LOAD
+	//STEPLIB DD DSN=yourqual.VIRT453.LOADLIB,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//VIRARBO DD DSN=VIRTEL.TEST.ARBO,DISP=SHR
+	//SYSIN DD DSN=&SYSUID..VIRCONF.SYSIN,DISP=SHR
+
+*VIRCONF JCL in MVS to define and upload a new VIRARBO file*
+
+When VIRCONF is executed with PARM=LOAD, control cards are read from SYSIPT (VSE) or SYSIN (MVS) and are loaded into the VIRARBO file.
+
+7.2.2. Updating a VIRARBO file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Below are some JCL examples to add, replace, or delete one or more definitions from an existing VIRARBO file:-
+
+::
+
+	* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
+	* $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
+	// JOB VIRCONF UPDATE VIRARBO
+	// LIBDEF *,SEARCH=(VIRT453.SUBLIB)
+	// DLBL VIRARBO,'VIRTEL4.VIRARBO.KSDS',,VSAM,CAT=VSESPUC
+	// EXEC VIRCONF,PARM='LOAD'
+		LINE ID=A-XOT,
+		NAME=XOT-IP30,
+		PARTNER=192.168.0.80:1998,
+		LOCADDR=192.168.229.30:1998,
+		DESC='Connections via Cisco router',
+		TERMINAL=XOTF,INOUT=3,TYPE=TCP1,PROTOCOL=XOT,
+		WINSZ=3,PKTSZ=128,RETRY=10,TIMEOUT=10,ACTION=0
+		RULE ID=AX200CFT,LINE=A-XOT,STATUS=ACTIVE,
+		DESC="XOT->AntiPCNE->CFT (CUD0=X'C0')",
+		ENTRY=APCFT,CUD0=(BEGIN,C0)
+		DELETE TYPE=RULE,ID=AX100CFT
+	/*
+	/&
+	* $$ EOJ
+
+*VIRCONF JCL in VSE to update a VIRARBO file*
+
+::
+
+	//VIRCONF JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+	//* THIS JOB UPDATES AN ARBO FILE
+	//UPDARBO EXEC PGM=VIRCONF,PARM=LOAD
+	//STEPLIB DD DSN=yourqual.VIRT453.LOADLIB,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//VIRARBO DD DSN=VIRTEL.TEST.ARBO,DISP=SHR
+	//SYSIN DD *
+		DELETE TYPE=USER,ID=SAMPUSER
+		USER ID=BLOGGS,NAME='JOE BLOGGS',DEPT=VIRTEL,PASSWORD=JOE,
+		PROFILE=(APPLICS,MINITEL,PC,REPERT,SECURITE,
+		SERVEUR,SERVEXT,WEBMASTR)
+	/*
+
+*VIRCONF JCL in MVS to update a VIRARBO file*
+
+Submitting VIRCONF with PARM=LOAD for an existing VIRARBO file allows definitions to be added, replaced, or deleted, while keeping existing definitions in the VIRARBO file. Using PARM='LOAD,NOREPL' parameter allows only new definitions to be added, while keeping existing definitions. In this case, VIRCONF will ignore any statement with the same name as existing definitions, returning a zero return code, except if another error was encountered.
+
+7.2.3. Unloading a VIRARBO file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    *VIRCONF JCL in VSE to define and upload a new VIRARBO file*
+Below are some JCL examples to obtain existing VIRARBO definitions in the form of control cards:-
+
+::
+
+	* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
+	* $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
+	* $$ PUN DISP=D,CLASS=W,DEST=(,SPTUSER)
+	// JOB VIRCONF UNLOAD VIRARBO TO SYSPCH
+	// LIBDEF *,SEARCH=VIRT453.SUBLIB
+	// DLBL VIRARBO,'VIRTEL.TESTARBO.KSDS',,VSAM,CAT=VSESPUC
+	// EXEC VIRCONF,PARM='UNLOAD'
+	/&
+	* $$ EOJ
+
+*VIRCONF JCL in VSE to unload a VIRARBO file*
+
+::
+
+
+	//VIRCONF JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+	//* THIS JOB UNLOADS AN ARBO FILE TO SYSPUNCH
+	//UNLOAD EXEC PGM=VIRCONF,PARM=UNLOAD
+	//STEPLIB DD DSN=yourqual.VIRT453.LOADLIB,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//VIRARBO DD DSN=VIRTEL.TEST.ARBO,DISP=SHR,AMP=('RMODE31=NONE')
+	//SYSPUNCH DD DSN=&SYSUID..VIRCONF.SYSIN,DISP=(,CATLG),UNIT=SYSDA,
+	// SPACE=(TRK,(5,1)),DCB=(RECFM=FB,LRECL=80,BLKSIZE=6080)
 
-    *VIRCONF JCL in MVS to define and upload a new VIRARBO file*
+*VIRCONF JCL in MVS to unload a VIRARBO file*
 
-    When VIRCONF is executed with PARM=LOAD, control cards are read from
-    SYSIPT (VSE) or SYSIN (MVS) and are loaded into the VIRARBO file.
+When VIRCONF is run with the PARM=UNLOAD parameter, the existing VIRARBO definitions are converted into control cards and are written to SYSPCH (VSE) or SYSPUNCH (MVS). The created cards issued by VIRCONF may be edited and then reused with another VIRCONF job with the PARM=LOAD parameter.
 
-    Below are some JCL examples to add, replace, or delete one or more
-    definitions from an existing VIRARBO file:
+7.2.4. Verify control card syntax
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    *VIRCONF JCL in VSE to update a VIRARBO file*
+Below are some JCL examples to verify the control card syntax:-
 
-    *VIRCONF JCL in MVS to update a VIRARBO file*
+::
 
-    Submitting VIRCONF with PARM=LOAD for an existing VIRARBO file
-    allows definitions to be added, replaced, or deleted, while keeping
-    existing definitions in the VIRARBO file.
+	* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
+	* $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
+	// JOB VIRCONF SYNTAX CHECK
+	// LIBDEF *,SEARCH=(VIRT453.SUBLIB)
+	// EXEC VIRCONF,PARM='SCAN'
+		(insert sysin control statements here)
+	/*
+	/&
+	* $$ EOJ
 
-    Using PARM='LOAD,NOREPL' parameter allows only new definitions to be
-    added, while keeping existing definitions. In this case, VIRCONF
-    will ignore any statement with the same name as existing
-    definitions, returning a zero return code, except if another error
-    was encountered.
+*VIRCONF JCL in VSE for syntax verification*
 
-    Below are some JCL examples to obtain existing VIRARBO definitions
-    in the form of control cards:
+::
 
-    *VIRCONF JCL in VSE to unload a VIRARBO file*
+	//VIRCONF JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+	//* VIRCONF SYNTAX CHECK
+	//CONFCHK EXEC PGM=VIRCONF,PARM=SCAN
+	//STEPLIB DD DSN=yourqual.VIRT453.LOADLIB,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//SYSIN DD *
+		(insert sysin control statements here)
+	/*
 
-    *VIRCONF JCL in MVS to unload a VIRARBO file*
+*VIRCONF JCL in MVS for syntax verification*
 
-    When VIRCONF is run with the PARM=UNLOAD parameter, the existing
-    VIRARBO definitions are converted into control cards and are written
-    to SYSPCH (VSE) or SYSPUNCH (MVS). The created cards issued by
-    VIRCONF may be edited and then reused with another VIRCONF job with
-    the PARM=LOAD parameter.
+Submitting the VIRCONF program with PARM=SCAN allows you to scan the SYSIPT (VSE) or SYSIN (MVS) cards for potential syntax errors. There is no access to the VIRCONF file.
 
-    Below are some JCL examples to verify the control card syntax:.
+7.2.5. Multi-language support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    *VIRCONF JCL in VSE for syntax verification*
+When uploading the VIRARBO file, VIRCONF may select one among several versions of a control card, based on the LANG=xx parameter defined in the JCL. In this way, the same SYSIN file may be used to generate several different language versions of the VIRARBO file. For example:
 
-    *VIRCONF JCL in MVS for syntax verification*
+::
 
-    Submitting the VIRCONF program with PARM=SCAN allows you to scan the
-    SYSIPT (VSE) or SYSIN (MVS) cards for potential syntax errors. There
-    is no access to the VIRCONF file.
+	* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
+	// JOB VIRCONF LOAD VIRARBO
+	// LIBDEF *,SEARCH=(VIRT453.SUBLIB)
+	// DLBL VIRARBO,'VIRTEL.TESTARBO.KSDS',,VSAM,CAT=VSESPUC
+	// EXEC VIRCONF,PARM='LOAD,LANG=FR'
+		TRANSACT ID=PC-0003, -
+		(FR) NAME='Entrée', -
+		(FR) DESC="Gestion des points d'entrée", -
+		(EN) NAME='Entry', -
+		(EN) DESC='Entry point management', -
+		APPL=VIR0044, -
+		TYPE=2, -
+		STARTUP=1
+	/*
+	/&
+	* $$ EOJ
 
-    When uploading the VIRARBO file, VIRCONF may select one among
-    several versions of a control card, based on the LANG=xx parameter
-    defined in the JCL. In this way, the same SYSIN file may be used to
-    generate several different language versions of the VIRARBO file.
-    For example:
+*VIRCONF JCL in VSE for multi-language upload*
 
-    *VIRCONF JCL in VSE for multi-language upload*
+::
 
-    *VIRCONF JCL in MVS for multi-language upload*
+	//VIRCONF JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&SYSUID
+	//* LOAD AN ARBO FILE USING MULTILINGUAL SOURCE
+	//VIRCONF EXEC PGM=VIRCONF,PARM='LOAD,LANG=EN'
+	//STEPLIB DD DSN=yourqual.VIRT453.LOADLIB,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//VIRARBO DD DSN=VIRTEL.TEST.ARBO,DISP=SHR
+	//SYSIN DD *
+		TRANSACT ID=PC-0003, -
+		(FR) NAME='Entrée', -
+		(FR) DESC="Gestion des points d'entrée", -
+		(EN) NAME='Entry', -
+		(EN) DESC='Entry point management', -
+		APPL=VIR0044, -
+		TYPE=2, -
+		STARTUP=1
+	/*
 
-    The control card syntax for VIRCONF is similar to the syntax for
-    JCL.
+*VIRCONF JCL in MVS for multi-language upload*
 
--  Each instruction begins on a new card
+7.3. VIRCONF Control Cards
+--------------------------
 
--  One instruction consists of an “operation code”, followed by a blank
-   space, followed by one or more parameters, followed by an optional
-   comment
-
--  The parameters use the keyword=value form and parameters are
-   separated with a comma
-
--  The parameters are ended by a blank character; anything after this
-   first blank is treated as a comment.
-
--  A card beginning with a “\*” is treated as a comment
-
--  A completely blank card is treated as a comment
-
--  A card beginning with two characters between parenthesis, for
-   instance (EN), will be processed only if these two characters match
-   the value of the LANG= parameter specified in the JCL PARM
-
--  Instructions must be coded between columns 1 to 71. Column 72, if
-   non-blank, means that the instruction continues on the next card
-
--  If a parameter is terminated by a comma followed by a blank, the
-   instruction continues at the first non-blank character of next card.
-   A non-blank in column 72 is optional in this case
-
--  A character string between apostrophes or quotes which goes over
-   column 71 may be continued on the next card, by putting a non-blank
-   character in column 72 and by continuing the string starting on
-   column 16 of the next card
-
--  Each instruction must have at least one “ID=” parameter which is used
-   as a key to identify the described entity
-
--  The values of parameters may in general contain letters (A-Z in upper
-   case), digits (0-9), and special characters (.+&$\*-/%\_?:@). Some
-   parameters also allow values which contain other special characters,
-   letters in lower case, and blank characters, and in this case the
-   value must be coded as a character string enclosed in either quotes
-   or apostrophes
-
-    You can generate some examples by submitting a job using the
-    PARM=UNLOAD parameter (se`e “Unloading a VIRARBO <#_bookmark323>`__
-    `file”, page 86 <#_bookmark323>`__) for a specific VIRARBO file, for
-    instance the one delivered as VIRARBO base in the standard
-    installation process.
-
-    This operation adds or replaces an APPLIC entity in the VIRARBO
-    file. The parameters correspond to the various items described under
-    the heading “Applications Management” on page 123
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation deletes an entity of the specified type from the
-    VIRARBO file.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces a DEPT entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Create a department” or “Profile lent to a department”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces an ENTRY entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Parameters of the Entry Point”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces an INDEX entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Updating the keywords”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-Note [1]
---------
-
-    If the target node name has less than 6 characters, it must be
-    padded with blanks and enclosed in quotes.
-
-    This operation adds or replaces a LINE entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Parameters of the line”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-Note [1]
---------
-
-    This parameter is available only in VIRCONF
-
-    This operation adds or replaces a NODE entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading ”Defining a native node”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces a PC entity in the VIRARBO file. The
-    parameters correspond to the various items described under the
-    heading “PC management”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces one entity with PROFILE entity in
-    the VIRARBO file. The parameters correspond to the various items
-    described under the heading “Defining a profile”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces a RESOURCE entity in the VIRARBO
-    file. The parameters correspond to the various items described under
-    the heading “Defining a resource”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces a RULE entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Parameters of the rule”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-Note [1]
---------
-
-    The conditions are coded in the form keyword=(condition,value) where
-    condition is one of the following:
-
-IGNORE
-------
-
-    Ignore
-
-EQUAL
------
-
-    Is
-
-NOTEQ
------
-
-    Is not
-
-BEGIN
------
-
-    Starts with
-
-NOTBEGIN
---------
-
-    Does not
-
-END
----
-
-    Ends with
-
-NOTEND
-------
-
-    Does not
-
-Note [2]
---------
-
-    For compatibility with earlier versions, VIRCONF also accepts the
-    parameter LINE= as a synonym of RULESET=
-
-    This operation adds or replaces a SERVER entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Parameters of external server”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces an SSERV entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Defining a sub-server node”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-+----+----+----+
-+----+----+----+
-
-Note [1]
---------
-
-    Specify either TRANSACT or TIOA, but not both
-
-Note [2]
---------
-
-    \* = Yes
-
-Note [3]
---------
-
-    The key name must be coded according to the table below:
-
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-+----+----+----+----+----+----+
-
-    This operation adds or replaces a SUBDIR entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Parameter of directory”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces a TERMINAL entity in the VIRARBO
-    file. The parameters correspond to the various items described under
-    the heading “Parameter of the terminal”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces a TRANSACT entity in the VIRARBO
-    file. The parameters correspond to the various items described under
-    the heading “Parameter of the transaction”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation updates one or more parameters of an entity in the
-    VIRARBO file.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    This operation adds or replaces a USER entity in the VIRARBO file.
-    The parameters correspond to the various items described under the
-    heading “Managing users”.
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-Note [1]
---------
-
-    Indicate either PASSWORD (readable password), or PASSCODE (encrypted
-    password). PASSWORD allows you to specify the password explicitly;
-    if present, it must be coded after the ID parameter. PASSCODE is
-    generated by the UNLOAD function; this allows to unload and reload
-    the USER records without exposing the password in readable format.
-
-Note [2]
---------
-
-    The PARM='UNLOAD,PLAINTXT' function unloads the password in readable
-    format (PASSWORD instead of PASSCODE). To use this function, the
-    user that submits this VIRCONF job must be RACF authorized (or by
-    another securiyy tool) with READ access for the
-    VIRTEL.PASSWORD.DECRYPT resource in the FACILITY class.
-
-Security
-========
-
-    Perform the following steps to activate RACF security for VIRTEL in
-    the MVS environment.
-
-    In the VIRTCTxx member of the VIRTEL CNTL library,
+7.3.1. VIRCONF control card syntax
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The control card syntax for VIRCONF is similar to the syntax for JCL.
+
+- Each instruction begins on a new card
+
+- One instruction consists of an “operation code”, followed by a blank space, followed by one or more parameters, followed by an optional comment
+
+- The parameters use the keyword=value form and parameters are separated with a comma
+
+- The parameters are ended by a blank character; anything after this first blank is treated as a comment.
+
+- A card beginning with a “*” is treated as a comment
+
+- A completely blank card is treated as a comment
+
+- A card beginning with two characters between parenthesis, for instance (EN), will be processed only if these two characters match the value of the LANG= parameter specified in the JCL PARM
+
+- Instructions must be coded between columns 1 to 71. Column 72, if non-blank, means that the instruction continues on the next card
+
+- If a parameter is terminated by a comma followed by a blank, the instruction continues at the first non-blank character of next card. A non-blank in column 72 is optional in this case
+- A character string between apostrophes or quotes which goes over column 71 may be continued on the next card, by putting a non-blank character in column 72 and by continuing the string starting on column 16 of the next card 
+
+- Each instruction must have at least one “ID=” parameter which is used as a key to identify the described entity
+
+- The values of parameters may in general contain letters (A-Z in upper case), digits (0-9), and special characters(.+&$*-/%_?:@). Some parameters also allow values which contain other special characters, letters in lower case, and blank characters, and in this case the value must be coded as a character string enclosed in either quotes or apostrophe.
+
+You can generate some examples by submitting a job using the PARM=UNLOAD parameter (see “Unloading a VIRARBO file”, page 86) for a specific VIRARBO file, for instance the one delivered as VIRARBO base in the standard installation process.
+
+7.3.2. APPLIC
+^^^^^^^^^^^^^
+
+This operation adds or replaces an APPLIC entity in the VIRARBO file. The parameters correspond to the various items
+described under the heading “Applications Management” on page 123
+
+
++------------+-----------------+-------------------------------+
+| Parameter  |   Item          | Remarks                       |
++============+=================+===============================+
+| ID=        |   Name          |                               |
++------------+-----------------+-------------------------------+ 
+| DESC=      |   Description   | Quotes allowed                |
++------------+-----------------+-------------------------------+ 
+| LOGON=     |   Logon         | Quotes allowed                |
++------------+-----------------+-------------------------------+ 
+| STATUS=    |   Status        | Quotes allowed                |
++------------+-----------------+-------------------------------+
+
+7.3.3. DELETE
+^^^^^^^^^^^^^
+
+This operation deletes an entity of the specified type from the VIRARBO file.
+
++------------+-----------------+-------------------------------+
+| Parameter  |   Item          | Remarks                       |
++============+=================+===============================+
+| TYPE=      |   Entity type   | LINE, RULE, TERMINAL etc.     |
++------------+-----------------+-------------------------------+ 
+| ID=        |   Entity name   | Quotes allowed                |
++------------+-----------------+-------------------------------+ 
+
+7.3.4. DEPT
+^^^^^^^^^^^
+
+This operation adds or replaces a DEPT entity in the VIRARBO file. The parameters correspond to the various items
+described under the heading “Create a department” or “Profile lent to a department”.
+
++------------+-----------------------+----------------------------------------------------+
+| Parameter  |   Item                | Remarks                                            |
++============+=======================+====================================================+
+| ID=        |   Department          |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| DESC=      |   Description         | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| OWNER=     |   Responsible         |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| PROFILE    |   Lent profiles list  | Separated by commas, the whole between parenthesis |      
++------------+-----------------------+----------------------------------------------------+
+
+7.3.5. ENTRY
+^^^^^^^^^^^^
+
+This operation adds or replaces an ENTRY entity in the VIRARBO file. The parameters correspond to the various items
+described under the heading “Parameters of the Entry Point”.
+
++------------+-----------------------+----------------------------------------------------+
+| Parameter  |   Item                | Remarks                                            |
++============+=======================+====================================================+
+| ID=        |   Name                |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| DESC=      |   Description         | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| TRANSACT=  |   Transaction         |                                                    |      
++------------+-----------------------+----------------------------------------------------+
+| ARBO=      |   Arborescence        |                      	                          |
++------------+-----------------------+----------------------------------------------------+
+| ENDPAGE=   |   Last Page           |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| TRANSP=    |   Transparency        |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| TIMEOUT=   |   Responsible         | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+ 
+| EMUL=      |   Emulation           |                                                    |      
++------------+-----------------------+----------------------------------------------------+
+| SCENDIR=   |   Directory for       |                                                    | 
+|            |   Scenarios           |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| SIGNON=    |   Signon Program      |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| MENU=      |   Menu Program        |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| IDENT=     |   Identification or   |                                                    |
+|            |   scenario or program |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| COMPR3=    |   Type 3 compression  |                      	                          |
++------------+-----------------------+----------------------------------------------------+
+| IDREQ=     |   Mandatory           |                                                    |
+|            |   Identification      |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| SWAP=      |   3270 Swap key       |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| EXTCOLOR=  |   Extended colors     |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+
+7.3.6. INDEX
+^^^^^^^^^^^^
+
+This operation adds or replaces an INDEX entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Updating the keywords”.
+
++------------+-----------------------+----------------------------------------------------+
+| Parameter  |   Item                | Remarks                                            |
++============+=======================+====================================================+
+| ID=        |   Keyword             | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| TARGET=    |   Target Node -       | [1] ; Quotes allowed                               |
+|            |   Choice              | First 6 characters: Target Node.                   |
+|            |                       | Characters 7-8: Choice                             |
++------------+-----------------------+----------------------------------------------------+ 
+
+.. note:: 
+
+	[1] the target node name has less than 6 characters, it must be padded with blanks and enclosed in quotes.
+
+7.3.7. LINE
+^^^^^^^^^^^
+
+This operation adds or replaces a LINE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of the line”.
+
++------------+-----------------------+----------------------------------------------------+
+| Parameter  |   Item                | Remarks                                            |
++============+=======================+====================================================+
+| ID=        |   Internal name       |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| NAME=      |   External name       |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| PARTNER=   |   Remote ident        |                                                    |      
++------------+-----------------------+----------------------------------------------------+
+| LOCADDR=   |   Local ident         |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| DESC=      |   Description         | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| TERMINAL=  |   Prefix              |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| ENTRY=     |   Entry Point         |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| TYPE=      |   Line Type           |                                                    |      
++------------+-----------------------+----------------------------------------------------+
+| INOUT=     |   Possible Calls      |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| COND=      |   Startup             | Quotes allowed                                     |
+|            |   prerequisite        |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| PROTOCOL=  |   Protocol program    |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| SECURITY=  |   Security program    |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| TIMEOUT=   |   Time out            | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+
+| ACTION=    |   Action if           | Numeric                                            |
+|            |   time out            |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| WINSZ=     |   Window              | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+ 
+| PKTSZ=     |   Packet              | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+ 
+| PAD=       |   Pad                 | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+
+| TRAN=      |   Tran                |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| RETRY=     |   Retries             | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+ 
+| DELAY=     |   Delay               | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+
+| UNIQUEP=   |   Unique Partner [1]  | Y or N                                             |
++------------+-----------------------+----------------------------------------------------+
+| SHAREDA=   |   Shared address      | Y or N                                             |
+|            |   time out            |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+
+.. note::
+
+	[1] This parameter is available only in VIRCONF
+
+7.3.8. NODE
+^^^^^^^^^^^
+
+This operation adds or replaces a NODE entity in the VIRARBO file. The parameters correspond to the various items described under the heading ”Defining a native node”.
+
++------------+--------------------------------+------------------+
+| Parameter  |   Item                         | Remarks          |
++============+================================+==================+
+| ID=        |   Name of Minitel node         | Quotes allowed   |
++------------+--------------------------------+------------------+ 
+| PAGE=      |   Generic of associated Pages  | Quotes allowed   | 
++------------+--------------------------------+------------------+ 
+| GUIDE=     |   Generic of associated guides | Quotes allowed   |
++------------+--------------------------------+------------------+ 
+| CHILD=     |   Generic of children          | Quotes allowed   |      
++------------+--------------------------------+------------------+
+
+
+7.3.9. PC
+^^^^^^^^^
+
+This operation adds or replaces a PC entity in the VIRARBO file. The parameters correspond to the various items described under the heading “PC management”.
+
++------------+-----------------------+----------------------------------------------------+
+| Parameter  |   Item                | Remarks                                            |
++============+=======================+====================================================+
+| ID=        |   PC Name             |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| DESC=      |   Description         | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| DISABLE=   |   Block               | X=Blocked connections                              |
++------------+-----------------------+----------------------------------------------------+ 
+| SUBDIR=    |   Assoc. Directory    |                                                    |      
++------------+-----------------------+----------------------------------------------------+
+| PASSCODE=  |   Password            | Quotes allowed                                     |      
++------------+-----------------------+----------------------------------------------------+
+
+
+7.3.10. PROFILE
+^^^^^^^^^^^^^^^
+
+This operation adds or replaces one entity with PROFILE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a profile”.
+
++------------+--------------------------------+-----------------------------------------------------------------+
+| Parameter  |   Item                         | Remarks                                                         |
++============+================================+=================================================================+
+| ID=        |   Profile                      |                                                                 |
++------------+--------------------------------+-----------------------------------------------------------------+ 
+| DESC=      |   Description                  | Quotes allowed                                                  | 
++------------+--------------------------------+-----------------------------------------------------------------+ 
+| DEPT=      |   Department                   | Quotes allowed                                                  |
++------------+--------------------------------+-----------------------------------------------------------------+ 
+| TYPE=      |   List of given resources      | Separated by commas, and surrounded by parenthesesUnused field  |      
++------------+--------------------------------+-----------------------------------------------------------------+
+
+7.3.11. RESOURCE
+^^^^^^^^^^^^^^^^
+
+This operation adds or replaces a RESOURCE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a resource”.
+
++------------+--------------------------------+------------------+
+| Parameter  |   Item                         | Remarks          |
++============+================================+==================+
+| ID=        |   Resource                     |                  |
++------------+--------------------------------+------------------+ 
+| DESC=      |   Description                  | Quotes allowed   | 
++------------+--------------------------------+------------------+ 
+| DEPT=      |   Department                   |                  |
++------------+--------------------------------+------------------+ 
+| TYPE=      |   Resource Type                | Unused field     |      
++------------+--------------------------------+------------------+
+
+7.3.12. RULE
+^^^^^^^^^^^^
+
+This operation adds or replaces a RULE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of the rule”.
+
++------------+-----------------------+----------------------------------------------------+
+| Parameter  |   Item                | Remarks                                            |
++============+=======================+====================================================+
+| ID=        |   Rule name           |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| RULESET=   |   Ruleset name        |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| STATUS=    |   Status              |                                                    |      
++------------+-----------------------+----------------------------------------------------+
+| DESC=      |   Description         |                      	                          |
++------------+-----------------------+----------------------------------------------------+
+| ENTRY=     |   Entry point         | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| PARAM=     |   Parameter           |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| TRACE=     |   Trace               |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| IPADDR=    |   IP Subnet           |                                                    |      
++------------+-----------------------+----------------------------------------------------+
+| NETMASK=   |   MASK                |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| HTTPHOST=  |   Host                | [1] ; Quotes allowed                               |
++------------+-----------------------+----------------------------------------------------+ 
+| EMAIL=     |   eMail               | [1] ; Quotes allowed                               |
++------------+-----------------------+----------------------------------------------------+ 
+| CALLER=    |   Calling DTE         | [1] ; Numeric; or IP address                       |
++------------+-----------------------+----------------------------------------------------+
+| CALLED=    |   Called              | [1] ; Numeric          	                          |
++------------+-----------------------+----------------------------------------------------+
+| CUD0=      |   CUD0 (Hexadecimal)  | [1] ; Hexadecimal                                  |
++------------+-----------------------+----------------------------------------------------+ 
+| USERDATA=  |   User data           | [1] ; Quotes allowed                               |
++------------+-----------------------+----------------------------------------------------+ 
+| DAYS=      |   Days                | [1] ; Seven 'X' char. or blank, defining the days  | 
+|            |                       | from Sunday to Saturday.                           |
++------------+-----------------------+----------------------------------------------------+ 
+| TIME=      |   Start time          | [1] ; Twelve nemeric chars. with the pattern:-     | 
+|            |                       | HHMMSSHHMMSS                                       |
++------------+-----------------------+----------------------------------------------------+ 
+
+.. note::
+
+	[1] The conditions are coded in the form keyword=(condition,value) where condition is one of the following:
+
+**IGNORE**   - Ignore
+
+**EQUAL**    - Is
+
+**NOTEQ**    - Is not
+
+**BEGIN**    - Starts with
+
+**NOTBEGIN** - Does not
+
+**END**      - Ends with
+
+**NOTEND**   - Does not
+
+.. note::
+
+	[2] For compatibility with earlier versions, VIRCONF also accepts the parameter LINE= as a synonym of RULESET=
+
+7.3.13. SERVER
+^^^^^^^^^^^^^^
+
+This operation adds or replaces a SERVER entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of external server”.
+
++------------+-----------------------+------------------------+
+| Parameter  |   Item                | Remarks                |
++============+=======================+========================+
+| ID=        |   Name                |                        |
++------------+-----------------------+------------------------+ 
+| DESC=      |   Description         | Quotes allowed         |
++------------+-----------------------+------------------------+ 
+| DIALNO=    |   Number              | Numeric or '='         |      
++------------+-----------------------+------------------------+
+| USERDATA=  |   Data                | Quotes allowed         |
++------------+-----------------------+------------------------+
+| LINE=      |   Line number         |                        |
++------------+-----------------------+------------------------+ 
+| LINE2=     |   Backup line         |                        |
++------------+-----------------------+------------------------+ 
+| CALLER=    |   Caller              | Numeric or '=' or '*'  |
++------------+-----------------------+------------------------+ 
+| EMUL=      |   Emulation           |                        |      
++------------+-----------------------+------------------------+
+| CHARSET=   |   Character Set       |                        |
++------------+-----------------------+------------------------+  
+| TIMEOUT=   |   Server time out     | Numeric                |
++------------+-----------------------+------------------------+
+| DELAY=     |   Inactivity delay    | Numeric                |
++------------+-----------------------+------------------------+
+| ACTION=    |   Cut off warning     | Numeric                |
++------------+-----------------------+------------------------+ 
+| LEVEL=     |   Price level         |                        |
++------------+-----------------------+------------------------+ 
+| SECRET=    |   Secret              |                        | 
++------------+-----------------------+------------------------+ 
+| FACILITY=  |   Facilities          | Hexadecimal or '='     |
++------------+-----------------------+------------------------+
+| CUD0=      |   CUD0 (Hex)          | Hexadecimal            | 
++------------+-----------------------+------------------------+ 
+| TIOA=      |   TIOA at startup     | Quotes allowed         |
++------------+-----------------------+------------------------+  
+
+7.3.14. SSERV
+^^^^^^^^^^^^^
+
+This operation adds or replaces an SSERV entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a sub-server node”.
+
++------------+-----------------------+------------------------+
+| Parameter  |   Item                | Remarks                |
++============+=======================+========================+
+| ID=        |   SubServer node name | Quotes allowed         |
++------------+-----------------------+------------------------+ 
+| SERVER=    |   SubServer name      |                        |
++------------+-----------------------+------------------------+ 
+| TRANSACT=  |   Transaction name    | [1]; Quotes allowed    |      
++------------+-----------------------+------------------------+
+| CONTROL=   |   Control program     |                        |
++------------+-----------------------+------------------------+
+| TIOA=      |   TIOA                | [1]; Quotes allowed    |
++------------+-----------------------+------------------------+ 
+| TRANSLAT=  |   Transaltion type    |                        |
++------------+-----------------------+------------------------+ 
+| RESTRICT=  |   Node with reserved  | [2]; Quotes allowed    |
+|            |   access              |                        |
++------------+-----------------------+------------------------+ 
+| PFRETOUR=  |   Return key          | [3]; Quotes allowed    |      
++------------+-----------------------+------------------------+
+| PFGUIDE=   |   Guide key           | [3]; Quotes allowed    |
++------------+-----------------------+------------------------+  
+| PFSOMMR=   |   Summary key         | [3]; Quotes allowed    |
++------------+-----------------------+------------------------+
+| PFSUITE=   |   Next key            | [3]; Quotes allowed    |
++------------+-----------------------+------------------------+
+| PFREPET=   |   Repeat key          | [3]; Quotes allowed    |
++------------+-----------------------+------------------------+ 
+| PFANNUL=   |   Cancel key          | [3]; Quotes allowed    |
++------------+-----------------------+------------------------+ 
+| PFCORREC=  |   Correct key         | [3]; Quotes allowed    |
++------------+-----------------------+------------------------+ 
+
+.. note::
+
+	[1]  Specify either TRANSACT or TIOA, but not both
+
+    [2]  * = Yes
+
+    [3]  The key name must be coded according to the table below:
+
+    	+----------+------+----------+------+----------+------+
+    	| Key Name | Code | Key Name | Code | Key Name | Code |
+        +==========+======+==========+======+==========+======+
+        | Enter    | "'"  | PF12     | '@'  | PF24     | '<'  |
+        +----------+------+----------+------+----------+------+ 
+        | PF1      |  1   | PF13     |  A   | PA1      | '%'  |
+        +----------+------+----------+------+----------+------+
+        | PF2      |  2   | PF14     |  B   | PA2      | '>'  |
+        +----------+------+----------+------+----------+------+ 
+        | PF3      |  3   | PF15     |  C   | PA3      | ','  |
+        +----------+------+----------+------+----------+------+
+        | PF4      |  4   | PF16     |  D   | Clear    | '_'  |
+        +----------+------+----------+------+----------+------+ 
+        | PF5      |  5   | PF17     |  E   |          |      |
+        +----------+------+----------+------+----------+------+ 
+        | PF6      |  6   | PF18     |  F   |          |      |
+        +----------+------+----------+------+----------+------+ 
+        | PF7      |  7   | PF19     |  G   |          |      |
+        +----------+------+----------+------+----------+------+ 
+        | PF8      |  8   | PF20     |  H   |          |      |
+        +----------+------+----------+------+----------+------+ 
+        | PF9      |  9   | PF21     |  I   |          |      |
+        +----------+------+----------+------+----------+------+ 
+        | PF10     | ":"  | PF22     | 'ç'  |          |      |
+        +----------+------+----------+------+----------+------+ 
+        | PF11 	   | "#"  | PF23     | '-'  |          |      |
+        +----------+------+----------+------+----------+------+ 
+
+7.3.15. SUBDIR
+^^^^^^^^^^^^^^
+
+This operation adds or replaces a SUBDIR entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of directory”.
+
++------------+-----------------------+----------------------------------+
+| Parameter  |   Item                | Remarks                          |
++============+=======================+==================================+
+| ID=        |   Name                |                                  |
++------------+-----------------------+----------------------------------+ 
+| DESC=      |   Description         | Quotes allowed                   |
++------------+-----------------------+----------------------------------+ 
+| FSTYPE=    |   Type                |                                  |      
++------------+-----------------------+----------------------------------+
+| DDNAME=    |   DD name             |                                  |
++------------+-----------------------+----------------------------------+
+| KEY=       |   Keyword             |                                  |
++------------+-----------------------+----------------------------------+ 
+| NAMELEN=   |   Size of Names       |                                  |
++------------+-----------------------+----------------------------------+ 
+| CASELEN=   |   Case                |                                  |
++------------+-----------------------+----------------------------------+ 
+| AUTHUP=    |   Copy Up             | X=Copy into directory is allowed |
++------------+-----------------------+----------------------------------+
+| AUTHDOWN=  |   Copy Down           | X=Copy into directory is allowed |
++------------+-----------------------+----------------------------------+  
+| AUTHDEL=   |   Delete              | X=File deletion is allowed       |
++------------+-----------------------+----------------------------------+
+
+7.3.16. TERMINAL
+^^^^^^^^^^^^^^^^
+
+This operation adds or replaces a TERMINAL entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of the terminal”.
+
++------------+-----------------------+----------------------------------+
+| Parameter  |   Item                | Remarks                          |
++============+=======================+==================================+
+| ID=        |   Terminal            |                                  |
++------------+-----------------------+----------------------------------+ 
+| RELAY=     |   Relay               | Quotes allowed                   |
++------------+-----------------------+----------------------------------+ 
+| POOL=      |   Pool Name           |                                  |      
++------------+-----------------------+----------------------------------+
+| DESC=      |   Description         | Quotes allowed                   |
++------------+-----------------------+----------------------------------+
+| ENTRY=     |   Entry Point         |                                  |
++------------+-----------------------+----------------------------------+ 
+| RELAY2=    |   2nd Relay           | Quotes allowed                   |
++------------+-----------------------+----------------------------------+ 
+| TYPE=      |   Type                |                                  |
++------------+-----------------------+----------------------------------+ 
+| COMPRESS=  |   Compression         |                                  |
++------------+-----------------------+----------------------------------+
+| INOUT=     |   Possible Calls      | Numeric                          |
++------------+-----------------------+----------------------------------+  
+| STATS=     |   Write Stats to      |                                  |
++------------+-----------------------+----------------------------------+
+| REPEAT=    |   Repeat              | Numeric                          |
++------------+-----------------------+----------------------------------+
+
+7.3.17. TRANSACT
+^^^^^^^^^^^^^^^^
+
+This operation adds or replaces a TRANSACT entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of the transaction”.
+
++------------+-----------------------+----------------------------------------------------+
+| Parameter  |   Item                | Remarks                                            |
++============+=======================+====================================================+
+| ID=        |   Internal name       |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| NAME=      |   External name       | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| DESC=      |   Description         | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| APPL=      |   Application         | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+
+| ALIAS=     |   Alias               |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| PASSTCKT=  |   Passticket          | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+ 
+| RACFNAME=  |   Passticket Name     |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| TYPE=      |   Application Type    | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+ 
+| TERMINAL=  |   Psuedo-terminals    |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| LOGMODE=   |   Logmode             |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| STARTUP=   |   How started         | Numeric                                            |
+|            |   prerequisite        |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| SECURITY=  |   Security            | Numeric                                            |
++------------+-----------------------+----------------------------------------------------+ 
+| TRANSL=    |   Translation or H4W  |                                                    |
+|            |   Commands            |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| LOGMSG=    |   Logon message or    | Quotes allowed                                     |
+|            |   check URL prefix    |                                                    |
++------------+-----------------------+----------------------------------------------------+
+| TIOASTA=   |   TIOA at logon       | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| TIOAEND=   |   TIOA at logoff      | Quotes allowed                                     |
++------------+-----------------------+----------------------------------------------------+ 
+| EXITSA=    |   Initial Scenario    |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| EXITEND=   |   Final Scenario      |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| EXITMSGI=  |   Input scenario      |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+| EXITMSGO=  |   Output scenario     |                                                    |
++------------+-----------------------+----------------------------------------------------+ 
+
+
+7.3.18. UPDATE
+^^^^^^^^^^^^^^
+
+This operation updates one or more parameters of an entity in the VIRARBO file.
+
++------------+--------------------------------+-------------------------------------------+
+| Parameter  |   Item                         | Remarks                                   |
++============+================================+===========================================+
+| TYPE=      |   Entity type                  | LINE, RULE, TERMINAL, etc.                |
++------------+--------------------------------+-------------------------------------------+ 
+| ID=        |   Entity name                  | Quotes allowed                            | 
++------------+--------------------------------+-------------------------------------------+ 
+| Param=     |   According to Entity type     | See the precedding description of entity. |
++------------+--------------------------------+-------------------------------------------+ 
+
+7.3.19. USER
+^^^^^^^^^^^^
+
+This operation adds or replaces a USER entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Managing users”.
+
++------------+-----------------------+----------------------------------+
+| Parameter  |   Item                | Remarks                          |
++============+=======================+==================================+
+| ID=        |   User name           |                                  |
++------------+-----------------------+----------------------------------+ 
+| NAME=      |   Description         | Quotes allowed                   |
++------------+-----------------------+----------------------------------+ 
+| DEPT=      |   Department          |                                  |      
++------------+-----------------------+----------------------------------+
+| PASSWORD=  |   Password (Clear)    | [1]                              |
++------------+-----------------------+----------------------------------+
+| PASSCODE=  |   Password (Encrypted)| [1]; Quotes allowed              |
++------------+-----------------------+----------------------------------+ 
+| ADMIN=     |   Administrator       | 1=Yes, 0=No                      |
++------------+-----------------------+----------------------------------+ 
+| ASSIST=    |   Assist(O-N)         | 1=Yes, 0=No                      |
++------------+-----------------------+----------------------------------+ 
+| PROFILE=   |   Profiles assigned   | List of profiles assigned        |
++------------+-----------------------+----------------------------------+
+
+.. note::
+
+	[1] Indicate either PASSWORD (readable password), or PASSCODE (encrypted password). PASSWORD allows you to specify the password explicitly; if present, it must be coded after the ID parameter. PASSCODE is generated by the UNLOAD function; this allows to unload and reload the USER records without exposing the password in readable format.
+
+	[2] The PARM='UNLOAD,PLAINTXT' function unloads the password in readable format (PASSWORD instead of PASSCODE). To use this function, the user that submits this VIRCONF job must be RACF authorized (or by another securiyy tool) with READ access for the VIRTEL.PASSWORD.DECRYPT resource in the FACILITY class.
+
+8.Security
+==========
+
+Perform the following steps to activate RACF security for VIRTEL in the MVS environment.
+
+8.1.1 Modify the VIRTCT
+-----------------------
+
+In the VIRTCTxx member of the VIRTEL CNTL library,
 
 -  VIRTCTUS = English language.
 
--  VIRTCTFR = French language. replace the default parameters :
+-  VIRTCTFR = French language. 
 
-    with the following parameters:
+replace the default parameters:: 
 
-    This tells VIRTEL that its security definitions are stored in the
-    FACILITY class, and the resource names are prefixed by “VIRTEL.”.
-    You can choose your own prefix for each VIRTEL. Multiple VIRTEL
-    started tasks can share the same resource name prefix if their
-    security definitions are identical. You can also choose the class
-    name, but it must already be defined in RACF with the correct
-    attributes. It is recommended to use the FACILITY class which is
-    standard in RACF.
+	SECUR=NO,RAPPL=VIRTSERV,RNODE=VIRTNODE
 
-    Having updated the VIRTCTxx source member, reassemble and relink the
-    VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of
-    the VIRTEL CNTL library. Be sure to specify the correct member name
-    MEMBER=VIRTCTxx in the job. Stop and start VIRTEL to pick up the new
-    VIRTCT.
+with the following parameters::
 
-    The following RACF definitions are the minimum you need to get
-    started. They simply authorize the VIRTEL administrator (you) to do
-    everything. In this job, replace youruserid by the administrator’s
-    RACF userid or group name. This JCL can be found in member RACFDEF
-    in the VIRTEL SAMPLIB.
+	SECUR=(RACROUTE,RACF),
+	RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=VIRTEL,
 
-    *RACFDEF : JCL to add RACF definitions*
+This tells VIRTEL that its security definitions are stored in the FACILITY class, and the resource names are prefixed by “VIRTEL.”. You can choose your own prefix for each VIRTEL. Multiple VIRTEL started tasks can share the same resource name prefix if their security definitions are identical. You can also choose the class name, but it must already be defined in RACF with the correct attributes. It is recommended to use the FACILITY class which is standard in RACF.
 
-    Later you can refine the definitions so that other VIRTEL users can
-    use VIRTEL transactions (such as secured VIRTEL Web Access
-    transactions). The following example allows DEMOGRP to use
-    transaction W2H-10:
+Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of the VIRTEL CNTL library. Be sure to specify the correct member name MEMBER=VIRTCTxx in the job. Stop and start VIRTEL to pick up the new VIRTCT.
 
-    *RACFDEF : JCL to update RACF definitions*
+8.1.2 Add RACF definitions
+--------------------------
 
-    For more information about protecting VIRTEL Web Access resources,
-    refer to the “Security” section of the VIRTEL Web Access Guide.
+The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace youruserid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.
 
-    Perform the following steps to activate ACF2 security for VIRTEL in
-    the MVS environment.
+::
 
-    In the VIRTCTxx member of the VIRTEL CNTL library, replace the
-    default parameters:
+    //VIRTRACF JOB 1,RACFDEF,MSGCLASS=X,CLASS=A,NOTIFY=&SYSUID
+    //*---------------------------------------------------------*    
+    //* RACF : AUTHORIZATIONS FOR VIRTEL * 
+    //* Replace 'youruserid' by your VIRTEL administrator id *
+	//*---------------------------------------------------------*
+	//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+	//SYSTSPRT DD SYSOUT=*
+	//SYSTSIN DD *
+	/*-------------------------------------------------------*/
+	/* BY DEFAULT DISALLOW EVERYTHING TO GENERAL USERS */
+	/* BUT ALLOW EVERYTHING TO youruserid */
+	/*-------------------------------------------------------*/
+		RDEF FACILITY VIRTEL.* UACC(NONE)
+		PE VIRTEL.* CL(FACILITY) RESET ACC(READ) ID(youruserid)
+	/*-------------------------------------------------------*/
+	/* ALLOW EVERYONE TO USE THE 3270 LOGOFF TRANSACTION */
+	/*-------------------------------------------------------*/
+		RDEF FACILITY VIRTEL.PC-0020 UACC(READ) /* LOGOFF */
+	/*-------------------------------------------------------*/
+	/* REFRESH THE RACF PROFILES */
+	/*-------------------------------------------------------*/
+		SETR REFRESH RACLIST(FACILITY)
+	//
 
-    with the following parameters:
+*RACFDEF : JCL to add RACF definitions*
 
-    This tells VIRTEL that the security definitions for calls to
-    external servers are stored in the VIRTAPPL resource class, and that
-    the security definitions for access to VIRTEL transactions,
-    directories, and Minitel nodes are stored in the VIRTNODE resource
-    class. You can choose your own resource class names for each VIRTEL.
-    Multiple VIRTEL started tasks can share the same resource class
-    names if their security definitions are identical.
+Later you can refine the definitions so that other VIRTEL users can use VIRTEL transactions (such as secured VIRTEL Web Access transactions). The following example allows DEMOGRP to use transaction W2H-10::
 
-    Having updated the VIRTCTxx source member, reassemble and relink the
-    VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of
-    the VIRTEL CNTL library. Stop and start VIRTEL to pick up the new
-    VIRTCT.
+    //VIRTRACF JOB 1,RACFDEF,MSGCLASS=X,CLASS=A,NOTIFY=&SYSUID
+	//*---------------------------------------------------------*
+	//* RACF : AUTHORIZATIONS FOR VIRTEL *
+	//*---------------------------------------------------------*
+	//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+	//SYSTSPRT DD SYSOUT=*
+	//SYSTSIN DD *
+	/*-------------------------------------------------------*/
+	/* ALLOW DEMOGRP TO USE THE W2H-10 (CICS) TRANSACTION */
+	/*-------------------------------------------------------*/
+		RDEF FACILITY VIRTEL.W2H-10 UACC(NONE) /* CICS */
+		PE VIRTEL.W2H-10 CL(FACILITY) ACC(READ) ID(DEMOGRP)
+	/*-------------------------------------------------------*/
+	/* REFRESH THE RACF PROFILES */
+	/*-------------------------------------------------------*/
+		SETR REFRESH RACLIST(FACILITY)
+	//
 
-    ACF2 maps each 8-character SAF resource class name to a 3-character
-    ACF2 resource type. By default, the resource type is the first three
-    characters of the resource class name, so classes VIRTAPPL and
-    VIRTNODE both map to resource type VIR. You can use the ACF2 CLASMAP
-    record to translate the resource classes to different resource types
-    if required.
+*RACFDEF : JCL to update RACF definitions*
 
-    A example job to add VIRTEL definitions for ACF2 can be found in
-    member ACF2DEF in the VIRTEL SAMPLIB. The commands in this job are
-    explained in the following paragraphs.
+For more information about protecting VIRTEL Web Access resources, refer to the “Security” section of the VIRTEL Web Access Guide.
 
-    *ACF2DEF : ACF2 commands to create OMVS segment for VIRTEL*
+8.2 How to activate ACF2 Security
+---------------------------------
 
-    This command allows VIRTEL to access the TCP/IP stack.
+Perform the following steps to activate ACF2 security for VIRTEL in the MVS environment.
 
-    *ACF2DEF : ACF2 command to grant administrator permissions*
+8.2.1 Modify the VIRTCT
+^^^^^^^^^^^^^^^^^^^^^^^
 
-    This command permits users in group admin-group-name to access all
-    VIRTEL transactions and administrator functions.
+In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameters::
 
-    *ACF2DEF : ACF2 commands to grant general user permissions*
+	SECUR=NO,RAPPL=VIRTSERV,RNODE=VIRTNODE
 
-    These commands permit users in group user-group-name to access
-    specific VIRTEL transactions.
+with the following parameters::
+ 	
+ 	SECUR=RACROUTE,
+	RAPPL=VIRTAPPL,RNODE=VIRTNODE,
 
-    Resource W2H-10 permits specific access to the CICS Web Access
-    transaction on port 41001. Resource CLI-\*\*\*\* is a generic
-    resource which permits access to customer-defined transactions
-    (internal name CLI-nn) on port 41002 and to the directory CLI-DIR.
+This tells VIRTEL that the security definitions for calls to external servers are stored in the VIRTAPPL resource class, and that the security definitions for access to VIRTEL transactions, directories, and Minitel nodes are stored in the VIRTNODE resource class. You can choose your own resource class names for each VIRTEL. Multiple VIRTEL started tasks can share the same resource class names if their security definitions are identical.
 
-    *ACF2DEF : ACF2 command to permit access to 3270 Logoff transaction*
+Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of the VIRTEL CNTL library. Stop and start VIRTEL to pick up the new VIRTCT.
 
-    This command permits all users to use the 3270 Logoff transaction,
-    whose internal name is PC-0020.
+8.2.2. Determine the ACF2 resource type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Perform the following steps to activate TSS security for VIRTEL in
-    the MVS environment.
+ACF2 maps each 8-character SAF resource class name to a 3-character ACF2 resource type. By default, the resource type is the first three characters of the resource class name, so classes VIRTAPPL and VIRTNODE both map to resource type VIR. You can use the ACF2 CLASMAP record to translate the resource classes to different resource types if required.
 
-    In the VIRTCTxx member of the VIRTEL CNTL library, replace the
-    default parameters:
+8.2.3. Add ACF2 definitions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    with the following parameters:
+A example job to add VIRTEL definitions for ACF2 can be found in member ACF2DEF in the VIRTEL SAMPLIB. The commands in this job are explained in the following paragraphs.
 
-    This tells VIRTEL that the security definitions for calls to
-    external servers are stored in the VIRTAPPL resource class, and that
-    the security definitions for access to VIRTEL transactions,
-    directories, and Minitel nodes are stored in the VIRTNODE resource
-    class. You can choose your own resource class names for each VIRTEL.
-    Multiple VIRTEL started tasks can share the same resource class
-    names if their security definitions are identical.
+8.2.3.1. Create OMVS segment for VIRTEL
 
-    Having updated the VIRTCTxx source member, reassemble and relink the
-    VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of
-    the VIRTEL CNTL library. Stop and start VIRTEL to pick up the new
-    VIRTCT.
+::
 
-    A example job to add VIRTEL definitions for TSS can be found in
-    member TOPSDEF in the VIRTEL SAMPLIB. The commands in this job are
-    explained in the following paragraphs.
+	SET PROFILE(VIRTSTC) DIV(OMVS)
+	INSERT VIRTSTC UID(0) HOME('/') PROGRAM('/bin/sh')
 
-    *TOPSDEF : TSS commands to create VIRTEL facility*
+*ACF2DEF : ACF2 commands to create OMVS segment for VIRTEL*
 
-    VIRTFAC is the VIRTEL facility name. You may choose your own name,
-    but you must replace VIRTFAC in all of the following commands by the
-    name you chose. Replace USERnn by the name of an unused user
-    facility (for example, USER34).
+This command allows VIRTEL to access the TCP/IP stack.
 
-    *TOPSDEF : TSS commands to create VIRTEL division and department*
+8.2.3.2. Add permissions for VIRTEL administrators
 
-    A division and department are created to contain the VIRTEL
-    resources. You can choose your own names, or you can use an existing
-    division and department. If you choose to use different names then
-    the following commands must be modified accordingly.
+::
 
-    *TOPSDEF : TSS commands to create ACID for VIRTEL started task*
+	$KEY(********) TYPE(VIR) UID(******** admin-group-name) SERVICE(READ)
 
-    An ACID named VIRTSTC is defined in the BATCH and STC facilities to
-    allow VIRTEL to execute in both batch and started task modes. It has
-    no password and it belongs to department VIRTDEP.
+*ACF2DEF : ACF2 command to grant administrator permissions*
 
-    The definition in the BATCH facility is not compulsory and is only
-    required if VIRTEL might be executed as a batch job.
+This command permits users in group admin-group-name to access all VIRTEL transactions and administrator functions.
 
-    *TOPSDEF : TSS commands to associate ACID with VIRTEL started task*
+8.2.3.3. Add permissions for VIRTEL general users
 
-    This command associates the VIRTEL started task with the VIRTSTC
-    ACID. VIRTEL is the name of the started task procedure in the system
-    or user PROCLIB.
+::
 
-    *TOPSDEF : TSS commands to create OMVS segment for VIRTEL*
+	$KEY(W2H-10) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
+	$KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 
-    This command allows VIRTEL to access the TCP/IP stack. The name of
-    the group (OMVSGRP in this example) should be adapted according to
-    your naming conventions.
+*ACF2DEF : ACF2 commands to grant general user permissions*
 
-    *TOPSDEF : TSS commands to define VIRTEL resource classes*
+These commands permit users in group user-group-name to access specific VIRTEL transactions.
 
-    VIRTEL uses two resource classes for security management.
+Resource W2H-10 permits specific access to the CICS Web Access transaction on port 41001. Resource CLI-\*\*\*\* is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) on port 41002 and to the directory CLI-DIR.
 
-    The first class, whose name must match the RAPPL parameter of the
-    VIRTCT, contains the names of VTAM applications used by VIRTEL
-    Multi-Session, and the names of external servers used by VIRTEL
-    Outgoing Calls (Videotex).
+8.2.3.4. Allow everyone to use the 3270 LOGOFF transactions
 
-    The second class, whose name must match the RNODE parameter of the
-    VIRTCT, contains node names for VIRTEL Incoming Calls (Minitel), the
-    names of sub-applications and directories for VIRTEL administration,
-    and the internal names of transactions associated with entry points
-    for VIRTEL Web Access.
+::
+	$KEY(PC-0020) TYPE(VIR) UID(******** ********) SERVICE(READ)
 
-    *TOPSDEF : TSS commands to define VIRTEL resources*
+*ACF2DEF : ACF2 command to permit access to 3270 Logoff transaction*
 
-    AE and SNCF are examples of external servers defined for VIRTEL
-    Outgoing Calls (Videotex). VIRTEL permits access to an external
-    server if the user is authorized to the corresponding resource name.
-    Users who are authorized to the resource named $$ALLSRV may access
-    all servers.
+This command permits all users to use the 3270 Logoff transaction, whose internal name is PC-0020.
 
-    The resources named $$xxxx$$ are used to grant access to the various
-    VIRTEL administrator functions. Refer to the VIRTEL Connectivity
-    Reference manual for more details.
+8.3. How To Activate Top Secret (TSS) Security Perform
+------------------------------------------------------
 
-    The resource named PC is a generic resource which permits access to
-    the VIRTEL administrator 3270 interface transactions, whose internal
-    name is PC-nnnn. The resource PC-0020 permits specific access to the
-    3270 Logoff transaction.
+Perform the following steps to activate TSS security for VIRTEL in the MVS environment.
 
-    Resource W2H is a generic resource which permits access to VIRTEL
-    Web Access transactions (internal name W2H-nn) and to the directory
-    W2H-DIR. The resource W2H-10 permits specific access to the CICS Web
-    Access transaction.
+8.3.1 Modify the TCT
+^^^^^^^^^^^^^^^^^^^^
 
-    Resource CLI is a generic resource which permits access to
-    customer-defined transactions (internal name CLI-nn) and to the
-    directory CLI-DIR.
+In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameters:
 
-    *TOPSDEF : TSS commands to create VIRTEL administrator profile*
+::
 
-    The VIRTEL administrator profile is named VIRTADP. You may choose a
-    different name if required. In this example the administrator is
-    granted access to all of the VIRTEL administration functions as well
-    as to transactions PC-nnnn, W2H- nn and CLI-nn, and to directories
-    W2H-DIR and CLI-DIR.
+	SECUR=NO,RAPPL=VIRTSERV,RNODE=VIRTNODE
 
-    *TOPSDEF : TSS commands to create VIRTEL user profile*
+with the following parameters:
 
-    The VIRTEL general user profile is named VIRTUSP. You may choose a
-    different name if required. In this example the general user is
-    granted access to external servers AE and SNCF, as well as to
-    transaction W2H-10.
+::
 
-    *TOPSDEF : TSS command to permit access to 3270 Logoff transaction*
+	SECUR=(RACROUTE,TOPS),
+	RAPPL=VIRTAPPL,RNODE=VIRTNODE,
 
-    This command permits all users to use the 3270 Logoff transaction,
-    whose internal name is PC-0020.
+This tells VIRTEL that the security definitions for calls to external servers are stored in the VIRTAPPL resource class, and that the security definitions for access to VIRTEL transactions, directories, and Minitel nodes are stored in the VIRTNODE resource class. You can choose your own resource class names for each VIRTEL.  Multiple VIRTEL started tasks can share the same resource class names if their security definitions are identical.
 
-    *TOPSDEF : TSS command to add general users*
+Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of the VIRTEL CNTL library. Stop and start VIRTEL to pick up the new VIRTCT.
 
-    These commands define userid1 and userid2 as VIRTEL general users by
-    adding the VIRTEL user profile to their ACID.
+8.3.2 Add TSS definitions
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    *TOPSDEF : TSS command to add administrators*
+A example job to add VIRTEL definitions for TSS can be found in member TOPSDEF in the VIRTEL SAMPLIB. The commands in this job are explained in the following paragraphs.
 
-    These commands define admin1 and admin2 as VIRTEL administrators by
-    adding the VIRTEL administrator profile to their ACID.
+8.3.2.1 Add TSS definitions
 
-    The VIRTEL load library should normally be APF-authorized. If this
-    is not the case, NOAUTH should be specified in the VIRTFAC facility.
+::
 
-Index
-=====
+	TSS MODIFY (FACILITY(USERnn=NAME=VIRTFAC))
+	TSS MODIFY (FACILITY(VIRTFAC=PGM=VIR))
+	TSS MODIFY (FACILITY(VIRTFAC=ACTIVE))
+	TSS MODIFY (FACILITY(VIRTFAC=ASUBM))
+	TSS MODIFY (FACILITY(VIRTFAC=AUTHINIT))
+	TSS MODIFY (FACILITY(VIRTFAC=DEFACID(*NONE*)))
+	TSS MODIFY (FACILITY(VIRTFAC=LUMSG))
+	TSS MODIFY (FACILITY(VIRTFAC=MODE=FAIL))
+	TSS MODIFY (FACILITY(VIRTFAC=MULTIUSER))
+	TSS MODIFY (FACILITY(VIRTFAC=NOABEND))
+	TSS MODIFY (FACILITY(VIRTFAC=NOAUDIT))
+	TSS MODIFY (FACILITY(VIRTFAC=NOPROMPT))
+	TSS MODIFY (FACILITY(VIRTFAC=NORES))
+	TSS MODIFY (FACILITY(VIRTFAC=NOTSOC))
+	TSS MODIFY (FACILITY(VIRTFAC=NOXDEF))
+	TSS MODIFY (FACILITY(VIRTFAC=RNDPW))
+	TSS MODIFY (FACILITY(VIRTFAC=SHRPRF))
+	TSS MODIFY (FACILITY(VIRTFAC=SIGN(M)))
+	TSS MODIFY (FACILITY(VIRTFAC=STMSG))
+	TSS MODIFY (FACILITY(VIRTFAC=WARNPW))
 
-    **ACCUEIL**
+*TOPSDEF : TSS commands to create VIRTEL facility*
 
-    VIRTCT parameters `, 47 <#_bookmark73>`__
+VIRTFAC is the VIRTEL facility name. You may choose your own name, but you must replace VIRTFAC in all of the following commands by the name you chose. Replace USERnn by the name of an unused user facility (for example, USER34).
 
-    **ACF2**
+8.3.2.2. Create VIRTEL division and department
 
-    Security `, 98 <#_bookmark373>`__
+::
 
-    **ADDR1**
+	TSS CREATE(VIRTDIV) NAME('VIRTEL DIVISION') TYPE(DIVISION)
+	TSS CREATE(VIRTDEP) NAME('VIRTEL DEPT') TYPE(DEPARTMENT) +
+		DIVISION(VIRTDIV)
 
-    VIRTCT parameters `, 48 <#_bookmark75>`__
+*TOPSDEF : TSS commands to create VIRTEL division and department*
 
-    **ADDR2**
+A division and department are created to contain the VIRTEL resources. You can choose your own names, or you can use an existing division and department. If you choose to use different names then the following commands must be modified accordingly. 
 
-    VIRTCT parameters `, 48 <#_bookmark77>`__
+8.3.2.3. Create ACID for the VIRTEL started task
 
-    **AIC**
+::
 
-    VIRTCT parameters `, 48 <#_bookmark79>`__
+	TSS CREATE(VIRTSTC) NAME('VIRTEL STC') TYPE(USER) +
+		FAC(BATCH,STC) PASSWORD(NOPW,0) DEPARTMENT(VIRTDEP) +
+		MASTFAC(VIRTFAC) NODSNCHK NOVOLCHK
 
-    **ANNUL**
+*TOPSDEF : TSS commands to create ACID for VIRTEL started task*
 
-    VIRTCT parameters `, 48 <#_bookmark81>`__
+An ACID named VIRTSTC is defined in the BATCH and STC facilities to allow VIRTEL to execute in both batch and started task modes. It has no password and it belongs to department VIRTDEP.
 
-    **APPLIC `, 88 <#_bookmark331>`__ APPLID**
+The definition in the BATCH facility is not compulsory and is only required if VIRTEL might be executed as a batch job.
 
-    VIRTCT parameters `, 48 <#_bookmark83>`__
+8.3.2.4. Assign VIRTEL procedure name to the ACID
 
-    **Applying to MVS**
+::
 
-    PTF `, 20 <#_bookmark19>`__
+	TSS ADDTO(STC) PROCNAME(VIRTEL) ACID(VIRTSTC)
 
-    **Applying to VSE**
+*TOPSDEF : TSS commands to associate ACID with VIRTEL started task*
 
-    PTF `, 40 <#_bookmark56>`__
+This command associates the VIRTEL started task with the VIRTSTC ACID. VIRTEL is the name of the started task procedure in the system or user PROCLIB.
 
-    **APPSTAT**
+8.3.2.5. Create OMVS segment for VIRTEL
 
-    VIRTCT parameters `, 49 <#_bookmark85>`__
+::
 
-    **ARBO**
+	TSS ADDTO(VIRTSTC) UID(0) DFLTGRP(OMVSGRP) GROUP(OMVSGRP) +
+		OMVSPGM('/bin/sh') HOME('/')
 
-    VIRTCT parameters `, 49 <#_bookmark87>`__
+*TOPSDEF : TSS commands to create OMVS segment for VIRTEL*
 
-    **Assembly**
+This command allows VIRTEL to access the TCP/IP stack. The name of the group (OMVSGRP in this example) should be adapted according to your naming conventions.
 
-    VIRTCT `, 80 <#_bookmark309>`__
+8.3.2.6. Define VIRTEL resource classes in the RDT
 
-    **BATCH1**
+::
 
-    VIRTCT parameters `, 49 <#_bookmark89>`__
+	TSS ADDTO(RDT) RESCLASS(VIRTAPPL)
+	TSS ADDTO(RDT) RESCLASS(VIRTNODE)
 
-    **BATCH2**
+*TOPSDEF : TSS commands to define VIRTEL resource classes*
 
-    VIRTCT parameters `, 50 <#_bookmark91>`__
+VIRTEL uses two resource classes for security management.
 
-    **BFVSAM**
+ The first class, whose name must match the RAPPL parameter of the VIRTCT, contains the names of VTAM applications used by VIRTEL Multi-Session, and the names of external servers used by VIRTEL Outgoing Calls (Videotex).
 
-    VIRTCT parameters `, 50 <#_bookmark93>`__
+The second class, whose name must match the RNODE parameter of the  VIRTCT, contains node names for VIRTEL Incoming Calls (Minitel), the names of sub-applications and directories for VIRTEL administration, and the internal names of transactions associated with entry points for VIRTEL Web Access.
 
-    **BUFDATA**
+8.3.2.7. Attach resources to VIRTEL department
 
-    VIRTCT parameters `, 50 <#_bookmark95>`__
+::
 
-    **BUFSIZE**
+	TSS ADDTO(VIRTDEP) VIRTAPPL(AE) Annuaire électronique
+	TSS ADDTO(VIRTDEP) VIRTAPPL(SNCF) Serveur SNCF
+	TSS ADDTO(VIRTDEP) VIRTAPPL($$ALLSRV) Authorize all servers
+	TSS ADDTO(VIRTDEP) VIRTNODE($$ARBO$$) Arborescence (admin.)
+	TSS ADDTO(VIRTDEP) VIRTNODE($$UTIL$$) Users
+	TSS ADDTO(VIRTDEP) VIRTNODE($$APPL$$) Applications
+	TSS ADDTO(VIRTDEP) VIRTNODE($$CMP3$$) Compression
+	TSS ADDTO(VIRTDEP) VIRTNODE($$GLOG$$) Entry points
+	TSS ADDTO(VIRTDEP) VIRTNODE($$LINE$$) Lines
+	TSS ADDTO(VIRTDEP) VIRTNODE($$PCPC$$) Intelligent terminals
+	TSS ADDTO(VIRTDEP) VIRTNODE($$RESO$$) Network management
+	TSS ADDTO(VIRTDEP) VIRTNODE($$SECU$$) Virtel security
+	TSS ADDTO(VIRTDEP) VIRTNODE($$SERV$$) External servers
+	TSS ADDTO(VIRTDEP) VIRTNODE($$TERM$$) Terminals
+	TSS ADDTO(VIRTDEP) VIRTNODE(PC) Administration transactions
+	TSS ADDTO(VIRTDEP) VIRTNODE(PC-0020) Logoff transaction
+	TSS ADDTO(VIRTDEP) VIRTNODE(SERVEUR) Transaction SERVEUR
+	TSS ADDTO(VIRTDEP) VIRTNODE(W2H) Web Access transactions
+	TSS ADDTO(VIRTDEP) VIRTNODE(W2H-10) Web Access CICS transaction
+	TSS ADDTO(VIRTDEP) VIRTNODE(CLI) Client transactions
 
-    VIRTCT parameters `, 50 <#_bookmark97>`__
+*TOPSDEF : TSS commands to define VIRTEL resources*
 
-    **CHARSET**
+AE and SNCF are examples of external servers defined for VIRTEL Outgoing Calls (Videotex). VIRTEL permits access to an external server if the user is authorized to the corresponding resource name. Users who are authorized to the resource named $$ALLSRV may access all servers.
 
-    VIRTCT parameters `, 50 <#_bookmark99>`__
+The resources named $$xxxx$$ are used to grant access to the various VIRTEL administrator functions. Refer to the VIRTEL Connectivity Reference manual for more details.
 
-    **CODE**
+The resource named PC is a generic resource which permits access to the VIRTEL administrator 3270 interface transactions, whose internal name is PC-nnnn. The resource PC-0020 permits specific access to the 3270 Logoff transaction.
 
-    VIRTCT parameters `, 51 <#_bookmark101>`__
+Resource W2H is a generic resource which permits access to VIRTEL Web Access transactions (internal name W2H-nn) and to the directory W2H-DIR. The resource W2H-10 permits specific access to the CICS Web Access transaction.
 
-    **COMPANY**
+Resource CLI is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) and to the directory CLI-DIR.
 
-    VIRTCT parameters `, 51 <#_bookmark103>`__
+8.3.2.8. Create administrator profile
 
-    **COMPR3**
+::
 
-    VIRTCT parameters `, 51 <#_bookmark105>`__
+	TSS CREATE(VIRTADP) NAME('VIRTEL ADMINISTRATOR') +
+		TYPE(PROFILE) DEPARTMENT(VIRTDEP)
+	TSS ADDTO(VIRTADP) FACILITY(VIRTFAC)
+	TSS PERMIT(VIRTADP) VIRTAPPL(AE)
+	TSS PERMIT(VIRTADP) VIRTAPPL(SNCF)
+	TSS PERMIT(VIRTADP) VIRTAPPL($$ALLSRV)
+	TSS PERMIT(VIRTADP) VIRTNODE($$ARBO$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$UTIL$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$APPL$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$CMP3$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$GLOG$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$LINE$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$PCPC$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$RESO$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$SECU$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$SERV$$)
+	TSS PERMIT(VIRTADP) VIRTNODE($$TERM$$)
+	TSS PERMIT(VIRTADP) VIRTNODE(PC(G))
+	TSS PERMIT(VIRTADP) VIRTNODE(SERVEUR)
+	TSS PERMIT(VIRTADP) VIRTNODE(W2H(G))
+	TSS PERMIT(VIRTADP) VIRTNODE(CLI(G))
 
-    **Configuration**
+*TOPSDEF : TSS commands to create VIRTEL administrator profile*
 
-    Trace `, 74 <#_bookmark276>`__
+The VIRTEL administrator profile is named VIRTADP. You may choose a different name if required. In this example the administrator is granted access to all of the VIRTEL administration functions as well as to transactions PC-nnnn, W2H- nn and CLI-nn, and to directories W2H-DIR and CLI-DIR.
 
-    **CORRECT**
+8.3.2.9. Create user profile
 
-    VIRTCT parameters `, 51 <#_bookmark107>`__
+::
 
-    **COUNTRY**
+	TSS CREATE(VIRTUSP) NAME('VIRTEL USER') +
+		TYPE(PROFILE) DEPARTMENT(VIRTDEP)
+	TSS ADDTO(VIRTUSP) FACILITY(VIRTFAC)
+	TSS PERMIT(VIRTUSP) VIRTAPPL(AE)
+	TSS PERMIT(VIRTUSP) VIRTAPPL(SNCF)
+	TSS PERMIT(VIRTUSP) VIRTNODE(W2H-10)
 
-    VIRTCT parameters `, 51 <#_bookmark109>`__
+*TOPSDEF : TSS commands to create VIRTEL user profile*
 
-    **CRYPT1**
+The VIRTEL general user profile is named VIRTUSP. You may choose a different name if required. In this example the general user is granted access to external servers AE and SNCF, as well as to transaction W2H-10.
 
-    VIRTCT parameters `, 52 <#_bookmark111>`__
+8.3.2.10. Allow everyone to use the 3270 LOGOFF transaction
 
-    **CRYPT2**
+::
 
-    VIRTCT parameters `, 54 <#_bookmark113>`__
+	TSS PERMIT(ALL) VIRTNODE(PC-0020)
 
-    **DEFENTR**
+*TOPSDEF : TSS command to permit access to 3270 Logoff transaction*
 
-    VIRTCT parameters `, 54 <#_bookmark115>`__
+This command permits all users to use the 3270 Logoff transaction, whose internal name is PC-0020.
 
-    **DEFUTF8**
+8.3.2.11. Define VIRTEL general users
 
-    VIRTCT parameters `, 54 <#_bookmark117>`__
+::
 
-    **DELETE `, 89 <#_bookmark333>`__**
+	TSS ADDTO(userid1) PROFILE(VIRTUSP)
+	TSS ADDTO(userid2) PROFILE(VIRTUSP)
 
-    **DEPT `, 89 <#_bookmark335>`__ DIRECT**
+*TOPSDEF : TSS command to add general users*
 
-    VIRTCT parameters `, 55 <#_bookmark119>`__
+These commands define userid1 and userid2 as VIRTEL general users by adding the VIRTEL user profile to their ACID.
 
-    **DONTSWA**
+8.3.2.12. Define VIRTEL administrators
 
-    VIRTCT parameters `, 56 <#_bookmark121>`__
+::
 
-    **ENTRY `, 89 <#_bookmark337>`__ EXII1**
+	TSS ADDTO(admin1) PROFILE(VIRTADP)
+	TSS ADDTO(admin2) PROFILE(VIRTADP)
 
-    VIRTCT parameters `, 56 <#_bookmark123>`__
+*TOPSDEF : TSS command to add administrators*
 
-    **EXIT2**
+These commands define admin1 and admin2 as VIRTEL administrators by adding the VIRTEL administrator profile to their ACID.
 
-    VIRTCT parameters `, 56 <#_bookmark125>`__
+8.3.2.13. Authorize the VIRTEL LOADLIB
 
-    **EXIT3**
-
-    VIRTCT parameters `, 56 <#_bookmark127>`__
-
-    **EXIT4**
-
-    VIRTCT parameters `, 56 <#_bookmark129>`__
-
-    **EXIT5**
-
-    VIRTCT parameters `, 56 <#_bookmark131>`__
-
-    **EXIT6**
-
-    VIRTCT parameters `, 57 <#_bookmark133>`__
-
-    **EXIT7**
-
-    VIRTCT parameters `, 57 <#_bookmark135>`__
-
-    **EXIT8**
-
-    VIRTCT parameters `, 57 <#_bookmark137>`__
-
-    **EXPIRE**
-
-    VIRTCT parameters `, 57 <#_bookmark139>`__
-
-    **FASTC**
-
-    VIRTCT parameters `, 57 <#_bookmark141>`__
-
-    **FCAPT**
-
-    VIRTCT parameters `, 57 <#_bookmark143>`__
-
-    **FCMP3**
-
-    VIRTCT parameters `, 58 <#_bookmark145>`__
-
-    **File**
-
-    Statistics `, 70 <#_bookmark251>`__
-
-    **GATE**
-
-    VIRTCT parameters `, 58 <#_bookmark147>`__
-
-    **GMT**
-
-    VIRTCT parameters `, 58 <#_bookmark149>`__
-
-    **GRNAME**
-
-    VIRTCT parameters `, 59 <#_bookmark151>`__
-
-    **GTLOAD**
-
-    VIRTCT parameters `, 59 <#_bookmark153>`__
-
-    **GTPRFE1**
-
-    VIRTCT parameters `, 59 <#_bookmark155>`__
-
-    **GTPRFE2**
-
-    VIRTCT parameters `, 59 <#_bookmark157>`__
-
-    **GTVSAM**
-
-    VIRTCT parameters `, 60 <#_bookmark159>`__
-
-    **GTVSKIP**
-
-    VIRTCT parameters `, 60 <#_bookmark161>`__
-
-    **GUIDE**
-
-    VIRTCT parameters `, 60 <#_bookmark163>`__
-
-    **HTFORWD**
-
-    VIRTCT parameters `, 60 <#_bookmark165>`__
-
-    **HTHEADR**
-
-    VIRTCT parameters `, 60 <#_bookmark169>`__
-
-    **HTMINI**
-
-    VIRTCT parameters `, 61 <#_bookmark171>`__
-
-    **HTPARM**
-
-    VIRTCT parameters `, 61 <#_bookmark173>`__
-
-    **HTSETn**
-
-    VIRTCT parameters `, 61 <#_bookmark176>`__
-
-    **HTVSAM**
-
-    VIRTCT parameters `, 62 <#_bookmark178>`__
-
-    **IBERTEX**
-
-    VIRTCT parameters `, 62 <#_bookmark180>`__ **IGNIDRFULL parameter `,
-    20 <#_bookmark20>`__ IGNLU**
-
-    VIRTCT parameters `, 62 <#_bookmark182>`__
-
-    **IND$FILE `, 61 <#n2>`__**
-
-    **iv-remote-address `, 60 <#_bookmark166>`__ LANG**
-
-    VIRTCT parameters `, 62 <#_bookmark184>`__
-
-    **LICENCE**
-
-    VIRTCT parameters `, 63 <#_bookmark186>`__
-
-    **LINE `, 90 <#_bookmark340>`__ LOCK**
-
-    VIRTCT parameters `, 63 <#_bookmark188>`__
-
-    **MARK**
-
-    VIRTCT parameters `, 63 <#_bookmark190>`__
-
-    **MAXAPPL**
-
-    VIRTCT parameters `, 63 <#_bookmark192>`__
-
-    **MEMORY**
-
-    VIRTCT parameters `, 63 <#_bookmark194>`__
-
-    **MINITEL**
-
-    VIRTCT parameters `, 64 <#_bookmark196>`__
-
-    **MQ1**
-
-    VIRTCT parameters `, 64 <#_bookmark198>`__
-
-    **MQ2**
-
-    VIRTCT parameters `, 64 <#_bookmark200>`__
-
-    **MULTI**
-
-    VIRTCT parameters `, 64 <#_bookmark202>`__
-
-    **NBCVC**
-
-    VIRTCT parameters `, 65 <#_bookmark204>`__
-
-    **NBDYNAM**
-
-    VIRTCT parameters `, 65 <#_bookmark206>`__
-
-    **NBTERM**
-
-    VIRTCT parameters `, 65 <#_bookmark208>`__
-
-    **NODE `, 91 <#_bookmark342>`__ NUMTASK**
-
-    VIRTCT parameters `, 65 <#_bookmark210>`__
-
-    **OSCORE**
-
-    VIRTCT parameters `, 66 <#_bookmark214>`__
-
-    **OTMAPRM**
-
-    VIRTCT parameters `, 65 <#_bookmark212>`__
-
-    **PACKET**
-
-    VIRTCT parameters `, 66 <#_bookmark216>`__
-
-    **PASSTCK**
-
-    VIRTCT parameters `, 66 <#_bookmark218>`__
-
-    **PassTicket `, 66 <#yes-8>`__**
-
-    **Patch VIRTEL program `, 82 <#_bookmark314>`__ PC `,
-    91 <#_bookmark344>`__**
-
-    **PREZ900**
-
-    VIRTCT parameters `, 66 <#_bookmark221>`__
-
-    **PRFSECU**
-
-    VIRTCT parameters `, 66 <#_bookmark223>`__
-
-    **PROFILE `, 91 <#_bookmark346>`__ PWPROT**
-
-    VIRTCT parameters `, 67 <#_bookmark225>`__
-
-    **RACAPPL**
-
-    VIRTCT parameters `, 67 <#_bookmark227>`__
-
-    **RACF**
-
-    Security `, 97 <#_bookmark368>`__
-
-    **RAPPL**
-
-    VIRTCT parameters `, 67 <#_bookmark229>`__
-
-    **REALM**
-
-    VIRTCT parameters `, 67 <#_bookmark231>`__
-
-    **REPET**
-
-    VIRTCT parameters `, 68 <#_bookmark233>`__
-
-    **RESOURCE `, 91 <#_bookmark348>`__ RESO**
-
-    VIRTCT parameters `, 68 <#_bookmark235>`__
-
-    **RETOUR**
-
-    VIRTCT parameters `, 68 <#_bookmark237>`__
-
-    **RNODE**
-
-    VIRTCT parameters `, 68 <#_bookmark239>`__
-
-    **RULE `, 92 <#_bookmark350>`__ SECUR**
-
-    VIRTCT parameters `, 69 <#_bookmark241>`__
-
-    **SERVER `, 93 <#_bookmark352>`__ SILENCE**
-
-    VIRTCT parameters `, 69 <#_bookmark243>`__
-
-    **SNAPW**
-
-    VIRTCT parameters `, 70 <#_bookmark245>`__
-
-    **SOMMR**
-
-    VIRTCT parameters `, 70 <#_bookmark247>`__
-
-    **SSERV `, 93 <#_bookmark354>`__ STATDSN**
-
-    VIRTCT parameters `, 70 <#_bookmark249>`__
-
-    **STATS**
-
-    VIRTCT parameters `, 70 <#_bookmark251>`__
-
-    **STEPLIB libraries**
-
-    ICSF `, 22 <#_bookmark25>`__
-
-    MQSeries `, 22 <#_bookmark24>`__
-
-    **STRNO**
-
-    VIRTCT parameters `, 71 <#_bookmark253>`__
-
-    **SUBDIR `, 94 <#_bookmark356>`__ SUITE**
-
-    VIRTCT parameters `, 71 <#_bookmark255>`__
-
-    **SWAP**
-
-    VIRTCT parameters `, 71 <#_bookmark257>`__
-
-    **SYSCLONE `, 72 <#yes-14>`__ SYSPLUS**
-
-    VIRTCT parameters `, 72 <#_bookmark259>`__
-
-    **TCP1**
-
-    VIRTCT parameters `, 72 <#_bookmark262>`__
-
-    **TCP2**
-
-    VIRTCT parameters `, 73 <#_bookmark264>`__ **TERMINAL `,
-    95 <#_bookmark358>`__ TIMEOUT**
-
-    VIRTCT parameters `, 73 <#_bookmark266>`__
-
-    **TIMERQS**
-
-    VIRTCT parameters `, 73 <#_bookmark268>`__
-
-    **TITRE1**
-
-    VIRTCT parameters `, 73 <#_bookmark270>`__
-
-    **TITRE2**
-
-    VIRTCT parameters `, 73 <#_bookmark272>`__
-
-    **Top Secret**
-
-    Security `, 100 <#_bookmark378>`__
-
-    **TRACALL**
-
-    VIRTCT parameters `, 74 <#_bookmark274>`__
-
-    **TRACBIG**
-
-    VIRTCT parameters `, 74 <#_bookmark276>`__
-
-    **TRACEB**
-
-    VIRTCT parameters `, 74 <#_bookmark278>`__
-
-    **TRACEOJ**
-
-    VIRTCT parameters `, 74 <#_bookmark280>`__
-
-    **TRACEON**
-
-    VIRTCT parameters `, 74 <#_bookmark282>`__
-
-    **TRACTIM**
-
-    VIRTCT parameters `, 75 <#_bookmark284>`__
-
-    **TRANSACT `, 95 <#_bookmark360>`__ TRAN**
-
-    VIRTCT parameters `, 75 <#_bookmark286>`__
-
-    **UFILEn**
-
-    VIRTCT parameters `, 75 <#_bookmark288>`__
-
-    **UPDATE `, 96 <#_bookmark362>`__**
-
-    **USER `, 96 <#_bookmark364>`__**
-
-    **VIRCONF `, 84 <#_bookmark317>`__**
-
-    **Virconf**
-
-    LOAD `, 84 <#_bookmark320>`__
-
-    NOREPL `, 86 <#_bookmark322>`__
-
-    PLAINTXT `, 96 <#note-2-2>`__
-
-    SCAN `, 87 <#_bookmark326>`__
-
-    UNLOAD `, 86 <#_bookmark324>`__
-
-    **VIRSECU**
-
-    VIRTCT parameters `, 76 <#_bookmark290>`__
-
-    **VIRSV1**
-
-    VIRTCT parameters `, 76 <#_bookmark292>`__
-
-    **VIRTCT01 `, 47 <#_bookmark70>`__ VSAMTYP**
-
-    VIRTCT parameters `, 76 <#_bookmark294>`__ **VTAM application relay
-    `, 41 <#_bookmark62>`__ VTAM Primary ACB `, 41 <#_bookmark60>`__
-    VTKEYS**
-
-    VIRTCT parameters `, 76 <#_bookmark296>`__
-
-    **VTOVER**
-
-    VIRTCT parameters `, 77 <#_bookmark298>`__ **X-Forwarded-For `,
-    60 <#_bookmark167>`__ XM1**
-
-    VIRTCT parameters `, 77 <#_bookmark300>`__
-
-    **XM2**
-
-    VIRTCT parameters `, 77 <#_bookmark302>`__
-
-    **XMIT file `, 16 <#_bookmark17>`__ ZAPH**
-
-    VIRTCT parameters `, 77 <#_bookmark304>`__
+The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.
 
 .. |image0| image:: images/media/image1.jpeg
    :width: 8.26389in
