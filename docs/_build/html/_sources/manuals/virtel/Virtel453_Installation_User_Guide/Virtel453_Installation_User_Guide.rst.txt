@@ -35,7 +35,7 @@ Syspertec Communication
 
     "SysperTec Communication" and "VIRTEL" are registered trademarks. Names of other products 
     and companies mentioned in this document may be trademarks or registered trademarks of 
-    their respective owners.    
+    their respective owners.  
 
 1. Summary of Amendments
 ========================
@@ -469,6 +469,7 @@ The VIRTEL product contains support for the base kernel and all modules. The fun
 .. line-block:: 
 
 	*Please refer to your license agreement for the particular terms and conditions under which you are authorised to use the various VIRTEL modules.*
+
 
 
 2.2 Required Environment
@@ -925,7 +926,7 @@ Download the following files from our FTP server `http://ftp.syspertec.com <http
 
 	c) If you prefer VIRTEL to display English language panels, then set LANG='E'
 
-	d) Set the COUNTRY and DEFUTF8 parameters according to your country (see `“Parameters of the VIRTCT”, <#_bookmark71>`__ `page 47 <#_bookmark71>`__)
+	d) Set the COUNTRY and DEFUTF8 parameters according to your country (See :ref:`VIRTCT <#_bookmark74>`)
 
 	e) Set the COMPANY ADDR1 ADDR2 LICENCE EXPIRE CODE parameters using the license key supplied to you by Syspertec.
 
@@ -974,7 +975,7 @@ You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in t
 
 15. Apply any "update"maintenance from the file virtel453updtnnnn.zip file according the instructions in theReadme- updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step.
 
-16. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the “security chapter”, page 0.
+16. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the :ref:`“Security Chapter” <#_bookmark73>`.
 
 4. Installing VIRTEL under VSE
 ==============================
@@ -1639,7 +1640,7 @@ Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. Thi
 4.1.14. Assembling the VIRTCT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the VSE, MVS and VM environments, please refer to section VIRTCT 47. Users in France should use job VIRTCTFR instead of VIRTCTUS.
+Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the VSE, MVS and VM environments, please refer to section :ref:`VIRTCT <#_bookmark74>`. Users in France should use job VIRTCTFR instead of VIRTCTUS.
 
 4.1.15. Assembling the MODVIRT mode table
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2199,6 +2200,7 @@ It is recommended that you do not use automatic initialisation of the 'good morn
 
   *CICS definitions for Minitel terminals*
 
+.. _#_bookmark74:
 
 6. VIRTCT
 =========
@@ -2211,6 +2213,9 @@ All the general information necessary for VIRTEL to run is contained in a table 
 The VIRTCT must be assembled before VIRTEL can be run. At the time of the assembly the VIRTEL macro library VIRT4XX.MACLIB must be on-line. Options RENT and REUS must not be specified when assembling the VIRTCT for an MVS environment. The resulting phase or load module must be placed in the library containing the other phases or load modules required by VIRTEL.
 
 For MVS, a sample VIRTCT source member is provided in the VIRTCT01 member of the VIRTEL SAMPLIB, and the assembly and link-edit JCL is in member ASMTCT. For VSE, a sample VIRTCT with assembly and link-edit JCL is in the VIRTCT installation job.
+
+6.2. Parameters Of The VIRTCT
+-----------------------------
 
 Some parameters have a default value taken by VIRTEL and do not need to be coded in your table.
 
@@ -2313,11 +2318,11 @@ This parameter defines the batch processing characteristics for all lines which 
 
 **indd** - The batch input DD name (for example, SYSIN).
 
-**indcb** - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see “Additional parameters for batch files”, page 78).
+**indcb** - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see :ref:`“Additional parameters for batch files” <#_bookmark72>`).
 
 **outdd** - The batch output DD name (for example, SYSPRINT).
 
-**outdcb** - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see “Additional parameters for batch files”, page 78).
+**outdcb** - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see :ref:`“Additional parameters for batch files” <#_bookmark72>`).
 
 6.2.10. BATCH2 parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3762,6 +3767,8 @@ VIRTEL uses VSAM files for storing HTML pages and for VIRTEL/PC file transfer. T
 
 - The value OUT should be omitted from MACRF if you want the mode (read-only or read/write) to be determined by the value of the VSAMTYP parameter in the VIRTCT (see “VSAMTYP parameter”, page 76).
 
+.. _#_bookmark72:
+
 6.4. Additional Parameters For Batch Files
 ------------------------------------------
 
@@ -4400,7 +4407,7 @@ described under the heading “Parameters of the Entry Point”.
 | IDENT=     |   Identification or   |                                                    |
 |            |   scenario or program |                                                    |
 +------------+-----------------------+----------------------------------------------------+
-| COMPR3=    |   Type 3 compression  |                      	                          |
+| COMPR3=    |   Type 3 compression  |                                                    |
 +------------+-----------------------+----------------------------------------------------+
 | IDREQ=     |   Mandatory           |                                                    |
 |            |   Identification      |                                                    |
@@ -4711,39 +4718,41 @@ This operation adds or replaces an SSERV entity in the VIRARBO file. The paramet
 
 .. note::
 
-	[1]  Specify either TRANSACT or TIOA, but not both
+  [1]  Specify either TRANSACT or TIOA, but not both
 
-    [2]  * = Yes
+  [2]  \*=Yes
 
-    [3]  The key name must be coded according to the table below:
+  [3]  The key name must be coded according to the table below:
 
-    	+----------+------+----------+------+----------+------+
-    	| Key Name | Code | Key Name | Code | Key Name | Code |
-        +==========+======+==========+======+==========+======+
-        | Enter    | "'"  | PF12     | '@'  | PF24     | '<'  |
-        +----------+------+----------+------+----------+------+ 
-        | PF1      |  1   | PF13     |  A   | PA1      | '%'  |
-        +----------+------+----------+------+----------+------+
-        | PF2      |  2   | PF14     |  B   | PA2      | '>'  |
-        +----------+------+----------+------+----------+------+ 
-        | PF3      |  3   | PF15     |  C   | PA3      | ','  |
-        +----------+------+----------+------+----------+------+
-        | PF4      |  4   | PF16     |  D   | Clear    | '_'  |
-        +----------+------+----------+------+----------+------+ 
-        | PF5      |  5   | PF17     |  E   |          |      |
-        +----------+------+----------+------+----------+------+ 
-        | PF6      |  6   | PF18     |  F   |          |      |
-        +----------+------+----------+------+----------+------+ 
-        | PF7      |  7   | PF19     |  G   |          |      |
-        +----------+------+----------+------+----------+------+ 
-        | PF8      |  8   | PF20     |  H   |          |      |
-        +----------+------+----------+------+----------+------+ 
-        | PF9      |  9   | PF21     |  I   |          |      |
-        +----------+------+----------+------+----------+------+ 
-        | PF10     | ":"  | PF22     | 'ç'  |          |      |
-        +----------+------+----------+------+----------+------+ 
-        | PF11 	   | "#"  | PF23     | '-'  |          |      |
-        +----------+------+----------+------+----------+------+ 
+Key table: 
+
++----------+------+----------+------+----------+------+
+| Key Name | Code | Key Name | Code | Key Name | Code |
++==========+======+==========+======+==========+======+
+| Enter    | "'"  | PF12     | '@'  | PF24     | '<'  |
++----------+------+----------+------+----------+------+ 
+| PF1      |  1   | PF13     |  A   | PA1      | '%'  |
++----------+------+----------+------+----------+------+
+| PF2      |  2   | PF14     |  B   | PA2      | '>'  |
++----------+------+----------+------+----------+------+ 
+| PF3      |  3   | PF15     |  C   | PA3      | ','  |
++----------+------+----------+------+----------+------+
+| PF4      |  4   | PF16     |  D   | Clear    | '_'  |
++----------+------+----------+------+----------+------+ 
+| PF5      |  5   | PF17     |  E   |          |      |
++----------+------+----------+------+----------+------+ 
+| PF6      |  6   | PF18     |  F   |          |      |
++----------+------+----------+------+----------+------+ 
+| PF7      |  7   | PF19     |  G   |          |      |
++----------+------+----------+------+----------+------+ 
+| PF8      |  8   | PF20     |  H   |          |      |
++----------+------+----------+------+----------+------+ 
+| PF9      |  9   | PF21     |  I   |          |      |
++----------+------+----------+------+----------+------+ 
+| PF10     | ":"  | PF22     | 'ç'  |          |      |
++----------+------+----------+------+----------+------+ 
+| PF11     | "#"  | PF23     | '-'  |          |      |
++----------+------+----------+------+----------+------+ 
 
 7.3.15. SUBDIR
 ^^^^^^^^^^^^^^
@@ -4903,6 +4912,8 @@ This operation adds or replaces a USER entity in the VIRARBO file. The parameter
 	[1] Indicate either PASSWORD (readable password), or PASSCODE (encrypted password). PASSWORD allows you to specify the password explicitly; if present, it must be coded after the ID parameter. PASSCODE is generated by the UNLOAD function; this allows to unload and reload the USER records without exposing the password in readable format.
 
 	[2] The PARM='UNLOAD,PLAINTXT' function unloads the password in readable format (PASSWORD instead of PASSCODE). To use this function, the user that submits this VIRCONF job must be RACF authorized (or by another securiyy tool) with READ access for the VIRTEL.PASSWORD.DECRYPT resource in the FACILITY class.
+
+.. _#_bookmark73:
 
 8.Security
 ==========

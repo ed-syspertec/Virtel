@@ -891,7 +891,7 @@ RENAMEUNC( -
 <li>Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)</li>
 <li>The TCP1= parameter must match the jobname of your z/OS TCP/IP stack (the suggested value TCPIP is usually correct)</li>
 <li>If you prefer VIRTEL to display English language panels, then set LANG=&#8217;E&#8217;</li>
-<li>Set the COUNTRY and DEFUTF8 parameters according to your country (see <a class="reference external" href="#_bookmark71">“Parameters of the VIRTCT”,</a> <a class="reference external" href="#_bookmark71">page 47</a>)</li>
+<li>Set the COUNTRY and DEFUTF8 parameters according to your country (See <a class="reference internal" href="#bookmark74"><span class="std std-ref">VIRTCT</span></a>)</li>
 <li>Set the COMPANY ADDR1 ADDR2 LICENCE EXPIRE CODE parameters using the license key supplied to you by Syspertec.</li>
 </ol>
 </div></blockquote>
@@ -935,7 +935,7 @@ into VIRT453.LOADLIB.</p>
 <p>You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in the VIRTCT01, and you can display the VIRTEL Web Access menu in your web browser using URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a> where n.n.n.n is the IP address of your z/OS system.</p>
 <ol class="arabic simple" start="15">
 <li>Apply any &#8220;update&#8221;maintenance from the file virtel453updtnnnn.zip file according the instructions in theReadme- updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step.</li>
-<li>The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the “security chapter”, page 0.</li>
+<li>The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the <a class="reference internal" href="#bookmark73"><span class="std std-ref">“Security Chapter”</span></a>.</li>
 </ol>
 </div>
 </div>
@@ -1556,7 +1556,7 @@ $$$$IWS.WORKREC.INW$TEMP
 </div>
 <div class="section" id="assembling-the-virtct">
 <h4>4.1.14. Assembling the VIRTCT<a class="headerlink" href="#assembling-the-virtct" title="Permalink to this headline">¶</a></h4>
-<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the VSE, MVS and VM environments, please refer to section VIRTCT 47. Users in France should use job VIRTCTFR instead of VIRTCTUS.</p>
+<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the VSE, MVS and VM environments, please refer to section <a class="reference internal" href="#bookmark74"><span class="std std-ref">VIRTCT</span></a>. Users in France should use job VIRTCTFR instead of VIRTCTUS.</p>
 </div>
 <div class="section" id="assembling-the-modvirt-mode-table">
 <h4>4.1.15. Assembling the MODVIRT mode table<a class="headerlink" href="#assembling-the-modvirt-mode-table" title="Permalink to this headline">¶</a></h4>
@@ -2084,12 +2084,15 @@ BINDSecurity ==&gt; No   No ! Yes
 </div>
 </div>
 <div class="section" id="virtct">
-<h2>6. VIRTCT<a class="headerlink" href="#virtct" title="Permalink to this headline">¶</a></h2>
+<span id="bookmark74"></span><h2>6. VIRTCT<a class="headerlink" href="#virtct" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id6">
 <h3>6.1 introduction<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. After initialising the different  parameters, this table must be assembled and link edited with the name VIRTCTxx, where xx are the two characters that identify the     VIRTCT at start up time to the system. This xx value will be contained in the parameter of the PARM operand of the VIRTEL start procedure in MVS, or behind the EXEC card in the VSE environment.</p>
 <p>The VIRTCT must be assembled before VIRTEL can be run. At the time of the assembly the VIRTEL macro library VIRT4XX.MACLIB must be on-line. Options RENT and REUS must not be specified when assembling the VIRTCT for an MVS environment. The resulting phase or load module must be placed in the library containing the other phases or load modules required by VIRTEL.</p>
 <p>For MVS, a sample VIRTCT source member is provided in the VIRTCT01 member of the VIRTEL SAMPLIB, and the assembly and link-edit JCL is in member ASMTCT. For VSE, a sample VIRTCT with assembly and link-edit JCL is in the VIRTCT installation job.</p>
+</div>
+<div class="section" id="parameters-of-the-virtct">
+<h3>6.2. Parameters Of The VIRTCT<a class="headerlink" href="#parameters-of-the-virtct" title="Permalink to this headline">¶</a></h3>
 <p>Some parameters have a default value taken by VIRTEL and do not need to be coded in your table.</p>
 <div class="section" id="accueil-parameter">
 <h4>6.2.1. ACCUEIL parameter<a class="headerlink" href="#accueil-parameter" title="Permalink to this headline">¶</a></h4>
@@ -2163,9 +2166,9 @@ ANNUL=00 allows the cursor to be placed at the start of the field with erasure o
 </div>
 <p>This parameter defines the batch processing characteristics for all lines which specify type BATCH1.</p>
 <p><strong>indd</strong> - The batch input DD name (for example, SYSIN).</p>
-<p><strong>indcb</strong> - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see “Additional parameters for batch files”, page 78).</p>
+<p><strong>indcb</strong> - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="#bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
 <p><strong>outdd</strong> - The batch output DD name (for example, SYSPRINT).</p>
-<p><strong>outdcb</strong> - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see “Additional parameters for batch files”, page 78).</p>
+<p><strong>outdcb</strong> - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="#bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
 </div>
 <div class="section" id="batch2-parameter">
 <h4>6.2.10. BATCH2 parameter<a class="headerlink" href="#batch2-parameter" title="Permalink to this headline">¶</a></h4>
@@ -3393,7 +3396,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 </ul>
 </div>
 <div class="section" id="additional-parameters-for-batch-files">
-<h3>6.4. Additional Parameters For Batch Files<a class="headerlink" href="#additional-parameters-for-batch-files" title="Permalink to this headline">¶</a></h3>
+<span id="bookmark72"></span><h3>6.4. Additional Parameters For Batch Files<a class="headerlink" href="#additional-parameters-for-batch-files" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL uses sequential files for batch input and output when the BATCHx parameter is defined in the VIRTCT, and a batch line is present in the configuration. These sequential files must be defined in the VIRTCT by means of a pair of DCB/DCBE macros for each file. The DCB/DCBE macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="n">DCB</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">ddname</span><span class="p">,</span><span class="n">DCBE</span><span class="o">=</span><span class="n">labelx</span><span class="p">,</span><span class="n">DSORG</span><span class="o">=</span><span class="n">PS</span><span class="p">,</span> <span class="o">*</span>
 <span class="n">LRECL</span><span class="o">=</span><span class="n">lrecl</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">recfm</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">macrf</span><span class="p">)</span>
@@ -4631,12 +4634,12 @@ access</td>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<blockquote>
-<div>[1]  Specify either TRANSACT or TIOA, but not both</div></blockquote>
-<p>[2]  * = Yes</p>
-<p>[3]  The key name must be coded according to the table below:</p>
-<blockquote class="last">
-<div><table border="1" class="docutils">
+<p>[1]  Specify either TRANSACT or TIOA, but not both</p>
+<p>[2]  *=Yes</p>
+<p class="last">[3]  The key name must be coded according to the table below:</p>
+</div>
+<p>Key table:</p>
+<table border="1" class="docutils">
 <colgroup>
 <col width="21%" />
 <col width="13%" />
@@ -4741,8 +4744,6 @@ access</td>
 </tr>
 </tbody>
 </table>
-</div></blockquote>
-</div>
 </div>
 <div class="section" id="subdir">
 <h4>7.3.15. SUBDIR<a class="headerlink" href="#subdir" title="Permalink to this headline">¶</a></h4>
@@ -5058,7 +5059,7 @@ check URL prefix</td>
 </div>
 </div>
 <div class="section" id="security">
-<h2>8.Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<span id="bookmark73"></span><h2>8.Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
 <p>Perform the following steps to activate RACF security for VIRTEL in the MVS environment.</p>
 <div class="section" id="modify-the-virtct">
 <h3>8.1.1 Modify the VIRTCT<a class="headerlink" href="#modify-the-virtct" title="Permalink to this headline">¶</a></h3>
