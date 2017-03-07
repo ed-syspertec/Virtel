@@ -93,7 +93,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../TN201402/TN201402.html">Formatting VIRTEL Line Trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201404/TN201404.html">VIRTEL SMF Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
@@ -206,7 +205,7 @@ equally be IBM’s JES328X, INFOPRNT or any comparable software such as
 Natural’s COMPLETE NatSPool. Whatever software is used it will have the
 capability of associating a JES2 DESTID with a remote 3270 printer and
 extracting the output from the JES spool and sending it to a LU printer.</p>
-<p><img alt="image0" src="../../../_images/image12.jpeg" /></p>
+<p><img alt="image0" src="../../../_images/image11.jpeg" /></p>
 <p>Virtel pretends to be that remote 3270 printer through its relay LU
 associated with a user’s terminal session. In our case the printer name
 is REHIP000. This is set up in the terminal section of Virtel which can
@@ -220,7 +219,7 @@ designated as type “P” – LU3 3270 printer.</p>
 with the relay terminal definition RHTVT000. To use LU T3 (3270
 datastream) the RHTVT000 definition must be updated to associate the
 printer terminal RHTIP000 with RHTVT000.</p>
-<p><img alt="image1" src="../../../_images/image21.jpeg" /> Fig. 1 Example of Virtel terminal definitions.</p>
+<p><img alt="image1" src="../../../_images/image2.jpeg" /> Fig. 1 Example of Virtel terminal definitions.</p>
 <p>The virtual relay definitions that Virtel uses to support VTAM terminals
 and applications is defined in the VIRTAPPL VTAM definition. This can be
 found in the shipped VIRT***.CNTL library. Here is an example:-</p>
@@ -248,7 +247,7 @@ the printer relay LU and send it to the associated terminal session.
 When the session receives the output it will be displayed in a new
 browser window. Here is a screen shot of my terminal session before I
 have sent any output.</p>
-<p><img alt="image2" src="../../../_images/image31.jpeg" /></p>
+<p><img alt="image2" src="../../../_images/image3.jpeg" /></p>
 <p>Fig. 2 Example of Virtel Browser screen before print data has been sent.</p>
 <p>Note that in the bottom corner you can see the two virtual SNA LUs that
 Virtel is using to represent this browser session to VTAM. The first
