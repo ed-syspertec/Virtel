@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to activate VIRTEL https using AT-TLS &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Virtel Manuals" href="../../../howto.html"/>
+        <link rel="prev" title="Virtel Manuals" href="../../../howto.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../howto.html">Virtel Manuals</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../howto.html#how-to">How To</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">How to activate VIRTEL https using AT-TLS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-the-policy-agent-configuration-file">Create the Policy Agent configuration file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-the-server-certificate">Create the server certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-certificate-to-the-keyring">Add the certificate to the keyring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#allow-virtel-to-access-its-own-certificate">Allow VIRTEL to access its own certificate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activate-at-tls">Activate AT-TLS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#altering-the-policy-agent-configuration">Altering the Policy Agent configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logon-to-virtel-using-secure-session">Logon to VIRTEL using secure session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-error-messages">Common error messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cipher-suite">Cipher suite</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bibliography">Bibliography</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../howto.html">Virtel Manuals</a> &raquo;</li>
+      
+    <li>How to activate VIRTEL https using AT-TLS</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/howto/AT_TLS/Virtel-AT-TLS-Howto.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-activate-virtel-https-using-at-tls">
+<h1>How to activate VIRTEL https using AT-TLS<a class="headerlink" href="#how-to-activate-virtel-https-using-at-tls" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p><a class="reference internal" href="../../../_images/image1.png"><img alt="image0" src="../../../_images/image1.png" style="width: 4.16534in; height: 0.80000in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image2.jpeg"><img alt="image1" src="../../../_images/image2.jpeg" style="width: 1.48500in; height: 1.08667in;" /></a><em>VIRTEL</em></p>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first"><strong>How to activate VIRTEL https using AT-TLS on z/OS V1R7</strong></p>
+<ol class="arabic">
+<li><p class="first rubric" id="software-pre-requisites">Software pre-requisites</p>
+</li>
+</ol>
+<blockquote>
+<div><p>To provide secure HTTP (https) sessions to client browsers, VIRTEL
+uses the Application Transparent Transport Layer Security (AT-TLS)
+feature of z/OS Communication Server. AT-TLS is included with z/OS
+V1R7 and later releases.</p>
+<p>AT-TLS allows socket applications to access encrypted sessions by
+invoking system SSL within the transport layer of the TCP/IP stack.
+The Policy Agent decides which connections are to use AT-TLS, and
+provides system SSL configuration for those connections. The
+application continues to send and receive clear text over the
+socket, but data sent over the network is protected by system SSL.
+The supported protocols are TLS, SSLv3, and SSLv2.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first rubric" id="installation-steps">Installation steps</p>
+<ol class="arabic">
+<li><p class="first rubric" id="install-policy-agent-procedure">Install Policy Agent procedure</p>
+</li>
+</ol>
+<blockquote>
+<div><p>If you do not already have the Communications Server Policy Agent
+(PAGENT) active in your z/OS system, copy the cataloged procedure
+EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as
+PAGENT.</p>
+</div></blockquote>
+</li>
+</ol>
+<div class="section" id="create-the-policy-agent-configuration-file">
+<h2>Create the Policy Agent configuration file<a class="headerlink" href="#create-the-policy-agent-configuration-file" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>If you do not already run the Policy Agent, you will need to create
+a configuration file /etc/pagent.conf using z/OS Unix System
+Services. If you already run Policy Agent, you will need to find the
+existing configuration file and add the TTLS definitions to it.</p>
+<p>Step PCONFIG in the SSLSETUP sample job contains a starter
+configuration. The following changes should be made:</p>
+</div></blockquote>
+<ul>
+<li><p class="first">Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP
+line 70)</p>
+</li>
+<li><p class="first">Replace <em>41000-41002</em> by <em>41002</em> in the LocalPortRange parameter
+(SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP</p>
+</li>
+<li><p class="first">Replace <em>ServerWithClientAuth</em> by <em>Server</em> in the HandshakeRole
+parameter (SSLSETUP line 82) as we will not be using Client
+Certificates.</p>
+<ol class="arabic">
+<li><p class="first rubric" id="allow-the-policy-agent-to-run-during-tcpip-initialization">Allow the Policy Agent to run during TCP/IP
+initialization</p>
+</li>
+</ol>
+<blockquote>
+<div><p>The Policy Agent must be given READ access to the resource
+EZB.INITSTACK.* in RACF class SERVAUTH. See step EZBAUTH in the
+SSLSETUP sample job (delivered in VIRTEL SAMPLIB).</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="create-the-server-certificate">
+<h2>Create the server certificate<a class="headerlink" href="#create-the-server-certificate" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>A server certificate for VIRTEL must be created, signed by a
+certificate authority, and stored in the RACF database. In the
+SSLSETUP sample job we create a signing certificate and use RACF
+itself as the certificate authority. Alternatively, you may use an
+external certificate authority such as Verisign to create and sign
+the certificate, then import it into RACF.</p>
+<p>At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to
+the VIRTEL host (for example, virtssl.syspertec.com)</p>
+</div></blockquote>
+</div>
+<div class="section" id="add-the-certificate-to-the-keyring">
+<h2>Add the certificate to the keyring<a class="headerlink" href="#add-the-certificate-to-the-keyring" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The server certificate must be added to the VIRTRING keyring. See
+step CCERTIF in the SSLSETUP sample job.</div></blockquote>
+</div>
+<div class="section" id="allow-virtel-to-access-its-own-certificate">
+<h2>Allow VIRTEL to access its own certificate<a class="headerlink" href="#allow-virtel-to-access-its-own-certificate" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>To allow VIRTEL to access its own keyring and server certificate,
+the VIRTEL started task must have READ access to the resource
+IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH
+in the SSLSETUP sample job.</div></blockquote>
+</div>
+<div class="section" id="activate-at-tls">
+<h2>Activate AT-TLS<a class="headerlink" href="#activate-at-tls" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>To activate AT-TLS, add the following statements to TCPIP PROFILE:</p>
+<p>TCPCONFIG TTLS</p>
+<p>AUTOLOG 5 PAGENT ENDAUTOLOG</p>
+<p>Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile
+statement. The AUTOLOG statement will cause the PAGENT procedure to
+be started automatically during TCP/IP initialization.</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first rubric" id="operations">Operations</p>
+<ol class="arabic">
+<li><p class="first rubric" id="starting-the-policy-agent">Starting the Policy Agent</p>
+</li>
+</ol>
+<blockquote>
+<div><p>The AUTOLOG statement in the TCP/IP profile will start the PAGENT
+procedure automatically at TCP/IP initialization. Alternatively you
+can issue the MVS command S PAGENT.</p>
+<p><em>Note:</em> if this is the first time you have activated the SERVAUTH
+class, you are likely to see RACF failure messages during TCP/IP
+initialization indicating that other applications are unable to
+access the resource EZB.INITSTACK. This is normal, because
+Communications Server uses this mechanism to prevent applications
+from accessing TCP/IP before the Policy Agent is started. Do not be
+tempted to authorize applications to use this RACF resource. Either
+ignore the messages (they will go away once PAGENT has started), or
+ensure that PAGENT starts before all other applications.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="altering-the-policy-agent-configuration">
+<h2>Altering the Policy Agent configuration<a class="headerlink" href="#altering-the-policy-agent-configuration" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>To make changes to the Policy Agent configuration file, either edit
+and resubmit the PCONFIG step of the SSLSETUP sample job, or use the
+TSO ISHELL command to edit the file /etc/pagent.conf directly from
+ISPF.</p>
+<p>After you make changes to the Policy Agent configuration, use the
+MVS command F PAGENT,REFRESH to force PAGENT to reread the file.</p>
+</div></blockquote>
+</div>
+<div class="section" id="logon-to-virtel-using-secure-session">
+<h2>Logon to VIRTEL using secure session<a class="headerlink" href="#logon-to-virtel-using-secure-session" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>To access VIRTEL line C-HTTP you must now use URL
+<em>https://n.n.n.n:41002</em> instead of <em>http://n.n.n.n:41002</em> (where</p>
+<p>n.n.n.n is the IP address of the z/OS host running VIRTEL).</p>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first rubric" id="problem-determination">Problem determination</p>
+<ol class="arabic">
+<li><p class="first rubric" id="policy-agent-log-file">Policy Agent log file</p>
+</li>
+</ol>
+<blockquote>
+<div><p>Policy Agent startup messages are written to the /tmp/pagent.log
+file of z/OS Unix System Services. You can use the TSO ISHELL
+command to browse this file from ISPF.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="common-error-messages">
+<h2>Common error messages<a class="headerlink" href="#common-error-messages" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Error messages relating to session setup are written to the MVS
+SYSLOG. The most common error message is:</p>
+<p>EZD1287I TTLS Error RC: nnn event</p>
+<p>where nnn represents a return code. Return codes under 5000 are
+generated by System SSL and are defined in the System SSL
+Programming manual. Return codes over 5000 are generated by AT-TLS
+and are defined in the IP Diagnosis Guide. Some commonly encountered
+return codes are:</p>
+</div></blockquote>
+<ol class="arabic" start="7">
+<li><p class="first">No certificate</p>
+</li>
+<li><p class="first">Certificate not trusted</p>
+<blockquote>
+<div><p>109 No certification authority certificates</p>
+<p>202 Keyring does not exist</p>
+<p>401 Certificate expired or not yet valid</p>
+<p>402 or 412 Client and server cannot agree on cipher suite</p>
+<p>416 VIRTEL does not have permission to list the keyring</p>
+<p>431 Certificate is revoked</p>
+<p>434 Certificate key not compatible with cipher suite</p>
+<p>435 Certificate authority unknown</p>
+<p>5003 Browser sent clear text (http instead of https)</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="cipher-suite">
+<h2>Cipher suite<a class="headerlink" href="#cipher-suite" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>The client and server cipher specifications must contain at least
+one value in common. The TTLSEnvironmentAdvancedParms parameter of
+the Policy Agent configuration file allows you to turn on or off the
+SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of
+supported cipher suites for each protocol is in the TTLSCipherParms
+parameter. Check the /tmp/pagent.log file to determine whether any
+cipher suites were discarded at startup time.</p>
+<p>In Microsoft Internet Explorer, follow the menu <em>Tools – Internet
+Options – Advanced</em>. Under the security heading there are three
+options which allow you to enable or disable the SSL 2.0, SSL 3.0,
+and TLS 1.0 protocols. You cannot enable or disable individual
+cipher suites.</p>
+<p>In Firefox the cipher specifications are accessed by typing
+<em>about:config</em> in the address bar and typing <em>security</em> in the
+filter box. By default, ssl2 is disabled, and ssl3 and tls are
+enabled. By default, all weak encryption cipher suites are disabled,
+and 128-bit or higher cipher suites are enabled.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="bibliography">
+<h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><strong>*SA22-7683-07 z/OS V1R7 Security Server: RACF Security
+Administrator&#8217;s Guide*</strong> Chapter 21. RACF and Digital Certificates</li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../../../howto.html" class="btn btn-neutral" title="Virtel Manuals" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

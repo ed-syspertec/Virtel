@@ -7,6 +7,7 @@ Welcome to Virtel's documentation!
 
    virtel
    newsletters
+   howto
 
 Indices and tables
 ==================
