@@ -1,11 +1,10 @@
-Welcome to Virtel's documentation!
-==================================
+Virtel Technical Newsletters
+============================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   virtel
    newsletters
    howto
 

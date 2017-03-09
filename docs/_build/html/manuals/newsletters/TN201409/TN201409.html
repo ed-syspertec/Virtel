@@ -90,21 +90,16 @@
             
                 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Mainframe printing with Virtel 4.56</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#setting-up-virtel-to-print-from-the-mainframe">Setting up Virtel to print from the mainframe.</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#lu1-type-printing-scs">LU1 Type printing SCS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tso-printing">TSO Printing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#printing-and-makepdf">Printing and MAKEPDF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#seamless-or-unattended-printing">Seamless or unattended printing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#firefox-seamless-browser-printing-using-the-javascript-print-command">Firefox: Seamless browser printing using the JavaScript print command.</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#chrome-seamless-browser-printing-using-the-kiosk-options">Chrome: Seamless browser printing using the kiosk options.</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#appendix-a">Appendix A</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#appendix-b">Appendix B</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendices">Appendices</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
@@ -293,7 +288,7 @@ browser. This can be seen by the fact that a small printer icon will
 appear in the task bar. See the screen shot below:-</p>
 <p><img alt="image3" src="../../../_images/image41.jpeg" /> <em>Fig. 4 - Print data received by browser. Printer ICON displayed in Task Bar.</em></p>
 <p>Pressing the ICON will open a second browser window which will reveal the print data. See the following screen shot:-</p>
-<p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 4 Print data displayed in second browser window.</em></p>
+<p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 5 - Print data displayed in second browser window.</em></p>
 <p>From this window the print data can be printed using the normal windows
 menu dialogs. Virtel does have an Auto-print option in the Virtel
 settings panel. This will automatically open up the Windows Print dialog
@@ -301,19 +296,18 @@ so that you can just click print to print the print data. Once you have
 printed your output you can close the Virtel Print window and continue
 with your terminal session.</p>
 </div>
-</div>
 <div class="section" id="lu1-type-printing-scs">
-<h2>LU1 Type printing SCS<a class="headerlink" href="#lu1-type-printing-scs" title="Permalink to this headline">¶</a></h2>
+<h3>LU1 Type printing SCS<a class="headerlink" href="#lu1-type-printing-scs" title="Permalink to this headline">¶</a></h3>
 <p>In this scenario we demonstrate printing from CICS and converting the
 output to a PDF. The Virtel setup for this requires the use of a third
 party product to convert the PCL data stream to a PDF. A PageTech server
 environment is set up to perform this conversion.</p>
-<p><img alt="image5" src="../../../_images/image61.jpeg" /></p>
+<p><img alt="image5" src="../../../_images/image61.jpeg" /> <em>Fig. 6 - LU1 (SCS) printing flow with external print server</em></p>
 <p>In this scenario we have defined a SCS printer (LU1) in CICS and
 associated it with the netname REHIM000. This will be the relay LU name
 that Virtel will use to represent the printer. Here is a view of the
 CICS definition as displayed by the CEDA transaction:-</p>
-<p><img alt="image6" src="../../../_images/image71.jpeg" /> <em>Fig 4 - CEDA of LU T1 printer definition used by Virtel</em></p>
+<p><img alt="image6" src="../../../_images/image71.jpeg" /> <em>Fig 7 - CEDA of LU T1 printer definition used by Virtel</em></p>
 <p>Note that in the bottom right of the screen the two relay LU names
 associated with this browser session are displayed. The REHVT000 is the
 terminal and the REHIM00 is the attached LU1 printer. A CICS transaction
@@ -327,7 +321,7 @@ be sent as a mulit-attachment PDF MIME to the browser. The user will
 then be able to save or open the PDF file.</p>
 <p>The Virtel transaction that performs this process is defined with the
 following fields.</p>
-<p><img alt="image7" src="../../../_images/image81.jpeg" /> <em>Fig. 5 - Virtel Transaction Detail for CICS transaction</em></p>
+<p><img alt="image7" src="../../../_images/image81.jpeg" /> <em>Fig. 8 - Virtel Transaction Detail for CICS transaction</em></p>
 <p>The transaction’s external name is CICSHP and this name will be
 displayed in the Virtel application menu. The TIOA at logon field is a
 formatted character string that will simulate logging onto CICS and
@@ -344,11 +338,12 @@ This attachment can then be saved or printed.</p>
 selecting the CICSHP menu option. This will automatically signon to
 CICS, acquire the printer and return a PCL stream to Virtel. The PCL
 data stream will be input to the external server.</p>
-<p><img alt="image8" src="../../../_images/image91.jpeg" /> <em>Fig. 6 - The Virtel Application Menu Screen</em></p>
+<p><img alt="image8" src="../../../_images/image91.jpeg" /> <em>Fig. 9 - The Virtel Application Menu Screen</em></p>
 <p>After conversion to PDF virtel will return the PDF as an attachment to
 the user’s browser. A window will open to enable the user to save or
 open the PDF file.</p>
-<p><img alt="image9" src="../../../_images/image10.jpeg" /> <em>Fig. 7 - Processing a PDF File</em></p>
+<p><img alt="image9" src="../../../_images/image10.jpeg" /> <em>Fig. 10 - Processing a PDF File</em></p>
+</div>
 </div>
 <div class="section" id="tso-printing">
 <h2>TSO Printing<a class="headerlink" href="#tso-printing" title="Permalink to this headline">¶</a></h2>
@@ -419,7 +414,7 @@ REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 associated with a 3270 session. In this case we start a TSO session. We
 can see that the TSO 3270 screen REHVT000 is associated with printer
 REHIP000.</p>
-<p><img alt="image10" src="../../../_images/image111.png" /> <em>Fig. 8 - 3270 LU with relay printer REHIP000</em></p>
+<p><img alt="image10" src="../../../_images/image111.png" /> <em>Fig. 11 - 3270 LU with relay printer REHIP000</em></p>
 <p>Next, we allocate the queue file to our TSO session with an allocate command:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">ZAMVS1</span><span class="o">.</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
 </pre></div>
@@ -434,21 +429,21 @@ our TSO session:-</p>
 printer defined as REHIP000. The ‘nocc’ option tells GDDM not to insert
 any carriage control characters. If we look at the request queue using
 the GDDM print queue manager we should be able to see the print request.</p>
-<p><img alt="image11" src="../../../_images/image121.png" /> <em>Fig. 9 - GDDM Print Queue</em></p>
+<p><img alt="image11" src="../../../_images/image121.png" /> <em>Fig. 12 - GDDM Print Queue</em></p>
 <p>When GDDM polls the GDDM request queue it will see the request for
 REHIP000. It will convert the output, set up a session with REHIP000 and
 send the output to what it believes is a LU3 printer. Virtel will
 receive the output from GDDM and convert it to HTML. A small printer
 ICON will appear on the Virtel Task Bar when the printed output is ready
 to be processed. See the red line in the screen shot below.</p>
-<p><img alt="image12" src="../../../_images/image13.png" /> <em>Fig. 10 - Print request ready for processing</em></p>
+<p><img alt="image12" src="../../../_images/image13.png" /> <em>Fig. 13 - Print request ready for processing</em></p>
 <p>Prerssing the printer ICON will process the output. For LU Type3 a
 second browser window will be open and the output displayed. For LU
 Type1 the file will be download to the users PC for further processing.
 In our example we are using LU Type3 sp after clicking the printer ICON
 a second browser window is opened displaying the contents of the file.
 From here the file can be printed or saved for furrther processing.</p>
-<p><img alt="image13" src="../../../_images/image14.png" /> <em>Fig. 11 - Second Browser window containing print. LU3 behaviour</em></p>
+<p><img alt="image13" src="../../../_images/image14.png" /> <em>Fig. 14 - Second Browser window containing print. LU3 behaviour</em></p>
 <p>Once the print output has been processed the browser window should be
 closed and ENTER should be pressed on the TSO session to clear the
 printer ICON.</p>
@@ -524,7 +519,7 @@ how to setup and run MAKEPDF.</p>
 <p>The following is an example of a PDF created by MAKEPDF using the output
 from a utility listing. The output was sent to JES2 and then extracted
 by the VJRS program and sent to Virtel an SCS data stream.</p>
-<p><img alt="image14" src="../../../_images/image15.png" /> <em>Fig. 2 - Multi-Page PDF listing using MAKEPDF</em></p>
+<p><img alt="image14" src="../../../_images/image15.png" /> <em>Fig. 15 - Multi-Page PDF listing using MAKEPDF</em></p>
 <p>Virtel delivers the VIRSVPDF program as an example of a MAKEPDF external service. This program is designed only to produce 1 page per   service call. For producing PDF’s with multiple pages please contact the Syspertec support centre for further advice. The scenario  associated with this landscape printing is called SCENFLND. See <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B.</span></a></p>
 </div>
 <div class="section" id="seamless-or-unattended-printing">
@@ -554,31 +549,27 @@ but at a browser level. This configuration is outside the support
 currently offered by SysperTec but we highlight what options are
 available. Users who undertake implementing these options do so in the
 knowledge that these are not supported options.</p>
-</div>
 <div class="section" id="firefox-seamless-browser-printing-using-the-javascript-print-command">
-<h2>Firefox: Seamless browser printing using the JavaScript print command.<a class="headerlink" href="#firefox-seamless-browser-printing-using-the-javascript-print-command" title="Permalink to this headline">¶</a></h2>
+<h3>Firefox: Seamless browser printing using the JavaScript print command.<a class="headerlink" href="#firefox-seamless-browser-printing-using-the-javascript-print-command" title="Permalink to this headline">¶</a></h3>
 <p>In this example we set up a Virtel Transaction so that the browser
 window can be printed directly to the default printer through a
 “Printer” icon. The printer “ICON” will be added to the Virtel task bar.</p>
-<div class="section" id="setting-up-firefox">
-<h3>Setting up Firefox<a class="headerlink" href="#setting-up-firefox" title="Permalink to this headline">¶</a></h3>
+<p>Setting up Firefox</p>
 <p>Enter “<a class="reference external" href="about:config">about:config</a>” in the Firefox address bar. This will bring up the
 Firefox preferences. Right click on any preference and select New
 Boolean. Add the preference print.always.print.silent, press OK and then
 set the option to “true”. Close and restart the Firefox browser. From
 now on any JavaScript print(); command will print directly to the
 printer using the current configured print settings.</p>
-</div>
-<div class="section" id="adding-the-printer-icon-to-the-task-bar">
-<h3>Adding the printer ICON to the task bar.<a class="headerlink" href="#adding-the-printer-icon-to-the-task-bar" title="Permalink to this headline">¶</a></h3>
+<p>Adding the printer ICON to the task bar.</p>
 <p>We use a custom.js file to add a printer ICON to the task bar. This
 customized option is applied to a CICS transaction CLI-10 in our list of
 transactions. Using the ADMIN HTML panel will update the transaction
 Option field with an option definition called CICSPRNT</p>
-<p><img alt="image15" src="../../../_images/image16.png" /> <em>Fig. 3 - Setting the transaction option</em></p>
+<p><img alt="image15" src="../../../_images/image16.png" /> <em>Fig. 16 - Setting the transaction option</em></p>
 <p>We press the “Spanner” icon on the right to create and validate the
 relevant files.</p>
-<p><img alt="image16" src="../../../_images/image17.png" /> <em>Fig. 4 - Creating and Validating the Option files</em></p>
+<p><img alt="image16" src="../../../_images/image17.png" /> <em>Fig. 17 - Creating and Validating the Option files</em></p>
 <p>The validation process creates the javascript file option.CICSPRNT.js
 which is uploaded to Virtel. Within this file we identify the two
 customization files that will be used for this CICS transaction. In this
@@ -592,7 +583,7 @@ save your changes to the transaction before exiting. You must save the
 updates then return to the transaction list where you will be asked to
 confirm the update. Do not use the browser back key – this will lose the
 update. Go back via the option menu hierarchy.</p>
-<p><img alt="image17" src="../../../_images/image18.png" /> <em>Fig. 5 - Creation a transaction for the option directory</em></p>
+<p><img alt="image17" src="../../../_images/image18.png" /> <em>Fig. 18 - Creation a transaction for the option directory</em></p>
 <p>Next we create our customized JavaScript file which will added the print
 ICON to the task bar and associate a function which will be executed
 when the user presses the print ICON. Our custJS.CICSPRNT.js looks like
@@ -608,17 +599,11 @@ User Guide:-</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We upload custJS.CICSPRNT.js and a print.ICO image to the CLI directory
-using Virtel’s Drag and Drop facility found in the Virtel Admin. Portal.
-When we load up the CICS transaction and we can know see the printer
-ICON in the tool bar – the first ICON on the toolbar. Pressing it will
-print the browser screen without the standard Printer Pop-Up appearing.
-The output will appear on the users default printer.</p>
-<p><img alt="image18" src="../../../_images/image19.png" /> <em>Fig. 18 -</em></p>
-</div>
+<p>We upload custJS.CICSPRNT.js and a print.ICO image to the CLI directory using Virtel’s Drag and Drop facility found in the Virtel Admin. Portal. When we load up the CICS transaction we can now see the printer ICON in the tool bar – the first ICON on the toolbar. Pressing it will print the browser screen without the standard Printer Pop-Up appearing. The output will appear on the users default printer.</p>
+<p><img alt="image18" src="../../../_images/image19.png" /> <em>Fig. 19 - Printer ICON in the tool bar</em></p>
 </div>
 <div class="section" id="chrome-seamless-browser-printing-using-the-kiosk-options">
-<h2>Chrome: Seamless browser printing using the kiosk options.<a class="headerlink" href="#chrome-seamless-browser-printing-using-the-kiosk-options" title="Permalink to this headline">¶</a></h2>
+<h3>Chrome: Seamless browser printing using the kiosk options.<a class="headerlink" href="#chrome-seamless-browser-printing-using-the-kiosk-options" title="Permalink to this headline">¶</a></h3>
 <p>The same behavior can be displayed in Chrome if we start Chrome with the –kiosk-printing option:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>“C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing
 </pre></div>
@@ -630,103 +615,106 @@ command line:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>C:\\nodeJS&gt;&quot;C:\\Program Files(x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing –kiosk http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics
 </pre></div>
 </div>
-<p><img alt="image19" src="../../../_images/image20.png" /> <em>Fig. 19 - Full screen kiosk display with Chrome</em></p>
+<p><img alt="image19" src="../../../_images/image20.png" /> <em>Fig. 20 - Full screen kiosk display with Chrome</em></p>
 <p>The browser window can be closed with ALT-F4.</p>
 </div>
+</div>
+<div class="section" id="appendices">
+<h2>Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="appendix-a">
-<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
+<h3>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENPPDF SCREENS APPL=SCENPPDF
 *
 * SCENARIO TO CONVERT PCL TO PDF AND SEND TO PRINT SERVER
 *
-SCENARIO INPUT
+        SCENARIO INPUT
 *
 * Test if the browser request specified pf=SCENARIO-PRINT
 *
-COPY$ INPUT-TO-VARIABLE,FIELD=&#39;PF&#39;,VAR=&#39;PF&#39;,TYPE=REPLACE
-IF$ NOT-FOUND,THEN=NOPARAMS 46122153
-CASE$ &#39;PF&#39;, 46122153*
-(EQ,&#39;SCENARIO-PRINT&#39;,PRINT), 46122153*
-ELSE=NOPARAMS 46122153
+                COPY$ INPUT-TO-VARIABLE,FIELD=&#39;PF&#39;,VAR=&#39;PF&#39;,TYPE=REPLACE
+                IF$ NOT-FOUND,THEN=NOPARAMS
+                CASE$ &#39;PF&#39;,                                                                                             *
+                        (EQ,&#39;SCENARIO-PRINT&#39;,PRINT),                                                    *
+                        ELSE=NOPARAMS 4
 *
 * process the request for printing
 *
-PRINT EQU * 46122153
+PRINT   EQU *
 *
 * Get the VIRTEL APPLID, terminal name, and printer name
 *
-COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;APPLID&#39;,  *
-FIELD=(NAME-OF,VIRTEL)
-COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TERMINAL&#39;,  *
-FIELD=(NAME-OF,PSEUDO-TERMINAL)
-COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;PRINTER&#39;,  *
-FIELD=(NAME-OF,PRINT-RELAY)
+                COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;APPLID&#39;,                                          *
+                        FIELD=(NAME-OF,VIRTEL)
+                COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TERMINAL&#39;,                                        *
+                        FIELD=(NAME-OF,PSEUDO-TERMINAL)
+                COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;PRINTER&#39;,                                         *
+                        FIELD=(NAME-OF,PRINT-RELAY)
 *
 * Use the timestamp to generate a document name
 *
-POP$ ALL-VALUES-OF,VAR=&#39;TIMESTAMP&#39;
-COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TIMESTAMP&#39;,  *
-FIELD=(NAME-OF,DATE-TIME)
-COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
-VAR=&#39;DOCNAME&#39;,TYPE=REPLACE,  *
-LIST=(VARIABLE,&#39;PRINTER&#39;,STRING,&#39;-&#39;,  *
-VARIABLE,&#39;TIMESTAMP&#39;)
+                POP$ ALL-VALUES-OF,VAR=&#39;TIMESTAMP&#39;
+                COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TIMESTAMP&#39;,                                       *
+                        FIELD=(NAME-OF,DATE-TIME)
+                COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;DOCNAME&#39;,TYPE=REPLACE,  *
+                        LIST=(VARIABLE,&#39;PRINTER&#39;,STRING,&#39;-&#39;,                                    *
+                        VARIABLE,&#39;TIMESTAMP&#39;)
 *
 * The PCL input file has been written to $PRINT$ by VIR0915I
 *
-IF$ EXISTS-VARIABLE,&#39;$PRINT$&#39;,ELSE=NOPRINTD
+                IF$ EXISTS-VARIABLE,&#39;$PRINT$&#39;,ELSE=NOPRINTD
 *
 * Set up the outbound HTTP call to the PCL-to-PDF converter
 * See job PCL2PDF for definition of IP address of PCL2PDF server
 *
-OPTION$ FOR-HTTP, *
-(METHOD,&#39;POST&#39;), *
-(SITE,&#39;pcl2pdf.yourcompany.com&#39;), *
-(TO,&#39;/pdfconv.php&#39;), *
-(HEADER,&#39;Content-Type: text/pcl&#39;), *
-(FILE-OUT,&#39;$PRINT$&#39;), *
-(FILE-IN,&#39;PDFDATA&#39;), *
-(RET-CODE,&#39;RETCODE&#39;), *
-TOVAR=&#39;HTTPARM&#39;
+                OPTION$ FOR-HTTP,                                                                                       *
+                        (METHOD,&#39;POST&#39;),                                                                                *
+                        (SITE,&#39;pcl2pdf.yourcompany.com&#39;),                                               *
+                        (TO,&#39;/pdfconv.php&#39;),                                                                    *
+                        (HEADER,&#39;Content-Type: text/pcl&#39;),                                              *
+                        (FILE-OUT,&#39;$PRINT$&#39;),                                                                   *
+                        (FILE-IN,&#39;PDFDATA&#39;),                                                                    *
+                        (RET-CODE,&#39;RETCODE&#39;),                                                                   *
+                        TOVAR=&#39;HTTPARM&#39;
 *
 * Issue a progress message to the console
 *
-ERROR$ 0,  *
-&#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,  *
-&#39;SCENPPDF SENDING DOCUMENT &#39;,&#39;*DOCNAME&#39;,  *
-&#39; TO PCL2PDF SERVER&#39;
+                ERROR$ 0,                                                                                                       *
+                        &#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,                   *
+                        &#39;SCENPPDF SENDING DOCUMENT &#39;,&#39;*DOCNAME&#39;,                                *
+                        &#39; TO PCL2PDF SERVER&#39;
 *
 * Call the PCL-to-PDF converter
 *
-POP$ ALL-VALUES-OF,VAR=&#39;PDFDATA&#39;
-POP$ ALL-VALUES-OF,VAR=&#39;RETCODE&#39;
-SEND$ TO-LINE, *
-LINE=&#39;PCL2PDF&#39;, *
-PARMS=&#39;HTTPARM&#39;, *
-ERROR=HTTPFAIL
+                POP$ ALL-VALUES-OF,VAR=&#39;PDFDATA&#39;
+                POP$ ALL-VALUES-OF,VAR=&#39;RETCODE&#39;
+                SEND$ TO-LINE,                                                                                          *
+                        LINE=&#39;PCL2PDF&#39;,                                                                                 *
+                        PARMS=&#39;HTTPARM&#39;,                                                                                *
+                        ERROR=HTTPFAIL
 *
 * Check for successful HTTP response
 *
-IF$ NOT-EXISTS-VARIABLE,&#39;RETCODE&#39;,THEN=HTTPINV
-CASE$ &#39;RETCODE&#39;,  *
-(BEGIN,&#39;200&#39;,SENDPDF),  *
-ELSE=HTTPERR
+                IF$ NOT-EXISTS-VARIABLE,&#39;RETCODE&#39;,THEN=HTTPINV
+                CASE$ &#39;RETCODE&#39;,                                                                                        *
+                        (BEGIN,&#39;200&#39;,SENDPDF),                                                                  *
+                        ELSE=HTTPERR
 SENDPDF EQU *
 *
 * Send PDF file to browser
 *
-COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ *
-VAR=&#39;PDFNAME&#39;,TYPE=REPLACE, *
-LIST=(VARIABLE,&#39;DOCNAME&#39;,STRING,&#39;.pdf&#39;)
-SEND$ AS-FILE,VAR=&#39;PDFDATA&#39;, *
-TYPE=&#39;application/pdf&#39;,NAME=&#39;*PDFNAME&#39;
+                COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;PDFNAME&#39;,TYPE=REPLACE,                                                     *
+                        LIST=(VARIABLE,&#39;DOCNAME&#39;,STRING,&#39;.pdf&#39;)
+                SEND$ AS-FILE,VAR=&#39;PDFDATA&#39;,                                                            *
+                        TYPE=&#39;application/pdf&#39;,NAME=&#39;*PDFNAME&#39;
 *
 * Issue a progress message to the console
 *
-ERROR$ 0,  *
-&#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,  *
-&#39;SCENPPDF DELIVERED DOCUMENT &#39;,&#39;*DOCNAME&#39;,  *
-&#39; TO TERMINAL&#39;
+                ERROR$ 0,                                                                                                       *
+                        &#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,                   *
+                        &#39;SCENPPDF DELIVERED DOCUMENT &#39;,&#39;*DOCNAME&#39;,                      *
+                        &#39; TO TERMINAL&#39;
 *
 NOPARAMS EQU *
 SCENARIO END
@@ -734,51 +722,51 @@ SCENARIO END
 * Error exits
 *
 NOPRINTD EQU *
-COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
-VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,  *
-LIST=(STRING,&#39;NOTHING TO PRINT FOR &#39;,  *
-VARIABLE,&#39;PRINTER&#39;)
-GOTO$ CREAHTML
+                COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,                                                      *
+                        LIST=(STRING,&#39;NOTHING TO PRINT FOR &#39;,                                   *
+                        VARIABLE,&#39;PRINTER&#39;)
+                GOTO$ CREAHTML
 *
 HTTPINV EQU *
-COPY$ VALUE-TO-VARIABLE,  *
-VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,  *
-VALUE=&#39;INVALID RESPONSE FROM PCL2PDF SERVER&#39;
-GOTO$ CREAHTML
+                COPY$ VALUE-TO-VARIABLE,                                                                        *
+                        VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,                                                      *
+                        VALUE=&#39;INVALID RESPONSE FROM PCL2PDF SERVER&#39;
+                GOTO$ CREAHTML
 *
 HTTPERR EQU *
-COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
-VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,  *
-LIST=(STRING,&#39;PCL2PDF SERVER RETURNED &#39;,  *
-STRING,&#39;HTTP CODE=&#39;,VARIABLE,&#39;RETCODE&#39;)
-COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
-VAR=&#39;RESPONSE&#39;,TYPE=REPLACE,  *
-LIST=(VARIABLE,&#39;PDFDATA&#39;)
-GOTO$ SENDHTML
+                COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,                                                      *
+                        LIST=(STRING,&#39;PCL2PDF SERVER RETURNED &#39;,                                *
+                        STRING,&#39;HTTP CODE=&#39;,VARIABLE,&#39;RETCODE&#39;)
+                COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;RESPONSE&#39;,TYPE=REPLACE,                                                    *
+                        LIST=(VARIABLE,&#39;PDFDATA&#39;)
+                GOTO$ SENDHTML
 *
 HTTPFAIL EQU *
-COPY$ VALUE-TO-VARIABLE,  *
-VAR=&#39;ERRMSG&#39;,TYPE=REPLACE, *
-VALUE=&#39;OUTBOUND CALL TO PCL2PDF SERVER FAILED&#39;
+                COPY$ VALUE-TO-VARIABLE,                                                                        *
+                        VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,                                                              *
+                        VALUE=&#39;OUTBOUND CALL TO PCL2PDF SERVER FAILED&#39;
 CREAHTML EQU *
-COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ *
-VAR=&#39;RESPONSE&#39;,TYPE=REPLACE, *
-LIST=(STRING,&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENPPDF error&lt;/title&gt;&lt;*
-/head&gt;&lt;body&gt;&#39;,VARIABLE,&#39;ERRMSG&#39;, *
-STRING,&#39;&lt;br&gt;See messages in JESMSGLG for &#39;, *
-VARIABLE,&#39;APPLID&#39;, *
-STRING,&#39;&lt;/body&gt;&lt;/html&gt;&#39;)
-CONVERT$ EBCDIC-TO-ASCII,VAR=&#39;RESPONSE&#39;
+                COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;RESPONSE&#39;,TYPE=REPLACE,                                                    *
+                        LIST=(STRING,&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENPPDF error&lt;/title&gt;&lt;*
+                        /head&gt;&lt;body&gt;&#39;,VARIABLE,&#39;ERRMSG&#39;,                                                *
+                        STRING,&#39;&lt;br&gt;See messages in JESMSGLG for &#39;,                     *
+                        VARIABLE,&#39;APPLID&#39;,                                                                              *
+                        STRING,&#39;&lt;/body&gt;&lt;/html&gt;&#39;)
+                CONVERT$ EBCDIC-TO-ASCII,VAR=&#39;RESPONSE&#39;
 SENDHTML EQU *
 SENDHTML EQU *
-ERROR$ 0,  *
-&#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,  *
-&#39;SCENPPDF ERROR: &#39;,  *
-&#39;*ERRMSG&#39;
-COPY$ OUTPUT-FILE-TO-VARIABLE, *
-FILE=&#39;PDFFAILURE.htm&#39;,VAR=&#39;OUTPUTTXT&#39;
-SEND$ AS-FILE,VAR=&#39;RESPONSE&#39;, *
-TYPE=&#39;text/HTML&#39;,NAME=&#39;FAILURE.htm&#39;
+                ERROR$ 0,                                                                                                       *
+                        &#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,                   *
+                        &#39;SCENPPDF ERROR: &#39;,                                                                     *
+                        &#39;*ERRMSG&#39;
+                COPY$ OUTPUT-FILE-TO-VARIABLE,                                                          *
+                        FILE=&#39;PDFFAILURE.htm&#39;,VAR=&#39;OUTPUTTXT&#39;
+                        SEND$ AS-FILE,VAR=&#39;RESPONSE&#39;,                                                   *
+                        TYPE=&#39;text/HTML&#39;,NAME=&#39;FAILURE.htm&#39;
 SCENARIO END
 *
 SCRNEND
@@ -787,62 +775,62 @@ END
 </div>
 </div>
 <div class="section" id="appendix-b">
-<span id="id3"></span><h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h3>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENFLND SCREENS APPL=SCENFLND
 *
 *  SCENARIO TO CONVERT £PRINT£ FROM TO PDF. LANDSCAPE
 *
 SCENARIO INPUT
 *  Test if the browser request specified pf=SCENARIO-PRINT
-COPY£ INPUT-TO-VARIABLE,FIELD=&#39;PF&#39;,VAR=&#39;PF&#39;,TYPE=REPLACE
-IF£ NOT-FOUND,THEN=NOPARAMS
-CASE£ &#39;PF&#39;,(NE,&#39;SCENARIO-PRINT&#39;,NOPARAMS)
+                COPY£ INPUT-TO-VARIABLE,FIELD=&#39;PF&#39;,VAR=&#39;PF&#39;,TYPE=REPLACE
+                IF£ NOT-FOUND,THEN=NOPARAMS
+                CASE£ &#39;PF&#39;,(NE,&#39;SCENARIO-PRINT&#39;,NOPARAMS)
 *  An ASCII print file has been written to £PRINT£ by VIR0915I
-IF£ EXISTS-VARIABLE,&#39;£PRINT£&#39;,ELSE=NOPRINTD
+                IF£ EXISTS-VARIABLE,&#39;£PRINT£&#39;,ELSE=NOPRINTD
 *  Convert £PRINT£ file from ASCII to EBCDIC for MAKEPDF
-CONVERT£ ASCII-TO-EBCDIC,VAR=&#39;£PRINT£&#39;
+                CONVERT£ ASCII-TO-EBCDIC,VAR=&#39;£PRINT£&#39;
 *  Create INPUT file for MAKEPDF
-COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *
-FILE=&#39;SCENVJRS-INPUT\_L.TXT&#39;,VAR=&#39;INPUT&#39;
+                COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER,                          *
+                        FILE=&#39;SCENVJRS-INPUT_L.TXT&#39;,VAR=&#39;INPUT&#39;
 *  Create DOCOPT file for MAKEPDF
-COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *
-FILE=&#39;SCENVJRS-DOCOPT\_L.TXT&#39;,VAR=&#39;DOCOPT&#39;
+                COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER,                          *
+                        FILE=&#39;SCENVJRS-DOCOPT_L.TXT&#39;,VAR=&#39;DOCOPT&#39;
 *  Create LAYOUT file for MAKEPDF
-COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *
-FILE=&#39;SCENVJRS-LAYOUT\_L.TXT&#39;,VAR=&#39;LAYOUT&#39;
+                COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER,                          *
+                        FILE=&#39;SCENVJRS-LAYOUT_L.TXT&#39;,VAR=&#39;LAYOUT&#39;
 *  Initialize variables with defaults
-POP£ ALL-VALUES-OF,VAR=&#39;OUTPDF&#39;
-POP£ ALL-VALUES-OF,VAR=&#39;ERRMSG&#39;
+                POP£ ALL-VALUES-OF,VAR=&#39;OUTPDF&#39;
+                POP£ ALL-VALUES-OF,VAR=&#39;ERRMSG&#39;
 *  Call service program VJRS0200 which calls MAKEPDF
-VIRSV£ CALL-REUSE,(&#39;SERVPDF&#39;,&#39;VJRS0200&#39;), *
-(IN-VARIABLE,&#39;INPUT&#39;,* 3), *
-(IN-VARIABLE,&#39;DOCOPT&#39;,* 1), *
-(IN-VARIABLE,&#39;LAYOUT&#39;,* 1), *
-(OUT-VARIABLE,&#39;OUTPDF&#39;,500K), *
-(OUT-VARIABLE,&#39;ERRMSG&#39;,160), *
-(NUMBER,&#39;2&#39;), MAKEPDF TRACE LEVEL *
-TRACE=(NO-APPLICATION-TRACE, VIRSV TRACE LEVEL *
-NO-CALLS-TRACE,NO-DISPATCH-TRACE,NO-MEMORY-TRACE), *
-ERROR=REJECT,TASKS=1
+                VIRSV£ CALL-REUSE,(&#39;SERVPDF&#39;,&#39;VJRS0200&#39;),                                       *
+                        (IN-VARIABLE,&#39;INPUT&#39;,* 3),                                                              *
+                        (IN-VARIABLE,&#39;DOCOPT&#39;,* 1),                                                     *
+                        (IN-VARIABLE,&#39;LAYOUT&#39;,* 1),                                                     *
+                        (OUT-VARIABLE,&#39;OUTPDF&#39;,500K),                                                   *
+                        (OUT-VARIABLE,&#39;ERRMSG&#39;,160),                                                    *
+                        (NUMBER,&#39;2&#39;), MAKEPDF TRACE LEVEL                                               *
+                        TRACE=(NO-APPLICATION-TRACE, VIRSV TRACE LEVEL                  *
+                        NO-CALLS-TRACE,NO-DISPATCH-TRACE,NO-MEMORY-TRACE),              *
+                        ERROR=REJECT,TASKS=1
 *  Send PDF file to browser
-COPY£ SYSTEM-TO-VARIABLE,VAR=&#39;PRINTER&#39;, *
-FIELD=(NAME-OF,PRINT-RELAY)
-COPY£ SYSTEM-TO-VARIABLE,VAR=&#39;TIMESTAMP&#39;, *
-FIELD=(NAME-OF,DATE-TIME)
-COPY£ VALUE-TO-VARIABLE, For VIRTEL 4.46 *
-VAR=&#39;PDFNAME&#39;,TYPE=REPLACE, *
-VALUE=&#39;my.pdf&#39;
-COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+ *
-VAR=&#39;PDFNAME&#39;,TYPE=REPLACE, *
-LIST=(VARIABLE,&#39;PRINTER&#39;,STRING,&#39;-&#39;, *
-VARIABLE,&#39;TIMESTAMP&#39;,STRING,&#39;.pdf&#39;)
-SEND£ AS-FILE,VAR=&#39;OUTPDF&#39;, *
-TYPE=&#39;application/pdf&#39;,NAME=&#39;* PDFNAME&#39;
+                COPY£ SYSTEM-TO-VARIABLE,VAR=&#39;PRINTER&#39;,                                         *
+                        FIELD=(NAME-OF,PRINT-RELAY)
+                COPY£ SYSTEM-TO-VARIABLE,VAR=&#39;TIMESTAMP&#39;,                                       *
+                        FIELD=(NAME-OF,DATE-TIME)
+                COPY£ VALUE-TO-VARIABLE, For VIRTEL 4.46                                        *
+                        VAR=&#39;PDFNAME&#39;,TYPE=REPLACE,                                                     *
+                        VALUE=&#39;my.pdf&#39;
+                COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;PDFNAME&#39;,TYPE=REPLACE,                                                     *
+                        LIST=(VARIABLE,&#39;PRINTER&#39;,STRING,&#39;-&#39;,                                    *
+                        VARIABLE,&#39;TIMESTAMP&#39;,STRING,&#39;.pdf&#39;)
+                SEND£ AS-FILE,VAR=&#39;OUTPDF&#39;,                                                             *
+                        TYPE=&#39;application/pdf&#39;,NAME=&#39;* PDFNAME&#39;
 *  Issue a progress message to the console
-ERROR£ 0,   *
-&#39;* APPLID&#39;,&#39; &#39;,&#39;* TERMINAL&#39;,&#39; &#39;,&#39;* PRINTER&#39;,&#39; &#39;,   *
-&#39;SCENFLND DELIVERED DOCUMENT &#39;,&#39;* PDFNAME&#39;,   *
-&#39; TO TERMINAL&#39;
+                ERROR£ 0,   *
+                        &#39;* APPLID&#39;,&#39; &#39;,&#39;* TERMINAL&#39;,&#39; &#39;,&#39;* PRINTER&#39;,&#39; &#39;,                *
+                        &#39;SCENFLND DELIVERED DOCUMENT &#39;,&#39;* PDFNAME&#39;,                     *
+                        &#39; TO TERMINAL&#39;
 *
 NOPARAMS EQU *
 SCENARIO END
@@ -850,32 +838,34 @@ SCENARIO END
 *  Error exits
 *
 NOPRINTD EQU *
-COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+   *
-VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,   *
-LIST=(STRING,&#39;NOTHING TO PRINT FOR &#39;,   *
-VARIABLE,&#39;PRINTER&#39;)
-GOTO£ CREAHTML
+                COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,   *
+                        LIST=(STRING,&#39;NOTHING TO PRINT FOR &#39;,                                   *
+                        VARIABLE,&#39;PRINTER&#39;)
+                        GOTO£ CREAHTML
 *
-REJECT EQU *
-CREAHTML EQU *
-COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+   *
-VAR=&#39;RESPONSE&#39;,TYPE=REPLACE,   *
-LIST=(STRING,&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENFLND error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&#39;,
-VARIABLE,&#39;ERRMSG&#39;,   *
-STRING,&#39;&lt;/body&gt;&lt;/html&gt;&#39;)
-CONVERT£ EBCDIC-TO-ASCII,VAR=&#39;RESPONSE&#39;
+REJECT          EQU *
+CREAHTML        EQU *
+                COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+                                        *
+                        VAR=&#39;RESPONSE&#39;,TYPE=REPLACE,   *
+                        LIST=(STRING,&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENFLND error&lt;/title&gt;
+                                                  &lt;/head&gt;&lt;body&gt;&#39;,
+                        VARIABLE,&#39;ERRMSG&#39;,                                                                      *
+                        STRING,&#39;&lt;/body&gt;&lt;/html&gt;&#39;)
+                CONVERT£ EBCDIC-TO-ASCII,VAR=&#39;RESPONSE&#39;
 SENDHTML EQU *
-ERROR£ 0,   *
-&#39;* APPLID&#39;,&#39; &#39;,&#39;* TERMINAL&#39;,&#39; &#39;,&#39;* PRINTER&#39;,&#39; &#39;,   *
-&#39;SCENFLND ERROR: &#39;,   *
-&#39;* ERRMSG&#39;
-SEND£ AS-FILE,VAR=&#39;RESPONSE&#39;,   *
-TYPE=&#39;text/html&#39;,NAME=&#39;FAILURE.htm&#39;
+                ERROR£ 0,                                                                                               *
+                        &#39;* APPLID&#39;,&#39; &#39;,&#39;* TERMINAL&#39;,&#39; &#39;,&#39;* PRINTER&#39;,&#39; &#39;,                *
+                        &#39;SCENFLND ERROR: &#39;,                                                                     *
+                        &#39;* ERRMSG&#39;
+                SEND£ AS-FILE,VAR=&#39;RESPONSE&#39;,                                                           *
+                        TYPE=&#39;text/html&#39;,NAME=&#39;FAILURE.htm&#39;
 SCENARIO END
 *
 SCRNEND
 END
 </pre></div>
+</div>
 </div>
 </div>
 </div>
