@@ -177,16 +177,18 @@ further details.</p>
 have started up an instance of Virtel which I will use in this VSR
 example. We need to extract some information from Virtel and plug it
 into the VSR setup menu.</p>
-<p>Our Virtel is setup up to use the following lines:</p>
-<p>F SPTHOLTV,LINES</p>
-<p>VIR0200I LINES</p>
-<p>VIR0201I VIRTEL 4.55 APPLID=APPLHOLT LINES</p>
-<p>VIR0202I ALLOCATED IP ADDRESS = 192.168.170.033</p>
-<p>VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
-<p>VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>VIR0202I C-HTTP HTTP-CLI TCP1 :41002 **</p>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>VIR0202I W-HTTP HTTP-W2H TCP1 :41001 **</p>
-<p>VIR0202I &#8212;END OF LIST&#8212;</p>
+<p>Our Virtel is setup up to use the following lines:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.55</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span> <span class="n">LINES</span>
+<span class="n">VIR0202I</span> <span class="n">ALLOCATED</span> <span class="n">IP</span> <span class="n">ADDRESS</span> <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.033</span>
+<span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span> <span class="p">:</span><span class="mi">41002</span> <span class="o">**</span>
+<span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span> <span class="p">:</span><span class="mi">41001</span> <span class="o">**</span>
+<span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
 <p>We shall use the C-HTTP as the target line for out modernization
 project. This will have the ip address:port of 192.168.170.033:41002.
 This will be our “Base URL” for testing.</p>
@@ -200,7 +202,7 @@ will be called MENU I create the transactions MENUCAPT and MENUAJAX.
 MENU is also the CICS transaction that invokes our 3270 MENU
 application.</p>
 <p>Our MENUCAPT transaction looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image134.png"><img alt="image0" src="../../../_images/image134.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image136.png"><img alt="image0" src="../../../_images/image136.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
 <p>And our MENUAJAX transaction look like this:</p>
 <p><a class="reference internal" href="../../../_images/image219.png"><img alt="image1" src="../../../_images/image219.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
 <p>The TIOA string enables Virtel to use logon to CICS using the user
@@ -278,7 +280,7 @@ files in the development directory to CLI. The three files we move into
 CLI are <em>custom.js</em>, <em>vsr.js</em> and <em>option.vsr</em>.</p>
 <p>Note, these files are not required when modernizing in “standard” or
 production mode.</p>
-<p><a class="reference internal" href="../../../_images/image88.png"><img alt="image7" src="../../../_images/image88.png" style="width: 6.26806in; height: 3.90000in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 6.26806in; height: 3.90000in;" /></a></p>
 <p>After successfully uploading the files I close the upload window and
 refresh my VSR screen using refresh ICON in the top right corner.</p>
 <p>The next stage is to download my first CICS MAP from the mainframe and
@@ -288,13 +290,13 @@ the mainframe. I download the map as MENSET1.MAP and save it in MAP sub
 directory. Next, in section 2 of the VSR project window I enter the name
 of the map file and press the green LOAD ICON. The map loads and the
 Source map section is updated.</p>
-<p><a class="reference internal" href="../../../_images/image97.png"><img alt="image8" src="../../../_images/image97.png" style="width: 6.02083in; height: 4.78678in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image98.png"><img alt="image8" src="../../../_images/image98.png" style="width: 6.02083in; height: 4.78678in;" /></a></p>
 <p>Having loaded my CICS MAP into VSR I can now create the work bench by
 pressing the CREATE ICON in the workbench area. The workbench is filled
 with rows, each row relating to a field with my CICS Map. I save the map
 as a JSON file called menmap1.json. VSR saves workbench maps as JSON
 files so I will use the JSON suffix for saving MAP elements.</p>
-<p><a class="reference internal" href="../../../_images/image107.png"><img alt="image9" src="../../../_images/image107.png" style="width: 6.26806in; height: 4.98750in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image108.png"><img alt="image9" src="../../../_images/image108.png" style="width: 6.26806in; height: 4.98750in;" /></a></p>
 <p>At this point I can start to modernize my 3270 MENMAP1 MAP using the
 Choice column drop down. The drop down provides a variety on Virtel
 conversion and design options. These options will generate the necessary
@@ -313,7 +315,7 @@ the VSR display, section 5. This generates the Virtel tags which will
 support my modernized template. I save the template as Testmenmap1. The
 default extension of HTML will be added.</p>
 <p>My VSR window now looks like:</p>
-<p><a class="reference internal" href="../../../_images/image1112.png"><img alt="image10" src="../../../_images/image1112.png" style="width: 6.26806in; height: 6.43681in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1113.png"><img alt="image10" src="../../../_images/image1113.png" style="width: 6.26806in; height: 6.43681in;" /></a></p>
 <p><strong>Testing changes with “Test Mode”</strong></p>
 <p>One of the features of VSR is that you can view your modernization
 changes as you develop and before you commit them to standard or
@@ -331,7 +333,7 @@ template.</p>
 <p><a class="reference internal" href="../../../_images/image1211.png"><img alt="image11" src="../../../_images/image1211.png" style="width: 6.26806in; height: 4.63681in;" /></a></p>
 <p>After pressing the “render” ICON we are presented with are modernized
 screen:-</p>
-<p><a class="reference internal" href="../../../_images/image135.png"><img alt="image12" src="../../../_images/image135.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image137.png"><img alt="image12" src="../../../_images/image137.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
 <p>Nothing too exciting here. We can see that Virtel has taken the various
 elements from the Map, created the Virtel tags within the template, and
 displayed them without any special markup. Of course, the markup is down
@@ -368,12 +370,12 @@ dynamic form is called “VirtelForm”.</p>
 <p>We upload testmenmap1.html through the upload ICON in the ‘Try it’
 section to the CLI-DIR directory and we re-capture and render our
 changes to view the changes we have made. Here are the results:-</p>
-<p><a class="reference internal" href="../../../_images/image144.png"><img alt="image13" src="../../../_images/image144.png" style="width: 4.52083in; height: 4.66458in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image145.png"><img alt="image13" src="../../../_images/image145.png" style="width: 4.52083in; height: 4.66458in;" /></a></p>
 <p>Well, this confirms that our menu.css is being used to modernize our
 presentation. We continue modifying our menu.css until we get the
 desired look. We remove the Virtel logo and add our own, change a few
 other things and end up with a page that looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image154.png"><img alt="image14" src="../../../_images/image154.png" style="width: 4.69792in; height: 4.86447in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image155.png"><img alt="image14" src="../../../_images/image155.png" style="width: 4.69792in; height: 4.86447in;" /></a></p>
 <p>So we have changed the static elements of our modernized display by
 modifying the pageTop and pageBottom web elements but our dynamic middle
 section, as represented by the template tags that VSR has generated

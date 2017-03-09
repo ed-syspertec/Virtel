@@ -158,8 +158,7 @@
             
   <div class="section" id="nailing-lus-with-an-identification-scenario">
 <h1>Nailing LUS with an Identification scenario<a class="headerlink" href="#nailing-lus-with-an-identification-scenario" title="Permalink to this headline">¶</a></h1>
-<p><strong>Note: The external programs used in this POC are not officially
-supported.</strong></p>
+<p><strong>Note: The external programs used in this POC are not officially supported.</strong></p>
 <p>The following newsletter explains how to force a LUNAME from within an
 identification scenario. The criteria being that the LUNAME is derived
 from a computer name passed in the URI as the user data or routing
@@ -183,7 +182,9 @@ applications only.</p>
 <p>User A accesses the 3270 session monitor application using a .bat file
 the extracts the computer name and build a URL. The URL is sent to
 Virtel.</p>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a><a class="reference external" href="http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B77">http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B77</a> *</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">70.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mytpx</span><span class="o">+</span><span class="n">TE202B77</span>
+</pre></div>
+</div>
 <p>The Virtel identification scenario traps the inbound call and validates
 the computer name against the IP address of the calling computer through
 a DNS lookup. In the Virtel log we will see something like:-</p>
@@ -197,8 +198,10 @@ a DNS lookup. In the Virtel log we will see something like:-</p>
 <p>As the DNS validation is considered successful the LUNAME VE202B77 is
 created and will be used to establish a session with the session manager
 identified as transaction MYTPX.</p>
-<p>User B accesses the 3270 session monitor with the following URI.</p>
-<p><a href="#id3"><span class="problematic" id="id4">*</span></a><a class="reference external" href="http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B78">http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B78</a> *</p>
+<p>User B accesses the 3270 session monitor with the following URI:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">70.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mytpx</span><span class="o">+</span><span class="n">TE202B78</span>
+</pre></div>
+</div>
 <p>The following messages appear in the log:-</p>
 <p>VIRHT51I HTTP-CLI CONNECTING CLVTA009 TO 192.168.001.128:53622</p>
 <p>Calling SERV3BNK WITH IP=192.168.001.128,LU=*W2HPOOL,TERMINAL=,</p>
@@ -295,7 +298,7 @@ with the line:port that we will be calling in on. In our example we are
 using the line C-HTTP which is associated with Entry Point CLIWHOST. I
 have updated the Entry Point and added the Identification Scenario
 SCEN3BNK.</p>
-<p><a class="reference internal" href="../../../_images/image138.png"><img alt="image0" src="../../../_images/image138.png" style="width: 6.30000in; height: 4.00486in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image140.png"><img alt="image0" src="../../../_images/image140.png" style="width: 6.30000in; height: 4.00486in;" /></a></p>
 <p><strong>Terminal definitions</strong></p>
 <p>For each terminal that we are going to dedicate a LU to we need to add a
 terminal definition and associate it with a pool. Here is an example of

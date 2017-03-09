@@ -193,51 +193,52 @@ ISTGENERIC.</p>
 instances which are grouped into the generic resource name VIRTPLEX. The
 example below shows VIRTEL1A and VIRTEL2A as participating in the
 VIRTRPLEX resource name group.</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>D NET,ID=VIRTPLEX,E **</p>
-<p>IST097I DISPLAY ACCEPTED</p>
-<p>IST075I NAME = VIRTPLEX, TYPE = GENERIC RESOURCE 917</p>
-<p>IST1359I MEMBER NAME OWNING CP SELECTABLE APPC</p>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>IST1360I SPNET.VIRTEL1A ZAM1SSCP YES NO **</p>
-<p><a href="#id5"><span class="problematic" id="id6">**</span></a>IST1360I SPNET.VIRTEL2A ZAM2SSCP YES NO **</p>
-<p>IST2210I GR PREFERENCE TABLE ENTRY = **DEFAULT**</p>
-<p>IST2202I GREXIT = NO WLM = YES LOCLU = YES</p>
-<p>IST2204I LOCAPPL = YES PASSOLU = NO</p>
-<p>IST314I END</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTPLEX</span><span class="p">,</span><span class="n">E</span>
+
+<span class="n">IST097I</span> <span class="n">DISPLAY</span> <span class="n">ACCEPTED</span>
+<span class="n">IST075I</span> <span class="n">NAME</span> <span class="o">=</span> <span class="n">VIRTPLEX</span><span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="mi">917</span>
+<span class="n">IST1359I</span> <span class="n">MEMBER</span> <span class="n">NAME</span> <span class="n">OWNING</span> <span class="n">CP</span> <span class="n">SELECTABLE</span> <span class="n">APPC</span>
+<span class="n">IST1360I</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span> <span class="n">ZAM1SSCP</span> <span class="n">YES</span> <span class="n">NO</span>
+<span class="n">IST1360I</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL2A</span> <span class="n">ZAM2SSCP</span> <span class="n">YES</span> <span class="n">NO</span>
+<span class="n">IST2210I</span> <span class="n">GR</span> <span class="n">PREFERENCE</span> <span class="n">TABLE</span> <span class="n">ENTRY</span> <span class="o">=</span> <span class="o">**</span><span class="n">DEFAULT</span><span class="o">**</span>
+<span class="n">IST2202I</span> <span class="n">GREXIT</span> <span class="o">=</span> <span class="n">NO</span> <span class="n">WLM</span> <span class="o">=</span> <span class="n">YES</span> <span class="n">LOCLU</span> <span class="o">=</span> <span class="n">YES</span>
+<span class="n">IST2204I</span> <span class="n">LOCAPPL</span> <span class="o">=</span> <span class="n">YES</span> <span class="n">PASSOLU</span> <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST314I</span> <span class="n">END</span>
+</pre></div>
+</div>
 <p>When the VIRTEL*A application is display in VTAM the following messages
 are written to the console log:-</p>
-<p><a href="#id7"><span class="problematic" id="id8">**</span></a>D NET,ID=VIRTEL1A,E **</p>
-<p>IST097I DISPLAY ACCEPTED</p>
-<p>IST075I NAME = SPNET.VIRTEL1A, TYPE = APPL 925</p>
-<p>IST486I STATUS= ACT/S, DESIRED STATE= ACTIV</p>
-<p>IST1447I REGISTRATION TYPE = CDSERVR</p>
-<p><a href="#id9"><span class="problematic" id="id10">**</span></a>IST1363I GENERIC RESOURCE NAME VIRTPLEX REPRESENTS SPNET.VIRTEL1A **</p>
-<p>IST977I MDLTAB=***NA*** ASLTAB=***NA***</p>
-<p>IST861I MODETAB=***NA*** USSTAB=***NA***
-LOGTAB=***NA***</p>
-<p>IST934I DLOGMOD=***NA*** USS LANGTAB=***NA***</p>
-<p>IST1632I VPACING = 7</p>
-<p>IST1938I APPC = NO</p>
-<p>IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE</p>
-<p>IST231I APPL MAJOR NODE = APPLVIPX</p>
-<p>IST654I I/O TRACE = OFF, BUFFER TRACE = OFF</p>
-<p>IST1500I STATE TRACE = OFF</p>
-<p>IST271I JOBNAME = SPVIR1A, STEPNAME = SPVIR1A, DSPNAME = ISTEBBDB</p>
-<p>IST228I ENCRYPTION = OPTIONAL , TYPE = DES</p>
-<p>IST1563I CKEYNAME = VIRTEL1A CKEY = PRIMARY CERTIFY = NO</p>
-<p>IST1552I MAC = NONE MACTYPE = NONE</p>
-<p>IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0</p>
-<p>IST1633I ASRCVLM = 1000000</p>
-<p>IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 1280</p>
-<p>IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000</p>
-<p>IST206I SESSIONS:</p>
-<p>IST634I NAME STATUS SID SEND RECV VR TP NETID</p>
-<p>IST635I SC0TCP13 ACTIV-S CA7B8B52D125F31F 0003 0001 SPNET</p>
-<p>IST314I END</p>
-<p>Message IST1363I confirms that VIRTEL operating under the ACB of
-VIRTEL1A is associated with the VTAM resource name VIRTPLEX.</p>
-<p>**
-Using Virtel and VTAM Generic Resource Names to balance workload in a
-SYSPLEX environment.**</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTEL1A</span><span class="p">,</span><span class="n">E</span>
+<span class="n">IST097I</span> <span class="n">DISPLAY</span> <span class="n">ACCEPTED</span>
+<span class="n">IST075I</span> <span class="n">NAME</span> <span class="o">=</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span><span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">APPL</span> <span class="mi">925</span>
+<span class="n">IST486I</span> <span class="n">STATUS</span><span class="o">=</span> <span class="n">ACT</span><span class="o">/</span><span class="n">S</span><span class="p">,</span> <span class="n">DESIRED</span> <span class="n">STATE</span><span class="o">=</span> <span class="n">ACTIV</span>
+<span class="n">IST1447I</span> <span class="n">REGISTRATION</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">CDSERVR</span>
+<span class="n">IST1363I</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="n">NAME</span> <span class="n">VIRTPLEX</span> <span class="n">REPRESENTS</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span>
+<span class="n">IST977I</span> <span class="n">MDLTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span> <span class="n">ASLTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span>
+<span class="n">IST861I</span> <span class="n">MODETAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span> <span class="n">USSTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">LOGTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span>
+<span class="n">IST934I</span> <span class="n">DLOGMOD</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span> <span class="n">USS</span> <span class="n">LANGTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span>
+<span class="n">IST1632I</span> <span class="n">VPACING</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">IST1938I</span> <span class="n">APPC</span> <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST597I</span> <span class="n">CAPABILITY</span><span class="o">-</span><span class="n">PLU</span> <span class="n">ENABLED</span> <span class="p">,</span><span class="n">SLU</span> <span class="n">ENABLED</span> <span class="p">,</span><span class="n">SESSION</span> <span class="n">LIMIT</span> <span class="n">NONE</span>
+<span class="n">IST231I</span> <span class="n">APPL</span> <span class="n">MAJOR</span> <span class="n">NODE</span> <span class="o">=</span> <span class="n">APPLVIPX</span>
+<span class="n">IST654I</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">BUFFER</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span>
+<span class="n">IST1500I</span> <span class="n">STATE</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">OFF</span>
+<span class="n">IST271I</span> <span class="n">JOBNAME</span> <span class="o">=</span> <span class="n">SPVIR1A</span><span class="p">,</span> <span class="n">STEPNAME</span> <span class="o">=</span> <span class="n">SPVIR1A</span><span class="p">,</span> <span class="n">DSPNAME</span> <span class="o">=</span> <span class="n">ISTEBBDB</span>
+<span class="n">IST228I</span> <span class="n">ENCRYPTION</span> <span class="o">=</span> <span class="n">OPTIONAL</span> <span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">DES</span>
+<span class="n">IST1563I</span> <span class="n">CKEYNAME</span> <span class="o">=</span> <span class="n">VIRTEL1A</span> <span class="n">CKEY</span> <span class="o">=</span> <span class="n">PRIMARY</span> <span class="n">CERTIFY</span> <span class="o">=</span> <span class="n">NO</span>
+<span class="n">IST1552I</span> <span class="n">MAC</span> <span class="o">=</span> <span class="n">NONE</span> <span class="n">MACTYPE</span> <span class="o">=</span> <span class="n">NONE</span>
+<span class="n">IST1050I</span> <span class="n">MAXIMUM</span> <span class="n">COMPRESSION</span> <span class="n">LEVEL</span> <span class="o">-</span> <span class="n">INPUT</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">OUTPUT</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">IST1633I</span> <span class="n">ASRCVLM</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">IST1634I</span> <span class="n">DATA</span> <span class="n">SPACE</span> <span class="n">USAGE</span><span class="p">:</span> <span class="n">CURRENT</span> <span class="o">=</span> <span class="mi">0</span> <span class="n">MAXIMUM</span> <span class="o">=</span> <span class="mi">1280</span>
+<span class="n">IST171I</span> <span class="n">ACTIVE</span> <span class="n">SESSIONS</span> <span class="o">=</span> <span class="mi">0000000001</span><span class="p">,</span> <span class="n">SESSION</span> <span class="n">REQUESTS</span> <span class="o">=</span> <span class="mi">0000000000</span>
+<span class="n">IST206I</span> <span class="n">SESSIONS</span><span class="p">:</span>
+<span class="n">IST634I</span> <span class="n">NAME</span> <span class="n">STATUS</span> <span class="n">SID</span> <span class="n">SEND</span> <span class="n">RECV</span> <span class="n">VR</span> <span class="n">TP</span> <span class="n">NETID</span>
+<span class="n">IST635I</span> <span class="n">SC0TCP13</span> <span class="n">ACTIV</span><span class="o">-</span><span class="n">S</span> <span class="n">CA7B8B52D125F31F</span> <span class="mi">0003</span> <span class="mi">0001</span> <span class="n">SPNET</span>
+<span class="n">IST314I</span> <span class="n">END</span>
+</pre></div>
+</div>
+<p>Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is associated with the VTAM resource name VIRTPLEX.</p>
+<p><strong>Using Virtel and VTAM Generic Resource Names to balance workload in a SYSPLEX environment.</strong></p>
 <p>In the following configuration we can see how the VTAM generic resource
 facility can also be used to distribute workloads across applications.
 In this example there are several CICS TOR regions within CICSA, CICSB
@@ -267,43 +268,24 @@ The relay definitions utilize the system symbolic SYSCLONE value in the
 IEASYMxx member of PARMLIB. The clone value is taken from the system
 symbolic &amp;SYSCLONE and is identified in the VIRTEL definitions through
 the + (plus) character:</p>
-<div class="line-block">
-<div class="line">LIST of TERMINALS &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;- Applid: VIRTEL1A
-15:11:01</div>
-<div class="line"><br /></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LIST</span> <span class="n">of</span> <span class="n">TERMINALS</span> <span class="o">----------------------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">VIRTEL1A</span> <span class="mi">15</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">01</span>
+<span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>      <span class="mi">2</span><span class="n">nd</span>  <span class="n">Relay</span>
+<span class="n">CLLOC000</span>  <span class="mi">0050</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTA000</span>  <span class="mi">0080</span>     <span class="o">*</span><span class="n">W2HPOOL</span>               <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DELOC000</span>  <span class="mi">0010</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DEVTA000</span>  <span class="mi">0016</span>     <span class="o">*</span><span class="n">W2HPOOL</span>               <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">W2HIM000</span>  <span class="mi">0080</span>     <span class="n">R</span><span class="o">+</span><span class="n">IM000</span>                <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HTP000</span>  <span class="mi">0080</span>     <span class="n">R</span><span class="o">+</span><span class="n">VT000</span>                <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2HPOOL</span>  <span class="n">R</span><span class="o">+</span><span class="n">IM000</span>
+</pre></div>
 </div>
-<div class="line-block">
-<div class="line">Terminal &nbsp;Repeated Relay &nbsp; &nbsp; Entry &nbsp; &nbsp; &nbsp; &nbsp;Type &nbsp; I/O &nbsp;Pool &nbsp; &nbsp; 2nd
-Relay</div>
-<div class="line"><br /></div>
-</div>
-<div class="line-block">
-<div class="line">CLLOC000 &nbsp;0050 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-</div>
-<div class="line-block">
-<div class="line">CLVTA000 &nbsp;0080 &nbsp; &nbsp; *W2HPOOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3</div>
-</div>
-<div class="line-block">
-<div class="line">DELOC000 &nbsp;0010 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-</div>
-<div class="line-block">
-<div class="line">DEVTA000 &nbsp;0016 &nbsp; &nbsp; *W2HPOOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3</div>
-</div>
-<div class="line-block">
-<div class="line">W2HIM000 &nbsp;0080 &nbsp; &nbsp; R+IM000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1 &nbsp; &nbsp; &nbsp;1</div>
-</div>
-<div class="line-block">
-<div class="line">W2HTP000 &nbsp;0080 &nbsp; &nbsp; R+VT000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2HPOOL
-R+IM000</div>
-<div class="line"><strong>TCT definition</strong></div>
-</div>
+<p><strong>TCT definition</strong></p>
 <p>In the configuration above there are two Virtel STCs running on
 different LPARS whose &amp;SYSCLONE values are 1A and 2A. With the same TCT
 being used for both VIRTEL1A and VIRTEL2A the following is specified in
 the common TCT:-</p>
-<div class="line-block">
-<div class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; APPLID=VIRTEL+,</div>
-<div class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SYSPLUS=YES,</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">+</span><span class="p">,</span>
+<span class="n">SYSPLUS</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>
+</pre></div>
 </div>
 <p>This will means that the two Virtels STCs will have a VTAM APPLID of
 VIRTEL1A and VIRTEL2A. The Virtel relay LU names are R1AVT000-079 for
@@ -311,130 +293,82 @@ LPAR 1A, and R2AVT000-079 for LPAR 2A.</p>
 <p>Note: It is recommended that only the ARBO file can be shared in this
 configuration.</p>
 <p>The VTAM definition to support this configuration would like:-</p>
-<p>APPLVIPX VBUILD TYPE=APPL</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>* Product : VIRTEL *</p>
-<p>* Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A) *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>VIRTEL&amp;SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO), *</p>
-<p>ACBNAME=VIRTEL&amp;SYSCLONE</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>* R&amp;SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>R&amp;SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, *</p>
-<p>DLOGMOD=SNX32702,EAS=1</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>* R&amp;SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>R&amp;SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, *</p>
-<p>DLOGMOD=SCS,EAS=1</p>
-<p>R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, *</p>
-<p>DLOGMOD=DSILGMOD,EAS=1</p>
-<div class="line-block">
-<div class="line">Because this naming convention could be constraining if you want to
-use 4-character LU names, there is a second method which allows you to
-freely choose the LU names without the need to include the SYSCLONE
-characters as part of the LU name. In the next example two pools are
-defined. Pool *W1APOOL has relay names J000-J999, K000-K999,
-L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool
-*W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with
-printer names Snnn,Tnnn,Unnn) for LPAR 2:</div>
-<div class="line">Terminal &nbsp;Repeated Relay &nbsp; &nbsp; Entry &nbsp; &nbsp; &nbsp; &nbsp;Type &nbsp; I/O &nbsp;Pool &nbsp; &nbsp; 2nd
-Relay</div>
-<div class="line"><br /></div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>APPLVIPX VBUILD TYPE=APPL
+\* ------------------------------------------------------------------ \*
+\* Product : VIRTEL \*
+\* Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A) \*
+\* ------------------------------------------------------------------ \*
+VIRTEL&amp;SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO), \*
+      ACBNAME=VIRTEL&amp;SYSCLONE
+\* ------------------------------------------------------------------ \*
+\* R&amp;SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access \*
+\* ------------------------------------------------------------------ \*
+R&amp;SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+      DLOGMOD=SNX32702,EAS=1
+\* ------------------------------------------------------------------ \*
+\* R&amp;SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals \*
+\* ------------------------------------------------------------------ \*
+R&amp;SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+      DLOGMOD=SCS,EAS=1
+R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+      DLOGMOD=DSILGMOD,EAS=1
+</pre></div>
 </div>
-<div class="line-block">
-<div class="line">CLLOC000 &nbsp;0500 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-<div class="line">CLVTA000 &nbsp;1000 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-<div class="line">CLVTB000 &nbsp;1000 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-<div class="line">CLVTC000 &nbsp;1000 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-<div class="line">DELOC000 &nbsp;0010 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-<div class="line">DEVTA000 &nbsp;0016 &nbsp; &nbsp; *W+POOL &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp; &nbsp;3</div>
-<div class="line">W2HIP000 &nbsp;1000 &nbsp; &nbsp; P000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
-<div class="line">W2HIQ000 &nbsp;1000 &nbsp; &nbsp; Q000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
-<div class="line">W2HIR000 &nbsp;1000 &nbsp; &nbsp; R000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
-<div class="line">W2HIS000 &nbsp;1000 &nbsp; &nbsp; S000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
-<div class="line">W2HIT000 &nbsp;1000 &nbsp; &nbsp; T000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
-<div class="line">W2HIU000 &nbsp;1000 &nbsp; &nbsp; U000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp; &nbsp;1</div>
-<div class="line">W2HTJ000 &nbsp;1000 &nbsp; &nbsp; J000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W1APOOL P000</div>
-<div class="line">W2HTK000 &nbsp;1000 &nbsp; &nbsp; K000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W1APOOL Q000</div>
-<div class="line">W2HTL000 &nbsp;1000 &nbsp; &nbsp; L000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W1APOOL R000</div>
-<div class="line">W2HTM000 &nbsp;1000 &nbsp; &nbsp; M000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2APOOL S000</div>
-<div class="line">W2HTN000 &nbsp;1000 &nbsp; &nbsp; N000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2APOOL T000</div>
-<div class="line">W2HTO000 &nbsp;1000 &nbsp; &nbsp; O000 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 3 &nbsp; &nbsp; &nbsp;3 &nbsp; &nbsp;*W2APOOL U000</div>
+<p>Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE   characters as part of the LU name. In the next example two pools are defined. Pool *W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool *W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>     <span class="mi">2</span><span class="n">nd</span>  <span class="n">Relay</span>
+<span class="n">CLLOC000</span>  <span class="mi">0500</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTA000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTB000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">CLVTC000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DELOC000</span>  <span class="mi">0010</span>                            <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">DEVTA000</span>  <span class="mi">0016</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
+<span class="n">W2HIP000</span>  <span class="mi">1000</span>     <span class="n">P000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIQ000</span>  <span class="mi">1000</span>     <span class="n">Q000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIR000</span>  <span class="mi">1000</span>     <span class="n">R000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIS000</span>  <span class="mi">1000</span>     <span class="n">S000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIT000</span>  <span class="mi">1000</span>     <span class="n">T000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HIU000</span>  <span class="mi">1000</span>     <span class="n">U000</span>                   <span class="mi">1</span>      <span class="mi">1</span>
+<span class="n">W2HTJ000</span>  <span class="mi">1000</span>     <span class="n">J000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W1APOOL</span> <span class="n">P000</span>
+<span class="n">W2HTK000</span>  <span class="mi">1000</span>     <span class="n">K000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W1APOOL</span> <span class="n">Q000</span>
+<span class="n">W2HTL000</span>  <span class="mi">1000</span>     <span class="n">L000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W1APOOL</span> <span class="n">R000</span>
+<span class="n">W2HTM000</span>  <span class="mi">1000</span>     <span class="n">M000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2APOOL</span> <span class="n">S000</span>
+<span class="n">W2HTN000</span>  <span class="mi">1000</span>     <span class="n">N000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2APOOL</span> <span class="n">T000</span>
+<span class="n">W2HTO000</span>  <span class="mi">1000</span>     <span class="n">O000</span>                   <span class="mi">3</span>      <span class="mi">3</span>    <span class="o">*</span><span class="n">W2APOOL</span> <span class="n">U000</span>
+</pre></div>
 </div>
-<p>The VTAM definitions would be similar to those from the previous example
-except the &amp;SYSCLONE would be replaced by the relay characters.</p>
-<div class="line-block">
-<div class="line">APVIRT&amp;SYSCLONE. VBUILD TYPE=APPL</div>
+<p>The VTAM definitions would be similar to those from the previous example except the &amp;SYSCLONE would be replaced by the relay characters.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>APVIRT&amp;SYSCLONE. VBUILD TYPE=APPL
+\* ------------------------------------------------------------------\*
+\* Product     :  VIRTEL                                             \*
+\* Description :  Main ACB for VIRTEL application                    \*
+\* ------------------------------------------------------------------\*
+VIRTEL&amp;SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,               +
+             ACBNAME=VIRTEL&amp;SYSCLONE
+\* ------------------------------------------------------------------\*
+\* Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access\*
+\* Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access \*
+\* Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access\*
+\* ------------------------------------------------------------------\*
+J??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+K??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+L??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+M??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+N??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+O??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+\* ------------------------------------------------------------------\*
+\* Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals      \*
+\* Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals      \*
+\* Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals      \*
+\* ------------------------------------------------------------------\*
+P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+S??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+T??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+</pre></div>
 </div>
-<div class="line-block">
-<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
-*</div>
-<div class="line">* Product &nbsp; &nbsp; : &nbsp;VIRTEL
-*</div>
-<div class="line">* Description : &nbsp;Main ACB for VIRTEL application
-*</div>
-<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
-*</div>
-<div class="line">VIRTEL&amp;SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,
-+</div>
-<div class="line">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ACBNAME=VIRTEL&amp;SYSCLONE</div>
-</div>
-<div class="line-block">
-<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
-*</div>
-<div class="line">* Jxxx,Kxxx &nbsp; : VTAM application relays for VIRTEL Web Access
-*</div>
-<div class="line">* Lxxx,Mxxx &nbsp; : VTAM application relays for VIRTEL Web Access
-*</div>
-</div>
-<div class="line-block">
-<div class="line">* Nxxx,Oxxx &nbsp; : VTAM application relays for VIRTEL Web Access
-*</div>
-<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
-*</div>
-<div class="line">J??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
-</div>
-<div class="line-block">
-<div class="line">K??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
-</div>
-<div class="line-block">
-<div class="line">L??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
-</div>
-<div class="line-block">
-<div class="line">M??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
-</div>
-<div class="line-block">
-<div class="line">N??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
-</div>
-<div class="line-block">
-<div class="line">O??? APPL &nbsp;AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</div>
-</div>
-<div class="line-block">
-<div class="line">* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
-*</div>
-<div class="line">* Pxxx,Qxxx &nbsp; : Printer relays for VIRTEL Web Access terminals
-*</div>
-<div class="line">* Rxxx,Sxxx &nbsp; : Printer relays for VIRTEL Web Access terminals
-*</div>
-</div>
-<p>* Txxx,Uxxx &nbsp; : Printer relays for VIRTEL Web Access terminals &nbsp; &nbsp; &nbsp; *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</p>
-<p>Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</p>
-<p>R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</p>
-<div class="line-block">
-<div class="line">S??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</div>
-</div>
-<div class="line-block">
-<div class="line">T??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</div>
-</div>
-<div class="line-block">
-<div class="line">U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES</div>
-</div>
-<p>**
-Using the Distributed VIPA with Virtel**</p>
+<p><strong>Using the Distributed VIPA with Virtel</strong></p>
 <p>Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance
 Virtel session workload across more than one Virtel STC. The
 distributing TCPIP stack will balance workload across the participating
@@ -445,12 +379,14 @@ tasks is through using distributed VIPA address which is defined in a
 TCPIP profile. In the configuration above it is defined as
 192.168.170.15. The relevant PROFILE definitions for TCPIP would look
 like:-</p>
-<p>VIPADYNAMIC</p>
-<p>VIPARANGE DEFINE MOVEABLE NONDISRUPTIVE 255.255.255.0 192.168.170.20</p>
-<p>VIPADEFINE MOVE IMMED 255.255.255.0 192.168.170.15</p>
-<p>VIPADISTRIBUTE DEFINE TIMEDAFF 300 DISTMETHOD ROUNDROBIN 192.168.170.15</p>
-<p>DESTIP ALL</p>
-<p>ENDVIPADYNAMIC</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
+<span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPTIVE</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span>
+<span class="n">VIPADEFINE</span> <span class="n">MOVE</span> <span class="n">IMMED</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span>
+<span class="n">VIPADISTRIBUTE</span> <span class="n">DEFINE</span> <span class="n">TIMEDAFF</span> <span class="mi">300</span> <span class="n">DISTMETHOD</span> <span class="n">ROUNDROBIN</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span>
+<span class="n">DESTIP</span> <span class="n">ALL</span>
+<span class="n">ENDVIPADYNAMIC</span>
+</pre></div>
+</div>
 <p>It is essential to include the TIMEDAFF parameter in the VIPA definition
 as this maintains session affinity. The TIMEDAFF facility ensures that a
 user will always connect to the same VIRTEL while a session is open.
@@ -461,96 +397,86 @@ to applications.</p>
 the home address of the default interface) by specifying only the port
 number. For example:</p>
 <p>Local address ==&gt; :41001</p>
-<p>Line C-HTTP should be defined using the distributed VIPA address with
-port number:</p>
+<p>Line C-HTTP should be defined using the distributed VIPA address with port number:</p>
 <p>Local address ==&gt; 192.168.170.15:41002</p>
 <p>The Virtel Line display command displays this configuration:</p>
-<p><a href="#id11"><span class="problematic" id="id12">**</span></a>F SPVIR1A,LINES **</p>
-<p>VIR0200I LINES</p>
-<p>VIR0201I VIRTEL 4.54 APPLID=VIRTEL1A LINES</p>
-<p>VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
-<p>VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
-<p>VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.15:41002</p>
-<p>VIR0202I W-HTTP HTTP-W2H TCP1 :41001</p>
-<div class="line-block">
-<div class="line">VIR0202I &#8212;END OF LIST&#8212;</div>
-<div class="line">In this way the administrator can access a specific Virtel using port
-41001 of the appropriate LPAR’s IP address, while the users can access
-both Virtels using port 41002 on the DVIPA address.</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.54</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL1A</span> <span class="n">LINES</span>
+<span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41002</span>
+<span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span> <span class="p">:</span><span class="mi">41001</span>
+<span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
 </div>
+<p>In this way the administrator can access a specific Virtel using port 41001 of the appropriate LPAR’s IP address, while the users can access both Virtels using port 41002 on the DVIPA address.</p>
 <p><strong>Uisng Virtel with Apache Proxy as a load balancing mechanism</strong></p>
-<p>Another way of balancing workloads across multiple Virtel instances is
-through an Apache Reverse Proxy Server. In this setup the proxy server
-load balances IP sessions across the known TCPIP stacks, very much like
-IBM’s Sysplex Distributor.</p>
-<p><a href="#id15"><span class="problematic" id="id16">|D:\\Documents\\SysperTec\\Newsletters\\Proxy Load Balancing.jpg|</span></a></p>
-<p>Again, to maintain session affinity the correct load balancing
-parameters must be used. An example from the http.conf looks like this:-</p>
-<p>#</p>
-<p># Virtel</p>
-<p>#</p>
-<p>ProxyPass / balancer://hostcluster/</p>
-<p>ProxyPassReverse / balancer://hostcluster/</p>
-<p>&lt;Proxy balancer://hostcluster&gt;</p>
-<p>BalancerMember <a class="reference external" href="http://syt00101.gzaop.local:41002">http://syt00101.gzaop.local:41002</a> retry=5</p>
-<p>BalancerMember <a class="reference external" href="http://syt00101.gzaop.local:51002">http://syt00101.gzaop.local:51002</a> retry=5</p>
-<p>ProxySet lbmethod=byrequests</p>
-<p>&lt;/Proxy&gt;</p>
-<p>For more information on setting up an Apache Proxy Server visit
-<a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html</a></p>
-<p>To use Apache as a Proxy Server it is essential that the correct
-configuration modules are loaded at startup:-</p>
-<p># LoadModule foo_module modules/mod_foo.so</p>
-<p>LoadModule authz_host_module modules/mod_authz_host.so</p>
-<p>LoadModule auth_basic_module modules/mod_auth_basic.so</p>
-<p>LoadModule authn_file_module modules/mod_authn_file.so</p>
-<p>LoadModule authz_user_module modules/mod_authz_user.so</p>
-<p>#LoadModule authz_groupfile_module modules/mod_authz_groupfile.so</p>
-<p>LoadModule include_module modules/mod_include.so</p>
-<p>LoadModule log_config_module modules/mod_log_config.so</p>
-<p>LoadModule env_module modules/mod_env.so</p>
-<p>#LoadModule mime_magic_module modules/mod_mime_magic.so</p>
-<p>#LoadModule expires_module modules/mod_expires.so</p>
-<p>LoadModule headers_module modules/mod_headers.so</p>
-<p>LoadModule unique_id_module modules/mod_unique_id.so</p>
-<p>LoadModule setenvif_module modules/mod_setenvif.so</p>
-<p><strong>LoadModule proxy_module modules/mod_proxy.so</strong></p>
-<p>LoadModule proxy_connect_module modules/mod_proxy_connect.so</p>
-<p>#LoadModule proxy_ftp_module modules/mod_proxy_ftp.so</p>
-<p>LoadModule proxy_http_module modules/mod_proxy_http.so</p>
-<p>LoadModule mime_module modules/mod_mime.so</p>
-<p>#LoadModule dav_module modules/mod_dav.so</p>
-<p>#LoadModule dav_fs_module modules/mod_dav_fs.so</p>
-<p>LoadModule autoindex_module modules/mod_autoindex.so</p>
-<p>#LoadModule asis_module modules/mod_asis.so</p>
-<p>#LoadModule info_module modules/mod_info.so</p>
-<p>LoadModule cgi_module modules/mod_cgi.so</p>
-<p>LoadModule dir_module modules/mod_dir.so</p>
-<p>LoadModule actions_module modules/mod_actions.so</p>
-<p>#LoadModule speling_module modules/mod_speling.so</p>
-<p>#LoadModule userdir_module modules/mod_userdir.so</p>
-<p>LoadModule alias_module modules/mod_alias.so</p>
-<p>#LoadModule rewrite_module modules/mod_rewrite.so</p>
-<p>#LoadModule deflate_module modules/mod_deflate.so</p>
-<p><a href="#id13"><span class="problematic" id="id14">**</span></a>LoadModule proxy_balancer_module modules/mod_proxy_balancer.so **</p>
-<p>Some other recommendations are:</p>
-<div class="line-block">
-<div class="line">* Timeouts</div>
-<div class="line">SSLDisable</div>
-<div class="line">SSLV3Timeout 18010</div>
+<p>Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.</p>
+<p>See : <cite>D:\Documents\SysperTec\Newsletters\Proxy Load Balancing.jpg</cite></p>
+<p>Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Virtel</span>
+<span class="c1">#</span>
+<span class="n">ProxyPass</span> <span class="o">/</span> <span class="n">balancer</span><span class="p">:</span><span class="o">//</span><span class="n">hostcluster</span><span class="o">/</span>
+<span class="n">ProxyPassReverse</span> <span class="o">/</span> <span class="n">balancer</span><span class="p">:</span><span class="o">//</span><span class="n">hostcluster</span><span class="o">/</span>
+<span class="o">&lt;</span><span class="n">Proxy</span> <span class="n">balancer</span><span class="p">:</span><span class="o">//</span><span class="n">hostcluster</span><span class="o">&gt;</span>
+<span class="n">BalancerMember</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">syt00101</span><span class="o">.</span><span class="n">gzaop</span><span class="o">.</span><span class="n">local</span><span class="p">:</span><span class="mi">41002</span> <span class="n">retry</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">BalancerMember</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">syt00101</span><span class="o">.</span><span class="n">gzaop</span><span class="o">.</span><span class="n">local</span><span class="p">:</span><span class="mi">51002</span> <span class="n">retry</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">ProxySet</span> <span class="n">lbmethod</span><span class="o">=</span><span class="n">byrequests</span>
+<span class="o">&lt;/</span><span class="n">Proxy</span><span class="o">&gt;</span>
+</pre></div>
 </div>
-<p>* Format log with router information</p>
-<div class="line-block">
-<div class="line">LogFormat &#8220;%h %l %u %t \&#8221;%r\&#8221; %&gt;s %b \&#8221;%{Referer}i\&#8221;
-\&#8221;%{User-Agent}i\&#8221; \&#8221;%{BALANCER_WORKER_ROUTE}e\&#8221;&#8221; combined</div>
-<div class="line">* set Max-Age to 12h (doesn&#8217;t work with IE)</div>
-<div class="line">or</div>
-<div class="line">* enable mod_expires and set: (this should be checked)</div>
-<div class="line">ExpiresActive On</div>
-<div class="line">ExpiresDefault &#8220;access plus 16 h&#8221;</div>
+<p>For more information on setting up an Apache Proxy Server visit <a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html</a></p>
+<p>To use Apache as a Proxy Server it is essential that the correct configuration modules are loaded at startup:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#LoadModule foo\_module modules/mod\_foo.so</span>
+<span class="n">LoadModule</span> <span class="n">authz</span>\<span class="n">_host</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_authz</span>\<span class="n">_host</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">auth</span>\<span class="n">_basic</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_auth</span>\<span class="n">_basic</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">authn</span>\<span class="n">_file</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_authn</span>\<span class="n">_file</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">authz</span>\<span class="n">_user</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_authz</span>\<span class="n">_user</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule authz\_groupfile\_module modules/mod\_authz\_groupfile.so</span>
+<span class="n">LoadModule</span> <span class="n">include</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_include</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">log</span>\<span class="n">_config</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_log</span>\<span class="n">_config</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">env</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_env</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule mime\_magic\_module modules/mod\_mime\_magic.so</span>
+<span class="c1">#LoadModule expires\_module modules/mod\_expires.so</span>
+<span class="n">LoadModule</span> <span class="n">headers</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_headers</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">unique</span>\<span class="n">_id</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_unique</span>\<span class="n">_id</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">setenvif</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_setenvif</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_connect</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_connect</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule proxy\_ftp\_module modules/mod\_proxy\_ftp.so</span>
+<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_http</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_http</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">mime</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_mime</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule dav\_module modules/mod\_dav.so</span>
+<span class="c1">#LoadModule dav\_fs\_module modules/mod\_dav\_fs.so</span>
+<span class="n">LoadModule</span> <span class="n">autoindex</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_autoindex</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule asis\_module modules/mod\_asis.so</span>
+<span class="c1">#LoadModule info\_module modules/mod\_info.so</span>
+<span class="n">LoadModule</span> <span class="n">cgi</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_cgi</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="nb">dir</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_dir</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">actions</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_actions</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule speling\_module modules/mod\_speling.so</span>
+<span class="c1">#LoadModule userdir\_module modules/mod\_userdir.so</span>
+<span class="n">LoadModule</span> <span class="n">alias</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_alias</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule rewrite\_module modules/mod\_rewrite.so</span>
+<span class="c1">#LoadModule deflate\_module modules/mod\_deflate.so</span>
+<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_balancer</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_balancer</span><span class="o">.</span><span class="n">so</span>
+</pre></div>
 </div>
-<p>See <a class="reference external" href="https://httpd.apache.org/docs/2.2/mod/mod_expires.html">https://httpd.apache.org/docs/2.2/mod/mod_expires.html</a> for more
-information.</p>
+<p>Some other recommendations are:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Timeouts</span>
+<span class="n">SSLDisable</span>
+<span class="n">SSLV3Timeout</span> <span class="mi">18010</span>
+<span class="o">*</span> <span class="n">Format</span> <span class="n">log</span> <span class="k">with</span> <span class="n">router</span> <span class="n">information</span>
+<span class="n">LogFormat</span> <span class="s2">&quot;%h %l </span><span class="si">%u</span><span class="s2"> %t </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">r</span>\\<span class="s2">&quot; %&gt;s %b </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">{</span><span class="n">Referer</span><span class="p">}</span><span class="n">i</span>\\<span class="s2">&quot; </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">{</span><span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">}</span><span class="n">i</span>\\<span class="s2">&quot; </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">{</span><span class="n">BALANCER</span>\<span class="n">_WORKER</span>\<span class="n">_ROUTE</span><span class="p">}</span><span class="n">e</span>\\<span class="s2">&quot;&quot;</span> <span class="n">combined</span>
+<span class="o">*</span> <span class="nb">set</span> <span class="n">Max</span><span class="o">-</span><span class="n">Age</span> <span class="n">to</span> <span class="mi">12</span><span class="n">h</span> <span class="p">(</span><span class="n">doesn</span><span class="s1">&#39;t work with IE)  or</span>
+<span class="o">*</span> <span class="n">enable</span> <span class="n">mod</span>\<span class="n">_expires</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">:</span> <span class="p">(</span><span class="n">this</span> <span class="n">should</span> <span class="n">be</span> <span class="n">checked</span><span class="p">)</span>
+<span class="n">ExpiresActive</span> <span class="n">On</span>
+<span class="n">ExpiresDefault</span> <span class="s2">&quot;access plus 16 h&quot;</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://httpd.apache.org/docs/2.2/mod/mod_expires.html">https://httpd.apache.org/docs/2.2/mod/mod_expires.html</a> for more information.</p>
 </div>
 
 

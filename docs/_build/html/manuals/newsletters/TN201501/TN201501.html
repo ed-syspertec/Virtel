@@ -260,26 +260,18 @@ to the ARBO file and previous DDI constructs must be removed:-</em></p>
 </li>
 <li><p class="first"><em>Remove</em></p>
 <blockquote>
-<div><p><a href="#id1"><span class="problematic" id="id2">*</span></a>DDI constructs that used /maclib directory. 05A, 05U, 05G. *</p>
-<p><em>These were allocated a transaction range of W2H-05* (WEBHOST) and
-CLI-05* (CLIHOST) in previous Virtel releases. These will have to
-be deleted manually using either the 3270 or the HTML administration
-portal.</em></p>
+<div><p>DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
+<p>These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
+portal.</p>
 </div></blockquote>
 </li>
 </ol>
 <ol class="arabic">
 <li><p class="first"><em>Add</em></p>
 <blockquote>
-<div><p><a href="#id3"><span class="problematic" id="id4">*</span></a>Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD)
-with just VMACROS=YES. This will create the new CLI-03* and
-W2H-03* constructs. *</p>
-<p><em>See the entries in the VMACROS section of the V4.54
-SAMPLIB(ARBOLOAD) member.</em></p>
-<p><a href="#id5"><span class="problematic" id="id6">*</span></a>If your macros are in local storage then they will automatically
-populated to the new DDI constructs – USER, GROUP and GLOBAL,
-otherwise upload (Drag and drop) them from you saved copies using
-the administration DDI and macros interface. *</p>
+<div><p>Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
+<p>See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.</p>
+<p>If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
 </div></blockquote>
 </li>
 </ol>

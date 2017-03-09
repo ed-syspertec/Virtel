@@ -168,33 +168,35 @@ SP000.SPTHOLT.DEV.LOADLIB is compatible with the
 SPTHOLT.VIRTEL.BASE455.MACLIB(VIRTERM) member.</p>
 <p>When you start Virtel it will attempt to connect to the predefined
 Virtel logstream. If the logstream doesn’t exists one will be created
-automatically. The following messages will appear in the log:-:</p>
-<p>VIR0024I ATTACHING SUBTASKS
-IXC582I STRUCTURE VIRTEL_LOG_1 ALLOCATED BY SIZE/RATIOS. 596
-PHYSICAL STRUCTURE VERSION: CFF8ABE4 1865AA81
-STRUCTURE TYPE: LIST
-CFNAME: ZACF1
-ALLOCATION SIZE: 9 M
-POLICY SIZE: 9 M
-POLICY INITSIZE: 9 M
-POLICY MINSIZE: 0 K
-IXLCONN STRSIZE: 0 K
-ENTRY COUNT: 1274
-ELEMENT COUNT: 1179
-ENTRY:ELEMENT RATIO: 1 : 1
-ALLOCATION SIZE IS WITHIN CFRM POLICY DEFINITIONS
-IXL014I IXLCONN REQUEST FOR STRUCTURE VIRTEL_LOG_1 597
-WAS SUCCESSFUL. JOBNAME: IXGLOGR ASID: 0016
-CONNECTOR NAME: IXGLOGR_ZAMVS1 CFNAME: ZACF1
-IXL015I STRUCTURE ALLOCATION INFORMATION FOR 598
-STRUCTURE VIRTEL_LOG_1, CONNECTOR NAME IXGLOGR_ZAMVS1,
-CONNECTIVITY=DEFAULT
-CFNAME ALLOCATION STATUS/FAILURE REASON
-&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
-ZACF1 STRUCTURE ALLOCATED AC001800
-ZACF2 PREFERRED CF ALREADY SELECTED AC001800
-PREFERRED CF HIGHER IN PREFLIST
-LOGGER CONNECTED</p>
+automatically. The following messages will appear in the log:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0024I</span> <span class="n">ATTACHING</span> <span class="n">SUBTASKS</span>
+<span class="n">IXC582I</span> <span class="n">STRUCTURE</span> <span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span> <span class="n">ALLOCATED</span> <span class="n">BY</span> <span class="n">SIZE</span><span class="o">/</span><span class="n">RATIOS</span><span class="o">.</span> <span class="mi">596</span>
+<span class="n">PHYSICAL</span> <span class="n">STRUCTURE</span> <span class="n">VERSION</span><span class="p">:</span> <span class="n">CFF8ABE4</span> <span class="mi">1865</span><span class="n">AA81</span>
+<span class="n">STRUCTURE</span> <span class="n">TYPE</span><span class="p">:</span> <span class="n">LIST</span>
+<span class="n">CFNAME</span><span class="p">:</span> <span class="n">ZACF1</span>
+<span class="n">ALLOCATION</span> <span class="n">SIZE</span><span class="p">:</span> <span class="mi">9</span> <span class="n">M</span>
+<span class="n">POLICY</span> <span class="n">SIZE</span><span class="p">:</span> <span class="mi">9</span> <span class="n">M</span>
+<span class="n">POLICY</span> <span class="n">INITSIZE</span><span class="p">:</span> <span class="mi">9</span> <span class="n">M</span>
+<span class="n">POLICY</span> <span class="n">MINSIZE</span><span class="p">:</span> <span class="mi">0</span> <span class="n">K</span>
+<span class="n">IXLCONN</span> <span class="n">STRSIZE</span><span class="p">:</span> <span class="mi">0</span> <span class="n">K</span>
+<span class="n">ENTRY</span> <span class="n">COUNT</span><span class="p">:</span> <span class="mi">1274</span>
+<span class="n">ELEMENT</span> <span class="n">COUNT</span><span class="p">:</span> <span class="mi">1179</span>
+<span class="n">ENTRY</span><span class="p">:</span><span class="n">ELEMENT</span> <span class="n">RATIO</span><span class="p">:</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="n">ALLOCATION</span> <span class="n">SIZE</span> <span class="n">IS</span> <span class="n">WITHIN</span> <span class="n">CFRM</span> <span class="n">POLICY</span> <span class="n">DEFINITIONS</span>
+<span class="n">IXL014I</span> <span class="n">IXLCONN</span> <span class="n">REQUEST</span> <span class="n">FOR</span> <span class="n">STRUCTURE</span> <span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span> <span class="mi">597</span>
+<span class="n">WAS</span> <span class="n">SUCCESSFUL</span><span class="o">.</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">IXGLOGR</span> <span class="n">ASID</span><span class="p">:</span> <span class="mi">0016</span>
+<span class="n">CONNECTOR</span> <span class="n">NAME</span><span class="p">:</span> <span class="n">IXGLOGR</span>\<span class="n">_ZAMVS1</span> <span class="n">CFNAME</span><span class="p">:</span> <span class="n">ZACF1</span>
+<span class="n">IXL015I</span> <span class="n">STRUCTURE</span> <span class="n">ALLOCATION</span> <span class="n">INFORMATION</span> <span class="n">FOR</span> <span class="mi">598</span>
+<span class="n">STRUCTURE</span> <span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span><span class="p">,</span> <span class="n">CONNECTOR</span> <span class="n">NAME</span> <span class="n">IXGLOGR</span>\<span class="n">_ZAMVS1</span><span class="p">,</span>
+<span class="n">CONNECTIVITY</span><span class="o">=</span><span class="n">DEFAULT</span>
+<span class="n">CFNAME</span> <span class="n">ALLOCATION</span> <span class="n">STATUS</span><span class="o">/</span><span class="n">FAILURE</span> <span class="n">REASON</span>
+<span class="o">--------</span> <span class="o">----------------------------------------</span>
+<span class="n">ZACF1</span> <span class="n">STRUCTURE</span> <span class="n">ALLOCATED</span> <span class="n">AC001800</span>
+<span class="n">ZACF2</span> <span class="n">PREFERRED</span> <span class="n">CF</span> <span class="n">ALREADY</span> <span class="n">SELECTED</span> <span class="n">AC001800</span>
+<span class="n">PREFERRED</span> <span class="n">CF</span> <span class="n">HIGHER</span> <span class="n">IN</span> <span class="n">PREFLIST</span>
+<span class="n">LOGGER</span> <span class="n">CONNECTED</span>
+</pre></div>
+</div>
 <p>After this point all messages will be written to the logger, even
 responses to commands. Each Virtel that has LOG=LOGGER will connect to
 the structure. The last message you will see is:</p>
@@ -226,15 +228,18 @@ use the following JCL:-</p>
 <p>DATA TYPE(LOGR) REPORT(NO)</p>
 <p>LIST STRUCTURE NAME(VIRTEL_LOG_1) DETAIL(YES)</p>
 <p>LIST LOGSTREAM NAME(LOGGER.VIRTEL) DETAIL(YES)</p>
-<p>The output will look something like this:-:</p>
-<p>Ext. &lt;SEQ#&gt; Lowest Blockid / Highest GMT / Highest Local / Status Highest Blockid Highest RBA System Name
-&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;- &#8212;&#8212;&#8212;&#8212;&#8212;&#8211; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
-<p>A0000001 0000000000023F64 12/03/14 19:32:35 12/03/14 20:32:35 0000000000047E76 00023F98 ZAMVS1
-A0000002 0000000000047EFC 12/03/14 21:49:42 12/03/14 22:49:42 000000000006BE2C 00023FA1 ZAMVS1
-A0000003 000000000006BE9D 12/03/14 22:15:12 12/03/14 23:15:12 000000000008FDEB 00023FB4 ZAMVS1
-A0000004 000000000008FE51 12/09/15 20:55:39 12/09/15 21:55:39 00000000000B3D5B 00023F90 ZAMVS2
-A0000005 00000000000B3DE1 12/09/15 21:49:20 12/09/15 22:49:20 CURRENT 00000000000CCBC7 00018E5F ZAMVS2
-NUMBER OF DATA SETS IN LOG STREAM: 5</p>
+<p>The output will look something like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Ext</span><span class="o">.</span> <span class="o">&lt;</span><span class="n">SEQ</span><span class="c1">#&gt; Lowest Blockid / Highest GMT / Highest Local / Status Highest Blockid Highest RBA System Name</span>
+<span class="o">-----</span> <span class="o">--------</span> <span class="o">----------------</span> <span class="o">-----------------</span> <span class="o">------------------------</span>
+
+<span class="n">A0000001</span> <span class="mi">0000000000023</span><span class="n">F64</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">19</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">35</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">20</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">35</span> <span class="mf">0000000000047E76</span> <span class="mi">00023</span><span class="n">F98</span> <span class="n">ZAMVS1</span>
+<span class="n">A0000002</span> <span class="mi">0000000000047</span><span class="n">EFC</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">21</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">42</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">22</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">42</span> <span class="mi">000000000006</span><span class="n">BE2C</span> <span class="mi">00023</span><span class="n">FA1</span> <span class="n">ZAMVS1</span>
+<span class="n">A0000003</span> <span class="mi">000000000006</span><span class="n">BE9D</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">22</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">12</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">23</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">12</span> <span class="mi">000000000008</span><span class="n">FDEB</span> <span class="mi">00023</span><span class="n">FB4</span> <span class="n">ZAMVS1</span>
+<span class="n">A0000004</span> <span class="mi">000000000008</span><span class="n">FE51</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">20</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">39</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">39</span> <span class="mi">00000000000</span><span class="n">B3D5B</span> <span class="mi">00023</span><span class="n">F90</span> <span class="n">ZAMVS2</span>
+<span class="n">A0000005</span> <span class="mi">00000000000</span><span class="n">B3DE1</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">21</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">20</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">22</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">20</span> <span class="n">CURRENT</span> <span class="mi">00000000000</span><span class="n">CCBC7</span> <span class="mf">00018E5</span><span class="n">F</span> <span class="n">ZAMVS2</span>
+<span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">DATA</span> <span class="n">SETS</span> <span class="n">IN</span> <span class="n">LOG</span> <span class="n">STREAM</span><span class="p">:</span> <span class="mi">5</span>
+</pre></div>
+</div>
 <p>To delete the structure, run the following job:-</p>
 <p>//SPTHOLTC JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&amp;SYSUID</p>
 <p>//STEP1 EXEC PGM=IXCMIAPU,REGION=4M</p>
@@ -248,7 +253,7 @@ Virtel, issue the following command:-</p>
 <p>F VIRTEL,LOG=CONSOLE</p>
 <p>After this all Virtel messages will be written to the console.</p>
 <p>Example:-</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>F SPVIR1A,LOG=CONSOLE **</p>
+<p><strong>F SPVIR1A,LOG=CONSOLE</strong></p>
 <p>VIR0238I VIRTEL LOG RECORDING TO CONSOLE</p>
 <p>F SPVIR1A,LINES</p>
 <p>VIR0200I LINES</p>
@@ -282,7 +287,7 @@ Virtel, issue the following command:-</p>
 <p><strong>COPY</strong></p>
 <p>Records are to be copied to the SYSLOG-format file. If COPY is not
 specified, no records are copied.</p>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>start_date,end_date **</p>
+<p><strong>start_date,end_date</strong></p>
 <p>The starting and ending dates of the time span, both in the format
 YYYYDDD. start_date must not be later than end_date. end_date must
 not be later than today, the day the program runs. The default for

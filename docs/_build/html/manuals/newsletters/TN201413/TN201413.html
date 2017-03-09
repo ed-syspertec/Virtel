@@ -271,20 +271,24 @@ between two TCP/IP target stacks running on separate LPARS.</p>
 <p>Each LPAR runs an instance of Virtel. The CLI access port is defined as
 170.15/24 in both the SPVIR1A and SPVIR2A ARBO definitions.</p>
 <p>The TCPIP VIPA definitions in MVS1A look like:-</p>
-<p>; 192.168.170.20 SPVIRMAN for VIPARANGE test</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>; 192.168.170.15 VIPA for SPVIR1A and SPVIR2A distribution tests **</p>
-<p>VIPADYNAMIC</p>
-<p>VIPARANGE DEFINE MOVEABLE NONDISRUPTIVE 255.255.255.0 192.168.170.20</p>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>VIPADEFINE MOVE IMMED 255.255.255.0 192.168.170.15 **</p>
-<p><strong>VIPADISTRIBUTE DEFINE TIMEDAFF 300 DISTMETHOD ROUNDROBIN
-192.168.170.15</strong></p>
-<p>DESTIP ALL</p>
-<p>ENDVIPADYNAMIC</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span> <span class="n">SPVIRMAN</span> <span class="k">for</span> <span class="n">VIPARANGE</span> <span class="n">test</span>
+<span class="o">**</span><span class="p">;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span> <span class="n">VIPA</span> <span class="k">for</span> <span class="n">SPVIR1A</span> <span class="ow">and</span> <span class="n">SPVIR2A</span> <span class="n">distribution</span> <span class="n">tests</span> <span class="o">**</span>
+<span class="n">VIPADYNAMIC</span>
+<span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPTIVE</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span>
+<span class="o">**</span><span class="n">VIPADEFINE</span> <span class="n">MOVE</span> <span class="n">IMMED</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span> <span class="o">**</span>
+<span class="o">**</span><span class="n">VIPADISTRIBUTE</span> <span class="n">DEFINE</span> <span class="n">TIMEDAFF</span> <span class="mi">300</span> <span class="n">DISTMETHOD</span> <span class="n">ROUNDROBIN</span>
+<span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="o">**</span>
+<span class="n">DESTIP</span> <span class="n">ALL</span>
+<span class="n">ENDVIPADYNAMIC</span>
+</pre></div>
+</div>
 <p>The TCPIP VIPA definitions in MVS2A look like. It is a target for
 170.15/24. Nothing special is defined.</p>
-<p>VIPADYNAMIC</p>
-<p>VIPARANGE DEFINE MOVEABLE NONDISRUPT 255.255.255.0 192.168.170.20</p>
-<p>ENDVIPADYNAMIC</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
+<span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPT</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span>
+<span class="n">ENDVIPADYNAMIC</span>
+</pre></div>
+</div>
 <p>The SYSPLEX distributor will distribute sessions between MVS1A and MVS2A
 in a round robin fashion. Not that this based up a new IP address not a
 new browser session.</p>

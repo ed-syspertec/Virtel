@@ -218,7 +218,7 @@ following example where the password is clearly visible:-</p>
 <p>*live..Content-Length: 67....pf=E*</p>
 <p>*NTER&amp;cursorField=V000024B&amp;focusF*</p>
 <p>*ield=V0000243<strong>&amp;V0000243=PASSWORD</strong> * &lt; ND Field shown in clear &gt;</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>A line trace with a null CRYPTn **</p>
+<p><strong>A line trace with a null CRYPTn</strong></p>
 <p>Using the following null CRYPTn parameter in the TCT we can see that the
 ND field is displayed as a hex string. Not fool proof but better than
 clear text. The non displayable field (V0000243) is shown as a hex
@@ -269,32 +269,58 @@ VERS=2.4.18.0 PART=41U0441</p>
 HIGH-VOLT=1 TEMPERATURE=1 RADIATION=1</p>
 <p>+VIRCT10I STATEXPT : CCA=1 CMDF=0 56-bit-DES=1 Triple-DES=1 SET=1
 MAX-SYMMETRIC-MODULUS=4096</p>
-<p>In the line trace we can see that the field has been encrypted.</p>
-<p>*POST /w2h/WEB2SUB.HTML++VirtelSe*</p>
-<p>*ssion=AELoKQAAAAQevHSI HTTP/1.1.*</p>
-<p>*.Host: 192.168.92.161:41001..Ori*</p>
-<p>*gin: <a class="reference external" href="http://192.168.92.160..X-Vi*">http://192.168.92.160..X-Vi*</a></p>
-<p>*rtel-Request-Id: 2 ENTER 12:10:3*</p>
-<p>*5..User-Agent: Mozilla/5.0 (Wind*</p>
-<p>*ows NT 6.1; WOW64) AppleWebKit/5*</p>
-<p>*37.36 (KHTML, like Gecko) Chrome*</p>
-<p>*/48.0.2564.116 Safari/537.36..Co*</p>
-<p>*ntent-type: application/x-www-fo*</p>
-<p>*rm-urlencoded..Accept: */*..DNT:*</p>
-<p>* 1..Referer: <a class="reference external" href="http://192.168.92.1*">http://192.168.92.1*</a></p>
-<p>*60/w2h/WEB2AJAX.htm+Tso..Accept-*</p>
-<p>*Encoding: gzip, deflate..Accept-*</p>
-<p>*Language: en-GB,en-US;q=0.8,en;q*</p>
-<p>*=0.6..Cookie: ROUTEID=.1; SYSLAN*</p>
-<p>*G=en; SYSSTYL=BLUE; SYSPAGE=auto*</p>
-<p>*..X-Forwarded-For: 192.168.92.62*</p>
-<p>*..X-Forwarded-Host: 192.168.92.1*</p>
-<p>*60..X-Forwarded-Server: zagreb.s*</p>
-<p>*yspertec.com..Connection: Keep-A*</p>
-<p>*live..Content-Length: 75....pf=E*</p>
-<p>*NTER&amp;cursorField=V0000249&amp;focusF*</p>
-<p>*ield=V0000243<strong>&amp;V0000243=d2bd6296a*</strong></p>
-<p><strong>*e48f9f8</strong> * &lt; ND Field encypted with public key &gt;</p>
+<p>In the line trace we can see that the field has been encrypted:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">ssion</span><span class="o">=</span><span class="n">AELoKQAAAAQevHSI</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.</span>\<span class="o">*</span>
+
+\<span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Ori</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">gin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.160</span><span class="o">..</span><span class="n">X</span><span class="o">-</span><span class="n">Vi</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">rtel</span><span class="o">-</span><span class="n">Request</span><span class="o">-</span><span class="n">Id</span><span class="p">:</span> <span class="mi">2</span> <span class="n">ENTER</span> <span class="mi">12</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mi">3</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="mf">5.</span><span class="o">.</span><span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">:</span> <span class="n">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">Wind</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">ows</span> <span class="n">NT</span> <span class="mf">6.1</span><span class="p">;</span> <span class="n">WOW64</span><span class="p">)</span> <span class="n">AppleWebKit</span><span class="o">/</span><span class="mi">5</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="mf">37.36</span> <span class="p">(</span><span class="n">KHTML</span><span class="p">,</span> <span class="n">like</span> <span class="n">Gecko</span><span class="p">)</span> <span class="n">Chrome</span>\<span class="o">*</span>
+
+\<span class="o">*/</span><span class="mf">48.0</span><span class="o">.</span><span class="mf">2564.116</span> <span class="n">Safari</span><span class="o">/</span><span class="mf">537.36</span><span class="o">..</span><span class="n">Co</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">ntent</span><span class="o">-</span><span class="nb">type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">x</span><span class="o">-</span><span class="n">www</span><span class="o">-</span><span class="n">fo</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">rm</span><span class="o">-</span><span class="n">urlencoded</span><span class="o">..</span><span class="n">Accept</span><span class="p">:</span> \<span class="o">*/</span>\<span class="o">*..</span><span class="n">DNT</span><span class="p">:</span>\<span class="o">*</span>
+
+\<span class="o">*</span> <span class="mf">1.</span><span class="o">.</span><span class="n">Referer</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.1</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="mi">60</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">..</span><span class="n">Accept</span><span class="o">-</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">Encoding</span><span class="p">:</span> <span class="n">gzip</span><span class="p">,</span> <span class="n">deflate</span><span class="o">..</span><span class="n">Accept</span><span class="o">-</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">Language</span><span class="p">:</span> <span class="n">en</span><span class="o">-</span><span class="n">GB</span><span class="p">,</span><span class="n">en</span><span class="o">-</span><span class="n">US</span><span class="p">;</span><span class="n">q</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">en</span><span class="p">;</span><span class="n">q</span>\<span class="o">*</span>
+
+\<span class="o">*=</span><span class="mf">0.6</span><span class="o">..</span><span class="n">Cookie</span><span class="p">:</span> <span class="n">ROUTEID</span><span class="o">=.</span><span class="mi">1</span><span class="p">;</span> <span class="n">SYSLAN</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">G</span><span class="o">=</span><span class="n">en</span><span class="p">;</span> <span class="n">SYSSTYL</span><span class="o">=</span><span class="n">BLUE</span><span class="p">;</span> <span class="n">SYSPAGE</span><span class="o">=</span><span class="n">auto</span>\<span class="o">*</span>
+
+\<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span>\<span class="o">*</span>
+
+\<span class="o">*..</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.1</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="mf">60.</span><span class="o">.</span><span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">Server</span><span class="p">:</span> <span class="n">zagreb</span><span class="o">.</span><span class="n">s</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">yspertec</span><span class="o">.</span><span class="n">com</span><span class="o">..</span><span class="n">Connection</span><span class="p">:</span> <span class="n">Keep</span><span class="o">-</span><span class="n">A</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">live</span><span class="o">..</span><span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mf">75.</span><span class="o">...</span><span class="n">pf</span><span class="o">=</span><span class="n">E</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">NTER</span><span class="o">&amp;</span><span class="n">cursorField</span><span class="o">=</span><span class="n">V0000249</span><span class="o">&amp;</span><span class="n">focusF</span>\<span class="o">*</span>
+
+\<span class="o">*</span><span class="n">ield</span><span class="o">=</span><span class="n">V0000243</span>\ <span class="o">**&amp;</span><span class="n">V0000243</span><span class="o">=</span><span class="n">d2bd6296a</span>\<span class="o">***</span>
+
+\<span class="o">*</span><span class="n">e48f9f8</span><span class="o">**</span> <span class="o">*</span> <span class="o">&lt;</span> <span class="n">ND</span> <span class="n">Field</span> <span class="n">encypted</span> <span class="k">with</span> <span class="n">public</span> <span class="n">key</span> <span class="o">&gt;</span>
+</pre></div>
+</div>
 <p><strong>Designing templates to use Encryption</strong></p>
 <p>Virtels encryption works at a field level within a template. As an
 example if we take a look at WEB2AJAX.HTML we can see how the relevant

@@ -193,7 +193,9 @@ to provide the ADMINVWM tool is defined as follows:-</p>
 <p><a class="reference internal" href="../../../_images/image115.png"><img alt="image0" src="../../../_images/image115.png" style="width: 6.30000in; height: 4.24931in;" /></a></p>
 <p>Once this has been defined to VIRTEL we can access the tool with the
 following URL:-</p>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a><a class="reference external" href="http://192.168.170.30:41001/ADMVWM.htm+ADMINVWM">http://192.168.170.30:41001/ADMVWM.htm+ADMINVWM</a> *</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">ADMVWM</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">ADMINVWM</span>
+</pre></div>
+</div>
 <p>This will present the developer with the Administrations tool panel and
 will provide administration functions from which directory management
 functions can be performed.</p>
@@ -260,22 +262,24 @@ point to this VSAM TRSF file. We also need to a VSAM definition to the
 VIRTEL TCT and reassemble. Two definitions are required in the TCT. Once
 this has been done VIRTEL can be restarted and the VSAM file can be
 allocated to the pre-production directory.</p>
-<p>……</p>
-<p>PASSTCK=YES, *</p>
-<p>UFILE1=(SAMPTRSF,ACBH1,0,10,01), *</p>
-<p>UFILE2=(HTMLTRSF,ACBH2,0,10,01), *</p>
-<p>UFILE3=(SCENTRSF,ACBH3,0,10,01), *</p>
-<p><strong>UFILE4=(SCENPROD,ACBH4,0,10,01), *</strong></p>
-<p>GATE=GENERAL, *</p>
-<p>……</p>
-<p>ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), *</p>
-<p>STRNO=3</p>
-<p>ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), *</p>
-<p>STRNO=3</p>
-<p>ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), *</p>
-<p>STRNO=3</p>
-<p><strong>ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), *</strong></p>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>STRNO=3 **</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>……
+PASSTCK=YES, \*
+UFILE1=(SAMPTRSF,ACBH1,0,10,01), \*
+UFILE2=(HTMLTRSF,ACBH2,0,10,01), \*
+UFILE3=(SCENTRSF,ACBH3,0,10,01), \*
+**UFILE4=(SCENPROD,ACBH4,0,10,01), \***
+GATE=GENERAL, \*
+……
+ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+STRNO=3
+ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+STRNO=3
+ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+STRNO=3
+**ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), \***
+**STRNO=3 **
+</pre></div>
+</div>
 <p><strong>Defining the pre-production directory</strong></p>
 <p>Once we have defined the VSAM file and have it allocated to VIRTEL we
 can associate the VSAM file with a direct using the directory management

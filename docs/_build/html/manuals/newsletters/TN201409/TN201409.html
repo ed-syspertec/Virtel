@@ -207,7 +207,7 @@ happen:-</p>
 <p>Virtel pretends to be that remote 3270 printer through its relay LU associated with a user’s terminal session. In our case the printer name is REHIP000. This is set up in the terminal section of Virtel which can be accessed using F2 from the Virtel Configuration Menu. The following screen shot shows a terminal definition screen in Virtel. I’m using a prefix of REH in my example. The shipped defaults are prefixed RHT.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the <a href="#id1"><span class="problematic" id="id2">*</span></a>W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
+<p class="last">Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the *W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
 </div>
 <p>In the shipped sample definitions the LU Type 1 (RHTIM000) is associated
 with the relay terminal definition RHTVT000. To use LU T3 (3270
@@ -458,7 +458,7 @@ control statements provide the layout, image and control information.
 Three separate files are involved – the DOCOPT, INPUT and LAYOUT files.
 These files are created by the user and the uploaded to the SAMPTRSF W2H
 directory. Samples are provided below. These work with the SCENFLND
-scenarion. See :ref: <cite>Appendix B &lt;#_appendix_b&gt;</cite>:-</p>
+scenarion. See <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B</span></a>:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>scenvjrs-docopt_l.txt
 
 &lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot;--&gt;
@@ -775,7 +775,7 @@ END
 </div>
 </div>
 <div class="section" id="appendix-b">
-<span id="id3"></span><h3>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h3>
+<span id="id1"></span><h3>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENFLND SCREENS APPL=SCENFLND
 *
 *  SCENARIO TO CONVERT £PRINT£ FROM TO PDF. LANDSCAPE

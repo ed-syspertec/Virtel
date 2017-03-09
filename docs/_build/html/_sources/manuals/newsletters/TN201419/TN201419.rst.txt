@@ -41,7 +41,9 @@ to provide the ADMINVWM tool is defined as follows:-
 Once this has been defined to VIRTEL we can access the tool with the
 following URL:-
 
-*http://192.168.170.30:41001/ADMVWM.htm+ADMINVWM *
+::
+
+   http://192.168.170.30:41001/ADMVWM.htm+ADMINVWM
 
 This will present the developer with the Administrations tool panel and
 will provide administration functions from which directory management
@@ -152,37 +154,24 @@ VIRTEL TCT and reassemble. Two definitions are required in the TCT. Once
 this has been done VIRTEL can be restarted and the VSAM file can be
 allocated to the pre-production directory.
 
-……
+::
 
-PASSTCK=YES, \*
-
-UFILE1=(SAMPTRSF,ACBH1,0,10,01), \*
-
-UFILE2=(HTMLTRSF,ACBH2,0,10,01), \*
-
-UFILE3=(SCENTRSF,ACBH3,0,10,01), \*
-
-**UFILE4=(SCENPROD,ACBH4,0,10,01), \***
-
-GATE=GENERAL, \*
-
-……
-
-ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
-
-STRNO=3
-
-ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
-
-STRNO=3
-
-ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
-
-STRNO=3
-
-**ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), \***
-
-**STRNO=3 **
+   ……
+   PASSTCK=YES, \*
+   UFILE1=(SAMPTRSF,ACBH1,0,10,01), \*
+   UFILE2=(HTMLTRSF,ACBH2,0,10,01), \*
+   UFILE3=(SCENTRSF,ACBH3,0,10,01), \*
+   **UFILE4=(SCENPROD,ACBH4,0,10,01), \***
+   GATE=GENERAL, \*
+   ……
+   ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+   STRNO=3
+   ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+   STRNO=3
+   ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+   STRNO=3
+   **ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), \***
+   **STRNO=3 **
 
 **Defining the pre-production directory**
 

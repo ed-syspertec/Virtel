@@ -182,7 +182,7 @@
 <p>You can capture and list macros by using the two macro ICON functions displayed in the Virtel tool bar. These are the red record/stop button
 and the green/blue triangular display button. Green indicates local mode and blue DDI mode. When the ICON is blue macros will be synchronized between the users local storage and the DDI repository. The type of synchronization will depend on the options set in the w2hparm.js member.</p>
 <p><strong>The Record function</strong></p>
-<p><a class="reference internal" href="../../../_images/image140.png"><img alt="image0" src="../../../_images/image140.png" style="width: 6.30000in; height: 1.51389in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image147.png"><img alt="image0" src="../../../_images/image147.png" style="width: 6.30000in; height: 1.51389in;" /></a></p>
 <p>Fig. 1 - The Macro Record ICON</p>
 <p>The record function is an on/off button that will record key strokes.
 When recording, the ICON will flash until it is clicked at which point
@@ -197,7 +197,9 @@ operation in order to create and save an entry within the macro.json file.</p>
 a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for
 the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will
 only invoke the refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:-:</p>
-<p>w2hparm.keymapping=true</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
 <p>With keybaord mapping enabled the macro interface will display the associated key mapping against the macro.</p>
 <p><a class="reference internal" href="../../../_images/keyboard_mapping.png"><img alt="keyboard_mapping" src="../../../_images/keyboard_mapping.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
 <p>Fig. 2a - Saving a macro with key mapping</p>
@@ -277,18 +279,18 @@ Save As, Edit and Delete are available within a context menu when you right clic
 <p><strong>Making macros available to users.</strong></p>
 <p>Any macros an administrator creates can be made available to users either at the Global, Group or Userid level. To make macros available at a userid level, select the User TAB from the DDI main panel. Enter the user’s USERID in the user name field and press the “Green Tick” icon. This will create an area within the DDI macro repository. Upload the
 macros.json file you wish to make available to this user by dragging the file into the area designated by the dotted lines. This will initiate an upload of the macro into the users userid area.</p>
-<p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 6.3in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image810.png"><img alt="image7" src="../../../_images/image810.png" style="width: 6.3in; height: 5.2in;" /></a></p>
 <p>Fig. 7 - Creating a macros.json file for a user</p>
 <p>As with any file within the DDI repository a context menu can be brought up by right clicking on the file name.</p>
-<p><a class="reference internal" href="../../../_images/image98.png"><img alt="image8" src="../../../_images/image98.png" style="width: 6.3in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image99.png"><img alt="image8" src="../../../_images/image99.png" style="width: 6.3in; height: 5.2in;" /></a></p>
 <p>Fig. 8 - Editing a global macro</p>
 <p>An administrator can update any macros held within the DDI repository. Changes will be reflected in the user’s local storage once the user open’s their macro display with the “Green” ICON arrow. The following display shows the DDI repository macros as displayed in the user’s browser. Remember that User macros are related to the users’ Userid and
 the Group. This ability to associate macros with a userid and group means that all macros, related to business assets, can be managed and maintained in a central DDI repository. Maintenance can be applied centrally and distributed out to the user’s browser. Users only have the option of modifying their user macros. Any changes will be uploaded to the mainframe and stored in the users’ macro area within the DDI repository. This keeps the user macro modifications in sync with the repository.</p>
-<p><a class="reference internal" href="../../../_images/image108.png"><img alt="image9" src="../../../_images/image108.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image109.png"><img alt="image9" src="../../../_images/image109.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
 <p>Fig. 9 - User display of DDI macro interface</p>
 <p><strong>Updating DDI macros at the Group level</strong></p>
 <p>To make macros available at a Group level, select the Group TAB from the DDI main panel. Enter the Group name in the group name field and press the “Green Tick” icon. This will create an area within the DDI macro repository were macros for this group can be held. Upload the Group macros.json file you wish to make available to this group by dragging the file into the area designated by the dotted lines. This will initiate an upload of the Group macro.</p>
-<p><a class="reference internal" href="../../../_images/image1113.png"><img alt="image10" src="../../../_images/image1113.png" style="width: 6.30000in; height: 5.19931in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1114.png"><img alt="image10" src="../../../_images/image1114.png" style="width: 6.30000in; height: 5.19931in;" /></a></p>
 <p>Fig. 10 - Macro Group Directory</p>
 <p>To obtain the associated context menu right click on the file name – macros.json. This will provide the additional functionality to Edit, Download or Delete the macro.</p>
 <p><strong>Notes:</strong></p>
@@ -301,13 +303,15 @@ the Group. This ability to associate macros with a userid and group means that a
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td>The “SAVE AS” function does not have the ability to re-assign key mapping. This can only be done through the macro editor. To clone a macro with a new key mapping perform the following operations:-:</td></tr>
+<tr><td class="label">[3]</td><td>The “SAVE AS” function does not have the ability to re-assign key mapping. This can only be done through the macro editor. To clone a macro with a new key mapping perform the following operations:-</td></tr>
 </tbody>
 </table>
-<p>Open macro “A”
+<div class="highlight-default"><div class="highlight"><pre><span></span>Open macro “A”
 Save as “B”
 Open macro “B” in Editor.
-Save with key board mapping.</p>
+Save with key board mapping.
+</pre></div>
+</div>
 <p><strong>Autoupdate of macros in local storage.</strong></p>
 <p>Updates to DDI macros held in local storage can only be updated once the
 user refreshes or redisplays the macros. This triggers the download from
@@ -323,19 +327,17 @@ arrangement, using separate HTMLTRSF files then the
 that macro changes are reflected in all DDI repositories and
 consequently associated local storage. Update the w2hparm.js file to
 include the synchronizeVirtelMacros option:-:</p>
-<p>w2hparm.useVirtelMacros = session,
-w2hparm.synchronizeVirtelMacros = true,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="n">session</span><span class="p">,</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">synchronizeVirtelMacros</span> <span class="o">=</span> <span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
 <p><strong>Appendix A - Macro format and commands</strong></p>
 <p>The format of the macro.json is embedded JSON structures. Each name
 structure represents a keystroke macro identified by the “name” keyword.</p>
-<div class="line-block">
-<div class="line">Name: The name of the macro entry.</div>
-<div class="line"><br /></div>
-<div class="line">Rev: The “rev” is a user revision keyword.</div>
-<div class="line"><br /></div>
-<div class="line">Def: The “def” keyword identifies the commands and entry values.</div>
-<div class="line"><br /></div>
-</div>
+<blockquote>
+<div>Name: The name of the macro entry.
+Rev: The “rev” is a user revision keyword.
+Def: The “def” keyword identifies the commands and entry values.</div></blockquote>
 <p>The macro editor supports the following commands:-:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="s2">&quot;any string of characters to input into 3270 screen&quot;</span>
 <span class="o">-</span>  <span class="n">move</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>

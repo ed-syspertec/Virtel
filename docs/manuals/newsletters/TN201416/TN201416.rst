@@ -60,7 +60,7 @@ details of this handshake and the certificate exchange can be found in
 Appendix B. TLS/SSL Security z/OS Communications Server: IP
 Configuration Guide.
 
-**Certificates **
+**Certificate**
 
 What’s in a X.509 certificate?
 
@@ -71,49 +71,30 @@ look at a certificate held with RACF we can see this information.
 Certificates are identified by a combination of LABEL, USERID or
 Certification Authority (CA).
 
-READY
+::
 
-**RACDCERT ID(SPVIRSTC) LIST(LABEL('VIRTEL SSL DEMO')) **
-
-Digital certificate information for user SPVIRSTC:
-
-Label: VIRTEL SSL DEMO
-
-Certificate ID: 2Qji1+XJ2eLjw+XJ2ePF00Di4tNAxMXU1kBA
-
-Status: TRUST
-
-Start Date: 2014/07/08 00:00:00
-
-End Date: 2015/07/08 23:59:59
-
-Serial Number:
-
->05<
-
-Issuer's Name:
-
->CN=z/OS Security Server.O=SYSPERTEC.C=FR<
-
-Subject's Name:
-
->CN=RECETTE VIRTEL.T=VIRTEL Web Access.O=SYSPERTEC.C=FR<
-
-Key Usage: HANDSHAKE, DATAENCRYPT
-
-Key Type: RSA
-
-Key Size: 1024
-
-Private Key: YES
-
-Ring Associations:
-
-Ring Owner: SPVIRSTC
-
-Ring:
-
->VIRTRING<
+	READY
+	**RACDCERT ID(SPVIRSTC) LIST(LABEL('VIRTEL SSL DEMO')) **
+	Digital certificate information for user SPVIRSTC:
+	Label: VIRTEL SSL DEMO
+	Certificate ID: 2Qji1+XJ2eLjw+XJ2ePF00Di4tNAxMXU1kBA
+	Status: TRUST
+	Start Date: 2014/07/08 00:00:00
+	End Date: 2015/07/08 23:59:59
+	Serial Number:
+	>05<
+	Issuer's Name:
+	>CN=z/OS Security Server.O=SYSPERTEC.C=FR<
+	Subject's Name:
+	>CN=RECETTE VIRTEL.T=VIRTEL Web Access.O=SYSPERTEC.C=FR<
+	Key Usage: HANDSHAKE, DATAENCRYPT
+	Key Type: RSA
+	Key Size: 1024
+	Private Key: YES
+	Ring Associations:
+	Ring Owner: SPVIRSTC
+	Ring:
+	>VIRTRING<
 
 Similar details can be found in the browser settings. For example here
 is what Chrome displays in the HTTPS/SSL certificate database.
@@ -205,49 +186,31 @@ NOTAFTER(DATE(2026-06-30))
 If we list the certificate after we have created it will get the
 following:-
 
-READY
+::
 
-**RACDCERT CERTAUTH LIST(LABEL('z/OS signing certificate')) **
+	READY
 
-Digital certificate information for CERTAUTH:
-
-Label: z/OS signing certificate
-
-Certificate ID: 2QiJmZmDhZmjgalh1uJAoomHlYmVh0CDhZmjiYaJg4GjhUBA
-
-Status: TRUST
-
-Start Date: 2013/07/03 00:00:00
-
-End Date: 2026/06/30 23:59:59
-
-Serial Number:
-
->00<
-
-Issuer's Name:
-
->CN=z/OS Security Server.O=SYSPERTEC.C=FR<
-
-Subject's Name:
-
->CN=z/OS Security Server.O=SYSPERTEC.C=FR<
-
-Key Usage: **CERTSIGN**
-
-Key Type: RSA
-
-Key Size: 1024
-
-Private Key: YES
-
-Ring Associations:
-
-Ring Owner: SPVIRSTC
-
-Ring:
-
->VIRTRING<
+	**RACDCERT CERTAUTH LIST(LABEL('z/OS signing certificate')) **
+	Digital certificate information for CERTAUTH:
+	Label: z/OS signing certificate
+	Certificate ID: 2QiJmZmDhZmjgalh1uJAoomHlYmVh0CDhZmjiYaJg4GjhUBA
+	Status: TRUST
+	Start Date: 2013/07/03 00:00:00
+	End Date: 2026/06/30 23:59:59
+	Serial Number:
+	>00<
+	Issuer's Name:
+	>CN=z/OS Security Server.O=SYSPERTEC.C=FR<
+	Subject's Name:
+	>CN=z/OS Security Server.O=SYSPERTEC.C=FR<
+	Key Usage: **CERTSIGN**
+	Key Type: RSA
+	Key Size: 1024
+	Private Key: YES
+	Ring Associations:
+	Ring Owner: SPVIRSTC
+	Ring:
+	>VIRTRING<
 
 The key usage identifies this certificate as a signing certificate. This
 certificate will be used to sign other certificates that we generate.
@@ -256,37 +219,24 @@ Next is the server certificate. Again we use RACF to generate the
 certificate and use the RACF signing certificate to “sign” it. The
 following extract is from the Virtel SAMPLIB member SSLUCERT.
 
-//CCERTIF EXEC PGM=IKJEFT1A
+::
 
-//SYSTSPRT DD SYSOUT=\*
-
-//SYSTSIN DD \*
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Create a digital certificate \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPVIRSTC) /\* VIRTEL userid \*/ +
-
-GENCERT +
-
-WITHLABEL('VIRTEL SSL DEMO') +
-
-**SIGNWITH(CERTAUTH LABEL('z/OS signing certificate')) + **
-
-SUBJECTSDN( +
-
-CN('RECETTE VIRTEL') +
-
-T('VIRTEL Web Access') +
-
-O('SYSPERTEC') +
-
-C('FR')) +
-
-KEYUSAGE(HANDSHAKE DATAENCRYPT) SIZE(1024)
+	//CCERTIF EXEC PGM=IKJEFT1A
+	//SYSTSPRT DD SYSOUT=\*
+	//SYSTSIN DD \*
+	/\*-----------------------------------------------------------------\*/
+	/\* Create a digital certificate \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPVIRSTC) /\* VIRTEL userid \*/ +
+	GENCERT +
+	WITHLABEL('VIRTEL SSL DEMO') +
+	**SIGNWITH(CERTAUTH LABEL('z/OS signing certificate')) + **
+	SUBJECTSDN( +
+	CN('RECETTE VIRTEL') +
+	T('VIRTEL Web Access') +
+	O('SYSPERTEC') +
+	C('FR')) +
+	KEYUSAGE(HANDSHAKE DATAENCRYPT) SIZE(1024)
 
 Note how we identify the signing certificate with the SIGNWITH parameter
 using the same label information that we used when defining the RACF
@@ -300,33 +250,22 @@ with the VIRTEL server RACF user id (in our case SPVIRSTC). The member
 SSLSETUP has some RACF commands to perform the key ring generation. Here
 is an extract:
 
-/\*-----------------------------------------------------------------\*/
+::
 
-/\* Create a keyring \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPVIRSTC) /\* VIRTEL userid \*/ +
-
-ADDRING(VIRTRING)
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Add the certificate to the keyring \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPVIRSTC) /\* VIRTEL userid \*/ +
-
-CONNECT( +
-
-ID(SPVIRSTC) +
-
-**LABEL('VIRTEL SSL DEMO') + **
-
-RING(VIRTRING) +
-
-DEFAULT)
+	/\*-----------------------------------------------------------------\*/
+	/\* Create a keyring \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPVIRSTC) /\* VIRTEL userid \*/ +
+	ADDRING(VIRTRING)
+	/\*-----------------------------------------------------------------\*/
+	/\* Add the certificate to the keyring \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPVIRSTC) /\* VIRTEL userid \*/ +
+	CONNECT( +
+	ID(SPVIRSTC) +
+	**LABEL('VIRTEL SSL DEMO') + **
+	RING(VIRTRING) +
+	DEFAULT)
 
 Again it is the label that identifies the key(certificate) that we want
 to add to the key ring owned by user SPVIRSTC.
@@ -338,73 +277,42 @@ import into our browser’s key data base. In the Virtel SAMPLIB member
 SSLUCERT performs the task of creating the user certificate and creating
 an “exportable” file.
 
-//DCERTIF EXEC PGM=IKJEFT01
+::
 
-//SYSTSPRT DD SYSOUT=\*
-
-//SYSTSIN DD \*
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Delete previous digital certificate \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPTHOLT) /\* client userid \*/ +
-
-DELETE(LABEL('SSL client certificate'))
-
-//\*-------------------------------------------------------------------\*
-
-//\* UCERTIF : CREATE DIGITAL CERTIFICATE FOR USER \*
-
-//\*-------------------------------------------------------------------\*
-
-//UCERTIF EXEC PGM=IKJEFT1A
-
-//SYSTSPRT DD SYSOUT=\*
-
-//SYSTSIN DD \*
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Create a digital certificate \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPTHOLT) /\* client userid \*/ +
-
-GENCERT +
-
-WITHLABEL('SSL client certificate') +
-
-**SIGNWITH(CERTAUTH LABEL('z/OS signing certificate')) + **
-
-SUBJECTSDN( +
-
-CN('Ed Holt') /\* client name \*/ +
-
-O('Syspertec Communication') /\* company name \*/ +
-
-C('France')) /\* country \*/ +
-
-KEYUSAGE(HANDSHAKE) SIZE(1024)
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Export the digital certificate and private key \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPTHOLT) /\* client userid \*/ +
-
-EXPORT(LABEL('SSL client certificate')) +
-
-FORMAT(PKCS12DER) +
-
-DSN(SPTHOLT.P12) +
-
-PASSWORD('azj77sdmlizczxerghgbiadbbdbxnbsnbxiazb')
+	//DCERTIF EXEC PGM=IKJEFT01
+	//SYSTSPRT DD SYSOUT=\*
+	//SYSTSIN DD \*
+	/\*-----------------------------------------------------------------\*/
+	/\* Delete previous digital certificate \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPTHOLT) /\* client userid \*/ +
+	DELETE(LABEL('SSL client certificate'))
+	//\*-------------------------------------------------------------------\*
+	//\* UCERTIF : CREATE DIGITAL CERTIFICATE FOR USER \*
+	//\*-------------------------------------------------------------------\*
+	//UCERTIF EXEC PGM=IKJEFT1A
+	//SYSTSPRT DD SYSOUT=\*
+	//SYSTSIN DD \*
+	/\*-----------------------------------------------------------------\*/
+	/\* Create a digital certificate \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPTHOLT) /\* client userid \*/ +
+	GENCERT +
+	WITHLABEL('SSL client certificate') +
+	**SIGNWITH(CERTAUTH LABEL('z/OS signing certificate')) + **
+	SUBJECTSDN( +
+	CN('Ed Holt') /\* client name \*/ +
+	O('Syspertec Communication') /\* company name \*/ +
+	C('France')) /\* country \*/ +
+	KEYUSAGE(HANDSHAKE) SIZE(1024)
+	/\*-----------------------------------------------------------------\*/
+	/\* Export the digital certificate and private key \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPTHOLT) /\* client userid \*/ +
+	EXPORT(LABEL('SSL client certificate')) +
+	FORMAT(PKCS12DER) +
+	DSN(SPTHOLT.P12) +
+	PASSWORD('azj77sdmlizczxerghgbiadbbdbxnbsnbxiazb')
 
 Again we sign the certificate with our RACF signing certificate. The
 user certificate is also exported to a flat file – SPTHOLT.P12 in our
@@ -420,59 +328,35 @@ The final thing to do is to add the user certificate and the signing
 certificate to the key ring associated with the Virtel server task user
 id.
 
-//\*-------------------------------------------------------------------\*
+::
 
-//\* Associate certificate with user id \*
-
-//\*-------------------------------------------------------------------\*
-
-//UCERTIF EXEC PGM=IKJEFT1A
-
-//SYSTSPRT DD SYSOUT=\*
-
-//SYSTSIN DD \*
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Add certificate to Server ring \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPVIRSTC) /\* client userid \*/ +
-
-CONNECT (CERTAUTH +
-
-**LABEL('z/OS signing certificate') + **
-
-RING(VIRTRING) +
-
-USAGE(CERTAUTH))
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Add certificate to Server ring \*/
-
-/\*-----------------------------------------------------------------\*/
-
-RACDCERT ID(SPVIRSTC) /\* client userid \*/ +
-
-CONNECT (ID(SPTHOLT) +
-
-**LABEL('SSL client certificate') + **
-
-RING(VIRTRING) +
-
-USAGE(CERTAUTH))
-
-/\*-----------------------------------------------------------------\*/
-
-/\* Refresh the RACF profiles \*/
-
-/\*-----------------------------------------------------------------\*/
-
-SETROPTS RACLIST(DIGTRING) REFRESH
-
-SETROPTS RACLIST(DIGTCERT) REFRESH
+	//\*-------------------------------------------------------------------\*
+	//\* Associate certificate with user id \*
+	//\*-------------------------------------------------------------------\*
+	//UCERTIF EXEC PGM=IKJEFT1A
+	//SYSTSPRT DD SYSOUT=\*
+	//SYSTSIN DD \*
+	/\*-----------------------------------------------------------------\*/
+	/\* Add certificate to Server ring \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPVIRSTC) /\* client userid \*/ +
+	CONNECT (CERTAUTH +
+	**LABEL('z/OS signing certificate') + **
+	RING(VIRTRING) +
+	USAGE(CERTAUTH))
+	/\*-----------------------------------------------------------------\*/
+	/\* Add certificate to Server ring \*/
+	/\*-----------------------------------------------------------------\*/
+	RACDCERT ID(SPVIRSTC) /\* client userid \*/ +
+	CONNECT (ID(SPTHOLT) +
+	**LABEL('SSL client certificate') + **
+	RING(VIRTRING) +
+	USAGE(CERTAUTH))
+	/\*-----------------------------------------------------------------\*/
+	/\* Refresh the RACF profiles \*/
+	/\*-----------------------------------------------------------------\*/
+	SETROPTS RACLIST(DIGTRING) REFRESH
+	SETROPTS RACLIST(DIGTCERT) REFRESH
 
 The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate
 and the “CONNECT ID(SPTHOLT) indicates that the certificate labelled
@@ -483,25 +367,19 @@ related to certificates and key rings.
 If we list our key ring for user SPVIRSTC we should have three
 certificates.
 
-READY
+::
 
-**RACDCERT ID(SPVIRSTC) LISTRING(VIRTRING) **
+	READY
 
-Digital ring information for user SPVIRSTC:
-
-Ring:
-
->VIRTRING<
-
-Certificate Label Name Cert Owner USAGE DEFAULT
-
--------------------------------- ------------ -------- -------
-
-VIRTEL SSL DEMO ID(SPVIRSTC) PERSONAL YES
-
-z/OS signing certificate CERTAUTH CERTAUTH NO
-
-SSL client certificate ID(SPTHOLT) CERTAUTH NO
+	**RACDCERT ID(SPVIRSTC) LISTRING(VIRTRING) **
+	Digital ring information for user SPVIRSTC:
+	Ring:
+	>VIRTRING<
+	Certificate Label Name Cert Owner USAGE DEFAULT
+	-------------------------------- ------------ -------- -------
+	VIRTEL SSL DEMO ID(SPVIRSTC) PERSONAL YES
+	z/OS signing certificate CERTAUTH CERTAUTH NO
+	SSL client certificate ID(SPTHOLT) CERTAUTH NO
 
 **Importing the certificate on the client work station.**
 
@@ -529,47 +407,29 @@ enable PassTicket support for our target application SPCICSH and using
 user id SPVIRSTC, out Virtel server user id. This job will have to be
 customized accordingly:
 
-//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+::
 
-//\* RDEFINE FACILITY IRR.RTICKETSERV
-
-//SYSTSPRT DD SYSOUT=\*
-
-//SYSTSIN DD \*
-
-SETROPTS CLASSACT(APPL)
-
-SETROPTS CLASSACT(PTKTDATA)
-
-SETROPTS RACLIST(PTKTDATA)
-
-SETROPTS GENERIC(PTKTDATA)
-
-RDEFINE FACILITY IRR.RTICKETSERV
-
-RDELETE PTKTDATA SPCICSH
-
-RDELETE PTKTDATA IRRPTAUTH.SPCICSH.\*
-
-RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.\* UACC(NONE)
-
-RDEFINE PTKTDATA **SPCICSH** SSIGNON(KEYMASKED(998A654FEBCDA123)) +
-
-UACC(NONE)
-
-//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
-
-//SYSTSPRT DD SYSOUT=\*
-
-//SYSTSIN DD \*
-
-PERMIT IRR.RTICKETSERV CL(FACILITY) ID(\ **SPVIRSTC**) ACC(READ)
-
-PERMIT IRRPTAUTH.SPCICSH.\* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
-
-SETROPTS REFRESH RACLIST(PTKTDATA)
-
-SETROPTS REFRESH RACLIST(FACILITY)
+	//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+	//\* RDEFINE FACILITY IRR.RTICKETSERV
+	//SYSTSPRT DD SYSOUT=\*
+	//SYSTSIN DD \*
+	SETROPTS CLASSACT(APPL)
+	SETROPTS CLASSACT(PTKTDATA)
+	SETROPTS RACLIST(PTKTDATA)
+	SETROPTS GENERIC(PTKTDATA)
+	RDEFINE FACILITY IRR.RTICKETSERV
+	RDELETE PTKTDATA SPCICSH
+	RDELETE PTKTDATA IRRPTAUTH.SPCICSH.\*
+	RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.\* UACC(NONE)
+	RDEFINE PTKTDATA **SPCICSH** SSIGNON(KEYMASKED(998A654FEBCDA123)) +
+	UACC(NONE)
+	//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+	//SYSTSPRT DD SYSOUT=\*
+	//SYSTSIN DD \*
+	PERMIT IRR.RTICKETSERV CL(FACILITY) ID(\ **SPVIRSTC**) ACC(READ)
+	PERMIT IRRPTAUTH.SPCICSH.\* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
+	SETROPTS REFRESH RACLIST(PTKTDATA)
+	SETROPTS REFRESH RACLIST(FACILITY)
 
 In order for Virtel to generate PassTickets, you must also modify your
 VIRTCT to include the parameter PASSTCK=YES and then reassemble the
@@ -585,61 +445,36 @@ This is configured in the pagent configuration file which can be found
 in /etc/pagent.conf. The two areas that we are interested in are the
 TTLSEnvironmentAction section and the TTLSRule section.
 
-TTLSEnvironmentAction **VIRTELenvir\_inSec**
+::
 
-{
-
-HandshakeRole ServerWithClientAuth
-
-Trace 7
-
-TTLSKeyringParms
-
-{
-
-Keyring VIRTRING
-
-}
-
-TTLSEnvironmentAdvancedParms
-
-{
-
-SSLv2 On
-
-SSLv3 On
-
-TLSv1 On
-
-ClientAuthType SAFCheck
-
-}
-
-TTLSCipherParmsRef VIRTELcipher
-
-}
-
-…………
-
-…………
-
-…………
-
-TTLSRule VIRTELrule\_in\_eh
-
-{
-
-Jobname SPVIREH
-
-LocalPortRange 41002
-
-Direction Inbound
-
-TTLSGroupActionRef VIRTELgroup
-
-TTLSEnvironmentActionRef **VIRTELenvir\_inSec**
-
-}
+	TTLSEnvironmentAction **VIRTELenvir\_inSec**
+	{
+	HandshakeRole ServerWithClientAuth
+	Trace 7
+	TTLSKeyringParms
+	{
+	Keyring VIRTRING
+	}
+	TTLSEnvironmentAdvancedParms
+	{
+	SSLv2 On
+	SSLv3 On
+	TLSv1 On
+	ClientAuthType SAFCheck
+	}
+	TTLSCipherParmsRef VIRTELcipher
+	}
+	…………
+	…………
+	…………
+	TTLSRule VIRTELrule\_in\_eh
+	{
+	Jobname SPVIREH
+	LocalPortRange 41002
+	Direction Inbound
+	TTLSGroupActionRef VIRTELgroup
+	TTLSEnvironmentActionRef **VIRTELenvir\_inSec**
+	}
 
 The TTLS Rule identifies Virtel Started task name via the Jobname
 parameter and also the port number that can support secured sessions \_
@@ -648,10 +483,10 @@ https. In this case it is port 41002.
 The rules section also identifies the environmental section. In this
 case we have selected an environment section called VIRTELenvir\_insec.
 
-In VIRTELenvir\_insec we identify that we want to use both server and
+In VIRTELenvir_insec we identify that we want to use both server and
 client certificates –
 
-*HandShakeRole ServerWithClientAuth *
+*HandShakeRole ServerWithClientAuth*
 
 That the user certificate must be associated with a valid RACF userid –
 
@@ -758,35 +593,21 @@ Diagnosis Guide. In the following the 5013 suggests that the browser has
 sent clear text; in other words, http was used instead of https in the
 URL.
 
-BPXF024I (TCPIP) Oct 7 13:33:08 TTLS 83951769 : 15:33:08 TCPIP 367
+::
 
-EZD1281I TTLS Map CONNID: 000006A2 LOCAL: 192.168.170.30..41002
-
-REMOTE: 192.168.92.62..57545 JOBNAME: SPVIREH USERID: SPVIRSTC TYPE:
-
-InBound STATUS: Enabled RULE: VIRTELrule\_in\_eh ACTIONS: VIRTELgroup
-
-VIRTELenvir\_inSec \*\*N/A\*\*
-
-BPXF024I (TCPIP) Oct 7 13:33:08 TTLS 83951769 : 15:33:08 TCPIP 368
-
-EZD1286I TTLS Error GRPID: 00000002 ENVID: 00000000 CONNID: 000006A2
-
-LOCAL: 192.168.170.30..41002 REMOTE: 192.168.92.62..57545 JOBNAME:
-
-SPVIREH USERID: SPVIRSTC RULE: VIRTELrule\_in\_eh RC: 5003 Data
-
-Decryption
-
-**EZD1287I TTLS Error RC: 5003 Data Decryption 369 **
-
-LOCAL: 192.168.170.30..41002
-
-REMOTE: 192.168.92.62..57545
-
-JOBNAME: SPVIREH RULE: VIRTELrule\_in\_eh
-
-USERID: SPVIRSTC GRPID: 00000002 ENVID: 00000000 CONNID: 000006A2
+	BPXF024I (TCPIP) Oct 7 13:33:08 TTLS 83951769 : 15:33:08 TCPIP 367 EZD1281I TTLS Map CONNID: 000006A2 LOCAL: 192.168.170.30..41002
+	REMOTE: 192.168.92.62..57545 JOBNAME: SPVIREH USERID: SPVIRSTC TYPE: InBound STATUS: Enabled RULE: VIRTELrule\_in\_eh ACTIONS: VIRTELgroup
+	VIRTELenvir\_inSec \*\*N/A\*\*
+	BPXF024I (TCPIP) Oct 7 13:33:08 TTLS 83951769 : 15:33:08 TCPIP 368
+	EZD1286I TTLS Error GRPID: 00000002 ENVID: 00000000 CONNID: 000006A2 
+	LOCAL: 192.168.170.30..41002 REMOTE: 192.168.92.62..57545 JOBNAME:
+	SPVIREH USERID: SPVIRSTC RULE: VIRTELrule\_in\_eh RC: 5003 Data
+	Decryption
+	**EZD1287I TTLS Error RC: 5003 Data Decryption 369 **
+	LOCAL: 192.168.170.30..41002
+	REMOTE: 192.168.92.62..57545
+	JOBNAME: SPVIREH RULE: VIRTELrule_in_eh
+	USERID: SPVIRSTC GRPID: 00000002 ENVID: 00000000 CONNID: 000006A2
 
 Common PAGENT return codes:-
 
@@ -844,52 +665,49 @@ VIRHT57E LINE IS NOT SET UP FOR HTTPS
     occurs. We would also like to see the exact URL which was entered at
     the browser, as well as the AT-TLS pagent.conf file.
 
-**
-z/OS IBM References**
+**z/OS IBM References**
 
-• **SA22-7683 Security Server: RACF Security Administrator's Guide**
+- SA22-7683 Security Server: RACF Security Administrator's Guide
 
-Chapter 21. RACF and Digital Certificates
+	Chapter 21. RACF and Digital Certificates
 
-• **SC24-5901 Cryptographic Services: System SSL Programming**
+- SC24-5901 Cryptographic Services: System SSL Programming
 
-Chapter 12. Messages and Codes
+	Chapter 12. Messages and Codes
 
-• **SC31-8775 Communications Server: IP Configuration Guide**
+- SC31-8775 Communications Server: IP Configuration Guide
 
-Chapter 14. Policy-based networking
+	Chapter 14. Policy-based networking
 
-Chapter 18. Application Transparent Transport Layer Security (AT-TLS)
-data protection
+	Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection
 
-• **SC31-8776 Communications Server: IP Configuration Reference**
+- SC31-8776 Communications Server: IP Configuration Reference
 
-Chapter 21. Policy Agent and policy applications
+	Chapter 21. Policy Agent and policy applications
 
-• **GC31-8782 Communications Server: IP Diagnosis Guide**
+- GC31-8782 Communications Server: IP Diagnosis Guide
 
-Chapter 28. Diagnosing Application Transparent Transport Layer Security
-(AT-TLS)
+	Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)
 
-• **SC31-8784 Communications Server: IP Messages: Volume 2**
+- SC31-8784 Communications Server: IP Messages: Volume 2
 
-Chapter 10. EZD1xxxx messages
+	Chapter 10. EZD1xxxx messages
 
 **Virtel References**
 
--  **VIRTEL Installation Guide**
+-  VIRTEL Installation Guide
 
-PASSTCK parameter Page 66
+		PASSTCK parameter Page 66
 
--  **VIRTEL Connectivity Reference**
+-  VIRTEL Connectivity Reference
 
-Transactions – PassTicket Parameter Page 93
+		Transactions – PassTicket Parameter Page 93
 
-Transactions – Security Parameter Page 94
+		Transactions – Security Parameter Page 94
 
--  **VIRTEL Web Access Guide**
+-  VIRTEL Web Access Guide
 
-Security – Data encryption by SSL Page 244
+		Security – Data encryption by SSL Page 244
 
 .. |image0| image:: images/media/image1.png
 .. |image1| image:: images/media/image2.png

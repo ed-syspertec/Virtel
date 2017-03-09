@@ -279,31 +279,37 @@ New FOREACH$/ENDFOR$ Scenario statements**</p>
 and ENDFOR$.</p>
 <p>Example:-</p>
 <p>Loop on a variable:</p>
-<p>LOOP1 FOREACH$ VALUE-IN-VARIABLE,VAR=&#8217;TOTO&#8217;</p>
-<p>CASE$ CURRENT-FOREACH-VARIABLE-OF,LOOP1,(EQ,&#8217;XXXX&#8217;,ET1)</p>
-<p>COPY$ SYSTEM-TO-VARIABLE,VAR=&#8217;I1&#8217;,LENGTH=2, *</p>
-<p>FIELD=(VALUE-OF,CURRENT-FOREACH-INDEX),TYPE=REPLACE</p>
-<p>COPY$ SYSTEM-TO-VARIABLE,VAR=&#8217;V1&#8217;, *</p>
-<p>FIELD=(VALUE-OF,CURRENT-FOREACH-VARIABLE),TYPE=REPLACE</p>
-<p>ERROR$ 0,&#8217;TOTO: &#8216;,&#8217;*I1&#8217;,&#8217;==&#8217;,&#8217;*V1&#8217;</p>
-<p>ENDFOR$ LOOP1</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>LOOP1 FOREACH$ VALUE-IN-VARIABLE,VAR=&#39;TOTO&#39;
+CASE$ CURRENT-FOREACH-VARIABLE-OF,LOOP1,(EQ,&#39;XXXX&#39;,ET1)
+COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;I1&#39;,LENGTH=2, \*
+FIELD=(VALUE-OF,CURRENT-FOREACH-INDEX),TYPE=REPLACE
+COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;V1&#39;, \*
+FIELD=(VALUE-OF,CURRENT-FOREACH-VARIABLE),TYPE=REPLACE
+ERROR$ 0,&#39;TOTO: &#39;,&#39;\*I1&#39;,&#39;==&#39;,&#39;\*V1&#39;
+ENDFOR$ LOOP1
+</pre></div>
+</div>
 <p>Loop to print all values of a variable:</p>
-<p>LOOP2 FOREACH$ VALUE-IN-SCREEN,SCREEN=(1,1,80,24)</p>
-<p>COPY$ SCREEN-TO-VARIABLE,SCREEN=(=,01,80),VAR=&#8217;screenL&#8217;, X</p>
-<p>TYPE=REPLACE</p>
-<p>COPY$ SYSTEM-TO-VARIABLE,VAR=&#8217;L1&#8217;,LENGTH=2, *</p>
-<p>FIELD=(VALUE-OF,CURRENT-LINE),TYPE=REPLACE</p>
-<p>ERROR$ 0,&#8217;line &#8216;,&#8217;*L1&#8217;,&#8217;==&#8217;,&#8217;*screenL&#8217;</p>
-<p>ENDFOR$ LOOP2</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>LOOP2 FOREACH$ VALUE-IN-SCREEN,SCREEN=(1,1,80,24)
+COPY$ SCREEN-TO-VARIABLE,SCREEN=(=,01,80),VAR=&#39;screenL&#39;, X
+        TYPE=REPLACE
+COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;L1&#39;,LENGTH=2,
+        FIELD=(VALUE-OF,CURRENT-LINE),TYPE=REPLACE
+ERROR$ 0,&#39;line &#39;,&#39;\*L1&#39;,&#39;==&#39;,&#39;\*screenL&#39;
+ENDFOR$ LOOP2
+</pre></div>
+</div>
 <p>Variables of a FOREACH loop may be referenced by the COPY$ statement. In
 the example below, the value of VAR1 which is copied is the current
 value in the FOREACH$ loop.</p>
-<p>LOOP1 FOREACH$ VALUE-IN-VARIABLE,VAR=&#8217;VAR1&#8217;</p>
-<p>COPY$ VARIABLE-TO-SCREEN,VAR=&#8217;VAR1&#8217;,FOREACH=LOOP1, *</p>
-<p>SCREEN=(=,=,=)</p>
-<p>COPY$ VARIABLE-TO-VARIABLE,VAR=(&#8216;VAR1&#8217;,&#8217;VAR2&#8217;),FOREACH=LOOP1, *</p>
-<p>OFFSET=8,LENGTH=5,PAD=&#8217; &#8216;</p>
-<p>ENDFOR$ LOOP1</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>LOOP1 FOREACH$ VALUE-IN-VARIABLE,VAR=&#39;VAR1&#39;
+COPY$ VARIABLE-TO-SCREEN,VAR=&#39;VAR1&#39;,FOREACH=LOOP1,    *
+SCREEN=(=,=,=)
+COPY$ VARIABLE-TO-VARIABLE,VAR=(&#39;VAR1&#39;,&#39;VAR2&#39;),FOREACH=LOOP1, *
+OFFSET=8,LENGTH=5,PAD=&#39; &#39;
+ENDFOR$ LOOP1
+</pre></div>
+</div>
 <p>Notes:</p>
 <p>FOREACH$ must have a label, and this label must match the ENDFOR$
 parameter.</p>
@@ -316,33 +322,53 @@ through to the browser and refreshing the screen.</p>
 <p>Macros can now be associated with a “ALT” or “CTRL” key sequence.</p>
 <p><strong>Key definition enhancement for scripts</strong></p>
 <p>Allows more &#8216;user friendly&#8217; codings for PA/PF keys in a transaction
-script. Function keys may now be specified as &amp;*key. For example :</p>
-<p>&amp;*CLEAR</p>
-<p>&amp;*clear</p>
-<p>&amp;*ENTER</p>
-<p>&amp;*enter</p>
-<p>&amp;*PA1</p>
-<p>&amp;*pa1</p>
-<p>&amp;*PF24</p>
-<p>&amp;*Pf24</p>
-<p>**
-What’s new in Virtel 4.55 (December 2015)**</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>CICS QUICKLNK support for multiple CHANNEL and CONTAINER names **</p>
+script. Function keys may now be specified as &amp;*key. For example :-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&amp;</span>\<span class="o">*</span><span class="n">CLEAR</span>
+
+<span class="o">&amp;</span>\<span class="o">*</span><span class="n">clear</span>
+
+<span class="o">&amp;</span>\<span class="o">*</span><span class="n">ENTER</span>
+
+<span class="o">&amp;</span>\<span class="o">*</span><span class="n">enter</span>
+
+<span class="o">&amp;</span>\<span class="o">*</span><span class="n">PA1</span>
+
+<span class="o">&amp;</span>\<span class="o">*</span><span class="n">pa1</span>
+
+<span class="o">&amp;</span>\<span class="o">*</span><span class="n">PF24</span>
+
+<span class="o">&amp;</span>\<span class="o">*</span><span class="n">Pf24</span>
+</pre></div>
+</div>
+<p><strong>What’s new in Virtel 4.55 (December 2015)</strong></p>
+<p><strong>CICS QUICKLNK support for multiple CHANNEL and CONTAINER names</strong></p>
 <p>Quicklink support has been enhanced to allow multiple channels and
 contains. QuickLink is a protocol used in support of Syspertec’s Virtel
 Transaction Gateway (VTG) product which is an alternative to IBM’s CTG
-solution.</p>
-<p>OPTION$ FOR-QUICKLNK,</p>
-<p>(METHOD,&#8217;CALL-CONTAINER-LIST&#8217;),</p>
-<p>(PROGRAM,&#8217;*TARGET&#8217;),</p>
-<p>(CONTAINERS-FOR-QUESTION,&#8217;DATAIN&#8217;),</p>
-<p>(CONTAINERS-FOR-RESPONSE,&#8217;DATAOUT&#8217;),</p>
-<p>(CHANNEL,&#8217;*MYCHANNEL&#8217;),</p>
-<p>(TERMINAL,&#8217;CICS-TERMINAL&#8217;),</p>
-<p>(RET-CODE,&#8217;RETURN-CODE&#8217;),</p>
-<p>(RET-CICS1,&#8217;EIBRESP&#8217;),</p>
-<p>(RET-CICS2,&#8217;EIBRESP2&#8217;),</p>
-<p>TOVAR=&#8217;MYPARMS&#8217;</p>
+solution:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>OPTION$ FOR-QUICKLNK,
+
+(METHOD,&#39;CALL-CONTAINER-LIST&#39;),
+
+(PROGRAM,&#39;\*TARGET&#39;),
+
+(CONTAINERS-FOR-QUESTION,&#39;DATAIN&#39;),
+
+(CONTAINERS-FOR-RESPONSE,&#39;DATAOUT&#39;),
+
+(CHANNEL,&#39;\*MYCHANNEL&#39;),
+
+(TERMINAL,&#39;CICS-TERMINAL&#39;),
+
+(RET-CODE,&#39;RETURN-CODE&#39;),
+
+(RET-CICS1,&#39;EIBRESP&#39;),
+
+(RET-CICS2,&#39;EIBRESP2&#39;),
+
+TOVAR=&#39;MYPARMS&#39;
+</pre></div>
+</div>
 <p><strong>Improved SCREEN-PROCESSING facility</strong></p>
 <p>This modification introduces a new screen processing facility by
 allowing you to SET$ a SCREEN-POSITION, advancing the SCREEN-POSITION,
@@ -572,58 +598,20 @@ Support.</p>
 <p>F VIRTEL,MEMDISPLAY[,ENABLE | DISABLE]</p>
 <p>This produces a breakdown of the internal VIRTEL subpools. See the
 following command response:-</p>
-<p>F SPTHOLTV,MEMDISPLAY</p>
-<p>VIR0200I MEMDISPLAY</p>
-<p>VIR0271I DISPLAY 763</p>
-<p>SP1=00024478 SP2=00000CCC SP3=00090DE0 SP4=000027E4</p>
-<p>00910091 00030009 02430294 00090011</p>
-<p>SP5=00029293 SP6=0004DCF4 SP7=00000000 SP8=00000000</p>
-<p>00A404C7 01370137 00000000 00000002</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=1</p>
-<p>PAG=00108000 NFQ=00108008 #FQ=00000001 FRE=0000B2A0</p>
-<p>PAG=000F8000 NFQ=000F8008 #FQ=00000001 FRE=00000080</p>
-<p>PAG=000E8000 NFQ=000E8008 #FQ=00000001 FRE=00000078</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=2</p>
-<p>PAG=1EC14000 NFQ=1EC14008 #FQ=00000004 FRE=0000F2F0</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=3</p>
-<p>PAG=1ECC4000 NFQ=1ECC4008 #FQ=00000002 FRE=00006408</p>
-<p>PAG=1ED54000 NFQ=1ED54008 #FQ=00000002 FRE=00001750</p>
-<p>PAG=1EC74000 NFQ=1EC74008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ED04000 NFQ=1ED04008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ED94000 NFQ=1ED94008 #FQ=00000002 FRE=00002768</p>
-<p>PAG=1ECF4000 NFQ=1ECF4008 #FQ=00000002 FRE=000017F0</p>
-<p>PAG=1EE04000 NFQ=1EE04008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ED74000 NFQ=1ED74008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ECE4000 NFQ=1ECE4008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1EC64000 NFQ=1EC64008 #FQ=00000001 FRE=00000878</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=4</p>
-<p>PAG=1EC04000 NFQ=1EC04008 #FQ=00000003 FRE=0000D750</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=5</p>
-<p>PAG=1ED24000 NFQ=1ED24008 #FQ=00000001 FRE=0000A1D8</p>
-<p>PAG=1ED14000 NFQ=1ED14008 #FQ=00000001 FRE=000043B8</p>
-<p>PAG=1EC54000 NFQ=1EC54008 #FQ=00000001 FRE=000043B8</p>
-<p>PAG=1EBB4000 NFQ=1EBB4008 #FQ=00000001 FRE=000043B8</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=6</p>
-<p>PAG=1EBF4000 NFQ=1EBF4008 #FQ=00000003 FRE=00000D40</p>
-<p>PAG=1EBE4000 NFQ=1EBE4008 #FQ=00000001 FRE=00000088</p>
-<p>PAG=1EBD4000 NFQ=1EBD4008 #FQ=00000001 FRE=000000B8</p>
-<p>PAG=1EBC4000 NFQ=1EBC4008 #FQ=00000001 FRE=000000D0</p>
-<p>PAG=1EBA4000 NFQ=1EBA4008 #FQ=00000001 FRE=00000108</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=7</p>
-<p>PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=8</p>
-<p>PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000</p>
-<p>ALLOC=0001213K, FREE=0000314K, TOTAL=0001536K</p>
-<p>VIR0272I END</p>
-<p>**
-<a href="#id3"><span class="problematic" id="id4">**</span></a>VMDT Enablement/Dis-enablement</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MDT</span> <span class="n">Enablement</span><span class="o">/</span><span class="n">Dis</span><span class="o">-</span><span class="n">enablement</span>
+</pre></div>
+</div>
 <p>The memory diagnostic tool is activated/deactivated through the commands
 or by TCT parameters</p>
 <p>Commands:-</p>
 <p>The memory diagnostic tool can be activated by the command:-</p>
-<p>F VIRTEL,MEMDISPLAY,ENABLE</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span><span class="p">,</span><span class="n">ENABLE</span>
+</pre></div>
+</div>
 <p>The memory diagnostic tool can be deactivated by the following command:-</p>
-<p>F VIRTEL,MEMDISPLAY,DISABLE</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span><span class="p">,</span><span class="n">DISABLE</span>
+</pre></div>
+</div>
 <p>TCT Parameters:-</p>
 <p>New MEMORY parameter - MEMHST</p>
 <p>MEMORY=(BELOW/ABOVE(DEBUG | MEMHST | ALLOW64BITS)</p>
@@ -639,53 +627,101 @@ bar storage.</p>
 <p>VMDT Operation</p>
 <p>With the memory diagnostic tool active the following command be used to
 summarize the VIRTEL subpool active allocated memory:-</p>
-<p>F VIRTEL,MEMDISPLAY</p>
-<p>The following will be displayed:-</p>
-<p>F SPTHOLTV,MEMDISPLAY</p>
-<p>VIR0200I MEMDISPLAY</p>
-<p>VIR0271I DISPLAY 978</p>
-<p>SP1=00024478 SP2=00001044 SP3=0008E35F SP4=00002F61</p>
-<p>00910091 00040009 02380294 000B0011</p>
-<p>SP5=<strong>000317DC</strong> SP6=0004DF73 SP7=00000000 SP8=00000220</p>
-<p><strong>00C504C7</strong> 01370137 00000000 00000002</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=1</p>
-<p>PAG=00109000 NFQ=00109008 #FQ=00000001 FRE=0000B2A0</p>
-<p>PAG=000F9000 NFQ=000F9008 #FQ=00000001 FRE=00000080</p>
-<p>PAG=000E9000 NFQ=000E9008 #FQ=00000001 FRE=00000078</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=2</p>
-<p>PAG=1EC14000 NFQ=1EC14008 #FQ=00000005 FRE=0000EF68</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=3</p>
-<p>PAG=1ECD4000 NFQ=1ECD4008 #FQ=00000002 FRE=00009DF8</p>
-<p>PAG=1ED54000 NFQ=1ED54008 #FQ=00000002 FRE=00001750</p>
-<p>PAG=1EC84000 NFQ=1EC84008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ED04000 NFQ=1ED04008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ED94000 NFQ=1ED94008 #FQ=00000002 FRE=00002768</p>
-<p>PAG=1ECF4000 NFQ=1ECF4008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1EE04000 NFQ=1EE04008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ED74000 NFQ=1ED74008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1ECE4000 NFQ=1ECE4008 #FQ=00000001 FRE=00000878</p>
-<p>PAG=1EC64000 NFQ=1EC64008 #FQ=00000001 FRE=00000878</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=4</p>
-<p>PAG=1EC04000 NFQ=1EC04008 #FQ=00000004 FRE=0000CFA0</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=5</p>
-<p>PAG=1ECA4000 NFQ=1ECA4008 #FQ=00000002 FRE=0000D870</p>
-<p>PAG=1ED14000 NFQ=1ED14008 #FQ=00000001 FRE=000043B8</p>
-<p>PAG=1ED24000 NFQ=1ED24008 #FQ=00000001 FRE=000043B8</p>
-<p>PAG=1EC74000 NFQ=1EC74008 #FQ=00000001 FRE=0000A1D8</p>
-<p>PAG=1EC54000 NFQ=1EC54008 #FQ=00000001 FRE=0000A1D8</p>
-<p>PAG=1EBB4000 NFQ=1EBB4008 #FQ=00000001 FRE=000043B8</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=6</p>
-<p>PAG=1EBF4000 NFQ=1EBF4008 #FQ=00000002 FRE=00000A50</p>
-<p>PAG=1EBE4000 NFQ=1EBE4008 #FQ=00000001 FRE=00000088</p>
-<p>PAG=1EBD4000 NFQ=1EBD4008 #FQ=00000001 FRE=000000B8</p>
-<p>PAG=1EBC4000 NFQ=1EBC4008 #FQ=00000001 FRE=000000D0</p>
-<p>PAG=1EBA4000 NFQ=1EBA4008 #FQ=00000001 FRE=00000108</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=7</p>
-<p>PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000</p>
-<p>POOL CONTROL BLOCK. SUBPOOL=8</p>
-<p>PAG=1ECB4000 NFQ=1ECB4008 #FQ=00000001 FRE=0000FDB0</p>
-<p>ALLOC=0001240K, FREE=0000479K, TOTAL=0001728K</p>
-<p>VIR0272I END</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span>
+
+<span class="n">The</span> <span class="n">following</span> <span class="n">will</span> <span class="n">be</span> <span class="n">displayed</span><span class="p">:</span><span class="o">-</span>
+
+<span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">MEMDISPLAY</span>
+
+<span class="n">VIR0200I</span> <span class="n">MEMDISPLAY</span>
+
+<span class="n">VIR0271I</span> <span class="n">DISPLAY</span> <span class="mi">978</span>
+
+<span class="n">SP1</span><span class="o">=</span><span class="mi">00024478</span> <span class="n">SP2</span><span class="o">=</span><span class="mi">00001044</span> <span class="n">SP3</span><span class="o">=</span><span class="mf">0008E35</span><span class="n">F</span> <span class="n">SP4</span><span class="o">=</span><span class="mi">00002</span><span class="n">F61</span>
+
+<span class="mi">00910091</span> <span class="mi">00040009</span> <span class="mi">02380294</span> <span class="mi">000</span><span class="n">B0011</span>
+
+<span class="n">SP5</span><span class="o">=</span>\ <span class="o">**</span><span class="mi">000317</span><span class="n">DC</span><span class="o">**</span> <span class="n">SP6</span><span class="o">=</span><span class="mi">0004</span><span class="n">DF73</span> <span class="n">SP7</span><span class="o">=</span><span class="mi">00000000</span> <span class="n">SP8</span><span class="o">=</span><span class="mi">00000220</span>
+
+<span class="o">**</span><span class="mi">00</span><span class="n">C504C7</span><span class="o">**</span> <span class="mi">01370137</span> <span class="mi">00000000</span> <span class="mi">00000002</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">00109000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">00109008</span> <span class="c1">#FQ=00000001 FRE=0000B2A0</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">000</span><span class="n">F9000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">000</span><span class="n">F9008</span> <span class="c1">#FQ=00000001 FRE=00000080</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mf">000E9000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mf">000E9008</span> <span class="c1">#FQ=00000001 FRE=00000078</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">2</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC14000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC14008</span> <span class="c1">#FQ=00000005 FRE=0000EF68</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECD4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECD4008</span> <span class="c1">#FQ=00000002 FRE=00009DF8</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED54000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED54008</span> <span class="c1">#FQ=00000002 FRE=00001750</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC84000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC84008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED04008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED94000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED94008</span> <span class="c1">#FQ=00000002 FRE=00002768</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECF4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECF4008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EE04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EE04008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED74000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED74008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECE4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECE4008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC64000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC64008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">4</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC04008</span> <span class="c1">#FQ=00000004 FRE=0000CFA0</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">5</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECA4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECA4008</span> <span class="c1">#FQ=00000002 FRE=0000D870</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED14000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED14008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED24000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED24008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC74000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC74008</span> <span class="c1">#FQ=00000001 FRE=0000A1D8</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC54000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC54008</span> <span class="c1">#FQ=00000001 FRE=0000A1D8</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBB4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBB4008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">6</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBF4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBF4008</span> <span class="c1">#FQ=00000002 FRE=00000A50</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBE4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBE4008</span> <span class="c1">#FQ=00000001 FRE=00000088</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBD4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBD4008</span> <span class="c1">#FQ=00000001 FRE=000000B8</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBC4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBC4008</span> <span class="c1">#FQ=00000001 FRE=000000D0</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBA4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBA4008</span> <span class="c1">#FQ=00000001 FRE=00000108</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">7</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">00000000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">00000000</span> <span class="c1">#FQ=00000000 FRE=00000000</span>
+
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">8</span>
+
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECB4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECB4008</span> <span class="c1">#FQ=00000001 FRE=0000FDB0</span>
+
+<span class="n">ALLOC</span><span class="o">=</span><span class="mi">0001240</span><span class="n">K</span><span class="p">,</span> <span class="n">FREE</span><span class="o">=</span><span class="mi">0000479</span><span class="n">K</span><span class="p">,</span> <span class="n">TOTAL</span><span class="o">=</span><span class="mi">0001728</span><span class="n">K</span>
+
+<span class="n">VIR0272I</span> <span class="n">END</span>
+</pre></div>
+</div>
 <p>The display response is split into a summary section for each subpool
 and a detailed allocated page block and free queue element display for
 each subpool.</p>
@@ -803,8 +839,7 @@ ABEND=ASRA TERM=CLVTA078 APPLICATION=APPLHOLT</p>
 <p>953 C: 000E5178 D: 0011CCE8</p>
 <p>953 E: 0000002E F: 0000000F</p>
 <p>953 END OF SYMPTOM DUMP</p>
-<p>**
-Virtel Logger extract and format program.**</p>
+<p><strong>Virtel Logger extract and format program.</strong></p>
 <p>VIR0002B is a program that can be run to extract the VIRTEL records from
 the System Logger. The VIRTEL log is written to the system logger when
 LOG=LOGGER is specified in the TCT.</p>
@@ -872,8 +907,7 @@ routine xxxxxxxx.</p>
 <p>Module : VIR0002B</p>
 <p>Meaning :The VIRLOG output DDNAME failed to open.</p>
 <p>Action :Correct the JCL and rerun the job.</p>
-<p>**
-New JCL Parameters. IP= and CLONE=**</p>
+<p><strong>New JCL Parameters. IP= and CLONE=</strong></p>
 <p>The purpose of this feature is to lower the coupling between the TCT,
 ARBO and instances of VIRTEL so that there is less dependency on the
 parameters defined in the ARBO and TCT for any one VIRTEL instance. This
@@ -952,7 +986,7 @@ in the JCL PARM.</p>
 <p>Action : Virtel will use the IP address in the JCL PARM rather than
 default to the IP address returned by GETHOSTID.</p>
 <p><strong>D VIRTEL,LINES command response updated</strong></p>
-<p><a href="#id5"><span class="problematic" id="id6">**</span></a>VIR0202I ALLOCATED IP ADDRESS =nnn.nnn.nnn.nnn **</p>
+<p><strong>VIR0202I ALLOCATED IP ADDRESS =nnn.nnn.nnn.nnn</strong></p>
 <p>Module :VIR0002</p>
 <p>Meaning :An additional message has been added to the F VIRTEL,LINES
 command to indicate the IP address for lines that default to GETHOSTID
@@ -960,8 +994,7 @@ will be overridden with the IP= address specified in the JCL PARM of the
 Virtel started task.</p>
 <p>Action : Virtel will use the IP address in the JCL PARM rather than
 default to the IP address returned by GETHOSTID.</p>
-<p>**
-Trace buffer enhancement and offload.**</p>
+<p><strong>Trace buffer enhancement and offload.</strong></p>
 <p><strong>External Trace buffers.</strong></p>
 <p>This enhancement provides additional VIT trace and diagnostic material
 covering a longer time span then previous versions of Virtel. The
@@ -1088,8 +1121,7 @@ allocation return and reason codes are displayed.</p>
 <p>Action : Check the SVC99 codes to determine why the GDG could not be
 allocated. Check that the correct GDG base name is being. For additional
 support contact Technical Support.</p>
-<p>**
-USSTAB MSG10 Support**</p>
+<p><strong>USSTAB MSG10 Support</strong></p>
 <p>VIRTEL 4.55 now implements the VIR0021W USSTAB menu program. This
 program will interrogate the customers USSTAB module and create an
 equivalent 3270 MAP. The MAP will be passed to the VIR0010 routine where
@@ -1116,7 +1148,7 @@ or DejaVu Sans Mono</p>
 (HTML) from the W2H Administration Portal I get the message <em>“The
 version of scenario of your scenario ‘ADMINVWM’ is “.” ‘20151215 is
 required</em>.” My W2H session is then terminated.</p>
-<p><a class="reference internal" href="../../../_images/image136.png"><img alt="image0" src="../../../_images/image136.png" style="width: 6.55251in; height: 3.13542in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image138.png"><img alt="image0" src="../../../_images/image138.png" style="width: 6.55251in; height: 3.13542in;" /></a></p>
 <p>Figure 1 Error message when accessing Admin (HTML)</p>
 <p><strong>Solution</strong></p>
 <p>You will need to change the W2H entry point, WEB2HOST, to specify a
@@ -1136,8 +1168,7 @@ browser cache. Now select Admin (HTML) from the Administration options
 and you should see the Administration panel.</p>
 <p><a class="reference internal" href="../../../_images/image320.png"><img alt="image2" src="../../../_images/image320.png" style="width: 6.26806in; height: 2.43611in;" /></a></p>
 <p>Figure 3 Administration Portal</p>
-<p>**
-Q3**. My customised custom.js no longer works.</p>
+<p><strong>Q3</strong>. My customised custom.js no longer works.</p>
 <p><strong>Solution</strong></p>
 <p>Recompile your TCT with the option:-</p>
 <p>HTSETn = (OPTION-DEFAULT-COMPATIBILITY) /* n = 1-4 */</p>

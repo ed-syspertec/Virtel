@@ -51,7 +51,7 @@ a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru 
 the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will
 only invoke the refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:-::
 
-w2hparm.keymapping=true 
+	w2hparm.keymapping=true 
 
 With keybaord mapping enabled the macro interface will display the associated key mapping against the macro.
 
@@ -183,12 +183,14 @@ To obtain the associated context menu right click on the file name – macros.js
 
 .. [#] Macros are maintained in the macros.json file. Each macro mode, local or DDI (User, Group and Global) will maintain a separate macros.json file. Virtel’s DDI can also be used to store other files other than the macros.json file. Things like corporate images, bespoke Javascript deployments etc. When copying files to DDI you must use the DDI drag and drop interface. Do not use the Administration drag and drop interface. 
 
-.. [#] The “SAVE AS” function does not have the ability to re-assign key mapping. This can only be done through the macro editor. To clone a macro with a new key mapping perform the following operations:-::
+.. [#] The “SAVE AS” function does not have the ability to re-assign key mapping. This can only be done through the macro editor. To clone a macro with a new key mapping perform the following operations:-
 
-Open macro “A”
-Save as “B”
-Open macro “B” in Editor.
-Save with key board mapping.
+::
+
+	Open macro “A”
+	Save as “B”
+	Open macro “B” in Editor.
+	Save with key board mapping.
 
 **Autoupdate of macros in local storage.**
 
@@ -209,20 +211,18 @@ that macro changes are reflected in all DDI repositories and
 consequently associated local storage. Update the w2hparm.js file to
 include the synchronizeVirtelMacros option:-::
 
-w2hparm.useVirtelMacros = session,
-w2hparm.synchronizeVirtelMacros = true,
+	w2hparm.useVirtelMacros = session,
+	w2hparm.synchronizeVirtelMacros = true,
 
 **Appendix A - Macro format and commands**
 
 The format of the macro.json is embedded JSON structures. Each name
 structure represents a keystroke macro identified by the “name” keyword.
 
-| Name: The name of the macro entry.
-| 
-| Rev: The “rev” is a user revision keyword.
-| 
-| Def: The “def” keyword identifies the commands and entry values.
-|
+	Name: The name of the macro entry. 
+	Rev: The “rev” is a user revision keyword.
+	Def: The “def” keyword identifies the commands and entry values.
+
 The macro editor supports the following commands:-::
 
 -  "any string of characters to input into 3270 screen"

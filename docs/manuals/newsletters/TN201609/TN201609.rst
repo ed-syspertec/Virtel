@@ -1,8 +1,7 @@
 Nailing LUS with an Identification scenario
 ===========================================
 
-**Note: The external programs used in this POC are not officially
-supported.**
+**Note: The external programs used in this POC are not officially supported.**
 
 The following newsletter explains how to force a LUNAME from within an
 identification scenario. The criteria being that the LUNAME is derived
@@ -34,7 +33,9 @@ User A accesses the 3270 session monitor application using a .bat file
 the extracts the computer name and build a URL. The URL is sent to
 Virtel.
 
-*http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B77 *
+::
+
+    http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B77
 
 The Virtel identification scenario traps the inbound call and validates
 the computer name against the IP address of the calling computer through
@@ -58,9 +59,9 @@ As the DNS validation is considered successful the LUNAME VE202B77 is
 created and will be used to establish a session with the session manager
 identified as transaction MYTPX.
 
-User B accesses the 3270 session monitor with the following URI.
+User B accesses the 3270 session monitor with the following URI::
 
-*http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B78 *
+    http://192.168.70.33:41002/w2h/web2ajax.htm+mytpx+TE202B78
 
 The following messages appear in the log:-
 

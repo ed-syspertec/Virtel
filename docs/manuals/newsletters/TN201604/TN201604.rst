@@ -100,150 +100,155 @@ A Virtel application transaction to support an application menu list.
 
 We reuse the EHLOC terminals that already exist for this line, but we
 will need to define a unique pool for our VTAM applications. This is
-prefixed with the EHVTS id.
+prefixed with the EHVTS id:-
 
-TRANSACT ID=EDSW-00, -
+::
 
-NAME=EDSWHOST, -
+        TRANSACT ID=EDSW-00, -
 
-DESC='HTML page directory (default access)', -
+        NAME=EDSWHOST, -
 
-APPL=W2H-DIR, -
+        DESC='HTML page directory (default access)', -
 
-TYPE=4, -
+        APPL=W2H-DIR, -
 
-TERMINAL=EHLOC, -
+        TYPE=4, -
 
-STARTUP=2, -
+        TERMINAL=EHLOC, -
 
-SECURITY=0
+        STARTUP=2, -
 
-TRANSACT ID=EDSW-20, -
+        SECURITY=0
 
-NAME='w2h', -
+        TRANSACT ID=EDSW-20, -
 
-DESC='W2H toolkit directory (/w2h)', -
+        NAME='w2h', -
 
-APPL=W2H-DIR, -
+        DESC='W2H toolkit directory (/w2h)', -
 
-TYPE=4, -
+        APPL=W2H-DIR, -
 
-TERMINAL=EHLOC, -
+        TYPE=4, -
 
-STARTUP=2, -
+        TERMINAL=EHLOC, -
 
-SECURITY=0
+        STARTUP=2, -
 
-TRANSACT ID=EDSW-41, -
+        SECURITY=0
 
-NAME=IMS, -
+        TRANSACT ID=EDSW-41, -
 
-DESC='IMS access with userdata', -
+        NAME=IMS, -
 
-APPL=IMS3270, -
+        DESC='IMS access with userdata', -
 
-PASSTCKT=0, -
+        APPL=IMS3270, -
 
-TYPE=1, -
+        PASSTCKT=0, -
 
-TERMINAL=EHVTS, -
+        TYPE=1, -
 
-STARTUP=1, -
+        TERMINAL=EHVTS, -
 
-SECURITY=0
+        STARTUP=1, -
 
-TRANSACT ID=EDSW-42, -
+        SECURITY=0
 
-NAME=TSO, -
+        TRANSACT ID=EDSW-42, -
 
-DESC='TSO access with userdata', -
+        NAME=TSO, -
 
-APPL=TSO, -
+        DESC='TSO access with userdata', -
 
-PASSTCKT=0, -
+        APPL=TSO, -
 
-TYPE=1, -
+        PASSTCKT=0, -
 
-TERMINAL=EHVTS, -
+        TYPE=1, -
 
-STARTUP=1, -
+        TERMINAL=EHVTS, -
 
-SECURITY=0
+        STARTUP=1, -
 
-TRANSACT ID=EDSW-90, -
+        SECURITY=0
 
-NAME='applist', -
+        TRANSACT ID=EDSW-90, -
 
-DESC='List of applications for appmenu.htm', -
+        NAME='applist', -
 
-APPL=VIR0021S, -
+        DESC='List of applications for appmenu.htm', -
 
-TYPE=2, -
+        APPL=VIR0021S, -
 
-TERMINAL=EHLOC, -
+        TYPE=2, -
 
-STARTUP=2, -
+        TERMINAL=EHLOC, -
 
-SECURITY=1
+        STARTUP=2, -
+
+        SECURITY=1
 
 In VTAM we would have the following definition:-
 
-\* ------------------------------------------------------------------ \*
+::
 
-\* LU Test : VTAM application relays with user data. \*
+        \* ------------------------------------------------------------------ \*
 
-\* ------------------------------------------------------------------ \*
+        \* LU Test : VTAM application relays with user data. \*
 
-EHPMA000 APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+        \* ------------------------------------------------------------------ \*
 
-Or for EHPMA00\*
+        EHPMA000 APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 
-\* ------------------------------------------------------------------ \*
+        Or for EHPMA00\*
 
-\* LU Test : VTAM application relays with user data. \*
+        \* ------------------------------------------------------------------ \*
 
-\* ------------------------------------------------------------------ \*
+        \* LU Test : VTAM application relays with user data. \*
 
-EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+        \* ------------------------------------------------------------------ \*
 
-We also need a terminal and pool definition. Here is the pool
-definition:-
+        EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 
-TERMINAL ID=EHPMA000, -
+We also need a terminal and pool definition. Here is the pool definition:-
 
-RELAY=EHPMA000, /\* Or EHPMA00\* \*/ -
+::
 
-POOL=\*STAPOOL, -
+        TERMINAL ID=EHPMA000, -
 
-DESC='Terminal definition for EHPMA000', -
+        RELAY=EHPMA000, /\* Or EHPMA00\* \*/ -
 
-TYPE=3, -
+        POOL=\*STAPOOL, -
 
-COMPRESS=2, -
+        DESC='Terminal definition for EHPMA000', -
 
-INOUT=3, -
+        TYPE=3, -
 
-STATS=26, -
+        COMPRESS=2, -
 
-REPEAT=\ **0001 **
+        INOUT=3, -
 
-…and a pool definition for out static pool:-
+        STATS=26, -
 
-TERMINAL ID=EHVTS000, -
+        REPEAT=\ **0001 **
 
-RELAY=\*STAPOOL, -
+        …and a pool definition for out static pool:-
 
-DESC='Static definition pool', -
+        TERMINAL ID=EHVTS000, -
 
-TYPE=3, -
+        RELAY=\*STAPOOL, -
 
-COMPRESS=2, -
+        DESC='Static definition pool', -
 
-INOUT=3, -
+        TYPE=3, -
 
-STATS=26, -
+        COMPRESS=2, -
 
-REPEAT=0010
+        INOUT=3, -
+
+        STATS=26, -
+
+        REPEAT=0010
 
 This setup will support up to 10 predefined terminal definitions. For
 each terminal we have to provide a static definition. Of course we could
@@ -254,19 +259,21 @@ Getting the PC workstation name to Virtel is through a batch job which
 fires up the default browser and passes the work station name as a user
 data parameter. Here is an example:-
 
-title Test Propagation of Userdata Parameter
+::
 
-@echo on
+        title Test Propagation of Userdata Parameter
 
-color 1f
+        @echo on
 
-cls
+        color 1f
 
-SET P1=%COMPUTERNAME:~0,6%
+        cls
 
-start http://192.168.170.33:41003/w2h/appmenu.htm+applist+%P1% &goto:eof
+        SET P1=%COMPUTERNAME:~0,6%
 
-:exit
+        start http://192.168.170.33:41003/w2h/appmenu.htm+applist+%P1% &goto:eof
+
+        :exit
 
 The SET command takes the first six characters of the work station name
 and passes it into the start command. Following the Virtel transaction I
@@ -294,88 +301,90 @@ relay LUNAME EHPMA000 has been allocated.
 In the VTAM display we can see that a session has been set up using that
 LU name:-
 
-D NET,ID=EHPMA000,E
+::
 
-IST097I DISPLAY ACCEPTED
+        D NET,ID=EHPMA000,E
 
-IST075I NAME = SPNET.\ **EHPMA000**, TYPE = DYNAMIC APPL 073
+        IST097I DISPLAY ACCEPTED
 
-IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
+        IST075I NAME = SPNET.\ **EHPMA000**, TYPE = DYNAMIC APPL 073
 
-IST1447I REGISTRATION TYPE = CDSERVR
+        IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
 
-IST1629I MODSRCH = NEVER
+        IST1447I REGISTRATION TYPE = CDSERVR
 
-IST977I MDLTAB=\*\*\*NA\*\*\* ASLTAB=\*\*\*NA\*\*\*
+        IST1629I MODSRCH = NEVER
 
-IST861I MODETAB=ISTINCLM USSTAB=\*\*\*NA\*\*\* LOGTAB=\*\*\*NA\*\*\*
+        IST977I MDLTAB=\*\*\*NA\*\*\* ASLTAB=\*\*\*NA\*\*\*
 
-IST934I DLOGMOD=SNX32702 USS LANGTAB=\*\*\*NA\*\*\*
+        IST861I MODETAB=ISTINCLM USSTAB=\*\*\*NA\*\*\* LOGTAB=\*\*\*NA\*\*\*
 
-IST1632I VPACING = 7
+        IST934I DLOGMOD=SNX32702 USS LANGTAB=\*\*\*NA\*\*\*
 
-IST1938I APPC = NO
+        IST1632I VPACING = 7
 
-IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
+        IST1938I APPC = NO
 
-IST231I APPL MAJOR NODE = APPLSPEH
+        IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
 
-IST1425I DEFINED USING MODEL EHPMA???
+        IST231I APPL MAJOR NODE = APPLSPEH
 
-IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
+        IST1425I DEFINED USING MODEL EHPMA???
 
-IST1500I STATE TRACE = OFF
+        IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
 
-IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE
+        IST1500I STATE TRACE = OFF
 
-IST228I ENCRYPTION = OPTIONAL , TYPE = DES
+        IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE
 
-IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO
+        IST228I ENCRYPTION = OPTIONAL , TYPE = DES
 
-IST1552I MAC = NONE MACTYPE = NONE
+        IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO
 
-IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0
+        IST1552I MAC = NONE MACTYPE = NONE
 
-IST1633I ASRCVLM = 1000000
+        IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0
 
-IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0
+        IST1633I ASRCVLM = 1000000
 
-IST1669I IPADDR..PORT 192.168.92.65..50027
+        IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0
 
-IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
+        IST1669I IPADDR..PORT 192.168.92.65..50027
 
-IST206I SESSIONS:
+        IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
 
-IST634I NAME STATUS SID SEND RECV VR TP NETID
+        IST206I SESSIONS:
 
-IST635I **TSO1A005** ACTIV-P CA7B8B52114E7A85 0000 0002 SPNET
+        IST634I NAME STATUS SID SEND RECV VR TP NETID
 
-IST314I END
+        IST635I **TSO1A005** ACTIV-P CA7B8B52114E7A85 0000 0002 SPNET
 
-1. **
-   Lu nailing using an LUNAME (Predefined terminal).**
+        IST314I END
+
+1. **Lu nailing using an LUNAME (Predefined terminal).**
 
 Instead of passing a work station name in the user data field of the URL
 in this example we are passing an LU name. Again with a Virtel RULE we
 can extract the user data parameter from the URL and use that as the
 Virtel relay LUNAME name. For this example the rule looks like:-
 
-RULE ID=ESH0001,
+::
 
-RULESET=E-HTTP,
+        RULE ID=ESH0001,
 
-STATUS=ACTIVE,
+        RULESET=E-HTTP,
 
-DESC='Rule for terminal EHPMA00',
+        STATUS=ACTIVE,
 
-ENTRY=EDSWHOST,
+        DESC='Rule for terminal EHPMA00',
 
-PARAM=$URL$,
+        ENTRY=EDSWHOST,
 
-NETMASK=255.255.255.255
+        PARAM=$URL$,
 
-We use the special PARAM=$URL$ which indicates that the VTAM LU Name to
-be used is the user data passed in the URL.
+        NETMASK=255.255.255.255
+
+We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.
 
 |image2|
 
@@ -387,8 +396,7 @@ When connecting to an application VIRTEL will use the LU name defined in
 the URL. In this example we are using a generic LUNAME (This could
 support a range from EHPMA000 through to EHPMA009.
 
-1. **
-   Lu Nailing using an LU Name (No predefined terminal).**
+1. ** Lu Nailing using an LU Name (No predefined terminal).**
 
 Both of the above techniques require that a relay terminal be predefined
 for each terminal. For some installations this could be a maintenance
@@ -436,7 +444,7 @@ terminal definitions, or ranges of, for every static terminals.
 
 Figure 7 Access a Transaction with the ForceLUNAME parameter.
 
-1. **LU Nailing using a cookie (Correspondent Sub Application) **
+1. **LU Nailing using a cookie (Correspondent Sub Application)**
 
 Virtel also can use cookies to select a relay LU name. Virtel uses a
 cookie as a part of the “Correspondence Sub Application’. Within the
@@ -454,6 +462,9 @@ The rule is associated with a line. In the example below we define a
 rule on line W-HTTP which will force a terminal connecting with IP
 address 192.168.000.039 to use LU name RHTVT001. The LU name must be
 pre-defined in a Virtel terminal pool.
+
+::
+
 
     DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW
     14:30:38
@@ -501,6 +512,8 @@ Multiple terminals can be defined with a rule by using the \* suffix. In
 the following example a range of IP address is mapped to a pool of LU
 names. Address range 192.168.100.0 through to 192.168.100.255 will be
 assigned the next unused LU name in the range RHTVT1xx.
+
+::
 
     DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW
     17:53:56
@@ -570,8 +583,7 @@ assigned to clients whose IP address matches this rule.
 | By IP                         | Yes                       | Yes                        | No        | Yes                                  |
 +-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
 
-*
-References*
+*References*
 
 ForcedLUNAME *Virtel - Connectivity Guide, section 2.3.1.3*
 

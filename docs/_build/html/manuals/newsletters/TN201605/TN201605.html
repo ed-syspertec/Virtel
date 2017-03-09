@@ -215,7 +215,7 @@ supported features.</p>
 <p>In this example we have configured the Virtel display terminal REHVT000
 and its associate relay printer terminal REHIP000 with the following
 characteristics.</p>
-<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image134.png"><img alt="image0" src="../../../_images/image134.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
 <p>Figure Virtel Terminal Display</p>
 <p>Display REHVT000 has an associate relay of REHIP000 which is defined as
 a Type = P. Type = P indicates that this is a dynamically allocated
@@ -262,13 +262,13 @@ the CICS application.</p>
 <p>Figure CICS Application Menu</p>
 <p>Option 1 is selected to bring up the customer inquiry panel and then a
 customer number is entered to bring up the relevant customer detail.</p>
-<p><a class="reference internal" href="../../../_images/image87.png"><img alt="image7" src="../../../_images/image87.png" style="width: 5.06250in; height: 3.86726in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image88.png"><img alt="image7" src="../../../_images/image88.png" style="width: 5.06250in; height: 3.86726in;" /></a></p>
 <p>Figure Application inquiry display</p>
 <p>PF9 is selected to trigger a print operation. A small print ICON box
 appears in the Virtel tool bar on the right hand side and a message
 appears in the application notification area indicating that a print
 request has been sent to printed id EHS0.</p>
-<p><a class="reference internal" href="../../../_images/image96.png"><img alt="image8" src="../../../_images/image96.png" style="width: 5.54587in; height: 4.23958in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image97.png"><img alt="image8" src="../../../_images/image97.png" style="width: 5.54587in; height: 4.23958in;" /></a></p>
 <p>Figure Print request acknowledgment</p>
 <p>If we look at the Virtel log we can see the following messages.</p>
 <p>VIR0906I SPCICST CONNECTING LUTYPE 00 PRINTER W2HIP000(REHIP000) TO</p>
@@ -278,14 +278,14 @@ CICS. Pressing the Virtel Printer ICON will open and trigger the browser
 to display the printer template that Virtel has created within another
 browser window.</p>
 <p>Note that no pagination of formatting takes place in this display.</p>
-<p><a class="reference internal" href="../../../_images/image106.png"><img alt="image9" src="../../../_images/image106.png" style="width: 5.26042in; height: 4.04876in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image107.png"><img alt="image9" src="../../../_images/image107.png" style="width: 5.26042in; height: 4.04876in;" /></a></p>
 <p>Figure Virtel printo output display</p>
 <p>If we right click and view the source of this template we can see that
 Virtel has imbedded pagination tags as required by the CICS transaction.
 We can see a page-break-after:always style control associated with a
 HTML DIV tag. This will control the pagination when we request a print
 of the document.</p>
-<p><a class="reference internal" href="../../../_images/image1111.png"><img alt="image10" src="../../../_images/image1111.png" style="width: 5.58784in; height: 4.25000in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1112.png"><img alt="image10" src="../../../_images/image1112.png" style="width: 5.58784in; height: 4.25000in;" /></a></p>
 <p>Figure Virtel inserted print formatting controls</p>
 <p>Closing this browser window and then right click and print on the
 printer template display will drive the browser printer interface. From
@@ -298,7 +298,7 @@ save it as a PDF.</p>
 <p>One we have processed the document the browser window will close and we
 are returned to the application display. Pressing enter will clear the
 print ICON and print message.</p>
-<p><a class="reference internal" href="../../../_images/image133.png"><img alt="image12" src="../../../_images/image133.png" style="width: 5.61458in; height: 4.29460in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image135.png"><img alt="image12" src="../../../_images/image135.png" style="width: 5.61458in; height: 4.29460in;" /></a></p>
 <p>Figure Pressing enter to clear print request</p>
 <p><strong>Sharing Virtel printers</strong></p>
 <p>It will often be the case that a Virtel printer will be required to be
@@ -308,7 +308,7 @@ release the printer so that it can send a print to it. In the following
 example we demonstrate GDDM’s ADMPRINT program sending a print to the
 REHIP000 printer. The printer terminal state within CICS look like this
 after completing the print request in the CICS application.</p>
-<p><a class="reference internal" href="../../../_images/image143.png"><img alt="image13" src="../../../_images/image143.png" style="width: 5.56250in; height: 3.76421in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image144.png"><img alt="image13" src="../../../_images/image144.png" style="width: 5.56250in; height: 3.76421in;" /></a></p>
 <p>Figure CICS Printer State after printing in CICS</p>
 <p>From within TSO we issue the following commands to drive a GDDM print
 request towards REHIP000.</p>
@@ -322,7 +322,7 @@ output to the printer LU. In our CICS session we again see the ICON
 appear in the tool bar, but in this case there is no CICS message
 indicating a CICS print request. This is because this request has come
 from GDDM and not CICS.</p>
-<p><a class="reference internal" href="../../../_images/image153.png"><img alt="image14" src="../../../_images/image153.png" style="width: 6.26806in; height: 4.75833in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image154.png"><img alt="image14" src="../../../_images/image154.png" style="width: 6.26806in; height: 4.75833in;" /></a></p>
 <p>Figure Printer Sharing</p>
 <p>In the Virtel log we can see the following messages. This time it is
 application GDDMPRTS that is connecting to the printer and not SPCICST.</p>

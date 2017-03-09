@@ -141,26 +141,18 @@ to the ARBO file and previous DDI constructs must be removed:-*
 
 2. *Remove*
 
-    *DDI constructs that used /maclib directory. 05A, 05U, 05G. *
+    DDI constructs that used /maclib directory. 05A, 05U, 05G.
 
-    *These were allocated a transaction range of W2H-05\* (WEBHOST) and
-    CLI-05\* (CLIHOST) in previous Virtel releases. These will have to
-    be deleted manually using either the 3270 or the HTML administration
-    portal.*
+    These were allocated a transaction range of W2H-05\* (WEBHOST) and CLI-05\* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
+    portal.
 
 1. *Add*
 
-    *Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD)
-    with just VMACROS=YES. This will create the new CLI-03\* and
-    W2H-03\* constructs. *
+    Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03\* and W2H-03\* constructs.
 
-    *See the entries in the VMACROS section of the V4.54
-    SAMPLIB(ARBOLOAD) member.*
+    See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.
 
-    *If your macros are in local storage then they will automatically
-    populated to the new DDI constructs – USER, GROUP and GLOBAL,
-    otherwise upload (Drag and drop) them from you saved copies using
-    the administration DDI and macros interface. *
+    If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface. 
 
 **RACF Profiles**
 

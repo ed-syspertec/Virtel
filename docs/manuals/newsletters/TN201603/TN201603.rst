@@ -95,7 +95,7 @@ following example where the password is clearly visible:-
 
 \*ield=V0000243\ **&V0000243=PASSWORD** \* < ND Field shown in clear >
 
-**A line trace with a null CRYPTn **
+**A line trace with a null CRYPTn**
 
 Using the following null CRYPTn parameter in the TCT we can see that the
 ND field is displayed as a hex string. Not fool proof but better than
@@ -185,57 +185,59 @@ HIGH-VOLT=1 TEMPERATURE=1 RADIATION=1
 +VIRCT10I STATEXPT : CCA=1 CMDF=0 56-bit-DES=1 Triple-DES=1 SET=1
 MAX-SYMMETRIC-MODULUS=4096
 
-In the line trace we can see that the field has been encrypted.
+In the line trace we can see that the field has been encrypted:-
 
-\*POST /w2h/WEB2SUB.HTML++VirtelSe\*
+::
 
-\*ssion=AELoKQAAAAQevHSI HTTP/1.1.\*
+		\*POST /w2h/WEB2SUB.HTML++VirtelSe\*
 
-\*.Host: 192.168.92.161:41001..Ori\*
+		\*ssion=AELoKQAAAAQevHSI HTTP/1.1.\*
 
-\*gin: http://192.168.92.160..X-Vi\*
+		\*.Host: 192.168.92.161:41001..Ori\*
 
-\*rtel-Request-Id: 2 ENTER 12:10:3\*
+		\*gin: http://192.168.92.160..X-Vi\*
 
-\*5..User-Agent: Mozilla/5.0 (Wind\*
+		\*rtel-Request-Id: 2 ENTER 12:10:3\*
 
-\*ows NT 6.1; WOW64) AppleWebKit/5\*
+		\*5..User-Agent: Mozilla/5.0 (Wind\*
 
-\*37.36 (KHTML, like Gecko) Chrome\*
+		\*ows NT 6.1; WOW64) AppleWebKit/5\*
 
-\*/48.0.2564.116 Safari/537.36..Co\*
+		\*37.36 (KHTML, like Gecko) Chrome\*
 
-\*ntent-type: application/x-www-fo\*
+		\*/48.0.2564.116 Safari/537.36..Co\*
 
-\*rm-urlencoded..Accept: \*/\*..DNT:\*
+		\*ntent-type: application/x-www-fo\*
 
-\* 1..Referer: http://192.168.92.1\*
+		\*rm-urlencoded..Accept: \*/\*..DNT:\*
 
-\*60/w2h/WEB2AJAX.htm+Tso..Accept-\*
+		\* 1..Referer: http://192.168.92.1\*
 
-\*Encoding: gzip, deflate..Accept-\*
+		\*60/w2h/WEB2AJAX.htm+Tso..Accept-\*
 
-\*Language: en-GB,en-US;q=0.8,en;q\*
+		\*Encoding: gzip, deflate..Accept-\*
 
-\*=0.6..Cookie: ROUTEID=.1; SYSLAN\*
+		\*Language: en-GB,en-US;q=0.8,en;q\*
 
-\*G=en; SYSSTYL=BLUE; SYSPAGE=auto\*
+		\*=0.6..Cookie: ROUTEID=.1; SYSLAN\*
 
-\*..X-Forwarded-For: 192.168.92.62\*
+		\*G=en; SYSSTYL=BLUE; SYSPAGE=auto\*
 
-\*..X-Forwarded-Host: 192.168.92.1\*
+		\*..X-Forwarded-For: 192.168.92.62\*
 
-\*60..X-Forwarded-Server: zagreb.s\*
+		\*..X-Forwarded-Host: 192.168.92.1\*
 
-\*yspertec.com..Connection: Keep-A\*
+		\*60..X-Forwarded-Server: zagreb.s\*
 
-\*live..Content-Length: 75....pf=E\*
+		\*yspertec.com..Connection: Keep-A\*
 
-\*NTER&cursorField=V0000249&focusF\*
+		\*live..Content-Length: 75....pf=E\*
 
-\*ield=V0000243\ **&V0000243=d2bd6296a\***
+		\*NTER&cursorField=V0000249&focusF\*
 
-**\*e48f9f8** \* < ND Field encypted with public key >
+		\*ield=V0000243\ **&V0000243=d2bd6296a\***
+
+		\*e48f9f8** * < ND Field encypted with public key >
 
 **Designing templates to use Encryption**
 

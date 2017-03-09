@@ -25,25 +25,19 @@ have started up an instance of Virtel which I will use in this VSR
 example. We need to extract some information from Virtel and plug it
 into the VSR setup menu.
 
-Our Virtel is setup up to use the following lines:
+Our Virtel is setup up to use the following lines:-
 
-F SPTHOLTV,LINES
+::
 
-VIR0200I LINES
-
-VIR0201I VIRTEL 4.55 APPLID=APPLHOLT LINES
-
-VIR0202I ALLOCATED IP ADDRESS = 192.168.170.033
-
-VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP
-
-VIR0202I -------- -------- ----- ---------
-
-**VIR0202I C-HTTP HTTP-CLI TCP1 :41002 **
-
-**VIR0202I W-HTTP HTTP-W2H TCP1 :41001 **
-
-VIR0202I ---END OF LIST---
+		F SPTHOLTV,LINES
+		VIR0200I LINES
+		VIR0201I VIRTEL 4.55 APPLID=APPLHOLT LINES
+		VIR0202I ALLOCATED IP ADDRESS = 192.168.170.033
+		VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP
+		VIR0202I -------- -------- ----- ---------
+		VIR0202I C-HTTP HTTP-CLI TCP1 :41002 **
+		VIR0202I W-HTTP HTTP-W2H TCP1 :41001 **
+		VIR0202I ---END OF LIST---
 
 We shall use the C-HTTP as the target line for out modernization
 project. This will have the ip address:port of 192.168.170.033:41002.
