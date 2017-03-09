@@ -200,7 +200,7 @@ Cipher suite
     and 128-bit or higher cipher suites are enabled.
 
 Bibliography
-============
+------------
 
 .. rubric:: *SA22-7683-07 z/OS V1R7 Security Server:* RACF Security Administrator's Guide
 
