@@ -167,35 +167,22 @@
            <div itemprop="articleBody">
             
   <div class="section" id="mainframe-printing-with-virtel-4-56">
-<h1>Mainframe printing with Virtel 4.56<a class="headerlink" href="#mainframe-printing-with-virtel-4-56" title="Permalink to this headline">¶</a></h1>
-<p>This newsletters highlights some of the ways you can configure Virtel to
-utilize its printing capabilities. First and foremost let’s understand
-what Virtel can support with regard to printing. Just for clarification
-Virtel currently doesn’t support seamless or unattended printing. In
-other words a user cannot initiate a print transaction from CICS and
-expect the output to automatically pop out on the users default
-workstation printer. This is because Virtel is restricted to whatever
-the browser printer functionality provides. See the section <a class="reference internal" href="#bookmark01"><span class="std std-ref">“Seemless or
-unattended printing”</span></a> at the end of this document. However, having said
-that there are several ways mainframe printing can be achieved. This
-newsletter highlights the Virtel features that support mainframe
-printing.</p>
-<p>In the scenarios that follow user involvement is required. The supported
-LU printer types are LU Type 1(SNA SCS) and LU Type 0/3(3270
-datastream).</p>
-<p>Depending on the Virtel printer configuration one of several things can
-happen:-</p>
+<span id="tn201409"></span><h1>Mainframe printing with Virtel 4.56<a class="headerlink" href="#mainframe-printing-with-virtel-4-56" title="Permalink to this headline">¶</a></h1>
+<p>This newsletters highlights some of the ways you can configure Virtel to utilize its printing capabilities. First and foremost let’s understand what Virtel can support with regard to printing. Just for clarification Virtel currently doesn’t support seamless or unattended printing. In other words a user cannot initiate a print transaction from CICS and expect the output to automatically pop out on the user&#8217;s default workstation printer. This is because Virtel is restricted to whatever the browser printer functionality provides. See the section <a class="reference internal" href="#tn201409-bookmark01"><span class="std std-ref">“Seemless or unattended printing”</span></a> at the end of this document for more details. However, having said that, there are several ways mainframe printing can be achieved with Virtel. This newsletter highlights the Virtel features that support mainframe
+printing and provides some guidance on how to implement them.</p>
+<p>In the scenarios that follow user involvement is required. The supported Virtel LU printer types are LU Type 1(SNA SCS) and LU Type 0/3(3270 datastream).</p>
+<p>Depending on the Virtel printer configuration one of several things can happen at the browser end:-</p>
 <ul>
 <li><p class="first">Printer Type LU0 or LU3 (Non SNA/3270 data streams)</p>
 <blockquote>
 <div><p>Print data will be sent to the Virtel client and will appear in a new browser window. (<em>Default action.</em>)</p>
-<p>Virtel Option: &nbsp;AutoPrint set on.</p>
-<p>A Windows “Print” window will automatically open. User can then select to print the output data.</p>
+<p>Virtel Option: &nbsp;If AutoPrint is set on in the Virtel settings.</p>
+<p>A Windows “Print” window will automatically open and the print data will be displayed. The user can then select to print the output data.</p>
 </div></blockquote>
 </li>
 <li><p class="first">Printer Type LU1 (SNA/SCS)</p>
 <blockquote>
-<div><p>Print data will be sent to Virtel as an attached file. This will drive a Windows “Save As or Open”&nbsp;window which will enable the user to open the file or save it. This file contains the RAW print data. This of course could include PCL data which could be further processed by external programs or printed by a printer that supports PCL datastreams. For example the file could be converted to a PDF. There are many PCL to PDF conversion products on the open market.</p>
+<div><p>Print data will be sent to Virtel as an attached file. This will drive a Windows “Save As or Open”&nbsp;window which will enable the user to open the file or save it. This file contains the RAW print data. This of course could include PCL data which could be further processed by external programs or printed by a printer that supports PCL datastreams. For example, the file could be converted to a PDF. There are many PCL to PDF conversion products on the open market. Virtel can also process the PCL data and convert it to a PDF either through a remote print server or through calling an internal service program called MAKEPDF.</p>
 </div></blockquote>
 </li>
 </ul>
@@ -210,14 +197,10 @@ happen:-</p>
 <p class="first admonition-title">Note</p>
 <p class="last">Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the *W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
 </div>
-<p>In the shipped sample definitions the LU Type 1 (RHTIM000) is associated
-with the relay terminal definition RHTVT000. To use LU T3 (3270
-datastream) the RHTVT000 definition must be updated to associate the
+<p>In the shipped sample definitions the LU Type 1 (RHTIM000) is associated with the relay terminal definition RHTVT000. To use LU T3 (3270 datastream) the RHTVT000 definition must be updated to associate the
 printer terminal RHTIP000 with RHTVT000.</p>
 <p><img alt="image1" src="../../../_images/image21.jpeg" /> <em>Fig. 2 - Example of Virtel terminal definitions.</em></p>
-<p>The virtual relay definitions that Virtel uses to support VTAM terminals
-and applications is defined in the VIRTAPPL VTAM definition. This can be
-found in the shipped VIRT***.CNTL library. Here is an example:-</p>
+<p>The virtual relay definitions that Virtel uses to support VTAM terminals and applications are defined in the VIRTAPPL VTAM definition. This can be found in the shipped VIRTEL.CNTL library. Here is an example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>VIRTAPPL VBUILD TYPE=APPL
 *  ------------------------------------------------------------------ *
 *  Product : VIRTEL                                                   *
@@ -235,26 +218,19 @@ RHTIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
 RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
 <p class="last">Do not modify the ??? to a numeric number. These are VTAM model APPL definitions and the ??? is a valid string in this context.</p>
 </div>
-<p>There is no need to modify this definition. It should be copied to the
-VTAMLST library and activated.</p>
-<p>When Virtel detects that is has printer output, it will collect it from
-the printer relay LU and send it to the associated terminal session.
-When the session receives the output it will be displayed in a new
-browser window. Here is a screen shot of my terminal session before I
-have sent any output.</p>
+<p>There is no need to modify this definition. It should be copied to the VTAMLST library and activated with the V NET,ACT,ID= VTAM command.</p>
+<p>When Virtel detects that is has printer output, it will collect it from the printer relay LU and send it to the associated terminal session. When the session receives the output it will be displayed in a new
+browser window. Here is a screen shot of my terminal session before sending any output.</p>
 <p><img alt="image2" src="../../../_images/image3.jpeg" /> <em>Fig. 3 - Example of Virtel Browser screen before print data has been sent.</em></p>
-<p>Note that in the bottom corner you can see the two virtual SNA LUs that
-Virtel is using to represent this browser session to VTAM. The first
-name, REHVT000, is the 3270 terminal LU and the second, REHIP000, is the
-associated SNA printer attached to REHVT000.</p>
-<p>The Virtel VJRS program is used to emulate a VTAM printer interface and
-is run as a started task. When it detects output destined for one of its
-defined printers it will grab the spooled output from JES2 and drive the
-virtual printer REHIP000.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the bottom corner you can see the two virtual SNA LUs that Virtel is using to represent this browser session to VTAM. Theses are the Virtel Relays. The first name, REHVT000, is the 3270 terminal LU and the second, REHIP000, is the associated SNA printer attached to REHVT000.</p>
+</div>
+<p>The Virtel VJRS utility program is used to emulate a VTAM printer interface and is run as a started task. When it detects output destined for one of its defined printers it will grab the spooled output from JES2 and drive the virtual printer REHIP000.</p>
 <p>The VJRS definition looks like:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">----------------------------------------------------------------------------*</span>
 <span class="o">*</span> <span class="o">-</span> <span class="n">PRINTER</span> <span class="n">CONTROL</span> <span class="n">STATEMETS</span> <span class="n">FOR</span> <span class="n">VJRS</span> <span class="n">UTILITY</span><span class="o">.</span>                              <span class="o">-*</span>
@@ -282,20 +258,14 @@ virtual printer REHIP000.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The JRP program in the CBT archive File 755 can be used in place of VJRS. This is freely available under the terms and conditions of CBT.</p>
+<p class="last">The JRP utility program in the <a class="reference external" href="http://www.cbttape.org/cbtdowns.htm">CBT archive - File 755</a> can be used in place of the Virtel VJRS utility. This is freely available under the terms and conditions of CBT.</p>
 </div>
-<p>Once Virtel detects output on its relay LU it will send it to the
-browser. This can be seen by the fact that a small printer icon will
-appear in the task bar. See the screen shot below:-</p>
+<p>Once Virtel detects output on its relay LU it will send it to the browser. This can be seen by the fact that a small printer icon will appear in the task bar. See the screen shot below:-</p>
 <p><img alt="image3" src="../../../_images/image41.jpeg" /> <em>Fig. 4 - Print data received by browser. Printer ICON displayed in Task Bar.</em></p>
 <p>Pressing the ICON will open a second browser window which will reveal the print data. See the following screen shot:-</p>
 <p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 5 - Print data displayed in second browser window.</em></p>
-<p>From this window the print data can be printed using the normal windows
-menu dialogs. Virtel does have an Auto-print option in the Virtel
-settings panel. This will automatically open up the Windows Print dialog
-so that you can just click print to print the print data. Once you have
-printed your output you can close the Virtel Print window and continue
-with your terminal session.</p>
+<p>From this window the print data can be printed using the normal windows menu dialogs. Virtel does have an Auto-print option in the Virtel settings panel. This will automatically open up the Windows Print dialog
+so that you can just click &#8220;print&#8221; to print the data. Once you have printed your output you can close the Virtel Print window and continue with your terminal session.</p>
 </div>
 <div class="section" id="lu1-type-printing-scs">
 <h3>LU1 Type printing SCS<a class="headerlink" href="#lu1-type-printing-scs" title="Permalink to this headline">¶</a></h3>
@@ -524,7 +494,7 @@ by the VJRS program and sent to Virtel an SCS data stream.</p>
 <p>Virtel delivers the VIRSVPDF program as an example of a MAKEPDF external service. This program is designed only to produce 1 page per   service call. For producing PDF’s with multiple pages please contact the Syspertec support centre for further advice. The scenario  associated with this landscape printing is called SCENFLND. See <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B.</span></a></p>
 </div>
 <div class="section" id="seamless-or-unattended-printing">
-<span id="bookmark01"></span><h2>Seamless or unattended printing<a class="headerlink" href="#seamless-or-unattended-printing" title="Permalink to this headline">¶</a></h2>
+<span id="tn201409-bookmark01"></span><h2>Seamless or unattended printing<a class="headerlink" href="#seamless-or-unattended-printing" title="Permalink to this headline">¶</a></h2>
 <p>The scenarios in this newsletter have demonstrated some of the print
 options that Virtel currently supports. As you can see user involvement
 is required in any print scenario that has been initiated from the

@@ -53,8 +53,7 @@ A Virtel line trace will reveal these additional headers.
 
 In the above trace the CA-SiteMinder specific header “SM_User” can be seen as identifying the userid and the X-Forwarded-For:, a standard HTTP header, identifies the source IP address. For security reasons this proxy IP address must be tested for in a VIRTEL rule before the session can be established between the caller and the asset. There is no password associated with this logon – this will be generated via a passsTicket request on behalf of the userid identified in the “SM_User” header. The PassTicket will be created as part of the session setup between Virtel and the asset and on behalf of the caller.
 
-Adding headers to the HTTP request.
------------------------------------
+**Adding headers to the HTTP request.**
 
 Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.
 
@@ -69,14 +68,12 @@ behalf of the caller using a userid passed by the SSO Proxy and a generated Pass
 
 |image3| *Fig. 4. - Accessing CICS using a callers credentials. No LOGON required.*
 
-RACF Passtickets
-----------------
+**RACF Passtickets**
 
 Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is
 SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.
 
-Sample RACF job to define the RACF profiles.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*Sample RACF job to define the Pass Ticket RACF profiles.*
 
 This job will have to be modified to a customer’s RACF setup. Some profiles may already be defined! If the PERMIT statements do not run then that probably means that some of the RDEFINE entries already exist in the RACF database - these need to be removed, or an RDELETE added to delete the profile entry, in order for the job to complete successfully. It should produce a RC=0. See the output in SDSF.
 
@@ -106,8 +103,7 @@ Three distinct RACF profiles are required to use RACF pass tickets:-
 	PTKTDATA IRRPTAUTH.passTicketName. * Let’s VIRETL generate PassTickets on behalf of an application for all users. * or *userid*
 	PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 
-Virtel Name correlation
-^^^^^^^^^^^^^^^^^^^^^^^
+*Virtel Name correlation*
 
 -  passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.
 
@@ -119,94 +115,9 @@ These names are normally the same, but they do not have to be. See the :ref:`“
 
 	If you are running separate RACF databases across LPARS the KEYMASKED must be the same in each RACF database or else the wrong password will be generated and the logon will fail.
 
-Virtel Requirements
-^^^^^^^^^^^^^^^^^^^
-
-The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-
-
-|image4| *Fig. 5. - Modified CICS Virtel transaction to support Pass Tickets.* 
-
-The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM_User header value. See the section on :ref:`Identification Scenario <#_tn201407_bookmark02>`.
-
-The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (&U) and PassTicket generated password (&P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.
-
-.. _#_tn201407_bookmark02:
-
-Identification Scenario
-^^^^^^^^^^^^^^^^^^^^^^^
-
-To obtain the “SM_User” value and set the userid in the Virtel System USER variable an identification scenario is used. The following is an example of such a scenario:-
-
-::
-
-	SCENSITE SCREENS APPL=SCENSITE,EXEC=NO
-	*
-	* SCENARIO for SiteMinder
-	*
-	* The purpose of this scenario is to retrieve the contents of
-	* the identification headers inserted by the SiteMinder Proxy
-	*
-	SCENARIO IDENTIFICATION
-	*
-		COPY$ SYSTEM-TO-VARIABLE,VAR='USER', -
-			FIELD=(TCT-HTTP-HEADER,SM\_USER)
-		IF$ NOT-FOUND,THEN=NOUSER1
-		COPY$ VARIABLE-TO-SYSTEM,VAR='USER', -
-			FIELD=(NAME-OF,USER)
-	*
-	EXIT1 DS 0H
-		SCENARIO END
-	*
-	NOUSER1 DS 0H
-		ERROR$ 0,'SCENSITE ERROR: NO USER VARIABLE'
-		GOTO$ EXIT1
-		SCRNEND
-		END
-
-This SCENARIO has to be set in the Entry Point definition for the line being used. In our case this is the default Entry Point, CLIWHOST, associated with the external line HTTP-CLI. The following is a snapshot of the entry point definition:-
-
-|image5| *Fig. 6 - Defining an Identification Scenario in the Virtel Entry Point.* 
-
-The Identification Scenario field is filled in with the name of our scenario SCENSITE. This scenario is called when the inbound call is assigned to an entry point and before any transactions are invoked. The
-scenario sets the Virtel system USER variable which will be used in the PassTicket generation.
-
-TCT Considerations
-^^^^^^^^^^^^^^^^^^
-
-The TCT has to include the following parameters if HTTP User Headers and PassTicket generation is required. The parameters are:-
-
-::
-
-	HTHEADR=(SM_USER),                              *
-	VIRSECU=YES,SECUR=(RACROUTE,RACF),              *
-	RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,  *
-	PASSTCK=YES,                                    *
-
-The HTHEADR identifies the “SM_USER“ as a non standard header and one that Virtel must process. The PASSTCK keyword enables Virtel to generate PassTickets.
-
-Line Rules
-^^^^^^^^^^
-
-To ensure that the source SSO proxy IP address is valid we can code some rules and associate them with the line. In our example we have coded two sets of rules. The first one will test the calling proxy IP address. If that is successful the connection will continue and establish an association with the named Virtel entry point. If the first rule fails because the IP address doesn’t match what we expect, the second rule will be called. This does no more than establish an entry point with a default transaction. The default transaction will just return an error page to the browser. Here are the two rules that we have associated with our Virtel line:-
-
-|image6| *Fig. 7 - List of rules asssociated with the Virtel line*
-
-The second rule is coded as follows:-
-
-|image7| *Fig. 8 - Rule C100PROX to test Proxy IP Address* 
-
-If the IP address of the SSO Proxy matches the Caller DTE address we have specified in the rule than the Entry Point CLIWHOST will be associated with line and the transactions defined under that entry point, CLIWHOST in this case, can be invoked. If the address match fails then the next rule will be called. In our case this will be rule C999REJ which will invoke transaction EPREJECT, the default transaction for Entry Point EPREJECT.
-
-.. warning:: It is important that you use option 3 “STARTS WITH” when defining the Calling DTE option.
-
-|image8| *Fig. 9 - Rule C999REJ to reject the session request* 
-
-This rule does no more than to establish the entry point EPREJECT. EPREJECT will have a default transaction which just returns an error page to the caller.
-
 .. _#_tn201407_bookmark01:
 
-RACF Profiles related to Pass Tickets.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*RACF Profiles related to Virtel and Pass Tickets.*
 
 As mentioned RACF needs to have some profiles set up to allow Virtel to use Pass Tickets. The first profile is the FACILITY Class profile with the IRR.RTICKETSERV name. The Virtel STC userid must have READ access to this profile.
 
@@ -244,11 +155,94 @@ Finally, define a PTKTDATA profile entry that matches the Virtel Transaction **A
 The key thing here is that the PassTicket name must tie up with the generic IRRPTAUTH.SPCICSH.* entry and the VIRTEL application name must match the descrete PTKTDATA.SPCICSH profile. They can be the same but
 needn’t be!
 
-Common Errors
--------------
 
-Message VIR1502E
-^^^^^^^^^^^^^^^^
+
+**Virtel Requirements**
+
+The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-
+
+|image4| *Fig. 5. - Modified CICS Virtel transaction to support Pass Tickets.* 
+
+The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM_User header value. See the section on :ref:`Identification Scenario <#_tn201407_bookmark02>`.
+
+The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (&U) and PassTicket generated password (&P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.
+
+.. _#_tn201407_bookmark02:
+
+*Identification Scenario*
+
+To obtain the “SM_User” value and set the userid in the Virtel System USER variable an identification scenario is used. The following is an example of such a scenario:-
+
+::
+
+	SCENSITE SCREENS APPL=SCENSITE,EXEC=NO
+	*
+	* SCENARIO for SiteMinder
+	*
+	* The purpose of this scenario is to retrieve the contents of
+	* the identification headers inserted by the SiteMinder Proxy
+	*
+	SCENARIO IDENTIFICATION
+	*
+		COPY$ SYSTEM-TO-VARIABLE,VAR='USER', -
+			FIELD=(TCT-HTTP-HEADER,SM\_USER)
+		IF$ NOT-FOUND,THEN=NOUSER1
+		COPY$ VARIABLE-TO-SYSTEM,VAR='USER', -
+			FIELD=(NAME-OF,USER)
+	*
+	EXIT1 DS 0H
+		SCENARIO END
+	*
+	NOUSER1 DS 0H
+		ERROR$ 0,'SCENSITE ERROR: NO USER VARIABLE'
+		GOTO$ EXIT1
+		SCRNEND
+		END
+
+This SCENARIO has to be set in the Entry Point definition for the line being used. In our case this is the default Entry Point, CLIWHOST, associated with the external line HTTP-CLI. The following is a snapshot of the entry point definition:-
+
+|image5| *Fig. 6 - Defining an Identification Scenario in the Virtel Entry Point.* 
+
+The Identification Scenario field is filled in with the name of our scenario SCENSITE. This scenario is called when the inbound call is assigned to an entry point and before any transactions are invoked. The
+scenario sets the Virtel system USER variable which will be used in the PassTicket generation.
+
+*TCT Considerations*
+
+
+The TCT has to include the following parameters if HTTP User Headers and PassTicket generation is required. The parameters are:-
+
+::
+
+	HTHEADR=(SM_USER),                              *
+	VIRSECU=YES,SECUR=(RACROUTE,RACF),              *
+	RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,  *
+	PASSTCK=YES,                                    *
+
+The HTHEADR identifies the “SM_USER“ as a non standard header and one that Virtel must process. The PASSTCK keyword enables Virtel to generate PassTickets.
+
+*Line Rules*
+
+
+To ensure that the source SSO proxy IP address is valid we can code some rules and associate them with the line. In our example we have coded two sets of rules. The first one will test the calling proxy IP address. If that is successful the connection will continue and establish an association with the named Virtel entry point. If the first rule fails because the IP address doesn’t match what we expect, the second rule will be called. This does no more than establish an entry point with a default transaction. The default transaction will just return an error page to the browser. Here are the two rules that we have associated with our Virtel line:-
+
+|image6| *Fig. 7 - List of rules asssociated with the Virtel line*
+
+The second rule is coded as follows:-
+
+|image7| *Fig. 8 - Rule C100PROX to test Proxy IP Address* 
+
+If the IP address of the SSO Proxy matches the Caller DTE address we have specified in the rule than the Entry Point CLIWHOST will be associated with line and the transactions defined under that entry point, CLIWHOST in this case, can be invoked. If the address match fails then the next rule will be called. In our case this will be rule C999REJ which will invoke transaction EPREJECT, the default transaction for Entry Point EPREJECT.
+
+.. warning:: It is important that you use option 3 “STARTS WITH” when defining the Calling DTE option.
+
+|image8| *Fig. 9 - Rule C999REJ to reject the session request* 
+
+This rule does no more than to establish the entry point EPREJECT. EPREJECT will have a default transaction which just returns an error page to the caller.
+
+**Common Errors**
+
+*Message VIR1502E*
+
 
 **Meaning**
 
