@@ -160,13 +160,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="taking-a-virtel-terminal-trace">
-<h1>Taking a VIRTEL terminal trace<a class="headerlink" href="#taking-a-virtel-terminal-trace" title="Permalink to this headline">¶</a></h1>
-<p>Taking a VIRTEL terminal trace enables the capture of 3270 data streams between the VIRTEL 3270 relay terminal and the customers VTAM
-application. The following demonstrates how to run such a trace using VIRTEL running in batch. Please note that VIRTEL does not need to be
-authorized, does not need to run as a started task or need any special security setup. The only requirement from a customer’s perspective is that VIRTEL does need a VTAM ACB so an entry in SYS1.VTAMLST will be required. This is the only setup that your customer will have to do outside of installing the base product.</p>
+<span id="tn201406"></span><h1>Taking a VIRTEL terminal trace<a class="headerlink" href="#taking-a-virtel-terminal-trace" title="Permalink to this headline">¶</a></h1>
+<p>Taking a VIRTEL terminal trace enables the capture of 3270 data streams between the VIRTEL 3270 relay terminal and the customers VTAM application. The following demonstrates how to run such a trace using VIRTEL running in batch. Please note that VIRTEL does not need to be authorized, does not need to run as a started task or need any special security setup. The only requirement from a customer’s perspective is that VIRTEL does need a VTAM ACB so an entry in SYS1.VTAMLST will be required. This is the only setup that your customer will have to do outside of installing the base product.</p>
 <p>Procedure</p>
 <ol class="arabic">
-<li><p class="first">Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the VIRTEL installation guide for details on how to download and install VIRTEL from the SYSPERTEC ftp site. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.</p>
+<li><p class="first">Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the <a class="reference internal" href="../../virtel/Virtel453_Installation_User_Guide/Installation_Guide.html"><span class="doc">Virtel Installation Guide</span></a> for details on how to download and install VIRTEL from the <a class="reference external" href="http://ftp.syspertec.com">SYSPERTEC ftp site</a>. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.</p>
 <blockquote>
 <div><p>“Step 6” Edit member VIRTCT01 can be bypassed if the default TCT options are acceptable. For the purposes of just running a 3270 terminal trace this should be the case.</p>
 <p>“Steps 9 through to Steps 15” of the MVS installation guide can be ignored.</p>
@@ -225,7 +223,7 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One of these defaults is the standard VTAM applications like CICS, IMS, NVAS and TSO. What follows is an example of tracing a web to host (W2H) trace of a VIRTEL W2H session between a screen and TSO. To   begin we need to identify the related W2H line. The command “F jobname,lines” will display the active lines. I’m interested in web to host so I’m looking for the W2H line. Here is the results of my display:-</li>
+<li>Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One of these defaults is the installation of standard VTAM applications like CICS, IMS, NVAS and TSO. What follows is an example of tracing a VIRTEL web to host (W2H) session between a browser and TSO. To begin with we need to identify the related W2H line that will support the session. The command “F jobname,lines” will display the active lines. I’m interested in default web to host (W2H) line so I’m looking for the W2H line. Here is the results of my display:-</li>
 </ol>
 <div class="highlight-default"><div class="highlight"><pre><span></span>F SPTHOLTA,LINES
 +VIR0200I LINES
@@ -240,11 +238,11 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 +VIR0202I ---END OF LIST---
 </pre></div>
 </div>
-<p>I can see that HTTP-W2H is the external name of a line and is attached to port 41001 on TCPIP address 192.168.170.30. Next I’ll open a session to TSO using those details in a web browser. The following url is entered:-</p>
+<p>I can see that HTTP-W2H is the external name of a line and has opened port 41001 on TCPIP address 192.168.170.30. The IP address is set in the ARBO control file as a parameter of the line definition. Next I’ll open a session to TSO using those details in a web browser. The following url is entered into my web browser :-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">TSO</span>
 </pre></div>
 </div>
-<p>This will display a TSO session on the web browser. The +TSO parameter in the URL indicates that VIRTEL should establish a session with the application TSO. Of course this could be any VTAM application that has been defined to VIRTEL through the ARBLOAD process. Before continuing with our TSO session we need to start the trace on the correct terminal/relay.</p>
+<p>This will display a TSO session on the web browser. The &#8220;+TSO&#8221; parameter in the URL indicates that VIRTEL should establish a session with the application TSO. Of course this could be any VTAM application that has been defined to VIRTEL through the ARBLOAD process. Before continuing with our TSO session we need to start the trace on the correct terminal/relay. The VTAM LU relay name that Virtel uses is displayed in the bottom right corner of the TSO screen.</p>
 <p>Displaying the VITREL relays indicates which session have been establish.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTA</span><span class="p">,</span><span class="n">RELAYS</span>
 <span class="o">+</span><span class="n">VIR0200I</span> <span class="n">RELAYS</span>
@@ -272,10 +270,10 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">You can modify the ARBOLOAD to reflect your customer’s applications. For example, if you are using a different session manager to the default session manager APPLID NVAS, modify APPL= keyword in the W2H-15x TRANSACT entry in the ARBOLOAD control file to reflect the VTAM APPLID of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file.</p>
+<p class="last">You can modify the ARBOLOAD to reflect your customer’s applications. For example, if you are using a different session manager to the default session manager APPLID NVAS, modify APPL= keyword in the W2H-15X TRANSACT entry in the ARBOLOAD control file. Change it to the VTAM APPLID of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file. Virtel must be down when updating the ARBO file.</p>
 </div>
 <p>Resubmit the VIRTEL batch job and open a webpage with the following url:-*</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Sessmgr</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mySessmgr</span>
 </pre></div>
 </div>
 </div>

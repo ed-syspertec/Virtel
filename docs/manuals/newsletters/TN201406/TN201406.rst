@@ -1,13 +1,13 @@
+.. _tn201406:
+
 Taking a VIRTEL terminal trace
 ==============================
 
-Taking a VIRTEL terminal trace enables the capture of 3270 data streams between the VIRTEL 3270 relay terminal and the customers VTAM
-application. The following demonstrates how to run such a trace using VIRTEL running in batch. Please note that VIRTEL does not need to be
-authorized, does not need to run as a started task or need any special security setup. The only requirement from a customer’s perspective is that VIRTEL does need a VTAM ACB so an entry in SYS1.VTAMLST will be required. This is the only setup that your customer will have to do outside of installing the base product.
+Taking a VIRTEL terminal trace enables the capture of 3270 data streams between the VIRTEL 3270 relay terminal and the customers VTAM application. The following demonstrates how to run such a trace using VIRTEL running in batch. Please note that VIRTEL does not need to be authorized, does not need to run as a started task or need any special security setup. The only requirement from a customer’s perspective is that VIRTEL does need a VTAM ACB so an entry in SYS1.VTAMLST will be required. This is the only setup that your customer will have to do outside of installing the base product.
 
 Procedure
 
-1. Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the VIRTEL installation guide for details on how to download and install VIRTEL from the SYSPERTEC ftp site. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.
+1. Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the :doc:`Virtel Installation Guide </manuals/virtel/Virtel453_Installation_User_Guide/Installation_Guide>` for details on how to download and install VIRTEL from the `SYSPERTEC ftp site <http://ftp.syspertec.com>`_. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.
 
     “Step 6” Edit member VIRTCT01 can be bypassed if the default TCT options are acceptable. For the purposes of just running a 3270 terminal trace this should be the case.
 
@@ -67,7 +67,7 @@ This VTAM definition should look like:-
     // PEND
     //S01 EXEC VIRTEL
 
-4. Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One of these defaults is the standard VTAM applications like CICS, IMS, NVAS and TSO. What follows is an example of tracing a web to host (W2H) trace of a VIRTEL W2H session between a screen and TSO. To   begin we need to identify the related W2H line. The command “F jobname,lines” will display the active lines. I’m interested in web to host so I’m looking for the W2H line. Here is the results of my display:-
+4. Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One of these defaults is the installation of standard VTAM applications like CICS, IMS, NVAS and TSO. What follows is an example of tracing a VIRTEL web to host (W2H) session between a browser and TSO. To begin with we need to identify the related W2H line that will support the session. The command “F jobname,lines” will display the active lines. I’m interested in default web to host (W2H) line so I’m looking for the W2H line. Here is the results of my display:-
 
 ::
 
@@ -83,13 +83,13 @@ This VTAM definition should look like:-
     +VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001
     +VIR0202I ---END OF LIST---
 
-I can see that HTTP-W2H is the external name of a line and is attached to port 41001 on TCPIP address 192.168.170.30. Next I’ll open a session to TSO using those details in a web browser. The following url is entered:-
+I can see that HTTP-W2H is the external name of a line and has opened port 41001 on TCPIP address 192.168.170.30. The IP address is set in the ARBO control file as a parameter of the line definition. Next I’ll open a session to TSO using those details in a web browser. The following url is entered into my web browser :-
 
 ::
 
     http://192.168.170.30:41001/w2h/WEB2AJAX.htm+TSO
 
-This will display a TSO session on the web browser. The +TSO parameter in the URL indicates that VIRTEL should establish a session with the application TSO. Of course this could be any VTAM application that has been defined to VIRTEL through the ARBLOAD process. Before continuing with our TSO session we need to start the trace on the correct terminal/relay.
+This will display a TSO session on the web browser. The "+TSO" parameter in the URL indicates that VIRTEL should establish a session with the application TSO. Of course this could be any VTAM application that has been defined to VIRTEL through the ARBLOAD process. Before continuing with our TSO session we need to start the trace on the correct terminal/relay. The VTAM LU relay name that Virtel uses is displayed in the bottom right corner of the TSO screen. 
 
 Displaying the VITREL relays indicates which session have been establish.
 
@@ -125,10 +125,10 @@ To stop the VIRTEL batch job issue the STOP command:-
     P jobname
 
 .. note::
-  You can modify the ARBOLOAD to reflect your customer’s applications. For example, if you are using a different session manager to the default session manager APPLID NVAS, modify APPL= keyword in the W2H-15x TRANSACT entry in the ARBOLOAD control file to reflect the VTAM APPLID of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file. 
+  You can modify the ARBOLOAD to reflect your customer’s applications. For example, if you are using a different session manager to the default session manager APPLID NVAS, modify APPL= keyword in the W2H-15X TRANSACT entry in the ARBOLOAD control file. Change it to the VTAM APPLID of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file. Virtel must be down when updating the ARBO file.  
 
 Resubmit the VIRTEL batch job and open a webpage with the following url:-*
 
 ::
 
-    http://192.168.170.30:41001/w2h/WEB2AJAX.htm+Sessmgr
+    http://192.168.170.30:41001/w2h/WEB2AJAX.htm+mySessmgr
