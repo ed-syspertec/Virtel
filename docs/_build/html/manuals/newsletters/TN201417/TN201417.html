@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>RACF Grouping Class and Virtel &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Maintaining TRSF file sets" href="../TN201419/TN201419.html"/>
+        <link rel="prev" title="Virtel Security. Using server and client certificates" href="../TN201416/TN201416.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201413/TN201413.html">Overview of a Virtel Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>RACF Grouping Class and Virtel</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201417/TN201417.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="racf-grouping-class-and-virtel">
+<h1>RACF Grouping Class and Virtel<a class="headerlink" href="#racf-grouping-class-and-virtel" title="Permalink to this headline">¶</a></h1>
+<p>Within RACF a resource is protected by a profile. In the case of VIRTEL
+the transaction W2H-10 is a resource that can be protected by the
+profile VIRTEL.W2H-10. The suffix VIRTEL is defined in the in the TCT
+through the PRFSECU keyword on the SECUR parameter.</p>
+<p>SECUR=(RACROUTE,RACF),RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=VIRTEL</p>
+<p>By default the profiles are maintained in the RACF default FACILITY
+class held within the class descriptor table or CDT. For each profile a
+user is granted access rights to the transaction through an associated
+access list.</p>
+<p><strong>Transaction RACF Profile Access List</strong></p>
+<p>W2H-10 VIRTEL.W2H-10 USER A, GROUP B, USER C</p>
+<p>CLI-90 VIRTEL.CLI-90 USER A, GROUP B, USER C</p>
+<p>The RACF commands required to build the above access lists would be</p>
+<p>RDEF FACILITY VIRTEL.W2H-10 UACC(NONE)</p>
+<p>RDEF FACILITY VIRTEL.W2H-10 UACC(NONE)</p>
+<p>PE VIRTEL.CLI-90 CL(FACILITY) ACC(READ) ID(USERA,GROUPB,USERC)</p>
+<p>PE VIRTEL.W2H-10 CL(FACILITY) ACC(READ) ID(USERA,GROUPB,USERC)</p>
+<p>If a new VIRTEL transactions is defined, say CLI-80, a new profile must
+be created and duplicated with the access list associated with the other
+transactions. This is all well and good for a few profiles but in a
+complex environment this can become a bit of a maintenance headache with
+multiple transactions being defined with the same access list. If a new
+group or user was to be added to VIRTEL then multiple access lists would
+have to be updated, one for each VIRTEL transaction. As there is no easy
+method to locate profiles with identical access lists finding the
+profiles becomes problematic in a complex RACF environment. The use of
+generic profiles could be employed to reduce the number of profiles but
+this is less secure and may not fit the business security architecture.</p>
+<p>With RACF grouping classes this problem can be overcome as you can
+define one access list and associate that list with multiple
+transactions. The grouping class collectively associates itself with
+grouping class members where each member represents a VIRTEL
+transactions. The grouping class has an associated access list which is
+cloned to its individual member classes when RACF starts.</p>
+<p><strong>Accesslist Member List Members</strong></p>
+<p>USERA,GROUPB,USERC VIRTEL_A VIRTEL.W2H-10,VIRTEL.CLI-90</p>
+<p><strong>Configuring RACF grouping</strong></p>
+<p>To configure VIRTEL to use RACF grouping classes the relevant grouping
+and member class profiles must be defined to the class descriptor table.
+These can be assembled into the default RACF CDT module ICHRRCDE using
+ICHERCDE macros. This, however, will require an IPL to bring these
+changes in. Alternatively, the RDEFINE and RALTER macros can be used to
+dynamically define the classes. In the following example the RDEFINE and
+RALTER commands are used to define the grouping and member classes to
+the class descriptor table.</p>
+<p><strong>Defining the grouping and member classes</strong></p>
+<p>The following statements are used to define the grouping class $GVIRTEL
+and member class $VIRTEL to RACF.</p>
+<p>RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -</p>
+<p>CASE(UPPER) -</p>
+<p>FIRST(ALPHA) -</p>
+<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
+<p>MAXLENGTH(39) -</p>
+<p>MAXLENX(39) -</p>
+<p>KEYQUALIFIERS(0) -</p>
+<p>PROFILESALLOWED(YES) -</p>
+<p>POSIT(200) -</p>
+<p>DEFAULTRC(4) -</p>
+<p>DEFAULTUACC(NONE) -</p>
+<p>RACLIST(ALLOWED) -</p>
+<p>MEMBER($VIRTEL) -</p>
+<p>GENLIST(ALLOWED) -</p>
+<p>OPER(NO) -</p>
+<p>)</p>
+<p>RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -</p>
+<p>CASE(UPPER) -</p>
+<p>FIRST(ALPHA) -</p>
+<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
+<p>MAXLENGTH(39) -</p>
+<p>MAXLENX(39) -</p>
+<p>KEYQUALIFIERS(0) -</p>
+<p>PROFILESALLOWED(YES) -</p>
+<p>POSIT(200) -</p>
+<p>DEFAULTRC(4) -</p>
+<p>DEFAULTUACC(NONE) -</p>
+<p>RACLIST(ALLOWED) -</p>
+<p>GENLIST(ALLOWED) -</p>
+<p>GROUP($GVIRTEL) -</p>
+<p>OPER(NO) -</p>
+<p>)</p>
+<p>Notice that the grouping class $GVIRTEL points to the member class
+$VIRTEL and that the member class $VIRTEL points to its associated group
+class $GVIRTEL. Having defined the classes the transaction members can
+be added to a member class list. In this example the member class list
+is called VIRTEL_A. It is this profile that contains an access list
+which will be cloned to each member of the grouping class when RACF
+starts.</p>
+<p>RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)</p>
+<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.W2H-20) UACC(NONE)</p>
+<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.CLI-90) UACC(NONE)</p>
+<p>Internally RACF will look up the group access list profile for each
+member of the member class through the members associated group class.
+Effectively the above statements are adding a transaction member to the
+member class associated with a group class and protecting that member
+profile with the access list associated with the group class. The
+following statement defines an access list at the group level.</p>
+<p>PE VIRTEL_A CLASS($GVIRTEL) ID(USERA,GROUPB,USERC) ACCESS(READ)</p>
+<p>When a new transaction needs to be protected it can be added to the
+group class as a member and it will adopt the access list defined at the
+group level. Equally, when a new user or group is added to the group
+access list it will have access authority to the group member
+transactions.</p>
+<p><strong>VIRTEL definitions.</strong></p>
+<p>To support the RACF grouping class the VIRTEL SECUR parameter in the TCT
+has to define the member class as its RAPPL and RNODE class name.</p>
+<p>VIRSECU=YES,SECUR=(RACROUTE,RACF),</p>
+<p>RAPPL=$VIRTEL,RNODE=$VIRTEL,PRFSECU=VIRTEL,</p>
+<p>It is important to note that it is only the member class name that
+exists in the RACF dataspace structure after RACF initializes. The group
+class name is only used as a placeholder for an access list to be held
+during RACF initialization or when the CDT is dynamically refreshed.
+When RACF initializes it scans the list of grouping classes and
+retrieves the associated member class resource names. For each member
+class it determines the access from the associated grouping profile and
+loads this information into the RACF dataspace. The grouping classes are
+only used in the building of the RACF dataspace and are never used in
+any RACF access lookup and this is why any reference is through the
+member name and not the group name.</p>
+<p><strong>Example JCL</strong></p>
+<p>The following job defines the group and member classes and permits
+access to Virtel transactions.</p>
+<p><strong>Transactions Description Users</strong></p>
+<p>CLI-90 Web Connection SPTHOLT,VIRGROUP</p>
+<p>CLI-20 Virtel Admin(HTML) SPTHOLT,VIRGROUP</p>
+<p>//SPTHOLTA JOB SYST,&amp;SYSUID,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,</p>
+<p>// REGION=0M</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
+<p>//* RACF : PROCEDURE TO ADD CLASS TO DYNAMIC CDT *</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
+<p>//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>RDELETE $GVIRTEL VIRTEL_A</p>
+<p>SETROPTS CLASSACT($VIRTEL) RACLIST($VIRTEL)</p>
+<p>//STEP2 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>RDELETE CDT $VIRTEL</p>
+<p>RDELETE CDT $GVIRTEL</p>
+<p>SETROPTS RACLIST(CDT) REFRESH</p>
+<p>//STEP3 EXEC PGM=IKJEFT1A,DYNAMNBR=20</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -</p>
+<p>CASE(UPPER) -</p>
+<p>FIRST(ALPHA) -</p>
+<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
+<p>MAXLENGTH(39) -</p>
+<p>MAXLENX(39) -</p>
+<p>KEYQUALIFIERS(0) -</p>
+<p>PROFILESALLOWED(YES) -</p>
+<p>POSIT(200) -</p>
+<p>DEFAULTRC(4) -</p>
+<p>DEFAULTUACC(NONE) -</p>
+<p>RACLIST(ALLOWED) -</p>
+<p>MEMBER($VIRTEL) -</p>
+<p>GENLIST(ALLOWED) -</p>
+<p>OPER(NO) -</p>
+<p>)</p>
+<p>RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -</p>
+<p>CASE(UPPER) -</p>
+<p>FIRST(ALPHA) -</p>
+<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
+<p>MAXLENGTH(39) -</p>
+<p>MAXLENX(39) -</p>
+<p>KEYQUALIFIERS(0) -</p>
+<p>PROFILESALLOWED(YES) -</p>
+<p>POSIT(200) -</p>
+<p>DEFAULTRC(4) -</p>
+<p>DEFAULTUACC(NONE) -</p>
+<p>RACLIST(ALLOWED) -</p>
+<p>GENLIST(ALLOWED) -</p>
+<p>GROUP($GVIRTEL) -</p>
+<p>OPER(NO) -</p>
+<p>)</p>
+<p>SETROPTS RACLIST(CDT) REFRESH</p>
+<p>//STEP4 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)</p>
+<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.W2H-20) UACC(NONE)</p>
+<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.CLI-90) UACC(NONE)</p>
+<p>//STEP5 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>PE VIRTEL_A CLASS($GVIRTEL) ID(SPTHOLT,VIRGROUP) ACCESS(READ)</p>
+<p>SETROPTS CLASSACT($VIRTEL) RACLIST($VIRTEL)</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201419/TN201419.html" class="btn btn-neutral float-right" title="Maintaining TRSF file sets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201416/TN201416.html" class="btn btn-neutral" title="Virtel Security. Using server and client certificates" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

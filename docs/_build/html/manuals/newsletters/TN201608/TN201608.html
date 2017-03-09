@@ -1,0 +1,358 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installing Virtel V4.56 from scratch &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Nailing LUS with an Identification scenario" href="../TN201609/TN201609.html"/>
+        <link rel="prev" title="What’s new in Virtel 4.56" href="../TN201607/TN201607.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201602/TN201602.html">Installing Virtel V4.53 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201604/TN201604.html">Controlling LU Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201605/TN201605.html">CICS Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201606/TN201606.html">Virtel Screen Redesigner in action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installing Virtel V4.56 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Nailing LUS with an Identification scenario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customising Virtel in V4.56</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Installing Virtel V4.56 from scratch</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201608/TN201608.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installing-virtel-v4-56-from-scratch">
+<h1>Installing Virtel V4.56 from scratch<a class="headerlink" href="#installing-virtel-v4-56-from-scratch" title="Permalink to this headline">¶</a></h1>
+<p><strong>Cleaning up from a previous installation.</strong></p>
+<p>If you want to delete all the files from a previous installation use the
+following job:-</p>
+<p>//S00 EXEC PGM=ADRDSSU,REGION=0M</p>
+<p>//SYSPRINT DD SYSOUT=*</p>
+<p>//TEMP DD DUMMY</p>
+<p>DUMP DATASET -</p>
+<p>(INCLUDE( -</p>
+<p>SPTHOLT.VIRT456.** -</p>
+<p>)) -</p>
+<p>DELETE -</p>
+<p>PURGE -</p>
+<p>TOL(ENQF) -</p>
+<p>OUTDDNAME(TEMP)</p>
+<p><strong>Getting the software</strong></p>
+<p>Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></p>
+<p>/VIRTEL 4.56/Produits/virtel456mvs.zip</p>
+<p>/VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt</p>
+<p>/VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip</p>
+<p>Unzip “virtel456mvs.zip” into a folder on your workstation.</p>
+<p>Print off the “install.txt” document.</p>
+<p>Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on
+your workstation.</p>
+<p>Print off the readme document.</p>
+<p><strong>Installing the software</strong></p>
+<ol class="arabic simple">
+<li>Upload to the mainframe and edit the text file $alocdsu. Run it to
+allocate a XMIT file.</li>
+<li>Upload the XMIT file virt456.xmit to the file allocated by $alocdsu.</li>
+<li>Upload to the mainframe and edit the text file $restdsu. Run it to
+restore and install VIRTEL from the uploaded XMIT file.</li>
+<li>Upload text file allptfs-mvs456.txt to
+<em>yourqual.VIRT456.CNTL(PTF456MV).</em></li>
+<li>Modify and run job <em>yourqual.VIRT456.CNTL(ZAPJCL)</em>. This will apply
+maintenance to the VIRTEL load library.</li>
+<li>Authorize the VIRTEL load library. Use the z/OS SETPROG APF command
+- SETPROG APF,ADD,DSN=<em>yourqual.VIRT456.LOADLIB</em>,[VOL=volser |
+SMS ]</li>
+<li>Edit the VIRTEL TCT member <em>yourqual.VIRT456.CNTL(VIRTCT01</em>) and
+assemble using <em>yourqual.VIRT456.CNTL(ASMTCT).</em> See note 6 of
+“install.txt” for further information.</li>
+<li>Edit <em>yourqual.VIRT456.CNTL(ARBOLOAD)</em> and submit the job. This
+builds the default configuration and sample VTAMLST member. See note
+8 of the “install.txt” for further information.</li>
+<li>Copy <em>yourqual.VIRT456.CNTL(member)</em> to SYS1.VTAMLST. Member is
+either VIRTAPPL, the default member name, or the VTAM applid
+specified in the ARBOLOAD job on the NODEAPPL= statement. Activate
+the “member” with the z/OS command V NET,ACT,ID=member.</li>
+<li>Edit member <em>yourqual.VIRT456.CNTL(VIRTEL4)</em> and copy to
+SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</li>
+<li>Start Virtel.</li>
+</ol>
+<p>Note: You can run VIRTEL as a JOB rather than a STC. This can be useful
+during testing. See the JCL below for an example:-</p>
+<p>//SPTHOLTV JOB 9000,&#8217;VIRTEL&#8217;,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID</p>
+<p>//VIRTEL PROC QUAL=SPTHOLT.VIRT456,</p>
+<p>// TCT=01 = Change to 01</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//* PROCEDURE FOR VIRTEL STARTER EDITION *</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
+<p>//VIRTEL EXEC PGM=VIR6000,TIME=1440,REGION=32M,PARM=&amp;TCT</p>
+<p>//STEPLIB DD DSN=&amp;QUAL..LOADLIB,DISP=SHR</p>
+<p>//DFHRPL DD DSN=&amp;QUAL..LOADLIB,DISP=SHR</p>
+<p>//SERVLIB DD DSN=&amp;QUAL..SERVLIB,DISP=SHR</p>
+<p>//VIRARBO DD DSN=&amp;QUAL..ARBO,DISP=SHR</p>
+<p>//VIRSWAP DD DSN=&amp;QUAL..SWAP,DISP=SHR</p>
+<p>//VIRHTML DD DSN=&amp;QUAL..HTML,DISP=SHR</p>
+<p>//SAMPTRSF DD DSN=&amp;QUAL..SAMP.TRSF,DISP=SHR</p>
+<p>//HTMLTRSF DD DSN=&amp;QUAL..HTML.TRSF,DISP=SHR</p>
+<p>//SYSOUT DD SYSOUT=*</p>
+<p>//VIRLOG DD SYSOUT=*</p>
+<p>//VIRTRACE DD SYSOUT=*</p>
+<p>//SYSPRINT DD SYSOUT=*</p>
+<p>//SYSUDUMP DD SYSOUT=*</p>
+<p>// PEND</p>
+<p>//S01 EXEC VIRTEL</p>
+<p>Once Virtel is started check that VIRTEL is running correctly and has
+opened sessions ports 41001 and 41002. Issue the following command:-</p>
+<p>F VIRTEL,LINES</p>
+<p>The output should be similar to:-</p>
+<p>F VIRTEL,LINES</p>
+<p>+VIR0200I LINES</p>
+<p>+VIR0201I VIRTEL 4.56 APPLID=APPLHOLT LINES</p>
+<p>+VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
+<p>+VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
+<p>+VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.30:41002</p>
+<p>+VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001</p>
+<p>+VIR0202I &#8212;END OF LIST&#8212;</p>
+<p>**
+Applying maintenance to Virtel.**</p>
+<p><strong>TRSF changes</strong></p>
+<p>Using a Chrome Browser navigate to the Administration Virtel Portal
+which can be accessed through port 41001. The Drag and Drop upload
+feature is supported by Chrome and Firefox only.</p>
+<p><a class="reference external" href="http://192.168.170.30:41001/">http://192.168.170.30:41001/</a></p>
+<p>The following screen image should appear:-</p>
+<p><a class="reference internal" href="../../../_images/image158.png"><img alt="image0" src="../../../_images/image158.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
+<p>Select Drag and Drop Upload and login with your credentials. The Drag
+and Drop Interface will be displayed.</p>
+<p><a class="reference internal" href="../../../_images/image229.png"><img alt="image1" src="../../../_images/image229.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
+<p>Keeping this browser window open, go to your desktop directory where you
+unzipped the virtel456updtxxxx.zip file. It should have a directory
+structure similar to the following display:-</p>
+<p><a class="reference internal" href="../../../_images/image329.png"><img alt="image2" src="../../../_images/image329.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
+<p>Select the w2h directory and then select all the files within that
+directory (CTRL-A). Drag this selection across to the browser window and
+drop the selected files over the W2H-DIR ICON in the browser window.
+This should start an upload of all the files from the w2h directory on
+your desktop into the W2H-DIR directory of the SAMP TRSF VSAM file.
+Check that the upload completes with a return code of 00.</p>
+<p>After all the elements have been uploaded into the SAMPTRSF directories,
+close the drag and drop window and return to the administration portal.
+Reload the browser window and issue CTRL-R to refresh the browser cache.
+The fix number 4.56 (xxxx) should appear under the Virtel Applid in the
+top portion of the Virtel screen.</p>
+<p>Virtel 4.56 maintenance is now complete.</p>
+<p>**
+Basic health test of Virtel**</p>
+<p>From the Virtel Portal Page select “Other Applications”. An application
+menu should appear with some default applications.</p>
+<p><a class="reference internal" href="../../../_images/image423.png"><img alt="image3" src="../../../_images/image423.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
+<p>Select any application that is flagged green. If no applications are
+flagged green (available) then configure you ARBO and add applications
+relevant to your site. See the <em>Virtel Connectivity Guide</em> for more
+information.</p>
+<p>This completes the Virtel 4.56 installation.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201609/TN201609.html" class="btn btn-neutral float-right" title="Nailing LUS with an Identification scenario" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201607/TN201607.html" class="btn btn-neutral" title="What’s new in Virtel 4.56" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

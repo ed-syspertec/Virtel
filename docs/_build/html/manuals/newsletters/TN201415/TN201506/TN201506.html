@@ -1,0 +1,778 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>An example of using web services with Virtel Integration &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../newsletters.html">Technical Newsletters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>An example of using web services with Virtel Integration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/manuals/newsletters/TN201415/TN201506/TN201506.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="an-example-of-using-web-services-with-virtel-integration">
+<h1>An example of using web services with Virtel Integration<a class="headerlink" href="#an-example-of-using-web-services-with-virtel-integration" title="Permalink to this headline">¶</a></h1>
+<p>Web services are one of the foundation blocks of the Services Oriented
+Architecture blue print. This blue print forms the basis on which many
+of today’s e-commerce infrastructures are built, but what is a web
+services? Simply put, web services are discoverable services that are
+made available from a business&#8217;s web server for web users or other
+web-connected programs to use. Client programs or systems interact with
+the web service using SOAP (Simple Object Access Protocol) messages,
+which are conveyed using the standardized protocols of HTTP with XML
+serialization. The support web services or operations, message formats
+and data structures supported by a web service are described by an XML
+document using Web Service Data Language (WSDL). Web services are
+discoverable through UDDI servers or equivalent. UDDI (Universal
+Description, Discovery, and Integration) is an XML based registry for
+businesses worldwide to list themselves on the Internet. Its ultimate
+goal is to streamline online transactions by enabling companies to find
+one another on the Web and make their systems interoperable for
+e-commerce. Once a web service has been identified it can be used by
+exploiting the contents of the published WSDL. When using web services,
+message exchange is through the open and standardized SOAP format. As an
+example, a program wishing to know the current exchange rate between two
+currencies can send a SOAP message request to a web service provider and
+the results will be returned in a SOAP message response.</p>
+<p>In this newsletter we demonstrate how Virtel can interface between a
+legacy batch application and a web service to retrieve the exchange rate
+between two currencies. The exchange rate web service is provided by a
+web service hosted by
+<a class="reference external" href="http://www.webservicex.net">www.webservicex.net</a>.</p>
+<p>An overview of the service is displayed below.</p>
+<p><a class="reference internal" href="../../../../_images/image12.jpg"><img alt="image0" src="../../../../_images/image12.jpg" style="width: 6.26806in; height: 3.52569in;" /></a></p>
+<p>Figure - Overview of web services elements.</p>
+<p>Breaking down the individual actions we can anaylze the components
+involved.</p>
+<ol class="arabic">
+<li><p class="first">Connection to the Virtel Server is through a batch application. In
+this case we are using REXX to connect to the Virtel server using
+REXX socket fuctions. The batch application runs as a batch task
+invoking TCPIP to initialize and connect a socket to VIRTEL. The
+batch application sends a URL request to VIRTEL, effectively
+emulatiing a browser. The URL request identifies the VIRTEL line,
+template and transaction. Virtel is unaware that it is conversing
+with a batch program. The following is the JCL that invokes the REXX
+batch application.</p>
+<blockquote>
+<div><p>//LIBS JCLLIB ORDER=SPTHOLT.VIRTEL.REXX</p>
+<p>//*</p>
+<p>//* LINE 41002 CLIHOST</p>
+<p>//* LINE 41102 EDSHOST</p>
+<p>//* LINE 41001 W2HHOST</p>
+<p>//*</p>
+<p>//CLIENT EXEC ISPF,HLQ=ISP</p>
+<p>PROFILE PREFIX(SPTHOLT)</p>
+<p>ISPSTART CMD(%RXCVIRT)</p>
+<p>//REQUESTS DD *</p>
+<p>192.168.170.30:41102 /ws1.html+ws3?FromCurrency=EUR&amp;ToCurrency=GBP</p>
+<p>/*</p>
+</div></blockquote>
+</li>
+</ol>
+<p>When running the REXX batch application the following URL is sent to
+Virtel:-</p>
+<p>SEND-&gt; <strong>GET /WS1.HTML+WS3?FROMCURRENCY=EUR&amp;TOCURRENCY=GBP</strong></p>
+<p>HTTP/1.1 Host: 192.168.170.30:41002</p>
+<p>Connection: keep-Accept:text/html,application/xhtml+xml,</p>
+<p>application/xml;q=0.9,image/webp,*/*;q=0.8</p>
+<p>Read from 192.168.170.30</p>
+<p>Virtel IP Address: 192.168.170.30</p>
+<p>LINE: HTTP-E</p>
+<p>Port: 41102</p>
+<p>Template: WS1.HTML</p>
+<p>Transaction: WS3</p>
+<p>Parameters: FROMCURRENCY=EUR,TOCURRENCY=GBP</p>
+<ol class="arabic">
+<li><p class="first">When Virtel receives the URL it invokes the transaction associated
+with the Line related to the IP address and port. In this case it is
+line E-HTTP which has an entry point of EDSPOINT. Within that entry
+point, transaction WS3 is defined which has an initial scenario of
+SCENRATE. It is this initial scenario that connects to the web
+service, sends and receives the relevant SOAP messages and returns
+the results to the batch application. This is an example of Virtel’s
+web integration.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../../_images/image21.jpg"><img alt="image1" src="../../../../_images/image21.jpg" style="width: 6.26806in; height: 3.52569in;" /></a></p>
+</div></blockquote>
+</li>
+</ol>
+<p>Figure - User elements</p>
+<blockquote>
+<div><p>The user elements involved in this stage of the transaction are the
+batch application, REXX code RXCVIRT, the html template WS1.HTML
+that Virtel will return, the presentation module code SCENRATE and
+the SOAP message template exchange.xml . The template will contain
+the response from the web service. Let’s take a look at these user
+elements. The template looks like this:-</p>
+<p><strong>WS1.HTML</strong></p>
+<p>&lt;!DOCTYPE html&gt;</p>
+<p>&lt;!&#8211;</p>
+<p>To change this license header, choose License Headers in Project
+Properties.</p>
+<p>To change this template file, choose Tools | Templates</p>
+<p>and open the template in the editor.</p>
+<p class="attribution">&mdash;&gt;</p>
+</div></blockquote>
+<blockquote>
+<div><p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221; &#8211;&gt;</p>
+<p>&lt;title&gt;Web Services Example 1&lt;/title&gt;</p>
+<p>&lt;meta charset=&#8221;UTF-8&#8221;&gt;</p>
+<p>&lt;meta name=&#8221;viewport&#8221; content=&#8221;width=device-width,
+initial-scale=1.0&#8221;&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body&gt;</p>
+<p>Answer is {{{CURRENT-VALUE-OF &#8220;CANSWER&#8221;}}}</p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>The Virtel tag language is embedded in the html element to obtain
+the contents of the variable CANSWER which will contain the results
+from the web service. This is an example of the Virtel Web Access
+toolkit. This user element is used at the end of the scenario when
+Virtel sends the response to the initial URL that was initial posted
+by the REXX batch application. If we trace the Virtel line E-HTTP
+when we run the batch application we can see the data flow.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>**Outbound Message from batch application**
+E-HTTP HTTP REQUEST FROM 192.168.170.030:02027 13:03:57.12 00000 47455420 2F575331 2E48544D 4C2B5753 333F4652 4F4D4355 5252454E 43593D45 \*GET /WS1.HTML+WS3?FROMCURRENCY=E*
+
+00020 55522654 4F435552 52454E43 593D4742 50202020 20202020 20202020
+20202020 \*UR&amp;TOCURRENCY=GBP \*
+
+00040 48545450 2F312E31 0D0A486F 73743A20 3139322E 3136382E 3137302E
+33303A34 \*HTTP/1.1..Host: 192.168.170.30:4\*
+
+00060 31303032 0D0A436F 6E6E6563 74696F6E 3A206B65 65702D61 6C697665
+0D0A4163 \*1002..Connection: keep-alive..Ac\*
+
+00080 63657074 3A207465 78742F68 746D6C2C 6170706C 69636174 696F6E2F
+7868746D \*cept: text/html,application/xhtm\*
+
+000A0 6C2B786D 6C2C6170 706C6963 6174696F 6E2F786D 6C3B713D 302E392C
+696D6167 \*l+xml,application/xml;q=0.9,imag\*
+
+000C0 652F7765 62702C2A 2F2A3B71 3D302E38 0D0A0D0A
+\*e/webp,\*/\*;q=0.8.... \*
+
+**Inbound Message flow to batch application **
+
+E-HTTP HTTP RESPONSE TO 192.168.170.030:02027 13:03:57.62
+
+00000 48545450 2F312E31 20323030 204F6B0D 0A536572 7665723A 20566972
+74656C2F \*HTTP/1.1 200 Ok..Server: Virtel/\*
+
+00020 342E3534 0D0A4461 74653A20 53756E2C 20323220 4D617220 32303135
+2031323A \*4.54..Date: Sun, 22 Mar 2015 12:\*
+
+00040 30333A35 3720474D 54200D0A 45787069 7265733A 20300D0A 436F6E74
+656E742D \*03:57 GMT ..Expires: 0..Content-\*
+
+00060 6C656E67 74683A20 30303030 30303037 0D0A436F 6E74656E 742D7479
+70653A20 \*length: 00000007..Content-type: \*
+
+00080 74657874 2F68746D 6C0D0A0D 0A30302E 37323336
+\*text/html....00.7236 \*
+
+*Note. The inbound message is not using the template WS1.HTML in the
+above example, but rather just returning the CANSWER variable.*
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">The scenario associated with the transaction WS3 is a Virtel initial
+scenario. It is defined with the following attributes:-</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../../_images/image37.png"><img alt="image2" src="../../../../_images/image37.png" style="width: 6.26806in; height: 4.04236in;" /></a></p>
+</div></blockquote>
+</li>
+</ol>
+<p>Figure - WS3 Transaction definition</p>
+<blockquote>
+<div><p>The key points are the <em>Application type 2</em>, a VIRTEL program, and
+<em>TIOA at logon</em> set to &amp;/S which initiates the VIRTEL presentation
+module SCENRATE that contains the INITIAL scenario. It is the
+scenario within this presentation module that does all the work. See
+Appendix A for a complete list of the presentation module SCENRATE.
+This module must be assembled. The presentation module contains only
+one scenario, an initial scenario which is invoked when an &amp;/S order
+is found in a TIOA connection script (see “Connection /
+Disconnection Scripts” in the <em>VIRTEL Connectivity Reference</em>
+manual).</p>
+<p>The layout of the scenario within the presentation module SCENRATE
+can be defined as an output structure, defined between the OUTPUT
+MAP$ and OUTPUT MAP$ END, followed by the SCENARIO logic. The logic
+steps of the scenario can be broken down thus:-</p>
+</div></blockquote>
+<ol class="loweralpha">
+<li><p class="first">Create variables from URL – FROMCURRENCY, TOCURRENCY</p>
+</li>
+<li><p class="first">Set variable SITE to URL of web services provider and access port.</p>
+<blockquote>
+<div><p><a class="reference external" href="http://www.webservices.net:80">www.webservices.net:80</a></p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="loweralpha">
+<li><p class="first">Read in SOAP template from Virtel TRSF file – exchange.xml.</p>
+</li>
+<li><p class="first">Build options file for $POST SOAP request – OPTION$ in Virtel
+variable REQP.</p>
+</li>
+<li><p class="first">Send SOAP request to web services provider.</p>
+</li>
+<li><p class="first">Test results and depending on return code take appropriate action.
+This is achieved using the Virtel CASE$ statement:</p>
+<blockquote>
+<div><p>NOTOK – Place error message in Virtel variable ANSWER</p>
+<p>OK – Convert ANSWER variable from ASCII to EBCDIC</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="loweralpha simple">
+<li>Copy Virtel ANSWER variable to a COMMAREA as mapped by the OUTPUT map
+area.</li>
+<li>Copy the formatted COMMAREA to a Virtel variable called CANSWER.</li>
+<li>Send template with CANSWER. This will cause the tagged area of the
+template WS1.HTML to be populated with the CANSWER variable or just
+send CANSWER variable.</li>
+<li>Disconnect the session with the batch application.</li>
+</ol>
+<p>The user elements involved in the SOAP message request is template
+exchange.xml. The XML file looks like:-</p>
+<p><strong>exchange.xml</strong></p>
+<p>&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;UTF-8&#8221;?&gt;&lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221;
+&#8211;&gt;{{{ SET-CONTENT-TYPE &#8220;text/xml&#8221;}}}{{{SET-OUTPUT-ENCODING-UTF-8
+&#8220;&#8221;}}}{{{SET-LOCAL-OPTIONS (XML-ESCAPES)}}}</p>
+<p>&lt;soap12:Envelope xmlns:xsi=&#8221;http://www.w3.org/2001/XMLSchema-instance&#8221;
+xmlns:xsd=&#8221;http://www.w3.org/2001/XMLSchema&#8221;
+xmlns:soap12=&#8221;http://www.w3.org/2003/05/soap-envelope&#8221;&gt;</p>
+<p>&lt;soap12:Body&gt;</p>
+<p>&lt;ConversionRate xmlns=&#8221;<a class="reference external" href="http://www.webserviceX.NET/">http://www.webserviceX.NET/</a>&#8220;&gt;</p>
+<p>&lt;FromCurrency&gt;{{{TRIMMED-VALUE-OF &#8220;FromCurrency&#8221;}}}&lt;/FromCurrency&gt;</p>
+<p>&lt;ToCurrency&gt;{{{TRIMMED-VALUE-OF &#8220;ToCurrency&#8221;}}}&lt;/ToCurrency&gt;</p>
+<p>&lt;/ConversionRate&gt;</p>
+<p>&lt;/soap12:Body&gt;</p>
+<p>&lt;/soap12:Envelope&gt;</p>
+<p>The scenario takes the parameters from the URL and places them in Virtel
+variables. This is an example of how Virtel’s integration works; through
+a combination of scenario programmable elements and an Initial scenario.
+The following is an extract from the scenario showing the relevant COPY$
+statements:-</p>
+<blockquote>
+<div><p>START SET$ ENCODING,UTF-8,&#8217;IBM1147&#8217;</p>
+<p>COPY$ INPUT-TO-VARIABLE,FIELD=&#8217;FROMCURRENCY&#8217;, *</p>
+<p>VAR=&#8217;FROMCURRENCY&#8217;, *</p>
+<p>TYPE=REPLACE</p>
+<p>*</p>
+<p>COPY$ INPUT-TO-VARIABLE,FIELD=&#8217;TOCURRENCY&#8217;, *</p>
+<p>VAR=&#8217;TOCURRENCY&#8217;, *</p>
+<p>TYPE=REPLACE</p>
+</div></blockquote>
+<p>*</p>
+<p>Again, Virtel tag language is used to populate the template with the
+correct information for the web services request. The “TRIMMED-VALUE-OF”
+of statements extract the values from the Virtel variables and place
+them in the XML SOAP message template.</p>
+<p>The OPTION$ and SEND$ complete the SOAP message, sending it to the web
+service via the O-HHTP line, as identified in the SEND$ statement:-</p>
+<blockquote>
+<div><p>SENDREQ OPTION$ FOR-HTTP,(METHOD,&#8217;POST&#8217;),(SITE,&#8217;*SITE&#8217;),(TO, *</p>
+<p>&#8216;/CurrencyConvertor.asmx&#8217;), *</p>
+<p>(HEADER,&#8217;Content-Type: application/soap+xml&#8217;), *</p>
+<p>(FILE-OUT,&#8217;REQFILE&#8217;),(FILE-IN, *</p>
+<p>&#8216;ANSWER&#8217;),(RET-CODE,&#8217;RETCODE&#8217;),TOVAR=&#8217;REQP&#8217;</p>
+<p>SEND$ TO-LINE,LINE=&#8217;O-HTTP&#8217;,PARMS=&#8217;REQP&#8217;,MAXTIME=1000, *</p>
+</div></blockquote>
+<p>ERROR=NOTOK</p>
+<p>An analysis of the VIRTEL LOG can see the request being sent out to the
+web services provider.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">13.02</span><span class="o">.</span><span class="mi">15</span> <span class="n">STC05752</span> <span class="n">VIR0200I</span> <span class="n">LINE</span><span class="o">=</span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">TRACE</span>
+<span class="mf">13.02</span><span class="o">.</span><span class="mi">15</span> <span class="n">STC05752</span> <span class="n">VIR0062I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">TRACE</span> <span class="n">ACTIVE</span>
+<span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.030</span><span class="p">:</span><span class="mi">02027</span>
+<span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">CONNECTING</span> <span class="n">EHLOC015</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.030</span><span class="p">:</span><span class="mi">02027</span>
+<span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">OUT</span> <span class="n">CONNECTING</span> <span class="n">EHLOC015</span> <span class="n">TO</span> <span class="mf">173.201</span><span class="o">.</span><span class="mf">044.188</span><span class="p">:</span><span class="mi">00080</span>
+<span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">OUT</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">173.201</span><span class="o">.</span><span class="mf">044.188</span><span class="p">:</span><span class="mi">00080</span>
+<span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIR0052I</span> <span class="n">EHLOC015</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span> <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.030</span><span class="p">:</span><span class="mi">020</span>
+</pre></div>
+</div>
+<p>The CASE$ statement following the SEND$ tests the return code from the
+web service and determines the appropriate action. Return codes
+beginning with 2 or 5 are accepted as OK, whereas anything else is
+considered not OK. The ANSWER variable is filled with the data returned
+from the web service:-</p>
+<blockquote>
+<div><p>CASE$ &#8216;RETCODE&#8217;,(BEGIN,&#8216;2&#8217;,OK),(BEGIN,&#8216;5&#8217;,OK), *</p>
+<p>ELSE=NOTOK</p>
+<p>*</p>
+<p>NOTOK COPY$ VALUE-TO-VARIABLE,VAR=&#8217;ANSWER&#8217;,VALUE=&#8217;KO&#8217;,TYPE=REPLACE</p>
+<p>OK EQU *</p>
+</div></blockquote>
+<p>The ANSWER variable contains the result from the web service. This is
+converted to EBCDIC and then copied to the COMMAREA variable. The
+COMMAREA variable is then copied to a Virtel CANSWER variable and passed
+back to the batch application through the template WS1.HTML:-</p>
+<blockquote>
+<div><p>CONVERT$ ASCII-TO-EBCDIC,VAR=&#8217;ANSWER&#8217;</p>
+<p>OUTPUT MAP$ FROM-VARIABLE,VAR=&#8217;ANSWER&#8217; Answer -&gt; Commarea</p>
+<p>OUTPUT MAP$ TO-VARIABLE,VAR=&#8217;CANSWER&#8217; Commarea -&gt; Variable</p>
+<p>CONVERT$ EBCDIC-TO-ASCII,VAR=&#8217;CANSWER&#8217;</p>
+<p>SEND$ AS-ANSWER,VAR=&#8217;CANSWER&#8217;,TYPE=&#8217;text/html&#8217;</p>
+</div></blockquote>
+<p>ACTION$ DISCONNECT</p>
+<p>The COMMAREA variable is a special variable that Virtel can use to
+interface with application programs that communicate through a COMMAREA
+structure, such as CICS or IMS. The Virtel modernisation and integration
+tool kits provide significate program capability to utilize a COMMAREA
+intermediate buffer in processing requests and returning responses
+between Virtel and COMMAREA related programs.</p>
+<p>See “Virtel Modernisation and Virtel Integration chapters “ in the
+<em>VIRTEL Web Access Guide</em> manual) for more information.</p>
+<p>In the Virtel line trace for the line O-HTTP the SOAP messages can be
+traced:-</p>
+<p><strong>Outbound SOAP message to web services server</strong></p>
+<p>*POST /CurrencyConvertor.asmx HTT*</p>
+<p>*P/1.1..Host: www.webservicex.net*</p>
+<p>*:80..Content-Type: application/s*</p>
+<p>*oap+xml..Content-length: 0000042*</p>
+<p>*3....&lt;?xml version=&#8221;1.0&#8221; encodin*</p>
+<p>*g=&#8221;UTF-8&#8221;?&gt;..&lt;soap12:Envelope xm*</p>
+<p>*lns:xsi=&#8221;<a class="reference external" href="http://www.w3.org/2001/*">http://www.w3.org/2001/*</a></p>
+<p>*XMLSchema-instance&#8221; xmlns:xsd=&#8221;h*</p>
+<p>*ttp://www.w3.org/2001/XMLSchema&#8221;*</p>
+<p>* xmlns:soap12=&#8221;http://www.w3.org*</p>
+<p>*/2003/05/soap-envelope&#8221;&gt;.. &lt;soa*</p>
+<p>*p12:Body&gt;.. &lt;ConversionRate x*</p>
+<p>*mlns=&#8221;<a class="reference external" href="http://www.webserviceX.NET*">http://www.webserviceX.NET*</a></p>
+<p>*/&#8221;&gt;.. &lt;FromCurrency&gt;EUR&lt;/Fr*</p>
+<p>*omCurrency&gt;.. &lt;ToCurrency&gt;G*</p>
+<p>*BP&lt;/ToCurrency&gt;.. &lt;/Conversio*</p>
+<p>*nRate&gt;.. &lt;/soap12:Body&gt;..&lt;/soap*</p>
+<p>*12:Envelope&gt; *</p>
+<p><strong>Inbound SOAP message from web services server</strong></p>
+<p>*HTTP/1.1 200 OK..Cache-Control: *</p>
+<p>*private, max-age=0..Content-Leng*</p>
+<p>*th: 380..Content-Type: applicati*</p>
+<p>*on/soap+xml; charset=utf-8..Serv*</p>
+<p>*er: Microsoft-IIS/7.0..X-AspNet-*</p>
+<p>*Version: 4.0.30319..X-Powered-By*</p>
+<p>*: ASP.NET..Date: Sat, 21 Mar 201*</p>
+<p>*5 15:58:29 GMT....&lt;?xml version=*</p>
+<p>*&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?&gt;&lt;soap:En*</p>
+<p>*velope xmlns:soap=&#8221;http://www.w3*</p>
+<p>*.org/2003/05/soap-envelope&#8221; xmln*</p>
+<p>*s:xsi=&#8221;<a class="reference external" href="http://www.w3.org/2001/XM*">http://www.w3.org/2001/XM*</a></p>
+<p>*LSchema-instance&#8221; xmlns:xsd=&#8221;htt*</p>
+<p>*p://www.w3.org/2001/XMLSchema&#8221;&gt;&lt;*bastet</p>
+<p>*soap:Body&gt;&lt;ConversionRateRespons*</p>
+<p>*e xmlns=&#8221;<a class="reference external" href="http://www.webserviceX.*">http://www.webserviceX.*</a></p>
+<p>*NET/&#8221;&gt;&lt;ConversionRateResult&gt;0.72*</p>
+<p>*36&lt;/ConversionRateResult&gt;&lt;/Conve*</p>
+<p>*rsionRateResponse&gt;&lt;/soap:Body&gt;&lt;/*</p>
+<p>*soap:Envelope&gt; *</p>
+<ol class="arabic">
+<li><p class="first">The web services provided by
+<a class="reference external" href="http://www.webserviceX.net">www.webserviceX.net</a> can be
+discovered and exploited by analysis of the associated WSDLs. The
+home page of the site lists the most popular web services that the
+provider supports:-</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../../_images/image46.png"><img alt="image3" src="../../../../_images/image46.png" style="width: 6.26806in; height: 3.17778in;" /></a></p>
+<p>The Web Service that the batch application invokes is Currency
+Calculator. This web service provides realtime exchange rate data
+for a large number of global currencies. If we view the WSDL of the
+Currency convertor we can see the operations provided by this
+particular service. The WSDL can be seen by using the following
+URL:-</p>
+<p><a class="reference external" href="http://www.webservicex.net/CurrencyConvertor.asmx?WSDL">http://www.webservicex.net/CurrencyConvertor.asmx?WSDL</a></p>
+<p>In the service element of the WSDL we can see that the web service
+supports different protocols to the same service, that being
+CurrencyConvertor. The web service supports SOAP 1.0, SOAP 1.2, HTTP
+GET and HTTP POST. In this example the SOAP 1.2 POST implementation
+of CurrencyConvertor is being used:-</p>
+<p>&lt;wsdl:service&nbsp;name=&#8221;CurrencyConvertor&#8221;&gt;</p>
+<p>&lt;wsdl:port&nbsp;name=&#8221;CurrencyConvertorSoap&#8221;&nbsp;binding=&#8221;tns:CurrencyConvertorSoap&#8221;&gt;</p>
+<p>&lt;soap:address&nbsp;location=&#8221;http://www.webservicex.net/CurrencyConvertor.asmx&#8221;/&gt;</p>
+<p>&lt;/wsdl:port&gt;</p>
+<p>&lt;wsdl:port&nbsp;name=&#8221;CurrencyConvertorSoap12&#8221;&nbsp;binding=&#8221;tns:CurrencyConvertorSoap12&#8221;&gt;</p>
+<p>&lt;soap12:address&nbsp;location=&#8221;http://www.webservicex.net/CurrencyConvertor.asmx&#8221;/&gt;</p>
+<p>&lt;/wsdl:port&gt;</p>
+<p>&lt;wsdl:port&nbsp;name=&#8221;CurrencyConvertorHttpGet&#8221;&nbsp;binding=&#8221;tns:CurrencyConvertorHttpGet&#8221;&gt;</p>
+<p>&lt;<a class="reference external" href="http:address">http:address</a>&nbsp;location=&#8221;<a class="reference external" href="http://www.webservicex.net/CurrencyConvertor.asmx">http://www.webservicex.net/CurrencyConvertor.asmx</a>&#8220;/&gt;</p>
+<p>&lt;/wsdl:port&gt;</p>
+<p>&lt;wsdl:port&nbsp;name=&#8221;CurrencyConvertorHttpPost&#8221;&nbsp;binding=&#8221;tns:CurrencyConvertorHttpPost&#8221;&gt;</p>
+<p>&lt;<a class="reference external" href="http:address">http:address</a>&nbsp;location=&#8221;<a class="reference external" href="http://www.webservicex.net/CurrencyConvertor.asmx">http://www.webservicex.net/CurrencyConvertor.asmx</a>&#8220;/&gt;</p>
+<p>&lt;/wsdl:port&gt;</p>
+<p>&lt;/wsdl:service&gt;</p>
+<p>It is not the intention of the newsletter to delve into the WSDL
+structure, there are many excellent books, journals and internet
+pages devoted to this subject. The following URL,</p>
+<p><a class="reference external" href="http://www.webservicex.net/CurrencyConvertor.asmx?op=ConversionRate">http://www.webservicex.net/CurrencyConvertor.asmx?op=ConversionRate</a></p>
+<p>provides details on the structure on the SOAP request and response
+messages. This is useful for building the exchange.xml template and
+for analysing the response message within the scenario.</p>
+<p>SOAP 1.2 Example</p>
+<p>The following is a sample SOAP 1.2 request and response. The
+placeholders&nbsp;shown need to be replaced with actual values.</p>
+<p>REQUEST message</p>
+<p>POST /CurrencyConvertor.asmx HTTP/1.1</p>
+<p>Host: www.webservicex.net</p>
+<p>Content-Type: application/soap+xml; charset=utf-8</p>
+<p>Content-Length: length</p>
+<p>&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?&gt;</p>
+<p>&lt;soap12:Envelope
+xmlns:xsi=&#8221;http://www.w3.org/2001/XMLSchema-instance&#8221;
+xmlns:xsd=&#8221;http://www.w3.org/2001/XMLSchema&#8221;
+xmlns:soap12=&#8221;http://www.w3.org/2003/05/soap-envelope&#8221;&gt;</p>
+<p>&lt;soap12:Body&gt;</p>
+<p>&lt;ConversionRate xmlns=&#8221;<a class="reference external" href="http://www.webserviceX.NET/">http://www.webserviceX.NET/</a>&#8220;&gt;</p>
+<p>&lt;FromCurrency&gt;**AFA**&lt;/FromCurrency&gt;</p>
+<p>&lt;ToCurrency&gt;**DZD**&lt;/ToCurrency&gt;</p>
+<p>&lt;/ConversionRate&gt;</p>
+<p>&lt;/soap12:Body&gt;</p>
+<p>&lt;/soap12:Envelope&gt;</p>
+<p>RESPONSE message</p>
+<p>&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221;?&gt;</p>
+<p>&lt;soap12:Envelope
+xmlns:xsi=&#8221;http://www.w3.org/2001/XMLSchema-instance&#8221;
+xmlns:xsd=&#8221;http://www.w3.org/2001/XMLSchema&#8221;
+xmlns:soap12=&#8221;http://www.w3.org/2003/05/soap-envelope&#8221;&gt;</p>
+<p>&lt;soap12:Body&gt;</p>
+<p>&lt;ConversionRateResponse xmlns=&#8221;<a class="reference external" href="http://www.webserviceX.NET/">http://www.webserviceX.NET/</a>&#8220;&gt;</p>
+<p>&lt;ConversionRateResult&gt;double&lt;/ConversionRateResult&gt;</p>
+<p>&lt;/ConversionRateResponse&gt;</p>
+<p>&lt;/soap12:Body&gt;</p>
+<p>&lt;/soap12:Envelope&gt;</p>
+<p>.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">After receiving the SOAP response the scenario will search for the
+element ConversionRateResult and extract the value and placing in to
+the Virtel ANSWER variable. If there is an error, the
+ConversionRateResult value will contain details of the web services
+error. The scenario will copy this error message to the ANSWER
+variable. In both cases the results are contained within the
+ConversionRateResult element. These operations are executed through
+the MAP$ EVENTUAL-AREA statement:-</p>
+<blockquote>
+<div><p>MAP$ EVENTUAL-AREA,FROM-CONSTANT,&#8216;0&#8217;,WHEN=(ELEMENT, *</p>
+<p>&#8216;ConversionRateResult&#8217;),EVENT=&#8217;Response&#8217;,LENGTH=6</p>
+<p>The RESPONSE format area is designated by the O00000001 MAP$ BEGIN,
+EVENT=RESPONSE and terminated by the O00000001 MAP$ END. The value
+is mapped by the MAP$ AREA,WITH ‘ConversionRateResult’ statement:-</p>
+<p>O0000001 MAP$ BEGIN,EVENT=&#8217;Response&#8217;</p>
+<p>MAP$ AREA,WITH=&#8217;ConversionRateResult&#8217;,TYPE=9,LENGTH=6</p>
+<p>O0000001 MAP$ END</p>
+<p>If the response message from the web service does not contain the
+element ConversionRateResult then the OFAULT area is mapped out
+within an XML structure in preparation to return to the batch
+application. The ‘fault’ elements will be extracted from the SOAP
+response:-</p>
+<p>OFAULT MAP$ BEGIN,EVENT=&#8217;Fault&#8217;</p>
+<p>MAP$ AREA,WITH=&#8217;faultcode&#8217;,TYPE=X,LENGTH=32</p>
+<p>MAP$ AREA,WITH=&#8217;faultstring&#8217;,TYPE=X,LENGTH=32</p>
+<p>MAP$ AREA,WITH=&#8217;faultactor&#8217;,TYPE=X,LENGTH=32</p>
+<p>MAP$ AREA,FROM-CONSTANT,&#8217; &#8216;,LENGTH=32</p>
+<p>OFAULT MAP$ END</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first">When the batch application receives the response to the original URI
+request the answer will be contained within the WS1.HTML template,
+where the CANSWER area has been captured. The first character of the
+CANSWER area, as posted by the scenario, will either be a 0 or a 1. A
+zero indicates success, a one indicates an error:-</p>
+<blockquote>
+<div><p>Result:</p>
+<p>!DOCTYPE html&gt;</p>
+<p>&lt;!&#8211; To change this license header, choose License Headers in
+Project Properties. To change this template file, choose Tools |
+Templates and open the template in the editor. &#8211;&gt;</p>
+<p>&lt;html&gt;</p>
+<p>&lt;head&gt;</p>
+<p>&lt;title&gt;Web Services Example 1&lt;/title&gt;</p>
+<p>&lt;meta charset=&#8221;UTF-8&#8221;&gt;</p>
+<p>&lt;meta name=&#8221;viewport&#8221; content=&#8221;width=device-width,
+initial-scale=1.0&#8221;&gt;</p>
+<p>&lt;/head&gt;</p>
+<p>&lt;body&gt;</p>
+<p><strong>Answer is 00.7312</strong> <em>[The first zero is a return code]</em></p>
+<p>&lt;/body&gt;</p>
+<p>&lt;/html&gt;</p>
+<p>Instead of returning the template, the scenario can just return the
+CANSWER variable within a HTTP response. This is achieved by adding
+the following three lines to the scenario:-</p>
+<p>CONVERT$ EBCDIC-TO-ASCII,VAR=&#8217;CANSWER&#8217;</p>
+<p>SEND$ AS-ANSWER,VAR=&#8217;CANSWER&#8217;,TYPE=&#8217;text/html&#8217;</p>
+<p>ACTION$ DISCONNECT</p>
+<p>Instead of returning the template, the HTTP response will now just
+contain the variable CANSWER, which is all that is required by the
+batch application.</p>
+</div></blockquote>
+</li>
+</ol>
+<p>ISPSTART CMD(%RXCVIRT)</p>
+<p>Result: 0.7312</p>
+<blockquote>
+<div><p>Note.</p>
+<p>All the source related to this newsletter can be downloaded from the
+Virtel FTP web site. The file name is zostn2501506.zip.</p>
+<p>Appendix A</p>
+<p>SCENRATE SCREENS APPL=SCENRATE,EXEC=NO</p>
+<p>SCENARIO INITIAL</p>
+<p>*</p>
+<p>* Output structure definition</p>
+<p>*</p>
+<p>OUTPUT MAP$ BEGIN</p>
+<p>MAP$ EVENTUAL-AREA,FROM-CONSTANT,&#8216;0&#8217;,WHEN=(ELEMENT, *</p>
+<p>&#8216;ConversionRateResult&#8217;),EVENT=&#8217;Response&#8217;,LENGTH=6</p>
+<p>MAP$ ELSETHEN-AREA,FROM-CONSTANT,&#8216;1&#8217;,EVENT=&#8217;Fault&#8217;,LENGTH=1</p>
+<p>OENV MAP$ BEGIN,TOP,WITH=&#8217;soap:Envelope&#8217;</p>
+<p>*HEADER MAP$ BEGIN,WITH=&#8217;soap:Header&#8217;</p>
+<p>*HEADER MAP$ END</p>
+<p>OBODY MAP$ BEGIN,WITH=&#8217;soap:Body&#8217;</p>
+<p>*</p>
+<p>OFAULT MAP$ BEGIN,EVENT=&#8217;Fault&#8217;</p>
+<p>MAP$ AREA,WITH=&#8217;faultcode&#8217;,TYPE=X,LENGTH=32</p>
+<p>MAP$ AREA,WITH=&#8217;faultstring&#8217;,TYPE=X,LENGTH=32</p>
+<p>MAP$ AREA,WITH=&#8217;faultactor&#8217;,TYPE=X,LENGTH=32</p>
+<p>MAP$ AREA,FROM-CONSTANT,&#8217; &#8216;,LENGTH=32</p>
+<p>OFAULT MAP$ END</p>
+<p>*</p>
+<p>O0000001 MAP$ BEGIN,EVENT=&#8217;Response&#8217;</p>
+<p>MAP$ AREA,WITH=&#8217;ConversionRateResult&#8217;,TYPE=9,LENGTH=6</p>
+<p>O0000001 MAP$ END</p>
+<p>*</p>
+<p>OBODY MAP$ END</p>
+<p>OENV MAP$ END</p>
+<p>OUTPUT MAP$ END</p>
+<p>*</p>
+<p>START SET$ ENCODING,UTF-8,&#8217;IBM1147&#8217;</p>
+<p>COPY$ INPUT-TO-VARIABLE,FIELD=&#8217;FROMCURRENCY&#8217;, *</p>
+<p>VAR=&#8217;FROMCURRENCY&#8217;, *</p>
+<p>TYPE=REPLACE</p>
+<p>*</p>
+<p>COPY$ INPUT-TO-VARIABLE,FIELD=&#8217;TOCURRENCY&#8217;, *</p>
+<p>VAR=&#8217;TOCURRENCY&#8217;, *</p>
+<p>TYPE=REPLACE</p>
+<p>*</p>
+<p>COPY$ VALUE-TO-VARIABLE,VAR=&#8217;SITE&#8217;, *</p>
+<p>VALUE=&#8217;www.webservicex.net:80&#8217;, *</p>
+<p>TYPE=REPLACE</p>
+<p>*</p>
+<p>COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#8217;exchange.xml&#8217;, *</p>
+<p>VAR=&#8217;REQFILE&#8217;</p>
+<p>*</p>
+<p>SENDREQ OPTION$ FOR-HTTP,(METHOD,&#8217;POST&#8217;),(SITE,&#8217;*SITE&#8217;),(TO, *</p>
+<p>&#8216;/CurrencyConvertor.asmx&#8217;), *</p>
+<p>(HEADER,&#8217;Content-Type: application/soap+xml&#8217;), *</p>
+<p>(FILE-OUT,&#8217;REQFILE&#8217;),(FILE-IN, *</p>
+<p>&#8216;ANSWER&#8217;),(RET-CODE,&#8217;RETCODE&#8217;),TOVAR=&#8217;REQP&#8217;</p>
+<p>SEND$ TO-LINE,LINE=&#8217;O-HTTP&#8217;,PARMS=&#8217;REQP&#8217;,MAXTIME=1000, *</p>
+<p>ERROR=NOTOK</p>
+<p>CASE$ &#8216;RETCODE&#8217;,(BEGIN,&#8216;2&#8217;,OK),(BEGIN,&#8216;5&#8217;,OK), *</p>
+<p>ELSE=NOTOK</p>
+<p>*</p>
+<p>NOTOK COPY$ VALUE-TO-VARIABLE,VAR=&#8217;ANSWER&#8217;,VALUE=&#8217;KO&#8217;,TYPE=REPLACE</p>
+<p>OK EQU *</p>
+<p>CONVERT$ ASCII-TO-EBCDIC,VAR=&#8217;ANSWER&#8217;</p>
+<p>OUTPUT MAP$ FROM-VARIABLE,VAR=&#8217;ANSWER&#8217; Answer -&gt; Commarea</p>
+<p>OUTPUT MAP$ TO-VARIABLE,VAR=&#8217;CANSWER&#8217; Commarea -&gt; Variable</p>
+<p>CONVERT$ EBCDIC-TO-ASCII,VAR=&#8217;CANSWER&#8217;</p>
+<p>SEND$ AS-ANSWER,VAR=&#8217;CANSWER&#8217;,TYPE=&#8217;text/html&#8217;</p>
+<p>ACTION$ DISCONNECT</p>
+<p>*</p>
+<p>SCENARIO END</p>
+<p>SCRNEND</p>
+<p>END</p>
+</div></blockquote>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

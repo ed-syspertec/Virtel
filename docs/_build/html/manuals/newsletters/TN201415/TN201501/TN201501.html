@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Dynamic Directory Interface (DDI) &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../../index.html"/> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../newsletters.html">Technical Newsletters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Dynamic Directory Interface (DDI)</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/manuals/newsletters/TN201415/TN201501/TN201501.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dynamic-directory-interface-ddi">
+<h1>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h1>
+<p>In this newsletter we discuss Virtel’s Dynamic Directory Interface, or
+DDI and the new Administration GUI panel that can be used to perform
+Virtel configuration. Some of these features are only available with
+Virtel V4.54.</p>
+<p><strong>Virtel Administrators</strong></p>
+<p>The DDI and administration features should only be available to a Virtel
+Administrator. A Virtel Administrator is defined through security
+profiles. For example, with RACF, a user who had READ access to the
+FACILITY profile VIRTEL.* would be considered a super user or top level
+administrator as they have total access to all VIRTEL transactions.
+Likewise an administrator who only requires responsibility for managing
+DDI would be restricted to a subset of Virtel transactions through RACF
+profiles. See <em>Chapter 6 Security</em> in the <em>VIRTEL Installation guide</em>
+for more details. By default a user has no access to any of the
+administration transactions.</p>
+<p>Dynamic directories use the symbolics %user% and %group% to determine
+the directory name. Static directories, as defined in the ARBO load
+configuration use the names USR-DIR, GRP-DIR and GLB-DIR.</p>
+<p>&#8211;Administration with Admin (HTML)&#8211;</p>
+<p>Virtel now supports a GUI Administration from the Portal from where
+configuration work can be performed. Selecting the Admin (HTML) will
+display the home administration panel.</p>
+<p><a class="reference internal" href="../../../../_images/image114.png"><img alt="image0" src="../../../../_images/image114.png" style="width: 6.30000in; height: 4.29792in;" /></a></p>
+<p>As with the Admin (3270) screen, the same configuration functions can be
+performed. For example, to list the lines select the lines button in the
+top left corner. A list of lines will be displayed as displayed in the
+next panel.</p>
+<p>Selecting an entry will bring up an operations window from where an
+operation can be selected. In this case it is Edit, Delete or Terminals
+to list the associated terminals.</p>
+<p><a class="reference internal" href="../../../../_images/image25.png"><img alt="image1" src="../../../../_images/image25.png" style="width: 6.30000in; height: 4.25417in;" /></a></p>
+<p>If Edit is selected the parameters/options for the selected line entry
+will be displayed.</p>
+<p><a class="reference internal" href="../../../../_images/image35.png"><img alt="image2" src="../../../../_images/image35.png" style="width: 6.30000in; height: 4.49722in;" /></a></p>
+<p>Additional operations are displayed in the top right of the edit display
+window. Move the mouse over the icons to reveal the tool tips. For the
+line edit these are Update, Terminals, Rules and Add.</p>
+<p><a class="reference internal" href="../../../../_images/image44.png"><img alt="image3" src="../../../../_images/image44.png" style="width: 1.52105in; height: 0.54174in;" /></a></p>
+<p>Refer to the Virtel Connectivity Users Guide for details of the
+parameters and options for the Lines, Terminals and Entry Points.</p>
+<p><strong>Working with Directories</strong></p>
+<p>From the configuration Home Page you can select Directories to view the
+directories defined to Virtel. The following is an example of a
+directory list.</p>
+<p><a class="reference internal" href="../../../../_images/image54.png"><img alt="image4" src="../../../../_images/image54.png" style="width: 6.30000in; height: 4.27153in;" /></a></p>
+<p>Again, by selecting an entry we can Edit/Add, List the associated
+elements or Delete the directory. The list operation will list all the
+elements associated with the directory plus provide further operations
+at an element level.</p>
+<p><a class="reference internal" href="../../../../_images/image64.png"><img alt="image5" src="../../../../_images/image64.png" style="width: 6.30000in; height: 2.99028in;" /></a></p>
+<p>The additional operations here are REFRESH, BATCH and EXPORT. Selecting
+an individual entry brings up an operational panel which will enable me
+to Copy or Delete the selected file. If BATCH has been selected then I
+can perform a Batch copy all the entries I have selected.</p>
+<p>The EXPORT option will export the selected entry details as an EXCEL
+spread sheet. This can be used in a Change Management process.</p>
+<p><strong>Batch Operations</strong></p>
+<p>The Admin(HTML) also supports batch functions within some of its
+operations. To copy a group of files from one directory to another use
+the batch icon:-</p>
+<p><a class="reference internal" href="../../../../_images/image72.png"><img alt="image6" src="../../../../_images/image72.png" style="width: 6.30000in; height: 2.63194in;" /></a></p>
+<p>Selecting the batch ICON will bring up an element list where elements
+for the operation can be selected.</p>
+<p><a class="reference internal" href="../../../../_images/image82.png"><img alt="image7" src="../../../../_images/image82.png" style="width: 6.30000in; height: 2.04514in;" /></a></p>
+<p>One the operation has been selected a confirmation panel will be
+displayed. Selecting “YES” will invoke the operation. In the above
+example we are copying elements from the CLI-DIR to the GLB-DIR
+directory.</p>
+<p>&#8211;Dynamic Directory Interface&#8211;</p>
+<p>The DDI interface is intended for Virtel administrators who will manage
+and perform Virtel configuration work on the Virtel elements held within
+a user, group and global directory structure defined within DDI. These
+elements consist of captured 3270 macros in the form of JSON arrays,
+Java Script modules, presentation modules, aka scenarios or any other
+suitable file structure that an administrator wishes to make available
+to users. Although there appears to be a hierarchical order within the
+DDI structure the directories are very much dynamic and have no
+connection with higher or lower level structures. An administrator is
+free to copy elements into any DDI structure level. For purposes of
+design it might be wise to consider DDI as a hierarchical structure
+although, as mentioned before, this is not enforced by Virtel. A DDI
+layout could look something like:-</p>
+<p><strong>Global/Public</strong></p>
+<p><strong>|</strong></p>
+<p><strong>Group A Group B Group C</strong></p>
+<p><strong>| | |</strong></p>
+<p><strong>User01 User02 User03 User05 User07 User08</strong></p>
+<p><strong>Setting up to use DDI</strong></p>
+<p>All of the ARBO constructs to support DDI are defined in VMACROS section
+of the SAMPLIB(ARBOLOAD) member. You must customize the JCL and change
+the SET VMACROS=NO statement to SET VMACROS=YES to install the DDI
+constructs to your ARBO file.</p>
+<p><strong>*Note: Release V4.53 users of Macros*</strong></p>
+<p><em>For users who implemented DDI in Virtel V4.53 (VMACROS=YES on the
+ARBOLOAD) there are some changes that have to be made to the ARBO file
+to work with DDI as distributed with V4.54. New constructs must be added
+to the ARBO file and previous DDI constructs must be removed:-</em></p>
+<ol class="arabic">
+<li><p class="first"><em>Secure a copy of your macros.json from the /maclib directories.</em></p>
+</li>
+<li><p class="first"><em>Remove</em></p>
+<blockquote>
+<div><p>DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
+<p>These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
+portal.</p>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p class="first"><em>Add</em></p>
+<blockquote>
+<div><p>Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
+<p>See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.</p>
+<p>If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
+</div></blockquote>
+</li>
+</ol>
+<p><strong>RACF Profiles</strong></p>
+<p>RACF profiles must also be defined to restrict DDI usage to Virtel
+administrators. In our example VIRTEL administrators are defined in the
+RACF group SPGPTECH.</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
+<p>//* RACF : AUTHORIZATIONS FOR VIRTEL DDI *</p>
+<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
+<p>//STEP1 EXEC PGM=IKJEFT01,DYNAMNBR=20</p>
+<p>//SYSTSPRT DD SYSOUT=*</p>
+<p>//SYSTSIN DD *</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
+<p>/* Setup for DDI */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-03G UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-03U UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-03A UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.CLI-03G UACC(NONE) /* CLI */</p>
+<p>RDEF FACILITY SPVIRPLI.CLI-03U UACC(NONE) /* CLI */</p>
+<p>RDEF FACILITY SPVIRPLI.CLI-03A UACC(NONE) /* CLI */</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-07 UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-66 UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-80U UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-80G UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.W2H-80A UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.USR-DIR UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.GRP-DIR UACC(NONE) /* W2H */</p>
+<p>RDEF FACILITY SPVIRPLI.GLB-DIR UACC(NONE) /* W2H */</p>
+<p>PE SPVIRPLI.W2H-03G CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-03U CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-03A CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.CLI-03G CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.CLI-03U CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.CLI-03A CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-07 CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-66 CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-80U CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-80G CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-80A CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.USR-DIR CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.GRP-DIR CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.GLB-DIR CL(FACILITY) RESET</p>
+<p>PE SPVIRPLI.W2H-07 CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.W2H-66 CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.W2H-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.W2H-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.W2H-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.CLI-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.CLI-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.CLI-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.W2H-80U CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.W2H-80G CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.W2H-80A CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.USR-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.GRP-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>PE SPVIRPLI.GLB-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
+<p>/* REFRESH THE RACF PROFILES */</p>
+<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
+<p>SETR REFRESH RACLIST(FACILITY)</p>
+<p>/*</p>
+<p>//</p>
+<p><strong>Capability Access.</strong></p>
+<p>It is important to grant administrators capability access to enable
+administrators’ access to another user’s element, i.e. user directories.
+This access is controlled through the transaction code W2H-66.</p>
+<p><strong>User access</strong></p>
+<p>For security reasons users cannot upload DDI elements into their user or
+group structures unless access is provided by the administrator to the
+relevant DDI structures through READ access to the transaction
+profiles:-</p>
+<p>W2H-03W Access to the w2h toolkit directory.</p>
+<p>W2H-03x Directory access</p>
+<p>W2H-80x Upload access</p>
+<p><strong>Group and User access with Admin HTML and 3270 transactions.</strong></p>
+<p>As the Group and User name have now been replaced with the %user% and
+%group% symbolic variable definitions the old Administration
+transactions to list the USR-DIR and GRP-DIR are retired. The following
+message will appear on the screen if you attempt to list the user and
+group directories:-</p>
+<p><a class="reference internal" href="../../../../_images/image92.png"><img alt="image8" src="../../../../_images/image92.png" style="width: 6.30000in; height: 4.20000in;" /></a></p>
+<p>**
+Accessing DDI **</p>
+<p>Access to DDI is through the Virtel Administration portal Macros and
+add-ons section. The Virtel Portal is normally accessible via the url
+<a class="reference external" href="http://my.virtel.com:41001">http://my.virtel.com:41001</a> where 41001 is the port defined for the
+W-HTTP line associated with entry point WEB2HOST.</p>
+<p>When you access the Virtel Portal you are presented with the following
+screen:</p>
+<p><a class="reference internal" href="../../../../_images/image102.png"><img alt="image9" src="../../../../_images/image102.png" style="width: 6.30000in; height: 5.05625in;" /></a></p>
+<p>To check the setup of DDI, list the allocated directories through either
+the Admin (3270) or Admin (HTML) options of the Virtel section. Once in
+the main administration page, select directories to display a list of
+directories. Check that the User, Group and Global macro directories are
+listed.</p>
+<p>If instead you use the 3270 admin panel to display the directories you
+should see something like this:</p>
+<p><a class="reference internal" href="../../../../_images/image115.png"><img alt="image10" src="../../../../_images/image115.png" style="width: 6.30000in; height: 2.66250in;" /></a></p>
+<p>Here you can see that the GLOBAL, GROUP and USER directories have been
+correctly defined in the ARBO update. Note, you cannot list the entries
+(PF4) for the Group or User macro directories in this interface. You
+must use the DDI interface. Also check that you can list some of the
+transactions that support DDI. In the HTML administration panel it
+should look something like this:-</p>
+<p><a class="reference internal" href="../../../../_images/image123.png"><img alt="image11" src="../../../../_images/image123.png" style="width: 6.30000in; height: 4.43611in;" /></a></p>
+<p>Again, we can see the DDI transactions W2H-03A, W2H-03G and W2H-03U have
+been defined.</p>
+<p>Return to the portal page and select Dynamic directory interface from
+the Macros and Add-on section. This will take you to the DDI home page.
+The following panel will be displayed:-</p>
+<p><a class="reference internal" href="../../../../_images/image131.png"><img alt="image12" src="../../../../_images/image131.png" style="width: 6.30000in; height: 4.76736in;" /></a></p>
+<p>This is the home administration panel for DDI. From here you can select
+User, Group or Global directories. Selecting a tab takes you to the
+corresponding directory where you can upload, delete, copy or download
+Virtel elements. Moving the mouse over an entry and selecting it will
+bring up a small panel where these operations, other than add, can be
+executed. Add is through a “drop and drag” technique. For example,
+select the user tab, press enter and enter a user name. Press the Green
+tick to list the entries associated with the user. That user’s directory
+will be displayed.</p>
+<p>Note. After performing an operation press the “Green Tick” to relist the
+directory.</p>
+<p>Select an operation by clicking one of the tabs in the operation panel –
+Copy, Delete or Download.</p>
+<p><a class="reference internal" href="../../../../_images/image141.png"><img alt="image13" src="../../../../_images/image141.png" style="width: 6.30000in; height: 3.91667in;" /></a></p>
+<p><strong>Adding an element</strong></p>
+<p>To add an entry to the directory you need to upload the element. Drag
+the element that you wish to upload into the area designated by the
+dotted line. If the upload is successful the following screen update
+will appear.</p>
+<p><a class="reference internal" href="../../../../_images/image151.png"><img alt="image14" src="../../../../_images/image151.png" style="width: 6.30000in; height: 5.37847in;" /></a></p>
+<p>To relist the elements in a directory click the “Green Tick”. The
+directory will be relisted.</p>
+<p><strong>Copying an element.</strong></p>
+<p>You can copy an element to the same directory with a new name or copy to
+the GLOBAL directory with the same of a new name. Fill in the details in
+the operation panel and then the COPY tab.</p>
+<p>Note: Current there is no way to copy to a GROUP directory. To perform
+this function you must download the element first and then upload to the
+GROUP directory by perform an Add function.</p>
+<p><strong>Downloading an element</strong></p>
+<p>The download option enables the download of a DDI element to the default
+download directory of the associated browser.</p>
+<p>Note: Do not download a Virtel Template (HTML file with imbedded VIRTEL
+tags). The tags will be interpreted before the download destroying the
+original source version.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

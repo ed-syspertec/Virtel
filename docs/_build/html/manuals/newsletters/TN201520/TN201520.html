@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using the IBM System Logger with Virtel &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="What’s new in Virtel 4.55" href="../TN201522/TN201522.html"/>
+        <link rel="prev" title="Processing the VTAM USS MSG10 buffer" href="../TN201519/TN201519.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2015</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html">Dynamic Directory Interface (DDI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201504/TN201504.html">Running multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201505/TN201505.html">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201506/TN201506.html">An example of using web services with Virtel Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201507/TN201507.html">Customising Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201515/TN201515.html">Using Virtel as a Secure Single Access Control Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201517/TN201517.html">Virtel Chinese Character Language Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201519/TN201519.html">Processing the VTAM USS MSG10 buffer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using the IBM System Logger with Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201522/TN201522.html">What’s new in Virtel 4.55</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Using the IBM System Logger with Virtel</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201520/TN201520.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-the-ibm-system-logger-with-virtel">
+<h1>Using the IBM System Logger with Virtel<a class="headerlink" href="#using-the-ibm-system-logger-with-virtel" title="Permalink to this headline">¶</a></h1>
+<p>With the latest release of Virtel, currently Release 4.55, Virtel has
+the ability to write all of its log records to IBM’s System Logger.</p>
+<p>To use this feature code LOG=LOGGER in the TCT and compile using a
+supporting maclib. Currently this MACLIB is
+SPTHOLT.VIRTEL.BASE455.MACLIB. Ensure that a compatible VIR0000 in the
+load library is used to avoid TCT mismatch message. The version in
+SP000.SPTHOLT.DEV.LOADLIB is compatible with the
+SPTHOLT.VIRTEL.BASE455.MACLIB(VIRTERM) member.</p>
+<p>When you start Virtel it will attempt to connect to the predefined
+Virtel logstream. If the logstream doesn’t exists one will be created
+automatically. The following messages will appear in the log:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0024I</span> <span class="n">ATTACHING</span> <span class="n">SUBTASKS</span>
+<span class="n">IXC582I</span> <span class="n">STRUCTURE</span> <span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span> <span class="n">ALLOCATED</span> <span class="n">BY</span> <span class="n">SIZE</span><span class="o">/</span><span class="n">RATIOS</span><span class="o">.</span> <span class="mi">596</span>
+<span class="n">PHYSICAL</span> <span class="n">STRUCTURE</span> <span class="n">VERSION</span><span class="p">:</span> <span class="n">CFF8ABE4</span> <span class="mi">1865</span><span class="n">AA81</span>
+<span class="n">STRUCTURE</span> <span class="n">TYPE</span><span class="p">:</span> <span class="n">LIST</span>
+<span class="n">CFNAME</span><span class="p">:</span> <span class="n">ZACF1</span>
+<span class="n">ALLOCATION</span> <span class="n">SIZE</span><span class="p">:</span> <span class="mi">9</span> <span class="n">M</span>
+<span class="n">POLICY</span> <span class="n">SIZE</span><span class="p">:</span> <span class="mi">9</span> <span class="n">M</span>
+<span class="n">POLICY</span> <span class="n">INITSIZE</span><span class="p">:</span> <span class="mi">9</span> <span class="n">M</span>
+<span class="n">POLICY</span> <span class="n">MINSIZE</span><span class="p">:</span> <span class="mi">0</span> <span class="n">K</span>
+<span class="n">IXLCONN</span> <span class="n">STRSIZE</span><span class="p">:</span> <span class="mi">0</span> <span class="n">K</span>
+<span class="n">ENTRY</span> <span class="n">COUNT</span><span class="p">:</span> <span class="mi">1274</span>
+<span class="n">ELEMENT</span> <span class="n">COUNT</span><span class="p">:</span> <span class="mi">1179</span>
+<span class="n">ENTRY</span><span class="p">:</span><span class="n">ELEMENT</span> <span class="n">RATIO</span><span class="p">:</span> <span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span>
+<span class="n">ALLOCATION</span> <span class="n">SIZE</span> <span class="n">IS</span> <span class="n">WITHIN</span> <span class="n">CFRM</span> <span class="n">POLICY</span> <span class="n">DEFINITIONS</span>
+<span class="n">IXL014I</span> <span class="n">IXLCONN</span> <span class="n">REQUEST</span> <span class="n">FOR</span> <span class="n">STRUCTURE</span> <span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span> <span class="mi">597</span>
+<span class="n">WAS</span> <span class="n">SUCCESSFUL</span><span class="o">.</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">IXGLOGR</span> <span class="n">ASID</span><span class="p">:</span> <span class="mi">0016</span>
+<span class="n">CONNECTOR</span> <span class="n">NAME</span><span class="p">:</span> <span class="n">IXGLOGR</span>\<span class="n">_ZAMVS1</span> <span class="n">CFNAME</span><span class="p">:</span> <span class="n">ZACF1</span>
+<span class="n">IXL015I</span> <span class="n">STRUCTURE</span> <span class="n">ALLOCATION</span> <span class="n">INFORMATION</span> <span class="n">FOR</span> <span class="mi">598</span>
+<span class="n">STRUCTURE</span> <span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span><span class="p">,</span> <span class="n">CONNECTOR</span> <span class="n">NAME</span> <span class="n">IXGLOGR</span>\<span class="n">_ZAMVS1</span><span class="p">,</span>
+<span class="n">CONNECTIVITY</span><span class="o">=</span><span class="n">DEFAULT</span>
+<span class="n">CFNAME</span> <span class="n">ALLOCATION</span> <span class="n">STATUS</span><span class="o">/</span><span class="n">FAILURE</span> <span class="n">REASON</span>
+<span class="o">--------</span> <span class="o">----------------------------------------</span>
+<span class="n">ZACF1</span> <span class="n">STRUCTURE</span> <span class="n">ALLOCATED</span> <span class="n">AC001800</span>
+<span class="n">ZACF2</span> <span class="n">PREFERRED</span> <span class="n">CF</span> <span class="n">ALREADY</span> <span class="n">SELECTED</span> <span class="n">AC001800</span>
+<span class="n">PREFERRED</span> <span class="n">CF</span> <span class="n">HIGHER</span> <span class="n">IN</span> <span class="n">PREFLIST</span>
+<span class="n">LOGGER</span> <span class="n">CONNECTED</span>
+</pre></div>
+</div>
+<p>After this point all messages will be written to the logger, even
+responses to commands. Each Virtel that has LOG=LOGGER will connect to
+the structure. The last message you will see is:</p>
+<p>VIR0000I SMTP Date: Wed, 09 Dec 2015 22:34:57 +0100</p>
+<p>Fortunately there is a print program that can be used to format and
+print off the log records. This is VIR00002B. When the logstream reaches
+a particular threshold is spools off a dataset. The following messages
+will appear in the log:-</p>
+<p>IEF196I IGD100I 0AA8 ALLOCATED TO DDNAME SYS00008 DATACLAS ( )</p>
+<p>IXG283I OFFLOAD DATASET IXGLOGR.LOGGER.VIRTEL.A0000005 897</p>
+<p>ALLOCATED NEW FOR LOGSTREAM LOGGER.VIRTEL</p>
+<p>CISIZE=4K, SIZE=147456</p>
+<p>IXG251I IDCAMS SYSTEM SERVICES</p>
+<p>TIME: 22:49:21 12/09/15 PAGE 1</p>
+<p>IXG251I ALTER IXGLOGR.LOGGER.VIRTEL.A0000005.DATA -</p>
+<p>IXG251I SHR(3,3)</p>
+<p>IXG251I IDC0531I ENTRY IXGLOGR.LOGGER.VIRTEL.A0000005.DATA ALTERED</p>
+<p>IXG251I IDC0001I FUNCTION COMPLETED, HIGHEST CONDITION CODE WAS 0</p>
+<p>IXG251I IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS</p>
+<p>0</p>
+<p>IXG282I OFFLOAD DATASET IXGLOGR.LOGGER.VIRTEL.A0000005 904</p>
+<p>WAS ALTERED FOR LOGSTREAM LOGGER.VIRTEL</p>
+<p>UPDATED ATTRIBUTE VSAM SHAREOPTIONS</p>
+<p>To list the logstream, structure and its associated offload datasets,
+use the following JCL:-</p>
+<p>//SPTHOLTL JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&amp;SYSUID</p>
+<p>//STEP1 EXEC PGM=IXCMIAPU,REGION=4M</p>
+<p>//SYSPRINT DD SYSOUT=*</p>
+<p>DATA TYPE(LOGR) REPORT(NO)</p>
+<p>LIST STRUCTURE NAME(VIRTEL_LOG_1) DETAIL(YES)</p>
+<p>LIST LOGSTREAM NAME(LOGGER.VIRTEL) DETAIL(YES)</p>
+<p>The output will look something like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Ext</span><span class="o">.</span> <span class="o">&lt;</span><span class="n">SEQ</span><span class="c1">#&gt; Lowest Blockid / Highest GMT / Highest Local / Status Highest Blockid Highest RBA System Name</span>
+<span class="o">-----</span> <span class="o">--------</span> <span class="o">----------------</span> <span class="o">-----------------</span> <span class="o">------------------------</span>
+
+<span class="n">A0000001</span> <span class="mi">0000000000023</span><span class="n">F64</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">19</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">35</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">20</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">35</span> <span class="mf">0000000000047E76</span> <span class="mi">00023</span><span class="n">F98</span> <span class="n">ZAMVS1</span>
+<span class="n">A0000002</span> <span class="mi">0000000000047</span><span class="n">EFC</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">21</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">42</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">22</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">42</span> <span class="mi">000000000006</span><span class="n">BE2C</span> <span class="mi">00023</span><span class="n">FA1</span> <span class="n">ZAMVS1</span>
+<span class="n">A0000003</span> <span class="mi">000000000006</span><span class="n">BE9D</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">22</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">12</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">23</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mi">12</span> <span class="mi">000000000008</span><span class="n">FDEB</span> <span class="mi">00023</span><span class="n">FB4</span> <span class="n">ZAMVS1</span>
+<span class="n">A0000004</span> <span class="mi">000000000008</span><span class="n">FE51</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">20</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">39</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">21</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">39</span> <span class="mi">00000000000</span><span class="n">B3D5B</span> <span class="mi">00023</span><span class="n">F90</span> <span class="n">ZAMVS2</span>
+<span class="n">A0000005</span> <span class="mi">00000000000</span><span class="n">B3DE1</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">21</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">20</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">22</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">20</span> <span class="n">CURRENT</span> <span class="mi">00000000000</span><span class="n">CCBC7</span> <span class="mf">00018E5</span><span class="n">F</span> <span class="n">ZAMVS2</span>
+<span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">DATA</span> <span class="n">SETS</span> <span class="n">IN</span> <span class="n">LOG</span> <span class="n">STREAM</span><span class="p">:</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>To delete the structure, run the following job:-</p>
+<p>//SPTHOLTC JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&amp;SYSUID</p>
+<p>//STEP1 EXEC PGM=IXCMIAPU,REGION=4M</p>
+<p>//SYSPRINT DD SYSOUT=*</p>
+<p>DATA TYPE(LOGR) REPORT(NO)</p>
+<p>DELETE LOGSTREAM NAME(LOGGER.VIRTEL)</p>
+<p>LIST LOGSTREAM NAME(LOGGER.VIRTEL) DETAIL(YES)</p>
+<p><strong>Reverting back to the console</strong></p>
+<p>To revert back to console logging, the normal logging behaviour for
+Virtel, issue the following command:-</p>
+<p>F VIRTEL,LOG=CONSOLE</p>
+<p>After this all Virtel messages will be written to the console.</p>
+<p>Example:-</p>
+<p><strong>F SPVIR1A,LOG=CONSOLE</strong></p>
+<p>VIR0238I VIRTEL LOG RECORDING TO CONSOLE</p>
+<p>F SPVIR1A,LINES</p>
+<p>VIR0200I LINES</p>
+<p>VIR0201I VIRTEL 4.55 APPLID=VIRTEL1A LINES</p>
+<p>VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
+<p>VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
+<p>VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.15:41002</p>
+<p>VIR0202I W-HTTP HTTP-W2H TCP1 :41015</p>
+<p>VIR0202I &#8212;END OF LIST&#8212;</p>
+<p><strong>The VIR0002B Logger print program.</strong></p>
+<p>This program currently resides in SPTHOLT.VIRTEL.DEV.LOADLIB</p>
+<p>Example JCL</p>
+<p>//*</p>
+<p>//* DESCRIPTION</p>
+<p>//*</p>
+<p>//LOGGER PROC P=</p>
+<p>//S01 EXEC PGM=VIR0002B,PARM=&#8217;&amp;P&#8217;</p>
+<p>//STEPLIB DD DSN=SP000.SPTHOLT.DEV.LOADLIB,DISP=SHR</p>
+<p>//SYSUDUMP DD SYSOUT=*</p>
+<p>//SYSOUT DD SYSOUT=*</p>
+<p>//VIRLOG DD SYSOUT=*,DCB=BLKSIZE=13200</p>
+<p>// PEND</p>
+<p>//S01 EXEC LOGGER,P=&#8217;COPY&#8217;</p>
+<p>//*02 EXEC LOGGER,P=&#8217;COPY(&gt;000)&#8217;</p>
+<p>//*03 EXEC LOGGER,P=&#8217;COPY(2014336,2014336)&#8217;</p>
+<p>//*04 EXEC LOGGER,P=&#8217;DELETE(2014336)&#8217;</p>
+<p>//*05 EXEC LOGGER,P=&#8217;DELETE(&gt;000)&#8217;</p>
+<p>The parameters are as follows:</p>
+<p>COPY([start_date][,end_date]), DELETE(date)</p>
+<p>(&gt;nnn) (&gt;nnn)</p>
+<p><strong>COPY</strong></p>
+<p>Records are to be copied to the SYSLOG-format file. If COPY is not
+specified, no records are copied.</p>
+<p><strong>start_date,end_date</strong></p>
+<p>The starting and ending dates of the time span, both in the format
+YYYYDDD. start_date must not be later than end_date. end_date must
+not be later than today, the day the program runs. The default for
+start_date is the date of the oldest record in the log stream, and for
+end_date is yesterday, the day before the program runs. If both
+start_date and end_date are allowed to default, the parentheses after
+COPY may be omitted. If you specify a start date of today, you must also
+specify the end date of today, otherwise the program will assume an end
+date of yesterday and abend.</p>
+<p><strong>&gt;nnn</strong></p>
+<p>Indicates that records dated more than nnn days before today are to be
+copied. The time span will</p>
+<p>start with the date of the oldest record in the log stream and end nnn+1
+days before today (that is,</p>
+<p>records dated more than nnn days before today will be copied. nnn is a
+number between zero and 999.</p>
+<p>For example, if the program is run on May 25, specifying &#8220;COPY(&gt;3)&#8221; will
+copy records dated up to and including May 21. Note that &gt;0 corresponds
+to yesterday. To copy today&#8217;s records, you must use the
+&#8220;[start_date][,end_date]&#8221; form and specify today as the end date.</p>
+<p><strong>DELETE</strong></p>
+<p>Records are to be deleted. If DELETE is not specified, no records are
+deleted.</p>
+<p><strong>date</strong></p>
+<p>The date of the newest record to be deleted from the log stream. All
+records dated on or before that date will be deleted. The date must not
+be later than today. If the date specified is today, all records in the
+log stream will be deleted.</p>
+<p><strong>&gt;nnn</strong></p>
+<p>Indicates that records dated more than nnn days before today are to be
+deleted. nnn is a number</p>
+<p>between zero and 999. For example, if the program is run on July 15,
+specifying &#8220;DELETE(&gt;5)&#8221; will delete records dated up to and including
+July 9. Note that &gt;0 corresponds to yesterday. To delete today&#8217;s
+records, you must use the &#8220;date&#8221; form and specify today as the date. If
+DELETE is specified, either the date or &#8220;&gt;nnn&#8221; must be given.</p>
+<p>You may specify either COPY or DELETE or both. If you specify both they
+must be separated by a comma and may appear in either order. However,
+regardless of the order in which the parameters are specified, the copy
+operation will always occur before the delete.</p>
+<p><strong>Warning:</strong> When copying records, this program detects the end of a
+day&#8217;s records when it either reads the first record for the next day or
+attempts to read past the newest record in the log stream. This means
+that, if end_date is today and the log stream is being written at the
+time this program runs, the records that are copied may not be
+predictable. In particular, if both COPY with an ending date of today
+and DELETE with a date of today are specified, there may be more records
+deleted than copied.</p>
+<p><strong>Warning:</strong> When the &#8220;&gt;nnn&#8221; form of the COPY or DELETE parameter is
+specified, program converts it to a date by subtracting nnn days from
+the date the program is run. The calculation is done once, at the
+beginning of the program. If the program is run shortly before midnight,
+so that the calculation occurs before midnight and the actual copying or
+deletion of records occurs after midnight, the records copied or deleted
+will not reflect the number of days specified. To prevent this, you
+should</p>
+<p>avoid running the program close to midnight with the &#8220;&gt;nnn&#8221; form.</p>
+<p>Note that if the program is run regularly after midnight with the
+parameter &#8220;COPY(&gt;0),DELETE(&gt;1)&#8221;, it will copy records from the previous
+day and earlier, and will delete from the records from two days ago,
+leaving something over 24 hours&#8217; worth of records in the log each time.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201522/TN201522.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.55" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201519/TN201519.html" class="btn btn-neutral" title="Processing the VTAM USS MSG10 buffer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

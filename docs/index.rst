@@ -5,6 +5,7 @@ Virtel Technical Newsletters
    :maxdepth: 2
    :caption: Contents:
 
+   virtel
    newsletters
    howto
 

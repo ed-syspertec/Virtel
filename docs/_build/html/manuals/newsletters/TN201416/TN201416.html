@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Miscellaneous" href="../../../howto.html"/>
-        <link rel="prev" title="Pass tickets and supporting Proxy Servers" href="../TN201407/TN201407.html"/> 
+        <link rel="next" title="RACF Grouping Class and Virtel" href="../TN201417/TN201417.html"/>
+        <link rel="prev" title="Virtel JES Writer program" href="../TN201415/TN201415.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -90,11 +90,21 @@
             
                 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201413/TN201413.html">Overview of a Virtel Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
@@ -231,7 +241,7 @@ Certification Authority (CA).</p>
 </div>
 <p>Similar details can be found in the browser settings. For example here
 is what Chrome displays in the HTTPS/SSL certificate database.</p>
-<p><img alt="image0" src="../../../_images/image13.png" /></p>
+<p><img alt="image0" src="../../../_images/image126.png" /></p>
 <p><strong>Types of certificates.</strong></p>
 <p>Client certificate</p>
 <p>Server certificate</p>
@@ -460,9 +470,9 @@ certificates.</p>
 <p>To import the user certificate into the client workstation the P12 file
 must be downloaded in binary and then the certificate import wizard is
 run to import the certificate.</p>
-<p><img alt="image1" src="../../../_images/image21.png" /></p>
+<p><img alt="image1" src="../../../_images/image212.png" /></p>
 <p>After importing the following panel is displayed:-</p>
-<p><img alt="image2" src="../../../_images/image31.png" /></p>
+<p><img alt="image2" src="../../../_images/image313.png" /></p>
 <p>At this stage we have completed our certificate generation. Through the
 use of the certificates we will be able to initiate a secure session
 (https) with an application and obtain a user id.</p>
@@ -561,7 +571,7 @@ Virtel Configuration**</p>
 obtain the user id and PassTicket support to create a password. We
 configure Virtel in the transaction associated with our target
 application, in this case the CICS application called SPCICSH.</p>
-<p><img alt="image3" src="../../../_images/image4.png" /></p>
+<p><img alt="image3" src="../../../_images/image410.png" /></p>
 <p>Note that PassTicket is set to 2. This will enable Virtel to generate a
 temporary password. Security is set to 3. This indicates that Virtel
 will receive a USERID based upon the user certificate used in the
@@ -578,7 +588,7 @@ application via a secure session (https) without specifying any user
 id/password. Our initial URL is</p>
 <p><a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the
 IP address with your own installation IP address or domain name.</p>
-<p><img alt="image4" src="../../../_images/image5.png" /></p>
+<p><img alt="image4" src="../../../_images/image58.png" /></p>
 <p>We are presented with a «&nbsp;&nbsp;Select a certificate&nbsp;» window from the
 browser requesting the certificate we wish to user for authenication
 purposes. We select the certificate we downloaded.</p>
@@ -586,12 +596,12 @@ purposes. We select the certificate we downloaded.</p>
 we are using has not been authenticated by a well-known CA authority. We
 are of course aware of this as we are using a RACF self signed
 certifcate.</p>
-<p><img alt="image5" src="../../../_images/image6.png" /></p>
+<p><img alt="image5" src="../../../_images/image68.png" /></p>
 <p>We select Advanced and are then presented with information about the
 certifciate.</p>
-<p><img alt="image6" src="../../../_images/image7.png" /></p>
+<p><img alt="image6" src="../../../_images/image75.png" /></p>
 <p>We select the “Proceed” link.</p>
-<p><img alt="image7" src="../../../_images/image8.png" /></p>
+<p><img alt="image7" src="../../../_images/image85.png" /></p>
 <p>We are signed into CICS without having to specify any user id or
 password.</p>
 <p><strong>Problems</strong></p>
@@ -739,10 +749,10 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../../howto.html" class="btn btn-neutral float-right" title="Miscellaneous" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201417/TN201417.html" class="btn btn-neutral float-right" title="RACF Grouping Class and Virtel" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201407/TN201407.html" class="btn btn-neutral" title="Pass tickets and supporting Proxy Servers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201415/TN201415.html" class="btn btn-neutral" title="Virtel JES Writer program" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
