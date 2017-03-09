@@ -7,7 +7,7 @@ Taking a VIRTEL terminal trace enables the capture of 3270 data streams between 
 
 Procedure
 
-1. Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the :doc:`Virtel Installation Guide </manuals/virtel/Virtel453_Installation_User_Guide/Installation_Guide>` for details on how to download and install VIRTEL from the `SYSPERTEC ftp site <http://ftp.syspertec.com>`_. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.
+1. Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the :doc:`Virtel Installation Guide </manuals/virtel/Virtel453IG/Installation_Guide>` for details on how to download and install VIRTEL from the `SYSPERTEC ftp site <http://ftp.syspertec.com>`_. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.
 
     “Step 6” Edit member VIRTCT01 can be bypassed if the default TCT options are acceptable. For the purposes of just running a 3270 terminal trace this should be the case.
 
