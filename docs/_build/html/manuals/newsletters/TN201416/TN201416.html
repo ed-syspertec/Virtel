@@ -241,7 +241,7 @@ Certification Authority (CA).</p>
 </div>
 <p>Similar details can be found in the browser settings. For example here
 is what Chrome displays in the HTTPS/SSL certificate database.</p>
-<p><img alt="image0" src="../../../_images/image126.png" /></p>
+<p><img alt="image0" src="../../../_images/image114.png" /></p>
 <p><strong>Types of certificates.</strong></p>
 <p>Client certificate</p>
 <p>Server certificate</p>
@@ -470,9 +470,9 @@ certificates.</p>
 <p>To import the user certificate into the client workstation the P12 file
 must be downloaded in binary and then the certificate import wizard is
 run to import the certificate.</p>
-<p><img alt="image1" src="../../../_images/image212.png" /></p>
+<p><img alt="image1" src="../../../_images/image25.png" /></p>
 <p>After importing the following panel is displayed:-</p>
-<p><img alt="image2" src="../../../_images/image313.png" /></p>
+<p><img alt="image2" src="../../../_images/image35.png" /></p>
 <p>At this stage we have completed our certificate generation. Through the
 use of the certificates we will be able to initiate a secure session
 (https) with an application and obtain a user id.</p>
@@ -571,7 +571,7 @@ Virtel Configuration**</p>
 obtain the user id and PassTicket support to create a password. We
 configure Virtel in the transaction associated with our target
 application, in this case the CICS application called SPCICSH.</p>
-<p><img alt="image3" src="../../../_images/image410.png" /></p>
+<p><img alt="image3" src="../../../_images/image44.png" /></p>
 <p>Note that PassTicket is set to 2. This will enable Virtel to generate a
 temporary password. Security is set to 3. This indicates that Virtel
 will receive a USERID based upon the user certificate used in the
@@ -588,7 +588,7 @@ application via a secure session (https) without specifying any user
 id/password. Our initial URL is</p>
 <p><a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the
 IP address with your own installation IP address or domain name.</p>
-<p><img alt="image4" src="../../../_images/image58.png" /></p>
+<p><img alt="image4" src="../../../_images/image54.png" /></p>
 <p>We are presented with a «&nbsp;&nbsp;Select a certificate&nbsp;» window from the
 browser requesting the certificate we wish to user for authenication
 purposes. We select the certificate we downloaded.</p>
@@ -596,12 +596,12 @@ purposes. We select the certificate we downloaded.</p>
 we are using has not been authenticated by a well-known CA authority. We
 are of course aware of this as we are using a RACF self signed
 certifcate.</p>
-<p><img alt="image5" src="../../../_images/image68.png" /></p>
+<p><img alt="image5" src="../../../_images/image64.png" /></p>
 <p>We select Advanced and are then presented with information about the
 certifciate.</p>
-<p><img alt="image6" src="../../../_images/image75.png" /></p>
+<p><img alt="image6" src="../../../_images/image72.png" /></p>
 <p>We select the “Proceed” link.</p>
-<p><img alt="image7" src="../../../_images/image85.png" /></p>
+<p><img alt="image7" src="../../../_images/image82.png" /></p>
 <p>We are signed into CICS without having to specify any user id or
 password.</p>
 <p><strong>Problems</strong></p>

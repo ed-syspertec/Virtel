@@ -191,7 +191,7 @@ information on how this phase of the process is achieved.</p>
 <p>Before we can use the ADMINVWM administration tool we must define it to
 VIRTEL within the SPVIR1A VIRTEL task. The Virtel transaction definition
 to provide the ADMINVWM tool is defined as follows:-</p>
-<p><a class="reference internal" href="../../../_images/image127.png"><img alt="image0" src="../../../_images/image127.png" style="width: 6.30000in; height: 4.24931in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image115.png"><img alt="image0" src="../../../_images/image115.png" style="width: 6.30000in; height: 4.24931in;" /></a></p>
 <p>Once this has been defined to VIRTEL we can access the tool with the
 following URL:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">ADMVWM</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">ADMINVWM</span>
@@ -200,7 +200,7 @@ following URL:-</p>
 <p>This will present the developer with the Administrations tool panel and
 will provide administration functions from which directory management
 functions can be performed.</p>
-<p><a class="reference internal" href="../../../_images/image213.png"><img alt="image1" src="../../../_images/image213.png" style="width: 6.30000in; height: 4.77986in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image26.png"><img alt="image1" src="../../../_images/image26.png" style="width: 6.30000in; height: 4.77986in;" /></a></p>
 <p>In this newsletter we are only concerned with the Directories management
 function. We will not discuss any of the other administration tools.
 Using the Directories management function we can copy web elements
@@ -289,7 +289,7 @@ to SPVIR1A as directory SCNP-DIR. It will have a related development
 directory of SCN-DIR. When we add the directory name SCNP-DIR we
 associated it with the VSAM file DDNAME SCENPROD which we have just
 created and added to the VIRTEL started procedure.</p>
-<p><a class="reference internal" href="../../../_images/image314.png"><img alt="image2" src="../../../_images/image314.png" style="width: 6.30000in; height: 4.02639in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image36.png"><img alt="image2" src="../../../_images/image36.png" style="width: 6.30000in; height: 4.02639in;" /></a></p>
 <p>We have set the download attribute only as we do not want developers
 inadvertently uploading to this TRSF pre-production file. We only want
 to be able to copy elements from the related SCN-DIR to SCNP-DIR.</p>
@@ -301,13 +301,13 @@ management tool. In the example below we copy the .390 file #DOPSSO.390
 from SCN-DIR to SCNP-DIR using the COPY sub command of the LIST
 function. We provide the target directory, in this case SCNP-DIR and
 give it a new name.</p>
-<p><a class="reference internal" href="../../../_images/image411.png"><img alt="image3" src="../../../_images/image411.png" style="width: 6.30000in; height: 2.69722in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image45.png"><img alt="image3" src="../../../_images/image45.png" style="width: 6.30000in; height: 2.69722in;" /></a></p>
 <p>We press the Copy tab to invoke the copy function and copy the selected
 member.</p>
-<p><a class="reference internal" href="../../../_images/image59.png"><img alt="image4" src="../../../_images/image59.png" style="width: 6.30000in; height: 3.08472in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image55.png"><img alt="image4" src="../../../_images/image55.png" style="width: 6.30000in; height: 3.08472in;" /></a></p>
 <p>After the copy is complete we can list the direct to ensure that the
 element has indeed been copied and with the correct name.</p>
-<p><a class="reference internal" href="../../../_images/image69.png"><img alt="image5" src="../../../_images/image69.png" style="width: 6.30000in; height: 3.17222in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image65.png"><img alt="image5" src="../../../_images/image65.png" style="width: 6.30000in; height: 3.17222in;" /></a></p>
 <p>Developers will continue to populate their pre-production TRSF files set
 in preparation for migration to the production environment. The jobs
 required to perform the migration to production are discussed in the
@@ -316,13 +316,13 @@ next section – Operations View.</p>
 <p>You can also copy a group of members using the batch copy facility of
 the directory management tool. This I selected by pressing the batch
 icon on the directory list page.</p>
-<p><a class="reference internal" href="../../../_images/image76.png"><img alt="image6" src="../../../_images/image76.png" style="width: 6.30000in; height: 3.28264in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image73.png"><img alt="image6" src="../../../_images/image73.png" style="width: 6.30000in; height: 3.28264in;" /></a></p>
 <p>With the Batch copy facility I can select a list of files and copy them
 to another TRSF file. I select the files to be copied then click the
 copy all selected icon. The first icon on the right hands</p>
-<p><a class="reference internal" href="../../../_images/image86.png"><img alt="image7" src="../../../_images/image86.png" style="width: 6.30000in; height: 2.68542in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image83.png"><img alt="image7" src="../../../_images/image83.png" style="width: 6.30000in; height: 2.68542in;" /></a></p>
 <p>After the copy has been completed I get a confirmation message.</p>
-<p><a class="reference internal" href="../../../_images/image95.png"><img alt="image8" src="../../../_images/image95.png" style="width: 6.30000in; height: 2.71250in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image92.png"><img alt="image8" src="../../../_images/image92.png" style="width: 6.30000in; height: 2.71250in;" /></a></p>
 <p>This bulk copy facility could allow developers to <em>copy-en-masse</em> the
 pre-production TRSF file. Unlike the individual copy facility it
 doesn’t’ provided any rename capability.</p>
@@ -332,7 +332,7 @@ Exporting directory list**</p>
 export the list of members in the selected directory to an EXCEL
 spreadsheet. This function is invoked by pressing the EXCEL export icon
 in the top right corner of the list window.</p>
-<p><a class="reference internal" href="../../../_images/image105.png"><img alt="image9" src="../../../_images/image105.png" style="width: 6.30000in; height: 3.64167in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image102.png"><img alt="image9" src="../../../_images/image102.png" style="width: 6.30000in; height: 3.64167in;" /></a></p>
 <p><strong>Operations View</strong></p>
 <p>The operations department have overall control in moving the developer’s
 pre-production TRSF file sets and promoting them into the production
@@ -340,7 +340,7 @@ environment. The developers do not have direct access to any of the
 production datasets. Another requirement is that both development and
 production have an independent means of reverting back to previous TRSF
 level sets.</p>
-<p><a class="reference internal" href="../../../_images/image111.jpg"><img alt="image10" src="../../../_images/image111.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image11.jpg"><img alt="image10" src="../../../_images/image11.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>We use standard IBM JCL, software utilities and REXX to implement this
 process which uses GDG file structures of unloaded TRSF files sets at
 ZAMVS1 and ZAMVS2. The unloaded TRSF file sets at ZAMVS1 sets are ftp’d
@@ -451,7 +451,7 @@ the production centre with the latest TRSF file set and also enables the
 developers to keep a history TRSF development - in our example 5 days. A
 restore from an older version is possible should it be required. This
 GDG is independent of the production TRSF GDG file set.</p>
-<p><a class="reference internal" href="../../../_images/image121.jpg"><img alt="image11" src="../../../_images/image121.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image12.jpg"><img alt="image11" src="../../../_images/image12.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>TRSFMNT2 Sample JCL</p>
 <p>//*******************************************************************/</p>
 <p>//* */</p>
@@ -532,7 +532,7 @@ restore latest TRSF file set from production.</p>
 <p>BACKOUT Only executed if return code is greater than 1. Calls TRSFBACK
 procedure to restore a particular GDG historic TRSF file set. The GDG
 number indicates which GDD level is to be restored.</p>
-<p><a class="reference internal" href="../../../_images/image131.jpg"><img alt="image12" src="../../../_images/image131.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image13.jpg"><img alt="image12" src="../../../_images/image13.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>TRSFREXX Example JCL</p>
 <p>//******************************************************************/</p>
 <p>//* THIS CONTROL JOB PREPARES THE TRSF FILES FOR VIRTEL. IT IS */</p>

@@ -183,7 +183,7 @@
 <p>You can capture and list macros by using the two macro ICON functions displayed in the Virtel tool bar. These are the red record/stop button
 and the green/blue triangular display button. Green indicates local mode and blue DDI mode. When the ICON is blue macros will be synchronized between the users local storage and the DDI repository. The type of synchronization will depend on the options set in the w2hparm.js member.</p>
 <p><strong>The Record function</strong></p>
-<p><a class="reference internal" href="../../../_images/image165.png"><img alt="image0" src="../../../_images/image165.png" style="width: 6.30000in; height: 1.51389in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image147.png"><img alt="image0" src="../../../_images/image147.png" style="width: 6.30000in; height: 1.51389in;" /></a></p>
 <p>Fig. 1 - The Macro Record ICON</p>
 <p>The record function is an on/off button that will record key strokes.
 When recording, the ICON will flash until it is clicked at which point
@@ -191,7 +191,7 @@ it will stop recording and save the key strokes. A save panel will be
 displayed asking for the name of the macro entry. Note that an ENTER/PFK
 key must be pressed at least once, i.e. data must be sent by some key
 operation in order to create and save an entry within the macro.json file.</p>
-<p><a class="reference internal" href="../../../_images/image234.png"><img alt="image1" src="../../../_images/image234.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image227.png"><img alt="image1" src="../../../_images/image227.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
 <p>Fig. 2 - Saving a macro</p>
 <p><strong>Keyboard Mapping</strong></p>
 <p>When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be
@@ -206,7 +206,7 @@ only invoke the refresh option and not the Virtel macro. Keyboard mapping is a f
 <p>Fig. 2a - Saving a macro with key mapping</p>
 <p><strong>The Display function</strong></p>
 <p>The green/blue triangular button will launch the macro interface and display the macros held in local storage. Right click on any macro to display a context menu. This will provide the delete, edit, &#8216;save as&#8217; and run functions.</p>
-<p><a class="reference internal" href="../../../_images/image332.png"><img alt="image2" src="../../../_images/image332.png" style="width: 6.06335in; height: 5.36533in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image324.png"><img alt="image2" src="../../../_images/image324.png" style="width: 6.06335in; height: 5.36533in;" /></a></p>
 <p>Fig. 3 - Context menu associated with a macro</p>
 <p><strong>Export and Import options</strong></p>
 <p>Macros can be exported or imported using the Export and Import buttons located at the top of the interface display. For export, a macros.json file will be created. If you plan to use the remote mode with DDI you will need to export the local macros to a macros.json file and then upload that file through the DDI interface. See: <em>Using macros with the DDI interface</em> for more information.</p>
@@ -220,7 +220,7 @@ assigned based upon their corresponding security subsystem userid and group name
 users. A user may maintain macros at their user level only whereas an Administrator can maintain macros at all three levels.</p>
 <p><strong>DDI Installation</strong></p>
 <p>The DDI support is normally enabled for transactions defined in the CLI custom directory, normally associated with port 41002. By default, the Virtel transaction CLI-03P identifies the path for w2hparm.js, w2h/w2hparm-js, as belonging to the W2H directory. This transaction needs to be modified so that the path for w2hparm.js (Application field) will now point to the CLI directory. The transaction should be updated so the the path w2h/w2hparm-js points to the CLI-DIR directory. A modified w2hparm.js file, with the macros enabled option set, should then be uploaded to the CLI directory. We use the CLI directory for customer modifications to avoid any changes being lost during a Virtel upgrade.</p>
-<p><a class="reference internal" href="../../../_images/image426.png"><img alt="image3" src="../../../_images/image426.png" style="width: 5.6in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image420.png"><img alt="image3" src="../../../_images/image420.png" style="width: 5.6in; height: 5.2in;" /></a></p>
 <p>Fig. 4 - Modified CLI-03P transaction</p>
 <p>To use the DDI interface the options must be set in the w2hparm.js member. The various options control the synchronisation between the user&#8217;s local macro staorage and the DDI central repository. Specify one of the following options to turn on DDI or remote macro mode:-:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;w2hparm.useVirtelMacros&quot;</span><span class="p">:[</span><span class="n">false</span> <span class="o">|</span> <span class="n">true</span> <span class="o">|</span> <span class="n">never</span> <span class="o">|</span> <span class="n">once</span> <span class="o">|</span> <span class="n">daily</span> <span class="o">|</span> <span class="n">session</span> <span class="p">],</span>
@@ -267,31 +267,31 @@ initialised.</td>
 <p>The normal practice for an administrator in managing the macro repository would be to capture and create a macro in their user directory in &#8220;local mode&#8221;, then turn on DDI and upload the macros.json file to the mainframe global DDI repository using the DDI interface. Once in the global repository the macros.json file can be edited and then copied to o any group or user directory for general availability. The upload process is through a drag and drop operation within the DDI interface. To copy a macros.json to another user or group requires downloading the macro first then dragging the file into the relevant group|user area within the DDI panel area designated by the dotted lines.</p>
 <p><strong>Uploading a macro.json file to the Global directory</strong></p>
 <p>Open the DDI interface, select Global. The Global directory will open. Drag the macros.json file into the area designated by a series of dotted lines. This will initiate a file upload into the global directory of the macro repository:-</p>
-<p><a class="reference internal" href="../../../_images/image519.png"><img alt="image4" src="../../../_images/image519.png" style="width: 6.3in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image515.png"><img alt="image4" src="../../../_images/image515.png" style="width: 6.3in; height: 5.2in;" /></a></p>
 <p>Fig. 5 - The DDI Global Upload</p>
 <p>Once you have a copy in the global area, right click on the macros.json file to open a context menu. This menu provides some additional functions such as Copy, Download, Delete and Edit. For macros.json the copy function is not applicable.</p>
-<p><a class="reference internal" href="../../../_images/image619.png"><img alt="image5" src="../../../_images/image619.png" style="width: 6.3in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image615.png"><img alt="image5" src="../../../_images/image615.png" style="width: 6.3in; height: 5.2in;" /></a></p>
 <p>Fig. 5a - Additional file functions in DDI</p>
 <p>Selecting “Edit” will open the same editor interface that was used when editing macros in local storage. Here the administrator can modify the
 macros held within the macros.json file. Macros can be saved with different names and associated with different key mappings. Options like
 Save As, Edit and Delete are available within a context menu when you right click on a macro.</p>
-<p><a class="reference internal" href="../../../_images/image714.png"><img alt="image6" src="../../../_images/image714.png" style="width: 6.3in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image711.png"><img alt="image6" src="../../../_images/image711.png" style="width: 6.3in; height: 5.2in;" /></a></p>
 <p>Fig. 6 - Updating macros with the Global Directory</p>
 <p><strong>Making macros available to users.</strong></p>
 <p>Any macros an administrator creates can be made available to users either at the Global, Group or Userid level. To make macros available at a userid level, select the User TAB from the DDI main panel. Enter the user’s USERID in the user name field and press the “Green Tick” icon. This will create an area within the DDI macro repository. Upload the
 macros.json file you wish to make available to this user by dragging the file into the area designated by the dotted lines. This will initiate an upload of the macro into the users userid area.</p>
-<p><a class="reference internal" href="../../../_images/image813.png"><img alt="image7" src="../../../_images/image813.png" style="width: 6.3in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image810.png"><img alt="image7" src="../../../_images/image810.png" style="width: 6.3in; height: 5.2in;" /></a></p>
 <p>Fig. 7 - Creating a macros.json file for a user</p>
 <p>As with any file within the DDI repository a context menu can be brought up by right clicking on the file name.</p>
-<p><a class="reference internal" href="../../../_images/image912.png"><img alt="image8" src="../../../_images/image912.png" style="width: 6.3in; height: 5.2in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image99.png"><img alt="image8" src="../../../_images/image99.png" style="width: 6.3in; height: 5.2in;" /></a></p>
 <p>Fig. 8 - Editing a global macro</p>
 <p>An administrator can update any macros held within the DDI repository. Changes will be reflected in the user’s local storage once the user open’s their macro display with the “Green” ICON arrow. The following display shows the DDI repository macros as displayed in the user’s browser. Remember that User macros are related to the users’ Userid and
 the Group. This ability to associate macros with a userid and group means that all macros, related to business assets, can be managed and maintained in a central DDI repository. Maintenance can be applied centrally and distributed out to the user’s browser. Users only have the option of modifying their user macros. Any changes will be uploaded to the mainframe and stored in the users’ macro area within the DDI repository. This keeps the user macro modifications in sync with the repository.</p>
-<p><a class="reference internal" href="../../../_images/image1012.png"><img alt="image9" src="../../../_images/image1012.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image109.png"><img alt="image9" src="../../../_images/image109.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
 <p>Fig. 9 - User display of DDI macro interface</p>
 <p><strong>Updating DDI macros at the Group level</strong></p>
 <p>To make macros available at a Group level, select the Group TAB from the DDI main panel. Enter the Group name in the group name field and press the “Green Tick” icon. This will create an area within the DDI macro repository were macros for this group can be held. Upload the Group macros.json file you wish to make available to this group by dragging the file into the area designated by the dotted lines. This will initiate an upload of the Group macro.</p>
-<p><a class="reference internal" href="../../../_images/image1115.png"><img alt="image10" src="../../../_images/image1115.png" style="width: 6.30000in; height: 5.19931in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1114.png"><img alt="image10" src="../../../_images/image1114.png" style="width: 6.30000in; height: 5.19931in;" /></a></p>
 <p>Fig. 10 - Macro Group Directory</p>
 <p>To obtain the associated context menu right click on the file name – macros.json. This will provide the additional functionality to Edit, Download or Delete the macro.</p>
 <p><strong>Notes:</strong></p>

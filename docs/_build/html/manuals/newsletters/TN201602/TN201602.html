@@ -305,22 +305,22 @@ opened sessions to ports 41001 and 41002. Issue the following command:-:</p>
 </li>
 <li><p class="first">The following screen image should appear:-</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image140.png"><img alt="image0" src="../../../_images/image140.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image128.png"><img alt="image0" src="../../../_images/image128.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Select Drag and Drop Upload and login with your credentials. The Drag and Drop Interface will be displayed.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image222.png"><img alt="image1" src="../../../_images/image222.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image215.png"><img alt="image1" src="../../../_images/image215.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Keeping this browser window open, go to your desktop directory where you unzipped the virtel453updt5380.zip file.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image324.png"><img alt="image2" src="../../../_images/image324.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image316.png"><img alt="image2" src="../../../_images/image316.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Open the SCE directory and select all the files (CTRL-A). Drag this selection across to the browser window and drop over the SCE-DIR ICON. This should start an upload of all the files in the SCE directory on your desktop into the SCE-DIR directory of the SAMP TRSF VSAM file. There should be 4 files.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image419.png"><img alt="image3" src="../../../_images/image419.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image413.png"><img alt="image3" src="../../../_images/image413.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Repeat the exercise, but this time with the W2H directory, dragging the 83 elements into the W2H-DIR directory.</p>
@@ -382,7 +382,7 @@ opened sessions to ports 41001 and 41002. Issue the following command:-:</p>
 <p>From the Virtel Portal Page select “Other Applications”. An application
 menu should appear with some default applications. Note that your list
 may be different.</p>
-<p><a class="reference internal" href="../../../_images/image515.png"><img alt="image4" src="../../../_images/image515.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image511.png"><img alt="image4" src="../../../_images/image511.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
 <p>Select any application that is flagged green. If no applications are
 flagged green (available) then configure you ARBO and add applications
 relevant to your site. See the <em>Virtel Connectivity Guide</em> for more
@@ -524,7 +524,7 @@ prefix setting.</p>
 </pre></div>
 </div>
 <p>If I fire the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a> to Virtel I should get something like this:-</p>
-<p><a class="reference internal" href="../../../_images/image810.png"><img alt="image7" src="../../../_images/image810.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image87.png"><img alt="image7" src="../../../_images/image87.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
 <p>Now, it is very unlikely you will see exactly the same colours against these applications but nevertheless you should see the same Application in the Menus because they are all defined as CLI Type 1 or Type 2 applications in the default ARBO. In my case I have two applications which are “highlighted” green – IMS and Session manager. Now, if I select IMS3270 Virtel will log me onto that application. The CICS DBDCCICS application isn’t active so that’s why it is flagged RED. We got here through the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a>. So how did that happen? Well we know that the URL will fire the default transaction for the Entry POINT CLIWHOST. That transaction is also called CLIWHOST, so let’s take a look at that transaction:-</p>
 <blockquote>
 <div>TRANSACT ID=CLI-00,
@@ -580,7 +580,7 @@ has been amended to identify a particular Virtel transaction by appending the st
 <p><a class="reference external" href="http://192.168.0.1:41002/w2h/WEB2AJAX.htm+transaction">http://192.168.0.1:41002/w2h/WEB2AJAX.htm+transaction</a> where transaction is a transaction defined to Virtel.</p>
 <p>Question.</p>
 <p>If I try <a class="reference external" href="http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA">http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA</a> it doesn’t work. I get some messages on the browser that looks like:-</p>
-<p><a class="reference internal" href="../../../_images/image99.png"><img alt="image8" src="../../../_images/image99.png" style="width: 3.61458in; height: 1.89181in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image96.png"><img alt="image8" src="../../../_images/image96.png" style="width: 3.61458in; height: 1.89181in;" /></a></p>
 <p>And in the z/OS console I can see the following messages:-:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLLOC049</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.047</span><span class="p">:</span><span class="mi">50678</span>
 <span class="n">VIRC121E</span> <span class="n">PAGE</span> <span class="n">NOT</span> <span class="n">FOUND</span> <span class="n">FOR</span> <span class="n">CLLOC049</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39; 176</span>
@@ -632,7 +632,7 @@ has been amended to identify a particular Virtel transaction by appending the st
 </pre></div>
 </div>
 <p>This will rebuild the ARBO VSAM file and add in the new CICS application. If we start up Virtel now we should see the following APPMENU list display. I’ve accessed this with just the port number in my URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a>.</p>
-<p><a class="reference internal" href="../../../_images/image109.png"><img alt="image9" src="../../../_images/image109.png" style="width: 6.26806in; height: 3.37708in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image106.png"><img alt="image9" src="../../../_images/image106.png" style="width: 6.26806in; height: 3.37708in;" /></a></p>
 <p>To directly access my CICS definition I could use the fully qualified URL of:-:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">html</span><span class="o">+</span><span class="n">CICSA</span>
 </pre></div>
@@ -666,9 +666,9 @@ has been amended to identify a particular Virtel transaction by appending the st
 <p>So I can see VIRTEL attempting to establish a session using a VTAM LU name of REHVT000. That doesn’t exist in my CICS system so I will have define it or use a different CICS system where it is defined. Virtel requires that the RELAY LUNAME be defined to CICS as this name is effectively representing a 3270 terminal within Virtel. Likewise, the
 other relay name REHIM00, which was also activated as part of this session set up, would also have to be defined. This LU represents a printer which is associated with the terminal or relay REHVT000.</p>
 <p>In my case, I stop Virtel, add some new ARBO transaction definition to CICS systems that I know have the Virtel relay definitions defined. I start up VIRTEL and access the APPMENU with URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a></p>
-<p><a class="reference internal" href="../../../_images/image1112.png"><img alt="image10" src="../../../_images/image1112.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1111.png"><img alt="image10" src="../../../_images/image1111.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
 <p>I select CICSH and hopefully can logon; yes indeed I can. In fact I can open another browser window and logon to TSO1A.</p>
-<p><a class="reference internal" href="../../../_images/image1211.png"><img alt="image11" src="../../../_images/image1211.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image129.png"><img alt="image11" src="../../../_images/image129.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
 <p>So now my browser is acting like a session manager with each tab representing a different session. Two to the mainframe, CICS and TSO, and one Virtel APPMENU display. Using Virtel in place of a session manager is worth considering as it provides you with similar functionality as a session manager but at no cost.</p>
 <p>Note: As I have mentioned the ARBO VSAM file contains all the configuration data. This is upload through an ARBO load job which reads in a configuration data set. The ARBO program has some peculiarities in that if you specify PARM option of NOREPL than it will not replace any configurations elements it already finds and returns with a condition
 code 0. That’s all well and good but if your trying to update the ARBO and replace elements that’s not so good. You’ll think the ARBO has been updated when in fact it hasn’t. To replace elements change the NOREPL to REPL. NOREPL is also a default so add REPL into the PARM if it is not already there.</p>
@@ -698,11 +698,11 @@ backup.</p>
 <p>I go for option 2, we will user the browser to access the Administration panels. Start up Virtel and access the W2H domain using just the port number in the URL.</p>
 <p><a class="reference external" href="http://192.168.0.1:41001">http://192.168.0.1:41001</a></p>
 <p>You should get a screen that looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image1310.png"><img alt="image12" src="../../../_images/image1310.png" style="width: 6.26806in; height: 3.31736in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image133.png"><img alt="image12" src="../../../_images/image133.png" style="width: 6.26806in; height: 3.31736in;" /></a></p>
 <p>Select Admin(3270).That will take you to the 3270 administration pages. The first page displayed should be the configuration menu :-</p>
-<p><a class="reference internal" href="../../../_images/image145.png"><img alt="image13" src="../../../_images/image145.png" style="width: 6.26806in; height: 3.85000in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image143.png"><img alt="image13" src="../../../_images/image143.png" style="width: 6.26806in; height: 3.85000in;" /></a></p>
 <p>Select PF2 to display the default terminal setup.</p>
-<p><a class="reference internal" href="../../../_images/image155.png"><img alt="image14" src="../../../_images/image155.png" style="width: 6.26806in; height: 4.02500in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image153.png"><img alt="image14" src="../../../_images/image153.png" style="width: 6.26806in; height: 4.02500in;" /></a></p>
 <p>So from the top down we have:-</p>
 <p>CLLOC000 – CLLOC050 terminals defined for use in the CLI domain.</p>
 <p>Note: The CL prefix. This ties up with the TERMINAL= on the LINE definition. We also have a group of 80 terminals (Repeated field) with have been allocated a starting prefix of CLIVTA. This would tie up with the transaction definitions and the TERMINAL= keyword. Whats interesting about this group of terminals is that they have been allocated a pool

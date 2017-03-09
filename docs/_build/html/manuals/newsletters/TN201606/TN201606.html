@@ -203,9 +203,9 @@ will be called MENU I create the transactions MENUCAPT and MENUAJAX.
 MENU is also the CICS transaction that invokes our 3270 MENU
 application.</p>
 <p>Our MENUCAPT transaction looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image149.png"><img alt="image0" src="../../../_images/image149.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image136.png"><img alt="image0" src="../../../_images/image136.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
 <p>And our MENUAJAX transaction look like this:</p>
-<p><a class="reference internal" href="../../../_images/image226.png"><img alt="image1" src="../../../_images/image226.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image219.png"><img alt="image1" src="../../../_images/image219.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
 <p>The TIOA string enables Virtel to use logon to CICS using the user
 id/password variables. The CICS application MENU is then called once
 CICS processes the logon and returns a 3270 screen image with the word
@@ -218,9 +218,9 @@ value in the Option field. To support this we need to add the options
 directory, as a transaction, to the CLI entry point. The following
 transaction, CLI-03O, is added to CLIWHOST. It is modeled on the W2H
 transaction CLI-03W.</p>
-<p><a class="reference internal" href="../../../_images/image327.png"><img alt="image2" src="../../../_images/image327.png" style="width: 6.26806in; height: 3.39375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image319.png"><img alt="image2" src="../../../_images/image319.png" style="width: 6.26806in; height: 3.39375in;" /></a></p>
 <p>Our 3270 application front end screen looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image422.png"><img alt="image3" src="../../../_images/image422.png" style="width: 5.78147in; height: 3.77083in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image416.png"><img alt="image3" src="../../../_images/image416.png" style="width: 5.78147in; height: 3.77083in;" /></a></p>
 <p><strong>Mapping out the application</strong></p>
 <p>Before we can build the scenarios that will modernize our application we
 need to map out the navigability of the application and understand which
@@ -243,11 +243,11 @@ project with Virtel VSR.</p>
 <p>I open the VSR shortcut that I created on my desktop and I am presented
 with the initial VSR page where I can name and define my project
 directory. The direct must exist prior to creating the project.</p>
-<p><a class="reference internal" href="../../../_images/image617.png"><img alt="image5" src="../../../_images/image617.png" style="width: 6.26806in; height: 5.15139in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image613.png"><img alt="image5" src="../../../_images/image613.png" style="width: 6.26806in; height: 5.15139in;" /></a></p>
 <p>Following through the VSR manual I create my project and plug in the
 line variables that I extracted from my Virtel task. The VSR panel now
 looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image713.png"><img alt="image6" src="../../../_images/image713.png" style="width: 6.26806in; height: 5.17431in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image710.png"><img alt="image6" src="../../../_images/image710.png" style="width: 6.26806in; height: 5.17431in;" /></a></p>
 <p>The main VSR panel is divided into 5 sections which help you to flow
 through the process of modernization. The sections are:-</p>
 <p>1. Setup Configuration information. The settings cogwheel icon on the
@@ -281,7 +281,7 @@ files in the development directory to CLI. The three files we move into
 CLI are <em>custom.js</em>, <em>vsr.js</em> and <em>option.vsr</em>.</p>
 <p>Note, these files are not required when modernizing in “standard” or
 production mode.</p>
-<p><a class="reference internal" href="../../../_images/image812.png"><img alt="image7" src="../../../_images/image812.png" style="width: 6.26806in; height: 3.90000in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 6.26806in; height: 3.90000in;" /></a></p>
 <p>After successfully uploading the files I close the upload window and
 refresh my VSR screen using refresh ICON in the top right corner.</p>
 <p>The next stage is to download my first CICS MAP from the mainframe and
@@ -291,13 +291,13 @@ the mainframe. I download the map as MENSET1.MAP and save it in MAP sub
 directory. Next, in section 2 of the VSR project window I enter the name
 of the map file and press the green LOAD ICON. The map loads and the
 Source map section is updated.</p>
-<p><a class="reference internal" href="../../../_images/image911.png"><img alt="image8" src="../../../_images/image911.png" style="width: 6.02083in; height: 4.78678in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image98.png"><img alt="image8" src="../../../_images/image98.png" style="width: 6.02083in; height: 4.78678in;" /></a></p>
 <p>Having loaded my CICS MAP into VSR I can now create the work bench by
 pressing the CREATE ICON in the workbench area. The workbench is filled
 with rows, each row relating to a field with my CICS Map. I save the map
 as a JSON file called menmap1.json. VSR saves workbench maps as JSON
 files so I will use the JSON suffix for saving MAP elements.</p>
-<p><a class="reference internal" href="../../../_images/image1011.png"><img alt="image9" src="../../../_images/image1011.png" style="width: 6.26806in; height: 4.98750in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image108.png"><img alt="image9" src="../../../_images/image108.png" style="width: 6.26806in; height: 4.98750in;" /></a></p>
 <p>At this point I can start to modernize my 3270 MENMAP1 MAP using the
 Choice column drop down. The drop down provides a variety on Virtel
 conversion and design options. These options will generate the necessary
@@ -316,7 +316,7 @@ the VSR display, section 5. This generates the Virtel tags which will
 support my modernized template. I save the template as Testmenmap1. The
 default extension of HTML will be added.</p>
 <p>My VSR window now looks like:</p>
-<p><a class="reference internal" href="../../../_images/image1114.png"><img alt="image10" src="../../../_images/image1114.png" style="width: 6.26806in; height: 6.43681in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1113.png"><img alt="image10" src="../../../_images/image1113.png" style="width: 6.26806in; height: 6.43681in;" /></a></p>
 <p><strong>Testing changes with “Test Mode”</strong></p>
 <p>One of the features of VSR is that you can view your modernization
 changes as you develop and before you commit them to standard or
@@ -331,10 +331,10 @@ Modernized Rendering”. We use this second one so see what our modernized
 screen looks like based upon the elements that we have copied from the
 workbench into the template area. VSR will use Virtel to display the
 template.</p>
-<p><a class="reference internal" href="../../../_images/image1213.png"><img alt="image11" src="../../../_images/image1213.png" style="width: 6.26806in; height: 4.63681in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image1211.png"><img alt="image11" src="../../../_images/image1211.png" style="width: 6.26806in; height: 4.63681in;" /></a></p>
 <p>After pressing the “render” ICON we are presented with are modernized
 screen:-</p>
-<p><a class="reference internal" href="../../../_images/image1312.png"><img alt="image12" src="../../../_images/image1312.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image137.png"><img alt="image12" src="../../../_images/image137.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
 <p>Nothing too exciting here. We can see that Virtel has taken the various
 elements from the Map, created the Virtel tags within the template, and
 displayed them without any special markup. Of course, the markup is down
@@ -371,12 +371,12 @@ dynamic form is called “VirtelForm”.</p>
 <p>We upload testmenmap1.html through the upload ICON in the ‘Try it’
 section to the CLI-DIR directory and we re-capture and render our
 changes to view the changes we have made. Here are the results:-</p>
-<p><a class="reference internal" href="../../../_images/image1410.png"><img alt="image13" src="../../../_images/image1410.png" style="width: 4.52083in; height: 4.66458in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image145.png"><img alt="image13" src="../../../_images/image145.png" style="width: 4.52083in; height: 4.66458in;" /></a></p>
 <p>Well, this confirms that our menu.css is being used to modernize our
 presentation. We continue modifying our menu.css until we get the
 desired look. We remove the Virtel logo and add our own, change a few
 other things and end up with a page that looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image157.png"><img alt="image14" src="../../../_images/image157.png" style="width: 4.69792in; height: 4.86447in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image155.png"><img alt="image14" src="../../../_images/image155.png" style="width: 4.69792in; height: 4.86447in;" /></a></p>
 <p>So we have changed the static elements of our modernized display by
 modifying the pageTop and pageBottom web elements but our dynamic middle
 section, as represented by the template tags that VSR has generated
@@ -387,12 +387,12 @@ this area through working on the VSR workbench.</p>
 <p>If we right click on a line within the workbench we are presented with a
 sub menu which provides us with some line editing tools. We will be
 using these to help in our modernization.</p>
-<p><a class="reference internal" href="../../../_images/image164.png"><img alt="image15" src="../../../_images/image164.png" style="width: 6.26806in; height: 3.40764in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image163.png"><img alt="image15" src="../../../_images/image163.png" style="width: 6.26806in; height: 3.40764in;" /></a></p>
 <p>The first thing we are going to do is to make the first element in the
 work a &lt;h1&gt; html element. To do this we insert a line before and after
 and set those lines to html tags &lt;h1&gt; and &lt;/h1&gt; respectively.</p>
 <p>With the additional HTML rows are Workbench now looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image174.png"><img alt="image16" src="../../../_images/image174.png" style="width: 6.26806in; height: 1.22917in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image173.png"><img alt="image16" src="../../../_images/image173.png" style="width: 6.26806in; height: 1.22917in;" /></a></p>
 <p>We regenerate our template using the generate template in Section 4 of
 VSR, save it then upload it. When we render the changes the modernized
 screen looks like:-</p>
@@ -459,12 +459,12 @@ myAPPL.htm template.</p>
 <p>It contains top and bottom static areas and a dynamic sub-page middle
 area which will be replaced by the sub-page template we have built.
 Pressing validate will display our modernized template area.</p>
-<p><a class="reference internal" href="../../../_images/image2111.png"><img alt="image20" src="../../../_images/image2111.png" style="width: 6.26806in; height: 3.42778in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image2110.png"><img alt="image20" src="../../../_images/image2110.png" style="width: 6.26806in; height: 3.42778in;" /></a></p>
 <p>Now, if we select an action this should be passed to the application and
 the application should return with the next panel in the navigation
 sequence. We select option 1 and press enter. The screen is updated with
 the next panel display un-modernized panel INQMAP2.</p>
-<p><a class="reference internal" href="../../../_images/image227.png"><img alt="image21" src="../../../_images/image227.png" style="width: 6.26806in; height: 4.29653in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image222.png"><img alt="image21" src="../../../_images/image222.png" style="width: 6.26806in; height: 4.29653in;" /></a></p>
 <p>All seems to be working. We have modernized the primary panel of our
 application and tested that it works with the back end application.
 There is still further work to be done. First we have to update the

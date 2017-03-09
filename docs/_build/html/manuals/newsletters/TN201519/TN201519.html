@@ -414,7 +414,7 @@ users from those who will be restricted to only applications
 supported by the USSTAB. The new Entry Points “TIOA at Logon” to
 redisplay the VTAM USS tab after a user exits an application. The
 Entry point is restricted to only three transactions.</p>
-<p><a class="reference internal" href="../../../_images/image137.png"><img alt="image0" src="../../../_images/image137.png" style="width: 5.31250in; height: 3.06060in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image125.png"><img alt="image0" src="../../../_images/image125.png" style="width: 5.31250in; height: 3.06060in;" /></a></p>
 </li>
 </ol>
 <p>Figure Line Entry</p>
@@ -422,16 +422,16 @@ Entry point is restricted to only three transactions.</p>
 <div><p>The related terminal pool should be defined with a definitions to
 support the LUs that will maintain sessions with the VTAM
 applications. The terminal pool definitions look like:-</p>
-<p><a class="reference internal" href="../../../_images/image219.png"><img alt="image1" src="../../../_images/image219.png" style="width: 5.33850in; height: 3.16667in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image212.png"><img alt="image1" src="../../../_images/image212.png" style="width: 5.33850in; height: 3.16667in;" /></a></p>
 </div></blockquote>
 <p>Figure Terminal Definitions</p>
 <blockquote>
 <div><p>The Entry Point definition looks like the following:-</p>
-<p><a class="reference internal" href="../../../_images/image321.png"><img alt="image2" src="../../../_images/image321.png" style="width: 5.29167in; height: 3.03219in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image313.png"><img alt="image2" src="../../../_images/image313.png" style="width: 5.29167in; height: 3.03219in;" /></a></p>
 <p>Figure Entry Point Definition</p>
 <p>The transactions that are supported by this entry point are listed
 below:-</p>
-<p><a class="reference internal" href="../../../_images/image417.png"><img alt="image3" src="../../../_images/image417.png" style="width: 5.33333in; height: 3.68063in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image411.png"><img alt="image3" src="../../../_images/image411.png" style="width: 5.33333in; height: 3.68063in;" /></a></p>
 </div></blockquote>
 <p>Figure Transaction list for the entry point</p>
 <blockquote>
@@ -439,7 +439,7 @@ below:-</p>
 name as the entry point. Virtel, by default, will return here
 whenever we exit an application. To re-display the USSTAB we set the
 “TIOA at logon” field to point to the VTAMUSS transaction EDS-16A.</p>
-<p><a class="reference internal" href="../../../_images/image513.png"><img alt="image4" src="../../../_images/image513.png" style="width: 5.76517in; height: 3.34375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image59.png"><img alt="image4" src="../../../_images/image59.png" style="width: 5.76517in; height: 3.34375in;" /></a></p>
 </div></blockquote>
 <p>Figure Entry Point Transaction</p>
 <blockquote>
@@ -447,7 +447,7 @@ whenever we exit an application. To re-display the USSTAB we set the
 to access the W2H directory from this entry point. This is required
 so that web elements can be served from the W2H directory. For
 example the HTML page “w2h/WEB2AJAX.htm”</p>
-<p><a class="reference internal" href="../../../_images/image613.png"><img alt="image5" src="../../../_images/image613.png" style="width: 5.75000in; height: 3.92804in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image69.png"><img alt="image5" src="../../../_images/image69.png" style="width: 5.75000in; height: 3.92804in;" /></a></p>
 </div></blockquote>
 <p>Figure Directory Transaction for w2h</p>
 <blockquote>
@@ -455,7 +455,7 @@ example the HTML page “w2h/WEB2AJAX.htm”</p>
 VTAMUSS transaction. It is this transaction that calls the VIR0021W
 utility which interrogates the VTAM USSTAB load module and display a
 similar page in HTML. The transaction definition looks like:-</p>
-<p><a class="reference internal" href="../../../_images/image79.png"><img alt="image6" src="../../../_images/image79.png" style="width: 5.45833in; height: 3.72093in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image76.png"><img alt="image6" src="../../../_images/image76.png" style="width: 5.45833in; height: 3.72093in;" /></a></p>
 </div></blockquote>
 <p>Figure - VTAMUSS transaction</p>
 <p>..note:</p>
@@ -472,7 +472,7 @@ check to make sure that the VIR0021W module has been installed and is
 working correctly. See below for an example of the Virtel default
 USSTAB.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 5.67708in; height: 3.77382in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image86.png"><img alt="image7" src="../../../_images/image86.png" style="width: 5.67708in; height: 3.77382in;" /></a></p>
 </div></blockquote>
 </li>
 </ol>
@@ -487,7 +487,7 @@ changed. See note 12.</p>
 your USSTAB to VIR0021W. This is done by coding the following string
 in the logon field. See screen shot below:-</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image98.png"><img alt="image8" src="../../../_images/image98.png" style="width: 5.59010in; height: 3.80208in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image95.png"><img alt="image8" src="../../../_images/image95.png" style="width: 5.59010in; height: 3.80208in;" /></a></p>
 </div></blockquote>
 </li>
 </ol>
@@ -504,7 +504,7 @@ transaction will display the VTAM USS table identified in the
 “usstab=” keyword. Here is an example of the USSTAB USSN that was
 specified in the Logon message field.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image108.png"><img alt="image9" src="../../../_images/image108.png" style="width: 5.46875in; height: 3.62927in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image105.png"><img alt="image9" src="../../../_images/image105.png" style="width: 5.46875in; height: 3.62927in;" /></a></p>
 </div></blockquote>
 </li>
 </ol>
