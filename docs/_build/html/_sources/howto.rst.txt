@@ -1,8 +1,8 @@
-Virtel Manuals
-==============
+Miscellaneous
+=============
 
-How To
-------
+How To Docs
+-----------
 .. toctree::
    :maxdepth: 4   
    :glob:

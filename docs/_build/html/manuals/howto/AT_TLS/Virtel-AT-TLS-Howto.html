@@ -34,8 +34,8 @@
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
-        <link rel="up" title="Virtel Manuals" href="../../../howto.html"/>
-        <link rel="prev" title="Virtel Manuals" href="../../../howto.html"/> 
+        <link rel="up" title="Miscellaneous" href="../../../howto.html"/>
+        <link rel="prev" title="Miscellaneous" href="../../../howto.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -91,8 +91,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../howto.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../../../howto.html#how-to">How To</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../../howto.html">Miscellaneous</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../howto.html#how-to-docs">How To Docs</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">How to activate VIRTEL https using AT-TLS</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#create-the-policy-agent-configuration-file">Create the Policy Agent configuration file</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#create-the-server-certificate">Create the server certificate</a></li>
@@ -140,7 +140,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../../../howto.html">Virtel Manuals</a> &raquo;</li>
+          <li><a href="../../../howto.html">Miscellaneous</a> &raquo;</li>
       
     <li>How to activate VIRTEL https using AT-TLS</li>
       <li class="wy-breadcrumbs-aside">
@@ -158,14 +158,11 @@
             
   <div class="section" id="how-to-activate-virtel-https-using-at-tls">
 <h1>How to activate VIRTEL https using AT-TLS<a class="headerlink" href="#how-to-activate-virtel-https-using-at-tls" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p><a class="reference internal" href="../../../_images/image1.png"><img alt="image0" src="../../../_images/image1.png" style="width: 4.16534in; height: 0.80000in;" /></a></p>
-<p><a class="reference internal" href="../../../_images/image2.jpeg"><img alt="image1" src="../../../_images/image2.jpeg" style="width: 1.48500in; height: 1.08667in;" /></a><em>VIRTEL</em></p>
-</div></blockquote>
+<p><a class="reference internal" href="../../../_images/image1.png"><img alt="image0" src="../../../_images/image1.png" style="width: 4.16534in; height: 0.80000in;" /></a></p>
 <ol class="arabic">
 <li><p class="first"><strong>How to activate VIRTEL https using AT-TLS on z/OS V1R7</strong></p>
 <ol class="arabic">
-<li><p class="first rubric" id="software-pre-requisites">Software pre-requisites</p>
+<li><p class="first rubric">Software pre-requisites</p>
 </li>
 </ol>
 <blockquote>
@@ -181,12 +178,8 @@ application continues to send and receive clear text over the
 socket, but data sent over the network is protected by system SSL.
 The supported protocols are TLS, SSLv3, and SSLv2.</p>
 </div></blockquote>
-</li>
-</ol>
-<ol class="arabic">
-<li><p class="first rubric" id="installation-steps">Installation steps</p>
-<ol class="arabic">
-<li><p class="first rubric" id="install-policy-agent-procedure">Install Policy Agent procedure</p>
+<ol class="arabic" start="2">
+<li><p class="first rubric">Install Policy Agent procedure</p>
 </li>
 </ol>
 <blockquote>
@@ -218,8 +211,7 @@ line 70)</p>
 parameter (SSLSETUP line 82) as we will not be using Client
 Certificates.</p>
 <ol class="arabic">
-<li><p class="first rubric" id="allow-the-policy-agent-to-run-during-tcpip-initialization">Allow the Policy Agent to run during TCP/IP
-initialization</p>
+<li><p class="first rubric">Allow the Policy Agent to run during TCP/IP initialization</p>
 </li>
 </ol>
 <blockquote>
@@ -261,16 +253,18 @@ in the SSLSETUP sample job.</div></blockquote>
 <h2>Activate AT-TLS<a class="headerlink" href="#activate-at-tls" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>To activate AT-TLS, add the following statements to TCPIP PROFILE:</p>
-<p>TCPCONFIG TTLS</p>
-<p>AUTOLOG 5 PAGENT ENDAUTOLOG</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TCPCONFIG</span> <span class="n">TTLS</span>
+<span class="n">AUTOLOG</span> <span class="mi">5</span> <span class="n">PAGENT</span> <span class="n">ENDAUTOLOG</span>
+</pre></div>
+</div>
 <p>Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile
 statement. The AUTOLOG statement will cause the PAGENT procedure to
 be started automatically during TCP/IP initialization.</p>
 </div></blockquote>
+<ol class="arabic" start="2">
+<li><p class="first rubric">Operations</p>
 <ol class="arabic">
-<li><p class="first rubric" id="operations">Operations</p>
-<ol class="arabic">
-<li><p class="first rubric" id="starting-the-policy-agent">Starting the Policy Agent</p>
+<li><p class="first rubric">Starting the Policy Agent</p>
 </li>
 </ol>
 <blockquote>
@@ -308,10 +302,10 @@ MVS command F PAGENT,REFRESH to force PAGENT to reread the file.</p>
 <em>https://n.n.n.n:41002</em> instead of <em>http://n.n.n.n:41002</em> (where</p>
 <p>n.n.n.n is the IP address of the z/OS host running VIRTEL).</p>
 </div></blockquote>
+<ol class="arabic" start="3">
+<li><p class="first rubric">Problem determination</p>
 <ol class="arabic">
-<li><p class="first rubric" id="problem-determination">Problem determination</p>
-<ol class="arabic">
-<li><p class="first rubric" id="policy-agent-log-file">Policy Agent log file</p>
+<li><p class="first rubric">Policy Agent log file</p>
 </li>
 </ol>
 <blockquote>
@@ -377,15 +371,19 @@ and 128-bit or higher cipher suites are enabled.</p>
 </div>
 <div class="section" id="bibliography">
 <h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><strong>*SA22-7683-07 z/OS V1R7 Security Server: RACF Security
-Administrator&#8217;s Guide*</strong> Chapter 21. RACF and Digital Certificates</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
+<p class="rubric"><em>SA22-7683-07 z/OS V1R7 Security Server:</em> RACF Security Administrator&#8217;s Guide
+- Chapter 21. RACF and Digital Certificates</p>
+<p class="rubric"><em>SC24-5901-04 z/OS V1R6 Cryptographic Services:</em> System SSL Programming
+- Chapter 12. Messages and Codes</p>
+<p class="rubric"><em>SC31-8775-07 z/OS V1R7 Communications Server:</em> IP Configuration Guide
+- Chapter 14. Policy-based networking
+- Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection</p>
+<p class="rubric"><em>SC31-8776-08 z/OS V1R7 Communications Server:</em> IP Configuration Reference
+- Chapter 21. Policy Agent and policy applications</p>
+<p class="rubric"><em>GC31-8782-06 z/OS V1R7 Communications Server:</em> IP Diagnosis Guide
+- Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)</p>
+<p class="rubric"><em>SC31-8784-05 z/OS V1R7 Communications Server:</em> IP Messages: Volume 2 (EZB, EZD)
+- Chapter 10. EZD1xxxx messages</p>
 </div>
 
 
@@ -396,7 +394,7 @@ Administrator&#8217;s Guide*</strong> Chapter 21. RACF and Digital Certificates<
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../../../howto.html" class="btn btn-neutral" title="Virtel Manuals" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../../howto.html" class="btn btn-neutral" title="Miscellaneous" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

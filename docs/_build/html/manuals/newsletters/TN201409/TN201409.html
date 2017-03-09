@@ -95,7 +95,18 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Mainframe printing with Virtel 4.56</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-virtel-to-print-from-the-mainframe">Setting up Virtel to print from the mainframe.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lu1-type-printing-scs">LU1 Type printing SCS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tso-printing">TSO Printing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#printing-and-makepdf">Printing and MAKEPDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#seamless-or-unattended-printing">Seamless or unattended printing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#firefox-seamless-browser-printing-using-the-javascript-print-command">Firefox: Seamless browser printing using the JavaScript print command.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chrome-seamless-browser-printing-using-the-kiosk-options">Chrome: Seamless browser printing using the kiosk options.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-a">Appendix A</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-b">Appendix B</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
@@ -112,7 +123,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Virtel Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
             
@@ -166,10 +177,10 @@ utilize its printing capabilities. First and foremost let’s understand
 what Virtel can support with regard to printing. Just for clarification
 Virtel currently doesn’t support seamless or unattended printing. In
 other words a user cannot initiate a print transaction from CICS and
-expect the output to automatically pop out on to the users default
+expect the output to automatically pop out on the users default
 workstation printer. This is because Virtel is restricted to whatever
-the browser printer functionality provides. See the section “Seemless or
-unattended printing” at the end of this document. However, having said
+the browser printer functionality provides. See the section <a class="reference internal" href="#bookmark01"><span class="std std-ref">“Seemless or
+unattended printing”</span></a> at the end of this document. However, having said
 that there are several ways mainframe printing can be achieved. This
 newsletter highlights the Virtel features that support mainframe
 printing.</p>
@@ -178,68 +189,60 @@ LU printer types are LU Type 1(SNA SCS) and LU Type 0/3(3270
 datastream).</p>
 <p>Depending on the Virtel printer configuration one of several things can
 happen:-</p>
-<p><strong>Printer Type LU0 or LU3</strong> (Non SNA/3270 data streams)</p>
-<p>Print data will be sent to the Virtel client and will appear in a new
-browser window. Default action.</p>
+<ul>
+<li><p class="first">Printer Type LU0 or LU3 (Non SNA/3270 data streams)</p>
+<blockquote>
+<div><p>Print data will be sent to the Virtel client and will appear in a new browser window. (<em>Default action.</em>)</p>
 <p>Virtel Option: &nbsp;AutoPrint set on.</p>
-<p>A Windows “Print” window will automatically open. User can then select
-to print the output data.</p>
-<p><strong>Printer Type LU1</strong> (SNA/SCS)</p>
-<p>Print data will be sent to Virtel as an attached file. This will drive a
-Windows “Save As or Open”&nbsp;window which will enable the user to open the
-file or save it. This file contains the RAW print data. This of course
-could include PCL data which could be further processed by external
-programs or printed by a printer that supports PCL datastreams. For
-example the file could be converted to a PDF. There are many PCL to PDF
-conversion products on the open market.</p>
-<p>**
-Setting up Virtel to print from the mainframe.**</p>
-<p><strong>LU3 Type printing (3270)</strong></p>
-<p>The following scenario demonstrates Virtel printing using the mainframe
-to a LU3 printer (NON-SCS). The user submits a batch job to print a
-file. The user has specified in the JCL that the JES2 output destination
-for this print job is a JES2 destination called EDSPRT. The user
-utilizes VTAM printer software to print to VTAM printers. In this case
-we are using VJRS, an Syspertec internal JES writer tool, but it could
-equally be IBM’s JES328X, INFOPRNT or any comparable software such as
-Natural’s COMPLETE NatSPool. Whatever software is used it will have the
-capability of associating a JES2 DESTID with a remote 3270 printer and
-extracting the output from the JES spool and sending it to a LU printer.</p>
-<p><img alt="image0" src="../../../_images/image11.jpeg" /></p>
-<p>Virtel pretends to be that remote 3270 printer through its relay LU
-associated with a user’s terminal session. In our case the printer name
-is REHIP000. This is set up in the terminal section of Virtel which can
-be accessed using F2 from the Virtel Configuration Menu. The following
-screen shot shows a terminal definition screen in Virtel. I’m using a
-prefix of REH in my example. The shipped defaults are prefixed RHT. Note
-that terminal REHIP000 is a second relay associated with terminal relay
-REHVT000, both of which are located within the *W2HPOOL. REHVIP000 is
-designated as type “P” – LU3 3270 printer.</p>
+<p>A Windows “Print” window will automatically open. User can then select to print the output data.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Printer Type LU1 (SNA/SCS)</p>
+<blockquote>
+<div><p>Print data will be sent to Virtel as an attached file. This will drive a Windows “Save As or Open”&nbsp;window which will enable the user to open the file or save it. This file contains the RAW print data. This of course could include PCL data which could be further processed by external programs or printed by a printer that supports PCL datastreams. For example the file could be converted to a PDF. There are many PCL to PDF conversion products on the open market.</p>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="setting-up-virtel-to-print-from-the-mainframe">
+<h2>Setting up Virtel to print from the mainframe.<a class="headerlink" href="#setting-up-virtel-to-print-from-the-mainframe" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="lu3-type-printing-3270">
+<h3>LU3 Type printing (3270)<a class="headerlink" href="#lu3-type-printing-3270" title="Permalink to this headline">¶</a></h3>
+<p>The following scenario demonstrates Virtel printing using the mainframe to a LU3 printer (NON-SCS). The user submits a batch job to print a file. The user has specified in the JCL that the JES2 output destination for this print job is a JES2 destination called EDSPRT. The user utilizes VTAM printer software to print to VTAM printers. In this case we are using VJRS, an Syspertec internal JES writer tool, but it could equally be IBM’s JES328X, INFOPRNT or any comparable software such as Natural’s COMPLETE NatSPool. Whatever software is used it will have the capability of associating a JES2 DESTID with a remote 3270 printer and extracting the output from the JES spool and sending it to a LU printer.</p>
+<p><img alt="image0" src="../../../_images/image11.jpeg" /> <em>Fig. 1 - Printing LU3</em></p>
+<p>Virtel pretends to be that remote 3270 printer through its relay LU associated with a user’s terminal session. In our case the printer name is REHIP000. This is set up in the terminal section of Virtel which can be accessed using F2 from the Virtel Configuration Menu. The following screen shot shows a terminal definition screen in Virtel. I’m using a prefix of REH in my example. The shipped defaults are prefixed RHT.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the <a href="#id1"><span class="problematic" id="id2">*</span></a>W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
+</div>
 <p>In the shipped sample definitions the LU Type 1 (RHTIM000) is associated
 with the relay terminal definition RHTVT000. To use LU T3 (3270
 datastream) the RHTVT000 definition must be updated to associate the
 printer terminal RHTIP000 with RHTVT000.</p>
-<p><img alt="image1" src="../../../_images/image21.jpeg" /> Fig. 1 Example of Virtel terminal definitions.</p>
+<p><img alt="image1" src="../../../_images/image21.jpeg" /> <em>Fig. 2 - Example of Virtel terminal definitions.</em></p>
 <p>The virtual relay definitions that Virtel uses to support VTAM terminals
 and applications is defined in the VIRTAPPL VTAM definition. This can be
 found in the shipped VIRT***.CNTL library. Here is an example:-</p>
-<p>VIRTAPPL VBUILD TYPE=APPL</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>* Product : VIRTEL *</p>
-<p>* Description : Main ACB for VIRTEL application *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>VIRTEL APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=VIRTEL</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>* RHTVTxxx : VTAM application relays for VIRTEL Web Access *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>RHTVT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>* RHTIMxxx : Printer relays for VIRTEL Web Access terminals *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>RHTIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1</p>
-<p>RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1</p>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>Note. Do not modify the ??? to a numeric number. These are VTAM model
-APPL definitions and the ??? is a valid string in this context. *</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>VIRTAPPL VBUILD TYPE=APPL
+*  ------------------------------------------------------------------ *
+*  Product : VIRTEL                                                   *
+*  Description : Main ACB for VIRTEL application                      *
+*  ------------------------------------------------------------------ *
+VIRTEL APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=VIRTEL
+*  ------------------------------------------------------------------ *
+*  RHTVTxxx : VTAM application relays for VIRTEL Web Access           *
+*  ------------------------------------------------------------------ *
+RHTVT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+*  ------------------------------------------------------------------ *
+*  RHTIMxxx : Printer relays for VIRTEL Web Access terminals          *
+*  ------------------------------------------------------------------ *
+RHTIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
+RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not modify the ??? to a numeric number. These are VTAM model APPL definitions and the ??? is a valid string in this context.</p>
+</div>
 <p>There is no need to modify this definition. It should be copied to the
 VTAMLST library and activated.</p>
 <p>When Virtel detects that is has printer output, it will collect it from
@@ -247,8 +250,7 @@ the printer relay LU and send it to the associated terminal session.
 When the session receives the output it will be displayed in a new
 browser window. Here is a screen shot of my terminal session before I
 have sent any output.</p>
-<p><img alt="image2" src="../../../_images/image3.jpeg" /></p>
-<p>Fig. 2 Example of Virtel Browser screen before print data has been sent.</p>
+<p><img alt="image2" src="../../../_images/image3.jpeg" /> <em>Fig. 3 - Example of Virtel Browser screen before print data has been sent.</em></p>
 <p>Note that in the bottom corner you can see the two virtual SNA LUs that
 Virtel is using to represent this browser session to VTAM. The first
 name, REHVT000, is the 3270 terminal LU and the second, REHIP000, is the
@@ -258,48 +260,50 @@ is run as a started task. When it detects output destined for one of its
 defined printers it will grab the spooled output from JES2 and drive the
 virtual printer REHIP000.</p>
 <p>The VJRS definition looks like:-</p>
-<p>*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>*- PRINTER CONTROL STATEMETS FOR VJRS UTILITY. -*</p>
-<p>*- -*</p>
-<p>*- COL 1 JES DESTID -*</p>
-<p>*- COL 10 VIRTEL LU RELAY PRINTER DEFAULT LOGMODE -*</p>
-<p>*- COL 19 PRINTER TYPE -*</p>
-<p>*- S = SCS PRINTER. LU TYPE 1 SNA SCS -*</p>
-<p>*- N = 3270 PRINTER. LU TYPE 3 NON-SNA DSILGMOD -*</p>
-<p>*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>* * * *</p>
-<p>EDSPRT1 REHIM000 S</p>
-<p>EDSPRT REHIP000 N</p>
-<p>The Virtel relay LU printer name REHIP000 has been associated with JES2
-destination EDSPRT. The following JCL is used to print some data to the
-JES2 destination EDSPRT.</p>
-<p>//SPTHOLTP JOB &#8216;VJRSTEST&#8217;,CLASS=A,MSGCLASS=Z,NOTIFY=SPTHOLT</p>
-<p>//STEP1 EXEC PGM=IEBGENER</p>
-<p>//SYSPRINT DD DUMMY</p>
-<p>//SYSUT2 DD SYSOUT=A,DEST=EDSPRT</p>
-<p>//SYSUT1 DD DSN=SPTHOLT.TEST.PRINTS(TEST),DISP=SHR</p>
-<p>//SYSIN DD DUMMY</p>
-<p>/*</p>
-<p>Note: The JRP program in the CBT archive File 755 can be used in place
-of VJRS. This is freely available under the terms and conditions of CBT.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">----------------------------------------------------------------------------*</span>
+<span class="o">*</span> <span class="o">-</span> <span class="n">PRINTER</span> <span class="n">CONTROL</span> <span class="n">STATEMETS</span> <span class="n">FOR</span> <span class="n">VJRS</span> <span class="n">UTILITY</span><span class="o">.</span>                              <span class="o">-*</span>
+<span class="o">*</span> <span class="o">-</span>                                                                          <span class="o">-*</span>
+<span class="o">*</span> <span class="o">-</span> <span class="n">COL</span> <span class="mi">1</span> <span class="n">JES</span> <span class="n">DESTID</span>                                                         <span class="o">-*</span>
+<span class="o">*</span> <span class="o">-</span> <span class="n">COL</span> <span class="mi">10</span> <span class="n">VIRTEL</span> <span class="n">LU</span> <span class="n">RELAY</span> <span class="n">PRINTER</span> <span class="n">DEFAULT</span> <span class="n">LOGMODE</span>                           <span class="o">-*</span>
+<span class="o">*</span> <span class="o">-</span> <span class="n">COL</span> <span class="mi">19</span> <span class="n">PRINTER</span> <span class="n">TYPE</span>                                                      <span class="o">-*</span>
+<span class="o">*</span> <span class="o">-</span> <span class="n">S</span> <span class="o">=</span> <span class="n">SCS</span> <span class="n">PRINTER</span><span class="o">.</span> <span class="n">LU</span> <span class="n">TYPE</span> <span class="mi">1</span> <span class="n">SNA</span> <span class="n">SCS</span>                                       <span class="o">-*</span>
+<span class="o">*</span> <span class="o">-</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">3270</span> <span class="n">PRINTER</span><span class="o">.</span> <span class="n">LU</span> <span class="n">TYPE</span> <span class="mi">3</span> <span class="n">NON</span><span class="o">-</span><span class="n">SNA</span> <span class="n">DSILGMOD</span>                             <span class="o">-*</span>
+<span class="o">*</span> <span class="o">----------------------------------------------------------------------------*</span>
+<span class="o">*</span>      <span class="o">*</span>        <span class="o">*</span>  <span class="o">*</span>
+<span class="n">EDSPRT1</span> <span class="n">REHIM000</span> <span class="n">S</span>
+<span class="n">EDSPRT</span>  <span class="n">REHIP000</span> <span class="n">N</span>
+</pre></div>
+</div>
+<p>The Virtel relay LU printer name REHIP000 has been associated with JES2 destination EDSPRT. The following JCL is used to print some data to the JES2 destination EDSPRT.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTP</span> <span class="n">JOB</span> <span class="s1">&#39;VJRSTEST&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=</span><span class="n">SPTHOLT</span>
+<span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEBGENER</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">DUMMY</span>
+<span class="o">//</span><span class="n">SYSUT2</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">DEST</span><span class="o">=</span><span class="n">EDSPRT</span>
+<span class="o">//</span><span class="n">SYSUT1</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">TEST</span><span class="o">.</span><span class="n">PRINTS</span><span class="p">(</span><span class="n">TEST</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DUMMY</span>
+<span class="o">/*</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The JRP program in the CBT archive File 755 can be used in place of VJRS. This is freely available under the terms and conditions of CBT.</p>
+</div>
 <p>Once Virtel detects output on its relay LU it will send it to the
 browser. This can be seen by the fact that a small printer icon will
 appear in the task bar. See the screen shot below:-</p>
-<p><img alt="image3" src="../../../_images/image41.jpeg" /></p>
-<p>Fig. 3 Print data received by browser. Printer ICON displayed in Task
-Bar.</p>
-<p>Pressing the ICON will open a second browser window which will reveal
-the print data. See the following screen shot:-</p>
-<p><img alt="image4" src="../../../_images/image51.jpeg" /></p>
-<p>Fig. 4 Print data displayed in second browser window.</p>
+<p><img alt="image3" src="../../../_images/image41.jpeg" /> <em>Fig. 4 - Print data received by browser. Printer ICON displayed in Task Bar.</em></p>
+<p>Pressing the ICON will open a second browser window which will reveal the print data. See the following screen shot:-</p>
+<p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 4 Print data displayed in second browser window.</em></p>
 <p>From this window the print data can be printed using the normal windows
 menu dialogs. Virtel does have an Auto-print option in the Virtel
 settings panel. This will automatically open up the Windows Print dialog
 so that you can just click print to print the print data. Once you have
 printed your output you can close the Virtel Print window and continue
 with your terminal session.</p>
-<p>**
-LU1 Type printing SCS**</p>
+</div>
+</div>
+<div class="section" id="lu1-type-printing-scs">
+<h2>LU1 Type printing SCS<a class="headerlink" href="#lu1-type-printing-scs" title="Permalink to this headline">¶</a></h2>
 <p>In this scenario we demonstrate printing from CICS and converting the
 output to a PDF. The Virtel setup for this requires the use of a third
 party product to convert the PCL data stream to a PDF. A PageTech server
@@ -309,8 +313,7 @@ environment is set up to perform this conversion.</p>
 associated it with the netname REHIM000. This will be the relay LU name
 that Virtel will use to represent the printer. Here is a view of the
 CICS definition as displayed by the CEDA transaction:-</p>
-<p><img alt="image6" src="../../../_images/image71.jpeg" /></p>
-<p>Fig 4 CEDA of LU T1 printer definition used by Virtel</p>
+<p><img alt="image6" src="../../../_images/image71.jpeg" /> <em>Fig 4 - CEDA of LU T1 printer definition used by Virtel</em></p>
 <p>Note that in the bottom right of the screen the two relay LU names
 associated with this browser session are displayed. The REHVT000 is the
 terminal and the REHIM00 is the attached LU1 printer. A CICS transaction
@@ -324,8 +327,7 @@ be sent as a mulit-attachment PDF MIME to the browser. The user will
 then be able to save or open the PDF file.</p>
 <p>The Virtel transaction that performs this process is defined with the
 following fields.</p>
-<p><img alt="image7" src="../../../_images/image81.jpeg" /></p>
-<p>Fig 5 Virtel Transaction Detail for CICS transaction</p>
+<p><img alt="image7" src="../../../_images/image81.jpeg" /> <em>Fig. 5 - Virtel Transaction Detail for CICS transaction</em></p>
 <p>The transaction’s external name is CICSHP and this name will be
 displayed in the Virtel application menu. The TIOA at logon field is a
 formatted character string that will simulate logging onto CICS and
@@ -342,15 +344,14 @@ This attachment can then be saved or printed.</p>
 selecting the CICSHP menu option. This will automatically signon to
 CICS, acquire the printer and return a PCL stream to Virtel. The PCL
 data stream will be input to the external server.</p>
-<p><img alt="image8" src="../../../_images/image91.jpeg" /></p>
-<p>Fig 6 The Virtel Application Menu Screen</p>
+<p><img alt="image8" src="../../../_images/image91.jpeg" /> <em>Fig. 6 - The Virtel Application Menu Screen</em></p>
 <p>After conversion to PDF virtel will return the PDF as an attachment to
 the user’s browser. A window will open to enable the user to save or
 open the PDF file.</p>
-<p><img alt="image9" src="../../../_images/image10.jpeg" /></p>
-<p>Figure 7 Processing a PDF File</p>
-<p>**
-TSO Printing**</p>
+<p><img alt="image9" src="../../../_images/image10.jpeg" /> <em>Fig. 7 - Processing a PDF File</em></p>
+</div>
+<div class="section" id="tso-printing">
+<h2>TSO Printing<a class="headerlink" href="#tso-printing" title="Permalink to this headline">¶</a></h2>
 <p>A lot of customers use GDDM’s ADMOPUT program to print from TSO. In this
 section we see how to define the GDDM ADMOPUT interface to Virtel. Both
 LU1 and LU3 are supported by Virtel. ADMOUT runs normally runs as a
@@ -361,91 +362,99 @@ found in the IBM’s GDDM Administration Guide – SC33-0871-02.</p>
 <p>Create the printer definitions in the ADMPRINT job and run the job to
 build the request queues. In this example REHIP000 is a LU3 3270 printer
 and REHIM000 is a LU1 SCS printer. These should exist as VTAM APPLS and
-should be installed as part of the Virtel installation.</p>
-<p>REHIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1</p>
-<p>REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1</p>
+should be installed as part of the Virtel installation:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>REHIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
+REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
+</pre></div>
+</div>
 <p>The printer definitions for ADMPRINT should look like this:-</p>
-<p>**********************************************************************</p>
-<p>* *</p>
-<p>* CONTROL STATEMENTS *</p>
-<p>* *</p>
-<p>**********************************************************************</p>
-<p>* TIMER DEFINES THE POLL INTERVAL IN TENS OF SECS</p>
-<p>* EXTRA DEFINES THE NUMBER OF PRINTERS THAT CAN BE DYNAMICALLY ADDED</p>
-<p>HEADER TIMER=4,EXTRA=30</p>
-<p>*</p>
-<p>* ADD MORE PRINTER STATEMENTS HERE AS REQUIRED</p>
-<p>PRINTER REHIP000,SIZE=1920 PRINTER NAME,BUFFER SIZE</p>
-<p>PRINTER REHIM000,SIZE=1920 PRINTER NAME,BUFFER SIZE</p>
-<p>PRINTER R1AIM000,SIZE=1920 PRINTER NAME,BUFFER SIZE</p>
-<p>PRINTER R2AIM000,SIZE=1920 PRINTER NAME,BUFFER SIZE</p>
-<p>*</p>
-<p>* PQECNT DEFINES THE MAXIMUM NUMBER OF PRINT REQUESTS WHICH CAN BE</p>
-<p>* ACTIVE AT ONE TIME. INCREASE THE NUMBER IF REQUIRED</p>
-<p>TRAILER PQECNT=186 ACTIVE PRINT REQUEST LIMIT</p>
-<p>END</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">**********************************************************************</span>
+<span class="o">*</span>                                                                      <span class="o">*</span>
+<span class="o">*</span>  <span class="n">CONTROL</span> <span class="n">STATEMENTS</span>                                                  <span class="o">*</span>
+<span class="o">*</span>                                                                      <span class="o">*</span>
+<span class="o">*</span>                                                                      <span class="o">*</span>
+<span class="o">*</span>  <span class="n">TIMER</span> <span class="n">DEFINES</span> <span class="n">THE</span> <span class="n">POLL</span> <span class="n">INTERVAL</span> <span class="n">IN</span> <span class="n">TENS</span> <span class="n">OF</span> <span class="n">SECS</span>
+<span class="o">*</span>  <span class="n">EXTRA</span> <span class="n">DEFINES</span> <span class="n">THE</span> <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">PRINTERS</span> <span class="n">THAT</span> <span class="n">CAN</span> <span class="n">BE</span> <span class="n">DYNAMICALLY</span> <span class="n">ADDED</span>
+<span class="o">*</span>                                                                      <span class="o">*</span>
+<span class="n">HEADER</span> <span class="n">TIMER</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">EXTRA</span><span class="o">=</span><span class="mi">30</span>
+<span class="o">*</span>                                                                      <span class="o">*</span>
+<span class="o">*</span>  <span class="n">ADD</span> <span class="n">MORE</span> <span class="n">PRINTER</span> <span class="n">STATEMENTS</span> <span class="n">HERE</span> <span class="n">AS</span> <span class="n">REQUIRED</span>                        <span class="o">*</span>
+<span class="n">PRINTER</span> <span class="n">REHIP000</span><span class="p">,</span><span class="n">SIZE</span><span class="o">=</span><span class="mi">1920</span>          <span class="n">PRINTER</span> <span class="n">NAME</span><span class="p">,</span><span class="n">BUFFER</span> <span class="n">SIZE</span>
+<span class="n">PRINTER</span> <span class="n">REHIM000</span><span class="p">,</span><span class="n">SIZE</span><span class="o">=</span><span class="mi">1920</span>          <span class="n">PRINTER</span> <span class="n">NAME</span><span class="p">,</span><span class="n">BUFFER</span> <span class="n">SIZE</span>
+<span class="n">PRINTER</span> <span class="n">R1AIM000</span><span class="p">,</span><span class="n">SIZE</span><span class="o">=</span><span class="mi">1920</span>          <span class="n">PRINTER</span> <span class="n">NAME</span><span class="p">,</span><span class="n">BUFFER</span> <span class="n">SIZE</span>
+<span class="n">PRINTER</span> <span class="n">R2AIM000</span><span class="p">,</span><span class="n">SIZE</span><span class="o">=</span><span class="mi">1920</span>          <span class="n">PRINTER</span> <span class="n">NAME</span><span class="p">,</span><span class="n">BUFFER</span> <span class="n">SIZE</span>
+<span class="o">*</span>
+<span class="o">*</span>  <span class="n">PQECNT</span> <span class="n">DEFINES</span> <span class="n">THE</span> <span class="n">MAXIMUM</span> <span class="n">NUMBER</span> <span class="n">OF</span> <span class="n">PRINT</span> <span class="n">REQUESTS</span> <span class="n">WHICH</span> <span class="n">CAN</span> <span class="n">BE</span>    <span class="o">*</span>
+<span class="o">*</span>  <span class="n">ACTIVE</span> <span class="n">AT</span> <span class="n">ONE</span> <span class="n">TIME</span><span class="o">.</span> <span class="n">INCREASE</span> <span class="n">THE</span> <span class="n">NUMBER</span> <span class="n">IF</span> <span class="n">REQUIRED</span>                 <span class="o">*</span>
+<span class="o">*</span>                                                                      <span class="o">*</span>
+<span class="n">TRAILER</span> <span class="n">PQECNT</span><span class="o">=</span><span class="mi">186</span> <span class="n">ACTIVE</span> <span class="n">PRINT</span> <span class="n">REQUEST</span> <span class="n">LIMIT</span>
+<span class="n">END</span>
+</pre></div>
+</div>
 <p>Activate the GDDM ADMOPUT VTAM APPL:-</p>
-<p>GDDMAPPL VBUILD TYPE=APPL</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>* GDDM : ADMOPUT GDDM ACB *</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212; *</p>
-<p>GDDMPRT1 APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,EAS=1</p>
-<p>Start the GDDM ADMOPUT task. The VTAM APPL must be active. The following
-JCL is an example:-</p>
-<p>//SPTHOLTG JOB CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,REGION=64M</p>
-<p>//GDDMPRT1 EXEC PGM=ADMOPUT,DYNAMNBR=N,REGION=0K,</p>
-<p>// PARM=&#8217;NAME=GDDM,MAXPRTRS=0010&#8217;</p>
-<p>//STEPLIB DD DSN=GDDM.SADMMOD,DISP=SHR</p>
-<p>//ADMSYMBL DD DSN=GDDM.SADMSYM,DISP=SHR</p>
-<p>//ADMGGMAP DD DSN=GDDM.SADMMAP,DISP=SHR</p>
-<p>//ADMPRNTQ DD DSN=SPTHOLT.ZAMVS1.REQUEST.QUEUE,DISP=SHR</p>
-<p>//*ADMDEFS DD DSN=YOUR.ADMDEFS,DISP=SHR</p>
-<p>//SYSABEND DD SYSOUT=*</p>
-<p>**
-<a href="#id3"><span class="problematic" id="id4">**</span></a>When the ADMOPUT successfully starts it will write a message to the
-console log:-</p>
-<p>&#64;19 ADM2000 I ADMOPUT(GDDM). TO TERMINATE, REPLY &#8216;STOP&#8217;, &#8216;STOPQ&#8217;, OR
-&#8216;STOPS&#8217;</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GDDMAPPL</span> <span class="n">VBUILD</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">APPL</span>
+<span class="o">*</span>  <span class="o">------------------------------------------------------------------</span> <span class="o">*</span>
+<span class="o">*</span>  <span class="n">GDDM</span> <span class="p">:</span> <span class="n">ADMOPUT</span> <span class="n">GDDM</span> <span class="n">ACB</span> <span class="o">*</span>
+<span class="o">*</span>  <span class="o">------------------------------------------------------------------</span> <span class="o">*</span>
+<span class="n">GDDMPRT1</span> <span class="n">APPL</span> <span class="n">AUTH</span><span class="o">=</span><span class="p">(</span><span class="n">ACQ</span><span class="p">,</span><span class="n">PASS</span><span class="p">),</span><span class="n">MODETAB</span><span class="o">=</span><span class="n">ISTINCLM</span><span class="p">,</span><span class="n">EAS</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Start the GDDM ADMOPUT task. The VTAM APPL must be active. The following JCL is an example:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTG</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">64</span><span class="n">M</span>
+<span class="o">//</span><span class="n">GDDMPRT1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADMOPUT</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">K</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;NAME=GDDM,MAXPRTRS=0010&#39;</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">GDDM</span><span class="o">.</span><span class="n">SADMMOD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">ADMSYMBL</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">GDDM</span><span class="o">.</span><span class="n">SADMSYM</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">ADMGGMAP</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">GDDM</span><span class="o">.</span><span class="n">SADMMAP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">ADMPRNTQ</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">ZAMVS1</span><span class="o">.</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//*</span><span class="n">ADMDEFS</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">YOUR</span><span class="o">.</span><span class="n">ADMDEFS</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSABEND</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+</pre></div>
+</div>
+<p>When the ADMOPUT successfully starts it will write a message to the console log:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@19</span> <span class="n">ADM2000</span> <span class="n">I</span> <span class="n">ADMOPUT</span><span class="p">(</span><span class="n">GDDM</span><span class="p">)</span><span class="o">.</span> <span class="n">TO</span> <span class="n">TERMINATE</span><span class="p">,</span> <span class="n">REPLY</span> <span class="s1">&#39;STOP&#39;</span><span class="p">,</span> <span class="s1">&#39;STOPQ&#39;</span><span class="p">,</span> <span class="n">OR</span> <span class="s1">&#39;STOPS&#39;</span>
+</pre></div>
+</div>
 <p>Now we can start Virtel making sure that we have a second relay printer
 associated with a 3270 session. In this case we start a TSO session. We
 can see that the TSO 3270 screen REHVT000 is associated with printer
 REHIP000.</p>
-<p><img alt="image10" src="../../../_images/image111.png" /></p>
-<p>Figure 8 3270 LU with relay printer REHIP000</p>
-<p>Next, we allocate the queue file to our TSO session with an allocate
-command:-</p>
-<p>alloc f(ADMPRNTQ) DA(ZAMVS1.REQUEST.QUEUE) SHR REUSE</p>
+<p><img alt="image10" src="../../../_images/image111.png" /> <em>Fig. 8 - 3270 LU with relay printer REHIP000</em></p>
+<p>Next, we allocate the queue file to our TSO session with an allocate command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">ZAMVS1</span><span class="o">.</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
+</pre></div>
+</div>
 <p>This is the same file that is allocated in the ADMOPUT task. Next we
 place a print request into the print queue by call ADMOPRT from within
 our TSO session:-</p>
-<p>Call &#8216;gddm.sadmmod(admoprt)&#8217; &#8216;gddm.smallfle on rehip000 (nocc&#8217;</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Call</span> <span class="s1">&#39;gddm.sadmmod(admoprt)&#39;</span> <span class="s1">&#39;gddm.smallfle on rehip000 (nocc&#39;</span>
+</pre></div>
+</div>
 <p>This will place a request to print the file myhlq.gddm.smallfle to the
 printer defined as REHIP000. The ‘nocc’ option tells GDDM not to insert
 any carriage control characters. If we look at the request queue using
 the GDDM print queue manager we should be able to see the print request.</p>
-<p><img alt="image11" src="../../../_images/image121.png" /></p>
-<p>Figure 9 GDDM Print Queue</p>
+<p><img alt="image11" src="../../../_images/image121.png" /> <em>Fig. 9 - GDDM Print Queue</em></p>
 <p>When GDDM polls the GDDM request queue it will see the request for
 REHIP000. It will convert the output, set up a session with REHIP000 and
 send the output to what it believes is a LU3 printer. Virtel will
 receive the output from GDDM and convert it to HTML. A small printer
 ICON will appear on the Virtel Task Bar when the printed output is ready
 to be processed. See the red line in the screen shot below.</p>
-<p><img alt="image12" src="../../../_images/image13.png" /></p>
-<p>Figure 10 Print request ready for processing</p>
+<p><img alt="image12" src="../../../_images/image13.png" /> <em>Fig. 10 - Print request ready for processing</em></p>
 <p>Prerssing the printer ICON will process the output. For LU Type3 a
 second browser window will be open and the output displayed. For LU
 Type1 the file will be download to the users PC for further processing.
 In our example we are using LU Type3 sp after clicking the printer ICON
 a second browser window is opened displaying the contents of the file.
 From here the file can be printed or saved for furrther processing.</p>
-<p><img alt="image13" src="../../../_images/image14.png" /></p>
-<p>Figure 11 Second Browser window containing print. LU3 behaviour</p>
+<p><img alt="image13" src="../../../_images/image14.png" /> <em>Fig. 11 - Second Browser window containing print. LU3 behaviour</em></p>
 <p>Once the print output has been processed the browser window should be
 closed and ENTER should be pressed on the TSO session to clear the
 printer ICON.</p>
-<p>**
-Printing and MAKEPDF**</p>
+</div>
+<div class="section" id="printing-and-makepdf">
+<h2>Printing and MAKEPDF<a class="headerlink" href="#printing-and-makepdf" title="Permalink to this headline">¶</a></h2>
 <p>MAKEPDF is a program that creates PDFs using standard output files as
 its input data. It is included in the delivered Virtel product and runs
 as a external service of the Virtel VIRSV service. MAKEPDF requires
@@ -454,47 +463,56 @@ control statements provide the layout, image and control information.
 Three separate files are involved – the DOCOPT, INPUT and LAYOUT files.
 These files are created by the user and the uploaded to the SAMPTRSF W2H
 directory. Samples are provided below. These work with the SCENFLND
-scenarion. See Appendix B:-</p>
-<p>scenvjrs-docopt_l.txt</p>
-<p>&lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221;&#8211;&gt;{{{CREATE-VARIABLE-IF
-(APPLICATION-IS-CONNECTED) &#8220;$PDFAPP$&#8221;}}}</p>
-<p>{{{PDF-NEW-DOCOPT &#8220;1&#8221;}}}</p>
-<p>DOCINFO TITLE=&#8221;{{{NAME-OF (PRINT-RELAY)}}}-{{{NAME-OF (DATE-TIME)</p>
-<p>}}}&#8221; AUTHOR=&#8221;{{{NAME-OF (USER)}}}&#8221; SUBJECT=&#8221;&#8221; KEYWORDS=&#8221;&#8221; CREATOR=&#8221;{{{</p>
-<p>CURRENT-VALUE-OF &#8220;$PDFAPP$&#8221;}}}&#8221; PRODUCER=&#8221;VIRTEL ({{{NAME-OF
-(VIRTEL)}}})&#8221;</p>
-<p>PAGE SIZE=A4 LANDSCAPE</p>
-<p>DefineOverlay GreenBar Top=0.5 Bottom=0.5 Left=0.5 Right=0.5
-BarHeight=0.5 BarColor=LiteGreen NudgeRight=-2 NudgeDown=1</p>
-<p>DefineFont Font1 Native=Courier</p>
-<p>DefineFont Font2 Native=Helvetica</p>
-<p>DefineDefaultFont Native=Courier</p>
-<p>DefaultFontSize 8 9</p>
-<p>SetVar GlobalVar1 = &#8220;VJRS Test Print&#8221;</p>
-<p>scenvjrs-input_l.txt</p>
-<p>&lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221; &#8211;&gt;</p>
-<p>{{{PDF-NEW-INPUT}}}{{{PDF-USE-DOCOPT &#8220;1&#8221;}}}{{{PDF-USE-LAYOUT &#8220;1&#8221;}}}</p>
-<p>{{{PDF-LINES-PER-PAGE (50)}}}</p>
-<p>{{{FOR-EACH-VALUE-IN &#8220;$PRINT$&#8221;}}}{{{CURRENT-VALUE-OF &#8220;$PRINT$&#8221;}}}</p>
-<p>{{{END-FOR &#8220;$PRINT$&#8221;}}}</p>
-<p>scenvjrs-layout_l.txt</p>
-<p>&lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221; &#8211;&gt;</p>
-<p>{{{PDF-NEW-LAYOUT &#8220;1&#8221;}}}</p>
-<p>At (0.5&#8221; 8.0&#8221;)</p>
-<p>ApplyOverlay GreenBar</p>
-<p>TextBegin</p>
-<p>Font Font1 Size(8 9) fill(black)</p>
-<p>PageContents Lines(all)</p>
-<p>FontEnd</p>
-<p>TextEnd</p>
-<p>; Place some text outside box</p>
-<p>TextBegin</p>
-<p>Font Font2 size(10 12) fill(teal)</p>
-<p>Map &#8220;Document=&#8221; at(0.5&#8221; 8.29&#8221;)</p>
-<p>Map GlobVar1</p>
-<p>FontEnd</p>
-<p>TextEnd</p>
-<p>;</p>
+scenarion. See :ref: <cite>Appendix B &lt;#_appendix_b&gt;</cite>:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>scenvjrs-docopt_l.txt
+
+&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot;--&gt;
+{{{CREATE-VARIABLE-IF(APPLICATION-IS-CONNECTED) &quot;$PDFAPP$&quot;}}}
+{{{PDF-NEW-DOCOPT &quot;1&quot;}}}
+DOCINFO TITLE=&quot;{{{NAME-OF (PRINT-RELAY)}}}-{{{NAME-OF (DATE-TIME)}}}&quot;
+AUTHOR=&quot;{{{NAME-OF (USER)}}}&quot; SUBJECT=&quot;&quot; KEYWORDS=&quot;&quot;
+CREATOR=&quot;{{{CURRENT-VALUE-OF &quot;$PDFAPP$&quot;}}}&quot;
+PRODUCER=&quot;VIRTEL ({{{NAME-OF(VIRTEL)}}})&quot;
+PAGE SIZE=A4 LANDSCAPE
+
+DefineOverlay GreenBar Top=0.5 Bottom=0.5 Left=0.5 Right=0.5
+BarHeight=0.5 BarColor=LiteGreen NudgeRight=-2 NudgeDown=1
+DefineFont Font1 Native=Courier
+DefineFont Font2 Native=Helvetica
+DefineDefaultFont Native=Courier
+DefaultFontSize 8 9
+SetVar GlobalVar1 = &quot;VJRS Test Print&quot;
+
+scenvjrs-input_l.txt
+
+&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
+{{{PDF-NEW-INPUT}}}{{{PDF-USE-DOCOPT &quot;1&quot;}}}{{{PDF-USE-LAYOUT &quot;1&quot;}}}
+{{{PDF-LINES-PER-PAGE (50)}}}
+{{{FOR-EACH-VALUE-IN &quot;$PRINT$&quot;}}}{{{CURRENT-VALUE-OF &quot;$PRINT$&quot;}}}
+{{{END-FOR &quot;$PRINT$&quot;}}}
+
+scenvjrs-layout_l.txt
+
+&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
+{{{PDF-NEW-LAYOUT &quot;1&quot;}}}
+
+At (0.5&quot; 8.0&quot;)
+ApplyOverlay GreenBar
+TextBegin
+Font Font1 Size(8 9) fill(black)
+PageContents Lines(all)
+FontEnd
+TextEnd
+; Place some text outside box
+TextBegin
+Font Font2 size(10 12) fill(teal)
+Map &quot;Document=&quot; at(0.5&quot; 8.29&quot;)
+Map GlobVar1
+FontEnd
+TextEnd
+;
+</pre></div>
+</div>
 <p>An input scenario is required to access the control files, the raw print
 data and to interface with the external service that calls MAKEPDF. A
 PDF file is rerturned to the user once the processing of the raw data is
@@ -506,17 +524,11 @@ how to setup and run MAKEPDF.</p>
 <p>The following is an example of a PDF created by MAKEPDF using the output
 from a utility listing. The output was sent to JES2 and then extracted
 by the VJRS program and sent to Virtel an SCS data stream.</p>
-<p><img alt="image14" src="../../../_images/image15.png" /></p>
-<p>Figure 2 Multi-Page PDF listing using MAKEPDF</p>
-<div class="line-block">
-<div class="line">Virtel delivers the VIRSVPDF program as an example of a MAKEPDF
-external service. This program is designed only to produce 1 page per
-service call. For producing PDF’s with multiple pages please contact
-the Syspertec support centre for further advice. The scenario
-associated with this landscape printing is called SCENFLND. See
-Appendix B.</div>
-<div class="line"><strong>Seamless or unattended printing</strong></div>
+<p><img alt="image14" src="../../../_images/image15.png" /> <em>Fig. 2 - Multi-Page PDF listing using MAKEPDF</em></p>
+<p>Virtel delivers the VIRSVPDF program as an example of a MAKEPDF external service. This program is designed only to produce 1 page per   service call. For producing PDF’s with multiple pages please contact the Syspertec support centre for further advice. The scenario  associated with this landscape printing is called SCENFLND. See <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B.</span></a></p>
 </div>
+<div class="section" id="seamless-or-unattended-printing">
+<span id="bookmark01"></span><h2>Seamless or unattended printing<a class="headerlink" href="#seamless-or-unattended-printing" title="Permalink to this headline">¶</a></h2>
 <p>The scenarios in this newsletter have demonstrated some of the print
 options that Virtel currently supports. As you can see user involvement
 is required in any print scenario that has been initiated from the
@@ -542,29 +554,31 @@ but at a browser level. This configuration is outside the support
 currently offered by SysperTec but we highlight what options are
 available. Users who undertake implementing these options do so in the
 knowledge that these are not supported options.</p>
-<p>**
-Firefox: Seamless browser printing using the JavaScript print command.**</p>
+</div>
+<div class="section" id="firefox-seamless-browser-printing-using-the-javascript-print-command">
+<h2>Firefox: Seamless browser printing using the JavaScript print command.<a class="headerlink" href="#firefox-seamless-browser-printing-using-the-javascript-print-command" title="Permalink to this headline">¶</a></h2>
 <p>In this example we set up a Virtel Transaction so that the browser
 window can be printed directly to the default printer through a
 “Printer” icon. The printer “ICON” will be added to the Virtel task bar.</p>
-<p>Setting up Firefox</p>
+<div class="section" id="setting-up-firefox">
+<h3>Setting up Firefox<a class="headerlink" href="#setting-up-firefox" title="Permalink to this headline">¶</a></h3>
 <p>Enter “<a class="reference external" href="about:config">about:config</a>” in the Firefox address bar. This will bring up the
 Firefox preferences. Right click on any preference and select New
 Boolean. Add the preference print.always.print.silent, press OK and then
 set the option to “true”. Close and restart the Firefox browser. From
 now on any JavaScript print(); command will print directly to the
 printer using the current configured print settings.</p>
-<p>Adding the printer ICON to the task bar.</p>
+</div>
+<div class="section" id="adding-the-printer-icon-to-the-task-bar">
+<h3>Adding the printer ICON to the task bar.<a class="headerlink" href="#adding-the-printer-icon-to-the-task-bar" title="Permalink to this headline">¶</a></h3>
 <p>We use a custom.js file to add a printer ICON to the task bar. This
 customized option is applied to a CICS transaction CLI-10 in our list of
 transactions. Using the ADMIN HTML panel will update the transaction
 Option field with an option definition called CICSPRNT</p>
-<p><img alt="image15" src="../../../_images/image16.png" /></p>
-<p>Figure 3 - Setting the transaction option</p>
+<p><img alt="image15" src="../../../_images/image16.png" /> <em>Fig. 3 - Setting the transaction option</em></p>
 <p>We press the “Spanner” icon on the right to create and validate the
 relevant files.</p>
-<p><img alt="image16" src="../../../_images/image17.png" /></p>
-<p>Figure 4 Creating and Validating the Option files</p>
+<p><img alt="image16" src="../../../_images/image17.png" /> <em>Fig. 4 - Creating and Validating the Option files</em></p>
 <p>The validation process creates the javascript file option.CICSPRNT.js
 which is uploaded to Virtel. Within this file we identify the two
 customization files that will be used for this CICS transaction. In this
@@ -578,280 +592,292 @@ save your changes to the transaction before exiting. You must save the
 updates then return to the transaction list where you will be asked to
 confirm the update. Do not use the browser back key – this will lose the
 update. Go back via the option menu hierarchy.</p>
-<p><img alt="image17" src="../../../_images/image18.png" /></p>
-<p>Figure 5 Creation a transaction for the option directory</p>
+<p><img alt="image17" src="../../../_images/image18.png" /> <em>Fig. 5 - Creation a transaction for the option directory</em></p>
 <p>Next we create our customized JavaScript file which will added the print
 ICON to the task bar and associate a function which will be executed
 when the user presses the print ICON. Our custJS.CICSPRNT.js looks like
 this. Details about toolbar customization can be found in the Virtel
-User Guide.</p>
-<p>//CLI-DIR</p>
-<p>function after_standardInit() {</p>
-<p>addtoolbarbutton(000,&#8221;print.ico&#8221;,&#8221;Print Screen&#8221;,do_print);</p>
-<p>}</p>
-<p>function do_print() {</p>
-<p>window.print();</p>
-<p>}</p>
+User Guide:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<span class="n">function</span> <span class="n">after</span>\<span class="n">_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do</span>\<span class="n">_print</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">function</span> <span class="n">do</span>\<span class="n">_print</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">window</span><span class="o">.</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>We upload custJS.CICSPRNT.js and a print.ICO image to the CLI directory
 using Virtel’s Drag and Drop facility found in the Virtel Admin. Portal.
 When we load up the CICS transaction and we can know see the printer
 ICON in the tool bar – the first ICON on the toolbar. Pressing it will
 print the browser screen without the standard Printer Pop-Up appearing.
 The output will appear on the users default printer.</p>
-<p><img alt="image18" src="../../../_images/image19.png" /></p>
-<p>**
-Chrome: Seamless browser printing using the kiosk options.**</p>
-<p>The same behavior can be displayed in Chrome if we start Chrome with the
-–kiosk-printing option:-</p>
-<p><strong>“C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&#8221;
-&#8211;kiosk-printing</strong></p>
+<p><img alt="image18" src="../../../_images/image19.png" /> <em>Fig. 18 -</em></p>
+</div>
+</div>
+<div class="section" id="chrome-seamless-browser-printing-using-the-kiosk-options">
+<h2>Chrome: Seamless browser printing using the kiosk options.<a class="headerlink" href="#chrome-seamless-browser-printing-using-the-kiosk-options" title="Permalink to this headline">¶</a></h2>
+<p>The same behavior can be displayed in Chrome if we start Chrome with the –kiosk-printing option:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>“C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing
+</pre></div>
+</div>
 <p>When the press the Print ICON the browser image appears on the default
 printer. There is no intervening “setup” window. We can also use the
 –kiosk option to hide the URL bar and specify the target URL in the
 command line:-</p>
-<p><a href="#id5"><span class="problematic" id="id6">**</span></a>C:\nodeJS&gt;&#8221;C:\Program Files
-(x86)\Google\Chrome\Application\chrome.exe&#8221; &#8211;kiosk-printing –kiosk
-<a class="reference external" href="http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics">http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics</a> **</p>
-<p><img alt="image19" src="../../../_images/image20.png" /></p>
-<p>Figure 6 Full screen kiosk display with Chrome</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>C:\\nodeJS&gt;&quot;C:\\Program Files(x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing –kiosk http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics
+</pre></div>
+</div>
+<p><img alt="image19" src="../../../_images/image20.png" /> <em>Fig. 19 - Full screen kiosk display with Chrome</em></p>
 <p>The browser window can be closed with ALT-F4.</p>
-<p>Appendix A</p>
-<p>SCENPPDF SCREENS APPL=SCENPPDF</p>
-<p>*</p>
-<p>* SCENARIO TO CONVERT PCL TO PDF AND SEND TO PRINT SERVER</p>
-<p>*</p>
-<p>SCENARIO INPUT</p>
-<p>*</p>
-<p>* Test if the browser request specified pf=SCENARIO-PRINT</p>
-<p>*</p>
-<p>COPY$ INPUT-TO-VARIABLE,FIELD=&#8217;PF&#8217;,VAR=&#8217;PF&#8217;,TYPE=REPLACE</p>
-<p>IF$ NOT-FOUND,THEN=NOPARAMS 46122153</p>
-<p>CASE$ &#8216;PF&#8217;, 46122153*</p>
-<p>(EQ,&#8217;SCENARIO-PRINT&#8217;,PRINT), 46122153*</p>
-<p>ELSE=NOPARAMS 46122153</p>
-<p>*</p>
-<p>* process the request for printing</p>
-<p>*</p>
-<p>PRINT EQU * 46122153</p>
-<p>* 46122152</p>
-<p>* Get the VIRTEL APPLID, terminal name, and printer name 46122152</p>
-<p>* 46122152</p>
-<p>COPY$ SYSTEM-TO-VARIABLE,VAR=&#8217;APPLID&#8217;, 46122152*</p>
-<p>FIELD=(NAME-OF,VIRTEL) 46122152</p>
-<p>COPY$ SYSTEM-TO-VARIABLE,VAR=&#8217;TERMINAL&#8217;, 46122152*</p>
-<p>FIELD=(NAME-OF,PSEUDO-TERMINAL) 46122152</p>
-<p>COPY$ SYSTEM-TO-VARIABLE,VAR=&#8217;PRINTER&#8217;, 46122152*</p>
-<p>FIELD=(NAME-OF,PRINT-RELAY) 46122152</p>
-<p>* 46122152</p>
-<p>* Use the timestamp to generate a document name 46122152</p>
-<p>* 46122152</p>
-<p>POP$ ALL-VALUES-OF,VAR=&#8217;TIMESTAMP&#8217; 46122152</p>
-<p>COPY$ SYSTEM-TO-VARIABLE,VAR=&#8217;TIMESTAMP&#8217;, 46122152*</p>
-<p>FIELD=(NAME-OF,DATE-TIME) 46122152</p>
-<p>COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ 46122152*</p>
-<p>VAR=&#8217;DOCNAME&#8217;,TYPE=REPLACE, 46122152*</p>
-<p>LIST=(VARIABLE,&#8217;PRINTER&#8217;,STRING,&#8217;-&#8216;, 46122152*</p>
-<p>VARIABLE,&#8217;TIMESTAMP&#8217;) 46122152</p>
-<p>*</p>
-<p>* The PCL input file has been written to $PRINT$ by VIR0915I</p>
-<p>*</p>
-<p>IF$ EXISTS-VARIABLE,&#8217;$PRINT$&#8217;,ELSE=NOPRINTD 46122152</p>
-<p>*</p>
-<p>* Set up the outbound HTTP call to the PCL-to-PDF converter</p>
-<p>* See job PCL2PDF for definition of IP address of PCL2PDF server</p>
-<p>*</p>
-<p>OPTION$ FOR-HTTP, *</p>
-<p>(METHOD,&#8217;POST&#8217;), *</p>
-<p>(SITE,&#8217;pcl2pdf.yourcompany.com&#8217;), *</p>
-<p>(TO,&#8217;/pdfconv.php&#8217;), *</p>
-<p>(HEADER,&#8217;Content-Type: text/pcl&#8217;), *</p>
-<p>(FILE-OUT,&#8217;$PRINT$&#8217;), *</p>
-<p>(FILE-IN,&#8217;PDFDATA&#8217;), *</p>
-<p>(RET-CODE,&#8217;RETCODE&#8217;), *</p>
-<p>TOVAR=&#8217;HTTPARM&#8217;</p>
-<p>* 46122152</p>
-<p>* Issue a progress message to the console 46122152</p>
-<p>* 46122152</p>
-<p>ERROR$ 0, 46122152*</p>
-<p>&#8216;*APPLID&#8217;,&#8217; &#8216;,&#8217;*TERMINAL&#8217;,&#8217; &#8216;,&#8217;*PRINTER&#8217;,&#8217; &#8216;, 46122152*</p>
-<p>&#8216;SCENPPDF SENDING DOCUMENT &#8216;,&#8217;*DOCNAME&#8217;, 46122152*</p>
-<p>&#8216; TO PCL2PDF SERVER&#8217; 46122152</p>
-<p>*</p>
-<p>* Call the PCL-to-PDF converter</p>
-<p>*</p>
-<p>POP$ ALL-VALUES-OF,VAR=&#8217;PDFDATA&#8217;</p>
-<p>POP$ ALL-VALUES-OF,VAR=&#8217;RETCODE&#8217;</p>
-<p>SEND$ TO-LINE, *</p>
-<p>LINE=&#8217;PCL2PDF&#8217;, *</p>
-<p>PARMS=&#8217;HTTPARM&#8217;, *</p>
-<p>ERROR=HTTPFAIL</p>
-<p>* 46122152</p>
-<p>* Check for successful HTTP response 46122152</p>
-<p>* 46122152</p>
-<p>IF$ NOT-EXISTS-VARIABLE,&#8217;RETCODE&#8217;,THEN=HTTPINV 46122152</p>
-<p>CASE$ &#8216;RETCODE&#8217;, 46122152*</p>
-<p>(BEGIN,&#8216;200&#8217;,SENDPDF), 46122152*</p>
-<p>ELSE=HTTPERR 46122152</p>
-<p>SENDPDF EQU * 46122152</p>
-<p>*</p>
-<p>* Send PDF file to browser</p>
-<p>*</p>
-<p>COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ *</p>
-<p>VAR=&#8217;PDFNAME&#8217;,TYPE=REPLACE, *</p>
-<p>LIST=(VARIABLE,&#8217;DOCNAME&#8217;,STRING,&#8217;.pdf&#8217;) 46122152</p>
-<p>SEND$ AS-FILE,VAR=&#8217;PDFDATA&#8217;, *</p>
-<p>TYPE=&#8217;application/pdf&#8217;,NAME=&#8217;*PDFNAME&#8217;</p>
-<p>* 46122152</p>
-<p>* Issue a progress message to the console 46122152</p>
-<p>* 46122152</p>
-<p>ERROR$ 0, 46122152*</p>
-<p>&#8216;*APPLID&#8217;,&#8217; &#8216;,&#8217;*TERMINAL&#8217;,&#8217; &#8216;,&#8217;*PRINTER&#8217;,&#8217; &#8216;, 46122152*</p>
-<p>&#8216;SCENPPDF DELIVERED DOCUMENT &#8216;,&#8217;*DOCNAME&#8217;, 46122152*</p>
-<p>&#8216; TO TERMINAL&#8217; 46122152</p>
-<p>*</p>
-<p>NOPARAMS EQU *</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>* Error exits</p>
-<p>*</p>
-<p>NOPRINTD EQU * 46122152</p>
-<p>COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ 46122152*</p>
-<p>VAR=&#8217;ERRMSG&#8217;,TYPE=REPLACE, 46122152*</p>
-<p>LIST=(STRING,&#8217;NOTHING TO PRINT FOR &#8216;, 46122152*</p>
-<p>VARIABLE,&#8217;PRINTER&#8217;) 46122152</p>
-<p>GOTO$ CREAHTML 46122152</p>
-<p>* 46122152</p>
-<p>HTTPINV EQU * 46122152</p>
-<p>COPY$ VALUE-TO-VARIABLE, 46122152*</p>
-<p>VAR=&#8217;ERRMSG&#8217;,TYPE=REPLACE, 46122152*</p>
-<p>VALUE=&#8217;INVALID RESPONSE FROM PCL2PDF SERVER&#8217; 46122152</p>
-<p>GOTO$ CREAHTML 46122152</p>
-<p>* 46122152</p>
-<p>HTTPERR EQU * 46122152</p>
-<p>COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ 46122152*</p>
-<p>VAR=&#8217;ERRMSG&#8217;,TYPE=REPLACE, 46122152*</p>
-<p>LIST=(STRING,&#8217;PCL2PDF SERVER RETURNED &#8216;, 46122152*</p>
-<p>STRING,&#8217;HTTP CODE=&#8217;,VARIABLE,&#8217;RETCODE&#8217;) 46122152</p>
-<p>COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ 46122152*</p>
-<p>VAR=&#8217;RESPONSE&#8217;,TYPE=REPLACE, 46122152*</p>
-<p>LIST=(VARIABLE,&#8217;PDFDATA&#8217;) 46122152</p>
-<p>GOTO$ SENDHTML</p>
-<p>* 46122152</p>
-<p>HTTPFAIL EQU *</p>
-<p>COPY$ VALUE-TO-VARIABLE, 46122152*</p>
-<p>VAR=&#8217;ERRMSG&#8217;,TYPE=REPLACE, *</p>
-<p>VALUE=&#8217;OUTBOUND CALL TO PCL2PDF SERVER FAILED&#8217; 46122152</p>
-<p>CREAHTML EQU * 46122152</p>
-<p>COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ *</p>
-<p>VAR=&#8217;RESPONSE&#8217;,TYPE=REPLACE, *</p>
-<p>LIST=(STRING,&#8217;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENPPDF error&lt;/title&gt;&lt;*</p>
-<p>/head&gt;&lt;body&gt;&#8217;,VARIABLE,&#8217;ERRMSG&#8217;, *</p>
-<p>STRING,&#8217;&lt;br&gt;See messages in JESMSGLG for &#8216;, *</p>
-<p>VARIABLE,&#8217;APPLID&#8217;, *</p>
-<p>STRING,&#8217;&lt;/body&gt;&lt;/html&gt;&#8217;)</p>
-<p>CONVERT$ EBCDIC-TO-ASCII,VAR=&#8217;RESPONSE&#8217;</p>
-<p>SENDHTML EQU * 46122152</p>
-<p>SENDHTML EQU * 46122152</p>
-<p>ERROR$ 0, 46122152*</p>
-<p>&#8216;*APPLID&#8217;,&#8217; &#8216;,&#8217;*TERMINAL&#8217;,&#8217; &#8216;,&#8217;*PRINTER&#8217;,&#8217; &#8216;, 46122152*</p>
-<p>&#8216;SCENPPDF ERROR: &#8216;, 46122152*</p>
-<p>&#8216;*ERRMSG&#8217; 46122152</p>
-<p>COPY$ OUTPUT-FILE-TO-VARIABLE, *</p>
-<p>FILE=&#8217;PDFFAILURE.htm&#8217;,VAR=&#8217;OUTPUTTXT&#8217;</p>
-<p>SEND$ AS-FILE,VAR=&#8217;RESPONSE&#8217;, *</p>
-<p>TYPE=&#8217;text/HTML&#8217;,NAME=&#8217;FAILURE.htm&#8217;</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>SCRNEND</p>
-<p>END</p>
-<p>Appendix B</p>
-<p>SCENFLND SCREENS APPL=SCENFLND</p>
-<p>*</p>
-<p>* SCENARIO TO CONVERT £PRINT£ FROM TO PDF. LANDSCAPE</p>
-<p>*</p>
-<p>SCENARIO INPUT</p>
-<p>* Test if the browser request specified pf=SCENARIO-PRINT</p>
-<p>COPY£ INPUT-TO-VARIABLE,FIELD=&#8217;PF&#8217;,VAR=&#8217;PF&#8217;,TYPE=REPLACE</p>
-<p>IF£ NOT-FOUND,THEN=NOPARAMS 48563172</p>
-<p>CASE£ &#8216;PF&#8217;,(NE,&#8217;SCENARIO-PRINT&#8217;,NOPARAMS)</p>
-<p>* An ASCII print file has been written to £PRINT£ by VIR0915I</p>
-<p>IF£ EXISTS-VARIABLE,&#8217;£PRINT£&#8217;,ELSE=NOPRINTD 48563172</p>
-<p>* Convert £PRINT£ file from ASCII to EBCDIC for MAKEPDF</p>
-<p>CONVERT£ ASCII-TO-EBCDIC,VAR=&#8217;£PRINT£&#8217;</p>
-<p>* Create INPUT file for MAKEPDF</p>
-<p>COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *</p>
-<p>FILE=&#8217;SCENVJRS-INPUT_L.TXT&#8217;,VAR=&#8217;INPUT&#8217;</p>
-<p>* Create DOCOPT file for MAKEPDF</p>
-<p>COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *</p>
-<p>FILE=&#8217;SCENVJRS-DOCOPT_L.TXT&#8217;,VAR=&#8217;DOCOPT&#8217;</p>
-<p>* Create LAYOUT file for MAKEPDF</p>
-<p>COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *</p>
-<p>FILE=&#8217;SCENVJRS-LAYOUT_L.TXT&#8217;,VAR=&#8217;LAYOUT&#8217;</p>
-<p>* Initialize variables with defaults</p>
-<p>POP£ ALL-VALUES-OF,VAR=&#8217;OUTPDF&#8217;</p>
-<p>POP£ ALL-VALUES-OF,VAR=&#8217;ERRMSG&#8217;</p>
-<p>* Call service program VJRS0200 which calls MAKEPDF</p>
-<p>VIRSV£ CALL-REUSE,(&#8216;SERVPDF&#8217;,&#8217;VJRS0200&#8217;), *</p>
-<p>(IN-VARIABLE,&#8217;INPUT&#8217;,*3), *</p>
-<p>(IN-VARIABLE,&#8217;DOCOPT&#8217;,*1), *</p>
-<p>(IN-VARIABLE,&#8217;LAYOUT&#8217;,*1), *</p>
-<p>(OUT-VARIABLE,&#8217;OUTPDF&#8217;,500K), *</p>
-<p>(OUT-VARIABLE,&#8217;ERRMSG&#8217;,160), *</p>
-<p>(NUMBER,&#8216;2&#8217;), MAKEPDF TRACE LEVEL *</p>
-<p>TRACE=(NO-APPLICATION-TRACE, VIRSV TRACE LEVEL *</p>
-<p>NO-CALLS-TRACE,NO-DISPATCH-TRACE,NO-MEMORY-TRACE), *</p>
-<p>ERROR=REJECT,TASKS=1</p>
-<p>* Send PDF file to browser</p>
-<p>COPY£ SYSTEM-TO-VARIABLE,VAR=&#8217;PRINTER&#8217;, *</p>
-<p>FIELD=(NAME-OF,PRINT-RELAY)</p>
-<p>COPY£ SYSTEM-TO-VARIABLE,VAR=&#8217;TIMESTAMP&#8217;, *</p>
-<p>FIELD=(NAME-OF,DATE-TIME)</p>
-<p>COPY£ VALUE-TO-VARIABLE, For VIRTEL 4.46 *</p>
-<p>VAR=&#8217;PDFNAME&#8217;,TYPE=REPLACE, *</p>
-<p>VALUE=&#8217;my.pdf&#8217;</p>
-<p>COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+ *</p>
-<p>VAR=&#8217;PDFNAME&#8217;,TYPE=REPLACE, *</p>
-<p>LIST=(VARIABLE,&#8217;PRINTER&#8217;,STRING,&#8217;-&#8216;, *</p>
-<p>VARIABLE,&#8217;TIMESTAMP&#8217;,STRING,&#8217;.pdf&#8217;)</p>
-<p>SEND£ AS-FILE,VAR=&#8217;OUTPDF&#8217;, *</p>
-<p>TYPE=&#8217;application/pdf&#8217;,NAME=&#8217;*PDFNAME&#8217;</p>
-<p>* Issue a progress message to the console 48563172</p>
-<p>ERROR£ 0, 48563172*</p>
-<p>&#8216;*APPLID&#8217;,&#8217; &#8216;,&#8217;*TERMINAL&#8217;,&#8217; &#8216;,&#8217;*PRINTER&#8217;,&#8217; &#8216;, 48563172*</p>
-<p>&#8216;SCENFLND DELIVERED DOCUMENT &#8216;,&#8217;*PDFNAME&#8217;, 48563172*</p>
-<p>&#8216; TO TERMINAL&#8217; 48563172</p>
-<p>*</p>
-<p>NOPARAMS EQU *</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>* Error exits</p>
-<p>*</p>
-<p>NOPRINTD EQU * 48563172</p>
-<p>COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+ 48563172*</p>
-<p>VAR=&#8217;ERRMSG&#8217;,TYPE=REPLACE, 48563172*</p>
-<p>LIST=(STRING,&#8217;NOTHING TO PRINT FOR &#8216;, 48563172*</p>
-<p>VARIABLE,&#8217;PRINTER&#8217;) 48563172</p>
-<p>GOTO£ CREAHTML 48563172</p>
-<p>* 48563172</p>
-<p>REJECT EQU *</p>
-<p>CREAHTML EQU * 48563172</p>
-<p>COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+ 48563172*</p>
-<p>VAR=&#8217;RESPONSE&#8217;,TYPE=REPLACE, 48563172*</p>
-<p>LIST=(STRING,&#8217;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENFLND error&lt;/title&gt;&lt;*</p>
-<p>/head&gt;&lt;body&gt;&#8217;,VARIABLE,&#8217;ERRMSG&#8217;, 48563172*</p>
-<p>STRING,&#8217;&lt;/body&gt;&lt;/html&gt;&#8217;) 48563172</p>
-<p>CONVERT£ EBCDIC-TO-ASCII,VAR=&#8217;RESPONSE&#8217; 48563172</p>
-<p>SENDHTML EQU * 48563172</p>
-<p>ERROR£ 0, 48563172*</p>
-<p>&#8216;*APPLID&#8217;,&#8217; &#8216;,&#8217;*TERMINAL&#8217;,&#8217; &#8216;,&#8217;*PRINTER&#8217;,&#8217; &#8216;, 48563172*</p>
-<p>&#8216;SCENFLND ERROR: &#8216;, 48563172*</p>
-<p>&#8216;*ERRMSG&#8217; 48563172</p>
-<p>SEND£ AS-FILE,VAR=&#8217;RESPONSE&#8217;, 48563172*</p>
-<p>TYPE=&#8217;text/html&#8217;,NAME=&#8217;FAILURE.htm&#8217; 48563172</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>SCRNEND</p>
-<p>END</p>
+</div>
+<div class="section" id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>SCENPPDF SCREENS APPL=SCENPPDF
+*
+* SCENARIO TO CONVERT PCL TO PDF AND SEND TO PRINT SERVER
+*
+SCENARIO INPUT
+*
+* Test if the browser request specified pf=SCENARIO-PRINT
+*
+COPY$ INPUT-TO-VARIABLE,FIELD=&#39;PF&#39;,VAR=&#39;PF&#39;,TYPE=REPLACE
+IF$ NOT-FOUND,THEN=NOPARAMS 46122153
+CASE$ &#39;PF&#39;, 46122153*
+(EQ,&#39;SCENARIO-PRINT&#39;,PRINT), 46122153*
+ELSE=NOPARAMS 46122153
+*
+* process the request for printing
+*
+PRINT EQU * 46122153
+*
+* Get the VIRTEL APPLID, terminal name, and printer name
+*
+COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;APPLID&#39;,  *
+FIELD=(NAME-OF,VIRTEL)
+COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TERMINAL&#39;,  *
+FIELD=(NAME-OF,PSEUDO-TERMINAL)
+COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;PRINTER&#39;,  *
+FIELD=(NAME-OF,PRINT-RELAY)
+*
+* Use the timestamp to generate a document name
+*
+POP$ ALL-VALUES-OF,VAR=&#39;TIMESTAMP&#39;
+COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TIMESTAMP&#39;,  *
+FIELD=(NAME-OF,DATE-TIME)
+COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
+VAR=&#39;DOCNAME&#39;,TYPE=REPLACE,  *
+LIST=(VARIABLE,&#39;PRINTER&#39;,STRING,&#39;-&#39;,  *
+VARIABLE,&#39;TIMESTAMP&#39;)
+*
+* The PCL input file has been written to $PRINT$ by VIR0915I
+*
+IF$ EXISTS-VARIABLE,&#39;$PRINT$&#39;,ELSE=NOPRINTD
+*
+* Set up the outbound HTTP call to the PCL-to-PDF converter
+* See job PCL2PDF for definition of IP address of PCL2PDF server
+*
+OPTION$ FOR-HTTP, *
+(METHOD,&#39;POST&#39;), *
+(SITE,&#39;pcl2pdf.yourcompany.com&#39;), *
+(TO,&#39;/pdfconv.php&#39;), *
+(HEADER,&#39;Content-Type: text/pcl&#39;), *
+(FILE-OUT,&#39;$PRINT$&#39;), *
+(FILE-IN,&#39;PDFDATA&#39;), *
+(RET-CODE,&#39;RETCODE&#39;), *
+TOVAR=&#39;HTTPARM&#39;
+*
+* Issue a progress message to the console
+*
+ERROR$ 0,  *
+&#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,  *
+&#39;SCENPPDF SENDING DOCUMENT &#39;,&#39;*DOCNAME&#39;,  *
+&#39; TO PCL2PDF SERVER&#39;
+*
+* Call the PCL-to-PDF converter
+*
+POP$ ALL-VALUES-OF,VAR=&#39;PDFDATA&#39;
+POP$ ALL-VALUES-OF,VAR=&#39;RETCODE&#39;
+SEND$ TO-LINE, *
+LINE=&#39;PCL2PDF&#39;, *
+PARMS=&#39;HTTPARM&#39;, *
+ERROR=HTTPFAIL
+*
+* Check for successful HTTP response
+*
+IF$ NOT-EXISTS-VARIABLE,&#39;RETCODE&#39;,THEN=HTTPINV
+CASE$ &#39;RETCODE&#39;,  *
+(BEGIN,&#39;200&#39;,SENDPDF),  *
+ELSE=HTTPERR
+SENDPDF EQU *
+*
+* Send PDF file to browser
+*
+COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ *
+VAR=&#39;PDFNAME&#39;,TYPE=REPLACE, *
+LIST=(VARIABLE,&#39;DOCNAME&#39;,STRING,&#39;.pdf&#39;)
+SEND$ AS-FILE,VAR=&#39;PDFDATA&#39;, *
+TYPE=&#39;application/pdf&#39;,NAME=&#39;*PDFNAME&#39;
+*
+* Issue a progress message to the console
+*
+ERROR$ 0,  *
+&#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,  *
+&#39;SCENPPDF DELIVERED DOCUMENT &#39;,&#39;*DOCNAME&#39;,  *
+&#39; TO TERMINAL&#39;
+*
+NOPARAMS EQU *
+SCENARIO END
+*
+* Error exits
+*
+NOPRINTD EQU *
+COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
+VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,  *
+LIST=(STRING,&#39;NOTHING TO PRINT FOR &#39;,  *
+VARIABLE,&#39;PRINTER&#39;)
+GOTO$ CREAHTML
+*
+HTTPINV EQU *
+COPY$ VALUE-TO-VARIABLE,  *
+VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,  *
+VALUE=&#39;INVALID RESPONSE FROM PCL2PDF SERVER&#39;
+GOTO$ CREAHTML
+*
+HTTPERR EQU *
+COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
+VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,  *
+LIST=(STRING,&#39;PCL2PDF SERVER RETURNED &#39;,  *
+STRING,&#39;HTTP CODE=&#39;,VARIABLE,&#39;RETCODE&#39;)
+COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+  *
+VAR=&#39;RESPONSE&#39;,TYPE=REPLACE,  *
+LIST=(VARIABLE,&#39;PDFDATA&#39;)
+GOTO$ SENDHTML
+*
+HTTPFAIL EQU *
+COPY$ VALUE-TO-VARIABLE,  *
+VAR=&#39;ERRMSG&#39;,TYPE=REPLACE, *
+VALUE=&#39;OUTBOUND CALL TO PCL2PDF SERVER FAILED&#39;
+CREAHTML EQU *
+COPY$ LIST-TO-VARIABLE, For VIRTEL 4.47+ *
+VAR=&#39;RESPONSE&#39;,TYPE=REPLACE, *
+LIST=(STRING,&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENPPDF error&lt;/title&gt;&lt;*
+/head&gt;&lt;body&gt;&#39;,VARIABLE,&#39;ERRMSG&#39;, *
+STRING,&#39;&lt;br&gt;See messages in JESMSGLG for &#39;, *
+VARIABLE,&#39;APPLID&#39;, *
+STRING,&#39;&lt;/body&gt;&lt;/html&gt;&#39;)
+CONVERT$ EBCDIC-TO-ASCII,VAR=&#39;RESPONSE&#39;
+SENDHTML EQU *
+SENDHTML EQU *
+ERROR$ 0,  *
+&#39;*APPLID&#39;,&#39; &#39;,&#39;*TERMINAL&#39;,&#39; &#39;,&#39;*PRINTER&#39;,&#39; &#39;,  *
+&#39;SCENPPDF ERROR: &#39;,  *
+&#39;*ERRMSG&#39;
+COPY$ OUTPUT-FILE-TO-VARIABLE, *
+FILE=&#39;PDFFAILURE.htm&#39;,VAR=&#39;OUTPUTTXT&#39;
+SEND$ AS-FILE,VAR=&#39;RESPONSE&#39;, *
+TYPE=&#39;text/HTML&#39;,NAME=&#39;FAILURE.htm&#39;
+SCENARIO END
+*
+SCRNEND
+END
+</pre></div>
+</div>
+</div>
+<div class="section" id="appendix-b">
+<span id="id3"></span><h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>SCENFLND SCREENS APPL=SCENFLND
+*
+*  SCENARIO TO CONVERT £PRINT£ FROM TO PDF. LANDSCAPE
+*
+SCENARIO INPUT
+*  Test if the browser request specified pf=SCENARIO-PRINT
+COPY£ INPUT-TO-VARIABLE,FIELD=&#39;PF&#39;,VAR=&#39;PF&#39;,TYPE=REPLACE
+IF£ NOT-FOUND,THEN=NOPARAMS
+CASE£ &#39;PF&#39;,(NE,&#39;SCENARIO-PRINT&#39;,NOPARAMS)
+*  An ASCII print file has been written to £PRINT£ by VIR0915I
+IF£ EXISTS-VARIABLE,&#39;£PRINT£&#39;,ELSE=NOPRINTD
+*  Convert £PRINT£ file from ASCII to EBCDIC for MAKEPDF
+CONVERT£ ASCII-TO-EBCDIC,VAR=&#39;£PRINT£&#39;
+*  Create INPUT file for MAKEPDF
+COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *
+FILE=&#39;SCENVJRS-INPUT\_L.TXT&#39;,VAR=&#39;INPUT&#39;
+*  Create DOCOPT file for MAKEPDF
+COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *
+FILE=&#39;SCENVJRS-DOCOPT\_L.TXT&#39;,VAR=&#39;DOCOPT&#39;
+*  Create LAYOUT file for MAKEPDF
+COPY£ OUTPUT-FILE-TO-VARIABLE,TYPE=LINEBUFFER, *
+FILE=&#39;SCENVJRS-LAYOUT\_L.TXT&#39;,VAR=&#39;LAYOUT&#39;
+*  Initialize variables with defaults
+POP£ ALL-VALUES-OF,VAR=&#39;OUTPDF&#39;
+POP£ ALL-VALUES-OF,VAR=&#39;ERRMSG&#39;
+*  Call service program VJRS0200 which calls MAKEPDF
+VIRSV£ CALL-REUSE,(&#39;SERVPDF&#39;,&#39;VJRS0200&#39;), *
+(IN-VARIABLE,&#39;INPUT&#39;,* 3), *
+(IN-VARIABLE,&#39;DOCOPT&#39;,* 1), *
+(IN-VARIABLE,&#39;LAYOUT&#39;,* 1), *
+(OUT-VARIABLE,&#39;OUTPDF&#39;,500K), *
+(OUT-VARIABLE,&#39;ERRMSG&#39;,160), *
+(NUMBER,&#39;2&#39;), MAKEPDF TRACE LEVEL *
+TRACE=(NO-APPLICATION-TRACE, VIRSV TRACE LEVEL *
+NO-CALLS-TRACE,NO-DISPATCH-TRACE,NO-MEMORY-TRACE), *
+ERROR=REJECT,TASKS=1
+*  Send PDF file to browser
+COPY£ SYSTEM-TO-VARIABLE,VAR=&#39;PRINTER&#39;, *
+FIELD=(NAME-OF,PRINT-RELAY)
+COPY£ SYSTEM-TO-VARIABLE,VAR=&#39;TIMESTAMP&#39;, *
+FIELD=(NAME-OF,DATE-TIME)
+COPY£ VALUE-TO-VARIABLE, For VIRTEL 4.46 *
+VAR=&#39;PDFNAME&#39;,TYPE=REPLACE, *
+VALUE=&#39;my.pdf&#39;
+COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+ *
+VAR=&#39;PDFNAME&#39;,TYPE=REPLACE, *
+LIST=(VARIABLE,&#39;PRINTER&#39;,STRING,&#39;-&#39;, *
+VARIABLE,&#39;TIMESTAMP&#39;,STRING,&#39;.pdf&#39;)
+SEND£ AS-FILE,VAR=&#39;OUTPDF&#39;, *
+TYPE=&#39;application/pdf&#39;,NAME=&#39;* PDFNAME&#39;
+*  Issue a progress message to the console
+ERROR£ 0,   *
+&#39;* APPLID&#39;,&#39; &#39;,&#39;* TERMINAL&#39;,&#39; &#39;,&#39;* PRINTER&#39;,&#39; &#39;,   *
+&#39;SCENFLND DELIVERED DOCUMENT &#39;,&#39;* PDFNAME&#39;,   *
+&#39; TO TERMINAL&#39;
+*
+NOPARAMS EQU *
+SCENARIO END
+*
+*  Error exits
+*
+NOPRINTD EQU *
+COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+   *
+VAR=&#39;ERRMSG&#39;,TYPE=REPLACE,   *
+LIST=(STRING,&#39;NOTHING TO PRINT FOR &#39;,   *
+VARIABLE,&#39;PRINTER&#39;)
+GOTO£ CREAHTML
+*
+REJECT EQU *
+CREAHTML EQU *
+COPY£ LIST-TO-VARIABLE, For VIRTEL 4.47+   *
+VAR=&#39;RESPONSE&#39;,TYPE=REPLACE,   *
+LIST=(STRING,&#39;&lt;html&gt;&lt;head&gt;&lt;title&gt;SCENFLND error&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&#39;,
+VARIABLE,&#39;ERRMSG&#39;,   *
+STRING,&#39;&lt;/body&gt;&lt;/html&gt;&#39;)
+CONVERT£ EBCDIC-TO-ASCII,VAR=&#39;RESPONSE&#39;
+SENDHTML EQU *
+ERROR£ 0,   *
+&#39;* APPLID&#39;,&#39; &#39;,&#39;* TERMINAL&#39;,&#39; &#39;,&#39;* PRINTER&#39;,&#39; &#39;,   *
+&#39;SCENFLND ERROR: &#39;,   *
+&#39;* ERRMSG&#39;
+SEND£ AS-FILE,VAR=&#39;RESPONSE&#39;,   *
+TYPE=&#39;text/html&#39;,NAME=&#39;FAILURE.htm&#39;
+SCENARIO END
+*
+SCRNEND
+END
+</pre></div>
+</div>
+</div>
 </div>
 
 

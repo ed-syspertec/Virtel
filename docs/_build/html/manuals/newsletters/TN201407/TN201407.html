@@ -112,7 +112,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Virtel Manuals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
             
@@ -182,8 +182,7 @@ provides its own validation of the SSO server through the use of rules.</p>
 SSO Server and we will document how to define Virtel to interface with
 the SSO Server and RACF. Our target asset is a CICS application called
 SPCICSH. The caller will provide no userid or password data.</p>
-<p><img alt="image0" src="../../../_images/image1.jpeg" /></p>
-<p><em>Fig 1. Data flow of an SSO session setup</em></p>
+<p><img alt="image0" src="../../../_images/image1.jpeg" /> <em>Fig 1. Data flow of an SSO session setup</em></p>
 <p>The initial request is passed through the SSO server. The server will
 trap and validate the caller. If the validation is successful a session
 will be establish between the SSO server and Virtel. Two things to note
@@ -287,7 +286,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 <li>passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.</li>
 <li>profile_name must equal the VTAM application name defined in the VIRTEL transaction.</li>
 </ul>
-<p>These names are normally the same, but they do not have to be. See the <a class="reference internal" href="#bookmark01"><span class="std std-ref">“**RACF profiles related to Pass Tickets**”</span></a> section for further information.</p>
+<p>These names are normally the same, but they do not have to be. See the <a class="reference internal" href="../TN201409/TN201409.html#bookmark01"><span class="std std-ref">“**RACF profiles related to Pass Tickets**”</span></a> section for further information.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you are running separate RACF databases across LPARS the KEYMASKED must be the same in each RACF database or else the wrong password will be generated and the logon will fail.</p>
