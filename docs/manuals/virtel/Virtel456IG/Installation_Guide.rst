@@ -44,7 +44,7 @@ Syspertec Communication
 ========================
 
 1.10 Virtel version 4.56 (xx xxx 2016)
--------------------------------------
+--------------------------------------
 
 *VIRTEL Universal Protocol:*
 
