@@ -15,7 +15,7 @@ Installation Guide
 
 Version : 4.56
 
-Release Date : 24 Sep 2014 Publication Date : 13/10/2014
+Release Date : dd mmm yyyy Publication Date : dd/mm/yyyy
 
 Syspertec Communication
 
@@ -45,7 +45,75 @@ Syspertec Communication
 1. Summary of Amendments
 ========================
 
-1.1 Virtel version 4.53 (24 Sep 2014)
+1.8 Virtel version 4.54 (xx xxx 2014)
+-------------------------------------
+
+*VIRTEL Web Access:*
+
+-  Support Query List variant of 3270 Read Partition command - Extended Color.
+
+-  Display Virtel update level in tool bar.
+
+-  New ICON in Copy/Past menu to show Firefox/Chrome extension status. 
+
+-  Enahancements to Virtel Web Macro support (VWM)
+
+-  Enhancements to toolbar styling.
+
+-  Support graphics in input fields in 3278T mode
+
+-  Language support enhancements - German & French.
+
+-  Enhancements to Virtel Dynamic Directories (DDI)  
+
+
+*VIRTEL Web Modernisation & Integration:*
+
+-  OPTION$ statement now supports 'QUICKLNK' line type.
+
+-  Support of VTA protocol through 'QUICKLNK' line type.
+
+-  Support of VTA CONTAINERS  
+
+-  Additional commands for scenarios:
+
+   -  ACTION$ now allows 'Program Tab' key to invoke scenario
+
+   -  COPY$ SYSTEM-TO-VARIABLE now supports TYPE=REPLACE
+
+   -  MAP$ instruction now supports positive/negative sign
+
+   -  MAP$ instruction supports decimal point for FORMAT TYPE=S9
+
+   -  New template instruction IF-SOUND-ALARM-IS-REQUESTED
+
+
+
+
+*Miscellaneous:*
+
+-  Support for 'Above the bar' 2GB storage for Virtel variables.
+
+-  Allow Log datasets to be spooled/spun off to JES2
+
+-  TCT command now displays the LOG option
+
+-  Virtel installation now includes VTG
+
+-  IND$FILE upload and download limit options
+
+-  VIRSV maintenance 
+
+
+
+
+
+
+*MQSeries:*
+
+'TRAN' parameter can be specified on MQ Line definition - Character translation.
+
+1.7 Virtel version 4.53 (24 Sep 2014)
 -------------------------------------
 
 *VIRTEL Web Access:*
@@ -101,7 +169,7 @@ Syspertec Communication
 
    -  SNAPMSG command to trap VIRHT6xE message
 
-1.2 Virtel version 4.52 (4 Dec 2013)
+1.6 Virtel version 4.52 (4 Dec 2013)
 ------------------------------------   
 
 *VIRTEL Universal Protocol:*
@@ -148,7 +216,7 @@ Syspertec Communication
 
 -  Miscellaneous editorial corrections and enhancements
 
-1.3 Virtel version 4.51 (18 Jul 2013)
+1.5 Virtel version 4.51 (18 Jul 2013)
 -------------------------------------
 
 *VIRTEL Universal Protocol:*
@@ -224,7 +292,7 @@ Syspertec Communication
 
 -  Miscellaneous editorial corrections and enhancements
 
-1.5 Virtel version 4.49 (30 Apr 2013)
+1.3 Virtel version 4.49 (30 Apr 2013)
 -------------------------------------
 
 *VIRTEL Web Access:*
@@ -279,7 +347,7 @@ Syspertec Communication
 
 -  Miscellaneous editorial corrections and enhancements
 
-1.6 Virtel version 4.48 (27 Nov 2012)
+1.2 Virtel version 4.48 (27 Nov 2012)
 -------------------------------------
 
 *VIRTEL Universal Protocol:*
@@ -340,7 +408,7 @@ Syspertec Communication
 
 -  Miscellaneous editorial corrections and enhancements
 
-1.7 Virtel version 4.47 (21 May 2012)
+1.1 Virtel version 4.47 (21 May 2012)
 -------------------------------------
 
 *VIRTEL Universal Protocol:*

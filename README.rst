@@ -30,4 +30,5 @@ readthedocs
 
 ed-syspertec.com ed.holt@syspertec.com
 
+`Virtel <http://virtel.readthedocs.io>`_
 

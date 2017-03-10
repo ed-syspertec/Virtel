@@ -1,48 +1,107 @@
 Updates Virtel 4.54
+===================
 
-*VIRTEL Universal Protocol:*
+VIRTEL Universal Protocol:
+--------------------------
 
-*VIRTEL Web Access:*
+5180 Allow several ICONNECT lines on one TPIPE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-*VIRTEL Web Modernisation:*
+	Anew request cannot be received from ICAL IMSConnect before the previous one has been finished and a Resume TPIPE has been issued.
 
-*VIRTEL Web Integration:*
+	Change VIR0ICON 's TPIPE to use the Virtel internal line name as IRM_CLIENTID and use Virtel entry point name as IRM_RT_ALTCID (alternate client id)
 
-*MQ Updates*
+	This what ise suggested in the attached Sync Call Client Architecture.doc provided by IBM.
 
-*Miscellaneous:*
+	Also change IRM_F5 TPIPE flag to IRM_F5_AUTO:  'AUTO FLOW OF MESSAGES'
 
 
-5132 Allow Program Tab into a SCRIPT or a SCENARIO
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+	NOTE: To provide parallelism, several Virtel lines should be defined instead of only one line as previously done.
 
-New command that can be inserted in a Virtel Script to mean: 'Progam Tab'.
-
-Since a script may be invoked by a scenario through the ACTION$ instruction, also allows program tab from a scenario:
-
-..note:: When specified in a scenario, the '&' character must be escaped.
-
-:: 
-
-      ACTION$  TO-APPLICATION,KEY=7D,
-            AND=(SCRIPT,'&&>&&>Test&&/T')
+VIRTEL Web Access:
+------------------
 
 5119 Extended colors not shown by InterPel (Pelican) application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add support for the X'03' Query List variant Type of operation of the Read Partition structured field.
-(cf IBM 3270 IDS data stream programmer's Reference page 5-50)
+	Add support for the X'03' Query List variant Type of operation of the Read Partition structured field.
+	(cf IBM 3270 IDS data stream programmer's Reference page 5-50)
+
+5140 Display Virtel update level (in Home & VWA pages)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	Display Virtel update level (in Home & VWA pages) + Changes in the VWA toolbar
+
+	- Virtel Name & Update level displayed in VWA toolbar (can be disabled using user settings)
+	- Added 3D hovering style to toolbar buttons & cosmetic changes in the KeyPad popup
+	- Toolbar buttons images merged into a single sprite image
+
+5141 FireFox/Chrome extensions status icon in the Copy/Paste menu.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	FireFox/Chrome extensions status icon in the Copy/Paste menu.
+
+	A new icon (and tooltip) is displayed in the Copy+Paste menu title (on FireFox or Chrome only).
+	This icon shows the status of the FireFox/Chrome Copy+Paste extension (plugin installation and/or current domain's authorization).
+
+	The possible status are :
+	- + GREEN (Checkmark icon) : the extension is installed and the current domain is authorized
+	- + ORANGE (Padlock icon) : the extension is installed but the current domain is NOT authorized (Chrome only)
+	- + RED (Ban icon) : 
+	  - Chrome : the extension is NOT installed (or disabled)
+	  - FireFox : the extension is NOT installed (or disabled), or the domain is NOT authorized
+
+5145 ADMVWM - group copy/delete
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+
+	Implementation of a possibility of serial processing on the file list of a directory VIRTEL:
+
+	A button switches the list to serial processing mode with check boxes to select files, and input fields to change file names
+
+	In this mode:
+	- A button allows you to request the deletion of the selected files (with dialogs for confirmation, following the confirmation screen 3270)
+	- A button allows you to request to copy all the selected files. A dialog box opens to specify the target directory. If the current directory is retained as the target directory, the user will have renamed the files to be copied under a different name in the same directory.
+	- When processing is started, an abort button is displayed.
+	
+	Below each selected file line appears a notification line of the processing steps. They remain displayed, the button of refreshment of the page making it possible to update the display of the list.
+
+5150 Toolbar styling fixes
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	+ Only the virtel name can be hidden, update version is always shown (all)
+	+ Transparent background for user-defined toolbar buttons (all)
+	+ Hide toolbar infos during page load (all)
+	+ Removed blue border around the toolbar's flag icon (on IE9-)
+	+ Fixed position of close icon in keypad window (IE8-)
+	+ Fixed toolbar buttons display (IE 8-)
+
+5163 3278T terminals support: graphic characters allowed in input
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	This expands on 4842 3270 graphics support for UTF-8 to also allow graphics in INPUT fields.
+
+
+5191 Implementing help pages in different languages in VWA.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	(OFD Karlsruhe requested German, AG2R French).	
+
+
+5194 Update of Dynamic Directoriy Interface & Macro interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+VIRTEL Web Modernisation & intergration:
+----------------------------------------
 
 5133 QUICKLNK - OPTION$ FOR-QUICKLNK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Continue QUICKLNK support which started with 5101.
+	OPTION$ statement now supports 'QUICKLNK' line type.
 
-new variant of the OPTION$ statement to support sending to a line of type 'QUICKLNK'.
+	::
 
-::
-
-     OPTION$ FOR-QUICKLNK,                        
+     	OPTION$ FOR-QUICKLNK,                        
            (METHOD,'CALL'),                       
            (PROGRAM,'*TARGET'),                   
            (TERMINAL,'CICS-TERMINAL'),            
@@ -51,364 +110,338 @@ new variant of the OPTION$ statement to support sending to a line of type 'QUICK
            (RET-CODE,'RETURN-CODE'),              
            TOVAR='MYPARMS'    
 
-5135 MQPUT FORMAT STRING
-^^^^^^^^^^^^^^^^^^^^^^^^
+5187 VTA and QUICKLNK line type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Virtel is updated to allow specifying the 'TRAN' parameter in the MQ line definition.
+	This completes 5133 QUICKLNK - OPTION$ FOR-QUICKLNK
 
-When TRAN is specified with the STR value for the OUTPUT QUEUE line then the MQPUT will have the set FORMAT MQSTR option (MSGDESC_FORMAT,MQFMT_STRING)
 
-When TRAN is specified with the STR value for the INPUT QUEUE line then the MQGET will have set the  MQGMO_CONVERT option.
+	In the attached test2 scenario which is called by the test2 transaction a SEND$ request calls a QUICKLINK LINE:
 
-Provided character sets are known to MQ, this will allow MQ to perform the appropriate character set translations between the communicating systems.
+	::
+
+	         OPTION$ FOR-QUICKLNK,                                         *
+	               (METHOD,'CALL'),                                        *
+	               (PROGRAM,'*TARGET'),                                    *
+	               (TERMINAL,'TERMINAL'),                                  *
+	               (FILE-OUT,'QUESTION'),                                  *
+	               (FILE-IN,'ANSWER'),                                     *
+	               (RET-CODE,'RETURN-CODE'),                               *
+	               (RET-CICS1,'EIBRESP'),                                  *             
+	               (RET-CICS2,'EIBRESP2'),                                 * 
+	               TOVAR='MYPARMS'                    
+		*
+	         SEND$ TO-LINE,LINE='QLNKSABY',PARMS='MYPARMS',ERROR=ERRSCENAR   
+
+	This request supports the VTA protocol to call a user program under SPCICSH (the cics is defined in the QUICKLINK LINE), passing a commarea (question) and retrieving a commarea (answer).
+
+5226 VTA CONTAINERS
+^^^^^^^^^^^^^^^^^^^ 
+
+	reassembly of VIR0QLK with the new  VXMDQLNK dsect.
+	(cf 5187 VPA and QUICKLNK line type)
+
+	Also support for containers by specifiying method 'CALL-CONTAINER' in OPTION$ FOR-QUICKLNK:
+
+	::
+
+	         OPTION$ FOR-QUICKLNK,                                         *
+	               (METHOD,'CALL-CONTAINER'),                              *
+	               (PROGRAM,'*TARGET'),                                    *
+	               (TERMINAL,'TERMINAL'),                                  *
+	               (FILE-OUT,'QUESTION'),                                  *
+	               (FILE-IN,'ANSWER'),                                     *
+	               (RET-CODE,'RETURN-CODE'),                               *
+	               (RET-CICS1,'EIBRESP'),                                  *             
+	               (RET-CICS2,'EIBRESP2'),                                 * 
+	               TOVAR='MYPARMS'      
+
+
+
+5132 Allow Program Tab into a SCRIPT or a SCENARIO
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	New command that can be inserted in a Virtel Script to mean: 'Progam Tab'.
+	Since a script may be invoked by a scenario through the ACTION$ instruction, also allows program tab from a scenario:
+
+	..note:: When specified in a scenario, the '&' character must be escaped.
+
+:: 
+
+      ACTION$  TO-APPLICATION,KEY=7D,
+            AND=(SCRIPT,'&&>&&>Test&&/T')
+
 
 5138 allow COPY$ SYSTEM-TO-VARIABLE TYPE=REPLACE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The TYPE=REPLACE option was not allowed for instruction COPY$ SYSTEM-TO-VARIABLE.
 
-5140 Display Virtel update level (in Home & VWA pages)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Display Virtel update level (in Home & VWA pages) + Changes in the VWA toolbar
-
-- Virtel Name & Update level displayed in VWA toolbar (can be disabled using user settings)
-- Added 3D hovering style to toolbar buttons & cosmetic changes in the KeyPad popup
-- Toolbar buttons images merged into a single sprite image
-
-5141 FireFox/Chrome extensions status icon in the Copy/Paste menu.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-FireFox/Chrome extensions status icon in the Copy/Paste menu.
-
-A new icon (and tooltip) is displayed in the Copy+Paste menu title (on FireFox or Chrome only).
-This icon shows the status of the FireFox/Chrome Copy+Paste extension (plugin installation and/or current domain's authorization).
-
-The possible status are :
-+ GREEN (Checkmark icon) : the extension is installed and the current domain is authorized
-+ ORANGE (Padlock icon) : the extension is installed but the current domain is NOT authorized (Chrome only)
-+ RED (Ban icon) : 
-  - Chrome : the extension is NOT installed (or disabled)
-  - FireFox : the extension is NOT installed (or disabled), or the domain is NOT authorized
-
-5145 ADMVWM - group copy/delete
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
-
-Implementation of a possibility of serial processing on the file list of a directory VIRTEL:
-A button switches the list to serial processing mode with check boxes to select files, and input fields to change file names
-In this mode:
-- A button allows you to request the deletion of the selected files (with dialogs for confirmation, following the confirmation screen 3270)
-- A button allows you to request to copy all the selected files. A dialog box opens to specify the target directory. If the current directory is retained as the target directory, the user will have renamed the files to be copied under a different name in the same directory.
-- When processing is started, an abort button is displayed.
-Below each selected file line appears a notification line of the processing steps.
-They remain displayed, the button of refreshment of the page making it possible to update the display of the list.
-
-5148 variables above the BAR : ALLOW64BITS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This update adds the possibility to store Virtel Variables above the BAR, ie in 64 bits storage.
-
-For the time being, this type of variable is only used for ind$file downloads.
-The support is activated if the VIRTCT MEMORY= parameter has the option 'ALLOW64BITS', for instance:
-
-MEMORY=(ABOVE,ALLOW64BITS), ...
-
-or
-
-MEMORY=(TEST,ALLOW64BITS), ...
-
-This support also depends on the Virtel JCL JOB parameter MEMLIMIT= which controls the amount of 64-bit private virtual memory available to the Virtel address space. 
-
-For instance:
-// MEMLIMIT=2G, 
-would allow Virtel to use up to 2 gigabytes above the BAR.
-
-If the 'above the BAR' memory allocation fails, Virtel issues a message:
-
-VIRB179E ERROR ON: luname  ALLOCATING 64 BITS STORAGE - RETCODE: xxxxxxxx - REASON CODE: xxxxxxxx   
-
-the (hexadecimal) return code and reason code would be researched 
-in the DC2 code in the 'z/OS MVS System Codes ' manual.
-(or possibly in in IBM IARV64 service documentation in the 'MVS Assembler Services Reference ' manual )
-
-
-Virtel currently limits the maximum size of a Virtel variable to 2 gigabytes. 
-
-5150 Toolbar styling fixes
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-+ Only the virtel name can be hidden, update version is always shown (all)
-+ Transparent background for user-defined toolbar buttons (all)
-+ Hide toolbar infos during page load (all)
-+ Removed blue border around the toolbar's flag icon (on IE9-)
-+ Fixed position of close icon in keypad window (IE8-)
-+ Fixed toolbar buttons display (IE 8-)
-
-5151 New option in TCT to support wrting WTOs to dataset.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
-
-LOG = Console | LOG = SYSOUT | LOG= (SYSOUT,class)
-
 5157 MAP$ FORMAT= with TYPE=S9
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Allows support for positive/negative sign of a MAP$ instruction with FORMAT= and TYPE=S9
+	Allows support for positive/negative sign of a MAP$ instruction with FORMAT= and TYPE=S9
 
-When converting from a COMMAREA, if the MAP$ statement has TYPE=S9, FORMAT= will convert the '+' sign to '-' if the input number is negative.
+	When converting from a COMMAREA, if the MAP$ statement has TYPE=S9, FORMAT= will convert the '+' sign to '-' if the input number is negative.
 
-When converting to a COMMAREA, if the MAP$ statement has TYPE=S9, non numeric characters will be removed (like ONLY9 does).   
-change FORMAT= support to 
+	When converting to a COMMAREA, if the MAP$ statement has TYPE=S9, non numeric characters will be removed (like ONLY9 does).   
+	change FORMAT= support to 
 
-Exemple of statement:-
+	Exemple of statement:-
 
-::
+	::
 
-	MAP$ AREA,WITH='DOSSIER-MONTHLYPAYMENTAMOUNT',TYPE=S9,LENGTH=11,FORMAT=('+9999999.99',9) 
-
-5160 Additional VIRTEL LOG
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-TCT Changes
-
-LOG=CONSOLE | SYSOUT
-LOG=(SYSOUT,class)
-LOG=(SYSOUT,class,destid)
-
-Defaults
-
-class  = A
-destid = NULL
-
-
-Commands
-
-F VIRTEL,LOG=CONSOLE | SYSOUT | SPIN | BOTH
-
-CONSOLE	Write WTOs to the system console log.
-SYSOUT		Write WTOs to a dynamically allocated SYSOUT dataset using the LOG options in the TCT.
-SPIN		If writing to SYSOUT, spin off the current dataset for printing etc.
-BOTH		Write WTOs to both the console log and SYSOUT.
-
-
-Messages
-
-VIR0230W	DYNAMIC ALLOCATION FAILED FOR SYSOUT. LOG OPTION SET TO CONSOLE
-		VIRTEL was unable to allocate a SYSOUT datsset. LOG=SYSOUT has been terminated and WTOs are now recording to CONSOLE.
-		Action:	Contact Virtel support
-		Issuing module VIR0002A
-
-VIR0231W	ERROR OPENING SYSOUT DDNAME. LOG OPTION SET TO CONSOLE
-		VIRTEL was unable to open the SYSOUT dataset.     
-		Action:	Check for IEC related error messages in the system console log. WTOs will contine record in CONSOLE mode only. 
-			Contact Virtel support.
-		Issuing module VIR0002A
-
-VIR0232W	ERROR WRITING TO SYSOUT DDNAME. LOG OPTION SET TO CONSOLE
-		VIRTEL was unable to write to the SYSOUT dataset. Check for IEA related error messages in the system console log. WTOs will contine
-		to record in CONSOLE mode only. Contact Virtel support.     
-		Action:	None
-		Issuing module VIR0002A
-
-VIR0233I		VIRTEL SYSOUT DATASET HAS BEEN SPUN OFF 
-		VIRTEL has successfully spun off a sysout dataset.
-		Action:	None
-		Issuing module VIR0002A
-
-VIR0234W	CLOSE FAILED FOR SYSOUT DATASET. UNABLE TO SPIN OFF
-		VIRTEL failed to close the current SYSOUT dataset and consequenlty the dataset hasn't been spun off.
-		Action:	VIRTEL continues to use the SYSOUT dataset. Issue LOG=CONSOLE to stop further SYSOUT processing.
-			Contact Virtel support.
-		Issuing module VIR0002A
-
-VIR0235I		VIRTEL LOG ROUTINE VIR0002A LOADED
-		VIRTEL logging routine has been loaded. LOG commands are available.
-		Action:	None
-		Issuing module VIR0002
-
-
-VIR0236I		VIRTEL LOG RECORDING TO SYSOUT
-		VIRTEL logging is now recording to SYSOUT.
-		Action:	None
-		Issuing module VIR0002
-
-VIR0237I		VIRTEL LOG RECORDING TO SYSOUT AND CONSOLE
-		VIRTEL logging is now recording to both the system console log and SYSOUT.
-		Action:	None
-		Issuing module VIR0002
-
-VIR0238I		VIRTEL LOG RECORDING TO CONSOLE
-		VIRTEL logging is now recording to CONSOLE.
-		Action:	None
-		Issuing module VIR0002
-
-5163 3278T terminals support: graphic characters allowed in input
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This expands on 4842 3270 graphics support for UTF-8 to also allow graphics in INPUT fields.
-
-5166 Enhance TCT command
-
-The F VIRTLOG,TCT command has been enhanced to display the active LOG value.
-
-::
-
-	F SPVIREH,TCT
-
-	VIR0200I TCT                                                        
-	VIR0270I DISPLAY     035                                            
-	VIRTEL TCT=VIRTCTEH:                                                
-	SILENCE=N,MEMORY=(A,N),BFVSAM=32768,BUFDATA=016,BUFSIZE=20000,STR=03
-	COUNTRY=GB,GMT=SYSTZ,DEFUTF8=IBM1146 ,LANG=E,MAXSOCK=00240,VSAMTYP=N
-	APPLID=APPLHOLT,SMF=Y,PASSTCK=Y,VIRSECU=Y,SWA=N,NBTERM=0500,NTASK=04
-	MEMORY=(SYS(0001567K,0001567K),DATA(0002816K,0002816K)),LOG=CONSOLE 
-	VIR0280I END   
+		MAP$ AREA,WITH='DOSSIER-MONTHLYPAYMENTAMOUNT',TYPE=S9,LENGTH=11,FORMAT=('+9999999.99',9) 
 
 5177 Decimal Point for FORMAT= with TYPE=S9
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Expand 5157 MAP$ FORMAT= with TYPE=S9 to also support decimal point when translating XML to commarea.
+	Expand 5157 MAP$ FORMAT= with TYPE=S9 to also support decimal point when translating XML to commarea.
 
-For instance,
+	For instance,
 
-         MAP$ AREA,WITH='out',TYPE=S9,LENGTH=18,                       *
-               FORMAT=('+9999999999999999.99',9)
+	         MAP$ AREA,WITH='out',TYPE=S9,LENGTH=18,                       *
+	               FORMAT=('+9999999999999999.99',9)
 
+	would translate <out> -123.4 </out>
 
-would translate <out> -123.4 </out>
+	to:     
 
-to:     
+	00240  40404040 40F0F0F0 F0F0F0F0 F0F0F0F0  F0F0F1F2 F3F4D000 040000             *     00000000000001234è .       *
 
-00240  40404040 40F0F0F0 F0F0F0F0 F0F0F0F0  F0F0F1F2 F3F4D000 040000             *     00000000000001234è .       *
+	where one zero has been added at the right of the '4' digit to account for the FORMAT= definition.
 
-where one zero has been added at the right of the '4' digit to account for the FORMAT= definition.
-
-NOTE: the rightmost period ('.') or comma (',') determine the decimal point.
-
-5180 Allow several ICONNECT lines on one TPIPE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Anew request cannot be received from ICAL IMSConnect before the previous one has been finished and a Resume TPIPE has been issued.
-
-Change VIR0ICON 's TPIPE to use the Virtel internal line name as IRM_CLIENTID and use Virtel entry point name as IRM_RT_ALTCID (alternate client id)
-
-This what ise suggested in the attached Sync Call Client Architecture.doc provided by IBM.
-
-Also change IRM_F5 TPIPE flag to IRM_F5_AUTO:  'AUTO FLOW OF MESSAGES'
-
-
-NOTE: To provide parallelism, several Virtel lines should be defined instead of only one line as previously done.
-
-5187 VTA and QUICKLNK line type
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This completes 5133 QUICKLNK - OPTION$ FOR-QUICKLNK
-
-
-In the attached test2 scenario which is called by the test2 transaction a SEND$ request calls a QUICKLINK LINE:
-
-::
-
-         OPTION$ FOR-QUICKLNK,                                         *
-               (METHOD,'CALL'),                                        *
-               (PROGRAM,'*TARGET'),                                    *
-               (TERMINAL,'TERMINAL'),                                  *
-               (FILE-OUT,'QUESTION'),                                  *
-               (FILE-IN,'ANSWER'),                                     *
-               (RET-CODE,'RETURN-CODE'),                               *
-               (RET-CICS1,'EIBRESP'),                                  *             
-               (RET-CICS2,'EIBRESP2'),                                 * 
-               TOVAR='MYPARMS'                    
-	*
-         SEND$ TO-LINE,LINE='QLNKSABY',PARMS='MYPARMS',ERROR=ERRSCENAR   
-
-This request supports the VTA protocol to call a user program under SPCICSH (the cics is defined in the QUICKLINK LINE), passing a commarea (question) and retrieving a commarea (answer).
-
-5191 Implementing help pages in different languages in VWA.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-(OFD Karlsruhe requested German, AG2R French).
+	NOTE: the rightmost period ('.') or comma (',') determine the decimal point.
 
 5192 IF-SOUND-ALARM-IS-REQUESTED
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                                                 
-Virtel will allow a new template instruction: IF-SOUND-ALARM-IS-REQUESTED :
+	Virtel will allow a new template instruction: IF-SOUND-ALARM-IS-REQUESTED :
 
-{{{ IF-SOUND-ALARM-IS-REQUESTED ... whatever code is needed to ring the bell ... }}}
+	{{{ IF-SOUND-ALARM-IS-REQUESTED ... whatever code is needed to ring the bell ... }}}
 
-5194 Update of Dynamic Directoriy Interface & Macro interface
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-5196 These changes support the installation of VTG within Virtel.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+MQSeries:
+---------
+
+5135 MQPUT FORMAT STRING
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+	Line definition now supports 'TRAN' option.
+
+	- When TRAN specified with the STR value on the OUTPUT QUEUE line MQPUT sets the FORMAT MQSTR option (MSGDESC_FORMAT,MQFMT_STRING)
+	- When TRAN specified with the STR value on the INPUT QUEUE line MQGET sets the  MQGMO_CONVERT option.
+
+	Provided character sets are known to MQ, this will allow MQ to perform the appropriate character set translations between the communicating systems.
+
+Miscellaneous:
+--------------
+
+5148 variables above the BAR : ALLOW64BITS
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	This update adds the possibility to store Virtel Variables above the BAR, ie in 64 bits storage. For the time being, this type of variable is only used for ind$file downloads.
+	The support is activated if the VIRTCT MEMORY= parameter has the option 'ALLOW64BITS', for instance:
+
+	MEMORY=(ABOVE,ALLOW64BITS), ...
+	or
+	MEMORY=(TEST,ALLOW64BITS), ...
+
+	This support also depends on the Virtel JCL JOB parameter MEMLIMIT= which controls the amount of 64-bit private virtual memory available to the Virtel address space. 
+
+	For instance:
+	// MEMLIMIT=2G, 
+	would allow Virtel to use up to 2 gigabytes above the BAR.
+
+	If the 'above the BAR' memory allocation fails, Virtel issues a message:
+
+	VIRB179E ERROR ON: luname  ALLOCATING 64 BITS STORAGE - RETCODE: xxxxxxxx - REASON CODE: xxxxxxxx   
+
+	the (hexadecimal) return code and reason code would be researched in the DC2 code in the 'z/OS MVS System Codes ' manual.
+	(or possibly in in IBM IARV64 service documentation in the 'MVS Assembler Services Reference ' manual )
+
+	Virtel currently limits the maximum size of a Virtel variable to 2 gigabytes. 
+
+
+5151 New option in TCT to support wrting WTOs to dataset.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+
+	LOG = Console | LOG = SYSOUT | LOG= (SYSOUT,class)
+
+5160 Additional VIRTEL LOG
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+	TCT Changes
+
+	LOG=CONSOLE | SYSOUT
+	LOG=(SYSOUT,class)
+	LOG=(SYSOUT,class,destid)
+
+	Defaults
+
+	class  = A
+	destid = NULL
+
+
+	Commands
+
+	F VIRTEL,LOG=CONSOLE | SYSOUT | SPIN | BOTH
+
+	CONSOLE	Write WTOs to the system console log.
+	SYSOUT		Write WTOs to a dynamically allocated SYSOUT dataset using the LOG options in the TCT.
+	SPIN		If writing to SYSOUT, spin off the current dataset for printing etc.
+	BOTH		Write WTOs to both the console log and SYSOUT.
+
+
+	Messages
+
+	VIR0230W	DYNAMIC ALLOCATION FAILED FOR SYSOUT. LOG OPTION SET TO CONSOLE
+			VIRTEL was unable to allocate a SYSOUT datsset. LOG=SYSOUT has been terminated and WTOs are now recording to CONSOLE.
+			Action:	Contact Virtel support
+			Issuing module VIR0002A
+
+	VIR0231W	ERROR OPENING SYSOUT DDNAME. LOG OPTION SET TO CONSOLE
+			VIRTEL was unable to open the SYSOUT dataset.     
+			Action:	Check for IEC related error messages in the system console log. WTOs will contine record in CONSOLE mode only. 
+				Contact Virtel support.
+			Issuing module VIR0002A
+
+	VIR0232W	ERROR WRITING TO SYSOUT DDNAME. LOG OPTION SET TO CONSOLE
+			VIRTEL was unable to write to the SYSOUT dataset. Check for IEA related error messages in the system console log. WTOs will contine
+			to record in CONSOLE mode only. Contact Virtel support.     
+			Action:	None
+			Issuing module VIR0002A
+
+	VIR0233I		VIRTEL SYSOUT DATASET HAS BEEN SPUN OFF 
+			VIRTEL has successfully spun off a sysout dataset.
+			Action:	None
+			Issuing module VIR0002A
+
+	VIR0234W	CLOSE FAILED FOR SYSOUT DATASET. UNABLE TO SPIN OFF
+			VIRTEL failed to close the current SYSOUT dataset and consequenlty the dataset hasn't been spun off.
+			Action:	VIRTEL continues to use the SYSOUT dataset. Issue LOG=CONSOLE to stop further SYSOUT processing.
+				Contact Virtel support.
+			Issuing module VIR0002A
+
+	VIR0235I		VIRTEL LOG ROUTINE VIR0002A LOADED
+			VIRTEL logging routine has been loaded. LOG commands are available.
+			Action:	None
+			Issuing module VIR0002
+
+
+	VIR0236I		VIRTEL LOG RECORDING TO SYSOUT
+			VIRTEL logging is now recording to SYSOUT.
+			Action:	None
+			Issuing module VIR0002
+
+	VIR0237I		VIRTEL LOG RECORDING TO SYSOUT AND CONSOLE
+			VIRTEL logging is now recording to both the system console log and SYSOUT.
+			Action:	None
+			Issuing module VIR0002
+
+	VIR0238I		VIRTEL LOG RECORDING TO CONSOLE
+			VIRTEL logging is now recording to CONSOLE.
+			Action:	None
+			Issuing module VIR0002	
+
+5166 Enhance TCT command
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+	The F VIRTLOG,TCT command has been enhanced to display the active LOG value.
+
+	::
+
+		F SPVIREH,TCT
+
+		VIR0200I TCT                                                        
+		VIR0270I DISPLAY     035                                            
+		VIRTEL TCT=VIRTCTEH:                                                
+		SILENCE=N,MEMORY=(A,N),BFVSAM=32768,BUFDATA=016,BUFSIZE=20000,STR=03
+		COUNTRY=GB,GMT=SYSTZ,DEFUTF8=IBM1146 ,LANG=E,MAXSOCK=00240,VSAMTYP=N
+		APPLID=APPLHOLT,SMF=Y,PASSTCK=Y,VIRSECU=Y,SWA=N,NBTERM=0500,NTASK=04
+		MEMORY=(SYS(0001567K,0001567K),DATA(0002816K,0002816K)),LOG=CONSOLE 
+		VIR0280I END   
+
+
+5196 Installation of VTG within Virtel.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 5201 IND$FILE: new VIR11D3W wto if download canceled due to size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-New message displayed when an IND$FILE download is canceled it is too large:
+	New message displayed when an IND$FILE download is canceled it is too large:
+
 
 5204 ind$file download - HTPARM limit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Implement a user specifiable limit to the size of a download IND$FILE. 
+	Implement a user specifiable limit to the size of a download IND$FILE. 	Previously, the limit was hardcoded at 2 gigabytes by 5148 variables above the BAR : ALLOW64BITS. After this modification, the limit will be set by the HTPARM(4) VIRTCT parameter, specified in megabytes, with 500 as the default.
 
-Previously, the limit was hardcoded at 2 gigabytes by 5148 variables above the BAR : ALLOW64BITS 
+	For instance:
 
-After this modification, the limit will be set by the HTPARM(4) VIRTCT parameter, specified in megabytes, with 500 as the default.
+	      HTPARM=(,,,300),   	: will set the max above the BAR file size to 300 megabytes  
 
-For instance:
-
-      HTPARM=(,,,300),   	: will set the max above the BAR file size to 300 megabytes  
-
-      HTPARM=,			: will set the max above the BAR file size to the default: 50 megabytes. 
+	      HTPARM=,			: will set the max above the BAR file size to the default: 50 megabytes. 
 
 
-If the limit is reached, the VIR11D3W error message will be issued:
+	If the limit is reached, the VIR11D3W error message will be issued:
 
+	 VIR11D3W DEVTA115 IND$FILE DOWNLOAD CANCELED BECAUSE LARGER THAN HTPARM(4)  
+	 VIR11D3W CLVTA009 IND$FILE DOWNLOAD CANCELED BECAUSE LARGER THAN HTPARM(2)	
 
- VIR11D3W DEVTA115 IND$FILE DOWNLOAD CANCELED BECAUSE LARGER THAN HTPARM(4)  
-
- VIR11D3W CLVTA009 IND$FILE DOWNLOAD CANCELED BECAUSE LARGER THAN HTPARM(2)
 
 5205 VIRSV V3R3 modifications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-14/11/14     Ajout VIRDEXC3 VIRPEXC3.
+	14/11/14     Ajout VIRDEXC3 VIRPEXC3.
 
-08/12/14     Codes retour DPL pour EXCI RC=12, reason=422
-             Sources modifié: VIRPEXC3
-             Programme réassemblé: VIRPEXC3.
+	08/12/14     Codes retour DPL pour EXCI RC=12, reason=422
+	             Sources modifié: VIRPEXC3
+	             Programme réassemblé: VIRPEXC3.
 
-12/12/14     Codes retour DPL + code EXCI pour RC=12, Reason=422
-             Sources modifié: VIRPEXC3
-             Programme réassemblé: VIRPEXC3.
+	12/12/14     Codes retour DPL + code EXCI pour RC=12, Reason=422
+	             Sources modifié: VIRPEXC3
+	             Programme réassemblé: VIRPEXC3.
 
-09/02/15     Suppression store de r0 et r1 dans yuser_token pour
-             ne pas ecraser SN + LX de VIRXM.
-             Adaptation appel PC routine VIRXM a SN + LX en gardant
-             la compatibilité avec VIRXM précédent.
-             Sources modifié: VSVTRACE.
-             Programme réassemblé: VSVTSURV et VSVTINIT.       
+	09/02/15     Suppression store de r0 et r1 dans yuser_token pour
+	             ne pas ecraser SN + LX de VIRXM.
+	             Adaptation appel PC routine VIRXM a SN + LX en gardant
+	             la compatibilité avec VIRXM précédent.
+	             Sources modifié: VSVTRACE.
+	             Programme réassemblé: VSVTSURV et VSVTINIT.       
 
-5226 VTA CONTAINERs
-^^^^^^^^^^^^^^^^^^^ 
 
-reassembly of VIR0QLK with the new  VXMDQLNK dsect.
-(cf 5187 VPA and QUICKLNK line type)
 
-Also support for containers by specifiying method 'CALL-CONTAINER' in OPTION$ FOR-QUICKLNK:
 
-::
+End
+===
 
-         OPTION$ FOR-QUICKLNK,                                         *
-               (METHOD,'CALL-CONTAINER'),                              *
-               (PROGRAM,'*TARGET'),                                    *
-               (TERMINAL,'TERMINAL'),                                  *
-               (FILE-OUT,'QUESTION'),                                  *
-               (FILE-IN,'ANSWER'),                                     *
-               (RET-CODE,'RETURN-CODE'),                               *
-               (RET-CICS1,'EIBRESP'),                                  *             
-               (RET-CICS2,'EIBRESP2'),                                 * 
-               TOVAR='MYPARMS'      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Virtel 4.55 Updates
 ===================      
