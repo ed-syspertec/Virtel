@@ -45,8 +45,40 @@ Syspertec Communication
 1. Summary of Amendments
 ========================
 
+1.10 Virtel version 4.56 (xx xxx 2016)
+-------------------------------------
+
+*VIRTEL Universal Protocol:*
+
+*VIRTEL Web Access:*
+
+*VIRTEL Web Modernisation & Integration:*
+
+*Miscellaneous:*
+
+*MQSeries:*
+
+
+1.9 Virtel version 4.55 (xx xxx 2015)
+-------------------------------------
+
+*VIRTEL Universal Protocol:*
+
+*VIRTEL Web Access:*
+
+*VIRTEL Web Modernisation & Integration:*
+
+*Miscellaneous:*
+
+*MQSeries:*
+
+
 1.8 Virtel version 4.54 (xx xxx 2014)
 -------------------------------------
+
+*VIRTEL Universal Protocol:*
+
+-  TPIPE now supports multiple ICONNECT lines
 
 *VIRTEL Web Access:*
 
@@ -86,8 +118,6 @@ Syspertec Communication
    -  MAP$ instruction supports decimal point for FORMAT TYPE=S9
 
    -  New template instruction IF-SOUND-ALARM-IS-REQUESTED
-
-
 
 
 *Miscellaneous:*
