@@ -1,2 +1,0 @@
-# Virtel
-Virtel documentation project 
