@@ -10,14 +10,24 @@ Converting DOCX to RST
 
 pandoc foo.docx -o foo.rst --extract-media=images
 
-GitHub
 
-ed-syspertec ed.holt@syspertec.com/l7777
+GitHub
+------
+
+Use `GitHub <https://github.com/ed-syspertec>`_
+
+https://github.com/ed-syspertec
+
+ed-syspertec ed.holt@syspertec.com 
 
 Repositories - Virtel
 
+
+readthedocs
+-----------
+
 `readthedocs <https://readthedocs.org>`_
 
-ed-syspertec.com ed.holt@syspertec.com/l7777
+ed-syspertec.com ed.holt@syspertec.com
 
 
