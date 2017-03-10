@@ -4,8 +4,6 @@
 Installation Guide
 ==================
 
-|image0|
-
 |image1|
 
 **VIRTEL Installation**
@@ -5415,9 +5413,4 @@ These commands define admin1 and admin2 as VIRTEL administrators by adding the V
 
 The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.
 
-.. |image0| image:: images/media/image1.jpeg
-   :width: 8.26389in
-   :height: 0.85000in
-.. |image1| image:: images/media/image2.jpeg
-   :width: 3.49562in
-   :height: 1.01500in
+.. |image1| image:: images/media/logo_virtel_web.png
