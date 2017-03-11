@@ -118,7 +118,7 @@ The value of this 'application option' is taken from the transaction definition.
 	Internal name ===> ZLI-10 To associate with an entry point name
 	External name ===> Cics Name displayed on user menu
 	Description ===> Logon to CICS
-	Application ===> DBDCCICS Option ===> <<<- New Option field
+	Application ===> DBDCCICS Option ===>                     <<<- New Option field
 	PassTicket ===> Name ===> 0=no 1=yes 2=unsigned
 	Application type ===> 1 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
 	Pseudo-terminals ===> ZLVTA Prefix of name of partner terminals
@@ -163,13 +163,13 @@ Loop on a variable:
 ::
 
 	LOOP1 FOREACH$ VALUE-IN-VARIABLE,VAR='TOTO'
-	CASE$ CURRENT-FOREACH-VARIABLE-OF,LOOP1,(EQ,'XXXX',ET1)
-	COPY$ SYSTEM-TO-VARIABLE,VAR='I1',LENGTH=2, \*
-	FIELD=(VALUE-OF,CURRENT-FOREACH-INDEX),TYPE=REPLACE
-	COPY$ SYSTEM-TO-VARIABLE,VAR='V1', \*
-	FIELD=(VALUE-OF,CURRENT-FOREACH-VARIABLE),TYPE=REPLACE
-	ERROR$ 0,'TOTO: ','\*I1','==','\*V1'
-	ENDFOR$ LOOP1
+		CASE$ CURRENT-FOREACH-VARIABLE-OF,LOOP1,(EQ,'XXXX',ET1)
+		COPY$ SYSTEM-TO-VARIABLE,VAR='I1',LENGTH=2,             *
+			FIELD=(VALUE-OF,CURRENT-FOREACH-INDEX),TYPE=REPLACE
+		COPY$ SYSTEM-TO-VARIABLE,VAR='V1',                      *
+			FIELD=(VALUE-OF,CURRENT-FOREACH-VARIABLE),TYPE=REPLACE
+		ERROR$ 0,'TOTO: ','*I1','==','*V1'
+		ENDFOR$ LOOP1
 
 Loop to print all values of a variable:
 
@@ -177,31 +177,31 @@ Loop to print all values of a variable:
 
 
 	LOOP2 FOREACH$ VALUE-IN-SCREEN,SCREEN=(1,1,80,24)
-	COPY$ SCREEN-TO-VARIABLE,SCREEN=(=,01,80),VAR='screenL', X
-		TYPE=REPLACE
-	COPY$ SYSTEM-TO-VARIABLE,VAR='L1',LENGTH=2,
-		FIELD=(VALUE-OF,CURRENT-LINE),TYPE=REPLACE
-	ERROR$ 0,'line ','\*L1','==','\*screenL'
-	ENDFOR$ LOOP2
+		COPY$ SCREEN-TO-VARIABLE,SCREEN=(=,01,80),VAR='screenL',    X
+			TYPE=REPLACE
+		COPY$ SYSTEM-TO-VARIABLE,VAR='L1',LENGTH=2,
+			FIELD=(VALUE-OF,CURRENT-LINE),TYPE=REPLACE
+		ERROR$ 0,'line ','\*L1','==','\*screenL'
+		ENDFOR$ LOOP2
 
 Variables of a FOREACH loop may be referenced by the COPY$ statement. In the example below, the value of VAR1 which is copied is the current value in the FOREACH$ loop.
 
 ::
 
-		LOOP1 FOREACH$ VALUE-IN-VARIABLE,VAR='VAR1'
-		COPY$ VARIABLE-TO-SCREEN,VAR='VAR1',FOREACH=LOOP1,    *
-		SCREEN=(=,=,=)
-		COPY$ VARIABLE-TO-VARIABLE,VAR=('VAR1','VAR2'),FOREACH=LOOP1, *
-		OFFSET=8,LENGTH=5,PAD=' '
-		ENDFOR$ LOOP1
+		LOOP1   FOREACH$ VALUE-IN-VARIABLE,VAR='VAR1'
+			COPY$ VARIABLE-TO-SCREEN,VAR='VAR1',FOREACH=LOOP1,            *
+				SCREEN=(=,=,=)
+			COPY$ VARIABLE-TO-VARIABLE,VAR=('VAR1','VAR2'),FOREACH=LOOP1, *
+				OFFSET=8,LENGTH=5,PAD=' '
+			ENDFOR$ LOOP1
 
 .. note:: 
 
-FOREACH$ must have a label, and this label must match the ENDFOR$ parameter.
+	FOREACH$ must have a label, and this label must match the ENDFOR$ parameter.
 
 ::
 
-	FOREACH$ VALUE-IN-SCREEN updates CURRENT-SCREEN-POSITION (idnode://7707 ‘ = ' sign in COPY$ and CASE$).
+	FOREACH$ VALUE-IN-SCREEN updates CURRENT-SCREEN-POSITION (‘ = ' sign in COPY$ and CASE$).
 
 **New settings parameter to inhibit CTRL-R key sequence.**
 
