@@ -13,7 +13,7 @@ Installation Guide
 
 Version : 4.56
 
-Release Date : dd mmm yyyy Publication Date : dd/mm/yyyy
+Release Date : 01 Sep 2016 Publication Date : 22/09/2016
 
 Syspertec Communication
 
@@ -43,14 +43,22 @@ Syspertec Communication
 1. Summary of Amendments
 ========================
 
-1.10 Virtel version 4.56 (09 Sep 2016)
+1.10 Virtel version 4.56 (21 Jun 2016)
 --------------------------------------
-
-*VIRTEL Universal Protocol:*
 
 *VIRTEL Web Access:*
 
 -  VIRPLEX VSAMTYP=WRITER support in TCT. 
+
+- Enhancements to HTML Administration interface
+
+- Enhancements to Virtel Web Macro interface (VWM)
+
+  - Keyboard mapping
+
+- Enhancements to Virtel Dynamic Directories Interface (DDI)
+
+  - Synchronisation with VWM
 
 *VIRTEL Web Modernisation & Integration:*
 
@@ -60,15 +68,13 @@ Syspertec Communication
 
 -  TCT MAXSOC defaults to 1000.
 
-*MQSeries:*
 
-
-1.9 Virtel version 4.55 (15 Jun 2015)
+1.9 Virtel version 4.55 (31 Mar 2015)
 -------------------------------------
 
-*VIRTEL Universal Protocol:*
-
 *VIRTEL Web Access:*
+
+-  New toolbar button to toggle the 3278T mode for APL and TEXT conversion.  
 
 *VIRTEL Web Modernisation & Integration:*
 
@@ -80,9 +86,7 @@ Syspertec Communication
 
 -  Enhancements to RULE processing - $REJECT$ parameter.
 
--  Macro SCRIPT command enhancements  
-
-
+-  Transaction SCRIPT command enhancements  
 
 -  Additional commands for scenarios:
 
@@ -114,8 +118,6 @@ Syspertec Communication
 
 *Miscellaneous:*
 
--  New toolbar button to toggle the 3278T mode.
-
 -  New UNLOAD command to unload ARBO file.
 
 -  VIRSV maintenance.
@@ -140,16 +142,14 @@ Syspertec Communication
 
 -  Critical dataset VIRSWAP error will terminate VIRTEL.
 
-
-
-
+-  TCT Compatibility mode. Downward compatibility support.
 
 *MQSeries:*
 
 -  TCT additional MQ3 and MQ4 keywords.
 
 
-1.8 Virtel version 4.54 (13 Mar 2015)
+1.8 Virtel version 4.54 (05 Mar 2015)
 -------------------------------------
 
 *VIRTEL Universal Protocol:*
