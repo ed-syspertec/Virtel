@@ -3,8 +3,7 @@
 What’s new in Virtel 4.55
 =========================
 
-The following newsletter discusses some of the new features that are
-available in Virtel Release 4.55.
+The following newsletter discusses some of the new features that are available in Virtel Release 4.55.
 
 **CICS QUICKLNK support for multiple CHANNEL and CONTAINER names**
 
@@ -13,27 +12,20 @@ contains. QuickLink is a protocol used in support of Syspertec’s Virtel
 Transaction Gateway (VTG) product which is an alternative to IBM’s CTG
 solution.
 
-OPTION$ FOR-QUICKLNK,
+::
 
-(METHOD,'CALL-CONTAINER-LIST'),
+	OPTION$ FOR-QUICKLNK,
+	(METHOD,'CALL-CONTAINER-LIST'),
+	(PROGRAM,'*TARGET'),
+	(CONTAINERS-FOR-QUESTION,'DATAIN'),
+	(CONTAINERS-FOR-RESPONSE,'DATAOUT'),
+	(CHANNEL,'*MYCHANNEL'),
+	(TERMINAL,'CICS-TERMINAL'),
+	(RET-CODE,'RETURN-CODE'),
+	(RET-CICS1,'EIBRESP'),
+	(RET-CICS2,'EIBRESP2'),
+	TOVAR='MYPARMS'
 
-(PROGRAM,'\*TARGET'),
-
-(CONTAINERS-FOR-QUESTION,'DATAIN'),
-
-(CONTAINERS-FOR-RESPONSE,'DATAOUT'),
-
-(CHANNEL,'\*MYCHANNEL'),
-
-(TERMINAL,'CICS-TERMINAL'),
-
-(RET-CODE,'RETURN-CODE'),
-
-(RET-CICS1,'EIBRESP'),
-
-(RET-CICS2,'EIBRESP2'),
-
-TOVAR='MYPARMS'
 
 **Improved SCREEN-PROCESSING facility**
 
@@ -43,586 +35,399 @@ CASE$ for a SCREEN-POSITION and COPY$ to/from a SCREEN-POSITION.
 
 Example:
 
-Setting a screen position. (hh equals the number of lines in the column
+Setting a screen position. (hh equals the number of lines in the column)
 
-SET$ SCREEN-POSITION,(lig,col,len,hh)
+::
+
+	SET$ SCREEN-POSITION,(lig,col,len,hh)
 
 Advancing the position to next line:
 
-SET$ SCREEN-POSITION,TO-NEXT-LINE
+::
 
-If the next line is after the end of the current screen rectangle, it
-wraps to back to the beginning. This condition may be tested with:
+	SET$ SCREEN-POSITION,TO-NEXT-LINE
 
-IF$ NOT-FOUND,THEN=...
+If the next line is after the end of the current screen rectangle, it wraps to back to the beginning. This condition may be tested with:
 
-CASE$ which works with the current screen position:
+::
 
-CASE$ CURRENT-SCREEN-POSITION,(EQ,'XXXX',ET1),...
 
-CASE$ which works with current screen line, column, length, equal sign
-and hard coded column and length:
+	IF$ NOT-FOUND,THEN=...
+	CASE$ which works with the current screen position:
+	CASE$ CURRENT-SCREEN-POSITION,(EQ,'XXXX',ET1),...
 
-CASE$ (=,COL,LEN),(EQ,'XXXX',ET1),...
+CASE$ which works with current screen line, column, length, equal sign and hard coded column and length:-
 
-COPY$ which works with current screen line, column, length, equal sign:
+::
 
-COPY$ VARIABLE-TO-SCREEN,VAR='VAR1',SCREEN=(=,col,len)
+	CASE$ (=,COL,LEN),(EQ,'XXXX',ET1),...
+	COPY$ which works with current screen line, column, length, equal sign:
+	COPY$ VARIABLE-TO-SCREEN,VAR='VAR1',SCREEN=(=,col,len)
 
 **Support for MAP$ JSON input.**
 
-Support is added to JSON format to be copied into a commarea. This
-complements the existing XML and QUERY data currently supported by the
-MAP$ statement.
+Support is added to JSON format to be copied into a commarea. This complements the existing XML and QUERY data currently supported by the MAP$ statement.
 
-COMMAREA MAP$ FROM-VARIABLE,XML,VAR='MYINPUT' default
+::
 
-COMMAREA MAP$ FROM-VARIABLE,QUERY,VAR='MYINPUT'
-
-COMMAREA MAP$ FROM-VARIABLE,JSON,VAR='MYINPUT'
+	COMMAREA MAP$ FROM-VARIABLE,XML,VAR='MYINPUT' default
+	COMMAREA MAP$ FROM-VARIABLE,QUERY,VAR='MYINPUT'
+	COMMAREA MAP$ FROM-VARIABLE,JSON,VAR='MYINPUT'
 
 Other supported MAP$ structures:-
 
-COMMAREA MAP$ FROM-INPUT,JSON (Input is in json format)
-
-COMMAREA MAP$ FROM-INPUT,JSON,FIELD='MYINPUT'
+::
+	COMMAREA MAP$ FROM-INPUT,JSON (Input is in json format)
+	COMMAREA MAP$ FROM-INPUT,JSON,FIELD='MYINPUT'
 
 **New toolbar button to toggle the 3278T mode on/off.**
 
-The 3278T button is hidden by default but can now be shown by selecting
-options in the user settings dialog.
+The 3278T button is hidden by default but can now be shown by selecting options in the user settings dialog.
 
 **New UNLOAD command to unload ARBO.**
 
-Following the performance improvements through the introduction of VSAM
-LSR the VIRCONF program was no longer able to access the ARBO VSAM file
-when VIRTEL was running. To compensate for this a new UNLOAD command has
-been added to VIRTEL which performs an ARBO UNLOAD.
+Following the performance improvements through the introduction of VSAM LSR the VIRCONF program was no longer able to access the ARBO VSAM file when VIRTEL was running. To compensate for this a new UNLOAD command has been added to VIRTEL which performs an ARBO UNLOAD.
 
 Example:
 
-F virtel,unload
+::
 
-This command invokes the VIRCONF program which unloads the ARBO file.
-The following DD statement must be added to the Virtel procedure:-
+	F virtel,unload
 
-//SYSPUNCH DD DSN=SP000.VIRTELxx.VIRCONF.SYSIN,DISP=(,CATLG),
+This command invokes the VIRCONF program which unloads the ARBO file. The following DD statement must be added to the Virtel procedure:-
 
-// UNIT=SYSDA,VOL=SER=VVVVVV,SPACE=(TRK,(5,1)),
+::
 
-// DCB=(RECFM=FB,LRECL=80,BLKSIZE=6080)
+	//SYSPUNCH DD DSN=SP000.VIRTELxx.VIRCONF.SYSIN,DISP=(,CATLG),
+	// UNIT=SYSDA,VOL=SER=VVVVVV,SPACE=(TRK,(5,1)),
+	// DCB=(RECFM=FB,LRECL=80,BLKSIZE=6080)
 
-Or alternatively
+Or alternatively:-
 
-//SYSPUNCH DD SYSOUT=B
+::
 
-**
-Customization of the Virtel toolbar**
+	//SYSPUNCH DD SYSOUT=B
 
-The toolbar elements can now be controlled through a user custom.js
-Javascript element. An example is provided below.
+
+**Customization of the Virtel toolbar**
+
+The toolbar elements can now be controlled through a user custom.js Javascript element. An example is provided below.
 
 Sample customization code[in custom.js]:
 
-/\*
+::
 
-\* Customize the location of dynamic toolbar buttons.
-
-\* The calls to this function are ignored when they
-
-\* return nothing, or an integer not greater than 0.
-
-\*
-
-\* Customizable buttons IDs :
-
-\* > '3278T'
-
-\* > 'document-print-preview'
-
-\* > 'file-send'
-
-\* > 'file-recv'
-
-\* > 'printer'
-
-\*/
-
-function customize\_toolbarButtonIndex(id) {
-
-if (id==='printer' \|\| id==='document-print-preview') {
-
-return getToolbarButtonIndex('disconnect') + 1;
-
-}
-
-}
+	/*
+	* Customize the location of dynamic toolbar buttons.
+	* The calls to this function are ignored when they
+	* return nothing, or an integer not greater than 0.
+	*
+	* Customizable buttons IDs :
+	* > '3278T'
+	* > 'document-print-preview'
+	* > 'file-send'
+	* > 'file-recv'
+	* > 'printer'
+	*/
+	function customize\_toolbarButtonIndex(id) {
+	if (id==='printer' \|\| id==='document-print-preview') {
+	return getToolbarButtonIndex('disconnect') + 1;
+	}
+	}
 
 **NEW MAP$ FROM-INPUT TO-VARIABLES parameter**
 
-The MAP$ FROM-INPUT statement now has a new TO-VARIABLES parameter. This
-enables conversion of input directly to output variables without the
-need to go through an intermediate commarea.
+The MAP$ FROM-INPUT statement now has a new TO-VARIABLES parameter. This enables conversion of input directly to output variables without the need to go through an intermediate commarea.
+
+Before you had to use three statements:-
+
+::
+
+	JSONAF1 MAP$ FROM-INPUT,JSON,FIELD='MYINPUT' 	generate commarea
+	JSONAF1 MAP$ TO-VARIABLE,VAR='MYCRBO00'         copy commarea to variable
+	JSONAF1 TOVAR$ FROM-VARIABLE,VAR='MYCRBO00'     generate variables
+
+	This would convert the JSON input to variables with the names specified in the JSONAF1 MAP$. Now, the similar conversion can be achieved with 	just one statement:-
+
+::
+
+	JSONAF1 MAP$ FROM-INPUT,JSON,TO-VARIABLES,FIELD='MYINPUT'    generate variables
+
+.. note::
+	
+	This new form of the instruction alleviates the need for an OCCURS=UNLIMITED at the end of a description.
+
+**Allow re-execution of a MAP$ FROM-INPUT**
+
+In the following scenario, the two 'MAP$ FROM-INPUT' will produce the same output.
+
+Example:-
+
+::
+
+	JSON1 SCREENS APPL=JSON1
+	*
+	SCENARIO INITIAL
+	*
+	SET$ ENCODING,UTF-8,'IBM1147'
+	JSONAF1 MAP$ BEGIN
+	MAP$ AREA,WITH='inAFR',LENGTH=30
+	MAP$ AREA,WITH='inICT',LENGTH=30
+	*
+	INSUBFS MAP$ BEGIN,WITH='friends'
+	INSUBF MAP$ BEGIN,WITH=NEXT-ELEMENT,OCCURS=UNLIMITED
+	MAP$ AREA,WITH='inRRN',LENGTH=17
+	MAP$ AREA,WITH='inQtyT10',LENGTH=10,TYPE=9
+	INSUBF MAP$ END
+	INSUBFS MAP$ END
+	JSONAF1 MAP$ END
+	*
+	JSONAF1 MAP$ FROM-INPUT,JSON,TO-VARIABLES,FIELD='MYINPUT'
+	ERROR$ 0,'COUNT=','*INSUBF'
+	DEBUG$ SNAP,TERMINAL
+	PERFORM$ DECODE
+	*
+	JSONAF1 MAP$ FROM-INPUT,JSON,TO-VARIABLES,FIELD='MYINPUT'
+	ERROR$ 0,'COUNT=','*INSUBF'
+	DEBUG$ SNAP,TERMINAL
+	PERFORM$ DECODE
+	*
+	SCENARIO END
+	*
+	DECODE SCENARIO SUBROUTINE
+	DECODELOOP LABEL$
+	IF$ NOT-EXISTS-VARIABLE,'inRRN',THEN=THEEND
+	ERROR$ 0,'inRRN=','*inRRN'
+	ERROR$ 0,'inQtyT10=','*inQtyT10'
+	POP$ FIRST-VALUE-OF,VAR='inRRN'
+	POP$ FIRST-VALUE-OF,VAR='inQtyT10'
+	GOTO$ DECODELOOP
+	THEEND LABEL$
+	SCENARIO END
+	*
+	SCRNEND
+	END ,
+
+**New trimming functions. CASE$ RTRIM and LTRIM / EMPTY**
+
+Two new optional parameters for the CASE$ instruction, RTRIM= and LTRIM=, allow the removal of one or more characters from the various operands of the CASE$ instruction before the comparisons are done.
+
+Also, a new CASE$ condition EMPTY is added to allow testing whether a variable or a part of the screen buffer is empty. The empty condition can be tested after the variable or screen has been trimmed.
+
+Examples:-
+
+::
+
+	  CASE$ 'MYVAR',                                *
+	   (EMPTY,L2),                                  *
+	   (CONTAINS,'*Val',L1)                         *
+	   RTRIM=('\_',' '),                            *
+	   LTRIM=('\_',' '),                            *
+	   ELSE=other
+	*
+	  CASE$ (1,1,80),                               * 
+	   (CONTAINS,'Val',L1),RTRIM=('\_',' ')
+
+..note::
+
+	1: CASE$ do not change the contents of the variables or parts of the screen being compared.
+
+	2: If the variable being tested does not exist, (eg 'MYVAR' does not exist), it is not considered empty. Rather, the CASE$ branches at the ELSE= label.
+
+LTRIM and RTRIM will trim both the value being tested (variable or part of the screen buffer) and the variable arguments, but not the static arguments.
+
+For example:-
+
+    (EQ,'*VAR1',label1) The value of the VAR1 variable will be trimmed prior to comparison.
 
-Before you had to use three statements:
-
-JSONAF1 **MAP$** **FROM-INPUT**,\ **JSON**,\ **FIELD**\ ='MYINPUT'
-generate commarea
-
-JSONAF1 **MAP$** **TO-VARIABLE**,\ **VAR**\ ='MYCRBO00' copy commarea to
-variable
-
-JSONAF1 **TOVAR$** **FROM-VARIABLE**,\ **VAR**\ ='MYCRBO00' generate
-variables
-
-This would convert the JSON input to variables with the names specified
-in the JSONAF1 MAP$. Now, the similar conversion can be achieved with
-just one statement:-
-
-JSONAF1 **MAP$**
-**FROM-INPUT**,\ **JSON**\ *,*\ TO-VARIABLES,\ **FIELD**\ ='MYINPUT'
-generate variables
-
-NOTE: This new form of the instruction alleviates the need for an
-OCCURS=UNLIMITED at the end of a description.
-
-**
-Allow re-execution of a MAP$ FROM-INPUT**
-
-In the following scenario, the two 'MAP$ FROM-INPUT' will produce the
-same output.
-
-Example
-
-JSON1 SCREENS APPL=JSON1
-
-\*
-
-SCENARIO INITIAL
-
-\*
-
-SET$ ENCODING,UTF-8,'IBM1147'
-
-JSONAF1 MAP$ BEGIN
-
-MAP$ AREA,WITH='inAFR',LENGTH=30
-
-MAP$ AREA,WITH='inICT',LENGTH=30
-
-\*
-
-INSUBFS MAP$ BEGIN,WITH='friends'
-
-INSUBF MAP$ BEGIN,WITH=NEXT-ELEMENT,OCCURS=UNLIMITED
-
-MAP$ AREA,WITH='inRRN',LENGTH=17
-
-MAP$ AREA,WITH='inQtyT10',LENGTH=10,TYPE=9
-
-INSUBF MAP$ END
-
-INSUBFS MAP$ END
-
-JSONAF1 MAP$ END
-
-\*
-
-JSONAF1 MAP$ FROM-INPUT,JSON,TO-VARIABLES,FIELD='MYINPUT'
-
-ERROR$ 0,'COUNT=','\*INSUBF'
-
-DEBUG$ SNAP,TERMINAL
-
-PERFORM$ DECODE
-
-\*
-
-JSONAF1 MAP$ FROM-INPUT,JSON,TO-VARIABLES,FIELD='MYINPUT'
-
-ERROR$ 0,'COUNT=','\*INSUBF'
-
-DEBUG$ SNAP,TERMINAL
-
-PERFORM$ DECODE
-
-\*
-
-SCENARIO END
-
-\*
-
-DECODE SCENARIO SUBROUTINE
-
-DECODELOOP LABEL$
-
-IF$ NOT-EXISTS-VARIABLE,'inRRN',THEN=THEEND
-
-ERROR$ 0,'inRRN=','\*inRRN'
-
-ERROR$ 0,'inQtyT10=','\*inQtyT10'
-
-POP$ FIRST-VALUE-OF,VAR='inRRN'
-
-POP$ FIRST-VALUE-OF,VAR='inQtyT10'
-
-GOTO$ DECODELOOP
-
-THEEND LABEL$
-
-SCENARIO END
-
-\*
-
-SCRNEND
-
-END ,
-
-**
-New trimming functions. CASE$ RTRIM and LTRIM / EMPTY**
-
-Two new optional parameters for the CASE$ instruction, RTRIM= and
-LTRIM=, allow the removal of one or more characters from the various
-operands of the CASE$ instruction before the comparisons are done.
-
-Also, a new CASE$ condition EMPTY is added to allow testing whether a
-variable or a part of the screen buffer is empty. The empty condition
-can be tested after the variable or screen has been trimmed.
-
-Examples:
-
-CASE$ 'MYVAR', \*
-
-(EMPTY,L2), \*
-
-(CONTAINS,'\*Val',L1) \*
-
-RTRIM=('\_',' '), \*
-
-LTRIM=('\_',' '), \*
-
-ELSE=other
-
-\*
-
-CASE$ (1,1,80), \*
-
-(CONTAINS,'Val',L1),RTRIM=('\_',' ')
-
-NOTE 1: CASE$ do not change the contents of the variables or parts of
-the screen being compared.
-
-NOTE 2: If the variable being tested does not exist, (eg 'MYVAR' does
-not exist), it is not considered empty. Rather, the CASE$ branches at
-the ELSE= label.
-
-LTRIM and RTRIM will trim both the value being tested (variable or part
-of the screen buffer) and the variable arguments, but not the static
-arguments.
-
-For example:
-
-    (EQ,'\*VAR1',label1) The value of the VAR1 variable will be trimmed
-    prior to comparison.
-
-    (EQ,'zagreb ',label2) The value of the string 'zagreb ' will NOT be
-    trimmed – it is a static argument.
+    (EQ,'zagreb ',label2) The value of the string 'zagreb ' will NOT be trimmed – it is a static argument.
 
 **New trimming functions. COPY$ RTRIM and LTRIM**
 
-Two new optional parameters for the COPY$ LIST-TO-VARIABLE instruction,
-RTRIM= and LTRIM=, will trim one or more characters from the various
-variable operands of the COPY$ instruction prior to performing the copy.
+Two new optional parameters for the COPY$ LIST-TO-VARIABLE instruction, RTRIM= and LTRIM=, will trim one or more characters from the various variable operands of the COPY$ instruction prior to performing the copy.
 
-Example:
+Example:-
 
-COPY$ LIST-TO-VARIABLE,VAR='VAR1',
+		COPY$ LIST-TO-VARIABLE,VAR='VAR1',                          *
+			RTRIM=('\_',' '),LTRIM=('\_',' '),
+		LIST=('string1','*var1',VARIABLE,'var2')
 
-RTRIM=('\_',' '),LTRIM=('\_',' '),
+The variable VAR1 is created/modified, with 'string1' copied as is, var1 and var2 left and right trimmed.
 
-LIST=('string1','\*var1',VARIABLE,'var2')
+**Indirection on OUTPUT-FILE-TO-VARIABLE FILE=**
 
-The variable VAR1 is created/modified, with 'string1' copied as is, var1
-and var2 left and right trimmed.
+This feature allows indirection of a file name. The filename is pointed to by the variable *variable\_name.
 
-**
-Indirection on OUTPUT-FILE-TO-VARIABLE FILE=**
+Example:-
 
-This feature allows indirection of a file name. The filename is pointed
-to by the variable \*variable\_name.
+::
 
-Example:
-
-COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='\*MYFILE',VAR='MYRESULT'
+	COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='*MYFILE',VAR='MYRESULT'
 
 **COPY$ VARIABLE-TO-VARIABLE**
 
-Copies a source variable to a target variable. VAR= must specifies two
-variable names, the first being the source, the second the target.
+Copies a source variable to a target variable. VAR= must specifies two variable names, the first being the source, the second the target.
 
-TYPE=REP may be specified to mean the target variable should be
-replaced. Otherwise the new value is appended the target variable.
+TYPE=REP may be specified to mean the target variable should be replaced. Otherwise the new value is appended the target variable.
 
-OFFSET= is the number of characters to skip in the string, defaulting to
-0.
+OFFSET= is the number of characters to skip in the string, defaulting to 0.
 
-LENGTH= is how many characters to copy, defaulting to the remainder of
-the string from start. If length is longer than the string, padding
-occurs with the PAD= character. This defaults to the blank.
+LENGTH= is how many characters to copy, defaulting to the remainder of the string from start. If length is longer than the string, padding occurs with the PAD= character. This defaults to the blank.
 
-Example
+Example:-
+
+::
 
 COPY$ VARIABLE-TO-VARIABLE,
-
     VAR=('VAR1','VAR2'),
-
     OFFSET=8,LENGTH=5,PAD=' '
 
 **COPY$ CURRENT-LINE enhancement**
 
-This update complements the CASES$ CURRENT-SCREEN POSITION feature. It
-allows copying of current values of the field in the SCREEN-POSITION to
-a variable. The length of the returned value may be specified with the
-LENGTH= parameter.
+This update complements the CASES$ CURRENT-SCREEN POSITION feature. It allows copying of current values of the field in the SCREEN-POSITION to a variable. The length of the returned value may be specified with the LENGTH= parameter.
 
-Examples:
+Examples:-
 
-SET$ SCREEN-POSITION,(10,20,5,15)
+::
 
-SET$ SCREEN-POSITION,TO-NEXT-LINE
+	SET$ SCREEN-POSITION,(10,20,5,15) 
+	SET$ SCREEN-POSITION,TO-NEXT-LINE
+	COPY$ SYSTEM-TO-VARIABLE,VAR='L1',LENGTH=2,                       *
+		FIELD=(VALUE-OF,CURRENT-LINE)
+	COPY$ SYSTEM-TO-VARIABLE,VAR='C1',LENGTH=2,                       *
+		FIELD=(VALUE-OF,CURRENT-COLUMN)
+	COPY$ SYSTEM-TO-VARIABLE,VAR='L2',                                *
+		FIELD=(VALUE-OF,CURRENT-LENGTH)
+	COPY$ SYSTEM-TO-VARIABLE,VAR='H1',                                *
+		FIELD=(VALUE-OF,CURRENT-HEIGHT)
 
-COPY$ SYSTEM-TO-VARIABLE,VAR='L1',LENGTH=2, \*
-
-FIELD=(VALUE-OF,CURRENT-LINE)
-
-COPY$ SYSTEM-TO-VARIABLE,VAR='C1',LENGTH=2, \*
-
-FIELD=(VALUE-OF,CURRENT-COLUMN)
-
-COPY$ SYSTEM-TO-VARIABLE,VAR='L2', \*
-
-FIELD=(VALUE-OF,CURRENT-LENGTH)
-
-COPY$ SYSTEM-TO-VARIABLE,VAR='H1', \*
-
-FIELD=(VALUE-OF,CURRENT-HEIGHT)
 
 **Virtel Memory Display**
 
-The Memory display feature is a memory diagnostic tool created to trap
-possible invalid Virtel memory free requests. Such request can lead to
-ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE
-and RENDRE) are tracked in a diagnostic storage area located above the
-bar.
+The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar.
 
-The area is 1MB in size and can contain 65536 active storage requests.
-An active storage request is a storage area that has been gotten
-(PRENDRE) and is pending a Virtel storage release (RENDRE).
+The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).
 
-This diagnostic tool should only be used when recommended by Technical
-Support.
+This diagnostic tool should only be used when recommended by Technical Support.
 
 The feature is supported by the following command:-
+
+::
 
 F VIRTEL,MEMDISPLAY
 
 This produces a breakdown of the internal VIRTEL subpools. See the
 following command response:-
 
+:
 F SPTHOLTV,MEMDISPLAY
-
 VIR0200I MEMDISPLAY
-
 VIR0271I DISPLAY 763
-
-SP1=00024478 SP2=00000CCC SP3=00090DE0 SP4=000027E4
-
-00910091 00030009 02430294 00090011
-
-SP5=00029293 SP6=0004DCF4 SP7=00000000 SP8=00000000
-
-00A404C7 01370137 00000000 00000002
-
+SP1=00024478 SP2=00000CCC SP3=00090DE0 SP4=000027E4 00910091 00030009 02430294 00090011
+SP5=00029293 SP6=0004DCF4 SP7=00000000 SP8=00000000 00A404C7 01370137 00000000 00000002
 POOL CONTROL BLOCK. SUBPOOL=1
-
 PAG=00108000 NFQ=00108008 #FQ=00000001 FRE=0000B2A0
-
 PAG=000F8000 NFQ=000F8008 #FQ=00000001 FRE=00000080
-
 PAG=000E8000 NFQ=000E8008 #FQ=00000001 FRE=00000078
-
 POOL CONTROL BLOCK. SUBPOOL=2
-
 PAG=1EC14000 NFQ=1EC14008 #FQ=00000004 FRE=0000F2F0
-
 POOL CONTROL BLOCK. SUBPOOL=3
-
 PAG=1ECC4000 NFQ=1ECC4008 #FQ=00000002 FRE=00006408
-
 PAG=1ED54000 NFQ=1ED54008 #FQ=00000002 FRE=00001750
-
 PAG=1EC74000 NFQ=1EC74008 #FQ=00000001 FRE=00000878
-
 PAG=1ED04000 NFQ=1ED04008 #FQ=00000001 FRE=00000878
-
 PAG=1ED94000 NFQ=1ED94008 #FQ=00000002 FRE=00002768
-
 PAG=1ECF4000 NFQ=1ECF4008 #FQ=00000002 FRE=000017F0
-
 PAG=1EE04000 NFQ=1EE04008 #FQ=00000001 FRE=00000878
-
 PAG=1ED74000 NFQ=1ED74008 #FQ=00000001 FRE=00000878
-
 PAG=1ECE4000 NFQ=1ECE4008 #FQ=00000001 FRE=00000878
-
 PAG=1EC64000 NFQ=1EC64008 #FQ=00000001 FRE=00000878
-
 POOL CONTROL BLOCK. SUBPOOL=4
-
 PAG=1EC04000 NFQ=1EC04008 #FQ=00000003 FRE=0000D750
-
 POOL CONTROL BLOCK. SUBPOOL=5
-
 PAG=1ED24000 NFQ=1ED24008 #FQ=00000001 FRE=0000A1D8
-
 PAG=1ED14000 NFQ=1ED14008 #FQ=00000001 FRE=000043B8
-
 PAG=1EC54000 NFQ=1EC54008 #FQ=00000001 FRE=000043B8
-
 PAG=1EBB4000 NFQ=1EBB4008 #FQ=00000001 FRE=000043B8
-
 POOL CONTROL BLOCK. SUBPOOL=6
-
 PAG=1EBF4000 NFQ=1EBF4008 #FQ=00000003 FRE=00000D40
-
 PAG=1EBE4000 NFQ=1EBE4008 #FQ=00000001 FRE=00000088
-
 PAG=1EBD4000 NFQ=1EBD4008 #FQ=00000001 FRE=000000B8
-
 PAG=1EBC4000 NFQ=1EBC4008 #FQ=00000001 FRE=000000D0
-
 PAG=1EBA4000 NFQ=1EBA4008 #FQ=00000001 FRE=00000108
-
 POOL CONTROL BLOCK. SUBPOOL=7
-
 PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000
-
 POOL CONTROL BLOCK. SUBPOOL=8
-
 PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000
-
 ALLOC=0001213K, FREE=0000314K, TOTAL=0001536K
-
 VIR0272I END
 
 **Enablement/Dis-enablement**
 
-The memory diagnostic tool is only activated through the following TCT
-parameter
+The memory diagnostic tool is only activated through the following TCT parameter
 
-MEMORY=(ABOVE,MEMHST),
+::
+
+	MEMORY=(ABOVE,MEMHST),
 
 The memory diagnostic tool can be deactivated by the following command:-
 
-F VIRTEL,MEMDISPLAY,DISABLE
+::
+
+	F VIRTEL,MEMDISPLAY,DISABLE
 
 Operation
+^^^^^^^^^
 
-With the memory diagnostic tool active the following command be used to
-summarize the VIRTEL subpool active allocated memory:-
+With the memory diagnostic tool active the following command be used to summarize the VIRTEL subpool active allocated memory:-
+
+::
 
 F VIRTEL,MEMDISPLAY
-
 The following will be displayed:-
-
 F SPTHOLTV,MEMDISPLAY
-
 VIR0200I MEMDISPLAY
-
 VIR0271I DISPLAY 978
-
 SP1=00024478 SP2=00001044 SP3=0008E35F SP4=00002F61
-
 00910091 00040009 02380294 000B0011
-
-SP5=\ **000317DC** SP6=0004DF73 SP7=00000000 SP8=00000220
-
-**00C504C7** 01370137 00000000 00000002
-
+SP5=000317DC SP6=0004DF73 SP7=00000000 SP8=00000220 00C504C7 01370137 00000000 00000002
 POOL CONTROL BLOCK. SUBPOOL=1
-
 PAG=00109000 NFQ=00109008 #FQ=00000001 FRE=0000B2A0
-
 PAG=000F9000 NFQ=000F9008 #FQ=00000001 FRE=00000080
-
 PAG=000E9000 NFQ=000E9008 #FQ=00000001 FRE=00000078
-
 POOL CONTROL BLOCK. SUBPOOL=2
-
 PAG=1EC14000 NFQ=1EC14008 #FQ=00000005 FRE=0000EF68
-
 POOL CONTROL BLOCK. SUBPOOL=3
-
 PAG=1ECD4000 NFQ=1ECD4008 #FQ=00000002 FRE=00009DF8
-
 PAG=1ED54000 NFQ=1ED54008 #FQ=00000002 FRE=00001750
-
 PAG=1EC84000 NFQ=1EC84008 #FQ=00000001 FRE=00000878
-
 PAG=1ED04000 NFQ=1ED04008 #FQ=00000001 FRE=00000878
-
 PAG=1ED94000 NFQ=1ED94008 #FQ=00000002 FRE=00002768
-
 PAG=1ECF4000 NFQ=1ECF4008 #FQ=00000001 FRE=00000878
-
-PAG=1EE04000 NFQ=1EE04008 #FQ=00000001 FRE=00000878
-
+AG=1EE04000 NFQ=1EE04008 #FQ=00000001 FRE=00000878
 PAG=1ED74000 NFQ=1ED74008 #FQ=00000001 FRE=00000878
-
 PAG=1ECE4000 NFQ=1ECE4008 #FQ=00000001 FRE=00000878
-
 PAG=1EC64000 NFQ=1EC64008 #FQ=00000001 FRE=00000878
-
 POOL CONTROL BLOCK. SUBPOOL=4
-
 PAG=1EC04000 NFQ=1EC04008 #FQ=00000004 FRE=0000CFA0
-
 POOL CONTROL BLOCK. SUBPOOL=5
-
 PAG=1ECA4000 NFQ=1ECA4008 #FQ=00000002 FRE=0000D870
-
 PAG=1ED14000 NFQ=1ED14008 #FQ=00000001 FRE=000043B8
-
 PAG=1ED24000 NFQ=1ED24008 #FQ=00000001 FRE=000043B8
-
 PAG=1EC74000 NFQ=1EC74008 #FQ=00000001 FRE=0000A1D8
-
 PAG=1EC54000 NFQ=1EC54008 #FQ=00000001 FRE=0000A1D8
-
 PAG=1EBB4000 NFQ=1EBB4008 #FQ=00000001 FRE=000043B8
-
 POOL CONTROL BLOCK. SUBPOOL=6
-
 PAG=1EBF4000 NFQ=1EBF4008 #FQ=00000002 FRE=00000A50
-
 PAG=1EBE4000 NFQ=1EBE4008 #FQ=00000001 FRE=00000088
-
 PAG=1EBD4000 NFQ=1EBD4008 #FQ=00000001 FRE=000000B8
-
 PAG=1EBC4000 NFQ=1EBC4008 #FQ=00000001 FRE=000000D0
-
 PAG=1EBA4000 NFQ=1EBA4008 #FQ=00000001 FRE=00000108
-
 POOL CONTROL BLOCK. SUBPOOL=7
-
 PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000
-
 POOL CONTROL BLOCK. SUBPOOL=8
-
 PAG=1ECB4000 NFQ=1ECB4008 #FQ=00000001 FRE=0000FDB0
-
 ALLOC=0001240K, FREE=0000479K, TOTAL=0001728K
-
 VIR0272I END
 
 The display response is split into a summary section for each subpool
@@ -950,11 +755,11 @@ hours of data in the log stream.
 
 SAMPLE JCL:
 
-//\*
+//*
 
-//\* DESCRIPTION
+//* DESCRIPTION
 
-//\*
+//*
 
 //LOGGER PROC P=
 
@@ -962,7 +767,7 @@ SAMPLE JCL:
 
 //STEPLIB DD DSN=VIRTEL.LOADLIB,DISP=SHR
 
-//VIRLOG DD SYSOUT=\*,DCB=BLKSIZE=25500
+//VIRLOG DD SYSOUT=*,DCB=BLKSIZE=25500
 
 // PEND
 
@@ -1046,16 +851,16 @@ VALUE-OF (SYSCLONE-SYMBOL)
 
 or
 
-COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1', \*
+COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1', *
 
 FIELD=(VALUE-OF,SYSCLONE-SYMBOL)
 
 The CLONE= value will also override any &SYSCLONE symbolic that may be
 specified in dataset names within the TCT. For example:
 
-STATDSN=(SP000.SPVIREH.SYS&&SYSCLONE..STATA, STATS=MULTI\*
+STATDSN=(SP000.SPVIREH.SYS&&SYSCLONE..STATA, STATS=MULTI*
 
-SP000.SPVIREH.SYS&&SYSCLONE..STATB), STATS=MULTI\*
+SP000.SPVIREH.SYS&&SYSCLONE..STATB), STATS=MULTI*
 
 The STATDSN keyword as defined in the TCT will allocate and use
 datasets:-
@@ -1198,15 +1003,15 @@ The trace buffers are offloaded to a GDG dataset which means historical
 trace data can be kept. To set up the GDG see the below. This job can
 also be found in the SAMPLIB dataset as member DEFTRGDG.
 
-//\*
+//*
 
-//\* DEFINE THE TRACE GDG DATASET
+//* DEFINE THE TRACE GDG DATASET
 
-//\*
+//*
 
 //DELETE EXEC PGM=IDCAMS
 
-//SYSPRINT DD SYSOUT=\*
+//SYSPRINT DD SYSOUT=*
 
 DELETE VIRTEL.TRACE.GDG GDG
 
@@ -1224,17 +1029,17 @@ SET MAXCC=0
 
 // DCB=BLKSIZE=13300
 
-//\*
+//*
 
 //ALLOC2 EXEC PGM=IDCAMS
 
-//SYSPRINT DD SYSOUT=\*
+//SYSPRINT DD SYSOUT=*
 
-//SYSIN DD \*
+//SYSIN DD *
 
 DEF GDG(NAME(VIRTEL.TRACE.GDG) LIMIT(5) SCRATCH NOEMPTY)
 
-/\*
+/*
 
 TCT option:-
 
