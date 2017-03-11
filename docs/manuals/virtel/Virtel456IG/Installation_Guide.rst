@@ -50,9 +50,15 @@ Syspertec Communication
 
 *VIRTEL Web Access:*
 
+-  VIRPLEX VSAMTYP=WRITER support in TCT. 
+
 *VIRTEL Web Modernisation & Integration:*
 
 *Miscellaneous:*
+
+-  LSR and WTO corrections.
+
+-  TCT MAXSOC defaults to 1000.
 
 *MQSeries:*
 
@@ -66,9 +72,81 @@ Syspertec Communication
 
 *VIRTEL Web Modernisation & Integration:*
 
+-  'QUICKLNK' supports multiple containers.
+
+-  VIRPLEX 'SHRHTTP' line type.
+
+-  VIRPLEX communication.
+
+-  Enhancements to RULE processing - $REJECT$ parameter.
+
+-  Macro SCRIPT command enhancements  
+
+
+
+-  Additional commands for scenarios:
+
+    - COPY$ supports column to variable with TYPE=REP
+
+    - Screen positioning support for SET$, CASE$ and COPY$
+
+    - MAP$ JSON support for COMMAREA
+
+    - Allow embedded OCCURS=UNLIMITED keyword
+
+    - MAP$ FROM-INPUT TO-VARIABLES converts XML or JSON directlt to variables.
+
+    - Allow re-execution of a MAP$ FROM-INPUT.
+
+    - CASE$ and COPY$ support RTRIM and LTRIM
+
+    - OUTPUT-FILE-TO-VARIABLE supports a variable as input.
+
+    - COPY$ VARIABLE-TO-VARIABLE copies source to target variable.
+
+    - COPY$ CURRENT-LINE copies SCREEN-POSITION ifield values to a variable.
+
+    - APPLICATON-OPTION support.
+
+    - SCENARIO FAIL | SUCCESS parameter.   
+
+
+
 *Miscellaneous:*
 
+-  New toolbar button to toggle the 3278T mode.
+
+-  New UNLOAD command to unload ARBO file.
+
+-  VIRSV maintenance.
+
+-  MEMDISPLAY - Memory display diagnostic command.
+
+-  Virtel displays customer USSTAB MSG10
+
+-  LOGGER stream and structure name set in TCT
+
+-  SNAPMSG command
+
+-  LOGGER extraction utility
+
+-  Override ARBO IP and &SYSCLONE values in JCL PARM
+
+-  Trace offload facility
+
+-  DOC directory added for online help templates.
+
+-  New Virtel logo.
+
+-  Critical dataset VIRSWAP error will terminate VIRTEL.
+
+
+
+
+
 *MQSeries:*
+
+-  TCT additional MQ3 and MQ4 keywords.
 
 
 1.8 Virtel version 4.54 (xx xxx 2014)
@@ -122,19 +200,15 @@ Syspertec Communication
 
 -  Support for 'Above the bar' 2GB storage for Virtel variables.
 
--  Allow Log datasets to be spooled/spun off to JES2
+-  Allow Log datasets to be spooled/spun off to JES2.
 
--  TCT command now displays the LOG option
+-  TCT command now displays the LOG option.
 
--  Virtel installation now includes VTG
+-  Virtel installation now includes VTG.
 
--  IND$FILE upload and download limit options
+-  IND$FILE upload and download limit can be set in new TCT options.
 
--  VIRSV maintenance 
-
-
-
-
+-  VIRSV maintenance. 
 
 
 *MQSeries:*
