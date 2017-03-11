@@ -118,7 +118,7 @@ The value of this 'application option' is taken from the transaction definition.
 	Internal name ===> ZLI-10 To associate with an entry point name
 	External name ===> Cics Name displayed on user menu
 	Description ===> Logon to CICS
-	Application ===> DBDCCICS Option ===> ................................
+	Application ===> DBDCCICS Option ===> <<<- New Option field
 	PassTicket ===> Name ===> 0=no 1=yes 2=unsigned
 	Application type ===> 1 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
 	Pseudo-terminals ===> ZLVTA Prefix of name of partner terminals
@@ -184,9 +184,7 @@ Loop to print all values of a variable:
 	ERROR$ 0,'line ','\*L1','==','\*screenL'
 	ENDFOR$ LOOP2
 
-Variables of a FOREACH loop may be referenced by the COPY$ statement. In
-the example below, the value of VAR1 which is copied is the current
-value in the FOREACH$ loop.
+Variables of a FOREACH loop may be referenced by the COPY$ statement. In the example below, the value of VAR1 which is copied is the current value in the FOREACH$ loop.
 
 ::
 
@@ -197,13 +195,13 @@ value in the FOREACH$ loop.
 		OFFSET=8,LENGTH=5,PAD=' '
 		ENDFOR$ LOOP1
 
-Notes:
+..notes:: 
 
-FOREACH$ must have a label, and this label must match the ENDFOR$
-parameter.
+FOREACH$ must have a label, and this label must match the ENDFOR$ parameter.
 
-FOREACH$ VALUE-IN-SCREEN updates CURRENT-SCREEN-POSITION (idnode://7707
-‘ = ' sign in COPY$ and CASE$).
+::
+
+	FOREACH$ VALUE-IN-SCREEN updates CURRENT-SCREEN-POSITION (idnode://7707 ‘ = ' sign in COPY$ and CASE$).
 
 **New settings parameter to inhibit CTRL-R key sequence.**
 
@@ -236,7 +234,7 @@ script. Function keys may now be specified as &\*key. For example :-
 
 My cursor disappears in a reverse video field.
 
-**Solution**
+*Solution*
 
 This is probably due to the font and cursor selection. In the settings panel select BAR as the cursor and a font setting like Droid Sans Mono or DejaVu Sans Mono
 
@@ -245,25 +243,33 @@ This is probably due to the font and cursor selection. In the settings panel sel
 I’ve just installed Virtel but when I try to execute the Admin (HTML) from the W2H Administration Portal I get the message *“The version of scenario of your scenario ‘ADMINVWM’ is “.” ‘20151215 is
 required*.” My W2H session is then terminated.
 
-|image0| Figure 1 Error message when accessing Admin (HTML)
+|image0| 
 
-**Solution**
+Figure 1 Error message when accessing Admin (HTML)
+
+*Solution*
 
 You will need to change the W2H entry point, WEB2HOST, to specify a directory to search when loading scenarios. By default, scenarios are loaded from the VIRTEL LOADLIB. For W2H they need to come from the scenario SCE-DIR. Load up the Admin portal and select Admin (3270). Navigate to the WEB2HOST entry and display the entry using PF12. Modify the “Directory for scenarios” field to SCE-DIR. The display should look
 like:-
 
-|image1| Figure 2 Entry Point display for WEB2HOST
+|image1| 
 
-Note that the scenario directory has to be SCE-DIR. Before the field was blank indicating that scenarios should be loaded from LOADLIB. Press PF1 to confirm they update and then Press PF3 and the CLEAR to return back to the portal screen. Press “CTRL-R” in your browser’s to refresh the browser cache. Now select Admin (HTML) from the Administration options
+Figure 2 Entry Point display for WEB2HOST
+
+..note::
+
+The scenario directory has to be SCE-DIR. Before the field was blank indicating that scenarios should be loaded from LOADLIB. Press PF1 to confirm they update and then Press PF3 and the CLEAR to return back to the portal screen. Press “CTRL-R” in your browser’s to refresh the browser cache. Now select Admin (HTML) from the Administration options
 and you should see the Administration panel.
 
-|image2| Figure 3 Administration Portal
+|image2| 
+
+Figure 3 Administration Portal
 
 **Q3** 
 
 My customised custom.js no longer works.
 
-**Solution**
+*Solution*
 
 Recompile your TCT with the option:-
 
@@ -278,7 +284,7 @@ parameter.
 
 How do I migrate to Virtel 4.56
 
-**Solution**
+*Solution*
 
 See the Virtel manual Virtel456 Migration User Guide.
 
@@ -286,7 +292,7 @@ See the Virtel manual Virtel456 Migration User Guide.
 
 I have installed Virtel V4.56 but my Virtel Studio scenarios are no longer in the SCE-DIR.
 
-**Solution**
+*Solution*
 
 If your user scenarios were kept in the SCE-DIR directory than these would have been replaced by the new SCE-DIR within the SAMPTRSF VSAM file. Rebuild and upload you user scenarios to the new SCE-DIR.
 
