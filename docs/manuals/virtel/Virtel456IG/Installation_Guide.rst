@@ -43,7 +43,7 @@ Syspertec Communication
 1. Summary of Amendments
 ========================
 
-1.10 Virtel version 4.56 (09 SEP 2016)
+1.10 Virtel version 4.56 (09 Sep 2016)
 --------------------------------------
 
 *VIRTEL Universal Protocol:*
@@ -63,7 +63,7 @@ Syspertec Communication
 *MQSeries:*
 
 
-1.9 Virtel version 4.55 (15 JUN 2015)
+1.9 Virtel version 4.55 (15 Jun 2015)
 -------------------------------------
 
 *VIRTEL Universal Protocol:*
@@ -149,7 +149,7 @@ Syspertec Communication
 -  TCT additional MQ3 and MQ4 keywords.
 
 
-1.8 Virtel version 4.54 (13 MAR 2015)
+1.8 Virtel version 4.54 (13 Mar 2015)
 -------------------------------------
 
 *VIRTEL Universal Protocol:*
