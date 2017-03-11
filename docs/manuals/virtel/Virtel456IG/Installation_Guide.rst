@@ -68,7 +68,7 @@ Syspertec Communication
 
 -  TCT MAXSOC defaults to 1000.
 
-.. tip:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.56 <tn201607>`.
+.. note:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.56 <tn201607>`.
 
 
 1.9 Virtel version 4.55 (31 Mar 2015)
@@ -148,7 +148,7 @@ Syspertec Communication
 
 -  TCT additional MQ3 and MQ4 keywords.
 
-.. tip:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.55 <tn201522>`.
+.. note:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.55 <tn201522>`.
 
 
 1.8 Virtel version 4.54 (05 Mar 2015)
