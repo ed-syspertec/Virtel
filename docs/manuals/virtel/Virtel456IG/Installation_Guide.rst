@@ -43,184 +43,179 @@ Syspertec Communication
 1. Summary of Amendments
 ========================
 
-1.10 Virtel Version 4.55 (31 Mar 2016) And 4.56 (21 Jun 2016)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+1.10 Virtel version 4.56 (21 Jun 2016)
+--------------------------------------
 
-VIRTEL Web Access:
+*VIRTEL Web Access:*
 
--  New 3278T button to support APL and TEXT characters conversion
-   (Terminal 3278A and 3278T)
+-  VIRPLEX VSAMTYP=WRITER support in TCT. 
 
--  Added user callback to customize dynamic toolbar buttons position
+- Enhancements to HTML Administration interface
 
--  Support of smart cursor for "reverse video" and "underlined" fields
+- Enhancements to Virtel Web Macro interface (VWM)
 
--  Support of the Macro Keybord Mapping allowing to affect a Keyboard
-   combination to a Macro
+  - Keyboard mapping
 
--  Improvement of the HTML Web Admin user interface
+- Enhancements to Virtel Dynamic Directories Interface (DDI)
 
--  Improvement of the Dynamic Directory facility
+  - Synchronisation with VWM
 
--  Additional HTML tags:
+*VIRTEL Web Modernisation & Integration:*
 
-   -  VALUE-OF (APPLICATION-OPTION)
+*Miscellaneous:*
 
-VIRTEL Web Integration:
+-  LSR and WTO corrections.
 
--  Additional options for existing commands:
+-  TCT MAXSOC defaults to 1000.
 
-   -  CASE$ has two optional RTRIM and LTRIM parameters
+For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.56 <*_TN201607>`_
 
-   -  COPY$ has two optional RTRIM and LTRIM parameters
 
--  Allow copy of the content of a variable into another one
+1.9 Virtel version 4.55 (31 Mar 2015)
+-------------------------------------
 
-   -  COPY$
-      VARIABLE-TO-VARIABLE,VAR=(origin,destination),OFFSET=x,LENGTH=x,PAD='
-      '
+*VIRTEL Web Access:*
 
--  Allow JSON file as input to be copied in a commarea
+-  New toolbar button to toggle the 3278T mode for APL and TEXT conversion.  
 
-   -  COMMAREA MAP$ FROM-INPUT,JSON,TO-VARIABLES,FIELD='MYINPUT'
+*VIRTEL Web Modernisation & Integration:*
 
--  Allow to process each field in a column of a 3270 screen:
+-  'QUICKLNK' supports multiple containers.
 
-   -  SET$ SCREEN-POSITION(lin,col,len,nbr)
+-  VIRPLEX 'SHRHTTP' line type.
 
-   -  SET$ SCREEN-POSITION,TO-NEXT-LINE
+-  VIRPLEX communication.
 
-   -  CASE$ CURRENT-SCREEN-POSITION,(EQ,'xxxxx',labelx)
+-  Enhancements to RULE processing - $REJECT$ parameter.
 
--  Allow indirection of a filename using \*variable\_name
-
-   -  COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='\*MYFILE',VAR='MYRESULT'
-
--  Allows a FOR EACH loop in scenarios thru two new instructions:
-   FOREACH$ and ENDFOR$
-
--  Introduce QUICKLINK line support of VTG (Virtel Transaction Gateway)
-
--  Introduce support of Channel Container using VTA (Virtel Transaction
-   Accelerator)
-
-Miscellaneous:
-
--  Add command F,VIRTEL,UNLOAD to unload the ARBO file content onto
-   syspunch
-
--  Add command F,VIRTEL,MEMDISPLY to display and diagnose memory
-   activity
-
--  Add command F,VIRTEL,SNAPMSG=msgno[.search],[S\|A] to allow SNAP or
-   ABEND to be taken whenever a particular message number is issued by
-   VIRTEL
-
--  New JCL parameters, IP and CLONE, to override some parameters found
-   in the TCT or in ARBO file
-
--  Trace buffer enhancement to use external storage to increase memory
-   available for this feature and ability to offload the trace buffer to
-   a dataset
-
--  New program VIR0002B to extract and format the VIRTEL records from
-   the System Logger
-
--  New option in TCT to support memory display
-
-   -  MEMORY=(ABOVE,MEMHST) to activate memory diagnostic
-
--  New option in TCT to support System Logger
-
-   -  LOG=LOGGER to write the VIRTEL log to the system logger
-
--  New option in TCT allowing the automatic setting of 'compatibility'
-   as the default APPLICATION-OPTION.
-
-   -  HTSETn=(OPTION-DEFAULT-COMPATIBILITY)
-
--  Introduce QUICKLINK lines to support VTA and VIRPLEX feature
-
--  USSTAB MSG10 Support to allow the customer USSTAB to be used by
-   VIRTEL as a welcome screen
-
--  Allow MQ3 and MQ4 parameter in VIRTCT
-
--  Allow more user friendly coding for PA/PF in transaction script,
-   &\*CLEAR .... &\*PF24
-
-1.9 Virtel Version 4.54 (05 Mar 2015)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-VIRTEL Web Access:
-
--  Display Virtel Update Level
-
--  Fix filename encoding problem
-
--  Stop Long Poll on error
-
--  Support of extended colors for InterPel (Pelican)
-
--  Support of graphics characters for 3278T terminal type
-
--  Additional HTML tags:
-
-   -  IF-SOUND-ALARM-IS-REQUESTED
-
-   -  VALUE-OF URL and QUERY
-
--  Improvement of the HTML Web Admin user interface
-
--  Improvement of the Dynamic Directory facility
-
--  IND$FILE download limitation according HTPARM parameter
-
--  Support of "Customized" 3270 Display pattern
-
-VIRTEL Web Integration:
-
--  Allow Program Tab into a script or a scenario
-
-   -  ACTION$ TO-APPLICATION,KEY=7D,AND=(SCRIPT,'&&>&&>Test&&/T')
+-  Transaction SCRIPT command enhancements  
 
 -  Additional commands for scenarios:
 
-   -  COPY$ SYSTEM-TO-VARIABLE TYPE=REPLACE
+    - COPY$ supports column to variable with TYPE=REP
 
-   -  OPTION$ FOR-QUICKLNK
+    - Screen positioning support for SET$, CASE$ and COPY$
 
--  Support for positive/negative sign and decimal point for MAP$
-   (FORMAT= and TYPE=S9)
+    - MAP$ JSON support for COMMAREA
 
--  Allow several ICONNECT lines on one TPIPE VIRTEL Kix Suite:
+    - Allow embedded OCCURS=UNLIMITED keyword
 
--  Introduce support of VTG (Virtel Transaction Gateway)
+    - MAP$ FROM-INPUT TO-VARIABLES converts XML or JSON directlt to variables.
 
--  Introduce support of VTA (Virtel Transaction Accelerator)
+    - Allow re-execution of a MAP$ FROM-INPUT.
 
-Miscellaneous:
+    - CASE$ and COPY$ support RTRIM and LTRIM
 
--  Add command F,VIRTEL,TCT to display TCT information in sysout
+    - OUTPUT-FILE-TO-VARIABLE supports a variable as input.
 
--  Creation of a SCENARIO directory SCE-DIR
+    - COPY$ VARIABLE-TO-VARIABLE copies source to target variable.
 
--  New option in TCT to support wrting WTOs to dataset
+    - COPY$ CURRENT-LINE copies SCREEN-POSITION ifield values to a variable.
 
-   -  LOG = Console \| LOG = SYSOUT \| LOG= (SYSOUT,class)
+    - APPLICATON-OPTION support.
 
--  New option in TCT to store some varaibles above the BAR, ie in 64
-   bits storage
+    - SCENARIO FAIL | SUCCESS parameter.   
 
-   -  MEMORY=(ABOVE\|TEST,ALLOW64BITS)
+*Miscellaneous:*
 
--  New JCL parameter to control the amount of 64-bit private virtual
-   storage available to the VIRTEL address space
+-  New UNLOAD command to unload ARBO file.
 
-   -  MEMLIMIT=xG
+-  VIRSV maintenance.
 
--  Support of MQFMT\_STRING in MQPUT
+-  MEMDISPLAY - Memory display diagnostic command.
 
+-  Virtel displays customer USSTAB MSG10
+
+-  LOGGER stream and structure name set in TCT
+
+-  SNAPMSG command
+
+-  LOGGER extraction utility
+
+-  Override ARBO IP and &SYSCLONE values in JCL PARM
+
+-  Trace offload facility
+
+-  DOC directory added for online help templates.
+
+-  New Virtel logo.
+
+-  Critical dataset VIRSWAP error will terminate VIRTEL.
+
+-  TCT Compatibility mode. Downward compatibility support.
+
+*MQSeries:*
+
+-  TCT additional MQ3 and MQ4 keywords.
+
+For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.55 <*_TN201522>`_
+
+
+1.8 Virtel version 4.54 (05 Mar 2015)
+-------------------------------------
+
+*VIRTEL Universal Protocol:*
+
+-  TPIPE now supports multiple ICONNECT lines
+
+*VIRTEL Web Access:*
+
+-  Support Query List variant of 3270 Read Partition command - Extended Color.
+
+-  Display Virtel update level in tool bar.
+
+-  New ICON in Copy/Past menu to show Firefox/Chrome extension status. 
+
+-  Enahancements to Virtel Web Macro support (VWM)
+
+-  Enhancements to toolbar styling.
+
+-  Support graphics in input fields in 3278T mode
+
+-  Language support enhancements - German & French.
+
+-  Enhancements to Virtel Dynamic Directories (DDI)  
+
+
+*VIRTEL Web Modernisation & Integration:*
+
+-  OPTION$ statement now supports 'QUICKLNK' line type.
+
+-  Support of VTA protocol through 'QUICKLNK' line type.
+
+-  Support of VTA CONTAINERS  
+
+-  Additional commands for scenarios:
+
+   -  ACTION$ now allows 'Program Tab' key to invoke scenario
+
+   -  COPY$ SYSTEM-TO-VARIABLE now supports TYPE=REPLACE
+
+   -  MAP$ instruction now supports positive/negative sign
+
+   -  MAP$ instruction supports decimal point for FORMAT TYPE=S9
+
+   -  New template instruction IF-SOUND-ALARM-IS-REQUESTED
+
+
+*Miscellaneous:*
+
+-  Support for 'Above the bar' 2GB storage for Virtel variables.
+
+-  Allow Log datasets to be spooled/spun off to JES2.
+
+-  TCT command now displays the LOG option.
+
+-  Virtel installation now includes VTG.
+
+-  IND$FILE upload and download limit can be set in new TCT options.
+
+-  VIRSV maintenance. 
+
+
+*MQSeries:*
+
+'TRAN' parameter can be specified on MQ Line definition - Character translation.
 
 1.7 Virtel version 4.53 (24 Sep 2014)
 -------------------------------------
