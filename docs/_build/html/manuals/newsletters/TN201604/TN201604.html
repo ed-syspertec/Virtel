@@ -101,7 +101,7 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Controlling LU Names</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201605/TN201605.html">CICS Printing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201606/TN201606.html">Virtel Screen Redesigner in action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56 (September 2016)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201608/TN201608.html">Installing Virtel V4.56 from scratch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Nailing LUS with an Identification scenario</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customising Virtel in V4.56</a></li>
@@ -395,11 +395,11 @@ and passes it into the start command. Following the Virtel transaction I
 wish to execute which in this case is an APPLIST menu list.</p>
 <p>The start command will open a default browser window and connect to
 Virtel:-</p>
-<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image129.png"><img alt="image0" src="../../../_images/image129.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
 <p>Figure 1 Passing User Data toVirtel</p>
 <p>When a transaction is selected from the menu list the RULE will be
 invoked to allocate the correct LUNAME.</p>
-<p><a class="reference internal" href="../../../_images/image216.png"><img alt="image1" src="../../../_images/image216.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image215.png"><img alt="image1" src="../../../_images/image215.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
 <p>Figure 2 Selecting a LU name through a rule and work station id in the
 URL</p>
 <p>The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from
@@ -489,7 +489,7 @@ NETMASK=255.255.255.255
 </pre></div>
 </div>
 <p>We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.</p>
-<p><a class="reference internal" href="../../../_images/image317.png"><img alt="image2" src="../../../_images/image317.png" style="width: 6.26806in; height: 4.76736in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image316.png"><img alt="image2" src="../../../_images/image316.png" style="width: 6.26806in; height: 4.76736in;" /></a></p>
 <p>Figure 3Using $URL$ to pass a LU name in the URL.</p>
 <p>The user data in the URL, in this case EHPMA00*, will be added to each
 transaction in the APPLIST menu and used as the Virtel relay LUNAME.

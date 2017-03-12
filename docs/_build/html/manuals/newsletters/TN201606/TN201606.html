@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="What’s new in Virtel 4.56" href="../TN201607/TN201607.html"/>
+        <link rel="next" title="What’s new in Virtel 4.56 (September 2016)" href="../TN201607/TN201607.html"/>
         <link rel="prev" title="CICS Printing" href="../TN201605/TN201605.html"/> 
 
   
@@ -101,7 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201604/TN201604.html">Controlling LU Names</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201605/TN201605.html">CICS Printing</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel Screen Redesigner in action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56 (September 2016)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201608/TN201608.html">Installing Virtel V4.56 from scratch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Nailing LUS with an Identification scenario</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customising Virtel in V4.56</a></li>
@@ -203,9 +203,9 @@ will be called MENU I create the transactions MENUCAPT and MENUAJAX.
 MENU is also the CICS transaction that invokes our 3270 MENU
 application.</p>
 <p>Our MENUCAPT transaction looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image136.png"><img alt="image0" src="../../../_images/image136.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image135.png"><img alt="image0" src="../../../_images/image135.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
 <p>And our MENUAJAX transaction look like this:</p>
-<p><a class="reference internal" href="../../../_images/image219.png"><img alt="image1" src="../../../_images/image219.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image218.png"><img alt="image1" src="../../../_images/image218.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
 <p>The TIOA string enables Virtel to use logon to CICS using the user
 id/password variables. The CICS application MENU is then called once
 CICS processes the logon and returns a 3270 screen image with the word
@@ -218,7 +218,7 @@ value in the Option field. To support this we need to add the options
 directory, as a transaction, to the CLI entry point. The following
 transaction, CLI-03O, is added to CLIWHOST. It is modeled on the W2H
 transaction CLI-03W.</p>
-<p><a class="reference internal" href="../../../_images/image319.png"><img alt="image2" src="../../../_images/image319.png" style="width: 6.26806in; height: 3.39375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image318.png"><img alt="image2" src="../../../_images/image318.png" style="width: 6.26806in; height: 3.39375in;" /></a></p>
 <p>Our 3270 application front end screen looks like this:-</p>
 <p><a class="reference internal" href="../../../_images/image416.png"><img alt="image3" src="../../../_images/image416.png" style="width: 5.78147in; height: 3.77083in;" /></a></p>
 <p><strong>Mapping out the application</strong></p>
@@ -334,7 +334,7 @@ template.</p>
 <p><a class="reference internal" href="../../../_images/image1211.png"><img alt="image11" src="../../../_images/image1211.png" style="width: 6.26806in; height: 4.63681in;" /></a></p>
 <p>After pressing the “render” ICON we are presented with are modernized
 screen:-</p>
-<p><a class="reference internal" href="../../../_images/image137.png"><img alt="image12" src="../../../_images/image137.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image136.png"><img alt="image12" src="../../../_images/image136.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
 <p>Nothing too exciting here. We can see that Virtel has taken the various
 elements from the Map, created the Virtel tags within the template, and
 displayed them without any special markup. Of course, the markup is down
@@ -459,7 +459,7 @@ myAPPL.htm template.</p>
 <p>It contains top and bottom static areas and a dynamic sub-page middle
 area which will be replaced by the sub-page template we have built.
 Pressing validate will display our modernized template area.</p>
-<p><a class="reference internal" href="../../../_images/image2110.png"><img alt="image20" src="../../../_images/image2110.png" style="width: 6.26806in; height: 3.42778in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image219.png"><img alt="image20" src="../../../_images/image219.png" style="width: 6.26806in; height: 3.42778in;" /></a></p>
 <p>Now, if we select an action this should be passed to the application and
 the application should return with the next panel in the navigation
 sequence. We select option 1 and press enter. The screen is updated with
@@ -547,7 +547,7 @@ Appendix A**</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201607/TN201607.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.56" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201607/TN201607.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.56 (September 2016)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../TN201605/TN201605.html" class="btn btn-neutral" title="CICS Printing" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

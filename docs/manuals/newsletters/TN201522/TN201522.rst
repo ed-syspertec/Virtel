@@ -237,7 +237,7 @@ LTRIM and RTRIM will trim both the value being tested (variable or part of the s
 
 For example:-
 
-    (EQ,'*VAR1',label1) The value of the VAR1 variable will be trimmed prior to comparison.
+    (EQ,'\*VAR1',label1) The value of the VAR1 variable will be trimmed prior to comparison.
 
     (EQ,'zagreb ',label2) The value of the string 'zagreb ' will NOT be trimmed – it is a static argument.
 
@@ -257,7 +257,7 @@ The variable VAR1 is created/modified, with 'string1' copied as is, var1 and var
 
 **Indirection on OUTPUT-FILE-TO-VARIABLE FILE=**
 
-This feature allows indirection of a file name. The filename is pointed to by the variable *variable\_name.
+This feature allows indirection of a file name. The filename is pointed to by the variable \*variable_name.
 
 Example:-
 
@@ -857,9 +857,9 @@ The VIT tracing categories can be set through the F VIRTEL,TRACE command:-
 
 	F VIRTEL,TRACE,VIT=nnn nnn correspond to the three Y\|N indicators.
 
-::
-
 Example:
+
+::
 
 	F VIRTEL,TRACE,VIT=YYY 	Turn on full VIT tracing plus external buffer archive.
 
@@ -923,7 +923,7 @@ Example:
 
 .. note::
 
-If external buffering is not active any offload command will be rejected as invalid.
+	If external buffering is not active any offload command will be rejected as invalid.
 
 **New or altered Messages**
 
@@ -960,7 +960,7 @@ Meaning :The maximum number of external VIT buffers has been reached and a VIT o
 
 Action : None.
 
-**VIR0079E UNABLE TO ALLOCATE OFFLOAD DATASET. R15=RC, R0=RE ,DSN=gdgdsname
+**VIR0079E** UNABLE TO ALLOCATE OFFLOAD DATASET. R15=RC, R0=RE ,DSN=gdgdsname
 
 Module :VIR0004
 
@@ -976,6 +976,6 @@ it will subsequently be converted into a HTML template and served to the browser
 
 .. note::
 
-This is a chargeable feature and you should contact your sales representative for further details.
+	This is a chargeable feature and you should contact your sales representative for further details.
 
 **Virtel Administration Enhancements**

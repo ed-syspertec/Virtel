@@ -1118,7 +1118,7 @@ In the JOB:
 
 ::
 
-At execution time:
+  At execution time:
 
 ::
 
@@ -1184,7 +1184,7 @@ The STATDSN keyword as defined in the TCT will allocate and use datasets:-
   SP000.SPVIREH.SYS00.STATA and SP000.SPVIREH.SYS00.STATB.
 
 3.3.4 Executing Virtel
-^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^
 
 VIRTEL is started by executing the command S VIRTEL from the system console. Message VIR0000I indicates that the product started properly.
 
@@ -2536,7 +2536,7 @@ In order to access CICS applications, each Minitel must have an entry defined in
   BINDPassword ==> PASSWORD NOT SPECIFIED
   BINDSecurity ==> No   No ! Yes
 
-**Figure 5.5 Figure CICS definitions for Minitel terminals*
+*Figure 5.5 Figure CICS definitions for Minitel terminals*
 
 .. _#_V456IG_bookmark01:
 
@@ -4790,7 +4790,7 @@ described under the heading “Parameters of the Entry Point”.
 +------------+-----------------------+----------------------------------------------------+ 
 | TRANSACT=  |   Transaction         |                                                    |      
 +------------+-----------------------+----------------------------------------------------+
-| ARBO=      |   Arborescence        |                      	                            |
+| ARBO=      |   Arborescence        |                                                    |
 +------------+-----------------------+----------------------------------------------------+
 | ENDPAGE=   |   Last Page           |                                                    |
 +------------+-----------------------+----------------------------------------------------+ 
@@ -5715,7 +5715,7 @@ These commands define admin1 and admin2 as VIRTEL administrators by adding the V
 
 The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.
 
-9. Trademarks
+9 Trademarks
 =============
 
 SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
@@ -5738,8 +5738,8 @@ Linux is a trademark of Linus Torvalds in the United States, other countries, or
 
 Other company, product, or service names may be trademarks or service names of others
 
-9.1. Open Source Software
-^^^^^^^^^^^^^^^^^^^^^^^^^
+9.1 Open Source Software
+------------------------
 
 The current VIRTEL Web Access product uses the following open source software:
 

@@ -101,7 +101,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201604/TN201604.html">Controlling LU Names</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">CICS Printing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201606/TN201606.html">Virtel Screen Redesigner in action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56 (September 2016)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201608/TN201608.html">Installing Virtel V4.56 from scratch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Nailing LUS with an Identification scenario</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customising Virtel in V4.56</a></li>
@@ -216,7 +216,7 @@ supported features.</p>
 <p>In this example we have configured the Virtel display terminal REHVT000
 and its associate relay printer terminal REHIP000 with the following
 characteristics.</p>
-<p><a class="reference internal" href="../../../_images/image134.png"><img alt="image0" src="../../../_images/image134.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
 <p>Figure Virtel Terminal Display</p>
 <p>Display REHVT000 has an associate relay of REHIP000 which is defined as
 a Type = P. Type = P indicates that this is a dynamically allocated
@@ -228,9 +228,9 @@ LU at start up.</p>
 <p>In CICS we have defined the following terminal definitions. EHT0
 representing the display LU REHVT000 and EHS0 representing the printer
 LU REHIP000.</p>
-<p><a class="reference internal" href="../../../_images/image217.png"><img alt="image1" src="../../../_images/image217.png" style="width: 5.81250in; height: 3.92630in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image216.png"><img alt="image1" src="../../../_images/image216.png" style="width: 5.81250in; height: 3.92630in;" /></a></p>
 <p>Figure CICS Display definition</p>
-<p><a class="reference internal" href="../../../_images/image318.png"><img alt="image2" src="../../../_images/image318.png" style="width: 5.81250in; height: 3.91729in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image317.png"><img alt="image2" src="../../../_images/image317.png" style="width: 5.81250in; height: 3.91729in;" /></a></p>
 <p>Figure CICS Printer Definition</p>
 <p>Note that the characteristics for each device is determined by the
 TYpeterm association. For the printer we are using a user defined
@@ -299,7 +299,7 @@ save it as a PDF.</p>
 <p>One we have processed the document the browser window will close and we
 are returned to the application display. Pressing enter will clear the
 print ICON and print message.</p>
-<p><a class="reference internal" href="../../../_images/image135.png"><img alt="image12" src="../../../_images/image135.png" style="width: 5.61458in; height: 4.29460in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image134.png"><img alt="image12" src="../../../_images/image134.png" style="width: 5.61458in; height: 4.29460in;" /></a></p>
 <p>Figure Pressing enter to clear print request</p>
 <p><strong>Sharing Virtel printers</strong></p>
 <p>It will often be the case that a Virtel printer will be required to be
@@ -425,7 +425,7 @@ rather than the overridden 3270 printer type. In Virtel SCS printer
 types are defined as TYPE=S. We update the terminal definition
 (REHVT000) to associate it with a SCS printer REHIM000. The terminal
 display now looks like this.</p>
-<p><a class="reference internal" href="../../../_images/image218.png"><img alt="image20" src="../../../_images/image218.png" style="width: 4.88680in; height: 3.30208in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image217.png"><img alt="image20" src="../../../_images/image217.png" style="width: 4.88680in; height: 3.30208in;" /></a></p>
 <p>Figure Defining a Virtel SCS printer terminal</p>
 <p>We also have to correct the CICS definition so that the terminal EHS0 is
 associated with the Virtel printer definition REHIM000. We use CEDA to
