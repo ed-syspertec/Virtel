@@ -5715,7 +5715,7 @@ These commands define admin1 and admin2 as VIRTEL administrators by adding the V
 
 The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.
 
-9 Trademarks
+9. Trademarks
 =============
 
 SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
@@ -5756,3 +5756,4 @@ The current VIRTEL Web Access product uses the following open source software:
   http://en.wikipedia.org/wiki/JQuery_UI.
 
 .. |image1| image:: images/media/logo_virtel_web.png
+            :scale: 50 % 
