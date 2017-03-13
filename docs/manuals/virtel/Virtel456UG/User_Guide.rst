@@ -987,1369 +987,1238 @@ As shown previously, data transmitted to the HTTP server by the client is itself
     </HTML>
 
 For a full example, see the WEB2VIRT.htm page delivered with VIRTEL.
-    Insertion of host application data in an HTML or XML page is
-    achieved with the GENERATE-HTML and COPY-FROM tags.
 
-    The GENERATE-HTML tag instructs VIRTEL to convert all or part of the
-    3270 screen into HTML form data. Output fields are converted into
-    text, while input fields are converted into HTML input statements.
-    The generated text and input fields are aligned so as to correspond
-    as far as possible with the layout of the original 3270 screen. The
-    resulting generation takes account of the nature of the data as well
-    as the information specified in the ON-ATTRIBUTE, ON-END-
-    OF-ATTRIBUTE and ADD-TO-FIELDS tags.
+1.4.6. Inserting host application data in a page
+------------------------------------------------
+
+1.4.6.1. Introduction
+
+Insertion of host application data in an HTML or XML page is achieved with the GENERATE-HTML and COPY-FROM tags.
+
+1.4.6.2. GENERATE-HTML tag
+
+The GENERATE-HTML tag instructs VIRTEL to convert all or part of the 3270 screen into HTML form data. Output fields are converted into text, while input fields are converted into HTML input statements.     The generated text and input fields are aligned so as to correspond as far as possible with the layout of the original 3270 screen. The resulting generation takes account of the nature of the data as well     as the information specified in the ON-ATTRIBUTE, ON-END-OF-ATTRIBUTE and ADD-TO-FIELDS tags.
+
+::
+
+ {{{ GENERATE-HTML (row, col, len) }}}
+
 
 row,col
-~~~~~~~
-
     Starting position (row and column number on the 3270 screen) of the
     data to be copied. This starting position will usually contain a
     3270 attribute character.
 
 len
-~~~
-
     Length of the data to be copied (including attribute characters).
 
-    For example, the command {{{ GENERATE-HTML (01,01,1920) }}} will
-    generate the total contents of the 3270 screen.
+For example, the command *{{{ GENERATE-HTML (01,01,1920) }}}* will  generate the total contents of the 3270 screen.
 
-    An alternative form of the GENERATE-HTML tag allows the position and
-    length to be specified by means of a symbolic name defined in a
-    previous DEFINE-DFHMDF-NAME or DEFINE-DFHMDF-COLUMN tag (se`e
-    “{{{DEFINE-DFHMDF- <#_bookmark35>`__ `COLUMN}}}”, page
-    32 <#_bookmark35>`__).
+An alternative form of the GENERATE-HTML tag allows the position and length to be specified by means of a symbolic name defined in a previous DEFINE-DFHMDF-NAME or DEFINE-DFHMDF-COLUMN tag (see `   “{{{DEFINE-DFHMDF- <#_bookmark35>`__ `COLUMN}}}”, page 32 <#_bookmark35>`__).
+
+::
+
+    {{{ GENERATE-HTML "name" }}}
+
 
 name
-~~~~
-
     symbolic name defined in a previous DEFINE-DFHMDF-NAME or
     DEFINE-DFHMDF-COLUMN tag.
+
+1.4.6.3. COPY-FROM tag
 
     The COPY-FROM tag copies data into the HTML page from a specific
     location on the 3270 screen. Unlike the GENERATE-HTML tag, the
     COPY-FROM tag copies only the data and does not process any
     associated 3270 field attributes.
 
-row,col
-~~~~~~~
+::
+ 
+ {{{ COPY-FROM (row, col, len) }}}   
 
+row,col
     Starting position (row and column number on the 3270 screen) of the
     data to be copied. This will typically be the first character after
     the attribute character which defines the start of the field.
 
 len
-~~~
-
     Length of the data to be copied.
 
-    An alternative form of the COPY-FROM tag allows the position and
-    length to be specified by means of a symbolic name defined in a
-    previous DEFINE-DFHMDF-NAME or DEFINE-DFHMDF-COLUMN tag (described
-    37).
+An alternative form of the COPY-FROM tag allows the position and length to be specified by means of a symbolic name defined in a previous DEFINE-DFHMDF-NAME or DEFINE-DFHMDF-COLUMN tag (described 37).
+
+::
+
+    {{{ COPY-FROM "name" }}}
 
 name
-~~~~
+    symbolic name defined in a previous DEFINE-DFHMDF-NAME or DEFINE-DFHMDF-COLUMN tag.
 
-    symbolic name defined in a previous DEFINE-DFHMDF-NAME or
-    DEFINE-DFHMDF-COLUMN tag.
-
-    Normally, any binary zeroes in the copied data will be removed.
-    However, if the BLANK-BINARY-ZEROES option is set (se`e “Setting and
-    unsetting local options”, page 42 <#_bookmark42>`__) then binary
+    Normally, any binary zeroes in the copied data will be removed. However, if the BLANK-BINARY-ZEROES option is set (see “Setting and unsetting local options”, page 42 <#_bookmark42>`__) then binary
     zeroes will be converted to blanks.
 
-    The CREATE-VARIABLE-FROM tag copies data from the 3270 screen into a
-    VIRTEL variable. There are several formats of the COPY-VARIABLE-FROM
-    tag, as described below.
+1.4.6.4. CREATE-VARIABLE-FROM tag
 
-    In the first form of CREATE-VARIABLE-FROM, the name of a variable is
-    specified within the tag. Data is extracted from the indicated
-    location on the screen, continuing until an attribute character is
-    found or until the specified length is reached. Any non-alphanumeric
-    characters are removed, all alphabetic characters are converted to
-    upper case, and the resulting data is copied into the variable. If
-    the variable does not exist, it will be created. If the variable
-    already exists, the new value will be appended to any existing
-    values.
+The CREATE-VARIABLE-FROM tag copies data from the 3270 screen into a VIRTEL variable. There are several formats of the COPY-VARIABLE-FROM tag, as described below.
+
+In the first form of CREATE-VARIABLE-FROM, the name of a variable is specified within the tag. Data is extracted from the indicated location on the screen, continuing until an attribute character is found or until the specified length is reached. Any non-alphanumeric characters are removed, all alphabetic characters are converted to upper case, and the resulting data is copied into the variable. If the variable does not exist, it will be created. If the variable already exists, the new value will be appended to any existing values.
+
+::
+
+    {{{ CREATE-VARIABLE-FROM (row, col, len) "varname" }}}
 
 row,col
-~~~~~~~
-
     Starting position (row and column number on the 3270 screen) of the
     data to be copied. This will typically be the first character after
     an attribute character which defines the start of a field.
 
 len
-~~~
-
     Length of the data to be copied.
 
 varname
-~~~~~~~
-
     The name of the variable to be created
 
-    The second form of CREATE-VARIABLE-FROM is distinguished by the
-    absence of a variable name within the tag. In this case, the
-    variable name is obtained from the 3270 screen. Data is extracted
-    from the indicated location on the screen, continuing until an
-    attribute character is found or until the specified length is
-    reached. Any non-alphanumeric characters are removed, all alphabetic
-    characters are converted to upper case, and the resulting string is
-    used as a variable name. If the variable does not exist, it will be
-    created. If the variable already exists, a new value will be
-    appended to any existing values. If the variable name was terminated
-    by an attribute character, then the data in the following field is
-    used as the value of the variable. Otherwise the string “EMPTY” will
-    be used as the value of the variable.
+ The second form of CREATE-VARIABLE-FROM is distinguished by the absence of a variable name within the tag. In this case, the variable name is obtained from the 3270 screen. Data is extracted from the indicated location on the screen, continuing until an attribute character is found or until the specified length is reached. Any non-alphanumeric characters are removed, all alphabetic characters are converted to upper case, and the resulting string is used as a variable name. If the variable does not exist, it will be created. If the variable already exists, a new value will be appended to any existing values. If the variable name was terminated by an attribute character, then the data in the following field is used as the value of the variable. Otherwise the string “EMPTY” will 
+ be used as the value of the variable.
+
+::
+
+    {{{ CREATE-VARIABLE-FROM (row, col, len) }}}    
+
 
 row,col
-~~~~~~~
-
-    Line and column number on the 3270 screen containing the variable
-    name.
+    Line and column number on the 3270 screen containing the variable name.
 
 len
-~~~
-
     Total length of the variable name and value to be copied.
 
-    The third form of CREATE-VARIABLE-FROM allows a rectangle to be
-    copied from the screen. With a fourth sub- parameter specified, the
-    instruction will not stop collecting data after encountering an
-    attribute, but will continue adding values to the variable for the
-    specified height on the screen. Any attributes found in the
-    rectangle will be
+The third form of CREATE-VARIABLE-FROM allows a rectangle to be copied from the screen. With a fourth sub- parameter specified, the instruction will not stop collecting data after encountering an     attribute, but will continue adding values to the variable for the specified height on the screen. Any attributes found in the rectangle will be copied as blanks. If the variable does not exist, it will be
+created. If the variable already exists, the new values will be appended to any existing values.
 
-    copied as blanks. If the variable does not exist, it will be
-    created. If the variable already exists, the new values will be
-    appended to any existing values.
+::
+
+    {{{ CREATE-VARIABLE-FROM (row, col, width, height) "varname" }}}
 
 row,col
-~~~~~~~
-
     Starting position (row and column number on the 3270 screen) of the
     data to be copied.
 
 width,height
-~~~~~~~~~~~~
-
     Size (in columns and rows) of the rectangle to be copied.
 
 varname
-~~~~~~~
-
     The name of the variable to be created
 
-    The DEFINE-HTML-FIELD-NAME tag requests that VIRTEL should use a
-    specific HTML input field name for the specified 3270 field, instead
-    of an automatically generated name. The DEFINE-HTML-FIELD-NAME tag
-    may be followed by a GENERATE-HTML tag, in which case VIRTEL will
-    generate an HTML input field with the specified name, or the input
-    field may be explicitly coded in the page template, in which case
-    VIRTEL will use the name to associate the HTML input field with the
-    3270 field at the specified position. Normally this tag is not
-    needed because the automatically generated field names are adequate
-    for all except certain specialised applications.
+1.4.6.5. DEFINE-HTML-FIELD-NAME tag
+
+The DEFINE-HTML-FIELD-NAME tag requests that VIRTEL should use a specific HTML input field name for the specified
+3270 field, instead of an automatically generated name. The DEFINE-HTML-FIELD-NAME tag may be followed by a
+GENERATE-HTML tag, in which case VIRTEL will generate an HTML input field with the specified name, or the input
+field may be explicitly coded in the page template, in which case VIRTEL will use the name to associate the HTML input
+field with the 3270 field at the specified position. Normally this tag is not needed because the automatically generated
+field names are adequate for all except certain specialised applications.
+
+::
+
+    {{{ DEFINE-HTML-FIELD-NAME (row, col, len) "name"}}}
 
 row,col
-~~~~~~~
+    Line and column number of the start of the field on the 3270 screen. This must be the first character after the attribute character.
 
+len
+    Length of the input field (excluding attribute character).
+
+name
+    Name to be associated with the HTML input field.
+
+1.4.6.6. DEFINE-HTML-FIELD tag    
+
+The DEFINE-HTML-FIELD tag is equivalent to a DEFINE-HTML-FIELD-NAME tag followed by a GENERATE-HTML tag.
+
+::
+
+    {{{ DEFINE-HTML-FIELD (row, col, len) "name"}}}
+
+row,col
     Line and column number of the start of the field on the 3270 screen.
     This must be the first character after the attribute character.
 
 len
-~~~
-
     Length of the input field (excluding attribute character).
 
 name
-~~~~
-
     Name to be associated with the HTML input field.
 
-    The DEFINE-HTML-FIELD tag is equivalent to a DEFINE-HTML-FIELD-NAME
-    tag followed by a GENERATE-HTML tag.
+1.4.6.7. DEFINE-DFHMDF-NAME tag
+
+The DEFINE-DFHMDF-NAME tag allows a field on the 3270 screen to be given a symbolic name which can be used in a
+subsequent GENERATE-HTML tag or COPY-FROM tag.
+
+::
+
+    {{{ DEFINE-DFHMDF-NAME (row, col, len) "name"}}}
 
 row,col
-~~~~~~~
-
-    Line and column number of the start of the field on the 3270 screen.
-    This must be the first character after the attribute character.
-
+    Position (row and column number on the 3270 screen) of the attribute character which precedes the field on the 3270 screen.
 len
-~~~
-
-    Length of the input field (excluding attribute character).
-
-name
-~~~~
-
-    Name to be associated with the HTML input field.
-
-    The DEFINE-DFHMDF-NAME tag allows a field on the 3270 screen to be
-    given a symbolic name which can be used in a subsequent
-    GENERATE-HTML tag or COPY-FROM tag.
-
-row,col
-~~~~~~~
-
-    Position (row and column number on the 3270 screen) of the attribute
-    character which precedes the field on the 3270 screen.
-
-len
-~~~
-
     Length of the 3270 field (excluding attribute character).
-
 name
-~~~~
-
     Name to be associated with the field.
 
-    The name specified by the DEFINE-DFHMDF-NAME tag can then be used in
-    subsequent GENERATE-HTML tags or COPY- FROM tags, instead of
-    specifying an explicit row, column, and length. In addition, the
-    DEFINE-DFHMDF-NAME tag generates an implicit DEFINE-HTML-FIELD-NAME
-    tag.
+The name specified by the DEFINE-DFHMDF-NAME tag can then be used in subsequent GENERATE-HTML tags or COPYFROM tags, instead of specifying an explicit row, column, and length. In addition, the DEFINE-DFHMDF-NAME tag generates an implicit DEFINE-HTML-FIELD-NAME tag.
 
-    For example, the following tag defines a 10-character input field
-    having attribute byte at row 1 column 59. The field itself occupies
-    row 1 columns 60 to 69:
+For example, the following tag defines a 10-character input field having attribute byte at row 1 column 59. The field  itself occupies row 1 columns 60 to 69:
 
-    Subsequently:
+::
 
-    is interpreted as:
+    {{{ DEFINE-DFHMDF-NAME (1,59,10) "XDAT10" }}}
 
-    and
+Subsequently:
 
-    is interpreted as:
+::
 
-    and the following tag will be automatically generated:
 
-    Notice that VIRTEL automatically adjusts the starting position and
-    length as necessary to account for the attribute byte.
+    {{{ GENERATE-HTML "XDAT10" }}}
 
-    The DEFINE-DFHMDF-COLUMN tag is similar to the DEFINE-DFHMDF-NAME
-    tag except that it allows the definition of a field which is
-    repeated in the same column position on several consecutive lines of
-    the screen.
+is interpreted as:
+
+::
+
+    {{{ GENERATE-HTML (1,59,11) }}}
+
+and
+
+::
+
+    {{{ COPY-FROM "XDAT10" }}}
+
+is interpreted as:
+
+::
+
+    {{{ COPY-FROM (1,60,10) }}}
+
+and the following tag will be automatically generated:
+
+::
+
+    {{{ DEFINE-HTML-FIELD-NAME (1,60,10) "XDAT10" }}}
+
+Notice that VIRTEL automatically adjusts the starting position and length as necessary to account for the attribute byte.
+
+1.4.6.8. DEFINE-DFHMDF-COLUMN tag
+
+The DEFINE-DFHMDF-COLUMN tag is similar to the DEFINE-DFHMDF-NAME tag except that it allows the definition of a field which is repeated in the same column position on several consecutive lines of the screen.
+
+::
+
+    {{{ DEFINE-DFHMDF-COLUMN (row, col, len, ht) "name"}}}
 
 row,col
-~~~~~~~
-
-    Position (row and column number on the 3270 screen) of the attribute
-    character which precedes the first occurrence of the field on the
-    3270 screen.
-
+    Position (row and column number on the 3270 screen) of the attribute character which precedes the first occurrence of the field on the 3270 screen.
 len
-~~~
-
     Length of each 3270 field (excluding attribute character).
-
 ht
-~~
-
     Height of column (number of lines).
-
 name
-~~~~
-
     Name to be associated with the field.
 
-    The name specified by the DEFINE-DFHMDF-COLUMN tag can be used in
-    subsequent GENERATE-HTML tags or COPY- FROM tags instead of
-    specifying an explicit row, column, and length. The first time the
-    field name is referenced in a GENERATE-HTML or COPY-FROM tag, the
-    first occurrence of the field will be used. Each time the field name
-    is referenced subsequently, the row number is incremented
-    automatically. After the end of the series is reached, any
-    subsequent reference wraps back to the first row number. In
-    addition, the DEFINE-DFHMDF-COLUMN tag implicitly generates a series
-    of DEFINE-HTML-FIELD-NAME tags, each of which contains the field
-    name suffixed by \_1, \_2, etc.
+The name specified by the DEFINE-DFHMDF-COLUMN tag can be used in subsequent GENERATE-HTML tags or COPYFROM
+tags instead of specifying an explicit row, column, and length. The first time the field name is referenced in a
+GENERATE-HTML or COPY-FROM tag, the first occurrence of the field will be used. Each time the field name is
+referenced subsequently, the row number is incremented automatically. After the end of the series is reached, any
+subsequent reference wraps back to the first row number. In addition, the DEFINE-DFHMDF-COLUMN tag implicitly
+generates a series of DEFINE-HTML-FIELD-NAME tags, each of which contains the field name suffixed by _1, _2, etc.
+For example, the following tag defines a column of 5-character input fields having attribute bytes in column 1. The
+fields themselves occupy columns 2 to 6. The first field is in row 9 and there are 12 occurrences:
 
-    For example, the following tag defines a column of 5-character input
-    fields having attribute bytes in column 1. The fields themselves
-    occupy columns 2 to 6. The first field is in row 9 and there are 12
-    occurrences:
+::
 
-    Subsequently:
+    {{{DEFINE-DFHMDF-COLUMN (9,1,5,12) "NBLIGN" }}}
 
-    is interpreted as:
+Subsequently:
 
-    and
+::
 
-    is interpreted as:
+    {{{ GENERATE-HTML "NBLIGN" }}}
 
-    where n takes the next value in the range 9 to 20 The following tags
-    will be automatically generated:
+is interpreted as:
 
-    and so on until:
+::
 
-    Notice that VIRTEL automatically adjusts the starting positions and
-    lengths as necessary to account for the attribute byte.
+    {{{ GENERATE-HTML (n,1,6) }}}
 
-    The GENERATE-VARIABLES tag functions like GENERATE-HTML except that,
-    instead of generating HTML, it generates a set of table variables
-    for each attribute found in the designated portion of the screen.
+and
+
+::
+
+    {{{ COPY-FROM "NBLIGN" }}}
+
+is interpreted as:
+
+::
+
+    {{{ COPY-FROM (n,2,5) }}}
+
+where n takes the next value in the range 9 to 20 The following tags will be automatically generated:
+
+::
+
+    {{{DEFINE-HTML-FIELD-NAME (9,2,5) "NBLIGN_1" }}}
+    {{{DEFINE-HTML-FIELD-NAME (10,2,5) "NBLIGN_2" }}}
+
+and so on until:
+
+::
+
+    {{{DEFINE-HTML-FIELD-NAME (20,2,5) "NBLIGN_12" }}}
+
+Notice that VIRTEL automatically adjusts the starting positions and lengths as necessary to account for the attribute byte.
+
+1.4.6.9. GENERATE-VARIABLES tag
+
+The GENERATE-VARIABLES tag functions like GENERATE-HTML except that, instead of generating HTML, it generates a set of table variables for each attribute found in the designated portion of the screen.
+
+::
+
+    {{{ GENERATE-VARIABLES (row, col, len) "prefix" }}}
 
 row,col
-~~~~~~~
-
-    Starting position (row and column number on the 3270 screen) of the
-    data to be copied. This starting position will usually contain a
-    3270 attribute character.
-
+    Starting position (row and column number on the 3270 screen) of the data to be copied. This starting position will usually contain a 3270 attribute character.
 len
-~~~
-
     Length of the data to be copied (including attribute characters).
-
 prefix
-~~~~~~
-
     The prefix of the generated variable names.
+    
+    A set of these variables is generated for each field found on the screen:
 
-    A set of these variables is generated for each field found on the
-    screen:
-
-    ***prefix*\ NAME**
-
+prefixNAME
     Field name
-
     Example : V00002E9 for an input field, blank for an output field
 
-    ***prefix*\ LINE**
-
+prefixLINE
     Line position of the field attribute (first line = 1)
-
-    ***prefix*\ COLUMN**
-
+prefixCOLUMN
     Column position of the field attribute (first column = 1)
-
-    ***prefix*\ LENGTH**
-
+prefixLENGTH
     Field length (excluding attribute)
 
-    ***prefix*\ ATTRB**
-
+prefixATTRB
     Attribute: ASKIP, PROT, UNPROT, NUM, BRT, NORM, DET, MDT
-
-    ***prefix*\ COLOR**
-
+prefixCOLOR
     Color: NEUTRAL, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, WHITE
-
-    ***prefix*\ HILIGHT**
-
+prefixHILIGHT
     Highlight: BLINK, REVERSE, UNDERLINE, OFF
-
-    ***prefix*\ VALUE**
-
+prefixVALUE
     The text contained in the field (excluding attribute)
 
-    For example, the tag {{{ GENERATE-VARIABLES (01,01,1920) "MYPREFIX"
-    }}} generates a set of table variables describing the entire
-    contents of the 3270 screen.
+For example, the tag {{{ GENERATE-VARIABLES (01,01,1920) "MYPREFIX" }}} generates a set of table variables describing the entire contents of the 3270 screen. Normally, any binary zeroes in the field will be removed from the VALUE. However, if the BLANK-BINARY-ZEROES option is set (see `“Setting and unsetting local options”, page xx <#_bookmark35>`)__ then binary zeroes will be converted to blanks.
 
-    Normally, any binary zeroes in the field will be removed from the
-    VALUE. However, if the BLANK-BINARY-ZEROES option is set (se`e
-    “Setting and unsetting local options”, page 42 <#_bookmark42>`__)
-    then binary zeroes will be converted to blanks.
+1.4.6.10. GENERATE-VIR3270 tag
 
-    GENERATE-VIR3270, in conjunction with supporting JavaScript
-    functions, is used by VIRTEL Web Access to generate an HTML page
-    which reproduces as closely as possible the look and feel of a
-    classic 3270 screen.
+GENERATE-VIR3270, in conjunction with supporting JavaScript functions, is used by VIRTEL Web Access to generate an HTML page which reproduces as closely as possible the look and feel of a classic 3270 screen.
+The GENERATE-VIR3270 tag functions like GENERATE-HTML except that, instead of generating HTML form fields corresponding to 3270 input fields, it generates all 3270 fields as HTML spans. Special attribute keywords are added to each span to indicate the type of field, the screen position, and the 3270 field attributes. A subspan is generated for characters whose character attributes differ from the field attributes. In addition, GENERATE-VIR3270 generates a hidden HTML form field for each 3270 input field, and these fields are written as HTML fragments into a VIRTEL table variable so that they can be inserted later in the page.
 
-    The GENERATE-VIR3270 tag functions like GENERATE-HTML except that,
-    instead of generating HTML form fields corresponding to 3270 input
-    fields, it generates all 3270 fields as HTML spans. Special
-    attribute keywords are added to
+::
 
-    each span to indicate the type of field, the screen position, and
-    the 3270 field attributes. A subspan is generated for characters
-    whose character attributes differ from the field attributes. In
-    addition, GENERATE-VIR3270 generates a hidden HTML form field for
-    each 3270 input field, and these fields are written as HTML
-    fragments into a VIRTEL table variable so that they can be inserted
-    later in the page.
+    {{{ GENERATE-VIR3270 (row, col, len) "fragvar" }}}
 
 row,col
-~~~~~~~
-
-    Starting position (row and column number on the 3270 screen) of the
-    data to be copied.
-
+    Starting position (row and column number on the 3270 screen) of the data to be copied.
 len
-~~~
-
     Length of the data to be copied.
-
 fragvar
-~~~~~~~
-
     The name of the table variable for the hidden HTML form fields.
 
-    The table below shows the HTML attributes generated for each field
-    and 3270 attribute position on the screen:
+The table below shows the HTML attributes generated for each field and 3270 attribute position on the screen:-
 
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
++-------------------+-------------------+------------------------------------------------------------------+
+| Attribute  Name   | Meaning           | Values                                                           |   
++===================+===================+==================================================================+
+| vt=               | Field type        | O = Output, I = Input, A = 3270 attribute, C = Character subspan |
++-------------------+-------------------+------------------------------------------------------------------+
+| vr=               | Row               | Row number (first row = 1)                                       |
++-------------------+-------------------+------------------------------------------------------------------+
+| vc=               | Column            | Column number (first column = 1)                                 |
++-------------------+-------------------+------------------------------------------------------------------+
+| vp=               | Position          | Offset from start of screen (R1C1 = 0)                           |
++-------------------+-------------------+------------------------------------------------------------------+
+| vl=               | Length            | Length of span or subspan                                        |
++-------------------+-------------------+------------------------------------------------------------------+
 
-    An example of the GENERATE-VIR3270 tag is shown below:
+An example of the GENERATE-VIR3270 tag is shown below:-
 
-    The management of the size and the colours of the text is effected
-    for all fields by means of the ON-ATTRIBUTE and ON-END-OF-ATTRIBUTE
-    tags. For applications which use 3270 character attributes (order
-    code x’28’), the colour and highlighting of individual characters
-    within a field can be managed by means of the ON-CHARACTER-ATTRIBUTE
-    and ON-END-OF-CHARACTER-ATTRIBUTE tags. Input fields may be supplied
-    with additional information by way of the ADD- TO-FIELDS tag.
+:: 
 
-    The ON-ATTRIBUTE and ON-END-OF-ATTRIBUTE tags allow HTML tags to be
-    inserted before and after each field depending on the 3270
-    attributes specified by the host application.
+    <pre><div id="printReady">{{{GENERATE-VIR3270 (1,1,1920) "INFIELDS"}}}
+    </div></pre>
+    {{{DEFINE-HTML-PFKEY "pf"}}}<input name="pf" type="HIDDEN">
+    <div id="infields">
+        {{{FOR-EACH-VALUE-IN "INFIELDS"}}}{{{CURRENT-VALUE-OF "INFIELDS"}}}
+        {{{END-FOR "INFIELDS"}}}
+    </div>
 
-    Inserts the value specified by “standard html tag” before the field
-    when the conditions p1 to pn are fulfilled. The parameters p1 to pn
-    may appear in any order, each parameter representing one of the
-    following values:
+
+1.4.7. Colour and font management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.7.1. Introduction
+
+The management of the size and the colours of the text is effected for all fields by means of the ON-ATTRIBUTE and
+ON-END-OF-ATTRIBUTE tags. For applications which use 3270 character attributes (order code x’28’), the colour and
+highlighting of individual characters within a field can be managed by means of the ON-CHARACTER-ATTRIBUTE and
+ON-END-OF-CHARACTER-ATTRIBUTE tags. Input fields may be supplied with additional information by way of the ADDTO-
+FIELDS tag.
+
+1.4.7.2. ON-ATTRIBUTE tag
+
+The ON-ATTRIBUTE and ON-END-OF-ATTRIBUTE tags allow HTML tags to be inserted before and after each field
+depending on the 3270 attributes specified by the host application.
+
+::
+
+    {{{ ON-ATTRIBUTE (p1,p2,..,pn) <standard HTML tag> }}}
+
+Inserts the value specified by “standard html tag” before the field when the conditions p1 to pn are fulfilled. The
+parameters p1 to pn may appear in any order, each parameter representing one of the following values:
 
 p1
-~~
-
-    Type of field: PROTECTED, UNPROTECTED, NON-DISPLAY, NUMERIC, MDTON,
-    DETECTABLE. ALPHANUMERIC, INTENSIFIED, BRIGHT, NORMAL
-
+    Type of field: PROTECTED, UNPROTECTED, NON-DISPLAY, NUMERIC, MDTON, DETECTABLE. ALPHANUMERIC, INTENSIFIED, BRIGHT, NORMAL
 p2
-~~
-
     Highlighting: NOHILIGHT, BLINK, REVERSE, UNDERSCORE
-
 p3
-~~
-
     Colour: NOCOLOR, BLUE, RED, PINK, GREEN, YELLOW, TURQUOISE, WHITE
 
-    When more than one ON-ATTRIBUTE tag matches the same field, the tags
-    are processed in reverse order and the generated HTML is accumulated
-    from each matching ON-ATTRIBUTE tag. The WITH-NO-MATCH-BELOW keyword
-    allows an ON-ATTRIBUTE tag to match the field only if no match has
-    been found with the ON-ATTRIBUTE tags already processed.
+When more than one ON-ATTRIBUTE tag matches the same field, the tags are processed in reverse order and the
+generated HTML is accumulated from each matching ON-ATTRIBUTE tag. The WITH-NO-MATCH-BELOW keyword
+allows an ON-ATTRIBUTE tag to match the field only if no match has been found with the ON-ATTRIBUTE tags already
+processed.
 
-    The presence of the ON-ATTRIBUTE tag requires the presence of an
-    ON-END-OF-ATTRIBUTE tag having the same values for the p1 to pn
-    parameters.
+1.4.7.3. ON-END-OF-ATTRIBUTE tag
 
-    Inserts the value specified by “standard html tag” after the field
-    when the conditions p1 to pn are fulfilled.
+The presence of the ON-ATTRIBUTE tag requires the presence of an ON-END-OF-ATTRIBUTE tag having the same values
+for the p1 to pn parameters.
 
-    As previously described for the ON-ATTRIBUTE tag, multiple matching
-    ON-END-OF-ATTRIBUTE tags are processed in reverse order, and the
-    optional WITH-NO-MATCH-BELOW keyword causes the ON-END-OF-ATTRIBUTE
-    tag to match only if no match has been found with the
-    ON-END-OF-ATTRIBUTE tags already processed.
+::
 
-    Example:
+    {{{ ON-END-OF-ATTRIBUTE (p1,p2,..,pn) <standard HTML tag>}}}
 
-    *Example set of ON-ATTRIBUTE and ON-END-OF-ATTRIBUTE tags*
+Inserts the value specified by “standard html tag” after the field when the conditions p1 to pn are fulfilled.
+As previously described for the ON-ATTRIBUTE tag, multiple matching ON-END-OF-ATTRIBUTE tags are processed in
+reverse order, and the optional WITH-NO-MATCH-BELOW keyword causes the ON-END-OF-ATTRIBUTE tag to match
+only if no match has been found with the ON-END-OF-ATTRIBUTE tags already processed.
+Example:
 
-    If the page template contains ON-CHARACTER-ATTRIBUTE and
-    ON-END-OF-CHARACTER-ATTRIBUTE tags, changes in colour or
-    highlighting of individual characters within a field are surrounded
-    by the specified HTML code during processing by GENERATE-HTML. Since
-    HTML code cannot be included in the “value” clause of an input
-    field, GENERATE-HTML does not generate HTML code for character
-    attributes within input fields.
+::
+
+
+    {{{ ON-ATTRIBUTE (PROTECTED,WITH-NO-MATCH-BELOW)<font color=green>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED, WITH-NO-MATCH-BELOW)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,NORMAL,NOCOLOR)<font color=#00CCFF>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,NORMAL,NOCOLOR)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,INTENSIFIED,NOCOLOR)<font color=white>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,INTENSIFIED,NOCOLOR)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,BLUE)<font color=#00CCFF>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,BLUE)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,RED)<font color=#c41200>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,RED)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,PINK)<font color=pink>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,PINK)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,GREEN)<font color=#00FF00>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,GREEN)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,TURQUOISE)<font color=#40E0D0>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,TURQUOISE)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,YELLOW)<font color=#FFFF33>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,YELLOW)</font>}}}
+    {{{ ON-ATTRIBUTE (PROTECTED,WHITE)<font color=white>}}}
+    {{{ ON-END-OF-ATTRIBUTE (PROTECTED,WHITE)</font>}}}
+
+*Example set of ON-ATTRIBUTE and ON-END-OF-ATTRIBUTE tags*
+
+1.4.7.4. ON-CHARACTER-ATTRIBUTE tag
+
+If the page template contains ON-CHARACTER-ATTRIBUTE and ON-END-OF-CHARACTER-ATTRIBUTE tags, changes in
+colour or highlighting of individual characters within a field are surrounded by the specified HTML code during
+processing by GENERATE-HTML. Since HTML code cannot be included in the “value” clause of an input field,
+GENERATE-HTML does not generate HTML code for character attributes within input fields.
+
+::
+
+
+    {{{ ON-CHARACTER-ATTRIBUTE (p1,p2) <standard HTML tag> }}}
 
 p1,p2
-~~~~~
+    Highlighting and colour parameters as specified for the ON-ATTRIBUTE tag.
 
-    Highlighting and colour parameters as specified for the ON-ATTRIBUTE
-    tag.
+1.4.7.5. ON-END-OF-CHARACTER-ATTRIBUTE tag
 
-    The ON-END-OF-CHARACTER-ATTRIBUTE tag specifies the HTML code to be
-    inserted at the termination of a character string opened by an
-    ON-CHARACTER-ATTRIBUTE tag.
+The ON-END-OF-CHARACTER-ATTRIBUTE tag specifies the HTML code to be inserted at the termination of a character
+string opened by an ON-CHARACTER-ATTRIBUTE tag.
 
-    The presence of an ADD-TO-FIELDS tag allows the definition of each
-    HTML input field to be modified according to the 3270 attributes
-    specified by the host application.
+::
 
-    Inserts the value specified by “part of standard html tag” into the
-    HTML <INPUT> tag when the conditions p1 to pn (described in the
-    previous paragraph) are fulfilled.
+    {{{ ON-END-OF-CHARACTER-ATTRIBUTE (p1,p2) <standard HTML tag>}}}
 
-    When more than one ADD-TO-FIELDS tag matches the same field, the
-    tags are processed in order of appearance and the generated HTML is
-    accumulated from each matching ADD-TO-FIELDS tag. The
-    WITH-NO-MATCH-ABOVE keyword allows an ADD-TO-FIELDS tag to match the
-    field only if no match has been found with the ADD-TO-FIELDS tags
-    already processed.
+1.4.7.6. ADD-TO-FIELDS tag
 
-    Example:
+The presence of an ADD-TO-FIELDS tag allows the definition of each HTML input field to be modified according to the 3270 attributes specified by the host application.
 
-    *Example set of ADD-TO-FIELDS tags*
+::
 
-    In the above example, the parameter class makes reference to a style
-    class defined in the HTML page header:
+    {{{ ADD-TO-FIELDS (p1,p2,..,pn) part of standard HTML tag }}}
 
-    *Example styles for ADD-TO-FIELDS tags*
+Inserts the value specified by “part of standard html tag” into the HTML <INPUT> tag when the conditions p1 to pn
+(described in the previous paragraph) are fulfilled.
 
-    For certain fields, the action of the ADD-TO-FIELDS tag may be
-    nullified by the NO-ADD-TO-CHECKBOX and NO-ADD- TO-LISTBOX local
-    options (se`e “Setting and unsetting local options”, page
-    42 <#_bookmark42>`__).
+When more than one ADD-TO-FIELDS tag matches the same field, the tags are processed in order of appearance and
+the generated HTML is accumulated from each matching ADD-TO-FIELDS tag. The WITH-NO-MATCH-ABOVE keyword
+allows an ADD-TO-FIELDS tag to match the field only if no match has been found with the ADD-TO-FIELDS tags already
+processed.
 
-    The ADD-TO-FIELDS tag affects input fields only
+Example:
 
-    In each message sent from the host application to the browser,
-    VIRTEL automatically manages the positioning of the cursor insofar
-    as is possible. Conversely, when a message is sent to VIRTEL from
-    the browser, it is necessary to know the position of the cursor in
-    order to inform the application on the host side. The cursor
-    position cannot be handled relatively therefore, the cursor’s exact
-    position is communicated via a hidden field specifying the name of
-    the field having the focus at the time of transmission.
+::
 
-    Cursor management is determined by the tags DEFINE-HTML-FOCUS-FIELD,
-    FIELD-WITH-CURSOR, DEFAULT-FIELD- WITH-CURSOR and by two JavaScript
-    procedures. More precise positioning of the cursor can be controlled
-    by the optional tags DEFINE-CURSOR-POSITION-FIELD and
-    POSITION-OF-THE-CURSOR.
+    {{{ ADD-TO-FIELDS (NORMAL,NOCOLOR) class="GREEN" }}}
+    {{{ ADD-TO-FIELDS (INTENSIFIED,NOCOLOR) class="RED" }}}
+    {{{ ADD-TO-FIELDS (BLUE) class="BLUE" }}}
+    {{{ ADD-TO-FIELDS (RED) class="RED" }}}
+    {{{ ADD-TO-FIELDS (PINK) class="PINK" }}}
+    {{{ ADD-TO-FIELDS (GREEN) class="GREEN" }}}
+    {{{ ADD-TO-FIELDS (TURQUOISE) class="TURQUOISE" }}}
+    {{{ ADD-TO-FIELDS (YELLOW) class="YELLOW" }}}
+    {{{ ADD-TO-FIELDS (WHITE) class="WHITE" }}}
+    {{{ ADD-TO-FIELDS (DISPLAY,WITH-NO-MATCH-ABOVE) class="GREEN" }}}
 
-    The DEFINE-HTML-FOCUS-FIELD tag informs VIRTEL of the existence of
-    the focusField.
+*Example set of ADD-TO-FIELDS tags*
 
-    The focusField is a hidden field which will receive the name of the
-    field having the focus, that is to say the input field on which the
-    cursor is positioned, at the moment of transmission of a message
-    from the browser to VIRTEL.
+In the above example, the parameter class makes reference to a style class defined in the HTML page header:-
 
-    This field must be defined in the following way:
+:: 
 
-    The DEFINE-CURSOR-POSITION-FIELD tag informs VIRTEL of the existence
-    of the cursorField.
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <style><!--
+    .BLUE {font-family: monospace; background: #00CCFF; }
+    .RED {font-family: monospace; background: red; }
+    .PINK {font-family: monospace; background: pink; }
+    .GREEN {font-family: monospace; background: #00FF00;}
+    .TURQUOISE {font-family: monospace; background: #40E0D0; }
+    .YELLOW {font-family: monospace; background: #FFFF33;}
+    .WHITE {font-family: monospace; background: #FFFFFF; }
+    //--></style>
+    <!--VIRTEL start="{{{" end="}}}" -->
+    <title>Syspertec - example of generation of HTML pages}}} </title>
+    </head>
 
-    The cursorField is an optional hidden field in which the JavaScript
-    routines may place the exact position of the cursor when a message
-    is transmitted from the browser to VIRTEL. The cursor position is
-    indicated by a string of the format Vnnnnnnn or Pnnnnnnn, where V
-    indicates that the cursor is in a non-protected (input) field, P
-    indicates a protected
+*Example styles for ADD-TO-FIELDS tags*
 
-    (output) field, and nnnnnnn is the hexadecimal offset of the cursor
-    from the start of the screen (where 0000000 represents row 1 column
-    1).
+For certain fields, the action of the ADD-TO-FIELDS tag may be nullified by the NO-ADD-TO-CHECKBOX and NO-ADDTO-LISTBOX local options (see `“Setting and unsetting local options”, page 42 <#_bookmark35>`)__.
 
-    The cursorField must be defined in the following way:
+.. note:: The ADD-TO-FIELDS tag affects input fields only   
 
-    If both focusField and cursorField are sent to VIRTEL, then VIRTEL
-    will use cursorField to determine the position of the cursor.
+1.4.8. Cursor management
+^^^^^^^^^^^^^^^^^^^^^^^^
+1.4.8.1. Introduction
 
-    The FIELD-WITH-CURSOR tag enables VIRTEL to insert the name of the
-    field having the focus at the time of transmission of the message to
-    the browser.
+In each message sent from the host application to the browser, VIRTEL automatically manages the positioning of the
+cursor insofar as is possible. Conversely, when a message is sent to VIRTEL from the browser, it is necessary to know
+the position of the cursor in order to inform the application on the host side. The cursor position cannot be handled
+relatively therefore, the cursor’s exact position is communicated via a hidden field specifying the name of the field
+having the focus at the time of transmission.
+Cursor management is determined by the tags DEFINE-HTML-FOCUS-FIELD, FIELD-WITH-CURSOR, DEFAULT-FIELDWITH-
+CURSOR and by two JavaScript procedures. More precise positioning of the cursor can be controlled by the
+optional tags DEFINE-CURSOR-POSITION-FIELD and POSITION-OF-THE-CURSOR.
 
-    The DEFAULT-FIELD-WITH-CURSOR tag specifies the name generated by
-    the FIELD-WITH-CURSOR tag when the 3270 screen contains no input
-    fields.
+1.4.8.2. DEFINE-HTML-FOCUS-FIELD tag
 
-    In the DEFAULT-FIELD-WITH-CURSOR tag, fieldname must be the name of
-    an HTML input field defined in the template page. If no
-    DEFAULT-FIELD-WITH-CURSOR tag is present, and the screen contains no
-    input fields, VIRTEL will convert the first field on the screen into
-    an input field, so that the FIELD-WITH-CURSOR tag can generate the
-    name of a valid input field.
+The DEFINE-HTML-FOCUS-FIELD tag informs VIRTEL of the existence of the focusField.
 
-    The positioning of the focus is done with the help of a JavaScript
-    procedure referenced by the <BODY> tag of the HTML page:
+::
 
-Script for focus position management
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    {{{ DEFINE-HTML-FOCUS-FIELD "focusField" }}}
 
+The focusField is a hidden field which will receive the name of the field having the focus, that is to say the input field
+on which the cursor is positioned, at the moment of transmission of a message from the browser to VIRTEL.
+
+This field must be defined in the following way:-
+
+::
+
+    <INPUT NAME="focusField" TYPE="HIDDEN" VALUE="{{{FIELD-WITH-CURSOR}}}">
+
+1.4.8.3. DEFINE-CURSOR-POSITION-FIELD tag
+
+The DEFINE-CURSOR-POSITION-FIELD tag informs VIRTEL of the existence of the cursorField.
+
+::
+
+    {{{ DEFINE-CURSOR-POSITION-FIELD "cursorField" }}}
+
+The cursorField is an optional hidden field in which the JavaScript routines may place the exact position of the cursor
+when a message is transmitted from the browser to VIRTEL. The cursor position is indicated by a string of the format
+Vnnnnnnn or Pnnnnnnn, where V indicates that the cursor is in a non-protected (input) field, P indicates a protected
+(output) field, and nnnnnnn is the hexadecimal offset of the cursor from the start of the screen (where 0000000
+represents row 1 column 1).
+
+The cursorField must be defined in the following way:
+
+::
+
+    <INPUT NAME="cursorField" TYPE="HIDDEN" VALUE="">
+
+If both focusField and cursorField are sent to VIRTEL, then VIRTEL will use cursorField to determine the position of the cursor.
+
+1.4.8.4. FIELD-WITH-CURSOR tag
+
+The FIELD-WITH-CURSOR tag enables VIRTEL to insert the name of the field having the focus at the time of transmission of the message to the browser.
+
+::
+
+    {{{ FIELD-WITH-CURSOR }}}
+
+1.4.8.5. DEFAULT-FIELD-WITH-CURSOR tag
+
+The DEFAULT-FIELD-WITH-CURSOR tag specifies the name generated by the FIELD-WITH-CURSOR tag when the 3270 screen contains no input fields.
+
+::
+
+    {{{ DEFAULT-FIELD-WITH-CURSOR "fieldname" }}}
+
+In the DEFAULT-FIELD-WITH-CURSOR tag, fieldname must be the name of an HTML input field defined in the template
+page. If no DEFAULT-FIELD-WITH-CURSOR tag is present, and the screen contains no input fields, VIRTEL will convert
+the first field on the screen into an input field, so that the FIELD-WITH-CURSOR tag can generate the name of a valid
+input field.
+
+1.4.8.5.1. Positioning the focus when a message is sent to the browser
+
+The positioning of the focus is done with the help of a JavaScript procedure referenced by the <BODY> tag of the HTML page:
+
+::
+
+    Script for focus position management
     <script language="Javascript">
-
-    <!-- comment to mask script for some browsers function setfocus()
-
-{
-
-    document.virtelForm.{{{ FIELD-WITH-CURSOR }}}.focus();
-
-}
-
+    <!-- comment to mask script for some browsers
+    function setfocus()
+    {
+        document.virtelForm.{{{ FIELD-WITH-CURSOR }}}.focus();
+    }
     //-->
-
     </script>
 
 Cursor position initialisation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
     <body onload="setfocus()">
 
-    Once present in the client's browser, the user may need to move the
-    focus to a different field, either by using the TAB key on the
-    keyboard or by using the mouse. The focusField field is
-    automatically updated if the ADD-TO-FIELDS tag calls a script which
-    updates the focus field.
+1.4.8.5.2. Positioning the focus in the browser
 
-Script for saving the name of the field having the focus
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Once present in the client's browser, the user may need to move the focus to a different field, either by using the TAB key on the keyboard or by using the mouse. The focusField field is automatically updated if the ADD-TO-FIELDS tag calls a script which updates the focus field. Script for saving the name of the field having the focus:-
+
+::
 
     <script language="Javascript">
-
-    <!-- comment to mask script for some browsers function
-    savefocus(CurrentFieldName)
-
-{
-
-    document.virtelForm.focusField.value = CurrentFieldName;
-
-}
-
+    <!-- comment to mask script for some browsers
+    function savefocus(CurrentFieldName)
+    {
+        document.virtelForm.focusField.value = CurrentFieldName;
+    }
     //-->
-
     </script>
 
-Automatic call of the update script
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*Automatic call of the update script*
+
+::
 
     {{{ ADD-TO-FIELDS onfocus = "savefocus(this.name)" }}}
 
-    The POSITION-OF-THE-CURSOR tag allows VIRTEL to send the exact
-    position of the cursor to the browser by including a string of the
-    format Vnnnnnnn or Pnnnnnnn in the HTML page. Vnnnnnnn means that
-    the cursor is in a non-protected (input) field. Pnnnnnnn means that
-    the cursor is in a protected (output) field. In both cases, nnnnnnn
-    is the hexadecimal offset of the cursor from the start of the screen
-    (where 0000000 represents row 1 column 1).
+1.4.8.6. POSITION-OF-THE-CURSOR tag
 
-    By design, the transmission of information delivered by a 3270
-    application is effected by using only the function keys, usually the
-    PF and PA keys. Also by design, the navigation from an HTML page is
-    radically different, generally using the mouse to submit requests to
-    the HTTP server. This difference in philosophy makes it difficult,
-    even impossible in certain instances, to detect the use of a
-    function key via the browser. Conserving the ergonomic aspects of
-    the web in an application that allows full use of the function keys
-    is naturally not an easy thing to do, it is, however, made possible
-    by the following functions.
+The POSITION-OF-THE-CURSOR tag allows VIRTEL to send the exact position of the cursor to the browser by including a
+string of the format Vnnnnnnn or Pnnnnnnn in the HTML page. Vnnnnnnn means that the cursor is in a non-protected
+(input) field. Pnnnnnnn means that the cursor is in a protected (output) field. In both cases, nnnnnnn is the
+hexadecimal offset of the cursor from the start of the screen (where 0000000 represents row 1 column 1).
 
-    As with the management of the cursor, the pfkField is a hidden field
-    designed to accept the name of the function key that VIRTEL must use
-    to transmit data to the application on the host.
+::
 
-    VIRTEL is notified of the existence of the field by the following
-    tag:
+    {{{ POSITION-OF-THE-CURSOR }}}
 
-    The field pfkField is updated by using a JavaScript procedure called
-    at the time of the submission of the request. The script used is
-    referenced in the BUTTON field definition or in the HTML link used
-    for the submission.
+1.4.9. Function key management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.9.1. Introduction
+
+By design, the transmission of information delivered by a 3270 application is effected by using only the function keys,
+usually the PF and PA keys. Also by design, the navigation from an HTML page is radically different, generally using the
+mouse to submit requests to the HTTP server. This difference in philosophy makes it difficult, even impossible in
+certain instances, to detect the use of a function key via the browser. Conserving the ergonomic aspects of the web in
+an application that allows full use of the function keys is naturally not an easy thing to do, it is, however, made possible
+by the following functions.
+
+1.4.9.2. Definition of the pfkField field
+
+As with the management of the cursor, the pfkField is a hidden field designed to accept the name of the function key
+that VIRTEL must use to transmit data to the application on the host.
+
+::
+
+
+    <INPUT NAME="pfkField" TYPE="HIDDEN" VALUE="ENTER">
+
+VIRTEL is notified of the existence of the field by the following tag:
+
+::
+
+
+    {{{ DEFINE-HTML-PFKEY = "pfkField" }}}
+
+1.4.9.3. Updating the pfkField
+
+The field pfkField is updated by using a JavaScript procedure called at the time of the submission of the request. The
+script used is referenced in the BUTTON field definition or in the HTML link used for the submission.
 
 Save the name of the field having the focus
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     <script language="Javascript">
-
-    <!-- comment to mask script for some browsers function
-    submitform(pfkey)
-
-{
-
-    document.virtelForm.pfkField.value = pfkey;
-    document.virtelForm.submit();
-
-}
-
+    <!-- comment to mask script for some browsers
+    function submitform(pfkey)
+    {
+        document.virtelForm.pfkField.value = pfkey;
+        document.virtelForm.submit();
+    }
     //-->
-
     </script>
 
 Automatic call of the update script from a field of type BUTTON
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     <INPUT TYPE="BUTTON" size="5" VALUE="PF01"
-
-    onclick="submitform(this.value)">
+        onclick="submitform(this.value)">
 
 Automatic call of the SCRIPT from a hypertext link
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     <a href="javascript:submitform('PF1')" >submit with PF01</a>
 
-    The function keys may be defined in the following manner in the
-    “value” keyword of the INPUT TYPE=BUTTON field.
+The function keys may be defined in the following manner in the “value” keyword of the INPUT TYPE=BUTTON field.
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
++--------------------+-------------------------------------------------------------------+
+| 3270 function key  | PfkField value                                                    |
++====================+===================================================================+
+| ENTER              | ENTER                                                             |
++--------------------+-------------------------------------------------------------------+ 
+| CLEAR SCREEN       | CLEAR                                                             |
++--------------------+-------------------------------------------------------------------+
+| PA1, PA2, PA3      | PA1, PA2, PA3                                                     |
++--------------------+-------------------------------------------------------------------+
+| PF1 to PF24        | PF01 to PF24 (variations PF1, F1, F01, P1, P01 are also accepted) |
++--------------------+-------------------------------------------------------------------+
+| Attention          | ATTN                                                              |
++--------------------+-------------------------------------------------------------------+
 
-    *Function key values for pfkField*
+*Function key values for pfkField*
 
-    Certain function keys may be explicitly restricted by means of the
-    INVALID-PFKEYS tag containing the list of prohibited PF keys.
+1.4.9.4. Disallowed function keys
 
-    On the other hand, an exhaustive list of authorised function keys
-    may be specified with the VALID-PFKEYS tag.
+Certain function keys may be explicitly restricted by means of the INVALID-PFKEYS tag containing the list of prohibited PF keys.
 
-    For example,
+::
 
-Disallow ATTN, PF08 and PF24
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    {{{ INVALID-PFKEYS (pfk1, pfk2, .. , pfkn) }}}
+
+On the other hand, an exhaustive list of authorised function keys may be specified with the VALID-PFKEYS tag.
+
+::
+
+    {{{ VALID-PFKEYS (pfk1, pfk2, .. , pfkn) }}}
+
+For example, Disallow ATTN, PF08 and PF24
+
+::
 
     {{{ INVALID-PFKEYS (ATTN,PF08,PF24) }}}
 
 Disallow all function keys except ENTER and PF03
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     {{{ VALID-PFKEYS (ENTER,PF03) }}}
 
-    A page template can generate a “pseudo-PFkey” intended to be
-    interpreted by an INPUT scenario. This is done by setting the
-    pfkField to a value beginning with SCENARIO. The pseudo-PFKey will
-    be accepted by VIRTEL and treated as ENTER, but it will not be
-    transmitted to the application. The scenario can retrieve the value
-    of the pfkField by means of the COPY$ INPUT-TO-VARIABLE instruction.
+1.4.9.5. PF key processing by scenario
 
-    For example:
+A page template can generate a “pseudo-PFkey” intended to be interpreted by an INPUT scenario. This is done by
+setting the pfkField to a value beginning with SCENARIO. The pseudo-PFKey will be accepted by VIRTEL and treated as
+ENTER, but it will not be transmitted to the application. The scenario can retrieve the value of the pfkField by means of
+the COPY$ INPUT-TO-VARIABLE instruction.
+
+For example:
 
 Definition of the BUTTON field in the page template:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     {{{ DEFINE-HTML-PFKEY "pf" }}}
-
     <INPUT TYPE="BUTTON" size="5" VALUE="SCENARIO-DFHMDF"
-
-    onclick="submitform(this.value)">
+            onclick="submitform(this.value)">
 
 Retrieving and testing the PF key value in the INPUT scenario:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    COPY$ INPUT-TO-VARIABLE,FIELD='pf',VAR='PF' IF$
-    NOT-FOUND,THEN=NOPARAMS
+::
 
-    CASE$ 'PF',(NE,'SCENARIO-DFHMDF',NOPARAMS)
+        COPY$ INPUT-TO-VARIABLE,FIELD='pf',VAR='PF'
+        IF$ NOT-FOUND,THEN=NOPARAMS
+        CASE$ 'PF',(NE,'SCENARIO-DFHMDF',NOPARAMS)
+    * generate the screen capture:
+        COPY$ OUTPUT-FILE-TO-VARIABLE, *
+            FILE='DFHMDF.TXT',VAR='CAPTURE'
+    * send result to browser
+        SEND$ AS-FILE,VAR='CAPTURE', *
+            TYPE='text/plain',NAME='dfhmdf.asm'
+    NOPARAMS EQU *
 
--  generate the screen capture:
+1.4.9.6. The Null PF key
 
-    COPY$ OUTPUT-FILE-TO-VARIABLE, \*
+A page template or JavaScript program can request VIRTEL to resend the contents of the current 3270 screen, without
+sending any input to the host application, by setting the pfkField to the value NULL-PF
 
-    FILE='DFHMDF.TXT',VAR='CAPTURE'
+1.4.10. Setting and unsetting local options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  send result to browser
+1.4.10.1. Introduction
 
-    SEND$ AS-FILE,VAR='CAPTURE', \*
+The SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags allow the activation or deactivation of miscellaneous
+processing options associated with HTML generation. These options are normally deactivated, but any or all of them
+can be activated by default using the HTSETn parameters in the VIRTCT. Refer to the VIRTEL Installation Guide for
+details of the HTSETn parameters. The SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags apply only to the current
+page, and take effect from the point in the page at which they appear.
 
-    TYPE='text/plain',NAME='dfhmdf.asm' NOPARAMS EQU \*
-
-    A page template or JavaScript program can request VIRTEL to resend
-    the contents of the current 3270 screen, without sending any input
-    to the host application, by setting the pfkField to the value
-    NULL-PF
-
-    The SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags allow the
-    activation or deactivation of miscellaneous processing options
-    associated with HTML generation. These options are normally
-    deactivated, but any or all of them can be activated by default
-    using the HTSETn parameters in the VIRTCT. Refer to the VIRTEL
-    Installation Guide for details of the HTSETn parameters. The
-    SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags apply only to the
-    current page, and take effect from the point in the page at which
-    they appear.
-
-    The options which can be specified are:
+The options which can be specified are:
 
 AUTO-INCREMENT-VARIABLES
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-    When this option is activated, table variables referenced outside a
-    FOR-EACH-VALUE-IN loop will be automatically advanced to their next
-    value each time they are reused. If this option is not active, the
-    CURRENT-VALUE-OF tag always produces the first value of a table
-    variable when it is referenced outside a loop.
+    When this option is activated, table variables referenced outside a FOR-EACH-VALUE-IN loop will be automatically advanced to their next value each time they are reused. If this option is not active, the CURRENT-VALUE-OF tag always produces the first value of a table variable when it is referenced outside a loop.
 
 BLANK-BINARY-ZEROES
-~~~~~~~~~~~~~~~~~~~
-
-    Affects the processing of the COPY-FROM and GENERATE-VARIABLES tags
-    (see `“Inserting host application data in a <#_bookmark32>`__
-    `page”, page 29 <#_bookmark32>`__).
+    Affects the processing of the COPY-FROM and GENERATE-VARIABLES tags (see “Inserting host application data in a page”, page 29).
 
 DO-NOT-IGNORE-BINARY-ZEROES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    When this option is activated, then all 3270 NUL characters in input
-    fields generated by VIRTEL will be sent to the browser as SUB
-    characters (x'1A'). When this option is not activated, then VIRTEL
-    will remove 3270 NUL characters from input fields.
+    When this option is activated, then all 3270 NUL characters in input fields generated by VIRTEL will be sent to the browser as SUB characters (x'1A'). When this option is not activated, then VIRTEL will remove 3270 NUL characters from input fields.
 
 HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, NO-ESCAPES, XML-ESCAPES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Affects the processing of the CURRENT-VALUE-OF, TRIMMED-VALUE-OF and
-    NO-BLANKS-VALUE-OF tags (see `“Handling table variables”, page
-    44 <#_bookmark44>`__). Similarly affects the processing of the
-    values generated by GENERATE- VARIABLES.
-
+    Affects the processing of the CURRENT-VALUE-OF, TRIMMED-VALUE-OF and NO-BLANKS-VALUE-OF tags (see “Handling table variables”, page 44). Similarly affects the processing of the values generated by GENERATEVARIABLES.
 ID
-~~
-
-    Indicates that VIRTEL will generate HTML input fields with the
-    parameter “id” in addition to the “name” parameter. The “id” has the
-    same value as the “name”. This is intended for use with JavaScript
-    code which refers to VIRTEL- generated fields using the
-    getElementById method.
+    Indicates that VIRTEL will generate HTML input fields with the parameter “id” in addition to the “name” parameter. The “id” has the same value as the “name”. This is intended for use with JavaScript code which refers to VIRTELgenerated fields using the getElementById method.
 
 MAXLENGTH
-~~~~~~~~~
-
-    Indicates that VIRTEL will generate HTML input fields with the
-    parameter “maxlength” in addition to “size”. The “maxlength”
-    parameter ensures that the number of characters that can be entered
-    into an HTML field does not exceed the 3270 field length. By
-    default, VIRTEL does not generate “maxlength”, which allows an
-    unlimited number of characters to be entered in each HTML field, and
-    VIRTEL truncates the value as necessary before sending the data to
-    the host application.
+    Indicates that VIRTEL will generate HTML input fields with the parameter “maxlength” in addition to “size”. The “maxlength” parameter ensures that the number of characters that can be entered into an HTML field does not exceed the 3270 field length. By default, VIRTEL does not generate “maxlength”, which allows an unlimited number of characters to be entered in each HTML field, and VIRTEL truncates the value as necessary before sending the data to the host application.
 
 MDT-IF-RECEIVED
-~~~~~~~~~~~~~~~
-
-    When this option is activated, VIRTEL will consider all input fields
-    received from the browser to be “modified” fields to be sent to the
-    host application. Fields in the page not received from the browser
-    are considered to be unmodified and are not sent to the host
-    application. When this option is not activated, VIRTEL inspects the
-    contents of all fields received from the browser to determine
-    whether the field has been modified. VIRTEL sends modified fields to
-    the host application, and any fields not received from the browser
-    are sent as empty fields. Notes: (1) This option must be coded in
-    the page template before the fields to which it applies. (2) This
-    option cannot be specified in the VIRTCT
+    When this option is activated, VIRTEL will consider all input fields received from the browser to be “modified” fields to be sent to the host application. Fields in the page not received from the browser are considered to be unmodified and are not sent to the host application. When this option is not activated, VIRTEL inspects the contents of all fields received from the browser to determine whether the field has been modified. VIRTEL sends modified fields to the host application, and any fields not received from the browser are sent as empty fields. Notes: (1) This option must be coded in the page template before the fields to which it applies. (2) This option cannot be specified in the VIRTCT.
 
 NO-ADD-TO-CHECKBOX
-~~~~~~~~~~~~~~~~~~
-
-    When this option is activated, HTML attributes defined within an
-    ADD-TO-FIELDS tag are not added to <input type=checkbox> clauses
-    generated by the GENERATE-HTML tag in conjunction with the FIELD$
-    IS-BINARY-CHOICE instruction.
+    When this option is activated, HTML attributes defined within an ADD-TO-FIELDS tag are not added to <input type=checkbox> clauses generated by the GENERATE-HTML tag in conjunction with the FIELD$ IS-BINARY-CHOICE instruction.
 
 NO-ADD-TO-LISTBOX
-~~~~~~~~~~~~~~~~~
-
-    When this option is activated, HTML attributes defined within an
-    ADD-TO-FIELDS tag are not added to <select> clauses generated by the
-    GENERATE-HTML tag in conjunction with the FIELD$ DEFINE-CHOICE or
-    FIELD$ DEFINE- VARIABLE-CHOICE instructions.
+    When this option is activated, HTML attributes defined within an ADD-TO-FIELDS tag are not added to <select> clauses generated by the GENERATE-HTML tag in conjunction with the FIELD$ DEFINE-CHOICE or FIELD$ DEFINEVARIABLE-CHOICE instructions.
 
 OPTION-DEFAULT-COMPATIBILITY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Prior to the version 4.56 the default parameters for the site or the
-    user specific default setting were taken from the values present in
-    a “w2hparm.js” file. The version 4.56 introduces a new way of
-    proceeding to specify these parameters either at the point of entry
-    level but at each transaction level by using the new “option” field
-    in the transaction definition. Using the
-    OPTION-DEFAULT-COMPATIBILITY option will maintain compatibility with
-    the previous mode. This option can be made overall when specified in
-    one of the HTRESn parameter of the VIRTCT.
+    Prior to the version 4.56 the default parameters for the site or the user specific default setting were taken from the values present in a “w2hparm.js” file. The version 4.56 introduces a new way of proceeding to specify these parameters either at the point of entry level but at each transaction level by using the new “option” field in the transaction definition. Using the PTION-DEFAULT-COMPATIBILITY option will maintain compatibility with the previous mode. This option can be made overall when specified in one of the HTRESn parameter of the VIRTCT.
 
 TRACE-LINE
-~~~~~~~~~~
-
-    Setting this option within a page starts a VIRTEL line trace on the
-    HTTP line. Unsetting this option stops the line trace. Refer to the
-    VIRTEL Messages and Operations Guide for more information about line
-    traces.
+    Setting this option within a page starts a VIRTEL line trace on the HTTP line. Unsetting this option stops the line trace. Refer to the VIRTEL Messages and Operations Guide for more information about line traces.
 
 TRACE-RELAY
-~~~~~~~~~~~
+    Setting this option within a page starts a VIRTEL terminal trace on the VTAM session. Unsetting this option stops the terminal trace. Refer to the VIRTEL Messages and Operations Guide for more information about terminal traces.
 
-    Setting this option within a page starts a VIRTEL terminal trace on
-    the VTAM session. Unsetting this option stops the terminal trace.
-    Refer to the VIRTEL Messages and Operations Guide for more
-    information about terminal traces.
+1.4.10.2. SET-LOCAL-OPTIONS tag
 
-    The SET-LOCAL-OPTIONS tag activates one or more HTML processing
-    options for the remainder of the current page, or until deactivated
-    by UNSET-LOCAL-OPTIONS:
+The SET-LOCAL-OPTIONS tag activates one or more HTML processing options for the remainder of the current page, or until deactivated by UNSET-LOCAL-OPTIONS:
+
+::
+
+    {{{ SET-LOCAL-OPTIONS (option, option, ...) }}}
 
 option
-~~~~~~
-
     one or more HTML processing options as described above
 
-    The UNSET-LOCAL-OPTIONS tag deactivates one or more HTML processing
-    options previously activated by SET-LOCAL- OPTIONS or by HTSETn. The
-    specified options are deactivated for the remainder of the current
-    page, or until reactivated by SET-LOCAL-OPTIONS:
+1.4.10.3. UNSET-LOCAL-OPTIONS tag
+
+The UNSET-LOCAL-OPTIONS tag deactivates one or more HTML processing options previously activated by SET-LOCALOPTIONS or by HTSETn. The specified options are deactivated for the remainder of the current page, or until reactivated by SET-LOCAL-OPTIONS:
+
+::
+
+    {{{ UNSET-LOCAL-OPTIONS (option, option, ...) }}}
 
 option
-~~~~~~
-
     one or more HTML processing options as described above.
 
-    A table variable is a list of values sent to VIRTEL by a host
-    application in a structured field of type `“FAE5 or
-    FAE6”, <#_bookmark296>`__
+1.4.11. Handling table variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    `page 247 <#_bookmark296>`__. Table variables may also be created by
-    means of a VIRTEL tag embedded in the page template (see
-    `“CREATE- <#_bookmark34>`__ `VARIABLE-FROM”, page
-    30 <#_bookmark34>`__), via a scenario (see `“COPY$ instructions”,
-    page 156 <#_bookmark183>`__), or by means of a S VARIABLE command
-    contained in the host 3270 datastream (see `“HOST4WEB commands”,
-    page 255 <#_bookmark298>`__).
+1.4.11.1. Introduction
 
-    The FOR-EACH-VALUE-IN tag marks the start of a loop. varname is the
-    name of a table variable. VIRTEL generates everything between the
-    FOR-EACH-VALUE-IN tag and the END-FOR tag once for each value in
-    varname. If varname has no values then nothing is generated. The
-    current value of varname, and of any other table variables
-    referenced in the loop, changes when the END-FOR tag is encountered.
+A table variable is a list of values sent to VIRTEL by a host application in a structured field of type “FAE5 or FAE6”,^page 247. Table variables may also be created by means of a VIRTEL tag embedded in the page template (see “CREATEVARIABLE-FROM”, page 30), via a scenario (see “COPY$ instructions”, page 156), or by means of a S VARIABLE command contained in the host 3270 datastream (see “HOST4WEB commands”, page 255).
 
-    The CURRENT-VALUE-OF tag is used in a loop bracketed by the
-    FOR-EACH-VALUE-IN and END-FOR tags. varname is the name of a table
-    variable. If it is the variable named in the FOR-EACH-VALUE-IN tag,
-    it determines the number of iterations of the loops. Otherwise, its
-    value is simply changed when the END-FOR tag is encountered.
+1.4.11.2. FOR-EACH-VALUE-IN tag
 
-    The CURRENT-VALUE-OF tag also allows variables to be inserted in a
-    template page outside of a FOR-EACH-VALUE-IN loop. In this case, the
-    variable varname must have been created from the HTTP request by an
-    INPUT scenario by means of the COPY$ INPUT-TO-VARIABLE instruction.
+::
 
-    The local options HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES,
-    NO-ESCAPES, and XML-ESCAPES (se`e “Setting <#_bookmark42>`__
+    {{{FOR-EACH-VALUE-IN "varname"}}}
 
-    `and unsetting local options”, page 42 <#_bookmark42>`__) may affect
-    the processing of this tag.
+The FOR-EACH-VALUE-IN tag marks the start of a loop. varname is the name of a table variable. VIRTEL generates everything between the FOR-EACH-VALUE-IN tag and the END-FOR tag once for each value in varname. If varname has no values then nothing is generated. The current value of varname, and of any other table variables referenced in the loop, changes when the END-FOR tag is encountered.
 
-    If the HTML-ESCAPES local option is set, special characters in the
-    value of the variable will be replaced by the corresponding HTML
-    escape sequence as shown in the table below:
+1.4.11.3. CURRENT-VALUE-OF tag
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
+::
 
-    If the JAVASCRIPT-ESCAPES local option is set, special characters in
-    the value of the variable will be replaced by the corresponding
-    JavaScript escape sequence as shown in the table below:
+    {{{CURRENT-VALUE-OF "varname"}}}
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
+The CURRENT-VALUE-OF tag is used in a loop bracketed by the FOR-EACH-VALUE-IN and END-FOR tags. varname is the name of a table variable. If it is the variable named in the FOR-EACH-VALUE-IN tag, it determines the number of iterations of the loops. Otherwise, its value is simply changed when the END-FOR tag is encountered.
 
-    If the JSON-ESCAPES local option is set, special characters in the
-    value of the variable will be replaced by the corresponding JSON
-    escape sequence as shown in the table below:
+The CURRENT-VALUE-OF tag also allows variables to be inserted in a template page outside of a FOR-EACH-VALUE-IN loop. In this case, the variable varname must have been created from the HTTP request by an INPUT scenario by means of the COPY$ INPUT-TO-VARIABLE instruction.
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
+The local options HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, NO-ESCAPES, and XML-ESCAPES (see “Setting and unsetting local options”, page 42) may affect the processing of this tag.
 
-    If the XML-ESCAPES local option is set, special characters in the
-    value of the variable will be replaced by the corresponding XML
-    escape sequence as shown in the table below:
+If the HTML-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding HTML escape sequence as shown in the table below:-
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
++--------------+------------------------+
+| Character    | HTML escape sequence   |
++==============+========================+
+| <            | &lt;                   |
++--------------+------------------------+
+| >            | &gt;                   |
++--------------+------------------------+
+| "            | &quote;                |
++--------------+------------------------+
+| &            | &amp;                  |
++--------------+------------------------+
 
-    Setting any of the HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES,
-    or XML-ESCAPES local options causes the other options to be
-    automatically unset.
+If the JAVASCRIPT-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding JavaScript escape sequence as shown in the table below:-
 
-    Setting the NO-ESCAPES local option disables all escape processing.
++--------------+----------------------------+
+|Character     | JavaScript escape sequence |
++==============+============================+
+| "            | \"                         |
++--------------+----------------------------+
+| '            | \'                         |
++--------------+----------------------------+
+| \            | \\                         |
++--------------+----------------------------+
 
-    The NO-BLANKS-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag,
-    but the value is truncated at the first blank.
+If the JSON-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding JSON escape sequence as shown in the table below:-
 
-    The TRIMMED-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag,
-    except that leading and trailing blanks (if any) are removed from
-    the value before it is substituted in the page.
++--------------+----------------------------+
+| Character    | JSON escape sequence       |
++==============+============================+
+| "            | \"                         |
++--------------+----------------------------+
+| \            | \\                         |
++--------------+----------------------------+
+| Hex 00 to 1f | \uxxxx                     |
++--------------+----------------------------+
 
-    The END-FOR tag marks the end of a loop started by the
-    FOR-EACH-VALUE-IN tag.
+If the XML-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding XML escape sequence as shown in the table below:-
 
-    The ADVANCE-TO-NEXT-VALUE-OF tag causes subsequent references to the
-    table variable varname (via the CURRENT- VALUE-OF tag, the
-    TRIMMED-VALUE-OF tag, or the NO-BLANKS-VALUE-OF tag) to refer to the
-    next value in the table.
++--------------+----------------------------+
+| Character    | HTML escape sequence       |
++--------------+----------------------------+
+| <            | &#60;                      |
++--------------+----------------------------+
+| >            | &#62;                      |
++--------------+----------------------------+
+| "            | &#34;                      |
++--------------+----------------------------+
+| &            | &#38;                      |
++--------------+----------------------------+
+| '            | &#39;                      |
++--------------+----------------------------+
 
-    The DO-COUNT-UP-WITH tag marks the start of a loop. varname is the
-    name of a variable. VIRTEL generates everything between the
-    DO-COUNT-UP-WITH tag and the END-DO-COUNT tag n times, where n is
-    the current value of varname. During the execution of the loop, the
-    value of varname varies from 1 to n, and other table variables
-    referenced in the loop change when the END-DO-COUNT tag is
-    encountered.
+Setting any of the HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, or XML-ESCAPES local options causes the other options to be automatically unset.
 
-    The END-DO-COUNT tag marks the end of a loop started by the
-    DO-COUNT-UP-WITH tag.
+Setting the NO-ESCAPES local option disables all escape processing.
 
-    The DEFINE-AUTOMATIC-COUNTER tag allows automatic generation of a
-    counter variable in a loop started by the FOR- EACH-VALUE-IN tag.
-    The parameters are:
+1.4.11.4. NO-BLANKS-VALUE-OF tag
+
+::
+
+    {{{NO-BLANKS-VALUE-OF "varname"}}}
+
+The NO-BLANKS-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag, but the value is truncated at the first blank.
+
+1.4.11.5. TRIMMED-VALUE-OF tag
+
+::
+
+    {{{TRIMMED-VALUE-OF "varname"}}}
+
+The TRIMMED-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag, except that leading and trailing blanks (if any) are removed from the value before it is substituted in the page.
+
+1.4.11.6. END-FOR tag
+
+::
+
+    {{{END-FOR "varname"}}}
+
+The END-FOR tag marks the end of a loop started by the FOR-EACH-VALUE-IN tag.
+
+1.4.11.7. ADVANCE-TO-NEXT-VALUE-OF tag
+
+::
+
+    {{{ADVANCE-TO-NEXT-VALUE-OF "varname"}}}
+
+The ADVANCE-TO-NEXT-VALUE-OF tag causes subsequent references to the table variable varname (via the CURRENTVALUE-OF tag, the TRIMMED-VALUE-OF tag, or the NO-BLANKS-VALUE-OF tag) to refer to the next value in the table. 
+
+1.4.11.8. DO-COUNT-UP-WITH tag
+
+::
+
+    {{{DO-COUNT-UP-WITH "varname"}}}
+
+The DO-COUNT-UP-WITH tag marks the start of a loop. varname is the name of a variable. VIRTEL generates everything between the DO-COUNT-UP-WITH tag and the END-DO-COUNT tag n times, where n is the current value of varname. During the execution of the loop, the value of varname varies from 1 to n, and other table variables referenced in the loop change when the END-DO-COUNT tag is encountered.
+
+1.4.11.9. END-DO-COUNT tag
+
+::
+
+    {{{END-DO-COUNT "varname"}}}
+
+The END-DO-COUNT tag marks the end of a loop started by the DO-COUNT-UP-WITH tag.
+
+1.4.11.10. DEFINE-AUTOMATIC-COUNTER tag
+
+::
+
+    {{{DEFINE-AUTOMATIC-COUNTER (init, incr, max) "varname"}}}
+
+The DEFINE-AUTOMATIC-COUNTER tag allows automatic generation of a counter variable in a loop started by the FOREACH-VALUE-IN tag. The parameters are:
 
 init
-~~~~
-
     the initial value of the counter variable
 
 incr
-~~~~
-
     the increment added at each END-FOR
-
 max
-~~~
-
     the maximum value of the counter variable
-
 varname
-~~~~~~~
-
     the name of the counter variable
 
-    The variable generated can be the loop master variable (the variable
-    named in the FOR-EACH-VALUE-IN) or a slave variable. When the
-    counter reaches its maximum value, the loop terminates if it is the
-    master, or continues if it is the slave. In the latter case the
-    counter variable starts again from its initial value.
+The variable generated can be the loop master variable (the variable named in the FOR-EACH-VALUE-IN) or a slave variable. When the counter reaches its maximum value, the loop terminates if it is the master, or continues if it is the slave. In the latter case the counter variable starts again from its initial value.
 
-    The DEFINE-SUB-VARIABLE tag allows a sub-variable to be defined. A
-    sub-variable remaps part of the current value of the loop master
-    variable in a FOR-EACH-VALUE-IN loop. The parameters are:
+1.4.11.11. DEFINE-SUB-VARIABLE tag
+
+::
+
+    {{{DEFINE-SUB-VARIABLE (offset, length, count) "subname"}}}
+
+The DEFINE-SUB-VARIABLE tag allows a sub-variable to be defined. A sub-variable remaps part of the current value of the loop master variable in a FOR-EACH-VALUE-IN loop. The parameters are:
 
 offset
-~~~~~~
-
     the offset of the sub-variable in the loop master variable
-
 length
-~~~~~~
-
     the length (in characters) of the sub-variable
-
 count
-~~~~~
-
     the number of occurrences of the sub-variable
-
 subname
-~~~~~~~
-
     the name of the sub-variable
 
-    A sub-variable consists of count values, each of length bytes,
-    starting at offset in the loop master variable. The first byte of
-    the loop master variable is considered to be offset 0. Sub-variables
-    are defined outside but referenced within a FOR-EACH-VALUE-IN loop.
-    A sub-variable can be referenced wherever a normal table variable
-    would be valid, including the loop master variable of an inner
-    FOR-EACH-VALUE-IN loop, which could in itself be redefined by other
-    sub- variables. When the sub-variable is referenced, it acts as an
-    implicit redefinition of the current value of the master variable of
-    the innermost FOR-EACH-VALUE-IN loop in which the reference appears.
-    Thus, the same sub-variable could possibly redefine different loop
-    master variables if it is referenced in more than one place.
+A sub-variable consists of count values, each of length bytes, starting at offset in the loop master variable. The first
+byte of the loop master variable is considered to be offset 0. Sub-variables are defined outside but referenced within a
+FOR-EACH-VALUE-IN loop. A sub-variable can be referenced wherever a normal table variable would be valid, including
+the loop master variable of an inner FOR-EACH-VALUE-IN loop, which could in itself be redefined by other subvariables.
+When the sub-variable is referenced, it acts as an implicit redefinition of the current value of the master
+variable of the innermost FOR-EACH-VALUE-IN loop in which the reference appears. Thus, the same sub-variable could
+possibly redefine different loop master variables if it is referenced in more than one place.
 
-1. \ **Examples**
+1.4.11.11.0.1. Examples
 
-    A host application uses an FAE5 structured field to create a table
-    variable called HOSTDATA. The HOSTDATA variable consists of an array
-    of 20-byte records. Each record consists of an 8-byte key, followed
-    by six 2-byte codes. The following code generates an HTML table from
-    this data. Each row of the table contains the row number, the key,
-    and the codes. A hyperlink is generated for each code, by removing
-    any trailing blanks from the code and appending “.html”:
+A host application uses an FAE5 structured field to create a table variable called HOSTDATA. The HOSTDATA variable
+consists of an array of 20-byte records. Each record consists of an 8-byte key, followed by six 2-byte codes. The
+following code generates an HTML table from this data. Each row of the table contains the row number, the key, and
+the codes. A hyperlink is generated for each code, by removing any trailing blanks from the code and appending
+“.html”:-
 
-    The DELETE-ALL-VARIABLES tag deletes all variables in the VIRTEL
-    variable pool. An optional prefix parameter allows deletion of only
-    those variables whose names begin with the specified prefix.
+::
 
-    The IP-ADDRESS-OF-LINE tag will be replaced by the IP address of the
-    specified VIRTEL line. For example, {{{IP- ADDRESS-OF-LINE
-    "H-HTTP"}}} might generate 192.168.229.147
+    {{{DEFINE-AUTOMATIC-COUNTER (1,1,9999) "ROWNUM" }}}
+    {{{DEFINE-SUB-VARIABLE (0, 8, 1) "KEY"}}}
+    {{{DEFINE-SUB-VARIABLE (8, 2, 6) "CODES"}}}
+    <table><tr><td>Row</td><td>Key</td><td colspan=6>Codes</td></tr>
+    {{{FOR-EACH-VALUE-IN "HOSTDATA"}}}
+        <tr>
+        <td>{{{CURRENT-VALUE-OF "ROWNUM"}}}</td>
+        <td>{{{CURRENT-VALUE-OF "KEY"}}}</td>
+    {{{FOR-EACH-VALUE-IN "CODES"}}}
+        <td><a href='{{{NO-BLANKS-VALUE-OF "CODES"}}}.html'>
+            {{{CURRENT-VALUE-OF "CODES"}}}</a>
+        </td>
+    {{{END-FOR "CODES"}}}
+    </tr>
+    {{{END-FOR "HOSTDATA"}}}
+    </table>
 
-    The IP-PORT-OF-LINE tag will be replaced by the port number of the
-    specified VIRTEL line. For example, {{{IP-PORT-OF- LINE "H-HTTP"}}}
-    might generate 41000
+1.4.11.12. DELETE-ALL-VARIABLES tag
 
-    The NAME-OF tag allows the insertion in a page of various data items
-    related to the VIRTEL transaction in progress.
+::
+    {{{DELETE-ALL-VARIABLES}}}
+    {{{DELETE-ALL-VARIABLES "prefix"}}}
 
+The DELETE-ALL-VARIABLES tag deletes all variables in the VIRTEL variable pool. An optional prefix parameter allows deletion of only those variables whose names begin with the specified prefix.
+
+1.4.12. Inserting VIRTEL configuration values in a page
+
+1.4.12.1. IP-ADDRESS-OF-LINE tag
+
+::
+
+
+    {{{IP-ADDRESS-OF-LINE "n-xxxxxx"}}}
+The IP-ADDRESS-OF-LINE tag will be replaced by the IP address of the specified VIRTEL line. For example, {{{IPADDRESS-
+OF-LINE "H-HTTP"}}} might generate 192.168.229.147
+
+1.4.12.2. IP-PORT-OF-LINE tag
+{{{IP-PORT-OF-LINE "n-xxxxxx"}}}
+The IP-PORT-OF-LINE tag will be replaced by the port number of the specified VIRTEL line. For example, {{{IP-PORT-OFLINE
+"H-HTTP"}}} might generate 41000
+
+1.4.12.3. NAME-OF tag
+{{{NAME-OF (xxxxxx)}}}
+{{{NAME-OF (xxxxxx, len)}}}
+The NAME-OF tag allows the insertion in a page of various data items related to the VIRTEL transaction in progress.
 xxxxxx
-~~~~~~
-
-    the name of the data item to be inserted. Valid values are:
-
+the name of the data item to be inserted. Valid values are:
 VIRTEL
-~~~~~~
-
-    The VIRTEL APPLID specified in the VIRTCT
-
+The VIRTEL APPLID specified in the VIRTCT
 RELAY
-~~~~~
-
-    The relay LU name used to connect to the host application
-
+The relay LU name used to connect to the host application
+1. Incoming calls
+48
 PRINT-RELAY
-~~~~~~~~~~~
-
-    The relay LU name of the associated printer
-
+The relay LU name of the associated printer
 PSEUDO-TERMINAL
-~~~~~~~~~~~~~~~
-
-    The VIRTEL terminal name
-
+The VIRTEL terminal name
 ENTRY-POINT
-~~~~~~~~~~~
-
-    The VIRTEL entry point name
-
+The VIRTEL entry point name
 LINE-INTERNAL
-~~~~~~~~~~~~~
-
-    The internal name of the VIRTEL line
-
+The internal name of the VIRTEL line
 LINE-EXTERNAL
-~~~~~~~~~~~~~
-
-    The external name of the VIRTEL line
-
+The external name of the VIRTEL line
 USER
-~~~~
-
-    The user name, if signon has occurred
-
+The user name, if signon has occurred
 PASSWORD
-~~~~~~~~
-
-    The user’s password, if signon has occurred
-
+The user’s password, if signon has occurred
 USER-IP-ADDRESS
-~~~~~~~~~~~~~~~
-
-    The IP address of the client terminal
-
+The IP address of the client terminal
 SNA-STATUS
-~~~~~~~~~~
-
-    The status of the host LU2 session:
-
--  X: input is inhibited
-
--  blank: input is allowed
-
+The status of the host LU2 session:
+• X: input is inhibited
+• blank: input is allowed
 TRANSACTION-INTERNAL
-~~~~~~~~~~~~~~~~~~~~
-
-    The internal name of the VIRTEL transaction
-
+The internal name of the VIRTEL transaction
 TRANSACTION-EXTERNAL
-~~~~~~~~~~~~~~~~~~~~
-
-    The external name of the VIRTEL transaction
-
+The external name of the VIRTEL transaction
 URL
-~~~
-
-    The URL excluding the query string
-
+The URL excluding the query string
 QUERY
-~~~~~
-
-    The query string from the URL
-
+The query string from the URL
 PAGE
-~~~~
-
-    The name of the current HTML page template
-
+The name of the current HTML page template
 PAGE-INTERNAL
-~~~~~~~~~~~~~
-
-    The name of the original HTML page template specified in the URL
-
+The name of the original HTML page template specified in the URL
 DIRECTORY
-~~~~~~~~~
-
-    The current VIRTEL directory name
-
+The current VIRTEL directory name
 CHARACTER-SET
-~~~~~~~~~~~~~
-
-    The name of the current UTF-8 character set, or the country code if
-    the page is not in UTF-8 mode (see `“EBCDIC <#_bookmark54>`__
-    `translation management”, page 56 <#_bookmark54>`__)
-
+The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see “EBCDIC
+translation management”, page 56)
 DATE-TIME
-~~~~~~~~~
-
-    The current date and time (14 characters in the format
-    YYYYMMDDHHMMSS)
-
+The current date and time (14 characters in the format YYYYMMDDHHMMSS)
 VIRTEL-VERSION
-~~~~~~~~~~~~~~
-
-    The VIRTEL version number
-
+The VIRTEL version number
+1. Incoming calls
+49
 xxx-SYMBOL
-~~~~~~~~~~
-
-    The value of the system symbol xxx (only if SYSPLUS=YES is specified
-    in the VIRTCT). Example: SYSNAME-SYMBOL
-
+The value of the system symbol xxx (only if SYSPLUS=YES is specified in the VIRTCT). Example: SYSNAME-SYMBOL
 len
-~~~
+an optional length. If specified, the value of the data item will be padded with blanks or truncated on the right to the
+specified length.
 
-    an optional length. If specified, the value of the data item will be
-    padded with blanks or truncated on the right to the specified
-    length.
+1.4.12.4. NUMBER-OF tag
 
-    The NUMBER-OF tag allows the insertion in a page of various data
-    items related to the VIRTEL transaction in progress.
-
+{{{NUMBER-OF (xxxxxx)}}}
+The NUMBER-OF tag allows the insertion in a page of various data items related to the VIRTEL transaction in progress.
 xxxxxx
-~~~~~~
-
-    the name of the data item to be inserted. Valid values are:
-
+the name of the data item to be inserted. Valid values are:
 SCREEN-COLUMNS
-~~~~~~~~~~~~~~
-
-    The width of the current host 3270 screen
-
+The width of the current host 3270 screen
 SCREEN-LINES
-~~~~~~~~~~~~
+The depth of the current host 3270 screen
 
-    The depth of the current host 3270 screen
 
-    The AFTER-NOT-LAST-VALUE-OF tag brackets a section of the page which
-    is to be generated for all except the last iteration of a
-    FOR-EACH-VALUE-IN loop. The HTML content represented by “...” is
-    generated unless the current value of the variable varname is the
-    last in the table.
+1.4.13. Conditional generation
+1.4.13.1. AFTER-NOT-LAST-VALUE-OF tag
+{{{AFTER-NOT-LAST-VALUE-OF "varname" ...}}}
+The AFTER-NOT-LAST-VALUE-OF tag brackets a section of the page which is to be generated for all except the last
+iteration of a FOR-EACH-VALUE-IN loop. The HTML content represented by “...” is generated unless the current value of
+the variable varname is the last in the table.
+The AFTER-NOT-LAST-VALUE-OF tag is useful, for example, when generating a comma-separated list of values, as
+shown in the example below:
+[ {{{FOR-EACH-VALUE-IN "MYVAR"}}} "{{{CURRENT-VALUE-OF "MYVAR"}}} "
+{{{AFTER-NOT-LAST-VALUE-OF "MYVAR" ,}}}{{{END-FOR "MYVAR"}}} ]
+If the variable myvar contains the values 1, 2, and 3, then this example would generate [ "1", "2", "3" ]
+1.4.13.2. IF-USER-IS-ALLOWED-TO tag
+{{{IF-USER-IS-ALLOWED-TO "resourcename" ...}}}
+The IF-USER-IS-ALLOWED-TO tag brackets a section of the page whose appearance is conditional on the user’s
+authorization to access the resource resourcename. The HTML content represented by “...” is generated only if the
+signed-on user is authorized to access the specified resource.
+1. Incoming calls
+50
+1.4.13.3. WHEN-EXISTS and END-WHEN-EXISTS tags
+{{{WHEN-EXISTS "varname"}}}
+...
+{{{END-WHEN-EXISTS "varname"}}}
+The WHEN-EXISTS and END-WHEN-EXISTS tags bracket a section of the page whose appearance is conditional on the
+existence of a named table variable. The variable can be created by a VIRTEL Web Integration application using the
+FAE5 or FAE6 structured fields, or it can be created by a scenario. The HTML content represented by “...” is generated
+only if the named variable exists in the context of the current page and has at least one value.
+1.4.13.4. WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags
+{{{WHEN-NOT-EXISTS "varname"}}}
+...
+{{{END-WHEN-NOT-EXISTS "varname"}}}
+The WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags are similar to the WHEN-EXISTS and END-WHEN-EXISTS tags,
+except that the section of the page enclosed by the tags is generated only if the named table variable does not exist.
+1.4.13.5. WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags
+{{{WHEN-NOT-BLANK "varname"}}}
+...
+{{{END-WHEN-NOT-BLANK "varname"}}}
+The WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags bracket a section of the page which is generated only if the
+current value of a named table variable is non-blank. The HTML content represented by “...” is omitted if the named
+variable does not exist, or if its current value is null or all blanks.
+1.4.13.6. WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags
+{{{WHEN-NEXT-EVENT "eventname"}}}
+...
+{{{END-WHEN-NEXT-EVENT "eventname"}}}
+The WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags allow an XML template to be written which uses variables
+generated by a commarea-to-output conversion scenario. These tags work in conjunction with the $EVENT$ variable
+generated by the “MAP$ EVENTUAL-AREA and MAP$ ELSE-THEN-AREA”, page 185. The section of the page enclosed by
+the WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags is generated only if the current value of the $EVENT$
+variable matches the specified eventname.
+1.4.13.7. WHILE-EVENT and END-WHILE-EVENT tags
+{{{WHILE-EVENT "eventname"}}}
+...
+{{{END-WHILE-EVENT "eventname"}}}
+The WHILE-EVENT and END-WHILE-EVENT tags work in conjunction with the $EVENT$ variable generated by the
+“MAP$ EVENTUAL-AREA and MAP$ ELSE-THEN-AREA”, page 185. The WHILE-EVENT tag marks the start of a loop.
+1. Incoming calls
+51
+Everything between the WHILE-EVENT and END-WHILE-EVENT tags is generated once for each value of the $EVENT$
+variable, as long as the current value of the $EVENT$ variable matches the specified eventname.
 
-    The AFTER-NOT-LAST-VALUE-OF tag is useful, for example, when
-    generating a comma-separated list of values, as shown in the example
-    below:
+1.4.14. Debugging facilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    If the variable myvar contains the values 1, 2, and 3, then this
-    example would generate [ "1", "2", "3" ]
+1.4.14.1. CREATE-VARIABLE-IF tag
 
-    The IF-USER-IS-ALLOWED-TO tag brackets a section of the page whose
-    appearance is conditional on the user’s authorization to access the
-    resource resourcename. The HTML content represented by “...” is
-    generated only if the signed-on user is authorized to access the
-    specified resource.
-
-    The WHEN-EXISTS and END-WHEN-EXISTS tags bracket a section of the
-    page whose appearance is conditional on the existence of a named
-    table variable. The variable can be created by a VIRTEL Web
-    Integration application using the FAE5 or FAE6 structured fields, or
-    it can be created by a scenario. The HTML content represented by
-    “...” is generated only if the named variable exists in the context
-    of the current page and has at least one value.
-
-    The WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags are similar to the
-    WHEN-EXISTS and END-WHEN-EXISTS tags, except that the section of the
-    page enclosed by the tags is generated only if the named table
-    variable does not exist.
-
-    The WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags bracket a section of
-    the page which is generated only if the current value of a named
-    table variable is non-blank. The HTML content represented by “...”
-    is omitted if the named variable does not exist, or if its current
-    value is null or all blanks.
-
-    The WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags allow an XML
-    template to be written which uses variables generated by a
-    commarea-to-output conversion scenario. These tags work in
-    conjunction with the $EVENT$ variable generated by th\ `e “MAP$
-    EVENTUAL-AREA and MAP$ ELSE-THEN-AREA”, page 185 <#_bookmark225>`__.
-    The section of the page enclosed by the WHEN-NEXT-EVENT and
-    END-WHEN-NEXT-EVENT tags is generated only if the current value of
-    the $EVENT$ variable matches the specified eventname.
-
-    The WHILE-EVENT and END-WHILE-EVENT tags work in conjunction with
-    the $EVENT$ variable generated by the `“MAP$ EVENTUAL-AREA and MAP$
-    ELSE-THEN-AREA”, page 185 <#_bookmark225>`__. The WHILE-EVENT tag
-    marks the start of a loop.
-
-    Everything between the WHILE-EVENT and END-WHILE-EVENT tags is
-    generated once for each value of the $EVENT$ variable, as long as
-    the current value of the $EVENT$ variable matches the specified
-    eventname.
-
-    The CREATE-VARIABLE-IF tag with the TRACING-SCENARIO parameter
-    retrieves the contents of the scenario trace created by th\ `e
-    “Capability Tokens”, page 59 <#_bookmark60>`__). If the trace is
-    active, the variable varname will be created. The value of this
-    variable is a JSON structure (see example below) which can be used
-    by Virtel Studio.
-
-    The trace data for a specific terminal may be obtained by specifying
-    an x-Virtel-Debug=capability-token parameter in the URL. The
-    `“capability tokens”, page 59 <#_bookmark60>`__ is generated by a
-    SET-HEADER tag issued by the terminal which owns the trace data.
-
-    { "scenario":"EXECUTE3", "externalName":"EXECUTE3",
-
-    "compiled":"02/04/13 18.49 ", "terminal":"HTVTA012",
-    "relay":"R5HVT511", "trace":[
-
-    {"t":"20:38:41.14","o":"00014A","i":"COPY$"},
-
-    {"t":"20:38:41.14","o":"00015E","i":"TOVAR$"},
-
-    {"t":"20:38:41.14","o":"000046","i":"MAP$"},
-
-    {"t":"20:38:41.14","o":"000058","i":"MAP$","p":[{"Customer":"A0111115"}]},
-
-    {"t":"20:38:41.14","o":"000066","i":"MAP$"},
-
-    {"t":"20:38:41.14","o":"000078","i":"MAP$","p":[{"Datemin":"20110505"}]},
-
-    {"t":"20:38:41.14","o":"000086","i":"MAP$","p":[{"Datemax":"20110525"}]},
-
-    {"t":"20:38:41.14","o":"000110","i":"MAP$"},
-
-    {"t":"20:38:41.14","o":"000170","i":"CASE$","p":[{"CURLINE":"0"}]},
-
-    {"t":"20:38:41.14","o":"0001FC","i":"COPY$"},
-
-    {"t":"20:38:41.14","o":"000214","i":"COPY$"}]}
-
-    *Exampleof a JSON structure generated by TRACING-SCENARIO*
-
-    For more informations, se\ `e “CREATE-VARIABLE-IF”, page
-    52 <#_bookmark50>`__.
-
-    The CREATE-VARIABLE-IF tag allows the conditional creation of a
+The CREATE-VARIABLE-IF tag allows the conditional creation of a
     VIRTEL variable. If the specified condition is true, the variable
     varname will be created and initialized with a value as shown in the
     list of condition names below. This variable can be used
