@@ -1613,7 +1613,7 @@ Cursor position initialisation
 Once present in the client's browser, the user may need to move the focus to a different field, either by using the TAB key on the keyboard or by using the mouse. The focusField field is automatically updated if the ADD-TO-FIELDS tag calls a script which updates the focus field. Script for saving the name of the field having the focus:-
 
 ::
-    
+
     <script language="Javascript">
     <!-- comment to mask script for some browsers
     function savefocus(CurrentFieldName)
@@ -1645,753 +1645,656 @@ hexadecimal offset of the cursor from the start of the screen (where 0000000 rep
 
 1.4.9.1. Introduction
 
+By design, the transmission of information delivered by a 3270 application is effected by using only the function keys,
+usually the PF and PA keys. Also by design, the navigation from an HTML page is radically different, generally using the
+mouse to submit requests to the HTTP server. This difference in philosophy makes it difficult, even impossible in
+certain instances, to detect the use of a function key via the browser. Conserving the ergonomic aspects of the web in
+an application that allows full use of the function keys is naturally not an easy thing to do, it is, however, made possible
+by the following functions.
 
-By design, the transmission of information delivered by a 3270
-    application is effected by using only the function keys, usually the
-    PF and PA keys. Also by design, the navigation from an HTML page is
-    radically different, generally using the mouse to submit requests to
-    the HTTP server. This difference in philosophy makes it difficult,
-    even impossible in certain instances, to detect the use of a
-    function key via the browser. Conserving the ergonomic aspects of
-    the web in an application that allows full use of the function keys
-    is naturally not an easy thing to do, it is, however, made possible
-    by the following functions.
+1.4.9.2. Definition of the pfkField field
 
-    As with the management of the cursor, the pfkField is a hidden field
-    designed to accept the name of the function key that VIRTEL must use
-    to transmit data to the application on the host.
+As with the management of the cursor, the pfkField is a hidden field designed to accept the name of the function key
+that VIRTEL must use to transmit data to the application on the host.
 
-    VIRTEL is notified of the existence of the field by the following
-    tag:
+::
 
-    The field pfkField is updated by using a JavaScript procedure called
-    at the time of the submission of the request. The script used is
-    referenced in the BUTTON field definition or in the HTML link used
-    for the submission.
+
+    <INPUT NAME="pfkField" TYPE="HIDDEN" VALUE="ENTER">
+
+VIRTEL is notified of the existence of the field by the following tag:
+
+::
+
+
+    {{{ DEFINE-HTML-PFKEY = "pfkField" }}}
+
+1.4.9.3. Updating the pfkField
+
+The field pfkField is updated by using a JavaScript procedure called at the time of the submission of the request. The
+script used is referenced in the BUTTON field definition or in the HTML link used for the submission.
 
 Save the name of the field having the focus
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     <script language="Javascript">
-
-    <!-- comment to mask script for some browsers function
-    submitform(pfkey)
-
-{
-
-    document.virtelForm.pfkField.value = pfkey;
-    document.virtelForm.submit();
-
-}
-
+    <!-- comment to mask script for some browsers
+    function submitform(pfkey)
+    {
+        document.virtelForm.pfkField.value = pfkey;
+        document.virtelForm.submit();
+    }
     //-->
-
     </script>
 
 Automatic call of the update script from a field of type BUTTON
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     <INPUT TYPE="BUTTON" size="5" VALUE="PF01"
-
-    onclick="submitform(this.value)">
+        onclick="submitform(this.value)">
 
 Automatic call of the SCRIPT from a hypertext link
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     <a href="javascript:submitform('PF1')" >submit with PF01</a>
 
-    The function keys may be defined in the following manner in the
-    “value” keyword of the INPUT TYPE=BUTTON field.
+The function keys may be defined in the following manner in the “value” keyword of the INPUT TYPE=BUTTON field.
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
++--------------------+-------------------------------------------------------------------+
+| 3270 function key  | PfkField value                                                    |
++====================+===================================================================+
+| ENTER              | ENTER                                                             |
++--------------------+-------------------------------------------------------------------+ 
+| CLEAR SCREEN       | CLEAR                                                             |
++--------------------+-------------------------------------------------------------------+
+| PA1, PA2, PA3      | PA1, PA2, PA3                                                     |
++--------------------+-------------------------------------------------------------------+
+| PF1 to PF24        | PF01 to PF24 (variations PF1, F1, F01, P1, P01 are also accepted) |
++--------------------+-------------------------------------------------------------------+
+| Attention          | ATTN                                                              |
++--------------------+-------------------------------------------------------------------+
 
-    *Function key values for pfkField*
+*Function key values for pfkField*
 
-    Certain function keys may be explicitly restricted by means of the
-    INVALID-PFKEYS tag containing the list of prohibited PF keys.
+1.4.9.4. Disallowed function keys
 
-    On the other hand, an exhaustive list of authorised function keys
-    may be specified with the VALID-PFKEYS tag.
+Certain function keys may be explicitly restricted by means of the INVALID-PFKEYS tag containing the list of prohibited PF keys.
 
-    For example,
+::
 
-Disallow ATTN, PF08 and PF24
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    {{{ INVALID-PFKEYS (pfk1, pfk2, .. , pfkn) }}}
+
+On the other hand, an exhaustive list of authorised function keys may be specified with the VALID-PFKEYS tag.
+
+::
+
+    {{{ VALID-PFKEYS (pfk1, pfk2, .. , pfkn) }}}
+
+For example, Disallow ATTN, PF08 and PF24
+
+::
 
     {{{ INVALID-PFKEYS (ATTN,PF08,PF24) }}}
 
 Disallow all function keys except ENTER and PF03
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     {{{ VALID-PFKEYS (ENTER,PF03) }}}
 
-    A page template can generate a “pseudo-PFkey” intended to be
-    interpreted by an INPUT scenario. This is done by setting the
-    pfkField to a value beginning with SCENARIO. The pseudo-PFKey will
-    be accepted by VIRTEL and treated as ENTER, but it will not be
-    transmitted to the application. The scenario can retrieve the value
-    of the pfkField by means of the COPY$ INPUT-TO-VARIABLE instruction.
+1.4.9.5. PF key processing by scenario
 
-    For example:
+A page template can generate a “pseudo-PFkey” intended to be interpreted by an INPUT scenario. This is done by
+setting the pfkField to a value beginning with SCENARIO. The pseudo-PFKey will be accepted by VIRTEL and treated as
+ENTER, but it will not be transmitted to the application. The scenario can retrieve the value of the pfkField by means of
+the COPY$ INPUT-TO-VARIABLE instruction.
+
+For example:
 
 Definition of the BUTTON field in the page template:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
     {{{ DEFINE-HTML-PFKEY "pf" }}}
-
     <INPUT TYPE="BUTTON" size="5" VALUE="SCENARIO-DFHMDF"
-
-    onclick="submitform(this.value)">
+            onclick="submitform(this.value)">
 
 Retrieving and testing the PF key value in the INPUT scenario:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    COPY$ INPUT-TO-VARIABLE,FIELD='pf',VAR='PF' IF$
-    NOT-FOUND,THEN=NOPARAMS
+::
 
-    CASE$ 'PF',(NE,'SCENARIO-DFHMDF',NOPARAMS)
+        COPY$ INPUT-TO-VARIABLE,FIELD='pf',VAR='PF'
+        IF$ NOT-FOUND,THEN=NOPARAMS
+        CASE$ 'PF',(NE,'SCENARIO-DFHMDF',NOPARAMS)
+    * generate the screen capture:
+        COPY$ OUTPUT-FILE-TO-VARIABLE, *
+            FILE='DFHMDF.TXT',VAR='CAPTURE'
+    * send result to browser
+        SEND$ AS-FILE,VAR='CAPTURE', *
+            TYPE='text/plain',NAME='dfhmdf.asm'
+    NOPARAMS EQU *
 
--  generate the screen capture:
+1.4.9.6. The Null PF key
 
-    COPY$ OUTPUT-FILE-TO-VARIABLE, \*
+A page template or JavaScript program can request VIRTEL to resend the contents of the current 3270 screen, without
+sending any input to the host application, by setting the pfkField to the value NULL-PF
 
-    FILE='DFHMDF.TXT',VAR='CAPTURE'
+1.4.10. Setting and unsetting local options
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
--  send result to browser
+1.4.10.1. Introduction
 
-    SEND$ AS-FILE,VAR='CAPTURE', \*
+The SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags allow the activation or deactivation of miscellaneous
+processing options associated with HTML generation. These options are normally deactivated, but any or all of them
+can be activated by default using the HTSETn parameters in the VIRTCT. Refer to the VIRTEL Installation Guide for
+details of the HTSETn parameters. The SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags apply only to the current
+page, and take effect from the point in the page at which they appear.
 
-    TYPE='text/plain',NAME='dfhmdf.asm' NOPARAMS EQU \*
-
-    A page template or JavaScript program can request VIRTEL to resend
-    the contents of the current 3270 screen, without sending any input
-    to the host application, by setting the pfkField to the value
-    NULL-PF
-
-    The SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags allow the
-    activation or deactivation of miscellaneous processing options
-    associated with HTML generation. These options are normally
-    deactivated, but any or all of them can be activated by default
-    using the HTSETn parameters in the VIRTCT. Refer to the VIRTEL
-    Installation Guide for details of the HTSETn parameters. The
-    SET-LOCAL-OPTIONS and UNSET-LOCAL-OPTIONS tags apply only to the
-    current page, and take effect from the point in the page at which
-    they appear.
-
-    The options which can be specified are:
+The options which can be specified are:
 
 AUTO-INCREMENT-VARIABLES
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-    When this option is activated, table variables referenced outside a
-    FOR-EACH-VALUE-IN loop will be automatically advanced to their next
-    value each time they are reused. If this option is not active, the
-    CURRENT-VALUE-OF tag always produces the first value of a table
-    variable when it is referenced outside a loop.
+    When this option is activated, table variables referenced outside a FOR-EACH-VALUE-IN loop will be automatically advanced to their next value each time they are reused. If this option is not active, the CURRENT-VALUE-OF tag always produces the first value of a table variable when it is referenced outside a loop.
 
 BLANK-BINARY-ZEROES
-~~~~~~~~~~~~~~~~~~~
-
-    Affects the processing of the COPY-FROM and GENERATE-VARIABLES tags
-    (see `“Inserting host application data in a <#_bookmark32>`__
-    `page”, page 29 <#_bookmark32>`__).
+    Affects the processing of the COPY-FROM and GENERATE-VARIABLES tags (see “Inserting host application data in a page”, page 29).
 
 DO-NOT-IGNORE-BINARY-ZEROES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    When this option is activated, then all 3270 NUL characters in input
-    fields generated by VIRTEL will be sent to the browser as SUB
-    characters (x'1A'). When this option is not activated, then VIRTEL
-    will remove 3270 NUL characters from input fields.
+    When this option is activated, then all 3270 NUL characters in input fields generated by VIRTEL will be sent to the browser as SUB characters (x'1A'). When this option is not activated, then VIRTEL will remove 3270 NUL characters from input fields.
 
 HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, NO-ESCAPES, XML-ESCAPES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Affects the processing of the CURRENT-VALUE-OF, TRIMMED-VALUE-OF and
-    NO-BLANKS-VALUE-OF tags (see `“Handling table variables”, page
-    44 <#_bookmark44>`__). Similarly affects the processing of the
-    values generated by GENERATE- VARIABLES.
-
+    Affects the processing of the CURRENT-VALUE-OF, TRIMMED-VALUE-OF and NO-BLANKS-VALUE-OF tags (see “Handling table variables”, page 44). Similarly affects the processing of the values generated by GENERATEVARIABLES.
 ID
-~~
-
-    Indicates that VIRTEL will generate HTML input fields with the
-    parameter “id” in addition to the “name” parameter. The “id” has the
-    same value as the “name”. This is intended for use with JavaScript
-    code which refers to VIRTEL- generated fields using the
-    getElementById method.
+    Indicates that VIRTEL will generate HTML input fields with the parameter “id” in addition to the “name” parameter. The “id” has the same value as the “name”. This is intended for use with JavaScript code which refers to VIRTELgenerated fields using the getElementById method.
 
 MAXLENGTH
-~~~~~~~~~
-
-    Indicates that VIRTEL will generate HTML input fields with the
-    parameter “maxlength” in addition to “size”. The “maxlength”
-    parameter ensures that the number of characters that can be entered
-    into an HTML field does not exceed the 3270 field length. By
-    default, VIRTEL does not generate “maxlength”, which allows an
-    unlimited number of characters to be entered in each HTML field, and
-    VIRTEL truncates the value as necessary before sending the data to
-    the host application.
+    Indicates that VIRTEL will generate HTML input fields with the parameter “maxlength” in addition to “size”. The “maxlength” parameter ensures that the number of characters that can be entered into an HTML field does not exceed the 3270 field length. By default, VIRTEL does not generate “maxlength”, which allows an unlimited number of characters to be entered in each HTML field, and VIRTEL truncates the value as necessary before sending the data to the host application.
 
 MDT-IF-RECEIVED
-~~~~~~~~~~~~~~~
-
-    When this option is activated, VIRTEL will consider all input fields
-    received from the browser to be “modified” fields to be sent to the
-    host application. Fields in the page not received from the browser
-    are considered to be unmodified and are not sent to the host
-    application. When this option is not activated, VIRTEL inspects the
-    contents of all fields received from the browser to determine
-    whether the field has been modified. VIRTEL sends modified fields to
-    the host application, and any fields not received from the browser
-    are sent as empty fields. Notes: (1) This option must be coded in
-    the page template before the fields to which it applies. (2) This
-    option cannot be specified in the VIRTCT
+    When this option is activated, VIRTEL will consider all input fields received from the browser to be “modified” fields to be sent to the host application. Fields in the page not received from the browser are considered to be unmodified and are not sent to the host application. When this option is not activated, VIRTEL inspects the contents of all fields received from the browser to determine whether the field has been modified. VIRTEL sends modified fields to the host application, and any fields not received from the browser are sent as empty fields. Notes: (1) This option must be coded in the page template before the fields to which it applies. (2) This option cannot be specified in the VIRTCT.
 
 NO-ADD-TO-CHECKBOX
-~~~~~~~~~~~~~~~~~~
-
-    When this option is activated, HTML attributes defined within an
-    ADD-TO-FIELDS tag are not added to <input type=checkbox> clauses
-    generated by the GENERATE-HTML tag in conjunction with the FIELD$
-    IS-BINARY-CHOICE instruction.
+    When this option is activated, HTML attributes defined within an ADD-TO-FIELDS tag are not added to <input type=checkbox> clauses generated by the GENERATE-HTML tag in conjunction with the FIELD$ IS-BINARY-CHOICE instruction.
 
 NO-ADD-TO-LISTBOX
-~~~~~~~~~~~~~~~~~
-
-    When this option is activated, HTML attributes defined within an
-    ADD-TO-FIELDS tag are not added to <select> clauses generated by the
-    GENERATE-HTML tag in conjunction with the FIELD$ DEFINE-CHOICE or
-    FIELD$ DEFINE- VARIABLE-CHOICE instructions.
+    When this option is activated, HTML attributes defined within an ADD-TO-FIELDS tag are not added to <select> clauses generated by the GENERATE-HTML tag in conjunction with the FIELD$ DEFINE-CHOICE or FIELD$ DEFINEVARIABLE-CHOICE instructions.
 
 OPTION-DEFAULT-COMPATIBILITY
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Prior to the version 4.56 the default parameters for the site or the
-    user specific default setting were taken from the values present in
-    a “w2hparm.js” file. The version 4.56 introduces a new way of
-    proceeding to specify these parameters either at the point of entry
-    level but at each transaction level by using the new “option” field
-    in the transaction definition. Using the
-    OPTION-DEFAULT-COMPATIBILITY option will maintain compatibility with
-    the previous mode. This option can be made overall when specified in
-    one of the HTRESn parameter of the VIRTCT.
+    Prior to the version 4.56 the default parameters for the site or the user specific default setting were taken from the values present in a “w2hparm.js” file. The version 4.56 introduces a new way of proceeding to specify these parameters either at the point of entry level but at each transaction level by using the new “option” field in the transaction definition. Using the PTION-DEFAULT-COMPATIBILITY option will maintain compatibility with the previous mode. This option can be made overall when specified in one of the HTRESn parameter of the VIRTCT.
 
 TRACE-LINE
-~~~~~~~~~~
-
-    Setting this option within a page starts a VIRTEL line trace on the
-    HTTP line. Unsetting this option stops the line trace. Refer to the
-    VIRTEL Messages and Operations Guide for more information about line
-    traces.
+    Setting this option within a page starts a VIRTEL line trace on the HTTP line. Unsetting this option stops the line trace. Refer to the VIRTEL Messages and Operations Guide for more information about line traces.
 
 TRACE-RELAY
-~~~~~~~~~~~
+    Setting this option within a page starts a VIRTEL terminal trace on the VTAM session. Unsetting this option stops the terminal trace. Refer to the VIRTEL Messages and Operations Guide for more information about terminal traces.
 
-    Setting this option within a page starts a VIRTEL terminal trace on
-    the VTAM session. Unsetting this option stops the terminal trace.
-    Refer to the VIRTEL Messages and Operations Guide for more
-    information about terminal traces.
+1.4.10.2. SET-LOCAL-OPTIONS tag
 
-    The SET-LOCAL-OPTIONS tag activates one or more HTML processing
-    options for the remainder of the current page, or until deactivated
-    by UNSET-LOCAL-OPTIONS:
+The SET-LOCAL-OPTIONS tag activates one or more HTML processing options for the remainder of the current page, or until deactivated by UNSET-LOCAL-OPTIONS:
+
+::
+
+    {{{ SET-LOCAL-OPTIONS (option, option, ...) }}}
 
 option
-~~~~~~
-
     one or more HTML processing options as described above
 
-    The UNSET-LOCAL-OPTIONS tag deactivates one or more HTML processing
-    options previously activated by SET-LOCAL- OPTIONS or by HTSETn. The
-    specified options are deactivated for the remainder of the current
-    page, or until reactivated by SET-LOCAL-OPTIONS:
+1.4.10.3. UNSET-LOCAL-OPTIONS tag
+
+The UNSET-LOCAL-OPTIONS tag deactivates one or more HTML processing options previously activated by SET-LOCALOPTIONS or by HTSETn. The specified options are deactivated for the remainder of the current page, or until reactivated by SET-LOCAL-OPTIONS:
+
+::
+
+    {{{ UNSET-LOCAL-OPTIONS (option, option, ...) }}}
 
 option
-~~~~~~
-
     one or more HTML processing options as described above.
 
-    A table variable is a list of values sent to VIRTEL by a host
-    application in a structured field of type `“FAE5 or
-    FAE6”, <#_bookmark296>`__
+1.4.11. Handling table variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    `page 247 <#_bookmark296>`__. Table variables may also be created by
-    means of a VIRTEL tag embedded in the page template (see
-    `“CREATE- <#_bookmark34>`__ `VARIABLE-FROM”, page
-    30 <#_bookmark34>`__), via a scenario (see `“COPY$ instructions”,
-    page 156 <#_bookmark183>`__), or by means of a S VARIABLE command
-    contained in the host 3270 datastream (see `“HOST4WEB commands”,
-    page 255 <#_bookmark298>`__).
+1.4.11.1. Introduction
 
-    The FOR-EACH-VALUE-IN tag marks the start of a loop. varname is the
-    name of a table variable. VIRTEL generates everything between the
-    FOR-EACH-VALUE-IN tag and the END-FOR tag once for each value in
-    varname. If varname has no values then nothing is generated. The
-    current value of varname, and of any other table variables
-    referenced in the loop, changes when the END-FOR tag is encountered.
+A table variable is a list of values sent to VIRTEL by a host application in a structured field of type “FAE5 or FAE6”,^page 247. Table variables may also be created by means of a VIRTEL tag embedded in the page template (see “CREATEVARIABLE-FROM”, page 30), via a scenario (see “COPY$ instructions”, page 156), or by means of a S VARIABLE command contained in the host 3270 datastream (see “HOST4WEB commands”, page 255).
 
-    The CURRENT-VALUE-OF tag is used in a loop bracketed by the
-    FOR-EACH-VALUE-IN and END-FOR tags. varname is the name of a table
-    variable. If it is the variable named in the FOR-EACH-VALUE-IN tag,
-    it determines the number of iterations of the loops. Otherwise, its
-    value is simply changed when the END-FOR tag is encountered.
+1.4.11.2. FOR-EACH-VALUE-IN tag
 
-    The CURRENT-VALUE-OF tag also allows variables to be inserted in a
-    template page outside of a FOR-EACH-VALUE-IN loop. In this case, the
-    variable varname must have been created from the HTTP request by an
-    INPUT scenario by means of the COPY$ INPUT-TO-VARIABLE instruction.
+::
 
-    The local options HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES,
-    NO-ESCAPES, and XML-ESCAPES (se`e “Setting <#_bookmark42>`__
+    {{{FOR-EACH-VALUE-IN "varname"}}}
 
-    `and unsetting local options”, page 42 <#_bookmark42>`__) may affect
-    the processing of this tag.
+The FOR-EACH-VALUE-IN tag marks the start of a loop. varname is the name of a table variable. VIRTEL generates everything between the FOR-EACH-VALUE-IN tag and the END-FOR tag once for each value in varname. If varname has no values then nothing is generated. The current value of varname, and of any other table variables referenced in the loop, changes when the END-FOR tag is encountered.
 
-    If the HTML-ESCAPES local option is set, special characters in the
-    value of the variable will be replaced by the corresponding HTML
-    escape sequence as shown in the table below:
+1.4.11.3. CURRENT-VALUE-OF tag
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
+::
 
-    If the JAVASCRIPT-ESCAPES local option is set, special characters in
-    the value of the variable will be replaced by the corresponding
-    JavaScript escape sequence as shown in the table below:
+    {{{CURRENT-VALUE-OF "varname"}}}
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
+The CURRENT-VALUE-OF tag is used in a loop bracketed by the FOR-EACH-VALUE-IN and END-FOR tags. varname is the name of a table variable. If it is the variable named in the FOR-EACH-VALUE-IN tag, it determines the number of iterations of the loops. Otherwise, its value is simply changed when the END-FOR tag is encountered.
 
-    If the JSON-ESCAPES local option is set, special characters in the
-    value of the variable will be replaced by the corresponding JSON
-    escape sequence as shown in the table below:
+The CURRENT-VALUE-OF tag also allows variables to be inserted in a template page outside of a FOR-EACH-VALUE-IN loop. In this case, the variable varname must have been created from the HTTP request by an INPUT scenario by means of the COPY$ INPUT-TO-VARIABLE instruction.
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
+The local options HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, NO-ESCAPES, and XML-ESCAPES (see “Setting and unsetting local options”, page 42) may affect the processing of this tag.
 
-    If the XML-ESCAPES local option is set, special characters in the
-    value of the variable will be replaced by the corresponding XML
-    escape sequence as shown in the table below:
+If the HTML-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding HTML escape sequence as shown in the table below:-
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
++--------------+------------------------+
+| Character    | HTML escape sequence   |
++==============+========================+
+| <            | &lt;                   |
++--------------+------------------------+
+| >            | &gt;                   |
++--------------+------------------------+
+| "            | &quote;                |
++--------------+------------------------+
+| &            | &amp;                  |
++--------------+------------------------+
 
-    Setting any of the HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES,
-    or XML-ESCAPES local options causes the other options to be
-    automatically unset.
+If the JAVASCRIPT-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding JavaScript escape sequence as shown in the table below:-
 
-    Setting the NO-ESCAPES local option disables all escape processing.
++--------------+----------------------------+
+|Character     | JavaScript escape sequence |
++==============+============================+
+| "            | \"                         |
++--------------+----------------------------+
+| '            | \'                         |
++--------------+----------------------------+
+| \            | \\                         |
++--------------+----------------------------+
 
-    The NO-BLANKS-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag,
-    but the value is truncated at the first blank.
+If the JSON-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding JSON escape sequence as shown in the table below:-
 
-    The TRIMMED-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag,
-    except that leading and trailing blanks (if any) are removed from
-    the value before it is substituted in the page.
++--------------+----------------------------+
+| Character    | JSON escape sequence       |
++==============+============================+
+| "            | \"                         |
++--------------+----------------------------+
+| \            | \\                         |
++--------------+----------------------------+
+| Hex 00 to 1f | \uxxxx                     |
++--------------+----------------------------+
 
-    The END-FOR tag marks the end of a loop started by the
-    FOR-EACH-VALUE-IN tag.
+If the XML-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding XML escape sequence as shown in the table below:-
 
-    The ADVANCE-TO-NEXT-VALUE-OF tag causes subsequent references to the
-    table variable varname (via the CURRENT- VALUE-OF tag, the
-    TRIMMED-VALUE-OF tag, or the NO-BLANKS-VALUE-OF tag) to refer to the
-    next value in the table.
++--------------+----------------------------+
+| Character    | HTML escape sequence       |
++--------------+----------------------------+
+| <            | &#60;                      |
++--------------+----------------------------+
+| >            | &#62;                      |
++--------------+----------------------------+
+| "            | &#34;                      |
++--------------+----------------------------+
+| &            | &#38;                      |
++--------------+----------------------------+
+| '            | &#39;                      |
++--------------+----------------------------+
 
-    The DO-COUNT-UP-WITH tag marks the start of a loop. varname is the
-    name of a variable. VIRTEL generates everything between the
-    DO-COUNT-UP-WITH tag and the END-DO-COUNT tag n times, where n is
-    the current value of varname. During the execution of the loop, the
-    value of varname varies from 1 to n, and other table variables
-    referenced in the loop change when the END-DO-COUNT tag is
-    encountered.
+Setting any of the HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, or XML-ESCAPES local options causes the other options to be automatically unset.
 
-    The END-DO-COUNT tag marks the end of a loop started by the
-    DO-COUNT-UP-WITH tag.
+Setting the NO-ESCAPES local option disables all escape processing.
 
-    The DEFINE-AUTOMATIC-COUNTER tag allows automatic generation of a
-    counter variable in a loop started by the FOR- EACH-VALUE-IN tag.
-    The parameters are:
+1.4.11.4. NO-BLANKS-VALUE-OF tag
+
+::
+
+    {{{NO-BLANKS-VALUE-OF "varname"}}}
+
+The NO-BLANKS-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag, but the value is truncated at the first blank.
+
+1.4.11.5. TRIMMED-VALUE-OF tag
+
+::
+
+    {{{TRIMMED-VALUE-OF "varname"}}}
+
+The TRIMMED-VALUE-OF tag is similar to the CURRENT-VALUE-OF tag, except that leading and trailing blanks (if any) are removed from the value before it is substituted in the page.
+
+1.4.11.6. END-FOR tag
+
+::
+
+    {{{END-FOR "varname"}}}
+
+The END-FOR tag marks the end of a loop started by the FOR-EACH-VALUE-IN tag.
+
+1.4.11.7. ADVANCE-TO-NEXT-VALUE-OF tag
+
+::
+
+    {{{ADVANCE-TO-NEXT-VALUE-OF "varname"}}}
+
+The ADVANCE-TO-NEXT-VALUE-OF tag causes subsequent references to the table variable varname (via the CURRENTVALUE-OF tag, the TRIMMED-VALUE-OF tag, or the NO-BLANKS-VALUE-OF tag) to refer to the next value in the table. 
+
+1.4.11.8. DO-COUNT-UP-WITH tag
+
+::
+
+    {{{DO-COUNT-UP-WITH "varname"}}}
+
+The DO-COUNT-UP-WITH tag marks the start of a loop. varname is the name of a variable. VIRTEL generates everything between the DO-COUNT-UP-WITH tag and the END-DO-COUNT tag n times, where n is the current value of varname. During the execution of the loop, the value of varname varies from 1 to n, and other table variables referenced in the loop change when the END-DO-COUNT tag is encountered.
+
+1.4.11.9. END-DO-COUNT tag
+
+::
+
+    {{{END-DO-COUNT "varname"}}}
+
+The END-DO-COUNT tag marks the end of a loop started by the DO-COUNT-UP-WITH tag.
+
+1.4.11.10. DEFINE-AUTOMATIC-COUNTER tag
+
+::
+
+    {{{DEFINE-AUTOMATIC-COUNTER (init, incr, max) "varname"}}}
+
+The DEFINE-AUTOMATIC-COUNTER tag allows automatic generation of a counter variable in a loop started by the FOREACH-VALUE-IN tag. The parameters are:
 
 init
-~~~~
-
     the initial value of the counter variable
 
 incr
-~~~~
-
     the increment added at each END-FOR
-
 max
-~~~
-
     the maximum value of the counter variable
-
 varname
-~~~~~~~
-
     the name of the counter variable
 
-    The variable generated can be the loop master variable (the variable
-    named in the FOR-EACH-VALUE-IN) or a slave variable. When the
-    counter reaches its maximum value, the loop terminates if it is the
-    master, or continues if it is the slave. In the latter case the
-    counter variable starts again from its initial value.
+The variable generated can be the loop master variable (the variable named in the FOR-EACH-VALUE-IN) or a slave variable. When the counter reaches its maximum value, the loop terminates if it is the master, or continues if it is the slave. In the latter case the counter variable starts again from its initial value.
 
-    The DEFINE-SUB-VARIABLE tag allows a sub-variable to be defined. A
-    sub-variable remaps part of the current value of the loop master
-    variable in a FOR-EACH-VALUE-IN loop. The parameters are:
+1.4.11.11. DEFINE-SUB-VARIABLE tag
+
+::
+
+    {{{DEFINE-SUB-VARIABLE (offset, length, count) "subname"}}}
+
+The DEFINE-SUB-VARIABLE tag allows a sub-variable to be defined. A sub-variable remaps part of the current value of the loop master variable in a FOR-EACH-VALUE-IN loop. The parameters are:
 
 offset
-~~~~~~
-
     the offset of the sub-variable in the loop master variable
-
 length
-~~~~~~
-
     the length (in characters) of the sub-variable
-
 count
-~~~~~
-
     the number of occurrences of the sub-variable
-
 subname
-~~~~~~~
-
     the name of the sub-variable
 
-    A sub-variable consists of count values, each of length bytes,
-    starting at offset in the loop master variable. The first byte of
-    the loop master variable is considered to be offset 0. Sub-variables
-    are defined outside but referenced within a FOR-EACH-VALUE-IN loop.
-    A sub-variable can be referenced wherever a normal table variable
-    would be valid, including the loop master variable of an inner
-    FOR-EACH-VALUE-IN loop, which could in itself be redefined by other
-    sub- variables. When the sub-variable is referenced, it acts as an
-    implicit redefinition of the current value of the master variable of
-    the innermost FOR-EACH-VALUE-IN loop in which the reference appears.
-    Thus, the same sub-variable could possibly redefine different loop
-    master variables if it is referenced in more than one place.
+A sub-variable consists of count values, each of length bytes, starting at offset in the loop master variable. The first
+byte of the loop master variable is considered to be offset 0. Sub-variables are defined outside but referenced within a
+FOR-EACH-VALUE-IN loop. A sub-variable can be referenced wherever a normal table variable would be valid, including
+the loop master variable of an inner FOR-EACH-VALUE-IN loop, which could in itself be redefined by other subvariables.
+When the sub-variable is referenced, it acts as an implicit redefinition of the current value of the master
+variable of the innermost FOR-EACH-VALUE-IN loop in which the reference appears. Thus, the same sub-variable could
+possibly redefine different loop master variables if it is referenced in more than one place.
 
-1. \ **Examples**
+1.4.11.11.0.1. Examples
 
-    A host application uses an FAE5 structured field to create a table
-    variable called HOSTDATA. The HOSTDATA variable consists of an array
-    of 20-byte records. Each record consists of an 8-byte key, followed
-    by six 2-byte codes. The following code generates an HTML table from
-    this data. Each row of the table contains the row number, the key,
-    and the codes. A hyperlink is generated for each code, by removing
-    any trailing blanks from the code and appending “.html”:
+A host application uses an FAE5 structured field to create a table variable called HOSTDATA. The HOSTDATA variable
+consists of an array of 20-byte records. Each record consists of an 8-byte key, followed by six 2-byte codes. The
+following code generates an HTML table from this data. Each row of the table contains the row number, the key, and
+the codes. A hyperlink is generated for each code, by removing any trailing blanks from the code and appending
+“.html”:-
 
-    The DELETE-ALL-VARIABLES tag deletes all variables in the VIRTEL
-    variable pool. An optional prefix parameter allows deletion of only
-    those variables whose names begin with the specified prefix.
+::
 
-    The IP-ADDRESS-OF-LINE tag will be replaced by the IP address of the
-    specified VIRTEL line. For example, {{{IP- ADDRESS-OF-LINE
-    "H-HTTP"}}} might generate 192.168.229.147
+    {{{DEFINE-AUTOMATIC-COUNTER (1,1,9999) "ROWNUM" }}}
+    {{{DEFINE-SUB-VARIABLE (0, 8, 1) "KEY"}}}
+    {{{DEFINE-SUB-VARIABLE (8, 2, 6) "CODES"}}}
+    <table><tr><td>Row</td><td>Key</td><td colspan=6>Codes</td></tr>
+    {{{FOR-EACH-VALUE-IN "HOSTDATA"}}}
+        <tr>
+        <td>{{{CURRENT-VALUE-OF "ROWNUM"}}}</td>
+        <td>{{{CURRENT-VALUE-OF "KEY"}}}</td>
+    {{{FOR-EACH-VALUE-IN "CODES"}}}
+        <td><a href='{{{NO-BLANKS-VALUE-OF "CODES"}}}.html'>
+            {{{CURRENT-VALUE-OF "CODES"}}}</a>
+        </td>
+    {{{END-FOR "CODES"}}}
+    </tr>
+    {{{END-FOR "HOSTDATA"}}}
+    </table>
 
-    The IP-PORT-OF-LINE tag will be replaced by the port number of the
-    specified VIRTEL line. For example, {{{IP-PORT-OF- LINE "H-HTTP"}}}
-    might generate 41000
+1.4.11.12. DELETE-ALL-VARIABLES tag
 
-    The NAME-OF tag allows the insertion in a page of various data items
-    related to the VIRTEL transaction in progress.
+::
+    {{{DELETE-ALL-VARIABLES}}}
+    {{{DELETE-ALL-VARIABLES "prefix"}}}
 
-xxxxxx
-~~~~~~
+The DELETE-ALL-VARIABLES tag deletes all variables in the VIRTEL variable pool. An optional prefix parameter allows deletion of only those variables whose names begin with the specified prefix.
 
-    the name of the data item to be inserted. Valid values are:
+1.4.12. Inserting VIRTEL configuration values in a page
 
-VIRTEL
-~~~~~~
+1.4.12.1. IP-ADDRESS-OF-LINE tag
 
-    The VIRTEL APPLID specified in the VIRTCT
+::
 
-RELAY
-~~~~~
 
-    The relay LU name used to connect to the host application
+    {{{IP-ADDRESS-OF-LINE "n-xxxxxx"}}}
 
-PRINT-RELAY
-~~~~~~~~~~~
+The IP-ADDRESS-OF-LINE tag will be replaced by the IP address of the specified VIRTEL line. For example, {{{IPADDRESS-OF-LINE "H-HTTP"}}} might generate 192.168.229.147.
 
-    The relay LU name of the associated printer
+1.4.12.2. IP-PORT-OF-LINE tag
 
-PSEUDO-TERMINAL
-~~~~~~~~~~~~~~~
+::
 
-    The VIRTEL terminal name
+    {{{IP-PORT-OF-LINE "n-xxxxxx"}}}
 
-ENTRY-POINT
-~~~~~~~~~~~
+The IP-PORT-OF-LINE tag will be replaced by the port number of the specified VIRTEL line. For example, {{{IP-PORT-OFLINE"H-HTTP"}}} might generate 41000
 
-    The VIRTEL entry point name
+1.4.12.3. NAME-OF tag
 
-LINE-INTERNAL
-~~~~~~~~~~~~~
+::
 
-    The internal name of the VIRTEL line
+    {{{NAME-OF (xxxxxx)}}}
+    {{{NAME-OF (xxxxxx, len)}}}
 
-LINE-EXTERNAL
-~~~~~~~~~~~~~
-
-    The external name of the VIRTEL line
-
-USER
-~~~~
-
-    The user name, if signon has occurred
-
-PASSWORD
-~~~~~~~~
-
-    The user’s password, if signon has occurred
-
-USER-IP-ADDRESS
-~~~~~~~~~~~~~~~
-
-    The IP address of the client terminal
-
-SNA-STATUS
-~~~~~~~~~~
-
-    The status of the host LU2 session:
-
--  X: input is inhibited
-
--  blank: input is allowed
-
-TRANSACTION-INTERNAL
-~~~~~~~~~~~~~~~~~~~~
-
-    The internal name of the VIRTEL transaction
-
-TRANSACTION-EXTERNAL
-~~~~~~~~~~~~~~~~~~~~
-
-    The external name of the VIRTEL transaction
-
-URL
-~~~
-
-    The URL excluding the query string
-
-QUERY
-~~~~~
-
-    The query string from the URL
-
-PAGE
-~~~~
-
-    The name of the current HTML page template
-
-PAGE-INTERNAL
-~~~~~~~~~~~~~
-
-    The name of the original HTML page template specified in the URL
-
-DIRECTORY
-~~~~~~~~~
-
-    The current VIRTEL directory name
-
-CHARACTER-SET
-~~~~~~~~~~~~~
-
-    The name of the current UTF-8 character set, or the country code if
-    the page is not in UTF-8 mode (see `“EBCDIC <#_bookmark54>`__
-    `translation management”, page 56 <#_bookmark54>`__)
-
-DATE-TIME
-~~~~~~~~~
-
-    The current date and time (14 characters in the format
-    YYYYMMDDHHMMSS)
-
-VIRTEL-VERSION
-~~~~~~~~~~~~~~
-
-    The VIRTEL version number
-
-xxx-SYMBOL
-~~~~~~~~~~
-
-    The value of the system symbol xxx (only if SYSPLUS=YES is specified
-    in the VIRTCT). Example: SYSNAME-SYMBOL
-
-len
-~~~
-
-    an optional length. If specified, the value of the data item will be
-    padded with blanks or truncated on the right to the specified
-    length.
-
-    The NUMBER-OF tag allows the insertion in a page of various data
-    items related to the VIRTEL transaction in progress.
+The NAME-OF tag allows the insertion in a page of various data items related to the VIRTEL transaction in progress. 
 
 xxxxxx
-~~~~~~
-
     the name of the data item to be inserted. Valid values are:
+    
+    VIRTEL
+        The VIRTEL APPLID specified in the VIRTCT
+    RELAY
+        The relay LU name used to connect to the host application
+    PRINT-RELAY
+        The relay LU name of the associated printer
+    PSEUDO-TERMINAL
+        The VIRTEL terminal name
+    ENTRY-POINT
+        The VIRTEL entry point name
+    LINE-INTERNAL
+        The internal name of the VIRTEL line
+    LINE-EXTERNAL
+        The external name of the VIRTEL line
+    USER
+        The user name, if signon has occurred
+    PASSWORD
+        The user’s password, if signon has occurred
+    USER-IP-ADDRESS
+        The IP address of the client terminal
+    SNA-STATUS
+        The status of the host LU2 session:
+            - X: input is inhibited
+            - blank: input is allowed
+    TRANSACTION-INTERNAL
+        The internal name of the VIRTEL transaction
+    TRANSACTION-EXTERNAL
+        The external name of the VIRTEL transaction
+    URL
+        The URL excluding the query string
+    QUERY
+        The query string from the URL
+    PAGE
+        The name of the current HTML page template
+    PAGE-INTERNAL
+        The name of the original HTML page template specified in the URL
+    DIRECTORY
+        The current VIRTEL directory name
+    CHARACTER-SET
+        The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see `“EBCDIC translation management”, page 56`)__
+    DATE-TIME
+        The current date and time (14 characters in the format YYYYMMDDHHMMSS)
+    VIRTEL-VERSION
+        The VIRTEL version number
+    xxx-SYMBOL
+        The value of the system symbol xxx (only if SYSPLUS=YES is specified in the VIRTCT). Example: SYSNAME-SYMBOL
+    len
+        An optional length. If specified, the value of the data item will be padded with blanks or truncated on the right to the specified length.
 
+1.4.12.4. NUMBER-OF tag
+
+::
+
+    {{{NUMBER-OF (xxxxxx)}}}
+
+The NUMBER-OF tag allows the insertion in a page of various data items related to the VIRTEL transaction in progress.
+
+xxxxxx
+    The name of the data item to be inserted. Valid values are:
 SCREEN-COLUMNS
-~~~~~~~~~~~~~~
-
     The width of the current host 3270 screen
-
 SCREEN-LINES
-~~~~~~~~~~~~
-
     The depth of the current host 3270 screen
 
-    The AFTER-NOT-LAST-VALUE-OF tag brackets a section of the page which
-    is to be generated for all except the last iteration of a
-    FOR-EACH-VALUE-IN loop. The HTML content represented by “...” is
-    generated unless the current value of the variable varname is the
-    last in the table.
 
-    The AFTER-NOT-LAST-VALUE-OF tag is useful, for example, when
-    generating a comma-separated list of values, as shown in the example
-    below:
+1.4.13. Conditional generation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    If the variable myvar contains the values 1, 2, and 3, then this
-    example would generate [ "1", "2", "3" ]
+1.4.13.1. AFTER-NOT-LAST-VALUE-OF tag
 
-    The IF-USER-IS-ALLOWED-TO tag brackets a section of the page whose
-    appearance is conditional on the user’s authorization to access the
-    resource resourcename. The HTML content represented by “...” is
-    generated only if the signed-on user is authorized to access the
-    specified resource.
+::
 
-    The WHEN-EXISTS and END-WHEN-EXISTS tags bracket a section of the
-    page whose appearance is conditional on the existence of a named
-    table variable. The variable can be created by a VIRTEL Web
-    Integration application using the FAE5 or FAE6 structured fields, or
-    it can be created by a scenario. The HTML content represented by
-    “...” is generated only if the named variable exists in the context
-    of the current page and has at least one value.
+    {{{AFTER-NOT-LAST-VALUE-OF "varname" ...}}}
 
-    The WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags are similar to the
-    WHEN-EXISTS and END-WHEN-EXISTS tags, except that the section of the
-    page enclosed by the tags is generated only if the named table
-    variable does not exist.
+The AFTER-NOT-LAST-VALUE-OF tag brackets a section of the page which is to be generated for all except the last iteration of a FOR-EACH-VALUE-IN loop. The HTML content represented by “...” is generated unless the current value of the variable varname is the last in the table. The AFTER-NOT-LAST-VALUE-OF tag is useful, for example, when generating a comma-separated list of values, as shown in the example below:
 
-    The WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags bracket a section of
-    the page which is generated only if the current value of a named
-    table variable is non-blank. The HTML content represented by “...”
-    is omitted if the named variable does not exist, or if its current
-    value is null or all blanks.
+::
 
-    The WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags allow an XML
-    template to be written which uses variables generated by a
-    commarea-to-output conversion scenario. These tags work in
-    conjunction with the $EVENT$ variable generated by th\ `e “MAP$
-    EVENTUAL-AREA and MAP$ ELSE-THEN-AREA”, page 185 <#_bookmark225>`__.
-    The section of the page enclosed by the WHEN-NEXT-EVENT and
-    END-WHEN-NEXT-EVENT tags is generated only if the current value of
-    the $EVENT$ variable matches the specified eventname.
+    [ {{{FOR-EACH-VALUE-IN "MYVAR"}}} "{{{CURRENT-VALUE-OF "MYVAR"}}} "
+    {{{AFTER-NOT-LAST-VALUE-OF "MYVAR" ,}}}{{{END-FOR "MYVAR"}}} ]
 
-    The WHILE-EVENT and END-WHILE-EVENT tags work in conjunction with
-    the $EVENT$ variable generated by the `“MAP$ EVENTUAL-AREA and MAP$
-    ELSE-THEN-AREA”, page 185 <#_bookmark225>`__. The WHILE-EVENT tag
-    marks the start of a loop.
+If the variable myvar contains the values 1, 2, and 3, then this example would generate [ "1", "2", "3" ]
 
-    Everything between the WHILE-EVENT and END-WHILE-EVENT tags is
-    generated once for each value of the $EVENT$ variable, as long as
-    the current value of the $EVENT$ variable matches the specified
-    eventname.
+1.4.13.2. IF-USER-IS-ALLOWED-TO tag
 
-    The CREATE-VARIABLE-IF tag with the TRACING-SCENARIO parameter
-    retrieves the contents of the scenario trace created by th\ `e
-    “Capability Tokens”, page 59 <#_bookmark60>`__). If the trace is
-    active, the variable varname will be created. The value of this
-    variable is a JSON structure (see example below) which can be used
-    by Virtel Studio.
+::
 
-    The trace data for a specific terminal may be obtained by specifying
-    an x-Virtel-Debug=capability-token parameter in the URL. The
-    `“capability tokens”, page 59 <#_bookmark60>`__ is generated by a
-    SET-HEADER tag issued by the terminal which owns the trace data.
+    {{{IF-USER-IS-ALLOWED-TO "resourcename" ...}}}
+
+The IF-USER-IS-ALLOWED-TO tag brackets a section of the page whose appearance is conditional on the user’s authorization to access the resource resourcename. The HTML content represented by “...” is generated only if the signed-on user is authorized to access the specified resource.
+
+1.4.13.3. WHEN-EXISTS and END-WHEN-EXISTS tags
+
+::
+
+    {{{WHEN-EXISTS "varname"}}}
+    ...
+    {{{END-WHEN-EXISTS "varname"}}}
+
+The WHEN-EXISTS and END-WHEN-EXISTS tags bracket a section of the page whose appearance is conditional on the existence of a named table variable. The variable can be created by a VIRTEL Web Integration application using the FAE5 or FAE6 structured fields, or it can be created by a scenario. The HTML content represented by “...” is generated only if the named variable exists in the context of the current page and has at least one value.
+
+1.4.13.4. WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags
+
+::
+
+    {{{WHEN-NOT-EXISTS "varname"}}}
+    ...
+    {{{END-WHEN-NOT-EXISTS "varname"}}}
+
+The WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags are similar to the WHEN-EXISTS and END-WHEN-EXISTS tags, except that the section of the page enclosed by the tags is generated only if the named table variable does not exist.
+
+1.4.13.5. WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags
+
+::
+
+    {{{WHEN-NOT-BLANK "varname"}}}
+    ...
+    {{{END-WHEN-NOT-BLANK "varname"}}}
+
+The WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags bracket a section of the page which is generated only if the current value of a named table variable is non-blank. The HTML content represented by “...” is omitted if the named variable does not exist, or if its current value is null or all blanks.
+
+1.4.13.6. WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags
+
+::
+
+    {{{WHEN-NEXT-EVENT "eventname"}}}
+    ...
+    {{{END-WHEN-NEXT-EVENT "eventname"}}}
+
+The WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags allow an XML template to be written which uses variables generated by a commarea-to-output conversion scenario. These tags work in conjunction with the $EVENT$ variable generated by the “MAP$ EVENTUAL-AREA and MAP$ ELSE-THEN-AREA”, page 185. The section of the page enclosed by the WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags is generated only if the current value of the $EVENT$ variable matches the specified eventname.
+
+1.4.13.7. WHILE-EVENT and END-WHILE-EVENT tags
+
+::
+
+    {{{WHILE-EVENT "eventname"}}}
+    ...
+    {{{END-WHILE-EVENT "eventname"}}}
+
+The WHILE-EVENT and END-WHILE-EVENT tags work in conjunction with the $EVENT$ variable generated by the “MAP$ EVENTUAL-AREA and MAP$ ELSE-THEN-AREA”, page 185. The WHILE-EVENT tag marks the start of a loop. Everything between the WHILE-EVENT and END-WHILE-EVENT tags is generated once for each value of the $EVENT$ variable, as long as the current value of the $EVENT$ variable matches the specified eventname.
+
+1.4.14. Debugging facilities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.14.1. CREATE-VARIABLE-IF tag
+
+::
+
+    {{{CREATE-VARIABLE-IF (TRACING-SCENARIO) "varname"}}}
+
+The CREATE-VARIABLE-IF tag with the TRACING-SCENARIO parameter retrieves the contents of the scenario trace created by the “Capability Tokens”, page 59). If the trace is active, the variable varname will be created. The value of this variable is a JSON structure (see example below) which can be used by Virtel Studio. 
+
+The trace data for a specific terminal may be obtained by specifying an x-Virtel-Debug=capability-token parameter in the URL. The “capability tokens”, page 59 is generated by a SET-HEADER tag issued by the terminal which owns the trace data.
+
+::
 
     { "scenario":"EXECUTE3", "externalName":"EXECUTE3",
-
-    "compiled":"02/04/13 18.49 ", "terminal":"HTVTA012",
-    "relay":"R5HVT511", "trace":[
-
+    "compiled":"02/04/13 18.49 ", "terminal":"HTVTA012", "relay":"R5HVT511",
+    "trace":[
     {"t":"20:38:41.14","o":"00014A","i":"COPY$"},
-
     {"t":"20:38:41.14","o":"00015E","i":"TOVAR$"},
-
     {"t":"20:38:41.14","o":"000046","i":"MAP$"},
-
     {"t":"20:38:41.14","o":"000058","i":"MAP$","p":[{"Customer":"A0111115"}]},
-
     {"t":"20:38:41.14","o":"000066","i":"MAP$"},
-
     {"t":"20:38:41.14","o":"000078","i":"MAP$","p":[{"Datemin":"20110505"}]},
-
     {"t":"20:38:41.14","o":"000086","i":"MAP$","p":[{"Datemax":"20110525"}]},
-
     {"t":"20:38:41.14","o":"000110","i":"MAP$"},
-
     {"t":"20:38:41.14","o":"000170","i":"CASE$","p":[{"CURLINE":"0"}]},
-
     {"t":"20:38:41.14","o":"0001FC","i":"COPY$"},
-
     {"t":"20:38:41.14","o":"000214","i":"COPY$"}]}
 
-    *Exampleof a JSON structure generated by TRACING-SCENARIO*
+*Exampleof a JSON structure generated by TRACING-SCENARIO*
 
-    For more informations, se\ `e “CREATE-VARIABLE-IF”, page
-    52 <#_bookmark50>`__.
+For more informations, see `“CREATE-VARIABLE-IF”, page 52.`__
 
-    The CREATE-VARIABLE-IF tag allows the conditional creation of a
-    VIRTEL variable. If the specified condition is true, the variable
-    varname will be created and initialized with a value as shown in the
-    list of condition names below. This variable can be used
-    subsequently to conditionally generate a section of the page
-    bracketed by WHEN-EXISTS and END-WHEN-EXISTS tags.
+1.4.15. Signon and password management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    The possible values of the condition parameter for the
-    CREATE-VARIABLE-IF tag are listed below:
+1.4.15.1. CREATE-VARIABLE-IF tag
+
+::
+
+    {{{CREATE-VARIABLE-IF (condition) "varname"}}}
+
+The CREATE-VARIABLE-IF tag allows the conditional creation of a VIRTEL variable. If the specified condition is true, the variable varname will be created and initialized with a value as shown in the list of condition names below. This variable can be used subsequently to conditionally generate a section of the page bracketed by WHEN-EXISTS and END-WHEN-EXISTS tags.
+
+The possible values of the condition parameter for the CREATE-VARIABLE-IF tag are listed below:-
 
 SIGNON-IS-NEEDED
-~~~~~~~~~~~~~~~~
-
     The variable varname is created if a signon is needed, i.e. if the
     transaction security type is non-zero and the user has not yet
     successfully signed on at the terminal.
 
 SIGNON-IS-OK
-~~~~~~~~~~~~
-
     The variable varname is created if the user has successfully signed
     on at the terminal. The initial value of the variable is the user
     name.
 
 APPLICATION-IS-CONNECTED
-~~~~~~~~~~~~~~~~~~~~~~~~
-
     The variable varname is created if the terminal is connected to a
     host application. The initial value of the variable is either the
     VTAM application name, or the external name of the VIRTEL
@@ -2399,545 +2302,1693 @@ APPLICATION-IS-CONNECTED
     VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation
     Guide).
 
-    For more informations, se\ `e “CREATE-VARIABLE-IF”, page
-    52 <#_bookmark48>`__, in the “Debugging facilities” section.
+    For more informations, see `“CREATE-VARIABLE-IF”, page 52 <#_bookmark48>`__, in the “Debugging facilities” section.
 
-    When used in conjunction with a security type 4 transaction, the
-    DECLARE-FIELD-AS tag allows VIRTEL to obtain the userid and password
-    from fields embedded in the HTML page. For an example, se\ `e
-    “Signon using HTML fields”, <#_bookmark312>`__ `page
-    266 <#_bookmark312>`__.
+1.4.15.2. DECLARE-FIELD-AS tag
 
-    The DECLARE-FIELD-AS tag indicates to VIRTEL that the HTML field
-    whose name is fieldname is to be treated as a userid or password
-    field when used with a transaction defined as having security type
-    4. One of more attribute values must be specified. The possible
-    attributes are listed below:
+When used in conjunction with a security type 4 transaction, the DECLARE-FIELD-AS tag allows VIRTEL to obtain the userid and password from fields embedded in the HTML page. For an example, see `“Signon using HTML fields”, <#_bookmark312>`__ `page 266 <#_bookmark312>`__.
+
+::
+
+    {{{DECLARE-FIELD-AS (attribute,...) "fieldname"}}}
+
+The DECLARE-FIELD-AS tag indicates to VIRTEL that the HTML field whose name is fieldname is to be treated as a userid or password field when used with a transaction defined as having security type 4. One of more attribute values must be specified. The possible attributes are listed below:-
 
 USERNAME
-~~~~~~~~
-
-    indicates that the field contains the name of the user (userid) to
-    be signed on.
+    Indicates that the field contains the name of the user (userid) to be signed on.
 
 PASSWORD
-~~~~~~~~
-
-    indicates that the field contains the user’s password.
+    Indicates that the field contains the user’s password.
 
 NEW-PASSWORD
-~~~~~~~~~~~~
-
-    indicates that the field contains a new password. VIRTEL will
-    request the security product to change the user’s current password
-    to the new value if the signon is successful.
+    Indicates that the field contains a new password. VIRTEL will request the security product to change the user’s current password to the new value if the signon is successful.
 
 HEX
-~~~
-
-    indicates that VIRTEL expects the browser to encode the field in
-    hexadecimal.
+    Indicates that VIRTEL expects the browser to encode the field in hexadecimal.
 
 BASE64
-~~~~~~
-
-    indicates that VIRTEL expects the browser to encode the field in
-    base64 format.
+    Indicates that VIRTEL expects the browser to encode the field in base64 format.
 
 ENCRYPTED
-~~~~~~~~~
+    Indicates that VIRTEL expects the browser to encrypt the field using the session key specified elsewhere in the page (see “DECLARE-FIELD-AS CRYPTO-SESSION-KEY”, page 55 <#_bookmark52>`__)
 
-    indicates that VIRTEL expects the browser to encrypt the field using
-    the session key specified elsewhere in the page (se`e
-    “DECLARE-FIELD-AS CRYPTO-SESSION-KEY”, page 55 <#_bookmark52>`__)
+Examples:
 
-    Examples:
+::
 
-    The same field can be both declared and defined:
+    {{{DECLARE-FIELD-AS (USERNAME) "USERNAME" }}}
+    {{{DECLARE-FIELD-AS (PASSWORD,BASE64) "PASSWORD" }}}
+    {{{DECLARE-FIELD-AS (NEW-PASSWORD,ENCRYPTED) "NEWPASS" }}}
 
-    The above example indicates that the field NOM is transmitted to
-    VIRTEL in base64 format. In this case, the DEFINE must precede the
-    DECLARE.
+The same field can be both declared and defined:
 
-    The USER-SIGNON-CODE tag generates a unique value called a
-    signoncode which may be used with the VirtelUserSignon parameter of
-    the URL to propagate the signed-on user’s credentials to another
-    page (see `“Propagation of signon by URL”, page
-    21 <#_bookmark14>`__).
+::
 
-    The presence of certain tags in a page template causes VIRTEL to
-    generate encryption keys and to encrypt and decrypt selected data in
-    the page. The use of these tags is dependent upon the specification
-    of a CRYPTn parameter in the VIRTCT (see “Parameters of the VIRTCT”)
-    in the VIRTEL Installation Guide manual.
+    {{{DEFINE-HTML-FIELD-NAME (04,06,08) "NOM" }}}
+    {{{DECLARE-FIELD-AS (BASE64) "NOM" }}}
 
-    The ENCRYPTION-PARAMETERS tag inserts into the page the contents of
-    one or all fields of the CRYPTn parameter whose name field is
-    cryptname. If the VIRTCT does not contain a CRYPTn parameter with
-    name cryptname then the ENCRYPTION-PARAMETERS tag returns a null
-    value.
+The above example indicates that the field NOM is transmitted to VIRTEL in base64 format. In this case, the DEFINE must precede the DECLARE.
 
-    If the optional field parameter is specified, the
-    ENCRYPTION-PARAMETERS tag returns the specified or defaulted value
-    of one field of the CRYPTn parameter, without quotes. The names of
-    the fields are:
+1.4.15.3. USER-SIGNON-CODE tag
+
+::
+
+    {{{USER-SIGNON-CODE}}}
+
+The USER-SIGNON-CODE tag generates a unique value called a signoncode which may be used with the VirtelUserSignon parameter of the URL to propagate the signed-on user’s credentials to another page (see `“Propagation of signon by URL”, page 21 <bookmark14>`__).
+
+1.4.16. Encryption management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.16.1. Introduction
+
+The presence of certain tags in a page template causes VIRTEL to generate encryption keys and to encrypt and decrypt selected data in the page. The use of these tags is dependent upon the specification of a CRYPTn parameter in the VIRTCT (see “Parameters of the VIRTCT”) in the VIRTEL Installation Guide manual.
+
+1.4.16.2. ENCRYPTION-PARAMETERS tag
+
+::
+
+    {{{ENCRYPTION-PARAMETERS "cryptname"}}}
+    {{{ENCRYPTION-PARAMETERS (field) "cryptname"}}}
+
+The ENCRYPTION-PARAMETERS tag inserts into the page the contents of one or all fields of the CRYPTn parameter whose name field is cryptname. If the VIRTCT does not contain a CRYPTn parameter with name cryptname then the ENCRYPTION-PARAMETERS tag returns a null value.
+
+If the optional field parameter is specified, the ENCRYPTION-PARAMETERS tag returns the specified or defaulted value of one field of the CRYPTn parameter, without quotes. The names of the fields are:-
 
 NAME
-~~~~
-
     The name of this set of encryption parameters.
-
 ALGORITHM
-~~~~~~~~~
-
     The symmetric encryption algorithm.
-
 INITIAL-ALGORITHM
-~~~~~~~~~~~~~~~~~
-
     The asymmetric encryption algorithm.
-
 DRIVER
-~~~~~~
-
     The name of the encryption engine.
-
 FORMAT
-~~~~~~
-
     The encoding used for encrypted text.
-
 CHAINING
-~~~~~~~~
-
     The chaining method for symmetric encryption.
-
 PADDING
-~~~~~~~
-
     The padding method for symmetric encryption.
 
-    If the field parameter is not specified, then the
-    ENCRYPTION-PARAMETERS tag returns the specified or defaulted values
-    of all fields of the CRYPTn parameter. Each value is surrounded by
-    single quotes and the values are separated by commas.
+If the field parameter is not specified, then the ENCRYPTION-PARAMETERS tag returns the specified or defaulted values of all fields of the CRYPTn parameter. Each value is surrounded by single quotes and the values are separated by commas.
 
-    Example: If the VIRTCT contains the following parameters:
+Example: If the VIRTCT contains the following parameters:-
 
-    then the tag {{{ENCRYPTION-PARAMETERS (ALGORITHM) "CRYPT3270"}}}
+::
 
-    returns the value 3TDEA,
+    CRYPT1=(CRYPTNULL,NONE,NONE,NO-ENCRYPTION,HEX), *
+    CRYPT2=(CRYPT3270,3TDEA,RSA-1024,ICSF,HEX), *
 
-    and the tag {{{ENCRYPTION-PARAMETERS "CRYPT3270"}}}
+then the tag {{{ENCRYPTION-PARAMETERS (ALGORITHM) "CRYPT3270"}}} returns the value 3TDEA, and the tag {{{ENCRYPTION-PARAMETERS "CRYPT3270"}}}
+returns the value 'CRYPT3270','3TDEA','RSA-1024','ICSF','HEX','CBC','PKCS7' 
 
-    returns the value
-    'CRYPT3270','3TDEA','RSA-1024','ICSF','HEX','CBC','PKCS7'
+1.4.16.3. PUBLIC-KEY tag
 
-    The presence of one or more PUBLIC-KEY tags in a page template
-    causes VIRTEL to generate a public/private key pair for the session,
-    and to insert the value of the specified component of the public key
-    into the page. The public/private key pair is generated according to
-    the INITIAL-ALGORITHM specified in the CRYPTn parameter whose name
-    field is cryptname. If the VIRTCT does not contain a CRYPTn
-    parameter with name cryptname then no key is generated and the
-    PUBLIC-KEY tag returns a null value.
+::
+
+    {{{PUBLIC-KEY (component) "cryptname"}}}
+
+The presence of one or more PUBLIC-KEY tags in a page template causes VIRTEL to generate a public/private key pair for the session, and to insert the value of the specified component of the public key into the page. The public/private key pair is generated according to the INITIAL-ALGORITHM specified in the CRYPTn parameter whose name field is cryptname. If the VIRTCT does not contain a CRYPTn parameter with name cryptname then no key is generated and
+the PUBLIC-KEY tag returns a null value.
 
 component
-~~~~~~~~~
-
-    is the name of the public key component to be inserted into the
-    page. Possible values are:
-
+    is the name of the public key component to be inserted into the page. Possible values are:
 EXPONENT
-~~~~~~~~
-
     The hexadecimal value of the public exponent.
-
 MODULUS
-~~~~~~~
-
     The hexadecimal value of the modulus.
 
-    When used in conjunction with the PUBLIC-KEY tag, the
-    DECLARE-FIELD-AS tag indicates to VIRTEL that the HTML field whose
-    name is fieldname is to be treated as an encrypted session key.
-    VIRTEL decrypts the contents of the field using the corresponding
-    private key (which is known only to VIRTEL) and uses it as the
-    session key when symmetric encryption is requested by the
-    SET-LOCAL-OPTIONS (ENCRYPT-PASSWORD-FIELDS) tag. The possible
-    attributes are listed below:
+1.4.16.4. DECLARE-FIELD-AS tag
+
+::
+
+    {{{DECLARE-FIELD-AS (attribute) "fieldname"}}}
+
+When used in conjunction with the PUBLIC-KEY tag, the DECLARE-FIELD-AS tag indicates to VIRTEL that the HTML field
+whose name is fieldname is to be treated as an encrypted session key. VIRTEL decrypts the contents of the field using
+the corresponding private key (which is known only to VIRTEL) and uses it as the session key when symmetric
+encryption is requested by the SET-LOCAL-OPTIONS (ENCRYPT-PASSWORD-FIELDS) tag. The possible attributes are
+listed below:
 
 CRYPTO-SESSION-KEY
-~~~~~~~~~~~~~~~~~~
+    indicates that the field contains the session key encrypted under the public key specified by the PUBLIC-KEY tag.
 
-    indicates that the field contains the session key encrypted under
-    the public key specified by the PUBLIC-KEY tag.
+1.4.16.5. SET-LOCAL-OPTIONS tag
 
-    When used in conjunction with the PUBLIC-KEY and DECLARE-FIELD-AS
-    (CRYPTO-SESSION-KEY) tags, the SET-LOCAL- OPTIONS tag activates
-    encryption for selected fields that are sent and received in HTML
-    pages.
+When used in conjunction with the PUBLIC-KEY and DECLARE-FIELD-AS (CRYPTO-SESSION-KEY) tags, the SET-LOCALOPTIONS
+tag activates encryption for selected fields that are sent and received in HTML pages.
+
+::
+
+    {{{ SET-LOCAL-OPTIONS (option, option, ...) }}}
 
 option
-~~~~~~
-
     the following values indicate the use of encryption :
 
 ENCRYPT-PASSWORD-FIELDS
-~~~~~~~~~~~~~~~~~~~~~~~
+    indicates that 3270 non-display unprotected (data entry) fields are encrypted in both inbound and outbound
+messages, and that 3270 non-display protected (output only) fields are replaced by blanks in outbound messages.
 
-    indicates that 3270 non-display unprotected (data entry) fields are
-    encrypted in both inbound and outbound messages, and that 3270
-    non-display protected (output only) fields are replaced by blanks in
-    outbound messages.
+Encryption is performed according to the symmetric encryption method indicated by the CRYPTn parameter specified
+by the PUBLIC-KEY tag, using the session key specified by the DECLARE-FIELD-AS (CRYPTO-SESSION-KEY) tag. The
+GENERATE-HTML tag automatically adds an additional VCRYPT attribute to each encrypted field.
 
-    Encryption is performed according to the symmetric encryption method
-    indicated by the CRYPTn parameter specified by the PUBLIC-KEY tag,
-    using the session key specified by the DECLARE-FIELD-AS
-    (CRYPTO-SESSION-KEY) tag. The GENERATE-HTML tag automatically adds
-    an additional VCRYPT attribute to each encrypted field.
+1.4.17. EBCDIC translation management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    By default, VIRTEL translates host application EBCDIC data into
-    ISO-8859-1 before sending it to the browser. This default behaviour
-    is suitable for Western European and English speaking countries. The
-    COUNTRY parameter in the VIRTCT indicates which EBCDIC country
-    codepage is used by host applications, and serves to select the
-    appropriate default EBCDIC-to-ISO-8859-1 translation table within
-    VIRTEL. Translation tables other than the default may be selected by
-    means of the SET-COUNTRY-CODE tag.
+1.4.17.1. Introduction
 
-    The SET-COUNTRY-CODE tag allows the 3270 host application data to be
-    translated to ISO-8859-1 according to an EBCDIC codepage other than
-    the default codepage implied by the COUNTRY parameter in the VIRTCT.
-    It may also be used to translate from the French EBCDIC codepage to
-    ASCII Western European codepage 850, or to translate from Latin-2
-    EBCDIC Multilingual (CP870) to either ISO-8859-2 Latin-2 (CP912) or
-    PC Latin-2 (CP852).
+By default, VIRTEL translates host application EBCDIC data into ISO-8859-1 before sending it to the browser. This default behaviour is suitable for Western European and English speaking countries. The COUNTRY parameter in the VIRTCT indicates which EBCDIC country codepage is used by host applications, and serves to select the appropriate default EBCDIC-to-ISO-8859-1 translation table within VIRTEL. Translation tables other than the default may be selected by means of the SET-COUNTRY-CODE tag.
 
-    This tag takes effect starting from the point where it appears in
-    the template page, and it may appear multiple times in a single
-    page. The possible values for the countryname parameter are shown in
-    the table below:
+1.4.17.2. SET-COUNTRY-CODE tag
 
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
+::
 
-    *Country Codes for EBCDIC to ASCII translation*
+    {{{SET-COUNTRY-CODE "countryname"}}}
 
-    Note: Values in parentheses are accepted for compatibility with
-    previous versions of VIRTEL
+The SET-COUNTRY-CODE tag allows the 3270 host application data to be translated to ISO-8859-1 according to an EBCDIC codepage other than the default codepage implied by the COUNTRY parameter in the VIRTCT. It may also be used to translate from the French EBCDIC codepage to ASCII Western European codepage 850, or to translate from Latin-2 EBCDIC Multilingual (CP870) to either ISO-8859-2 Latin-2 (CP912) or PC Latin-2 (CP852).
 
-    The COUNTRY-CODE tag inserts the country code into the page, where
-    it can be tested by JavaScript.
+This tag takes effect starting from the point where it appears in the template page, and it may appear multiple times in
+a single page. The possible values for the countryname parameter are shown in the table below:-
 
-    For countries which use a non-Western European language, VIRTEL can
-    generate data in UTF-8 encoding instead of ISO-8859-1. This is done
-    by embedding the SET-OUTPUT-ENCODING-UTF-8 tag in the page template:
++---------------+------------------+----------------+
+| Country name  | EBCDIC codepage  | ASCII codepage |
++===============+==================+================+
+| US            | CP 037           | ISO-8859-1     |
++---------------+------------------+----------------+
+| FR            | CP 297           | ISO-8859-1     |
++---------------+------------------+----------------+
+| NO            | CP 277           | ISO-8859-1     |
++---------------+------------------+----------------+
+| IT            | CP 280           | ISO-8859-1     |
++---------------+------------------+----------------+
+| GB (UK)       | CP 285           | ISO-8859-1     |
++---------------+------------------+----------------+
+| FR-850        | CP 297           | CP 850         |
++---------------+------------------+----------------+
+| L2            | CP 870           | ISO-8859-2     |
++---------------+------------------+----------------+
+| P2            | CP 870           | CP 852         |
++---------------+------------------+----------------+
+| DE            | CP 273           | ISO-8859-1     |
++---------------+------------------+----------------+
+| BE            | CP 500           | ISO-8859-1     |
++---------------+------------------+----------------+
+| FI            | CP 278           | ISO-8859-1     |
++---------------+------------------+----------------+
+| ES (SP)       | CP 284           | ISO-8859-1     |
++---------------+------------------+----------------+
+| IS (IC)       | CP 871           | ISO-8859-1     |
++---------------+------------------+----------------+
 
-    The SET-OUTPUT-ENCODING-UTF-8 tag indicates that host data inserted
-    in the template page by VIRTEL is to be in UTF-8 format, translated
-    according to the EBCDIC country codepage whose name is specified
-    within quotes. The
+*Country Codes for EBCDIC to ASCII translation*
 
-    possible values for charset are given under the description of the
-    DEFUTF8 parameter of the VIRTCT. If no charset value is specified,
-    as for example {{{SET-OUTPUT-ENCODING-UTF-8 ""}}}, then the default
-    value of charset is the codepage specified by the DEFUTF8 parameter
-    of the VIRTCT described in the VIRTEL Installation Guide.
+.. note::
 
-    When SET-OUTPUT-ENCODING-UTF-8 is specified, the rest of the
-    template page must also be coded in UTF-8, and, in the case of an
-    HTML page, must contain the HTML tag:
+Values in parentheses are accepted for compatibility with previous versions of VIRTEL
 
-    In the case of an XML page, no such instruction is needed because
-    XML is considered to be encoded in UTF8 by default.
+1.4.17.3. COUNTRY-CODE tag
 
-    A 3270 application generates US EBCDIC (CECP 037). The following
-    statements, coded between the <HEAD> and
+::
 
-    </HEAD> tags in the template page, ensure the correct translation of
-    this application’s data:
+    {{{COUNTRY-CODE}}}
 
-    Another 3270 application generates output using the Chinese
-    Simplified EBCDIC character set (IBM1388). The output is to be
-    translated to UTF-8 and inserted into a template page which must
-    also be encoded in UTF-8:
+The COUNTRY-CODE tag inserts the country code into the page, where it can be tested by JavaScript.
 
-    A third 3270 application generates output using the Spanish EBCDIC
-    character set, which is to be translated to UTF-8 and inserted into
-    the template page. In this example, we assume that the parameter
-    DEFUTF8=IBM1145 has been specified in the VIRTCT, so we can use this
-    as the default value for the SET-OUTPUT-ENCODING-UTF-8 tag:
+1.4.17.4. SET-OUTPUT-ENCODING-UTF-8 tag
 
-    In each case, the {{{SET}}} statement tells VIRTEL what character
-    set to generate, while the <META> statement tells the browser what
-    character set to expect.
+For countries which use a non-Western European language, VIRTEL can generate data in UTF-8 encoding instead of
+ISO-8859-1. This is done by embedding the SET-OUTPUT-ENCODING-UTF-8 tag in the page template:-
 
-    If you specify neither SET-OUTPUT-ENCODING-UTF-8 nor
-    SET-COUNTRY-CODE, then VIRTEL will generate ISO-8859-1 according to
-    the default COUNTRY parameter specified in the VIRTCT.
+::
 
-    Normally when VIRTEL delivers a page via HTTP it includes an HTTP
-    response status code of “200 OK”. The SET-HTTP- RETURN-CODE allows
-    the page to specify an alternative HTTP response status code. This
-    may be useful, for example, in a page which contains an error
-    message from an application.
+    {{{ SET-OUTPUT-ENCODING-UTF-8 "charset" }}}
 
-    The SET-HTTP-RETURN-CODE tag indicates to VIRTEL the HTTP status
-    code and supplementary text which will be sent in the HTTP response
-    message when this page is delivered. rc is a 3-digit numeric status
-    code, as defined by RFC 2616, and text is the text which accompanies
-    the numeric code.
+The SET-OUTPUT-ENCODING-UTF-8 tag indicates that host data inserted in the template page by VIRTEL is to be in UTF-8 format, translated according to the EBCDIC country codepage whose name is specified within quotes. The possible values for charset are given under the description of the DEFUTF8 parameter of the VIRTCT. If no charset value is specified, as for example {{{SET-OUTPUT-ENCODING-UTF-8 ""}}}, then the default value of charset is the codepage
+specified by the DEFUTF8 parameter of the VIRTCT described in the VIRTEL Installation Guide.
 
-    Example :
+When SET-OUTPUT-ENCODING-UTF-8 is specified, the rest of the template page must also be coded in UTF-8, and, in the case of an HTML page, must contain the HTML tag:-
 
-    When delivering static elements such as menu pages, images, and
-    JavaScript programs, VIRTEL indicates to the browser that the
-    element is eligible to be stored in the browser’s cache. This
-    improves performance because the browser does not have to request
-    the element from VIRTEL each time it is required. By contrast,
-    dynamic elements (i.e. elements which contain VIRTEL tags) are
-    generally marked as non-cacheable because their content is likely to
-    change each time the page is requested.
+::
 
-    The VIRTEL tags described in this section are used to override the
-    default cacheable/non-cacheable behavior.
 
-    When an element contains a SET-PAGE-CACHEABLE tag, VIRTEL will
-    generate two HTTP headers: an Expires: header which indicates that
-    the browser may cache the element until midnight, and a
-    Last-Modified:.header which contains the date that the element was
-    uploaded to VIRTEL. This is the default for static elements.
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    When an element contains a SET-PAGE-NOT-CACHEABLE tag, VIRTEL will
-    generate an Expires: 0 HTTP header indicating that the browser
-    should not store the element in its cache. This is the default for
-    dynamic elements.
+In the case of an XML page, no such instruction is needed because XML is considered to be encoded in UTF8 by default.
 
-    When an element contains a SET-MAX-AGE tag, VIRTEL will not generate
-    the normal Expires: and Last-Modified:.HTTP headers, but instead it
-    will generate a Cache-Control: max-age=secs header, where secs
-    represents the validity time (in seconds) during which the browser
-    may keep the element in its cache.
+1.4.17.4.1. Examples
 
-    VIRTEL associates a MIME-type with each page template or other
-    element stored in a directory. VIRTEL always sends the MIME-type to
-    the browser when the browser requests any element. Some browsers use
-    the MIME-type to determine how to display the element. For example,
-    HTML pages must have MIME-type “text/html”, XML pages must have
-    MIME-type “text/xml”, JPG files must have MIME-type “image/jpeg”,
-    etc.
+A 3270 application generates US EBCDIC (CECP 037). The following statements, coded between the <HEAD> and
+</HEAD> tags in the template page, ensure the correct translation of this application’s data:-
 
-    VIRTEL normally sets the MIME-type to the value indicated by the
-    browser or mailer at the time the page is uploaded. However, in
-    certain cases VIRTEL may force the MIME-type to a different value:
+::
 
--  If the filename extension is .HTM or .HTML, or is absent, VIRTEL will
-   force the MIME-type to be “text/html”. This is because some versions
-   of Internet Explorer upload HTML files using MIME-type “text/plain”
+    {{{SET-COUNTRY-CODE "US"}}}
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 
--  If the file contains a SET-CONTENT-TYPE tag, then VIRTEL will force
-   the MIME-type to the value specified in the tag
+Another 3270 application generates output using the Chinese Simplified EBCDIC character set (IBM1388). The output is to be translated to UTF-8 and inserted into a template page which must also be encoded in UTF-8:-
 
-    The SET-CONTENT-TYPE tag allows the administrator to override the
-    MIME-type supplied by the browser or mailer when the element is
-    uploaded. VIRTEL stores the value of the parameter mimetype in the
-    directory with the element.
+::
 
-    In the following example, the page template is to be stored with a
-    MIME-type which will cause the browser to process it as speadsheet
-    data:
 
-    VIRTEL capability tokens permit an HTTP transaction to access data
-    associated with an transaction running on another terminal. The
-    token is delivered by VIRTEL by means of an x-Virtel HTTP response
-    header from the terminal which owns the capability, and the same
-    token is returned to VIRTEL in a subsequent URL sent by the terminal
-    which wishes to use the capability (se`e “Capability URLs”, page
-    19 <#_bookmark12>`__). The x-Virtel HTTP header is generated by a
-    SET-HEADER tag embedded in a page template sent by the terminal
-    which owns the capablity.
+    {{{SET-OUTPUT-ENCODING-UTF-8 "IBM1388"}}}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    When the SET-HEADER tag is present in a page template, VIRTEL
-    generates an HTTP response header.
+A third 3270 application generates output using the Spanish EBCDIC character set, which is to be translated to UTF-8 and inserted into the template page. In this example, we assume that the parameter DEFUTF8=IBM1145 has been specified in the VIRTCT, so we can use this as the default value for the SET-OUTPUT-ENCODING-UTF-8 tag:-
 
-    When type is one of the VIRTEL capability types listed below, the
-    quoted string header-string is the name of the header; this name
-    should start with x-Virtel- should end with a colon (:) and should
-    not contain blanks. The capability value is an opaque string added
-    by VIRTEL.
+::
 
-    When type is AS-IS the quoted string header-string is a complete
-    header (including value) to be added as-is. No capability processing
-    is performed in this case.
+    {{{SET-OUTPUT-ENCODING-UTF-8 ""}}}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    The VIRTEL capability types are:
+In each case, the {{{SET}}} statement tells VIRTEL what character set to generate, while the <META> statement tells the browser what character set to expect. If you specify neither SET-OUTPUT-ENCODING-UTF-8 nor SET-COUNTRY-CODE, then VIRTEL will generate ISO-8859-1 according to the default COUNTRY parameter specified in the VIRTCT.
+
+1.4.18. HTTP protocol management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.18.1. Introduction
+
+Normally when VIRTEL delivers a page via HTTP it includes an HTTP response status code of “200 OK”. The SET-HTTPRETURN-CODE allows the page to specify an alternative HTTP response status code. This may be useful, for example, in a page which contains an error message from an application.
+
+1.4.18.2. SET-HTTP-RETURN-CODE tag
+
+::
+
+    {{{ SET-HTTP-RETURN-CODE "rc text" }}}
+
+The SET-HTTP-RETURN-CODE tag indicates to VIRTEL the HTTP status code and supplementary text which will be sent in the HTTP response message when this page is delivered. rc is a 3-digit numeric status code, as defined by RFC 2616, and text is the text which accompanies the numeric code.
+
+Example :
+
+::
+
+    <!--VIRTEL start="{{{" end="}}}" -->
+    <html><body><h1>Database record not found</h1>
+    {{{SET-HTTP-RETURN-CODE "404 Not in DB2"}}}
+    <p>The requested record was not found in the database.
+    </body></html>
+
+1.4.19. Cache management
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.19.1. Introduction
+
+When delivering static elements such as menu pages, images, and JavaScript programs, VIRTEL indicates to the browser that the element is eligible to be stored in the browser’s cache. This improves performance because the browser does not have to request the element from VIRTEL each time it is required. By contrast, dynamic elements (i.e. elements which contain VIRTEL tags) are generally marked as non-cacheable because their content is likely to
+change each time the page is requested. The VIRTEL tags described in this section are used to override the default cacheable/non-cacheable behavior.
+
+1.4.19.2. SET-PAGE-CACHEABLE tag
+
+::
+
+    {{{ SET-PAGE-CACHEABLE }}}
+
+When an element contains a SET-PAGE-CACHEABLE tag, VIRTEL will generate two HTTP headers: an Expires: header which indicates that the browser may cache the element until midnight, and a Last-Modified:.header which containsthe date that the element was uploaded to VIRTEL. This is the default for static elements.
+
+1.4.19.3. SET-PAGE-NOT-CACHEABLE tag
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    {{{ SET-PAGE-NOT-CACHEABLE }}}
+
+When an element contains a SET-PAGE-NOT-CACHEABLE tag, VIRTEL will generate an Expires: 0 HTTP header indicating that the browser should not store the element in its cache. This is the default for dynamic elements.
+
+1.4.19.4. SET-MAX-AGE tag
+
+::
+
+    {{{ SET-MAX-AGE "secs" }}}
+
+When an element contains a SET-MAX-AGE tag, VIRTEL will not generate the normal Expires: and Last-Modified:.HTTP headers, but instead it will generate a Cache-Control: max-age=secs header, where secs represents the validity time (in seconds) during which the browser may keep the element in its cache.
+
+1.4.20. MIME type management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.20.1. Introduction
+
+VIRTEL associates a MIME-type with each page template or other element stored in a directory. VIRTEL always sends the MIME-type to the browser when the browser requests any element. Some browsers use the MIME-type to determine how to display the element. For example, HTML pages must have MIME-type “text/html”, XML pages must have MIME-type “text/xml”, JPG files must have MIME-type “image/jpeg”, etc.
+
+VIRTEL normally sets the MIME-type to the value indicated by the browser or mailer at the time the page is uploaded. However, in certain cases VIRTEL may force the MIME-type to a different value:-
+
+- If the filename extension is .HTM or .HTML, or is absent, VIRTEL will force the MIME-type to be “text/html”. This is
+because some versions of Internet Explorer upload HTML files using MIME-type “text/plain”
+- If the file contains a SET-CONTENT-TYPE tag, then VIRTEL will force the MIME-type to the value specified in the tag
+
+1.4.20.2. SET-CONTENT-TYPE tag
+
+::
+
+    {{{SET-CONTENT-TYPE "mimetype"}}}
+
+The SET-CONTENT-TYPE tag allows the administrator to override the MIME-type supplied by the browser or mailer when the element is uploaded. VIRTEL stores the value of the parameter mimetype in the directory with the element. In the following example, the page template is to be stored with a MIME-type which will cause the browser to process it as speadsheet data:-
+
+::
+
+    {{{SET-CONTENT-TYPE "application/vnd.ms-excel"}}}
+
+1.4.21. Capability tokens
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.21.1. Introduction
+
+VIRTEL capability tokens permit an HTTP transaction to access data associated with an transaction running on another terminal. The token is delivered by VIRTEL by means of an x-Virtel HTTP response header from the terminal which owns the capability, and the same token is returned to VIRTEL in a subsequent URL sent by the terminal which wishes to use the capability (see “Capability URLs”, page 19). The x-Virtel HTTP header is generated by a SET-HEADER tag
+embedded in a page template sent by the terminal which owns the capablity.
+
+1.4.21.2. SET-HEADER tag
+
+::
+
+    {{{ SET-HEADER (type) "header-string" }}}
+
+When the SET-HEADER tag is present in a page template, VIRTEL generates an HTTP response header.
+
+When type is one of the VIRTEL capability types listed below, the quoted string header-string is the name of the header; this name should start with x-Virtel- should end with a colon (:) and should not contain blanks. The capability value is an opaque string added by VIRTEL.
+
+When type is AS-IS the quoted string header-string is a complete header (including value) to be added as-is. No capability processing is performed in this case.
+
+The VIRTEL capability types are:-
 
 TO-ALLOW-READ-OF-SCENARIO-TRACE
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Generates a capability token which permits a subsequent requester to
-    obtain this terminal’s trace data by means of the CREATE-VARIABLE-IF
-    TRACING-SCENARIO tag described on page 61.
+    Generates a capability token which permits a subsequent requester to obtain this terminal’s trace data by means of the CREATE-VARIABLE-IF TRACING-SCENARIO tag described on page 61.
 
 GIVING-ACCESS-TO-%USER%-DIRECTORY-WITH-MY-USERID
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    The capability token generated by this tag may be used by a
-    subsequent request to access a directory which has
-
-    %USER% in the keyword field of its definition. The userid of the
-    capability owning transaction will be used as the directory key when
-    the directory is accessed.
+    The capability token generated by this tag may be used by a subsequent request to access a directory which has %USER% in the keyword field of its definition. The userid of the capability owning transaction will be used as the directory key when the directory is accessed.
 
 GIVING-ACCESS-TO-%GROUP%-DIRECTORY-WITH-MY-USERID
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    The capability token generated by this tag may be used by a
-    subsequent request to access a directory which has
-
-    %GROUP% in the keyword field of its definition. The RACF group name
-    of the capability owning transaction will be used as the directory
-    key when the directory is accessed.
+    The capability token generated by this tag may be used by a subsequent request to access a directory which has %GROUP% in the keyword field of its definition. The RACF group name of the capability owning transaction will be used as the directory key when the directory is accessed.
 
 GIVING-ACCESS-TO-%USER%-DIRECTORY-IN-VARIABLE-%USER%
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    The capability token generated by this tag may be used by a
-    subsequent request to access a directory which has
-
-    %USER% in the keyword field of its definition. The value of the
-    %USER% variable of the capability owning transaction will be used as
-    the directory key when the directory is accessed.
+    The capability token generated by this tag may be used by a subsequent request to access a directory which has %USER% in the keyword field of its definition. The value of the %USER% variable of the capability owning transaction will be used as the directory key when the directory is accessed.
 
 GIVING-ACCESS-TO-%GROUP%-DIRECTORY-IN-VARIABLE-%GROUP%
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    The capability token generated by this tag may be used by a subsequent request to access a directory which has %GROUP% in the keyword field of its definition. The value of the %GROUP% variable of the capability owning transaction will be used as the directory key when the directory is accessed.
 
-    The capability token generated by this tag may be used by a
-    subsequent request to access a directory which has
+1.4.21.2.1. Examples:
 
-    %GROUP% in the keyword field of its definition. The value of the
-    %GROUP% variable of the capability owning transaction will be used
-    as the directory key when the directory is accessed.
+::
 
-    The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used
-    during uploading of HTML pages from a browser (se`e “Uploading pages
-    by HTTP (secured by cookie)”, page 69 <#_bookmark79>`__).
+    {{{ SET-HEADER (AS-IS) "Cache-control: no-cache" }}}
+    {{{ SET-HEADER (TO-ALLOW-READ-OF-SCENARIO-TRACE) "x-Virtel-Debug:" }}}
+    {{{ SET-HEADER (GIVING-ACCESS-TO-%USER%-DIRECTORY-IN-VARIABLE-%USER%)
+        "x-Virtel-User-Directory:" }}}
+    {{{ SET-HEADER (GIVING-ACCESS-TO-%USER%-DIRECTORY-WITH-MY-USERID)
+        "x-Virtel-User-Directory:" }}}
+    {{{ SET-HEADER (GIVING-ACCESS-TO-%GROUP%-DIRECTORY-IN-VARIABLE-%GROUP%)
+        "x-Virtel-Group-Directory:" }}}
+    {{{ SET-HEADER (GIVING-ACCESS-TO-%GROUP%-DIRECTORY-WITH-MY-USERID)
+        "x-Virtel-Group-Directory:" }}}
 
-    If the SECURITY-TOKEN tag is present in a template page, VIRTEL
-    substitutes a newly generated user security code to be used for the
-    next transfer. For example,
+1.4.22. Page upload
+^^^^^^^^^^^^^^^^^^^
 
-    If a security code exists, the above code might generate:
+1.4.22.1. Introduction
 
-    var VirtelRef =
-    "20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==";
+The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used during uploading of HTML pages from a browser (see “Uploading pages by HTTP (secured by cookie)”, page 69).
 
-    otherwise it will generate:
+1.4.22.2. SECURITY-TOKEN tag
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    {{{ SECURITY-TOKEN }}}
+
+If the SECURITY-TOKEN tag is present in a template page, VIRTEL substitutes a newly generated user security code to be used for the next transfer. For example:-
+
+::
+
+    <script language="JavaScript"><!--
+    var VirtelRef = "{{{SECURITY-TOKEN}}}";
+    --></script>
+
+If a security code exists, the above code might generate:-
+
+::
+
+    var VirtelRef = "20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==";
+
+::
+
+otherwise it will generate:
+
+::
 
     var VirtelRef = "";
 
-    Two examples of the use of the SECURITY-TOKEN tag are supplied in
-    the HTMLBAS directory used by VIRTEL entry point DEMOHTTP. The
-    upload.htm page stores and retransmits the user security code in the
-    form of a cookie (VirtelRef=xxxxxxxxxxxxxxxx). The upload2.htm page
-    retransmits the user security code using the VirtelCookie= parameter
-    of the URL (see `“Transmission of upload cookie by URL”, page
-    20 <#_bookmark13>`__), but it does not store the code.
+Two examples of the use of the SECURITY-TOKEN tag are supplied in the HTMLBAS directory used by VIRTEL entry point DEMOHTTP. The upload.htm page stores and retransmits the user security code in the form of a cookie (VirtelRef=xxxxxxxxxxxxxxxx). The upload2.htm page retransmits the user security code using the VirtelCookie=parameter of the URL (see “Transmission of upload cookie by URL”, page 20), but it does not store the code.
 
-    The IF-SECURITY-TOKEN-IS-READY tag encloses HTML or JavaScript code
-    to be generated only if a non-empty SECURITY-TOKEN is present.
+1.4.22.3. IF-SECURITY-TOKEN-IS-READY tag
 
-    Note that the total size of this tag, including the enclosed code,
-    must not exceed the size of an inter-block buffer (120 characters)
-    otherwise it will not be correctly processed if it spans blocks.
+::
 
-    Each relay LU, through which a user connects to a host application,
-    can be associated with a second LU which represents a virtual
-    printer (see the description of HTTP terminals in the VIRTEL
-    Connectivity Reference
+    {{{IF-SECURITY-TOKEN-IS-READY
+        SetHostWarning();
+    }}}
 
-    documentation). Data sent to this virtual printer by a host
-    application (such as CICS) are stored by VIRTEL and can be retrieved
-    by means of the tags IF-PRINT-IS-READY, SESSION-CODE, and PRINT
-    embedded in a template page.
+The IF-SECURITY-TOKEN-IS-READY tag encloses HTML or JavaScript code to be generated only if a non-empty SECURITY-TOKEN is present.
 
-    The IF-PRINT-IS-READY tag encloses a section of the page which is
-    generated only if print data exists on the virtual printer
-    associated with the user’s session. The HTML content represented by
-    “...” is generated only if VIRTEL has data ready to be printed.
+.. note::
 
-    The SESSION-CODE tag, prefixed by the word “Print”, generates a
-    sessioncode which allows a subsidiary window to be opened for the
-    print data associated with the specified session. The template page
-    displayed in this window can retrieve the stored print data by means
-    of the PRINT tag. The user can then view the print data, and can, if
-    desired, send the data to a physical workstation printer using the
-    normal procedure for printing from a browser.
+    The total size of this tag, including the enclosed code, must not exceed the size of an inter-block buffer (120 characters) otherwise it will not be correctly processed if it spans blocks.
 
-    For example:
+1.4.23. 3287 printing
+^^^^^^^^^^^^^^^^^^^^^
 
-    The PRINT tag allows a template page, such as the imprim.htm page
-    supplied with VIRTEL, to retrieve 3287 print data. The structured
-    field FAD3 also allows print data to be fed to VIRTEL for retrieval
-    with the PRINT tag.
+1.4.23.1. Introduction
 
-    When a page template is processed in a scenario by a COPY$
-    OUTPUT-FILE-TO-VARIABLE instruction with the TYPE=LINEBUFFER
-    parameter, the page template may contain additional tags. These tags
-    are used to assist in the construction of INPUT, DOCOPT, and LAYOUT
-    files in the “LINEBUF” format required by the MakePDF program
-    product.
+Each relay LU, through which a user connects to a host application, can be associated with a second LU which represents a virtual printer (see the description of HTTP terminals in the VIRTEL Connectivity Reference documentation). Data sent to this virtual printer by a host application (such as CICS) are stored by VIRTEL and can be retrieved by means of the tags IF-PRINT-IS-READY, SESSION-CODE, and PRINT embedded in a template page.
 
-    These files may then be passed to the VIRSVPDF service program which
-    invokes MakePDF to generate output files in PDF format. Refer t\ `o
-    “PDF output generation”, page 213 <#_bookmark263>`__ for an example
-    scenario.
+1.4.23.2. IF-PRINT-IS-READY tag
 
-    The PDF-LINES-PER-PAGE tag inserts “1” in the ASA carriage control
-    character position after every nn lines.
+::
 
-    The PDF-NEW-DOCOPT tag is used only in a MakePDF DOCOPT file. It
-    identifies the DOCOPT file by the character “n”. This allows the
-    DOCOPT file to be referenced by the PDF-USE-DOCOPT tag in the
-    corresponding INPUT file.
+    {{{ IF-PRINT-IS-READY ... }}}
 
-    The PDF-NEW-INPUT tag is used only in a MakePDF INPUT file. It
-    identifies the start of a new segment in the INPUT file.
+The IF-PRINT-IS-READY tag encloses a section of the page which is generated only if print data exists on the virtual printer associated with the user’s session. The HTML content represented by “...” is generated only if VIRTEL has data ready to be printed.
 
-    The PDF-NEW-LAYOUT tag is used only in a MakePDF LAYOUT file. It
-    identifies the LAYOUT file by the character “n”. This allows the
-    LAYOUT file to be referenced by the PDF-USE-LAYOUT tag in the
-    corresponding INPUT file.
+1.4.23.3. SESSION-CODE tag
 
-    The PDF-OUTLINE tag inserts “@” in the ASA carriage control
-    character position.
+The SESSION-CODE tag, prefixed by the word “Print”, generates a sessioncode which allows a subsidiary window to be opened for the print data associated with the specified session. The template page displayed in this window can retrieve the stored print data by means of the PRINT tag. The user can then view the print data, and can, if desired, send the data to a physical workstation printer using the normal procedure for printing from a browser.
 
-    The PDF-PAGE-BREAK tag inserts “1” in the ASA carriage control
-    character position.
+For example:
 
-    The PDF-USE-DOCOPT tag is used only in a MakePDF INPUT file. It
-    specifies that the INPUT file is associated with the DOCOPT file
-    identified by the character “n”
+::
 
-    The PDF-USE-LAYOUT tag is used only in a MakePDF INPUT file. It
-    specifies that the INPUT file is associated with the LAYOUT file
-    identified by the character “n”
+    <script language="javascript" type="text/javascript">
+    <!--
+        function ShowPopup()
+        {
+            var popupURL = "imprim.htm++Print{{{ SESSION-CODE }}}"
+            var popupName = "PopupImpression";
+            var popup = window.open("", popupName,
+                'status=yes,resizable=yes,scrollbars=yes,toolbar=yes,' +
+                'menubar=yes,width=614,height=129');
+            popup.location = popupURL;
+        }
+        {{{IF-PRINT-IS-READY
+            ShowPopup();
+        }}}
+    // -->
+    </script>
 
-    The PDF-VARIABLE tag inserts “=” in the ASA carriage control
-    character position.
+1.4.23.4. PRINT tag
+
+::
+
+    {{{ PRINT (0) }}}
+
+The PRINT tag allows a template page, such as the imprim.htm page supplied with VIRTEL, to retrieve 3287 print data. The structured field FAD3 also allows print data to be fed to VIRTEL for retrieval with the PRINT tag.
+
+1.4.24. Generating PDF output
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.4.24.1. Introduction
+
+When a page template is processed in a scenario by a COPY$ OUTPUT-FILE-TO-VARIABLE instruction with the TYPE=LINEBUFFER parameter, the page template may contain additional tags. These tags are used to assist in the construction of INPUT, DOCOPT, and LAYOUT files in the “LINEBUF” format required by the MakePDF program product.
+
+These files may then be passed to the VIRSVPDF service program which invokes MakePDF to generate output files in PDF format. Refer to “PDF output generation”, page 213 for an example scenario.
+
+1.4.24.2. PDF-LINES-PER-PAGE tag
+
+::
+
+    {{{ PDF-LINES-PER-PAGE "nn"}}}
+
+The PDF-LINES-PER-PAGE tag inserts “1” in the ASA carriage control character position after every nn lines.
+
+1.4.24.3. PDF-NEW-DOCOPT tag
+
+::
+
+    {{{ PDF-NEW-DOCOPT "n"}}}
+
+The PDF-NEW-DOCOPT tag is used only in a MakePDF DOCOPT file. It identifies the DOCOPT file by the character “n”. This allows the DOCOPT file to be referenced by the PDF-USE-DOCOPT tag in the corresponding INPUT file.
+
+1.4.24.4. PDF-NEW-INPUT tag
+
+::
+
+    {{{ PDF-NEW-INPUT }}}
+
+The PDF-NEW-INPUT tag is used only in a MakePDF INPUT file. It identifies the start of a new segment in the INPUT file.
+
+1.4.24.5. PDF-NEW-LAYOUT tag
+
+::
+
+    {{{ PDF-NEW-LAYOUT "n"}}}
+
+The PDF-NEW-LAYOUT tag is used only in a MakePDF LAYOUT file. It identifies the LAYOUT file by the character “n”. This allows the LAYOUT file to be referenced by the PDF-USE-LAYOUT tag in the corresponding INPUT file.
+
+1.4.24.6. PDF-OUTLINE tag
+
+::
+
+    {{{ PDF-OUTLINE }}}
+
+The PDF-OUTLINE tag inserts “@” in the ASA carriage control character position.
+
+1.4.24.7. PDF-PAGE-BREAK tag
+
+::
+
+    {{{ PDF-PAGE-BREAK }}}
+
+The PDF-PAGE-BREAK tag inserts “1” in the ASA carriage control character position.
+
+1.4.24.8. PDF-USE-DOCOPT tag
+
+::
+
+    {{{ PDF-USE-DOCOPT "n"}}}
+
+The PDF-USE-DOCOPT tag is used only in a MakePDF INPUT file. It specifies that the INPUT file is associated with the DOCOPT file identified by the character “n”
+
+1.4.24.9. PDF-USE-LAYOUT tag
+
+::
+
+    {{{ PDF-USE-LAYOUT "n"}}}
+
+The PDF-USE-LAYOUT tag is used only in a MakePDF INPUT file. It specifies that the INPUT file is associated with the LAYOUT file identified by the character “n”
+
+1.4.24.10. PDF-VARIABLE tag
+
+::
+
+    {{{ PDF-VARIABLE }}}
+
+The PDF-VARIABLE tag inserts “=” in the ASA carriage control character position.
+
+1.5. Correspondent Management
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.5.1. Introduction
+
+One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to
+VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user
+which VIRTEL recognizes in this way is known as a “Correspondent”. VIRTEL stores the list of correspondents in a VSAM
+file known as the “Correspondent file”, also known as the “VIRHTML” file.
+
+VIRTEL uses the correspondent file for the following purposes:
+- the rules of an HTTP line permit VIRTEL to distinguish between correspondents and non-correspondents when processing incoming HTTP requests. When the requesting user is identified as a correspondent, a special entry point may be assigned, or a set of rules specific to the user may be executed. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details.
+- the rules of an HTTP line may assign a specific LU name to a correspondent connecting to a host application via web access. This is known as “LU nailing” and is described in more detail in the VIRTEL LU Nailing HOWTO manual.
+- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to “Uploading pages by SMTP”, page 68 and “Uploading pages by HTTP (secured by cookie)”, page 69.
+
+There are two types of correspondent: an e-mail correspondent and a local correspondent:
+- An **e-mail correspondent** is always defined by the VIRTEL administrator. When the administrator activates an email correspondent, VIRTEL sends an e-mail message to the correspondent containing the security code. The correspondent then either replies to the e-mail message or clicks on a link in the message to connect to VIRTEL.
+- A **local correspondent** is activated by the correspondent using a procedure known as “self-registration”. The selfregistration rocedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.
+
+1.5.2. Access to the application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The correspondent management sub-application, which allows the VIRTEL administrator to define the parameters
+associated with a correspondent, is accessible by pressing [PF5] in the VIRTEL configuration menu, or [PF12] in the
+system services sub-application menu, or from the VIRTEL Multi-Session screen via an application referencing the
+module VIR0041A.
+
+1.5.3. Security
+^^^^^^^^^^^^^^^
+
+When security is active, access to the correspondent management sub-application from the configuration menu or
+from the system services sub-application menu is controlled by the resource $$PCPC$$.
+When it is accessed by a transaction, the rules of security management of transactions will apply.
+Security management is described under the heading “Security” 282.
+
+1.5.4. Objectives
+^^^^^^^^^^^^^^^^^
+
+This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
+to the detail of a correspondent is achieved by positioning the cursor and pressing [PF12].
+
+|image74| 
+
+*Summary of correspondence*
+
+|image75|
+*Correspondent detail screen (e-mail correspondent)*
+
+1.5.5. Contents of the fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Id
+    For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator
+Type of Id
+    1. this is an e-mail correspondent
+    2. this is a local correspondent whose security code is generated at activation time and subsequently remains constant
+    3. this is a local correspondent whose security code changes each time it is accessed
+
+Activation message
+    Message received by the user at time of activation of his account. This message can contain a link allowing the user to connect to a host application or to open the upload.htm page with automatic installation of an authorization cookie. The activation message may include the following variables: &R meaning “insert a blank line” &C meaning “insert security code”. The activation security code is inserted into the message in the form VirtelCookie=xxx
+Rule Set
+    (optional) The name of the rule set associated with this user.
+Directory
+    (optional) Name of the directory into which this correspondent may upload files.
+Last contact
+    Date and time of the last transfer, and the IP address of the correspondent.
+Contacts
+    The number of contacts since the last activation.
+
+1.5.6. Account activation
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to be operational, a correspondent account must be activated. This is achieved by pressing [PF4] at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
+correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero. 
+
+.. note::
+
+    To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name $MAIL$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the $MAIL$ transaction is not defined.
+
+1.5.7. Account deactivation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A correspondent’s security code may be cancelled by deactivating with the [PF5] key. The message DISABLE WAS DONE indicates that the deactivation was successful.
+
+1.5.8. Access to associated rule set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To display the list of rules associated with this correspondent, press the [PF6] key.
+
+1.6. Uploading HTML Pages
+=========================
+
+1.6.1. Introduction
+-------------------
+
+HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:
+
+    1. by e-mail (SMTP)
+    2. by web browser (HTTP), with cookie security
+    3. by web browser (HTTP), with signon security
+
+1.6.2. Uploading pages by SMTP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.
+
+1.6.2.1. Definitions for page upload by SMTP
+
+- Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
+- Press F5 from the Configuration Menu and define an e-mail correspondent specifying W2H-DIR as the directory name:
+
+::
+
+    CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2 14:19:33
+    Id                  ===> upload2@saint.cloud.com    
+                        email address with '@' sign
+    Type of Id          ===> 1 1:Email 2:Local+fixed 3:Local+changing
+    Activation message  ===> To upload file(s) to VIRTEL, reply to this message.
+                        Text of 'OK' message to user.
+    VTAM name           ===> &1 parameter to specify VTAM LU name
+    Rule Set            ===> ADMRSET1 Rules to choose an entry point
+    Directory           ===> W2H-DIR Where data is to be uploaded
+    Last contact        ===> QUEUE ACTIVATION
+    Contacts            ===> 00000000 Number of times cookie was updated
+    Date created        ===> 11 May 2004 14:19:29
+    Created by          ===> VIRDBA
+    Date activated      ===> 11 May 2004 14:19:33
+    Activated by        ===> VIRDBA
+    Date disabled       ===>
+    Disabled by         ===>
+    P1=Update                       P3=Return                           Enter=Add
+    P4=Activate                     P5=Disable                          P6=Rules
+    ACTIVATION WAS REQUESTED
+
+*Page upload by SMTP: Creating an e-mail correspondent*
+
+1.6.2.2. Procedure for page upload by SMTP
+
+1. Activate the e-mail correspondent: see “Account activation” under the heading “Correspondent Management”, page 64. This triggers the sending of an e-mail containing the security code, as in the following example:-
+
+::
+
+    Date: Tue, 27 Apr 2004 12:04:40 +0100
+    From: virtel@client.com
+    Organization: SYSPERTEC COMMUNICATION
+    To: upload2@saint.cloud.com
+    Message-id:
+    <20040427120439.07F5DA7C.5E416500Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
+    Subject: OK : < W2H-DIR >
+    SECURITY TOKEN:
+    20040427120439.07F5DA7C.5E416500Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+    To upload file(s) to VIRTEL, reply to this message.
+
+*Page upload by SMTP : activation e-mail*
+
+2. Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL
+recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the
+attached files into the directory defined in the definition of the correspondent.
+
+3. VIRTEL replies by sending an e-mail containing the result of the upload. The following example shows the reply sent
+by VIRTEL to a request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The “Message-id” field in this e-mail
+contains the new security code. You can reply to this e-mail the next time you have files to upload.
+
+::
+
+    Date: Tue, 27 Apr 2004 12:39:14 +0100
+    From: virtel@client.com
+    Organization: SYSPERTEC COMMUNICATION
+    To: upload2@saint.cloud.com
+    Message-id:
+    <20040427123911.07F5CDC4.F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
+    Subject: OK : <W2H-DIR >
+    VirtelCookie=
+    20040427123911.07F5CDC4.F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+    RETURN CODE IS: 00
+    123911 MESSAGE RECEIVED
+    123912 LOADING FILE: LOGOVERT
+    123912 SIZE : 14357 BYTES (BINARY)
+    123912 MIME : image/jpeg
+    123914 LOADING FILE: WEB2VIRT
+    123914 SIZE : 11477 BYTES (TEXT)
+    123914 MIME : text/html
+    123914 FIELD : SET-OUTPUT-ENCODING-UTF-8 ""
+    123914 FIELD : COPY-FROM (1,1,43)
+    123914 FIELD : FIELD-WITH-CURSOR
+    123914 FIELD : FIELD-WITH-CURSOR
+
+*Page upload by SMTP : upload response e-mail*
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and
+truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
+truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
+using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
+under the name LINKS.GI
+
+1.6.3. Uploading pages by HTTP (secured by cookie)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The upload.htm page allows HTML pages or graphics to be uploaded to VIRTEL. The user’s identity is guaranteed by a
+cookie named VirtelRef= whose value changes after each upload. The value of the cookie is the same as the security
+code used for uploading by SMTP.
+
+To upload a page, a user must:
+- have a valid cookie (obtained by activation of the VIRTEL e-mail correspondent)
+- click on the link contained in the e-mail, which displays the upload.htm page and loads the cookie into the browser (first time only)
+- click the “Browse” button and select a file
+- click the “Send” button
+The VIRTEL response is displayed in the page and is similar to the response received by e-mail when uploading via
+SMTP.
+
+1.6.3.1. Definitions for page upload secured by cookie
+
+All the elements needed for page upload by HTTP secured by cookie are contained in the base configuration delivered
+with VIRTEL 4.27. Users who upgrade to VIRTEL 4.27 while keeping their existing configuration need to add certain
+elements to their existing configuration to benefit from the new “page upload secured by cookie” function.
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out
+these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL version 4.27. Having updated
+the configuration, you then need to upload three new elements (upload.htm, default.js, and logo_3.gif) to the W2HDIR
+directory using the existing SMTP upload method.
+1. In entry point WEB2HOST, define a new transaction W2H–70, with external name upload. This transaction specifies
+VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
+that the name of the target directory is to be found in the definition of the e-mail correspondent:
+TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 14:34:08
+Internal name ===> W2H-70 To associate with an entry point name
+External name ===> upload Name displayed on user menu
+Description ===> Upload HTML pages (secured by cookie)
+Application ===> VIR0041C Application to be called
+PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
+Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+Pseudo-terminals ===> DELOC Prefix of name of partner terminals
+Logmode ===> Specify when LOGMODE must be changed
+How started ===> 2 1=menu 2=sub-menu 3=auto
+Security ===> 0 0=none 1=basic 2=NTLM 3=TLS 4=HTML
+H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
+Logon message ===>
+TIOA at logon ===>
+TIOA at logoff ===>
+Initial Scenario ===> Final Scenario ===>
+Input Scenario ===> Output Scenario ===>
+P1=Update P3=Return P12=Server
+Page upload by HTTP with cookie : Creating the ‘upload’ transaction
+2. Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity
+Reference documentation).
+3. Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and
+ruleset name ADMRSET1 :
+CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2 14:39:04
+e-mail address ===> upload2@saint.cloud.com
+email address with '@' sign
+1. Incoming calls
+70
+Type of Id ===> 1 1:Email 2:Local+fixed 3:Local+changing
+Activation message ===> To upload to VIRTEL, click:&Rhttp://192.168.229.20:4100
+1/web2host/upload.htm+upload+&C
+Text of 'OK' message to user.
+VTAM name ===> &1 parameter to specify VTAM LU name
+Rule Set ===> ADMRSET1 Rules to choose an entry point
+Directory ===> W2H-DIR Where data is to be uploaded
+Last contact ===>
+Contacts ===> 00000000 Number of times cookie was updated
+Date created ===> 11 May 2004 14:19:29
+Created by ===> VIRDBA
+Date activated ===> 11 May 2004 14:39:04
+Activated by ===> VIRDBA
+Date disabled ===>
+Disabled by ===>
+P1=Update P3=Return Enter=Add
+P4=Activate P5=Disable P6=Rules
+ACTIVATION WAS REQUESTED
+Page upload by HTTP with cookie : Creating the e-mail correspondent
+4. Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :
+DETAIL of RULE from RULE SET: ADMRSET1 ------------- Applid: SPVIRE2 14:40:59
+Name ===> UPLOAD1B Rule priority is per name
+Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
+Description ===> Rule for WEB2HOST administrator
+Entry point ===> WEB2HOST Target Entry Point
+Parameter ===> optional &1 value
+Trace ===> 1=commands 2=data 3=partner
+C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+0 IP Subnet ===> Mask ===>
+5 HTTP Host ===> :41001
+0 eMail ===>
+0 Calling DTE ===> Calling DTE address
+0 Called ===> Called DTE address
+0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
+0 User Data ===>
+0 Days ===> M: T: W: T: F: S: S:
+0 Start time ===> H: M: S: End time ===> H: M: S:
+P1=Update P3=Return Enter=Add
+P4=Activate P5=Inactivate P12=Entry P.
+Page upload by HTTP with cookie : Creating rule UPLOAD1B
+5. Define two new rules attached to the HTTP line. The first rule, which specifies $COOKIE$ as the entry point name,
+will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:
+LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRE2 14:44:14
+Name Status Description Entry
+Point
+WHT00100 ACTIVE HTTP access (users authorised by cookie) $COOKIE$
+WHT00200 ACTIVE HTTP access (other users) WEB2HOST
+1. Incoming calls
+71
+P1=Update P2=Suppress P3=Return
+P6=1st page P7=Page-1 P8=Page+1 P12=Edit
+DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
+Name ===> WHT00100 Rule priority is per name
+Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
+Description ===> HTTP access (users authorised by cookie)
+Entry point ===> $COOKIE$ Target Entry Point
+Parameter ===> optional &1 value
+Trace ===> 1=commands 2=data 3=partner
+C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+0 IP Subnet ===> Mask ===>
+0 HTTP Host ===>
+0 eMail ===>
+0 Calling DTE ===> Calling DTE address
+0 Called ===> Called DTE address
+0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
+0 User Data ===>
+0 Days ===> M: T: W: T: F: S: S:
+0 Start time ===> H: M: S: End time ===> H: M: S:
+P1=Update P3=Return Enter=Add
+P4=Activate P5=Inactivate P12=Entry P.
+DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:56
+Name ===> WHT00200 Rule priority is per name
+Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
+Description ===> HTTP access (other users)
+Entry point ===> WEB2HOST Target Entry Point
+Parameter ===> optional &1 value
+Trace ===> 1=commands 2=data 3=partner
+C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+0 IP Subnet ===> Mask ===>
+0 HTTP Host ===>
+0 eMail ===>
+0 Calling DTE ===> Calling DTE address
+0 Called ===> Called DTE address
+0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
+0 User Data ===>
+0 Days ===> M: T: W: T: F: S: S:
+0 Start time ===> H: M: S: End time ===> H: M: S:
+P1=Update P3=Return Enter=Add
+P4=Activate P5=Inactivate P12=Entry P.
+Page upload by HTTP with cookie : Rules of the HTTP line
+1. Incoming calls
+72
+1.6.3.2. Procedure for page upload secured by cookie
+1. (First time only) Activate the e-mail correspondent: see “Account activation” under the heading “Correspondent
+Management”, page 64. This triggers the sending of an e-mail containing the security code, as in the following
+example:
+Date: Tue, 27 Apr 2004 13:08:44 +0100
+From: virtel@client.com
+Organization: SYSPERTEC COMMUNICATION
+To: upload2@saint.cloud.com
+Message-id:
+<20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
+Subject: OK : < W2H-DIR >
+SECURITY TOKEN:
+20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+To upload to VIRTEL, click:
+http://192.168.229.20:41001/web2host/upload.htm+upload+VirtelCookie=20040
+427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+Page upload by HTTP with cookie : activation e-mail
+2. Click the link in the e-mail to open the upload.htm page:
+Page upload by HTTP with cookie : Displaying the upload.htm page
+3. Click the “Browse” button and the file selection dialog will be displayed:
+1. Incoming calls
+73
+Page upload by HTTP with cookie : File selection dialog
+4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in
+the input field:
+Page upload by HTTP with cookie : Sending the file
+5. Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this
+example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result
+of the upload:
+1. Incoming calls
+74
+Page upload by HTTP with cookie : Confirmation of file uploadr
+From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as
+indicated by the message “Upload code was set by the remote host”.
+Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and
+truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
+truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
+using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
+under the name LINKS.GI
+1.6.4. Uploading pages by HTTP (secured by signon)
+The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first
+loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security
+product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized
+to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to
+each directory, by authorizing users to the corresponding directory’s upload transaction.
+1.6.4.1. Definitions for page upload secured by signon
+All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered
+with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to
+add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
+1. Incoming calls
+75
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out
+these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the
+configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP
+upload method.
+1. In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S
+and application type 2:
+TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRBW 15:01:19
+Internal name ===> W2H-68 To associate with an entry point name
+External name ===> dirlist Name displayed on user menu
+Description ===> List of directories for page upload
+Application ===> VIR0041S Application to be called
+PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
+Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+Pseudo-terminals ===> DELOC Prefix of name of partner terminals
+Logmode ===> Specify when LOGMODE must be changed
+How started ===> 2 1=menu 2=sub-menu 3=auto
+Security ===> 0 0=none 1=basic 2=NTLM 3=TLS 4=HTML
+H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
+Logon message ===>
+TIOA at logon ===>
+TIOA at logoff ===>
+Initial Scenario ===> Final Scenario ===>
+Input Scenario ===> Output Scenario ===>
+P1=Update P3=Return P12=Server
+Page upload by HTTP with signon : Transaction ‘dirlist’
+2. Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names
+uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application
+type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR
+for transaction uplw2h, and CLI-DIR for uplcli :
+TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:02:23
+Internal name ===> W2H-71 To associate with an entry point name
+External name ===> uplbas Name displayed on user menu
+Description ===> Chargement des pages HTML (répertoire HTMLBAS)
+Application ===> VIR0041C Application to be called
+PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
+Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+Pseudo-terminals ===> DELOC Prefix of name of partner terminals
+Logmode ===> Specify when LOGMODE must be changed
+How started ===> 2 1=menu 2=sub-menu 3=auto
+Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
+H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
+Logon message ===> HTMLBAS
+TIOA at logon ===>
+TIOA at logoff ===>
+Initial Scenario ===> Final Scenario ===>
+Input Scenario ===> Output Scenario ===>
+P1=Update P3=Return P12=Server
+1. Incoming calls
+76
+TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:03:01
+Internal name ===> W2H-72 To associate with an entry point name
+External name ===> uplw2h Name displayed on user menu
+Description ===> Chargement des pages HTML (répertoire W2H-DIR)
+Application ===> VIR0041C Application to be called
+PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
+Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+Pseudo-terminals ===> DELOC Prefix of name of partner terminals
+Logmode ===> Specify when LOGMODE must be changed
+How started ===> 2 1=menu 2=sub-menu 3=auto
+Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
+H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
+Logon message ===> W2H-DIR
+TIOA at logon ===>
+TIOA at logoff ===>
+Initial Scenario ===> Final Scenario ===>
+Input Scenario ===> Output Scenario ===>
+P1=Update P3=Return P12=Server
+TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:03:21
+Internal name ===> W2H-73 To associate with an entry point name
+External name ===> uplcli Name displayed on user menu
+Description ===> Chargement des pages HTML (répertoire CLI-DIR)
+Application ===> VIR0041C Application to be called
+PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
+Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
+Pseudo-terminals ===> DELOC Prefix of name of partner terminals
+Logmode ===> Specify when LOGMODE must be changed
+How started ===> 2 1=menu 2=sub-menu 3=auto
+Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
+H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
+Logon message ===> CLI-DIR
+TIOA at logon ===>
+TIOA at logoff ===>
+Initial Scenario ===> Final Scenario ===>
+Input Scenario ===> Output Scenario ===>
+P1=Update P3=Return P12=Server
+Page upload by HTTP with signon : Transactions ‘uplxxx’
+3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and
+HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR
+(for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for
+users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “Virtel Security Guide”
+manual.
+1.6.4.2. Procedure for page upload secured by signon
+1. Display the upload4.htm page by entering the URL http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser,
+or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is
+defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
+1. Incoming calls
+77
+Page upload by HTTP with signon : Entering the userid and password
+The user must have authority to access the resource represented by the internal name of the page upload
+transaction for the desired directory.
+2. After entering the user name and password, the upload4.htm page will be displayed:
+Page upload by HTTP with signon : Displaying the upload4.htm page
+3. Press the “Browse” button to display the file selection dialog:
+1. Incoming calls
+78
+Page upload by HTTP with signon : File selection dialog
+4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in
+the input field:
+Page upload by HTTP with signon : Sending the file
+5. Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL.
+VIRTEL stores the file in the chosen directory, and displays the result:
+1. Incoming calls
+79
+Page upload by HTTP with signon : Confirmation of file upload
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and
+truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
+truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
+using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
+under the name LINKS.GI
+1.6.5. Uploading pages by drag and drop
+The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the
+Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory
+(for example, W2H-DIR) in a single operation.
+1.6.5.1. Upload interface in the VIRTEL menu
+After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL
+administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown
+below:
+1. Incoming calls
+80
+Drag and drop upload interface
+The administrator can then select one or more files using the workstation graphical user interface, drag them to the
+upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in
+zipped archive may need to be extracted to a temporary directory first.
+1.6.5.2. Displaying upload results
+Displaying upload results
+The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should
+produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the
+detail display for each file uploaded.
+1. Incoming calls
+81
+1.6.5.3. Upload summary report
+After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the
+number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero
+return codes.
+The summary is not displayed when files are dragged and dropped one at a time.
+In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to
+the left of the file to expand the error messages:
+Upload summary report
+1.6.5.4. Extracting upload results as an Excel spreadsheet
+The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel
+spreadsheet.
+Directory File name Report Time
+CLI-DIR custom.css RETURN CODE IS: 00 Thu, 13 Sep 2012 08:13:16 GMT
+CLI-DIR custom.js RETURN CODE IS: 00 Thu, 13 Sep 2012 08:13:16 GMT
+The Delete button allows the administrator to clear the results log.
+1.6.6. Uploading pages in batch
+1.6.6.1. Uploading with cURL
+You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line
+HTTP-client program, such as cURL from www.haxx.se.
+The following example shows a Windows command to upload all files of type .htm from the current directory to
+VIRTEL:
+for %F in (*.htm) do curl -v -F "file=@%F;type=text/html" -u
+virdba:virdbapw http://192.168.235.30:41001/SECURE/virmsg.txt+uplbas
+1. Incoming calls
+82
+In this example:
+*.htm
+the files to be uploaded
+virdba:virdbapw
+userid and password for VIRTEL
+192.168.235.30:41001
+identifies the VIRTEL HTTP line
+virmsg.txt
+page template for displaying upload result messages
+uplbas
+external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See “Uploading
+pages by HTTP (secured by signon)”, page 75 for a list of upload transactions.
+Note: %F appears twice in the command shown above. In conformance with the syntax requirements of the Windows
+command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you
+execute the command from within a command (.cmd) file.
+1.6.6.2. The upl2virt command procedure
+For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL
+from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL
+commands as described in the previous section.
+1.6.6.2.1. Pre-requisites
+upl2virt requires as a pre-requisite the cURL package described in the previous section.
+Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package
+allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then
+upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
+the command window.
+1.6.6.2.2. Installation
+upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
+http://n.n.n.n:41001/upl2virt.cmd (where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd
+file in a directory in your path (for example, C:\WINDOWS).
+1.6.6.2.3. Using upl2virt at the command prompt
+To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the
+file(s) to be uploaded, and execute the command:
+upl2virt [-u userid:password] -d directory -a n.n.n.n
+[-p port] [-r] [-f ctlfile] [-k] [file1 file2 ...]
+In the above command:
+1. Incoming calls
+83
+userid:password
+is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified
+without the password, then upl2virt will prompt for password.
+directory
+is the name of the target VIRTEL directory (for example, CLI-DIR)
+n.n.n.n
+is the IP address of VIRTEL
+port
+is the VIRTEL administration port number (default 41001).
+Note: this is the port number for the WEB2HOST entry point, not the port number associated with the directory you
+are uploading to.
+ctlfile
+specifies the name of a control file containing a list of file names to be uploaded
+file1 file2 ...
+are the names of files to be uploaded
+-r
+specifies recursion into subdirectories
+-k
+keeps the command window open after the last upload
+If no file names are specified, and no control file is specified, the default is to upload all web elements from the current
+directory (and also from all subdirectories if the –r option is specified).
+1.6.6.2.4. Using upl2virt from Windows Explorer
+The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having
+selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the
+“Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.
+To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the
+“c:\Documents and Settings\username\SendTo” folder, where username is your Windows username. If you cannot see
+the SendTo folder, then click on “Tools” – “Folder options” – “View”, tick the option “Display hidden files and folders”,
+and click “OK”.
+In the “SendTo” folder, right click and select “New” – “Shortcut”. Then click “Browse”, navigate to the place where you
+stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as
+“Upload to VIRTEL”. Then click “Finish”.
+You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose
+“Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field
+with parameters as shown in the example below:
+C:\WINDOWS\upl2virt.cmd -u MYUSERID -d CLI-DIR -a 10.1.12.101
+–k
+where:
+MYUSERID
+is your VIRTEL userid
+1. Incoming calls
+84
+CLI-DIR
+is the name of the VIRTEL directory that this shortcut will upload to
+10.1.12.101
+is the IP address of VIRTEL.
+You may omit the –u MYUSERID parameter and upl2virt will prompt you for your userid.
+1.7. Web Access Customization
+The VIRTEL Web Access user can use the Settings menu to modify certain options such as font size, 3270 key mappings,
+and color schemes. The user’s settings are stored in a browser local storage which remains valid so long as cookies are
+not deleted from the workstation. The settings stored in the user’s local storage override the default settings for
+VIRTEL Web Access which are stored in the w2hparm.js file. See “Global modification of Web Access settings”, page 99.
+1.7.1. Web Access Settings menu
+When the user clicks this button on the VIRTEL Web Access toolbar, the window shown below opens:
+1. Incoming calls
+85
+VIRTEL Web Access Settings menu (part 1 of 3)
+1. Incoming calls
+86
+VIRTEL Web Access Settings menu (part 2 of 3)
+1. Incoming calls
+87
+VIRTEL Web Access Settings menu (part 3 of 3)
+1.7.2. Contents of the fields
+Font Size
+Size of font. Possible values are:
+Window
+VIRTEL calculates the font size to fit the browser’s window size.
+Screen
+VIRTEL calculates the font size to fit the display screen size.
+nn
+VIRTEL uses a fixed font size. nn is the size in “points”: 8pt, 10pt, 12pt, 14pt, or 16pt.
+1. Incoming calls
+88
+Font family
+Name of font. The panel displays a list of fonts known to VIRTEL and installed on the workstation, in addition to the
+fonts supplied by VIRTEL. If the required font is not in the list, click the ellipsis to the right of the selection box and
+type the name of the font in the box. Any fixed-width font installed on the workstation may be specified.
+Auto-capture
+When activated, causes a snapshot of each screen displayed by the host application to be automatically appended to
+the screen capture window.
+Auto-print
+When activated, causes the Windows print function to be launched automatically in the print window as a result of
+a screen snapshot or print request.
+Cursor
+The shape of the 3270 cursor. The possible settings are:
+Smart
+The character at the cursor position is underlined and his position and color changes to always remain visible for
+any character (depending on the selected character's style : bgnd color, reverse, underlined).
+Block
+The character at the cursor position is in reverse video
+Blink
+The character at the cursor position is in blinking reverse video
+Note: For Internet Explorer versions 6 and 7, Blink is the same as Block
+Vertical line, Horiz line
+When activated, causes the position of the cursor to be marked with a vertical line and/or a horizontal line extending
+to the edges of the 3270 window (also known as a “crosshair cursor”).
+Esc key to Alt+F3
+Defines the mapping of workstation keyboard to 3270 keys. The value “no” indicates that the keystroke is ignored.
+For example the 3270 PA1 key may be assigned to the PageUp key, to the Alt+PageUp key, and/or to the Alt+F1 key
+on the user’s keyboard.
+Note: For Internet Explorer, the “Ctrl key” setting refers to the right Ctrl key. For Firefox, Chrome, and Safari the “Ctrl
+key” setting applies to both the left and right Ctrl keys identically. For Firefox, the “Keypad Enter” setting is ignored.
+For Internet Explorer versions 6, 7, and 8, a browser helper object (virtkey.dll) must be installed to allow recognition
+of the keypad Enter key. This BHO is not needed for Internet Explorer 9.
+The ChgCur setting allows the user to toggle the cursor between the “bar”, “block”, “bar+crosshairs”, and
+“block+crosshairs” style.
+Keypad /*-+.
+Allows keys on the numeric keypad to be assigned to certain 3270 functions including PA1, PA2, Tab, Backtab, and
+Newline. Also allows the decimal point on the numeric keypad to be remapped to comma for European countries.
+Note: Remapping of the numeric keypad is only supported for Internet Explorer, Chrome, and Safari. Keypad settings
+are ignored for Firefox and Opera.
+Double click
+Specifies the action taken for a mouse double-click. Possible settings are:
+Word
+draws a box around the word that the mouse is pointing in preparation for a copy or cut operation.
+1. Incoming calls
+89
+ENTER
+Activates the “point-and-shoot” function. When set to ENTER, double clicking the mouse moves the cursor to the
+mouse position and sends a 3270 ENTER to the host application.
+no
+indicates that the double-click function is deactivated.
+URL hotspots
+When activated, any text starting with http://, https://, mailto://, file://, news:// or ftp:// (except in 3270 input fields)
+is transformed into a hyperlink.
+PF key hotspots
+When activated, any text starting with Fnn= or PFnn= (except in 3270 input fields) is transformed into a clickable area.
+Clicking on the area is equivalent to pressing PF nn.
+Paste erase EOF
+When activated, a paste operation will erase the rest of an input field to the right of the pasted text
+Move cursor on activate
+This setting takes effect only when the user clicks on a background 3270 window in order to bring the window to the
+foreground. When the option is activated, the window is brought to the foreground and the 3270 cursor moves to
+the location in the window where the user clicked; the copy/paste box and context menu are removed if present.
+When the option is not activated, the window is brought to the foreground and the cursor remains in its previous
+position; the copy/paste box and context menu remain displayed if present.
+Style
+Allows a choice of color schemes by selection of CSS style sheet. By default, possible values are:
+3270
+extended colors on black background
+Gray
+extended colors on gray background
+White
+gray characters on white background
+Print style
+Allows a choice of color schemes for the screen capture window. By default, possible values are:
+3270
+extended colors on black background
+Color
+extended colors on white background
+White
+black characters on white background
+Response time monitor
+When activated, two counters are displayed on the status line below the 3270 screen, for example: H:110ms J:31ms.
+The first number (H=Host) represents the response time of the VIRTEL server, from the last Enter or PF key until
+the receipt of the most recent message from the server. The second number (J=JavaScript) is the time taken by the
+browser scripts to prepare the screen for display. The sum of the two numbers is the response time perceived by the
+user.
+Note: The response time monitor is active in Ajax mode only
+1. Incoming calls
+90
+Omit nulls from input
+When activated, VIRTEL Web Access will remove all nulls from modified input fields before sending to the server, in
+strict conformance with 3270 protocol. When not activated, leading and embedded nulls are converted to blanks,
+and only trailing nulls are suppressed, which many users find more convenient.
+Keep macro pad open
+If checked, the macro window remains open all the time. If not, it disappears as soon as you have clicked a macro.
+Keep keypad open
+If checked, the keypad window remains open all the time. If not, it disappears as soon as you have clicked a function
+key in it.
+Highlight input fields
+Permits the user to display a different background color for 3270 input fields. When this option is selected, all input
+fields will have a class designator HIGHLIGHTED_INPUTFIELD in addition to their regular class. The style definition
+may be overridden by the administrator in the custom.css file.
+Remap caret to logical not
+If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X'5F', which is the “logical not” sign (¬) in
+codepage 037/1140.
+Adapt font size ratio
+If checked, characters will be stretched to fill the window. This option functions in Internet Explorer versions 9 and
+later, in Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this option has no effect.
+Character spacing
+If checked, blank space will be added between characters if necessary to make the 3270 screen fill the browser
+window horizontally.
+Line spacing
+If checked, blank space will be added between lines if necessary to make the 3270 screen fill the browser window
+vertically. This option is incompatible with IE6 and will be ignored if used with IE6. Additionally, if “Adapt font size
+ratio” is specified and the browser supports it, then the “Line spacing” option is ignored.
+1.7.3. Associated functions
+After modifying the Settings menu, the user presses one of the buttons:
+Save
+save the options in browser local storage.
+Cancel
+exit without saving the modifications made to this menu.
+Defaults
+returns all of the settings to their default values. The default values are specified by the installation in w2hparm.js.
+Deletion of browser cookies may delete the values saved in local storage. For Internet Explorer, ensure that the option
+“Delete browsing history on exit” in Tools – Internet Options” is not checked.
+1.7.4. Web Access Settings menu
+When the user clicks this button on the VIRTEL Web Access toolbar the window shown below opens.
+1. Incoming calls
+91
+VIRTEL Web Access Settings menu (Display tab)
+1. Incoming calls
+92
+VIRTEL Web Access Settings menu (Miscellaneous tab)
+1. Incoming calls
+93
+VIRTEL Web Access Settings menu (Key Mappings tab)
+1. Incoming calls
+94
+VIRTEL Web Access Settings menu (Import tab)
+1.7.4.1. Display tab parameters
+Font Size
+Size of font. Possible values are :
+Window
+VIRTEL calculates the font size to fit the browser’s window size.
+Screen
+VIRTEL calculates the font size to fit the display screen size.
+1. Incoming calls
+95
+nn
+VIRTEL uses a fixed font size. nn is the size in “points”: 8pt, 10pt, 12pt, 14pt, or 16pt.
+Font family
+Name of font. The panel displays a list of fonts known to VIRTEL and installed on the workstation, in addition to the
+fonts supplied by VIRTEL. If the required font is not in the list, click the ellipsis to the right of the selection box and
+type the name of the font in the box. Any fixed-width font installed on the workstation may be specified.
+Cursor
+The shape of the 3270 cursor. The possible settings are:
+Smart
+The character at the cursor position is underlined and his position and color changes to always remain visible for
+any character (depending on the selected character's style : bgnd color, reverse, underlined).
+Bar
+The character at the cursor position is underlined
+Block
+The character at the cursor position is in reverse video
+Blink
+The character at the cursor position is in blinking reverse video
+Note: For Internet Explorer versions 6 and 7, Blink is the same as Block
+Vertical line, Horiz line
+When activated, causes the position of the cursor to be marked with a vertical line and/or a horizontal line
+extending to the edges of the 3270 window (also known as a “crosshair cursor”).
+To add or remove a style, see “Customize display style”, page 280)
+Administrators can add some new customs style as describe in the section “How to customize display style”, page 280
+Display Style
+Allows a choice of color schemes by selection of CSS style sheet. Possible values are :
+3270
+extended colors on black background
+Gray
+extended colors on gray background
+White
+gray characters on white background
+Administrators can add some new customs print style as describe in the section “How to customize print style”,
+page 281
+Print style
+Allows a choice of color schemes for the screen capture window. Possible values are :
+3270
+extended colors on black background
+Color
+extended colors on white background
+White
+black characters on white background
+1. Incoming calls
+96
+Miscellaneous
+Highlight input fields
+Permits the user to display a different background color for 3270 input fields. When this option is selected, all
+input fields will have a class designator HIGHLIGHTED_INPUTFIELD in addition to their regular class. The style
+definition may be overridden by the administrator in the custom.css file.
+Adapt font size ratio
+If checked, characters will be stretched to fill the window. This option functions in Internet Explorer versions 9 and
+later, in Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this option has no effect.
+Character spacing
+If checked, blank space will be added between characters if necessary to make the 3270 screen fill the browser
+window horizontally.
+Line spacing
+If checked, blank space will be added between lines if necessary to make the 3270 screen fill the browser window
+vertically. This option is incompatible with IE6 and will be ignored if used with IE6. Additionally, if “Adapt font size
+ratio” is specified and the browser supports it, then the “Line spacing” option is ignored.
+1.7.4.2. Miscellaneous tab parameters
+Double click
+Specifies the action taken for a mouse double-click. Possible settings are :
+off
+Indicates that the double-click function is deactivated.
+Word Selection
+Draws a box around the word that the mouse is pointing in preparation for a copy or cut operation.
+ENTER
+Activates the “point-and-shoot” function. When set to ENTER, double clicking the mouse moves the cursor to the
+mouse position and sends a 3270 ENTER to the host application.
+Edition
+Paste erase EOF
+When activated, a paste operation will erase the rest of an input field to the right of the pasted text
+Map Ctrl+V to Paste by Typing
+Indicates that Ctrl+V will act “paste by typing”, i.e cursor will be positionned at the end of the pasted text instead
+of remaining at the position it was before using Ctrl+V.
+Move cursor on activate
+This setting takes effect only when the user clicks on a background 3270 window in order to bring the window
+to the foreground. When the option is activated, the window is brought to the foreground and the 3270 cursor
+moves to the location in the window where the user clicked; the copy/paste box and context menu are removed
+if present. When the option is not activated, the window is brought to the foreground and the cursor remains in
+its previous position; the copy/paste box and context menu remain displayed if present.
+Preserve insertion mode
+This setting takes effect only when the keyboard is in insertion mode. When the option is activated, the cursor will
+remain in insert mode until the user returns to normal entry mode by using the “insert” key again, otherwise the
+cursor returns to normal whenever a transmission key is used.
+1. Incoming calls
+97
+Pads
+Keep macro pad open
+If checked, the macro window remains open all the time. If not, it disappears as soon as you have clicked a macro.
+Keep keypad open
+If checked, the keypad window remains open all the time. If not, it disappears as soon as you have clicked a
+function key in it.
+Hotspots
+Display URL hotspots
+When activated, any text starting with http, https, mailto, file, or ftp (except in 3270 input fields) is transformed
+into a hyperlink.
+Display PF key hotspots
+When activated, any text starting with Fnn= or PFnn= (except in 3270 input fields) is transformed into a clickable
+area. Clicking on the area is equivalent to pressing PF nn.
+Capture
+Auto-capture
+When activated, causes a snapshot of each screen displayed by the host application to be automatically appended
+to the screen capture window.
+Bring capture to the foreground
+When activated, causes the capture windows to come in the foreground whenever the cature icon is used.
+Miscellaneous
+Auto-print
+When activated, causes the Windows print function to be launched automatically in the print window as a result
+of a screen snapshot or print request.
+Response time monitor
+When activated, two counters are displayed on the status line below the 3270 screen, for example: H:110ms
+J:31ms. The first number (H=Host) represents the response time of the VIRTEL server, from the last Enter or PF
+key until the receipt of the most recent message from the server. The second number (J=JavaScript) is the time
+taken by the browser scripts to prepare the screen for display. The sum of the two numbers is the response time
+perceived by the user.
+Note: The response time monitor is active in Ajax mode only.
+Omit nulls from input
+When activated, VIRTELWeb Access will remove all nulls from modified input fields before sending to the server, in
+strict conformance with 3270 protocol. When not activated, leading and embedded nulls are converted to blanks,
+and only trailing nulls are suppressed, which many users find more convenient.
+Remap caret to logical not
+If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X'5F', which is the “logical not” sign
+(¬) in codepage 037/1140.
+1.7.4.3. Key Mappings tab parameters
+This tab is used to map specific functions to certain keyboard keys. The tab contains five sub categories whose names
+are explicit enough to not require more precision.
+1. Incoming calls
+98
+1.7.4.4. Import / Export tab parameters
+This tab lets the user to save and restore his settings into (or from) a local file. This backup method is different and
+independent of the method used when the "save" button is pressed. (See below).
+1.7.5. Where user settings are stored
+When the user press the "save" button, his Web Access settings and macros are stored in browser local storage.
+For Internet Explorer 6, local storage is stored in the folder :
+%userprofile%/UserData
+For Internet Explorer 8 and 9, local storage is stored in the folder :
+%userprofile%/Local Settings/Application Data/Microsoft/Internet Explorer/DOMStore
+Note: to see DOMStore you must untick “hide protected operating system files” in Windows folder options.
+For other browsers, see
+http://www.sitepoint.com/building-web-pages-with-local-storage/
+1.7.6. Global modification of Web Access settings
+Those installations who wish to modify the default Web Access settings for all users can do so by uploading the
+w2hparm.js file. This file is included in the sources.zip file which can be obtained from the VIRTEL Web Access menu
+accessible by URL http://n.n.n.n:41001
+The w2hparm.js file as delivered contains the following source code:
+// w2hparm default values
+// see w2hparmdefns in js01.js for parameters and allowable values
+var w2hparm = {
+"fontsize":"window",
+"ctrl":"ENTER",
+"enter":"Newline",
+"home":"Home",
+"end":"ErEof",
+"pgup":"PF7",
+"pgdn":"PF8",
+"pause":"CLEAR",
+"style":"3270"};
+w2hparm.js: Default settings for VIRTEL Web Access
+Default values may be changed or added.
+For example, installations who wish to map the 3270 ATTN key to the Esc (Escape) key for use with Multisession
+applications such as NVAS (IBM® NetView™ Access Services) can add the following instruction to the w2hparm.js file:
+"escape":"ATTN",
+Modifications to the global settings are only effective after the expiry of the w2hparm.js file in the browser’s cache
+which occurs at midnight each day. A user can force the use of the updated global settings file by clearing the browser
+cache, deleting any cookies associated with the VIRTEL server, and refreshing the 3270 page using the Ctrl-R key.
+After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s CLI-DIR directory by means of the “Upload” link
+on the VIRTEL Web Access menu (URL http://n.n.n.n:41001). Then you must check the Entry Point (usually CLIWHOST)
+1. Incoming calls
+99
+and check that the transaction whose “External name” is w2h and whose “Check URL Prefix” field is set to /w2h/
+w2hparm-js specifies CLI-DIR in the “Application” field. For the CLIWHOST entry point this is transaction CLI-03P.
+The list of keywords and possible values which can be coded in the w2hparm.js file is shown below:
+Keyword Caption Possible values
+"fontsize" Font size "window", "screen", "8", "10", "12", "14", "16"
+"font" Font family "font name"
+"autocapture" Auto-capture true, false
+"autoprint" Auto-print true, false
+"cursor" Cursor "Bar", "Blink", "Block"
+"vline" Vertical line true, false
+"hline" Horiz line true, false
+"esc" Esc key "no", "ATTN", "CLEAR", "Reset"
+"ctrl" Ctrl key "no", "ENTER", "Newline"
+"cmdleft" Left Cmd key "no", "Reset"
+"cmdright" Right Cmd key "no", “ENTER"
+"enter" Enter key "ENTER", "Newline"
+"home" Home key "no", "Home"
+"end" End key "no", "ErEof", "End"
+"pgup" PageUp key "PF7", "PF19", "PA1", "no"
+"pgdn" PageDown key "PF8", "PF20", "PA2", "no"
+"pause" Pause key "CLEAR", "ATTN", "PA3", "no"
+"kpenter" Keypad Enter "ENTER", "Newline"
+"shiftenter" Shift+Enter "no","ENTER", "Newline"
+"shiftesc" Shift+Esc "no", "ATTN", "CLEAR", "Reset"
+"shiftins" Shift+Insert "no", "Dup"
+"shiftdel" Shift+Delete "no", "ErEof"
+"shifthome" Shift+Home "no", "FieldMark", "Home"
+"shiftend" Shift+End "no", "ErEof", "End"
+"shiftpgdn" Shift+PageDown "no", "PA3"
+"ctrlenter" Ctrl+Enter "no","ENTER", "Newline"
+"ctrlins" Ctrl+Insert "no", "PA1"
+"ctrldel" Ctrl+Delete "no", "PA2", "ErEof"
+"ctrlhome" Ctrl+Home "no", "PA3", "Home", "ChgCur"
+"ctrlend" Ctrl+End "no", "ErEof", "End"
+"altins" Alt+Ins "no", "PA1"
+"althome" Alt+Home "no", "PA2"
+"altpgup" Alt+PageUp "no", "PA1"
+"altpgdn" Alt+PageDown "no", "PA2"
+"altpause" Alt+Pause "no", "ATTN", "CLEAR", "PA3"
+"altf1" Alt+F1 "no", "PA1", "ENTER"
+"altf2" Alt+F2 "no", "PA2"
+1. Incoming calls
+100
+Keyword Caption Possible values
+"altf3" Alt+F3 "no", "PA3", "ChgCur"
+"kpslash" Keypad / "/", "PA1"
+"kpaster" Keypad * "*", "PA2"
+"kpminus" Keypad - "-", "Backtab"
+"kpplus" Keypad + "+", "Tab", "Newline"
+"kpdot" Keypad . ".", ","
+"dblclick" Double Click "Word", "ENTER", "no"
+"urlhotspot" URL hotspots true, false
+"pfkhotspot" PF key hotspots true, false
+"pasteereof" Paste erase EOF true, false
+"movecursor" Move cursor on activate true, false
+"style" Style "3270", "gray", "white"
+"printstyle” Print style "3270", "color", "white"
+"rtm" Response time monitor true, false
+"omitnulls" Omit nulls from input true, false
+"keepmacpad" Keep macro pad open true, false
+"keepkeypad" Keep keypad open true, false
+"hiliteinput" Highlight input fields true, false
+"caretnot" Remap caret to logical not true, false
+"adaptfontratio" Adapt font size ratio true, false
+"charspace" Character spacing true, false
+"linespace" Line spacing true, false
+"settingsGUI" Settings user interface type v2
+"preserveinsmode" Preserve insert mode true, false
+w2hparm.js: List of keywords and possible values
+1.7.7. Choosing Web Access settings pattern
+User interface settings may be presented under two different forms which are shown at the beginning of this section.
+The desired form may be defined using the variable "settingsGUI" present in the w2hparms.js file. The possible values
+for this parameter are :
+version
+Allows a choice beetwen older and or newest form. Possible values are:
+v2
+When activated, only the newest user setting interface is available in the toolbar. The settings icone will remain
+the same as actually.
+no value
+When none of the previous values are activated, only the older user setting interface is available in the toolbar.
+width
+Allows to change the width of the setting form.
+1. Incoming calls
+101
+height
+Allows to change the heigth of the setting form.
+Note: Version 2 is more powerful and offers more setting possibilities of the keyboard than version 1 . Version 1 will be
+dropped in the next release of VIRTEL.
+The example below shows how to override the default settingsGUI parameter using a custom.js file :
+/*
+* Configuration of the settings dialog GUI.
+*/
+w2hparm.settingsGUI =
+{
+/*
+* Select which settings dialog version(s) will be accessible in the VWA toolbar.
+* Possible values are :
+* - "v1+v2" ...... Allow both settings dialogs (OLD and NEW)
+* - "v2" ......... Allow NEW settings dialog only
+* - otherwise ... Allow OLD settings dialog only
+*/
+version : "v2",
+/* Width of the settings dialog */
+width : 540,
+/* Height of the settings dialog */
+height : 730
+};
+custom.js: Choosing the Web Access settings interface form
+1.7.8. Hiding Web Access settings
+To prevent the user from overriding the site defaults, the administrator can remove individual settings from the user’s
+Web Access Settings menu. The names of settings to be hidden are specified in the w2hparmHide variable in the
+w2hparm.js file.
+The example below shows how to hide the default font, font size, and style settings from the menu:
+// w2hparm default values
+var w2hparm = {
+"fontsize":"window",
+"font":"Lucida Console",
+"ctrl":"ENTER",
+"enter":"Newline",
+"home":"Home",
+"style":"3270"};
+var w2hparmHide = ["font", "fontsize", "style"];
+w2hparm.js: Hiding VIRTEL Web Access settings
+
+===========================================
 
     One of the methods which VIRTEL may use to identify users is by
     means of a security code which the user presents to VIRTEL, either
@@ -13837,3 +14888,5 @@ Index
 .. |image71| image:: images/media/image71.png
 .. |image72| image:: images/media/image72.png
 .. |image73| image:: images/media/image73.png
+.. |image73| image:: images/media/image74.png
+.. |image73| image:: images/media/image75.png
