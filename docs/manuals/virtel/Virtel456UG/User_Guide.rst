@@ -753,6 +753,7 @@ To scroll to the top of the list, press [PF6]. To scroll up or down the list, pr
 To return to the configuration menu, press [PF3].
 
 1.3.5. Defining directory parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To access the detail screen for any directory, place the cursor on the directory name and press [PF12]:
 
@@ -764,385 +765,228 @@ Name
     be authorized.
 
 Description
-~~~~~~~~~~~
-
     Comment associated with the directory.
 
 Type
-~~~~
-
     **V** (or blank) indicates that the directory is held in a VSAM
     KSDS.
 
 DD name
-~~~~~~~
-
-    The file name of the VSAM KSDS which contains the directory. This
-    name must be defined in one of the UFILEn parameters in the VIRTCT,
-    and a DD statement with the same name must appear in the VIRTEL
+    The file name of the VSAM KSDS which contains the directory. This name must be defined in one of the UFILEn parameters in the VIRTCT, and a DD statement with the same name must appear in the VIRTEL
     started task JCL.
 
 Keyword
-~~~~~~~
-
-    This is an 8-byte key which allows multiple directories to be stored
-    within a single VSAM KSDS. Each directory in a KSDS must have a
-    unique key.
+    This is an 8-byte key which allows multiple directories to be stored within a single VSAM KSDS. Each directory in a KSDS must have a unique key.
 
 Size of names
-~~~~~~~~~~~~~
-
-    The maximum length of the names of HTML pages and other elements
-    stored in this directory. The minimum (and default) value is 8. The
-    maximum value is 64.
+    The maximum length of the names of HTML pages and other elements stored in this directory. The minimum (and default) value is 8. The maximum value is 64.
 
 Case
-~~~~
-
-    Any non-blank character in this field indicates that the element
-    names stored in this directory are case sensitive. Blank indicates
-    that the names are not case sensitive.
+    Any non-blank character in this field indicates that the element names stored in this directory are case sensitive. Blank indicates that the names are not case sensitive.
 
 Copy up
-~~~~~~~
-
-    This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-    the value **X** must be coded.
+    This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value **X** must be coded.
 
 Copy down
-~~~~~~~~~
-
-    This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-    the value **X** must be coded.
+    This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value **X** must be coded.
 
 Delete
-~~~~~~
+    This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value **X** must be coded.
 
-    This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-    the value **X** must be coded.
+    After pressing [PF4] at the directory management summary screen or detail screen, VIRTEL displays a list of the files in the directory:
 
-    After pressing [PF4] at the directory management summary screen or
-    detail screen, VIRTEL displays a list of the files in the directory:
+|image73| *Figure 1.8 Directory contents management screen*
 
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| DIRECTORY   |     : W2H-DIR [1] 55 FILE(S)------------   | Applid:   |     SPVIRH2    |     10:50:31   |
-|             |                                            |           |                |                |
-|             |     Pages for WEB2HOST [2]                 |           |                |                |
-+=============+============================================+===========+================+================+
-|     Name    |                                            | Size      |     Date       |     Time       |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| WEBSERV0    |                                            | 5572      |     20050208   |     15:52:23   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| ES.GIF      |                                            | 517       |     20050208   |     15:51:35   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| CALENDAR    |                                            | K 53      |     20050208   |     15:51:25   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| FAVICON.    |                                            | 2998      |     20050208   |     15:51:36   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| NOIR.GIF    |                                            | 161       |     20050208   |     15:51:48   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| TXTSERV2    |                                            | K 15      |     20050208   |     15:52:05   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| STYLNOIR    |                                            | 2709      |     20050208   |     15:51:56   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| CAL-EN.J    |                                            | 3830      |     20050208   |     15:51:24   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| BLUE.GIF    |                                            | 161       |     20050208   |     15:51:23   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| WEB2PLUG    |                                            | 6370      |     20050208   |     15:52:21   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| VERT.GIF    |                                            | 161       |     20050208   |     15:52:12   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| RED.GIF     |                                            | 161       |     20050208   |     15:51:50   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| IMPRIM.H    |                                            | 826       |     20050208   |     15:51:40   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| VIRLOAD.    |                                            | 1346      |     20050208   |     15:52:13   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| VIRTNOIR    |                                            | 3737      |     20050208   |     15:52:16   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-|     [3]     |                                            | [4]       |     [5]        |     [6]        |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
+1.3.7. Associated functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    *Directory contents management screen*
+1.3.7.1. Deleting an element
 
-[1]
-~~~
+To delete an element from a directory, place the cursor on the name of the element to be deleted and press [PF2]. The message CONFIRM DELETE appears at the bottom of the screen. Press [PF2] again. The message DELETE OK indicates that the deletion of the element was successful. While the message CONFIRM DELETE is displayed, you can press any function key other than [PF2] to cancel the operation.
 
-    Name of directory.
+1.3.7.2. Copying an element to another directory
 
-[2]
-~~~
+To copy an element from directory A to directory B, first display the contents of directory A. In field [7] type the name of the target directory B, then press [ENTER]. Next, place the cursor on the name of the element to be copied, then press [PF6]. The message COPY COMPLETED indicates that the operation was successful. If the element exists in the target directory, the copy fails and the message THIS FILE IS ALREADY IN THE TARGET DIRECTORY is displayed at the bottom of the screen.
 
-    Directory description.
+1.3.7.3. Scrolling the list
 
-[3]
-~~~
+The list of elements can be scrolled up and down using [PF7] and [PF8].
 
-    Name of elements contained in the directory.
+1.3.7.4. Exiting from directory contents management
 
-[4]
-~~~
+To return to the list of directories, press [PF3].
 
-    Approximate size of element (K indicates that the size is displayed
-    in kilo-bytes).
+1.4. Creating HTML And XML Template Pages
+-----------------------------------------
 
-[5]
-~~~
+1.4.1 Introduction
+^^^^^^^^^^^^^^^^^^
 
-    Date when element was loaded into the directory.
+Template pages are the means by which VIRTEL presents host application data to the user via a web browser. In addition to standard HTML or XML tags, template pages contain VIRTEL-specific tags enabling integration of information delivered by the mainframe application programs. HTML template pages may contain GIF or JPEG images, sounds, scripts such as JavaScript or any other function or program elements that are compatible with the browser. Template pages may be produced either by hand or by using standard HTML or XML design tools available on the market.
 
-[6]
-~~~
+1.4.2. Defining the tag delimiters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Time when element was loaded into the directory.
+VIRTEL-specific tags are used to insert data originating at the host into an HTML or XML page, and to manage colours and function keys in an HTML page. VIRTEL-specific tags are identified by special begin and end delimiters. The delimiters themselves are defined by means of a comment placed between the tags <HEAD> and </HEAD> of the HTML page. The actual delimiters may vary from one page to another.
 
-[7]
-~~~
-
-    Name of target directory for file copy.
-
-    To delete an element from a directory, place the cursor on the name
-    of the element to be deleted and press [PF2]. The message CONFIRM
-    DELETE appears at the bottom of the screen. Press [PF2] again. The
-    message DELETE OK indicates that the deletion of the element was
-    successful. While the message CONFIRM DELETE is displayed, you can
-    press any function key other than [PF2] to cancel the operation.
-
-    To copy an element from directory A to directory B, first display
-    the contents of directory A. In field [7] type the name of the
-    target directory B, then press [ENTER]. Next, place the cursor on
-    the name of the element to be copied, then press [PF6]. The message
-    COPY COMPLETED indicates that the operation was successful. If the
-    element exists in the target directory, the copy fails and the
-    message THIS FILE IS ALREADY IN THE TARGET DIRECTORY is displayed at
-    the bottom of the screen.
-
-    The list of elements can be scrolled up and down using [PF7] and
-    [PF8].
-
-    To return to the list of directories, press [PF3].
-
-    Template pages are the means by which VIRTEL presents host
-    application data to the user via a web browser. In addition to
-    standard HTML or XML tags, template pages contain VIRTEL-specific
-    tags enabling integration of
-
-    information delivered by the mainframe application programs. HTML
-    template pages may contain GIF or JPEG images, sounds, scripts such
-    as JavaScript or any other function or program elements that are
-    compatible with the browser.
-
-    Template pages may be produced either by hand or by using standard
-    HTML or XML design tools available on the market,
-
-    VIRTEL-specific tags are used to insert data originating at the host
-    into an HTML or XML page, and to manage colours and function keys in
-    an HTML page. VIRTEL-specific tags are identified by special begin
-    and end delimiters.
-
-    The delimiters themselves are defined by means of a comment placed
-    between the tags <HEAD> and </HEAD> of the HTML page. The actual
-    delimiters may vary from one page to another.
-
-    In this example, VIRTEL-specific tags are defined as being
-    represented by a succession of 3 opening braces and terminated by a
-    succession of 3 closing braces. This convention is maintained
-    throughout the remainder of this chapter.
-
-    VIRTEL uses the concept of a sessioncode to maintain the context
-    between a client using a browser and the host application to which
-    the client is connected. This code allows VIRTEL to identify the
-    client and to associate the client with a session already
-    established with a host application.
-
-    The SESSION-CODE tag is used to create the URL associated with form
-    submission.
-
-    The SESSION-CODE tag allows a sessioncode to be inserted in the
-    template page in the format VirtelSession=xxxxxxxxxxxxxxxx. The
-    value of the sessioncode changes after each message. For examples of
-    its use, see `“Transmitting Data To The Host”, page
-    27 <#_bookmark29>`__, and `“3287 Printing”, page
-    61 <#_bookmark64>`__.
-
-    The AJAX-SESSION-CODE tag is similar to the SESSION-CODE tag, but it
-    generates the code in a different format which does not change with
-    each request. This is useful when implementing an AJAX dialog
-    between the application and the browser. For this type of
-    application, it is not always possible to transmit the VIRTEL
-    session code to the browser, especially if a Javascript library is
-    used.
-
-    The AJAX-SESSION-CODE tag allows a sessioncode to be inserted in the
-    template page in the format AjaxSession=xxxxxxxxxxxxxxxx. For
-    example:
-
-    This instruction allows a scenario to trigger a 205 response to the
-    Long Poll session.
-
-    This 205 response will then tell the JavaScript to refresh the
-    terminal 3270 emulation screen, so that the user can see whatever
-    was changed by the scenario.
-
-    The SET-INITIAL-TIMEOUT tag allows a timeout to be started when
-    VIRTEL builds the page.
-
-    For example, if the instruction
-
-    is coded in a page or a sub-page, then VIRTEL will cancel the
-    session if the workstation has not sent another request after 10
-    seconds.
-
-    Transmission of data to the host uses the principle of sending an
-    HTML form. In conjunction with the SESSION-CODE tag, the form allows
-    the transmission of input fields to the host application, and the
-    display of the subsequent application screen.
-
-    The form is defined as follows:
-
-name
-~~~~
-
-    Form name. The name of the form is used in JavaScript procedures to
-    refer to various elements of the form. For an example, see the
-    section `“Cursor management”, page 38 <#_bookmark38>`__.
-
-action
-~~~~~~
-
-    URL transmitted to the server, in the following format:
-
-    action="pagename++{{{SESSION-CODE}}}"
-
-pagename
-~~~~~~~~
-
-    is the name of the template page to be used to display the
-    subsequent screen sent by the host application (usually the same as
-    the current template page)
-
-{{{SESSION-CODE}}}
-~~~~~~~~~~~~~~~~~~
-
-    identifies the session established with the host application
-
-method
-~~~~~~
-
-    Transmission mode. Always POST.
-
-    Example :
-
-    By design, an HTML page starts with the <HTML> tag and is terminated
-    by the </HTML> tag. In order to be able to be correctly interpreted
-    by the browser, other tags are necessary, for example <HEAD> and
-    </HEAD> as well as <BODY> and </BODY>. All other tags are optional.
-
-    As shown previously, data transmitted to the HTTP server by the
-    client is itself placed in the tag fields <FORM> and
-
-    </FORM>. In order to minimise traffic, it is also advisable to place
-    only useful data in the tag fields for example, generated fields or
-    copies resulting from GENERATE-HTML and COPY-FROM tags, as well as
-    indispensable fields such as focusField and pfkField. Other data may
-    be placed anywhere in the area of the HTML page, provided that their
-    position conforms to the standards. The following presents an
-    example of the possible structure.
-
-    <HTML>
-
-    <HEAD><!------------------ start of HTML page header
-    -------------------->
-
-    <style><!-- définition des classes de style
-
-    .GREEN {font-family: monospace; background: #000000; color: #00FF00;
-    }
-
-    //--></style>
+::
 
     <!--VIRTEL start="{{{" end="}}}" -->
 
+In this example, VIRTEL-specific tags are defined as being represented by a succession of 3 opening braces and terminated by a succession of 3 closing braces. This convention is maintained throughout the remainder of this chapter.
+
+1.4.3. Session and context management
+
+VIRTEL uses the concept of a sessioncode to maintain the context between a client using a browser and the host application to which the client is connected. This code allows VIRTEL to identify the client and to associate the client with a session already established with a host application.
+
+1.4.3.2. SESSION-CODE tag
+
+The SESSION-CODE tag is used to create the URL associated with form submission.
+
+::
+
+    {{{ SESSION-CODE }}}
+
+The SESSION-CODE tag allows a sessioncode to be inserted in the template page in the format VirtelSession=xxxxxxxxxxxxxxxx. The value of the sessioncode changes after each message. For examples of its use, see `“Transmitting Data To The Host”, page 27 <#_bookmark29>`__, and `“3287 Printing”, page 61 <#_bookmark64>`__.
+
+1.4.3.3. AJAX-SESSION-CODE tag
+
+The AJAX-SESSION-CODE tag is similar to the SESSION-CODE tag, but it generates the code in a different format which does not change with each request. This is useful when implementing an AJAX dialog between the application and the browser. For this type of application, it is not always possible to transmit the VIRTEL session code to the browser, especially if a Javascript library is used.
+
+::
+
+    {{{ AJAX-SESSION-CODE }}}
+
+The AJAX-SESSION-CODE tag allows a sessioncode to be inserted in the template page in the format AjaxSession=xxxxxxxxxxxxxxxx. For example:-
+
+::
+
+    result.txt+cics+{{{ AJAX-SESSION-CODE }}}
+
+1.4.3.4. ACTION$ REFRESH-TERMINAL    
+
+This instruction allows a scenario to trigger a 205 response to the Long Poll session. 
+
+This 205 response will then tell the JavaScript to refresh the terminal 3270 emulation screen, so that the user can see whatever was changed by the scenario.
+
+::
+
+    ACTION$ REFRESH-TERMINAL
+
+1.4.3.5. SET-INITIAL-TIMEOUT tag
+
+The SET-INITIAL-TIMEOUT tag allows a timeout to be started when VIRTEL builds the page.
+
+::
+
+    {{{ SET-INITIAL-TIMEOUT "n" }}}
+
+For example, if the instruction
+
+::
+
+{{{ SET-INITIAL-TIMEOUT "10" }}}
+
+is coded in a page or a sub-page, then VIRTEL will cancel the session if the workstation has not sent another request after 10 seconds.
+
+1.4.4. Transmitting data to the host
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Transmission of data to the host uses the principle of sending an HTML form. In conjunction with the SESSION-CODE tag, the form allows the transmission of input fields to the host application, and the     display of the subsequent application screen.
+
+The form is defined as follows:
+
+::
+
+    <form name="FormName" action="VirtelURL" method="get">
+        Data which will be transmitted to the HTTP server 
+    </form>
+
+name
+    Form name. The name of the form is used in JavaScript procedures to refer to various elements of the form. For an example, see the section `“Cursor management”, page 38 <#_bookmark38>`__.
+
+action
+    URL transmitted to the server, in the following format:
+
+:: 
+
+        action="pagename++{{{SESSION-CODE}}}"
+
+pagename
+    Is the name of the template page to be used to display the subsequent screen sent by the host application (usually the same as the current template page)
+
+SESSION-CODE
+    Identifies the session established with the host application 
+
+method
+    Transmission mode. Always POST.
+
+Example :
+
+::
+
+    <form name="Virtel" action="WEB2VIRT.htm++{{{SESSION-CODE}}}" method="post">
+
+1.4.5. Where to position the elements of an HTML page
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By design, an HTML page starts with the <HTML> tag and is terminated by the </HTML> tag. In order to be able to be correctly interpreted by the browser, other tags are necessary, for example <HEAD> and </HEAD> as well as <BODY> and </BODY>. All other tags are optional.
+
+As shown previously, data transmitted to the HTTP server by the client is itself placed in between the tag fields <FORM> and </FORM>. In order to minimise traffic, it is also advisable to place only useful data in the tag fields for example, generated fields or copies resulting from GENERATE-HTML and COPY-FROM tags, as well as indispensable fields such as focusField and pfkField. Other data may be placed anywhere in the area of the HTML page, provided that their position conforms to the standards. The following presents an example of the possible structure.
+
+::
+
+    <HTML>
+    <HEAD><!------------------ start of HTML page header    -------------------->
+    <style>
+    <!-- définition des classes de style
+        .GREEN {font-family: monospace; background: #000000; color: #00FF00; }
+    //--></style>
+    <!--VIRTEL start="{{{" end="}}}" -->
     {{{ON-ATTRIBUTE (PROTECTED,WHITE)<font color=white>}}}
-
     {{{ON-END-OF-ATTRIBUTE (PROTECTED,WHITE)</font>}}}
-
     {{{ADD-TO-FIELDS (NORMAL,NOCOLOR) class="GREEN" }}}
-
     {{{DEFINE-HTML-PFKEY "PFKFIELD"}}}
-
     {{{DEFINE-HTML-FOCUS-FIELD "FOCUSFIELD"}}}
-
     <title>Sample HTML page</title>
-
-    </HEAD><!------------------ end of HTML page header
-    -------------------->
+    </HEAD><!------------------ end of HTML page header    -------------------->
 
     <script language="JavaScript"><!-- function SetFocus()
-
     { document.virtelForm.{{{FIELD-WITH-CURSOR}}}.focus(); } function
     SaveFocus(CurrentFieldName)
-
     { document.virtelForm.FOCUSFIELD.value = CurrentFieldName; }
     function SubmitForm(valeur)
-
     { document.virtelForm.PFKFIELD.value = valeur;
     document.virtelForm.submit(); }
-
     function ShowPopup()
-
     { var popup =
     window.open("","PopupImpression",'width=614,height=129');
-    popup.location = "imprim.htm++Print{{{SESSION-CODE}}}"; }
+    popup.location = "imprim.htm++Print{{{SESSION-CODE}}}"; }    --></script>
 
-    --></script>
-
-    <!---------------------- start of HTML page body
-    -------------------->
-
+    <!---------------------- start of HTML page body    -------------------->
     <BODY onLoad="SetFocus()">
-
-    <!------------------------- start of HTML form
-    ----------------------->
-
+    <!------------------------- start of HTML form    ----------------------->
     <FORM name="virtelForm" action="example.html++{{{SESSION-CODE}}}"
-    method=="POST">
+        method=="POST">
 
     {{{ GENERATE-HTML (1,1,1920) }}}
 
     <input name="PFKFIELD" type="HIDDEN" value="">
-
-    <input name="FOCUSFIELD" type="HIDDEN"
-    value="{{{FIELD-WITH-CURSOR}}}">
-
-    </FORM><!--------------------- end of HTML form
-    ---------------------->
-
+    <input name="FOCUSFIELD" type="HIDDEN" value="{{{FIELD-WITH-CURSOR}}}">
+    </FORM>
+    <!--------------------- end of HTML form    ---------------------->
+    
     <!—-Place submit buttons and hypertext links here. For example:-->
-
     <a href="javascript:submitform('PF1')" >soumettre avec PF01</a>
-
-    <INPUT TYPE="BUTTON" size="5" onclick="SubmitForm(this.value)"
-    value="PF01">
-
-    <script language="JavaScript"><!--
-
-    {{{IF-PRINT-IS-READY
-
+    <INPUT TYPE="BUTTON" size="5" onclick="SubmitForm(this.value)"    value="PF01">
+    <script language="JavaScript"><!--    {{{IF-PRINT-IS-READY
     ShowPopUp();
-
     }}}
-
     --></script>
-
-    </BODY><!------------------ end of HTML page body
-    -------------------->
-
+    </BODY><!------------------ end of HTML page body    -------------------->
     </HTML>
 
-    For a full example, see the WEB2VIRT.htm page delivered with VIRTEL.
-
+For a full example, see the WEB2VIRT.htm page delivered with VIRTEL.
     Insertion of host application data in an HTML or XML page is
     achieved with the GENERATE-HTML and COPY-FROM tags.
 
@@ -13976,3 +13820,4 @@ Index
 .. |image70| image:: images/media/image70.png
 .. |image71| image:: images/media/image71.png
 .. |image72| image:: images/media/image72.png
+.. |image73| image:: images/media/image73.png

@@ -98,7 +98,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#incoming-calls">1. Incoming calls</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#outgoing-calls">Outgoing Calls</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#programming-interfaces">Programming Interfaces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id287">Security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id286">Security</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#howtos">HOWTOs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#trademarks">Trademarks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#index">Index</a></li>
@@ -766,7 +766,9 @@ followed by option 3, or from the VIRTEL Multi-Session menu via a transaction wh
 <p>To scroll to the top of the list, press [PF6]. To scroll up or down the list, press [PF7] or [PF8].</p>
 <p>1.3.4.5. Exiting from directory management</p>
 <p>To return to the configuration menu, press [PF3].</p>
-<p>1.3.5. Defining directory parameters</p>
+</div>
+<div class="section" id="defining-directory-parameters">
+<h4>1.3.5. Defining directory parameters<a class="headerlink" href="#defining-directory-parameters" title="Permalink to this headline">¶</a></h4>
 <p>To access the detail screen for any directory, place the cursor on the directory name and press [PF12]:</p>
 <p><img alt="image72" src="../../../_images/image721.png" /> <em>Figure 1.7 Directory management detail screen</em></p>
 <dl class="docutils">
@@ -774,193 +776,30 @@ followed by option 3, or from the VIRTEL Multi-Session menu via a transaction wh
 <dd>The name of the directory as known by VIRTEL. If security is active,
 this name must also be defined as a resource to which the user must
 be authorized.</dd>
+<dt>Description</dt>
+<dd>Comment associated with the directory.</dd>
+<dt>Type</dt>
+<dd><strong>V</strong> (or blank) indicates that the directory is held in a VSAM
+KSDS.</dd>
+<dt>DD name</dt>
+<dd>The file name of the VSAM KSDS which contains the directory. This name must be defined in one of the UFILEn parameters in the VIRTCT, and a DD statement with the same name must appear in the VIRTEL
+started task JCL.</dd>
+<dt>Keyword</dt>
+<dd>This is an 8-byte key which allows multiple directories to be stored within a single VSAM KSDS. Each directory in a KSDS must have a unique key.</dd>
+<dt>Size of names</dt>
+<dd>The maximum length of the names of HTML pages and other elements stored in this directory. The minimum (and default) value is 8. The maximum value is 64.</dd>
+<dt>Case</dt>
+<dd>Any non-blank character in this field indicates that the element names stored in this directory are case sensitive. Blank indicates that the names are not case sensitive.</dd>
+<dt>Copy up</dt>
+<dd>This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value <strong>X</strong> must be coded.</dd>
+<dt>Copy down</dt>
+<dd>This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value <strong>X</strong> must be coded.</dd>
+<dt>Delete</dt>
+<dd><p class="first">This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value <strong>X</strong> must be coded.</p>
+<p class="last">After pressing [PF4] at the directory management summary screen or detail screen, VIRTEL displays a list of the files in the directory:</p>
+</dd>
 </dl>
-<div class="section" id="description">
-<h5>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>Comment associated with the directory.</div></blockquote>
-</div>
-<div class="section" id="type">
-<h5>Type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div><strong>V</strong> (or blank) indicates that the directory is held in a VSAM
-KSDS.</div></blockquote>
-</div>
-<div class="section" id="dd-name">
-<h5>DD name<a class="headerlink" href="#dd-name" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>The file name of the VSAM KSDS which contains the directory. This
-name must be defined in one of the UFILEn parameters in the VIRTCT,
-and a DD statement with the same name must appear in the VIRTEL
-started task JCL.</div></blockquote>
-</div>
-<div class="section" id="keyword">
-<h5>Keyword<a class="headerlink" href="#keyword" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>This is an 8-byte key which allows multiple directories to be stored
-within a single VSAM KSDS. Each directory in a KSDS must have a
-unique key.</div></blockquote>
-</div>
-<div class="section" id="size-of-names">
-<h5>Size of names<a class="headerlink" href="#size-of-names" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>The maximum length of the names of HTML pages and other elements
-stored in this directory. The minimum (and default) value is 8. The
-maximum value is 64.</div></blockquote>
-</div>
-<div class="section" id="case">
-<h5>Case<a class="headerlink" href="#case" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>Any non-blank character in this field indicates that the element
-names stored in this directory are case sensitive. Blank indicates
-that the names are not case sensitive.</div></blockquote>
-</div>
-<div class="section" id="copy-up">
-<h5>Copy up<a class="headerlink" href="#copy-up" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-the value <strong>X</strong> must be coded.</div></blockquote>
-</div>
-<div class="section" id="copy-down">
-<h5>Copy down<a class="headerlink" href="#copy-down" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-the value <strong>X</strong> must be coded.</div></blockquote>
-</div>
-<div class="section" id="delete">
-<h5>Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div><p>This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-the value <strong>X</strong> must be coded.</p>
-<p>After pressing [PF4] at the directory management summary screen or
-detail screen, VIRTEL displays a list of the files in the directory:</p>
-</div></blockquote>
-<table border="1" class="docutils">
-<colgroup>
-<col width="13%" />
-<col width="44%" />
-<col width="11%" />
-<col width="16%" />
-<col width="16%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">DIRECTORY</th>
-<th class="head"><p class="first">: W2H-DIR [1] 55 FILE(S)&#8212;&#8212;&#8212;&#8212;</p>
-<p class="last">Pages for WEB2HOST [2]</p>
-</th>
-<th class="head">Applid:</th>
-<th class="head">SPVIRH2</th>
-<th class="head">10:50:31</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>Name</td>
-<td>&nbsp;</td>
-<td>Size</td>
-<td>Date</td>
-<td>Time</td>
-</tr>
-<tr class="row-odd"><td>WEBSERV0</td>
-<td>&nbsp;</td>
-<td>5572</td>
-<td>20050208</td>
-<td>15:52:23</td>
-</tr>
-<tr class="row-even"><td>ES.GIF</td>
-<td>&nbsp;</td>
-<td>517</td>
-<td>20050208</td>
-<td>15:51:35</td>
-</tr>
-<tr class="row-odd"><td>CALENDAR</td>
-<td>&nbsp;</td>
-<td>K 53</td>
-<td>20050208</td>
-<td>15:51:25</td>
-</tr>
-<tr class="row-even"><td>FAVICON.</td>
-<td>&nbsp;</td>
-<td>2998</td>
-<td>20050208</td>
-<td>15:51:36</td>
-</tr>
-<tr class="row-odd"><td>NOIR.GIF</td>
-<td>&nbsp;</td>
-<td>161</td>
-<td>20050208</td>
-<td>15:51:48</td>
-</tr>
-<tr class="row-even"><td>TXTSERV2</td>
-<td>&nbsp;</td>
-<td>K 15</td>
-<td>20050208</td>
-<td>15:52:05</td>
-</tr>
-<tr class="row-odd"><td>STYLNOIR</td>
-<td>&nbsp;</td>
-<td>2709</td>
-<td>20050208</td>
-<td>15:51:56</td>
-</tr>
-<tr class="row-even"><td>CAL-EN.J</td>
-<td>&nbsp;</td>
-<td>3830</td>
-<td>20050208</td>
-<td>15:51:24</td>
-</tr>
-<tr class="row-odd"><td>BLUE.GIF</td>
-<td>&nbsp;</td>
-<td>161</td>
-<td>20050208</td>
-<td>15:51:23</td>
-</tr>
-<tr class="row-even"><td>WEB2PLUG</td>
-<td>&nbsp;</td>
-<td>6370</td>
-<td>20050208</td>
-<td>15:52:21</td>
-</tr>
-<tr class="row-odd"><td>VERT.GIF</td>
-<td>&nbsp;</td>
-<td>161</td>
-<td>20050208</td>
-<td>15:52:12</td>
-</tr>
-<tr class="row-even"><td>RED.GIF</td>
-<td>&nbsp;</td>
-<td>161</td>
-<td>20050208</td>
-<td>15:51:50</td>
-</tr>
-<tr class="row-odd"><td>IMPRIM.H</td>
-<td>&nbsp;</td>
-<td>826</td>
-<td>20050208</td>
-<td>15:51:40</td>
-</tr>
-<tr class="row-even"><td>VIRLOAD.</td>
-<td>&nbsp;</td>
-<td>1346</td>
-<td>20050208</td>
-<td>15:52:13</td>
-</tr>
-<tr class="row-odd"><td>VIRTNOIR</td>
-<td>&nbsp;</td>
-<td>3737</td>
-<td>20050208</td>
-<td>15:52:16</td>
-</tr>
-<tr class="row-even"><td>[3]</td>
-<td>&nbsp;</td>
-<td>[4]</td>
-<td>[5]</td>
-<td>[6]</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<div><em>Directory contents management screen</em></div></blockquote>
-</div>
+<p><img alt="image73" src="../../../_images/image731.png" /> <em>Figure 1.8 Directory contents management screen</em></p>
 <div class="section" id="id1">
 <h5>[1]<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
 <blockquote>
@@ -7429,8 +7268,8 @@ of a scenario.</p>
 <div>the name of a VIRTEL table variable. If the variable does not exist,
 it will be created.</div></blockquote>
 </div>
-<div class="section" id="id91">
-<h5>type<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="type">
+<h5>type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
@@ -7445,8 +7284,8 @@ instruction can be used in an input scenario which processes an HTTP
 request or SMTP input message having one or more attached files.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id92">
-<h5>varname<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id91">
+<h5>varname<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL table variable. If the variable does not exist,
 it will be created. If the variable already exists, the new value
@@ -7471,13 +7310,13 @@ the 3270 screen.</p>
 <div>the name of an HTTP query parameter (se`e “VIRTEL URL formats”, page
 11 &lt;#_bookmark8&gt;`__)</div></blockquote>
 </div>
-<div class="section" id="id93">
-<h5>row,col,len<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id92">
+<h5>row,col,len<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>row, column, and length of the destination field on the screen.</div></blockquote>
 </div>
-<div class="section" id="id94">
-<h5>type<a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id93">
+<h5>type<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
@@ -7497,20 +7336,20 @@ will be silently truncated.</p>
 <p>Copies the value of an HTTP query parameter into a VIRTEL variable.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id95">
-<h5>name1<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id94">
+<h5>name1<a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of an HTTP query parameter (se`e “VIRTEL URL formats”, page
 11 &lt;#_bookmark8&gt;`__)</div></blockquote>
 </div>
-<div class="section" id="id96">
-<h5>name2<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id95">
+<h5>name2<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL table variable. If the variable does not exist,
 it will be created.</div></blockquote>
 </div>
-<div class="section" id="id97">
-<h5>type<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id96">
+<h5>type<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
@@ -7525,8 +7364,8 @@ bytes of the result variable. The 12-byte value thus produced is in
 the format required by the OFFAREA parameter for the read-partial
 and write-append functions of the VIRSVFIO service program.</div></blockquote>
 </div>
-<div class="section" id="id98">
-<h5>TYPE=REPLACE<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id97">
+<h5>TYPE=REPLACE<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>indicates that the new value will replace the existing value of the
 variable. If TYPE=REPLACE is not specified, and the variable already
@@ -7538,8 +7377,8 @@ means of the <a class="reference external" href="#_bookmark215">“IF$”, page 
 variable.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id99">
-<h5>varname<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id98">
+<h5>varname<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL table variable. If the variable does not exist,
 it will be created.</div></blockquote>
@@ -7555,37 +7394,37 @@ it will be created.</div></blockquote>
 <div>the name of a variable whose value is to be copied into the variable
 varname.</div></blockquote>
 </div>
-<div class="section" id="id100">
-<h5>LTRIM<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id99">
+<h5>LTRIM<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) Removes a set of characters from the start of a list
 variable (see Note) before copying it).</div></blockquote>
 </div>
-<div class="section" id="id101">
-<h5>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id100">
+<h5>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>one or more strings of text to be removed from the start of the
 variable.</div></blockquote>
 </div>
-<div class="section" id="id102">
-<h5>RTRIM<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id101">
+<h5>RTRIM<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) Removes a set of characters from the end of a list
 variable (see Note) before copying it.</div></blockquote>
 </div>
-<div class="section" id="id103">
-<h5>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id102">
+<h5>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>one or more strings of text to be removed from the endof the
 variable.</div></blockquote>
 </div>
-<div class="section" id="id104">
-<h5>type<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id103">
+<h5>type<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
-<div class="section" id="id105">
-<h5>TYPE=REPLACE<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id104">
+<h5>TYPE=REPLACE<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>indicates that the new value will replace the existing value of the
 variable. If TYPE=REPLACE is not specified, and the variable already
@@ -7601,8 +7440,8 @@ HTTP request, but the generated page is placed in a variable instead
 of being sent to the terminal.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id106">
-<h5>filename<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id105">
+<h5>filename<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the page template.</div></blockquote>
 </div>
@@ -7611,16 +7450,16 @@ of being sent to the terminal.</p>
 <blockquote>
 <div>the name of a VIRTEL variable holding the name of the page template.</div></blockquote>
 </div>
-<div class="section" id="id107">
-<h5>varname<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id106">
+<h5>varname<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL table variable which will receive the contents
 of the generated output page. If the variable does not exist, it
 will be created. If the variable already exists, the new value will
 be appended to any existing values.</div></blockquote>
 </div>
-<div class="section" id="id108">
-<h5>type<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id107">
+<h5>type<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) indicates that the result variable has a special format.
 The following values are possible:</div></blockquote>
@@ -7663,30 +7502,30 @@ instruction.</p>
 <blockquote>
 <div>starting column of the portion of the screen to copy (see Note 1).</div></blockquote>
 </div>
-<div class="section" id="id109">
-<h5>len<a class="headerlink" href="#id109" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id108">
+<h5>len<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>width (in columns) of the portion of the screen to copy (see Note
 1).</div></blockquote>
 </div>
-<div class="section" id="id110">
-<h5>ht<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id109">
+<h5>ht<a class="headerlink" href="#id109" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>height (in rows) of the portion of the screen to copy (see Note 2).</div></blockquote>
 </div>
-<div class="section" id="id111">
-<h5>name2<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id110">
+<h5>name2<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL table variable containing ht values, each of
 length len. If the variable does not exist, it will be created.</div></blockquote>
 </div>
-<div class="section" id="id112">
-<h5>type<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id111">
+<h5>type<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
-<div class="section" id="id113">
-<h5>TYPE=REPLACE<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id112">
+<h5>TYPE=REPLACE<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>indicates that the new value will replace the existing value of the
 variable. If TYPE=REPLACE is not specified, and the variable already
@@ -7702,8 +7541,8 @@ binary zeroes if the fourth SCREEN sub-parameter is NOT specified.</p>
 <p>Copies a system information field into a table variable.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id114">
-<h5>varname<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id113">
+<h5>varname<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL table variable into which the system
 information will be copied.</div></blockquote>
@@ -7809,14 +7648,14 @@ manual for further information.</p>
 </li>
 </ul>
 </div>
-<div class="section" id="id115">
-<h5>item<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id114">
+<h5>item<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>When class is NAME-OF or VALUE-OF, the following VIRTEL data items
 may be specified:</div></blockquote>
 </div>
-<div class="section" id="id116">
-<h5>CHARACTER-SET<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id115">
+<h5>CHARACTER-SET<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The name of the current UTF-8 character set, or the country code if
 the page is not in UTF-8 mode (see <a class="reference external" href="#_bookmark54">“EBCDIC</a>
@@ -7839,59 +7678,59 @@ the page is not in UTF-8 mode (see <a class="reference external" href="#_bookmar
 <div>The current values of the named field in the <a class="reference external" href="#_bookmark252">“SET$
 SCREEN-POSITION”, page 201</a>.</div></blockquote>
 </div>
-<div class="section" id="id117">
-<h5>DATE-TIME<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id116">
+<h5>DATE-TIME<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The current date and time (14 characters in the format
 YYYYMMDDHHMMSS)</div></blockquote>
 </div>
-<div class="section" id="id118">
-<h5>DIRECTORY<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id117">
+<h5>DIRECTORY<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The current VIRTEL directory name</div></blockquote>
 </div>
-<div class="section" id="id119">
-<h5>ENTRY-POINT<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id118">
+<h5>ENTRY-POINT<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The VIRTEL entry point name</div></blockquote>
 </div>
-<div class="section" id="id120">
-<h5>LINE-INTERNAL<a class="headerlink" href="#id120" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id119">
+<h5>LINE-INTERNAL<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The internal name of the VIRTEL line</div></blockquote>
 </div>
-<div class="section" id="id121">
-<h5>LINE-EXTERNAL<a class="headerlink" href="#id121" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id120">
+<h5>LINE-EXTERNAL<a class="headerlink" href="#id120" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The external name of the VIRTEL line</div></blockquote>
 </div>
-<div class="section" id="id122">
-<h5>PAGE<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id121">
+<h5>PAGE<a class="headerlink" href="#id121" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The name of the original HTML page template specified in the URL</div></blockquote>
 </div>
-<div class="section" id="id123">
-<h5>PASSWORD<a class="headerlink" href="#id123" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id122">
+<h5>PASSWORD<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The password entered during signon</div></blockquote>
 </div>
-<div class="section" id="id124">
-<h5>PRINT-RELAY<a class="headerlink" href="#id124" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id123">
+<h5>PRINT-RELAY<a class="headerlink" href="#id123" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The relay LU name of the associated printer</div></blockquote>
 </div>
-<div class="section" id="id125">
-<h5>PSEUDO-TERMINAL<a class="headerlink" href="#id125" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id124">
+<h5>PSEUDO-TERMINAL<a class="headerlink" href="#id124" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The VIRTEL terminal name</div></blockquote>
 </div>
-<div class="section" id="id126">
-<h5>QUERY<a class="headerlink" href="#id126" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id125">
+<h5>QUERY<a class="headerlink" href="#id125" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The query string from the URL</div></blockquote>
 </div>
-<div class="section" id="id127">
-<h5>RELAY<a class="headerlink" href="#id127" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id126">
+<h5>RELAY<a class="headerlink" href="#id126" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The relay LU name used to connect to the host application</div></blockquote>
 </div>
@@ -7900,8 +7739,8 @@ YYYYMMDDHHMMSS)</div></blockquote>
 <blockquote>
 <div>The value specified in the userdata field of the URL or call packet</div></blockquote>
 </div>
-<div class="section" id="id128">
-<h5>SNA-STATUS<a class="headerlink" href="#id128" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id127">
+<h5>SNA-STATUS<a class="headerlink" href="#id127" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The status of the host LU2 session:</div></blockquote>
 </div>
@@ -7914,65 +7753,65 @@ YYYYMMDDHHMMSS)</div></blockquote>
 <h5>blank<a class="headerlink" href="#blank" title="Permalink to this headline">¶</a></h5>
 <p>input is allowed</p>
 </div>
-<div class="section" id="id129">
-<h5>TRANSACTION-INTERNAL<a class="headerlink" href="#id129" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id128">
+<h5>TRANSACTION-INTERNAL<a class="headerlink" href="#id128" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The internal name of the VIRTEL transaction</div></blockquote>
 </div>
-<div class="section" id="id130">
-<h5>TRANSACTION-EXTERNAL<a class="headerlink" href="#id130" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id129">
+<h5>TRANSACTION-EXTERNAL<a class="headerlink" href="#id129" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The external name of the VIRTEL transaction</div></blockquote>
 </div>
-<div class="section" id="id131">
-<h5>URL<a class="headerlink" href="#id131" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id130">
+<h5>URL<a class="headerlink" href="#id130" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The URL excluding the query string</div></blockquote>
 </div>
-<div class="section" id="id132">
-<h5>USER<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id131">
+<h5>USER<a class="headerlink" href="#id131" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The user name, if signon has occurred</div></blockquote>
 </div>
-<div class="section" id="id133">
-<h5>USER-IP-ADDRESS<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id132">
+<h5>USER-IP-ADDRESS<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The IP address of the client terminal</div></blockquote>
 </div>
-<div class="section" id="id134">
-<h5>VIRTEL<a class="headerlink" href="#id134" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id133">
+<h5>VIRTEL<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The VIRTEL APPLID specified in the VIRTCT</div></blockquote>
 </div>
-<div class="section" id="id135">
-<h5>VIRTEL-VERSION<a class="headerlink" href="#id135" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id134">
+<h5>VIRTEL-VERSION<a class="headerlink" href="#id134" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The VIRTEL version number</div></blockquote>
 </div>
-<div class="section" id="id136">
-<h5>xxx-SYMBOL<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id135">
+<h5>xxx-SYMBOL<a class="headerlink" href="#id135" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The value of the system symbol xxx (only if SYSPLUS=YES is specified
 in the VIRTCT). Example: SYSNAME-SYMBOL</div></blockquote>
 </div>
-<div class="section" id="id137">
-<h5>item<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id136">
+<h5>item<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>When class is NUMBER-OF, the following VIRTEL numeric data items may
 be specified:</div></blockquote>
 </div>
-<div class="section" id="id138">
-<h5>SCREEN-COLUMNS<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id137">
+<h5>SCREEN-COLUMNS<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The width of the current host 3270 screen</div></blockquote>
 </div>
-<div class="section" id="id139">
-<h5>SCREEN-LINES<a class="headerlink" href="#id139" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id138">
+<h5>SCREEN-LINES<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The depth of the current host 3270 screen</div></blockquote>
 </div>
-<div class="section" id="id140">
-<h5>item<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id139">
+<h5>item<a class="headerlink" href="#id139" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>When class is USER-SECURITY-PROFILE, the following RACF field names
 may be specified:</div></blockquote>
@@ -8036,8 +7875,18 @@ user has signed on and SECUR=(RACROUTE,RACF) has been specified in
 the VIRTCT. Otherwise null values are returned for all fields.</p>
 </div></blockquote>
 </div>
+<div class="section" id="id140">
+<h5>len<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h5>
+<blockquote>
+<div>(optional) the variable will be padded or truncated to the specified
+length. Alphanumeric data items are right-padded with blanks or
+truncated on the right. Numeric items are left-padded with zeroes on
+the left. The maximum length for a numeric item is 8. If the LENGTH
+parameter is omitted, the length of the variable will be equal to
+the length of the requested value.</div></blockquote>
+</div>
 <div class="section" id="id141">
-<h5>len<a class="headerlink" href="#id141" title="Permalink to this headline">¶</a></h5>
+<h5>item<a class="headerlink" href="#id141" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) the variable will be padded or truncated to the specified
 length. Alphanumeric data items are right-padded with blanks or
@@ -8047,30 +7896,20 @@ parameter is omitted, the length of the variable will be equal to
 the length of the requested value.</div></blockquote>
 </div>
 <div class="section" id="id142">
-<h5>item<a class="headerlink" href="#id142" title="Permalink to this headline">¶</a></h5>
-<blockquote>
-<div>(optional) the variable will be padded or truncated to the specified
-length. Alphanumeric data items are right-padded with blanks or
-truncated on the right. Numeric items are left-padded with zeroes on
-the left. The maximum length for a numeric item is 8. If the LENGTH
-parameter is omitted, the length of the variable will be equal to
-the length of the requested value.</div></blockquote>
-</div>
-<div class="section" id="id143">
-<h5>offset<a class="headerlink" href="#id143" title="Permalink to this headline">¶</a></h5>
+<h5>offset<a class="headerlink" href="#id142" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) the starting offset within the data item from which to
 extract the information to be placed in the variable. If omitted,
 extraction starts from offset 0. This parameter is valid only when
 class is USER-SECURITY-PROFILE.</div></blockquote>
 </div>
-<div class="section" id="id144">
-<h5>type<a class="headerlink" href="#id144" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id143">
+<h5>type<a class="headerlink" href="#id143" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
-<div class="section" id="id145">
-<h5>TYPE=REPLACE<a class="headerlink" href="#id145" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id144">
+<h5>TYPE=REPLACE<a class="headerlink" href="#id144" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>indicates that the new value will replace the existing value of the
 variable. If TYPE=REPLACE is not specified, and the variable already
@@ -8210,23 +8049,23 @@ when used in conjunction with the URL</p>
 <blockquote>
 <div>Copies a constant value to a given position on the 3270 screen.</div></blockquote>
 </div>
-<div class="section" id="id146">
-<h5>string<a class="headerlink" href="#id146" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id145">
+<h5>string<a class="headerlink" href="#id145" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>characters to be copied to the screen.</div></blockquote>
 </div>
-<div class="section" id="id147">
-<h5>row,col,len<a class="headerlink" href="#id147" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id146">
+<h5>row,col,len<a class="headerlink" href="#id146" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>row, column, and length of the destination field on the screen.</div></blockquote>
 </div>
-<div class="section" id="id148">
-<h5>type<a class="headerlink" href="#id148" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id147">
+<h5>type<a class="headerlink" href="#id147" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
-<div class="section" id="id149">
-<h5>TYPE=ERASE-FIELD<a class="headerlink" href="#id149" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id148">
+<h5>TYPE=ERASE-FIELD<a class="headerlink" href="#id148" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>indicates that the destination field is cleared to nulls before
 copying the data.</p>
@@ -8238,24 +8077,24 @@ will be silently truncated.</p>
 <p>Copies a constant value to a variable.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id150">
-<h5>string<a class="headerlink" href="#id150" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id149">
+<h5>string<a class="headerlink" href="#id149" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>characters to be copied into the variable name2.</div></blockquote>
 </div>
-<div class="section" id="id151">
-<h5>name2<a class="headerlink" href="#id151" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id150">
+<h5>name2<a class="headerlink" href="#id150" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL table variable. If the variable does not exist,
 it will be created.</div></blockquote>
 </div>
-<div class="section" id="id152">
-<h5>type<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id151">
+<h5>type<a class="headerlink" href="#id151" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
-<div class="section" id="id153">
-<h5>TYPE=REPLACE<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id152">
+<h5>TYPE=REPLACE<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>indicates that the new value will replace the existing value of the
 variable. If TYPE=REPLACE is not specified, and the variable already
@@ -8272,13 +8111,13 @@ screen. In the case of a table variable, only the first value is
 copied.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id154">
-<h5>name2<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id153">
+<h5>name2<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL variable.</div></blockquote>
 </div>
-<div class="section" id="id155">
-<h5>row,col,len<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id154">
+<h5>row,col,len<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>row, column, and length of the destination field on the screen. If
 the SCREEN parameter is not specified, the variable will be copied
@@ -8288,13 +8127,13 @@ row, col or len as set by <a class="reference external" href="#_bookmark252">“
 SCREEN-POSITION”,</a> <a class="reference external" href="#_bookmark252">page 201</a>.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id156">
-<h5>type<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id155">
+<h5>type<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) may indicate one of the following values:</div></blockquote>
 </div>
-<div class="section" id="id157">
-<h5>TYPE=ERASE-FIELD<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id156">
+<h5>TYPE=ERASE-FIELD<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>indicates that the destination field is cleared to nulls before
 copying the data.</p>
@@ -8310,31 +8149,31 @@ data will be silently truncated.</p>
 of a table variable, only the first value is copied.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id158">
-<h5>varname<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id157">
+<h5>varname<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of a VIRTEL variable.</div></blockquote>
 </div>
-<div class="section" id="id159">
-<h5>class<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id158">
+<h5>class<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>identifies the type of VIRTEL system field to be updated. The
 following values may be specified:</div></blockquote>
 </div>
-<div class="section" id="id160">
-<h5>NAME-OF<a class="headerlink" href="#id160" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id159">
+<h5>NAME-OF<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>A VIRTEL data item is to be updated. When NAME-OF is specified, item
 represents the name of a VIRTEL data item.</div></blockquote>
 </div>
-<div class="section" id="id161">
-<h5>NUMBER-OF<a class="headerlink" href="#id161" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id160">
+<h5>NUMBER-OF<a class="headerlink" href="#id160" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>A VIRTEL data item is to be updated. When NUMBER-OF is specified,
 item represents the name of a VIRTEL numeric data item.</div></blockquote>
 </div>
-<div class="section" id="id162">
-<h5>VALUE-OF<a class="headerlink" href="#id162" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id161">
+<h5>VALUE-OF<a class="headerlink" href="#id161" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>A VIRTEL data item is to be updated. When VALUE-OF is specified,
 item represents the name of a VIRTEL data item. VALUE-OF is
@@ -8350,29 +8189,29 @@ This condition can be tested by means of the
 <a class="reference external" href="#_bookmark215">“IF$”,</a> <a class="reference external" href="#_bookmark215">page 177</a> instruction.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id163">
-<h5>item<a class="headerlink" href="#id163" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id162">
+<h5>item<a class="headerlink" href="#id162" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>When class is NAME-OF or VALUE-OF, the following VIRTEL data items
 may be specified:</div></blockquote>
 </div>
-<div class="section" id="id164">
-<h5>DIRECTORY<a class="headerlink" href="#id164" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id163">
+<h5>DIRECTORY<a class="headerlink" href="#id163" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Allows a scenario to specify the name of the VIRTEL directory The
 user name which will appear in the VIRLOG entry for this
 transaction.</div></blockquote>
 </div>
-<div class="section" id="id165">
-<h5>USER<a class="headerlink" href="#id165" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id164">
+<h5>USER<a class="headerlink" href="#id164" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Allows a scenario to specify the user name which will appear in the
 VIRLOG entry for this transaction and which will become the value of
 the system variable &amp;U (see “Connection/disconnection scripts” in
 the VIRTEL Connectivity Guide).</div></blockquote>
 </div>
-<div class="section" id="id166">
-<h5>PASSWORD<a class="headerlink" href="#id166" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id165">
+<h5>PASSWORD<a class="headerlink" href="#id165" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Allows a scenario to specify the password which will become the
 value of the system variable &amp;P (see “Connection/disconnection
@@ -8386,8 +8225,8 @@ host application. The logmode can be set in an Identification
 Scenario. It overrides the logmode specified in the transaction or
 terminal definition.</div></blockquote>
 </div>
-<div class="section" id="id167">
-<h5>ROUTING-PARAMETER<a class="headerlink" href="#id167" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id166">
+<h5>ROUTING-PARAMETER<a class="headerlink" href="#id166" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>Allows an Identification Scenario to override the value of the
 routing parameter specified in the userdata field of the URL (se`e
@@ -8396,13 +8235,13 @@ routing parameter specified in the userdata field of the URL (se`e
 specified:</p>
 </div></blockquote>
 </div>
-<div class="section" id="id168">
-<h5>SCREEN-COLUMNS<a class="headerlink" href="#id168" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id167">
+<h5>SCREEN-COLUMNS<a class="headerlink" href="#id167" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The alternate width (number of columns) of the 3270 screen</div></blockquote>
 </div>
-<div class="section" id="id169">
-<h5>SCREEN-LINES<a class="headerlink" href="#id169" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id168">
+<h5>SCREEN-LINES<a class="headerlink" href="#id168" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The alternate depth (number of rows) of the 3270 screen</p>
 <p>SCREEN-COLUMNS and SCREEN-LINES can be set in an Identification
@@ -8413,8 +8252,8 @@ Erase Write Alternate command. This command has no effect on the
 primary screen size which is always 24 rows by 80 columns.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id170">
-<h5>item<a class="headerlink" href="#id170" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id169">
+<h5>item<a class="headerlink" href="#id169" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>When class is OLD-PASSTICKET-FOR-TRANSACTION, the following VIRTEL
 data item must be specified:</div></blockquote>
@@ -8437,14 +8276,14 @@ data item must be specified:</div></blockquote>
 <div>the name of a VIRTEL table variable. If the variable does not exist,
 it will be created.</div></blockquote>
 </div>
-<div class="section" id="id171">
-<h5>offset<a class="headerlink" href="#id171" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id170">
+<h5>offset<a class="headerlink" href="#id170" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) the beginning index (defaulting to 0), inclusive, of the
 text to copy in source.</div></blockquote>
 </div>
-<div class="section" id="id172">
-<h5>len<a class="headerlink" href="#id172" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id171">
+<h5>len<a class="headerlink" href="#id171" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) the number of characters to copy.</div></blockquote>
 </div>
@@ -8454,8 +8293,8 @@ text to copy in source.</div></blockquote>
 <div>(optional) the character (defaulting to space) to pad target var, if
 length is longer than the source..</div></blockquote>
 </div>
-<div class="section" id="id173">
-<h5>type<a class="headerlink" href="#id173" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id172">
+<h5>type<a class="headerlink" href="#id172" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>(optional) indicates that the new value will replace the existing
 value of the variable. If TYPE=REPLACE is not specified, and the
@@ -8521,29 +8360,29 @@ case, the hyperlink is generated only if the specified screen
 position is non-blank.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id174">
-<h5>row<a class="headerlink" href="#id174" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id173">
+<h5>row<a class="headerlink" href="#id173" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the row position of the hyperlink</div></blockquote>
 </div>
-<div class="section" id="id175">
-<h5>col<a class="headerlink" href="#id175" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id174">
+<h5>col<a class="headerlink" href="#id174" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the column position of the hyperlink</div></blockquote>
 </div>
-<div class="section" id="id176">
-<h5>len<a class="headerlink" href="#id176" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id175">
+<h5>len<a class="headerlink" href="#id175" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the length of the hyperlink</div></blockquote>
 </div>
-<div class="section" id="id177">
-<h5>value<a class="headerlink" href="#id177" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id176">
+<h5>value<a class="headerlink" href="#id176" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Optional, this parameter specifies the value of the data tested at
 the specified screen position. Must be put in quotes</div></blockquote>
 </div>
-<div class="section" id="id178">
-<h5>Condition<a class="headerlink" href="#id178" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id177">
+<h5>Condition<a class="headerlink" href="#id177" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Optional, this parameter determines the type of condition applicable
 to value</div></blockquote>
@@ -8558,8 +8397,8 @@ to value</div></blockquote>
 <blockquote>
 <div>Inequality.</div></blockquote>
 </div>
-<div class="section" id="id179">
-<h5>P1<a class="headerlink" href="#id179" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id178">
+<h5>P1<a class="headerlink" href="#id178" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the type of processing applicable. The permissible values
 are:</div></blockquote>
@@ -8595,13 +8434,13 @@ of the $DECLARE instruction. The data at the indicated screen
 position is appended to the URL, followed by the contents of the P2
 parameter of the $DECLARE instruction, if specified.</div></blockquote>
 </div>
-<div class="section" id="id180">
-<h5>P2<a class="headerlink" href="#id180" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id179">
+<h5>P2<a class="headerlink" href="#id179" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) Function parameter referenced by P1.</div></blockquote>
 </div>
-<div class="section" id="id181">
-<h5>P3<a class="headerlink" href="#id181" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id180">
+<h5>P3<a class="headerlink" href="#id180" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(optional) Text to be displayed in the status bar of the browser
 when the mouse pointer is over the indicated screen position.</div></blockquote>
@@ -8691,16 +8530,16 @@ this instruction is used, the return code in the HTTP response will
 be &#8220;400 Bad Request&#8221; instead of &#8220;200 Ok&#8221;.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id182">
-<h5>value<a class="headerlink" href="#id182" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id181">
+<h5>value<a class="headerlink" href="#id181" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the error code (decimal 0 to 255). If the error code is
 non-zero, a message is issued to the console and the scenario
 returns the error code to the calling program. If the error code is
 zero, a message is issued to the console and the scenario continues.</div></blockquote>
 </div>
-<div class="section" id="id183">
-<h5>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]<a class="headerlink" href="#id183" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id182">
+<h5>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]<a class="headerlink" href="#id182" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>(optional) one or more strings of text to be concatenated together
 and displayed as a message on the console. If a string begins with
@@ -8712,18 +8551,18 @@ strings is not limited, but the message itself cannot be larger than
 selection involved, as well as the set of presentation rules.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id184">
-<h5>row<a class="headerlink" href="#id184" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id183">
+<h5>row<a class="headerlink" href="#id183" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the row position of the field</div></blockquote>
 </div>
-<div class="section" id="id185">
-<h5>col<a class="headerlink" href="#id185" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id184">
+<h5>col<a class="headerlink" href="#id184" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the column position of the field</div></blockquote>
 </div>
-<div class="section" id="id186">
-<h5>len<a class="headerlink" href="#id186" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id185">
+<h5>len<a class="headerlink" href="#id185" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the length of the field</div></blockquote>
 </div>
@@ -8830,30 +8669,30 @@ on a screen. Nested pairs of FOREACH$ and ENDFOR$ instructions are
 permitted.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id187">
-<h5>groupname<a class="headerlink" href="#id187" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id186">
+<h5>groupname<a class="headerlink" href="#id186" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. The FOREACH$ VALUE-IN-SCREEN instruction must
 be matched by a subsequent ENDFOR$ targeting the same label.</div></blockquote>
 </div>
-<div class="section" id="id188">
-<h5>row<a class="headerlink" href="#id188" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id187">
+<h5>row<a class="headerlink" href="#id187" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>starting row of the portion of the screen to copy (see Note 1).</div></blockquote>
 </div>
-<div class="section" id="id189">
-<h5>col<a class="headerlink" href="#id189" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id188">
+<h5>col<a class="headerlink" href="#id188" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>starting column of the portion of the screen to copy (see Note 1).</div></blockquote>
 </div>
-<div class="section" id="id190">
-<h5>len<a class="headerlink" href="#id190" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id189">
+<h5>len<a class="headerlink" href="#id189" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>width (in columns) of the portion of the screen to copy (see Note
 1).</div></blockquote>
 </div>
-<div class="section" id="id191">
-<h5>ht<a class="headerlink" href="#id191" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id190">
+<h5>ht<a class="headerlink" href="#id190" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>height (in rows) of the portion of the screen to copy (see Note 1).</p>
 <p>Note 1: for row, col,len and ht, a value of &#8216;=&#8217; means the value of
@@ -8863,22 +8702,22 @@ on a table variable. Nested pairs of FOREACH$ VALUE-IN-VARIABLE and
 ENDFOR$ instructions are permitted.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id192">
-<h5>groupname<a class="headerlink" href="#id192" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id191">
+<h5>groupname<a class="headerlink" href="#id191" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. The FOREACH$ VALUE-IN-VARIABLE instruction
 must be matched by a subsequent ENDFOR$ targeting the same label.</div></blockquote>
 </div>
-<div class="section" id="id193">
-<h5>varname<a class="headerlink" href="#id193" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id192">
+<h5>varname<a class="headerlink" href="#id192" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the table variable beeing looped on.</p>
 <p>This instruction directs the subsequent processing flow to a
 specified label.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id194">
-<h5>label<a class="headerlink" href="#id194" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id193">
+<h5>label<a class="headerlink" href="#id193" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>Specifies the instruction label at which execution of the scenario
 is to continue.</p>
@@ -8890,8 +8729,8 @@ position, and directs the subsequent processing flow to a specified
 label.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id195">
-<h5>label<a class="headerlink" href="#id195" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id194">
+<h5>label<a class="headerlink" href="#id194" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>Specifies the instruction label at which execution of the scenario
 is to continue.</p>
@@ -8900,8 +8739,8 @@ limit is reached, VIRTEL abends the scenario, and a message VIRS12IE
 terminal LOOP WAS DETECTED IN SCENARIO scenname</p>
 </div></blockquote>
 </div>
-<div class="section" id="id196">
-<h5>label<a class="headerlink" href="#id196" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id195">
+<h5>label<a class="headerlink" href="#id195" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the instruction label at which execution of the scenario
 is to continue if the counter limit is reached.</div></blockquote>
@@ -8928,13 +8767,13 @@ limit, equal to 32 times the number of instructions in the scenario.</p>
 a previous instruction, and directs the subsequent processing flow.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id197">
-<h5>row,col,len<a class="headerlink" href="#id197" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id196">
+<h5>row,col,len<a class="headerlink" href="#id196" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the position (row, column) and length of the data tested.</div></blockquote>
 </div>
-<div class="section" id="id198">
-<h5>value<a class="headerlink" href="#id198" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id197">
+<h5>value<a class="headerlink" href="#id197" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the value of the data tested (must be placed in quotes).
 If the value to be tested is in hexadecimal format, use EQ=X’CXNN…’
@@ -8955,14 +8794,14 @@ syntax.</div></blockquote>
 <blockquote>
 <div>Tests if the specified variable does not exist.</div></blockquote>
 </div>
-<div class="section" id="id199">
-<h5>varname<a class="headerlink" href="#id199" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id198">
+<h5>varname<a class="headerlink" href="#id198" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the name of the VIRTEL variable to be tested (must be
 placed in quotes)</div></blockquote>
 </div>
-<div class="section" id="id200">
-<h5>EQ<a class="headerlink" href="#id200" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id199">
+<h5>EQ<a class="headerlink" href="#id199" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Tests if the specified variable is equal to the value to test</div></blockquote>
 </div>
@@ -8972,8 +8811,8 @@ placed in quotes)</div></blockquote>
 <div>Tests whether a previous ACTION$ TO-APPLICATION instruction with a
 MAXTIME parameter ended in timeout.</div></blockquote>
 </div>
-<div class="section" id="id201">
-<h5>CURSOR<a class="headerlink" href="#id201" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id200">
+<h5>CURSOR<a class="headerlink" href="#id200" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Tests whether the application has turned on the cursor. This option
 is valid for both 3270 applications and videotex servers.</div></blockquote>
@@ -9033,20 +8872,20 @@ session).</div></blockquote>
 <div>Specifies the address of the branch exit of the script if the
 condition is satisfied. Permitted values are:</div></blockquote>
 </div>
-<div class="section" id="id202">
-<h5>label<a class="headerlink" href="#id202" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id201">
+<h5>label<a class="headerlink" href="#id201" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>instruction label at which execution of the scenario is to continue.</div></blockquote>
 </div>
-<div class="section" id="id203">
-<h5>FAIL<a class="headerlink" href="#id203" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id202">
+<h5>FAIL<a class="headerlink" href="#id202" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>reserved word indicating that the scenario is to be terminated and
 the current message is to be discarded. The scenario will be called
 again on receipt of the next outbound message from the application.</div></blockquote>
 </div>
-<div class="section" id="id204">
-<h5>SUCCESS<a class="headerlink" href="#id204" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id203">
+<h5>SUCCESS<a class="headerlink" href="#id203" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>reserved word indicating that the scenario is to be terminated and
 the current message is to be presented to the user. This is
@@ -9063,8 +8902,8 @@ transfer function. The INDSCEN$ macro instruction must be included
 in both the input scenario and the output scenario.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id205">
-<h5>type<a class="headerlink" href="#id205" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id204">
+<h5>type<a class="headerlink" href="#id204" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>Specifies the type of host system running the IND$FILE program. TSO
 is the only allowed value. The default is TSO.</p>
@@ -9138,8 +8977,8 @@ it produces a SNAP only after it has been executed the number of
 times indicated by the OCCURS parameter.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id206">
-<h5>text<a class="headerlink" href="#id206" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id205">
+<h5>text<a class="headerlink" href="#id205" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>A free-format description which will be printed in the SNAP at the
 time of the abend.</div></blockquote>
@@ -9155,8 +8994,8 @@ MAP$ END instructions which define the start and end of the
 commarea.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id207">
-<h5>name<a class="headerlink" href="#id207" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id206">
+<h5>name<a class="headerlink" href="#id206" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>For input-to-commarea conversion, this is the name of the XML tag or
 Query parameter which identifies the input data item. For XML input,
@@ -9171,15 +9010,15 @@ variable which will be generated.</p>
 <blockquote>
 <div>Specifies the fixed length of the field in the commarea.</div></blockquote>
 </div>
-<div class="section" id="id208">
-<h5>type<a class="headerlink" href="#id208" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id207">
+<h5>type<a class="headerlink" href="#id207" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p><strong>X</strong></p>
 <p>indicates an alphanumeric field</p>
 </div></blockquote>
 </div>
-<div class="section" id="id209">
-<h5>9<a class="headerlink" href="#id209" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id208">
+<h5>9<a class="headerlink" href="#id208" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>indicates a numeric field</div></blockquote>
 </div>
@@ -9200,8 +9039,8 @@ data item are ignored when copied to the commarea</div></blockquote>
 <div>indicates that the numeric value is to be left-aligned in the field
 in the commarea</div></blockquote>
 </div>
-<div class="section" id="id210">
-<h5>BASE64<a class="headerlink" href="#id210" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id209">
+<h5>BASE64<a class="headerlink" href="#id209" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>indicates that the data is encoded in Base64 format in the XML
 datastream</div></blockquote>
@@ -9247,8 +9086,8 @@ scripts”, &lt;#_bookmark266&gt;`__</p>
 <p><a class="reference external" href="#_bookmark266">page 215</a>):</p>
 </div></blockquote>
 </div>
-<div class="section" id="id211">
-<h5>varname<a class="headerlink" href="#id211" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id210">
+<h5>varname<a class="headerlink" href="#id210" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable to which the field value is to be
 copied. The variable name must be placed in quotes. If the variable
@@ -9259,14 +9098,14 @@ commarea and fills the field with either a constant value, or the
 value of a VIRTEL variable:</p>
 </div></blockquote>
 </div>
-<div class="section" id="id212">
-<h5>value<a class="headerlink" href="#id212" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id211">
+<h5>value<a class="headerlink" href="#id211" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The value to be copied to the field. The value must be placed in
 quotes.</div></blockquote>
 </div>
-<div class="section" id="id213">
-<h5>varname<a class="headerlink" href="#id213" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id212">
+<h5>varname<a class="headerlink" href="#id212" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable from which the field value is to be
 copied. The variable name must be placed in quotes.</p>
@@ -9278,8 +9117,8 @@ processing of a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$
 FROM-VARIABLE instruction.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id214">
-<h5>varname<a class="headerlink" href="#id214" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id213">
+<h5>varname<a class="headerlink" href="#id213" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable to which the field value is to be
 copied. The variable name must be placed in quotes. If the variable
@@ -9296,8 +9135,8 @@ if the variable already exists, the new value will be appended to
 any existing values instead of erasing the previous value.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id215">
-<h5>varname<a class="headerlink" href="#id215" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id214">
+<h5>varname<a class="headerlink" href="#id214" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable to which the field value is to be
 copied. The variable name must be placed in quotes. If the variable
@@ -9313,8 +9152,8 @@ element found in the input stream. This may be used in conjunction
 with the NEXT-ELEMENT keyword of the MAP$ BEGIN instruction.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id216">
-<h5>nnn<a class="headerlink" href="#id216" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id215">
+<h5>nnn<a class="headerlink" href="#id215" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The length of the field in the output commarea where the name is to
 be placed.</p>
@@ -9338,13 +9177,13 @@ location in the input data is used.</div></blockquote>
 <div>The name of the XML attribute whose value is to be copied to the
 commarea.</div></blockquote>
 </div>
-<div class="section" id="id217">
-<h5>nnn<a class="headerlink" href="#id217" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id216">
+<h5>nnn<a class="headerlink" href="#id216" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the fixed length of the field in the commarea.</div></blockquote>
 </div>
-<div class="section" id="id218">
-<h5>type<a class="headerlink" href="#id218" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id217">
+<h5>type<a class="headerlink" href="#id217" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>Same as type parameter of the MAP$ AREA instruction.</p>
 <p>Note: XML tag and attribute names are case sensitive.</p>
@@ -9353,8 +9192,8 @@ of the attribute to be copied into a VIRTEL variable, in addition to
 being placed in the commarea:</p>
 </div></blockquote>
 </div>
-<div class="section" id="id219">
-<h5>varname<a class="headerlink" href="#id219" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id218">
+<h5>varname<a class="headerlink" href="#id218" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable to which the attribute value is to
 be copied. The variable name must be placed in quotes. If the
@@ -9366,8 +9205,8 @@ value of an attribute into a VIRTEL variable, without copying it
 into the commarea:</p>
 </div></blockquote>
 </div>
-<div class="section" id="id220">
-<h5>varname<a class="headerlink" href="#id220" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id219">
+<h5>varname<a class="headerlink" href="#id219" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable to which the attribute value is to
 be copied. The variable name must be placed in quotes. If the
@@ -9385,15 +9224,15 @@ in the input data. The optional</p>
 of MAP$ BEGIN and MAP$ END instructions are permitted.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id221">
-<h5>groupname<a class="headerlink" href="#id221" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id220">
+<h5>groupname<a class="headerlink" href="#id220" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. It specifies the name of the commarea or
 field group. The MAP$ BEGIN instruction must be matched by a
 subsequent MAP$ END instruction having the same label.</div></blockquote>
 </div>
-<div class="section" id="id222">
-<h5>xmlname<a class="headerlink" href="#id222" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id221">
+<h5>xmlname<a class="headerlink" href="#id221" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The name of the XML tag which identifies the start of the group of
 fields in the input data. If the WITH parameter is omitted,
@@ -9401,8 +9240,8 @@ processing for this group of fields starts at the current location
 in the input data. The special value NEXT- ELEMENT matches with the
 next XML tag in the input stream, regardless of its name.</div></blockquote>
 </div>
-<div class="section" id="id223">
-<h5>nnn<a class="headerlink" href="#id223" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id222">
+<h5>nnn<a class="headerlink" href="#id222" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Specifies the number of occurrences for a repeating group of fields.
 If the OCCURS parameter is omitted, one occurrence will be
@@ -9437,8 +9276,8 @@ eventname/</p>
 <p>The MAP$ END instruction marks the end of a commarea or field group.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id224">
-<h5>groupname<a class="headerlink" href="#id224" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id223">
+<h5>groupname<a class="headerlink" href="#id223" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The label is required. It must match the label on the corresponding
 MAP$ BEGIN instruction.</p>
@@ -9496,8 +9335,8 @@ subroutine defined elsewhere in the scenario. The subroutine ends
 with a RETURN$ instruction.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id225">
-<h5>mylabel<a class="headerlink" href="#id225" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id224">
+<h5>mylabel<a class="headerlink" href="#id224" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The label is required. It specifies the name of the subroutine to be
 called. The label mylabel must be defined elsewhere in the scenario.</p>
@@ -9510,8 +9349,8 @@ The XML input data is obtained from an HTML form field in the
 incoming HTTP request.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id226">
-<h5>groupname<a class="headerlink" href="#id226" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id225">
+<h5>groupname<a class="headerlink" href="#id225" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. It specifies the name of the output area to
 be generated. It must match the label on a preceding MAP$ BEGIN
@@ -9538,15 +9377,15 @@ commarea from XML, JSON or Query format input data
 the incoming HTTP request.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id227">
-<h5>groupname<a class="headerlink" href="#id227" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id226">
+<h5>groupname<a class="headerlink" href="#id226" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. It specifies the name of the output area to
 be generated. It must match the label on a preceding MAP$ BEGIN
 instruction.</div></blockquote>
 </div>
-<div class="section" id="id228">
-<h5>format<a class="headerlink" href="#id228" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id227">
+<h5>format<a class="headerlink" href="#id227" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>XML: specifies that the input data is in XML format JSON: specifies
 that the input data is in JSON format QUERY: specifies that the
@@ -9612,23 +9451,23 @@ commarea from XML or Query format input data (“input-to-commarea”
 conversion). The input data is contained in a VIRTEL variable.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id229">
-<h5>groupname<a class="headerlink" href="#id229" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id228">
+<h5>groupname<a class="headerlink" href="#id228" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. It specifies the name of the output area to
 be generated. It must match the label on a preceding MAP$ BEGIN
 instruction.</div></blockquote>
 </div>
-<div class="section" id="id230">
-<h5>format<a class="headerlink" href="#id230" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id229">
+<h5>format<a class="headerlink" href="#id229" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>XML: specifies that the input data is in XML format JSON: specifies
 that the input data is in JSON format QUERY: specifies that the
 input data is in Query format If no format is specified, the default
 is XML.</div></blockquote>
 </div>
-<div class="section" id="id231">
-<h5>varname<a class="headerlink" href="#id231" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id230">
+<h5>varname<a class="headerlink" href="#id230" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable which contains the input data.</p>
 <p>The MAP$ TO-VARIABLE instruction requests VIRTEL to copy a commarea
@@ -9637,15 +9476,15 @@ generated by a previous MAP$ FROM-FIELD, FROM-INPUT, or
 FROM-VARIABLE instruction.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id232">
-<h5>groupname<a class="headerlink" href="#id232" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id231">
+<h5>groupname<a class="headerlink" href="#id231" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. It specifies the name of the output area to
 be copied. It must match the label on a preceding MAP$ BEGIN
 instruction.</div></blockquote>
 </div>
-<div class="section" id="id233">
-<h5>varname<a class="headerlink" href="#id233" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id232">
+<h5>varname<a class="headerlink" href="#id232" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable into which the commarea is to be
 copied. MAP$ COPY,VAR=&#8217;varname&#8217; is equivalent to MAP$
@@ -9659,8 +9498,8 @@ response. The OPTION$ FOR-HTTP instruction builds the parameter list
 for the subsequent SEND$ TO-LINE instruction.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id234">
-<h5>method<a class="headerlink" href="#id234" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id233">
+<h5>method<a class="headerlink" href="#id233" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(required) the HTTP method: GET or POST (see note below).</div></blockquote>
 </div>
@@ -9763,14 +9602,14 @@ generated IND$FILE command.</p>
 the workstation to TSO is shown below:</p>
 </div></blockquote>
 </div>
-<div class="section" id="id235">
-<h5>options<a class="headerlink" href="#id235" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id234">
+<h5>options<a class="headerlink" href="#id234" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>optional parameters (for example, &#8216;ASCII CRLF NEW&#8217;) to be appended
 to the IND$FILE command line (see note 1 below).</div></blockquote>
 </div>
-<div class="section" id="id236">
-<h5>dsname<a class="headerlink" href="#id236" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id235">
+<h5>dsname<a class="headerlink" href="#id235" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(required) the destination TSO dataset name (see notes 1 and 2
 below).</div></blockquote>
@@ -9781,14 +9620,14 @@ below).</div></blockquote>
 <div>(required) the name of the VIRTEL variable which contains the data
 to be uploaded.</div></blockquote>
 </div>
-<div class="section" id="id237">
-<h5>retvar<a class="headerlink" href="#id237" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id236">
+<h5>retvar<a class="headerlink" href="#id236" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which will receive the completion
 message sent by IND$FILE at the end of the transfer.</div></blockquote>
 </div>
-<div class="section" id="id238">
-<h5>cmdvar<a class="headerlink" href="#id238" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id237">
+<h5>cmdvar<a class="headerlink" href="#id237" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>(required) the name of the VIRTEL variable which will contain the
 generated IND$FILE command.</p>
@@ -9892,8 +9731,8 @@ when the line type is MQ.</p>
 <div>the name of the VIRTEL variable which contains data to be written to
 the MQ line.</div></blockquote>
 </div>
-<div class="section" id="id239">
-<h5>varnamep<a class="headerlink" href="#id239" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id238">
+<h5>varnamep<a class="headerlink" href="#id238" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>the name of the VIRTEL variable which will contain the parameter
 list.</p>
@@ -9901,8 +9740,8 @@ list.</p>
 when the line type is QUICKLNK.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id240">
-<h5>METHOD<a class="headerlink" href="#id240" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id239">
+<h5>METHOD<a class="headerlink" href="#id239" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>(mandatory) the service method Valid values are:</div></blockquote>
 </div>
@@ -10035,22 +9874,22 @@ note below).</div></blockquote>
 <div>the character set name to be included in the SMTP Content-type
 header (see note below). For example, ISO-8859-15</div></blockquote>
 </div>
-<div class="section" id="id241">
-<h5>header<a class="headerlink" href="#id241" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id240">
+<h5>header<a class="headerlink" href="#id240" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>additional SMTP headers to be inserted in the message. Multiple
 headers may be inserted by specifying more than one HEADER
 parameter.</div></blockquote>
 </div>
-<div class="section" id="id242">
-<h5>varname<a class="headerlink" href="#id242" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id241">
+<h5>varname<a class="headerlink" href="#id241" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains data to be written as
 an attached file. Multiple files may be attached by specifying more
 than one FILE-OUT parameter.</div></blockquote>
 </div>
-<div class="section" id="id243">
-<h5>filename<a class="headerlink" href="#id243" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id242">
+<h5>filename<a class="headerlink" href="#id242" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the attached file.</div></blockquote>
 </div>
@@ -10091,8 +9930,8 @@ TEXT parameter will become a file with content type text/plain</div></blockquote
 <blockquote>
 <div>the Content-Disposition of the alternate text file, usually inline.</div></blockquote>
 </div>
-<div class="section" id="id244">
-<h5>varnamep<a class="headerlink" href="#id244" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id243">
+<h5>varnamep<a class="headerlink" href="#id243" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>the name of the VIRTEL variable which will contain the parameter
 list.</p>
@@ -10109,8 +9948,8 @@ level_2 subroutine scenario, which may call level_3 subroutine
 scenario, but level_3 connot call level_4 subroutine scenario.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id245">
-<h5>mylabel<a class="headerlink" href="#id245" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id244">
+<h5>mylabel<a class="headerlink" href="#id244" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>Specifies the subroutine scenario label to be performed.</p>
 <p>HEre is a sample of the usage of PERFORM$ and LABEL$ instructions.</p>
@@ -10130,8 +9969,8 @@ table variables.</p>
 If the variable contains only one value, then the variable is
 deleted entirely.</div></blockquote>
 </div>
-<div class="section" id="id246">
-<h5>varname<a class="headerlink" href="#id246" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id245">
+<h5>varname<a class="headerlink" href="#id245" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>the name of the VIRTEL variable.</p>
 <p>POP$ VAR=&#8217;varname&#8217; is equivalent to POP$
@@ -10144,13 +9983,13 @@ input request.</p>
 request.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id247">
-<h5>varname<a class="headerlink" href="#id247" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id246">
+<h5>varname<a class="headerlink" href="#id246" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains the response data.</div></blockquote>
 </div>
-<div class="section" id="id248">
-<h5>filetype<a class="headerlink" href="#id248" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id247">
+<h5>filetype<a class="headerlink" href="#id247" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the file type to be sent in the Content-Type HTTP header. Typical
 values are text/plain, text/html, and text/xml</div></blockquote>
@@ -10183,13 +10022,13 @@ header, which means that the browser displays a “Save As” dialog box
 instead of attempting to display the file in the browser window.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id249">
-<h5>varname<a class="headerlink" href="#id249" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id248">
+<h5>varname<a class="headerlink" href="#id248" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains the file.</div></blockquote>
 </div>
-<div class="section" id="id250">
-<h5>filetype<a class="headerlink" href="#id250" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id249">
+<h5>filetype<a class="headerlink" href="#id249" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the file type to be sent in the Content-Type HTTP header. This
 parameter may be specified as a literal, or as &#8216;*varname&#8217; where
@@ -10197,8 +10036,8 @@ varname is the name of a VIRTEL variable whose value is the
 filetype. Examples of typical file types are application/pdf,
 application/x-tar</div></blockquote>
 </div>
-<div class="section" id="id251">
-<h5>filename<a class="headerlink" href="#id251" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id250">
+<h5>filename<a class="headerlink" href="#id250" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>the file name to be included in the Content-Disposition HTTP header.
 This parameter may be specified as a literal, or as &#8216;*varname&#8217;
@@ -10219,8 +10058,8 @@ point applicable to this scenario. In the transaction definition,
 the “Application type” field must be 5 and the “Application” field
 must be the internal or external name of a VIRTEL line.</div></blockquote>
 </div>
-<div class="section" id="id252">
-<h5>varnamep<a class="headerlink" href="#id252" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id251">
+<h5>varnamep<a class="headerlink" href="#id251" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains the parameter list.
 This variable must have been created by a previous OPTION$
@@ -10246,15 +10085,15 @@ the outbound message according to the line type.</p>
 may be the internal or external name of a line defined in the VIRTEL
 configuration.</div></blockquote>
 </div>
-<div class="section" id="id253">
-<h5>varnamep<a class="headerlink" href="#id253" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id252">
+<h5>varnamep<a class="headerlink" href="#id252" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains the parameter list.
 This variable must have been created by a previous OPTION$
 instruction.</div></blockquote>
 </div>
-<div class="section" id="id254">
-<h5>errlabel<a class="headerlink" href="#id254" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id253">
+<h5>errlabel<a class="headerlink" href="#id253" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>A branch will be made to this label if the message cannot be sent to
 the requested line.</div></blockquote>
@@ -10281,22 +10120,22 @@ instruction in the case where OPTION$ specifies only a variable
 name.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id255">
-<h5>tranname<a class="headerlink" href="#id255" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id254">
+<h5>tranname<a class="headerlink" href="#id254" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the external name of a VIRTEL transaction defined under the entry
 point applicable to this scenario. In the transaction definition,
 the “Application type” field must be 5 and the “Application” field
 must be the internal or external name of a VIRTEL line.</div></blockquote>
 </div>
-<div class="section" id="id256">
-<h5>varname<a class="headerlink" href="#id256" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id255">
+<h5>varname<a class="headerlink" href="#id255" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains data to be written to
 the line.</div></blockquote>
 </div>
-<div class="section" id="id257">
-<h5>errlabel<a class="headerlink" href="#id257" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id256">
+<h5>errlabel<a class="headerlink" href="#id256" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>A branch will be made to this label if the message cannot be sent to
 the requested line.</p>
@@ -10313,21 +10152,21 @@ instruction in the case where OPTION$ specifies only a variable
 name.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id258">
-<h5>varname<a class="headerlink" href="#id258" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id257">
+<h5>varname<a class="headerlink" href="#id257" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains data to be written to
 the line.</div></blockquote>
 </div>
-<div class="section" id="id259">
-<h5>linename<a class="headerlink" href="#id259" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id258">
+<h5>linename<a class="headerlink" href="#id258" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL line on which the message is to be sent. This
 may be the internal or external name of a line defined in the VIRTEL
 configuration.</div></blockquote>
 </div>
-<div class="section" id="id260">
-<h5>errlabel<a class="headerlink" href="#id260" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id259">
+<h5>errlabel<a class="headerlink" href="#id259" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>A branch will be made to this label if the message cannot be sent to
 the requested line.</p>
@@ -10342,8 +10181,8 @@ of subsequent URLs for this session.</p>
 <blockquote>
 <div>specifies that the terminal will be placed in UTF-8 mode.</div></blockquote>
 </div>
-<div class="section" id="id261">
-<h5>charset<a class="headerlink" href="#id261" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id260">
+<h5>charset<a class="headerlink" href="#id260" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>specifies the name of the UTF-8 translation table to be used. Refer
 to the DEFUTF8 parameter in the section “Parameters of the VIRTCT”
@@ -10380,8 +10219,8 @@ same effect as the HOST4WEB command S GLOBAL PAGE.</p>
 page template is contained in a VIRTEL variable.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id262">
-<h5>varname<a class="headerlink" href="#id262" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id261">
+<h5>varname<a class="headerlink" href="#id261" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>the name of the VIRTEL variable which contains the page name.
 Trailing blanks are removed.</div></blockquote>
@@ -10425,23 +10264,23 @@ current line (column, length) value, referenced by the equal sign
 (&#8216;=&#8217;).</p>
 </div></blockquote>
 </div>
-<div class="section" id="id263">
-<h5>row<a class="headerlink" href="#id263" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id262">
+<h5>row<a class="headerlink" href="#id262" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>starting row of the portion of the screen to select</div></blockquote>
 </div>
-<div class="section" id="id264">
-<h5>col<a class="headerlink" href="#id264" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id263">
+<h5>col<a class="headerlink" href="#id263" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>starting column of the portion of the screen to select</div></blockquote>
 </div>
-<div class="section" id="id265">
-<h5>len<a class="headerlink" href="#id265" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id264">
+<h5>len<a class="headerlink" href="#id264" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>width (in columns) of the portion of the screen to select</div></blockquote>
 </div>
-<div class="section" id="id266">
-<h5>ht<a class="headerlink" href="#id266" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id265">
+<h5>ht<a class="headerlink" href="#id265" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>height (in rows) of the portion of the screen to select</div></blockquote>
 </div>
@@ -10458,13 +10297,13 @@ reference. When found, enter &#8216;X&#8217; on colum 4 and key Enter</p>
 manager.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id267">
-<h5>userid<a class="headerlink" href="#id267" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id266">
+<h5>userid<a class="headerlink" href="#id266" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The user name.</div></blockquote>
 </div>
-<div class="section" id="id268">
-<h5>password<a class="headerlink" href="#id268" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id267">
+<h5>password<a class="headerlink" href="#id267" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The user’s current password.</div></blockquote>
 </div>
@@ -10473,8 +10312,8 @@ manager.</p>
 <blockquote>
 <div>The new password, if the user’s current password is to be changed.</div></blockquote>
 </div>
-<div class="section" id="id269">
-<h5>retvar<a class="headerlink" href="#id269" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id268">
+<h5>retvar<a class="headerlink" href="#id268" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of a VIRTEL variable into which the security manager return
 code will be stored. The return code is stored as a decimal string
@@ -10490,8 +10329,8 @@ the same effect as the HOST4WEB command S PAGE.</p>
 will be executed.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id270">
-<h5>tranname<a class="headerlink" href="#id270" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id269">
+<h5>tranname<a class="headerlink" href="#id269" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The external name of the transaction to be executed.</p>
 <p>The SET$ URL-ENCODING instruction is similar to the SET$ ENCODING
@@ -10526,14 +10365,14 @@ TOVAR$ FROM-FIELD instruction is normally contained in an INITIAL
 scenario.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id271">
-<h5>groupname<a class="headerlink" href="#id271" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id270">
+<h5>groupname<a class="headerlink" href="#id270" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. It specifies the name of the input commarea.
 It must match the label on a preceding MAP$ BEGIN instruction.</div></blockquote>
 </div>
-<div class="section" id="id272">
-<h5>fieldname<a class="headerlink" href="#id272" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id271">
+<h5>fieldname<a class="headerlink" href="#id271" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the HTML form field which contains the input commarea
 data.</p>
@@ -10543,8 +10382,8 @@ obtained from the data area of the incoming HTTP request. The TOVAR$
 FROM-INPUT instruction is normally contained in an INITIAL scenario.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id273">
-<h5>groupname<a class="headerlink" href="#id273" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id272">
+<h5>groupname<a class="headerlink" href="#id272" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The label is required. It specifies the name of the input commarea.
 It must match the label on a preceding MAP$ BEGIN instruction.</p>
@@ -10569,14 +10408,14 @@ is contained in a VIRTEL variable. The TOVAR$ FROM-VARIABLE
 instruction is normally contained in an OUTPUT scenario.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id274">
-<h5>groupname<a class="headerlink" href="#id274" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id273">
+<h5>groupname<a class="headerlink" href="#id273" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>The label is required. It specifies the name of the input commarea.
 It must match the label on a preceding MAP$ BEGIN instruction.</div></blockquote>
 </div>
-<div class="section" id="id275">
-<h5>varname<a class="headerlink" href="#id275" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id274">
+<h5>varname<a class="headerlink" href="#id274" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The name of the VIRTEL variable which contains the input commarea
 data.</p>
@@ -10588,8 +10427,8 @@ to the document Using VIRSV for details of writing service programs
 which execute under the control of VIRSV.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id276">
-<h5>CALL<a class="headerlink" href="#id276" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id275">
+<h5>CALL<a class="headerlink" href="#id275" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Indicates that a new instance of the service program will be created
 for each request.</div></blockquote>
@@ -10630,8 +10469,8 @@ consist of at least 6 alphanumeric characters and must be in quotes.</p>
 <div>The name of the service program to be called. The program name must
 be in quotes.</div></blockquote>
 </div>
-<div class="section" id="id277">
-<h5>option<a class="headerlink" href="#id277" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id276">
+<h5>option<a class="headerlink" href="#id276" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>One or more of the following options may be specified:</div></blockquote>
 </div>
@@ -10674,14 +10513,14 @@ and the service program.</p>
 trace is written to the VSVTRACE file of the VIRTEL started task.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id278">
-<h5>errlabel<a class="headerlink" href="#id278" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id277">
+<h5>errlabel<a class="headerlink" href="#id277" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>A branch will be made to this label if the service cannot be called,
 or if VIRSV or the service program returned a non- zero return code.</div></blockquote>
 </div>
-<div class="section" id="id279">
-<h5>count<a class="headerlink" href="#id279" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id278">
+<h5>count<a class="headerlink" href="#id278" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>The maximum number of concurrent instances of the service program
 which can be started for this service name. If there are already
@@ -10812,18 +10651,18 @@ is declared for each field:</p>
 <blockquote>
 <div>represents the year (4 digits)</div></blockquote>
 </div>
-<div class="section" id="id280">
-<h5>%y<a class="headerlink" href="#id280" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id279">
+<h5>%y<a class="headerlink" href="#id279" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>represents the year (2 digits)</div></blockquote>
 </div>
-<div class="section" id="id281">
-<h5>%d<a class="headerlink" href="#id281" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id280">
+<h5>%d<a class="headerlink" href="#id280" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>represents the day of the month (01-31)</div></blockquote>
 </div>
-<div class="section" id="id282">
-<h5>%e<a class="headerlink" href="#id282" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id281">
+<h5>%e<a class="headerlink" href="#id281" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>represents the day of the month (1-31)</div></blockquote>
 </div>
@@ -10832,8 +10671,8 @@ is declared for each field:</p>
 <blockquote>
 <div>represents the month (01-12)</div></blockquote>
 </div>
-<div class="section" id="id283">
-<h5>%b<a class="headerlink" href="#id283" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id282">
+<h5>%b<a class="headerlink" href="#id282" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p>represents the abbreviated month name (Jan, Feb, etc)</p>
 <p>Refer to the Date.prototype.print function in the calendar.js file
@@ -11586,8 +11425,8 @@ preserved.</div></blockquote>
 <div>(optional) Specifies the encoding of HTML form-field parameters in
 the input URL. The following encodings may be specified:</div></blockquote>
 </div>
-<div class="section" id="id284">
-<h5>UTF-8<a class="headerlink" href="#id284" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id283">
+<h5>UTF-8<a class="headerlink" href="#id283" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Input form-fields are encoded in UTF-8 format</div></blockquote>
 </div>
@@ -11613,8 +11452,8 @@ fieldname=ISO, then the VIRTEL default encoding (ISO) is assumed.</p>
 <div>Specifies the type of scenario to be generated. The following
 formats may be specified:</div></blockquote>
 </div>
-<div class="section" id="id285">
-<h5>QUERY<a class="headerlink" href="#id285" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id284">
+<h5>QUERY<a class="headerlink" href="#id284" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>Generates an INITIAL scenario which accepts input data encoded as
 HTML form-fields, and produces an output commarea. The generated
@@ -12000,8 +11839,8 @@ commands are valid in the SYSIN file:</p>
 <blockquote>
 <div>indicates the start of a raw HTTP request command</div></blockquote>
 </div>
-<div class="section" id="id286">
-<h5>.END<a class="headerlink" href="#id286" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="id285">
+<h5>.END<a class="headerlink" href="#id285" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div>indicates the end of a GET, POST, or RAW command</div></blockquote>
 </div>
@@ -13370,8 +13209,8 @@ FAD4-LONG</p>
 <p><em>Example of e-mail generated by structured field FAD4</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id287">
-<h2>Security<a class="headerlink" href="#id287" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id286">
+<h2>Security<a class="headerlink" href="#id286" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>VIRTEL examines the URL of every VIRTEL Web Access request which
 arrives from a browser. Since there is no permanent IP session

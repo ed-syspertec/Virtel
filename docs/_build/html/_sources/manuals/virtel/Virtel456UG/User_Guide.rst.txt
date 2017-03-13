@@ -753,6 +753,7 @@ To scroll to the top of the list, press [PF6]. To scroll up or down the list, pr
 To return to the configuration menu, press [PF3].
 
 1.3.5. Defining directory parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To access the detail screen for any directory, place the cursor on the directory name and press [PF12]:
 
@@ -764,107 +765,37 @@ Name
     be authorized.
 
 Description
-~~~~~~~~~~~
-
     Comment associated with the directory.
 
 Type
-~~~~
-
     **V** (or blank) indicates that the directory is held in a VSAM
     KSDS.
 
 DD name
-~~~~~~~
-
-    The file name of the VSAM KSDS which contains the directory. This
-    name must be defined in one of the UFILEn parameters in the VIRTCT,
-    and a DD statement with the same name must appear in the VIRTEL
+    The file name of the VSAM KSDS which contains the directory. This name must be defined in one of the UFILEn parameters in the VIRTCT, and a DD statement with the same name must appear in the VIRTEL
     started task JCL.
 
 Keyword
-~~~~~~~
-
-    This is an 8-byte key which allows multiple directories to be stored
-    within a single VSAM KSDS. Each directory in a KSDS must have a
-    unique key.
+    This is an 8-byte key which allows multiple directories to be stored within a single VSAM KSDS. Each directory in a KSDS must have a unique key.
 
 Size of names
-~~~~~~~~~~~~~
-
-    The maximum length of the names of HTML pages and other elements
-    stored in this directory. The minimum (and default) value is 8. The
-    maximum value is 64.
+    The maximum length of the names of HTML pages and other elements stored in this directory. The minimum (and default) value is 8. The maximum value is 64.
 
 Case
-~~~~
-
-    Any non-blank character in this field indicates that the element
-    names stored in this directory are case sensitive. Blank indicates
-    that the names are not case sensitive.
+    Any non-blank character in this field indicates that the element names stored in this directory are case sensitive. Blank indicates that the names are not case sensitive.
 
 Copy up
-~~~~~~~
-
-    This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-    the value **X** must be coded.
+    This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value **X** must be coded.
 
 Copy down
-~~~~~~~~~
-
-    This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-    the value **X** must be coded.
+    This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value **X** must be coded.
 
 Delete
-~~~~~~
+    This field is used by VIRTEL/PC. For VIRTEL Web Access directories, the value **X** must be coded.
 
-    This field is used by VIRTEL/PC. For VIRTEL Web Access directories,
-    the value **X** must be coded.
+    After pressing [PF4] at the directory management summary screen or detail screen, VIRTEL displays a list of the files in the directory:
 
-    After pressing [PF4] at the directory management summary screen or
-    detail screen, VIRTEL displays a list of the files in the directory:
-
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| DIRECTORY   |     : W2H-DIR [1] 55 FILE(S)------------   | Applid:   |     SPVIRH2    |     10:50:31   |
-|             |                                            |           |                |                |
-|             |     Pages for WEB2HOST [2]                 |           |                |                |
-+=============+============================================+===========+================+================+
-|     Name    |                                            | Size      |     Date       |     Time       |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| WEBSERV0    |                                            | 5572      |     20050208   |     15:52:23   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| ES.GIF      |                                            | 517       |     20050208   |     15:51:35   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| CALENDAR    |                                            | K 53      |     20050208   |     15:51:25   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| FAVICON.    |                                            | 2998      |     20050208   |     15:51:36   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| NOIR.GIF    |                                            | 161       |     20050208   |     15:51:48   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| TXTSERV2    |                                            | K 15      |     20050208   |     15:52:05   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| STYLNOIR    |                                            | 2709      |     20050208   |     15:51:56   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| CAL-EN.J    |                                            | 3830      |     20050208   |     15:51:24   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| BLUE.GIF    |                                            | 161       |     20050208   |     15:51:23   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| WEB2PLUG    |                                            | 6370      |     20050208   |     15:52:21   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| VERT.GIF    |                                            | 161       |     20050208   |     15:52:12   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| RED.GIF     |                                            | 161       |     20050208   |     15:51:50   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| IMPRIM.H    |                                            | 826       |     20050208   |     15:51:40   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| VIRLOAD.    |                                            | 1346      |     20050208   |     15:52:13   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-| VIRTNOIR    |                                            | 3737      |     20050208   |     15:52:16   |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-|     [3]     |                                            | [4]       |     [5]        |     [6]        |
-+-------------+--------------------------------------------+-----------+----------------+----------------+
-
-    *Directory contents management screen*
+|image73| *Figure 1.8 Directory contents management screen*
 
 [1]
 ~~~
@@ -13976,3 +13907,4 @@ Index
 .. |image70| image:: images/media/image70.png
 .. |image71| image:: images/media/image71.png
 .. |image72| image:: images/media/image72.png
+.. |image73| image:: images/media/image73.png
