@@ -2446,12 +2446,9 @@ option
     the following values indicate the use of encryption :
 
 ENCRYPT-PASSWORD-FIELDS
-    indicates that 3270 non-display unprotected (data entry) fields are encrypted in both inbound and outbound
-messages, and that 3270 non-display protected (output only) fields are replaced by blanks in outbound messages.
+    indicates that 3270 non-display unprotected (data entry) fields are encrypted in both inbound and outbound messages, and that 3270 non-display protected (output only) fields are replaced by blanks in outbound messages.
 
-Encryption is performed according to the symmetric encryption method indicated by the CRYPTn parameter specified
-by the PUBLIC-KEY tag, using the session key specified by the DECLARE-FIELD-AS (CRYPTO-SESSION-KEY) tag. The
-GENERATE-HTML tag automatically adds an additional VCRYPT attribute to each encrypted field.
+Encryption is performed according to the symmetric encryption method indicated by the CRYPTn parameter specified by the PUBLIC-KEY tag, using the session key specified by the DECLARE-FIELD-AS (CRYPTO-SESSION-KEY) tag. The GENERATE-HTML tag automatically adds an additional VCRYPT attribute to each encrypted field.
 
 1.4.17. EBCDIC translation management
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2505,7 +2502,7 @@ a single page. The possible values for the countryname parameter are shown in th
 
 .. note::
 
-Values in parentheses are accepted for compatibility with previous versions of VIRTEL
+    Values in parentheses are accepted for compatibility with previous versions of VIRTEL
 
 1.4.17.3. COUNTRY-CODE tag
 
@@ -2531,15 +2528,13 @@ When SET-OUTPUT-ENCODING-UTF-8 is specified, the rest of the template page must 
 
 ::
 
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 In the case of an XML page, no such instruction is needed because XML is considered to be encoded in UTF8 by default.
 
 1.4.17.4.1. Examples
 
-A 3270 application generates US EBCDIC (CECP 037). The following statements, coded between the <HEAD> and
-</HEAD> tags in the template page, ensure the correct translation of this application’s data:-
+A 3270 application generates US EBCDIC (CECP 037). The following statements, coded between the <HEAD> and </HEAD> tags in the template page, ensure the correct translation of this application’s data:-
 
 ::
 
@@ -2630,8 +2625,8 @@ VIRTEL associates a MIME-type with each page template or other element stored in
 
 VIRTEL normally sets the MIME-type to the value indicated by the browser or mailer at the time the page is uploaded. However, in certain cases VIRTEL may force the MIME-type to a different value:-
 
-- If the filename extension is .HTM or .HTML, or is absent, VIRTEL will force the MIME-type to be “text/html”. This is
-because some versions of Internet Explorer upload HTML files using MIME-type “text/plain”
+- If the filename extension is .HTM or .HTML, or is absent, VIRTEL will force the MIME-type to be “text/html”. This is because some versions of Internet Explorer upload HTML files using MIME-type “text/plain”
+
 - If the file contains a SET-CONTENT-TYPE tag, then VIRTEL will force the MIME-type to the value specified in the tag
 
 1.4.20.2. SET-CONTENT-TYPE tag
@@ -2728,7 +2723,7 @@ If a security code exists, the above code might generate:-
 
 ::
 
-otherwise it will generate:
+    otherwise it will generate:
 
 ::
 
@@ -2969,10 +2964,10 @@ A correspondent’s security code may be cancelled by deactivating with the [PF5
 To display the list of rules associated with this correspondent, press the [PF6] key.
 
 1.6. Uploading HTML Pages
-=========================
+-------------------------
 
 1.6.1. Introduction
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:
 
@@ -3034,9 +3029,7 @@ Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail
 
 *Page upload by SMTP : activation e-mail*
 
-2. Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL
-recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the
-attached files into the directory defined in the definition of the correspondent.
+2. Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the attached files into the directory defined in the definition of the correspondent.
 
 3. VIRTEL replies by sending an e-mail containing the result of the upload. The following example shows the reply sent
 by VIRTEL to a request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The “Message-id” field in this e-mail
@@ -3098,346 +3091,300 @@ The following steps show how to upgrade your configuration based on entry point 
 these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL version 4.27. Having updated
 the configuration, you then need to upload three new elements (upload.htm, default.js, and logo_3.gif) to the W2HDIR
 directory using the existing SMTP upload method.
+
 1. In entry point WEB2HOST, define a new transaction W2H–70, with external name upload. This transaction specifies
 VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
 that the name of the target directory is to be found in the definition of the e-mail correspondent:
-TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 14:34:08
-Internal name ===> W2H-70 To associate with an entry point name
-External name ===> upload Name displayed on user menu
-Description ===> Upload HTML pages (secured by cookie)
-Application ===> VIR0041C Application to be called
-PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
-Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
-Pseudo-terminals ===> DELOC Prefix of name of partner terminals
-Logmode ===> Specify when LOGMODE must be changed
-How started ===> 2 1=menu 2=sub-menu 3=auto
-Security ===> 0 0=none 1=basic 2=NTLM 3=TLS 4=HTML
-H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
-Logon message ===>
-TIOA at logon ===>
-TIOA at logoff ===>
-Initial Scenario ===> Final Scenario ===>
-Input Scenario ===> Output Scenario ===>
-P1=Update P3=Return P12=Server
-Page upload by HTTP with cookie : Creating the ‘upload’ transaction
-2. Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity
-Reference documentation).
-3. Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and
-ruleset name ADMRSET1 :
-CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2 14:39:04
-e-mail address ===> upload2@saint.cloud.com
-email address with '@' sign
-1. Incoming calls
-70
-Type of Id ===> 1 1:Email 2:Local+fixed 3:Local+changing
-Activation message ===> To upload to VIRTEL, click:&Rhttp://192.168.229.20:4100
-1/web2host/upload.htm+upload+&C
-Text of 'OK' message to user.
-VTAM name ===> &1 parameter to specify VTAM LU name
-Rule Set ===> ADMRSET1 Rules to choose an entry point
-Directory ===> W2H-DIR Where data is to be uploaded
-Last contact ===>
-Contacts ===> 00000000 Number of times cookie was updated
-Date created ===> 11 May 2004 14:19:29
-Created by ===> VIRDBA
-Date activated ===> 11 May 2004 14:39:04
-Activated by ===> VIRDBA
-Date disabled ===>
-Disabled by ===>
-P1=Update P3=Return Enter=Add
-P4=Activate P5=Disable P6=Rules
-ACTIVATION WAS REQUESTED
-Page upload by HTTP with cookie : Creating the e-mail correspondent
+
+|image76|
+
+*Page upload by HTTP with cookie : Creating the ‘upload’ transaction*
+
+2. Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
+
+3. Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and ruleset name ADMRSET1 :
+
+::
+
+
+    CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2 14:39:04
+    e-mail address ===> upload2@saint.cloud.com
+                        email address with '@' sign
+    Type of Id         ===> 1              1:Email 2:Local+fixed 3:Local+changing
+    Activation message ===> To upload to VIRTEL, click:&Rhttp://192.168.229.20:4100
+    1/web2host/upload.htm+upload+&C
+                                           Text of 'OK' message to user.
+    VTAM name          ===> &1 parameter to specify VTAM LU name
+    Rule Set           ===> ADMRSET1 Rules to choose an entry point
+    Directory          ===> W2H-DIR Where data is to be uploaded
+    Last contact       ===>
+    Contacts           ===> 00000000 Number of times cookie was updated
+    Date created       ===> 11 May 2004 14:19:29
+    Created by         ===> VIRDBA
+    Date activated     ===> 11 May 2004 14:39:04
+    Activated by       ===> VIRDBA
+    Date disabled      ===>
+    Disabled by        ===>
+ 
+ 
+    P1=Update                           P3=Return                        Enter=Add
+    P4=Activate                         P5=Disable                       P6=Rules
+    ACTIVATION WAS REQUESTED
+
+*Page upload by HTTP with cookie : Creating the e-mail correspondent*
+
 4. Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :
-DETAIL of RULE from RULE SET: ADMRSET1 ------------- Applid: SPVIRE2 14:40:59
-Name ===> UPLOAD1B Rule priority is per name
-Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
-Description ===> Rule for WEB2HOST administrator
-Entry point ===> WEB2HOST Target Entry Point
-Parameter ===> optional &1 value
-Trace ===> 1=commands 2=data 3=partner
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
-0 IP Subnet ===> Mask ===>
-5 HTTP Host ===> :41001
-0 eMail ===>
-0 Calling DTE ===> Calling DTE address
-0 Called ===> Called DTE address
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-0 User Data ===>
-0 Days ===> M: T: W: T: F: S: S:
-0 Start time ===> H: M: S: End time ===> H: M: S:
-P1=Update P3=Return Enter=Add
-P4=Activate P5=Inactivate P12=Entry P.
-Page upload by HTTP with cookie : Creating rule UPLOAD1B
-5. Define two new rules attached to the HTTP line. The first rule, which specifies $COOKIE$ as the entry point name,
-will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:
-LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRE2 14:44:14
-Name Status Description Entry
-Point
-WHT00100 ACTIVE HTTP access (users authorised by cookie) $COOKIE$
-WHT00200 ACTIVE HTTP access (other users) WEB2HOST
-1. Incoming calls
-71
-P1=Update P2=Suppress P3=Return
-P6=1st page P7=Page-1 P8=Page+1 P12=Edit
-DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
-Name ===> WHT00100 Rule priority is per name
-Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
-Description ===> HTTP access (users authorised by cookie)
-Entry point ===> $COOKIE$ Target Entry Point
-Parameter ===> optional &1 value
-Trace ===> 1=commands 2=data 3=partner
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
-0 IP Subnet ===> Mask ===>
-0 HTTP Host ===>
-0 eMail ===>
-0 Calling DTE ===> Calling DTE address
-0 Called ===> Called DTE address
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-0 User Data ===>
-0 Days ===> M: T: W: T: F: S: S:
-0 Start time ===> H: M: S: End time ===> H: M: S:
-P1=Update P3=Return Enter=Add
-P4=Activate P5=Inactivate P12=Entry P.
-DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:56
-Name ===> WHT00200 Rule priority is per name
-Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
-Description ===> HTTP access (other users)
-Entry point ===> WEB2HOST Target Entry Point
-Parameter ===> optional &1 value
-Trace ===> 1=commands 2=data 3=partner
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
-0 IP Subnet ===> Mask ===>
-0 HTTP Host ===>
-0 eMail ===>
-0 Calling DTE ===> Calling DTE address
-0 Called ===> Called DTE address
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-0 User Data ===>
-0 Days ===> M: T: W: T: F: S: S:
-0 Start time ===> H: M: S: End time ===> H: M: S:
-P1=Update P3=Return Enter=Add
-P4=Activate P5=Inactivate P12=Entry P.
-Page upload by HTTP with cookie : Rules of the HTTP line
-1. Incoming calls
-72
+
+::
+
+    DETAIL of RULE from RULE SET: ADMRSET1 ------------- Applid: SPVIRE2 14:40:59
+
+    Name          ===> UPLOAD1B               Rule priority is per name
+    Status        ===> ACTIVE                 Mon, 24 Sep 2001 14:19:14
+    Description   ===> Rule for WEB2HOST administrator
+    Entry point   ===> WEB2HOST               Target Entry Point
+    Parameter     ===>                                    optional &1 value
+    Trace ===>                                1=commands 2=data 3=partner
+
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    0 IP Subnet   ===>                        Mask     ===>
+    5 HTTP Host   ===> :41001
+    0 eMail       ===>
+    0 Calling DTE ===>                        Calling DTE address
+    0 Called      ===>                        Called DTE address
+    0 CUD0 (Hex)  ===>                        First 4 bytes of CUD (X25 protocol)
+    0 User Data   ===>
+    0 Days        ===> M:      T:      W:      T:      F:      S:      S:
+    0 Start time  ===> H:      M:      S:     End time ===> H:     M:     S:
+
+    P1=Update                          P3=Return                      Enter=Add
+    P4=Activate                        P5=Inactivate                  P12=Entry P.
+
+*Page upload by HTTP with cookie : Creating rule UPLOAD1B*
+
+5. Define two new rules attached to the HTTP line. The first rule, which specifies $COOKIE$ as the entry point name, will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:
+
+::
+
+    LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRE2     14:44:14
+
+    Name     Status   Description                                        Entry
+                                                                         Point
+    WHT00100 ACTIVE   HTTP access (users authorised by cookie)           $COOKIE$
+    WHT00200 ACTIVE   HTTP access (other users)                          WEB2HOST
+ 
+    P1=Update            P2=Suppress             P3=Return
+    P6=1st page          P7=Page-1               P8=Page+1              P12=Edit
+*List of rules associated with UPLOAD*
+
+::
+
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
+    Name          ===> WHT00100              Rule priority is per name
+    Status        ===> ACTIVE                Mon, 24 Sep 2001 14:19:14
+    Description   ===> HTTP access (users authorised by cookie)
+    Entry point   ===> $COOKIE$              Target Entry Point
+    Parameter     ===>                                  optional &1 value
+    Trace         ===>                       1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    0 IP Subnet   ===>                       Mask ===>
+    0 HTTP Host   ===>
+    0 eMail       ===>
+    0 Calling DTE ===>                       Calling DTE address
+    0 Called      ===>                       Called DTE address
+    0 CUD0 (Hex)  ===>                       First 4 bytes of CUD (X25 protocol)
+    0 User Data   ===>
+    0 Days        ===> M:      T:      W:      T:      F:      S:      S:
+    0 Start time  ===> H:      M:      S:     End time ===> H:     M:     S:
+
+    P1=Update                          P3=Return                    Enter=Add
+    P4=Activate                        P5=Inactivate                P12=Entry P.
+*Page upload by HTTP with cookie : Rule $COOKIE$ of the HTTP line*    
+
+::
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
+    Name          ===> WHT00200              Rule priority is per name
+    Status        ===> ACTIVE                Mon, 24 Sep 2001 14:19:14
+    Description   ===> HTTP a
+    ccess (users authorised by cookie)
+    Entry point   ===> WEB2HOST              Target Entry Point
+    Parameter     ===>                                  optional &1 value
+    Trace         ===>                       1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    0 IP Subnet   ===>                       Mask ===>
+    0 HTTP Host   ===>
+    0 eMail       ===>
+    0 Calling DTE ===>                       Calling DTE address
+    0 Called      ===>                       Called DTE address
+    0 CUD0 (Hex)  ===>                       First 4 bytes of CUD (X25 protocol)
+    0 User Data   ===>
+    0 Days        ===> M:      T:      W:      T:      F:      S:      S:
+    0 Start time  ===> H:      M:      S:     End time ===> H:     M:     S:
+
+    P1=Update                          P3=Return                    Enter=Add
+    P4=Activate                        P5=Inactivate                P12=Entry P.
+
+    
+*Page upload by HTTP with cookie : Rule WEB2HOST of the HTTP line*
+
 1.6.3.2. Procedure for page upload secured by cookie
-1. (First time only) Activate the e-mail correspondent: see “Account activation” under the heading “Correspondent
-Management”, page 64. This triggers the sending of an e-mail containing the security code, as in the following
-example:
-Date: Tue, 27 Apr 2004 13:08:44 +0100
-From: virtel@client.com
-Organization: SYSPERTEC COMMUNICATION
-To: upload2@saint.cloud.com
-Message-id:
-<20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
-Subject: OK : < W2H-DIR >
-SECURITY TOKEN:
-20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
-To upload to VIRTEL, click:
-http://192.168.229.20:41001/web2host/upload.htm+upload+VirtelCookie=20040
-427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
-Page upload by HTTP with cookie : activation e-mail
+
+1. (First time only) Activate the e-mail correspondent: see “Account activation” under the heading “Correspondent Management”, page 64. This triggers the sending of an e-mail containing the security code, as in the following example:
+
+:: 
+
+    Date: Tue, 27 Apr 2004 13:08:44 +0100
+    From: virtel@client.com
+    Organization: SYSPERTEC COMMUNICATION
+    To: upload2@saint.cloud.com
+    Message-id:
+    <20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
+    Subject: OK : < W2H-DIR >
+    SECURITY TOKEN:
+    20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+    To upload to VIRTEL, click:
+    http://192.168.229.20:41001/web2host/upload.htm+upload+VirtelCookie=20040
+    427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+
+*Page upload by HTTP with cookie : activation e-mail*
+
 2. Click the link in the e-mail to open the upload.htm page:
-Page upload by HTTP with cookie : Displaying the upload.htm page
+
+|image4|
+
+*Page upload by HTTP with cookie : Displaying the upload.htm page*
+
 3. Click the “Browse” button and the file selection dialog will be displayed:
-1. Incoming calls
-73
-Page upload by HTTP with cookie : File selection dialog
-4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in
-the input field:
-Page upload by HTTP with cookie : Sending the file
-5. Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this
-example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result
-of the upload:
-1. Incoming calls
-74
-Page upload by HTTP with cookie : Confirmation of file uploadr
-From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as
-indicated by the message “Upload code was set by the remote host”.
-Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and
-truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
-truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
-using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
-under the name LINKS.GI
+
+|image5|
+
+*Page upload by HTTP with cookie : File selection dialog*
+
+4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+|image6|
+
+*Page upload by HTTP with cookie : Sending the file*
+
+5. Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:
+
+|image7| *Page upload by HTTP with cookie : Confirmation of file uploadr*
+
+From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”. 
+
+Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+
 1.6.4. Uploading pages by HTTP (secured by signon)
-The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first
-loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security
-product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized
-to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to
-each directory, by authorizing users to the corresponding directory’s upload transaction.
-1.6.4.1. Definitions for page upload secured by signon
-All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered
-with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to
-add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
-1. Incoming calls
-75
-The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out
-these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the
-configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP
-upload method.
-1. In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S
-and application type 2:
-TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRBW 15:01:19
-Internal name ===> W2H-68 To associate with an entry point name
-External name ===> dirlist Name displayed on user menu
-Description ===> List of directories for page upload
-Application ===> VIR0041S Application to be called
-PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
-Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
-Pseudo-terminals ===> DELOC Prefix of name of partner terminals
-Logmode ===> Specify when LOGMODE must be changed
-How started ===> 2 1=menu 2=sub-menu 3=auto
-Security ===> 0 0=none 1=basic 2=NTLM 3=TLS 4=HTML
-H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
-Logon message ===>
-TIOA at logon ===>
-TIOA at logoff ===>
-Initial Scenario ===> Final Scenario ===>
-Input Scenario ===> Output Scenario ===>
-P1=Update P3=Return P12=Server
-Page upload by HTTP with signon : Transaction ‘dirlist’
-2. Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names
-uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application
-type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR
-for transaction uplw2h, and CLI-DIR for uplcli :
-TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:02:23
-Internal name ===> W2H-71 To associate with an entry point name
-External name ===> uplbas Name displayed on user menu
-Description ===> Chargement des pages HTML (répertoire HTMLBAS)
-Application ===> VIR0041C Application to be called
-PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
-Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
-Pseudo-terminals ===> DELOC Prefix of name of partner terminals
-Logmode ===> Specify when LOGMODE must be changed
-How started ===> 2 1=menu 2=sub-menu 3=auto
-Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
-H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
-Logon message ===> HTMLBAS
-TIOA at logon ===>
-TIOA at logoff ===>
-Initial Scenario ===> Final Scenario ===>
-Input Scenario ===> Output Scenario ===>
-P1=Update P3=Return P12=Server
-1. Incoming calls
-76
-TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:03:01
-Internal name ===> W2H-72 To associate with an entry point name
-External name ===> uplw2h Name displayed on user menu
-Description ===> Chargement des pages HTML (répertoire W2H-DIR)
-Application ===> VIR0041C Application to be called
-PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
-Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
-Pseudo-terminals ===> DELOC Prefix of name of partner terminals
-Logmode ===> Specify when LOGMODE must be changed
-How started ===> 2 1=menu 2=sub-menu 3=auto
-Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
-H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
-Logon message ===> W2H-DIR
-TIOA at logon ===>
-TIOA at logoff ===>
-Initial Scenario ===> Final Scenario ===>
-Input Scenario ===> Output Scenario ===>
-P1=Update P3=Return P12=Server
-TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:03:21
-Internal name ===> W2H-73 To associate with an entry point name
-External name ===> uplcli Name displayed on user menu
-Description ===> Chargement des pages HTML (répertoire CLI-DIR)
-Application ===> VIR0041C Application to be called
-PassTicket ===> 0 Name ===> 0=no 1=yes 2=unsigned
-Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
-Pseudo-terminals ===> DELOC Prefix of name of partner terminals
-Logmode ===> Specify when LOGMODE must be changed
-How started ===> 2 1=menu 2=sub-menu 3=auto
-Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
-H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto
-Logon message ===> CLI-DIR
-TIOA at logon ===>
-TIOA at logoff ===>
-Initial Scenario ===> Final Scenario ===>
-Input Scenario ===> Output Scenario ===>
-P1=Update P3=Return P12=Server
-Page upload by HTTP with signon : Transactions ‘uplxxx’
-3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and
-HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR
-(for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for
-users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “Virtel Security Guide”
-manual.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
+
+1.6.4.1. Definitions for page upload secured by signon All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
+
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
+
+1. In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
+
+|image77| *Page upload by HTTP with signon : Transaction dirlist*
+
+2. Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
+
+|image78| *Page upload by HTTP with signon : Directory HTMLBAS*
+
+|image79| *Page upload by HTTP with signon : Directory W2HDIR*
+
+|image80| *Page upload by HTTP with signon : Directory CLIDIR*
+
+3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “Virtel Security Guide” manual.
+
 1.6.4.2. Procedure for page upload secured by signon
-1. Display the upload4.htm page by entering the URL http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser,
-or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is
-defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
-1. Incoming calls
-77
-Page upload by HTTP with signon : Entering the userid and password
-The user must have authority to access the resource represented by the internal name of the page upload
-transaction for the desired directory.
+
+1. Display the upload4.htm page by entering the URL http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
+
+|image8| *Page upload by HTTP with signon : Entering the userid and password*
+
+The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
+
 2. After entering the user name and password, the upload4.htm page will be displayed:
-Page upload by HTTP with signon : Displaying the upload4.htm page
+
+|image9| *Page upload by HTTP with signon : Displaying the upload4.htm page*
+
 3. Press the “Browse” button to display the file selection dialog:
-1. Incoming calls
-78
-Page upload by HTTP with signon : File selection dialog
-4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in
-the input field:
-Page upload by HTTP with signon : Sending the file
-5. Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL.
-VIRTEL stores the file in the chosen directory, and displays the result:
-1. Incoming calls
-79
-Page upload by HTTP with signon : Confirmation of file upload
-Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and
-truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
-truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
-using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
-under the name LINKS.GI
+
+|image10| *Page upload by HTTP with signon : File selection dialog*
+
+4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+|image11| *Page upload by HTTP with signon : Sending the file*
+
+5. Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
+
+|image12| *Page upload by HTTP with signon : Confirmation of file upload*
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+
 1.6.5. Uploading pages by drag and drop
-The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the
-Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory
-(for example, W2H-DIR) in a single operation.
+
+The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
+
 1.6.5.1. Upload interface in the VIRTEL menu
-After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL
-administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown
-below:
-1. Incoming calls
-80
-Drag and drop upload interface
-The administrator can then select one or more files using the workstation graphical user interface, drag them to the
-upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in
-zipped archive may need to be extracted to a temporary directory first.
+
+After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
+
+|image13| *Drag and drop upload interface*
+
+The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
+
 1.6.5.2. Displaying upload results
-Displaying upload results
-The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should
-produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the
-detail display for each file uploaded.
-1. Incoming calls
-81
+
+|image14| *Displaying upload results*
+
+The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
+
 1.6.5.3. Upload summary report
-After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the
-number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero
-return codes.
+
+After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes. 
+
 The summary is not displayed when files are dragged and dropped one at a time.
-In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to
-the left of the file to expand the error messages:
-Upload summary report
+
+In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
+
+|image15| *Upload summary report*
+
 1.6.5.4. Extracting upload results as an Excel spreadsheet
-The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel
-spreadsheet.
-Directory File name Report Time
-CLI-DIR custom.css RETURN CODE IS: 00 Thu, 13 Sep 2012 08:13:16 GMT
-CLI-DIR custom.js RETURN CODE IS: 00 Thu, 13 Sep 2012 08:13:16 GMT
+
+|image16|
+
+The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
+
+::
+
+
++-----------------+------------------------+--------------------------+-------------------------------+
+| Directory       | File name              | Report                   | Time                          |
++=================+========================+==========================+===============================+ 
+| CLI-DIR         | custom.css             | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
+| CLI-DIR         | custom.js              | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
++-----------------+------------------------+--------------------------+-------------------------------+
+
+|image17|
+
 The Delete button allows the administrator to clear the results log.
+
 1.6.6. Uploading pages in batch
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 1.6.6.1. Uploading with cURL
-You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line
-HTTP-client program, such as cURL from www.haxx.se.
-The following example shows a Windows command to upload all files of type .htm from the current directory to
-VIRTEL:
-for %F in (*.htm) do curl -v -F "file=@%F;type=text/html" -u
-virdba:virdbapw http://192.168.235.30:41001/SECURE/virmsg.txt+uplbas
-1. Incoming calls
-82
-In this example:
+
+You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
+The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
+
+::
+
+    for %F in (*.htm) do curl -v -F "file=@%F;type=text/html" -u
+    virdba:virdbapw http://192.168.235.30:41001/SECURE/virmsg.txt+uplbas
+
+In this example: 
 *.htm
 the files to be uploaded
 virdba:virdbapw
@@ -14888,5 +14835,10 @@ Index
 .. |image71| image:: images/media/image71.png
 .. |image72| image:: images/media/image72.png
 .. |image73| image:: images/media/image73.png
-.. |image73| image:: images/media/image74.png
-.. |image73| image:: images/media/image75.png
+.. |image74| image:: images/media/image74.png
+.. |image75| image:: images/media/image75.png
+.. |image76| image:: images/media/image76.png
+.. |image77| image:: images/media/image77.png
+.. |image78| image:: images/media/image78.png
+.. |image79| image:: images/media/image79.png
+.. |image80| image:: images/media/image80.png
