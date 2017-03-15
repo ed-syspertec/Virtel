@@ -3175,6 +3175,7 @@ that the name of the target directory is to be found in the definition of the e-
  
     P1=Update            P2=Suppress             P3=Return
     P6=1st page          P7=Page-1               P8=Page+1              P12=Edit
+
 *List of rules associated with UPLOAD*
 
 ::
@@ -3199,9 +3200,11 @@ that the name of the target directory is to be found in the definition of the e-
 
     P1=Update                          P3=Return                    Enter=Add
     P4=Activate                        P5=Inactivate                P12=Entry P.
+
 *Page upload by HTTP with cookie : Rule $COOKIE$ of the HTTP line*    
 
 ::
+
     DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
     Name          ===> WHT00200              Rule priority is per name
     Status        ===> ACTIVE                Mon, 24 Sep 2001 14:19:14
@@ -3224,7 +3227,6 @@ that the name of the target directory is to be found in the definition of the e-
     P1=Update                          P3=Return                    Enter=Add
     P4=Activate                        P5=Inactivate                P12=Entry P.
 
-    
 *Page upload by HTTP with cookie : Rule WEB2HOST of the HTTP line*
 
 1.6.3.2. Procedure for page upload secured by cookie
@@ -3268,7 +3270,9 @@ that the name of the target directory is to be found in the definition of the e-
 
 5. Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:
 
-|image7| *Page upload by HTTP with cookie : Confirmation of file uploadr*
+|image7|
+
+*Page upload by HTTP with cookie : Confirmation of file uploadr*
 
 From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”. 
 
@@ -3285,7 +3289,8 @@ The following steps show how to upgrade your configuration based on entry point 
 
 1. In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
 
-|image77| *Page upload by HTTP with signon : Transaction dirlist*
+|image77|
+*Page upload by HTTP with signon : Transaction dirlist*
 
 2. Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
 
@@ -3301,25 +3306,35 @@ The following steps show how to upgrade your configuration based on entry point 
 
 1. Display the upload4.htm page by entering the URL http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
 
-|image8| *Page upload by HTTP with signon : Entering the userid and password*
+|image8|
+
+*Page upload by HTTP with signon : Entering the userid and password*
 
 The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
 
 2. After entering the user name and password, the upload4.htm page will be displayed:
 
-|image9| *Page upload by HTTP with signon : Displaying the upload4.htm page*
+|image9| 
+
+*Page upload by HTTP with signon : Displaying the upload4.htm page*
 
 3. Press the “Browse” button to display the file selection dialog:
 
-|image10| *Page upload by HTTP with signon : File selection dialog*
+|image10| 
+
+*Page upload by HTTP with signon : File selection dialog*
 
 4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
 
-|image11| *Page upload by HTTP with signon : Sending the file*
+|image11| 
+
+*Page upload by HTTP with signon : Sending the file*
 
 5. Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
 
-|image12| *Page upload by HTTP with signon : Confirmation of file upload*
+|image12| 
+
+*Page upload by HTTP with signon : Confirmation of file upload*
 
 Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
 
@@ -3331,13 +3346,17 @@ The VIRTEL administrator can upload pages to a VIRTEL directory using the drag a
 
 After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
 
-|image13| *Drag and drop upload interface*
+|image13| 
+
+*Drag and drop upload interface*
 
 The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
 
 1.6.5.2. Displaying upload results
 
-|image14| *Displaying upload results*
+|image14| 
+
+*Displaying upload results*
 
 The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
 
@@ -3349,27 +3368,23 @@ The summary is not displayed when files are dragged and dropped one at a time.
 
 In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
 
-|image15| *Upload summary report*
+|image15| 
+
+*Upload summary report*
 
 1.6.5.4. Extracting upload results as an Excel spreadsheet
 
-|image16|
-
-The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
-
-::
-
+|image16| The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
 
 +-----------------+------------------------+--------------------------+-------------------------------+
 | Directory       | File name              | Report                   | Time                          |
 +=================+========================+==========================+===============================+ 
 | CLI-DIR         | custom.css             | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
++-----------------+------------------------+--------------------------+-------------------------------+
 | CLI-DIR         | custom.js              | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
 +-----------------+------------------------+--------------------------+-------------------------------+
 
-|image17|
-
-The Delete button allows the administrator to clear the results log.
+|image17| The Delete button allows the administrator to clear the results log.
 
 1.6.6. Uploading pages in batch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3384,3679 +3399,1651 @@ The following example shows a Windows command to upload all files of type .htm f
     for %F in (*.htm) do curl -v -F "file=@%F;type=text/html" -u
     virdba:virdbapw http://192.168.235.30:41001/SECURE/virmsg.txt+uplbas
 
-In this example: 
-*.htm
-the files to be uploaded
+In this example:
+
+\*.htm
+    the files to be uploaded
+
 virdba:virdbapw
-userid and password for VIRTEL
+    userid and password for VIRTEL
+
 192.168.235.30:41001
-identifies the VIRTEL HTTP line
+    identifies the VIRTEL HTTP line
+
 virmsg.txt
-page template for displaying upload result messages
+    page template for displaying upload result messages
+
 uplbas
-external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See “Uploading
-pages by HTTP (secured by signon)”, page 75 for a list of upload transactions.
-Note: %F appears twice in the command shown above. In conformance with the syntax requirements of the Windows
-command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you
-execute the command from within a command (.cmd) file.
+    external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See “Uploading pages by HTTP (secured by signon)”, page 75 for a list of upload transactions.
+
+.. note::
+
+    %F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you execute the command from within a command (.cmd) file.
+
 1.6.6.2. The upl2virt command procedure
-For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL
-from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL
-commands as described in the previous section.
+
+For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
+
 1.6.6.2.1. Pre-requisites
+
 upl2virt requires as a pre-requisite the cURL package described in the previous section.
-Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package
-allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then
-upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
+
+Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
 the command window.
+
 1.6.6.2.2. Installation
+
 upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
-http://n.n.n.n:41001/upl2virt.cmd (where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd
-file in a directory in your path (for example, C:\WINDOWS).
+
+::
+
+    http://n.n.n.n:41001/upl2virt.cmd 
+
+where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:\WINDOWS).
+
 1.6.6.2.3. Using upl2virt at the command prompt
-To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the
-file(s) to be uploaded, and execute the command:
-upl2virt [-u userid:password] -d directory -a n.n.n.n
-[-p port] [-r] [-f ctlfile] [-k] [file1 file2 ...]
+
+To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:
+
+::
+
+    upl2virt [-u userid:password] -d directory -a n.n.n.n
+             [-p port] [-r] [-f ctlfile] [-k] [file1 file2 ...]
+
 In the above command:
-1. Incoming calls
-83
+
 userid:password
-is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified
-without the password, then upl2virt will prompt for password.
+    is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
 directory
-is the name of the target VIRTEL directory (for example, CLI-DIR)
+    is the name of the target VIRTEL directory (for example, CLI-DIR)
 n.n.n.n
-is the IP address of VIRTEL
+    is the IP address of VIRTEL
 port
-is the VIRTEL administration port number (default 41001).
-Note: this is the port number for the WEB2HOST entry point, not the port number associated with the directory you
-are uploading to.
+    is the VIRTEL administration port number (default 41001).
+
+.. note::
+    This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.
+
 ctlfile
-specifies the name of a control file containing a list of file names to be uploaded
+    specifies the name of a control file containing a list of file names to be uploaded
+
 file1 file2 ...
-are the names of files to be uploaded
--r
-specifies recursion into subdirectories
--k
-keeps the command window open after the last upload
-If no file names are specified, and no control file is specified, the default is to upload all web elements from the current
-directory (and also from all subdirectories if the –r option is specified).
+    are the names of files to be uploaded
+\-r
+    specifies recursion into subdirectories
+\-k
+    keeps the command window open after the last upload
+
+If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the –r option is specified).
+
 1.6.6.2.4. Using upl2virt from Windows Explorer
-The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having
-selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the
-“Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.
-To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the
-“c:\Documents and Settings\username\SendTo” folder, where username is your Windows username. If you cannot see
-the SendTo folder, then click on “Tools” – “Folder options” – “View”, tick the option “Display hidden files and folders”,
-and click “OK”.
-In the “SendTo” folder, right click and select “New” – “Shortcut”. Then click “Browse”, navigate to the place where you
-stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as
-“Upload to VIRTEL”. Then click “Finish”.
-You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose
-“Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field
-with parameters as shown in the example below:
-C:\WINDOWS\upl2virt.cmd -u MYUSERID -d CLI-DIR -a 10.1.12.101
-–k
+
+The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.
+
+To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:\Documents and Settings\username\SendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” – “Folder options” – “View”, tick the option “Display hidden files and folders”, and click “OK”.
+
+In the “SendTo” folder, right click and select “New” – “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”.
+
+You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:
+
+::
+
+    C:\WINDOWS\upl2virt.cmd -u MYUSERID -d CLI-DIR -a 10.1.12.101 –k
+
 where:
+
 MYUSERID
-is your VIRTEL userid
-1. Incoming calls
-84
+    is your VIRTEL userid
 CLI-DIR
-is the name of the VIRTEL directory that this shortcut will upload to
+    is the name of the VIRTEL directory that this shortcut will upload to
 10.1.12.101
-is the IP address of VIRTEL.
+    is the IP address of VIRTEL.
+
 You may omit the –u MYUSERID parameter and upl2virt will prompt you for your userid.
+
 1.7. Web Access Customization
+-----------------------------
+
 The VIRTEL Web Access user can use the Settings menu to modify certain options such as font size, 3270 key mappings,
 and color schemes. The user’s settings are stored in a browser local storage which remains valid so long as cookies are
 not deleted from the workstation. The settings stored in the user’s local storage override the default settings for
 VIRTEL Web Access which are stored in the w2hparm.js file. See “Global modification of Web Access settings”, page 99.
+
 1.7.1. Web Access Settings menu
-When the user clicks this button on the VIRTEL Web Access toolbar, the window shown below opens:
-1. Incoming calls
-85
-VIRTEL Web Access Settings menu (part 1 of 3)
-1. Incoming calls
-86
-VIRTEL Web Access Settings menu (part 2 of 3)
-1. Incoming calls
-87
-VIRTEL Web Access Settings menu (part 3 of 3)
-1.7.2. Contents of the fields
-Font Size
-Size of font. Possible values are:
-Window
-VIRTEL calculates the font size to fit the browser’s window size.
-Screen
-VIRTEL calculates the font size to fit the display screen size.
-nn
-VIRTEL uses a fixed font size. nn is the size in “points”: 8pt, 10pt, 12pt, 14pt, or 16pt.
-1. Incoming calls
-88
-Font family
-Name of font. The panel displays a list of fonts known to VIRTEL and installed on the workstation, in addition to the
-fonts supplied by VIRTEL. If the required font is not in the list, click the ellipsis to the right of the selection box and
-type the name of the font in the box. Any fixed-width font installed on the workstation may be specified.
-Auto-capture
-When activated, causes a snapshot of each screen displayed by the host application to be automatically appended to
-the screen capture window.
-Auto-print
-When activated, causes the Windows print function to be launched automatically in the print window as a result of
-a screen snapshot or print request.
-Cursor
-The shape of the 3270 cursor. The possible settings are:
-Smart
-The character at the cursor position is underlined and his position and color changes to always remain visible for
-any character (depending on the selected character's style : bgnd color, reverse, underlined).
-Block
-The character at the cursor position is in reverse video
-Blink
-The character at the cursor position is in blinking reverse video
-Note: For Internet Explorer versions 6 and 7, Blink is the same as Block
-Vertical line, Horiz line
-When activated, causes the position of the cursor to be marked with a vertical line and/or a horizontal line extending
-to the edges of the 3270 window (also known as a “crosshair cursor”).
-Esc key to Alt+F3
-Defines the mapping of workstation keyboard to 3270 keys. The value “no” indicates that the keystroke is ignored.
-For example the 3270 PA1 key may be assigned to the PageUp key, to the Alt+PageUp key, and/or to the Alt+F1 key
-on the user’s keyboard.
-Note: For Internet Explorer, the “Ctrl key” setting refers to the right Ctrl key. For Firefox, Chrome, and Safari the “Ctrl
-key” setting applies to both the left and right Ctrl keys identically. For Firefox, the “Keypad Enter” setting is ignored.
-For Internet Explorer versions 6, 7, and 8, a browser helper object (virtkey.dll) must be installed to allow recognition
-of the keypad Enter key. This BHO is not needed for Internet Explorer 9.
-The ChgCur setting allows the user to toggle the cursor between the “bar”, “block”, “bar+crosshairs”, and
-“block+crosshairs” style.
-Keypad /*-+.
-Allows keys on the numeric keypad to be assigned to certain 3270 functions including PA1, PA2, Tab, Backtab, and
-Newline. Also allows the decimal point on the numeric keypad to be remapped to comma for European countries.
-Note: Remapping of the numeric keypad is only supported for Internet Explorer, Chrome, and Safari. Keypad settings
-are ignored for Firefox and Opera.
-Double click
-Specifies the action taken for a mouse double-click. Possible settings are:
-Word
-draws a box around the word that the mouse is pointing in preparation for a copy or cut operation.
-1. Incoming calls
-89
-ENTER
-Activates the “point-and-shoot” function. When set to ENTER, double clicking the mouse moves the cursor to the
-mouse position and sends a 3270 ENTER to the host application.
-no
-indicates that the double-click function is deactivated.
-URL hotspots
-When activated, any text starting with http://, https://, mailto://, file://, news:// or ftp:// (except in 3270 input fields)
-is transformed into a hyperlink.
-PF key hotspots
-When activated, any text starting with Fnn= or PFnn= (except in 3270 input fields) is transformed into a clickable area.
-Clicking on the area is equivalent to pressing PF nn.
-Paste erase EOF
-When activated, a paste operation will erase the rest of an input field to the right of the pasted text
-Move cursor on activate
-This setting takes effect only when the user clicks on a background 3270 window in order to bring the window to the
-foreground. When the option is activated, the window is brought to the foreground and the 3270 cursor moves to
-the location in the window where the user clicked; the copy/paste box and context menu are removed if present.
-When the option is not activated, the window is brought to the foreground and the cursor remains in its previous
-position; the copy/paste box and context menu remain displayed if present.
-Style
-Allows a choice of color schemes by selection of CSS style sheet. By default, possible values are:
-3270
-extended colors on black background
-Gray
-extended colors on gray background
-White
-gray characters on white background
-Print style
-Allows a choice of color schemes for the screen capture window. By default, possible values are:
-3270
-extended colors on black background
-Color
-extended colors on white background
-White
-black characters on white background
-Response time monitor
-When activated, two counters are displayed on the status line below the 3270 screen, for example: H:110ms J:31ms.
-The first number (H=Host) represents the response time of the VIRTEL server, from the last Enter or PF key until
-the receipt of the most recent message from the server. The second number (J=JavaScript) is the time taken by the
-browser scripts to prepare the screen for display. The sum of the two numbers is the response time perceived by the
-user.
-Note: The response time monitor is active in Ajax mode only
-1. Incoming calls
-90
-Omit nulls from input
-When activated, VIRTEL Web Access will remove all nulls from modified input fields before sending to the server, in
-strict conformance with 3270 protocol. When not activated, leading and embedded nulls are converted to blanks,
-and only trailing nulls are suppressed, which many users find more convenient.
-Keep macro pad open
-If checked, the macro window remains open all the time. If not, it disappears as soon as you have clicked a macro.
-Keep keypad open
-If checked, the keypad window remains open all the time. If not, it disappears as soon as you have clicked a function
-key in it.
-Highlight input fields
-Permits the user to display a different background color for 3270 input fields. When this option is selected, all input
-fields will have a class designator HIGHLIGHTED_INPUTFIELD in addition to their regular class. The style definition
-may be overridden by the administrator in the custom.css file.
-Remap caret to logical not
-If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X'5F', which is the “logical not” sign (¬) in
-codepage 037/1140.
-Adapt font size ratio
-If checked, characters will be stretched to fill the window. This option functions in Internet Explorer versions 9 and
-later, in Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this option has no effect.
-Character spacing
-If checked, blank space will be added between characters if necessary to make the 3270 screen fill the browser
-window horizontally.
-Line spacing
-If checked, blank space will be added between lines if necessary to make the 3270 screen fill the browser window
-vertically. This option is incompatible with IE6 and will be ignored if used with IE6. Additionally, if “Adapt font size
-ratio” is specified and the browser supports it, then the “Line spacing” option is ignored.
-1.7.3. Associated functions
-After modifying the Settings menu, the user presses one of the buttons:
-Save
-save the options in browser local storage.
-Cancel
-exit without saving the modifications made to this menu.
-Defaults
-returns all of the settings to their default values. The default values are specified by the installation in w2hparm.js.
-Deletion of browser cookies may delete the values saved in local storage. For Internet Explorer, ensure that the option
-“Delete browsing history on exit” in Tools – Internet Options” is not checked.
-1.7.4. Web Access Settings menu
-When the user clicks this button on the VIRTEL Web Access toolbar the window shown below opens.
-1. Incoming calls
-91
-VIRTEL Web Access Settings menu (Display tab)
-1. Incoming calls
-92
-VIRTEL Web Access Settings menu (Miscellaneous tab)
-1. Incoming calls
-93
-VIRTEL Web Access Settings menu (Key Mappings tab)
-1. Incoming calls
-94
-VIRTEL Web Access Settings menu (Import tab)
-1.7.4.1. Display tab parameters
-Font Size
-Size of font. Possible values are :
-Window
-VIRTEL calculates the font size to fit the browser’s window size.
-Screen
-VIRTEL calculates the font size to fit the display screen size.
-1. Incoming calls
-95
-nn
-VIRTEL uses a fixed font size. nn is the size in “points”: 8pt, 10pt, 12pt, 14pt, or 16pt.
-Font family
-Name of font. The panel displays a list of fonts known to VIRTEL and installed on the workstation, in addition to the
-fonts supplied by VIRTEL. If the required font is not in the list, click the ellipsis to the right of the selection box and
-type the name of the font in the box. Any fixed-width font installed on the workstation may be specified.
-Cursor
-The shape of the 3270 cursor. The possible settings are:
-Smart
-The character at the cursor position is underlined and his position and color changes to always remain visible for
-any character (depending on the selected character's style : bgnd color, reverse, underlined).
-Bar
-The character at the cursor position is underlined
-Block
-The character at the cursor position is in reverse video
-Blink
-The character at the cursor position is in blinking reverse video
-Note: For Internet Explorer versions 6 and 7, Blink is the same as Block
-Vertical line, Horiz line
-When activated, causes the position of the cursor to be marked with a vertical line and/or a horizontal line
-extending to the edges of the 3270 window (also known as a “crosshair cursor”).
-To add or remove a style, see “Customize display style”, page 280)
-Administrators can add some new customs style as describe in the section “How to customize display style”, page 280
-Display Style
-Allows a choice of color schemes by selection of CSS style sheet. Possible values are :
-3270
-extended colors on black background
-Gray
-extended colors on gray background
-White
-gray characters on white background
-Administrators can add some new customs print style as describe in the section “How to customize print style”,
-page 281
-Print style
-Allows a choice of color schemes for the screen capture window. Possible values are :
-3270
-extended colors on black background
-Color
-extended colors on white background
-White
-black characters on white background
-1. Incoming calls
-96
-Miscellaneous
-Highlight input fields
-Permits the user to display a different background color for 3270 input fields. When this option is selected, all
-input fields will have a class designator HIGHLIGHTED_INPUTFIELD in addition to their regular class. The style
-definition may be overridden by the administrator in the custom.css file.
-Adapt font size ratio
-If checked, characters will be stretched to fill the window. This option functions in Internet Explorer versions 9 and
-later, in Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this option has no effect.
-Character spacing
-If checked, blank space will be added between characters if necessary to make the 3270 screen fill the browser
-window horizontally.
-Line spacing
-If checked, blank space will be added between lines if necessary to make the 3270 screen fill the browser window
-vertically. This option is incompatible with IE6 and will be ignored if used with IE6. Additionally, if “Adapt font size
-ratio” is specified and the browser supports it, then the “Line spacing” option is ignored.
-1.7.4.2. Miscellaneous tab parameters
-Double click
-Specifies the action taken for a mouse double-click. Possible settings are :
-off
-Indicates that the double-click function is deactivated.
-Word Selection
-Draws a box around the word that the mouse is pointing in preparation for a copy or cut operation.
-ENTER
-Activates the “point-and-shoot” function. When set to ENTER, double clicking the mouse moves the cursor to the
-mouse position and sends a 3270 ENTER to the host application.
-Edition
-Paste erase EOF
-When activated, a paste operation will erase the rest of an input field to the right of the pasted text
-Map Ctrl+V to Paste by Typing
-Indicates that Ctrl+V will act “paste by typing”, i.e cursor will be positionned at the end of the pasted text instead
-of remaining at the position it was before using Ctrl+V.
-Move cursor on activate
-This setting takes effect only when the user clicks on a background 3270 window in order to bring the window
-to the foreground. When the option is activated, the window is brought to the foreground and the 3270 cursor
-moves to the location in the window where the user clicked; the copy/paste box and context menu are removed
-if present. When the option is not activated, the window is brought to the foreground and the cursor remains in
-its previous position; the copy/paste box and context menu remain displayed if present.
-Preserve insertion mode
-This setting takes effect only when the keyboard is in insertion mode. When the option is activated, the cursor will
-remain in insert mode until the user returns to normal entry mode by using the “insert” key again, otherwise the
-cursor returns to normal whenever a transmission key is used.
-1. Incoming calls
-97
-Pads
-Keep macro pad open
-If checked, the macro window remains open all the time. If not, it disappears as soon as you have clicked a macro.
-Keep keypad open
-If checked, the keypad window remains open all the time. If not, it disappears as soon as you have clicked a
-function key in it.
-Hotspots
-Display URL hotspots
-When activated, any text starting with http, https, mailto, file, or ftp (except in 3270 input fields) is transformed
-into a hyperlink.
-Display PF key hotspots
-When activated, any text starting with Fnn= or PFnn= (except in 3270 input fields) is transformed into a clickable
-area. Clicking on the area is equivalent to pressing PF nn.
-Capture
-Auto-capture
-When activated, causes a snapshot of each screen displayed by the host application to be automatically appended
-to the screen capture window.
-Bring capture to the foreground
-When activated, causes the capture windows to come in the foreground whenever the cature icon is used.
-Miscellaneous
-Auto-print
-When activated, causes the Windows print function to be launched automatically in the print window as a result
-of a screen snapshot or print request.
-Response time monitor
-When activated, two counters are displayed on the status line below the 3270 screen, for example: H:110ms
-J:31ms. The first number (H=Host) represents the response time of the VIRTEL server, from the last Enter or PF
-key until the receipt of the most recent message from the server. The second number (J=JavaScript) is the time
-taken by the browser scripts to prepare the screen for display. The sum of the two numbers is the response time
-perceived by the user.
-Note: The response time monitor is active in Ajax mode only.
-Omit nulls from input
-When activated, VIRTELWeb Access will remove all nulls from modified input fields before sending to the server, in
-strict conformance with 3270 protocol. When not activated, leading and embedded nulls are converted to blanks,
-and only trailing nulls are suppressed, which many users find more convenient.
-Remap caret to logical not
-If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X'5F', which is the “logical not” sign
-(¬) in codepage 037/1140.
-1.7.4.3. Key Mappings tab parameters
-This tab is used to map specific functions to certain keyboard keys. The tab contains five sub categories whose names
-are explicit enough to not require more precision.
-1. Incoming calls
-98
-1.7.4.4. Import / Export tab parameters
-This tab lets the user to save and restore his settings into (or from) a local file. This backup method is different and
-independent of the method used when the "save" button is pressed. (See below).
-1.7.5. Where user settings are stored
-When the user press the "save" button, his Web Access settings and macros are stored in browser local storage.
-For Internet Explorer 6, local storage is stored in the folder :
-%userprofile%/UserData
-For Internet Explorer 8 and 9, local storage is stored in the folder :
-%userprofile%/Local Settings/Application Data/Microsoft/Internet Explorer/DOMStore
-Note: to see DOMStore you must untick “hide protected operating system files” in Windows folder options.
-For other browsers, see
-http://www.sitepoint.com/building-web-pages-with-local-storage/
-1.7.6. Global modification of Web Access settings
-Those installations who wish to modify the default Web Access settings for all users can do so by uploading the
-w2hparm.js file. This file is included in the sources.zip file which can be obtained from the VIRTEL Web Access menu
-accessible by URL http://n.n.n.n:41001
-The w2hparm.js file as delivered contains the following source code:
-// w2hparm default values
-// see w2hparmdefns in js01.js for parameters and allowable values
-var w2hparm = {
-"fontsize":"window",
-"ctrl":"ENTER",
-"enter":"Newline",
-"home":"Home",
-"end":"ErEof",
-"pgup":"PF7",
-"pgdn":"PF8",
-"pause":"CLEAR",
-"style":"3270"};
-w2hparm.js: Default settings for VIRTEL Web Access
-Default values may be changed or added.
-For example, installations who wish to map the 3270 ATTN key to the Esc (Escape) key for use with Multisession
-applications such as NVAS (IBM® NetView™ Access Services) can add the following instruction to the w2hparm.js file:
-"escape":"ATTN",
-Modifications to the global settings are only effective after the expiry of the w2hparm.js file in the browser’s cache
-which occurs at midnight each day. A user can force the use of the updated global settings file by clearing the browser
-cache, deleting any cookies associated with the VIRTEL server, and refreshing the 3270 page using the Ctrl-R key.
-After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s CLI-DIR directory by means of the “Upload” link
-on the VIRTEL Web Access menu (URL http://n.n.n.n:41001). Then you must check the Entry Point (usually CLIWHOST)
-1. Incoming calls
-99
-and check that the transaction whose “External name” is w2h and whose “Check URL Prefix” field is set to /w2h/
-w2hparm-js specifies CLI-DIR in the “Application” field. For the CLIWHOST entry point this is transaction CLI-03P.
-The list of keywords and possible values which can be coded in the w2hparm.js file is shown below:
-Keyword Caption Possible values
-"fontsize" Font size "window", "screen", "8", "10", "12", "14", "16"
-"font" Font family "font name"
-"autocapture" Auto-capture true, false
-"autoprint" Auto-print true, false
-"cursor" Cursor "Bar", "Blink", "Block"
-"vline" Vertical line true, false
-"hline" Horiz line true, false
-"esc" Esc key "no", "ATTN", "CLEAR", "Reset"
-"ctrl" Ctrl key "no", "ENTER", "Newline"
-"cmdleft" Left Cmd key "no", "Reset"
-"cmdright" Right Cmd key "no", “ENTER"
-"enter" Enter key "ENTER", "Newline"
-"home" Home key "no", "Home"
-"end" End key "no", "ErEof", "End"
-"pgup" PageUp key "PF7", "PF19", "PA1", "no"
-"pgdn" PageDown key "PF8", "PF20", "PA2", "no"
-"pause" Pause key "CLEAR", "ATTN", "PA3", "no"
-"kpenter" Keypad Enter "ENTER", "Newline"
-"shiftenter" Shift+Enter "no","ENTER", "Newline"
-"shiftesc" Shift+Esc "no", "ATTN", "CLEAR", "Reset"
-"shiftins" Shift+Insert "no", "Dup"
-"shiftdel" Shift+Delete "no", "ErEof"
-"shifthome" Shift+Home "no", "FieldMark", "Home"
-"shiftend" Shift+End "no", "ErEof", "End"
-"shiftpgdn" Shift+PageDown "no", "PA3"
-"ctrlenter" Ctrl+Enter "no","ENTER", "Newline"
-"ctrlins" Ctrl+Insert "no", "PA1"
-"ctrldel" Ctrl+Delete "no", "PA2", "ErEof"
-"ctrlhome" Ctrl+Home "no", "PA3", "Home", "ChgCur"
-"ctrlend" Ctrl+End "no", "ErEof", "End"
-"altins" Alt+Ins "no", "PA1"
-"althome" Alt+Home "no", "PA2"
-"altpgup" Alt+PageUp "no", "PA1"
-"altpgdn" Alt+PageDown "no", "PA2"
-"altpause" Alt+Pause "no", "ATTN", "CLEAR", "PA3"
-"altf1" Alt+F1 "no", "PA1", "ENTER"
-"altf2" Alt+F2 "no", "PA2"
-1. Incoming calls
-100
-Keyword Caption Possible values
-"altf3" Alt+F3 "no", "PA3", "ChgCur"
-"kpslash" Keypad / "/", "PA1"
-"kpaster" Keypad * "*", "PA2"
-"kpminus" Keypad - "-", "Backtab"
-"kpplus" Keypad + "+", "Tab", "Newline"
-"kpdot" Keypad . ".", ","
-"dblclick" Double Click "Word", "ENTER", "no"
-"urlhotspot" URL hotspots true, false
-"pfkhotspot" PF key hotspots true, false
-"pasteereof" Paste erase EOF true, false
-"movecursor" Move cursor on activate true, false
-"style" Style "3270", "gray", "white"
-"printstyle” Print style "3270", "color", "white"
-"rtm" Response time monitor true, false
-"omitnulls" Omit nulls from input true, false
-"keepmacpad" Keep macro pad open true, false
-"keepkeypad" Keep keypad open true, false
-"hiliteinput" Highlight input fields true, false
-"caretnot" Remap caret to logical not true, false
-"adaptfontratio" Adapt font size ratio true, false
-"charspace" Character spacing true, false
-"linespace" Line spacing true, false
-"settingsGUI" Settings user interface type v2
-"preserveinsmode" Preserve insert mode true, false
-w2hparm.js: List of keywords and possible values
-1.7.7. Choosing Web Access settings pattern
-User interface settings may be presented under two different forms which are shown at the beginning of this section.
-The desired form may be defined using the variable "settingsGUI" present in the w2hparms.js file. The possible values
-for this parameter are :
-version
-Allows a choice beetwen older and or newest form. Possible values are:
-v2
-When activated, only the newest user setting interface is available in the toolbar. The settings icone will remain
-the same as actually.
-no value
-When none of the previous values are activated, only the older user setting interface is available in the toolbar.
-width
-Allows to change the width of the setting form.
-1. Incoming calls
-101
-height
-Allows to change the heigth of the setting form.
-Note: Version 2 is more powerful and offers more setting possibilities of the keyboard than version 1 . Version 1 will be
-dropped in the next release of VIRTEL.
-The example below shows how to override the default settingsGUI parameter using a custom.js file :
-/*
-* Configuration of the settings dialog GUI.
-*/
-w2hparm.settingsGUI =
-{
-/*
-* Select which settings dialog version(s) will be accessible in the VWA toolbar.
-* Possible values are :
-* - "v1+v2" ...... Allow both settings dialogs (OLD and NEW)
-* - "v2" ......... Allow NEW settings dialog only
-* - otherwise ... Allow OLD settings dialog only
-*/
-version : "v2",
-/* Width of the settings dialog */
-width : 540,
-/* Height of the settings dialog */
-height : 730
-};
-custom.js: Choosing the Web Access settings interface form
-1.7.8. Hiding Web Access settings
-To prevent the user from overriding the site defaults, the administrator can remove individual settings from the user’s
-Web Access Settings menu. The names of settings to be hidden are specified in the w2hparmHide variable in the
-w2hparm.js file.
-The example below shows how to hide the default font, font size, and style settings from the menu:
-// w2hparm default values
-var w2hparm = {
-"fontsize":"window",
-"font":"Lucida Console",
-"ctrl":"ENTER",
-"enter":"Newline",
-"home":"Home",
-"style":"3270"};
-var w2hparmHide = ["font", "fontsize", "style"];
-w2hparm.js: Hiding VIRTEL Web Access settings
 
-===========================================
+|image18| When the user clicks this button on the VIRTEL Web Access toolbar, the window shown below opens:
 
-    One of the methods which VIRTEL may use to identify users is by
-    means of a security code which the user presents to VIRTEL, either
-    in an incoming e-mail, or by means of a “cookie” included in an HTTP
-    request by the browser. A user which VIRTEL recognizes in this way
-    is known as a “Correspondent”. VIRTEL stores the list of
-    correspondents in a VSAM file known as the “Correspondent file”,
-    also known as the “VIRHTML” file.
+|image19|
 
-    VIRTEL uses the correspondent file for the following purposes:
-
--  the rules of an HTTP line permit VIRTEL to distinguish between
-   correspondents and non-correspondents when processing incoming HTTP
-   requests. When the requesting user is identified as a correspondent,
-   a special entry point may be assigned, or a set of rules specific to
-   the user may be executed. Refer to “Rules” in the VIRTEL Connectivity
-   Reference manual for further details.
-
--  the rules of an HTTP line may assign a specific LU name to a
-   correspondent connecting to a host application via web access. This
-   is known as “LU nailing” and is described in more detail in the
-   VIRTEL LU Nailing HOWTO manual.
-
--  a correspondent may be authorized to upload HTML pages and other
-   elements into an HTMLTRSF file. For further details, refer t\ `o
-   “Uploading pages by SMTP”, page 68 <#_bookmark78>`__ and `“Uploading
-   pages by HTTP (secured by cookie)”, page 69 <#_bookmark79>`__.
-
-    There are two types of correspondent: an e-mail correspondent and a
-    local correspondent:
-
--  An **e-mail correspondent** is always defined by the VIRTEL
-   administrator. When the administrator activates an e- mail
-   correspondent, VIRTEL sends an e-mail message to the correspondent
-   containing the security code. The correspondent then either replies
-   to the e-mail message or clicks on a link in the message to connect
-   to VIRTEL.
-
--  A **local correspondent** is activated by the correspondent using a
-   procedure known as “self-registration”. The self- registration
-   procedure creates a clickable link which delivers the security code
-   to the correspondent’s browser via a cookie. The VIRTEL administrator
-   may optionally pre-define or change the characteristics of a
-   correspondent by using the correspondent management sub-application.
-   Self-registration is described in the VIRTEL LU Nailing HOWTO manual.
-
-    The correspondent management sub-application, which allows the
-    VIRTEL administrator to define the parameters associated with a
-    correspondent, is accessible by pressing [PF5] in the VIRTEL
-    configuration menu, or [PF12] in the system services sub-application
-    menu, or from the VIRTEL Multi-Session screen via an application
-    referencing the module VIR0041A.
-
-    When security is active, access to the correspondent management
-    sub-application from the configuration menu or from the system
-    services sub-application menu is controlled by the resource
-    $$PCPC$$.
-
-    When it is accessed by a transaction, the rules of security
-    management of transactions will apply. Security management is
-    described under the heading “Security” 282.
-
-    This sub-application initially displays a summary screen of existing
-    definitions presented in alphanumeric order. Access to the detail of
-    a correspondent is achieved by positioning the cursor and pressing
-    [PF12].
-
-+---------------+-----------------+-----------------+----------------+
-| P1=Update     |     P2=Delete   |     P3=Return   |     P6=Rules   |
-+===============+=================+=================+================+
-| P7=Previous   |     P8=Next     |     P12=Edit    |                |
-+---------------+-----------------+-----------------+----------------+
-
-    *Summary of correspondents*
-
-+---------------+------------------+-------------+
-| P1=Update     |     P3=Return    | Enter=Add   |
-+===============+==================+=============+
-| P4=Activate   |     P5=Disable   | P6=Rules    |
-+---------------+------------------+-------------+
-
-    *Correspondent detail screen (e-mail correspondent)*
-
-+---------------+----+------------------+-------------+
-| P1=Update     |    |     P3=Return    | Enter=Add   |
-+===============+====+==================+=============+
-| P4=Activate   |    |     P5=Disable   | P6=Rules    |
-+---------------+----+------------------+-------------+
-
-    *Correspondent detail screen (local correspondent)*
-
-Id
-~~
-
-    For an e-mail correspondent: the e-mail address of the correspondent
-
-    For a local correspondent: a unique identifier generated by the
-    self-registration procedure, or assigned by the VIRTEL administrator
-
-Type of Id
-~~~~~~~~~~
-
-    **1**
-
-    this is an e-mail correspondent
-
-2
-~
-
-    this is a local correspondent whose security code is generated at
-    activation time and subsequently remains constant
-
-3
-~
-
-    this is a local correspondent whose security code changes each time
-    it is accessed
-
-Activation message
-~~~~~~~~~~~~~~~~~~
-
-    Message received by the user at time of activation of his account.
-    This message can contain a link allowing the user to connect to a
-    host application or to open the upload.htm page with automatic
-    installation of an authorization cookie. The activation message may
-    include the following variables:
-
-&R
-~~
-
-    meaning “insert a blank line”
-
-&C
-~~
-
-    meaning “insert security code”. The activation security code is
-    inserted into the message in the form VirtelCookie=xxx
-
-Rule Set
-~~~~~~~~
-
-    (optional) The name of the rule set associated with this user.
-
-Directory
-~~~~~~~~~
-
-    (optional) Name of the directory into which this correspondent may
-    upload files.
-
-Last contact
-~~~~~~~~~~~~
-
-    Date and time of the last transfer, and the IP address of the
-    correspondent.
-
-Contacts
-~~~~~~~~
-
-    The number of contacts since the last activation.
-
-    In order to be operational, a correspondent account must be
-    activated. This is achieved by pressing [PF4] at the CORRESPONDENT
-    DETAIL DEFINITION screen. In the case of an e-mail correspondent,
-    VIRTEL will transmit an initial e- mail to the correspondent
-    containing the security code to be used for the transfers. The
-    message ACTIVATION WAS REQUESTED indicates that the correspondent’s
-    security code has been activated, and, in the case of an e-mail
-    correspondent, that the e-mail was sent successfully. The number of
-    contacts is reset to zero.
-
-    To activate an e-mail correspondent, the administrator must be
-    logged on to VIRTEL via an entry point containing a transaction with
-    external name $MAIL$ (application type=3) which contains, in the
-    application field, the name of the SMTP line used by VIRTEL. The
-    message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates
-    that the
-
-    $MAIL$ transaction is not defined.
-
-    A correspondent’s security code may be cancelled by deactivating
-    with the [PF5] key. The message DISABLE WAS DONE indicates that the
-    deactivation was successful.
-
-    To display the list of rules associated with this correspondent,
-    press the [PF6] key.
-
-    HTML pages and other elements such as graphics can be uploaded to
-    VIRTEL by any of the following methods:
-
-1. by e-mail (SMTP)
-
-2. by web browser (HTTP), with cookie security
-
-3. by web browser (HTTP), with signon security
-
-    Upload by SMTP allows the administrator to load HTML pages into
-    VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the
-    administrator replies to this e-mail with the pages to be uploaded
-    included as attachments. VIRTEL sends another e-mail to inform the
-    administrator that the upload was successful. The administrator
-    saves this e-mail and replies to it the next time he has a set of
-    pages to upload.
-
--  Check the definition of your SMTP line (F1 then F12 from the
-   Configuration Menu, see the VIRTEL Connectivity Reference
-   documentation).
-
--  Press F5 from the Configuration Menu and define an e-mail
-   correspondent specifying W2H-DIR as the directory name:
-
-+----------------------------+------------------+-------------+
-| P1=Update                  |     P3=Return    | Enter=Add   |
-+============================+==================+=============+
-| P4=Activate                |     P5=Disable   | P6=Rules    |
-+----------------------------+------------------+-------------+
-| ACTIVATION WAS REQUESTED   |                  |             |
-+----------------------------+------------------+-------------+
-
-    *Page upload by SMTP: Creating an e-mail correspondent*
-
-1. Activate the e-mail correspondent: see “Account activation” under the
-   heading `“Correspondent Management”, <#_bookmark67>`__ `page
-   64 <#_bookmark67>`__. This triggers the sending of an e-mail
-   containing the security code, as in the following example:
-
-    *Page upload by SMTP : activation e-mail*
-
-1. Reply to this e-mail, with the files to be uploaded (HTML pages,
-   graphics, etc) included as attachments. VIRTEL recognizes the
-   security code returned automatically by the e-mail client in the
-   “Message-id” field, and loads the attached files into the directory
-   defined in the definition of the correspondent.
-
-2. VIRTEL replies by sending an e-mail containing the result of the
-   upload. The following example shows the reply sent by VIRTEL to a
-   request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The
-   “Message-id” field in this e-mail contains the new security code. You
-   can reply to this e-mail the next time you have files to upload.
-
-    *Page upload by SMTP : upload response e-mail*
-
-    Depending on the values specified in the directory definition,
-    VIRTEL may convert the filename to upper case, and truncate the
-    filename to a maximum length, before storing it in the directory.
-    The filename after conversion and truncation must not duplicate any
-    other filename in the directory. For example, when uploading to a
-    directory defined using the default parameters (not case sensitive,
-    with maximum filename length 8), the file links.gif would be stored
-    under the name LINKS.GI
-
-    The upload.htm page allows HTML pages or graphics to be uploaded to
-    VIRTEL. The user’s identity is guaranteed by a cookie named
-    VirtelRef= whose value changes after each upload. The value of the
-    cookie is the same as the security code used for uploading by SMTP.
-
-    To upload a page, a user must:
-
--  have a valid cookie (obtained by activation of the VIRTEL e-mail
-   correspondent)
-
--  click on the link contained in the e-mail, which displays the
-   upload.htm page and loads the cookie into the browser (first time
-   only)
-
--  click the “Browse” button and select a file
-
--  click the “Send” button
-
-    The VIRTEL response is displayed in the page and is similar to the
-    response received by e-mail when uploading via SMTP.
-
-    All the elements needed for page upload by HTTP secured by cookie
-    are contained in the base configuration delivered with VIRTEL 4.27.
-    Users who upgrade to VIRTEL 4.27 while keeping their existing
-    configuration need to add certain elements to their existing
-    configuration to benefit from the new “page upload secured by
-    cookie” function.
-
-    The following steps show how to upgrade your configuration based on
-    entry point WEB2HOST. You can also carry out these steps in batch by
-    running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL
-    version 4.27. Having updated the configuration, you then need to
-    upload three new elements (upload.htm, default.js, and logo\_3.gif)
-    to the W2H- DIR directory using the existing SMTP upload method.
-
-1. In entry point WEB2HOST, define a new transaction W2H–70, with
-   external name upload. This transaction specifies VIR0041C as the
-   application name and application type 2. The “Logon message” field is
-   blank to indicate to VIRTEL that the name of the target directory is
-   to be found in the definition of the e-mail correspondent:
-
-    *Page upload by HTTP with cookie : Creating the ‘upload’
-    transaction*
-
-1. Check the definition of your SMTP line (F1 then F12 from the
-   Configuration Menu, see the VIRTEL Connectivity Reference
-   documentation).
-
-2. Press F5 from the Configuration Menu and define an e-mail
-   correspondent specifying directory name W2H-DIR and ruleset name
-   ADMRSET1 :
-
-+----------------------------+------------------+-------------+
-| P1=Update                  |     P3=Return    | Enter=Add   |
-+============================+==================+=============+
-| P4=Activate                |     P5=Disable   | P6=Rules    |
-+----------------------------+------------------+-------------+
-| ACTIVATION WAS REQUESTED   |                  |             |
-+----------------------------+------------------+-------------+
-
-    *Page upload by HTTP with cookie : Creating the e-mail
-    correspondent*
-
-1. Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :
-
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| 0             |     Days            |     ===> M:        |     T:   | W:   |     T: F:              |     S:   |          |     S:   |          |
-+===============+=====================+====================+==========+======+========================+==========+==========+==========+==========+
-| 0             |     Start time      |     ===> H:        |     M:   | S:   |     End time ===> H:   |          |     M:   |          |     S:   |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| P1=Update     |     P3=Return       |     Enter=Add      |          |      |                        |          |          |          |          |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| P4=Activate   |     P5=Inactivate   |     P12=Entry P.   |          |      |                        |          |          |          |          |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-
-    *Page upload by HTTP with cookie : Creating rule UPLOAD1B*
-
-1. Define two new rules attached to the HTTP line. The first rule, which
-   specifies $COOKIE$ as the entry point name, will be used for
-   administrators; the second rule, which specifies entry point
-   WEB2HOST, is for all other users:
-
-+-------------------+------------------------------------------------+----------------+
-| Name Status       |     Description                                |     Entry      |
-+===================+================================================+================+
-|                   |                                                |     Point      |
-+-------------------+------------------------------------------------+----------------+
-| WHT00100 ACTIVE   |     HTTP access (users authorised by cookie)   |     $COOKIE$   |
-+-------------------+------------------------------------------------+----------------+
-| WHT00200 ACTIVE   |     HTTP access (other users)                  |     WEB2HOST   |
-+-------------------+------------------------------------------------+----------------+
-
-+---------------+-------------------+-----------------+----------------+
-| P1=Update     |     P2=Suppress   |     P3=Return   |                |
-+===============+===================+=================+================+
-| P6=1st page   |     P7=Page-1     |     P8=Page+1   |     P12=Edit   |
-+---------------+-------------------+-----------------+----------------+
-
-    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2
-    14:45:34
-
-    Name ===> WHT00100 Rule priority is per name
-
-    Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
-
-    Description ===> HTTP access (users authorised by cookie) Entry
-    point ===> $COOKIE$ Target Entry Point
-
-    Parameter ===> optional &1 value
-
-    Trace ===> 1=commands 2=data 3=partner
-
-    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH
-    6=DOES NOT
-
-    0 IP Subnet ===> Mask ===>
-
-    0 HTTP Host ===>
-
-    0 eMail ===>
-
-    0 Calling DTE ===> Calling DTE address
-
-    0 Called ===> Called DTE address
-
-    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-
-    0 User Data ===>
-
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| 0             |     Days            |     ===> M:        |     T:   | W:   |     T: F:              |     S:   |          |     S:   |          |
-+===============+=====================+====================+==========+======+========================+==========+==========+==========+==========+
-| 0             |     Start time      |     ===> H:        |     M:   | S:   |     End time ===> H:   |          |     M:   |          |     S:   |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| P1=Update     |     P3=Return       |     Enter=Add      |          |      |                        |          |          |          |          |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| P4=Activate   |     P5=Inactivate   |     P12=Entry P.   |          |      |                        |          |          |          |          |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-
-    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2
-    14:45:56
-
-    Name ===> WHT00200 Rule priority is per name
-
-    Status ===> ACTIVE Mon, 24 Sep 2001 14:19:14
-
-    Description ===> HTTP access (other users)
-
-    Entry point ===> WEB2HOST Target Entry Point
-
-    Parameter ===> optional &1 value
-
-    Trace ===> 1=commands 2=data 3=partner
-
-    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH
-    6=DOES NOT
-
-    0 IP Subnet ===> Mask ===>
-
-    0 HTTP Host ===>
-
-    0 eMail ===>
-
-    0 Calling DTE ===> Calling DTE address
-
-    0 Called ===> Called DTE address
-
-    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-
-    0 User Data ===>
-
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| 0             |     Days            |     ===> M:        |     T:   | W:   |     T: F:              |     S:   |          |     S:   |          |
-+===============+=====================+====================+==========+======+========================+==========+==========+==========+==========+
-| 0             |     Start time      |     ===> H:        |     M:   | S:   |     End time ===> H:   |          |     M:   |          |     S:   |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| P1=Update     |     P3=Return       |     Enter=Add      |          |      |                        |          |          |          |          |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-| P4=Activate   |     P5=Inactivate   |     P12=Entry P.   |          |      |                        |          |          |          |          |
-+---------------+---------------------+--------------------+----------+------+------------------------+----------+----------+----------+----------+
-
-    *Page upload by HTTP with cookie : Rules of the HTTP line*
-
-1. (First time only) Activate the e-mail correspondent: see “Account
-   activation” under the heading `“Correspondent <#_bookmark67>`__
-   `Management”, page 64 <#_bookmark67>`__. This triggers the sending of
-   an e-mail containing the security code, as in the following example:
-
-    *Page upload by HTTP with cookie : activation e-mail*
-
-1. |image2|\ Click the link in the e-mail to open the upload.htm page:
-
-    *Page upload by HTTP with cookie : Displaying the upload.htm page*
-
-1. Click the “Browse” button and the file selection dialog will be
-   displayed:
-
-    |image3|
-
-    *Page upload by HTTP with cookie : File selection dialog*
-
-1. |image4|\ Select the file you want to upload, then press the “Open”
-   button. The name of the selected file will be displayed in the input
-   field:
-
-    *Page upload by HTTP with cookie : Sending the file*
-
-1. Press the “Send File” button to upload the file to VIRTEL. VIRTEL
-   stores the file in the directory (W2H-DIR in this example) specified
-   in the definition of the correspondent associated with the cookie.
-   VIRTEL then displays the result of the upload:
-
-    |image5|
-
-    *Page upload by HTTP with cookie : Confirmation of file uploadr*
-
-    From now on, the cookies are managed automatically. After each
-    upload, VIRTEL sends a new cookie to the browser, as indicated by
-    the message “Upload code was set by the remote host”.
-
-    Depending on the values specified in the directory definition,
-    VIRTEL may convert the file name to upper case, and truncate the
-    filename to a maximum length, before storing it in the directory.
-    The filename after conversion and truncation must not duplicate any
-    other filename in the directory. For example, when uploading to a
-    directory defined using the default parameters (not case sensitive,
-    with maximum filename length 8), the file links.gif would be stored
-    under the name LINKS.GI
-
-    The upload4.htm page allows the administrator to upload HTML pages
-    and graphics to VIRTEL. When this page is first loaded, the web
-    browser displays a signon dialog box requesting a userid and
-    password. The userid allows the security product (RACF, ACF2, TSS,
-    or VIRTEL) to determine which, if any, of the page upload
-    transactions the user is authorized to use. Each VIRTEL directory
-    has its own upload transaction, so that upload security can be
-    applied individually to each directory, by authorizing users to the
-    corresponding directory’s upload transaction.
-
-    All the elements needed for page upload by HTTP secured by signon
-    are contained in the base configuration delivered with VIRTEL. Users
-    who upgrade from a version prior to VIRTEL 4.27 while keeping their
-    existing configuration need to add certain elements to their
-    existing configuration to benefit from the new “page upload secured
-    by signon” function.
-
-    The following steps show how to upgrade your configuration based on
-    entry point WEB2HOST. You can also carry out these steps in batch by
-    running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL.
-    Having updated the configuration, you then need to upload one new
-    page (upload4.htm) to the W2H-DIR directory using the existing SMTP
-    upload method.
-
-1. In entry point WEB2HOST, define a new transaction W2H-68 with
-   external name dirlist, application name VIR0041S and application type
-   2:
-
-    *Page upload by HTTP with signon : Transaction ‘dirlist’*
-
-1. Still in entry point WEB2HOST, define three new transactions W2H–71,
-   W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each
-   of these transactions specifies VIR0041C as the application name and
-   application type 2. The “Logon message” field contains the name of
-   the target directory: HTMLBAS for transaction uplbas, W2H- DIR for
-   transaction uplw2h, and CLI-DIR for uplcli :
-
-    TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2
-    15:03:01
-
-    Internal name ===> W2H-72 To associate with an entry point name
-
-    External name ===> uplw2h Name displayed on user menu Description
-    ===> Chargement des pages HTML (répertoire W2H-DIR) Application ===>
-    VIR0041C Application to be called PassTicket ===> 0 Name ===> 0=no
-    1=yes 2=unsigned
-
-    Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
-
-    Pseudo-terminals ===> DELOC Prefix of name of partner terminals
-    Logmode ===> Specify when LOGMODE must be changed
-
-    How started ===> 2 1=menu 2=sub-menu 3=auto
-
-    Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
-
-    H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto Logon message ===>
-    W2H-DIR
-
-    TIOA at logon ===>
-
-    TIOA at logoff ===>
-
-    Initial Scenario ===> Final Scenario ===>
-
-    Input Scenario ===> Output Scenario ===>
-
-    P1=Update P3=Return P12=Server
-
-    TRANSACTION DETAIL DEFINITION ---------------------- Applid: SPVIRE2
-    15:03:21
-
-    Internal name ===> W2H-73 To associate with an entry point name
-
-    External name ===> uplcli Name displayed on user menu Description
-    ===> Chargement des pages HTML (répertoire CLI-DIR) Application ===>
-    VIR0041C Application to be called PassTicket ===> 0 Name ===> 0=no
-    1=yes 2=unsigned
-
-    Application type ===> 2 1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
-
-    Pseudo-terminals ===> DELOC Prefix of name of partner terminals
-    Logmode ===> Specify when LOGMODE must be changed
-
-    How started ===> 2 1=menu 2=sub-menu 3=auto
-
-    Security ===> 1 0=none 1=basic 2=NTLM 3=TLS 4=HTML
-
-    H4W commands ? ===> 0=no 1=yes 2=if2VIRTEL 4=auto Logon message ===>
-    CLI-DIR
-
-    TIOA at logon ===>
-
-    TIOA at logoff ===>
-
-    Initial Scenario ===> Final Scenario ===>
-
-    Input Scenario ===> Output Scenario ===>
-
-    P1=Update P3=Return P12=Server
-
-    *Page upload by HTTP with signon : Transactions ‘uplxxx’*
-
-1. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2)
-   to grant access to resources W2H-71 and HTMLBAS (for users authorized
-   to upload pages to the HTMLBAS directory) and/or to resources W2H-72
-   and W2H- DIR (for users authorized to upload pages to the W2H-DIR
-   directory) and/or to resources W2H-73 and CLI-DIR (for users
-   authorized to upload pages to the CLI-DIR directory). For more
-   details, refer to the “Virtel Security Guide” manual.
-
-1. Display the upload4.htm page by entering the URL
-   http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser, or by
-   clicking the “Upload” link on the VIRTEL Web2Host welcome page.
-   Because the directory named SECURE is defined as a secure
-   transaction, VIRTEL first requests the browser to display the
-   password dialog box shown below:
-
-    |image6|
-
-    *Page upload by HTTP with signon : Entering the userid and password*
-
-    The user must have authority to access the resource represented by
-    the internal name of the page upload transaction for the desired
-    directory.
-
-1. |image7|\ After entering the user name and password, the upload4.htm
-   page will be displayed:
-
-    *Page upload by HTTP with signon : Displaying the upload4.htm page*
-
-1. Press the “Browse” button to display the file selection dialog:
-
-    |image8|
-
-    *Page upload by HTTP with signon : File selection dialog*
-
-1. |image9|\ Select the file you want to upload, then press the “Open”
-   button. The name of the selected file will be displayed in the input
-   field:
-
-    *Page upload by HTTP with signon : Sending the file*
-
-1. Press the button corresponding to the target directory (W2H-DIR in
-   this example) to upload the file to VIRTEL. VIRTEL stores the file in
-   the chosen directory, and displays the result:
-
-    |image10|
-
-    *Page upload by HTTP with signon : Confirmation of file upload*
-
-    Depending on the values specified in the directory definition,
-    VIRTEL may convert the filename to upper case, and truncate the
-    filename to a maximum length, before storing it in the directory.
-    The filename after conversion and truncation must not duplicate any
-    other filename in the directory. For example, when uploading to a
-    directory defined using the default parameters (not case sensitive,
-    with maximum filename length 8), the file links.gif would be stored
-    under the name LINKS.GI
-
-    The VIRTEL administrator can upload pages to a VIRTEL directory
-    using the drag and drop upload interface with the Firefox or Chrome
-    browser. This method has the advantage that multiple pages can be
-    uploaded to a VIRTEL directory (for example, W2H-DIR) in a single
-    operation.
-
-    After clicking on the Drag & Drop Upload link on the VIRTEL Web
-    Access menu (URL http://n.n.n.n:41001), the VIRTEL administrator
-    will be presented with a signon screen, followed by the drag and
-    drop upload interface screen shown below:
-
-    |image11|
-
-    *Drag and drop upload interface*
-
-    The administrator can then select one or more files using the
-    workstation graphical user interface, drag them to the upload
-    interface screen, and drop them on the button representing the
-    VIRTEL directory (for example, CLI-DIR). Files in zipped archive may
-    need to be extracted to a temporary directory first.
-
-|image12|
-
-    *Displaying upload results*
-
-    The results of the upload are displayed on the screen with a return
-    code for each file uploaded. Each file should produce the message
-    RETURN CODE IS: 00 In addition, by clicking on + or -, the
-    administrator can open and close the detail display for each file
-    uploaded.
-
-    After multiple files have been uploaded, the drag and drop upload
-    interface will display a summary showing the number of files
-    processed with return code 00, and, in case of error, the number of
-    files which failed to upload non- zero return codes.
-
-    The summary is not displayed when files are dragged and dropped one
-    at a time.
-
-    In this example, one file has failed to upload because of an invalid
-    VIRTEL tag, and the user has clicked on the + sign to the left of
-    the file to expand the error messages:
-
-|image13|
-
-    *Upload summary report*
-
-|image14|
-
-    The Excel button allows the administrator to export the results log
-    as a .SLK file which can be opened as an Excel spreadsheet.
-
-+----+----+----+----+
-+----+----+----+----+
-+----+----+----+----+
-
-|image15|
-
-    The Delete button allows the administrator to clear the results log.
-
-    You can upload multiple pages (or other elements) at a time from a
-    Windows workstation by using a command-line HTTP-client program,
-    such as cURL from
-    `w <#_bookmark0>`__\ `ww.haxx.se. <http://www.haxx.se/>`__
-
-    The following example shows a Windows command to upload all files of
-    type .htm from the current directory to VIRTEL:
-
-    In this example:
-
-\*.htm
-~~~~~~
-
-    the files to be uploaded
-
-virdba:virdbapw
-~~~~~~~~~~~~~~~
-
-    userid and password for VIRTEL
-
-192.168.235.30:41001
-~~~~~~~~~~~~~~~~~~~~
-
-    identifies the VIRTEL HTTP line
-
-virmsg.txt
-~~~~~~~~~~
-
-    page template for displaying upload result messages
-
-uplbas
-~~~~~~
-
-    external name of the upload transaction in VIRTEL which specifies
-    the target directory (HTMLBAS). See `“Uploading <#_bookmark80>`__
-    `pages by HTTP (secured by signon)”, page 75 <#_bookmark80>`__ for a
-    list of upload transactions.
-
-    Note: %F appears twice in the command shown above. In conformance
-    with the syntax requirements of the Windows command interpreter, you
-    must use %F if you execute the command from the command prompt, but
-    %%F if you execute the command from within a command (.cmd) file.
-
-    For users of Windows XP and above, the command procedure
-    upl2virt.cmd may be used to upload elements to VIRTEL from the
-    Windows command prompt, or from Windows Explorer. upl2virt
-    automatically generates the required cURL commands as described in
-    the previous section.
-
-    upl2virt requires as a pre-requisite the cURL package described in
-    the previous section.
-
-    Optionally, Bill Stewart’s editvar freeware package from
-    `w <#_bookmark0>`__\ `ww.westmesatech.com <http://www.westmesatech.com/>`__
-    may also be installed. This package allows upl2virt to securely
-    prompt the administrator for a password. If the editvar package is
-    not installed, then upl2virt can still prompt for a password but it
-    will be unable to mask the password as the administrator types it
-    into the command window.
-
-    upl2virt may be downloaded from VIRTEL to the workstation by
-    entering the following URL in your browser:
-    http://n.n.n.n:41001/upl2virt.cmd (where n.n.n.n is the IP address
-    of VIRTEL). When prompted, save the upl2virt.cmd file in a directory
-    in your path (for example, C:\\WINDOWS).
-
-    To execute upl2virt as a command, open a Windows command prompt,
-    navigate to the directory which contains the file(s) to be uploaded,
-    and execute the command:
-
-    In the above command:
-
-userid:password
-~~~~~~~~~~~~~~~
-
-    is your VIRTEL userid and password. If not specified, upl2virt will
-    prompt for userid and password. If userid is specified without the
-    password, then upl2virt will prompt for password.
-
-directory
-~~~~~~~~~
-
-    is the name of the target VIRTEL directory (for example, CLI-DIR)
-
-n.n.n.n
-~~~~~~~
-
-    is the IP address of VIRTEL
-
-port
-~~~~
-
-    is the VIRTEL administration port number (default 41001).
-
-    Note: this is the port number for the WEB2HOST entry point, not the
-    port number associated with the directory you are uploading to.
-
-ctlfile
-~~~~~~~
-
-    specifies the name of a control file containing a list of file names
-    to be uploaded
-
-file1 file2 ...
-~~~~~~~~~~~~~~~
-
-    are the names of files to be uploaded
-
--r
-~~
-
-    specifies recursion into subdirectories
-
--k
-~~
-
-    keeps the command window open after the last upload
-
-    If no file names are specified, and no control file is specified,
-    the default is to upload all web elements from the current directory
-    (and also from all subdirectories if the –r option is specified).
-
-    The upl2virt command may also be used to upload elements to VIRTEL
-    from the Windows Explorer interface. Having selected one or more
-    files in Windows Explorer, the administrator right-clicks on the
-    selected files and chooses the “Send To” option, then chooses
-    “Upload to VIRTEL” from the “Send To” menu.
-
-    To activate the “Upload to VIRTEL” option in the “Send To” menu, use
-    Windows Explorer to navigate to the “c:\\Documents and
-    Settings\\username\\SendTo” folder, where username is your Windows
-    username. If you cannot see the SendTo folder, then click on “Tools”
-    – “Folder options” – “View”, tick the option “Display hidden files
-    and folders”, and click “OK”.
-
-    In the “SendTo” folder, right click and select “New” – “Shortcut”.
-    Then click “Browse”, navigate to the place where you stored the
-    upl2virt.cmd file, and click on it. Click “Next” and enter a
-    descriptive title for the menu item, such as “Upload to VIRTEL”.
-    Then click “Finish”.
-
-    You now have an item in the “SendTo” folder named “Upload to
-    VIRTEL”. Right-click on this item and choose “Properties”. In the
-    “Target” field you will see the path to the upl2virt.cmd file which
-    you specified. Update this field with parameters as shown in the
-    example below:
-
-    where:
-
-MYUSERID
-~~~~~~~~
-
-    is your VIRTEL userid
-
-CLI-DIR
-~~~~~~~
-
-    is the name of the VIRTEL directory that this shortcut will upload
-    to
-
-10.1.12.101
-~~~~~~~~~~~
-
-    is the IP address of VIRTEL.
-
-    You may omit the –u MYUSERID parameter and upl2virt will prompt you
-    for your userid.
-
-    The VIRTEL Web Access user can use the Settings menu to modify
-    certain options such as font size, 3270 key mappings, and color
-    schemes. The user’s settings are stored in a browser local storage
-    which remains valid so long as cookies are not deleted from the
-    workstation. The settings stored in the user’s local storage
-    override the default settings for VIRTEL Web Access which are stored
-    in the w2hparm.js file. See `“Global modification of Web Access
-    settings”, page 99 <#_bookmark89>`__.
-
-|image16|
-
-    When the user clicks this button on the VIRTEL Web Access toolbar,
-    the window shown below opens:
-
-    |image17|
-
-    *VIRTEL Web Access Settings menu (part 1 of 3)*
-
-    |image18|
-
-    *VIRTEL Web Access Settings menu (part 2 of 3)*
-
-    |image19|
-
-    *VIRTEL Web Access Settings menu (part 3 of 3)*
-
-Font Size
-~~~~~~~~~
-
-    Size of font. Possible values are:
-
-Window
-~~~~~~
-
-    VIRTEL calculates the font size to fit the browser’s window size.
-
-Screen
-~~~~~~
-
-    VIRTEL calculates the font size to fit the display screen size.
-
-nn
-~~
-
-    VIRTEL uses a fixed font size. nn is the size in “points”: 8pt,
-    10pt, 12pt, 14pt, or 16pt.
-
-Font family
-~~~~~~~~~~~
-
-    Name of font. The panel displays a list of fonts known to VIRTEL and
-    installed on the workstation, in addition to the fonts supplied by
-    VIRTEL. If the required font is not in the list, click the ellipsis
-    to the right of the selection box and type the name of the font in
-    the box. Any fixed-width font installed on the workstation may be
-    specified.
-
-Auto-capture
-~~~~~~~~~~~~
-
-    When activated, causes a snapshot of each screen displayed by the
-    host application to be automatically appended to the screen capture
-    window.
-
-Auto-print
-~~~~~~~~~~
-
-    When activated, causes the Windows print function to be launched
-    automatically in the print window as a result of a screen snapshot
-    or print request.
-
-Cursor
-~~~~~~
-
-    The shape of the 3270 cursor. The possible settings are:
-
-Smart
-~~~~~
-
-    The character at the cursor position is underlined and his position
-    and color changes to always remain visible for any character
-    (depending on the selected character's style : bgnd color, reverse,
-    underlined).
-
-Block
-~~~~~
-
-    The character at the cursor position is in reverse video
-
-Blink
-~~~~~
-
-    The character at the cursor position is in blinking reverse video
-    Note: For Internet Explorer versions 6 and 7, Blink is the same as
-    Block
-
-Vertical line, Horiz line
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    When activated, causes the position of the cursor to be marked with
-    a vertical line and/or a horizontal line extending to the edges of
-    the 3270 window (also known as a “crosshair cursor”).
-
-Esc key to Alt+F3
-~~~~~~~~~~~~~~~~~
-
-    Defines the mapping of workstation keyboard to 3270 keys. The value
-    “no” indicates that the keystroke is ignored.
-
-    For example the 3270 PA1 key may be assigned to the PageUp key, to
-    the Alt+PageUp key, and/or to the Alt+F1 key on the user’s keyboard.
-
-    Note: For Internet Explorer, the “Ctrl key” setting refers to the
-    right Ctrl key. For Firefox, Chrome, and Safari the “Ctrl key”
-    setting applies to both the left and right Ctrl keys identically.
-    For Firefox, the “Keypad Enter” setting is ignored. For Internet
-    Explorer versions 6, 7, and 8, a browser helper object (virtkey.dll)
-    must be installed to allow recognition of the keypad Enter key. This
-    BHO is not needed for Internet Explorer 9.
-
-    The ChgCur setting allows the user to toggle the cursor between the
-    “bar”, “block”, “bar+crosshairs”, and “block+crosshairs” style.
-
-Keypad /\*-+.
-~~~~~~~~~~~~~
-
-    Allows keys on the numeric keypad to be assigned to certain 3270
-    functions including PA1, PA2, Tab, Backtab, and Newline. Also allows
-    the decimal point on the numeric keypad to be remapped to comma for
-    European countries.
-
-    Note: Remapping of the numeric keypad is only supported for Internet
-    Explorer, Chrome, and Safari. Keypad settings are ignored for
-    Firefox and Opera.
-
-Double click
-~~~~~~~~~~~~
-
-    Specifies the action taken for a mouse double-click. Possible
-    settings are:
-
-Word
-~~~~
-
-    draws a box around the word that the mouse is pointing in
-    preparation for a copy or cut operation.
-
-ENTER
-~~~~~
-
-    Activates the “point-and-shoot” function. When set to ENTER, double
-    clicking the mouse moves the cursor to the mouse position and sends
-    a 3270 ENTER to the host application.
-
-no
-~~
-
-    indicates that the double-click function is deactivated.
-
-URL hotspots
-~~~~~~~~~~~~
-
-    When activated, any text starting with http://, https://, mailto://,
-    file://, news:// or ftp:// (except in 3270 input fields) is
-    transformed into a hyperlink.
-
-PF key hotspots
-~~~~~~~~~~~~~~~
-
-    When activated, any text starting with Fnn= or PFnn= (except in 3270
-    input fields) is transformed into a clickable area. Clicking on the
-    area is equivalent to pressing PF nn.
-
-Paste erase EOF
-~~~~~~~~~~~~~~~
-
-    When activated, a paste operation will erase the rest of an input
-    field to the right of the pasted text
-
-Move cursor on activate
-~~~~~~~~~~~~~~~~~~~~~~~
-
-    This setting takes effect only when the user clicks on a background
-    3270 window in order to bring the window to the foreground. When the
-    option is activated, the window is brought to the foreground and the
-    3270 cursor moves to the location in the window where the user
-    clicked; the copy/paste box and context menu are removed if present.
-    When the option is not activated, the window is brought to the
-    foreground and the cursor remains in its previous position; the
-    copy/paste box and context menu remain displayed if present.
-
-Style
-~~~~~
-
-    Allows a choice of color schemes by selection of CSS style sheet. By
-    default, possible values are:
-
-3270
-~~~~
-
-    extended colors on black background
-
-Gray
-~~~~
-
-    extended colors on gray background
-
-White
-~~~~~
-
-    gray characters on white background
-
-Print style
-~~~~~~~~~~~
-
-    Allows a choice of color schemes for the screen capture window. By
-    default, possible values are:
-
-3270
-~~~~
-
-    extended colors on black background
-
-Color
-~~~~~
-
-    extended colors on white background
-
-White
-~~~~~
-
-    black characters on white background
-
-Response time monitor
-~~~~~~~~~~~~~~~~~~~~~
-
-    When activated, two counters are displayed on the status line below
-    the 3270 screen, for example: H:110ms J:31ms. The first number
-    (H=Host) represents the response time of the VIRTEL server, from the
-    last Enter or PF key until the receipt of the most recent message
-    from the server. The second number (J=JavaScript) is the time taken
-    by the browser scripts to prepare the screen for display. The sum of
-    the two numbers is the response time perceived by the user.
-
-    Note: The response time monitor is active in Ajax mode only
-
-Omit nulls from input
-~~~~~~~~~~~~~~~~~~~~~
-
-    When activated, VIRTEL Web Access will remove all nulls from
-    modified input fields before sending to the server, in strict
-    conformance with 3270 protocol. When not activated, leading and
-    embedded nulls are converted to blanks, and only trailing nulls are
-    suppressed, which many users find more convenient.
-
-Keep macro pad open
-~~~~~~~~~~~~~~~~~~~
-
-    If checked, the macro window remains open all the time. If not, it
-    disappears as soon as you have clicked a macro.
-
-Keep keypad open
-~~~~~~~~~~~~~~~~
-
-    If checked, the keypad window remains open all the time. If not, it
-    disappears as soon as you have clicked a function key in it.
-
-Highlight input fields
-~~~~~~~~~~~~~~~~~~~~~~
-
-    Permits the user to display a different background color for 3270
-    input fields. When this option is selected, all input fields will
-    have a class designator HIGHLIGHTED\_INPUTFIELD in addition to their
-    regular class. The style definition may be overridden by the
-    administrator in the custom.css file.
-
-Remap caret to logical not
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    If checked, translates the “caret” sign (Shift+6 on a US keyboard)
-    to EBCDIC X'5F', which is the “logical not” sign (¬) in codepage
-    037/1140.
-
-Adapt font size ratio
-~~~~~~~~~~~~~~~~~~~~~
-
-    If checked, characters will be stretched to fill the window. This
-    option functions in Internet Explorer versions 9 and later, in
-    Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this
-    option has no effect.
-
-Character spacing
-~~~~~~~~~~~~~~~~~
-
-    If checked, blank space will be added between characters if
-    necessary to make the 3270 screen fill the browser window
-    horizontally.
-
-Line spacing
-~~~~~~~~~~~~
-
-    If checked, blank space will be added between lines if necessary to
-    make the 3270 screen fill the browser window vertically. This option
-    is incompatible with IE6 and will be ignored if used with IE6.
-    Additionally, if “Adapt font size ratio” is specified and the
-    browser supports it, then the “Line spacing” option is ignored.
-
-    After modifying the Settings menu, the user presses one of the
-    buttons:
-
-Save
-~~~~
-
-    save the options in browser local storage.
-
-Cancel
-~~~~~~
-
-    exit without saving the modifications made to this menu.
-
-Defaults
-~~~~~~~~
-
-    returns all of the settings to their default values. The default
-    values are specified by the installation in w2hparm.js.
-
-    Deletion of browser cookies may delete the values saved in local
-    storage. For Internet Explorer, ensure that the option “Delete
-    browsing history on exit” in Tools – Internet Options” is not
-    checked.
+*VIRTEL Web Access Settings menu (part 1 of 3)*
 
 |image20|
 
-    When the user clicks this button on the VIRTEL Web Access toolbar
-    the window shown below opens.
+*VIRTEL Web Access Settings menu (part 2 of 3)*
 
-    |image21|
+|image21|
 
-    VIRTEL Web Access Settings menu (Display tab)
+VIRTEL Web Access Settings menu (part 3 of 3)
 
-    |image22|
-
-    VIRTEL Web Access Settings menu (Miscellaneous tab)
-
-    |image23|
-
-    VIRTEL Web Access Settings menu (Key Mappings tab)
-
-    |image24|
-
-    VIRTEL Web Access Settings menu (Import tab)
+1.7.2. Contents of the fields
 
 Font Size
-~~~~~~~~~
-
-    Size of font. Possible values are :
-
+    Size of font. Possible values are:
 Window
-~~~~~~
-
     VIRTEL calculates the font size to fit the browser’s window size.
-
 Screen
-~~~~~~
-
     VIRTEL calculates the font size to fit the display screen size.
-
 nn
-~~
-
-    VIRTEL uses a fixed font size. nn is the size in “points”: 8pt,
-    10pt, 12pt, 14pt, or 16pt.
+    VIRTEL uses a fixed font size. nn is the size in “points”: 8pt, 10pt, 12pt, 14pt, or 16pt.
 
 Font family
-~~~~~~~~~~~
-
-    Name of font. The panel displays a list of fonts known to VIRTEL and
-    installed on the workstation, in addition to the fonts supplied by
-    VIRTEL. If the required font is not in the list, click the ellipsis
-    to the right of the selection box and type the name of the font in
-    the box. Any fixed-width font installed on the workstation may be
-    specified.
-
+    Name of font. The panel displays a list of fonts known to VIRTEL and installed on the workstation, in addition to the fonts supplied by VIRTEL. If the required font is not in the list, click the ellipsis to the right of the selection box and type the name of the font in the box. Any fixed-width font installed on the workstation may be specified.
+Auto-capture
+    When activated, causes a snapshot of each screen displayed by the host application to be automatically appended to the screen capture window.
+Auto-print
+    When activated, causes the Windows print function to be launched automatically in the print window as a result of a screen snapshot or print request.
 Cursor
-~~~~~~
-
     The shape of the 3270 cursor. The possible settings are:
 
-Smart
-~~~~~
-
-    The character at the cursor position is underlined and his position
-    and color changes to always remain visible for any character
-    (depending on the selected character's style : bgnd color, reverse,
-    underlined).
-
-Bar
-~~~
-
-    The character at the cursor position is underlined
-
-Block
-~~~~~
-
-    The character at the cursor position is in reverse video
-
-Blink
-~~~~~
-
-    The character at the cursor position is in blinking reverse video
-    Note: For Internet Explorer versions 6 and 7, Blink is the same as
+    Smart
+        The character at the cursor position is underlined and his position and color changes to always remain visible for any character (depending on the selected character's style : bgnd color, reverse, underlined).
     Block
+        The character at the cursor position is in reverse video
+    Blink
+        The character at the cursor position is in blinking reverse video
+
+.. note::        
+    For Internet Explorer versions 6 and 7, Blink is the same as Block
 
 Vertical line, Horiz line
-~~~~~~~~~~~~~~~~~~~~~~~~~
+    When activated, causes the position of the cursor to be marked with a vertical line and/or a horizontal line extending to the edges of the 3270 window (also known as a “crosshair cursor”).
+Esc key to Alt+F3
+    Defines the mapping of workstation keyboard to 3270 keys. The value “no” indicates that the keystroke is ignored.
+    
+    For example the 3270 PA1 key may be assigned to the PageUp key, to the Alt+PageUp key, and/or to the Alt+F1 key on the user’s keyboard.
 
-    When activated, causes the position of the cursor to be marked with
-    a vertical line and/or a horizontal line extending to the edges of
-    the 3270 window (also known as a “crosshair cursor”).
+.. note ::    
+    For Internet Explorer, the “Ctrl key” setting refers to the right Ctrl key. For Firefox, Chrome, and Safari the “Ctrl key” setting applies to both the left and right Ctrl keys identically. For Firefox, the “Keypad Enter” setting is ignored. For Internet Explorer versions 6, 7, and 8, a browser helper object (virtkey.dll) must be installed to allow recognition of the keypad Enter key. This BHO is not needed for Internet Explorer 9.
 
-    To add or remove a style, se\ `e “Customize display style”, page
-    280 <#_bookmark336>`__)
+The ChgCur setting allows the user to toggle the cursor between the “bar”, “block”, “bar+crosshairs”, and “block+crosshairs” style.
 
-    Administrators can add some new customs style as describe in the
-    section `“How to customize display style”, page
-    280 <#_bookmark336>`__
+Keypad \/\*-+.
+    Allows keys on the numeric keypad to be assigned to certain 3270 functions including PA1, PA2, Tab, Backtab, and Newline. Also allows the decimal point on the numeric keypad to be remapped to comma for European countries.
 
-Display Style
-~~~~~~~~~~~~~
-
-    Allows a choice of color schemes by selection of CSS style sheet.
-    Possible values are :
-
-3270
-~~~~
-
-    extended colors on black background
-
-Gray
-~~~~
-
-    extended colors on gray background
-
-White
-~~~~~
-
-    gray characters on white background
-
-    Administrators can add some new customs print style as describe in
-    the section `“How to customize print style”, <#_bookmark339>`__
-    `page 281 <#_bookmark339>`__
-
-Print style
-~~~~~~~~~~~
-
-    Allows a choice of color schemes for the screen capture window.
-    Possible values are :
-
-3270
-~~~~
-
-    extended colors on black background
-
-Color
-~~~~~
-
-    extended colors on white background
-
-White
-~~~~~
-
-    black characters on white background
-
-Miscellaneous
-~~~~~~~~~~~~~
-
-    **Highlight input fields**
-
-    Permits the user to display a different background color for 3270
-    input fields. When this option is selected, all input fields will
-    have a class designator HIGHLIGHTED\_INPUTFIELD in addition to their
-    regular class. The style definition may be overridden by the
-    administrator in the custom.css file.
-
-Adapt font size ratio
-~~~~~~~~~~~~~~~~~~~~~
-
-    If checked, characters will be stretched to fill the window. This
-    option functions in Internet Explorer versions 9 and later, in
-    Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this
-    option has no effect.
-
-Character spacing
-~~~~~~~~~~~~~~~~~
-
-    If checked, blank space will be added between characters if
-    necessary to make the 3270 screen fill the browser window
-    horizontally.
-
-Line spacing
-~~~~~~~~~~~~
-
-    If checked, blank space will be added between lines if necessary to
-    make the 3270 screen fill the browser window vertically. This option
-    is incompatible with IE6 and will be ignored if used with IE6.
-    Additionally, if “Adapt font size ratio” is specified and the
-    browser supports it, then the “Line spacing” option is ignored.
+.. note::
+    Remapping of the numeric keypad is only supported for Internet Explorer, Chrome, and Safari. Keypad settings are ignored for Firefox and Opera.
 
 Double click
-~~~~~~~~~~~~
-
-    Specifies the action taken for a mouse double-click. Possible
-    settings are :
-
-off
-~~~
-
-    Indicates that the double-click function is deactivated.
-
-Word Selection
-~~~~~~~~~~~~~~
-
-    Draws a box around the word that the mouse is pointing in
-    preparation for a copy or cut operation.
-
+    Specifies the action taken for a mouse double-click. Possible settings are:
+Word
+    draws a box around the word that the mouse is pointing in preparation for a copy or cut operation.
 ENTER
-~~~~~
-
-    Activates the “point-and-shoot” function. When set to ENTER, double
-    clicking the mouse moves the cursor to the mouse position and sends
-    a 3270 ENTER to the host application.
-
-Edition
-~~~~~~~
-
-    **Paste erase EOF**
-
-    When activated, a paste operation will erase the rest of an input
-    field to the right of the pasted text
-
-Map Ctrl+V to Paste by Typing
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Indicates that Ctrl+V will act “paste by typing”, i.e cursor will be
-    positionned at the end of the pasted text instead of remaining at
-    the position it was before using Ctrl+V.
+    Activates the “point-and-shoot” function. When set to ENTER, double clicking the mouse moves the cursor to the mouse position and sends a 3270 ENTER to the host application.
+no
+    indicates that the double-click function is deactivated.
+URL hotspots
+    When activated, any text starting with http://, https://, mailto://, file://, news:// or ftp:// (except in 3270 input fields) is transformed into a hyperlink.
+PF key hotspots
+    When activated, any text starting with Fnn= or PFnn= (except in 3270 input fields) is transformed into a clickable area. Clicking on the area is equivalent to pressing PF nn.
+Paste erase EOF
+    When activated, a paste operation will erase the rest of an input field to the right of the pasted text
 
 Move cursor on activate
-~~~~~~~~~~~~~~~~~~~~~~~
-
-    This setting takes effect only when the user clicks on a background
-    3270 window in order to bring the window to the foreground. When the
-    option is activated, the window is brought to the foreground and the
-    3270 cursor moves to the location in the window where the user
-    clicked; the copy/paste box and context menu are removed if present.
-    When the option is not activated, the window is brought to the
-    foreground and the cursor remains in its previous position; the
-    copy/paste box and context menu remain displayed if present.
-
-Preserve insertion mode
-~~~~~~~~~~~~~~~~~~~~~~~
-
-    This setting takes effect only when the keyboard is in insertion
-    mode. When the option is activated, the cursor will remain in insert
-    mode until the user returns to normal entry mode by using the
-    “insert” key again, otherwise the cursor returns to normal whenever
-    a transmission key is used.
-
-Pads
-~~~~
-
-    **Keep macro pad open**
-
-    If checked, the macro window remains open all the time. If not, it
-    disappears as soon as you have clicked a macro.
-
-Keep keypad open
-~~~~~~~~~~~~~~~~
-
-    If checked, the keypad window remains open all the time. If not, it
-    disappears as soon as you have clicked a function key in it.
-
-Hotspots
-~~~~~~~~
-
-    **Display URL hotspots**
-
-    When activated, any text starting with http, https, mailto, file, or
-    ftp (except in 3270 input fields) is transformed into a hyperlink.
-
-Display PF key hotspots
-~~~~~~~~~~~~~~~~~~~~~~~
-
-    When activated, any text starting with Fnn= or PFnn= (except in 3270
-    input fields) is transformed into a clickable area. Clicking on the
-    area is equivalent to pressing PF nn.
-
-Capture
-~~~~~~~
-
-    **Auto-capture**
-
-    When activated, causes a snapshot of each screen displayed by the
-    host application to be automatically appended to the screen capture
-    window.
-
-Bring capture to the foreground
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    When activated, causes the capture windows to come in the foreground
-    whenever the cature icon is used.
-
-Miscellaneous Auto-print
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-    When activated, causes the Windows print function to be launched
-    automatically in the print window as a result of a screen snapshot
-    or print request.
-
+    This setting takes effect only when the user clicks on a background 3270 window in order to bring the window to the foreground. When the option is activated, the window is brought to the foreground and the 3270 cursor moves to the location in the window where the user clicked; the copy/paste box and context menu are removed if present. When the option is not activated, the window is brought to the foreground and the cursor remains in its previous position; the copy/paste box and context menu remain displayed if present.
+Style
+    Allows a choice of color schemes by selection of CSS style sheet. By default, possible values are:
+3270
+    extended colors on black background
+Gray
+    extended colors on gray background
+White
+    gray characters on white background
+Print style
+    Allows a choice of color schemes for the screen capture window. By default, possible values are:
+3270
+    extended colors on black background
+Color
+    extended colors on white background
+White
+    black characters on white background
 Response time monitor
-~~~~~~~~~~~~~~~~~~~~~
+    When activated, two counters are displayed on the status line below the 3270 screen, for example: H:110ms J:31ms. The first number (H=Host) represents the response time of the VIRTEL server, from the last Enter or PF key until the receipt of the most recent message from the server. The second number (J=JavaScript) is the time taken by the browser scripts to prepare the screen for display. The sum of the two numbers is the response time perceived by the user.
 
-    When activated, two counters are displayed on the status line below
-    the 3270 screen, for example: H:110ms J:31ms. The first number
-    (H=Host) represents the response time of the VIRTEL server, from the
-    last Enter or PF key until the receipt of the most recent message
-    from the server. The second number (J=JavaScript) is the time taken
-    by the browser scripts to prepare the screen for display. The sum of
-    the two numbers is the response time perceived by the user.
-
-    Note: The response time monitor is active in Ajax mode only.
+.. note::    
+    The response time monitor is active in Ajax mode only
 
 Omit nulls from input
-~~~~~~~~~~~~~~~~~~~~~
-
-    When activated, VIRTEL Web Access will remove all nulls from
-    modified input fields before sending to the server, in strict
-    conformance with 3270 protocol. When not activated, leading and
-    embedded nulls are converted to blanks, and only trailing nulls are
-    suppressed, which many users find more convenient.
-
+    When activated, VIRTEL Web Access will remove all nulls from modified input fields before sending to the server, in strict conformance with 3270 protocol. When not activated, leading and embedded nulls are converted to blanks, and only trailing nulls are suppressed, which many users find more convenient.
+Keep macro pad open
+    If checked, the macro window remains open all the time. If not, it disappears as soon as you have clicked a macro.
+Keep keypad open
+    If checked, the keypad window remains open all the time. If not, it disappears as soon as you have clicked a function key in it.
+Highlight input fields
+    Permits the user to display a different background color for 3270 input fields. When this option is selected, all input fields will have a class designator HIGHLIGHTED_INPUTFIELD in addition to their regular class. The style definition may be overridden by the administrator in the custom.css file.
 Remap caret to logical not
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+    If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X'5F', which is the “logical not” sign (¬) in codepage 037/1140.
+Adapt font size ratio
+    If checked, characters will be stretched to fill the window. This option functions in Internet Explorer versions 9 and later, in Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this option has no effect.
+Character spacing
+    If checked, blank space will be added between characters if necessary to make the 3270 screen fill the browser window horizontally.
+Line spacing
+    If checked, blank space will be added between lines if necessary to make the 3270 screen fill the browser window vertically. This option is incompatible with IE6 and will be ignored if used with IE6. Additionally, if “Adapt font size ratio” is specified and the browser supports it, then the “Line spacing” option is ignored.
 
-    If checked, translates the “caret” sign (Shift+6 on a US keyboard)
-    to EBCDIC X'5F', which is the “logical not” sign (¬) in codepage
-    037/1140.
+1.7.3. Associated functions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    This tab is used to map specific functions to certain keyboard keys.
-    The tab contains five sub categories whose names are explicit enough
-    to not require more precision.
+After modifying the Settings menu, the user presses one of the buttons:
 
-    This tab lets the user to save and restore his settings into (or
-    from) a local file. This backup method is different and independent
-    of the method used when the "save" button is pressed. (See below).
+Save
+    save the options in browser local storage.
+Cancel
+    exit without saving the modifications made to this menu.
+Defaults
+    returns all of the settings to their default values. The default values are specified by the installation in w2hparm.js.
 
-    When the user press the "save" button, his Web Access settings and
-    macros are stored in browser local storage. For Internet Explorer 6,
-    local storage is stored in the folder :
+Deletion of browser cookies may delete the values saved in local storage. For Internet Explorer, ensure that the option “Delete browsing history on exit” in Tools – Internet Options” is not checked.
 
-    %userprofile%/UserData
+1.7.4. Web Access Settings menu
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    For Internet Explorer 8 and 9, local storage is stored in the folder
-    :
+|image22|
 
-    %userprofile%/Local Settings/Application Data/Microsoft/Internet
-    Explorer/DOMStore
+When the user clicks this button on the VIRTEL Web Access toolbar the window shown below opens.
 
-    Note: to see DOMStore you must untick “hide protected operating
-    system files” in Windows folder options.
+|image23|
 
-    For other browsers, see
+VIRTEL Web Access Settings menu (Display tab)
+
+|image24|
+
+VIRTEL Web Access Settings menu (Miscellaneous tab)
+
+|image25|
+
+VIRTEL Web Access Settings menu (Key Mappings tab)
+
+|image26|
+
+VIRTEL Web Access Settings menu (Import tab)
+
+1.7.4.1. Display tab parameters
+
+Font Size
+    Size of font. Possible values are :
+
+    Window
+        VIRTEL calculates the font size to fit the browser’s window size.
+    
+    Screen
+        VIRTEL calculates the font size to fit the display screen size.
+
+    nn
+        VIRTEL uses a fixed font size. nn is the size in “points”: 8pt, 10pt, 12pt, 14pt, or 16pt.
+
+Font family
+    Name of font. The panel displays a list of fonts known to VIRTEL and installed on the workstation, in addition to the fonts supplied by VIRTEL. If the required font is not in the list, click the ellipsis to the right of the selection box and type the name of the font in the box. Any fixed-width font installed on the workstation may be specified.
+Cursor
+    The shape of the 3270 cursor. The possible settings are:
+
+    Smart
+        The character at the cursor position is underlined and his position and color changes to always remain visible for any character (depending on the selected character's style : bgnd color, reverse, underlined).
+    Bar
+        The character at the cursor position is underlined
+    Block
+        The character at the cursor position is in reverse video
+    Blink
+        The character at the cursor position is in blinking reverse video
+
+..note::
+
+    For Internet Explorer versions 6 and 7, Blink is the same as Block
+
+Vertical line, Horiz line
+    When activated, causes the position of the cursor to be marked with a vertical line and/or a horizontal line extending to the edges of the 3270 window (also known as a “crosshair cursor”).
+
+To add or remove a style, see “Customize display style”, page 280)
+
+Administrators can add some new customs style as describe in the section “How to customize display style”, page 280
+
+Display Style
+    Allows a choice of color schemes by selection of CSS style sheet. Possible values are :
+
+    3270
+        extended colors on black background
+    Gray
+        extended colors on gray background
+    White
+        gray characters on white background
+
+Administrators can add some new customs print style as describe in the section “How to customize print style”, page 281
+
+Print style
+    Allows a choice of color schemes for the screen capture window. Possible values are :
+    
+    3270
+        extended colors on black background
+    Color
+        extended colors on white background
+    White
+        black characters on white background
+
+Miscellaneous
+
+    Highlight input fields
+        Permits the user to display a different background color for 3270 input fields. When this option is selected, all input fields will have a class designator HIGHLIGHTED_INPUTFIELD in addition to their regular class. The style definition may be overridden by the administrator in the custom.css file.
+    Adapt font size ratio
+        If checked, characters will be stretched to fill the window. This option functions in Internet Explorer versions 9 and later, in Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this option has no effect.
+    Character spacing
+        If checked, blank space will be added between characters if necessary to make the 3270 screen fill the browser window horizontally.
+    Line spacing
+        If checked, blank space will be added between lines if necessary to make the 3270 screen fill the browser window vertically. This option is incompatible with IE6 and will be ignored if used with IE6. Additionally, if “Adapt font size ratio” is specified and the browser supports it, then the “Line spacing” option is ignored.
+
+1.7.4.2. Miscellaneous tab parameters
+
+Double click
+    Specifies the action taken for a mouse double-click. Possible settings are :
+
+    off
+        Indicates that the double-click function is deactivated.
+    Word Selection
+        Draws a box around the word that the mouse is pointing in preparation for a copy or cut operation.
+    ENTER
+        Activates the “point-and-shoot” function. When set to ENTER, double clicking the mouse moves the cursor to the mouse position and sends a 3270 ENTER to the host application.
+
+Edition
+    Paste erase EOF
+        When activated, a paste operation will erase the rest of an input field to the right of the pasted text
+    Map Ctrl+V to Paste by Typing
+        Indicates that Ctrl+V will act “paste by typing”, i.e cursor will be positionned at the end of the pasted text instead of remaining at the position it was before using Ctrl+V.
+    Move cursor on activate
+        This setting takes effect only when the user clicks on a background 3270 window in order to bring the window to the foreground. When the option is activated, the window is brought to the foreground and the 3270 cursor moves to the location in the window where the user clicked; the copy/paste box and context menu are removed if present. When the option is not activated, the window is brought to the foreground and the cursor remains in its previous position; the copy/paste box and context menu remain displayed if present.
+    Preserve insertion mode
+        This setting takes effect only when the keyboard is in insertion mode. When the option is activated, the cursor will remain in insert mode until the user returns to normal entry mode by using the “insert” key again, otherwise the cursor returns to normal whenever a transmission key is used.
+
+Pads
+    Keep macro pad open
+        If checked, the macro window remains open all the time. If not, it disappears as soon as you have clicked a macro.
+    Keep keypad open
+        If checked, the keypad window remains open all the time. If not, it disappears as soon as you have clicked a function key in it.
+Hotspots
+    Display URL hotspots
+        When activated, any text starting with http, https, mailto, file, or ftp (except in 3270 input fields) is transformed into a hyperlink.
+    Display PF key hotspots
+        When activated, any text starting with Fnn= or PFnn= (except in 3270 input fields) is transformed into a clickable area. Clicking on the area is equivalent to pressing PF nn.
+Capture
+    Auto-capture
+        When activated, causes a snapshot of each screen displayed by the host application to be automatically appended to the screen capture window.
+    Bring capture to the foreground
+        When activated, causes the capture windows to come in the foreground whenever the cature icon is used.
+
+Miscellaneous
+    Auto-print
+        When activated, causes the Windows print function to be launched automatically in the print window as a result of a screen snapshot or print request.
+    Response time monitor
+        When activated, two counters are displayed on the status line below the 3270 screen, for example: H:110ms J:31ms. The first number (H=Host) represents the response time of the VIRTEL server, from the last Enter or PF key until the receipt of the most recent message from the server. The second number (J=JavaScript) is the time taken by the browser scripts to prepare the screen for display. The sum of the two numbers is the response time perceived by the user.
+
+.. note::
+    The response time monitor is active in Ajax mode only.
+
+    Omit nulls from input
+        When activated, VIRTELWeb Access will remove all nulls from modified input fields before sending to the server, in strict conformance with 3270 protocol. When not activated, leading and embedded nulls are converted to blanks, and only trailing nulls are suppressed, which many users find more convenient.
+    Remap caret to logical not
+        If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X'5F', which is the “logical not” sign (¬) in codepage 037/1140.
+
+1.7.4.3. Key Mappings tab parameters
+
+This tab is used to map specific functions to certain keyboard keys. The tab contains five sub categories whose names
+are explicit enough to not require more precision.
+
+1.7.4.4. Import / Export tab parameters
+
+This tab lets the user to save and restore his settings into (or from) a local file. This backup method is different and independent of the method used when the "save" button is pressed. (See below).
+
+1.7.5. Where user settings are stored
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When the user press the "save" button, his Web Access settings and macros are stored in browser local storage. For Internet Explorer 6, local storage is stored in the folder :
+%userprofile%/UserData For Internet Explorer 8 and 9, local storage is stored in the folder :
+
+::
+
+    %userprofile%/Local Settings/Application Data/Microsoft/Internet Explorer/DOMStore
+
+.. note::
+
+    To see DOMStore you must untick “hide protected operating system files” in Windows folder options.
+
+For other browsers, see
+
+::
 
     http://www.sitepoint.com/building-web-pages-with-local-storage/
 
-    Those installations who wish to modify the default Web Access
-    settings for all users can do so by uploading the w2hparm.js file.
-    This file is included in the sources.zip file which can be obtained
-    from the VIRTEL Web Access menu accessible by URL
-    http://n.n.n.n:41001
+1.7.6. Global modification of Web Access settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    The w2hparm.js file as delivered contains the following source code:
+Those installations who wish to modify the default Web Access settings for all users can do so by uploading the w2hparm.js file. This file is included in the sources.zip file which can be obtained from the VIRTEL Web Access menu accessible by URL http://n.n.n.n:41001.
 
-    *w2hparm.js: Default settings for VIRTEL Web Access*
+The w2hparm.js file as delivered contains the following source code:
 
-    Default values may be changed or added.
+::
 
-    For example, installations who wish to map the 3270 ATTN key to the
-    Esc (Escape) key for use with Multisession applications such as NVAS
-    (IBM® NetView™ Access Services) can add the following instruction to
-    the w2hparm.js file:
 
-    Modifications to the global settings are only effective after the
-    expiry of the w2hparm.js file in the browser’s cache which occurs at
-    midnight each day. A user can force the use of the updated global
-    settings file by clearing the browser cache, deleting any cookies
-    associated with the VIRTEL server, and refreshing the 3270 page
-    using the Ctrl-R key.
+    // w2hparm default values
+    // see w2hparmdefns in js01.js for parameters and allowable values
+    var w2hparm = {
+    "fontsize":"window",
+    "ctrl":"ENTER",
+    "enter":"Newline",
+    "home":"Home",
+    "end":"ErEof",
+    "pgup":"PF7",
+    "pgdn":"PF8",
+    "pause":"CLEAR",
+    "style":"3270"};
 
-    After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s
-    CLI-DIR directory by means of the “Upload” link on the VIRTEL Web
-    Access menu (URL http://n.n.n.n:41001). Then you must check the
-    Entry Point (usually CLIWHOST)
+*w2hparm.js: Default settings for VIRTEL Web Access*
 
-    and check that the transaction whose “External name” is w2h and
-    whose “Check URL Prefix” field is set to /w2h/ w2hparm-js specifies
-    CLI-DIR in the “Application” field. For the CLIWHOST entry point
-    this is transaction CLI-03P.
+Default values may be changed or added.
 
-    The list of keywords and possible values which can be coded in the
-    w2hparm.js file is shown below:
+For example, installations who wish to map the 3270 ATTN key to the Esc (Escape) key for use with Multisession applications such as NVAS (IBM® NetView™ Access Services) can add the following instruction to the w2hparm.js file: 
+::
 
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
 
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
-+----+----+----+
+    "escape":"ATTN",
 
-    *w2hparm.js: List of keywords and possible values*
+.. note::
 
-    User interface settings may be presented under two different forms
-    which are shown at the beginning of this section. The desired form
-    may be defined using the variable "settingsGUI" present in the
-    w2hparms.js file. The possible values for this parameter are :
+    Modifications to the global settings are only effective after the expiry of the w2hparm.js file in the browser’s cache which occurs at midnight each day. A user can force the use of the updated global settings file by clearing the browser cache, deleting any cookies associated with the VIRTEL server, and refreshing the 3270 page using the Ctrl-R key.
+
+After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s CLI-DIR directory by means of the “Upload” link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001). Then you must check the Entry Point (usually CLIWHOST) and check that the transaction whose “External name” is w2h and whose “Check URL Prefix” field is set to /w2h/w2hparm-js specifies CLI-DIR in the “Application” field. For the CLIWHOST entry point this is transaction CLI-03P.
+
+The list of keywords and possible values which can be coded in the w2hparm.js file is shown below:
+
++---------------+-----------------------+---------------------------------------------------+
+| Keyword       | Caption               | Possible values                                   |
++===============+=======================+===================================================+
+|"fontsize"     | Font size             | "window", "screen", "8", "10", "12", "14", "16"   |
++---------------+-----------------------+---------------------------------------------------+
+|"font"         | Font family           | "font name"                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"autocapture"  | Auto-capture          | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"autoprint"    | Auto-print            | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"cursor"       | Cursor "Bar",         | "Blink", "Block"                                  |
++---------------+-----------------------+---------------------------------------------------+
+|"vline"        | Vertical line         | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"hline"        | Horiz line            | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"esc"          | Esc key               | "no", "ATTN", "CLEAR", "Reset"                    |
++---------------+-----------------------+---------------------------------------------------+
+|"ctrl"         | Ctrl key              | "no", "ENTER", "Newline"                          |
++---------------+-----------------------+---------------------------------------------------+
+|"cmdleft"      | Left Cmd key          | "no", "Reset"                                     |
++---------------+-----------------------+---------------------------------------------------+
+|"cmdright"     | Right Cmd key         | "no", “ENTER"                                     |
++---------------+-----------------------+---------------------------------------------------+
+|"enter"        | Enter key             | "ENTER", "Newline"                                |
++---------------+-----------------------+---------------------------------------------------+
+| "home"        | Home key              | "no", "Home"                                      |
++---------------+-----------------------+---------------------------------------------------+
+| "end"         | End key               | "no", "ErEof", "End"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "pgup"        | PageUp key            | "PF7", "PF19", "PA1", "no"                        |
++---------------+-----------------------+---------------------------------------------------+
+| "pgdn"        | PageDown key          | "PF8", "PF20", "PA2", "no"                        |
++---------------+-----------------------+---------------------------------------------------+
+| "pause"       | Pause key             | "CLEAR", "ATTN", "PA3", "no"                      |
++---------------+-----------------------+---------------------------------------------------+
+| "kpenter"     | Keypad Enter          | "ENTER", "Newline"                                |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftenter"  | Shift+Enter           | "no","ENTER", "Newline"                           |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftesc"    | Shift+Esc             | "no", "ATTN", "CLEAR", "Reset"                    |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftins"    | Shift+Insert          | "no", "Dup"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftdel"    | Shift+Delete          | "no", "ErEof"                                     |
++---------------+-----------------------+---------------------------------------------------+
+| "shifthome"   | Shift+Home            | "no", "FieldMark", "Home"                         |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftend"    | Shift+End             | "no", "ErEof", "End"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftpgdn"   | Shift+PageDown        | "no", "PA3"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlenter"   | Ctrl+Enter            | "no","ENTER", "Newline"                           |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlins"     | Ctrl+Insert           | "no", "PA1"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrldel"     | Ctrl+Delete           | "no", "PA2", "ErEof"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlhome"    | Ctrl+Home             | "no", "PA3", "Home", "ChgCur"                     |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlend"     | Ctrl+End              | "no", "ErEof", "End"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "altins"      | Alt+Ins               | "no", "PA1"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "althome"     | Alt+Home              | "no", "PA2"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "altpgup"     | Alt+PageUp            | "no", "PA1"                                       | 
++---------------+-----------------------+---------------------------------------------------+
+| "altpgdn"     | Alt+PageDown          | "no", "PA2"                                       +
++---------------+-----------------------+---------------------------------------------------+
+| "altpause"    | Alt+Pause             | "no", "ATTN", "CLEAR", "PA3"                      | 
++---------------+-----------------------+---------------------------------------------------+
+| "altf1"       | Alt+F1                | "no", "PA1", "ENTER"                              | 
++---------------+-----------------------+---------------------------------------------------+
+| "altf2"       | Alt+F2                | "no", "PA2"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "altf3"       | Alt+F3                | "no", "PA3", "ChgCur"                             |
++---------------+-----------------------+---------------------------------------------------+
+| "kpslash"     | Keypad /              | "/", "PA1"                                        |
++---------------+-----------------------+---------------------------------------------------+
+| "kpaster"     | Keypad *              | "*", "PA2"                                        |
++---------------+-----------------------+---------------------------------------------------+
+| "kpminus"     | Keypad -              | "-", "Backtab"                                    |
++---------------+-----------------------+---------------------------------------------------+
+| "kpplus"      | Keypad +              | "+", "Tab", "Newline"                             |
++---------------+-----------------------+---------------------------------------------------+
+| "kpdot"       | Keypad .              | ".", ","                                          |
++---------------+-----------------------+---------------------------------------------------+
+| "dblclick"    | Double Click          | "Word", "ENTER", "no"                             |
++---------------+-----------------------+---------------------------------------------------+
+| "urlhotspot"  | URL hotspots          | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "pfkhotspot"  | PF key hotspots       | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "pasteereof"  | Paste erase EOF       | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "movecursor"  | Move cursor on activat| true, false                                       | 
++---------------+-----------------------+---------------------------------------------------+
+| "style"       | Style                 |"3270", "gray", "white"                            |
++---------------+-----------------------+---------------------------------------------------+
+| "printstyle”  | Print style           | "3270", "color", "white"                          |
++---------------+-----------------------+---------------------------------------------------+
+| "rtm"         | Response time monitor | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "omitnulls"   | Omit nulls from input | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "keepmacpad"  | Keep macro pad open   | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "keepkeypad"  | Keep keypad open      | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+ 
+| "hiliteinput" | Highlight input fields| true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "caretnot"    | Remap ^ to logical not| true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "adaptfontrati| Adapt font size ratio | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "charspace"   | Character spacing     | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "linespace"   | Line spacing          | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "settingsGUI" | Uuser interface type  | v2                                                |
++---------------+-----------------------+---------------------------------------------------+
+| "preservein"  | Preserve insert mode  | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+
+*w2hparm.js: List of keywords and possible values*
+
+1.7.7. Choosing Web Access settings pattern
+
+User interface settings may be presented under two different forms which are shown at the beginning of this section. The desired form may be defined using the variable "settingsGUI" present in the w2hparms.js file. The possible values for this parameter are :
 
 version
-~~~~~~~
-
-    Allows a choice beetwen older and or newest form. Possible values
-    are:
-
+    Allows a choice beetwen older and or newest form. Possible values are:
 v2
-~~
-
-    When activated, only the newest user setting interface is available
-    in the toolbar. The settings icone will remain the same as actually.
-
+    When activated, only the newest user setting interface is available in the toolbar. The settings icone will remain the same as actually.
 no value
-~~~~~~~~
-
-    When none of the previous values are activated, only the older user
-    setting interface is available in the toolbar.
-
+    When none of the previous values are activated, only the older user setting interface is available in the toolbar.
 width
-~~~~~
-
     Allows to change the width of the setting form.
-
 height
-~~~~~~
-
     Allows to change the heigth of the setting form.
 
-    Note: Version 2 is more powerful and offers more setting
-    possibilities of the keyboard than version 1 . Version 1 will be
-    dropped in the next release of VIRTEL.
+.. note:: 
+    
+    Version 2 is more powerful and offers more setting possibilities of the keyboard than version 1 . Version 1 will be dropped in the next release of VIRTEL.
 
-    The example below shows how to override the default settingsGUI
-    parameter using a custom.js file :
+The example below shows how to override the default settingsGUI parameter using a custom.js file :
 
-    /\*
+::
 
-    \* Configuration of the settings dialog GUI.
-
-    \*/ w2hparm.settingsGUI =
-
+    /*
+    * Configuration of the settings dialog GUI.
+    */
+    w2hparm.settingsGUI =
     {
-
-    /\*
-
--  Select which settings dialog version(s) will be accessible in the VWA
-   toolbar.
-
--  Possible values are :
-
--  - "v1+v2" ...... Allow both settings dialogs (OLD and NEW)
-
--  - "v2" ......... Allow NEW settings dialog only
-
--  - otherwise ... Allow OLD settings dialog only
-
-    \*/
-
+    /*
+    * Select which settings dialog version(s) will be accessible in the VWA toolbar.
+    * Possible values are :
+    * - "v1+v2" ...... Allow both settings dialogs (OLD and NEW)
+    * - "v2" ......... Allow NEW settings dialog only
+    * - otherwise ... Allow OLD settings dialog only
+    */
     version : "v2",
-
-    /\* Width of the settings dialog \*/ width : 540,
-
-    /\* Height of the settings dialog \*/ height : 730
-
+    /* Width of the settings dialog */
+    width : 540,
+    /* Height of the settings dialog */
+    height : 730
     };
 
-    *custom.js: Choosing the Web Access settings interface form*
+*custom.js: Choosing the Web Access settings interface form*
 
-    To prevent the user from overriding the site defaults, the
-    administrator can remove individual settings from the user’s Web
-    Access Settings menu. The names of settings to be hidden are
-    specified in the w2hparmHide variable in the w2hparm.js file.
+1.7.8. Hiding Web Access settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    The example below shows how to hide the default font, font size, and
-    style settings from the menu:
+To prevent the user from overriding the site defaults, the administrator can remove individual settings from the user’s Web Access Settings menu. The names of settings to be hidden are specified in the w2hparmHide variable in the w2hparm.js file. The example below shows how to hide the default font, font size, and style settings from the menu:
 
-    *w2hparm.js: Hiding VIRTEL Web Access settings*
+:: 
 
-    The VIRTEL application selection menu is dynamically generated by
-    the appmenu.htm page in conjunction with the applist transaction.
-    For example, the following URL displays the application selection
-    menu for the CLIWHOST entry point (line C-HTTP port 41002):
+    // w2hparm default values
+    var w2hparm = {
+    "fontsize":"window",
+    "font":"Lucida Console",
+    "ctrl":"ENTER",
+    "enter":"Newline",
+    "home":"Home",
+    "style":"3270"};
+    var w2hparmHide = ["font", "fontsize", "style"];
+
+*w2hparm.js: Hiding VIRTEL Web Access settings*
+
+1.8. Application Selection Menu
+-------------------------------
+
+The VIRTEL application selection menu is dynamically generated by the appmenu.htm page in conjunction with the applist transaction. For example, the following URL displays the application selection menu for the CLIWHOST entry point (line C-HTTP port 41002):
+
+::
 
     http://n.n.n.n:41002/w2h/appmenu.htm+applist
 
-    The application selection menu for the WEB2HOST entry point (line
-    W-HTTP port 41001) is accessible from the “Other applications” link
-    on the VIRTEL Web Access main menu.
+The application selection menu for the WEB2HOST entry point (line W-HTTP port 41001) is accessible from the “Other applications” link on the VIRTEL Web Access main menu.
 
-    An example of the application selection menu is shown in the figure
-    below:
+1.8.1. Contents of menu
+^^^^^^^^^^^^^^^^^^^^^^^
 
-    |image25|
-
-    *Application selection menu*
-
-    The application selection menu contains clickable links to the
-    transactions defined under the entry point. A transaction will
-    appear in the menu if all of the following conditions are met:
-
--  The “Application type” is 1 (VTAM) or 2 (VIRTEL)
-
--  The “How started” field is 1 (menu)
-
--  The user is logged on and authorized via the security subsystem to
-   the security resource whose name is the internal name of the
-   transaction (except when the transaction “Security” field is 0)
-
-    If the user is not logged on, then only public transactions
-    (security type 0) are displayed.
-
-    If the APPSTAT=YES parameter is specified in the VIRTCT (see
-    “Parameters of the VIRTCT” in the VIRTEL Installation Guide) then
-    the status of VTAM applications is indicated by a green bar for
-    active applications, and by a red bar for inactive applications.
-
-    To add an application to the menu, use the VIRTEL administration
-    panels to define a transaction under the entry point, press F1 to
-    update the entry point, then refresh the appmenu.htm page in the
-    browser.
-
-    The application selection menu offers a choice of several different
-    presentation modes, selectable by clicking one of the buttons at the
-    top right of the screen. The selected presentation mode determines
-    which page template will be used to access the selected host
-    applications.
-
-3270 presentation
-~~~~~~~~~~~~~~~~~
-
-    This presentation mode, which uses the WEB3270.htm page template, is
-    designed for experienced 3270 users who do not require the
-    presentation enhancements offered by VIRTEL Web Modernisation. It
-    offers a user interface which matches as closely as possible that of
-    a real 3270 screen.
-
-Ajax 3270
-~~~~~~~~~
-
-    This presentation mode is similar to the 3270 presentation mode, but
-    it uses a static main page (WEB2AJAX.htm) together with an
-    Ajax-loaded sub-page (WEB2SUB.html). This can reduce network load
-    and provide faster response time with a better 3270 user experience.
-    Ajax mode also offers password encryption as an option (see
-    `“Password <#_bookmark311>`__ `encryption”, page
-    266 <#_bookmark311>`__).
-
-HTML presentation
-~~~~~~~~~~~~~~~~~
-
-    This presentation mode, which uses the WEB2VIRT.htm page template,
-    is intended as a first step towards VIRTEL Web Modernisation. In
-    this mode the 3270 screen image is displayed as an HTML form, to
-    which presentation enhancements such as drop-down lists, checkboxes,
-    and calendars can be added by means of VIRTEL Web Modernisation
-    scenarios (see `“Web Modernisation VIRTEL Scenarios”, page
-    147 <#_bookmark165>`__).
-
-Ajax HTML
-~~~~~~~~~
-
-    This presentation mode is similar to the HTML presentation mode, but
-    it uses a static main page (WEB2VIRTAJAX.htm) together with an
-    Ajax-loaded sub-page (WEB2VIRTSUB.html).
-
-Tablet
-~~~~~~
-
-    This presentation mode it uses the SMARTWEB2VIRT.htm page template
-    for an HTML presentation adapted for tablets and smartphones.
-
-    The appmenu.htm page for the VIRTEL application selection menu is
-    delivered in the W2H-DIR directory. The page may be customized if
-    required to meet installation standards. The appmenutable and
-    appmenuitem styles in the STYLBLUE.css stylesheet allow the
-    appearance of the menu to be customized. The source code for the
-    page and the stylesheet may be obtained from the sources.zip file
-    accessible from the VIRTEL Web Access menu. After modifying the page
-    or the stylesheet, follow the “Upload” link on the VIRTEL Web Access
-    menu to upload the updated files to the W2H-DIR directory.
-
-    A transaction with external name applist must be present in the list
-    of transactions at the entry point associated with the line. VIRTEL
-    supplies as standard transactions W2H-90 (for entry point WEB2HOST,
-    line W-HTTP port 41001) and CLI-90 (for entry point CLIWHOST, line
-    C-HTTP port 41002). The applist transaction must specify application
-    name VIR0021S and application type 2. Security type 1 requires the
-    user to sign on so that the transaction can determine which
-    applications the user is authorized to. The user must also be
-    authorized to the applist transaction itself by its internal name
-    (W2H-90 or CLI-90).
-
-    The figure below shows the definition of the applist transaction
-    CLI-90:
-
-    *Definition of applist transaction*
-
-    When the appmenu.htm+applist URL is coded in the “TIOA at logon”
-    field of the default transaction for the entry point, the
-    application selection menu will be displayed whenever the user
-    accesses the HTTP line using its root URL (for example,
-    http://n.n.n.n:41002 for line C-HTTP).
-
-    The default transaction is the transaction whose external name is
-    the same as the entry point name, and the example below shows the
-    default transaction for the CLIWHOST entry point:
-
-    *Specifying the application selection menu in the default
-    transaction*
-
-    VIRTEL provides printing support by means of virtual 3287 type
-    printers. Each user connected to VIRTEL Web Access has a virtual
-    3287 printer associated with the user’s 3270 display terminal. The
-    name of the virtual printer is displayed in the status bar at the
-    bottom of the Web Access window. Data sent to the virtual printer
-    from a host application (for example, CICS, QMF, or VPS) is captured
-    by VIRTEL and is saved in virtual storage.
-
-    |image26|\ A printer icon appears in the Web Access toolbar to
-    notify the user that print data is available.
-
-    When the user clicks on this icon, VIRTEL sends the print data to
-    the user’s browser, either as an attached file or in a pop-up
-    window.
-
-    Two types of virtual printer are supported:
-
--  LUTYPE1 (SCS): VIRTEL sends the print data to the browser as an
-   attached file.
-
--  LUTYPE3 (3270 data stream): VIRTEL converts the print data to HTML
-   and the browser displays it in a pop-up window.
-
-    In the VIRTEL configuration file, LUTYPE1 virtual printers are
-    defined with the “Terminal type” field set to 1 or S. The “Relay”
-    field contains the VTAM LU name known to the host application. The
-    figure below shows an example definition of 80 LUTYPE1 virtual
-    printers with LU names RHTIM000 to RHTIM079:
-
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| Terminal                                           | ===>       |     W2HIM000   |     ?wxyZZZZ for dynamic allocation                                     |
-|                                                    |            |                |                                                                         |
-|                                                    |            |                |     w : Sna or Non-sna or \* (category)                                 |
-+====================================================+============+================+=========================================================================+
-| Relay                                              |     ===>   |     RHTIM000   |     x : 1, 2, 3, 4, 5 or \* (model) y : Colour, Monochrome or \*        |
-|                                                    |            |                |                                                                         |
-| \*Pool name                                        |     ===>   |                |     Z : any characters                                                  |
-|                                                    |            |                |                                                                         |
-|                                                    |            |                |     Name seen by VTAM applications                                      |
-|                                                    |            |                |                                                                         |
-|                                                    |            |                |     = : copied from the terminal name Pool where to put this terminal   |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| Description ===> SCS printers (LUTYPE1) for HTTP   |            |                |                                                                         |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| Entry Point 2nd relay Terminal type                |     ===>   |     S          |     Enforced Entry Point Possible 2nd relay (Printer)                   |
-|                                                    |            |                |                                                                         |
-|                                                    |     ===>   |                |     1=LU1 2=3270 3=FC P=Printer S=Scs                                   |
-|                                                    |            |                |                                                                         |
-|                                                    |     ===>   |                |                                                                         |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| Compression                                        | ===>       |     2          |     0, 1, 2 or 3 : compression type                                     |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| Possible Calls                                     | ===>       |     1          |     0=None 1=Inbound 2=Outbound 3=Both                                  |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| Write Stats to                                     | ===>       |     12         |     1,4=VIRSTAT 2=VIRLOG                                                |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| Repeat                                             | ===>       |     0080       |     Number of generated terminals                                       |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-| P1=Update                                          |            |                | P3=Return Enter=Add                                                     |
-|                                                    |            |                |                                                                         |
-|                                                    |            |                | P12=Server                                                              |
-+----------------------------------------------------+------------+----------------+-------------------------------------------------------------------------+
-
-    *VIRTEL definition of LUTYPE1 virtual printers*
-
-    Similarly, LUTYPE3 virtual printers are defined with the “Terminal
-    type” field set to 2 or P. The figure below shows an example
-    definition of 80 LUTYPE3 virtual printers with LU names RHTIP000 to
-    RHTIP079:
-
-    *VIRTEL definition of LUTYPE1 virtual printers*
-
-    To associate virtual printers with the corresponding terminal LU
-    names, define the printer LU name in the “2nd relay” field of the
-    terminal pool definition. In the example below, Web Access terminals
-    with LU names RHTVT000-079 are associated with virtual printer LU
-    names RHTIP000-079 (LUTYPE3). Similarly, terminal LU names
-    RHTVT100-179 are associated with virtual printer LU names
-    RHTIM000-079 (LUTYPE1). There is a one-for-one correspondence
-    between the display terminal’s LU name and the printer LU name.
-
-+----------------+------------+-----------------+-----+-----+----------------------+
-|     CLLOC000   |     0050   |                 | 3   | 3   |                      |
-+================+============+=================+=====+=====+======================+
-|     CLVTA000   |     0080   |     \*W2HPOOL   | 3   | 3   |                      |
-+----------------+------------+-----------------+-----+-----+----------------------+
-|     DELOC000   |     0010   |                 | 3   | 3   |                      |
-+----------------+------------+-----------------+-----+-----+----------------------+
-|     DEVTA000   |     0016   |     \*W2HPOOL   | 3   | 3   |                      |
-+----------------+------------+-----------------+-----+-----+----------------------+
-|     W2HIM000   |     0080   |     RHTIM000    | S   | 1   |                      |
-+----------------+------------+-----------------+-----+-----+----------------------+
-|     W2HIP000   |     0080   |     RHTIP000    | P   | 1   |                      |
-+----------------+------------+-----------------+-----+-----+----------------------+
-|     W2HTP000   |     0080   |     RHTVT000    | 3   | 3   | \*W2HPOOL RHTIP000   |
-+----------------+------------+-----------------+-----+-----+----------------------+
-|     W2HTP100   |     0080   |     RHTVT100    | 3   | 3   | \*W2HPOOL RHTIM000   |
-+----------------+------------+-----------------+-----+-----+----------------------+
-
-+-------------+-----------------+-------------------+-------------------+
-| P1=Update   |     P2=Delete   |     P3=Return     |     P6=1st Page   |
-+=============+=================+===================+===================+
-| P7=Page-1   |     P8=Page+1   |     P12=Details   |                   |
-+-------------+-----------------+-------------------+-------------------+
-
-    *VIRTEL terminal definitions for virtual printers*
-
-    Virtual printer LUs are activated by VIRTEL at startup time, and
-    will remain in ACTIV state until they are acquired by the
-    application. For virtual printers defined with terminal type 1 or 2,
-    the application must initiate the acquire (for example, by CEMT SET
-    TERM(xxxx) ACQ in CICS).
-
-    Virtual printers defined with terminal type P or S may be
-    automatically connected to a controlling host application when a
-    user starts a Web Access session using the associated terminal LU.
-    The “Entry Point” field of the virtual printer definition should
-    contain the name of an entry point which specifies VIR0021B as its
-    menu program. The entry point must have one transaction whose
-    “Application” field contains the name of the host application to
-    which the printer is to be connected.
-
-    The example below shows an entry point definition for connecting
-    printers to CICS:
-
-+----------------------------+---------------------+--------------------------------------------+
-| Menu program               |     ===> VIR0021B   |     List of transactions                   |
-+============================+=====================+============================================+
-| Identification scenario    |     ===>            |     eg XML identification                  |
-+----------------------------+---------------------+--------------------------------------------+
-| Type 3 compression         |     ===>            |     Discover typical screens (Virtel/PC)   |
-+----------------------------+---------------------+--------------------------------------------+
-| Mandatory identification   |     ===>            |     (PC or minitel)                        |
-+----------------------------+---------------------+--------------------------------------------+
-| 3270 swap key              |     ===>            |     eg P24                                 |
-+----------------------------+---------------------+--------------------------------------------+
-| Extended colors            |     ===>            |     E: extended X: extended + DBCS         |
-+----------------------------+---------------------+--------------------------------------------+
-
-    *Entry point definition for virtual printer autoconnect*
-
-+---------------------------------------------+------------+---------+---------------------------------------------------------------------------------------------------------+
-| Application type Pseudo-terminals Logmode   |     ===>   |     1   |     1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE                                                                |
-|                                             |            |         |                                                                                                         |
-| How started                                 |     ===>   |     1   |     Prefix of name of partner terminals Specify when LOGMODE must be changed 1=menu 2=sub-menu 3=auto   |
-|                                             |            |         |                                                                                                         |
-|                                             |     ===>   |         |                                                                                                         |
-|                                             |            |         |                                                                                                         |
-|                                             |     ===>   |         |                                                                                                         |
-+=============================================+============+=========+=========================================================================================================+
-| Security                                    |     ===>   |     0   |     0=none 1=basic 2=NTLM 3=TLS 4=HTML 0=no 1=yes 2=if2VIRTEL 4=auto                                    |
-|                                             |            |         |                                                                                                         |
-| H4W commands ? Logon message                |     ===>   |         |                                                                                                         |
-|                                             |            |         |                                                                                                         |
-|                                             |     ===>   |         |                                                                                                         |
-+---------------------------------------------+------------+---------+---------------------------------------------------------------------------------------------------------+
-| TIOA at logon                               | ===>       |         |                                                                                                         |
-+---------------------------------------------+------------+---------+---------------------------------------------------------------------------------------------------------+
-| TIOA at logoff                              | ===>       |         |                                                                                                         |
-+---------------------------------------------+------------+---------+---------------------------------------------------------------------------------------------------------+
-| Initial Scenario Input Scenario             |     ===>   |         |     Final Scenario ===>                                                                                 |
-|                                             |            |         |                                                                                                         |
-|                                             |     ===>   |         |     Output Scenario ===>                                                                                |
-+---------------------------------------------+------------+---------+---------------------------------------------------------------------------------------------------------+
-| P1=Update                                   |            |         |     P3=Return P12=Server                                                                                |
-+---------------------------------------------+------------+---------+---------------------------------------------------------------------------------------------------------+
-
-    *Transaction definition for virtual printer autoconnect*
-
-    Virtual printer LUs must be defined to VTAM with an appropriate
-    LOGMODE (normally SCS for LUTYPE1, or DSILGMOD for LUTYPE3). The
-    necessary APPL statements may be coded in the VIRTAPPL member of the
-    VTAMLST library, as shown in the example below:
-
-    *VTAM definitions for virtual printers*
-
-    If the virtual printer is defined to CICS via RDO, use an
-    appropriate TYPETERM as shown in the table below:
-
-+----+----+----+
-+----+----+----+
-+----+----+----+
-
-    *CICS TYPETERM definitions for virtual printers*
-
-    Note: from version 4.50 onwards, VIRTEL supports the QUERY parameter
-    for SCS printers as well as for LUTYPE3 printers.
-
-    When virtual printers are defined with terminal type 1 or S, all
-    VIRTEL transactions defined under an entry point which offers
-    printing must indicate the name of an “Input Scenario”. The scenario
-    processes the HTTP request containing a PF=SCENARIO-PRINT parameter
-    which is issued when the user presses the “Get print data” icon
-    (below) on the VIRTEL Web Access toolbar.
+An example of the application selection menu is shown in the figure below: 
 
 |image27|
 
-    The scenario accesses the SCS print data which is accumulated in a
-    VIRTEL variable called $PRINT$, and instructs VIRTEL to send the
-    print data to the browser as an attached file.
+Application selection menu
 
-    Several suitable scenarios are delivered as standard in the VIRTEL
-    SAMPLIB and LOADLIB:
+The application selection menu contains clickable links to the transactions defined under the entry point. A transaction will appear in the menu if all of the following conditions are met:
+• The “Application type” is 1 (VTAM) or 2 (VIRTEL)
+• The “How started” field is 1 (menu)
+• The user is logged on and authorized via the security subsystem to the security resource whose name is the internal name of the transaction (except when the transaction “Security” field is 0)
+
+If the user is not logged on, then only public transactions (security type 0) are displayed.
+
+If the APPSTAT=YES parameter is specified in the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation
+Guide) then the status of VTAM applications is indicated by a green bar for active applications, and by a red bar for
+inactive applications.
+
+To add an application to the menu, use the VIRTEL administration panels to define a transaction under the entry point,
+press F1 to update the entry point, then refresh the appmenu.htm page in the browser.
+
+1.8.2. Presentation modes
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The application selection menu offers a choice of several different presentation modes, selectable by clicking one of the buttons at the top right of the screen. The selected presentation mode determines which page template will be used to access the selected host applications.
+
+3270 presentation
+    This presentation mode, which uses the WEB3270.htm page template, is designed for experienced 3270 users who do not require the presentation enhancements offered by VIRTELWeb Modernisation. It offers a user interface which matches as closely as possible that of a real 3270 screen.
+Ajax 3270
+    This presentation mode is similar to the 3270 presentation mode, but it uses a static main page (WEB2AJAX.htm) together with an Ajax-loaded sub-page (WEB2SUB.html). This can reduce network load and provide faster response time with a better 3270 user experience. Ajax mode also offers password encryption as an option (see “Password encryption”, page 266).
+HTML presentation
+    This presentation mode, which uses the WEB2VIRT.htm page template, is intended as a first step towards VIRTEL Web Modernisation. In this mode the 3270 screen image is displayed as an HTML form, to which presentation enhancements such as drop-down lists, checkboxes, and calendars can be added by means of VIRTEL Web Modernisation scenarios (see “Web Modernisation VIRTEL Scenarios”, page 147).
+Ajax HTML
+    This presentation mode is similar to the HTML presentation mode, but it uses a static main page (WEB2VIRTAJAX.htm) together with an Ajax-loaded sub-page (WEB2VIRTSUB.html).
+Tablet
+    This presentation mode it uses the SMARTWEB2VIRT.htm page template for an HTML presentation adapted for tablets and smartphones.
+
+1.8.3. The appmenu.htm page
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The appmenu.htm page for the VIRTEL application selection menu is delivered in the W2H-DIR directory. The page may be customized if required to meet installation standards. The appmenutable and appmenuitem styles in the STYLBLUE.css stylesheet allow the appearance of the menu to be customized. The source code for the page and the stylesheet may be obtained from the sources.zip file accessible from the VIRTEL Web Access menu. After modifying the page or the stylesheet, follow the “Upload” link on the VIRTEL Web Access menu to upload the updated files to the W2H-DIR directory.
+
+1.8.4. Definition of the applist transaction
+
+A transaction with external name applist must be present in the list of transactions at the entry point associated with
+the line. VIRTEL supplies as standard transactions W2H-90 (for entry point WEB2HOST, line W-HTTP port 41001) and
+CLI-90 (for entry point CLIWHOST, line C-HTTP port 41002). The applist transaction must specify application name
+VIR0021S and application type 2. Security type 1 requires the user to sign on so that the transaction can determine
+which applications the user is authorized to. The user must also be authorized to the applist transaction itself by its
+internal name (W2H-90 or CLI-90).
+
+The figure below shows the definition of the applist transaction CLI-90:
+
+|image81|
+Definition of applist transaction
+
+1.8.5. Application menu as the default transaction for the entry point
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When the appmenu.htm+applist URL is coded in the “TIOA at logon” field of the default transaction for the entry
+point, the application selection menu will be displayed whenever the user accesses the HTTP line using its root URL
+(for example, http://n.n.n.n:41002 for line C-HTTP).
+
+The default transaction is the transaction whose external name is the same as the entry point name, and the example
+below shows the default transaction for the CLIWHOST entry point:
+
+|image82|
+Specifying the application selection menu in the default transaction
+
+1.9. Printing With Web Access
+-----------------------------
+
+VIRTEL provides printing support by means of virtual 3287 type printers. Each user connected to VIRTEL Web Access
+has a virtual 3287 printer associated with the user’s 3270 display terminal. The name of the virtual printer is displayed
+in the status bar at the bottom of the Web Access window. Data sent to the virtual printer from a host application (for
+example, CICS, QMF, or VPS) is captured by VIRTEL and is saved in virtual storage.
+
+|image28| A printer icon appears in the Web Access toolbar to notify the user that print data is available.
+
+When the user clicks on this icon, VIRTEL sends the print data to the user’s browser, either as an attached file or in a
+pop-up window.
+Two types of virtual printer are supported:
+• LUTYPE1 (SCS): VIRTEL sends the print data to the browser as an attached file.
+• LUTYPE3 (3270 data stream): VIRTEL converts the print data to HTML and the browser displays it in a pop-up window.
+
+1.9.1. VIRTEL definitions for virtual printers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the VIRTEL configuration file, LUTYPE1 virtual printers are defined with the “Terminal type” field set to 1 or S. The
+“Relay” field contains the VTAM LU name known to the host application. The figure below shows an example definition
+of 80 LUTYPE1 virtual printers with LU names REHIM000 to REHIM079:
+
+|image83|
+VIRTEL definition of LUTYPE1 virtual printers
+
+Similarly, LUTYPE3 virtual printers are defined with the “Terminal type” field set to 2 or P. The figure below shows an
+example definition of 80 LUTYPE3 virtual printers with LU names REHIP000 to REHIP079:
+
+|image84|
+VIRTEL definition of LUTYPE3 virtual printers
+
+1.9.2. Associating virtual printers with terminals
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To associate virtual printers with the corresponding terminal LU names, define the printer LU name in the “2nd relay”
+field of the terminal pool definition. In the example below, Web Access terminals with LU names REHVT000-079 are
+associated with virtual printer LU names REHIM000-079 (LUTYPE3). There is a one-for-one correspondence between
+the display terminal’s LU name and the printer LU name.
+
+|image85|
+VIRTEL terminal definitions for virtual printers
+
+1.9.3. Autoconnect for virtual printers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Virtual printer LUs are activated by VIRTEL at startup time, and will remain in ACTIV state until they are acquired by the
+application. For virtual printers defined with terminal type 1 or 2, the application must initiate the acquire (for
+example, by CEMT SET TERM(xxxx) ACQ in CICS).
+Virtual printers defined with terminal type P or S may be automatically connected to a controlling host application
+when a user starts a Web Access session using the associated terminal LU. The “Entry Point” field of the virtual printer
+definition should contain the name of an entry point which specifies VIR0021B as its menu program. The entry point
+must have one transaction whose “Application” field contains the name of the host application to which the printer is
+to be connected.
+The example below shows an entry point definition for connecting printers to CICS:
+
+|image86|
+Entry point definition for virtual printer autoconnect
+
+|image87|
+Transaction definition for virtual printer autoconnect
+
+1.9.4. VTAM definitions for virtual printers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Virtual printer LUs must be defined to VTAM with an appropriate LOGMODE (normally SCS for LUTYPE1, or DSILGMOD
+for LUTYPE3). The necessary APPL statements may be coded in the VIRTAPPL member of the VTAMLST library, as
+shown in the example below:
+
+::
+
+    REHIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
+    REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
+
+*VTAM definitions for virtual printers*
+
+1.9.5. CICS definitions for virtual printers
+
+If the virtual printer is defined to CICS via RDO, use an appropriate TYPETERM as shown in the table below:
+
++-----------------------+---------------+--------------------+
+| VIRTEL Terminal Type  | CICS TYPETERM | CICS DEVICE type   |
++=======================+===============+====================+
+| 1 or S                | DFHSCSP       | SCSPRINT           |
++-----------------------+---------------+--------------------+
+| 2 or P                | DFHLU3 or     | LUTYPE3 or         |   
+|                       | DFH3270P      | 3270P              |
++-----------------------+---------------+--------------------+
+
+*CICS TYPETERM definitions for virtual printers*
+
+.. note::
+
+    From version 4.50 onwards, VIRTEL supports the QUERY parameter for SCS printers as well as for LUTYPE3 printers.
+
+1.9.6. Scenarios for SCS printing
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When virtual printers are defined with terminal type 1 or S, all VIRTEL transactions defined under an entry point which
+offers printing must indicate the name of an “Input Scenario”. The scenario processes the HTTP request containing a
+PF=SCENARIO-PRINT parameter which is issued when the user presses the “Get print data” icon (below) on the VIRTEL
+Web Access toolbar.
+
+|image28|
+
+The scenario accesses the SCS print data which is accumulated in a VIRTEL variable called $PRINT$, and instructs
+VIRTEL to send the print data to the browser as an attached file.
+Several suitable scenarios are delivered as standard in the VIRTEL SAMPLIB and LOADLIB:
 
 SCENFPDF
-~~~~~~~~
-
     converts an SCS datastream into a PDF document
-
 SCENFPCL
-~~~~~~~~
-
     downloads PCL data into a raw printer file
-
 SCENPPDF
-~~~~~~~~
+    converts PCL data into a PDF document (requires additional VIRTEL PCL2PDF feature running on a Windows server)
 
-    converts PCL data into a PDF document (requires additional VIRTEL
-    PCL2PDF feature running on a Windows server)
+1.9.7. SCS to PDF conversion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    When the SCENFPDF input scenario is specified in the VIRTEL
-    transaction definition, the SCS data produced by the application is
-    passed to VIRTEL’s MAKEPDF component, and the resulting PDF file is
-    sent to the browser. The browser normally displays a dialog giving
-    the user the choice of opening or saving the PDF file.
+When the SCENFPDF input scenario is specified in the VIRTEL transaction definition, the SCS data produced by the
+application is passed to VIRTEL’s MAKEPDF component, and the resulting PDF file is sent to the browser. The browser
+normally displays a dialog giving the user the choice of opening or saving the PDF file.
 
-    Certain applications such as VPS are capable of sending print data
-    in PCL (HP Printer Command Language) format to SNA printers. The PCL
-    commands and data are sent as SCS transparent data on sessions with
-    LUTYPE1 logical units.
+1.9.8. PCL printing
+^^^^^^^^^^^^^^^^^^^
 
-    The transparent data (contained in blocks of up to 253 ASCII
-    characters preceded by a X’35’ SCS command) is extracted from the
-    SCS datastream and is copied into the VIRTEL variable $PRINT$.
+Certain applications such as VPS are capable of sending print data in PCL (HP Printer Command Language) format to
+SNA printers. The PCL commands and data are sent as SCS transparent data on sessions with LUTYPE1 logical units.
+The transparent data (contained in blocks of up to 253 ASCII characters preceded by a X’35’ SCS command) is extracted
+from the SCS datastream and is copied into the VIRTEL variable $PRINT$.
+PCL data may also be delivered in EBCDIC as part of the normal SCS datastream, and this data will be converted to
+ASCII using the codepage defined by the COUNTRY parameter in the VIRTCT (see “Parameters of the VIRTCT” in the
+VIRTEL Installation Guide).
 
-    PCL data may also be delivered in EBCDIC as part of the normal SCS
-    datastream, and this data will be converted to ASCII using the
-    codepage defined by the COUNTRY parameter in the VIRTCT (see
-    “Parameters of the VIRTCT” in the VIRTEL Installation Guide).
+The SCENFPCL scenario delivered as standard in the VIRTEL SAMPLIB and LOADLIB allows PCL data to be downloaded
+to the user’s workstation as an attached file. The user may either save the file, or open it using an appropriate program
+(such as PCL Reader from Page Technology Marketing, Inc.) to display and optionally print the PCL data.
 
-    The SCENFPCL scenario delivered as standard in the VIRTEL SAMPLIB
-    and LOADLIB allows PCL data to be downloaded to the user’s
-    workstation as an attached file. The user may either save the file,
-    or open it using an appropriate program (such as PCL Reader from
-    Page Technology Marketing, Inc.) to display and optionally print the
-    PCL data.
+1.9.9. PCL-to-PDF conversion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+For customers who have licensed the optional PCL2PDF feature of VIRTEL, PCL output from host applications can be
+delivered to the workstation as PDF documents.
 
-    For customers who have licensed the optional PCL2PDF feature of
-    VIRTEL, PCL output from host applications can be delivered to the
-    workstation as PDF documents.
 
-    The SCENPPDF scenario captures PCL data and sends it to an external
-    server for conversion. The external server is a Windows Server
-    2008R2 platform running the Syspertec PCL2PDF application. The
-    VIRTEL configuration must include a line with external name PCL2PDF
-    which defines the IP address of the Windows server, as shown in the
-    example below:
+The SCENPPDF scenario captures PCL data and sends it to an external server for conversion. The external server is a
+Windows Server 2008R2 platform running the Syspertec PCL2PDF application. The VIRTEL configuration must include a
+line with external name PCL2PDF which defines the IP address of the Windows server, as shown in the example below:
 
-+-----------------------------------------+--------------------+-----------------------------+-----------------+---------------------------------------------+
-| Startup prerequisite Protocol program   |     ===>           |     Dialog manager          |                 |                                             |
-|                                         |                    |                             |                 |                                             | 
-|                                         |     ===> VIRHTTP   |                             |                 |                                             |
-+=========================================+====================+=============================+=================+=============================================+
-| Security program                        |     ===>           |     Non standard security   |                 |                                             | 
-+-----------------------------------------+--------------------+-----------------------------+-----------------+---------------------------------------------+
-| Time out                                |     ===> 0000      |     Action                  |     ===> 0      |     Action if t/o: 0=none 1=keepalive       |
-+-----------------------------------------+--------------------+-----------------------------+-----------------+---------------------------------------------+
-| Window                                  |     ===> 0000      |     Packet                  |     ===> 0000   |     eventual protocol parameters            |
-+-----------------------------------------+--------------------+-----------------------------+-----------------+---------------------------------------------+
-| Pad                                     |     ===>           |     Tran                    |     ===>        |     PAD=INTEG/TRANSP/NO, TRAN=EVEN/ODD/NO   |
-+-----------------------------------------+--------------------+-----------------------------+-----------------+---------------------------------------------+
-| Retries                                 |     ===> 0010      |     Delay                   |     ===>        |     Retries for linked to terminals         |
-+-----------------------------------------+--------------------+-----------------------------+-----------------+---------------------------------------------+
-| P1=Update Enter=Add                     |     P3=Return      |     P4=Terminals P5=Rules   |                 |                                             |
-+-----------------------------------------+--------------------+-----------------------------+-----------------+---------------------------------------------+
+|image88|
+VIRTEL line definition for PCL2PDF server
 
-    *VIRTEL line definition for PCL2PDF server*
+A batch job, supplied as member PCL2PDF of the VIRTEL SAMPLIB, allows the definition of the PCL2PDF line to be
+added to the VIRTEL configuration.
 
-    A batch job, supplied as member PCL2PDF of the VIRTEL SAMPLIB,
-    allows the definition of the PCL2PDF line to be added to the VIRTEL
-    configuration.
+1.10. TSO File Transfer
+-----------------------
 
-    VIRTEL Web Access supports transfer of files between the browser and
-    a TSO session using the IND$FILE protocol.
+VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND$FILE protocol.
 
-    To activate the file transfer function you must access TSO via a
-    VIRTEL transaction which specifies SCENINDT in both the “Input
-    scenario” and the “Output scenario” fields of the transaction
-    definition. The figure below shows the sample TSO transaction W2H-13
-    supplied with VIRTEL:
+1.10.1. Definitions required for file transfer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-+--------------------+---------------------+-------------------+---------------------+
-| TIOA at logoff     |     ===>            | Final Scenario    |     ===>            |
-|                    |                     |                   |                     |
-| Initial Scenario   |     ===>            |                   |                     |
-+====================+=====================+===================+=====================+
-| Input Scenario     |     ===> SCENINDT   | Output Scenario   |     ===> SCENINDT   |
-+--------------------+---------------------+-------------------+---------------------+
-| P1=Update          |                     |     P3=Return     |     P12=Server      |
-+--------------------+---------------------+-------------------+---------------------+
+To activate the file transfer function you must access TSO via a VIRTEL transaction which specifies SCENINDT in both
+the “Input scenario” and the “Output scenario” fields of the transaction definition. The figure below shows the sample
+TSO transaction W2H-13 supplied with VIRTEL:
 
-    *TSO transaction definition for file transfer*
+|image89|
+TSO transaction definition for file transfer
 
-    The source code of the SCENINDT scenario is supplied in the VIRTEL
-    SAMPLIB.
+The source code of the SCENINDT scenario is supplied in the VIRTEL SAMPLIB.
+To activate the file transfer function when a user-written scenario is specified in the transaction definition, the
+INDSCEN$ macro instruction must be added to both the input and output sections of the scenario.
 
-    To activate the file transfer function when a user-written scenario
-    is specified in the transaction definition, the INDSCEN$ macro
-    instruction must be added to both the input and output sections of
-    the scenario.
+1.10.2. Toolbar icons for file transfer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    When file transfer is activated, two new icons (receive file) and
-    (send file) appear on the VIRTEL Web Access toolbar:
+When file transfer is activated, two new icons (receive file) and (send file) appear on the VIRTEL Web Access toolbar:
+VIRTEL Web Access toolbar for TSO file transfer:-
 
-    |image28|
+|image90|
+*VIRTEL Web Access toolbar for TSO file transfer*
 
-    *VIRTEL Web Access toolbar for TSO file transfer*
+1.10.3. Receiving a file
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-    To transfer a file from TSO to your workstation, go to ISPF option 6
-    (or TSO READY) and click the “Receive” icon on the toolbar. The
-    “Receive File” dialog will open:
+To transfer a file from TSO to your workstation, go to ISPF option 6 (or TSO READY) and click the “Receive” icon on the
+toolbar. The “Receive File” dialog will open:
 
-    |image29|
+|image30|
+VIRTEL IND$FILE receive dialog (part 1)
 
-    *VIRTEL IND$FILE receive dialog (part 1)*
+Specify the TSO dataset name, surrounded by quotes if necessary. Dataset names without quotes will be prefixed by
+your TSO prefix (usually your userid). Click either “Text” or “Binary”. “Text” translates the file from EBCDIC to ASCII and
+inserts carriage return line feed sequences (x’0D0A’) at the end of each record. “Binary” performs no translation.
+Finally click “Receive” to start the transfer.
+When the file transfer is complete, the browser’s “Download” dialog appears:
 
-    Specify the TSO dataset name, surrounded by quotes if necessary.
-    Dataset names without quotes will be prefixed by your TSO prefix
-    (usually your userid). Click either “Text” or “Binary”. “Text”
-    translates the file from EBCDIC to ASCII and inserts carriage return
-    line feed sequences (x’0D0A’) at the end of each record. “Binary”
-    performs no translation.
+|image31|
+VIRTEL IND$FILE receive dialog (part 2)
 
-    Finally click “Receive” to start the transfer.
-
-    |image30|\ When the file transfer is complete, the browser’s
-    “Download” dialog appears:
-
-    *VIRTEL IND$FILE receive dialog (part 2)*
-
-    Click “Save”. The “Save As” dialog will open to allow you to specify
-    the name and location of the destination file on your workstation:
-
-    |image31|
-
-    *VIRTEL IND$FILE receive dialog (part 3)*
-
-    Now select the destination file and click “Save”. If the file
-    already exists you will be prompted for permission to overwrite it.
-    The “Download Complete” dialog appears when the file has been saved:
+Click “Save”. The “Save As” dialog will open to allow you to specify the name and location of the destination file on
+your workstation:
 
 |image32|
+VIRTEL IND$FILE receive dialog (part 3)
 
-    *VIRTEL IND$FILE receive dialog (part 4)*
+Now select the destination file and click “Save”. If the file already exists you will be prompted for permission to
+overwrite it. The “Download Complete” dialog appears when the file has been saved:
 
-    To transfer a file from your workstation to TSO, go to ISPF option 6
-    (or TSO READY) and click the “Send” icon on the toolbar. The “Send
-    File” dialog will open:
+|image33|
+VIRTEL IND$FILE receive dialog (part 4)
 
-    |image33|
+1.10.4. Sending a file
+^^^^^^^^^^^^^^^^^^^^^^
 
-    *VIRTEL IND$FILE send dialog (part 1)*
+To transfer a file from your workstation to TSO, go to ISPF option 6 (or TSO READY) and click the “Send” icon on the
+toolbar. The “Send File” dialog will open:
 
-    |image34|\ Click the “Browse...” button and the “Choose File to
-    Upload” dialog will appear:
+|image34|
+VIRTEL IND$FILE send dialog (part 1)
 
-    *VIRTEL IND$FILE send dialog (part 2)*
+Click the “Browse...” button and the “Choose File to Upload” dialog will appear:
 
-    Choose the file you want to upload, and click “Open” to return to
-    the “Send File” dialog:
+|image35|
+VIRTEL IND$FILE send dialog (part 2)
 
-    |image35|
+Choose the file you want to upload, and click “Open” to return to the “Send File” dialog:
 
-    *VIRTEL IND$FILE send dialog (part 3)*
+|image36|
+VIRTEL IND$FILE send dialog (part 3)
 
-    Specify the TSO dataset name, surrounded by quotes if necessary.
-    Dataset names without quotes will be prefixed by your TSO prefix
-    (usually your userid).
+Specify the TSO dataset name, surrounded by quotes if necessary. Dataset names without quotes will be prefixed by
+your TSO prefix (usually your userid).
 
-    If the TSO dataset does not yet exist, you may optionally specify
-    space (units, primary quantity, and secondary quantity), and DCB
-    attributes (record format, logical record length, and block size).
-    If you do not specify these attributes, the TSO IND$FILE will use
-    its default values.
+If the TSO dataset does not yet exist, you may optionally specify space (units, primary quantity, and secondary
+quantity), and DCB attributes (record format, logical record length, and block size). If you do not specify these
+attributes, the TSO IND$FILE will use its default values.
 
-    Check the “Append” checkbox to append the file to the end of an
-    existing TSO file. The “New” checkbox indicates that the TSO file
-    must not already exist.
+Check the “Append” checkbox to append the file to the end of an existing TSO file. The “New” checkbox indicates that
+the TSO file must not already exist.
 
-    Click either “Text” or “Binary”. “Text” translates the file from
-    ASCII to EBCDIC and treats carriage return line feed sequences
-    (x’0D0A’) as end of each record markers. “Binary” performs no
-    translation. Finally click “Send” to start the transfer.
+Click either “Text” or “Binary”. “Text” translates the file from ASCII to EBCDIC and treats carriage return line feed
+sequences (x’0D0A’) as end of each record markers. “Binary” performs no translation. Finally click “Send” to start the
+transfer.
 
-    |image36|
+|image37|
+VIRTEL IND$FILE send dialog (part 4)
 
-    *VIRTEL IND$FILE send dialog (part 4)*
+The message “File transfer complete” is displayed upon successful completion of the upload.
 
-    The message “File transfer complete” is displayed upon successful
-    completion of the upload.
+1.10.5. Selecting PC Codepage for file transfer
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Users can select a PC Codepage for file transfer. Possible values
-    are :
-
+Users can select a PC Codepage for file transfer. Possible values are :
 Windows (CP-1252)
-~~~~~~~~~~~~~~~~~
-
-    When selected, causes the file being translated by VIRTEL according
-    to the CP-1252 ASCII-EBCDIC translation table.
-
+When selected, causes the file being translated by VIRTEL according to the CP-1252 ASCII-EBCDIC translation table.
 MS-DOS (CP-850)
-~~~~~~~~~~~~~~~
-
-    When selected, causes the file being translated by VIRTEL according
-    to the CP-850 ASCII-EBCDIC translation table. The selected CP-850
-    table depends on the value of the COUNTRY parameter specified in the
-    VIRTCT. If this value is "FR", "DE" or "BE", system will use
-    corresponding table FR-850, DE-850 or BE-850. If the specified
-    country value is different, by default the BE-850 table will be used
-    to support CECP 500 international EBCDIC.
-
-    Users who frequently carry out the same or similar file transfers
-    can save the file transfer parameters for later reuse. To save a
-    file transfer, enter the dataset name and the type of transfer, then
-    click the “Save” button:
-
-    |image37|
-
-    *VIRTEL IND$FILE receive dialog (saved transfers)*
-
-    The user can then choose a name for the saved transfer, and click
-    “OK” to save the parameters. At the next transfer, the user clicks
-    the name of the saved transfer to retrieve the parameters, then
-    clicks “Receive” to start the transfer.
-
-|image38|
-
-    *Saving the file transfer parameters*
-
-    Users can save transfer parameters for both “Send” and “Receive”.
-    The paramters are saved in browser local storage. The number of sets
-    of parameters which can be saved is limited only by the amount of
-    local storage available.
-
-    Normally the VIRTEL administrator provides access to VTAM
-    applications by configuring a specific VIRTEL transaction for each
-    application. However some users require the ability to access any
-    VTAM application, including those not configured by the
-    administrator, similar to the function provided by VTAM’s USSTAB
-    USS10 screen. For these users, VIRTEL provides transactions named
-    W2H-16 and CLI-16 whose external name is VTAM.
-
-    This transaction displays a screen on which the user can enter the
-    ACBNAME of the VTAM application, together with optional LOGON DATA
-    and LOGMODE.
-
-    To access VIRTEL’s VTAM logon screen, click on “Other applications”
-    on the VIRTEL Web Access menu (port 41001) or enter its URL
-    directly:
-
-    http://n.n.n.n:41001/w2h/WEB2AJAX.htm+VTAM
-
-|image39|
-
-    *VTAM logon screen in VIRTEL Web Access mode*
-
-    To access, for example, TSO with logmode SNX32705, type TSO in the
-    “LOGON APPLID” field and SNX32705 in the “LOGMODE” field, then press
-    enter.
-
-    You can exit this screen by pressing F3.
-
-    Lines 3 and 4 of the screen indicate the name of your installation
-    and are taken from the TITRE1 and TITRE2 parameters of the VIRTCT
-    (see VIRTEL Installation Guide).
-
-    The layout of the VTAM logon screen can be customized by assembling
-    the map in member EIRM00U in the VIRTEL SAMPLIB.
-
-    To permit access to the VTAM logon screen, the administrator defines
-    a VIRTEL transaction which calls VIRTEL program VIR0021U, as shown
-    in the example below. The transaction should have “Security” set to
-    1 to force the user to sign on before the screen is displayed.
-
-    The VTAM logon screen is protected by a security resource named
-    prefix.W2H-16 or prefix.CLI-16 (where prefix is the value of the
-    PRFSECU parameter in the VIRTCT) in the RACF FACILITY class.
-    Provided the “Security” field is set to 1, and security is activated
-    in the VIRTCT, only those users having READ access to the resource
-    can obtain the VTAM logon screen.
-
-    |image40|
-
-    *Example VIRTEL transaction for VTAM logon via Web Access*
-
-    The VIRTEL administrator can customize the color settings for all
-    applications or for specific applications. The custom settings are
-    defined in a style sheet called custom.css which the administrator
-    uploads to a VIRTEL directory designated for storage of customer
-    files (usually CLI-DIR).
-
-    The custom.css file is loaded from the directory designated by the
-    transaction W2H-03CC (for entry point WEB2HOST on port 41001) or
-    CLI-03CC (for entry point CLIWHOST on port 41002). These
-    transactions have external name w2h and specify the path name
-    /w2h/custom-css in the URL Prefix field. When VIRTEL is first
-    installed, these transactions point to directory W2H-DIR for
-    W2H-03CC and to directory CLI-DIR for CLI-03CC which contains a
-    dummy version of the file custom.css.
-
-    The procedure for activating customized settings is:
-
-1.  Download the dummy custom.css from W2H-DIR by opening this URL in
-    your browser: http://n.n.n.n:41001/w2h/ custom.css (where n.n.n.n is
-    the IP address of your VIRTEL)
-
-2.  Save the custom.css file in a directory on your workstation.
-
-3.  Open the custom.css file using a text editor such as notepad.
-
-4.  Edit the custom.css file with the color and/or logo settings you
-    require (see examples below), then save the updated file.
-
-5.  Open the VIRTEL Web Access menu (URL http://n.n.n.n:41001) and click
-    the “Upload” link
-
-6.  Click “Browse” and navigate to the directory where you saved the
-    updated custom.css. Click on the custom.css file, then click the
-    “CLI-DIR” button to upload the file to VIRTEL.
-
-7.  From the VIRTEL Web Access menu (URL http://n.n.n.n:41001) click the
-    “Admin” link.
-
-8.  Press “F3 - Entry Points” then click “CLIWHOST”
-
-9.  Press “F4 - Transactions” then click “CLI-03CC”
-
-10. Press “F12 - View/Add” and type CLI-DIR in the “Application” field,
-    overwriting the original value W2H-DIR
-
-11. Press “F1 - Update” at the Transaction Detail Definition screen,
-    then “F3 – Return” twice to return to the List of Entry Points
-    screen, then “F1 – Update” again to update the entry point.
-
-    It is sometimes useful for the user to have a clear visual
-    indication of which system he or she is logged on to. This example
-    shows how to set the color of the toolbar to yellow for SPCICSP and
-    pink for SPCICSQ.
-
-    |image41|\ *Example custom.css for coloring the toolbar according to
-    CICS region*
-
-    *Web Access screen with yellow toolbar for SPCICSP*
-
-    |image42|
-
-    *Web Access screen with pink toolbar for SPCICSQ*
-
-    Another way of providing a clear visual indication of which
-    application the user is logged on to is to add a text label to the
-    toolbar. In this example the text “MVS1” is displayed when logged on
-    to application TSO1A, and “MVS2” is displayed for application TSO2A.
-
-    |image43|\ *Example custom.css for adding custom text to the
-    toolbar*
-
-    *Web Access screen with custom text in the toolbar*
-
-    It is sometimes useful to have a clear visual indication of which
-    server a user is logged on to, its version and the maintenace level
-    applied on the system. By default, the value specified into the
-    APPLID parameter of the VIRTCT is displayed at the top-right of the
-    toolbar as shown below. This information is followed by the running
-    version number and the Virtel Web access level of maintenance used.
-    This last information is enclosed in parentheses.
-
-|image44|
-
-    The running version and the level of maintenance cannot be hidden,
-    only the server name can be permanently removed by modifying the
-    w2hparm.hideinfo attribut present in the customized w2hparms.js
-    file:
-
-    *Example w2hparm.js for hiding the mainframe application name on
-    which a user is connected to.*
-
-    If the default value is preserved, the user can hide this
-    information for his own usage by checking "Hide Virtel information
-    in toolbar" in the Display tab of the settings panel.
-
-    The administrator may wish to prevent users from accessing features
-    like copy/paste, print, and settings. This example shows how to hide
-    the toolbar using a custom.css file:
-
-    *Example custom.css for hiding the toolbar*
-
-    You can also use custom.js to remove icons individually from the
-    toolbar, se\ `e “Removing unwanted toolbar
-    icons”, <#_bookmark132>`__ `page 126 <#_bookmark132>`__.
-
-    Some installations prefer to modify the colors displayed on the 3270
-    screen to make the characters more readable. This example shows how
-    to modify the colors used by VIRTEL Web Access:
-
-    *Example custom.css for modifying the 3270 colors*
-
-    In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and
-    WHITE represent the 7 colors of the 3270 pallette, with a prefix
-    indicating the highlighting mode: N=normal, U=underscore, B=blink,
-    R=reverse video.
-
-    The color values (for example, #7890F0) are expressed in hexadecimal
-    RGB encoding or as color names. For more explanation, see :
-
--  http://en.wikipedia.org/wiki/Web_colors or
-
--  http://www.w3schools.com/html/html_colornames.asp
-
-    This example shows how to display an icon (for example, a company
-    logo) at the left of the toolbar:
-
-    *Example custom.css for displaying company logo in the toolbar*
-
-    This example shows how to replace the Virtel logo in the VIRTEL Web
-    Access menu and the Application menu by your company logo:
-
-    *Example custom.css for replacing the Virtel logo by a company logo*
-
-    Note: If no explicit path is given, the company logo will be loaded
-    from the same directory as the custom.css file.
-
-    This example shows how to remove the 3D/hover effects on toolbar
-    buttons by adding orders in the custom.css file:
-
-    /\*
-
--  VIRTEL Web Access style sheet customisation for removing 3D/hover
-   effects
-
--  (c)Copyright SysperTec Communication 2014 All Rights Reserved
-
-    \*/
-
-    #toolbar td .tbButton, #toolbar td .tbButton:hover, #toolbar td
-    .tbButton:active { background-color: inherit;
-
-    border: inherit;
-
-    box-shadow: inherit;
-
-    }
-
-    *Example custom.css for removing 3D/hover effects on buttons*
-
-    This example shows how to change the backgroung color of the toolbar
-    buttons by adding orders in the custom.css file:
-
-    /\*
-
--  VIRTEL Web Access style sheet customisation the background of the
-   toolbar buttons
-
--  (c)Copyright SysperTec Communication 2014 All Rights Reserved
-
-    \*/
-
-    \|- transparent "at rest"
-
-    *Example custom.css managin the background color of the toolbar
-    buttons*
-
-    If some icons on the toolbar are displayed with some parasites on
-    the border, please check that the browser is not in a zoom mode
-    greater than 100%.
-
-    To take into account site-specific Javascript extensions for Web
-    Access, the WEB2AJAX.htm page template loads the
-
-    /w2h/custom-js/custom.js file when a session is started. An empty
-    custom.js file is delivered as standard in the W2H- DIR directory.
-    The CLI-03CJ (/w2h/custom-js) transaction delivered as standard
-    under the CLIWHOST entry point references the W2H-DIR directory, but
-    the administrator can modify this transaction to reference a
-    different directory containing a site-specific version of custom.js.
-    The CLI-DIR directory, which is intended for client-specific files,
-    may be used for this purpose.
-
-    To facilitate site-specific modifications to custom.js, VIRTEL Web
-    Access calls various custom exits at strategic points in its
-    processing. These exits are optional Javascript functions which can
-    be codes custom.js if required. The exits are described below.
-
-    This function is called after the session with the host application
-    has started.
-
-    This function is called before submitting a request to the VIRTEL
-    server. The arguments passed to before\_submitForm are:
-
-pfKey
-~~~~~
-
-    the name of the key pressed: "ENTER", "PF1", etc.
-
-oForm
-~~~~~
-
-    a DOM object representing the form to be submitted (usually
-    document.virtelForm)
-
-    This function is called after receiving a response from the VIRTEL
-    server. The arguments passed to after\_responseHandle are:
-
-o
-~
-
-    the XMLHttpRequest object (contains the status and responseText)
-
-url
-~~~
-
-    the URL which was used in the request
-
-xtim
-~~~~
-
-    a Javascript Date object representing the time the request was sent
-    to the server
-
-    This function is called before the list of possible values for a
-    parameter is displayed in the VIRTEL Web Access Settings menu. It
-    allows the list of values to be modified.
-
-    The arguments passed to modify\_settingsValues are:
-
-name
-~~~~
-
-    the parameter name
-
-values
-~~~~~~
-
-    the list of possible values
-
-    The return value is treated as the new list of possible values. If
-    the function returns null or undefined, the list remains unchanged.
-
-    This function is called for each subpage after vir3270
-    initialisation.
-
-    This function is called whenever the 3270 window gains the focus.
-
-    This function is called whenever the 3270 window loses the focus.
-
-    This example uses the after\_standardInit function to insert
-    additional icons into the toolbar when the session is started. Icons
-    may subsequently be added or removed from the toolbar after each
-    screen by means of the after\_responseHandle function.
-
-    *Example custom.js to customize the toolbar icons*
-
-    The best size for an icon is 32x32 pixels. For bigger or smaller
-    icons, it possible to offer better center rendering in modifying the
-    content of the class attribut passed within the "addtoolbarbutton"
-    function in conjunction of using a specific css attribut.
-
-    /\*
-
--  (c)Copyright SysperTec Communication 2014 All Rights Reserved
-
--  VIRTEL Web Access customer-specific javascript functions
-
--  Resizing a too small or too big toolbar icon.
-
--  For example toosmall\_pic.png=22x22 and toobig\_pic.jpg=145x30
-
-    \*/
-
-    addtoolbarbutton(999, "/w2h/toosmall\_pic.png", "Custom button #1
-    tooltip", do\_search, "tbButton size22x22"); addtoolbarbutton(999,
-    "/w2h/toobig\_pic.jpg", "Custom button #2 tooltip", do\_search,
-    "tbButton size145x30");
-
-    *Example custom.js to specify the toolbar icon size*
-
-    /\*
-
-    #toolbar td img.tbButton.size22x22 { width: 22px;
-
-    height: 22px;
-
-    padding: 5px; /\* padding is calculated to center the picture
-    horizontaly and verticaly in the 32x32 allocated
-
-    }
-
-    #toolbar td img.tbButton.size145x30 { width: 145px;
-
-    height: 30px;
-
-    padding: 1px 0; /\* padding is calculated to center the picture
-    verticaly in the 32x32 allocated area (1+30+1
-
-    }
-
-    *Example custom.css to manage a toolbar icon with a non standard
-    size*
-
-    This example uses the after\_standardInit function to disable macro
-    functions by removing the corresponding icons from the toolbar.
-
-    *Example custom.js to remove selected toolbar icons*
-
-    The names of the other toolbar icons which can be removed in this
-    way are:
-
--  capture,
-
--  disconnect,
-
--  document-print-preview,
-
--  edit-copy,
-
--  edit-cut,
-
--  edit-paste,
-
--  emptybuf,
-
--  file-rcv,
-
--  file-send,
-
--  help,
-
--  keypad,
-
--  playback,
-
--  printer,
-
--  settings,
-
--  settingsV2,
-
--  startrecording, playback, printer.
-
-    (settingsV2 is présent only if w2hparms.js contains
-    "settingsGUI":{"version":"V2"}, or
-    "settingsGUI":{"version":"V1+V2"},)
-
-    To hide the toolbar completely, se\ `e “Hiding the toolbar”, page
-    121 <#_bookmark123>`__.
-
-    To hide only the Virtel Application name, se\ `e “Showing / Hiding
-    server informations”, page 121 <#_bookmark122>`__.
-
-    In certain circumstances, the default position of an icon may not be
-    at the user's convenence. Is possible to change an icon's position
-    based on the position of another icon.
-
-    *Example custom.js to select a position for printer icon*
-
-    This example uses the after\_responseHandle function to modify the
-    text in the status bar at the bottom of the Web Access screen. This
-    example displays the text “Your printer name is xxxx” in the status
-    bar.
-
-    The status bar text is an object which can therefore be modified
-    using an API.
-
-    /\*
-
--  (c)Copyright SysperTec Communication 2012 All Rights Reserved
-
--  VIRTEL Web Access customer-specific javascript functions
-
-    \*/
-
-    function after\_responseHandle(httpXmlObj, url, xmitTimestamp) {
-    vwaStatusBar.setRelay(); // clears relay field
-
-    vwaStatusBar.setPrintRelay("Your printer name is: " +
-    vwaStatusBar.getPrintRelay());
-
+When selected, causes the file being translated by VIRTEL according to the CP-850 ASCII-EBCDIC translation table.
+The selected CP-850 table depends on the value of the COUNTRY parameter specified in the VIRTCT. If this value is
+"FR", "DE" or "BE", system will use corresponding table FR-850, DE-850 or BE-850. If the specified country value is
+different, by default the BE-850 table will be used to support CECP 500 international EBCDIC.
+1.10.6. Saving and reusing file transfer parameters
+Users who frequently carry out the same or similar file transfers can save the file transfer parameters for later reuse.
+To save a file transfer, enter the dataset name and the type of transfer, then click the “Save” button:
+1. Incoming calls
+116
+VIRTEL IND$FILE receive dialog (saved transfers)
+The user can then choose a name for the saved transfer, and click “OK” to save the parameters. At the next transfer,
+the user clicks the name of the saved transfer to retrieve the parameters, then clicks “Receive” to start the transfer.
+Saving the file transfer parameters
+Users can save transfer parameters for both “Send” and “Receive”. The paramters are saved in browser local storage.
+The number of sets of parameters which can be saved is limited only by the amount of local storage available.
+1.11. Accessing VTAM Applications
+Normally the VIRTEL administrator provides access to VTAM applications by configuring a specific VIRTEL transaction
+for each application. However some users require the ability to access any VTAM application, including those not
+configured by the administrator, similar to the function provided by VTAM’s USSTAB USS10 screen. For these users,
+VIRTEL provides transactions named W2H-16 and CLI-16 whose external name is VTAM.
+This transaction displays a screen on which the user can enter the ACBNAME of the VTAM application, together with
+optional LOGON DATA and LOGMODE.
+1. Incoming calls
+117
+1.11.1. VTAM logon screen
+To access VIRTEL’s VTAM logon screen, click on “Other applications” on the VIRTEL Web Access menu (port 41001) or
+enter its URL directly:
+http://n.n.n.n:41001/w2h/WEB2AJAX.htm+VTAM
+VTAM logon screen in VIRTEL Web Access mode
+To access, for example, TSO with logmode SNX32705, type TSO in the “LOGON APPLID” field and SNX32705 in the
+“LOGMODE” field, then press enter.
+You can exit this screen by pressing F3.
+Lines 3 and 4 of the screen indicate the name of your installation and are taken from the TITRE1 and TITRE2
+parameters of the VIRTCT (see VIRTEL Installation Guide).
+The layout of the VTAM logon screen can be customized by assembling the map in member EIRM00U in the VIRTEL
+SAMPLIB.
+1.11.2. Installing the VTAM logon transaction
+To permit access to the VTAM logon screen, the administrator defines a VIRTEL transaction which calls VIRTEL program
+VIR0021U, as shown in the example below. The transaction should have “Security” set to 1 to force the user to sign on
+before the screen is displayed.
+The VTAM logon screen is protected by a security resource named prefix.W2H-16 or prefix.CLI-16 (where prefix is the
+value of the PRFSECU parameter in the VIRTCT) in the RACF FACILITY class. Provided the “Security” field is set to 1, and
+security is activated in the VIRTCT, only those users having READ access to the resource can obtain the VTAM logon
+screen.
+1. Incoming calls
+118
+Example VIRTEL transaction for VTAM logon via Web Access
+1.12. Site Customization Of Colors And Logo
+The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom
+settings are defined in a style sheet called custom.css which the administrator uploads to a VIRTEL directory
+designated for storage of customer files (usually CLI-DIR).
+1.12.1. VIRTEL definitions required
+The custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST
+on port 41001) or CLI-03CC (for entry point CLIWHOST on port 41002). These transactions have external name w2h
+and specify the path name /w2h/custom-css in the URL Prefix field. When VIRTEL is first installed, these transactions
+point to directory W2H-DIR for W2H-03CC and to directory CLI-DIR for CLI-03CC which contains a dummy version of
+the file custom.css.
+The procedure for activating customized settings is:
+1. Download the dummy custom.css from W2H-DIR by opening this URL in your browser: http://n.n.n.n:41001/w2h/
+custom.css (where n.n.n.n is the IP address of your VIRTEL)
+2. Save the custom.css file in a directory on your workstation.
+3. Open the custom.css file using a text editor such as notepad.
+4. Edit the custom.css file with the color and/or logo settings you require (see examples below), then save the updated
+file.
+5. Open the VIRTEL Web Access menu (URL http://n.n.n.n:41001) and click the “Upload” link
+6. Click “Browse” and navigate to the directory where you saved the updated custom.css. Click on the custom.css file,
+then click the “CLI-DIR” button to upload the file to VIRTEL.
+7. From the VIRTEL Web Access menu (URL http://n.n.n.n:41001) click the “Admin” link.
+8. Press “F3 - Entry Points” then click “CLIWHOST”
+9. Press “F4 - Transactions” then click “CLI-03CC”
+1. Incoming calls
+119
+10. Press “F12 - View/Add” and type CLI-DIR in the “Application” field, overwriting the original value W2H-DIR
+11. Press “F1 - Update” at the Transaction Detail Definition screen, then “F3 – Return” twice to return to the List of
+Entry Points screen, then “F1 – Update” again to update the entry point.
+1.12.2. Example: Customizing the toolbar color by application
+It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This
+example shows how to set the color of the toolbar to yellow for SPCICSP and pink for SPCICSQ.
+/* VIRTEL Web Access style sheet for site customization
+* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
+*/
+.SPCICSP #toolbar {background-color:yellow;}
+.SPCICSQ #toolbar {background-color:pink;}
+Example custom.css for coloring the toolbar according to CICS region
+Web Access screen with yellow toolbar for SPCICSP
+Web Access screen with pink toolbar for SPCICSQ
+1.12.3. Example: Adding custom text to the toolbar
+Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to
+the toolbar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is
+displayed for application TSO2A.
+/*
+* VIRTEL Web Access style sheet for site customisation
+* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
+*/
+.TSO1A .toolbarLast:before {
+content: "MVS1";
+color: gray;
+opacity: 0.25;
+font-size: 30px;
+width: 100%;
+text-align: center;
+z-index: 1000;
+-webkit-text-stroke: 1px #000;
+-webkit-text-fill-color: transparent;
 }
-
-    *Example custom.js to modify the text of the status bar*
-
-    With this method, an API is provided which allows code in custom.js
-    to change some fields in the status bar without having to manipulate
-    the DOM of the page. The “vwaStatusBar” object can be used to do
-    this.
-
-    The editing functions are:
-
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-
-    If the parameter is empty or undefined, the corresponding field is
-    not displayed. If the content is too long, it is truncated to the
-    right.
-
-    The query functions are:
-
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-
-    Notes:
-
--  For the “getRelay()” and “getPrinterRelay()” functions, an optional
-   parameter may be specified.
-
--  When specified, valid values are “true” or “false” (without the
-   quotes). When the parameter is ommited, or is not a valid value, the
-   default “false” will be used.
-
--  When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt”
-   value overprints the field at the browser level before displaying to
-   the end user. Behind this “overprinted value”, an initial value
-   exists that has been placed by Virtel mainframe side before sending
-   message to the browser. When using the “getRelay()” or
-   “getPrinterRelay()”
-
-    functions, you may want to retrieive the inital or overprinted
-    value. When in “false” mode the function returns the initial value.
-    When in “true” mode the function retruns the overprinted value.
-
-    This example uses the after\_responseHandle function to modify the
-    regular expression which is used to identify PF key hotspots.
-
-    *Example custom.js to modify PF key hotspot recognition*
-
-    This example uses the after\_standardInit function in conjunction
-    with a custom stylesheet to add a watermark to the Web Access
-    screen. The watermark displays the application name in light text
-    behind the 3270 screen content. The application name is obtained
-    from the class attribute of the body tag.
-
-    *Example custom.js to add a watermark to the Web Access 3270 screen*
-
-    /\*
-
--  (c)Copyright SysperTec Communication 2012 All Rights Reserved
-
--  VIRTEL Web Access style sheet for site customisation
-
-    \*/
-
-    .watermark {
-
-    position: absolute; pointer-events: none; left: 150px;
-
-    top: 100px; color: gray; opacity: 0.25; font-size: 10em; width: 60%;
-
-    text-align: center; z-index: 1000;
-
-    -webkit-text-stroke: 1px #FFF;
-
-    -webkit-text-fill-color: transparent;
-
-    -webkit-transform: rotate(-40deg);
-
-    -moz-transform: rotate(-40deg);
-
-    filter: alpha(opacity=25)
-    progid:DXImageTransform.Microsoft.Matrix(M11=0.819, M12=0.574,
-    M21=-0.574, M22=0.8
-
-    }
-
-    |image45|\ *Example custom.css to define the style of the watermark*
-
-    *Web Access screen with application name as watermark*
-
-    The callback function modify\_settingsValues allows the
-    administrator to modify or replace the list of values allowed for
-    specific parameters in the VIRTEL Web Access Settings menu.
-
-    The example shown below replaces the list of fonts, and adds two
-    extra values "20" and "24" to the list of fontsizes:
-
-    *Example custom.js to modify Settings values*
-
-    Users can obtain help on VIRTEL Web Access functions by clicking the
-    help icon in the Web Access toolbar:
-
-    |image46|
-
-    which causes the browser to display the page
-    /w2h/custom-help/help.html delivered as standard with VIRTEL Web
-    Access.
-
-    The administrator can create a custom version of the help.html page
-    and upload it to a VIRTEL directory destined for site-specific
-    pages, such as CLI-DIR.
-
-    The standard help.html page is shown below:
-
-    |image47|
-
-    *Standard help page for Web Access*
-
-    To install a customized help.html page, the administrator must
-    perform the following operations:
-
--  Upload the customized help.html file into a VIRTEL directory such as
-   CLI-DIR
-
--  Modify the VIRTEL transactions CLI-03CH so that it points to the
-   CLI-DIR directory (instead of W2H-DIR as initially installed), then
-   press F1-F3-F3-F1 to update the transaction and the CLIWHOST entry
-   point. Perform the same operation on transaction W2H-03CH and entry
-   point WEB2HOST.
-
-    Copy, cut or paste operation are done using standard function key
-    combinations CTRL + C, CTRL + X or CTRL + V or using a pop-up menu
-    when using the right mouse button. These operations often require
-    access to the clipboard, which, depending on the browser used, may
-    require the installation of an additional module..
-
-    For Internet Explorer, the usage of the clipboard is systematic for
-    copy / cut / paste operation and does not require any additional
-    module.
-
-    From IE9 and above, depending on the value of “Tools \| Internet
-    options \| Security tab \| Custom level \| Scroll to, Drag and drop
-    or cut and paste files” you will be authorized - or not - to access
-    the clipboard. If prompted, during the first attempt to use copy /
-    cut / paste function the browser will display a window requesting
-    confirmation to access the clipboard. Once the decision is
-    communicated, it remains valid until closing the window with the
-    domain.
-
-    An ADDON is required to perform any copy / cut / paste operation
-    with another application or with another internet domain. The ADDON
-    is available for download at the following address:
-    `https://addons.mozilla.org/fr/firefox/addon/ <#_bookmark0>`__
-    `virtel-webaccess-add-on/ <#_bookmark0>`__
-
-    If the browser version is compatible with the latest version of
-    ADDON published click the “+ Add to Firefox” icon. Any additional
-    window will open to confirm the installation.
-
-|image48|
-
-    If the browser version is too old to be supported by the latest
-    version of ADDON published, the link “+ Add to Firefox” will not be
-    available. Click on the link “View full history version”at the
-    bottom of the page as shown below.
-
-|image49|
-
-    On the next page, select the ADDON version of the most compatible
-    version available for the browser in use. Click “+ Add to Firefox”.
-    Several versions of the ADDON can be installed in parallel, however,
-    only one must be active at any given time.
-
-    An extension is required for any copy / cut / paste operation with
-    another application or with another internet domain. The extension
-    can be obtained on the Chrome WebStore at the following address:
-
-    `https://chrome.google.com/webstore/category/apps?hl=en-GB <#_bookmark0>`__.
-
-    Enter “Virtel Extender WebAccess” in the search field and launch the
-    search. The extension appears in the “Extensions” list.
-
-|image50|
-
-    Click on the extension item and then, on the next page, click “Add
-    to Chrome”.
-
-    Once the additional module has been installed, it will be necessary
-    to specify the permissions.
-
-    On the toolbar, click on the “Menu” in the upper right (1) icon,
-    then click on “Modules” (2). If this section does not appear
-    directly in the tool window, click on “Customise” (3) tool to add
-    “Modules” in the menu. It is also possible to directly access the
-    extension manager by typing “about: addons” in the URL bar of the
-    browser.
-
-    |image51|
-
-    On the ADDONS page, select “Extension” to display the VIRTEL
-    extension. Click on the “Options” button to display a setup screen
-    similar to the one shown below.
-
-|image52|
-
-    |image53|
-
-    The following options should be set:
-
+1. Incoming calls
+120
+.TSO2A .toolbarLast:before {
+content: "MVS2";
+color: red;
+opacity: 0.25;
+font-size: 30px;
+width: 100%;
+text-align: center;
+z-index: 1000;
+-webkit-text-stroke: 1px red;
+-webkit-text-fill-color: transparent;
+}
+Example custom.css for adding custom text to the toolbar
+Web Access screen with custom text in the toolbar
+1.12.4. Example: Showing / Hiding server informations
+It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the
+maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is
+displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
+and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.
+The running version and the level of maintenance cannot be hidden, only the server name can be permanently
+removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:
+/*
+* Configuration of the server name connected to.
+*/
+w2hparm.hideinfo = true;
+Example w2hparm.js for hiding the mainframe application name on which a user is connected to.
+If the default value is preserved, the user can hide this information for his own usage by checking "Hide Virtel
+information in toolbar" in the Display tab of the settings panel.
+1.12.5. Example: Hiding the toolbar
+The administrator may wish to prevent users from accessing features like copy/paste, print, and settings. This example
+shows how to hide the toolbar using a custom.css file:
+1. Incoming calls
+121
+/* VIRTEL Web Access style sheet for site customization
+* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
+*/
+#toolbar {display:none;}/*
+Example custom.css for hiding the toolbar
+You can also use custom.js to remove icons individually from the toolbar, see “Removing unwanted toolbar icons”,
+page 126.
+1.12.6. Example: Modifying the 3270 colors
+Some installations prefer to modify the colors displayed on the 3270 screen to make the characters more readable.
+This example shows how to modify the colors used by VIRTEL Web Access:
+/*
+* VIRTEL Web Access style sheet customisation for 3270 colors
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+*/
+.NBLUE, .UBLUE, .BBLUE {color:#7890F0;}
+.RBLUE {background-color:#7890F0;}
+.NRED, .URED, .BRED {color:#F21816;}
+.RRED {background-color:#F21816;}
+.NPINK, .UPINK, .BPINK {color:#FF00FE;}
+.RPINK {background-color:#FF00FE;}
+.NGREEN, .UGREEN, .BGREEN {color:#24D82F;}
+.RGREEN {background-color:#24D82F;}
+.NTURQUOISE, .UTURQUOISE, .BTURQUOISE {color:#58F0F1;}
+.RTURQUOISE {background-color:#58F0F1;}
+.NYELLOW, .UYELLOW, .BYELLOW {color:#FFFF00;}
+.RYELLOW {background-color:#FFFF00;}
+.NWHITE, .UWHITE, .BWHITE {color:#FFFFFF;}
+.RWHITE {background-color:#FFFFFF;}
+Example custom.css for modifying the 3270 colors
+In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and WHITE represent the 7 colors of the 3270
+pallette, with a prefix indicating the highlighting mode: N=normal, U=underscore, B=blink, R=reverse video.
+The color values (for example, #7890F0) are expressed in hexadecimal RGB encoding or as color names. For more
+explanation, see :
+• http://en.wikipedia.org/wiki/Web_colors or
+• http://www.w3schools.com/html/html_colornames.asp
+1.12.7. Example: Adding a company logo
+This example shows how to display an icon (for example, a company logo) at the left of the toolbar:
+/*
+* VIRTEL Web Access style sheet customisation for company logo
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+*/
+1. Incoming calls
+122
+#toolbar td#companyIcon {
+height:30px;
+display:table-cell;
+}
+#companyIcon div {
+background-image:url("/w2h/virtblue.jpg");
+background-position:0px -4px;
+background-repeat:no-repeat;
+height:26px;
+width:145px;
+}
+Example custom.css for displaying company logo in the toolbar
+This example shows how to replace the Virtel logo in the VIRTEL Web Access menu and the Application menu by your
+company logo:
+/*
+* VIRTEL Web Access style sheet for site customisation
+* (c)Copyright SysperTec Communication 2013 All Rights Reserved
+* $Id$
+*/
+#appmenulogo {
+background-image: url("mycompany.gif");
+height: 65px;
+width: 266px;
+}
+Example custom.css for replacing the Virtel logo by a company logo
+Note: If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.
+1.12.8. Example: Removing 3D/hover effects on the toolbar buttons
+This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:
+/*
+* VIRTEL Web Access style sheet customisation for removing 3D/hover effects
+* (c)Copyright SysperTec Communication 2014 All Rights Reserved
+*/
+#toolbar td .tbButton, #toolbar td .tbButton:hover, #toolbar td .tbButton:active {
+background-color: inherit;
+border: inherit;
+box-shadow: inherit;
+}
+Example custom.css for removing 3D/hover effects on buttons
+1.12.9. Example: Changing background color of the toolbar buttons
+This example shows how to change the backgroung color of the toolbar buttons by adding orders in the custom.css
+file:
+/*
+* VIRTEL Web Access style sheet customisation the background of the toolbar buttons
+* (c)Copyright SysperTec Communication 2014 All Rights Reserved
+*/
+|- transparent "at rest"
+1. Incoming calls
+123
+|- white when cursor moves on
+|- yellow when button is clicked
+#toolbar td .tbButton {
+background-color: inherit;
+}
+#toolbar td .tbButton:hover {
+background-color: white;
+}
+#toolbar td .tbButton:active {
+background-color: yellow;
+}
+| To remove the background color and the border of buttons "at rest":
+#toolbar td .tbButton {
+background-color: inherit;
+border: 1px solid transparent;
+}
+Example custom.css managin the background color of the toolbar buttons
+1.12.10. Icon display troubleshooting
+If some icons on the toolbar are displayed with some parasites on the border, please check that the browser is not in a
+zoom mode greater than 100%.
+1.13. Site Customization Of Javascript Functions
+To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads the
+/w2h/custom-js/custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR
+directory. The CLI-03CJ (/w2h/custom-js) transaction delivered as standard under the CLIWHOST entry point
+references the W2H-DIR directory, but the administrator can modify this transaction to reference a different directory
+containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be
+used for this purpose.
+To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls various custom exits at strategic points in
+its processing. These exits are optional Javascript functions which can be codes custom.js if required. The exits are
+described below.
+1.13.1. Exits which can be coded in custom.js
+after_standardInit()
+This function is called after the session with the host application has started.
+before_submitForm(pfKey,oForm)
+This function is called before submitting a request to the VIRTEL server.
+The arguments passed to before_submitForm are:
+pfKey
+the name of the key pressed: "ENTER", "PF1", etc.
+1. Incoming calls
+124
+oForm
+a DOM object representing the form to be submitted (usually document.virtelForm)
+after_responseHandle(o,url,xtim)
+This function is called after receiving a response from the VIRTEL server.
+The arguments passed to after_responseHandle are:
+o
+the XMLHttpRequest object (contains the status and responseText)
+url
+the URL which was used in the request
+xtim
+a Javascript Date object representing the time the request was sent to the server
+modify_settingsValues(name,values)
+This function is called before the list of possible values for a parameter is displayed in the VIRTEL Web Access Settings
+menu. It allows the list of values to be modified.
+The arguments passed to modify_settingsValues are:
+name
+the parameter name
+values
+the list of possible values
+The return value is treated as the new list of possible values. If the function returns null or undefined, the list remains
+unchanged.
+when_init()
+This function is called for each subpage after vir3270 initialisation.
+when_focusGained()
+This function is called whenever the 3270 window gains the focus.
+when_focusLost()
+This function is called whenever the 3270 window loses the focus.
+1.13.2. Example: Customizing the toolbar icons
+This example uses the after_standardInit function to insert additional icons into the toolbar when the session is
+started. Icons may subsequently be added or removed from the toolbar after each screen by means of the
+after_responseHandle function.
+/*
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+1. Incoming calls
+125
+* VIRTEL Web Access customer-specific javascript functions
+*/
+/*
+* Adds a button to the toolbar which performs a Google search for
+* the text selected in the red box in the 3270 screen, or for the
+* word at the cursor if no box is drawn
+*/
+function after_standardInit() {
+addtoolbarbutton(999, "http://www.google.com/favicon.ico",
+"Search engine query", do_search);
+}
+function do_search() {
+var searcharg = VIR3270.getBoxedText() || VIR3270.getWordAtCursor();
+var windowname = "search";
+var searchURL = "http://www.google.com";
+if (searcharg) searchURL += "/search?q=" +
+encodeURIComponent(searcharg.replace(/\s+/g," "));
+var windowopts = "location=yes,status=yes,resizable=yes,"+
+"scrollbars=yes,toolbar=yes,menubar=yes,width=640,height=480";
+var searchwin = window.open(searchURL, windowname, windowopts);
+if (searchwin) searchwin.focus();
+}
+Example custom.js to customize the toolbar icons
+1.13.2.1. Centering non standard icons
+The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in
+modifying the content of the class attribut passed within the "addtoolbarbutton" function in conjunction of using a
+specific css attribut.
+/*
+* (c)Copyright SysperTec Communication 2014 All Rights Reserved
+* VIRTEL Web Access customer-specific javascript functions
+* Resizing a too small or too big toolbar icon.
+* For example toosmall_pic.png=22x22 and toobig_pic.jpg=145x30
+*/
+addtoolbarbutton(999, "/w2h/toosmall_pic.png", "Custom button #1 tooltip", do_search, "tbButton size22x22");
+addtoolbarbutton(999, "/w2h/toobig_pic.jpg", "Custom button #2 tooltip", do_search, "tbButton size145x30");
+Example custom.js to specify the toolbar icon size
+/*
+#toolbar td img.tbButton.size22x22 {
+width: 22px;
+height: 22px;
+padding: 5px; /* padding is calculated to center the picture horizontaly and verticaly in the 32x32 allocated }
+#toolbar td img.tbButton.size145x30 {
+width: 145px;
+height: 30px;
+padding: 1px 0; /* padding is calculated to center the picture verticaly in the 32x32 allocated area (1+30+1 }
+Example custom.css to manage a toolbar icon with a non standard size
+1.13.3. Example: Removing unwanted toolbar icons
+This example uses the after_standardInit function to disable macro functions by removing the corresponding icons
+from the toolbar.
+1. Incoming calls
+126
+/*
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+* VIRTEL Web Access customer-specific javascript functions
+*/
+function after_standardInit() {
+/* Remove macro buttons from the toolbar */
+removetoolbarbutton("startrecording");
+removetoolbarbutton("playback");
+}
+Example custom.js to remove selected toolbar icons
+The names of the other toolbar icons which can be removed in this way are:
+• capture,
+• disconnect,
+• document-print-preview,
+• edit-copy,
+• edit-cut,
+• edit-paste,
+• emptybuf,
+• file-rcv,
+• file-send,
+• help,
+• keypad,
+• playback,
+• printer,
+• settings,
+• settingsV2,
+• startrecording, playback, printer.
+(settingsV2 is présent only if w2hparms.js contains "settingsGUI":{"version":"V2"}, or
+"settingsGUI":{"version":"V1+V2"},)
+To hide the toolbar completely, see “Hiding the toolbar”, page 121.
+To hide only the Virtel Application name, see “Showing / Hiding server informations”, page 121.
+1.13.4. Example: Positionning toolbar icons
+In certain circumstances, the default position of an icon may not be at the user's convenence. Is possible to change an
+icon's position based on the position of another icon.
+/*
+* Customize the location of dynamic toolbar buttons.
+* The calls to this function are ignored when they
+* return nothing, or an integer not greater than 0.
+*
+* Customizable buttons IDs :
+* > '3278T'
+* > 'document-print-preview'
+* > 'file-send'
+* > 'file-recv'
+* > 'printer'
+*/
+function customize_toolbarButtonIndex(id) {
+1. Incoming calls
+127
+if (id==='printer' || id==='document-print-preview') {
+return getToolbarButtonIndex('disconnect') + 1;
+}
+}
+Example custom.js to select a position for printer icon
+1.13.5. Example: Modifying the text of the status bar
+This example uses the after_responseHandle function to modify the text in the status bar at the bottom of the Web
+Access screen. This example displays the text “Your printer name is xxxx” in the status bar.
+The status bar text is an object which can therefore be modified using an API.
+/*
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+* VIRTEL Web Access customer-specific javascript functions
+*/
+function after_responseHandle(httpXmlObj, url, xmitTimestamp) {
+vwaStatusBar.setRelay(); // clears relay field
+vwaStatusBar.setPrintRelay("Your printer name is: " + vwaStatusBar.getPrintRelay());
+}
+Example custom.js to modify the text of the status bar
+With this method, an API is provided which allows code in custom.js to change some fields in the status bar without
+having to manipulate the DOM of the page. The “vwaStatusBar” object can be used to do this.
+The editing functions are:
+Function Description
+vwaStatusBar.setRelay(txt) Change the “Relay” field.
+vwaStatusBar.setPrintRelay(txt) Change the “Printer relay” field.
+vwaStatusBar.setStatus(txt) Change the “Status” field.
+vwaStatusBar.setStatusClass(txt) Allow to assign a specific CSS class to the “Status” field.
+If the parameter is empty or undefined, the corresponding field is not displayed. If the content is too long, it is
+truncated to the right.
+The query functions are:
+Function Description
+vwaStatusBar.getCursCol() Return the “x” position of the cursor.
+vwaStatusBar.getCursRow() Return the “y” position of the cursor.
+vwaStatusBar.getRelay(parameter) Return the content of the “Relay” field.
+vwaStatusBar.getPrintRelay(parameter) Return the content of the “Printer relay” field.
+vwaStatusBar.getStatus() Return the content of the “Status” field.
+Notes:
+• For the “getRelay()” and “getPrinterRelay()” functions, an optional parameter may be specified.
+• When specified, valid values are “true” or “false” (without the quotes). When the parameter is ommited, or is not a
+valid value, the default “false” will be used.
+• When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level
+before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by
+Virtel mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()”
+1. Incoming calls
+128
+functions, you may want to retrieive the inital or overprinted value. When in “false” mode the function returns the
+initial value. When in “true” mode the function retruns the overprinted value.
+1.13.6. Example: Custom hotspot recognition
+This example uses the after_responseHandle function to modify the regular expression which is used to identify PF key
+hotspots.
+/*
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+* VIRTEL Web Access customer-specific javascript functions
+*/
+function after_responseHandle(httpXmlObj, url, xmitTimestamp) {
+VIR3270.customPfKeysHotspotRegex =
+/(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;
+}
+Example custom.js to modify PF key hotspot recognition
+1.13.7. Example: Adding a watermark to the 3270 screen
+This example uses the after_standardInit function in conjunction with a custom stylesheet to add a watermark to the
+Web Access screen. The watermark displays the application name in light text behind the 3270 screen content. The
+application name is obtained from the class attribute of the body tag.
+/*
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+* VIRTEL Web Access customer-specific javascript functions
+*/
+function after_standardInit() {
+var o = document.createElement("div");
+o.className = "watermark";
+o.innerHTML = document.body.className;
+document.body.appendChild(o);
+}
+Example custom.js to add a watermark to the Web Access 3270 screen
+1. Incoming calls
+129
+/*
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+* VIRTEL Web Access style sheet for site customisation
+*/
+.watermark {
+position: absolute;
+pointer-events: none;
+left: 150px;
+top: 100px;
+color: gray;
+opacity: 0.25;
+font-size: 10em;
+width: 60%;
+text-align: center;
+z-index: 1000;
+-webkit-text-stroke: 1px #FFF;
+-webkit-text-fill-color: transparent;
+-webkit-transform: rotate(-40deg);
+-moz-transform: rotate(-40deg);
+filter: alpha(opacity=25) progid:DXImageTransform.Microsoft.Matrix(M11=0.819, M12=0.574, M21=-0.574, M22=0.819, }
+Example custom.css to define the style of the watermark
+Web Access screen with application name as watermark
+1.13.8. Example: Modifying Web Access Settings
+The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for
+specific parameters in the VIRTEL Web Access Settings menu.
+The example shown below replaces the list of fonts, and adds two extra values "20" and "24" to the list of fontsizes:
+/*
+* (c)Copyright SysperTec Communication 2012 All Rights Reserved
+* VIRTEL Web Access customer-specific javascript functions
+*/
+1. Incoming calls
+130
+function modify_settingsValues(name, values) {
+if (name == "font")
+return ["Courier New", "Lucida Console", "Consolas"];
+if (name == "fontsize")
+return values.concat("20", "24");
+}
+Example custom.js to modify Settings values
+1.14. Customizing The Help Page
+Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:
+which causes the browser to display the page /w2h/custom-help/help.html delivered as standard with VIRTEL Web
+Access.
+The administrator can create a custom version of the help.html page and upload it to a VIRTEL directory destined for
+site-specific pages, such as CLI-DIR.
+1.14.1. Standard help page
+The standard help.html page is shown below:
+1. Incoming calls
+131
+Standard help page for Web Access
+1.14.2. Installing a custom help page
+To install a customized help.html page, the administrator must perform the following operations:
+• Upload the customized help.html file into a VIRTEL directory such as CLI-DIR
+• Modify the VIRTEL transactions CLI-03CH so that it points to the CLI-DIR directory (instead of W2H-DIR as initially
+installed), then press F1-F3-F3-F1 to update the transaction and the CLIWHOST entry point. Perform the same
+operation on transaction W2H-03CH and entry point WEB2HOST.
+1. Incoming calls
+132
+1.15. Allow Copy, Cut And Paste
+Copy, cut or paste operation are done using standard function key combinations CTRL + C, CTRL + X or CTRL + V or
+using a pop-up menu when using the right mouse button. These operations often require access to the clipboard,
+which, depending on the browser used, may require the installation of an additional module..
+1.15.1. Additional module requirements
+1.15.1.1. Internet Explorer
+For Internet Explorer, the usage of the clipboard is systematic for copy / cut / paste operation and does not require any
+additional module.
+From IE9 and above, depending on the value of “Tools | Internet options | Security tab | Custom level | Scroll to, Drag
+and drop or cut and paste files” you will be authorized - or not - to access the clipboard. If prompted, during the first
+attempt to use copy / cut / paste function the browser will display a window requesting confirmation to access the
+clipboard. Once the decision is communicated, it remains valid until closing the window with the domain.
+1.15.1.2. Firefox
+An ADDON is required to perform any copy / cut / paste operation with another application or with another internet
+domain. The ADDON is available for download at the following address: https://addons.mozilla.org/fr/firefox/addon/
+virtel-webaccess-add-on/
+If the browser version is compatible with the latest version of ADDON published click the “+ Add to Firefox” icon. Any
+additional window will open to confirm the installation.
+If the browser version is too old to be supported by the latest version of ADDON published, the link “+ Add to Firefox”
+will not be available. Click on the link “View full history version”at the bottom of the page as shown below.
+1. Incoming calls
+133
+On the next page, select the ADDON version of the most compatible version available for the browser in use. Click “+
+Add to Firefox”. Several versions of the ADDON can be installed in parallel, however, only one must be active at any
+given time.
+1.15.1.3. Chrome
+An extension is required for any copy / cut / paste operation with another application or with another internet
+domain. The extension can be obtained on the Chrome WebStore at the following address:
+https://chrome.google.com/webstore/category/apps?hl=en-GB.
+Enter “Virtel Extender WebAccess” in the search field and launch the search. The extension appears in the
+“Extensions” list.
+Click on the extension item and then, on the next page, click “Add to Chrome”.
+1.15.2. Additional module requirements
+Once the additional module has been installed, it will be necessary to specify the permissions.
+1.15.2.1. Firefox
+On the toolbar, click on the “Menu” in the upper right (1) icon, then click on “Modules” (2). If this section does not
+appear directly in the tool window, click on “Customise” (3) tool to add “Modules” in the menu. It is also possible to
+directly access the extension manager by typing “about: addons” in the URL bar of the browser.
+1. Incoming calls
+134
+On the ADDONS page, select “Extension” to display the VIRTEL extension. Click on the “Options” button to display a
+setup screen similar to the one shown below.
+1. Incoming calls
+135
+The following options should be set:
 Automatic update
-~~~~~~~~~~~~~~~~
-
--  by default
-
--  enabled
-
--  off
-
+• by default
+• enabled
+• off
 Authorized domains:
-~~~~~~~~~~~~~~~~~~~
-
-    Contains a list of domains for which permission to access the
-    clipboard is granted. Each domain is separated from the next with a
-    comma. The \* indicates that all values are valid for the
-    corresponding criteria. All definitions should end with an asterisk
-    character, for example,
-    `“http://w <http://www.mydomain.com/>`__\ w\ `w.mydomain.com/” <http://www.mydomain.com/>`__
-    is not a valid definition because it does not end with \*.
-
-    Example of definitions:
-
--  `http://www.mydomain.com/\* <http://www.mydomain.com/>`__ allow
-   access to the clipboard for the domain. Typing
-   http://www.mydomain.com:8080/ will be denied access, the presence of
-   a port number in the URL does not match the rule.
-
--  http://192.168.92.161:41001/\* allows URLs communicating on the 41001
-   port access to the clipboard for specified IP address. URLs using
-   another port will be denied access.
-
--  `http://192.168.92.161:\* <http://192.168.92.161/>`__ allows URL
-   communicating on any port to access the clipboard for specified IP
-   address. All entries must ends with a wildchar (\*) character. Only
-   one wildchar character is allowed for each entry.
-
+Contains a list of domains for which permission to access the clipboard is granted. Each domain is separated from the
+next with a comma. The * indicates that all values are valid for the corresponding criteria. All definitions should end
+with an asterisk character, for example, “http://www.mydomain.com/” is not a valid definition because it does not
+end with *.
+Example of definitions:
+• http://www.mydomain.com/* allow access to the clipboard for the domain. Typing
+http://www.mydomain.com:8080/ will be denied access, the presence of a port number in the URL does not
+match the rule.
+• http://192.168.92.161:41001/* allows URLs communicating on the 41001 port access to the clipboard for
+specified IP address. URLs using another port will be denied access.
+• http://192.168.92.161:* allows URL communicating on any port to access the clipboard for specified IP address.
+All entries must ends with a wildchar (*) character. Only one wildchar character is allowed for each entry.
 Show notifications:
-~~~~~~~~~~~~~~~~~~~
-
-    Display a POP\_UP window in the bottom right of the screen
-    summarizing the result of last copy / paste operation.
-
+Display a POP_UP window in the bottom right of the screen summarizing the result of last copy / paste operation.
 Refresh preferences:
-~~~~~~~~~~~~~~~~~~~~
-
-    Saves the last configuration changes.
-
-    On the toolbar, click on the “Customize and control Google Chrome”
-    icon in the upper right (1), then click on the “Settings” (2), then
-    the extensions section. It is also possible to directly access the
-    extension manager by typing “chrome://extensions” in the URL bar of
-    the browser. From the extensions page, select “Extension” to display
-    the VIRTEL extension.
-
-    |image54|
-
-    |image55|\ Verify that the extension is activated and click on the
-    “Options” link.
-
-    The following options should be set:
-
-    |image56|
-
-    |image57|
-
+Saves the last configuration changes.
+1.15.2.2. Chrome
+On the toolbar, click on the “Customize and control Google Chrome” icon in the upper right (1), then click on the
+“Settings” (2), then the extensions section. It is also possible to directly access the extension manager by typing
+“chrome://extensions” in the URL bar of the browser. From the extensions page, select “Extension” to display the
+VIRTEL extension.
+1. Incoming calls
+136
+Verify that the extension is activated and click on the “Options” link.
+The following options should be set:
+1. Incoming calls
+137
+1. Incoming calls
+138
 Allow copy / paste operation:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Allows operations copy / cut / paste on the domains specified in the
-    definitions parameter.
-
+Allows operations copy / cut / paste on the domains specified in the definitions parameter.
 For all domains:
-~~~~~~~~~~~~~~~~
-
-    All domains are open for any copy / cut / paste operations.
-
+All domains are open for any copy / cut / paste operations.
 For these domains only:
-~~~~~~~~~~~~~~~~~~~~~~~
-
-    Only the domains defined in a list are allowed. When multiple
-    domains are required, the list must be defined with one line per
-    domain reference.
-
-    Example of definitions:
-
--  `http://www.mydomain.com/\* <http://www.mydomain.com/>`__ allow
-   access to the clipboard for the domain. Typing
-   http://www.mydomain.com:8080/ will be denied access, the presence of
-   a port number in the URL does not match the rule.
-
--  http://192.168.92.161:41001/\* allows URLs communicating on the 41001
-   port access to the clipboard for specified IP address. URLs using
-   another port will be denied access.
-
--  `http://192.168.92.161:\*/\* <http://192.168.92.161/>`__ allows URL
-   communicating on any port to access the clipboard for specified IP
-   address.
-
+Only the domains defined in a list are allowed. When multiple domains are required, the list must be defined with
+one line per domain reference.
+Example of definitions:
+• http://www.mydomain.com/* allow access to the clipboard for the domain. Typing
+http://www.mydomain.com:8080/ will be denied access, the presence of a port number in the URL does not
+match the rule.
+• http://192.168.92.161:41001/* allows URLs communicating on the 41001 port access to the clipboard for
+specified IP address. URLs using another port will be denied access.
+• http://192.168.92.161:*/* allows URL communicating on any port to access the clipboard for specified IP
+address.
+1. Incoming calls
+139
 IFrame support:
-~~~~~~~~~~~~~~~
-
-    Allows operation of copy / cut / paste operation when Virtel Web
-    Access window is encapsulated in an IFrame.This information is
-    supplemented by a list of areas on which these operations are
-    allowed. This list may be identical to that defined in the previous
-    section and, if required, may contain additional restrictions
-    through a restrictive list. When a restrictive list is specified,
-    the relevant fields should appear in the previous list.
-
+Allows operation of copy / cut / paste operation when Virtel Web Access window is encapsulated in an IFrame.This
+information is supplemented by a list of areas on which these operations are allowed. This list may be identical to
+that defined in the previous section and, if required, may contain additional restrictions through a restrictive list.
+When a restrictive list is specified, the relevant fields should appear in the previous list.
 Logging:
-~~~~~~~~
+Whenever a copy / cut / paste operation is attempted the domain involved can be saved to a list. This list is presented
+in the following form:
+By default the system registers a historical log all operations. It is possible to restrict registration to only rejected
+requests by checking the “Record only the gold failes Rejected requests” box. Managing the number of log entries
+and setting a retention time is configurable via “Maximum entries in history” and “Delete history entries after”
+settings.
+1.15.3. Operational audit
+Firefox and Chrome. Use the right mouse button to open a selection menu for copy / cut / paste operations. The
+operational status of this feature is displayed in an ICON in top right.
+Green: Indicates that the module is properly installed and that the field is allowed.
+Orange: Indicates that the module is installed correctly but the field is not defined as an authorized domain. (Available
+only for Chrome).
 
-    Whenever a copy / cut / paste operation is attempted the domain
-    involved can be saved to a list. This list is presented in the
-    following form:
-
-    By default the system registers a historical log all operations. It
-    is possible to restrict registration to only rejected requests by
-    checking the “Record only the gold failes Rejected requests” box.
-    Managing the number of log entries and setting a retention time is
-    configurable via “Maximum entries in history” and “Delete history
-    entries after” settings.
-
-    Firefox and Chrome. Use the right mouse button to open a selection
-    menu for copy / cut / paste operations. The operational status of
-    this feature is displayed in an ICON in top right.
-
-|image58|
-
-    *Green: Indicates that the module is properly installed and that the
-    field is allowed.*
-
-    |image59|
-
-    *Orange: Indicates that the module is installed correctly but the
-    field is not defined as an authorized domain. (Available only for
-    Chrome).*
-
-    |image60|
-
-    *Red: The expansion module is not installed. For Firefox, it may
-    also indicate that the field is not allowed, or that the navigation
-    is done in private mode. If running in private mode, the fonction is
-    supported from version 0.6.33.1 and above.*
-
-    Often, in the world of the 3270 emulation, the term of “Macro”
-    brings together two separate concepts. The first one designates the
-    recording of a sequence of repetitive actions that the user wishes
-    to automate such as for example a signon process, the second
-    designates a complex dialogue between the terminal and an
-    application running on the mainframe side. This second category
-    often requires the usage of a programming language to develop an
-    executable module that operates from the workstation in partnership
-    with the 3270 emulator.
-
-    The current chapter is the answer to the first concept, the second
-    one being developed in chapter\ `s “Web <#_bookmark165>`__
-    `Modernisation VIRTEL Scenarios”, page 147 <#_bookmark165>`__.
+=========================================================
 
     By pressing the REC button on the VIRTEL Web Access toolbar, the
     user can start recording a sequence of keystrokes. A second click on
@@ -14645,103 +12632,47 @@ Index
 .. |image4| image:: images/media/image6.png
    :width: 5.13354in
    :height: 3.56187in
-.. |image5| image:: images/media/image7.png
-   :width: 5.13354in
-   :height: 5.08229in
-.. |image6| image:: images/media/image8.png
-   :width: 5.10875in
-   :height: 3.22792in
-.. |image7| image:: images/media/image9.png
-   :width: 5.11501in
-   :height: 2.79583in
-.. |image8| image:: images/media/image10.png
-   :width: 5.10219in
-   :height: 3.14469in
-.. |image9| image:: images/media/image11.png
-   :width: 5.11501in
-   :height: 2.79583in
-.. |image10| image:: images/media/image12.png
-   :width: 5.11500in
-   :height: 5.09667in
-.. |image11| image:: images/media/image13.png
-   :width: 5.13563in
-   :height: 2.23875in
-.. |image12| image:: images/media/image14.png
-   :width: 5.13000in
-   :height: 3.84750in
-.. |image13| image:: images/media/image15.png
-   :width: 5.09918in
-   :height: 2.36833in
-.. |image14| image:: images/media/image16.png
+.. |image5| image:: images/media/image5.png
+.. |image6| image:: images/media/image6.png   
+.. |image7| image:: images/media/image7.png
+.. |image8| image:: images/media/image8.png
+.. |image9| image:: images/media/image9.png
+.. |image10| image:: images/media/image10.png
+.. |image11| image:: images/media/image11.png
+.. |image12| image:: images/media/image12.png
+.. |image13| image:: images/media/image13.png
+.. |image14| image:: images/media/image14.png
+.. |image15| image:: images/media/image15.png
+.. |image16| image:: images/media/image16.png
    :width: 0.22500in
    :height: 0.22500in
-.. |image15| image:: images/media/image17.png
+.. |image17| image:: images/media/image17.png
    :width: 0.22500in
    :height: 0.22500in
-.. |image16| image:: images/media/image18.jpeg
+.. |image18| image:: images/media/image18.jpeg
    :width: 0.22917in
    :height: 0.22917in
-.. |image17| image:: images/media/image19.png
-   :width: 5.12937in
-   :height: 6.29844in
-.. |image18| image:: images/media/image20.png
-   :width: 5.14750in
-   :height: 6.29844in
-.. |image19| image:: images/media/image21.png
-   :width: 5.09115in
-   :height: 6.19792in
-.. |image20| image:: images/media/image22.jpeg
+.. |image19| image:: images/media/image19.png
+.. |image20| image:: images/media/image20.png
+.. |image21| image:: images/media/image21.png
+.. |image22| image:: images/media/image22.jpeg
    :width: 0.22917in
    :height: 0.22917in
-.. |image21| image:: images/media/image23.png
-   :width: 5.10125in
-   :height: 6.26500in
-.. |image22| image:: images/media/image24.png
-   :width: 5.10125in
-   :height: 6.26500in
-.. |image23| image:: images/media/image25.png
-   :width: 5.10125in
-   :height: 6.26500in
-.. |image24| image:: images/media/image26.png
-   :width: 5.10125in
-   :height: 6.85125in
-.. |image25| image:: images/media/image27.jpeg
-   :width: 5.08938in
-   :height: 2.28969in
-.. |image26| image:: images/media/image28.png
-   :width: 0.30937in
-   :height: 0.30937in
-.. |image27| image:: images/media/image28.png
-   :width: 0.30937in
-   :height: 0.30937in
-.. |image28| image:: images/media/image29.jpeg
-   :width: 5.09831in
-   :height: 1.58083in
-.. |image29| image:: images/media/image30.jpeg
-   :width: 5.12552in
-   :height: 3.46667in
-.. |image30| image:: images/media/image31.jpeg
-   :width: 5.11416in
-   :height: 3.90292in
-.. |image31| image:: images/media/image32.jpeg
-   :width: 5.07698in
-   :height: 2.95469in
-.. |image32| image:: images/media/image33.jpeg
-   :width: 5.10239in
-   :height: 3.58156in
-.. |image33| image:: images/media/image34.jpeg
-   :width: 5.10876in
-   :height: 3.10573in
-.. |image34| image:: images/media/image35.jpeg
-   :width: 5.09479in
-   :height: 3.90094in
-.. |image35| image:: images/media/image36.jpeg
-   :width: 5.11032in
-   :height: 3.77719in
-.. |image36| image:: images/media/image37.jpeg
-   :width: 5.10125in
-   :height: 3.68958in
-.. |image37| image:: images/media/image38.png
+.. |image23| image:: images/media/image23.png
+.. |image24| image:: images/media/image24.png
+.. |image25| image:: images/media/image25.png
+.. |image26| image:: images/media/image26.png
+.. |image27| image:: images/media/image27.jpeg
+.. |image28| image:: images/media/image28.png
+.. |image30| image:: images/media/image30.jpeg
+.. |image31| image:: images/media/image31.jpeg
+.. |image32| image:: images/media/image32.jpeg
+.. |image33| image:: images/media/image33.jpeg
+.. |image34| image:: images/media/image34.jpeg
+.. |image35| image:: images/media/image35.jpeg
+.. |image36| image:: images/media/image36.jpeg
+.. |image37| image:: images/media/image37.jpeg
+.. |image37a| image:: images/media/image38.png
    :width: 5.13562in
    :height: 4.16625in
 .. |image38| image:: images/media/image39.png
@@ -14842,3 +12773,13 @@ Index
 .. |image78| image:: images/media/image78.png
 .. |image79| image:: images/media/image79.png
 .. |image80| image:: images/media/image80.png
+.. |image81| image:: images/media/image81.png
+.. |image82| image:: images/media/image82.png
+.. |image83| image:: images/media/image83.png
+.. |image84| image:: images/media/image84.png
+.. |image85| image:: images/media/image85.png
+.. |image86| image:: images/media/image86.png
+.. |image87| image:: images/media/image87.png
+.. |image88| image:: images/media/image88.png
+.. |image89| image:: images/media/image89.png
+.. |image90| image:: images/media/image90.png
