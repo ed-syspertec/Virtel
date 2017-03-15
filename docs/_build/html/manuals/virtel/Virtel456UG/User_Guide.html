@@ -4008,8 +4008,8 @@ VIRTEL IND$FILE send dialog (part 1)</p>
 <p><img alt="image35" src="../../../_images/image35.jpeg" />
 VIRTEL IND$FILE send dialog (part 2)</p>
 <p>Choose the file you want to upload, and click “Open” to return to the “Send File” dialog:</p>
-<p><img alt="image36" src="../../../_images/image36.jpeg" />
-VIRTEL IND$FILE send dialog (part 3)</p>
+<p><img alt="image36" src="../../../_images/image36.jpeg" /></p>
+<p>VIRTEL IND$FILE send dialog (part 3)</p>
 <p>Specify the TSO dataset name, surrounded by quotes if necessary. Dataset names without quotes will be prefixed by
 your TSO prefix (usually your userid).</p>
 <p>If the TSO dataset does not yet exist, you may optionally specify space (units, primary quantity, and secondary
@@ -4020,204 +4020,233 @@ the TSO file must not already exist.</p>
 <p>Click either “Text” or “Binary”. “Text” translates the file from ASCII to EBCDIC and treats carriage return line feed
 sequences (x’0D0A’) as end of each record markers. “Binary” performs no translation. Finally click “Send” to start the
 transfer.</p>
-<p><img alt="image37" src="../../../_images/image37.jpeg" />
-VIRTEL IND$FILE send dialog (part 4)</p>
+<p><img alt="image37" src="../../../_images/image37.jpeg" /></p>
+<p>VIRTEL IND$FILE send dialog (part 4)</p>
 <p>The message “File transfer complete” is displayed upon successful completion of the upload.</p>
 </div>
 <div class="section" id="selecting-pc-codepage-for-file-transfer">
 <h4>1.10.5. Selecting PC Codepage for file transfer<a class="headerlink" href="#selecting-pc-codepage-for-file-transfer" title="Permalink to this headline">¶</a></h4>
-<p>Users can select a PC Codepage for file transfer. Possible values are :
-Windows (CP-1252)
-When selected, causes the file being translated by VIRTEL according to the CP-1252 ASCII-EBCDIC translation table.
-MS-DOS (CP-850)
-When selected, causes the file being translated by VIRTEL according to the CP-850 ASCII-EBCDIC translation table.
-The selected CP-850 table depends on the value of the COUNTRY parameter specified in the VIRTCT. If this value is
+<p>Users can select a PC Codepage for file transfer. Possible values are :</p>
+<dl class="docutils">
+<dt>Windows (CP-1252)</dt>
+<dd>When selected, causes the file being translated by VIRTEL according to the CP-1252 ASCII-EBCDIC translation table.</dd>
+<dt>MS-DOS (CP-850)</dt>
+<dd>When selected, causes the file being translated by VIRTEL according to the CP-850 ASCII-EBCDIC translation table.</dd>
+</dl>
+<p>The selected CP-850 table depends on the value of the COUNTRY parameter specified in the VIRTCT. If this value is
 &#8220;FR&#8221;, &#8220;DE&#8221; or &#8220;BE&#8221;, system will use corresponding table FR-850, DE-850 or BE-850. If the specified country value is
 different, by default the BE-850 table will be used to support CECP 500 international EBCDIC.
 1.10.6. Saving and reusing file transfer parameters
 Users who frequently carry out the same or similar file transfers can save the file transfer parameters for later reuse.
-To save a file transfer, enter the dataset name and the type of transfer, then click the “Save” button:
-1. Incoming calls
-116
-VIRTEL IND$FILE receive dialog (saved transfers)
-The user can then choose a name for the saved transfer, and click “OK” to save the parameters. At the next transfer,
-the user clicks the name of the saved transfer to retrieve the parameters, then clicks “Receive” to start the transfer.
-Saving the file transfer parameters
-Users can save transfer parameters for both “Send” and “Receive”. The paramters are saved in browser local storage.
-The number of sets of parameters which can be saved is limited only by the amount of local storage available.
-1.11. Accessing VTAM Applications
-Normally the VIRTEL administrator provides access to VTAM applications by configuring a specific VIRTEL transaction
+To save a file transfer, enter the dataset name and the type of transfer, then click the “Save” button:</p>
+<p><img alt="image38" src="../../../_images/image381.png" />
+VIRTEL IND$FILE Receive dialog (saved transfers)</p>
+<p>The user can then choose a name for the saved transfer, and click “OK” to save the parameters. At the next transfer,
+the user clicks the name of the saved transfer to retrieve the parameters, then clicks “Receive” to start the transfer.</p>
+<p><img alt="image39" src="../../../_images/image391.png" />
+VIRTEL IND$FILE Saving the file transfer parameters</p>
+<p>Users can save transfer parameters for both “Send” and “Receive”. The paramters are saved in browser local storage.
+The number of sets of parameters which can be saved is limited only by the amount of local storage available.</p>
+</div>
+</div>
+<div class="section" id="accessing-vtam-applications">
+<h3>1.11. Accessing VTAM Applications<a class="headerlink" href="#accessing-vtam-applications" title="Permalink to this headline">¶</a></h3>
+<p>Normally the VIRTEL administrator provides access to VTAM applications by configuring a specific VIRTEL transaction
 for each application. However some users require the ability to access any VTAM application, including those not
 configured by the administrator, similar to the function provided by VTAM’s USSTAB USS10 screen. For these users,
 VIRTEL provides transactions named W2H-16 and CLI-16 whose external name is VTAM.
 This transaction displays a screen on which the user can enter the ACBNAME of the VTAM application, together with
-optional LOGON DATA and LOGMODE.
-1. Incoming calls
-117
-1.11.1. VTAM logon screen
-To access VIRTEL’s VTAM logon screen, click on “Other applications” on the VIRTEL Web Access menu (port 41001) or
-enter its URL directly:
-<a class="reference external" href="http://n.n.n.n:41001/w2h/WEB2AJAX.htm+VTAM">http://n.n.n.n:41001/w2h/WEB2AJAX.htm+VTAM</a>
-VTAM logon screen in VIRTEL Web Access mode
-To access, for example, TSO with logmode SNX32705, type TSO in the “LOGON APPLID” field and SNX32705 in the
-“LOGMODE” field, then press enter.
-You can exit this screen by pressing F3.
-Lines 3 and 4 of the screen indicate the name of your installation and are taken from the TITRE1 and TITRE2
-parameters of the VIRTCT (see VIRTEL Installation Guide).
-The layout of the VTAM logon screen can be customized by assembling the map in member EIRM00U in the VIRTEL
-SAMPLIB.
-1.11.2. Installing the VTAM logon transaction
-To permit access to the VTAM logon screen, the administrator defines a VIRTEL transaction which calls VIRTEL program
+optional LOGON DATA and LOGMODE.</p>
+<div class="section" id="vtam-logon-screen">
+<h4>1.11.1. VTAM logon screen<a class="headerlink" href="#vtam-logon-screen" title="Permalink to this headline">¶</a></h4>
+<p>To access VIRTEL’s VTAM logon screen, click on “Other applications” on the VIRTEL Web Access menu (port 41001) or
+enter its URL directly:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">VTAM</span>
+</pre></div>
+</div>
+<p><img alt="image91" src="../../../_images/image911.png" />
+<em>VTAM logon screen in VIRTEL Web Access mode</em></p>
+<p>To access, for example, TSO with logmode SNX32705, type TSO in the “LOGON APPLID” field and SNX32705 in the
+“LOGMODE” field, then press enter.</p>
+<p>You can exit this screen by pressing F3.</p>
+<p>Lines 3 and 4 of the screen indicate the name of your installation and are taken from the TITRE1 and TITRE2
+parameters of the VIRTCT (see VIRTEL Installation Guide).</p>
+<p>The layout of the VTAM logon screen can be customized by assembling the map in member EIRM00U in the VIRTEL
+SAMPLIB.</p>
+</div>
+<div class="section" id="installing-the-vtam-logon-transaction">
+<h4>1.11.2. Installing the VTAM logon transaction<a class="headerlink" href="#installing-the-vtam-logon-transaction" title="Permalink to this headline">¶</a></h4>
+<p>To permit access to the VTAM logon screen, the administrator defines a VIRTEL transaction which calls VIRTEL program
 VIR0021U, as shown in the example below. The transaction should have “Security” set to 1 to force the user to sign on
-before the screen is displayed.
-The VTAM logon screen is protected by a security resource named prefix.W2H-16 or prefix.CLI-16 (where prefix is the
+before the screen is displayed.</p>
+<p>The VTAM logon screen is protected by a security resource named prefix.W2H-16 or prefix.CLI-16 (where prefix is the
 value of the PRFSECU parameter in the VIRTCT) in the RACF FACILITY class. Provided the “Security” field is set to 1, and
 security is activated in the VIRTCT, only those users having READ access to the resource can obtain the VTAM logon
-screen.
-1. Incoming calls
-118
-Example VIRTEL transaction for VTAM logon via Web Access
-1.12. Site Customization Of Colors And Logo
-The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom
+screen.</p>
+<p><img alt="image41" src="../../../_images/image4110.png" />
+<em>Example VIRTEL transaction for VTAM logon via Web Access</em></p>
+</div>
+</div>
+<div class="section" id="site-customization-of-colors-and-logo">
+<h3>1.12. Site Customization Of Colors And Logo<a class="headerlink" href="#site-customization-of-colors-and-logo" title="Permalink to this headline">¶</a></h3>
+<p>The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom
 settings are defined in a style sheet called custom.css which the administrator uploads to a VIRTEL directory
-designated for storage of customer files (usually CLI-DIR).
-1.12.1. VIRTEL definitions required
-The custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST
+designated for storage of customer files (usually CLI-DIR).</p>
+<div class="section" id="virtel-definitions-required">
+<h4>1.12.1. VIRTEL definitions required<a class="headerlink" href="#virtel-definitions-required" title="Permalink to this headline">¶</a></h4>
+<p>The custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST
 on port 41001) or CLI-03CC (for entry point CLIWHOST on port 41002). These transactions have external name w2h
 and specify the path name /w2h/custom-css in the URL Prefix field. When VIRTEL is first installed, these transactions
 point to directory W2H-DIR for W2H-03CC and to directory CLI-DIR for CLI-03CC which contains a dummy version of
-the file custom.css.
-The procedure for activating customized settings is:
-1. Download the dummy custom.css from W2H-DIR by opening this URL in your browser: <a class="reference external" href="http://n.n.n.n:41001/w2h/">http://n.n.n.n:41001/w2h/</a>
-custom.css (where n.n.n.n is the IP address of your VIRTEL)
-2. Save the custom.css file in a directory on your workstation.
-3. Open the custom.css file using a text editor such as notepad.
-4. Edit the custom.css file with the color and/or logo settings you require (see examples below), then save the updated
-file.
-5. Open the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>) and click the “Upload” link
-6. Click “Browse” and navigate to the directory where you saved the updated custom.css. Click on the custom.css file,
-then click the “CLI-DIR” button to upload the file to VIRTEL.
-7. From the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>) click the “Admin” link.
-8. Press “F3 - Entry Points” then click “CLIWHOST”
-9. Press “F4 - Transactions” then click “CLI-03CC”
-1. Incoming calls
-119
-10. Press “F12 - View/Add” and type CLI-DIR in the “Application” field, overwriting the original value W2H-DIR
-11. Press “F1 - Update” at the Transaction Detail Definition screen, then “F3 – Return” twice to return to the List of
-Entry Points screen, then “F1 – Update” again to update the entry point.
-1.12.2. Example: Customizing the toolbar color by application
-It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This
-example shows how to set the color of the toolbar to yellow for SPCICSP and pink for SPCICSQ.
-/* VIRTEL Web Access style sheet for site customization
-* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
-<em>/
-.SPCICSP #toolbar {background-color:yellow;}
-.SPCICSQ #toolbar {background-color:pink;}
-Example custom.css for coloring the toolbar according to CICS region
-Web Access screen with yellow toolbar for SPCICSP
-Web Access screen with pink toolbar for SPCICSQ
-1.12.3. Example: Adding custom text to the toolbar
-Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to
+the file custom.css.</p>
+<p>The procedure for activating customized settings is:</p>
+<ol class="arabic simple">
+<li>Download the dummy custom.css from W2H-DIR by opening this URL in your browser:-</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">custom</span><span class="o">.</span><span class="n">css</span>
+</pre></div>
+</div>
+<p>(where n.n.n.n is the IP address of your VIRTEL)</p>
+<ol class="arabic simple" start="2">
+<li>Save the custom.css file in a directory on your workstation.</li>
+<li>Open the custom.css file using a text editor such as notepad.</li>
+<li>Edit the custom.css file with the color and/or logo settings you require (see examples below), then save the updated file.</li>
+<li>Open the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>) and click the “Upload” link</li>
+<li>Click “Browse” and navigate to the directory where you saved the updated custom.css. Click on the custom.css file, then click the “CLI-DIR” button to upload the file to VIRTEL.</li>
+<li>From the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>) click the “Admin” link.</li>
+<li>Press “F3 - Entry Points” then click “CLIWHOST”</li>
+<li>Press “F4 - Transactions” then click “CLI-03CC”</li>
+<li>Press “F12 - View/Add” and type CLI-DIR in the “Application” field, overwriting the original value W2H-DIR</li>
+<li>Press “F1 - Update” at the Transaction Detail Definition screen, then “F3 – Return” twice to return to the List of Entry Points screen, then “F1 – Update” again to update the entry point.</li>
+</ol>
+</div>
+<div class="section" id="example-customizing-the-toolbar-color-by-application">
+<h4>1.12.2. Example: Customizing the toolbar color by application<a class="headerlink" href="#example-customizing-the-toolbar-color-by-application" title="Permalink to this headline">¶</a></h4>
+<p>It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This example shows how to set the color of the toolbar to yellow for SPCICSP and pink for SPCICSQ.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customization</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2007</span><span class="p">,</span><span class="mi">2010</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*/</span>
+<span class="o">.</span><span class="n">SPCICSP</span> <span class="c1">#toolbar {background-color:yellow;}</span>
+<span class="o">.</span><span class="n">SPCICSQ</span> <span class="c1">#toolbar {background-color:pink;}</span>
+</pre></div>
+</div>
+<p><em>Example custom.css for coloring the toolbar according to CICS region</em></p>
+<p><img alt="image42" src="../../../_images/image421.jpeg" />
+Web Access screen with yellow toolbar for SPCICSP</p>
+<p><img alt="image43" src="../../../_images/image43.jpeg" />
+Web Access screen with pink toolbar for SPCICSQ</p>
+</div>
+<div class="section" id="example-adding-custom-text-to-the-toolbar">
+<h4>1.12.3. Example: Adding custom text to the toolbar<a class="headerlink" href="#example-adding-custom-text-to-the-toolbar" title="Permalink to this headline">¶</a></h4>
+<p>Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to
 the toolbar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is
-displayed for application TSO2A.
-/</em>
-* VIRTEL Web Access style sheet for site customisation
-* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
-<em>/
-.TSO1A .toolbarLast:before {
-content: &#8220;MVS1&#8221;;
-color: gray;
-opacity: 0.25;
-font-size: 30px;
-width: 100%;
-text-align: center;
-z-index: 1000;
--webkit-text-stroke: 1px #000;
--webkit-text-fill-color: transparent;
-}
-1. Incoming calls
-120
-.TSO2A .toolbarLast:before {
-content: &#8220;MVS2&#8221;;
-color: red;
-opacity: 0.25;
-font-size: 30px;
-width: 100%;
-text-align: center;
-z-index: 1000;
--webkit-text-stroke: 1px red;
--webkit-text-fill-color: transparent;
-}
-Example custom.css for adding custom text to the toolbar
-Web Access screen with custom text in the toolbar
-1.12.4. Example: Showing / Hiding server informations
-It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the
+displayed for application TSO2A.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customisation</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2007</span><span class="p">,</span><span class="mi">2010</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*/</span>
+<span class="o">.</span><span class="n">TSO1A</span> <span class="o">.</span><span class="n">toolbarLast</span><span class="p">:</span><span class="n">before</span> <span class="p">{</span>
+<span class="n">content</span><span class="p">:</span> <span class="s2">&quot;MVS1&quot;</span><span class="p">;</span>
+<span class="n">color</span><span class="p">:</span> <span class="n">gray</span><span class="p">;</span>
+<span class="n">opacity</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">;</span>
+<span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">30</span><span class="n">px</span><span class="p">;</span>
+<span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+<span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+<span class="n">z</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">stroke</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="c1">#000;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">fill</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">.</span><span class="n">TSO2A</span> <span class="o">.</span><span class="n">toolbarLast</span><span class="p">:</span><span class="n">before</span> <span class="p">{</span>
+<span class="n">content</span><span class="p">:</span> <span class="s2">&quot;MVS2&quot;</span><span class="p">;</span>
+<span class="n">color</span><span class="p">:</span> <span class="n">red</span><span class="p">;</span>
+<span class="n">opacity</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">;</span>
+<span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">30</span><span class="n">px</span><span class="p">;</span>
+<span class="n">width</span><span class="p">:</span> <span class="mi">100</span><span class="o">%</span><span class="p">;</span>
+<span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+<span class="n">z</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">stroke</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">red</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">fill</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.css for adding custom text to the toolbar</em></p>
+<p><img alt="image44" src="../../../_images/image44.jpeg" />
+<em>Web Access screen with custom text in the toolbar</em></p>
+</div>
+<div class="section" id="example-showing-hiding-server-informations">
+<h4>1.12.4. Example: Showing / Hiding server informations<a class="headerlink" href="#example-showing-hiding-server-informations" title="Permalink to this headline">¶</a></h4>
+<p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the
 maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is
 displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
-and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.
-The running version and the level of maintenance cannot be hidden, only the server name can be permanently
-removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:
-/</em>
-* Configuration of the server name connected to.
-<em>/
-w2hparm.hideinfo = true;
-Example w2hparm.js for hiding the mainframe application name on which a user is connected to.
-If the default value is preserved, the user can hide this information for his own usage by checking &#8220;Hide Virtel
-information in toolbar&#8221; in the Display tab of the settings panel.
-1.12.5. Example: Hiding the toolbar
-The administrator may wish to prevent users from accessing features like copy/paste, print, and settings. This example
-shows how to hide the toolbar using a custom.css file:
-1. Incoming calls
-121
-/</em> VIRTEL Web Access style sheet for site customization
-* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
-<em>/
-#toolbar {display:none;}/</em>
-Example custom.css for hiding the toolbar
-You can also use custom.js to remove icons individually from the toolbar, see “Removing unwanted toolbar icons”,
-page 126.
-1.12.6. Example: Modifying the 3270 colors
-Some installations prefer to modify the colors displayed on the 3270 screen to make the characters more readable.
-This example shows how to modify the colors used by VIRTEL Web Access:
-/*
-* VIRTEL Web Access style sheet customisation for 3270 colors
-* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-<em>/
-.NBLUE, .UBLUE, .BBLUE {color:#7890F0;}
-.RBLUE {background-color:#7890F0;}
-.NRED, .URED, .BRED {color:#F21816;}
-.RRED {background-color:#F21816;}
-.NPINK, .UPINK, .BPINK {color:#FF00FE;}
-.RPINK {background-color:#FF00FE;}
-.NGREEN, .UGREEN, .BGREEN {color:#24D82F;}
-.RGREEN {background-color:#24D82F;}
-.NTURQUOISE, .UTURQUOISE, .BTURQUOISE {color:#58F0F1;}
-.RTURQUOISE {background-color:#58F0F1;}
-.NYELLOW, .UYELLOW, .BYELLOW {color:#FFFF00;}
-.RYELLOW {background-color:#FFFF00;}
-.NWHITE, .UWHITE, .BWHITE {color:#FFFFFF;}
-.RWHITE {background-color:#FFFFFF;}
-Example custom.css for modifying the 3270 colors
-In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and WHITE represent the 7 colors of the 3270
-pallette, with a prefix indicating the highlighting mode: N=normal, U=underscore, B=blink, R=reverse video.
-The color values (for example, #7890F0) are expressed in hexadecimal RGB encoding or as color names. For more
-explanation, see :
-• http://en.wikipedia.org/wiki/Web_colors or
-• http://www.w3schools.com/html/html_colornames.asp
-1.12.7. Example: Adding a company logo
-This example shows how to display an icon (for example, a company logo) at the left of the toolbar:
-/</em>
+and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.</p>
+<p><img alt="image45" src="../../../_images/image45.jpeg" /></p>
+<p>The running version and the level of maintenance cannot be hidden, only the server name can be permanently
+removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="n">Configuration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="n">name</span> <span class="n">connected</span> <span class="n">to</span><span class="o">.</span>
+<span class="o">*/</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">hideinfo</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><em>Example w2hparm.js for hiding the mainframe application name on which a user is connected to.</em></p>
+<p>If the default value is preserved, the user can hide this information for his own usage by checking &#8220;Hide Virtel
+information in toolbar&#8221; in the Display tab of the settings panel.</p>
+</div>
+<div class="section" id="example-hiding-the-toolbar">
+<h4>1.12.5. Example: Hiding the toolbar<a class="headerlink" href="#example-hiding-the-toolbar" title="Permalink to this headline">¶</a></h4>
+<p>The administrator may wish to prevent users from accessing features like copy/paste, print, and settings. This example
+shows how to hide the toolbar using a custom.css file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customization</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2007</span><span class="p">,</span><span class="mi">2010</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*/</span>
+<span class="c1">#toolbar {display:none;}/*</span>
+</pre></div>
+</div>
+<p><em>Example custom.css for hiding the toolbar</em></p>
+<p>You can also use custom.js to remove icons individually from the toolbar, see “Removing unwanted toolbar icons”, page 126.</p>
+</div>
+<div class="section" id="example-modifying-the-3270-colors">
+<h4>1.12.6. Example: Modifying the 3270 colors<a class="headerlink" href="#example-modifying-the-3270-colors" title="Permalink to this headline">¶</a></h4>
+<p>Some installations prefer to modify the colors displayed on the 3270 screen to make the characters more readable.
+This example shows how to modify the colors used by VIRTEL Web Access:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="k">for</span> <span class="mi">3270</span> <span class="n">colors</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*/</span>
+<span class="o">.</span><span class="n">NBLUE</span><span class="p">,</span> <span class="o">.</span><span class="n">UBLUE</span><span class="p">,</span> <span class="o">.</span><span class="n">BBLUE</span> <span class="p">{</span><span class="n">color</span><span class="p">:</span><span class="c1">#7890F0;}</span>
+<span class="o">.</span><span class="n">RBLUE</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="c1">#7890F0;}</span>
+<span class="o">.</span><span class="n">NRED</span><span class="p">,</span> <span class="o">.</span><span class="n">URED</span><span class="p">,</span> <span class="o">.</span><span class="n">BRED</span> <span class="p">{</span><span class="n">color</span><span class="p">:</span><span class="c1">#F21816;}</span>
+<span class="o">.</span><span class="n">RRED</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="c1">#F21816;}</span>
+<span class="o">.</span><span class="n">NPINK</span><span class="p">,</span> <span class="o">.</span><span class="n">UPINK</span><span class="p">,</span> <span class="o">.</span><span class="n">BPINK</span> <span class="p">{</span><span class="n">color</span><span class="p">:</span><span class="c1">#FF00FE;}</span>
+<span class="o">.</span><span class="n">RPINK</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="c1">#FF00FE;}</span>
+<span class="o">.</span><span class="n">NGREEN</span><span class="p">,</span> <span class="o">.</span><span class="n">UGREEN</span><span class="p">,</span> <span class="o">.</span><span class="n">BGREEN</span> <span class="p">{</span><span class="n">color</span><span class="p">:</span><span class="c1">#24D82F;}</span>
+<span class="o">.</span><span class="n">RGREEN</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="c1">#24D82F;}</span>
+<span class="o">.</span><span class="n">NTURQUOISE</span><span class="p">,</span> <span class="o">.</span><span class="n">UTURQUOISE</span><span class="p">,</span> <span class="o">.</span><span class="n">BTURQUOISE</span> <span class="p">{</span><span class="n">color</span><span class="p">:</span><span class="c1">#58F0F1;}</span>
+<span class="o">.</span><span class="n">RTURQUOISE</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="c1">#58F0F1;}</span>
+<span class="o">.</span><span class="n">NYELLOW</span><span class="p">,</span> <span class="o">.</span><span class="n">UYELLOW</span><span class="p">,</span> <span class="o">.</span><span class="n">BYELLOW</span> <span class="p">{</span><span class="n">color</span><span class="p">:</span><span class="c1">#FFFF00;}</span>
+<span class="o">.</span><span class="n">RYELLOW</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="c1">#FFFF00;}</span>
+<span class="o">.</span><span class="n">NWHITE</span><span class="p">,</span> <span class="o">.</span><span class="n">UWHITE</span><span class="p">,</span> <span class="o">.</span><span class="n">BWHITE</span> <span class="p">{</span><span class="n">color</span><span class="p">:</span><span class="c1">#FFFFFF;}</span>
+<span class="o">.</span><span class="n">RWHITE</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span><span class="c1">#FFFFFF;}</span>
+</pre></div>
+</div>
+<p><em>Example custom.css for modifying the 3270 colors</em></p>
+<p>In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and WHITE represent the 7 colors of the 3270 pallette, with a prefix indicating the highlighting mode: N=normal, U=underscore, B=blink, R=reverse video. The color values (for example, #7890F0) are expressed in hexadecimal RGB encoding or as color names. For more explanation, see :-</p>
+<ul class="simple">
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Web_colors">http://en.wikipedia.org/wiki/Web_colors</a></li>
+<li><a class="reference external" href="http://www.w3schools.com/html/html_colornames.asp">http://www.w3schools.com/html/html_colornames.asp</a></li>
+</ul>
+<p><em>1.12.7. Example: Adding a company logo</em></p>
+<p>This example shows how to display an icon (for example, a company logo) at the left of the toolbar:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>/*
 * VIRTEL Web Access style sheet customisation for company logo
 * (c)Copyright SysperTec Communication 2012 All Rights Reserved
-<em>/
-1. Incoming calls
-122
+*/
 #toolbar td#companyIcon {
 height:30px;
 display:table-cell;
 }
 #companyIcon div {
-background-image:url(&#8220;/w2h/virtblue.jpg&#8221;);
+background-image:url(&quot;/w2h/virtblue.jpg&quot;);
 background-position:0px -4px;
 background-repeat:no-repeat;
 height:26px;
@@ -4226,441 +4255,536 @@ width:145px;
 Example custom.css for displaying company logo in the toolbar
 This example shows how to replace the Virtel logo in the VIRTEL Web Access menu and the Application menu by your
 company logo:
-/</em>
+/*
 * VIRTEL Web Access style sheet for site customisation
 * (c)Copyright SysperTec Communication 2013 All Rights Reserved
 * $Id$
-<em>/
+*/
 #appmenulogo {
-background-image: url(&#8220;mycompany.gif&#8221;);
+background-image: url(&quot;mycompany.gif&quot;);
 height: 65px;
 width: 266px;
 }
-Example custom.css for replacing the Virtel logo by a company logo
-Note: If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.
-1.12.8. Example: Removing 3D/hover effects on the toolbar buttons
-This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:
-/</em>
-* VIRTEL Web Access style sheet customisation for removing 3D/hover effects
-* (c)Copyright SysperTec Communication 2014 All Rights Reserved
-<em>/
-#toolbar td .tbButton, #toolbar td .tbButton:hover, #toolbar td .tbButton:active {
-background-color: inherit;
-border: inherit;
-box-shadow: inherit;
-}
-Example custom.css for removing 3D/hover effects on buttons
-1.12.9. Example: Changing background color of the toolbar buttons
-This example shows how to change the backgroung color of the toolbar buttons by adding orders in the custom.css
-file:
-/</em>
-* VIRTEL Web Access style sheet customisation the background of the toolbar buttons
-* (c)Copyright SysperTec Communication 2014 All Rights Reserved
-<em>/
-|- transparent &#8220;at rest&#8221;
-1. Incoming calls
-123
-|- white when cursor moves on
-|- yellow when button is clicked
-#toolbar td .tbButton {
-background-color: inherit;
-}
-#toolbar td .tbButton:hover {
-background-color: white;
-}
-#toolbar td .tbButton:active {
-background-color: yellow;
-}
-| To remove the background color and the border of buttons &#8220;at rest&#8221;:
-#toolbar td .tbButton {
-background-color: inherit;
-border: 1px solid transparent;
-}
-Example custom.css managin the background color of the toolbar buttons
-1.12.10. Icon display troubleshooting
-If some icons on the toolbar are displayed with some parasites on the border, please check that the browser is not in a
-zoom mode greater than 100%.
-1.13. Site Customization Of Javascript Functions
-To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads the
-/w2h/custom-js/custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR
-directory. The CLI-03CJ (/w2h/custom-js) transaction delivered as standard under the CLIWHOST entry point
+</pre></div>
+</div>
+<p><em>Example custom.css for replacing the Virtel logo by a company logo</em></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.</p>
+</div>
+</div>
+<div class="section" id="example-removing-3d-hover-effects-on-the-toolbar-buttons">
+<h4>1.12.8. Example: Removing 3D/hover effects on the toolbar buttons<a class="headerlink" href="#example-removing-3d-hover-effects-on-the-toolbar-buttons" title="Permalink to this headline">¶</a></h4>
+<p>This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="k">for</span> <span class="n">removing</span> <span class="mi">3</span><span class="n">D</span><span class="o">/</span><span class="n">hover</span> <span class="n">effects</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2014</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*/</span>
+<span class="c1">#toolbar td .tbButton, #toolbar td .tbButton:hover, #toolbar td .tbButton:active {</span>
+<span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">inherit</span><span class="p">;</span>
+<span class="n">border</span><span class="p">:</span> <span class="n">inherit</span><span class="p">;</span>
+<span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="p">:</span> <span class="n">inherit</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.css for removing 3D/hover effects on buttons</em></p>
+</div>
+<div class="section" id="example-changing-background-color-of-the-toolbar-buttons">
+<h4>1.12.9. Example: Changing background color of the toolbar buttons<a class="headerlink" href="#example-changing-background-color-of-the-toolbar-buttons" title="Permalink to this headline">¶</a></h4>
+<p>This example shows how to change the backgroung color of the toolbar buttons by adding orders in the custom.css file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="n">the</span> <span class="n">background</span> <span class="n">of</span> <span class="n">the</span> <span class="n">toolbar</span> <span class="n">buttons</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2014</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*/</span>
+<span class="o">|-</span> <span class="n">transparent</span> <span class="s2">&quot;at rest&quot;</span>
+<span class="o">|-</span> <span class="n">white</span> <span class="n">when</span> <span class="n">cursor</span> <span class="n">moves</span> <span class="n">on</span>
+<span class="o">|-</span> <span class="n">yellow</span> <span class="n">when</span> <span class="n">button</span> <span class="ow">is</span> <span class="n">clicked</span>
+<span class="c1">#toolbar td .tbButton {</span>
+<span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">inherit</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">#toolbar td .tbButton:hover {</span>
+<span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">white</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">#toolbar td .tbButton:active {</span>
+<span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">yellow</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">|</span> <span class="n">To</span> <span class="n">remove</span> <span class="n">the</span> <span class="n">background</span> <span class="n">color</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">border</span> <span class="n">of</span> <span class="n">buttons</span> <span class="s2">&quot;at rest&quot;</span><span class="p">:</span>
+<span class="c1">#toolbar td .tbButton {</span>
+<span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">inherit</span><span class="p">;</span>
+<span class="n">border</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="n">solid</span> <span class="n">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.css managin the background color of the toolbar buttons</em></p>
+</div>
+<div class="section" id="icon-display-troubleshooting">
+<h4>1.12.10. Icon display troubleshooting<a class="headerlink" href="#icon-display-troubleshooting" title="Permalink to this headline">¶</a></h4>
+<p>If some icons on the toolbar are displayed with some parasites on the border, please check that the browser is not in a zoom mode greater than 100%.</p>
+</div>
+</div>
+<div class="section" id="site-customization-of-javascript-functions">
+<h3>1.13. Site Customization Of Javascript Functions<a class="headerlink" href="#site-customization-of-javascript-functions" title="Permalink to this headline">¶</a></h3>
+<p>To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads the /w2h/custom-js/custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction delivered as standard under the CLIWHOST entry point
 references the W2H-DIR directory, but the administrator can modify this transaction to reference a different directory
 containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be
-used for this purpose.
-To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls various custom exits at strategic points in
+used for this purpose.</p>
+<p>To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls various custom exits at strategic points in
 its processing. These exits are optional Javascript functions which can be codes custom.js if required. The exits are
-described below.
-1.13.1. Exits which can be coded in custom.js
-after_standardInit()
-This function is called after the session with the host application has started.
-before_submitForm(pfKey,oForm)
-This function is called before submitting a request to the VIRTEL server.
-The arguments passed to before_submitForm are:
-pfKey
-the name of the key pressed: &#8220;ENTER&#8221;, &#8220;PF1&#8221;, etc.
-1. Incoming calls
-124
-oForm
-a DOM object representing the form to be submitted (usually document.virtelForm)
-after_responseHandle(o,url,xtim)
-This function is called after receiving a response from the VIRTEL server.
-The arguments passed to after_responseHandle are:
-o
-the XMLHttpRequest object (contains the status and responseText)
-url
-the URL which was used in the request
-xtim
-a Javascript Date object representing the time the request was sent to the server
-modify_settingsValues(name,values)
-This function is called before the list of possible values for a parameter is displayed in the VIRTEL Web Access Settings
-menu. It allows the list of values to be modified.
-The arguments passed to modify_settingsValues are:
-name
-the parameter name
-values
-the list of possible values
-The return value is treated as the new list of possible values. If the function returns null or undefined, the list remains
-unchanged.
-when_init()
-This function is called for each subpage after vir3270 initialisation.
-when_focusGained()
-This function is called whenever the 3270 window gains the focus.
-when_focusLost()
-This function is called whenever the 3270 window loses the focus.
-1.13.2. Example: Customizing the toolbar icons
-This example uses the after_standardInit function to insert additional icons into the toolbar when the session is
-started. Icons may subsequently be added or removed from the toolbar after each screen by means of the
-after_responseHandle function.
-/</em>
+described below.</p>
+<div class="section" id="exits-which-can-be-coded-in-custom-js">
+<h4>1.13.1. Exits which can be coded in custom.js<a class="headerlink" href="#exits-which-can-be-coded-in-custom-js" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">after_standardInit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This function is called after the session with the host application has started.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">before_submitForm</span><span class="p">(</span><span class="n">pfKey</span><span class="p">,</span><span class="n">oForm</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This function is called before submitting a request to the VIRTEL server. The arguments passed to before_submitForm are:</p>
+<dl class="docutils">
+<dt>pfKey</dt>
+<dd>the name of the key pressed: &#8220;ENTER&#8221;, &#8220;PF1&#8221;, etc.</dd>
+<dt>oForm</dt>
+<dd>a DOM object representing the form to be submitted (usually document.virtelForm)</dd>
+</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">after_responseHandle</span><span class="p">(</span><span class="n">o</span><span class="p">,</span><span class="n">url</span><span class="p">,</span><span class="n">xtim</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This function is called after receiving a response from the VIRTEL server. The arguments passed to after_responseHandle are:</p>
+<dl class="docutils">
+<dt>o</dt>
+<dd>the XMLHttpRequest object (contains the status and responseText)</dd>
+<dt>url</dt>
+<dd>the URL which was used in the request</dd>
+<dt>xtim</dt>
+<dd>a Javascript Date object representing the time the request was sent to the server</dd>
+</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">modify_settingsValues</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This function is called before the list of possible values for a parameter is displayed in the VIRTEL Web Access Settings menu. It allows the list of values to be modified. The arguments passed to modify_settingsValues are:</p>
+<dl class="docutils">
+<dt>name</dt>
+<dd>the parameter name</dd>
+<dt>values</dt>
+<dd>the list of possible values</dd>
+</dl>
+<p>The return value is treated as the new list of possible values. If the function returns null or undefined, the list remains
+unchanged.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">when_init</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This function is called for each subpage after vir3270 initialisation.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">when_focusGained</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This function is called whenever the 3270 window gains the focus.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">when_focusLost</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This function is called whenever the 3270 window loses the focus.</p>
+</div>
+<div class="section" id="example-customizing-the-toolbar-icons">
+<h4>1.13.2. Example: Customizing the toolbar icons<a class="headerlink" href="#example-customizing-the-toolbar-icons" title="Permalink to this headline">¶</a></h4>
+<p>This example uses the after_standardInit function to insert additional icons into the toolbar when the session is started. Icons may subsequently be added or removed from the toolbar after each screen by means of the after_responseHandle function.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="mf">1.</span> <span class="n">Incoming</span> <span class="n">calls</span>
+<span class="mi">125</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
+<span class="o">*/</span>
+<span class="o">/*</span>
+<span class="o">*</span> <span class="n">Adds</span> <span class="n">a</span> <span class="n">button</span> <span class="n">to</span> <span class="n">the</span> <span class="n">toolbar</span> <span class="n">which</span> <span class="n">performs</span> <span class="n">a</span> <span class="n">Google</span> <span class="n">search</span> <span class="k">for</span>
+<span class="o">*</span> <span class="n">the</span> <span class="n">text</span> <span class="n">selected</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">red</span> <span class="n">box</span> <span class="ow">in</span> <span class="n">the</span> <span class="mi">3270</span> <span class="n">screen</span><span class="p">,</span> <span class="ow">or</span> <span class="k">for</span> <span class="n">the</span>
+<span class="o">*</span> <span class="n">word</span> <span class="n">at</span> <span class="n">the</span> <span class="n">cursor</span> <span class="k">if</span> <span class="n">no</span> <span class="n">box</span> <span class="ow">is</span> <span class="n">drawn</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span> <span class="s2">&quot;http://www.google.com/favicon.ico&quot;</span><span class="p">,</span>
+<span class="s2">&quot;Search engine query&quot;</span><span class="p">,</span> <span class="n">do_search</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">function</span> <span class="n">do_search</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">var</span> <span class="n">searcharg</span> <span class="o">=</span> <span class="n">VIR3270</span><span class="o">.</span><span class="n">getBoxedText</span><span class="p">()</span> <span class="o">||</span> <span class="n">VIR3270</span><span class="o">.</span><span class="n">getWordAtCursor</span><span class="p">();</span>
+<span class="n">var</span> <span class="n">windowname</span> <span class="o">=</span> <span class="s2">&quot;search&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">searchURL</span> <span class="o">=</span> <span class="s2">&quot;http://www.google.com&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">searcharg</span><span class="p">)</span> <span class="n">searchURL</span> <span class="o">+=</span> <span class="s2">&quot;/search?q=&quot;</span> <span class="o">+</span>
+<span class="n">encodeURIComponent</span><span class="p">(</span><span class="n">searcharg</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="o">/</span>\<span class="n">s</span><span class="o">+/</span><span class="n">g</span><span class="p">,</span><span class="s2">&quot; &quot;</span><span class="p">));</span>
+<span class="n">var</span> <span class="n">windowopts</span> <span class="o">=</span> <span class="s2">&quot;location=yes,status=yes,resizable=yes,&quot;</span><span class="o">+</span>
+<span class="s2">&quot;scrollbars=yes,toolbar=yes,menubar=yes,width=640,height=480&quot;</span><span class="p">;</span>
+<span class="n">var</span> <span class="n">searchwin</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">searchURL</span><span class="p">,</span> <span class="n">windowname</span><span class="p">,</span> <span class="n">windowopts</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">searchwin</span><span class="p">)</span> <span class="n">searchwin</span><span class="o">.</span><span class="n">focus</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.js to customize the toolbar icons</em></p>
+</div>
+<div class="section" id="centering-non-standard-icons">
+<h4>1.13.2.1. Centering non standard icons<a class="headerlink" href="#centering-non-standard-icons" title="Permalink to this headline">¶</a></h4>
+<p>The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribut passed within the &#8220;addtoolbarbutton&#8221; function in conjunction of using a specific css attribut.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2014</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
+<span class="o">*</span> <span class="n">Resizing</span> <span class="n">a</span> <span class="n">too</span> <span class="n">small</span> <span class="ow">or</span> <span class="n">too</span> <span class="n">big</span> <span class="n">toolbar</span> <span class="n">icon</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">For</span> <span class="n">example</span> <span class="n">toosmall_pic</span><span class="o">.</span><span class="n">png</span><span class="o">=</span><span class="mi">22</span><span class="n">x22</span> <span class="ow">and</span> <span class="n">toobig_pic</span><span class="o">.</span><span class="n">jpg</span><span class="o">=</span><span class="mi">145</span><span class="n">x30</span>
+<span class="o">*/</span>
+<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span> <span class="s2">&quot;/w2h/toosmall_pic.png&quot;</span><span class="p">,</span> <span class="s2">&quot;Custom button #1 tooltip&quot;</span><span class="p">,</span> <span class="n">do_search</span><span class="p">,</span> <span class="s2">&quot;tbButton size22x22&quot;</span><span class="p">);</span>
+<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">999</span><span class="p">,</span> <span class="s2">&quot;/w2h/toobig_pic.jpg&quot;</span><span class="p">,</span> <span class="s2">&quot;Custom button #2 tooltip&quot;</span><span class="p">,</span> <span class="n">do_search</span><span class="p">,</span> <span class="s2">&quot;tbButton size145x30&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><em>Example custom.js to specify the toolbar icon size</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="c1">#toolbar td img.tbButton.size22x22 {</span>
+<span class="n">width</span><span class="p">:</span> <span class="mi">22</span><span class="n">px</span><span class="p">;</span>
+<span class="n">height</span><span class="p">:</span> <span class="mi">22</span><span class="n">px</span><span class="p">;</span>
+<span class="n">padding</span><span class="p">:</span> <span class="mi">5</span><span class="n">px</span><span class="p">;</span> <span class="o">/*</span> <span class="n">padding</span> <span class="ow">is</span> <span class="n">calculated</span> <span class="n">to</span> <span class="n">center</span> <span class="n">the</span> <span class="n">picture</span> <span class="n">horizontaly</span> <span class="ow">and</span> <span class="n">verticaly</span> <span class="ow">in</span> <span class="n">the</span> <span class="mi">32</span><span class="n">x32</span> <span class="n">allocated</span> <span class="p">}</span>
+<span class="c1">#toolbar td img.tbButton.size145x30 {</span>
+<span class="n">width</span><span class="p">:</span> <span class="mi">145</span><span class="n">px</span><span class="p">;</span>
+<span class="n">height</span><span class="p">:</span> <span class="mi">30</span><span class="n">px</span><span class="p">;</span>
+<span class="n">padding</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="mi">0</span><span class="p">;</span> <span class="o">/*</span> <span class="n">padding</span> <span class="ow">is</span> <span class="n">calculated</span> <span class="n">to</span> <span class="n">center</span> <span class="n">the</span> <span class="n">picture</span> <span class="n">verticaly</span> <span class="ow">in</span> <span class="n">the</span> <span class="mi">32</span><span class="n">x32</span> <span class="n">allocated</span> <span class="n">area</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">30</span><span class="o">+</span><span class="mi">1</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.css to manage a toolbar icon with a non standard size</em></p>
+</div>
+<div class="section" id="example-removing-unwanted-toolbar-icons">
+<h4>1.13.3. Example: Removing unwanted toolbar icons<a class="headerlink" href="#example-removing-unwanted-toolbar-icons" title="Permalink to this headline">¶</a></h4>
+<p>This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">/*</span> <span class="n">Remove</span> <span class="n">macro</span> <span class="n">buttons</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">toolbar</span> <span class="o">*/</span>
+<span class="n">removetoolbarbutton</span><span class="p">(</span><span class="s2">&quot;startrecording&quot;</span><span class="p">);</span>
+<span class="n">removetoolbarbutton</span><span class="p">(</span><span class="s2">&quot;playback&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.js to remove selected toolbar icons</em></p>
+<p>The names of the other toolbar icons which can be removed in this way are:-</p>
+<ul class="simple">
+<li>capture</li>
+<li>disconnect</li>
+<li>document-print-preview</li>
+<li>edit-copy</li>
+<li>edit-cut</li>
+<li>edit-paste</li>
+<li>emptybuf</li>
+<li>file-rcv</li>
+<li>file-send</li>
+<li>help</li>
+<li>keypad</li>
+<li>playback</li>
+<li>printer</li>
+<li>settings</li>
+<li>settingsV2</li>
+<li>startrecording, playback, printer</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">settingsV2 is présent only if w2hparms.js contains &#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V2&#8221;}, or &#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V1+V2&#8221;}</p>
+</div>
+<p>To hide the toolbar completely, see “Hiding the toolbar”, page 121.</p>
+<p>To hide only the Virtel Application name, see “Showing / Hiding server informations”, page 121.</p>
+</div>
+<div class="section" id="example-positionning-toolbar-icons">
+<h4>1.13.4. Example: Positionning toolbar icons<a class="headerlink" href="#example-positionning-toolbar-icons" title="Permalink to this headline">¶</a></h4>
+<p>In certain circumstances, the default position of an icon may not be at the user&#8217;s convenence. Is possible to change an icon&#8217;s position based on the position of another icon.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="n">Customize</span> <span class="n">the</span> <span class="n">location</span> <span class="n">of</span> <span class="n">dynamic</span> <span class="n">toolbar</span> <span class="n">buttons</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">The</span> <span class="n">calls</span> <span class="n">to</span> <span class="n">this</span> <span class="n">function</span> <span class="n">are</span> <span class="n">ignored</span> <span class="n">when</span> <span class="n">they</span>
+<span class="o">*</span> <span class="k">return</span> <span class="n">nothing</span><span class="p">,</span> <span class="ow">or</span> <span class="n">an</span> <span class="n">integer</span> <span class="ow">not</span> <span class="n">greater</span> <span class="n">than</span> <span class="mf">0.</span>
+<span class="o">*</span>
+<span class="o">*</span> <span class="n">Customizable</span> <span class="n">buttons</span> <span class="n">IDs</span> <span class="p">:</span>
+<span class="o">*</span> <span class="o">&gt;</span> <span class="s1">&#39;3278T&#39;</span>
+<span class="o">*</span> <span class="o">&gt;</span> <span class="s1">&#39;document-print-preview&#39;</span>
+<span class="o">*</span> <span class="o">&gt;</span> <span class="s1">&#39;file-send&#39;</span>
+<span class="o">*</span> <span class="o">&gt;</span> <span class="s1">&#39;file-recv&#39;</span>
+<span class="o">*</span> <span class="o">&gt;</span> <span class="s1">&#39;printer&#39;</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">customize_toolbarButtonIndex</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">id</span><span class="o">===</span><span class="s1">&#39;printer&#39;</span> <span class="o">||</span> <span class="nb">id</span><span class="o">===</span><span class="s1">&#39;document-print-preview&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">return</span> <span class="n">getToolbarButtonIndex</span><span class="p">(</span><span class="s1">&#39;disconnect&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.js to select a position for printer icon</em></p>
+</div>
+<div class="section" id="example-modifying-the-text-of-the-status-bar">
+<h4>1.13.5. Example: Modifying the text of the status bar<a class="headerlink" href="#example-modifying-the-text-of-the-status-bar" title="Permalink to this headline">¶</a></h4>
+<p>This example uses the after_responseHandle function to modify the text in the status bar at the bottom of the Web Access screen. This example displays the text “Your printer name is xxxx” in the status bar.
+The status bar text is an object which can therefore be modified using an API.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">after_responseHandle</span><span class="p">(</span><span class="n">httpXmlObj</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">xmitTimestamp</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">vwaStatusBar</span><span class="o">.</span><span class="n">setRelay</span><span class="p">();</span> <span class="o">//</span> <span class="n">clears</span> <span class="n">relay</span> <span class="n">field</span>
+<span class="n">vwaStatusBar</span><span class="o">.</span><span class="n">setPrintRelay</span><span class="p">(</span><span class="s2">&quot;Your printer name is: &quot;</span> <span class="o">+</span> <span class="n">vwaStatusBar</span><span class="o">.</span><span class="n">getPrintRelay</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.js to modify the text of the status bar</em></p>
+<p>With this method, an API is provided which allows code in custom.js to change some fields in the status bar without having to manipulate the DOM of the page. The “vwaStatusBar” object can be used to do this.</p>
+<p>The editing functions are:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>vwaStatusBar.setRelay(txt)</td>
+<td>Change the “Relay” field.</td>
+</tr>
+<tr class="row-odd"><td>vwaStatusBar.setPrintRelay(txt)</td>
+<td>Change the “Printer relay” field.</td>
+</tr>
+<tr class="row-even"><td>vwaStatusBar.setStatus(txt)</td>
+<td>Change the “Status” field.</td>
+</tr>
+<tr class="row-odd"><td>vwaStatusBar.setStatusClass(txt)</td>
+<td>Allow to assign a specific CSS class to the “Status” field.</td>
+</tr>
+</tbody>
+</table>
+<p>If the parameter is empty or undefined, the corresponding field is not displayed. If the content is too long, it is truncated to the right.</p>
+<p>The query functions are:-</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Function</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>vwaStatusBar.getCursCol()</td>
+<td>Return the “x” position of the cursor.</td>
+</tr>
+<tr class="row-odd"><td>vwaStatusBar.getCursRow()</td>
+<td>Return the “y” position of the cursor.</td>
+</tr>
+<tr class="row-even"><td>vwaStatusBar.getRelay(parameter)</td>
+<td>Return the content of the “Relay” field.</td>
+</tr>
+<tr class="row-odd"><td>vwaStatusBar.getPrintRelay(parameter)</td>
+<td>Return the content of the “Printer relay” field.</td>
+</tr>
+<tr class="row-even"><td>vwaStatusBar.getStatus()</td>
+<td>Return the content of the “Status” field.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>For the “getRelay()” and “getPrinterRelay()” functions, an optional parameter may be specified.</li>
+<li>When specified, valid values are “true” or “false” (without the quotes). When the parameter is ommited, or is not a valid value, the default “false” will be used.</li>
+<li>When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by Virtel mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()” functions, you may want to retrieive the inital or overprinted value. When in “false” mode the function returns the initial value. When in “true” mode the function retruns the overprinted value.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="example-custom-hotspot-recognition">
+<h4>1.13.6. Example: Custom hotspot recognition<a class="headerlink" href="#example-custom-hotspot-recognition" title="Permalink to this headline">¶</a></h4>
+<p>This example uses the after_responseHandle function to modify the regular expression which is used to identify PF key hotspots.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>/*
 * (c)Copyright SysperTec Communication 2012 All Rights Reserved
-1. Incoming calls
-125
 * VIRTEL Web Access customer-specific javascript functions
-<em>/
-/</em>
-* Adds a button to the toolbar which performs a Google search for
-* the text selected in the red box in the 3270 screen, or for the
-* word at the cursor if no box is drawn
-<em>/
-function after_standardInit() {
-addtoolbarbutton(999, &#8220;http://www.google.com/favicon.ico&#8221;,
-&#8220;Search engine query&#8221;, do_search);
-}
-function do_search() {
-var searcharg = VIR3270.getBoxedText() || VIR3270.getWordAtCursor();
-var windowname = &#8220;search&#8221;;
-var searchURL = &#8220;http://www.google.com&#8221;;
-if (searcharg) searchURL += &#8220;/search?q=&#8221; +
-encodeURIComponent(searcharg.replace(/s+/g,&#8221; &#8221;));
-var windowopts = &#8220;location=yes,status=yes,resizable=yes,&#8221;+
-&#8220;scrollbars=yes,toolbar=yes,menubar=yes,width=640,height=480&#8221;;
-var searchwin = window.open(searchURL, windowname, windowopts);
-if (searchwin) searchwin.focus();
-}
-Example custom.js to customize the toolbar icons
-1.13.2.1. Centering non standard icons
-The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in
-modifying the content of the class attribut passed within the &#8220;addtoolbarbutton&#8221; function in conjunction of using a
-specific css attribut.
-/</em>
-* (c)Copyright SysperTec Communication 2014 All Rights Reserved
-* VIRTEL Web Access customer-specific javascript functions
-* Resizing a too small or too big toolbar icon.
-* For example toosmall_pic.png=22x22 and toobig_pic.jpg=145x30
-<em>/
-addtoolbarbutton(999, &#8220;/w2h/toosmall_pic.png&#8221;, &#8220;Custom button #1 tooltip&#8221;, do_search, &#8220;tbButton size22x22&#8221;);
-addtoolbarbutton(999, &#8220;/w2h/toobig_pic.jpg&#8221;, &#8220;Custom button #2 tooltip&#8221;, do_search, &#8220;tbButton size145x30&#8221;);
-Example custom.js to specify the toolbar icon size
-/</em>
-#toolbar td img.tbButton.size22x22 {
-width: 22px;
-height: 22px;
-padding: 5px; /* padding is calculated to center the picture horizontaly and verticaly in the 32x32 allocated }
-#toolbar td img.tbButton.size145x30 {
-width: 145px;
-height: 30px;
-padding: 1px 0; /* padding is calculated to center the picture verticaly in the 32x32 allocated area (1+30+1 }
-Example custom.css to manage a toolbar icon with a non standard size
-1.13.3. Example: Removing unwanted toolbar icons
-This example uses the after_standardInit function to disable macro functions by removing the corresponding icons
-from the toolbar.
-1. Incoming calls
-126
-/*
-* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-* VIRTEL Web Access customer-specific javascript functions
-<em>/
-function after_standardInit() {
-/</em> Remove macro buttons from the toolbar <em>/
-removetoolbarbutton(&#8220;startrecording&#8221;);
-removetoolbarbutton(&#8220;playback&#8221;);
-}
-Example custom.js to remove selected toolbar icons
-The names of the other toolbar icons which can be removed in this way are:
-• capture,
-• disconnect,
-• document-print-preview,
-• edit-copy,
-• edit-cut,
-• edit-paste,
-• emptybuf,
-• file-rcv,
-• file-send,
-• help,
-• keypad,
-• playback,
-• printer,
-• settings,
-• settingsV2,
-• startrecording, playback, printer.
-(settingsV2 is présent only if w2hparms.js contains &#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V2&#8221;}, or
-&#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V1+V2&#8221;},)
-To hide the toolbar completely, see “Hiding the toolbar”, page 121.
-To hide only the Virtel Application name, see “Showing / Hiding server informations”, page 121.
-1.13.4. Example: Positionning toolbar icons
-In certain circumstances, the default position of an icon may not be at the user&#8217;s convenence. Is possible to change an
-icon&#8217;s position based on the position of another icon.
-/</em>
-* Customize the location of dynamic toolbar buttons.
-* The calls to this function are ignored when they
-* return nothing, or an integer not greater than 0.
-*
-* Customizable buttons IDs :
-* &gt; &#8216;3278T&#8217;
-* &gt; &#8216;document-print-preview&#8217;
-* &gt; &#8216;file-send&#8217;
-* &gt; &#8216;file-recv&#8217;
-* &gt; &#8216;printer&#8217;
-<em>/
-function customize_toolbarButtonIndex(id) {
-1. Incoming calls
-127
-if (id===&#8217;printer&#8217; || id===&#8217;document-print-preview&#8217;) {
-return getToolbarButtonIndex(&#8216;disconnect&#8217;) + 1;
-}
-}
-Example custom.js to select a position for printer icon
-1.13.5. Example: Modifying the text of the status bar
-This example uses the after_responseHandle function to modify the text in the status bar at the bottom of the Web
-Access screen. This example displays the text “Your printer name is xxxx” in the status bar.
-The status bar text is an object which can therefore be modified using an API.
-/</em>
-* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-* VIRTEL Web Access customer-specific javascript functions
-<em>/
-function after_responseHandle(httpXmlObj, url, xmitTimestamp) {
-vwaStatusBar.setRelay(); // clears relay field
-vwaStatusBar.setPrintRelay(&#8220;Your printer name is: &#8221; + vwaStatusBar.getPrintRelay());
-}
-Example custom.js to modify the text of the status bar
-With this method, an API is provided which allows code in custom.js to change some fields in the status bar without
-having to manipulate the DOM of the page. The “vwaStatusBar” object can be used to do this.
-The editing functions are:
-Function Description
-vwaStatusBar.setRelay(txt) Change the “Relay” field.
-vwaStatusBar.setPrintRelay(txt) Change the “Printer relay” field.
-vwaStatusBar.setStatus(txt) Change the “Status” field.
-vwaStatusBar.setStatusClass(txt) Allow to assign a specific CSS class to the “Status” field.
-If the parameter is empty or undefined, the corresponding field is not displayed. If the content is too long, it is
-truncated to the right.
-The query functions are:
-Function Description
-vwaStatusBar.getCursCol() Return the “x” position of the cursor.
-vwaStatusBar.getCursRow() Return the “y” position of the cursor.
-vwaStatusBar.getRelay(parameter) Return the content of the “Relay” field.
-vwaStatusBar.getPrintRelay(parameter) Return the content of the “Printer relay” field.
-vwaStatusBar.getStatus() Return the content of the “Status” field.
-Notes:
-• For the “getRelay()” and “getPrinterRelay()” functions, an optional parameter may be specified.
-• When specified, valid values are “true” or “false” (without the quotes). When the parameter is ommited, or is not a
-valid value, the default “false” will be used.
-• When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level
-before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by
-Virtel mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()”
-1. Incoming calls
-128
-functions, you may want to retrieive the inital or overprinted value. When in “false” mode the function returns the
-initial value. When in “true” mode the function retruns the overprinted value.
-1.13.6. Example: Custom hotspot recognition
-This example uses the after_responseHandle function to modify the regular expression which is used to identify PF key
-hotspots.
-/</em>
-* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-* VIRTEL Web Access customer-specific javascript functions
-<em>/
+*/
 function after_responseHandle(httpXmlObj, url, xmitTimestamp) {
 VIR3270.customPfKeysHotspotRegex =
-/(P?Fd{1,2}|PA[1-3]|ENTER|CLEAR)((?:/P?Fd{1,2})?s*[=:-])/;
+/(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;
 }
-Example custom.js to modify PF key hotspot recognition
-1.13.7. Example: Adding a watermark to the 3270 screen
-This example uses the after_standardInit function in conjunction with a custom stylesheet to add a watermark to the
-Web Access screen. The watermark displays the application name in light text behind the 3270 screen content. The
-application name is obtained from the class attribute of the body tag.
-/</em>
-* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-* VIRTEL Web Access customer-specific javascript functions
-<em>/
-function after_standardInit() {
-var o = document.createElement(&#8220;div&#8221;);
-o.className = &#8220;watermark&#8221;;
-o.innerHTML = document.body.className;
-document.body.appendChild(o);
-}
-Example custom.js to add a watermark to the Web Access 3270 screen
-1. Incoming calls
-129
-/</em>
-* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-* VIRTEL Web Access style sheet for site customisation
-<em>/
-.watermark {
-position: absolute;
-pointer-events: none;
-left: 150px;
-top: 100px;
-color: gray;
-opacity: 0.25;
-font-size: 10em;
-width: 60%;
-text-align: center;
-z-index: 1000;
--webkit-text-stroke: 1px #FFF;
--webkit-text-fill-color: transparent;
--webkit-transform: rotate(-40deg);
--moz-transform: rotate(-40deg);
-filter: alpha(opacity=25) progid:DXImageTransform.Microsoft.Matrix(M11=0.819, M12=0.574, M21=-0.574, M22=0.819, }
-Example custom.css to define the style of the watermark
-Web Access screen with application name as watermark
-1.13.8. Example: Modifying Web Access Settings
-The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for
-specific parameters in the VIRTEL Web Access Settings menu.
-The example shown below replaces the list of fonts, and adds two extra values &#8220;20&#8221; and &#8220;24&#8221; to the list of fontsizes:
-/</em>
-* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-* VIRTEL Web Access customer-specific javascript functions
-<em>/
-1. Incoming calls
-130
-function modify_settingsValues(name, values) {
-if (name == &#8220;font&#8221;)
-return [&#8220;Courier New&#8221;, &#8220;Lucida Console&#8221;, &#8220;Consolas&#8221;];
-if (name == &#8220;fontsize&#8221;)
-return values.concat(&#8220;20&#8221;, &#8220;24&#8221;);
-}
-Example custom.js to modify Settings values
-1.14. Customizing The Help Page
-Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:
-which causes the browser to display the page /w2h/custom-help/help.html delivered as standard with VIRTEL Web
-Access.
+</pre></div>
+</div>
+<p><em>Example custom.js to modify PF key hotspot recognition</em></p>
+</div>
+<div class="section" id="example-adding-a-watermark-to-the-3270-screen">
+<h4>1.13.7. Example: Adding a watermark to the 3270 screen<a class="headerlink" href="#example-adding-a-watermark-to-the-3270-screen" title="Permalink to this headline">¶</a></h4>
+<p>This example uses the after_standardInit function in conjunction with a custom stylesheet to add a watermark to the Web Access screen. The watermark displays the application name in light text behind the 3270 screen content. The application name is obtained from the class attribute of the body tag.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">var</span> <span class="n">o</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">createElement</span><span class="p">(</span><span class="s2">&quot;div&quot;</span><span class="p">);</span>
+<span class="n">o</span><span class="o">.</span><span class="n">className</span> <span class="o">=</span> <span class="s2">&quot;watermark&quot;</span><span class="p">;</span>
+<span class="n">o</span><span class="o">.</span><span class="n">innerHTML</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">className</span><span class="p">;</span>
+<span class="n">document</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">appendChild</span><span class="p">(</span><span class="n">o</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.js to add a watermark to the Web Access 3270 screen</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customisation</span>
+<span class="o">*/</span>
+<span class="o">.</span><span class="n">watermark</span> <span class="p">{</span>
+<span class="n">position</span><span class="p">:</span> <span class="n">absolute</span><span class="p">;</span>
+<span class="n">pointer</span><span class="o">-</span><span class="n">events</span><span class="p">:</span> <span class="n">none</span><span class="p">;</span>
+<span class="n">left</span><span class="p">:</span> <span class="mi">150</span><span class="n">px</span><span class="p">;</span>
+<span class="n">top</span><span class="p">:</span> <span class="mi">100</span><span class="n">px</span><span class="p">;</span>
+<span class="n">color</span><span class="p">:</span> <span class="n">gray</span><span class="p">;</span>
+<span class="n">opacity</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">;</span>
+<span class="n">font</span><span class="o">-</span><span class="n">size</span><span class="p">:</span> <span class="mi">10</span><span class="n">em</span><span class="p">;</span>
+<span class="n">width</span><span class="p">:</span> <span class="mi">60</span><span class="o">%</span><span class="p">;</span>
+<span class="n">text</span><span class="o">-</span><span class="n">align</span><span class="p">:</span> <span class="n">center</span><span class="p">;</span>
+<span class="n">z</span><span class="o">-</span><span class="n">index</span><span class="p">:</span> <span class="mi">1000</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">stroke</span><span class="p">:</span> <span class="mi">1</span><span class="n">px</span> <span class="c1">#FFF;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">text</span><span class="o">-</span><span class="n">fill</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">transparent</span><span class="p">;</span>
+<span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="n">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="n">deg</span><span class="p">);</span>
+<span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="n">transform</span><span class="p">:</span> <span class="n">rotate</span><span class="p">(</span><span class="o">-</span><span class="mi">40</span><span class="n">deg</span><span class="p">);</span>
+<span class="nb">filter</span><span class="p">:</span> <span class="n">alpha</span><span class="p">(</span><span class="n">opacity</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> <span class="n">progid</span><span class="p">:</span><span class="n">DXImageTransform</span><span class="o">.</span><span class="n">Microsoft</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">M11</span><span class="o">=</span><span class="mf">0.819</span><span class="p">,</span> <span class="n">M12</span><span class="o">=</span><span class="mf">0.574</span><span class="p">,</span> <span class="n">M21</span><span class="o">=-</span><span class="mf">0.574</span><span class="p">,</span> <span class="n">M22</span><span class="o">=</span><span class="mf">0.819</span><span class="p">,</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.css to define the style of the watermark</em></p>
+<p><img alt="image46" src="../../../_images/image461.png" />
+<em>Web Access screen with application name as watermark</em></p>
+<p>1.13.8. Example: Modifying Web Access Settings</p>
+<p>The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
+The example shown below replaces the list of fonts, and adds two extra values &#8220;20&#8221; and &#8220;24&#8221; to the list of fontsizes:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">modify_settingsValues</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;font&quot;</span><span class="p">)</span>
+<span class="k">return</span> <span class="p">[</span><span class="s2">&quot;Courier New&quot;</span><span class="p">,</span> <span class="s2">&quot;Lucida Console&quot;</span><span class="p">,</span> <span class="s2">&quot;Consolas&quot;</span><span class="p">];</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;fontsize&quot;</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="s2">&quot;20&quot;</span><span class="p">,</span> <span class="s2">&quot;24&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>Example custom.js to modify Settings values</em></p>
+</div>
+</div>
+<div class="section" id="customizing-the-help-page">
+<h3>1.14. Customizing The Help Page<a class="headerlink" href="#customizing-the-help-page" title="Permalink to this headline">¶</a></h3>
+<p>Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:
+which causes the browser to display the page /w2h/custom-help/help.html delivered as standard with VIRTEL Web Access.
 The administrator can create a custom version of the help.html page and upload it to a VIRTEL directory destined for
-site-specific pages, such as CLI-DIR.
-1.14.1. Standard help page
-The standard help.html page is shown below:
-1. Incoming calls
-131
-Standard help page for Web Access
-1.14.2. Installing a custom help page
-To install a customized help.html page, the administrator must perform the following operations:
-• Upload the customized help.html file into a VIRTEL directory such as CLI-DIR
-• Modify the VIRTEL transactions CLI-03CH so that it points to the CLI-DIR directory (instead of W2H-DIR as initially
-installed), then press F1-F3-F3-F1 to update the transaction and the CLIWHOST entry point. Perform the same
-operation on transaction W2H-03CH and entry point WEB2HOST.
-1. Incoming calls
-132
-1.15. Allow Copy, Cut And Paste
-Copy, cut or paste operation are done using standard function key combinations CTRL + C, CTRL + X or CTRL + V or
+site-specific pages, such as CLI-DIR.</p>
+<div class="section" id="standard-help-page">
+<h4>1.14.1. Standard help page<a class="headerlink" href="#standard-help-page" title="Permalink to this headline">¶</a></h4>
+<p>The standard help.html page is shown below:</p>
+<p><img alt="image48" src="../../../_images/image48.jpeg" />
+<em>Standard Virtel help page for Web Access</em></p>
+</div>
+<div class="section" id="installing-a-custom-help-page">
+<h4>1.14.2. Installing a custom help page<a class="headerlink" href="#installing-a-custom-help-page" title="Permalink to this headline">¶</a></h4>
+<p>To install a customized help.html page, the administrator must perform the following operations:-</p>
+<ul class="simple">
+<li>Upload the customized help.html file into a VIRTEL directory such as CLI-DIR</li>
+<li>Modify the VIRTEL transactions CLI-03CH so that it points to the CLI-DIR directory (instead of W2H-DIR as initiallyinstalled), then press F1-F3-F3-F1 to update the transaction and the CLIWHOST entry point. Perform the same operation on transaction W2H-03CH and entry point WEB2HOST.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="allow-copy-cut-and-paste">
+<h3>1.15. Allow Copy, Cut And Paste<a class="headerlink" href="#allow-copy-cut-and-paste" title="Permalink to this headline">¶</a></h3>
+<p>Copy, cut or paste operation are done using standard function key combinations CTRL + C, CTRL + X or CTRL + V or
 using a pop-up menu when using the right mouse button. These operations often require access to the clipboard,
-which, depending on the browser used, may require the installation of an additional module..
-1.15.1. Additional module requirements
-1.15.1.1. Internet Explorer
-For Internet Explorer, the usage of the clipboard is systematic for copy / cut / paste operation and does not require any
-additional module.
+which, depending on the browser used, may require the installation of an additional module..</p>
+<div class="section" id="additional-module-requirements">
+<h4>1.15.1. Additional module requirements<a class="headerlink" href="#additional-module-requirements" title="Permalink to this headline">¶</a></h4>
+<p>1.15.1.1. Internet Explorer</p>
+<p>For Internet Explorer, the usage of the clipboard is systematic for copy / cut / paste operation and does not require any additional module.
 From IE9 and above, depending on the value of “Tools | Internet options | Security tab | Custom level | Scroll to, Drag
 and drop or cut and paste files” you will be authorized - or not - to access the clipboard. If prompted, during the first
 attempt to use copy / cut / paste function the browser will display a window requesting confirmation to access the
-clipboard. Once the decision is communicated, it remains valid until closing the window with the domain.
-1.15.1.2. Firefox
-An ADDON is required to perform any copy / cut / paste operation with another application or with another internet
-domain. The ADDON is available for download at the following address: https://addons.mozilla.org/fr/firefox/addon/
-virtel-webaccess-add-on/
-If the browser version is compatible with the latest version of ADDON published click the “+ Add to Firefox” icon. Any
-additional window will open to confirm the installation.
-If the browser version is too old to be supported by the latest version of ADDON published, the link “+ Add to Firefox”
-will not be available. Click on the link “View full history version”at the bottom of the page as shown below.
-1. Incoming calls
-133
-On the next page, select the ADDON version of the most compatible version available for the browser in use. Click “+
+clipboard. Once the decision is communicated, it remains valid until closing the window with the domain.</p>
+<p>1.15.1.2. Firefox</p>
+<p>An ADDON is required to perform any copy / cut / paste operation with another application or with another internet
+domain. The ADDON is available for download at the following address:</p>
+<p><a class="reference external" href="https://addons.mozilla.org/fr/firefox/addon/virtel-webaccess-add-on/">https://addons.mozilla.org/fr/firefox/addon/virtel-webaccess-add-on/</a></p>
+<p>If the browser version is compatible with the latest version of ADDON published click the “+ Add to Firefox” icon. Any
+additional window will open to confirm the installation.</p>
+<p><img alt="image49" src="../../../_images/image49.jpeg" /></p>
+<p>If the browser version is too old to be supported by the latest version of ADDON published, the link “+ Add to Firefox”
+will not be available. Click on the link “View full history version”at the bottom of the page as shown below.</p>
+<p><img alt="image50" src="../../../_images/image50.jpeg" /></p>
+<p>On the next page, select the ADDON version of the most compatible version available for the browser in use. Click “+
 Add to Firefox”. Several versions of the ADDON can be installed in parallel, however, only one must be active at any
-given time.
-1.15.1.3. Chrome
-An extension is required for any copy / cut / paste operation with another application or with another internet
-domain. The extension can be obtained on the Chrome WebStore at the following address:
-https://chrome.google.com/webstore/category/apps?hl=en-GB.
-Enter “Virtel Extender WebAccess” in the search field and launch the search. The extension appears in the
-“Extensions” list.
-Click on the extension item and then, on the next page, click “Add to Chrome”.
-1.15.2. Additional module requirements
-Once the additional module has been installed, it will be necessary to specify the permissions.
-1.15.2.1. Firefox
-On the toolbar, click on the “Menu” in the upper right (1) icon, then click on “Modules” (2). If this section does not
+given time.</p>
+<p>1.15.1.3. Chrome</p>
+<p>An extension is required for any copy / cut / paste operation with another application or with another internet
+domain. The extension can be obtained on the Chrome WebStore at the following address:-</p>
+<p><a class="reference external" href="https://chrome.google.com/webstore/category/apps?hl=en-GB">https://chrome.google.com/webstore/category/apps?hl=en-GB</a></p>
+<p>Enter “Virtel Extender WebAccess” in the search field and launch the search. The extension appears in the “Extensions” list.</p>
+<p><img alt="image51" src="../../../_images/image511.jpeg" /></p>
+<p>Click on the extension item and then, on the next page, click “Add to Chrome”.</p>
+<p>1.15.2. Additional module requirements</p>
+<p>Once the additional module has been installed, it will be necessary to specify the permissions.</p>
+<p>1.15.2.1. Firefox</p>
+<p>On the toolbar, click on the “Menu” in the upper right (1) icon, then click on “Modules” (2). If this section does not
 appear directly in the tool window, click on “Customise” (3) tool to add “Modules” in the menu. It is also possible to
-directly access the extension manager by typing “about: addons” in the URL bar of the browser.
-1. Incoming calls
-134
-On the ADDONS page, select “Extension” to display the VIRTEL extension. Click on the “Options” button to display a
-setup screen similar to the one shown below.
-1. Incoming calls
-135
-The following options should be set:
-Automatic update
-• by default
-• enabled
-• off
-Authorized domains:
-Contains a list of domains for which permission to access the clipboard is granted. Each domain is separated from the
-next with a comma. The * indicates that all values are valid for the corresponding criteria. All definitions should end
-with an asterisk character, for example, “http://www.mydomain.com/” is not a valid definition because it does not
-end with *.
-Example of definitions:
-• http://www.mydomain.com/</em> allow access to the clipboard for the domain. Typing
+directly access the extension manager by typing “about: addons” in the URL bar of the browser.</p>
+<p><img alt="image52" src="../../../_images/image521.png" /></p>
+<p>On the ADDONS page, select “Extension” to display the VIRTEL extension. Click on the “Options” button to display a
+setup screen similar to the one shown below.</p>
+<p><img alt="image53" src="../../../_images/image53.jpeg" /></p>
+<p><img alt="image54" src="../../../_images/image54.jpeg" /></p>
+<p>The following options should be set</p>
+<dl class="docutils">
+<dt>Automatic update</dt>
+<dd><ul class="first last simple">
+<li>by default</li>
+<li>enabled</li>
+<li>off</li>
+</ul>
+</dd>
+<dt>Authorized domains:</dt>
+<dd>Contains a list of domains for which permission to access the clipboard is granted. Each domain is separated from the next with a comma. The * indicates that all values are valid for the corresponding criteria. All definitions should end with an asterisk character, for example, “<a class="reference external" href="http://www.mydomain.com/">http://www.mydomain.com/</a>” is not a valid definition because it does not end with *.</dd>
+</dl>
+<p>Example of definitions:-</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://www.mydomain.com/*">http://www.mydomain.com/*</a> allow access to the clipboard for the domain. Typing  <a class="reference external" href="http://www.mydomain.com:8080/">http://www.mydomain.com:8080/</a> will be denied access, the presence of a port number in the URL does not match the rule.</li>
+<li><a class="reference external" href="http://192.168.92.161:41001/*">http://192.168.92.161:41001/*</a> allows URLs communicating on the 41001 port access to the clipboard for specified IP address. URLs using another port will be denied access.</li>
+<li><a class="reference external" href="http://192.168.92.161:*">http://192.168.92.161:*</a> allows URL communicating on any port to access the clipboard for specified IP address.</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All entries must ends with a wildchar (*) character. Only one wildchar character is allowed for each entry.</p>
+</div>
+<dl class="docutils">
+<dt>Show notifications:</dt>
+<dd>Display a POP_UP window in the bottom right of the screen summarizing the result of last copy / paste operation.</dd>
+<dt>Refresh preferences:</dt>
+<dd>Saves the last configuration changes.</dd>
+</dl>
+<p>1.15.2.2. Chrome</p>
+<p>On the toolbar, click on the “Customize and control Google Chrome” icon in the upper right (1), then click on the “Settings” (2), then the extensions section. It is also possible to directly access the extension manager by typing “chrome://extensions” in the URL bar of the browser. From the extensions page, select “Extension” to display the VIRTEL extension.</p>
+<p><img alt="image55" src="../../../_images/image55.jpeg" /></p>
+<p>Verify that the extension is activated and click on the “Options” link.</p>
+<p><img alt="image56" src="../../../_images/image56.jpeg" /></p>
+<p>The following options should be set:</p>
+<p><img alt="image57" src="../../../_images/image57.jpeg" /></p>
+<p><img alt="image58" src="../../../_images/image581.png" /></p>
+<dl class="docutils">
+<dt>Allow copy / paste operation:</dt>
+<dd><p class="first">Allows operations copy / cut / paste on the domains specified in the definitions parameter.</p>
+<dl class="last docutils">
+<dt>For all domains:</dt>
+<dd>All domains are open for any copy / cut / paste operations.</dd>
+<dt>For these domains only:</dt>
+<dd>Only the domains defined in a list are allowed. When multiple domains are required, the list must be defined with one line per domain reference.</dd>
+</dl>
+</dd>
+</dl>
+<p>Example of definitions:
+• <a class="reference external" href="http://www.mydomain.com/*">http://www.mydomain.com/*</a> allow access to the clipboard for the domain. Typing
 <a class="reference external" href="http://www.mydomain.com:8080/">http://www.mydomain.com:8080/</a> will be denied access, the presence of a port number in the URL does not
 match the rule.
 • <a class="reference external" href="http://192.168.92.161:41001/*">http://192.168.92.161:41001/*</a> allows URLs communicating on the 41001 port access to the clipboard for
 specified IP address. URLs using another port will be denied access.
-• <a class="reference external" href="http://192.168.92.161:*">http://192.168.92.161:*</a> allows URL communicating on any port to access the clipboard for specified IP address.
-All entries must ends with a wildchar (*) character. Only one wildchar character is allowed for each entry.
-Show notifications:
-Display a POP_UP window in the bottom right of the screen summarizing the result of last copy / paste operation.
-Refresh preferences:
-Saves the last configuration changes.
-1.15.2.2. Chrome
-On the toolbar, click on the “Customize and control Google Chrome” icon in the upper right (1), then click on the
-“Settings” (2), then the extensions section. It is also possible to directly access the extension manager by typing
-“chrome://extensions” in the URL bar of the browser. From the extensions page, select “Extension” to display the
-VIRTEL extension.
-1. Incoming calls
-136
-Verify that the extension is activated and click on the “Options” link.
-The following options should be set:
-1. Incoming calls
-137
-1. Incoming calls
-138
-Allow copy / paste operation:
-Allows operations copy / cut / paste on the domains specified in the definitions parameter.
-For all domains:
-All domains are open for any copy / cut / paste operations.
-For these domains only:
-Only the domains defined in a list are allowed. When multiple domains are required, the list must be defined with
-one line per domain reference.
-Example of definitions:
-• http://www.mydomain.com/* allow access to the clipboard for the domain. Typing
-http://www.mydomain.com:8080/ will be denied access, the presence of a port number in the URL does not
-match the rule.
-• http://192.168.92.161:41001/* allows URLs communicating on the 41001 port access to the clipboard for
-specified IP address. URLs using another port will be denied access.
-• http://192.168.92.161:<em>/</em> allows URL communicating on any port to access the clipboard for specified IP
+• <a class="reference external" href="http://192.168.92.161">http://192.168.92.161</a>:<em>/</em> allows URL communicating on any port to access the clipboard for specified IP
 address.
 1. Incoming calls
 139
