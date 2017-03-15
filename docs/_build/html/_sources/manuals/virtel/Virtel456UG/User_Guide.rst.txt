@@ -5257,2171 +5257,1559 @@ Allow copy / paste operation:
         All domains are open for any copy / cut / paste operations.
     For these domains only:
         Only the domains defined in a list are allowed. When multiple domains are required, the list must be defined with one line per domain reference.
+    Example of definitions:
+        - http://www.mydomain.com/\* allow access to the clipboard for the domain. Typing http://www.mydomain.com:8080/ will be denied access, the presence of a port number in the URL does not match the rule.
+        - http://192.168.92.161:41001/* allows URLs communicating on the 41001 port access to the clipboard for specified IP address. URLs using another port will be denied access.
+        -  http://192.168.92.161:*/* allows URL communicating on any port to access the clipboard for specified IP address.
 
-Example of definitions:
-• http://www.mydomain.com/* allow access to the clipboard for the domain. Typing
-http://www.mydomain.com:8080/ will be denied access, the presence of a port number in the URL does not
-match the rule.
-• http://192.168.92.161:41001/* allows URLs communicating on the 41001 port access to the clipboard for
-specified IP address. URLs using another port will be denied access.
-• http://192.168.92.161:*/* allows URL communicating on any port to access the clipboard for specified IP
-address.
-1. Incoming calls
-139
 IFrame support:
+
 Allows operation of copy / cut / paste operation when Virtel Web Access window is encapsulated in an IFrame.This
 information is supplemented by a list of areas on which these operations are allowed. This list may be identical to
 that defined in the previous section and, if required, may contain additional restrictions through a restrictive list.
 When a restrictive list is specified, the relevant fields should appear in the previous list.
+
 Logging:
-Whenever a copy / cut / paste operation is attempted the domain involved can be saved to a list. This list is presented
-in the following form:
+
+Whenever a copy / cut / paste operation is attempted the domain involved can be saved to a list. This list is presented in the following form:
 By default the system registers a historical log all operations. It is possible to restrict registration to only rejected
 requests by checking the “Record only the gold failes Rejected requests” box. Managing the number of log entries
 and setting a retention time is configurable via “Maximum entries in history” and “Delete history entries after”
 settings.
+
 1.15.3. Operational audit
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Firefox and Chrome. Use the right mouse button to open a selection menu for copy / cut / paste operations. The
 operational status of this feature is displayed in an ICON in top right.
-Green: Indicates that the module is properly installed and that the field is allowed.
-Orange: Indicates that the module is installed correctly but the field is not defined as an authorized domain. (Available
-only for Chrome).
 
-=========================================================
+|image59|
 
-    By pressing the REC button on the VIRTEL Web Access toolbar, the
-    user can start recording a sequence of keystrokes. A second click on
-    the REC button terminates the recording and allows the user to
-    assign a name to the macro which has been recorded.
+*Green: Indicates that the module is properly installed and that the field is allowed.*
 
-    The PLAY button on the toolbar allows the user to display a list of
-    macros already recorded, and to replay or delete a macro.
+|image60|
+
+*Orange: Indicates that the module is installed correctly but the field is not defined as an authorized domain. (Available only for Chrome).*
 
 |image61|
 
-    REC button
+*Red: The expansion module is not installed. For Firefox, it may also indicate that the field is not allowed, or that the navigation is done in private mode. If running in private mode, the fonction is supported from version 0.6.33.1 and above.*
 
-|image62|
+1.16. Macros
+------------
 
-    PLAY button
+Often, in the world of the 3270 emulation, the term of “Macro” brings together two separate concepts. The first one
+designates the recording of a sequence of repetitive actions that the user wishes to automate such as for example a
+signon process, the second designates a complex dialogue between the terminal and an application running on the
+mainframe side. This second category often requires the usage of a programming language to develop an executable
+module that operates from the workstation in partnership with the 3270 emulator.
 
-    Depending on the version of VIRTEL, the macros can be saved in:
+The current chapter is the answer to the first concept, the second one being developed in chapters “Web
+Modernisation VIRTEL Scenarios”, page 147.
 
--  the Browser Local Storage (V453 and later),
+By pressing the REC button on the VIRTEL Web Access toolbar, the user can start recording a sequence of keystrokes. A
+second click on the REC button terminates the recording and allows the user to assign a name to the macro which has
+been recorded.
+The PLAY button on the toolbar allows the user to display a list of macros already recorded, and to replay or delete a
+macro.
 
--  on the workstation or network hard disk in a .json file,(V453 and
-   later)
+|image62| REC button
 
--  into a VSAM file on the host site (Virtel Storage) (V454 and later)
+|image63| PLAY button
 
-    By default macros created by the user are saved on the workstation
-    in “Browser Local Storage”.
+1.16.1. Storing the Macros
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Faced with the fragility of Local Storage usage that can be
-    destroyed by action at the browser level, it is possible to export
-    the data of the user macros to a file saved on a hard drive.
-    Conversely, the saved macros can be imported to be reinjected into
-    the Local Storage if it has been cleaned. Import and Export feature
-    are available in the pop-up windows opened using the PLAY button on
-    the toolbar.
+Depending on the version of VIRTEL, the macros can be saved in:
+• the Browser Local Storage (V453 and later),
+• on the workstation or network hard disk in a .json file,(V453 and later)
+• into a VSAM file on the host site (Virtel Storage) (V454 and later)
 
-    The “VirtelMacros” function allows global, group, and user macros to
-    be stored under the name “macro.json” in a VSAM file on the VIRTEL
-    host system.
+1.16.1.1. Macros in Local Storage
 
-    The SET VMACROS=YES parameter in the ARBOLOAD job allows the
-    definitions needed for the VirtelMacros function to be loaded during
-    VIRTEL installation.
+By default macros created by the user are saved on the workstation in “Browser Local Storage”.
 
-    A user can access to macros strored in:
+1.16.1.2. Macros on hard disk
 
--  a dedicated directory labeled with his userid,
+Faced with the fragility of Local Storage usage that can be destroyed by action at the browser level, it is possible to
+export the data of the user macros to a file saved on a hard drive. Conversely, the saved macros can be imported to be
+reinjected into the Local Storage if it has been cleaned. Import and Export feature are available in the pop-up windows
+opened using the PLAY button on the toolbar.
 
--  a group directory labeled with his groupid,
+1.16.1.3. Macros in Virtel Storage
 
--  a global directory which can be accessed by all users.
+The “VirtelMacros” function allows global, group, and user macros to be stored under the name “macro.json” in a
+VSAM file on the VIRTEL host system.
+The SET VMACROS=YES parameter in the ARBOLOAD job allows the definitions needed for the VirtelMacros function to
+be loaded during VIRTEL installation.
 
-    A user can only manage the macros stored in his dedicated directory.
-    The “Dynamic Directory Interface” is avalaible to the administrators
-    to manage macros strored int he the group and global directories.
+A user can access to macros strored in:-
 
-    Multiple macros.json files can be defined: a global file containing
-    shared macros for all users, and group and user files where macros
-    specific to a group or to a user are stored.
+- a dedicated directory labeled with his userid,
+- a group directory labeled with his groupid,
+- a global directory which can be accessed by all users.
 
-    User macros created by each user are stored in macros.json files
-    loaded into the USR-DIR directory with keyword
+A user can only manage the macros stored in his dedicated directory. The “Dynamic Directory Interface” is avalaible to
+the administrators to manage macros strored int he the group and global directories.
 
-    %USER%. When the macros are loaded into or read from this directory,
-    VIRTEL substitutes the keyword %USER% by the userid.
+Multiple macros.json files can be defined: a global file containing shared macros for all users, and group and user files
+where macros specific to a group or to a user are stored.
 
-    Group macros are defined for a specific group name recognized by the
-    security subsystem (RACF, TOPS, ACF2). They are stored in a
-    macros.json file loaded into the GRP-DIR directory with keyword
-    %GROUP%. At execution time, VIRTEL substitutes the keyword %GROUP%
-    by the name of the group supplied by the security subsystem.
+User macros created by each user are stored in macros.json files loaded into the USR-DIR directory with keyword
+%USER%. When the macros are loaded into or read from this directory, VIRTEL substitutes the keyword %USER% by
+the userid.
 
-    Global macros accessible to all users are stored in the macros.json
-    file loaded into the GLB-DIR directory.
+Group macros are defined for a specific group name recognized by the security subsystem (RACF, TOPS, ACF2). They
+are stored in a macros.json file loaded into the GRP-DIR directory with keyword %GROUP%. At execution time, VIRTEL
+substitutes the keyword %GROUP% by the name of the group supplied by the security subsystem.
 
-    A prerequisite for using group and user macros is that the user must
-    sign on to VIRTEL with a userid and password, either by accessing
-    VIRTEL via a secure transaction (one whose “Security” field is
-    non-zero), or by executing a SET$ SIGNON instruction contained in a
-    scenario.
+Global macros accessible to all users are stored in the macros.json file loaded into the GLB-DIR directory.
 
-    If used in a Sysplex distributed environment, the VSAM file that
-    contains the macros cannot be shared between two VIRTEL STC (i.e.
-    each VIRTEL must have its own VSAM macro file).
+A prerequisite for using group and user macros is that the user must sign on to VIRTEL with a userid and password,
+either by accessing VIRTEL via a secure transaction (one whose “Security” field is non-zero), or by executing a SET$
+SIGNON instruction contained in a scenario.
 
-    When VIRTEL is first installed, no macros.json files exist.
+If used in a Sysplex distributed environment, the VSAM file that contains the macros cannot be shared between two
+VIRTEL STC (i.e. each VIRTEL must have its own VSAM macro file).
 
-    To allow macros to be stored and loaded from the host site, the
-    administrator activates the VirtelMacros function by adding the code
-    shown below to the custom.js file loaded into the CLI-DIR directory
-    (or another site-defined directory):
+1.16.1.3.1. Enabeling the storage of macros on the host
 
-    *custom.js to activate the VirtelMacros function*
+When VIRTEL is first installed, no macros.json files exist.
+To allow macros to be stored and loaded from the host site, the administrator activates the VirtelMacros function by
+adding the code shown below to the custom.js file loaded into the CLI-DIR directory (or another site-defined
+directory):
 
-    The custom.js file must be activated as described in `“Site
-    customization of Javascript functions”, page 124 <#_bookmark129>`__.
-    Once this has been done, each VIRTEL Web Access user has access to
-    one or more macros.json files stored in:
+::
 
--  a dedicated directory labeled with his userid,
+    w2hparm.useVirtelMacros = true;
 
--  a group directory labeled with his groupid,
+*custom.js to activate the VirtelMacros function*
 
--  a global directory which can be accessed by all users.
 
-    A user can only manage the macros stored in his own directory. To be
-    able to manage macros stored in Group or Gloabl directories requires
-    that specific authorizations are defined into the security tool.
+The custom.js file must be activated as described in “Site customization of Javascript functions”, page 124.
 
-    If no file exists, a 404 error is produced, and no macros are listed
-    in the macro window.
+Once this has been done, each VIRTEL Web Access user has access to one or more macros.json files stored in:
 
-    When the VirtelMacros function is implemented on two differents
-    VIRTEL, it is possible to synchronize automatically the Macros
-    between them.
+- a dedicated directory labeled with his userid,
+- a group directory labeled with his groupid,
+- a global directory which can be accessed by all users.
 
-    To allow this, the administrator activates the VirtelMacros
-    synchronization function by adding the code shown below to the
-    custom.js file loaded into the CLI-DIR directory (or another
-    site-defined directory):
+A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or
+Gloabl directories requires that specific authorizations are defined into the security tool.
 
-    *custom.js to activate the VirtelMacros synchronization function*
+If no file exists, a 404 error is produced, and no macros are listed in the macro window.
 
-    The custom.js file must be activated as described in `“Site
-    customization of Javascript functions”, page 124 <#_bookmark129>`__.
+1.16.1.3.2. Macros synchronization between two VIRTEL STC
 
-    Once this has been done, each VIRTEL Web Access user macros are
-    automaticaly synchonized beetween the two VIRTEL.
+When the VirtelMacros function is implemented on two differents VIRTEL, it is possible to synchronize automatically
+the Macros between them.
 
-    Each user can create his or her own macros.json file once the user
-    has signed on to VIRTEL.
+To allow this, the administrator activates the VirtelMacros synchronization function by adding the code shown below
+to the custom.js file loaded into the CLI-DIR directory (or another site-defined directory):
+::
 
-    To create the file, the user only has to sign on to VIRTEL Web
-    Access and record a new macro. When the macro is saved with a
-    user-specified name, the macros.json file is automatically uploaded
-    into VIRTEL’s USR-DIR directory.
+    w2hparm.synchronizeVirtelMacros = true;
 
-    For subsequent Web Access sessions, the macros.json file is
-    automatically loaded and the user’s macros are displayed in the
-    macro window
+*custom.js to activate the VirtelMacros synchronization function*
 
-    |image63|
+The custom.js file must be activated as described in “Site customization of Javascript functions”, page 124.
+Once this has been done, each VIRTEL Web Access user macros are automaticaly synchonized beetween the two VIRTEL.
 
-    *Display macros for VirtelMacros function*
+1.16.2. Managing the Macros
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    *To execute a macro, just double-click on it. To delete a macro,
-    click on the red icon and confirm deletion. To delete, edit or copy
-    a macro, just right-click on the macro and choose the desired
-    function. For macro edition, se\ `e “Available
-    Macro <#_bookmark148>`__ `Commands”, page 145 <#_bookmark148>`__
-    below.*
+1.16.2.1. User macros management
 
-    Only the administrator can upload macros.json files into the global
-    (GLB-DIR) and group (GRP-DIR) directories.
+Each user can create his or her own macros.json file once the user has signed on to VIRTEL.
+To create the file, the user only has to sign on to VIRTEL Web Access and record a new macro. When the macro is
+saved with a user-specified name, the macros.json file is automatically uploaded into VIRTEL’s USR-DIR directory.
+For subsequent Web Access sessions, the macros.json file is automatically loaded and the user’s macros are displayed
+in the macro window
 
-    To define a new global or group macros.json file, the administrator
-    must use the “Dynamic Directory Interface” wich is available in the
-    “Macros and add-ons" area of the default page displayed when
-    connecting to the W-HTTP line. To be authorized to access the DDI,
-    the user must be granted to access the VIRTEL transaction defined
-    under WEB2HOST entry point with external name “usrcap".
+|image64|
+*Display macros for VirtelMacros function*
 
-    Each macros.json file contains a set of macros as shown in the
-    example below:
+To execute a macro, just double-click on it. To delete a macro, click on the red icon and confirm deletion. To delete, edit
+or copy a macro, just right-click on the macro and choose the desired function. For macro edition, see “Available Macro
+Commands”, page 145 below.
 
-    *Example of a macros.json file*
+1.16.2.2. Global and Group macros management
 
-    An empty file (containing no macros) contains only:
+Only the administrator can upload macros.json files into the global (GLB-DIR) and group (GRP-DIR) directories.
+To define a new global or group macros.json file, the administrator must use the “Dynamic Directory Interface” wich is
+available in the “Macros and add-ons" area of the default page displayed when connecting to the W-HTTP line. To be
+authorized to access the DDI, the user must be granted to access the VIRTEL transaction defined under WEB2HOST
+entry point with external name “usrcap".
 
-    *Example of an empty macros.json file*
+1.16.2.3. Format of the macros.json file
 
-    The following commands can be used in a macro file :
+Each macros.json file contains a set of macros as shown in the example below:
 
-    Each user has access to three kinds of dynamic Virtel directories :
-    GLOBAL, GROUP, USER.
+::
 
-    This interface is intended for the administator, to enable him/her
-    to deal with dynamic directories including those dedicated to
-    various users and groups.
+    {"macros": [
+    {"def":["PF3",61,120,"ENTER",105,115,112,102,"ENTER",46,53,"ENTER"],
+    "name":"macro1"},
+    {"def":[105,115,112,102,"ENTER"],
+    "name":"macro2"}
+    ],
+    }
 
-    In the list, he/she can sort the list, drag a file and drop it to
-    the desktop, delete, copy a file.
+*Example of a macros.json file*
 
-    After clicking a line he/she can delete, copy or download the
-    related file.
+An empty file (containing no macros) contains only:
 
-    To upload file(s) onto the current target VIRTEL dynamic directory,
-    drag it/them from your desktop and drop it/them to the list panel.
+::
 
-    Please be careful: if the file is a VIRTEL template (i.e. it
-    contains VIRTEL tags), it must not be downloaded, because you can
-    not get the original source with the VIRTEL tags which will have
-    been interpreted. You must save thoroughly the original template in
-    a dedicated repository.
+    {"macros": []}
 
-    User files are specific to an individual user. There is one set of
-    user files per user.
+*Example of an empty macros.json file*
 
-    The user has read/write access to his or her own files.
+1.16.2.4. Available macro commands
 
-    The Virtel administrator has read/write access to each user’s files.
-    Except for the Virtel administrator, nobody can see another user’s
-    files.
+The following commands can be used in a macro file :
 
-    To upload file(s) onto the current target VIRTEL user directory,
-    drag it/them from your desktop and drop it/them to the list panel.
+::
 
-    To download a file, select it on the list, and cick the download
-    button.
+    "any string of characters to input into 3270 screen"
+    move(pos)
+    copy(startRow,startCol,endRow,endCol)
+    paste(pos)
+    paste(pos,nbRows,nbCols)
+    key(keyIdentifier)
+    List of available key identifiers (case sensitive!!):
+    - ENTER
+    - CLEAR
+    - ATTN
+    - PF[1-24]
+    - PA[1-3]
+    - InsToogle
+    - NewLine
+    - Home
+    - Tab
+    - Backtab
+    - Bksp
+    - Left
+    - Right
+    - Down
+    - Up
+    - End
+    - ErEof
+    - Del
+    - Reset
+    - FieldMark
+    - Dup
 
-    If the VIRTEL is configured for the use of macros to be stored in
-    the dynamic VIRTEL directories, the macros of a user will be saved
-    as the "macros.json" in its user VIRTEL directory. By clicking the
-    row of this file in the list, the administrator will be able to
-    click the edit button and access the macro interface to manage these
-    macros.
+1.17. Definition Of Dynamic VIRTEL Directories
+----------------------------------------------
 
-    Group files are common to users in a specific group. There is one
-    set of group files per group.
+Each user has access to three kinds of dynamic Virtel directories : GLOBAL, GROUP, USER.
+This interface is intended for the administator, to enable him/her to deal with dynamic directories including those
+dedicated to various users and groups.
 
-    Everybody in the group has read access to their own group’s files.
+In the list, he/she can sort the list, drag a file and drop it to the desktop, delete, copy a file.
 
-    Only the Virtel administrator can update the group files (there are
-    no group administrators).
+1.18. Actions On The Dynamic VIRTEL Directories
+-----------------------------------------------
 
-    To upload file(s) onto the current target VIRTEL dynamic directory,
-    drag it/them from your desktop and drop it/them to the list panel.
+After clicking a line he/she can delete, copy or download the related file.
+To upload file(s) onto the current target VIRTEL dynamic directory, drag it/them from your desktop and drop it/them to
+the list panel.
 
-    To download a file, select it on the list, and cick the download
-    button.
+Please be careful: if the file is a VIRTEL template (i.e. it contains VIRTEL tags), it must not be downloaded, because you
+can not get the original source with the VIRTEL tags which will have been interpreted. You must save thoroughly the
+original template in a dedicated repository.
 
-    If the VIRTEL is configured for the use of macros to be stored in
-    the dynamic VIRTEL directories, the macros of a group will be saved
-    as the "macros.json" in its group VIRTEL directory. By clicking the
-    row of this file in the list, the administrator will be able to
-    click the edit button and access the macro interface to manage these
-    macros.
+1.19. Definition Of A User VIRTEL Directory
+-------------------------------------------
 
-    Global files are common to everybody. There is only one set of
-    global files.
+User files are specific to an individual user.
+There is one set of user files per user.
+The user has read/write access to his or her own files.
+The Virtel administrator has read/write access to each user’s files.
+Except for the Virtel administrator, nobody can see another user’s files.
 
-    Everybody has read access to the global files.
+1.20. Actions On The User VIRTEL Directories
+--------------------------------------------
 
-    Only the Virtel administrator can update the global files.
+1.20.1. Upload
+^^^^^^^^^^^^^^
+
+To upload file(s) onto the current target VIRTEL user directory, drag it/them from your desktop and drop it/them to the
+list panel.
+
+1.20.2. Download
+^^^^^^^^^^^^^^^^
+To download a file, select it on the list, and cick the download button.
+
+1.20.3. Macros
+^^^^^^^^^^^^^^
+
+If the VIRTEL is configured for the use of macros to be stored in the dynamic VIRTEL directories, the macros of a user
+will be saved as the "macros.json" in its user VIRTEL directory. By clicking the row of this file in the list, the
+administrator will be able to click the edit button and access the macro interface to manage these macros.
+
+1.21. Definition Of A VIRTEL Group Directory
+--------------------------------------------
+
+Group files are common to users in a specific group.
+There is one set of group files per group.
+Everybody in the group has read access to their own group’s files.
+Only the Virtel administrator can update the group files (there are no group administrators).
+
+1.22. Actions On The VIRTEL Group Directories
+---------------------------------------------
+
+1.22.1. Upload
+^^^^^^^^^^^^^^
+
+To upload file(s) onto the current target VIRTEL dynamic directory, drag it/them from your desktop and drop it/them to
+the list panel.
+
+1.22.2. Download
+^^^^^^^^^^^^^^^^
+
+To download a file, select it on the list, and cick the download button.
+
+1.22.3. Macros
+^^^^^^^^^^^^^^
+
+If the VIRTEL is configured for the use of macros to be stored in the dynamic VIRTEL directories, the macros of a group
+will be saved as the "macros.json" in its group VIRTEL directory. By clicking the row of this file in the list, the
+administrator will be able to click the edit button and access the macro interface to manage these macros.
+
+1.22.4. Definition of a global VIRTEL directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Global files are common to everybody.
+There is only one set of global files.
+Everybody has read access to the global files.
+Only the Virtel administrator can update the global files.
+
+1.22.4.1. Actions on the VIRTEL global directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Upload
-~~~~~~
-
-    To upload file(s) onto the current target VIRTEL dynamic directory,
-    drag it/them from your desktop and drop it/them to the list panel.
-
+    To upload file(s) onto the current target VIRTEL dynamic directory, drag it/them from your desktop and drop it/them to the list panel.
 Download
-~~~~~~~~
+    To download a file, select it on the list, and cick the download button.
 
-    To download a file, select it on the list, and cick the download
-    button.
+1.22.5. Macros
+^^^^^^^^^^^^^^
 
-    If the VIRTEL is configured for the use of macros to be stored in
-    the dynamic VIRTEL directories, the global macros will be saved as
-    the "macros.json" in the global VIRTEL directory. By clicking the
-    row of this file in the list, the administrator will be able to
-    click the edit button and access the macro interface to manage these
-    macros.
+If the VIRTEL is configured for the use of macros to be stored in the dynamic VIRTEL directories, the global macros will
+be saved as the "macros.json" in the global VIRTEL directory. By clicking the row of this file in the list, the administrator
+will be able to click the edit button and access the macro interface to manage these macros.
 
-    Without modifying existing applications, VIRTEL offers several
-    possibilities for dynamic modification of 3270 data extracted by the
-    {{{GENERATE-HTML}}} tag before it is presented in an HTML page. For
-    instance, it is possible to define, for each field selected, a list
-    of permitted values, or to generate a URL as a function of the value
-    of a fixed field.
+1.23. VIRTEL Web Modernisation
+------------------------------
 
-    As opposed to the specific tags presented in the previous
-    paragraphs, this set of presentation rules is not defined in an HTML
-    page, but in a program assembled and link edited in the VIRTEL
-    LOADLIB.
+1.23.1. VIRTEL Scenarios
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-    An **HTML presentation module** is made up of several scenarios
-    composed of the following instructions: SCREENS, SCRNEND, SCENARIO,
-    ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$,
-    MAP$, SET$, TOVAR$,
+Without modifying existing applications, VIRTEL offers several possibilities for dynamic modification of 3270 data
+extracted by the {{{GENERATE-HTML}}} tag before it is presented in an HTML page. For instance, it is possible to define,
+for each field selected, a list of permitted values, or to generate a URL as a function of the value of a fixed field.
 
-    VIRSV$ and END. These instructions are assembler macros contained in
-    the VIRT456.SCRNAPI.MACLIB library (for MVS) or the VIRT456.VIRSAPI
-    sublibrary (for VSE). The other instructions included in this
-    library are for internal use and must
+.. note::
+    As opposed to the specific tags presented in the previous paragraphs, this set of presentation rules is not defined in an HTML page, but in a program assembled and link edited in the VIRTEL LOADLIB.
 
-    not be used directly. Each module begins with a SCREENS instruction,
-    is terminated by a SCRNEND instruction, and must contain at least
-    one SCENARIO.
+An HTML presentation module (a.k.a SCENARIO) is made up of several scenarios composed of the following instructions: SCREENS, SCRNEND, SCENARIO, ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, VIRSV$ and END. These instructions are assembler macros contained in the VIRT456.SCRNAPI.MACLIB library (for MVS) or the VIRT456.VIRSAPI sublibrary (for VSE). The other instructions included in this library are for internal use and must not be used directly. Each module begins with a SCREENS instruction, is terminated by a SCRNEND instruction, and
+must contain at least one SCENARIO.
 
-    VIRTEL scenarios were originally assembled and link-edited into a
-    load library concatenated to the DFHRPL DD statement in the VIRTEL
-    started task. From VIRTEL version 4.48 onwards, there is also the
-    possibility of generating, syntax checking, and compiling scenarios
-    using Virtel Studio on an Eclipse platform, and uploading the
-    resulting executable code into a VIRTEL directory stored in a VSAM
-    file.
+VIRTEL scenarios were originally assembled and link-edited into a load library concatenated to the DFHRPL DD
+statement in the VIRTEL started task. From VIRTEL version 4.48 onwards, there is also the possibility of generating,
+syntax checking, and compiling scenarios using Virtel Studio on an Eclipse platform, and uploading the resulting
+executable code into a VIRTEL directory stored in a VSAM file.
 
-    After compilation, the resulting module must be placed in one of the
-    libraries defined in the DFHRPL concatenation in the VIRTEL started
-    task (for MVS), or in one of the libraries in the LIBDEF SEARCH
-    statement (for VSE). Refer to member ASMSCEN in the VIRTEL SAMPLIB
-    for an example job to assemble and link a presentation module in
-    z/OS.
+1.23.2. Scenarios stored in a load library
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    The F VIRTEL,NEW=scenario-name command (see VIRTEL Messages and
-    Operations Guide) allows VIRTEL to take into account the new version
-    of a scenario assembled and link-edited into a load library.
+After compilation, the resulting module must be placed in one of the libraries defined in the DFHRPL concatenation in
+the VIRTEL started task (for MVS), or in one of the libraries in the LIBDEF SEARCH statement (for VSE). Refer to member
+ASMSCEN in the VIRTEL SAMPLIB for an example job to assemble and link a presentation module in z/OS.
 
-    If the “Directory for scenarios” field in the Entry Point is
-    non-blank, VIRTEL will load scenarios from the specified directory
-    instead of from the DFHRPL load library.
+The F VIRTEL,NEW=scenario-name command (see VIRTEL Messages and Operations Guide) allows VIRTEL to take into
+account the new version of a scenario assembled and link-edited into a load library.
 
-    Scenarios in VSAM are ordinary VIRTEL files and their extension must
-    be .390; they are normally assembled on a workstation and uploaded
-    to the “Directory for scenarios” by means of Virtel Studio.
+1.23.3. Scenarios stored in a VSAM directory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    If a new version of a scenario is uploaded in a VSAM directory, the
-    new version will be used immediately whenever a new connection needs
-    it; no VIRTEL command is necessary. If a terminal is already
-    executing the old version of the scenario, it is not affected, and
-    continues with a copy of the old version. If another scenario with
-    the same name exists in another directory, it is not modified by the
-    upload.
+If the “Directory for scenarios” field in the Entry Point is non-blank, VIRTEL will load scenarios from the specified
+directory instead of from the DFHRPL load library.
+Scenarios in VSAM are ordinary VIRTEL files and their extension must be .390; they are normally assembled on a
+workstation and uploaded to the “Directory for scenarios” by means of Virtel Studio.
+If a new version of a scenario is uploaded in a VSAM directory, the new version will be used immediately whenever a
+new connection needs it; no VIRTEL command is necessary. If a terminal is already executing the old version of the
+scenario, it is not affected, and continues with a copy of the old version. If another scenario with the same name exists
+in another directory, it is not modified by the upload.
 
-    In order to be used, the name of the HTML presentation module must
-    be specified in the “Initial Scenario”, “Final Scenario”, “Input
-    Scenario” or “Output Scenario” field of the transaction supporting
-    access to the application (see “Parameters of the transaction” in
-    the VIRTEL Connectivity Reference manual), or in the “Identification
-    scenario” field of the entry point (see “Parameters of the entry
-    point” in the VIRTEL Connectivity Reference manual).
+1.23.4. Using a presentation module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    A presentation module can contain one of each of the following types
-    of scenario:
+In order to be used, the name of the HTML presentation module must be specified in the “Initial Scenario”, “Final
+Scenario”, “Input Scenario” or “Output Scenario” field of the transaction supporting access to the application (see
+“Parameters of the transaction” in the VIRTEL Connectivity Reference manual), or in the “Identification scenario” field
+of the entry point (see “Parameters of the entry point” in the VIRTEL Connectivity Reference manual).
 
-    An identification scenario is invoked when an inbound call is
-    assigned to an entry point. Because an identification scenario is
-    executed before a transaction is selected and before connecting to a
-    host application, the scenario may use the SET$ TRANSACTION
-    instruction to select the transaction which specifies the host
-    application (if any) to be used.
+1.23.5. Types of scenario
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    The identification scenario is required when the entry point
-    specifies the name of this presentation module in its
-    “Identification scenario” field.
+A presentation module can contain one of each of the following types of scenario:
 
-    An initial scenario is invoked when an &/S order is processed in a
-    connection script (see “Connection / Disconnection Scripts” in the
-    VIRTEL Connectivity Reference manual). The initial scenario is
-    required when the “TIOA at logon” field of the transaction contains
-    &/S and the name of the presentation module is coded in the “Initial
-    Scenario” field of the transaction.
+1.23.5.1. Identification scenario
 
-    A final scenario is invoked when an &/S order is processed in a
-    disconnection script (see “Connection / Disconnection Scripts” in
-    the VIRTEL Connectivity Reference manual). The final scenario is
-    required when the “TIOA at logoff” field of the transaction contains
-    &/S and the name of the presentation module is coded in the “Final
-    Scenario” field of the transaction.
+An identification scenario is invoked when an inbound call is assigned to an entry point. Because an identification
+scenario is executed before a transaction is selected and before connecting to a host application, the scenario may use
+the SET$ TRANSACTION instruction to select the transaction which specifies the host application (if any) to be used.
+The identification scenario is required when the entry point specifies the name of this presentation module in its
+“Identification scenario” field.
 
-    An input scenario is invoked once at the start of the session (on
-    receipt of the first message from the application to the terminal
-    after the connection has been established with the host
-    application), and again on receipt of each inbound message (from the
-    terminal to the application). The input scenario is required when
-    the name of the presentation module is coded in the “Input Scenario”
-    field of the transaction.
+1.23.5.2. Initial scenario
 
-    When the input scenario is invoked on receipt of the first outbound
-    message (from the application to the terminal), the scenario may
-    terminate with a CASE$ FAIL or an IF$ FAIL instruction. In this
-    case, the outbound message is discarded and the input scenario is
-    invoked again on receipt on the next outbound message from the
-    application. This process continues until the input scenario
-    terminates with a CASE$ SUCCESS or IF$ SUCCESS instruction, or
-    reaches SCENARIO END, after which the input scenario stops
-    processing outbound messages and is subsequently invoked for each
-    inbound message.
+An initial scenario is invoked when an &/S order is processed in a connection script (see “Connection / Disconnection
+Scripts” in the VIRTEL Connectivity Reference manual). The initial scenario is required when the “TIOA at logon” field
+of the transaction contains &/S and the name of the presentation module is coded in the “Initial Scenario” field of the
+transaction.
 
-    An output scenario is invoked on receipt of each outbound message
-    (sent from the application to the terminal). The output scenario is
-    required when the name of the presentation module is coded in the
-    “Output Scenario” field of the transaction.
+1.23.5.3. Final scenario
 
-    Subroutine scenario represent a certain part of code that can be
-    invoked from within a scenario.
+A final scenario is invoked when an &/S order is processed in a disconnection script (see “Connection / Disconnection
+Scripts” in the VIRTEL Connectivity Reference manual). The final scenario is required when the “TIOA at logoff” field of
+the transaction contains &/S and the name of the presentation module is coded in the “Final Scenario” field of the
+transaction.
 
-    Subroutine scenario starts with a SCENARIO SUBROUTINE intruction and
-    ends with a SCENARIO END instruction.
+1.23.5.4. Input scenario
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-    The following restrictions apply to a SCENARIO SUBROUTINE :
+An input scenario is invoked once at the start of the session (on receipt of the first message from the application to the
+terminal after the connection has been established with the host application), and again on receipt of each inbound
+message (from the terminal to the application). The input scenario is required when the name of the presentation
+module is coded in the “Input Scenario” field of the transaction.
 
--  It must not contain any other scenario.
+When the input scenario is invoked on receipt of the first outbound message (from the application to the terminal),
+the scenario may terminate with a CASE$ FAIL or an IF$ FAIL instruction. In this case, the outbound message is
+discarded and the input scenario is invoked again on receipt on the next outbound message from the application. This
+process continues until the input scenario terminates with a CASE$ SUCCESS or IF$ SUCCESS instruction, or reaches
+SCENARIO END, after which the input scenario stops processing outbound messages and is subsequently invoked for
+each inbound message.
 
--  It must not be included in a scenario.
+1.23.5.5. Output scenario
 
--  All its labels must use the LABEL$ instruction
+An output scenario is invoked on receipt of each outbound message (sent from the application to the terminal). The
+output scenario is required when the name of the presentation module is coded in the “Output Scenario” field of the
+transaction.
 
--  It must end with a SCENARIO END instruction which acts as a RETURN$
-   instruction.
+1.23.5.6. Subroutine scenario
 
--  It must not try to branch outside of its limits.
+Subroutine scenario represent a certain part of code that can be invoked from within a scenario.
+Subroutine scenario starts with a SCENARIO SUBROUTINE intruction and ends with a SCENARIO END instruction.
 
-    The subroutine scenario can be invoked from a main scenario using :
+::
 
-This will call the subroutine and the calling scenario will continue in sequence when the subroutine SCENARIO END instruction will be reached.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    mysub SCENARIO SUBROUTINE
+    ... / ...
+    SCENARIO END
 
-    **A subroutine may contains a PERFORM$ instruction to call another
-    subroutine up to 3 levels. For example, main scenario may call
-    level\_1 subroutine scenario, which may call level\_2 subroutine
-    scenario, which may call level\_3 subroutine scenario, but level\_3
-    connot call level\_4 subroutine scenario.**
+The following restrictions apply to a SCENARIO SUBROUTINE :-
 
-    A scenario may also be specified in the “Output Scenario” field of a
-    transaction invoked by VIRTEL Multi-Session. By executing an OUTPUT
-    scenario on a 3270 terminal, VIRTEL allows automated 3270 navigation
-    (for example, logon to VTAM application) from the Multi-Session
-    screen.
+- It must not contain any other scenario.
+- It must not be included in a scenario.
+- All its labels must use the LABEL$ instruction
+- It must end with a SCENARIO END instruction which acts as a RETURN$ instruction.
+- It must not try to branch outside of its limits.
 
-    When the same VTAM application is re-invoked from a VIRTEL
-    Multi-Session screen using a different transaction from the one
-    which was previously active, VIRTEL will call the OUTPUT scenario of
-    the new transaction so that the scenario can terminate the previous
-    transaction and start the new one. In this case the IF$
-    SESSION-SWITCH instruction is useful (refer t\ `o “IF$
-    instructions”, page 177 <#_bookmark215>`__ for further details).
+The subroutine scenario can be invoked from a main scenario using :
 
-    This instruction specifies the name of the presentation module and
-    its execution mode. Each SCREENS instructions is terminated by a
-    SCRNEND instruction and may contain only SCENARIO or ERROR$
-    instructions.
+::
+
+    PERFORM$ mysub
+
+This will call the subroutine and the calling scenario will continue in sequence when the subroutine SCENARIO END
+instruction will be reached.
+
+A subroutine may contains a PERFORM$ instruction to call another subroutine up to 3 levels. For example, main
+scenario may call level_1 subroutine scenario, which may call level_2 subroutine scenario, which may call level_3
+subroutine scenario, but level_3 connot call level_4 subroutine scenario.
+
+1.23.6. VIRTEL Multi-Session scenarios
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A scenario may also be specified in the “Output Scenario” field of a transaction invoked by VIRTEL Multi-Session. By
+executing an OUTPUT scenario on a 3270 terminal, VIRTEL allows automated 3270 navigation (for example, logon to
+VTAM application) from the Multi-Session screen.
+
+When the same VTAM application is re-invoked from a VIRTEL Multi-Session screen using a different transaction from
+the one which was previously active, VIRTEL will call the OUTPUT scenario of the new transaction so that the scenario
+can terminate the previous transaction and start the new one. In this case the IF$ SESSION-SWITCH instruction is
+useful (refer to “IF$ instructions”, page 177 for further details).
+
+1.23.7. SCREENS instruction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This instruction specifies the name of the presentation module and its execution mode. Each SCREENS instructions is
+terminated by a SCRNEND instruction and may contain only SCENARIO or ERROR$ instructions.
+
+::
+
+    modname SCREENS APPL=value1,EXEC=value2
 
 modname
-~~~~~~~
-
-    Name of the presentation module (8 characters maximum). Under
-    certain conditions, this value will allow calls to a script from a
-    subsystem by way of a CALL command.
-
+    Name of the presentation module (8 characters maximum). Under certain conditions, this value will allow calls to a script from a subsystem by way of a CALL command.
 APPL
-~~~~
-
-    Specifies the name of the target transaction when the presentation
-    module is called by a program.
-
+    Specifies the name of the target transaction when the presentation module is called by a program.
 EXEC
-~~~~
+    Determines the mode in which the script is used.NO is the only allowed value.
 
-    Determines the mode in which the script is used.NO is the only
-    allowed value.
+1.23.8. SCRNEND instruction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    This instruction marks the end of a presentation module.
+This instruction marks the end of a presentation module.
 
-    This instruction encloses ACTION$, CONVERT$, COPY$, DECLARE$,
-    ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, and VIRSV$
-    instructions.
+::
+
+    SCRNEND
+
+1.23.9. SCENARIO instruction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This instruction encloses ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, and VIRSV$ instructions.
+
+:: 
+
+    SCENARIO value
 
 value
-~~~~~
-
     Determines the type of processing. The permitted values are:
+        DISCARD
+            Marks the end of a scenario. In the case of an input or output scenario, the scenario stops, and does not resume for the remainder of the life of the VIRTEL transaction.
+        END
+            Marks the end of a scenario. In the case of an input or output scenario, the scenario is stopped, but will resume on receipt of the next input or output message.
+        FAIL
+            Stops processing. The scenario will be restarted (at the same entry point that it just was entered with) at the next message arrival.
+        FINAL
+            Marks the start of the final scenario.
 
-DISCARD
-~~~~~~~
+::
 
-    Marks the end of a scenario. In the case of an input or output
-    scenario, the scenario stops, and does not resume for the remainder
-    of the life of the VIRTEL transaction.
+    IDENTIFICATION
 
-END
-~~~
+Marks the start of the identification scenario.
 
-    Marks the end of a scenario. In the case of an input or output
-    scenario, the scenario is stopped, but will resume on receipt of the
-    next input or output message.
+::
 
-FAIL
-~~~~
+    INITIAL
 
-    Stops processing. The scenario will be restarted (at the same entry
-    point that it just was entered with) at the next message arrival.
+Marks the start of the initial scenario.
 
-FINAL
-~~~~~
+::
 
-    Marks the start of the final scenario.
+    INPUT
 
-IDENTIFICATION
-~~~~~~~~~~~~~~
+Marks the start of the input scenario.
 
-    Marks the start of the identification scenario.
+::
 
-INITIAL
-~~~~~~~
 
-    Marks the start of the initial scenario.
+    OUTPUT
 
-INPUT
-~~~~~
+Marks the start of the output scenario.
 
-    Marks the start of the input scenario.
+::
 
-OUTPUT
-~~~~~~
+    SUBROUTINE
 
-    Marks the start of the output scenario.
+Marks the start of a subroutine scenario which must ends with a SCENARIO END instruction. A subroutine scenario
+is invoked using PERFORM$ instruction. A subroutine scenario can invoke another subroutine scenario, and so on
+up to 3 levels. A sample of such type of scenario is available in the PREFORM$ insctruction description.
 
-SUBROUTINE
-~~~~~~~~~~
+::
 
-    Marks the start of a subroutine scenario which must ends with a
-    SCENARIO END instruction. A subroutine scenario is invoked using
-    PERFORM$ instruction. A subroutine scenario can invoke another
-    subroutine scenario, and so on up to 3 levels. A sample of such type
-    of scenario is available in the PREFORM$ insctruction description.
+    SUCCESS
 
-SUCCESS
-~~~~~~~
+Stops scenario processing but continue normal Virtel processing of the current message.
 
-    Stops scenario processing but continue normal Virtel processing of
-    the current message.
+1.23.10. ACTION$ instruction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    This instruction specifies actions to be taken.
+This instruction specifies actions to be taken.
 
-    Terminate the application.
+1.23.11. ACTION$ DISCONNECT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    This instruction allows a scenario to trigger a 205 response to the
-    Long Poll session.
+Terminate the application.
 
-    This 205 response will then tell the JavaScript to refresh the
-    terminal 3270 emulation screen, so that the user can see whatever
-    was changed by the scenario.
+::
 
-    Indicates that the transaction is now a service transaction (se`e
-    “Service Transactions”, page 11 <#_bookmark6>`__).
+    ACTION$ DISCONNECT
 
-    Requests disconnection from the host application after the next
-    message has been sent to the client’s browser.
 
-    Send a message to the application, consisting of the input fields in
-    the screen image buffer and the function key specified by pfkey.
+1.23.12. ACTION$ REFRESH-TERMINAL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This instruction allows a scenario to trigger a 205 response to the Long Poll session.
+This 205 response will then tell the JavaScript to refresh the terminal 3270 emulation screen, so that the user can see
+whatever was changed by the scenario.
+
+::
+
+    ACTION$ REFRESH-TERMINAL
+
+1.23.13. ACTION$ SERVE-ANOTHER-USER
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Indicates that the transaction is now a service transaction (see “Service Transactions”, page 11).
+
+::
+
+    ACTION$ SERVE-ANOTHER-USER
+
+1.23.14. ACTION$ TERMSESS
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Requests disconnection from the host application after the next message has been sent to the client’s browser.
+
+::
+
+    ACTION$ TERMSESS
+
+1.23.15. ACTION$ TO-APPLICATION
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Send a message to the application, consisting of the input fields in the screen image buffer and the function key
+specified by pfkey.
+
+::
+
+    ACTION$ TO-APPLICATION,KEY=pfkey,
+    AND=(WAIT|SCRIPT,'string'),
+    AND=(PROCESS-RESPONSE,'string'),
+    AND=(DO-NOT-PROCESS-RESPONSE),
+    MAXTIME=nnn,
+    LASTMSG=YES,ASYNCH=YES
 
 pfkey
-~~~~~
-
     a 3270 AID key. The allowable values are:
+        
+        F1-F9        
+            PF1 to PF9        
+        7A-7C        
+            PF10 to PF12        
+        C1-C9        
+            PF13 to PF21
+        4A-4C
+            PF22 to PF24        
+        6C        
+            PA1        
+        6E        
+            PA2        
+        6B        
+            PA3        
+        6D        
+            Clear
+        7D
+            Enter
+        FD
+            Attn
+        AND=(WAIT,'string')
+            (optional) after sending the message to the application, the scenario waits until the application sends a message containing the specified character string. Intervening messages are processed by VIRTEL but are not passed to the scenario or sent to the terminal.
+        AND=(SCRIPT,'string')
+            (optional) after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual).
+        AND=(PROCESS-RESPONSE,'string')
+            (optional) allows an input scenario to explicitly request that control is to be returned when the next message is received from the application. The string is optional. If specified, after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual).
 
-F1-F9
-~~~~~
+.. note::
+            For an input scenario, AND=(PROCESS-RESPONSE) is the default value immediately after the connection.
 
-    PF1 to PF9
+        AND=(DO-NOT-PROCESS-RESPONSE)
+            (optional) allows an input scenario to explicitly state that is does not want to process the response from the application. After this instruction, the input scenario will not see any messages from the application, only input messages from the terminal. 
 
-7A-7C
-~~~~~
+.. note::
+            For an input scenario, AND=(DO-NOT-PROCESS-RESPONSE) is the default value once the connection stage is passed.
 
-    PF10 to PF12
+        MAXTIME=nnn
+            (optional) specifies the maximum time, in hundredths of a second, that the scenario will wait for a message from the application. When this time expires, the APPLICATION-TIMEOUT flag will be set (see “IF$”, page 177 instruction) and the scenario will resume execution. If the MAXTIME parameter is not specified, then the scenario will wait indefinitely, or until VIRTEL disconnects the session when the timeout value of the entry point is exceeded.
+        LASTMSG=YES
+            (optional) requests disconnection after the application responds to the pfkey sent.
+        ASYNCH=YES
+            (optional) indicate that the sending of the message to the application is not to prevent the normal screen display. When the ACTION$ TO-APPLICATION instruction is executed in an output scenario, or in an input scenario before the first message has been delivered to the terminal, the specified function key is sent to the application and the scenario is suspended awaiting the next outbound message from the host application. When the next outbound message arrives, the scenario is resumed starting with the next instruction after the ACTION$ TO-APPLICATION instruction. Subsequent outbound messages will cause the scenario to resume execution again at the instruction after the latest ACTION$ TO-APPLICATION instruction until a SCENARIO END instruction is executed. After a SCENARIO END instruction is executed, subsequent outbound messages will once again cause the output scenario to resume at the beginning. 
 
-C1-C9
-~~~~~
+            When the ACTION$ TO-APPLICATION instruction is executed in an input scenario driven by an inbound message, the data in the inbound message is sent to the application together with the 3270 AID key specified in the KEY parameter. Subsequent inbound messages will cause the input scenario to resume execution again at the instruction after the ACTION$ TO-APPLICATION instruction until a SCENARIO END instruction is executed. After a SCENARIO END instruction is executed, subsequent inbound messages will once again cause the input scenario to resume at the beginning. To allow an input scenario to see the responses from the host application in addition to the input messages from the terminal, the ACTION$ TO-APPLICATION instruction contains an AND= parameter which allows the scenario to explicitly request whether or not it expects to process the application response message following the ACTION$ instruction.
 
-    PF13 to PF21
+1.23.15.1. Examples:
 
-4A-4C
-~~~~~
+::
 
-    PF22 to PF24
+    ACTION$ TO-APPLICATION,KEY=F3
 
-6C
-~~
+Send F3 (PF3) to the application and wait for the next outbound message. When the application responds, continue with the next instruction in the scenario.
 
-    PA1
+::
 
-6E
-~~
+    ACTION$ TO-APPLICATION,KEY=7D, *
+    AND=(WAIT,'Password ===>'),MAXTIME=100
 
-    PA2
+Send ENTER to the application and wait for the application to send a message containing the string “Password ===>”. If the requested message does not arrive within 1 second, then set the APPLICATION-TIMEOUT flags and continue the scenario.
 
-6B
-~~
+::
 
-    PA3
+    ACTION$ TO-APPLICATION,KEY=7D, *
+    AND=(SCRIPT, *
+    'Signon to CICS&&/W&&*F34BE9&&/A&&/T')
 
-6D
-~~
+Send ENTER to the application before sending two tab key followed by a message containing the string “Test".
 
-    Clear
+::
 
-7D
-~~
+    ACTION$ TO-APPLICATION,KEY=7D, *
+    AND=(SCRIPT,'&&>&&>Test&&/T')
 
-    Enter
+Send ENTER to the application, wait for the application to send a message containing the string “Signon to CICS”, then send F3 to the application, and send the screen image to the terminal. Note: the ampersands are doubled to conform with assembler syntax requirements.
 
-FD
-~~
+::
 
-    Attn
+    ACTION$ TO-APPLICATION,KEY=6D,LASTMSG=YES,ASYNCH=YES
 
-AND=(WAIT,'string')
-~~~~~~~~~~~~~~~~~~~
+Exit from the scenario (equivalent to IF$ ... SUCCESS), display the screen as normal, send 6D (CLEAR) to the application, and when the application responds, disconnect.
+::
 
-    (optional) after sending the message to the application, the
-    scenario waits until the application sends a message containing the
-    specified character string. Intervening messages are processed by
-    VIRTEL but are not passed to the scenario or sent to the terminal.
+    ACTION$ TO-APPLICATION,KEY=7D, *
+    AND=(PROCESS-RESPONSE)
 
-AND=(SCRIPT,'string')
-~~~~~~~~~~~~~~~~~~~~~
+The input scenario will resume at the next instruction when the next message is received from the host application.
 
-    (optional) after sending the message to the application, VIRTEL
-    executes the string as a Connection/Disconnection script (see
-    “Connection/Disconnection Scripts” in the VIRTEL Connectivity
-    Reference manual).
+::
 
-AND=(PROCESS-RESPONSE,'string')
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ACTION$ TO-APPLICATION,KEY=7D, *
+    AND=(DO-NOT-PROCESS-RESPONSE)
 
-    (optional) allows an input scenario to explicitly request that
-    control is to be returned when the next message is received from the
-    application. The string is optional. If specified, after sending the
-    message to the application, VIRTEL executes the string as a
-    Connection/Disconnection script (see “Connection/Disconnection
-    Scripts” in the VIRTEL Connectivity Reference manual).
+The input scenario will not be called again for messages received from the host application. It will only be called for
+input messages.
 
-    For an input scenario, AND=(PROCESS-RESPONSE) is the default value
-    immediately after the connection.
+::
 
-AND=(DO-NOT-PROCESS-RESPONSE)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ACTION$ TO-APPLICATION,KEY=7D, *
+    AND=(PROCESS-RESPONSE,'&&*F34BE9&&/A')
 
-    (optional) allows an input scenario to explicitly state that is does
-    not want to process the response from the application. After this
-    instruction, the input scenario will not see any messages from the
-    application, only input messages from the terminal.
+This is the same as for PROCESS-RESPONSE but with execution of a script in addition. Note: the ampersands are
+doubled to conform withinh assembler syntax requirements.
 
-    For an input scenario, AND=(DO-NOT-PROCESS-RESPONSE) is the default
-    value once the connection stage is passed.
+1.23.16. ACTION$ TO-TERMINAL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-MAXTIME=nnn
-~~~~~~~~~~~
+Send the current contents of the screen image buffer to the terminal.
 
-    (optional) specifies the maximum time, in hundredths of a second,
-    that the scenario will wait for a message from the application. When
-    this time expires, the APPLICATION-TIMEOUT flag will be set (see
-    `“IF$”, page 177 <#_bookmark215>`__ instruction) and the scenario
-    will resume execution. If the MAXTIME parameter is not specified,
-    then the scenario will wait indefinitely, or until VIRTEL
-    disconnects the session when the timeout value of the entry point is
-    exceeded.
+::
 
-LASTMSG=YES
-~~~~~~~~~~~
+    ACTION$ TO-TERMINAL
 
-    (optional) requests disconnection after the application responds to
-    the pfkey sent.
+When the ACTION$ TO-TERMINAL instruction is executed in an input scenario, the contents of the screen image buffer
+are sent to the terminal. The scenario may use instructions such as COPY$ VARIABLE-TO-SCREEN to place data in the
+screen image buffer before issuing the ACTION$ TO-TERMINAL instruction.
 
-ASYNCH=YES
-~~~~~~~~~~
+1.23.17. CASE$ instruction
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    (optional) indicate that the sending of the message to the
-    application is not to prevent the normal screen display.
+This instruction tests a value in a 3270 screen position, or a value in a VIRTEL variable, and directs the subsequent
+processing flow according to the value.
 
-    When the ACTION$ TO-APPLICATION instruction is executed in an output
-    scenario, or in an input scenario before the first message has been
-    delivered to the terminal, the specified function key is sent to the
-    application and the scenario is suspended awaiting the next outbound
-    message from the host application. When the next outbound message
-    arrives, the scenario is resumed starting with the next instruction
-    after the ACTION$ TO-APPLICATION instruction.
+::
 
-    Subsequent outbound messages will cause the scenario to resume
-    execution again at the instruction after the latest ACTION$
-    TO-APPLICATION instruction until a SCENARIO END instruction is
-    executed. After a SCENARIO END instruction is executed, subsequent
-    outbound messages will once again cause the output scenario to
-    resume at the beginning.
-
-    When the ACTION$ TO-APPLICATION instruction is executed in an input
-    scenario driven by an inbound message, the data in the inbound
-    message is sent to the application together with the 3270 AID key
-    specified in the KEY parameter. Subsequent inbound messages will
-    cause the input scenario to resume execution again at the
-    instruction after the ACTION$ TO-APPLICATION instruction until a
-    SCENARIO END instruction is executed. After a SCENARIO END
-    instruction is executed, subsequent inbound messages will once again
-    cause the input scenario to resume at the beginning.
-
-    To allow an input scenario to see the responses from the host
-    application in addition to the input messages from the terminal, the
-    ACTION$ TO-APPLICATION instruction contains an AND= parameter which
-    allows the scenario to explicitly request whether or not it expects
-    to process the application response message following the ACTION$
-    instruction.
-
-    Send F3 (PF3) to the application and wait for the next outbound
-    message. When the application responds, continue with the next
-    instruction in the scenario.
-
-    Send ENTER to the application and wait for the application to send a
-    message containing the string “Password ===>”. If the requested
-    message does not arrive within 1 second, then set the
-    APPLICATION-TIMEOUT flags and continue the scenario.
-
-    Send ENTER to the application before sending two tab key followed by
-    a message containing the string “Test".
-
-    Send ENTER to the application, wait for the application to send a
-    message containing the string “Signon to CICS”, then send F3 to the
-    application, and send the screen image to the terminal. Note: the
-    ampersands are doubled to conform with assembler syntax
-    requirements.
-
-    Exit from the scenario (equivalent to IF$ ... SUCCESS), display the
-    screen as normal, send 6D (CLEAR) to the application, and when the
-    application responds, disconnect.
-
-    The input scenario will resume at the next instruction when the next
-    message is received from the host application.
-
-    The input scenario will not be called again for messages received
-    from the host application. It will only be called for input
-    messages.
-
-    This is the same as for PROCESS-RESPONSE but with execution of a
-    script in addition. Note: the ampersands are doubled to conform
-    withinh assembler syntax requirements.
-
-    Send the current contents of the screen image buffer to the
-    terminal.
-
-    When the ACTION$ TO-TERMINAL instruction is executed in an input
-    scenario, the contents of the screen image buffer are sent to the
-    terminal. The scenario may use instructions such as COPY$
-    VARIABLE-TO-SCREEN to place data in the screen image buffer before
-    issuing the ACTION$ TO-TERMINAL instruction.
-
-    This instruction tests a value in a 3270 screen position, or a value
-    in a VIRTEL variable, and directs the subsequent processing flow
-    according to the value.
+    CASE$ (row,col,len),
+    CASE$ 'varname',
+    CASE$ CURRENT-SCREEN-POSITION,
+    LTRIM=('string1','string2',...),
+    RTRIM=('string1','string2',...),
+    (EMPTY,process0),
+    (condition,'value',process1),
+    (condition,'*varname1',process2),
+    (condition,STRING,'value',process3),
+    (condition,VARIABLE,'varname1',process4),
+    ...
+    ELSE=processx
 
 (row,col,len)
-~~~~~~~~~~~~~
-
-    Specifies the row, column, and length of the 3270 screen data (see
-    Note 1).
-
+    Specifies the row, column, and length of the 3270 screen data (see Note 1).
 varname
-~~~~~~~
-
     Specifies the name of a VIRTEL variable (must be placed in quotes)
-
 CURRENT-SCREEN-POSITION
-~~~~~~~~~~~~~~~~~~~~~~~
-
-    The tested variable is located at the current screen position as set
-    or incremented by `“SET$ SCREEN-POSITION”, <#_bookmark252>`__ `page
-    201 <#_bookmark252>`__.
-
+    The tested variable is located at the current screen position as set or incremented by “SET$ SCREEN-POSITION”, page 201.
 LTRIM
-~~~~~
-
-    (optional) Removes a set of characters from the start ot the tested
-    data before testing it.
-
-'string1' [,'string2', …]
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    one or more strings of text to be removed from the start of the
-    tested data.
-
+    (optional) Removes a set of characters from the start ot the tested data before testing it.
+        'string1' [,'string2', …]
+            one or more strings of text to be removed from the start of the tested data.
 RTRIM
-~~~~~
-
-    (optional) Removes a set of characters from the end of the tested
-    data before testing it.
-
-'string1' [,'string2', …]
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-one or more strings of text to be removed from the end of the tested
-data.
-
+    (optional) Removes a set of characters from the end of the tested data before testing it.
+        'string1' [,'string2', …]
+            one or more strings of text to be removed from the end of the tested data.
 EMPTY
-~~~~~
-
     Specifies whether the tested is empty (see Note 2).
-
 condition
-~~~~~~~~~
+    Specifies whether the data tested must be equal (EQ), not equal (NE), prefixed by (BEGIN), less than (LT), less than or equal (LE), greater than (GT), greater than or equal (GE), or must contain (CONTAINS) the specified value.
 
-    Specifies whether the data tested must be equal (EQ), not equal
-    (NE), prefixed by (BEGIN), less than (LT), less than or equal (LE),
-    greater than (GT), greater than or equal (GE), or must contain
-    (CONTAINS) the specified value.
-
-    Note : Any number of (condition,'value',process) parameters may be
-    specified, within the limits set by the assembler. Use assembler
-    conventions (non-blank in column 72 and continuation starting in
-    column 16) to continue the statement over more than one line.
+.. note::    
+    Any number of (condition,'value',process) parameters may be specified, within the limits set by the assembler. Use assembler conventions (non-blank in column 72 and continuation starting in column 16) to continue the statement over more than one line.
 
 value
-~~~~~
-
-    Specifies the value against which the data is tested (must be placed
-    in quotes)
+    Specifies the value against which the data is tested (must be placed in quotes)
 
 process1,2,...
-~~~~~~~~~~~~~~
-
-    Specifies the address of the branch exit of the script if the
-    condition is satisfied. Permitted values are:
-
-label
-~~~~~
-
-    instruction label at which execution of the scenario is to continue.
-
-FAIL
-~~~~
-
-    reserved word indicating that the scenario is to be terminated and
-    the current message is to be discarded. The scenario will be called
-    again on receipt of the next outbound message from the application.
-
-SUCCESS
-~~~~~~~
-
-    reserved word indicating that the scenario is to be terminated and
-    the current message is to be presented to the user. This is
-    equivalent to branching to a SCENARIO END instruction.
-
+    Specifies the address of the branch exit of the script if the condition is satisfied. Permitted values are:
+        label
+            instruction label at which execution of the scenario is to continue.
+        FAIL
+            reserved word indicating that the scenario is to be terminated and the current message is to be discarded. The scenario will be called again on receipt of the next outbound message from the application.
+        SUCCESS
+            reserved word indicating that the scenario is to be terminated and the current message is to be presented to the user. This is equivalent to branching to a SCENARIO END instruction.
 processx
-~~~~~~~~
+    Specifies the address of the branch exit of the script if none of the conditions is satisfied. Permitted values are identical to process1.
 
-    Specifies the address of the branch exit of the script if none of
-    the conditions is satisfied. Permitted values are identical to
-    process1.
+.. note::
+    Note 1: For row, col and len, a value of '=' means the value of the current rown col or len as set by “SET$ SCREENPOSITION”, page 201
 
-    Note 1: for row, col and len, a value of '=' means the value of the
-    current rown col or len as set by `“SET$ SCREEN- <#_bookmark252>`__
-    `POSITION”, page 201 <#_bookmark252>`__
+    Note 2: If the variable being tested does not exist, it is not considered empty and the CASE$ branches at the ELSE=label.
 
-    Note 2: if the variable being tested does not exist, it is not
-    considered empty and the CASE$ branches at the ELSE= label.
+1.23.18. CONVERT$ instruction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    This instruction allows a scenario to translate a VIRTEL variable to
-    or from EBCDIC, or to convert a variable to upper or lower case.
+This instruction allows a scenario to translate a VIRTEL variable to or from EBCDIC, or to convert a variable to upper or
+lower case.
+
+::
+
+    CONVERT$ direction,VAR='varname',TABLE='tabname'
 
 direction
-~~~~~~~~~
-
     specifies the translation requested. Possible values are:
 
--  ASCII-TO-EBCDIC
-
--  EBCDIC-TO-ASCII
-
--  UTF8-TO-EBCDIC
-
--  EBCDIC-TO-UTF8
-
--  EBCDIC-TO-UPPERCASE
-
--  EBCDIC-TO-LOWERCASE
+    - ASCII-TO-EBCDIC
+    - EBCDIC-TO-ASCII
+    - UTF8-TO-EBCDIC
+    - EBCDIC-TO-UTF8
+    - EBCDIC-TO-UPPERCASE
+    - EBCDIC-TO-LOWERCASE
 
 varname
-~~~~~~~
-
-    is the name of a VIRTEL variable. The variable name must be placed
-    in quotes.
-
+    is the name of a VIRTEL variable. The variable name must be placed in quotes.
 tabname
-~~~~~~~
+    is the name of the translate table to be used for UTF-8 conversion. The possible values are given under the description of the DEFUTF8 parameter of the VIRTCT. The table name must be placed in quotes. If the TABLE parameter is not specified, then the table specified by the DEFUTF8 parameter is used as a default. VIRTCT parameters are described in the VIRTEL Installation Guide.
 
-    is the name of the translate table to be used for UTF-8 conversion.
-    The possible values are given under the description of the DEFUTF8
-    parameter of the VIRTCT. The table name must be placed in quotes. If
-    the TABLE parameter is not specified, then the table specified by
-    the DEFUTF8 parameter is used as a default. VIRTCT parameters are
-    described in the VIRTEL Installation Guide.
+1.23.19. COPY$ instruction
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    This instruction allows various copy operations within the context
-    of a scenario.
+This instruction allows various copy operations within the context of a scenario.
 
-    Copies the name of an HTTP input field into a VIRTEL variable.
+1.23.20. COPY$ FIELD-NAME-TO-VARIABLE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Copies the name of an HTTP input field into a VIRTEL variable.
+
+::
+
+    COPY$ FIELD-NAME-TO-VARIABLE,SCREEN=(row,col),VAR='name2',TYPE=type
 
 row,col
-~~~~~~~
-
     starting row and column of the field on the screen.
-
 name2
-~~~~~
-
-    the name of a VIRTEL table variable. If the variable does not exist,
-    it will be created.
-
+    the name of a VIRTEL table variable. If the variable does not exist, it will be created.
 type
-~~~~
-
     (optional) may indicate one of the following values:
+        TYPE=REPLACE
+            indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values.
 
-TYPE=REPLACE
-~~~~~~~~~~~~
+1.23.21. COPY$ INPUT-FILE-TO-VARIABLE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    indicates that the new value will replace the existing value of the
-    variable. If TYPE=REPLACE is not specified, and the variable already
-    exists, the new value will be appended to any existing values.
+Copies the contents of a file into a VIRTEL variable. This instruction can be used in an input scenario which processes an HTTP request or SMTP input message having one or more attached files.
 
-    Copies the contents of a file into a VIRTEL variable. This
-    instruction can be used in an input scenario which processes an HTTP
-    request or SMTP input message having one or more attached files.
+::
+
+    COPY$ INPUT-FILE-TO-VARIABLE,VAR='varname',FILE='filename'
 
 varname
-~~~~~~~
-
-    the name of a VIRTEL table variable. If the variable does not exist,
-    it will be created. If the variable already exists, the new value
-    will be appended to any existing values. If this parameter is
-    omitted, the variable name $INFILE$ is used.
-
+    the name of a VIRTEL table variable. If the variable does not exist, it will be created. If the variable already exists, the new value will be appended to any existing values. If this parameter is omitted, the variable name $INFILE$ is used.
 filename
-~~~~~~~~
+    the name of a file attached to the HTTP request or SMTP message. If this parameter is omitted, the first attached file will be read.
 
-    the name of a file attached to the HTTP request or SMTP message. If
-    this parameter is omitted, the first attached file will be read.
+If the input request does not contain the requested file, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$ instruction”, page 177.
 
-    If the input request does not contain the requested file, the
-    NOT-FOUND condition will be raised. This condition can be tested by
-    means of the `“IF$ instruction”, page 177 <#_bookmark215>`__.
+1.23.22. COPY$ INPUT-TO-SCREEN
 
-    Copies the value of an HTTP query parameter to a given position on
-    the 3270 screen.
+Copies the value of an HTTP query parameter to a given position on the 3270 screen.
+
+::
+
+    COPY$ INPUT-TO-SCREEN,FIELD='name1',SCREEN=(row,col,len),TYPE=type
 
 name1
-~~~~~
-
-    the name of an HTTP query parameter (se`e “VIRTEL URL formats”, page
-    11 <#_bookmark8>`__)
-
+    the name of an HTTP query parameter (see “VIRTEL URL formats”, page 11)
 row,col,len
-~~~~~~~~~~~
-
     row, column, and length of the destination field on the screen.
-
 type
-~~~~
-
     (optional) may indicate one of the following values:
+        TYPE=ERASE-FIELD
+            indicates that the destination field is cleared to nulls before copying the data.
 
-TYPE=ERASE-FIELD
-~~~~~~~~~~~~~~~~
+If the parameter name1 is not present in the input request, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$”, page 177 instruction.
 
-    indicates that the destination field is cleared to nulls before
-    copying the data.
+If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the input value is too long for the field, the data will be silently truncated.
 
-    If the parameter name1 is not present in the input request, the
-    NOT-FOUND condition will be raised. This condition can be tested by
-    means of the `“IF$”, page 177 <#_bookmark215>`__ instruction.
+1.23.23. COPY$ INPUT-TO-VARIABLE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    If the destination row and column specify a protected field of the
-    3270 screen, the scenario terminates abnormally and message VIRS129E
-    is issued to the system console. If the destination field is
-    unprotected but the input value is too long for the field, the data
-    will be silently truncated.
+Copies the value of an HTTP query parameter into a VIRTEL variable.
 
-    Copies the value of an HTTP query parameter into a VIRTEL variable.
+::
+
+    COPY$ INPUT-TO-VARIABLE,FIELD='name1',VAR='name2',TYPE=type
 
 name1
-~~~~~
-
-    the name of an HTTP query parameter (se`e “VIRTEL URL formats”, page
-    11 <#_bookmark8>`__)
-
+    the name of an HTTP query parameter (see “VIRTEL URL formats”, page 11)
 name2
-~~~~~
-
-    the name of a VIRTEL table variable. If the variable does not exist,
-    it will be created.
-
+    the name of a VIRTEL table variable. If the variable does not exist, it will be created.
 type
-~~~~
-
     (optional) may indicate one of the following values:
+        TYPE-OFFSET-LENGTH
+            indicates that the input parameter consists of two numeric values separated by a comma. The first numeric value is converted to binary and stored in the first 8 bytes of the result variable, and the second numeric value is converted to binary and stored in the next 4 bytes of the result variable. The 12-byte value thus produced is in the format required by the OFFAREA parameter for the read-partial and write-append functions of the VIRSVFIO service program.
+        TYPE=REPLACE
+            indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values. If the parameter name1 is not present in the input request, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$”, page 177 instruction.
 
-TYPE-OFFSET-LENGTH
-~~~~~~~~~~~~~~~~~~
+1.23.24. COPY$ LIST-TO-VARIABLE
 
-    indicates that the input parameter consists of two numeric values
-    separated by a comma. The first numeric value is converted to binary
-    and stored in the first 8 bytes of the result variable, and the
-    second numeric value is converted to binary and stored in the next 4
-    bytes of the result variable. The 12-byte value thus produced is in
-    the format required by the OFFAREA parameter for the read-partial
-    and write-append functions of the VIRSVFIO service program.
+Copies a a list of values (either constants or variables) to a variable.
 
-TYPE=REPLACE
-~~~~~~~~~~~~
+::
 
-    indicates that the new value will replace the existing value of the
-    variable. If TYPE=REPLACE is not specified, and the variable already
-    exists, the new value will be appended to any existing values.
-
-    If the parameter name1 is not present in the input request, the
-    NOT-FOUND condition will be raised. This condition can be tested by
-    means of the `“IF$”, page 177 <#_bookmark215>`__ instruction.
-
-    Copies a a list of values (either constants or variables) to a
-    variable.
+    COPY$ LIST-TO-VARIABLE,VAR='varname',
+        LIST=(STRING,'string',VARIABLE,'fromvar','string','*fromvar'),
+        LTRIM=('string1','string2',...),
+        RTRIM=('string1','string2',...),
+        TYPE=type
 
 varname
-~~~~~~~
-
-    the name of a VIRTEL table variable. If the variable does not exist,
-    it will be created.
-
+    the name of a VIRTEL table variable. If the variable does not exist, it will be created.
 string
-~~~~~~
-
     characters to be copied into the variable varname.
 
 fromvar
-~~~~~~~
-
-    the name of a variable whose value is to be copied into the variable
-    varname.
-
+    the name of a variable whose value is to be copied into the variable varname.
 LTRIM
-~~~~~
-
-    (optional) Removes a set of characters from the start of a list
-    variable (see Note) before copying it).
-
-'string1' [,'string2', …]
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    one or more strings of text to be removed from the start of the
-    variable.
-
+    (optional) Removes a set of characters from the start of a list variable (see Note) before copying it).
+        'string1' [,'string2', …]
+            one or more strings of text to be removed from the start of the variable.
 RTRIM
-~~~~~
-
-    (optional) Removes a set of characters from the end of a list
-    variable (see Note) before copying it.
-
-'string1' [,'string2', …]
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    one or more strings of text to be removed from the endof the
-    variable.
-
+    (optional) Removes a set of characters from the end of a list variable (see Note) before copying it.
+        'string1' [,'string2', …]
+            one or more strings of text to be removed from the endof the variable.
 type
-~~~~
-
     (optional) may indicate one of the following values:
+        TYPE=REPLACE
+            indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values.
 
-TYPE=REPLACE
-~~~~~~~~~~~~
+.. note::
 
-    indicates that the new value will replace the existing value of the
-    variable. If TYPE=REPLACE is not specified, and the variable already
-    exists, the new value will be appended to any existing values.
+    LTRIM and RTRIM only apply to variables. In the following example
 
-    Note: LIM and RTRIM only apply to **variables**. In the following
-    example
+::
 
-    the variable VAR1 is created/modified, with 'string1' copied as is,
-    var1 and var2 left and right trimmed.
+            COPY$ LIST-TO-VARIABLE,VAR='VAR1', *
+            RTRIM=('_',' '),LTRIM=('_',' '), *
+            LIST=('string1','*var1',VARIABLE,'var2')
 
-    Generates an output page from a page template, and copies the result
-    into a VIRTEL variable. Any VIRTEL tags within the page template are
-    processed as if the page were being generated as the response to an
-    HTTP request, but the generated page is placed in a variable instead
-    of being sent to the terminal.
+The variable VAR1 is created/modified, with 'string1' copied as is, var1 and var2 left and right trimmed.
+
+1.23.25. COPY$ OUTPUT-FILE-TO-VARIABLE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Generates an output page from a page template, and copies the result into a VIRTEL variable. Any VIRTEL tags withinthe page template are processed as if the page were being generated as the response to an HTTP request, but the generated page is placed in a variable instead of being sent to the terminal.
+
+::
+
+    COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='filename',VAR='varname',
+        TYPE=type
+    COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='*filenameVar',VAR='varname',
+        TYPE=type
 
 filename
-~~~~~~~~
-
     the name of the page template.
-
 \*filenameVar
-~~~~~~~~~~~~~
-
     the name of a VIRTEL variable holding the name of the page template.
-
 varname
-~~~~~~~
-
-    the name of a VIRTEL table variable which will receive the contents
-    of the generated output page. If the variable does not exist, it
-    will be created. If the variable already exists, the new value will
-    be appended to any existing values.
-
+    the name of a VIRTEL table variable which will receive the contents of the generated output page. If the variable does not exist, it will be created. If the variable already exists, the new value will be appended to any existing values.
 type
-~~~~
+    (optional) indicates that the result variable has a special format. The following values are possible:
+        TYPE=ASCII
+            indicates that the result should be converted to ASCII (or UTF-8 if the SET-OUTPUT-ENCODING-UTF-8 tag is present in the page template). This is the default value if the HTTP request is in ASCII.
+        TYPE=EBCDIC
+            indicates that the result should be converted to EBCDIC. This is the default value if the HTTP request is in EBCDIC.
+        TYPE=LINEBUFFER
+            indicates that the result should be converted to MakePDF “LINEBUF” format for input to the VIRSVPDF service program. The page template contains special tags (see “Generating PDF output”, page 62) which are converted to the format required by MakePDF. 
 
-    (optional) indicates that the result variable has a special format.
-    The following values are possible:
+            If the specified file does not exist in the current VIRTEL directory, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$”, page 177 instruction.
 
-TYPE=ASCII
-~~~~~~~~~~
+1.23.26. COPY$ SCREEN-TO-VARIABLE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    indicates that the result should be converted to ASCII (or UTF-8 if
-    the SET-OUTPUT-ENCODING-UTF-8 tag is present in the page template).
-    This is the default value if the HTTP request is in ASCII.
+Copies a portion of the screen into a table variable.
 
-TYPE=EBCDIC
-~~~~~~~~~~~
+::
 
-    indicates that the result should be converted to EBCDIC. This is the
-    default value if the HTTP request is in EBCDIC.
-
-TYPE=LINEBUFFER
-~~~~~~~~~~~~~~~
-
-    indicates that the result should be converted to MakePDF “LINEBUF”
-    format for input to the VIRSVPDF service program. The page template
-    contains special tags (see `“Generating PDF output”, page
-    62 <#_bookmark66>`__) which are converted to the format required by
-    MakePDF.
-
-    If the specified file does not exist in the current VIRTEL
-    directory, the NOT-FOUND condition will be raised. This condition
-    can be tested by means of the `“IF$”, page 177 <#_bookmark215>`__
-    instruction.
-
-    Copies a portion of the screen into a table variable.
+    COPY$ SCREEN-TO-VARIABLE,SCREEN=(row,col,len,ht),VAR='name2',TYPE=type
 
 row
-~~~
-
     starting row of the portion of the screen to copy (see Note 1).
-
 col
-~~~
-
     starting column of the portion of the screen to copy (see Note 1).
-
 len
-~~~
-
-    width (in columns) of the portion of the screen to copy (see Note
-    1).
-
+    width (in columns) of the portion of the screen to copy (see Note 1).
 ht
-~~
-
     height (in rows) of the portion of the screen to copy (see Note 2).
-
 name2
-~~~~~
-
-    the name of a VIRTEL table variable containing ht values, each of
-    length len. If the variable does not exist, it will be created.
-
+    the name of a VIRTEL table variable containing ht values, each of length len. If the variable does not exist, it will be created.
 type
-~~~~
-
     (optional) may indicate one of the following values:
+        TYPE=REPLACE
+            indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values.
 
-TYPE=REPLACE
-~~~~~~~~~~~~
+.. note::      
 
-    indicates that the new value will replace the existing value of the
-    variable. If TYPE=REPLACE is not specified, and the variable already
-    exists, the new value will be appended to any existing values.
+    Note 1: for row, col and len, a value of '=' means the value of the current row, col or len as set by “SET$ SCREENPOSITION”, page 201
 
-    Note 1: for row, col and len, a value of '=' means the value of the
-    current row, col or len as set by `“SET$ SCREEN- <#_bookmark252>`__
-    `POSITION”, page 201 <#_bookmark252>`__
+    Note 2: the fourth sub-parameter (ht) of the SCREEN parameter is optional. If the fourth sub-parameter is specified, then attributes and binary zeroes will be replaced by blanks. To keep compatibility with existing scenarios, the instruction will ignore attributes and binary zeroes if the fourth SCREEN sub-parameter is NOT specified.
 
-    Note 2: the fourth sub-parameter (ht) of the SCREEN parameter is
-    optional. If the fourth sub-parameter is specified, then attributes
-    and binary zeroes will be replaced by blanks. To keep compatibility
-    with existing scenarios, the instruction will ignore attributes and
-    binary zeroes if the fourth SCREEN sub-parameter is NOT specified.
+1.23.27. COPY$ SYSTEM-TO-VARIABLE
 
-    Copies a system information field into a table variable.
+Copies a system information field into a table variable.
+
+::
+
+
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(class,item),
+    VAR='varname',LENGTH=len,OFFSET=offset,
+    TYPE=type
 
 varname
-~~~~~~~
-
-    the name of a VIRTEL table variable into which the system
-    information will be copied.
-
+    the name of a VIRTEL table variable into which the system information will be copied.
 class
-~~~~~
-
-    the type of system information to be copied. The following values
-    may be specified for class:
-
+    the type of system information to be copied. The following values may be specified for class:
 HTTP-HEADER
-~~~~~~~~~~~
-
-    Information extracted from an HTTP header in the incoming HTTP
-    request is copied into the specified variable. When HTTP-HEADER is
-    specified, item represents one of the HTTP headers listed below.
-
+    Information extracted from an HTTP header in the incoming HTTP request is copied into the specified variable. When HTTP-HEADER is specified, item represents one of the HTTP headers listed below.
 TCT-HTTP-HEADER
-~~~~~~~~~~~~~~~
-
-    Information extracted from an HTTP header in the incoming HTTP
-    request is copied into the specified variable. When TCT-HTTP-HEADER
-    is specified, item represents one of the HTTP headers specified in
-    the HTHEADR parameter in the VIRTCT (refer to “Parameters of the
-    VIRTCT” in the VIRTEL Installation Guide for more information).
-
+    Information extracted from an HTTP header in the incoming HTTP request is copied into the specified variable. When TCT-HTTP-HEADER is specified, item represents one of the HTTP headers specified in the HTHEADR parameter in the VIRTCT (refer to “Parameters of the VIRTCT” in the VIRTEL Installation Guide for more information).
 NAME-OF
-~~~~~~~
-
-    Information about the VIRTEL environment is copied to the table
-    variable. When NAME-OF is specified, item represents the name of a
-    VIRTEL data item.
-
+    Information about the VIRTEL environment is copied to the table variable. When NAME-OF is specified, item represents the name of a VIRTEL data item.
 NUMBER-OF
-~~~~~~~~~
-
-    A numeric value is copied to the table variable. When NUMBER-OF is
-    specified, item represents the name of a VIRTEL numeric data item.
-
+    A numeric value is copied to the table variable. When NUMBER-OF is specified, item represents the name of a VIRTEL numeric data item.
 VALUE-OF
-~~~~~~~~
-
-    Information about the VIRTEL environment is copied to the table
-    variable. When VALUE-OF is specified, item represents the name of a
-    VIRTEL data item. VALUE-OF is synonymous with NAME-OF.
-
+    Information about the VIRTEL environment is copied to the table variable. When VALUE-OF is specified, item represents the name of a VIRTEL data item. VALUE-OF is synonymous with NAME-OF.
 USER-SECURITY-PROFILE
-~~~~~~~~~~~~~~~~~~~~~
-
-    Information from the user’s RACF profile is copied to the table
-    variable. When USER-SECURITY-PROFILE is specified, item represents
-    the name of a field in the RACF user profile. The supported fields
-    are listed below.
-
+    Information from the user’s RACF profile is copied to the table variable. When USER-SECURITY-PROFILE is specified, item represents the name of a field in the RACF user profile. The supported fields are listed below.
 NEW-PASSTICKET-FOR-TRANSACTION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Generate a PassTicket allowing the current USERID.
-
-    If the generation fails, the NOT-FOUND condition will be raised.
-    This condition can be tested by means of the
-    `“IF$”, <#_bookmark215>`__ `page 177 <#_bookmark215>`__ instruction.
+    Generate a PassTicket allowing the current USERID. If the generation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$”, page 177 instruction.
 
 item
-~~~~
+    When class is HTTP-HEADER, the following standard HTTP headers, described in RFC2616, may be specified:
 
-    When class is HTTP-HEADER, the following standard HTTP headers,
-    described in RFC2616, may be specified:
+- ACCEPT
+- ACCEPT-LANGUAGE
+- CONNECTION
+- CONTENT-TYPE
+- IF-MODIFIED-SINCE
+- HOST
+- USER-AGENT
 
--  ACCEPT
+In addition, the following non-standard HTTP headers, described in the IBM Tivoli Access Manager WebSEAL
+Administration Guide manual, may be specified:
 
--  ACCEPT-LANGUAGE
+- IV-USER
+- IV-USERL
+- IV-GROUPS
+- IV-CREDS
 
--  CONNECTION
+.. note::
 
--  CONTENT-TYPE
-
--  IF-MODIFIED-SINCE
-
--  HOST
-
--  USER-AGENT
-
-    In addition, the following non-standard HTTP headers, described in
-    the IBM Tivoli Access Manager WebSEAL Administration Guide manual,
-    may be specified:
-
--  IV-USER
-
--  IV-USERL
-
--  IV-GROUPS
-
--  IV-CREDS
-
-    Note that IV headers provide reliable user identification only when
-    the request comes from a trusted proxy. The proxy IP address can be
-    specified in the “Calling DTE” field of a rule attached to the HTTP
-    line. See the “Rules” chapter of the VIRTEL Configuration Reference
-    manual for further information.
+    IV headers provide reliable user identification only when the request comes from a trusted proxy. The proxy IP address can be specified in the “Calling DTE” field of a rule attached to the HTTP line. See the “Rules” chapter of the VIRTEL Configuration Reference manual for further information.
 
 item
-~~~~
-
-    When class is NAME-OF or VALUE-OF, the following VIRTEL data items
-    may be specified:
-
-CHARACTER-SET
-~~~~~~~~~~~~~
-
-    The name of the current UTF-8 character set, or the country code if
-    the page is not in UTF-8 mode (see `“EBCDIC <#_bookmark54>`__
-    `translation management”, page 56 <#_bookmark54>`__)
-
-CURRENT-FOREACH-INDEX
-~~~~~~~~~~~~~~~~~~~~~
-
-    Value of the current index in a FOREACH loop.
-
-CURRENT-FOREACH-VARIABLE
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Value of the variable at current index in a FOREACH loop (se`e
-    “FOREACH$ VALUE-IN-VARIABLE”, page 176 <#_bookmark210>`__).
-
-CURRENT-LINE CURRENT-COLUMN CURRENT-LENGTH CURRENT-HEIGHT
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    The current values of the named field in the `“SET$
-    SCREEN-POSITION”, page 201 <#_bookmark252>`__.
-
-DATE-TIME
-~~~~~~~~~
-
-    The current date and time (14 characters in the format
-    YYYYMMDDHHMMSS)
-
-DIRECTORY
-~~~~~~~~~
-
-    The current VIRTEL directory name
-
-ENTRY-POINT
-~~~~~~~~~~~
-
-    The VIRTEL entry point name
-
-LINE-INTERNAL
-~~~~~~~~~~~~~
-
-    The internal name of the VIRTEL line
-
-LINE-EXTERNAL
-~~~~~~~~~~~~~
-
-    The external name of the VIRTEL line
-
-PAGE
-~~~~
-
-    The name of the original HTML page template specified in the URL
-
-PASSWORD
-~~~~~~~~
-
-    The password entered during signon
-
-PRINT-RELAY
-~~~~~~~~~~~
-
-    The relay LU name of the associated printer
-
-PSEUDO-TERMINAL
-~~~~~~~~~~~~~~~
-
-    The VIRTEL terminal name
-
-QUERY
-~~~~~
-
-    The query string from the URL
-
-RELAY
-~~~~~
-
-    The relay LU name used to connect to the host application
-
-ROUTING-PARAMETER
-~~~~~~~~~~~~~~~~~
-
-    The value specified in the userdata field of the URL or call packet
-
-SNA-STATUS
-~~~~~~~~~~
-
-    The status of the host LU2 session:
-
-X
-~
-
-    input is inhibited
-
-blank
-~~~~~
-
-input is allowed
-
-TRANSACTION-INTERNAL
-~~~~~~~~~~~~~~~~~~~~
-
-    The internal name of the VIRTEL transaction
-
-TRANSACTION-EXTERNAL
-~~~~~~~~~~~~~~~~~~~~
-
-    The external name of the VIRTEL transaction
-
-URL
-~~~
-
-    The URL excluding the query string
-
-USER
-~~~~
-
-    The user name, if signon has occurred
-
-USER-IP-ADDRESS
-~~~~~~~~~~~~~~~
-
-    The IP address of the client terminal
-
-VIRTEL
-~~~~~~
-
-    The VIRTEL APPLID specified in the VIRTCT
-
-VIRTEL-VERSION
-~~~~~~~~~~~~~~
-
-    The VIRTEL version number
-
-xxx-SYMBOL
-~~~~~~~~~~
-
-    The value of the system symbol xxx (only if SYSPLUS=YES is specified
-    in the VIRTCT). Example: SYSNAME-SYMBOL
-
-item
-~~~~
-
-    When class is NUMBER-OF, the following VIRTEL numeric data items may
-    be specified:
-
-SCREEN-COLUMNS
-~~~~~~~~~~~~~~
-
-    The width of the current host 3270 screen
-
-SCREEN-LINES
-~~~~~~~~~~~~
-
-    The depth of the current host 3270 screen
-
-item
-~~~~
-
-    When class is USER-SECURITY-PROFILE, the following RACF field names
-    may be specified:
-
-USERID
-~~~~~~
-
-    The signed-on user id
-
-GROUP
-~~~~~
-
-    The group to which the user belongs
-
-WANAME
-~~~~~~
-
-    User name for SYSOUT
-
-WABLDG
-~~~~~~
-
-    Building name for delivery
-
-WADEPT
-~~~~~~
-
-    Department name for delivery
-
-WAROOM
-~~~~~~
-
-    Room for delivery
-
-WAADDR1
-~~~~~~~
-
-    Address line 1
-
-WAADDR2
-~~~~~~~
-
-    Address line 2
-
-WAADDR3
-~~~~~~~
-
-    Address line 3
-
-WAADDR4
-~~~~~~~
-
-    Address line 4
-
-WAACCNT
-~~~~~~~
-
-    Account number
-
-    Note: USER-SECURITY-PROFILE information is available only if the
-    user has signed on and SECUR=(RACROUTE,RACF) has been specified in
-    the VIRTCT. Otherwise null values are returned for all fields.
-
+    When class is NAME-OF or VALUE-OF, the following VIRTEL data items may be specified:
+        CHARACTER-SET
+            The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see “EBCDIC translation management”, page 56)
+        CURRENT-FOREACH-INDEX
+            Value of the current index in a FOREACH loop.
+        CURRENT-FOREACH-VARIABLE
+            Value of the variable at current index in a FOREACH loop (see “FOREACH$ VALUE-IN-VARIABLE”, page 176).
+
+        CURRENT-LINE
+
+        CURRENT-COLUMN
+
+        CURRENT-LENGTH
+
+        CURRENT-HEIGHT
+            The current values of the named field in the “SET$ SCREEN-POSITION”, page 201.
+        DATE-TIME
+            The current date and time (14 characters in the format YYYYMMDDHHMMSS)
+        DIRECTORY
+            The current VIRTEL directory name
+        ENTRY-POINT
+            The VIRTEL entry point name
+        LINE-INTERNAL
+            The internal name of the VIRTEL line
+        LINE-EXTERNAL
+            The external name of the VIRTEL line
+        PAGE
+            The name of the original HTML page template specified in the URL
+        PASSWORD
+            The password entered during signon
+        PRINT-RELAY
+            The relay LU name of the associated printer
+        PSEUDO-TERMINAL
+            The VIRTEL terminal name
+        QUERY
+            The query string from the URL
+        RELAY
+            The relay LU name used to connect to the host application
+        ROUTING-PARAMETER
+            The value specified in the userdata field of the URL or call packet
+        SNA-STATUS
+            The status of the host LU2 session:
+                X
+                    input is inhibited
+                blank
+                    input is allowed
+        TRANSACTION-INTERNAL
+            The internal name of the VIRTEL transaction
+        TRANSACTION-EXTERNAL
+            The external name of the VIRTEL transaction
+        URL
+            The URL excluding the query string
+        USER
+            The user name, if signon has occurred
+        USER-IP-ADDRESS
+            The IP address of the client terminal
+        VIRTEL
+            The VIRTEL APPLID specified in the VIRTCT
+        VIRTEL-VERSION
+            The VIRTEL version number
+        xxx-SYMBOL
+            The value of the system symbol xxx (only if SYSPLUS=YES is specified in the VIRTCT). Example: SYSNAME-SYMBOL 
+    item
+        When class is NUMBER-OF, the following VIRTEL numeric data items may be specified:
+            SCREEN-COLUMNS
+                The width of the current host 3270 screen
+            SCREEN-LINES
+                The depth of the current host 3270 screen
+    item
+        When class is USER-SECURITY-PROFILE, the following RACF field names may be specified:
+            USERID
+                The signed-on user id
+            GROUP
+                The group to which the user belongs
+            WANAME
+                User name for SYSOUT
+            WABLDG
+                Building name for delivery
+            WADEPT
+                Department name for delivery
+            WAROOM
+                Room for delivery
+            WAADDR1
+                Address line 1
+            WAADDR2
+                Address line 2
+            WAADDR3
+                Address line 3
+            WAADDR4
+                Address line 4
+            WAACCNT
+                Account number
+
+.. note::
+
+    USER-SECURITY-PROFILE information is available only if the user has signed on and SECUR=(RACROUTE,RACF) has been specified in the VIRTCT. Otherwise null values are returned for all fields.
+ 
 len
-~~~
-
-    (optional) the variable will be padded or truncated to the specified
-    length. Alphanumeric data items are right-padded with blanks or
-    truncated on the right. Numeric items are left-padded with zeroes on
-    the left. The maximum length for a numeric item is 8. If the LENGTH
-    parameter is omitted, the length of the variable will be equal to
-    the length of the requested value.
-
+    (optional) the variable will be padded or truncated to the specified length. Alphanumeric data items are right-padded with blanks or truncated on the right. Numeric items are left-padded with zeroes on the left. The maximum length for a numeric item is 8. If the LENGTH parameter is omitted, the length of the variable will be equal to the length of the requested value.
 item
-~~~~
-
-    (optional) the variable will be padded or truncated to the specified
-    length. Alphanumeric data items are right-padded with blanks or
-    truncated on the right. Numeric items are left-padded with zeroes on
-    the left. The maximum length for a numeric item is 8. If the LENGTH
-    parameter is omitted, the length of the variable will be equal to
-    the length of the requested value.
-
+    (optional) the variable will be padded or truncated to the specified length. Alphanumeric data items are right-padded with blanks or truncated on the right. Numeric items are left-padded with zeroes on the left. The maximum length for a numeric item is 8. If the LENGTH parameter is omitted, the length of the variable will be equal to the length of the requested value.
 offset
-~~~~~~
-
-    (optional) the starting offset within the data item from which to
-    extract the information to be placed in the variable. If omitted,
-    extraction starts from offset 0. This parameter is valid only when
-    class is USER-SECURITY-PROFILE.
-
+    (optional) the starting offset within the data item from which to extract the information to be placed in the variable. If omitted, extraction starts from offset 0. This parameter is valid only when class is USER-SECURITY-PROFILE.
 type
-~~~~
-
     (optional) may indicate one of the following values:
+        TYPE=REPLACE
+            indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values.
 
-TYPE=REPLACE
-~~~~~~~~~~~~
+Example of COPY$ SYSTEM-TO-VARIABLE:
 
-    indicates that the new value will replace the existing value of the
-    variable. If TYPE=REPLACE is not specified, and the variable already
-    exists, the new value will be appended to any existing values.
+::
 
-    Example of COPY$ SYSTEM-TO-VARIABLE:
 
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,HOST), X VAR='HOST'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,HOST),             X
+        VAR='HOST'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,USER-AGENT),       X
+        VAR='BROWSER'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,VIRTEL),               X
+        VAR='APPLID'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,LINE-INTERNAL),        X
+        VAR='LINEINT'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PSEUDO-TERMINAL),      X
+        VAR='TERMID'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,RELAY),                X
+        VAR='LUNAME'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ENTRY-POINT),          X
+        VAR='EPNAME'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-INTERNAL), X
+        VAR='TRANINT'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-EXTERNAL), X
+        VAR='TRANEXT'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ROUTING-PARAMETER),    X
+        VAR='ROUTPARM'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,URL),                  X
+        VAR='URL'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,QUERY),                X
+        VAR='QSTRING'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PAGE),                 X
+        VAR='PAGENAME'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,DIRECTORY),            X
+        VAR='DIRNAME'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,SNA-STATUS),           X
+        VAR='SNASTAT'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,USER-IP-ADDRESS),      X
+        VAR='CLIENT'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,CHARACTER-SET),        X
+        VAR='CHARSET'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,DATE-TIME),           X
+        VAR='DATETIME'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,VIRTEL-VERSION),      X
+        VAR='VERSION'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSNAME-SYMBOL),      X
+        VAR='SYSNAME'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSPLEX-SYMBOL),      X
+        VAR='SYSPLEX'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-COLUMNS),     X
+        VAR='COLS'
+    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-LINES),       X
+        VAR='ROWS'
+    COPY$ SYSTEM-TO-VARIABLE,                                      X
+        FIELD=(USER-SECURITY-PROFILE,WADEPT),                      X
+        VAR='DEPT’
 
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(HTTP-HEADER,USER-AGENT), X
-    VAR='BROWSER'
+The following table shows a possible result of this example scenario when used in conjunction with the URL:-
 
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,VIRTEL), X VAR='APPLID'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,LINE-INTERNAL), X
-    VAR='LINEINT'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PSEUDO-TERMINAL), X
-    VAR='TERMID'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,RELAY), X VAR='LUNAME'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ENTRY-POINT), X VAR='EPNAME'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-INTERNAL),X
-    VAR='TRANINT'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,TRANSACTION-EXTERNAL),X
-    VAR='TRANEXT'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,ROUTING-PARAMETER), X
-    VAR='ROUTPARM'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,URL), X VAR='URL'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,QUERY), X VAR='QSTRING'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PAGE), X VAR='PAGENAME'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,DIRECTORY), X VAR='DIRNAME'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,SNA-STATUS), X VAR='SNASTAT'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,USER-IP-ADDRESS), X
-    VAR='CLIENT'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,CHARACTER-SET), X
-    VAR='CHARSET'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,DATE-TIME), X
-    VAR='DATETIME'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,VIRTEL-VERSION), X
-    VAR='VERSION'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSNAME-SYMBOL), X
-    VAR='SYSNAME'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(VALUE-OF,SYSPLEX-SYMBOL), X
-    VAR='SYSPLEX'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-COLUMNS), X
-    VAR='COLS'
-
-    COPY$ SYSTEM-TO-VARIABLE,FIELD=(NUMBER-OF,SCREEN-LINES), X
-    VAR='ROWS'
-
-    COPY$ SYSTEM-TO-VARIABLE, X
-
-    FIELD=(USER-SECURITY-PROFILE,WADEPT), X VAR='DEPT’
-
-    The following table shows a possible result of this example scenario
-    when used in conjunction with the URL
+::
 
     http://192.168.235.30:41001/w2h/WEB2AJAX.htm+Tso+model2?u=rxb&g=sys1
 
-+----+----+
-+----+----+
-+----+----+
++-------------+--------------------------------------------------------+
+| Variable    + Value                                                  |
++=============+========================================================+
+| HOST        | "192.168.235.30:41001"                                 |
++-------------+--------------------------------------------------------+
+| BROWSER     | "Mozilla/5.0 (Windows) Gecko/20070219 Firefox/2.0.0.2" |
++-------------+--------------------------------------------------------+
+| APPLID      | "VIRTEL"                                               |
++-------------+--------------------------------------------------------+
+| LINEINT     | "W-HTTP"                                               |
++-------------+--------------------------------------------------------+
+| TERMID      | "DEVTA003"                                             |
++-------------+--------------------------------------------------------+
+| LUNAME      | "RHTVT000"                                             |
++-------------+--------------------------------------------------------+
+| EPNAME      | "WEB2HOST"                                             |
++-------------+--------------------------------------------------------+
+| TRANINT     | "W2H-13"                                               |
++-------------+--------------------------------------------------------+
+| TRANEXT     | "Tso"                                                  |
++-------------+--------------------------------------------------------+
+| ROUTPARM    | "model2"                                               | 
++-------------+--------------------------------------------------------+
+| URL         | "/w2h/WEB2AJAX.htm+Tso+model2"                         |
++-------------+--------------------------------------------------------+
+| QSTRING     | "u=rxb&g=sys1"                                         |
++-------------+--------------------------------------------------------+
+| PAGENAME    | "WEB2AJAX.htm"                                         |
++-------------+--------------------------------------------------------+
+| DIRNAME     | "W2H-DIR"                                              | 
++-------------+--------------------------------------------------------+
+| SNASTAT     | " "                                                    |
++-------------+--------------------------------------------------------+
+| CLIENT      | "192.168.000.049"                                      |
++-------------+--------------------------------------------------------+
+| CHARSET     | "IBM1140"                                              |
++-------------+--------------------------------------------------------+
+| DATETIME    | "20110731093522"                                       |
++-------------+--------------------------------------------------------+
+| VERSION     | "4.56 "                                                |
++-------------+--------------------------------------------------------+
+| SYSNAME     | "MVSPROD1"                                             |
++-------------+--------------------------------------------------------+
+| SYSPLEX     | "PRODPLEX"                                             |
++-------------+--------------------------------------------------------+
+| COLS        | "80"                                                   |
++-------------+--------------------------------------------------------+
+| ROWS        | "24"                                                   |
++-------------+--------------------------------------------------------+
+| DEPT        | "SYSPROG"                                              |
++-------------+--------------------------------------------------------+
 
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
-+----+----+
+1.23.28. COPY$ VALUE-TO-SCREEN
 
-    Copies a constant value to a given position on the 3270 screen.
+Copies a constant value to a given position on the 3270 screen.
+
+::
+
+    COPY$ VALUE-TO-SCREEN,VALUE='string',SCREEN=(row,col,len),TYPE=type
 
 string
-~~~~~~
-
     characters to be copied to the screen.
-
 row,col,len
-~~~~~~~~~~~
-
     row, column, and length of the destination field on the screen.
-
 type
-~~~~
-
     (optional) may indicate one of the following values:
+        TYPE=ERASE-FIELD
+            indicates that the destination field is cleared to nulls before copying the data.
 
-TYPE=ERASE-FIELD
-~~~~~~~~~~~~~~~~
+If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the string is too long for the field, the string will be silently truncated.
 
-    indicates that the destination field is cleared to nulls before
-    copying the data.
-
-    If the destination row and column specify a protected field of the
-    3270 screen, the scenario terminates abnormally and message VIRS129E
-    is issued to the system console. If the destination field is
-    unprotected but the string is too long for the field, the string
-    will be silently truncated.
-
-    Copies a constant value to a variable.
-
+1.23.29. COPY$ VALUE-TO-VARIABLE
+Copies a constant value to a variable.
+COPY$ VALUE-TO-VARIABLE,VALUE='string',VAR='name2',
+TYPE=type
 string
-~~~~~~
-
-    characters to be copied into the variable name2.
-
+characters to be copied into the variable name2.
 name2
-~~~~~
-
-    the name of a VIRTEL table variable. If the variable does not exist,
-    it will be created.
-
+the name of a VIRTEL table variable. If the variable does not exist, it will be created.
 type
-~~~~
-
-    (optional) may indicate one of the following values:
-
+(optional) may indicate one of the following values:
 TYPE=REPLACE
-~~~~~~~~~~~~
-
-    indicates that the new value will replace the existing value of the
-    variable. If TYPE=REPLACE is not specified, and the variable already
-    exists, the new value will be appended to any existing values.
-
-    The COPY$ VALUE-TO-VARIABLE instruction allows the DUP (X'1C') and
-    FM (X'1E') characters to be included in the value of a variable
-    which can subsequently be referenced by the COPY$ VARIABLE-TO-SCREEN
-    instruction.
-
-    The following example shows the instructions required to place FIELD
-    MARK (X'1E') followed by W (X'E6') at the cursor position and press
-    ENTER:
-
-    Copies the value of a variable to a given position on the 3270
-    screen. In the case of a table variable, only the first value is
-    copied.
-
+indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and
+the variable already exists, the new value will be appended to any existing values.
+The COPY$ VALUE-TO-VARIABLE instruction allows the DUP (X'1C') and FM (X'1E') characters to be included in the
+value of a variable which can subsequently be referenced by the COPY$ VARIABLE-TO-SCREEN instruction.
+The following example shows the instructions required to place FIELD MARK (X'1E') followed by W (X'E6') at the cursor
+position and press ENTER:
+COPY$ VALUE-TO-VARIABLE,VAR='FIELDMARK-W',TYPE=REPLACE, *
+VALUE=X'1EE6'
+COPY$ VARIABLE-TO-SCREEN,VAR='FIELDMARK-W’
+ACTION$ TO-APPLICATION,KEY=7D
+1.23.30. COPY$ VARIABLE-TO-SCREEN
+Copies the value of a variable to a given position on the 3270 screen. In the case of a table variable, only the first value
+is copied.
+COPY$ VARIABLE-TO-SCREEN,VAR='name2',SCREEN=(row,col,len),
+TYPE=type
 name2
-~~~~~
-
-    the name of a VIRTEL variable.
-
+the name of a VIRTEL variable.
 row,col,len
-~~~~~~~~~~~
-
-    row, column, and length of the destination field on the screen. If
-    the SCREEN parameter is not specified, the variable will be copied
-    to the current cursor position.
-
-    for row, col and len, a value of '=' means the value of the current
-    row, col or len as set by `“SET$
-    SCREEN-POSITION”, <#_bookmark252>`__ `page 201 <#_bookmark252>`__.
-
+row, column, and length of the destination field on the screen. If the SCREEN parameter is not specified, the variable
+will be copied to the current cursor position.
+for row, col and len, a value of '=' means the value of the current row, col or len as set by “SET$ SCREEN-POSITION”,
+page 201.
 type
-~~~~
-
-    (optional) may indicate one of the following values:
-
+(optional) may indicate one of the following values:
+1. Incoming calls
+167
 TYPE=ERASE-FIELD
-~~~~~~~~~~~~~~~~
-
-    indicates that the destination field is cleared to nulls before
-    copying the data.
-
-    If the variable name2 does not exist, the NOT-FOUND condition will
-    be raised. This condition can be tested by means of th\ `e “IF$”,
-    page 177 <#_bookmark215>`__ instruction.
-
-    If the destination row and column specify a protected field of the
-    3270 screen, the scenario terminates abnormally and message VIRS129E
-    is issued to the system console. If the destination field is
-    unprotected but the variable value is too long for the field, the
-    data will be silently truncated.
-
-    Copies the value of a variable to a VIRTEL system field. In the case
-    of a table variable, only the first value is copied.
-
+indicates that the destination field is cleared to nulls before copying the data.
+If the variable name2 does not exist, the NOT-FOUND condition will be raised. This condition can be tested by means
+of the “IF$”, page 177 instruction.
+If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and
+message VIRS129E is issued to the system console. If the destination field is unprotected but the variable value is too
+long for the field, the data will be silently truncated.
+1.23.31. COPY$ VARIABLE-TO-SYSTEM
+Copies the value of a variable to a VIRTEL system field. In the case of a table variable, only the first value is copied.
+COPY$ VARIABLE-TO-SYSTEM,VAR='varname',FIELD=(class,item)
 varname
-~~~~~~~
-
-    the name of a VIRTEL variable.
-
+the name of a VIRTEL variable.
 class
-~~~~~
-
-    identifies the type of VIRTEL system field to be updated. The
-    following values may be specified:
-
+identifies the type of VIRTEL system field to be updated. The following values may be specified:
 NAME-OF
-~~~~~~~
-
-    A VIRTEL data item is to be updated. When NAME-OF is specified, item
-    represents the name of a VIRTEL data item.
-
+A VIRTEL data item is to be updated. When NAME-OF is specified, item represents the name of a VIRTEL data item.
 NUMBER-OF
-~~~~~~~~~
-
-    A VIRTEL data item is to be updated. When NUMBER-OF is specified,
-    item represents the name of a VIRTEL numeric data item.
-
+A VIRTEL data item is to be updated. When NUMBER-OF is specified, item represents the name of a VIRTEL
+numeric data item.
 VALUE-OF
-~~~~~~~~
-
-    A VIRTEL data item is to be updated. When VALUE-OF is specified,
-    item represents the name of a VIRTEL data item. VALUE-OF is
-    synonymous with NAME-OF.
-
+A VIRTEL data item is to be updated. When VALUE-OF is specified, item represents the name of a VIRTEL data item.
+VALUE-OF is synonymous with NAME-OF.
 OLD-PASSTICKET-FOR-TRANSACTION
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Evaluates the Passticket currently in 'varname' for the transaction
-    'item'.
-
-    If the evaluation fails, the NOT-FOUND condition will be raised.
-    This condition can be tested by means of the
-    `“IF$”, <#_bookmark215>`__ `page 177 <#_bookmark215>`__ instruction.
-
+Evaluates the Passticket currently in 'varname' for the transaction 'item'.
+If the evaluation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$”,
+page 177 instruction.
 item
-~~~~
-
-    When class is NAME-OF or VALUE-OF, the following VIRTEL data items
-    may be specified:
-
+When class is NAME-OF or VALUE-OF, the following VIRTEL data items may be specified:
 DIRECTORY
-~~~~~~~~~
-
-    Allows a scenario to specify the name of the VIRTEL directory The
-    user name which will appear in the VIRLOG entry for this
-    transaction.
-
+Allows a scenario to specify the name of the VIRTEL directory The user name which will appear in the VIRLOG
+entry for this transaction.
 USER
-~~~~
-
-    Allows a scenario to specify the user name which will appear in the
-    VIRLOG entry for this transaction and which will become the value of
-    the system variable &U (see “Connection/disconnection scripts” in
-    the VIRTEL Connectivity Guide).
-
+Allows a scenario to specify the user name which will appear in the VIRLOG entry for this transaction and
+which will become the value of the system variable &U (see “Connection/disconnection scripts” in the VIRTEL
+Connectivity Guide).
 PASSWORD
-~~~~~~~~
-
-    Allows a scenario to specify the password which will become the
-    value of the system variable &P (see “Connection/disconnection
-    scripts” in the VIRTEL Connectivity Guide).
-
+Allows a scenario to specify the password which will become the value of the system variable &P (see
+“Connection/disconnection scripts” in the VIRTEL Connectivity Guide).
 LOGMODE
-~~~~~~~
-
-    The name of the logmode to be used for the VTAM session with the
-    host application. The logmode can be set in an Identification
-    Scenario. It overrides the logmode specified in the transaction or
-    terminal definition.
-
+The name of the logmode to be used for the VTAM session with the host application. The logmode can be set in
+an Identification Scenario. It overrides the logmode specified in the transaction or terminal definition.
+1. Incoming calls
+168
 ROUTING-PARAMETER
-~~~~~~~~~~~~~~~~~
-
-    Allows an Identification Scenario to override the value of the
-    routing parameter specified in the userdata field of the URL (se`e
-    “Virtel URL formats”, page 11 <#_bookmark8>`__).
-
-    When class is NUMBER-OF, the following VIRTEL data items may be
-    specified:
-
+Allows an Identification Scenario to override the value of the routing parameter specified in the userdata field of
+the URL (see “Virtel URL formats”, page 11).
+When class is NUMBER-OF, the following VIRTEL data items may be specified:
 SCREEN-COLUMNS
-~~~~~~~~~~~~~~
-
-    The alternate width (number of columns) of the 3270 screen
-
+The alternate width (number of columns) of the 3270 screen
 SCREEN-LINES
-~~~~~~~~~~~~
-
-    The alternate depth (number of rows) of the 3270 screen
-
-    SCREEN-COLUMNS and SCREEN-LINES can be set in an Identification
-    Scenario. These parameters allow the scenario to specify the desired
-    screen size when a dynamic logmode such as D4A32XX3 is used and the
-    host application places the 3270 session in alternate mode using the
-    Erase Write Alternate command. This command has no effect on the
-    primary screen size which is always 24 rows by 80 columns.
-
+The alternate depth (number of rows) of the 3270 screen
+SCREEN-COLUMNS and SCREEN-LINES can be set in an Identification Scenario. These parameters allow the scenario to
+specify the desired screen size when a dynamic logmode such as D4A32XX3 is used and the host application places the
+3270 session in alternate mode using the Erase Write Alternate command. This command has no effect on the primary
+screen size which is always 24 rows by 80 columns.
 item
-~~~~
-
-    When class is OLD-PASSTICKET-FOR-TRANSACTION, the following VIRTEL
-    data item must be specified:
-
+When class is OLD-PASSTICKET-FOR-TRANSACTION, the following VIRTEL data item must be specified:
 TSO
-~~~
-
-    To validate the PassTicket for TSO
-
-    Copies a source variable to a target variable.
-
+To validate the PassTicket for TSO
+1.23.32. COPY$ VARIABLE-TO-VARIABLE
+Copies a source variable to a target variable.
+COPY$ VARIABLE-TO-VARIABLE,VAR=('source','target'),
+OFFSET=offset,LENGTH=lend,PAD='padChar '
+TYPE=type
 source
-~~~~~~
-
-    characters to be copied into the target variable.
-
+characters to be copied into the target variable.
 target
-~~~~~~
-
-    the name of a VIRTEL table variable. If the variable does not exist,
-    it will be created.
-
+the name of a VIRTEL table variable. If the variable does not exist, it will be created.
 offset
-~~~~~~
-
-    (optional) the beginning index (defaulting to 0), inclusive, of the
-    text to copy in source.
-
+(optional) the beginning index (defaulting to 0), inclusive, of the text to copy in source.
 len
-~~~
-
-    (optional) the number of characters to copy.
-
+(optional) the number of characters to copy.
 padChar
-~~~~~~~
-
-    (optional) the character (defaulting to space) to pad target var, if
-    length is longer than the source..
-
+(optional) the character (defaulting to space) to pad target var, if length is longer than the source..
 type
-~~~~
-
-    (optional) indicates that the new value will replace the existing
-    value of the variable. If TYPE=REPLACE is not specified, and the
-    variable already exists, the new value will be appended to any
-    existing values.
-
-    The following example will display 'Target value is : Doe '
-
-    This instruction allows a scenario to activate various debugging
-    functions.
-
+(optional) indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified,
+and the variable already exists, the new value will be appended to any existing values.
+The following example will display 'Target value is : Doe____'
+COPY$ VALUE-TO-VARIABLE,VAR='source',VALUE='John Doe'
+COPY$ VARIABLE-TO-VARIABLE,VAR=('source','target'),OFFSET=5, X
+LENGTH=7,PAD='_'
+ERROR$ 0,'Target value is : ','*target'
+1. Incoming calls
+169
+1.23.33. DEBUG$ instruction
+This instruction allows a scenario to activate various debugging functions.
+DEBUG$ [NO]TRACE,LINE|TERMINAL|SCENARIO,
+WHEN=(TRANSACTION-NAME-STARTS-WITH,'prefix')|ALWAYS
+DEBUG$ SNAP[,TERMINAL],
+WHEN=(TRANSACTION-NAME-STARTS-WITH,'prefix')|ALWAYS
 TRACE,LINE or NOTRACE,LINE
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Starts or stops a trace on the current line. The trace is written to
-    the VIRTRACE file.
-
+Starts or stops a trace on the current line. The trace is written to the VIRTRACE file.
 TRACE,TERMINAL or NOTRACE,TERMINAL
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Starts or stops a trace on the current terminal. The trace is
-    written to the VIRTRACE file.
-
+Starts or stops a trace on the current terminal. The trace is written to the VIRTRACE file.
 TRACE,SCENARIO or NOTRACE,SCENARIO
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    Starts or stops a trace on the scenario. The trace is downloadable
-    by means of the `“CREATE-VARIABLE-IF”, page 52 <#_bookmark48>`__ tag
-    intended for use by Virtel Studio.
-
+Starts or stops a trace on the scenario. The trace is downloadable by means of the “CREATE-VARIABLE-IF”, page 52
+tag intended for use by Virtel Studio.
 SNAP
-~~~~
-
-    Generates a snapshot of the VIRTEL internal trace table in the
-    SYSPRINT file (same as the command F VIRTEL,SNAP). SNAP is described
-    in the “Audit and Performance” chapter of the VIRTEL Messages and
-    Operations Guide.
-
+Generates a snapshot of the VIRTEL internal trace table in the SYSPRINT file (same as the command F VIRTEL,SNAP).
+SNAP is described in the “Audit and Performance” chapter of the VIRTEL Messages and Operations Guide.
 SNAP,TERMINAL
-~~~~~~~~~~~~~
-
-    Generates a snapshot including terminal information (same as the
-    command F VIRTEL,SNAP,T=termid where termid is the current terminal
-    name).
-
+Generates a snapshot including terminal information (same as the command F VIRTEL,SNAP,T=termid where termid
+is the current terminal name).
 WHEN=ALWAYS
-~~~~~~~~~~~
-
-    The DEBUG$ instruction is executed unconditionally. This is the
-    default.
-
+The DEBUG$ instruction is executed unconditionally. This is the default.
 WHEN=(TRANSACTION-NAME-STARTS-WITH,'prefix')
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    The DEBUG$ instruction is executed only if the external name of the
-    transaction being used begins with the characters specified by the
-    string prefix.
-
-    This instruction defines a portion of the screen as a clickable
-    hyperlink. The hyperlink can invoke either a 3270 key (ENTER or
-    PFnn), a JavaScript procedure, or an external URL. The generation of
-    the hyperlink can optionally be conditional on the presence or
-    absence of a particular value at the 3270 screen position. In any
-    case, the hyperlink is generated only if the specified screen
-    position is non-blank.
-
+The DEBUG$ instruction is executed only if the external name of the transaction being used begins with the
+characters specified by the string prefix.
+1.23.34. DECLARE$ instruction
+This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key
+(ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be
+conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is
+generated only if the specified screen position is non-blank.
+DECLARE$ (row,col,len,'value',Condition),P1,P2,P3,TO=P4
 row
-~~~
-
-    Specifies the row position of the hyperlink
-
+Specifies the row position of the hyperlink
 col
-~~~
-
-    Specifies the column position of the hyperlink
-
+Specifies the column position of the hyperlink
 len
-~~~
-
-    Specifies the length of the hyperlink
-
+Specifies the length of the hyperlink
 value
-~~~~~
-
-    Optional, this parameter specifies the value of the data tested at
-    the specified screen position. Must be put in quotes
-
+Optional, this parameter specifies the value of the data tested at the specified screen position. Must be put in quotes
+1. Incoming calls
+170
 Condition
-~~~~~~~~~
-
-    Optional, this parameter determines the type of condition applicable
-    to value
-
+Optional, this parameter determines the type of condition applicable to value
 EQ
-~~
-
-    Equality (value by default).
-
+Equality (value by default).
 NE
-~~
-
-    Inequality.
-
+Inequality.
 P1
-~~
-
-    Specifies the type of processing applicable. The permissible values
-    are:
-
+Specifies the type of processing applicable. The permissible values are:
 AS-PFKEY
-~~~~~~~~
-
-    Indicates that the indicated portion of the screen is to be
-    interpreted as a function key hyperlink. The value of the function
-    key (ENTER, PF1, etc) can be specified by parameter P2. If P2 is not
-    specified, then the data at the indicated screen position is
-    interpreted as the name of the function key. The values allowable as
-    function key names are the same as those fo\ `r “PfkField”, page
-    41 <#_bookmark40>`__)
-
+Indicates that the indicated portion of the screen is to be interpreted as a function key hyperlink. The value of
+the function key (ENTER, PF1, etc) can be specified by parameter P2. If P2 is not specified, then the data at the
+indicated screen position is interpreted as the name of the function key. The values allowable as function key
+names are the same as those for “PfkField”, page 41)
 AS-PARAMETER
-~~~~~~~~~~~~
-
-    Indicates that the indicated portion of the screen is to be treated
-    as a hyperlink which calls a JavaScript function. The data at the
-    indicated screen position is passed as a parameter to the JavaScript
-    function. The name of the JavaScript function is specified in the TO
-    parameter of the $DECLARE instruction. See `“JavaScript
-    functions”, <#_bookmark199>`__ `page 171 <#_bookmark199>`__ for
-    further details.
-
+Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function.
+The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the
+JavaScript function is specified in the TO parameter of the $DECLARE instruction. See “JavaScript functions”,
+page 171 for further details.
 AS-HREF
-~~~~~~~
-
-    Indicates that the indicated portion of the screen is to be treated
-    as a hyperlink which invokes the URL specified in the TO parameter
-    of the $DECLARE instruction. The data at the indicated screen
-    position is appended to the URL, followed by the contents of the P2
-    parameter of the $DECLARE instruction, if specified.
-
+Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in
+the TO parameter of the $DECLARE instruction. The data at the indicated screen position is appended to the URL,
+followed by the contents of the P2 parameter of the $DECLARE instruction, if specified.
 P2
-~~
-
-    (optional) Function parameter referenced by P1.
-
+(optional) Function parameter referenced by P1.
 P3
-~~
-
-    (optional) Text to be displayed in the status bar of the browser
-    when the mouse pointer is over the indicated screen position.
-
+(optional) Text to be displayed in the status bar of the browser when the mouse pointer is over the indicated screen
+position.
 P4
-~~
-
-    Name of JavaScript function (for AS-PARAMETER) or URL (for AS-HREF).
-
-    Note that, in conformance with assembler syntax, quotes and
-    ampersands in the URL must be specified as double quotes and double
-    ampersands.
-
-    For the AS-PARAMETER form of the $DECLARE instruction, the TO
-    parameter specifies the name of a JavaScript function which will be
-    called when the user clicks on the field. The function name is
-    case-sensitive. The following parameters are passed to the
-    JavaScript function:
-
+Name of JavaScript function (for AS-PARAMETER) or URL (for AS-HREF).
+Note that, in conformance with assembler syntax, quotes and ampersands in the URL must be specified as double
+quotes and double ampersands.
+1.23.34.1. JavaScript functions
+For the AS-PARAMETER form of the $DECLARE instruction, the TO parameter specifies the name of a JavaScript
+function which will be called when the user clicks on the field. The function name is case-sensitive. The following
+parameters are passed to the JavaScript function:
 Parameter 1
-~~~~~~~~~~~
-
-    an internally generated field name
-
+an internally generated field name
 Parameter 2
-~~~~~~~~~~~
-
-    the data at the indicated screen position
-
+the data at the indicated screen position
 Parameter 3
-~~~~~~~~~~~
-
-    the contents of the P2 parameter of the $DECLARE instruction
-
-    The JavaScript function itself must be defined in the HTML template
-    page, or in an included page. The following standard functions are
-    provided in the page js01.js delivered with VIRTEL in the W2H-DIR
-    directory:
-
+the contents of the P2 parameter of the $DECLARE instruction
+1. Incoming calls
+171
+The JavaScript function itself must be defined in the HTML template page, or in an included page. The following
+standard functions are provided in the page js01.js delivered with VIRTEL in the W2H-DIR directory:
 VClick
-~~~~~~
-
-    Moves the cursor to the start of the clickable area and sends the
-    indicated function key (P2 parameter) to the host application
-
+Moves the cursor to the start of the clickable area and sends the indicated function key (P2 parameter) to the host
+application
 VClick2
-~~~~~~~
-
-    Copies the contents of the clickable area to the field containing
-    the cursor and sends the indicated function key (P2 parameter) to
-    the host application
-
+Copies the contents of the clickable area to the field containing the cursor and sends the indicated function key (P2
+parameter) to the host application
 VClick3
-~~~~~~~
+Copies the contents of the clickable area to the following input field and sends the indicated function key (P2
+parameter) to the host application
+1.23.34.2. Examples
+DECLARE$ (23,19,04),AS-PFKEY
+Row 23 column 19 length 4 becomes a clickable field. The contents of the field are treated as the name of a PF key. For
+example, if the field contains “PF12” then clicking on this field is equivalent to pressing the 3270 key PF12.
+DECLARE$ (14,17,03),AS-PFKEY,'PA2'
+Row 14 column 17 length 3 becomes a clickable field. When clicked it is the equivalent of pressing the 3270 key PA2.
+DECLARE$ (24,02,04,'****',NE),AS-PFKEY
+Row 24 column 2 length 4 becomes a clickable field, unless it contains asterisks. The contents of the field are treated
+as the name of a PF key.
+DECLARE$ (20,02,06),AS-PARAMETER,'PF12',TO=VClick
+Row 20 column 2 length 6 becomes a clickable field. It calls the JavaScript function VClick('Vxxxxxxx','cccccc','PF12')
+where Vxxxxxxx is an internally generated field name, cccccc is the contents of the field, and PF12 is a constant
+specified in the DECLARE$ instruction.
+DECLARE$ (04,09,17),AS-HREF,'&&hl=fr', X
+TO='http://www.google.com/search?q='
+Row 4 column 9 length 17 becomes a clickable field, hyperlinked to the URL: http//www.google.com/
+search?=ccc...ccc&hl=fr
+(where ccc...ccc is replaced by the contents of the clickable field)
 
-    Copies the contents of the clickable area to the following input
-    field and sends the indicated function key (P2 parameter) to the
-    host application
+.. theEnd
+=========
 
-    Row 23 column 19 length 4 becomes a clickable field. The contents of
-    the field are treated as the name of a PF key. For example, if the
-    field contains “PF12” then clicking on this field is equivalent to
-    pressing the 3270 key PF12.
-
-    Row 14 column 17 length 3 becomes a clickable field. When clicked it
-    is the equivalent of pressing the 3270 key PA2.
-
-    Row 24 column 2 length 4 becomes a clickable field, unless it
-    contains asterisks. The contents of the field are treated as the
-    name of a PF key.
-
-    Row 20 column 2 length 6 becomes a clickable field. It calls the
-    JavaScript function VClick('Vxxxxxxx','cccccc','PF12') where
-    Vxxxxxxx is an internally generated field name, cccccc is the
-    contents of the field, and PF12 is a constant specified in the
-    DECLARE$ instruction.
-
-    Row 4 column 9 length 17 becomes a clickable field, hyperlinked to
-    the URL:
-    h\ `ttp//w <http://www.google.com/>`__\ ww.g\ `oogle.com/ <http://www.google.com/>`__
-    search?=ccc...ccc&hl=fr
-
-    (where ccc...ccc is replaced by the contents of the clickable field)
+testit12
+^^^^^^^^
 
     This instruction marks the end of a FOREACH loop.
 
@@ -12936,25 +12324,25 @@ Index
 .. |image56| image:: images/media/image56.jpeg
 .. |image57| image:: images/media/image57.jpeg
 .. |image58| image:: images/media/image58.png
-.. |image58a| image:: images/media/image59.png
+.. |image59| image:: images/media/image59.png
    :width: 1.95686in
    :height: 1.92531in
-.. |image59| image:: images/media/image60.png
+.. |image60| image:: images/media/image60.png
    :width: 1.95686in
    :height: 1.93583in
-.. |image60| image:: images/media/image61.png
+.. |image61| image:: images/media/image61.png
    :width: 1.96740in
    :height: 1.94635in
-.. |image61| image:: images/media/image62.jpeg
+.. |image62| image:: images/media/image62.jpeg
    :width: 0.34375in
    :height: 0.40625in
-.. |image62| image:: images/media/image63.png
+.. |image63| image:: images/media/image63.png
    :width: 0.34375in
    :height: 0.33333in
-.. |image63| image:: images/media/image64.png
+.. |image64| image:: images/media/image64.png
    :width: 3.88219in
    :height: 3.16677in
-.. |image64| image:: images/media/image65.png
+.. |image64a| image:: images/media/image65.png
    :width: 5.10583in
    :height: 3.46500in
 .. |image65| image:: images/media/image66.png
