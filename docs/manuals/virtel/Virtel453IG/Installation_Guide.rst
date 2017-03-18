@@ -1,3 +1,5 @@
+.. _Virtel453IG:
+
 ==================
 Installation Guide
 ==================
@@ -4915,8 +4917,8 @@ This operation adds or replaces a USER entity in the VIRARBO file. The parameter
 
 .. _#_bookmark73:
 
-8.Security
-==========
+8. Security
+===========
 
 Perform the following steps to activate RACF security for VIRTEL in the MVS environment.
 
@@ -5311,6 +5313,44 @@ These commands define admin1 and admin2 as VIRTEL administrators by adding the V
 8.3.2.13. Authorize the VIRTEL LOADLIB
 
 The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.
+
+A. Appendix
+===========
+
+A.1 Trademarks
+--------------
+
+SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
+Communication Group, registered in France and other countries.
+
+IBM, VTAM, CICS, IMS, RACF, DB2, MVS, WebSphere, MQSeries, System z are trademarks or registered trademarks of
+International Business Machines Corp., registered in United States and other countries.
+
+Adobe, Acrobat, PostScript and all Adobe-based trademarks are either registered trademarks or trademarks of Adobe
+Systems Incorporated in the United States and other countries.
+
+Microsoft, Windows, Windows NT, and the Windows logo are trademarks of Microsoft Corporation in the United States
+and other countries.
+
+UNIX is a registered trademark of The Open Group in the United States and other countries.
+Java and all Java-based trademarks and logos are trademarks or registered trademarks of Oracle and/or its affiliates.
+
+Linux is a trademark of Linus Torvalds in the United States, other countries, or both.
+
+Other company, product, or service names may be trademarks or service names of others.
+
+A.2. Open Source Software
+-------------------------
+
+The current VIRTEL Web Access product uses the following open source software:
+
+- jQuery 
+    Under MIT license - https://jquery.org/license/
+- StoreJson
+    Under MIT license - https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7
+- jQuery_UI
+    Under MIT license - http://en.wikipedia.org/wiki/JQuery_UI
+
 
 .. |image0| image:: images/media/image1.jpeg
    :width: 8.26389in

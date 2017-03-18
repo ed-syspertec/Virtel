@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Web Access User Guide &mdash; Virtel 1 documentation</title>
+  <title>User Guide &mdash; Virtel 1 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Virtel Manuals" href="../../../virtel.html"/>
         <link rel="next" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="prev" title="Installation Guide" href="../Virtel456IG/Installation_Guide.html"/> 
+        <link rel="prev" title="Messages &amp; Operations" href="../Virtel456OM/operations_messages.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -93,8 +93,10 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Virtel456CN/connectivity_guide.html">Connectivity Reference</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel456IG/Installation_Guide.html">Installation Guide</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Web Access User Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel456OM/operations_messages.html">Messages &amp; Operations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User Guide</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#incoming-calls">1. Incoming calls</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#outgoing-calls">2. Outgoing Calls</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#programming-interfaces">3. Programming Interfaces</a></li>
@@ -141,7 +143,7 @@
       
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
       
-    <li>Web Access User Guide</li>
+    <li>User Guide</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -155,10 +157,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="web-access-user-guide">
-<span id="virtel456ug"></span><h1>Web Access User Guide<a class="headerlink" href="#web-access-user-guide" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web1.png"><img alt="image1" src="../../../_images/logo_virtel_web1.png" style="width: 275.0px; height: 102.0px;" /></a></p>
-<p><strong>VIRTEL Web Access User Guide</strong></p>
+  <div class="section" id="user-guide">
+<span id="virtel456ug"></span><h1>User Guide<a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web3.png"><img alt="image1" src="../../../_images/logo_virtel_web3.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><strong>VIRTEL User Guide</strong></p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
 <p class="last">This book is currently under construction. Do not use!</p>
@@ -394,11 +396,11 @@ first such matching transaction found under the entry point.</p>
 </div></blockquote>
 <p>1.2.2.1 Examples</p>
 <p>Assume that entry point WEB2HOST contains the following transactions:</p>
-<p><img alt="image67" src="../../../_images/image671.png" />
+<p><img alt="image67" src="../../../_images/image672.png" />
 <em>Figure 1.1 - Transactions under entry point WEB2HOST</em></p>
 <p>In this example, transactions W2H-00, W2H-03*, W2H-05* are  “application type 4” (directory transactions). Other transactions, such as “application type 1” (processing transactions i.e. TSO, CICS, etc.) play no part in the directory selection process.</p>
 <p>The figure below shows an example of the detail of a directory transaction:-</p>
-<p><img alt="image68" src="../../../_images/image681.png" />
+<p><img alt="image68" src="../../../_images/image682.png" />
 <em>Figure 1.2 Example of a directory transaction</em></p>
 <p>1.2.2.2. Example 1: Neither pathname nor pagename specified</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span>
@@ -447,9 +449,9 @@ first such matching transaction found under the entry point.</p>
 </pre></div>
 </div>
 <p>had been specified.</p>
-<p><img alt="image69" src="../../../_images/image691.png" /> <em>Figure 1.3 Example of a default transaction with default URL</em></p>
+<p><img alt="image69" src="../../../_images/image692.png" /> <em>Figure 1.3 Example of a default transaction with default URL</em></p>
 <p>The entry point CLIHOST can access the w2h directory through a directory definition specifing the external directory path as an external name in the transaction. Here the transaction needs access to web elements located in the W2h-DIR. The /w2h/ pathname in w2h/appmenu.htm matches the external name of the diectory transaction CLI-03W. This match defines a path to the W2H-DIR:-</p>
-<p><img alt="image70" src="../../../_images/image70.png" /> <em>Figure 1.4 Providing access to a directory through a transactions external name</em></p>
+<p><img alt="image70" src="../../../_images/image701.png" /> <em>Figure 1.4 Providing access to a directory through a transactions external name</em></p>
 </div>
 <div class="section" id="dynamic-pages">
 <h4>1.2.3. Dynamic pages<a class="headerlink" href="#dynamic-pages" title="Permalink to this headline">¶</a></h4>
@@ -475,7 +477,7 @@ VTAM application, a VIRTEL sub-application, or an external server)
 invoked by this transaction provides the dynamic data which VIRTEL
 inserts into the template page.</dd>
 </dl>
-<p>1.2.3.1. Dynamic URL with userdata</p>
+<p id="v456ug-dynamic-url">1.2.3.1. Dynamic URL with userdata</p>
 <p>A second form of URL allows user data to be passed to VIRTEL:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">pathname</span><span class="o">/</span><span class="n">pagename</span><span class="o">+</span><span class="n">tranname</span><span class="o">+</span><span class="n">userdata</span>
 </pre></div>
@@ -532,7 +534,7 @@ same meaning as described in the preceding two sections.</div></blockquote>
 </div>
 </div>
 <div class="section" id="session-management">
-<h4>1.2.4. 3270 session management<a class="headerlink" href="#session-management" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-session-management"></span><h4>1.2.4. 3270 session management<a class="headerlink" href="#session-management" title="Permalink to this headline">¶</a></h4>
 <p>1.2.4.1. VirtelSession parameter</p>
 <p>Once a session has been established with the host 3270 application, the template page allows the user to link to the next screen in the 3270 application dialog by means of a URL in the following format:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">pathname</span><span class="o">/</span><span class="n">pagename</span><span class="o">++</span><span class="n">VirtelSession</span><span class="o">=</span><span class="n">sessionid</span>
@@ -548,7 +550,7 @@ same meaning as described in the preceding two sections.</div></blockquote>
 3270 screen (usually the same as the current template page).</dd>
 <dt>sessionid</dt>
 <dd>Is a VIRTEL-generated code which allows VIRTEL to identify the user as being already connected to an existing host session. The parameter VirtelSession=sessionid is inserted by the
-<em>{{{SESSION-CODE}}}</em> tag embedded in the template page (se`e “Session And Context Management” &lt;#_V456UG_26 &lt;#_V456UG_28&gt;`__).</dd>
+<em>{{{SESSION-CODE}}}</em> tag embedded in the template page (see <a class="reference internal" href="#v456ug-session-context-mangement"><span class="std std-ref">“Session And Context Management”</span></a>).</dd>
 </dl>
 <p>1.2.4.2. PrintVirtelSession parameter</p>
 <blockquote>
@@ -563,7 +565,7 @@ template page and will be triggered by the <em>{{{IF-PRINT-IS-READY}}}</em> tag.
 <dt>pathname</dt>
 <dd>Represents a VIRTEL directory, as described earlier.</dd>
 <dt>pagename</dt>
-<dd>Is the name of the template page to be used for displaying the print data. This page must contain the special <em>{{{PRINT}}}</em> tag (see “3287 Printing” &lt;#_V456UG_61 &lt;#_V456UG_64&gt;`__) at the point at which the print data are to be inserted in the page.</dd>
+<dd>Is the name of the template page to be used for displaying the print data. This page must contain the special <em>{{{PRINT}}}</em> tag (see <a class="reference internal" href="#v456ug-printing"><span class="std std-ref">“3287 Printing”</span></a>) at the point at which the print data are to be inserted in the page.</dd>
 <dt>sessionid</dt>
 <dd>Is a code which allows VIRTEL to identify the printer associated with the user’s 3270 session. The parameter PrintVirtelSession=sessionid (where sessionid is the associated 3270 session identifier), is generated by the <em>{{{SESSION-CODE}}}</em> tag as in the following example:-</dd>
 </dl>
@@ -640,7 +642,7 @@ status is being queried. The parameter ValidateVirtelSession=sessionid, where se
 </div>
 <p><em>Figure 1.5 Custom Javascript function to generate a VirtelSession cookie</em></p>
 <blockquote>
-<div>A URL may contain a “capability token” generated by another terminal. In this case the URL inherits certain rights or capabilities conferred by the other terminal. The capabilities inherited depend on the parameters specified in the SET-HEADER tag which generated the capability token. For further details, see <a class="reference external" href="#_V456UG_60">“Capability Tokens” &lt;#_V456UG_59</a>.</div></blockquote>
+<div>A URL may contain a “capability token” generated by another terminal. In this case the URL inherits certain rights or capabilities conferred by the other terminal. The capabilities inherited depend on the parameters specified in the SET-HEADER tag which generated the capability token. For further details, see <a class="reference internal" href="#v456ug-capability-tokens"><span class="std std-ref">“Capability Tokens”</span></a>.</div></blockquote>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">pathname</span><span class="o">/</span><span class="n">pagename</span><span class="o">+</span><span class="n">tranname</span><span class="o">+</span><span class="n">capabilitytoken</span>
 </pre></div>
 </div>
@@ -658,13 +660,13 @@ status is being queried. The parameter ValidateVirtelSession=sessionid, where se
 <blockquote>
 <div>token is a token which grants rights to another terminal’s
 resources. This code, whose format is x-Virtel-name:token, is
-generated by the <a class="reference external" href="#_V456UG_61">“{{{SET-HEADER}}}” &lt;#_V456UG_60</a> tag.
+generated by the <a class="reference internal" href="#v456ug-set-header"><span class="std std-ref">“{{{SET-HEADER}}}”</span></a> tag.
 The code is case-sensitive and so the capitalization must be exactly
 the same as the generated token.</div></blockquote>
 </div>
 <div class="section" id="transmission-of-upload-cookie-by-url">
-<h4>1.2.6. Transmission of upload cookie by URL<a class="headerlink" href="#transmission-of-upload-cookie-by-url" title="Permalink to this headline">¶</a></h4>
-<p>The security code, which identifies a user during page upload by HTTP, is normally transmitted between the browser and VIRTEL as a cookie (see <a class="reference external" href="#_V456UG_77">“Uploading HTML Pages” &lt;#_V456UG_68</a>). If, for security or other reasons, your browser does not allow the use of cookies, then the security code can, as an alternative, be embedded in a URL of the form shown below:-</p>
+<span id="v456ug-cookie-upload"></span><h4>1.2.6. Transmission of upload cookie by URL<a class="headerlink" href="#transmission-of-upload-cookie-by-url" title="Permalink to this headline">¶</a></h4>
+<p>The security code, which identifies a user during page upload by HTTP, is normally transmitted between the browser and VIRTEL as a cookie (see <a class="reference internal" href="#v456ug-uploading-html-pages"><span class="std std-ref">“Uploading HTML Pages”</span></a>). If, for security or other reasons, your browser does not allow the use of cookies, then the security code can, as an alternative, be embedded in a URL of the form shown below:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">pathname</span><span class="o">/</span><span class="n">pagename</span><span class="o">+</span><span class="n">tranname</span><span class="o">+</span><span class="n">securitycode</span>
 </pre></div>
 </div>
@@ -701,8 +703,8 @@ the same as the generated token.</div></blockquote>
 </dl>
 </div>
 <div class="section" id="propagation-of-signon-by-url">
-<h4>1.2.7. Propagation of signon by URL<a class="headerlink" href="#propagation-of-signon-by-url" title="Permalink to this headline">¶</a></h4>
-<p>A URL embedded in a page sent by VIRTEL may contain a VirtelUserSignon parameter in order to propagate the user’s signon credentials to another page. The value of the parameter is generated by the <em>({{{USER-SIGNON-CODE}}}</em> tag, as described in <a class="reference external" href="#_V456UG_77">page 63</a>. This can be useful in cases where the browser does not propagate the user name and password from one page to another, for example when using VIRTEL transaction security type 4. The format of a URL containing a signon code is shown below:-</p>
+<span id="v456ug-signon-propagation"></span><h4>1.2.7. Propagation of signon by URL<a class="headerlink" href="#propagation-of-signon-by-url" title="Permalink to this headline">¶</a></h4>
+<p>A URL embedded in a page sent by VIRTEL may contain a VirtelUserSignon parameter in order to propagate the user’s signon credentials to another page. The value of the parameter is generated by the <a class="reference internal" href="#v456ug-user-signon-code"><span class="std std-ref">({{{USER-SIGNON-CODE}}} tag</span></a>. This can be useful in cases where the browser does not propagate the user name and password from one page to another, for example when using VIRTEL transaction security type 4. The format of a URL containing a signon code is shown below:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">pathname</span><span class="o">/</span><span class="n">pagename</span><span class="o">+</span><span class="n">tranname</span><span class="o">+</span><span class="n">VirtelUserSignon</span><span class="o">=</span><span class="n">signoncode</span>
 </pre></div>
 </div>
@@ -746,7 +748,7 @@ followed by option 3, or from the VIRTEL Multi-Session menu via a transaction wh
 <div class="section" id="creating-modifying-and-deleting-directories">
 <h3>1.3.3. Creating, modifying, and deleting directories<a class="headerlink" href="#creating-modifying-and-deleting-directories" title="Permalink to this headline">¶</a></h3>
 <p>When the directory management sub-application is invoked, it displays a list of the directories already defined in the system:-</p>
-<p><img alt="image71" src="../../../_images/image712.png" /> <em>Figure 1.6 Directory management summary screen</em></p>
+<p><img alt="image71" src="../../../_images/image714.png" /> <em>Figure 1.6 Directory management summary screen</em></p>
 <div class="section" id="using-the-associated-admin-3270-functions">
 <h4>1.3.4. Using the associated Admin(3270) functions<a class="headerlink" href="#using-the-associated-admin-3270-functions" title="Permalink to this headline">¶</a></h4>
 <p>These funcations are accessed from either the browsers Administration portal or by logging on to Virtel using it&#8217;s VTAM interface.</p>
@@ -764,7 +766,7 @@ followed by option 3, or from the VIRTEL Multi-Session menu via a transaction wh
 <div class="section" id="defining-directory-parameters">
 <h4>1.3.5. Defining directory parameters<a class="headerlink" href="#defining-directory-parameters" title="Permalink to this headline">¶</a></h4>
 <p>To access the detail screen for any directory, place the cursor on the directory name and press [PF12]:</p>
-<p><img alt="image72" src="../../../_images/image721.png" /> <em>Figure 1.7 Directory management detail screen</em></p>
+<p><img alt="image72" src="../../../_images/image722.png" /> <em>Figure 1.7 Directory management detail screen</em></p>
 <dl class="docutils">
 <dt>Name</dt>
 <dd>The name of the directory as known by VIRTEL. If security is active,
@@ -793,7 +795,7 @@ started task JCL.</dd>
 <p class="last">After pressing [PF4] at the directory management summary screen or detail screen, VIRTEL displays a list of the files in the directory:</p>
 </dd>
 </dl>
-<p><img alt="image73" src="../../../_images/image731.png" /> <em>Figure 1.8 Directory contents management screen</em></p>
+<p><img alt="image73" src="../../../_images/image732.png" /> <em>Figure 1.8 Directory contents management screen</em></p>
 </div>
 <div class="section" id="associated-functions">
 <h4>1.3.7. Associated functions<a class="headerlink" href="#associated-functions" title="Permalink to this headline">¶</a></h4>
@@ -820,14 +822,14 @@ started task JCL.</dd>
 </pre></div>
 </div>
 <p>In this example, VIRTEL-specific tags are defined as being represented by a succession of 3 opening braces and terminated by a succession of 3 closing braces. This convention is maintained throughout the remainder of this chapter.</p>
-<p>1.4.3. Session and context management</p>
+<p id="v456ug-session-context-mangement">1.4.3. Session and context management</p>
 <p>VIRTEL uses the concept of a sessioncode to maintain the context between a client using a browser and the host application to which the client is connected. This code allows VIRTEL to identify the client and to associate the client with a session already established with a host application.</p>
 <p>1.4.3.2. SESSION-CODE tag</p>
 <p>The SESSION-CODE tag is used to create the URL associated with form submission.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span> <span class="n">SESSION</span><span class="o">-</span><span class="n">CODE</span> <span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The SESSION-CODE tag allows a sessioncode to be inserted in the template page in the format VirtelSession=xxxxxxxxxxxxxxxx. The value of the sessioncode changes after each message. For examples of its use, see <a class="reference external" href="#_V456UG_29">“Transmitting Data To The Host” &lt;#_V456UG_27</a>, and <a class="reference external" href="#_V456UG_64">“3287 Printing” &lt;#_V456UG_61</a>.</p>
+<p>The SESSION-CODE tag allows a sessioncode to be inserted in the template page in the format VirtelSession=xxxxxxxxxxxxxxxx. The value of the sessioncode changes after each message. For examples of its use, see <a class="reference internal" href="#v456ug-transmitting-data"><span class="std std-ref">“Transmitting Data To The Host”</span></a>, and <a class="reference internal" href="#v456ug-printing"><span class="std std-ref">“3287 Printing”</span></a>.</p>
 <p>1.4.3.3. AJAX-SESSION-CODE tag</p>
 <p>The AJAX-SESSION-CODE tag is similar to the SESSION-CODE tag, but it generates the code in a different format which does not change with each request. This is useful when implementing an AJAX dialog between the application and the browser. For this type of application, it is not always possible to transmit the VIRTEL session code to the browser, especially if a Javascript library is used.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span> <span class="n">AJAX</span><span class="o">-</span><span class="n">SESSION</span><span class="o">-</span><span class="n">CODE</span> <span class="p">}}}</span>
@@ -855,7 +857,7 @@ started task JCL.</dd>
 <p>is coded in a page or a sub-page, then VIRTEL will cancel the session if the workstation has not sent another request after 10 seconds.</p>
 </div>
 <div class="section" id="transmitting-data-to-the-host">
-<h4>1.4.4. Transmitting data to the host<a class="headerlink" href="#transmitting-data-to-the-host" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-transmitting-data"></span><h4>1.4.4. Transmitting data to the host<a class="headerlink" href="#transmitting-data-to-the-host" title="Permalink to this headline">¶</a></h4>
 <p>Transmission of data to the host uses the principle of sending an HTML form. In conjunction with the SESSION-CODE tag, the form allows the transmission of input fields to the host application, and the     display of the subsequent application screen.</p>
 <p>The form is defined as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">form</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FormName&quot;</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;VirtelURL&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;get&quot;</span><span class="o">&gt;</span>
@@ -943,8 +945,8 @@ ShowPopUp();
 <p>For a full example, see the WEB2VIRT.htm page delivered with VIRTEL.</p>
 </div>
 </div>
-<div class="section" id="inserting-host-application-data-in-a-page">
-<h3>1.4.6. Inserting host application data in a page<a class="headerlink" href="#inserting-host-application-data-in-a-page" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="inserting-host-application-data-into-a-page">
+<span id="v456ug-inserting-host-data"></span><h3>1.4.6. Inserting host application data into a page<a class="headerlink" href="#inserting-host-application-data-into-a-page" title="Permalink to this headline">¶</a></h3>
 <p>1.4.6.1. Introduction</p>
 <p>Insertion of host application data in an HTML or XML page is achieved with the GENERATE-HTML and COPY-FROM tags.</p>
 <p>1.4.6.2. GENERATE-HTML tag</p>
@@ -1488,7 +1490,7 @@ mouse to submit requests to the HTTP server. This difference in philosophy makes
 certain instances, to detect the use of a function key via the browser. Conserving the ergonomic aspects of the web in
 an application that allows full use of the function keys is naturally not an easy thing to do, it is, however, made possible
 by the following functions.</p>
-<p>1.4.9.2. Definition of the pfkField field</p>
+<p id="v456ug-pfkfield">1.4.9.2. Definition of the pfkField field</p>
 <p>As with the management of the cursor, the pfkField is a hidden field designed to accept the name of the function key
 that VIRTEL must use to transmit data to the application on the host.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">INPUT</span> <span class="n">NAME</span><span class="o">=</span><span class="s2">&quot;pfkField&quot;</span> <span class="n">TYPE</span><span class="o">=</span><span class="s2">&quot;HIDDEN&quot;</span> <span class="n">VALUE</span><span class="o">=</span><span class="s2">&quot;ENTER&quot;</span><span class="o">&gt;</span>
@@ -1611,11 +1613,11 @@ page, and take effect from the point in the page at which they appear.</p>
 <dt>AUTO-INCREMENT-VARIABLES</dt>
 <dd>When this option is activated, table variables referenced outside a FOR-EACH-VALUE-IN loop will be automatically advanced to their next value each time they are reused. If this option is not active, the CURRENT-VALUE-OF tag always produces the first value of a table variable when it is referenced outside a loop.</dd>
 <dt>BLANK-BINARY-ZEROES</dt>
-<dd>Affects the processing of the COPY-FROM and GENERATE-VARIABLES tags (see “Inserting host application data in a page” &lt;#_V456UG_29).</dd>
+<dd>Affects the processing of the COPY-FROM and GENERATE-VARIABLES tags (see <a class="reference internal" href="#v456ug-inserting-host-data"><span class="std std-ref">“Inserting host application data in a page”</span></a>).</dd>
 <dt>DO-NOT-IGNORE-BINARY-ZEROES</dt>
 <dd>When this option is activated, then all 3270 NUL characters in input fields generated by VIRTEL will be sent to the browser as SUB characters (x&#8216;1A&#8217;). When this option is not activated, then VIRTEL will remove 3270 NUL characters from input fields.</dd>
 <dt>HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, NO-ESCAPES, XML-ESCAPES</dt>
-<dd>Affects the processing of the CURRENT-VALUE-OF, TRIMMED-VALUE-OF and NO-BLANKS-VALUE-OF tags (see “Handling table variables” &lt;#_V456UG_44). Similarly affects the processing of the values generated by GENERATEVARIABLES.</dd>
+<dd>Affects the processing of the CURRENT-VALUE-OF, TRIMMED-VALUE-OF and NO-BLANKS-VALUE-OF tags (see <a class="reference internal" href="#v456ug-table-variables"><span class="std std-ref">“Handling table variables”</span></a>). Similarly affects the processing of the values generated by GENERATEVARIABLES.</dd>
 <dt>ID</dt>
 <dd>Indicates that VIRTEL will generate HTML input fields with the parameter “id” in addition to the “name” parameter. The “id” has the same value as the “name”. This is intended for use with JavaScript code which refers to VIRTELgenerated fields using the getElementById method.</dd>
 <dt>MAXLENGTH</dt>
@@ -1653,9 +1655,9 @@ page, and take effect from the point in the page at which they appear.</p>
 </dl>
 </div>
 <div class="section" id="handling-table-variables">
-<h4>1.4.11. Handling table variables<a class="headerlink" href="#handling-table-variables" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-table-variables"></span><h4>1.4.11. Handling table variables<a class="headerlink" href="#handling-table-variables" title="Permalink to this headline">¶</a></h4>
 <p>1.4.11.1. Introduction</p>
-<p>A table variable is a list of values sent to VIRTEL by a host application in a structured field of type “FAE5 or FAE6”,^page 247. Table variables may also be created by means of a VIRTEL tag embedded in the page template (see <a class="reference internal" href="#v456ug-create-variable-from"><span class="std std-ref">“CREATE-VARIABLE-FROM”</span></a>), via a scenario (see <a class="reference internal" href="#v456ug-copy"><span class="std std-ref">“COPY$ instructions”</span></a>), or by means of a S VARIABLE command contained in the host 3270 datastream (see “HOST4WEB commands” &lt;#_V456UG_255).</p>
+<p>A table variable is a list of values sent to VIRTEL by a host application in a structured field of type “FAE5 or FAE6”,^page 247. Table variables may also be created by means of a VIRTEL tag embedded in the page template (see <a class="reference internal" href="#v456ug-create-variable-from"><span class="std std-ref">“CREATE-VARIABLE-FROM”</span></a>), via a scenario (see <a class="reference internal" href="#v456ug-copy"><span class="std std-ref">“COPY$ instructions”</span></a>), or by means of a S VARIABLE command contained in the host 3270 datastream (see <a class="reference internal" href="#v456ug-host4web"><span class="std std-ref">“HOST4WEB commands”</span></a>).</p>
 <p>1.4.11.2. FOR-EACH-VALUE-IN tag</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">FOR</span><span class="o">-</span><span class="n">EACH</span><span class="o">-</span><span class="n">VALUE</span><span class="o">-</span><span class="n">IN</span> <span class="s2">&quot;varname&quot;</span><span class="p">}}}</span>
 </pre></div>
@@ -1934,7 +1936,7 @@ the codes. A hyperlink is generated for each code, by removing any trailing blan
 <dt>DIRECTORY</dt>
 <dd>The current VIRTEL directory name</dd>
 <dt>CHARACTER-SET</dt>
-<dd>The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see <cite>“EBCDIC translation management” &lt;#_V456UG_56</cite>)__</dd>
+<dd>The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see <a class="reference internal" href="#v456ug-ebcdic-translation"><span class="std std-ref">“EBCDIC translation management”</span></a>)</dd>
 <dt>DATE-TIME</dt>
 <dd>The current date and time (14 characters in the format YYYYMMDDHHMMSS)</dd>
 <dt>VIRTEL-VERSION</dt>
@@ -2016,7 +2018,7 @@ the codes. A hyperlink is generated for each code, by removing any trailing blan
 </div>
 <div class="section" id="debugging-facilities">
 <span id="v456ug-debugging-create-variable"></span><h4>1.4.14. Debugging facilities<a class="headerlink" href="#debugging-facilities" title="Permalink to this headline">¶</a></h4>
-<p>1.4.14.1. CREATE-VARIABLE-IF tag</p>
+<p id="v456ug-create-variable-if">1.4.14.1. CREATE-VARIABLE-IF tag</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">CREATE</span><span class="o">-</span><span class="n">VARIABLE</span><span class="o">-</span><span class="n">IF</span> <span class="p">(</span><span class="n">TRACING</span><span class="o">-</span><span class="n">SCENARIO</span><span class="p">)</span> <span class="s2">&quot;varname&quot;</span><span class="p">}}}</span>
 </pre></div>
 </div>
@@ -2039,7 +2041,7 @@ the codes. A hyperlink is generated for each code, by removing any trailing blan
 </pre></div>
 </div>
 <p><em>Exampleof a JSON structure generated by TRACING-SCENARIO</em></p>
-<p>For more informations, see <a href="#id14"><span class="problematic" id="id15">`“CREATE-VARIABLE-IF” &lt;#_V456UG_52.`__</span></a></p>
+<p>For more informations, see <a class="reference internal" href="#v456ug-create-variable-if"><span class="std std-ref">“CREATE-VARIABLE-IF”</span></a>.</p>
 </div>
 <div class="section" id="signon-and-password-management">
 <h4>1.4.15. Signon and password management<a class="headerlink" href="#signon-and-password-management" title="Permalink to this headline">¶</a></h4>
@@ -2100,11 +2102,11 @@ Guide).</p>
 </pre></div>
 </div>
 <p>The above example indicates that the field NOM is transmitted to VIRTEL in base64 format. In this case, the DEFINE must precede the DECLARE.</p>
-<p>1.4.15.3. USER-SIGNON-CODE tag</p>
+<p id="v456ug-user-signon-code">1.4.15.3. USER-SIGNON-CODE tag</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">USER</span><span class="o">-</span><span class="n">SIGNON</span><span class="o">-</span><span class="n">CODE</span><span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The USER-SIGNON-CODE tag generates a unique value called a signoncode which may be used with the VirtelUserSignon parameter of the URL to propagate the signed-on user’s credentials to another page (see <a class="reference external" href="bookmark14">“Propagation of signon by URL” &lt;#_V456UG_21</a>).</p>
+<p>The USER-SIGNON-CODE tag generates a unique value called a signoncode which may be used with the VirtelUserSignon parameter of the URL to propagate the signed-on user’s credentials to another page (see <a class="reference internal" href="#v456ug-signon-propagation"><span class="std std-ref">“Propagation of signon by URL”</span></a>).</p>
 </div>
 <div class="section" id="encryption-management">
 <h4>1.4.16. Encryption management<a class="headerlink" href="#encryption-management" title="Permalink to this headline">¶</a></h4>
@@ -2183,10 +2185,10 @@ tag activates encryption for selected fields that are sent and received in HTML 
 <p>Encryption is performed according to the symmetric encryption method indicated by the CRYPTn parameter specified by the PUBLIC-KEY tag, using the session key specified by the DECLARE-FIELD-AS (CRYPTO-SESSION-KEY) tag. The GENERATE-HTML tag automatically adds an additional VCRYPT attribute to each encrypted field.</p>
 </div>
 <div class="section" id="ebcdic-translation-management">
-<h4>1.4.17. EBCDIC translation management<a class="headerlink" href="#ebcdic-translation-management" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-ebcdic-translation"></span><h4>1.4.17. EBCDIC translation management<a class="headerlink" href="#ebcdic-translation-management" title="Permalink to this headline">¶</a></h4>
 <p>1.4.17.1. Introduction</p>
 <p>By default, VIRTEL translates host application EBCDIC data into ISO-8859-1 before sending it to the browser. This default behaviour is suitable for Western European and English speaking countries. The COUNTRY parameter in the VIRTCT indicates which EBCDIC country codepage is used by host applications, and serves to select the appropriate default EBCDIC-to-ISO-8859-1 translation table within VIRTEL. Translation tables other than the default may be selected by means of the SET-COUNTRY-CODE tag.</p>
-<p>1.4.17.2. SET-COUNTRY-CODE tag</p>
+<p id="v456ug-set-country-code">1.4.17.2. SET-COUNTRY-CODE tag</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">SET</span><span class="o">-</span><span class="n">COUNTRY</span><span class="o">-</span><span class="n">CODE</span> <span class="s2">&quot;countryname&quot;</span><span class="p">}}}</span>
 </pre></div>
 </div>
@@ -2365,7 +2367,7 @@ change each time the page is requested. The VIRTEL tags described in this sectio
 <p>1.4.21.1. Introduction</p>
 <p>VIRTEL capability tokens permit an HTTP transaction to access data associated with an transaction running on another terminal. The token is delivered by VIRTEL by means of an x-Virtel HTTP response header from the terminal which owns the capability, and the same token is returned to VIRTEL in a subsequent URL sent by the terminal which wishes to use the capability (see <a class="reference internal" href="#v456ug-capability-types"><span class="std std-ref">“Capability URLs”</span></a>). The x-Virtel HTTP header is generated by a SET-HEADER tag
 embedded in a page template sent by the terminal which owns the capablity.</p>
-<p>1.4.21.2. SET-HEADER tag</p>
+<p id="v456ug-set-header">1.4.21.2. SET-HEADER tag</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span> <span class="n">SET</span><span class="o">-</span><span class="n">HEADER</span> <span class="p">(</span><span class="nb">type</span><span class="p">)</span> <span class="s2">&quot;header-string&quot;</span> <span class="p">}}}</span>
 </pre></div>
 </div>
@@ -2402,7 +2404,7 @@ embedded in a page template sent by the terminal which owns the capablity.</p>
 <div class="section" id="page-upload">
 <h4>1.4.22. Page upload<a class="headerlink" href="#page-upload" title="Permalink to this headline">¶</a></h4>
 <p>1.4.22.1. Introduction</p>
-<p>The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used during uploading of HTML pages from a browser (see “Uploading pages by HTTP (secured by cookie)” &lt;#_V456UG_69).</p>
+<p>The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used during uploading of HTML pages from a browser (see <a class="reference internal" href="#v456ug-http-uploading-pages"><span class="std std-ref">“Uploading pages by HTTP (secured by cookie)”</span></a>).</p>
 </div>
 <div class="section" id="security-token-tag">
 <h4>1.4.22.2. SECURITY-TOKEN tag<a class="headerlink" href="#security-token-tag" title="Permalink to this headline">¶</a></h4>
@@ -2425,7 +2427,7 @@ var VirtelRef = &quot;{{{SECURITY-TOKEN}}}&quot;;
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">VirtelRef</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Two examples of the use of the SECURITY-TOKEN tag are supplied in the HTMLBAS directory used by VIRTEL entry point DEMOHTTP. The upload.htm page stores and retransmits the user security code in the form of a cookie (VirtelRef=xxxxxxxxxxxxxxxx). The upload2.htm page retransmits the user security code using the VirtelCookie=parameter of the URL (see “Transmission of upload cookie by URL” &lt;#_V456UG_20), but it does not store the code.</p>
+<p>Two examples of the use of the SECURITY-TOKEN tag are supplied in the HTMLBAS directory used by VIRTEL entry point DEMOHTTP. The upload.htm page stores and retransmits the user security code in the form of a cookie (VirtelRef=xxxxxxxxxxxxxxxx). The upload2.htm page retransmits the user security code using the VirtelCookie=parameter of the URL (see <a class="reference internal" href="#v456ug-cookie-upload"><span class="std std-ref">“Transmission of upload cookie by URL”</span></a>), but it does not store the code.</p>
 <p>1.4.22.3. IF-SECURITY-TOKEN-IS-READY tag</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">IF</span><span class="o">-</span><span class="n">SECURITY</span><span class="o">-</span><span class="n">TOKEN</span><span class="o">-</span><span class="n">IS</span><span class="o">-</span><span class="n">READY</span>
     <span class="n">SetHostWarning</span><span class="p">();</span>
@@ -2439,7 +2441,7 @@ var VirtelRef = &quot;{{{SECURITY-TOKEN}}}&quot;;
 </div>
 </div>
 <div class="section" id="printing">
-<h4>1.4.23. 3287 printing<a class="headerlink" href="#printing" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-printing"></span><h4>1.4.23. 3287 printing<a class="headerlink" href="#printing" title="Permalink to this headline">¶</a></h4>
 <p>1.4.23.1. Introduction</p>
 <p>Each relay LU, through which a user connects to a host application, can be associated with a second LU which represents a virtual printer (see the description of HTTP terminals in the VIRTEL Connectivity Reference documentation). Data sent to this virtual printer by a host application (such as CICS) are stored by VIRTEL and can be retrieved by means of the tags IF-PRINT-IS-READY, SESSION-CODE, and PRINT embedded in a template page.</p>
 <p>1.4.23.2. IF-PRINT-IS-READY tag</p>
@@ -2475,10 +2477,10 @@ var VirtelRef = &quot;{{{SECURITY-TOKEN}}}&quot;;
 <p>The PRINT tag allows a template page, such as the imprim.htm page supplied with VIRTEL, to retrieve 3287 print data. The structured field FAD3 also allows print data to be fed to VIRTEL for retrieval with the PRINT tag.</p>
 </div>
 <div class="section" id="generating-pdf-output">
-<h4>1.4.24. Generating PDF output<a class="headerlink" href="#generating-pdf-output" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-pdf-output"></span><h4>1.4.24. Generating PDF output<a class="headerlink" href="#generating-pdf-output" title="Permalink to this headline">¶</a></h4>
 <p>1.4.24.1. Introduction</p>
 <p>When a page template is processed in a scenario by a COPY$ OUTPUT-FILE-TO-VARIABLE instruction with the TYPE=LINEBUFFER parameter, the page template may contain additional tags. These tags are used to assist in the construction of INPUT, DOCOPT, and LAYOUT files in the “LINEBUF” format required by the MakePDF program product.</p>
-<p>These files may then be passed to the VIRSVPDF service program which invokes MakePDF to generate output files in PDF format. Refer to “PDF output generation” &lt;#_V456UG_213 for an example scenario.</p>
+<p>These files may then be passed to the VIRSVPDF service program which invokes MakePDF to generate output files in PDF format. Refer to <a class="reference internal" href="#v456ug-pdf"><span class="std std-ref">“PDF output generation”</span></a> for an example scenario.</p>
 <p>1.4.24.2. PDF-LINES-PER-PAGE tag</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span> <span class="n">PDF</span><span class="o">-</span><span class="n">LINES</span><span class="o">-</span><span class="n">PER</span><span class="o">-</span><span class="n">PAGE</span> <span class="s2">&quot;nn&quot;</span><span class="p">}}}</span>
 </pre></div>
@@ -2526,7 +2528,7 @@ var VirtelRef = &quot;{{{SECURITY-TOKEN}}}&quot;;
 <p>The PDF-VARIABLE tag inserts “=” in the ASA carriage control character position.</p>
 </div>
 <div class="section" id="correspondent-management">
-<h4>1.5. Correspondent Management<a class="headerlink" href="#correspondent-management" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-correspondent-management"></span><h4>1.5. Correspondent Management<a class="headerlink" href="#correspondent-management" title="Permalink to this headline">¶</a></h4>
 <p>1.5.1. Introduction</p>
 <p>One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to
 VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user
@@ -2535,7 +2537,7 @@ file known as the “Correspondent file”, also known as the “VIRHTML” file
 <p>VIRTEL uses the correspondent file for the following purposes:
 - the rules of an HTTP line permit VIRTEL to distinguish between correspondents and non-correspondents when processing incoming HTTP requests. When the requesting user is identified as a correspondent, a special entry point may be assigned, or a set of rules specific to the user may be executed. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details.
 - the rules of an HTTP line may assign a specific LU name to a correspondent connecting to a host application via web access. This is known as “LU nailing” and is described in more detail in the VIRTEL LU Nailing HOWTO manual.
-- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to “Uploading pages by SMTP” &lt;#_V456UG_68 and “Uploading pages by HTTP (secured by cookie)” &lt;#_V456UG_69.</p>
+- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to <a class="reference internal" href="#v456ug-http-uploading-pages-smtp"><span class="std std-ref">“Uploading pages by SMTP”</span></a> and <a class="reference internal" href="#v456ug-http-uploading-pages"><span class="std std-ref">“Uploading pages by HTTP (secured by cookie)”</span></a>.</p>
 <p>There are two types of correspondent: an e-mail correspondent and a local correspondent:
 - An <strong>e-mail correspondent</strong> is always defined by the VIRTEL administrator. When the administrator activates an email correspondent, VIRTEL sends an e-mail message to the correspondent containing the security code. The correspondent then either replies to the e-mail message or clicks on a link in the message to connect to VIRTEL.
 - A <strong>local correspondent</strong> is activated by the correspondent using a procedure known as “self-registration”. The selfregistration rocedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.</p>
@@ -2558,9 +2560,9 @@ Security management is described under the heading “Security” 282.</p>
 <h4>1.5.4. Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h4>
 <p>This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
 to the detail of a correspondent is achieved by positioning the cursor and pressing [PF12].</p>
-<p><img alt="image74" src="../../../_images/image741.png" /></p>
+<p><img alt="image74" src="../../../_images/image742.png" /></p>
 <p><em>Summary of correspondence</em></p>
-<p><img alt="image75" src="../../../_images/image751.png" />
+<p><img alt="image75" src="../../../_images/image752.png" />
 <em>Correspondent detail screen (e-mail correspondent)</em></p>
 </div>
 <div class="section" id="contents-of-the-fields">
@@ -2588,7 +2590,7 @@ to the detail of a correspondent is achieved by positioning the cursor and press
 </dl>
 </div>
 <div class="section" id="account-activation">
-<h4>1.5.6. Account activation<a class="headerlink" href="#account-activation" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-account-activation"></span><h4>1.5.6. Account activation<a class="headerlink" href="#account-activation" title="Permalink to this headline">¶</a></h4>
 <p>In order to be operational, a correspondent account must be activated. This is achieved by pressing [PF4] at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
 correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero.</p>
 <div class="admonition note">
@@ -2606,7 +2608,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 </div>
 </div>
 <div class="section" id="uploading-html-pages">
-<h3>1.6. Uploading HTML Pages<a class="headerlink" href="#uploading-html-pages" title="Permalink to this headline">¶</a></h3>
+<span id="v456ug-uploading-html-pages"></span><h3>1.6. Uploading HTML Pages<a class="headerlink" href="#uploading-html-pages" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id3">
 <h4>1.6.1. Introduction<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
 <p>HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:</p>
@@ -2619,7 +2621,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 </div></blockquote>
 </div>
 <div class="section" id="uploading-pages-by-smtp">
-<h4>1.6.2. Uploading pages by SMTP<a class="headerlink" href="#uploading-pages-by-smtp" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-http-uploading-pages-smtp"></span><h4>1.6.2. Uploading pages by SMTP<a class="headerlink" href="#uploading-pages-by-smtp" title="Permalink to this headline">¶</a></h4>
 <p>Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.</p>
 <p>1.6.2.1. Definitions for page upload by SMTP</p>
 <ul class="simple">
@@ -2651,7 +2653,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
 <p><em>Page upload by SMTP: Creating an e-mail correspondent</em></p>
 <p>1.6.2.2. Procedure for page upload by SMTP</p>
 <ol class="arabic simple">
-<li>Activate the e-mail correspondent: see “Account activation” under the heading “Correspondent Management” &lt;#_V456UG_64. This triggers the sending of an e-mail containing the security code, as in the following example:-</li>
+<li>Activate the e-mail correspondent: see “Account activation” under the heading <a class="reference internal" href="#v456ug-correspondent-management"><span class="std std-ref">“Correspondent Management”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:-</li>
 </ol>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">12</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">40</span> <span class="o">+</span><span class="mi">0100</span>
 <span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
@@ -2703,7 +2705,7 @@ using the default parameters (not case sensitive, with maximum filename length 8
 under the name LINKS.GI</p>
 </div>
 <div class="section" id="uploading-pages-by-http-secured-by-cookie">
-<h4>1.6.3. Uploading pages by HTTP (secured by cookie)<a class="headerlink" href="#uploading-pages-by-http-secured-by-cookie" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-http-uploading-pages"></span><h4>1.6.3. Uploading pages by HTTP (secured by cookie)<a class="headerlink" href="#uploading-pages-by-http-secured-by-cookie" title="Permalink to this headline">¶</a></h4>
 <p>The upload.htm page allows HTML pages or graphics to be uploaded to VIRTEL. The user’s identity is guaranteed by a
 cookie named VirtelRef= whose value changes after each upload. The value of the cookie is the same as the security
 code used for uploading by SMTP.</p>
@@ -2725,7 +2727,7 @@ directory using the existing SMTP upload method.</p>
 <p>1. In entry point WEB2HOST, define a new transaction W2H–70, with external name upload. This transaction specifies
 VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
 that the name of the target directory is to be found in the definition of the e-mail correspondent:</p>
-<p><img alt="image76" src="../../../_images/image761.png" /></p>
+<p><img alt="image76" src="../../../_images/image762.png" /></p>
 <p><em>Page upload by HTTP with cookie : Creating the ‘upload’ transaction</em></p>
 <ol class="arabic simple" start="2">
 <li>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</li>
@@ -2849,7 +2851,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <p><em>Page upload by HTTP with cookie : Rule WEB2HOST of the HTTP line</em></p>
 <p>1.6.3.2. Procedure for page upload secured by cookie</p>
 <ol class="arabic simple">
-<li>(First time only) Activate the e-mail correspondent: see “Account activation” under the heading “Correspondent Management” &lt;#_V456UG_64. This triggers the sending of an e-mail containing the security code, as in the following example:</li>
+<li>(First time only) Activate the e-mail correspondent: see <a class="reference internal" href="#v456ug-account-activation"><span class="std std-ref">“Account activation”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:</li>
 </ol>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">13</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">44</span> <span class="o">+</span><span class="mi">0100</span>
 <span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
@@ -2869,42 +2871,42 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <ol class="arabic simple" start="2">
 <li>Click the link in the e-mail to open the upload.htm page:</li>
 </ol>
-<p><a class="reference internal" href="../../../_images/image616.png"><img alt="image4" src="../../../_images/image616.png" style="width: 5.13354in; height: 3.56187in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image618.png"><img alt="image4" src="../../../_images/image618.png" style="width: 5.13354in; height: 3.56187in;" /></a></p>
 <p><em>Page upload by HTTP with cookie : Displaying the upload.htm page</em></p>
 <ol class="arabic simple" start="3">
 <li>Click the “Browse” button and the file selection dialog will be displayed:</li>
 </ol>
-<p><img alt="image5" src="../../../_images/image516.png" /></p>
+<p><img alt="image5" src="../../../_images/image517.png" /></p>
 <p><em>Page upload by HTTP with cookie : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
 <li>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</li>
 </ol>
-<p><img alt="image6" src="../../../_images/image616.png" /></p>
+<p><img alt="image6" src="../../../_images/image618.png" /></p>
 <p><em>Page upload by HTTP with cookie : Sending the file</em></p>
 <ol class="arabic simple" start="5">
 <li>Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:</li>
 </ol>
-<p><img alt="image7" src="../../../_images/image713.png" /></p>
+<p><img alt="image7" src="../../../_images/image715.png" /></p>
 <p><em>Page upload by HTTP with cookie : Confirmation of file uploadr</em></p>
 <p>From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”.</p>
 <p>Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
 </div>
 <div class="section" id="uploading-pages-by-http-secured-by-signon">
-<h4>1.6.4. Uploading pages by HTTP (secured by signon)<a class="headerlink" href="#uploading-pages-by-http-secured-by-signon" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-http-uploading-pages-signon"></span><h4>1.6.4. Uploading pages by HTTP (secured by signon)<a class="headerlink" href="#uploading-pages-by-http-secured-by-signon" title="Permalink to this headline">¶</a></h4>
 <p>The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.</p>
 <p>1.6.4.1. Definitions for page upload secured by signon All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.</p>
 <p>The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.</p>
 <ol class="arabic simple">
 <li>In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:</li>
 </ol>
-<p><img alt="image77" src="../../../_images/image771.png" />
+<p><img alt="image77" src="../../../_images/image772.png" />
 <em>Page upload by HTTP with signon : Transaction dirlist</em></p>
 <ol class="arabic simple" start="2">
 <li>Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :</li>
 </ol>
-<p><img alt="image78" src="../../../_images/image781.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
-<p><img alt="image79" src="../../../_images/image791.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
-<p><img alt="image80" src="../../../_images/image80.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
+<p><img alt="image78" src="../../../_images/image782.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
+<p><img alt="image79" src="../../../_images/image792.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
+<p><img alt="image80" src="../../../_images/image801.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
 <ol class="arabic simple" start="3">
 <li>Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “Virtel Security Guide” manual.</li>
 </ol>
@@ -2912,49 +2914,49 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <ol class="arabic simple">
 <li>Display the upload4.htm page by entering the URL <a class="reference external" href="http://ipaddr:port/SECURE/upload4.htm+dirlist">http://ipaddr:port/SECURE/upload4.htm+dirlist</a> in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:</li>
 </ol>
-<p><img alt="image8" src="../../../_images/image811.png" /></p>
+<p><img alt="image8" src="../../../_images/image813.png" /></p>
 <p><em>Page upload by HTTP with signon : Entering the userid and password</em></p>
 <p>The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.</p>
 <ol class="arabic simple" start="2">
 <li>After entering the user name and password, the upload4.htm page will be displayed:</li>
 </ol>
-<p><img alt="image9" src="../../../_images/image910.png" /></p>
+<p><img alt="image9" src="../../../_images/image912.png" /></p>
 <p><em>Page upload by HTTP with signon : Displaying the upload4.htm page</em></p>
 <ol class="arabic simple" start="3">
 <li>Press the “Browse” button to display the file selection dialog:</li>
 </ol>
-<p><img alt="image10" src="../../../_images/image1010.png" /></p>
+<p><img alt="image10" src="../../../_images/image1011.png" /></p>
 <p><em>Page upload by HTTP with signon : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
 <li>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</li>
 </ol>
-<p><img alt="image11" src="../../../_images/image1115.png" /></p>
+<p><img alt="image11" src="../../../_images/image1116.png" /></p>
 <p><em>Page upload by HTTP with signon : Sending the file</em></p>
 <ol class="arabic simple" start="5">
 <li>Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:</li>
 </ol>
-<p><img alt="image12" src="../../../_images/image1212.png" /></p>
+<p><img alt="image12" src="../../../_images/image1213.png" /></p>
 <p><em>Page upload by HTTP with signon : Confirmation of file upload</em></p>
 <p>Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
 <p>1.6.5. Uploading pages by drag and drop</p>
 <p>The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.</p>
 <p>1.6.5.1. Upload interface in the VIRTEL menu</p>
 <p>After clicking on the Drag &amp; Drop Upload link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:</p>
-<p><img alt="image13" src="../../../_images/image1310.png" /></p>
+<p><img alt="image13" src="../../../_images/image1311.png" /></p>
 <p><em>Drag and drop upload interface</em></p>
 <p>The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.</p>
 <p>1.6.5.2. Displaying upload results</p>
-<p><img alt="image14" src="../../../_images/image147.png" /></p>
+<p><img alt="image14" src="../../../_images/image148.png" /></p>
 <p><em>Displaying upload results</em></p>
 <p>The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.</p>
 <p>1.6.5.3. Upload summary report</p>
 <p>After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes.</p>
 <p>The summary is not displayed when files are dragged and dropped one at a time.</p>
 <p>In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:</p>
-<p><img alt="image15" src="../../../_images/image156.png" /></p>
+<p><img alt="image15" src="../../../_images/image157.png" /></p>
 <p><em>Upload summary report</em></p>
 <p>1.6.5.4. Extracting upload results as an Excel spreadsheet</p>
-<p><a class="reference internal" href="../../../_images/image164.png"><img alt="image16" src="../../../_images/image164.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
+<p><a class="reference internal" href="../../../_images/image165.png"><img alt="image16" src="../../../_images/image165.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="17%" />
@@ -2982,7 +2984,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 </tr>
 </tbody>
 </table>
-<p><a class="reference internal" href="../../../_images/image174.png"><img alt="image17" src="../../../_images/image174.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Delete button allows the administrator to clear the results log.</p>
+<p><a class="reference internal" href="../../../_images/image175.png"><img alt="image17" src="../../../_images/image175.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Delete button allows the administrator to clear the results log.</p>
 </div>
 <div class="section" id="uploading-pages-in-batch">
 <h4>1.6.6. Uploading pages in batch<a class="headerlink" href="#uploading-pages-in-batch" title="Permalink to this headline">¶</a></h4>
@@ -3004,7 +3006,7 @@ The following example shows a Windows command to upload all files of type .htm f
 <dt>virmsg.txt</dt>
 <dd>page template for displaying upload result messages</dd>
 <dt>uplbas</dt>
-<dd>external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See “Uploading pages by HTTP (secured by signon)” &lt;#_V456UG_75 for a list of upload transactions.</dd>
+<dd>external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See <a class="reference internal" href="#v456ug-http-uploading-pages-signon"><span class="std std-ref">“Uploading pages by HTTP (secured by signon)”</span></a> for a list of upload transactions.</dd>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -3079,14 +3081,14 @@ the command window.</p>
 <p>The VIRTEL Web Access user can use the Settings menu to modify certain options such as font size, 3270 key mappings,
 and color schemes. The user’s settings are stored in a browser local storage which remains valid so long as cookies are
 not deleted from the workstation. The settings stored in the user’s local storage override the default settings for
-VIRTEL Web Access which are stored in the w2hparm.js file. See “Global modification of Web Access settings” &lt;#_V456UG_99.</p>
-<p>1.7.1. Web Access Settings menu</p>
-<p><a class="reference internal" href="../../../_images/image18.jpeg"><img alt="image18" src="../../../_images/image18.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a> When the user clicks this button on the VIRTEL Web Access toolbar, the window shown below opens:</p>
-<p><img alt="image19" src="../../../_images/image193.png" /></p>
+VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="reference internal" href="#v456ug-global-modifications"><span class="std std-ref">“Global modification of Web Access settings”</span></a>.</p>
+<p id="v456ug-settings-menu">1.7.1. Web Access Settings menu</p>
+<p><a class="reference internal" href="../../../_images/image182.jpeg"><img alt="image18" src="../../../_images/image182.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a> When the user clicks this button on the VIRTEL Web Access toolbar, the window shown below opens:</p>
+<p><img alt="image19" src="../../../_images/image194.png" /></p>
 <p><em>VIRTEL Web Access Settings menu (part 1 of 3)</em></p>
-<p><img alt="image20" src="../../../_images/image203.png" /></p>
+<p><img alt="image20" src="../../../_images/image204.png" /></p>
 <p><em>VIRTEL Web Access Settings menu (part 2 of 3)</em></p>
-<p><img alt="image21" src="../../../_images/image2110.png" /></p>
+<p><img alt="image21" src="../../../_images/image2111.png" /></p>
 <p>VIRTEL Web Access Settings menu (part 3 of 3)</p>
 <p>1.7.2. Contents of the fields</p>
 <dl class="docutils">
@@ -3214,15 +3216,15 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See “Global modific
 </div>
 <div class="section" id="web-access-settings-menu">
 <h4>1.7.4. Web Access Settings menu<a class="headerlink" href="#web-access-settings-menu" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference internal" href="../../../_images/image221.jpeg"><img alt="image22" src="../../../_images/image221.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image222.jpeg"><img alt="image22" src="../../../_images/image222.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a></p>
 <p>When the user clicks this button on the VIRTEL Web Access toolbar the window shown below opens.</p>
-<p><img alt="image23" src="../../../_images/image232.png" /></p>
+<p><img alt="image23" src="../../../_images/image233.png" /></p>
 <p>VIRTEL Web Access Settings menu (Display tab)</p>
-<p><img alt="image24" src="../../../_images/image242.png" /></p>
+<p><img alt="image24" src="../../../_images/image243.png" /></p>
 <p>VIRTEL Web Access Settings menu (Miscellaneous tab)</p>
-<p><img alt="image25" src="../../../_images/image252.png" /></p>
+<p><img alt="image25" src="../../../_images/image253.png" /></p>
 <p>VIRTEL Web Access Settings menu (Key Mappings tab)</p>
-<p><img alt="image26" src="../../../_images/image262.png" /></p>
+<p><img alt="image26" src="../../../_images/image263.png" /></p>
 <p>VIRTEL Web Access Settings menu (Import tab)</p>
 <p>1.7.4.1. Display tab parameters</p>
 <dl class="docutils">
@@ -3261,8 +3263,8 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See “Global modific
 <dt>Vertical line, Horiz line</dt>
 <dd>When activated, causes the position of the cursor to be marked with a vertical line and/or a horizontal line extending to the edges of the 3270 window (also known as a “crosshair cursor”).</dd>
 </dl>
-<p>To add or remove a style, see “Customize display style” &lt;#_V456UG_280)</p>
-<p>Administrators can add some new customs style as describe in the section “How to customize display style” &lt;#_V456UG_280</p>
+<p>To add or remove a style, see <a class="reference internal" href="#v456ug-customize-display"><span class="std std-ref">“Customize display style”</span></a>)</p>
+<p>Administrators can add some new customs style as describe in the section <a class="reference internal" href="#v456ug-customize-display"><span class="std std-ref">“How to customize display style”</span></a>.</p>
 <dl class="docutils">
 <dt>Display Style</dt>
 <dd><p class="first">Allows a choice of color schemes by selection of CSS style sheet. Possible values are :</p>
@@ -3276,7 +3278,7 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See “Global modific
 </dl>
 </dd>
 </dl>
-<p>Administrators can add some new customs print style as describe in the section “How to customize print style” &lt;#_V456UG_281</p>
+<p>Administrators can add some new customs print style as describe in the section <a class="reference internal" href="#v456ug-customize-print"><span class="std std-ref">“How to customize print style”</span></a>.</p>
 <dl class="docutils">
 <dt>Print style</dt>
 <dd><p class="first">Allows a choice of color schemes for the screen capture window. Possible values are :</p>
@@ -3394,7 +3396,7 @@ are explicit enough to not require more precision.</p>
 </div>
 </div>
 <div class="section" id="global-modification-of-web-access-settings">
-<h4>1.7.6. Global modification of Web Access settings<a class="headerlink" href="#global-modification-of-web-access-settings" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-global-modifications"></span><h4>1.7.6. Global modification of Web Access settings<a class="headerlink" href="#global-modification-of-web-access-settings" title="Permalink to this headline">¶</a></h4>
 <p>Those installations who wish to modify the default Web Access settings for all users can do so by uploading the w2hparm.js file. This file is included in the sources.zip file which can be obtained from the VIRTEL Web Access menu accessible by URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>.</p>
 <p>The w2hparm.js file as delivered contains the following source code:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">w2hparm</span> <span class="n">default</span> <span class="n">values</span>
@@ -3752,7 +3754,7 @@ are explicit enough to not require more precision.</p>
 <div class="section" id="contents-of-menu">
 <h4>1.8.1. Contents of menu<a class="headerlink" href="#contents-of-menu" title="Permalink to this headline">¶</a></h4>
 <p>An example of the application selection menu is shown in the figure below:</p>
-<p><img alt="image27" src="../../../_images/image27.jpeg" /></p>
+<p><img alt="image27" src="../../../_images/image271.jpeg" /></p>
 <p>Application selection menu</p>
 <p>The application selection menu contains clickable links to the transactions defined under the entry point. A transaction will appear in the menu if all of the following conditions are met:
 • The “Application type” is 1 (VTAM) or 2 (VIRTEL)
@@ -3772,7 +3774,7 @@ press F1 to update the entry point, then refresh the appmenu.htm page in the bro
 <dt>3270 presentation</dt>
 <dd>This presentation mode, which uses the WEB3270.htm page template, is designed for experienced 3270 users who do not require the presentation enhancements offered by VIRTEL Web Modernisation. It offers a user interface which matches as closely as possible that of a real 3270 screen.</dd>
 <dt>Ajax 3270</dt>
-<dd>This presentation mode is similar to the 3270 presentation mode, but it uses a static main page (WEB2AJAX.htm) together with an Ajax-loaded sub-page (WEB2SUB.html). This can reduce network load and provide faster response time with a better 3270 user experience. Ajax mode also offers password encryption as an option (see “Password encryption” &lt;#_V456UG_266).</dd>
+<dd>This presentation mode is similar to the 3270 presentation mode, but it uses a static main page (WEB2AJAX.htm) together with an Ajax-loaded sub-page (WEB2SUB.html). This can reduce network load and provide faster response time with a better 3270 user experience. Ajax mode also offers password encryption as an option (see <a class="reference internal" href="#v456ug-password-encryption"><span class="std std-ref">“Password encryption”</span></a>).</dd>
 <dt>HTML presentation</dt>
 <dd>This presentation mode, which uses the WEB2VIRT.htm page template, is intended as a first step towards VIRTEL Web Modernisation. In this mode the 3270 screen image is displayed as an HTML form, to which presentation enhancements such as drop-down lists, checkboxes, and calendars can be added by means of VIRTEL Web Modernisation scenarios (see <a class="reference internal" href="#v456ug-virtel-scenarios"><span class="std std-ref">“Web Modernisation VIRTEL Scenarios”</span></a>).</dd>
 <dt>Ajax HTML</dt>
@@ -3792,7 +3794,7 @@ VIR0021S and application type 2. Security type 1 requires the user to sign on so
 which applications the user is authorized to. The user must also be authorized to the applist transaction itself by its
 internal name (W2H-90 or CLI-90).</p>
 <p>The figure below shows the definition of the applist transaction CLI-90:</p>
-<p><img alt="image81" src="../../../_images/image812.png" />
+<p><img alt="image81" src="../../../_images/image814.png" />
 Definition of applist transaction</p>
 </div>
 <div class="section" id="application-menu-as-the-default-transaction-for-the-entry-point">
@@ -3802,7 +3804,7 @@ point, the application selection menu will be displayed whenever the user access
 (for example, <a class="reference external" href="http://n.n.n.n:41002">http://n.n.n.n:41002</a> for line C-HTTP).</p>
 <p>The default transaction is the transaction whose external name is the same as the entry point name, and the example
 below shows the default transaction for the CLIWHOST entry point:</p>
-<p><img alt="image82" src="../../../_images/image821.png" />
+<p><img alt="image82" src="../../../_images/image822.png" />
 Specifying the application selection menu in the default transaction</p>
 </div>
 </div>
@@ -3812,7 +3814,7 @@ Specifying the application selection menu in the default transaction</p>
 has a virtual 3287 printer associated with the user’s 3270 display terminal. The name of the virtual printer is displayed
 in the status bar at the bottom of the Web Access window. Data sent to the virtual printer from a host application (for
 example, CICS, QMF, or VPS) is captured by VIRTEL and is saved in virtual storage.</p>
-<p><img alt="image28" src="../../../_images/image281.png" /> A printer icon appears in the Web Access toolbar to notify the user that print data is available.</p>
+<p><img alt="image28" src="../../../_images/image282.png" /> A printer icon appears in the Web Access toolbar to notify the user that print data is available.</p>
 <p>When the user clicks on this icon, VIRTEL sends the print data to the user’s browser, either as an attached file or in a
 pop-up window.
 Two types of virtual printer are supported:
@@ -3823,11 +3825,11 @@ Two types of virtual printer are supported:
 <p>In the VIRTEL configuration file, LUTYPE1 virtual printers are defined with the “Terminal type” field set to 1 or S. The
 “Relay” field contains the VTAM LU name known to the host application. The figure below shows an example definition
 of 80 LUTYPE1 virtual printers with LU names REHIM000 to REHIM079:</p>
-<p><img alt="image83" src="../../../_images/image831.png" />
+<p><img alt="image83" src="../../../_images/image832.png" />
 VIRTEL definition of LUTYPE1 virtual printers</p>
 <p>Similarly, LUTYPE3 virtual printers are defined with the “Terminal type” field set to 2 or P. The figure below shows an
 example definition of 80 LUTYPE3 virtual printers with LU names REHIP000 to REHIP079:</p>
-<p><img alt="image84" src="../../../_images/image841.png" />
+<p><img alt="image84" src="../../../_images/image842.png" />
 VIRTEL definition of LUTYPE3 virtual printers</p>
 </div>
 <div class="section" id="associating-virtual-printers-with-terminals">
@@ -3836,7 +3838,7 @@ VIRTEL definition of LUTYPE3 virtual printers</p>
 field of the terminal pool definition. In the example below, Web Access terminals with LU names REHVT000-079 are
 associated with virtual printer LU names REHIM000-079 (LUTYPE3). There is a one-for-one correspondence between
 the display terminal’s LU name and the printer LU name.</p>
-<p><img alt="image85" src="../../../_images/image851.png" />
+<p><img alt="image85" src="../../../_images/image852.png" />
 VIRTEL terminal definitions for virtual printers</p>
 </div>
 <div class="section" id="autoconnect-for-virtual-printers">
@@ -3850,9 +3852,9 @@ definition should contain the name of an entry point which specifies VIR0021B as
 must have one transaction whose “Application” field contains the name of the host application to which the printer is
 to be connected.
 The example below shows an entry point definition for connecting printers to CICS:</p>
-<p><img alt="image86" src="../../../_images/image861.png" />
+<p><img alt="image86" src="../../../_images/image862.png" />
 Entry point definition for virtual printer autoconnect</p>
-<p><img alt="image87" src="../../../_images/image871.png" />
+<p><img alt="image87" src="../../../_images/image872.png" />
 Transaction definition for virtual printer autoconnect</p>
 </div>
 <div class="section" id="vtam-definitions-for-virtual-printers">
@@ -3904,7 +3906,7 @@ DFH3270P</td>
 offers printing must indicate the name of an “Input Scenario”. The scenario processes the HTTP request containing a
 PF=SCENARIO-PRINT parameter which is issued when the user presses the “Get print data” icon (below) on the VIRTEL
 Web Access toolbar.</p>
-<p><img alt="image28" src="../../../_images/image281.png" /></p>
+<p><img alt="image28" src="../../../_images/image282.png" /></p>
 <p>The scenario accesses the SCS print data which is accumulated in a VIRTEL variable called $PRINT$, and instructs
 VIRTEL to send the print data to the browser as an attached file.
 Several suitable scenarios are delivered as standard in the VIRTEL SAMPLIB and LOADLIB:</p>
@@ -3943,7 +3945,7 @@ delivered to the workstation as PDF documents.</p>
 <p>The SCENPPDF scenario captures PCL data and sends it to an external server for conversion. The external server is a
 Windows Server 2008R2 platform running the Syspertec PCL2PDF application. The VIRTEL configuration must include a
 line with external name PCL2PDF which defines the IP address of the Windows server, as shown in the example below:</p>
-<p><img alt="image88" src="../../../_images/image881.png" />
+<p><img alt="image88" src="../../../_images/image882.png" />
 VIRTEL line definition for PCL2PDF server</p>
 <p>A batch job, supplied as member PCL2PDF of the VIRTEL SAMPLIB, allows the definition of the PCL2PDF line to be
 added to the VIRTEL configuration.</p>
@@ -3957,7 +3959,7 @@ added to the VIRTEL configuration.</p>
 <p>To activate the file transfer function you must access TSO via a VIRTEL transaction which specifies SCENINDT in both
 the “Input scenario” and the “Output scenario” fields of the transaction definition. The figure below shows the sample
 TSO transaction W2H-13 supplied with VIRTEL:</p>
-<p><img alt="image89" src="../../../_images/image891.png" />
+<p><img alt="image89" src="../../../_images/image892.png" />
 TSO transaction definition for file transfer</p>
 <p>The source code of the SCENINDT scenario is supplied in the VIRTEL SAMPLIB.
 To activate the file transfer function when a user-written scenario is specified in the transaction definition, the
@@ -3967,42 +3969,42 @@ INDSCEN$ macro instruction must be added to both the input and output sections o
 <h4>1.10.2. Toolbar icons for file transfer<a class="headerlink" href="#toolbar-icons-for-file-transfer" title="Permalink to this headline">¶</a></h4>
 <p>When file transfer is activated, two new icons (receive file) and (send file) appear on the VIRTEL Web Access toolbar:
 VIRTEL Web Access toolbar for TSO file transfer:-</p>
-<p><img alt="image90" src="../../../_images/image90.png" />
+<p><img alt="image90" src="../../../_images/image901.png" />
 <em>VIRTEL Web Access toolbar for TSO file transfer</em></p>
 </div>
 <div class="section" id="receiving-a-file">
 <h4>1.10.3. Receiving a file<a class="headerlink" href="#receiving-a-file" title="Permalink to this headline">¶</a></h4>
 <p>To transfer a file from TSO to your workstation, go to ISPF option 6 (or TSO READY) and click the “Receive” icon on the
 toolbar. The “Receive File” dialog will open:</p>
-<p><img alt="image30" src="../../../_images/image30.jpeg" />
+<p><img alt="image30" src="../../../_images/image301.jpeg" />
 VIRTEL IND$FILE receive dialog (part 1)</p>
 <p>Specify the TSO dataset name, surrounded by quotes if necessary. Dataset names without quotes will be prefixed by
 your TSO prefix (usually your userid). Click either “Text” or “Binary”. “Text” translates the file from EBCDIC to ASCII and
 inserts carriage return line feed sequences (x’0D0A’) at the end of each record. “Binary” performs no translation.
 Finally click “Receive” to start the transfer.
 When the file transfer is complete, the browser’s “Download” dialog appears:</p>
-<p><img alt="image31" src="../../../_images/image311.jpeg" />
+<p><img alt="image31" src="../../../_images/image312.jpeg" />
 VIRTEL IND$FILE receive dialog (part 2)</p>
 <p>Click “Save”. The “Save As” dialog will open to allow you to specify the name and location of the destination file on
 your workstation:</p>
-<p><img alt="image32" src="../../../_images/image321.jpeg" />
+<p><img alt="image32" src="../../../_images/image322.jpeg" />
 VIRTEL IND$FILE receive dialog (part 3)</p>
 <p>Now select the destination file and click “Save”. If the file already exists you will be prompted for permission to
 overwrite it. The “Download Complete” dialog appears when the file has been saved:</p>
-<p><img alt="image33" src="../../../_images/image33.jpeg" />
+<p><img alt="image33" src="../../../_images/image331.jpeg" />
 VIRTEL IND$FILE receive dialog (part 4)</p>
 </div>
 <div class="section" id="sending-a-file">
 <h4>1.10.4. Sending a file<a class="headerlink" href="#sending-a-file" title="Permalink to this headline">¶</a></h4>
 <p>To transfer a file from your workstation to TSO, go to ISPF option 6 (or TSO READY) and click the “Send” icon on the
 toolbar. The “Send File” dialog will open:</p>
-<p><img alt="image34" src="../../../_images/image34.jpeg" />
+<p><img alt="image34" src="../../../_images/image341.jpeg" />
 VIRTEL IND$FILE send dialog (part 1)</p>
 <p>Click the “Browse...” button and the “Choose File to Upload” dialog will appear:</p>
-<p><img alt="image35" src="../../../_images/image35.jpeg" />
+<p><img alt="image35" src="../../../_images/image351.jpeg" />
 VIRTEL IND$FILE send dialog (part 2)</p>
 <p>Choose the file you want to upload, and click “Open” to return to the “Send File” dialog:</p>
-<p><img alt="image36" src="../../../_images/image36.jpeg" /></p>
+<p><img alt="image36" src="../../../_images/image361.jpeg" /></p>
 <p>VIRTEL IND$FILE send dialog (part 3)</p>
 <p>Specify the TSO dataset name, surrounded by quotes if necessary. Dataset names without quotes will be prefixed by
 your TSO prefix (usually your userid).</p>
@@ -4014,7 +4016,7 @@ the TSO file must not already exist.</p>
 <p>Click either “Text” or “Binary”. “Text” translates the file from ASCII to EBCDIC and treats carriage return line feed
 sequences (x’0D0A’) as end of each record markers. “Binary” performs no translation. Finally click “Send” to start the
 transfer.</p>
-<p><img alt="image37" src="../../../_images/image37.jpeg" /></p>
+<p><img alt="image37" src="../../../_images/image371.jpeg" /></p>
 <p>VIRTEL IND$FILE send dialog (part 4)</p>
 <p>The message “File transfer complete” is displayed upon successful completion of the upload.</p>
 </div>
@@ -4033,11 +4035,11 @@ different, by default the BE-850 table will be used to support CECP 500 internat
 1.10.6. Saving and reusing file transfer parameters
 Users who frequently carry out the same or similar file transfers can save the file transfer parameters for later reuse.
 To save a file transfer, enter the dataset name and the type of transfer, then click the “Save” button:</p>
-<p><img alt="image38" src="../../../_images/image381.png" />
+<p><img alt="image38" src="../../../_images/image382.png" />
 VIRTEL IND$FILE Receive dialog (saved transfers)</p>
 <p>The user can then choose a name for the saved transfer, and click “OK” to save the parameters. At the next transfer,
 the user clicks the name of the saved transfer to retrieve the parameters, then clicks “Receive” to start the transfer.</p>
-<p><img alt="image39" src="../../../_images/image391.png" />
+<p><img alt="image39" src="../../../_images/image392.png" />
 VIRTEL IND$FILE Saving the file transfer parameters</p>
 <p>Users can save transfer parameters for both “Send” and “Receive”. The paramters are saved in browser local storage.
 The number of sets of parameters which can be saved is limited only by the amount of local storage available.</p>
@@ -4058,7 +4060,7 @@ enter its URL directly:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">VTAM</span>
 </pre></div>
 </div>
-<p><img alt="image91" src="../../../_images/image911.png" />
+<p><img alt="image91" src="../../../_images/image913.png" />
 <em>VTAM logon screen in VIRTEL Web Access mode</em></p>
 <p>To access, for example, TSO with logmode SNX32705, type TSO in the “LOGON APPLID” field and SNX32705 in the
 “LOGMODE” field, then press enter.</p>
@@ -4077,7 +4079,7 @@ before the screen is displayed.</p>
 value of the PRFSECU parameter in the VIRTCT) in the RACF FACILITY class. Provided the “Security” field is set to 1, and
 security is activated in the VIRTCT, only those users having READ access to the resource can obtain the VTAM logon
 screen.</p>
-<p><img alt="image41" src="../../../_images/image4110.png" />
+<p><img alt="image41" src="../../../_images/image4111.png" />
 <em>Example VIRTEL transaction for VTAM logon via Web Access</em></p>
 </div>
 </div>
@@ -4125,9 +4127,9 @@ the file custom.css.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for coloring the toolbar according to CICS region</em></p>
-<p><img alt="image42" src="../../../_images/image421.jpeg" />
+<p><img alt="image42" src="../../../_images/image422.jpeg" />
 Web Access screen with yellow toolbar for SPCICSP</p>
-<p><img alt="image43" src="../../../_images/image43.jpeg" />
+<p><img alt="image43" src="../../../_images/image431.jpeg" />
 Web Access screen with pink toolbar for SPCICSQ</p>
 </div>
 <div class="section" id="example-adding-custom-text-to-the-toolbar">
@@ -4164,16 +4166,16 @@ displayed for application TSO2A.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the toolbar</em></p>
-<p><img alt="image44" src="../../../_images/image44.jpeg" />
+<p><img alt="image44" src="../../../_images/image441.jpeg" />
 <em>Web Access screen with custom text in the toolbar</em></p>
 </div>
 <div class="section" id="example-showing-hiding-server-informations">
-<h4>1.12.4. Example: Showing / Hiding server informations<a class="headerlink" href="#example-showing-hiding-server-informations" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-hide-information"></span><h4>1.12.4. Example: Showing / Hiding server informations<a class="headerlink" href="#example-showing-hiding-server-informations" title="Permalink to this headline">¶</a></h4>
 <p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the
 maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is
 displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
 and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.</p>
-<p><img alt="image45" src="../../../_images/image45.jpeg" /></p>
+<p><img alt="image45" src="../../../_images/image451.jpeg" /></p>
 <p>The running version and the level of maintenance cannot be hidden, only the server name can be permanently
 removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -4187,7 +4189,7 @@ removed by modifying the w2hparm.hideinfo attribut present in the customized w2h
 information in toolbar&#8221; in the Display tab of the settings panel.</p>
 </div>
 <div class="section" id="example-hiding-the-toolbar">
-<h4>1.12.5. Example: Hiding the toolbar<a class="headerlink" href="#example-hiding-the-toolbar" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-hide-toolbar"></span><h4>1.12.5. Example: Hiding the toolbar<a class="headerlink" href="#example-hiding-the-toolbar" title="Permalink to this headline">¶</a></h4>
 <p>The administrator may wish to prevent users from accessing features like copy/paste, print, and settings. This example
 shows how to hide the toolbar using a custom.css file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customization</span>
@@ -4197,7 +4199,7 @@ shows how to hide the toolbar using a custom.css file:</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for hiding the toolbar</em></p>
-<p>You can also use custom.js to remove icons individually from the toolbar, see “Removing unwanted toolbar icons” &lt;#_V456UG_126.</p>
+<p>You can also use custom.js to remove icons individually from the toolbar, see <a class="reference internal" href="#v456ug-remove-icons"><span class="std std-ref">“Removing unwanted toolbar icons”</span></a>.</p>
 </div>
 <div class="section" id="example-modifying-the-3270-colors">
 <h4>1.12.6. Example: Modifying the 3270 colors<a class="headerlink" href="#example-modifying-the-3270-colors" title="Permalink to this headline">¶</a></h4>
@@ -4439,7 +4441,7 @@ unchanged.</p>
 <p><em>Example custom.css to manage a toolbar icon with a non standard size</em></p>
 </div>
 <div class="section" id="example-removing-unwanted-toolbar-icons">
-<h4>1.13.3. Example: Removing unwanted toolbar icons<a class="headerlink" href="#example-removing-unwanted-toolbar-icons" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-remove-icons"></span><h4>1.13.3. Example: Removing unwanted toolbar icons<a class="headerlink" href="#example-removing-unwanted-toolbar-icons" title="Permalink to this headline">¶</a></h4>
 <p>This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -4476,8 +4478,8 @@ unchanged.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">settingsV2 is présent only if w2hparms.js contains &#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V2&#8221;}, or &#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V1+V2&#8221;}</p>
 </div>
-<p>To hide the toolbar completely, see “Hiding the toolbar” &lt;#_V456UG_121.</p>
-<p>To hide only the Virtel Application name, see “Showing / Hiding server informations” &lt;#_V456UG_121.</p>
+<p>To hide the toolbar completely, see <a class="reference internal" href="#v456ug-hide-toolbar"><span class="std std-ref">“Hiding the toolbar”</span></a>.</p>
+<p>To hide only the Virtel Application name, see <a class="reference internal" href="#v456ug-hide-information"><span class="std std-ref">“Showing / Hiding server informations”</span></a>.</p>
 </div>
 <div class="section" id="example-positionning-toolbar-icons">
 <h4>1.13.4. Example: Positionning toolbar icons<a class="headerlink" href="#example-positionning-toolbar-icons" title="Permalink to this headline">¶</a></h4>
@@ -4638,7 +4640,7 @@ VIR3270.customPfKeysHotspotRegex =
 </pre></div>
 </div>
 <p><em>Example custom.css to define the style of the watermark</em></p>
-<p><img alt="image46" src="../../../_images/image461.png" />
+<p><img alt="image46" src="../../../_images/image462.png" />
 <em>Web Access screen with application name as watermark</em></p>
 <p>1.13.8. Example: Modifying Web Access Settings</p>
 <p>The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
@@ -4667,7 +4669,7 @@ site-specific pages, such as CLI-DIR.</p>
 <div class="section" id="standard-help-page">
 <h4>1.14.1. Standard help page<a class="headerlink" href="#standard-help-page" title="Permalink to this headline">¶</a></h4>
 <p>The standard help.html page is shown below:</p>
-<p><img alt="image48" src="../../../_images/image48.jpeg" />
+<p><img alt="image48" src="../../../_images/image481.jpeg" />
 <em>Standard Virtel help page for Web Access</em></p>
 </div>
 <div class="section" id="installing-a-custom-help-page">
@@ -4698,10 +4700,10 @@ domain. The ADDON is available for download at the following address:</p>
 <p><a class="reference external" href="https://addons.mozilla.org/fr/firefox/addon/virtel-webaccess-add-on/">https://addons.mozilla.org/fr/firefox/addon/virtel-webaccess-add-on/</a></p>
 <p>If the browser version is compatible with the latest version of ADDON published click the “+ Add to Firefox” icon. Any
 additional window will open to confirm the installation.</p>
-<p><img alt="image49" src="../../../_images/image49.jpeg" /></p>
+<p><img alt="image49" src="../../../_images/image491.jpeg" /></p>
 <p>If the browser version is too old to be supported by the latest version of ADDON published, the link “+ Add to Firefox”
 will not be available. Click on the link “View full history version”at the bottom of the page as shown below.</p>
-<p><img alt="image50" src="../../../_images/image50.jpeg" /></p>
+<p><img alt="image50" src="../../../_images/image501.jpeg" /></p>
 <p>On the next page, select the ADDON version of the most compatible version available for the browser in use. Click “+
 Add to Firefox”. Several versions of the ADDON can be installed in parallel, however, only one must be active at any
 given time.</p>
@@ -4710,7 +4712,7 @@ given time.</p>
 domain. The extension can be obtained on the Chrome WebStore at the following address:-</p>
 <p><a class="reference external" href="https://chrome.google.com/webstore/category/apps?hl=en-GB">https://chrome.google.com/webstore/category/apps?hl=en-GB</a></p>
 <p>Enter “Virtel Extender WebAccess” in the search field and launch the search. The extension appears in the “Extensions” list.</p>
-<p><img alt="image51" src="../../../_images/image511.jpeg" /></p>
+<p><img alt="image51" src="../../../_images/image512.jpeg" /></p>
 <p>Click on the extension item and then, on the next page, click “Add to Chrome”.</p>
 <p>1.15.2. Additional module requirements</p>
 <p>Once the additional module has been installed, it will be necessary to specify the permissions.</p>
@@ -4718,11 +4720,11 @@ domain. The extension can be obtained on the Chrome WebStore at the following ad
 <p>On the toolbar, click on the “Menu” in the upper right (1) icon, then click on “Modules” (2). If this section does not
 appear directly in the tool window, click on “Customise” (3) tool to add “Modules” in the menu. It is also possible to
 directly access the extension manager by typing “about: addons” in the URL bar of the browser.</p>
-<p><img alt="image52" src="../../../_images/image521.png" /></p>
+<p><img alt="image52" src="../../../_images/image522.png" /></p>
 <p>On the ADDONS page, select “Extension” to display the VIRTEL extension. Click on the “Options” button to display a
 setup screen similar to the one shown below.</p>
-<p><img alt="image53" src="../../../_images/image53.jpeg" /></p>
-<p><img alt="image54" src="../../../_images/image54.jpeg" /></p>
+<p><img alt="image53" src="../../../_images/image531.jpeg" /></p>
+<p><img alt="image54" src="../../../_images/image541.jpeg" /></p>
 <p>The following options should be set</p>
 <dl class="docutils">
 <dt>Automatic update</dt>
@@ -4755,12 +4757,12 @@ setup screen similar to the one shown below.</p>
 </dl>
 <p>1.15.2.2. Chrome</p>
 <p>On the toolbar, click on the “Customize and control Google Chrome” icon in the upper right (1), then click on the “Settings” (2), then the extensions section. It is also possible to directly access the extension manager by typing “chrome://extensions” in the URL bar of the browser. From the extensions page, select “Extension” to display the VIRTEL extension.</p>
-<p><img alt="image55" src="../../../_images/image55.jpeg" /></p>
+<p><img alt="image55" src="../../../_images/image551.jpeg" /></p>
 <p>Verify that the extension is activated and click on the “Options” link.</p>
-<p><img alt="image56" src="../../../_images/image56.jpeg" /></p>
+<p><img alt="image56" src="../../../_images/image561.jpeg" /></p>
 <p>The following options should be set:</p>
-<p><img alt="image57" src="../../../_images/image57.jpeg" /></p>
-<p><img alt="image58" src="../../../_images/image581.png" /></p>
+<p><img alt="image57" src="../../../_images/image571.jpeg" /></p>
+<p><img alt="image58" src="../../../_images/image582.png" /></p>
 <dl class="docutils">
 <dt>Allow copy / paste operation:</dt>
 <dd><p class="first">Allows operations copy / cut / paste on the domains specified in the definitions parameter.</p>
@@ -4795,11 +4797,11 @@ settings.</p>
 <h4>1.15.3. Operational audit<a class="headerlink" href="#operational-audit" title="Permalink to this headline">¶</a></h4>
 <p>Firefox and Chrome. Use the right mouse button to open a selection menu for copy / cut / paste operations. The
 operational status of this feature is displayed in an ICON in top right.</p>
-<p><a class="reference internal" href="../../../_images/image591.png"><img alt="image59" src="../../../_images/image591.png" style="width: 1.95686in; height: 1.92531in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image592.png"><img alt="image59" src="../../../_images/image592.png" style="width: 1.95686in; height: 1.92531in;" /></a></p>
 <p><em>Green: Indicates that the module is properly installed and that the field is allowed.</em></p>
-<p><a class="reference internal" href="../../../_images/image60.png"><img alt="image60" src="../../../_images/image60.png" style="width: 1.95686in; height: 1.93583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image601.png"><img alt="image60" src="../../../_images/image601.png" style="width: 1.95686in; height: 1.93583in;" /></a></p>
 <p><em>Orange: Indicates that the module is installed correctly but the field is not defined as an authorized domain. (Available only for Chrome).</em></p>
-<p><a class="reference internal" href="../../../_images/image617.png"><img alt="image61" src="../../../_images/image617.png" style="width: 1.96740in; height: 1.94635in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image619.png"><img alt="image61" src="../../../_images/image619.png" style="width: 1.96740in; height: 1.94635in;" /></a></p>
 <p><em>Red: The expansion module is not installed. For Firefox, it may also indicate that the field is not allowed, or that the navigation is done in private mode. If running in private mode, the fonction is supported from version 0.6.33.1 and above.</em></p>
 </div>
 </div>
@@ -4816,8 +4818,8 @@ second click on the REC button terminates the recording and allows the user to a
 been recorded.
 The PLAY button on the toolbar allows the user to display a list of macros already recorded, and to replay or delete a
 macro.</p>
-<p><a class="reference internal" href="../../../_images/image621.jpeg"><img alt="image62" src="../../../_images/image621.jpeg" style="width: 0.34375in; height: 0.40625in;" /></a> REC button</p>
-<p><a class="reference internal" href="../../../_images/image631.png"><img alt="image63" src="../../../_images/image631.png" style="width: 0.34375in; height: 0.33333in;" /></a> PLAY button</p>
+<p><a class="reference internal" href="../../../_images/image622.jpeg"><img alt="image62" src="../../../_images/image622.jpeg" style="width: 0.34375in; height: 0.40625in;" /></a> REC button</p>
+<p><a class="reference internal" href="../../../_images/image632.png"><img alt="image63" src="../../../_images/image632.png" style="width: 0.34375in; height: 0.33333in;" /></a> PLAY button</p>
 <div class="section" id="storing-the-macros">
 <h4>1.16.1. Storing the Macros<a class="headerlink" href="#storing-the-macros" title="Permalink to this headline">¶</a></h4>
 <p>Depending on the version of VIRTEL, the macros can be saved in:
@@ -4867,7 +4869,7 @@ directory):</p>
 </pre></div>
 </div>
 <p><em>custom.js to activate the VirtelMacros function</em></p>
-<p>The custom.js file must be activated as described in “Site customization of Javascript functions” &lt;#_V456UG_124.</p>
+<p>The custom.js file must be activated as described in <a class="reference internal" href="#v456ug-customization-javascript-functions"><span class="std std-ref">“Site customization of Javascript functions”</span></a>.</p>
 <p>Once this has been done, each VIRTEL Web Access user has access to one or more macros.json files stored in:</p>
 <ul class="simple">
 <li>a dedicated directory labeled with his userid,</li>
@@ -4886,7 +4888,7 @@ to the custom.js file loaded into the CLI-DIR directory (or another site-defined
 </pre></div>
 </div>
 <p><em>custom.js to activate the VirtelMacros synchronization function</em></p>
-<p>The custom.js file must be activated as described in “Site customization of Javascript functions” &lt;#_V456UG_124.
+<p>The custom.js file must be activated as described in <a class="reference internal" href="#v456ug-customization-javascript-functions"><span class="std std-ref">“Site customization of Javascript functions”</span></a>.
 Once this has been done, each VIRTEL Web Access user macros are automaticaly synchonized beetween the two VIRTEL.</p>
 </div>
 <div class="section" id="managing-the-macros">
@@ -4897,11 +4899,10 @@ To create the file, the user only has to sign on to VIRTEL Web Access and record
 saved with a user-specified name, the macros.json file is automatically uploaded into VIRTEL’s USR-DIR directory.
 For subsequent Web Access sessions, the macros.json file is automatically loaded and the user’s macros are displayed
 in the macro window</p>
-<p><a class="reference internal" href="../../../_images/image641.png"><img alt="image64" src="../../../_images/image641.png" style="width: 3.88219in; height: 3.16677in;" /></a>
+<p><a class="reference internal" href="../../../_images/image642.png"><img alt="image64" src="../../../_images/image642.png" style="width: 3.88219in; height: 3.16677in;" /></a>
 <em>Display macros for VirtelMacros function</em></p>
 <p>To execute a macro, just double-click on it. To delete a macro, click on the red icon and confirm deletion. To delete, edit
-or copy a macro, just right-click on the macro and choose the desired function. For macro edition, see “Available Macro
-Commands” &lt;#_V456UG_145 below.</p>
+or copy a macro, just right-click on the macro and choose the desired function. For macro edition, see <a class="reference internal" href="#v456ug-macro-commands"><span class="std std-ref">“Available Macro Commands”</span></a> below.</p>
 <p>1.16.2.2. Global and Group macros management</p>
 <p>Only the administrator can upload macros.json files into the global (GLB-DIR) and group (GRP-DIR) directories.
 To define a new global or group macros.json file, the administrator must use the “Dynamic Directory Interface” wich is
@@ -4925,7 +4926,7 @@ entry point with external name “usrcap&#8221;.</p>
 </pre></div>
 </div>
 <p><em>Example of an empty macros.json file</em></p>
-<p>1.16.2.4. Available macro commands</p>
+<p id="v456ug-macro-commands">1.16.2.4. Available macro commands</p>
 <p>The following commands can be used in a macro file :</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&quot;any string of characters to input into 3270 screen&quot;
 move(pos)
@@ -5160,7 +5161,7 @@ VTAM application) from the Multi-Session screen.</p>
 <p>When the same VTAM application is re-invoked from a VIRTEL Multi-Session screen using a different transaction from
 the one which was previously active, VIRTEL will call the OUTPUT scenario of the new transaction so that the scenario
 can terminate the previous transaction and start the new one. In this case the IF$ SESSION-SWITCH instruction is
-useful (refer to “IF$ instructions” &lt;#_V456UG_177 for further details).</p>
+useful (refer to <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instructions”</span></a> for further details).</p>
 </div>
 <div class="section" id="screens-instruction">
 <h4>1.23.7. SCREENS instruction<a class="headerlink" href="#screens-instruction" title="Permalink to this headline">¶</a></h4>
@@ -5291,7 +5292,7 @@ LASTMSG=YES,ASYNCH=YES
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Value</th>
-<th class="head">&#160;</th>
+<th class="head">&nbsp;</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -5331,9 +5332,9 @@ LASTMSG=YES,ASYNCH=YES
 <dt>AND=(WAIT,&#8217;string&#8217;)</dt>
 <dd>(optional) after sending the message to the application, the scenario waits until the application sends a message containing the specified character string. Intervening messages are processed by VIRTEL but are not passed to the scenario or sent to the terminal.</dd>
 <dt>AND=(SCRIPT,&#8217;string&#8217;)</dt>
-<dd>(optional) after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual).</dd>
+<dd>(optional) after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see <a class="reference internal" href="../Virtel456CN/connectivity_guide.html"><span class="doc">“Connection/Disconnection Scripts&#8221;</span></a>)  in the VIRTEL Connectivity Reference manual).</dd>
 <dt>AND=(PROCESS-RESPONSE,&#8217;string&#8217;)</dt>
-<dd>(optional) allows an input scenario to explicitly request that control is to be returned when the next message is received from the application. The string is optional. If specified, after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual).</dd>
+<dd>(optional) allows an input scenario to explicitly request that control is to be returned when the next message is received from the application. The string is optional. If specified, after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see <a class="reference internal" href="../Virtel456CN/connectivity_guide.html"><span class="doc">“Connection/Disconnection Scripts&#8221;</span></a> in the VIRTEL Connectivity Reference manual).</dd>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -5349,7 +5350,7 @@ LASTMSG=YES,ASYNCH=YES
 </div>
 <dl class="docutils">
 <dt>MAXTIME=nnn</dt>
-<dd>(optional) specifies the maximum time, in hundredths of a second, that the scenario will wait for a message from the application. When this time expires, the APPLICATION-TIMEOUT flag will be set (see “IF$” &lt;#_V456UG_177 instruction) and the scenario will resume execution. If the MAXTIME parameter is not specified, then the scenario will wait indefinitely, or until VIRTEL disconnects the session when the timeout value of the entry point is exceeded.</dd>
+<dd>(optional) specifies the maximum time, in hundredths of a second, that the scenario will wait for a message from the application. When this time expires, the APPLICATION-TIMEOUT flag will be set (see <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>) and the scenario will resume execution. If the MAXTIME parameter is not specified, then the scenario will wait indefinitely, or until VIRTEL disconnects the session when the timeout value of the entry point is exceeded.</dd>
 <dt>LASTMSG=YES</dt>
 <dd>(optional) requests disconnection after the application responds to the pfkey sent.</dd>
 <dt>ASYNCH=YES</dt>
@@ -5434,7 +5435,7 @@ ELSE=processx
 <dt>varname</dt>
 <dd>Specifies the name of a VIRTEL variable (must be placed in quotes)</dd>
 <dt>CURRENT-SCREEN-POSITION</dt>
-<dd>The tested variable is located at the current screen position as set or incremented by “SET$ SCREEN-POSITION” &lt;#_V456UG_201.</dd>
+<dd>The tested variable is located at the current screen position as set or incremented by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</dd>
 <dt>LTRIM</dt>
 <dd><p class="first">(optional) Removes a set of characters from the start of a list variable (see Note) before copying it).</p>
 <blockquote class="last">
@@ -5483,7 +5484,7 @@ ELSE=processx
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Note 1: For row, col and len, a value of &#8216;=&#8217; means the value of the current rown col or len as set by “SET$ SCREENPOSITION” &lt;#_V456UG_201</p>
+<p>Note 1: For row, col and len, a value of &#8216;=&#8217; means the value of the current rown col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</p>
 <p class="last">Note 2: If the variable being tested does not exist, it is not considered empty and the CASE$ branches at the ELSE=label.</p>
 </div>
 </div>
@@ -5550,7 +5551,7 @@ lower case.</p>
 <dt>filename</dt>
 <dd>the name of a file attached to the HTTP request or SMTP message. If this parameter is omitted, the first attached file will be read.</dd>
 </dl>
-<p>If the input request does not contain the requested file, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$ instruction” &lt;#_V456UG_177.</p>
+<p>If the input request does not contain the requested file, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</p>
 </div>
 <div class="section" id="copy-input-to-screen">
 <h4>1.23.22. COPY$ INPUT-TO-SCREEN<a class="headerlink" href="#copy-input-to-screen" title="Permalink to this headline">¶</a></h4>
@@ -5560,7 +5561,7 @@ lower case.</p>
 </div>
 <dl class="docutils">
 <dt>name1</dt>
-<dd>the name of an HTTP query parameter (see “VIRTEL URL formats” &lt;#_V456UG_11)</dd>
+<dd>the name of an HTTP query parameter (see <a class="reference internal" href="#v456ug-url-formats"><span class="std std-ref">“VIRTEL URL formats”</span></a>)</dd>
 <dt>row,col,len</dt>
 <dd>row, column, and length of the destination field on the screen.</dd>
 <dt>type</dt>
@@ -5573,7 +5574,7 @@ lower case.</p>
 </div></blockquote>
 </dd>
 </dl>
-<p>If the parameter name1 is not present in the input request, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$” &lt;#_V456UG_177 instruction.</p>
+<p>If the parameter name1 is not present in the input request, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</p>
 <p>If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the input value is too long for the field, the data will be silently truncated.</p>
 </div>
 <div class="section" id="copy-input-to-variable">
@@ -5584,7 +5585,7 @@ lower case.</p>
 </div>
 <dl class="docutils">
 <dt>name1</dt>
-<dd>the name of an HTTP query parameter (see “VIRTEL URL formats” &lt;#_V456UG_11)</dd>
+<dd>the name of an HTTP query parameter (see <a class="reference internal" href="#v456ug-url-formats"><span class="std std-ref">“VIRTEL URL formats”</span></a>)</dd>
 <dt>name2</dt>
 <dd>the name of a VIRTEL table variable. If the variable does not exist, it will be created.</dd>
 <dt>type</dt>
@@ -5594,7 +5595,7 @@ lower case.</p>
 <dt>TYPE-OFFSET-LENGTH</dt>
 <dd>indicates that the input parameter consists of two numeric values separated by a comma. The first numeric value is converted to binary and stored in the first 8 bytes of the result variable, and the second numeric value is converted to binary and stored in the next 4 bytes of the result variable. The 12-byte value thus produced is in the format required by the OFFAREA parameter for the read-partial and write-append functions of the VIRSVFIO service program.</dd>
 <dt>TYPE=REPLACE</dt>
-<dd>indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values. If the parameter name1 is not present in the input request, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$” &lt;#_V456UG_177 instruction.</dd>
+<dd>indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values. If the parameter name1 is not present in the input request, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -5679,8 +5680,8 @@ COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;*filenameVar&#39;,VAR=&#39;varname&#39;,
 <dt>TYPE=EBCDIC</dt>
 <dd>indicates that the result should be converted to EBCDIC. This is the default value if the HTTP request is in EBCDIC.</dd>
 <dt>TYPE=LINEBUFFER</dt>
-<dd><p class="first">indicates that the result should be converted to MakePDF “LINEBUF” format for input to the VIRSVPDF service program. The page template contains special tags (see “Generating PDF output” &lt;#_V456UG_62) which are converted to the format required by MakePDF.</p>
-<p class="last">If the specified file does not exist in the current VIRTEL directory, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$” &lt;#_V456UG_177 instruction.</p>
+<dd><p class="first">indicates that the result should be converted to MakePDF “LINEBUF” format for input to the VIRSVPDF service program. The page template contains special tags (see <a class="reference internal" href="#v456ug-pdf-output"><span class="std std-ref">“Generating PDF output”</span></a>) which are converted to the format required by MakePDF.</p>
+<p class="last">If the specified file does not exist in the current VIRTEL directory, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</p>
 </dd>
 </dl>
 </div></blockquote>
@@ -5716,7 +5717,7 @@ COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;*filenameVar&#39;,VAR=&#39;varname&#39;,
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Note 1: for row, col and len, a value of &#8216;=&#8217; means the value of the current row, col or len as set by “SET$ SCREENPOSITION” &lt;#_V456UG_201</p>
+<p>Note 1: for row, col and len, a value of &#8216;=&#8217; means the value of the current row, col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</p>
 <p class="last">Note 2: the fourth sub-parameter (ht) of the SCREEN parameter is optional. If the fourth sub-parameter is specified, then attributes and binary zeroes will be replaced by blanks. To keep compatibility with existing scenarios, the instruction will ignore attributes and binary zeroes if the fourth SCREEN sub-parameter is NOT specified.</p>
 </div>
 <p>1.23.27. COPY$ SYSTEM-TO-VARIABLE</p>
@@ -5744,7 +5745,7 @@ TYPE=type
 <dt>USER-SECURITY-PROFILE</dt>
 <dd>Information from the user’s RACF profile is copied to the table variable. When USER-SECURITY-PROFILE is specified, item represents the name of a field in the RACF user profile. The supported fields are listed below.</dd>
 <dt>NEW-PASSTICKET-FOR-TRANSACTION</dt>
-<dd>Generate a PassTicket allowing the current USERID. If the generation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$” &lt;#_V456UG_177 instruction.</dd>
+<dd>Generate a PassTicket allowing the current USERID. If the generation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</dd>
 <dt>item</dt>
 <dd>When class is HTTP-HEADER, the following standard HTTP headers, described in RFC2616, may be specified:</dd>
 </dl>
@@ -5774,18 +5775,18 @@ TYPE=type
 <dt>When class is NAME-OF or VALUE-OF, the following VIRTEL data items may be specified:</dt>
 <dd><dl class="first docutils">
 <dt>CHARACTER-SET</dt>
-<dd>The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see “EBCDIC translation management” &lt;#_V456UG_56)</dd>
+<dd>The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see <a class="reference internal" href="#v456ug-ebcdic-translation"><span class="std std-ref">“EBCDIC translation management”</span></a>)</dd>
 <dt>CURRENT-FOREACH-INDEX</dt>
 <dd>Value of the current index in a FOREACH loop.</dd>
 <dt>CURRENT-FOREACH-VARIABLE</dt>
-<dd>Value of the variable at current index in a FOREACH loop (see “FOREACH$ VALUE-IN-VARIABLE” &lt;#_V456UG_176).</dd>
+<dd>Value of the variable at current index in a FOREACH loop (see <a class="reference internal" href="#v456ug-foreach-variable"><span class="std std-ref">“FOREACH$ VALUE-IN-VARIABLE”</span></a>).</dd>
 </dl>
 <p>CURRENT-LINE</p>
 <p>CURRENT-COLUMN</p>
 <p>CURRENT-LENGTH</p>
 <dl class="last docutils">
 <dt>CURRENT-HEIGHT</dt>
-<dd>The current values of the named field in the “SET$ SCREEN-POSITION” &lt;#_V456UG_201.</dd>
+<dd>The current values of the named field in the <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</dd>
 <dt>DATE-TIME</dt>
 <dd>The current date and time (14 characters in the format YYYYMMDDHHMMSS)</dd>
 <dt>DIRECTORY</dt>
@@ -6111,13 +6112,13 @@ ACTION$ TO-APPLICATION,KEY=7D
 <dt>name2</dt>
 <dd>the name of a VIRTEL variable.</dd>
 <dt>row,col,len</dt>
-<dd>row, column, and length of the destination field on the screen. If the SCREEN parameter is not specified, the variable will be copied to the current cursor position. For row, col and len, a value of &#8216;=&#8217; means the value of the current row, col or len as set by “SET$ SCREEN-POSITION” &lt;#_V456UG_201.</dd>
+<dd>row, column, and length of the destination field on the screen. If the SCREEN parameter is not specified, the variable will be copied to the current cursor position. For row, col and len, a value of &#8216;=&#8217; means the value of the current row, col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</dd>
 <dt>type</dt>
 <dd><p class="first">(optional) may indicate one of the following values:</p>
 <blockquote class="last">
 <div><dl class="docutils">
 <dt>TYPE=ERASE-FIELD</dt>
-<dd>indicates that the destination field is cleared to nulls before copying the data. If the variable name2 does not exist, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$” &lt;#_V456UG_177 instruction. If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the variable value is too long for the field, the data will be silently truncated.</dd>
+<dd>indicates that the destination field is cleared to nulls before copying the data. If the variable name2 does not exist, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>. If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the variable value is too long for the field, the data will be silently truncated.</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -6143,7 +6144,7 @@ ACTION$ TO-APPLICATION,KEY=7D
 <dt>VALUE-OF</dt>
 <dd>A VIRTEL data item is to be updated. When VALUE-OF is specified, item represents the name of a VIRTEL data item. VALUE-OF is synonymous with NAME-OF.</dd>
 <dt>OLD-PASSTICKET-FOR-TRANSACTION</dt>
-<dd>Evaluates the Passticket currently in &#8216;varname&#8217; for the transaction &#8216;item&#8217;. If the evaluation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the “IF$” &lt;#_V456UG_177 instruction.</dd>
+<dd>Evaluates the Passticket currently in &#8216;varname&#8217; for the transaction &#8216;item&#8217;. If the evaluation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -6160,7 +6161,7 @@ ACTION$ TO-APPLICATION,KEY=7D
 <dt>LOGMODE</dt>
 <dd>The name of the logmode to be used for the VTAM session with the host application. The logmode can be set in an Identification Scenario. It overrides the logmode specified in the transaction or terminal definition.</dd>
 <dt>ROUTING-PARAMETER</dt>
-<dd>Allows an Identification Scenario to override the value of the routing parameter specified in the userdata field of the URL (see “Virtel URL formats” &lt;#_V456UG_11).</dd>
+<dd>Allows an Identification Scenario to override the value of the routing parameter specified in the userdata field of the URL (see <a class="reference internal" href="#v456ug-url-formats"><span class="std std-ref">“Virtel URL formats”</span></a>).</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -6227,7 +6228,7 @@ DEBUG$ SNAP[,TERMINAL],
 <dt>TRACE,TERMINAL or NOTRACE,TERMINAL</dt>
 <dd>Starts or stops a trace on the current terminal. The trace is written to the VIRTRACE file.</dd>
 <dt>TRACE,SCENARIO or NOTRACE,SCENARIO</dt>
-<dd>Starts or stops a trace on the scenario. The trace is downloadable by means of the “CREATE-VARIABLE-IF” &lt;#_V456UG_52 tag intended for use by Virtel Studio.</dd>
+<dd>Starts or stops a trace on the scenario. The trace is downloadable by means of the <a class="reference internal" href="#v456ug-create-variable-if"><span class="std std-ref">“CREATE-VARIABLE-IF”</span></a> tag intended for use by Virtel Studio.</dd>
 <dt>SNAP</dt>
 <dd><p class="first">Generates a snapshot of the VIRTEL internal trace table in the SYSPRINT file (same as the command F VIRTEL,SNAP).</p>
 <p class="last">SNAP is described in the “Audit and Performance” chapter of the VIRTEL Messages and Operations Guide.</p>
@@ -6267,9 +6268,9 @@ DEBUG$ SNAP[,TERMINAL],
 <dt>P1</dt>
 <dd>Specifies the type of processing applicable. The permissible values are:</dd>
 <dt>AS-PFKEY</dt>
-<dd>Indicates that the indicated portion of the screen is to be interpreted as a function key hyperlink. The value of the function key (ENTER, PF1, etc) can be specified by parameter P2. If P2 is not specified, then the data at the indicated screen position is interpreted as the name of the function key. The values allowable as function key names are the same as those for “PfkField” &lt;#_V456UG_41)</dd>
+<dd>Indicates that the indicated portion of the screen is to be interpreted as a function key hyperlink. The value of the function key (ENTER, PF1, etc) can be specified by parameter P2. If P2 is not specified, then the data at the indicated screen position is interpreted as the name of the function key. The values allowable as function key names are the same as those for <a class="reference internal" href="#v456ug-pfkfield"><span class="std std-ref">“PfkField”</span></a>)</dd>
 <dt>AS-PARAMETER</dt>
-<dd>Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the $DECLARE instruction. See “JavaScript functions” &lt;#_V456UG_171 for further details.</dd>
+<dd>Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the $DECLARE instruction. See <a class="reference internal" href="#v456ug-javascript-functions"><span class="std std-ref">“JavaScript functions”</span></a> for further details.</dd>
 <dt>AS-HREF</dt>
 <dd>Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the $DECLARE instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the $DECLARE instruction, if specified.</dd>
 <dt>P2</dt>
@@ -6283,7 +6284,7 @@ DEBUG$ SNAP[,TERMINAL],
 <p class="first admonition-title">Note</p>
 <p class="last">In conformance with assembler syntax, quotes and ampersands in the URL must be specified as double quotes and double ampersands.</p>
 </div>
-<p>1.23.34.1. JavaScript functions</p>
+<p id="v456ug-javascript-functions">1.23.34.1. JavaScript functions</p>
 <p>For the AS-PARAMETER form of the $DECLARE instruction, the TO parameter specifies the name of a JavaScript function which will be called when the user clicks on the field. The function name is case-sensitive. The following parameters are passed to the JavaScript function:</p>
 <dl class="docutils">
 <dt>Parameter 1</dt>
@@ -6481,7 +6482,7 @@ FROM=&#39;varname1&#39;,TO=&#39;varname2&#39;,
 </div>
 </div>
 <div class="section" id="foreach-value-in-variable-instruction">
-<h4>1.23.45. FOREACH$ VALUE-IN-VARIABLE instruction<a class="headerlink" href="#foreach-value-in-variable-instruction" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-foreach-variable"></span><h4>1.23.45. FOREACH$ VALUE-IN-VARIABLE instruction<a class="headerlink" href="#foreach-value-in-variable-instruction" title="Permalink to this headline">¶</a></h4>
 <p>The FOREACH$ VALUE-IN-VARIABLE instruction marks the start of a loop on a table variable. Nested pairs of FOREACH$
 VALUE-IN-VARIABLE and ENDFOR$ instructions are permitted.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>groupname FOREACH$ VALUE-IN-VARIABLE,VAR=&#39;varname&#39;
@@ -6552,7 +6553,7 @@ issued and processing may continue.</p>
 scenario.</p>
 </div>
 <div class="section" id="if-instruction">
-<h4>1.23.50. IF$ instruction<a class="headerlink" href="#if-instruction" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-if"></span><h4>1.23.50. IF$ instruction<a class="headerlink" href="#if-instruction" title="Permalink to this headline">¶</a></h4>
 <p>This instruction enables the testing of the presence of a value in a 3270 screen, or a value in a VIRTEL variable, or a
 condition set by a previous instruction, and directs the subsequent processing flow.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>IF$ (row,col,len),EQ=&#39;value&#39;,THEN=process1,ELSE=process2
@@ -6653,7 +6654,7 @@ be included in both the input scenario and the output scenario.</p>
 <p>A sample of the usage of LABEL$ instruction is available in the PERFORM$ insctruction description.</p>
 </div>
 <div class="section" id="map-instruction">
-<h4>1.23.53. MAP$ instruction<a class="headerlink" href="#map-instruction" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-map"></span><h4>1.23.53. MAP$ instruction<a class="headerlink" href="#map-instruction" title="Permalink to this headline">¶</a></h4>
 <p>The MAP$ instruction defines the format of a flat-format data area known as a “commarea”, and describes how VIRTEL
 converts XML or Query input data to commarea format. The MAP$ instruction may also be used in conjunction with
 the TOVAR$ instruction to convert an output commarea to VIRTEL variables, which can be used with an appropriate
@@ -6673,7 +6674,7 @@ which names the VIRTEL variable into which the commarea is to be stored.
 Conversion from commarea format to VIRTEL variables (“commarea-to-output” conversion) may be performed by
 means of an INITIAL scenario or an OUTPUT scenario. The scenario begins with a description of the commarea format
 (MAP$ BEGIN, MAP$ END, MAP$ AREA, and MAP$ AREA-ATTRIBUTE), and continues with a TOVAR$ instruction which
-defines the source of the commarea. See the description of the “TOVAR$ instruction” &lt;#_V456UG_203 for further details of
+defines the source of the commarea. See the description of the <a class="reference internal" href="#v456ug-tovar"><span class="std std-ref">“TOVAR$ instruction”</span></a> for further details of
 commarea-to-output conversion.</p>
 </div>
 <div class="section" id="map-abend">
@@ -6748,7 +6749,7 @@ parameters described below, the 12-byte value thus produced can subsequently be 
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">XML tag names are case sensitive. WITH=&#8217;Title&#8217; is not the same as WITH=&#8217;TITLE&#8217; A variation of the MAP$ AREA instruction allows the value of the field to be copied into a VIRTEL variable, in addition to being placed in the commarea. The variable will be created, if necessary, and its value will be set when the commarea is created by a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction. The value can then be tested by means of an IF$ VARIABLE instruction (see “Examples of presentation scripts” &lt;#_V456UG_215):</p>
+<p class="last">XML tag names are case sensitive. WITH=&#8217;Title&#8217; is not the same as WITH=&#8217;TITLE&#8217; A variation of the MAP$ AREA instruction allows the value of the field to be copied into a VIRTEL variable, in addition to being placed in the commarea. The variable will be created, if necessary, and its value will be set when the commarea is created by a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction. The value can then be tested by means of an IF$ VARIABLE instruction (see <a class="reference internal" href="#v456ug-virtel-scenarios"><span class="std std-ref">“Examples of Virtel Scenarios”</span></a>):</p>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>MAP$ AREA,TO-VARIABLE,VAR=&#39;varname&#39;,
     WITH=&#39;name&#39;,LENGTH=nnn,TYPE=type
@@ -6958,7 +6959,7 @@ INDIC MAP$ END
 <p class="first admonition-title">Note</p>
 <p class="last">XML tag names are case sensitive.</p>
 </div>
-<p id="v456ug-186">1.23.61. MAP$ EXECUTE</p>
+<p id="v456ug-map-execute">1.23.61. MAP$ EXECUTE</p>
 <p>The MAP$ EXECUTE instruction allows a sequence of MAP$ instructions to be interrupted in order to enter data on the
 3270 screen before continuing the analysis. The MAP$ EXECUTE instruction branches to a subroutine defined
 elsewhere in the scenario. The subroutine ends with a RETURN$ instruction.</p>
@@ -7047,8 +7048,8 @@ MYMAP TOVAR$ FROM-VARIABLE,VAR=&#39;MYCOMMAREA&#39; generate variables
 <p class="first admonition-title">Note</p>
 <p class="last">MAP$ FROM-INPUT with a FIELD parameter is accepted and treated as MAP$ FROM-FIELD.</p>
 </div>
-<p>The MAP$ FROM-INPUT instruction obtains its input data from an incoming HTTP request. The HTTP request may use either via the GET method (where the input data is appended to the URL) or the POST method (where the input data is contained in the request body). When the input format is XML, MAP$ FROM-INPUT treats the entire data area as XML data without any translation. See “HTTP request with XML input data” &lt;#_V456UG_217 for an example. MAP$ FROM-FIELD is preferred when using the GET method with XML input, because certain characters cannot be included in a URL without using URL-encoding.</p>
-<p>When the input format is QUERY, MAP$ FROM-INPUT expects the input data to contain one or more strings in the form fieldname=data. When the HTTP request uses the GET method, the strings are appended to the URL. The first string is preceded by a “?” character which separates it from the URL, and the remaining strings are separated by “&amp;” characters. When the HTTP request uses the POST method, the strings are contained in the request body, either one per line, or separated by “&amp;” characters if multiple strings are coded on the same line. For both the GET and POST methods, Query strings are expressed in URL-encoded format, where “+” sign represents a space, and “%xx” represents the hexadecimal encoding of an ASCII character. See “Parsing Query Input” &lt;#_V456UG_215 for examples.</p>
+<p>The MAP$ FROM-INPUT instruction obtains its input data from an incoming HTTP request. The HTTP request may use either via the GET method (where the input data is appended to the URL) or the POST method (where the input data is contained in the request body). When the input format is XML, MAP$ FROM-INPUT treats the entire data area as XML data without any translation. See <a class="reference internal" href="#v456ug-xml-input-data"><span class="std std-ref">“HTTP request with XML input data”</span></a> for an example. MAP$ FROM-FIELD is preferred when using the GET method with XML input, because certain characters cannot be included in a URL without using URL-encoding.</p>
+<p>When the input format is QUERY, MAP$ FROM-INPUT expects the input data to contain one or more strings in the form fieldname=data. When the HTTP request uses the GET method, the strings are appended to the URL. The first string is preceded by a “?” character which separates it from the URL, and the remaining strings are separated by “&amp;” characters. When the HTTP request uses the POST method, the strings are contained in the request body, either one per line, or separated by “&amp;” characters if multiple strings are coded on the same line. For both the GET and POST methods, Query strings are expressed in URL-encoded format, where “+” sign represents a space, and “%xx” represents the hexadecimal encoding of an ASCII character. See <a class="reference internal" href="#v456ug-parsing-query-input"><span class="std std-ref">“Parsing Query Input”</span></a> for examples.</p>
 </div>
 <div class="section" id="map-from-variable">
 <span id="v456ug-map-from-variable"></span><h4>1.23.64. MAP$ FROM-VARIABLE<a class="headerlink" href="#map-from-variable" title="Permalink to this headline">¶</a></h4>
@@ -7489,7 +7490,7 @@ POP$ VAR=&#39;varname&#39;
 </div>
 <div class="section" id="return-instruction">
 <h4>1.23.74. RETURN$ instruction<a class="headerlink" href="#return-instruction" title="Permalink to this headline">¶</a></h4>
-<p>This instruction terminates a subroutine called by a <a class="reference internal" href="#v456ug-186"><span class="std std-ref">“MAP$ EXECUTE”</span></a> instruction.</p>
+<p>This instruction terminates a subroutine called by a <a class="reference internal" href="#v456ug-map-execute"><span class="std std-ref">“MAP$ EXECUTE”</span></a> instruction.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>RETURN$
 </pre></div>
 </div>
@@ -7617,7 +7618,7 @@ followed by a SEND$ TO-LINE instruction in the case where OPTION$ specifies only
 <p>This instruction allows various parameters to be set.</p>
 </div>
 <div class="section" id="set-encoding">
-<h4>1.23.83. SET$ ENCODING<a class="headerlink" href="#set-encoding" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-set-encoding"></span><h4>1.23.83. SET$ ENCODING<a class="headerlink" href="#set-encoding" title="Permalink to this headline">¶</a></h4>
 <p>The SET$ ENCODING instruction allows a scenario specify the default encoding for subsequent pages sent to the terminal, and the encoding of subsequent URLs for this session.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SET$ ENCODING,UTF-8,&#39;charset&#39;
 SET$ ENCODING,UTF-8
@@ -7633,7 +7634,7 @@ SET$ ENCODING,ISO-FOR-COUNTRY
 <dt>ISO-FOR-COUNTRY</dt>
 <dd>specifies that the terminal will be placed in ISO mode.</dd>
 <dt>country</dt>
-<dd>specifies the name of the ISO translation table to be used. Refer to the “SET-COUNTRY-CODE” &lt;#_V456UG_56 for a list of valid country names. If country is not specified, the value of the COUNTRY parameter in the VIRTCT is used.</dd>
+<dd>specifies the name of the ISO translation table to be used. Refer to the <a class="reference internal" href="#v456ug-set-country-code"><span class="std std-ref">“SET-COUNTRY-CODE”</span></a> for a list of valid country names. If country is not specified, the value of the COUNTRY parameter in the VIRTCT is used.</dd>
 </dl>
 <p>By default, VIRTEL expects query parameters in the URL to be encoded in the same character set as the last page sent to the user. For the first URL of a session, where no page has yet been sent to the user, VIRTEL assumes the ISO encoding for the default country. The SET$ ENCODING instruction allows a scenario to override this default.</p>
 <p>The following example shows part of an input scenario. The scenario allows the user to override the default input encoding for query parameters by specifying either IE=UTF-8 or IE=ISO as an additional parameter of the URL.</p>
@@ -7649,7 +7650,7 @@ SETISO  SET$ ENCODING,ISO-FOR-COUNTRY,&#39;US&#39;
 SUITE   EQU *
 </pre></div>
 </div>
-<p>See also the “SET$ URL-ENCODING” &lt;#_V456UG_202.</p>
+<p>See also the <a class="reference internal" href="#v456ug-set-url-encoding"><span class="std std-ref">“SET$ URL-ENCODING”</span></a>.</p>
 </div>
 <div class="section" id="set-page">
 <h4>1.23.84. SET$ PAGE<a class="headerlink" href="#set-page" title="Permalink to this headline">¶</a></h4>
@@ -7696,7 +7697,7 @@ SET$ PAGE-FROM-VARIABLE,&#39;MYSCREEN&#39;,&#39;.html&#39;
 </dl>
 </dd>
 </dl>
-<p>1.23.87. SET$ SCREEN-POSITION</p>
+<p id="v456ug-set-screen-position">1.23.87. SET$ SCREEN-POSITION</p>
 <p>The SET$ SCREEN-POSITION instruction allows a scenario to specify a rectangular screen area and loop on it letting VIRTEL handle the current line (column, length) value, referenced by the equal sign (&#8216;=&#8217;).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SET$ SCREEN-POSITION,(row,col,len,ht),
 SET$ SCREEN-POSITION,TO-NEXT-LINE
@@ -7712,7 +7713,7 @@ SET$ SCREEN-POSITION,TO-NEXT-LINE
 <dt>ht</dt>
 <dd>height (in rows) of the portion of the screen to select</dd>
 <dt>TO-NEXT-LINE</dt>
-<dd>sets the current position to the next line. If the next line is after the end of the current screen rectangle,the NOTFOUND condition will be raised. This condition can be tested by means of the “IF$” &lt;#_V456UG_177 instruction.</dd>
+<dd>sets the current position to the next line. If the next line is after the end of the current screen rectangle,the NOTFOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</dd>
 </dl>
 </div>
 <div class="section" id="example">
@@ -7772,7 +7773,7 @@ FORM_COMPLETED EQU *
 <dt>tranname</dt>
 <dd>The external name of the transaction to be executed.</dd>
 </dl>
-<p>1.23.91. SET$ URL-ENCODING</p>
+<p id="v456ug-set-url-encoding">1.23.91. SET$ URL-ENCODING</p>
 <p>The SET$ URL-ENCODING instruction is similar to the SET$ ENCODING instruction, except that SET$ URL-ENCODING
 applies only to URLs received from the terminal, without affecting the default encoding for pages sent to the terminal.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SET$ URL-ENCODING,UTF-8,&#39;charset&#39;
@@ -7781,20 +7782,20 @@ SET$ URL-ENCODING,ISO-FOR-COUNTRY,&#39;country&#39;
 SET$ URL-ENCODING,ISO-FOR-COUNTRY
 </pre></div>
 </div>
-<p>Refer to “SET$ ENCODING” &lt;#_V456UG_capability_types9 for a description of the parameters.</p>
+<p>Refer to <a class="reference internal" href="#v456ug-set-encoding"><span class="std std-ref">“SET$ ENCODING”</span></a> for a description of the parameters.</p>
 <p>The SET$ URL-ENCODING instruction can be used in an identification scenario to specify the encoding for the first URL
 of a session, where no page has yet been sent to the user. If the encoding is not set by a scenario, VIRTEL assumes that
 the first URL of a session is encoded using the ISO encoding for the default country.</p>
 </div>
 <div class="section" id="tovar-instruction">
-<h4>1.23.92. TOVAR$ instruction<a class="headerlink" href="#tovar-instruction" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-tovar"></span><h4>1.23.92. TOVAR$ instruction<a class="headerlink" href="#tovar-instruction" title="Permalink to this headline">¶</a></h4>
 <p>The TOVAR$ instruction assists in the generation of XML from a fixed-format data area known as a commarea. The
 TOVAR$ instruction works in conjunction with the MAP$ instruction, which describes the format of the commarea and
 its relation to the XML datastream.</p>
 <p>Whereas the MAP$ instruction allows the XML stream to be converted into commarea format, the TOVAR$ instruction
 uses the MAP$ instructions to perform the reverse operation (“commarea-to-output” conversion). In other words, it
 takes a commarea as input and generates a series of VIRTEL variables, which, with the aid of a suitable page template,
-can be used to generate XML. See “VIRTEL as an XML parser/generator” &lt;#_V456UG_223.</p>
+can be used to generate XML. See <a class="reference internal" href="#v456ug-xml-parser"><span class="std std-ref">“VIRTEL as an XML parser/generator”</span></a>.</p>
 <p>The input commarea is specified according to one of the several formats of the TOVAR$ instruction, as shown in the
 following paragraphs.</p>
 </div>
@@ -7814,7 +7815,7 @@ instruction is normally contained in an INITIAL scenario.</p>
 </dl>
 </div>
 <div class="section" id="tovar-from-input">
-<h4>1.23.94. TOVAR$ FROM-INPUT<a class="headerlink" href="#tovar-from-input" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-tovar-from-input"></span><h4>1.23.94. TOVAR$ FROM-INPUT<a class="headerlink" href="#tovar-from-input" title="Permalink to this headline">¶</a></h4>
 <p>The TOVAR$ FROM-INPUT instruction requests VIRTEL to generate a set of VIRTEL variables from an input commarea.
 The input commarea is obtained from the data area of the incoming HTTP request. The TOVAR$ FROM-INPUT
 instruction is normally contained in an INITIAL scenario.</p>
@@ -8227,7 +8228,7 @@ applications, however, may build a 3270 screen in two or more segments, by sendi
 the terminal. Other applications may send asynchronous updates to a 3270 screen which are not a direct result of user
 input. Such applications need special handling to ensure that VIRTEL can present the updated 3270 screen image to
 the user without requiring the user to press ENTER to refresh the screen. VIRTEL handles this situation by means of an
-AJAX request containing the VerifyVirtelSession keyword (see “3270 Session Management” &lt;#_V456UG_17). By using an
+AJAX request containing the VerifyVirtelSession keyword (see <a class="reference internal" href="#v456ug-session-management"><span class="std std-ref">“3270 Session Management”</span></a>). By using an
 output scenario with a suitable page template, the HTML page can determine whether the 3270 screen image has
 been updated, and if so can dynamically refresh the data displayed in the browser.</p>
 <p>An example scenario is shown below. As usual, the name of this scenario must be specified in the “Output Scenario”
@@ -8321,7 +8322,7 @@ will occur every 10 seconds thereafter.</p>
 transaction definition. The source code for the SCENAUTN scenario is supplied in the VIRTEL SAMPLIB.</p>
 </div>
 <div class="section" id="pdf-output-generation">
-<h4>1.23.97.6. PDF output generation<a class="headerlink" href="#pdf-output-generation" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-pdf"></span><h4>1.23.97.6. PDF output generation<a class="headerlink" href="#pdf-output-generation" title="Permalink to this headline">¶</a></h4>
 <p>This example shows a scenario which generates a PDF output file using the MakePDF program product via the service
 program VIRSVPDF.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENPDF SCREENS EXEC=NO
@@ -8361,7 +8362,7 @@ END
 </div>
 <p><em>HTTP presentation module: PDF output generation</em></p>
 <p>For the purpose of this scenario, INPUT.TXT, DOCOPT.TXT and LAYOUT.TXT are files created on a PC, then uploaded to
-VIRTEL as page templates (see “Uploading HTML Pages” &lt;#_V456UG_68). The TYPE=LINEBUFFER parameters on the COPY$
+VIRTEL as page templates (see <a class="reference internal" href="#v456ug-uploading-html-pages"><span class="std std-ref">“Uploading HTML Pages”</span></a>). The TYPE=LINEBUFFER parameters on the COPY$
 statements tell VIRTEL that these files should be converted to MakePDF “LINEBUF” format. The VIRSV$ statement calls
 an intermediary service program VIRSVPDF which sets up the commarea and calls MakePDF. Then the SEND$
 statement sends back the result file to the browser, giving it the name my.pdf.</p>
@@ -8434,7 +8435,7 @@ TEXTEND
 <p>VIRTEL Web Integration allows XML or other web services requests to be interpreted and transformed into requests which can be processed by legacy applications such as CICS/COBOL, with the results being transformed back into XML format for transmission via HTTP or SMTP. By using the scenario language described in section <a class="reference internal" href="#v456ug-virtel-scenarios"><span class="std std-ref">“Web Modernisation VIRTEL Scenarios”</span></a>, legacy transactions can be converted into Web Services.</p>
 </div>
 <div class="section" id="parsing-query-input">
-<h4>1.24.2. Parsing Query input<a class="headerlink" href="#parsing-query-input" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-parsing-query-input"></span><h4>1.24.2. Parsing Query input<a class="headerlink" href="#parsing-query-input" title="Permalink to this headline">¶</a></h4>
 <p>By using a combination of an INITIAL scenario and a VIRTEL transaction script, VIRTEL can transform Query parameters
 in an HTTP request into a fixed-format data area for processing by a COBOL legacy application program.</p>
 <p>1.24.2.1. HTTP request with Query data (GET method)</p>
@@ -8533,7 +8534,7 @@ P1=Update                          P3=Return                        P12=Server
 <p><em>VIRTEL transaction definition for Query input data</em></p>
 </div>
 <div class="section" id="parsing-xml-input">
-<h4>1.24.3. Parsing XML input<a class="headerlink" href="#parsing-xml-input" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-xml-input-data"></span><h4>1.24.3. Parsing XML input<a class="headerlink" href="#parsing-xml-input" title="Permalink to this headline">¶</a></h4>
 <p>By using a combination of an INITIAL scenario and a VIRTEL transaction script, VIRTEL can transform XML input data in
 an HTTP request into a fixed-format data area for processing by a COBOL legacy application program.</p>
 <p>1.24.3.1. HTTP request with XML input data</p>
@@ -8846,7 +8847,7 @@ SKIP07      EQU *
 <p>HTTP presentation module for XML output</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">It is also possible for the application program to create VIRTEL table variables directly, either by means of an “FAE5” &lt;#_V456UG_247 structured field, or via the HOST4WEB command “SET VARIABLE” &lt;#_V456UG_0. The FAE5 structured field allows the application to pass large amounts of raw data to VIRTEL without being constrained by the limitations of the 3270 screen geometry. For such “VIRTEL-aware” applications, an output scenario is not necessary.</p>
+<p class="last">It is also possible for the application program to create VIRTEL table variables directly, either by means of an <a class="reference internal" href="#v456ug-fae5"><span class="std std-ref">“FAE5”</span></a> structured field, or via the HOST4WEB command <a class="reference internal" href="#v456ug-set-variable"><span class="std std-ref">“SET VARIABLE”</span></a>. The FAE5 structured field allows the application to pass large amounts of raw data to VIRTEL without being constrained by the limitations of the 3270 screen geometry. For such “VIRTEL-aware” applications, an output scenario is not necessary.</p>
 </div>
 <p>1.24.4.2. Page template for XML output</p>
 <p>The URL in this example is /demohttp/xmldemo.xml+tran3 which requests VIRTEL to use the page template
@@ -8871,7 +8872,7 @@ program:</p>
 <p><em>Example page template for XML output data</em></p>
 </div>
 <div class="section" id="virtel-as-an-xml-parser-generator">
-<h4>1.24.5. VIRTEL as an XML parser/generator<a class="headerlink" href="#virtel-as-an-xml-parser-generator" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-xml-parser"></span><h4>1.24.5. VIRTEL as an XML parser/generator<a class="headerlink" href="#virtel-as-an-xml-parser-generator" title="Permalink to this headline">¶</a></h4>
 <p>An application can use the VIRTEL HTTP server as an XML parser/generator engine. A client program establishes a TCP/
 IP session with the VIRTEL HTTP server, and sends XML or commarea data to VIRTEL in an HTTP request. VIRTEL
 performs conversion to or from XML, and returns the resulting commarea or XML data to the client program in the
@@ -8921,7 +8922,7 @@ CAREA MAP$ END
 <p>The figure below shows an example transaction definition to be used for XML-to-commarea conversion using the
 VIRTEL XML parser. The external name “tranxml” is the name referenced in the URL of the HTTP request which calls
 the transaction. The special application name $NONE$ indicates that no host application is to be called. The /&amp;S order
-specified in the “TIOA at Logon” field causes the INITIAL scenario “SCONVXML” &lt;#_V456UG_0 to be executed.</p>
+specified in the “TIOA at Logon” field causes the INITIAL scenario <a class="reference internal" href="#v456ug-sconvxml"><span class="std std-ref">“SCONVXML”</span></a> to be executed.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>TRANSACTION DETAIL DEFINITION ---------------------- Applid: VIRTELD2 16:39:25
 Internal name ===&gt; HTTP-16X               To associate with an entry point name
 External name ===&gt; tranxml                Name displayed on user menu
@@ -8948,7 +8949,7 @@ P1=Update P3=Return P12=Server
 </div>
 <p><em>VIRTEL transaction definition for XML-to-commarea conversion</em></p>
 <p>The initial scenario for XML-to-commarea conversion is shown below:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Member name SCONVXML
+<div class="highlight-default" id="v456ug-sconvxml"><div class="highlight"><pre><span></span>Member name SCONVXML
 
 SCONVXML    SCREENS APPL=SCONVXML
 SCENARIO    INITIAL
@@ -9003,7 +9004,7 @@ INITIAL scenario SCONVXML is inserted into the HTTP response data:</p>
 <p>The figure below shows an example transaction definition to be used for commarea-to-XML conversion using the
 VIRTEL XML generator. The external name “trancom” is the name referenced in the URL of the HTTP request which
 calls the transaction. The special application name $NONE$ indicates that no host application is to be called. The /&amp;S
-order specified in the “TIOA at Logon” field causes the INITIAL scenario “SCONVPLA” &lt;#_V456UG_0 to be executed.</p>
+order specified in the “TIOA at Logon” field causes the INITIAL scenario <a class="reference internal" href="#v456ug-sconvpla"><span class="std std-ref">“SCONVPLA”</span></a> to be executed.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>TRANSACTION DETAIL DEFINITION ---------------------- Applid: VIRTELD2 16:39:58
 Internal name ===&gt; HTTP-16Y               To associate with an entry point name
 External name ===&gt; trancom                Name displayed on user menu
@@ -9029,7 +9030,7 @@ P1=Update                       P3=Return                           P12=Server
 </div>
 <p><em>VIRTEL transaction definition for commarea-to-XML conversion</em></p>
 <p>The initial scenario for commarea-to-XML conversion is shown below:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Member name SCONVPLA
+<div class="highlight-default" id="v456ug-sconvpla"><div class="highlight"><pre><span></span>Member name SCONVPLA
 
 SCONVPLA SCREENS APPL=SCONVPLA
 SCENARIO INITIAL
@@ -9165,7 +9166,7 @@ SAMPLIB. The start of the MAPGJCL job is shown below:</p>
 <dt>&#8216;XML=fieldname&#8217;</dt>
 <dd>Generates an INITIAL scenario which accepts XML input encoded within an HTML form-field named fieldname, and produces an output commarea. The generated scenario contains a <a class="reference internal" href="#v456ug-map-from-field"><span class="std std-ref">“MAP$ FROM-FIELD”</span></a> instruction with the parameter FIELD=fieldname.</dd>
 <dt>COM</dt>
-<dd><p class="first">When VAR is not specified: Generates an INITIAL scenario which accepts an input commarea in the body of an HTTP request, and produces a set of VIRTEL variables whose names correspond to the fields in the copybook. The generated scenario contains a “TOVAR$ FROM-INPUT” &lt;#_V456UG_203 instruction.</p>
+<dd><p class="first">When VAR is not specified: Generates an INITIAL scenario which accepts an input commarea in the body of an HTTP request, and produces a set of VIRTEL variables whose names correspond to the fields in the copybook. The generated scenario contains a <a class="reference internal" href="#v456ug-tovar-from-input"><span class="std std-ref">“TOVAR$ FROM-INPUT”</span></a> instruction.</p>
 <p class="last">When VAR is specified: Generates an OUTPUT scenario which accepts an input commarea contained in the VIRTEL variable named by the VAR parameter, and produces a set of VIRTEL variables whose names correspond to the fields in the copybook. The generated scenario contains a <a class="reference internal" href="#v456ug-map-from-variable"><span class="std std-ref">“MAP$ FROM-VARIABLE”</span></a> instruction.</p>
 </dd>
 <dt>&#8216;COM=fieldname&#8217;</dt>
@@ -9182,12 +9183,12 @@ SAMPLIB. The start of the MAPGJCL job is shown below:</p>
 </dl>
 </dd>
 <dt>XMLGEN=YES|NO</dt>
-<dd>Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT=&#8217;COM=fieldname&#8217; is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see “Uploading pages by HTTP” &lt;#_V456UG_68).</dd>
+<dd>Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT=&#8217;COM=fieldname&#8217; is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see <a class="reference internal" href="#v456ug-http-uploading-pages"><span class="std std-ref">“Uploading pages by HTTP”</span></a>).</dd>
 </dl>
 </div>
 </div>
 <div class="section" id="incoming-e-mails">
-<h3>1.25. Incoming E-mails<a class="headerlink" href="#incoming-e-mails" title="Permalink to this headline">¶</a></h3>
+<span id="v456ug-email-incoming"></span><h3>1.25. Incoming E-mails<a class="headerlink" href="#incoming-e-mails" title="Permalink to this headline">¶</a></h3>
 <p>The arrival of an e-mail on an SMTP line can trigger one of two types of action in VIRTEL, depending on the entry point chosen by the rules of the SMTP line:</p>
 <ul class="simple">
 <li>Transfer of attached files to a VIRTEL directory</li>
@@ -9231,7 +9232,7 @@ used:</p>
 <p>An entry point which is used for file file transfer (including the upload of HTML pages) has a single transaction which
 calls VIRTEL module VIR0041B. This transaction is defined with application type 2 and startup mode 1. The menu
 program specified in the entry point must be VIR0021B.
-Only authorized users (see “Correspondent Management” &lt;#_V456UG_64) can perform transfers.</p>
+Only authorized users (see <a class="reference internal" href="#v456ug-correspondent-management"><span class="std std-ref">“Correspondent Management”</span></a>) can perform transfers.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>ENTRY POINT DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:52:26
 Name          ===&gt; SMTP                Name this ENTRY POINT (LOGON DATA)
 Description   ===&gt; Receive e-mail for file transfer
@@ -9358,7 +9359,7 @@ Enter=Add
 <p>Note that the UCTRAN(NO) parameter must be specified both in the PROFILE and in the TYPETERM, and that the
 RECEIVESIZE specified in the TYPETERM must be sufficient to contain the e-mail response data structured field.
 One the application has been launched, it can retrieve data from the e-mail by sending an FAC8 code 12 structured
-field to VIRTEL via the relay LU and reading the response (see “Retrieve Data From An E-Mail” &lt;#_V456UG_258).</p>
+field to VIRTEL via the relay LU and reading the response (see <a class="reference internal" href="#v456ug-email-retrieve-data"><span class="std std-ref">“Retrieve Data From An E-Mail”</span></a>).</p>
 </div>
 <div class="section" id="virtel-batch">
 <h4>1.26. VIRTEL Batch<a class="headerlink" href="#virtel-batch" title="Permalink to this headline">¶</a></h4>
@@ -10094,9 +10095,9 @@ screen and all subsequent screens.</p>
 <h4>3.4.3. FAE5, FAE6: Sending a table variable<a class="headerlink" href="#fae5-fae6-sending-a-table-variable" title="Permalink to this headline">¶</a></h4>
 <p>Structured field FAE5 allows the application to send a named data table (“table variable”) to VIRTEL. The data in the
 table variable is made available for insertion in the current HTML page by means of VIRTEL tags coded in the page
-template (see “Handling table variables” &lt;#_V456UG_44), or by means of a scenario instruction (see “FIELD$ DEFINE-CHOICE”,
+template (see <a class="reference internal" href="#v456ug-table-variables"><span class="std std-ref">“Handling table variables”</span></a>), or by means of a scenario instruction (see “FIELD$ DEFINE-CHOICE”,
 page 174) which allows the application to supply lists of drop-down values for selection fields.</p>
-<p>3.4.3.1. Structured field FAE5</p>
+<p id="v456ug-fae5">3.4.3.1. Structured field FAE5</p>
 <p>The application can send one or more FAE5 structured fields. Each structured field contains the name of a variable
 followed by a table of values. The format of structured field FAE5 is shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="mi">2</span> <span class="nb">bytes</span> <span class="n">Length</span> <span class="n">of</span> <span class="n">structured</span> <span class="n">field</span> <span class="o">=</span> <span class="n">variable</span>
@@ -10478,7 +10479,7 @@ CPT_NUM1) and to request the use of a specific page template (page WEB2VIRT in d
 </dl>
 </div>
 <div class="section" id="host4web-commands">
-<h4>3.4.5. HOST4WEB commands<a class="headerlink" href="#host4web-commands" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-host4web"></span><h4>3.4.5. HOST4WEB commands<a class="headerlink" href="#host4web-commands" title="Permalink to this headline">¶</a></h4>
 <p>When an application is invoked from a browser via an entry point defined with emulation type HOST4WEB, the
 application can use a set of VIRTEL control commands known as “HOST4WEB” commands, which are coded in the 3270
 screen.2</p>
@@ -10600,7 +10601,7 @@ must not contain any blanks.</p>
 </div>
 <p>Indicates the name of the page template to be used for the current 3270 screen (but not for subsequent screens). This
 name must not contain any blanks.</p>
-<p>3.4.5.3.14. S VARIABLE (Set Variable)</p>
+<p id="v456ug-set-variable">3.4.5.3.14. S VARIABLE (Set Variable)</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">VARIABLE</span> <span class="n">varname</span><span class="o">+</span><span class="n">value</span><span class="o">+</span>
 </pre></div>
 </div>
@@ -10613,8 +10614,8 @@ which act as field delimiters.</p>
 <div class="section" id="e-mail">
 <h3>3.5. E-mail<a class="headerlink" href="#e-mail" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="fac8-retrieve-data-from-an-e-mail">
-<h4>3.5.1. FAC8: Retrieve data from an e-mail<a class="headerlink" href="#fac8-retrieve-data-from-an-e-mail" title="Permalink to this headline">¶</a></h4>
-<p>An application started by an incoming e-mail (see “Incomming e-mails” &lt;#_V456UG_229) can retrieve data from the content
+<span id="v456ug-email-retrieve-data"></span><h4>3.5.1. FAC8: Retrieve data from an e-mail<a class="headerlink" href="#fac8-retrieve-data-from-an-e-mail" title="Permalink to this headline">¶</a></h4>
+<p>An application started by an incoming e-mail (see <a class="reference internal" href="#v456ug-email-incoming"><span class="std std-ref">“Incomming e-mails”</span></a>) can retrieve data from the content
 of the e-mail. To request VIRTEL to extract the data from the e-mail, the application sends a structured field FAC8 code
 12 or 13 to the associated relay (3270 pseudo-terminal). VIRTEL intercepts the structured field and sends a response to
 the application in the form of a QUERY REPLY (x‘88’) structured field.</p>
@@ -10933,7 +10934,7 @@ and password. VIRTEL passes the userid and password to the security manager (RAC
 also propagate the userid and password to other applications (for example, CICS) by means of connection /
 disconnection scripts defined in the transaction (see the “VIRTEL Connectivity Reference” manual for details).
 Depending on the userid, the security manager may authorize or deny access to the requested transaction.</p>
-<p><img alt="image65" src="../../../_images/image651.png" /></p>
+<p><img alt="image65" src="../../../_images/image652.png" /></p>
 <p><em>Example of signon dialog box displayed by browser</em></p>
 </div>
 <div class="section" id="specifying-security-in-the-transaction">
@@ -10997,7 +10998,7 @@ user&#8217;s workstation and installed in the user&#8217;s browser.</p>
 </div>
 </div>
 <div class="section" id="password-encryption">
-<h4>4.2.7. Password encryption<a class="headerlink" href="#password-encryption" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-password-encryption"></span><h4>4.2.7. Password encryption<a class="headerlink" href="#password-encryption" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL Web Access offers the possibility of encrypting passwords (3270 non-display fields) transmitted in HTML pages.
 VIRTEL uses the encryption facilities provided by the System z hardware through the z/OS Integrated Cryptographic
 Service Facility (ICSF). Password encryption is available only when using VIRTEL Web Access in Ajax mode using the
@@ -11102,7 +11103,7 @@ onclick=&quot;submitForm(&#39;DISCONNECT&#39;)&quot; &gt;
 shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point
 specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
 case, the entry point will be chosen according to the set of rules associated with that particular user (see
-“Correspondent Management” &lt;#_V456UG_64). The second rule, 1HT00200, assigns the entry point EPINTERN to clients
+<a class="reference internal" href="#v456ug-correspondent-management"><span class="std std-ref">“Correspondent Management”</span></a>). The second rule, 1HT00200, assigns the entry point EPINTERN to clients
 whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
 third rule, 1HT00900, assigns the entry point EPPUBLIC to all other requests (this entry point could, for example,
 display a page containing the message “Access not authorised”).</p>
@@ -11270,7 +11271,7 @@ P1=Update                         P3=Return                          P12=Server
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span><span class="o">+</span><span class="n">model5</span>
 </pre></div>
 </div>
-<p>This form of a VIRTEL URL is described in the section “Dynamic URL with user data” &lt;#_V456UG_0.</p>
+<p>This form of a VIRTEL URL is described in the section <a class="reference internal" href="#v456ug-dynamic-url"><span class="std std-ref">“Dynamic URL with user data”</span></a>.</p>
 <p>This form of URL is processed by VIRTEL with reference to the “rule set” associated with the HTTP line. VIRTEL looks for
 a rule whose “User Data” field matches the value of the parameter (model5). The “Parameter” field of the selected
 rule assigns a relay LU name from the pool defined with logmode SNX32705.</p>
@@ -11522,7 +11523,7 @@ Input Scenario   ===&gt;                   Output Scenario ===&gt;</p>
 </div>
 <div class="section" id="how-to-change-the-font-for-web-access">
 <h3>5.5. How To Change The Font For Web Access<a class="headerlink" href="#how-to-change-the-font-for-web-access" title="Permalink to this headline">¶</a></h3>
-<p>The “Web Access settings menu” &lt;#_V456UG_0 allows you to change the font family and font size. By default VIRTEL will
+<p>The <a class="reference internal" href="#v456ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to change the font family and font size. By default VIRTEL will
 calculate an appropriate font size to fit the browser window size, but you can choose a fixed font size if you prefer.
 VIRTEL Web Access uses a fixed-pitch font to display the 3270 screen. If you do not like the default font then you can
 choose any fixed-pitch font installed on the workstation. Typical fonts available on Windows workstations are Courier
@@ -11531,7 +11532,7 @@ the installed fonts.</p>
 </div>
 <div class="section" id="how-to-change-the-3270-display-style">
 <h3>5.6. How To Change The 3270 Display Style<a class="headerlink" href="#how-to-change-the-3270-display-style" title="Permalink to this headline">¶</a></h3>
-<p>The <span class="xref std std-ref">“Web Access settings menu”</span> allows you to change the display style to suit your needs. By default VIRTEL
+<p>The <a class="reference internal" href="#v456ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to change the display style to suit your needs. By default VIRTEL
 provides 3 defaults models named “3270”, “Gray” and “White”, If you need some more, you must request your
 Administrators.</p>
 <p>Selecting display pattern : The display model changes will take effect at the next connection to a 3270 application.</p>
@@ -11540,7 +11541,7 @@ Administrators.</p>
 <h3>5.7. How To Customize The Enter Key Settings<a class="headerlink" href="#how-to-customize-the-enter-key-settings" title="Permalink to this headline">¶</a></h3>
 <p>Many 3270 users prefer to customize the keyboard mapping so that the “Enter” key on the main keyboard is handled
 as a 3270 newline, while the right “Ctrl” key and the “Enter” key on the numeric keypad are treated as 3270 Enter.
-The “Web Access settings menu” &lt;#_V456UG_0 allows you to specify this configuration using the following settings:</p>
+The <a class="reference internal" href="#v456ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to specify this configuration using the following settings:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
 <span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
 <span class="s2">&quot;kpenter&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span>
@@ -11568,7 +11569,7 @@ turn on a special feature by introducing the following command into a &#8220;cus
 </div>
 </div>
 <div class="section" id="how-to-customize-display-styles">
-<h3>5.8. How To Customize Display Styles<a class="headerlink" href="#how-to-customize-display-styles" title="Permalink to this headline">¶</a></h3>
+<span id="v456ug-customize-display"></span><h3>5.8. How To Customize Display Styles<a class="headerlink" href="#how-to-customize-display-styles" title="Permalink to this headline">¶</a></h3>
 <p>Virtel users can customise the screen display to suit their needs. An exception to this is the model type which is an
 Administration function. Administrators will configure model types which can then be selected by a user.</p>
 <div class="section" id="add-or-remove-a-display-style">
@@ -11584,39 +11585,43 @@ Administration function. Administrators will configure model types which can the
 <li>Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-js” (without the quotes) in the “URL prefix” field.</li>
 </ul>
 </div></blockquote>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/*=====================================================================
-*
-* CUSTOM CODE SAMPLE TO ADD A CUSTOM CSS FILE
-* OR TO REMOVE A DEFAULT CSS FILE
-*
-*====================================================================*/
-/*
-* This implementation adds 3 custom CSS to the settings &quot;Display Style&quot; list choice,
-* and removes the &quot;white&quot; default choice from this list.
-*/
-function modify_settingsValues(name, values) {
-// The target is the &quot;style&quot; list settings
-if (name == &quot;style&quot;) {
-// Remove the &quot;white&quot; default entry from the list of choices
-values.splice( values.indexOf(&#39;white&#39;), 1);
-// Append 3 custom styles to the list of choices
-return values.concat( &quot;GREEN.CSS&quot;
-, &quot;BLUE.CSS&quot;
-, &quot;RED.CSS&quot; );
-}
-}
-/*
-* This block of code sets a specific label for each style added.
-* If this code is omitted, the raw value of the entries are displayed instead.
-*/
-oVWAmsg.custom( { &quot;style:GREEN.CSS&quot; : &quot;Custom&quot; // Use this label instead of &#39;GREEN.CSS&#39;
-, &quot;style:BLUE.CSS&quot; : &quot;Test&quot; // Use this label instead of &#39;BLUE.CSS&#39;
-, &quot;style:RED.CSS&quot; : &quot;Red !&quot; // Use this label instead of &#39;RED.CSS&#39;
-});
-Example of a custom.js file to add or remove a display style
-5.8.2. Add or remove a print style
-To add a new print style, proceed as for a display style, but in the VWAmsg.custom order, replace the word “style” by
-“printstyle”.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*=====================================================================</span>
+<span class="o">*</span>
+<span class="o">*</span> <span class="n">CUSTOM</span> <span class="n">CODE</span> <span class="n">SAMPLE</span> <span class="n">TO</span> <span class="n">ADD</span> <span class="n">A</span> <span class="n">CUSTOM</span> <span class="n">CSS</span> <span class="n">FILE</span>
+<span class="o">*</span> <span class="n">OR</span> <span class="n">TO</span> <span class="n">REMOVE</span> <span class="n">A</span> <span class="n">DEFAULT</span> <span class="n">CSS</span> <span class="n">FILE</span>
+<span class="o">*</span>
+<span class="o">*====================================================================*/</span>
+<span class="o">/*</span>
+<span class="o">*</span> <span class="n">This</span> <span class="n">implementation</span> <span class="n">adds</span> <span class="mi">3</span> <span class="n">custom</span> <span class="n">CSS</span> <span class="n">to</span> <span class="n">the</span> <span class="n">settings</span> <span class="s2">&quot;Display Style&quot;</span> <span class="nb">list</span> <span class="n">choice</span><span class="p">,</span>
+<span class="o">*</span> <span class="ow">and</span> <span class="n">removes</span> <span class="n">the</span> <span class="s2">&quot;white&quot;</span> <span class="n">default</span> <span class="n">choice</span> <span class="kn">from</span> <span class="nn">this</span> <span class="nb">list</span><span class="o">.</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">modify_settingsValues</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">//</span> <span class="n">The</span> <span class="n">target</span> <span class="ow">is</span> <span class="n">the</span> <span class="s2">&quot;style&quot;</span> <span class="nb">list</span> <span class="n">settings</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;style&quot;</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">//</span> <span class="n">Remove</span> <span class="n">the</span> <span class="s2">&quot;white&quot;</span> <span class="n">default</span> <span class="n">entry</span> <span class="kn">from</span> <span class="nn">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">choices</span>
+<span class="n">values</span><span class="o">.</span><span class="n">splice</span><span class="p">(</span> <span class="n">values</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="o">//</span> <span class="n">Append</span> <span class="mi">3</span> <span class="n">custom</span> <span class="n">styles</span> <span class="n">to</span> <span class="n">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">choices</span>
+<span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span> <span class="s2">&quot;GREEN.CSS&quot;</span>
+<span class="p">,</span> <span class="s2">&quot;BLUE.CSS&quot;</span>
+<span class="p">,</span> <span class="s2">&quot;RED.CSS&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+<span class="p">}</span>
+<span class="o">/*</span>
+<span class="o">*</span> <span class="n">This</span> <span class="n">block</span> <span class="n">of</span> <span class="n">code</span> <span class="n">sets</span> <span class="n">a</span> <span class="n">specific</span> <span class="n">label</span> <span class="k">for</span> <span class="n">each</span> <span class="n">style</span> <span class="n">added</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">If</span> <span class="n">this</span> <span class="n">code</span> <span class="ow">is</span> <span class="n">omitted</span><span class="p">,</span> <span class="n">the</span> <span class="n">raw</span> <span class="n">value</span> <span class="n">of</span> <span class="n">the</span> <span class="n">entries</span> <span class="n">are</span> <span class="n">displayed</span> <span class="n">instead</span><span class="o">.</span>
+<span class="o">*/</span>
+<span class="n">oVWAmsg</span><span class="o">.</span><span class="n">custom</span><span class="p">(</span> <span class="p">{</span> <span class="s2">&quot;style:GREEN.CSS&quot;</span> <span class="p">:</span> <span class="s2">&quot;Custom&quot;</span> <span class="o">//</span> <span class="n">Use</span> <span class="n">this</span> <span class="n">label</span> <span class="n">instead</span> <span class="n">of</span> <span class="s1">&#39;GREEN.CSS&#39;</span>
+<span class="p">,</span> <span class="s2">&quot;style:BLUE.CSS&quot;</span> <span class="p">:</span> <span class="s2">&quot;Test&quot;</span> <span class="o">//</span> <span class="n">Use</span> <span class="n">this</span> <span class="n">label</span> <span class="n">instead</span> <span class="n">of</span> <span class="s1">&#39;BLUE.CSS&#39;</span>
+<span class="p">,</span> <span class="s2">&quot;style:RED.CSS&quot;</span> <span class="p">:</span> <span class="s2">&quot;Red !&quot;</span> <span class="o">//</span> <span class="n">Use</span> <span class="n">this</span> <span class="n">label</span> <span class="n">instead</span> <span class="n">of</span> <span class="s1">&#39;RED.CSS&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p><em>Example of a custom.js file to add or remove a display style</em></p>
+</div>
+<div class="section" id="add-or-remove-a-print-style">
+<span id="v456ug-customize-print"></span><h4>5.8.2. Add or remove a print style<a class="headerlink" href="#add-or-remove-a-print-style" title="Permalink to this headline">¶</a></h4>
+<p>To add a new print style, proceed as for a display style, but in the VWAmsg.custom order, replace the word “style” by</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>“printstyle”.
 /*=====================================================================
 *
 * CUSTOM CODE SAMPLE TO ADD A CUSTOM CSS FILE
@@ -11649,7 +11654,9 @@ oVWAmsg.custom( { &quot;printstyle:GREEN.CSS&quot; : &quot;Custom&quot; // Use t
 </pre></div>
 </div>
 <p><em>Example of a custom.js file to add or remove a print style</em></p>
-<p>5.8.3. 3270 support blinking fields</p>
+</div>
+<div class="section" id="support-blinking-fields">
+<h4>5.8.3. 3270 support blinking fields<a class="headerlink" href="#support-blinking-fields" title="Permalink to this headline">¶</a></h4>
 <p>Becoming unpopular over time, and even stated as being the cause of adverse reactions in people with epilepsy, the
 “&lt;blink&gt;” tag was retired from the HTML API, although it still remains within the browsers code. The feature can be
 reactivated through the use of CSS code but by doing so Web Accessibility guidelines may be compromised. This may
@@ -11683,11 +11690,11 @@ delivered from number #5310 and over.</p>
 </div>
 <div class="section" id="how-to-change-the-default-user-settings">
 <h3>5.9. How To Change The Default User Settings<a class="headerlink" href="#how-to-change-the-default-user-settings" title="Permalink to this headline">¶</a></h3>
-<p>The site default settings for Web Access are stored in the file w2hparm.js (see “Global modification of Web Access settings” &lt;#_V456UG_99)</p>
+<p>The site default settings for Web Access are stored in the file w2hparm.js (see <a class="reference internal" href="#v456ug-global-modifications"><span class="std std-ref">“Global modification of Web Access settings”</span></a>)</p>
 </div>
 <div class="section" id="how-to-change-the-user-settings-interface">
 <h3>5.10. How To Change The User Settings Interface<a class="headerlink" href="#how-to-change-the-user-settings-interface" title="Permalink to this headline">¶</a></h3>
-<p>The user settings interface can be changed using the settingsGUI parameter stored in file w2hparm.js (see “Global modification of Web Access settings” &lt;#_V456UG_99)</p>
+<p>The user settings interface can be changed using the settingsGUI parameter stored in file w2hparm.js (see <a class="reference internal" href="#v456ug-global-modifications"><span class="std std-ref">“Global modification of Web Access settings”</span></a>)</p>
 <p>5.11. How To Define A Reverse Proxy</p>
 <p>If your installation uses a reverse proxy (or bastion host) between the user’s browser and the VIRTEL Web Access
 server, then the VIRTEL log and statistics file will show the IP address of the proxy instead of the address of the end
@@ -11725,17 +11732,17 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 <ul class="simple">
 <li><dl class="first docutils">
 <dt>jQuery</dt>
-<dd>Under MIT license - <a class="reference external" href="https://jquery.org/license/">https://jquery.org/license/</a>.</dd>
+<dd>Under MIT license - <a class="reference external" href="https://jquery.org/license/">https://jquery.org/license/</a></dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>StoreJson</dt>
-<dd>Under MIT license - <a class="reference external" href="https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7">https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7</a>.</dd>
+<dd>Under MIT license - <a class="reference external" href="https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7">https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7</a></dd>
 </dl>
 </li>
 <li><dl class="first docutils">
 <dt>jQuery_UI</dt>
-<dd>Under MIT license - <a class="reference external" href="http://en.wikipedia.org/wiki/JQuery_UI">http://en.wikipedia.org/wiki/JQuery_UI</a>.</dd>
+<dd>Under MIT license - <a class="reference external" href="http://en.wikipedia.org/wiki/JQuery_UI">http://en.wikipedia.org/wiki/JQuery_UI</a></dd>
 </dl>
 </li>
 </ul>
@@ -11753,7 +11760,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
         <a href="../../../newsletters.html" class="btn btn-neutral float-right" title="Technical Newsletters" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel456IG/Installation_Guide.html" class="btn btn-neutral" title="Installation Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel456OM/operations_messages.html" class="btn btn-neutral" title="Messages &amp; Operations" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
