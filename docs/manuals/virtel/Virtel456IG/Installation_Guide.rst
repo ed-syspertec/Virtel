@@ -2235,8 +2235,8 @@ To apply the PTFs, use the following JCL::
 
 *Figure 4.21 JCL for applying PTFs (VSE)*
 
-5.VTAM Parameters
-=================
+5. VTAM Parameters
+==================
 
 5.1 VTAM parameters
 -------------------
