@@ -5,6 +5,7 @@ Technical Newsletters
 ----
 .. toctree::
    :glob:
+   :maxdepth: 1   
    
    manuals/newsletters/TN2014*/*   
 
@@ -12,6 +13,7 @@ Technical Newsletters
 ----
 .. toctree::
    :glob:
+   :maxdepth: 1   
    
    manuals/newsletters/TN2015*/*
 
@@ -19,6 +21,7 @@ Technical Newsletters
 ----
 .. toctree::
    :glob:
+   :maxdepth: 1   
    
    manuals/newsletters/TN2016*/*   
 
@@ -26,5 +29,6 @@ Technical Newsletters
 ----
 .. toctree::
    :glob:
+   :maxdepth: 1   
    
    manuals/newsletters/TN2017*/*               

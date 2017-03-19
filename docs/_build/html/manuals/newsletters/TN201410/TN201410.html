@@ -96,7 +96,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Taking a VTAM trace</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Taking a VTAM trace</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#security">Security</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201413/TN201413.html">Overview of a Virtel Session</a></li>
@@ -170,65 +173,79 @@ example the VIRTEL prefix for the relay is REH. Yours will be different.</p>
 <p>There are two types of traces that are of interest, The VTAM buffer
 trace and the VTAM internal trace. Both will write GTF USR records to a
 GTF trace data set. Trace records can be identified as:-</p>
-<p>Type FE1 VTAM INTERNAL TRACE</p>
-<p>Type FEF VTAM BUFFER TRACE</p>
-<p>Security</p>
+<ul class="simple">
+<li>Type FE1 VTAM INTERNAL TRACE</li>
+<li>Type FEF VTAM BUFFER TRACE</li>
+</ul>
+<div class="section" id="security">
+<h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
 <p>To see the user data in the buffer contents of a trace record, set
 CONFTXT=YES in the TSOKEY00 member of SYS1.PARMLIB before starting
 TSO/VTAM.</p>
 <p><strong>Start GTF</strong></p>
 <p>First we need to start GTF. Use the following z/OS start command.</p>
-<p><strong>S GTF.GTF</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">GTF</span><span class="o">.</span><span class="n">GTF</span>
+</pre></div>
+</div>
 <p>By default all USR records will be traced. This is specified in the
 GTFPARM member of USER.PARMLIB. This member has the following
 statement:-</p>
-<p>TRACE=USR</p>
-<p>GTF will issue a WTO. Here, further trace options can be specified.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="o">=</span><span class="n">USR</span>
+</pre></div>
+</div>
+<p>GTF will issue a WTO. Further trace options can be specified.
 Reply “U” to message AHL125A to activate the GTF trace. Here is an
 example from the console log of starting up GTF:-</p>
-<p>S GTF.GTF</p>
-<p>$HASP100 GTF ON STCINRDR</p>
-<p>IEF695I START GTF WITH JOBNAME GTF IS ASSIGNED TO USER START2</p>
-<p>, GROUP SYS1</p>
-<p>$HASP373 GTF STARTED</p>
-<p>IEF403I GTF - STARTED - TIME=11.05.36</p>
-<p>AHL121I TRACE OPTION INPUT INDICATED FROM MEMBER GTFPARM OF PDS</p>
-<p>USER.PARMLIB</p>
-<p>TRACE=USR</p>
-<p>AHL103I TRACE OPTIONS SELECTED &#8211;USR</p>
-<p>81 AHL125A RESPECIFY TRACE OPTIONS OR REPLY U</p>
-<p>R 81,U</p>
-<p>IEE600I REPLY TO 81 IS;U</p>
-<p>U</p>
-<p>AHL906I THE OUTPUT BLOCK SIZE OF 4096 WILL BE USED FOR OUTPUT 541</p>
-<p>DATA SETS:</p>
-<p>SYS1.TRACE</p>
-<p>AHL080I GTF STORAGE USED FOR GTF DATA: 542</p>
-<p>GTFBLOCK STORAGE 40K BYTES (BLOK= 40K)</p>
-<p>PRIVATE STORAGE 1024K BYTES (SIZE= 1024K)</p>
-<p>SADMP HISTORY 40K BYTES (SADMP= 40K)</p>
-<p>SDUMP HISTORY 40K BYTES (SDUMP= 40K)</p>
-<p>ABEND DUMP DATA 0K BYTES (ABDUMP= 0K)</p>
-<p>AHL031I GTF INITIALIZATION COMPLETE</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$HASP100 GTF ON STCINRDR
+IEF695I START GTF WITH JOBNAME GTF IS ASSIGNED TO USER START2
+, GROUP SYS1
+$HASP373 GTF STARTED
+IEF403I GTF - STARTED - TIME=11.05.36
+AHL121I TRACE OPTION INPUT INDICATED FROM MEMBER GTFPARM OF PDS
+USER.PARMLIB
+TRACE=USR
+AHL103I TRACE OPTIONS SELECTED --USR
+81 AHL125A RESPECIFY TRACE OPTIONS OR REPLY U
+R 81,U
+IEE600I REPLY TO 81 IS;U
+U
+AHL906I THE OUTPUT BLOCK SIZE OF 4096 WILL BE USED FOR OUTPUT 541
+DATA SETS:
+SYS1.TRACE
+AHL080I GTF STORAGE USED FOR GTF DATA: 542
+GTFBLOCK STORAGE 40K BYTES (BLOK= 40K)
+PRIVATE STORAGE 1024K BYTES (SIZE= 1024K)
+SADMP HISTORY 40K BYTES (SADMP= 40K)
+SDUMP HISTORY 40K BYTES (SDUMP= 40K)
+ABEND DUMP DATA 0K BYTES (ABDUMP= 0K)
+AHL031I GTF INITIALIZATION COMPLETE
+</pre></div>
+</div>
 <p><strong>Starting the traces</strong></p>
 <p>Now that GTF is running the VTAM LU tracing can be established. In this
 instance we are only interested in the VTAM Buffer trace against
 particular LUs. The following VTAM commands should be issued to start
-tracing against those relevant VTAM logical units.</p>
-<p><strong>F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=TSO</strong> TSO</p>
-<p><strong>F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=EMSYAS01</strong> NVAS</p>
+tracing against those relevant VTAM logical units. In our case a session manager and TSO.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">TSO</span>
+<span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">EMSYAS01</span>
+</pre></div>
+</div>
 <p>Next, we need to enable VTAM to write all trace records to GTF. Issue
 the following command:-</p>
-<p><strong>F VTAM,TRACE,MODE=EXT,TYPE=VTAM,OPTION=ALL</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">MODE</span><span class="o">=</span><span class="n">EXT</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">VTAM</span><span class="p">,</span><span class="n">OPTION</span><span class="o">=</span><span class="n">ALL</span>
+</pre></div>
+</div>
 <p>Note: We haven’t issues a buffer trace against the Virtel Relay node
 because we haven’t yet established a session between VIRTEL and NVAS.
 Virtel wouldn’t have issued a OPNDST macro against the model VTAM
 definition REHVIT??? so no real LU exists. Once we connect to NVAS using
-Virtel the LU REHVIT000 will be created and the trace command can be
+Virtel the Virtel Relay LU REHVIT000 will be establish a session and then the  trace command can be
 issued.</p>
 <p>Connect Virtel to NVAS and then issue the following command to buffer
 trace the Virtel Relay Session.</p>
-<p><strong>F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=REHVT000</strong> Virtel</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT000</span>
+</pre></div>
+</div>
 <p><strong>Stopping GTF and VTAM traces</strong></p>
 <p>Once the diagnostic work has been completed GTF and the traces need to
 be terminated. Issue the following commands:-</p>
@@ -609,6 +626,7 @@ C1D7D7D3 C8D6D3E3 * GNA2.....#......SPNET APPLHOLT *</p>
 E2D7D5C5 E3404040 * SRTF................. u.SPNET *</p>
 <p>13.31.56.968767 D9C3C5C6 1F001201 1DF9004C 00000000 9EB1B460 008C5750
 1EA340B0 00000000 * RCEF.....9.&lt;.......-...&amp;.t ..... *</p>
+</div>
 </div>
 
 

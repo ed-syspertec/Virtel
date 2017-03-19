@@ -14,11 +14,11 @@ There are two types of traces that are of interest, The VTAM buffer
 trace and the VTAM internal trace. Both will write GTF USR records to a
 GTF trace data set. Trace records can be identified as:-
 
-Type FE1 VTAM INTERNAL TRACE
-
-Type FEF VTAM BUFFER TRACE
+- Type FE1 VTAM INTERNAL TRACE
+- Type FEF VTAM BUFFER TRACE
 
 Security
+--------
 
 To see the user data in the buffer contents of a trace record, set
 CONFTXT=YES in the TSOKEY00 member of SYS1.PARMLIB before starting
@@ -28,93 +28,80 @@ TSO/VTAM.
 
 First we need to start GTF. Use the following z/OS start command.
 
-**S GTF.GTF**
+::
+
+	S GTF.GTF
 
 By default all USR records will be traced. This is specified in the
 GTFPARM member of USER.PARMLIB. This member has the following
 statement:-
 
-TRACE=USR
+::
 
-GTF will issue a WTO. Here, further trace options can be specified.
+	TRACE=USR
+
+GTF will issue a WTO. Further trace options can be specified.
 Reply “U” to message AHL125A to activate the GTF trace. Here is an
 example from the console log of starting up GTF:-
 
-S GTF.GTF
+::
 
-$HASP100 GTF ON STCINRDR
-
-IEF695I START GTF WITH JOBNAME GTF IS ASSIGNED TO USER START2
-
-, GROUP SYS1
-
-$HASP373 GTF STARTED
-
-IEF403I GTF - STARTED - TIME=11.05.36
-
-AHL121I TRACE OPTION INPUT INDICATED FROM MEMBER GTFPARM OF PDS
-
-USER.PARMLIB
-
-TRACE=USR
-
-AHL103I TRACE OPTIONS SELECTED --USR
-
-81 AHL125A RESPECIFY TRACE OPTIONS OR REPLY U
-
-R 81,U
-
-IEE600I REPLY TO 81 IS;U
-
-U
-
-AHL906I THE OUTPUT BLOCK SIZE OF 4096 WILL BE USED FOR OUTPUT 541
-
-DATA SETS:
-
-SYS1.TRACE
-
-AHL080I GTF STORAGE USED FOR GTF DATA: 542
-
-GTFBLOCK STORAGE 40K BYTES (BLOK= 40K)
-
-PRIVATE STORAGE 1024K BYTES (SIZE= 1024K)
-
-SADMP HISTORY 40K BYTES (SADMP= 40K)
-
-SDUMP HISTORY 40K BYTES (SDUMP= 40K)
-
-ABEND DUMP DATA 0K BYTES (ABDUMP= 0K)
-
-AHL031I GTF INITIALIZATION COMPLETE
+	$HASP100 GTF ON STCINRDR
+	IEF695I START GTF WITH JOBNAME GTF IS ASSIGNED TO USER START2
+	, GROUP SYS1
+	$HASP373 GTF STARTED
+	IEF403I GTF - STARTED - TIME=11.05.36
+	AHL121I TRACE OPTION INPUT INDICATED FROM MEMBER GTFPARM OF PDS
+	USER.PARMLIB
+	TRACE=USR
+	AHL103I TRACE OPTIONS SELECTED --USR
+	81 AHL125A RESPECIFY TRACE OPTIONS OR REPLY U
+	R 81,U
+	IEE600I REPLY TO 81 IS;U
+	U
+	AHL906I THE OUTPUT BLOCK SIZE OF 4096 WILL BE USED FOR OUTPUT 541
+	DATA SETS:
+	SYS1.TRACE
+	AHL080I GTF STORAGE USED FOR GTF DATA: 542
+	GTFBLOCK STORAGE 40K BYTES (BLOK= 40K)
+	PRIVATE STORAGE 1024K BYTES (SIZE= 1024K)
+	SADMP HISTORY 40K BYTES (SADMP= 40K)
+	SDUMP HISTORY 40K BYTES (SDUMP= 40K)
+	ABEND DUMP DATA 0K BYTES (ABDUMP= 0K)
+	AHL031I GTF INITIALIZATION COMPLETE
 
 **Starting the traces**
 
 Now that GTF is running the VTAM LU tracing can be established. In this
 instance we are only interested in the VTAM Buffer trace against
 particular LUs. The following VTAM commands should be issued to start
-tracing against those relevant VTAM logical units.
+tracing against those relevant VTAM logical units. In our case a session manager and TSO.
 
-**F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=TSO** TSO
+::
 
-**F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=EMSYAS01** NVAS
+	F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=TSO       
+	F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=EMSYAS01
 
 Next, we need to enable VTAM to write all trace records to GTF. Issue
 the following command:-
 
-**F VTAM,TRACE,MODE=EXT,TYPE=VTAM,OPTION=ALL**
+::
+
+	F VTAM,TRACE,MODE=EXT,TYPE=VTAM,OPTION=ALL
 
 Note: We haven’t issues a buffer trace against the Virtel Relay node
 because we haven’t yet established a session between VIRTEL and NVAS.
 Virtel wouldn’t have issued a OPNDST macro against the model VTAM
 definition REHVIT??? so no real LU exists. Once we connect to NVAS using
-Virtel the LU REHVIT000 will be created and the trace command can be
+Virtel the Virtel Relay LU REHVIT000 will be establish a session and then the  trace command can be
 issued.
 
 Connect Virtel to NVAS and then issue the following command to buffer
 trace the Virtel Relay Session.
 
-**F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=REHVT000** Virtel
+::
+
+	F VTAM,TRACE,TYPE=BUF,AMOUNT=FULL,ID=REHVT000
 
 **Stopping GTF and VTAM traces**
 
