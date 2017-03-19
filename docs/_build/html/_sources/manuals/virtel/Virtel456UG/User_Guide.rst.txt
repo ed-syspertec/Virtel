@@ -141,8 +141,8 @@ Syspertec Communication
 
 .. _#_V456UG_service_transactions:    
 
-1.1.4. Service Transactions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.1.4. VIRTEL Service Transactions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     A Service Transaction is a long-running VIRTEL transaction which
     maintains a session with a host application and uses this session to
@@ -733,10 +733,10 @@ When invoked via a transaction, normal transaction security rules apply.
 
 In addition, each directory is protected by a resource whose name is the same as the directory name. The administrator must have access to this resource in order to view or manage the contents of the    directory, or to upload pages to the directory. When an external security product is used, the resource is defined in the class named by the RNODE parameter in the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide).
 
-Security management is described in the Virtel Security documentation.
+Security management is described in the VIRTEL Security documentation.
 
 1.3.3. Creating, modifying, and deleting directories
-----------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When the directory management sub-application is invoked, it displays a list of the directories already defined in the system:-
 
@@ -1014,7 +1014,7 @@ For a full example, see the WEB2VIRT.htm page delivered with VIRTEL.
 .. _#_V456UG_inserting_host_data:
 
 1.4.6. Inserting host application data into a page
---------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **1.4.6.1. Introduction**
 
@@ -3406,7 +3406,7 @@ The following steps show how to upgrade your configuration based on entry point 
 
 |image80| *Page upload by HTTP with signon : Directory CLIDIR*
 
-3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “Virtel Security Guide” manual.
+3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
 
 **1.6.4.2. Procedure for page upload secured by signon**
 
@@ -4581,15 +4581,15 @@ screen.
 |image41|
 *Example VIRTEL transaction for VTAM logon via Web Access*
 
-1.12. Site Customization Of Colors And Logo
--------------------------------------------
+1.12. Site Customization - Colors And Logo
+------------------------------------------
 
 The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom
 settings are defined in a style sheet called custom.css which the administrator uploads to a VIRTEL directory
 designated for storage of customer files (usually CLI-DIR).
 
-1.12.1. VIRTEL definitions required
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.1. Obtaining the Custom.css file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST
 on port 41001) or CLI-03CC (for entry point CLIWHOST on port 41002). These transactions have external name w2h
@@ -4627,8 +4627,8 @@ The procedure for activating customized settings is:
 
 11. Press “F1 - Update” at the Transaction Detail Definition screen, then “F3 – Return” twice to return to the List of Entry Points screen, then “F1 – Update” again to update the entry point.
 
-1.12.2. Example: Customizing the toolbar color by application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.2. Customizing the toolbar color by application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This example shows how to set the color of the toolbar to yellow for application SPCICSP and pink for application SPCICSQ.
 
@@ -4648,8 +4648,8 @@ Web Access screen with yellow toolbar for SPCICSP
 |image43|
 Web Access screen with pink toolbar for SPCICSQ
 
-1.12.3. Example: Adding custom text to the toolbar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.3. Adding custom text to the toolbar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to
 the toolbar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is
@@ -4692,13 +4692,13 @@ displayed for application TSO2A.
 
 .. _#_V456UG_hide_information:
 
-1.12.4. Example: Showing / Hiding server informations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.4. Showing / Hiding server informations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the
 maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is
 displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
-and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.
+and the VIRTEL Web access level of maintenance used. This last information is enclosed in parentheses.
 
 |image45|
 
@@ -4719,8 +4719,8 @@ information in toolbar" in the Display tab of the settings panel.
 
 .. _#_V456UG_hide_toolbar:
 
-1.12.5. Example: Hiding the toolbar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.5. Hiding the toolbar
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The administrator may wish to prevent users from accessing features like copy/paste, print, and settings. This example
 shows how to hide the toolbar using a custom.css file:
@@ -4736,8 +4736,8 @@ shows how to hide the toolbar using a custom.css file:
 
 You can also use custom.js to remove icons individually from the toolbar, see :ref:`“Removing unwanted toolbar icons” <#_V456UG_remove_icons>`.
 
-1.12.6. Example: Modifying the 3270 colors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.6. Modifying the 3270 colors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some installations prefer to modify the colors displayed on the 3270 screen to make the characters more readable.
 This example shows how to modify the colors used by VIRTEL Web Access:
@@ -4770,7 +4770,8 @@ In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and WHITE represe
 - `http://en.wikipedia.org/wiki/Web_colors <http://en.wikipedia.org/wiki/Web_colors>`__
 - `http://www.w3schools.com/html/html_colornames.asp <http://www.w3schools.com/html/html_colornames.asp>`__
 
-*1.12.7. Example: Adding a company logo*
+1.12.7. Adding a company logo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to display an icon (for example, a company logo) at the left of the toolbar:-
 
@@ -4811,8 +4812,8 @@ This example shows how to display an icon (for example, a company logo) at the l
 
     If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.
 
-1.12.8. Example: Removing 3D/hover effects on the toolbar buttons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.8. Removing 3D/hover effects on the toolbar buttons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:-
 
@@ -4831,8 +4832,8 @@ This example shows how to remove the 3D/hover effects on toolbar buttons by addi
 
 *Example custom.css for removing 3D/hover effects on buttons*
 
-1.12.9. Example: Changing background color of the toolbar buttons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.9. Changing background color of the toolbar buttons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to change the backgroung color of the toolbar buttons by adding orders in the custom.css file:
 
@@ -4869,7 +4870,7 @@ If some icons on the toolbar are displayed with some parasites on the border, pl
 
 .. _#_V456UG_customization_javascript_functions:
 
-1.13. Site Customization Of Javascript Functions
+1.13. Site Customization - Javascript Functions
 ------------------------------------------------
 
 To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads the /w2h/custom-js/custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction delivered as standard under the CLIWHOST entry point
@@ -4947,8 +4948,8 @@ This function is called whenever the 3270 window gains the focus.
 
 This function is called whenever the 3270 window loses the focus.
 
-1.13.2. Example: Customizing the toolbar icons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.2. Customizing the toolbar icons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_standardInit function to insert additional icons into the toolbar when the session is started. Icons may subsequently be added or removed from the toolbar after each screen by means of the after_responseHandle function.
 
@@ -5021,8 +5022,8 @@ The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possi
 
 .. _#_V456UG_remove_icons:
 
-1.13.3. Example: Removing unwanted toolbar icons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.3. Removing unwanted toolbar icons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.
 
@@ -5065,10 +5066,10 @@ The names of the other toolbar icons which can be removed in this way are:-
 
 To hide the toolbar completely, see :ref:`“Hiding the toolbar” <#_V456UG_hide_toolbar>`.
 
-To hide only the Virtel Application name, see :ref:`“Showing / Hiding server informations” <#_V456UG_hide_information>`.
+To hide only the VIRTEL Application name, see :ref:`“Showing / Hiding server informations” <#_V456UG_hide_information>`.
 
-1.13.4. Example: Positionning toolbar icons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.4. Positionning toolbar icons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In certain circumstances, the default position of an icon may not be at the user's convenence. Is possible to change an icon's position based on the position of another icon.
 
@@ -5095,8 +5096,8 @@ In certain circumstances, the default position of an icon may not be at the user
 
 *Example custom.js to select a position for printer icon*
 
-1.13.5. Example: Modifying the text of the status bar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.5. Modifying the text of the status bar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_responseHandle function to modify the text in the status bar at the bottom of the Web Access screen. This example displays the text “Your printer name is xxxx” in the status bar.
 The status bar text is an object which can therefore be modified using an API.
@@ -5153,10 +5154,10 @@ The query functions are:-
 
     - For the “getRelay()” and “getPrinterRelay()” functions, an optional parameter may be specified.
     - When specified, valid values are “true” or “false” (without the quotes). When the parameter is ommited, or is not a valid value, the default “false” will be used.
-    - When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by Virtel mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()” functions, you may want to retrieive the inital or overprinted value. When in “false” mode the function returns the initial value. When in “true” mode the function retruns the overprinted value.
+    - When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by VIRTEL mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()” functions, you may want to retrieive the inital or overprinted value. When in “false” mode the function returns the initial value. When in “true” mode the function retruns the overprinted value.
 
-1.13.6. Example: Custom hotspot recognition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.6. Custom hotspot recognition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_responseHandle function to modify the regular expression which is used to identify PF key hotspots.
 
@@ -5173,8 +5174,8 @@ This example uses the after_responseHandle function to modify the regular expres
 
 *Example custom.js to modify PF key hotspot recognition*
 
-1.13.7. Example: Adding a watermark to the 3270 screen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.7. Adding a watermark to the 3270 screen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_standardInit function in conjunction with a custom stylesheet to add a watermark to the Web Access screen. The watermark displays the application name in light text behind the 3270 screen content. The application name is obtained from the class attribute of the body tag.
 
@@ -5221,7 +5222,8 @@ This example uses the after_standardInit function in conjunction with a custom s
 |image46|
 *Web Access screen with application name as watermark*
 
-1.13.8. Example: Modifying Web Access Settings
+1.13.8. Modifying Web Access Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
 The example shown below replaces the list of fonts, and adds two extra values "20" and "24" to the list of fontsizes:-
@@ -5241,8 +5243,8 @@ The example shown below replaces the list of fonts, and adds two extra values "2
 
 *Example custom.js to modify Settings values*
 
-1.14. Customizing The Help Page
--------------------------------
+1.14. Site Customization - The Help Page
+----------------------------------------
 
 Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:
 
@@ -5396,7 +5398,7 @@ Allow copy / paste operation:
 
 IFrame support:
 
-Allows operation of copy / cut / paste operation when Virtel Web Access window is encapsulated in an IFrame.This
+Allows operation of copy / cut / paste operation when VIRTEL Web Access window is encapsulated in an IFrame.This
 information is supplemented by a list of areas on which these operations are allowed. This list may be identical to
 that defined in the previous section and, if required, may contain additional restrictions through a restrictive list.
 When a restrictive list is specified, the relevant fields should appear in the previous list.
@@ -5454,7 +5456,7 @@ macro.
 Depending on the version of VIRTEL, the macros can be saved in:
 • the Browser Local Storage (V453 and later),
 • on the workstation or network hard disk in a .json file,(V453 and later)
-• into a VSAM file on the host site (Virtel Storage) (V454 and later)
+• into a VSAM file on the host site (VIRTEL Storage) (V454 and later)
 
 **1.16.1.1. Macros in Local Storage**
 
@@ -5467,7 +5469,7 @@ export the data of the user macros to a file saved on a hard drive. Conversely, 
 reinjected into the Local Storage if it has been cleaned. Import and Export feature are available in the pop-up windows
 opened using the PLAY button on the toolbar.
 
-**1.16.1.3. Macros in Virtel Storage**
+**1.16.1.3. Macros in VIRTEL Storage**
 
 The “VirtelMacros” function allows global, group, and user macros to be stored under the name “macro.json” in a
 VSAM file on the VIRTEL host system.
@@ -5632,17 +5634,17 @@ The following commands can be used in a macro file :
     - FieldMark
     - Dup
 
-1.17. Definition Of Dynamic VIRTEL Directories
-----------------------------------------------
+1.17. Dynamic Directory Interface (DDI)
+---------------------------------------
 
-Each user has access to three kinds of dynamic Virtel directories : GLOBAL, GROUP, USER.
+Each user has access to three kinds of dynamic VIRTEL directories : GLOBAL, GROUP, USER.
 This interface is intended for the administator, to enable him/her to deal with dynamic directories including those
 dedicated to various users and groups.
 
 In the list, he/she can sort the list, drag a file and drop it to the desktop, delete, copy a file.
 
-1.17.1. Actions On The Dynamic VIRTEL Directories
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.17.1. Actions On The DDI Directories
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After clicking a line he/she can delete, copy or download the related file.
 To upload file(s) onto the current target VIRTEL dynamic directory, drag it/them from your desktop and drop it/them to
@@ -5659,7 +5661,7 @@ User files are specific to an individual user.
 There is one set of user files per user.
 The user has read/write access to his or her own files.
 The Virtel administrator has read/write access to each user’s files.
-Except for the Virtel administrator, nobody can see another user’s files.
+Except for the VIRTEL administrator, nobody can see another user’s files.
 
 1.17.3. Actions On The User VIRTEL Directories
 ----------------------------------------------
@@ -5685,7 +5687,7 @@ administrator will be able to click the edit button and access the macro interfa
 Group files are common to users in a specific group.
 There is one set of group files per group.
 Everybody in the group has read access to their own group’s files.
-Only the Virtel administrator can update the group files (there are no group administrators).
+Only the VIRTEL administrator can update the group files (there are no group administrators).
 
 1.17.6. Actions On The VIRTEL Group Directories
 -----------------------------------------------
@@ -5710,7 +5712,7 @@ administrator will be able to click the edit button and access the macro interfa
 Global files are common to everybody.
 There is only one set of global files.
 Everybody has read access to the global files.
-Only the Virtel administrator can update the global files.
+Only the VIRTEL administrator can update the global files.
 
 1.17.8 Actions on the VIRTEL global directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5734,8 +5736,8 @@ will be able to click the edit button and access the macro interface to manage t
 1.18. VIRTEL Web Modernisation
 ------------------------------
 
-1.18.1. VIRTEL Scenarios
-^^^^^^^^^^^^^^^^^^^^^^^^
+1.18.1. VIRTEL Presentation modules and Scenarios
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Without modifying existing applications, VIRTEL offers several possibilities for dynamic modification of 3270 data
 extracted by the {{{GENERATE-HTML}}} tag before it is presented in an HTML page. For instance, it is possible to define,
@@ -5934,7 +5936,7 @@ value
         SUBROUTINE
             Marks the start of a subroutine scenario which must ends with a SCENARIO END instruction. A subroutine scenario is invoked using PERFORM$ instruction. A subroutine scenario can invoke another subroutine scenario, and so on up to 3 levels. A sample of such type of scenario is available in the PREFORM$ insctruction description.    
         SUCCESS
-            Stops scenario processing but continue normal Virtel processing of the current message.
+            Stops scenario processing but continue normal VIRTEL processing of the current message.
 
 1.18.10. ACTION$ instruction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -7179,7 +7181,7 @@ This instruction can also be used with one of the following syntaxes.
 
     HANDLE$ LOOP=label
 
-If no instruction counter is specified, Virtel will take 32 times the number of instructions in the scenario as a default
+If no instruction counter is specified, VIRTEL will take 32 times the number of instructions in the scenario as a default
 counter.
 
 ::
@@ -7196,7 +7198,7 @@ The previous syntax wich is also valid is generated internaly by the HANDLE$ ins
 After the loop is detected, and the specified handling routine is called, a new HANDLE$ LOOP= instruction may be
 issued and processing may continue.
 
-If no HANDLE$ is specified, Virtel will still set an instruction limit, equal to 32 times the number of instructions in the
+If no HANDLE$ is specified, VIRTEL will still set an instruction limit, equal to 32 times the number of instructions in the
 scenario.
 
 .. _#_V456UG_IF$:
@@ -7409,7 +7411,7 @@ pattern,char
 
 .. note::
 
-    XML tag names are case sensitive. WITH='Title' is not the same as WITH='TITLE' A variation of the MAP$ AREA instruction allows the value of the field to be copied into a VIRTEL variable, in addition to being placed in the commarea. The variable will be created, if necessary, and its value will be set when the commarea is created by a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction. The value can then be tested by means of an IF$ VARIABLE instruction (see :ref:`“Examples of Virtel Scenarios” <#_V456UG_virtel_scenarios>`):
+    XML tag names are case sensitive. WITH='Title' is not the same as WITH='TITLE' A variation of the MAP$ AREA instruction allows the value of the field to be copied into a VIRTEL variable, in addition to being placed in the commarea. The variable will be created, if necessary, and its value will be set when the commarea is created by a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction. The value can then be tested by means of an IF$ VARIABLE instruction (see :ref:`“Examples of VIRTEL Scenarios” <#_V456UG_virtel_scenarios>`):
 
 ::
 
@@ -12701,14 +12703,14 @@ non-standard screen sizes.
 5.2. How To Support Multiple Codes Pages.
 -----------------------------------------
 
-Virtel can use two methods of EBCDIC translation and this is governed by the template or web page being displayed. If
-the page contains the embedded Virtel tag {{{SET-OUTPUT-ENCODING-UTF-8}}} than the TCT DEFUTF8 parameter is
+VIRTEL can use two methods of EBCDIC translation and this is governed by the template or web page being displayed. If
+the page contains the embedded VIRTEL tag {{{SET-OUTPUT-ENCODING-UTF-8}}} than the TCT DEFUTF8 parameter is
 used. If the page doesn’t contain the tag then the code pages identified by the COUNTRY parameter are used. (See
 “COUNTRY” and “DEFUTF8” parameters in the VIRTEL Installation Guide for further details).
 Code Page Support can be provided at the following levels:
-- TCT Level - This would provide Code Page translation defaults for all lines and transaction. Effectively a Global option for an instance of Virtel.
+- TCT Level - This would provide Code Page translation defaults for all lines and transaction. Effectively a Global option for an instance of VIRTEL.
 - URL Level – This overrides the TCT default.
-- Transaction level - Code pages can be determined through the Virtel Scenario language using the SET$ ENCODING
+- Transaction level - Code pages can be determined through the VIRTEL Scenario language using the SET$ ENCODING
 and SET$ URL-ENCODING instructions.
 
 5.2.1. Defining Code Pages translation defaults.
@@ -12738,15 +12740,15 @@ The value of the CODEPAGE parameter may be either:
 5.2.3. Override the TCT defaults at business logic level.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-At a transaction level code pages can be determined through the Virtel Scenario language using the SET$ ENCODING
+At a transaction level code pages can be determined through the VIRTEL Scenario language using the SET$ ENCODING
 and SET$ URL-ENCODING instructions. These are described in the VWA Users Guide.
 
 5.2.4. Supporting multiple countries.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If we take the scenario that applications can be accessible world wide than Virtel can incorporate the country differences through one of the following methods. In most case the TCT or URL override will accommodate such a set up.
+If we take the scenario that applications can be accessible world wide than VIRTEL can incorporate the country differences through one of the following methods. In most case the TCT or URL override will accommodate such a set up.
 
-- For each country supported, have a different instance of Virtel specifying the relevant country code pages at the TCT level.
+- For each country supported, have a different instance of VIRTEL specifying the relevant country code pages at the TCT level.
 - For each country supported, have a separate line/port and use the URL overrides.
 - For each country supported, have a common line/port and use the URL overrides.
 
@@ -12943,7 +12945,7 @@ turn on a special feature by introducing the following command into a "custom.js
 5.8. How To Customize Display Styles
 ------------------------------------
 
-Virtel users can customise the screen display to suit their needs. An exception to this is the model type which is an
+VIRTEL users can customise the screen display to suit their needs. An exception to this is the model type which is an
 Administration function. Administrators will configure model types which can then be selected by a user.
 
 5.8.1. Add or remove a display style

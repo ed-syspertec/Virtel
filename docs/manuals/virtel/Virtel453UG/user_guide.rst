@@ -4581,8 +4581,8 @@ screen.
 |image41|
 *Example VIRTEL transaction for VTAM logon via Web Access*
 
-1.12. Site Customization Of Colors And Logo
--------------------------------------------
+1.12. Site Customization - Colors And Logo
+------------------------------------------
 
 The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom
 settings are defined in a style sheet called custom.css which the administrator uploads to a VIRTEL directory
@@ -4627,8 +4627,8 @@ The procedure for activating customized settings is:
 
 11. Press “F1 - Update” at the Transaction Detail Definition screen, then “F3 – Return” twice to return to the List of Entry Points screen, then “F1 – Update” again to update the entry point.
 
-1.12.2. Example: Customizing the toolbar color by application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.2. Customizing the toolbar color by application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This example shows how to set the color of the toolbar to yellow for application SPCICSP and pink for application SPCICSQ.
 
@@ -4648,8 +4648,8 @@ Web Access screen with yellow toolbar for SPCICSP
 |image43|
 Web Access screen with pink toolbar for SPCICSQ
 
-1.12.3. Example: Adding custom text to the toolbar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.3. Adding custom text to the toolbar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to
 the toolbar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is
@@ -4692,8 +4692,8 @@ displayed for application TSO2A.
 
 .. _#_V453UG_hide_information:
 
-1.12.4. Example: Showing / Hiding server informations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.4. Showing / Hiding server informations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the
 maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is
@@ -4719,8 +4719,8 @@ information in toolbar" in the Display tab of the settings panel.
 
 .. _#_V453UG_hide_toolbar:
 
-1.12.5. Example: Hiding the toolbar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.5. Hiding the toolbar
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The administrator may wish to prevent users from accessing features like copy/paste, print, and settings. This example
 shows how to hide the toolbar using a custom.css file:
@@ -4736,8 +4736,8 @@ shows how to hide the toolbar using a custom.css file:
 
 You can also use custom.js to remove icons individually from the toolbar, see :ref:`“Removing unwanted toolbar icons” <#_V453UG_remove_icons>`.
 
-1.12.6. Example: Modifying the 3270 colors
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.6. Modifying the 3270 colors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some installations prefer to modify the colors displayed on the 3270 screen to make the characters more readable.
 This example shows how to modify the colors used by VIRTEL Web Access:
@@ -4770,7 +4770,8 @@ In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and WHITE represe
 - `http://en.wikipedia.org/wiki/Web_colors <http://en.wikipedia.org/wiki/Web_colors>`__
 - `http://www.w3schools.com/html/html_colornames.asp <http://www.w3schools.com/html/html_colornames.asp>`__
 
-*1.12.7. Example: Adding a company logo*
+1.12.7. Adding a company logo
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to display an icon (for example, a company logo) at the left of the toolbar:-
 
@@ -4811,8 +4812,8 @@ This example shows how to display an icon (for example, a company logo) at the l
 
     If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.
 
-1.12.8. Example: Removing 3D/hover effects on the toolbar buttons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.8. Removing 3D/hover effects on the toolbar buttons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:-
 
@@ -4831,8 +4832,8 @@ This example shows how to remove the 3D/hover effects on toolbar buttons by addi
 
 *Example custom.css for removing 3D/hover effects on buttons*
 
-1.12.9. Example: Changing background color of the toolbar buttons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.12.9. Changing background color of the toolbar buttons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows how to change the backgroung color of the toolbar buttons by adding orders in the custom.css file:
 
@@ -4869,8 +4870,8 @@ If some icons on the toolbar are displayed with some parasites on the border, pl
 
 .. _#_V453UG_customization_javascript_functions:
 
-1.13. Site Customization Of Javascript Functions
-------------------------------------------------
+1.13. Site Customization - Javascript Functions
+-----------------------------------------------
 
 To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads the /w2h/custom-js/custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction delivered as standard under the CLIWHOST entry point
 references the W2H-DIR directory, but the administrator can modify this transaction to reference a different directory
@@ -4947,8 +4948,8 @@ This function is called whenever the 3270 window gains the focus.
 
 This function is called whenever the 3270 window loses the focus.
 
-1.13.2. Example: Customizing the toolbar icons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.2. Customizing the toolbar icons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_standardInit function to insert additional icons into the toolbar when the session is started. Icons may subsequently be added or removed from the toolbar after each screen by means of the after_responseHandle function.
 
@@ -5021,8 +5022,8 @@ The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possi
 
 .. _#_V453UG_remove_icons:
 
-1.13.3. Example: Removing unwanted toolbar icons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.3. Removing unwanted toolbar icons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.
 
@@ -5067,8 +5068,8 @@ To hide the toolbar completely, see :ref:`“Hiding the toolbar” <#_V453UG_hid
 
 To hide only the Virtel Application name, see :ref:`“Showing / Hiding server informations” <#_V453UG_hide_information>`.
 
-1.13.4. Example: Positionning toolbar icons
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.4. Positionning toolbar icons
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In certain circumstances, the default position of an icon may not be at the user's convenence. Is possible to change an icon's position based on the position of another icon.
 
@@ -5095,8 +5096,8 @@ In certain circumstances, the default position of an icon may not be at the user
 
 *Example custom.js to select a position for printer icon*
 
-1.13.5. Example: Modifying the text of the status bar
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.5. Modifying the text of the status bar
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_responseHandle function to modify the text in the status bar at the bottom of the Web Access screen. This example displays the text “Your printer name is xxxx” in the status bar.
 The status bar text is an object which can therefore be modified using an API.
@@ -5155,8 +5156,8 @@ The query functions are:-
     - When specified, valid values are “true” or “false” (without the quotes). When the parameter is ommited, or is not a valid value, the default “false” will be used.
     - When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by Virtel mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()” functions, you may want to retrieive the inital or overprinted value. When in “false” mode the function returns the initial value. When in “true” mode the function retruns the overprinted value.
 
-1.13.6. Example: Custom hotspot recognition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.6. Custom hotspot recognition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_responseHandle function to modify the regular expression which is used to identify PF key hotspots.
 
@@ -5173,8 +5174,8 @@ This example uses the after_responseHandle function to modify the regular expres
 
 *Example custom.js to modify PF key hotspot recognition*
 
-1.13.7. Example: Adding a watermark to the 3270 screen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+1.13.7. Adding a watermark to the 3270 screen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example uses the after_standardInit function in conjunction with a custom stylesheet to add a watermark to the Web Access screen. The watermark displays the application name in light text behind the 3270 screen content. The application name is obtained from the class attribute of the body tag.
 
@@ -5221,7 +5222,8 @@ This example uses the after_standardInit function in conjunction with a custom s
 |image46|
 *Web Access screen with application name as watermark*
 
-1.13.8. Example: Modifying Web Access Settings
+1.13.8. Modifying Web Access Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
 The example shown below replaces the list of fonts, and adds two extra values "20" and "24" to the list of fontsizes:-
@@ -5241,8 +5243,8 @@ The example shown below replaces the list of fonts, and adds two extra values "2
 
 *Example custom.js to modify Settings values*
 
-1.14. Customizing The Help Page
--------------------------------
+1.14. Site Customization - The Help Page
+----------------------------------------
 
 Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:
 

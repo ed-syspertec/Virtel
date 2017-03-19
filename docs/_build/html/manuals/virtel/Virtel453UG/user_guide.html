@@ -4141,8 +4141,8 @@ screen.</p>
 <em>Example VIRTEL transaction for VTAM logon via Web Access</em></p>
 </div>
 </div>
-<div class="section" id="site-customization-of-colors-and-logo">
-<h3>1.12. Site Customization Of Colors And Logo<a class="headerlink" href="#site-customization-of-colors-and-logo" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="site-customization-colors-and-logo">
+<h3>1.12. Site Customization - Colors And Logo<a class="headerlink" href="#site-customization-colors-and-logo" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom
 settings are defined in a style sheet called custom.css which the administrator uploads to a VIRTEL directory
 designated for storage of customer files (usually CLI-DIR).</p>
@@ -4174,8 +4174,8 @@ the file custom.css.</p>
 <li>Press “F1 - Update” at the Transaction Detail Definition screen, then “F3 – Return” twice to return to the List of Entry Points screen, then “F1 – Update” again to update the entry point.</li>
 </ol>
 </div>
-<div class="section" id="example-customizing-the-toolbar-color-by-application">
-<h4>1.12.2. Example: Customizing the toolbar color by application<a class="headerlink" href="#example-customizing-the-toolbar-color-by-application" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="customizing-the-toolbar-color-by-application">
+<h4>1.12.2. Customizing the toolbar color by application<a class="headerlink" href="#customizing-the-toolbar-color-by-application" title="Permalink to this headline">¶</a></h4>
 <p>It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This example shows how to set the color of the toolbar to yellow for application SPCICSP and pink for application SPCICSQ.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customization</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2007</span><span class="p">,</span><span class="mi">2010</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -4190,8 +4190,8 @@ Web Access screen with yellow toolbar for SPCICSP</p>
 <p><img alt="image43" src="../../../_images/image43.jpeg" />
 Web Access screen with pink toolbar for SPCICSQ</p>
 </div>
-<div class="section" id="example-adding-custom-text-to-the-toolbar">
-<h4>1.12.3. Example: Adding custom text to the toolbar<a class="headerlink" href="#example-adding-custom-text-to-the-toolbar" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="adding-custom-text-to-the-toolbar">
+<h4>1.12.3. Adding custom text to the toolbar<a class="headerlink" href="#adding-custom-text-to-the-toolbar" title="Permalink to this headline">¶</a></h4>
 <p>Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to
 the toolbar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is
 displayed for application TSO2A.</p>
@@ -4227,8 +4227,8 @@ displayed for application TSO2A.</p>
 <p><img alt="image44" src="../../../_images/image44.jpeg" />
 <em>Web Access screen with custom text in the toolbar</em></p>
 </div>
-<div class="section" id="example-showing-hiding-server-informations">
-<span id="v453ug-hide-information"></span><h4>1.12.4. Example: Showing / Hiding server informations<a class="headerlink" href="#example-showing-hiding-server-informations" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="showing-hiding-server-informations">
+<span id="v453ug-hide-information"></span><h4>1.12.4. Showing / Hiding server informations<a class="headerlink" href="#showing-hiding-server-informations" title="Permalink to this headline">¶</a></h4>
 <p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the
 maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is
 displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
@@ -4246,8 +4246,8 @@ removed by modifying the w2hparm.hideinfo attribut present in the customized w2h
 <p>If the default value is preserved, the user can hide this information for his own usage by checking &#8220;Hide Virtel
 information in toolbar&#8221; in the Display tab of the settings panel.</p>
 </div>
-<div class="section" id="example-hiding-the-toolbar">
-<span id="v453ug-hide-toolbar"></span><h4>1.12.5. Example: Hiding the toolbar<a class="headerlink" href="#example-hiding-the-toolbar" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="hiding-the-toolbar">
+<span id="v453ug-hide-toolbar"></span><h4>1.12.5. Hiding the toolbar<a class="headerlink" href="#hiding-the-toolbar" title="Permalink to this headline">¶</a></h4>
 <p>The administrator may wish to prevent users from accessing features like copy/paste, print, and settings. This example
 shows how to hide the toolbar using a custom.css file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="k">for</span> <span class="n">site</span> <span class="n">customization</span>
@@ -4259,8 +4259,8 @@ shows how to hide the toolbar using a custom.css file:</p>
 <p><em>Example custom.css for hiding the toolbar</em></p>
 <p>You can also use custom.js to remove icons individually from the toolbar, see <a class="reference internal" href="#v453ug-remove-icons"><span class="std std-ref">“Removing unwanted toolbar icons”</span></a>.</p>
 </div>
-<div class="section" id="example-modifying-the-3270-colors">
-<h4>1.12.6. Example: Modifying the 3270 colors<a class="headerlink" href="#example-modifying-the-3270-colors" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="modifying-the-3270-colors">
+<h4>1.12.6. Modifying the 3270 colors<a class="headerlink" href="#modifying-the-3270-colors" title="Permalink to this headline">¶</a></h4>
 <p>Some installations prefer to modify the colors displayed on the 3270 screen to make the characters more readable.
 This example shows how to modify the colors used by VIRTEL Web Access:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -4289,7 +4289,9 @@ This example shows how to modify the colors used by VIRTEL Web Access:</p>
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Web_colors">http://en.wikipedia.org/wiki/Web_colors</a></li>
 <li><a class="reference external" href="http://www.w3schools.com/html/html_colornames.asp">http://www.w3schools.com/html/html_colornames.asp</a></li>
 </ul>
-<p><em>1.12.7. Example: Adding a company logo</em></p>
+</div>
+<div class="section" id="adding-a-company-logo">
+<h4>1.12.7. Adding a company logo<a class="headerlink" href="#adding-a-company-logo" title="Permalink to this headline">¶</a></h4>
 <p>This example shows how to display an icon (for example, a company logo) at the left of the toolbar:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>/*
 * VIRTEL Web Access style sheet customisation for company logo
@@ -4327,8 +4329,8 @@ width: 266px;
 <p class="last">If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.</p>
 </div>
 </div>
-<div class="section" id="example-removing-3d-hover-effects-on-the-toolbar-buttons">
-<h4>1.12.8. Example: Removing 3D/hover effects on the toolbar buttons<a class="headerlink" href="#example-removing-3d-hover-effects-on-the-toolbar-buttons" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="removing-3d-hover-effects-on-the-toolbar-buttons">
+<h4>1.12.8. Removing 3D/hover effects on the toolbar buttons<a class="headerlink" href="#removing-3d-hover-effects-on-the-toolbar-buttons" title="Permalink to this headline">¶</a></h4>
 <p>This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="k">for</span> <span class="n">removing</span> <span class="mi">3</span><span class="n">D</span><span class="o">/</span><span class="n">hover</span> <span class="n">effects</span>
@@ -4343,8 +4345,8 @@ width: 266px;
 </div>
 <p><em>Example custom.css for removing 3D/hover effects on buttons</em></p>
 </div>
-<div class="section" id="example-changing-background-color-of-the-toolbar-buttons">
-<h4>1.12.9. Example: Changing background color of the toolbar buttons<a class="headerlink" href="#example-changing-background-color-of-the-toolbar-buttons" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="changing-background-color-of-the-toolbar-buttons">
+<h4>1.12.9. Changing background color of the toolbar buttons<a class="headerlink" href="#changing-background-color-of-the-toolbar-buttons" title="Permalink to this headline">¶</a></h4>
 <p>This example shows how to change the backgroung color of the toolbar buttons by adding orders in the custom.css file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">style</span> <span class="n">sheet</span> <span class="n">customisation</span> <span class="n">the</span> <span class="n">background</span> <span class="n">of</span> <span class="n">the</span> <span class="n">toolbar</span> <span class="n">buttons</span>
@@ -4376,8 +4378,8 @@ width: 266px;
 <p>If some icons on the toolbar are displayed with some parasites on the border, please check that the browser is not in a zoom mode greater than 100%.</p>
 </div>
 </div>
-<div class="section" id="site-customization-of-javascript-functions">
-<span id="v453ug-customization-javascript-functions"></span><h3>1.13. Site Customization Of Javascript Functions<a class="headerlink" href="#site-customization-of-javascript-functions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="site-customization-javascript-functions">
+<span id="v453ug-customization-javascript-functions"></span><h3>1.13. Site Customization - Javascript Functions<a class="headerlink" href="#site-customization-javascript-functions" title="Permalink to this headline">¶</a></h3>
 <p>To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads the /w2h/custom-js/custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction delivered as standard under the CLIWHOST entry point
 references the W2H-DIR directory, but the administrator can modify this transaction to reference a different directory
 containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be
@@ -4438,8 +4440,8 @@ unchanged.</p>
 </div>
 <p>This function is called whenever the 3270 window loses the focus.</p>
 </div>
-<div class="section" id="example-customizing-the-toolbar-icons">
-<h4>1.13.2. Example: Customizing the toolbar icons<a class="headerlink" href="#example-customizing-the-toolbar-icons" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="customizing-the-toolbar-icons">
+<h4>1.13.2. Customizing the toolbar icons<a class="headerlink" href="#customizing-the-toolbar-icons" title="Permalink to this headline">¶</a></h4>
 <p>This example uses the after_standardInit function to insert additional icons into the toolbar when the session is started. Icons may subsequently be added or removed from the toolbar after each screen by means of the after_responseHandle function.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -4501,8 +4503,8 @@ unchanged.</p>
 </div>
 <p><em>Example custom.css to manage a toolbar icon with a non standard size</em></p>
 </div>
-<div class="section" id="example-removing-unwanted-toolbar-icons">
-<span id="v453ug-remove-icons"></span><h4>1.13.3. Example: Removing unwanted toolbar icons<a class="headerlink" href="#example-removing-unwanted-toolbar-icons" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="removing-unwanted-toolbar-icons">
+<span id="v453ug-remove-icons"></span><h4>1.13.3. Removing unwanted toolbar icons<a class="headerlink" href="#removing-unwanted-toolbar-icons" title="Permalink to this headline">¶</a></h4>
 <p>This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -4542,8 +4544,8 @@ unchanged.</p>
 <p>To hide the toolbar completely, see <a class="reference internal" href="#v453ug-hide-toolbar"><span class="std std-ref">“Hiding the toolbar”</span></a>.</p>
 <p>To hide only the Virtel Application name, see <a class="reference internal" href="#v453ug-hide-information"><span class="std std-ref">“Showing / Hiding server informations”</span></a>.</p>
 </div>
-<div class="section" id="example-positionning-toolbar-icons">
-<h4>1.13.4. Example: Positionning toolbar icons<a class="headerlink" href="#example-positionning-toolbar-icons" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="positionning-toolbar-icons">
+<h4>1.13.4. Positionning toolbar icons<a class="headerlink" href="#positionning-toolbar-icons" title="Permalink to this headline">¶</a></h4>
 <p>In certain circumstances, the default position of an icon may not be at the user&#8217;s convenence. Is possible to change an icon&#8217;s position based on the position of another icon.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Customize</span> <span class="n">the</span> <span class="n">location</span> <span class="n">of</span> <span class="n">dynamic</span> <span class="n">toolbar</span> <span class="n">buttons</span><span class="o">.</span>
@@ -4566,8 +4568,8 @@ unchanged.</p>
 </div>
 <p><em>Example custom.js to select a position for printer icon</em></p>
 </div>
-<div class="section" id="example-modifying-the-text-of-the-status-bar">
-<h4>1.13.5. Example: Modifying the text of the status bar<a class="headerlink" href="#example-modifying-the-text-of-the-status-bar" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="modifying-the-text-of-the-status-bar">
+<h4>1.13.5. Modifying the text of the status bar<a class="headerlink" href="#modifying-the-text-of-the-status-bar" title="Permalink to this headline">¶</a></h4>
 <p>This example uses the after_responseHandle function to modify the text in the status bar at the bottom of the Web Access screen. This example displays the text “Your printer name is xxxx” in the status bar.
 The status bar text is an object which can therefore be modified using an API.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -4647,8 +4649,8 @@ The status bar text is an object which can therefore be modified using an API.</
 </ul>
 </div>
 </div>
-<div class="section" id="example-custom-hotspot-recognition">
-<h4>1.13.6. Example: Custom hotspot recognition<a class="headerlink" href="#example-custom-hotspot-recognition" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="custom-hotspot-recognition">
+<h4>1.13.6. Custom hotspot recognition<a class="headerlink" href="#custom-hotspot-recognition" title="Permalink to this headline">¶</a></h4>
 <p>This example uses the after_responseHandle function to modify the regular expression which is used to identify PF key hotspots.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>/*
 * (c)Copyright SysperTec Communication 2012 All Rights Reserved
@@ -4662,8 +4664,8 @@ VIR3270.customPfKeysHotspotRegex =
 </div>
 <p><em>Example custom.js to modify PF key hotspot recognition</em></p>
 </div>
-<div class="section" id="example-adding-a-watermark-to-the-3270-screen">
-<h4>1.13.7. Example: Adding a watermark to the 3270 screen<a class="headerlink" href="#example-adding-a-watermark-to-the-3270-screen" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="adding-a-watermark-to-the-3270-screen">
+<h4>1.13.7. Adding a watermark to the 3270 screen<a class="headerlink" href="#adding-a-watermark-to-the-3270-screen" title="Permalink to this headline">¶</a></h4>
 <p>This example uses the after_standardInit function in conjunction with a custom stylesheet to add a watermark to the Web Access screen. The watermark displays the application name in light text behind the 3270 screen content. The application name is obtained from the class attribute of the body tag.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
@@ -4703,7 +4705,9 @@ VIR3270.customPfKeysHotspotRegex =
 <p><em>Example custom.css to define the style of the watermark</em></p>
 <p><img alt="image46" src="../../../_images/image461.png" />
 <em>Web Access screen with application name as watermark</em></p>
-<p>1.13.8. Example: Modifying Web Access Settings</p>
+</div>
+<div class="section" id="modifying-web-access-settings">
+<h4>1.13.8. Modifying Web Access Settings<a class="headerlink" href="#modifying-web-access-settings" title="Permalink to this headline">¶</a></h4>
 <p>The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
 The example shown below replaces the list of fonts, and adds two extra values &#8220;20&#8221; and &#8220;24&#8221; to the list of fontsizes:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -4721,8 +4725,8 @@ The example shown below replaces the list of fonts, and adds two extra values &#
 <p><em>Example custom.js to modify Settings values</em></p>
 </div>
 </div>
-<div class="section" id="customizing-the-help-page">
-<h3>1.14. Customizing The Help Page<a class="headerlink" href="#customizing-the-help-page" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="site-customization-the-help-page">
+<h3>1.14. Site Customization - The Help Page<a class="headerlink" href="#site-customization-the-help-page" title="Permalink to this headline">¶</a></h3>
 <p>Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:</p>
 <p><img alt="image47" src="../../../_images/image471.png" /></p>
 <p>which causes the browser to display the page /w2h/custom-help/help.html delivered as standard with VIRTEL Web Access.
