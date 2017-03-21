@@ -160,7 +160,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="building-a-customized-usstab-using-virtels-web-access-facility">
-<h1>Building a customized USSTAB using Virtel’s Web Access facility<a class="headerlink" href="#building-a-customized-usstab-using-virtels-web-access-facility" title="Permalink to this headline">¶</a></h1>
+<span id="tn201411"></span><h1>Building a customized USSTAB using Virtel’s Web Access facility<a class="headerlink" href="#building-a-customized-usstab-using-virtels-web-access-facility" title="Permalink to this headline">¶</a></h1>
 <p>This technical newsletter describes how to build a VTAM USSTAB
 equivalent using Web Access facility. The process will cover:-</p>
 <ul class="simple">
@@ -256,41 +256,45 @@ code pulls these two modules from the users default directory associated
 with the entry point.</p>
 <p>The modifications made to <em>custom.js</em> are shown in the following piece
 of code:-</p>
-<p>/*</p>
-<p>* (c)Copyright SysperTec Communication 2012 All Rights Reserved</p>
-<p>* VIRTEL Web Access customer-specific javascript functions</p>
-<p>*/</p>
-<p>function after_standardInit() {</p>
-<p>/* Remove macro buttons from the toolbar */</p>
-<p>removetoolbarbutton(&#8220;startrecording&#8221;);</p>
-<p>removetoolbarbutton(&#8220;playback&#8221;);</p>
-<p>}</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
+<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
+<span class="o">*/</span>
+<span class="n">function</span> <span class="n">after</span>\<span class="n">_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">/*</span> <span class="n">Remove</span> <span class="n">macro</span> <span class="n">buttons</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">toolbar</span> <span class="o">*/</span>
+<span class="n">removetoolbarbutton</span><span class="p">(</span><span class="s2">&quot;startrecording&quot;</span><span class="p">);</span>
+<span class="n">removetoolbarbutton</span><span class="p">(</span><span class="s2">&quot;playback&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>This customs-specific java script module removes the “startrecording”
 and “playback” tools from the tool bar.</p>
 <p>Also, the <em>w2hparm.js</em> module has been modified to change the fonts and
 keys from the defaults. The following is an example of <em>w2hparm.js</em> as
 used with USSHSYSP.HTML:-</p>
-<p>// Default Virtel Web Access settings for USSHSYSP.HTML</p>
-<p>// see w2hparmdefns in js01.js for parameters and allowable values</p>
-<p>var w2hparm = {</p>
-<p>&#8220;fontsize&#8221;:&#8221;window&#8221;,</p>
-<p>&#8220;font&#8221;:&#8221;Lucida Console&#8221;,</p>
-<p>&#8220;ctrl&#8221;:&#8221;Newline&#8221;,</p>
-<p>&#8220;enter&#8221;:&#8221;ENTER&#8221;,</p>
-<p>&#8220;shiftesc&#8221;:&#8221;ATTN&#8221;,</p>
-<p>&#8220;pause&#8221;:&#8221;CLEAR&#8221;,</p>
-<p>&#8220;esc&#8221;:&#8221;Reset&#8221;,</p>
-<p>&#8220;home&#8221;:&#8221;Home&#8221;,</p>
-<p>&#8220;end&#8221;:&#8221;ErEof&#8221;,</p>
-<p>&#8220;shiftins&#8221;:&#8221;Dup&#8221;,</p>
-<p>&#8220;shifthome&#8221;:&#8221;FieldMark&#8221;,</p>
-<p>&#8220;shiftend&#8221;:&#8221;End&#8221;,</p>
-<p>&#8220;shiftpgdn&#8221;:&#8221;PA3&#8221;,</p>
-<p>&#8220;pgup&#8221;:&#8221;PA1&#8221;,</p>
-<p>&#8220;pgdn&#8221;:&#8221;PA2&#8221;,</p>
-<p>&#8220;ctrlend&#8221;:&#8221;End&#8221;,</p>
-<p>&#8220;printstyle&#8221;:&#8221;white&#8221;,</p>
-<p>&#8220;style&#8221;:&#8221;3270&#8221;};</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Default</span> <span class="n">Virtel</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">USSHSYSP</span><span class="o">.</span><span class="n">HTML</span>
+<span class="o">//</span> <span class="n">see</span> <span class="n">w2hparmdefns</span> <span class="ow">in</span> <span class="n">js01</span><span class="o">.</span><span class="n">js</span> <span class="k">for</span> <span class="n">parameters</span> <span class="ow">and</span> <span class="n">allowable</span> <span class="n">values</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+<span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;Lucida Console&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftesc&quot;</span><span class="p">:</span><span class="s2">&quot;ATTN&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pause&quot;</span><span class="p">:</span><span class="s2">&quot;CLEAR&quot;</span><span class="p">,</span>
+<span class="s2">&quot;esc&quot;</span><span class="p">:</span><span class="s2">&quot;Reset&quot;</span><span class="p">,</span>
+<span class="s2">&quot;home&quot;</span><span class="p">:</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span>
+<span class="s2">&quot;end&quot;</span><span class="p">:</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftins&quot;</span><span class="p">:</span><span class="s2">&quot;Dup&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shifthome&quot;</span><span class="p">:</span><span class="s2">&quot;FieldMark&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftpgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PA3&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgup&quot;</span><span class="p">:</span><span class="s2">&quot;PA1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PA2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;printstyle&quot;</span><span class="p">:</span><span class="s2">&quot;white&quot;</span><span class="p">,</span>
+<span class="s2">&quot;style&quot;</span><span class="p">:</span><span class="s2">&quot;3270&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
 <p><em>USSWSYSP.HTML, customs.js</em> and <em>w2hparm.js</em> should all be uploaded to
 the default directory for the Entry Point you are using. Also, within
 that Entry Point, in this EDSHOST, there must be a transaction entry for
@@ -309,125 +313,132 @@ globally. If you want to use the shipped defaults of custom.js and
 w2hparm.js then modify the HTML &lt;script&gt; tags in <em>USSWSYSP.HTML</em> to
 include <em>custom.js</em> and <em>w2hparm.js</em> from the distributed ../<em>w2h/</em>
 directory and not from your default EntryPoint directory.</p>
-<p>Appendix A</p>
+<p><strong>Appendix A</strong></p>
 <p>Code for template USSWSYSP.HTML</p>
-<p>&lt;!DOCTYPE HTML PUBLIC &#8220;-//W3C//DTD HTML 4.01//EN&#8221;
-&#8220;<a class="reference external" href="http://www.w3.org/TR/html4/strict.dtd">http://www.w3.org/TR/html4/strict.dtd</a>&#8220;&gt;</p>
-<p>&lt;html&gt;</p>
-<p>&lt;head&gt; &lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221; &#8211;&gt;</p>
-<p>&lt;!&#8211;</p>
-<p>$Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $</p>
-<p>Example of Home Page for VIRTEL Web Access _ USS Replacement</p>
-<p>&#8211;&gt;</p>
-<p>&lt;meta http-equiv=&#8221;X-UA-Compatible&#8221; content=&#8221;IE=edge&#8221;/&gt;</p>
-<p>&lt;meta http-equiv=&#8221;Content-Type&#8221; content=&#8221;text/html;
-charset=ISO-8859-15&#8221;&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2hparm.js&#8221;&gt;&lt;/script&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/default.js&#8221;&gt;&lt;/script&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/stk.js&#8221;&gt;&lt;/script&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/js01.js&#8221;&gt;&lt;/script&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/vir3270.js&#8221;&gt;&lt;/script&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../w2h/virajax.js&#8221;&gt;&lt;/script&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221; src=&#8221;../custom.js&#8221;&gt;&lt;/script&gt;</p>
-<p>&lt;title&gt;{{{NAME-OF (VIRTEL)}}} VIRTEL Web Access&lt;/title&gt;</p>
-<p>&lt;/head&gt;</p>
-<p>&lt;body onload=&#8217;js01onload(); pageSetup(80,&#8221;{{{NAME-OF (VIRTEL)}}}&#8221;);</p>
-<p>VIR3270.init(&#8220;printReady&#8221;, 24, 80, &#8220;zcmd&#8221;); autoCapture();&#8217;&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221;&gt;</p>
-<p>function submitForm(pfkey) {</p>
-<p>var zcmd, action, errmsg, elem;</p>
-<p>zcmd = stk.trimString(document.virtelForm.zcmd.value).toUpperCase();</p>
-<p>if (pfkey == &#8220;CLEAR&#8221;) {</p>
-<p>action = &#8220;/&#8221;;</p>
-<p>} else if (pfkey != &#8220;ENTER&#8221;) {</p>
-<p>errmsg = &#8220;Invalid Key. Please enter application and press ENTER&#8221;;</p>
-<p>} else {</p>
-<p>switch (zcmd) {</p>
-<p>case &#8220;&#8221;:</p>
-<p>errmsg = &#8220;Please specify application and press ENTER&#8221;;</p>
-<p>break;</p>
-<p>case &#8220;TSOA&#8221;:</p>
-<p>action = &#8221;../w2h/WEB2AJAX.htm+TSO&#8221;;</p>
-<p>break;</p>
-<p>default:</p>
-<p>// errmsg = &#8220;LE CHOIX QUE VOUS AVEZ FAIT N&#8217;EST PAS PREVU&#8221;;</p>
-<p>action = &#8221;../w2h/WEB2AJAX.htm+&#8221;.concat(zcmd);</p>
-<p>}</p>
-<p>}</p>
-<p>if (errmsg) {</p>
-<p>elem = VIR3270.findField(1840);</p>
-<p>if (elem) elem.innerHTML = errmsg.fixlen(79).htmlcode();</p>
-<p>VIR3270.cursorOff();</p>
-<p>VIR3270.cursorHome();</p>
-<p>VIR3270.cursorOn();</p>
-<p>VIR3270.resetInhibit();</p>
-<p>}</p>
-<p>if (action) document.location.href = action;</p>
-<p>}</p>
-<p>function pageSetup(cols, virtname) {</p>
-<p>var ident1, ident2;</p>
-<p>loadCss(&#8221;../w2h/login.css&#8221;);</p>
-<p>loadCss(&#8221;../w2h/keypad.css&#8221;);</p>
-<p>loadCss(&#8221;../w2h/custom.css&#8221;);</p>
-<p>if (typeof setStatusBarRelayStatus === &#8220;function&#8221;) {</p>
-<p>fillstatusbar(cols);</p>
-<p>setStatusBarRelayStatus(virtname);</p>
-<p>if (typeof createOnResizeFn === &#8220;function&#8221;) {</p>
-<p>window.onresize = createOnResizeFn(&#8220;window&#8221;, 80, 24);</p>
-<p>window.onresize(forceResizeEvent);</p>
-<p>}</p>
-<p>} else {</p>
-<p>fillstatusbar(cols, virtname);</p>
-<p>updateFontsize(&#8220;window&#8221;, 80, 24);</p>
-<p>}</p>
-<p>document.getElementById(&#8220;printReady&#8221;).style.visibility = &#8220;visible&#8221;;</p>
-<p>}</p>
-<p>setFontsize(&#8220;window&#8221;, 80, 24);</p>
-<p>genkeypad();</p>
-<p>gentoolbar();</p>
-<p>if (typeof after_standardInit === &#8220;function&#8221;) {</p>
-<p>after_standardInit();</p>
-<p>}</p>
-<p>&lt;/script&gt;</p>
-<p>&lt;div id=&#8221;viewport&#8221; style=&#8221;-webkit-transform-origin:0
-0;-ms-transform-origin:0 0; moz-transform-origin:0 0;transform-origin:0
-0;&#8221;&gt;</p>
-<p>&lt;div id=&#8221;virsubpage&#8221;&gt;</p>
-<p>&lt;form name=&#8221;virtelForm&#8221; action=&#8221;&#8221; method=&#8221;get&#8221;&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221;&gt;</p>
-<p>var title = &#8220;Welcome to SysperTec&#8221;</p>
-<p>var blankLine = &#8216; &#8216;.concat(&#8216;&lt;br&gt;&#8217;);</p>
-<p>var screen = &#8216;&lt;pre&gt;&lt;div id=&#8221;printReady&#8221; class=&#8221;mainFont&#8221;
-style=&#8221;visibility:hidden;&#8221;&gt;&lt;span class=&#8221;NGREEN&#8221;&gt;&#8217;;</p>
-<p>screen = screen.concat(title).concat(blankLine.substring(title.length));</p>
-<p>screen = screen.concat(&#8216;&lt;/span&gt;&#8217;);</p>
-<p>screen = screen.concat(&#8216;&lt;input name=&#8221;zcmd&#8221; type=&#8221;text&#8221; size=&#8221;80&#8221;
-maxsize=&#8221;80&#8221; class=&#8221;NGREEN&#8221;&gt;&#8217;);</p>
-<p>screen = screen.concat(&#8216;&lt;span class=&#8221;NWHITE&#8221;&gt;&lt;br&gt;&#8217;);</p>
-<p>for (var i = 0; i &lt; 21; i++) {</p>
-<p>screen = screen.concat(blankLine);</p>
-<p>}</p>
-<p>screen = screen.concat(&#8216;&lt;/span&gt;&lt;span
-class=&#8221;NRED&#8221;&gt;&#8217;).concat(blankLine).concat(&#8216;&lt;/span&gt;&lt;span
-class=&#8221;NWHITE&#8221;&gt;&amp;nbsp;&#8217;)</p>
-<p>screen = screen.concat(&#8216;&lt;/span&gt;&lt;/div&gt;&lt;div id=&#8221;statusbar&#8221;
-class=&#8221;mainFont&#8221;&gt;&lt;/div&gt;&lt;/pre&gt;&#8217;);</p>
-<p>document.write(screen);</p>
-<p>&lt;/script&gt;</p>
-<p>{{{DEFINE-HTML-PFKEY &#8220;pf&#8221;}}}&lt;input name=&#8221;pf&#8221; type=&#8221;HIDDEN&#8221;
-value=&#8221;ENTER&#8221;&gt;</p>
-<p>&lt;input name=&#8221;cursorField&#8221; id=&#8221;cursorfield&#8221; type=&#8221;HIDDEN&#8221; value=&#8221;&#8220;&gt;</p>
-<p>&lt;/form&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;/div&gt;</p>
-<p>&lt;script type=&#8221;text/javascript&#8221;&gt;</p>
-<p>genBhoTrigger();</p>
-<p>&lt;/script&gt;</p>
-<p>&lt;/body&gt;</p>
-<p>&lt;/html&gt;</p>
-<p>Note:</p>
-<p>at the end of a line means the next line forms part of the this line</p>
-<p>The blankLine variable has 80 blanks between the quotes.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+&quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
+   &lt;html&gt;
+      &lt;head&gt; &lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
+         &lt;!--
+         $Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $
+         Example of Home Page for VIRTEL Web Access \_ USS Replacement
+         --&gt;
+         &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;/&gt;
+         &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
+         charset=ISO-8859-15&quot;&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;../w2hparm.js&quot;&gt;&lt;/script&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;../w2h/default.js&quot;&gt;&lt;/script&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;../w2h/stk.js&quot;&gt;&lt;/script&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;../w2h/js01.js&quot;&gt;&lt;/script&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;../w2h/vir3270.js&quot;&gt;&lt;/script&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;../w2h/virajax.js&quot;&gt;&lt;/script&gt;
+         &lt;script type=&quot;text/javascript&quot; src=&quot;../custom.js&quot;&gt;&lt;/script&gt;
+         &lt;title&gt;{{{NAME-OF (VIRTEL)}}} VIRTEL Web Access&lt;/title&gt;
+      &lt;/head&gt;
+   &lt;body onload=&#39;js01onload(); pageSetup(80,&quot;{{{NAME-OF (VIRTEL)}}}&quot;); VIR3270.init(&quot;printReady&quot;, 24, 80, &quot;zcmd&quot;); autoCapture();&#39;&gt;
+      &lt;script type=&quot;text/javascript&quot;&gt;
+      function submitForm(pfkey) {
+         var zcmd, action, errmsg, elem;
+         zcmd = stk.trimString(document.virtelForm.zcmd.value).toUpperCase();
+         if (pfkey == &quot;CLEAR&quot;) {
+            action = &quot;/&quot;;
+         } else if (pfkey != &quot;ENTER&quot;) {
+            errmsg = &quot;Invalid Key. Please enter application and press ENTER&quot;;
+         } else {
+            switch (zcmd) {
+               case &quot;&quot;:
+                  errmsg = &quot;Please specify application and press ENTER&quot;;
+                  break;
+               case &quot;TSOA&quot;:
+                  action = &quot;../w2h/WEB2AJAX.htm+TSO&quot;;
+                  break;
+               default:
+                  // errmsg = &quot;LE CHOIX QUE VOUS AVEZ FAIT N&#39;EST PAS PREVU&quot;;
+                  action = &quot;../w2h/WEB2AJAX.htm+&quot;.concat(zcmd);
+            }
+         }
+         if (errmsg) {
+            elem = VIR3270.findField(1840);
+            if (elem)
+               elem.innerHTML = errmsg.fixlen(79).htmlcode();
+            VIR3270.cursorOff();
+            VIR3270.cursorHome();
+            VIR3270.cursorOn();
+            VIR3270.resetInhibit();
+         }
+         if (action)
+            document.location.href = action;
+      }
+      function pageSetup(cols, virtname) {
+         var ident1, ident2;
+         loadCss(&quot;../w2h/login.css&quot;);
+         loadCss(&quot;../w2h/keypad.css&quot;);
+         loadCss(&quot;../w2h/custom.css&quot;);
+         if (typeof setStatusBarRelayStatus === &quot;function&quot;) {
+            fillstatusbar(cols);
+            setStatusBarRelayStatus(virtname);
+            if (typeof createOnResizeFn === &quot;function&quot;) {
+               window.onresize = createOnResizeFn(&quot;window&quot;, 80, 24);
+               window.onresize(forceResizeEvent);
+            }
+         } else {
+            fillstatusbar(cols, virtname);
+            updateFontsize(&quot;window&quot;, 80, 24);
+         }
+         document.getElementById(&quot;printReady&quot;).style.visibility = &quot;visible&quot;;
+      }
+      setFontsize(&quot;window&quot;, 80, 24);
+      genkeypad();
+      gentoolbar();
+      if (typeof after\_standardInit === &quot;function&quot;) {
+      after\_standardInit();
+      }
+      &lt;/script&gt;
+
+      &lt;div id=&quot;viewport&quot; style=&quot;-webkit-transform-origin:0 0;-ms-transform-origin:0 0; moz-transform-origin:0 0;transform-origin:0 0;&quot;&gt;
+
+         &lt;div id=&quot;virsubpage&quot;&gt;
+
+            &lt;form name=&quot;virtelForm&quot; action=&quot;&quot; method=&quot;get&quot;&gt;
+               &lt;script type=&quot;text/javascript&quot;&gt;
+                  var title = &quot;Welcome to SysperTec&quot;
+                  var blankLine = &#39; &#39;.concat(&#39;&lt;br&gt;&#39;);
+                  var screen = &#39;&lt;pre&gt;&lt;div id=&quot;printReady&quot; class=&quot;mainFont&quot;
+                  style=&quot;visibility:hidden;&quot;&gt;&lt;span class=&quot;NGREEN&quot;&gt;&#39;;
+                  screen = screen.concat(title).concat(blankLine.substring(title.length));
+                  screen = screen.concat(&#39;&lt;/span&gt;&#39;);
+                  screen = screen.concat(&#39;&lt;input name=&quot;zcmd&quot; type=&quot;text&quot; size=&quot;80&quot;
+                  maxsize=&quot;80&quot; class=&quot;NGREEN&quot;&gt;&#39;);
+                  screen = screen.concat(&#39;&lt;span class=&quot;NWHITE&quot;&gt;&lt;br&gt;&#39;);
+                  for (var i = 0; i &lt; 21; i++) {
+                     screen = screen.concat(blankLine);
+                  }
+                  screen = screen.concat(&#39;&lt;/span&gt;&lt;span
+                  class=&quot;NRED&quot;&gt;&#39;).concat(blankLine).concat(&#39;&lt;/span&gt;&lt;span
+                  class=&quot;NWHITE&quot;&gt;&amp;nbsp;&#39;)
+                  screen = screen.concat(&#39;&lt;/span&gt;&lt;/div&gt;&lt;div id=&quot;statusbar&quot;
+                  class=&quot;mainFont&quot;&gt;&lt;/div&gt;&lt;/pre&gt;&#39;);
+                  document.write(screen);
+               &lt;/script&gt;
+
+               {{{DEFINE-HTML-PFKEY &quot;pf&quot;}}}&lt;input name=&quot;pf&quot; type=&quot;HIDDEN&quot; value=&quot;ENTER&quot;&gt;
+               &lt;input name=&quot;cursorField&quot; id=&quot;cursorfield&quot; type=&quot;HIDDEN&quot; value=&quot;&quot;&gt;
+            &lt;/form&gt;
+
+         &lt;/div&gt;
+
+      &lt;/div&gt;
+      &lt;script type=&quot;text/javascript&quot;&gt;
+      genBhoTrigger();
+      &lt;/script&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At the end of a line means the next line forms part of the this line. The blankLine variable has 80 blanks between the quotes.</p>
+</div>
 </div>
 
 

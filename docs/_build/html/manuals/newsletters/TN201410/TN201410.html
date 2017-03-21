@@ -163,7 +163,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="taking-a-vtam-trace">
-<h1>Taking a VTAM trace<a class="headerlink" href="#taking-a-vtam-trace" title="Permalink to this headline">¶</a></h1>
+<span id="tn201410"></span><h1>Taking a VTAM trace<a class="headerlink" href="#taking-a-vtam-trace" title="Permalink to this headline">¶</a></h1>
 <p>This newsletters provides details on how to take a VTAM buffer trace and
 print the details. In this scenario we are taking a trace between VIRTEL
 and TSO via the IBM network session monitor Netview Access (NVAS). In my
@@ -249,9 +249,9 @@ trace the Virtel Relay Session.</p>
 <p><strong>Stopping GTF and VTAM traces</strong></p>
 <p>Once the diagnostic work has been completed GTF and the traces need to
 be terminated. Issue the following commands:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">P</span> <span class="n">GTF</span>                                                           <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">GTF</span>
-    <span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">x</span>                    <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">VTAM</span> <span class="n">buffer</span> <span class="n">trace</span>
-<span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">VTAM</span>                            <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">VTAM</span> <span class="n">tracing</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">GTF</span>                                                                   <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">GTF</span>
+<span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">x</span>                    <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">VTAM</span> <span class="n">buffer</span> <span class="n">trace</span>
+<span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">VTAM</span>                                <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">VTAM</span> <span class="n">tracing</span>
 </pre></div>
 </div>
 <p><strong>Printing the trace records with IPCS</strong></p>

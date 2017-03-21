@@ -1,3 +1,5 @@
+.. _tn201411:
+
 Building a customized USSTAB using Virtel’s Web Access facility
 ===============================================================
 
@@ -94,7 +96,7 @@ parameter in the Entry Point definition has been set to /USSWSYSP.HTML.
 
 The template consists of some JavaScript and HTML. Most of the
 JavasSript relates to session state and presentation and should not be
-modified. Essential the template, using JavaScript, builds a 24\*80 HTML
+modified. Essential the template, using JavaScript, builds a 24*80 HTML
 presentation screen. On line 1 a title is displayed, see the variable
 *title* in the last <script> segment. Line 2 is an input line and line
 24 is an error message line.
@@ -129,23 +131,17 @@ with the entry point.
 The modifications made to *custom.js* are shown in the following piece
 of code:-
 
-/\*
+::
 
-\* (c)Copyright SysperTec Communication 2012 All Rights Reserved
-
-\* VIRTEL Web Access customer-specific javascript functions
-
-\*/
-
-function after\_standardInit() {
-
-/\* Remove macro buttons from the toolbar \*/
-
-removetoolbarbutton("startrecording");
-
-removetoolbarbutton("playback");
-
-}
+   /*
+   * (c)Copyright SysperTec Communication 2012 All Rights Reserved
+   * VIRTEL Web Access customer-specific javascript functions
+   */
+   function after\_standardInit() {
+   /* Remove macro buttons from the toolbar */
+   removetoolbarbutton("startrecording");
+   removetoolbarbutton("playback");
+   }
 
 This customs-specific java script module removes the “startrecording”
 and “playback” tools from the tool bar.
@@ -154,47 +150,29 @@ Also, the *w2hparm.js* module has been modified to change the fonts and
 keys from the defaults. The following is an example of *w2hparm.js* as
 used with USSHSYSP.HTML:-
 
-// Default Virtel Web Access settings for USSHSYSP.HTML
+::
 
-// see w2hparmdefns in js01.js for parameters and allowable values
-
-var w2hparm = {
-
-"fontsize":"window",
-
-"font":"Lucida Console",
-
-"ctrl":"Newline",
-
-"enter":"ENTER",
-
-"shiftesc":"ATTN",
-
-"pause":"CLEAR",
-
-"esc":"Reset",
-
-"home":"Home",
-
-"end":"ErEof",
-
-"shiftins":"Dup",
-
-"shifthome":"FieldMark",
-
-"shiftend":"End",
-
-"shiftpgdn":"PA3",
-
-"pgup":"PA1",
-
-"pgdn":"PA2",
-
-"ctrlend":"End",
-
-"printstyle":"white",
-
-"style":"3270"};
+   // Default Virtel Web Access settings for USSHSYSP.HTML
+   // see w2hparmdefns in js01.js for parameters and allowable values
+   var w2hparm = {
+   "fontsize":"window",
+   "font":"Lucida Console",
+   "ctrl":"Newline",
+   "enter":"ENTER",
+   "shiftesc":"ATTN",
+   "pause":"CLEAR",
+   "esc":"Reset",
+   "home":"Home",
+   "end":"ErEof",
+   "shiftins":"Dup",
+   "shifthome":"FieldMark",
+   "shiftend":"End",
+   "shiftpgdn":"PA3",
+   "pgup":"PA1",
+   "pgdn":"PA2",
+   "ctrlend":"End",
+   "printstyle":"white",
+   "style":"3270"};
 
 *USSWSYSP.HTML, customs.js* and *w2hparm.js* should all be uploaded to
 the default directory for the Entry Point you are using. Also, within
@@ -221,233 +199,134 @@ w2hparm.js then modify the HTML <script> tags in *USSWSYSP.HTML* to
 include *custom.js* and *w2hparm.js* from the distributed ../\ *w2h/*
 directory and not from your default EntryPoint directory.
 
-Appendix A
+**Appendix A**
 
 Code for template USSWSYSP.HTML
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-"http://www.w3.org/TR/html4/strict.dtd">
-
-<html>
-
-<head> <!--VIRTEL start="{{{" end="}}}" -->
-
-<!--
-
-$Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $
-
-Example of Home Page for VIRTEL Web Access \_ USS Replacement
-
--->
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
-<meta http-equiv="Content-Type" content="text/html;
-charset=ISO-8859-15">
-
-<script type="text/javascript" src="../w2hparm.js"></script>
-
-<script type="text/javascript" src="../w2h/default.js"></script>
-
-<script type="text/javascript" src="../w2h/stk.js"></script>
-
-<script type="text/javascript" src="../w2h/js01.js"></script>
-
-<script type="text/javascript" src="../w2h/vir3270.js"></script>
-
-<script type="text/javascript" src="../w2h/virajax.js"></script>
-
-<script type="text/javascript" src="../custom.js"></script>
-
-<title>{{{NAME-OF (VIRTEL)}}} VIRTEL Web Access</title>
-
-</head>
-
-<body onload='js01onload(); pageSetup(80,"{{{NAME-OF (VIRTEL)}}}");
-
-VIR3270.init("printReady", 24, 80, "zcmd"); autoCapture();'>
-
-<script type="text/javascript">
-
-function submitForm(pfkey) {
-
-var zcmd, action, errmsg, elem;
-
-zcmd = stk.trimString(document.virtelForm.zcmd.value).toUpperCase();
-
-if (pfkey == "CLEAR") {
-
-action = "/";
-
-} else if (pfkey != "ENTER") {
-
-errmsg = "Invalid Key. Please enter application and press ENTER";
-
-} else {
-
-switch (zcmd) {
-
-case "":
-
-errmsg = "Please specify application and press ENTER";
-
-break;
-
-case "TSOA":
-
-action = "../w2h/WEB2AJAX.htm+TSO";
-
-break;
-
-default:
-
-// errmsg = "LE CHOIX QUE VOUS AVEZ FAIT N'EST PAS PREVU";
-
-action = "../w2h/WEB2AJAX.htm+".concat(zcmd);
-
-}
-
-}
-
-if (errmsg) {
-
-elem = VIR3270.findField(1840);
-
-if (elem) elem.innerHTML = errmsg.fixlen(79).htmlcode();
-
-VIR3270.cursorOff();
-
-VIR3270.cursorHome();
-
-VIR3270.cursorOn();
-
-VIR3270.resetInhibit();
-
-}
-
-if (action) document.location.href = action;
-
-}
-
-function pageSetup(cols, virtname) {
-
-var ident1, ident2;
-
-loadCss("../w2h/login.css");
-
-loadCss("../w2h/keypad.css");
-
-loadCss("../w2h/custom.css");
-
-if (typeof setStatusBarRelayStatus === "function") {
-
-fillstatusbar(cols);
-
-setStatusBarRelayStatus(virtname);
-
-if (typeof createOnResizeFn === "function") {
-
-window.onresize = createOnResizeFn("window", 80, 24);
-
-window.onresize(forceResizeEvent);
-
-}
-
-} else {
-
-fillstatusbar(cols, virtname);
-
-updateFontsize("window", 80, 24);
-
-}
-
-document.getElementById("printReady").style.visibility = "visible";
-
-}
-
-setFontsize("window", 80, 24);
-
-genkeypad();
-
-gentoolbar();
-
-if (typeof after\_standardInit === "function") {
-
-after\_standardInit();
-
-}
-
-</script>
-
-<div id="viewport" style="-webkit-transform-origin:0
-0;-ms-transform-origin:0 0; moz-transform-origin:0 0;transform-origin:0
-0;">
-
-<div id="virsubpage">
-
-<form name="virtelForm" action="" method="get">
-
-<script type="text/javascript">
-
-var title = "Welcome to SysperTec"
-
-var blankLine = ' '.concat('<br>');
-
-var screen = '<pre><div id="printReady" class="mainFont"
-style="visibility:hidden;"><span class="NGREEN">';
-
-screen = screen.concat(title).concat(blankLine.substring(title.length));
-
-screen = screen.concat('</span>');
-
-screen = screen.concat('<input name="zcmd" type="text" size="80"
-maxsize="80" class="NGREEN">');
-
-screen = screen.concat('<span class="NWHITE"><br>');
-
-for (var i = 0; i < 21; i++) {
-
-screen = screen.concat(blankLine);
-
-}
-
-screen = screen.concat('</span><span
-class="NRED">').concat(blankLine).concat('</span><span
-class="NWHITE">&nbsp;')
-
-screen = screen.concat('</span></div><div id="statusbar"
-class="mainFont"></div></pre>');
-
-document.write(screen);
-
-</script>
-
-{{{DEFINE-HTML-PFKEY "pf"}}}<input name="pf" type="HIDDEN"
-value="ENTER">
-
-<input name="cursorField" id="cursorfield" type="HIDDEN" value="">
-
-</form>
-
-</div>
-
-</div>
-
-<script type="text/javascript">
-
-genBhoTrigger();
-
-</script>
-
-</body>
-
-</html>
-
-Note:
-
-at the end of a line means the next line forms part of the this line
-
-The blankLine variable has 80 blanks between the quotes.
+::
+
+   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+      <html>
+         <head> <!--VIRTEL start="{{{" end="}}}" -->
+            <!--
+            $Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $
+            Example of Home Page for VIRTEL Web Access \_ USS Replacement
+            -->
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <meta http-equiv="Content-Type" content="text/html;
+            charset=ISO-8859-15">
+            <script type="text/javascript" src="../w2hparm.js"></script>
+            <script type="text/javascript" src="../w2h/default.js"></script>
+            <script type="text/javascript" src="../w2h/stk.js"></script>
+            <script type="text/javascript" src="../w2h/js01.js"></script>
+            <script type="text/javascript" src="../w2h/vir3270.js"></script>
+            <script type="text/javascript" src="../w2h/virajax.js"></script>
+            <script type="text/javascript" src="../custom.js"></script>
+            <title>{{{NAME-OF (VIRTEL)}}} VIRTEL Web Access</title>
+         </head>
+      <body onload='js01onload(); pageSetup(80,"{{{NAME-OF (VIRTEL)}}}"); VIR3270.init("printReady", 24, 80, "zcmd"); autoCapture();'>
+         <script type="text/javascript">
+         function submitForm(pfkey) {
+            var zcmd, action, errmsg, elem;
+            zcmd = stk.trimString(document.virtelForm.zcmd.value).toUpperCase();
+            if (pfkey == "CLEAR") {
+               action = "/";
+            } else if (pfkey != "ENTER") {
+               errmsg = "Invalid Key. Please enter application and press ENTER";
+            } else {
+               switch (zcmd) {
+                  case "":
+                     errmsg = "Please specify application and press ENTER";
+                     break;
+                  case "TSOA":
+                     action = "../w2h/WEB2AJAX.htm+TSO";
+                     break;
+                  default:
+                     // errmsg = "LE CHOIX QUE VOUS AVEZ FAIT N'EST PAS PREVU";
+                     action = "../w2h/WEB2AJAX.htm+".concat(zcmd);
+               }
+            }
+            if (errmsg) {
+               elem = VIR3270.findField(1840);
+               if (elem) 
+                  elem.innerHTML = errmsg.fixlen(79).htmlcode();
+               VIR3270.cursorOff();
+               VIR3270.cursorHome();
+               VIR3270.cursorOn();
+               VIR3270.resetInhibit();
+            }
+            if (action) 
+               document.location.href = action;
+         }
+         function pageSetup(cols, virtname) {
+            var ident1, ident2;
+            loadCss("../w2h/login.css");
+            loadCss("../w2h/keypad.css");
+            loadCss("../w2h/custom.css");
+            if (typeof setStatusBarRelayStatus === "function") {
+               fillstatusbar(cols);
+               setStatusBarRelayStatus(virtname);
+               if (typeof createOnResizeFn === "function") {
+                  window.onresize = createOnResizeFn("window", 80, 24);
+                  window.onresize(forceResizeEvent);
+               }
+            } else {
+               fillstatusbar(cols, virtname);
+               updateFontsize("window", 80, 24);
+            }
+            document.getElementById("printReady").style.visibility = "visible";
+         }
+         setFontsize("window", 80, 24);
+         genkeypad();
+         gentoolbar();
+         if (typeof after\_standardInit === "function") {
+         after\_standardInit();
+         }
+         </script>
+ 
+         <div id="viewport" style="-webkit-transform-origin:0 0;-ms-transform-origin:0 0; moz-transform-origin:0 0;transform-origin:0 0;">
+            
+            <div id="virsubpage">
+            
+               <form name="virtelForm" action="" method="get">
+                  <script type="text/javascript">
+                     var title = "Welcome to SysperTec"
+                     var blankLine = ' '.concat('<br>');
+                     var screen = '<pre><div id="printReady" class="mainFont"
+                     style="visibility:hidden;"><span class="NGREEN">';
+                     screen = screen.concat(title).concat(blankLine.substring(title.length));
+                     screen = screen.concat('</span>');
+                     screen = screen.concat('<input name="zcmd" type="text" size="80"
+                     maxsize="80" class="NGREEN">');
+                     screen = screen.concat('<span class="NWHITE"><br>');
+                     for (var i = 0; i < 21; i++) {
+                        screen = screen.concat(blankLine);
+                     }
+                     screen = screen.concat('</span><span
+                     class="NRED">').concat(blankLine).concat('</span><span
+                     class="NWHITE">&nbsp;')
+                     screen = screen.concat('</span></div><div id="statusbar"
+                     class="mainFont"></div></pre>');
+                     document.write(screen);
+                  </script> 
+       
+                  {{{DEFINE-HTML-PFKEY "pf"}}}<input name="pf" type="HIDDEN" value="ENTER">
+                  <input name="cursorField" id="cursorfield" type="HIDDEN" value="">
+               </form>
+            
+            </div>
+
+         </div>
+         <script type="text/javascript">
+         genBhoTrigger();
+         </script>
+      </body>
+   </html>
+
+.. note::
+
+   At the end of a line means the next line forms part of the this line. The blankLine variable has 80 blanks between the quotes.
 
 .. |screen1| image:: images/media/image1.jpeg
    :width: 6.29167in
