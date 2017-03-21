@@ -6,7 +6,9 @@ Converting PDFs to DOCX
 
 Use `Smallpdf <https://smallpdf.com>`_
 
+
 Converting DOCX to RST
+----------------------
 
 pandoc foo.docx -o foo.rst --extract-media=images
 
