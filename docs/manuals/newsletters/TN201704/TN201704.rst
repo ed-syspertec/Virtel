@@ -1,12 +1,17 @@
-**Virtel Macros**
+.. _tn201704:
 
-***Note:** This Newsletter applies to Virtel 4.56 (updt5484 and above)
-running with default parameters or in “Compatibility mode”. References
-to the file w2hparm.js refer to the default file distributed in the W2H
-directory. This file can be found in the distributed sources.zip file
-which can be downloaded from the Administration portal. See \*Appendix
-B\* in this newsletter for an example of the distributed w2hparm.js
-file.*
+Virtel Macros
+=============
+
+.. note::
+
+	This Newsletter applies to Virtel 4.56 (updt5484 and above)
+	running with default parameters or in “Compatibility mode”. References
+	to the file w2hparm.js refer to the default file distributed in the W2H
+	directory. This file can be found in the distributed sources.zip file
+	which can be downloaded from the Administration portal. See :ref:`*Appendix
+	B* <#_tn201704_appendix_B>` in this newsletter for an example of the distributed w2hparm.js
+	file.*
 
 **Introduction**
 
@@ -16,12 +21,13 @@ within a file called macros.json. This file is a JavaScript array of
 JSON objects, with each object representing a user macro. Here is an
 example:-
 
-{"macros":[
-{"name":"mylogon","rev":2,"def":[{"txt":"sptholt"},"ENTER",{"txt":"bastet"},"ENTER","ENTER","ENTER"],"mapping":{"key":"ctrl","keycode":76}},
-{"name":"logoff","rev":1,"def":[{"txt":"=x"},"ENTER",{"txt":"logoff"},"ENTER"],"mapping":{"key":"ctrl","keycode":79}},
-{"name":"logon","rev":2,"def":["Tab","Down",{"txt":"sptholx"},"ENTER",{"txt":"MOONRAY"},"ENTER","ENTER","ENTER"],"mapping":{"key":"alt","keycode":76}}
+::
 
-],"fmt":2}
+	{"macros":[
+	{"name":"mylogon","rev":2,"def":[{"txt":"sptholt"},"ENTER",{"txt":"bastet"},"ENTER","ENTER","ENTER"],"mapping":{"key":"ctrl","keycode":76}},
+	{"name":"logoff","rev":1,"def":[{"txt":"=x"},"ENTER",{"txt":"logoff"},"ENTER"],"mapping":{"key":"ctrl","keycode":79}},
+	{"name":"logon","rev":2,"def":["Tab","Down",{"txt":"sptholx"},"ENTER",{"txt":"MOONRAY"},"ENTER","ENTER","ENTER"],"mapping":{"key":"alt","keycode":76}}
+	],"fmt":2}
 
 **Macro modes**
 
@@ -50,12 +56,11 @@ and blue DDI mode. When the ICON is blue macros will be synchronized
 between the users local storage and the DDI repository. The type of
 synchronization will depend on the options set in the w2hparm.js member.
 
-**
-The Record function**
+**The Record and Save functions**
 
 |image0|
 
-Figure 1 - The Macro Record ICON
+Fig. 1 - The Macro Record ICON
 
 The record function is an on/off button that will record key strokes.
 When recording, the ICON will flash until it is clicked at which point
@@ -67,7 +72,7 @@ file.
 
 |image1|
 
-Figure 2 - Saving a macro
+Fig. 2 - Saving a macro
 
 **Keyboard Mapping**
 
@@ -82,19 +87,20 @@ browser refresh option. Allocating this combination as a hotkey will
 only invoke the refresh option and not the Virtel macro. Keyboard
 mapping is a feature that is turned on through a parameter in the
 w2hparm.js file. By default, keyboard mapping is set to false. To turn
-on keyboard mapping specify the following in the w2hparm.js member:-::
+on keyboard mapping specify the following in the w2hparm.js member:-
 
-w2hparm.keymapping=true
+::
+
+	w2hparm.keymapping=true
 
 With keyboard mapping enabled the macro interface will display the
 associated key mapping against the macro.
 
-|D:\\Documents\\GitHub\\Virtel\\docs\\manuals\\newsletters\\TN201704\\images\\media\\keyboard\_mapping.png|
+|image2|
 
-Figure 2a - Saving a macro with key mapping
+Fig. 2a - Keymapping association
 
-**
-The Display button**
+**The Display button**
 
 The green triangular button will display the local storage macros. From
 here a context menu can be opened against each macro using the mouse
@@ -102,15 +108,16 @@ right click. This will provide delete, edit, save as and run functions.
 
 |image3|
 
-Figure Context menu associated with a macro
+Fig. 3 - Context menu associated with a macro
 
 **Export and Import options**
 
 Macros can be exported or imported using the Export and Import buttons.
 On export, the macros.json file will be created. If you plan to migrate
 to using the DDI option you will need to export the macros and then
-upload the relevant macros.json file through the DDI interface. See:
-*Using macros with the DDI interface* for more information\ *. *
+upload the relevant macros.json file through the DDI interface. See: :ref:`Using macros with the DDI interface <#_tn201704_using_ddi>` for more information.
+
+.. _#_tn201704_using_ddi:
 
 **Using macros with the DDI interface**
 
@@ -148,7 +155,7 @@ avoid any changes being lost during a Virtel upgrade.
 
 |image4|
 
-Figure Modified CLI-03P transaction
+Fig. 4 - Modified CLI-03P transaction
 
 To use the DDI interface the options must be set in the w2hparm.js
 member. The various options control the synchronisation between the
@@ -157,7 +164,7 @@ of the following options to turn on DDI or remote macro mode:-
 
 ::
 
-	"w2hparm.useVirtelMacros":[false \| true \| never \| once \| daily \|session ],
+	"w2hparm.useVirtelMacros":[false | true | never | once | daily |session ]
 
 Macro options:
 
@@ -215,7 +222,7 @@ macro repository:-
 
 |image5|
 
-Figure The DDI Global Upload
+Fig. 5 - The DDI Global Upload
 
 Once you have a copy in the global area, right click on the macros.json
 file to open a context menu. This menu provides some additional
@@ -224,7 +231,7 @@ copy function is not applicable.
 
 |image6|
 
-Figure Additional file functions in DDI
+Fig. 6 - Additional file functions in DDI
 
 Selecting “Edit” will open the same editor interface that was used when
 editing macros in local storage. Here the administrator can modify the
@@ -235,7 +242,7 @@ right click on a macro.
 
 |image7|
 
-Figure Updating macros with the Global Directory
+Fig. 7 - Updating macros with the Global Directory
 
 **
 Making macros available to users.**
@@ -251,14 +258,14 @@ upload of the macro into the users userid area.
 
 |image8|
 
-Figure Creating a macros.json file for a user
+Fig. 8 - Creating a macros.json file for a user
 
 As with any file within the DDI repository a context menu can be brought
 up by right clicking on the file name.
 
 |image9|
 
-Figure - Editing a global macro
+Fig. 9 - Editing a global macro
 
 An administrator can update any macros held within the DDI repository.
 Changes will be reflected in the user’s local storage once the user
@@ -276,7 +283,7 @@ repository.
 
 |image10|
 
-Figure 10 - User display of the DDI macro interface
+Fig. 10 - User display of the DDI macro interface
 
 **Updating DDI macros at the Group level**
 
@@ -290,7 +297,7 @@ initiate an upload of the Group macro.
 
 |image11|
 
-Figure Macro Group Directory
+Fig. 11 - Macro Group Directory
 
 To obtain the associated context menu right click on the file name –
 macros .json. This will provide the additional functionality to Edit,
@@ -387,7 +394,9 @@ The macro editor supports the following commands:-
 	}
 	],"fmt":1}
 
-**Appendix – B **
+.. _#_tn201704_appendix_B:
+
+**Appendix – B**
 
 **Distributed w2hparm.js**
 
@@ -421,8 +430,7 @@ The macro editor supports the following commands:-
 
 |image12|
 
-**Answer. **
-
+*Answer.*
 You have turned on DDI macro support (BLUE interface ICON) but the
 application you are accessing is secured. DDI is unable to determine the
 userid associated with the transaction.
@@ -646,15 +654,17 @@ changing the output scenario to ADMINVWM.
 	*--------------------------------------------------------------*
 	//* <--END VMACROS SECTION-->
 
+Download me :download:`pdf <pdf/tn201704.pdf>`
+
 .. |image0| image:: images/media/image1.png
    :width: 6.30000in
    :height: 1.51389in
 .. |image1| image:: images/media/image2.png
    :width: 5.76122in
    :height: 5.72997in
-.. |D:\\Documents\\GitHub\\Virtel\\docs\\manuals\\newsletters\\TN201704\\images\\media\\keyboard\_mapping.png| image:: images/media/image3.png
-   :width: 4.56250in
-   :height: 5.18750in
+.. |image2| image:: images/media/image3.png
+   :width: 5.76122in
+   :height: 5.72997in   
 .. |image3| image:: images/media/image4.png
    :width: 6.06335in
    :height: 5.36533in
