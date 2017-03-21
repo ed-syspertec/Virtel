@@ -1,123 +1,134 @@
+.. _tn201413:
+
+
 Overview of a Virtel Session
 ============================
 
-    Virtel uses APIs provided by other protocols such as HTTP, TCP/IP,
-    SNA to support Virtel session endpoints between a Web Browser and
-    VTAM application. These underlying protocols are well documented in
-    IBM manuals and/or other manuals. From an end to end session
-    perspective Virtel acts like a conduit passing data between the HTTP
-    session through to the CICS application. However, there are two
-    faces that Virtel presents, one for each protocol. To the internet
-    it acts like a HTTP Web server and to CICS like a 3270 logical
-    unit:-
+Virtel uses APIs provided by other protocols such as HTTP, TCP/IP,
+SNA to support Virtel session endpoints between a Web Browser and
+VTAM application. These underlying protocols are well documented in
+IBM manuals and/or other manuals. From an end to end session
+perspective Virtel acts like a conduit passing data between the HTTP
+session through to the CICS application. However, there are two
+faces that Virtel presents, one for each protocol. To the internet
+it acts like a HTTP Web server and to CICS like a 3270 logical
+unit:-
 
-    Within the Virtel logic, data is transformed between SNA and HTTP
-    presentation formats, depending on the data flow. With regard to
-    states, at higher levels, a session state can be either in a send
-    state or receive state. In effect though, at a lower level the HTTP
-    side is stateless (HTTP is a stateless protocol), whereas on the
-    VTAM side the SNA protocol demands a stateful protocol. Virtel
-    internally manages the overall session state between these protocols
-    for any one session. Virtel employs AJAX long polling and other web
-    technologies to maintain state on the Web side of the session and
-    confirms to SNA protocols as described in the VTAM programming
-    manual. *See IBM SNA Network Product Formats LY43\_0081 for details
-    on SNA formats and Data Flow*.
+|image00|
 
-    **Session establishment**
+Within the Virtel logic, data is transformed between SNA and HTTP
+presentation formats, depending on the data flow. With regard to
+states, at higher levels, a session state can be either in a send
+state or receive state. In effect though, at a lower level the HTTP
+side is stateless (HTTP is a stateless protocol), whereas on the
+VTAM side the SNA protocol demands a stateful protocol. Virtel
+internally manages the overall session state between these protocols
+for any one session. Virtel employs AJAX long polling and other web
+technologies to maintain state on the Web side of the session and
+confirms to SNA protocols as described in the VTAM programming
+manual. *See IBM SNA Network Product Formats LY43\_0081 for details
+on SNA formats and Data Flow*.
 
-    A session is establish through a user opening a browser window to a
-    defined Virtel URL. For example http:
+**Session establishment**
 
-    http://192.168.170.15:41002/w2h/WEB2AJAX.htm+TSO1A?logmode=D4A32XX3&rows=52&cols=132
+A session is establish through a user opening a browser window to a
+defined Virtel URL. For example http:
 
-    It is the URI which determines what Virtel is to do on behalf of the
-    user. In the above example the user is requesting that Virtel
-    establish a SNA session to TSO. Logical the session between the user
-    and TSO will now comprise of two half session elements. One half
-    session representing the Web Server to Web Browser, another
-    representing a SNA Logical unit to VTAM.
+::
 
-    Session establish on the Web Server side is triggered through the
-    Z/OS TCP/IP stack receiving a packet from the web browser with the
-    SYN bit set to 1. This will cause Virtel to open a socket with the
-    web browser. In is not the intention of this document to detail TCP
-    connection logic and hand shaking. *See Web Protocols and Practices.
-    Balachander Krishnamurthy & Jennifer Rexford.*
+   http://192.168.170.15:41002/w2h/WEB2AJAX.htm+TSO1A?logmode=D4A32XX3&rows=52&cols=132
 
-    After opening the socket, Virtel will inspect the URI passed and
-    determine an appropriate action. In this case it will establish a
-    SNA VTAM session to TSO through the use of the REQSESS VTAM macro.
-    This will open a logical unit session to the TSO application as
-    requested in the URI. Of course this can be any VTAM application,
-    for example CICS. The *Virtel Connectivity* manual documents the URI
-    formats. This new SNA relay session will now support the SNA session
-    between Virtel and the TSO application. Data flow will now commence
-    between the Web client (Users Browser window) and the TSO
-    application. Presentation data will be converted by Virtel between
-    HTTP and SNA formats and the independent half session states that
-    represent the each session half, web on one side, SNA on the other,
-    will be managed by Virtel internal logic.
+It is the URI which determines what Virtel is to do on behalf of the
+user. In the above example the user is requesting that Virtel
+establish a SNA session to TSO. Logical the session between the user
+and TSO will now comprise of two half session elements. One half
+session representing the Web Server to Web Browser, another
+representing a SNA Logical unit to VTAM.
 
-    **Session disconnection**
+|image01|
 
-    When Virtel determines that a session has been disconnected it will
-    close the supporting SNA relay session. Session disconnection can
-    present itself to Virtel in many forms. From the user closing a
-    window; triggered by the user pressing the “Disconnect” button in
-    the Virtel OIA, or simplying turning the PC off. Virtel employs
-    various mechanisms and timers as part of its internal state manager
-    to detect whether the web half session is still “alive”. As HTTP is
-    stateless it has no underlying “are you there” handshake mechanism
-    and as such it is up to Virtel to determine if the web session is
-    still active.
+Session establish on the Web Server side is triggered through the
+Z/OS TCP/IP stack receiving a packet from the web browser with the
+SYN bit set to 1. This will cause Virtel to open a socket with the
+web browser. In is not the intention of this document to detail TCP
+connection logic and hand shaking. *See Web Protocols and Practices.
+Balachander Krishnamurthy & Jennifer Rexford.*
 
-    **Session affinity**
+After opening the socket, Virtel will inspect the URI passed and
+determine an appropriate action. In this case it will establish a
+SNA VTAM session to TSO through the use of the REQSESS VTAM macro.
+This will open a logical unit session to the TSO application as
+requested in the URI. Of course this can be any VTAM application,
+for example CICS. The *Virtel Connectivity* manual documents the URI
+formats. This new SNA relay session will now support the SNA session
+between Virtel and the TSO application. Data flow will now commence
+between the Web client (Users Browser window) and the TSO
+application. Presentation data will be converted by Virtel between
+HTTP and SNA formats and the independent half session states that
+represent the each session half, web on one side, SNA on the other,
+will be managed by Virtel internal logic.
 
-    It is important that session affinity is maintained between a user’s
-    browser session and the VTAM application. Virtel maintains affinity
-    on the web side session id through the use of HTTP parameters. A
-    Virtel line trace will reveal the protocol flow between the web
-    browser and Virtel. Here can be seen the session ids that Virtel
-    maintains in order to identify a particular session. The session id
-    logic is handled and managed by Virtel’s internal session manager.
-    An example of a line trace is shown below:-
+**Session disconnection**
 
-    Loss of affinity will cause unpredictable results as Virtel will not
-    be able to tie up the two half sessions. Loss of affinity can result
-    from network configurations which do not employ affinity
-    technologies. For example IBMs Sysplex Distributor requires the
-    **TIMEDAFF** parameter to be specified. If Proxy Servers are used
-    than the “Sticky Session” feature must be set\ *. See z/OS
-    Communications Server: IP Configuration Reference SC27-3651-00 *
+When Virtel determines that a session has been disconnected it will
+close the supporting SNA relay session. Session disconnection can
+present itself to Virtel in many forms. From the user closing a
+window; triggered by the user pressing the “Disconnect” button in
+the Virtel OIA, or simplying turning the PC off. Virtel employs
+various mechanisms and timers as part of its internal state manager
+to detect whether the web half session is still “alive”. As HTTP is
+stateless it has no underlying “are you there” handshake mechanism
+and as such it is up to Virtel to determine if the web session is
+still active.
 
-    For more information on setting up a Sysplex Distributor or visit
-    http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html for
-    further information on “sticky sessions”. In the following
-    configuration an Apache Proxy Server is used to balance sessions
-    request across two Virtel instances running on separate z/OS LPARS:-
+**Session affinity**
 
-    |image0|
+It is important that session affinity is maintained between a user’s
+browser session and the VTAM application. Virtel maintains affinity
+on the web side session id through the use of HTTP parameters. A
+Virtel line trace will reveal the protocol flow between the web
+browser and Virtel. Here can be seen the session ids that Virtel
+maintains in order to identify a particular session. The session id
+logic is handled and managed by Virtel’s internal session manager.
+An example of a line trace is shown below:-
 
-    **Cache storage considerations**
+|image02|
 
-    On the web side Virtel runs as a web server and therefore is
-    subjected to the protocols of the underlying browser support, be it
-    IE, Chrome or whatever browser support is utilized by the user. The
-    standard logic is such that when the user opens a Virtel session by
-    specifying a Virtel URI, Virtel will download the necessary HTML,
-    CSS and Javacript elements. The browser will maintain these elements
-    in storage, in this instance in the browsers cache storage. Most of
-    these elements are static in nature, once in the browser’s cache
-    they needn’t be served again. However, dynamic elements such as user
-    macros, which are also maintained in the browser’s cache need to be
-    reflected back to the Virtel TRSF file(s). The transfer of these
-    elements is performed by Virtel through various web technologies.
-    For example JSON array to reflect user macros. Virtel will enforce a
-    storage cache refresh for some elements in certain conditions. For
-    example, if a new copy of a JavaScript element is to be served as
-    part of a maintenance upgrade, Virtel will ensure that the new
-    JavaScript element is downloaded and updated in the browsers cache.
+Loss of affinity will cause unpredictable results as Virtel will not
+be able to tie up the two half sessions. Loss of affinity can result
+from network configurations which do not employ affinity
+technologies. For example IBMs Sysplex Distributor requires the
+**TIMEDAFF** parameter to be specified. If Proxy Servers are used
+than the “Sticky Session” feature must be set\ *. See z/OS
+Communications Server: IP Configuration Reference SC27-3651-00 *
+
+For more information on setting up a Sysplex Distributor or visit
+http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html for
+further information on “sticky sessions”. In the following
+configuration an Apache Proxy Server is used to balance sessions
+request across two Virtel instances running on separate z/OS LPARS:-
+
+|image0|
+
+**Cache storage considerations**
+
+On the web side Virtel runs as a web server and therefore is
+subjected to the protocols of the underlying browser support, be it
+IE, Chrome or whatever browser support is utilized by the user. The
+standard logic is such that when the user opens a Virtel session by
+specifying a Virtel URI, Virtel will download the necessary HTML,
+CSS and Javacript elements. The browser will maintain these elements
+in storage, in this instance in the browsers cache storage. Most of
+these elements are static in nature, once in the browser’s cache
+they needn’t be served again. However, dynamic elements such as user
+macros, which are also maintained in the browser’s cache need to be
+reflected back to the Virtel TRSF file(s). The transfer of these
+elements is performed by Virtel through various web technologies.
+For example JSON array to reflect user macros. Virtel will enforce a
+storage cache refresh for some elements in certain conditions. For
+example, if a new copy of a JavaScript element is to be served as
+part of a maintenance upgrade, Virtel will ensure that the new
+JavaScript element is downloaded and updated in the browsers cache.
 
 **Session example.**
 
@@ -158,14 +169,9 @@ new browser session.
 
 **IP Schematic**
 
-+------> TCP/IP (92.161/24) MVS1A - > VTAM – SPVIR1A
+::
 
-\|
-
-Terminal -> SD (170.15/24) \|
-
-\|
-
++------> TCP/IP (92.161/24) MVS1A - > VTAM – SPVIR1A|Terminal -> SD (170.15/24) \
 +------> TCP/IP (92.162/24) MVS1B - > VTAM – SPVIR2A
 
 **zOS setup**
@@ -262,6 +268,10 @@ Term. <---> VIRTEL/IP <---> VIRTEL/SNA <–--> R2AVT000 <---> SPCICSH
 <-------- HTTP --------><------------- 3270 DataStreams ---------->
 
 <------- TCP/IP -------><-------------------- SNA ---------------->
+
+.. |image00| image:: images/media/image00.png
+.. |image01| image:: images/media/image01.png
+.. |image02| image:: images/media/image02.png
 
 .. |image0| image:: images/media/image1.jpg
    :width: 6.30000in

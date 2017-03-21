@@ -160,9 +160,8 @@
            <div itemprop="articleBody">
             
   <div class="section" id="overview-of-a-virtel-session">
-<h1>Overview of a Virtel Session<a class="headerlink" href="#overview-of-a-virtel-session" title="Permalink to this headline">¶</a></h1>
-<blockquote>
-<div><p>Virtel uses APIs provided by other protocols such as HTTP, TCP/IP,
+<span id="tn201413"></span><h1>Overview of a Virtel Session<a class="headerlink" href="#overview-of-a-virtel-session" title="Permalink to this headline">¶</a></h1>
+<p>Virtel uses APIs provided by other protocols such as HTTP, TCP/IP,
 SNA to support Virtel session endpoints between a Web Browser and
 VTAM application. These underlying protocols are well documented in
 IBM manuals and/or other manuals. From an end to end session
@@ -171,6 +170,7 @@ session through to the CICS application. However, there are two
 faces that Virtel presents, one for each protocol. To the internet
 it acts like a HTTP Web server and to CICS like a 3270 logical
 unit:-</p>
+<p><img alt="image00" src="../../../_images/image00.png" /></p>
 <p>Within the Virtel logic, data is transformed between SNA and HTTP
 presentation formats, depending on the data flow. With regard to
 states, at higher levels, a session state can be either in a send
@@ -186,13 +186,16 @@ on SNA formats and Data Flow</em>.</p>
 <p><strong>Session establishment</strong></p>
 <p>A session is establish through a user opening a browser window to a
 defined Virtel URL. For example http:</p>
-<p><a class="reference external" href="http://192.168.170.15:41002/w2h/WEB2AJAX.htm+TSO1A?logmode=D4A32XX3&amp;rows=52&amp;cols=132">http://192.168.170.15:41002/w2h/WEB2AJAX.htm+TSO1A?logmode=D4A32XX3&amp;rows=52&amp;cols=132</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>http://192.168.170.15:41002/w2h/WEB2AJAX.htm+TSO1A?logmode=D4A32XX3&amp;rows=52&amp;cols=132
+</pre></div>
+</div>
 <p>It is the URI which determines what Virtel is to do on behalf of the
 user. In the above example the user is requesting that Virtel
 establish a SNA session to TSO. Logical the session between the user
 and TSO will now comprise of two half session elements. One half
 session representing the Web Server to Web Browser, another
 representing a SNA Logical unit to VTAM.</p>
+<p><img alt="image01" src="../../../_images/image01.png" /></p>
 <p>Session establish on the Web Server side is triggered through the
 Z/OS TCP/IP stack receiving a packet from the web browser with the
 SYN bit set to 1. This will cause Virtel to open a socket with the
@@ -232,6 +235,7 @@ browser and Virtel. Here can be seen the session ids that Virtel
 maintains in order to identify a particular session. The session id
 logic is handled and managed by Virtel’s internal session manager.
 An example of a line trace is shown below:-</p>
+<p><img alt="image02" src="../../../_images/image02.png" /></p>
 <p>Loss of affinity will cause unpredictable results as Virtel will not
 be able to tie up the two half sessions. Loss of affinity can result
 from network configurations which do not employ affinity
@@ -263,7 +267,6 @@ storage cache refresh for some elements in certain conditions. For
 example, if a new copy of a JavaScript element is to be served as
 part of a maintenance upgrade, Virtel will ensure that the new
 JavaScript element is downloaded and updated in the browsers cache.</p>
-</div></blockquote>
 <p><strong>Session example.</strong></p>
 <p>In this scenario we look at a session between a browser and CICS with
 Virtel providing the HTTP server and SNA conduit services. The
@@ -294,11 +297,10 @@ between two TCP/IP target stacks running on separate LPARS.</p>
 in a round robin fashion. Not that this based up a new IP address not a
 new browser session.</p>
 <p><strong>IP Schematic</strong></p>
-<p>+&#8212;&#8212;&gt; TCP/IP (92.161/24) MVS1A - &gt; VTAM – SPVIR1A</p>
-<p>|</p>
-<p>Terminal -&gt; SD (170.15/24) |</p>
-<p>|</p>
-<p>+&#8212;&#8212;&gt; TCP/IP (92.162/24) MVS1B - &gt; VTAM – SPVIR2A</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>+------&gt; TCP/IP (92.161/24) MVS1A - &gt; VTAM – SPVIR1A|Terminal -&gt; SD (170.15/24) \
++------&gt; TCP/IP (92.162/24) MVS1B - &gt; VTAM – SPVIR2A
+</pre></div>
+</div>
 <p><strong>zOS setup</strong></p>
 <p>MVS1A SPVIR1A(STC), SPCICSH(STC)</p>
 <p>MVS1B SPVIR2A(STC)</p>
