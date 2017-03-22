@@ -160,24 +160,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="racf-grouping-class-and-virtel">
-<h1>RACF Grouping Class and Virtel<a class="headerlink" href="#racf-grouping-class-and-virtel" title="Permalink to this headline">¶</a></h1>
+<span id="tn201417"></span><h1>RACF Grouping Class and Virtel<a class="headerlink" href="#racf-grouping-class-and-virtel" title="Permalink to this headline">¶</a></h1>
 <p>Within RACF a resource is protected by a profile. In the case of VIRTEL
 the transaction W2H-10 is a resource that can be protected by the
 profile VIRTEL.W2H-10. The suffix VIRTEL is defined in the in the TCT
 through the PRFSECU keyword on the SECUR parameter.</p>
-<p>SECUR=(RACROUTE,RACF),RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=VIRTEL</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span><span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">VIRTEL</span>
+</pre></div>
+</div>
 <p>By default the profiles are maintained in the RACF default FACILITY
 class held within the class descriptor table or CDT. For each profile a
 user is granted access rights to the transaction through an associated
 access list.</p>
 <p><strong>Transaction RACF Profile Access List</strong></p>
-<p>W2H-10 VIRTEL.W2H-10 USER A, GROUP B, USER C</p>
-<p>CLI-90 VIRTEL.CLI-90 USER A, GROUP B, USER C</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">USER</span> <span class="n">A</span><span class="p">,</span> <span class="n">GROUP</span> <span class="n">B</span><span class="p">,</span> <span class="n">USER</span> <span class="n">C</span>
+<span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">USER</span> <span class="n">A</span><span class="p">,</span> <span class="n">GROUP</span> <span class="n">B</span><span class="p">,</span> <span class="n">USER</span> <span class="n">C</span>
+</pre></div>
+</div>
 <p>The RACF commands required to build the above access lists would be</p>
-<p>RDEF FACILITY VIRTEL.W2H-10 UACC(NONE)</p>
-<p>RDEF FACILITY VIRTEL.W2H-10 UACC(NONE)</p>
-<p>PE VIRTEL.CLI-90 CL(FACILITY) ACC(READ) ID(USERA,GROUPB,USERC)</p>
-<p>PE VIRTEL.W2H-10 CL(FACILITY) ACC(READ) ID(USERA,GROUPB,USERC)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+<span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+<span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">USERA</span><span class="p">,</span><span class="n">GROUPB</span><span class="p">,</span><span class="n">USERC</span><span class="p">)</span>
+<span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">USERA</span><span class="p">,</span><span class="n">GROUPB</span><span class="p">,</span><span class="n">USERC</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>If a new VIRTEL transactions is defined, say CLI-80, a new profile must
 be created and duplicated with the access list associated with the other
 transactions. This is all well and good for a few profiles but in a
@@ -209,38 +215,42 @@ the class descriptor table.</p>
 <p><strong>Defining the grouping and member classes</strong></p>
 <p>The following statements are used to define the grouping class $GVIRTEL
 and member class $VIRTEL to RACF.</p>
-<p>RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -</p>
-<p>CASE(UPPER) -</p>
-<p>FIRST(ALPHA) -</p>
-<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
-<p>MAXLENGTH(39) -</p>
-<p>MAXLENX(39) -</p>
-<p>KEYQUALIFIERS(0) -</p>
-<p>PROFILESALLOWED(YES) -</p>
-<p>POSIT(200) -</p>
-<p>DEFAULTRC(4) -</p>
-<p>DEFAULTUACC(NONE) -</p>
-<p>RACLIST(ALLOWED) -</p>
-<p>MEMBER($VIRTEL) -</p>
-<p>GENLIST(ALLOWED) -</p>
-<p>OPER(NO) -</p>
-<p>)</p>
-<p>RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -</p>
-<p>CASE(UPPER) -</p>
-<p>FIRST(ALPHA) -</p>
-<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
-<p>MAXLENGTH(39) -</p>
-<p>MAXLENX(39) -</p>
-<p>KEYQUALIFIERS(0) -</p>
-<p>PROFILESALLOWED(YES) -</p>
-<p>POSIT(200) -</p>
-<p>DEFAULTRC(4) -</p>
-<p>DEFAULTUACC(NONE) -</p>
-<p>RACLIST(ALLOWED) -</p>
-<p>GENLIST(ALLOWED) -</p>
-<p>GROUP($GVIRTEL) -</p>
-<p>OPER(NO) -</p>
-<p>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -
+        CASE(UPPER) -
+        FIRST(ALPHA) -
+        OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -
+        MAXLENGTH(39) -
+        MAXLENX(39) -
+        KEYQUALIFIERS(0) -
+        PROFILESALLOWED(YES) -
+        POSIT(200) -
+        DEFAULTRC(4) -
+        DEFAULTUACC(NONE) -
+        RACLIST(ALLOWED) -
+        MEMBER($VIRTEL) -
+        GENLIST(ALLOWED) -
+        OPER(NO) -
+)
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -
+        CASE(UPPER) -
+        FIRST(ALPHA) -
+        OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -
+        MAXLENGTH(39) -
+        MAXLENX(39) -
+        KEYQUALIFIERS(0) -
+        PROFILESALLOWED(YES) -
+        POSIT(200) -
+        DEFAULTRC(4) -
+        DEFAULTUACC(NONE) -
+        RACLIST(ALLOWED) -
+        GENLIST(ALLOWED) -
+        GROUP($GVIRTEL) -
+        OPER(NO) -
+)
+</pre></div>
+</div>
 <p>Notice that the grouping class $GVIRTEL points to the member class
 $VIRTEL and that the member class $VIRTEL points to its associated group
 class $GVIRTEL. Having defined the classes the transaction members can
@@ -248,16 +258,20 @@ be added to a member class list. In this example the member class list
 is called VIRTEL_A. It is this profile that contains an access list
 which will be cloned to each member of the grouping class when RACF
 starts.</p>
-<p>RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)</p>
-<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.W2H-20) UACC(NONE)</p>
-<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.CLI-90) UACC(NONE)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)
+RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.W2H-20) UACC(NONE)
+RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.CLI-90) UACC(NONE)
+</pre></div>
+</div>
 <p>Internally RACF will look up the group access list profile for each
 member of the member class through the members associated group class.
 Effectively the above statements are adding a transaction member to the
 member class associated with a group class and protecting that member
 profile with the access list associated with the group class. The
 following statement defines an access list at the group level.</p>
-<p>PE VIRTEL_A CLASS($GVIRTEL) ID(USERA,GROUPB,USERC) ACCESS(READ)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>PE VIRTEL_A CLASS($GVIRTEL) ID(USERA,GROUPB,USERC) ACCESS(READ)
+</pre></div>
+</div>
 <p>When a new transaction needs to be protected it can be added to the
 group class as a member and it will adopt the access list defined at the
 group level. Equally, when a new user or group is added to the group
@@ -266,8 +280,10 @@ transactions.</p>
 <p><strong>VIRTEL definitions.</strong></p>
 <p>To support the RACF grouping class the VIRTEL SECUR parameter in the TCT
 has to define the member class as its RAPPL and RNODE class name.</p>
-<p>VIRSECU=YES,SECUR=(RACROUTE,RACF),</p>
-<p>RAPPL=$VIRTEL,RNODE=$VIRTEL,PRFSECU=VIRTEL,</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>VIRSECU=YES,SECUR=(RACROUTE,RACF),
+RAPPL=$VIRTEL,RNODE=$VIRTEL,PRFSECU=VIRTEL,
+</pre></div>
+</div>
 <p>It is important to note that it is only the member class name that
 exists in the RACF dataspace structure after RACF initializes. The group
 class name is only used as a placeholder for an access list to be held
@@ -283,71 +299,75 @@ member name and not the group name.</p>
 <p>The following job defines the group and member classes and permits
 access to Virtel transactions.</p>
 <p><strong>Transactions Description Users</strong></p>
-<p>CLI-90 Web Connection SPTHOLT,VIRGROUP</p>
-<p>CLI-20 Virtel Admin(HTML) SPTHOLT,VIRGROUP</p>
-<p>//SPTHOLTA JOB SYST,&amp;SYSUID,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,</p>
-<p>// REGION=0M</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
-<p>//* RACF : PROCEDURE TO ADD CLASS TO DYNAMIC CDT *</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
-<p>//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>RDELETE $GVIRTEL VIRTEL_A</p>
-<p>SETROPTS CLASSACT($VIRTEL) RACLIST($VIRTEL)</p>
-<p>//STEP2 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>RDELETE CDT $VIRTEL</p>
-<p>RDELETE CDT $GVIRTEL</p>
-<p>SETROPTS RACLIST(CDT) REFRESH</p>
-<p>//STEP3 EXEC PGM=IKJEFT1A,DYNAMNBR=20</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -</p>
-<p>CASE(UPPER) -</p>
-<p>FIRST(ALPHA) -</p>
-<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
-<p>MAXLENGTH(39) -</p>
-<p>MAXLENX(39) -</p>
-<p>KEYQUALIFIERS(0) -</p>
-<p>PROFILESALLOWED(YES) -</p>
-<p>POSIT(200) -</p>
-<p>DEFAULTRC(4) -</p>
-<p>DEFAULTUACC(NONE) -</p>
-<p>RACLIST(ALLOWED) -</p>
-<p>MEMBER($VIRTEL) -</p>
-<p>GENLIST(ALLOWED) -</p>
-<p>OPER(NO) -</p>
-<p>)</p>
-<p>RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -</p>
-<p>CASE(UPPER) -</p>
-<p>FIRST(ALPHA) -</p>
-<p>OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -</p>
-<p>MAXLENGTH(39) -</p>
-<p>MAXLENX(39) -</p>
-<p>KEYQUALIFIERS(0) -</p>
-<p>PROFILESALLOWED(YES) -</p>
-<p>POSIT(200) -</p>
-<p>DEFAULTRC(4) -</p>
-<p>DEFAULTUACC(NONE) -</p>
-<p>RACLIST(ALLOWED) -</p>
-<p>GENLIST(ALLOWED) -</p>
-<p>GROUP($GVIRTEL) -</p>
-<p>OPER(NO) -</p>
-<p>)</p>
-<p>SETROPTS RACLIST(CDT) REFRESH</p>
-<p>//STEP4 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)</p>
-<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.W2H-20) UACC(NONE)</p>
-<p>RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.CLI-90) UACC(NONE)</p>
-<p>//STEP5 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>PE VIRTEL_A CLASS($GVIRTEL) ID(SPTHOLT,VIRGROUP) ACCESS(READ)</p>
-<p>SETROPTS CLASSACT($VIRTEL) RACLIST($VIRTEL)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">Web</span> <span class="n">Connection</span> <span class="n">SPTHOLT</span><span class="p">,</span><span class="n">VIRGROUP</span>
+<span class="n">CLI</span><span class="o">-</span><span class="mi">20</span> <span class="n">Virtel</span> <span class="n">Admin</span><span class="p">(</span><span class="n">HTML</span><span class="p">)</span> <span class="n">SPTHOLT</span><span class="p">,</span><span class="n">VIRGROUP</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span>//SPTHOLTA JOB SYST,&amp;SYSUID,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,
+// REGION=0M
+//*---------------------------------------------------------*
+//* RACF : PROCEDURE TO ADD CLASS TO DYNAMIC CDT *
+//*---------------------------------------------------------*
+//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+//SYSTSPRT DD SYSOUT=*
+//SYSTSIN DD *
+        RDELETE $GVIRTEL VIRTEL\_A
+        SETROPTS CLASSACT($VIRTEL) RACLIST($VIRTEL)
+//STEP2 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M
+//SYSTSPRT DD SYSOUT=*
+//SYSTSIN DD *
+        RDELETE CDT $VIRTEL
+        RDELETE CDT $GVIRTEL
+        SETROPTS RACLIST(CDT) REFRESH
+//STEP3 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+//SYSTSPRT DD SYSOUT=*
+//SYSTSIN DD *
+        RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -
+                CASE(UPPER) -
+                FIRST(ALPHA) -
+                OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -
+                MAXLENGTH(39) -
+                MAXLENX(39) -
+                KEYQUALIFIERS(0) -
+                PROFILESALLOWED(YES) -
+                POSIT(200) -
+                DEFAULTRC(4) -
+                DEFAULTUACC(NONE) -
+                RACLIST(ALLOWED) -
+                MEMBER($VIRTEL) -
+                GENLIST(ALLOWED) -
+                OPER(NO) -
+        )
+        RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -
+                CASE(UPPER) -
+                FIRST(ALPHA) -
+                OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -
+                MAXLENGTH(39) -
+                MAXLENX(39) -
+                KEYQUALIFIERS(0) -
+                PROFILESALLOWED(YES) -
+                POSIT(200) -
+                DEFAULTRC(4) -
+                DEFAULTUACC(NONE) -
+                RACLIST(ALLOWED) -
+                GENLIST(ALLOWED) -
+                GROUP($GVIRTEL) -
+                OPER(NO) -
+        )
+        SETROPTS RACLIST(CDT) REFRESH
+//STEP4 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M
+//SYSTSPRT DD SYSOUT=*
+//SYSTSIN DD *
+        RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)
+        RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.W2H-20) UACC(NONE)
+        RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.CLI-90) UACC(NONE)
+//STEP5 EXEC PGM=IKJEFT1A,DYNAMNBR=20,REGION=0M
+//SYSTSPRT DD SYSOUT=*
+//SYSTSIN DD *
+        PE VIRTEL_A CLASS($GVIRTEL) ID(SPTHOLT,VIRGROUP) ACCESS(READ)
+        SETROPTS CLASSACT($VIRTEL) RACLIST($VIRTEL)
+</pre></div>
+</div>
 </div>
 
 

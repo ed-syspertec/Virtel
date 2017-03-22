@@ -160,7 +160,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="maintaining-trsf-file-sets">
-<h1>Maintaining TRSF file sets<a class="headerlink" href="#maintaining-trsf-file-sets" title="Permalink to this headline">¶</a></h1>
+<span id="tn201419"></span><h1>Maintaining TRSF file sets<a class="headerlink" href="#maintaining-trsf-file-sets" title="Permalink to this headline">¶</a></h1>
 <p>In this newsletter we discuss how to maintain TRSF file sets between
 development, pre-production and production environments. A TRSF file set
 consists of the TRSF files that Virtel uses. These are the distributed
@@ -222,63 +222,64 @@ development infrastructure.</p>
 <p><strong>Allocating a pre-production VSAM file and allocating it to SPVIR1A</strong></p>
 <p>Before using a directory in Virtel we have to allocate a VSAM TRSF file
 and initialize it. The following JCL can be used:-</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//* DEFINITION OF A VSAM TRSF FILE *</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//* STEP 1 : DEFINITION DU FICHIER CUSTTRSF *</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//STEP1 EXEC PGM=IDCAMS</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//SYSIN DD *</p>
-<p>DELETE (SP000.SPVIR1A.SCENARIO.PROD.TRSF) CLUSTER PURGE</p>
-<p>SET MAXCC = 0</p>
-<p>DEFINE CLUSTER (-</p>
-<p>NAME (SP000.SPVIR1A.SCENARIO.PROD.TRSF) -</p>
-<p>VOL (SPT308) -</p>
-<p>SHR (2) -</p>
-<p>KEYS (16 0) -</p>
-<p>RECSZ (100 32758) -</p>
-<p>RECORDS (2500 1000)) -</p>
-<p>DATA (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.DATA) -</p>
-<p>SPANNED -</p>
-<p>CISZ(4096)) -</p>
-<p>INDEX (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.INDEX) -</p>
-<p>CISZ(512))</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//* STEP 2 : INITIALISATION DU FICHIER CUSTTRSF *</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//STEP2 EXEC PGM=IDCAMS</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//INIT DD DATA,DLM=AA</p>
-<p>$$$$IWS.WORKREC.INW$TEMP</p>
-<p>AA</p>
-<p>/*</p>
-<p>//BASE DD DSN=SP000.VIRT452.SAMP.TRSF,DISP=SHR</p>
-<p>//TRSF DD DSN=SP000.SPVIR1A.SCENARIO.PROD.TRSF,DISP=SHR</p>
-<p>//SYSIN DD *</p>
-<p>REPRO INFILE(BASE) OUTFILE(TRSF)</p>
-<p>/*</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>//*----------------------------------------------------------------*
+//* DEFINITION OF A VSAM TRSF FILE *
+//*----------------------------------------------------------------*
+//* STEP 1 : DEFINITION DU FICHIER CUSTTRSF *
+//*----------------------------------------------------------------*
+//STEP1 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//SYSIN DD *
+   DELETE (SP000.SPVIR1A.SCENARIO.PROD.TRSF) CLUSTER PURGE
+   SET MAXCC = 0
+   DEFINE CLUSTER (-
+   NAME (SP000.SPVIR1A.SCENARIO.PROD.TRSF) -
+      VOL (SPT308) -
+      SHR (2) -
+      KEYS (16 0) -
+      RECSZ (100 32758) -
+      RECORDS (2500 1000)) -
+   DATA (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.DATA) -
+      CISZ(4096)) -
+      INDEX (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.INDEX) -
+      CISZ(512))
+//*----------------------------------------------------------------*
+//* STEP 2 : INITIALISATION DU FICHIER CUSTTRSF *
+//*----------------------------------------------------------------*
+//STEP2 EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+//INIT DD DATA,DLM=AA
+$$$$IWS.WORKREC.INW$TEMP
+AA
+/*
+//BASE DD DSN=SP000.VIRT452.SAMP.TRSF,DISP=SHR
+//TRSF DD DSN=SP000.SPVIR1A.SCENARIO.PROD.TRSF,DISP=SHR
+//SYSIN DD *
+   REPRO INFILE(BASE) OUTFILE(TRSF)
+/*
+</pre></div>
+</div>
 <p>The DDNAME SCENPROD will be added to the VIRTEL started procedure to
 point to this VSAM TRSF file. We also need to a VSAM definition to the
 VIRTEL TCT and reassemble. Two definitions are required in the TCT. Once
 this has been done VIRTEL can be restarted and the VSAM file can be
 allocated to the pre-production directory.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>……
-PASSTCK=YES, \*
-UFILE1=(SAMPTRSF,ACBH1,0,10,01), \*
-UFILE2=(HTMLTRSF,ACBH2,0,10,01), \*
-UFILE3=(SCENTRSF,ACBH3,0,10,01), \*
-**UFILE4=(SCENPROD,ACBH4,0,10,01), \***
-GATE=GENERAL, \*
-……
-ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
-STRNO=3
-ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
-STRNO=3
-ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
-STRNO=3
-**ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), \***
-**STRNO=3 **
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">....</span>
+<span class="n">PASSTCK</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="o">*</span>
+<span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+<span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+<span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">SCENTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+<span class="n">UFILE4</span><span class="o">=</span><span class="p">(</span><span class="n">SCENPROD</span><span class="p">,</span><span class="n">ACBH4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+<span class="n">GATE</span><span class="o">=</span><span class="n">GENERAL</span><span class="p">,</span> <span class="o">*</span>
+<span class="o">....</span>
+<span class="n">ACBH1</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
+<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH2</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
+<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH3</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SCENTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
+<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH4</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SCENPROD</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
+<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
 </pre></div>
 </div>
 <p><strong>Defining the pre-production directory</strong></p>
@@ -347,64 +348,67 @@ ZAMVS1 and ZAMVS2. The unloaded TRSF file sets at ZAMVS1 sets are ftp’d
 to ZAMVS2 where they are restored and promoted to the production
 environment under operation control. The development VIRTEL is known as
 SPVIR1A in ZAMVS1 and a production VIRTEL is known as SPVIR2A in ZAMVS2.</p>
-<p>**
-Initial Setup**</p>
+<p><strong>Initial Setup</strong></p>
 <p>The following jobs will set up the GDG structures required at both
 ZAMVS1 and ZAMVS2. For ZAMVS1 we run the following JCL:-</p>
-<p>//*******************************************************************/</p>
-<p>//* */</p>
-<p>//* DEFINE DEVELOPMENT TRSF FILESET GDG. USED BY DEVELOPERS TO SAVE */</p>
-<p>//* TRSF UPDATES TO TRSF FILES - SCENARIO, HTML AND SAMP */</p>
-<p>//* */</p>
-<p>//* SPVIR1A IS THE DEVELOPMENT ENVIRONMENT. */</p>
-<p>//* */</p>
-<p>//*******************************************************************/</p>
-<p>//DELETE EXEC PGM=IDCAMS</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>DELETE SP000.SPVIR1A.TRSF.GDG GDG</p>
-<p>DELETE SP000.SPVIR1A.TRSF.GDG.DSCB NVSAM</p>
-<p>SET MAXCC=0</p>
-<p>//ALLOC1 EXEC PGM=IEFBR14</p>
-<p>//FILE DD DSN=SP000.SPVIR1A.TRSF.GDG.DSCB,</p>
-<p>// UNIT=3390,DISP=(NEW,CATLG),</p>
-<p>// SPACE=(TRK,(0,0)),VOL=SER=SPT301,</p>
-<p>// DCB=BLKSIZE=6144</p>
-<p>//*</p>
-<p>//ALLOC2 EXEC PGM=IDCAMS</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//SYSIN DD *</p>
-<p>DEF GDG(NAME(SP000.SPVIR1A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)</p>
-<p>/*</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">DEFINE</span> <span class="n">DEVELOPMENT</span> <span class="n">TRSF</span> <span class="n">FILESET</span> <span class="n">GDG</span><span class="o">.</span> <span class="n">USED</span> <span class="n">BY</span> <span class="n">DEVELOPERS</span> <span class="n">TO</span> <span class="n">SAVE</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">TRSF</span> <span class="n">UPDATES</span> <span class="n">TO</span> <span class="n">TRSF</span> <span class="n">FILES</span> <span class="o">-</span> <span class="n">SCENARIO</span><span class="p">,</span> <span class="n">HTML</span> <span class="n">AND</span> <span class="n">SAMP</span>            <span class="o">*/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">SPVIR1A</span> <span class="n">IS</span> <span class="n">THE</span> <span class="n">DEVELOPMENT</span> <span class="n">ENVIRONMENT</span><span class="o">.</span>                         <span class="o">*/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*******************************************************************/</span>
+<span class="o">//</span><span class="n">DELETE</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+   <span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span> <span class="n">GDG</span>
+   <span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="o">.</span><span class="n">DSCB</span> <span class="n">NVSAM</span>
+<span class="n">SET</span> <span class="n">MAXCC</span><span class="o">=</span><span class="mi">0</span>
+<span class="o">//</span><span class="n">ALLOC1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
+<span class="o">//</span><span class="n">FILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="o">.</span><span class="n">DSCB</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="mi">3390</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">NEW</span><span class="p">,</span><span class="n">CATLG</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span><span class="n">VOL</span><span class="o">=</span><span class="n">SER</span><span class="o">=</span><span class="n">SPT301</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">ALLOC2</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
+   <span class="n">DEF</span> <span class="n">GDG</span><span class="p">(</span><span class="n">NAME</span><span class="p">(</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="p">)</span> <span class="n">LIMIT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="n">SCRATCH</span> <span class="n">NOEMPTY</span><span class="p">)</span>
+<span class="o">/*</span>
+</pre></div>
+</div>
 <p>For ZAMVS2 we run the following JCL:-</p>
-<p>//*******************************************************************/</p>
-<p>//* */</p>
-<p>//* DEFINE PRODUCTION TRSF FILESETS. USED BY OPERATIONS TO SAVE TRSF*/</p>
-<p>//* UPDATES FROM DEVELOPMENT INFRASTRUCTURE. */</p>
-<p>//* */</p>
-<p>//* SPVIR2A IS THE PRODUCTION VIRTEL. */</p>
-<p>//* */</p>
-<p>//*******************************************************************/</p>
-<p>//DELETE EXEC PGM=IDCAMS</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>DELETE SP000.SPVIR2A.TRSF.GDG GDG</p>
-<p>DELETE SP000.SPVIR2A.TRSF.GDG.DSCB NVSAM</p>
-<p>DELETE SP000.SPVIR2A.PEND.GDG NVSAM</p>
-<p>SET MAXCC=0</p>
-<p>//ALLOC1 EXEC PGM=IEFBR14</p>
-<p>//FILE DD DSN=SP000.SPVIR2A.TRSF.GDG.DSCB,</p>
-<p>// UNIT=3390,DISP=(NEW,CATLG),</p>
-<p>// SPACE=(TRK,(0,0)),VOL=SER=SPT301,</p>
-<p>// DCB=BLKSIZE=6144</p>
-<p>//PEND DD DSN=SP000.SPVIR2A.PEND.GDG,</p>
-<p>// UNIT=3390,DISP=(NEW,CATLG),</p>
-<p>// SPACE=(CYL,(40,10)),VOL=SER=SPT301,</p>
-<p>// DCB=BLKSIZE=6144</p>
-<p>//*</p>
-<p>//ALLOC2 EXEC PGM=IDCAMS</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//SYSIN DD *</p>
-<p>DEF GDG(NAME(SP000.SPVIR2A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)</p>
-<p>/*</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">DEFINE</span> <span class="n">PRODUCTION</span> <span class="n">TRSF</span> <span class="n">FILESETS</span><span class="o">.</span> <span class="n">USED</span> <span class="n">BY</span> <span class="n">OPERATIONS</span> <span class="n">TO</span> <span class="n">SAVE</span> <span class="n">TRSF</span><span class="o">*/</span>
+<span class="o">//*</span> <span class="n">UPDATES</span> <span class="n">FROM</span> <span class="n">DEVELOPMENT</span> <span class="n">INFRASTRUCTURE</span><span class="o">.</span>                        <span class="o">*/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">SPVIR2A</span> <span class="n">IS</span> <span class="n">THE</span> <span class="n">PRODUCTION</span> <span class="n">VIRTEL</span><span class="o">.</span>                               <span class="o">*/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*******************************************************************/</span>
+<span class="o">//</span><span class="n">DELETE</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span> <span class="n">GDG</span>
+<span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="o">.</span><span class="n">DSCB</span> <span class="n">NVSAM</span>
+<span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">PEND</span><span class="o">.</span><span class="n">GDG</span> <span class="n">NVSAM</span>
+<span class="n">SET</span> <span class="n">MAXCC</span><span class="o">=</span><span class="mi">0</span>
+<span class="o">//</span><span class="n">ALLOC1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
+<span class="o">//</span><span class="n">FILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="o">.</span><span class="n">DSCB</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="mi">3390</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">NEW</span><span class="p">,</span><span class="n">CATLG</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)),</span><span class="n">VOL</span><span class="o">=</span><span class="n">SER</span><span class="o">=</span><span class="n">SPT301</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span>
+<span class="o">//</span><span class="n">PEND</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">PEND</span><span class="o">.</span><span class="n">GDG</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="mi">3390</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">NEW</span><span class="p">,</span><span class="n">CATLG</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">CYL</span><span class="p">,(</span><span class="mi">40</span><span class="p">,</span><span class="mi">10</span><span class="p">)),</span><span class="n">VOL</span><span class="o">=</span><span class="n">SER</span><span class="o">=</span><span class="n">SPT301</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">ALLOC2</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
+<span class="n">DEF</span> <span class="n">GDG</span><span class="p">(</span><span class="n">NAME</span><span class="p">(</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="p">)</span> <span class="n">LIMIT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="n">SCRATCH</span> <span class="n">NOEMPTY</span><span class="p">)</span>
+<span class="o">/*</span>
+</pre></div>
+</div>
 <p>These GDG files will hold the unloaded TRSF file sets. We have establish
 a GDG cycle of 5 for recovery purposes. Also note that the setup job
 that runs at the production centre ZAMVS2 includes a holding file. This
@@ -453,72 +457,75 @@ restore from an older version is possible should it be required. This
 GDG is independent of the production TRSF GDG file set.</p>
 <p><a class="reference internal" href="../../../_images/image12.jpg"><img alt="image11" src="../../../_images/image12.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>TRSFMNT2 Sample JCL</p>
-<p>//*******************************************************************/</p>
-<p>//* */</p>
-<p>//* DUMP DEVELOPMENT TRSF FILESET AND INSTRUCT PRODUCTION TO PULL */</p>
-<p>//* LATEST TRSF UPDATES OVER. SHOULD BE CONTROLLED THROUGH A */</p>
-<p>//* BATCH SCHEDULER AND RUN WHEN DEVELOPMENT VIRTEL IS DOWN! */</p>
-<p>//* */</p>
-<p>//* RUN ON DEVELOPMENT TO INITIATE A GET FROM PRODUCTION. MOVE ONLY */</p>
-<p>//* PRE-PRODUCTION FILES FROM DEVELOPERS ENVIRONMENT */</p>
-<p>//* */</p>
-<p>//*******************************************************************/</p>
-<p>//TRSFDUMP EXEC PGM=ADRDSSU,REGION=0M</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//DUMPFILE DD DSN=SP000.TEMP,DISP=(,CATLG),</p>
-<p>// UNIT=SYSDA,</p>
-<p>// SPACE=(CYL,(40,10),RLSE)</p>
-<p>DUMP DS(INCLUDE( -</p>
-<p>SP000.SPVIR1A.**.PROD.TRSF -</p>
-<p>) ) -</p>
-<p>ADMIN TOL(ENQF) -</p>
-<p>OUTDD(DUMPFILE) COMPRESS</p>
-<p>//TRSFTRS EXEC PGM=TRSMAIN,PARM=PACK</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//INFILE DD DSN=SP000.TEMP,DISP=(OLD,DELETE)</p>
-<p>//OUTFILE DD DSN=SP000.SPVIR1A.TRSF.GDG(+1),DISP=(,CATLG,DELETE),</p>
-<p>// UNIT=SYSDA,</p>
-<p>// SPACE=(CYL,(40,10),RLSE)</p>
-<p>//FTP EXEC PGM=FTP,REGION=8M,PARM=&#8217;ZAMVS2 (EXIT&#8217;</p>
-<p>//OUTPUT DD SYSOUT=*</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//NETRC DD *</p>
-<p>MACHINE ZAMVS2 LOGIN USERID PASSWORD PASSWORD</p>
-<p>//INPUT DD *</p>
-<p>TYPE E</p>
-<p>MODE B</p>
-<p>SITE LRECL=80 BLOCKSIZE=3120 RECFM=FB</p>
-<p>SITE FILETYPE=JES</p>
-<p>PUT &#8216;SP000.VIRTEL1A.CNTL(TRSFMNT3)&#8217;</p>
-<p>QUIT</p>
-<p>/*</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>//*******************************************************************/
+//*                                                                 */
+//* DUMP DEVELOPMENT TRSF FILESET AND INSTRUCT PRODUCTION TO PULL   */
+//* LATEST TRSF UPDATES OVER. SHOULD BE CONTROLLED THROUGH A        */
+//* BATCH SCHEDULER AND RUN WHEN DEVELOPMENT VIRTEL IS DOWN!        */
+//*                                                                 */
+//* RUN ON DEVELOPMENT TO INITIATE A GET FROM PRODUCTION. MOVE ONLY */
+//* PRE-PRODUCTION FILES FROM DEVELOPERS ENVIRONMENT                */
+//*                                                                 */
+//*******************************************************************/
+//TRSFDUMP EXEC PGM=ADRDSSU,REGION=0M
+//SYSPRINT DD SYSOUT=*
+//DUMPFILE DD DSN=SP000.TEMP,DISP=(,CATLG),
+// UNIT=SYSDA,
+// SPACE=(CYL,(40,10),RLSE)
+DUMP DS(INCLUDE( -
+SP000.SPVIR1A.**.PROD.TRSF -
+) ) -
+ADMIN TOL(ENQF) -
+OUTDD(DUMPFILE) COMPRESS
+//TRSFTRS EXEC PGM=TRSMAIN,PARM=PACK
+//SYSPRINT DD SYSOUT=*
+//INFILE DD DSN=SP000.TEMP,DISP=(OLD,DELETE)
+//OUTFILE DD DSN=SP000.SPVIR1A.TRSF.GDG(+1),DISP=(,CATLG,DELETE),
+// UNIT=SYSDA,
+// SPACE=(CYL,(40,10),RLSE)
+//FTP EXEC PGM=FTP,REGION=8M,PARM=&#39;ZAMVS2 (EXIT&#39;
+//OUTPUT DD SYSOUT=*
+//SYSPRINT DD SYSOUT=*
+//NETRC DD *
+MACHINE ZAMVS2 LOGIN USERID PASSWORD PASSWORD
+//INPUT DD *
+TYPE E
+MODE B
+SITE LRECL=80 BLOCKSIZE=3120 RECFM=FB
+SITE FILETYPE=JES
+PUT &#39;SP000.VIRTEL1A.CNTL(TRSFMNT3)&#39;
+QUIT
+/*
+</pre></div>
+</div>
 <p><strong>TRSFMNT3</strong></p>
 <p>Job TRSFMNT3 – Job submitted to production JES2 via FTP from development
 centre.</p>
 <p>This job consists of one step:-</p>
-<p>FTP Get the latest pre-production TRSF file set GDG from ZAMVS1 and copy
+<p>&#8216;FTP Get&#8217; the latest pre-production TRSF file set GDG from ZAMVS1 and copy
 to the pending file.</p>
-<p>//*******************************************************************/</p>
-<p>//* */</p>
-<p>//* INVOKE BY DEVELOPMENT FTP JOB TRSFMNT2. THIS JOB RUNS ON THE */</p>
-<p>//* PRODUCTION SYSTEM TO PULL OVER THE LATEST TRSF FILESET UPDATES. */</p>
-<p>//* */</p>
-<p>//* RUN ON PRODUCTION TO OBTAIN TRSF UPDATES FROM DEVELOPMENT */</p>
-<p>//* */</p>
-<p>//*******************************************************************/</p>
-<p>//FTP EXEC PGM=FTP,REGION=8M,PARM=&#8217;ZAMVS1 (EXIT&#8217;</p>
-<p>//OUTPUT DD SYSOUT=*</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//NETRC DD *</p>
-<p>MACHINE ZAMVS1 LOGIN USERID PASSWORD PASSWORD</p>
-<p>//INPUT DD *</p>
-<p>TYPE E</p>
-<p>MODE B</p>
-<p>GET &#8216;SP000.SPVIR1A.TRSF.GDG(0)&#8217; &#8216;SP000.SPVIR2A.PEND.GDG&#8217; (REPLACE</p>
-<p>QUIT</p>
-<p>/*</p>
-<p>**
-TRSFREXX **</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
+<span class="o">//*</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">INVOKE</span> <span class="n">BY</span> <span class="n">DEVELOPMENT</span> <span class="n">FTP</span> <span class="n">JOB</span> <span class="n">TRSFMNT2</span><span class="o">.</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">RUNS</span> <span class="n">ON</span> <span class="n">THE</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">PRODUCTION</span> <span class="n">SYSTEM</span> <span class="n">TO</span> <span class="n">PULL</span> <span class="n">OVER</span> <span class="n">THE</span> <span class="n">LATEST</span> <span class="n">TRSF</span> <span class="n">FILESET</span> <span class="n">UPDATES</span><span class="o">.</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">RUN</span> <span class="n">ON</span> <span class="n">PRODUCTION</span> <span class="n">TO</span> <span class="n">OBTAIN</span> <span class="n">TRSF</span> <span class="n">UPDATES</span> <span class="n">FROM</span> <span class="n">DEVELOPMENT</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="o">*/</span>
+<span class="o">//*******************************************************************/</span>
+<span class="o">//</span><span class="n">FTP</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">FTP</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">8</span><span class="n">M</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;ZAMVS1 (EXIT&#39;</span>
+<span class="o">//</span><span class="n">OUTPUT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">NETRC</span> <span class="n">DD</span> <span class="o">*</span>
+   <span class="n">MACHINE</span> <span class="n">ZAMVS1</span> <span class="n">LOGIN</span> <span class="n">USERID</span> <span class="n">PASSWORD</span> <span class="n">PASSWORD</span>
+<span class="o">//</span><span class="n">INPUT</span> <span class="n">DD</span> <span class="o">*</span>
+   <span class="n">TYPE</span> <span class="n">E</span>
+   <span class="n">MODE</span> <span class="n">B</span>
+   <span class="n">GET</span> <span class="s1">&#39;SP000.SPVIR1A.TRSF.GDG(0)&#39;</span> <span class="s1">&#39;SP000.SPVIR2A.PEND.GDG&#39;</span> <span class="p">(</span><span class="n">REPLACE</span>
+   <span class="n">QUIT</span>
+<span class="o">/*</span>
+</pre></div>
+</div>
+<p><strong>TRSFREXX</strong></p>
 <p>Step TRSFREXX – A control setup run before the startup of VIRTEL at the
 production site. This job can be a part of the VIRTEL started task or
 can be a separate job run prior to starting VIRTEL. It prepares the TRSF
@@ -534,38 +541,40 @@ procedure to restore a particular GDG historic TRSF file set. The GDG
 number indicates which GDD level is to be restored.</p>
 <p><a class="reference internal" href="../../../_images/image13.jpg"><img alt="image12" src="../../../_images/image13.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>TRSFREXX Example JCL</p>
-<p>//******************************************************************/</p>
-<p>//* THIS CONTROL JOB PREPARES THE TRSF FILES FOR VIRTEL. IT IS */</p>
-<p>//* CONTROLLED BY A RC SET VIA A JCL SYMBOLIC. */</p>
-<p>//* */</p>
-<p>//* THE SYMBOLIC GDG IS SET AS FOLLOWS:- */</p>
-<p>//* */</p>
-<p>//* GDG = 0. DO NOTHING. VIRTEL WILL USE THE CURRENT TRSF FILE SET */</p>
-<p>//* THIS WOULD NORMALLY BE THE DEFAUL. */</p>
-<p>//* */</p>
-<p>//* GDG = 99 UPDATE THE TRSF FILE SET WITH THE LATEST PRE-PROD */</p>
-<p>//* VERSION. THIS WOULD HAVE BEEN OBTAINED VIA AN FTP GET */</p>
-<p>//* TO THE DEVELOPMENT INFRASTRUCTURE. */</p>
-<p>//* */</p>
-<p>//* GDG = N RESTORE THE TRSF FILE SET THE THE N&#8217;TH GDG VERSION. */</p>
-<p>//* WHERE 1 = GDG(-1), 2 = (GDG(-2) ETC. */</p>
-<p>//* */</p>
-<p>//* */</p>
-<p>//******************************************************************/</p>
-<p>//LIBS JCLLIB ORDER=SP000.VIRTEL2A.CNTL</p>
-<p>//TRSFREXX PROC GDG=0</p>
-<p>//REXXCC EXEC PGM=IRXJCL,PARM=(&#8216;REXXCC &amp;GDG&#8217;)</p>
-<p>//SYSEXEC DD DISP=SHR,DSN=SP000.VIRTEL2A.CNTL</p>
-<p>//RC99 IF (RC = 99) THEN</p>
-<p>//UPDATE EXEC TRSFUPDT /* UPDATE WITH LATEST */</p>
-<p>//NOTRC99 ELSE</p>
-<p>//RC1 IF (RC &gt; 0) THEN</p>
-<p>//BACKOUT EXEC TRSFBACK,GDG=&amp;GDG /* BACK OUT TO LEVEL */</p>
-<p>// ENDIF</p>
-<p>// ENDIF</p>
-<p>//VIRTEL EXEC VIRTEL</p>
-<p>// PEND</p>
-<p>//S01 EXEC TRSFREXX,GDG=0 /* NO TRSF CHANGE */</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//******************************************************************/</span>
+<span class="o">//*</span> <span class="n">THIS</span> <span class="n">CONTROL</span> <span class="n">JOB</span> <span class="n">PREPARES</span> <span class="n">THE</span> <span class="n">TRSF</span> <span class="n">FILES</span> <span class="n">FOR</span> <span class="n">VIRTEL</span><span class="o">.</span> <span class="n">IT</span> <span class="n">IS</span>     <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">CONTROLLED</span> <span class="n">BY</span> <span class="n">A</span> <span class="n">RC</span> <span class="n">SET</span> <span class="n">VIA</span> <span class="n">A</span> <span class="n">JCL</span> <span class="n">SYMBOLIC</span><span class="o">.</span>                     <span class="o">*/</span>
+<span class="o">//*</span>                                                                <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">THE</span> <span class="n">SYMBOLIC</span> <span class="n">GDG</span> <span class="n">IS</span> <span class="n">SET</span> <span class="n">AS</span> <span class="n">FOLLOWS</span><span class="p">:</span><span class="o">-</span>                           <span class="o">*/</span>
+<span class="o">//*</span>                                                                <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">GDG</span> <span class="o">=</span> <span class="mf">0.</span> <span class="n">DO</span> <span class="n">NOTHING</span><span class="o">.</span> <span class="n">VIRTEL</span> <span class="n">WILL</span> <span class="n">USE</span> <span class="n">THE</span> <span class="n">CURRENT</span> <span class="n">TRSF</span> <span class="n">FILE</span> <span class="n">SET</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">THIS</span> <span class="n">WOULD</span> <span class="n">NORMALLY</span> <span class="n">BE</span> <span class="n">THE</span> <span class="n">DEFAUL</span><span class="o">.</span>                             <span class="o">*/</span>
+<span class="o">//*</span>                                                                <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">GDG</span> <span class="o">=</span> <span class="mi">99</span> <span class="n">UPDATE</span> <span class="n">THE</span> <span class="n">TRSF</span> <span class="n">FILE</span> <span class="n">SET</span> <span class="n">WITH</span> <span class="n">THE</span> <span class="n">LATEST</span> <span class="n">PRE</span><span class="o">-</span><span class="n">PROD</span>     <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">VERSION</span><span class="o">.</span> <span class="n">THIS</span> <span class="n">WOULD</span> <span class="n">HAVE</span> <span class="n">BEEN</span> <span class="n">OBTAINED</span> <span class="n">VIA</span> <span class="n">AN</span> <span class="n">FTP</span> <span class="n">GET</span>          <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">TO</span> <span class="n">THE</span> <span class="n">DEVELOPMENT</span> <span class="n">INFRASTRUCTURE</span><span class="o">.</span>                             <span class="o">*/</span>
+<span class="o">//*</span>                                                                <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">GDG</span> <span class="o">=</span> <span class="n">N</span> <span class="n">RESTORE</span> <span class="n">THE</span> <span class="n">TRSF</span> <span class="n">FILE</span> <span class="n">SET</span> <span class="n">THE</span> <span class="n">THE</span> <span class="n">N</span><span class="s1">&#39;TH GDG VERSION.    */</span>
+<span class="o">//*</span> <span class="n">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="n">GDG</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">2</span> <span class="o">=</span> <span class="p">(</span><span class="n">GDG</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="n">ETC</span><span class="o">.</span>                           <span class="o">*/</span>
+<span class="o">//*</span>                                                                <span class="o">*/</span>
+<span class="o">//*</span>                                                                <span class="o">*/</span>
+<span class="o">//******************************************************************/</span>
+<span class="o">//</span><span class="n">LIBS</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">VIRTEL2A</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">TRSFREXX</span> <span class="n">PROC</span> <span class="n">GDG</span><span class="o">=</span><span class="mi">0</span>
+<span class="o">//</span><span class="n">REXXCC</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IRXJCL</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;REXXCC &amp;GDG&#39;</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSEXEC</span> <span class="n">DD</span> <span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">VIRTEL2A</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">RC99</span> <span class="n">IF</span> <span class="p">(</span><span class="n">RC</span> <span class="o">=</span> <span class="mi">99</span><span class="p">)</span> <span class="n">THEN</span>
+<span class="o">//</span><span class="n">UPDATE</span> <span class="n">EXEC</span> <span class="n">TRSFUPDT</span> <span class="o">/*</span> <span class="n">UPDATE</span> <span class="n">WITH</span> <span class="n">LATEST</span> <span class="o">*/</span>
+<span class="o">//</span><span class="n">NOTRC99</span> <span class="n">ELSE</span>
+<span class="o">//</span><span class="n">RC1</span> <span class="n">IF</span> <span class="p">(</span><span class="n">RC</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">THEN</span>
+<span class="o">//</span><span class="n">BACKOUT</span> <span class="n">EXEC</span> <span class="n">TRSFBACK</span><span class="p">,</span><span class="n">GDG</span><span class="o">=&amp;</span><span class="n">GDG</span> <span class="o">/*</span> <span class="n">BACK</span> <span class="n">OUT</span> <span class="n">TO</span> <span class="n">LEVEL</span> <span class="o">*/</span>
+<span class="o">//</span> <span class="n">ENDIF</span>
+<span class="o">//</span> <span class="n">ENDIF</span>
+<span class="o">//</span><span class="n">VIRTEL</span> <span class="n">EXEC</span> <span class="n">VIRTEL</span>
+<span class="o">//</span> <span class="n">PEND</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">TRSFREXX</span><span class="p">,</span><span class="n">GDG</span><span class="o">=</span><span class="mi">0</span> <span class="o">/*</span> <span class="n">NO</span> <span class="n">TRSF</span> <span class="n">CHANGE</span> <span class="o">*/</span>
+</pre></div>
+</div>
 <p><strong>Procedure TRSFUPDT</strong></p>
 <p>This procedure consists of three steps. It promotes that latest
 development TRSF file set into the production environment.</p>
@@ -575,69 +584,79 @@ file set.</p>
 <p>DELETE Delete the current VSAM TRSF files</p>
 <p>TRSFDUMP Restore from the new GDG the TRSF file set renaming the VSAM
 files to production dataset names.</p>
-<p>//TRSFUPDT PROC</p>
-<p>//********************************************************************/</p>
-<p>//* */</p>
-<p>//* PROCEDURE TO RESTORE THE LATEST PENDING GDG FILE AS OBTAINED BY */</p>
-<p>//* FTP JOB. */</p>
-<p>//* */</p>
-<p>//********************************************************************/</p>
-<p>//TRSFCOPY EXEC PGM=TRSMAIN,PARM=UNPACK</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//INFILE DD DSN=SP000.SPVIR2A.PEND.GDG,DISP=SHR</p>
-<p>//OUTFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(+1),DISP=(,CATLG,DELETE),</p>
-<p>// UNIT=SYSDA,VOL=SER=SPT309,</p>
-<p>// SPACE=(CYL,(40,10),RLSE)</p>
-<p>//DELETE EXEC PGM=IDCAMS,COND=(0,NE,TRSFCOPY)</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFDEL),DISP=SHR</p>
-<p>//TRSFREST EXEC PGM=ADRDSSU,REGION=0M,</p>
-<p>// COND=((0,NE,TRSFCOPY),(0,NE,DELETE))</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//TRSFFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(+1),DISP=(SHR,KEEP,DELETE)</p>
-<p>//DISK DD UNIT=SYSDA,VOL=SER=SPT309,DISP=SHR</p>
-<p>//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFREST),DISP=SHR</p>
-<p>// PEND</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">TRSFUPDT</span> <span class="n">PROC</span>
+<span class="o">//********************************************************************/</span>
+<span class="o">//*</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">PROCEDURE</span> <span class="n">TO</span> <span class="n">RESTORE</span> <span class="n">THE</span> <span class="n">LATEST</span> <span class="n">PENDING</span> <span class="n">GDG</span> <span class="n">FILE</span> <span class="n">AS</span> <span class="n">OBTAINED</span> <span class="n">BY</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">FTP</span> <span class="n">JOB</span><span class="o">.</span> <span class="o">*/</span>
+<span class="o">//*</span> <span class="o">*/</span>
+<span class="o">//********************************************************************/</span>
+<span class="o">//</span><span class="n">TRSFCOPY</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">TRSMAIN</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">UNPACK</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">INFILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">PEND</span><span class="o">.</span><span class="n">GDG</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">OUTFILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="p">(,</span><span class="n">CATLG</span><span class="p">,</span><span class="n">DELETE</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">VOL</span><span class="o">=</span><span class="n">SER</span><span class="o">=</span><span class="n">SPT309</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">CYL</span><span class="p">,(</span><span class="mi">40</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="n">RLSE</span><span class="p">)</span>
+<span class="o">//</span><span class="n">DELETE</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span><span class="p">,</span><span class="n">COND</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">TRSFCOPY</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">VIRTEL2A</span><span class="o">.</span><span class="n">CNTL</span><span class="p">(</span><span class="n">TRSFDEL</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">TRSFREST</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADRDSSU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">COND</span><span class="o">=</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">TRSFCOPY</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">DELETE</span><span class="p">))</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">TRSFFILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="p">(</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">SHR</span><span class="p">,</span><span class="n">KEEP</span><span class="p">,</span><span class="n">DELETE</span><span class="p">)</span>
+<span class="o">//</span><span class="n">DISK</span> <span class="n">DD</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">VOL</span><span class="o">=</span><span class="n">SER</span><span class="o">=</span><span class="n">SPT309</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">VIRTEL2A</span><span class="o">.</span><span class="n">CNTL</span><span class="p">(</span><span class="n">TRSFREST</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span> <span class="n">PEND</span>
+</pre></div>
+</div>
 <p><strong>Procedure TRSFBACK</strong></p>
 <p>This procedure restores the TRSF file set from an older production GDG
 backup.</p>
 <p>DELBACK Delete the current VSAM TRSF files</p>
 <p>TRSFREST Restore from an older GDG the TRSF file set, renaming the VSAM
 files to production dataset names.</p>
-<p>//TRSFBACK PROC GDG=</p>
-<p>//***************************************************************</p>
-<p>//* *</p>
-<p>//* PROCEDURE TO RESTORE TRSF FILES FROM A PREVIOUS GDG LEVEL *</p>
-<p>//* *</p>
-<p>//***************************************************************</p>
-<p>//DELBACK EXEC PGM=IDCAMS</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFDEL),DISP=SHR</p>
-<p>//TRSFREST EXEC PGM=ADRDSSU,REGION=0M,</p>
-<p>// COND=(0,NE,DELBACK)</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//TRSFFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(-&amp;GDG),DISP=SHR</p>
-<p>//DISK DD UNIT=SYSDA,VOL=SER=SPT309,DISP=SHR</p>
-<p>//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFREST),DISP=SHR</p>
-<p>// PEND</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">TRSFBACK</span> <span class="n">PROC</span> <span class="n">GDG</span><span class="o">=</span>
+<span class="o">//***************************************************************</span>
+<span class="o">//*</span> <span class="o">*</span>
+<span class="o">//*</span> <span class="n">PROCEDURE</span> <span class="n">TO</span> <span class="n">RESTORE</span> <span class="n">TRSF</span> <span class="n">FILES</span> <span class="n">FROM</span> <span class="n">A</span> <span class="n">PREVIOUS</span> <span class="n">GDG</span> <span class="n">LEVEL</span> <span class="o">*</span>
+<span class="o">//*</span> <span class="o">*</span>
+<span class="o">//***************************************************************</span>
+<span class="o">//</span><span class="n">DELBACK</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">VIRTEL2A</span><span class="o">.</span><span class="n">CNTL</span><span class="p">(</span><span class="n">TRSFDEL</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">TRSFREST</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADRDSSU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">COND</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">NE</span><span class="p">,</span><span class="n">DELBACK</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">TRSFFILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="p">(</span><span class="o">-&amp;</span><span class="n">GDG</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">DISK</span> <span class="n">DD</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">VOL</span><span class="o">=</span><span class="n">SER</span><span class="o">=</span><span class="n">SPT309</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">VIRTEL2A</span><span class="o">.</span><span class="n">CNTL</span><span class="p">(</span><span class="n">TRSFREST</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span> <span class="n">PEND</span>
+</pre></div>
+</div>
 <p><strong>Rexx Procedure REXXCC</strong></p>
-<p>/* REXX
-********************************************************/</p>
-<p>/* A little REXX EXEC to return a RC as set by a PARM value. */</p>
-<p>/***************************************************************/</p>
-<p>arg rc</p>
-<p>if rc = &#8216;&#8217; then return 0</p>
-<p>return rc</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">REXX</span>
+<span class="o">*****************************************************************/</span>
+<span class="o">/*</span> <span class="n">A</span> <span class="n">little</span> <span class="n">REXX</span> <span class="n">EXEC</span> <span class="n">to</span> <span class="k">return</span> <span class="n">a</span> <span class="n">RC</span> <span class="k">as</span> <span class="nb">set</span> <span class="n">by</span> <span class="n">a</span> <span class="n">PARM</span> <span class="n">value</span><span class="o">.</span>    <span class="o">*/</span>
+<span class="o">/****************************************************************/</span>
+<span class="n">arg</span> <span class="n">rc</span>
+<span class="k">if</span> <span class="n">rc</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="n">then</span> <span class="k">return</span> <span class="mi">0</span>
+<span class="k">return</span> <span class="n">rc</span>
+</pre></div>
+</div>
 <p><strong>Control Statements TRSFREST</strong></p>
-<p>RESTORE DS(INCLUDE( -</p>
-<p>SP000.SPVIR1A.**.PROD.TRSF -</p>
-<p>) ) -</p>
-<p>RENAMEU(SP000.SPVIR1A.**,SP000.SPVIR2A.**) -</p>
-<p>ADMIN TOL(ENQF) -</p>
-<p>OUTDD(DISK) INDD(TRSFFILE)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RESTORE</span> <span class="n">DS</span><span class="p">(</span><span class="n">INCLUDE</span><span class="p">(</span> <span class="o">-</span>
+<span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.**.</span><span class="n">PROD</span><span class="o">.</span><span class="n">TRSF</span> <span class="o">-</span>
+<span class="p">)</span> <span class="p">)</span> <span class="o">-</span>
+<span class="n">RENAMEU</span><span class="p">(</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.**</span><span class="p">,</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.**</span><span class="p">)</span> <span class="o">-</span>
+<span class="n">ADMIN</span> <span class="n">TOL</span><span class="p">(</span><span class="n">ENQF</span><span class="p">)</span> <span class="o">-</span>
+<span class="n">OUTDD</span><span class="p">(</span><span class="n">DISK</span><span class="p">)</span> <span class="n">INDD</span><span class="p">(</span><span class="n">TRSFFILE</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><strong>Control Statements TRSFDEL</strong></p>
-<p>DELETE SP000.SPVIR2A.SCENARIO.PROD.TRSF</p>
-<p>SET MAXCC=0</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">SCENARIO</span><span class="o">.</span><span class="n">PROD</span><span class="o">.</span><span class="n">TRSF</span>
+<span class="n">SET</span> <span class="n">MAXCC</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
 </div>
 
 

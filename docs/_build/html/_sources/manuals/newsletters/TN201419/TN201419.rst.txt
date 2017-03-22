@@ -1,3 +1,5 @@
+.. _tn201419:
+
 Maintaining TRSF file sets
 ==========================
 
@@ -76,77 +78,43 @@ development infrastructure.
 Before using a directory in Virtel we have to allocate a VSAM TRSF file
 and initialize it. The following JCL can be used:-
 
-//\*----------------------------------------------------------------\*
+::
 
-//\* DEFINITION OF A VSAM TRSF FILE \*
-
-//\*----------------------------------------------------------------\*
-
-//\* STEP 1 : DEFINITION DU FICHIER CUSTTRSF \*
-
-//\*----------------------------------------------------------------\*
-
-//STEP1 EXEC PGM=IDCAMS
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSIN DD \*
-
-DELETE (SP000.SPVIR1A.SCENARIO.PROD.TRSF) CLUSTER PURGE
-
-SET MAXCC = 0
-
-DEFINE CLUSTER (-
-
-NAME (SP000.SPVIR1A.SCENARIO.PROD.TRSF) -
-
-VOL (SPT308) -
-
-SHR (2) -
-
-KEYS (16 0) -
-
-RECSZ (100 32758) -
-
-RECORDS (2500 1000)) -
-
-DATA (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.DATA) -
-
-SPANNED -
-
-CISZ(4096)) -
-
-INDEX (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.INDEX) -
-
-CISZ(512))
-
-//\*----------------------------------------------------------------\*
-
-//\* STEP 2 : INITIALISATION DU FICHIER CUSTTRSF \*
-
-//\*----------------------------------------------------------------\*
-
-//STEP2 EXEC PGM=IDCAMS
-
-//SYSPRINT DD SYSOUT=\*
-
-//INIT DD DATA,DLM=AA
-
-$$$$IWS.WORKREC.INW$TEMP
-
-AA
-
-/\*
-
-//BASE DD DSN=SP000.VIRT452.SAMP.TRSF,DISP=SHR
-
-//TRSF DD DSN=SP000.SPVIR1A.SCENARIO.PROD.TRSF,DISP=SHR
-
-//SYSIN DD \*
-
-REPRO INFILE(BASE) OUTFILE(TRSF)
-
-/\*
+   //*----------------------------------------------------------------*
+   //* DEFINITION OF A VSAM TRSF FILE *
+   //*----------------------------------------------------------------*
+   //* STEP 1 : DEFINITION DU FICHIER CUSTTRSF *
+   //*----------------------------------------------------------------*
+   //STEP1 EXEC PGM=IDCAMS
+   //SYSPRINT DD SYSOUT=*
+   //SYSIN DD *
+      DELETE (SP000.SPVIR1A.SCENARIO.PROD.TRSF) CLUSTER PURGE
+      SET MAXCC = 0
+      DEFINE CLUSTER (-
+      NAME (SP000.SPVIR1A.SCENARIO.PROD.TRSF) -
+         VOL (SPT308) -
+         SHR (2) -
+         KEYS (16 0) -
+         RECSZ (100 32758) -
+         RECORDS (2500 1000)) -
+      DATA (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.DATA) -         
+         CISZ(4096)) -
+         INDEX (NAME(SP000.SPVIR1A.SCENARIO.PROD.TRSF.INDEX) -
+         CISZ(512))
+   //*----------------------------------------------------------------*
+   //* STEP 2 : INITIALISATION DU FICHIER CUSTTRSF *
+   //*----------------------------------------------------------------*
+   //STEP2 EXEC PGM=IDCAMS
+   //SYSPRINT DD SYSOUT=*
+   //INIT DD DATA,DLM=AA
+   $$$$IWS.WORKREC.INW$TEMP
+   AA
+   /*
+   //BASE DD DSN=SP000.VIRT452.SAMP.TRSF,DISP=SHR
+   //TRSF DD DSN=SP000.SPVIR1A.SCENARIO.PROD.TRSF,DISP=SHR
+   //SYSIN DD *
+      REPRO INFILE(BASE) OUTFILE(TRSF)
+   /*
 
 The DDNAME SCENPROD will be added to the VIRTEL started procedure to
 point to this VSAM TRSF file. We also need to a VSAM definition to the
@@ -156,22 +124,22 @@ allocated to the pre-production directory.
 
 ::
 
-   ……
-   PASSTCK=YES, \*
-   UFILE1=(SAMPTRSF,ACBH1,0,10,01), \*
-   UFILE2=(HTMLTRSF,ACBH2,0,10,01), \*
-   UFILE3=(SCENTRSF,ACBH3,0,10,01), \*
-   **UFILE4=(SCENPROD,ACBH4,0,10,01), \***
-   GATE=GENERAL, \*
-   ……
-   ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+   ....
+   PASSTCK=YES, *
+   UFILE1=(SAMPTRSF,ACBH1,0,10,01),                       *
+   UFILE2=(HTMLTRSF,ACBH2,0,10,01),                       *
+   UFILE3=(SCENTRSF,ACBH3,0,10,01),                       *
+   UFILE4=(SCENPROD,ACBH4,0,10,01),                       *
+   GATE=GENERAL, *
+   ....
+   ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
    STRNO=3
-   ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+   ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
    STRNO=3
-   ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), \*
+   ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
    STRNO=3
-   **ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), \***
-   **STRNO=3 **
+   ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), *
+   STRNO=3 
 
 **Defining the pre-production directory**
 
@@ -266,119 +234,72 @@ to ZAMVS2 where they are restored and promoted to the production
 environment under operation control. The development VIRTEL is known as
 SPVIR1A in ZAMVS1 and a production VIRTEL is known as SPVIR2A in ZAMVS2.
 
-**
-Initial Setup**
+**Initial Setup**
 
 The following jobs will set up the GDG structures required at both
 ZAMVS1 and ZAMVS2. For ZAMVS1 we run the following JCL:-
 
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+::
 
-//\* \*/
+   //*******************************************************************/
+   //*                                                                 */
+   //* DEFINE DEVELOPMENT TRSF FILESET GDG. USED BY DEVELOPERS TO SAVE */
+   //* TRSF UPDATES TO TRSF FILES - SCENARIO, HTML AND SAMP            */
+   //*                                                                 */
+   //* SPVIR1A IS THE DEVELOPMENT ENVIRONMENT.                         */
+   //*                                                                 */
+   //*******************************************************************/
+   //DELETE EXEC PGM=IDCAMS
+   //SYSPRINT DD SYSOUT=*
+      DELETE SP000.SPVIR1A.TRSF.GDG GDG
+      DELETE SP000.SPVIR1A.TRSF.GDG.DSCB NVSAM
+   SET MAXCC=0
+   //ALLOC1 EXEC PGM=IEFBR14
+   //FILE DD DSN=SP000.SPVIR1A.TRSF.GDG.DSCB,
+   // UNIT=3390,DISP=(NEW,CATLG),
+   // SPACE=(TRK,(0,0)),VOL=SER=SPT301,
+   // DCB=BLKSIZE=6144
+   //*
+   //ALLOC2 EXEC PGM=IDCAMS
+   //SYSPRINT DD SYSOUT=*
+   //SYSIN DD *
+      DEF GDG(NAME(SP000.SPVIR1A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)
+   /*
 
-//\* DEFINE DEVELOPMENT TRSF FILESET GDG. USED BY DEVELOPERS TO SAVE \*/
-
-//\* TRSF UPDATES TO TRSF FILES - SCENARIO, HTML AND SAMP \*/
-
-//\* \*/
-
-//\* SPVIR1A IS THE DEVELOPMENT ENVIRONMENT. \*/
-
-//\* \*/
-
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-//DELETE EXEC PGM=IDCAMS
-
-//SYSPRINT DD SYSOUT=\*
-
-DELETE SP000.SPVIR1A.TRSF.GDG GDG
-
-DELETE SP000.SPVIR1A.TRSF.GDG.DSCB NVSAM
-
-SET MAXCC=0
-
-//ALLOC1 EXEC PGM=IEFBR14
-
-//FILE DD DSN=SP000.SPVIR1A.TRSF.GDG.DSCB,
-
-// UNIT=3390,DISP=(NEW,CATLG),
-
-// SPACE=(TRK,(0,0)),VOL=SER=SPT301,
-
-// DCB=BLKSIZE=6144
-
-//\*
-
-//ALLOC2 EXEC PGM=IDCAMS
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSIN DD \*
-
-DEF GDG(NAME(SP000.SPVIR1A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)
-
-/\*
 
 For ZAMVS2 we run the following JCL:-
 
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+::
 
-//\* \*/
-
-//\* DEFINE PRODUCTION TRSF FILESETS. USED BY OPERATIONS TO SAVE TRSF\*/
-
-//\* UPDATES FROM DEVELOPMENT INFRASTRUCTURE. \*/
-
-//\* \*/
-
-//\* SPVIR2A IS THE PRODUCTION VIRTEL. \*/
-
-//\* \*/
-
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-//DELETE EXEC PGM=IDCAMS
-
-//SYSPRINT DD SYSOUT=\*
-
-DELETE SP000.SPVIR2A.TRSF.GDG GDG
-
-DELETE SP000.SPVIR2A.TRSF.GDG.DSCB NVSAM
-
-DELETE SP000.SPVIR2A.PEND.GDG NVSAM
-
-SET MAXCC=0
-
-//ALLOC1 EXEC PGM=IEFBR14
-
-//FILE DD DSN=SP000.SPVIR2A.TRSF.GDG.DSCB,
-
-// UNIT=3390,DISP=(NEW,CATLG),
-
-// SPACE=(TRK,(0,0)),VOL=SER=SPT301,
-
-// DCB=BLKSIZE=6144
-
-//PEND DD DSN=SP000.SPVIR2A.PEND.GDG,
-
-// UNIT=3390,DISP=(NEW,CATLG),
-
-// SPACE=(CYL,(40,10)),VOL=SER=SPT301,
-
-// DCB=BLKSIZE=6144
-
-//\*
-
-//ALLOC2 EXEC PGM=IDCAMS
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSIN DD \*
-
-DEF GDG(NAME(SP000.SPVIR2A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)
-
-/\*
+   //*******************************************************************/
+   //*                                                                 */
+   //* DEFINE PRODUCTION TRSF FILESETS. USED BY OPERATIONS TO SAVE TRSF*/
+   //* UPDATES FROM DEVELOPMENT INFRASTRUCTURE.                        */
+   //*                                                                 */
+   //* SPVIR2A IS THE PRODUCTION VIRTEL.                               */
+   //*                                                                 */
+   //*******************************************************************/
+   //DELETE EXEC PGM=IDCAMS
+   //SYSPRINT DD SYSOUT=*
+   DELETE SP000.SPVIR2A.TRSF.GDG GDG
+   DELETE SP000.SPVIR2A.TRSF.GDG.DSCB NVSAM
+   DELETE SP000.SPVIR2A.PEND.GDG NVSAM
+   SET MAXCC=0
+   //ALLOC1 EXEC PGM=IEFBR14
+   //FILE DD DSN=SP000.SPVIR2A.TRSF.GDG.DSCB,
+   // UNIT=3390,DISP=(NEW,CATLG),
+   // SPACE=(TRK,(0,0)),VOL=SER=SPT301,
+   // DCB=BLKSIZE=6144
+   //PEND DD DSN=SP000.SPVIR2A.PEND.GDG,
+   // UNIT=3390,DISP=(NEW,CATLG),
+   // SPACE=(CYL,(40,10)),VOL=SER=SPT301,
+   // DCB=BLKSIZE=6144
+   //*
+   //ALLOC2 EXEC PGM=IDCAMS
+   //SYSPRINT DD SYSOUT=*
+   //SYSIN DD *
+   DEF GDG(NAME(SP000.SPVIR2A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)
+   /*
 
 These GDG files will hold the unloaded TRSF file sets. We have establish
 a GDG cycle of 5 for recovery purposes. Also note that the setup job
@@ -442,83 +363,47 @@ GDG is independent of the production TRSF GDG file set.
 
 TRSFMNT2 Sample JCL
 
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+::
 
-//\* \*/
-
-//\* DUMP DEVELOPMENT TRSF FILESET AND INSTRUCT PRODUCTION TO PULL \*/
-
-//\* LATEST TRSF UPDATES OVER. SHOULD BE CONTROLLED THROUGH A \*/
-
-//\* BATCH SCHEDULER AND RUN WHEN DEVELOPMENT VIRTEL IS DOWN! \*/
-
-//\* \*/
-
-//\* RUN ON DEVELOPMENT TO INITIATE A GET FROM PRODUCTION. MOVE ONLY \*/
-
-//\* PRE-PRODUCTION FILES FROM DEVELOPERS ENVIRONMENT \*/
-
-//\* \*/
-
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-//TRSFDUMP EXEC PGM=ADRDSSU,REGION=0M
-
-//SYSPRINT DD SYSOUT=\*
-
-//DUMPFILE DD DSN=SP000.TEMP,DISP=(,CATLG),
-
-// UNIT=SYSDA,
-
-// SPACE=(CYL,(40,10),RLSE)
-
-DUMP DS(INCLUDE( -
-
-SP000.SPVIR1A.\*\*.PROD.TRSF -
-
-) ) -
-
-ADMIN TOL(ENQF) -
-
-OUTDD(DUMPFILE) COMPRESS
-
-//TRSFTRS EXEC PGM=TRSMAIN,PARM=PACK
-
-//SYSPRINT DD SYSOUT=\*
-
-//INFILE DD DSN=SP000.TEMP,DISP=(OLD,DELETE)
-
-//OUTFILE DD DSN=SP000.SPVIR1A.TRSF.GDG(+1),DISP=(,CATLG,DELETE),
-
-// UNIT=SYSDA,
-
-// SPACE=(CYL,(40,10),RLSE)
-
-//FTP EXEC PGM=FTP,REGION=8M,PARM='ZAMVS2 (EXIT'
-
-//OUTPUT DD SYSOUT=\*
-
-//SYSPRINT DD SYSOUT=\*
-
-//NETRC DD \*
-
-MACHINE ZAMVS2 LOGIN USERID PASSWORD PASSWORD
-
-//INPUT DD \*
-
-TYPE E
-
-MODE B
-
-SITE LRECL=80 BLOCKSIZE=3120 RECFM=FB
-
-SITE FILETYPE=JES
-
-PUT 'SP000.VIRTEL1A.CNTL(TRSFMNT3)'
-
-QUIT
-
-/\*
+   //*******************************************************************/
+   //*                                                                 */
+   //* DUMP DEVELOPMENT TRSF FILESET AND INSTRUCT PRODUCTION TO PULL   */
+   //* LATEST TRSF UPDATES OVER. SHOULD BE CONTROLLED THROUGH A        */
+   //* BATCH SCHEDULER AND RUN WHEN DEVELOPMENT VIRTEL IS DOWN!        */
+   //*                                                                 */
+   //* RUN ON DEVELOPMENT TO INITIATE A GET FROM PRODUCTION. MOVE ONLY */
+   //* PRE-PRODUCTION FILES FROM DEVELOPERS ENVIRONMENT                */
+   //*                                                                 */
+   //*******************************************************************/
+   //TRSFDUMP EXEC PGM=ADRDSSU,REGION=0M
+   //SYSPRINT DD SYSOUT=*
+   //DUMPFILE DD DSN=SP000.TEMP,DISP=(,CATLG),
+   // UNIT=SYSDA,
+   // SPACE=(CYL,(40,10),RLSE)
+   DUMP DS(INCLUDE( -
+   SP000.SPVIR1A.**.PROD.TRSF -
+   ) ) -
+   ADMIN TOL(ENQF) -
+   OUTDD(DUMPFILE) COMPRESS
+   //TRSFTRS EXEC PGM=TRSMAIN,PARM=PACK
+   //SYSPRINT DD SYSOUT=*
+   //INFILE DD DSN=SP000.TEMP,DISP=(OLD,DELETE)
+   //OUTFILE DD DSN=SP000.SPVIR1A.TRSF.GDG(+1),DISP=(,CATLG,DELETE),
+   // UNIT=SYSDA,
+   // SPACE=(CYL,(40,10),RLSE)
+   //FTP EXEC PGM=FTP,REGION=8M,PARM='ZAMVS2 (EXIT'
+   //OUTPUT DD SYSOUT=*
+   //SYSPRINT DD SYSOUT=*
+   //NETRC DD *
+   MACHINE ZAMVS2 LOGIN USERID PASSWORD PASSWORD
+   //INPUT DD *
+   TYPE E
+   MODE B
+   SITE LRECL=80 BLOCKSIZE=3120 RECFM=FB
+   SITE FILETYPE=JES
+   PUT 'SP000.VIRTEL1A.CNTL(TRSFMNT3)'
+   QUIT
+   /*
 
 **TRSFMNT3**
 
@@ -527,49 +412,32 @@ centre.
 
 This job consists of one step:-
 
-FTP Get the latest pre-production TRSF file set GDG from ZAMVS1 and copy
+'FTP Get' the latest pre-production TRSF file set GDG from ZAMVS1 and copy
 to the pending file.
 
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+::
 
-//\* \*/
+   //*******************************************************************/
+   //* */
+   //* INVOKE BY DEVELOPMENT FTP JOB TRSFMNT2. THIS JOB RUNS ON THE */
+   //* PRODUCTION SYSTEM TO PULL OVER THE LATEST TRSF FILESET UPDATES. */
+   //* */
+   //* RUN ON PRODUCTION TO OBTAIN TRSF UPDATES FROM DEVELOPMENT */
+   //* */
+   //*******************************************************************/
+   //FTP EXEC PGM=FTP,REGION=8M,PARM='ZAMVS1 (EXIT'
+   //OUTPUT DD SYSOUT=*
+   //SYSPRINT DD SYSOUT=*
+   //NETRC DD *
+      MACHINE ZAMVS1 LOGIN USERID PASSWORD PASSWORD
+   //INPUT DD *
+      TYPE E
+      MODE B
+      GET 'SP000.SPVIR1A.TRSF.GDG(0)' 'SP000.SPVIR2A.PEND.GDG' (REPLACE
+      QUIT
+   /*
 
-//\* INVOKE BY DEVELOPMENT FTP JOB TRSFMNT2. THIS JOB RUNS ON THE \*/
-
-//\* PRODUCTION SYSTEM TO PULL OVER THE LATEST TRSF FILESET UPDATES. \*/
-
-//\* \*/
-
-//\* RUN ON PRODUCTION TO OBTAIN TRSF UPDATES FROM DEVELOPMENT \*/
-
-//\* \*/
-
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-//FTP EXEC PGM=FTP,REGION=8M,PARM='ZAMVS1 (EXIT'
-
-//OUTPUT DD SYSOUT=\*
-
-//SYSPRINT DD SYSOUT=\*
-
-//NETRC DD \*
-
-MACHINE ZAMVS1 LOGIN USERID PASSWORD PASSWORD
-
-//INPUT DD \*
-
-TYPE E
-
-MODE B
-
-GET 'SP000.SPVIR1A.TRSF.GDG(0)' 'SP000.SPVIR2A.PEND.GDG' (REPLACE
-
-QUIT
-
-/\*
-
-**
-TRSFREXX **
+**TRSFREXX**
 
 Step TRSFREXX – A control setup run before the startup of VIRTEL at the
 production site. This job can be a part of the VIRTEL started task or
@@ -593,69 +461,40 @@ number indicates which GDD level is to be restored.
 
 TRSFREXX Example JCL
 
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+::
 
-//\* THIS CONTROL JOB PREPARES THE TRSF FILES FOR VIRTEL. IT IS \*/
-
-//\* CONTROLLED BY A RC SET VIA A JCL SYMBOLIC. \*/
-
-//\* \*/
-
-//\* THE SYMBOLIC GDG IS SET AS FOLLOWS:- \*/
-
-//\* \*/
-
-//\* GDG = 0. DO NOTHING. VIRTEL WILL USE THE CURRENT TRSF FILE SET \*/
-
-//\* THIS WOULD NORMALLY BE THE DEFAUL. \*/
-
-//\* \*/
-
-//\* GDG = 99 UPDATE THE TRSF FILE SET WITH THE LATEST PRE-PROD \*/
-
-//\* VERSION. THIS WOULD HAVE BEEN OBTAINED VIA AN FTP GET \*/
-
-//\* TO THE DEVELOPMENT INFRASTRUCTURE. \*/
-
-//\* \*/
-
-//\* GDG = N RESTORE THE TRSF FILE SET THE THE N'TH GDG VERSION. \*/
-
-//\* WHERE 1 = GDG(-1), 2 = (GDG(-2) ETC. \*/
-
-//\* \*/
-
-//\* \*/
-
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-//LIBS JCLLIB ORDER=SP000.VIRTEL2A.CNTL
-
-//TRSFREXX PROC GDG=0
-
-//REXXCC EXEC PGM=IRXJCL,PARM=('REXXCC &GDG')
-
-//SYSEXEC DD DISP=SHR,DSN=SP000.VIRTEL2A.CNTL
-
-//RC99 IF (RC = 99) THEN
-
-//UPDATE EXEC TRSFUPDT /\* UPDATE WITH LATEST \*/
-
-//NOTRC99 ELSE
-
-//RC1 IF (RC > 0) THEN
-
-//BACKOUT EXEC TRSFBACK,GDG=&GDG /\* BACK OUT TO LEVEL \*/
-
-// ENDIF
-
-// ENDIF
-
-//VIRTEL EXEC VIRTEL
-
-// PEND
-
-//S01 EXEC TRSFREXX,GDG=0 /\* NO TRSF CHANGE \*/
+   //******************************************************************/
+   //* THIS CONTROL JOB PREPARES THE TRSF FILES FOR VIRTEL. IT IS     */
+   //* CONTROLLED BY A RC SET VIA A JCL SYMBOLIC.                     */
+   //*                                                                */
+   //* THE SYMBOLIC GDG IS SET AS FOLLOWS:-                           */
+   //*                                                                */
+   //* GDG = 0. DO NOTHING. VIRTEL WILL USE THE CURRENT TRSF FILE SET */
+   //* THIS WOULD NORMALLY BE THE DEFAUL.                             */
+   //*                                                                */
+   //* GDG = 99 UPDATE THE TRSF FILE SET WITH THE LATEST PRE-PROD     */
+   //* VERSION. THIS WOULD HAVE BEEN OBTAINED VIA AN FTP GET          */
+   //* TO THE DEVELOPMENT INFRASTRUCTURE.                             */
+   //*                                                                */
+   //* GDG = N RESTORE THE TRSF FILE SET THE THE N'TH GDG VERSION.    */
+   //* WHERE 1 = GDG(-1), 2 = (GDG(-2) ETC.                           */
+   //*                                                                */
+   //*                                                                */
+   //******************************************************************/
+   //LIBS JCLLIB ORDER=SP000.VIRTEL2A.CNTL
+   //TRSFREXX PROC GDG=0
+   //REXXCC EXEC PGM=IRXJCL,PARM=('REXXCC &GDG')
+   //SYSEXEC DD DISP=SHR,DSN=SP000.VIRTEL2A.CNTL
+   //RC99 IF (RC = 99) THEN
+   //UPDATE EXEC TRSFUPDT /* UPDATE WITH LATEST */
+   //NOTRC99 ELSE
+   //RC1 IF (RC > 0) THEN
+   //BACKOUT EXEC TRSFBACK,GDG=&GDG /* BACK OUT TO LEVEL */
+   // ENDIF
+   // ENDIF
+   //VIRTEL EXEC VIRTEL
+   // PEND
+   //S01 EXEC TRSFREXX,GDG=0 /* NO TRSF CHANGE */
 
 **Procedure TRSFUPDT**
 
@@ -671,51 +510,31 @@ DELETE Delete the current VSAM TRSF files
 TRSFDUMP Restore from the new GDG the TRSF file set renaming the VSAM
 files to production dataset names.
 
-//TRSFUPDT PROC
+::
 
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-//\* \*/
-
-//\* PROCEDURE TO RESTORE THE LATEST PENDING GDG FILE AS OBTAINED BY \*/
-
-//\* FTP JOB. \*/
-
-//\* \*/
-
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-//TRSFCOPY EXEC PGM=TRSMAIN,PARM=UNPACK
-
-//SYSPRINT DD SYSOUT=\*
-
-//INFILE DD DSN=SP000.SPVIR2A.PEND.GDG,DISP=SHR
-
-//OUTFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(+1),DISP=(,CATLG,DELETE),
-
-// UNIT=SYSDA,VOL=SER=SPT309,
-
-// SPACE=(CYL,(40,10),RLSE)
-
-//DELETE EXEC PGM=IDCAMS,COND=(0,NE,TRSFCOPY)
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFDEL),DISP=SHR
-
-//TRSFREST EXEC PGM=ADRDSSU,REGION=0M,
-
-// COND=((0,NE,TRSFCOPY),(0,NE,DELETE))
-
-//SYSPRINT DD SYSOUT=\*
-
-//TRSFFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(+1),DISP=(SHR,KEEP,DELETE)
-
-//DISK DD UNIT=SYSDA,VOL=SER=SPT309,DISP=SHR
-
-//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFREST),DISP=SHR
-
-// PEND
+   //TRSFUPDT PROC
+   //********************************************************************/
+   //* */
+   //* PROCEDURE TO RESTORE THE LATEST PENDING GDG FILE AS OBTAINED BY */
+   //* FTP JOB. */
+   //* */
+   //********************************************************************/
+   //TRSFCOPY EXEC PGM=TRSMAIN,PARM=UNPACK
+   //SYSPRINT DD SYSOUT=*
+   //INFILE DD DSN=SP000.SPVIR2A.PEND.GDG,DISP=SHR
+   //OUTFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(+1),DISP=(,CATLG,DELETE),
+   // UNIT=SYSDA,VOL=SER=SPT309,
+   // SPACE=(CYL,(40,10),RLSE)
+   //DELETE EXEC PGM=IDCAMS,COND=(0,NE,TRSFCOPY)
+   //SYSPRINT DD SYSOUT=*
+   //SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFDEL),DISP=SHR
+   //TRSFREST EXEC PGM=ADRDSSU,REGION=0M,
+   // COND=((0,NE,TRSFCOPY),(0,NE,DELETE))
+   //SYSPRINT DD SYSOUT=*
+   //TRSFFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(+1),DISP=(SHR,KEEP,DELETE)
+   //DISK DD UNIT=SYSDA,VOL=SER=SPT309,DISP=SHR
+   //SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFREST),DISP=SHR
+   // PEND
 
 **Procedure TRSFBACK**
 
@@ -727,72 +546,54 @@ DELBACK Delete the current VSAM TRSF files
 TRSFREST Restore from an older GDG the TRSF file set, renaming the VSAM
 files to production dataset names.
 
-//TRSFBACK PROC GDG=
+::
 
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-//\* \*
-
-//\* PROCEDURE TO RESTORE TRSF FILES FROM A PREVIOUS GDG LEVEL \*
-
-//\* \*
-
-//\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-//DELBACK EXEC PGM=IDCAMS
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFDEL),DISP=SHR
-
-//TRSFREST EXEC PGM=ADRDSSU,REGION=0M,
-
-// COND=(0,NE,DELBACK)
-
-//SYSPRINT DD SYSOUT=\*
-
-//TRSFFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(-&GDG),DISP=SHR
-
-//DISK DD UNIT=SYSDA,VOL=SER=SPT309,DISP=SHR
-
-//SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFREST),DISP=SHR
-
-// PEND
+   //TRSFBACK PROC GDG=
+   //***************************************************************
+   //* *
+   //* PROCEDURE TO RESTORE TRSF FILES FROM A PREVIOUS GDG LEVEL *
+   //* *
+   //***************************************************************
+   //DELBACK EXEC PGM=IDCAMS
+   //SYSPRINT DD SYSOUT=*
+   //SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFDEL),DISP=SHR
+   //TRSFREST EXEC PGM=ADRDSSU,REGION=0M,
+   // COND=(0,NE,DELBACK)
+   //SYSPRINT DD SYSOUT=*
+   //TRSFFILE DD DSN=SP000.SPVIR2A.TRSF.GDG(-&GDG),DISP=SHR
+   //DISK DD UNIT=SYSDA,VOL=SER=SPT309,DISP=SHR
+   //SYSIN DD DSN=SP000.VIRTEL2A.CNTL(TRSFREST),DISP=SHR
+   // PEND
 
 **Rexx Procedure REXXCC**
 
-/\* REXX
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
+::
 
-/\* A little REXX EXEC to return a RC as set by a PARM value. \*/
-
-/\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*/
-
-arg rc
-
-if rc = '' then return 0
-
-return rc
+   /* REXX
+   *****************************************************************/
+   /* A little REXX EXEC to return a RC as set by a PARM value.    */
+   /****************************************************************/
+   arg rc
+   if rc = '' then return 0
+   return rc
 
 **Control Statements TRSFREST**
 
-RESTORE DS(INCLUDE( -
+::
 
-SP000.SPVIR1A.\*\*.PROD.TRSF -
-
-) ) -
-
-RENAMEU(SP000.SPVIR1A.\*\*,SP000.SPVIR2A.\*\*) -
-
-ADMIN TOL(ENQF) -
-
-OUTDD(DISK) INDD(TRSFFILE)
+   RESTORE DS(INCLUDE( -
+   SP000.SPVIR1A.**.PROD.TRSF -
+   ) ) -
+   RENAMEU(SP000.SPVIR1A.**,SP000.SPVIR2A.**) -
+   ADMIN TOL(ENQF) -
+   OUTDD(DISK) INDD(TRSFFILE)
 
 **Control Statements TRSFDEL**
 
-DELETE SP000.SPVIR2A.SCENARIO.PROD.TRSF
+::
 
-SET MAXCC=0
+   DELETE SP000.SPVIR2A.SCENARIO.PROD.TRSF
+   SET MAXCC=0
 
 .. |image0| image:: images/media/image1.png
    :width: 6.30000in
