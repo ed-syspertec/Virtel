@@ -145,12 +145,12 @@ The TCPIP VIPA definitions in MVS1A look like:-
 ::
 
     ; 192.168.170.20 SPVIRMAN for VIPARANGE test
-    **; 192.168.170.15 VIPA for SPVIR1A and SPVIR2A distribution tests ** 
+    ; 192.168.170.15 VIPA for SPVIR1A and SPVIR2A distribution tests  
+
     VIPADYNAMIC
-    VIPARANGE DEFINE MOVEABLE NONDISRUPTIVE 255.255.255.0 192.168.170.20
-    **VIPADEFINE MOVE IMMED 255.255.255.0 192.168.170.15 **
-    **VIPADISTRIBUTE DEFINE TIMEDAFF 300 DISTMETHOD ROUNDROBIN
-    192.168.170.15**
+        VIPARANGE DEFINE MOVEABLE NONDISRUPTIVE 255.255.255.0 192.168.170.20
+        VIPADEFINE MOVE IMMED 255.255.255.0 192.168.170.15 
+        VIPADISTRIBUTE DEFINE TIMEDAFF 300 DISTMETHOD ROUNDROBIN 192.168.170.15
     DESTIP ALL
     ENDVIPADYNAMIC
 
@@ -160,7 +160,7 @@ The TCPIP VIPA definitions in MVS2A look like. It is a target for
 ::
 
     VIPADYNAMIC
-    VIPARANGE DEFINE MOVEABLE NONDISRUPT 255.255.255.0 192.168.170.20
+        VIPARANGE DEFINE MOVEABLE NONDISRUPT 255.255.255.0 192.168.170.20
     ENDVIPADYNAMIC
 
 The SYSPLEX distributor will distribute sessions between MVS1A and MVS2A
@@ -171,27 +171,27 @@ new browser session.
 
 ::
 
-+------> TCP/IP (92.161/24) MVS1A - > VTAM – SPVIR1A|Terminal -> SD (170.15/24) \
-+------> TCP/IP (92.162/24) MVS1B - > VTAM – SPVIR2A
+                                +------> TCP/IP (92.161/24) MVS1A - > VTAM – SPVIR1A
+     Terminal -> SD (170.15/24) |
+                                +------> TCP/IP (92.162/24) MVS1B - > VTAM – SPVIR2A
 
 **zOS setup**
 
-MVS1A SPVIR1A(STC), SPCICSH(STC)
+::
 
-MVS1B SPVIR2A(STC)
+    MVS1A SPVIR1A(STC), SPCICSH(STC)
+    MVS1B SPVIR2A(STC)
 
-SPVIR1A ACB = VIRTEL1A (Only used for Admin. Functions)
+    SPVIR1A ACB = VIRTEL1A (Only used for Admin. Functions)
+    SPVIR2A ACB = VIRTEL2A (Only used for Admin. Functions)
+    Sysplex Distributor (SD) running on MVSA
 
-SPVIR2A ACB = VIRTEL2A (Only used for Admin. Functions)
+    Session Status before terminal establishes a session with Virtel using
+    the following URL:-
 
-Sysplex Distributor (SD) running on MVSA
+    192.168.170.15:41002
 
-Session Status before terminal establishes a session with Virtel using
-the following URL:-
-
-192.168.170.15:41002
-
-z/OS Command : **D TCPIP,,N,CONN,MAX=\***
+z/OS Command : D TCPIP,,N,CONN,MAX=*
 
 |image1|
 
@@ -261,13 +261,15 @@ We can logon to CICS and have a look at the CICS view.
 Finally, to summarize; the end-to-end session for this particular Virtel
 session looks like this :-
 
-Term. <---> VIRTEL/IP <---> VIRTEL/SNA <–--> R2AVT000 <---> SPCICSH
+::
 
-<----- VIRTEL STC ------> <----- CICS STC ----->
+    Term. <---> VIRTEL/IP <---> VIRTEL/SNA <–--> R2AVT000 <---> SPCICSH
 
-<-------- HTTP --------><------------- 3270 DataStreams ---------->
+                <----- VIRTEL STC ------>        <----- CICS STC ----->
 
-<------- TCP/IP -------><-------------------- SNA ---------------->
+    <-------- HTTP --------><------------- 3270 DataStreams ---------->
+
+    <------- TCP/IP -------><-------------------- SNA ---------------->
 
 .. |image00| image:: images/media/image00.png
 .. |image01| image:: images/media/image01.png

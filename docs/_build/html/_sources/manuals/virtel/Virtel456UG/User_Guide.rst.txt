@@ -9354,6 +9354,8 @@ the presentation module SCENQRYI. This scenario converts the Query parameter inp
 named MYAREA. The script then invokes a CICS transaction VQRY, passing the contents of MYAREA as input data. The
 CICS transaction performs an EXEC CICS RECEIVE to obtain the input data.
 
+.. _#_VIRT456UG_transaction_detail:
+
 ::
 
     TRANSACTION DETAIL DEFINITION ---------------------- Applid: VIRTELD2 15:32:33
@@ -12244,6 +12246,8 @@ directory transaction) VIRTEL requests the browser to supply the Windows usernam
 Before NTML can be used with the Firefox browser, the server name must be configured into the browser. Type
 about:config in the address bar, and enter the VIRTEL Web Access server address (for example, 192.168.235.61:41000)
 as the value of the network.automatic-ntlm-auth.trusted-uris parameter.
+
+.. _#_V456UG_data_encryption_SSL:
 
 4.2.5. Data encryption by SSL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

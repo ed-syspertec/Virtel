@@ -1,8 +1,11 @@
+.. _tn201415:
+
 Virtel JES Writer program
 =========================
 
-**Note: This program is an internal development project and is very much
-a POC idea. It is not officially supported.**
+.. note::
+
+    This program is an internal development project and is very much a POC idea. It is not officially supported.
 
 The Virtel JES Writer utility extracts JES2 output and writes to a
 Virtel printer relay tasks via a Virtel transaction. The JES output is
@@ -16,135 +19,100 @@ or saved at the user’s workstation.
 2. Upload to the mainframe into a dataset with the following DCB
    attributes:-
 
-    LRECL=1024,BLKSIZE=6144,RECFM=FB,
+::
 
-    DSN=HLQ.VJRS.TRS
+    LRECL=1024,BLKSIZE=6144,RECFM=FB,DSN=HLQ.VJRS.TRS
 
-1. Run the following JCL. This will unterse the file and install the
+3. Run the following JCL. This will unterse the file and install the
    VJRS load library. Here is a sample of what I use. Change
    accordingly.
 
+::
+
     //jobcard JOB 9000,'ED...HOLT...',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
-
     //S01 EXEC PGM=IEFBR14
-
     //DDA DD UNIT=SYSDA,
-
     // DSN=HLQ.VJRS.TEMP,DISP=(MOD,DELETE),
-
     // SPACE=(TRK,0)
-
     //S02 EXEC PGM=TRSMAIN,PARM=UNPACK
-
-    //SYSPRINT DD SYSOUT=\*
-
+    //SYSPRINT DD SYSOUT=*
     //INFILE DD DSN=HLQ.VJRS.TRS,DISP=SHR
-
     //OUTFILE DD UNIT=SYSDA,
-
     // DSN=HLQ.VJRS.TEMP,DISP=(,CATLG),
-
     // SPACE=(CYL,(10,10),RLSE)
-
     //S03 EXEC PGM=ADRDSSU,REGION=0M,COND=(0,NE)
-
-    //SYSPRINT DD SYSOUT=\*
-
+    //SYSPRINT DD SYSOUT=*
     //IN DD DSN=HLQ.VJRS.TEMP,DISP=SHR
-
     //OUT DD UNIT=SYSDA,VOL=SER=VVVVVV,DISP=SHR
+     RESTORE INDDNAME(IN) -
+     OUTDD(OUT) -
+     DATASET(INCLUDE(**)) -
+     RENAMEU( -
+     (SPTHOLT.**,HLQ.**) -
+     ) -
+     CATALOG BYPASSACS(**) NMC NSC CANCELERROR
 
-    RESTORE INDDNAME(IN) -
+4. Authorise the load library. Use the following command:-
 
-    OUTDD(OUT) -
-
-    DATASET(INCLUDE(\*\*)) -
-
-    RENAMEU( -
-
-    (SPTHOLT.\*\*,HLQ.\*\*) -
-
-    ) -
-
-    CATALOG BYPASSACS(\*\*) NMC NSC CANCELERROR
-
-1. Authorise the load library. Use the following command:-
+::
 
     SETPROG APF,ADD,DSNAME=hlq.VJRS.LOAD,VOL=vvvvvv
 
-1. Add the following JCL to SYS1.PROCLIB:-
+5. Add the following JCL to SYS1.PROCLIB:-
+
+::
 
     //VJRS PROC MAXTASKS=02
-
     //STEP1 EXEC PGM=VJES0100,PARM='MAXTASKS=&MAXTASKS'
-
     //STEPLIB DD DSN=hlq.VJRS.LOAD,DISP=SHR
-
-    //SYSUDUMP DD SYSOUT=\*
-
+    //SYSUDUMP DD SYSOUT=*
     //SYSIN DD DSN=SYS1.PARMLIB(VJRSPRNT),DISP=SHR
 
-1. Add the following VTAMLST as member APPLVJRS definition for VJRP:-
+6. Add the following VTAMLST as member APPLVJRS definition for VJRP:-
+
+::
 
     APPLVJRS VBUILD TYPE=APPL
-
-    \* -----------------------------------------------------------------
-    \*
-
-    \* Product : Virtel Printer \*
-
-    \* Description : Main ACB for Virtel Printer Application \*
-
-    \* -----------------------------------------------------------------
-    \*
-
+    * -----------------------------------------------------------------
+    *
+    * Product : Virtel Printer *
+    * Description : Main ACB for Virtel Printer Application *
+    * -----------------------------------------------------------------
+    *
     VJRS APPL ACBNAME=VJRS,AUTH=ACQ
 
-1. Add the following configuration statements to SYS1.PARMLIB as member
+7. Add the following configuration statements to SYS1.PARMLIB as member
    VJRSPRNT
 
-    \*----------------------------------------------------------------------------\*
+::
 
-    \*- PRINTER CONTROL STATEMETS FOR VJRS UTILITY. -\*
+    *----------------------------------------------------------------------------*
+    *- PRINTER CONTROL STATEMETS FOR VJRS UTILITY. -*
+    *- -*
+    *- COL 1 JES DESTID -*
+    *- COL 10 VIRTEL LU RELAY PRINTER -*
+    *- COL 19 PRINTER TYPE -*
+    *- S = SCS PRINTER. LU TYPE 1 -*
+    *----------------------------------------------------------------------------*
+    *        *        *
+    EDSPRT   REHIM000 S
+    EDSPRT1  REHIM001 S
+    EDSPRT2  REHIM002 S
 
-    \*- -\*
-
-    \*- COL 1 JES DESTID -\*
-
-    \*- COL 10 VIRTEL LU RELAY PRINTER -\*
-
-    \*- COL 19 PRINTER TYPE -\*
-
-    \*- S = SCS PRINTER. LU TYPE 1 -\*
-
-    \*----------------------------------------------------------------------------\*
-
-    \* \* \*
-
-    EDSPRT REHIM000 S
-
-    EDSPRT1 REHIM001 S
-
-    EDSPRT2 REHIM002 S
-
-1. Concatenate the hlq.VJRS.LOAD to the SERVLIB DD statement in the
+8. Concatenate the hlq.VJRS.LOAD to the SERVLIB DD statement in the
    VIRTEL proc.
 
-…….
+::
 
-//SERVLIB DD DISP=SHR,DSN=hlq.VJRS.LOAD
+    ......
+    //SERVLIB DD DISP=SHR,DSN=hlq.VJRS.LOAD
+    // DD DISP=SHR,DSN=hlq.VIRTEL.SERVLIB
+    ......
 
-// DD DISP=SHR,DSN=hlq.VIRTEL.SERVLIB
-
-…….
-
-1. Assemble the VJRS scenarios into the VIRTEL load library
-
-Using the sample hlq.VJRS.SAMPLIB(ASMSCEN) job assemble the two VJRS
+9. Assemble the VJRS scenarios into the VIRTEL load library using the sample hlq.VJRS.SAMPLIB(ASMSCEN). This job assemble the two VJRS
 scenarios SCVJRS00 and SCVJRS01 into the VIRTEL loadlib.
 
-**
-Virtel Configuration**
+**Virtel Configuration**
 
 To use VJRS you must create a transaction(s) in Virtel which provides a
 printer interface that converts the JES output to a PDF. This is done by
@@ -167,21 +135,17 @@ ZMAKEPDF program. The following files, found in vjrs.zip distribution
 file, must be uploaded to the Virtel W2H directory through the standard
 Virtel upload process.
 
-Portrait files
+::
 
-scenvjrs-docopt.txt
+    Portrait files
+        scenvjrs-docopt.txt
+        scenvjrs-layout.txt
+        scenvjrs-input.txt
 
-scenvjrs-layout.txt
-
-scenvjrs-input.txt
-
-Landscape files
-
-scenvjrs-docopt\_l.txt
-
-scenvjrs-layout\_l.txt
-
-scenvjrs-input\_l.txt
+    Landscape files
+        scenvjrs-docopt\_l.txt
+        scenvjrs-layout\_l.txt
+        scenvjrs-input\_l.txt
 
 Details about the format of the files can be found in the *CASI CICS2PDF
 Installation and Reference* manual. These files are passed through to
@@ -206,7 +170,9 @@ establish a VTAM session with REHIM000. Also, in the URL the transaction
 name of TSO1A has been defined. This associates the input scenario
 SCVJRS01 with the session.
 
-URL: http://192.168.170.30:41002/w2h/WEB2AJAX.htm+TSO1A
+::
+
+    URL: http://192.168.170.30:41002/w2h/WEB2AJAX.htm+TSO1A
 
 |image1|
 
@@ -222,65 +188,59 @@ VIRTEL.
     Issue the following z/OS command to activate the VJRS VTAM
     definition:-
 
+::
+
     V NET,ACT,ID=APPLVJRS
 
-1. Start the VJRS printer tasks
+2. Start the VJRS printer tasks
+
+::
 
     S VJRS
 
-    The output from the started task should look like this:-
+The output from the started task should look like this:-
+
+::
 
     V NET,INACT,ID=APPLVJRS,I
-
     IST097I VARY ACCEPTED
-
     IST105I APPLVJRS NODE NOW INACTIVE
-
     V NET,ACT,ID=APPLVJRS
-
     IST097I VARY ACCEPTED
-
     IST093I APPLVJRS ACTIVE
-
     S VJRS
-
     $HASP100 VJRS ON STCINRDR
-
     IEF695I START VJRS WITH JOBNAME VJRS IS ASSIGNED TO USER START2
-
     , GROUP SYS1
-
     $HASP373 VJRS STARTED
-
     IEF403I VJRS - STARTED - TIME=13.37.47
-
     VJRS001I - VIRTEL JES WRITER READY
 
-1. Create some output in JES2 by running a batch job. Output should go
+3. Create some output in JES2 by running a batch job. Output should go
    to one of the defined destinations that VJRS is serving. Example
    batch job:-
 
+::
+
     //SPTHOLTP JOB 'JRPTEST1',CLASS=A,MSGCLASS=Z,NOTIFY=SPTHOLT
-
     //STEP1 EXEC PGM=IEBGENER
-
     //SYSPRINT DD DUMMY
-
     //SYSUT2 DD SYSOUT=A,DEST=EDSPRT
-
     //SYSUT1 DD DSN=SPTHOLT.VJESPRT.ASM(TESTPRNT),DISP=SHR
-
     //SYSIN DD DUMMY
 
-    Note: The MSGCLASS=Z ensures that only the Class A output is left on
+
+.. note::
+    
+    The MSGCLASS=Z ensures that only the Class A output is left on
     the JES queue with an associated destination of EDSPRT for the
     submitted job.
 
-1. After the job has run, output will appear on JES with a DESTID of
+4. After the job has run, output will appear on JES with a DESTID of
    EDSPRT. This will be captured by VJRS, via the JES2 SAPI interface,
    and sent to the associated Virtel LU relay. In this case LU REHIM000
 
-2. Virtel will indicate that Print Output is available by presenting the
+5. Virtel will indicate that Print Output is available by presenting the
    user with a Printer ICON in the Operator Interface Area or Taskbar on
    the Virtel Terminal screen.
 
@@ -307,336 +267,299 @@ VIRTEL.
     action (PFx) the Printer Icon will disappear and the Virtel session
     is now ready for the next print request.
 
-    **Using VJRS and VIRTEL message log off load**
+**Using VJRS and VIRTEL message log off load**
 
-    In Virtel 4.54 (not available until 2015/Q1) the LOG feature enables
-    the VIRTEL log to be spun off to JES2. VJRS can capture the log from
-    JES2 and send it directly to the LU relay printer and in the process
-    convert it to a PDF.
+In Virtel 4.54 (not available until 2015/Q1) the LOG feature enables
+the VIRTEL log to be spun off to JES2. VJRS can capture the log from
+JES2 and send it directly to the LU relay printer and in the process
+convert it to a PDF.
 
-    Setting up VIRTEL to use the LOG sysout facility requires a change
-    to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT
-    code the following statement:-
+Setting up VIRTEL to use the LOG sysout facility requires a change
+to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT
+code the following statement:-
+
+::    
 
     LOG=(SYSOUT,class,destination)
 
-    For example, LOG=(SYSOUT,A,EDSPRT)
+For example, LOG=(SYSOUT,A,EDSPRT)
 
-    This directs all WTOs to a SYSOUT dataset rather than the system
-    console log (SYSLOG). If you want WTO messages going to both the
-    system console and a SYSOUT dataset than issue the following VIRTEL
-    command:-
+This directs all WTOs to a SYSOUT dataset rather than the system
+console log (SYSLOG). If you want WTO messages going to both the
+system console and a SYSOUT dataset than issue the following VIRTEL
+command:-
+
+::
 
     F VIRTEL,LOG=BOTH
 
-    The LOG feature in Virtel 4.54 is controlled by the TCT parameters
-    and a new LOG command. The new LOG command has the following
-    format:-
+The LOG feature in Virtel 4.54 is controlled by the TCT parameters
+and a new LOG command. The new LOG command has the following
+format:-
+
+::
 
     F VIRTEL,LOG=CONSOLE \| SYSOUT \| BOTH \| SPIN
 
-    LOG=CONSOLE routes all WTO message to the system console. This is
-    the default action.
+- LOG=CONSOLE routes all WTO message to the system console. This isthe default action.
 
-    LOG=SYSOUT routes all WTO messages to a VIRTEL SYSOUT dataset which
-    is dynamically allocated.
+- LOG=SYSOUT routes all WTO messages to a VIRTEL SYSOUT dataset whichis dynamically allocated.
 
-    LOG=BOTH routes all WTO messages to both the system console and a
-    dynamically allocated SYSOUT dataset.
+- LOG=BOTH routes all WTO messages to both the system console and a dynamically allocated SYSOUT dataset.
 
-    LOG=SPIN forces Virtel to release the current SYSOUT dataset for
-    further processing and allocates a new SYSOUT dataset.
+- LOG=SPIN forces Virtel to release the current SYSOUT dataset for further processing and allocates a new SYSOUT dataset.
 
-    Virtel will direct messages to an allocated SYSOUT data set and \|
-    or the console (default). If SYSOUT processing is being used you
-    will see a dynamically allocated dataset in the SDSF display panel.
-    Issue a “?” next to the VIRTEL started task.
+Virtel will direct messages to an allocated SYSOUT data set and | or the console (default). If SYSOUT processing is being used you
+will see a dynamically allocated dataset in the SDSF display panel.
 
-    |image5|
+Issue a “?” next to the VIRTEL started task.
 
-    Here we can see that VIRTEL has allocated a DDNAME SYS00001. If we
-    select this dataset in SDSF we can see that it is the VIRTEL message
-    log that would normally be written to the system console log.
+|image5|
 
-    |image6|
+Here we can see that VIRTEL has allocated a DDNAME SYS00001. If we
+select this dataset in SDSF we can see that it is the VIRTEL message
+log that would normally be written to the system console log.
 
-    Assuming that VJRS is running, if we spin this dataset off using the
-    LOG=SPIN command, VIRTEL will release the SYSOUT dataset to JES2.
-    VJRS will then capture it and send it to its destination which is
-    EDSPRT. EDSPRT just happens to be the relay LU defined in VIRTEL and
-    associated with the printer REHIM000.
+|image6|
 
-    In the VIRTEL 3270 session issue the command:-
+Assuming that VJRS is running, if we spin this dataset off using the
+LOG=SPIN command, VIRTEL will release the SYSOUT dataset to JES2.
+VJRS will then capture it and send it to its destination which is
+EDSPRT. EDSPRT just happens to be the relay LU defined in VIRTEL and
+associated with the printer REHIM000.
+
+In the VIRTEL 3270 session issue the command:-
+
+::
 
     F VIRTEL,LOG=SPIN
 
-    In the top right of the VIRTEL window, next to the language
-    indicator, a printer box will appear:-
+In the top right of the VIRTEL window, next to the language
+indicator, a printer box will appear:-
 
-    |image7|
+|image7|
 
-    Pressing the printer icon will process the capture message log from
-    VIRTEL and convert it to a PDF file through MAKEPDF. The PDF file
-    will then be display. The message log can then be saved as a PDF
-    file.
+Pressing the printer icon will process the capture message log from
+VIRTEL and convert it to a PDF file through MAKEPDF. The PDF file
+will then be display. The message log can then be saved as a PDF
+file.
 
-    |image8|
+|image8|
 
-    **Messages and Abends**
+**Messages and Abends**
 
-    Module VJES0100
+::
 
-    **VJRS001I - VIRTEL JES WRITER READY**
+        Module VJES0100
+        
+            VJRS001I - VIRTEL JES WRITER READY
+            VJRS has established a SAPI interface with JES2 and is ready to receive output.
+            
+            Action: None
 
-    VJRS has established a SAPI interface with JES2 and is ready to
-    receive output.
+            VJRS002E – (XXXX:YYYY) PRINTER TASK FAILED
+            VJRS attached printer task YYYY has failed to print print request
+            YYYY. The attached task has terminated.
 
-    Action: None
+            Action: Check SYSLOG for the cause of the attached printer task
+            failure. Send dump to support. Stop and restart VJRS.
 
-    **VJRS002E – (XXXX:YYYY) PRINTER TASK FAILED**
+            VJRS008I – VIRTEL JES WRITER CLOSED
+            VJRS is closing due to an operator STOP command being issued.
 
-    VJRS attached printer task YYYY has failed to print print request
-    YYYY. The attached task has terminated.
+            Action: None
 
-    Action: Check SYSLOG for the cause of the attached printer task
-    failure. Send dump to support. Stop and restart VJRS.
+            VJRS009W – PRINTER TABLE FULL
+            VJRS can only support 100 printer destinations.
 
-    **VJRS008I – VIRTEL JES WRITER CLOSED**
+            Action: VJRS terminates with return code 4. Reduce the number of
+            printer control statements.
 
-    VJRS is closing due to an operator STOP command being issued.
+            VJRS010W – PPPPPPPP:LLLLLLLL – LU already defined in printer TTTTTTTT
+            While reading in the control statements VJRS has detected that LU
+            relay LLLLLLLL is already associated with destination TTTTTTTT and
+            cannot be defined to destination PPPPPPPP.
 
-    Action: None
+            Action: VJRS ignores the control statement.
 
-    **VJRS009W – PRINTER TABLE FULL**
+            VJRS011W – PPPPPPPP:LLLLLLLL – Waiting for printer task to complete
+            VJRS is shutting down and is waiting for printer PPPPPPPP on relay
+            LLLLLLLL to complete.
 
-    VJRS can only support 100 printer destinations.
+            Action: None
 
-    Action: VJRS terminates with return code 4. Reduce the number of
-    printer control statements.
+        Module VJRES0101
 
-    **VJRS010W – PPPPPPPP:LLLLLLLL – LU already defined in printer
-    TTTTTTTT**
+            VJRS103I - (RRRR:TTTT) JES WRITER STARTING FOR XXXXXXXX JJJJJJJJ:NNNNNNNN)
+            VJRS printer task has established a VTAM session with Virtel relay
+            XXXXXXXX. RRRR is the printer request and TTTT is the printer task
+            ID.
 
-    While reading in the control statements VJRS has detected that LU
-    relay LLLLLLLL is already associated with destination TTTTTTTT and
-    cannot be defined to destination PPPPPPPP.
+            Action: None
 
-    Action: VJRS ignores the control statement.
+            VJRS104I - (RRRR:TTTT) JES WRITER ENDED FOR XXXXXXXX
+            VJRS has complete writing the JES output to the Virtel relay session
+            XXXXXXXX. RRRR is the printer request and TTTT is the printer task
+            ID.
 
-    **VJRS011W – PPPPPPPP:LLLLLLLL – Waiting for printer task to
-    complete**
+            Action: None
 
-    VJRS is shutting down and is waiting for printer PPPPPPPP on relay
-    LLLLLLLL to complete.
+            VJRS105W - (RRRR:TTTT) XXXXXXXX RC=XX RTNCD=XX FDBK2=XX
+            VJRS has incurred a SNA error in establishing a VTAM session with
+            Virtel relay print LU XXXXXXX.
 
-    Action: None
+            Action: Session will be retried up to 10 times and if it still fails
+            to establish a session the printer will be disabled from further
+            prints. Investigate Virtel LU relay. Issue a D NET command against
+            the Virtel LU printer relay and make sure it is in an ACTIVE state.
 
-    Module VJRES0101
+            VJRS106W - (RRRR:TTTT) SSENSEI=XX SSENSMI=XX USENSEI=XXXX
+            Second part of VTAM session failure.
 
-    **VJRS103I - (RRRR:TTTT) JES WRITER STARTING FOR XXXXXXXX
-    JJJJJJJJ:NNNNNNNN)**
+            Action: See message VJRS105W
 
-    VJRS printer task has established a VTAM session with Virtel relay
-    XXXXXXXX. RRRR is the printer request and TTTT is the printer task
-    ID.
+            VJRS107E - (RRRR:TTTT) VTAM SEND FAILED FOR XXXXXXXX
+            VJRS has failed to send data to the Virtel LU printer relay. RRRR is
+            the printer request and TTTT is the printer task ID
 
-    Action: None
+            Action: Printer task Abends U807
+     
+            VJRS108E - LU XXXXXXXX NOT AVAILABLE
+            VJRS printer task is unable to contact the Virtel LU printer relay
+            XXXXXXXX. The RPLRTNCD code has returned X’0008’.
 
-    **VJRS104I - (RRRR:TTTT) JES WRITER ENDED FOR XXXXXXXX**
+            Action: Session will be retried up to 10 times and if it still fails
+            to establish a session the printer will be disabled from further
+            prints. Investigate Virtel LU relay. Issue a D NET command against
+            the Virtel LU printer relay and make sure it is in an ACTIVE state.
 
-    VJRS has complete writing the JES output to the Virtel relay session
-    XXXXXXXX. RRRR is the printer request and TTTT is the printer task
-    ID.
+            VJRS109E - LU XXXXXXXX INVALID
+     
+            VJRS printer task is unable to establish a session with the Virtel
+            LU printer relay XXXXXXXX. The RPLRTNCD code has returned X’1453’.
 
-    Action: None
+            Action: Session will be retried up to 10 times and if it still fails
+            to establish a session the printer will be disabled from further
+            prints. Investigate Virtel LU relay. Issue a D NET command against
+            the Virtel LU printer relay and make sure it is in an ACTIVE state.
 
-    **VJRS105W - (RRRR:TTTT) XXXXXXXX RC=XX RTNCD=XX FDBK2=XX**
+            VJRS110E - LU XXXXXXXX DISABLED. ERROR COUNT EXCEEDED
+            VJRS has attempted to establish a session with the Virtel LU printer
+            relay but after 10 attempts this has still failed: The printer will
+            be disabled for further prints.
 
-    VJRS has incurred a SNA error in establishing a VTAM session with
-    Virtel relay print LU XXXXXXX.
+            Action: Investiagte the status of the Virtel LU printer. It must be
+            in an ACTIVE state to accept sessions from VJRS.
 
-    Action: Session will be retried up to 10 times and if it still fails
-    to establish a session the printer will be disabled from further
-    prints. Investigate Virtel LU relay. Issue a D NET command against
-    the Virtel LU printer relay and make sure it is in an ACTIVE state.
+Abends
 
-    **VJRS106W - (RRRR:TTTT) SSENSEI=XX SSENSMI=XX USENSEI=XXXX**
-
-    Second part of VTAM session failure.
-
-    Action: See message VJRS105W
-
-    **VJRS107E - (RRRR:TTTT) VTAM SEND FAILED FOR XXXXXXXX**
-
-    VJRS has failed to send data to the Virtel LU printer relay. RRRR is
-    the printer request and TTTT is the printer task ID
-
-    Action: Printer task Abends U807
-
-    **VJRS108E - LU XXXXXXXX NOT AVAILABLE**
-
-    VJRS printer task is unable to contact the Virtel LU printer relay
-    XXXXXXXX. The RPLRTNCD code has returned X’0008’.
-
-    Action: Session will be retried up to 10 times and if it still fails
-    to establish a session the printer will be disabled from further
-    prints. Investigate Virtel LU relay. Issue a D NET command against
-    the Virtel LU printer relay and make sure it is in an ACTIVE state.
-
-    **VJRS109E - LU XXXXXXXX INVALID**
-
-    VJRS printer task is unable to establish a session with the Virtel
-    LU printer relay XXXXXXXX. The RPLRTNCD code has returned X’1453’.
-
-    Action: Session will be retried up to 10 times and if it still fails
-    to establish a session the printer will be disabled from further
-    prints. Investigate Virtel LU relay. Issue a D NET command against
-    the Virtel LU printer relay and make sure it is in an ACTIVE state.
-
-    **VJRS110E - LU XXXXXXXX DISABLED. ERROR COUNT EXCEEDED**
-
-    VJRS has attempted to establish a session with the Virtel LU printer
-    relay but after 10 attempts this has still failed: The printer will
-    be disabled for further prints.
-
-    Action: Investiagte the status of the Virtel LU printer. It must be
-    in an ACTIVE state to accept sessions from VJRS.
-
-    Abends
+::
 
     U800 VJES0101 Dynamic allocation error.
-
     U801 VJES0101 I/O Error reading JES2 dataset.
-
     U802 VJES0100 VTAM ACB failed to open.
-
     U803 VJES0101 VTAM OPNDST failed.
-
     U804 VJES0101 VTAM OPNDST/ACQUIRE failed.
-
     U805 VJES0101 VTAM SIMLOGON failed.
-
     U806 VJES0101 VTAM CLSDST failed.
-
     U807 VJES0101 VTAM SEND failed.
-
     U808 VJES0100 SSOB SAPI failed.
-
     U810 VJES0101 VTAM GENCB NIB failed.
-
     U811 VJES0101 VTAM GENCB RPL failed.
 
-    Bugs and Restrictions
+Bugs and Restrictions
 
-    Release 0.0
+Release 0.0
 
-1. VJRS doesn’t recover from VTAM or network issues. SNA sense code
-   087D0001.
+1. VJRS doesn’t recover from VTAM or network issues. SNA sense code 087D0001.
+
+::
 
     $HASP373 VJRS STARTED
-
     IEF403I VJRS - STARTED - TIME=13.44.35
-
     VJRS001I - VIRTEL JES WRITER READY
-
-    VJRS103I - (0001:0001) JES WRITER STARTING FOR EDSPRT
-    (SPTHOLTP:JOB0592
-
-    0)
-
+    VJRS103I - (0001:0001) JES WRITER STARTING FOR EDSPRT (SPTHOLTP:JOB05920)
     IST663I INIT OTHER REQUEST FAILED, SENSE=087D0001 223
-
     IST664I REAL OLU=SPNET.VJRS ALIAS DLU=SPNET.REHIM000
-
     IST889I SID = CA7B8B52BA578A48
-
     IST1705I SORDER = APPN FROM START OPTION
-
     IST1705I SSCPORD = PRIORITY FROM START OPTION
-
     IST894I ADJSSCPS TRIED FAILURE SENSE ADJSSCPS TRIED FAILURE SENSE
-
     IST895I ISTAPNCP 08400007
-
     IST314I END
-
     VJRS105W - (0001:0001) REHIM000 RC=04 RTNCD=10 FDBK2=01
-
     VJRS106W - (0001:0001) SSENSEI=08 SSENSMI=7D USENSEI=0001
-
     P SPVIREH
-
     VIR0009I APPLHOLT : SHUT DOWN IN PROGRESS
 
-    Solution:
+Solution:
+
+::
 
     Stop Virtel
-
     Stop VJRS
-
     Delete any output on JES2 that is targeted for Virtel
-
     Restart VIRTEL
-
     Establish LU relays – sign on to application
-
     Start VJRS
-
     Run print job again.
 
-1. VJRS doesn’t recover from Virtel Timeout. When Virtel terminal
-   session times out VJRS fails to reconnect successfully to printer.
+2. VJRS doesn’t recover from Virtel Timeout. When Virtel terminal session times out VJRS fails to reconnect successfully to printer.
 
-    Solution:
+Solution:
+
+::
 
     See problem number 1.
 
-1. Abend0C7 on Startup
+3. Abend0C7 on Startup
 
-    Solution:
+Solution:
+
+::
 
     MAXTASKS must be two digits. 01 through to 99. Default is 05.
 
-1. Fix multi page support
+4. Fix multi page support
 
-    Release 0.1 11/2014
+Release 0.1 11/2014
 
 1. MakePDF doesn’t support x’00’ in the data stream and issues an error
-   meesage “End of block marker not found”. VJRS now checks data stream
-   before sending to Virtel.
+meesage “End of block marker not found”. VJRS now checks data stream
+before sending to Virtel.
 
 2. Documentation updated. Includes description of how to incorporate
-   Virtel syslog capture with VJRS.
+Virtel syslog capture with VJRS.
 
-    Release 0.2 02/2015
+Release 0.2 02/2015
 
 1. VJRS0200 recompiled with MAKEPDF version 1.2. This MAKEPDF version
-   has been modified so that the watermark is not printed.
+has been modified so that the watermark is not printed.
 
 .. |image0| image:: images/media/image1.png
-   :width: 6.30000in
-   :height: 4.29306in
+            :width: 6.30000in
+            :height: 4.29306in
 .. |image1| image:: images/media/image2.png
-   :width: 6.30000in
-   :height: 4.82708in
+            :width: 6.30000in
+            :height: 4.82708in
 .. |image2| image:: images/media/image3.png
-   :width: 6.30000in
-   :height: 4.84931in
+            :width: 6.30000in
+            :height: 4.84931in
 .. |image3| image:: images/media/image4.png
-   :width: 6.30000in
-   :height: 5.79028in
+            :width: 6.30000in
+            :height: 5.79028in
 .. |image4| image:: images/media/image5.png
-   :width: 6.30000in
-   :height: 5.79306in
+            :width: 6.30000in
+            :height: 5.79306in
 .. |image5| image:: images/media/image6.png
-   :width: 6.30000in
-   :height: 1.73958in
+            :width: 6.30000in
+            :height: 1.73958in
 .. |image6| image:: images/media/image7.png
-   :width: 6.30000in
-   :height: 2.96875in
+            :width: 6.30000in
+            :height: 2.96875in
 .. |image7| image:: images/media/image8.png
-   :width: 6.30000in
-   :height: 1.12500in
+            :width: 6.30000in
+            :height: 1.12500in
 .. |image8| image:: images/media/image9.png
-   :width: 6.30000in
-   :height: 4.39792in
+            :width: 6.30000in
+            :height: 4.39792in

@@ -8436,7 +8436,7 @@ connection script. After signing on to CICS, the connection script uses the &amp
 the presentation module SCENQRYI. This scenario converts the Query parameter input data into a VIRTEL variable
 named MYAREA. The script then invokes a CICS transaction VQRY, passing the contents of MYAREA as input data. The
 CICS transaction performs an EXEC CICS RECEIVE to obtain the input data.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>TRANSACTION DETAIL DEFINITION ---------------------- Applid: VIRTELD2 15:32:33
+<div class="highlight-default" id="virt456ug-transaction-detail"><div class="highlight"><pre><span></span>TRANSACTION DETAIL DEFINITION ---------------------- Applid: VIRTELD2 15:32:33
 Internal name    ===&gt; CLI-17Q             To associate with an entry point name
 External name    ===&gt; tranq               Name displayed on user menu
 Description      ===&gt; Demonstration VIRTEL Query
@@ -10914,7 +10914,7 @@ cannot verify the validity of the username, and cannot propagate the signon to o
 as the value of the network.automatic-ntlm-auth.trusted-uris parameter.</p>
 </div>
 <div class="section" id="data-encryption-by-ssl">
-<h4>4.2.5. Data encryption by SSL<a class="headerlink" href="#data-encryption-by-ssl" title="Permalink to this headline">¶</a></h4>
+<span id="v456ug-data-encryption-ssl"></span><h4>4.2.5. Data encryption by SSL<a class="headerlink" href="#data-encryption-by-ssl" title="Permalink to this headline">¶</a></h4>
 <p>The AT-TLS feature (“Application Transparent Transport Layer Security”), available with z/OS Communication Server
 V1R7 and later releases, allows direct access to the VIRTEL Web Access server in SSL mode (HTTPS), without using an
 intermediate server. The SSLSETUP job in the VIRTEL SAMPLIB contains an example of the definitions required to place

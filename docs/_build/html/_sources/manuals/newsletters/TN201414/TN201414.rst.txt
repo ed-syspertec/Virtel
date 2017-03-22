@@ -1,3 +1,5 @@
+.. _tn201414:
+
 CICS Printing problem
 =====================
 
@@ -37,25 +39,35 @@ printing with Virtel.
 
 Scenario:
 
-Entry 1 Logon to CICS via Virtel, perform a CICS print transaction –
+**Entry 1**
+
+Logon to CICS via Virtel, perform a CICS print transaction –
 CMSG for example. Virtel printer is acquired (EHS0) and print is
 successful.
 
-Entry 2 Virtel session is closed. This causes a session failure for
+**Entry 2**
+
+Virtel session is closed. This causes a session failure for
 relay terminals associated with the CICS definitions EHS0/EHT0. LOSTTERM
 exit driven for terminal EHT0 but not for printer EHS0. CICS behaviour
 is different for printers; this is the cause of the problem.
 
-Entry 3 The ACTION to be taken by CICS for the ESH0’s session failure
+**Entry 3**
+
+The ACTION to be taken by CICS for the ESH0’s session failure
 includes SIMLOGON. CICS tries to reconnect the printer to the VIRTEL
 application. Of course the VIRTEL relay application REHIM000 has gone so
 this fails.
 
-Entry 4 The failure of the SIMLOGON returns a VTAM RC 1000. The ACTION
+**Entry 4**
+
+The failure of the SIMLOGON returns a VTAM RC 1000. The ACTION
 that CICS now takes with regard to EHS0 is NOCREATE which places the
 printer in a REL state. Any further print requests will fail.
 
-Entry 5 A new session is started. The terminal EHT0 successfully
+**Entry 5**
+
+A new session is started. The terminal EHT0 successfully
 connects with CICS but the printer fails. VTAM return code 1000 plus
 action of NOCREATE.
 
@@ -71,7 +83,7 @@ The following Screen Images capture this process.
 Logon to CICS and issue CEMT I (EHS0) or whatever CICS definition you
 have that relates to the printer. The following display will be the
 status of the printer after disconnecting from Virtel. This printer will
-not except more print request.
+not accept more print request.
 
     |image0|
 
@@ -89,8 +101,7 @@ reissue the CEMT command. The printer display should look like this:-
 Virtel will now be able to print to using this printer terminal with the
 CMSG command.
 
-**
-How to fix the problem.**
+**How to fix the problem.**
 
 There are several solutions to this:-
 
@@ -104,57 +115,35 @@ assemble it, and place it in a CICS load library. This will prevent the
 SIMLOGON taking place following a Session failure. Example code
 follows:–
 
-\*ASM XOPTS(NOPROLOG NOEPILOG)
+::
 
-TITLE 'CICS NODE ERROR PROGRAM'
 
-DFHSNEP TYPE=INITIAL,NAME=DFHZNEP,CS=NO
-
-DFHSNEP TYPE=ERRPROC,GROUP=4,CODE=(5C)
-
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-\* NEPROC04
-
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-\* THE GROUP 4 ERRPROC WILL HANDLE RETURN CODES 5C (SESSION FAILURE),
-
-\* ON EACH OCCASION WHERE TWAEC IS EQUAL TO X'5C' WE WILL TURN OFF
-
-\* THE SIMLOGON SPECIFICATION.
-
-\* SYMBOLIC LABEL TCZNSP02
-
-\* DFH3424 (SESSION FAILURE) OCCURS WITH TWAEC SET TO X'5C'
-
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-EP4BASE EQU R8 BASE REGISTER
-
-USING NEPROC04,EP4BASE ESTABLISH BASE
-
-ST CSVTBAR,NEPEPRS SAVE RETURN REGISTER
-
-LR EP4BASE,EPBAR LOAD BASE REGISTER
-
-CLI TWAEC,TCZNSP02 DFHZC3424 SESSION FAILURE?
-
-BNE NEP04RET NO, GET OUT
-
-NI TWAOPT2,X'FF'-TWAOASM TURN OFF SIMLOGON
-
-NEP04RET DS 0H
-
-L CSVTBAR,NEPEPRS RESTORE LINK REGISTER
-
-BR CSVTBAR RETURN
-
-\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*
-
-DFHSNEP TYPE=FINAL
-
-END DFHNEPNA
+   *ASM XOPTS(NOPROLOG NOEPILOG)
+            TITLE 'CICS NODE ERROR PROGRAM'
+            DFHSNEP TYPE=INITIAL,NAME=DFHZNEP,CS=NO
+            DFHSNEP TYPE=ERRPROC,GROUP=4,CODE=(5C)
+   ***********************************************************************
+   * NEPROC04
+   ***********************************************************************
+   * THE GROUP 4 ERRPROC WILL HANDLE RETURN CODES 5C (SESSION FAILURE),
+   * ON EACH OCCASION WHERE TWAEC IS EQUAL TO X'5C' WE WILL TURN OFF
+   * THE SIMLOGON SPECIFICATION.
+   *                             SYMBOLIC LABEL TCZNSP02
+   * DFH3424 (SESSION FAILURE)   OCCURS WITH TWAEC SET TO X'5C'
+   ***********************************************************************
+   EP4BASE EQU R8 BASE REGISTER
+            USING NEPROC04,EP4BASE        ESTABLISH BASE
+            ST CSVTBAR,NEPEPRS            SAVE RETURN REGISTER
+            LR EP4BASE,EPBAR              LOAD BASE REGISTER
+            CLI TWAEC,TCZNSP02            DFHZC3424 SESSION FAILURE?
+            BNE NEP04RET                  NO, GET OUT
+            NI TWAOPT2,X'FF'-TWAOASM      TURN OFF SIMLOGON
+   NEP04RET DS 0H
+            L CSVTBAR,NEPEPRS             RESTORE LINK REGISTER
+            BR CSVTBAR                    RETURN
+   ***********************************************************************
+            DFHSNEP TYPE=FINAL
+            END DFHNEPNA
 
 The third option, and probably the most common solution, is to create a
 CICS AUTOLOGON session which monitors terminals every thirty seconds and
@@ -175,7 +164,7 @@ The default entry point looks like this:-
 |image4|
 
 And the transaction we are using is CICS which has the following
-definition undI-10
+definition CLI-10
 
 |image5|
 

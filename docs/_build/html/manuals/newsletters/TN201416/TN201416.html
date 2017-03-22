@@ -160,7 +160,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="virtel-security-using-server-and-client-certificates">
-<h1>Virtel Security. Using server and client certificates<a class="headerlink" href="#virtel-security-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h1>
+<span id="tn201416"></span><h1>Virtel Security. Using server and client certificates<a class="headerlink" href="#virtel-security-using-server-and-client-certificates" title="Permalink to this headline">¶</a></h1>
 <p>In this newsletter we look at setting up Virtel to work with client and
 user certificates and to effectively remove the need for a user to
 provide a user id and password. This is equivalent to the Express Logon
@@ -216,27 +216,30 @@ look at a certificate held with RACF we can see this information.
 Certificates are identified by a combination of LABEL, USERID or
 Certification Authority (CA).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">READY</span>
-<span class="o">**</span><span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">LIST</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;VIRTEL SSL DEMO&#39;</span><span class="p">))</span> <span class="o">**</span>
+<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">LIST</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;VIRTEL SSL DEMO&#39;</span><span class="p">))</span>
+
 <span class="n">Digital</span> <span class="n">certificate</span> <span class="n">information</span> <span class="k">for</span> <span class="n">user</span> <span class="n">SPVIRSTC</span><span class="p">:</span>
-<span class="n">Label</span><span class="p">:</span> <span class="n">VIRTEL</span> <span class="n">SSL</span> <span class="n">DEMO</span>
-<span class="n">Certificate</span> <span class="n">ID</span><span class="p">:</span> <span class="mi">2</span><span class="n">Qji1</span><span class="o">+</span><span class="n">XJ2eLjw</span><span class="o">+</span><span class="n">XJ2ePF00Di4tNAxMXU1kBA</span>
-<span class="n">Status</span><span class="p">:</span> <span class="n">TRUST</span>
-<span class="n">Start</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2014</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">08</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">End</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2015</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">08</span> <span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span>
-<span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span>
-<span class="o">&gt;</span><span class="mi">05</span><span class="o">&lt;</span>
-<span class="n">Issuer</span><span class="s1">&#39;s Name:</span>
-<span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">Security</span> <span class="n">Server</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
-<span class="n">Subject</span><span class="s1">&#39;s Name:</span>
-<span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">RECETTE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">T</span><span class="o">=</span><span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
-<span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span> <span class="n">HANDSHAKE</span><span class="p">,</span> <span class="n">DATAENCRYPT</span>
-<span class="n">Key</span> <span class="n">Type</span><span class="p">:</span> <span class="n">RSA</span>
-<span class="n">Key</span> <span class="n">Size</span><span class="p">:</span> <span class="mi">1024</span>
-<span class="n">Private</span> <span class="n">Key</span><span class="p">:</span> <span class="n">YES</span>
-<span class="n">Ring</span> <span class="n">Associations</span><span class="p">:</span>
-<span class="n">Ring</span> <span class="n">Owner</span><span class="p">:</span> <span class="n">SPVIRSTC</span>
-<span class="n">Ring</span><span class="p">:</span>
-<span class="o">&gt;</span><span class="n">VIRTRING</span><span class="o">&lt;</span>
+
+        <span class="n">Label</span><span class="p">:</span> <span class="n">VIRTEL</span> <span class="n">SSL</span> <span class="n">DEMO</span>
+        <span class="n">Certificate</span> <span class="n">ID</span><span class="p">:</span> <span class="mi">2</span><span class="n">Qji1</span><span class="o">+</span><span class="n">XJ2eLjw</span><span class="o">+</span><span class="n">XJ2ePF00Di4tNAxMXU1kBA</span>
+        <span class="n">Status</span><span class="p">:</span> <span class="n">TRUST</span>
+        <span class="n">Start</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2014</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">08</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+        <span class="n">End</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2015</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">08</span> <span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span>
+        <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span>
+                <span class="o">&gt;</span><span class="mi">05</span><span class="o">&lt;</span>
+        <span class="n">Issuer</span><span class="s1">&#39;s Name:</span>
+                <span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">Security</span> <span class="n">Server</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
+        <span class="n">Subject</span><span class="s1">&#39;s Name:</span>
+                <span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">RECETTE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">T</span><span class="o">=</span><span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
+
+        <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span> <span class="n">HANDSHAKE</span><span class="p">,</span> <span class="n">DATAENCRYPT</span>
+        <span class="n">Key</span> <span class="n">Type</span><span class="p">:</span> <span class="n">RSA</span>
+        <span class="n">Key</span> <span class="n">Size</span><span class="p">:</span> <span class="mi">1024</span>
+        <span class="n">Private</span> <span class="n">Key</span><span class="p">:</span> <span class="n">YES</span>
+        <span class="n">Ring</span> <span class="n">Associations</span><span class="p">:</span>
+                <span class="n">Ring</span> <span class="n">Owner</span><span class="p">:</span> <span class="n">SPVIRSTC</span>
+                <span class="n">Ring</span><span class="p">:</span>
+                        <span class="o">&gt;</span><span class="n">VIRTRING</span><span class="o">&lt;</span>
 </pre></div>
 </div>
 <p>Similar details can be found in the browser settings. For example here
@@ -262,57 +265,61 @@ running the PAGENT started task and have RACF definitions in place to
 support the required SSL access.</p>
 <p>The following is the certificate generation statement for the RACF
 signing certificate.</p>
-<p>//DCERTCA EXEC PGM=IKJEFT01</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
-<p>/* Delete previous signing certificate */</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
-<p>RACDCERT CERTAUTH +</p>
-<p>DELETE(LABEL(&#8216;z/OS signing certificate&#8217;))</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//* CCERTCA : CREATE SIGNING CERTIFICATE *</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//CCERTCA EXEC PGM=IKJEFT1A</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
-<p>/* Create a signing certificate */</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;*/</p>
-<p>RACDCERT CERTAUTH +</p>
-<p>GENCERT +</p>
-<p>WITHLABEL(&#8216;z/OS signing certificate&#8217;) +</p>
-<p>SUBJECTSDN( +</p>
-<p>CN(&#8216;z/OS Security Server&#8217;) +</p>
-<p>O(&#8216;SYSPERTEC&#8217;) +</p>
-<p>C(&#8216;FR&#8217;)) +</p>
-<p>KEYUSAGE(CERTSIGN) SIZE(1024) +</p>
-<p>NOTAFTER(DATE(2026-06-30))</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">DCERTCA</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+<span class="o">/*</span> <span class="n">Delete</span> <span class="n">previous</span> <span class="n">signing</span> <span class="n">certificate</span> <span class="o">*/</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">CERTAUTH</span> <span class="o">+</span>
+ <span class="n">DELETE</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">))</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//*</span> <span class="n">CCERTCA</span> <span class="p">:</span> <span class="n">CREATE</span> <span class="n">SIGNING</span> <span class="n">CERTIFICATE</span> <span class="o">*</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//</span><span class="n">CCERTCA</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+<span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">signing</span> <span class="n">certificate</span> <span class="o">*/</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">CERTAUTH</span> <span class="o">+</span>
+         <span class="n">GENCERT</span> <span class="o">+</span>
+         <span class="n">WITHLABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">)</span> <span class="o">+</span>
+         <span class="n">SUBJECTSDN</span><span class="p">(</span> <span class="o">+</span>
+                 <span class="n">CN</span><span class="p">(</span><span class="s1">&#39;z/OS Security Server&#39;</span><span class="p">)</span> <span class="o">+</span>
+                 <span class="n">O</span><span class="p">(</span><span class="s1">&#39;SYSPERTEC&#39;</span><span class="p">)</span> <span class="o">+</span>
+                 <span class="n">C</span><span class="p">(</span><span class="s1">&#39;FR&#39;</span><span class="p">))</span> <span class="o">+</span>
+         <span class="n">KEYUSAGE</span><span class="p">(</span><span class="n">CERTSIGN</span><span class="p">)</span> <span class="n">SIZE</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span> <span class="o">+</span>
+         <span class="n">NOTAFTER</span><span class="p">(</span><span class="n">DATE</span><span class="p">(</span><span class="mi">2026</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">30</span><span class="p">))</span>
+</pre></div>
+</div>
 <p>If we list the certificate after we have created it will get the
 following:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">READY</span>
 
-<span class="o">**</span><span class="n">RACDCERT</span> <span class="n">CERTAUTH</span> <span class="n">LIST</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">))</span> <span class="o">**</span>
+<span class="n">RACDCERT</span> <span class="n">CERTAUTH</span> <span class="n">LIST</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">))</span>
+
 <span class="n">Digital</span> <span class="n">certificate</span> <span class="n">information</span> <span class="k">for</span> <span class="n">CERTAUTH</span><span class="p">:</span>
-<span class="n">Label</span><span class="p">:</span> <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">signing</span> <span class="n">certificate</span>
-<span class="n">Certificate</span> <span class="n">ID</span><span class="p">:</span> <span class="mi">2</span><span class="n">QiJmZmDhZmjgalh1uJAoomHlYmVh0CDhZmjiYaJg4GjhUBA</span>
-<span class="n">Status</span><span class="p">:</span> <span class="n">TRUST</span>
-<span class="n">Start</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2013</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">03</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
-<span class="n">End</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2026</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">30</span> <span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span>
-<span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span>
-<span class="o">&gt;</span><span class="mi">00</span><span class="o">&lt;</span>
-<span class="n">Issuer</span><span class="s1">&#39;s Name:</span>
-<span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">Security</span> <span class="n">Server</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
-<span class="n">Subject</span><span class="s1">&#39;s Name:</span>
-<span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">Security</span> <span class="n">Server</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
-<span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span> <span class="o">**</span><span class="n">CERTSIGN</span><span class="o">**</span>
-<span class="n">Key</span> <span class="n">Type</span><span class="p">:</span> <span class="n">RSA</span>
-<span class="n">Key</span> <span class="n">Size</span><span class="p">:</span> <span class="mi">1024</span>
-<span class="n">Private</span> <span class="n">Key</span><span class="p">:</span> <span class="n">YES</span>
-<span class="n">Ring</span> <span class="n">Associations</span><span class="p">:</span>
-<span class="n">Ring</span> <span class="n">Owner</span><span class="p">:</span> <span class="n">SPVIRSTC</span>
-<span class="n">Ring</span><span class="p">:</span>
-<span class="o">&gt;</span><span class="n">VIRTRING</span><span class="o">&lt;</span>
+
+        <span class="n">Label</span><span class="p">:</span> <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">signing</span> <span class="n">certificate</span>
+        <span class="n">Certificate</span> <span class="n">ID</span><span class="p">:</span> <span class="mi">2</span><span class="n">QiJmZmDhZmjgalh1uJAoomHlYmVh0CDhZmjiYaJg4GjhUBA</span>
+        <span class="n">Status</span><span class="p">:</span> <span class="n">TRUST</span>
+        <span class="n">Start</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2013</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">03</span> <span class="mi">00</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+        <span class="n">End</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2026</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">30</span> <span class="mi">23</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">59</span>
+        <span class="n">Serial</span> <span class="n">Number</span><span class="p">:</span>
+                <span class="o">&gt;</span><span class="mi">00</span><span class="o">&lt;</span>
+        <span class="n">Issuer</span><span class="s1">&#39;s Name:</span>
+                <span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">Security</span> <span class="n">Server</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
+        <span class="n">Subject</span><span class="s1">&#39;s Name:</span>
+                <span class="o">&gt;</span><span class="n">CN</span><span class="o">=</span><span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">Security</span> <span class="n">Server</span><span class="o">.</span><span class="n">O</span><span class="o">=</span><span class="n">SYSPERTEC</span><span class="o">.</span><span class="n">C</span><span class="o">=</span><span class="n">FR</span><span class="o">&lt;</span>
+        <span class="n">Key</span> <span class="n">Usage</span><span class="p">:</span> <span class="o">**</span><span class="n">CERTSIGN</span><span class="o">**</span>
+        <span class="n">Key</span> <span class="n">Type</span><span class="p">:</span> <span class="n">RSA</span>
+        <span class="n">Key</span> <span class="n">Size</span><span class="p">:</span> <span class="mi">1024</span>
+        <span class="n">Private</span> <span class="n">Key</span><span class="p">:</span> <span class="n">YES</span>
+        <span class="n">Ring</span> <span class="n">Associations</span><span class="p">:</span>
+                <span class="n">Ring</span> <span class="n">Owner</span><span class="p">:</span> <span class="n">SPVIRSTC</span>
+                <span class="n">Ring</span><span class="p">:</span>
+                        <span class="o">&gt;</span><span class="n">VIRTRING</span><span class="o">&lt;</span>
 </pre></div>
 </div>
 <p>The key usage identifies this certificate as a signing certificate. This
@@ -321,21 +328,21 @@ certificate will be used to sign other certificates that we generate.</p>
 certificate and use the RACF signing certificate to “sign” it. The
 following extract is from the Virtel SAMPLIB member SSLUCERT.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CCERTIF</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span>
-<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span>\<span class="o">*</span>
-<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> \<span class="o">*</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">digital</span> <span class="n">certificate</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">GENCERT</span> <span class="o">+</span>
-<span class="n">WITHLABEL</span><span class="p">(</span><span class="s1">&#39;VIRTEL SSL DEMO&#39;</span><span class="p">)</span> <span class="o">+</span>
-<span class="o">**</span><span class="n">SIGNWITH</span><span class="p">(</span><span class="n">CERTAUTH</span> <span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="o">**</span>
-<span class="n">SUBJECTSDN</span><span class="p">(</span> <span class="o">+</span>
-<span class="n">CN</span><span class="p">(</span><span class="s1">&#39;RECETTE VIRTEL&#39;</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">T</span><span class="p">(</span><span class="s1">&#39;VIRTEL Web Access&#39;</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">O</span><span class="p">(</span><span class="s1">&#39;SYSPERTEC&#39;</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">C</span><span class="p">(</span><span class="s1">&#39;FR&#39;</span><span class="p">))</span> <span class="o">+</span>
-<span class="n">KEYUSAGE</span><span class="p">(</span><span class="n">HANDSHAKE</span> <span class="n">DATAENCRYPT</span><span class="p">)</span> <span class="n">SIZE</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+<span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">digital</span> <span class="n">certificate</span> <span class="o">*/</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">GENCERT</span> <span class="o">+</span>
+                <span class="n">WITHLABEL</span><span class="p">(</span><span class="s1">&#39;VIRTEL SSL DEMO&#39;</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">SIGNWITH</span><span class="p">(</span><span class="n">CERTAUTH</span> <span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">))</span> <span class="o">+</span>
+                <span class="n">SUBJECTSDN</span><span class="p">(</span> <span class="o">+</span>
+                        <span class="n">CN</span><span class="p">(</span><span class="s1">&#39;RECETTE VIRTEL&#39;</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">T</span><span class="p">(</span><span class="s1">&#39;VIRTEL Web Access&#39;</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">O</span><span class="p">(</span><span class="s1">&#39;SYSPERTEC&#39;</span><span class="p">)</span> <span class="o">+</span>
+                        <span class="n">C</span><span class="p">(</span><span class="s1">&#39;FR&#39;</span><span class="p">))</span> <span class="o">+</span>
+                <span class="n">KEYUSAGE</span><span class="p">(</span><span class="n">HANDSHAKE</span> <span class="n">DATAENCRYPT</span><span class="p">)</span> <span class="n">SIZE</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Note how we identify the signing certificate with the SIGNWITH parameter
@@ -347,20 +354,20 @@ them. We place the certificates on a key ring and associate the key ring
 with the VIRTEL server RACF user id (in our case SPVIRSTC). The member
 SSLSETUP has some RACF commands to perform the key ring generation. Here
 is an extract:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">keyring</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">ADDRING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">certificate</span> <span class="n">to</span> <span class="n">the</span> <span class="n">keyring</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">CONNECT</span><span class="p">(</span> <span class="o">+</span>
-<span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">+</span>
-<span class="o">**</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;VIRTEL SSL DEMO&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="o">**</span>
-<span class="n">RING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">DEFAULT</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*-----------------------------------------------------------------*/</span>
+<span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">keyring</span> <span class="o">*/</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">ADDRING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+<span class="o">/*</span> <span class="n">Add</span> <span class="n">the</span> <span class="n">certificate</span> <span class="n">to</span> <span class="n">the</span> <span class="n">keyring</span> <span class="o">*/</span>
+<span class="o">/*-----------------------------------------------------------------*/</span>
+<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/*</span> <span class="n">VIRTEL</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">CONNECT</span><span class="p">(</span> <span class="o">+</span>
+                <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;VIRTEL SSL DEMO&#39;</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">RING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">DEFAULT</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Again it is the label that identifies the key(certificate) that we want
@@ -371,39 +378,39 @@ import into our browser’s key data base. In the Virtel SAMPLIB member
 SSLUCERT performs the task of creating the user certificate and creating
 an “exportable” file.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">DCERTIF</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span>
-<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span>\<span class="o">*</span>
-<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> \<span class="o">*</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Delete</span> <span class="n">previous</span> <span class="n">digital</span> <span class="n">certificate</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">client</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">DELETE</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">))</span>
-<span class="o">//</span>\<span class="o">*-------------------------------------------------------------------</span>\<span class="o">*</span>
-<span class="o">//</span>\<span class="o">*</span> <span class="n">UCERTIF</span> <span class="p">:</span> <span class="n">CREATE</span> <span class="n">DIGITAL</span> <span class="n">CERTIFICATE</span> <span class="n">FOR</span> <span class="n">USER</span> \<span class="o">*</span>
-<span class="o">//</span>\<span class="o">*-------------------------------------------------------------------</span>\<span class="o">*</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="o">/*</span> <span class="n">Delete</span> <span class="n">previous</span> <span class="n">digital</span> <span class="n">certificate</span> <span class="o">*/</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">/*</span> <span class="n">client</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">DELETE</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">))</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//*</span> <span class="n">UCERTIF</span> <span class="p">:</span> <span class="n">CREATE</span> <span class="n">DIGITAL</span> <span class="n">CERTIFICATE</span> <span class="n">FOR</span> <span class="n">USER</span> <span class="o">*</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
 <span class="o">//</span><span class="n">UCERTIF</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span>
-<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span>\<span class="o">*</span>
-<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> \<span class="o">*</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">digital</span> <span class="n">certificate</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">client</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">GENCERT</span> <span class="o">+</span>
-<span class="n">WITHLABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">)</span> <span class="o">+</span>
-<span class="o">**</span><span class="n">SIGNWITH</span><span class="p">(</span><span class="n">CERTAUTH</span> <span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">))</span> <span class="o">+</span> <span class="o">**</span>
-<span class="n">SUBJECTSDN</span><span class="p">(</span> <span class="o">+</span>
-<span class="n">CN</span><span class="p">(</span><span class="s1">&#39;Ed Holt&#39;</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">client</span> <span class="n">name</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">O</span><span class="p">(</span><span class="s1">&#39;Syspertec Communication&#39;</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">company</span> <span class="n">name</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">C</span><span class="p">(</span><span class="s1">&#39;France&#39;</span><span class="p">))</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">country</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">KEYUSAGE</span><span class="p">(</span><span class="n">HANDSHAKE</span><span class="p">)</span> <span class="n">SIZE</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Export</span> <span class="n">the</span> <span class="n">digital</span> <span class="n">certificate</span> <span class="ow">and</span> <span class="n">private</span> <span class="n">key</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">client</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">EXPORT</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">))</span> <span class="o">+</span>
-<span class="n">FORMAT</span><span class="p">(</span><span class="n">PKCS12DER</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">DSN</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">P12</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;azj77sdmlizczxerghgbiadbbdbxnbsnbxiazb&#39;</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="o">/*</span> <span class="n">Create</span> <span class="n">a</span> <span class="n">digital</span> <span class="n">certificate</span> <span class="o">*/</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">/*</span> <span class="n">client</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">GENCERT</span> <span class="o">+</span>
+                <span class="n">WITHLABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">SIGNWITH</span><span class="p">(</span><span class="n">CERTAUTH</span> <span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">))</span> <span class="o">+</span>
+                <span class="n">SUBJECTSDN</span><span class="p">(</span> <span class="o">+</span>
+                        <span class="n">CN</span><span class="p">(</span><span class="s1">&#39;Ed Holt&#39;</span><span class="p">)</span> <span class="o">/*</span> <span class="n">client</span> <span class="n">name</span> <span class="o">*/</span> <span class="o">+</span>
+                        <span class="n">O</span><span class="p">(</span><span class="s1">&#39;Syspertec Communication&#39;</span><span class="p">)</span> <span class="o">/*</span> <span class="n">company</span> <span class="n">name</span> <span class="o">*/</span> <span class="o">+</span>
+                        <span class="n">C</span><span class="p">(</span><span class="s1">&#39;France&#39;</span><span class="p">))</span> <span class="o">/*</span> <span class="n">country</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">KEYUSAGE</span><span class="p">(</span><span class="n">HANDSHAKE</span><span class="p">)</span> <span class="n">SIZE</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="o">/*</span> <span class="n">Export</span> <span class="n">the</span> <span class="n">digital</span> <span class="n">certificate</span> <span class="ow">and</span> <span class="n">private</span> <span class="n">key</span> <span class="o">*/</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">/*</span> <span class="n">client</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">EXPORT</span><span class="p">(</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">))</span> <span class="o">+</span>
+                <span class="n">FORMAT</span><span class="p">(</span><span class="n">PKCS12DER</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">DSN</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">P12</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">PASSWORD</span><span class="p">(</span><span class="s1">&#39;azj77sdmlizczxerghgbiadbbdbxnbsnbxiazb&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Again we sign the certificate with our RACF signing certificate. The
@@ -417,33 +424,33 @@ workstation.</p>
 <p>The final thing to do is to add the user certificate and the signing
 certificate to the key ring associated with the Virtel server task user
 id.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span>\<span class="o">*-------------------------------------------------------------------</span>\<span class="o">*</span>
-<span class="o">//</span>\<span class="o">*</span> <span class="n">Associate</span> <span class="n">certificate</span> <span class="k">with</span> <span class="n">user</span> <span class="nb">id</span> \<span class="o">*</span>
-<span class="o">//</span>\<span class="o">*-------------------------------------------------------------------</span>\<span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//*</span> <span class="n">Associate</span> <span class="n">certificate</span> <span class="k">with</span> <span class="n">user</span> <span class="nb">id</span> <span class="o">*</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
 <span class="o">//</span><span class="n">UCERTIF</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span>
-<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span>\<span class="o">*</span>
-<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> \<span class="o">*</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Add</span> <span class="n">certificate</span> <span class="n">to</span> <span class="n">Server</span> <span class="n">ring</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">client</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">CONNECT</span> <span class="p">(</span><span class="n">CERTAUTH</span> <span class="o">+</span>
-<span class="o">**</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="o">**</span>
-<span class="n">RING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">USAGE</span><span class="p">(</span><span class="n">CERTAUTH</span><span class="p">))</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Add</span> <span class="n">certificate</span> <span class="n">to</span> <span class="n">Server</span> <span class="n">ring</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/</span>\<span class="o">*</span> <span class="n">client</span> <span class="n">userid</span> \<span class="o">*/</span> <span class="o">+</span>
-<span class="n">CONNECT</span> <span class="p">(</span><span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">+</span>
-<span class="o">**</span><span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="o">**</span>
-<span class="n">RING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span> <span class="o">+</span>
-<span class="n">USAGE</span><span class="p">(</span><span class="n">CERTAUTH</span><span class="p">))</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*</span> <span class="n">Refresh</span> <span class="n">the</span> <span class="n">RACF</span> <span class="n">profiles</span> \<span class="o">*/</span>
-<span class="o">/</span>\<span class="o">*-----------------------------------------------------------------</span>\<span class="o">*/</span>
-<span class="n">SETROPTS</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">DIGTRING</span><span class="p">)</span> <span class="n">REFRESH</span>
-<span class="n">SETROPTS</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">DIGTCERT</span><span class="p">)</span> <span class="n">REFRESH</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="o">/*</span> <span class="n">Add</span> <span class="n">certificate</span> <span class="n">to</span> <span class="n">Server</span> <span class="n">ring</span> <span class="o">*/</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/*</span> <span class="n">client</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">CONNECT</span> <span class="p">(</span><span class="n">CERTAUTH</span> <span class="o">+</span>
+                <span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;z/OS signing certificate&#39;</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">RING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">USAGE</span><span class="p">(</span><span class="n">CERTAUTH</span><span class="p">))</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="o">/*</span> <span class="n">Add</span> <span class="n">certificate</span> <span class="n">to</span> <span class="n">Server</span> <span class="n">ring</span> <span class="o">*/</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="o">/*</span> <span class="n">client</span> <span class="n">userid</span> <span class="o">*/</span> <span class="o">+</span>
+                <span class="n">CONNECT</span> <span class="p">(</span><span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">LABEL</span><span class="p">(</span><span class="s1">&#39;SSL client certificate&#39;</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">RING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span> <span class="o">+</span>
+                <span class="n">USAGE</span><span class="p">(</span><span class="n">CERTAUTH</span><span class="p">))</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="o">/*</span>     <span class="n">Refresh</span> <span class="n">the</span> <span class="n">RACF</span> <span class="n">profiles</span> <span class="o">*/</span>
+ <span class="o">/*-----------------------------------------------------------------*/</span>
+ <span class="n">SETROPTS</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">DIGTRING</span><span class="p">)</span> <span class="n">REFRESH</span>
+ <span class="n">SETROPTS</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">DIGTCERT</span><span class="p">)</span> <span class="n">REFRESH</span>
 </pre></div>
 </div>
 <p>The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate
@@ -455,15 +462,17 @@ related to certificates and key rings.</p>
 certificates.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">READY</span>
 
-<span class="o">**</span><span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">LISTRING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span> <span class="o">**</span>
+<span class="n">RACDCERT</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">LISTRING</span><span class="p">(</span><span class="n">VIRTRING</span><span class="p">)</span>
+
 <span class="n">Digital</span> <span class="n">ring</span> <span class="n">information</span> <span class="k">for</span> <span class="n">user</span> <span class="n">SPVIRSTC</span><span class="p">:</span>
-<span class="n">Ring</span><span class="p">:</span>
-<span class="o">&gt;</span><span class="n">VIRTRING</span><span class="o">&lt;</span>
-<span class="n">Certificate</span> <span class="n">Label</span> <span class="n">Name</span> <span class="n">Cert</span> <span class="n">Owner</span> <span class="n">USAGE</span> <span class="n">DEFAULT</span>
-<span class="o">--------------------------------</span> <span class="o">------------</span> <span class="o">--------</span> <span class="o">-------</span>
-<span class="n">VIRTEL</span> <span class="n">SSL</span> <span class="n">DEMO</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">PERSONAL</span> <span class="n">YES</span>
-<span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">signing</span> <span class="n">certificate</span> <span class="n">CERTAUTH</span> <span class="n">CERTAUTH</span> <span class="n">NO</span>
-<span class="n">SSL</span> <span class="n">client</span> <span class="n">certificate</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="n">CERTAUTH</span> <span class="n">NO</span>
+
+        <span class="n">Ring</span><span class="p">:</span>
+                <span class="o">&gt;</span><span class="n">VIRTRING</span><span class="o">&lt;</span>
+        <span class="n">Certificate</span> <span class="n">Label</span> <span class="n">Name</span> <span class="n">Cert</span> <span class="n">Owner</span> <span class="n">USAGE</span> <span class="n">DEFAULT</span>
+        <span class="o">--------------------------------</span> <span class="o">------------</span> <span class="o">--------</span> <span class="o">-------</span>
+        <span class="n">VIRTEL</span> <span class="n">SSL</span> <span class="n">DEMO</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">PERSONAL</span> <span class="n">YES</span>
+        <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">signing</span> <span class="n">certificate</span> <span class="n">CERTAUTH</span> <span class="n">CERTAUTH</span> <span class="n">NO</span>
+        <span class="n">SSL</span> <span class="n">client</span> <span class="n">certificate</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="p">)</span> <span class="n">CERTAUTH</span> <span class="n">NO</span>
 </pre></div>
 </div>
 <p><strong>Importing the certificate on the client work station.</strong></p>
@@ -476,8 +485,7 @@ run to import the certificate.</p>
 <p>At this stage we have completed our certificate generation. Through the
 use of the certificates we will be able to initiate a secure session
 (https) with an application and obtain a user id.</p>
-<p>**
-PassTicket support**</p>
+<p><strong>PassTicket support</strong></p>
 <p>The next step is to obtain a pass ticket in place of a password so that
 Virtel can log on to the target application and present a user id and
 password combination on behalf of the user. The following job will
@@ -485,67 +493,66 @@ enable PassTicket support for our target application SPCICSH and using
 user id SPVIRSTC, out Virtel server user id. This job will have to be
 customized accordingly:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
-<span class="o">//</span>\<span class="o">*</span> <span class="n">RDEFINE</span> <span class="n">FACILITY</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span>
-<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span>\<span class="o">*</span>
-<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> \<span class="o">*</span>
-<span class="n">SETROPTS</span> <span class="n">CLASSACT</span><span class="p">(</span><span class="n">APPL</span><span class="p">)</span>
-<span class="n">SETROPTS</span> <span class="n">CLASSACT</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
-<span class="n">SETROPTS</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
-<span class="n">SETROPTS</span> <span class="n">GENERIC</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
-<span class="n">RDEFINE</span> <span class="n">FACILITY</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span>
-<span class="n">RDELETE</span> <span class="n">PTKTDATA</span> <span class="n">SPCICSH</span>
-<span class="n">RDELETE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span>
-<span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
-<span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="o">**</span><span class="n">SPCICSH</span><span class="o">**</span> <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="o">+</span>
-<span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+<span class="o">//*</span> <span class="n">RDEFINE</span> <span class="n">FACILITY</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+ <span class="n">SETROPTS</span> <span class="n">CLASSACT</span><span class="p">(</span><span class="n">APPL</span><span class="p">)</span>
+ <span class="n">SETROPTS</span> <span class="n">CLASSACT</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
+ <span class="n">SETROPTS</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
+ <span class="n">SETROPTS</span> <span class="n">GENERIC</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
+ <span class="n">RDEFINE</span> <span class="n">FACILITY</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span>
+ <span class="n">RDELETE</span> <span class="n">PTKTDATA</span> <span class="n">SPCICSH</span>
+ <span class="n">RDELETE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span>
+ <span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+ <span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="o">**</span><span class="n">SPCICSH</span><span class="o">**</span> <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="o">+</span>
+        <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 <span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
-<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span>\<span class="o">*</span>
-<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> \<span class="o">*</span>
-<span class="n">PERMIT</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span>\ <span class="o">**</span><span class="n">SPVIRSTC</span><span class="o">**</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
-<span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
-<span class="n">SETROPTS</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
-<span class="n">SETROPTS</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+ <span class="n">PERMIT</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span>\ <span class="o">**</span><span class="n">SPVIRSTC</span><span class="o">**</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
+ <span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
+ <span class="n">SETROPTS</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
+ <span class="n">SETROPTS</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>In order for Virtel to generate PassTickets, you must also modify your
 VIRTCT to include the parameter PASSTCK=YES and then reassemble the
 VIRTCT. See chapter 6 of the Virtel Installation Guide for more details
 on the Virtel VIRTCT.</p>
-<p>**
-PAGENT Configuration**</p>
+<p><strong>PAGENT Configuration</strong></p>
 <p>To enable system SSL sessions to take place between the browser and the
 application we have to tell AT-TLS and SSL which sockets to intercept.
 This is configured in the pagent configuration file which can be found
 in /etc/pagent.conf. The two areas that we are interested in are the
 TTLSEnvironmentAction section and the TTLSRule section.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>TTLSEnvironmentAction **VIRTELenvir\_inSec**
-{
-HandshakeRole ServerWithClientAuth
-Trace 7
-TTLSKeyringParms
-{
-Keyring VIRTRING
-}
-TTLSEnvironmentAdvancedParms
-{
-SSLv2 On
-SSLv3 On
-TLSv1 On
-ClientAuthType SAFCheck
-}
-TTLSCipherParmsRef VIRTELcipher
-}
-…………
-…………
-…………
-TTLSRule VIRTELrule\_in\_eh
-{
-Jobname SPVIREH
-LocalPortRange 41002
-Direction Inbound
-TTLSGroupActionRef VIRTELgroup
-TTLSEnvironmentActionRef **VIRTELenvir\_inSec**
-}
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TTLSEnvironmentAction</span> <span class="n">VIRTELenvir_inSec</span>
+<span class="p">{</span>
+                <span class="n">HandshakeRole</span> <span class="n">ServerWithClientAuth</span>
+                <span class="n">Trace</span> <span class="mi">7</span>
+                <span class="n">TTLSKeyringParms</span>
+                <span class="p">{</span>
+                        <span class="n">Keyring</span> <span class="n">VIRTRING</span>
+                <span class="p">}</span>
+                <span class="n">TTLSEnvironmentAdvancedParms</span>
+                <span class="p">{</span>
+                        <span class="n">SSLv2</span> <span class="n">On</span>
+                        <span class="n">SSLv3</span> <span class="n">On</span>
+                        <span class="n">TLSv1</span> <span class="n">On</span>
+                        <span class="n">ClientAuthType</span> <span class="n">SAFCheck</span>
+                <span class="p">}</span>
+                <span class="n">TTLSCipherParmsRef</span> <span class="n">VIRTELcipher</span>
+<span class="p">}</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="n">TTLSRule</span> <span class="n">VIRTELrule_in_eh</span>
+<span class="p">{</span>
+        <span class="n">Jobname</span>                     <span class="n">SPVIREH</span>
+        <span class="n">LocalPortRange</span>              <span class="mi">41002</span>
+        <span class="n">Direction</span>                   <span class="n">Inbound</span>
+        <span class="n">TTLSGroupActionRef</span>          <span class="n">VIRTELgroup</span>
+        <span class="n">TTLSEnvironmentActionRef</span>    <span class="n">VIRTELenvir_inSec</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The TTLS Rule identifies Virtel Started task name via the Jobname
@@ -564,9 +571,10 @@ client certificates –</p>
 you can use to modify accordingly to define the above SSL sections.</p>
 <p>To refresh a pagent.conf profile after you have made changes you can
 issue the following z/OS command:-</p>
-<p>F PAGENT,REFRESH</p>
-<p>**
-Virtel Configuration**</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">PAGENT</span><span class="p">,</span><span class="n">REFRESH</span>
+</pre></div>
+</div>
+<p><strong>Virtel Configuration</strong></p>
 <p>The final part in our configuration is to configure Virtel to use SSL to
 obtain the user id and PassTicket support to create a password. We
 configure Virtel in the transaction associated with our target
@@ -581,13 +589,14 @@ has obtained.</p>
 <p>With this configuration we can logon to our CICS application without the
 user presenting any user id or password. This is very much like the
 Express Logon Facility implemented in our Telnet clients.</p>
-<p>**
-Logon Example **</p>
+<p><strong>Logon Example</strong></p>
 <p>In the following screen shots we demonstrate logging into a CICS
 application via a secure session (https) without specifying any user
 id/password. Our initial URL is</p>
-<p><a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the
-IP address with your own installation IP address or domain name.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">CICS</span>
+</pre></div>
+</div>
+<p>You will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image4" src="../../../_images/image54.png" /></p>
 <p>We are presented with a «&nbsp;&nbsp;Select a certificate&nbsp;» window from the
 browser requesting the certificate we wish to user for authenication
@@ -613,12 +622,14 @@ configuration errors.</p>
 </ol>
 <p>Issue the following z/OS command – D TCPIP,,N,TTLS</p>
 <p>The response should be :-</p>
-<p>EZD0101I NETSTAT CS V1R13 TCPIP 706</p>
-<p>TTLSGRPACTION GROUP ID CONNS</p>
-<p>VIRTELGROUP 00000002 3</p>
-<p>1 OF 1 RECORDS DISPLAYED</p>
-<p>END OF THE REPORT</p>
-<ol class="arabic simple">
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EZD0101I</span> <span class="n">NETSTAT</span> <span class="n">CS</span> <span class="n">V1R13</span> <span class="n">TCPIP</span> <span class="mi">706</span>
+<span class="n">TTLSGRPACTION</span>                       <span class="n">GROUP</span> <span class="n">ID</span>                <span class="n">CONNS</span>
+<span class="n">VIRTELGROUP</span>                         <span class="mi">00000002</span>                    <span class="mi">3</span>
+<span class="mi">1</span> <span class="n">OF</span> <span class="mi">1</span> <span class="n">RECORDS</span> <span class="n">DISPLAYED</span>
+<span class="n">END</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">REPORT</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li>PAGENT return codes</li>
 </ol>
 <p>Common session startup/handshake errors are reported through messqge
@@ -630,14 +641,14 @@ Diagnosis Guide. In the following the 5013 suggests that the browser has
 sent clear text; in other words, http was used instead of https in the
 URL.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">367</span> <span class="n">EZD1281I</span> <span class="n">TTLS</span> <span class="n">Map</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span> <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
-<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">TYPE</span><span class="p">:</span> <span class="n">InBound</span> <span class="n">STATUS</span><span class="p">:</span> <span class="n">Enabled</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule</span>\<span class="n">_in</span>\<span class="n">_eh</span> <span class="n">ACTIONS</span><span class="p">:</span> <span class="n">VIRTELgroup</span>
-<span class="n">VIRTELenvir</span>\<span class="n">_inSec</span> \<span class="o">*</span>\<span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="n">A</span>\<span class="o">*</span>\<span class="o">*</span>
+<span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span> <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">TYPE</span><span class="p">:</span> <span class="n">InBound</span> <span class="n">STATUS</span><span class="p">:</span> <span class="n">Enabled</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span> <span class="n">ACTIONS</span><span class="p">:</span> <span class="n">VIRTELgroup</span>
+<span class="n">VIRTELenvir_inSec</span> <span class="o">**</span><span class="n">N</span><span class="o">/</span><span class="n">A</span><span class="o">**</span>
 <span class="n">BPXF024I</span> <span class="p">(</span><span class="n">TCPIP</span><span class="p">)</span> <span class="n">Oct</span> <span class="mi">7</span> <span class="mi">13</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TTLS</span> <span class="mi">83951769</span> <span class="p">:</span> <span class="mi">15</span><span class="p">:</span><span class="mi">33</span><span class="p">:</span><span class="mi">08</span> <span class="n">TCPIP</span> <span class="mi">368</span>
 <span class="n">EZD1286I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">GRPID</span><span class="p">:</span> <span class="mi">00000002</span> <span class="n">ENVID</span><span class="p">:</span> <span class="mi">00000000</span> <span class="n">CONNID</span><span class="p">:</span> <span class="mi">000006</span><span class="n">A2</span>
 <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span> <span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span> <span class="n">JOBNAME</span><span class="p">:</span>
-<span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule</span>\<span class="n">_in</span>\<span class="n">_eh</span> <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span>
+<span class="n">SPVIREH</span> <span class="n">USERID</span><span class="p">:</span> <span class="n">SPVIRSTC</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span> <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span>
 <span class="n">Decryption</span>
-<span class="o">**</span><span class="n">EZD1287I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span> <span class="n">Decryption</span> <span class="mi">369</span> <span class="o">**</span>
+<span class="n">EZD1287I</span> <span class="n">TTLS</span> <span class="n">Error</span> <span class="n">RC</span><span class="p">:</span> <span class="mi">5003</span> <span class="n">Data</span> <span class="n">Decryption</span> <span class="mi">369</span>
 <span class="n">LOCAL</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="o">..</span><span class="mi">41002</span>
 <span class="n">REMOTE</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.62</span><span class="o">..</span><span class="mi">57545</span>
 <span class="n">JOBNAME</span><span class="p">:</span> <span class="n">SPVIREH</span> <span class="n">RULE</span><span class="p">:</span> <span class="n">VIRTELrule_in_eh</span>
@@ -645,21 +656,56 @@ URL.</p>
 </pre></div>
 </div>
 <p>Common PAGENT return codes:-</p>
-<p>7 No certificate</p>
-<p>8 Certificate not trusted</p>
-<p>109 No CA certificates on ring</p>
-<p>202 Keyring does not exists</p>
-<p>401 Certificate expired</p>
-<p>402/12 Client and server cannot agree cipher suite</p>
-<p>416 Virtel does not have permission to list keyring</p>
-<p>431 Certificate is revoked</p>
-<p>434 Certificate key not compatible with cipher suite</p>
-<p>435 Certificate authority unknown</p>
-<blockquote>
-<div>5003 Browser sent clear text.</div></blockquote>
-<ol class="arabic simple">
-<li>Virtel messages</li>
-</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Code</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>7</td>
+<td>No certificate</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>Certificate not trusted</td>
+</tr>
+<tr class="row-even"><td>109</td>
+<td>No CA certificates on ring</td>
+</tr>
+<tr class="row-odd"><td>202</td>
+<td>Keyring does not exists</td>
+</tr>
+<tr class="row-even"><td>401</td>
+<td>Certificate expired</td>
+</tr>
+<tr class="row-odd"><td>402/12</td>
+<td>Client and server cannot agree cipher suite</td>
+</tr>
+<tr class="row-even"><td>416</td>
+<td>Virtel does not have permission to list keyring</td>
+</tr>
+<tr class="row-odd"><td>431</td>
+<td>Certificate is revoked</td>
+</tr>
+<tr class="row-even"><td>434</td>
+<td>Certificate key not compatible with cipher suite</td>
+</tr>
+<tr class="row-odd"><td>435</td>
+<td>Certificate authority unknown</td>
+</tr>
+<tr class="row-even"><td>5003</td>
+<td>Browser sent clear text.</td>
+</tr>
+<tr class="row-odd"><td>5006</td>
+<td>SSL failed to initialize. Check RACF SSLSETUP job.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Virtel messages</strong></p>
 <p>VIRHT57E LINE IS NOT SET UP FOR HTTPS</p>
 <blockquote>
 <div><p>This means that the browser has sent encypted text (https) but that
@@ -725,7 +771,7 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 <ul>
 <li><p class="first">VIRTEL Installation Guide</p>
 <blockquote>
-<div><p>PASSTCK parameter Page 66</p>
+<div><p><a class="reference internal" href="../../virtel/Virtel456IG/Installation_Guide.html#virt456ig-passtck"><span class="std std-ref">PASSTCK parameter</span></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">VIRTEL Connectivity Reference</p>
@@ -736,7 +782,7 @@ the browser, as well as the AT-TLS pagent.conf file.</p>
 </li>
 <li><p class="first">VIRTEL Web Access Guide</p>
 <blockquote>
-<div><p>Security – Data encryption by SSL Page 244</p>
+<div><p><a class="reference internal" href="../../virtel/Virtel456UG/User_Guide.html#v456ug-data-encryption-ssl"><span class="std std-ref">Security – Data encryption by SSL</span></a></p>
 </div></blockquote>
 </li>
 </ul>

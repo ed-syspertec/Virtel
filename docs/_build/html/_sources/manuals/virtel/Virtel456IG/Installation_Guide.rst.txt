@@ -3575,6 +3575,8 @@ This parameter defines the data which is passed to OTMA/IMSConnect in the header
 
 **n** - The size of the packets used for transfer over the packet switched network.
 
+.. _#_VIRT456IG_passtck:
+
 6.2.75. PASSTCK parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
