@@ -124,22 +124,22 @@ allocated to the pre-production directory.
 
 ::
 
-   ....
-   PASSTCK=YES, *
-   UFILE1=(SAMPTRSF,ACBH1,0,10,01),                       *
-   UFILE2=(HTMLTRSF,ACBH2,0,10,01),                       *
-   UFILE3=(SCENTRSF,ACBH3,0,10,01),                       *
-   UFILE4=(SCENPROD,ACBH4,0,10,01),                       *
-   GATE=GENERAL, *
-   ....
-   ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
-   STRNO=3
-   ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
-   STRNO=3
-   ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR), *
-   STRNO=3
-   ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR), *
-   STRNO=3 
+    ....
+         PASSTCK=YES, *
+         UFILE1=(SAMPTRSF,ACBH1,0,10,01),                       *
+         UFILE2=(HTMLTRSF,ACBH2,0,10,01),                       *
+         UFILE3=(SCENTRSF,ACBH3,0,10,01),                       *
+         UFILE4=(SCENPROD,ACBH4,0,10,01),                       *
+         GATE=GENERAL, *
+    ....
+   ACBH1 ACB AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR,OUT,LSR),   *
+         STRNO=3
+   ACBH2 ACB AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR,OUT,LSR),   *
+         STRNO=3
+   ACBH3 ACB AM=VSAM,DDNAME=SCENTRSF,MACRF=(SEQ,DIR,OUT,LSR),   *
+         STRNO=3
+   ACBH4 ACB AM=VSAM,DDNAME=SCENPROD,MACRF=(SEQ,DIR,OUT,LSR),   *
+         STRNO=3 
 
 **Defining the pre-production directory**
 
@@ -157,8 +157,7 @@ We have set the download attribute only as we do not want developers
 inadvertently uploading to this TRSF pre-production file. We only want
 to be able to copy elements from the related SCN-DIR to SCNP-DIR.
 
-**
-Copy members**
+**Copy members**
 
 The next stage is to select members from our development directory and
 to copy them to our pre-production TRSF file. Again we use the directory
@@ -206,8 +205,7 @@ This bulk copy facility could allow developers to *copy-en-masse* the
 pre-production TRSF file. Unlike the individual copy facility it
 doesn’t’ provided any rename capability.
 
-**
-Exporting directory list**
+**Exporting directory list**
 
 The Directory list function also has an export facility whereby you can
 export the list of members in the selected directory to an EXCEL
@@ -281,10 +279,10 @@ For ZAMVS2 we run the following JCL:-
    //*******************************************************************/
    //DELETE EXEC PGM=IDCAMS
    //SYSPRINT DD SYSOUT=*
-   DELETE SP000.SPVIR2A.TRSF.GDG GDG
-   DELETE SP000.SPVIR2A.TRSF.GDG.DSCB NVSAM
-   DELETE SP000.SPVIR2A.PEND.GDG NVSAM
-   SET MAXCC=0
+      DELETE SP000.SPVIR2A.TRSF.GDG GDG
+      DELETE SP000.SPVIR2A.TRSF.GDG.DSCB NVSAM
+      DELETE SP000.SPVIR2A.PEND.GDG NVSAM
+      SET MAXCC=0
    //ALLOC1 EXEC PGM=IEFBR14
    //FILE DD DSN=SP000.SPVIR2A.TRSF.GDG.DSCB,
    // UNIT=3390,DISP=(NEW,CATLG),
@@ -298,7 +296,7 @@ For ZAMVS2 we run the following JCL:-
    //ALLOC2 EXEC PGM=IDCAMS
    //SYSPRINT DD SYSOUT=*
    //SYSIN DD *
-   DEF GDG(NAME(SP000.SPVIR2A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)
+      DEF GDG(NAME(SP000.SPVIR2A.TRSF.GDG) LIMIT(5) SCRATCH NOEMPTY)
    /*
 
 These GDG files will hold the unloaded TRSF file sets. We have establish
@@ -307,7 +305,7 @@ that runs at the production centre ZAMVS2 includes a holding file. This
 is used by the restore process to provide independence between
 development and production centre GDGs.
 
-Process overview
+**Process overview**
 
 1. A daily job is run in ZAMVS1 to dump the current SPVIR1A TRSF files
    to a GDG. This is run after the development VIRTEL SPVIR1A has been
@@ -339,8 +337,7 @@ Process overview
    our production environment provides 5 weekly restore points and are
    development GDG 5 daily restore points.
 
-**
-The Development Process**
+**The Development Process**
 
 **TRSFMNT2**
 
@@ -418,12 +415,12 @@ to the pending file.
 ::
 
    //*******************************************************************/
-   //* */
-   //* INVOKE BY DEVELOPMENT FTP JOB TRSFMNT2. THIS JOB RUNS ON THE */
+   //*                                                                 */
+   //* INVOKE BY DEVELOPMENT FTP JOB TRSFMNT2. THIS JOB RUNS ON THE    */
    //* PRODUCTION SYSTEM TO PULL OVER THE LATEST TRSF FILESET UPDATES. */
-   //* */
-   //* RUN ON PRODUCTION TO OBTAIN TRSF UPDATES FROM DEVELOPMENT */
-   //* */
+   //*                                                                 */
+   //* RUN ON PRODUCTION TO OBTAIN TRSF UPDATES FROM DEVELOPMENT       */
+   //*                                                                 */
    //*******************************************************************/
    //FTP EXEC PGM=FTP,REGION=8M,PARM='ZAMVS1 (EXIT'
    //OUTPUT DD SYSOUT=*
@@ -581,19 +578,19 @@ files to production dataset names.
 
 ::
 
-   RESTORE DS(INCLUDE( -
-   SP000.SPVIR1A.**.PROD.TRSF -
-   ) ) -
-   RENAMEU(SP000.SPVIR1A.**,SP000.SPVIR2A.**) -
-   ADMIN TOL(ENQF) -
-   OUTDD(DISK) INDD(TRSFFILE)
+      RESTORE DS(INCLUDE( -
+      SP000.SPVIR1A.**.PROD.TRSF -
+      ) ) -
+      RENAMEU(SP000.SPVIR1A.**,SP000.SPVIR2A.**) -
+      ADMIN TOL(ENQF) -
+      OUTDD(DISK) INDD(TRSFFILE)
 
 **Control Statements TRSFDEL**
 
 ::
 
-   DELETE SP000.SPVIR2A.SCENARIO.PROD.TRSF
-   SET MAXCC=0
+      DELETE SP000.SPVIR2A.SCENARIO.PROD.TRSF
+      SET MAXCC=0
 
 .. |image0| image:: images/media/image1.png
    :width: 6.30000in

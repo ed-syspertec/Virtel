@@ -1,10 +1,11 @@
+.. _tn201501:
+
 Dynamic Directory Interface (DDI)
 =================================
 
 In this newsletter we discuss Virtel’s Dynamic Directory Interface, or
 DDI and the new Administration GUI panel that can be used to perform
-Virtel configuration. Some of these features are only available with
-Virtel V4.54.
+Virtel configuration. Some of these features are only available with Virtel V4.54 and subsequent releases.
 
 **Virtel Administrators**
 
@@ -15,7 +16,7 @@ FACILITY profile VIRTEL.\* would be considered a super user or top level
 administrator as they have total access to all VIRTEL transactions.
 Likewise an administrator who only requires responsibility for managing
 DDI would be restricted to a subset of Virtel transactions through RACF
-profiles. See *Chapter 6 Security* in the *VIRTEL Installation guide*
+profiles. See the chapter on :ref:`“Security” <#_V456IG_security>` in the *VIRTEL Installation guide*
 for more details. By default a user has no access to any of the
 administration transactions.
 
@@ -23,7 +24,7 @@ Dynamic directories use the symbolics %user% and %group% to determine
 the directory name. Static directories, as defined in the ARBO load
 configuration use the names USR-DIR, GRP-DIR and GLB-DIR.
 
---Administration with Admin (HTML)--
+**Administration with Admin (HTML)**
 
 Virtel now supports a GUI Administration from the Portal from where
 configuration work can be performed. Selecting the Admin (HTML) will
@@ -97,7 +98,7 @@ displayed. Selecting “YES” will invoke the operation. In the above
 example we are copying elements from the CLI-DIR to the GLB-DIR
 directory.
 
---Dynamic Directory Interface--
+**Dynamic Directory Interface**
 
 The DDI interface is intended for Virtel administrators who will manage
 and perform Virtel configuration work on the Virtel elements held within
@@ -113,15 +114,15 @@ design it might be wise to consider DDI as a hierarchical structure
 although, as mentioned before, this is not enforced by Virtel. A DDI
 layout could look something like:-
 
-**Global/Public**
+::
 
-**\|**
-
-**Group A Group B Group C**
-
-**\| \| \|**
-
-**User01 User02 User03 User05 User07 User08**
+                                                 Global/Public
+                                                       |
+                                                       | 
+                          Group A ----------------- Group B -------------------- Group C
+                            |                          |                           |
+                            |                          |                           |
+                      User01 User02              User03 User05               User07 User08
 
 **Setting up to use DDI**
 
@@ -130,149 +131,95 @@ of the SAMPLIB(ARBOLOAD) member. You must customize the JCL and change
 the SET VMACROS=NO statement to SET VMACROS=YES to install the DDI
 constructs to your ARBO file.
 
-***Note: Release V4.53 users of Macros***
+.. note::
 
-*For users who implemented DDI in Virtel V4.53 (VMACROS=YES on the
-ARBOLOAD) there are some changes that have to be made to the ARBO file
-to work with DDI as distributed with V4.54. New constructs must be added
-to the ARBO file and previous DDI constructs must be removed:-*
+  *Release V4.53 users of Macros*
+  For users who implemented DDI in Virtel V4.53 (VMACROS=YES on the
+  ARBOLOAD) there are some changes that have to be made to the ARBO file
+  to work with DDI as distributed with V4.54. New constructs must be added
+  to the ARBO file and previous DDI constructs must be removed:-
 
-1. *Secure a copy of your macros.json from the /maclib directories.*
+  1. *Backup*
+      Secure a copy of your macros.json from the /maclib directories.
 
-2. *Remove*
+  2. *Remove*
+      DDI constructs that used /maclib directory. 05A, 05U, 05G.
 
-    DDI constructs that used /maclib directory. 05A, 05U, 05G.
+      These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
+      portal.
 
-    These were allocated a transaction range of W2H-05\* (WEBHOST) and CLI-05\* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
-    portal.
+  1. *Add*
+      Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.
 
-1. *Add*
+      See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.
 
-    Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03\* and W2H-03\* constructs.
-
-    See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.
-
-    If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface. 
+      If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface. 
 
 **RACF Profiles**
 
 RACF profiles must also be defined to restrict DDI usage to Virtel
 administrators. In our example VIRTEL administrators are defined in the
-RACF group SPGPTECH.
+RACF group SPGPTECH. See the JCL below:-
 
-//\*---------------------------------------------------------\*
+::
 
-//\* RACF : AUTHORIZATIONS FOR VIRTEL DDI \*
-
-//\*---------------------------------------------------------\*
-
-//STEP1 EXEC PGM=IKJEFT01,DYNAMNBR=20
-
-//SYSTSPRT DD SYSOUT=\*
-
-//SYSTSIN DD \*
-
-/\*-------------------------------------------------------\*/
-
-/\* Setup for DDI \*/
-
-/\*-------------------------------------------------------\*/
-
-RDEF FACILITY SPVIRPLI.W2H-03G UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.W2H-03U UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.W2H-03A UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.CLI-03G UACC(NONE) /\* CLI \*/
-
-RDEF FACILITY SPVIRPLI.CLI-03U UACC(NONE) /\* CLI \*/
-
-RDEF FACILITY SPVIRPLI.CLI-03A UACC(NONE) /\* CLI \*/
-
-RDEF FACILITY SPVIRPLI.W2H-07 UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.W2H-66 UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.W2H-80U UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.W2H-80G UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.W2H-80A UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.USR-DIR UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.GRP-DIR UACC(NONE) /\* W2H \*/
-
-RDEF FACILITY SPVIRPLI.GLB-DIR UACC(NONE) /\* W2H \*/
-
-PE SPVIRPLI.W2H-03G CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-03U CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-03A CL(FACILITY) RESET
-
-PE SPVIRPLI.CLI-03G CL(FACILITY) RESET
-
-PE SPVIRPLI.CLI-03U CL(FACILITY) RESET
-
-PE SPVIRPLI.CLI-03A CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-07 CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-66 CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-80U CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-80G CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-80A CL(FACILITY) RESET
-
-PE SPVIRPLI.USR-DIR CL(FACILITY) RESET
-
-PE SPVIRPLI.GRP-DIR CL(FACILITY) RESET
-
-PE SPVIRPLI.GLB-DIR CL(FACILITY) RESET
-
-PE SPVIRPLI.W2H-07 CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.W2H-66 CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.W2H-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.W2H-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.W2H-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.CLI-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.CLI-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.CLI-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.W2H-80U CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.W2H-80G CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.W2H-80A CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.USR-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.GRP-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-PE SPVIRPLI.GLB-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
-
-/\*-------------------------------------------------------\*/
-
-/\* REFRESH THE RACF PROFILES \*/
-
-/\*-------------------------------------------------------\*/
-
-SETR REFRESH RACLIST(FACILITY)
-
-/\*
-
-//
+  //*---------------------------------------------------------*
+  //* RACF : AUTHORIZATIONS FOR VIRTEL DDI *
+  //*---------------------------------------------------------*
+  //STEP1 EXEC PGM=IKJEFT01,DYNAMNBR=20
+  //SYSTSPRT DD SYSOUT=*
+  //SYSTSIN DD *
+  /*-------------------------------------------------------*/
+  /* Setup for DDI */
+  /*-------------------------------------------------------*/
+    RDEF FACILITY SPVIRPLI.W2H-03G UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-03U UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-03A UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.CLI-03G UACC(NONE) /* CLI */
+    RDEF FACILITY SPVIRPLI.CLI-03U UACC(NONE) /* CLI */
+    RDEF FACILITY SPVIRPLI.CLI-03A UACC(NONE) /* CLI */
+    RDEF FACILITY SPVIRPLI.W2H-07 UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-66 UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-80U UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-80G UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-80A UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.USR-DIR UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.GRP-DIR UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.GLB-DIR UACC(NONE) /* W2H */
+    PE SPVIRPLI.W2H-03G CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-03U CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-03A CL(FACILITY) RESET
+    PE SPVIRPLI.CLI-03G CL(FACILITY) RESET
+    PE SPVIRPLI.CLI-03U CL(FACILITY) RESET
+    PE SPVIRPLI.CLI-03A CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-07 CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-66 CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-80U CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-80G CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-80A CL(FACILITY) RESET
+    PE SPVIRPLI.USR-DIR CL(FACILITY) RESET
+    PE SPVIRPLI.GRP-DIR CL(FACILITY) RESET
+    PE SPVIRPLI.GLB-DIR CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-07 CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-66 CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.CLI-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.CLI-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.CLI-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-80U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-80G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-80A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.USR-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.GRP-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.GLB-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    /*-------------------------------------------------------*/
+    /* REFRESH THE RACF PROFILES */
+    /*-------------------------------------------------------*/
+    SETR REFRESH RACLIST(FACILITY)
+  /*
+  //
 
 **Capability Access.**
 
@@ -303,16 +250,15 @@ group directories:-
 
 |image8|
 
-**
-Accessing DDI **
+**Accessing HTML DDI**
 
-Access to DDI is through the Virtel Administration portal Macros and
-add-ons section. The Virtel Portal is normally accessible via the url
-http://my.virtel.com:41001 where 41001 is the port defined for the
-W-HTTP line associated with entry point WEB2HOST.
+Access to HTML DDI is through the Virtel Administration portal. The Virtel Portal is normally accessible via the url:-
 
-When you access the Virtel Portal you are presented with the following
-screen:
+::
+
+  http://my.virtel.com:41001 
+
+Where 41001 is the port defined for the W-HTTP line associated with entry point WEB2HOST. When you access the Virtel Portal you are presented with the following screen:
 
 |image9|
 
@@ -390,9 +336,11 @@ GROUP directory by perform an Add function.
 The download option enables the download of a DDI element to the default
 download directory of the associated browser.
 
-Note: Do not download a Virtel Template (HTML file with imbedded VIRTEL
-tags). The tags will be interpreted before the download destroying the
-original source version.
+.. note::
+
+  Do not download a Virtel Template (HTML file with imbedded VIRTEL
+  tags). The tags will be interpreted before the download destroying the
+  original source version.
 
 .. |image0| image:: images/media/image1.png
    :width: 6.30000in

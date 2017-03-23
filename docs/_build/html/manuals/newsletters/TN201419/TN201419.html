@@ -264,22 +264,22 @@ point to this VSAM TRSF file. We also need to a VSAM definition to the
 VIRTEL TCT and reassemble. Two definitions are required in the TCT. Once
 this has been done VIRTEL can be restarted and the VSAM file can be
 allocated to the pre-production directory.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">....</span>
-<span class="n">PASSTCK</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="o">*</span>
-<span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
-<span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
-<span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">SCENTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
-<span class="n">UFILE4</span><span class="o">=</span><span class="p">(</span><span class="n">SCENPROD</span><span class="p">,</span><span class="n">ACBH4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
-<span class="n">GATE</span><span class="o">=</span><span class="n">GENERAL</span><span class="p">,</span> <span class="o">*</span>
-<span class="o">....</span>
-<span class="n">ACBH1</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
-<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">ACBH2</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
-<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">ACBH3</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SCENTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
-<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">ACBH4</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SCENPROD</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span> <span class="o">*</span>
-<span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">....</span>
+      <span class="n">PASSTCK</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="o">*</span>
+      <span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+      <span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+      <span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">SCENTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+      <span class="n">UFILE4</span><span class="o">=</span><span class="p">(</span><span class="n">SCENPROD</span><span class="p">,</span><span class="n">ACBH4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
+      <span class="n">GATE</span><span class="o">=</span><span class="n">GENERAL</span><span class="p">,</span> <span class="o">*</span>
+ <span class="o">....</span>
+<span class="n">ACBH1</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>   <span class="o">*</span>
+      <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH2</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>   <span class="o">*</span>
+      <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH3</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SCENTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>   <span class="o">*</span>
+      <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH4</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SCENPROD</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>   <span class="o">*</span>
+      <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
 </pre></div>
 </div>
 <p><strong>Defining the pre-production directory</strong></p>
@@ -294,8 +294,7 @@ created and added to the VIRTEL started procedure.</p>
 <p>We have set the download attribute only as we do not want developers
 inadvertently uploading to this TRSF pre-production file. We only want
 to be able to copy elements from the related SCN-DIR to SCNP-DIR.</p>
-<p>**
-Copy members**</p>
+<p><strong>Copy members</strong></p>
 <p>The next stage is to select members from our development directory and
 to copy them to our pre-production TRSF file. Again we use the directory
 management tool. In the example below we copy the .390 file #DOPSSO.390
@@ -327,8 +326,7 @@ copy all selected icon. The first icon on the right hands</p>
 <p>This bulk copy facility could allow developers to <em>copy-en-masse</em> the
 pre-production TRSF file. Unlike the individual copy facility it
 doesn’t’ provided any rename capability.</p>
-<p>**
-Exporting directory list**</p>
+<p><strong>Exporting directory list</strong></p>
 <p>The Directory list function also has an export facility whereby you can
 export the list of members in the selected directory to an EXCEL
 spreadsheet. This function is invoked by pressing the EXCEL export icon
@@ -388,10 +386,10 @@ ZAMVS1 and ZAMVS2. For ZAMVS1 we run the following JCL:-</p>
 <span class="o">//*******************************************************************/</span>
 <span class="o">//</span><span class="n">DELETE</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
 <span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
-<span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span> <span class="n">GDG</span>
-<span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="o">.</span><span class="n">DSCB</span> <span class="n">NVSAM</span>
-<span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">PEND</span><span class="o">.</span><span class="n">GDG</span> <span class="n">NVSAM</span>
-<span class="n">SET</span> <span class="n">MAXCC</span><span class="o">=</span><span class="mi">0</span>
+   <span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span> <span class="n">GDG</span>
+   <span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="o">.</span><span class="n">DSCB</span> <span class="n">NVSAM</span>
+   <span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">PEND</span><span class="o">.</span><span class="n">GDG</span> <span class="n">NVSAM</span>
+   <span class="n">SET</span> <span class="n">MAXCC</span><span class="o">=</span><span class="mi">0</span>
 <span class="o">//</span><span class="n">ALLOC1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
 <span class="o">//</span><span class="n">FILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="o">.</span><span class="n">DSCB</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="mi">3390</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">NEW</span><span class="p">,</span><span class="n">CATLG</span><span class="p">),</span>
@@ -405,7 +403,7 @@ ZAMVS1 and ZAMVS2. For ZAMVS1 we run the following JCL:-</p>
 <span class="o">//</span><span class="n">ALLOC2</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
 <span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
-<span class="n">DEF</span> <span class="n">GDG</span><span class="p">(</span><span class="n">NAME</span><span class="p">(</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="p">)</span> <span class="n">LIMIT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="n">SCRATCH</span> <span class="n">NOEMPTY</span><span class="p">)</span>
+   <span class="n">DEF</span> <span class="n">GDG</span><span class="p">(</span><span class="n">NAME</span><span class="p">(</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">TRSF</span><span class="o">.</span><span class="n">GDG</span><span class="p">)</span> <span class="n">LIMIT</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="n">SCRATCH</span> <span class="n">NOEMPTY</span><span class="p">)</span>
 <span class="o">/*</span>
 </pre></div>
 </div>
@@ -414,7 +412,7 @@ a GDG cycle of 5 for recovery purposes. Also note that the setup job
 that runs at the production centre ZAMVS2 includes a holding file. This
 is used by the restore process to provide independence between
 development and production centre GDGs.</p>
-<p>Process overview</p>
+<p><strong>Process overview</strong></p>
 <ol class="arabic simple">
 <li>A daily job is run in ZAMVS1 to dump the current SPVIR1A TRSF files
 to a GDG. This is run after the development VIRTEL SPVIR1A has been
@@ -442,8 +440,7 @@ production GDG (-1) is used to restore the TRSF file set. Effectively
 our production environment provides 5 weekly restore points and are
 development GDG 5 daily restore points.</li>
 </ol>
-<p>**
-The Development Process**</p>
+<p><strong>The Development Process</strong></p>
 <p><strong>TRSFMNT2</strong></p>
 <p>Job TRSFMNT2 – Daily job to back up TRSF file sets at development site.
 The job consists of three steps:-</p>
@@ -505,12 +502,12 @@ centre.</p>
 <p>&#8216;FTP Get&#8217; the latest pre-production TRSF file set GDG from ZAMVS1 and copy
 to the pending file.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
-<span class="o">//*</span> <span class="o">*/</span>
-<span class="o">//*</span> <span class="n">INVOKE</span> <span class="n">BY</span> <span class="n">DEVELOPMENT</span> <span class="n">FTP</span> <span class="n">JOB</span> <span class="n">TRSFMNT2</span><span class="o">.</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">RUNS</span> <span class="n">ON</span> <span class="n">THE</span> <span class="o">*/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">INVOKE</span> <span class="n">BY</span> <span class="n">DEVELOPMENT</span> <span class="n">FTP</span> <span class="n">JOB</span> <span class="n">TRSFMNT2</span><span class="o">.</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">RUNS</span> <span class="n">ON</span> <span class="n">THE</span>    <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">PRODUCTION</span> <span class="n">SYSTEM</span> <span class="n">TO</span> <span class="n">PULL</span> <span class="n">OVER</span> <span class="n">THE</span> <span class="n">LATEST</span> <span class="n">TRSF</span> <span class="n">FILESET</span> <span class="n">UPDATES</span><span class="o">.</span> <span class="o">*/</span>
-<span class="o">//*</span> <span class="o">*/</span>
-<span class="o">//*</span> <span class="n">RUN</span> <span class="n">ON</span> <span class="n">PRODUCTION</span> <span class="n">TO</span> <span class="n">OBTAIN</span> <span class="n">TRSF</span> <span class="n">UPDATES</span> <span class="n">FROM</span> <span class="n">DEVELOPMENT</span> <span class="o">*/</span>
-<span class="o">//*</span> <span class="o">*/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
+<span class="o">//*</span> <span class="n">RUN</span> <span class="n">ON</span> <span class="n">PRODUCTION</span> <span class="n">TO</span> <span class="n">OBTAIN</span> <span class="n">TRSF</span> <span class="n">UPDATES</span> <span class="n">FROM</span> <span class="n">DEVELOPMENT</span>       <span class="o">*/</span>
+<span class="o">//*</span>                                                                 <span class="o">*/</span>
 <span class="o">//*******************************************************************/</span>
 <span class="o">//</span><span class="n">FTP</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">FTP</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">8</span><span class="n">M</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;ZAMVS1 (EXIT&#39;</span>
 <span class="o">//</span><span class="n">OUTPUT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>

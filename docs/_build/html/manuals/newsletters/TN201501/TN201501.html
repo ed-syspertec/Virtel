@@ -96,7 +96,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2015</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Dynamic Directory Interface (DDI)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201504/TN201504.html">Running multiple instances of Virtel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201505/TN201505.html">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201505/TN201505.html">Virtel Macros in Virtel 4.53</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201506/TN201506.html">An example of using web services with Virtel Integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201507/TN201507.html">Customising Virtel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201515/TN201515.html">Using Virtel as a Secure Single Access Control Point</a></li>
@@ -158,11 +158,10 @@
            <div itemprop="articleBody">
             
   <div class="section" id="dynamic-directory-interface-ddi">
-<h1>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h1>
+<span id="tn201501"></span><h1>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h1>
 <p>In this newsletter we discuss Virtel’s Dynamic Directory Interface, or
 DDI and the new Administration GUI panel that can be used to perform
-Virtel configuration. Some of these features are only available with
-Virtel V4.54.</p>
+Virtel configuration. Some of these features are only available with Virtel V4.54 and subsequent releases.</p>
 <p><strong>Virtel Administrators</strong></p>
 <p>The DDI and administration features should only be available to a Virtel
 Administrator. A Virtel Administrator is defined through security
@@ -171,13 +170,13 @@ FACILITY profile VIRTEL.* would be considered a super user or top level
 administrator as they have total access to all VIRTEL transactions.
 Likewise an administrator who only requires responsibility for managing
 DDI would be restricted to a subset of Virtel transactions through RACF
-profiles. See <em>Chapter 6 Security</em> in the <em>VIRTEL Installation guide</em>
+profiles. See the chapter on <a class="reference internal" href="../../virtel/Virtel456IG/Installation_Guide.html#v456ig-security"><span class="std std-ref">“Security”</span></a> in the <em>VIRTEL Installation guide</em>
 for more details. By default a user has no access to any of the
 administration transactions.</p>
 <p>Dynamic directories use the symbolics %user% and %group% to determine
 the directory name. Static directories, as defined in the ARBO load
 configuration use the names USR-DIR, GRP-DIR and GLB-DIR.</p>
-<p>&#8211;Administration with Admin (HTML)&#8211;</p>
+<p><strong>Administration with Admin (HTML)</strong></p>
 <p>Virtel now supports a GUI Administration from the Portal from where
 configuration work can be performed. Selecting the Admin (HTML) will
 display the home administration panel.</p>
@@ -227,7 +226,7 @@ for the operation can be selected.</p>
 displayed. Selecting “YES” will invoke the operation. In the above
 example we are copying elements from the CLI-DIR to the GLB-DIR
 directory.</p>
-<p>&#8211;Dynamic Directory Interface&#8211;</p>
+<p><strong>Dynamic Directory Interface</strong></p>
 <p>The DDI interface is intended for Virtel administrators who will manage
 and perform Virtel configuration work on the Virtel elements held within
 a user, group and global directory structure defined within DDI. These
@@ -241,102 +240,117 @@ free to copy elements into any DDI structure level. For purposes of
 design it might be wise to consider DDI as a hierarchical structure
 although, as mentioned before, this is not enforced by Virtel. A DDI
 layout could look something like:-</p>
-<p><strong>Global/Public</strong></p>
-<p><strong>|</strong></p>
-<p><strong>Group A Group B Group C</strong></p>
-<p><strong>| | |</strong></p>
-<p><strong>User01 User02 User03 User05 User07 User08</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>                           <span class="n">Global</span><span class="o">/</span><span class="n">Public</span>
+                                 <span class="o">|</span>
+                                 <span class="o">|</span>
+    <span class="n">Group</span> <span class="n">A</span> <span class="o">-----------------</span> <span class="n">Group</span> <span class="n">B</span> <span class="o">--------------------</span> <span class="n">Group</span> <span class="n">C</span>
+      <span class="o">|</span>                          <span class="o">|</span>                           <span class="o">|</span>
+      <span class="o">|</span>                          <span class="o">|</span>                           <span class="o">|</span>
+<span class="n">User01</span> <span class="n">User02</span>              <span class="n">User03</span> <span class="n">User05</span>               <span class="n">User07</span> <span class="n">User08</span>
+</pre></div>
+</div>
 <p><strong>Setting up to use DDI</strong></p>
 <p>All of the ARBO constructs to support DDI are defined in VMACROS section
 of the SAMPLIB(ARBOLOAD) member. You must customize the JCL and change
 the SET VMACROS=NO statement to SET VMACROS=YES to install the DDI
 constructs to your ARBO file.</p>
-<p><strong>*Note: Release V4.53 users of Macros*</strong></p>
-<p><em>For users who implemented DDI in Virtel V4.53 (VMACROS=YES on the
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><em>Release V4.53 users of Macros</em>
+For users who implemented DDI in Virtel V4.53 (VMACROS=YES on the
 ARBOLOAD) there are some changes that have to be made to the ARBO file
 to work with DDI as distributed with V4.54. New constructs must be added
-to the ARBO file and previous DDI constructs must be removed:-</em></p>
+to the ARBO file and previous DDI constructs must be removed:-</p>
 <ol class="arabic">
-<li><p class="first"><em>Secure a copy of your macros.json from the /maclib directories.</em></p>
+<li><dl class="first docutils">
+<dt><em>Backup</em></dt>
+<dd><p class="first last">Secure a copy of your macros.json from the /maclib directories.</p>
+</dd>
+</dl>
 </li>
-<li><p class="first"><em>Remove</em></p>
-<blockquote>
-<div><p>DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
-<p>These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
+<li><dl class="first docutils">
+<dt><em>Remove</em></dt>
+<dd><p class="first">DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
+<p class="last">These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
 portal.</p>
-</div></blockquote>
+</dd>
+</dl>
 </li>
 </ol>
-<ol class="arabic">
-<li><p class="first"><em>Add</em></p>
-<blockquote>
-<div><p>Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
+<ol class="last arabic">
+<li><dl class="first docutils">
+<dt><em>Add</em></dt>
+<dd><p class="first">Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
 <p>See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.</p>
-<p>If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
-</div></blockquote>
+<p class="last">If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
+</dd>
+</dl>
 </li>
 </ol>
+</div>
 <p><strong>RACF Profiles</strong></p>
 <p>RACF profiles must also be defined to restrict DDI usage to Virtel
 administrators. In our example VIRTEL administrators are defined in the
-RACF group SPGPTECH.</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
-<p>//* RACF : AUTHORIZATIONS FOR VIRTEL DDI *</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;*</p>
-<p>//STEP1 EXEC PGM=IKJEFT01,DYNAMNBR=20</p>
-<p>//SYSTSPRT DD SYSOUT=*</p>
-<p>//SYSTSIN DD *</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
-<p>/* Setup for DDI */</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-03G UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-03U UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-03A UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.CLI-03G UACC(NONE) /* CLI */</p>
-<p>RDEF FACILITY SPVIRPLI.CLI-03U UACC(NONE) /* CLI */</p>
-<p>RDEF FACILITY SPVIRPLI.CLI-03A UACC(NONE) /* CLI */</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-07 UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-66 UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-80U UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-80G UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.W2H-80A UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.USR-DIR UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.GRP-DIR UACC(NONE) /* W2H */</p>
-<p>RDEF FACILITY SPVIRPLI.GLB-DIR UACC(NONE) /* W2H */</p>
-<p>PE SPVIRPLI.W2H-03G CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-03U CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-03A CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.CLI-03G CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.CLI-03U CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.CLI-03A CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-07 CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-66 CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-80U CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-80G CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-80A CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.USR-DIR CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.GRP-DIR CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.GLB-DIR CL(FACILITY) RESET</p>
-<p>PE SPVIRPLI.W2H-07 CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.W2H-66 CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.W2H-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.W2H-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.W2H-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.CLI-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.CLI-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.CLI-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.W2H-80U CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.W2H-80G CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.W2H-80A CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.USR-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.GRP-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>PE SPVIRPLI.GLB-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
-<p>/* REFRESH THE RACF PROFILES */</p>
-<p>/*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*/</p>
-<p>SETR REFRESH RACLIST(FACILITY)</p>
-<p>/*</p>
-<p>//</p>
+RACF group SPGPTECH. See the JCL below:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//*</span> <span class="n">RACF</span> <span class="p">:</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="n">DDI</span> <span class="o">*</span>
+<span class="o">//*---------------------------------------------------------*</span>
+<span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
+<span class="o">/*-------------------------------------------------------*/</span>
+<span class="o">/*</span> <span class="n">Setup</span> <span class="k">for</span> <span class="n">DDI</span> <span class="o">*/</span>
+<span class="o">/*-------------------------------------------------------*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">CLI</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">CLI</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">CLI</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">07</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">66</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">G</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">A</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">W2H</span> <span class="o">*/</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">07</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">66</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">07</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">66</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="n">PE</span> <span class="n">SPVIRPLI</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+  <span class="o">/*-------------------------------------------------------*/</span>
+  <span class="o">/*</span> <span class="n">REFRESH</span> <span class="n">THE</span> <span class="n">RACF</span> <span class="n">PROFILES</span> <span class="o">*/</span>
+  <span class="o">/*-------------------------------------------------------*/</span>
+  <span class="n">SETR</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span>
+<span class="o">/*</span>
+<span class="o">//</span>
+</pre></div>
+</div>
 <p><strong>Capability Access.</strong></p>
 <p>It is important to grant administrators capability access to enable
 administrators’ access to another user’s element, i.e. user directories.
@@ -356,14 +370,12 @@ transactions to list the USR-DIR and GRP-DIR are retired. The following
 message will appear on the screen if you attempt to list the user and
 group directories:-</p>
 <p><a class="reference internal" href="../../../_images/image93.png"><img alt="image8" src="../../../_images/image93.png" style="width: 6.30000in; height: 4.20000in;" /></a></p>
-<p>**
-Accessing DDI **</p>
-<p>Access to DDI is through the Virtel Administration portal Macros and
-add-ons section. The Virtel Portal is normally accessible via the url
-<a class="reference external" href="http://my.virtel.com:41001">http://my.virtel.com:41001</a> where 41001 is the port defined for the
-W-HTTP line associated with entry point WEB2HOST.</p>
-<p>When you access the Virtel Portal you are presented with the following
-screen:</p>
+<p><strong>Accessing HTML DDI</strong></p>
+<p>Access to HTML DDI is through the Virtel Administration portal. The Virtel Portal is normally accessible via the url:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">.</span><span class="n">virtel</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">41001</span>
+</pre></div>
+</div>
+<p>Where 41001 is the port defined for the W-HTTP line associated with entry point WEB2HOST. When you access the Virtel Portal you are presented with the following screen:</p>
 <p><a class="reference internal" href="../../../_images/image103.png"><img alt="image9" src="../../../_images/image103.png" style="width: 6.30000in; height: 5.05625in;" /></a></p>
 <p>To check the setup of DDI, list the allocated directories through either
 the Admin (3270) or Admin (HTML) options of the Virtel section. Once in
@@ -418,9 +430,12 @@ GROUP directory by perform an Add function.</p>
 <p><strong>Downloading an element</strong></p>
 <p>The download option enables the download of a DDI element to the default
 download directory of the associated browser.</p>
-<p>Note: Do not download a Virtel Template (HTML file with imbedded VIRTEL
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not download a Virtel Template (HTML file with imbedded VIRTEL
 tags). The tags will be interpreted before the download destroying the
 original source version.</p>
+</div>
 </div>
 
 

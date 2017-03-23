@@ -1279,7 +1279,7 @@ You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in t
 
 15. Apply any Virtel Web Access (See :ref:`VWA maintenance <#_V456IG_bookmark02>`) according the instructions in the Readme-updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step. If yo do apply maintenance then refresh the browser (CTRL-R) after updating the relevant TRSF directories. Check that the updtnnn is the correct number in the Administration Portal Screen.
 
-16. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the :ref:`“Security Chapter” <#_V456IG_bookmark73>`.
+16. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the :ref:`“Security Chapter” <#_V456IG_security>`.
 
 4. Installing VIRTEL under VSE
 ==============================
@@ -5318,7 +5318,7 @@ This operation adds or replaces a USER entity in the VIRARBO file. The parameter
 
 	[2] The PARM='UNLOAD,PLAINTXT' function unloads the password in readable format (PASSWORD instead of PASSCODE). To use this function, the user that submits this VIRCONF job must be RACF authorized (or by another securiyy tool) with READ access for the VIRTEL.PASSWORD.DECRYPT resource in the FACILITY class.
 
-.. _#_V456IG_bookmark73:
+.. _#_V456IG_Security:
 
 8. Security
 ===========

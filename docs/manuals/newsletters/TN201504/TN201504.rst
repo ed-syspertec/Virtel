@@ -1,3 +1,5 @@
+.. _tn201504:
+
 Running multiple instances of Virtel
 ====================================
 
@@ -39,7 +41,9 @@ further information on configuring the CFRM.
 Use the following command to display coupling allocation details for
 ISTGENERIC.
 
-D XCF,STR,STRNM=ISTGENERIC
+::
+
+    D XCF,STR,STRNM=ISTGENERIC
 
 **VTAM displayof the generic resource**
 
@@ -62,7 +66,7 @@ VIRTRPLEX resource name group.
   IST2204I LOCAPPL = YES PASSOLU = NO
   IST314I END
 
-When the VIRTEL\*A application is display in VTAM the following messages
+When the VIRTEL*A application is display in VTAM the following messages
 are written to the console log:-
 
 ::
@@ -73,9 +77,9 @@ are written to the console log:-
     IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
     IST1447I REGISTRATION TYPE = CDSERVR
     IST1363I GENERIC RESOURCE NAME VIRTPLEX REPRESENTS SPNET.VIRTEL1A
-    IST977I MDLTAB=\*\*\*NA\*\*\* ASLTAB=\*\*\*NA\*\*\*
-    IST861I MODETAB=\*\*\*NA\*\*\* USSTAB=\*\*\*NA\*\*\*LOGTAB=\*\*\*NA\*\*\*
-    IST934I DLOGMOD=\*\*\*NA\*\*\* USS LANGTAB=\*\*\*NA\*\*\*
+    IST977I MDLTAB=***NA*** ASLTAB=***NA***
+    IST861I MODETAB=***NA*** USSTAB=***NA***LOGTAB=***NA***
+    IST934I DLOGMOD=***NA*** USS LANGTAB=***NA***
     IST1632I VPACING = 7
     IST1938I APPC = NO
     IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
@@ -170,23 +174,23 @@ The VTAM definition to support this configuration would like:-
 ::
 
     APPLVIPX VBUILD TYPE=APPL
-    \* ------------------------------------------------------------------ \*
-    \* Product : VIRTEL \*
-    \* Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A) \*
-    \* ------------------------------------------------------------------ \*
-    VIRTEL&SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO), \*
+    * ------------------------------------------------------------------ *
+    * Product : VIRTEL                                                   *
+    * Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A)        *
+    * ------------------------------------------------------------------ *
+    VIRTEL&SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),               *
           ACBNAME=VIRTEL&SYSCLONE
-    \* ------------------------------------------------------------------ \*
-    \* R&SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access \*
-    \* ------------------------------------------------------------------ \*
-    R&SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+    * ------------------------------------------------------------------ *
+    * R&SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access    *
+    * ------------------------------------------------------------------ *
+    R&SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
           DLOGMOD=SNX32702,EAS=1
-    \* ------------------------------------------------------------------ \*
-    \* R&SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals \*
-    \* ------------------------------------------------------------------ \*
-    R&SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+    * ------------------------------------------------------------------ *
+    * R&SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals   *
+    * ------------------------------------------------------------------ *
+    R&SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
           DLOGMOD=SCS,EAS=1
-    R&SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+    R&SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
           DLOGMOD=DSILGMOD,EAS=1
 
 Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE   characters as part of the LU name. In the next example two pools are defined. Pool \*W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool \*W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:-
@@ -218,28 +222,28 @@ The VTAM definitions would be similar to those from the previous example except 
 ::
 
     APVIRT&SYSCLONE. VBUILD TYPE=APPL
-    \* ------------------------------------------------------------------\*   
-    \* Product     :  VIRTEL                                             \*   
-    \* Description :  Main ACB for VIRTEL application                    \*   
-    \* ------------------------------------------------------------------\*   
+    * ------------------------------------------------------------------*   
+    * Product     :  VIRTEL                                             *   
+    * Description :  Main ACB for VIRTEL application                    *   
+    * ------------------------------------------------------------------*   
     VIRTEL&SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,               + 
                  ACBNAME=VIRTEL&SYSCLONE 
-    \* ------------------------------------------------------------------\*   
-    \* Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access\*   
-    \* Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access \*
-    \* Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access\*      
-    \* ------------------------------------------------------------------\*   
+    * ------------------------------------------------------------------*   
+    * Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access*   
+    * Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access *
+    * Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access*      
+    * ------------------------------------------------------------------*   
     J??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
     K??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1 
     L??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
     M??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1   
     N??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
     O??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
-    \* ------------------------------------------------------------------\*   
-    \* Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals      \*   
-    \* Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals      \* 
-    \* Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals      \* 
-    \* ------------------------------------------------------------------\*
+    * ------------------------------------------------------------------*   
+    * Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals      *   
+    * Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals      * 
+    * Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals      * 
+    * ------------------------------------------------------------------*
     P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES     
     Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES     
     R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES     
@@ -306,7 +310,7 @@ In this way the administrator can access a specific Virtel using port 41001 of t
 
 Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.
 
-See : `D:\\Documents\\SysperTec\\Newsletters\\Proxy Load Balancing.jpg`
+|image3|
 
 Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-
 
@@ -329,39 +333,39 @@ To use Apache as a Proxy Server it is essential that the correct configuration m
 
 ::
 
-    #LoadModule foo\_module modules/mod\_foo.so
-    LoadModule authz\_host\_module modules/mod\_authz\_host.so
-    LoadModule auth\_basic\_module modules/mod\_auth\_basic.so
-    LoadModule authn\_file\_module modules/mod\_authn\_file.so
-    LoadModule authz\_user\_module modules/mod\_authz\_user.so
-    #LoadModule authz\_groupfile\_module modules/mod\_authz\_groupfile.so
-    LoadModule include\_module modules/mod\_include.so
-    LoadModule log\_config\_module modules/mod\_log\_config.so
-    LoadModule env\_module modules/mod\_env.so
-    #LoadModule mime\_magic\_module modules/mod\_mime\_magic.so
-    #LoadModule expires\_module modules/mod\_expires.so
-    LoadModule headers\_module modules/mod\_headers.so
-    LoadModule unique\_id\_module modules/mod\_unique\_id.so
-    LoadModule setenvif\_module modules/mod\_setenvif.so
-    LoadModule proxy\_module modules/mod\_proxy.so
-    LoadModule proxy\_connect\_module modules/mod\_proxy\_connect.so
-    #LoadModule proxy\_ftp\_module modules/mod\_proxy\_ftp.so
-    LoadModule proxy\_http\_module modules/mod\_proxy\_http.so
-    LoadModule mime\_module modules/mod\_mime.so
-    #LoadModule dav\_module modules/mod\_dav.so
-    #LoadModule dav\_fs\_module modules/mod\_dav\_fs.so
-    LoadModule autoindex\_module modules/mod\_autoindex.so
-    #LoadModule asis\_module modules/mod\_asis.so
-    #LoadModule info\_module modules/mod\_info.so
-    LoadModule cgi\_module modules/mod\_cgi.so
-    LoadModule dir\_module modules/mod\_dir.so
-    LoadModule actions\_module modules/mod\_actions.so
-    #LoadModule speling\_module modules/mod\_speling.so
-    #LoadModule userdir\_module modules/mod\_userdir.so
-    LoadModule alias\_module modules/mod\_alias.so
-    #LoadModule rewrite\_module modules/mod\_rewrite.so
-    #LoadModule deflate\_module modules/mod\_deflate.so
-    LoadModule proxy\_balancer\_module modules/mod\_proxy\_balancer.so 
+    #LoadModule foo_module modules/mod_foo.so
+    LoadModule authz_host_module modules/mod_authz_host.so
+    LoadModule auth_basic_module modules/mod_auth_basic.so
+    LoadModule authn_file_module modules/mod_authn_file.so
+    LoadModule authz_user_module modules/mod_authz_user.so
+    #LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+    LoadModule include_module modules/mod_include.so
+    LoadModule log_config_module modules/mod_log_config.so
+    LoadModule env_module modules/mod_env.so
+    #LoadModule mime_magic_module modules/mod_mime_magic.so
+    #LoadModule expires_module modules/mod_expires.so
+    LoadModule headers_module modules/mod_headers.so
+    LoadModule unique_id_module modules/mod_unique_id.so
+    LoadModule setenvif_module modules/mod_setenvif.so
+    LoadModule proxy_module modules/mod_proxy.so
+    LoadModule proxy_connect_module modules/mod_proxy_connect.so
+    #LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
+    LoadModule proxy_http_module modules/mod_proxy_http.so
+    LoadModule mime_module modules/mod_mime.so
+    #LoadModule dav_module modules/mod_dav.so
+    #LoadModule dav_fs_module modules/mod_dav_fs.so
+    LoadModule autoindex_module modules/mod_autoindex.so
+    #LoadModule asis_module modules/mod_asis.so
+    #LoadModule info_module modules/mod_info.so
+    LoadModule cgi_module modules/mod_cgi.so
+    LoadModule dir_module modules/mod_dir.so
+    LoadModule actions_module modules/mod_actions.so
+    #LoadModule speling_module modules/mod_speling.so
+    #LoadModule userdir_module modules/mod_userdir.so
+    LoadModule alias_module modules/mod_alias.so
+    #LoadModule rewrite_module modules/mod_rewrite.so
+    #LoadModule deflate_module modules/mod_deflate.so
+    LoadModule proxy_balancer_module modules/mod_proxy_balancer.so 
 
 Some other recommendations are:-
 
@@ -371,9 +375,9 @@ Some other recommendations are:-
     SSLDisable
     SSLV3Timeout 18010
     * Format log with router information
-    LogFormat "%h %l %u %t \\"%r\\" %>s %b \\"%{Referer}i\\" \\"%{User-Agent}i\\" \\"%{BALANCER\_WORKER\_ROUTE}e\\"" combined
+    LogFormat "%h %l %u %t\"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" \"%{BALANCER_WORKER_ROUTE}e\"" combined
     * set Max-Age to 12h (doesn't work with IE)  or 
-    * enable mod\_expires and set: (this should be checked)
+    * enable mod_expires and set: (this should be checked)
     ExpiresActive On
     ExpiresDefault "access plus 16 h"
 
@@ -385,6 +389,6 @@ See https://httpd.apache.org/docs/2.2/mod/mod_expires.html for more information.
 .. |image1| image:: images/media/image2.jpg
    :width: 6.17708in
    :height: 6.46875in
-.. |D:\\Documents\\SysperTec\\Newsletters\\Proxy Load Balancing.jpg| image:: images/media/image3.jpeg
+.. |image3| image:: images/media/image3.jpeg
    :width: 6.30000in
    :height: 3.54375in

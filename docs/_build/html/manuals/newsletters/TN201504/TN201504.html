@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Virtel Macros" href="../TN201505/TN201505.html"/>
+        <link rel="next" title="Virtel Macros in Virtel 4.53" href="../TN201505/TN201505.html"/>
         <link rel="prev" title="Dynamic Directory Interface (DDI)" href="../TN201501/TN201501.html"/> 
 
   
@@ -96,7 +96,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2015</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN201501/TN201501.html">Dynamic Directory Interface (DDI)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Running multiple instances of Virtel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201505/TN201505.html">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201505/TN201505.html">Virtel Macros in Virtel 4.53</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201506/TN201506.html">An example of using web services with Virtel Integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201507/TN201507.html">Customising Virtel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201515/TN201515.html">Using Virtel as a Secure Single Access Control Point</a></li>
@@ -158,7 +158,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="running-multiple-instances-of-virtel">
-<h1>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h1>
+<span id="tn201504"></span><h1>Running multiple instances of Virtel<a class="headerlink" href="#running-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h1>
 <p>For High Availability and performance reasons it is often necessary to
 run multiple copies of Virtel, preferably within separate LPARs on
 separate physical machines. This newsletter discusses the issues raised
@@ -188,7 +188,9 @@ VTAM generic resources. See the IBM Network Implementation Guide for
 further information on configuring the CFRM.</p>
 <p>Use the following command to display coupling allocation details for
 ISTGENERIC.</p>
-<p>D XCF,STR,STRNM=ISTGENERIC</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">XCF</span><span class="p">,</span><span class="n">STR</span><span class="p">,</span><span class="n">STRNM</span><span class="o">=</span><span class="n">ISTGENERIC</span>
+</pre></div>
+</div>
 <p><strong>VTAM displayof the generic resource</strong></p>
 <p>The results from the D NET,ID=VTAMPLEX,E identifies the two Virtel
 instances which are grouped into the generic resource name VIRTPLEX. The
@@ -215,9 +217,9 @@ are written to the console log:-</p>
 <span class="n">IST486I</span> <span class="n">STATUS</span><span class="o">=</span> <span class="n">ACT</span><span class="o">/</span><span class="n">S</span><span class="p">,</span> <span class="n">DESIRED</span> <span class="n">STATE</span><span class="o">=</span> <span class="n">ACTIV</span>
 <span class="n">IST1447I</span> <span class="n">REGISTRATION</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">CDSERVR</span>
 <span class="n">IST1363I</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="n">NAME</span> <span class="n">VIRTPLEX</span> <span class="n">REPRESENTS</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span>
-<span class="n">IST977I</span> <span class="n">MDLTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span> <span class="n">ASLTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span>
-<span class="n">IST861I</span> <span class="n">MODETAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span> <span class="n">USSTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">LOGTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span>
-<span class="n">IST934I</span> <span class="n">DLOGMOD</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span> <span class="n">USS</span> <span class="n">LANGTAB</span><span class="o">=</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span><span class="n">NA</span>\<span class="o">*</span>\<span class="o">*</span>\<span class="o">*</span>
+<span class="n">IST977I</span> <span class="n">MDLTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">ASLTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST861I</span> <span class="n">MODETAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">USSTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span><span class="n">LOGTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
+<span class="n">IST934I</span> <span class="n">DLOGMOD</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span> <span class="n">USS</span> <span class="n">LANGTAB</span><span class="o">=***</span><span class="n">NA</span><span class="o">***</span>
 <span class="n">IST1632I</span> <span class="n">VPACING</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">IST1938I</span> <span class="n">APPC</span> <span class="o">=</span> <span class="n">NO</span>
 <span class="n">IST597I</span> <span class="n">CAPABILITY</span><span class="o">-</span><span class="n">PLU</span> <span class="n">ENABLED</span> <span class="p">,</span><span class="n">SLU</span> <span class="n">ENABLED</span> <span class="p">,</span><span class="n">SESSION</span> <span class="n">LIMIT</span> <span class="n">NONE</span>
@@ -295,23 +297,23 @@ LPAR 1A, and R2AVT000-079 for LPAR 2A.</p>
 configuration.</p>
 <p>The VTAM definition to support this configuration would like:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>APPLVIPX VBUILD TYPE=APPL
-\* ------------------------------------------------------------------ \*
-\* Product : VIRTEL \*
-\* Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A) \*
-\* ------------------------------------------------------------------ \*
-VIRTEL&amp;SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO), \*
+* ------------------------------------------------------------------ *
+* Product : VIRTEL                                                   *
+* Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A)        *
+* ------------------------------------------------------------------ *
+VIRTEL&amp;SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),               *
       ACBNAME=VIRTEL&amp;SYSCLONE
-\* ------------------------------------------------------------------ \*
-\* R&amp;SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access \*
-\* ------------------------------------------------------------------ \*
-R&amp;SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+* ------------------------------------------------------------------ *
+* R&amp;SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access    *
+* ------------------------------------------------------------------ *
+R&amp;SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
       DLOGMOD=SNX32702,EAS=1
-\* ------------------------------------------------------------------ \*
-\* R&amp;SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals \*
-\* ------------------------------------------------------------------ \*
-R&amp;SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+* ------------------------------------------------------------------ *
+* R&amp;SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals   *
+* ------------------------------------------------------------------ *
+R&amp;SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
       DLOGMOD=SCS,EAS=1
-R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
+R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
       DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
@@ -339,28 +341,28 @@ R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM, \*
 </div>
 <p>The VTAM definitions would be similar to those from the previous example except the &amp;SYSCLONE would be replaced by the relay characters.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>APVIRT&amp;SYSCLONE. VBUILD TYPE=APPL
-\* ------------------------------------------------------------------\*
-\* Product     :  VIRTEL                                             \*
-\* Description :  Main ACB for VIRTEL application                    \*
-\* ------------------------------------------------------------------\*
+* ------------------------------------------------------------------*
+* Product     :  VIRTEL                                             *
+* Description :  Main ACB for VIRTEL application                    *
+* ------------------------------------------------------------------*
 VIRTEL&amp;SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,               +
              ACBNAME=VIRTEL&amp;SYSCLONE
-\* ------------------------------------------------------------------\*
-\* Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access\*
-\* Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access \*
-\* Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access\*
-\* ------------------------------------------------------------------\*
+* ------------------------------------------------------------------*
+* Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access*
+* Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access *
+* Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access*
+* ------------------------------------------------------------------*
 J??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 K??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 L??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 M??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 N??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 O??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
-\* ------------------------------------------------------------------\*
-\* Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals      \*
-\* Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals      \*
-\* Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals      \*
-\* ------------------------------------------------------------------\*
+* ------------------------------------------------------------------*
+* Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals      *
+* Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals      *
+* Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals      *
+* ------------------------------------------------------------------*
 P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
 R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
@@ -414,7 +416,7 @@ number. For example:</p>
 <p>In this way the administrator can access a specific Virtel using port 41001 of the appropriate LPAR’s IP address, while the users can access both Virtels using port 41002 on the DVIPA address.</p>
 <p><strong>Uisng Virtel with Apache Proxy as a load balancing mechanism</strong></p>
 <p>Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.</p>
-<p>See : <cite>D:\Documents\SysperTec\Newsletters\Proxy Load Balancing.jpg</cite></p>
+<p><a class="reference internal" href="../../../_images/image32.jpeg"><img alt="image3" src="../../../_images/image32.jpeg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># Virtel</span>
@@ -430,39 +432,39 @@ number. For example:</p>
 </div>
 <p>For more information on setting up an Apache Proxy Server visit <a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html</a></p>
 <p>To use Apache as a Proxy Server it is essential that the correct configuration modules are loaded at startup:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#LoadModule foo\_module modules/mod\_foo.so</span>
-<span class="n">LoadModule</span> <span class="n">authz</span>\<span class="n">_host</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_authz</span>\<span class="n">_host</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">auth</span>\<span class="n">_basic</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_auth</span>\<span class="n">_basic</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">authn</span>\<span class="n">_file</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_authn</span>\<span class="n">_file</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">authz</span>\<span class="n">_user</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_authz</span>\<span class="n">_user</span><span class="o">.</span><span class="n">so</span>
-<span class="c1">#LoadModule authz\_groupfile\_module modules/mod\_authz\_groupfile.so</span>
-<span class="n">LoadModule</span> <span class="n">include</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_include</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">log</span>\<span class="n">_config</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_log</span>\<span class="n">_config</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">env</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_env</span><span class="o">.</span><span class="n">so</span>
-<span class="c1">#LoadModule mime\_magic\_module modules/mod\_mime\_magic.so</span>
-<span class="c1">#LoadModule expires\_module modules/mod\_expires.so</span>
-<span class="n">LoadModule</span> <span class="n">headers</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_headers</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">unique</span>\<span class="n">_id</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_unique</span>\<span class="n">_id</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">setenvif</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_setenvif</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_connect</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_connect</span><span class="o">.</span><span class="n">so</span>
-<span class="c1">#LoadModule proxy\_ftp\_module modules/mod\_proxy\_ftp.so</span>
-<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_http</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_http</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">mime</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_mime</span><span class="o">.</span><span class="n">so</span>
-<span class="c1">#LoadModule dav\_module modules/mod\_dav.so</span>
-<span class="c1">#LoadModule dav\_fs\_module modules/mod\_dav\_fs.so</span>
-<span class="n">LoadModule</span> <span class="n">autoindex</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_autoindex</span><span class="o">.</span><span class="n">so</span>
-<span class="c1">#LoadModule asis\_module modules/mod\_asis.so</span>
-<span class="c1">#LoadModule info\_module modules/mod\_info.so</span>
-<span class="n">LoadModule</span> <span class="n">cgi</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_cgi</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="nb">dir</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_dir</span><span class="o">.</span><span class="n">so</span>
-<span class="n">LoadModule</span> <span class="n">actions</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_actions</span><span class="o">.</span><span class="n">so</span>
-<span class="c1">#LoadModule speling\_module modules/mod\_speling.so</span>
-<span class="c1">#LoadModule userdir\_module modules/mod\_userdir.so</span>
-<span class="n">LoadModule</span> <span class="n">alias</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_alias</span><span class="o">.</span><span class="n">so</span>
-<span class="c1">#LoadModule rewrite\_module modules/mod\_rewrite.so</span>
-<span class="c1">#LoadModule deflate\_module modules/mod\_deflate.so</span>
-<span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_balancer</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_balancer</span><span class="o">.</span><span class="n">so</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#LoadModule foo_module modules/mod_foo.so</span>
+<span class="n">LoadModule</span> <span class="n">authz_host_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authz_host</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">auth_basic_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_auth_basic</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">authn_file_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authn_file</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">authz_user_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authz_user</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule authz_groupfile_module modules/mod_authz_groupfile.so</span>
+<span class="n">LoadModule</span> <span class="n">include_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_include</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">log_config_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_log_config</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">env_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_env</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule mime_magic_module modules/mod_mime_magic.so</span>
+<span class="c1">#LoadModule expires_module modules/mod_expires.so</span>
+<span class="n">LoadModule</span> <span class="n">headers_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_headers</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">unique_id_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_unique_id</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">setenvif_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_setenvif</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_connect_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_connect</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule proxy_ftp_module modules/mod_proxy_ftp.so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_http_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_http</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">mime_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_mime</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule dav_module modules/mod_dav.so</span>
+<span class="c1">#LoadModule dav_fs_module modules/mod_dav_fs.so</span>
+<span class="n">LoadModule</span> <span class="n">autoindex_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_autoindex</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule asis_module modules/mod_asis.so</span>
+<span class="c1">#LoadModule info_module modules/mod_info.so</span>
+<span class="n">LoadModule</span> <span class="n">cgi_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_cgi</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">dir_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_dir</span><span class="o">.</span><span class="n">so</span>
+<span class="n">LoadModule</span> <span class="n">actions_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_actions</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule speling_module modules/mod_speling.so</span>
+<span class="c1">#LoadModule userdir_module modules/mod_userdir.so</span>
+<span class="n">LoadModule</span> <span class="n">alias_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_alias</span><span class="o">.</span><span class="n">so</span>
+<span class="c1">#LoadModule rewrite_module modules/mod_rewrite.so</span>
+<span class="c1">#LoadModule deflate_module modules/mod_deflate.so</span>
+<span class="n">LoadModule</span> <span class="n">proxy_balancer_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_proxy_balancer</span><span class="o">.</span><span class="n">so</span>
 </pre></div>
 </div>
 <p>Some other recommendations are:-</p>
@@ -470,9 +472,9 @@ number. For example:</p>
 <span class="n">SSLDisable</span>
 <span class="n">SSLV3Timeout</span> <span class="mi">18010</span>
 <span class="o">*</span> <span class="n">Format</span> <span class="n">log</span> <span class="k">with</span> <span class="n">router</span> <span class="n">information</span>
-<span class="n">LogFormat</span> <span class="s2">&quot;%h %l </span><span class="si">%u</span><span class="s2"> %t </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">r</span>\\<span class="s2">&quot; %&gt;s %b </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">{</span><span class="n">Referer</span><span class="p">}</span><span class="n">i</span>\\<span class="s2">&quot; </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">{</span><span class="n">User</span><span class="o">-</span><span class="n">Agent</span><span class="p">}</span><span class="n">i</span>\\<span class="s2">&quot; </span><span class="se">\\</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">{</span><span class="n">BALANCER</span>\<span class="n">_WORKER</span>\<span class="n">_ROUTE</span><span class="p">}</span><span class="n">e</span>\\<span class="s2">&quot;&quot;</span> <span class="n">combined</span>
+<span class="n">LogFormat</span> <span class="s2">&quot;%h %l </span><span class="si">%u</span><span class="s2"> %t</span><span class="se">\&quot;</span><span class="si">%r</span><span class="se">\&quot;</span><span class="s2"> %&gt;s %b </span><span class="se">\&quot;</span><span class="s2">%</span><span class="si">{Referer}</span><span class="s2">i</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="s2">%{User-Agent}i</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="s2">%</span><span class="si">{BALANCER_WORKER_ROUTE}</span><span class="s2">e</span><span class="se">\&quot;</span><span class="s2">&quot;</span> <span class="n">combined</span>
 <span class="o">*</span> <span class="nb">set</span> <span class="n">Max</span><span class="o">-</span><span class="n">Age</span> <span class="n">to</span> <span class="mi">12</span><span class="n">h</span> <span class="p">(</span><span class="n">doesn</span><span class="s1">&#39;t work with IE)  or</span>
-<span class="o">*</span> <span class="n">enable</span> <span class="n">mod</span>\<span class="n">_expires</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">:</span> <span class="p">(</span><span class="n">this</span> <span class="n">should</span> <span class="n">be</span> <span class="n">checked</span><span class="p">)</span>
+<span class="o">*</span> <span class="n">enable</span> <span class="n">mod_expires</span> <span class="ow">and</span> <span class="nb">set</span><span class="p">:</span> <span class="p">(</span><span class="n">this</span> <span class="n">should</span> <span class="n">be</span> <span class="n">checked</span><span class="p">)</span>
 <span class="n">ExpiresActive</span> <span class="n">On</span>
 <span class="n">ExpiresDefault</span> <span class="s2">&quot;access plus 16 h&quot;</span>
 </pre></div>
@@ -487,7 +489,7 @@ number. For example:</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201505/TN201505.html" class="btn btn-neutral float-right" title="Virtel Macros" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201505/TN201505.html" class="btn btn-neutral float-right" title="Virtel Macros in Virtel 4.53" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../TN201501/TN201501.html" class="btn btn-neutral" title="Dynamic Directory Interface (DDI)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
