@@ -524,7 +524,7 @@ prefix setting.</p>
 </pre></div>
 </div>
 <p>If I fire the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a> to Virtel I should get something like this:-</p>
-<p><a class="reference internal" href="../../../_images/image87.png"><img alt="image7" src="../../../_images/image87.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image88.png"><img alt="image7" src="../../../_images/image88.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
 <p>Now, it is very unlikely you will see exactly the same colours against these applications but nevertheless you should see the same Application in the Menus because they are all defined as CLI Type 1 or Type 2 applications in the default ARBO. In my case I have two applications which are “highlighted” green – IMS and Session manager. Now, if I select IMS3270 Virtel will log me onto that application. The CICS DBDCCICS application isn’t active so that’s why it is flagged RED. We got here through the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a>. So how did that happen? Well we know that the URL will fire the default transaction for the Entry POINT CLIWHOST. That transaction is also called CLIWHOST, so let’s take a look at that transaction:-</p>
 <blockquote>
 <div>TRANSACT ID=CLI-00,

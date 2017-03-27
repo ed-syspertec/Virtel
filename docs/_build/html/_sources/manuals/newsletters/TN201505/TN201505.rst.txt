@@ -4,18 +4,21 @@ Virtel Macros in Virtel 4.53
 ============================
 
 Virtel macros capture keystroke operations which can subsequently be
-used to automate 3270 functions. Macros are held within a file in a JSON
-structure. These file are suffixed with the .json qualifier. An example
+used to automate 3270 functions. By default, macros are held within a JSON object and saved as a file in a users local storage. These file are suffixed with the .json qualifier. An example
 of a JSON macro file is shown below:-
 
-{"macros":[{"name":"SDSF","rev":2,"def":["move(435)","ENTER",{"txt":"=M"},"ErEof","ENTER",{"txt":"6"},"ENTER"]}],"desc":"user
-macros","fmt":1,"user":"SPTHOLT"}
+.. ::
 
-**Updating custom.js to use Virtel Macros.**
+   {"macros":[{"name":"SDSF","rev":2,"def":["move(435)","ENTER",{"txt":"=M"},"ErEof","ENTER",{"txt":"6"},"ENTER"]}],"desc":"user
+   macros","fmt":1,"user":"SPTHOLT"}
 
-Before you can use the Virtel macro facility Macro A custom.js file must be created or updated and placed in the CLI-DIR in order to use DDI. The useVirtelMacros flag must be added and set to true.
+The macro interface can operate in two modes - local storage or DDI mode. In local storage mode macros are maintained in the user's local storage. In DDI mode the macros makes use of the DDI facility to store macros on the mainframe. Updates are automatically synchronized between a user's local storage and the DDI USR-DIR directory which is maintained in the HTML VSAM file in Virtel. Also, using DDI mode gives the users access to a GRP-DIR group directory and GLB-DIR global directory. These DDI directories would be maintained by the Virtel Administrator. 
 
-See the following example:-
+**Updating custom.js to use Virtel Macros in DDI mode.**
+
+Before you can use the DDI  Virtel macro facility a custom.js file must be created or updated and placed in the CLI-DIR. The useVirtelMacros flag must be added and set to true. Also, the transaction CLI-03CJ must be modified so that the Application field points to CLI-DIR and not W2H-DIR.
+
+The following is an example of a customised custom.js:-
 
 ::
 
@@ -44,11 +47,17 @@ See the following example:-
       };
    }
 
-**Macros functions**
+**The Macro Interface**
 
 You can capture and list macros by using the two macro ICONS functions
 displayed in the Virtel tool bar. These are the red record/stop button
-and the green triangular display button.
+and the green triangular display button. Regardless of which mode you are running the macro interface presents the same functions. In local mode the interface will look like this:-
+
+|image7|
+
+whereas in DDI mode the interface looks like this:-
+
+|image8|
 
 **The Record function**
 
@@ -70,9 +79,8 @@ Figure 2 - Saving a macro
 
 **The display function**
 
-The green triangular button will display the macros in the DDI user,
-group and global directories. It will also enable you to delete, edit or
-execute a macro.
+The green triangular button will display the macros available to the user. For local mode these will be macros in the local storage, for DDI mode these will be the macros maintained in the user,
+group and global directories. From the list you will be able to delete, edit or execute a macro.
 
 |image2|
 
@@ -118,17 +126,7 @@ The format of the macro.json is embedded JSON structures. Each name structure re
 
 **Managing and uploading a macro**
 
-Although macros can be captured and saved in a user’s directory they can
-also be uploaded to any of the DDI macro directories – user, group or
-global. This can be accomplished using either the ADMIN(HTML) interface
-or the DDI interface. Normal practice for an administrator would be to
-capture and create a macro in their user directory, download it using
-the DDI interface, modify it for general use, and then upload it to any
-group, user or global directory for general availability. The upload
-process is through a drag and drop operation within the directory list
-operation of the ADMIN(HTML) interface or the file list operation with
-the DDI interface. In both cases the drop area is designated by a series
-of dotted lines.
+Although macros can be captured and saved in a user’s directory, USR-DIR, they can also be uploaded to any one of the DDI macro directories – user, group or global. To upload a macro.JSON file use the DDI interface from the Administration portal. It would be normal practice for an administrator to capture and create macros in their user directory. These would then be exported using the EXPORT option. This would create a macros.JSON file. The macro.JSON file could then be uploaded to any one of the three DDI macro directories - USER, GROUP or GLOBAL using the DDI interface. Once uploaded , the macros can be modified for general use, and then copied to any other directory within the macros DDI directory structure. This facility enables an administrator to make macros available at any User, Group or Global level. The DDI upload process is through a drag and drop operation within the directory list operation of the ADMIN(HTML) interface or the file list operation with the DDI interface. In both cases the drop area is designated by a series of dotted lines.
 
 |image4|
 
@@ -156,3 +154,5 @@ upload results message.
 .. |image5| image:: images/media/image6.png
    :width: 4.46875in
    :height: 3.34565in
+.. |image7| image:: images/media/image7.png
+.. |image8| image:: images/media/image8.png
