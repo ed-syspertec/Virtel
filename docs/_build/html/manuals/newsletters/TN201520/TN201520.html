@@ -158,15 +158,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="using-the-ibm-system-logger-with-virtel">
-<h1>Using the IBM System Logger with Virtel<a class="headerlink" href="#using-the-ibm-system-logger-with-virtel" title="Permalink to this headline">¶</a></h1>
+<span id="tn201520"></span><h1>Using the IBM System Logger with Virtel<a class="headerlink" href="#using-the-ibm-system-logger-with-virtel" title="Permalink to this headline">¶</a></h1>
 <p>With the latest release of Virtel, currently Release 4.55, Virtel has
 the ability to write all of its log records to IBM’s System Logger.</p>
 <p>To use this feature code LOG=LOGGER in the TCT and compile using a
-supporting maclib. Currently this MACLIB is
-SPTHOLT.VIRTEL.BASE455.MACLIB. Ensure that a compatible VIR0000 in the
-load library is used to avoid TCT mismatch message. The version in
-SP000.SPTHOLT.DEV.LOADLIB is compatible with the
-SPTHOLT.VIRTEL.BASE455.MACLIB(VIRTERM) member.</p>
+supporting maclib. This should be the distributed Virtel MACLIB HLQ.VIRTEL.MACLIB.
+A compatible VIR0000 in the VIRTEL load library must be used to avoid TCT mismatch message. The version in
+HLQ.VIRTEL.LOADLIB is compatible with the VIRTEM MACLIB in HLQ.VIRTEL.MACLIB(VIRTERM) member.</p>
 <p>When you start Virtel it will attempt to connect to the predefined
 Virtel logstream. If the logstream doesn’t exists one will be created
 automatically. The following messages will appear in the log:-</p>
@@ -201,34 +199,39 @@ automatically. The following messages will appear in the log:-</p>
 <p>After this point all messages will be written to the logger, even
 responses to commands. Each Virtel that has LOG=LOGGER will connect to
 the structure. The last message you will see is:</p>
-<p>VIR0000I SMTP Date: Wed, 09 Dec 2015 22:34:57 +0100</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0000I</span> <span class="n">SMTP</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Wed</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Dec</span> <span class="mi">2015</span> <span class="mi">22</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">0100</span>
+</pre></div>
+</div>
 <p>Fortunately there is a print program that can be used to format and
 print off the log records. This is VIR00002B. When the logstream reaches
 a particular threshold is spools off a dataset. The following messages
 will appear in the log:-</p>
-<p>IEF196I IGD100I 0AA8 ALLOCATED TO DDNAME SYS00008 DATACLAS ( )</p>
-<p>IXG283I OFFLOAD DATASET IXGLOGR.LOGGER.VIRTEL.A0000005 897</p>
-<p>ALLOCATED NEW FOR LOGSTREAM LOGGER.VIRTEL</p>
-<p>CISIZE=4K, SIZE=147456</p>
-<p>IXG251I IDCAMS SYSTEM SERVICES</p>
-<p>TIME: 22:49:21 12/09/15 PAGE 1</p>
-<p>IXG251I ALTER IXGLOGR.LOGGER.VIRTEL.A0000005.DATA -</p>
-<p>IXG251I SHR(3,3)</p>
-<p>IXG251I IDC0531I ENTRY IXGLOGR.LOGGER.VIRTEL.A0000005.DATA ALTERED</p>
-<p>IXG251I IDC0001I FUNCTION COMPLETED, HIGHEST CONDITION CODE WAS 0</p>
-<p>IXG251I IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS</p>
-<p>0</p>
-<p>IXG282I OFFLOAD DATASET IXGLOGR.LOGGER.VIRTEL.A0000005 904</p>
-<p>WAS ALTERED FOR LOGSTREAM LOGGER.VIRTEL</p>
-<p>UPDATED ATTRIBUTE VSAM SHAREOPTIONS</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">IEF196I</span> <span class="n">IGD100I</span> <span class="mi">0</span><span class="n">AA8</span> <span class="n">ALLOCATED</span> <span class="n">TO</span> <span class="n">DDNAME</span> <span class="n">SYS00008</span> <span class="n">DATACLAS</span> <span class="p">(</span> <span class="p">)</span>
+<span class="n">IXG283I</span> <span class="n">OFFLOAD</span> <span class="n">DATASET</span> <span class="n">IXGLOGR</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">A0000005</span> <span class="mi">897</span>
+<span class="n">ALLOCATED</span> <span class="n">NEW</span> <span class="n">FOR</span> <span class="n">LOGSTREAM</span> <span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span>
+<span class="n">CISIZE</span><span class="o">=</span><span class="mi">4</span><span class="n">K</span><span class="p">,</span> <span class="n">SIZE</span><span class="o">=</span><span class="mi">147456</span>
+<span class="n">IXG251I</span> <span class="n">IDCAMS</span> <span class="n">SYSTEM</span> <span class="n">SERVICES</span>
+<span class="n">TIME</span><span class="p">:</span> <span class="mi">22</span><span class="p">:</span><span class="mi">49</span><span class="p">:</span><span class="mi">21</span> <span class="mi">12</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="n">PAGE</span> <span class="mi">1</span>
+<span class="n">IXG251I</span> <span class="n">ALTER</span> <span class="n">IXGLOGR</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">A0000005</span><span class="o">.</span><span class="n">DATA</span> <span class="o">-</span>
+<span class="n">IXG251I</span> <span class="n">SHR</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">IXG251I</span> <span class="n">IDC0531I</span> <span class="n">ENTRY</span> <span class="n">IXGLOGR</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">A0000005</span><span class="o">.</span><span class="n">DATA</span> <span class="n">ALTERED</span>
+<span class="n">IXG251I</span> <span class="n">IDC0001I</span> <span class="n">FUNCTION</span> <span class="n">COMPLETED</span><span class="p">,</span> <span class="n">HIGHEST</span> <span class="n">CONDITION</span> <span class="n">CODE</span> <span class="n">WAS</span> <span class="mi">0</span>
+<span class="n">IXG251I</span> <span class="n">IDC0002I</span> <span class="n">IDCAMS</span> <span class="n">PROCESSING</span> <span class="n">COMPLETE</span><span class="o">.</span> <span class="n">MAXIMUM</span> <span class="n">CONDITION</span> <span class="n">CODE</span> <span class="n">WAS</span> <span class="mi">0</span>
+<span class="n">IXG282I</span> <span class="n">OFFLOAD</span> <span class="n">DATASET</span> <span class="n">IXGLOGR</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">A0000005</span> <span class="mi">904</span>
+<span class="n">WAS</span> <span class="n">ALTERED</span> <span class="n">FOR</span> <span class="n">LOGSTREAM</span> <span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span>
+<span class="n">UPDATED</span> <span class="n">ATTRIBUTE</span> <span class="n">VSAM</span> <span class="n">SHAREOPTIONS</span>
+</pre></div>
+</div>
 <p>To list the logstream, structure and its associated offload datasets,
 use the following JCL:-</p>
-<p>//SPTHOLTL JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&amp;SYSUID</p>
-<p>//STEP1 EXEC PGM=IXCMIAPU,REGION=4M</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>DATA TYPE(LOGR) REPORT(NO)</p>
-<p>LIST STRUCTURE NAME(VIRTEL_LOG_1) DETAIL(YES)</p>
-<p>LIST LOGSTREAM NAME(LOGGER.VIRTEL) DETAIL(YES)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTL</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IXCMIAPU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">4</span><span class="n">M</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="n">DATA</span> <span class="n">TYPE</span><span class="p">(</span><span class="n">LOGR</span><span class="p">)</span> <span class="n">REPORT</span><span class="p">(</span><span class="n">NO</span><span class="p">)</span>
+<span class="n">LIST</span> <span class="n">STRUCTURE</span> <span class="n">NAME</span><span class="p">(</span><span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span><span class="p">)</span> <span class="n">DETAIL</span><span class="p">(</span><span class="n">YES</span><span class="p">)</span>
+<span class="n">LIST</span> <span class="n">LOGSTREAM</span> <span class="n">NAME</span><span class="p">(</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="p">)</span> <span class="n">DETAIL</span><span class="p">(</span><span class="n">YES</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>The output will look something like this:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Ext</span><span class="o">.</span> <span class="o">&lt;</span><span class="n">SEQ</span><span class="c1">#&gt; Lowest Blockid / Highest GMT / Highest Local / Status Highest Blockid Highest RBA System Name</span>
 <span class="o">-----</span> <span class="o">--------</span> <span class="o">----------------</span> <span class="o">-----------------</span> <span class="o">------------------------</span>
@@ -242,53 +245,65 @@ use the following JCL:-</p>
 </pre></div>
 </div>
 <p>To delete the structure, run the following job:-</p>
-<p>//SPTHOLTC JOB CLASS=A,MSGCLASS=X,MSGLEVEL=(1,1),NOTIFY=&amp;SYSUID</p>
-<p>//STEP1 EXEC PGM=IXCMIAPU,REGION=4M</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>DATA TYPE(LOGR) REPORT(NO)</p>
-<p>DELETE LOGSTREAM NAME(LOGGER.VIRTEL)</p>
-<p>LIST LOGSTREAM NAME(LOGGER.VIRTEL) DETAIL(YES)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTC</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IXCMIAPU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">4</span><span class="n">M</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="n">DATA</span> <span class="n">TYPE</span><span class="p">(</span><span class="n">LOGR</span><span class="p">)</span> <span class="n">REPORT</span><span class="p">(</span><span class="n">NO</span><span class="p">)</span>
+<span class="n">DELETE</span> <span class="n">LOGSTREAM</span> <span class="n">NAME</span><span class="p">(</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="p">)</span>
+<span class="n">LIST</span> <span class="n">LOGSTREAM</span> <span class="n">NAME</span><span class="p">(</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="p">)</span> <span class="n">DETAIL</span><span class="p">(</span><span class="n">YES</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><strong>Reverting back to the console</strong></p>
 <p>To revert back to console logging, the normal logging behaviour for
 Virtel, issue the following command:-</p>
-<p>F VIRTEL,LOG=CONSOLE</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>
+</pre></div>
+</div>
 <p>After this all Virtel messages will be written to the console.</p>
 <p>Example:-</p>
-<p><strong>F SPVIR1A,LOG=CONSOLE</strong></p>
-<p>VIR0238I VIRTEL LOG RECORDING TO CONSOLE</p>
-<p>F SPVIR1A,LINES</p>
-<p>VIR0200I LINES</p>
-<p>VIR0201I VIRTEL 4.55 APPLID=VIRTEL1A LINES</p>
-<p>VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
-<p>VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
-<p>VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.15:41002</p>
-<p>VIR0202I W-HTTP HTTP-W2H TCP1 :41015</p>
-<p>VIR0202I &#8212;END OF LIST&#8212;</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>
+<span class="n">VIR0238I</span> <span class="n">VIRTEL</span> <span class="n">LOG</span> <span class="n">RECORDING</span> <span class="n">TO</span> <span class="n">CONSOLE</span>
+<span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.55</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL1A</span> <span class="n">LINES</span>
+<span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41002</span>
+<span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span> <span class="p">:</span><span class="mi">41015</span>
+<span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
 <p><strong>The VIR0002B Logger print program.</strong></p>
 <p>This program currently resides in SPTHOLT.VIRTEL.DEV.LOADLIB</p>
-<p>Example JCL</p>
-<p>//*</p>
-<p>//* DESCRIPTION</p>
-<p>//*</p>
-<p>//LOGGER PROC P=</p>
-<p>//S01 EXEC PGM=VIR0002B,PARM=&#8217;&amp;P&#8217;</p>
-<p>//STEPLIB DD DSN=SP000.SPTHOLT.DEV.LOADLIB,DISP=SHR</p>
-<p>//SYSUDUMP DD SYSOUT=*</p>
-<p>//SYSOUT DD SYSOUT=*</p>
-<p>//VIRLOG DD SYSOUT=*,DCB=BLKSIZE=13200</p>
-<p>// PEND</p>
-<p>//S01 EXEC LOGGER,P=&#8217;COPY&#8217;</p>
-<p>//*02 EXEC LOGGER,P=&#8217;COPY(&gt;000)&#8217;</p>
-<p>//*03 EXEC LOGGER,P=&#8217;COPY(2014336,2014336)&#8217;</p>
-<p>//*04 EXEC LOGGER,P=&#8217;DELETE(2014336)&#8217;</p>
-<p>//*05 EXEC LOGGER,P=&#8217;DELETE(&gt;000)&#8217;</p>
-<p>The parameters are as follows:</p>
-<p>COPY([start_date][,end_date]), DELETE(date)</p>
-<p>(&gt;nnn) (&gt;nnn)</p>
+<p>Example JCL:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span>
+<span class="o">//*</span> <span class="n">DESCRIPTION</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">LOGGER</span> <span class="n">PROC</span> <span class="n">P</span><span class="o">=</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0002B</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;&amp;P&#39;</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">DEV</span><span class="o">.</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSOUT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRLOG</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span><span class="p">,</span><span class="n">DCB</span><span class="o">=</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">13200</span>
+<span class="o">//</span> <span class="n">PEND</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">LOGGER</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="s1">&#39;COPY&#39;</span>
+<span class="o">//*</span><span class="mi">02</span> <span class="n">EXEC</span> <span class="n">LOGGER</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="s1">&#39;COPY(&gt;000)&#39;</span>
+<span class="o">//*</span><span class="mi">03</span> <span class="n">EXEC</span> <span class="n">LOGGER</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="s1">&#39;COPY(2014336,2014336)&#39;</span>
+<span class="o">//*</span><span class="mi">04</span> <span class="n">EXEC</span> <span class="n">LOGGER</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="s1">&#39;DELETE(2014336)&#39;</span>
+<span class="o">//*</span><span class="mi">05</span> <span class="n">EXEC</span> <span class="n">LOGGER</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="s1">&#39;DELETE(&gt;000)&#39;</span>
+</pre></div>
+</div>
+<p>The parameters are as follows:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">COPY</span><span class="p">([</span><span class="n">start_date</span><span class="p">][,</span><span class="n">end_date</span><span class="p">]),</span> <span class="n">DELETE</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+         <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>                  <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><strong>COPY</strong></p>
 <p>Records are to be copied to the SYSLOG-format file. If COPY is not
 specified, no records are copied.</p>
-<p><strong>start_date,end_date</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span>
+</pre></div>
+</div>
 <p>The starting and ending dates of the time span, both in the format
 YYYYDDD. start_date must not be later than end_date. end_date must
 not be later than today, the day the program runs. The default for
@@ -298,7 +313,9 @@ start_date and end_date are allowed to default, the parentheses after
 COPY may be omitted. If you specify a start date of today, you must also
 specify the end date of today, otherwise the program will assume an end
 date of yesterday and abend.</p>
-<p><strong>&gt;nnn</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nnn</span>
+</pre></div>
+</div>
 <p>Indicates that records dated more than nnn days before today are to be
 copied. The time span will</p>
 <p>start with the date of the oldest record in the log stream and end nnn+1
@@ -319,8 +336,7 @@ be later than today. If the date specified is today, all records in the
 log stream will be deleted.</p>
 <p><strong>&gt;nnn</strong></p>
 <p>Indicates that records dated more than nnn days before today are to be
-deleted. nnn is a number</p>
-<p>between zero and 999. For example, if the program is run on July 15,
+deleted. nnn is a number between zero and 999. For example, if the program is run on July 15,
 specifying &#8220;DELETE(&gt;5)&#8221; will delete records dated up to and including
 July 9. Note that &gt;0 corresponds to yesterday. To delete today&#8217;s
 records, you must use the &#8220;date&#8221; form and specify today as the date. If
@@ -329,7 +345,8 @@ DELETE is specified, either the date or &#8220;&gt;nnn&#8221; must be given.</p>
 must be separated by a comma and may appear in either order. However,
 regardless of the order in which the parameters are specified, the copy
 operation will always occur before the delete.</p>
-<p><strong>Warning:</strong> When copying records, this program detects the end of a
+<p><strong>Notes:-</strong></p>
+<p>When copying records, this program detects the end of a
 day&#8217;s records when it either reads the first record for the next day or
 attempts to read past the newest record in the log stream. This means
 that, if end_date is today and the log stream is being written at the
@@ -337,16 +354,15 @@ time this program runs, the records that are copied may not be
 predictable. In particular, if both COPY with an ending date of today
 and DELETE with a date of today are specified, there may be more records
 deleted than copied.</p>
-<p><strong>Warning:</strong> When the &#8220;&gt;nnn&#8221; form of the COPY or DELETE parameter is
+<p>When the &#8220;&gt;nnn&#8221; form of the COPY or DELETE parameter is
 specified, program converts it to a date by subtracting nnn days from
 the date the program is run. The calculation is done once, at the
 beginning of the program. If the program is run shortly before midnight,
 so that the calculation occurs before midnight and the actual copying or
 deletion of records occurs after midnight, the records copied or deleted
 will not reflect the number of days specified. To prevent this, you
-should</p>
-<p>avoid running the program close to midnight with the &#8220;&gt;nnn&#8221; form.</p>
-<p>Note that if the program is run regularly after midnight with the
+should avoid running the program close to midnight with the &#8220;&gt;nnn&#8221; form.</p>
+<p>If the program is run regularly after midnight with the
 parameter &#8220;COPY(&gt;0),DELETE(&gt;1)&#8221;, it will copy records from the previous
 day and earlier, and will delete from the records from two days ago,
 leaving something over 24 hours&#8217; worth of records in the log each time.</p>

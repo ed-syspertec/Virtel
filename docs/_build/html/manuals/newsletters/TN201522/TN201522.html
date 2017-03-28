@@ -389,9 +389,7 @@ COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;H1&#39;,                                *
 </pre></div>
 </div>
 <p><strong>Virtel Memory Display</strong></p>
-<p>The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar.</p>
-<p>The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).</p>
-<p>This diagnostic tool should only be used when recommended by Technical Support.</p>
+<p>The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar. The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE). This diagnostic tool should only be used when recommended by Technical Support.</p>
 <p>The feature is supported by the following command:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span>
 </pre></div>
@@ -551,24 +549,30 @@ services. This will depend on VIRTEL demand.</p>
 <p>Default search is none.</p>
 <p>Default action is SNAP</p>
 <p>Constraints:</p>
-<p>All msgno are 8 characters.</p>
-<p>The search field has is restricted to a maximum of 10 Characters. Anything beyond this will be ignored.</p>
-<p>Actions: S = SNAP or A = ABEND.</p>
-<p>Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</p>
+<ul class="simple">
+<li>All msgno are 8 characters.</li>
+<li>The search field has is restricted to a maximum of 10 Characters. Anything beyond this will be ignored.</li>
+<li>Actions: S = SNAP or A = ABEND.</li>
+<li>Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</li>
+</ul>
 <p><strong>Messages</strong></p>
 <p><strong>&#8216;VIR0262W</strong> SNAPMSG TRIGGERED - VIRTEL ABENDED | SNAP TAKEN&#8217;,</p>
 <p>Module :VIR0002</p>
 <p>Meaning A message has been trapped by the SNAPMSG function. Action taken will be either a SNAP dump or an ABEND of VirteL.</p>
 <p>Action :Determined by TCT parameters or the action set in the SNAPMSG=command.</p>
-<p>Examples:-</p>
+<p><em>Examples:-</em></p>
 <p>TCT:</p>
 <p>Snap message VIR2102W with search field USSTAB:</p>
-<p>SNAPMSG=(VIR2102W,USSTAB,S),</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="p">(</span><span class="n">VIR2102W</span><span class="p">,</span><span class="n">USSTAB</span><span class="p">,</span><span class="n">S</span><span class="p">),</span>
+</pre></div>
+</div>
 <p>Command:</p>
 <p>Abend VIRTEL fi message VIR2102W is caught with search field USSX:</p>
-<p>F VIRTEL,SNAPMSG=VIR2102W,USSX,A</p>
-<p>Response:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>15.35.51 JOB05133 VIR0200I SNAPMSG=VIR2102W,USSX,A
+<div class="highlight-default"><div class="highlight"><pre><span></span>F VIRTEL,SNAPMSG=VIR2102W,USSX,A
+
+Response:-
+
+15.35.51 JOB05133 VIR0200I SNAPMSG=VIR2102W,USSX,A
 15.35.58 JOB05133 VIRHT51I HTTP-CLI CONNECTING CLVTA078 TO 192.168.092.061:49878
 15.35.58 JOB05133 VIR2102W UNABLE TO LOAD THE TRANSACTION USSTAB USSX . DEFAULT USSTAB USSVIRT WILL BE USED.
 15.35.58 JOB05133 VIR0055W SNAPMSG TRIGGERED - VIRTEL ABENDED**
@@ -668,19 +672,19 @@ services. This will depend on VIRTEL demand.</p>
 </div>
 <p><strong>New JCL Parameters. IP= and CLONE=</strong></p>
 <p>The purpose of this feature is to lower the coupling between the TCT, ARBO and instances of VIRTEL so that there is less dependency on the parameters defined in the ARBO and TCT for any one VIRTEL instance. This feature enables JCL parameters to override parameters found in the TCT and ARBO.</p>
-<p><strong>IP=nnn.nnn.nnn.nnn</strong> keyword:-</p>
-<p>Currently the IP address used by VIRTEL for a particular line can be derived from being:</p>
-<ol class="loweralpha simple">
+<p><em>IP=nnn.nnn.nnn.nnn keyword</em></p>
+<p>Currently the IP address used by VIRTEL for a particular line can be derived from being:-</p>
+<ul class="simple">
 <li>Explicitly defined in the LINE definition in the ARBO statements</li>
 <li>Defaults to the IP stack HOME address. The TCP/IP GETHOSTID function is used to obtain this address.</li>
-</ol>
+</ul>
 <p>This change implements the possibility to override option (b) with the ability to specify the IP address as a keyword in the JCL PARM field. As an example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0000</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s2">&quot;01,MYAPPL,,192.168.0.123&quot;</span>
 </pre></div>
 </div>
 <p>This reduces the need to specify the HOME address in the ARBO for inbound lines thereby reducing the coupling between the various VIRTEL instances that could be running within a complex and the ARBO structures. Inbound address can just define the port via the :port structure only rather than the full nnn.nnn.nnn.nnn:port specification. The IP= keyword will provide the nnn.nnn.nnn.nnn address structure for a particular instance of Virtel. So one ARBO file could provide common port addresses and the VIRTEL instance complements this with a specific IP address using the JCL IP= parameter.</p>
 <p>This also allows VIRTEL to utilize a multi TCP/IP stack environment without the need for duplicated ARBO files.</p>
-<p><strong>CLONE=NN</strong> keyword:-</p>
+<p><em>CLONE=NN keyword</em></p>
 <p>Currently, VIRTEL makes use of the System Symbolic &amp;SYSCLONE to enable substitution of the &#8220;+&#8221; character with the two character symbolic value of the System Symbolic. This can be used the TCT APPLID field and
 terminal relay names defined in the ARBO. The purpose is to facilitate the common use of an ARBO file across multiple instances of VIRTEL, however, this feature is restricted to supporting only one instance of
 VIRTEL per LPAR.</p>
@@ -760,26 +764,25 @@ indicators are as follows:-</p>
 </ul>
 <p>In the above example, YYY indicates full tracing (Data Elements) with trace archive active. The default setting is YYN which is the equivalent of TRACE=ON. By default external archive tracing is not turned on.</p>
 <p>TCT option:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEON</span><span class="o">=</span> <span class="n">ON</span> <span class="o">|</span> <span class="n">OFF</span> <span class="o">|</span> <span class="p">(</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">,</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">,</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEON</span><span class="o">=</span><span class="n">ON</span> <span class="o">|</span> <span class="n">OFF</span> <span class="o">|</span> <span class="p">(</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">,</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">,</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">)</span>
 
-<span class="n">Default</span> <span class="o">=</span> <span class="n">ON</span> <span class="n">Equivalent</span> <span class="n">VIT</span> <span class="o">=</span> <span class="n">YYN</span> <span class="n">Tracing</span> <span class="n">ON</span>
+<span class="n">Default</span> <span class="o">=</span> <span class="n">ON</span>  <span class="n">Equivalent</span> <span class="n">VIT</span> <span class="o">=</span> <span class="n">YYN</span>      <span class="n">Tracing</span> <span class="n">ON</span>
+          <span class="n">OFF</span> <span class="n">Equivalent</span> <span class="n">VIT</span> <span class="o">=</span> <span class="n">NNN</span>              <span class="n">Tracing</span> <span class="n">OFF</span>
 
-<span class="n">OFF</span> <span class="n">Equivalent</span> <span class="n">VIT</span> <span class="o">=</span> <span class="n">NNN</span>                <span class="n">Tracing</span> <span class="n">OFF</span>
 
-<span class="n">TRACEON</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="n">n</span> <span class="o">=</span> <span class="n">Y</span><span class="o">|</span> <span class="n">N</span>                <span class="n">Set</span> <span class="n">Tracing</span> <span class="n">options</span>
+<span class="n">TRACEON</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>    <span class="n">n</span> <span class="o">=</span> <span class="n">Y</span><span class="o">|</span> <span class="n">N</span>     <span class="n">Set</span> <span class="n">Tracing</span> <span class="n">options</span>
+
+<span class="n">Examples</span><span class="p">:</span><span class="o">-</span>
 
 <span class="n">TRACEON</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>                                 <span class="n">Tracing</span> <span class="n">OFF</span>
-
 <span class="n">TRACEON</span><span class="o">=</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>                                 <span class="n">Minimal</span> <span class="n">tracing</span><span class="p">,</span> <span class="n">no</span> <span class="n">data</span> <span class="n">elements</span>
-
 <span class="n">TRACEON</span><span class="o">=</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>                                 <span class="n">Default</span> <span class="n">Full</span> <span class="n">tracing</span><span class="p">,</span> <span class="n">no</span> <span class="n">archive</span> <span class="o">.</span>
-
 <span class="n">TRACEON</span><span class="o">=</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>                                 <span class="n">Full</span> <span class="n">tracing</span> <span class="k">with</span> <span class="n">archive</span>
 </pre></div>
 </div>
 <p>Command Option:</p>
 <p>The VIT tracing categories can be set through the F VIRTEL,TRACE command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">VIT</span><span class="o">=</span><span class="n">nnn</span> <span class="n">nnn</span> <span class="n">correspond</span> <span class="n">to</span> <span class="n">the</span> <span class="n">three</span> <span class="n">Y</span>\<span class="o">|</span><span class="n">N</span> <span class="n">indicators</span><span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">VIT</span><span class="o">=</span><span class="n">nnn</span> <span class="n">nnn</span> <span class="n">correspond</span> <span class="n">to</span> <span class="n">the</span> <span class="n">three</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span> <span class="n">indicators</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>Example:</p>
@@ -864,7 +867,6 @@ it will subsequently be converted into a HTML template and served to the browser
 <p class="first admonition-title">Note</p>
 <p class="last">This is a chargeable feature and you should contact your sales representative for further details.</p>
 </div>
-<p><strong>Virtel Administration Enhancements</strong></p>
 </div>
 </div>
 

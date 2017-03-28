@@ -1,3 +1,5 @@
+.. _tn201515:
+
 Using Virtel as a Secure Single Access Control Point
 ====================================================
 
@@ -26,7 +28,7 @@ different levels.
 
 |image0|
 
-Figure 1 Network Example with Virtel as a SACP
+*Figure 1 Network Example with Virtel as a SACP*
 
 In our network example all setup connections are processed by Virtel.
 Using the Web Modernisation feature of Virtel scenarios can be employed
@@ -48,22 +50,25 @@ establishing a telnet session:-
 
 |image1|
 
-Figure 2 Logon onto TSO
+*Figure 2 Logon onto TSO*
 
 Once in TSO, we select option 6 and enter the TSO telnet client command,
-pointing the IPL address at the z/VM system. In our case the command is
-*telnet 192.168.92.163*
+pointing the IPL address at the z/VM system. In our case the command is:-
+
+::
+
+	telnet 192.168.92.163
 
 |image2|
 
-Figure 3 Telnet to z/VM
+*Figure 3 Telnet to z/VM*
 
 Once the telnet command has been executed a z/VM window will be opened
 in the Virtel session.
 
 |image3|
 
-Figure 4 VM Session via TSO Telnet
+*Figure 4 VM Session via TSO Telnet*
 
 From here a user can logon with their VM Users id and access CMS. As the
 TSO telnet session is running in “Transparent mode” full 3270 capability

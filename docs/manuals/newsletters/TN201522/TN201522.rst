@@ -305,11 +305,7 @@ Examples:-
 
 **Virtel Memory Display**
 
-The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar.
-
-The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).
-
-This diagnostic tool should only be used when recommended by Technical Support.
+The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar. The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE). This diagnostic tool should only be used when recommended by Technical Support.
 
 The feature is supported by the following command:-
 
@@ -521,13 +517,10 @@ Default action is SNAP
 
 Constraints:
 
-All msgno are 8 characters.
-
-The search field has is restricted to a maximum of 10 Characters. Anything beyond this will be ignored.
-
-Actions: S = SNAP or A = ABEND.
-
-Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
+- All msgno are 8 characters.
+- The search field has is restricted to a maximum of 10 Characters. Anything beyond this will be ignored.
+- Actions: S = SNAP or A = ABEND.
+- Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
 
 **Messages**
 
@@ -539,23 +532,25 @@ Meaning A message has been trapped by the SNAPMSG function. Action taken will be
 
 Action :Determined by TCT parameters or the action set in the SNAPMSG=command.
 
-Examples:-
+*Examples:-*
 
 TCT:
 
 Snap message VIR2102W with search field USSTAB:
 
-SNAPMSG=(VIR2102W,USSTAB,S),
+::
+
+	SNAPMSG=(VIR2102W,USSTAB,S),
 
 Command:
 
 Abend VIRTEL fi message VIR2102W is caught with search field USSX:
 
-F VIRTEL,SNAPMSG=VIR2102W,USSX,A
-
-Response:-
-
 ::
+
+	F VIRTEL,SNAPMSG=VIR2102W,USSX,A
+
+	Response:-
 
 	15.35.51 JOB05133 VIR0200I SNAPMSG=VIR2102W,USSX,A
 	15.35.58 JOB05133 VIRHT51I HTTP-CLI CONNECTING CLVTA078 TO 192.168.092.061:49878
@@ -689,13 +684,12 @@ SAMPLE JCL:
 
 The purpose of this feature is to lower the coupling between the TCT, ARBO and instances of VIRTEL so that there is less dependency on the parameters defined in the ARBO and TCT for any one VIRTEL instance. This feature enables JCL parameters to override parameters found in the TCT and ARBO.
 
-**IP=nnn.nnn.nnn.nnn** keyword:-
+*IP=nnn.nnn.nnn.nnn keyword*
 
-Currently the IP address used by VIRTEL for a particular line can be derived from being:
+Currently the IP address used by VIRTEL for a particular line can be derived from being:-
 
-a) Explicitly defined in the LINE definition in the ARBO statements
-
-b) Defaults to the IP stack HOME address. The TCP/IP GETHOSTID function is used to obtain this address.
+- Explicitly defined in the LINE definition in the ARBO statements
+- Defaults to the IP stack HOME address. The TCP/IP GETHOSTID function is used to obtain this address.
 
 This change implements the possibility to override option (b) with the ability to specify the IP address as a keyword in the JCL PARM field. As an example:-
 
@@ -707,7 +701,7 @@ This reduces the need to specify the HOME address in the ARBO for inbound lines 
 
 This also allows VIRTEL to utilize a multi TCP/IP stack environment without the need for duplicated ARBO files.
 
-**CLONE=NN** keyword:-
+*CLONE=NN keyword*
 
 Currently, VIRTEL makes use of the System Symbolic &SYSCLONE to enable substitution of the "+" character with the two character symbolic value of the System Symbolic. This can be used the TCT APPLID field and
 terminal relay names defined in the ARBO. The purpose is to facilitate the common use of an ARBO file across multiple instances of VIRTEL, however, this feature is restricted to supporting only one instance of
@@ -833,20 +827,19 @@ TCT option:-
 
 ::
 
-	TRACEON= ON | OFF | (Y | N,Y | N,Y | N)
-
-	Default = ON Equivalent VIT = YYN Tracing ON
-
-	OFF Equivalent VIT = NNN 		Tracing OFF
-
-	TRACEON=(n,n,n) n = Y| N 		Set Tracing options
+	TRACEON=ON | OFF | (Y | N,Y | N,Y | N)
+	
+	Default = ON  Equivalent VIT = YYN      Tracing ON
+	          OFF Equivalent VIT = NNN 		Tracing OFF
+ 
+ 
+	TRACEON=(n,n,n)    n = Y| N 	Set Tracing options
+ 
+	Examples:-
 
 	TRACEON=(N,N,N) 				Tracing OFF
-
 	TRACEON=(Y,N,N) 				Minimal tracing, no data elements
-
 	TRACEON=(Y,Y,N) 				Default Full tracing, no archive .
-
 	TRACEON=(Y,Y,Y) 				Full tracing with archive
 
 Command Option:
@@ -855,7 +848,7 @@ The VIT tracing categories can be set through the F VIRTEL,TRACE command:-
 
 ::
 
-	F VIRTEL,TRACE,VIT=nnn nnn correspond to the three Y\|N indicators.
+	F VIRTEL,TRACE,VIT=nnn nnn correspond to the three Y|N indicators.
 
 Example:
 
@@ -977,5 +970,3 @@ it will subsequently be converted into a HTML template and served to the browser
 .. note::
 
 	This is a chargeable feature and you should contact your sales representative for further details.
-
-**Virtel Administration Enhancements**
