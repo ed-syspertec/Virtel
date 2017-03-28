@@ -1,3 +1,5 @@
+.. _tn201507:
+
 Customising Virtel
 ==================
 
@@ -54,33 +56,33 @@ contains user or customisable Virtel WEB elements.
 
 A copy of the default source can be viewed by using a browser to display
 the file. For example, to display the shipped custom.css file enter the
-following `URL:- <file:///D:\Documents\SysperTec\Newsletters\->`__
+following URL:- 
 
-192.168.170.30:41001/w2h/custom-css/custom.css
+::
 
-This will display the default custom.css file. The ipaddress:port could
-well be different, but as shipped the ipaddress:41001 URL is the W-HTTP
-line. The resulting display in the browser is:-
+	192.168.170.30:41001/w2h/custom-css/custom.css
 
-/\*
+.. note::
+	
+	The file is also included with the sources.zip file which can be downloaded from the administration portal.
 
-\* VIRTEL Web Access style sheet for site customisation
+This is the default custom.css file. The ipaddress:port could well be different, but the port 41001 in the URL is the default for the W-HTTP
+line which points to the distributed files. The resulting display in the browser should look like this:-
 
-\* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
+::
 
-\* $Id$
-
-\*/
-
-.myCICSname #toolbar {
-
-background-color:yellow;
-
-}
+	/*
+	* VIRTEL Web Access style sheet for site customisation
+	* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
+	* $Id$
+	*/
+	.myCICSname #toolbar {
+	background-color:yellow;
+	}
 
 Using the C-HTTP LINE ipaddress:41002 URL instead of ipaddress:41001
 will present the same details as the W-HTTP line because both line
-/entry point / transaction refer to the same web element located on the
+/entry point/transaction refer to the same web element located on the
 SAMPTRSF file.
 
 The css file can be saved from the browser display and then customised.
@@ -152,9 +154,7 @@ transaction delivered as standard under the CLIWHOST entry point
 references the W2H-DIR directory, but the administrator can modify this
 transaction to reference a different directory containing a
 site-specific version of custom.js. The CLI-DIR directory, which is
-intended for client-specific files, may be
-
-used for this purpose. See *Virtel Web Access User Guide, Chapter 1.13,
+intended for client-specific files, may be used for this purpose. See *Virtel Web Access User Guide, Chapter 1.13,
 Site Customization of Javascript functions.*
 
 **File w2hparm.js**

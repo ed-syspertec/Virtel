@@ -158,7 +158,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="customising-virtel">
-<h1>Customising Virtel<a class="headerlink" href="#customising-virtel" title="Permalink to this headline">¶</a></h1>
+<span id="tn201507"></span><h1>Customising Virtel<a class="headerlink" href="#customising-virtel" title="Permalink to this headline">¶</a></h1>
 <p>As delivered, Virtel contains several web elements which can be
 customised to turn on/off features and customise presentation. This
 newsletter discusses how to implement a customised Virtel and how to
@@ -267,22 +267,29 @@ contains user or customisable Virtel WEB elements.</p>
 <p><strong>How to customise.</strong></p>
 <p>A copy of the default source can be viewed by using a browser to display
 the file. For example, to display the shipped custom.css file enter the
-following <a class="reference external" href="file:///D:DocumentsSysperTecNewsletters-">URL:-</a></p>
-<p>192.168.170.30:41001/w2h/custom-css/custom.css</p>
-<p>This will display the default custom.css file. The ipaddress:port could
-well be different, but as shipped the ipaddress:41001 URL is the W-HTTP
-line. The resulting display in the browser is:-</p>
-<p>/*</p>
-<p>* VIRTEL Web Access style sheet for site customisation</p>
-<p>* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved</p>
-<p>* $Id$</p>
-<p>*/</p>
-<p>.myCICSname #toolbar {</p>
-<p>background-color:yellow;</p>
-<p>}</p>
+following URL:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">custom</span><span class="o">-</span><span class="n">css</span><span class="o">/</span><span class="n">custom</span><span class="o">.</span><span class="n">css</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The file is also included with the sources.zip file which can be downloaded from the administration portal.</p>
+</div>
+<p>This is the default custom.css file. The ipaddress:port could well be different, but the port 41001 in the URL is the default for the W-HTTP
+line which points to the distributed files. The resulting display in the browser should look like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>/*
+* VIRTEL Web Access style sheet for site customisation
+* (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
+* $Id$
+*/
+.myCICSname #toolbar {
+background-color:yellow;
+}
+</pre></div>
+</div>
 <p>Using the C-HTTP LINE ipaddress:41002 URL instead of ipaddress:41001
 will present the same details as the W-HTTP line because both line
-/entry point / transaction refer to the same web element located on the
+/entry point/transaction refer to the same web element located on the
 SAMPTRSF file.</p>
 <p>The css file can be saved from the browser display and then customised.
 It can then be uploaded to the CLI-DIR directory using the
@@ -339,8 +346,7 @@ transaction delivered as standard under the CLIWHOST entry point
 references the W2H-DIR directory, but the administrator can modify this
 transaction to reference a different directory containing a
 site-specific version of custom.js. The CLI-DIR directory, which is
-intended for client-specific files, may be</p>
-<p>used for this purpose. See <em>Virtel Web Access User Guide, Chapter 1.13,
+intended for client-specific files, may be used for this purpose. See <em>Virtel Web Access User Guide, Chapter 1.13,
 Site Customization of Javascript functions.</em></p>
 <p><strong>File w2hparm.js</strong></p>
 <p>The VIRTEL Web Access user can use the Settings menu to modify certain
