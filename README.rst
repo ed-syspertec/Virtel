@@ -34,3 +34,8 @@ ed-syspertec.com ed.holt@syspertec.com
 
 `Virtel <http://virtel.readthedocs.io>`_
 
+make
+----
+
+make clean	Clean directories
+make html	Build files
