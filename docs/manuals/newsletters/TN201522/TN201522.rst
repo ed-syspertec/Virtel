@@ -373,8 +373,7 @@ The memory diagnostic tool can be deactivated by the following command:-
 
 	F VIRTEL,MEMDISPLAY,DISABLE
 
-Operation
-^^^^^^^^^
+*Operation*
 
 With the memory diagnostic tool active the following command be used to summarize the VIRTEL subpool active allocated memory:-
 
@@ -439,7 +438,7 @@ For example in the above display in SP5 we can see that there is an allocated va
 
 At the bottom of the display is a line which provide allocated, free and total values.
 
-**Messages**
+*Messages*
 
 **VIRT0085I** INVALID MEMORY FREE REQUEST. ADDR=aaaaaaaa, SUBPOOL=ss, CALLER=aaaaaaaa'
 
@@ -478,7 +477,7 @@ Meaning: The DSA memory table is full and cannot store further entries. Memory d
 
 Action: Virtel contines but you should contact support support. Schedule a restart of Virtel.
 
-**TCT Parameters:**
+**New TCT Parameters:**
 
 New MEMORY parameter - MEMHST
 
@@ -495,7 +494,7 @@ Use Virtel memory management with memory diagnostic tool and above the bar stora
 
 	MEMORY=(ABOVE,MEMHST,ALLOW64BITS)
 
-**New diagnostic option - SNAPMSG**
+**New diagnostic command option - SNAPMSG**
 
 The SNAPMSG enhancement allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a particular character string. For example a specific return code. The enhancement is defined within the TCT using the SNAPMSG= keyword or as a command.
 
@@ -522,7 +521,7 @@ Constraints:
 - Actions: S = SNAP or A = ABEND.
 - Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
 
-**Messages**
+*Messages*
 
 **'VIR0262W** SNAPMSG TRIGGERED - VIRTEL ABENDED \| SNAP TAKEN',
 
@@ -532,7 +531,7 @@ Meaning A message has been trapped by the SNAPMSG function. Action taken will be
 
 Action :Determined by TCT parameters or the action set in the SNAPMSG=command.
 
-*Examples:-*
+*Examples*
 
 TCT:
 
@@ -586,7 +585,51 @@ Abend VIRTEL fi message VIR2102W is caught with search field USSX:
 
 VIR0002B is a program that can be run to extract the VIRTEL records from the System Logger. The VIRTEL log is written to the system logger when LOG=LOGGER is specified in the TCT.
 
-Messages
+*Program Details*
+
+SAMPLE JCL:
+
+::
+
+	//*
+	//* DESCRIPTION
+	//*
+	//LOGGER PROC P=
+	//S01 EXEC PGM=VIR0002B,PARM='&P'
+	//STEPLIB DD DSN=VIRTEL.LOADLIB,DISP=SHR
+	//VIRLOG  DD SYSOUT=*,DCB=(LRECL=255,BLKSIZE=25500,RECFM=VB)
+	// PEND
+	//S01 EXEC LOGGER,P='DELETE(>2)'
+
+*Parameters*
+
+::
+
+                 (>nnn)
+	COPY [-------------------]
+	      (fromdate[,todate])
+
+                  (>nnn)
+	DELETE [-------------------]
+	              (date)
+
+	Date format = yyyyddd
+
+	Examples:
+	COPY                     Copy all records
+	COPY(>2)                 Copy records older than 2 days
+	COPY(>0)                 Copy up to yesterday
+	DELETE(>2)               Delete records older than 2 days
+	COPY(2015047)            Copy records from 2015.047
+	COPY(2015047,2015048)    Copy records from 2015.047 thru to 2015.048
+	DELETE(2015047)          Delete records prior to 2015.047
+
+	COPY(>0),DELETE(>1)      Will copy records from the previous 
+	                         and earlier, and will then delete 	from 2 
+	                         days ago leaving about 24 	hours 
+	                         of data in the log stream.
+
+*Messages*
 
 **VIR0280I** Parameter Error
 
@@ -635,50 +678,6 @@ Module : VIR0002B
 Meaning :The VIRLOG output DDNAME failed to open.
 
 Action :Correct the JCL and rerun the job.
-
-**Program Details**
-
-::
-
-	JCL Parameters:
-
-                 (>nnn)
-	COPY [-------------------]
-	      (fromdate[,todate])
-
-                  (>nnn)
-	DELETE [-------------------]
-	              (date)
-
-	Date format = yyyyddd
-
-	Examples:
-	COPY                     Copy all records
-	COPY(>2)                 Copy records older than 2 days
-	COPY(>0)                 Copy up to yesterday
-	DELETE(>2)               Delete records older than 2 days
-	COPY(2015047)            Copy records from 2015.047
-	COPY(2015047,2015048)    Copy records from 2015.047 thru to 2015.048
-	DELETE(2015047)          Delete records prior to 2015.047
-
-	COPY(>0),DELETE(>1)      Will copy records from the previous 
-	                         and earlier, and will then delete 	from 2 
-	                         days ago leaving about 24 	hours 
-	                         of data in the log stream.
-
-SAMPLE JCL:
-
-::
-
-	//*
-	//* DESCRIPTION
-	//*
-	//LOGGER PROC P=
-	//S01 EXEC PGM=VIR0002B,PARM='&P'
-	//STEPLIB DD DSN=VIRTEL.LOADLIB,DISP=SHR
-	//VIRLOG  DD SYSOUT=*,DCB=(LRECL=255,BLKSIZE=25500,RECFM=VB)
-	// PEND
-	//S01 EXEC LOGGER,P='DELETE(>2)'
 
 **New JCL Parameters. IP= and CLONE=**
 
@@ -747,7 +746,7 @@ The STATDSN keyword as defined in the TCT will allocate and use datasets:-
 
 	SP000.SPVIREH.SYS00.STATA and SP00.SPVIREH.SYS00.STATB.
 
-**New Messages**
+*Messages*
 
 **VIR0098E** INVALID JCL PARM. JOB TERMINATING.
 
@@ -784,10 +783,6 @@ default to the IP address returned by GETHOSTID.
 
 **Trace buffer enhancement and offload.**
 
-This feature implements the following Virtel diagnostic enhancements:-
-
-*External Trace buffers.*
-
 This enhancement provides additional trace and diagnostic material covering a longer time span. The current VIT trace buffer is 200K which is insufficient to capture time related problems. 200K holds a couple of second’s worth of trace data at the most. This change implements logic which moves the trace buffer to external storage and chains the buffers together. When a trace buffer fills it is automatically moved to
 external storage above the 2GB storage bar. When taking a snap all trace buffers are printed, first those above the bar and finally the current trace buffer.
 
@@ -812,14 +807,16 @@ The active tracing category is displayed in the TRACE display message:-
 	VIR0208I VIRTEL INTERNAL TRACE = YYY. EXT. BUFFERS = 0001/00FF.
 	VIR0213I NO ACTIVE TRACES
 
-Message VIR0208I indicates the VIT status through a three character Y | N display and also provides information about the current number of external buffers used and the maximum available. The VIT display
+Message VIR0208I indicates the VIT status through a three character Y | N display and also provides information about the current number of external buffers used and the maximum available. The three VIT display
 indicators are as follows:-
 
-- Y | N No tracing or minimal tracing
+::
 
-- Y | N Data elements traced
+	- Y|N 		No tracing or minimal tracing
 
-- Y | N External Archive active
+	- Y|N 		Data elements traced
+
+	- Y|N 		External Archive active
 
 In the above example, YYY indicates full tracing (Data Elements) with trace archive active. The default setting is YYN which is the equivalent of TRACE=ON. By default external archive tracing is not turned on.
 
@@ -830,7 +827,7 @@ TCT option:-
 	TRACEON=ON | OFF | (Y | N,Y | N,Y | N)
 	
 	Default = ON  Equivalent VIT = YYN      Tracing ON
-	          OFF Equivalent VIT = NNN 		Tracing OFF
+	          OFF Equivalent VIT = NNN      Tracing OFF
  
  
 	TRACEON=(n,n,n)    n = Y| N 	Set Tracing options
@@ -856,7 +853,7 @@ Example:
 
 	F VIRTEL,TRACE,VIT=YYY 	Turn on full VIT tracing plus external buffer archive.
 
-*Ability to offload trace buffers to a dataset.*
+*Ability to offload trace buffers to a dataset*
 
 With the external VIT trace facility comes the ability to offload the trace buffers to a dataset. This offload capability can be triggered when the maximum number of external trace buffers have been reached, as
 identified in message VIR0208I, or through an operator command:
@@ -918,7 +915,7 @@ Example:
 
 	If external buffering is not active any offload command will be rejected as invalid.
 
-**New or altered Messages**
+*Messages*
 
 **VIR0208I** VIRTEL INTERNAL TRACE = xxx. EXT. BUFFERS = yyyy/zzzz.
 

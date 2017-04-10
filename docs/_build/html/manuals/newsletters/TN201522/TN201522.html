@@ -103,10 +103,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201517/TN201517.html">Virtel Chinese Character Language Support</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201519/TN201519.html">Processing the VTAM USS MSG10 buffer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201520/TN201520.html">Using the IBM System Logger with Virtel</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">What’s new in Virtel 4.55</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#operation">Operation</a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">What’s new in Virtel 4.55</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
@@ -447,8 +444,7 @@ COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;H1&#39;,                                *
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span><span class="p">,</span><span class="n">DISABLE</span>
 </pre></div>
 </div>
-<div class="section" id="operation">
-<h2>Operation<a class="headerlink" href="#operation" title="Permalink to this headline">¶</a></h2>
+<p><em>Operation</em></p>
 <p>With the memory diagnostic tool active the following command be used to summarize the VIRTEL subpool active allocated memory:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span>
 </pre></div>
@@ -504,7 +500,7 @@ COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;H1&#39;,                                *
 <p>In the summary display, each subpool has two displayed values. The top value is the amount of storage currently allocated and the value below represents the current allocation in 1K chunks and a peak allocation in 1K chunks.</p>
 <p>For example in the above display in SP5 we can see that there is an allocated value of 317DC bytes, represented by 00C5 in 1K chunks, and a peak value of 04C7 in 1K chunks.</p>
 <p>At the bottom of the display is a line which provide allocated, free and total values.</p>
-<p><strong>Messages</strong></p>
+<p><em>Messages</em></p>
 <p><strong>VIRT0085I</strong> INVALID MEMORY FREE REQUEST. ADDR=aaaaaaaa, SUBPOOL=ss, CALLER=aaaaaaaa&#8217;</p>
 <p>Module : VIR0000
 Meaning : The Virtel memory request is invalid because:-</p>
@@ -526,7 +522,7 @@ Meaning : The Virtel memory request is invalid because:-</p>
 <p>Module :VIR0000</p>
 <p>Meaning: The DSA memory table is full and cannot store further entries. Memory diagnostics disabled.</p>
 <p>Action: Virtel contines but you should contact support support. Schedule a restart of Virtel.</p>
-<p><strong>TCT Parameters:</strong></p>
+<p><strong>New TCT Parameters:</strong></p>
 <p>New MEMORY parameter - MEMHST</p>
 <p>MEMORY=(BELOW/ABOVE(DEBUG | MEMHST | ALLOW64BITS)</p>
 <p>MEMORY=(ABOVE,MEMHST) turns on the Virtel memory diagnostic tool. This should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring
@@ -536,7 +532,7 @@ services. This will depend on VIRTEL demand.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMORY</span><span class="o">=</span><span class="p">(</span><span class="n">ABOVE</span><span class="p">,</span><span class="n">MEMHST</span><span class="p">,</span><span class="n">ALLOW64BITS</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>New diagnostic option - SNAPMSG</strong></p>
+<p><strong>New diagnostic command option - SNAPMSG</strong></p>
 <p>The SNAPMSG enhancement allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a particular character string. For example a specific return code. The enhancement is defined within the TCT using the SNAPMSG= keyword or as a command.</p>
 <p>Command format:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">msgno</span><span class="p">[,</span><span class="n">search</span><span class="p">],[</span><span class="n">S</span><span class="o">|</span><span class="n">A</span><span class="p">]</span>
@@ -555,12 +551,12 @@ services. This will depend on VIRTEL demand.</p>
 <li>Actions: S = SNAP or A = ABEND.</li>
 <li>Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</li>
 </ul>
-<p><strong>Messages</strong></p>
+<p><em>Messages</em></p>
 <p><strong>&#8216;VIR0262W</strong> SNAPMSG TRIGGERED - VIRTEL ABENDED | SNAP TAKEN&#8217;,</p>
 <p>Module :VIR0002</p>
 <p>Meaning A message has been trapped by the SNAPMSG function. Action taken will be either a SNAP dump or an ABEND of VirteL.</p>
 <p>Action :Determined by TCT parameters or the action set in the SNAPMSG=command.</p>
-<p><em>Examples:-</em></p>
+<p><em>Examples</em></p>
 <p>TCT:</p>
 <p>Snap message VIR2102W with search field USSTAB:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="p">(</span><span class="n">VIR2102W</span><span class="p">,</span><span class="n">USSTAB</span><span class="p">,</span><span class="n">S</span><span class="p">),</span>
@@ -605,35 +601,21 @@ Response:-
 </div>
 <p><strong>Virtel Logger extract and format program.</strong></p>
 <p>VIR0002B is a program that can be run to extract the VIRTEL records from the System Logger. The VIRTEL log is written to the system logger when LOG=LOGGER is specified in the TCT.</p>
-<p>Messages</p>
-<p><strong>VIR0280I</strong> Parameter Error</p>
-<p>Module : VIR0002B</p>
-<p>Meaning :Invalid parameters in PARM field.</p>
-<p>Action :Correct PARM field and provide valid parameters.</p>
-<p><strong>VIR0281E</strong> System Logger Error. xxxxxxxx. Return Code xx, Reason code nnnn</p>
-<p>Module : VIR0002B</p>
-<p>Meaning :Logger service has failed in routine <em>xxxxxxxx</em></p>
-<p>Action :Contact technical support.</p>
-<p><strong>VIR0282W</strong> No records in range specified</p>
-<p>Module : VIR0002B</p>
-<p>Meaning :The parameters provided in the PARM field did not select any records from the log.</p>
-<p>Action :Check that valid parameters have been provided.</p>
-<p><strong>VIR0283W</strong> The log stream is empty</p>
-<p>Module : VIR0002B</p>
-<p>Meaning :The log stream has no Virtel records.</p>
-<p>Action :None.</p>
-<p><strong>VIR0284W</strong> Records are not available. xxxxxxxx. Return code xx, Reason code xxxx</p>
-<p>Module : VIR0002B</p>
-<p>Meaning :Logger service failed to extract any records due to an error in routine xxxxxxxx.</p>
-<p>Action :Correct technical support.</p>
-<p><strong>VIR0285E</strong> Unable to open DDNAME VIRLOG</p>
-<p>Module : VIR0002B</p>
-<p>Meaning :The VIRLOG output DDNAME failed to open.</p>
-<p>Action :Correct the JCL and rerun the job.</p>
-<p><strong>Program Details</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">JCL</span> <span class="n">Parameters</span><span class="p">:</span>
-
-         <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>
+<p><em>Program Details</em></p>
+<p>SAMPLE JCL:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span>
+<span class="o">//*</span> <span class="n">DESCRIPTION</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">LOGGER</span> <span class="n">PROC</span> <span class="n">P</span><span class="o">=</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0002B</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;&amp;P&#39;</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRLOG</span>  <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span><span class="p">,</span><span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">25500</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">VB</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">PEND</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">LOGGER</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="s1">&#39;DELETE(&gt;2)&#39;</span>
+</pre></div>
+</div>
+<p><em>Parameters</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>         <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>
 <span class="n">COPY</span> <span class="p">[</span><span class="o">-------------------</span><span class="p">]</span>
       <span class="p">(</span><span class="n">fromdate</span><span class="p">[,</span><span class="n">todate</span><span class="p">])</span>
 
@@ -658,18 +640,31 @@ Response:-
                          <span class="n">of</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">log</span> <span class="n">stream</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>SAMPLE JCL:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span>
-<span class="o">//*</span> <span class="n">DESCRIPTION</span>
-<span class="o">//*</span>
-<span class="o">//</span><span class="n">LOGGER</span> <span class="n">PROC</span> <span class="n">P</span><span class="o">=</span>
-<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0002B</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;&amp;P&#39;</span>
-<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
-<span class="o">//</span><span class="n">VIRLOG</span>  <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span><span class="p">,</span><span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">25500</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">VB</span><span class="p">)</span>
-<span class="o">//</span> <span class="n">PEND</span>
-<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">LOGGER</span><span class="p">,</span><span class="n">P</span><span class="o">=</span><span class="s1">&#39;DELETE(&gt;2)&#39;</span>
-</pre></div>
-</div>
+<p><em>Messages</em></p>
+<p><strong>VIR0280I</strong> Parameter Error</p>
+<p>Module : VIR0002B</p>
+<p>Meaning :Invalid parameters in PARM field.</p>
+<p>Action :Correct PARM field and provide valid parameters.</p>
+<p><strong>VIR0281E</strong> System Logger Error. xxxxxxxx. Return Code xx, Reason code nnnn</p>
+<p>Module : VIR0002B</p>
+<p>Meaning :Logger service has failed in routine <em>xxxxxxxx</em></p>
+<p>Action :Contact technical support.</p>
+<p><strong>VIR0282W</strong> No records in range specified</p>
+<p>Module : VIR0002B</p>
+<p>Meaning :The parameters provided in the PARM field did not select any records from the log.</p>
+<p>Action :Check that valid parameters have been provided.</p>
+<p><strong>VIR0283W</strong> The log stream is empty</p>
+<p>Module : VIR0002B</p>
+<p>Meaning :The log stream has no Virtel records.</p>
+<p>Action :None.</p>
+<p><strong>VIR0284W</strong> Records are not available. xxxxxxxx. Return code xx, Reason code xxxx</p>
+<p>Module : VIR0002B</p>
+<p>Meaning :Logger service failed to extract any records due to an error in routine xxxxxxxx.</p>
+<p>Action :Correct technical support.</p>
+<p><strong>VIR0285E</strong> Unable to open DDNAME VIRLOG</p>
+<p>Module : VIR0002B</p>
+<p>Meaning :The VIRLOG output DDNAME failed to open.</p>
+<p>Action :Correct the JCL and rerun the job.</p>
 <p><strong>New JCL Parameters. IP= and CLONE=</strong></p>
 <p>The purpose of this feature is to lower the coupling between the TCT, ARBO and instances of VIRTEL so that there is less dependency on the parameters defined in the ARBO and TCT for any one VIRTEL instance. This feature enables JCL parameters to override parameters found in the TCT and ARBO.</p>
 <p><em>IP=nnn.nnn.nnn.nnn keyword</em></p>
@@ -714,7 +709,7 @@ VIRTEL per LPAR.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH</span><span class="o">.</span><span class="n">SYS00</span><span class="o">.</span><span class="n">STATA</span> <span class="ow">and</span> <span class="n">SP00</span><span class="o">.</span><span class="n">SPVIREH</span><span class="o">.</span><span class="n">SYS00</span><span class="o">.</span><span class="n">STATB</span><span class="o">.</span>
 </pre></div>
 </div>
-<p><strong>New Messages</strong></p>
+<p><em>Messages</em></p>
 <p><strong>VIR0098E</strong> INVALID JCL PARM. JOB TERMINATING.</p>
 <p>Module :VIR0000</p>
 <p>Meaning :The JCL PARM field is incorrect. Virtel cannot continue.</p>
@@ -735,8 +730,6 @@ Virtel started task.</p>
 <p>Action : Virtel will use the IP address in the JCL PARM rather than
 default to the IP address returned by GETHOSTID.</p>
 <p><strong>Trace buffer enhancement and offload.</strong></p>
-<p>This feature implements the following Virtel diagnostic enhancements:-</p>
-<p><em>External Trace buffers.</em></p>
 <p>This enhancement provides additional trace and diagnostic material covering a longer time span. The current VIT trace buffer is 200K which is insufficient to capture time related problems. 200K holds a couple of second’s worth of trace data at the most. This change implements logic which moves the trace buffer to external storage and chains the buffers together. When a trace buffer fills it is automatically moved to
 external storage above the 2GB storage bar. When taking a snap all trace buffers are printed, first those above the bar and finally the current trace buffer.</p>
 <p>The external or historical trace facility is controlled by the TCT TRACEON= parameter or the VIRTEL TRACE command. The Virtel Internal Tracing (VIT) has several categories which control the amount of trace
@@ -755,19 +748,21 @@ data. The categories are:-</p>
 <span class="n">VIR0213I</span> <span class="n">NO</span> <span class="n">ACTIVE</span> <span class="n">TRACES</span>
 </pre></div>
 </div>
-<p>Message VIR0208I indicates the VIT status through a three character Y | N display and also provides information about the current number of external buffers used and the maximum available. The VIT display
+<p>Message VIR0208I indicates the VIT status through a three character Y | N display and also provides information about the current number of external buffers used and the maximum available. The three VIT display
 indicators are as follows:-</p>
-<ul class="simple">
-<li>Y | N No tracing or minimal tracing</li>
-<li>Y | N Data elements traced</li>
-<li>Y | N External Archive active</li>
-</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span>           <span class="n">No</span> <span class="n">tracing</span> <span class="ow">or</span> <span class="n">minimal</span> <span class="n">tracing</span>
+
+<span class="o">-</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span>           <span class="n">Data</span> <span class="n">elements</span> <span class="n">traced</span>
+
+<span class="o">-</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span>           <span class="n">External</span> <span class="n">Archive</span> <span class="n">active</span>
+</pre></div>
+</div>
 <p>In the above example, YYY indicates full tracing (Data Elements) with trace archive active. The default setting is YYN which is the equivalent of TRACE=ON. By default external archive tracing is not turned on.</p>
 <p>TCT option:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEON</span><span class="o">=</span><span class="n">ON</span> <span class="o">|</span> <span class="n">OFF</span> <span class="o">|</span> <span class="p">(</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">,</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">,</span><span class="n">Y</span> <span class="o">|</span> <span class="n">N</span><span class="p">)</span>
 
 <span class="n">Default</span> <span class="o">=</span> <span class="n">ON</span>  <span class="n">Equivalent</span> <span class="n">VIT</span> <span class="o">=</span> <span class="n">YYN</span>      <span class="n">Tracing</span> <span class="n">ON</span>
-          <span class="n">OFF</span> <span class="n">Equivalent</span> <span class="n">VIT</span> <span class="o">=</span> <span class="n">NNN</span>              <span class="n">Tracing</span> <span class="n">OFF</span>
+          <span class="n">OFF</span> <span class="n">Equivalent</span> <span class="n">VIT</span> <span class="o">=</span> <span class="n">NNN</span>      <span class="n">Tracing</span> <span class="n">OFF</span>
 
 
 <span class="n">TRACEON</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>    <span class="n">n</span> <span class="o">=</span> <span class="n">Y</span><span class="o">|</span> <span class="n">N</span>     <span class="n">Set</span> <span class="n">Tracing</span> <span class="n">options</span>
@@ -789,7 +784,7 @@ indicators are as follows:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">VIT</span><span class="o">=</span><span class="n">YYY</span>  <span class="n">Turn</span> <span class="n">on</span> <span class="n">full</span> <span class="n">VIT</span> <span class="n">tracing</span> <span class="n">plus</span> <span class="n">external</span> <span class="n">buffer</span> <span class="n">archive</span><span class="o">.</span>
 </pre></div>
 </div>
-<p><em>Ability to offload trace buffers to a dataset.</em></p>
+<p><em>Ability to offload trace buffers to a dataset</em></p>
 <p>With the external VIT trace facility comes the ability to offload the trace buffers to a dataset. This offload capability can be triggered when the maximum number of external trace buffers have been reached, as
 identified in message VIR0208I, or through an operator command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">VIT</span><span class="o">=</span><span class="n">OFFLOAD</span><span class="o">.</span>
@@ -837,7 +832,7 @@ identified in message VIR0208I, or through an operator command:</p>
 <p class="first admonition-title">Note</p>
 <p class="last">If external buffering is not active any offload command will be rejected as invalid.</p>
 </div>
-<p><strong>New or altered Messages</strong></p>
+<p><em>Messages</em></p>
 <p><strong>VIR0208I</strong> VIRTEL INTERNAL TRACE = xxx. EXT. BUFFERS = yyyy/zzzz.</p>
 <p>Module :VIR0002</p>
 <p>Meaning :Provides information about the Virtel Internal Trace status.</p>
@@ -866,7 +861,6 @@ it will subsequently be converted into a HTML template and served to the browser
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This is a chargeable feature and you should contact your sales representative for further details.</p>
-</div>
 </div>
 </div>
 

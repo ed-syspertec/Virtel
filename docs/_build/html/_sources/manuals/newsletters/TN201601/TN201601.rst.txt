@@ -1,3 +1,5 @@
+.. _tn201601:
+
 Customizing colours with CSS in Virtel 4.53
 ===========================================
 
@@ -33,53 +35,35 @@ WEB3270.CSS. The customised CSS rules must be placed in the CLI-DIR.
 For example to change the colour RED to GREEN code the following CSS
 rules in your *custom.css* file and upload it to the CLI-DIR directory:-
 
-/\*
+::
 
-\* VIRTEL Web Access 3270 style sheet
-
-\* (c)Copyright SysperTec Communication 2010 All Rights Reserved
-
-\* $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $
-
-\* Changes:-
-
-\* \*RED -> GREEN
-
-\*/
-
-.NRED {color: **green**;}
-
-.SRED {color: **green**; border-bottom: solid 1px;}
-
-.URED {color: **green**; text-decoration: underline;}
-
-.RRED {background-color: **green**; color: #000000;}
-
-.BRED {
-
-color: green;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.selection-box {
-
-border:1px solid **green**;
-
-background-color: rgba(128,0,255,0.1);
-
-}
+   /*
+   * VIRTEL Web Access 3270 style sheet
+   * (c)Copyright SysperTec Communication 2010 All Rights Reserved
+   * $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $
+   * Changes:-
+   * *RED -> GREEN
+   */
+   .NRED {color: **green**;}
+   .SRED {color: **green**; border-bottom: solid 1px;}
+   .URED {color: **green**; text-decoration: underline;}
+   .RRED {background-color: **green**; color: #000000;}
+   .BRED {
+   color: green;
+   -webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .selection-box {
+   border:1px solid **green**;
+   background-color: rgba(128,0,255,0.1);
+   }
 
 Notice that only the value property of the selector is change (: value)
 not the selector name itself (.NRED). That must remain as defined.
 Having uploaded the custom.css file to the CLI-DIR refresh the cache on
 the browser window (CTRL-R) to implement the CSS changes.
 
-**
-Method 2**
+**Method 2**
 
 Method 2 allows you to define multiple CSS rule files and have them
 selectable from the Web Access Settings panel (V2). A customised
@@ -104,99 +88,54 @@ Create the custom.js file(s) that will be used to select the CSS
 defaults. These files(s) will be displayed in the Web Access Settings
 panel. See the example javascript below:-
 
-//CLI-DIR
+::
 
-if (typeof w2hparm !=="undefined") {
+   //CLI-DIR
+   if (typeof w2hparm !=="undefined") {
+      w2hparm.useVirtelMacros = true;
+      w2hparm.synchronizeVirtelMacros = true;
+      w2hparm.settingsGUI = {
+         /*
+          * Select which settings dialog version(s) will be accessible in the VWA toolbar.
+          * Possible values are :
+          * - "v1+v2" ...... Allow both settings dialogs (OLD and NEW)
+          * - "v2" ......... Allow NEW settings dialog only
+          * - otherwise ... Allow OLD settings dialog only
+          */
+          version : "v2"
+       };
+   }
 
-w2hparm.useVirtelMacros = true;
+   /*=====================================================================
+   *
+   * CUSTOM CODE SAMPLE TO ADD A CUSTOM CSS FILE
+   * OR TO REMOVE A DEFAULT CSS FILE
+   *
+   *====================================================================*/
 
-w2hparm.synchronizeVirtelMacros = true;
+   /*
+   * This implementation adds 3 custom CSS to the settings "Display Style" list choice,
+   * and removes the "white" default choice from this list.
+   */
+   function modify\_settingsValues(name, values) {
+      // The target is the "style" list settings
+      if (name == "style") {
+         // Remove the "white" default entry from the list of choices values.splice( values.indexOf('white'), 1);
+         // Append 3 custom styles to the list of choices**
+      return values.concat( "GREEN.CSS", "BLUE.CSS", "DEFAULT.CSS" );
+      }
+   }
 
-w2hparm.settingsGUI =
+   /*
+   * This block of code sets a specific label for each style added.
+   * If this code is omitted, the raw value of the entries are displayed instead.
+   */
 
-{
-
-/\*
-
-\* Select which settings dialog version(s) will be accessible in the VWA
-toolbar.
-
-\* Possible values are :
-
-\* - "v1+v2" ...... Allow both settings dialogs (OLD and NEW)
-
-\* - "v2" ......... Allow NEW settings dialog only
-
-\* - otherwise ... Allow OLD settings dialog only
-
-\*/
-
-version : "v2"
-
-};
-
-}
-
-/\*=====================================================================
-
-\*
-
-\* CUSTOM CODE SAMPLE TO ADD A CUSTOM CSS FILE
-
-\* OR TO REMOVE A DEFAULT CSS FILE
-
-\*
-
-\*====================================================================\*/
-
-/\*
-
-\* This implementation adds 3 custom CSS to the settings "Display Style"
-list choice,
-
-\* and removes the "white" default choice from this list.
-
-\*/
-
-function modify\_settingsValues(name, values) {
-
-// The target is the "style" list settings
-
-if (name == "style") {
-
-// Remove the "white" default entry from the list of choices
-
-values.splice( values.indexOf('white'), 1);
-
-**// Append 3 custom styles to the list of choices**
-
-return values.concat( "GREEN.CSS"
-
-, "BLUE.CSS"
-
-, "DEFAULT.CSS" );
-
-}
-
-}
-
-/\*
-
-\* This block of code sets a specific label for each style added.
-
-\* If this code is omitted, the raw value of the entries are displayed
-instead.
-
-\*/
-
-oVWAmsg.custom( { "style:GREEN.CSS" : "Custom" // Use this label instead
-of 'GREEN.CSS'
-
-, "style:BLUE.CSS" : "Test" // Use this label instead of 'BLUE.CSS'
-
-, "style:DEFAULT.CSS" : "Default" // Use this label instead of 'RED.CSS'
-
-});
+   oVWAmsg.custom( { 
+      "style:GREEN.CSS" : "Custom"          // Use this label instead of 'GREEN.CSS'
+    , "style:BLUE.CSS" : "Test"             // Use this label instead of 'BLUE.CSS'
+    , "style:DEFAULT.CSS" : "Default"       // Use this label instead of 'RED.CSS'
+   });
 
 In this javascript example were are adding three custom style CSS files,
 GREEN.CSS, BLUE.CSS and DEFAULT.CSS. These files are than associated
@@ -229,8 +168,7 @@ CSS display that you wish to use and “Save”. The settings window will
 close. To implement your selected display style you must now refresh
 your TSO browser window by pressing CTRL-R.
 
-**
-Shucks it doesn’t work…..**
+**Shucks it doesn’t work…..**
 
 If when you open the settings panel you get the following display then
 you are picking up the default VIRTEL Web Access Settings panel. Note
@@ -290,311 +228,161 @@ web elements such as CSS rules.
 
 **Appendix A**
 
-Default 3270 style sheet WEB3270.CSS
-
-/\*
-
-\* VIRTEL Web Access 3270 style sheet
-
-\* (c)Copyright SysperTec Communication 2010 All Rights Reserved
-
-\* $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $
-
-\*/
-
-body, #classic {
-
-background-color: #000000;
-
-font-family: monospace;
-
-color: #00FF00;
-
-margin-top:1%;
-
-margin-bottom:1%;
-
-}
-
-a.hotspot, span.hotspot a {
-
-color: #FFFFFF;
-
-text-decoration: underline;
-
-}
-
-a.hotspot:hover, span.hotspot a:hover {
-
-background: #FFCC00;
-
-color: #000000;
-
-text-decoration: none;
-
-}
-
-a:hover, #classic a:hover {
-
-background: #ffcc00;
-
-color: #000000;
-
-text-decoration: none;
-
-}
-
-pre, #classic pre {
-
-background-color: #000000;
-
-color: #00FF00;
-
-font-family: monospace;
-
-margin:0;
-
-padding:0.5em 0 0 0;
-
-}
-
-input, #classic input {
-
-border: 0;
-
-font-family: monospace;
-
-}
-
-#printReady, #statusbar {
-
-text-align: center;
-
-}
-
-.NBLUE {color: #00CCFF;}
-
-.NRED {color: red;}
-
-.NPINK {color: pink;}
-
-.NGREEN {color: #00FF00;}
-
-.NTURQUOISE {color: #40E0D0;}
-
-.NYELLOW {color: #FFFF33;}
-
-.NWHITE {color: #FFFFFF;}
-
-.NINVISIBLE {color: #000000;}
-
-.SBLUE {color: #00CCFF; border-bottom: solid 1px;}
-
-.SRED {color: red; border-bottom: solid 1px;}
-
-.SPINK {color: pink; border-bottom: solid 1px;}
-
-.SGREEN {color: #00FF00; border-bottom: solid 1px;}
-
-.STURQUOISE {color: #40E0D0; border-bottom: solid 1px;}
-
-.SYELLOW {color: #FFFF33; border-bottom: solid 1px;}
-
-.SWHITE {color: #FFFFFF; border-bottom: solid 1px;}
-
-.UBLUE {color: #00CCFF; text-decoration: underline;}
-
-.URED {color: red; text-decoration: underline;}
-
-.UPINK {color: pink; text-decoration: underline;}
-
-.UGREEN {color: #00FF00; text-decoration: underline;}
-
-.UTURQUOISE {color: #40E0D0; text-decoration: underline;}
-
-.UYELLOW {color: #FFFF33; text-decoration: underline;}
-
-.UWHITE {color: #FFFFFF; text-decoration: underline;}
-
-.RBLUE {background-color: #00CCFF; color: #000000;}
-
-.RRED {background-color: red; color: #000000;}
-
-.RPINK {background-color: pink; color: #000000;}
-
-.RGREEN {background-color: #00FF00; color: #000000;}
-
-.RTURQUOISE {background-color: #40E0D0; color: #000000;}
-
-.RYELLOW {background-color: #FFFF33; color: #000000;}
-
-.RWHITE {background-color: #FFFFFF; color: #000000;}
-
-.SMARTCURSOR\_DEFAULT {text-decoration: underline; color: white;}
-
-.SMARTCURSOR\_RBLUE {text-decoration: underline; color: #000090;}
-
-.SMARTCURSOR\_RRED {text-decoration: underline; color: #FFFF60;}
-
-.SMARTCURSOR\_RPINK {text-decoration: underline; color: #600060;}
-
-.SMARTCURSOR\_RGREEN {text-decoration: underline; color: #005000;}
-
-.SMARTCURSOR\_RTURQUOISE {text-decoration: underline; color: #200080;}
-
-.SMARTCURSOR\_RYELLOW {text-decoration: underline; color: #B00000;}
-
-.SMARTCURSOR\_RWHITE {text-decoration: underline; color: black;}
-
-@-webkit-keyframes fieldblinker {
-
-0% {}
-
-50% {opacity:0.0}
-
-100% {}
-
-}
-
-@keyframes fieldblinker {
-
-0% {opacity:1.0}
-
-50% {opacity:0.0}
-
-100% {opacity:1.0}
-
-}
-
-.BBLUE {
-
-color: #00CCFF;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.BRED {
-
-color: red;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.BPINK {
-
-color: pink;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.BGREEN {
-
-color: #00FF00;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.BTURQUOISE {
-
-color: #40E0D0;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.BYELLOW {
-
-color: #FFFF33;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.BWHITE {
-
-color: #FFFFFF;
-
--webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
-
-}
-
-.NORMALMODECURSOR {border-bottom: solid 2px white; visibility: visible;}
-
-.INSERTMODECURSOR {border-left: solid 1px white;margin-left:-1px;
-visibility: visible;}
-
-.BLOCKCURSOR {color: black; background-color: white; visibility:
-visible;}
-
-.SMARTCURSOR {border-bottom: solid 2px white; visibility: visible;}
-
-@-webkit-keyframes cursorblinker {
-
-0% {background-color:white;color:black;}
-
-50% {background-color:white;color:black;}
-
-100% {background-color:inherit;color:inherit;}
-
-}
-
-@keyframes cursorblinker {
-
-0% {background-color:white;color:black;}
-
-50% {background-color:white;color:black;}
-
-100% {background-color:transparent;}
-
-}
-
-/\* dirty hack to make it degrade gracefully on IE<9 \*/
-
-:root \*> .BLINKCURSOR {color: inherit;}
-
-.BLINKCURSOR {
-
--webkit-animation: cursorblinker 1s steps(1,start) infinite normal;
-
-animation: cursorblinker 1s steps(1,start) infinite normal;
-
-background-color:white;color:black;
-
-}
-
-.HIGHLIGHTED\_INPUTFIELD {background-color:#2F4F4F;}
-
-/\* Styles for the color of the crosshair cursor lines \*/
-
-#vLine {border-left-color:#F2F5A9;}
-
-#hLine {border-top-color:#F2F5A9;}
-
-.selection-box {
-
-border:1px solid red;
-
-background-color: rgba(128,0,255,0.1);
-
-}
+Default 3270 style sheet WEB3270.CSS. Can be found within sources.zip. See Administration portal to download file.
+
+::
+
+   /*
+   * VIRTEL Web Access 3270 style sheet
+   * (c)Copyright SysperTec Communication 2010 All Rights Reserved
+   * $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $
+   */
+   body, #classic {
+      background-color: #000000;
+      font-family: monospace;
+      color: #00FF00;
+      margin-top:1%;
+      margin-bottom:1%;
+   }
+   a.hotspot, span.hotspot a {
+      color: #FFFFFF;
+      text-decoration: underline;
+   }
+   a.hotspot:hover, span.hotspot a:hover {
+      background: #FFCC00;
+      color: #000000;
+      text-decoration: none;
+   }
+   a:hover, #classic a:hover {
+      background: #ffcc00;
+      color: #000000;
+      text-decoration: none;
+   }
+   pre, #classic pre {
+      background-color: #000000;
+      color: #00FF00;
+      font-family: monospace;
+      margin:0;
+      padding:0.5em 0 0 0;
+   }
+   input, #classic input {
+      border: 0;
+      font-family: monospace;
+   }
+   #printReady, #statusbar {
+      text-align: center;
+   }
+   .NBLUE {color: #00CCFF;}
+   .NRED {color: red;}
+   .NPINK {color: pink;}
+   .NGREEN {color: #00FF00;}
+   .NTURQUOISE {color: #40E0D0;}
+   .NYELLOW {color: #FFFF33;}
+   .NWHITE {color: #FFFFFF;}
+   .NINVISIBLE {color: #000000;}
+   .SBLUE {color: #00CCFF; border-bottom: solid 1px;}
+   .SRED {color: red; border-bottom: solid 1px;}
+   .SPINK {color: pink; border-bottom: solid 1px;}
+   .SGREEN {color: #00FF00; border-bottom: solid 1px;}
+   .STURQUOISE {color: #40E0D0; border-bottom: solid 1px;}
+   .SYELLOW {color: #FFFF33; border-bottom: solid 1px;}
+   .SWHITE {color: #FFFFFF; border-bottom: solid 1px;}
+   .UBLUE {color: #00CCFF; text-decoration: underline;}
+   .URED {color: red; text-decoration: underline;}
+   .UPINK {color: pink; text-decoration: underline;}
+   .UGREEN {color: #00FF00; text-decoration: underline;}
+   .UTURQUOISE {color: #40E0D0; text-decoration: underline;}
+   .UYELLOW {color: #FFFF33; text-decoration: underline;}
+   .UWHITE {color: #FFFFFF; text-decoration: underline;}
+   .RBLUE {background-color: #00CCFF; color: #000000;}
+   .RRED {background-color: red; color: #000000;}
+   .RPINK {background-color: pink; color: #000000;}
+   .RGREEN {background-color: #00FF00; color: #000000;}
+   .RTURQUOISE {background-color: #40E0D0; color: #000000;}
+   .RYELLOW {background-color: #FFFF33; color: #000000;}
+   .RWHITE {background-color: #FFFFFF; color: #000000;}
+   .SMARTCURSOR\_DEFAULT {text-decoration: underline; color: white;}
+   .SMARTCURSOR\_RBLUE {text-decoration: underline; color: #000090;}
+   .SMARTCURSOR\_RRED {text-decoration: underline; color: #FFFF60;}
+   .SMARTCURSOR\_RPINK {text-decoration: underline; color: #600060;}
+   .SMARTCURSOR\_RGREEN {text-decoration: underline; color: #005000;}
+   .SMARTCURSOR\_RTURQUOISE {text-decoration: underline; color: #200080;}
+   .SMARTCURSOR\_RYELLOW {text-decoration: underline; color: #B00000;}
+   .SMARTCURSOR\_RWHITE {text-decoration: underline; color: black;}
+   @-webkit-keyframes fieldblinker {
+      0% {}
+      50% {opacity:0.0}
+      100% {}
+   }
+   @keyframes fieldblinker {
+      0% {opacity:1.0}
+      50% {opacity:0.0}
+      100% {opacity:1.0}
+   }
+   .BBLUE {
+      color: #00CCFF;
+   -1px-webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+      animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .BRED {
+      color: red;
+      -webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+      animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .BPINK {
+      color: pink;
+      -webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+      animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .BGREEN {
+      color: #00FF00;
+      -webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+      animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .BTURQUOISE {
+      color: #40E0D0;
+      -webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+      animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .BYELLOW {
+      color: #FFFF33;
+      -webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+      animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .BWHITE {
+      color: #FFFFFF;
+      -webkit-animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+      animation: fieldblinker 1s steps(1,start) 0 infinite normal;
+   }
+   .NORMALMODECURSOR {border-bottom: solid 2px white; visibility: visible;}
+   .INSERTMODECURSOR {border-left: solid 1px white;margin-left:-1px; visibility: visible;}
+   .BLOCKCURSOR {color: black; background-color: white; visibility: visible;}
+   .SMARTCURSOR {border-bottom: solid 2px white; visibility: visible;}
+   @-webkit-keyframes cursorblinker {
+      0% {background-color:white;color:black;}
+      50% {background-color:white;color:black;}
+      100% {background-color:inherit;color:inherit;}
+   }
+   @keyframes cursorblinker {
+      0% {background-color:white;color:black;}
+      50% {background-color:white;color:black;}
+      100% {background-color:transparent;}
+   }
+   /* dirty hack to make it degrade gracefully on IE<9 */
+   :root *> .BLINKCURSOR {color: inherit;}
+   .BLINKCURSOR {
+      -webkit-animation: cursorblinker 1s steps(1,start) infinite normal;
+      animation: cursorblinker 1s steps(1,start) infinite normal;
+      background-color:white;color:black;
+   }
+   .HIGHLIGHTED\_INPUTFIELD {background-color:#2F4F4F;}
+   /* Styles for the color of the crosshair cursor lines */
+   #vLine {border-left-color:#F2F5A9;}
+   #hLine {border-top-color:#F2F5A9;}
+   .selection-box {
+      border:1px solid red;
+      background-color: rgba(128,0,255,0.1);
+   }
 
 .. |image0| image:: images/media/image1.png
    :width: 6.26806in
