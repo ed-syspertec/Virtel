@@ -23,8 +23,8 @@ the VIRTEL started procedure.
 
 **Installation instructions**
 
-The following outlines the installation procedure for Virtel 4.53 only.
-See
+.. note::
+  The following outlines the installation procedure for Virtel 4.53 onwards. For installation with Virtel 4.55 and subsequent later relaease, steps 1 through to 5 are not required as the modules will be delivered as part of the Virtel 4.55 installation.
 
 1. Allocate a TRS file on the mainframe with the following JCL:
 
@@ -37,9 +37,9 @@ See
     // MSGLEVEL=(0,0),
     // COND=(4,LT)
     //*-------------------------------------------------------------------+
-    //* \|
-    //* CREATE A TERSE FILE READY TO RECEIVE BINARY UPLOAD \|
-    //* \|
+    //*                                                                   |
+    //* CREATE A TERSE FILE READY TO RECEIVE BINARY UPLOAD                |
+    //*                                                                   |
     //*-------------------------------------------------------------------+
     //DEL EXEC PGM=IEFBR14
     //DDA DD DISP=(MOD,DELETE),UNIT=SYSDA,SPACE=(TRK,0),
@@ -318,11 +318,6 @@ Press PF1, PF3, PF3, PF1 to save the changes. The “usstab=ussn” string will 
 *Fig 10. - USSN Example*
 
 12. If the default Virtel USSTAB appears than VIRTEL hasn’t be able to locate your USSTAB load module. Check that it is either concatenated into the VIRTEL steplib or copied into the VIRTEL load library. Check the Virtel log for any error messages.
-
-.. note::
-
-  Installation with Virtel 4.55.
-  Steps 1 through to 3 are not required as the modules will be delivered as part of the Virtel 4.55 package. It is a chargeable option.
 
 **Constraints**
 

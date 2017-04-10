@@ -177,8 +177,10 @@ the VIRTEL started procedure.</p>
 <p class="last">Replace SPTHOLT with your HLQ.</p>
 </div>
 <p><strong>Installation instructions</strong></p>
-<p>The following outlines the installation procedure for Virtel 4.53 only.
-See</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following outlines the installation procedure for Virtel 4.53 onwards. For installation with Virtel 4.55 and subsequent later relaease, steps 1 through to 5 are not required as the modules will be delivered as part of the Virtel 4.55 installation.</p>
+</div>
 <ol class="arabic simple">
 <li>Allocate a TRS file on the mainframe with the following JCL:</li>
 </ol>
@@ -189,9 +191,9 @@ See</p>
 <span class="o">//</span> <span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
 <span class="o">//</span> <span class="n">COND</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">LT</span><span class="p">)</span>
 <span class="o">//*-------------------------------------------------------------------+</span>
-<span class="o">//*</span> \<span class="o">|</span>
-<span class="o">//*</span> <span class="n">CREATE</span> <span class="n">A</span> <span class="n">TERSE</span> <span class="n">FILE</span> <span class="n">READY</span> <span class="n">TO</span> <span class="n">RECEIVE</span> <span class="n">BINARY</span> <span class="n">UPLOAD</span> \<span class="o">|</span>
-<span class="o">//*</span> \<span class="o">|</span>
+<span class="o">//*</span>                                                                   <span class="o">|</span>
+<span class="o">//*</span> <span class="n">CREATE</span> <span class="n">A</span> <span class="n">TERSE</span> <span class="n">FILE</span> <span class="n">READY</span> <span class="n">TO</span> <span class="n">RECEIVE</span> <span class="n">BINARY</span> <span class="n">UPLOAD</span>                <span class="o">|</span>
+<span class="o">//*</span>                                                                   <span class="o">|</span>
 <span class="o">//*-------------------------------------------------------------------+</span>
 <span class="o">//</span><span class="n">DEL</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
 <span class="o">//</span><span class="n">DDA</span> <span class="n">DD</span> <span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">MOD</span><span class="p">,</span><span class="n">DELETE</span><span class="p">),</span><span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
@@ -463,11 +465,6 @@ returned to the VIRTEL menu and not the VTAM screen. This can be changed. See no
 <ol class="arabic simple" start="12">
 <li>If the default Virtel USSTAB appears than VIRTEL hasn’t be able to locate your USSTAB load module. Check that it is either concatenated into the VIRTEL steplib or copied into the VIRTEL load library. Check the Virtel log for any error messages.</li>
 </ol>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Installation with Virtel 4.55.
-Steps 1 through to 3 are not required as the modules will be delivered as part of the Virtel 4.55 package. It is a chargeable option.</p>
-</div>
 <p><strong>Constraints</strong></p>
 <p>VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
 APPLID=TSO. Both would be accepted. VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.</p>
