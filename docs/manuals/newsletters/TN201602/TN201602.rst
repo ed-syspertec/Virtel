@@ -1,4 +1,4 @@
-.. _tn201602:
+.. _#_tn201602:
 
 Installing Virtel V4.53 from scratch
 ====================================
@@ -25,9 +25,9 @@ following job:-::
 
 #. Download relevant files from the FTP server: http://ftp.syspertec.com
 
-    /VIRTEL 4.53/Produits/virtel453mvs.zip
-    /VIRTEL 4.53/Produits/allptfs-mvs453.txt
-    /VIRTEL 4.53/Produits/virtel453updt5380.zip
+    - /VIRTEL 4.53/Produits/virtel453mvs.zip
+    - /VIRTEL 4.53/Produits/allptfs-mvs453.txt
+    - /VIRTEL 4.53/Produits/virtel453updt5380.zip
 
 #. Unzip “virtel453mvs.zip” into a folder on your workstation.
 #. Print off the “install.txt” document.
@@ -455,7 +455,7 @@ And in the z/OS console I can see the following messages:- ::
     TRANSACTION 'CICSA ' CALLER 192.168.092.047:50678 rejected transaction :CICSA
     VIRT922W HTTP-CLI SOCKET 00010000 ENDED FOR 192.168.092.047:50678
 
-So whats happening here, well the browser has connected, message VIRHT51I, Virtel is then looking for a “FAVICON.ICO” to place in the top left corner of the web page. We can ignore this. The we see that Entry Point CLIWHOST has been unable to find the Transaction CICSA. The browser session is the closed – message VIRT922W.
+So whats happening here, well the browser has connected, message VIRHT51I, Virtel is then looking for a “FAVICON.ICO” to place in the top left corner of the web page. We can ignore this. Then we see that Entry Point CLIWHOST has been unable to find the Transaction CICSA. The browser session is the closed – message VIRT922W.
 
 That sort of all ties up as we haven’t defined the CICSA transaction to Virtel so there is no way we can log on to CICSA. We need to define a CICSA transaction which reflects the VTAM application that we are trying to logon onto.
 
@@ -600,7 +600,7 @@ CLLOC000 – CLLOC050 terminals which are defined for use in the CLI domain.
 
 *The CL prefix*
 
-This ties up with the TERMINAL= on the LINE definition. We also have a group of 80 terminals (Repeated field) with have been allocated a starting prefix of CLIVTA. This would tie up with the transaction definitions and the TERMINAL= keyword. Whats interesting about this group of terminals is that they have been allocated a pool relay as defined by the *poolname option in the relay column. So a relay pool is where VIRTEL can grab a relay terminal when it wants it and return it to the pool when it has finished with it. This happens during session initiation with a CICS system – a relay terminal is grabbed, used for the CICS session and then when the user logs off it relay terminal is released back to the pool. We can see that there are two distinct groups that use the relay pool; the terminals beginning CLVTA(CLI Domain) and another group, DEVTA. This group belongs to the W2H domain. So, any VTAM transactions defined in the administration domain can use the same pool as the CLI domain. The pool name used by default is *W2HPOOL.The POOL has 80 terminals defined beginning W2HTP. These terminals have an associated relay terminal prefixed REHVT which in turn has a second relay, normally a printer, beginning REHIM***.
+This ties up with the TERMINAL= on the LINE definition. We also have a group of 80 terminals (Repeated field) with have been allocated a starting prefix of CLIVTA. This would tie up with the transaction definitions and the TERMINAL= keyword. Whats interesting about this group of terminals is that they have been allocated a pool relay as defined by the \*poolname option in the relay column. So a relay pool is where VIRTEL can grab a relay terminal when it wants it and return it to the pool when it has finished with it. This happens during session initiation with a CICS system – a relay terminal is grabbed, used for the CICS session and then when the user logs off it relay terminal is released back to the pool. We can see that there are two distinct groups that use the relay pool; the terminals beginning CLVTA(CLI Domain) and another group, DEVTA. This group belongs to the W2H domain. So, any VTAM transactions defined in the administration domain can use the same pool as the CLI domain. The pool name used by default is \*W2HPOOL.The POOL has 80 terminals defined beginning W2HTP. These terminals have an associated relay terminal prefixed REHVT which in turn has a second relay, normally a printer, beginning REHIM***.
 If we look at our previous CICS failure we can see these terminals being allocated and returned to the pool. ::
 
     19.24.11 JOB03882 VIRT906I HTTP-CLI SOCKET 00020000 CALL FROM 192.168.092.041:50751
@@ -609,9 +609,9 @@ If we look at our previous CICS failure we can see these terminals being allocat
     19.24.11 JOB03882 VIR0919I **CLVTA079** **RELAY REHIM000(W2HIM000) ACTIVATED**
     19.24.11 JOB03882 VIR0915E **CLVTA079**\ (REHVT000) SESSION REQUEST REFUSED BY SPCICSQ SENSE=08210000
     19.24.11 JOB03882 VIR0052I **CLVTA079** DISCONNECTED AFTER 0 MINUTES
-	19.24.11 JOB03882 VIR0918W **W2HIM000 RELAY REHIM000** INACTIVATED
-	19.24.11 JOB03882 VIR0918W **CLVTA079** **RELAY REHVT000** INACTIVATED
-	19.24.11 JOB03882 VIRT922W HTTP-CLI SOCKET 00060000 ENDED FOR 192.168.092.041:50734
+    19.24.11 JOB03882 VIR0918W **W2HIM000 RELAY REHIM000** INACTIVATED
+    19.24.11 JOB03882 VIR0918W **CLVTA079** **RELAY REHVT000** INACTIVATED
+    19.24.11 JOB03882 VIRT922W HTTP-CLI SOCKET 00060000 ENDED FOR 192.168.092.041:50734
 
 The terminal types and I/O fields are described in the Virtel Connectivity Guide. If we look in the ARBO configuration file we can see the definitions that support the TERMINAL configuration.
 

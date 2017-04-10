@@ -158,102 +158,106 @@
            <div itemprop="articleBody">
             
   <div class="section" id="installing-virtel-v4-56-from-scratch">
-<h1>Installing Virtel V4.56 from scratch<a class="headerlink" href="#installing-virtel-v4-56-from-scratch" title="Permalink to this headline">¶</a></h1>
+<span id="tn201608"></span><h1>Installing Virtel V4.56 from scratch<a class="headerlink" href="#installing-virtel-v4-56-from-scratch" title="Permalink to this headline">¶</a></h1>
 <p><strong>Cleaning up from a previous installation.</strong></p>
 <p>If you want to delete all the files from a previous installation use the
 following job:-</p>
-<p>//S00 EXEC PGM=ADRDSSU,REGION=0M</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//TEMP DD DUMMY</p>
-<p>DUMP DATASET -</p>
-<p>(INCLUDE( -</p>
-<p>SPTHOLT.VIRT456.** -</p>
-<p>)) -</p>
-<p>DELETE -</p>
-<p>PURGE -</p>
-<p>TOL(ENQF) -</p>
-<p>OUTDDNAME(TEMP)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S00</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADRDSSU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">TEMP</span> <span class="n">DD</span> <span class="n">DUMMY</span>
+ <span class="n">DUMP</span> <span class="n">DATASET</span> <span class="o">-</span>
+   <span class="p">(</span><span class="n">INCLUDE</span><span class="p">(</span> <span class="o">-</span>
+   <span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT456</span><span class="o">.**</span> <span class="o">-</span>
+   <span class="p">))</span> <span class="o">-</span>
+   <span class="n">DELETE</span> <span class="o">-</span>
+   <span class="n">PURGE</span> <span class="o">-</span>
+   <span class="n">TOL</span><span class="p">(</span><span class="n">ENQF</span><span class="p">)</span> <span class="o">-</span>
+   <span class="n">OUTDDNAME</span><span class="p">(</span><span class="n">TEMP</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><strong>Getting the software</strong></p>
-<p>Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></p>
-<p>/VIRTEL 4.56/Produits/virtel456mvs.zip</p>
-<p>/VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt</p>
-<p>/VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip</p>
-<p>Unzip “virtel456mvs.zip” into a folder on your workstation.</p>
-<p>Print off the “install.txt” document.</p>
-<p>Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on
-your workstation.</p>
-<p>Print off the readme document.</p>
+<ol class="arabic simple">
+<li>Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></li>
+</ol>
+<ul class="simple">
+<li>/VIRTEL 4.56/Produits/virtel456mvs.zip</li>
+<li>/VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt</li>
+<li>/VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip</li>
+</ul>
+<ol class="arabic simple">
+<li>Unzip “virtel456mvs.zip” into a folder on your workstation.</li>
+<li>Print off the “install.txt” document.</li>
+<li>Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on your workstation.</li>
+<li>Print off the readme document.</li>
+</ol>
 <p><strong>Installing the software</strong></p>
 <ol class="arabic simple">
-<li>Upload to the mainframe and edit the text file $alocdsu. Run it to
-allocate a XMIT file.</li>
+<li>Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.</li>
 <li>Upload the XMIT file virt456.xmit to the file allocated by $alocdsu.</li>
-<li>Upload to the mainframe and edit the text file $restdsu. Run it to
-restore and install VIRTEL from the uploaded XMIT file.</li>
-<li>Upload text file allptfs-mvs456.txt to
-<em>yourqual.VIRT456.CNTL(PTF456MV).</em></li>
-<li>Modify and run job <em>yourqual.VIRT456.CNTL(ZAPJCL)</em>. This will apply
-maintenance to the VIRTEL load library.</li>
-<li>Authorize the VIRTEL load library. Use the z/OS SETPROG APF command
-- SETPROG APF,ADD,DSN=<em>yourqual.VIRT456.LOADLIB</em>,[VOL=volser |
-SMS ]</li>
-<li>Edit the VIRTEL TCT member <em>yourqual.VIRT456.CNTL(VIRTCT01</em>) and
-assemble using <em>yourqual.VIRT456.CNTL(ASMTCT).</em> See note 6 of
-“install.txt” for further information.</li>
-<li>Edit <em>yourqual.VIRT456.CNTL(ARBOLOAD)</em> and submit the job. This
-builds the default configuration and sample VTAMLST member. See note
-8 of the “install.txt” for further information.</li>
-<li>Copy <em>yourqual.VIRT456.CNTL(member)</em> to SYS1.VTAMLST. Member is
-either VIRTAPPL, the default member name, or the VTAM applid
-specified in the ARBOLOAD job on the NODEAPPL= statement. Activate
-the “member” with the z/OS command V NET,ACT,ID=member.</li>
-<li>Edit member <em>yourqual.VIRT456.CNTL(VIRTEL4)</em> and copy to
-SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</li>
+<li>Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.</li>
+<li>Upload text file allptfs-mvs456.txt to <em>yourqual.VIRT456.CNTL(PTF456MV).</em></li>
+<li>Modify and run job <em>yourqual.VIRT456.CNTL(ZAPJCL)</em>. This will apply maintenance to the VIRTEL load library.</li>
+<li>Authorize the VIRTEL load library. Use the z/OS SETPROG APF command</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SETPROG</span> <span class="n">APF</span><span class="p">,</span><span class="n">ADD</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span>\ <span class="o">*</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT456</span><span class="o">.</span><span class="n">LOADLIB</span><span class="o">*</span><span class="p">,[</span><span class="n">VOL</span><span class="o">=</span><span class="n">volser</span> \<span class="o">|</span> <span class="n">SMS</span> <span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Edit the VIRTEL TCT member <em>yourqual.VIRT456.CNTL(VIRTCT01</em>) and assemble using <em>yourqual.VIRT456.CNTL(ASMTCT).</em> See note 6 of “install.txt” for further information.</li>
+<li>Edit <em>yourqual.VIRT456.CNTL(ARBOLOAD)</em> and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.</li>
+<li>Copy <em>yourqual.VIRT456.CNTL(member)</em> to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.</li>
+<li>Edit member <em>yourqual.VIRT456.CNTL(VIRTEL4)</em> and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</li>
 <li>Start Virtel.</li>
 </ol>
-<p>Note: You can run VIRTEL as a JOB rather than a STC. This can be useful
-during testing. See the JCL below for an example:-</p>
-<p>//SPTHOLTV JOB 9000,&#8217;VIRTEL&#8217;,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID</p>
-<p>//VIRTEL PROC QUAL=SPTHOLT.VIRT456,</p>
-<p>// TCT=01 = Change to 01</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//* PROCEDURE FOR VIRTEL STARTER EDITION *</p>
-<p>//*&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-*</p>
-<p>//VIRTEL EXEC PGM=VIR6000,TIME=1440,REGION=32M,PARM=&amp;TCT</p>
-<p>//STEPLIB DD DSN=&amp;QUAL..LOADLIB,DISP=SHR</p>
-<p>//DFHRPL DD DSN=&amp;QUAL..LOADLIB,DISP=SHR</p>
-<p>//SERVLIB DD DSN=&amp;QUAL..SERVLIB,DISP=SHR</p>
-<p>//VIRARBO DD DSN=&amp;QUAL..ARBO,DISP=SHR</p>
-<p>//VIRSWAP DD DSN=&amp;QUAL..SWAP,DISP=SHR</p>
-<p>//VIRHTML DD DSN=&amp;QUAL..HTML,DISP=SHR</p>
-<p>//SAMPTRSF DD DSN=&amp;QUAL..SAMP.TRSF,DISP=SHR</p>
-<p>//HTMLTRSF DD DSN=&amp;QUAL..HTML.TRSF,DISP=SHR</p>
-<p>//SYSOUT DD SYSOUT=*</p>
-<p>//VIRLOG DD SYSOUT=*</p>
-<p>//VIRTRACE DD SYSOUT=*</p>
-<p>//SYSPRINT DD SYSOUT=*</p>
-<p>//SYSUDUMP DD SYSOUT=*</p>
-<p>// PEND</p>
-<p>//S01 EXEC VIRTEL</p>
+<p>You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTV</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">VIRTEL</span> <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT456</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">TCT</span><span class="o">=</span><span class="mi">01</span> <span class="o">=</span> <span class="n">Change</span> <span class="n">to</span> <span class="mi">01</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//*</span> <span class="n">PROCEDURE</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="n">STARTER</span> <span class="n">EDITION</span>                              <span class="o">*</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//</span><span class="n">VIRTEL</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR6000</span><span class="p">,</span><span class="n">TIME</span><span class="o">=</span><span class="mi">1440</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">32</span><span class="n">M</span><span class="p">,</span><span class="n">PARM</span><span class="o">=&amp;</span><span class="n">TCT</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">DFHRPL</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SERVLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SERVLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRARBO</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRSWAP</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SWAP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRHTML</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">HTML</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SAMPTRSF</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SAMP</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">HTMLTRSF</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">HTML</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSOUT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRLOG</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRTRACE</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span> <span class="n">PEND</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTEL</span>
+</pre></div>
+</div>
 <p>Once Virtel is started check that VIRTEL is running correctly and has
 opened sessions ports 41001 and 41002. Issue the following command:-</p>
-<p>F VIRTEL,LINES</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
+</pre></div>
+</div>
 <p>The output should be similar to:-</p>
-<p>F VIRTEL,LINES</p>
-<p>+VIR0200I LINES</p>
-<p>+VIR0201I VIRTEL 4.56 APPLID=APPLHOLT LINES</p>
-<p>+VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP</p>
-<p>+VIR0202I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8211; &#8212;&#8212;&#8212;</p>
-<p>+VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.30:41002</p>
-<p>+VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001</p>
-<p>+VIR0202I &#8212;END OF LIST&#8212;</p>
-<p>**
-Applying maintenance to Virtel.**</p>
-<p><strong>TRSF changes</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.56</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span> <span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+<p><strong>Applying maintenance to Virtel.</strong></p>
+<p><em>VSAM TRSF changes</em></p>
 <p>Using a Chrome Browser navigate to the Administration Virtel Portal
 which can be accessed through port 41001. The Drag and Drop upload
 feature is supported by Chrome and Firefox only.</p>
-<p><a class="reference external" href="http://192.168.170.30:41001/">http://192.168.170.30:41001/</a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span>
+</pre></div>
+</div>
 <p>The following screen image should appear:-</p>
 <p><a class="reference internal" href="../../../_images/image138.png"><img alt="image0" src="../../../_images/image138.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
 <p>Select Drag and Drop Upload and login with your credentials. The Drag
@@ -275,8 +279,7 @@ Reload the browser window and issue CTRL-R to refresh the browser cache.
 The fix number 4.56 (xxxx) should appear under the Virtel Applid in the
 top portion of the Virtel screen.</p>
 <p>Virtel 4.56 maintenance is now complete.</p>
-<p>**
-Basic health test of Virtel**</p>
+<p><strong>Basic health test of Virtel</strong></p>
 <p>From the Virtel Portal Page select “Other Applications”. An application
 menu should appear with some default applications.</p>
 <p><a class="reference internal" href="../../../_images/image417.png"><img alt="image3" src="../../../_images/image417.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>

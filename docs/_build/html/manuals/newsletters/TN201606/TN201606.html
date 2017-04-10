@@ -158,7 +158,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="virtel-screen-redesigner-in-action">
-<h1>Virtel Screen Redesigner in action<a class="headerlink" href="#virtel-screen-redesigner-in-action" title="Permalink to this headline">¶</a></h1>
+<span id="tn201606"></span><h1>Virtel Screen Redesigner in action<a class="headerlink" href="#virtel-screen-redesigner-in-action" title="Permalink to this headline">¶</a></h1>
 <p>In this newsletter we work through the Virtel Screen Redesigner and
 present an actual modernization of a 3270 application. This newsletter
 is not for the faint hearted and demands that your have a thorough
@@ -210,8 +210,7 @@ application.</p>
 id/password variables. The CICS application MENU is then called once
 CICS processes the logon and returns a 3270 screen image with the word
 “complete” in it.</p>
-<p>**
-The Options directory**</p>
+<p><strong>The Options directory</strong></p>
 <p>VSR has two modes of operation, Test mode and Standard mode. The CAPTURE
 transaction requires the use of the options directory, note the vsr
 value in the Option field. To support this we need to add the options
@@ -227,7 +226,7 @@ need to map out the navigability of the application and understand which
 maps are called based upon user actions. Our application looks like
 this:-</p>
 <p><a class="reference internal" href="../../../_images/image5.jpg"><img alt="image4" src="../../../_images/image5.jpg" style="width: 4.74324in; height: 3.37500in;" /></a></p>
-<p>Figure - MENU Maps layout</p>
+<p>Fig. 1 - MENU Maps layout</p>
 <p><strong>Scenarios</strong></p>
 <p>Within VSR we use Virtel scenarios to analyze a 3270 screen buffer in
 order to produce the relevant HTML templates. Scenarios are loaded from
@@ -250,15 +249,10 @@ looks like this:-</p>
 <p><a class="reference internal" href="../../../_images/image711.png"><img alt="image6" src="../../../_images/image711.png" style="width: 6.26806in; height: 5.17431in;" /></a></p>
 <p>The main VSR panel is divided into 5 sections which help you to flow
 through the process of modernization. The sections are:-</p>
-<p>1. Setup Configuration information. The settings cogwheel icon on the
-right will display and enable you to set the various settings for your
-project.</p>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple">
+<li>Setup Configuration information. The settings cogwheel icon on the right will display and enable you to set the various settings for your project.</li>
 <li>Source Map Location of Maps</li>
-</ol>
-<p>3. Workbench Work bench of maps, either converted from source or
-manually created.</p>
-<ol class="arabic simple" start="4">
+<li>Workbench Work bench of maps, either converted from source or manually created.</li>
 <li>Template Generated template from workbench maps</li>
 <li>Try it Display template either in Test Mode or Standard Mode.</li>
 </ol>
@@ -351,11 +345,12 @@ VIRTEL\CLI-DIR sub directory of the project. We update visu.css and
 save it as menu.css, keeping the original as a copy.</p>
 <p>Next we need to update the PageTop.html to include our menu.css style
 sheet. Here are the changes we made:-</p>
-<p>&lt;!&#8211;Stylesheet for the modernized application presentation &#8211;&gt;</p>
-<p>&lt;!&#8211; History 1. Style sheet visu.css replaced with menu.css</p>
-<p>&#8211;&gt;</p>
-<p>&lt;link type=&#8221;text/css&#8221; rel=&#8221;stylesheet&#8221; href=&#8221;menu.css&#8221;/&gt;</p>
-<p>&lt;link type=&#8221;text/css&#8221; rel=&#8221;stylesheet&#8221; href=&#8221;../w2h/lang.css&#8221;&gt;</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!--Stylesheet for the modernized application presentation --&gt;
+&lt;!-- History 1. Style sheet visu.css replaced with menu.css--&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;menu.css&quot;/&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;../w2h/lang.css&quot;&gt;
+</pre></div>
+</div>
 <p>The updated files are uploaded to the CLI-DIR using the right hand
 upload ICON in the try-it section. We must save the template in section
 4 in order to pull in the modified pagetop.html file. This process
@@ -400,25 +395,17 @@ screen looks like:-</p>
 <p>We modify the workbench again to remove some elements that we do not
 require in our modernized screen and modify others. We perform the
 following VSR tasks after modifying our workbench:-</p>
-<ol class="arabic simple" start="3">
+<ol class="arabic simple">
 <li>Save the workbench</li>
-</ol>
-<p>3. Export it as a XML file. (Easier when doing a lot of updates. You can
-import the XML file).</p>
-<ol class="arabic simple" start="4">
+<li>Export it as a XML file. (Easier when doing a lot of updates. You can import the XML file).</li>
 <li>Create the template</li>
-</ol>
-<ol class="arabic simple" start="4">
 <li>Save the template and build new test.HTML file.</li>
 <li>Upload test.HTML file</li>
-</ol>
-<ol class="arabic simple" start="5">
 <li>Open the Capture window.</li>
 </ol>
 <p>Our results look like this:-</p>
 <p><a class="reference internal" href="../../../_images/image192.png"><img alt="image18" src="../../../_images/image192.png" style="width: 6.26806in; height: 2.91250in;" /></a></p>
-<p>Our first screen looks slightly webified. A lot more to do but it is a
-start.</p>
+<p>Our first screen looks slightly webified. A lot more to do but it is a start.</p>
 <p><strong>Using “Standard” or “Production Mode”</strong></p>
 <p>In our previous modernization with “Test” mode there was no interaction
 with the back end application. Virtel captured the screen that we wanted
@@ -449,7 +436,9 @@ normally a load library reserved for user modifications and proceeds the
 distributed Virtel steplib library. Once successfully assembled and
 linked we tell Virtel to load it in preparation for our standard test.
 We issue the command:-</p>
-<p>F Virtel,new=menuajax</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">Virtel</span><span class="p">,</span><span class="n">new</span><span class="o">=</span><span class="n">menuajax</span>
+</pre></div>
+</div>
 <p>This will load or refresh the copy of the scenario. We are now ready to
 test our modernized template in production mode. Pressing the “Try it”
 ICON, third one on the left hand side in section 5 we are presented with
@@ -473,71 +462,72 @@ the PageTop.html and PageBottom.html templates during “test mode”. Then
 we have to navigate through our application capturing the MAPS and
 modernizing each one. We also might have to refactor our scenario to put
 in more meaningful business logic.</p>
-<p>**
-Appendix A**</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
-<p>* SCENARIO FOR VIRTEL SCREEN REDESIGNER</p>
-<p>* Screen selection for MENU application</p>
-<p>* &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
-<p>MENUAJAX SCREENS APPL=MENUAJAX</p>
-<p>*</p>
-<p>SCENARIO OUTPUT</p>
-<p>*</p>
-<p>* Analyze the screen ident to be recognized:</p>
-<p>* - line AA</p>
-<p>* - column BB</p>
-<p>* - length CC</p>
-<p>* (fill in AA,BB and CC)</p>
-<p>*</p>
-<p>* Search for screen identifiers (e.g. XXXXXXXX, YYYYYYYY)</p>
-<p>* which have been chosen for Webified Presentation</p>
-<p>*</p>
-<p>* Code one or more IF$ or CASE$:</p>
-<p>*</p>
-<p>* CASE$ (AA,BB,CC), *</p>
-<p>* (EQ,&#8217;XXXXXXXX&#8217;,MENU00X), *</p>
-<p>* (EQ,&#8217;YYYYYYYY&#8217;,MENU00Y), *</p>
-<p>* ELSE=CLASSIC</p>
-<p>*</p>
-<p>PIVOT IF$ (01,02,07),EQ=&#8217;MENMAP1&#8217;,THEN=MENU00X,ELSE=OTHER1</p>
-<p>*</p>
-<p>OTHER1 IF$ (01,02,07),EQ=&#8217;MENMAP2&#8217;,THEN=MENU00Y,ELSE=OTHER2</p>
-<p>*</p>
-<p>OTHER2 IF$ (01,02,07),EQ=&#8217;MENMAP3&#8217;,THEN=MENU00Z,ELSE=CLASSIC</p>
-<p>*</p>
-<p>* Screen XXXXXXXX</p>
-<p>* Send the sub-page associated with this screen ident</p>
-<p>* (replace PGXXXXXX.html by the name chosen)</p>
-<p>*</p>
-<p>MENU00X DS 0H</p>
-<p>SET$ PAGE,&#8217;ProdMenumap1.html&#8217;</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>* Screen YYYYYYYY</p>
-<p>* Send the sub-page associated with this screen ident</p>
-<p>* (replace PGYYYYYY.html by the name chosen)</p>
-<p>*</p>
-<p>MENU00Y DS 0H</p>
-<p>SET$ PAGE,&#8217;ProdMenumap2.html&#8217;</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>* Screen ZZZZZZZZ</p>
-<p>* Send the sub-page associated with this screen ident</p>
-<p>* (replace PGZZZZZZ.html by the name chosen)</p>
-<p>*</p>
-<p>MENU00Z DS 0H</p>
-<p>SET$ PAGE,&#8217;ProdMenumap3.html&#8217;</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>* Screen ident not recognized</p>
-<p>* Use classic 3270 presentation sub-page</p>
-<p>*</p>
-<p>CLASSIC DS 0H</p>
-<p>SET$ PAGE,&#8217;VSRajax.html&#8217;</p>
-<p>SCENARIO END</p>
-<p>*</p>
-<p>SCRNEND</p>
-<p>END</p>
+<p><strong>Appendix A</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>* ---------------------------------------------------------------------
+* SCENARIO FOR VIRTEL SCREEN REDESIGNER
+* Screen selection for MENU application
+* ---------------------------------------------------------------------
+MEMNUAJAX       SCREENS APPL=MENUAJAX
+*
+                        SCENARIO OUTPUT
+*
+* Analyze the screen ident to be recognized:
+* - line AA
+* - column BB
+* - length CC
+* (fill in AA,BB and CC)
+*
+* Search for screen identifiers (e.g. XXXXXXXX, YYYYYYYY)
+* which have been chosen for Webified Presentation
+*
+* Code one or more IF$ or CASE$:
+*
+* CASE$ (AA,BB,CC), *
+* (EQ,&#39;XXXXXXXX&#39;,MENU00X), *
+* (EQ,&#39;YYYYYYYY&#39;,MENU00Y), *
+* ELSE=CLASSIC
+*
+PIVOT           IF$ (01,02,07),EQ=&#39;MENMAP1&#39;,THEN=MENU00X,ELSE=OTHER1
+*
+OTHER1          IF$ (01,02,07),EQ=&#39;MENMAP2&#39;,THEN=MENU00Y,ELSE=OTHER2
+*
+OTHER2          IF$ (01,02,07),EQ=&#39;MENMAP3&#39;,THEN=MENU00Z,ELSE=CLASSIC
+*
+* Screen XXXXXXXX
+* Send the sub-page associated with this screen ident
+* (replace PGXXXXXX.html by the name chosen)
+*
+MENU00X         DS 0H
+                        SET$ PAGE,&#39;ProdMenumap1.html&#39;
+                        SCENARIO END
+*
+* Screen YYYYYYYY
+* Send the sub-page associated with this screen ident
+* (replace PGYYYYYY.html by the name chosen)
+*
+MENU00Y         DS 0H
+                        SET$ PAGE,&#39;ProdMenumap2.html&#39;
+                        SCENARIO END
+*
+* Screen ZZZZZZZZ
+* Send the sub-page associated with this screen ident
+* (replace PGZZZZZZ.html by the name chosen)
+*
+MENU00Z         DS 0H
+                        SET$ PAGE,&#39;ProdMenumap3.html&#39;
+                        SCENARIO END
+*
+* Screen ident not recognized
+* Use classic 3270 presentation sub-page
+*
+CLASSIC         DS 0H
+                        SET$ PAGE,&#39;VSRajax.html&#39;
+                        SCENARIO END
+*
+                        SCRNEND
+                        END
+</pre></div>
+</div>
 </div>
 
 

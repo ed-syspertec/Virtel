@@ -1,170 +1,115 @@
+.. _#_tn201608:
+
 Installing Virtel V4.56 from scratch
 ====================================
 
 **Cleaning up from a previous installation.**
 
 If you want to delete all the files from a previous installation use the
-following job:-
+following job:- ::
 
-//S00 EXEC PGM=ADRDSSU,REGION=0M
-
-//SYSPRINT DD SYSOUT=\*
-
-//TEMP DD DUMMY
-
-DUMP DATASET -
-
-(INCLUDE( -
-
-SPTHOLT.VIRT456.\*\* -
-
-)) -
-
-DELETE -
-
-PURGE -
-
-TOL(ENQF) -
-
-OUTDDNAME(TEMP)
+  //S00 EXEC PGM=ADRDSSU,REGION=0M
+  //SYSPRINT DD SYSOUT=*
+  //TEMP DD DUMMY
+   DUMP DATASET -
+     (INCLUDE( -
+     SPTHOLT.VIRT456.** -
+     )) -
+     DELETE -
+     PURGE -
+     TOL(ENQF) -
+     OUTDDNAME(TEMP)
 
 **Getting the software**
 
-Download relevant files from the FTP server: http://ftp.syspertec.com
+#. Download relevant files from the FTP server: http://ftp.syspertec.com
 
-/VIRTEL 4.56/Produits/virtel456mvs.zip
+- /VIRTEL 4.56/Produits/virtel456mvs.zip
+- /VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt
+- /VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip
 
-/VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt
-
-/VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip
-
-Unzip “virtel456mvs.zip” into a folder on your workstation.
-
-Print off the “install.txt” document.
-
-Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on
-your workstation.
-
-Print off the readme document.
+#. Unzip “virtel456mvs.zip” into a folder on your workstation.
+#. Print off the “install.txt” document.
+#. Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on your workstation.
+#. Print off the readme document.
 
 **Installing the software**
 
-1.  Upload to the mainframe and edit the text file $alocdsu. Run it to
-    allocate a XMIT file.
+#.  Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.
+#.  Upload the XMIT file virt456.xmit to the file allocated by $alocdsu.
+#.  Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.
+#.  Upload text file allptfs-mvs456.txt to *yourqual.VIRT456.CNTL(PTF456MV).*
+#.  Modify and run job *yourqual.VIRT456.CNTL(ZAPJCL)*. This will apply maintenance to the VIRTEL load library.
+#.  Authorize the VIRTEL load library. Use the z/OS SETPROG APF command 
 
-2.  Upload the XMIT file virt456.xmit to the file allocated by $alocdsu.
+::  
+  
+  SETPROG APF,ADD,DSN=\ *yourqual.VIRT456.LOADLIB*,[VOL=volser \| SMS ]
 
-3.  Upload to the mainframe and edit the text file $restdsu. Run it to
-    restore and install VIRTEL from the uploaded XMIT file.
+#.  Edit the VIRTEL TCT member *yourqual.VIRT456.CNTL(VIRTCT01*) and assemble using *yourqual.VIRT456.CNTL(ASMTCT).* See note 6 of “install.txt” for further information.
+#.  Edit *yourqual.VIRT456.CNTL(ARBOLOAD)* and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.
+#.  Copy *yourqual.VIRT456.CNTL(member)* to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.
+#. Edit member *yourqual.VIRT456.CNTL(VIRTEL4)* and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.
+#. Start Virtel.
 
-4.  Upload text file allptfs-mvs456.txt to
-    *yourqual.VIRT456.CNTL(PTF456MV).*
+You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-
 
-5.  Modify and run job *yourqual.VIRT456.CNTL(ZAPJCL)*. This will apply
-    maintenance to the VIRTEL load library.
+::
 
-6.  Authorize the VIRTEL load library. Use the z/OS SETPROG APF command
-    - SETPROG APF,ADD,DSN=\ *yourqual.VIRT456.LOADLIB*,[VOL=volser \|
-    SMS ]
-
-7.  Edit the VIRTEL TCT member *yourqual.VIRT456.CNTL(VIRTCT01*) and
-    assemble using *yourqual.VIRT456.CNTL(ASMTCT).* See note 6 of
-    “install.txt” for further information.
-
-8.  Edit *yourqual.VIRT456.CNTL(ARBOLOAD)* and submit the job. This
-    builds the default configuration and sample VTAMLST member. See note
-    8 of the “install.txt” for further information.
-
-9.  Copy *yourqual.VIRT456.CNTL(member)* to SYS1.VTAMLST. Member is
-    either VIRTAPPL, the default member name, or the VTAM applid
-    specified in the ARBOLOAD job on the NODEAPPL= statement. Activate
-    the “member” with the z/OS command V NET,ACT,ID=member.
-
-10. Edit member *yourqual.VIRT456.CNTL(VIRTEL4)* and copy to
-    SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.
-
-11. Start Virtel.
-
-Note: You can run VIRTEL as a JOB rather than a STC. This can be useful
-during testing. See the JCL below for an example:-
-
-//SPTHOLTV JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
-
-//VIRTEL PROC QUAL=SPTHOLT.VIRT456,
-
-// TCT=01 = Change to 01
-
-//\*-------------------------------------------------------------------\*
-
-//\* PROCEDURE FOR VIRTEL STARTER EDITION \*
-
-//\*-------------------------------------------------------------------\*
-
-//VIRTEL EXEC PGM=VIR6000,TIME=1440,REGION=32M,PARM=&TCT
-
-//STEPLIB DD DSN=&QUAL..LOADLIB,DISP=SHR
-
-//DFHRPL DD DSN=&QUAL..LOADLIB,DISP=SHR
-
-//SERVLIB DD DSN=&QUAL..SERVLIB,DISP=SHR
-
-//VIRARBO DD DSN=&QUAL..ARBO,DISP=SHR
-
-//VIRSWAP DD DSN=&QUAL..SWAP,DISP=SHR
-
-//VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
-
-//SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
-
-//HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
-
-//SYSOUT DD SYSOUT=\*
-
-//VIRLOG DD SYSOUT=\*
-
-//VIRTRACE DD SYSOUT=\*
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSUDUMP DD SYSOUT=\*
-
-// PEND
-
-//S01 EXEC VIRTEL
+  //SPTHOLTV JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+  //VIRTEL PROC QUAL=SPTHOLT.VIRT456,
+  // TCT=01 = Change to 01
+  //*-------------------------------------------------------------------*
+  //* PROCEDURE FOR VIRTEL STARTER EDITION                              *
+  //*-------------------------------------------------------------------*
+  //VIRTEL EXEC PGM=VIR6000,TIME=1440,REGION=32M,PARM=&TCT
+  //STEPLIB DD DSN=&QUAL..LOADLIB,DISP=SHR
+  //DFHRPL DD DSN=&QUAL..LOADLIB,DISP=SHR
+  //SERVLIB DD DSN=&QUAL..SERVLIB,DISP=SHR
+  //VIRARBO DD DSN=&QUAL..ARBO,DISP=SHR
+  //VIRSWAP DD DSN=&QUAL..SWAP,DISP=SHR
+  //VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
+  //SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
+  //HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
+  //SYSOUT DD SYSOUT=*
+  //VIRLOG DD SYSOUT=*
+  //VIRTRACE DD SYSOUT=*
+  //SYSPRINT DD SYSOUT=*
+  //SYSUDUMP DD SYSOUT=*
+  // PEND
+  //S01 EXEC VIRTEL
 
 Once Virtel is started check that VIRTEL is running correctly and has
 opened sessions ports 41001 and 41002. Issue the following command:-
 
-F VIRTEL,LINES
+::
+
+  F VIRTEL,LINES
 
 The output should be similar to:-
 
-F VIRTEL,LINES
+::
 
-+VIR0200I LINES
+  F VIRTEL,LINES
+  +VIR0200I LINES
+  +VIR0201I VIRTEL 4.56 APPLID=APPLHOLT LINES
+  +VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP
+  +VIR0202I -------- -------- ----- ---------
+  +VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.30:41002
+  +VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001
+  +VIR0202I ---END OF LIST---
 
-+VIR0201I VIRTEL 4.56 APPLID=APPLHOLT LINES
+**Applying maintenance to Virtel.**
 
-+VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP
-
-+VIR0202I -------- -------- ----- ---------
-
-+VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.30:41002
-
-+VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001
-
-+VIR0202I ---END OF LIST---
-
-**
-Applying maintenance to Virtel.**
-
-**TRSF changes**
+*VSAM TRSF changes*
 
 Using a Chrome Browser navigate to the Administration Virtel Portal
 which can be accessed through port 41001. The Drag and Drop upload
 feature is supported by Chrome and Firefox only.
 
-http://192.168.170.30:41001/
+::
+
+  http://192.168.170.30:41001/
 
 The following screen image should appear:-
 
@@ -196,8 +141,7 @@ top portion of the Virtel screen.
 
 Virtel 4.56 maintenance is now complete.
 
-**
-Basic health test of Virtel**
+**Basic health test of Virtel**
 
 From the Virtel Portal Page select “Other Applications”. An application
 menu should appear with some default applications.

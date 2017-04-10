@@ -158,7 +158,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="cics-printing">
-<h1>CICS Printing<a class="headerlink" href="#cics-printing" title="Permalink to this headline">¶</a></h1>
+<span id="tn201605"></span><h1>CICS Printing<a class="headerlink" href="#cics-printing" title="Permalink to this headline">¶</a></h1>
 <p>In this newsletter we discuss printing from a CICS application to a
 Virtel 3270 printer. The CICS API support for printing is the same as
 that for writing to a display terminal with some additional print format
@@ -217,7 +217,7 @@ supported features.</p>
 and its associate relay printer terminal REHIP000 with the following
 characteristics.</p>
 <p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
-<p>Figure Virtel Terminal Display</p>
+<p><em>Fig. 1 - Terminal Display</em></p>
 <p>Display REHVT000 has an associate relay of REHIP000 which is defined as
 a Type = P. Type = P indicates that this is a dynamically allocated
 printer LU, supporting 3270 data streams. Both the display and printer
@@ -229,25 +229,27 @@ LU at start up.</p>
 representing the display LU REHVT000 and EHS0 representing the printer
 LU REHIP000.</p>
 <p><a class="reference internal" href="../../../_images/image217.png"><img alt="image1" src="../../../_images/image217.png" style="width: 5.81250in; height: 3.92630in;" /></a></p>
-<p>Figure CICS Display definition</p>
+<p><em>Fig. 2 -CICS Display definition</em></p>
 <p><a class="reference internal" href="../../../_images/image318.png"><img alt="image2" src="../../../_images/image318.png" style="width: 5.81250in; height: 3.91729in;" /></a></p>
-<p>Figure CICS Printer Definition</p>
+<p><em>Fig. 3 - CICS Printer Definition</em></p>
 <p>Note that the characteristics for each device is determined by the
 TYpeterm association. For the printer we are using a user defined
 Typeterm called IMP3270P.</p>
 <p><a class="reference internal" href="../../../_images/image415.png"><img alt="image3" src="../../../_images/image415.png" style="width: 5.48958in; height: 3.71791in;" /></a></p>
-<p>Figure CICS Typeterm definition for the printer</p>
+<p><em>Fig. 4 - CICS Typeterm definition for the printer</em></p>
 <p>Within the Typeterm definition the following Operation properties are
 set to enable dynamic printer acquirement and release with CICS. The
 Typeterm definition is also associated with a Device type of 3270P.</p>
 <p><a class="reference internal" href="../../../_images/image513.png"><img alt="image4" src="../../../_images/image513.png" style="width: 5.46875in; height: 3.70622in;" /></a></p>
-<p>Figure CICS Printer Operational Properties</p>
+<p><em>Fig. 5 - CICS Printer Operational Properties</em></p>
 <p>The CICS application we use is a simple customer inquiry application
 which has a print facility. Logging onto the application using Virtel
 produces the following messages in the Virtel log.</p>
-<p>VIRHT51I HTTP-CLI CONNECTING CLVTA079 TO 192.168.092.056:49318</p>
-<p>VIR0919I CLVTA079 RELAY REHVT000(W2HTP000) ACTIVATED</p>
-<p>VIR0919I CLVTA079 RELAY REHIP000(W2HIP000) ACTIVATED</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA079</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49318</span>
+<span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHVT000</span><span class="p">(</span><span class="n">W2HTP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHIP000</span><span class="p">(</span><span class="n">W2HIP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+</pre></div>
+</div>
 <p>Message VIRHT51I represents the browser connecting our workstation to
 Virtel’s HTTP engine on IP address 192.168.092.056. The two VIR0919I
 messages relate to Virtel activating two VTAM applications that will
@@ -255,39 +257,40 @@ represent the 3270 display (REHVT000) and printer (REHIP000) to CICS.
 The Virtel CICS logon screen looks like this with the Virtel associated
 LUs displayed in the bottom right corner.</p>
 <p><a class="reference internal" href="../../../_images/image612.png"><img alt="image5" src="../../../_images/image612.png" style="width: 5.92708in; height: 4.49752in;" /></a></p>
-<p>Figure Logging onto CICS</p>
+<p><em>Fig. 6 - Logging onto CICS</em></p>
 <p>After logging onto CICS we access the application by entering the
 transaction id MENU. This displays a menu list of available options with
 the CICS application.</p>
 <p><a class="reference internal" href="../../../_images/image710.png"><img alt="image6" src="../../../_images/image710.png" style="width: 5.02083in; height: 3.82042in;" /></a></p>
-<p>Figure CICS Application Menu</p>
+<p><em>Fig. 7 -CICS Application Menu</em></p>
 <p>Option 1 is selected to bring up the customer inquiry panel and then a
 customer number is entered to bring up the relevant customer detail.</p>
 <p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 5.06250in; height: 3.86726in;" /></a></p>
-<p>Figure Application inquiry display</p>
+<p><em>Fig. 8 - Application inquiry display</em></p>
 <p>PF9 is selected to trigger a print operation. A small print ICON box
 appears in the Virtel tool bar on the right hand side and a message
 appears in the application notification area indicating that a print
 request has been sent to printed id EHS0.</p>
 <p><a class="reference internal" href="../../../_images/image97.png"><img alt="image8" src="../../../_images/image97.png" style="width: 5.54587in; height: 4.23958in;" /></a></p>
-<p>Figure Print request acknowledgment</p>
+<p><em>Fig. 9 - Print request acknowledgment</em></p>
 <p>If we look at the Virtel log we can see the following messages.</p>
-<p>VIR0906I SPCICST CONNECTING LUTYPE 00 PRINTER W2HIP000(REHIP000) TO</p>
-<p>CLVTA079</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">00</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
+</pre></div>
+</div>
 <p>This indicates that Virtel has received the 3270 print data stream from
 CICS. Pressing the Virtel Printer ICON will open and trigger the browser
 to display the printer template that Virtel has created within another
 browser window.</p>
-<p>Note that no pagination of formatting takes place in this display.</p>
+<p>Note that no pagination and minimal formatting takes place in this print mode.</p>
 <p><a class="reference internal" href="../../../_images/image107.png"><img alt="image9" src="../../../_images/image107.png" style="width: 5.26042in; height: 4.04876in;" /></a></p>
-<p>Figure Virtel printo output display</p>
+<p><em>Fig. 10 - Virtel printo output display</em></p>
 <p>If we right click and view the source of this template we can see that
 Virtel has imbedded pagination tags as required by the CICS transaction.
 We can see a page-break-after:always style control associated with a
 HTML DIV tag. This will control the pagination when we request a print
 of the document.</p>
 <p><a class="reference internal" href="../../../_images/image1112.png"><img alt="image10" src="../../../_images/image1112.png" style="width: 5.58784in; height: 4.25000in;" /></a></p>
-<p>Figure Virtel inserted print formatting controls</p>
+<p><em>Fig. 11 - Virtel inserted print formatting controls</em></p>
 <p>Closing this browser window and then right click and print on the
 printer template display will drive the browser printer interface. From
 here the printer window will open and we can print the document. The
@@ -295,12 +298,12 @@ document is available to print and consists of 3 pages which is what we
 would expect. At this point we can of course print the document of even
 save it as a PDF.</p>
 <p><a class="reference internal" href="../../../_images/image1210.png"><img alt="image11" src="../../../_images/image1210.png" style="width: 5.41852in; height: 4.14583in;" /></a></p>
-<p>Figure Browser Print Window</p>
+<p><em>Fig. 12 - Browser Print Window</em></p>
 <p>One we have processed the document the browser window will close and we
 are returned to the application display. Pressing enter will clear the
 print ICON and print message.</p>
 <p><a class="reference internal" href="../../../_images/image134.png"><img alt="image12" src="../../../_images/image134.png" style="width: 5.61458in; height: 4.29460in;" /></a></p>
-<p>Figure Pressing enter to clear print request</p>
+<p><em>Fig. 13 - Pressing enter to clear print request</em></p>
 <p><strong>Sharing Virtel printers</strong></p>
 <p>It will often be the case that a Virtel printer will be required to be
 shared by 3270 applications. Although CICS has acquired the printer in
@@ -310,13 +313,17 @@ example we demonstrate GDDM’s ADMPRINT program sending a print to the
 REHIP000 printer. The printer terminal state within CICS look like this
 after completing the print request in the CICS application.</p>
 <p><a class="reference internal" href="../../../_images/image144.png"><img alt="image13" src="../../../_images/image144.png" style="width: 5.56250in; height: 3.76421in;" /></a></p>
-<p>Figure CICS Printer State after printing in CICS</p>
+<p><em>Fig. 14 - CICS Printer State after printing in CICS</em></p>
 <p>From within TSO we issue the following commands to drive a GDDM print
 request towards REHIP000.</p>
-<p>Allocate the GDDM print queue.</p>
-<p><em>alloc f(ADMPRNTQ) DA(REQUEST.QUEUE) SHR REUSE</em></p>
-<p>Send a print request.</p>
-<p><em>Call &#8216;gddm.sadmmod(admoprt)&#8217; &#8216;gddm.smallprt on rehip000&#8217;</em></p>
+<p># Allocate the GDDM print queue.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
+</pre></div>
+</div>
+<p># Send a print request.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Call</span> <span class="s1">&#39;gddm.sadmmod(admoprt)&#39;</span> <span class="s1">&#39;gddm.smallprt on rehip000&#39;</span>
+</pre></div>
+</div>
 <p>Once GDDM determines that there is a pending print request in the queue
 it allocates a session with the Virtel printer LU REHIP000 and sends the
 output to the printer LU. In our CICS session we again see the ICON
@@ -324,12 +331,13 @@ appear in the tool bar, but in this case there is no CICS message
 indicating a CICS print request. This is because this request has come
 from GDDM and not CICS.</p>
 <p><a class="reference internal" href="../../../_images/image154.png"><img alt="image14" src="../../../_images/image154.png" style="width: 6.26806in; height: 4.75833in;" /></a></p>
-<p>Figure Printer Sharing</p>
+<p><em>Fig. 15 - Printer Sharing</em></p>
 <p>In the Virtel log we can see the following messages. This time it is
 application GDDMPRTS that is connecting to the printer and not SPCICST.</p>
-<p>VIRT906I HTTP-CLI SOCKET 00020000 CALL FROM 192.168.092.056:49408</p>
-<p>VIR0906I GDDMPRTS CONNECTING LUTYPE 00 PRINTER W2HIP000(REHIP000) TO</p>
-<p>CLVTA079</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49408</span>
+<span class="n">VIR0906I</span> <span class="n">GDDMPRTS</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">00</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
+</pre></div>
+</div>
 <p>If we process the print request by selecting the print request ICON,
 Virtel will open a new browser window and display the print template.
 Within this window we can right click and select print. This will
@@ -371,12 +379,13 @@ terminal definition.</li>
 which indicates a print failure. Note that different printer ICON. This
 indicates a SCS print.</p>
 <p><a class="reference internal" href="../../../_images/image162.png"><img alt="image15" src="../../../_images/image162.png" style="width: 6.26806in; height: 4.77917in;" /></a></p>
-<p>Figure Failed SCS print request</p>
+<p><em>Fig. 16 - Failed SCS print request</em></p>
 <p>If we look into the Virtel log we can see the following messages.</p>
-<p>VIR0906I SPCICST CONNECTING LUTYPE 01 PRINTER W2HIP000(REHIP000) TO</p>
-<p>CLVTA079</p>
-<p>VIRC122E ERROR CLVTA079 IS SENDING A SCENARIO PF KEY BUT SCENARIO IS</p>
-<p>MISSING IN TRANSACTION &#8216;CLI-10 &#8216; ENTRY POINT &#8216;CLIWHOST&#8217;</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">01</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
+<span class="n">VIRC122E</span> <span class="n">ERROR</span> <span class="n">CLVTA079</span> <span class="n">IS</span> <span class="n">SENDING</span> <span class="n">A</span> <span class="n">SCENARIO</span> <span class="n">PF</span> <span class="n">KEY</span> <span class="n">BUT</span> <span class="n">SCENARIO</span> <span class="n">IS</span>
+<span class="n">MISSING</span> <span class="n">IN</span> <span class="n">TRANSACTION</span> <span class="s1">&#39;CLI-10 &#39;</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span>
+</pre></div>
+</div>
 <p>Virtel has detected that the print data stream is SCS (LU Type 1) and
 that it is connecting this print request to the printer REHIP000 which
 is still defined as a 3270 printer in Virtel (Type=P) and not a SCS
@@ -384,7 +393,7 @@ printer (Type=S).</p>
 <p>If we look at the Virtel Transaction CLI-10 we can see the following
 display.</p>
 <p><a class="reference internal" href="../../../_images/image172.png"><img alt="image16" src="../../../_images/image172.png" style="width: 6.26806in; height: 4.24931in;" /></a></p>
-<p>Figure Transaction with no input scenario</p>
+<p><em>Fig. 17 - Transaction with no input scenario</em></p>
 <p>We can see that no input scenario is associated this application. SCS
 printing will require a scenario. Three scenarios are available:-</p>
 <ol class="arabic simple">
@@ -397,25 +406,25 @@ PDF file is returned to Virtel as an attachment.</li>
 enable Virtel to process the print request sent by CICS. We update our
 Virtel transaction definition and add the scenario SCENFPCL.</p>
 <p><a class="reference internal" href="../../../_images/image181.png"><img alt="image17" src="../../../_images/image181.png" style="width: 6.26806in; height: 4.24236in;" /></a></p>
-<p>Figure Transaction with input scenario</p>
+<p><em>Fig. 18 - Transaction with input scenario</em></p>
 <p>After restarting Virtel and repeating the print request we are presented
 with a dialog box which enables us to save the raw print data stream to
 a file of file type PCL.</p>
 <p><a class="reference internal" href="../../../_images/image191.png"><img alt="image18" src="../../../_images/image191.png" style="width: 6.26806in; height: 3.89653in;" /></a></p>
-<p>Figure Successful print with SCS</p>
+<p><em>Fig. 19 - Successful print with SCS</em></p>
 <p>In the Virtel log we can see the following messages.</p>
-<p>VIR0906I SPCICST CONNECTING LUTYPE 01 PRINTER W2HIP000(REHIP000) TO</p>
-<p>CLVTA079</p>
-<p>VIRT922W HTTP-CLI SOCKET 00010000 ENDED FOR 192.168.092.056:49920</p>
-<p>VIRT906I HTTP-CLI SOCKET 00020000 CALL FROM 192.168.092.056:49938</p>
-<p>APPLHOLT CLVTA079 REHIP000 SCENFPCL DELIVERED DOCUMENT REHIP000-20160510</p>
-<p>135830 TO TERMINAL</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">01</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
+<span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00010000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49920</span>
+<span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49938</span>
+<span class="n">APPLHOLT</span> <span class="n">CLVTA079</span> <span class="n">REHIP000</span> <span class="n">SCENFPCL</span> <span class="n">DELIVERED</span> <span class="n">DOCUMENT</span> <span class="n">REHIP000</span><span class="o">-</span><span class="mi">20160510</span> <span class="mi">135830</span> <span class="n">TO</span> <span class="n">TERMINAL</span>
+</pre></div>
+</div>
 <p>If we open the downloaded PCL file with an editor we have the following.
 Again the pagination will not be respected until we print the file but
 Virtel will insert the correct print orders so that the document prints
 correctly.</p>
 <p><a class="reference internal" href="../../../_images/image201.png"><img alt="image19" src="../../../_images/image201.png" style="width: 6.26806in; height: 3.89861in;" /></a></p>
-<p>Figure SCS Print file</p>
+<p><em>Fig. 20 - SCS Print file</em></p>
 <p><strong>Correcting the Virtel definitions for SCS printing</strong></p>
 <p>Although Virtel is intelligent enough to determine that it is receiving
 a SCS data stream and overrides the original printer definition for
@@ -426,7 +435,7 @@ types are defined as TYPE=S. We update the terminal definition
 (REHVT000) to associate it with a SCS printer REHIM000. The terminal
 display now looks like this.</p>
 <p><a class="reference internal" href="../../../_images/image218.png"><img alt="image20" src="../../../_images/image218.png" style="width: 4.88680in; height: 3.30208in;" /></a></p>
-<p>Figure Defining a Virtel SCS printer terminal</p>
+<p><em>Fig. 21 - Defining a Virtel SCS printer terminal</em></p>
 <p>We also have to correct the CICS definition so that the terminal EHS0 is
 associated with the Virtel printer definition REHIM000. We use CEDA to
 alter and reinstall the terminal. Here is the new CICS table definition.</p>
@@ -442,11 +451,10 @@ REHIM000, a Virtel SCS printer. See the bottom right corner.</p>
 <p>Pressing PF9 initiates a print request as before but this time to the
 Virtel LU printer definition REHIM000 which is correctly defined to
 Virtel as a SCS printer.</p>
-<p>**
-Virtel Auto-Print Option**</p>
+<p><strong>Virtel Auto-Print Option</strong></p>
 <p>For 3270 printing, Virtel has an auto-print settings option.</p>
 <p><a class="reference internal" href="../../../_images/image251.png"><img alt="image24" src="../../../_images/image251.png" style="width: 4.97917in; height: 3.78154in;" /></a></p>
-<p>Figure Auto Print Option</p>
+<p><em>Fig. 22 - Auto Print Option</em></p>
 <p>When selected this has the effect of automatically opening the browsers
 printer support window after receiving a print request. You do not have
 to right click “print” in the printer template window.</p>
