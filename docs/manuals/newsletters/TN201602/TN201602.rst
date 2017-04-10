@@ -1,3 +1,5 @@
+.. _tn201602:
+
 Installing Virtel V4.53 from scratch
 ====================================
 
@@ -8,11 +10,11 @@ following job:-::
 
 
     //S00 EXEC PGM=ADRDSSU,REGION=0M
-    //SYSPRINT DD SYSOUT=\*
+    //SYSPRINT DD SYSOUT=*
     //TEMP DD DUMMY
     DUMP DATASET -
     (INCLUDE( -
-    SPTHOLT.VIRT453.\*\* -
+    SPTHOLT.VIRT453.** -
     )) -
     DELETE -
     PURGE -
@@ -21,7 +23,7 @@ following job:-::
 
 **Getting the software**
 
-#. Download relevant files from the FTP server: http://ftp.syspertec.com:-::
+#. Download relevant files from the FTP server: http://ftp.syspertec.com
 
     /VIRTEL 4.53/Produits/virtel453mvs.zip
     /VIRTEL 4.53/Produits/allptfs-mvs453.txt
@@ -50,40 +52,46 @@ following job:-::
 #. Edit member *yourqual.VIRT453.CNTL(VIRTEL4)* and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.
 #. Start Virtel.
 
-Note: You can run VIRTEL as a JOB rather than a STC. This can be useful
-during testing. See the JCL below for an example:-::
+.. note::
+    You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-
 
-//SPTHOLTV JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
-//VIRTEL PROC QUAL=SPTHOLT.VIRT453,
-// TCT=01 = Change to 01
-//\*-------------------------------------------------------------------\*
-//\* PROCEDURE FOR VIRTEL STARTER EDITION                              \*
-//\*-------------------------------------------------------------------\*
-//VIRTEL EXEC PGM=VIR6000,TIME=1440,REGION=32M,PARM=&TCT
-//STEPLIB DD DSN=&QUAL..LOADLIB,DISP=SHR
-//DFHRPL DD DSN=&QUAL..LOADLIB,DISP=SHR
-//SERVLIB DD DSN=&QUAL..SERVLIB,DISP=SHR
-//VIRARBO DD DSN=&QUAL..ARBO,DISP=SHR
-//VIRSWAP DD DSN=&QUAL..SWAP,DISP=SHR
-//VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
-//SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
-//HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
-//SYSOUT DD SYSOUT=\*
-//VIRLOG DD SYSOUT=\*
-//VIRTRACE DD SYSOUT=\*
-//SYSPRINT DD SYSOUT=\*
-//SYSUDUMP DD SYSOUT=\*
-// PEND
-//S01 EXEC VIRTEL
+::
+
+    //SPTHOLTV JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+    //VIRTEL PROC QUAL=SPTHOLT.VIRT453,
+    // TCT=01 = Change to 01
+    //*-------------------------------------------------------------------*
+    //* PROCEDURE FOR VIRTEL STARTER EDITION                              *
+    //*-------------------------------------------------------------------*
+    //VIRTEL EXEC PGM=VIR6000,TIME=1440,REGION=32M,PARM=&TCT
+    //STEPLIB DD DSN=&QUAL..LOADLIB,DISP=SHR
+    //DFHRPL DD DSN=&QUAL..LOADLIB,DISP=SHR
+    //SERVLIB DD DSN=&QUAL..SERVLIB,DISP=SHR
+    //VIRARBO DD DSN=&QUAL..ARBO,DISP=SHR
+    //VIRSWAP DD DSN=&QUAL..SWAP,DISP=SHR
+    //VIRHTML DD DSN=&QUAL..HTML,DISP=SHR
+    //SAMPTRSF DD DSN=&QUAL..SAMP.TRSF,DISP=SHR
+    //HTMLTRSF DD DSN=&QUAL..HTML.TRSF,DISP=SHR
+    //SYSOUT DD SYSOUT=*
+    //VIRLOG DD SYSOUT=*
+    //VIRTRACE DD SYSOUT=*
+    //SYSPRINT DD SYSOUT=*
+    //SYSUDUMP DD SYSOUT=*
+    // PEND
+    //S01 EXEC VIRTEL
 
 Once Virtel is started you now need to apply maintenance to the SAMPTRSF
 file. This file contains all the related web elements used by VIRTEL.
 Before doing so, just check that VIRTEL is running and has correctly
-opened sessions to ports 41001 and 41002. Issue the following command:-::
+opened sessions to ports 41001 and 41002. Issue the following command:-
+
+::
 
     F VIRTEL,LINES
 
-The output should be similar to:-::
+The output should be similar to:-
+
+::
 
     F VIRTEL,LINES
     +VIR0200I LINES
@@ -104,7 +112,9 @@ Stop VIRTEL if it is running. ARBO updates can only be applied when Virtel is no
 :ARBOMACR: Turns on the new macro support.
 
 #. Upload the text files ARBOMACR and ARBOMIGR to yourqual.VIRT453.SAMPLIB.
-#. Edit and run ARBOMACR and ARBOMIGR to apply maintenance to the ARBO file in preparation for the TRSF maintenance. Change the following SET XXXX=keywords in the JCL to reflect the relevant library names:-::
+#. Edit and run ARBOMACR and ARBOMIGR to apply maintenance to the ARBO file in preparation for the TRSF maintenance. Change the following SET XXXX=keywords in the JCL to reflect the relevant library names:-
+
+::
 
     // SET LOAD=yourqual.VIRT453.LOADLIB
     // SET ARBO=yourqual.VIRT453.ARBO
@@ -118,7 +128,9 @@ Note: If the assembly fails because the at (@) character has been translated to 
 **TRSF changes**
 
 #. Start Virtel.
-#. Using a Chrome Browser navigate to the Administration Virtel Portal which can be accessed through port 41001. The Drag and Drop upload feature is supported by Chrome and Firefox only.-::
+#. Using a Chrome Browser navigate to the Administration Virtel Portal which can be accessed through port 41001. The Drag and Drop upload feature is supported by Chrome and Firefox only.-
+
+::
 
     http://192.168.170.30:41001/
 
@@ -141,16 +153,18 @@ Note: If the assembly fails because the at (@) character has been translated to 
 #. Repeat the exercise, but this time with the W2H directory, dragging the 83 elements into the W2H-DIR directory.
 #. After all the elements have been uploaded into the TRSF VSAM file, press CTRL-R in your browser to refresh the browser’s cache.
 
-    Note: With some versions of Chrome there is a bug which prevents the upload from starting. In this case:-
+.. note::
+
+    With some versions of Chrome there is a bug which prevents the upload from starting. In this case:-
 
     - Close the browser.
-    - Re-open a browser window and type in the following URL replacing the IP stack address (192.168.170.30) with yours. The rest of the URL should be the same. For example:-::
+    - Re-open a browser window and type in the following URL replacing the IP stack address (192.168.170.30) with yours. The rest of the URL should be the same. For example:- ::
 
         http://192.168.170.30:41001/SECURE/upload.htm+dirlist
 
     - This will open the Drag and Drop interface Window. Continue to upload the “w2h” and “sce” directories. Once these uploads have completed, CTRL-R in the browser to refresh the browser’s cache. Close the browser window and reopen the Virtel portal with the URL http://192.168.170.30:41001/
 
-#. The last thing to do is to modify the WEB2HOST entry point to use the SCE-DIR. Stop VIRTEL and then run the following JCL:-::
+#. The last thing to do is to modify the WEB2HOST entry point to use the SCE-DIR. Stop VIRTEL and then run the following JCL:- ::
 
     //--------------------------------------------------------------*
     //*                                                             *
@@ -206,7 +220,7 @@ simple configuration.
 
 This section looks at how to perform some simple configuration tasks using only the ARBO configuration statements and the VIRCONF program. Of course Virtel has other ways in which the Virtel configuration can be changed dynamically. For example you can logon to the Administration Panels through your browser or VTAM direct. See the Virtel User Guide for further information. In this section will focus on batch updates to the ARBO configuration using the VIRCONF program. When doing any work with VIRCONF Virtel must not be running.
 
-The basic JCL for VIRCONF looks like this:-::
+The basic JCL for VIRCONF looks like this:- ::
 
     //VIRCONF EXEC PGM=VIRCONF,PARM=‘LOAD | UNLOAD[,REPL | NOREPL] [,LANG = EN | FR’]
     //STEPLIB DD DSN=your.VIRTEL.LOADLIB,DISP=SHR
@@ -215,7 +229,7 @@ The basic JCL for VIRCONF looks like this:-::
     //VIRARBO DD DSN=your.ARBO,DISP=SHR,AMP=('RMODE31=NONE')
     //SYSPUNCH DD DSN=your.ARBO.CNTL,DISP=SHR
 
-First, let’s get an overview of Virtel of some of its terminology. As delivered, when starting up Virtel 4.53 you should see two active ***LINES***. With Virtel running Issue the “\ *F VIRTEL,LINES*\ ” command:-::
+First, let’s get an overview of Virtel of some of its terminology. As delivered, when starting up Virtel 4.53 you should see two active ***LINES***. With Virtel running Issue the “\ *F VIRTEL,LINES*\ ” command:- ::
 
     F VIRTEL,LINES
     +VIR0200I LINES
@@ -226,13 +240,15 @@ First, let’s get an overview of Virtel of some of its terminology. As delivere
     +VIR0202I W-HTTP HTTP-W2H TCP1 192.168.170.30:41001
     +VIR0202I ---END OF LIST---
 
-These two ***LINES*** are related to two separate ***DOMAINS*** in VIRTEL. Each line is opened with a unique ***PORT*** number which identifies the Virtel domain. The default ports are 41001 and 41002. Port 41001 is considered an Administration interface into the ***Web2Host (W2H) domain*.** Port 41002 is the client interface into the ***Client*** (***CLI) domain.***
+These two LINES are related to two separate DOMAINS in VIRTEL. Each line is opened with a unique PORT number which identifies the Virtel domain. The default ports are 41001 and 41002. Port 41001 is considered an Administration interface into the Web2Host (W2H) domain. Port 41002 is the client interface into the Client (CLI) domain.
 
-What’s in a domain? Well a domain is a container for related Virtel transactions. For example, in the ***W2H*** domain you will find Virtel Administration transactions plus a couple of VTAM applications, like TSO. The ***CLI*** domain is where the majority of customer applications are defined – things like production CICS, IMS and TSO applications. Virtel listens on the IP ports 41001 and 41002 are these are associated with ***LINES*** within Virtel. This information and other Virtel configuration data is stored and maintained in the ***ARBO*** VSAM file. The ***ARBO VSAM*** file is the main configuration file for VIRTEL. It contains all the configuration information for Virtel elements like ***TERMINAL, ENTRY POINTS, LINES, TRANSACTION*** and ***RULE*** definitions amongst other things.
+What’s in a domain? 
+
+Well a domain is a container for related Virtel transactions. For example, in the **W2H domain** you will find Virtel Administration transactions plus a couple of VTAM applications, like TSO. The **CLI domain** is where the majority of customer applications are defined – things like production CICS, IMS and TSO applications. Virtel listens on the IP ports 41001 and 41002 are these are associated with **LINES** within Virtel. This information and other Virtel configuration data is stored and maintained in the ARBO VSAM file. The ARBO VSAM file is the main configuration file for VIRTEL. It contains all the configuration information for Virtel elements like **TERMINAL, ENTRY POINTS, LINES, TRANSACTION** and **RULE** definitions amongst other things.
 
 |image5|
 
-The VSAM ARBO configuration file can be unloaded through the VIRCONF program. To unload a copy of the data held in the ARBO VSAM file run the following ARBOUNLD job. You’ll need to stop Virtel first. The unload will write out to the SYSPUNCH DD file and create a ARBO configuration dadatset:-::
+The VSAM ARBO configuration file can be unloaded through the VIRCONF program. To unload a copy of the data held in the ARBO VSAM file run the following ARBOUNLD job. You’ll need to stop Virtel first. The unload will write out to the SYSPUNCH DD file and create a ARBO configuration dadatset:- ::
 
     // SET ARBO=SP000.SPVIREH.ARBO = Your ARBO file
     //*
@@ -258,7 +274,7 @@ Browse the dataset &SYSUID..VIRCONF.TEST.SYSIN and look for the LINE definitions
 
 Here is the line definition for the CLI domain. The ID= keyword is an internal Virtel, the NAME=key word is an external name; the name that is displayed in Virtel Commands. The LOCADDR= identifies the port that is
 associated with this Virtel Domain (CLI). By default it will take the IP address from the TCPIP stack. If you are using a VIPA then you will need to specify it here. So if my VIPA is 192.168.170.22 then the LOCADDR
-definition should be changed to:-::
+definition should be changed to:- ::
 
     LOCADDR=192.168.170.22:41002
     LINE ID=C-HTTP,
@@ -278,12 +294,12 @@ definition should be changed to:-::
     RULESET=C-HTTP
 
 Note: Remember that if you are using a VIPA then you will have to change the LINE LOCADDR= definitions for other lines which default to the TCPIP stack. These lines can be identified as just having a port only
-definition in the LOCADDR= keyword. The next important definition to discuss is the ENTRY=keyword. The defines a Virtel ***ENTRY POINT***
+definition in the LOCADDR= keyword. The next important definition to discuss is the ENTRY=keyword. The defines a Virtel **ENTRY POINT**
 
 **ENTRY POINT Definitions**
 
 An entry point is another container definition which contains all the transactions associated with a particular domain. So for the W2H domain I would have W2H transactions, the CLI domain CLI transactions. There is
-always a default Entry Point associated with each line. This is identified by the ENTRY= keyword on the LINE statement. From the ARBO configuration file the ENTRY POINT looks like this:-::
+always a default Entry Point associated with each line. This is identified by the ENTRY= keyword on the LINE statement. From the ARBO configuration file the ENTRY POINT looks like this:- ::
 
     ENTRY **ID=CLIWHOST,** -
     DESC='HTTP entry point (CLIENT application)', -
@@ -301,7 +317,7 @@ The salient keywords here are the ID= and the TRANSACT= keywords. The ID= keywor
 TRANSACT= keyword identifies the prefix, normally 3 characters, of all the transactions that relate to this ENTRY POINT. So all transactions
 that have an ID=CLI-something will be associated with his ENTRY POINT. This ENTRY POINT is associated by default to a LINE, in this case the
 LINE that is servicing PORT 41002, and that PORT defines the CLI domain.
-So they sequence for a transaction looks like:-::
+So they sequence for a transaction looks like:- ::
 
     URL -> OSA -> TCPIP -> VIRTEL -> LINE(PORT) -> DOMAIN(W2H \| CLI) ->
     ENTRY POINT -> TRANSACTIONS -> TRANSACTION.
@@ -310,7 +326,7 @@ So they sequence for a transaction looks like:-::
 
 **TRANSACTION Definitions**
 
-As already stated transactions belong to a particular Virtel Entry Point and are identified within the entry point by the keyword TRANSACT=prefix. Here is a transaction definition from the ARBO configuration file:.::
+As already stated transactions belong to a particular Virtel Entry Point and are identified within the entry point by the keyword TRANSACT=prefix. Here is a transaction definition from the ARBO configuration file:. ::
 
     TRANSACT ID=W2H-00,
     NAME=WEB2HOST*,
@@ -327,15 +343,11 @@ the transaction, as defined by the NAME= keyword, is the same as the ENTRY POINT
 So to summarise, we have a line which identifies a Virtel domain through its associated port number. The LINE is also associated with an Entry Point, which in turns identifies a collection of transactions through a
 prefix setting.
 
-LINE:PORT->
-
-    ENTRY POINT->
-
-        TRANSACTIONS
+LINE:PORT-----> ENTRY POINT-----> TRANSACTIONS
 
 **Transaction Type 1 – VTAM Applications**
 
-If we look at the transactions in the default ARBO configuration we can see that most are either Type 1, 2 or 4. Here were look at the type 1 transaction, a VTAM transaction. An example follows:-::
+If we look at the transactions in the default ARBO configuration we can see that most are either Type 1, 2 or 4. Here were look at the type 1 transaction, a VTAM transaction. An example follows:- ::
 
     TRANSACT ID=CLI-10,
     NAME='Cics',
@@ -345,9 +357,9 @@ If we look at the transactions in the default ARBO configuration we can see that
     TERMINAL=CLVTA,
     STARTUP=1,
     SECURITY=1,
-    TIOASTA="Signon&/F&\*7D4EC9&'114BE9'&U&'114CF9'&P&/A"
+    TIOASTA="Signon&/F&*7D4EC9&'114BE9'&U&'114CF9'&P&/A"
 
-In this transaction we define a CICS application who’s APPLID is DBDCCICS. The external name is CICS. So, the first question is how we can invoke this application. There are several ways but we will look at two methods. The first involves the default Entry Point transaction for this domain’s Entry Point. We can see that this is a CLI transaction so therefore it belongs to the CLI Entry Point which in turn is serviced by the LINE that identifies the CLI domain with port 41002:-::
+In this transaction we define a CICS application who’s APPLID is DBDCCICS. The external name is CICS. So, the first question is how we can invoke this application. There are several ways but we will look at two methods. The first involves the default Entry Point transaction for this domain’s Entry Point. We can see that this is a CLI transaction so therefore it belongs to the CLI Entry Point which in turn is serviced by the LINE that identifies the CLI domain with port 41002:- ::
 
     URL->LINE:41002->CLI DOMAIN->CLIHOST(EP - CLIWHOST)->CLIHOST TRANSACTION(CLIWHOST)
 
@@ -355,7 +367,7 @@ If I fire the URL //HTTP:192.168.0.1:41002 to Virtel I should get something like
 
 |image7|
 
-Now, it is very unlikely you will see exactly the same colours against these applications but nevertheless you should see the same Application in the Menus because they are all defined as CLI Type 1 or Type 2 applications in the default ARBO. In my case I have two applications which are “highlighted” green – IMS and Session manager. Now, if I select IMS3270 Virtel will log me onto that application. The CICS DBDCCICS application isn’t active so that’s why it is flagged RED. We got here through the URL //HTTP:192.168.0.1:41002. So how did that happen? Well we know that the URL will fire the default transaction for the Entry POINT CLIWHOST. That transaction is also called CLIWHOST, so let’s take a look at that transaction:-
+Now, it is very unlikely you will see exactly the same colours against these applications but nevertheless you should see the same Application in the Menus because they are all defined as CLI Type 1 or Type 2 applications in the default ARBO. In my case I have two applications which are “highlighted” green – IMS and Session manager. Now, if I select IMS3270 Virtel will log me onto that application. The CICS DBDCCICS application isn’t active so that’s why it is flagged RED. We got here through the URL //HTTP:192.168.0.1:41002. So how did that happen? Well we know that the URL will fire the default transaction for the Entry POINT CLIWHOST. That transaction is also called CLIWHOST, so let’s take a look at that transaction:- ::
 
     TRANSACT ID=CLI-00,
     NAME=CLIWHOST,
@@ -370,7 +382,7 @@ Now, it is very unlikely you will see exactly the same colours against these app
 If you look at the URL in the screen shot you can see that the string “/w2h/appmenu.htm+applist” has been added after the port 41002. This has come from the CLIWHOST transaction. So the process is that default URL
 has been amended to identify a particular Virtel transaction by appending the string defined in the TIOASTA= keyword. That has caused Virtel to run the appmenu transaction passing it a parameter of applist.
 
-If we search the ARBO load for a transaction called APPLIST this is what we find:-::
+If we search the ARBO load for a transaction called APPLIST this is what we find:- ::
 
     TRANSACT ID=CLI-90,
     NAME='applist',
@@ -399,7 +411,7 @@ If you check the ARBO configuration you will see that in the CLI domain there ar
 
 The other method of invoking a transaction is through a full URL reference that identifies the application through the URL. Here is an example of accessing the IMS application through a URL - http://192.168.0.1:41002/w2h/WEB2AJAX.htm+IMS
 
-We have appended some additional information after the port which will enable Virtel to identify a transaction called IMS and attempt to logon onto it as a VTAM application. The WEB2AJAX.HTM script kicks the process off but the important thing from a VTAM application access is the suffix of the application you want to log on to – in this case IMS. The +IMS appended to the WEB2AJAX.htm is what Virtel requires. If we look for a transaction called IMS in the ARBO configuration file we find the following:-::
+We have appended some additional information after the port which will enable Virtel to identify a transaction called IMS and attempt to logon onto it as a VTAM application. The WEB2AJAX.HTM script kicks the process off but the important thing from a VTAM application access is the suffix of the application you want to log on to – in this case IMS. The +IMS appended to the WEB2AJAX.htm is what Virtel requires. If we look for a transaction called IMS in the ARBO configuration file we find the following:- ::
 
     TRANSACT ID=CLI-14,
     NAME='IMS',
@@ -420,15 +432,17 @@ Logon to applid=IMS3270 using Virtel terminals prefixed CLTVTA.
 
 Now we haven’t discussed terminals yet, and they are pretty important in the context of Virtel. We will come to those later, for now though it’s good enough to understand that you can access an application using a default URL which will bring up some Menu List or Administration Portal in the case of the W2H 42001 port. Or, we can use a full URL to identify a specific transaction in the domain that I want to execute. In the case of VTAM applications it is usually:-
 
-http://192.168.0.1:41002/w2h/WEB2AJAX.htm+transaction where transaction is a transaction defined to Virtel.
+::
 
-Question.
+    http://192.168.0.1:41002/w2h/WEB2AJAX.htm+transaction where transaction is a transaction defined to Virtel.
+
+*Question*
 
 If I try http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA it doesn’t work. I get some messages on the browser that looks like:-
 
 |image8|
 
-And in the z/OS console I can see the following messages:-::
+And in the z/OS console I can see the following messages:- ::
 
     VIRHT51I HTTP-CLI CONNECTING CLLOC049 TO 192.168.092.047:50678
     VIRC121E PAGE NOT FOUND FOR CLLOC049 ENTRY POINT 'CLIWHOST' DIRECTORY ' 176
@@ -447,7 +461,7 @@ That sort of all ties up as we haven’t defined the CICSA transaction to Virtel
 
 **Defining a VTAM application to Virtel**
 
-Using an existing CICS definition from the ARBO config we will define a new CICS system. Here is our template taken from the ARBO config:-::
+Using an existing CICS definition from the ARBO config we will define a new CICS system. Here is our template taken from the ARBO config:- ::
 
     TRANSACT ID=CLI-10,
     NAME='Cics',
@@ -488,7 +502,7 @@ This will rebuild the ARBO VSAM file and add in the new CICS application. If we 
 
 |image9|
 
-To directly access my CICS definition I could use the fully qualified URL of:-::
+To directly access my CICS definition I could use the fully qualified URL of:- ::
 
     http://192.168.170.33:41002/w2h/web2ajax.html+CICSA
 
@@ -509,7 +523,7 @@ Let’s try that and see if I can establish a session with CICS. Nope….I’m t
     19.24.13 JOB03882 VIR0052I CLLOC049 DISCONNECTED AFTER 0 MINUTES
     19.24.24 JOB03882 VIRT922W HTTP-CLI SOCKET 00020000 ENDED FOR 192.168.092.041:50751
 
-I can see a call coming in from laptop, 192.168.092.41. Then some activation messages with RELAY names and my session being refused SPCICSQ. Let’s have a look in the CICS log:-::
+I can see a call coming in from laptop, 192.168.092.41. Then some activation messages with RELAY names and my session being refused SPCICSQ. Let’s have a look in the CICS log:- ::
 
     TNADDR DUMY,CSNE,19:24:11,192.168.92.41 50749
     DFHZC6907 I 03/17/2016 19:24:11 SPCICSQ Autoinstall starting for netname REHVT000. Network qualified name is SPNET.REHVT000.
@@ -536,7 +550,7 @@ So now my browser is acting like a session manager with each tab representing a 
 Note: As I have mentioned the ARBO VSAM file contains all the configuration data. This is upload through an ARBO load job which reads in a configuration data set. The ARBO program has some peculiarities in that if you specify PARM option of NOREPL than it will not replace any configurations elements it already finds and returns with a condition
 code 0. That’s all well and good but if your trying to update the ARBO and replace elements that’s not so good. You’ll think the ARBO has been updated when in fact it hasn’t. To replace elements change the NOREPL to REPL. NOREPL is also a default so add REPL into the PARM if it is not already there.
 
-I tend to delete and reallocate my ARBO file and always use NOREPL in my ARBO build. Here is my JCL:-::
+I tend to delete and reallocate my ARBO file and always use NOREPL in my ARBO build. Here is my JCL:- ::
 
     //* SAMPLE JOB TO ALLOC AN ARBO
     //DEFINE EXEC PGM=IDCAMS
@@ -582,13 +596,12 @@ Select PF2 to display the default terminal setup.
 
 So from the top down we have:-
 
-CLLOC000 – CLLOC050 terminals defined for use in the CLI domain. 
+CLLOC000 – CLLOC050 terminals which are defined for use in the CLI domain. 
 
-Note: The CL prefix. This ties up with the TERMINAL= on the LINE definition. We also have a group of 80 terminals (Repeated field) with have been allocated a starting prefix of CLIVTA. This would tie up with the transaction definitions and the TERMINAL= keyword. Whats interesting about this group of terminals is that they have been allocated a pool
-relay as defined by the \*poolname option in the relay column. So a relay pool is where VIRTEL can grab a relay terminal when it wants it and return it to the pool when it has finished with it. This happens during session initiation with a CICS system – a relay terminal is grabbed, used for the CICS session and then when the user logs off it relay terminal is released back to the pool.
+*The CL prefix*
 
-We can see that there are two distinct groups that use the relay pool; the terminals beginning CLVTA(CLI Domain) and another group, DEVTA. This group belongs to the W2H domain. So, any VTAM transactions defined in the administration domain can use the same pool as the CLI domain. The pool name used by default is *W2HPOOL. The POOL has 80 terminals defined beginning W2HTP. These terminals have an associated relay terminal prefixed REHVT which in turn has a second relay, normally a printer, beginning REHIM***.
-If we look at our previous CICS failure we can see these terminals being allocated and returned to the pool.::
+This ties up with the TERMINAL= on the LINE definition. We also have a group of 80 terminals (Repeated field) with have been allocated a starting prefix of CLIVTA. This would tie up with the transaction definitions and the TERMINAL= keyword. Whats interesting about this group of terminals is that they have been allocated a pool relay as defined by the *poolname option in the relay column. So a relay pool is where VIRTEL can grab a relay terminal when it wants it and return it to the pool when it has finished with it. This happens during session initiation with a CICS system – a relay terminal is grabbed, used for the CICS session and then when the user logs off it relay terminal is released back to the pool. We can see that there are two distinct groups that use the relay pool; the terminals beginning CLVTA(CLI Domain) and another group, DEVTA. This group belongs to the W2H domain. So, any VTAM transactions defined in the administration domain can use the same pool as the CLI domain. The pool name used by default is *W2HPOOL.The POOL has 80 terminals defined beginning W2HTP. These terminals have an associated relay terminal prefixed REHVT which in turn has a second relay, normally a printer, beginning REHIM***.
+If we look at our previous CICS failure we can see these terminals being allocated and returned to the pool. ::
 
     19.24.11 JOB03882 VIRT906I HTTP-CLI SOCKET 00020000 CALL FROM 192.168.092.041:50751
     19.24.11 JOB03882 VIRHT51I HTTP-CLI CONNECTING **CLVTA079** TO 192.168.092.041:50734
@@ -634,12 +647,11 @@ Close the terminal screen by pressing PF3 the RETURN/ENTER key. You should be ba
 
 **Adding a terminal definition pool**
 
-Most Virtel users have large CICS or IMS environments that need to be supported by Virtel. In order to do this we need to add terminal definitions that will support thousands of users. In this section will add a new terminal pool to our CLI domain capable of supporting up to 1000 concurrent users accessing a CICS application known as CICSPROD. We
-also introduce the RULE statement to show how we can separate traffic by IP address. Let’s look at a schematic.
+Most Virtel users have large CICS or IMS environments that need to be supported by Virtel. In order to do this we need to add terminal definitions that will support thousands of users. In this section will add a new terminal pool to our CLI domain capable of supporting up to 1000 concurrent users accessing a CICS application known as CICSPROD. We also introduce the RULE statement to show how we can separate traffic by IP address. Let’s look at a schematic.
 
 |image16|
 
-Our requirement is that any user coming in on port 192.0.2.\*\*\* or 192.0.3.\*\*\* should be routed to a particular entry point. Within this entry point, the only VTAM transaction defined is PRODCICS. This VTAM transaction uses a terminals prefix CLFD. The CLFD terminals pull a VTAM relay from the \FWDPOOL through terminal W2HD****. The VTAM relay is prefix TNCS****. This prefix will corresponds to the VTAM definitions and to the CICS terminal definitions. Here is the ARBOLOAD definitions that supports this requirement:-::
+Our requirement is that any user coming in on port 192.0.2.*** or 192.0.3.*** should be routed to a particular entry point. Within this entry point, the only VTAM transaction defined is PRODCICS. This VTAM transaction uses a terminals prefix CLFD. The CLFD terminals pull a VTAM relay from the \FWDPOOL through terminal W2HD****. The VTAM relay is prefix TNCS****. This prefix will corresponds to the VTAM definitions and to the CICS terminal definitions. Here is the ARBOLOAD definitions that supports this requirement:- ::
 
 	TERMINAL ID=W2HD0000, -
 	RELAY=TNCD0000, -
@@ -727,18 +739,12 @@ Our requirement is that any user coming in on port 192.0.2.\*\*\* or 192.0.3.\*\
 	IPADDR=(EQUAL,192.0.2.000),
 	NETMASK=255.255.255.000
 
-You will notice that the two rules, defined as C100FWD1 and C100FWD2 control the Entry point selection by comparing the incoming callers IP address. If the IP address matches then the call will be routed towards Entry Point CLIWFWD1. There are also some Administration transactions that have been added to support administration functions within the
-Entry Point. These are:-
+You will notice that the two rules, defined as C100FWD1 and C100FWD2 control the Entry point selection by comparing the incoming callers IP address. If the IP address matches then the call will be routed towards Entry Point CLIWFWD1. There are also some Administration transactions that have been added to support administration functions within the Entry Point. These are:-
 
 - FWD-00 Entry Point Transaction. Identifies our default domain directory CLI-DIR.
-
 - FWD-03W Identifies the Administration directory and provides a link to it.
-
 - FWD-11 CICSPROD transaction. Type=1 (VTAM Application).
-
 - FWD-90 APPLIST MENU transaction
-
-That’s enough about terminals for the moment.
 
 .. |image0| image:: images/media/image1.png
    :width: 6.26806in
