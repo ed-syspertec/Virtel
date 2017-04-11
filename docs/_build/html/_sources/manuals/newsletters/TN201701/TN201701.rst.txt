@@ -33,97 +33,53 @@ should only be through the proxy server and not any other IP address.
 Using Virtel Rules we can compare the calling IP address and if it
 doesn’t match with the rule then the user will be re-directed to another
 Virtel entry point. To implement this protection we use the following
-ARBO statements for each line, 41002 and 41003:-
+ARBO statements for each line, 41002 and 41003:- ::
 
-RULE ID=R0000100,
-
-RULESET=C-HTTP, **< Our Line** 41002
-
-STATUS=ACTIVE,
-
-DESC='HTTP access (Test calling address)',
-
-ENTRY=EPSEC, **< Associated Entry point**
-
-IPADDR=(EQUAL,192.168.092.160), **< IP address of Proxy**
-
-NETMASK=255.255.255.255
-
-\*
-
-RULE ID=R0000199,
-
-RULESET=C-HTTP, **< Our Line 41002**
-
-STATUS=ACTIVE,
-
-DESC='HTTP access (Calling IP address not valid)',
-
-ENTRY=EPREJECT
-
-\*
-
-RULE ID=R0000200,
-
-RULESET=R-HTTP, **< Our Line 41003**
-
-STATUS=ACTIVE,
-
-DESC='HTTP access (Test calling address)',
-
-ENTRY=EPSEC, **< Associated Entry point**
-
-IPADDR=(EQUAL,192.168.092.160), **< IP address of Proxy**
-
-NETMASK=255.255.255.255
-
-\*
-
-RULE ID=R0000299,
-
-RULESET=R-HTTP, **< Our Line 41003**
-
-STATUS=ACTIVE,
-
-DESC='HTTP access (Calling IP address not valid)',
-
-ENTRY=EPREJECT
-
-ENTRY ID=EPREJECT,
-
-DESC='Entry point for unauthorized HTTP users',
-
-TRANSACT=REJ,
-
-TIMEOUT=0720,
-
-ACTION=0,
-
-EMUL=HTML,
-
-SIGNON=VIR0020H,
-
-MENU=VIR0021A,
-
-EXTCOLOR=X
-
-\*
-
-TRANSACT ID=REJ-00,
-
-NAME=EPREJECT,
-
-DESC="Default directory = entry point name",
-
-APPL=CLI-DIR, **< User template directory**
-
-TYPE=4,
-
-TERMINAL=CLLOC,
-
-STARTUP=2,
-
-SECURITY=0
+	RULE ID=R0000100,
+	RULESET=C-HTTP,                                < Our Line 41002
+	STATUS=ACTIVE,
+	DESC='HTTP access (Test calling address)',
+	ENTRY=EPSEC,                                   < Associated Entry point
+	IPADDR=(EQUAL,192.168.092.160),                < IP address of Proxy
+	NETMASK=255.255.255.255
+	*
+	RULE ID=R0000199,
+	RULESET=C-HTTP,                                < Our Line 41002
+	STATUS=ACTIVE,
+	DESC='HTTP access (Calling IP address not valid)',
+	ENTRY=EPREJECT
+	*
+	RULE ID=R0000200,
+	RULESET=R-HTTP,                                < Our Line 41003
+	STATUS=ACTIVE,
+	DESC='HTTP access (Test calling address)',
+	ENTRY=EPSEC,                                   < Associated Entry point
+	IPADDR=(EQUAL,192.168.092.160),                < IP address of Proxy
+	NETMASK=255.255.255.255
+	*
+	RULE ID=R0000299,
+	RULESET=R-HTTP,                                < Our Line 41003
+	STATUS=ACTIVE,
+	DESC='HTTP access (Calling IP address not valid)',
+	ENTRY=EPREJECT
+	ENTRY ID=EPREJECT,
+	DESC='Entry point for unauthorized HTTP users',
+	TRANSACT=REJ,
+	TIMEOUT=0720,
+	ACTION=0,
+	EMUL=HTML,
+	SIGNON=VIR0020H,
+	MENU=VIR0021A,
+	EXTCOLOR=X
+	*
+	TRANSACT ID=REJ-00,
+	NAME=EPREJECT,
+	DESC="Default directory = entry point name",
+	APPL=CLI-DIR,                                   < User template directory
+	TYPE=4,
+	TERMINAL=CLLOC,
+	STARTUP=2,
+	SECURITY=0
 
 So what is happening here? When a user attempts to establish a session
 Virtel will match the users calling IP address against the IPADDR in
@@ -146,77 +102,48 @@ be rejected by the Virtel ruleset. By default, the ruleset associated
 with a line is normally the internal name of the line – C-HTTP for
 example. How the rejected session is handled is up to the user. In the
 following example, the default template EPREJECT.HTM, which is
-associated with the entry point EPREJECT, looks like this:-
+associated with the entry point EPREJECT, looks like this:- ::
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-
-<!--VIRTEL start="{{{" end="}}}" -->
-
-<html>
-
-<script>
-
-// customization for reject
-
-window.location.replace("http://www.mycompany.com");
-
-</script>
-
-</html>
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+	<!--VIRTEL start="{{{" end="}}}" -->
+	<html>
+	<script>
+	// customization for reject
+	window.location.replace("http://www.mycompany.com");
+	</script>
+	</html>
 
 This template must exist in the CLI-DIR directory as this is where the
 Entry Point EPREJECT expects to find them. When the template is served
 it will display the companies “public” web site.
 
-To upload the ARBO statements to your ARBO use the following JCL:-
+To upload the ARBO statements to your ARBO use the following JCL:- ::
 
-//\*
+	//*
+	// SET LOAD=SPTHOLT.VIRT456.LOADLIB
+	// SET ARBO=SP000.SPVIREH0.ARBO1A
+	//*
+	//DELETE EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M
+	//STEPLIB DD DSN=&LOAD,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//SYSUDUMP DD SYSOUT=*
+	//VIRARBO DD DSN=&ARBO,DISP=SHR
+	//SYSIN DD *
+	DELETE TYPE=RULE,ID=R0000100 Delete rule
+	DELETE TYPE=RULE,ID=R0000199 Delete rule
+	DELETE TYPE=RULE,ID=R0000200 Delete rule
+	DELETE TYPE=RULE,ID=R0000299 Delete rule
+	DELETE TYPE=ENTRY,ID=EPREJECT Entry point
+	DELETE TYPE=TRANSACT,ID=REJ-00 Delete transaction
+	*
+	//CONFIG EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M
+	//STEPLIB DD DSN=&LOAD,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//SYSUDUMP DD SYSOUT=*
+	//VIRARBO DD DSN=&ARBO,DISP=SHR
+	//SYSIN DD DSN=SPTHOLT.VIRTEL.CNTL(RULES),DISP=SHR
 
-// SET LOAD=SPTHOLT.VIRT456.LOADLIB
-
-// SET ARBO=SP000.SPVIREH0.ARBO1A
-
-//\*
-
-//DELETE EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M
-
-//STEPLIB DD DSN=&LOAD,DISP=SHR
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSUDUMP DD SYSOUT=\*
-
-//VIRARBO DD DSN=&ARBO,DISP=SHR
-
-//SYSIN DD \*
-
-DELETE TYPE=RULE,ID=R0000100 Delete rule
-
-DELETE TYPE=RULE,ID=R0000199 Delete rule
-
-DELETE TYPE=RULE,ID=R0000200 Delete rule
-
-DELETE TYPE=RULE,ID=R0000299 Delete rule
-
-DELETE TYPE=ENTRY,ID=EPREJECT Entry point
-
-DELETE TYPE=TRANSACT,ID=REJ-00 Delete transaction
-
-\*
-
-//CONFIG EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M
-
-//STEPLIB DD DSN=&LOAD,DISP=SHR
-
-//SYSPRINT DD SYSOUT=\*
-
-//SYSUDUMP DD SYSOUT=\*
-
-//VIRARBO DD DSN=&ARBO,DISP=SHR
-
-//SYSIN DD DSN=SPTHOLT.VIRTEL.CNTL(RULES),DISP=SHR
-
-.. |image0| image:: images/media/image1.jpg
+.. |image0| image:: images/media/image0.jpg
    :width: 6.26806in
    :height: 5.52569in
