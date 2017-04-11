@@ -340,10 +340,10 @@ customized elements have been uploaded to CLI-DIR:-</p>
 <p><em>custJS.global.js</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 <span class="o">//</span><span class="n">Add</span> <span class="n">Print</span> <span class="n">Button</span> <span class="n">to</span> <span class="n">Toolbar</span><span class="o">.</span>
-<span class="n">function</span> <span class="n">after</span>\<span class="n">_standardInit</span><span class="p">()</span> <span class="p">{</span>
-<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;../print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do</span>\<span class="n">_print</span><span class="p">);</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;../print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do_print</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="n">function</span> <span class="n">do</span>\<span class="n">_print</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">function</span> <span class="n">do_print</span><span class="p">()</span> <span class="p">{</span>
 <span class="n">window</span><span class="o">.</span><span class="n">print</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
@@ -466,7 +466,7 @@ longer present.</li>
 compatibility option is available. To force pre Virtel 4.56 behaviour
 specify the following parameter in the TCT. This is known as
 “compatibility mode”</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span><span class="o">=</span><span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="n">where</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>\<span class="n">_4</span><span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span><span class="o">=</span><span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="n">where</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mf">4.</span>
 </pre></div>
 </div>
 <p>If you only want certain transactions to behave in “compatibility mode”
