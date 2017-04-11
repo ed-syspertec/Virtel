@@ -1,3 +1,5 @@
+.. _#_tn201702:
+
 Protecting Virtel Applications with Shibboleth
 ==============================================
 
@@ -62,7 +64,7 @@ establishing a session with Virtel.
 
 |image0|
 
-Figure Overview of logon sequence
+Fig.1 - Overview of logon sequence
 
 1. User accesses Virtel entity through URL
    https://sp.syspertec.com/Virtel
@@ -72,63 +74,56 @@ Figure Overview of logon sequence
 
     |image1|
 
-1. IDP validates user credentials against LDAP attributes.
+Fig.2 - Identity Provider logon
 
-2. IDP returns selected attributes to SP. In this case only the UID is
+3. IDP validates user credentials against LDAP attributes.
+
+4. IDP returns selected attributes to SP. In this case only the UID is
    required.
 
-3. SP redirects user to Virtel APPMENU passing the UID as a header in
+5. SP redirects user to Virtel APPMENU passing the UID as a header in
    the HTTP request – SM\_USER.
 
-4. Virtel presents application menu.
+6. Virtel presents application menu.
 
     |image2|
 
-1. User selects applications and logs on without specifying userid or
+Fig.3 - Virtel application menu    
+
+7. User selects applications and logs on without specifying userid or
    password. Virtel uses the SM\_USER header to generate a PASSTICKET
    for the userid.
 
     |image3|
 
+Fig.4 - User accesses application
+
 **Setting up the IDP environment**
 
-IDP Version 3
+*IDP Version 3*
 
-The Shibboleth IDP is a Java web application that runs within a Servet
-container - In our case we use Tomcat. Tomcat runs on the Milan server.
-The IP address of Milan is 192.168.92.190
+The Shibboleth IDP is a Java web application that runs within a Servet container - In our case we use Tomcat. Tomcat runs on the Milan server which is has an IP address of Milan is 192.168.92.190. Using V3 is problematic as most of the “user install” documentation refers to V2. There are a lot of differences! Here are the varibales and paths we use. 
 
-Using V3 is problematic as most of the “user install” documentation
-refers to V2. There are a lot of differences!
+::
 
-IDP https://idp.syspertec.com/idp
+  IDP         https://idp.syspertec.com/idp
+  IDP_HOME    /opt/shibboleth-idp
+  IDP Configuration files $IDP_HOME/conf
+  TOMCAT      http://idp.syspertec.com:8081     Tomcat Web Page
+  Web Manager Application admin/password
+  $TOMCAT-HOME /usr/share/tomcat
+  Tomcat Configuration files $TOMCAT\_HOME/conf
 
-IDP\_HOME /opt/shibboleth-idp
-
-IDP Configuration files $IDP\_HOME/conf
-
-TOMCAT http://idp.syspertec.com:8081 Tomcat Web Page
-
-Web Manager Application admin/password
-
-$TOMCAT-HOME /usr/share/tomcat
-
-Tomcat Configuration files $TOMCAT\_HOME/conf
-
-The IDP is enabled for SSL and has a keystore containing the necessary
-security credentials. The idea behind this is that traffic is secure on
-the login and any communication between the SP and IDP. The keystore is
-called idpself.keystore - the pass phrase is “VirtelIsGreat”.
+The IDP is enabled for SSL and has a keystore containing the necessary security credentials. The idea behind this is that traffic is secure on the login and any communication between the SP and IDP. The keystore is called idpself.keystore - the pass phrase is “VirtelIsGreat”.
 
 The keystore was generated with the “keytool” program:-
 
-# cd $TOMCAT-HOME
+::
 
-# mkdir credentials
-
-# cd credentials
-
-# keytool –genkey –alias tomcat –keyalg RSA –keystore idpself.keystore
+  # cd $TOMCAT-HOME
+  # mkdir credentials
+  # cd credentials
+  # keytool –genkey –alias tomcat –keyalg RSA –keystore idpself.keystore
 
 This keystore is defined in the Tomcat server.xml file within the
 <connector> attribute. It defines a connector using port 8443. THIS IS
@@ -137,229 +132,168 @@ NOT IN USE!
 Authentication method.
 
 The IDP authentication handler can authenticate a user by one of several
-authentication methods. The default Userid / Password authentication
+authentication methods. The default Userid/Password authentication
 handler is currently be used. Authentication flows are defined in
-$IDP\_HOME/conf/authn.
+$IDP_HOME/conf/authn.
 
-See
-https://wiki.shibboleth.net/confluence/display/IDP30/AuthenticationConfiguration
-for further details.
+See https://wiki.shibboleth.net/confluence/display/IDP30/AuthenticationConfiguration for further details.
 
-IDP Configuration maintained on the Milan Server
+The IDP Configuration maintained on the Milan Server:- 
 
-**File= /opt/shibboleth-idp/conf/idp.properties**
+*File= /opt/shibboleth-idp/conf/idp.properties*
 
-In this file we define the entity id of our IDP server.
+In this file we define the entity id of our IDP server:- ::
 
-# Set the entityID of the IdP
+  # Set the entityID of the IdP
+  idp.entityID= https://idp.syspertec.com/idp/Shibboleth                    <<< Our IDP entity**
+  # Set the scope used in the attribute resolver for scoped attributes
+  idp.scope= syspertec.com
+  
+*File = /opt/shibboleth-idp/attribute-filter.xml*
 
-idp.entityID= https://idp.syspertec.com/idp/shibboleth **<<< Our IDP
-entity**
+In this file we configure what security attributes are passed to the SP. Within the <AttributeFilterPolicyGroup> the following filter policy was
+added:- ::
 
-# Set the scope used in the attribute resolver for scoped attributes
+  <!-- Release some attributes to an SP. -->
+  <AttributeFilterPolicy id="example1">
+      <PolicyRequirementRule xsi:type="Requester"
+      value="https://sp.syspertec.com/shibboleth" />
+  <AttributeRule attributeID="eduPersonPrincipalName">
+  <PermitValueRule xsi:type="ANY" />
+  </AttributeRule>
+  <AttributeRule attributeID="uid"> **<<< Required for HTTP HEADER**
+  <PermitValueRule xsi:type="ANY" />
+  </AttributeRule>
+  <AttributeRule attributeID="mail">
+  <PermitValueRule xsi:type="ANY" />
+  </AttributeRule>
+  </AttributeFilterPolicy>
 
-idp.scope= syspertec.com
+*File = Attribute-filter.xml*
 
-**File = /opt/shibboleth-idp/attribute-filter.xml**
+In this file we configure what security attributes are passed to the SP. Within the <AttributeFilterPolicyGroup> the following filter policy was added:- 
 
-In this file we configure what security attributes are passed to the SP.
-Within the <AttributeFilterPolicyGroup> the following filter policy was
-added:-
+*File = /opt/shibboleth-idp/conf/ldap.properties*
 
-<!-- Release some attributes to an SP. -->
+In this file we identify the LDAP server the IDP will use. We also set the TLS security flag and identify the Java trustStore. ::
 
-<AttributeFilterPolicy id="example1">
+  ## Connection properties ##
+  idp.authn.LDAP.ldapURL = ldap://milan:10389 **<<< Our LDAP Server**
+  idp.authn.LDAP.useStartTLS = true
+  ## SSL configuration, either jvmTrust, certificateTrust, or keyStoreTrust
+  idp.authn.LDAP.sslConfig = keyStoreTrust
+  idp.authn.LDAP.trustStore = %{idp.home}/credentials/milan.jks
 
-    <PolicyRequirementRule xsi:type="Requester"
-    value="https://sp.syspertec.com/shibboleth" />
-
-<AttributeRule attributeID="eduPersonPrincipalName">
-
-<PermitValueRule xsi:type="ANY" />
-
-</AttributeRule>
-
-<AttributeRule attributeID="uid"> **<<< Required for HTTP HEADER**
-
-<PermitValueRule xsi:type="ANY" />
-
-</AttributeRule>
-
-<AttributeRule attributeID="mail">
-
-<PermitValueRule xsi:type="ANY" />
-
-</AttributeRule>
-
-</AttributeFilterPolicy>
-
-File = Attribute-filter.xml
-
-In this file we configure what security attributes are passed to the SP.
-Within the <AttributeFilterPolicyGroup> the following filter policy was
-added:-
-
-**File = /opt/shibboleth-idp/conf/ldap.properties**
-
-In this file we identify the LDAP server the IDP will use. We also set
-the TLS security flag and identify the Java trustStore.
-
-## Connection properties ##
-
-idp.authn.LDAP.ldapURL = ldap://milan:10389 **<<< Our LDAP Server**
-
-idp.authn.LDAP.useStartTLS = true
-
-## SSL configuration, either jvmTrust, certificateTrust, or
-keyStoreTrust
-
-idp.authn.LDAP.sslConfig = keyStoreTrust
-
-idp.authn.LDAP.trustStore = %{idp.home}/credentials/milan.jks
-
-**File=/opt/shibboleth-idp/conf/metadata-providers.xml**
+*File=/opt/shibboleth-idp/conf/metadata-providers.xml*
 
 In this file we identity the location of the metadata that represents
-our SP.
+our SP. ::
 
-<MetadataProvider xsi:type="FilesystemMetadataProvider" id="SPMETADATA"
-
-metadataFile="/opt/shibboleth-idp/metadata/sp-metadata.xml"/>
-
-</MetadataProvider>
+  <MetadataProvider xsi:type="FilesystemMetadataProvider" id="SPMETADATA"
+  metadataFile="/opt/shibboleth-idp/metadata/sp-metadata.xml"/>
+  </MetadataProvider>
 
 **Setting up the Service Provider V2**
 
-SP Configuration maintained on HOLT-WIN7
+SP Configuration maintained on Windows workstation HOLT-WIN7
 
 To support the SP environment we installed the latest XAMPP tool. This
 provides an Apache container from which we can use and configure
 Shibboleth SP V2. The Apache Server runs as a reverse proxy redirecting
-request towards Virtel.
+request towards Virtel. Here are some of the paths and variables setto support the Shibboleth SP. ::
 
-SP sp.syspertec.com
 
-SP\_HOME (distribution) C:\\opt\\shibboleth-sp
-
-SP Configuration files $SP\_HOME\\etc
-
-Apache http://sp.syspertec.com Apache Home Web Page
-
-XAMPP C:\\xampp\\apache
-
-Apache Configuration files C:\\xampp\\apache\\conf
-
-SP Configuration files C:\\xampp\\apache\\conf\\extra
+  SP                              sp.syspertec.com
+  SP_HOME (distribution)          C:\\opt\\shibboleth-sp
+  SP Configuration files          $SP\HOME\\etc
+  Apache Home Page                http://sp.syspertec.com 
+  XAMPP                           C:\\xampp\\apache
+  Apache Configuration files      C:\\xampp\\apache\\conf
+  SP Configuration files          C:\\xampp\\apache\\conf\\extra
 
 After installing XAMPP and the Shibboleth V2 make sure that the Windows
 Service is running:-
 
 |image4|
 
-Figure Shibboleth Window Service running.
+Fig. 5 - Shibboleth Window Service running.
 
-**
-Shibboleth Configuration**
+**Shibboleth Configuration**
 
 The files modified in the Shibboleth setup for the SP are as follows:-
 
-**File = C:\\opt\\shibboleth-sp\\etc\\Shibboleth2.xml**
+*File = C:\\opt\\shibboleth-sp\\etc\\Shibboleth2.xml*
 
-This is the main shibboleth configuration file. Here are some of the
-elements that were modified.
+This is the main shibboleth configuration file. Here are some of the elements that were modified. ::
 
-<ApplicationDefaults entityID\ **=\ https://sp.syspertec.com/shibboleth
-<<< Entity ID**
+  <ApplicationDefaults entityID=https://sp.syspertec.com/shibboleth                <<< Entity ID
+        REMOTE_USER="uid eppn persistent-id targeted-id"                           <<< UID
+        cipherSuites="ECDHE+AESGCM:ECDHE:!aNULL:!eNULL:!LOW:!EXPORT:!RC4:!SHA:!SSLv2">
 
-REMOTE\_USER="\ **uid** eppn persistent-id targeted-id" **<<< UID**
-cipherSuites="ECDHE+AESGCM:ECDHE:!aNULL:!eNULL:!LOW:!EXPORT:!RC4:!SHA:!SSLv2">
+  ...
+  <SSO entityID=https://idp.syspertec.com/idp/shibboleth                           <<< Entity ID**
+         discoveryProtocol="SAMLDS"
+         discoveryURL="https://ds.example.org/DS/WAYF">
+            SAML2 SAML1
+  </SSO>
+  ...
 
-……
+  <CredentialResolver type="File"                                                  <<< Server Certificate**
+       key="C:\\xampp\\apache\\conf\\ssl.key\\server.key"
+       certificate="C:\\xampp\\apache\\conf\\ssl.crt\\server.crt" />
 
-<SSO
-entityID=\ `**https://idp.syspertec.com/idp/shibboleth** <https://idp.syspertec.com/idp/shibboleth>`__
-**<<< Entity ID**
+  </ApplicationDefaults>
 
-discoveryProtocol="SAMLDS"
-discoveryURL="https://ds.example.org/DS/WAYF">
+*File = C:\\opt\\shibboleth-sp\\etc\\attribute-map.xml*
 
-SAML2 SAML1
+The UID attribute was uncommented in the attribute-map.xml file. ::
 
-</SSO>
+  -->
+  <Attribute name="urn:oid:0.9.2342.19200300.100.1.1" id="uid"/>
+  <!—
 
-……
-
-<CredentialResolver type="File" **<<<< Server Certificate**
-
-key="C:\\xampp\\apache\\conf\\ssl.key\\server.key"
-
-certificate="C:\\xampp\\apache\\conf\\ssl.crt\\server.crt" />
-
-</ApplicationDefaults>
-
-File = **C:\\opt\\shibboleth-sp\\etc\\attribute-map.xml**
-
-The UID attribute was uncommented in the attribute-map.xml file.
-
--->
-
-<Attribute name="urn:oid:0.9.2342.19200300.100.1.1" id="uid"/>
-
-<!—
-
-**C:\\opt\\shibboleth-sp\\etc\\idp-metadata.XML**
+*File = C:\\opt\\shibboleth-sp\\etc\\idp-metadata.XML*
 
 Metadata file for IDP
 
-**C:\\opt\\shibboleth-sp\\etc\\sp-metadata.XML**
+*File = C:\\opt\\shibboleth-sp\\etc\\sp-metadata.XML*
 
 Metadata file for SP.
 
-**
-Apache Configuration**
+**Apache Configuration**
 
-**File =C:\\XAMPP\\Apache\\Conf\\httpd.conf**
+*File =C:\\XAMPP\\Apache\\Conf\\httpd.conf*
 
 This is the standard Apache HTTP configuration file. In here we
 configure the protected resources and configure the Shibboleth SP. The
 following statements are added or modified:-
 
-Set the Server name for the Apache Server
+Set the Server name for the Apache Server:- ::
 
-ServerName sp.syspertec.com:80
+  ServerName sp.syspertec.com:80
 
-Set the required Proxy Modules
+Set the required Proxy Modules:- ::
 
-LoadModule proxy\_module modules/mod\_proxy.so
+  LoadModule proxy\_module modules/mod\_proxy.so
+  LoadModule proxy\_ajp\_module modules/mod\_proxy\_ajp.so
+  LoadModule proxy\_balancer\_module modules/mod\_proxy\_balancer.so
+  LoadModule proxy\_connect\_module modules/mod\_proxy\_connect.so
 
-LoadModule proxy\_ajp\_module modules/mod\_proxy\_ajp.so
+Set redirect on to support redirect request within Virtel HTTP responses:- ::
 
-LoadModule proxy\_balancer\_module modules/mod\_proxy\_balancer.so
+  <IfModule alias\_module>
+     #Send /w2h request to /xampp/htdocs/virtel
+     Redirect /w2h /virtel/w2h                                 <<< Virtel Redirect
+     ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
+  </IfModule>
 
-LoadModule proxy\_connect\_module modules/mod\_proxy\_connect.so
+Add the include for the Shibboleth HTTP configuration file:- ::
 
-Set redirect on to support redirect request within Virtel HTTP
-responses.
+  #Shibboleth
+  #include 'C:\\opt\\shibboleth-sp\\etc\\shibboleth\\apache24.config'
+  include "conf/extra/httpd-shibboleth.conf
 
-<IfModule alias\_module>
-
-#Send /w2h request to /xampp/htdocs/virtel
-
-Redirect /w2h /virtel/w2h **<<< Virtel Redirect**
-
-ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
-
-</IfModule>
-
-Add the include for the Shibboleth HTTP configuration file.
-
-#Shibboleth
-
-#include 'C:\\opt\\shibboleth-sp\\etc\\shibboleth\\apache24.config'
-
-include "conf/extra/httpd-shibboleth.conf
-
-**File =C:\\XAMPP\\Apache\\Conf\\extra\\httpd-shibboleth.conf**
+*File = C:\\XAMPP\\Apache\\Conf\\extra\\httpd-shibboleth.conf*
 
 Within this file add the location “Virtel” as a protected resource. Any
 access to the Virtel application we have to be validated through the IDP
@@ -367,28 +301,18 @@ and SP interface. The SP will set the variable REMOTE\_USER based upon
 the IUD attribute returned by the IDP on successful validation. This
 will be passed through to Virtel to use to generate a PASSTICKET. The
 userid /PASSTICKET combination will be used to sign on to any secure
-applications within the APPMENU list.
+applications within the APPMENU list. ::
 
-# Connect using HTTPS to SPVIRSSL on ZAMVS2
-
-<Location /virtel>
-
-AuthType shibboleth
-
-ShibRequestSetting requireSession 1
-
-require shib-session
-
-RequestHeader set SM\_User %{REMOTE\_USER}s **<<< = Create HTTP header**
-
-ProxyPass https://192.168.171.30:41002 **<<< = Secure Virtel Port**
-
-ProxyPassReverse https://192.168.171.30:41002 **<<< = Secure Virtel
-Port**
-
-</location>
-
-#
+  # Connect using HTTPS to SPVIRSSL on ZAMVS2
+  <Location /virtel>
+   AuthType shibboleth
+   ShibRequestSetting requireSession 1
+   require shib-session
+   RequestHeader set SM_User %{REMOTE_USER}s                  <<< = Create HTTP header
+   ProxyPass https://192.168.171.30:41002                     <<< = Secure Virtel Port
+   ProxyPassReverse https://192.168.171.30:41002              <<< = Secure Virtel Port
+  </location>
+  #
 
 **LDAP**
 
@@ -403,7 +327,7 @@ build the necessary security attributes that the IDP will require.
 
 |image5|
 
-Figure Example of the Apache DS Client
+Fig. 6 - Example of the Apache DS Client
 
 .. |image0| image:: images/media/image1.jpg
    :width: 6.26806in
