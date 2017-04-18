@@ -324,7 +324,47 @@ Press PF1, PF3, PF3, PF1 to save the changes. The “usstab=ussn” string will 
 VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
 APPLID=TSO. Both would be accepted. VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.
 
+VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.
+
+Only buffer displacement coding is supported, not buffer addresse. For example to position to col. 1, row 1 the following should be coded:-
+
+::
+
+	DC    X'11',AL2(((01-1)*80)+(01-1)) R=01,C=01 < Assembles as displacement
+	DC    C'z/OS Z110 Level 0809                    '             
+   
+And not:-
+
+::
+
+	DC    X'114040’ R=01, C=01 < Assembles as a row:col. Position
+	DC    C'z/OS Z110 Level 0809                    '             
+
+The SCAN parameter must be included on the BUFFER statement:-
+
+::
+
+	MSG10    USSMSG  MSG=10,BUFFER=(MSG10BUF,SCAN)
+
+The cursor position must be preceded by a SBA:-
+
+::
+
+	DC    X'11',AL2(((24-1)*80)+(10-1))                 R=23,C=80
+	DC    X'1D40'                                     UNPROTECTED
+	DC    X'13'                                      INSERTCURSOR
+
+
 **Messages**
+
+**VIR2101E** UNABLE TO LOAD A USSTAB
+
+Module	: VIR0021W
+
+Meaning	: Virtel was unable to build a MAP from the supplied USS load module.
+
+Action	: Check the VTAM USS module has been assembled correctly and is available in the VIRTEL STEPLIB concatenation. See the topic on constraints for further information. 
+
 
 **VIR2102W** UNABLE TO LOAD THE [TCT \| TRANSACTION] USSTAB usstab. DEFAULT USSTAB USSVIRT WILL BE USED. 
 

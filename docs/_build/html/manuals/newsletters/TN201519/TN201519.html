@@ -468,7 +468,32 @@ returned to the VIRTEL menu and not the VTAM screen. This can be changed. See no
 <p><strong>Constraints</strong></p>
 <p>VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
 APPLID=TSO. Both would be accepted. VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.</p>
+<p>VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.</p>
+<p>Only buffer displacement coding is supported, not buffer addresse. For example to position to col. 1, row 1 the following should be coded:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="n">AL2</span><span class="p">(((</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="n">R</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="mi">01</span> <span class="o">&lt;</span> <span class="n">Assembles</span> <span class="k">as</span> <span class="n">displacement</span>
+<span class="n">DC</span>    <span class="n">C</span><span class="s1">&#39;z/OS Z110 Level 0809                    &#39;</span>
+</pre></div>
+</div>
+<p>And not:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;114040’ R=01, C=01 &lt; Assembles as a row:col. Position</span>
+<span class="n">DC</span>    <span class="n">C</span><span class="s1">&#39;z/OS Z110 Level 0809                    &#39;</span>
+</pre></div>
+</div>
+<p>The SCAN parameter must be included on the BUFFER statement:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG10</span>    <span class="n">USSMSG</span>  <span class="n">MSG</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">BUFFER</span><span class="o">=</span><span class="p">(</span><span class="n">MSG10BUF</span><span class="p">,</span><span class="n">SCAN</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The cursor position must be preceded by a SBA:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="n">AL2</span><span class="p">(((</span><span class="mi">24</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">10</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>                 <span class="n">R</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="mi">80</span>
+<span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;1D40&#39;</span>                                     <span class="n">UNPROTECTED</span>
+<span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;13&#39;</span>                                      <span class="n">INSERTCURSOR</span>
+</pre></div>
+</div>
 <p><strong>Messages</strong></p>
+<p><strong>VIR2101E</strong> UNABLE TO LOAD A USSTAB</p>
+<p>Module  : VIR0021W</p>
+<p>Meaning : Virtel was unable to build a MAP from the supplied USS load module.</p>
+<p>Action  : Check the VTAM USS module has been assembled correctly and is available in the VIRTEL STEPLIB concatenation. See the topic on constraints for further information.</p>
 <p><strong>VIR2102W</strong> UNABLE TO LOAD THE [TCT | TRANSACTION] USSTAB usstab. DEFAULT USSTAB USSVIRT WILL BE USED.</p>
 <p>Module  : VIR0021W</p>
 <p>Meaning : Virtel was unable to load the USS table as defined either in the transaction or TCT.</p>
