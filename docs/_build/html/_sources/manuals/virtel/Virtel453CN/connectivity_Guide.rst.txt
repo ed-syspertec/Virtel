@@ -692,13 +692,16 @@ other VTAM applications.
     address; in this case, the user is identified by a “Cookie” which
     the browser presents to VIRTEL with the HTTP request.
 
-    It is possible for an HTTP client to connect to VIRTEL with a
-    parameter specifying an arbitrary VTAM LU name to be used as relay
-    name for host applications. For this to work, four conditions must
-    be fulfilled:
+*2.4.1.3. HTTP connections with non-predefined terminals*    
+
+It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
 
 -  the VTAM LU name should be specified in the connection URL. For
    example, if the desired LU name is RLHVT500:
+
+::
+
+   http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500
 
 -  the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals”
    field instead of a terminal name prefix.
@@ -711,50 +714,41 @@ other VTAM applications.
    automatically generated using the pool as a template together with
    the relay name specified in the ForceLUNAME parameter of the URL.
 
-    The ForceLUNAME=luname parameter in the URL is valid only for
-    transactions which specify TERMINAL=$LINE$ when attached to a line
-    which has an associated terminal pool.
+The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.
 
-    An example of a line with non-predefined LU names is shown below.
+An example of a line with non-predefined LU names is shown below.
+
+2.4.1.3.1 Examples
 
     In this example the transaction whose external name is IMS defined
     under entry point CLIWHOST. The terminal prefix in the transaction
     definition is $LINE$:
 
-+------------------------+------------+-------------------+------------------+
-|     TIOA at logon      |     ===>   |                   |
-+========================+============+===================+==================+
-|     TIOA at logoff     |     ===>   |                   |
-+------------------------+------------+-------------------+------------------+
-|     Initial Scenario   |     ===>   | Final Scenario    |     ===>         |
-+------------------------+------------+-------------------+------------------+
-|     Input Scenario     |     ===>   | Output Scenario   |     ===>         |
-+------------------------+------------+-------------------+------------------+
-|     P1=Update          |            |     P3=Return     |     P12=Server   |
-+------------------------+------------+-------------------+------------------+
+|image12|
 
-    *Transaction definition using non-predefined LU names*
+*Fig.12 - Transaction definition using non-predefined LU names*    
 
-    The definition of line C-HTTP on port 41002 specifies \*MYPOOL as
-    the line pool name:
+The definition of line C-HTTP on port 41002 specifies *MYPOOL as the line pool name:
 
-    *HTTP line definition using non-predefined LU names*
+|image13|
 
-    The definition of the terminal pool \*MYPOOL contains mask
-    characters in the “Relay” and “2nd relay” fields. When a terminal is
-    dynamically created, each “=” sign is substituted by the
-    corresponding character in the ForceLUNAME parameter of the URL:
+*Fig.13 - HTTP line definition using non-predefined LU names*
 
-    *Terminal pool definition using non-predefined LU names*
+The definition of the terminal pool *MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:
 
-    Note: the name of the pool is only used to match the pool to its
-    associated line.
+|image14|
 
-    Using these definitions with URL parameter ForceLUNAME=RLHVT500 will
-    dynamically generate two pseudo- terminals: RLHVT500 for the
-    terminal session, and RLHPR500 for the associated printer.
+*Fig.14 - Terminal pool definition using non-predefined LU names*
 
-    The presence of a ForceLUNAME=luname parameter in the URL implies
+..note:
+
+    The name of the pool is only used to match the pool to its associated line.
+
+Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.
+
+2.4.1.3.2 Reconnecting to an existing session
+
+	The presence of a ForceLUNAME=luname parameter in the URL implies
     $UseCookieSession$. If a valid VirtelSession cookie is supplied,
     which corresponds to a currently active session, then the request
     will be reconnected to that session.
@@ -769,6 +763,8 @@ other VTAM applications.
 
     Otherwise a new session will be opened using the constructed LU
     name.
+
+*2.4.1.4 VTAM definitions for HTTP terminals*
 
     HTTP relay LU’s must be defined to VTAM by means of APPL statements
     in an application major node, as shown in the following example:
@@ -3998,3 +3994,6 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image9| image:: images/media/image9.png
 .. |image10| image:: images/media/image10.png
 .. |image11| image:: images/media/image11.png
+.. |image12| image:: images/media/image12.png
+.. |image13| image:: images/media/image13.png
+.. |image14| image:: images/media/image14.png

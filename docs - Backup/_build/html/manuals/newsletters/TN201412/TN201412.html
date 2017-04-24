@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sharing user macros across multiple instances of Virtel &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Overview of a Virtel Session" href="../TN201413/TN201413.html"/>
+        <link rel="prev" title="Building a customized USSTAB using Virtel’s Web Access facility" href="../TN201411/TN201411.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id1">2014</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Sharing user macros across multiple instances of Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201413/TN201413.html">Overview of a Virtel Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Sharing user macros across multiple instances of Virtel</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201412/TN201412.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sharing-user-macros-across-multiple-instances-of-virtel">
+<span id="tn201412"></span><h1>Sharing user macros across multiple instances of Virtel<a class="headerlink" href="#sharing-user-macros-across-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h1>
+<p>Update PTF5056 introduced the sharing of user macros across multiple
+instances of Virtel. This feature is particularly useful where a user
+can connect to one of several instances of Virtel within in Sysplex
+Distributed environment.</p>
+<p>In the following scenario a user sessions can be directed to one of
+three Virtel instances through the distributing Sysplex Distributor.</p>
+<p><a class="reference internal" href="../../../_images/image14.jpeg"><img alt="User Macros" src="../../../_images/image14.jpeg" style="width: 6.29167in; height: 3.54167in;" /></a></p>
+<p>User macros are maintained in the browser’s cache and in the TRSF files
+through the %USR% directory entry defined in the ARBO file. Before
+PTF5056, if the user added or updated a macro and then reconnected to a
+different Virtel instance the macro entry maintained in the TRSF
+wouldn’t reflect the latest updates, consequently any cache refresh
+would lose those updates.</p>
+<p>With PTF5056, a timestamp is used to synchronize user macros between the
+browser’s cache and any local TRSF file that the user connects to. If
+the timestamp in the cache is later than the macro entry in the local
+TRSF file, the TRSF file will be updated. Conversely, if the macros in
+the local TRSF is later than the cache equivalent, then the macro will
+be reloaded in cache from the TRSF file.</p>
+<p>Implementation of synchronized user macros requires that the USR-DIR
+directory should be defined. See the following example.</p>
+<p><a class="reference internal" href="../../../_images/image22.png"><img alt="image1" src="../../../_images/image22.png" style="width: 6.30208in; height: 4.95833in;" /></a></p>
+<p>Also, the following transactions need to be defined in the W2H end
+point:-</p>
+<p>W2H-05U – maclib</p>
+<p><a class="reference internal" href="../../../_images/image32.png"><img alt="image2" src="../../../_images/image32.png" style="width: 6.10417in; height: 5.35417in;" /></a></p>
+<p>W2H-80U – uplusr</p>
+<p><a class="reference internal" href="../../../_images/image4.png"><img alt="image3" src="../../../_images/image4.png" style="width: 6.30208in; height: 5.53125in;" /></a></p>
+<p>Once these definitions are in place in the ARBO file and the UPDT5056
+has been uploaded to your W2H-DIR you should be able to synchronize
+macros across instances of Virtel.</p>
+<p>Opening the Virtel macro pad should reveal the macros held within the
+USR-DIR.</p>
+<p><a class="reference internal" href="../../../_images/image5.png"><img alt="image4" src="../../../_images/image5.png" style="width: 6.30208in; height: 4.90625in;" /></a></p>
+<p>The USER list in the above example has three macros. The small icons on
+the right against each macro are “Edit” and “Delete” respectively.</p>
+<p>Clicking the “Edit” icon will open a work pad where the macro can be
+edited. Changes can then be saved or cancelled.</p>
+<p><a class="reference internal" href="../../../_images/image6.png"><img alt="image5" src="../../../_images/image6.png" style="width: 4.03125in; height: 5.43750in;" /></a></p>
+<p>Any changes made will be refelcted back to the local TRSF file. If a
+subsequent logon is targeted to a different Virtel instance, and
+consequently a different local TRSF, then the cache in the the browser
+will updated the local TRSF file as the timestamp in the browser for the
+macro will be later than the timestamp held in the TRSF file.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201413/TN201413.html" class="btn btn-neutral float-right" title="Overview of a Virtel Session" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201411/TN201411.html" class="btn btn-neutral" title="Building a customized USSTAB using Virtel’s Web Access facility" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

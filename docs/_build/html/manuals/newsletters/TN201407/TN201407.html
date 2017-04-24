@@ -207,7 +207,7 @@ Server: Virtel/4.53
 <p>Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.</p>
 <p><img alt="image1" src="../../../_images/image2.png" /> <em>Fig. 2. - Using the Firefox &#8220;Modify Headers&#8221; addin.</em></p>
 <p>When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.</p>
-<p><img alt="image2" src="../../../_images/image3.png" /> <em>Fig. 3 - Modify Header active - red ICON</em></p>
+<p><img alt="image2" src="../../../_images/image31.png" /> <em>Fig. 3 - Modify Header active - red ICON</em></p>
 <p>The following definitions define what needs to be done to enable a user to log on without specifying a userid/password to an asset supported by the SSO server. In our example Virtel will logon to a CICS asset on
 behalf of the caller using a userid passed by the SSO Proxy and a generated PassTicket. The caller provides no userid/password information. Once the SSO has validated the callers credential the caller will be logged on to CICS and will be presented with the following screen:-</p>
 <p><img alt="image3" src="../../../_images/image4.jpeg" /> <em>Fig. 4. - Accessing CICS using a callers credentials. No LOGON required.</em></p>
@@ -258,7 +258,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 </div>
 <p>To allow Virtel to generate Pass Tickets for a particular application we must define any entry in the PTKTDATA class. This entry has the name &#8220;IRRPTAUTH.passTicketName.*&#8221;&#8221; and is a Group Entry. The Virtel USERID
 should have update authority to this profile.</p>
-<p><img alt="image10" src="../../../_images/image11.png" /> <em>Fig. 11 - Seting Virtel up with RACF access to PTKTDATA class.</em></p>
+<p><img alt="image10" src="../../../_images/image111.png" /> <em>Fig. 11 - Seting Virtel up with RACF access to PTKTDATA class.</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 <span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
 <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
@@ -276,7 +276,7 @@ should have update authority to this profile.</p>
 needn’t be!</p>
 <p><strong>Virtel Requirements</strong></p>
 <p>The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-</p>
-<p><img alt="image4" src="../../../_images/image5.jpeg" /> <em>Fig. 5. - Modified CICS Virtel transaction to support Pass Tickets.</em></p>
+<p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 5. - Modified CICS Virtel transaction to support Pass Tickets.</em></p>
 <p>The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM_User header value. See the section on <a class="reference internal" href="#tn201407-bookmark02"><span class="std std-ref">Identification Scenario</span></a>.</p>
 <p>The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (&amp;U) and PassTicket generated password (&amp;P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.</p>
 <p id="tn201407-bookmark02"><em>Identification Scenario</em></p>

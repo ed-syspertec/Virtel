@@ -97,7 +97,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#lines">2. Lines</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rules">3. Rules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#entry-points">4. Entry Points</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id226">5. Transactions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id230">5. Transactions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#external-servers">6. External Servers</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#terminals">7. Terminals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-appendix">A. Appendix</a></li>
@@ -217,7 +217,7 @@ sub-applications, including those rarely used today.</p>
 (“PC”), the VIRTEL Multi-Session menu offers the choice F1 – Admin
 to invoke the Configuration Menu.</p>
 <p>The first screen you will see is the Multi-Session menu:</p>
-<p><a class="reference internal" href="../../../_images/image147.png"><img alt="image1" src="../../../_images/image147.png" style="width: 6.49562in; height: 4.01500in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image148.png"><img alt="image1" src="../../../_images/image148.png" style="width: 6.49562in; height: 4.01500in;" /></a></p>
 <p><em>Fig.1 - The VIRTEL Multi-Session menu</em></p>
 <p>Press [F1] to display the Configuration Menu:</p>
 <p><a class="reference internal" href="../../../_images/image228.png"><img alt="image2" src="../../../_images/image228.png" style="width: 6.49562in; height: 4.01500in;" /></a></p>
@@ -227,7 +227,7 @@ the menu (for example, F1 – Lines). To exit from the Configuration
 Menu and return to the Multi-Session menu, press CLEAR.</p>
 <p>You can optionally display the Sub-Application Menu by pressing
 [PA2]:</p>
-<p><a class="reference internal" href="../../../_images/image325.png"><img alt="image3" src="../../../_images/image325.png" style="width: 6.49562in; height: 4.01500in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image326.png"><img alt="image3" src="../../../_images/image326.png" style="width: 6.49562in; height: 4.01500in;" /></a></p>
 <p><em>Fig.3 - Sub-Application Menu</em></p>
 <p>To invoke a sub-application, press one of the function keys shown in
 the menu (for example, F7 – Videotex Definitions). To exit from the
@@ -627,7 +627,7 @@ authorising connections from a web browser to applications at the
 host site. Activation of this type of line is subject to the
 presence of the TCP1 parameter in the VIRTCT, as well as to a
 definition providing linkage to a file containing the HTML pages.</p>
-<p><img alt="image6" src="../../../_images/image616.png" /></p>
+<p><img alt="image6" src="../../../_images/image617.png" /></p>
 <p><em>Fig.6 - Definition of an HTTP line</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -721,9 +721,9 @@ the terminal name is an internal name used only within VIRTEL, while
 the relay name is an LU name defined by a VTAM APPL statement. The
 relay LU name is the name by which the terminal is known to CICS or
 other VTAM applications.</p>
-<p><img alt="image7" src="../../../_images/image713.png" /></p>
+<p><img alt="image7" src="../../../_images/image714.png" /></p>
 <p><em>Fig.7 - Definition of terminals associated with an HTTP line</em></p>
-<p><img alt="image8" src="../../../_images/image812.png" /></p>
+<p><img alt="image8" src="../../../_images/image813.png" /></p>
 <p><em>Fig.8 - Definition of HTTP terminals without relay</em></p>
 <p><img alt="image9" src="../../../_images/image910.png" /></p>
 <p><em>Fig.9 - Definition of HTTP terminals with relay</em></p>
@@ -754,53 +754,50 @@ of IP addresses. The rules associated with a user (see
 LU name to be assigned to a user according to the user’s e-mail
 address; in this case, the user is identified by a “Cookie” which
 the browser presents to VIRTEL with the HTTP request.</p>
-<p>It is possible for an HTTP client to connect to VIRTEL with a
-parameter specifying an arbitrary VTAM LU name to be used as relay
-name for host applications. For this to work, four conditions must
-be fulfilled:</p>
 </div></blockquote>
-<ul>
-<li><p class="first">the VTAM LU name should be specified in the connection URL. For
-example, if the desired LU name is RLHVT500:</p>
-</li>
-<li><p class="first">the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals”
-field instead of a terminal name prefix.</p>
-</li>
-<li><p class="first">the HTTP line must specify a pool name</p>
-</li>
-<li><p class="first">a terminal pool of the same name should be defined; only the pool is
+<p><em>2.4.1.3. HTTP connections with non-predefined terminals</em></p>
+<p>It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:</p>
+<ul class="simple">
+<li>the VTAM LU name should be specified in the connection URL. For
+example, if the desired LU name is RLHVT500:</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">IMS</span><span class="o">+</span><span class="n">ForceLUNAME</span><span class="o">=</span><span class="n">RLHVT500</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals”
+field instead of a terminal name prefix.</li>
+<li>the HTTP line must specify a pool name</li>
+<li>a terminal pool of the same name should be defined; only the pool is
 needed, not the predefined pseudo- terminals that are normaly defined
 alongside a pool. The terminal and printer pseudo-terminals will be
 automatically generated using the pool as a template together with
-the relay name specified in the ForceLUNAME parameter of the URL.</p>
-<blockquote>
-<div><p>The ForceLUNAME=luname parameter in the URL is valid only for
-transactions which specify TERMINAL=$LINE$ when attached to a line
-which has an associated terminal pool.</p>
-<p>An example of a line with non-predefined LU names is shown below.</p>
-<p>In this example the transaction whose external name is IMS defined
-under entry point CLIWHOST. The terminal prefix in the transaction
-definition is $LINE$:</p>
-</div></blockquote>
-</li>
+the relay name specified in the ForceLUNAME parameter of the URL.</li>
 </ul>
+<p>The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.</p>
+<p>An example of a line with non-predefined LU names is shown below.</p>
+<p>2.4.1.3.1 Examples</p>
 <blockquote>
-<div><p><em>Transaction definition using non-predefined LU names</em></p>
-<p>The definition of line C-HTTP on port 41002 specifies *MYPOOL as
-the line pool name:</p>
-<p><em>HTTP line definition using non-predefined LU names</em></p>
-<p>The definition of the terminal pool *MYPOOL contains mask
-characters in the “Relay” and “2nd relay” fields. When a terminal is
-dynamically created, each “=” sign is substituted by the
-corresponding character in the ForceLUNAME parameter of the URL:</p>
-<p><em>Terminal pool definition using non-predefined LU names</em></p>
-<p>Note: the name of the pool is only used to match the pool to its
-associated line.</p>
-<p>Using these definitions with URL parameter ForceLUNAME=RLHVT500 will
-dynamically generate two pseudo- terminals: RLHVT500 for the
-terminal session, and RLHPR500 for the associated printer.</p>
-<p>The presence of a ForceLUNAME=luname parameter in the URL implies
-$UseCookieSession$. If a valid VirtelSession cookie is supplied,
+<div>In this example the transaction whose external name is IMS defined
+under entry point CLIWHOST. The terminal prefix in the transaction
+definition is $LINE$:</div></blockquote>
+<p><img alt="image12" src="../../../_images/image1213.png" /></p>
+<p><em>Fig.12 - Transaction definition using non-predefined LU names</em></p>
+<p>The definition of line C-HTTP on port 41002 specifies <a href="#id3"><span class="problematic" id="id4">*</span></a>MYPOOL as the line pool name:</p>
+<p><img alt="image13" src="../../../_images/image1311.png" /></p>
+<p><em>Fig.13 - HTTP line definition using non-predefined LU names</em></p>
+<p>The definition of the terminal pool <a href="#id5"><span class="problematic" id="id6">*</span></a>MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:</p>
+<p><img alt="image14" src="../../../_images/image149.png" /></p>
+<p><em>Fig.14 - Terminal pool definition using non-predefined LU names</em></p>
+<p>..note:</p>
+<blockquote>
+<div>The name of the pool is only used to match the pool to its associated line.</div></blockquote>
+<p>Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.</p>
+<p>2.4.1.3.2 Reconnecting to an existing session</p>
+<blockquote>
+<div><blockquote>
+<div>The presence of a ForceLUNAME=luname parameter in the URL implies</div></blockquote>
+<p>$UseCookieSession$. If a valid VirtelSession cookie is supplied,
 which corresponds to a currently active session, then the request
 will be reconnected to that session.</p>
 <p>If no VirtelSession cookie is present, or if the cookie does not
@@ -811,7 +808,10 @@ the mask specified in the pool associated with the line.</p>
 then the request will be rejected with HTTP code 406.</p>
 <p>Otherwise a new session will be opened using the constructed LU
 name.</p>
-<p>HTTP relay LU’s must be defined to VTAM by means of APPL statements
+</div></blockquote>
+<p><em>2.4.1.4 VTAM definitions for HTTP terminals</em></p>
+<blockquote>
+<div><p>HTTP relay LU’s must be defined to VTAM by means of APPL statements
 in an application major node, as shown in the following example:</p>
 <p><em>VTAM definitions for HTTP relay LU’s</em></p>
 <p>The HTTP relay LU’s must also be defined to CICS, as shown in the
@@ -895,14 +895,14 @@ output is written to SYSPRINT or SYSLST.</p>
 <blockquote>
 <div><em>Definition of an SMTP line</em></div></blockquote>
 </div>
-<div class="section" id="id3">
-<h3>Remote ident<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3>Remote ident<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>This field is required and represents the IP address and port number
 of the SMTP server to which VIRTEL sends outgoing mail.</div></blockquote>
 </div>
-<div class="section" id="id4">
-<h3>Local ident<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3>Local ident<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The IP address and port number on which VIRTEL listens for incoming
 mail. For details of how to code this field, refer to “Local ident”
@@ -929,8 +929,8 @@ FAD4 structured field. The e-mail address used will normally need to
 be defined to the SMTP server.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id5">
-<h3>Prefix<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Prefix<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
@@ -944,21 +944,21 @@ which do not match any of the rules of the line.</p>
 “Incoming E-mails” in the VIRTEL Web Access Guide.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h3>Line type<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Line type<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.</div></blockquote>
 </div>
-<div class="section" id="id7">
-<h3>Possible calls<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id11">
+<h3>Possible calls<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Direction of calls.</p>
 <p>The value 3 must be used in order to allow exchanges in both
 directions between VIRTEL and the partner SMTP server.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id8">
-<h3>Protocol<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>Protocol<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always SMTP.</div></blockquote>
 </div>
@@ -1005,8 +1005,8 @@ the start of a CICS transaction (or another VTAM application). The
 relay LU’s must be defined by APPL statements in a VTAM application
 major node, as described below.</div></blockquote>
 </div>
-<div class="section" id="id9">
-<h3>Entry point<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h3>Entry point<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank. The entry point is defined in the line (or in the rules
 of the line) for this type of terminal.</div></blockquote>
@@ -1021,8 +1021,8 @@ of the line) for this type of terminal.</div></blockquote>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id10">
-<h3>Possible Calls<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h3>Possible Calls<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
@@ -1052,48 +1052,48 @@ presence of the TCP1 parameter in the VIRTCT.</p>
 <blockquote>
 <div><em>Definition of an IMS Connect line</em></div></blockquote>
 </div>
-<div class="section" id="id11">
-<h3>Internal name<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h3>Internal name<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The VIRTEL internal name for this connection.</div></blockquote>
 </div>
-<div class="section" id="id12">
-<h3>External name<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>External name<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must match the IMS destination id (IRM_IMSDestId).</div></blockquote>
 </div>
-<div class="section" id="id13">
-<h3>Remote ident<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Remote ident<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>IP address of IMS Connect followed by the port number.</div></blockquote>
 </div>
-<div class="section" id="id14">
-<h3>Local ident<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id18">
+<h3>Local ident<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id15">
-<h3>Prefix<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id19">
+<h3>Prefix<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id16">
-<h3>Entry Point<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id20">
+<h3>Entry Point<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The entry point name must match the IMS TPIPE name (IRM_CLIENTID).</div></blockquote>
 </div>
-<div class="section" id="id17">
-<h3>Line type<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id21">
+<h3>Line type<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.</div></blockquote>
 </div>
-<div class="section" id="id18">
-<h3>Possible calls<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id22">
+<h3>Possible calls<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 1.</div></blockquote>
 </div>
-<div class="section" id="id19">
-<h3>Protocol<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id23">
+<h3>Protocol<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Always ICONNECT.</p>
 <p>Press [PF4] at the Line Detail Definition screen to display the list
@@ -1107,8 +1107,8 @@ Connect.</p>
 <blockquote>
 <div><em>Definition of terminals associated with an IMS Connect line</em></div></blockquote>
 </div>
-<div class="section" id="id20">
-<h3>Terminal<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h3>Terminal<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the prefix of the line.</div></blockquote>
 </div>
@@ -1117,8 +1117,8 @@ Connect.</p>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id21">
-<h3>Entry point<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id25">
+<h3>Entry point<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
@@ -1127,18 +1127,18 @@ Connect.</p>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id22">
-<h3>Compression<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id26">
+<h3>Compression<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id23">
-<h3>Possible calls<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id27">
+<h3>Possible calls<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 1.</div></blockquote>
 </div>
-<div class="section" id="id24">
-<h3>Repeat<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id28">
+<h3>Repeat<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Number of terminals (RESUME TPIPE sessions) defined.</p>
 <p>Each IMS Connect line must have an associated Entry Point whose name
@@ -1182,13 +1182,13 @@ message VIRIC57E.</p>
 point</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id25">
-<h3>Internal name<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id29">
+<h3>Internal name<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must match the transaction prefix specified in the entry point.</div></blockquote>
 </div>
-<div class="section" id="id26">
-<h3>External name<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id30">
+<h3>External name<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>This is the transaction name specified by the IMS application in the
 message header. For the default transaction, the external name must
@@ -1266,8 +1266,8 @@ of line requires the presence of the TCP1 parameter in the VIRTCT.</p>
 <blockquote>
 <div><em>Definition of an XOT line</em></div></blockquote>
 </div>
-<div class="section" id="id27">
-<h3>Remote ident<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id31">
+<h3>Remote ident<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>IP address of the router followed by the port number 1998.</p>
 <p>The address specified here is used by VIRTEL as the destination
@@ -1288,8 +1288,8 @@ address to VIRTEL for incoming calls. Example:</p>
 <p>x25 route .* xot 10.0.1.1 xot-source loopback0</p>
 </div></blockquote>
 </div>
-<div class="section" id="id28">
-<h3>Local ident<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id32">
+<h3>Local ident<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The IP address and port number on the VIRTEL side. For details of
 how to code this field, refer to “Local ident” under the headin<a class="reference external" href="#_bookmark13">g
@@ -1309,39 +1309,39 @@ manual z/OS Communications Server IP Configuration Guide for details
 of VIPA).</p>
 </div></blockquote>
 </div>
-<div class="section" id="id29">
-<h3>Prefix<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id33">
+<h3>Prefix<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id30">
-<h3>Entry Point<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id34">
+<h3>Entry Point<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Not required for this type of line.</div></blockquote>
 </div>
-<div class="section" id="id31">
-<h3>Line type<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id35">
+<h3>Line type<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.</div></blockquote>
 </div>
-<div class="section" id="id32">
-<h3>Possible calls<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id36">
+<h3>Possible calls<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>No special restriction.</div></blockquote>
 </div>
-<div class="section" id="id33">
-<h3>Protocol<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id37">
+<h3>Protocol<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always XOT.</div></blockquote>
 </div>
-<div class="section" id="id34">
-<h3>Window<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id38">
+<h3>Window<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>In accordance with the window size for the X25 line specified in the
 router configuration (see note below).</div></blockquote>
 </div>
-<div class="section" id="id35">
-<h3>Packet<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id39">
+<h3>Packet<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>In accordance with the packet size for the X25 line specified in the
 router configuration (see note below).</p>
@@ -1352,13 +1352,13 @@ will be used if no values are supplied by the partner in the Call or
 Call Accepted packets.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id36">
-<h3>Pad<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id40">
+<h3>Pad<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id37">
-<h3>Tran<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id41">
+<h3>Tran<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Normally blank, unless non-standard ASCII translation is required
 for special applications.</p>
@@ -1372,13 +1372,13 @@ circuits) between the router and VIRTEL.</p>
 <p><em>Definition of terminals associated with an XOT line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id38">
-<h3>Terminal<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id42">
+<h3>Terminal<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the prefix of the line.</div></blockquote>
 </div>
-<div class="section" id="id39">
-<h3>Relais<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id43">
+<h3>Relais<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The name of a relay LU must be specified if incoming calls are
 routed to a type-1 transaction (VTAM application). The relay LU’s
@@ -1388,28 +1388,28 @@ transaction (external server), as is the case for calls routed to a
 GATE or PCNE application such as CFT or Inter.PEL, no relay is
 required on the terminals attached to the XOT line.</div></blockquote>
 </div>
-<div class="section" id="id40">
-<h3>Entry point<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id44">
+<h3>Entry point<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id41">
-<h3>Terminal Type<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id45">
+<h3>Terminal Type<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id42">
-<h3>Compression<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id46">
+<h3>Compression<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id43">
-<h3>Possible calls<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id47">
+<h3>Possible calls<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id44">
-<h3>Repeat<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id48">
+<h3>Repeat<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Number of terminals (virtual circuits) defined.</p>
 <p>When incoming calls are routed to a type-1 transaction (VTAM
@@ -1426,8 +1426,8 @@ definition.</p>
 <p><em>Definition of an MQ line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id45">
-<h3>Remote ident<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id49">
+<h3>Remote ident<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>For the RAW protocol: Leave blank.</p>
 <p>For the PREFIXED, PREFIX12, and PREFIX20 protocols: The special
@@ -1437,31 +1437,31 @@ taken from the inbound message and saved in the 12- or 20-byte
 header.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id46">
-<h3>Local ident<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id50">
+<h3>Local ident<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The name of the MQSeries message queue. The queue name prefix
 specified in the MQn parameter of the VIRTCT will be added to the
 front of this name. Refer to “Parameters of the VIRTCT” in the
 VIRTEL Installation Guide for details of the MQn parameter.</div></blockquote>
 </div>
-<div class="section" id="id47">
-<h3>Prefix<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id51">
+<h3>Prefix<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id48">
-<h3>Entry Point<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id52">
+<h3>Entry Point<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Required for MQ input queue.</div></blockquote>
 </div>
-<div class="section" id="id49">
-<h3>Line type<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id53">
+<h3>Line type<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>One of the MQn protocols defined in the VIRTCT, for example MQ1.</div></blockquote>
 </div>
-<div class="section" id="id50">
-<h3>Possible calls<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id54">
+<h3>Possible calls<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify one of the following values:</div></blockquote>
 <ul class="simple">
@@ -1469,13 +1469,13 @@ VIRTEL Installation Guide for details of the MQn parameter.</div></blockquote>
 <li>2 = Output: VIRTEL writes messages to the MQSeries queue</li>
 </ul>
 </div>
-<div class="section" id="id51">
-<h3>Protocol<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id55">
+<h3>Protocol<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>RAW, PREFIXED, PREFIX12, or PREFIX20.</div></blockquote>
 </div>
-<div class="section" id="id52">
-<h3>Tran<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id56">
+<h3>Tran<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify the way in which messages are processed on the line.</div></blockquote>
 <ul>
@@ -1498,38 +1498,38 @@ number of messages which can be processed simultaneously by VIRTEL.</p>
 <blockquote>
 <div><em>Definition of terminals associated with an MQ line</em></div></blockquote>
 </div>
-<div class="section" id="id53">
-<h3>Terminal<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id57">
+<h3>Terminal<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the prefix of the line.</div></blockquote>
 </div>
-<div class="section" id="id54">
-<h3>Relais<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id58">
+<h3>Relais<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id55">
-<h3>Entry point<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id59">
+<h3>Entry point<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id56">
-<h3>Terminal Type<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id60">
+<h3>Terminal Type<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id57">
-<h3>Compression<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id61">
+<h3>Compression<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id58">
-<h3>Possible calls<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id62">
+<h3>Possible calls<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id59">
-<h3>Repeat<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id63">
+<h3>Repeat<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Number of terminals defined.</p>
 <p>A batch line allows VIRTEL to process HTTP requests in batch mode.
@@ -1541,23 +1541,23 @@ the presence of the BATCHn parameter in the VIRTCT.</p>
 <p><em>Definition of a batch line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id60">
-<h3>Remote ident<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id64">
+<h3>Remote ident<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id61">
-<h3>Local ident<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id65">
+<h3>Local ident<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id62">
-<h3>Prefix<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id66">
+<h3>Prefix<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id63">
-<h3>Entry Point<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id67">
+<h3>Entry Point<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>When defining a batch line, it is obligatory to define a default
 entry point. This entry point is similar to the entry point used for
@@ -1586,39 +1586,39 @@ associated relay.</div></blockquote>
 <blockquote>
 <div>No terminal prefix is required.</div></blockquote>
 </div>
-<div class="section" id="id64">
-<h3>Line type<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id68">
+<h3>Line type<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>BATCH1 or BATCH2, corresponding to one of the BATCH parameters
 defined in the VIRTCT.</div></blockquote>
 </div>
-<div class="section" id="id65">
-<h3>Possible calls<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id69">
+<h3>Possible calls<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify 1 (incoming calls only).</div></blockquote>
 </div>
-<div class="section" id="id66">
-<h3>Protocol<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id70">
+<h3>Protocol<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>VIRHTTP or HTTP.</div></blockquote>
 </div>
-<div class="section" id="id67">
-<h3>Window<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id71">
+<h3>Window<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
-<div class="section" id="id68">
-<h3>Packet<a class="headerlink" href="#id68" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id72">
+<h3>Packet<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
-<div class="section" id="id69">
-<h3>Pad<a class="headerlink" href="#id69" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id73">
+<h3>Pad<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id70">
-<h3>Tran<a class="headerlink" href="#id70" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id74">
+<h3>Tran<a class="headerlink" href="#id74" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Always blank.</p>
 <p>Like an HTTP line, a batch line uses up to two sub-groups of type-3
@@ -1736,50 +1736,50 @@ TCP1 parameter in the VIRTCT.</p>
 <p><em>Definition of a NATIVE TCP/IP line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id71">
-<h3>Remote ident<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id75">
+<h3>Remote ident<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Not used for a NATIVE TCP/IP line.</div></blockquote>
 </div>
-<div class="section" id="id72">
-<h3>Local ident<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id76">
+<h3>Local ident<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The IP address and port number on which VIRTEL listens for incoming
 connections from the partner application. For details of how to code
 this field, refer to “Local ident” under the heading <a class="reference external" href="#_bookmark13">“Parameters of
 the line”, page 11</a>.</div></blockquote>
 </div>
-<div class="section" id="id73">
-<h3>Prefix<a class="headerlink" href="#id73" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id77">
+<h3>Prefix<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id74">
-<h3>Entry Point<a class="headerlink" href="#id74" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id78">
+<h3>Entry Point<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The default entry point will be used for all incoming calls which do
 not match any of the rules of the line. Entry points for use with
 native TCP/IP lines must specify Emulation type $NONE$</div></blockquote>
 </div>
-<div class="section" id="id75">
-<h3>Line type<a class="headerlink" href="#id75" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id79">
+<h3>Line type<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.</div></blockquote>
 </div>
-<div class="section" id="id76">
-<h3>Possible calls<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id80">
+<h3>Possible calls<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify 1 to allow inbound calls.</div></blockquote>
 </div>
-<div class="section" id="id77">
-<h3>Protocol<a class="headerlink" href="#id77" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id81">
+<h3>Protocol<a class="headerlink" href="#id81" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>NATIVE2 or NATIVE2P for native TCP/IP protocol with a two-byte
 length field NATIVE4 or NATIVE4P for native TCP/IP protocol with a
 four-byte length field</div></blockquote>
 </div>
-<div class="section" id="id78">
-<h3>Packet<a class="headerlink" href="#id78" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id82">
+<h3>Packet<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Specify a packet size sufficient to contain the largest message sent
 by either the host or the partner application, plus 2 or 4 bytes for
@@ -1794,40 +1794,40 @@ simultaneous conversations authorised.</p>
 <blockquote>
 <div><em>Definition of terminals associated with a NATIVE TCP/IP line</em></div></blockquote>
 </div>
-<div class="section" id="id79">
-<h3>Terminal<a class="headerlink" href="#id79" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id83">
+<h3>Terminal<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the prefix of the line.</div></blockquote>
 </div>
-<div class="section" id="id80">
-<h3>Relay<a class="headerlink" href="#id80" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id84">
+<h3>Relay<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify the name of the relay pool which defines the terminal LU
 names as seen by the VTAM application. The first character is an
 asterisk indicating that this is the name of a pool.</div></blockquote>
 </div>
-<div class="section" id="id81">
-<h3>Entry point<a class="headerlink" href="#id81" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id85">
+<h3>Entry point<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank. The entry point is defined in the line (or in the rules
 of the line) for this type of terminal.</div></blockquote>
 </div>
-<div class="section" id="id82">
-<h3>Terminal type<a class="headerlink" href="#id82" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id86">
+<h3>Terminal type<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id83">
-<h3>Compression<a class="headerlink" href="#id83" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id87">
+<h3>Compression<a class="headerlink" href="#id87" title="Permalink to this headline">¶</a></h3>
 <p>Always 2.</p>
 </div>
-<div class="section" id="id84">
-<h3>Possible Calls<a class="headerlink" href="#id84" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id88">
+<h3>Possible Calls<a class="headerlink" href="#id88" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id85">
-<h3>Repeat<a class="headerlink" href="#id85" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id89">
+<h3>Repeat<a class="headerlink" href="#id89" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The number of terminals defined.</p>
 <p>The figure below shows the definition of the NATIVE TCP/IP relay
@@ -1835,13 +1835,13 @@ pool:</p>
 <p><em>Definition of terminals associated with a NATIVE TCP/IP line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id86">
-<h3>Terminal<a class="headerlink" href="#id86" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id90">
+<h3>Terminal<a class="headerlink" href="#id90" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Any terminal name may be used for the relay pool.</div></blockquote>
 </div>
-<div class="section" id="id87">
-<h3>Relay<a class="headerlink" href="#id87" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id91">
+<h3>Relay<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify the name of the the terminal LU names as seen by the VTAM
 application.</div></blockquote>
@@ -1853,26 +1853,26 @@ application.</div></blockquote>
 definition. The first character is an asterisk indicating that this
 is the name of a pool.</div></blockquote>
 </div>
-<div class="section" id="id88">
-<h3>Entry point<a class="headerlink" href="#id88" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id92">
+<h3>Entry point<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id89">
-<h3>Terminal type<a class="headerlink" href="#id89" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id93">
+<h3>Terminal type<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id90">
-<h3>Compression<a class="headerlink" href="#id90" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id94">
+<h3>Compression<a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h3>
 <p>Always 2.</p>
 </div>
-<div class="section" id="id91">
-<h3>Possible Calls<a class="headerlink" href="#id91" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id95">
+<h3>Possible Calls<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
 <p>Always 3.</p>
 </div>
-<div class="section" id="id92">
-<h3>Repeat<a class="headerlink" href="#id92" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id96">
+<h3>Repeat<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The number of terminals defined.</p>
 <p>Relay LU’s must be defined to VTAM by means of APPL statements in an
@@ -1936,8 +1936,8 @@ TCP/IP mode using the VIRKIX program on the CICS side.</p>
 <blockquote>
 <div><em>Definition of a VIRPASS TCP line for VIRKIX</em></div></blockquote>
 </div>
-<div class="section" id="id93">
-<h3>Remote ident<a class="headerlink" href="#id93" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id97">
+<h3>Remote ident<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Contains the IP address and port number of the CICS side of the
 link. It must match the fields “adresse TCP/IP” and “port serveur”
@@ -1948,46 +1948,46 @@ Asymétrique” (previously known as “Virtel TCP/IP”), this field must
 be blank, and VIRTEL will wait for VIRKIX to make the connection on
 the address specified in the “Local ident” field.</div></blockquote>
 </div>
-<div class="section" id="id94">
-<h3>Local ident<a class="headerlink" href="#id94" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id98">
+<h3>Local ident<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must be specified. Contains the IP address and port number of the
 VIRTEL side of the link. Must match the fields “Adresse TCP/IP” and
 “port du serveur” specified in the VIRPASS interface (relay type
 “Virpass TCP/IP” or “Virpass Asymétrique”) defined in VIRKIX.</div></blockquote>
 </div>
-<div class="section" id="id95">
-<h3>Prefix<a class="headerlink" href="#id95" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id99">
+<h3>Prefix<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id96">
-<h3>Entry point<a class="headerlink" href="#id96" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id100">
+<h3>Entry point<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id97">
-<h3>Line type<a class="headerlink" href="#id97" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id101">
+<h3>Line type<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>TCP1</div></blockquote>
 </div>
-<div class="section" id="id98">
-<h3>Possible calls<a class="headerlink" href="#id98" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id102">
+<h3>Possible calls<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id99">
-<h3>Protocol<a class="headerlink" href="#id99" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id103">
+<h3>Protocol<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always VIRPASS.</div></blockquote>
 </div>
-<div class="section" id="id100">
-<h3>Window<a class="headerlink" href="#id100" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id104">
+<h3>Window<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
-<div class="section" id="id101">
-<h3>Packet<a class="headerlink" href="#id101" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id105">
+<h3>Packet<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
@@ -2018,54 +2018,54 @@ describes TCP/IP mode.</p>
 <blockquote>
 <div><em>Definition of a VIRPASS TCP line for VIRNT</em></div></blockquote>
 </div>
-<div class="section" id="id102">
-<h3>Remote ident<a class="headerlink" href="#id102" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id106">
+<h3>Remote ident<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id103">
-<h3>Local ident<a class="headerlink" href="#id103" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id107">
+<h3>Local ident<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>This field must be the same as the TCP/IP port referenced under the
 heading “HOST IP Port” in the VIRPASS.INI file on the VIRNT system.</div></blockquote>
 </div>
-<div class="section" id="id104">
-<h3>Prefix<a class="headerlink" href="#id104" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id108">
+<h3>Prefix<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id105">
-<h3>Entry Point<a class="headerlink" href="#id105" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id109">
+<h3>Entry Point<a class="headerlink" href="#id109" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Not required for this type of line.</div></blockquote>
 </div>
-<div class="section" id="id106">
-<h3>Line type<a class="headerlink" href="#id106" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id110">
+<h3>Line type<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>TCP1</div></blockquote>
 </div>
-<div class="section" id="id107">
-<h3>Possible calls<a class="headerlink" href="#id107" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id111">
+<h3>Possible calls<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>No special restriction.</div></blockquote>
 </div>
-<div class="section" id="id108">
-<h3>Protocol<a class="headerlink" href="#id108" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id112">
+<h3>Protocol<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always VIRPASS.</div></blockquote>
 </div>
-<div class="section" id="id109">
-<h3>Window<a class="headerlink" href="#id109" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id113">
+<h3>Window<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
-<div class="section" id="id110">
-<h3>Packet<a class="headerlink" href="#id110" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id114">
+<h3>Packet<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
-<div class="section" id="id111">
-<h3>Pad, Tran<a class="headerlink" href="#id111" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id115">
+<h3>Pad, Tran<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Always blank.</p>
 <p>A VIRPASS TCP connection with a VIRNT system can use up to two
@@ -2234,61 +2234,61 @@ Cross-memory (XM) mode using the VIRKIX program on the CICS side.</p>
 <blockquote>
 <div><em>Definition of a VIRPASS XM line for VIRKIX</em></div></blockquote>
 </div>
-<div class="section" id="id112">
-<h3>External name<a class="headerlink" href="#id112" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id116">
+<h3>External name<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must match the relay name of a VIRPASS cross-memory interface in
 VIRKIX.</div></blockquote>
 </div>
-<div class="section" id="id113">
-<h3>Remote ident<a class="headerlink" href="#id113" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id117">
+<h3>Remote ident<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Contains the jobname of the CICS region in which VIRKIX is running.
 The CICS region must be in the same MVS system as VIRTEL.</div></blockquote>
 </div>
-<div class="section" id="id114">
-<h3>Local ident<a class="headerlink" href="#id114" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id118">
+<h3>Local ident<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must match the field “Nom de la liaison” specified in the definition
 of the VIRPASS cross-memory interface in VIRKIX.</div></blockquote>
 </div>
-<div class="section" id="id115">
-<h3>Prefix<a class="headerlink" href="#id115" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id119">
+<h3>Prefix<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id116">
-<h3>Entry point<a class="headerlink" href="#id116" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id120">
+<h3>Entry point<a class="headerlink" href="#id120" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id117">
-<h3>Line type<a class="headerlink" href="#id117" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id121">
+<h3>Line type<a class="headerlink" href="#id121" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>XM1</div></blockquote>
 </div>
-<div class="section" id="id118">
-<h3>Possible calls<a class="headerlink" href="#id118" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id122">
+<h3>Possible calls<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id119">
-<h3>Protocol<a class="headerlink" href="#id119" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id123">
+<h3>Protocol<a class="headerlink" href="#id123" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always VIRPASS.</div></blockquote>
 </div>
-<div class="section" id="id120">
-<h3>Window<a class="headerlink" href="#id120" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id124">
+<h3>Window<a class="headerlink" href="#id124" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
-<div class="section" id="id121">
-<h3>Packet<a class="headerlink" href="#id121" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id125">
+<h3>Packet<a class="headerlink" href="#id125" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 0.</div></blockquote>
 </div>
-<div class="section" id="id122">
-<h3>Pad, Tran<a class="headerlink" href="#id122" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id126">
+<h3>Pad, Tran<a class="headerlink" href="#id126" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Always blank.</p>
 <p>A VIRPASS XM line for communication with VIRKIX uses a single
@@ -2378,28 +2378,28 @@ TCP1 parameter in the VIRTCT.</p>
 <p><em>Definition of a VIRPESIT line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id123">
-<h3>Remote ident<a class="headerlink" href="#id123" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id127">
+<h3>Remote ident<a class="headerlink" href="#id127" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>(optional) IP address and port number of the default partner (for
 outbound calls when the external server does not specify a partner
 IP address).</div></blockquote>
 </div>
-<div class="section" id="id124">
-<h3>Local ident<a class="headerlink" href="#id124" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id128">
+<h3>Local ident<a class="headerlink" href="#id128" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The IP address and port number on which VIRTEL listens for incoming
 connections from the partner application. For details of how to code
 this field, refer to “Local ident” under the heading <a class="reference external" href="#_bookmark13">“Parameters of
 the line”, page 11</a>.</div></blockquote>
 </div>
-<div class="section" id="id125">
-<h3>Prefix<a class="headerlink" href="#id125" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id129">
+<h3>Prefix<a class="headerlink" href="#id129" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id126">
-<h3>Entry Point<a class="headerlink" href="#id126" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id130">
+<h3>Entry Point<a class="headerlink" href="#id130" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The default entry point will be used for all incoming calls which do
 not match any of the rules of the line.</p>
@@ -2408,18 +2408,18 @@ heading “VIRPESIT gateway” in the “Incoming calls” section of the
 VIRTEL Technical Documentation.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id127">
-<h3>Line type<a class="headerlink" href="#id127" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id131">
+<h3>Line type<a class="headerlink" href="#id131" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.</div></blockquote>
 </div>
-<div class="section" id="id128">
-<h3>Possible calls<a class="headerlink" href="#id128" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id132">
+<h3>Possible calls<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify 3 to allow exchanges in both directions.</div></blockquote>
 </div>
-<div class="section" id="id129">
-<h3>Protocol<a class="headerlink" href="#id129" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id133">
+<h3>Protocol<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Always VIRPESIT.</p>
 <p>By pressing [PF4], the list of terminals associated with the
@@ -2432,39 +2432,39 @@ simultaneous file transfer sessions authorised.</p>
 <blockquote>
 <div><em>Definition of terminals associated with a VIRPESIT line</em></div></blockquote>
 </div>
-<div class="section" id="id130">
-<h3>Terminal<a class="headerlink" href="#id130" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id134">
+<h3>Terminal<a class="headerlink" href="#id134" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the prefix of the line.</div></blockquote>
 </div>
-<div class="section" id="id131">
-<h3>Relay<a class="headerlink" href="#id131" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id135">
+<h3>Relay<a class="headerlink" href="#id135" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id132">
-<h3>Entry point<a class="headerlink" href="#id132" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id136">
+<h3>Entry point<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank. The entry point is defined in the line (or in the rules
 of the line) for this type of terminal.</div></blockquote>
 </div>
-<div class="section" id="id133">
-<h3>Terminal type<a class="headerlink" href="#id133" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id137">
+<h3>Terminal type<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id134">
-<h3>Compression<a class="headerlink" href="#id134" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id138">
+<h3>Compression<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id135">
-<h3>Possible Calls<a class="headerlink" href="#id135" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id139">
+<h3>Possible Calls<a class="headerlink" href="#id139" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id136">
-<h3>Repeat<a class="headerlink" href="#id136" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id140">
+<h3>Repeat<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The number of terminals defined.</p>
 <p>A VIRNEOX line allows VIRTEL to act as a server for communications
@@ -2476,43 +2476,43 @@ TCP1 parameter in the VIRTCT.</p>
 <p><em>Definition of a VIRNEOX line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id137">
-<h3>Local ident<a class="headerlink" href="#id137" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id141">
+<h3>Local ident<a class="headerlink" href="#id141" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The IP address and port number on which VIRTEL listens for incoming
 connections from the partner application. For details of how to code
 this field, refer to “Local ident” under the heading <a class="reference external" href="#_bookmark13">“Parameters of
 the line”, page 11</a>.</div></blockquote>
 </div>
-<div class="section" id="id138">
-<h3>Prefix<a class="headerlink" href="#id138" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id142">
+<h3>Prefix<a class="headerlink" href="#id142" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id139">
-<h3>Entry Point<a class="headerlink" href="#id139" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id143">
+<h3>Entry Point<a class="headerlink" href="#id143" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The default entry point will be used for all incoming calls which do
 not match any of the rules of the line. Entry points for use with
 VIRNEOX lines must specify Emulation type $NONE$</div></blockquote>
 </div>
-<div class="section" id="id140">
-<h3>Line type<a class="headerlink" href="#id140" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id144">
+<h3>Line type<a class="headerlink" href="#id144" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.</div></blockquote>
 </div>
-<div class="section" id="id141">
-<h3>Possible calls<a class="headerlink" href="#id141" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id145">
+<h3>Possible calls<a class="headerlink" href="#id145" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify 1 to allow inbound calls.</div></blockquote>
 </div>
-<div class="section" id="id142">
-<h3>Protocol<a class="headerlink" href="#id142" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id146">
+<h3>Protocol<a class="headerlink" href="#id146" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always VIRNEOX.</div></blockquote>
 </div>
-<div class="section" id="id143">
-<h3>Packet<a class="headerlink" href="#id143" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id147">
+<h3>Packet<a class="headerlink" href="#id147" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Specify a packet size sufficient to contain the largest message sent
 by either the host or the partner application.</p>
@@ -2526,39 +2526,39 @@ conversations authorised.</p>
 <blockquote>
 <div><em>Definition of terminals associated with a VIRNEOX line</em></div></blockquote>
 </div>
-<div class="section" id="id144">
-<h3>Terminal<a class="headerlink" href="#id144" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id148">
+<h3>Terminal<a class="headerlink" href="#id148" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the prefix of the line.</div></blockquote>
 </div>
-<div class="section" id="id145">
-<h3>Relay<a class="headerlink" href="#id145" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id149">
+<h3>Relay<a class="headerlink" href="#id149" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank.</div></blockquote>
 </div>
-<div class="section" id="id146">
-<h3>Entry point<a class="headerlink" href="#id146" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id150">
+<h3>Entry point<a class="headerlink" href="#id150" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank. The entry point is defined in the line (or in the rules
 of the line) for this type of terminal.</div></blockquote>
 </div>
-<div class="section" id="id147">
-<h3>Terminal type<a class="headerlink" href="#id147" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id151">
+<h3>Terminal type<a class="headerlink" href="#id151" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id148">
-<h3>Compression<a class="headerlink" href="#id148" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id152">
+<h3>Compression<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id149">
-<h3>Possible Calls<a class="headerlink" href="#id149" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id153">
+<h3>Possible Calls<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 3.</div></blockquote>
 </div>
-<div class="section" id="id150">
-<h3>Repeat<a class="headerlink" href="#id150" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id154">
+<h3>Repeat<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The number of terminals defined.</p>
 <p>An X25 GATE Non Fast-Connect line establishes a connection between
@@ -2570,59 +2570,59 @@ the VIRTCT.</p>
 <p><em>Definition of an X25 GATE non-Fast Connect line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id151">
-<h3>Remote ident<a class="headerlink" href="#id151" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id155">
+<h3>Remote ident<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Name of the MCH LU generated by NPSI.</div></blockquote>
 </div>
-<div class="section" id="id152">
-<h3>Local ident<a class="headerlink" href="#id152" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id156">
+<h3>Local ident<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id153">
-<h3>Prefix<a class="headerlink" href="#id153" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id157">
+<h3>Prefix<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below). The terminal names must be
 identical to the virtual circuit LU names generated by NPSI.</div></blockquote>
 </div>
-<div class="section" id="id154">
-<h3>Entry Point<a class="headerlink" href="#id154" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id158">
+<h3>Entry Point<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Not required for this type of line.</div></blockquote>
 </div>
-<div class="section" id="id155">
-<h3>Line type<a class="headerlink" href="#id155" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id159">
+<h3>Line type<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always GATE.</div></blockquote>
 </div>
-<div class="section" id="id156">
-<h3>Possible calls<a class="headerlink" href="#id156" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id160">
+<h3>Possible calls<a class="headerlink" href="#id160" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>No special restriction.</div></blockquote>
 </div>
-<div class="section" id="id157">
-<h3>Protocol<a class="headerlink" href="#id157" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id161">
+<h3>Protocol<a class="headerlink" href="#id161" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id158">
-<h3>Window<a class="headerlink" href="#id158" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id162">
+<h3>Window<a class="headerlink" href="#id162" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the NPSI definition.</div></blockquote>
 </div>
-<div class="section" id="id159">
-<h3>Packet<a class="headerlink" href="#id159" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id163">
+<h3>Packet<a class="headerlink" href="#id163" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the NPSI definition.</div></blockquote>
 </div>
-<div class="section" id="id160">
-<h3>Pad<a class="headerlink" href="#id160" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id164">
+<h3>Pad<a class="headerlink" href="#id164" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the NPSI definition.</div></blockquote>
 </div>
-<div class="section" id="id161">
-<h3>Tran<a class="headerlink" href="#id161" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id165">
+<h3>Tran<a class="headerlink" href="#id165" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Must agree with the NPSI definition.</p>
 <p>From VIRTEL version 4.15 onwards, TRAN must be blank if TRAN=EVEN is
@@ -2638,36 +2638,36 @@ statement.</p>
 <blockquote>
 <div><em>Terminals on an X25 GATE Non Fast-Connect line</em></div></blockquote>
 </div>
-<div class="section" id="id162">
-<h3>Terminal<a class="headerlink" href="#id162" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id166">
+<h3>Terminal<a class="headerlink" href="#id166" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the virtual circuit LU names generated
 by the X25.VC macro in the NPSI.</div></blockquote>
 </div>
-<div class="section" id="id163">
-<h3>Relay<a class="headerlink" href="#id163" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id167">
+<h3>Relay<a class="headerlink" href="#id167" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The application relay is a VTAM LU which represents the VIRTEL side
 of the session with NPSI for each virtual circuit. Relay LUs are
 defined in a VTAM application major node.</div></blockquote>
 </div>
-<div class="section" id="id164">
-<h3>Terminal type<a class="headerlink" href="#id164" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id168">
+<h3>Terminal type<a class="headerlink" href="#id168" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 1.</div></blockquote>
 </div>
-<div class="section" id="id165">
-<h3>Compression<a class="headerlink" href="#id165" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id169">
+<h3>Compression<a class="headerlink" href="#id169" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id166">
-<h3>Possible calls<a class="headerlink" href="#id166" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id170">
+<h3>Possible calls<a class="headerlink" href="#id170" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify 3 to allow both incoming and outgoing calls.</div></blockquote>
 </div>
-<div class="section" id="id167">
-<h3>Repeat<a class="headerlink" href="#id167" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id171">
+<h3>Repeat<a class="headerlink" href="#id171" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The number of virtual circuits defined by NPSI.</p>
 <p>Each Minitel or PC wishing to benefit from VIRTEL functionality must
@@ -2841,8 +2841,8 @@ subscription (usually 7).</div></blockquote>
 <blockquote>
 <div>Must equal MAXPKTL + 3 (usually 131).</div></blockquote>
 </div>
-<div class="section" id="id168">
-<h3>PAD<a class="headerlink" href="#id168" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id172">
+<h3>PAD<a class="headerlink" href="#id172" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Permissible values are NO, INTEG or TRANSP. If the value is INTEG,
 support for DARK (invisible fields) is not provided on Minitels in
@@ -2856,8 +2856,8 @@ value of the PAD parameter.</p>
 <blockquote>
 <div>Must be YES.</div></blockquote>
 </div>
-<div class="section" id="id169">
-<h3>TRAN<a class="headerlink" href="#id169" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id173">
+<h3>TRAN<a class="headerlink" href="#id173" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Must be EVEN or NO.</p>
 <p>Incoming calls are routed by means of an entry point name specified
@@ -2925,18 +2925,18 @@ parameters in the VIRTCT.</p>
 <p><em>Definition of an X25 GATE Fast Connect line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id170">
-<h3>Remote ident<a class="headerlink" href="#id170" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id174">
+<h3>Remote ident<a class="headerlink" href="#id174" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Name of the MCH LU generated by NPSI.</div></blockquote>
 </div>
-<div class="section" id="id171">
-<h3>Local ident<a class="headerlink" href="#id171" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id175">
+<h3>Local ident<a class="headerlink" href="#id175" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id172">
-<h3>Prefix<a class="headerlink" href="#id172" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id176">
+<h3>Prefix<a class="headerlink" href="#id176" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>An X25 GATE Fast-Connect line uses a single sub-group of terminals
 dedicated to the management of sessions between VIRTEL and the
@@ -2944,43 +2944,43 @@ switched virtual circuits on the one hand, and between VIRTEL and
 the host applications on the other hand. Each terminal is associated
 with an application relay defined by a VTAM APPL statement.</div></blockquote>
 </div>
-<div class="section" id="id173">
-<h3>Entry Point<a class="headerlink" href="#id173" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id177">
+<h3>Entry Point<a class="headerlink" href="#id177" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Not required for this type of line.</div></blockquote>
 </div>
-<div class="section" id="id174">
-<h3>Line type<a class="headerlink" href="#id174" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id178">
+<h3>Line type<a class="headerlink" href="#id178" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always FASTC.</div></blockquote>
 </div>
-<div class="section" id="id175">
-<h3>Possible calls<a class="headerlink" href="#id175" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id179">
+<h3>Possible calls<a class="headerlink" href="#id179" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>No special restriction.</div></blockquote>
 </div>
-<div class="section" id="id176">
-<h3>Protocol<a class="headerlink" href="#id176" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id180">
+<h3>Protocol<a class="headerlink" href="#id180" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id177">
-<h3>Window<a class="headerlink" href="#id177" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id181">
+<h3>Window<a class="headerlink" href="#id181" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the NPSI definition.</div></blockquote>
 </div>
-<div class="section" id="id178">
-<h3>Packet<a class="headerlink" href="#id178" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id182">
+<h3>Packet<a class="headerlink" href="#id182" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the NPSI definition.</div></blockquote>
 </div>
-<div class="section" id="id179">
-<h3>Pad<a class="headerlink" href="#id179" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id183">
+<h3>Pad<a class="headerlink" href="#id183" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the NPSI definition.</div></blockquote>
 </div>
-<div class="section" id="id180">
-<h3>Tran<a class="headerlink" href="#id180" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id184">
+<h3>Tran<a class="headerlink" href="#id184" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Must agree with the NPSI definition.</p>
 <p>An X25 GATE Fast-Connect line uses a single sub-group of terminals
@@ -3081,36 +3081,36 @@ with an application relay defined by a VTAM APPL statement.</p>
 <blockquote>
 <div><em>Terminals on an X25 GATE Fast-Connect line</em></div></blockquote>
 </div>
-<div class="section" id="id181">
-<h3>Terminal<a class="headerlink" href="#id181" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id185">
+<h3>Terminal<a class="headerlink" href="#id185" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The terminal name must match the virtual circuit LU names generated
 by the X25.VC macro in the NPSI.</div></blockquote>
 </div>
-<div class="section" id="id182">
-<h3>Relay<a class="headerlink" href="#id182" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id186">
+<h3>Relay<a class="headerlink" href="#id186" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The application relay is a VTAM LU which represents the VIRTEL side
 of the session with NPSI for each virtual circuit. Relay LUs are
 defined in a VTAM application major node.</div></blockquote>
 </div>
-<div class="section" id="id183">
-<h3>Terminal type<a class="headerlink" href="#id183" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id187">
+<h3>Terminal type<a class="headerlink" href="#id187" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 1.</div></blockquote>
 </div>
-<div class="section" id="id184">
-<h3>Compression<a class="headerlink" href="#id184" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id188">
+<h3>Compression<a class="headerlink" href="#id188" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always 2.</div></blockquote>
 </div>
-<div class="section" id="id185">
-<h3>Possible calls<a class="headerlink" href="#id185" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id189">
+<h3>Possible calls<a class="headerlink" href="#id189" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Specify 3 to allow both incoming and outgoing calls.</div></blockquote>
 </div>
-<div class="section" id="id186">
-<h3>Repeat<a class="headerlink" href="#id186" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id190">
+<h3>Repeat<a class="headerlink" href="#id190" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The number of virtual circuits defined by NPSI.</p>
 <p>Each Minitel or PC wishing to take advantage of VIRTEL functionality
@@ -3127,14 +3127,14 @@ well as the consumption of memory and CPU resources.</p>
 line, apart from:</p>
 </div></blockquote>
 </div>
-<div class="section" id="id187">
-<h3>CONNECT<a class="headerlink" href="#id187" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id191">
+<h3>CONNECT<a class="headerlink" href="#id191" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must have a value other than NO. The remaining parameters depend on
 the value of the CONNECT parameter.</div></blockquote>
 </div>
-<div class="section" id="id188">
-<h3>LLCLIST<a class="headerlink" href="#id188" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id192">
+<h3>LLCLIST<a class="headerlink" href="#id192" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Must contain the value LLC5.</p>
 <p>LUNAME=(XU01,XU02), LU associated with each VIRTEL* LCGDEF=(0,19),
@@ -3193,37 +3193,37 @@ emulates an IBM 3745 controller with NPSI.</p>
 <p><em>Definition of an X25 AntiGATE line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id189">
-<h3>Remote ident<a class="headerlink" href="#id189" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id193">
+<h3>Remote ident<a class="headerlink" href="#id193" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>LU name of the CTCP (CFT, Inter.PEL, etc). May be blank if
 WAIT-PARTNER is coded in the “Startup pre-requisite” field.</div></blockquote>
 </div>
-<div class="section" id="id190">
-<h3>Local ident<a class="headerlink" href="#id190" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id194">
+<h3>Local ident<a class="headerlink" href="#id194" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Name of the LU which represents the physical circuit for the
 AntiGATE line (analogous to the LU generated by the NPSI X25.MCH
 macro in the NCP). This LU must be defined by a VTAM APPL statement.</div></blockquote>
 </div>
-<div class="section" id="id191">
-<h3>Prefix<a class="headerlink" href="#id191" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id195">
+<h3>Prefix<a class="headerlink" href="#id195" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id192">
-<h3>Entry Point<a class="headerlink" href="#id192" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id196">
+<h3>Entry Point<a class="headerlink" href="#id196" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The default entry point, if no entry point is defined at the
 terminal level, or in the line rules or call user data.</div></blockquote>
 </div>
-<div class="section" id="id193">
-<h3>Line type<a class="headerlink" href="#id193" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id197">
+<h3>Line type<a class="headerlink" href="#id197" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always /GATE.</div></blockquote>
 </div>
-<div class="section" id="id194">
-<h3>Possible calls<a class="headerlink" href="#id194" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id198">
+<h3>Possible calls<a class="headerlink" href="#id198" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>No special restriction.</div></blockquote>
 </div>
@@ -3233,8 +3233,8 @@ terminal level, or in the line rules or call user data.</div></blockquote>
 <div>WAIT-PARTNER is recommended for AntiGATE lines. WAIT-PARTNER must be
 specified if the partner is CFT.</div></blockquote>
 </div>
-<div class="section" id="id195">
-<h3>Protocol<a class="headerlink" href="#id195" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id199">
+<h3>Protocol<a class="headerlink" href="#id199" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
@@ -3243,8 +3243,8 @@ specified if the partner is CFT.</div></blockquote>
 <blockquote>
 <div>Must agree with the definition in the CTCP.</div></blockquote>
 </div>
-<div class="section" id="id196">
-<h3>Pad, Tran<a class="headerlink" href="#id196" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id200">
+<h3>Pad, Tran<a class="headerlink" href="#id200" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Must agree with the definition in the CTCP.</p>
 <p>An AntiGATE line uses a single sub-group of terminals which
@@ -3264,20 +3264,20 @@ to the following example:</p>
 <p><em>VTAM definitions for an X25 AntiGATE line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id197">
-<h3>Note 1<a class="headerlink" href="#id197" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id201">
+<h3>Note 1<a class="headerlink" href="#id201" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The LU’s defined in the “Local ident” field of the line must specify
 logmode DLOGANTI.</div></blockquote>
 </div>
-<div class="section" id="id198">
-<h3>Note 2<a class="headerlink" href="#id198" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id202">
+<h3>Note 2<a class="headerlink" href="#id202" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The LU’s for the terminal relays can use a logmode appropriate for
 the application.</div></blockquote>
 </div>
-<div class="section" id="id199">
-<h3>Note 3<a class="headerlink" href="#id199" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id203">
+<h3>Note 3<a class="headerlink" href="#id203" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The MODVIRT phase must be placed in an executable library (VSE) or
 in a LOADLIB (MVS, VM) defined to VTAM before the application major
@@ -3293,56 +3293,56 @@ controller with NPSI.</p>
 <p><em>Definition of an X25 AntiFastC line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id200">
-<h3>Remote ident<a class="headerlink" href="#id200" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id204">
+<h3>Remote ident<a class="headerlink" href="#id204" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>CTCP LU name.</div></blockquote>
 </div>
-<div class="section" id="id201">
-<h3>Local ident<a class="headerlink" href="#id201" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id205">
+<h3>Local ident<a class="headerlink" href="#id205" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Name of the LU which represents the physical circuit for the
 AntiFastC line (analogous to the LU generated by the NPSI X25.MCH
 macro in the NCP). This LU must be defined by a VTAM APPL statement.</div></blockquote>
 </div>
-<div class="section" id="id202">
-<h3>Prefix<a class="headerlink" href="#id202" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id206">
+<h3>Prefix<a class="headerlink" href="#id206" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id203">
-<h3>Entry Point<a class="headerlink" href="#id203" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id207">
+<h3>Entry Point<a class="headerlink" href="#id207" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The default entry point, if no entry point is defined at the
 terminal level, or in the line rules or call user data.</div></blockquote>
 </div>
-<div class="section" id="id204">
-<h3>Line type<a class="headerlink" href="#id204" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id208">
+<h3>Line type<a class="headerlink" href="#id208" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always /FASTC.</div></blockquote>
 </div>
-<div class="section" id="id205">
-<h3>Possible calls<a class="headerlink" href="#id205" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id209">
+<h3>Possible calls<a class="headerlink" href="#id209" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>No special restriction.</div></blockquote>
 </div>
-<div class="section" id="id206">
-<h3>Protocol<a class="headerlink" href="#id206" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id210">
+<h3>Protocol<a class="headerlink" href="#id210" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id207">
-<h3>Window, Packet<a class="headerlink" href="#id207" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id211">
+<h3>Window, Packet<a class="headerlink" href="#id211" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the definition in the CTCP.</div></blockquote>
 </div>
-<div class="section" id="id208">
-<h3>Pad<a class="headerlink" href="#id208" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id212">
+<h3>Pad<a class="headerlink" href="#id212" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Must agree with the definition in the CTCP.</div></blockquote>
 </div>
-<div class="section" id="id209">
-<h3>Tran<a class="headerlink" href="#id209" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id213">
+<h3>Tran<a class="headerlink" href="#id213" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Specify EVEN, ODD, or NO according to the requirements of the CTCP.
 Additionally, for AntiFastC lines only: the special value EBCD
@@ -3437,20 +3437,20 @@ to the following example:</p>
 <p><em>VTAM definitions for an X25 AntiFastC line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id210">
-<h3>Note 1<a class="headerlink" href="#id210" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id214">
+<h3>Note 1<a class="headerlink" href="#id214" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The LU’s defined in the “Local ident” field of the line must specify
 logmode DLOGANTI.</div></blockquote>
 </div>
-<div class="section" id="id211">
-<h3>Note 2<a class="headerlink" href="#id211" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id215">
+<h3>Note 2<a class="headerlink" href="#id215" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The LU’s for the terminal relays can use a logmode appropriate for
 the application.</div></blockquote>
 </div>
-<div class="section" id="id212">
-<h3>Note 3<a class="headerlink" href="#id212" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id216">
+<h3>Note 3<a class="headerlink" href="#id216" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The MODVIRT phase must be placed in an executable library (VSE) or
 in a LOADLIB (MVS, VM) defined to VTAM before the application major
@@ -3467,49 +3467,49 @@ controller with NPSI.</p>
 <p><em>Definition of an X25 AntiPCNE line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id213">
-<h3>Remote ident<a class="headerlink" href="#id213" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id217">
+<h3>Remote ident<a class="headerlink" href="#id217" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Partner application LU name.</div></blockquote>
 </div>
-<div class="section" id="id214">
-<h3>Local ident<a class="headerlink" href="#id214" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id218">
+<h3>Local ident<a class="headerlink" href="#id218" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id215">
-<h3>Prefix<a class="headerlink" href="#id215" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id219">
+<h3>Prefix<a class="headerlink" href="#id219" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Terminal name prefix (see below).</div></blockquote>
 </div>
-<div class="section" id="id216">
-<h3>Entry Point<a class="headerlink" href="#id216" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id220">
+<h3>Entry Point<a class="headerlink" href="#id220" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Leave blank. The entry point should be defined in the rules of the
 line.</div></blockquote>
 </div>
-<div class="section" id="id217">
-<h3>Line type<a class="headerlink" href="#id217" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id221">
+<h3>Line type<a class="headerlink" href="#id221" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always /PCNE.</div></blockquote>
 </div>
-<div class="section" id="id218">
-<h3>Possible calls<a class="headerlink" href="#id218" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id222">
+<h3>Possible calls<a class="headerlink" href="#id222" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>No special restriction.</div></blockquote>
 </div>
-<div class="section" id="id219">
-<h3>Protocol<a class="headerlink" href="#id219" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id223">
+<h3>Protocol<a class="headerlink" href="#id223" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Always blank.</div></blockquote>
 </div>
-<div class="section" id="id220">
-<h3>Window<a class="headerlink" href="#id220" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id224">
+<h3>Window<a class="headerlink" href="#id224" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Not used for an AntiPCNE line.</div></blockquote>
 </div>
-<div class="section" id="id221">
-<h3>Packet<a class="headerlink" href="#id221" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id225">
+<h3>Packet<a class="headerlink" href="#id225" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>Not used for an AntiPCNE line.</div></blockquote>
 <p>Pad</p>
@@ -3517,8 +3517,8 @@ line.</div></blockquote>
 <blockquote>
 <div>Always NO.</div></blockquote>
 </div>
-<div class="section" id="id222">
-<h3>Tran<a class="headerlink" href="#id222" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id226">
+<h3>Tran<a class="headerlink" href="#id226" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Always NO.</p>
 <p>An AntiPCNE line uses two sub-groups of terminals. In each case, the
@@ -3718,13 +3718,13 @@ to the following example:</p>
 <p><em>VTAM definitions for an X25 AntiPCNE line</em></p>
 </div></blockquote>
 </div>
-<div class="section" id="id223">
-<h3>Note 1<a class="headerlink" href="#id223" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id227">
+<h3>Note 1<a class="headerlink" href="#id227" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div>The LU’s for the terminal relays must specify logmode DLOGPCNE.</div></blockquote>
 </div>
-<div class="section" id="id224">
-<h3>Note 2<a class="headerlink" href="#id224" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id228">
+<h3>Note 2<a class="headerlink" href="#id228" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The MODVIRT phase must be placed in an executable library (VSE) or
 in a LOADLIB (MVS, VM) defined to VTAM before the application major
@@ -3800,8 +3800,8 @@ Non Fast-Connect line” 76 applies here with the following addition:</p>
 </li>
 </ol>
 </div>
-<div class="section" id="id225">
-<h3>LLCLIST<a class="headerlink" href="#id225" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id229">
+<h3>LLCLIST<a class="headerlink" href="#id229" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>Must contain the value LLC5.</p>
 <p>VIRTEL call routing is performed by sets of interrelated
@@ -3918,8 +3918,8 @@ alphanumeric order of lines.</p>
 <div class="section" id="entry-points">
 <h2>4. Entry Points<a class="headerlink" href="#entry-points" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="id226">
-<h2>5. Transactions<a class="headerlink" href="#id226" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id230">
+<h2>5. Transactions<a class="headerlink" href="#id230" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="external-servers">
 <h2>6. External Servers<a class="headerlink" href="#external-servers" title="Permalink to this headline">¶</a></h2>

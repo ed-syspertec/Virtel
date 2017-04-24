@@ -402,7 +402,7 @@ LOGMSG=&#39;usstab=usloc00&#39;
 </div>
 <ol class="arabic" start="7">
 <li><p class="first">After the ARBO update, start VIRTEL and check out the new definitions. In the following example a new Line using port 41003 and entry point EDSHOST is created in order to separate general Virtel users from those who will be restricted to only applications supported by the USSTAB. The new Entry Points “TIOA at Logon” to redisplay the VTAM USS tab after a user exits an application. The Entry point is restricted to only three transactions.</p>
-<p><a class="reference internal" href="../../../_images/image125.png"><img alt="image0" src="../../../_images/image125.png" style="width: 5.31250in; height: 3.06060in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image126.png"><img alt="image0" src="../../../_images/image126.png" style="width: 5.31250in; height: 3.06060in;" /></a></p>
 </li>
 </ol>
 <p><em>Fig 1. - Line Entry</em></p>
@@ -412,7 +412,7 @@ LOGMSG=&#39;usstab=usloc00&#39;
 <p><em>Fig 2. - Terminql definitions</em></p>
 <p>The Entry Point definition looks like the following:-</p>
 <blockquote>
-<div><a class="reference internal" href="../../../_images/image314.png"><img alt="image2" src="../../../_images/image314.png" style="width: 5.29167in; height: 3.03219in;" /></a></div></blockquote>
+<div><a class="reference internal" href="../../../_images/image315.png"><img alt="image2" src="../../../_images/image315.png" style="width: 5.29167in; height: 3.03219in;" /></a></div></blockquote>
 <p><em>Fig 3. - Entry point definitions</em></p>
 <p>The transactions that are supported by this entry point are listed below:-</p>
 <blockquote>
@@ -424,14 +424,14 @@ LOGMSG=&#39;usstab=usloc00&#39;
 <p><em>Fig 5. - Entry Point Transaction</em></p>
 <p>The second transaction, EDS-03W, is a transaction the enables VIRTEL to access the W2H directory from this entry point. This is required so that web elements can be served from the W2H directory. For example the HTML page “w2h/WEB2AJAX.htm”</p>
 <blockquote>
-<div><a class="reference internal" href="../../../_images/image69.png"><img alt="image5" src="../../../_images/image69.png" style="width: 5.75000in; height: 3.92804in;" /></a></div></blockquote>
+<div><a class="reference internal" href="../../../_images/image610.png"><img alt="image5" src="../../../_images/image610.png" style="width: 5.75000in; height: 3.92804in;" /></a></div></blockquote>
 <p><em>Fig 6. - Directory Transaction for w2h</em></p>
 <blockquote>
 <div><p>The third and final transaction in our entry point list is the
 VTAMUSS transaction. It is this transaction that calls the VIR0021W
 utility which interrogates the VTAM USSTAB load module and display a
 similar page in HTML. The transaction definition looks like:-</p>
-<p><a class="reference internal" href="../../../_images/image77.png"><img alt="image6" src="../../../_images/image77.png" style="width: 5.45833in; height: 3.72093in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image78.png"><img alt="image6" src="../../../_images/image78.png" style="width: 5.45833in; height: 3.72093in;" /></a></p>
 </div></blockquote>
 <p><em>Fig 7. - VTAMUSS transaction</em></p>
 <p>..note:</p>
@@ -441,7 +441,7 @@ similar page in HTML. The transaction definition looks like:-</p>
 <ol class="arabic" start="8">
 <li><p class="first">From a browser access the VTAMUSS transaction. This can be from the VIRTEL Menu Screen or with a direct URL such as <a class="reference external" href="http://192.168.170.30:41003">http://192.168.170.30:41003</a>. By default the TIOA logon script associated with this entry point will call the VTAMUSS transaction which will then display the default USSTAB. This is just a sanity check to make sure that the VIR0021W module has been installed and is working correctly. See below for an example of the Virtel default USSTAB.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image87.png"><img alt="image7" src="../../../_images/image87.png" style="width: 5.67708in; height: 3.77382in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image88.png"><img alt="image7" src="../../../_images/image88.png" style="width: 5.67708in; height: 3.77382in;" /></a></p>
 </div></blockquote>
 </li>
 </ol>

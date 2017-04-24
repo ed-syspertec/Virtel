@@ -4,7 +4,7 @@ Miscellaneous
 How To Docs
 -----------
 .. toctree::
-   :maxdepth: 4   
+   :maxdepth: 1   
    :glob:
    
-   manuals/howto/AT_TLS/*   
+   manuals/howto/*/*   

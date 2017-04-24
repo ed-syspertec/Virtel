@@ -1,0 +1,616 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customising Virtel in V4.56 &mdash; Virtel 1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Protecting business assets" href="../TN201701/TN201701.html"/>
+        <link rel="prev" title="Nailing LUS with an Identification scenario" href="../TN201609/TN201609.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201602/TN201602.html">Installing Virtel V4.53 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201604/TN201604.html">Controlling LU Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201605/TN201605.html">CICS Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201606/TN201606.html">Virtel Screen Redesigner in action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56 (September 2016)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201608/TN201608.html">Installing Virtel V4.56 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Nailing LUS with an Identification scenario</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Customising Virtel in V4.56</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">Virtel</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+      
+    <li>Customising Virtel in V4.56</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/manuals/newsletters/TN201611/TN201611.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="customising-virtel-in-v4-56">
+<span id="tn201611"></span><h1>Customising Virtel in V4.56<a class="headerlink" href="#customising-virtel-in-v4-56" title="Permalink to this headline">¶</a></h1>
+<p>Virtel V4.56 introduces some enhancements to customisation. With Virtel
+4.56, customization is possible at an entry point level, effecting all
+transactions for that entry point, or a transaction level, effecting
+just one transaction. Previous customisation was at an entry level only.</p>
+<p>So what can be customized?</p>
+<p>As delivered, Virtel contains several web elements which can be
+customised to turn on/off features, introduce bespoke JavaScript code
+and customise presentation formats using modified CSS rules. This
+newsletter discusses how to implement a customised Virtel and how to
+maintain those customisations across Virtel upgrades. The main elements
+which a customer might wish to customize are the “VWA settings”,
+customer JavaScript functions, Help files, print style sheets, and CSS
+elements. The “VWA settings” element, the w2hparm.js file, is now the
+root file for Entry Point customised components.</p>
+<p>By default, w2hparm.js is retrieved from the directory allocated to the
+transaction XXX-03P. In the distributed version of Virtel this is
+W2H-03P and CLI-03P. Both of these transactions point to W2H-DIR and
+will load the w2hparm.js from that directory. If you wish to customise
+the settings and modify the default w2hparm you must change the
+“XXX-03P” transaction of your entry point to the custom directory. For
+example, to modify the “VWA Settings” for the default custom directory
+you would modify transaction CLI-03P to point to the CLI-DIR and upload
+the modified w2hparm.js to that directory. You can retrieve the default
+w2hparm.js file by entering the following URL:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">myCompanyVirtel</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">sources</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+<p><em>Customization at the Global level</em></p>
+<p>Customized components are now located in a Virtel “option” directory
+identified by the new pathname /option/. By default this pathname will
+point to the recommended customised directory CLI-DIR which is located
+in the HTMLTRSF VSAM file. The pathname /option/ associated with
+transaction XXX-03O is used to direct Virtel to the correct directory
+for the customized components.</p>
+<p>By default, the “VWA settings” component w2hparm.js element is shipped
+in the SAMPTRSF VSAM files is used as the default settings by all entry
+points. It is referenced by the W2H-03P and CLI-03P transaction for the
+pathname “/w2h/w2hparm-js”.</p>
+<p>The following shipped transactions are associated with the customisation
+settings support.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="11%" />
+<col width="29%" />
+<col width="15%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Entry Point</th>
+<th class="head">Transaction</th>
+<th class="head">Prefix</th>
+<th class="head">Default Directory</th>
+<th class="head">&#160;</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CLIWHOST</td>
+<td>CLI-03P</td>
+<td>Defines pointer to w2hparm.js
+through path /w2h/w2hparm-js.</td>
+<td>W2H-DIR</td>
+<td>Requires customization to direct
+search to user directory.</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>CLI-03CO</td>
+<td>Defines option directory
+using path /option/.</td>
+<td>CLI-DIR</td>
+<td>Directory containing customized
+components.</td>
+</tr>
+<tr class="row-even"><td>WEB2HOST</td>
+<td>W2H-03P</td>
+<td>Defines pointer to w2hparm.js
+through path /w2h/w2hparm.js.</td>
+<td>W2H-DIR</td>
+<td>Requires customization to direct
+search to a user directory.</td>
+</tr>
+<tr class="row-odd"><td>&#160;</td>
+<td>W2H-03CO</td>
+<td>Defines option directory
+using path /option/.</td>
+<td>CLI-DIR</td>
+<td>Directory containing customized
+components.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Table 1 – Virtel default transactions for customisation</em></p>
+<p>Any customised changes will be stored in the “customer directory” which
+by default is the CLI-DIR. The customised directory is associated with
+the HTMLTRSF VSAM file and as such will not be affected by a Virtel
+upgrade. Customers can setup their own customized directories but should
+ensure that they are associated with the HTMLTRSF file.</p>
+<p><em>Default “VWA settings”</em></p>
+<p>The default “VWA settings” shipped with Virtel in the W2H-DIR directory look like:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;settingsGUI&quot;</span><span class="p">:{</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;v2&quot;</span><span class="p">},</span>
+<span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;Droid Sans Mono&quot;</span><span class="p">,</span>
+<span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;home&quot;</span><span class="p">:</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span>
+<span class="s2">&quot;end&quot;</span><span class="p">:</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftins&quot;</span><span class="p">:</span><span class="s2">&quot;Dup&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shifthome&quot;</span><span class="p">:</span><span class="s2">&quot;FieldMark&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlins&quot;</span><span class="p">:</span><span class="s2">&quot;PA1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrldel&quot;</span><span class="p">:</span><span class="s2">&quot;PA2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgup&quot;</span><span class="p">:</span><span class="s2">&quot;PF7&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PF8&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pause&quot;</span><span class="p">:</span><span class="s2">&quot;CLEAR&quot;</span><span class="p">,</span>
+<span class="s2">&quot;style&quot;</span><span class="p">:</span><span class="s2">&quot;3270&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>The new keyword “global-settings” can be added to this file and will
+provide paths to customized components – Help, CSS, Print Style Sheets
+and JavaScript elements. Note the use of the /option/ pathname. This
+will direct Virtel to the correct directory containing the customized
+components.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/custCSS.global.css&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/myHelp.html&quot;</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+<p>Adding the global-settings attribute to the “VWA settings” file
+w2hparms.js provides the pointers to the customized components located
+within the “option” directory as identified by the /option/ pathname. In
+the sample above customised CSS, Javascript and Help element pointers
+are defined.</p>
+<p>When modifying the default w2hparm.js you must keep the customized
+version of w2hparm.js in the CLI-DIR directory. This will avoid it being
+overwritten during a Virtel release migration. Maintaining “customised”
+versions of w2hparm.js also requires that the transaction CLI-03P is
+modify to reflect that the customized w2hparm.js is now located in the
+CLI-DIR directory and not the default W2H-DIR. This means changing the
+transaction “Application field” from W2H-DIR to CLI-DIR.</p>
+<p>The following w2hparm.js has been modified and uploaded to the CLI-DIR.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;settingsGUI&quot;</span><span class="p">:{</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;v2&quot;</span><span class="p">},</span>
+<span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;Droid Sans Mono&quot;</span><span class="p">,</span>
+<span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;home&quot;</span><span class="p">:</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span>
+<span class="s2">&quot;end&quot;</span><span class="p">:</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftins&quot;</span><span class="p">:</span><span class="s2">&quot;Dup&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shifthome&quot;</span><span class="p">:</span><span class="s2">&quot;FieldMark&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlins&quot;</span><span class="p">:</span><span class="s2">&quot;PA1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrldel&quot;</span><span class="p">:</span><span class="s2">&quot;PA2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgup&quot;</span><span class="p">:</span><span class="s2">&quot;PF7&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PF8&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pause&quot;</span><span class="p">:</span><span class="s2">&quot;CLEAR&quot;</span><span class="p">,</span>
+<span class="s2">&quot;style&quot;</span><span class="p">:</span><span class="s2">&quot;3270&quot;</span><span class="p">,</span>
+<span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custCSS.global.css&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/myHelp.html&quot;</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>With these customized settings Virtel will look for customized
+JavaScript, CSS and HELP elements in the CLI-DIR sub-directory as
+identified by the /option/ pathname directory. These settings will apply
+to all transactions defined under the entry point whose VIRTEL
+transaction for the path “/w2h/w2hparm-js/” directs them to the customer
+VIRTEL directory, normally CLI-DIR. This can be overridden if the
+transaction has also a specific option. In this example the following
+customized elements have been uploaded to CLI-DIR:-</p>
+<p><em>custJS.global.js</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<span class="o">//</span><span class="n">Add</span> <span class="n">Print</span> <span class="n">Button</span> <span class="n">to</span> <span class="n">Toolbar</span><span class="o">.</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;../print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do_print</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">function</span> <span class="n">do_print</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">window</span><span class="o">.</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><em>custCSS.global.css</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>/*
+Customised CSS
+Change RED to BLUE with background GREY for CSS class .NRED1
+*/
+.NRED1 {background-color: grey;
+color: blue}
+</pre></div>
+</div>
+<p><em>myHelp.html</em></p>
+<p>Modified Virtel help.html template, created myHELP.html and uploaded to
+CLI-DIR. Changed Tile.</p>
+<p>When logging onto an application under CLIWHOST the results of the
+customised elements are displayed:-</p>
+<p><a class="reference internal" href="../../../_images/image140.png"><img alt="image0" src="../../../_images/image140.png" style="width: 3.91855in; height: 5.00347in;" /></a></p>
+<p>Figure 1 Customised Elements at a Global Line level.</p>
+<p><strong>Customising at the transaction level.</strong></p>
+<p>Using the Option field with in the VIRTE VWA transaction definition we
+can specify an identifier that we be used to associate customized
+elements against a transaction. In the following definition we have
+specified “test” as our option identifier for this transaction.</p>
+<p><a class="reference internal" href="../../../_images/image225.png"><img alt="image1" src="../../../_images/image225.png" style="width: 6.26806in; height: 2.95761in;" /></a></p>
+<p>Figure - Transaction display with option field</p>
+<p>Clicking the “tool” ICON to the right of the option field will the
+option dialogue panel. Here the css and JavaScript elements can be
+defined and validated. These elements will only be used when the CICS
+transaction is invoked. Note that the default names have been generated
+using the value from the option field. In this case the recommended
+element names are “../option/custCSS.test.css” and
+“../option/custJS.test.js”, however, the names are arbitrary and can be
+whatever the Virtel administrator considers appropriate for the
+customisation:-</p>
+<p><a class="reference internal" href="../../../_images/image322.png"><img alt="image2" src="../../../_images/image322.png" style="width: 6.06725in; height: 4.40625in;" /></a></p>
+<p>Figure - Options Panel in Basic mode</p>
+<p>Select the correct checkboxes for the desired customization in cases
+where only one customization is required and also, in case where no
+customization is required, not even the “entry point” settings, untick
+all boxes.</p>
+<p>Pressing the “Validate” button creates a stub option element called
+“option.test.js” and places it in the CLI-DIR directory. This stub
+element points to the customised JavaScript and CSS elements associated
+with the transaction. Having created the “stub” option element the
+associated JavaScript and CSS elements must be created and uploaded to
+the CLI directory. Here are the examples used:-</p>
+<p><em>custJS.test.js</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<span class="o">/*</span>
+<span class="o">*</span> <span class="n">User</span> <span class="n">Javascript</span> <span class="n">elements</span><span class="o">.</span> <span class="n">Dummy</span> <span class="n">entry</span>
+<span class="o">*/</span>
+</pre></div>
+</div>
+<p><em>custCSS.test.css</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<span class="n">Customised</span> <span class="n">CSS</span>
+<span class="n">Set</span> <span class="k">class</span> <span class="nc">NRED1</span> <span class="n">to</span> <span class="n">default</span> <span class="n">values</span> <span class="k">for</span> <span class="n">CICS</span> <span class="n">transactions</span><span class="o">.</span>
+<span class="o">*/</span>
+<span class="o">.</span><span class="n">NRED1</span> <span class="p">{</span><span class="n">background</span><span class="o">-</span><span class="n">color</span><span class="p">:</span> <span class="n">black</span><span class="p">;</span>
+<span class="n">color</span><span class="p">:</span> <span class="n">red</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Changing the w2hParm options for a transaction</strong></p>
+<p>If it is required to change some of the w2hparm options at a transaction
+level a “pathToW2hparm” setting must be specified in the “option.xxx.js”
+stub file. See the example below which is a modified stub file:-</p>
+<p><strong>option.test.js</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">option</span><span class="o">=</span><span class="n">test</span>
+<span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custCSS.test.css&quot;</span><span class="p">,</span><span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.test.js&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Selecting the “Basic tab” generates the stub element supporting the
+JavaScript and CSS components with the ““VWA settings” being taken from
+the /w2h/w2hparm-js/w2hparm.js member associated with the entry point.</p>
+<p>The addition of other customized settings (“VWA settings”, print style
+sheet, help) must be manually added to the option.xxx.js file. To
+download the “option.xxx.js” file click the “Advanced” tab in the
+options dialogue. A download option will be available where the option
+stub file can be downloaded. Once downloaded, it can be modified to add
+the “pathToW2hparm” setting to point to a option element that can
+override the default w2hparm settings. By default this file should be
+called w2hparm.xxx.js. The following example demonstrates how to
+override the default “Enter” key operation from “Newline” to “Enter”.</p>
+<p><strong>w2hparm.test.js</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<span class="o">/*</span>
+<span class="o">*</span> <span class="n">Override</span> <span class="n">default</span> <span class="n">w2hparm</span> <span class="n">values</span>
+<span class="o">*/</span>
+<span class="n">w2hparm</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Enter&quot;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>In the following example, the CICS transaction has been associated with
+the “test” option using the follow option stub file:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">option</span><span class="o">=</span><span class="n">test</span>
+<span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custCSS.test.css&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.test.js&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span><span class="s2">&quot;help.html&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.test.js&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../../_images/image418.png"><img alt="image3" src="../../../_images/image418.png" style="width: 6.26806in; height: 4.54444in;" /></a></p>
+<p>Figure - Implementing transaction customization</p>
+<p>The results of using these customized elements for this transaction is
+that:-</p>
+<ul class="simple">
+<li>The CSS rule has been modified to change the text to RED with a black
+background. This is the default setting for CSS class NRED1</li>
+<li>The tool bar has been reverted to the default. The Printer ICON is no
+longer present.</li>
+<li>The “Help” page defaults to the Virtel distributed “Help” template.</li>
+<li>The “Enter” key has been given a value of “Enter”. The default is
+“Newline”.</li>
+</ul>
+<p><strong>Compatibility mode</strong></p>
+<p>To maintain compatibility with previous versions of Virtel a
+compatibility option is available. To force pre Virtel 4.56 behaviour
+specify the following parameter in the TCT. This is known as
+“compatibility mode”</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span><span class="o">=</span><span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="n">where</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mf">4.</span>
+</pre></div>
+</div>
+<p>If you only want certain transactions to behave in “compatibility mode”
+specify “compatibility” in the option field of the transaction. In
+compatibility mode customised elements are maintained in the CLI
+directory. For example, to maintain a customised css file in
+“compatibility mode” the following operations are necessary:-</p>
+<p>Transaction CLI-03CC is modified to point to the CLI-DIR. The default
+was W2H-DIR.</p>
+<p>A custom.css file is uploaded to the CLI-DIR. If the TCT HTSETn option
+has been set then this customised file will have “Global” presence and
+will affect all transactions.</p>
+<p>An alternative to the TCT option is to define compatibility at the
+transaction level. If “compatibility” has been specified in the
+transaction “option” tag then only that transaction will be affected by
+the custom.css file. Other transactions will adhere to the new V4.56
+behaviour.</p>
+<p>Another alternative to the TCT option is to add/modify your existing
+w2hparm.js and place it in the custom VIRTEL directory, normally
+CLI-DIR. The following will provide the same behaviour as in previous
+versions of Virtel:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>var w2hparm = {
+..., /* Existing settings, if any */
+“&quot;global-settings&quot;:{
+      &quot;pathToJsCustom&quot;:&quot;../w2h/custom-js/custom.js&quot;,
+      &quot;pathToCssCustom&quot;:&quot;../w2h/custom-css/custom.css&quot;,
+      }
+};
+</pre></div>
+</div>
+<p><strong>Customising elements.</strong></p>
+<p>CSS (pathToCssCustom&nbsp;- key of oCustom)</p>
+<p>This module effects the presentation of web pages. The VIRTEL
+administrator can customize the color settings for all applications or
+for specific applications. The custom settings are defined in a style
+sheet called custom.css which the administrator uploads to a VIRTEL
+directory designated for storage of customer files (usually CLI-DIR).
+For more information see <em>Virtel Web Access User Guide, Chapter 1.12,
+Site Customization of Colors and Logo.</em></p>
+<p>JavaScript (pathToJsCustom&nbsp;- key of oCustom)</p>
+<p>To take into account site-specific JavaScript extensions for Web Access,
+the WEB2AJAX.htm page template loads a customized JavaScript file when a
+session is started. See <em>Virtel Web Access User Guide, Chapter 1.13,
+Site Customization of JavaScript functions.</em></p>
+<p>w2hparm (pathToW2hparm&nbsp;- key of oCustom)</p>
+<p>The VIRTEL Web Access user can use the Settings menu to modify certain
+options such as font size, 3270 key mappings, and color schemes. The
+user’s settings are stored in a browser local storage which remains
+valid so long as cookies are not deleted from the workstation. The
+settings stored in the user’s local storage override any other settings
+for VIRTEL Web Access stored in a w2hparm.js file. See “<em>Global
+modification of Web Access settings</em>”, in the <em>Virtel Web Access User
+Guide, chapter 1.7</em> for further details. The migration of w2hparm can
+come from several sources:- user local storage, transaction option, line
+option w2hparm.js (CLI or other), global option w2hparm.js (W2H).</p>
+<p>print style sheet (pathToPrintCss&nbsp;- key of oCustom)</p>
+<p>Customize the print style.</p>
+<p>help page (pathToHelp&nbsp;- key of oCustom)</p>
+<p>Customize the help page.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For compatibility mode empty custom.js and custom.css files are delivered with Virtel along with the relevant transactions.</p>
+</div>
+<p><strong>Custom directory CLI-DIR</strong></p>
+<p>It is strongly recommended that any customized elements are located in
+the CLI-DIR which is found in the HTMLTRSF file. Do not customize the
+W2H default modules in the W2H-DIR. These will be replaced during a
+migration of Virtel so any changes or updates will be lost.</p>
+<p><strong>Virtel Application menu</strong></p>
+<p>The Virtel application menu is a particular case of a template which
+depends on a VIRTEL transaction (“applist”) which might have an option
+field specified. For customized components applicably only to
+applications associated with the menu it is recommended that a specific
+option (e.g “appmenu”) is defined for this transaction. This will avoid
+JavaScript or CSS conflicts for applications not associated the Virtel
+application menu.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201701/TN201701.html" class="btn btn-neutral float-right" title="Protecting business assets" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201609/TN201609.html" class="btn btn-neutral" title="Nailing LUS with an Identification scenario" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
