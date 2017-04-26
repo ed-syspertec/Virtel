@@ -586,8 +586,8 @@ click:&amp;Rhttp://192.</p>
 the pool” on page 11.</p>
 <p>Leave the “Rule Set” and “Directory” fields blank</p>
 <p>Now press Enter. You should get the message “CREATION OK”</p>
-<p>See section “1.1.6 Correspondent management” in the <em>VIRTEL Web Access
-Guide</em> for a detailed description of how to define a correspondent.</p>
+<p>See section “1.1.6 Correspondent management” in the *VIRTEL Web Access
+Guide* for a detailed description of how to define a correspondent.</p>
 </div>
 <div class="section" id="delivering-the-cookie-via-e-mail">
 <h2>Delivering the cookie via e-mail<a class="headerlink" href="#delivering-the-cookie-via-e-mail" title="Permalink to this headline">¶</a></h2>
@@ -599,23 +599,17 @@ cookie to the user via the SMTP server.</p>
 then it is quite possible that it will fail if the configuration is not
 yet correct. If the e-mail does not arrive at the user’s workstation,
 then enter the following MVS command:</p>
-<p>F VIRTEL,TRACE,L=S-SMTP</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span>
+</pre></div>
+</div>
 <p>then press F4=Activate again to generate a trace of VIRTEL’s dialog with
 the SMTP server. The dialog is traced in the SYSPRINT dataset of the
 VIRTEL started task (use SDSF to see it). From this you should be able
 to see what the problem is. Common problems are:</p>
 <ul class="simple">
-<li>codepage problem (the e-mail address in the MAIL TO command should</li>
+<li>codepage problem (the e-mail address in the MAIL TO command should contain an &#64; sign. If it does not, then check that the COUNTRY parameter in the VIRTCT matches your host codepage)</li>
+<li>the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command, check that the userid and hostname specified in the “description” field of the S-SMTP line are values which are acceptable to your mailserver. You may need to liaise with the company’s e-mail administrator to agree on appropriate values.</li>
 </ul>
-<p>contain an &#64; sign. If it does not, then check that the COUNTRY parameter
-in the VIRTCT matches your host codepage)</p>
-<ul class="simple">
-<li>the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command,</li>
-</ul>
-<p>check that the userid and hostname specified in the “description” field
-of the S-SMTP line are values which are acceptable to your mailserver.
-You may need to liaise with the company’s e-mail administrator to agree
-on appropriate values.</p>
 </div>
 <div class="section" id="installing-the-cookie-on-the-browser">
 <h2>Installing the cookie on the browser<a class="headerlink" href="#installing-the-cookie-on-the-browser" title="Permalink to this headline">¶</a></h2>

@@ -16,7 +16,7 @@ pandoc foo.docx -o foo.rst --extract-media=images
 
 Use the build_howto bat files. Run from GitHub\Virtel directory.
 
-Warning - Take a backup of the DOCS directory before running. - Will destroy all of your modifications as directories are deleted.
+Warning - Take a backup of the DOCS directory before running. - Will destroy all of your modifications as directories are deleted. Once you are OK you can delete the backup docs. You can also recover from GITHUB.
 
 
 GitHub

@@ -604,8 +604,8 @@ Leave the “Rule Set” and “Directory” fields blank
 
 Now press Enter. You should get the message “CREATION OK”
 
-See section “1.1.6 Correspondent management” in the *VIRTEL Web Access
-Guide* for a detailed description of how to define a correspondent.
+See section “1.1.6 Correspondent management” in the \*VIRTEL Web Access
+Guide\* for a detailed description of how to define a correspondent.
 
 Delivering the cookie via e-mail
 --------------------------------
@@ -621,22 +621,18 @@ then it is quite possible that it will fail if the configuration is not
 yet correct. If the e-mail does not arrive at the user’s workstation,
 then enter the following MVS command:
 
-F VIRTEL,TRACE,L=S-SMTP
+::
+
+	F VIRTEL,TRACE,L=S-SMTP
 
 then press F4=Activate again to generate a trace of VIRTEL’s dialog with
 the SMTP server. The dialog is traced in the SYSPRINT dataset of the
 VIRTEL started task (use SDSF to see it). From this you should be able
 to see what the problem is. Common problems are:
 
-- codepage problem (the e-mail address in the MAIL TO command should
-contain an @ sign. If it does not, then check that the COUNTRY parameter
-in the VIRTCT matches your host codepage)
+- codepage problem (the e-mail address in the MAIL TO command should contain an \@ sign. If it does not, then check that the COUNTRY parameter in the VIRTCT matches your host codepage)
 
-- the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command,
-check that the userid and hostname specified in the “description” field
-of the S-SMTP line are values which are acceptable to your mailserver.
-You may need to liaise with the company’s e-mail administrator to agree
-on appropriate values.
+- the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command, check that the userid and hostname specified in the “description” field of the S-SMTP line are values which are acceptable to your mailserver. You may need to liaise with the company’s e-mail administrator to agree on appropriate values.
 
 Installing the cookie on the browser
 ------------------------------------

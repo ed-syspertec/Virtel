@@ -216,42 +216,25 @@ Cipher suite
 Bibliography
 ------------
 
--  ***SA22-7683-07 z/OS V1R7 Security Server: RACF Security
-   Administrator's Guide*** Chapter 21. RACF and Digital Certificates
+::
 
--  .. rubric:: *SC24-5901-04 z/OS V1R6 Cryptographic Services:* System
-      SSL Programming
-      :name: sc24-5901-04-zos-v1r6-cryptographic-services-system-ssl-programming
-
-    Chapter 12. Messages and Codes
-
--  .. rubric:: *SC31-8775-07 z/OS V1R7 Communications Server:* IP
-      Configuration Guide
-      :name: sc31-8775-07-zos-v1r7-communications-server-ip-configuration-guide
-
-    Chapter 14. Policy-based networking
-
-    Chapter 18. Application Transparent Transport Layer Security
-    (AT-TLS) data protection
-
--  .. rubric:: *SC31-8776-08 z/OS V1R7 Communications Server:* IP
-      Configuration Reference
-      :name: sc31-8776-08-zos-v1r7-communications-server-ip-configuration-reference
-
-    Chapter 21. Policy Agent and policy applications
-
--  .. rubric:: *GC31-8782-06 z/OS V1R7 Communications Server:* IP
-      Diagnosis Guide
-      :name: gc31-8782-06-zos-v1r7-communications-server-ip-diagnosis-guide
-
-    Chapter 28. Diagnosing Application Transparent Transport Layer
-    Security (AT-TLS)
-
--  .. rubric:: *SC31-8784-05 z/OS V1R7 Communications Server:* IP
-      Messages: Volume 2 (EZB, EZD)
-      :name: sc31-8784-05-zos-v1r7-communications-server-ip-messages-volume-2-ezb-ezd
-
-    Chapter 10. EZD1xxxx messages
+  -  SA22-7683-07 z/OS V1R7 Security Server: RACF Security Administrator's Guide 
+     Chapter 21. RACF and Digital Certificates
+ 
+  -  SC24-5901-04 z/OS V1R6 Cryptographic Services: System SSL Programming
+     Chapter 12. Messages and Codes
+ 
+  -  SC31-8775-07 z/OS V1R7 Communications Server: IP Configuration Guide
+     Chapter 14. Policy-based networking
+     Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection Configuration Reference
+     Chapter 21. Policy Agent and policy applications
+ 
+  -  GC31-8782-06 z/OS V1R7 Communications Server:* IP
+     Diagnosis Guide
+     Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)
+ 
+  -  SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD)
+     Chapter 10. EZD1xxxx messages
 
 .. |image0| image:: images/media/image1.png
    :width: 4.16534in
