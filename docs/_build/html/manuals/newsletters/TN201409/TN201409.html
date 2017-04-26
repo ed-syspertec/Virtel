@@ -199,7 +199,7 @@ printing and provides some guidance on how to implement them.</p>
 </div>
 <p>In the shipped sample definitions the LU Type 1 (RHTIM000) is associated with the relay terminal definition RHTVT000. To use LU T3 (3270 datastream) the RHTVT000 definition must be updated to associate the
 printer terminal RHTIP000 with RHTVT000.</p>
-<p><img alt="image1" src="../../../_images/image21.jpeg" /> <em>Fig. 2 - Example of Virtel terminal definitions.</em></p>
+<p><img alt="image1" src="../../../_images/image2.jpeg" /> <em>Fig. 2 - Example of Virtel terminal definitions.</em></p>
 <p>The virtual relay definitions that Virtel uses to support VTAM terminals and applications are defined in the VIRTAPPL VTAM definition. This can be found in the shipped VIRTEL.CNTL library. Here is an example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>VIRTAPPL VBUILD TYPE=APPL
 *  ------------------------------------------------------------------ *
@@ -385,7 +385,7 @@ REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 associated with a 3270 session. In this case we start a TSO session. We
 can see that the TSO 3270 screen REHVT000 is associated with printer
 REHIP000.</p>
-<p><img alt="image10" src="../../../_images/image112.png" /> <em>Fig. 11 - 3270 LU with relay printer REHIP000</em></p>
+<p><img alt="image10" src="../../../_images/image111.png" /> <em>Fig. 11 - 3270 LU with relay printer REHIP000</em></p>
 <p>Next, we allocate the queue file to our TSO session with an allocate command:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">ZAMVS1</span><span class="o">.</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
 </pre></div>

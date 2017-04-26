@@ -1,17 +1,13 @@
-.. _howToATLS:
+.. _#_howToATLS:
 
+=============
 How To - ATLS
 =============
+    
+1. How to activate VIRTEL https using AT-TLS on z/OS V1R7
+---------------------------------------------------------
 
-    \ |image0|
-
-    |image1|\ *VIRTEL*
-
-1. **How to activate VIRTEL https using AT-TLS on z/OS V1R7**
-
-   1. .. rubric:: Software pre-requisites
-         :name: software-pre-requisites
-
+**1.1 Software pre-requisites** 
     To provide secure HTTP (https) sessions to client browsers, VIRTEL
     uses the Application Transparent Transport Layer Security (AT-TLS)
     feature of z/OS Communication Server. AT-TLS is included with z/OS
@@ -25,20 +21,17 @@ How To - ATLS
     socket, but data sent over the network is protected by system SSL.
     The supported protocols are TLS, SSLv3, and SSLv2.
 
-1. .. rubric:: Installation steps
-      :name: installation-steps
+**1.2 Installation steps**
 
-   1. .. rubric:: Install Policy Agent procedure
-         :name: install-policy-agent-procedure
-
+*1.2.1 Install Policy Agent procedure*
+    
     If you do not already have the Communications Server Policy Agent
     (PAGENT) active in your z/OS system, copy the cataloged procedure
     EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as
     PAGENT.
 
-Create the Policy Agent configuration file
-------------------------------------------
-
+*1.2.2 Create the Policy Agent configuration file*
+    
     If you do not already run the Policy Agent, you will need to create
     a configuration file /etc/pagent.conf using z/OS Unix System
     Services. If you already run Policy Agent, you will need to find the
@@ -57,17 +50,14 @@ Create the Policy Agent configuration file
    parameter (SSLSETUP line 82) as we will not be using Client
    Certificates.
 
-   1. .. rubric:: Allow the Policy Agent to run during TCP/IP
-         initialization
-         :name: allow-the-policy-agent-to-run-during-tcpip-initialization
-
+*1.2.3 Allow the Policy Agent to run during TCP/IP initialization*
+    
     The Policy Agent must be given READ access to the resource
     EZB.INITSTACK.\* in RACF class SERVAUTH. See step EZBAUTH in the
     SSLSETUP sample job (delivered in VIRTEL SAMPLIB).
 
-Create the server certificate
------------------------------
-
+*1.2.4 Create the server certificate*
+    
     A server certificate for VIRTEL must be created, signed by a
     certificate authority, and stored in the RACF database. In the
     SSLSETUP sample job we create a signing certificate and use RACF
@@ -78,39 +68,36 @@ Create the server certificate
     At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to
     the VIRTEL host (for example, virtssl.syspertec.com)
 
-Add the certificate to the keyring
-----------------------------------
-
+*1.2.5 Add the certificate to the keyring*
+    
     The server certificate must be added to the VIRTRING keyring. See
     step CCERTIF in the SSLSETUP sample job.
 
-Allow VIRTEL to access its own certificate
-------------------------------------------
-
+*1.2.6 Allow VIRTEL to access its own certificate*
+    
     To allow VIRTEL to access its own keyring and server certificate,
     the VIRTEL started task must have READ access to the resource
     IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH
     in the SSLSETUP sample job.
 
-Activate AT-TLS
----------------
-
+*1.2.7 Activate AT-TLS*
+    
     To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
-    TCPCONFIG TTLS
+::
 
+    TCPCONFIG TTLS
+ 
     AUTOLOG 5 PAGENT ENDAUTOLOG
 
-    Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile
-    statement. The AUTOLOG statement will cause the PAGENT procedure to
-    be started automatically during TCP/IP initialization.
+Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile
+statement. The AUTOLOG statement will cause the PAGENT procedure to
+be started automatically during TCP/IP initialization.
 
-1. .. rubric:: Operations
-      :name: operations
+**1.3 Operations**
 
-   1. .. rubric:: Starting the Policy Agent
-         :name: starting-the-policy-agent
-
+*1.3.1 Starting the Policy Agent*
+    
     The AUTOLOG statement in the TCP/IP profile will start the PAGENT
     procedure automatically at TCP/IP initialization. Alternatively you
     can issue the MVS command S PAGENT.
@@ -125,9 +112,8 @@ Activate AT-TLS
     ignore the messages (they will go away once PAGENT has started), or
     ensure that PAGENT starts before all other applications.
 
-Altering the Policy Agent configuration
----------------------------------------
-
+*1.3.2 Altering the Policy Agent configuration*
+    
     To make changes to the Policy Agent configuration file, either edit
     and resubmit the PCONFIG step of the SSLSETUP sample job, or use the
     TSO ISHELL command to edit the file /etc/pagent.conf directly from
@@ -136,27 +122,24 @@ Altering the Policy Agent configuration
     After you make changes to the Policy Agent configuration, use the
     MVS command F PAGENT,REFRESH to force PAGENT to reread the file.
 
-Logon to VIRTEL using secure session
-------------------------------------
-
+*1.3.3 Logon to VIRTEL using secure session*
+    
     To access VIRTEL line C-HTTP you must now use URL
-    *https://n.n.n.n:41002* instead of *http://n.n.n.n:41002* (where
 
-    n.n.n.n is the IP address of the z/OS host running VIRTEL).
+    *https://n.n.n.n:41002* instead of *http://n.n.n.n:41002* 
 
-1. .. rubric:: Problem determination
-      :name: problem-determination
+    (where n.n.n.n is the IP address of the z/OS host running VIRTEL).
 
-   1. .. rubric:: Policy Agent log file
-         :name: policy-agent-log-file
+**1.4 Problem determination**
 
+*1.4.1 Policy Agent log file*
+    
     Policy Agent startup messages are written to the /tmp/pagent.log
     file of z/OS Unix System Services. You can use the TSO ISHELL
     command to browse this file from ISPF.
 
-Common error messages
----------------------
-
+*1.4.2 Common error messages*
+    
     Error messages relating to session setup are written to the MVS
     SYSLOG. The most common error message is:
 
@@ -168,9 +151,9 @@ Common error messages
     and are defined in the IP Diagnosis Guide. Some commonly encountered
     return codes are:
 
-7. No certificate
+    7   No certificate
 
-8. Certificate not trusted
+    8   Certificate not trusted
 
     109 No certification authority certificates
 
@@ -190,9 +173,8 @@ Common error messages
 
     5003 Browser sent clear text (http instead of https)
 
-Cipher suite
-------------
-
+*1.4.3 Cipher suite*
+    
     The client and server cipher specifications must contain at least
     one value in common. The TTLSEnvironmentAdvancedParms parameter of
     the Policy Agent configuration file allows you to turn on or off the
@@ -213,8 +195,21 @@ Cipher suite
     enabled. By default, all weak encryption cipher suites are disabled,
     and 128-bit or higher cipher suites are enabled.
 
-Bibliography
-------------
+**1.5 Client certificates**
+
+*Extracting the userid from a client certificate*
+
+Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-
+
+- The HTTP session is secured using AT-TLS. URL = https://....
+- The Policy Agent TTLSConnectionAction or TTLSEnvironmentAction statement contains the parameter "HandShakeRole ServerWithClientAuth"
+- The client has provided a valid certificate.
+- The security subsystem has validate the certificate as belonging to a user.
+- The Virtel transaction has Security = 3 defined.
+
+If these conditions are met then the userid contained within the clients digital certificate can be extracted by Virtel and used in the signon process. In this process it is normal that a PASS Ticket is generated and associated with the extracted userid.
+
+**1.6 Bibliography**
 
 ::
 
@@ -229,16 +224,16 @@ Bibliography
      Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection Configuration Reference
      Chapter 21. Policy Agent and policy applications
  
-  -  GC31-8782-06 z/OS V1R7 Communications Server:* IP
-     Diagnosis Guide
+  -  GC31-8782-06 z/OS V1R7 Communications Server:* IP Diagnosis Guide
      Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)
  
   -  SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD)
      Chapter 10. EZD1xxxx messages
 
-.. |image0| image:: images/media/image1.png
-   :width: 4.16534in
-   :height: 0.80000in
-.. |image1| image:: images/media/image2.jpeg
-   :width: 1.48500in
-   :height: 1.08667in
+**1.7 Related Material**
+
+- :ref:`Pass tickets and supporting Proxy Servers – CA-SiteMinder© & IBM Tivoli WebSeal© <#_tn201407>`
+- :ref:`Virtel TLS/SSL Security: Signing on using server and client certificates <#_tn201416>`    
+
+.. |image00| image:: images/media/logo_virtel_web.png
+            :scale: 50 % 

@@ -337,7 +337,7 @@ script. Function keys may now be specified as &amp;*key. For example :-</p>
 <p><strong>Q2</strong></p>
 <p>I’ve just installed Virtel but when I try to execute the Admin (HTML) from the W2H Administration Portal I get the message <em>“The version of scenario of your scenario ‘ADMINVWM’ is “.” ‘20151215 is
 required</em>.” My W2H session is then terminated.</p>
-<p><a class="reference internal" href="../../../_images/image138.png"><img alt="image0" src="../../../_images/image138.png" style="width: 6.55251in; height: 3.13542in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image137.png"><img alt="image0" src="../../../_images/image137.png" style="width: 6.55251in; height: 3.13542in;" /></a></p>
 <p>Figure 1 Error message when accessing Admin (HTML)</p>
 <p><em>Solution</em></p>
 <p>You will need to change the W2H entry point, WEB2HOST, to specify a directory to search when loading scenarios. By default, scenarios are loaded from the VIRTEL LOADLIB. For W2H they need to come from the scenario SCE-DIR. Load up the Admin portal and select Admin (3270). Navigate to the WEB2HOST entry and display the entry using PF12. Modify the “Directory for scenarios” field to SCE-DIR. The display should look

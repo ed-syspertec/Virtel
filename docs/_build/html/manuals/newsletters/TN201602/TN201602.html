@@ -307,7 +307,7 @@ opened sessions to ports 41001 and 41002. Issue the following command:-</p>
 <ol class="arabic">
 <li><p class="first">The following screen image should appear:-</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image128.png"><img alt="image0" src="../../../_images/image128.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image127.png"><img alt="image0" src="../../../_images/image127.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Select Drag and Drop Upload and login with your credentials. The Drag and Drop Interface will be displayed.</p>
@@ -672,7 +672,7 @@ other relay name REHIM00, which was also activated as part of this session set u
 <p>In my case, I stop Virtel, add some new ARBO transaction definition to CICS systems that I know have the Virtel relay definitions defined. I start up VIRTEL and access the APPMENU with URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a></p>
 <p><a class="reference internal" href="../../../_images/image1111.png"><img alt="image10" src="../../../_images/image1111.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
 <p>I select CICSH and hopefully can logon; yes indeed I can. In fact I can open another browser window and logon to TSO1A.</p>
-<p><a class="reference internal" href="../../../_images/image129.png"><img alt="image11" src="../../../_images/image129.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image128.png"><img alt="image11" src="../../../_images/image128.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
 <p>So now my browser is acting like a session manager with each tab representing a different session. Two to the mainframe, CICS and TSO, and one Virtel APPMENU display. Using Virtel in place of a session manager is worth considering as it provides you with similar functionality as a session manager but at no cost.</p>
 <p>Note: As I have mentioned the ARBO VSAM file contains all the configuration data. This is upload through an ARBO load job which reads in a configuration data set. The ARBO program has some peculiarities in that if you specify PARM option of NOREPL than it will not replace any configurations elements it already finds and returns with a condition
 code 0. That’s all well and good but if your trying to update the ARBO and replace elements that’s not so good. You’ll think the ARBO has been updated when in fact it hasn’t. To replace elements change the NOREPL to REPL. NOREPL is also a default so add REPL into the PARM if it is not already there.</p>
