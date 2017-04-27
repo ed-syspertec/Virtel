@@ -173,6 +173,8 @@ be started automatically during TCP/IP initialization.
 
     5003 Browser sent clear text (http instead of https)
 
+    5006 SSL failed to initialize. Check job SSLSETUP.
+
 *1.4.3 Cipher suite*
     
     The client and server cipher specifications must contain at least
@@ -197,7 +199,7 @@ be started automatically during TCP/IP initialization.
 
 **1.5 Client certificates**
 
-*Extracting the userid from a client certificate*
+*1.5.1 Extracting the userid from a client certificate*
 
 Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-
 
@@ -209,7 +211,66 @@ Virtel can extract the userid of a user from a client certificate presented to V
 
 If these conditions are met then the userid contained within the clients digital certificate can be extracted by Virtel and used in the signon process. In this process it is normal that a PASS Ticket is generated and associated with the extracted userid.
 
-**1.6 Bibliography**
+*1.5.2 Example members*
+
+See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT-TLS and client certificates.
+
+**1.6 Virtel AT-TLS Problem determination**
+
+Virtel or AT-TLS can issue error messages if the environment has not been correctly setup. The following offers some guide lines on what to check for if secured sessions are not working.
+
+*1.6.1 Debugging AT-TLS*
+
+VIRHT57E LINE IS NOT SET UP FOR HTTPS means that the browser sent an https request, but it has not been decrypted by AT-TLS before being sent to VIRTEL, and VIRTEL has received the message in encrypted format. Normally this means the AT-TLS rules did not match the incoming request.
+
+EZD1287I TTLS Error RC: 5003 is the opposite situation. It means that the AT-TLS rules matched the incoming request, and so AT-TLS was expecting to receive an https request, but it received an http request instead.
+
+Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate.
+In the normal case, you should specify HandshakeRole Server, ClientAuthType Full, and ApplicationControlled Off in the AT-TLS rules, as in the example in VIRT447.SAMPLIB(SSLSETUP).
+
+VIRTEL does not issue an IOCTL to turn decryption on and off, so if you specified ApplicationControlled On then you would get VIRHT57E because AT-TLS has not been instructed to start decryption.
+
+If you still get an error when you have ApplicationControlled Off then we will need to see the SYSLOG (for the EZD TTLS messages), the JESMSGLG from the VIRTEL started task, and the SYSPRINT resulting from a z/OS command F VIRTEL,SNAP immediately after the error occurs. We would also like to see the exact URL which was entered at the browser, as well as the AT-TLS pagent.conf file.
+
+*1.6.2 Verifying AT-TLS is active*
+
+To verify that AT-TLS is still activated, you can submit this MVS command:
+
+::
+
+    D TCPIP,,N,TTLS
+
+The response is:
+
+::
+
+    EZD0101I NETSTAT CS V1R12 TCPIP 378 TTLSGRPACTION GROUP ID CONNS VIRTELGROUP 00000002 0 1 OF 1 RECORDS DISPLAYED END OF THE REPORT
+
+The UNIX command 
+
+::
+
+    pasearch
+
+displays the parameters used by PAGENT from /etc/pagent.conf
+
+The TSO command:- 
+
+::
+
+    netstat conn
+
+displays active connexions for the VIRTEL STC.
+
+Once a connexion has been established between a client and a Virtel port, the TSO command:-
+
+::
+
+ netstat ttls conn nnnn detail 
+
+where nnnn is the identification of the connexion will display the AT-TLS parameters used in the Virtel connexion.
+
+**1.7 Bibliography**
 
 ::
 
@@ -230,7 +291,7 @@ If these conditions are met then the userid contained within the clients digital
   -  SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD)
      Chapter 10. EZD1xxxx messages
 
-**1.7 Related Material**
+**1.8 Related Material**
 
 - :ref:`Pass tickets and supporting Proxy Servers – CA-SiteMinder© & IBM Tivoli WebSeal© <#_tn201407>`
 - :ref:`Virtel TLS/SSL Security: Signing on using server and client certificates <#_tn201416>`    
