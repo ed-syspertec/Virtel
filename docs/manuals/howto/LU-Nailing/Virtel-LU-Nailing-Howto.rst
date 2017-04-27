@@ -1,22 +1,22 @@
-.. _howToNailing:
+.. _#_howToNailing:
 
-How To - LU Nailing
-===================
+=======================
+How To - Virtel Nailing
+=======================
 
-|image0|
+How to activate VIRTEL LU nailing
+---------------------------------
 
-|image1|
+VIRTEL Version 4.53
 
-    ***How to activate VIRTEL LU nailing***
+Roger Bowler, Syspertec Communication, 2010
 
-    VIRTEL Version 4.53
+Ed Holt, Syspertec Communication, 2016
 
-    Roger Bowler, Syspertec Communication
+1 Introduction
+--------------
 
-    21 March 2016
-
-Introduction
-------------
+**1.1 Description**
 
 This document describes procedures for assigning fixed LU names to
 specific users in VIRTEL Web Access. This is known as *LU nailing.*
@@ -28,16 +28,14 @@ attempt to define LU nailing with cookies until you have got the basic
 VIRTEL Web Access functions working and demonstrated to your
 satisfaction.
 
-What is VIRTEL Web Access?
---------------------------
+**1.2 What is VIRTEL Web Access?**
 
 VIRTEL Web Access is a software product which enables users to access
 mainframe 3270 applications from a standard web browser, without
 intermediate servers, without Java, and without installing any
 additional software on the workstation.
 
-What is LU nailing?
--------------------
+**1.3 What is LU nailing?**
 
 When a user connects to a 3270 application through VIRTEL Web Access,
 VIRTEL makes it appear to the application as if the user is connecting
@@ -55,8 +53,7 @@ user based upon the LU name of the user’s terminal. LU nailing allows
 VIRTEL to assign a particular LU name to a user based upon the user’s IP
 address or upon a cookie presented by the user’s browser.
 
-What are the different types of LU nailing?
--------------------------------------------
+**1.4 What are the different types of LU nailing?**
 
 This document describes the following types of LU nailing:
 
@@ -68,8 +65,10 @@ This document describes the following types of LU nailing:
 
 -  LU nailing by URL
 
-How to activate LU nailing by IP address
-----------------------------------------
+2 How to activate LU nailing by IP address
+------------------------------------------
+
+**2.1 Description**
 
 This chapter describes the procedure for setting up a VIRTEL
 configuration which will map specific IP addresses to predefined LU
@@ -82,15 +81,14 @@ shows how to map individual IP addresses to specified LU names. The
 second example shows how to map a range of IP addresses to a pool of LU
 names.
 
-Mapping individual IP addresses to LU names
--------------------------------------------
+**2.2 Mapping individual IP addresses to LU names**
 
 In this example we will choose three IP addresses and map each one to a
 specific LU name, as shown in the table below:
 
 +------------------+---------------+
 | **IP address**   | **LU name**   |
-+------------------+---------------+
++==================+===============+
 | 192.168.0.39     | RHTVT001      |
 +------------------+---------------+
 | 192.168.0.147    | RHTVT002      |
@@ -107,68 +105,17 @@ from the VIRTEL Web Access menu. Then select F1=Lines. Put the cursor on
 W-HTTP and press F12 to see the LINE DETAIL DEFINITION panel, then F5 to
 see the rules associated with the line:
 
-LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRBW
-14:18:20
+|image21|
 
-Name Status Description Entry
-
-Point
-
-WHT00100 ACTIVE HTTP access (users authorised by cookie) $COOKIE$
-
-WHT00200 ACTIVE HTTP access (other users) WEB2HOST
-
-P1=Update P2=Suppress P3=Return
-
-P6=1st page P7=Page-1 P8=Page+1 P12=Edit
-
-Figure ‎2‑1 List of rules for W-HTTP line
+*Figure ‎2.1 List of rules for W-HTTP line*
 
 Place the cursor on WHT00200 and press F12 to add a new rule. We will
 add one new rule for each IP-LU mapping. Here is what you need to enter
 to create the first rule:
 
-DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW
-14:30:38
+|image22|
 
-Name ===> WHT00110 Rule priority is per name
-
-Status ===> ACTIVE 15 Feb 2010 14:30:35 SPTBOWL
-
-Description ===> HTTP access from IP 192.168.0.39
-
-Entry point ===> WEB2HOST Target Entry Point
-
-Parameter ===> RHTVT001 &1 value or LUNAME
-
-Trace ===> 1=commands 2=data 3=partner
-
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES
-NOT
-
-1 IP Subnet ===> 192.168.000.039 Mask ===> 255.255.255.255
-
-0 Host ===>
-
-0 eMail ===>
-
-0 Calling DTE ===> Calling DTE address or proxy
-
-0 Called ===> Called DTE address
-
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-
-0 User Data ===>
-
-0 Days ===> M: T: W: T: F: S: S:
-
-0 Start time ===> H: M: S: End time ===> H: M: S:
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Inactivate P12=Entry P.
-
-Figure ‎2‑2 Rule to map IP address 192.168.0.39 to LU RHTVT001
+*Figure ‎2.2 Rule to map IP address 192.168.0.39 to LU RHTVT001*
 
 You must choose a unique name for the rule. Here we have chosen
 WHT00110, to fit in with the names delivered in the sample
@@ -199,128 +146,32 @@ Now press ENTER to add the rule, then F4 to activate it.
 
 Next repeat the process to add the second rule:
 
-DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW
-15:58:04
+|image23|
 
-Name ===> WHT00120 Rule priority is per name
-
-Status ===> ACTIVE 15 Feb 2010 15:58:03 SPTBOWL
-
-Description ===> HTTP access from IP 192.168.0.147
-
-Entry point ===> WEB2HOST Target Entry Point
-
-Parameter ===> RHTVT002 &1 value or LUNAME
-
-Trace ===> 1=commands 2=data 3=partner
-
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES
-NOT
-
-1 IP Subnet ===> 192.168.000.147 Mask ===> 255.255.255.255
-
-0 Host ===>
-
-0 eMail ===>
-
-0 Calling DTE ===> Calling DTE address or proxy
-
-0 Called ===> Called DTE address
-
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-
-0 User Data ===>
-
-0 Days ===> M: T: W: T: F: S: S:
-
-0 Start time ===> H: M: S: End time ===> H: M: S:
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Inactivate P12=Entry P.
-
-Figure ‎2‑3 Rule to map IP address 192.168.0.147 to LU RHTVT002
+*Figure ‎2.3 Rule to map IP address 192.168.0.147 to LU RHTVT002*
 
 Press ENTER to add the rule and F4 to activate it.
 
 Then the same for the third rule:
 
-DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW
-16:00:45
+|image24|
 
-Name ===> WHT00130 Rule priority is per name
-
-Status ===> ACTIVE 15 Feb 2010 16:00:20 SPTBOWL
-
-Description ===> HTTP access from IP 192.168.0.45
-
-Entry point ===> WEB2HOST Target Entry Point
-
-Parameter ===> RHTVT003 &1 value or LUNAME
-
-Trace ===> 1=commands 2=data 3=partner
-
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES
-NOT
-
-1 IP Subnet ===> 192.168.000.045 Mask ===> 255.255.255.255
-
-0 Host ===>
-
-0 eMail ===>
-
-0 Calling DTE ===> Calling DTE address or proxy
-
-0 Called ===> Called DTE address
-
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-
-0 User Data ===>
-
-0 Days ===> M: T: W: T: F: S: S:
-
-0 Start time ===> H: M: S: End time ===> H: M: S:
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Inactivate P12=Entry P.
-
-Figure ‎2‑4 Rule to map IP address 192.168.0.45 to LU RHTVT003
+*Figure ‎2.4 Rule to map IP address 192.168.0.45 to LU RHTVT003*
 
 Again press ENTER to add the rule and F4 to activate it.
 
 Finally press F3 to go back to the list of rules for the W-HTTP line,
 which should now look like this:
 
-LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRBW
-16:02:33
+|image25|
 
-Name Status Description Entry
-
-Point
-
-WHT00100 ACTIVE HTTP access (users authorised by cookie) $COOKIE$
-
-WHT00110 ACTIVE HTTP access from IP 192.168.0.39 WEB2HOST
-
-WHT00120 ACTIVE HTTP access from IP 192.168.0.147 WEB2HOST
-
-WHT00130 ACTIVE HTTP access from IP 192.168.0.45 WEB2HOST
-
-WHT00200 ACTIVE HTTP access (other users) WEB2HOST
-
-P1=Update P2=Suppress P3=Return
-
-P6=1st page P7=Page-1 P8=Page+1 P12=Edit
-
-Figure ‎2‑5 Updated list of rules for W-HTTP line
+*Figure ‎2.5 Updated list of rules for W-HTTP line*
 
 Now, for example, when you connect to a host application via VIRTEL port
 41001 from a browser at address 192.168.0.147, you will get LU name
 RHTVT002.
 
-Mapping a range of IP addresses to a pool of LU names
------------------------------------------------------
+**2.3 Mapping a range of IP addresses to a pool of LU names**
 
 The second example shows how to map a range of IP addresses to a pool of
 LU names. We will add an additional rule which will ensure that all
@@ -330,54 +181,16 @@ table below:
 
 +-------------------+---------------+
 | **IP address**    | **LU name**   |
-+-------------------+---------------+
++===================+===============+
 | 192.168.100.nnn   | RHTVT1xx      |
 +-------------------+---------------+
 
 To set up this mapping we will add another rule, using the same
 procedure as described in the previous section. The rule is shown below:
 
-DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW
-17:53:56
+|image26|
 
-Name ===> WHT00140 Rule priority is per name
-
-Status ===> ACTIVE 15 Feb 2010 17:53:49 SPTBOWL
-
-Description ===> HTTP access from IP 192.168.100.nnn
-
-Entry point ===> WEB2HOST Target Entry Point
-
-Parameter ===> RHTVT1\* &1 value or LUNAME
-
-Trace ===> 1=commands 2=data 3=partner
-
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES
-NOT
-
-1 IP Subnet ===> 192.168.100.000 Mask ===> 255.255.255.000
-
-0 Host ===>
-
-0 eMail ===>
-
-0 Calling DTE ===> Calling DTE address or proxy
-
-0 Called ===> Called DTE address
-
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-
-0 User Data ===>
-
-0 Days ===> M: T: W: T: F: S: S:
-
-0 Start time ===> H: M: S: End time ===> H: M: S:
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Inactivate P12=Entry P.
-
-Figure ‎2‑6 Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx
+*Figure ‎2.6 Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx*
 
 The new rule is named WHT00140, the “IP Subnet” field specifies the IP
 address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to
@@ -392,8 +205,7 @@ the pool” on page 11.
 
 Press ENTER to add the rule, then F4 to activate it.
 
-The default rule
-----------------
+**2.4 The default rule**
 
 You will notice that there is a default “catch-all” rule WHT00200 (other
 users) which will be taken for any IP address which is not matched by
@@ -404,8 +216,10 @@ issue an error message and close the connection. Optionally, you could
 change this rule so that it goes to an entry point which displays a
 panel with an appropriate message such as “Access not authorized”.
 
-How to activate LU nailing with cookies delivered by e-mail
------------------------------------------------------------
+3 How to activate LU nailing with cookies delivered by e-mail
+-------------------------------------------------------------
+
+**3.1 Description**
 
 This chapter describes the procedure for setting up LU nailing with
 cookies delivered by e-mail. The procedure consists of defining a user,
@@ -416,8 +230,7 @@ Access, VIRTEL recognizes the security code contained in the cookie and
 assigns the designated LU name to the user during communication with the
 application.
 
-Setting up the SMTP line
-------------------------
+**3.2 Setting up the SMTP line**
 
 In VIRTEL terms, a user identified by cookie is known as a
 “correspondent”. The cookie is initially delivered to the correspondent
@@ -445,12 +258,13 @@ Press F1 to save the updated line definition. Then stop and start the
 
 SMTP line using these MVS commands:
 
-F VIRTEL,LINE=S-SMTP,P
+::
 
-F VIRTEL,LINE=S-SMTP,S
+	F VIRTEL,LINE=S-SMTP,P
+ 
+	F VIRTEL,LINE=S-SMTP,S
 
-Setting up the rules for LU nailing with cookies
-------------------------------------------------
+**3.3 Setting up the rules for LU nailing with cookies**
 
 A set of “rules” attached to the VIRTEL HTTP line determines how VIRTEL
 processes incoming requests. To see the rules attached to an HTTP line,
@@ -458,22 +272,9 @@ go to the VIRTEL Configuration Menu and press F1=Lines, then put the
 cursor on the name of the line and press F5=Rules. The list of rules
 attached to the W-HTTP line (port 41001) is shown below:
 
-LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRBW
-16:09:42
+|image31|
 
-Name Status Description Entry
-
-Point
-
-WHT00100 ACTIVE HTTP access (users with LU nailing by cookie) WEB2HOST
-
-WHT00200 ACTIVE HTTP access (other users) WEB2HOST
-
-P1=Update P2=Suppress P3=Return
-
-P6=1st page P7=Page-1 P8=Page+1 P12=Edit
-
-Figure ‎3‑1 Rules for line W-HTTP
+*Figure ‎3.1 Rules for line W-HTTP*
 
 Normally all requests are processed by a default “catch-all” rule. For
 the W-HTTP line the default rule is named WHT00200. This default rule
@@ -486,47 +287,9 @@ user’s correspondent record.
 
 The rule for LU nailing is shown below:
 
-DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW
-16:16:30
+|image32|
 
-Name ===> WHT00100 Rule priority is per name
-
-Status ===> ACTIVE 18 Feb 2010 16:09:40 SPTBOWL
-
-Description ===> HTTP access (users with LU nailing by cookie)
-
-Entry point ===> WEB2HOST Target Entry Point
-
-Parameter ===> $COOKIE$ &1 value or LUNAME
-
-Trace ===> 1=commands 2=data 3=partner
-
-C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES
-NOT
-
-0 IP Subnet ===> 000.000.000.000 Mask ===> 000.000.000.000
-
-0 Host ===>
-
-0 eMail ===>
-
-0 Calling DTE ===> Calling DTE address or proxy
-
-0 Called ===> Called DTE address
-
-0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
-
-0 User Data ===>
-
-0 Days ===> M: T: W: T: F: S: S:
-
-0 Start time ===> H: M: S: End time ===> H: M: S:
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Inactivate P12=Entry P.
-
-Figure ‎3‑2 Rule for LU nailing by cookie
+*Figure ‎3.2 Rule for LU nailing by cookie*
 
 The rule for LU nailing has the special value $COOKIE$ in the
 “Parameter” field. This value has a two-fold meaning: firstly, it
@@ -540,56 +303,15 @@ or expired security code, will not match this rule and will drop through
 to the next rule, which in this example is the “catch-all” rule
 WHT00200.
 
-Defining a user
----------------
+**3.4 Defining a user**
 
 Now you can define your first user. From the VIRTEL Configuration Menu,
 press F5=Correspondents. At the “List of correspondents” panel, press
 F12 then fill in these fields:
 
-CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2
-16:37:59
+|image33|
 
-Id ===> john.user@whatever.com
-
-email address with '@' sign
-
-Type of Id ===> 1 1:Email 2:Local+fixed 3:Local+changing
-
-Activation message ===> To activate your VIRTEL connection,
-click:&Rhttp://192.
-
-168.5.30:41001/web2host.htm++&C
-
-Text of 'OK' message to user.
-
-VTAM name ===> RHTVT003 &1 parameter to specify VTAM LU name
-
-Rule Set ===> Rules to choose an entry point
-
-Directory ===> Where data is to be uploaded
-
-Last contact ===> QUEUE ACTIVATION
-
-Contacts ===> 00000000 Number of times cookie was updated
-
-Date created ===> 08 Jan 2009 17:02:12
-
-Created by ===> VIRDBA
-
-Date activated ===> 20 Oct 2009 11:07:34
-
-Activated by ===> VIRDBA
-
-Date disabled ===> 16 Jan 2009 16:55:22
-
-Disabled by ===> SPTBOWL
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Disable P6=Rules
-
-Figure ‎3‑3 Correspondent detail screen (e-mail correspondent)
+*Figure ‎3.3 Correspondent detail screen - e-mail correspondent*
 
 Replace *john.user@whatever.com* by the user’s e-mail address.
 
@@ -607,8 +329,7 @@ Now press Enter. You should get the message “CREATION OK”
 See section “1.1.6 Correspondent management” in the \*VIRTEL Web Access
 Guide\* for a detailed description of how to define a correspondent.
 
-Delivering the cookie via e-mail
---------------------------------
+**3.5 Delivering the cookie via e-mail**
 
 Next we will send the cookie to the user.
 
@@ -634,8 +355,7 @@ to see what the problem is. Common problems are:
 
 - the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command, check that the userid and hostname specified in the “description” field of the S-SMTP line are values which are acceptable to your mailserver. You may need to liaise with the company’s e-mail administrator to agree on appropriate values.
 
-Installing the cookie on the browser
-------------------------------------
+**3.6 Installing the cookie on the browser**
 
 When the e-mail arrives at the user’s workstation, it will contain a
 hyperlink to a VIRTEL page. The user clicks on this hyperlink to install
@@ -652,16 +372,15 @@ says “Internet” then you need to click “Tools - Internet Options -
 Security - Local Intranet - Sites – Advanced” and add VIRTEL’s IP
 address to the list.
 
-Using the cookie
-----------------
+**3.7 Using the cookie**
 
 Having installed the cookie on the workstation, now whenever this user
 calls up a VIRTEL web page, VIRTEL will recognize that the cookie
 matches the one previously sent to john.user, and so it will assign the
 LU name RHTVT003 when connecting to a host application.
 
-How to activate VIRTEL LU nailing with cookies obtained by self-registration
-----------------------------------------------------------------------------
+4 How to activate VIRTEL LU nailing with cookies obtained by self-registration
+------------------------------------------------------------------------------
 
 This chapter describes the procedure for setting up LU nailing with
 cookies, where the users initially obtain the cookie by a procedure
@@ -675,16 +394,15 @@ mainframe application such as IMS or CICS via VIRTEL Web Access, VIRTEL
 recognizes the security code contained in the cookie and assigns the
 designated LU name to the user for communication with the application.
 
-Setting up the rules for self-registration
-------------------------------------------
+**4.1 Setting up the rules for self-registration**
 
 This section will be completed in a subsequent edition of the
 documentation.
 
-Adding LUs to the pool
-----------------------
+5 Adding LUs to the pool
+------------------------
 
-**Displaying the terminal pool**
+**5.1 Displaying the terminal pool**
 
 All LUs which participate in LU nailing must be defined to VIRTEL in a
 terminal pool. To view the terminal pools, logon to VIRTEL via (tn)3270
@@ -692,32 +410,9 @@ and press F1=Admin, or select “Admin” from the VIRTEL Web Access menu.
 Then select F2=Terminals. You will see a panel similar to the one shown
 in the figure below:
 
-LIST of TERMINALS ---------------------------------- Applid: SPVIRBW
-18:03:43
+|image51|
 
-Terminal Repeated Relay Entry Type I/O Pool 2nd Relay
-
-?\*\*\*0000 RVTAM=== PC 2
-
-CLLOC000 0050 3 3
-
-CLVTA000 0080 \*W2HPOOL 3 3
-
-DELOC000 0010 3 3
-
-DEVTA000 0016 \*W2HPOOL 3 3
-
-SMLOC000 0016 SMTP 3 3
-
-W2HIM000 0080 RHTIM000 2 1
-
-W2HTP000 0080 RHTVT000 3 3 \*W2HPOOL RHTIM000
-
-P1=Update P2=Delete P3=Return P6=1st Page
-
-P7=Page-1 P8=Page+1 P12=Details
-
-Figure ‎5‑1 List of terminals
+*Figure ‎5.1 List of terminals*
 
 In the above display we can see that there are 80 terminals in the pool
 named \*W2HPOOL, and their internal names are W2HTP000 to W2HTP079. The
@@ -726,56 +421,16 @@ names available for LU nailing when the system is initially installed.
 
 In the following sections we shall see how to add LU names to the pool.
 
-Adding a terminal to the pool
------------------------------
+**5.2 Adding a terminal to the pool**
 
 In this section we will add a new LU named NYCTERM to the terminal pool
 used for Web Access. Position the cursor on W2HTP000 and press F12 to
 display the TERMINAL DEFINITION DETAIL screen, and fill in the fields as
 shown below:
 
-TERMINAL DETAIL DEFINITION ------------------------- Applid: SPVIRBW
-12:45:13
+|image52|
 
-Terminal ===> W2NYC000 ?wxyZZZZ for dynamic allocation
-
-w : Sna or Non-sna or \* (category)
-
-x : 1, 2, 3, 4, 5 or \* (model)
-
-y : Colour, Monochrome or \*
-
-Z : any characters
-
-Relay ===> NYCTERM Name seen by VTAM applications
-
-= : copied from the terminal name
-
-\*Pool name ===> \*W2HPOOL Pool where to put this terminal
-
-Description ===> Relay pool for HTTP
-
-Entry Point ===> Enforced Entry Point
-
-2nd relay ===> Possible 2nd relay (Printer)
-
-Terminal type ===> 3 1 = LU1 2 = 3270 3 = FastConnect
-
-Compression ===> 2 0, 1, 2 or 3 : compression type
-
-Possible Calls ===> 3 0=None 1=Inbound 2=Outbound 3=Both
-
-Write Stats to ===> 12 1,4=VIRSTAT 2=VIRLOG
-
-Repeat ===> 0001 Number of generated terminals
-
-P1=Update P3=Return Enter=Add
-
-P12=Server
-
-KEY IN DATA AND PRESS ENTER
-
-Figure ‎5‑2 Adding a terminal to the pool
+*Figure ‎5.2 Adding a terminal to the pool*
 
 The *terminal name* is an internal name used only within VIRTEL. Any
 name may be chosen so long as it does not duplicate any other terminal
@@ -792,55 +447,15 @@ Set the *repeat count* to 1 as we are defining only one terminal.
 Now press Enter to add the terminal definition, and press F3 to return
 to the list of terminals.
 
-Adding a range of terminals to the pool
----------------------------------------
+**5.3 Adding a range of terminals to the pool**
 
 In this section we will add a range of LU names SJC001 to SJC010 to the
 terminal pool for Web Access. Press F12 in the LIST of TERMINALS screen
 and fill in the fields as shown below:
 
-TERMINAL DETAIL DEFINITION ------------------------- Applid: SPVIRBW
-12:45:13
+|image53|
 
-Terminal ===> W2SJC001 ?wxyZZZZ for dynamic allocation
-
-w : Sna or Non-sna or \* (category)
-
-x : 1, 2, 3, 4, 5 or \* (model)
-
-y : Colour, Monochrome or \*
-
-Z : any characters
-
-Relay ===> SJC001 Name seen by VTAM applications
-
-= : copied from the terminal name
-
-\*Pool name ===> \*W2HPOOL Pool where to put this terminal
-
-Description ===> Relay pool for HTTP
-
-Entry Point ===> Enforced Entry Point
-
-2nd relay ===> Possible 2nd relay (Printer)
-
-Terminal type ===> 3 1 = LU1 2 = 3270 3 = FastConnect
-
-Compression ===> 2 0, 1, 2 or 3 : compression type
-
-Possible Calls ===> 3 0=None 1=Inbound 2=Outbound 3=Both
-
-Write Stats to ===> 12 1,4=VIRSTAT 2=VIRLOG
-
-Repeat ===> 0010 Number of generated terminals
-
-P1=Update P3=Return Enter=Add
-
-P12=Server
-
-KEY IN DATA AND PRESS ENTER
-
-Figure ‎5‑3 Adding a range of terminals to the pool
+*Figure ‎5.3 Adding a range of terminals to the pool*
 
 The *terminal name* is the internal name of the first terminal in the
 range. The name should contain sufficient trailing numeric characters to
@@ -855,45 +470,19 @@ The *pool name* must be specified as \*W2HPOOL.
 
 Set the *repeat count* to 10 to define ten terminals SJC001 to SJC010.
 
-Displaying the updated terminal pool
-------------------------------------
+**5.4 Displaying the updated terminal pool**
 
 Press Enter to add the terminal definition, then press F3 to return to
 the list of terminals, which should now look like this:
 
-LIST of TERMINALS ---------------------------------- Applid: SPVIRBW
-15:57:28
+|image54|
 
-Terminal Repeated Relay Entry Type I/O Pool 2nd Relay
+*Figure ‎5.4 Updated list of terminals*
 
-?\*\*\*0000 RVTAM=== PC 2 3
+6 LU nailing by cookie obtained by self-registration.
+-----------------------------------------------------
 
-CLLOC000 0050 3 3
-
-CLVTA000 0080 \*W2HPOOL 3 3
-
-DELOC000 0010 3 3
-
-DEVTA000 0016 \*W2HPOOL 3 3
-
-SMLOC000 0016 SMTP 3 3
-
-W2HIM000 0080 RWTIM000 2 1
-
-W2HTP000 0080 RWTVT000 3 3 \*W2HPOOL RWTIM000
-
-W2NYC000 0001 NYCTERM 3 3 \*W2HPOOL
-
-W2SJC001 0010 SJC001 3 3 \*W2HPOOL
-
-P1=Update P2=Delete P3=Return P6=1st Page
-
-P7=Page-1 P8=Page+1 P12=Details
-
-Figure ‎5‑4 Updated list of terminals
-
-LU nailing by cookie obtained by self-registration.
----------------------------------------------------
+**6.1 Description**
 
 In this section we explain how to set up self-registration.
 Self-registration is a process whereby a user can connect to Virtel and
@@ -904,8 +493,7 @@ use this process are defined as local or changing users. A local
 correspondent will have a fixed security code, whereas a changing
 correspondent will have a new security code each time they connect.
 
-Setup
------
+**6.2 Setup**
 
 For Virtel Self Registration to work a certain amount of customization
 is required. In the example that follows we will demonstrate setting up
@@ -920,97 +508,62 @@ artifacts will be installed in their respective repositories.
 The following diagram gives an overview of the Virtel schematic to
 support self-registration.
 
-|Virtel Element Overview|
+|image60|
 
-Figure 5 - Overview of Self Registration
+**Figure 6.0 - Overview of Self Registration**
 
-The Line definition
-~~~~~~~~~~~~~~~~~~~
+*6.2.1 The Line definition*
 
-LINE ID=X-HTTP,
+::
 
-NAME=HTTP-EXC,
-
-LOCADDR=192.168.170.33:41003,
-
-DESC='HTTP line (EXC WEB application)'
-
-TERMINAL=XL,
-
-TYPE=TCP1,
-
-INOUT=1,
-
-PROTOCOL=VIRHTTP,
-
-TIMEOUT=0000,
-
-ACTION=0,
-
-WINSZ=0000,
-
-PKTSZ=0000,
-
-RETRY=0010
+		LINE ID=X-HTTP,
+		NAME=HTTP-EXC,
+		LOCADDR=192.168.170.33:41003,
+		DESC='HTTP line (EXC WEB application)'
+		TERMINAL=XL,
+		TYPE=TCP1,
+		INOUT=1,
+		PROTOCOL=VIRHTTP,
+		TIMEOUT=0000,
+		ACTION=0,
+		WINSZ=0000,
+		PKTSZ=0000,
+		RETRY=0010
 
 This line definition will accept calls on port 41003. Its associated
 terminal definitions are prefixed with the characters XL. The internal
 name for the line is X-HTTP and the external name HTTP-EXEC.
 
-The terminal definitions 
-~~~~~~~~~~~~~~~~~~~~~~~~~
+*6.2.2 The terminal definitions* 
 
-TERMINAL ID=XLPC0000,
+::
 
-RELAY=HOLTWIN7,
-
-POOL=\*XLCPOOL,
-
-DESC='PC definition for Ed Holt',
-
-TYPE=3,
-
-COMPRESS=2,
-
-INOUT=3,
-
-STATS=26,
-
-REPEAT=0001
-
-\*
-
-TERMINAL ID=XLLOC000,
-
-DESC='Terminals with no relay',
-
-TYPE=3,
-
-COMPRESS=2,
-
-INOUT=3,
-
-STATS=26,
-
-REPEAT=0010
-
-\*
-
-TERMINAL ID=XLPOOL0,
-
-RELAY=\*XLCPOOL,
-
-DESC='Pool for relay (users with cookie)',
-
-TYPE=3,
-
-COMPRESS=2,
-
-INOUT=3,
-
-STATS=26,
-
-REPEAT=0016
+		TERMINAL ID=XLPC0000,
+		RELAY=HOLTWIN7,
+		POOL=*XLCPOOL,
+		DESC='PC definition for Ed Holt',
+		TYPE=3,
+		COMPRESS=2,
+		INOUT=3,
+		STATS=26,
+		REPEAT=0001
+	*
+		TERMINAL ID=XLLOC000,
+		DESC='Terminals with no relay',
+		TYPE=3,
+		COMPRESS=2,
+		INOUT=3,
+		STATS=26,
+		REPEAT=0010
+	*
+		TERMINAL ID=XLPOOL0,
+		RELAY=*XLCPOOL,
+		DESC='Pool for relay (users with cookie)',
+		TYPE=3,
+		COMPRESS=2,
+		INOUT=3,
+		STATS=26,
+		REPEAT=0016
 
 Three different types of terminal statements are required. First, a
 terminal relay pool is defined by the XLPOOL0 statement. It represents
@@ -1029,48 +582,9 @@ manages the physical PC representation to a logical LU name. In
 following screen shot we can see how self-registration of a user
 collocates with a predefined LU name.
 
-CORRESPONDENT DETAIL DEFINITION -------------------- Applid: APPLHOLT
-18:16:00
+|image62|
 
-Id ===> HOLT-WIN7/
-
-workstation/lan
-
-Type of Id ===> 2 1:Email 2:Local+fixed 3:Local+changing
-
-Activation message ===>
-
-Text of 'OK' message to user.
-
-VTAM name ===> HOLTWIN7 &1 parameter to specify VTAM LU name
-
-Rule Set ===> Rules to choose an entry point
-
-Directory ===> Where data is to be uploaded
-
-Last contact ===> 04 Apr 2016 18:13:10 192.168.092.065
-
-Contacts ===> 00000001 Number of times cookie was updated
-
-Date created ===> 04 Apr 2016 18:13:09
-
-Created by ===> sptholt
-
-Date activated ===> 04 Apr 2016 18:13:09
-
-Activated by ===> sptholt
-
-Date disabled ===>
-
-Disabled by ===>
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Disable P6=Rules
-
-UPDATE OK
-
-Figure ‎6‑2 Correspondent Detail Definition
+*Figure ‎6.2 Correspondent Detail Definition*
 
 As you can see, the ID is the physical PC name submitted by the user
 during the Self-Registration process and the VTAM name is the LU name
@@ -1082,52 +596,32 @@ self-registration process. Self-registration users are controlled
 through rules attached to the line. The rules attached to the X-HTTP
 line are as follows.
 
-The Rule definitions
-~~~~~~~~~~~~~~~~~~~~
+*6.2.3 The Rule definitions*
 
-RULE ID=R0000100,
+::
 
-LINE=X-HTTP,
-
-STATUS=ACTIVE,
-
-DESC='Local HTTP access (users authorised by cookie)',
-
-ENTRY=EXCWHOST,
-
-PARAM=$COOKIE$,
-
-IPADDR=(EQUAL,192.168.000.000),
-
-NETMASK=255.255.000.000
-
-\*
-
-RULE ID=R0000200,
-
-LINE=X-HTTP,
-
-STATUS=ACTIVE,
-
-DESC='Self-registration (local users without cookie)',
-
-ENTRY=INITVTAM,
-
-IPADDR=(EQUAL,192.168.000.000),
-
-NETMASK=255.255.000.000
-
-\*
-
-RULE ID=R0000300,
-
-LINE=X-HTTP,
-
-STATUS=ACTIVE,
-
-DESC='HTTP access (IP address not valid)',
-
-ENTRY=EPREJECT
+		RULE ID=R0000100,
+		LINE=X-HTTP,
+		STATUS=ACTIVE,
+		DESC='Local HTTP access (users authorised by cookie)',
+		ENTRY=EXCWHOST,
+		PARAM=$COOKIE$,
+		IPADDR=(EQUAL,192.168.000.000),
+		NETMASK=255.255.000.000
+	*
+		RULE ID=R0000200,
+		LINE=X-HTTP,
+		STATUS=ACTIVE,
+		DESC='Self-registration (local users without cookie)',
+		ENTRY=INITVTAM,
+		IPADDR=(EQUAL,192.168.000.000),
+		NETMASK=255.255.000.000
+	*
+		RULE ID=R0000300,
+		LINE=X-HTTP,
+		STATUS=ACTIVE,
+		DESC='HTTP access (IP address not valid)',
+		ENTRY=EPREJECT
 
 For line X-HHTP, serving port 41003, only IP address beginning
 192.168.\*.\* will be allowed to self-register. Any other IP address
@@ -1141,62 +635,37 @@ self-registered the call in will conatin a cookie in the HTTP request.
 This will be trapped by rule R0000100 and passed to entry point
 EXCWHOST.
 
-The Entry Points
-~~~~~~~~~~~~~~~~
+*6.2.4 The Entry Points*
 
-    ENTRY ID=EPREJECT,
+::
 
-    DESC='Entry point for unauthorized HTTP users',
-
-    TRANSACT=REJ,
-
-    TIMEOUT=0720,
-
-    ACTION=0,
-
-    EMUL=HTML,
-
-    SIGNON=VIR0020H,
-
-    MENU=VIR0021A,
-
-    EXTCOLOR=X
-
-    ENTRY ID=EXCWHOST,
-
-    DESC='EXC WEB entry point (users with cookie)',
-
-    TRANSACT=EXCW,
-
-    TIMEOUT=0720,
-
-    ACTION=0,
-
-    EMUL=HTML,
-
-    SIGNON=VIR0020H,
-
-    MENU=VIR0021A,
-
-    EXTCOLOR=X
-
-    ENTRY ID=INITVTAM,
-
-    DESC='Self-registration for line X-HTTP',
-
-    TRANSACT=INITV,
-
-    TIMEOUT=0025,
-
-    ACTION=0,
-
-    EMUL=HTML,
-
-    SIGNON=VIR0020V,
-
-    MENU=VIR0021B,
-
-    EXTCOLOR=X
+	    ENTRY ID=EPREJECT,
+	    DESC='Entry point for unauthorized HTTP users',
+	    TRANSACT=REJ,
+	    TIMEOUT=0720,
+	    ACTION=0,
+	    EMUL=HTML,
+	    SIGNON=VIR0020H,
+	    MENU=VIR0021A,
+	    EXTCOLOR=X
+	    ENTRY ID=EXCWHOST,
+	    DESC='EXC WEB entry point (users with cookie)',
+	    TRANSACT=EXCW,
+	    TIMEOUT=0720,
+	    ACTION=0,
+	    EMUL=HTML,
+	    SIGNON=VIR0020H,
+	    MENU=VIR0021A,
+	    EXTCOLOR=X
+	    ENTRY ID=INITVTAM,
+	    DESC='Self-registration for line X-HTTP',
+	    TRANSACT=INITV,
+	    TIMEOUT=0025,
+	    ACTION=0,
+	    EMUL=HTML,
+	    SIGNON=VIR0020V,
+	    MENU=VIR0021B,
+	    EXTCOLOR=X
 
 These three entry points perform the logic the “self-registration’
 process through there associated transactions. Each entry point is
@@ -1205,29 +674,23 @@ keyword. Depending on the entry point selected by the rule will
 determine what default transaction will get called. The name of the
 transaction will always equal the name of the entry point.
 
-The Transactions
-~~~~~~~~~~~~~~~~
+*6.2.5 The Transactions*
 
 Transactions are associated with entry points by a common prefix
 identified in the Entry point through the TRANSACT= keyword.
 
 The transactions for EPREJECT are:-
 
-TRANSACT ID=REJ-00,
+::
 
-NAME=EPREJECT,
-
-DESC="Default directory = entry point name",
-
-APPL=W2H-DIR,
-
-TYPE=4,
-
-TERMINAL=XLLOC,
-
-STARTUP=2,
-
-SECURITY=0
+		TRANSACT ID=REJ-00,
+		NAME=EPREJECT,
+		DESC="Default directory = entry point name",
+		APPL=W2H-DIR,
+		TYPE=4,
+		TERMINAL=XLLOC,
+		STARTUP=2,
+		SECURITY=0
 
 This is the default transaction for entry point EPREJECT. If called it
 will search for a page called EPREJECT.HTM in the W2H-DIR directory and
@@ -1235,53 +698,34 @@ server it to the user.
 
 The transactions for INITVTAM are:-
 
-TRANSACT ID=INITV-00,
+::
 
-NAME=INITVTAM,
-
-(EN) DESC='Directory for LU NAILING',
-
-APPL=EXC-DIR,
-
-TYPE=4,
-
-TERMINAL=XLLOC,
-
-STARTUP=2,
-
-SECURITY=0
-
-TRANSACT ID=INITV-03,
-
-NAME='w2h',
-
-(EN) DESC='W2H toolkit directory (/w2h)',
-
-APPL=W2H-DIR,
-
-TYPE=4,
-
-TERMINAL=XLLOC,
-
-STARTUP=2,
-
-SECURITY=0
-
-TRANSACT ID=INITV-10,
-
-NAME=NAIL,
-
-DESC='Auto-create correspondent record',
-
-APPL=VIR0041V,
-
-TYPE=2,
-
-TERMINAL=XLLOC,
-
-STARTUP=2,
-
-SECURITY=2
+		TRANSACT ID=INITV-00,
+		NAME=INITVTAM,
+		(EN) DESC='Directory for LU NAILING',
+		APPL=EXC-DIR,
+		TYPE=4,
+		TERMINAL=XLLOC,
+		STARTUP=2,
+		SECURITY=0
+	*
+		TRANSACT ID=INITV-03,
+		NAME='w2h',
+		(EN) DESC='W2H toolkit directory (/w2h)',
+		APPL=W2H-DIR,
+		TYPE=4,
+		TERMINAL=XLLOC,
+		STARTUP=2,
+		SECURITY=0
+	*
+		TRANSACT ID=INITV-10,
+		NAME=NAIL,
+		DESC='Auto-create correspondent record',
+		APPL=VIR0041V,
+		TYPE=2,
+		TERMINAL=XLLOC,
+		STARTUP=2,
+		SECURITY=2
 
 INIT-00, the default page for entry point INITVTAM, will serve the HTML
 page INITVTAM.HTM from the EXEC-DIR directory.
@@ -1297,69 +741,43 @@ from the INITVTAM.HTM page.
 
 The transactions for EXCWHOST are:-
 
-TRANSACT ID=EXCW-00,
+::
 
-NAME=EXCWHOST,
-
-DESC='HTML page directory (default access)',
-
-APPL=EXC-DIR,
-
-TYPE=4,
-
-TERMINAL=XLLOC,
-
-STARTUP=2,
-
-SECURITY=0
-
-TRANSACT ID=EXCW-20,
-
-NAME='w2h',
-
-DESC='W2H toolkit directory (/w2h)',
-
-APPL=W2H-DIR,
-
-TYPE=4,
-
-TERMINAL=XLLOC,
-
-STARTUP=2,
-
-SECURITY=0
-
-TRANSACT ID=EXCW-41,
-
-NAME=IMS,
-
-DESC='IMS access with cookie',
-
-APPL=IMS3270,
-
-TYPE=1,
-
-TERMINAL=XLVTC,
-
-STARTUP=1,
-
-SECURITY=0
-
-TRANSACT ID=EXCW-42,
-
-NAME=TSO,
-
-DESC='TSO access with cookie',
-
-APPL=TSO,
-
-TYPE=1,
-
-TERMINAL=XLVTC,
-
-STARTUP=1,
-
-SECURITY=0
+		TRANSACT ID=EXCW-00,
+		NAME=EXCWHOST,
+		DESC='HTML page directory (default access)',
+		APPL=EXC-DIR,
+		TYPE=4,
+		TERMINAL=XLLOC,
+		STARTUP=2,
+		SECURITY=0
+	*
+		TRANSACT ID=EXCW-20,
+		NAME='w2h',
+		DESC='W2H toolkit directory (/w2h)',
+		APPL=W2H-DIR,
+		TYPE=4,
+		TERMINAL=XLLOC,
+		STARTUP=2,
+		SECURITY=0
+	*
+		TRANSACT ID=EXCW-41,
+		NAME=IMS,
+		DESC='IMS access with cookie',
+		APPL=IMS3270,
+		TYPE=1,
+		TERMINAL=XLVTC,
+		STARTUP=1,
+		SECURITY=0
+	*
+		TRANSACT ID=EXCW-42,
+		NAME=TSO,
+		DESC='TSO access with cookie',
+		APPL=TSO,
+		TYPE=1,
+		TERMINAL=XLVTC,
+		STARTUP=1,
+		SECURITY=0
 
 The default transaction, EXCW-00, will serve page EXCWHOST.htm from the
 EXC-DIR directory. EXCW-01 is a routing transaction that provides a link
@@ -1368,117 +786,67 @@ application definitions that are available to self-registration users.
 These transaction are accessed via hard coded links in the EXCWHOST.HTM
 page but equally could be part of an APPLIST menu display.
 
-The Sub Directory and related web pages 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*6.2.6 The Sub Directory and related web pages* 
 
 Self-Registration requires a group of web elements:-
 
-CommandandGo.htm
+::
 
-CommandandWait.htm
-
-CustomFunctions.js
-
-EXCWHOST.htm
-
-INITVTAM.htm
+	CommandandGo.htm
+	CommandandWait.htm
+	CustomFunctions.js
+	EXCWHOST.htm
+	INITVTAM.htm
 
 These elements are uploaded into the EXC-DIR sub directory. Within the
 ARBO configuration the sub-directory is defined as:-
 
-SUBDIR ID=EXC-DIR,
+::
 
-DESC='Pages for EXCWHOST',
-
-DDNAME=HTMLTRSF,
-
-KEY=EXC-KEY,
-
-NAMELEN=0064,
-
-AUTHUP=X,
-
-AUTHDOWN=X,
-
-AUTHDEL=X
+	SUBDIR ID=EXC-DIR,
+	DESC='Pages for EXCWHOST',
+	DDNAME=HTMLTRSF,
+	KEY=EXC-KEY,
+	NAMELEN=0064,
+	AUTHUP=X,
+	AUTHDOWN=X,
+	AUTHDEL=X
 
 To be able to upload web elements to this sub-direction requires the
 services of an internal Virtel upload transaction. This is defined in
 the W2H-DIR as:-
 
-TRANSACT ID=W2H-83,
+::
 
-NAME='uplexc',
+	TRANSACT ID=W2H-83,
+	NAME='uplexc',
+	DESC='Upload HTML pages (EXC-DIR directory)',
+	APPL=VIR0041C,
+	TYPE=2,
+	TERMINAL=DELOC,
+	STARTUP=2,
+	SECURITY=1,
+	LOGMSG=EXC-DIR
 
-DESC='Upload HTML pages (EXC-DIR directory)',
-
-APPL=VIR0041C,
-
-TYPE=2,
-
-TERMINAL=DELOC,
-
-STARTUP=2,
-
-SECURITY=1,
-
-LOGMSG=EXC-DIR
-
-The Correspondent Sub Application 
-----------------------------------
+**6.3 The Correspondent Sub Application** 
 
 Access to the Correspondent Sub Application is as follows. From the
 VIRTEL Configuration Menu, press F5=Correspondents.
 
-Configuration Menu --------------------------------- Applid: APPLHOLT
-14:11:28
+|image63|
 
-F1 Lines
-
-F2 Terminals
-
-F3 Entry Points
-
-F4 Security
-
-F5 Correspondents
-
-F6 Directories
-
-F7 External servers
-
-F8 Lines Overview
-
-F9 Lines Status
-
-PA2 More sub-applications
-
-CLEAR Return
-
-Figure ‎6‑3. Selecting the Correspondent Sub Application
+*Figure ‎6.3 Selecting the Correspondent Sub Application*
 
 A list of self-registered correspondents will appear. In our list there
 is one user who is recognized by the ID of HOLT-WIN7. This just so
 happens to be the PC Name belonging to user. Through the sub-application
 we can associate this user with a relay LUNAME HOLTWIN7.
 
-LIST of CORRESPONDENTS ----------------------------- Applid: APPLHOLT
-14:14:33
+|image64|
 
-Id Rules VTAM name Last connection Contacts
+*Figure ‎6.4 Listing of Correspondent*
 
-HOLT-WIN7/ HOLTWIN7 04 Apr 2016 18:13:10 00000001
-
-P1=Update P2=Delete P3=Return P6=Rules
-
-P7=Previous P8=Next P12=Edit/View
-
-DELETE OK
-
-Figure ‎6‑4. Listing of Correspondent
-
-The Self-Registration Process
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*6.3.1 The Self-Registration Process*
 
 The first phase of the self-registration process is that a user will
 access the designated port without a security cookie and be routed to
@@ -1486,9 +854,9 @@ the VTAMINIT Entry Point. This will drive the registration process by
 serving the INITVTAM.HTM page to the user. The user will be presented
 with the following screen:-
 
-|image3|
+|image65|
 
-Figure ‎6‑5. Self-Registration page from VTAMINIT Page 1
+*Figure ‎6.5. Self-Registration page from VTAMINIT Page 1*
 
 Two options are provide on this page. Option one is to complete the
 self-registration proceed to the application menu page or option2 is to
@@ -1507,9 +875,9 @@ registration will be present. In this page you provide the LUNAME that
 you have been allocated (external process) and you collocated
 correspondent name, by default the work station name.
 
-|image4|
+|image66|
 
-Figure ‎6‑6. Self-Registration page from VTAMINIT Page 2
+*Figure ‎6.6. Self-Registration page from VTAMINIT Page 2*
 
 By confirming the details of the VTAM luname and correspondent (ID) the
 browser will send the information back to Virtel. Virtel will then
@@ -1517,25 +885,16 @@ record the information in the Correspondent data base and then launch
 the EXCWHOST transaction which will display a menu page of applications
 than the user can access.
 
-|image5|
+|image67|
 
-Figure ‎6‑7. Self-Registration application menu page.
+*Figure ‎6.7. Self-Registration application menu page*
 
 In the example for HOLT-WIN7 the entry in the database would look like
 the following:-
 
-LIST of CORRESPONDENTS ----------------------------- Applid: APPLHOLT
-10:41:34
+|image68|
 
-Id Rules VTAM name Last connection Contacts
-
-HOLT-WIN7/ HOLT-WIN 07 Apr 2016 10:32:11 00000002
-
-P1=Update P2=Delete P3=Return P6=Rules
-
-P7=Previous P8=Next P12=Edit/View
-
-Figure ‎6‑8. Correspondent Entry
+*Figure ‎6.8 Correspondent Entry*
 
 It is clear that the LUNAME of HOLT-WIN is invalid so this must be
 corrected in the Edit panel. Pressing PF12 will take us into the Edit
@@ -1543,48 +902,9 @@ panel of the correspondent application where the LUNAME can be amended
 to the correct name allocated for HOLT-WIN. In this example the name is
 changed to HOLTWIN7.
 
-CORRESPONDENT DETAIL DEFINITION -------------------- Applid: APPLHOLT
-10:49:18
+|image69|
 
-Id ===> HOLT-WIN7/
-
-workstation/lan
-
-Type of Id ===> 2 1:Email 2:Local+fixed 3:Local+changing
-
-Activation message ===>
-
-Text of 'OK' message to user.
-
-VTAM name ===> HOLTWIN7 &1 parameter to specify VTAM LU name
-
-Rule Set ===> Rules to choose an entry point
-
-Directory ===> Where data is to be uploaded
-
-Last contact ===> 07 Apr 2016 10:32:11 192.168.092.065
-
-Contacts ===> 00000002 Number of times cookie was updated
-
-Date created ===> 07 Apr 2016 10:31:59
-
-Created by ===> sptholt
-
-Date activated ===> 07 Apr 2016 10:31:59
-
-Activated by ===> sptholt
-
-Date disabled ===>
-
-Disabled by ===>
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Disable P6=Rules
-
-UPDATE OK
-
-Figure ‎6‑9. Updating the Correspondent Entry with the correct LUNAME
+*Figure ‎6.9 Updating the Correspondent Entry with the correct LUNAME*
 
 Once the LUNAME has been updated the user identified as HOLT-WIN7/ can
 access applications via the EXCWHOST application list. A VTAM definition
@@ -1597,91 +917,35 @@ To support this VTAM LUNAME a Virtel Terminal definition must also exit
 in the ARBO configuration. The definitional must use a predefined pool.
 For HOLT-WIN7/ see the terminal definition XLPC0000.
 
-LIST of TERMINALS ---------------------------------- Applid: APPLHOLT
-10:59:10
+|image610|
 
-Terminal Repeated Relay Entry Type I/O Pool 2nd Relay
+*Figure ‎6.10 Terminal list with the correct Relay(LUNAME) name*
 
-XLPC0000 0001 HOLTWIN7 3 3 \*XLCPOOL
-
-XLPC0001 0001 ISRAEL 3 3 \*XLCPOOL
-
-XLVTC000 0016 \*XLCPOOL 3 3
-
-P1=Update P2=Delete P3=Return P6=1st Page
-
-P7=Page-1 P8=Page+1 P12=Details
-
-Figure ‎6‑10. Terminal list with the correct Relay(LUNAME) name.
-
-The Correspondent Application Options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*6.3.2 The Correspondent Application Options*
 
 From within the Correspondent Application self-registered users can be
 managed. The following option are available:-
 
-PF=1 Update an Entry
+::
 
-Enter Add an Entry
-
-PF=4 Activate a disabled entry
-
-PF=5 Deactivate an Active Entry
-
-PF=6 Add a rule using the IP details.
+	PF=1 	Update an Entry
+	Enter 	Add an Entry
+	PF=4 	Activate a disabled entry
+	PF=5 	Deactivate an Active Entry
+	PF=6 	Add a rule using the IP details.
 
 Using these functions provides a means of administering correspondents.
 The following is an example of disabling a user:-
 
-CORRESPONDENT DETAIL DEFINITION -------------------- Applid: APPLHOLT
-11:07:40
+|image611|
 
-Id ===> HOLT-WIN7/
-
-workstation/lan
-
-Type of Id ===> 2 1:Email 2:Local+fixed 3:Local+changing
-
-Activation message ===>
-
-Text of 'OK' message to user.
-
-VTAM name ===> HOLTWIN7 &1 parameter to specify VTAM LU name
-
-Rule Set ===> Rules to choose an entry point
-
-Directory ===> Where data is to be uploaded
-
-Last contact ===> INACTIVATION
-
-Contacts ===> 00000002 Number of times cookie was updated
-
-Date created ===> 07 Apr 2016 10:31:59
-
-Created by ===> sptholt
-
-Date activated ===> 07 Apr 2016 10:31:59
-
-Activated by ===> sptholt
-
-Date disabled ===> 07 Apr 2016 11:07:40
-
-Disabled by ===> SPTHOLT
-
-P1=Update P3=Return Enter=Add
-
-P4=Activate P5=Disable P6=Rules
-
-DISABLE WAS DONE
-
-Figure ‎6‑11. Disabling a Correspondent using PF5.
+*Figure ‎6.11 Disabling a Correspondent using PF5*
 
 If the user attempts to access the system Virtel will not permit access
 as the cookie will no longer be valid and the ID will block any further
 attempts to re-register.
 
-Customization
-~~~~~~~~~~~~~
+*6.3.3 Customization*
 
 The sample web elements can be customized. For example, by default, the
 Correspondent name field is an HTML input field. This allows the user to
@@ -1698,21 +962,42 @@ Virtel scenarios may be used to check and validate the incoming call and
 introduce different behavior depending on the IP address and variables
 contained with the cookie.
 
-.. |image0| image:: images/media/image1.png
-   :width: 4.30000in
-   :height: 1.00000in
-.. |image1| image:: images/media/image3.png
-   :width: 1.50000in
-   :height: 1.14028in
-.. |Virtel Element Overview| image:: images/media/image5.jpeg
+7 Related Material
+------------------
+
+- :ref:`Controlling LU Names <#_tn201604>`
+- :ref:`Nailing LUs with an Identification Scenario <#_tn201609>`
+
+
+.. |image21| image:: images/media/image21.png
+.. |image22| image:: images/media/image22.png
+.. |image23| image:: images/media/image23.png
+.. |image24| image:: images/media/image24.png
+.. |image25| image:: images/media/image25.png
+.. |image26| image:: images/media/image26.png
+.. |image31| image:: images/media/image31.png
+.. |image32| image:: images/media/image32.png
+.. |image33| image:: images/media/image33.png
+.. |image51| image:: images/media/image51.png
+.. |image52| image:: images/media/image52.png
+.. |image53| image:: images/media/image53.png
+.. |image54| image:: images/media/image54.png
+.. |image60| image:: images/media/image60.jpeg
    :width: 6.59375in
    :height: 6.46875in
-.. |image3| image:: images/media/image6.png
+.. |image62| image:: images/media/image62.png
+.. |image63| image:: images/media/image63.png
+.. |image64| image:: images/media/image64.png   
+.. |image65| image:: images/media/image65.png
    :width: 5.88542in
    :height: 3.90625in
-.. |image4| image:: images/media/image7.png
+.. |image66| image:: images/media/image66.png
    :width: 6.50000in
    :height: 5.84375in
-.. |image5| image:: images/media/image8.png
+.. |image67| image:: images/media/image67.png
    :width: 6.28125in
    :height: 1.84375in
+.. |image68| image:: images/media/image68.png
+.. |image69| image:: images/media/image69.png
+.. |image610| image:: images/media/image610.png   
+.. |image611| image:: images/media/image611.png   

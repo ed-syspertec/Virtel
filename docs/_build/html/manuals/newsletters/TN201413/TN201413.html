@@ -317,34 +317,34 @@ Terminal -&gt; SD (170.15/24) |
 </pre></div>
 </div>
 <p>z/OS Command : D TCPIP,,N,CONN,MAX=*</p>
-<p><a class="reference internal" href="../../../_images/image23.png"><img alt="image1" src="../../../_images/image23.png" style="width: 7.08333in; height: 1.80208in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image29.png"><img alt="image1" src="../../../_images/image29.png" style="width: 7.08333in; height: 1.80208in;" /></a></p>
 <p>The SD setup shows the SD running on MVSA and target stacks on both
 MVS1A and MVS1B. Note that port 41002 is associated with the SD and the
 ADMIN port 41015 is associated with the specific instance of Virtel
 running on MVS2A on IP address 192.168.92.162. On MVS1A we have a
 similar display for SPVIR1A.</p>
-<p><a class="reference internal" href="../../../_images/image34.png"><img alt="image2" src="../../../_images/image34.png" style="width: 7.08333in; height: 1.65625in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image36.png"><img alt="image2" src="../../../_images/image36.png" style="width: 7.08333in; height: 1.65625in;" /></a></p>
 <p>z/OS Command : D TCPIP,,SYSPLEX,VIPAD</p>
 <p><a class="reference internal" href="../../../_images/image41.png"><img alt="image3" src="../../../_images/image41.png" style="width: 7.06250in; height: 1.57292in;" /></a></p>
 <p>After opening a HTTP session with Virtel we can see the Virtel server
 will initialize the browser environment by sending the necessary HTML
 elements to support Virtel running within the browser environment.</p>
-<p><a class="reference internal" href="../../../_images/image51.png"><img alt="image4" src="../../../_images/image51.png" style="width: 7.08333in; height: 2.51042in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image55.png"><img alt="image4" src="../../../_images/image55.png" style="width: 7.08333in; height: 2.51042in;" /></a></p>
 <p>If we take a look at the Virtel log we can see which element names have
 been downloaded and there source directories.</p>
-<p><a class="reference internal" href="../../../_images/image62.png"><img alt="image5" src="../../../_images/image62.png" style="width: 7.06250in; height: 1.61458in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image61.png"><img alt="image5" src="../../../_images/image61.png" style="width: 7.06250in; height: 1.61458in;" /></a></p>
 <p>In the Virtel JESMSGLG log we can see that Virtel is using the CLI-DIR
 (Customized elements) and the W2H-DIR (distributed elements)
 directories; These directories have been accessed by Virtel to download
 HTML elements to the users’s browser environment.</p>
 <p>If we now look at the session setup now we should see some sockets
 established with Virtel and the user’s terminal.</p>
-<p><a class="reference internal" href="../../../_images/image71.png"><img alt="image6" src="../../../_images/image71.png" style="width: 7.04167in; height: 2.59375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image7.png"><img alt="image6" src="../../../_images/image7.png" style="width: 7.04167in; height: 2.59375in;" /></a></p>
 <p>On the user’s terminal their browser window will have the Virtel
 Application Menu screen. This is the default for the URI
 192.168.170.15:41002 that we used when establishing a session with
 Virtel.</p>
-<p><a class="reference internal" href="../../../_images/image81.png"><img alt="image7" src="../../../_images/image81.png" style="width: 7.05208in; height: 3.37500in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image8.png"><img alt="image7" src="../../../_images/image8.png" style="width: 7.05208in; height: 3.37500in;" /></a></p>
 <p>We can see from this screen that the TSO and CICS applications are
 active (Green). Login to CICS will drive Virtel to establish SNA relay
 sessions with the target CICS application.</p>

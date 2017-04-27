@@ -207,7 +207,7 @@ Server: Virtel/4.53
 <p>Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.</p>
 <p><img alt="image1" src="../../../_images/image2.png" /> <em>Fig. 2. - Using the Firefox &#8220;Modify Headers&#8221; addin.</em></p>
 <p>When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.</p>
-<p><img alt="image2" src="../../../_images/image31.png" /> <em>Fig. 3 - Modify Header active - red ICON</em></p>
+<p><img alt="image2" src="../../../_images/image3.png" /> <em>Fig. 3 - Modify Header active - red ICON</em></p>
 <p>The following definitions define what needs to be done to enable a user to log on without specifying a userid/password to an asset supported by the SSO server. In our example Virtel will logon to a CICS asset on
 behalf of the caller using a userid passed by the SSO Proxy and a generated PassTicket. The caller provides no userid/password information. Once the SSO has validated the callers credential the caller will be logged on to CICS and will be presented with the following screen:-</p>
 <p><img alt="image3" src="../../../_images/image4.jpeg" /> <em>Fig. 4. - Accessing CICS using a callers credentials. No LOGON required.</em></p>
@@ -276,7 +276,7 @@ should have update authority to this profile.</p>
 needn’t be!</p>
 <p><strong>Virtel Requirements</strong></p>
 <p>The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-</p>
-<p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 5. - Modified CICS Virtel transaction to support Pass Tickets.</em></p>
+<p><img alt="image4" src="../../../_images/image5.jpeg" /> <em>Fig. 5. - Modified CICS Virtel transaction to support Pass Tickets.</em></p>
 <p>The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM_User header value. See the section on <a class="reference internal" href="#tn201407-bookmark02"><span class="std std-ref">Identification Scenario</span></a>.</p>
 <p>The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (&amp;U) and PassTicket generated password (&amp;P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.</p>
 <p id="tn201407-bookmark02"><em>Identification Scenario</em></p>

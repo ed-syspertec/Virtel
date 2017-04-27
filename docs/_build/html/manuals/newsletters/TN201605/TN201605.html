@@ -216,7 +216,7 @@ supported features.</p>
 <p>In this example we have configured the Virtel display terminal REHVT000
 and its associate relay printer terminal REHIP000 with the following
 characteristics.</p>
-<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image129.png"><img alt="image0" src="../../../_images/image129.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
 <p><em>Fig. 1 - Terminal Display</em></p>
 <p>Display REHVT000 has an associate relay of REHIP000 which is defined as
 a Type = P. Type = P indicates that this is a dynamically allocated
@@ -228,9 +228,9 @@ LU at start up.</p>
 <p>In CICS we have defined the following terminal definitions. EHT0
 representing the display LU REHVT000 and EHS0 representing the printer
 LU REHIP000.</p>
-<p><a class="reference internal" href="../../../_images/image217.png"><img alt="image1" src="../../../_images/image217.png" style="width: 5.81250in; height: 3.92630in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image223.png"><img alt="image1" src="../../../_images/image223.png" style="width: 5.81250in; height: 3.92630in;" /></a></p>
 <p><em>Fig. 2 -CICS Display definition</em></p>
-<p><a class="reference internal" href="../../../_images/image319.png"><img alt="image2" src="../../../_images/image319.png" style="width: 5.81250in; height: 3.91729in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image321.png"><img alt="image2" src="../../../_images/image321.png" style="width: 5.81250in; height: 3.91729in;" /></a></p>
 <p><em>Fig. 3 - CICS Printer Definition</em></p>
 <p>Note that the characteristics for each device is determined by the
 TYpeterm association. For the printer we are using a user defined
@@ -240,7 +240,7 @@ Typeterm called IMP3270P.</p>
 <p>Within the Typeterm definition the following Operation properties are
 set to enable dynamic printer acquirement and release with CICS. The
 Typeterm definition is also associated with a Device type of 3270P.</p>
-<p><a class="reference internal" href="../../../_images/image513.png"><img alt="image4" src="../../../_images/image513.png" style="width: 5.46875in; height: 3.70622in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image517.png"><img alt="image4" src="../../../_images/image517.png" style="width: 5.46875in; height: 3.70622in;" /></a></p>
 <p><em>Fig. 5 - CICS Printer Operational Properties</em></p>
 <p>The CICS application we use is a simple customer inquiry application
 which has a print facility. Logging onto the application using Virtel
@@ -256,16 +256,16 @@ messages relate to Virtel activating two VTAM applications that will
 represent the 3270 display (REHVT000) and printer (REHIP000) to CICS.
 The Virtel CICS logon screen looks like this with the Virtel associated
 LUs displayed in the bottom right corner.</p>
-<p><a class="reference internal" href="../../../_images/image613.png"><img alt="image5" src="../../../_images/image613.png" style="width: 5.92708in; height: 4.49752in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image622.png"><img alt="image5" src="../../../_images/image622.png" style="width: 5.92708in; height: 4.49752in;" /></a></p>
 <p><em>Fig. 6 - Logging onto CICS</em></p>
 <p>After logging onto CICS we access the application by entering the
 transaction id MENU. This displays a menu list of available options with
 the CICS application.</p>
-<p><a class="reference internal" href="../../../_images/image711.png"><img alt="image6" src="../../../_images/image711.png" style="width: 5.02083in; height: 3.82042in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image710.png"><img alt="image6" src="../../../_images/image710.png" style="width: 5.02083in; height: 3.82042in;" /></a></p>
 <p><em>Fig. 7 -CICS Application Menu</em></p>
 <p>Option 1 is selected to bring up the customer inquiry panel and then a
 customer number is entered to bring up the relevant customer detail.</p>
-<p><a class="reference internal" href="../../../_images/image810.png"><img alt="image7" src="../../../_images/image810.png" style="width: 5.06250in; height: 3.86726in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image89.png"><img alt="image7" src="../../../_images/image89.png" style="width: 5.06250in; height: 3.86726in;" /></a></p>
 <p><em>Fig. 8 - Application inquiry display</em></p>
 <p>PF9 is selected to trigger a print operation. A small print ICON box
 appears in the Virtel tool bar on the right hand side and a message
@@ -434,12 +434,12 @@ rather than the overridden 3270 printer type. In Virtel SCS printer
 types are defined as TYPE=S. We update the terminal definition
 (REHVT000) to associate it with a SCS printer REHIM000. The terminal
 display now looks like this.</p>
-<p><a class="reference internal" href="../../../_images/image218.png"><img alt="image20" src="../../../_images/image218.png" style="width: 4.88680in; height: 3.30208in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image2110.png"><img alt="image20" src="../../../_images/image2110.png" style="width: 4.88680in; height: 3.30208in;" /></a></p>
 <p><em>Fig. 21 - Defining a Virtel SCS printer terminal</em></p>
 <p>We also have to correct the CICS definition so that the terminal EHS0 is
 associated with the Virtel printer definition REHIM000. We use CEDA to
 alter and reinstall the terminal. Here is the new CICS table definition.</p>
-<p><a class="reference internal" href="../../../_images/image221.png"><img alt="image21" src="../../../_images/image221.png" style="width: 5.22917in; height: 3.53922in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image224.png"><img alt="image21" src="../../../_images/image224.png" style="width: 5.22917in; height: 3.53922in;" /></a></p>
 <p>We put the CICS printer EHS0 out of service and then re-install so that
 the correct LU name is picked up. A CICS CEMT display now shows this for
 CICS terminal EHS0.</p>
