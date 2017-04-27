@@ -1,11 +1,11 @@
 .. _#_howToATLS:
 
-=============
-How To - ATLS
-=============
+===============
+How To - AT-TLS
+===============
     
-1. How to activate VIRTEL https using AT-TLS on z/OS V1R7
----------------------------------------------------------
+1. How to activate VIRTEL https using AT-TLS on z/OS
+----------------------------------------------------
 
 **1.1 Software pre-requisites** 
     To provide secure HTTP (https) sessions to client browsers, VIRTEL
