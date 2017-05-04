@@ -718,7 +718,7 @@ Run the job $ALOCDSU to allocate a sequential file named userid.TRANSFER.XMIT wi
 	//*--*                                                             *--*
 	//*-------------------------------------------------------------------*
 	// SET TYPE=CYL                                        /* TYPE ALLOC */
-	// SET ALLOCPRI=4                                      /* PRIM ALLOC */
+	// SET ALLOCPRI=30                                     /* PRIM ALLOC */
 	// SET ALLOCSEC=1                                      /* SECO ALLOC */
 	// SET VOLM=SPT001                                         /* VOLUME */
 	// SET UNIT=3390                                        /* DISK UNIT */
@@ -1145,7 +1145,7 @@ option (2) with the ability to specify the IP address as a keyword in the JCL PA
 
 ::
 
-  //S01 EXEC PGM=VIR0000,PARM="01,MYAPPL,,192.168.0.123"
+  //S01 EXEC PGM=VIR6000,PARM='01,MYAPPL,,192.168.1.123'
 
 This reduces the need to specify the HOME address in the ARBO for inbound lines thereby reducing the coupling between the various VIRTEL instances that could be running within a complex and the ARBO structures. Inbound address can just define the port via the :port structure only rather than the full nnn.nnn.nnn.nnn:port specification. The IP= keyword will provide the nnn.nnn.nnn.nnn address structure for a particular instance of Virtel. So one ARBO file could provide common port addresses and the VIRTEL instance complements this with a specific IP address using the JCL IP= parameter. This also allows VIRTEL to utilize a multi TCP/IP stack environment without the need for duplicated ARBO files. This value can be placed ine the fourth position of the PARM card.
 
@@ -1155,7 +1155,7 @@ Currently, VIRTEL makes use of the System Symbolic &SYSCLONE to enable substitut
 
 ::
 
-  //S01 EXEC PGM=VIR0000,PARM='EH,,,192.168.170.30,00'
+  //S01 EXEC PGM=VIR6000,PARM='EH,,,192.168.170.30,00'
 
 This will start Virtel with the TCT called VIRTCTEH, use a default home address of 192.168.170.30 and override and "+" character with the value "00". The APPLID=APPLEH+ keyword, as defined in the TCT, will become APPLID=APPLEH00. The CLONE= value replaces the IBM symbolic value, consequently the SYSCLONE-SYMBOL within scenario statements will now represent the JCL CLONE= value in scenario statements such as:-
 
