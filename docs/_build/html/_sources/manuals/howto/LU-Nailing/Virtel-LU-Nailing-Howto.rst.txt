@@ -516,6 +516,7 @@ support self-registration.
 
 ::
 
+	*
 		LINE ID=X-HTTP,
 		NAME=HTTP-EXC,
 		LOCADDR=192.168.170.33:41003,
@@ -538,6 +539,7 @@ name for the line is X-HTTP and the external name HTTP-EXEC.
 
 ::
 
+	*
 		TERMINAL ID=XLPC0000,
 		RELAY=HOLTWIN7,
 		POOL=*XLCPOOL,
@@ -638,7 +640,7 @@ EXCWHOST.
 *6.2.4 The Entry Points*
 
 ::
-
+	*
 	    ENTRY ID=EPREJECT,
 	    DESC='Entry point for unauthorized HTTP users',
 	    TRANSACT=REJ,
@@ -683,6 +685,7 @@ The transactions for EPREJECT are:-
 
 ::
 
+	*
 		TRANSACT ID=REJ-00,
 		NAME=EPREJECT,
 		DESC="Default directory = entry point name",
@@ -792,25 +795,27 @@ Self-Registration requires a group of web elements:-
 
 ::
 
-	CommandandGo.htm
-	CommandandWait.htm
-	CustomFunctions.js
-	EXCWHOST.htm
-	INITVTAM.htm
+	*
+		CommandandGo.htm
+		CommandandWait.htm
+		CustomFunctions.js
+		EXCWHOST.htm
+		INITVTAM.htm
 
 These elements are uploaded into the EXC-DIR sub directory. Within the
 ARBO configuration the sub-directory is defined as:-
 
 ::
 
-	SUBDIR ID=EXC-DIR,
-	DESC='Pages for EXCWHOST',
-	DDNAME=HTMLTRSF,
-	KEY=EXC-KEY,
-	NAMELEN=0064,
-	AUTHUP=X,
-	AUTHDOWN=X,
-	AUTHDEL=X
+	*
+		SUBDIR ID=EXC-DIR,
+		DESC='Pages for EXCWHOST',
+		DDNAME=HTMLTRSF,
+		KEY=EXC-KEY,
+		NAMELEN=0064,
+		AUTHUP=X,
+		AUTHDOWN=X,
+		AUTHDEL=X
 
 To be able to upload web elements to this sub-direction requires the
 services of an internal Virtel upload transaction. This is defined in
@@ -818,15 +823,16 @@ the W2H-DIR as:-
 
 ::
 
-	TRANSACT ID=W2H-83,
-	NAME='uplexc',
-	DESC='Upload HTML pages (EXC-DIR directory)',
-	APPL=VIR0041C,
-	TYPE=2,
-	TERMINAL=DELOC,
-	STARTUP=2,
-	SECURITY=1,
-	LOGMSG=EXC-DIR
+	*
+		TRANSACT ID=W2H-83,
+		NAME='uplexc',
+		DESC='Upload HTML pages (EXC-DIR directory)',
+		APPL=VIR0041C,
+		TYPE=2,
+		TERMINAL=DELOC,
+		STARTUP=2,
+		SECURITY=1,
+		LOGMSG=EXC-DIR
 
 **6.3 The Correspondent Sub Application** 
 

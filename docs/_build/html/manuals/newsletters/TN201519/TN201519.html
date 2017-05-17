@@ -434,9 +434,9 @@ similar page in HTML. The transaction definition looks like:-</p>
 <p><a class="reference internal" href="../../../_images/image77.png"><img alt="image6" src="../../../_images/image77.png" style="width: 5.45833in; height: 3.72093in;" /></a></p>
 </div></blockquote>
 <p><em>Fig 7. - VTAMUSS transaction</em></p>
-<p>..note:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>“Security=1” is set which will force users to logon before the USSTAB is displayed. Change this to 0 if you wish to bypass this security check.
-</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">“Security=1” is set which will force users to logon before the USSTAB is displayed. Change this to 0 if you wish to bypass this security check.</p>
 </div>
 <ol class="arabic" start="8">
 <li><p class="first">From a browser access the VTAMUSS transaction. This can be from the VIRTEL Menu Screen or with a direct URL such as <a class="reference external" href="http://192.168.170.30:41003">http://192.168.170.30:41003</a>. By default the TIOA logon script associated with this entry point will call the VTAMUSS transaction which will then display the default USSTAB. This is just a sanity check to make sure that the VIR0021W module has been installed and is working correctly. See below for an example of the Virtel default USSTAB.</p>
@@ -467,7 +467,7 @@ returned to the VIRTEL menu and not the VTAM screen. This can be changed. See no
 </ol>
 <p><strong>Constraints</strong></p>
 <p>VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
-APPLID=TSO. Both would be accepted. VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.</p>
+APPLID=TSO. Both would be accepted.</p>
 <p>VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.</p>
 <p>Only buffer displacement coding is supported, not buffer addresse. For example to position to col. 1, row 1 the following should be coded:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="n">AL2</span><span class="p">(((</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="n">R</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="mi">01</span> <span class="o">&lt;</span> <span class="n">Assembles</span> <span class="k">as</span> <span class="n">displacement</span>

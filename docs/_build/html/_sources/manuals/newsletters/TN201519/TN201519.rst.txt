@@ -289,7 +289,7 @@ The second transaction, EDS-03W, is a transaction the enables VIRTEL to access t
 
 *Fig 7. - VTAMUSS transaction*
 
-..note::
+.. note::
 
   “Security=1” is set which will force users to logon before the USSTAB is displayed. Change this to 0 if you wish to bypass this security check.
 
@@ -322,7 +322,7 @@ Press PF1, PF3, PF3, PF1 to save the changes. The “usstab=ussn” string will 
 **Constraints**
 
 VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
-APPLID=TSO. Both would be accepted. VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.
+APPLID=TSO. Both would be accepted. 
 
 VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.
 

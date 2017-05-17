@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Miscellaneous" href="../../../howto.html"/>
-        <link rel="prev" title="How To - AT-TLS" href="../AT-TLS/Virtel-AT-TLS-Howto.html"/> 
+        <link rel="prev" title="How To - FAQs" href="../FAQ/Virtel-FAQ.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -94,6 +94,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../howto.html">Miscellaneous</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../howto.html#how-to-docs">How To Docs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../AT-TLS/Virtel-AT-TLS-Howto.html">How To - AT-TLS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../FAQ/Virtel-FAQ.html">How To - FAQs</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">How To - Virtel Nailing</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#how-to-activate-virtel-lu-nailing">How to activate VIRTEL LU nailing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#introduction">1 Introduction</a></li>
@@ -552,26 +553,28 @@ support self-registration.</p>
 <p><a class="reference internal" href="../../../_images/image60.jpeg"><img alt="image60" src="../../../_images/image60.jpeg" style="width: 6.59375in; height: 6.46875in;" /></a></p>
 <p><strong>Figure 6.0 - Overview of Self Registration</strong></p>
 <p><em>6.2.1 The Line definition</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LINE</span> <span class="n">ID</span><span class="o">=</span><span class="n">X</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
-<span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">EXC</span><span class="p">,</span>
-<span class="n">LOCADDR</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.33</span><span class="p">:</span><span class="mi">41003</span><span class="p">,</span>
-<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP line (EXC WEB application)&#39;</span>
-<span class="n">TERMINAL</span><span class="o">=</span><span class="n">XL</span><span class="p">,</span>
-<span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>
-<span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="n">PROTOCOL</span><span class="o">=</span><span class="n">VIRHTTP</span><span class="p">,</span>
-<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
-<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
-<span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
-<span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+        <span class="n">LINE</span> <span class="n">ID</span><span class="o">=</span><span class="n">X</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">EXC</span><span class="p">,</span>
+        <span class="n">LOCADDR</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.33</span><span class="p">:</span><span class="mi">41003</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP line (EXC WEB application)&#39;</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">XL</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">PROTOCOL</span><span class="o">=</span><span class="n">VIRHTTP</span><span class="p">,</span>
+        <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+        <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+        <span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+        <span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span>
 </pre></div>
 </div>
 <p>This line definition will accept calls on port 41003. Its associated
 terminal definitions are prefixed with the characters XL. The internal
 name for the line is X-HTTP and the external name HTTP-EXEC.</p>
 <p><em>6.2.2 The terminal definitions</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">XLPC0000</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+        <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">XLPC0000</span><span class="p">,</span>
         <span class="n">RELAY</span><span class="o">=</span><span class="n">HOLTWIN7</span><span class="p">,</span>
         <span class="n">POOL</span><span class="o">=*</span><span class="n">XLCPOOL</span><span class="p">,</span>
         <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;PC definition for Ed Holt&#39;</span><span class="p">,</span>
@@ -661,35 +664,39 @@ self-registered the call in will conatin a cookie in the HTTP request.
 This will be trapped by rule R0000100 and passed to entry point
 EXCWHOST.</p>
 <p><em>6.2.4 The Entry Points</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">EPREJECT</span><span class="p">,</span>
-<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Entry point for unauthorized HTTP users&#39;</span><span class="p">,</span>
-<span class="n">TRANSACT</span><span class="o">=</span><span class="n">REJ</span><span class="p">,</span>
-<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0720</span><span class="p">,</span>
-<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>
-<span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span>
-<span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span>
-<span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">X</span>
-<span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">EXCWHOST</span><span class="p">,</span>
-<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;EXC WEB entry point (users with cookie)&#39;</span><span class="p">,</span>
-<span class="n">TRANSACT</span><span class="o">=</span><span class="n">EXCW</span><span class="p">,</span>
-<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0720</span><span class="p">,</span>
-<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>
-<span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span>
-<span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span>
-<span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">X</span>
-<span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">INITVTAM</span><span class="p">,</span>
-<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Self-registration for line X-HTTP&#39;</span><span class="p">,</span>
-<span class="n">TRANSACT</span><span class="o">=</span><span class="n">INITV</span><span class="p">,</span>
-<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0025</span><span class="p">,</span>
-<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>
-<span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020V</span><span class="p">,</span>
-<span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021B</span><span class="p">,</span>
-<span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">X</span>
-</pre></div>
-</div>
+<dl class="docutils">
+<dt>::</dt>
+<dd><ul class="first last simple">
+<li>ENTRY ID=EPREJECT,
+DESC=&#8217;Entry point for unauthorized HTTP users&#8217;,
+TRANSACT=REJ,
+TIMEOUT=0720,
+ACTION=0,
+EMUL=HTML,
+SIGNON=VIR0020H,
+MENU=VIR0021A,
+EXTCOLOR=X
+ENTRY ID=EXCWHOST,
+DESC=&#8217;EXC WEB entry point (users with cookie)&#8217;,
+TRANSACT=EXCW,
+TIMEOUT=0720,
+ACTION=0,
+EMUL=HTML,
+SIGNON=VIR0020H,
+MENU=VIR0021A,
+EXTCOLOR=X
+ENTRY ID=INITVTAM,
+DESC=&#8217;Self-registration for line X-HTTP&#8217;,
+TRANSACT=INITV,
+TIMEOUT=0025,
+ACTION=0,
+EMUL=HTML,
+SIGNON=VIR0020V,
+MENU=VIR0021B,
+EXTCOLOR=X</li>
+</ul>
+</dd>
+</dl>
 <p>These three entry points perform the logic the “self-registration’
 process through there associated transactions. Each entry point is
 associated with a group of transactions identified by the TRANSACT=
@@ -700,14 +707,15 @@ transaction will always equal the name of the entry point.</p>
 <p>Transactions are associated with entry points by a common prefix
 identified in the Entry point through the TRANSACT= keyword.</p>
 <p>The transactions for EPREJECT are:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">REJ</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
-<span class="n">NAME</span><span class="o">=</span><span class="n">EPREJECT</span><span class="p">,</span>
-<span class="n">DESC</span><span class="o">=</span><span class="s2">&quot;Default directory = entry point name&quot;</span><span class="p">,</span>
-<span class="n">APPL</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
-<span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-<span class="n">TERMINAL</span><span class="o">=</span><span class="n">XLLOC</span><span class="p">,</span>
-<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+        <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">REJ</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">EPREJECT</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s2">&quot;Default directory = entry point name&quot;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">XLLOC</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p>This is the default transaction for entry point EPREJECT. If called it
@@ -797,37 +805,40 @@ These transaction are accessed via hard coded links in the EXCWHOST.HTM
 page but equally could be part of an APPLIST menu display.</p>
 <p><em>6.2.6 The Sub Directory and related web pages</em></p>
 <p>Self-Registration requires a group of web elements:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CommandandGo</span><span class="o">.</span><span class="n">htm</span>
-<span class="n">CommandandWait</span><span class="o">.</span><span class="n">htm</span>
-<span class="n">CustomFunctions</span><span class="o">.</span><span class="n">js</span>
-<span class="n">EXCWHOST</span><span class="o">.</span><span class="n">htm</span>
-<span class="n">INITVTAM</span><span class="o">.</span><span class="n">htm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+        <span class="n">CommandandGo</span><span class="o">.</span><span class="n">htm</span>
+        <span class="n">CommandandWait</span><span class="o">.</span><span class="n">htm</span>
+        <span class="n">CustomFunctions</span><span class="o">.</span><span class="n">js</span>
+        <span class="n">EXCWHOST</span><span class="o">.</span><span class="n">htm</span>
+        <span class="n">INITVTAM</span><span class="o">.</span><span class="n">htm</span>
 </pre></div>
 </div>
 <p>These elements are uploaded into the EXC-DIR sub directory. Within the
 ARBO configuration the sub-directory is defined as:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SUBDIR</span> <span class="n">ID</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
-<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Pages for EXCWHOST&#39;</span><span class="p">,</span>
-<span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span>
-<span class="n">KEY</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">KEY</span><span class="p">,</span>
-<span class="n">NAMELEN</span><span class="o">=</span><span class="mi">0064</span><span class="p">,</span>
-<span class="n">AUTHUP</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-<span class="n">AUTHDOWN</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-<span class="n">AUTHDEL</span><span class="o">=</span><span class="n">X</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+        <span class="n">SUBDIR</span> <span class="n">ID</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Pages for EXCWHOST&#39;</span><span class="p">,</span>
+        <span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span>
+        <span class="n">KEY</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">KEY</span><span class="p">,</span>
+        <span class="n">NAMELEN</span><span class="o">=</span><span class="mi">0064</span><span class="p">,</span>
+        <span class="n">AUTHUP</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">AUTHDOWN</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">AUTHDEL</span><span class="o">=</span><span class="n">X</span>
 </pre></div>
 </div>
 <p>To be able to upload web elements to this sub-direction requires the
 services of an internal Virtel upload transaction. This is defined in
 the W2H-DIR as:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">83</span><span class="p">,</span>
-<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;uplexc&#39;</span><span class="p">,</span>
-<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Upload HTML pages (EXC-DIR directory)&#39;</span><span class="p">,</span>
-<span class="n">APPL</span><span class="o">=</span><span class="n">VIR0041C</span><span class="p">,</span>
-<span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span><span class="p">,</span>
-<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="n">LOGMSG</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">DIR</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+        <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">83</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;uplexc&#39;</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Upload HTML pages (EXC-DIR directory)&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">VIR0041C</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">LOGMSG</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">DIR</span>
 </pre></div>
 </div>
 <p><strong>6.3 The Correspondent Sub Application</strong></p>
@@ -941,7 +952,7 @@ contained with the cookie.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../AT-TLS/Virtel-AT-TLS-Howto.html" class="btn btn-neutral" title="How To - AT-TLS" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../FAQ/Virtel-FAQ.html" class="btn btn-neutral" title="How To - FAQs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
