@@ -45,3 +45,56 @@ make
 
 make clean	Clean directories
 make html	Build files
+
+================================
+ReStructuredText Markup Language
+================================
+
+Headers
+=======
+
+1. Incoming calls
+=================
+
+1.1 Introduction
+----------------
+
+1.1.1. VIRTEL Web Access (VWA)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Notes and Warnings
+==================
+
+.. note::
+
+    Reproduction, transfer, distribution, or storage, in any form, of all or any part of 
+    the contents of this document, except by prior authorization of SysperTec 
+    Communication, is prohibited.
+
+.. danger:: This book is currently under construction. Do not use!   
+
+
+Labels
+======
+
+.. _V456UG_Introduction:
+
+Fonts
+=====
+
+**VIRTEL User Guide**
+
+*Virtel User Guide*
+
+References
+==========
+
+:ref:`Creating HTML and XML templates <#_V456UG_creating_HTML>`
+
+Literal Blocks
+==============
+
+::
+    http://ipaddr:port/pagename
+
+
