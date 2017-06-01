@@ -9,7 +9,7 @@ How To - FAQs
 
 **1.1 How to deactivate the Virtel status bar** 
 
-To deativate the status bar create a custom.ccs rule and add the following statement:-
+To deativate the status bar create a ccs rule and add it to your custom css file. For example in custCSS.test1.css add the following statement:-
 
 ::
  
