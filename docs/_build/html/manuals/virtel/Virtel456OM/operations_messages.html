@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel456IG/Installation_Guide.html">Installation Guide</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Messages &amp; Operations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-messages">1. Virtel messages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtel-console-messages">2.  VIRTEL console messages</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel456UG/User_Guide.html">User Guide</a></li>
@@ -655,782 +656,1190 @@ Choose one of the options displayed on the screen.</p>
 <dt>Action</dt>
 <dd>None.</dd>
 </dl>
-<p>39 INVALID CURSOR POSITION</p>
-<p>Module
-VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR1003, VIR1004, VIR1006
-Meaning
-You pressed the “delete” function key (F2) but the cursor was not pointing to a configuration record.
-Action
-Move the cursor to the record to be deleted.</p>
-<p>40 CONFIRM DELETE</p>
-<p>Module
-VIR0023, VIR0026, VIR0031, VIR0033, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR0052, VIR1001, VIR1002
-Meaning
-You pressed the “delete” function key (F2) to request the deletion of a configuration record.
-Action
-Press F2 again if you wish to delete the highlighted record. Press any other function key to cancel the delete.</p>
-<p>41 KEY IN DATA AND PRESS ENTER</p>
-<p>Module
-VIR0023, VIR0026, VIR0041, VIR0041A, VIR0042, VIR1001
-Meaning
-An empty screen is displayed into which you can enter the definition of a new configuration record.
-Action
-Fill in the fields on the screen and press Enter to add the new record to the VIRARBO file.</p>
-<p>42 INCORRECT VALUE</p>
-<p>Module
-VIR0023, VIR0031, VIR0041, VIR0041A, VIR0044, VIR0045, VIR0047, VIR1001
-Meaning
-A value entered in a configuration record is not acceptable. For example, a field contains invalid characters, or the terminal name does not correspond to the terminal prefix of the associated line, or the transaction name does not correspond to the prefix of the associated entry point.
-Action
-Correct the field in error and press Enter.</p>
-<p>43 PLEASE WAIT....</p>
-<p>Module
-VIR0012, VIR0016, VIR0032, VIR0036
-Meaning
-VIRTEL is connecting your terminal to the requested application.
-Action
-Wait for the response from the host application.</p>
-<p>44 SIGN -ON ACCEPTED</p>
-<p>This message is no longer issued.</p>
-<p>45 EXCESSIVE NUMBER OF ATTEMPTS</p>
-<p>Module
-VIR0010
-Meaning
-Signon was rejected by the security subsystem because too many incorrect signon attempts were made.
-Action
-Contact your security administrator.</p>
-<p>46 PASSWORD HAS BEEN CHANGED</p>
-<p>Module
-VIR0010
-Meaning
-The user requested a change of password during signon. The new password has been accepted by the security subsystem.
-Action
-None.</p>
-<p>47 INACTIVITY TIMEOUT PLEASE ENTER YOUR PASSWORD</p>
-<p>Module
-VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
-Meaning
-VIRTEL has locked your terminal session because it has been inactive for too long.
-Action
-Enter your password to unlock the terminal.</p>
-<p>48 INVALID FUNCTION KEY</p>
-<p>Module
-VIR1001-1006, VIR2002-2013, VIR2015-2016, VIR2019
-Meaning
-The PF key selected is invalid for this screen.
-Action
-Press one of the PF keys displayed on the screen.</p>
-<p>49 NODE TYPE UNSUPPORTED</p>
-<p>Module
-VIR2002, VIR2014, VIR2019
-Meaning
-Cannot perform the requested function on this type of node.</p>
-<p>Action
-None.</p>
-<p>50 NODE TYPE INVALID</p>
-<p>Module
-VIR2002-2019
-Meaning
-The node type is not recognized by the network management application.
-Action
-None.</p>
-<p>51 PROGRAM progname UNKNOWN OR DISABLED</p>
-<p>Module
-VIR0040, VIR1000-1006, VIR2002-2019, VIR4000-4023
-Meaning
-A VIRTEL subapplication attempted to transfer control to a program which is not available.
-Action
-Contact technical support.</p>
-<p>52 INVALID CHOICE</p>
-<p>Module
-VIR0040, VIR1000, VIR4000-4003, VIR4005
-Meaning
-You entered an option which is not displayed on the menu.
-Action
-Choose one of the options displayed on the menu.</p>
-<p>53 FUNCTION RESERVED FOR ADMINISTRATOR</p>
-<p>Module
-VIR4000
-Meaning
-You entered an option which requires administrator authorization, but your userid does not have administrator privileges.
-Action
-Sign on with an administrator userid.</p>
-<p>54 OPTION RESERVED FOR HEAD OF DEPARTMENT</p>
-<p>Module
-VIR0040, VIR4000-4003</p>
-<p>Meaning
-You entered an option which requires authorization by head of department, but your userid does not have the necessary privileges.
-Action
-Sign on with a userid which is marked as head of department.</p>
-<p>55 ENTER NAME OF DEPARTMENT</p>
-<p>Module
-VIR4004, VIR4020, VIR4021
-Meaning
-The requested operation requires a value in the indicated field but the field is blank.
-Action
-Enter a value in the indicated field.</p>
-<p>56 ENTER THE DESCRIPTION OF THE deptname DEPARTMENT</p>
-<p>Module
-VIR4020, VIR4021
-Meaning
-The requested operation requires a value but the field is blank.
-Action
-Enter a value in the indicated field.</p>
-<p>57 ENTER THE NAME OF THE PERSON RESPONSIBLE</p>
-<p>Module
-VIR4020, VIR4021
-Meaning
-The requested operation requires a value but the field is blank.
-Action
-Enter a value in the indicated field.</p>
-<p>58 ENTER THE TITLE OF THE PERSON RESPONSIBLE</p>
-<p>Module
-VIR4020, VIR4021
-Meaning
-The requested operation requires a value but the field is blank.
-Action
-Enter a value in the indicated field.</p>
-<p>59 THE DEPARTMENT ALREADY EXISTS</p>
-<p>Module
-VIR4020
-Meaning
-You are attempting to add a new department but a department of the same name already exists.
-Action
-Choose a new department name or edit the existing department.</p>
-<p>60 THE RESPONSIBLE PERSON ALREADY EXISTS</p>
-<p>Module
-VIR4020
-Meaning
-You are attempting to add a new person but a person of the same name already exists.
-Action
-Choose a new person or edit the existing person.</p>
-<p>61 PRESS PF1 TO CONFIRM CREATION</p>
-<p>Module
-VIR4006, VIR4010, VIR4014, VIR4020
-Meaning
-VIRTEL is requesting confirmation that you wish to create a new record.
-Action
-Press F1 to create the new record. Press any other function key to cancel creation of the new record.</p>
-<p>62 CREATION OK</p>
-<p>Module
-VIR4006, VIR4010, VIR4014, VIR4020, VIR4022
-Meaning
-The new record has been created.
-Action
-None.</p>
-<p>63 END OF FILE</p>
-<p>Module
-VIR1001-1006, VIR4004, VIR4007-4009, VIR4011-4014, VIR4015-4016, VIR4021-4023
-Meaning
-The end of file has been reached while browsing forward through the file.
-Action
-None.</p>
-<p>64 THE DEPARTMENT DOES NOT EXIST</p>
-<p>Module
-VIR4004, VIR4021
-Meaning
-The department which you are attempting to update no longer exists.
-Action
-None.
-65 UPDATE OK</p>
-<p>Module
-VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
-Meaning
-The updated record has been successfully written to the file.
-Action
-None.</p>
-<p>66 BEGINNING OF FILE</p>
-<p>Module
-VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
-Meaning
-The beginning of the file has been reached while browsing backwards through the file.
-Action
-None.</p>
-<p>67 THE DEPARTMENT STILL CONTAINS PROFILES</p>
-<p>Module
-VIR4021
-Meaning
-The department cannot be deleted because there are profiles associated with this department.
-Action
-Delete the associated profiles before deleting the department.</p>
-<p>68 THE DEPARTMENT STILL CONTAINS USERS</p>
-<p>Module
-VIR4021
-Meaning
-The department cannot be deleted because there are users associated with this department.
-Action
-Delete the associated users before deleting the department.</p>
-<p>69 USE PF2 TO CONFIRM DELETE</p>
-<p>Module
-VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
-Meaning
-You requested the deletion of a configuration record.
-Action
-Press F2 if you wish to delete the record. Press any other function key to cancel the delete.
-70 DELETE OK</p>
-<p>Module
-VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
-Meaning
-The requested record has been successfully deleted from the file.
-Action
-None.</p>
-<p>71 THE RESOURCE ALREADY EXISTS</p>
-<p>Module
-VIR4010
-Meaning
-You are attempting to add a new resource but a resource of the same name already exists.
-Action
-Choose a new resource name or edit the existing resource.</p>
-<p>72 ENTER THE DESCRIPTION OF THE RESOURCE</p>
-<p>Module
-VIR4010, VIR4011
-Meaning
-The resource description field is blank.
-Action
-Enter a value in the resource description field.</p>
-<p>73 THE CURSOR POSITION IS INVALID</p>
-<p>Module
-VIR4009, VIR4011, VIR4013, VIR4016, VIR4022
-Meaning
-The function you requested requires the cursor to be placed on a record.
-Action
-Position the cursor on the record you wish to operate upon.</p>
-<p>74 THE RESOURCE DOES NOT EXIST</p>
-<p>Module
-VIR4011
-Meaning
-The resource which you are attempting to update no longer exists.
-Action
-None.</p>
-<p>75 MODIFIED BY ANOTHER USER</p>
-<p>Module
-VIR4004, VIR4010-4011, VIR4015-4016, VIR4021-4023
-Meaning
-The record you are attempting to update has been updated by another user.
-Action
-Return to the previous menu and display the record again.</p>
-<p>76 ENTER THE NAME OF THE PROFILE</p>
-<p>Module
-VIR4006, VIR4008
-Meaning
-The profile name is blank.
-Action
-Enter a value in the profile name field.</p>
-<p>77 ENTER THE DESCRIPTION OF THE PROFILE</p>
-<p>Module
-VIR4006, VIR4008
-Meaning
-The profile description is blank.
-Action
-Enter a value in the profile description field.</p>
-<p>78 THE PROFILE ALREADY EXISTS</p>
-<p>Module
-VIR4006, VIR4008
-Meaning
-You are attempting to add a new profile record but a profile of the same name already exists.
-Action
-Enter a different name in the profile name field.</p>
-<p>79 ENTER THE NAME OF THE RESOURCE OR THE PROFILE</p>
-<p>This message is no longer issued.</p>
-<p>80 DATA TYPE INVALID (R,P)</p>
-<p>This message is no longer issued.</p>
-<p>81 REQUESTED ELEMENT DOES NOT EXIST</p>
-<p>Module
-VIR1002, VIR4006, VIR4008
-Meaning
-The record being added or updated references an element which does not exist.
-Action
-Correct the name of the referenced element.</p>
-<p>82 REQUESTED ELEMENT DOES NOT EXIST IN DEPARTMENT</p>
-<p>Module
-VIR4006, VIR4008
-Meaning
-The record being added or updated references an element which belongs to a different department.
-Action
-Correct the name of the referenced element.</p>
-<p>83 YOU ARE ON THE FIRST PAGE</p>
-<p>Module
-VIR4004, VIR4006, VIR4008, VIR4012-4015
-Meaning
-You tried to scroll back to the previous page of data but you are already on the first page.
-Action
-None.</p>
-<p>84 YOU ARE ON THE LAST PAGE</p>
-<p>Module
-VIR4004, VIR4006, VIR4008, VIR4012-4015
-Meaning
-You tried to scroll forward to the next page of data but you are already on the last page.
-Action
-None.</p>
-<p>85 THE PROFILE DOES NOT EXIST</p>
-<p>Module
-VIR4004, VIR4008, VIR4009, VIR4014-4015
-Meaning
-The profile being updated or deleted does not exist.
-Action
-None.</p>
-<p>86 THE PROFILE IS USED IN ANOTHER DEPARTMENT</p>
-<p>Module
-VIR4008
-Meaning
-The profile being updated does not exist.
-Action
-None.</p>
-<p>87 THE PROFILE IS EMPLOYED BY A USER</p>
-<p>Module
-VIR4008, VIR4009
-Meaning
-The profile being updated or deleted has been modified by another user since it was last displayed on your terminal.
-Action
-Display the profile again and re-enter the modifications.</p>
-<p>88 ENTER THE NAME OF THE USER</p>
-<p>Module
-VIR4014, VIR4015, VIR4022
-Meaning
-You are attempting to create or update a user or administrator record, but the user name field is blank.
-Action
-Enter a valid user name.</p>
-<p>89 ENTER THE DESCRIPTION OF THE USER</p>
+</div>
+<div class="section" id="invalid-cursor-position">
+<h4>39 INVALID CURSOR POSITION<a class="headerlink" href="#invalid-cursor-position" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR1003, VIR1004, VIR1006</dd>
+<dt>Meaning</dt>
+<dd>You pressed the “delete” function key (F2) but the cursor was not pointing to a configuration record.</dd>
+<dt>Action</dt>
+<dd>Move the cursor to the record to be deleted.</dd>
+</dl>
+</div>
+<div class="section" id="confirm-delete">
+<h4>40 CONFIRM DELETE<a class="headerlink" href="#confirm-delete" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0023, VIR0026, VIR0031, VIR0033, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR0052, VIR1001, VIR1002</dd>
+<dt>Meaning</dt>
+<dd>You pressed the “delete” function key (F2) to request the deletion of a configuration record.</dd>
+<dt>Action</dt>
+<dd>Press F2 again if you wish to delete the highlighted record. Press any other function key to cancel the delete.</dd>
+</dl>
+</div>
+<div class="section" id="key-in-data-and-press-enter">
+<h4>41 KEY IN DATA AND PRESS ENTER<a class="headerlink" href="#key-in-data-and-press-enter" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0023, VIR0026, VIR0041, VIR0041A, VIR0042, VIR1001</dd>
+<dt>Meaning</dt>
+<dd>An empty screen is displayed into which you can enter the definition of a new configuration record.</dd>
+<dt>Action</dt>
+<dd>Fill in the fields on the screen and press Enter to add the new record to the VIRARBO file.</dd>
+</dl>
+</div>
+<div class="section" id="incorrect-value">
+<h4>42 INCORRECT VALUE<a class="headerlink" href="#incorrect-value" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0023, VIR0031, VIR0041, VIR0041A, VIR0044, VIR0045, VIR0047, VIR1001</dd>
+<dt>Meaning</dt>
+<dd>A value entered in a configuration record is not acceptable. For example, a field contains invalid characters, or the terminal name does not correspond to the terminal prefix of the associated line, or the transaction name does not correspond to the prefix of the associated entry point.</dd>
+<dt>Action</dt>
+<dd>Correct the field in error and press Enter.</dd>
+</dl>
+</div>
+<div class="section" id="please-wait">
+<h4>43 PLEASE WAIT....<a class="headerlink" href="#please-wait" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0012, VIR0016, VIR0032, VIR0036</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL is connecting your terminal to the requested application.</dd>
+<dt>Action</dt>
+<dd>Wait for the response from the host application.</dd>
+</dl>
+</div>
+<div class="section" id="excessive-number-of-attempts">
+<h4>45 EXCESSIVE NUMBER OF ATTEMPTS<a class="headerlink" href="#excessive-number-of-attempts" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0010</dd>
+<dt>Meaning</dt>
+<dd>Signon was rejected by the security subsystem because too many incorrect signon attempts were made.</dd>
+<dt>Action</dt>
+<dd>Contact your security administrator.</dd>
+</dl>
+</div>
+<div class="section" id="password-has-been-changed">
+<h4>46 PASSWORD HAS BEEN CHANGED<a class="headerlink" href="#password-has-been-changed" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0010</dd>
+<dt>Meaning</dt>
+<dd>The user requested a change of password during signon. The new password has been accepted by the security subsystem.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="inactivity-timeout-please-enter-your-password">
+<h4>47 INACTIVITY TIMEOUT PLEASE ENTER YOUR PASSWORD<a class="headerlink" href="#inactivity-timeout-please-enter-your-password" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL has locked your terminal session because it has been inactive for too long.</dd>
+<dt>Action</dt>
+<dd>Enter your password to unlock the terminal.</dd>
+</dl>
+</div>
+<div class="section" id="invalid-function-key">
+<h4>48 INVALID FUNCTION KEY<a class="headerlink" href="#invalid-function-key" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1001-1006, VIR2002-2013, VIR2015-2016, VIR2019</dd>
+<dt>Meaning</dt>
+<dd>The PF key selected is invalid for this screen.</dd>
+<dt>Action</dt>
+<dd>Press one of the PF keys displayed on the screen.</dd>
+</dl>
+</div>
+<div class="section" id="node-type-unsupported">
+<h4>49 NODE TYPE UNSUPPORTED<a class="headerlink" href="#node-type-unsupported" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR2002, VIR2014, VIR2019</dd>
+<dt>Meaning</dt>
+<dd>Cannot perform the requested function on this type of node.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="node-type-invalid">
+<h4>50 NODE TYPE INVALID<a class="headerlink" href="#node-type-invalid" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR2002-2019</dd>
+<dt>Meaning</dt>
+<dd>The node type is not recognized by the network management application.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="program-progname-unknown-or-disabled">
+<h4>51 PROGRAM progname UNKNOWN OR DISABLED<a class="headerlink" href="#program-progname-unknown-or-disabled" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0040, VIR1000-1006, VIR2002-2019, VIR4000-4023</dd>
+<dt>Meaning</dt>
+<dd>A VIRTEL subapplication attempted to transfer control to a program which is not available.</dd>
+<dt>Action</dt>
+<dd>Contact technical support.</dd>
+</dl>
+</div>
+<div class="section" id="invalid-choice">
+<h4>52 INVALID CHOICE<a class="headerlink" href="#invalid-choice" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0040, VIR1000, VIR4000-4003, VIR4005</dd>
+<dt>Meaning</dt>
+<dd>You entered an option which is not displayed on the menu.</dd>
+<dt>Action</dt>
+<dd>Choose one of the options displayed on the menu.</dd>
+</dl>
+</div>
+<div class="section" id="function-reserved-for-administrator">
+<h4>53 FUNCTION RESERVED FOR ADMINISTRATOR<a class="headerlink" href="#function-reserved-for-administrator" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4000</dd>
+<dt>Meaning</dt>
+<dd>You entered an option which requires administrator authorization, but your userid does not have administrator privileges.</dd>
+<dt>Action</dt>
+<dd>Sign on with an administrator userid.</dd>
+</dl>
+</div>
+<div class="section" id="option-reserved-for-head-of-department">
+<h4>54 OPTION RESERVED FOR HEAD OF DEPARTMENT<a class="headerlink" href="#option-reserved-for-head-of-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0040, VIR4000-4003</dd>
+<dt>Meaning</dt>
+<dd>You entered an option which requires authorization by head of department, but your userid does not have the necessary privileges.</dd>
+<dt>Action</dt>
+<dd>Sign on with a userid which is marked as head of department.</dd>
+</dl>
+</div>
+<div class="section" id="enter-name-of-department">
+<h4>55 ENTER NAME OF DEPARTMENT<a class="headerlink" href="#enter-name-of-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4020, VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The requested operation requires a value in the indicated field but the field is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a value in the indicated field.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-description-of-the-deptname-department">
+<h4>56 ENTER THE DESCRIPTION OF THE deptname DEPARTMENT<a class="headerlink" href="#enter-the-description-of-the-deptname-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4020, VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The requested operation requires a value but the field is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a value in the indicated field.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-name-of-the-person-responsible">
+<h4>57 ENTER THE NAME OF THE PERSON RESPONSIBLE<a class="headerlink" href="#enter-the-name-of-the-person-responsible" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4020, VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The requested operation requires a value but the field is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a value in the indicated field.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-title-of-the-person-responsible">
+<h4>58 ENTER THE TITLE OF THE PERSON RESPONSIBLE<a class="headerlink" href="#enter-the-title-of-the-person-responsible" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4020, VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The requested operation requires a value but the field is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a value in the indicated field.</dd>
+</dl>
+</div>
+<div class="section" id="the-department-already-exists">
+<h4>59 THE DEPARTMENT ALREADY EXISTS<a class="headerlink" href="#the-department-already-exists" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4020</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to add a new department but a department of the same name already exists.</dd>
+<dt>Action</dt>
+<dd>Choose a new department name or edit the existing department.</dd>
+</dl>
+</div>
+<div class="section" id="the-responsible-person-already-exists">
+<h4>60 THE RESPONSIBLE PERSON ALREADY EXISTS<a class="headerlink" href="#the-responsible-person-already-exists" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4020</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to add a new person but a person of the same name already exists.</dd>
+<dt>Action</dt>
+<dd>Choose a new person or edit the existing person.</dd>
+</dl>
+</div>
+<div class="section" id="press-pf1-to-confirm-creation">
+<h4>61 PRESS PF1 TO CONFIRM CREATION<a class="headerlink" href="#press-pf1-to-confirm-creation" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4006, VIR4010, VIR4014, VIR4020</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL is requesting confirmation that you wish to create a new record.</dd>
+<dt>Action</dt>
+<dd>Press F1 to create the new record. Press any other function key to cancel creation of the new record.</dd>
+</dl>
+</div>
+<div class="section" id="id1">
+<h4>62 CREATION OK<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4006, VIR4010, VIR4014, VIR4020, VIR4022</dd>
+<dt>Meaning</dt>
+<dd>The new record has been created.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="end-of-file">
+<h4>63 END OF FILE<a class="headerlink" href="#end-of-file" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1001-1006, VIR4004, VIR4007-4009, VIR4011-4014, VIR4015-4016, VIR4021-4023</dd>
+<dt>Meaning</dt>
+<dd>The end of file has been reached while browsing forward through the file.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-department-does-not-exist">
+<h4>64 THE DEPARTMENT DOES NOT EXIST<a class="headerlink" href="#the-department-does-not-exist" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The department which you are attempting to update no longer exists.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="id2">
+<h4>65 UPDATE OK<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023</dd>
+<dt>Meaning</dt>
+<dd>The updated record has been successfully written to the file.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="beginning-of-file">
+<h4>66 BEGINNING OF FILE<a class="headerlink" href="#beginning-of-file" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023</dd>
+<dt>Meaning</dt>
+<dd>The beginning of the file has been reached while browsing backwards through the file.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-department-still-contains-profiles">
+<h4>67 THE DEPARTMENT STILL CONTAINS PROFILES<a class="headerlink" href="#the-department-still-contains-profiles" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The department cannot be deleted because there are profiles associated with this department.</dd>
+<dt>Action</dt>
+<dd>Delete the associated profiles before deleting the department.</dd>
+</dl>
+</div>
+<div class="section" id="the-department-still-contains-users">
+<h4>68 THE DEPARTMENT STILL CONTAINS USERS<a class="headerlink" href="#the-department-still-contains-users" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The department cannot be deleted because there are users associated with this department.</dd>
+<dt>Action</dt>
+<dd>Delete the associated users before deleting the department.</dd>
+</dl>
+</div>
+<div class="section" id="use-pf2-to-confirm-delete">
+<h4>69 USE PF2 TO CONFIRM DELETE<a class="headerlink" href="#use-pf2-to-confirm-delete" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4008-4009, VIR4011, VIR4015-4016, VIR4021</dd>
+<dt>Meaning</dt>
+<dd>You requested the deletion of a configuration record.</dd>
+<dt>Action</dt>
+<dd>Press F2 if you wish to delete the record. Press any other function key to cancel the delete.</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h4>70 DELETE OK<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4008-4009, VIR4011, VIR4015-4016, VIR4021</dd>
+<dt>Meaning</dt>
+<dd>The requested record has been successfully deleted from the file.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-resource-already-exists">
+<h4>71 THE RESOURCE ALREADY EXISTS<a class="headerlink" href="#the-resource-already-exists" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4010</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to add a new resource but a resource of the same name already exists.</dd>
+<dt>Action</dt>
+<dd>Choose a new resource name or edit the existing resource.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-description-of-the-resource">
+<h4>72 ENTER THE DESCRIPTION OF THE RESOURCE<a class="headerlink" href="#enter-the-description-of-the-resource" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4010, VIR4011</dd>
+<dt>Meaning</dt>
+<dd>The resource description field is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a value in the resource description field.</dd>
+</dl>
+</div>
+<div class="section" id="the-cursor-position-is-invalid">
+<h4>73 THE CURSOR POSITION IS INVALID<a class="headerlink" href="#the-cursor-position-is-invalid" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4009, VIR4011, VIR4013, VIR4016, VIR4022</dd>
+<dt>Meaning</dt>
+<dd>The function you requested requires the cursor to be placed on a record.</dd>
+<dt>Action</dt>
+<dd>Position the cursor on the record you wish to operate upon.</dd>
+</dl>
+</div>
+<div class="section" id="the-resource-does-not-exist">
+<h4>74 THE RESOURCE DOES NOT EXIST<a class="headerlink" href="#the-resource-does-not-exist" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4011</dd>
+<dt>Meaning</dt>
+<dd>The resource which you are attempting to update no longer exists.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="modified-by-another-user">
+<h4>75 MODIFIED BY ANOTHER USER<a class="headerlink" href="#modified-by-another-user" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4010-4011, VIR4015-4016, VIR4021-4023</dd>
+<dt>Meaning</dt>
+<dd>The record you are attempting to update has been updated by another user.</dd>
+<dt>Action</dt>
+<dd>Return to the previous menu and display the record again.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-name-of-the-profile">
+<h4>76 ENTER THE NAME OF THE PROFILE<a class="headerlink" href="#enter-the-name-of-the-profile" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4006, VIR4008</dd>
+<dt>Meaning</dt>
+<dd>The profile name is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a value in the profile name field.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-description-of-the-profile">
+<h4>77 ENTER THE DESCRIPTION OF THE PROFILE<a class="headerlink" href="#enter-the-description-of-the-profile" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4006, VIR4008</dd>
+<dt>Meaning</dt>
+<dd>The profile description is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a value in the profile description field.</dd>
+</dl>
+</div>
+<div class="section" id="the-profile-already-exists">
+<h4>78 THE PROFILE ALREADY EXISTS<a class="headerlink" href="#the-profile-already-exists" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4006, VIR4008</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to add a new profile record but a profile of the same name already exists.</dd>
+<dt>Action</dt>
+<dd>Enter a different name in the profile name field.</dd>
+</dl>
+</div>
+<div class="section" id="requested-element-does-not-exist">
+<h4>81 REQUESTED ELEMENT DOES NOT EXIST<a class="headerlink" href="#requested-element-does-not-exist" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1002, VIR4006, VIR4008</dd>
+<dt>Meaning</dt>
+<dd>The record being added or updated references an element which does not exist.</dd>
+<dt>Action</dt>
+<dd>Correct the name of the referenced element.</dd>
+</dl>
+</div>
+<div class="section" id="requested-element-does-not-exist-in-department">
+<h4>82 REQUESTED ELEMENT DOES NOT EXIST IN DEPARTMENT<a class="headerlink" href="#requested-element-does-not-exist-in-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4006, VIR4008</dd>
+<dt>Meaning</dt>
+<dd>The record being added or updated references an element which belongs to a different department.</dd>
+<dt>Action</dt>
+<dd>Correct the name of the referenced element.</dd>
+</dl>
+</div>
+<div class="section" id="id4">
+<h4>83 YOU ARE ON THE FIRST PAGE<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4006, VIR4008, VIR4012-4015</dd>
+<dt>Meaning</dt>
+<dd>You tried to scroll back to the previous page of data but you are already on the first page.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="id5">
+<h4>84 YOU ARE ON THE LAST PAGE<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4006, VIR4008, VIR4012-4015</dd>
+<dt>Meaning</dt>
+<dd>You tried to scroll forward to the next page of data but you are already on the last page.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-profile-does-not-exist">
+<h4>85 THE PROFILE DOES NOT EXIST<a class="headerlink" href="#the-profile-does-not-exist" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4008, VIR4009, VIR4014-4015</dd>
+<dt>Meaning</dt>
+<dd>The profile being updated or deleted does not exist.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-profile-is-used-in-another-department">
+<h4>86 THE PROFILE IS USED IN ANOTHER DEPARTMENT<a class="headerlink" href="#the-profile-is-used-in-another-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4008</dd>
+<dt>Meaning</dt>
+<dd>The profile being updated does not exist.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-profile-is-employed-by-a-user">
+<h4>87 THE PROFILE IS EMPLOYED BY A USER<a class="headerlink" href="#the-profile-is-employed-by-a-user" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4008, VIR4009</dd>
+<dt>Meaning</dt>
+<dd>The profile being updated or deleted has been modified by another user since it was last displayed on your terminal.</dd>
+<dt>Action</dt>
+<dd>Display the profile again and re-enter the modifications.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-name-of-the-user">
+<h4>88 ENTER THE NAME OF THE USER<a class="headerlink" href="#enter-the-name-of-the-user" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4014, VIR4015, VIR4022</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to create or update a user or administrator record, but the user name field is blank.</dd>
+<dt>Action</dt>
+<dd>Enter a valid user name.</dd>
+</dl>
+</div>
+<div class="section" id="enter-the-description-of-the-user">
+<h4>89 ENTER THE DESCRIPTION OF THE USER<a class="headerlink" href="#enter-the-description-of-the-user" title="Permalink to this headline">¶</a></h4>
 <p>Module
 VIR4014, VIR4015
 Meaning
 You are attempting to create or update a user record, but the user description field is blank.
 Action
 Enter a value in the description field.</p>
-<p>90 USER ALREADY EXISTS</p>
-<p>Module
-VIR4014, VIR4015
-Meaning
-You are attempting to create or copy a user record, but the a user of the same name already exists.
-Action
-Enter a different value in the user name field.</p>
-<p>91 ERROR LOGICAL RECORD (name) NOT FOUND</p>
-<p>Module
-VIR0021A, VIR0021R, VIR4004, VIR4014, VIR4015
-Meaning
-Either you are attempting to call an external server name which does not exist, or you are attempting to update or delete a user record name which does not exist in the VIRARBO file.
-Action
-Specify a valid name.</p>
-<p>92 THE PROFILE DOES NOT APPEAR IN THE DEPARTMENT</p>
-<p>Module
-VIR4004, VIR4008, VIR4009, VIR4013, VIR4015
-Meaning
-The profile being updated or deleted does not belong to the same department as the user.
-Action
-Ensure that the profile matches the user’s department.</p>
-<p>93 AUTHORISED PROFILE LIMIT EXCEEDED</p>
-<p>Module
-VIR4004, VIR4015
-Meaning
-An internal table overflow has occurred.
-Action
-Contact technical support.</p>
-<p>94 USER DOES NOT EXIST</p>
-<p>Module
-VIR4015, VIR4016, VIR4021-4023
-Meaning
-The user or administrator being updated or deleted does not exist.</p>
-<p>Action
-None.</p>
-<p>95 USER DOES NOT APPEAR IN THE DEPARTMENT</p>
-<p>Module
-VIR4015, VIR4016, VIR4021, VIR4023
-Meaning
-The user being viewed, updated, deleted, or being used as a model, does not belong to the same department as the administrator.
-Action
-Only an administrator in the same department as the user can perform the requested operation.</p>
-<p>96 FUNCTION RESERVED FOR HEAD OF THE DEPARTMENT</p>
-<p>Module
-VIR4008, VIR4009, VIR4011, VIR4015, VIR4016
-Meaning
-The user being copied, updated, or deleted does not belong to the same department as the administrator.
-Action
-Only an administrator in the same department as the user can perform the requested operation.</p>
-<p>97 ENTER Y OR N</p>
-<p>Module
-VIR4014, VIR4015
-Meaning
-You are attempting to create or update a user record, and the assistant field must contain either O or N.
-Action
-Enter O (yes) or N (no) in the indicated field.</p>
-<p>98 FIELD RESERVED FOR RESPONSIBLE OF DEPARTMENT</p>
-<p>Module
-VIR4014, VIR4015
-Meaning
-You are attempting to create or update a user record, and the assistant field contains O (yes) but you are not the head of department.
-Action
-Only the head of department may put O (yes) in the indicated field.</p>
-<p>99 DELETION OF DEPARTMENT RESPONSIBLE FORBIDDEN</p>
-<p>Module
-VIR4014, VIR4015</p>
-<p>Meaning
-You are attempting to delete a user record which is marked as head of department.
-Action
-Update the department record to assign another user as head of department first.</p>
-<p>100 DELETION OF DEPUTY FORBIDDEN</p>
-<p>Module
-VIR4015
-Meaning
-You are attempting to delete a user record which is marked as an assistant.
-Action
-Set the assistant field to N (no) first.</p>
-<p>101 USER IS ALREADY ADMINISTRATOR</p>
-<p>Module
-VIR4022
-Meaning
-You are attempting to designate a user as an administrator, but the user is already an administrator.
-Action
-None.</p>
-<p>102 THE PROFILE IS USED IN ANOTHER PROFILE</p>
-<p>This message is no longer issued.</p>
-<p>103 REPRODUCTION OK</p>
-<p>Module
-VIR1001, VIR1002, VIR1005, VIR4008, VIR4015
-Meaning
-The record has been successfully copied.
-Action
-None.</p>
-<p>104 REPRODUCTION OF DEPUTY FORBIDDEN</p>
-<p>Module
-VIR4015
-Meaning
-You cannot copy a user record which is marked as an assistant.
-Action
-Set the assistant field to N (no) first, or choose another user to copy.</p>
-<p>105 USER SIGN-ON UNKNOWN</p>
-<p>Module
-VIR4000
-Meaning
-You attempted to access the security administration panels but you have not signed on to VIRTEL.
-Action
-Log in with a valid VIRTEL userid.</p>
-<p>106 SIGN-ON RESTORED OK</p>
-<p>Module
-VIR4023
-Meaning
-You have successfully unblocked a user which was locked out.
-Action
-None.</p>
-<p>107 CALL REJECTED BY THE NETWORK</p>
-<p>Module
-VIR0021A, VIR0021R, VIR0025, VIR0025T
-Meaning
-An attempt to make an outbound X25 call was unsuccessful.
-Action
-Check for messages in the VIRTEL log which indicate the cause of the error.</p>
-<p>108 COMMUNICATION ESTABLISHED</p>
-<p>This message is no longer issued.</p>
-<p>109 PREVIOUS CONNECTION: dd/mm/yy hh:mm:ss termid</p>
-<p>Module
-VIR00081
-Meaning
-This message indicates the date, time, and terminal name of the previous logon by your userid using VIRTEL internal security.
-Action
-None.</p>
-<p>110 THE FILE filename UNKNOWN</p>
-<p>Module
-VIR1001, VIR1002</p>
-<p>Meaning
-The file filename cannot be found.
-Action
-Ensure that the file is correctly referenced in the VIRTCT, and that there is a DD statement for the indicated file.</p>
-<p>111 THE FILE filename IS CLOSED</p>
-<p>Module
-VIR1001, VIR1002
-Meaning
-VIRTEL cannot open the file filename.
-Action
-Check the VIRTEL log for messages relating to the indicated file.</p>
-<p>112 I/OERROR ON FILE filename</p>
-<p>Module
-VIR0043, VIR0043H, VIR1001, VIR1002
-Meaning
-There has been an error accessing the file filename.
-Action
-Check the VIRTEL log for messages relating to the indicated file.</p>
-<p>113 THIS IS NOT A MINITEL NATIVE NODE</p>
-<p>Module
-VIR1003
-Meaning
-The requested record cannot be displayed because it is a sub-server record.
-Action
-Choose a native node record.
-114 ALL=END</p>
-<p>Module
-VIR1003, VIR1004
-Meaning
-This is an information message indicating that all function keys perform the END function.
-Action
-None.</p>
-<p>115 PLEASE SUPPLY A VALID NODE NAME</p>
-<p>Module
-VIR2019</p>
-<p>Meaning
-The network management application requires a non-blank node name.
-Action
-Enter the name of a valid VTAM node.</p>
-<p>116 THE NODE NAME IS INVALID</p>
-<p>Module
-VIR2019
-Meaning
-The node name specified is not the correct type for the network management application.
-Action
-Enter the name of a valid VTAM node.</p>
-<p>117 CONFIRM CANCELLATION OF THE PASSWORD</p>
-<p>Module
-VIR0041
-Meaning
-You pressed PF4 to request that a VIRTELPC password be removed.
-Action
-Press PF4 again to remove the password, or press any other key to cancel the operation.</p>
-<p>118 THIS FILE IS ALREADY IN THE TARGET DIRECTORY</p>
-<p>Module
-VIR0043, VIR0043H, VIR0052
-Meaning
-The file you are attempting to copy already exists in the target directory.
-Action
-Delete the file from the target directory and try again.</p>
-<p>119 COPY COMPLETED</p>
-<p>Module
-VIR0043, VIR0043H
-Meaning
-The file you requested has been successfully copied.
-Action
-None.</p>
-<p>120 THE RECORDED STATUS HAS CHANGED</p>
-<p>Module
-VIR0043, VIR0043H</p>
-<p>Meaning
-The status of the file has been successfully toggled from “Public” to “Private” or vice versa.
-Action
-None.</p>
-<p>121 FILE ERROR PLEASE SEE THE ADMINISTRATOR</p>
-<p>Module
-VIR0033, VIR0043, VIR0043H, VIR0052
-Meaning
-An I/O error has occurred on:
-•   the VIRCMP3 file during compression management;
-•   a user directory or VIRARBO file during directory management;
-•   the VIRSWAP file during page capture management.</p>
-<p>Action
-Check the VIRTEL log for error messages indicating the cause of the error.</p>
-<p>122 FILE TRANSFER IN PROGRESS</p>
-<p>Module
-VIR0043, VIR0043H
-Meaning
-A file is being transferred between VIRTEL and VIRTELPC.
-Action
-None.</p>
-<p>123 CONFIRM COPY TO MEMORY</p>
-<p>Module
-VIR0043, VIR0043H
-Meaning
-You pressed PF6 to request the copy of a file to the stack.
-Action
-Press PF6 again to copy the file, or press any other key to cancel the operation.</p>
-<p>124 CONFIRM THE COPY OF THIS PAGE</p>
-<p>Module
-VIR0043, VIR0043H
-Meaning
-You pressed PF1 to request that all files should be downloaded.
-Action
-Press PF1 again to confirm, or press any other key to cancel the operation.</p>
-<p>125 IMPOSSIBLE OPERATION</p>
-<p>Module
-VIR0022A
-Meaning
-Either you pressed PF2 on the VIRTEL Multi-Session sub-menu to request that the application be promoted to the main menu, but the main menu is full; or you pressed PF2 to request that an application should be demoted to the sub-menu, but the application cannot be removed from the main menu because you currently have a active session with this application.
-Action
-None.</p>
-<p>126 NAME OF PAGE TO LOAD :</p>
-<p>Module
-VIR1010
-Meaning
-VIRTEL is requesting the name of a videotex page to be uploaded to the VIRARBO file.
-Action
-Enter the name of the page to be uploaded.</p>
-<p>127 THE PAGE ALREADY EXISTS,REPLACE (Y / N)</p>
-<p>Module
-VIR1010
-Meaning
-During a videotex page upload operation, VIRTEL has determined that a page of the same name already exists in the VIRARBO file.
-Action
-Enter Y to overwrite the page in the VIRARBO file, or N to cancel the operation.</p>
-<p>128 SELECT THE PAGE THEN PRESS SEND</p>
-<p>Module
-VIR1010
-Meaning
-During a videotex page upload operation, VIRTEL is ready to receive the page to be uploaded.
-Action
-Select the page according to the procedure provided by your page composition software, then press the “SEND” (or “ENVOI”) key.</p>
-<p>129 CREATION COMPLETED</p>
-<p>Module
-VIR1010</p>
-<p>Meaning
-A new videotex page has been successfully uploaded to the VIRARBO file.
-Action
-None.</p>
-<p>130 UPDATE COMPLETED</p>
-<p>Module
-VIR1010
-Meaning
-A replacement videotex page has been successfully uploaded to the VIRARBO file.
-Action
-None.</p>
-<p>131 PRESS PF1 TO CONFIRM THE UPDATE</p>
-<p>Module
-VIR0044, VIR0046
-Meaning
-As a result of an earlier modification to the definition of a VIRTEL transaction, the associated entry point must now be updated.
-Action
-Press PF1 to confirm the update.</p>
-<p>132 PLEASE CONFIRM YOUR PASSWORD</p>
-<p>Module
-VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
-Meaning
-VIRTEL has temporarily locked your terminal because of lack of activity.
-Action
-Enter your password again to reactivate your terminal.</p>
-<p>133 UNITS SPENT: nnnnn.nn</p>
-<p>Module
-VIR0021A, VIR0025
-Meaning
-This message shows the number of units consumed by a call to an external server.
-Action
-None.</p>
-<p>134 POSITION IN QUEUE: nnnn</p>
-<p>Module
-VIR0025, VIR0025T
-Meaning
-This message shows your position in the queue for a call to an external server.
-Action
-None.</p>
-<p>135 ACTIVATION WAS REQUESTED</p>
-<p>Module
-VIR0041A
-Meaning
-You pressed PF4 in the e-mail correspondent management sub-application to request activation of a correspondent.
-Action
-None.</p>
-<p>136 DISABLE WAS DONE</p>
-<p>Module
-VIR0041A
-Meaning
-You pressed PF5 in the e-mail correspondent management sub-application to request deactivation of a correspondent.
-Action
-None.</p>
-<p>137 Should contain the &#8216;&#64;&#8217; sign</p>
-<p>Module
-VIR0041A
-Meaning
-This message is issued by the e-mail correspondent management sub-application to allow you to verify how your terminal displays the “&#64;” sign. In some countries, the “&#64;” sign may appear differently on a 3270 terminal (for example, “à”).
-Action
-When you enter an e-mail address, ensure that you use the same symbol as displayed in this message.</p>
-<p>138 Sample command: &amp;|W</p>
-<p>Module
-VIR0045</p>
-<p>Meaning
-This message is issued by the entry point and transaction management sub-application to allow you to verify how your terminal displays the “&amp;” and “|” signs. In some countries, these characters may appear differently on a 3270 terminal (for example, “!” instead of “|”).
-Action
-When you enter script commands in the “TIOA at logon” and “TIOA at logoff” fields, ensure that you use the same symbols as displayed in this message.</p>
-<p>2.3.    Web Access Messages</p>
-<p>These messages are issued by VIRTEL Web Access scripts and are displayed as alerts in the user’s browser window.</p>
-<p>Cannot open pop-up window for print data. You may need to disable your pop- up blocker</p>
-<p>Module
-js01.js
-Meaning
-VIRTEL Web Access print function needs to open a new browser window to display print data, but the function is disallowed by the browser settings.
-Action
-Adjust your browser settings to allow VIRTEL scripts to open pop-up windows. For Internet Explorer, add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools – Options – Content – Block pop-up windows.</p>
-<p>Cannot open pop-up window for settings. You may need to disable your pop-up blocker</p>
-<p>Module
-js01.js
-Meaning
-The VIRTEL Web Access Settings menu cannot be displayed because the browser settings do not permit scripts to open new windows.
-Action
-Same as previous message.</p>
-<p>Message too long for RSA</p>
-<p>Module
-rsa.js
-Meaning
-An anomaly has been detected by the encryption script.
-Action
-Contact technical support.</p>
-<p>Invalid RSA public key</p>
-<p>Module
-rsa.js
-Meaning
-The RSA key supplied by VIRTEL is not valid.
-Action
-Contact technical support.</p>
-<p>vircrypt.js: VIRTEL CRYPT parameters are missing</p>
-<p>Module
-vircrypt.js
-Meaning
-VIRTEL did not supply the encryption parameters requested by the page template.
-Action
-Check that there is a CRYPTn parameter in the VIRTCT whose name matches the name requested by the page template. For the WEB2AJAX.htm template, there must be a CRYPTn parameter whose name subparameter is CRYPT3270.</p>
-<p>vircrypt.js: Unable to obtain public key from VIRTEL</p>
-<p>Module
-vircrypt.js
-Meaning
-VIRTEL did not supply the RSA public exponent or modulus requested by the page template.
-Action
-Check the JESMSGLG for the VIRTEL started task to determine why the public key request failed.</p>
-<p>vircrypt.js: Unsupported encryption algorithm: xxx</p>
-<p>Module
-vircrypt.js
-Meaning
-The symmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
-Action
-Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.</p>
-<p>vircrypt.js: Unsupported encoding|chaining|padding method: xxx</p>
-<p>Module
-vircrypt.js</p>
-<p>Meaning
-The encoding method, chaining method, or padding method specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
-Action
-Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.</p>
-<p>vircrypt.js: Unsupported PKA algorithm: xxx</p>
-<p>Module
-vircrypt.js
-Meaning
-The asymmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
-Action
-Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.</p>
-<ol class="arabic simple" start="3">
-<li>VIRTEL console messages</li>
-</ol>
-<p>3.1.    Messages VIR0000I – VIR0009I</p>
-<p>VIR0000I HTTP Date: Mon, 07 Jun 2004 15:20:23 GMT
-VIR0000I SMTP Date: Mon, 07 Jun 2004 17:20:23 +0200</p>
-<p>Module
-VIR0000
-Meaning
-These messages indicate the current time from the point of view of the HTTP and SMTP server components of VIRTEL. The times are calculated from the system TOD CLOCK, adjusted by the GMT parameter of the VIRTCT.
-Action
-None.</p>
-<p>VIR0001W VSAM ERROR ON FILE filename : yy yy (HEX) REQ : zz KEY : keyvalue</p>
-<p>Module
-VIR0001
-Meaning
-Unexpected VSAM error occurred during access of file filename. yy yy is the VSAM return code, zz is the request being processed, keyvalue is the record access key (16 characters).
-Action
-Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.</p>
-<p>VIR0002W TERM=termid, REQUEST=qq, RTNCD=cc, FDBK2=dd, SENSE=ssss ssss xxxxxxxxx</p>
-<p>Module
-VIR0009</p>
-<p>Meaning
-Unexpected VTAM error during dialogue with a terminal: termid is the name of the terminal, qq is the type of VTAM request which encountered the error, cc is the VTAM return code (hexadecimal), dd is the VTAM feedback code (hexadecimal), ssss ssss is the sense code, and xxxxxxx is VIRTEL’s interpretation of the sense code.
-Action
-Verify the values of the returned sense codes in the appropriate IBM documentation. VTAM codes are documented in the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manuals.</p>
-<p>VIR0003I xxxxxxxx ENDED</p>
-<p>Module
-VIR0000
-Meaning
-VIRTEL termination is complete.
-Action
-None.</p>
+</div>
+<div class="section" id="user-already-exists">
+<h4>90 USER ALREADY EXISTS<a class="headerlink" href="#user-already-exists" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4014, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to create or copy a user record, but the a user of the same name already exists.</dd>
+<dt>Action</dt>
+<dd>Enter a different value in the user name field.</dd>
+</dl>
+</div>
+<div class="section" id="error-logical-record-name-not-found">
+<h4>91 ERROR LOGICAL RECORD (name) NOT FOUND<a class="headerlink" href="#error-logical-record-name-not-found" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0021A, VIR0021R, VIR4004, VIR4014, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>Either you are attempting to call an external server name which does not exist, or you are attempting to update or delete a user record name which does not exist in the VIRARBO file.</dd>
+<dt>Action</dt>
+<dd>Specify a valid name.</dd>
+</dl>
+</div>
+<div class="section" id="the-profile-does-not-appear-in-the-department">
+<h4>92 THE PROFILE DOES NOT APPEAR IN THE DEPARTMENT<a class="headerlink" href="#the-profile-does-not-appear-in-the-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4008, VIR4009, VIR4013, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>The profile being updated or deleted does not belong to the same department as the user.</dd>
+<dt>Action</dt>
+<dd>Ensure that the profile matches the user’s department.</dd>
+</dl>
+</div>
+<div class="section" id="authorised-profile-limit-exceeded">
+<h4>93 AUTHORISED PROFILE LIMIT EXCEEDED<a class="headerlink" href="#authorised-profile-limit-exceeded" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4004, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>An internal table overflow has occurred.</dd>
+<dt>Action</dt>
+<dd>Contact technical support.</dd>
+</dl>
+</div>
+<div class="section" id="user-does-not-exist">
+<h4>94 USER DOES NOT EXIST<a class="headerlink" href="#user-does-not-exist" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4015, VIR4016, VIR4021-4023</dd>
+<dt>Meaning</dt>
+<dd>The user or administrator being updated or deleted does not exist.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="user-does-not-appear-in-the-department">
+<h4>95 USER DOES NOT APPEAR IN THE DEPARTMENT<a class="headerlink" href="#user-does-not-appear-in-the-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4015, VIR4016, VIR4021, VIR4023</dd>
+<dt>Meaning</dt>
+<dd>The user being viewed, updated, deleted, or being used as a model, does not belong to the same department as the administrator.</dd>
+<dt>Action</dt>
+<dd>Only an administrator in the same department as the user can perform the requested operation.</dd>
+</dl>
+</div>
+<div class="section" id="function-reserved-for-head-of-the-department">
+<h4>96 FUNCTION RESERVED FOR HEAD OF THE DEPARTMENT<a class="headerlink" href="#function-reserved-for-head-of-the-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4008, VIR4009, VIR4011, VIR4015, VIR4016</dd>
+<dt>Meaning</dt>
+<dd>The user being copied, updated, or deleted does not belong to the same department as the administrator.</dd>
+<dt>Action</dt>
+<dd>Only an administrator in the same department as the user can perform the requested operation.</dd>
+</dl>
+</div>
+<div class="section" id="enter-y-or-n">
+<h4>97 ENTER Y OR N<a class="headerlink" href="#enter-y-or-n" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4014, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to create or update a user record, and the assistant field must contain either O or N.</dd>
+<dt>Action</dt>
+<dd>Enter O (yes) or N (no) in the indicated field.</dd>
+</dl>
+</div>
+<div class="section" id="field-reserved-for-responsible-of-department">
+<h4>98 FIELD RESERVED FOR RESPONSIBLE OF DEPARTMENT<a class="headerlink" href="#field-reserved-for-responsible-of-department" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4014, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to create or update a user record, and the assistant field contains O (yes) but you are not the head of department.</dd>
+<dt>Action</dt>
+<dd>Only the head of department may put O (yes) in the indicated field.</dd>
+</dl>
+</div>
+<div class="section" id="deletion-of-department-responsible-forbidden">
+<h4>99 DELETION OF DEPARTMENT RESPONSIBLE FORBIDDEN<a class="headerlink" href="#deletion-of-department-responsible-forbidden" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4014, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to delete a user record which is marked as head of department.</dd>
+<dt>Action</dt>
+<dd>Update the department record to assign another user as head of department first.</dd>
+</dl>
+</div>
+<div class="section" id="deletion-of-deputy-forbidden">
+<h4>100 DELETION OF DEPUTY FORBIDDEN<a class="headerlink" href="#deletion-of-deputy-forbidden" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4015</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to delete a user record which is marked as an assistant.</dd>
+<dt>Action</dt>
+<dd>Set the assistant field to N (no) first.</dd>
+</dl>
+</div>
+<div class="section" id="user-is-already-administrator">
+<h4>101 USER IS ALREADY ADMINISTRATOR<a class="headerlink" href="#user-is-already-administrator" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4022</dd>
+<dt>Meaning</dt>
+<dd>You are attempting to designate a user as an administrator, but the user is already an administrator.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="reproduction-ok">
+<h4>103 REPRODUCTION OK<a class="headerlink" href="#reproduction-ok" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1001, VIR1002, VIR1005, VIR4008, VIR4015</dd>
+<dt>Meaning</dt>
+<dd>The record has been successfully copied.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="reproduction-of-deputy-forbidden">
+<h4>104 REPRODUCTION OF DEPUTY FORBIDDEN<a class="headerlink" href="#reproduction-of-deputy-forbidden" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4015</dd>
+<dt>Meaning</dt>
+<dd>You cannot copy a user record which is marked as an assistant.</dd>
+<dt>Action</dt>
+<dd>Set the assistant field to N (no) first, or choose another user to copy.</dd>
+</dl>
+</div>
+<div class="section" id="user-sign-on-unknown">
+<h4>105 USER SIGN-ON UNKNOWN<a class="headerlink" href="#user-sign-on-unknown" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4000</dd>
+<dt>Meaning</dt>
+<dd>You attempted to access the security administration panels but you have not signed on to VIRTEL.</dd>
+<dt>Action</dt>
+<dd>Log in with a valid VIRTEL userid.</dd>
+</dl>
+</div>
+<div class="section" id="sign-on-restored-ok">
+<h4>106 SIGN-ON RESTORED OK<a class="headerlink" href="#sign-on-restored-ok" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR4023</dd>
+<dt>Meaning</dt>
+<dd>You have successfully unblocked a user which was locked out.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="call-rejected-by-the-network">
+<h4>107 CALL REJECTED BY THE NETWORK<a class="headerlink" href="#call-rejected-by-the-network" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0021A, VIR0021R, VIR0025, VIR0025T</dd>
+<dt>Meaning</dt>
+<dd>An attempt to make an outbound X25 call was unsuccessful.</dd>
+<dt>Action</dt>
+<dd>Check for messages in the VIRTEL log which indicate the cause of the error.</dd>
+</dl>
+</div>
+<div class="section" id="previous-connection-dd-mm-yy-hh-mm-ss-termid">
+<h4>109 PREVIOUS CONNECTION: dd/mm/yy hh:mm:ss termid<a class="headerlink" href="#previous-connection-dd-mm-yy-hh-mm-ss-termid" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR00081</dd>
+<dt>Meaning</dt>
+<dd>This message indicates the date, time, and terminal name of the previous logon by your userid using VIRTEL internal security.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-file-filename-unknown">
+<h4>110 THE FILE filename UNKNOWN<a class="headerlink" href="#the-file-filename-unknown" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1001, VIR1002</dd>
+<dt>Meaning</dt>
+<dd>The file filename cannot be found.</dd>
+<dt>Action</dt>
+<dd>Ensure that the file is correctly referenced in the VIRTCT, and that there is a DD statement for the indicated file.</dd>
+</dl>
+</div>
+<div class="section" id="the-file-filename-is-closed">
+<h4>111 THE FILE filename IS CLOSED<a class="headerlink" href="#the-file-filename-is-closed" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1001, VIR1002</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL cannot open the file filename.</dd>
+<dt>Action</dt>
+<dd>Check the VIRTEL log for messages relating to the indicated file.</dd>
+</dl>
+</div>
+<div class="section" id="i-oerror-on-file-filename">
+<h4>112 I/OERROR ON FILE filename<a class="headerlink" href="#i-oerror-on-file-filename" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0043, VIR0043H, VIR1001, VIR1002</dd>
+<dt>Meaning</dt>
+<dd>There has been an error accessing the file filename.</dd>
+<dt>Action</dt>
+<dd>Check the VIRTEL log for messages relating to the indicated file.</dd>
+</dl>
+</div>
+<div class="section" id="this-is-not-a-minitel-native-node">
+<h4>113 THIS IS NOT A MINITEL NATIVE NODE<a class="headerlink" href="#this-is-not-a-minitel-native-node" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1003</dd>
+<dt>Meaning</dt>
+<dd>The requested record cannot be displayed because it is a sub-server record.</dd>
+<dt>Action</dt>
+<dd>Choose a native node record.</dd>
+</dl>
+</div>
+<div class="section" id="all-end">
+<h4>114 ALL=END<a class="headerlink" href="#all-end" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1003, VIR1004</dd>
+<dt>Meaning</dt>
+<dd>This is an information message indicating that all function keys perform the END function.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="please-supply-a-valid-node-name">
+<h4>115 PLEASE SUPPLY A VALID NODE NAME<a class="headerlink" href="#please-supply-a-valid-node-name" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR2019</dd>
+<dt>Meaning</dt>
+<dd>The network management application requires a non-blank node name.</dd>
+<dt>Action</dt>
+<dd>Enter the name of a valid VTAM node.</dd>
+</dl>
+</div>
+<div class="section" id="the-node-name-is-invalid">
+<h4>116 THE NODE NAME IS INVALID<a class="headerlink" href="#the-node-name-is-invalid" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR2019</dd>
+<dt>Meaning</dt>
+<dd>The node name specified is not the correct type for the network management application.</dd>
+<dt>Action</dt>
+<dd>Enter the name of a valid VTAM node.</dd>
+</dl>
+</div>
+<div class="section" id="confirm-cancellation-of-the-password">
+<h4>117 CONFIRM CANCELLATION OF THE PASSWORD<a class="headerlink" href="#confirm-cancellation-of-the-password" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0041</dd>
+<dt>Meaning</dt>
+<dd>You pressed PF4 to request that a VIRTELPC password be removed.</dd>
+<dt>Action</dt>
+<dd>Press PF4 again to remove the password, or press any other key to cancel the operation.</dd>
+</dl>
+</div>
+<div class="section" id="this-file-is-already-in-the-target-directory">
+<h4>118 THIS FILE IS ALREADY IN THE TARGET DIRECTORY<a class="headerlink" href="#this-file-is-already-in-the-target-directory" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0043, VIR0043H, VIR0052</dd>
+<dt>Meaning</dt>
+<dd>The file you are attempting to copy already exists in the target directory.</dd>
+<dt>Action</dt>
+<dd>Delete the file from the target directory and try again.</dd>
+</dl>
+</div>
+<div class="section" id="copy-completed">
+<h4>119 COPY COMPLETED<a class="headerlink" href="#copy-completed" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0043, VIR0043H</dd>
+<dt>Meaning</dt>
+<dd>The file you requested has been successfully copied.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="the-recorded-status-has-changed">
+<h4>120 THE RECORDED STATUS HAS CHANGED<a class="headerlink" href="#the-recorded-status-has-changed" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0043, VIR0043H</dd>
+<dt>Meaning</dt>
+<dd>The status of the file has been successfully toggled from “Public” to “Private” or vice versa.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="file-error-please-see-the-administrator">
+<h4>121 FILE ERROR PLEASE SEE THE ADMINISTRATOR<a class="headerlink" href="#file-error-please-see-the-administrator" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0033, VIR0043, VIR0043H, VIR0052</dd>
+<dt>Meaning</dt>
+<dd>An I/O error has occurred on:
+- the VIRCMP3 file during compression management;
+- a user directory or VIRARBO file during directory management;
+- the VIRSWAP file during page capture management.</dd>
+<dt>Action</dt>
+<dd>Check the VIRTEL log for error messages indicating the cause of the error.</dd>
+</dl>
+</div>
+<div class="section" id="file-transfer-in-progress">
+<h4>122 FILE TRANSFER IN PROGRESS<a class="headerlink" href="#file-transfer-in-progress" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0043, VIR0043H</dd>
+<dt>Meaning</dt>
+<dd>A file is being transferred between VIRTEL and VIRTELPC.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="confirm-copy-to-memory">
+<h4>123 CONFIRM COPY TO MEMORY<a class="headerlink" href="#confirm-copy-to-memory" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0043, VIR0043H</dd>
+<dt>Meaning</dt>
+<dd>You pressed PF6 to request the copy of a file to the stack.</dd>
+<dt>Action</dt>
+<dd>Press PF6 again to copy the file, or press any other key to cancel the operation.</dd>
+</dl>
+</div>
+<div class="section" id="confirm-the-copy-of-this-page">
+<h4>124 CONFIRM THE COPY OF THIS PAGE<a class="headerlink" href="#confirm-the-copy-of-this-page" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0043, VIR0043H</dd>
+<dt>Meaning</dt>
+<dd>You pressed PF1 to request that all files should be downloaded.</dd>
+<dt>Action</dt>
+<dd>Press PF1 again to confirm, or press any other key to cancel the operation.</dd>
+</dl>
+</div>
+<div class="section" id="impossible-operation">
+<h4>125 IMPOSSIBLE OPERATION<a class="headerlink" href="#impossible-operation" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0022A</dd>
+<dt>Meaning</dt>
+<dd>Either you pressed PF2 on the VIRTEL Multi-Session sub-menu to request that the application be promoted to the main menu, but the main menu is full; or you pressed PF2 to request that an application should be demoted to the sub-menu, but the application cannot be removed from the main menu because you currently have a active session with this application.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="name-of-page-to-load">
+<h4>126 NAME OF PAGE TO LOAD :<a class="headerlink" href="#name-of-page-to-load" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1010</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL is requesting the name of a videotex page to be uploaded to the VIRARBO file.</dd>
+<dt>Action</dt>
+<dd>Enter the name of the page to be uploaded.</dd>
+</dl>
+</div>
+<div class="section" id="the-page-already-exists-replace-y-n">
+<h4>127 THE PAGE ALREADY EXISTS,REPLACE (Y / N)<a class="headerlink" href="#the-page-already-exists-replace-y-n" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1010</dd>
+<dt>Meaning</dt>
+<dd>During a videotex page upload operation, VIRTEL has determined that a page of the same name already exists in the VIRARBO file.</dd>
+<dt>Action</dt>
+<dd>Enter Y to overwrite the page in the VIRARBO file, or N to cancel the operation.</dd>
+</dl>
+</div>
+<div class="section" id="select-the-page-then-press-send">
+<h4>128 SELECT THE PAGE THEN PRESS SEND<a class="headerlink" href="#select-the-page-then-press-send" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1010</dd>
+<dt>Meaning</dt>
+<dd>During a videotex page upload operation, VIRTEL is ready to receive the page to be uploaded.</dd>
+<dt>Action</dt>
+<dd>Select the page according to the procedure provided by your page composition software, then press the “SEND” (or “ENVOI”) key.</dd>
+</dl>
+</div>
+<div class="section" id="creation-completed">
+<h4>129 CREATION COMPLETED<a class="headerlink" href="#creation-completed" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1010</dd>
+<dt>Meaning</dt>
+<dd>A new videotex page has been successfully uploaded to the VIRARBO file.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="update-completed">
+<h4>130 UPDATE COMPLETED<a class="headerlink" href="#update-completed" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR1010</dd>
+<dt>Meaning</dt>
+<dd>A replacement videotex page has been successfully uploaded to the VIRARBO file.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="press-pf1-to-confirm-the-update">
+<h4>131 PRESS PF1 TO CONFIRM THE UPDATE<a class="headerlink" href="#press-pf1-to-confirm-the-update" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0044, VIR0046</dd>
+<dt>Meaning</dt>
+<dd>As a result of an earlier modification to the definition of a VIRTEL transaction, the associated entry point must now be updated.</dd>
+<dt>Action</dt>
+<dd>Press PF1 to confirm the update.</dd>
+</dl>
+</div>
+<div class="section" id="please-confirm-your-password">
+<h4>132 PLEASE CONFIRM YOUR PASSWORD<a class="headerlink" href="#please-confirm-your-password" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL has temporarily locked your terminal because of lack of activity.</dd>
+<dt>Action</dt>
+<dd>Enter your password again to reactivate your terminal.</dd>
+</dl>
+</div>
+<div class="section" id="units-spent-nnnnn-nn">
+<h4>133 UNITS SPENT: nnnnn.nn<a class="headerlink" href="#units-spent-nnnnn-nn" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0021A, VIR0025</dd>
+<dt>Meaning</dt>
+<dd>This message shows the number of units consumed by a call to an external server.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="position-in-queue-nnnn">
+<h4>134 POSITION IN QUEUE: nnnn<a class="headerlink" href="#position-in-queue-nnnn" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0025, VIR0025T</dd>
+<dt>Meaning</dt>
+<dd>This message shows your position in the queue for a call to an external server.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="activation-was-requested">
+<h4>135 ACTIVATION WAS REQUESTED<a class="headerlink" href="#activation-was-requested" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0041A</dd>
+<dt>Meaning</dt>
+<dd>You pressed PF4 in the e-mail correspondent management sub-application to request activation of a correspondent.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="disable-was-done">
+<h4>136 DISABLE WAS DONE<a class="headerlink" href="#disable-was-done" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0041A</dd>
+<dt>Meaning</dt>
+<dd>You pressed PF5 in the e-mail correspondent management sub-application to request deactivation of a correspondent.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="should-contain-the-sign">
+<h4>137 Should contain the &#8216;&#64;&#8217; sign<a class="headerlink" href="#should-contain-the-sign" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0041A</dd>
+<dt>Meaning</dt>
+<dd>This message is issued by the e-mail correspondent management sub-application to allow you to verify how your terminal displays the “&#64;” sign. In some countries, the “&#64;” sign may appear differently on a 3270 terminal (for example, “à”).</dd>
+<dt>Action</dt>
+<dd>When you enter an e-mail address, ensure that you use the same symbol as displayed in this message.</dd>
+</dl>
+</div>
+<div class="section" id="sample-command-w">
+<h4>138 Sample command: &amp;|W<a class="headerlink" href="#sample-command-w" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0045</dd>
+<dt>Meaning</dt>
+<dd>This message is issued by the entry point and transaction management sub-application to allow you to verify how your terminal displays the “&amp;” and “|” signs. In some countries, these characters may appear differently on a 3270 terminal (for example, “!” instead of “|”).</dd>
+<dt>Action</dt>
+<dd>When you enter script commands in the “TIOA at logon” and “TIOA at logoff” fields, ensure that you use the same symbols as displayed in this message.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="web-access-messages">
+<h3>1.2.    Web Access Messages<a class="headerlink" href="#web-access-messages" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These messages are issued by VIRTEL Web Access scripts and are displayed as alerts in the user’s browser window.</p>
+</div>
+<p><em>Cannot open pop-up window for print data. You may need to disable your pop- up blocker</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>js01.js</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL Web Access print function needs to open a new browser window to display print data, but the function is disallowed by the browser settings.</dd>
+<dt>Action</dt>
+<dd>Adjust your browser settings to allow VIRTEL scripts to open pop-up windows. For Internet Explorer, add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools – Options – Content – Block pop-up windows.</dd>
+</dl>
+<p><em>Cannot open pop-up window for settings. You may need to disable your pop-up blocker</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>js01.js</dd>
+<dt>Meaning</dt>
+<dd>The VIRTEL Web Access Settings menu cannot be displayed because the browser settings do not permit scripts to open new windows.</dd>
+<dt>Action</dt>
+<dd>Same as previous message.</dd>
+</dl>
+<p><em>Message too long for RSA</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>rsa.js</dd>
+<dt>Meaning</dt>
+<dd>An anomaly has been detected by the encryption script.</dd>
+<dt>Action</dt>
+<dd>Contact technical support.</dd>
+</dl>
+<p><em>Invalid RSA public key</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>rsa.js</dd>
+<dt>Meaning</dt>
+<dd>The RSA key supplied by VIRTEL is not valid.</dd>
+<dt>Action</dt>
+<dd>Contact technical support.</dd>
+</dl>
+<p><em>vircrypt.js: VIRTEL CRYPT parameters are missing</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>vircrypt.js</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL did not supply the encryption parameters requested by the page template.</dd>
+<dt>Action</dt>
+<dd>Check that there is a CRYPTn parameter in the VIRTCT whose name matches the name requested by the page template. For the WEB2AJAX.htm template, there must be a CRYPTn parameter whose name subparameter is CRYPT3270.</dd>
+</dl>
+<p><em>vircrypt.js: Unable to obtain public key from VIRTEL</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>vircrypt.js</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL did not supply the RSA public exponent or modulus requested by the page template.</dd>
+<dt>Action</dt>
+<dd>Check the JESMSGLG for the VIRTEL started task to determine why the public key request failed.</dd>
+</dl>
+<p><em>vircrypt.js: Unsupported encryption algorithm: xxx</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>vircrypt.js</dd>
+<dt>Meaning</dt>
+<dd>The symmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.</dd>
+<dt>Action</dt>
+<dd>Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.</dd>
+</dl>
+<p><em>vircrypt.js: Unsupported encoding|chaining|padding method: xxx</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>vircrypt.js</dd>
+<dt>Meaning</dt>
+<dd>The encoding method, chaining method, or padding method specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.</dd>
+<dt>Action</dt>
+<dd>Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.</dd>
+</dl>
+<p><em>vircrypt.js: Unsupported PKA algorithm: xxx</em></p>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>vircrypt.js</dd>
+<dt>Meaning</dt>
+<dd>The asymmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.</dd>
+<dt>Action</dt>
+<dd>Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="virtel-console-messages">
+<h2>2.  VIRTEL console messages<a class="headerlink" href="#virtel-console-messages" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="messages-vir0000i-vir0009i">
+<h3>2.1.    Messages VIR0000I – VIR0009I<a class="headerlink" href="#messages-vir0000i-vir0009i" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vir0000i-xxxx-date-mon-07-jun-2004-15-20-23-gmt">
+<h4>VIR0000I xxxx Date: Mon, 07 Jun 2004 15:20:23 GMT<a class="headerlink" href="#vir0000i-xxxx-date-mon-07-jun-2004-15-20-23-gmt" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0000</dd>
+<dt>Meaning</dt>
+<dd>These messages indicate the current time from the point of view of the HTTP and SMTP server components of VIRTEL. The times are calculated from the system TOD CLOCK, adjusted by the GMT parameter of the VIRTCT.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="vir0001w-vsam-error-on-file-filename-yy-yy-hex-req-zz-key-keyvalue">
+<h4>VIR0001W VSAM ERROR ON FILE filename : yy yy (HEX) REQ : zz KEY : keyvalue<a class="headerlink" href="#vir0001w-vsam-error-on-file-filename-yy-yy-hex-req-zz-key-keyvalue" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0001</dd>
+<dt>Meaning</dt>
+<dd>Unexpected VSAM error occurred during access of file filename. yy yy is the VSAM return code, zz is the request being processed, keyvalue is the record access key (16 characters).</dd>
+<dt>Action</dt>
+<dd>Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.</dd>
+</dl>
+</div>
+<div class="section" id="vir0002w-term-termid-request-qq-rtncd-cc-fdbk2-dd-sense-ssss-ssss-xxxxxxxxx">
+<h4>VIR0002W TERM=termid, REQUEST=qq, RTNCD=cc, FDBK2=dd, SENSE=ssss ssss xxxxxxxxx<a class="headerlink" href="#vir0002w-term-termid-request-qq-rtncd-cc-fdbk2-dd-sense-ssss-ssss-xxxxxxxxx" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0009</dd>
+<dt>Meaning</dt>
+<dd>Unexpected VTAM error during dialogue with a terminal: termid is the name of the terminal, qq is the type of VTAM request which encountered the error, cc is the VTAM return code (hexadecimal), dd is the VTAM feedback code (hexadecimal), ssss ssss is the sense code, and xxxxxxx is VIRTEL’s interpretation of the sense code.</dd>
+<dt>Action</dt>
+<dd>Verify the values of the returned sense codes in the appropriate IBM documentation. VTAM codes are documented in the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manuals.</dd>
+</dl>
+</div>
+<div class="section" id="vir0003i-xxxxxxxx-ended">
+<h4>VIR0003I xxxxxxxx ENDED<a class="headerlink" href="#vir0003i-xxxxxxxx-ended" title="Permalink to this headline">¶</a></h4>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0000</dd>
+<dt>Meaning</dt>
+<dd>VIRTEL termination is complete.</dd>
+<dt>Action</dt>
+<dd>None.</dd>
+</dl>
 <p>VIR0004I CLEANUP : luname/ applname</p>
 <p>Module
 VIR0009
@@ -2322,13 +2731,13 @@ VIR0002</p>
 This message is the output from a VIRTEL LINE=linename,DISPLAY command. It displays a list of terminals associated with the line. linename is the external name of the line, and n-xxxxxx is the internal name of the line. For each terminal displayed, termid is the terminal name, “+” indicates that this terminal is pointed to by the MCH 1st LU pointer, luname is the relay LU name, acbstat is the relay ACB status which can be blank (ACB closed), ACTIV (ACB open), P-RQS (VIRTEL is awaiting the response from the application for a pending session request), or ACT/S (ACB    in session). cvcstat is the CVC status which can be blank (terminal is free), SERV (terminal is occupied by a service transaction), or INUSE (terminal is occupied by a call). tranid is the external name of the transaction using the terminal. termstat is the terminal status which can be LINKED (terminal is owned by and linked to this line), NOT LK (terminal is owned by this line but not yet linked) OWNED BY m-yyyyyy (terminal prefix matches this line but terminal is owned by another line), UNOWNED (terminal prefix matches this line but terminal is not owned by any line).
 Action
 None.</p>
-<p>VIR0204I TERMINALS IN POOL <a href="#id1"><span class="problematic" id="id2">*</span></a>poolname VIR0204I TERMINAL RELAY    PRINTER USED BY VIR0204I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8211;
+<p>VIR0204I TERMINALS IN POOL <a href="#id6"><span class="problematic" id="id7">*</span></a>poolname VIR0204I TERMINAL RELAY    PRINTER USED BY VIR0204I &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8211; &#8212;&#8212;&#8211;
 VIR0204I termid1 luname printlu termid2 VIR0204I &#8212;END OF LIST&#8212;</p>
 <p>Module
 VIR0002
 Meaning
 This message is appended to the output from a VIRTEL LINE=linename,DISPLAY command when one or more of the terminals attached to the line references a logical pool. It displays a list of terminals belonging to the logical pool.
-<a href="#id3"><span class="problematic" id="id4">*</span></a>poolname is the name of the logical pool. For each terminal displayed, termid1 is the name of the terminal in the logical pool, luname is the relay LU name associated with this terminal, printlu is the LU name of the associated virtual printer, and termid2 is the name of the terminal (if any) which is currently using this relay.
+<a href="#id8"><span class="problematic" id="id9">*</span></a>poolname is the name of the logical pool. For each terminal displayed, termid1 is the name of the terminal in the logical pool, luname is the relay LU name associated with this terminal, printlu is the LU name of the associated virtual printer, and termid2 is the name of the terminal (if any) which is currently using this relay.
 Action
 None.</p>
 <p>VIR0205I NO TERMINALS ASSOCIATED WITH LINE n-xxxxxx</p>

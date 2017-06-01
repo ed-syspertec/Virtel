@@ -444,450 +444,433 @@ Action
     None.
 
 39 INVALID CURSOR POSITION
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR1003, VIR1004, VIR1006
+    VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR1003, VIR1004, VIR1006
 Meaning
-You pressed the “delete” function key (F2) but the cursor was not pointing to a configuration record.
+    You pressed the “delete” function key (F2) but the cursor was not pointing to a configuration record.
 Action
-Move the cursor to the record to be deleted.
+    Move the cursor to the record to be deleted.
 
 
 40 CONFIRM DELETE
- 
+^^^^^^^^^^^^^^^^^ 
 Module
-VIR0023, VIR0026, VIR0031, VIR0033, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR0052, VIR1001, VIR1002
+    VIR0023, VIR0026, VIR0031, VIR0033, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR0052, VIR1001, VIR1002
 Meaning
-You pressed the “delete” function key (F2) to request the deletion of a configuration record.
+    You pressed the “delete” function key (F2) to request the deletion of a configuration record.
 Action
-Press F2 again if you wish to delete the highlighted record. Press any other function key to cancel the delete.
+    Press F2 again if you wish to delete the highlighted record. Press any other function key to cancel the delete.
 
 41 KEY IN DATA AND PRESS ENTER
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0023, VIR0026, VIR0041, VIR0041A, VIR0042, VIR1001
+    VIR0023, VIR0026, VIR0041, VIR0041A, VIR0042, VIR1001
 Meaning
-An empty screen is displayed into which you can enter the definition of a new configuration record.
+    An empty screen is displayed into which you can enter the definition of a new configuration record.
 Action
-Fill in the fields on the screen and press Enter to add the new record to the VIRARBO file.
+    Fill in the fields on the screen and press Enter to add the new record to the VIRARBO file.
 
 42 INCORRECT VALUE
-
+^^^^^^^^^^^^^^^^^^
 Module
-VIR0023, VIR0031, VIR0041, VIR0041A, VIR0044, VIR0045, VIR0047, VIR1001
+    VIR0023, VIR0031, VIR0041, VIR0041A, VIR0044, VIR0045, VIR0047, VIR1001
 Meaning
-A value entered in a configuration record is not acceptable. For example, a field contains invalid characters, or the terminal name does not correspond to the terminal prefix of the associated line, or the transaction name does not correspond to the prefix of the associated entry point.
+    A value entered in a configuration record is not acceptable. For example, a field contains invalid characters, or the terminal name does not correspond to the terminal prefix of the associated line, or the transaction name does not correspond to the prefix of the associated entry point.
 Action
-Correct the field in error and press Enter.
+    Correct the field in error and press Enter.
 
 43 PLEASE WAIT....
-
+^^^^^^^^^^^^^^^^^^
 Module
-VIR0012, VIR0016, VIR0032, VIR0036
+    VIR0012, VIR0016, VIR0032, VIR0036
 Meaning
-VIRTEL is connecting your terminal to the requested application.
+    VIRTEL is connecting your terminal to the requested application.
 Action
-Wait for the response from the host application.
-
-44 SIGN -ON ACCEPTED
-
-This message is no longer issued.
-
+    Wait for the response from the host application.
 
 45 EXCESSIVE NUMBER OF ATTEMPTS
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0010
+    VIR0010
 Meaning
-Signon was rejected by the security subsystem because too many incorrect signon attempts were made.
+    Signon was rejected by the security subsystem because too many incorrect signon attempts were made.
 Action
-Contact your security administrator.
+    Contact your security administrator.
 
 46 PASSWORD HAS BEEN CHANGED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0010
+    VIR0010
 Meaning
-The user requested a change of password during signon. The new password has been accepted by the security subsystem.
+    The user requested a change of password during signon. The new password has been accepted by the security subsystem.
 Action
-None.
+    None.
 
 47 INACTIVITY TIMEOUT PLEASE ENTER YOUR PASSWORD
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
+    VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
 Meaning
-VIRTEL has locked your terminal session because it has been inactive for too long.
+    VIRTEL has locked your terminal session because it has been inactive for too long.
 Action
-Enter your password to unlock the terminal.
+    Enter your password to unlock the terminal.
 
 48 INVALID FUNCTION KEY
-
+^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1001-1006, VIR2002-2013, VIR2015-2016, VIR2019
+    VIR1001-1006, VIR2002-2013, VIR2015-2016, VIR2019
 Meaning
-The PF key selected is invalid for this screen.
+    The PF key selected is invalid for this screen.
 Action
-Press one of the PF keys displayed on the screen.
+    Press one of the PF keys displayed on the screen.
 
 49 NODE TYPE UNSUPPORTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR2002, VIR2014, VIR2019
+    VIR2002, VIR2014, VIR2019
 Meaning
-Cannot perform the requested function on this type of node.
-
+    Cannot perform the requested function on this type of node.
 Action
-None.
+    None.
 
 50 NODE TYPE INVALID
-
+^^^^^^^^^^^^^^^^^^^^
 Module
-VIR2002-2019
+    VIR2002-2019
 Meaning
-The node type is not recognized by the network management application.
+    The node type is not recognized by the network management application.
 Action
-None.
+    None.
 
 51 PROGRAM progname UNKNOWN OR DISABLED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0040, VIR1000-1006, VIR2002-2019, VIR4000-4023
+    VIR0040, VIR1000-1006, VIR2002-2019, VIR4000-4023
 Meaning
-A VIRTEL subapplication attempted to transfer control to a program which is not available.
+    A VIRTEL subapplication attempted to transfer control to a program which is not available.
 Action
-Contact technical support.
+    Contact technical support.
 
 52 INVALID CHOICE
-
+^^^^^^^^^^^^^^^^^
 Module
-VIR0040, VIR1000, VIR4000-4003, VIR4005
+    VIR0040, VIR1000, VIR4000-4003, VIR4005
 Meaning
-You entered an option which is not displayed on the menu.
+    You entered an option which is not displayed on the menu.
 Action
-Choose one of the options displayed on the menu.
+    Choose one of the options displayed on the menu.
 
 53 FUNCTION RESERVED FOR ADMINISTRATOR
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4000
+    VIR4000
 Meaning
-You entered an option which requires administrator authorization, but your userid does not have administrator privileges.
+    You entered an option which requires administrator authorization, but your userid does not have administrator privileges.
 Action
-Sign on with an administrator userid.
+    Sign on with an administrator userid.
 
 54 OPTION RESERVED FOR HEAD OF DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0040, VIR4000-4003
-
+    VIR0040, VIR4000-4003
 Meaning
-You entered an option which requires authorization by head of department, but your userid does not have the necessary privileges.
+    You entered an option which requires authorization by head of department, but your userid does not have the necessary privileges.
 Action
-Sign on with a userid which is marked as head of department.
+    Sign on with a userid which is marked as head of department.
 
 55 ENTER NAME OF DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4004, VIR4020, VIR4021
+    VIR4004, VIR4020, VIR4021
 Meaning
-The requested operation requires a value in the indicated field but the field is blank.
+    The requested operation requires a value in the indicated field but the field is blank.
 Action
-Enter a value in the indicated field.
+    Enter a value in the indicated field.
 
 56 ENTER THE DESCRIPTION OF THE deptname DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4020, VIR4021
+    VIR4020, VIR4021
 Meaning
-The requested operation requires a value but the field is blank.
+    The requested operation requires a value but the field is blank.
 Action
-Enter a value in the indicated field.
+    Enter a value in the indicated field.
 
 57 ENTER THE NAME OF THE PERSON RESPONSIBLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4020, VIR4021
+    VIR4020, VIR4021
 Meaning
-The requested operation requires a value but the field is blank.
+    The requested operation requires a value but the field is blank.
 Action
-Enter a value in the indicated field.
+    Enter a value in the indicated field.
 
 58 ENTER THE TITLE OF THE PERSON RESPONSIBLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4020, VIR4021
+    VIR4020, VIR4021
 Meaning
-The requested operation requires a value but the field is blank.
+    The requested operation requires a value but the field is blank.
 Action
-Enter a value in the indicated field.
+    Enter a value in the indicated field.
 
 
 59 THE DEPARTMENT ALREADY EXISTS
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 Module
-VIR4020
+    VIR4020
 Meaning
-You are attempting to add a new department but a department of the same name already exists.
+    You are attempting to add a new department but a department of the same name already exists.
 Action
-Choose a new department name or edit the existing department.
+    Choose a new department name or edit the existing department.
 
 60 THE RESPONSIBLE PERSON ALREADY EXISTS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4020
+    VIR4020
 Meaning
-You are attempting to add a new person but a person of the same name already exists.
+    You are attempting to add a new person but a person of the same name already exists.
 Action
-Choose a new person or edit the existing person.
+    Choose a new person or edit the existing person.
 
 61 PRESS PF1 TO CONFIRM CREATION
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4006, VIR4010, VIR4014, VIR4020
+    VIR4006, VIR4010, VIR4014, VIR4020
 Meaning
-VIRTEL is requesting confirmation that you wish to create a new record.
+    VIRTEL is requesting confirmation that you wish to create a new record.
 Action
-Press F1 to create the new record. Press any other function key to cancel creation of the new record.
+    Press F1 to create the new record. Press any other function key to cancel creation of the new record.
 
 62 CREATION OK
-
+^^^^^^^^^^^^^^
 Module
-VIR4006, VIR4010, VIR4014, VIR4020, VIR4022
+    VIR4006, VIR4010, VIR4014, VIR4020, VIR4022
 Meaning
-The new record has been created.
+    The new record has been created.
 Action
-None.
+    None.
 
 63 END OF FILE
-
+^^^^^^^^^^^^^^
 Module
-VIR1001-1006, VIR4004, VIR4007-4009, VIR4011-4014, VIR4015-4016, VIR4021-4023
+    VIR1001-1006, VIR4004, VIR4007-4009, VIR4011-4014, VIR4015-4016, VIR4021-4023
 Meaning
-The end of file has been reached while browsing forward through the file.
+    The end of file has been reached while browsing forward through the file.
 Action
-None.
+    None.
 
 
 64 THE DEPARTMENT DOES NOT EXIST
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 Module
-VIR4004, VIR4021
+    VIR4004, VIR4021
 Meaning
-The department which you are attempting to update no longer exists.
+    The department which you are attempting to update no longer exists.
 Action
-None.
-65 UPDATE OK
+    None.
 
+65 UPDATE OK
+^^^^^^^^^^^^
 Module
-VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
+    VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
 Meaning
-The updated record has been successfully written to the file.
+    The updated record has been successfully written to the file.
 Action
-None.
+    None.
 
 66 BEGINNING OF FILE
-
+^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
+    VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
 Meaning
-The beginning of the file has been reached while browsing backwards through the file.
+    The beginning of the file has been reached while browsing backwards through the file.
 Action
-None.
+    None.
 
 67 THE DEPARTMENT STILL CONTAINS PROFILES
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4021
+    VIR4021
 Meaning
-The department cannot be deleted because there are profiles associated with this department.
+    The department cannot be deleted because there are profiles associated with this department.
 Action
-Delete the associated profiles before deleting the department.
+    Delete the associated profiles before deleting the department.
 
 68 THE DEPARTMENT STILL CONTAINS USERS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4021
+    VIR4021
 Meaning
-The department cannot be deleted because there are users associated with this department.
+    The department cannot be deleted because there are users associated with this department.
 Action
-Delete the associated users before deleting the department.
-
+    Delete the associated users before deleting the department.
 
 69 USE PF2 TO CONFIRM DELETE
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
+    VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
 Meaning
-You requested the deletion of a configuration record.
+    You requested the deletion of a configuration record.
 Action
-Press F2 if you wish to delete the record. Press any other function key to cancel the delete.
-70 DELETE OK
+    Press F2 if you wish to delete the record. Press any other function key to cancel the delete.
 
+70 DELETE OK
+^^^^^^^^^^^^
 Module
-VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
+    VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
 Meaning
-The requested record has been successfully deleted from the file.
+    The requested record has been successfully deleted from the file.
 Action
-None.
+    None.
 
 71 THE RESOURCE ALREADY EXISTS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4010
+    VIR4010
 Meaning
-You are attempting to add a new resource but a resource of the same name already exists.
+    You are attempting to add a new resource but a resource of the same name already exists.
 Action
-Choose a new resource name or edit the existing resource.
+    Choose a new resource name or edit the existing resource.
 
 72 ENTER THE DESCRIPTION OF THE RESOURCE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4010, VIR4011
+    VIR4010, VIR4011
 Meaning
-The resource description field is blank.
+    The resource description field is blank.
 Action
-Enter a value in the resource description field.
+    Enter a value in the resource description field.
 
 73 THE CURSOR POSITION IS INVALID
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4009, VIR4011, VIR4013, VIR4016, VIR4022
+    VIR4009, VIR4011, VIR4013, VIR4016, VIR4022
 Meaning
-The function you requested requires the cursor to be placed on a record.
+    The function you requested requires the cursor to be placed on a record.
 Action
-Position the cursor on the record you wish to operate upon.
-
+    Position the cursor on the record you wish to operate upon.
 
 74 THE RESOURCE DOES NOT EXIST
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4011
+    VIR4011
 Meaning
-The resource which you are attempting to update no longer exists.
+    The resource which you are attempting to update no longer exists.
 Action
-None.
+    None.
 
 75 MODIFIED BY ANOTHER USER
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4004, VIR4010-4011, VIR4015-4016, VIR4021-4023
+    VIR4004, VIR4010-4011, VIR4015-4016, VIR4021-4023
 Meaning
-The record you are attempting to update has been updated by another user.
+    The record you are attempting to update has been updated by another user.
 Action
-Return to the previous menu and display the record again.
+    Return to the previous menu and display the record again.
 
 76 ENTER THE NAME OF THE PROFILE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4006, VIR4008
+    VIR4006, VIR4008
 Meaning
-The profile name is blank.
+    The profile name is blank.
 Action
-Enter a value in the profile name field.
+    Enter a value in the profile name field.
 
 77 ENTER THE DESCRIPTION OF THE PROFILE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4006, VIR4008
+    VIR4006, VIR4008
 Meaning
-The profile description is blank.
+    The profile description is blank.
 Action
-Enter a value in the profile description field.
+    Enter a value in the profile description field.
 
 78 THE PROFILE ALREADY EXISTS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4006, VIR4008
+    VIR4006, VIR4008
 Meaning
-You are attempting to add a new profile record but a profile of the same name already exists.
+    You are attempting to add a new profile record but a profile of the same name already exists.
 Action
-Enter a different name in the profile name field.
-
-
-79 ENTER THE NAME OF THE RESOURCE OR THE PROFILE
- 
-This message is no longer issued.
-
-80 DATA TYPE INVALID (R,P)
-
-This message is no longer issued.
+    Enter a different name in the profile name field.
 
 81 REQUESTED ELEMENT DOES NOT EXIST
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1002, VIR4006, VIR4008
+    VIR1002, VIR4006, VIR4008
 Meaning
-The record being added or updated references an element which does not exist.
+    The record being added or updated references an element which does not exist.
 Action
-Correct the name of the referenced element.
+    Correct the name of the referenced element.
 
 82 REQUESTED ELEMENT DOES NOT EXIST IN DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4006, VIR4008
+    VIR4006, VIR4008
 Meaning
-The record being added or updated references an element which belongs to a different department.
+    The record being added or updated references an element which belongs to a different department.
 Action
-Correct the name of the referenced element.
+    Correct the name of the referenced element.
 
 83 YOU ARE ON THE FIRST PAGE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4004, VIR4006, VIR4008, VIR4012-4015
+    VIR4004, VIR4006, VIR4008, VIR4012-4015
 Meaning
-You tried to scroll back to the previous page of data but you are already on the first page.
+    You tried to scroll back to the previous page of data but you are already on the first page.
 Action
-None.
+    None.
 
 84 YOU ARE ON THE LAST PAGE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4004, VIR4006, VIR4008, VIR4012-4015
+    VIR4004, VIR4006, VIR4008, VIR4012-4015
 Meaning
-You tried to scroll forward to the next page of data but you are already on the last page.
+    You tried to scroll forward to the next page of data but you are already on the last page.
 Action
-None.
-
+    None.
 
 85 THE PROFILE DOES NOT EXIST
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4004, VIR4008, VIR4009, VIR4014-4015
+    VIR4004, VIR4008, VIR4009, VIR4014-4015
 Meaning
-The profile being updated or deleted does not exist.
+    The profile being updated or deleted does not exist.
 Action
-None.
+    None.
 
 86 THE PROFILE IS USED IN ANOTHER DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4008
+    VIR4008
 Meaning
-The profile being updated does not exist.
+    The profile being updated does not exist.
 Action
-None.
+    None.
 
 87 THE PROFILE IS EMPLOYED BY A USER
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4008, VIR4009
+    VIR4008, VIR4009
 Meaning
-The profile being updated or deleted has been modified by another user since it was last displayed on your terminal.
+    The profile being updated or deleted has been modified by another user since it was last displayed on your terminal.
 Action
-Display the profile again and re-enter the modifications.
+    Display the profile again and re-enter the modifications.
 
 88 ENTER THE NAME OF THE USER
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4014, VIR4015, VIR4022
+    VIR4014, VIR4015, VIR4022
 Meaning
-You are attempting to create or update a user or administrator record, but the user name field is blank.
+    You are attempting to create or update a user or administrator record, but the user name field is blank.
 Action
-Enter a valid user name.
+    Enter a valid user name.
 
 89 ENTER THE DESCRIPTION OF THE USER
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
 VIR4014, VIR4015
 Meaning
@@ -895,592 +878,561 @@ You are attempting to create or update a user record, but the user description f
 Action
 Enter a value in the description field.
 
-
 90 USER ALREADY EXISTS
- 
+^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4014, VIR4015
+    VIR4014, VIR4015
 Meaning
-You are attempting to create or copy a user record, but the a user of the same name already exists.
+    You are attempting to create or copy a user record, but the a user of the same name already exists.
 Action
-Enter a different value in the user name field.
+    Enter a different value in the user name field.
 
 91 ERROR LOGICAL RECORD (name) NOT FOUND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021A, VIR0021R, VIR4004, VIR4014, VIR4015
+    VIR0021A, VIR0021R, VIR4004, VIR4014, VIR4015
 Meaning
-Either you are attempting to call an external server name which does not exist, or you are attempting to update or delete a user record name which does not exist in the VIRARBO file.
+    Either you are attempting to call an external server name which does not exist, or you are attempting to update or delete a user record name which does not exist in the VIRARBO file.
 Action
-Specify a valid name.
+    Specify a valid name.
 
 92 THE PROFILE DOES NOT APPEAR IN THE DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4004, VIR4008, VIR4009, VIR4013, VIR4015
+    VIR4004, VIR4008, VIR4009, VIR4013, VIR4015
 Meaning
-The profile being updated or deleted does not belong to the same department as the user.
+    The profile being updated or deleted does not belong to the same department as the user.
 Action
-Ensure that the profile matches the user’s department.
+    Ensure that the profile matches the user’s department.
 
 93 AUTHORISED PROFILE LIMIT EXCEEDED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4004, VIR4015
+    VIR4004, VIR4015
 Meaning
-An internal table overflow has occurred.
+    An internal table overflow has occurred.
 Action
-Contact technical support.
+    Contact technical support.
 
 94 USER DOES NOT EXIST
-
+^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4015, VIR4016, VIR4021-4023
+    VIR4015, VIR4016, VIR4021-4023
 Meaning
-The user or administrator being updated or deleted does not exist.
-
+    The user or administrator being updated or deleted does not exist.
 Action
-None.
+    None.
 
 95 USER DOES NOT APPEAR IN THE DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4015, VIR4016, VIR4021, VIR4023
+    VIR4015, VIR4016, VIR4021, VIR4023
 Meaning
-The user being viewed, updated, deleted, or being used as a model, does not belong to the same department as the administrator.
+    The user being viewed, updated, deleted, or being used as a model, does not belong to the same department as the administrator.
 Action
-Only an administrator in the same department as the user can perform the requested operation.
+    Only an administrator in the same department as the user can perform the requested operation.
 
 96 FUNCTION RESERVED FOR HEAD OF THE DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4008, VIR4009, VIR4011, VIR4015, VIR4016
+    VIR4008, VIR4009, VIR4011, VIR4015, VIR4016
 Meaning
-The user being copied, updated, or deleted does not belong to the same department as the administrator.
+    The user being copied, updated, or deleted does not belong to the same department as the administrator.
 Action
-Only an administrator in the same department as the user can perform the requested operation.
+    Only an administrator in the same department as the user can perform the requested operation.
 
 97 ENTER Y OR N
-
+^^^^^^^^^^^^^^^
 Module
-VIR4014, VIR4015
+    VIR4014, VIR4015
 Meaning
-You are attempting to create or update a user record, and the assistant field must contain either O or N.
+    You are attempting to create or update a user record, and the assistant field must contain either O or N.
 Action
-Enter O (yes) or N (no) in the indicated field.
+    Enter O (yes) or N (no) in the indicated field.
 
 98 FIELD RESERVED FOR RESPONSIBLE OF DEPARTMENT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4014, VIR4015
+    VIR4014, VIR4015
 Meaning
-You are attempting to create or update a user record, and the assistant field contains O (yes) but you are not the head of department.
+    You are attempting to create or update a user record, and the assistant field contains O (yes) but you are not the head of department.
 Action
-Only the head of department may put O (yes) in the indicated field.
+    Only the head of department may put O (yes) in the indicated field.
 
 99 DELETION OF DEPARTMENT RESPONSIBLE FORBIDDEN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4014, VIR4015
-
+    VIR4014, VIR4015
 Meaning
-You are attempting to delete a user record which is marked as head of department.
+    You are attempting to delete a user record which is marked as head of department.
 Action
-Update the department record to assign another user as head of department first.
+    Update the department record to assign another user as head of department first.
 
 100 DELETION OF DEPUTY FORBIDDEN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4015
+    VIR4015
 Meaning
-You are attempting to delete a user record which is marked as an assistant.
+    You are attempting to delete a user record which is marked as an assistant.
 Action
-Set the assistant field to N (no) first.
+    Set the assistant field to N (no) first.
 
 101 USER IS ALREADY ADMINISTRATOR
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4022
+    VIR4022
 Meaning
-You are attempting to designate a user as an administrator, but the user is already an administrator.
+    You are attempting to designate a user as an administrator, but the user is already an administrator.
 Action
-None.
-
-102 THE PROFILE IS USED IN ANOTHER PROFILE
-
-This message is no longer issued.
+    None.
 
 103 REPRODUCTION OK
-
+^^^^^^^^^^^^^^^^^^^
 Module
-VIR1001, VIR1002, VIR1005, VIR4008, VIR4015
+    VIR1001, VIR1002, VIR1005, VIR4008, VIR4015
 Meaning
-The record has been successfully copied.
+    The record has been successfully copied.
 Action
-None.
+    None.
 
 104 REPRODUCTION OF DEPUTY FORBIDDEN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4015
+    VIR4015
 Meaning
-You cannot copy a user record which is marked as an assistant.
+    You cannot copy a user record which is marked as an assistant.
 Action
-Set the assistant field to N (no) first, or choose another user to copy.
-
+    Set the assistant field to N (no) first, or choose another user to copy.
 
 105 USER SIGN-ON UNKNOWN
- 
+^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR4000
+    VIR4000
 Meaning
-You attempted to access the security administration panels but you have not signed on to VIRTEL.
+    You attempted to access the security administration panels but you have not signed on to VIRTEL.
 Action
-Log in with a valid VIRTEL userid.
+    Log in with a valid VIRTEL userid.
 
 106 SIGN-ON RESTORED OK
-
+^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR4023
+    VIR4023
 Meaning
-You have successfully unblocked a user which was locked out.
+    You have successfully unblocked a user which was locked out.
 Action
-None.
+    None.
 
 107 CALL REJECTED BY THE NETWORK
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021A, VIR0021R, VIR0025, VIR0025T
+    VIR0021A, VIR0021R, VIR0025, VIR0025T
 Meaning
-An attempt to make an outbound X25 call was unsuccessful.
+    An attempt to make an outbound X25 call was unsuccessful.
 Action
-Check for messages in the VIRTEL log which indicate the cause of the error.
-
-108 COMMUNICATION ESTABLISHED
-
-This message is no longer issued.
+    Check for messages in the VIRTEL log which indicate the cause of the error.
 
 109 PREVIOUS CONNECTION: dd/mm/yy hh:mm:ss termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00081
+    VIR00081
 Meaning
-This message indicates the date, time, and terminal name of the previous logon by your userid using VIRTEL internal security.
+    This message indicates the date, time, and terminal name of the previous logon by your userid using VIRTEL internal security.
 Action
-None.
+    None.
 
 110 THE FILE filename UNKNOWN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1001, VIR1002
-
+    VIR1001, VIR1002
 Meaning
-The file filename cannot be found.
+    The file filename cannot be found.
 Action
-Ensure that the file is correctly referenced in the VIRTCT, and that there is a DD statement for the indicated file.
+    Ensure that the file is correctly referenced in the VIRTCT, and that there is a DD statement for the indicated file.
 
 111 THE FILE filename IS CLOSED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1001, VIR1002
+    VIR1001, VIR1002
 Meaning
-VIRTEL cannot open the file filename.
+    VIRTEL cannot open the file filename.
 Action
-Check the VIRTEL log for messages relating to the indicated file.
+    Check the VIRTEL log for messages relating to the indicated file.
 
 112 I/OERROR ON FILE filename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0043, VIR0043H, VIR1001, VIR1002
+    VIR0043, VIR0043H, VIR1001, VIR1002
 Meaning
-There has been an error accessing the file filename.
+    There has been an error accessing the file filename.
 Action
-Check the VIRTEL log for messages relating to the indicated file.
+    Check the VIRTEL log for messages relating to the indicated file.
 
 113 THIS IS NOT A MINITEL NATIVE NODE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1003
+    VIR1003
 Meaning
-The requested record cannot be displayed because it is a sub-server record.
+    The requested record cannot be displayed because it is a sub-server record.
 Action
-Choose a native node record.
+    Choose a native node record.
+
 114 ALL=END
-
+^^^^^^^^^^^
 Module
-VIR1003, VIR1004
+    VIR1003, VIR1004
 Meaning
-This is an information message indicating that all function keys perform the END function.
+    This is an information message indicating that all function keys perform the END function.
 Action
-None.
+    None.
 
 115 PLEASE SUPPLY A VALID NODE NAME
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR2019
-
+    VIR2019
 Meaning
-The network management application requires a non-blank node name.
+    The network management application requires a non-blank node name.
 Action
-Enter the name of a valid VTAM node.
+    Enter the name of a valid VTAM node.
 
 116 THE NODE NAME IS INVALID
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR2019
+    VIR2019
 Meaning
-The node name specified is not the correct type for the network management application.
+    The node name specified is not the correct type for the network management application.
 Action
-Enter the name of a valid VTAM node.
+    Enter the name of a valid VTAM node.
 
 117 CONFIRM CANCELLATION OF THE PASSWORD
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0041
+    VIR0041
 Meaning
-You pressed PF4 to request that a VIRTELPC password be removed.
+    You pressed PF4 to request that a VIRTELPC password be removed.
 Action
-Press PF4 again to remove the password, or press any other key to cancel the operation.
+    Press PF4 again to remove the password, or press any other key to cancel the operation.
 
 118 THIS FILE IS ALREADY IN THE TARGET DIRECTORY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0043, VIR0043H, VIR0052
+    VIR0043, VIR0043H, VIR0052
 Meaning
-The file you are attempting to copy already exists in the target directory.
+    The file you are attempting to copy already exists in the target directory.
 Action
-Delete the file from the target directory and try again.
+    Delete the file from the target directory and try again.
 
 119 COPY COMPLETED
-
+^^^^^^^^^^^^^^^^^^
 Module
-VIR0043, VIR0043H
+    VIR0043, VIR0043H
 Meaning
-The file you requested has been successfully copied.
+    The file you requested has been successfully copied.
 Action
-None.
+    None.
 
 120 THE RECORDED STATUS HAS CHANGED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0043, VIR0043H
-
+    VIR0043, VIR0043H
 Meaning
-The status of the file has been successfully toggled from “Public” to “Private” or vice versa.
+    The status of the file has been successfully toggled from “Public” to “Private” or vice versa.
 Action
-None.
+    None.
 
 121 FILE ERROR PLEASE SEE THE ADMINISTRATOR
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0033, VIR0043, VIR0043H, VIR0052
+    VIR0033, VIR0043, VIR0043H, VIR0052
 Meaning
-An I/O error has occurred on:
-•   the VIRCMP3 file during compression management;
-•   a user directory or VIRARBO file during directory management;
-•   the VIRSWAP file during page capture management.
-
+    An I/O error has occurred on:
+    - the VIRCMP3 file during compression management;
+    - a user directory or VIRARBO file during directory management;
+    - the VIRSWAP file during page capture management.
 Action
-Check the VIRTEL log for error messages indicating the cause of the error.
+    Check the VIRTEL log for error messages indicating the cause of the error.
 
 122 FILE TRANSFER IN PROGRESS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0043, VIR0043H
+    VIR0043, VIR0043H
 Meaning
-A file is being transferred between VIRTEL and VIRTELPC.
+    A file is being transferred between VIRTEL and VIRTELPC.
 Action
-None.
+    None.
 
 123 CONFIRM COPY TO MEMORY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0043, VIR0043H
+    VIR0043, VIR0043H
 Meaning
-You pressed PF6 to request the copy of a file to the stack.
+    You pressed PF6 to request the copy of a file to the stack.
 Action
-Press PF6 again to copy the file, or press any other key to cancel the operation.
+    Press PF6 again to copy the file, or press any other key to cancel the operation.
 
 124 CONFIRM THE COPY OF THIS PAGE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0043, VIR0043H
+    VIR0043, VIR0043H
 Meaning
-You pressed PF1 to request that all files should be downloaded.
+    You pressed PF1 to request that all files should be downloaded.
 Action
-Press PF1 again to confirm, or press any other key to cancel the operation.
-
+    Press PF1 again to confirm, or press any other key to cancel the operation.
 
 125 IMPOSSIBLE OPERATION
- 
+^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0022A
+    VIR0022A
 Meaning
-Either you pressed PF2 on the VIRTEL Multi-Session sub-menu to request that the application be promoted to the main menu, but the main menu is full; or you pressed PF2 to request that an application should be demoted to the sub-menu, but the application cannot be removed from the main menu because you currently have a active session with this application.
+    Either you pressed PF2 on the VIRTEL Multi-Session sub-menu to request that the application be promoted to the main menu, but the main menu is full; or you pressed PF2 to request that an application should be demoted to the sub-menu, but the application cannot be removed from the main menu because you currently have a active session with this application.
 Action
-None.
+    None.
 
 126 NAME OF PAGE TO LOAD :
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1010
+    VIR1010
 Meaning
-VIRTEL is requesting the name of a videotex page to be uploaded to the VIRARBO file.
+    VIRTEL is requesting the name of a videotex page to be uploaded to the VIRARBO file.
 Action
-Enter the name of the page to be uploaded.
+    Enter the name of the page to be uploaded.
 
 127 THE PAGE ALREADY EXISTS,REPLACE (Y / N)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1010
+    VIR1010
 Meaning
-During a videotex page upload operation, VIRTEL has determined that a page of the same name already exists in the VIRARBO file.
+    During a videotex page upload operation, VIRTEL has determined that a page of the same name already exists in the VIRARBO file.
 Action
-Enter Y to overwrite the page in the VIRARBO file, or N to cancel the operation.
+    Enter Y to overwrite the page in the VIRARBO file, or N to cancel the operation.
 
 128 SELECT THE PAGE THEN PRESS SEND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1010
+    VIR1010
 Meaning
-During a videotex page upload operation, VIRTEL is ready to receive the page to be uploaded.
+    During a videotex page upload operation, VIRTEL is ready to receive the page to be uploaded.
 Action
-Select the page according to the procedure provided by your page composition software, then press the “SEND” (or “ENVOI”) key.
+    Select the page according to the procedure provided by your page composition software, then press the “SEND” (or “ENVOI”) key.
 
 129 CREATION COMPLETED
-
+^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1010
-
+    VIR1010
 Meaning
-A new videotex page has been successfully uploaded to the VIRARBO file.
+    A new videotex page has been successfully uploaded to the VIRARBO file.
 Action
-None.
+    None.
 
 130 UPDATE COMPLETED
-
+^^^^^^^^^^^^^^^^^^^^
 Module
-VIR1010
+    VIR1010
 Meaning
-A replacement videotex page has been successfully uploaded to the VIRARBO file.
+    A replacement videotex page has been successfully uploaded to the VIRARBO file.
 Action
-None.
+    None.
 
 131 PRESS PF1 TO CONFIRM THE UPDATE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0044, VIR0046
+    VIR0044, VIR0046
 Meaning
-As a result of an earlier modification to the definition of a VIRTEL transaction, the associated entry point must now be updated.
+    As a result of an earlier modification to the definition of a VIRTEL transaction, the associated entry point must now be updated.
 Action
-Press PF1 to confirm the update.
+    Press PF1 to confirm the update.
 
 132 PLEASE CONFIRM YOUR PASSWORD
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
+    VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
 Meaning
-VIRTEL has temporarily locked your terminal because of lack of activity.
+    VIRTEL has temporarily locked your terminal because of lack of activity.
 Action
-Enter your password again to reactivate your terminal.
+    Enter your password again to reactivate your terminal.
 
 133 UNITS SPENT: nnnnn.nn
-
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021A, VIR0025
+    VIR0021A, VIR0025
 Meaning
-This message shows the number of units consumed by a call to an external server.
+    This message shows the number of units consumed by a call to an external server.
 Action
-None.
+    None.
 
 
 134 POSITION IN QUEUE: nnnn
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0025, VIR0025T
+    VIR0025, VIR0025T
 Meaning
-This message shows your position in the queue for a call to an external server.
+    This message shows your position in the queue for a call to an external server.
 Action
-None.
+    None.
 
 135 ACTIVATION WAS REQUESTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0041A
+    VIR0041A
 Meaning
-You pressed PF4 in the e-mail correspondent management sub-application to request activation of a correspondent.
+    You pressed PF4 in the e-mail correspondent management sub-application to request activation of a correspondent.
 Action
-None.
+    None.
 
 136 DISABLE WAS DONE
-
+^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0041A
+    VIR0041A
 Meaning
-You pressed PF5 in the e-mail correspondent management sub-application to request deactivation of a correspondent.
+    You pressed PF5 in the e-mail correspondent management sub-application to request deactivation of a correspondent.
 Action
-None.
+    None.
 
 137 Should contain the '@' sign
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0041A
+    VIR0041A
 Meaning
-This message is issued by the e-mail correspondent management sub-application to allow you to verify how your terminal displays the “@” sign. In some countries, the “@” sign may appear differently on a 3270 terminal (for example, “à”).
+    This message is issued by the e-mail correspondent management sub-application to allow you to verify how your terminal displays the “@” sign. In some countries, the “@” sign may appear differently on a 3270 terminal (for example, “à”).
 Action
-When you enter an e-mail address, ensure that you use the same symbol as displayed in this message.
+    When you enter an e-mail address, ensure that you use the same symbol as displayed in this message.
 
 138 Sample command: &|W
+^^^^^^^^^^^^^^^^^^^^^^^ 
+Module
+    VIR0045
+Meaning
+    This message is issued by the entry point and transaction management sub-application to allow you to verify how your terminal displays the “&” and “|” signs. In some countries, these characters may appear differently on a 3270 terminal (for example, “!” instead of “|”).
+Action
+    When you enter script commands in the “TIOA at logon” and “TIOA at logoff” fields, ensure that you use the same symbols as displayed in this message.
+
+1.2.    Web Access Messages
+---------------------------
+
+.. note::
+    These messages are issued by VIRTEL Web Access scripts and are displayed as alerts in the user’s browser window. 
+
+*Cannot open pop-up window for print data. You may need to disable your pop- up blocker*
 
 Module
-VIR0045
-
+    js01.js
 Meaning
-This message is issued by the entry point and transaction management sub-application to allow you to verify how your terminal displays the “&” and “|” signs. In some countries, these characters may appear differently on a 3270 terminal (for example, “!” instead of “|”).
+    VIRTEL Web Access print function needs to open a new browser window to display print data, but the function is disallowed by the browser settings.
 Action
-When you enter script commands in the “TIOA at logon” and “TIOA at logoff” fields, ensure that you use the same symbols as displayed in this message.
+    Adjust your browser settings to allow VIRTEL scripts to open pop-up windows. For Internet Explorer, add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools – Options – Content – Block pop-up windows.
 
-2.3.    Web Access Messages
-
-These messages are issued by VIRTEL Web Access scripts and are displayed as alerts in the user’s browser window.
-
-Cannot open pop-up window for print data. You may need to disable your pop- up blocker
+*Cannot open pop-up window for settings. You may need to disable your pop-up blocker*       
 
 Module
-js01.js
+    js01.js
 Meaning
-VIRTEL Web Access print function needs to open a new browser window to display print data, but the function is disallowed by the browser settings.
+    The VIRTEL Web Access Settings menu cannot be displayed because the browser settings do not permit scripts to open new windows.
 Action
-Adjust your browser settings to allow VIRTEL scripts to open pop-up windows. For Internet Explorer, add the VIRTEL host to the trusted zone. For Firefox, add the VIRTEL host to the exceptions list in Tools – Options – Content – Block pop-up windows.
+    Same as previous message.
 
-Cannot open pop-up window for settings. You may need to disable your pop-up blocker
+*Message too long for RSA*
 
 Module
-js01.js
+    rsa.js
 Meaning
-The VIRTEL Web Access Settings menu cannot be displayed because the browser settings do not permit scripts to open new windows.
+    An anomaly has been detected by the encryption script.
 Action
-Same as previous message.
+    Contact technical support.
 
-Message too long for RSA
+*Invalid RSA public key*
 
 Module
-rsa.js
+    rsa.js
 Meaning
-An anomaly has been detected by the encryption script.
+    The RSA key supplied by VIRTEL is not valid.
 Action
-Contact technical support.
+    Contact technical support.
 
-
-Invalid RSA public key
- 
-Module
-rsa.js
-Meaning
-The RSA key supplied by VIRTEL is not valid.
-Action
-Contact technical support.
-
-vircrypt.js: VIRTEL CRYPT parameters are missing
+*vircrypt.js: VIRTEL CRYPT parameters are missing*
 
 Module
-vircrypt.js
+    vircrypt.js
 Meaning
-VIRTEL did not supply the encryption parameters requested by the page template.
+    VIRTEL did not supply the encryption parameters requested by the page template.
 Action
-Check that there is a CRYPTn parameter in the VIRTCT whose name matches the name requested by the page template. For the WEB2AJAX.htm template, there must be a CRYPTn parameter whose name subparameter is CRYPT3270.
+    Check that there is a CRYPTn parameter in the VIRTCT whose name matches the name requested by the page template. For the WEB2AJAX.htm template, there must be a CRYPTn parameter whose name subparameter is CRYPT3270.
 
-vircrypt.js: Unable to obtain public key from VIRTEL
+*vircrypt.js: Unable to obtain public key from VIRTEL*
 
 Module
-vircrypt.js
+    vircrypt.js
 Meaning
-VIRTEL did not supply the RSA public exponent or modulus requested by the page template.
+    VIRTEL did not supply the RSA public exponent or modulus requested by the page template.
 Action
-Check the JESMSGLG for the VIRTEL started task to determine why the public key request failed.
+    Check the JESMSGLG for the VIRTEL started task to determine why the public key request failed.
 
-vircrypt.js: Unsupported encryption algorithm: xxx
+*vircrypt.js: Unsupported encryption algorithm: xxx*    
 
 Module
-vircrypt.js
+    vircrypt.js
 Meaning
-The symmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
+    The symmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
 Action
-Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
+    Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
 
-vircrypt.js: Unsupported encoding|chaining|padding method: xxx
+*vircrypt.js: Unsupported encoding|chaining|padding method: xxx*
 
 Module
-vircrypt.js
-
+    vircrypt.js
 Meaning
-The encoding method, chaining method, or padding method specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
+    The encoding method, chaining method, or padding method specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
 Action
-Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
+    Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
 
-vircrypt.js: Unsupported PKA algorithm: xxx
+*vircrypt.js: Unsupported PKA algorithm: xxx*
 
 Module
-vircrypt.js
+    vircrypt.js
 Meaning
-The asymmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
+    The asymmetric encryption algorithm specified in the CRYPTn parameter of the VIRTCT is not supported by this version of the script.
 Action
-Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
+    Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
 
+2.  VIRTEL console messages
+===========================
 
+2.1.    Messages VIR0000I – VIR0009I
+------------------------------------
 
-
-
-
-
-
-3.  VIRTEL console messages
-
-
-
-
-
-
-3.1.    Messages VIR0000I – VIR0009I
-
-VIR0000I HTTP Date: Mon, 07 Jun 2004 15:20:23 GMT
-VIR0000I SMTP Date: Mon, 07 Jun 2004 17:20:23 +0200
-
-
+VIR0000I xxxx Date: Mon, 07 Jun 2004 15:20:23 GMT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-These messages indicate the current time from the point of view of the HTTP and SMTP server components of VIRTEL. The times are calculated from the system TOD CLOCK, adjusted by the GMT parameter of the VIRTCT.
+    These messages indicate the current time from the point of view of the HTTP and SMTP server components of VIRTEL. The times are calculated from the system TOD CLOCK, adjusted by the GMT parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIR0001W VSAM ERROR ON FILE filename : yy yy (HEX) REQ : zz KEY : keyvalue
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0001
+    	VIR0001
 Meaning
-Unexpected VSAM error occurred during access of file filename. yy yy is the VSAM return code, zz is the request being processed, keyvalue is the record access key (16 characters).
+    Unexpected VSAM error occurred during access of file filename. yy yy is the VSAM return code, zz is the request being processed, keyvalue is the record access key (16 characters).
 Action
-Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
+    Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
 
 VIR0002W TERM=termid, REQUEST=qq, RTNCD=cc, FDBK2=dd, SENSE=ssss ssss xxxxxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
-
+    VIR0009
 Meaning
-Unexpected VTAM error during dialogue with a terminal: termid is the name of the terminal, qq is the type of VTAM request which encountered the error, cc is the VTAM return code (hexadecimal), dd is the VTAM feedback code (hexadecimal), ssss ssss is the sense code, and xxxxxxx is VIRTEL’s interpretation of the sense code.
+    Unexpected VTAM error during dialogue with a terminal: termid is the name of the terminal, qq is the type of VTAM request which encountered the error, cc is the VTAM return code (hexadecimal), dd is the VTAM feedback code (hexadecimal), ssss ssss is the sense code, and xxxxxxx is VIRTEL’s interpretation of the sense code.
 Action
-Verify the values of the returned sense codes in the appropriate IBM documentation. VTAM codes are documented in the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manuals.
+    Verify the values of the returned sense codes in the appropriate IBM documentation. VTAM codes are documented in the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manuals.
 
 VIR0003I xxxxxxxx ENDED
-
+^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL termination is complete.
-Action
-None.
+    VIRTEL termination is complete.
+Action  
+    None.
 
 VIR0004I CLEANUP : luname/ applname
 
