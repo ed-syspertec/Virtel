@@ -1435,3100 +1435,3031 @@ Action
     None.
 
 VIR0004I CLEANUP : luname/ applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-The session was interrupted between the relay associated with the terminal luname and the application applname.
+    The session was interrupted between the relay associated with the terminal luname and the application applname.
 Action
-None.
+    None.
 
 VIR0005W UNABLE TO ACTIVATE relayname (termid) ERROR: xx000000
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The relay relayname associated with terminal termid cannot be activated. xx is the ACB error code. Commonly encountered codes are:
-•   58 : ACB already in use by another application
-•   5A : ACB not activated in VTAM
-For the meaning of other codes, see the IBM VTAM Programming manual.
+    The relay relayname associated with terminal termid cannot be activated. xx is the ACB error code. Commonly encountered codes are:
+
+    - 58 : ACB already in use by another application
+    - 5A : ACB not activated in VTAM
+    
+    For the meaning of other codes, see the IBM VTAM Programming manual.
 Action
-Verify that the VTAM node containing the relay relayname has been activated, verify that the relay is not already activated for an other terminal or application, and that the terminal is correctly defined in VIRTEL.
+    Verify that the VTAM node containing the relay relayname has been activated, verify that the relay is not already activated for an other terminal or application, and that the terminal is correctly defined in VIRTEL.
 
 VIR0006I DETACHING xxxxxxxx SUBTASK
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL is detaching subtask xxxxxxxx before stopping the system.
-
+    VIRTEL is detaching subtask xxxxxxxx before stopping the system.
 Action
-None.
+    None.
 
 VIR0007I luname/applname BIND FAILED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-A connection request for the terminal luname from the application applname was rejected due to insufficient storage to establish the session, or because a session already exists with this application.
+    A connection request for the terminal luname from the application applname was rejected due to insufficient storage to establish the session, or because a session already exists with this application.
 Action
-Verify the memory allocation to VIRTEL.
+    Verify the memory allocation to VIRTEL.
 
 VIR0008S INVALID RPL
-
+^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    	VIR0009
 Meaning
-VTAM has found an invalid RPL. This message is followed by an ABEND U009.
+    VTAM has found an invalid RPL. This message is followed by an ABEND U009.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR0009I xxxxxxx : SHUT DOWN IN PROGRESS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-VIRTEL is shutting down. xxxxxxxx represents the name of the VIRTEL primary ACB.
+    VIRTEL is shutting down. xxxxxxxx represents the name of the VIRTEL primary ACB.
 Action
-None.
+    None.
 
-3.2.    Messages VIR0010I – VIR0019I
+2.2.    Messages VIR0010I – VIR0019I
+------------------------------------
 
 VIR0010I SUBPOOL SIZE = ssss K
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-Indicates in kilobytes the quantity of memory available to VIRTEL for working storage after loading resident modules.
+    Indicates in kilobytes the quantity of memory available to VIRTEL for working storage after loading resident modules.
 Action
-None.
-
+    None.
 
 VIR0011E INSUFFICIENT MEMORY FOR START UP
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL has not acquired the minimum memory required to start and has abandoned its initialisation.
+    VIRTEL has not acquired the minimum memory required to start and has abandoned its initialisation.
 Action
-Increase the value of the OSCORE parameter in the VIRTCT, and/or :
-•   in VSE, increase the partition size,
-•   in MVS, increase the REGION size.
+    Increase the value of the OSCORE parameter in the VIRTCT, and/or :
+    - in VSE, increase the partition size,
+    - in MVS, increase the REGION size.
 
 VIR0012W INSUFFICIENT MEMORY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-VIRTEL does not have sufficient memory to satisfy a request.
+    VIRTEL does not have sufficient memory to satisfy a request.
 Action
-Increase the memory allocated to VIRTEL, and/or increase the value of the OSCORE parameter of the VIRTCT. (See message VIR0011E).
+    Increase the memory allocated to VIRTEL, and/or increase the value of the OSCORE parameter of the VIRTCT. (See message VIR0011E).
 
 VIR0013W VTAM SHORT ON STORAGE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VTAM lacks sufficient memory to satisfy a request.
+    VTAM lacks sufficient memory to satisfy a request.
 Action
-Ensure that the VTAM definitions are correct.
+    Ensure that the VTAM definitions are correct.
 
 VIR0014S FREEMAIN FATAL ERROR
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-An unexpected error occurred during a call to release memory in the subpool. The system will stop.
+    An unexpected error occurred during a call to release memory in the subpool. The system will stop.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR0015S ABEND WITHIN VIRTEL KERNEL, TASK=taskname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0007
-
+    VIR0007
 Meaning
-An unexpected error occurred in the VIRTEL kernel. This message is preceded by message VIR0016W and followed by abend U0007.
+    An unexpected error occurred in the VIRTEL kernel. This message is preceded by message VIR0016W and followed by abend U0007.
 Action
-In order to deal with this problem, two dumps are printed during VIRTEL termination, one formatted, the other non formatted. Contact technical support.
+    In order to deal with this problem, two dumps are printed during VIRTEL termination, one formatted, the other non formatted. Contact technical support.
 
 VIR0016W ABEND abendtype TERM=termid, PROG=progname, OFFSET=+xxxxx VIR0016W PSW = pppppppp pppppppp nnnncccc aaaaaaaa
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0004
+    VIR0004
 Meaning
-An abend with code abendtype was produced in the program progname at offset xxxxx during a session from terminal termid. ppp...ppp represents the program status word at the time of the abend, nnnn is the instruction length code, cccc is the interruption code, and aaaaaaaa is the translation exception address. For VSE, only the program status word is displayed. A partial formatted DUMP is written to the SYSPRINT file.
+    An abend with code abendtype was produced in the program progname at offset xxxxx during a session from terminal termid. ppp...ppp represents the program status word at the time of the abend, nnnn is the instruction length code, cccc is the interruption code, and aaaaaaaa is the translation exception address. For VSE, only the program status word is displayed. A partial formatted DUMP is written to the SYSPRINT file.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR0017I LOGON luname/relayname DENIED STATE=ss
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-The terminal luname tried to connect under the name relayname. This connection was refused for one of the following reasons :
-•   the name of the terminal is different to that associated with the relay to which it tried to connect,
-•   the previous connection did not terminate,
-•   a Minitel or PC was connected to VIRTEL over a logical channel unknown to VIRTEL.
+    The terminal luname tried to connect under the name relayname. This connection was refused for one of the following reasons :
+
+    - the name of the terminal is different to that associated with the relay to which it tried to connect,
+    - the previous connection did not terminate,
+    - a terminal was connected to VIRTEL over a logical channel unknown to VIRTEL.
 
 Action
-None.
+    None.
 
-VIR0018I VIRTEL 4.nn HAS THE FOLLOWING PTF(S) APPLIED
-VIR0018I nnnn,nnnn,...
-
+VIR0018I VIRTEL r.vv HAS THE FOLLOWING PTF(S) APPLIED
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
-Meaning
-Indicates the PTF numbers applied to VIRTEL.
+    VIR0000
+Meaning 
+    Indicates the PTF numbers applied to VIRTEL.
 Action
-None.
+    None.
 
 VIR0019I VIRTEL 4.nn HAS NO PTFS APPLIED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
-
+    VIR0000
 Meaning
-Indicates that no PTFs are applied to VIRTEL.
+    Indicates that no PTFs are applied to VIRTEL.
 Action
-None.
+    None.
 
-3.3.    Messages VIR0020E – VIR0029W
+2.3.    Messages VIR0020E – VIR0029W
+------------------------------------
 
 VIR0020E APPLICATION acbname IS ALREADY ACTIVE
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-The application acbname referenced in the APPLID parameter of the VIRTCT is already in use.
+    The application acbname referenced in the APPLID parameter of the VIRTCT is already in use.
 Action
-Check if another VIRTEL task is already active. Check that the correct APPLID was specified in the VIRTCT.
+    Check if another VIRTEL task is already active. Check that the correct APPLID was specified in the VIRTCT.
 
 VIR0021E ERROR xx OPENING MAIN TASK ACB acbname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL has encountered an ACB error code xx when opening the VTAM ACB acbname.
+    VIRTEL has encountered an ACB error code xx when opening the VTAM ACB acbname.
 Action
-Check that the APPLID is correctly specified in the VIRTCT, and that the VTAM application node for VIRTEL has been activated. The following are commonly encountered ACB error codes:
-•   52 : VTAM is in the process of stopping.
-•   54 : the VIRTEL application is not defined for VTAM.
-•   56 : VIRTEL is defined, but not as an application.
-•   5A : the VIRTEL application is not defined for VTAM.
-•   5C : VTAM is inactive.
+    Check that the APPLID is correctly specified in the VIRTCT, and that the VTAM application node for VIRTEL has been activated. The following are commonly encountered ACB error codes:
+
+    - 52 : VTAM is in the process of stopping.
+    - 54 : the VIRTEL application is not defined for VTAM.
+    - 56 : VIRTEL is defined, but not as an application.
+    - 5A : the VIRTEL application is not defined for VTAM.
+    - 5C : VTAM is inactive.
+
 For values of the ACB error code, refer to the IBM VTAM Programming manual.
 
 VIR0022E ERROR xx BUILDING VSAM BUFFER POOL
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-Error code xx has occurred when generating the VSAM buffer pools.
+    Error code xx has occurred when generating the VSAM buffer pools.
 Action
-Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X'08' indicates that the memory allocated to VIRTEL is insufficient.
-
+    Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X'08' indicates that the memory allocated to VIRTEL is insufficient.
 
 VIR0023E ERROR xx OPENING FILE filename
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0000
+    VIR0000
 Meaning
-VSAM error xx occurred when opening file filename.
+    VSAM error xx occurred when opening file filename.
 Action
-Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X'5C' (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
-VIR0024I
+    Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X'5C' (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
 
-This message indicates the progress of VIRTEL start-up :
+VIR0024I
+^^^^^^^^
+This message indicates the progress of VIRTEL start-up : 
 
 OPENING FILE filename
- 
+
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL is opening file filename.
+    VIRTEL is opening file filename.
 Action
+    None.
 
 CLOSING FILE filename
-None.
+
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL is closing file filename.
+    VIRTEL is closing file filename.
 Action
+    None.
 
 ATTACHING SUBTASK
-None.
+
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL is loading its subtasks.
+    VIRTEL is loading its subtasks.
 Action
+    None.
 
 READING VIRARBO
-None.
-Module
-VIR0000
 
+Module
+    VIR0000
 Meaning
-VIRTEL is loading its configuration information stored in the VIRARBO file.
+    VIRTEL is loading its configuration information stored in the VIRARBO file.
 Action
+    None.
 
 READING TYPES
-None.
+
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL is loading the screen types for level 3 compression stored in the VIRCMP3 file.
+    VIRTEL is loading the screen types for level 3 compression stored in the VIRCMP3 file.
 Action
+    None.
 
 STARTING CRYPTn
-None.
+
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL is loading the interface modules for the encryption engine specified by the CRYPTn parameter in the VIRTCT.
+    VIRTEL is loading the interface modules for the encryption engine specified by the CRYPTn parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0025E ERROR progname IS NOT FOR VIRTEL VERSION vvv
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The VIRTCT progname was assembled using a version of VIRTEL which was not the same as the running version vvv.
+    The VIRTCT progname was assembled using a version of VIRTEL which was not the same as the running version vvv.
 Action
-Re-assemble the VIRTCT using version vvv of the VIRTEL MACLIB.
+    Re-assemble the VIRTCT using version vvv of the VIRTEL MACLIB.
 
 VIR0025E ERROR ON OVERRIDE: overname RETURN CODE: hhhh SUB CODE: ssssssss
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-An error occurred while processing a VTOVER macro in the VIRTCT.  overname is the label of the VTOVER macro       in error, hhhh is the return code (in hexadécimal) specified by the ERRORC parameter of the VTOVER macro, and ssssssss is a code (in hexadécimal) indicating the type of error.
+    An error occurred while processing a VTOVER macro in the VIRTCT.  overname is the label of the VTOVER macro       in error, hhhh is the return code (in hexadécimal) specified by the ERRORC parameter of the VTOVER macro, and ssssssss is a code (in hexadécimal) indicating the type of error.
 Action
-Correct the error, re-assemble the VIRTCT, and restart VIRTEL.
-
+    Correct the error, re-assemble the VIRTCT, and restart VIRTEL.
 
 VIR0026I COMPRESSION 3 IS NOT ACTIVE
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The compression level 3 management system has not been activated.
+    The compression level 3 management system has not been activated.
 Action
-Verify the validity of the operands FCMP3 and COMPR3 of the VIRTCT.
+    Verify the validity of the operands FCMP3 and COMPR3 of the VIRTCT.
 
 VIR0026W termid OPEN SESSION luname1 – luname2
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-VIRTEL has stopped while a session with terminal luname is still active.
+    VIRTEL has stopped while a session with terminal luname is still active.
 Action
-None.
+    None.
 
 VIR0026W linename HAS OPEN OBJECT socknum
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL has stopped while a connection to the MQSeries message queue manager is still active.
+    VIRTEL has stopped while a connection to the MQSeries message queue manager is still active.
 Action
-None.
+    None.
 
 VIR0026W termid IS DISCONNECTED DUE TO TIME-OUT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-Terminal termid was disconnected after expiry of the inactivity timer. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    Terminal termid was disconnected after expiry of the inactivity timer. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
-VIR0027I
+    None.
 
+VIR0027I
+^^^^^^^^
 Screen type management messages :
 
 nnnn SCREEN TYPES LOADED
- 
-Module
-VIR0000
-
-Meaning
-VIRTEL has located nnnn screen types while initialising level 3 compression.
-Action
+    Module
+        VIR0000
+    Meaning
+        VIRTEL has located nnnn screen types while initialising level 3 compression.
+    Action
+        None.
 
 SAVING SCREENS
-None.
-Module
-VIR0000
-Meaning
-VIRTEL is saving the screen types in file VIRCMP3 before stopping the system.
-Action
-None.
+    Module
+        VIR0000
+    Meaning
+        VIRTEL is saving the screen types in file VIRCMP3 before stopping the system.
+    Action
+        None.
 
 VIR0028I SCREEN screentype ADDED TO LIBRARY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-A screen type of screentype was added to the library of screen types.
+    A screen type of screentype was added to the library of screen types.
 Action
-None.
+    None.
 
 VIR0028I SCREEN screentype MODIFIED TO LIBRARY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-A screen of type screentype was modified in the library of screen types.
+    A screen of type screentype was modified in the library of screen types.
 Action
-None.
+    None.
 
 VIR0028W SCREEN screentype WAS NOT MOVED TO LIBRARY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-A screen of type screentype could not be moved to the library of screen types.
+    A screen of type screentype could not be moved to the library of screen types.
 Action
-Verify that the VIRCMP3 file is not full or damaged.
+    Verify that the VIRCMP3 file is not full or damaged.
 
 VIR0028W WELCOME OF UNDEFINED luname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
-
+    VIR0009
 Meaning
-A terminal luname that was not defined in VIRTEL was connected in “welcome” mode. It will no longer be under the control of VIRTEL once it has selected an application from the menu.
+    A terminal luname that was not defined in VIRTEL was connected in “welcome” mode. It will no longer be under the control of VIRTEL once it has selected an application from the menu.
 Action
-None.
+    None.
 
 VIR0029W WELCOME OF UNDEFINED luname DENIED : NO MORE ENTRIES
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-The terminal luname which is not defined in VIRTEL attempted to connect in “welcome” mode, but all the available terminal slots are occupied. The connection is refused by VIRTEL.
+    The terminal luname which is not defined in VIRTEL attempted to connect in “welcome” mode, but all the available terminal slots are occupied. The connection is refused by VIRTEL.
 Action
-If you wish to operate the terminal in “relay” mode, define the terminal in VIRTEL with an associated relay defined by a VTAM APPL card. If you wish to continue operating the terminal in “welcome” mode, increase the value of the NBDYNAM parameter in the VIRTCT.
+    If you wish to operate the terminal in “relay” mode, define the terminal in VIRTEL with an associated relay defined by a VTAM APPL card. If you wish to continue operating the terminal in “welcome” mode, increase the value of the NBDYNAM parameter in the VIRTCT.
 
-3.4.    Messages VIR0030E – VIR0039I
+2.4.    Messages VIR0030E – VIR0039I
+------------------------------------
 
 VIR0030E ERROR xx LOADING progname
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-Error xx was detected while loading the module progname.
+    Error xx was detected while loading the module progname.
 Action
-This was probably an attempt to load an exit that was not assembled, or incorrectly referenced in the VIRTCT.
+    This was probably an attempt to load an exit that was not assembled, or incorrectly referenced in the VIRTCT.
 
 VIR0030E ERROR: xx LOADING progname : CROSS MEMORY CANNOT START
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL cannot load the VIRXM interface program progname. VIRTEL is unable to start cross-memory (XM) lines.
+    VIRTEL cannot load the VIRXM interface program progname. VIRTEL is unable to start cross-memory (XM) lines.
 Action
-Ensure that the VIRXM load library is included in the STEPLIB of the VIRTEL STC.
+    Ensure that the VIRXM load library is included in the STEPLIB of the VIRTEL STC.
 
 VIR0030E ERROR: xx LOADING progname : BATCH INTERFACE CANNOT START
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL cannot load the batch interface program progname. VIRTEL is unable to start batch (BATCHn) lines.
-
+    VIRTEL cannot load the batch interface program progname. VIRTEL is unable to start batch (BATCHn) lines.
 Action
-Ensure that the correct version of the VIRTEL load library is included in the STEPLIB of the VIRTEL STC.
+    Ensure that the correct version of the VIRTEL load library is included in the STEPLIB of the VIRTEL STC.
 
 VIR0030S ERROR OPENING DFHRPL (MVS only)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0003
+    VIR0003
 Meaning
-The DFHRPL file was not open. Initialisation is stopped.
+    The DFHRPL file was not open. Initialisation is stopped.
 Action
-Verify the definition of the STC.
+    Verify the definition of the STC.
 
 VIR0030W PROGRAM progname NOT FOUND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0003
+    VIR0003
 Meaning
-The module progname was not found in the library accessed by VIRTEL.
+    The module progname was not found in the library accessed by VIRTEL.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR0031E UNDEFINED TCP TCPn FOR LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The definition of line n-xxxxxx specifies line type TCPn, but the TCPn parameter is not defined in the VIRTCT.
+    The definition of line n-xxxxxx specifies line type TCPn, but the TCPn parameter is not defined in the VIRTCT.
 Action
-Correct the line definition, or define the TCPn parameter in the VIRTCT.
+    Correct the line definition, or define the TCPn parameter in the VIRTCT.
 
 VIR0031E UNSUPPORTED CROSS-MEMORY XMn (protocol) FOR LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 Module
-VIR0000
+    VIR0000
 Meaning
-The definition of line n-xxxxxx specifies line type XMn, but the XMn parameter is not defined in the VIRTCT.
+    The definition of line n-xxxxxx specifies line type XMn, but the XMn parameter is not defined in the VIRTCT.
 Action
-Correct the line definition, or define the XMn parameter in the VIRTCT.
+    Correct the line definition, or define the XMn parameter in the VIRTCT.
 
 VIR0031E UNSUPPORTED MQ SERIES TYPE MQn (protocol) FOR LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The definition of line n-xxxxxx specifies line type MQn, but the MQn parameter is not defined in the VIRTCT.
-
+    The definition of line n-xxxxxx specifies line type MQn, but the MQn parameter is not defined in the VIRTCT.
 Action
-Correct the line definition, or define the MQn parameter in the VIRTCT.
+    Correct the line definition, or define the MQn parameter in the VIRTCT.
 
 VIR0031E UNSUPPORTED BATCH LINE TYPE BATCHn (protocol) FOR LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The definition of line n-xxxxxx specifies line type BATCHn, but the BATCHn parameter is not defined in the VIRTCT.
+    The definition of line n-xxxxxx specifies line type BATCHn, but the BATCHn parameter is not defined in the VIRTCT.
 Action
-Correct the line definition, or define the BATCHn parameter in the VIRTCT.
+    Correct the line definition, or define the BATCHn parameter in the VIRTCT.
 
 VIR0031W PROGRAM progname NOT FOUND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0003
+    VIR0003
 Meaning
-The module progname was not found in the library accessed by VIRTEL.
+    The module progname was not found in the library accessed by VIRTEL.
 Action
-In MVS, verify that the DFHRPL DD card in the VIRTEL started task JCL specifies the name of the library that contains the VIRTEL load modules. In DOS, verify that the LIBDEF SEARCH card in the VIRTEL startup JCL references the library that contains the VIRTEL phases.
+    In MVS, verify that the DFHRPL DD card in the VIRTEL started task JCL specifies the name of the library that contains the VIRTEL load modules. In DOS, verify that the LIBDEF SEARCH card in the VIRTEL startup JCL references the library that contains the VIRTEL phases.
 
 VIR0032E PERMANENT I/O ERROR DURING FETCH
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0003
+    VIR0003
 Meaning
-An error occurred while attempting to load a module.
+    An error occurred while attempting to load a module.
 Action
-Verify the definition of the library containing VIRTEL modules.
+    Verify the definition of the library containing VIRTEL modules.
 
 VIR0032W BYPASSING LINE n-xxxxxx : STATUS IS ZERO
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The line whose internal name is n-xxxxxx was not activated at VIRTEL startup, because the “Possible calls” field is set to 0 in the line definition.
+    The line whose internal name is n-xxxxxx was not activated at VIRTEL startup, because the “Possible calls” field is set to 0 in the line definition.
 Action
-None.
+    None.
 
 VIR0032W BYPASSING LINE n-xxxxxx : DISABLED IN VIRTCT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
-
+    VIR0000
 Meaning
-The line whose internal name is n-xxxxxx was not activated at VIRTEL startup, either because its name appears in the IGNLU parameter in the VIRTCT, or because your VIRTEL license does not allow the activation of this type of line.
+    The line whose internal name is n-xxxxxx was not activated at VIRTEL startup, either because its name appears in the IGNLU parameter in the VIRTCT, or because your VIRTEL license does not allow the activation of this type of line.
 Action
-In the first case, remove the line name from the IGNLU parameter in the VIRTCT. In the second case, contact Syspertec to upgrade your license.
+    In the first case, remove the line name from the IGNLU parameter in the VIRTCT. In the second case, contact Syspertec to upgrade your license.
 
 VIR0033E NO LINE DEFINED FOR termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-Terminal termid is defined but is not linked to any active line.
+    Terminal termid is defined but is not linked to any active line.
 Action
-Check that the prefix of the terminal name is referenced in the definition of the appropriate line. This message is normal if the terminal is linked to an inactive line (indicated by message VIR0032W).
+    Check that the prefix of the terminal name is referenced in the definition of the appropriate line. This message is normal if the terminal is linked to an inactive line (indicated by message VIR0032W).
 
 VIR0033W INSUFICIENT MEMORY TO LOAD MODULE progname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0003
+    VIR0003
 Meaning
-VIRTEL has not loaded the module progname because of memory shortage.
+    VIRTEL has not loaded the module progname because of memory shortage.
 Action
-See message VIR0011E and VIR0012W.
+    See message VIR0011E and VIR0012W.
 
 VIR0034E INVALID DEB DURING LOAD
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0003
+    VIR0003
 Meaning
-Unexpected error when loading a module from DFHRPL.
+    Unexpected error when loading a module from DFHRPL.
 Action
-Call technical support.
+    Call technical support.
 
 VIR0034W BYPASSING RULE rulename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-Rule rulename could not be loaded.
+    Rule rulename could not be loaded.
 Action
-Check that VIRTEL has enough memory. Obtain a SNAP dump and call technical support.
-
+    Check that VIRTEL has enough memory. Obtain a SNAP dump and call technical support.
 
 VIR0035E UNDEFINED LINE n-xxxxxx FOR RULE rulename
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0000
+    VIR0000
 Meaning
-Rule rulename is associated with line n-xxxxxx, but the line does not exist or is not active.
+    Rule rulename is associated with line n-xxxxxx, but the line does not exist or is not active.
 Action
-This message is normal if the rule is linked to an inactive line (“Possible calls” set to 0, or line specified in the IGNLU parameter in the VIRTCT) or to a user ruleset.
+    This message is normal if the rule is linked to an inactive line (“Possible calls” set to 0, or line specified in the IGNLU parameter in the VIRTCT) or to a user ruleset.
 
 VIR0036W WARNING : RULE rulename FOR LINE n-xxxxxx HAS AN ACTIVE TRACE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-Rule rulename associated with n-xxxxxx is set to trigger a trace of incoming calls.
+    Rule rulename associated with n-xxxxxx is set to trigger a trace of incoming calls.
 Action
-If the trace is not wanted, display the definition of rule rulename from the definition panel for line n-xxxxxx. Blank out the “Trace” field and press F1.
+    If the trace is not wanted, display the definition of rule rulename from the definition panel for line n-xxxxxx. Blank out the “Trace” field and press F1.
 
 VIR0037E ERREUR xx OUVERTURE SYSPRINT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0004
+    VIR0004
 Meaning
-Error xx occurred when opening the file SYSPRINT/SYSLST.
+    Error xx occurred when opening the file SYSPRINT/SYSLST.
 Action
-Verify the DD card or the DLBL referencing the print file.
+    Verify the DD card or the DLBL referencing the print file.
 
 VIR0038I SNAP COMPLETE
-
+^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0004
+    	VIR0004
 Meaning
-VIRTEL has written a SNAP dump of the internal trace table to the SYSPRINT/SYSLST file.
+    VIRTEL has written a SNAP dump of the internal trace table to the SYSPRINT/SYSLST file.
 Action
-None.
+    None.
 
 VIR0039E ERROR: THE VIRTCT VIRTCTxx IS INVALID: VIRTEL CANNOT CONTINUE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The length of the VIRTCT does not match the expected length for this release of VIRTEL.
-
+    The length of the VIRTCT does not match the expected length for this release of VIRTEL.
 Action
-Use job ASMTCT in the VIRTEL CNTL library to reassemble the VIRTCT using the correct level VIRTERM macro.
+    Use job ASMTCT in the VIRTEL CNTL library to reassemble the VIRTCT using the correct level VIRTERM macro.
 
 VIR0039I trace command VTAM
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR2020
+    VIR2020
 Meaning
-A VTAM command other than a display was issued from the VIRTEL network management system.
+    A VTAM command other than a display was issued from the VIRTEL network management system.
 Action
-None.
+    None.
 
-3.5.    Messages VIR0040E – VIR0049I
+2.5.    Messages VIR0040E – VIR0049I
 
 VIR0040E ERROR: THE VIRTCT progname IS INVALID: VIRTEL CANNOT CONTINUE
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-The VIRTCT progname was assembled using a version of VIRTEL which was not the same as the running version.
+    The VIRTCT progname was assembled using a version of VIRTEL which was not the same as the running version.
 Action
-Re-assemble the VIRTCT using the current version of the VIRTEL MACLIB.
+    Re-assemble the VIRTCT using the current version of the VIRTEL MACLIB.
 
 VIR0040I GATE : linetype LINE n-xxxxxx ACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-VIRTEL has established communication with the X25 line linename.
+    VIRTEL has established communication with the X25 line linename.
 Action
-None.
+    None.
 
 VIR0041I termid : CALL ABORTED ON LINE n-xxxxxx VC cccc CAUSE = xx DIAGNOSTIC = dd
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-An outgoing call in GATE mode using terminal termid did not complete. If cccc is greater than the number of SVC’s, it refers to the temporary identification of the outgoing call.
+    An outgoing call in GATE mode using terminal termid did not complete. If cccc is greater than the number of SVC’s, it refers to the temporary identification of the outgoing call.
 Action
-For the meaning of the cause and diagnostic codes, refer to the X.25 documentation supplied by SAPONET.
-
+    For the meaning of the cause and diagnostic codes, refer to the X.25 documentation supplied by SAPONET.
 
 VIR0042I GATE : UNSUPPORTED COMMAND = xx ON MCH n-xxxxxx
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0005
+    	VIR0005
 Meaning
-The packet received from the X.25 network is of an unknown type. xx represents the hexadecimal value of the first byte of the packet, n-xxxxxx represents the name of the MCH on which the incident occurred.
+    The packet received from the X.25 network is of an unknown type. xx represents the hexadecimal value of the first byte of the packet, n-xxxxxx represents the name of the MCH on which the incident occurred.
 Action
-Contact technical services if the incident persists.
+    Contact technical services if the incident persists.
 
 VIR0043I GATE : DIAGNOSTIC = xx,yyyyy on MCH n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-A diagnostic packet was received from the X.25 network. The packet contains values xx and call user data yyyyy. For certain codes, yyyyy represents the number of the virtual circuit concerned.
+    A diagnostic packet was received from the X.25 network. The packet contains values xx and call user data yyyyy. For certain codes, yyyyy represents the number of the virtual circuit concerned.
 Action
-Refer to the SAPONET documentation.
+    Refer to the SAPONET documentation.
 
 VIR0044I termid : COMMAND xx ERROR yy on VC cccccc
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-The command xx sent on virtual circuit cccccc has produced an error yy. termid is the name of the terminal concerned.
+    The command xx sent on virtual circuit cccccc has produced an error yy. termid is the name of the terminal concerned.
 Action
-Refer to the SAPONET documentation.
+    Refer to the SAPONET documentation.
 
 VIR0045E termid : NBCVC PARAMETER TOO SMALL
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-A call could not complete because there was no VC available. termid is the name of the terminal concerned.
+    A call could not complete because there was no VC available. termid is the name of the terminal concerned.
 Action
-Increase the value of the NBCVC operand in the VIRTCT of VIRTEL.
+    Increase the value of the NBCVC operand in the VIRTCT of VIRTEL.
 
 VIR0046E GATE : PROTOCOL ERROR ON MCH n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-An error was encountered on the link with the MCH n-xxxxxx.
-
+    An error was encountered on the link with the MCH n-xxxxxx.
 Action
-This error is different to the lost session error, or the deactivation of the LU MCH. (See the possible associated message VIR0002W ).
+    This error is different to the lost session error, or the deactivation of the LU MCH. (See the possible associated message VIR0002W ).
 
 VIR0047W GATE : ERROR ACTIVATING linetype LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL could not acquire the X.25 line n-xxxxxx.
+    VIRTEL could not acquire the X.25 line n-xxxxxx.
 Action
-Check the definition of line n-xxxxxx. The value in the “Partner” field must match the name of the MCH LU generated by NPSI. Verify that the LU is active in VTAM.
+    Check the definition of line n-xxxxxx. The value in the “Partner” field must match the name of the MCH LU generated by NPSI. Verify that the LU is active in VTAM.
 
 VIR0048W GATE : LINE n-xxxxxx INACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-The link between VIRTEL and the line n-xxxxxx has terminated.
+    The link between VIRTEL and the line n-xxxxxx has terminated.
 Action
-Verify the cause of the deactivation.
+    Verify the cause of the deactivation.
 
 VIR0049I X25 COMMAND xx RECEIVED FOR TERMINAL termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL has received the X.25 command xx from terminal termid. It is either unknown, or is unexpected at this time, and is ignored.
+    VIRTEL has received the X.25 command xx from terminal termid. It is either unknown, or is unexpected at this time, and is ignored.
 Action
-None.
+    None.
 
-3.6.    Messages VIR0050W – VIR0059I
+2.6.    Messages VIR0050W – VIR0059I
+------------------------------------
 
 VIR0050W INVALID EIB FREEMAIN FOR luname
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-An unexpected free memory block error associated with terminal luname was encountered.
+    An unexpected free memory block error associated with terminal luname was encountered.
 Action
-Contact technical support if the message persists.
-
+    Contact technical support if the message persists.
 
 VIR0051I termid CONNECTED TO SERVICE ssssssss
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
 Module
-VIR0014
+    VIR0014
 Meaning
-The terminal termid has established contact with VIRTEL. It has been connected to the service ssssssss. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    The terminal termid has established contact with VIRTEL. It has been connected to the service ssssssss. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0052I termid DISCONNECTED AFTER nn MINUTES
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0014
+    VIR0014
 Meaning
-The terminal termid has disconnected after nn minutes of connection. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    The terminal termid has disconnected after nn minutes of connection. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0053W MISSING PAGE pagename IN NODE nodename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0014
+    VIR0014
 Meaning
-Tree structure definition problem. The node nodename referenced a page pagename that does not exist in the VIRARBO file.
+    Tree structure definition problem. The node nodename referenced a page pagename that does not exist in the VIRARBO file.
 Action
-Verify the definition of the Minitel tree structure.
+    Verify the definition of the Minitel tree structure.
 
 VIR0056S NO MORE OSCORE AVAILABLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL has insufficient memory available to load a module.
+    VIRTEL has insufficient memory available to load a module.
 Action
-Verify the OSCORE parameter in the VIRTCT.
+    Verify the OSCORE parameter in the VIRTCT.
 
 VIR0059I termid RELAY relayname ACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL has opened the relay relayname associated with the terminal termid.
-
+    VIRTEL has opened the relay relayname associated with the terminal termid.
 Action
-None.
+    None.
 
 3.7.    Messages VIR0060W – VIR0069I
+------------------------------------
 
 VIR0060W MAPFAIL WAS DETECTED ON TERMINAL luname
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-Conflict between a VIRTEL program and a sub application screen.
+    Conflict between a VIRTEL program and a sub application screen.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR0060W PROGRAM progname IS A NEW COPY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-A NEW command for module progname has successfully refreshed the module in memory.
+    A NEW command for module progname has successfully refreshed the module in memory.
 Action
-None.
+    None.
 
 VIR0061E MAP mapname NOT FOUND IN MAPSET mapsetname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-Conflict between a map mapname and a VIRTEL program.
+    Conflict between a map mapname and a VIRTEL program.
 Action
-An abend follows this message. Contact technical support.
+    An abend follows this message. Contact technical support.
 
 VIR0061W PROGRAM progname NOT IN MEMORY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000, VIR0002
+    VIR0000, VIR0002
 Meaning
-A NEW command, a ZAP command, or a ZAPD instruction did not complete due to the absence of the module progname in memory.
+    A NEW command, a ZAP command, or a ZAPD instruction did not complete due to the absence of the module progname in memory.
 Action
-For a NEW command: None. The module will be loaded by VIRTEL when required. For a ZAP command: Correct the command and reenter. For a ZAPD instruction: Correct the instruction and restart VIRTEL.
-
+    For a NEW command: None. The module will be loaded by VIRTEL when required. For a ZAP command: Correct the command and reenter. For a ZAPD instruction: Correct the instruction and restart VIRTEL.
 
 VIR0062I termid TRACE ACTIVE
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0002
+    VIR0002
 Meaning
-A TRACE command has activated the trace on terminal or line termid.
+    A TRACE command has activated the trace on terminal or line termid.
 Action
-None.
+    None.
 
 VIR0062I termid TRACE INACTIVE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    	VIR0002
 Meaning
-A NOTRACE command has inactivated the trace on terminal or line termid.
+    A NOTRACE command has inactivated the trace on terminal or line termid.
 Action
-None.
+    None.
 
 VIR0062W LINE linename IS UNKNOWN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-A LINE=linename,START or STOP command refers to a line not known to VIRTEL.
+    A LINE=linename,START or STOP command refers to a line not known to VIRTEL.
 Action
-Reenter the command specifying a valid linename.
+    Reenter the command specifying a valid linename.
 
 VIR0063W LINE linename ALREADY ACTIVE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-A LINE=linename,START command attempted to start a line which was already active.
+    A LINE=linename,START command attempted to start a line which was already active.
 Action
-None.
+    None.
 
 VIR0064W LINE linename (n-xxxxxx) START / STOP REQUESTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-VIRTEL has processed a LINE=linename,START or STOP command on the line whose external name is linename and whose internal name is n-xxxxxx.
-
+    VIRTEL has processed a LINE=linename,START or STOP command on the line whose external name is linename and whose internal name is n-xxxxxx.
 Action
-None.
+    None.
 
 VIR0064W ADDRESS aaaa NOW IS :  yyyy yyyy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000, VIR0002
+    VIR0000, VIR0002
 Meaning
-Notifies that the ZAP command or ZAPD instruction was executed successfully in memory at address aaaa.
+    Notifies that the ZAP command or ZAPD instruction was executed successfully in memory at address aaaa.
 Action
-A modification made by ZAP command is valid until the next restart of VIRTEL. The ZAPH parameter of the VIRTCT can be used to ensure that the modification is reappied at each restart.
+    A modification made by ZAP command is valid until the next restart of VIRTEL. The ZAPH parameter of the VIRTCT can be used to ensure that the modification is reappied at each restart.
 
 VIR0064W OFFSET LENGTH xxxx IS INVALID
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-The offset field of a ZAPD instruction in the VIRTCT is invalid.
+    The offset field of a ZAPD instruction in the VIRTCT is invalid.
 Action
-Correct the ZAPD instruction and restart VIRTEL.
+    Correct the ZAPD instruction and restart VIRTEL.
 
 VIR0065E VERIFY ERROR. ADDRESS aaaa IS : yyyy yyyy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000, VIR0002
+    VIR0000, VIR0002
 Meaning
-A ZAP command or a ZAPD instruction cannot complete because of an error at address aaaa during verify.
+    A ZAP command or a ZAPD instruction cannot complete because of an error at address aaaa during verify.
 Action
-None.
+    None.
 
 VIR0066I APPLYING ptfid ON progname desc
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-At startup VIRTEL is preparing to process a ZAPD instruction in the VIRTCT.
+    At startup VIRTEL is preparing to process a ZAPD instruction in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0067I MESSAGES ARE NOW DISPLAYED VIR0067I MESSAGES ARE NOW DISCARDED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
-
+    VIR0002
 Meaning
-As a result of the SILENCE command, connection and deconnection messages will now be displayed or discarded.
+    As a result of the SILENCE command, connection and deconnection messages will now be displayed or discarded.
 Action
-None.
-VIR0068E
+    None.
 
+VIR0068E
+^^^^^^^^
 Invalid system command.
 
 INVALID COMMAND
- 
+    Correct the command
 Module
-VIR0002
+    VIR0002
 Meaning
-The command passed to VIRTEL is unknown.
+    The command passed to VIRTEL is unknown.
 Action
+    Correct the command
+
 NOT FOUND
-Correct the command.
+    Correct the command.
 Module
-VIR0002
+    VIR0002
 Meaning
-A SNAP or TRACE command referenced a terminal unknown to VIRTEL.
+    A SNAP or TRACE command referenced a terminal unknown to VIRTEL.
 Action
-Correct the command.
+    Correct the command.
 
-VIR0068I SNAP WILL FOLLOW msgid1 msgid2 ...
-
+VIR0068I SNAP WILL FOLLOW msgid1 msgid2 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-As a result of a SNAPMSG command, VIRTEL will produce a SNAP following the first occurrence of one of the messages indicated.
+    As a result of a SNAPMSG command, VIRTEL will produce a SNAP following the first occurrence of one of the messages indicated.
 Action
-None.
+    None.
 
 VIR0069I READY
-
+^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-VIRTEL is ready for the next console command (VSE).
+    VIRTEL is ready for the next console command (VSE).
 Action
-None.
+    None.
 
-3.8.    Messages VIR0070I – VIR0079I
- 
+2.8.    Messages VIR0070I – VIR0079I
+------------------------------------ 
 
 VIR0070I SIMULTANEOUS TRANSACTION AT TERMINAL termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    	VIR0010
 Meaning
-The terminal termid has started a second transaction while the first one was still active.
+    The terminal termid has started a second transaction while the first one was still active.
 Action
-If the first transaction results in a Multi-Session menu display, VIRTEL maybe did not obtain from VTAM the status of the menu applications (in cross domain for example). If this is the case, remove status control from this application (PF9 from the general Sub-Applications menu).
+    If the first transaction results in a Multi-Session menu display, VIRTEL maybe did not obtain from VTAM the status of the menu applications (in cross domain for example). If this is the case, remove status control from this application (PF9 from the general Sub-Applications menu).
 
-3.9.    Messages VIR0080W – VIR0089W
+2.9.    Messages VIR0080W – VIR0089W
+------------------------------------
 
 VIR0080W VSAM ERROR ON FILE VIRARBO xx xx REQ : yy, KEY: cccccccc
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-VSAM error xx xx has appeared on the VIRARBO file for request yy on key cccccccc.
+    VSAM error xx xx has appeared on the VIRARBO file for request yy on key cccccccc.
 Action
-VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
+    VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
 
 VIR0081W NO MORE OSCORE AVAILABLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-VIRTEL does not have sufficient memory to load a security module.
+    VIRTEL does not have sufficient memory to load a security module.
 Action
-Check the value of the OSCORE parameter in the VIRTCT.
+    Check the value of the OSCORE parameter in the VIRTCT.
 
 VIR0082W UNAUTHORIZED USER TERMINAL : luname NAME : username
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    	Security
 Meaning
-VIRTEL security. A password was erroneously used more than three times for the same user username from the terminal luname.
+    VIRTEL security. A password was erroneously used more than three times for the same user username from the terminal luname.
 Action
-The user username is revoked and may not be re established except by the security administrator of VIRTEL.
-
+    The user username is revoked and may not be re established except by the security administrator of VIRTEL.
 
 VIR0083W opcode OF ELEMENT xxxxxxxx BY username FROM luname
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-Security
+    Security
 Meaning
-VIRTEL security. Trace a modification of the security of VIRTEL. The user username has proceeded with the modification opcode (ADD, UPDATE, DELETION) of security element xxxxxxxx USER, RESSOURCE, PROFIL, DEPARTMENT from terminal luname.
+    VIRTEL security. Trace a modification of the security of VIRTEL. The user username has proceeded with the modification opcode (ADD, UPDATE, DELETION) of security element xxxxxxxx USER, RESSOURCE, PROFIL, DEPARTMENT from terminal luname.
 Action
-None.
+    None.
 
 VIR0084W ELEMENT REFERENCE ERROR xxxxxxxx ELEMENT yyyyyyyy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    	Security
 Meaning
-VIRTEL security. A referencing problem in the security of VIRTEL. For example the element xxxxxxxx referenced element yyyyyyyy that does not exist.
+    VIRTEL security. A referencing problem in the security of VIRTEL. For example the element xxxxxxxx referenced element yyyyyyyy that does not exist.
 Action
-Modify the element reference in the security program of VIRTEL.
+    Modify the element reference in the security program of VIRTEL.
 
-VIR0085E INVALID MEMORY FREE REQUEST. ADDR=aaaaaaaa. SUBPOOL=ss.
-CALLER=cccccccc
-
+VIR0085E INVALID MEMORY FREE REQUEST. ADDR=aaaaaaaa. SUBPOOL=ss. CALLER=cccccccc
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-The VIRTEL memory request is invalid because, either the subpool is invalid or the address to be freed is outside the associated subpool pages, or the address to be freed is not found in the DSA table.
+    The VIRTEL memory request is invalid because, either the subpool is invalid or the address to be freed is outside the associated subpool pages, or the address to be freed is not found in the DSA table.
 Action
-Virtel continues. If you get a significant number of these messages you consider a schedule a restart of Virtel.
+    Virtel continues. If you get a significant number of these messages you consider a schedule a restart of Virtel.
 
 VIR0086E GETMAIN FAILED. MEMORY DSA DISABLED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-Virtel was unable to GETMAIN storage “above the BAR” for the DSA table.
+    Virtel was unable to GETMAIN storage “above the BAR” for the DSA table.
 Action
-Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
+    Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
 
 VIRT0088E DSA TABLE FULL. MEMORY DIAGS. DISABLED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
-
+    	VIR0000
 Meaning
-The DSA memory table is full and cannot store further entries. Memory diagnostics disabled.
+    The DSA memory table is full and cannot store further entries. Memory diagnostics disabled.
 Action
-Virtel contines but you should contact support support. Schedule a restart of Virtel.
+    Virtel contines but you should contact support support. Schedule a restart of Virtel.
 
 VIR0086E GETMAIN FAILED. MEMORY DSA DISABLED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-Virtel was unable to GETMAIN storage “above the BAR” for the DSA table.
+    	Virtel was unable to GETMAIN storage “above the BAR” for the DSA table.
 Action
-Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
+    Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
 
 VIR0089I VIRTEL RUNNING AUTHORIZED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-VIRTEL security. Virtel is running as an authorized task.
+    VIRTEL security. Virtel is running as an authorized task.
 Action
-None. Information only.
+    None. Information only.
 
-3.10.   Messages VIR0090E – VIR0099E
+2.10.   Messages VIR0090E – VIR0099E
+------------------------------------
 
-VIR0090E VIRSV INITIALIZATION ERROR - VSVPOPTR R15 : xxxxxxxx (dddddddd)
-
-
+VIR0090E VIRSV INITIALIZATION ERROR -VSVPOPTR R15 : xxxxxxxx (dddddddd)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-VIRTEL was unable to initialize the VIRSV service environment. xxxxxxxx is the hexadecimal return code from program VSVPOPTR, and dddddddd is the decimal equivalent of the low-order byte of the return code.
+    VIRTEL was unable to initialize the VIRSV service environment. xxxxxxxx is the hexadecimal return code from program VSVPOPTR, and dddddddd is the decimal equivalent of the low-order byte of the return code.
 Action
-Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPOPTR return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check the VIRTEL started task JCL to ensure that the VIRSV load library is referenced in both the STEPLIB and the SERVLIB concatenations. Check that the VIRSV load library is APF- authorized.
+    Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPOPTR return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check the VIRTEL started task JCL to ensure that the VIRSV load library is referenced in both the STEPLIB and the SERVLIB concatenations. Check that the VIRSV load library is APF- authorized.
 
 VIR0091E ERROR: VIRTEL MUST BE APF AUTHORIZED WHEN SECUR=RACROUTE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
-
+    VIR0000
 Meaning
-VIRTEL cannot start because RACROUTE security was requested by the SECUR parameter of the VIRTCT, but the VIRTEL address space is not running as an APF-authorized jobstep.
+    VIRTEL cannot start because RACROUTE security was requested by the SECUR parameter of the VIRTCT, but the VIRTEL address space is not running as an APF-authorized jobstep.
 Action
-Check that all of the libraries referenced by the STEPLIB, DFHRPL, and SERVLIB (if present) statements in the VIRTEL started task JCL are defined as APF-authorized libraries in the MVS system APF-list.
+    Check that all of the libraries referenced by the STEPLIB, DFHRPL, and SERVLIB (if present) statements in the VIRTEL started task JCL are defined as APF-authorized libraries in the MVS system APF-list.
 
 VIR0092E GNAMEADD FAILED FOR VTAM GENERIC RESOURCE grname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL was unable to identify itself to VTAM as a generic resource. grname is the generic resource name specified in the GRNAME parameter of the VIRTCT.
+    VIRTEL was unable to identify itself to VTAM as a generic resource. grname is the generic resource name specified in the GRNAME parameter of the VIRTCT.
 Action
-Check the console log for preceding message VIR0002W REQ=SETLOGON RTNCD=cc FDBK2=dd. Take action according to the return code and feedback code indicated in message VIR0002W. Commonly encountered codes are:
-•   RTNCD=10 FDBK2=19 Sysplex coupling facility does not exist; CFRM policy for the required coupling facility structure was not active; VTAM is not defined as an APPN node; or VTAM has lost connectivity to the required coupling facility structure.
+    Check the console log for preceding message VIR0002W REQ=SETLOGON RTNCD=cc FDBK2=dd. Take action according to the return code and feedback code indicated in message VIR0002W. Commonly encountered codes are:
+    - RTNCD=10 FDBK2=19 Sysplex coupling facility does not exist; CFRM policy for the required coupling facility structure was not active; VTAM is not defined as an APPN node; or VTAM has lost connectivity to the required coupling facility structure.
 
 VIR0093I VTAM GENERIC RESOURCE NAME IS grname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL has successfully identified itself to VTAM as a generic resource. grname is the generic resource name specified in the GRNAME parameter of the VIRTCT.
+    VIRTEL has successfully identified itself to VTAM as a generic resource. grname is the generic resource name specified in the GRNAME parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIR0094E PRODID [DEFINE | AUTH] ERROR: RC=code
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-While attempting to identify itself to z/VSE, VIRTEL encountered an unexpected return code.
+    While attempting to identify itself to z/VSE, VIRTEL encountered an unexpected return code.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR0095I PRODID AUTHORIZATION SUCCESSFUL
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL has successfully identified itself to z/VSE as a vendor product.
-
+    VIRTEL has successfully identified itself to z/VSE as a vendor product.
 Action
-None.
+    None.
 
 VIR0096I VIRTEL IS USING VIRTCT 'VIRTCTnn'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-As a result of the parameter TCT=nn specified in the startup JCL, VIRTEL is using the parameter table VIRTCTnn.
+    As a result of the parameter TCT=nn specified in the startup JCL, VIRTEL is using the parameter table VIRTCTnn.
 Action
-None.
+    None.
 
 VIR0097E ERROR ALLOCATING MEMORY FOR termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-VIRTEL has insufficient memory to allocate a storage area for terminal termid.
+    VIRTEL has insufficient memory to allocate a storage area for terminal termid.
 Action
-Increase the VIRTEL region size or partition size.
+    Increase the VIRTEL region size or partition size.
 
 VIR0098I VIRTEL RUNNING AS A SUBTASK. LINKED FROM mmmmmmmm
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    	VIR0000
 Meaning
-Indicates that VIRTEL has been attached and called by another process. The module mmmmmmm is calling routine.
+    Indicates that VIRTEL has been attached and called by another process. The module mmmmmmm is calling routine.
 Action
-None
+    None
 
 VIR0099I applid STARTED AT dd/mm/yy hh:mm:ss , VERSION vvvv
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-Initialisation of VIRTEL version vvvv is complete. VTAM application applid is now available.
+    Initialisation of VIRTEL version vvvv is complete. VTAM application applid is now available.
 Action
-None.
+    None.
 
-3.11.   Messages VIR02xxx
- 
+2.11.   Messages VIR02xxx
+-------------------------
+
 VIR0200I, VIR0201I
-
-VIR0200I command
-
+^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-This message serves as an audit trail of a VIRTEL command entered at the operator console.
+    This message serves as an audit trail of a VIRTEL command entered at the operator console.
 Action
-None.
+    None.
 
 VIR0201I VIRTEL 4.xx APPLID=applid LINES [ACT/INACT]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002
+Meaning
+    This message is displayed in response to a VIRTEL LINES command. 4.xx is the VIRTEL version number and applid is the name of the main VIRTEL application ACB.
+Action
+    None.
+
+.. 
+    VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP VIR0202I -------- -------- ----- ---------
+    VIR0202I n-xxxxxx linename type locaddr VIR0202I ---END OF LIST---
 
 Module
-VIR0002
+    	VIR0002
 Meaning
-This message is displayed in response to a VIRTEL LINES command. 4.xx is the VIRTEL version number and applid is the name of the main VIRTEL application ACB.
+    This message is the output from a VIRTEL LINES command. For each line displayed, n-xxxxxx is the internal name of the line, linename is the external name of the line, type is the line type (GATE, FASTC, /GATE, /FASTC, /PCNE, APPCn, TCPn), and locaddr is the VTAM LU name or IP address of the line specified in the “Local ident” field of the line definition. An asterisk before the line type indicates that the line is currently inactive.
 Action
-None.
+    None.
 
-VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP VIR0202I -------- -------- ----- ---------
-VIR0202I n-xxxxxx linename type locaddr VIR0202I ---END OF LIST---
+..  
+    VIR0203I TERMINALS ASSOCIATED WITH LINE n-xxxxxx VIR0203I TERMINAL RELAY    STATUS
+    VIR0203I -------- -------- --------
+    VIR0203I termid +luname acbstat cvcstat tranid termstat VIR0203I ---END OF LIST---
 
 Module
-VIR0002
+    VIR0002
 Meaning
-This message is the output from a VIRTEL LINES command. For each line displayed, n-xxxxxx is the internal name of the line, linename is the external name of the line, type is the line type (GATE, FASTC, /GATE, /FASTC, /PCNE, APPCn, TCPn), and locaddr is the VTAM LU name or IP address of the line specified in the “Local ident” field of the line definition. An asterisk before the line type indicates that the line is currently inactive.
+    This message is the output from a VIRTEL LINE=linename,DISPLAY command. It displays a list of terminals associated with the line. linename is the external name of the line, and n-xxxxxx is the internal name of the line. For each terminal displayed, termid is the terminal name, “+” indicates that this terminal is pointed to by the MCH 1st LU pointer, luname is the relay LU name, acbstat is the relay ACB status which can be blank (ACB closed), ACTIV (ACB open), P-RQS (VIRTEL is awaiting the response from the application for a pending session request), or ACT/S (ACB    in session). cvcstat is the CVC status which can be blank (terminal is free), SERV (terminal is occupied by a service transaction), or INUSE (terminal is occupied by a call). tranid is the external name of the transaction using the terminal. termstat is the terminal status which can be LINKED (terminal is owned by and linked to this line), NOT LK (terminal is owned by this line but not yet linked) OWNED BY m-yyyyyy (terminal prefix matches this line but terminal is owned by another line), UNOWNED (terminal prefix matches this line but terminal is not owned by any line).
 Action
-None.
+    None.
 
-VIR0203I TERMINALS ASSOCIATED WITH LINE n-xxxxxx VIR0203I TERMINAL RELAY    STATUS
-VIR0203I -------- -------- --------
-VIR0203I termid +luname acbstat cvcstat tranid termstat VIR0203I ---END OF LIST---
+.. 
+    VIR0204I TERMINALS IN POOL *poolname VIR0204I TERMINAL RELAY    PRINTER USED BY VIR0204I -------- -------- -------- --------
+    VIR0204I termid1 luname printlu termid2 VIR0204I ---END OF LIST---
 
 Module
-VIR0002
-
+    VIR0002
 Meaning
-This message is the output from a VIRTEL LINE=linename,DISPLAY command. It displays a list of terminals associated with the line. linename is the external name of the line, and n-xxxxxx is the internal name of the line. For each terminal displayed, termid is the terminal name, “+” indicates that this terminal is pointed to by the MCH 1st LU pointer, luname is the relay LU name, acbstat is the relay ACB status which can be blank (ACB closed), ACTIV (ACB open), P-RQS (VIRTEL is awaiting the response from the application for a pending session request), or ACT/S (ACB    in session). cvcstat is the CVC status which can be blank (terminal is free), SERV (terminal is occupied by a service transaction), or INUSE (terminal is occupied by a call). tranid is the external name of the transaction using the terminal. termstat is the terminal status which can be LINKED (terminal is owned by and linked to this line), NOT LK (terminal is owned by this line but not yet linked) OWNED BY m-yyyyyy (terminal prefix matches this line but terminal is owned by another line), UNOWNED (terminal prefix matches this line but terminal is not owned by any line).
+    This message is appended to the output from a VIRTEL LINE=linename,DISPLAY command when one or more of the terminals attached to the line references a logical pool. It displays a list of terminals belonging to the logical pool.  poolname is the name of the logical pool. For each terminal displayed, termid1 is the name of the terminal in the logical pool, luname is the relay LU name associated with this terminal, printlu is the LU name of the associated virtual printer, and termid2 is the name of the terminal (if any) which is currently using this relay.
 Action
-None.
-
-VIR0204I TERMINALS IN POOL *poolname VIR0204I TERMINAL RELAY    PRINTER USED BY VIR0204I -------- -------- -------- --------
-VIR0204I termid1 luname printlu termid2 VIR0204I ---END OF LIST---
-
-Module
-VIR0002
-Meaning
-This message is appended to the output from a VIRTEL LINE=linename,DISPLAY command when one or more of the terminals attached to the line references a logical pool. It displays a list of terminals belonging to the logical pool.
-*poolname is the name of the logical pool. For each terminal displayed, termid1 is the name of the terminal in the logical pool, luname is the relay LU name associated with this terminal, printlu is the LU name of the associated virtual printer, and termid2 is the name of the terminal (if any) which is currently using this relay.
-Action
-None.
+    None.
 
 VIR0205I NO TERMINALS ASSOCIATED WITH LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-As a result of a VIRTEL LINE=linename,DISPLAY command, no terminals were found which match the prefix of the requested line.
+    As a result of a VIRTEL LINE=linename,DISPLAY command, no terminals were found which match the prefix of the requested line.
 Action
-None.
+    None.
 
 VIR0206I LINE n-xxxxxx linetype linestat acbname acbstat
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-This message is part of the output from a VIRTEL LINE=linename,DISPLAY command lines which have an associated SNA LU. It displays the status of the line. linename is the external name of the line, and n-xxxxxx is the internal  name of the line. linetype is the type of line (/GATE, /FASTC), linestat is the status of the line (STARTED or STOPPED),
-
-acbname is the LU name of the line, acbstat is the line LU status which can be blank (ACB closed), ACTIV (ACB open), or ACT/S (ACB in session).
+    This message is part of the output from a VIRTEL LINE=linename,DISPLAY command lines which have an associated SNA LU. It displays the status of the line. linename is the external name of the line, and n-xxxxxx is the internal  name of the line. linetype is the type of line (/GATE, /FASTC), linestat is the status of the line (STARTED or STOPPED),
+    acbname is the LU name of the line, acbstat is the line LU status which can be blank (ACB closed), ACTIV (ACB open), or ACT/S (ACB in session).
 Action
-None.
+    None.
 
 VIR0207I LINE n-xxxxxx linetype lineprot linestat
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-This message is part of the output from a VIRTEL LINE=linename,DISPLAY command for lines which do not have an associated SNA LU. It displays the status of the line. linename is the external name of the line, and n-xxxxxx is the internal name of the line. linetype is the type of line (GATE, FASTC, /PCNE, TCPn), lineprot is the protocol (XOT, HTTP, SMTP, PASS, PSIT, NEOX), linestat is the status of the line (STARTED or STOPPED).
+    This message is part of the output from a VIRTEL LINE=linename,DISPLAY command for lines which do not have an associated SNA LU. It displays the status of the line. linename is the external name of the line, and n-xxxxxx is the internal name of the line. linetype is the type of line (GATE, FASTC, /PCNE, TCPn), lineprot is the protocol (XOT, HTTP, SMTP, PASS, PSIT, NEOX), linestat is the status of the line (STARTED or STOPPED).
 Action
-None.
+    None.
 
 VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-The VIRTEL LINE=linename,START and STOP commands are not valid for lines of type APPCn, GATE or FASTC. This message may also occur for lines of type TCPn or XMn when the corresponding TCPn or XMn parameter is not coded in the VIRTCT.
+    The VIRTEL LINE=linename,START and STOP commands are not valid for lines of type APPCn, GATE or FASTC. This message may also occur for lines of type TCPn or XMn when the corresponding TCPn or XMn parameter is not coded in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0211I LINE linename TRACE ACTIVE VIR0211I TERM termid TRACE ACTIVE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-In response to a TRACE,DISPLAY command, VIRTEL displays a list of lines and terminals for which tracing is active.
+    In response to a TRACE,DISPLAY command, VIRTEL displays a list of lines and terminals for which tracing is active.
 Action
-Use the NOTRACE command to deactivate tracing if desired.
+    Use the NOTRACE command to deactivate tracing if desired.
 
 VIR0212I LINE linename TRACE INACTIVATED VIR0212I TERM termid TRACE INACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-In response to a NOTRACE,ALL command, VIRTEL displays a list of lines and terminals for which tracing has been deactivated.
-
+    In response to a NOTRACE,ALL command, VIRTEL displays a list of lines and terminals for which tracing has been deactivated.
 Action
-None.
+    None.
 
 VIR0213I NO ACTIVE TRACES
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002
+Meaning
+    A NOTRACE,ALL command was entered, but no traces were active.
+Action
+    None.
+
+.. 
+    VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid VIR0214I TERMINAL RELAY    APPLID  CLIENT
+    VIR0214I -------- -------- -------- ---------------
+    VIR0214I termid luname  applname n.n.n.n VIR0214I ---END OF LIST---
 
 Module
-VIR0002
+    VIR0002
 Meaning
-A NOTRACE,ALL command was entered, but no traces were active.
+    This message is displayed in response to a VIRTEL RELAYS command. 4.xx is the VIRTEL version number and applid is the name of the main VIRTEL application ACB. For each terminal displayed, termid is the name of the terminal in the logical pool, luname is the relay LU name associated with this terminal, applname is the name of the host application to which the relay LU is connected, and n.n.n.n is the IP address of the client workstation (if any).
 Action
-None.
-
-VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid VIR0214I TERMINAL RELAY    APPLID  CLIENT
-VIR0214I -------- -------- -------- ---------------
-VIR0214I termid luname  applname n.n.n.n VIR0214I ---END OF LIST---
-
-Module
-VIR0002
-Meaning
-This message is displayed in response to a VIRTEL RELAYS command. 4.xx is the VIRTEL version number and applid is the name of the main VIRTEL application ACB. For each terminal displayed, termid is the name of the terminal in the logical pool, luname is the relay LU name associated with this terminal, applname is the name of the host application to which the relay LU is connected, and n.n.n.n is the IP address of the client workstation (if any).
-Action
-None.
+    None.
 
 VIR0215I NO ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-This message is displayed in response to a VIRTEL RELAYS command when VIRTEL has no VTAM ACB open except for the main VIRTEL application ACB applid.
+    This message is displayed in response to a VIRTEL RELAYS command when VIRTEL has no VTAM ACB open except for the main VIRTEL application ACB applid.
 Action
-None.
+    None.
 
 VIR0220I termid SCENARIO STOP REQUESTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-A KILL command was entered for terminal termid.
+    A KILL command was entered for terminal termid.
 Action
-None.
-
+    None.
 
 VIR0260W SERVICE servname IS A NEW COPY
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0002
+    VIR0002
 Meaning
-A VIRSV,NEW command for service servname has successfully stopped the service.
+    A VIRSV,NEW command for service servname has successfully stopped the service.
 Action
-None.
+    None.
 
 VIR0261W SERVICE servname NOT IN MEMORY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    VIR0002
 Meaning
-A VIRSV,NEW command did not complete because the service servname was not started.
+    A VIRSV,NEW command did not complete because the service servname was not started.
 Action
-None. The service will be started by VIRTEL when required.
+    None. The service will be started by VIRTEL when required.
 
 VIR0262W SNAPMSG TRIGGERED - VIRTEL ABENDED | SNAP TAKEN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0002
+    	VIR0002
 Meaning
-A message has been trapped by the SNAPMSG function. Action taken will be either a SNAP dump or an ABEND of Virtel.
+    A message has been trapped by the SNAPMSG function. Action taken will be either a SNAP dump or an ABEND of Virtel.
 Action
-Determined by TCT parameters or the action set in the SNAPMSG= command.
+    Determined by TCT parameters or the action set in the SNAPMSG= command.
 
 VIR0270I DISPLAY 938 VIRTEL TCT=VIRTCTRJ:
-SILENCE=N,MEMORY=(A,N),BFVSAM=08192,BUFDATA=016,BUFSIZE=20000,STR=03 COUNTRY=FR,GMT=XXXXX,DEFUTF8=IBM1147 ,LANG= ,MAXSOCK=00250,VSAMTYP=N APPLID=SPVIRRI ,SMF=X,PASSTCK=N,VIRSECU=Y,SWA=N,NBTERM=0500,NTASK=04 MEMORY=(SYS(0001868K,0001868K),DATA(0011712K,0011712K)),LOG=CONSOLE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. 
+    SILENCE=N,MEMORY=(A,N),BFVSAM=08192,BUFDATA=016,BUFSIZE=20000,
+    STR=03 COUNTRY=FR,GMT=XXXXX,DEFUTF8=IBM1147 ,LANG= ,MAXSOCK=00250,
+    VSAMTYP=N APPLID=SPVIRRI ,SMF=X,PASSTCK=N,VIRSECU=Y,SWA=N,NBTERM=0500,
+    NTASK=04 MEMORY=(SYS(0001868K,0001868K),DATA(0011712K,0011712K)),LOG=CONSOLE
 
 Module
-VIR0002
+    VIR0002
 Meaning
-A TCT command has been issued to display the content of some of the VIRTCT parameters. This message shows the parameter details.
+    A TCT command has been issued to display the content of some of the VIRTCT parameters. This message shows the parameter details.
 Action
-None.
+    None.
+
 VIR0280I END
-
+^^^^^^^^^^^^
 Module
-VIR0002
-
+    VIR0002
 Meaning
-This marks the end of a VIR0270I message.
+    This marks the end of a VIR0270I message.
 Action
-None.
+    None.
 
-
-
-3.12.   Messages VIR05xxx
+2.12.   Messages VIR05xxx
 
 VIR0504I ACQUIRING TERMINAL luname(relayname) TO LINK n-xxxxxx
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL is entering into session with terminal luname.
+    VIRTEL is entering into session with terminal luname.
 Action
-None.
+    None.
 
 VIR0505I  LINKING TERMINAL termid TO n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL has linked terminal termid to the line whose internal name is n-xxxxxx. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    VIRTEL has linked terminal termid to the line whose internal name is n-xxxxxx. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0506E ERROR LINKING TERMINAL termid TO n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL was unable to link terminal termid to the line whose internal name is n-xxxxxx.
+    VIRTEL was unable to link terminal termid to the line whose internal name is n-xxxxxx.
 Action
-Check the terminal definition in VIRTEL and in VTAM.
+    Check the terminal definition in VIRTEL and in VTAM.
 
 VIR0507I LINKING TERMINAL termid TO n-xxxxxx RELAY relayname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    	
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL linked terminal termid to the line whose internal name is n-xxxxxx. The associated relay is relayname (if specified). This message can be suppressed by the SILENCE parameter in the VIRTCT.
-
+    VIRTEL linked terminal termid to the line whose internal name is n-xxxxxx. The associated relay is relayname (if specified). This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0508E ERROR: NO AVAILABLE PSEUDO TERMINALS WERE FOUND FOR LINE : n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    	
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL could not activate the line whose internal name is n-xxxxxx because there were no associated terminals defined, or the terminals were owned by another line or belonged to a pool.
+    VIRTEL could not activate the line whose internal name is n-xxxxxx because there were no associated terminals defined, or the terminals were owned by another line or belonged to a pool.
 Action
-Check the definition of line n-xxxxxx. Use the VIRTEL console command LINE=n-xxxxxx,DISPLAY to display the associated terminals. Check that terminals are defined whose name starts with the prefix specified in the line definitions, and that these terminals do not belong to another line or to a pool.
+    Check the definition of line n-xxxxxx. Use the VIRTEL console command LINE=n-xxxxxx,DISPLAY to display the associated terminals. Check that terminals are defined whose name starts with the prefix specified in the line definitions, and that these terminals do not belong to another line or to a pool.
 
 VIR0509E termid SERVER servname HAS MISSING OR INVALID DIALNO xxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  	
 Module
-VIR0005
+    VIR0005
 Meaning
-A call to server servname from terminal termid failed because the called number is blank or non-numeric.
+    A call to server servname from terminal termid failed because the called number is blank or non-numeric.
 Action
-Check the definition of external server servname. Check that the “Number” field is valid (see “External Servers” in the VIRTEL Connectivity Reference manual). If the value of the “Number” field is blank or “=”, check the called number supplied by the application (CFT, Inter.PEL, STI) which initiated the call. In the case of a VIRKIX application, check that the entry point has a “Mirror” transaction as the first transaction.
+    Check the definition of external server servname. Check that the “Number” field is valid (see “External Servers” in the VIRTEL Connectivity Reference manual). If the value of the “Number” field is blank or “=”, check the called number supplied by the application (CFT, Inter.PEL, STI) which initiated the call. In the case of a VIRKIX application, check that the entry point has a “Mirror” transaction as the first transaction.
 
 VIR0526W termid IS DISCONNECTED DUE TO TIME-OUT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-The terminal termid was disconnected because it exceeded the inactivity delay.
+    The terminal termid was disconnected because it exceeded the inactivity delay.
 Action
-None.
+    None.
 
 VIR0527E termid CALLER x25callernumber REJECTED AT ENTRY POINT epname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call from X25 number x25callernumber was rejected. The required entry point epname does not exist.
+    An incoming call from X25 number x25callernumber was rejected. The required entry point epname does not exist.
 Action
-Verify the call user data used in the connection. If it is acceptable, define the corresponding entry point in VIRTEL.
-
+    Verify the call user data used in the connection. If it is acceptable, define the corresponding entry point in VIRTEL.
 
 VIR0528I termid CALLER x25callernumber GETS ENTRY POINT 'epname' FROM RULE 'rulename'
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL allocated entry point epname to an incoming call from X25 number x25callernumber using rule rulename. termid is the name of the VIRTEL terminal which represents the virtual circuit.
+    VIRTEL allocated entry point epname to an incoming call from X25 number x25callernumber using rule rulename. termid is the name of the VIRTEL terminal which represents the virtual circuit.
 Action
-None.
+    None.
 
 VIR0529E termid REJECTING CONFLICTING IN AND OUT CALLS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-After VIRTEL sent an outgoing call packet on terminal termid, an incoming call arrived on the same virtual circuit.
+    After VIRTEL sent an outgoing call packet on terminal termid, an incoming call arrived on the same virtual circuit.
 Action
-VIRTEL refuses the incoming call. VIRTEL considers the outgoing call as refused.
+    VIRTEL refuses the incoming call. VIRTEL considers the outgoing call as refused.
 
 VIR0530E termid FAILED CALL TO 'servname' THRU LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx. Either the line does not exist, or it is not started, or it is not connected to its partner application, or line n-xxxxxx is configured to disallow outgoing calls.
+    An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx. Either the line does not exist, or it is not started, or it is not connected to its partner application, or line n-xxxxxx is configured to disallow outgoing calls.
 Action
-Display the definition of the external server servname, and check that the line name is correctly specified. Check that the line is in session with the CTCP or partner application. Check the definition of line n-xxxxxx and ensure that the “Possible calls” field is set to 2 or 3.
+    Display the definition of the external server servname, and check that the line name is correctly specified. Check that the line is in session with the CTCP or partner application. Check the definition of line n-xxxxxx and ensure that the “Possible calls” field is set to 2 or 3.
 
 VIR0531E termid NO OUTPUT TERMINAL AVAILABLE ON LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call on terminal termid could not be rerouted to the line whose internal name is n-xxxxxx because there were insufficient virtual circuits available.
+    An incoming call on terminal termid could not be rerouted to the line whose internal name is n-xxxxxx because there were insufficient virtual circuits available.
 Action
-Display the definition of line n-xxxxxx and press F4. Increase the number of terminals where the “I/O” (“Possible calls”) field is set to 2 or 3.
-
+    Display the definition of line n-xxxxxx and press F4. Increase the number of terminals where the “I/O” (“Possible calls”) field is set to 2 or 3.
 
 VIR0532E termid OUTPUT CALL REFUSED BY EXIT5
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call on terminal termid was unable to be rerouted to the output line because Exit 5 disallowed the outgoing call.
+    An incoming call on terminal termid was unable to be rerouted to the output line because Exit 5 disallowed the outgoing call.
 Action
-None.
+    None.
 
 VIR0533E termid CALL IN PROGRESS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call on terminal termid was unable to be rerouted to the output line because another call was in progress on the same terminal.
+    An incoming call on terminal termid was unable to be rerouted to the output line because another call was in progress on the same terminal.
 Action
-Retry the call later.
+    Retry the call later.
 
-VIR0534E termid EXTERNAL SERVER servname SPECIFIES NON-EXISTENT LINE n-
-xxxxxx
-
+VIR0534E termid EXTERNAL SERVER servname SPECIFIES NON-EXISTENT LINE n-xxxxxx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call on terminal termid was unable to be rerouted because the output line n-xxxxxx specified in external server servname does not exist.
+    An incoming call on terminal termid was unable to be rerouted because the output line n-xxxxxx specified in external server servname does not exist.
 Action
-Display the definition of the external server servname, and check that the line name is correctly specified.
+    Display the definition of the external server servname, and check that the line name is correctly specified.
 
 VIR0535E termid LINE n-xxxxxx(linename) DOES NOT PERMIT CALLS TO SERVER
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx and whose external name is linename. Line n-xxxxxx is configured to disallow outgoing calls.
+    An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx and whose external name is linename. Line n-xxxxxx is configured to disallow outgoing calls.
 Action
-Check the definition of line n-xxxxxx and ensure that the “Possible calls” field is set to 2 or 3.
+    Check the definition of line n-xxxxxx and ensure that the “Possible calls” field is set to 2 or 3.
 
 VIR0536E termid LINE n-xxxxxx(linename) IS NOT STARTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
-
+    VIR0005
 Meaning
-An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx and whose external name is linename. The line is not started or it is not connected to its partner application.
+    An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx and whose external name is linename. The line is not started or it is not connected to its partner application.
 Action
-Check that the line is started and in session with the CTCP or partner application.
+    Check that the line is started and in session with the CTCP or partner application.
 
 VIR0537E termid LINE n-xxxxxx(linename) HAS NO TERMINALS LINKED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx and whose external name is linename. The line has no terminals linked.
+    An incoming call on terminal termid was unable to be rerouted to the line whose internal name is n-xxxxxx and whose external name is linename. The line has no terminals linked.
 Action
-Enter the VIRTEL command L=linename,D at the console to determine if the line has terminals and why they are   not linked. Check the definition of line n-xxxxxx and ensure that the appropriate terminals are defined and do not duplicate those of another line.
+    Enter the VIRTEL command L=linename,D at the console to determine if the line has terminals and why they are   not linked. Check the definition of line n-xxxxxx and ensure that the appropriate terminals are defined and do not duplicate those of another line.
 
 VIR0538I termid GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL allocated entry point epname to an outgoing call from a GATE or PCNE application. termid is the name of the VIRTEL terminal which represents the virtual circuit.
+    VIRTEL allocated entry point epname to an outgoing call from a GATE or PCNE application. termid is the name of the VIRTEL terminal which represents the virtual circuit.
 Action
-None.
+    None.
 
-VIR0539I termid CALLER x25callernumber GETS DEFAULT ENTRY POINT FOR LINE n- xxxxxx
-
+VIR0539I termid CALLER x25callernumber GETS DEFAULT ENTRY POINT FOR LINE n-xxxxxx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-An incoming call from X25 number x25callernumber did not match any of the rules attached to the line whose internal name is n-xxxxxx. termid is the name of the VIRTEL terminal which represents the virtual circuit.
+    An incoming call from X25 number x25callernumber did not match any of the rules attached to the line whose internal name is n-xxxxxx. termid is the name of the VIRTEL terminal which represents the virtual circuit.
 Action
-VIRTEL uses the default entry point associated with line n-xxxxxx.
+    VIRTEL uses the default entry point associated with line n-xxxxxx.
 
 VIR0540I termid GETS DEFAULT ENTRY POINT FOR LINE linename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-An outgoing call from a GATE or PCNE application did not match any of the rules attached to the line whose external name is linename. termid is the name of the VIRTEL terminal which represents the virtual circuit.
-
+    An outgoing call from a GATE or PCNE application did not match any of the rules attached to the line whose external name is linename. termid is the name of the VIRTEL terminal which represents the virtual circuit.
 Action
-VIRTEL uses the default entry point associated with line linename.
+    VIRTEL uses the default entry point associated with line linename.
 
 VIR0541I termid OUTBOUND GATE|FAST CALL FROM ctcpappl VIA mchlu TO x25callednumber
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-The CTCP application ctcpappl sent an outgoing call in GATE or Fast Connect mode via MCH mchlu to the X25 number x25callednumber. termid is the name of the VIRTEL terminal which represents the virtual circuit.
+    The CTCP application ctcpappl sent an outgoing call in GATE or Fast Connect mode via MCH mchlu to the X25 number x25callednumber. termid is the name of the VIRTEL terminal which represents the virtual circuit.
 Action
-None.
+    None.
 
 VIR0542I termid OUTBOUND PCNE CALL FROM pcneappl VIA pcnelu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-The PCNE application pcneappl sent an outgoing call via LU pcnelu. The X25 called number will be determined by VIRTEL using the external server definition pcnelu. termid is the name of the VIRTEL terminal which represents the virtual circuit.
+    The PCNE application pcneappl sent an outgoing call via LU pcnelu. The X25 called number will be determined by VIRTEL using the external server definition pcnelu. termid is the name of the VIRTEL terminal which represents the virtual circuit.
 Action
-None.
+    None.
 
 VIR0545I termid CALL CLEARED BY VIRTEL CAUSE=xx DIAG=yy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-VIRTEL terminated the call on terminal termid. xx and yy are the cause and diagnostic codes generated by VIRTEL. The following codes are possible:
-•   Cause=00 Diag=02 : No terminals available on output line
-•   Cause=0D Diag=40 : Call could not be routed to output line
-•   Cause=xx Diag=yy : Error sending to local PCNE or GATE application (xx,yy = VTAM RTNCD/FDBK codes)
-•   Cause=EE Diag=EE : Call refused, no master (QLLC 3174 emulation)
-
+    VIRTEL terminated the call on terminal termid. xx and yy are the cause and diagnostic codes generated by VIRTEL. The following codes are possible:
+    - Cause=00 Diag=02 : No terminals available on output line
+    - Cause=0D Diag=40 : Call could not be routed to output line
+    - Cause=xx Diag=yy : Error sending to local PCNE or GATE application (xx,yy = VTAM RTNCD/FDBK codes)
+    - Cause=EE Diag=EE : Call refused, no master (QLLC 3174 emulation)
 Action
-For Cause=00, Diag=02: Check the definition of the line. For other codes, examine preceding error messages to determine the cause.
+    For Cause=00, Diag=02: Check the definition of the line. For other codes, examine preceding error messages to determine the cause.
 
 VIR0550I ROUTAGE REJECTED FOR LUNAME luname CAUSE=xx DIAGNOSTIC=dd
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-TELETEL re-routing was refused by the TELETEL PAD for terminal luname.
-
+    TELETEL re-routing was refused by the TELETEL PAD for terminal luname.
 Action
-Refer to the SAPONET documentation for the values of the codes xx and dd also check that your TELETEL subscription supports re-rerouting .
+    Refer to the SAPONET documentation for the values of the codes xx and dd also check that your TELETEL subscription supports re-rerouting .
 
 VIR0551I termid CONNECTED TO EXTERNAL SERVICE ssssssss
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-The terminal termid is connected to the external server sssssss via a logical channel used in fast connect mode.
+    The terminal termid is connected to the external server sssssss via a logical channel used in fast connect mode.
 Action
-None.
+    None.
 
 VIR0552I termid DISCONNECTED AFTER nn MINUTES
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-The terminal termid used in Fast-Connect mode was disconnected after nn minutes of connetion time.
+    The terminal termid used in Fast-Connect mode was disconnected after nn minutes of connetion time.
 Action
-None.
+    None.
 
 VIR0553I RESET REQUEST RECEIVED FROM luname CAUSE=xx DIAGNOSTIC=dd
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    VIR0005
 Meaning
-A re-initialisation request was received by the PAD for the terminal luname.
+    A re-initialisation request was received by the PAD for the terminal luname.
 Action
-Refer to the SAPONET documentation to determine the cause and diagnostic.
+    Refer to the SAPONET documentation to determine the cause and diagnostic.
 
 VIR0554I pseudo-terminal LINKED TO service THRU terminal
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-Initialisation of service indicated on the pseudo terminal indicated via the terminal indicated.
+    Initialisation of service indicated on the pseudo terminal indicated via the terminal indicated.
 Action
-None.
+    None.
 
 VIR0555E INVALID RULE rulename ENTRY POINT 'epname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
-
+    VIR0005
 Meaning
-Rule rulename used by an X25 line specifies a non-existent entry point epname.
+    Rule rulename used by an X25 line specifies a non-existent entry point epname.
 Action
-Check the entry point name specified in the rule definition.
+    Check the entry point name specified in the rule definition.
 
-3.13.   Messages VIR06xxx
-
-Messages VIR06xxx
+2.13.   Messages VIR06xxx
+-------------------------
 
 VIR0601I VIRSTATx status DSN=dsname
-
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-This message displays the status of a VIRSTATx file in response to a STAT,D command. The status can be:
-•   *** IN USE *** : VIRTEL is currently recording statistics to this file
-•   AVAILABLE : This file is available for use
-•   OFFLOAD REQUIRED : This file contains statistical data and cannot be reused until the data has been offloaded using the STATCOPY batch job
-•   NOT AVAILABLE : This file cannot be allocated
+    This message displays the status of a VIRSTATx file in response to a STAT,D command. The status can be:
+    
+    - *** IN USE *** : VIRTEL is currently recording statistics to this file
+    - AVAILABLE : This file is available for use
+    - OFFLOAD REQUIRED : This file contains statistical data and cannot be reused until the data has been offloaded using the STATCOPY batch job
+    - NOT AVAILABLE : This file cannot be allocated
 
 Action
-None.
+    None.
 
 VIR0603I VIRSTATx OFFLOAD REQUIRED DSN=dsname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-VIRTEL has determined that the VIRSTATx file is full.
+    VIRTEL has determined that the VIRSTATx file is full.
 Action
-Run the STATCOPY batch job to empty the file. This message is designed to be trapped by an automated operator.
+    Run the STATCOPY batch job to empty the file. This message is designed to be trapped by an automated operator.
 
 VIR0604I VIRSTAT NOW RECORDING ON VIRSTATx DSN=dsname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-VIRTEL has started recording statistics on the VIRSTATx file.
+    VIRTEL has started recording statistics on the VIRSTATx file.
 Action
-None.
+    None.
 
-
-VIR0605E NO AVAILABLE VIRSTAT FILES - VIRTEL TERMINATING
- 
+VIR0605E NO AVAILABLE VIRSTAT FILES -VIRTEL TERMINATING
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0006
+    VIR0006
 Meaning
-All of the VIRSTATx files are full or unavailable, and the VIRTCT specifies STATS=(MULTI,TERMINATE).
+    All of the VIRSTATx files are full or unavailable, and the VIRTCT specifies STATS=(MULTI,TERMINATE).
 Action
-VIRTEL terminates.
+    VIRTEL terminates.
 
-VIR0606I VIRSTAT RECORDING SUSPENDED - RUN OFFLOAD AND ISSUE F
-virtelstc,STAT,I
-
+VIR0606I VIRSTAT RECORDING SUSPENDED - RUN OFFLOAD AND ISSUE F virtelstc,STAT,I
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-All of the VIRSTATx files are full or unavailable, and the VIRTCT specifies STATS=(MULTI,CONTINUE).
+    All of the VIRSTATx files are full or unavailable, and the VIRTCT specifies STATS=(MULTI,CONTINUE).
 Action
-VIRTEL continues processing, but statistics will no longer be recorded. To restart statistics recording, use the VIRTEL STAT,I command.
+    VIRTEL continues processing, but statistics will no longer be recorded. To restart statistics recording, use the VIRTEL STAT,I command.
 
 VIR0607E VIRSTATx ALLOC ERR=errc-infc DSN=dsname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-VIRTEL cannot allocate the VIRSTATx file. errc is the error code, and infc is the info code from dynamic allocation.  For the meaning of these codes, see OS/390 MVS Programming: Authorized Assembler Services Guide under the heading Interpreting DYNALLOC Return Codes. Commonly encountered codes are: 0210-0000 File in use by another job; 0218-0000 DASD volume not mounted; 1708-0002 File not cataloged.
+    VIRTEL cannot allocate the VIRSTATx file. errc is the error code, and infc is the info code from dynamic allocation.  For the meaning of these codes, see OS/390 MVS Programming: Authorized Assembler Services Guide under the heading Interpreting DYNALLOC Return Codes. Commonly encountered codes are: 0210-0000 File in use by another job; 0218-0000 DASD volume not mounted; 1708-0002 File not cataloged.
 Action
-VIRTEL uses the next VIRSTATx file.
+    VIRTEL uses the next VIRSTATx file.
 
 VIR0608E VIRSTATx DEALC ERR=errc-infc DSN=dsname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-An error occurred during deallocation of the VIRSTATx file. errc is the error code, and infc is the info code from dynamic allocation.
+    An error occurred during deallocation of the VIRSTATx file. errc is the error code, and infc is the info code from dynamic allocation.
 Action
-See OS/390 MVS Programming: Authorized Assembler Services Guide under the heading Interpreting DYNALLOC Return Codes.
-
+    See OS/390 MVS Programming: Authorized Assembler Services Guide under the heading Interpreting DYNALLOC Return Codes.
 
 VIR0609E VIRSTATx synadaf DSN=dsname
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-An error occurred when VIRTEL attempted to write to the VIRSTATx file. synadaf is the message generated by MVS.
+    An error occurred when VIRTEL attempted to write to the VIRSTATx file. synadaf is the message generated by MVS.
 Action
-Check the DCB attributes of the file.
+    Check the DCB attributes of the file.
 
 VIR0610E VIRSTATx OPEN/CLOSE/GET/WRITE ABEND=ccc-rc DSN=dsname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+   	VIR0006
 Meaning
-An error occurred when VIRTEL attempted to access the VIRSTATx file. ccc is the system completion code, and rc is the return code. For the meaning of these codes, refer to the OS/390 MVS System Codes manual under the heading System Completion Codes. The most commonly encountered codes are B37 or D37, which indicate that the file is full.
+    An error occurred when VIRTEL attempted to access the VIRSTATx file. ccc is the system completion code, and rc is the return code. For the meaning of these codes, refer to the OS/390 MVS System Codes manual under the heading System Completion Codes. The most commonly encountered codes are B37 or D37, which indicate that the file is full.
 Action
-VIRTEL switches automatically to the next VIRSTATx file.
+    VIRTEL switches automatically to the next VIRSTATx file.
 
 VIR0611I VIRSTAT NOW RECORDING TO SMF
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-VIRTEL is recording the VIRSTAT statistics to SMF.
+    VIRTEL is recording the VIRSTAT statistics to SMF.
 Action
-None.
+    None.
 
 VIR0612I VIRSTAT SMFWTM FAILED.RC=rc
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0006
+    VIR0006
 Meaning
-An error occurred when VIRTEL attempted to write a SMF record with the IBM SMFWTM macro. For the meaning of these codes, refer to the z/OS IBM MVS System Management Facilities Guide.
+    An error occurred when VIRTEL attempted to write a SMF record with the IBM SMFWTM macro. For the meaning of these codes, refer to the z/OS IBM MVS System Management Facilities Guide.
 Action
-VIRTEL STATS SMF recording is disabled.
+    VIRTEL STATS SMF recording is disabled.
 
-3.14.   Messages VIR07xxx
- 
+2.14.   Messages VIR07xxx
+------------------------- 
 
 VIR0700W ERROR IN TASK taskname PSW= xxxxxxxx xxxxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0007
+    VIR0007
 Meaning
-A fatal error occurred in taskname (MAIN, VSAM, STAT, LOAD) of VIRTEL. VIRTEL will shut down after printing a dump.
+    A fatal error occurred in taskname (MAIN, VSAM, STAT, LOAD) of VIRTEL. VIRTEL will shut down after printing a dump.
 Action
-See message VIR0015S and VIR0016W.
+    See message VIR0015S and VIR0016W.
 
-3.15.   Messages VIR08xxx
+2.15.   Messages VIR08xxx
+-------------------------
 
 VIR0800I VIRTEL IS USING NO SECURITY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Module
-Security
+    Security
 Meaning
-As a result of the SECUR=NO parameter specified in the VIRTCT at startup, VIRTEL is running without security.
+    As a result of the SECUR=NO parameter specified in the VIRTCT at startup, VIRTEL is running without security.
 Action
-None.
+    None.
 
 VIR0810I VIRTEL IS USING INTERNAL SECURITY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-As a result of the SECUR=VIRTEL parameter specified in the VIRTCT at startup, VIRTEL is using its own internal security management.
+    As a result of the SECUR=VIRTEL parameter specified in the VIRTCT at startup, VIRTEL is using its own internal security management.
 Action
-None.
+    None.
 
 VIR0820I VIRTEL IS USING TSS SECURITY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-As a result of the SECUR=TOPS parameter specified in the VIRTCT at startup, VIRTEL is using the TOP SECRET security system without RACROUTE.
+    As a result of the SECUR=TOPS parameter specified in the VIRTCT at startup, VIRTEL is using the TOP SECRET security system without RACROUTE.
 Action
-None.
-
+    None.
 
 VIR0830I VIRTEL IS USING RACF SECURITY
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-Security
+    Security
 Meaning
-As a result of the SECUR=RACF parameter specified in the VIRTCT at startup, VIRTEL is using the RACF security system without RACROUTE.
+    As a result of the SECUR=RACF parameter specified in the VIRTCT at startup, VIRTEL is using the RACF security system without RACROUTE.
 Action
-None.
+    None.
 
 VIR0840I VIRTEL IS USING RACROUTE SECURITY WITH TSS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-As a result of the SECUR=(RACROUTE,TOPS) parameter specified in the VIRTCT at startup, VIRTEL is using the TOP SECRET security system with RACROUTE.
+    As a result of the SECUR=(RACROUTE,TOPS) parameter specified in the VIRTCT at startup, VIRTEL is using the TOP SECRET security system with RACROUTE.
 Action
-None.
+    None.
 
 VIR0850I VIRTEL IS USING ACF2 SECURITY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-VIRTEL is running under VM with the SECUR=ACF2 parameter specified in the VIRTCT.
+    VIRTEL is running under VM with the SECUR=ACF2 parameter specified in the VIRTCT.
 Action
-None.
+    None.
 
 VIR0860I VIRTEL IS USING RACROUTE SECURITY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
+    Security
 Meaning
-As a result of the SECUR=RACROUTE parameter specified in the VIRTCT at startup, VIRTEL is using the RACROUTE interface to RACF, ACF2, or other compatible security sub-system.
+    As a result of the SECUR=RACROUTE parameter specified in the VIRTCT at startup, VIRTEL is using the RACROUTE interface to RACF, ACF2, or other compatible security sub-system.
 Action
-None.
+    None.
 
 VIR0861I MIXED-CASE PASSWORD SUPPORT IS ACTIVE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-Security
-
+    Security
 Meaning
-The security manager (RACF or compatible sub-system) has indicated to VIRTEL that it supports lower-case characters in passwords. Consequently VIRTEL will pass passwords to the security manager exactly as entered by the user, without translating them to upper case.
+    The security manager (RACF or compatible sub-system) has indicated to VIRTEL that it supports lower-case characters in passwords. Consequently VIRTEL will pass passwords to the security manager exactly as entered by the user, without translating them to upper case.
 Action
-None.
+    None.
 
-3.16.   Messages VIR09xxx
+2.16.   Messages VIR09xxx
+-------------------------
 
 VIR0904I ACQUIRING TERMINAL relayname(termid)
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL is entering into session with terminal termid associated with relay relayname.
+    VIRTEL is entering into session with terminal termid associated with relay relayname.
 Action
-None.
+    None.
 
 VIR0905I termid RELEASED
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-The terminal termid is released.
+    The terminal termid is released.
 Action
-None.
+    None.
 
 VIR0905W UNABLE TO ACTIVATE RELAY relayname(termid)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-The relay relayname linked to the terminal termid cannot be activated.
+    The relay relayname linked to the terminal termid cannot be activated.
 Action
-Check that the VTAM node containing the relay relayname has been activated, verify that the relay is not already activated for another terminal, and that the terminal is correctly defined in VIRTEL.
+    Check that the VTAM node containing the relay relayname has been activated, verify that the relay is not already activated for another terminal, and that the terminal is correctly defined in VIRTEL.
 
 VIR0906I applid CONNECTING LUTYPE n PRINTER prterm(luname) TO termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-Application applname has connected printer of LU type n terminal name prterm and LU name luname to VIRTEL terminal name termid.
-
+    Application applname has connected printer of LU type n terminal name prterm and LU name luname to VIRTEL terminal name termid.
 Action
-None.
+    None.
 
 VIR0914E termid ERROR R15=xx R0=yy CONNECTING luname TO applid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL could not establish a session between VIRTEL LU luname and the ACB applid of a partner application. xx and yy are the hexadecimal error codes from REQSESS.
+    VIRTEL could not establish a session between VIRTEL LU luname and the ACB applid of a partner application. xx and yy are the hexadecimal error codes from REQSESS.
 Action
-If R15=00000020, activate the LU luname in VTAM, then enter a VIRTEL START command for the line. For any other value of R15, check that the application applid is active and ready to receive connections, and that the LU luname is in CONCT status.
+    If R15=00000020, activate the LU luname in VTAM, then enter a VIRTEL START command for the line. For any other value of R15, check that the application applid is active and ready to receive connections, and that the LU luname is in CONCT status.
 
 VIR0915E termid(luname) SESSION REQUEST REFUSED BY applid SENSE=xxxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL terminal termid could not establish a session between VIRTEL LU luname and partner application applid. The application rejected the session request with sense code xxxxxxxx.
+    VIRTEL terminal termid could not establish a session between VIRTEL LU luname and partner application applid. The application rejected the session request with sense code xxxxxxxx.
 Action
-Check the message log of the partner application (for example, the CICS MSGUSR file) to determine why the application rejected the session request. Refer to the IBM SNA Formats manual to determine the meaning of the sense code. Sense code 08010000 may indicate that the CICS terminal is out of service.
+    Check the message log of the partner application (for example, the CICS MSGUSR file) to determine why the application rejected the session request. Refer to the IBM SNA Formats manual to determine the meaning of the sense code. Sense code 08010000 may indicate that the CICS terminal is out of service.
 
 VIR0918W termid RELAY relayname INACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL has closed the relay relayname associated with the terminal termid.
+    VIRTEL has closed the relay relayname associated with the terminal termid.
 Action
-None.
+    None.
 
 VIR0919I termid RELAY relayname ACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL has opened the relay relayname associated with the terminal termid.
+    VIRTEL has opened the relay relayname associated with the terminal termid.
 Action
-None.
-
+    None.
 
 VIR0920E RELAY relayname ALREADY ACTIVE
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0009
+    VIR0009
 Meaning
-The application relay relayname is already active and in session with another terminal.
+    The application relay relayname is already active and in session with another terminal.
 Action
-Check that the same relay has not been allocated to two different terminals.
+    Check that the same relay has not been allocated to two different terminals.
 
 VIR0921W NO MORE RELAY AVAILABLE FOR termid POOL 'poolname' PREFIX 'prefix'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-Terminal termid attempted to connect, but there is no active relay in pool poolname, or all the relays in the pool are in use, or there is no available relay with the specified prefix. The connection is refused by VIRTEL.
+    Terminal termid attempted to connect, but there is no active relay in pool poolname, or all the relays in the pool are in use, or there is no available relay with the specified prefix. The connection is refused by VIRTEL.
 Action
-Check that the VTAM node containing the relays is activated. Increase the number of relays in the pool poolname.  If the message contains a PREFIX then there is a conflict between the prefix specified in the transaction and the terminal names of the relays in the pool.
+    Check that the VTAM node containing the relays is activated. Increase the number of relays in the pool poolname.  If the message contains a PREFIX then there is a conflict between the prefix specified in the transaction and the terminal names of the relays in the pool.
 
 VIR0922W NBTERM IS TOO SMALL
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-The number of events awaiting simultaneous processing has exceeded the estimated maximum.
+    The number of events awaiting simultaneous processing has exceeded the estimated maximum.
 Action
-VIRTEL automatically allocates additional memory and continues processing. To avoid this message, increase the value of the NBTERM parameter in the VIRTCT.
+    VIRTEL automatically allocates additional memory and continues processing. To avoid this message, increase the value of the NBTERM parameter in the VIRTCT.
 
 VIR0923E NO RELAY AVAILABLE FOR termid POOL 'poolname' WITH NAME 'luname’
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-Terminal termid could not allocate the LU luname required by the incoming call because pool poolname does not contain the relay luname.
+    Terminal termid could not allocate the LU luname required by the incoming call because pool poolname does not contain the relay luname.
 Action
-Check the definitions of terminal termid and pool poolname (F2 from the configuration menu, or F5 from the sub- application system services menu). Check the definition of the rule which matched the incoming call. The relay specified in the “Parameter” field of the rule must exist in the pool.
-
+    Check the definitions of terminal termid and pool poolname (F2 from the configuration menu, or F5 from the sub-application system services menu). Check the definition of the rule which matched the incoming call. The relay specified in the “Parameter” field of the rule must exist in the pool.
 
 VIR0924E termid RELAY relayname COULD NOT BE ACTIVATED
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL could not allocate the relay LU named relayname. Either the terminal required by the transaction does not exist in the pool, or the relay is unavailable or is allocated to another line.
+    VIRTEL could not allocate the relay LU named relayname. Either the terminal required by the transaction does not exist in the pool, or the relay is unavailable or is allocated to another line.
 Action
-Check the definitions of the terminal and transaction.
+    Check the definitions of the terminal and transaction.
 
 VIR0925E UNABLE TO ACTIVATE luname (termid) ERROR: errcode
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL could not open the relay luname for the terminal termid. errcode is the ACBERFLG in hexadecimal: 58=APPL already opened by another application, 5A=APPL inactive.
+    VIRTEL could not open the relay luname for the terminal termid. errcode is the ACBERFLG in hexadecimal: 58=APPL already opened by another application, 5A=APPL inactive.
 Action
-Check that the VTAM node containing the relay has been activated. The command D NET,ID=luname,E should show luname defined as a VTAM APPL in CONCT status.
+    Check that the VTAM node containing the relay has been activated. The command D NET,ID=luname,E should show luname defined as a VTAM APPL in CONCT status.
 
 VIR0951I termid CONNECTED TO EXTERNAL SERVICE ssssssss
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-The terminal termid is connected to external server ssssssss via a logical channel using non Fast-Connect mode.
+    The terminal termid is connected to external server ssssssss via a logical channel using non Fast-Connect mode.
 Action
-None.
+    None.
 
 VIR0956S NO MORE OSCORE AVAILABLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
+    VIR0009
 Meaning
-VIRTEL does not have sufficient memory to load a module.
+    VIRTEL does not have sufficient memory to load a module.
 Action
-Check the OSCORE parameter of the VIRTCT.
+    Check the OSCORE parameter of the VIRTCT.
 
 VIR0959E termid CANNOT CONNECT : THIS IS A DEMONSTRATION SYSTEM WITH LIMITED RESOURCES
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0009
-
+    	VIR0009
 Meaning
-The terminal termid has attempted to establish a session with a VTAM application, but the limit on the number of active sessions permitted by your VIRTEL license has already been reached.
+    The terminal termid has attempted to establish a session with a VTAM application, but the limit on the number of active sessions permitted by your VIRTEL license has already been reached.
 Action
-Wait until another terminal disconnects, or contact Syspertec to upgrade your license.
+    Wait until another terminal disconnects, or contact Syspertec to upgrade your license.
 
-3.17.   Messages VIR10xxx
+2.17.   Messages VIR10xxx
 
-VIR1021I VIRARBO type RECORD name ADDED/UPDATED/DELETED BY USER userid AT
-TERMINAL termid
-
-
+VIR1021I VIRARBO type RECORD name ADDED/UPDATED/DELETED BY USER userid AT TERMINAL termid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-User userid at terminal termid has added, updated, or deleted a record in the VIRTEL configuration file. type is the record type (LINE, TERMINAL, SERVER, ...) and name is the entity name.
+    User userid at terminal termid has added, updated, or deleted a record in the VIRTEL configuration file. type is the record type (LINE, TERMINAL, SERVER, ...) and name is the entity name.
 Action
-None.
+    None.
 
 VIR1062W ERROR ACCESSING FILE filename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-VIRTEL has detected an error accessing file filename.
+    VIRTEL has detected an error accessing file filename.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR1063W ERROR : FILE filename NOT FOUND IN VIRTCT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+   	VIR0010
 Meaning
-File filename is not defined in the VIRTCT.
+    File filename is not defined in the VIRTCT.
 Action
-Add the definition and reassemble the VIRTCT.
+    Add the definition and reassemble the VIRTCT.
 
 VIR1064E ERROR : TERMINAL termid FAILED TO SEND MAIL
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-VIRTEL detected an SMTP protocol error.
-
+    VIRTEL detected an SMTP protocol error.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR1065W LINE linename IS UNKNOWN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-A START or STOP command entered at the “Status of Lines” screen refers to a line unknown to VIRTEL.
+    A START or STOP command entered at the “Status of Lines” screen refers to a line unknown to VIRTEL.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR1066W LINE linename ALREADY ACTIVE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-A START command was entered at the “Status of Lines” screen for a line which was already started.
+    A START command was entered at the “Status of Lines” screen for a line which was already started.
 Action
-None.
+    None.
 
 VIR1067W LINE linename (n-xxxxxx) START / STOP REQUESTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-VIRTEL processed a START or STOP command from the “Status of Lines” screen on the line with external name linename and internal name n-xxxxxx.
+    VIRTEL processed a START or STOP command from the “Status of Lines” screen on the line with external name linename and internal name n-xxxxxx.
 Action
-None.
+    None.
 
 VIR1068E command NOT VALID FOR linetype LINE n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0010
+    VIR0010
 Meaning
-START and STOP commands entered at the “Status of Lines” screen are not valid for lines of type APPCn, GATE or FASTC. This message may also be issued for lines of type TCPn or XMn if the corresponding TCPn or XMn parameter is not coded in the VIRTCT.
+    START and STOP commands entered at the “Status of Lines” screen are not valid for lines of type APPCn, GATE or FASTC. This message may also be issued for lines of type TCPn or XMn if the corresponding TCPn or XMn parameter is not coded in the VIRTCT.
 Action
-None.
+    None.
 
-3.18.   Messages VIR11xxx
- 
+2.18.   Messages VIR11xxx
 
 VIR11D1W termid ERROR LOADING SCRIPT scriptnam IN TRANSACTION tranid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0011D
+    VIR0011D
 Meaning
-Transaction tranid at terminal termid called for a scenario module which could not be loaded.
+    Transaction tranid at terminal termid called for a scenario module which could not be loaded.
 Action
-Check the log for a previous message VIR0031W. Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of transaction tranid. Ensure that this module exists in the VIRTEL load library and is a valid scenario module. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
+    Check the log for a previous message VIR0031W. Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of transaction tranid. Ensure that this module exists in the VIRTEL load library and is a valid scenario module. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
 
 VIR11D2W termid INVALID FA39 SCRIPT RECEIVED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0011D
+    VIR0011D
 Meaning
-The transaction at terminal termid called for a scenario module which was not valid.
+    The transaction at terminal termid called for a scenario module which was not valid.
 Action
-Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
+    Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
 
-3.19.   Messages VIR15xxx
+2.19.   Messages VIR15xxx
 
 VIR1501E termid REQSESS FAILED, NO RELAY DEFINED
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0015
+    VIR0015
 Meaning
-Terminal termid could not be connected to a VTAM application because the terminal has no relay defined.
+    Terminal termid could not be connected to a VTAM application because the terminal has no relay defined.
 Action
-Specify the name of a VIRTEL relay LU in the “Relay” field of the terminal definition. The relay LU must also be defined in a VTAM APPL statement.
+    Specify the name of a VIRTEL relay LU in the “Relay” field of the terminal definition. The relay LU must also be defined in a VTAM APPL statement.
 
 VIR1502E termid PASSTICKET ERROR FOR applname / userid SAF RC: 'safrc' RACF RC: 'racrc' RACF REASON: 'racreas'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0015
-
+    VIR0015
 Meaning
-VIRTEL does not have sufficient access rights to create or validate a passticket allowing user userid at terminal termid to access application applname. This message is usually preceded by message ICH408I which shows the name of the resource to which VIRTEL must be granted access.
+    VIRTEL does not have sufficient access rights to create or validate a passticket allowing user userid at terminal termid to access application applname. This message is usually preceded by message ICH408I which shows the name of the resource to which VIRTEL must be granted access.
 Action
-Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.
-For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R_ticketserv”. Some common codes are:
-
- 
-                   
-                   
-                 
+    Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.
+    For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R_ticketserv”. Some common codes are:
 
 VIR1551I termid(luname) CONNECTED TO "applname"
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0015
+    VIR0015
 Meaning
-Terminal termid has been connected to application applname via the VIRTEL relay LU luname. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    Terminal termid has been connected to application applname via the VIRTEL relay LU luname. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIR1552I termid DISCONNECTED AFTER nn MINUTES
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0015
+    VIR0015
 Meaning
-Terminal termid has been disconnected from an application after nn minutes of connection time.
+    Terminal termid has been disconnected from an application after nn minutes of connection time.
 Action
-None.
+    None.
 
-3.20.   Messages VIR17xxx
+2.20.   Messages VIR17xxx
+-------------------------
 
 VIR1705W UNABLE TO ACTIVATE relayname(termid)
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0017
+    VIR0017
 Meaning
-The relay relayname linked to terminal termid has not been activated.
-
+    The relay relayname linked to terminal termid has not been activated.
 Action
-Check the activation of the VTAM book containing the relay relayname, check also that the relay is not already activated for another terminal and that the relay is correctly defined in VIRTEL.
+    Check the activation of the VTAM book containing the relay relayname, check also that the relay is not already activated for another terminal and that the relay is correctly defined in VIRTEL.
 
 VIR1724E FILE NOT FOUND filename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0017, VIR0B17
+    VIR0017, VIR0B17
 Meaning
-The file filename cannot be accessed by VIRTEL.
+    The file filename cannot be accessed by VIRTEL.
 Action
-Check the state of the file and its definition in VIRTEL.
+    Check the state of the file and its definition in VIRTEL.
 
 VIR1725E linename: ERROR ACCESSING 'key' ON filename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0017
+    VIR0017
 Meaning
-A VSAM error occurred when VIRTEL attempted to access file filename.
+    A VSAM error occurred when VIRTEL attempted to access file filename.
 Action
-Check the state of the file and its definition in VIRTEL.
+    Check the state of the file and its definition in VIRTEL.
 
 VIR1726E termid ERROR ADDING TO FILE 'filename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0017
+    VIR0017
 Meaning
-A VSAM error occurred when VIRTEL attempted to write to file filename.
+    A VSAM error occurred when VIRTEL attempted to write to file filename.
 Action
-Check the SYSLOG for preceding message IEC070I.
+    Check the SYSLOG for preceding message IEC070I.
 
 VIR1729E LINE linename NOT FOUND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
+    	VIR0B17
 Meaning
-An instruction in a scenario (SEND$ TO-LINE, SEND$ VARIABLE-TO-LINE), or a tag in an HTML page, for example: {{{IP- ADDR "linename"}}}, refers to a non-existent line.
+    An instruction in a scenario (SEND$ TO-LINE, SEND$ VARIABLE-TO-LINE), or a tag in an HTML page, for example: {{{IP- ADDR "linename"}}}, refers to a non-existent line.
 Action
-Specify a valid line name.
+    Specify a valid line name.
 
 VIR1756S NO MORE OSCORE AVAILABLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0017
-
+    VIR0017
 Meaning
-VIRTEL cannot load a program in memory due to insufficient space.
+    VIRTEL cannot load a program in memory due to insufficient space.
 Action
-Check the OCORE parameter of the VIRTCT.
+    Check the OCORE parameter of the VIRTCT.
 
-3.21.   Messages VIR19xxx
+2.21.   Messages VIR19xxx
+-------------------------
 
 VIR1952I luname DISCONNECTED AFTER nn MINUTES
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0019
+    VIR0019
 Meaning
-The terminal luname has been disconnected after nn minutes of connection time.
+    The terminal luname has been disconnected after nn minutes of connection time.
 Action
-None.
+    None.
 
-3.22.   Messages VIR21xxx
+2.21.   Messages VIR21xxx
 
 VIR2121E epname HAS NO TRANSACTIONS
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021B
+    VIR0021B
 Meaning
-Entry point epname has no transactions defined.
+    Entry point epname has no transactions defined.
 Action
-Define at least one transaction under entry point epname.
+    Define at least one transaction under entry point epname.
 
 VIR2151E epname HAS NO TRANSACTION NAMED 'tranid'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021E
+    VIR0021E
 Meaning
-An incoming X25 call specifies the name tranid in the first 8 bytes of its preconnection message, but entry point epname has no transaction of that name. The call is cleared.
+    An incoming X25 call specifies the name tranid in the first 8 bytes of its preconnection message, but entry point epname has no transaction of that name. The call is cleared.
 Action
-Define a transaction with external name tranid under entry point epname. See the description of VIR0021E in the VIRTEL Connectivity Reference manual.
+    Define a transaction with external name tranid under entry point epname. See the description of VIR0021E in the VIRTEL Connectivity Reference manual.
 
 VIR2161E epname HAS NO TRANSACTION FOR LOGON DATA logonmsg
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021F
-
+   	VIR0021F
 Meaning
-Entry point epname has no transaction whose “Logon message” field matches the preconnection message (logonmsg) of an incoming X25 call. The call is cleared.
+    Entry point epname has no transaction whose “Logon message” field matches the preconnection message (logonmsg) of an incoming X25 call. The call is cleared.
 Action
-Under entry point epname, define a transaction whose “Logon message” field matches the start of logonmsg. Check that the contents of this field are within apostrophes. See the description of VIR0021F in the VIRTEL Connectivity Reference manual.
+    Under entry point epname, define a transaction whose “Logon message” field matches the start of logonmsg. Check that the contents of this field are within apostrophes. See the description of VIR0021F in the VIRTEL Connectivity Reference manual.
 
 VIR2162E epname TRANSACTION tranid HAS INCORRECT DATA IN LOGON MESSAGE FIELD
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021F
+   	VIR0021F
 Meaning
-The contents of the “Logon message” field in the definition of transaction tranid is not in the format required by program VIR0021F, which is specified as the menu program for entry point epname.
+    The contents of the “Logon message” field in the definition of transaction tranid is not in the format required by program VIR0021F, which is specified as the menu program for entry point epname.
 Action
-VIRTEL ignores this transaction definition. Check that the “Logon message” field contains a character string or hexadecimal string enclosed in apostrophes. See the description of VIR0021F in the VIRTEL Connectivity Reference manual.
+    VIRTEL ignores this transaction definition. Check that the “Logon message” field contains a character string or hexadecimal string enclosed in apostrophes. See the description of VIR0021F in the VIRTEL Connectivity Reference manual.
 
 VIR2171E epname HAS NO TRANSACTION NAMED USSMSG01
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021G
+    VIR0021G
 Meaning
-Entry point epname has no transaction whose “Logon message” field matches the preconnection message of an incoming X25 call, and VIRTEL cannot send an error message to the terminal because there is no transaction with external name USSMSG01. The call is cleared.
+    Entry point epname has no transaction whose “Logon message” field matches the preconnection message of an incoming X25 call, and VIRTEL cannot send an error message to the terminal because there is no transaction with external name USSMSG01. The call is cleared.
 Action
-Define a transaction with external name USSMSG01 under entry point epname. See the description of VIR0021G in the VIRTEL Connectivity Reference manual.
+    Define a transaction with external name USSMSG01 under entry point epname. See the description of VIR0021G in the VIRTEL Connectivity Reference manual.
 
 VIR2172E epname TRANSACTION tranid HAS INCORRECT DATA IN LOGON MESSAGE FIELD
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021G
+    VIR0021G
 Meaning
-The contents of the “Logon message” field in the definition of transaction tranid is not in the format required by program VIR0021G, which is specified as the menu program for entry point epname.
+    The contents of the “Logon message” field in the definition of transaction tranid is not in the format required by program VIR0021G, which is specified as the menu program for entry point epname.
 Action
-VIRTEL ignores this transaction definition. Check that the “Logon message” field contains a character string or hexadecimal string enclosed in apostrophes. See the description of VIR0021G in the VIRTEL Connectivity Reference manual.
+    VIRTEL ignores this transaction definition. Check that the “Logon message” field contains a character string or hexadecimal string enclosed in apostrophes. See the description of VIR0021G in the VIRTEL Connectivity Reference manual.
 
-VIR21J1E epname HAS NO AVAILABLE TRANSACTION - ERROR=errcode
-
+VIR21J1E epname HAS NO AVAILABLE TRANSACTION-ERROR=errcode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021J
-
+    VIR0021J
 Meaning
-VIRTEL did not find any available transaction in entry point epname. The error code errcode indicates the reason:
-•   1 : the entry point has no transactions
-•   2 : none of the VTAM applications referenced by the transactions of the entry point are active.
+    VIRTEL did not find any available transaction in entry point epname. The error code errcode indicates the reason:
+
+    - 1 : the entry point has no transactions
+    - 2 : none of the VTAM applications referenced by the transactions of the entry point are active.
 
 Action
-For code 1, define at least one transaction under entry point epname. For code 2, start at least one of the VTAM applications referenced by the transactions under entry point epname.
+    For code 1, define at least one transaction under entry point epname. For code 2, start at least one of the VTAM applications referenced by the transactions under entry point epname.
 
-3.23.   Messages VIR27xxx
+2.23.   Messages VIR27xxx
+-------------------------
 
 VIR2701W USER userid SENT 'c' TO LINE 'n-xxxxxx' FROM TERMINAL 'termid'
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0027
+    VIR0027
 Meaning
-User userid at terminal termid sent command c to the line whose internal name is n-xxxxxx from the “State of lines” screen.
+    User userid at terminal termid sent command c to the line whose internal name is n-xxxxxx from the “State of lines” screen.
 Action
-None.
+    None.
 
 3.24.   Messages VIR31xxx
+-------------------------
 
 VIR3101W WARNING: LECAM SERVER servname MODIFIED
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0031
+    VIR0031
 Meaning
-This message indicate that the definition of external server servname has been modified. The server specifies LECAM emulation.
+    This message indicate that the definition of external server servname has been modified. The server specifies LECAM emulation.
 Action
-Following this type of modification, any previous “service proposition” from a LECAM PC is no longer available for use by new clients. A new “service proposition” must be generated by restarting the LECAM service application on the PC.
+    Following this type of modification, any previous “service proposition” from a LECAM PC is no longer available for use by new clients. A new “service proposition” must be generated by restarting the LECAM service application on the PC.
 
-3.25.   Messages VIR35xxx
+2.25.   Messages VIR35xxx
+-------------------------
 
 VIR3551I termid CONNECTING AS PERSONAL COMPUTER "xxxxxxxx"
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0035
-
+    	VIR0035
 Meaning
-Terminal termid running VIRTEL/PC has connected to VIRTEL. The PC identification is xxxxxxxx.
+    Terminal termid running VIRTEL/PC has connected to VIRTEL. The PC identification is xxxxxxxx.
 Action
-None.
+    None.
 
 VIR3552I termid DISCONNECTED AFTER nn MINUTES
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0035
+    VIR0035
 Meaning
-Terminal termid has disconnected after nn minutes of connection.
+    Terminal termid has disconnected after nn minutes of connection.
 Action
-None.
+    None.
 
 VIR3553I termid IDENTIFICATION ERROR FOR PERSONAL COMPUTER "xxxxxxxx"
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0035
+    VIR0035
 Meaning
-The terminal connected to VIRTELPC will be disconnected at the data processing center. The entry point used requires identification of the PC. This PC has not been defined at the host site.
+    The terminal connected to VIRTELPC will be disconnected at the data processing center. The entry point used requires identification of the PC. This PC has not been defined at the host site.
 Action
-Check the definition of the PC copy at the host site. If it exists purge the associated sign-on.
+    Check the definition of the PC copy at the host site. If it exists purge the associated sign-on.
 
 VIR3554I Input call
-
+^^^^^^^^^^^^^^^^^^^
 Module
-VIR0035
+    VIR0035
 Meaning
-A request for asynchronous connection is being processed.
+    A request for asynchronous connection is being processed.
 Action
-None.
+    None.
 
 3.26.   Messages VIR39xxx
+-------------------------
 
 VIR3952I luname DISCONNECTED AFTER nn MINUTES
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0039
+    VIR0039
 Meaning
-The terminal luname has disconnected after having been connected for nn minutes.
+    The terminal luname has disconnected after having been connected for nn minutes.
 Action
-None.
+    None.
 
 3.27.   Messages VIR60xxx
- 
+------------------------- 
 
 VIR6017I FORCIBLY DETACHING VIRTEL
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR6000
+    VIR6000
 Meaning
-After the VIRSV subtask terminates, VIR6000 waits up to 5 seconds, and then detaches the VIRTEL subtask if it has not already terminated by itself.
+    After the VIRSV subtask terminates, VIR6000 waits up to 5 seconds, and then detaches the VIRTEL subtask if it has not already terminated by itself.
 Action
-None.
+    None.
 
-3.28.   Messages VIR62xxx
+2.28.   Messages VIR62xxx
+-------------------------
 
 VIR6202W LU 6.2 SESSION STARTED WITH applname (luname)
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+  	VIR0062
 Meaning
-An LU 6.2 session has been opened between VIRTEL LU luname and partner application applname.
+    An LU 6.2 session has been opened between VIRTEL LU luname and partner application applname.
 Action
-None.
+    None.
 
 VIR6203W LU 6.2 SESSION STARTED WITH applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-LU 6.2 CNOS negotiation with partner LU applname was successful.
+    LU 6.2 CNOS negotiation with partner LU applname was successful.
 Action
-None.
+    None.
 
 VIR6204W LU 6.2 SESSION REQUESTED BY UNDEFINED pseudolu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-A request for an LU 6.2 session has been issued intended for a pseudo terminal pseudolu that is not under the control of VIRTEL.
+    A request for an LU 6.2 session has been issued intended for a pseudo terminal pseudolu that is not under the control of VIRTEL.
 Action
-Check the parameters associated with the request.
-
+    Check the parameters associated with the request.
 
 VIR6205W UNABLE TO ACTIVATE luname (n-xxxxxx) ERROR: xx
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 Module
-VIR0062
+    VIR0062
 Meaning
-LU luname associated with the line whose internal name is n-xxxxxx could not be activated. xx is the ACB error code (see the IBM VTAM Programming manual)
+    LU luname associated with the line whose internal name is n-xxxxxx could not be activated. xx is the ACB error code (see the IBM VTAM Programming manual)
 Action
-Check that the VTAM node containing LU luname has been activated, check that the LU is not already in use on another line, and that the line is correctly defined in VIRTEL.
+    Check that the VTAM node containing LU luname has been activated, check that the LU is not already in use on another line, and that the line is correctly defined in VIRTEL.
 
 VIR6206W LU 6.2 SESSION RESET FOR LU applname (luname)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-An LU 6.2 session has been reinitialised between VIRTEL LU luname and partner application applname.
+    An LU 6.2 session has been reinitialised between VIRTEL LU luname and partner application applname.
 Action
-None.
+    None.
 
 VIR6208W LU 6.2 CONVERSATION (luname – applname) STARTING ON n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-A conversation has begun between VIRTEL LU luname and a partner application applname on the line with internal name n-xxxxxx.
+    A conversation has begun between VIRTEL LU luname and a partner application applname on the line with internal name n-xxxxxx.
 Action
-None.
+    None.
 
 VIR6210W LU 6.2 CONVERSATION REQUESTED BY UNDEFINED pseudolu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-An LU 6.2 request was sent intended for a pseudo terminal pseudolu not under the control of VIRTEL.
+    An LU 6.2 request was sent intended for a pseudo terminal pseudolu not under the control of VIRTEL.
 Action
-Check the parameters associated with the request.
+    Check the parameters associated with the request.
 
 VIR6212W CONVERSATION cccccccc STARTED  ON n-xxxxxx
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-The conversation number cccccccc has begun on the line with internal name n-xxxxxx.
-
+    The conversation number cccccccc has begun on the line with internal name n-xxxxxx.
 Action
-None.
+    None.
 
 VIR6216W luname(applname) INACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-The LU6.2 session between LU luname and the application applname has been deactivated.
+    The LU6.2 session between LU luname and the application applname has been deactivated.
 Action
-None.
+    None.
 
 VIR6218S NO MORE OSCORE AVAILABLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-VIRTEL cannot load a program in memory due to insufficient space.
+    VIRTEL cannot load a program in memory due to insufficient space.
 Action
-Check the OSCORE parameter of the VIRTCT.
+    Check the OSCORE parameter of the VIRTCT.
 
 VIR6220W LU 6.2 SESSION LOST FOR LINE n-xxxxxx (luname – applname)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-The LU 6.2 session between VIRTEL LU luname and partner application applname has been lost. n-xxxxxx is the internal name of the APPC line.
+    The LU 6.2 session between VIRTEL LU luname and partner application applname has been lost. n-xxxxxx is the internal name of the APPC line.
 Action
-None.
+    None.
 
 VIR6222E ERROR ON applname - R15-R0 : yyyy zzzz RCPRI: pri RCSEC: sec REQ: req QUAL: qual STATE: stat SENSE: sens
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-An unexpected error has occurred during dialogue in LU 6.2 mode.
+    An unexpected error has occurred during dialogue in LU 6.2 mode.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR6223E ERROR ON applname - R15-R0 : yyyy zzzz RCPRI: pri RCSEC: sec REQ: req QUAL: qual STATE: stat SENSE: sens
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
-
+    VIR0062
 Meaning
-An unexpected error has occurred during dialogue in LU 6.2 mode between application applname and VIRTEL. This message has no significance excepting if R15 = 00 (yyyy) and R0 = 0B (zzzz).
+    An unexpected error has occurred during dialogue in LU 6.2 mode between application applname and VIRTEL. This message has no significance excepting if R15 = 00 (yyyy) and R0 = 0B (zzzz).
 Action
-See return code RCPRI and RCSEC in the IBM VTAM Programming for LU 6.2 manual.
+    See return code RCPRI and RCSEC in the IBM VTAM Programming for LU 6.2 manual.
 
 VIR6224W ENDING CONVERSATION cccccccc WITH applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0062
+    VIR0062
 Meaning
-APPC conversation cccccccc with partner application applname has ended.
+    APPC conversation cccccccc with partner application applname has ended.
 Action
-None.
+    None.
 
-3.29.   Messages VIR65xxx
+2.29.   Messages VIR65xxx
+-------------------------
 
-VIR6599E linename CANNOT START - DEFINITION IS INCOMPLETE
-
-
+VIR6599E linename CANNOT START -DEFINITION IS INCOMPLETE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0615
+    VIR0615
 Meaning
-The line whose external name is linename contains a definition error (for example, protocol program not defined) and cannot be started.
+    The line whose external name is linename contains a definition error (for example, protocol program not defined) and cannot be started.
 Action
-Correct the line definition.
+    Correct the line definition.
 
-3.30.   Messages VIR75xxx
+2.30.   Messages VIR75xxx
+-------------------------
 
 VIR7551I applname CONNECTING pseudolu
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0715
+    VIR0715
 Meaning
-The application applname is connected to the pseudo terminal pseudolu in LU 6.2 single session mode (APPC1).
+    The application applname is connected to the pseudo terminal pseudolu in LU 6.2 single session mode (APPC1).
 Action
-None.
+    None.
 
 VIR7552I applname DISCONNECTING pseudolu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0715
-
+    VIR0715
 Meaning
-The LU 6.2 application applname has disconnected from the pseudo terminal pseudolu.
+    The LU 6.2 application applname has disconnected from the pseudo terminal pseudolu.
 Action
-None.
+    None.
 
 VIR7599I applname CONNECTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0715
+    VIR0715
 Meaning
-The LU 6.2 application applname is connected to VIRTEL in single session mode (APPC1).
+    The LU 6.2 application applname is connected to VIRTEL in single session mode (APPC1).
 Action
-None.
+    None.
 
-3.31.   Messages VIR85xxx
+2.31.   Messages VIR85xxx
+-------------------------
 
 VIR8551I applname CONNECTING pseudolu
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0815
+    VIR0815
 Meaning
-The application applname is connected to the pseudo terminal pseudolu in shared LU 6.2 mode (APPC2).
+    The application applname is connected to the pseudo terminal pseudolu in shared LU 6.2 mode (APPC2).
 Action
-None.
+    None.
 
 VIR8552I applname DISCONNECTING pseudolu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0815
+    VIR0815
 Meaning
-The LU 6.2 application applname has disconnected from the pseudo terminal pseudolu.
+    The LU 6.2 application applname has disconnected from the pseudo terminal pseudolu.
 Action
-None.
+    None.
 
 VIR8553I applname ACCEPTED pseudolu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0815
+    VIR0815
 Meaning
-The application applname has accepted the pseudo terminal pseudolu.
+    The application applname has accepted the pseudo terminal pseudolu.
 Action
-None.
-
+    None.
 
 VIR8599I applname (n-xxxxxx) CONNECTED
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0815
+    VIR0815
 Meaning
-The LU 6.2 application applname is connected to VIRTEL in shared session mode (APPC2) on the line whose internal name is n-xxxxxx.
+    The LU 6.2 application applname is connected to VIRTEL in shared session mode (APPC2) on the line whose internal name is n-xxxxxx.
 Action
-None.
+    None.
 
-3.32.   Messages VIR91xxx
+2.32.   Messages VIR91xxx
+-------------------------
 
 VIR9151I applid CONNECTING LUTYPE n PRINTER prname(luname) TO termid
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0915I
+    VIR0915I
 Meaning
-While connecting a non-predefined VTAM LU, application applid connected printer LU type n with terminal name prname and LU name luname to terminal termid
+    While connecting a non-predefined VTAM LU, application applid connected printer LU type n with terminal name prname and LU name luname to terminal termid
 Action
-Aucune.
+    Aucune.
 
 3.33.   Messages VIR99xxx
+-------------------------
 
 VIR9901E termid: ERROR nnnnnnnn CALLING TRANSACTION tranname FROM ENTRY POINT epname
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0099
+    VIR0099
 Meaning
-Transaction tranname associated with the entry point epname and started by terminal luname cannot be found and shows error nnnnnnnn.
+    Transaction tranname associated with the entry point epname and started by terminal luname cannot be found and shows error nnnnnnnn.
 Action
-Check the definition of the entry point and transactions to ensure that the terminal has been defined.
+    Check the definition of the entry point and transactions to ensure that the terminal has been defined.
 
 VIR9905W LU 6.2 relayname (applname) ACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000, VIR0062
+    VIR0000, VIR0062
 Meaning
-The LU6.2 session between the relay relayname and the application applname has been activated.
-
+    The LU6.2 session between the relay relayname and the application applname has been activated.
 Action
-None.
+    None.
 
 VIR9999S GETMAIN FATAL ERROR
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0000
+    VIR0000
 Meaning
-An unexpected error has occurred while requesting memory. The system will stop.
+    An unexpected error has occurred while requesting memory. The system will stop.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIR9999I INVITATION A LIBERER RECUE DE termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0005
+    	VIR0005
 Meaning
-Terminal termname has sent a REQUEST FREE command and will be force disconnected.
+    Terminal termname has sent a REQUEST FREE command and will be force disconnected.
 Action
-None.
+    None.
 
-3.34.   Messages VIRB1xxx
+2.34.   Messages VIRB1xxx
+-------------------------
 
 VIRB171I LINE linename (n-xxxxxx) IS WAITING FOR m-yyyyyy ACTIVATION
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
+    VIR0B17
 Meaning
-Initialisation of the line with external name linename and internal name n-xxxxxx is waiting for line m-yyyyyy to start, because WAIT-LINE(m-yyyyyy) was specified in the “Startup prerequisite” field in the definition of line n-xxxxxx.
+    Initialisation of the line with external name linename and internal name n-xxxxxx is waiting for line m-yyyyyy to start, because WAIT-LINE(m-yyyyyy) was specified in the “Startup prerequisite” field in the definition of line n-xxxxxx.
 Action
-Activate line m-yyyyyy, or wait until VIRTEL activates it.
+    Activate line m-yyyyyy, or wait until VIRTEL activates it.
 
 VIRB172I LINE linename (n-xxxxxx) FAILED TO PROCESS: condition
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
+    VIR0B17
 Meaning
-There is an invalid value condition in the “Startup prerequisite” field in the definition of the line whose external name is linename and whose internal name is n-xxxxxx, or condition refers to an unknown line name.
+    There is an invalid value condition in the “Startup prerequisite” field in the definition of the line whose external name is linename and whose internal name is n-xxxxxx, or condition refers to an unknown line name.
 Action
-Correct the definition of line n-xxxxxx.
-
+    Correct the definition of line n-xxxxxx.
 
 VIRB173I LINE linename (n-xxxxxx) STARTUP IS NOT AUTOMATIC
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0B17
+    VIR0B17
 Meaning
-Initialisation of the line whose external name is linename and whose internal name is n-xxxxxx is waiting for a START command, because WAIT-COMMAND is specified in the “Startup prerequisite” field in the definition of the line.
+    Initialisation of the line whose external name is linename and whose internal name is n-xxxxxx is waiting for a START command, because WAIT-COMMAND is specified in the “Startup prerequisite” field in the definition of the line.
 Action
-To activate the line, enter the VIRTEL command LINE=n-xxxxxx,START at the system console.
+    To activate the line, enter the VIRTEL command LINE=n-xxxxxx,START at the system console.
 
 VIRB174I LINE linename (n-xxxxxx) STARTUP IS PASSIVE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
+    VIR0B17
 Meaning
-Initialisation of the line whose external name is linename and whose internal name is n-xxxxxx is waiting for a VTAM BIND from its partner LU, because WAIT-PARTNER is specified in the “Startup prerequisite” field in the definition of the line.
+    Initialisation of the line whose external name is linename and whose internal name is n-xxxxxx is waiting for a VTAM BIND from its partner LU, because WAIT-PARTNER is specified in the “Startup prerequisite” field in the definition of the line.
 Action
-To activate the line, start the partner application.
+    To activate the line, start the partner application.
 
 VIRB176I LINE linename (n-xxxxxx), RESTARTED BY m-yyyyyy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
+    VIR0B17
 Meaning
-Following activation of line m-yyyyyy, VIRTEL has begun initialisation of the line whose external name is linename and whose internal name is n-xxxxxx.
+    Following activation of line m-yyyyyy, VIRTEL has begun initialisation of the line whose external name is linename and whose internal name is n-xxxxxx.
 Action
-None.
+    None.
 
 VIRB177I LINE linename (n-xxxxxx) IS WAITING FOR m-yyyyyy ACTIVATION
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
+    VIR0B17
 Meaning
-Initialisation of the line whose external name is linename and whose internal name is n-xxxxxx is waiting for line m- yyyyyy to start, because MIMIC-LINE(m-yyyyyy) is specified in the “Startup prerequisite” field in the definition of line n-xxxxxx.
+    Initialisation of the line whose external name is linename and whose internal name is n-xxxxxx is waiting for line m- yyyyyy to start, because MIMIC-LINE(m-yyyyyy) is specified in the “Startup prerequisite” field in the definition of line n-xxxxxx.
 Action
-Activate line m-yyyyyy, or wait until VIRTEL activates it.
+    Activate line m-yyyyyy, or wait until VIRTEL activates it.
 
 VIRB178I LINE linename (n-xxxxxx), STOPPED BY m-yyyyyy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
-
+    VIR0B17
 Meaning
-Following the deactivation of line m-yyyyyy, VIRTEL has stopped the line whose external name is linename and whose internal name is n-xxxxxx, because MIMIC-LINE(m-yyyyyy) is specified in the “Startup prerequisite” field in the definition of line n-xxxxxx.
+    Following the deactivation of line m-yyyyyy, VIRTEL has stopped the line whose external name is linename and whose internal name is n-xxxxxx, because MIMIC-LINE(m-yyyyyy) is specified in the “Startup prerequisite” field in the definition of line n-xxxxxx.
 Action
-None.
+    None.
 
-VIRB179E ERROR ON: luname ALLOCATING 64 BITS STORAGE - RETCODE: xxxxxxxx -
-REASON CODE: xxxxxxxx
-
+VIRB179E ERROR ON: luname ALLOCATING 64 BITS STORAGE - RETCODE: xxxxxxxx - REASON CODE: xxxxxxxx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B17
+    VIR0B17
 Meaning
-An memory allocation attempt failed while trying to store a VIRTEL variable above 'above the BAR' (ie in 64 bits storage). The hexadecimal return code and reason code could be researched in the DC2 code in the IBM “z/OS   MVS System Codes” manual or possibly in the IBM IARV64 service documentation in the “MVS Assembler Services Reference” manual.
-Virtel currently limits the maximum size of a Virtel variable to 2 gigabytes. The maximum amount of 64-bit private virtual memory available to the Virtel address space can be controles by the MEMLIMIT JCL parameter.
+    An memory allocation attempt failed while trying to store a VIRTEL variable above 'above the BAR' (ie in 64 bits storage). The hexadecimal return code and reason code could be researched in the DC2 code in the IBM “z/OS   MVS System Codes” manual or possibly in the IBM IARV64 service documentation in the “MVS Assembler Services Reference” manual. Virtel currently limits the maximum size of a Virtel variable to 2 gigabytes. The maximum amount of 64-bit private virtual memory available to the Virtel address space can be controles by the MEMLIMIT JCL parameter.
 Action
-Use an appropriate value in the MEMLIMIT JCL parameter.
+    Use an appropriate value in the MEMLIMIT JCL parameter.
 
-3.35.   Messages VIRB4xxx
+2.35.   Messages VIRB4xxx
+-------------------------
 
 VIRB411E termid UPLOAD FAILED FOR USER userid
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0041B
+    VIR0041B
 Meaning
-Upload of an HTML page has failed. The page was received from user userid on terminal termid.
+    Upload of an HTML page has failed. The page was received from user userid on terminal termid.
 Action
-See message sent by VIRTEL to the user.
+    See message sent by VIRTEL to the user.
 
-3.36.   Messages VIRB9xxx
+2.36.   Messages VIRB9xxx
+-------------------------
 
 VIRB903W LINE x-nnnnnn TAKES INPUT FROM: indd AND OUTPUTS TO: outdd
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-The batch line with internal name x-nnnnnn has started. The input data for this line will be taken from ddname indd and the output data will be written to ddname outdd.
+    The batch line with internal name x-nnnnnn has started. The input data for this line will be taken from ddname indd and the output data will be written to ddname outdd.
 Action
-None.
-
+    None.
 
 VIRB904W linename PROCESSING .GET|.POST|.RAW|.END|.EOJ COMMAND
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0B09
+    VIR0B09
 Meaning
-The batch line with external name linename is processing the indicated command. This message is not displayed if SILENCE=YES is specified in the VIRTCT.
+    The batch line with external name linename is processing the indicated command. This message is not displayed if SILENCE=YES is specified in the VIRTCT.
 Action
-None.
+    None.
 
 VIRB906W LINE x-nnnnnn CLOSING indd AND outdd
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-The batch line with internal name x-nnnnnn is terminating. The input ddname indd and the output ddname outdd are being closed.
+    The batch line with internal name x-nnnnnn is terminating. The input ddname indd and the output ddname outdd are being closed.
 Action
-None.
+    None.
 
 VIRB907W linename ENDING WITH RETURN CODE xxxxxxxx (dddddddd)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-The batch line with external name linename is terminating. xxxxxxxx is the hexadecimal return code of the batch job step, and dddddddd is the return code in decimal.
+    The batch line with external name linename is terminating. xxxxxxxx is the hexadecimal return code of the batch job step, and dddddddd is the return code in decimal.
 Action
-None.
+    None.
 
 VIRB908E x-nnnnnn INVALID COMMAND 'xxxx' REPLACED BY '.EOJ'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-The batch line with internal name x-nnnnnn has encountered an unknown command xxxx in its input data file. The command is processed as if it were an end of job command, and the batch job terminates with return code 16.
+    The batch line with internal name x-nnnnnn has encountered an unknown command xxxx in its input data file. The command is processed as if it were an end of job command, and the batch job terminates with return code 16.
 Action
-Check the input data for the batch line.
+    Check the input data for the batch line.
 
 VIRB909E x-nnnnnn OPEN ERROR, EOJ REQUESTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
-
+    VIR0B09
 Meaning
-The batch line with internal name x-nnnnnn was unable to open its input or output file. The batch job terminates with return code 16.
+    The batch line with internal name x-nnnnnn was unable to open its input or output file. The batch job terminates with return code 16.
 Action
-Check the console log for error messages. Check that the job contains DD statements for the input and output files associated with this batch line.
+    Check the console log for error messages. Check that the job contains DD statements for the input and output files associated with this batch line.
 
 VIRB912W termid OBJECT nnnnnnnn STARTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-Terminal termid associated with a batch line has begun processing.
+    Terminal termid associated with a batch line has begun processing.
 Action
-None.
+    None.
 
 VIRB922W termid ENDING OBJECT nnnnnnnn
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-Terminal termid associated with a batch line has finished processing.
+    Terminal termid associated with a batch line has finished processing.
 Action
-None.
+    None.
 
-VIRB923E termid REQ type COMPLETION CODE code REASON CODE xxxxxxxx (dddddddd) LINE linename
-VIRB923E termid PARAM xxxx
-
+VIRB923E termid REQ|PARAM xxxx COMPLETION CODE code REASON CODE xxxxxxxx (dddddddd) LINE linename
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-A batch request has terminated abnormally. linename is the external name of the batch line, termid is the associated terminal name, type is the type of request, code is the abend code, xxxxxxxx is the reason code in hexadecimal and dddddddd is the decimal equivalent.
+    A batch request has terminated abnormally. linename is the external name of the batch line, termid is the associated terminal name, type is the type of request, code is the abend code, xxxxxxxx is the reason code in hexadecimal and dddddddd is the decimal equivalent.
 Action
-Inspect the console log for other error messages which may explain the cause. Contact technical support.
+    Inspect the console log for other error messages which may explain the cause. Contact technical support.
 
-VIRB924E termid OBJECT nnnnnnnn REQ type COMPLETION CODE code REASON CODE xxxxxxxx (dddddddd) LINE linename
-VIRB924E termid PARAM xxxx
-
+VIRB924E termid OBJECT|PARAM nnnnnnnn REQ type COMPLETION CODE code REASON CODE xxxxxxxx (dddddddd) LINE linename
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0B09
+    VIR0B09
 Meaning
-An error or unexpected end of file was detected while reading the input file for a batch line. linename is the external name of the batch line, termid is the associated terminal name, type is the type of request, code is the abend code, xxxxxxxx is the reason code in hexadecimal and dddddddd is the decimal equivalent.
-
+    An error or unexpected end of file was detected while reading the input file for a batch line. linename is the external name of the batch line, termid is the associated terminal name, type is the type of request, code is the abend code, xxxxxxxx is the reason code in hexadecimal and dddddddd is the decimal equivalent.
 Action
-Check that the input file is correct.
+    Check that the input file is correct.
 
-3.37.   Messages VIRC1xxx
+2.37.   Messages VIRC1xxx
+-------------------------
 
-VIRC121E PAGE NOT FOUND FOR termid ENTRY POINT 'epname' DIRECTORY
-'tranid'(dirname dirkey) PAGE 'filename' URL'url'
-
-
+VIRC121E PAGE NOT FOUND FOR termid ENTRY POINT 'epname' DIRECTORY 'tranid'(dirname dirkey) PAGE 'filename' URL'url'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0C12
+    VIR0C12
 Meaning
-HTML page filename requested by terminal termid does not exist in the directory dirname specified by the transaction whose external name is tranid linked to entry point epname. The directory key is dirkey. VIRTEL sent a 404 NOT FOUND reply to the terminal.
+    HTML page filename requested by terminal termid does not exist in the directory dirname specified by the transaction whose external name is tranid linked to entry point epname. The directory key is dirkey. VIRTEL sent a 404 NOT FOUND reply to the terminal.
 Action
-Check that the browser requested the correct page. Upload the page into the directory dirname.
+    Check that the browser requested the correct page. Upload the page into the directory dirname.
 
-VIRC122E ERROR termid IS SENDING A SCENARIO PF KEY BUT SCENARIO IS MISSING
-IN TRANSACTION 'tranid' ENTRY POINT 'epname'
-
+VIRC122E ERROR termid IS SENDING A SCENARIO PF KEY BUT SCENARIO IS MISSING IN TRANSACTION 'tranid' ENTRY POINT 'epname'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0C12
+    VIR0C12
 Meaning
-Terminal termid sent an HTTP request containing a PF=SCENARIO parameter (see “Function key management” in  the VIRTEL Web Access Guide) but the transaction whose external name is tranid does not have an input scenario specified.
+    Terminal termid sent an HTTP request containing a PF=SCENARIO parameter (see “Function key management” in  the VIRTEL Web Access Guide) but the transaction whose external name is tranid does not have an input scenario specified.
 Action
-Add the name of an input scenario to the transaction tranid defined under entry point epname.
+    Add the name of an input scenario to the transaction tranid defined under entry point epname.
 
 3.38.   Messages VIRC4xxx
+-------------------------
 
 VIRC411E termid UPLOAD FAILED FOR USER userid
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0041C
+    	VIR0041C
 Meaning
-Upload of an HTML page has failed. The page was received from user userid on terminal termid.
+    Upload of an HTML page has failed. The page was received from user userid on terminal termid.
 Action
-See message sent by VIRTEL to the user.
+    See message sent by VIRTEL to the user.
 
 3.39.   Messages VIRCAxxx
  
 
-VIRCA01W CRYn INITIALISING CRYPTOGRAPHY WITH PARAMETERS:
-’name1’,’algs’,’algp’,’engine’,’encoding’,’chaining’,’padding’
-
+VIRCA01W CRYn INITIALISING CRYPTOGRAPHY WITH PARAMETERS: ’name1’,’algs’,’algp’,’engine’,’encoding’,’chaining’,’padding’
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA0
+    VIR0CA0
 Meaning
-VIRTEL is initializing the cryptographic engine specified by the CRYPTn parameter of the VIRTCT. Refer to the VIRTEL Installation Guide for the meaning of the parameters.
+    VIRTEL is initializing the cryptographic engine specified by the CRYPTn parameter of the VIRTCT. Refer to the VIRTEL Installation Guide for the meaning of the parameters.
 Action
-None.
+    None.
 
 VIRCA02W CRYn termid REQUEST FOR PUBLIC KEY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA0
+    VIR0CA0
 Meaning
-An HTML page delivered to terminal termid has requested VIRTEL to generate a public key using the method specified by the CRYPTn parameter of the VIRTCT.
+    An HTML page delivered to terminal termid has requested VIRTEL to generate a public key using the method specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCA03W CRYn termid DECRYPTING SESSION KEY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA0
+    VIR0CA0
 Meaning
-VIRTEL has received an encrypted session key from the terminal termid and is decrypting the key according to the method specified by the CRYPTn parameter of the VIRTCT.
+    VIRTEL has received an encrypted session key from the terminal termid and is decrypting the key according to the method specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCA04W CRYn termid ENCRYPTING A MESSAGE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA0
+    VIR0CA0
 Meaning
-A message to be sent to terminal termid is being encrypted according to the method specified by the CRYPTn parameter of the VIRTCT.
+    A message to be sent to terminal termid is being encrypted according to the method specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
-
+    None.
 
 VIRCA04W CRYn termid DECRYPTING A MESSAGE
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0CA0
+    VIR0CA0
 Meaning
-A message received from terminal termid is being decrypted according to the method specified by the CRYPTn parameter of the VIRTCT.
+    A message received from terminal termid is being decrypted according to the method specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
-VIRCA11W CRYn INITIALISING CRYPTOGRAPHY WITH PARAMETERS:
-’name1’,’algs’,’algp’,’engine’,’encoding’,’chaining’,’padding’
-
+VIRCA11W CRYn INITIALISING CRYPTOGRAPHY WITH PARAMETERS: ’name1’,’algs’,’algp’,’engine’,’encoding’,’chaining’,’padding’
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA1
+    VIR0CA1
 Meaning
-VIRTEL is initializing the cryptographic engine specified by the CRYPTn parameter of the VIRTCT. Refer to the VIRTEL Installation Guide for the meaning of the parameters.
+    VIRTEL is initializing the cryptographic engine specified by the CRYPTn parameter of the VIRTCT. Refer to the VIRTEL Installation Guide for the meaning of the parameters.
 Action
-None.
+    None.
 
 VIRCA12W termid CRYn REQUEST FOR PUBLIC KEY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA1
+    VIR0CA1
 Meaning
-An HTML page delivered to terminal termid has requested VIRTEL to generate a public key using the method specified by the CRYPTn parameter of the VIRTCT.
+    An HTML page delivered to terminal termid has requested VIRTEL to generate a public key using the method specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCA13W termid CRYn DECRYPTING SESSION KEY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA1
+    VIR0CA1
 Meaning
-VIRTEL has received an encrypted session key from the terminal termid and is decrypting the key according to the method specified by the CRYPTn parameter of the VIRTCT.
+    VIRTEL has received an encrypted session key from the terminal termid and is decrypting the key according to the method specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCA17E termid CRYn **Error** servname retc=xxxx reas=yyyy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA1
-
+    	VIR0CA1
 Meaning
-A call to an ICSF cryptographic service servname failed with return code xxxx and reason code yyyy. The return code and reason code are shown in hexadecimal.
+    A call to an ICSF cryptographic service servname failed with return code xxxx and reason code yyyy. The return code and reason code are shown in hexadecimal.
 Action
-Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer's Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.
+    Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer's Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.
 
 VIRCA18E termid keylen=nnnn fieldlen=nnnn
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CA1
+    VIR0CA1
 Meaning
-This message is issued in conjunction with message VIRCA17E. It indicates length of the symmetric key and the length of the field being encrypted or decrypted when the error occurred.
+    This message is issued in conjunction with message VIRCA17E. It indicates length of the symmetric key and the length of the field being encrypted or decrypted when the error occurred.
 Action
-Refer to preceding message VIRCA17E.
+    Refer to preceding message VIRCA17E.
 
-3.40.   Messages VIRCFxxx
+2.40.   Messages VIRCFxxx
+-------------------------
 
 VIRCF27E SYNTAX ERROR IN EXEC PARAMETER INVALID EXEC PARAMETER - RC = 16
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRCONF
+    VIRCONF
 Meaning
-One of the value specified in the PARM parameter of the EXEC card is invalid. Valid values are: LOAD, UNLOAD, SCAN or LANG=
+    One of the value specified in the PARM parameter of the EXEC card is invalid. Valid values are: LOAD, UNLOAD, SCAN or LANG=
 Action
-Correct the parameter.
+    Correct the parameter.
 
 VIRCF28E NOT AUTHORIZED TO UNLOAD PLAINTXT SECURITY (eg RACF) ERROR - RC = 12
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRCONF
+    VIRCONF
 Meaning
-The user code assign to the job is not authorized to access the ARBO file according to the operation specified in the PARM parameter.
+    The user code assign to the job is not authorized to access the ARBO file according to the operation specified in the PARM parameter.
 Action
-Contact security department to obtain sufficient permissions to perform the desired operation.
-
+    Contact security department to obtain sufficient permissions to perform the desired operation.
 
 VIRCF47E OPEN FAILED FOR SYSPUNCH DDNAME SYSPUNCH OPEN ERROR - RC = 16
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRCONF
+    VIRCONF
 Meaning
-Open failed on the SYSPUNCH entry.
+    Open failed on the SYSPUNCH entry.
 Action
-Check the SYSPUNCH specification.
+    Check the SYSPUNCH specification.
 
 VIRCF48E OPEN FAILED FOR SYSPRINT DDNAME SYSPRINT OPEN ERROR - RC = 16
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRCONF
+    VIRCONF
 Meaning
-Open failed on the SYSPRINT entry.
+    Open failed on the SYSPRINT entry.
 Action
-Check the SYSPRINT specification.
+    Check the SYSPRINT specification.
 
 VIRCF50E OPEN FAILED FOR SYSIN DDNAME SYSPIN OPEN ERROR - RC = 16
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRCONF
+    VIRCONF
 Meaning
-Open failed on the SYSIN entry.
+    Open failed on the SYSIN entry.
 Action
-Check the SYSPIN specification.
+    Check the SYSPIN specification.
 
-VIRCF52E VSAM OPEN ERROR DDNAME=VIRARBO, R15=XXXXXXXX, ACBERFLG=XXXXXXXX
-VSAM error code opening VIRARBO - RC = 16
-
+VIRCF52E VSAM OPEN ERROR DDNAME=VIRARBO, R15=XXXXXXXX, ACBERFLG=XXXXXXXX VSAM error code opening VIRARBO - RC = 16
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRCONF
+    VIRCONF
 Meaning
-Unexpected VSAM error occurred during access of VIRARBO file. R15 and ACBERFLG gives the error and the reason of the error.
+    Unexpected VSAM error occurred during access of VIRARBO file. R15 and ACBERFLG gives the error and the reason of the error.
 Action
-Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
+    Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
 
-3.41.   Messages VIRCTxxx
- 
+2.41.   Messages VIRCTxxx
+------------------------- 
 
 VIRCT01E CRYn ERROR INSTALLING 'NO-ENCRYPTION' SUBTASK
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT0
+    VIR0CT0
 Meaning
-An unexpected error occurred while initializing the VIRTEL subtask for the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
+    An unexpected error occurred while initializing the VIRTEL subtask for the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIRCT02W CRYn 'NO-ENCRYPTION' SUBTASK STARTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT0
+    VIR0CT0
 Meaning
-Successful initialization of the VIRTEL subtask for the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
+    Successful initialization of the VIRTEL subtask for the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCT03W CRYn 'NO-ENCRYPTION' SUBTASK ENDED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT0
+    VIR0CT0
 Meaning
-Termination of the VIRTEL subtask for the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
+    Termination of the VIRTEL subtask for the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCT05W CRYn 'NO-ENCRYPTION' SESSION KEY READY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT0
+    VIR0CT0
 Meaning
-VIRTEL has established a session key for a terminal using the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
-Action
-None.
+    VIRTEL has established a session key for a terminal using the no-encryption module specified by the CRYPTn parameter of the VIRTCT.
+Action  
+    None.
 
-VIRCT10I ICSFSTAT : FMID=fmid STATUS1=n STATUS2=n CPACF=n AES=n DSA=n RSA1=n RSA2=n RSA3=n ACC=n
-VIRCT10I ICSFST2 : VERSION=vers FMID=fmid STATUS1=n STATUS2=n STATUS3=n STATUS4=n
-VIRCT10I STATAES : NMK-STATUS=n CMK-STATUS=n OMK-STATUS=n KEYLEN=n
+VIRCT101
+^^^^^^^^
 
+::
 
-
-VIRCT10I STATCCA : NMK-STATUS=n CMK-STATUS=n OMK-STATUS=n CCA-APP-VERS=n CCA-APP-BUILD=n USER-ROLE=n
-VIRCT10I STATCARD : ADAPTERS=n DES=n RSA=n POST=n n CP-OS=osname VERS=osver
-PART=partno EC=eclevel BOOT=n n
-VIRCT10I STATDIAG : BATTERY=n INTRUSION=n ERROR-LOG=n MESH=n LOW-VOLT=n HIGH-VOLT=n TEMPERATURE=n RADIATION=n
-VIRCT10I STATEXPT : CCA=n CMDF=n 56-bit-DES=n Triple-DES=n SET=n MAX- SYMMETRIC-MODULUS=nnnn
+    VIRCT10I ICSFSTAT : FMID=fmid STATUS1=n STATUS2=n CPACF=n AES=n DSA=n RSA1=n RSA2=n RSA3=n ACC=n
+    VIRCT10I ICSFST2 : VERSION=vers FMID=fmid STATUS1=n STATUS2=n STATUS3=n STATUS4=n
+    VIRCT10I STATAES : NMK-STATUS=n CMK-STATUS=n OMK-STATUS=n KEYLEN=n
+    VIRCT10I STATCCA : NMK-STATUS=n CMK-STATUS=n OMK-STATUS=n CCA-APP-VERS=n CCA-APP-BUILD=n USER-ROLE=n
+    VIRCT10I STATCARD : ADAPTERS=n DES=n RSA=n POST=n n CP-OS=osname VERS=osver PART=partno EC=eclevel BOOT=n n
+    VIRCT10I STATDIAG : BATTERY=n INTRUSION=n ERROR-LOG=n MESH=n LOW-VOLT=n HIGH-VOLT=n TEMPERATURE=n RADIATION=n
+    VIRCT10I STATEXPT : CCA=n CMDF=n 56-bit-DES=n Triple-DES=n SET=n MAX- SYMMETRIC-MODULUS=nnnn
  
 Module
-VIR0CT1
+    VIR0CT1
 Meaning
-This message provides diagnostic information about the facilities provided by the underlying ICSF software and cryptographic hardware. The meaning of each of the fields is shown below. For further information, refer to CSFIQF in SA22-7522 z/OS Cryptographic Services ICSF Application Programmer’s Guide.
-ICSFSTAT
-FMID : Indicates the version of ICSF installed
-STATUS1 : 0=ICSF started, 1=ICSF initialized, 2=SYM-MK valid, 3=PKA enabled STATUS2 : 0=31-bit, 1=64-bit, 2=PKCS#11 available
-CPACF : CPACF services available: 0=None, 1=SHA-1, 2=DES/TDES, 3=SHA-224/256, 4=SHA-224/256/DES/TDES, 5=SHA-384/512, 6=SHA-384/512/DES/TDES
-AES : AES availability: 0=No, 1=Software, 2=AES-128, 3=AES-192/256 DSA : DSA availability: 0=No, 1=DSA-1024, 2=DSA-2048
-RSA1 : RSA signature key length: 0=No, 1=1024, 2=2048, 3=4096 RSA2 : RSA key management length: 0=No, 1=1024, 2=2048, 3=4096 RSA3 : RSA key generate service: 0=No, 1=2048, 2=4096
-ACC : RSA key accelerators available: 0=No, 1=Yes
-ICSFST2
-VERSION : ICSFST2 version number
-FMID : Indicates the version of ICSF installed STATUS1 : PKA services: 0=Disabled, 1=Enabled STATUS2 : PKCS#11 available: 0=No, 1=Yes
-STATUS3 : ICSF status: 0=Started, 1=Initialized, 2=AES master key valid STATUS4 : Secure AES key available: 0=No, 1=Yes
-STATAES
-NMK-STATUS AES new master key : 1=Clear, 2=Partial, 3=Complete CMK-STATUS AES current master key : 1=Clear, 2=Key
-OMK-STATUS AES old master key : 1=Clear, 2=Key KEYLEN : Maximum AES key length
-STATCCA
-NMK-STATUS DES new master key : 1=Clear, 2=Partial, 3=Complete CMK-STATUS DES current master key : 1=Clear, 2=Key
-OMK-STATUS DES old master key : 1=Clear, 2=Key
-CCA-APP-VERS : Version of CCA application in co-processor CCA-APP-BUILD : Build date of CCA application in co-processor USER-ROLE : Host application user’s authority role identifier
+    This message provides diagnostic information about the facilities provided by the underlying ICSF software and cryptographic hardware. The meaning of each of the fields is shown below. For further information, refer to CSFIQF in SA22-7522 z/OS Cryptographic Services ICSF Application Programmer’s Guide. 
 
+ICSFSTAT
+    FMID : Indicates the version of ICSF installed
+    STATUS1 : 0=ICSF started, 1=ICSF initialized, 2=SYM-MK valid, 3=PKA enabled STATUS2 : 0=31-bit, 1=64-bit, 2=PKCS#11 available
+    CPACF : CPACF services available: 0=None, 1=SHA-1, 2=DES/TDES, 3=SHA-224/256, 4=SHA-224/256/DES/TDES, 5=SHA-384/512, 6=SHA-384/512/DES/TDES
+    AES : AES availability: 0=No, 1=Software, 2=AES-128, 3=AES-192/256 DSA : DSA availability: 0=No, 1=DSA-1024, 2=DSA-2048
+    RSA1 : RSA signature key length: 0=No, 1=1024, 2=2048, 3=4096 RSA2 : RSA key management length: 0=No, 1=1024, 2=2048, 3=4096 RSA3 : RSA key generate service: 0=No, 1=2048, 2=4096
+    ACC : RSA key accelerators available: 0=No, 1=Yes
+ICSFST2
+    VERSION : ICSFST2 version number
+    FMID : Indicates the version of ICSF installed STATUS1 : PKA services: 0=Disabled, 1=Enabled STATUS2 : PKCS#11 available: 0=No, 1=Yes
+    STATUS3 : ICSF status: 0=Started, 1=Initialized, 2=AES master key valid STATUS4 : Secure AES key available: 0=No, 1=Yes
+    STATAES
+    NMK-STATUS AES new master key : 1=Clear, 2=Partial, 3=Complete CMK-STATUS AES current master key : 1=Clear, 2=Key
+    OMK-STATUS AES old master key : 1=Clear, 2=Key KEYLEN : Maximum AES key length
+STATCCA
+    NMK-STATUS DES new master key : 1=Clear, 2=Partial, 3=Complete CMK-STATUS DES current master key : 1=Clear, 2=Key
+    OMK-STATUS DES old master key : 1=Clear, 2=Key
+    CCA-APP-VERS : Version of CCA application in co-processor CCA-APP-BUILD : Build date of CCA application in co-processor USER-ROLE : Host application user’s authority role identifier
 STATCARD
-ADAPTERS : Number of installed cryptographic adapters DES : DES hardware level
-RSA : RSA hardware level
-POST : Power-On Self Test version numbers
-CP-OS : Crypto co-processor operating system name VERS : Operating system version number
-PART : Crypto co-processor part number
-EC : Crypto co-processor engineering change level BOOT : Crypto co-processor miniboot version numbers
+    ADAPTERS : Number of installed cryptographic adapters DES : DES hardware level
+    RSA : RSA hardware level
+    POST : Power-On Self Test version numbers
+    CP-OS : Crypto co-processor operating system name VERS : Operating system version number
+    PART : Crypto co-processor part number
+    EC : Crypto co-processor engineering change level BOOT : Crypto co-processor miniboot version numbers
 STATDIAG
-BATTERY : Battery state: 1=Good, 2=Replace INTRUSION : Intrusion latch state: 1=Cleared, 2=Set ERROR-LOG : Error log status: 1=Empty, 2=Data, 3=Full MESH : Mesh intrusion: 1=No, 2=Intrusion
-LOW-VOLT : Low-voltage detected: 1=No, 2=Yes HIGH-VOLT : High-voltage detected: 1=No, 2=Yes
-TEMPERATURE : Temperature range exceeded: 1=No, 2=Yes RADIATION : Radiation detected: 1=No, 2=Yes
-STATEXPT
-CCA : Base CCA services available: 0=No, 1=Yes CMDF : CDMF encryption available: 0=No, 1=Yes
-56-bit-DES : 56-bit DES encryption available: 0=No, 1=Yes Triple-DES : Triple DES encryption available: 0=No, 1=Yes SET : Secure Electronic Transaction available: 0=No, 1=Yes
-MAX-SYMMERTIC-MODULUS : Maximum modulus size enabled for asymmetric encryption of symmetric keys
+    BATTERY : Battery state: 1=Good, 2=Replace INTRUSION : Intrusion latch state: 1=Cleared, 2=Set ERROR-LOG : Error log status: 1=Empty, 2=Data, 3=Full MESH : Mesh intrusion: 1=No, 2=Intrusion
+    LOW-VOLT : Low-voltage detected: 1=No, 2=Yes HIGH-VOLT : High-voltage detected: 1=No, 2=Yes
+    TEMPERATURE : Temperature range exceeded: 1=No, 2=Yes RADIATION : Radiation detected: 1=No, 2=Yes
+    STATEXPT
+    CCA : Base CCA services available: 0=No, 1=Yes CMDF : CDMF encryption available: 0=No, 1=Yes
+    56-bit-DES : 56-bit DES encryption available: 0=No, 1=Yes Triple-DES : Triple DES encryption available: 0=No, 1=Yes SET : Secure Electronic Transaction available: 0=No, 1=Yes
+    MAX-SYMMERTIC-MODULUS : Maximum modulus size enabled for asymmetric encryption of symmetric keys
 Action
-None.
+    None.
 
 VIRCT11E CRYn ERROR INSTALLING 'ICSF' SUBTASK
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
 VIR0CT1
 Meaning
