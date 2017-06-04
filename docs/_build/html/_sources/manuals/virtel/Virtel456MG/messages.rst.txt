@@ -1,12 +1,12 @@
-.. _Virtel456OM:
+.. _Virtel456MG:
 
-=====================
-Messages & Operations
-=====================
+==============
+Messages Guide
+==============
 
 |image1|
 
-**VIRTEL Messages and Operations**
+**VIRTEL Messages Guide**
 
 .. danger:: This book is currently under construction. Do not use!
 
@@ -39,13 +39,13 @@ Syspertec Communication
     and companies mentioned in this document may be trademarks or registered trademarks of 
     their respective owners.  
 
-.. _V456OM_Introduction:
+.. _V456MG_Introduction:
 
 1. Virtel messages
 ==================
 
 1.1 Virtel user messages
-------------------------
+========================
 
 
 1.1.1 ERRM121 - ERRM127
@@ -1395,8 +1395,8 @@ Action
 2.  VIRTEL console messages
 ===========================
 
-2.1.    Messages VIR0000I – VIR0009I
-------------------------------------
+2.1.    Messages VIR000xx
+=========================
 
 VIR0000I xxxx Date: Mon, 07 Jun 2004 15:20:23 GMT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1493,8 +1493,8 @@ Meaning
 Action
     None.
 
-2.2.    Messages VIR0010I – VIR0019I
-------------------------------------
+2.2.    Messages VIR001xx
+=========================
 
 VIR0010I SUBPOOL SIZE = ssss K
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1594,8 +1594,8 @@ Meaning
 Action
     None.
 
-2.3.    Messages VIR0020E – VIR0029W
-------------------------------------
+2.3.    Messages VIR002xx
+=========================
 
 VIR0020E APPLICATION acbname IS ALREADY ACTIVE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1818,8 +1818,8 @@ Meaning
 Action
     If you wish to operate the terminal in “relay” mode, define the terminal in VIRTEL with an associated relay defined by a VTAM APPL card. If you wish to continue operating the terminal in “welcome” mode, increase the value of the NBDYNAM parameter in the VIRTCT.
 
-2.4.    Messages VIR0030E – VIR0039I
-------------------------------------
+2.4.    Messages VIR003xx
+=========================
 
 VIR0030E ERROR xx LOADING progname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2028,7 +2028,8 @@ Meaning
 Action
     None.
 
-2.5.    Messages VIR0040E – VIR0049I
+2.5.    Messages VIR004xx
+=========================
 
 VIR0040E ERROR: THE VIRTCT progname IS INVALID: VIRTEL CANNOT CONTINUE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2129,8 +2130,8 @@ Meaning
 Action
     None.
 
-2.6.    Messages VIR0050W – VIR0059I
-------------------------------------
+2.6.    Messages VIR005xx
+=========================
 
 VIR0050W INVALID EIB FREEMAIN FOR luname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2186,8 +2187,8 @@ Meaning
 Action
     None.
 
-3.7.    Messages VIR0060W – VIR0069I
-------------------------------------
+2.7.    Messages VIR006xx
+=========================
 
 VIR0060W MAPFAIL WAS DETECTED ON TERMINAL luname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2355,8 +2356,8 @@ Meaning
 Action
     None.
 
-2.8.    Messages VIR0070I – VIR0079I
------------------------------------- 
+2.8.    Messages VIR007xx
+========================= 
 
 VIR0070I SIMULTANEOUS TRANSACTION AT TERMINAL termid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2367,8 +2368,8 @@ Meaning
 Action
     If the first transaction results in a Multi-Session menu display, VIRTEL maybe did not obtain from VTAM the status of the menu applications (in cross domain for example). If this is the case, remove status control from this application (PF9 from the general Sub-Applications menu).
 
-2.9.    Messages VIR0080W – VIR0089W
-------------------------------------
+2.9.    Messages VIR008xx
+=========================
 
 VIR0080W VSAM ERROR ON FILE VIRARBO xx xx REQ : yy, KEY: cccccccc
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2460,8 +2461,8 @@ Meaning
 Action
     None. Information only.
 
-2.10.   Messages VIR0090E – VIR0099E
-------------------------------------
+2.10.   Messages VIR009xx
+=========================
 
 VIR0090E VIRSV INITIALIZATION ERROR -VSVPOPTR R15 : xxxxxxxx (dddddddd)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2555,7 +2556,7 @@ Action
     None.
 
 2.11.   Messages VIR02xxx
--------------------------
+=========================
 
 VIR0200I, VIR0201I
 ^^^^^^^^^^^^^^^^^^
@@ -2755,6 +2756,7 @@ Action
     None.
 
 2.12.   Messages VIR05xxx
+=========================
 
 VIR0504I ACQUIRING TERMINAL luname(relayname) TO LINK n-xxxxxx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3031,7 +3033,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 2.13.   Messages VIR06xxx
--------------------------
+=========================
 
 VIR0601I VIRSTATx status DSN=dsname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3139,7 +3141,7 @@ Action
     VIRTEL STATS SMF recording is disabled.
 
 2.14.   Messages VIR07xxx
-------------------------- 
+========================= 
 
 VIR0700W ERROR IN TASK taskname PSW= xxxxxxxx xxxxxxxx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3151,7 +3153,7 @@ Action
     See message VIR0015S and VIR0016W.
 
 2.15.   Messages VIR08xxx
--------------------------
+=========================
 
 VIR0800I VIRTEL IS USING NO SECURITY
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3227,7 +3229,7 @@ Action
     None.
 
 2.16.   Messages VIR09xxx
--------------------------
+=========================
 
 VIR0904I ACQUIRING TERMINAL relayname(termid)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3383,6 +3385,7 @@ Action
     Wait until another terminal disconnects, or contact Syspertec to upgrade your license.
 
 2.17.   Messages VIR10xxx
+=========================
 
 VIR1021I VIRARBO type RECORD name ADDED/UPDATED/DELETED BY USER userid AT TERMINAL termid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3457,6 +3460,7 @@ Action
     None.
 
 2.18.   Messages VIR11xxx
+=========================
 
 VIR11D1W termid ERROR LOADING SCRIPT scriptnam IN TRANSACTION tranid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3477,6 +3481,7 @@ Action
     Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
 
 2.19.   Messages VIR15xxx
+=========================
 
 VIR1501E termid REQSESS FAILED, NO RELAY DEFINED
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3516,7 +3521,7 @@ Action
     None.
 
 2.20.   Messages VIR17xxx
--------------------------
+=========================
 
 VIR1705W UNABLE TO ACTIVATE relayname(termid)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3573,7 +3578,7 @@ Action
     Check the OCORE parameter of the VIRTCT.
 
 2.21.   Messages VIR19xxx
--------------------------
+=========================
 
 VIR1952I luname DISCONNECTED AFTER nn MINUTES
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3585,6 +3590,7 @@ Action
     None.
 
 2.21.   Messages VIR21xxx
+=========================
 
 VIR2121E epname HAS NO TRANSACTIONS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3654,7 +3660,7 @@ Action
     For code 1, define at least one transaction under entry point epname. For code 2, start at least one of the VTAM applications referenced by the transactions under entry point epname.
 
 2.23.   Messages VIR27xxx
--------------------------
+=========================
 
 VIR2701W USER userid SENT 'c' TO LINE 'n-xxxxxx' FROM TERMINAL 'termid'
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3665,8 +3671,8 @@ Meaning
 Action
     None.
 
-3.24.   Messages VIR31xxx
--------------------------
+2.24.   Messages VIR31xxx
+=========================
 
 VIR3101W WARNING: LECAM SERVER servname MODIFIED
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3678,7 +3684,7 @@ Action
     Following this type of modification, any previous “service proposition” from a LECAM PC is no longer available for use by new clients. A new “service proposition” must be generated by restarting the LECAM service application on the PC.
 
 2.25.   Messages VIR35xxx
--------------------------
+=========================
 
 VIR3551I termid CONNECTING AS PERSONAL COMPUTER "xxxxxxxx"
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3716,8 +3722,8 @@ Meaning
 Action
     None.
 
-3.26.   Messages VIR39xxx
--------------------------
+2.26.   Messages VIR39xxx
+=========================
 
 VIR3952I luname DISCONNECTED AFTER nn MINUTES
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3728,8 +3734,8 @@ Meaning
 Action
     None.
 
-3.27.   Messages VIR60xxx
-------------------------- 
+2.27.   Messages VIR60xxx
+========================= 
 
 VIR6017I FORCIBLY DETACHING VIRTEL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3741,7 +3747,7 @@ Action
     None.
 
 2.28.   Messages VIR62xxx
--------------------------
+=========================
 
 VIR6202W LU 6.2 SESSION STARTED WITH applname (luname)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3871,7 +3877,7 @@ Action
     None.
 
 2.29.   Messages VIR65xxx
--------------------------
+=========================
 
 VIR6599E linename CANNOT START -DEFINITION IS INCOMPLETE
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3883,7 +3889,7 @@ Action
     Correct the line definition.
 
 2.30.   Messages VIR75xxx
--------------------------
+=========================
 
 VIR7551I applname CONNECTING pseudolu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3913,7 +3919,7 @@ Action
     None.
 
 2.31.   Messages VIR85xxx
--------------------------
+=========================
 
 VIR8551I applname CONNECTING pseudolu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3952,7 +3958,7 @@ Action
     None.
 
 2.32.   Messages VIR91xxx
--------------------------
+=========================
 
 VIR9151I applid CONNECTING LUTYPE n PRINTER prname(luname) TO termid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3963,8 +3969,8 @@ Meaning
 Action
     Aucune.
 
-3.33.   Messages VIR99xxx
--------------------------
+2.33.   Messages VIR99xxx
+=========================
 
 VIR9901E termid: ERROR nnnnnnnn CALLING TRANSACTION tranname FROM ENTRY POINT epname
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4003,7 +4009,7 @@ Action
     None.
 
 2.34.   Messages VIRB1xxx
--------------------------
+=========================
 
 VIRB171I LINE linename (n-xxxxxx) IS WAITING FOR m-yyyyyy ACTIVATION
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4078,7 +4084,7 @@ Action
     Use an appropriate value in the MEMLIMIT JCL parameter.
 
 2.35.   Messages VIRB4xxx
--------------------------
+=========================
 
 VIRB411E termid UPLOAD FAILED FOR USER userid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4090,7 +4096,7 @@ Action
     See message sent by VIRTEL to the user.
 
 2.36.   Messages VIRB9xxx
--------------------------
+=========================
 
 VIRB903W LINE x-nnnnnn TAKES INPUT FROM: indd AND OUTPUTS TO: outdd
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4183,7 +4189,7 @@ Action
     Check that the input file is correct.
 
 2.37.   Messages VIRC1xxx
--------------------------
+=========================
 
 VIRC121E PAGE NOT FOUND FOR termid ENTRY POINT 'epname' DIRECTORY 'tranid'(dirname dirkey) PAGE 'filename' URL'url'
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4203,8 +4209,8 @@ Meaning
 Action
     Add the name of an input scenario to the transaction tranid defined under entry point epname.
 
-3.38.   Messages VIRC4xxx
--------------------------
+2.38.   Messages VIRC4xxx
+=========================
 
 VIRC411E termid UPLOAD FAILED FOR USER userid
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4215,8 +4221,8 @@ Meaning
 Action
     See message sent by VIRTEL to the user.
 
-3.39.   Messages VIRCAxxx
- 
+2.39.   Messages VIRCAxxx
+========================= 
 
 VIRCA01W CRYn INITIALISING CRYPTOGRAPHY WITH PARAMETERS: ’name1’,’algs’,’algp’,’engine’,’encoding’,’chaining’,’padding’
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4309,7 +4315,7 @@ Action
     Refer to preceding message VIRCA17E.
 
 2.40.   Messages VIRCFxxx
--------------------------
+=========================
 
 VIRCF27E SYNTAX ERROR IN EXEC PARAMETER INVALID EXEC PARAMETER - RC = 16
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4366,7 +4372,7 @@ Action
     Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
 
 2.41.   Messages VIRCTxxx
-------------------------- 
+========================= 
 
 VIRCT01E CRYn ERROR INSTALLING 'NO-ENCRYPTION' SUBTASK
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4468,2244 +4474,2175 @@ Action
 Contact technical support.
 
 VIRCT12W CRYn 'ICSF' SUBTASK STARTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT1
+    VIR0CT1
 Meaning
-Successful initialization of the VIRTEL subtask for the ICSF interface specified by the CRYPTn parameter of the VIRTCT.
-
+    Successful initialization of the VIRTEL subtask for the ICSF interface specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCT13W CRYn 'ICSF' SUBTASK ENDED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT1
+    VIR0CT1
 Meaning
-Termination of the VIRTEL subtask for the ICSF interface specified by the CRYPTn parameter of the VIRTCT.
+    Termination of the VIRTEL subtask for the ICSF interface specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCT15W CRYn 'ICSF' SESSION KEY READY
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT1
+    VIR0CT1
 Meaning
-VIRTEL has established a session key for a terminal using the ICSF interface specified by the CRYPTn parameter of the VIRTCT.
+    VIRTEL has established a session key for a terminal using the ICSF interface specified by the CRYPTn parameter of the VIRTCT.
 Action
-None.
+    None.
 
 VIRCT16E CRYn **Error** servname retc=xxxx reas=yyyy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT1
+    VIR0CT1
 Meaning
-A call to an ICSF cryptographic service servname failed with return code xxxx and reason code yyyy. The return code and reason code are shown in hexadecimal.
+    A call to an ICSF cryptographic service servname failed with return code xxxx and reason code yyyy. The return code and reason code are shown in hexadecimal.
 Action
-Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer's Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.
+    Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer's Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.
 
 VIRCT17E CRYn ERROR: text
-
+^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0CT1
+    VIR0CT1
 Meaning
-This message is issued in conjunction with message VIRCT16E. It provides an explanation for the reason code indicated in the previous message.
+    This message is issued in conjunction with message VIRCT16E. It provides an explanation for the reason code indicated in the previous message.
 Action
-Refer to preceding message VIRCT16E.
+    Refer to preceding message VIRCT16E.
 
-3.42.   Messages VIRHTxxx
- 
+2.42.   Messages VIRHTxxx
+========================= 
 
-VIRHT01I HTTP INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-
+VIRHT01I HTTP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-Initialisation of HTTP line with external name linename and internal name n-xxxxxx.
+    Initialisation of HTTP line with external name linename and internal name n-xxxxxx.
 Action
-None.
+    None.
 
 VIRHT02I LINE linename (n-xxxxxx) HAS URL http://ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-The HTTP line with external name linename and internal name n-xxxxxx is ready to receive requests at the indicated URL.
+    The HTTP line with external name linename and internal name n-xxxxxx is ready to receive requests at the indicated URL.
 Action
-None.
+    None.
 
 VIRHT04I HTTP LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-HTTP line with external name linename was stopped, either by console command, or by setting the “Possible calls” field to 0 in the line definition.
+    HTTP line with external name linename was stopped, either by console command, or by setting the “Possible calls” field to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRHT27E linename IS REJECTED AT ENTRY POINT epname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-VIRTEL received an incoming call on the HTTP line whose external name is linename, but the entry point epname specified in the line definition does not exist.
+    VIRTEL received an incoming call on the HTTP line whose external name is linename, but the entry point epname specified in the line definition does not exist.
 Action
-Check the HTTP line definition.
+    Check the HTTP line definition.
 
 
 VIRHT28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-VIRTEL chose entry point epname for an incoming call on the HTTP line whose external name is linename, because the call matched the rule named rulename.
+    VIRTEL chose entry point epname for an incoming call on the HTTP line whose external name is linename, because the call matched the rule named rulename.
 Action
-None.
+    None.
 
 VIRHT29E n-xxxxxx DEFAULT ENTRY POINT MISSING OR INVALID
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-An incoming call on the HTTP line whose internal name is n-xxxxxx did not match any of the rules of the line, and the default entry point specified in the line definition is either blank or does not exist.
+    An incoming call on the HTTP line whose internal name is n-xxxxxx did not match any of the rules of the line, and the default entry point specified in the line definition is either blank or does not exist.
 Action
-Either define a default rule for the HTTP line, or specify a valid default entry point in the line definition.
+    	Either define a default rule for the HTTP line, or specify a valid default entry point in the line definition.
 
 VIRHT51I linename CONNECTING termname TO ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-An incoming or outgoing HTTP call is being processed. For an incoming HTTP call, linename is the external name of the HTTP line, termname is the name of the VIRTEL terminal allocated to process the call, and ipaddr:port is the IP address and port number of the client browser. For an outgoing HTTP call, linename is the external name of the HTTP outbound line, termname is the name of the VIRTEL terminal making the call, and ipaddr:port is the IP address and port number of the remote HTTP server. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    An incoming or outgoing HTTP call is being processed. For an incoming HTTP call, linename is the external name of the HTTP line, termname is the name of the VIRTEL terminal allocated to process the call, and ipaddr:port is the IP address and port number of the client browser. For an outgoing HTTP call, linename is the external name of the HTTP outbound line, termname is the name of the VIRTEL terminal making the call, and ipaddr:port is the IP address and port number of the remote HTTP server. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRHT52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-Terminal termname has been disconnected from the HTTP line whose external name is linename.
+    Terminal termname has been disconnected from the HTTP line whose external name is linename.
 Action
-None.
+    None.
 
-
-VIRHT53E linename NO MORE PSEUDO FOUND WITH PREFIX xxxx FOR TRANSACTION
-tranname(tranid)
- 
+VIRHT53E linename NO MORE PSEUDO FOUND WITH PREFIX xxxx FOR TRANSACTION tranname(tranid)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-VIRTEL tried to open a terminal whose name matches the prefix xxxx specified in the VIRTEL transaction with external name tranname and internal name tranid, but this prefix conflicts with the prefix specified on the definition of the HTTP line whose external name is linename.
+    VIRTEL tried to open a terminal whose name matches the prefix xxxx specified in the VIRTEL transaction with external name tranname and internal name tranid, but this prefix conflicts with the prefix specified on the definition of the HTTP line whose external name is linename.
 Action
-Check the “Prefix” field of the HTTP line and the “Pseudo-terminals” field of the transaction.
+    Check the “Prefix” field of the HTTP line and the “Pseudo-terminals” field of the transaction.
 
-VIRHT54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY
-'dirname' PAGE 'filename' URL 'url' TRANSACTION 'tranid' CALLER ipaddr:port reason
-
+VIRHT54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY 'dirname' PAGE 'filename' URL 'url' TRANSACTION 'tranid' CALLER ipaddr:port reason
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-VIRTEL received a request on the HTTP line whose external name is linename originating from the browser at IP address ipaddr:port. The browser requested HTML page filename using URL url. Either the directory path dirname does not exist, or there is no transaction named tranid under the entry point epname.
+    VIRTEL received a request on the HTTP line whose external name is linename originating from the browser at IP address ipaddr:port. The browser requested HTML page filename using URL url. Either the directory path dirname does not exist, or there is no transaction named tranid under the entry point epname.
 Action
-Check that the browser requested the correct URL. Check the definition of the entry point epname. If reason is “missing directory : dirname”, ensure that there is a type 4 transaction with external name dirname. If reason is “rejected transaction : tranid”, ensure that there is a type 1 transaction with external name tranid. See “VIRTEL URL formats” in the VIRTEL Web Access Guide.
+    Check that the browser requested the correct URL. Check the definition of the entry point epname. If reason is “missing directory : dirname”, ensure that there is a type 4 transaction with external name dirname. If reason is “rejected transaction : tranid”, ensure that there is a type 1 transaction with external name tranid. See “VIRTEL URL formats” in the VIRTEL Web Access Guide.
 
 VIRHT55E INVALID RULE rulename ENTRY POINT 'epname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-Rule rulename used by an HTTP line specifies a non-existent entry point epname.
+    Rule rulename used by an HTTP line specifies a non-existent entry point epname.
 Action
-Check the entry point name specified in the rule definition.
+    Check the entry point name specified in the rule definition.
 
 VIRHT56I n-xxxxxx CALLER real-ip WAS FORWARDED BY proxy-ip
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-An HTTP request was received from proxy-ip on the HTTP line whose internal name is n-xxxxxx. The source IP address proxy-ip appears in the “Calling DTE” field of a rule attached to the HTTP line, and the request matches the rule in all other respects. VIRTEL considers the IP address real-ip, which is specified in the “forwarding header” inserted by the proxy, to be the real originating IP address. Refer to “Calling DTE” in the “Rules” chapter of the VIRTEL Configuration Reference manual for further information.
-
+    An HTTP request was received from proxy-ip on the HTTP line whose internal name is n-xxxxxx. The source IP address proxy-ip appears in the “Calling DTE” field of a rule attached to the HTTP line, and the request matches the rule in all other respects. VIRTEL considers the IP address real-ip, which is specified in the “forwarding header” inserted by the proxy, to be the real originating IP address. Refer to “Calling DTE” in the “Rules” chapter of the VIRTEL Configuration Reference manual for further information.
 Action
-VIRTEL henceforth treats the call as if it had been received from real-ip instead of from proxy-ip. The real-ip address will be displayed in console messages and recorded in the VIRLOG.
+    VIRTEL henceforth treats the call as if it had been received from real-ip instead of from proxy-ip. The real-ip address will be displayed in console messages and recorded in the VIRLOG.
 
 VIRHT57E linename RECEIVED AN ERRONEOUS REQUEST FROM ipaddr:port : LINE IS NOT SET UP FOR HTTPS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-VIRTEL received a request on the HTTP line whose external name is linename originating from the browser at IP address ipaddr:port. The browser has requested that the session should be encrypted using the SSL or TLS protocols, but encryption is not activated for this line.
+    VIRTEL received a request on the HTTP line whose external name is linename originating from the browser at IP address ipaddr:port. The browser has requested that the session should be encrypted using the SSL or TLS protocols, but encryption is not activated for this line.
 Action
-Either resubmit the request without encryption (use http instead of https), or activate encryption on this line (see “Data encryption” in the “VIRTEL Web Access Security” chapter of the VIRTEL Web Access Guide.
+    Either resubmit the request without encryption (use http instead of https), or activate encryption on this line (see “Data encryption” in the “VIRTEL Web Access Security” chapter of the VIRTEL Web Access Guide.
 
 VIRHT58E linename IS NOT AN OUTPUT LINE: CANNOT CONNECT termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-A scenario invoked by terminal termid has attempted to make an outbound HTTP request via the HTTP line whose external name is linename, but the line definition does not permit outbound calls.
+    A scenario invoked by terminal termid has attempted to make an outbound HTTP request via the HTTP line whose external name is linename, but the line definition does not permit outbound calls.
 Action
-Modify the definition of line linename setting the “Possible calls” field to 2 or 3.
+    Modify the definition of line linename setting the “Possible calls” field to 2 or 3.
 
 VIRHT59E LINE linename IS NOT OPEN: CANNOT CONNECT termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-A scenario invoked by terminal termid has attempted to make an outbound HTTP request via the HTTP line whose external name is linename, but the line is stopped.
+    A scenario invoked by terminal termid has attempted to make an outbound HTTP request via the HTTP line whose external name is linename, but the line is stopped.
 Action
-Start the line by entering the VIRTEL command: line=linename,S
+    Start the line by entering the VIRTEL command: line=linename,S
 
 VIRHT60E linename HAS NO PSEUDO TERMINALS: CANNOT CONTINUE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-No terminals are defined for the HTTP line whose external name is linename.
+    No terminals are defined for the HTTP line whose external name is linename.
 Action
-If this is a batch line then VIRTEL terminates; otherwise VIRTEL continues but the line cannot be used.
+    If this is a batch line then VIRTEL terminates; otherwise VIRTEL continues but the line cannot be used.
 
-
-VIRHT61E linename A PARAMETER IS NEEDED FOR PREFIX $LINE$ FOR TRANSACTION
-ttttttt (xxxxx)
- 
+VIRHT61E linename A PARAMETER IS NEEDED FOR PREFIX $LINE$ FOR TRANSACTION ttttttt (xxxxx)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-The parameter &luname= and his value were not specified in the URL received by VIRTEL on line linename for transaction ttttttt.
+    The parameter &luname= and his value were not specified in the URL received by VIRTEL on line linename for transaction ttttttt.
 Action
-Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
+    Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
 
-VIRHT62E kjhkjhkjhkjhkj
-
+VIRHT62E
+^^^^^^^^ 
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-The parameter &luname= and his value were not specified in the URL received by VIRTEL on line linename for transaction ttttttt.
+    The parameter &luname= and his value were not specified in the URL received by VIRTEL on line linename for transaction ttttttt.
 Action
-Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
+    Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
 
-VIRHT63E linename ERROR STARTING PSEUDO FOR PREFIX $LINE$ FOR TRANSACTION
-ttttttt (xxxxx)
-
+VIRHT63E linename ERROR STARTING PSEUDO FOR PREFIX $LINE$ FOR TRANSACTION ttttttt (xxxxx)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRHTTP
+    VIRHTTP
 Meaning
-The VTAM terminal (relay) to use for a request is already active for another session. The request was received on line linename for transaction ttttttt.
+    The VTAM terminal (relay) to use for a request is already active for another session. The request was received on line linename for transaction ttttttt.
 Action
-The request cannot be satisfied. The connection is closed. Run a /F stcname,snapmsg,all command at the console.
+    The request cannot be satisfied. The connection is closed. Run a /F stcname,snapmsg,all command at the console.
 
-3.43.   Messages VIRI9xxx
+2.43.   Messages VIRI9xxx
+=========================
 
 VIRI902W TERM=termid REQ=req RTNCD=rtncd FDBK2=fdbk2 SENSE=sense
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-VTAM error on terminal termid. The RPL request code is req, and the VTAM return codes are rtncd, fdbk2, sense.
+    VTAM error on terminal termid. The RPL request code is req, and the VTAM return codes are rtncd, fdbk2, sense.
 Action
-Refer to the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manual for an explanation of the VTAM codes.
-
+    Refer to the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manual for an explanation of the VTAM codes.
 
 VIRI903I luname(termid) RECEIVED BIND FROM applname
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0I09
+    VIR0I09
 Meaning
-The relay LU luname associated with VIRTEL terminal termid has received an SNA BIND command from partner application ACB applname. This message appears only if a terminal or line trace is active for terminal termid.
+    The relay LU luname associated with VIRTEL terminal termid has received an SNA BIND command from partner application ACB applname. This message appears only if a terminal or line trace is active for terminal termid.
 Action
-None.
+    None.
 
 VIRI904I CLEANUP: linename / applid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-Loss of session with partner LU applid on the line whose external name is linename.
+    Loss of session with partner LU applid on the line whose external name is linename.
 Action
-None.
+    None.
 
 VIRI905I luname RELEASED
-
+^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-At the request of another application (VTAM RELREQ), VIRTEL released the LU luname.
+    At the request of another application (VTAM RELREQ), VIRTEL released the LU luname.
 Action
-None.
+    None.
 
 VIRI905W LU luname (n-xxxxxx) ACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-Initialisation of LU luname associated with the line whose internal name is n-xxxxxx.
+    Initialisation of LU luname associated with the line whose internal name is n-xxxxxx.
 Action
-None.
+    None.
 
 VIRI906W LU luname (n-xxxxxx) INACTIVATED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-Inactivation of LU luname associated with the line whose internal name is n-xxxxxx.
-
+    Inactivation of LU luname associated with the line whose internal name is n-xxxxxx.
 Action
-None.
+    None.
 
 VIRI907I luname(termid) REJECTED BIND FROM applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-The relay LU luname associated with VIRTEL terminal termid received an unsolicited SNA BIND command from application applname. VIRTEL rejected the BIND because the LU was not expecting to receive a session request from applname. This can occur if a PCNE application is attempting to place an outgoing call to an LU reserved for incoming calls.
+    The relay LU luname associated with VIRTEL terminal termid received an unsolicited SNA BIND command from application applname. VIRTEL rejected the BIND because the LU was not expecting to receive a session request from applname. This can occur if a PCNE application is attempting to place an outgoing call to an LU reserved for incoming calls.
 Action
-Check that the application has specified the correct LU name. Check that “possible calls” is not set to “2” in the VIRTEL terminal definition.
+    Check that the application has specified the correct LU name. Check that “possible calls” is not set to “2” in the VIRTEL terminal definition.
 
 VIRI908S INVALID RPL
-
+^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-The VTAM SYNAD / LERAD exit was entered with an invalid recovery action return code (RTNCD) in register 0. This message is followed by a dump with abend code U0009.
+    The VTAM SYNAD / LERAD exit was entered with an invalid recovery action return code (RTNCD) in register 0. This message is followed by a dump with abend code U0009.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIRI909E UNABLE TO ACTIVATE luname (n-xxxxxx) ERROR: xx000000
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-LU luname associated with the line whose internal name is n-xxxxxx could not be activated. xx represents the ACB error code:
-•   58 : ACB already active by another application
-•   5A : ACB inactive under VTAM
+    LU luname associated with the line whose internal name is n-xxxxxx could not be activated. xx represents the ACB error code:
+    - 58 : ACB already active by another application
+    - 5A : ACB inactive under VTAM
+
 For the meaning of other codes, see the IBM VTAM Programming manual.
+
 Action
-Check that the VTAM node containing LU luname has been activated, check if the LU is not already active on another line, and that the line is correctly defined in VIRTEL.
+    Check that the VTAM node containing LU luname has been activated, check if the LU is not already active on another line, and that the line is correctly defined in VIRTEL.
 
 VIRI910I luname(termid) RECEIVED UNBIND FROM applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-The relay LU luname associated with VIRTEL terminal termid has received an SNA UNBIND command from application ACB applname. This message appears only if a terminal or line trace is active for terminal termid.
-
+    The relay LU luname associated with VIRTEL terminal termid has received an SNA UNBIND command from application ACB applname. This message appears only if a terminal or line trace is active for terminal termid.
 Action
-None.
+    None.
 
 VIRI911I luname(termid) REQUESTING SESSION WITH applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-The VIRTEL terminal termid has requested VTAM to establish a session between its associated relay LU luname and the application ACB applname. This message appears only if a terminal or line trace is active for terminal termid.
+    The VIRTEL terminal termid has requested VTAM to establish a session between its associated relay LU luname and the application ACB applname. This message appears only if a terminal or line trace is active for terminal termid.
 Action
-None.
+    None.
 
 VIRI913W VTAM SHORT ON STORAGE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-The VTAM action code supplied to the SYNAD exit indicates that there is insufficient memory to process the operation.
+    The VTAM action code supplied to the SYNAD exit indicates that there is insufficient memory to process the operation.
 Action
-VIRTEL retries the operation after 1 second.
+    VIRTEL retries the operation after 1 second.
 
 VIRI914E termid ERROR R15=xx R0=yy CONNECTING luname TO applid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-VIRTEL could not establish a session between VIRTEL LU luname and the ACB applid of a partner application. xx et yy are the hexadecimal error codes from REQSESS.
+    VIRTEL could not establish a session between VIRTEL LU luname and the ACB applid of a partner application. xx et yy are the hexadecimal error codes from REQSESS.
 Action
-If R15=00000020, activate the LU luname in VTAM, then enter a VIRTEL START command for the line. For any other value of R15, check that the application applid is active and ready to receive connections, and that the LU luname is in CONCT status.
+    If R15=00000020, activate the LU luname in VTAM, then enter a VIRTEL START command for the line. For any other value of R15, check that the application applid is active and ready to receive connections, and that the LU luname is in CONCT status.
 
 VIRI915E termid ERROR ACTIVATING luname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-VIRTEL could not establish a session between VIRTEL LU luname and the ACB of its partner application.
+    VIRTEL could not establish a session between VIRTEL LU luname and the ACB of its partner application.
 Action
-Refer to the SYSLOG. This message is normally accompanied by VTAM message IST663I which gives more information about the cause of the error.
-
+    Refer to the SYSLOG. This message is normally accompanied by VTAM message IST663I which gives more information about the cause of the error.
 
 VIRI918W RELAY luname(termid) INACTIVATED
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
 Module
-VIR0I09
+    VIR0I09
 Meaning
-VIRTEL closed the relay luname for terminal termid following inactivation of the LU by VTAM.
+    VIRTEL closed the relay luname for terminal termid following inactivation of the LU by VTAM.
 Action
-Further connections using this relay will only be possible after the LU has been reactivated under VTAM, and a VIRTEL START command has been issued for the associated line, either from the “Status of lines” screen (F9 from the configuration menu, or F10 from the sub-applications system services menu), or by the console command LINE=linename,START.
+    Further connections using this relay will only be possible after the LU has been reactivated under VTAM, and a VIRTEL START command has been issued for the associated line, either from the “Status of lines” screen (F9 from the configuration menu, or F10 from the sub-applications system services menu), or by the console command LINE=linename,START.
 
 VIRI956S NO MORE OSCORE AVAILABLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0I09
+    VIR0I09
 Meaning
-VIRTEL has insufficient memory to start a new VTAM task.
+    VIRTEL has insufficient memory to start a new VTAM task.
 Action
-Check the OSCORE parameter in the VIRTCT.
+    Check the OSCORE parameter in the VIRTCT.
 
-3.44.   Messages VIRICxxx
+2.44.   Messages VIRICxxx
+=========================
 
-VIRIC01I INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-
-
+VIRIC01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-The IMS Connect line with external name linename and internal name n-xxxxxx has been initialised.
+    The IMS Connect line with external name linename and internal name n-xxxxxx has been initialised.
 Action
-None.
+    None.
 
 VIRIC04I LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-The IMS Connect line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The IMS Connect line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
-
+    None.
 
 VIRIC27E linename IS REJECTED AT ENTRY POINT epname
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-VIRTEL was unable to start the IMS Connect line whose external name is linename because the entry point epname specified on the line definition does not exist.
+    VIRTEL was unable to start the IMS Connect line whose external name is linename because the entry point epname specified on the line definition does not exist.
 Action
-Correct the entry point name specified in the line definition.
+    Correct the entry point name specified in the line definition.
 
 VIRIC28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-VIRTEL selected entry point epname for an incoming call on the IMS Connect line whose external name is linename, because the call matched the rule rulename.
+    VIRTEL selected entry point epname for an incoming call on the IMS Connect line whose external name is linename, because the call matched the rule rulename.
 Action
-None.
+    None.
 
 VIRIC29I linename HAS NO MORE PSEUDO TERMINALS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-There are no more terminals associated with the IMS Connect line whose external name is linename.
+    There are no more terminals associated with the IMS Connect line whose external name is linename.
 Action
-Check the definition of the line. Add more terminals if necessary.
+    Check the definition of the line. Add more terminals if necessary.
 
 VIRIC51I linename CONNECTION STARTING ON termname TO ENTRY POINT 'epname' TRANSACTION 'tranname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-VIRTEL has received a request from IMS Connect on the line with external name linename using terminal termname. The request is being processed by transaction tranname in entry point epname.
+    VIRTEL has received a request from IMS Connect on the line with external name linename using terminal termname. The request is being processed by transaction tranname in entry point epname.
 Action
-None.
+    None.
 
 VIRIC52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
-
+    VIR0ICON
 Meaning
-Terminal termname has been disconnected from the IMS Connect line whose external name is linename.
+    Terminal termname has been disconnected from the IMS Connect line whose external name is linename.
 Action
-None.
+    None.
 
 VIRIC53E linename ENTRY POINT 'epname' WAS NOT FOUND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-VIRTEL received a request on the IMS Connect line whose external name is linename. The request could not be processed because the entry point epname does not exist.
+    VIRTEL received a request on the IMS Connect line whose external name is linename. The request could not be processed because the entry point epname does not exist.
 Action
-Correct the entry point name specified in the line definition.
+    Correct the entry point name specified in the line definition.
 
 VIRIC54E linename IMS STATUS ERROR 'retcode' REASON 'reascode' text
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-VIRTEL attempted to start the IMS Connect line whose external name is linename. The RESUME TPIPE request was rejected by IMS Connect with return code retcode and reason code reascode. A brief explanation of the code is displayed as text if the return code and reason code are known to VIRTEL.
+    VIRTEL attempted to start the IMS Connect line whose external name is linename. The RESUME TPIPE request was rejected by IMS Connect with return code retcode and reason code reascode. A brief explanation of the code is displayed as text if the return code and reason code are known to VIRTEL.
 Action
-Check the OTMAPRM parameter in the VIRTCT. Check the IMS Connect log for error messages. If the error is NACK_RSM_TPIPE_SEC_FAILED check for ICH408I and IRR012I messages in the system log.
+    Check the OTMAPRM parameter in the VIRTCT. Check the IMS Connect log for error messages. If the error is NACK_RSM_TPIPE_SEC_FAILED check for ICH408I and IRR012I messages in the system log.
 
 VIRIC55E INVALID RULE rulename ENTRY POINT 'epname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-Rule rulename attached to an IMS Connect line specifies an unknown entry point epname.
+    Rule rulename attached to an IMS Connect line specifies an unknown entry point epname.
 Action
-Check the entry point name specified in the rule definition.
+    Check the entry point name specified in the rule definition.
 
 VIRIC56W linename IS REQUESTING CLOSE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-IMS Connect is requesting termination of the RESUME TPIPE connection on the IMS Connect line whose external name is linename.
+    IMS Connect is requesting termination of the RESUME TPIPE connection on the IMS Connect line whose external name is linename.
 Action
-None.
-
+    None.
 
 VIRIC57E linename IN ENTRY POINT 'epname', THE TRANSACTION 'tranname' WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0ICON
+    VIR0ICON
 Meaning
-VIRTEL received a request on the IMS Connect line whose external name is linename. The request header specified transaction name tranname. The request could not be processed because the entry point epname does not contain a transaction whose external name is tranname, nor does it contain a default transaction whose external name is the same as the entry point name.
+    VIRTEL received a request on the IMS Connect line whose external name is linename. The request header specified transaction name tranname. The request could not be processed because the entry point epname does not contain a transaction whose external name is tranname, nor does it contain a default transaction whose external name is the same as the entry point name.
 Action
-Correct the transaction name specified by the calling IMS program. Alternatively, in entry point epname add a transaction named either tranname or epname.
+    Correct the transaction name specified by the calling IMS program. Alternatively, in entry point epname add a transaction named either tranname or epname.
 
-3.45.   Messages VIRIExxx
+2.45.   Messages VIRIExxx
+=========================
 
 VIRIE01I INVERSE PCNE INITIALISATION FOR linename (n-xxxxxx)
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IE
+    VIR00IE
 Meaning
-The AntiPCNE line with external name linename and internal name n-xxxxxx has been initialised.
+    The AntiPCNE line with external name linename and internal name n-xxxxxx has been initialised.
 Action
-None.
+    None.
 
 VIRIE02I termid luname CONNECTED TO applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IE
+    VIR00IE
 Meaning
-An SNA session has been established between the relay LU luname (associated with the AntiPCNE terminal termid) and the partner application applname.
+    An SNA session has been established between the relay LU luname (associated with the AntiPCNE terminal termid) and the partner application applname.
 Action
-None.
+    None.
 
 VIRIE03I termid luname DISCONNECTED BY applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IE
+    VIR00IE
 Meaning
-Partner application applname has terminated its SNA session with the relay LU luname associated with the AntiPCNE terminal termid.
+    Partner application applname has terminated its SNA session with the relay LU luname associated with the AntiPCNE terminal termid.
 Action
-None.
-
+    None.
 
 VIRIE04I PCNE LINE linename WAS STOPPED
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR00IE
+    VIR00IE
 Meaning
-The AntiPCNE line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The AntiPCNE line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRIE05I termid RELAY CHANGED FROM oldlu TO newlu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IE
+    VIR00IE
 Meaning
-The terminal termid attached to an AntiPCNE line was previously active using relay LU name oldlu. Following an update to the definition and a restart of the AntiPCNE line, the terminal was restarted with a new relay LU name newlu.
+    The terminal termid attached to an AntiPCNE line was previously active using relay LU name oldlu. Following an update to the definition and a restart of the AntiPCNE line, the terminal was restarted with a new relay LU name newlu.
 Action
-None.
+    None.
 
 VIRIE45I termid CALL CLEARED BY VIRTEL CAUSE=xx DIAG=yy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IE
+    VIR00IE
 Meaning
-VIRTEL terminated the call on AntiPCNE terminal termid. xx and yy are the cause and diagnostic codes generated by VIRTEL. The following codes are possible:
-•   Cause=00 Diag=00 : Call was terminated by local PCNE application
-•   Cause=13 Diag=81 : Call could not be connected to the local PCNE application
-•   Cause=xx Diag=yy : Error communicating with local PCNE application (xx,yy = VTAM RTNCD/FDBK codes)
+    VIRTEL terminated the call on AntiPCNE terminal termid. xx and yy are the cause and diagnostic codes generated by VIRTEL. The following codes are possible:
+
+    - Cause=00 Diag=00 : Call was terminated by local PCNE application
+    - Cause=13 Diag=81 : Call could not be connected to the local PCNE application
+    - Cause=xx Diag=yy : Error communicating with local PCNE application (xx,yy = VTAM RTNCD/FDBK codes)
 
 Action
-For Cause=00, Diag=00: None. For other codes, examine preceding error messages to determine the cause.
+    For Cause=00, Diag=00: None. For other codes, examine preceding error messages to determine the cause.
 
 VIRIE52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IE
+    VIR00IE
 Meaning
-Terminal termname disconnected from the AntiPCNE line whose external name is linename.
+    Terminal termname disconnected from the AntiPCNE line whose external name is linename.
 Action
-None.
+    None.
 
-3.46.   Messages VIRIFxxx
- 
+2.46.   Messages VIRIFxxx
+========================= 
 
 VIRIF01I INVERSE FASTC INITIALISATION FOR linename (n-xxxxxx)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IF
+    VIR00IF
 Meaning
-The AntiFastConnect line with external name linename and internal name n-xxxxxx has been initialised..
+    The AntiFastConnect line with external name linename and internal name n-xxxxxx has been initialised..
 Action
-None.
+    None.
 
 VIRIF02I linename (n-xxxxxx) CONNECTED TO ctcpname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IF
+    VIR00IF
 Meaning
-The AntiFastConnect line with external name linename and internal name n-xxxxxx has established a connection with the partner CTCP ctcpname.
+    The AntiFastConnect line with external name linename and internal name n-xxxxxx has established a connection with the partner CTCP ctcpname.
 Action
-None.
+    None.
 
 VIRIF03I linename (n-xxxxxx) DISCONNECTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IF
+    VIR00IF
 Meaning
-The connection between the AntiFastConnect line with external name linename and internal name n-xxxxxx has been terminated by the partner CTCP.
+    The connection between the AntiFastConnect line with external name linename and internal name n-xxxxxx has been terminated by the partner CTCP.
 Action
-None.
+    None.
 
 VIRIF04I FASTC LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IF
+    VIR00IF
 Meaning
-The AntiFastConnect line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The AntiFastConnect line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRIF42I FASTC : UNSUPPORTED COMMAND = xx ON MCH linename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IF
-
+    VIR00IF
 Meaning
-A packet received from the partner CTCP is of unknown type. xx represents the hexadecimal value of the first byte of the packet, linename represents the external name of the AntiFastConnect line on which the incident occurred.
+    A packet received from the partner CTCP is of unknown type. xx represents the hexadecimal value of the first byte of the packet, linename represents the external name of the AntiFastConnect line on which the incident occurred.
 Action
-Obtain a SNAP. Contact technical support if the incident persists.
+    Obtain a SNAP. Contact technical support if the incident persists.
 
 VIRIF52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IF
+    VIR00IF
 Meaning
-Terminal termname disconnected from the AntiFastConnect line with external name linename.
+    Terminal termname disconnected from the AntiFastConnect line with external name linename.
 Action
-None.
+    None.
 
-3.47.   Messages VIRIGxxx
+2.47.   Messages VIRIGxxx
+=========================
 
 VIRIG01I INVERSE GATE INITIALISATION FOR linename (n-xxxxxx)
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-The AntiGATE line with external name linename and internal name n-xxxxxx has been initialised.
+    The AntiGATE line with external name linename and internal name n-xxxxxx has been initialised.
 Action
-None.
+    None.
 
 VIRIG02I n-xxxxxx luname CONNECTED TO applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-An SNA session has been established between the partner CTCP application applname and the VIRTEL MCH LU luname for the AntiGATE line whose internal name is n-xxxxxx.
-Action
-None.
+    An SNA session has been established between the partner CTCP application applname and the VIRTEL MCH LU luname for the AntiGATE line whose internal name is n-xxxxxx.
+Action  
+    None.
 
 VIRIG03I n-xxxxxx luname DISCONNECTED BY applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-The partner CTCP application applname has terminated its SNA session with the VIRTEL MCH LU luname for the AntiGATE line whose internal name is n-xxxxxx.
-
+    The partner CTCP application applname has terminated its SNA session with the VIRTEL MCH LU luname for the AntiGATE line whose internal name is n-xxxxxx.
 Action
-None.
+    None.
 
 VIRIG04I n-xxxxxx GATE LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-The AntiGATE line with external name linename and internal name n-xxxxxx was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The AntiGATE line with external name linename and internal name n-xxxxxx was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRIG05I n-xxxxxx(linename) LOCAL LU NAME CHANGED FROM oldlu TO newlu
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-The AntiGATE line with external name linename and internal name n-xxxxxx was previously active using MCH name oldlu. Following an update of the field “Local ident” in the line definition and a restart of the line, the MCH name is now newlu.
+    The AntiGATE line with external name linename and internal name n-xxxxxx was previously active using MCH name oldlu. Following an update of the field “Local ident” in the line definition and a restart of the line, the MCH name is now newlu.
 Action
-None.
+    None.
 
 VIRIG12I termid luname CONNECTED TO applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-An SNA session has been established between the partner CTCP application applname and the VIRTEL CVC relay LU luname associated with the AntiGATE terminal termid. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    An SNA session has been established between the partner CTCP application applname and the VIRTEL CVC relay LU luname associated with the AntiGATE terminal termid. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRIG13I termid luname DISCONNECTED BY applname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-The partner CTCP application applname has terminated its SNA session with the VIRTEL CVC relay LU luname associated with the AntiGATE terminal termid. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    The partner CTCP application applname has terminated its SNA session with the VIRTEL CVC relay LU luname associated with the AntiGATE terminal termid. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
-
+    None.
 
 VIRIG42I n-xxxxxx(linename) RECEIVED UNSUPPORTED COMMAND xx FROM applname ON MCH luname
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR00IG
+    VIR00IG
 Meaning
-A packet received from the partner CTCP application applname is of unknown type. xx represents the hexadecimal value of the first byte of the packet, linename represents the external name of the AntiGATE line on which the incident occurred, n-xxxxxx is the internal name of the AntiGATE line, and luname is the LU name of the associated MCH.
+    A packet received from the partner CTCP application applname is of unknown type. xx represents the hexadecimal value of the first byte of the packet, linename represents the external name of the AntiGATE line on which the incident occurred, n-xxxxxx is the internal name of the AntiGATE line, and luname is the LU name of the associated MCH.
 Action
-Obtain a SNAP. Contact technical support if the incident persists.
+    Obtain a SNAP. Contact technical support if the incident persists.
 
 VIRIG43I termid luname CLEAR RECEIVED FROM LOCAL applname CAUSE=xx DIAG=yy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-The VIRTEL AntiGATE line with internal name n-xxxxxx received an X25 CLEAR command from the CTCP application applname on the control session with MCH LU luname. VIRTEL determined that the command was associated with CVC terminal termid. xx and yy are the X25 cause and diagnostic codes in hexadecimal. This message is suppressed if the cause and diagnostic codes are zero and the SILENCE parameter is specified in the VIRTCT.
+    The VIRTEL AntiGATE line with internal name n-xxxxxx received an X25 CLEAR command from the CTCP application applname on the control session with MCH LU luname. VIRTEL determined that the command was associated with CVC terminal termid. xx and yy are the X25 cause and diagnostic codes in hexadecimal. This message is suppressed if the cause and diagnostic codes are zero and the SILENCE parameter is specified in the VIRTCT.
 Action
-If the cause and diagnostic codes are zero, this indicates a normal end of call. Otherwise, use the cause and diagnostic codes to determine why the CTCP application issued the CLEAR.
+    If the cause and diagnostic codes are zero, this indicates a normal end of call. Otherwise, use the cause and diagnostic codes to determine why the CTCP application issued the CLEAR.
 
 VIRIG44I termid luname CLEAR RECEIVED FROM LOCAL applname CAUSE=xx DIAG=yy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-VIRTEL received an X25 CLEAR command from the CTCP application applname. The command was received on the data session with CVC relay LU name luname associated with AntiGATE terminal termid. xx and yy are the X25 cause and diagnostic codes in hexadecimal. This message is suppressed if the cause and diagnostic codes are zero and the SILENCE parameter is specified in the VIRTCT.
+    VIRTEL received an X25 CLEAR command from the CTCP application applname. The command was received on the data session with CVC relay LU name luname associated with AntiGATE terminal termid. xx and yy are the X25 cause and diagnostic codes in hexadecimal. This message is suppressed if the cause and diagnostic codes are zero and the SILENCE parameter is specified in the VIRTCT.
 Action
-If the cause and diagnostic codes are zero, this indicates a normal end of call. Otherwise, use the cause and diagnostic codes to determine why the CTCP application issued the CLEAR.
+    If the cause and diagnostic codes are zero, this indicates a normal end of call. Otherwise, use the cause and diagnostic codes to determine why the CTCP application issued the CLEAR.
 
 VIRIG45I n-xxxxxx(linename) CALL FROM ctcpappl CLEARED BY VIRTEL CAUSE=xx DIAG=yy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
-
+    VIR00IG
 Meaning
-VIRTEL terminated the outbound call by the CTCP application ctcpappl on the AntiGATE line whose internal name is n-xxxxxx and whose external name is linename. xx and yy are the cause and diagnostic codes generated by VIRTEL. The following codes are possible:
-•   Cause=01 Diag=E5 : Line n-xxxxxx has no available terminals which accept calls from CTCP
-•   Cause=02 Diag=E5 : Could not connect CVC LU to ctcpappl
-•   Cause=03 Diag=E5 : Error sending Call Connected packet to ctcpappl
+    VIRTEL terminated the outbound call by the CTCP application ctcpappl on the AntiGATE line whose internal name is n-xxxxxx and whose external name is linename. xx and yy are the cause and diagnostic codes generated by VIRTEL. The following codes are possible:
+    
+    - Cause=01 Diag=E5 : Line n-xxxxxx has no available terminals which accept calls from CTCP
+    - Cause=02 Diag=E5 : Could not connect CVC LU to ctcpappl
+    - Cause=03 Diag=E5 : Error sending Call Connected packet to ctcpappl
 
 Action
-For Cause=01, Diag=E5: Check the definition of the terminals associated with AntiGATE line n-xxxxxx and verify that the “Possible calls” field is set to 1 or 3. For other codes, examine preceding error messages to determine the cause.
+    For Cause=01, Diag=E5: Check the definition of the terminals associated with AntiGATE line n-xxxxxx and verify that the “Possible calls” field is set to 1 or 3. For other codes, examine preceding error messages to determine the cause.
 
 VIRIG52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00IG
+    VIR00IG
 Meaning
-Terminal termname disconnected from the AntiGATE line with external name linename.
+    Terminal termname disconnected from the AntiGATE line with external name linename.
 Action
-None.
+    None.
 
-3.48.   Messages VIRIPAxx
+2.48.   Messages VIRIPAxx
+=========================
 
 VIRIPA1I linename CONNECTING termid
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
+    VIR0PASS
 Meaning
-An incoming call on the VIRPASS/NT line whose external name is linename has been allocated to terminal termid.
+    An incoming call on the VIRPASS/NT line whose external name is linename has been allocated to terminal termid.
 Action
-None.
+    None.
 
 VIRIPA2I linename DECONNECTING termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
+    VIR0PASS
 Meaning
-Terminal termid has disconnected from the VIRPASS/NT line whose external name is linename.
+    Terminal termid has disconnected from the VIRPASS/NT line whose external name is linename.
 Action
-None.
+    None.
 
 VIRIPA3I linename ACCEPTED termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
-
+    VIR0PASS
 Meaning
-An incoming call on the VIRPASS/NT line whose external name is linename has been accepted on terminal termid.
+    An incoming call on the VIRPASS/NT line whose external name is linename has been accepted on terminal termid.
 Action
-None.
+    None.
 
 VIRIPA4I linename NO OUTPUT LINE FOUND FOR termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
+    VIR0PASS
 Meaning
-VIRTEL was unable to connect output terminal termid on the VIRPASS/NT line whose external name is linename.
+    VIRTEL was unable to connect output terminal termid on the VIRPASS/NT line whose external name is linename.
 Action
-Wait until the partner VIRNT server retries the connection. Restart the connection at the VIRNT server if necessary. Check the definition of line linename and the terminals associated with line linename.
+    Wait until the partner VIRNT server retries the connection. Restart the connection at the VIRNT server if necessary. Check the definition of line linename and the terminals associated with line linename.
 
 VIRIPA6E linename PROTOCOL ERROR - SNAP TAKEN
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
+    VIR0PASS
 Meaning
-VIRTEL received a message received on the VIRPASS/NT line whose external name is linename. The message did not contain a valid VIRPASS identifier.
+    VIRTEL received a message received on the VIRPASS/NT line whose external name is linename. The message did not contain a valid VIRPASS identifier.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIRIPA7I linename HAS NO MORE PSEUDO TERMINALS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
+    VIR0PASS
 Meaning
-There are no more terminals associated with the VIRPASS/NT line whose external name is linename.
+    There are no more terminals associated with the VIRPASS/NT line whose external name is linename.
 Action
-Check the definition of the line. Add more terminals if necessary.
+    Check the definition of the line. Add more terminals if necessary.
 
 VIRIPA8E linename UNKNOWN CORRELATOR xxxxxxxx IN COMMAND c
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
+    VIR0PASS
 Meaning
-VIRTEL received a message with an unknown correlator on the VIRPASS/NT line whose external name is linename.
+    VIRTEL received a message with an unknown correlator on the VIRPASS/NT line whose external name is linename.
 Action
-Contact technical support.
+    Contact technical support.
 
 
 VIRIPA9I INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRPASS
+    VIRPASS
 Meaning
-The VIRPASS/NT line with external name linename and internal name n-xxxxxx has been initialised.
+    The VIRPASS/NT line with external name linename and internal name n-xxxxxx has been initialised.
 Action
-None.
+    None.
 
-3.49.   Messages VIRNAxxx
+2.49.   Messages VIRNAxxx
+=========================
 
-VIRNA01I NATIVE IP INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-
-
+VIRNA01I NATIVE IP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-The line with external name linename and internal name n-xxxxxx has been initialised with the TCP/IP NATIVE protocol.
+    The line with external name linename and internal name n-xxxxxx has been initialised with the TCP/IP NATIVE protocol.
 Action
-None.
+    None.
 
 VIRNA04I NATIVE IP LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-The line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRNA05E linename UNDEFINED PARTNER n.n.n.n:p IS CALLING m.m.m.m:q
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-VIRTEL has rejected an incoming call to a native IP line. n.n.n.n:p represents the IP address and port of the caller, m.m.m.m:q represents the called IP address and port in VIRTEL. VIRTEL rejected the call because none of the TCP/IP lines listening on address/port m.m.m.m:q specifies address n.n.n.n as partner.
+    VIRTEL has rejected an incoming call to a native IP line. n.n.n.n:p represents the IP address and port of the caller, m.m.m.m:q represents the called IP address and port in VIRTEL. VIRTEL rejected the call because none of the TCP/IP lines listening on address/port m.m.m.m:q specifies address n.n.n.n as partner.
 Action
-Define an XOT line specifying m.m.m.m:q in the “Local ident” field and n.n.n.n:p in the “Remote ident” field
-
+    Define an XOT line specifying m.m.m.m:q in the “Local ident” field and n.n.n.n:p in the “Remote ident” field
 
 VIRNA06I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRNATV
+    VIRNATV
 Meaning
-The IP address and port number of the line with external name linename and internal name n-xxxxxx is treated as sharable with other TCP/IP lines as a result of the SHAREDA=Y parameter specified in the definition of line linename.
+    The IP address and port number of the line with external name linename and internal name n-xxxxxx is treated as sharable with other TCP/IP lines as a result of the SHAREDA=Y parameter specified in the definition of line linename.
 Action
-None.
+    None.
 
 VIRNA07I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-The IP address and port number of the line with external name linename and internal name n-xxxxxx is shared with another TCP/IP line. VIRTEL found the same address and port number specified in the definition of another line. Neither SHAREDA nor UNIQUEP were specified in the definition of line linename.
+    The IP address and port number of the line with external name linename and internal name n-xxxxxx is shared with another TCP/IP line. VIRTEL found the same address and port number specified in the definition of another line. Neither SHAREDA nor UNIQUEP were specified in the definition of line linename.
 Action
-None.
+    None.
 
 VIRNA26E linename HAS NO PSEUDO TERMINALS: CANNOT CONTINUE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-No terminals are defined for the native IP line whose external name is linename.
+    No terminals are defined for the native IP line whose external name is linename.
 Action
-VIRTEL continues but the line cannot be used. Define the associated terminals, then stop and start the line.
+    VIRTEL continues but the line cannot be used. Define the associated terminals, then stop and start the line.
 
 VIRNA27E linename IS REJECTED AT ENTRY POINT epname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-VIRTEL received an incoming call on the line whose external name is linename, but the entry point epname specified on the line definition does not exist.
+    VIRTEL received an incoming call on the line whose external name is linename, but the entry point epname specified on the line definition does not exist.
 Action
-Check the definition of the line.
+    Check the definition of the line.
 
 VIRNA28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
-
+    VIRNATV
 Meaning
-VIRTEL selected entry point epname for an incoming call on the line whose external name is linename, because the call matched the rule rulename.
+    VIRTEL selected entry point epname for an incoming call on the line whose external name is linename, because the call matched the rule rulename.
 Action
-None.
+    None.
 
 VIRNA51I linename CONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-An incoming call on the line whose external name is linename has been allocated to terminal termname. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    An incoming call on the line whose external name is linename has been allocated to terminal termname. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRNA52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-Terminal termname has been disconnected from the line whose external name is linename.
+    Terminal termname has been disconnected from the line whose external name is linename.
 Action
-None.
+    None.
 
 VIRNA53E linename HAS NO MORE PSEUDO TERMINALS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-There are no more terminals associated with the line whose external name is linename.
+    There are no more terminals associated with the line whose external name is linename.
 Action
-Check the definition of the line. Add more terminals if necessary.
+    Check the definition of the line. Add more terminals if necessary.
 
 VIRNA55E INVALID RULE rulename ENTRY POINT 'epname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-Rule rulename attached to a native IP line specifies an unknown entry point epname.
+    Rule rulename attached to a native IP line specifies an unknown entry point epname.
 Action
-Check the entry point name specified in the rule definition.
-
+    Check the entry point name specified in the rule definition.
 
 VIRNA98E linename ERROR errcode RECEIVING FROM SOCKET sockno
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRNATV
+    VIRNATV
 Meaning
-An error occurred when receiving a message from the native IP line whose external name is linename. errcode is an error code whose meaning is:
-•   00000001 : No session exists for this line.
-•   00000002 : Unable to identify incoming message with an existing session.
-•   00000003 : No more pseudo terminals, or line not linked to TCP.
-•   00000004 : TCP/IP receive error; see preceding message VIRT923E or VIRT924E.
-•   00000005 : Socket is closed.
-•   00000006 : A message received on the line does not conform to the VIRTEL native IP protocol. The message length is invalid or exceeds the maximum packet size.
+    An error occurred when receiving a message from the native IP line whose external name is linename. errcode is an error code whose meaning is:
+    - 00000001 : No session exists for this line.
+    - 00000002 : Unable to identify incoming message with an existing session.
+    - 00000003 : No more pseudo terminals, or line not linked to TCP.
+    - 00000004 : TCP/IP receive error; see preceding message VIRT923E or VIRT924E.
+    - 00000005 : Socket is closed.
+    - 00000006 : A message received on the line does not conform to the VIRTEL native IP protocol. The message length is invalid or exceeds the maximum packet size.
 
 Action
-If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table. Determine whether the partner sent an invalid message, and if so, perform the appropriate diagnostic procedures. Otherwise contact technical support.
+    If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table. Determine whether the partner sent an invalid message, and if so, perform the appropriate diagnostic procedures. Otherwise contact technical support.
 
 VIRNA99I linename ERROR errcode SENDING TO SOCKET socknum
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRNATV
+    VIRNATV
 Meaning
-An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
-•   00000001 : Invalid pseudo terminal.
-•   00000002 : Message not identified with an active session.
-•   00000003 : Line not linked to TCP stack.
-•   00000004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.
-•   00000005 : VIRTEL internal task dispatching error.
-•   00000006 : Session cleared before message could be sent.
+    An error occurred when sending a message to the native IP line whose external name is linename. errcode is an error code whose meaning is:
+    - 00000001 : Invalid pseudo terminal.
+    - 00000002 : Message not identified with an active session.
+    - 00000003 : Line not linked to TCP stack.
+    - 00000004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.
+    - 00000005 : VIRTEL internal task dispatching error.
+    - 00000006 : Session cleared before message could be sent.
 
 Action
-If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
+    If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
 
-3.50.   Messages VIRP1xxx
+2.50.   Messages VIRP1xxx
+=========================
 
 VIRP121E PAGE NOT FOUND FOR termid ENTRY POINT 'epname' SCENARIO 'scenname' DIRECTORY 'tranid'(dirname) NAME 'filename' URL'url'
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0P12
+    VIR0P12
 Meaning
-The scenario scenname invoked from terminal termid requested a file named filename which does not exist. dirname is the name of the current VIRTEL directory and tranid is the external name of the corresponding transaction which
-
-belongs to entry point epname. VIRTEL sent a 404 NOT FOUND reply to the terminal with the text “Failed on missing page:filename”.
+    The scenario scenname invoked from terminal termid requested a file named filename which does not exist. dirname is the name of the current VIRTEL directory and tranid is the external name of the corresponding transaction which belongs to entry point epname. VIRTEL sent a 404 NOT FOUND reply to the terminal with the text “Failed on missing page:filename”.
 Action
-Change the scenario to specify the correct file name.
+    Change the scenario to specify the correct file name.
 
-VIRP122E VARIABLE NOT FOUND FOR termid ENTRY POINT 'epname' SCENARIO
-'scenname' DIRECTORY 'tranid'(dirname) NAME 'varname' URL'url'
-
+VIRP122E VARIABLE NOT FOUND FOR termid ENTRY POINT 'epname' SCENARIO 'scenname' DIRECTORY 'tranid'(dirname) NAME 'varname' URL'url'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0P12
+    VIR0P12
 Meaning
-The scenario scenname invoked from terminal termid requested a VIRTEL variable named varname which does not exist. dirname is the name of the current VIRTEL directory and tranid is the external name of the corresponding transaction which belongs to entry point epname. VIRTEL sent a 404 NOT FOUND reply to the terminal with the text “Failed on missing variable:varname”.
+    The scenario scenname invoked from terminal termid requested a VIRTEL variable named varname which does not exist. dirname is the name of the current VIRTEL directory and tranid is the external name of the corresponding transaction which belongs to entry point epname. VIRTEL sent a 404 NOT FOUND reply to the terminal with the text “Failed on missing variable:varname”.
 Action
-Change the scenario to specify the correct variable name.
+    Change the scenario to specify the correct variable name.
 
-VIRP123E SCENARIO NOT FOUND FOR termid ENTRY POINT 'epname' DIRECTORY
-'dirname’ NAME 'filename' URL 'url'
-
+VIRP123E SCENARIO NOT FOUND FOR termid ENTRY POINT 'epname' DIRECTORY 'dirname’ NAME 'filename' URL 'url'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0P12
+    VIR0P12
 Meaning
-The scenario filename (filetype .390) invoked from terminal termid for URL url was not found in the scenario directory dirname defined in entry point epname.
+    The scenario filename (filetype .390) invoked from terminal termid for URL url was not found in the scenario directory dirname defined in entry point epname.
 Action
-Use Virtel Studio to upload the scenario to the directory specified by the entry point.
+    Use Virtel Studio to upload the scenario to the directory specified by the entry point.
 
 VIRP1251I termid CONNECTED TO "epname"
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0P12
+    VIR0P12
 Meaning
-An input message from terminal termid has been assigned to entry point epname.
+    An input message from terminal termid has been assigned to entry point epname.
 Action
-None.
+    None.
 
-3.51.   Messages VIRPAxxx
+2.51.   Messages VIRPAxxx
+=========================
 
 VIRPA54E termid INVALID REQUEST ON linename FROM CALLER ipaddr:port ENTRY POINT 'epname' TRANSACTION OR SERVER 'servid'
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PASS
-
+    VIR0PASS
 Meaning
-VIRTEL received an incoming call on terminal termid associated with the VIRPASS line whose external name is linename. The call originated from IP address ipaddr port port. The service requested was servid. But the chosen entry point epname contains no transaction whose external name is servid, nor does it contain a default transaction capable of invoking the external server named servid.
+    VIRTEL received an incoming call on terminal termid associated with the VIRPASS line whose external name is linename. The call originated from IP address ipaddr port port. The service requested was servid. But the chosen entry point epname contains no transaction whose external name is servid, nor does it contain a default transaction capable of invoking the external server named servid.
 Action
-Check that entry point epname has been defined in accordance with the documentation for setting up the VIRTEL Videotex Plugin.
+    Check that entry point epname has been defined in accordance with the documentation for setting up the VIRTEL Videotex Plugin.
 
-3.52.   Messages VIRPExxx
+2.52.   Messages VIRPExxx
+=========================
 
 VIRPE27E termid IS REJECTED AT ENTRY POINT epname
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR00PE
+    VIR00PE
 Meaning
-VIRTEL received an incoming call from terminal termid, but the requested entry point epname does not exist.
+    VIRTEL received an incoming call from terminal termid, but the requested entry point epname does not exist.
 Action
-Check the entry point specified in the logdata (for SNA) or in the call user data (for X25).
+    Check the entry point specified in the logdata (for SNA) or in the call user data (for X25).
 
 VIRPE52I termid DISCONNECTED AFTER nn MINUTES
-
+---------------------------------------------
 Module
-VIR00PE
+    VIR00PE
 Meaning
-Terminal termid was connected to an application and has disconnected after nn minutes of connection time.
+    Terminal termid was connected to an application and has disconnected after nn minutes of connection time.
 Action
-None.
+    None.
 
-3.53.   Messages VIRPFxxx
+2.53.   Messages VIRPFxxx
+=========================
 
-VIRPF01I INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-
-
+VIRPF01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-The line with external name linename and internal name n-xxxxxx has been initialised with the PREFIXED protocol.
+    The line with external name linename and internal name n-xxxxxx has been initialised with the PREFIXED protocol.
 Action
-None.
-
+    None.
 
 VIRPF04I LINE linename WAS STOPPED
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-The line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRPF27E linename IS REJECTED AT ENTRY POINT epname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-VIRTEL received an incoming call on the line whose external name is linename, but the entry point epname specified on the line definition does not exist.
+    VIRTEL received an incoming call on the line whose external name is linename, but the entry point epname specified on the line definition does not exist.
 Action
-Check the definition of the line.
+    Check the definition of the line.
 
 VIRPF28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-VIRTEL selected entry point epname for an incoming call on the line whose external name is linename, because the call matched the rule rulename. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    VIRTEL selected entry point epname for an incoming call on the line whose external name is linename, because the call matched the rule rulename. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRPF29I linename HAS NO MORE PSEUDO TERMINALS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-There are no more terminals associated with the line whose external name is linename.
+    There are no more terminals associated with the line whose external name is linename.
 Action
-Check the definition of the line. Add more terminals if necessary.
+    Check the definition of the line. Add more terminals if necessary.
 
 VIRPF51I linename CONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
-
+    VIR0PRF
 Meaning
-An incoming call on the line whose external name is linename has been allocated to terminal termname. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    An incoming call on the line whose external name is linename has been allocated to terminal termname. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRPF52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-Terminal termname has been disconnected from the line whose external name is linename. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    Terminal termname has been disconnected from the line whose external name is linename. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
-VIRPF54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY
-'dirname'
-
+VIRPF54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY 'dirname'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-VIRTEL received a request on the line whose external name is linename. The requested directory path dirname does not exist under the entry point epname.
+    VIRTEL received a request on the line whose external name is linename. The requested directory path dirname does not exist under the entry point epname.
 Action
-Check the definition of the entry point epname. Ensure that there is a type 4 transaction with external name dirname.
+    Check the definition of the entry point epname. Ensure that there is a type 4 transaction with external name dirname.
 
 VIRPF55E INVALID RULE rulename ENTRY POINT 'epname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-Rule rulename attached to an MQ line specifies an unknown entry point epname.
+    Rule rulename attached to an MQ line specifies an unknown entry point epname.
 Action
-Check the entry point name specified in the rule definition.
+    Check the entry point name specified in the rule definition.
 
 VIRPF99I linename MESSAGE RECEIVED FROM SOCKET socknum
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-Input data has been received by the line whose external name is linename.
+    Input data has been received by the line whose external name is linename.
 Action
-None.
-
+    None.
 
 VIRPF99I linename SEND TO SOCKET socknum
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0PRF
+    VIR0PRF
 Meaning
-Output data has been sent to the line whose external name is linename. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    Output data has been sent to the line whose external name is linename. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
-3.54.   Messages VIRPSxxx
+2.54.   Messages VIRPSxxx
+=========================
 
 VIRPS01I INITIALISATION FOR linename (n-xxxxxx), VERSION nn.nn
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-The VIRPESIT line with external name linename and internal name n-xxxxxx has been initialised.
+    The VIRPESIT line with external name linename and internal name n-xxxxxx has been initialised.
 Action
-None.
+    None.
 
 VIRPS02I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-Terminal termname has been disconnected from the VIRPESIT line whose external name is linename.
+    Terminal termname has been disconnected from the VIRPESIT line whose external name is linename.
 Action
-None.
+    None.
 
 VIRPS04I VIRPESIT LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-VIRPESIT line with external name linename was stopped, either by console command, or by setting the “Possible calls” field to 0 in the line definition.
+    VIRPESIT line with external name linename was stopped, either by console command, or by setting the “Possible calls” field to 0 in the line definition.
 Action
-None.
-
+    None.
 
 VIRPS06E linename HAS NO PSEUDO TERMINALS: CANNOT CONTINUE
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-No terminals are defined for the VIRPESIT line whose external name is linename.
+    No terminals are defined for the VIRPESIT line whose external name is linename.
 Action
-VIRTEL continues but the line cannot be used. Define the associated terminals, then stop and start the line.
+    VIRTEL continues but the line cannot be used. Define the associated terminals, then stop and start the line.
 
 VIRPS07I linename HAS NO MORE PSEUDO TERMINALS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-There are no more terminals associated with the VIRPESIT line whose external name is linename.
+    There are no more terminals associated with the VIRPESIT line whose external name is linename.
 Action
-Check the line definition. Add more terminals if necessary.
+    Check the line definition. Add more terminals if necessary.
 
 VIRPS08E linename PSEUDO termname LOST
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-VIRTEL was unable to identify the terminal termname associated with the VIRPESIT line whose external name is linename.
+    VIRTEL was unable to identify the terminal termname associated with the VIRPESIT line whose external name is linename.
 Action
-Contact technical support.
+    Contact technical support.
 
 VIRPS11I linename PSEUDO termname RECEIVED ABORT REQUEST FROM emitter TO receiver WITH FIRST ABORT PID : pid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-VIRTEL received an abort request of type pid via terminal termname associated with the VIRPESIT line whose external name is linename. Emitter is the name of the file transfer requester and receiver is the name of the destination partner.
+    VIRTEL received an abort request of type pid via terminal termname associated with the VIRPESIT line whose external name is linename. Emitter is the name of the file transfer requester and receiver is the name of the destination partner.
 Action
-The file transfer terminates. Inspect the emitter logs to determine why the partner application terminated the transfer.
+    The file transfer terminates. Inspect the emitter logs to determine why the partner application terminated the transfer.
 
 VIRPS12I linename RECEIVED ABORT REQUEST FOR termname (partnerid)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
-
+    VIRPESIT
 Meaning
-VIRTEL received an abort request via the VIRPESIT line whose external name is linename. termname is the terminal name and partnerid is the name of the destination partner.
+    VIRTEL received an abort request via the VIRPESIT line whose external name is linename. termname is the terminal name and partnerid is the name of the destination partner.
 Action
-The file transfer terminates. Inspect the logs of the file transfer application to determine why the application terminated the transfer.
+    The file transfer terminates. Inspect the logs of the file transfer application to determine why the application terminated the transfer.
 
-VIRPS13I linename OUTBOUND CONNECTION STARTING ON termname
-VIRPS13I linename CLIENT 'requesterid' SERVER 'serverid' PROTOCOL 'protocol'
-
+VIRPS13I linename OUTBOUND CONNECTION STARTING ON termname | linename CLIENT 'requesterid' SERVER 'serverid' PROTOCOL 'protocol'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
-Meaning
-VIRTEL is starting an outbound file transfer session via the VIRPESIT line whose external name is linename. termname is the terminal name, requesterid is the name of the requesting partner defined in the file transfer application, serverid is the name of the destination partner, and protocol is the protocol name (for example, PESIT).
+    VIRPESIT
+Meaning 
+    VIRTEL is starting an outbound file transfer session via the VIRPESIT line whose external name is linename. termname is the terminal name, requesterid is the name of the requesting partner defined in the file transfer application, serverid is the name of the destination partner, and protocol is the protocol name (for example, PESIT).
 Action
-None.
+    None.
 
-VIRPS14I linename INBOUND CONNECTION STARTING ON termname TO ENTRY POINT
-'epname' TRANSACTION 'tranid'
-VIRPS14I linename CLIENT ''requesterid' SERVER 'serverid' PROTOCOL 'protocol'
-
+VIRPS14I linename INBOUND CONNECTION STARTING ON termname TO ENTRY POINT 'epname' TRANSACTION 'tranid' | linename CLIENT ''requesterid' SERVER 'serverid' PROTOCOL 'protocol'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-VIRTEL is has received an inbound request for a file transfer session via terminal termname on the VIRPESIT line whose external name is linename. The request has been assigned to entry point epname and transaction tranid. requesterid is the name of the requesting partner defined in the file transfer application, serverid is the name of the destination partner, and protocol is the protocol name (for example, PESIT).
+    VIRTEL is has received an inbound request for a file transfer session via terminal termname on the VIRPESIT line whose external name is linename. The request has been assigned to entry point epname and transaction tranid. requesterid is the name of the requesting partner defined in the file transfer application, serverid is the name of the destination partner, and protocol is the protocol name (for example, PESIT).
 Action
-None.
+    None.
 
-VIRPS15I linename RECEIVED REJECT CONNECT REQUEST FROM 'serverid' TO
-'requesterid' WITH DIAGNOSTIC :'hexcode' ('deccode')
-
+VIRPS15I linename RECEIVED REJECT CONNECT REQUEST FROM 'serverid' TO 'requesterid' WITH DIAGNOSTIC :'hexcode' ('deccode')
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-A file transfer request via the VIRPESIT line whose external name is linename has been rejected by the partner file transfer application. serverid is the name of the destination partner, and requesterid is the name of the requesting partner. hexcode is the hexadecimal abort code and deccode is the decimal abort code.
+    A file transfer request via the VIRPESIT line whose external name is linename has been rejected by the partner file transfer application. serverid is the name of the destination partner, and requesterid is the name of the requesting partner. hexcode is the hexadecimal abort code and deccode is the decimal abort code.
 Action
-Inspect the logs of the file transfer application to determine why the application terminated the transfer. Refer to the file transfer application’s protocol documentation to determine the meaning of the abort codes.
+    Inspect the logs of the file transfer application to determine why the application terminated the transfer. Refer to the file transfer application’s protocol documentation to determine the meaning of the abort codes.
 
-
-VIRPS16I linename RECEIVED REJECT CONNECT REQUEST FOR 'termname' WITH
-DIAGNOSTIC :'hexcode' ('deccode')
- 
+VIRPS16I linename RECEIVED REJECT CONNECT REQUEST FOR 'termname' WITH DIAGNOSTIC :'hexcode' ('deccode')
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-A file transfer request via the VIRPESIT line whose external name is linename has been rejected by the partner file transfer application. termname is the terminal name, hexcode is the hexadecimal abort code and deccode is the decimal abort code.
+    A file transfer request via the VIRPESIT line whose external name is linename has been rejected by the partner file transfer application. termname is the terminal name, hexcode is the hexadecimal abort code and deccode is the decimal abort code.
 Action
-Inspect the logs of the file transfer application to determine why the application terminated the transfer. Refer to the file transfer application’s protocol documentation to determine the meaning of the abort codes.
+    Inspect the logs of the file transfer application to determine why the application terminated the transfer. Refer to the file transfer application’s protocol documentation to determine the meaning of the abort codes.
 
 VIRPS17I linename CONNECTION ENDING FOR 'termname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-An inbound file transfer session via terminal termname on the VIRPESIT line whose external name is linename has been terminated by the partner file transfer application.
+    An inbound file transfer session via terminal termname on the VIRPESIT line whose external name is linename has been terminated by the partner file transfer application.
 Action
-None.
+    None.
 
 VIRPS18I linename CONNECTION ENDING FOR 'termname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-An outbound file transfer session via terminal termname on the VIRPESIT line whose external name is linename has been terminated by the partner file transfer application.
+    An outbound file transfer session via terminal termname on the VIRPESIT line whose external name is linename has been terminated by the partner file transfer application.
 Action
-None.
+    None.
 
 VIRPS28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-VIRTEL chose entry point epname for an incoming call on the VIRPESIT line whose external name is linename, because the call matched the rule named rulename. ipaddr:port is the IP address and port number of the calling application.
+    VIRTEL chose entry point epname for an incoming call on the VIRPESIT line whose external name is linename, because the call matched the rule named rulename. ipaddr:port is the IP address and port number of the calling application.
 Action
-None.
-
+    None.
 
 VIRPS29E INVALID RULE rulename ENTRY POINT 'epname'
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-Rule rulename used by a VIRPESIT line specifies a non-existent entry point epname.
+    Rule rulename used by a VIRPESIT line specifies a non-existent entry point epname.
 Action
-Check the entry point name specified in the rule definition.
+    Check the entry point name specified in the rule definition.
 
 VIRPS50E linename CANNOT CONNECT termname TO CALLER ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request originated from IP address ipaddr  and port number port and the VIRTEL terminal  name is termname.     The request could not be processed because the entry point was not valid or there was no transaction definition corresponding to the request.
+    An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request originated from IP address ipaddr  and port number port and the VIRTEL terminal  name is termname.     The request could not be processed because the entry point was not valid or there was no transaction definition corresponding to the request.
 Action
-Refer to subsequent message displayed on the console (VIRPS52E through VIRPS57E) for detailed explanation.
+    Refer to subsequent message displayed on the console (VIRPS52E through VIRPS57E) for detailed explanation.
 
 VIRPS51I linename PSEUDO termname CALLING ipaddr:port (servname)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-VIRTEL is sending an outbound session request to the file transfer application at IP address ipaddr and port number port. linename is the external name of the VIRPESIT line, termname is the terminal name, and servname is the name of the external server.
+    VIRTEL is sending an outbound session request to the file transfer application at IP address ipaddr and port number port. linename is the external name of the VIRPESIT line, termname is the terminal name, and servname is the name of the external server.
 Action
-None.
+    None.
 
 VIRPS52E linename ENTRY POINT 'epname' WAS NOT FOUND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request could not be processed because the default entry point name specified in the line definition does not exist.
+    An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request could not be processed because the default entry point name specified in the line definition does not exist.
 Action
-Correct the default entry point name specified in the line definition.
+    Correct the default entry point name specified in the line definition.
 
 VIRPS53E linename DEFAULT ENTRY POINT MISSING OR INVALID
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
-
+    VIRPESIT
 Meaning
-An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request could not be processed because it did not match any rule and the default entry point name specified in the line definition is blank.
+    An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request could not be processed because it did not match any rule and the default entry point name specified in the line definition is blank.
 Action
-Add a rule or specify a default entry point name in the line definition.
+    Add a rule or specify a default entry point name in the line definition.
 
 VIRPS54E linename IN ENTRY POINT 'epname', TRANSACTION 'tranid', THE SERVER 'servname' WAS NOT FOUND
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-An inbound file transfer session request was received on the VIRPESIT line whose external name is linename.       The request was assigned to entry point epname and transaction tranid. The transaction calls for a server named servname (either explicitly, or by reference to the destination partner name specified by the file transfer application), but there is no external server definition of that name.
+    An inbound file transfer session request was received on the VIRPESIT line whose external name is linename.       The request was assigned to entry point epname and transaction tranid. The transaction calls for a server named servname (either explicitly, or by reference to the destination partner name specified by the file transfer application), but there is no external server definition of that name.
 Action
-Add an external server definition for servname.
+    Add an external server definition for servname.
 
 VIRPS56E linename IN ENTRY POINT 'epname', THE TRANSACTION 'partnerid' WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request was assigned to entry point epname, but the entry point has no transaction corresponding to the destination partner partnerid.
+    An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request was assigned to entry point epname, but the entry point has no transaction corresponding to the destination partner partnerid.
 Action
-Correct the definition of the entry point, either by adding a transaction whose external name is partnerid, or by adding a default transaction whose external name is the same as the entry point name epname.
+    Correct the definition of the entry point, either by adding a transaction whose external name is partnerid, or by adding a default transaction whose external name is the same as the entry point name epname.
 
 VIRPS57E linename IN ENTRY POINT 'epname', THE EMULATION 'emtype' IS NOT SUPPORTED, SHOULD BE '$NONE$'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRPESIT
+    VIRPESIT
 Meaning
-An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request was assigned to entry point epname, but the entry point specifies emulation type emtype which is not compatible with the VIRPESIT protocol.
+    An inbound file transfer session request was received on the VIRPESIT line whose external name is linename. The request was assigned to entry point epname, but the entry point specifies emulation type emtype which is not compatible with the VIRPESIT protocol.
 Action
-Ensure that only entry points with emulation type $NONE$ are specified in the rules and in the line definition for a VIRPESIT line.
+    Ensure that only entry points with emulation type $NONE$ are specified in the rules and in the line definition for a VIRPESIT line.
 
-3.55.   Messages VIRQ9xxx
- 
+2.55.   Messages VIRQ9xxx
+========================= 
 
 VIRQ903W LINE linename HAS A SESSION STARTED WITH MQM mqmname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
+    VIR0Q09
 Meaning
-The line with external name linename has successfully connected to the message-queue manager named mqmname
+    The line with external name linename has successfully connected to the message-queue manager named mqmname
 Action
-None.
+    None.
 
 VIRQ904W linename OBJECT socknum WAITING FOR INPUT
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
+    VIR0Q09
 Meaning
-The line with external name linename is waiting for input data to arrive. Message VIRQ904W can be suppressed by the SILENCE parameter in the VIRTCT.
+    The line with external name linename is waiting for input data to arrive. Message VIRQ904W can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRQ904W linename OBJECT socknum HAS MESSAGE OF LENGTH 'hexlen' WAITING
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
+    VIR0Q09
 Meaning
-Input data has arrived on the line with external name linename. The length of the input data (in hexadecimal) is hexlen. Message VIRQ904W can be suppressed by the SILENCE parameter in the VIRTCT.
+    Input data has arrived on the line with external name linename. The length of the input data (in hexadecimal) is hexlen. Message VIRQ904W can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRQ912W linename OBJECT socknum STARTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
+    VIR0Q09
 Meaning
-The line with external name linename has opened the message queue. Message VIRQ912W can be suppressed by the SILENCE parameter in the VIRTCT.
+    The line with external name linename has opened the message queue. Message VIRQ912W can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRQ922W linename ENDING OBJECT socknum FOR mqmname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
-
+    VIR0Q09
 Meaning
-The line with external name linename has closed the message queue. Message VIRQ922W can be suppressed by the SILENCE parameter in the VIRTCT.
+    The line with external name linename has closed the message queue. Message VIRQ922W can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
-VIRQ923E linename REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname
-VIRQ923E linename PARAM queuename
-
+VIRQ923E linename REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
+    VIR0Q09
 Meaning
-A message queue manager request of type reqtype for the line whose external name is linename was not successful. mqmname is the name of the message queue manager, ccc is the message queue manager completion code, and xx and ddd are respectively the hexadecimal and decimal reason codes. queuename is the name of the message queue, if any, associated with the error.
+    A message queue manager request of type reqtype for the line whose external name is linename was not successful. mqmname is the name of the message queue manager, ccc is the message queue manager completion code, and xx and ddd are respectively the hexadecimal and decimal reason codes. queuename is the name of the message queue, if any, associated with the error.
 Action
-For an explanation of the error codes, refer to Appendix A of the IBM manual MQSeries Application Programming Reference.
-The following codes are commonly encountered:
-•   REQ MQCONN COMPLETION CODE 00000002 REASON CODE 0000080A (00002058) : indicates that the message queue manager name is not known. Specify the correct name in the MQn parameter of the VIRTCT.
-•   REQ MQOPEN COMPLETION CODE 00000002 REASON CODE 00000825 (00002085) : indicates that the message queue name is not known. Check the “Local address” field in the definition of the MQ line, and the queue name prefix in the MQn parameter of the VIRTCT.
-•   REQ MQCONN COMPLETION CODE 00000002 REASON CODE 00000851 (00002129) : indicates that the required MQSeries libraries are not present in the STEPLIB concatenation of the VIRTEL started task JCL. Refer to “Executing VIRTEL in an MVS environment” in the VIRTEL Installation Guide.
+    For an explanation of the error codes, refer to Appendix A of the IBM manual MQSeries Application Programming Reference.
+    The following codes are commonly encountered:
+    - REQ MQCONN COMPLETION CODE 00000002 REASON CODE 0000080A (00002058) : indicates that the message queue manager name is not known. Specify the correct name in the MQn parameter of the VIRTCT.
+    - REQ MQOPEN COMPLETION CODE 00000002 REASON CODE 00000825 (00002085) : indicates that the message queue name is not known. Check the “Local address” field in the definition of the MQ line, and the queue name prefix in the MQn parameter of the VIRTCT.
+    - REQ MQCONN COMPLETION CODE 00000002 REASON CODE 00000851 (00002129) : indicates that the required MQSeries libraries are not present in the STEPLIB concatenation of the VIRTEL started task JCL. Refer to “Executing VIRTEL in an MVS environment” in the VIRTEL Installation Guide.
 
-VIRQ924E linename OBJECT socknum REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname
-VIRQ924E linename PARAM queuename
-
+VIRQ924E linename OBJECT socknum REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
+    VIR0Q09
 Meaning
-A message queue manager request of type reqtype for the line whose external name is linename was not successful. mqmname is the name of the message queue manager, ccc is the message queue manager completion code, and xx and ddd are respectively the hexadecimal and decimal reason codes. queuename is the name of the message queue, if any, associated with the error.
+    A message queue manager request of type reqtype for the line whose external name is linename was not successful. mqmname is the name of the message queue manager, ccc is the message queue manager completion code, and xx and ddd are respectively the hexadecimal and decimal reason codes. queuename is the name of the message queue, if any, associated with the error.
 Action
-For an explanation of the error codes, refer to Appendix A of the IBM manual MQSeries Application Programming Reference.
+    For an explanation of the error codes, refer to Appendix A of the IBM manual MQSeries Application Programming Reference.
 
 VIRQ925W linename MQM mqmname IS QUIESCING
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0Q09
-
+    VIR0Q09
 Meaning
-The message queue manager mqmname is terminating. linename is the external name of the associated VIRTEL line. MQ services will not be available until the queue manager is restarted.
+    The message queue manager mqmname is terminating. linename is the external name of the associated VIRTEL line. MQ services will not be available until the queue manager is restarted.
 Action
-Restart the queue manager.
+    Restart the queue manager.
 
-3.56.   Messages VIRR2xxx
+2.56.   Messages VIRR2xxx
+=========================
 
-VIRR211E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY
-USER userid
-
-
+VIRR211E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY USER userid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0021R
+    VIR0021R
 Meaning
-Transaction tranid either specifies a non-existent external server servid in its “application” field, or the “application type” field in the transaction definition is not valid.
+    Transaction tranid either specifies a non-existent external server servid in its “application” field, or the “application type” field in the transaction definition is not valid.
 Action
-Correct the definition of transaction tranid.
+    Correct the definition of transaction tranid.
 
-3.57.   Messages VIRRWxxx
+2.57.   Messages VIRRWxxx
+=========================
 
-VIRRW01I INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-
-
+VIRRW01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-The line with external name linename and internal name n-xxxxxx has been initialised with the RAW protocol.
+    The line with external name linename and internal name n-xxxxxx has been initialised with the RAW protocol.
 Action
-None.
+    None.
 
 VIRRW04I LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-The line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
-
+    None.
 
 VIRRW27E linename IS REJECTED AT ENTRY POINT epname
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-VIRTEL received an incoming call on the line whose external name is linename, but the entry point epname specified on the line definition does not exist.
+    VIRTEL received an incoming call on the line whose external name is linename, but the entry point epname specified on the line definition does not exist.
 Action
-Check the definition of the line.
+    Check the definition of the line.
 
 VIRRW28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-VIRTEL selected entry point epname for an incoming call on the line whose external name is linename, because the call matched the rule rulename.
+    VIRTEL selected entry point epname for an incoming call on the line whose external name is linename, because the call matched the rule rulename.
 Action
-None.
+    None.
 
 VIRRW29I linename HAS NO MORE PSEUDO TERMINALS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-There are no more terminals associated with the line whose external name is linename.
+    There are no more terminals associated with the line whose external name is linename.
 Action
-Check the definition of the line. Add more terminals if necessary.
+    Check the definition of the line. Add more terminals if necessary.
 
 VIRRW30I linename REQUEST FROM termname SENT AT timestamp1 CORR=correlator
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-A request has been sent from terminal termname on the line whose external name is linename. The time of the request is timestamp1 and the correlator is correlator.
+    A request has been sent from terminal termname on the line whose external name is linename. The time of the request is timestamp1 and the correlator is correlator.
 Action
-None.
+    None.
 
 VIRRW30I linename REPLY timestamp1 AT timestamp2 CORR=correlator Q=qname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
-
+    VIR0RAW
 Meaning
-A response to a message sent by terminal termname on the line whose external name is linename has been received. The time of the request is timestamp1. The time of the response is timestamp2. The correlator is correlator. The queue name is qname.
+    A response to a message sent by terminal termname on the line whose external name is linename has been received. The time of the request is timestamp1. The time of the response is timestamp2. The correlator is correlator. The queue name is qname.
 Action
-None.
+    None.
 
 VIRRW31I linename REQUEST timestamp1 CORR=correlator TIMEOUT Q=qname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-VIRTEL has not received a response to a message sent by terminal termname on the line whose external name is linename. The time of the request is timestamp1. The correlator is correlator. The queue name is qname.
+    VIRTEL has not received a response to a message sent by terminal termname on the line whose external name is linename. The time of the request is timestamp1. The correlator is correlator. The queue name is qname.
 Action
-Check the message queue manager log to determine why no response was received.
+    Check the message queue manager log to determine why no response was received.
 
 VIRRW51I linename CONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-An incoming call on the line whose external name is linename has been allocated to terminal termname.
+    An incoming call on the line whose external name is linename has been allocated to terminal termname.
 Action
-None.
+    None.
 
 VIRRW52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-Terminal termname has been disconnected from the line whose external name is linename.
+    Terminal termname has been disconnected from the line whose external name is linename.
 Action
-None.
+    None.
 
-VIRRW54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY
-'dirname'
-
+VIRRW54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY 'dirname'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-VIRTEL received a request on the line whose external name is linename. The requested directory path dirname does not exist under the entry point epname.
+    VIRTEL received a request on the line whose external name is linename. The requested directory path dirname does not exist under the entry point epname.
 Action
-Check the definition of the entry point epname. Ensure that there is a type 4 transaction with external name dirname.
-
+    Check the definition of the entry point epname. Ensure that there is a type 4 transaction with external name dirname.
 
 VIRRW55E INVALID RULE rulename ENTRY POINT 'epname'
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-Rule rulename attached to an MQ line specifies an unknown entry point epname.
+    Rule rulename attached to an MQ line specifies an unknown entry point epname.
 Action
-Check the entry point name specified in the rule definition.
+    Check the entry point name specified in the rule definition.
 
 VIRRW99I linename MESSAGE RECEIVED FROM SOCKET socknum
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-Input data has been received by the line whose external name is linename.
+    Input data has been received by the line whose external name is linename.
 Action
-None.
+    None.
 
 VIRRW99I linename SEND TO SOCKET socknum
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0RAW
+    VIR0RAW
 Meaning
-Output data has been sent to the line whose external name is linename.
+    Output data has been sent to the line whose external name is linename.
 Action
-None.
+    None.
 
-3.58.   Messages VIRS1xxx
+2.58.   Messages VIRS1xxx
+=========================
 
 VIRS121W termid ERROR LOADING SCENARIO modname IN TRANSACTION tranid
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-Transaction tranid at terminal termid called for a presentation module modname which could not be loaded.
+    Transaction tranid at terminal termid called for a presentation module modname which could not be loaded.
 Action
-Check the log for a previous message VIR0031W. Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of transaction tranid. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
-
+    Check the log for a previous message VIR0031W. Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of transaction tranid. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
 
 VIRS122W termid INVALID FA39 SCENARIO RECEIVED
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0S12
+    VIR0S12
 Meaning
-The transaction at terminal termid called for a presentation module which was not valid.
+    The transaction at terminal termid called for a presentation module which was not valid.
 Action
-Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
+    Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
 
 VIRS123W termid ERROR LOADING SCENARIO modname IN ENTRY POINT epname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-Entry point epname invoked from terminal termid called for a presentation module modname which could not be loaded.
+    Entry point epname invoked from terminal termid called for a presentation module modname which could not be loaded.
 Action
-Check the log for a previous message VIR0031W. Check the module name specified in the “Identification Scenario” field of entry point epname. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
+    Check the log for a previous message VIR0031W. Check the module name specified in the “Identification Scenario” field of entry point epname. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
 
 VIRS124E termid VIRSV CREATE ERROR – R15 : xxxxxxxx (dddddddd)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A scenario invoked from terminal termid was unable to call a service program using the VIRSV$ macro instruction. xxxxxxxx is the hexadecimal return code from program VSVPCREA, and dddddddd is the decimal equivalent of the low-order byte of the return code.
+    A scenario invoked from terminal termid was unable to call a service program using the VIRSV$ macro instruction. xxxxxxxx is the hexadecimal return code from program VSVPCREA, and dddddddd is the decimal equivalent of the low-order byte of the return code.
 Action
-Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPCREA return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check the VIRTEL started task JCL to ensure that the VIRSV load library is referenced in both the STEPLIB and the SERVLIB concatenations. If VIRTEL runs as an APF-authorized task, check that the VIRSV load library is APF-authorized.
+    Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPCREA return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check the VIRTEL started task JCL to ensure that the VIRSV load library is referenced in both the STEPLIB and the SERVLIB concatenations. If VIRTEL runs as an APF-authorized task, check that the VIRSV load library is APF-authorized.
 
 VIRS125E termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A scenario invoked from terminal termid was unable to call a service program using the VIRSV$ macro instruction. xxxxxxxx is the hexadecimal return code from program VSVPREQS, and dddddddd is the decimal equivalent of the low-order byte of the return code.
-
+    A scenario invoked from terminal termid was unable to call a service program using the VIRSV$ macro instruction. xxxxxxxx is the hexadecimal return code from program VSVPREQS, and dddddddd is the decimal equivalent of the low-order byte of the return code.
 Action
-Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPREQS return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check that the requested service program exists in a load library in the SERVLIB concatenation of the VIRTEL started task JCL. If VIRTEL runs as an APF-authorized task, check that the load library containing the service program is APF-authorized.
+    Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPREQS return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check that the requested service program exists in a load library in the SERVLIB concatenation of the VIRTEL started task JCL. If VIRTEL runs as an APF-authorized task, check that the load library containing the service program is APF-authorized.
 
 VIRS126E termid VIRSV APPLICATION ERROR CODE : xxxxxxxx (dddddddd)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A scenario invoked from terminal termid called a service program using the VIRSV$ macro instruction. The service program completed with a non-zero return code. xxxxxxxx is the hexadecimal return code from the service program, and dddddddd is the decimal equivalent.
+    A scenario invoked from terminal termid called a service program using the VIRSV$ macro instruction. The service program completed with a non-zero return code. xxxxxxxx is the hexadecimal return code from the service program, and dddddddd is the decimal equivalent.
 Action
-Determine the meaning of the service program return code and take appropriate action.
+    Determine the meaning of the service program return code and take appropriate action.
 
 VIRS127E termid VIRSV SERVICES UNAVAILABLE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A scenario invoked from terminal termid was unable to call a service program using the VIRSV$ macro instruction because the VIRSV service call facility is not available to VIRTEL.
+    A scenario invoked from terminal termid was unable to call a service program using the VIRSV$ macro instruction because the VIRSV service call facility is not available to VIRTEL.
 Action
-Check that the VIRTCT contains a VIRSV1 parameter. If so, check the VIRTEL log to determine why the VIRSV facility failed to initialise at VIRTEL startup. Refer to message VIR0090E.
+    Check that the VIRTCT contains a VIRSV1 parameter. If so, check the VIRTEL log to determine why the VIRSV facility failed to initialise at VIRTEL startup. Refer to message VIR0090E.
 
-VIRS129E termid ERROR: SCENARIO scenname ABENDED AT OFFSET 'xxxxxxxx' ON INSTRUCTION STARTING WITH 'yyyyyyyy'
-[INPUT|OUTPUT|IDENTIFICATION SCENARIO IS DISCARDED]
-
+VIRS129E termid ERROR: SCENARIO scenname ABENDED AT OFFSET 'xxxxxxxx' ON INSTRUCTION STARTING WITH 'yyyyyyyy' [INPUT|OUTPUT|IDENTIFICATION SCENARIO IS DISCARDED]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-The scenario scenname invoked from terminal termid contains an instruction which is invalid, or which attempted to perform an invalid operation such as copying into a protected field on the 3270 screen, or a MAP$ ABEND instruction was executed. xxxxxxxx is the hexadecimal offset within the module of the instruction. yyyyyyyy represents the first four bytes (in hexadecimal) of the instruction. The scenario is abandoned (as if SCENARIO DISCARD had been coded).
+    The scenario scenname invoked from terminal termid contains an instruction which is invalid, or which attempted to perform an invalid operation such as copying into a protected field on the 3270 screen, or a MAP$ ABEND instruction was executed. xxxxxxxx is the hexadecimal offset within the module of the instruction. yyyyyyyy represents the first four bytes (in hexadecimal) of the instruction. The scenario is abandoned (as if SCENARIO DISCARD had been coded).
 Action
-Check the assembly listing to verify that the scenario has been correctly assembled. Check that the correct level macro library was used.
+    Check the assembly listing to verify that the scenario has been correctly assembled. Check that the correct level macro library was used.
 
-VIRS12AI termid ERROR: SCENARIO scenname WAS ABNORMALLY STOPPED AT OFFSET
-'xxxxxxxx'
-
+VIRS12AI termid ERROR: SCENARIO scenname WAS ABNORMALLY STOPPED AT OFFSET 'xxxxxxxx'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
-
+    VIR0S12
 Meaning
-The scenario scenname invoked from terminal termid was terminated abnormally using the KILL command. xxxxxxxx is the hexadecimal offset within the module.
+    The scenario scenname invoked from terminal termid was terminated abnormally using the KILL command. xxxxxxxx is the hexadecimal offset within the module.
 Action
-None.
+    None.
 
 VIRS12BE SCENARIO REQUIRES HEADER 'headername' NOT FOUND IN TCT : ABORTING
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A COPY$ SYSTEM-TO-VARIABLE instruction in a scenario is attempting to obtain the value of the HTTP header headername but the name was not declared in the VIRTCT. A subsequent VIRS129E instruction shows the name of the scenario and the location of the instruction in error.
+    A COPY$ SYSTEM-TO-VARIABLE instruction in a scenario is attempting to obtain the value of the HTTP header headername but the name was not declared in the VIRTCT. A subsequent VIRS129E instruction shows the name of the scenario and the location of the instruction in error.
 Action
-Add headername to the HTHEADR parameter of the VIRTCT.
+    Add headername to the HTHEADR parameter of the VIRTCT.
 
 VIRS12CE termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd) FROM progname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A call from a scenario to VIRSV returned an error. xxxxxxxx is the hexadecimal return code from VIRSV module progname and dddddddd is the decimal equivalent.
+    A call from a scenario to VIRSV returned an error. xxxxxxxx is the hexadecimal return code from VIRSV module progname and dddddddd is the decimal equivalent.
 Action
-Refer to the VIRSV documentation for the meaning of the return code.
+    Refer to the VIRSV documentation for the meaning of the return code.
 
 VIRS12DE termid VIRSV TRANSACTION ERROR CODE : xxxxxxxx (dddddddd) FROM progname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A call from a scenario to VIRSV returned an error. xxxxxxxx is the hexadecimal return code from VIRSV module progname and dddddddd is the decimal equivalent.
+    A call from a scenario to VIRSV returned an error. xxxxxxxx is the hexadecimal return code from VIRSV module progname and dddddddd is the decimal equivalent.
 Action
-Refer to the VIRSV documentation for the meaning of the return code.
+    Refer to the VIRSV documentation for the meaning of the return code.
 
 VIRS12EE termid SCENARIO scenname RETURNED ERROR : 'dddddddd'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-The scenario scenname invoked from terminal termid terminated using the ERROR$ macro instruction. dddddddd is the decimal return code.
-
+    The scenario scenname invoked from terminal termid terminated using the ERROR$ macro instruction. dddddddd is the decimal return code.
 Action
-Determine the meaning of the scenario return code and take appropriate action.
+    Determine the meaning of the scenario return code and take appropriate action.
 
-VIRS12FE termid ERROR: SCENARIO 'scenname' CALLS UNDEFINED TRANSACTION
-'tranname' AT OFFSET 'xxxxxxxx'
-
+VIRS12FE termid ERROR: SCENARIO 'scenname' CALLS UNDEFINED TRANSACTION 'tranname' AT OFFSET 'xxxxxxxx'
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-The scenario scenname invoked from terminal termid issued a SEND$ TO or SEND$ VARIABLE-TO instruction specifying an invalid transaction name tranname. xxxxxxxx is the hexadecimal offset of the SEND$ instruction within the module.
+    The scenario scenname invoked from terminal termid issued a SEND$ TO or SEND$ VARIABLE-TO instruction specifying an invalid transaction name tranname. xxxxxxxx is the hexadecimal offset of the SEND$ instruction within the module.
 Action
-Verify that the entry point contains a type 5 transaction whose external name is tranname, or correct the transaction name in the scenario.
+    Verify that the entry point contains a type 5 transaction whose external name is tranname, or correct the transaction name in the scenario.
 
 VIRS12GE CANNOT RESOLVE PASSTICKET OF TYPE 'applname' ABORTING SCENARIO
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-VIRTEL was unable to process an instruction of type PASSTICKET-FOR-TRANSACTION contained in a scenario.
+    VIRTEL was unable to process an instruction of type PASSTICKET-FOR-TRANSACTION contained in a scenario.
 Action
-Possible causes are: (1) Not signed on (2) Transaction not found (3) No application name in transaction (4) PASSTCK not specified in VIRTCT (5) Application name not found in PASSTCK table (6) Request is neither GENERATE nor EVALUATE (7) Request specifies GENERATE or EVALUATE but does not match corresponding entry in the PASSTCK table (8) Insufficient storage for workarea (9) Error linking to module IRRSPK00
+    Possible causes are: (1) Not signed on (2) Transaction not found (3) No application name in transaction (4) PASSTCK not specified in VIRTCT (5) Application name not found in PASSTCK table (6) Request is neither GENERATE nor EVALUATE (7) Request specifies GENERATE or EVALUATE but does not match corresponding entry in the PASSTCK table (8) Insufficient storage for workarea (9) Error linking to module IRRSPK00
 
 VIRS12HE termid ERROR: SCENARIO scenname RACF ticketserv GENERATE|EVALUATE SAF RC: 'safrc' RACF RC: 'racfrc' RACF reason: 'racfreas'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-The security subsystem returned an error code during processing of an instruction of type PASSTICKET-FOR- TRANSACTION contained in scenario scenname for terminal termid.
+    The security subsystem returned an error code during processing of an instruction of type PASSTICKET-FOR- TRANSACTION contained in scenario scenname for terminal termid.
 Action
-For an explanation of the return codes and reason codes, refer to the IBM manual z/OS Security Server RACF Callable Services chapter 2: “R_ticketserv”.
+    For an explanation of the return codes and reason codes, refer to the IBM manual z/OS Security Server RACF Callable Services chapter 2: “R_ticketserv”.
 
 VIRS12IE termid LOOP WAS DETECTED IN SCENARIO scenname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0S12
+    VIR0S12
 Meaning
-A possible loop has been detected in scenario scenname. The scenario is abended.
-
+    A possible loop has been detected in scenario scenname. The scenario is abended.
 Action
-For an explanation on the way to identify or manage loops in scenario, refer to the HANDLE$ LOOP instrauction in the VIRTEL Web Access documentation.
+    For an explanation on the way to identify or manage loops in scenario, refer to the HANDLE$ LOOP instrauction in the VIRTEL Web Access documentation.
 
-3.59.   Messages VIRSMxxx
+2.59.   Messages VIRSMxxx
+=========================
 
-VIRSM01I SMTP INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-
-
+VIRSM01I SMTP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-The SMTP line with external name linename and internal name n-xxxxxx has been initialised.
+    The SMTP line with external name linename and internal name n-xxxxxx has been initialised.
 Action
-None.
+    None.
 
 VIRSM04I SMTP LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-The SMTP line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
+    The SMTP line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRSM27E linename IS REJECTED AT ENTRY POINT epname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-VIRTEL received an incoming call on the SMTP line whose external name is linename, but the entry point epname specified on the line definition does not exist.
+    VIRTEL received an incoming call on the SMTP line whose external name is linename, but the entry point epname specified on the line definition does not exist.
 Action
-Check the definition of the SMTP line.
+    Check the definition of the SMTP line.
 
 VIRSM28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-VIRTEL selected entry point epname for an incoming call on the SMTP line whose external name is linename, because the call matched the rule rulename.
+    VIRTEL selected entry point epname for an incoming call on the SMTP line whose external name is linename, because the call matched the rule rulename.
 Action
-None.
-
+    None.
 
 VIRSM29I linename HAS NO MORE PSEUDO TERMINALS
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-There are no more terminals associated with the SMTP line whose external name is linename.
+    There are no more terminals associated with the SMTP line whose external name is linename.
 Action
-Check the definition of the line. Add more terminals if necessary.
+    Check the definition of the line. Add more terminals if necessary.
 
 VIRSM51I linename CONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-An incoming call on the SMTP line whose external name is linename has been allocated to terminal termname.
+    An incoming call on the SMTP line whose external name is linename has been allocated to terminal termname.
 Action
-None.
+    None.
 
 VIRSM52I linename DECONNECTING termname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-Terminal termname has been disconnected from the SMTP line whose external name is linename.
+    Terminal termname has been disconnected from the SMTP line whose external name is linename.
 Action
-None.
+    None.
 
 VIRSM55E INVALID RULE rulename ENTRY POINT 'epname'
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-Rule rulename attached to an SMTP line specifies an unknown entry point epname.
+    Rule rulename attached to an SMTP line specifies an unknown entry point epname.
 Action
-Check the entry point name specified in the rule definition.
+    Check the entry point name specified in the rule definition.
 
 VIRSM571 MESSAGE FROM xxx@xxx.xxx TO xxx@xxx.xxx WAS REJECTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRSMTP
+    VIRSMTP
 Meaning
-VIRTEL received an incomplete message on an SMTP line. The message does not contain the required headers In-Reply-To: (or alternatively References:) and Mime-Version:. The message has been rejected with response 571 Delivery not authorized, message refused sent to the SMTP requester.
-
+    VIRTEL received an incomplete message on an SMTP line. The message does not contain the required headers In-Reply-To: (or alternatively References:) and Mime-Version:. The message has been rejected with response 571 Delivery not authorized, message refused sent to the SMTP requester.
 Action
-To upload an HTML page, you must reply to a message sent by VIRTEL and include an attached file.
+    To upload an HTML page, you must reply to a message sent by VIRTEL and include an attached file.
 
-3.60.   Messages VIRT2xxx
+2.60.   Messages VIRT2xxx
+=========================
 
-VIRT251E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY
-USER userid
-
-
+VIRT251E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY USER userid
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0025T
+    VIR0025T
 Meaning
-Transaction tranid either specifies a non-existent external server servid in its “application” field, or the “application type” field in the transaction definition is not valid.
+    Transaction tranid either specifies a non-existent external server servid in its “application” field, or the “application type” field in the transaction definition is not valid.
 Action
-Correct the definition of transaction tranid.
+    Correct the definition of transaction tranid.
 
-3.61.   Messages VIRT9xxx
+2.61.   Messages VIRT9xxx
+=========================
 
-VIRT903W LINE linename HAS A SESSION STARTED WITH TCP/IP tcpname HIGHEST
-SOCKET IS 'xxxxxxxx' (dddddddd)
-
-
+VIRT903W LINE linename HAS A SESSION STARTED WITH TCP/IP tcpname HIGHEST SOCKET IS 'xxxxxxxx' (dddddddd)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-The line with external name linename has opened a session with TCP/IP name tcpname. xxxxxxxx is the highest socket number (in hexadecimal) for this line. dddddddd is the highest socket number in decimal. The highest socket number is assigned by the TCP/IP stack and will normally be one less than the maxsock subparameter of the TCPn parameter in the VIRTCT.
+    The line with external name linename has opened a session with TCP/IP name tcpname. xxxxxxxx is the highest socket number (in hexadecimal) for this line. dddddddd is the highest socket number in decimal. The highest socket number is assigned by the TCP/IP stack and will normally be one less than the maxsock subparameter of the TCPn parameter in the VIRTCT.
 Action
-None
+    None
 
 VIRT904I LINE linename (n-xxxxxx) IS USING TCP/IP KEEPALIVE
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename     and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.
+    VIRTEL has requested the TCP/IP  stack to send “keepalive” messages on the line with external name linename     and internal name n-xxxxxx. You must also activate keepalive in the TCP/IP stack parameter file. See the “Action” parameter of the Line Definition in the VIRTEL Connectivity Reference manual.
 Action
-None.
-
+    None.
 
 VIRT905I linename SOCKET socknum LISTENING ipaddr:port
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
 Module
-VIR0T09
+    VIR0T09
 Meaning
-VIRTEL has opened a TCP/IP listening socket for the line with external name linename. port is the listening port number, and ipaddr is the IP address on which VIRTEL will accept incoming connections. If ipaddr is 000.000.000.000 then VIRTEL accepts connections on any of the host’s home IP addresses.
+    VIRTEL has opened a TCP/IP listening socket for the line with external name linename. port is the listening port number, and ipaddr is the IP address on which VIRTEL will accept incoming connections. If ipaddr is 000.000.000.000 then VIRTEL accepts connections on any of the host’s home IP addresses.
 Action
-None.
+    None.
 
 VIRT906I linename SOCKET socknum CALL FROM ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-VIRTEL has accepted an incoming connection on the line with external name linename. socknum is the TCP/IP socket number, and ipaddr:port is the client’s IP address and port number.
+    VIRTEL has accepted an incoming connection on the line with external name linename. socknum is the TCP/IP socket number, and ipaddr:port is the client’s IP address and port number.
 Action
-None.
+    None.
 
 VIRT907I linename SOCKET socknum CALLING ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-VIRTEL is making an outgoing connection on the line with external name linename. socknum is the TCP/IP socket number, and ipaddr:port is the destination IP address and port number.
+    VIRTEL is making an outgoing connection on the line with external name linename. socknum is the TCP/IP socket number, and ipaddr:port is the destination IP address and port number.
 Action
-None.
+    None.
 
 VIRT912W linename SOCKET socknum STARTED FOR ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-VIRTEL has opened TCP/IP socket socknum on the line with external name linename. If socknum is 00000000 then this is a listening socket, port is the listening port number, and ipaddr is the IP address on which VIRTEL accepts incoming connections (000.000.000.000 means that VIRTEL accepts connections on any of the host’s home IP addresses). If socknum is non-zero and port is non-zero, then this is an incoming connection, and ipaddr:port is the client’s IP address and port number. If socknum is non-zero and port is 00000, then this is an outgoing connection, and ipaddr is VIRTEL’s  IP address (000.000.000.000 means that VIRTEL is using the host’s default home address).  For VIRTEL 4.33 onwards, this message is replaced by messages VIRT905I, VIRT906I and VIRT907I respectively. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    VIRTEL has opened TCP/IP socket socknum on the line with external name linename. If socknum is 00000000 then this is a listening socket, port is the listening port number, and ipaddr is the IP address on which VIRTEL accepts incoming connections (000.000.000.000 means that VIRTEL accepts connections on any of the host’s home IP addresses). If socknum is non-zero and port is non-zero, then this is an incoming connection, and ipaddr:port is the client’s IP address and port number. If socknum is non-zero and port is 00000, then this is an outgoing connection, and ipaddr is VIRTEL’s  IP address (000.000.000.000 means that VIRTEL is using the host’s default home address).  For VIRTEL 4.33 onwards, this message is replaced by messages VIRT905I, VIRT906I and VIRT907I respectively. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
-
+    None.
 
 VIRT918S NO MORE OSCORE AVAILABLE
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0T09
+    VIR0T09
 Meaning
-VIRTEL has insufficient memory to start a new TCP/IP task.
+    VIRTEL has insufficient memory to start a new TCP/IP task.
 Action
-Check the OSCORE parameter in the VIRTCT.
+    Check the OSCORE parameter in the VIRTCT.
 
 VIRT920W TCP SESSION LOST FOR LU linename
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-Loss of TCP/IP session for the line with external name linename.
+    Loss of TCP/IP session for the line with external name linename.
 Action
-Check the partner system to determine the cause of the error.
+    Check the partner system to determine the cause of the error.
 
 VIRT922W linename SOCKET socknum ENDED FOR ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-VIRTEL has closed the TCP/IP socket socknum on the line with external name linename on the indicated IP address ipaddr and the indicated port number port. This message can be suppressed by the SILENCE parameter in the VIRTCT.
+    VIRTEL has closed the TCP/IP socket socknum on the line with external name linename on the indicated IP address ipaddr and the indicated port number port. This message can be suppressed by the SILENCE parameter in the VIRTCT.
 Action
-None.
+    None.
 
 VIRT923E ERROR ON: linename REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-A request of type reqtype in TCP/IP mode for the line indicated by the external name linename was not successful. xx and ddd are respectively the hexadecimal and decimal error codes.
-
+    A request of type reqtype in TCP/IP mode for the line indicated by the external name linename was not successful. xx and ddd are respectively the hexadecimal and decimal error codes.
 Action
-For an explanation of the error codes, refer to Appendix B of the IBM manual z/OS Communications Server: IP Sockets Application Programming Interface Guide and Reference. For VSE, refer to “ERRNO values” in chapter 8 of the IBM manual TCP/IP for VSE/ESA IBM Program Setup and Supplementary Information.
-The following codes are commonly encountered:
-•   REQ: SOCKET - RETCODE: FFFFFFFF ERRNO:00000018 (00000024) : indicates that the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx is insufficient for the number of TCP/IP connections. Use the console command D OMVS,O to determine the current value of MAXFILEPROC. The command SETOMVS MAXFILEPROC=nnnn can be used to increase the value temporarily until the next IPL.
-•   REQ: SOCKET - RETCODE: FFFFFFFF ERRNO: 0000045D (00001117) : indicates that TCP/IP for VSE is not started.
-•   REQ: GTHOSTID - RETCODE: FFFFFFFF ERRNO: 00000000 (00000000) : may indicate that TCP/IP for VSE is not started.
-•   REQ: GTHOSTID - RETCODE: FFFFFFFF ERRNO: 0000009C (00000156) : may indicate that the USER assigned to the VIRTEL started task does not have the necessary authorization (RACF, TOP SECRET) to access TCP/IP facilities via MVS OPEN-EDITION.
-•   REQ: ACCEPT - RETCODE: FFFFFFFF ERRNO: 000003EA (00001002) : indicates that the maxsock subparameter of the TCPn parameter in the VIRTCT is insufficient for the number of incoming calls received.
-•   REQ: INITAPI - RETCODE: FFFFFFFF ERRNO: 000003F3 (00001011) : indicates that the name specified in the TCPn parameter in the VIRTCT does not match the name of the z/OS TCP/IP stack.
-•   REQ: INITAPI - RETCODE: FFFFFFFF ERRNO: 000027D6 (00010198) : indicates that the maxsock subparameter of the TCPn parameter in the VIRTCT exceeds the maximum allowed by the TCP/IP stack.
+    For an explanation of the error codes, refer to Appendix B of the IBM manual z/OS Communications Server: IP Sockets Application Programming Interface Guide and Reference. For VSE, refer to “ERRNO values” in chapter 8 of the IBM manual TCP/IP for VSE/ESA IBM Program Setup and Supplementary Information.
+    The following codes are commonly encountered:
+    - REQ: SOCKET - RETCODE: FFFFFFFF ERRNO:00000018 (00000024) : indicates that the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx is insufficient for the number of TCP/IP connections. Use the console command D OMVS,O to determine the current value of MAXFILEPROC. The command SETOMVS MAXFILEPROC=nnnn can be used to increase the value temporarily until the next IPL.
+    - REQ: SOCKET - RETCODE: FFFFFFFF ERRNO: 0000045D (00001117) : indicates that TCP/IP for VSE is not started.
+    - REQ: GTHOSTID - RETCODE: FFFFFFFF ERRNO: 00000000 (00000000) : may indicate that TCP/IP for VSE is not started.
+    - REQ: GTHOSTID - RETCODE: FFFFFFFF ERRNO: 0000009C (00000156) : may indicate that the USER assigned to the VIRTEL started task does not have the necessary authorization (RACF, TOP SECRET) to access TCP/IP facilities via MVS OPEN-EDITION.
+    - REQ: ACCEPT - RETCODE: FFFFFFFF ERRNO: 000003EA (00001002) : indicates that the maxsock subparameter of the TCPn parameter in the VIRTCT is insufficient for the number of incoming calls received.
+    - REQ: INITAPI - RETCODE: FFFFFFFF ERRNO: 000003F3 (00001011) : indicates that the name specified in the TCPn parameter in the VIRTCT does not match the name of the z/OS TCP/IP stack.
+    - REQ: INITAPI - RETCODE: FFFFFFFF ERRNO: 000027D6 (00010198) : indicates that the maxsock subparameter of the TCPn parameter in the VIRTCT exceeds the maximum allowed by the TCP/IP stack.
 
 VIRT924E ERROR ON: linename SOCKET: socknum REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-Socket socknum has not been successful in establishing a TCP/IP  session. reqtype is the TCP/IP  API call which  failed, linename is the external name of the line, and xx and ddd are respectively the hexadecimal and decimal representations of the TCP/IP error code. This message can appear several times, as VIRTEL retries periodically to obtain the connection.
+    Socket socknum has not been successful in establishing a TCP/IP  session. reqtype is the TCP/IP  API call which  failed, linename is the external name of the line, and xx and ddd are respectively the hexadecimal and decimal representations of the TCP/IP error code. This message can appear several times, as VIRTEL retries periodically to obtain the connection.
 Action
-For an explanation of the error codes, refer to Appendix B of the IBM manual z/OS Communications Server: IP Sockets Application Programming Interface Guide and Reference. For VSE, refer to “ERRNO values” in chapter 8 of the IBM manual TCP/IP for VSE/ESA IBM Program Setup and Supplementary Information.
-The following codes are commonly encountered:
-•   REQ :BIND - RETCODE: FFFFFFFF ERRNO: 00000030 (00000048) : indicates that the field “Local ident” in the line definition specified a port number which is already in use by another application or by another VIRTEL line.
-•   REQ :BIND - RETCODE: FFFFFFFF ERRNO: 00000031 (00000049) : indicates the the field “Local ident” in the line definition specifies an IP address which is not accepted by the TCP/IP stack as a valid home address.
+    For an explanation of the error codes, refer to Appendix B of the IBM manual z/OS Communications Server: IP Sockets Application Programming Interface Guide and Reference. For VSE, refer to “ERRNO values” in chapter 8 of the IBM manual TCP/IP for VSE/ESA IBM Program Setup and Supplementary Information.
+    The following codes are commonly encountered:
+    - REQ :BIND - RETCODE: FFFFFFFF ERRNO: 00000030 (00000048) : indicates that the field “Local ident” in the line definition specified a port number which is already in use by another application or by another VIRTEL line.
+    - REQ :BIND - RETCODE: FFFFFFFF ERRNO: 00000031 (00000049) : indicates the the field “Local ident” in the line definition specifies an IP address which is not accepted by the TCP/IP stack as a valid home address.
 
 VIRT925E ERROR CALLING PORT port AT SERVER servname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0T09
+    VIR0T09
 Meaning
-An outbound HTTP call to port port at server servname has failed.
+    An outbound HTTP call to port port at server servname has failed.
 Action
-Check preceding messages in the log. Check whether a firewall has blocked access to the specified port.
+    Check preceding messages in the log. Check whether a firewall has blocked access to the specified port.
 
-3.62.   Messages VIRU1xxx
- 
+2.62.   Messages VIRU1xxx
+========================= 
 
-VIRU121E termid FILE UPLOAD FAILED : ENTRY POINT 'epname' DIRECTORY
-'dirname' FILE 'filename’ USER 'username’
-
+VIRU121E termid FILE UPLOAD FAILED : ENTRY POINT 'epname' DIRECTORY 'dirname' FILE 'filename’ USER 'username’
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0U12
+    VIR0U12
 Meaning
-A request by user username to upload the file filename into the directory dirname at VIRTEL entry point epname failed.
+    A request by user username to upload the file filename into the directory dirname at VIRTEL entry point epname failed.
 Action
-Check, if necessary, that the user has successfully installed a cookie (see “Uploading pages via HTML secured by cookie” in the VIRTEL Web Access Guide). Check the definition of entry point epname. Check (using F6 in the VIRTEL configuration menu) that the directory has permissions “Copy to”, “Copy from”, and “Delete” all marked with “X”. Check that the DD name specified in the directory definition is included in the VIRTEL started task JCL.
+    Check, if necessary, that the user has successfully installed a cookie (see “Uploading pages via HTML secured by cookie” in the VIRTEL Web Access Guide). Check the definition of entry point epname. Check (using F6 in the VIRTEL configuration menu) that the directory has permissions “Copy to”, “Copy from”, and “Delete” all marked with “X”. Check that the DD name specified in the directory definition is included in the VIRTEL started task JCL.
 
-VIRU122I termid FILE UPLOAD : ENTRY POINT 'epname' DIRECTORY 'dirname' FILE
-'filename’ USER 'username’
-
+VIRU122I termid FILE UPLOAD : ENTRY POINT 'epname' DIRECTORY 'dirname' FILE 'filename’ USER 'username’
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0U12
+    VIR0U12
 Meaning
-A request by user username to upload the file filename into the directory dirname at VIRTEL entry point epname was successful.
+    A request by user username to upload the file filename into the directory dirname at VIRTEL entry point epname was successful.
 Action
-None.
+    None.
 
-3.63.   Messages VIRUCSxx
+2.63.   Messages VIRUCSxx
+=========================
 
 VIRUCS1E termid COULD NOT FIND TRANSLATION TABLE tablename
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0UCS
+    VIR0UCS
 Meaning
-Translation table tablename requested by terminal termid was not found.
+    Translation table tablename requested by terminal termid was not found.
 Action
-Check that the CODEPAGE parameter of the URL contains a valid translation table name, and that the table has been loaded by VIRTEL at startup, either as standard, or by the CHARSET parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide).
+    Check that the CODEPAGE parameter of the URL contains a valid translation table name, and that the table has been loaded by VIRTEL at startup, either as standard, or by the CHARSET parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide).
 
-3.64.   Messages VIRV1xxx
- 
+2.64.   Messages VIRV1xxx
+========================= 
 
-VIRV121E termid COULD NOT FIND TRANSLATION TABLE 'tablname' FOR PAGE
-'pagename' DIRECTORY 'tranid' (dirname)
-
+VIRV121E termid COULD NOT FIND TRANSLATION TABLE 'tablname' FOR PAGE 'pagename' DIRECTORY 'tranid' (dirname)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0V12
+    VIR0V12
 Meaning
-The HTML page pagename in the directory referenced by the transaction with external name tranid and internal name dirname specifies an unknown translation table tablname.
+    The HTML page pagename in the directory referenced by the transaction with external name tranid and internal name dirname specifies an unknown translation table tablname.
 Action
-Check that the table tablname specified in the SET-OUTPUT-ENCODING-UTF-8 instruction in the HTML page was loaded into VIRTEL at startup time, either as standard, or by being specified in the CHARSET parameter of the VIRTCT (see the VIRTEL Installation Guide manual).
+    Check that the table tablname specified in the SET-OUTPUT-ENCODING-UTF-8 instruction in the HTML page was loaded into VIRTEL at startup time, either as standard, or by being specified in the CHARSET parameter of the VIRTCT (see the VIRTEL Installation Guide manual).
 
 VIRV122E termid WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0V12
+    VIR0V12
 Meaning
-As a result of a KILL command, the scenario which was active on terminal termid has been abnormally terminated.
+    As a result of a KILL command, the scenario which was active on terminal termid has been abnormally terminated.
 Action
-None.
+    None.
 
-3.65.   Messages VIRX9xxx
+2.65.   Messages VIRX9xxx
+=========================
 
-VIRX903W linename STARTING A VIRPASS SERVICE OF LOCAL NAME xmident REMOTE
-NAME relayname IN JOB jobname
-
-
+VIRX903W linename STARTING A VIRPASS SERVICE OF LOCAL NAME xmident REMOTE NAME relayname IN JOB jobname
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0X09
+    VIR0X09
 Meaning
-VIRTEL is starting a VIRPASS XM (cross-memory) connection to VIRKIX running in a CICS region in the same MVS image. linename is the name of the XM line, jobname is the job name of the CICS region, relayname is the name of the VIRPASS XM relay in VIRKIX, and xmident is the link name defined in the VIRPASS XM relay.
+    VIRTEL is starting a VIRPASS XM (cross-memory) connection to VIRKIX running in a CICS region in the same MVS image. linename is the name of the XM line, jobname is the job name of the CICS region, relayname is the name of the VIRPASS XM relay in VIRKIX, and xmident is the link name defined in the VIRPASS XM relay.
 Action
-None.
+    None.
 
 VIRX907I linename DETACHING VXMTRECV SUBTASK
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0X09
+    VIR0X09
 Meaning
-VIRTEL is terminating a VIRPASS XM (cross-memory) connection as a result of a TERMAPI request. linename is the name of the XM line.
-
+    VIRTEL is terminating a VIRPASS XM (cross-memory) connection as a result of a TERMAPI request. linename is the name of the XM line.
 Action
-None.
+    None.
 
 VIRX908I linename DETACHING VXMTRECV SUBTASK
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0X09
+    VIR0X09
 Meaning
-VIRTEL is terminating a VIRPASS XM (cross-memory) connection as a result of a CLOSE request. linename is the name of the XM line.
+    VIRTEL is terminating a VIRPASS XM (cross-memory) connection as a result of a CLOSE request. linename is the name of the XM line.
 Action
-None.
+    None.
 
 VIRX909I linename DETACHING VXMTRECV SUBTASK
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0X09
+    VIR0X09
 Meaning
-VIRTEL is terminating a VIRPASS XM (cross-memory) connection as a result of a CANCEL request. linename is the name of the XM line.
+    VIRTEL is terminating a VIRPASS XM (cross-memory) connection as a result of a CANCEL request. linename is the name of the XM line.
 Action
-None.
+    None.
 
 VIRX912W linename CONTEXT: sessionid STARTED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0X09
+    VIR0X09
 Meaning
-A session has started on cross-memory line linename. The session identifier is sessionid.
+    A session has started on cross-memory line linename. The session identifier is sessionid.
 Action
-None.
+    None.
 
 VIRX922W linename ENDING CONTEXT sessionid FOR jobname
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0X09
+    VIR0X09
 Meaning
-A session has ended on cross-memory line linename. The session identifier is sessionid. The job name of the session partner is jobname.
+    A session has ended on cross-memory line linename. The session identifier is sessionid. The job name of the session partner is jobname.
 Action
-None.
-
+    None.
 
 VIRX923E ERROR ON linename REQ reqtype R15 r15code RETCODE retcode ERRNO xxxxxxxx (dddddddd)
- 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
-VIR0X09
+    VIR0X09
 Meaning
-An error has occurred on cross-memory line linename. reqtype is the VIRXM request type, r15code and retcode are hexadecimal return codes, xxxxxxxx is the hexadecimal error code, and dddddddd is the decimal value of the low- order byte of the error code.
+    An error has occurred on cross-memory line linename. reqtype is the VIRXM request type, r15code and retcode are hexadecimal return codes, xxxxxxxx is the hexadecimal error code, and dddddddd is the decimal value of the low- order byte of the error code.
 Action
-Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
+    Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
 
 VIRX924E ERROR ON linename CONTEXT sessionid REQ reqtype RETCODE retcode ERRNO xxxxxxxx (dddddddd)
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIR0X09
+    VIR0X09
 Meaning
-An error has occurred on cross-memory line linename. with session identifier sessionid. reqtype is the VIRXM request type, retcode is the decimal return code, xxxxxxxx is the hexadecimal error code, and dddddddd is the decimal value of the low-order byte of the error code.
+    An error has occurred on cross-memory line linename. with session identifier sessionid. reqtype is the VIRXM request type, retcode is the decimal return code, xxxxxxxx is the hexadecimal error code, and dddddddd is the decimal value of the low-order byte of the error code.
 Action
-Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
+    Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
 
-3.66.   Messages VIRXOxxx
+2.66.   Messages VIRXOxxx
+=========================
 
 VIRXO01I XOT INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-The XOT line with external name linename and internal name n-xxxxxx has been initialised.
+    The XOT line with external name linename and internal name n-xxxxxx has been initialised.
 Action
-None.
+    None.
 
 VIRXO04I XOT LINE linename WAS STOPPED
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-The XOT line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
-
+    The XOT line with external name linename was stopped, either by console command, or by setting the “Possible calls” parameter to 0 in the line definition.
 Action
-None.
+    None.
 
 VIRXO05E linename UNDEFINED PARTNER n.n.n.n:p IS CALLING m.m.m.m:q
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-VIRTEL has rejected an incoming call from an XOT line. n.n.n.n:p represents the IP address and port of the caller (usually an XOT router), m.m.m.m:q represents the called IP address and port in VIRTEL. VIRTEL rejected the call because none of the XOT lines listening on address/port m.m.m.m:q specifies address n.n.n.n as partner.
+    VIRTEL has rejected an incoming call from an XOT line. n.n.n.n:p represents the IP address and port of the caller (usually an XOT router), m.m.m.m:q represents the called IP address and port in VIRTEL. VIRTEL rejected the call because none of the XOT lines listening on address/port m.m.m.m:q specifies address n.n.n.n as partner.
 Action
-Define an XOT line specifying m.m.m.m:q in the “Local ident” field and n.n.n.n:1998 in the “Remote ident” field. If necessary, use the xot-source parameter of the x25 route instruction in the router to ensure that the router presents the expected address to VIRTEL in its incoming calls. For additional information, refer to the section “Defining an XOT line” in the VIRTEL Connectivity Reference manual.
+    Define an XOT line specifying m.m.m.m:q in the “Local ident” field and n.n.n.n:1998 in the “Remote ident” field. If necessary, use the xot-source parameter of the x25 route instruction in the router to ensure that the router presents the expected address to VIRTEL in its incoming calls. For additional information, refer to the section “Defining an XOT line” in the VIRTEL Connectivity Reference manual.
 
 VIRXO06I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-The IP address and port number of the line with external name linename and internal name n-xxxxxx is treated as sharable with other TCP/IP lines as a result of the SHAREDA=Y parameter specified in the definition of line linename.
+    The IP address and port number of the line with external name linename and internal name n-xxxxxx is treated as sharable with other TCP/IP lines as a result of the SHAREDA=Y parameter specified in the definition of line linename.
 Action
-None.
+    None.
 
 VIRXO07I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-The IP address and port number of the line with external name linename and internal name n-xxxxxx is shared with another TCP/IP line. VIRTEL found the same address and port number specified in the definition of another line. Neither SHAREDA nor UNIQUEP were specified in the definition of line linename.
+    The IP address and port number of the line with external name linename and internal name n-xxxxxx is shared with another TCP/IP line. VIRTEL found the same address and port number specified in the definition of another line. Neither SHAREDA nor UNIQUEP were specified in the definition of line linename.
 Action
-None.
+    None.
 
 VIRXO11I termid CLEAR RECEIVED FROM REMOTE linename CAUSE=xx DIAG=yy
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-VIRTEL received an X25 CLEAR command from the router attached to the XOT line with external name linename. VIRTEL determined that the command was associated with CVC terminal termid. xx and yy are the X25 cause and diagnostic codes in hexadecimal. This message is suppressed if the cause and diagnostic codes are zero and the SILENCE parameter is specified in the VIRTCT.
-
+    VIRTEL received an X25 CLEAR command from the router attached to the XOT line with external name linename. VIRTEL determined that the command was associated with CVC terminal termid. xx and yy are the X25 cause and diagnostic codes in hexadecimal. This message is suppressed if the cause and diagnostic codes are zero and the SILENCE parameter is specified in the VIRTCT.
 Action
-If the cause and diagnostic codes are zero, this indicates a normal end of call from the remote partner. Otherwise, use the cause and diagnostic codes to determine why the router or the remote partner application issued the CLEAR.
+    If the cause and diagnostic codes are zero, this indicates a normal end of call from the remote partner. Otherwise, use the cause and diagnostic codes to determine why the router or the remote partner application issued the CLEAR.
 
 VIRXO51I termid CALLING x25callednumber VIA ROUTER ipaddr:port
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-VIRTEL is placing an outbound call to X25 number x25callednumber via the router whose IP address and port number is ipaddr:port. termid is the name of the VIRTEL terminal which represents the virtual circuit.
+    VIRTEL is placing an outbound call to X25 number x25callednumber via the router whose IP address and port number is ipaddr:port. termid is the name of the VIRTEL terminal which represents the virtual circuit.
 Action
-None.
+    None.
 
 VIRXO52I linename DECONNECTING termid
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-Terminal termid has been disconnected from the XOT line whose external name is linename.
+    Terminal termid has been disconnected from the XOT line whose external name is linename.
 Action
-None.
+    None.
 
 VIRXO53E linename HAS NO MORE PSEUDO TERMINALS
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-There are no more terminals associated with the XOT line whose external name is linename.
+    There are no more terminals associated with the XOT line whose external name is linename.
 Action
-Check the line definition. Add more terminals if necessary.
+    Check the line definition. Add more terminals if necessary.
 
 VIRXO98E termid ERROR errcode RECEIVING FROM SOCKET sockno
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-An error occurred when receiving a message from the router on an XOT line. termid is the name of the virtual circuit, if available, otherwise it is the external name of the XOT line. errcode is an error code whose meaning is:
-•   000D0001 : No session exists for this line.
-•   000D0002 : Unable to identify incoming message with an existing session.
-•   000D0003 : No more pseudo terminals, or line not linked to TCP.
-•   000D0004 : TCP/IP receive error; see preceding message VIRT923E or VIRT924E.
-•   000D0005 : Socket is closed.
-•   000D0006 : A message received on the XOT line does not conform to the XOT protocol. Either the version number in the XOT header is invalid, or the message length exceeds the negotiated packet size.
+    An error occurred when receiving a message from the router on an XOT line. termid is the name of the virtual circuit, if available, otherwise it is the external name of the XOT line. errcode is an error code whose meaning is:
+
+    - 000D0001 : No session exists for this line.
+    - 000D0002 : Unable to identify incoming message with an existing session.
+    - 000D0003 : No more pseudo terminals, or line not linked to TCP.
+    - 000D0004 : TCP/IP receive error; see preceding message VIRT923E or VIRT924E.
+    - 000D0005 : Socket is closed.
+    - 000D0006 : A message received on the XOT line does not conform to the XOT protocol. Either the version number in the XOT header is invalid, or the message length exceeds the negotiated packet size.
 
 Action
-If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table. Determine whether the router sent an invalid XOT message, and if so, perform the appropriate router diagnostic procedures. Otherwise contact technical support.
+    If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table. Determine whether the router sent an invalid XOT message, and if so, perform the appropriate router diagnostic procedures. Otherwise contact technical support.
 
 VIRXO99E termid ERROR errcode SENDING TO SOCKET sockno
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
-VIRXOT
+    VIRXOT
 Meaning
-An error occurred when sending a message to the router on an XOT line. termid is the name of the virtual circuit, if available, otherwise it is the external name of the XOT line. errcode is an error code whose meaning is:
-•   000B0001 : Invalid pseudo terminal.
-•   000B0002 : Message not identified with an active session.
-•   000B0003 : Line not linked to TCP stack.
-•   000B0004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.
-•   000B0005 : VIRTEL internal task dispatching error.
-•   000B0006 : Session cleared before message could be sent.
+    An error occurred when sending a message to the router on an XOT line. termid is the name of the virtual circuit, if available, otherwise it is the external name of the XOT line. errcode is an error code whose meaning is:
+
+    - 000B0001 : Invalid pseudo terminal.
+    - 000B0002 : Message not identified with an active session.
+    - 000B0003 : Line not linked to TCP stack.
+    - 000B0004 : TCP/IP send error; see preceding message VIRT923E or VIRT924E.
+    - 000B0005 : VIRTEL internal task dispatching error.
+    - 000B0006 : Session cleared before message could be sent.
 
 Action
-If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
+    If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
 
 .. |image1| image:: images/media/logo_virtel_web.png
             :scale: 50 % 
