@@ -42,5 +42,70 @@ Syspertec Communication
 .. _V457WN_Introduction:
 
 
+- 5434 - "DEFAULT-FIELD-WITH-CURSOR" has option of "NOFIELD". Prevents field from being treated as a default input field thereby displaying the wrong colour attribute.
+- 5436 - Correct error in "OCCURS-UNLIMITED" when analyzing JSON objects.
+- 5437 - Correct Display TCT output. Incorrect values for BFVSAM and BUFDATA. z/VSE only.
+- 5438 - Correct Display TCT Output. Last lines repeated.
+- 5439 - New TCT parameter for SECUR= keyword to support mixed case passwords.
+- 5440 - Fixed ASRA abend in Network Management Sub-Application.
+- 5443 - Support for Thai characters.
+- 5444 - TOP Secret support for mixed characters passwords.
+- 5445 - Correct spurious characters in SCENARIO TRACE.
+- 5446 - Correct HotSpot positioning.
+- 5447 - New setttings options in Miscellaneous bloc. LEFT and CENTER option control text alignment.
+- 5448 - Support special characters in pasword.
+- 5449 - Macro check box not rendered correctly.
+- 5450 - Add German translation for 5447.
+- 5451 - Re-instate W2HPARM.JS defaults.
+- 5452 - Support for Hebrew OldCode page IBM0803.
+- 5453 - CSS rules support for IE8.
+- 5455 - Correct "User Data" field in rules display.
+- 5456 - Security check on ForceLUNAME keyword of URL.
+- 5457 - Modification to z/VSE installtion to support z/VSE 6.2.
+- 5458 - Allow identification scenario to override relay name. New COPY$ RELAY option.
+- 5459 - Virtel batch now supports upload and download of TRSF elements.
+- 5460 - Allow users to modify settings in the display style VWA settings.
+- 5461 - Correct Empty settings page with IE8.
+- 5462 - Cache support for files larger than 30K.
+- 5463 - Fix bug in psedo terminal allocation.
+- 5464 - DDI updates. 
+- 5465 - Correct macro "Save" option.
+- 5467 - Remove misleading messages from VIRSV.
+- 5468 - Update the ARBO migration jobs to include DOC-DIR sub directory.
+- 5469 - Help panels can now be customized.
+- 5470 - Correct "shift" in display of first line.
+- 5471 - Fix ABEND D23-002.
+- 5472 - Correct alignment of "Time" column in VWM.
+- 5473 - ARBOLOAD now supports "option" parameter in transaction statement.
+- 5475 - New COPY$ SYSTEM-TO-VARIABLE option. (NAME-OF,TERMINAL).
+- 5476 - Fix to "option" attribute support.
+- 5477 - New setttings options in Miscellaneous bloc. LEFT-RIGHT text display. Support for Hebrew language.
+- 5478 - Fix ABEND C03 on shutdown.
+- 5479 - Fix "delete" in DDI.
+- 5481 - Add "StopBIDI" settings option to allow browser alignment to the right of a page.    
+- 5482 - Support right-to-left data entry. Hebrew support.
+- 5483 - Correct cursor setting after right-to-left toggle.
+- 5484 - Hotkey support for macros.
+- 5485 - Key mapping now supports ALT+numeric.
+- 5486 - Support of new NAME-OF (GROUP) option.
+- 5487 - Support of new macro refresh options. "Autorefresh", "once", "daily", "session" and "never".
+- 5488 - Correct key mappings display after "save".
+- 5489 - Fix bugs in DDI macro support.
+- 5490 - Option to disable "Long Poll" feature.
+- 5491 - Add print scenarios to SCE-DIR.     
+- 5492 - Correct SIGNON when % is in password.
+- 5493 - Fix ABEND S878-10.
+- 5494 - Correct VIRICON NACK protocol.
+- 5495 - Correct bug in "autoprint" feature.
+- 5496 - Add cucumber diagnostic support.
+- 5497 - Correct bug in upload 'MIME-TYPE application/json'
+- 5498 - New TCT parameter "WARNING=" to display message before license expires.
+- 5499 - JCL Clone parameter now supports 1 or 2 characters.
+- 5500 - Update USSMSG10 support to handle system symbolics.
+- 5501 - Allow Alt-ENTER to switch between L2R and R2L. Arabic 3270 support.
+- 5503 - Chrome Extension settings maintained on host.
+- 5504 - Support of "split input" fields.
+- 5505 - Fix loop in HTLM Security 4 support.
+
 .. |image1| image:: images/media/logo_virtel_web.png
             :scale: 50 % 
