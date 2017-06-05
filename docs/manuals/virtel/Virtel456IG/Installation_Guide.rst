@@ -8,9 +8,6 @@ Installation Guide
 
 **VIRTEL Installation Guide**
 
-.. danger:: This book is currently under construction. Do not use!
-
-
 Version : 4.56
 
 Release Date : 01 Sep 2016 Publication Date : 22/09/2016

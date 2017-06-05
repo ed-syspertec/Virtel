@@ -94,11 +94,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Audit, Operations and Performance</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#introduction">1. Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoring">1. Monitoring</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#monitoring-lines-and-terminals">1.1 Monitoring lines and terminals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-line-usage">Displaying Line Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#operator-commands">2.0 Operator Commands</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtel-commands">2 Virtel Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#displaying-line-usage">1.2 Displaying Line Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operations">2. Operations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#displaying-virtel-lines-and-terminals">2.1 Displaying VIRTEL Lines And Terminals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#starting-and-stopping-a-line">2.2 Starting and Stopping A Line</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#display-internal-memory-usage">2.3 Display Internal Memory Usage</a></li>
@@ -110,19 +109,17 @@
 <li class="toctree-l4"><a class="reference internal" href="#sending-a-mesage-to-virtel-multi-session-users">2.9 Sending a mesage to VIRTEL Multi-Session users</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#supressing-messages">2.10 Supressing messages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#patching-a-virtel-program">2.11 - Patching a Virtel Program</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virlog-trace-snap">3. VIRLOG, TRACE, SNAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#performance">3. Performance</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-virlog-file">3.1 The VIRLOG file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-virtel-log-file">3.2 The VIRTEL log file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtel-traces">3.3 Virtel traces</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtel-snap">3.4 VIRTEL SNAP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#statistics">4. Statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtel-trace">3.2 Virtel trace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#virtel-snap">3.3 VIRTEL SNAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#audit-and-statistics">4. Audit and Statistics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-virstat-file">4.1 The VIRSTAT file</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#statistics-file-management">4.2 Statistics file management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#smf-support">4.3 SMF Support</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-management">5 Memory management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-display-sub-application">5.1 Memory display Sub-Application</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-trace-management">6. Memory trace management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setting-memory-trace-in-the-virtct">6.2 Setting Memory Trace in the VIRTCT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-management">4.4 Memory management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory-trace-management">4.5 Memory trace management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-memory-trace-in-the-virtct">4.6 Setting Memory Trace in the VIRTCT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#a-appendix">A. Appendix</a></li>
 </ul>
 </li>
@@ -132,6 +129,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel456UG/User_Guide.html">User Guide</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-57">V4.57</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
@@ -186,10 +184,6 @@
 <span id="virtel456ap"></span><h1>Audit, Operations and Performance<a class="headerlink" href="#audit-operations-and-performance" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web1.png"><img alt="image_logo" src="../../../_images/logo_virtel_web1.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Audit, Operations and Performance</strong></p>
-<div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">This book is currently under construction. Do not use!</p>
-</div>
 <p>Version : 4.56</p>
 <p>Release Date : 01 Sep 2016 Publication Date : 22/09/2016</p>
 <p>Syspertec Communication</p>
@@ -211,8 +205,8 @@ part, the products or trademarks quoted herein.</p>
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
-<div class="section" id="introduction">
-<span id="v456ap-introduction"></span><h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="monitoring">
+<span id="v456ap-introduction"></span><h2>1. Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="monitoring-lines-and-terminals">
 <h2>1.1 Monitoring lines and terminals<a class="headerlink" href="#monitoring-lines-and-terminals" title="Permalink to this headline">¶</a></h2>
@@ -279,7 +273,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 </div>
 </div>
 <div class="section" id="displaying-line-usage">
-<h2>Displaying Line Usage<a class="headerlink" href="#displaying-line-usage" title="Permalink to this headline">¶</a></h2>
+<h2>1.2 Displaying Line Usage<a class="headerlink" href="#displaying-line-usage" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>To display the status and line usage place the cursor on the desired line in the Line Status
 Display screen and press [PF12].</p>
@@ -338,8 +332,8 @@ Display screen and press [PF12].</p>
 </dd>
 </dl>
 </div>
-<div class="section" id="operator-commands">
-<h2>2.0 Operator Commands<a class="headerlink" href="#operator-commands" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="operations">
+<h2>2. Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>VIRTEL allows certain functions to be controlled dynamically by
 console commands.</p>
@@ -347,8 +341,7 @@ console commands.</p>
 </div></blockquote>
 <div class="section" id="z-os-environment">
 <h3>2.0.1 z/OS Environment<a class="headerlink" href="#z-os-environment" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div>The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:</div></blockquote>
+<p>The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">stcvirte</span><span class="p">,</span><span class="n">virtel</span><span class="o">-</span><span class="n">command</span>
 </pre></div>
 </div>
@@ -357,9 +350,11 @@ console commands.</p>
 <dd>the name of the VIRTEL started task STC</dd>
 <dt>virtel-cmd</dt>
 <dd>a VIRTEL command, as described in the following section.</dd>
-<dt>2.0.1 z/VSE Environment</dt>
-<dd>To send a command to VIRTEL, issue the following command at the VSE operator console:</dd>
 </dl>
+</div>
+<div class="section" id="z-vse-environment">
+<h3>2.0.2 z/VSE Environment<a class="headerlink" href="#z-vse-environment" title="Permalink to this headline">¶</a></h3>
+<p>To send a command to VIRTEL, issue the following command at the VSE operator console:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">virtel</span><span class="p">,</span><span class="n">DATA</span><span class="o">=</span><span class="n">cirtel</span><span class="o">-</span><span class="n">command</span>
 </pre></div>
 </div>
@@ -382,9 +377,9 @@ console commands.</p>
 <span class="n">Fx</span><span class="o">-</span><span class="n">nnnnAR</span> <span class="mi">0015</span>
 </pre></div>
 </div>
-<p>..note:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Note</span> <span class="n">the</span> <span class="n">reply</span> <span class="n">number</span> <span class="p">(</span><span class="n">nnnn</span><span class="p">)</span> <span class="ow">and</span> <span class="n">issue</span> <span class="n">the</span> <span class="n">following</span> <span class="n">command</span><span class="p">:</span>
-</pre></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note the reply number (nnnn) and issue the following command:</p>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nnnn</span> <span class="n">virtel</span><span class="o">-</span><span class="n">cmd</span>
 </pre></div>
@@ -396,9 +391,6 @@ console commands.</p>
 <dd>A VIRTEL command, as described in the following section</dd>
 </dl>
 </div>
-</div>
-<div class="section" id="virtel-commands">
-<h2>2 Virtel Commands<a class="headerlink" href="#virtel-commands" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="displaying-virtel-lines-and-terminals">
 <h2>2.1 Displaying VIRTEL Lines And Terminals<a class="headerlink" href="#displaying-virtel-lines-and-terminals" title="Permalink to this headline">¶</a></h2>
@@ -701,9 +693,9 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 </dl>
 <p>The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.</p>
 </div>
-<div class="section" id="virlog-trace-snap">
-<h2>3. VIRLOG, TRACE, SNAP<a class="headerlink" href="#virlog-trace-snap" title="Permalink to this headline">¶</a></h2>
-<p>The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning of VIRTEL, to monitor its activity, or to diagnose possible problems:</p>
+<div class="section" id="performance">
+<h2>3. Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<p>The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning and performance of VIRTEL, to monitor its activity, or to diagnose possible problems:</p>
 <ul class="simple">
 <li>the CONSOLE file</li>
 <li>the VIRLOG file</li>
@@ -775,10 +767,9 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 <p>The RECEIVED and SENT columns contain the number of bytes received from and sent to the X25 line.</p>
 <p>The REMOTE ADDRESS column contains the caller X25 number for incoming calls, or the called X25 number for outgoing calls.</p>
 <p>The last column contains the PCNE call user data (if present), otherwise it contains the default entry point name for X25 calls specified by the DEFENTR parameter in the VIRTCT. For GATE calls this column is blank.</p>
-</div>
-<div class="section" id="the-virtel-log-file">
-<h2>3.2 The VIRTEL log file<a class="headerlink" href="#the-virtel-log-file" title="Permalink to this headline">¶</a></h2>
-<p>The VIRTEL log is written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.</p>
+<div class="section" id="the-virtel-logger">
+<h3>3.1.2 The VIRTEL logger<a class="headerlink" href="#the-virtel-logger" title="Permalink to this headline">¶</a></h3>
+<p>The VIRTEL log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.</p>
 <p>The figure below shows an example of JCL to extract and format the VIRTEL LOG entries recorded in the System Logger:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">LOGGER</span> <span class="n">PROC</span> <span class="n">P</span><span class="o">=</span>
 <span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0002B</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;&amp;P&#39;</span>
@@ -802,7 +793,7 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 </div>
 <p>The date format is yyyyddd.</p>
 <div class="section" id="examples">
-<h3>3.2.1 Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<h4>3.1.2.1 Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">COPY</span> <span class="n">Copy</span> <span class="nb">all</span> <span class="n">records</span>
 <span class="n">COPY</span><span class="p">(</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="n">Copy</span> <span class="n">records</span> <span class="n">older</span> <span class="n">than</span> <span class="mi">2</span> <span class="n">days</span>
 <span class="n">COPY</span><span class="p">(</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">Copy</span> <span class="n">up</span> <span class="n">to</span> <span class="n">yesterday</span>
@@ -816,8 +807,9 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 <p><em>Fig. 8  Example of VIRTEL LOGGER extraction parameter</em></p>
 </div>
 </div>
-<div class="section" id="virtel-traces">
-<h2>3.3 Virtel traces<a class="headerlink" href="#virtel-traces" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="virtel-trace">
+<h2>3.2 Virtel trace<a class="headerlink" href="#virtel-trace" title="Permalink to this headline">¶</a></h2>
 <p>All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.</p>
 <p>Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and “Activating and deactivating a terminal or line trace”).</p>
 <div class="admonition note">
@@ -834,7 +826,7 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 In <strong>VSE environment</strong>, the trace data is written to the POWER LST file of the VIRTEL partition.</p>
 <p>Activation and deactivation of a memory trace is performed by means of the MEMTRACE and NOMEMTRACE commands (see “Memory Trace Management”). The allocation memory is written in the SNAP file when a SNAP command is issued.</p>
 <div class="section" id="contents-of-the-trace">
-<h3>3.3.1 Contents of the trace<a class="headerlink" href="#contents-of-the-trace" title="Permalink to this headline">¶</a></h3>
+<h3>3.2.1 Contents of the trace<a class="headerlink" href="#contents-of-the-trace" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -936,25 +928,23 @@ VIRTEL and the host application.</td>
 </tbody>
 </table>
 </div></blockquote>
-</div>
 <div class="section" id="examples-of-traces">
-<h3>3.3.2 Examples of traces<a class="headerlink" href="#examples-of-traces" title="Permalink to this headline">¶</a></h3>
-<dl class="docutils">
-<dt>::</dt>
-<dd>LCL712 11A: from application SPCICST 13:05:47.48
-00000 F1C2 <em>1B * 099A95B4
+<h4>3.2.1.2 Examples of traces<a class="headerlink" href="#examples-of-traces" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>LCL712 11A: from application SPCICST 13:05:47.48
+00000 F1C2 *1B * 099A95B4
 LCL712 11A: from application SPCICST 13:05:47.49
-00000 F5C2114B E9131140 5B290242 F1C0F8E2 89879596 9540A396 40C3C9C3 E24011C1 *5B..Z.. $...1é8Signon to CICS .A</em> 099A95B4
+00000 F5C2114B E9131140 5B290242 F1C0F8E2 89879596 9540A396 40C3C9C3 E24011C1 *5B..Z.. $...1é8Signon to CICS .A* 099A95B4
 00020 40290242 F4C0F0C1 D7D7D3C9 C4290242 F5C0F0E2 D7C3C9C3 E2E34011 C8F02902 * ...4é0APPLID...5é0SPCICST .H0..* 099A95D4
-00040 42F4C0F0 E3A89785 40A896A4 9940A4A2 85998984 40819584 409781A2 A2A69699 <em>.4é0Type your userid and passwor</em> 099A95F4
-00060 846B40A3 88859540 979985A2 A240C5D5 E3C5D97A 114BD929 0242F4C0 F0E4A285 <em>d, then press ENTER:..R...4é0Use</em> 099A9614
-00080 99898440 4B404B40 4B404B29 0241F442 F5114BF1 1DF0114B F4290242 F4C0F0C7 <em>rid . . . ....4.5..1.0..4...4é0G</em> 099A9634
-000A0 9996A497 8984404B 404B404B 290241F4 42F5114C 4B1DF011 4CE92902 42F4C0F0 <em>roupid . . ....4.5.&lt;..0.&lt;Z...4é0</em> 099A9654
-000C0 D781A2A2 A6969984 404B404B 404B2903 41F442F5 C04C114D C11DF011 4DF92902 <em>Password . . ....4.5é&lt;.(A.0.(9..</em> 099A9674
-000E0 42F4C0F0 D3819587 A4818785 404B404B 404B2902 41F442F5 114E4C1D F01150D5 <em>.4é0Language . . ....4.5.+&lt;.0.&amp;N</em> 099A9694
-00100 290242F4 C0F0D585 A640D781 A2A2A696 9984404B 404B404B 290341F4 42F5C04C <em>...4é0New Password . . ....4.5é&lt;</em> 099A96B4
-00120 1150F11D F0115A50 1D7C115B 5B1DF011 5B602902 42F2C0F8 C4C6C8C3 C5F3F5F2 <em>.&amp;1.0.&amp;.to.$$.0.$-...2é8DFHCE352</em> 099A96D4</dd>
-</dl>
+00040 42F4C0F0 E3A89785 40A896A4 9940A4A2 85998984 40819584 409781A2 A2A69699 *.4é0Type your userid and passwor* 099A95F4
+00060 846B40A3 88859540 979985A2 A240C5D5 E3C5D97A 114BD929 0242F4C0 F0E4A285 *d, then press ENTER:..R...4é0Use* 099A9614
+00080 99898440 4B404B40 4B404B29 0241F442 F5114BF1 1DF0114B F4290242 F4C0F0C7 *rid . . . ....4.5..1.0..4...4é0G* 099A9634
+000A0 9996A497 8984404B 404B404B 290241F4 42F5114C 4B1DF011 4CE92902 42F4C0F0 *roupid . . ....4.5.&lt;..0.&lt;Z...4é0* 099A9654
+000C0 D781A2A2 A6969984 404B404B 404B2903 41F442F5 C04C114D C11DF011 4DF92902 *Password . . ....4.5é&lt;.(A.0.(9..* 099A9674
+000E0 42F4C0F0 D3819587 A4818785 404B404B 404B2902 41F442F5 114E4C1D F01150D5 *.4é0Language . . ....4.5.+&lt;.0.&amp;N* 099A9694
+00100 290242F4 C0F0D585 A640D781 A2A2A696 9984404B 404B404B 290341F4 42F5C04C *...4é0New Password . . ....4.5é&lt;* 099A96B4
+00120 1150F11D F0115A50 1D7C115B 5B1DF011 5B602902 42F2C0F8 C4C6C8C3 C5F3F5F2 *.&amp;1.0.&amp;.to.$$.0.$-...2é8DFHCE352* 099A96D4
+</pre></div>
+</div>
 <p><em>Fig. 9 Example of terminal trace (inbound 3270 terminal)</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.26
 00000 00000019 10010B96 00188019 13348330 0A420707 43030302 CC0300C4 80       * ....o .....c........... D.     * 0989117C
@@ -1033,8 +1023,9 @@ X001T007 XOT: OUTBOUND X25 COMMAND                          15:10:33.27
 <p><em>Fig. 11 Example of &#8220;trace by rule&#8221; (XOT terminal to application on /PCNE line)</em></p>
 </div>
 </div>
+</div>
 <div class="section" id="virtel-snap">
-<h2>3.4 VIRTEL SNAP<a class="headerlink" href="#virtel-snap" title="Permalink to this headline">¶</a></h2>
+<h2>3.3 VIRTEL SNAP<a class="headerlink" href="#virtel-snap" title="Permalink to this headline">¶</a></h2>
 <p>VIRTEL maintains an internal trace table in which it records  significant events which occur during VIRTEL processing. The SNAP command allows the administrator to obtain a snapshot listing of the contents of the trace table at a given point in time.</p>
 <p>The SNAP listing is primarily intended for use by VIRTEL development personnel and will normally need to be forwarded to Syspertec for analysis. For customer diagnostics, the TRACE command (described     above) may often be more useful.</p>
 <div class="admonition note">
@@ -1053,12 +1044,12 @@ In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER L
 </div>
 <p><img alt="image_05" src="../../../_images/image051.png" /></p>
 <p><em>Fig. 12 Example of SNAP listing</em></p>
-<p>3.4.1 Message-triggered SNAPMSG</p>
+<p>3.3.1 Message-triggered SNAPMSG</p>
 <p>The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).</p>
 <p>Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.</p>
 </div>
-<div class="section" id="statistics">
-<h2>4. Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="audit-and-statistics">
+<h2>4. Audit and Statistics<a class="headerlink" href="#audit-and-statistics" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="the-virstat-file">
 <h2>4.1 The VIRSTAT file<a class="headerlink" href="#the-virstat-file" title="Permalink to this headline">¶</a></h2>
@@ -1531,10 +1522,9 @@ SELDATE 01012010 30122011
 <p>Messages &#8220;VIR0612E VIRSTAT SMFWTM FAILED. RC=rc&#8221; and &#8220;VIR0611I VIRSTAT NOW RECORDING TO SMF&#8221; are in relation with SMF support. See &#8220;Virtel Messages and Operations&#8221; manual for more details.</p>
 </div>
 <div class="section" id="memory-management">
-<h2>5 Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
-</div>
+<h2>4.4 Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="memory-display-sub-application">
-<h2>5.1 Memory display Sub-Application<a class="headerlink" href="#memory-display-sub-application" title="Permalink to this headline">¶</a></h2>
+<h3>4.4.1 Memory display Sub-Application<a class="headerlink" href="#memory-display-sub-application" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display
 which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used
 by the administrator to help understand VIRTEL’s memory requirements during normal operation.</p>
@@ -1554,9 +1544,11 @@ screen similar to the example shown below. This screen represents the contents o
 <li>Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.</li>
 </ol>
 </div></blockquote>
+</div>
 <div class="section" id="memory-display-in-memory-test-mode">
-<h3>5.1.1 Memory display in Memory=Test mode.<a class="headerlink" href="#memory-display-in-memory-test-mode" title="Permalink to this headline">¶</a></h3>
+<h3>4.4.2 Memory display in Memory=Test mode.<a class="headerlink" href="#memory-display-in-memory-test-mode" title="Permalink to this headline">¶</a></h3>
 <p>If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.</p>
+<p><img alt="image_08" src="../../../_images/image081.png" /></p>
 <p><em>Fig. 26 - Memory display in MEMORY=TEST mode</em></p>
 <p>Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.</p>
 <p>Where the memory display occupies more than one screen, you can press [PF8] to view the following page, [PF7] to view the previous page, and [PF6] to go back to the first page.</p>
@@ -1571,9 +1563,9 @@ screen similar to the example shown below. This screen represents the contents o
 </div>
 </div>
 <div class="section" id="memory-trace-management">
-<h2>6. Memory trace management<a class="headerlink" href="#memory-trace-management" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="activing-the-memory-trace">
-<h3>6.1.1 Activing the memory trace<a class="headerlink" href="#activing-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<h2>4.5 Memory trace management<a class="headerlink" href="#memory-trace-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="activating-the-memory-trace">
+<h3>4.5.1 Activating the memory trace<a class="headerlink" href="#activating-the-memory-trace" title="Permalink to this headline">¶</a></h3>
 <p>A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMTRACE</span>
 </pre></div>
@@ -1586,7 +1578,7 @@ screen similar to the example shown below. This screen represents the contents o
 </div>
 </div>
 <div class="section" id="resetting-the-memory-trace">
-<h3>6.1.2 Resetting the memory trace<a class="headerlink" href="#resetting-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<h3>4.5.2 Resetting the memory trace<a class="headerlink" href="#resetting-the-memory-trace" title="Permalink to this headline">¶</a></h3>
 <p>A memory trace can be reseted by using the following command:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMTRACE</span><span class="p">,</span><span class="n">Clear</span>
 </pre></div>
@@ -1602,7 +1594,7 @@ screen similar to the example shown below. This screen represents the contents o
 </div>
 </div>
 <div class="section" id="stopping-the-memory-trace">
-<h3>6.1.3 Stopping the memory trace<a class="headerlink" href="#stopping-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<h3>4.5.3 Stopping the memory trace<a class="headerlink" href="#stopping-the-memory-trace" title="Permalink to this headline">¶</a></h3>
 <p>A memory trace can be stopped by using the following command:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOMEMTRACE</span>
 </pre></div>
@@ -1611,7 +1603,7 @@ screen similar to the example shown below. This screen represents the contents o
 </div>
 </div>
 <div class="section" id="setting-memory-trace-in-the-virtct">
-<h2>6.2 Setting Memory Trace in the VIRTCT<a class="headerlink" href="#setting-memory-trace-in-the-virtct" title="Permalink to this headline">¶</a></h2>
+<h2>4.6 Setting Memory Trace in the VIRTCT<a class="headerlink" href="#setting-memory-trace-in-the-virtct" title="Permalink to this headline">¶</a></h2>
 <p>A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.</p>
 <p>Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.</p>

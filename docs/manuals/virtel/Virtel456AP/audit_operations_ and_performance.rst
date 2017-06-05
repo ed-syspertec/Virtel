@@ -8,8 +8,6 @@ Audit, Operations and Performance
 
 **VIRTEL Audit, Operations and Performance**
 
-.. danger:: This book is currently under construction. Do not use!
-
 Version : 4.56
 
 Release Date : 01 Sep 2016 Publication Date : 22/09/2016
@@ -41,8 +39,8 @@ Syspertec Communication
 
 .. _V456AP_Introduction:
 
-1. Introduction
-===============
+1. Monitoring
+=============
 
 1.1 Monitoring lines and terminals
 ==================================
@@ -110,8 +108,8 @@ p
 
 To return to the configuration menu, press [PF3] or [Clear].
 
-Displaying Line Usage
-=====================
+1.2 Displaying Line Usage
+=========================
 
     To display the status and line usage place the cursor on the desired line in the Line Status
     Display screen and press [PF12].
@@ -175,8 +173,8 @@ Call Data (for HTTP lines)
 
     To return to the Lines Status Display, press [PF3]. To return to the Configuration Menu, press [Clear].
 
-2.0 Operator Commands
-=====================
+2. Operations
+=============
 
     VIRTEL allows certain functions to be controlled dynamically by
     console commands.
@@ -185,7 +183,7 @@ Call Data (for HTTP lines)
 
 2.0.1 z/OS Environment
 ----------------------
-    The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:
+The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:
 
 ::
 
@@ -197,8 +195,9 @@ stcvirte
 virtel-cmd
     a VIRTEL command, as described in the following section.
 
-2.0.1 z/VSE Environment 
-    To send a command to VIRTEL, issue the following command at the VSE operator console:
+2.0.2 z/VSE Environment
+----------------------- 
+To send a command to VIRTEL, issue the following command at the VSE operator console:
 
 ::
 
@@ -224,7 +223,7 @@ Fx
     AR 0015 1I40I READY
     Fx-nnnnAR 0015     
 
-..note::
+.. note::
     
     Note the reply number (nnnn) and issue the following command:
 
@@ -237,9 +236,6 @@ nnnn
 
 virtel-cmd
     A VIRTEL command, as described in the following section
-
-2 Virtel Commands
-=================
 
 2.1 Displaying VIRTEL Lines And Terminals
 =========================================
@@ -592,10 +588,10 @@ replace
 
 The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.
 
-3. VIRLOG, TRACE, SNAP
-======================
+3. Performance
+==============
 
-The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning of VIRTEL, to monitor its activity, or to diagnose possible problems:
+The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning and performance of VIRTEL, to monitor its activity, or to diagnose possible problems:
 
 -  the CONSOLE file
 
@@ -691,10 +687,10 @@ The REMOTE ADDRESS column contains the caller X25 number for incoming calls, or 
 
 The last column contains the PCNE call user data (if present), otherwise it contains the default entry point name for X25 calls specified by the DEFENTR parameter in the VIRTCT. For GATE calls this column is blank.
 
-3.2 The VIRTEL log file
-=======================
+3.1.2 The VIRTEL logger
+-----------------------
 
-The VIRTEL log is written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
+The VIRTEL log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
 
 The figure below shows an example of JCL to extract and format the VIRTEL LOG entries recorded in the System Logger:
 
@@ -723,8 +719,8 @@ The available JCL parameters are:
 
 The date format is yyyyddd.
 
-3.2.1 Examples
---------------
+3.1.2.1 Examples
+^^^^^^^^^^^^^^^^
 
 ::
 
@@ -739,8 +735,8 @@ The date format is yyyyddd.
 
 *Fig. 8  Example of VIRTEL LOGGER extraction parameter*
 
-3.3 Virtel traces
-=================
+3.2 Virtel trace
+================
 
 All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.
 
@@ -763,7 +759,7 @@ In **VSE environment**, the trace data is written to the POWER LST file of the V
 
 Activation and deactivation of a memory trace is performed by means of the MEMTRACE and NOMEMTRACE commands (see “Memory Trace Management”). The allocation memory is written in the SNAP file when a SNAP command is issued.
 
-3.3.1 Contents of the trace
+3.2.1 Contents of the trace
 ---------------------------
 
     +-----------+------------------------------------------+-----------------------------------------------+
@@ -802,10 +798,11 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
     +           +                                          + VIRTEL and the host application.              + 
     +-----------+------------------------------------------+-----------------------------------------------+ 
 
-3.3.2 Examples of traces
-------------------------
+3.2.1.2 Examples of traces
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
+
     LCL712 11A: from application SPCICST 13:05:47.48
     00000 F1C2 *1B * 099A95B4
     LCL712 11A: from application SPCICST 13:05:47.49
@@ -901,7 +898,7 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
 
 *Fig. 11 Example of "trace by rule" (XOT terminal to application on /PCNE line)*
 
-3.4 VIRTEL SNAP
+3.3 VIRTEL SNAP
 ===============
 
 VIRTEL maintains an internal trace table in which it records  significant events which occur during VIRTEL processing. The SNAP command allows the administrator to obtain a snapshot listing of the contents of the trace table at a given point in time.
@@ -931,14 +928,14 @@ In **z/VSE environment**, the SNAP output is written to the POWER LST file of th
 
 *Fig. 12 Example of SNAP listing*
 
-3.4.1 Message-triggered SNAPMSG
+3.3.1 Message-triggered SNAPMSG
 
 The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).
 
 Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.
 
-4. Statistics
-=============
+4. Audit and Statistics
+=======================
 
 4.1 The VIRSTAT file
 ====================
@@ -1477,11 +1474,11 @@ The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the
 
 Messages "VIR0612E VIRSTAT SMFWTM FAILED. RC=rc" and "VIR0611I VIRSTAT NOW RECORDING TO SMF" are in relation with SMF support. See "Virtel Messages and Operations" manual for more details.
 
-5 Memory management
-===================
+4.4 Memory management
+=====================
 
-5.1 Memory display Sub-Application
-==================================
+4.4.1 Memory display Sub-Application
+------------------------------------
 
 The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display
 which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used
@@ -1505,11 +1502,12 @@ Permanently allocated memory blocks are represented by the following character t
     5. Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.
     6. Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.
 
-5.1.1 Memory display in Memory=Test mode.
+4.4.2 Memory display in Memory=Test mode.
 -----------------------------------------
 
 If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
 
+|image_08|
 
 *Fig. 26 - Memory display in MEMORY=TEST mode*
 
@@ -1529,11 +1527,11 @@ The Memory display feature is a memory diagnostic tool created to trap possible 
     
     This diagnostic tool should only be used when recommended by Technical Support.
 
-6. Memory trace management
-==========================
+4.5 Memory trace management
+===========================
 
-6.1.1 Activing the memory trace
--------------------------------
+4.5.1 Activating the memory trace
+---------------------------------
 A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command
 
 ::
@@ -1548,7 +1546,7 @@ The will produce the following response:
     VIR0214I MEMORY TRACE STARTED
     VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
 
-6.1.2 Resetting the memory trace
+4.5.2 Resetting the memory trace
 --------------------------------
 A memory trace can be reseted by using the following command:-
 
@@ -1567,7 +1565,7 @@ The trace is stopped, memory blocks used by the memory trace are released, the t
     VIR0214I MEMORY TRACE STARTED
     VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
 
-6.1.3 Stopping the memory trace
+4.5.3 Stopping the memory trace
 -------------------------------
 A memory trace can be stopped by using the following command:-
 
@@ -1577,7 +1575,7 @@ A memory trace can be stopped by using the following command:-
 
 The trace is stopped, memory blocks used by the memory trace are released.
 
-6.2 Setting Memory Trace in the VIRTCT 
+4.6 Setting Memory Trace in the VIRTCT 
 ======================================
 A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.
 
@@ -1643,3 +1641,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image_05| image:: images/media/image05.png
 .. |image_06| image:: images/media/image06.png
 .. |image_07| image:: images/media/image07.png
+.. |image_08| image:: images/media/image08.png
