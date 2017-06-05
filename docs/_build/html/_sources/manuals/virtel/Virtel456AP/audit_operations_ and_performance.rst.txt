@@ -453,7 +453,7 @@ relayname
 
     NOTRACE,ALL
 
-This command does not affect any memory trace. To stop a memory trace, refer to `“Memory trace management”
+This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
 
 2.7 SNAP Command
 ================
@@ -713,16 +713,15 @@ The figure below shows an example of JCL to extract and format the VIRTEL LOG en
 The available JCL parameters are:
 
 ::
+
                 (>nnn)
     COPY [----------------------]
             (fromdate[,todate])
-
                 (>nnn)
     DELETE [--------------------]
                 (date)
 
-
-    The date format is yyyyddd.
+The date format is yyyyddd.
 
 3.2.1 Examples
 --------------
@@ -737,6 +736,7 @@ The available JCL parameters are:
     COPY(2015047,2015048) Copy records from 2015.047 thru to 2015.048 DELETE(2015047) Delete records prior to 2015.047
     COPY(>0),DELETE(>1) Will copy records from the previous and earlier,
     and will then delete from 2 days ago leaving about 24 hours of data in the log stream.
+
 *Fig. 8  Example of VIRTEL LOGGER extraction parameter*
 
 3.3 Virtel traces
@@ -744,7 +744,7 @@ The available JCL parameters are:
 
 All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.
 
-Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and `“Activating and deactivating a terminal or line trace”).
+Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and “Activating and deactivating a terminal or line trace”).
 
 .. note::
 
@@ -796,7 +796,7 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
     + 3270      + N/A                                      + The 3270 datastream between the terminal and  +  
     +           +                                          + VIRTEL, and the 3270 datastream between VIRTEL+
     +           +                                          + and the host application.                     + 
-    ------------+------------------------------------------+-----------------------------------------------+
+    +-----------+------------------------------------------+-----------------------------------------------+
     + PCNE      + N/A                                      + The Vidéotex datastream between the terminal  + 
     + (Minitel) +                                          + and VIRTEL, and the 3270 datastream between   + 
     +           +                                          + VIRTEL and the host application.              + 
@@ -819,6 +819,7 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
     000E0 42F4C0F0 D3819587 A4818785 404B404B 404B2902 41F442F5 114E4C1D F01150D5 *.4é0Language . . ....4.5.+<.0.&N* 099A9694
     00100 290242F4 C0F0D585 A640D781 A2A2A696 9984404B 404B404B 290341F4 42F5C04C *...4é0New Password . . ....4.5é<* 099A96B4
     00120 1150F11D F0115A50 1D7C115B 5B1DF011 5B602902 42F2C0F8 C4C6C8C3 C5F3F5F2 *.&1.0.&.to.$$.0.$-...2é8DFHCE352* 099A96D4
+
 *Fig. 9 Example of terminal trace (inbound 3270 terminal)*
 
 ::
@@ -917,7 +918,7 @@ Clearly, the greater the level of activity in the VIRTEL system, the quicker the
 
 As well as dumping the contents of the internal trace table, the SNAP command also dumps certain VIRTEL internal control blocks. A dump of the control blocks associated with a particular terminal may    optionally be requested.
 
-The SNAP command is described under the heading `“VIRTEL commands”. VIRTEL may also produce a SNAP listing automatically if a program check or other abend occurs during VIRTEL processing.
+The SNAP command is described under the heading “VIRTEL commands”. VIRTEL may also produce a SNAP listing automatically if a program check or other abend occurs during VIRTEL processing.
 
 In **z/OS environment**, the SNAP output is written to the SYSPRINT file in the VIRTEL started task. 
 In **z/VSE environment**, the SNAP output is written to the POWER LST file of the VIRTEL partition.
@@ -934,7 +935,7 @@ In **z/VSE environment**, the SNAP output is written to the POWER LST file of th
 
 The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).
 
-Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See `“VIRTEL commands”.
+Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.
 
 4. Statistics
 =============
@@ -1000,6 +1001,7 @@ For terminals which specify classic format recording (STATS=1), the  VIRSTAT rec
     116 to 116  Alphanumeric    Disconnection Type (T=by TIME-OUT)
     117 to 120  Hexadecimal     X25 units received (Fast-Connect)
     121 to 124  Hexadecimal     X25 units sent (Fast-Connect)
+
 *Fig. 13 Format of VIRSTAT record (classic format)*
 
 For NPSI Fast Connect lines, the X25 accounting statistics are recorded in billing units provided by NPSI at virtual circuit disconnection time. Their interpretation depends on the TAXUNIT parameter in the NPSI X25.MCH macro. Similarly, the session start and end times (Fast Connect only) are provided by NPSI and depend on the clock settings in the NCP. For other types of lines, accounting statistics and times are generated by VIRTEL.
@@ -1043,6 +1045,7 @@ For terminals which specify alternate X25 format recording (STATS=4), the VIRSTA
     116 to 116      Alphanumeric    Disconnection Type (T=by TIME-OUT)
     117 to 120      Hexadecimal     Unused
     121 to 124      Hexadecimal     Call duration in 1/100 second
+
 *Fig. 14 Format of VIRSTAT record (alternate X25 format)*
 
 For NPSI Fast Connect lines, the X25 session start and end times are provided by NPSI at virtual circuit disconnection time and depend on the clock settings in the NCP. For other types of lines, times are     generated by VIRTEL.
@@ -1074,7 +1077,8 @@ For terminals which specify web format recording (STATS=5 or STATS=6), the VIRST
     93 to 100       Alphanumeric    No of bytes sent
     101 to 108      Alphanumeric    Session start date (MM/DD/YY)
     109 to 116      Alphanumeric    Session start time (HH.MM.SS)
-    117 to 124      Alphanumeric    Session end time (HH.MM.SS)    
+    117 to 124      Alphanumeric    Session end time (HH.MM.SS)
+
 *Fig. 15 Format of VIRSTAT record (type 5 for Web Access)*
 
 This record type is written when 5 is specified in the STATS field of the terminal definition used for the HTTP line. If the terminal is disconnected by TIMEOUT, the “Error Code” field contains the word     “TIME”.
@@ -1099,6 +1103,7 @@ This record type is written when 5 is specified in the STATS field of the termin
     85 to 88        Hexadecimal     No of bytes sent
     89 to 108       Alphanumeric    User name
     109 to 124      Alphanumeric    URL parameter
+
 *Fig. 16 Format of VIRSTAT record (type 6 for Web Access)*
 
 For this record type, the counters are in binary, and the Session Date and Time fields are replaced by User name (20 bytes) and URL parameter (first 16 bytes).
@@ -1135,6 +1140,7 @@ The VIR0070 program allows the contents of the VIRSTAT file to be printed. The s
 Examples of the JCL required to execute this program are shown below:
 
 ::
+
     * $$ JOB JNM=VIRSTAT,CLASS=0,DISP=D
     * $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
     // JOB VIRPRNT
@@ -1144,6 +1150,7 @@ Examples of the JCL required to execute this program are shown below:
     /*
     /&
     * $$ EOJ
+
 *Fig. 17 VIR0070 JCL to print VIRSTAT file (VSE)*
 
 ::
@@ -1238,6 +1245,7 @@ In the VSE environment the VIRPRTST job, loaded into the POWER reader queue duri
     * * THE '*' CHARACTER ALLOWS A GENERIC EVALUATION.
     /&
     * $$ EOJ
+
 *Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)*
 
 4.2.4.2 z/OS
@@ -1301,6 +1309,7 @@ In the z/OS environment the JCL for executing the PRTSTATW program is supplied a
     //* 1...!....0....!....0....!....0....!....0....!....0....!....0...
     //* The '*' character allows a generic evaluation.
     // 
+
 *Fig. 20 PRTSTATW JCL to print VIRSTAT file in z/OS (type=6)*
 
 This JCL consists of two main steps:
@@ -1317,6 +1326,7 @@ The sort operates on one or more criteria, in ascending (A) or descending (D) mo
 Several examples of sort criteria are shown below for various fields: terminal (TERM), date (DATE), user name (USER), URL parameter (PARM)
 
 ::
+
     SORT FIELDS=(1,8,A) --> TERM A: ascending D: descending
     SORT FIELDS=(9,4,A) --> DATE
     SORT FIELDS=(89,20,A) --> USER
@@ -1325,6 +1335,7 @@ Several examples of sort criteria are shown below for various fields: terminal (
     SORT FIELDS=(1,8,A,89,20,A),FORMAT=CH sort by TERM first then USER
     SORT FIELDS=(17,15,A) --> IP Adress (for $ALL$ request)
     SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for $ALL$ request
+
 *Fig. 21 PRTSTATW JCL sort criteria*
 
 For example, to obtain a report in ascending order of session start date, specify the following statements in the SORT SYSIN:
@@ -1340,6 +1351,7 @@ For example, to obtain a report in ascending order of session start date, specif
 The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.
 
 ::
+
     First card (Required)
              1         2         3         4         5         6
     1...!....0....!....0....!....0....!....0....!....0....!....0...
@@ -1450,8 +1462,7 @@ For z/OS, sample JCL for the user counter report is supplied in the JCLCOUST mem
     18-01-2011      14:23:12                Total Calls ended by "Timeout"  : 00007
     18-01-2011      14:23:12                Total Defined different Users   : 00004
     18-01-2011      14:23:12                Total Calls without signature   : 00001
-    18-01-2011      14:23:12                End of execution
-    
+    18-01-2011      14:23:12                End of execution  
 
 *Fig 24. PRTSTATW user counter report*
 
@@ -1479,12 +1490,13 @@ by the administrator to help understand VIRTEL’s memory requirements during no
 To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a
 screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
 
-|image06|
+|image_06|
+
 *Fig 25. Memory display of VIRTEL address space*
 
 Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.
 
-Permanently allocated memory blocks are represented by the character: 
+Permanently allocated memory blocks are represented by the following character types: 
  
     1. To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space. 
     2. Temporarily allocated memory blocks. Blocks of this type are allocated and freed by VIRTEL as required.  
@@ -1520,12 +1532,9 @@ The Memory display feature is a memory diagnostic tool created to trap possible 
 6. Memory trace management
 ==========================
 
-6.1 Activing the memory trace
-=============================
-
-    A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing.
-
-    A memory trace can be activated by using the following command
+6.1.1 Activing the memory trace
+-------------------------------
+A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command
 
 ::
     
@@ -1539,192 +1548,91 @@ The will produce the following response:
     VIR0214I MEMORY TRACE STARTED
     VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
 
-6.2 Resetting the memory trace
-    A memory trace can be reseted by using
+6.1.2 Resetting the memory trace
+--------------------------------
+A memory trace can be reseted by using the following command:-
 
-    The trace is stopped, memory blocks used by the memory trace are
-    released, the trace is restarted.
+::
 
-    A memory trace can be stopped by using
+    MEMTRACE,Clear     
 
-    The trace is stopped, memory blocks used by the memory trace are
-    released.
+The trace is stopped, memory blocks used by the memory trace are released, the trace is restarted.
 
-    A memory trace can be activated from the VIRTCT by using MEMORY=TEST
-    or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message
-    VIR0218I display in the log, but only the benefit of recording the
-    history of memory allocations is kept in the SNAP.
+::
 
-    Since it is not possible to stop a trace initialized in this way, it
-    is best to only use this method to perform an analysis of the memory
-    allocation during the startup phase.
+    VIR0200I MEMTRACE,CLEAR
+    VIR0218I MEMORY TRACE FOUND 00000011 BLOCKS USING 0000000000053344 BYTES (00000000 MEGS)
+    VIR0216I CLEARING MEMORY TRACE
+    VIR0217I MEMORY TRACE CLEARED
+    VIR0214I MEMORY TRACE STARTED
+    VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
 
-    Once a memory trace activated, issuing a SNAP command produce a
-    report of the memory allocations history in the SNAP listing.
+6.1.3 Stopping the memory trace
+-------------------------------
+A memory trace can be stopped by using the following command:-
 
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     HTTP-SPV   |     0295   |     1EC67F80   | 9EB0E12A   |     VIR0T09 +206A   |     8040   | STILL HERE 1205180941   |     02000208   | 1F4C9220   |
-+================+============+================+============+=====================+============+=========================+================+============+
-|     HTTP-SPV   |     0295   |     1EC564E8   | 9EB10BDA   |     VIR0T09 +4B1A   |     8040   | STILL HERE 1205180852   |     04000173   | 1F4C9520   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     HTTP-SPV   |     0295   |     1EC56668   | 8003D63E   |     VIR0009 +54D6   |     8040   | STILL HERE 1205180792   |     04000270   | 1F088FA0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     HTTP-SPV   |     0294   |     208A5300   | 8003D458   |     VIR0009 +52F0   |     8040   | STILL HERE 1205180792   |     05008CF5   | 1F4C9320   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA015   |     0279   |     209AE880   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180750   |     03000F70   | 1F90A6E0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA014   |     0279   |     209AF7F8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180705   |     03000F70   | 1F90A660   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA013   |     0279   |     209B0770   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180668   |     03000F70   | 1F90A5E0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA012   |     0279   |     209B16E8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180630   |     03000F70   | 1F90A560   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA011   |     0279   |     209B2660   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180377   |     03000F70   | 1F90A4E0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA010   |     0279   |     209B35D8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180318   |     03000F70   | 1F90A460   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA009   |     0279   |     209B4550   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180241   |     03000F70   | 1F90A3E0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA008   |     0279   |     209B54C8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180149   |     03000F70   | 1F90A360   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA007   |     0279   |     209B6440   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180101   |     03000F70   | 1F90A2E0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA006   |     0279   |     209B73B8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205180066   |     03000F70   | 1F90A260   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA005   |     0279   |     209B8330   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179956   |     03000F70   | 1F90A1E0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA004   |     0279   |     209B92A8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179923   |     03000F70   | 1F90A160   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA003   |     0279   |     209BA220   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179881   |     03000F70   | 1F90A0E0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA002   |     0279   |     209BB198   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179849   |     03000F70   | 1F90A060   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA001   |     0279   |     209BC110   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179782   |     03000F70   | 1F4C9FE0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPVTA000   |     0279   |     209BD088   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179741   |     03000F70   | 1F4C9F20   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC009   |     0279   |     2099E880   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179715   |     03000F70   | 1F4C9E20   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC008   |     0279   |     2099F7F8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179689   |     03000F70   | 1F4C9D20   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC007   |     0279   |     209A0770   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179654   |     03000F70   | 1F4C9C20   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC006   |     0279   |     209A16E8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179607   |     03000F70   | 1F4C9B20   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC005   |     0279   |     209A2660   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179568   |     03000F70   | 1F4C9A20   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC004   |     0279   |     209A35D8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179526   |     03000F70   | 1F4C9920   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC003   |     0279   |     209A4550   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179488   |     03000F70   | 1F4C9820   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC002   |     0279   |     209A54C8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179458   |     03000F70   | 1F4C9620   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC001   |     0279   |     209A6440   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179377   |     03000F70   | 1F4C9420   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|     SPLOC000   |     0279   |     209A73B8   | 8003A9C0   |     VIR0009 +2858   |     8040   | STILL HERE 1205179338   |     03000F70   | 1F4C9120   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     1EC584A8   | 8001BFE4   |     VIR0000 +4224   |     8040   | STILL HERE 1205122226   |     04000270   | 1EC48F00   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     1EC58720   | 8001BFE4   |     VIR0000 +4224   |     8040   | STILL HERE 1205122225   |     04000270   | 1EC48F20   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     1EC58998   | 8001BFE4   |     VIR0000 +4224   |     8040   | STILL HERE 1205122225   |     04000270   | 1EC48F40   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     1EC58C10   | 8001BFE4   |     VIR0000 +4224   |     8040   | STILL HERE 1205122225   |     04000270   | 1EC48F60   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     1EC58E88   | 8001BF68   |     VIR0000 +41A8   |     8040   | STILL HERE 1205122225   |     04000170   | 1EC48F80   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010E500   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122223   |     01000250   | 1EC48FA0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010E758   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122223   |     01000250   | 1EC48FC0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010E9B0   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122222   |     01000250   | 1EC48FE0   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010EC08   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122222   |     01000250   | 1EC47000   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010EE60   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122221   |     01000250   | 1EC47020   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010F0B8   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122220   |     01000250   | 1EC47040   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010F310   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122220   |     01000250   | 1EC47060   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
-|                |     0000   |     0010F568   | 8001EE2A   |     VIR0000 +706A   |     8040   | STILL HERE 1205122220   |     01000250   | 1EC47080   |
-+----------------+------------+----------------+------------+---------------------+------------+-------------------------+----------------+------------+
+::
 
-    *Example of a memory allocataion history*
+    NOMEMTRACE
 
-1.  Line or terminal name for which memory allocation is performed. This
-    information is omitted when the allocation relates VIRTEL itself.
+The trace is stopped, memory blocks used by the memory trace are released.
 
-2.  Task number behind the allocation request.
+6.2 Setting Memory Trace in the VIRTCT 
+======================================
+A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.
 
-3.  Register 15 value.
+Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
+Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.
 
-4.  Register 14 value.
+|image_07|
 
-5.  Program name + offset of the origin request.
+*Fig. 27 Example of a memory allocataion history*
 
-6.  Memory allocation type. (8040 = GETMAIN).
+Column Explanations
+    1. Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.
+    2. Task number behind the allocation request.
+    3. Register 14 value.
+    4. Register 15 value.
+    5. Program name + offset of the origin request.
+    6. Memory allocation type. (8040 = GETMAIN).
+    7. Memory block state.
+    8.  Time of the allocation.
+    9.  Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.
+    10. Reserved for internal use.
 
-7.  Memory block state.
+Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
 
-8.  Time of the allocation.
+A. Appendix
+===========
 
-9.  Type and size of the allocation. The two first bytes represents the
-    type of memory allocated (See `“Memory display <#_bookmark117>`__
-    `of VIRTEL address space”, page 42 <#_bookmark117>`__ for a complete
-    description of the memory block type.). The six last bytes
-    represents the size of the memory block allocated.
+A.1 Trademarks
+--------------
 
-10. Reserved for internal use.
+SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec Communication Group, registered in France and other countries.
 
-    Tracing memory activity can produce an important overhead estimated
-    to 20-30% of the activity. When using MEMTRACE command, the memory
-    previously allocated to records history is released.
+IBM, VTAM, CICS, IMS, RACF, DB2, MVS, WebSphere, MQSeries, System z are trademarks or registered trademarks of International Business Machines Corp., registered in United States and other countries.
 
-10. Trademarks
-==============
+Adobe, Acrobat, PostScript and all Adobe-based trademarks are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and other countries.
 
-    SysperTec, the SysperTec logo, syspertec.com and VIRTEL are
-    trademarks or registered trademarks of SysperTec Communication
-    Group, registered in France and other countries.
+Microsoft, Windows, Windows NT, and the Windows logo are trademarks of Microsoft Corporation in the United States and other countries.
 
-    IBM, VTAM, CICS, IMS, RACF, DB2, z/OS, WebSphere, MQSeries, System z
-    are trademarks or registered trademarks of International Business
-    Machines Corp., registered in United States and other countries.
+UNIX is a registered trademark of The Open Group in the United States and other countries. Java and all Java-based trademarks and logos are trademarks or registered trademarks of Oracle and/or its affiliates.
 
-    Adobe, Acrobat, PostScript and all Adobe-based trademarks are either
-    registered trademarks or trademarks of Adobe Systems Incorporated in
-    the United States and other countries.
+Linux is a trademark of Linus Torvalds in the United States, other countries, or both. 
 
-    Microsoft, Windows, Windows NT, and the Windows logo are trademarks
-    of Microsoft Corporation in the United States and other countries.
+Other company, product, or service names may be trademarks or service names of others.
 
-    UNIX is a registered trademark of The Open Group in the United
-    States and other countries.
+A.2. Open Source Software
+-------------------------
 
-    Java and all Java-based trademarks and logos are trademarks or
-    registered trademarks of Oracle and/or its affiliates. Linux is a
-    trademark of Linus Torvalds in the United States, other countries,
-    or both.
+The current VIRTEL Web Access product uses the following open source software:
 
-    Other company, product, or service names may be trademarks or
-    service names of others.
-
-    The current VIRTEL Web Access product uses the following open source
-    software: jQuery
-
-    Under MIT license
-
-    `https://jquery.org/license/ <#_bookmark0>`__.
-
-    StoreJson
-
-    Under MIT license
-    `https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7 <#_bookmark0>`__.
-
-    jQuery\_UI
-
-    Under MIT license http://en.wikipedia.org/wiki/JQuery_UI.
+- jQuery 
+    Under MIT license - https://jquery.org/license/
+- StoreJson
+    Under MIT license - https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7
+- jQuery_UI
+    Under MIT license - http://en.wikipedia.org/wiki/JQuery_UI
 
 .. |image_logo| image:: images/media/logo_virtel_web.png
             :scale: 50 % 
@@ -1734,3 +1642,4 @@ The will produce the following response:
 .. |image_04| image:: images/media/image04.png
 .. |image_05| image:: images/media/image05.png
 .. |image_06| image:: images/media/image06.png
+.. |image_07| image:: images/media/image07.png

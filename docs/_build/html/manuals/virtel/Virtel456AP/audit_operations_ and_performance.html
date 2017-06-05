@@ -122,8 +122,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#memory-management">5 Memory management</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memory-display-sub-application">5.1 Memory display Sub-Application</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memory-trace-management">6. Memory trace management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#activing-the-memory-trace">6.1 Activing the memory trace</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#trademarks">10. Trademarks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-memory-trace-in-the-virtct">6.2 Setting Memory Trace in the VIRTCT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-appendix">A. Appendix</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel456CN/connectivity_guide.html">Connectivity Reference</a></li>
@@ -223,7 +223,7 @@ their respective owners.</p>
 <p>When the security subsystem is active, access to Line Status sub-application from the Configuration Menu or the Sub- Application Menu is controlled by the resource $$UTIL$$.
 When accessed by a transaction, normal transaction security rules will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.</p>
 <p>The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.</p>
-<p><img alt="image_01" src="../../../_images/image011.png" /></p>
+<p><img alt="image_01" src="../../../_images/image012.png" /></p>
 <p><em>Fig.1 - Line Status Display screen</em></p>
 <dl class="docutils">
 <dt>STATUS OF-LINES</dt>
@@ -286,7 +286,7 @@ Display screen and press [PF12].</p>
 <p>Security rules are the same as those which apply to the previous screen.</p>
 <p>This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:</p>
 </div></blockquote>
-<p><img alt="image_02" src="../../../_images/image021.png" /></p>
+<p><img alt="image_02" src="../../../_images/image022.png" /></p>
 <p><em>Fig.2 - Line Usage Detail Display screen</em></p>
 <dl class="docutils">
 <dt>ACTIVE TERMINALS for LINE</dt>
@@ -554,7 +554,7 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <dd>relay associated to the terminal</dd>
 </dl>
 <p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
-<p><img alt="image_03" src="../../../_images/image03.png" />
+<p><img alt="image_03" src="../../../_images/image031.png" />
 <em>Fig.3 - Associated relay names</em></p>
 <dl class="docutils">
 <dt>linename</dt>
@@ -588,7 +588,7 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">ALL</span>
 </pre></div>
 </div>
-<p>This command does not affect any memory trace. To stop a memory trace, refer to <a href="#id1"><span class="problematic" id="id2">`</span></a>“Memory trace management”</p>
+<p>This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”</p>
 </div>
 </div>
 <div class="section" id="snap-command">
@@ -719,7 +719,7 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <p class="first admonition-title">Note</p>
 <p class="last">The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.</p>
 </div>
-<p><img alt="image_04" src="../../../_images/image04.png" />
+<p><img alt="image_04" src="../../../_images/image041.png" />
 <em>Fig. 4 Example of CONSOLE file</em></p>
 </div>
 <div class="section" id="the-virlog-file">
@@ -792,22 +792,15 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 </pre></div>
 </div>
 <p>The available JCL parameters are:</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><blockquote class="first">
-<div>(&gt;nnn)</div></blockquote>
-<dl class="docutils">
-<dt>COPY [&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-]</dt>
-<dd><p class="first">(fromdate[,todate])</p>
-<blockquote class="last">
-<div>(&gt;nnn)</div></blockquote>
-</dd>
-<dt>DELETE [&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;]</dt>
-<dd>(date)</dd>
-</dl>
-<p class="last">The date format is yyyyddd.</p>
-</dd>
-</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span>            <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>
+<span class="n">COPY</span> <span class="p">[</span><span class="o">----------------------</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">fromdate</span><span class="p">[,</span><span class="n">todate</span><span class="p">])</span>
+            <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>
+<span class="n">DELETE</span> <span class="p">[</span><span class="o">--------------------</span><span class="p">]</span>
+            <span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The date format is yyyyddd.</p>
 <div class="section" id="examples">
 <h3>3.2.1 Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">COPY</span> <span class="n">Copy</span> <span class="nb">all</span> <span class="n">records</span>
@@ -826,7 +819,7 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 <div class="section" id="virtel-traces">
 <h2>3.3 Virtel traces<a class="headerlink" href="#virtel-traces" title="Permalink to this headline">¶</a></h2>
 <p>All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.</p>
-<p>Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and <a href="#id3"><span class="problematic" id="id4">`</span></a>“Activating and deactivating a terminal or line trace”).</p>
+<p>Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and “Activating and deactivating a terminal or line trace”).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A terminal or line trace remains active until a corresponding NOTRACE command is issued or until the VIRTEL started task terminates.</p>
@@ -921,16 +914,27 @@ and VIRTEL.</td>
 </tr>
 <tr class="row-odd"></tr>
 <tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="4">3270</td>
+<td rowspan="4">N/A</td>
+<td rowspan="4">The 3270 datastream between the terminal and
+VIRTEL, and the 3270 datastream between VIRTEL
+and the host application.</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td rowspan="4">PCNE
+(Minitel)</td>
+<td rowspan="4">N/A</td>
+<td rowspan="4">The Vidéotex datastream between the terminal
+and VIRTEL, and the 3270 datastream between
+VIRTEL and the host application.</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"></tr>
+<tr class="row-even"></tr>
 </tbody>
 </table>
-<ul class="simple">
-<li>FASTC     +                                          + and VIRTEL.                                   +</li>
-</ul>
-<p>&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+
-+ PCNE      + N/A                                      + The Vidéotex datastream between the terminal  +
-+ (Minitel) +                                          + and VIRTEL, and the 3270 datastream between   +
-+           +                                          + VIRTEL and the host application.              +
-+&#8212;&#8212;&#8212;&#8211;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8211;+</p>
 </div></blockquote>
 </div>
 <div class="section" id="examples-of-traces">
@@ -1040,18 +1044,18 @@ X001T007 XOT: OUTBOUND X25 COMMAND                          15:10:33.27
 <p>The internal trace table is recorded in a circular fashion, so that each new event added to the table overlays and replaces the oldest event in the table. The table contains a fixed number of event slots (determined by the TRACBIG parameter in the VIRTCT), and additionally certain events may have a variable amount (up to 256 bytes) of data recorded. The variable data is stored in a separate area whose size is determined by the TRACEB parameter in the VIRTCT, and this area is also filled in a circular manner, with the oldest information being dropped from the table when new information is added. Thus, depending on the values of the TRACBIG and TRACB parameters, older entries in the trace table may no longer have data associated with them.</p>
 <p>Clearly, the greater the level of activity in the VIRTEL system, the quicker the trace table will wrap and information will be pushed out to make way for new entries. Thus, in order for the SNAP listing to     provide useful information, the size of the trace table and its associated buffer area must be adequate for the level of system activity, and the SNAP command must be issued as quickly as possible after the event under investigation occurs. In some cases it may be necessary to use an automation tool to issue the SNAP command immediately following the appearance of a certain console message.</p>
 <p>As well as dumping the contents of the internal trace table, the SNAP command also dumps certain VIRTEL internal control blocks. A dump of the control blocks associated with a particular terminal may    optionally be requested.</p>
-<p>The SNAP command is described under the heading <a href="#id5"><span class="problematic" id="id6">`</span></a>“VIRTEL commands”. VIRTEL may also produce a SNAP listing automatically if a program check or other abend occurs during VIRTEL processing.</p>
+<p>The SNAP command is described under the heading “VIRTEL commands”. VIRTEL may also produce a SNAP listing automatically if a program check or other abend occurs during VIRTEL processing.</p>
 <p>In <strong>z/OS environment</strong>, the SNAP output is written to the SYSPRINT file in the VIRTEL started task.
 In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER LST file of the VIRTEL partition.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.</p>
 </div>
-<p><img alt="image_05" src="../../../_images/image05.png" /></p>
+<p><img alt="image_05" src="../../../_images/image051.png" /></p>
 <p><em>Fig. 12 Example of SNAP listing</em></p>
 <p>3.4.1 Message-triggered SNAPMSG</p>
 <p>The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).</p>
-<p>Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See <a href="#id7"><span class="problematic" id="id8">`</span></a>“VIRTEL commands”.</p>
+<p>Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.</p>
 </div>
 <div class="section" id="statistics">
 <h2>4. Statistics<a class="headerlink" href="#statistics" title="Permalink to this headline">¶</a></h2>
@@ -1229,21 +1233,17 @@ the records are buffered in memory before being written in block.</p>
 <h3>4.2.3 Printing the contents of the VIRSTAT file (X25)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-x25" title="Permalink to this headline">¶</a></h3>
 <p>The VIR0070 program allows the contents of the VIRSTAT file to be printed. The source for this program is supplied in the SSL (VSE) or in the SAMPLIB (z/OS) and you can use this as the basis of a     user-written program to print statistics.</p>
 <p>Examples of the JCL required to execute this program are shown below:</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><ul class="first simple">
-<li>$$ JOB JNM=VIRSTAT,CLASS=0,DISP=D</li>
-<li>$$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)</li>
-</ul>
-<p class="last">// JOB VIRPRNT
-// LIBDEF <em>,SEARCH=VIRT442.SUBLIB
-// DLBL STAT,&#8217;VIRTEL.VIRSTAT.ESDS&#8217;,,VSAM,CAT=VSESPUC
+<div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRSTAT,CLASS=0,DISP=D
+* $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
+// JOB VIRPRNT
+// LIBDEF *,SEARCH=VIRT442.SUBLIB
+// DLBL STAT,&#39;VIRTEL.VIRSTAT.ESDS&#39;,,VSAM,CAT=VSESPUC
 // EXEC VIR0070,SIZE=AUTO
-/</em>
+/*
 /&amp;
-* $$ EOJ</p>
-</dd>
-</dl>
+* $$ EOJ
+</pre></div>
+</div>
 <p><em>Fig. 17 VIR0070 JCL to print VIRSTAT file (VSE)</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRSTAT</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">USER</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">TRI</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">SORT</span>
@@ -1407,17 +1407,16 @@ SELTERM DEVTA* CLVTA*
 <p>The sort requirements are determined by the type of report desired. Since the PRTSTATW program offers the option of selecting records and also offers up to two levels of report break to allow printing of subtotals, it is important to specify the appropriate sort criteria to obtain the correct result.</p>
 <p>The sort operates on one or more criteria, in ascending (A) or descending (D) mode. You should adapt the SORT SYSIN according to the syntax of the specific SORT program being used.</p>
 <p>Several examples of sort criteria are shown below for various fields: terminal (TERM), date (DATE), user name (USER), URL parameter (PARM)</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>SORT FIELDS=(1,8,A) &#8211;&gt; TERM A: ascending D: descending
-SORT FIELDS=(9,4,A) &#8211;&gt; DATE
-SORT FIELDS=(89,20,A) &#8211;&gt; USER
-SORT FIELDS=(109,16,A) &#8211;&gt; PARM
+<div class="highlight-default"><div class="highlight"><pre><span></span>SORT FIELDS=(1,8,A) --&gt; TERM A: ascending D: descending
+SORT FIELDS=(9,4,A) --&gt; DATE
+SORT FIELDS=(89,20,A) --&gt; USER
+SORT FIELDS=(109,16,A) --&gt; PARM
 SORT FIELDS=(1,8,A,),FORMAT=CH sort by TERM
 SORT FIELDS=(1,8,A,89,20,A),FORMAT=CH sort by TERM first then USER
-SORT FIELDS=(17,15,A) &#8211;&gt; IP Adress (for $ALL$ request)
-SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for $ALL$ request</dd>
-</dl>
+SORT FIELDS=(17,15,A) --&gt; IP Adress (for $ALL$ request)
+SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for $ALL$ request
+</pre></div>
+</div>
 <p><em>Fig. 21 PRTSTATW JCL sort criteria</em></p>
 <p>For example, to obtain a report in ascending order of session start date, specify the following statements in the SORT SYSIN:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
@@ -1429,16 +1428,12 @@ SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for $ALL$ request</dd>
 <div class="section" id="the-prtstatw-program">
 <h4>4.2.4.4 The PRTSTATW program<a class="headerlink" href="#the-prtstatw-program" title="Permalink to this headline">¶</a></h4>
 <p>The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd><dl class="first docutils">
-<dt>First card (Required)</dt>
-<dd>1         2         3         4         5         6</dd>
-</dl>
-<p class="last">1...!....0....!....0....!....0....!....0....!....0....!....0...
-PRTSTATW PRINT                BREAK USER          NNN  PPPP</p>
-</dd>
-</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span>First card (Required)
+         1         2         3         4         5         6
+1...!....0....!....0....!....0....!....0....!....0....!....0...
+PRTSTATW PRINT                BREAK USER          NNN  PPPP
+</pre></div>
+</div>
 <p><em>Fig.22 PRTSTATW first SYSIN card</em></p>
 <dl class="docutils">
 <dt>Columns 1 to 8</dt>
@@ -1545,10 +1540,10 @@ which shows the allocation of VIRTEL memory by function. VIRTEL manages its own 
 by the administrator to help understand VIRTEL’s memory requirements during normal operation.</p>
 <p>To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a
 screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.</p>
-<p><a href="#id9"><span class="problematic" id="id10">|image06|</span></a>
-<em>Fig 25. Memory display of VIRTEL address space</em></p>
+<p><img alt="image_06" src="../../../_images/image061.png" /></p>
+<p><em>Fig 25. Memory display of VIRTEL address space</em></p>
 <p>Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.</p>
-<p>Permanently allocated memory blocks are represented by the character:</p>
+<p>Permanently allocated memory blocks are represented by the following character types:</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space.</li>
@@ -1577,13 +1572,9 @@ screen similar to the example shown below. This screen represents the contents o
 </div>
 <div class="section" id="memory-trace-management">
 <h2>6. Memory trace management<a class="headerlink" href="#memory-trace-management" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="activing-the-memory-trace">
-<h2>6.1 Activing the memory trace<a class="headerlink" href="#activing-the-memory-trace" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing.</p>
-<p>A memory trace can be activated by using the following command</p>
-</div></blockquote>
+<h3>6.1.1 Activing the memory trace<a class="headerlink" href="#activing-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<p>A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMTRACE</span>
 </pre></div>
 </div>
@@ -1593,537 +1584,90 @@ screen similar to the example shown below. This screen represents the contents o
 <span class="n">VIR0218I</span> <span class="n">MEMORY</span> <span class="n">TRACE</span> <span class="n">FOUND</span> <span class="mi">00000000</span> <span class="n">BLOCKS</span> <span class="n">USING</span> <span class="mi">0000000000000000</span> <span class="n">BYTES</span> <span class="p">(</span><span class="mi">00000000</span> <span class="n">MEGS</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="resetting-the-memory-trace">
+<h3>6.1.2 Resetting the memory trace<a class="headerlink" href="#resetting-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<p>A memory trace can be reseted by using the following command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMTRACE</span><span class="p">,</span><span class="n">Clear</span>
+</pre></div>
+</div>
+<p>The trace is stopped, memory blocks used by the memory trace are released, the trace is restarted.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0200I</span> <span class="n">MEMTRACE</span><span class="p">,</span><span class="n">CLEAR</span>
+<span class="n">VIR0218I</span> <span class="n">MEMORY</span> <span class="n">TRACE</span> <span class="n">FOUND</span> <span class="mi">00000011</span> <span class="n">BLOCKS</span> <span class="n">USING</span> <span class="mi">0000000000053344</span> <span class="n">BYTES</span> <span class="p">(</span><span class="mi">00000000</span> <span class="n">MEGS</span><span class="p">)</span>
+<span class="n">VIR0216I</span> <span class="n">CLEARING</span> <span class="n">MEMORY</span> <span class="n">TRACE</span>
+<span class="n">VIR0217I</span> <span class="n">MEMORY</span> <span class="n">TRACE</span> <span class="n">CLEARED</span>
+<span class="n">VIR0214I</span> <span class="n">MEMORY</span> <span class="n">TRACE</span> <span class="n">STARTED</span>
+<span class="n">VIR0218I</span> <span class="n">MEMORY</span> <span class="n">TRACE</span> <span class="n">FOUND</span> <span class="mi">00000000</span> <span class="n">BLOCKS</span> <span class="n">USING</span> <span class="mi">0000000000000000</span> <span class="n">BYTES</span> <span class="p">(</span><span class="mi">00000000</span> <span class="n">MEGS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stopping-the-memory-trace">
+<h3>6.1.3 Stopping the memory trace<a class="headerlink" href="#stopping-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<p>A memory trace can be stopped by using the following command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOMEMTRACE</span>
+</pre></div>
+</div>
+<p>The trace is stopped, memory blocks used by the memory trace are released.</p>
+</div>
+</div>
+<div class="section" id="setting-memory-trace-in-the-virtct">
+<h2>6.2 Setting Memory Trace in the VIRTCT<a class="headerlink" href="#setting-memory-trace-in-the-virtct" title="Permalink to this headline">¶</a></h2>
+<p>A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.</p>
+<p>Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
+Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.</p>
+<p><img alt="image_07" src="../../../_images/image071.png" /></p>
+<p><em>Fig. 27 Example of a memory allocataion history</em></p>
 <dl class="docutils">
-<dt>6.2 Resetting the memory trace</dt>
-<dd><p class="first">A memory trace can be reseted by using</p>
-<p>The trace is stopped, memory blocks used by the memory trace are
-released, the trace is restarted.</p>
-<p>A memory trace can be stopped by using</p>
-<p>The trace is stopped, memory blocks used by the memory trace are
-released.</p>
-<p>A memory trace can be activated from the VIRTCT by using MEMORY=TEST
-or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message
-VIR0218I display in the log, but only the benefit of recording the
-history of memory allocations is kept in the SNAP.</p>
-<p>Since it is not possible to stop a trace initialized in this way, it
-is best to only use this method to perform an analysis of the memory
-allocation during the startup phase.</p>
-<p class="last">Once a memory trace activated, issuing a SNAP command produce a
-report of the memory allocations history in the SNAP listing.</p>
+<dt>Column Explanations</dt>
+<dd><ol class="first last arabic simple">
+<li>Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.</li>
+<li>Task number behind the allocation request.</li>
+<li>Register 14 value.</li>
+<li>Register 15 value.</li>
+<li>Program name + offset of the origin request.</li>
+<li>Memory allocation type. (8040 = GETMAIN).</li>
+<li>Memory block state.</li>
+<li>Time of the allocation.</li>
+<li>Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.</li>
+<li>Reserved for internal use.</li>
+</ol>
 </dd>
 </dl>
-<table border="1" class="docutils">
-<colgroup>
-<col width="11%" />
-<col width="8%" />
-<col width="11%" />
-<col width="8%" />
-<col width="15%" />
-<col width="8%" />
-<col width="18%" />
-<col width="11%" />
-<col width="8%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">HTTP-SPV</th>
-<th class="head">0295</th>
-<th class="head">1EC67F80</th>
-<th class="head">9EB0E12A</th>
-<th class="head">VIR0T09 +206A</th>
-<th class="head">8040</th>
-<th class="head">STILL HERE 1205180941</th>
-<th class="head">02000208</th>
-<th class="head">1F4C9220</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>HTTP-SPV</td>
-<td>0295</td>
-<td>1EC564E8</td>
-<td>9EB10BDA</td>
-<td>VIR0T09 +4B1A</td>
-<td>8040</td>
-<td>STILL HERE 1205180852</td>
-<td>04000173</td>
-<td>1F4C9520</td>
-</tr>
-<tr class="row-odd"><td>HTTP-SPV</td>
-<td>0295</td>
-<td>1EC56668</td>
-<td>8003D63E</td>
-<td>VIR0009 +54D6</td>
-<td>8040</td>
-<td>STILL HERE 1205180792</td>
-<td>04000270</td>
-<td>1F088FA0</td>
-</tr>
-<tr class="row-even"><td>HTTP-SPV</td>
-<td>0294</td>
-<td>208A5300</td>
-<td>8003D458</td>
-<td>VIR0009 +52F0</td>
-<td>8040</td>
-<td>STILL HERE 1205180792</td>
-<td>05008CF5</td>
-<td>1F4C9320</td>
-</tr>
-<tr class="row-odd"><td>SPVTA015</td>
-<td>0279</td>
-<td>209AE880</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180750</td>
-<td>03000F70</td>
-<td>1F90A6E0</td>
-</tr>
-<tr class="row-even"><td>SPVTA014</td>
-<td>0279</td>
-<td>209AF7F8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180705</td>
-<td>03000F70</td>
-<td>1F90A660</td>
-</tr>
-<tr class="row-odd"><td>SPVTA013</td>
-<td>0279</td>
-<td>209B0770</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180668</td>
-<td>03000F70</td>
-<td>1F90A5E0</td>
-</tr>
-<tr class="row-even"><td>SPVTA012</td>
-<td>0279</td>
-<td>209B16E8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180630</td>
-<td>03000F70</td>
-<td>1F90A560</td>
-</tr>
-<tr class="row-odd"><td>SPVTA011</td>
-<td>0279</td>
-<td>209B2660</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180377</td>
-<td>03000F70</td>
-<td>1F90A4E0</td>
-</tr>
-<tr class="row-even"><td>SPVTA010</td>
-<td>0279</td>
-<td>209B35D8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180318</td>
-<td>03000F70</td>
-<td>1F90A460</td>
-</tr>
-<tr class="row-odd"><td>SPVTA009</td>
-<td>0279</td>
-<td>209B4550</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180241</td>
-<td>03000F70</td>
-<td>1F90A3E0</td>
-</tr>
-<tr class="row-even"><td>SPVTA008</td>
-<td>0279</td>
-<td>209B54C8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180149</td>
-<td>03000F70</td>
-<td>1F90A360</td>
-</tr>
-<tr class="row-odd"><td>SPVTA007</td>
-<td>0279</td>
-<td>209B6440</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180101</td>
-<td>03000F70</td>
-<td>1F90A2E0</td>
-</tr>
-<tr class="row-even"><td>SPVTA006</td>
-<td>0279</td>
-<td>209B73B8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205180066</td>
-<td>03000F70</td>
-<td>1F90A260</td>
-</tr>
-<tr class="row-odd"><td>SPVTA005</td>
-<td>0279</td>
-<td>209B8330</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179956</td>
-<td>03000F70</td>
-<td>1F90A1E0</td>
-</tr>
-<tr class="row-even"><td>SPVTA004</td>
-<td>0279</td>
-<td>209B92A8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179923</td>
-<td>03000F70</td>
-<td>1F90A160</td>
-</tr>
-<tr class="row-odd"><td>SPVTA003</td>
-<td>0279</td>
-<td>209BA220</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179881</td>
-<td>03000F70</td>
-<td>1F90A0E0</td>
-</tr>
-<tr class="row-even"><td>SPVTA002</td>
-<td>0279</td>
-<td>209BB198</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179849</td>
-<td>03000F70</td>
-<td>1F90A060</td>
-</tr>
-<tr class="row-odd"><td>SPVTA001</td>
-<td>0279</td>
-<td>209BC110</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179782</td>
-<td>03000F70</td>
-<td>1F4C9FE0</td>
-</tr>
-<tr class="row-even"><td>SPVTA000</td>
-<td>0279</td>
-<td>209BD088</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179741</td>
-<td>03000F70</td>
-<td>1F4C9F20</td>
-</tr>
-<tr class="row-odd"><td>SPLOC009</td>
-<td>0279</td>
-<td>2099E880</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179715</td>
-<td>03000F70</td>
-<td>1F4C9E20</td>
-</tr>
-<tr class="row-even"><td>SPLOC008</td>
-<td>0279</td>
-<td>2099F7F8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179689</td>
-<td>03000F70</td>
-<td>1F4C9D20</td>
-</tr>
-<tr class="row-odd"><td>SPLOC007</td>
-<td>0279</td>
-<td>209A0770</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179654</td>
-<td>03000F70</td>
-<td>1F4C9C20</td>
-</tr>
-<tr class="row-even"><td>SPLOC006</td>
-<td>0279</td>
-<td>209A16E8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179607</td>
-<td>03000F70</td>
-<td>1F4C9B20</td>
-</tr>
-<tr class="row-odd"><td>SPLOC005</td>
-<td>0279</td>
-<td>209A2660</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179568</td>
-<td>03000F70</td>
-<td>1F4C9A20</td>
-</tr>
-<tr class="row-even"><td>SPLOC004</td>
-<td>0279</td>
-<td>209A35D8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179526</td>
-<td>03000F70</td>
-<td>1F4C9920</td>
-</tr>
-<tr class="row-odd"><td>SPLOC003</td>
-<td>0279</td>
-<td>209A4550</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179488</td>
-<td>03000F70</td>
-<td>1F4C9820</td>
-</tr>
-<tr class="row-even"><td>SPLOC002</td>
-<td>0279</td>
-<td>209A54C8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179458</td>
-<td>03000F70</td>
-<td>1F4C9620</td>
-</tr>
-<tr class="row-odd"><td>SPLOC001</td>
-<td>0279</td>
-<td>209A6440</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179377</td>
-<td>03000F70</td>
-<td>1F4C9420</td>
-</tr>
-<tr class="row-even"><td>SPLOC000</td>
-<td>0279</td>
-<td>209A73B8</td>
-<td>8003A9C0</td>
-<td>VIR0009 +2858</td>
-<td>8040</td>
-<td>STILL HERE 1205179338</td>
-<td>03000F70</td>
-<td>1F4C9120</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>0000</td>
-<td>1EC584A8</td>
-<td>8001BFE4</td>
-<td>VIR0000 +4224</td>
-<td>8040</td>
-<td>STILL HERE 1205122226</td>
-<td>04000270</td>
-<td>1EC48F00</td>
-</tr>
-<tr class="row-even"><td>&#160;</td>
-<td>0000</td>
-<td>1EC58720</td>
-<td>8001BFE4</td>
-<td>VIR0000 +4224</td>
-<td>8040</td>
-<td>STILL HERE 1205122225</td>
-<td>04000270</td>
-<td>1EC48F20</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>0000</td>
-<td>1EC58998</td>
-<td>8001BFE4</td>
-<td>VIR0000 +4224</td>
-<td>8040</td>
-<td>STILL HERE 1205122225</td>
-<td>04000270</td>
-<td>1EC48F40</td>
-</tr>
-<tr class="row-even"><td>&#160;</td>
-<td>0000</td>
-<td>1EC58C10</td>
-<td>8001BFE4</td>
-<td>VIR0000 +4224</td>
-<td>8040</td>
-<td>STILL HERE 1205122225</td>
-<td>04000270</td>
-<td>1EC48F60</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>0000</td>
-<td>1EC58E88</td>
-<td>8001BF68</td>
-<td>VIR0000 +41A8</td>
-<td>8040</td>
-<td>STILL HERE 1205122225</td>
-<td>04000170</td>
-<td>1EC48F80</td>
-</tr>
-<tr class="row-even"><td>&#160;</td>
-<td>0000</td>
-<td>0010E500</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122223</td>
-<td>01000250</td>
-<td>1EC48FA0</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>0000</td>
-<td>0010E758</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122223</td>
-<td>01000250</td>
-<td>1EC48FC0</td>
-</tr>
-<tr class="row-even"><td>&#160;</td>
-<td>0000</td>
-<td>0010E9B0</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122222</td>
-<td>01000250</td>
-<td>1EC48FE0</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>0000</td>
-<td>0010EC08</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122222</td>
-<td>01000250</td>
-<td>1EC47000</td>
-</tr>
-<tr class="row-even"><td>&#160;</td>
-<td>0000</td>
-<td>0010EE60</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122221</td>
-<td>01000250</td>
-<td>1EC47020</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>0000</td>
-<td>0010F0B8</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122220</td>
-<td>01000250</td>
-<td>1EC47040</td>
-</tr>
-<tr class="row-even"><td>&#160;</td>
-<td>0000</td>
-<td>0010F310</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122220</td>
-<td>01000250</td>
-<td>1EC47060</td>
-</tr>
-<tr class="row-odd"><td>&#160;</td>
-<td>0000</td>
-<td>0010F568</td>
-<td>8001EE2A</td>
-<td>VIR0000 +706A</td>
-<td>8040</td>
-<td>STILL HERE 1205122220</td>
-<td>01000250</td>
-<td>1EC47080</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<div><em>Example of a memory allocataion history</em></div></blockquote>
-<ol class="arabic">
-<li><p class="first">Line or terminal name for which memory allocation is performed. This
-information is omitted when the allocation relates VIRTEL itself.</p>
-</li>
-<li><p class="first">Task number behind the allocation request.</p>
-</li>
-<li><p class="first">Register 15 value.</p>
-</li>
-<li><p class="first">Register 14 value.</p>
-</li>
-<li><p class="first">Program name + offset of the origin request.</p>
-</li>
-<li><p class="first">Memory allocation type. (8040 = GETMAIN).</p>
-</li>
-<li><p class="first">Memory block state.</p>
-</li>
-<li><p class="first">Time of the allocation.</p>
-</li>
-<li><p class="first">Type and size of the allocation. The two first bytes represents the
-type of memory allocated (See <a class="reference external" href="#_bookmark117">“Memory display</a>
-<a class="reference external" href="#_bookmark117">of VIRTEL address space”, page 42</a> for a complete
-description of the memory block type.). The six last bytes
-represents the size of the memory block allocated.</p>
-</li>
-<li><p class="first">Reserved for internal use.</p>
-<p>Tracing memory activity can produce an important overhead estimated
-to 20-30% of the activity. When using MEMTRACE command, the memory
-previously allocated to records history is released.</p>
-</li>
-</ol>
+<p>Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.</p>
 </div>
-<div class="section" id="trademarks">
-<h2>10. Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>SysperTec, the SysperTec logo, syspertec.com and VIRTEL are
-trademarks or registered trademarks of SysperTec Communication
-Group, registered in France and other countries.</p>
-<p>IBM, VTAM, CICS, IMS, RACF, DB2, z/OS, WebSphere, MQSeries, System z
-are trademarks or registered trademarks of International Business
-Machines Corp., registered in United States and other countries.</p>
-<p>Adobe, Acrobat, PostScript and all Adobe-based trademarks are either
-registered trademarks or trademarks of Adobe Systems Incorporated in
-the United States and other countries.</p>
-<p>Microsoft, Windows, Windows NT, and the Windows logo are trademarks
-of Microsoft Corporation in the United States and other countries.</p>
-<p>UNIX is a registered trademark of The Open Group in the United
-States and other countries.</p>
-<p>Java and all Java-based trademarks and logos are trademarks or
-registered trademarks of Oracle and/or its affiliates. Linux is a
-trademark of Linus Torvalds in the United States, other countries,
-or both.</p>
-<p>Other company, product, or service names may be trademarks or
-service names of others.</p>
-<p>The current VIRTEL Web Access product uses the following open source
-software: jQuery</p>
-<p>Under MIT license</p>
-<p><a class="reference external" href="#_bookmark0">https://jquery.org/license/</a>.</p>
-<p>StoreJson</p>
-<p>Under MIT license
-<a class="reference external" href="#_bookmark0">https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7</a>.</p>
-<p>jQuery_UI</p>
-<p>Under MIT license <a class="reference external" href="http://en.wikipedia.org/wiki/JQuery_UI">http://en.wikipedia.org/wiki/JQuery_UI</a>.</p>
-</div></blockquote>
+<div class="section" id="a-appendix">
+<h2>A. Appendix<a class="headerlink" href="#a-appendix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-1-trademarks">
+<h3>A.1 Trademarks<a class="headerlink" href="#a-1-trademarks" title="Permalink to this headline">¶</a></h3>
+<p>SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec Communication Group, registered in France and other countries.</p>
+<p>IBM, VTAM, CICS, IMS, RACF, DB2, MVS, WebSphere, MQSeries, System z are trademarks or registered trademarks of International Business Machines Corp., registered in United States and other countries.</p>
+<p>Adobe, Acrobat, PostScript and all Adobe-based trademarks are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and other countries.</p>
+<p>Microsoft, Windows, Windows NT, and the Windows logo are trademarks of Microsoft Corporation in the United States and other countries.</p>
+<p>UNIX is a registered trademark of The Open Group in the United States and other countries. Java and all Java-based trademarks and logos are trademarks or registered trademarks of Oracle and/or its affiliates.</p>
+<p>Linux is a trademark of Linus Torvalds in the United States, other countries, or both.</p>
+<p>Other company, product, or service names may be trademarks or service names of others.</p>
+</div>
+<div class="section" id="a-2-open-source-software">
+<h3>A.2. Open Source Software<a class="headerlink" href="#a-2-open-source-software" title="Permalink to this headline">¶</a></h3>
+<p>The current VIRTEL Web Access product uses the following open source software:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>jQuery</dt>
+<dd>Under MIT license - <a class="reference external" href="https://jquery.org/license/">https://jquery.org/license/</a></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>StoreJson</dt>
+<dd>Under MIT license - <a class="reference external" href="https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7">https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7</a></dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>jQuery_UI</dt>
+<dd>Under MIT license - <a class="reference external" href="http://en.wikipedia.org/wiki/JQuery_UI">http://en.wikipedia.org/wiki/JQuery_UI</a></dd>
+</dl>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
