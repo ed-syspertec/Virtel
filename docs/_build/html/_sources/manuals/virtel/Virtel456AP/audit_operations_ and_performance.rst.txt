@@ -486,7 +486,7 @@ The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain 
 
 ::
 
-    SNAPMSG=(message,search,action)
+    SNAPMSG=message,search,action
 
 The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG command from the console. See “SNAPMSG command”.
 
@@ -500,6 +500,12 @@ action
     Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
     
 Default action is SNAP.
+
+Example:
+::
+ 
+	F VIRTEL,SNAPMSG=VIRHT51I,CALL,S
+
 
 2.7.3 80-column SNAP
 --------------------
