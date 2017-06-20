@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../../../search.html"/>
     <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
         <link rel="up" title="Virtel Manuals" href="../../../virtel.html"/>
-        <link rel="next" title="What’s new in Virtel 4.57" href="../Virtel457WN/Whats_New.html"/>
+        <link rel="next" title="Technical Newsletters" href="../../../newsletters.html"/>
         <link rel="prev" title="Messages Guide V4.57" href="../Virtel457MG/messages.html"/> 
 
   
@@ -108,7 +108,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#a-appendix">A. Appendix</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Virtel457WN/Whats_New.html">What&#8217;s new in Virtel 4.57</a></li>
 </ul>
 </li>
 </ul>
@@ -2927,7 +2926,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <ol class="arabic simple" start="2">
 <li>Click the link in the e-mail to open the upload.htm page:</li>
 </ol>
-<p><a class="reference internal" href="../../../_images/image429.png"><img alt="image4" src="../../../_images/image429.png" style="width: 5.13354in; height: 3.56187in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image430.png"><img alt="image4" src="../../../_images/image430.png" style="width: 5.13354in; height: 3.56187in;" /></a></p>
 <p><em>Page upload by HTTP with cookie : Displaying the upload.htm page</em></p>
 <ol class="arabic simple" start="3">
 <li>Click the “Browse” button and the file selection dialog will be displayed:</li>
@@ -3005,7 +3004,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <p><em>Drag and drop upload interface</em></p>
 <p>The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.</p>
 <p><strong>1.6.5.2. Displaying upload results</strong></p>
-<p><img alt="image14" src="../../../_images/image1413.png" /></p>
+<p><img alt="image14" src="../../../_images/image1414.png" /></p>
 <p><em>Displaying upload results</em></p>
 <p>The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.</p>
 <p><strong>1.6.5.3. Upload summary report</strong></p>
@@ -3281,7 +3280,7 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="referen
 <h4>1.7.4. Web Access Settings menu<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
 <p><a class="reference internal" href="../../../_images/image223.jpeg"><img alt="image22" src="../../../_images/image223.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a></p>
 <p>When the user clicks this button on the VIRTEL Web Access toolbar the window shown below opens.</p>
-<p><img alt="image23" src="../../../_images/image2311.png" /></p>
+<p><img alt="image23" src="../../../_images/image2313.png" /></p>
 <p>VIRTEL Web Access Settings menu (Display tab)</p>
 <p><img alt="image24" src="../../../_images/image247.png" /></p>
 <p>VIRTEL Web Access Settings menu (Miscellaneous tab)</p>
@@ -4902,21 +4901,20 @@ operational status of this feature is displayed in an ICON in top right.</p>
 <p><a class="reference internal" href="../../../_images/image6115.png"><img alt="image61" src="../../../_images/image6115.png" style="width: 1.96740in; height: 1.94635in;" /></a></p>
 <p><em>Red: The expansion module is not installed. For Firefox, it may also indicate that the field is not allowed, or that the navigation is done in private mode. If running in private mode, the function is supported from version 0.6.33.1 and above.</em></p>
 </div>
-<div class="section" id="customizing-virtel-using-the-option-pathname">
-<span id="v457ug-customizing-with-option"></span><h4>1.15.4. Customizing Virtel using the Option pathname<a class="headerlink" href="#customizing-virtel-using-the-option-pathname" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="customizing-virtel-using-the-option-mode">
+<span id="v457ug-customizing-with-option"></span><h4>1.15.4. Customizing Virtel using the Option mode<a class="headerlink" href="#customizing-virtel-using-the-option-mode" title="Permalink to this headline">¶</a></h4>
 <p>Virtel V4.56 introduces some enhancements to customisation. With Virtel 4.56, customization is possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific. Previous customisation was at an entry level only. To maintain compatibility with older release of Virtel the original customisation design is supported under a feature called &#8220;compatibility mode&#8221;. By default this feature is not active. The compatibility feature can be activated by including the following statement in the TCT:-</p>
-<dl class="docutils">
-<dt>::</dt>
-<dd>HTSETn=(OPTION-DEFAULT-COMPATIBILITY) where n = 1_4.</dd>
-</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span><span class="o">=</span><span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="n">where</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="n">_4</span><span class="o">.</span>
+</pre></div>
+</div>
 <p>As delivered, Virtel V4.56 defaults to having no custom feature active. That means neither compatibility mode or the /option/ pathname is active. To turn on these features the following actions must be performed.</p>
 <p>1.15.4.1 Compatibility Mode</p>
 <ul class="simple">
 <li>Update the TCT with the HTSETn statement to turn on compatibility mode and reassemble the TCT.</li>
 <li>Update the relevant transactions to point to the CLI-DIR for the elements you wish to customize or modify. The transactions are:-</li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XXX</span><span class="o">-</span><span class="mi">03</span><span class="n">Cz</span>        <span class="n">where</span> <span class="n">XXX</span> <span class="o">=</span> <span class="n">W2H</span> <span class="p">(</span><span class="n">WEB2HOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span> <span class="ow">or</span> <span class="n">CLI</span> <span class="p">(</span><span class="n">CLIWHOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span><span class="o">.</span> <span class="n">z</span> <span class="o">=</span> <span class="n">C</span> <span class="k">for</span> <span class="n">custom</span><span class="o">.</span><span class="n">css</span><span class="p">,</span> <span class="n">h</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span><span class="n">html</span> <span class="ow">and</span> <span class="n">j</span> <span class="k">for</span> <span class="n">custom</span><span class="o">.</span><span class="n">js</span>
-<span class="n">XXX</span><span class="o">-</span><span class="mi">03</span><span class="n">P</span>     <span class="n">where</span> <span class="n">XXX</span> <span class="o">=</span> <span class="n">W2H</span> <span class="p">(</span><span class="n">WEB2HOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span> <span class="ow">or</span> <span class="n">CLI</span> <span class="p">(</span><span class="n">CLIWHOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span><span class="o">.</span> <span class="n">This</span> <span class="n">transaction</span> <span class="n">provides</span> <span class="n">the</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">a</span> <span class="n">modified</span> <span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XXX</span><span class="o">-</span><span class="mi">03</span><span class="n">Cz</span>   <span class="n">where</span> <span class="n">XXX</span> <span class="o">=</span> <span class="n">W2H</span> <span class="p">(</span><span class="n">WEB2HOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span> <span class="ow">or</span> <span class="n">CLI</span> <span class="p">(</span><span class="n">CLIWHOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span><span class="o">.</span> <span class="n">z</span> <span class="o">=</span> <span class="n">C</span> <span class="k">for</span> <span class="n">custom</span><span class="o">.</span><span class="n">css</span><span class="p">,</span> <span class="n">h</span> <span class="k">for</span> <span class="n">help</span><span class="o">.</span><span class="n">html</span> <span class="ow">and</span> <span class="n">j</span> <span class="k">for</span> <span class="n">custom</span><span class="o">.</span><span class="n">js</span>
+<span class="n">XXX</span><span class="o">-</span><span class="mi">03</span><span class="n">P</span>    <span class="n">where</span> <span class="n">XXX</span> <span class="o">=</span> <span class="n">W2H</span> <span class="p">(</span><span class="n">WEB2HOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span> <span class="ow">or</span> <span class="n">CLI</span> <span class="p">(</span><span class="n">CLIWHOST</span> <span class="n">Entry</span> <span class="n">Point</span><span class="p">)</span><span class="o">.</span> <span class="n">This</span> <span class="n">transaction</span> <span class="n">provides</span> <span class="n">the</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">a</span> <span class="n">modified</span> <span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
 </pre></div>
 </div>
 <p>For example, if a modified w2hparm.js is required for all transactions and a modified toolbar was required for only applications running under the CLIWHOST entry point then the following transactions would be changed:-</p>
@@ -11796,7 +11794,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Virtel457WN/Whats_New.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.57" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../../newsletters.html" class="btn btn-neutral float-right" title="Technical Newsletters" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../Virtel457MG/messages.html" class="btn btn-neutral" title="Messages Guide V4.57" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

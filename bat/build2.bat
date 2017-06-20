@@ -1,14 +1,24 @@
 REM Process each file in a diretcory
-@echo on
-color 1f
+setlocal enabledelayedexpansion
+@echo off
 cls
+set myDir0=%~dp0
+pushd %~dp0
 
-cd C:\Users\Ed\Documents\newsletters
+set myPath="D:\Documents\newsletters"
+cd %myPath%
 
-for %%f in (C:\Users\Ed\Documents\newsletters\*.docx) do (
-            echo %%~nf
-            SET P1=%%~nf:~0,6%
-            echo %P1%
-            rem pansoc -o "&&~nf.rst" --extract-media=images "&&~nf.docx"
+
+for %%i in (*.docx) do (
+    rem echo %%~ni
+    set filename=%%~ni     
+    set x=!filename!
+    set y=!myDir0!Virtel\!filename!
+    echo !x! 
+    pandoc -o "!x!.rst" --extract-media=images "%%i" 
     )
-cd C:\Users\Ed\Documents\github\virtel
+)
+setlocal
+popd
+
+rem cd D:\Documents\github\virtel\bat

@@ -5456,12 +5456,13 @@ operational status of this feature is displayed in an ICON in top right.
 
 .. _#_V457UG_customizing_with_option:
 
-1.15.4. Customizing Virtel using the Option pathname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+1.15.4. Customizing Virtel using the Option mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 
 Virtel V4.56 introduces some enhancements to customisation. With Virtel 4.56, customization is possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific. Previous customisation was at an entry level only. To maintain compatibility with older release of Virtel the original customisation design is supported under a feature called "compatibility mode". By default this feature is not active. The compatibility feature can be activated by including the following statement in the TCT:-
 
 ::
+
 	HTSETn=(OPTION-DEFAULT-COMPATIBILITY) where n = 1_4.     
 
 As delivered, Virtel V4.56 defaults to having no custom feature active. That means neither compatibility mode or the /option/ pathname is active. To turn on these features the following actions must be performed. 
@@ -5473,8 +5474,8 @@ As delivered, Virtel V4.56 defaults to having no custom feature active. That mea
 
 ::
  
-	XXX-03Cz	where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point). z = C for custom.css, h for help.html and j for custom.js
-	XXX-03P     where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point). This transaction provides the directory for a modified w2hparm.js
+	XXX-03Cz   where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point). z = C for custom.css, h for help.html and j for custom.js
+	XXX-03P    where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point). This transaction provides the directory for a modified w2hparm.js
 
 For example, if a modified w2hparm.js is required for all transactions and a modified toolbar was required for only applications running under the CLIWHOST entry point then the following transactions would be changed:-
 ::

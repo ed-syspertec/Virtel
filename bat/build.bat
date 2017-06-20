@@ -5,12 +5,12 @@ cls
 
 pushd %~dp0
 
-set myPath="C:\Users\Ed\Documents\nw"
+set myPath="D:\Documents\newsletters"
 cd %myPath%
  
 
 
-for %%i in (*.doc) do (
+for %%i in (*.docx) do (
     set filename=%%~ni    
     echo !filename!  
     )
