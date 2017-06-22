@@ -4896,16 +4896,11 @@ If some icons on the toolbar are displayed with some parasites on the border, pl
 .. _#_V457UG_customization_javascript_functions:
 
 1.13. Site Customization - Javascript Functions
-------------------------------------------------
+-----------------------------------------------
 
-To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads the /w2h/custom-js/custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction delivered as standard under the CLIWHOST entry point
-references the W2H-DIR directory, but the administrator can modify this transaction to reference a different directory
-containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be
-used for this purpose.
+To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads a custom.js file when a session is started. An empty custom.js file is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction as delivered under the CLIWHOST entry point refers to the W2H-DIR directory. An administrator can modify this transaction to reference a different directory containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be used for this purpose. See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise Virtel. 
 
-To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls various custom exits at strategic points in
-its processing. These exits are optional Javascript functions which can be codes custom.js if required. The exits are
-described below.
+To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls various custom exits at strategic points in its processing. These exits are optional Javascript functions which can be codes custom.js if required. The exits are described below.
 
 1.13.1. Exits which can be coded in custom.js
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5599,17 +5594,19 @@ For compatibility the option field can be defined with the special identifier "c
 Within a transaction display in the Virtel Administration (HTML) portal a user can click the "Spanner" ICON to help in setting up the option files.
 
 |image94|
+*Transaction display*
 
 On clicking the "spanner" icon a tabbed "Option" panel will be displayed which has pre-allocated and build an option environment based upon the "option" field value. Two tabbed options are available, "BASIC" and "ADVANCED":-
 
 |image92|
+*Defining core option file*
 
-*Basic Mode*
+**1.15.5.1 Basic Mode**
 
-With the Basic mode of operation, t
-he Validate button will create an option.id.js file and upload it to the CLI-DIR directory. Within this file, the settings keys will be set pointing to the customisation files you have chosen. In the example below the Javascript and CSS customization files have been selected. This will effectively create a option file option.myOptions.js which will be loaded upto the CLI_DIR. Within this files the key elements pathToJsCustom and pathtoCssCustom will be generated and will point to files /option/custJS.myOptions.js and /option/custCSS.myoptions.css. The Basic mode can be used as a startup to develop your own core option file and to include other bespoke elements like Help, Parm and PrintCss files. 
+With the Basic mode of operation, the Validate button will create an option.id.js file and upload it to the CLI-DIR directory. Within this file, the settings keys will be set pointing to the customisation files you have chosen using the option field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file *option.myOptions.js* which will be loaded upto the CLI_DIR. Within this core file the key elements pathToJsCustom and pathtoCssCustom will be generated and will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css*. The Basic Mode can be used as a startup to develop your own core option file and to include other bespoke elements like Help, Parm and PrintCss files. 
 
 |image93|
+*Basic Mode Operation*
 
 The generated core option file option.myOptions.js will look like thsi:-
 
@@ -5618,11 +5615,12 @@ The generated core option file option.myOptions.js will look like thsi:-
  // customization for option=myOptions
  var oCustom={"pathToCssCustom":"../option/custCSS.myOptions.css","pathToJsCustom":"../option/custJS.myOptions.js"}
 
-*Applied Mode*
+**1.15.5.2 Advanced Mode**
 
 By selecting the Advanced mode tab the core option file can be downloaded in preparation for further modification.
 
-|image95|   
+|image95|
+*Advanced Mode Operation*   
 
 
 1.16. Macros
@@ -5642,8 +5640,7 @@ been recorded. The PLAY button on the toolbar allows the user to display a list 
 macro.
 
 |image63a|
-
-Play and Record buttons
+*Play and Record buttons*
 
 1.16.1. Storing the Macros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -5688,8 +5685,7 @@ Boolean setting to indicate whether keymapping is supported. When set to "true",
 With keyboard mapping enabled the macro interface will display the associated key mapping against the macro.
 
 |image96|
-
-Editing macro with keymapping 
+*Editing macro with keymapping* 
 
 - W2hparm.keepmacpad
 
@@ -5781,11 +5777,14 @@ The following job shows an example of setting up the security profiles for Admin
 
 
 
-An administrator would have READ access to all whereas a user may only have access to the some of the profiles.
+An administrator would have READ access to all profiles whereas a user may only have access to the some of the profiles.
 
-*Setting up to use DDI and macros*
+**1.16.2 Setting up to use DDI and macros**
 
 Run the ARBOLOAD job with the "SET VMACROS=YES" parameter coded. This allows the definitions needed for the VirtelMacros function to be loaded during VIRTEL installation. If this setup is not run the message "Your Virtel is not configured for dynamic directories" will appear when DDI is selected from the main Admin. portal page. 
+
+|image97|
+*The Main DDI Page*
 
 A user has access to macros stored in one of the following DDI directories:-
 
@@ -5807,49 +5806,130 @@ A prerequisite for using group and user macros is that the user must sign on to 
 
 If used in a Sysplex distributed environment, the VSAM file that contains the macros cannot be shared between multiple instances of the VIRTEL STC (i.e. each VIRTEL must have its own VSAM macro file).
 
-**1.16.1.3.1. Enabeling the storage of macros on the host**
+**1.16.2.1. Enabeling the storage of macros on the host**
 
 When VIRTEL is first installed, no macros.json files exist. To allow macros to be stored and loaded from the host site, the administrator activates the VirtelMacros function by
-adding the code shown below to a customised w2hparm.js. This file should reside in the CLI-DIR directory (or another site-defined directory). See :ref:'Customising Virtel <#_V457UG_customizing_with_option>' for further details on how to customise Virtel.
+adding the code shown below to a customised w2hparm.js. This file should reside in the CLI-DIR directory (or another site-defined directory). See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise Virtel.
 
 ::
  
     w2hparm.useVirtelMacros = true;
 
-*custom.js to activate the VirtelMacros function*
-
 Once VirtelMAcros have been activated each VIRTEL Web Access user has access to one or more macros.json files stored in:
 
-- a dedicated directory labeled with his userid,
-- a group directory labeled with his groupid,
-- a global directory which can be accessed by all users.
+- a dedicated directory labeled with his userid - USR-DIR
+- a group directory labeled with his groupid - GRP-DIR
+- a global directory which can be accessed by all users - Global DIR
 
-A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or Gloabl directories requires that specific authorizations are defined into the security tool. If no file exists, a 404 error is produced, and no macros are listed in the macro window. Access to the DDI interface is the the Administration Portal. Select Dynamic directory Interface and the following DDI interface will appear:-
+A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or Gloabl directories requires that specific authorizations are defined within the security tool. If no file exists, a 404 error is produced, and no macros are listed in the macro window. Access to the DDI interface is the the Administration Portal. Ensure that Administrators have access to the security profiles.
 
-|
+**1.16.2.2. Macros synchronization between two VIRTEL STC**
 
+When the VirtelMacros function is implemented on two differents VIRTEL, it is possible to synchronize automatically the Macros between them.
 
+To allow this, the administrator activates the VirtelMacros synchronization function by adding the w2hparm option, shown below, to the w2hparm file. This should be loaded into the CLI-DIR directory (or another site-defined directory):
 
-**1.16.1.3.2. Macros synchronization between two VIRTEL STC**
-
-When the VirtelMacros function is implemented on two differents VIRTEL, it is possible to synchronize automatically
-the Macros between them.
-
-To allow this, the administrator activates the VirtelMacros synchronization function by adding the code shown below
-to the custom.js file loaded into the CLI-DIR directory (or another site-defined directory):
 ::
-
+ 
     w2hparm.synchronizeVirtelMacros = true;
 
-*custom.js to activate the VirtelMacros synchronization function*
+The w2hparm modification must be activated as described in :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>`. Once this customization has been done, each VIRTEL Web Access user macros will be automaticaly synchonized across VIRTEL instances.
 
-The custom.js file must be activated as described in :ref:`“Site customization of Javascript functions” <#_V457UG_customization_javascript_functions>`.
-Once this has been done, each VIRTEL Web Access user macros are automaticaly synchonized beetween the two VIRTEL.
+1.16.3. Managing macros with DDI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.16.2. Managing the Macros
+**Managing macros with DDI**
+
+Obtain a “default” copy of a macros.json file. This could be one that has been exported from local storage. This file needs to be copied, using DDI, to Global directory within the DDI interface using the DDI
+upload interface.
+
+.. danger:: Do not use the Virtel Drag and Drop function to upload macros. You must use the DDI upload interface!
+
+The normal practice for an administrator in managing the macro repository would be to capture and create a macro in their user directory, upload it to the mainframe repository using the DDI interface, modify it for general use, and then copy it to any group, user or global directory for general availability. The upload process is through a drag and drop operation within DDI interface. To copy a
+macros.json to another user or group requires downloading the macro first then dragging the file into the relevant DDI panel area designated by the dotted lines.
+
+**Uploading a macro.json file to the Global directory**
+
+Open the DDI interface, select Global. The Global directory will open. Drag the macros.json file into the area designated by a series of dotted lines. This will initiate a file upload into the global directory of the macro repository:-
+
+|image105|
+
+*The DDI Global Upload*
+
+Once you have a copy in the global area, right click on the macros.json file to open a context menu. This menu provides some additional functions such as Copy, Download, Delete and Edit. For macros.json the
+copy function is not applicable.
+
+|image106|
+
+*Additional file functions in DDI*
+
+Selecting “Edit” will open the same editor interface that was used when editing macros in local storage. Here the administrator can modify the macros held within the macros.json file. Macros can be saved with
+different names and associated with different key mappings. Options like Save As, Edit and Delete are available within a context menu when you right click on a macro.
+
+|image107|
+
+*Updating macros with the Global Directory*
+
+**Making macros available to users.**
+
+Any macros an administrator creates can be made available to users either at the Global, Group or Userid level. To make macros available at a userid level, select the User TAB from the DDI main panel. Enter the user’s USERID in the user name field and press the “Green Tick” icon. This will create an area within the DDI macro repository. Upload the macros.json file you wish to make available to this user by dragging the file into the area designated by the dotted lines. This will initiate an upload of the macro into the users userid area.
+
+|image108|
+
+*Creating a macros.json file for a user*
+
+As with any file within the DDI repository a context menu can be brought up by right clicking on the file name.
+
+|image109|
+
+*Editing a global macro*
+
+An administrator can update any macros held within the DDI repository. Changes will be reflected in the user’s local storage once the user open’s their macro display with the “Green” ICON arrow. The following
+display shows the DDI repository macros as displayed in the user’s browser. Remember that User macros are related to the users’ Userid and the Group. This ability to associate macros to a userid and group means that all macros, related to business assets, can be managed and maintained in a central DDI repository. Maintenance can be applied centrally and distributed out to the user’s browser. Users only have the
+option of modifying their User macros. Any changes will be uploaded to the mainframe and stored in the users’ macro area within the DDI repository. This keeps the user macro modifications in sync with the
+repository.
+
+|image110|
+
+*User display of the DDI macro interface*
+
+**Updating DDI macros at the Group level**
+
+To make macros available at a Group level, select the Group TAB from the DDI main panel. Enter the Group name in the group name field and press the “Green Tick” icon. This will create an area within the DDI macro repository were macros for this group can be held. Upload the Group macros.json file you wish to make available to this group by dragging the file into the area designated by the dotted lines. This will
+initiate an upload of the Group macro.
+
+|image111|
+
+*Macro Group Directory*
+
+To obtain the associated context menu right click on the file name – macros.json. This will provide the additional functionality to Edit, Download or Delete the macro.
+
+**Notes:**
+
+**File macros.json**
+
+Macros are maintained in the macros.json file. Each macro mode, local or DDI (User, Group and Global) will maintain a separate macros.json file. Virtel’s DDI can also be used to store other files other than the macros.json file. Things like corporate images, bespoke Javascript deployments etc. When copying files to DDI you must use the DDI drag and drop interface. Do not use the Administration drag and drop interface.
+
+**Save As feature**
+
+The “SAVE AS” function does not have the ability to re-assign key mapping. This can only be done through the macro editor. To clone a macro with a new key mapping perform the following operations:-
+
+::
+
+	Open macro “A”
+	Save as “B”
+	Open macro “B” in Editor.
+	Save with key board mapping.
+
+
+**Autoupdate of macros in local storage.**
+
+Updates to DDI macros held in local storage can only be updated once the user refreshes or redisplays the macros. This triggers the download from the mainframe. Macros are not “automatically” updated in the background due to the performance. If an Administrator updates a macro on the mainframe that update will only be available to the user when the user redisplays or refreshes his local storage by using the “Green” display ICON. 
+
+1.16.4. Managing the Macros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-**1.16.2.1. User macros management**
+**1.16.4.1. User macros management**
 
 Each user can create his or her own macros.json file once the user has signed on to VIRTEL.
 To create the file, the user only has to sign on to VIRTEL Web Access and record a new macro. When the macro is
@@ -5858,12 +5938,13 @@ For subsequent Web Access sessions, the macros.json file is automatically loaded
 in the macro window
 
 |image64|
+
 *Display macros for VirtelMacros function*
 
 To execute a macro, just double-click on it. To delete a macro, click on the red icon and confirm deletion. To delete, edit
 or copy a macro, just right-click on the macro and choose the desired function. For macro edition, see :ref:`“Available Macro Commands” <#_V457UG_macro_commands>` below.
 
-**1.16.2.2. Global and Group macros management**
+**1.16.4.2. Global and Group macros management**
 
 Only the administrator can upload macros.json files into the global (GLB-DIR) and group (GRP-DIR) directories.
 To define a new global or group macros.json file, the administrator must use the “Dynamic Directory Interface” wich is
@@ -5871,7 +5952,7 @@ available in the “Macros and add-ons" area of the default page displayed when 
 authorized to access the DDI, the user must be granted to access the VIRTEL transaction defined under WEB2HOST
 entry point with external name “usrcap".
 
-**1.16.2.3. Format of the macros.json file**
+**1.16.4.3. Format of the macros.json file**
 
 Each macros.json file contains a set of macros as shown in the example below:
 
@@ -5897,7 +5978,7 @@ An empty file (containing no macros) contains only:
 
 .. _#_V457UG_macro_commands:
 
-**1.16.2.4. Available macro commands**
+**1.16.4.4. Available macro commands**
 
 The following commands can be used in a macro file :
 
@@ -13558,3 +13639,10 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image95| image:: images/media/image95.png
 .. |image96| image:: images/media/image96.png
 .. |image97| image:: images/media/image97.png
+.. |image105| image:: images/media/image105.png
+.. |image106| image:: images/media/image106.png
+.. |image107| image:: images/media/image107.png
+.. |image108| image:: images/media/image108.png
+.. |image109| image:: images/media/image109.png
+.. |image110| image:: images/media/image110.png
+.. |image111| image:: images/media/image111.png

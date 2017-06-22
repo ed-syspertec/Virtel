@@ -120,22 +120,45 @@ provide a HA solution. The only VIRTEL requirement is to define a VIRTEL
 transaction which targets CICSZ as the VTAM application, i.e. the VTAM
 Generic Resource or CICSPLEX group name.
 
-**VSAM SHROPTIONS**
+**Sharing the ARBO and other VSAM files**
 
-To support a shared ARBO the VSAM SHROPTIONS must be defined as SHROPTIONS(4,3). This will enable *crossregion* and *crosssystem* sharing of the ARBO. Failure to do this will result in a 168 return code. The following JCL may be used to ALTER the VSAM SHROPTIONS of the ARBO file.
+In a SYSPLEX or sharing environment the VSAM files, like the ARBO file, must be shared only in READ mode. To support this the following TCT parameter should be coded:-
 
 ::
  
- //STEP1 EXEC PGM=IDCAMS                      
- //SYSPRINT DD SYSOUT=*                       
- //SYSIN DD *                                 
-  ALTER                                       
-    SP000.SPVIREH.ARBO.DATA                   
-    SHAREOPTIONS(4 3)                         
-  ALTER                                       
-    SP000.SPVIREH.ARBO.INDEX                  
-    SHAREOPTIONS(4 3)                         
+ VSAMTYP=READONLY
 
+This VIRTCT parameter allows the setup of 'READ-ONLY' Virtels, to be used in production or in a Sysplex. Almost all Virtel VSAM files may be set to read-only mode. (But note that the VIRSWAP file; being a work file it cannot be read-only.) 
+
+If this TCT value is coded then the following changes should also be made to the TCT.
+
+- The MACRF statements should be amended from MACRF=(SEQ,DIR,OUT,LSR) to MACRF=(SEQ,DIR,LSR).
+
+- The UFILE parameter string should also be changed from 0,10,01 to 0,10,04. For example:-
+
+::
+ 
+ HTMLTRSF,ACBH2,0,10,01 becomes HTMLTRSF,ACBH2,0,10,05
+
+This will ensure the integrity of the VSAM files across a SYSPLEX or shared environment. When Virtel is started the following messages will be issued:-
+
+::
+
+ VIR0093I VTAM GENERIC RESOURCE NAME IS VIRTPLEX                 
+ VIR0024I OPENING FILE VIRARBO                                   
+ VIR0024I READ ONLY                                              
+ VIR0024I OPENING FILE VIRSWAP                                   
+ VIR0024I OPENING FILE VIRHTML                                   
+ VIR0024I READ ONLY                                              
+ VIR0024I OPENING FILE SAMPTRSF                                  
+ VIR0024I READ ONLY                                              
+ VIR0024I OPENING FILE HTMLTRSF                                  
+ VIR0024I READ ONLY                                              
+ VIR0024I ATTACHING SUBTASKS                                     
+
+.. danger:: Do not set the SHROPTIONS to (4,3) as this will have undesirable results!
+
+Using a READ only environment enables you to not only share the ARBO file but also the SAMP and HTML TRSF files.
 
 **Virtel naming conventions with multiple tasks**
 
