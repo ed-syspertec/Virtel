@@ -120,6 +120,23 @@ provide a HA solution. The only VIRTEL requirement is to define a VIRTEL
 transaction which targets CICSZ as the VTAM application, i.e. the VTAM
 Generic Resource or CICSPLEX group name.
 
+**VSAM SHROPTIONS**
+
+To support a shared ARBO the VSAM SHROPTIONS must be defined as SHROPTIONS(4,3). This will enable *crossregion* and *crosssystem* sharing of the ARBO. Failure to do this will result in a 168 return code. The following JCL may be used to ALTER the VSAM SHROPTIONS of the ARBO file.
+
+::
+ 
+ //STEP1 EXEC PGM=IDCAMS                      
+ //SYSPRINT DD SYSOUT=*                       
+ //SYSIN DD *                                 
+  ALTER                                       
+    SP000.SPVIREH.ARBO.DATA                   
+    SHAREOPTIONS(4 3)                         
+  ALTER                                       
+    SP000.SPVIREH.ARBO.INDEX                  
+    SHAREOPTIONS(4 3)                         
+
+
 **Virtel naming conventions with multiple tasks**
 
 When running more than one VIRTEL STC care must be taken when defining
@@ -168,6 +185,7 @@ LPAR 1A, and R2AVT000-079 for LPAR 2A.
 
 Note: It is recommended that only the ARBO file can be shared in this
 configuration.
+
 
 The VTAM definition to support this configuration would like:-
 

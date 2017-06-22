@@ -5456,8 +5456,8 @@ operational status of this feature is displayed in an ICON in top right.
 
 .. _#_V457UG_customizing_with_option:
 
-1.15.4. Customizing Virtel using the Option mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+1.15.4. Customizing Virtel using Compatibity and the Option modes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 
 Virtel V4.56 introduces some enhancements to customisation. With Virtel 4.56, customization is possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific. Previous customisation was at an entry level only. To maintain compatibility with older release of Virtel the original customisation design is supported under a feature called "compatibility mode". By default this feature is not active. The compatibility feature can be activated by including the following statement in the TCT:-
 
@@ -5490,21 +5490,30 @@ For example, if a modified w2hparm.js is required for all transactions and a mod
 
 1.15.4.2 /option/ path mode  
 
-The new customisation features uses the /option/ pathname to point to a directory where all the relevant customisation elements should reside. This directory should be the CLI-DIR. To use this feature the w2hparm.js should include the "global-settings" attribute. The following is an example:-
+The new customisation features uses the /option/ pathname to point to a directory where all the relevant customisation elements should reside. This directory should be the CLI-DIR. To use this feature a  w2hparm.js should include the "global-settings" attribute. The following is an example:-
 ::
 
 	"global-settings":{
-	"pathToJsCustom":"../option/custJS.global.js",
-	"pathToCssCustom": "../option/custCSS.global.css",
-	"pathToHelp": "../option/myHelp.html"
+	    "pathToJsCustom":"../option/custJS.global.js",
+	    "pathToCssCustom": "../option/custCSS.global.css",
+	    "pathToHelp": "../option/myHelp.html"
 	}	  
 
-The "pathToxxxxx" keys are used to select the file where the customised elements should be located. Note the customized elements are located through the /option/ pathname. Customized elements currently supported are:-
+The customised file names follow the pattern key.id.type where:-
+
+::
+
+	key 	= one of the supported key values prefixed with the string "pathTo" 
+	id  	= global or an option identifer
+	type    = css, html or js (The customized type)
+
+
+The supported "pathToxxxxx" keys are used to select the file where the customised elements should be located. Note the customized elements are located through the /option/ pathname. Customized elements currently supported are:-
 ::
 
 	CssCustom     Custom CSS files.
 	JSCustom      Custom Javascript files
-	W2hParm       Custom w2hparm parameters
+	W2hparm       Custom w2hparm parameters
 	PrintCss      Custom print style CSS
 	Help          Custom Help pages
 
@@ -5516,10 +5525,105 @@ To activate the /option/ customisation mode perform the following actions:-
 - Run the supplied ARBOLOAD job in the CNTL library with OPTION=YES set. This will add two new transactions to the W2H and CLI entries to define the /option pathname.
 - Create the customized files (javascript, CSS, help, parm) and upload them to the CLI directory.
 
-For example, to support a global modified w2hparm and a modified toolbar for applications running under the CLIWHOST entry point the following actions would be required:-
+Global level modifications (All transactions under an Entry Point)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For example, to support a global modified w2hparm and a modified toolbar for transactions running under the CLIWHOST entry point the following actions would be required. Update the default w2hparm.js to include a global setting for pathToW2hparm:-
 ::  
  
-  TBD
+  "global-settings":{
+		"pathToW2hparm":"../option/w2hparm.global.js",
+	}
+
+in the w2hparm.global.js file global parmater changes would be defined. For example:-
+
+::
+ 
+ 	//CLI-DIR - w2hparm.global.js
+	/*
+ 	 * Override default w2hparm values. Change Enter key to equal "Enter". Default = "Newline" key.
+ 	 */
+		w2hparm={
+  			"enter":"Enter"
+        }; 
+
+
+Transaction level modifications (Individual transactions)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For each transaction requiring the modified tool bar use the "option" field to designate an option identifier. The identifier will be used to associate customized elements against a transaction(s). In this example "myOptions" has been chosen as an identifier. A transaction level core option file, called option.identifier.js, will be used with the option identifier "myOptions" to locate the custom js file. The customized settings are held in a Javascript variable named oCustom. 
+
+::
+ 
+ //CLI-DIR - option.myOptions.js. Transaction level core option file 
+ var oCustom={
+ 	"pathToJsCustom":"../option/custJS.myOptions.js"
+ }
+
+A file called custJS.myOptions.js is created which will contain the toolbar modification code:-
+
+::
+ 
+ //CLI-DIR - custJS.myOptions.js
+ //Add Print Button To Toolbar
+ function after_standardInit() {
+ 	addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
+ }
+
+In the above example all transactions will be subjected to parm changes defined in the file w2hparm.global.js. Transactions which have the option id set to "myOptions" will have a customized tool bar picked up through the paths designated in the file option.myOption.js file. The following files are copied to CLI-DIR:-
+
+::
+ 
+ option.myOptions.js  - contains pointers to custom javascript file. Only applicable to transactions with myOption as an id. in the transaction "Option" field.
+ custjJS.myOptions.js - contains customized Javascript code.
+ w2hparm.js           - contains "global-settings" key pointing to the global settings parameter file w2hparm.global.js. These modifications will be applicable to all transactions.
+ w2hparm.global.js    - contains global w2hparm changes
+
+In all cases the files defined in the option.id.js file with the keys pathTo[key] are copied to the CLI-DIR. they will be located through the /option/ pathname. The values associated the the keys pathTo[key] can be any file name. For example:-
+
+::
+ 
+ //CLI-DIR - option.myTest.js. Transaction level option settings
+ var oCustom={
+ 	"pathToW2hparm":"../option/my_parms.js"
+ }
+
+Compatibility Option id
+~~~~~~~~~~~~~~~~~~~~~~~
+
+For compatibility the option field can be defined with the special identifier "compatibility". This indicates that for this transaction the "compatibility" mode of operation should be used to search for customized elements. For example custom.css would be located through the transaction XXX-03CJ.
+
+1.15.5 Defining Transaction Options 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Within a transaction display in the Virtel Administration (HTML) portal a user can click the "Spanner" ICON to help in setting up the option files.
+
+|image94|
+
+On clicking the "spanner" icon a tabbed "Option" panel will be displayed which has pre-allocated and build an option environment based upon the "option" field value. Two tabbed options are available, "BASIC" and "ADVANCED":-
+
+|image92|
+
+*Basic Mode*
+
+With the Basic mode of operation, t
+he Validate button will create an option.id.js file and upload it to the CLI-DIR directory. Within this file, the settings keys will be set pointing to the customisation files you have chosen. In the example below the Javascript and CSS customization files have been selected. This will effectively create a option file option.myOptions.js which will be loaded upto the CLI_DIR. Within this files the key elements pathToJsCustom and pathtoCssCustom will be generated and will point to files /option/custJS.myOptions.js and /option/custCSS.myoptions.css. The Basic mode can be used as a startup to develop your own core option file and to include other bespoke elements like Help, Parm and PrintCss files. 
+
+|image93|
+
+The generated core option file option.myOptions.js will look like thsi:-
+
+::
+ 
+ // customization for option=myOptions
+ var oCustom={"pathToCssCustom":"../option/custCSS.myOptions.css","pathToJsCustom":"../option/custJS.myOptions.js"}
+
+*Applied Mode*
+
+By selecting the Advanced mode tab the core option file can be downloaded in preparation for further modification.
+
+|image95|   
+
 
 1.16. Macros
 ------------
@@ -5530,99 +5634,201 @@ signon process, the second designates a complex dialogue between the terminal an
 mainframe side. This second category often requires the usage of a programming language to develop an executable
 module that operates from the workstation in partnership with the 3270 emulator.
 
-The current chapter is the answer to the first concept, the second one being developed in chapters :ref:`“Web Modernisation VIRTEL Scenarios” <#_V457UG_virtel_scenarios>`.
+This section disusses the answer to the first concept, the second one being developed in chapters :ref:`“Web Modernisation VIRTEL Scenarios” <#_V457UG_virtel_scenarios>`.
 
 By pressing the REC button on the VIRTEL Web Access toolbar, the user can start recording a sequence of keystrokes. A
 second click on the REC button terminates the recording and allows the user to assign a name to the macro which has
-been recorded.
-The PLAY button on the toolbar allows the user to display a list of macros already recorded, and to replay or delete a
+been recorded. The PLAY button on the toolbar allows the user to display a list of macros already recorded, and to replay or delete a
 macro.
 
-|image62| REC button
+|image63a|
 
-|image63| PLAY button
+Play and Record buttons
 
 1.16.1. Storing the Macros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Depending on the version of VIRTEL, the macros can be saved in:
-• the Browser Local Storage (V453 and later),
-• on the workstation or network hard disk in a .json file,(V453 and later)
-• into a VSAM file on the host site (VIRTEL Storage) (V454 and later)
+- the Browser Local Storage (V453 and later),
+- on the workstation or network hard disk in a .json file,(V453 and later)
+- into a VSAM file on the host site (VIRTEL Storage) (V454 and later) using the DDI interface.
+
+Macros are stored as a JavaScript array of JSON objects. For example:-
+
+::
+ 
+     {"macros":[{"name":"SDSF","rev":2,"def":["move(435)","ENTER",{"txt":"=M"},"ErEof","ENTER",{"txt":"6"},"ENTER"]}],"desc":"user macros","fmt":1,"user":"SPTHOLT"}
 
 **1.16.1.1. Macros in Local Storage**
 
-By default macros created by the user are saved on the workstation in “Browser Local Storage”.
+By default macros created by the user are saved on the workstation in the “Browsers Local Storage”.
 
-**1.16.1.2. Macros on hard disk**
+Because the browsers Local Storage isn't persitent storage macros can be easily destroyed by actions at the browser level. For this reason it is possible to
+export the Local Storage data of the user macros to a file on a hard drive. Conversely, the saved macros can be re-imported back into Local Storage.
+Import and Export feature are available in the pop-up windows opened using the PLAY button on the toolbar.
 
-Faced with the fragility of Local Storage usage that can be destroyed by action at the browser level, it is possible to
-export the data of the user macros to a file saved on a hard drive. Conversely, the saved macros can be imported to be
-reinjected into the Local Storage if it has been cleaned. Import and Export feature are available in the pop-up windows
-opened using the PLAY button on the toolbar.
+The recorded macros display has a small context window which can be opened with a right-click. This menu provides the following functions:-
 
-**1.16.1.3. Macros in VIRTEL Storage**
+- Delete
+- Save as
+- Edit
+- Run
+
+**1.16.1.2. Macros controls**
+
+Virtel provides several options which can control the display and functionality of the macro logic. The features are enabled or disabled through w2hparm settings. The features are:-
+
+- w2hparm.keymapping
+
+Boolean setting to indicate whether keymapping is supported. When set to "true", a hot key combination can be allocated to the macro. The default is false. When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will only invoke the browser refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:-
+::
+
+	w2hparm.keymapping=true
+
+With keyboard mapping enabled the macro interface will display the associated key mapping against the macro.
+
+|image96|
+
+Editing macro with keymapping 
+
+- W2hparm.keepmacpad
+
+Boolean setting to indicate whether to maintain the macro interface open or to close it as soon as a macro has been executed.
+
+- W2hparm.macroPad 
+
+Boolean to indicate whether the macro interface should be presented as a sub-window in the VWA window, or as a separate window.
+
+**1.16.1.3. Macros in VIRTEL Storage. Using the DDI interface**
 
 The “VirtelMacros” function allows global, group, and user macros to be stored under the name “macro.json” in a
-VSAM file on the VIRTEL host system.
-The SET VMACROS=YES parameter in the ARBOLOAD job allows the definitions needed for the VirtelMacros function to
-be loaded during VIRTEL installation.
+VSAM file on the VIRTEL host system. This feature uses the DDI capability of Virtel to store macros in a central depository or dynamic directory, in this case a VSAM file on the mainframe. The macros can the be automatically refreshed on a users workstation as required depending on the options set in the w2hparm settings. The DDI and administration features of Virtel should only be made available to an Administrator. For example, in RACF an Administrator would be a user who has READ access to the FACILITY profile VIRTEL.*.
 
-A user can access to macros strored in:-
+Protecting access to DDI and the macros contained therein is through security profiles. As distributed these are the profiles that relate to macros and DDI:-
 
-- a dedicated directory labeled with his userid,
-- a group directory labeled with his groupid,
-- a global directory which can be accessed by all users.
+::
+ 
+ virtel.xxx-03z where xxx = W2H or CLI and z = G for GROUP, U for USER and A for GLOBAL. Permit access to the DDI directories
+ virtel.xxx-07                                                                           DDI Interface
+ virtel.xxx-66                                                                           Upload capability token.
+ virtel.xxx-80z                                                                          Directory upload 
+ virtel.USR-DIR                                                                          User directory
+ virtel.GRP-DIR                                                                          Group directory
+ virtel.GLB-DIR                                                                          Global directory
 
-A user can only manage the macros stored in his dedicated directory. The “Dynamic Directory Interface” is avalaible to
-the administrators to manage macros strored int he the group and global directories.
 
-Multiple macros.json files can be defined: a global file containing shared macros for all users, and group and user files
-where macros specific to a group or to a user are stored.
+The following job shows an example of setting up the security profiles for Administrators to control DDI and macro administration:-
 
-User macros created by each user are stored in macros.json files loaded into the USR-DIR directory with keyword
-%USER%. When the macros are loaded into or read from this directory, VIRTEL substitutes the keyword %USER% by
-the userid.
+::
+ 
+	//*---------------------------------------------------------*
+	//* RACF : AUTHORIZATIONS FOR VIRTEL DDI *
+	//*---------------------------------------------------------*
+	//STEP1 EXEC PGM=IKJEFT01,DYNAMNBR=20
+	//SYSTSPRT DD SYSOUT=*
+	//SYSTSIN DD *
+	/*-------------------------------------------------------*/
+	/* Setup for DDI */
+	/*-------------------------------------------------------*/
+	  RDEF FACILITY SPVIRPLI.W2H-03G UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.W2H-03U UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.W2H-03A UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.CLI-03G UACC(NONE) /* CLI */
+	  RDEF FACILITY SPVIRPLI.CLI-03U UACC(NONE) /* CLI */
+	  RDEF FACILITY SPVIRPLI.CLI-03A UACC(NONE) /* CLI */
+	  RDEF FACILITY SPVIRPLI.W2H-07 UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.W2H-66 UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.W2H-80U UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.W2H-80G UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.W2H-80A UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.USR-DIR UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.GRP-DIR UACC(NONE) /* W2H */
+	  RDEF FACILITY SPVIRPLI.GLB-DIR UACC(NONE) /* W2H */
+	  PE SPVIRPLI.W2H-03G CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-03U CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-03A CL(FACILITY) RESET
+	  PE SPVIRPLI.CLI-03G CL(FACILITY) RESET
+	  PE SPVIRPLI.CLI-03U CL(FACILITY) RESET
+	  PE SPVIRPLI.CLI-03A CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-07 CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-66 CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-80U CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-80G CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-80A CL(FACILITY) RESET
+	  PE SPVIRPLI.USR-DIR CL(FACILITY) RESET
+	  PE SPVIRPLI.GRP-DIR CL(FACILITY) RESET
+	  PE SPVIRPLI.GLB-DIR CL(FACILITY) RESET
+	  PE SPVIRPLI.W2H-07 CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.W2H-66 CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.W2H-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.W2H-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.W2H-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.CLI-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.CLI-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.CLI-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.W2H-80U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.W2H-80G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.W2H-80A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.USR-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.GRP-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  PE SPVIRPLI.GLB-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+	  /*-------------------------------------------------------*/
+	  /* REFRESH THE RACF PROFILES */
+	  /*-------------------------------------------------------*/
+	  SETR REFRESH RACLIST(FACILITY)
+	/*
+	//
 
-Group macros are defined for a specific group name recognized by the security subsystem (RACF, TOPS, ACF2). They
-are stored in a macros.json file loaded into the GRP-DIR directory with keyword %GROUP%. At execution time, VIRTEL
-substitutes the keyword %GROUP% by the name of the group supplied by the security subsystem.
+
+
+An administrator would have READ access to all whereas a user may only have access to the some of the profiles.
+
+*Setting up to use DDI and macros*
+
+Run the ARBOLOAD job with the "SET VMACROS=YES" parameter coded. This allows the definitions needed for the VirtelMacros function to be loaded during VIRTEL installation. If this setup is not run the message "Your Virtel is not configured for dynamic directories" will appear when DDI is selected from the main Admin. portal page. 
+
+A user has access to macros stored in one of the following DDI directories:-
+
+- a dedicated directory labeled with his userid - USR-DIR
+- a group directory labeled with his groupid - GRP-DIR
+- a global directory which can be accessed by all users -Global DIR.
+
+A user can only manage the macros stored in his dedicated directory. The “Dynamic Directory Interface” is avalaible to the administrators to manage macros strored int he the group and global directories.
+
+Multiple macros.json files can be defined: a global file containing shared macros for all users, and group and user files where macros specific to a group or to a user are stored.
+
+User macros created by each user are stored in macros.json files loaded into the USR-DIR directory with keyword %USER%. When the macros are loaded into or read from this directory, VIRTEL substitutes the keyword %USER% by the users security userid.
+
+Group macros are defined for a specific group name recognized by the security subsystem (RACF, TOPS, ACF2). They are stored in a macros.json file loaded into the GRP-DIR directory with keyword %GROUP%. At execution time, VIRTEL substitutes the keyword %GROUP% by the name of the group supplied by the security subsystem.
 
 Global macros accessible to all users are stored in the macros.json file loaded into the GLB-DIR directory.
 
-A prerequisite for using group and user macros is that the user must sign on to VIRTEL with a userid and password,
-either by accessing VIRTEL via a secure transaction (one whose “Security” field is non-zero), or by executing a SET$
-SIGNON instruction contained in a scenario.
+A prerequisite for using group and user macros is that the user must sign on to VIRTEL with a userid and password, either by accessing VIRTEL via a secure transaction (one whose “Security” field is non-zero), or by executing a SET$ SIGNON instruction contained in a scenario.
 
-If used in a Sysplex distributed environment, the VSAM file that contains the macros cannot be shared between two
-VIRTEL STC (i.e. each VIRTEL must have its own VSAM macro file).
+If used in a Sysplex distributed environment, the VSAM file that contains the macros cannot be shared between multiple instances of the VIRTEL STC (i.e. each VIRTEL must have its own VSAM macro file).
 
 **1.16.1.3.1. Enabeling the storage of macros on the host**
 
-When VIRTEL is first installed, no macros.json files exist.
-To allow macros to be stored and loaded from the host site, the administrator activates the VirtelMacros function by
-adding the code shown below to the custom.js file loaded into the CLI-DIR directory (or another site-defined
-directory):
+When VIRTEL is first installed, no macros.json files exist. To allow macros to be stored and loaded from the host site, the administrator activates the VirtelMacros function by
+adding the code shown below to a customised w2hparm.js. This file should reside in the CLI-DIR directory (or another site-defined directory). See :ref:'Customising Virtel <#_V457UG_customizing_with_option>' for further details on how to customise Virtel.
 
 ::
-
+ 
     w2hparm.useVirtelMacros = true;
 
 *custom.js to activate the VirtelMacros function*
 
-
-The custom.js file must be activated as described in :ref:`“Site customization of Javascript functions” <#_V457UG_customization_javascript_functions>`.
-
-Once this has been done, each VIRTEL Web Access user has access to one or more macros.json files stored in:
+Once VirtelMAcros have been activated each VIRTEL Web Access user has access to one or more macros.json files stored in:
 
 - a dedicated directory labeled with his userid,
 - a group directory labeled with his groupid,
 - a global directory which can be accessed by all users.
 
-A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or
-Gloabl directories requires that specific authorizations are defined into the security tool.
+A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or Gloabl directories requires that specific authorizations are defined into the security tool. If no file exists, a 404 error is produced, and no macros are listed in the macro window. Access to the DDI interface is the the Administration Portal. Select Dynamic directory Interface and the following DDI interface will appear:-
 
-If no file exists, a 404 error is produced, and no macros are listed in the macro window.
+|
+
+
 
 **1.16.1.3.2. Macros synchronization between two VIRTEL STC**
 
@@ -11070,7 +11276,7 @@ field contains spaces:
 *Detecting VIRTEL by inspecting the contents of the TIOA*
 
 3.3.3. Use a specific range of terminal names
-*********************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since all VIRTEL requests are made from the VIRTEL terminal pool, the application program can test the CICS terminal
 id or the VTAM LU name to determine if it is running under VIRTEL, as shown in the following example:
@@ -13315,6 +13521,7 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image63| image:: images/media/image63.png
    :width: 0.34375in
    :height: 0.33333in
+.. |image63a| image:: images/media/image63a.png   
 .. |image64| image:: images/media/image64.png
    :width: 3.88219in
    :height: 3.16677in
@@ -13345,3 +13552,9 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image89| image:: images/media/image89.png
 .. |image90| image:: images/media/image90.png
 .. |image91| image:: images/media/image91.png
+.. |image92| image:: images/media/image92.png
+.. |image93| image:: images/media/image93.png
+.. |image94| image:: images/media/image94.png
+.. |image95| image:: images/media/image95.png
+.. |image96| image:: images/media/image96.png
+.. |image97| image:: images/media/image97.png

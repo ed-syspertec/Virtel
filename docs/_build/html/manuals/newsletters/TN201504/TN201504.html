@@ -256,6 +256,19 @@ VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to
 provide a HA solution. The only VIRTEL requirement is to define a VIRTEL
 transaction which targets CICSZ as the VTAM application, i.e. the VTAM
 Generic Resource or CICSPLEX group name.</p>
+<p><strong>VSAM SHROPTIONS</strong></p>
+<p>To support a shared ARBO the VSAM SHROPTIONS must be defined as SHROPTIONS(4,3). This will enable <em>crossregion</em> and <em>crosssystem</em> sharing of the ARBO. Failure to do this will result in a 168 return code. The following JCL may be used to ALTER the VSAM SHROPTIONS of the ARBO file.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
+ <span class="n">ALTER</span>
+   <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH</span><span class="o">.</span><span class="n">ARBO</span><span class="o">.</span><span class="n">DATA</span>
+   <span class="n">SHAREOPTIONS</span><span class="p">(</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
+ <span class="n">ALTER</span>
+   <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH</span><span class="o">.</span><span class="n">ARBO</span><span class="o">.</span><span class="n">INDEX</span>
+   <span class="n">SHAREOPTIONS</span><span class="p">(</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
 <p><strong>Virtel naming conventions with multiple tasks</strong></p>
 <p>When running more than one VIRTEL STC care must be taken when defining
 the VTAM relay names that each VIRTEL tasks will use. In the above
