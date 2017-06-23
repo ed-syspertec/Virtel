@@ -44,7 +44,7 @@ Syspertec Communication
 0. What's new in Virtel 4.57
 ============================
 
-0.1 
+See the technical newsletter :ref:'"What's new in Virtel V4.57"<#_tn201706>' for a full list of updates released with Virtel 4.57.  
 
 1. Incoming calls
 =================
@@ -5451,41 +5451,49 @@ operational status of this feature is displayed in an ICON in top right.
 
 .. _#_V457UG_customizing_with_option:
 
-1.15.4. Customizing Virtel using Compatibity and the Option modes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+1.15.4. Customizing Virtel using Compatibity and Option modes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 
-Virtel V4.56 introduces some enhancements to customisation. With Virtel 4.56, customization is possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific. Previous customisation was at an entry level only. To maintain compatibility with older release of Virtel the original customisation design is supported under a feature called "compatibility mode". By default this feature is not active. The compatibility feature can be activated by including the following statement in the TCT:-
+Virtel V4.56 introduces some enhancements to customisation. With Virtel 4.56, customization is possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific transactions. Previous customisation was only at the entry point level. To maintain compatibility with older release of Virtel the original customisation design continues to be supported under a feature called "compatibility mode". This compatibility feature can be activated by including the following statement in the TCT:-
 
 ::
 
 	HTSETn=(OPTION-DEFAULT-COMPATIBILITY) where n = 1_4.     
 
-As delivered, Virtel V4.56 defaults to having no custom feature active. That means neither compatibility mode or the /option/ pathname is active. To turn on these features the following actions must be performed. 
+As delivered, Virtel V4.56 defaults to having no custom mode active. That means neither compatibility mode or the option mode is active. To turn one on these modes on the following actions must be performed. 
 
 1.15.4.1 Compatibility Mode
 
 - Update the TCT with the HTSETn statement to turn on compatibility mode and reassemble the TCT.
+- Modify the elements (w2hparm.js, custom.css, custom.js etc.) and upload to the relevant directory. This would normally be CLI-DIR
 - Update the relevant transactions to point to the CLI-DIR for the elements you wish to customize or modify. The transactions are:-
 
 ::
  
-	XXX-03Cz   where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point). z = C for custom.css, h for help.html and j for custom.js
-	XXX-03P    where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point). This transaction provides the directory for a modified w2hparm.js
+	XXX-03Cz   where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point).
+			   z = C for custom.css, H for help.html and J for custom.js
+	XXX-03P    where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point).
+			   This transaction provides the directory for a modified w2hparm.js
 
-For example, if a modified w2hparm.js is required for all transactions and a modified toolbar was required for only applications running under the CLIWHOST entry point then the following transactions would be changed:-
+By default, the applications associated with these transactions is set to "W2H-DIR".
+
+As an example, if the w2hparm option "Enter=Enter" is required rather than the default "Enter=Newline" and a modified toolbar is also required for transctions running under the CLIWHOST entry point then the following transactions would be changed:-
 ::
  
-	W2H-03P		Application = CLI-DIR 		Default = W2H-DIR. Will now locate w2hparm.js from CLI-DIR.
-	CLI-03P		Application = CLI-DIR       Default = W2H-DIR. Will now locate w2hparm.js from CLI-DIR.
-	CLI-03CJ	Application = CLI-DIR       Default = W2H-DIR. Will now locate custom.js from CLI-DIR.   	
+	W2H-03P		Application = CLI-DIR.  Default = W2H-DIR. Locate w2hparm.js from CLI-DIR.
+	CLI-03P		Application = CLI-DIR   Default = W2H-DIR. Locate w2hparm.js from CLI-DIR.
+	CLI-03CJ	Application = CLI-DIR   Default = W2H-DIR. Will now locate custom.js from CLI-DIR.   	
 
-- Modify the elements (w2hparm.js, custom.css, custom.js etc.) and upload to the relevant directory. This would normally be CLI-DIR
+- w2hparm.js would be modified and uploaded to CLI-DIR.
+- Custom.js would be modified to support the tool bar change and uploaded to CLI-DIR.   
 
-.. danger:: Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance updates or Virtel release updates. Keep customized elements in the CLI-DIR directory.
+The transaction W2H-03CJ is left pointing to W2H-DIR meaning that applications under the WEB2HOST entry point would have the default tool bar.
 
-1.15.4.2 /option/ path mode  
+.. danger:: Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance or Virtel release updates. Keep customized elements in the CLI-DIR directory.
 
-The new customisation features uses the /option/ pathname to point to a directory where all the relevant customisation elements should reside. This directory should be the CLI-DIR. To use this feature a  w2hparm.js should include the "global-settings" attribute. The following is an example:-
+1.15.4.2 Option mode  
+
+This Option mode uses the /option/ pathname to locate a directory where all the relevant customisation elements reside. The recommended directory is CLI-DIR. To use this mode the w2hparm.js file must include the "global-settings" attribute. The following is an example:-
 ::
 
 	"global-settings":{
@@ -5494,7 +5502,7 @@ The new customisation features uses the /option/ pathname to point to a director
 	    "pathToHelp": "../option/myHelp.html"
 	}	  
 
-The customised file names follow the pattern key.id.type where:-
+This attribute defines the "global" customised names using the following pattern:- key.id.type where:-
 
 ::
 
@@ -5512,9 +5520,9 @@ The supported "pathToxxxxx" keys are used to select the file where the customise
 	PrintCss      Custom print style CSS
 	Help          Custom Help pages
 
-To activate the /option/ customisation mode perform the following actions:-
+To activate the "option" mode perform the following actions:-
 
-- Update the W2hparm.js to include the global-settings option. Include the relevant keynames within the global option settings you wish to modify.
+- Update the W2hparm.js to include the global-settings option. Include the relevant keynames within the global option settings you wish to modify. 
 - Update the XXX-03P transactions to point to the CLI-DIR. The modifified w2hparm.js will now be loaded from CLI-DIR and not the default W2H-DIR.
 - Upload the modified w2hparm.js to the CLI-DIR directory.
 - Run the supplied ARBOLOAD job in the CNTL library with OPTION=YES set. This will add two new transactions to the W2H and CLI entries to define the /option pathname.
@@ -5523,14 +5531,17 @@ To activate the /option/ customisation mode perform the following actions:-
 Global level modifications (All transactions under an Entry Point)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For example, to support a global modified w2hparm and a modified toolbar for transactions running under the CLIWHOST entry point the following actions would be required. Update the default w2hparm.js to include a global setting for pathToW2hparm:-
+For example, to support a global modified w2hparm and a modified toolbar for transactions running under the CLIWHOST entry point the following actions would be required. 
+
+For the "Enter" key requirment update the default w2hparm.js to include a global setting for pathToW2hparm:-
 ::  
  
   "global-settings":{
 		"pathToW2hparm":"../option/w2hparm.global.js",
+		"pathToJSCustom":"../option/custJS.global.js"
 	}
 
-in the w2hparm.global.js file global parmater changes would be defined. For example:-
+Create the file w2hparm.global.js file and define the required changes. Upload this file to CLI-DIR. For example to modify the keyboard Enter key:-
 
 ::
  
@@ -5543,10 +5554,26 @@ in the w2hparm.global.js file global parmater changes would be defined. For exam
         }; 
 
 
+Create the file custJS.global.js file and define the required changes. Upload this file to CLI-DIR. For example to modify the toolbar:-
+
+::
+ 
+ //CLI-DIR - custJS.myOptions.js
+ //Add Print Button To Toolbar
+ function after_standardInit() {
+ 	addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
+ }
+
+Note that the print.ico should also be uploaded to the CLI-DIR directory. 
+
+This has the effect of changing the tool bar for all transactions which is not what is required. The transactions under WEB2HOST will require there option field to be set to "compatibility" to ensure that the default toolbar is shown.
+
+|image98|
+
 Transaction level modifications (Individual transactions)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For each transaction requiring the modified tool bar use the "option" field to designate an option identifier. The identifier will be used to associate customized elements against a transaction(s). In this example "myOptions" has been chosen as an identifier. A transaction level core option file, called option.identifier.js, will be used with the option identifier "myOptions" to locate the custom js file. The customized settings are held in a Javascript variable named oCustom. 
+If only certain transactions should have the modified tool bar then set a unique option identifier for those transactions. The "option" identifier will be used to associate customized elements against specific transaction(s). In this example the value "myOptions" has been chosen as an identifier. A transaction level "core option file", using the format "option.identifier.js", will be used to locate customized elements. Using the option identifier "myOptions" the file will be called option.myOptions.js. It should be created and uploaded to CLI-DIR. The customized settings are held in a Javascript variable named oCustom. 
 
 ::
  
@@ -5565,16 +5592,16 @@ A file called custJS.myOptions.js is created which will contain the toolbar modi
  	addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
  }
 
-In the above example all transactions will be subjected to parm changes defined in the file w2hparm.global.js. Transactions which have the option id set to "myOptions" will have a customized tool bar picked up through the paths designated in the file option.myOption.js file. The following files are copied to CLI-DIR:-
+Using "option" mode In the above examples all transactions will be subjected to parm changes defined in the file w2hparm.global.js. Transactions which have the option id set to "myOptions" will have any customized changes located through the core option file "option.myOption.js". These will override any "global" settings. The following files are created and copied to CLI-DIR:-
 
 ::
  
- option.myOptions.js  - contains pointers to custom javascript file. Only applicable to transactions with myOption as an id. in the transaction "Option" field.
- custjJS.myOptions.js - contains customized Javascript code.
- w2hparm.js           - contains "global-settings" key pointing to the global settings parameter file w2hparm.global.js. These modifications will be applicable to all transactions.
- w2hparm.global.js    - contains global w2hparm changes
+ option.myOptions.js  - core option file for identifier "myOptions"
+ custjJS.myOptions.js - customized java script file for "myOptions".
+ w2hparm.js           - contains "global-settings" attribute.
+ w2hparm.global.js    - global settings
 
-In all cases the files defined in the option.id.js file with the keys pathTo[key] are copied to the CLI-DIR. they will be located through the /option/ pathname. The values associated the the keys pathTo[key] can be any file name. For example:-
+Files defined in the core option files "option.id.js" with the keys pathTo[key] are copied to the CLI-DIR. They will be located through the /option/ pathname. The values associated the the keys pathTo[key] can be any file name and not necessarily the names used in the examples. The /option/ path is always required. For example:-
 
 ::
  
@@ -5586,24 +5613,24 @@ In all cases the files defined in the option.id.js file with the keys pathTo[key
 Compatibility Option id
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-For compatibility the option field can be defined with the special identifier "compatibility". This indicates that for this transaction the "compatibility" mode of operation should be used to search for customized elements. For example custom.css would be located through the transaction XXX-03CJ.
+For compatibility the transaction option field can be defined with the special identifier "compatibility". This indicates that the "compatibility" mode of operation should be used to search for customized elements. For example custom.css would be located through the transaction XXX-03CJ.
 
 1.15.5 Defining Transaction Options 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Within a transaction display in the Virtel Administration (HTML) portal a user can click the "Spanner" ICON to help in setting up the option files.
+Using the HTML transaction display a user can click on the "Spanner" ICON to help in setting up the option files. This include the core option file and the relevant javascript and CSS files.
 
 |image94|
-*Transaction display*
+*Transaction display with the option spanner ICON*
 
-On clicking the "spanner" icon a tabbed "Option" panel will be displayed which has pre-allocated and build an option environment based upon the "option" field value. Two tabbed options are available, "BASIC" and "ADVANCED":-
+On clicking the "spanner" icon a tabbed "Option" panel will be displayed. A pre-allocated core option environment, based upon the "option" field value, will be built. Two tabbed options are available, "BASIC" and "ADVANCED":-
 
 |image92|
 *Defining core option file*
 
 **1.15.5.1 Basic Mode**
 
-With the Basic mode of operation, the Validate button will create an option.id.js file and upload it to the CLI-DIR directory. Within this file, the settings keys will be set pointing to the customisation files you have chosen using the option field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file *option.myOptions.js* which will be loaded upto the CLI_DIR. Within this core file the key elements pathToJsCustom and pathtoCssCustom will be generated and will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css*. The Basic Mode can be used as a startup to develop your own core option file and to include other bespoke elements like Help, Parm and PrintCss files. 
+Within the Basic mode of operation, the Validate button will create a core option file and upload it to the CLI-DIR directory. Within this file, javascript and CSS settings keys, if selected, will point to the customisation files as defined by the "option" field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file *option.myOptions.js* which will be loaded upto the CLI_DIR. Within this core option file the key elements pathToJsCustom and pathtoCssCustom will be generated. These will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css. 
 
 |image93|
 *Basic Mode Operation*
@@ -5614,6 +5641,8 @@ The generated core option file option.myOptions.js will look like thsi:-
  
  // customization for option=myOptions
  var oCustom={"pathToCssCustom":"../option/custCSS.myOptions.css","pathToJsCustom":"../option/custJS.myOptions.js"}
+
+This can be modified to add other custom elements such as PrintCSS, Parm or Help.
 
 **1.15.5.2 Advanced Mode**
 
@@ -5626,13 +5655,13 @@ By selecting the Advanced mode tab the core option file can be downloaded in pre
 1.16. Macros
 ------------
 
-Often, in the world of the 3270 emulation, the term of “Macro” brings together two separate concepts. The first one
+In the world of the 3270 emulation, the term of “Macro” brings together two separate concepts. The first one
 designates the recording of a sequence of repetitive actions that the user wishes to automate such as for example a
 signon process, the second designates a complex dialogue between the terminal and an application running on the
 mainframe side. This second category often requires the usage of a programming language to develop an executable
 module that operates from the workstation in partnership with the 3270 emulator.
 
-This section disusses the answer to the first concept, the second one being developed in chapters :ref:`“Web Modernisation VIRTEL Scenarios” <#_V457UG_virtel_scenarios>`.
+This section disusses the answer to the first concept, the second one is discussed in the section :ref:`“Web Modernisation VIRTEL Scenarios” <#_V457UG_virtel_scenarios>`.
 
 By pressing the REC button on the VIRTEL Web Access toolbar, the user can start recording a sequence of keystrokes. A
 second click on the REC button terminates the recording and allows the user to assign a name to the macro which has
@@ -5671,11 +5700,11 @@ The recorded macros display has a small context window which can be opened with 
 - Edit
 - Run
 
-**1.16.1.2. Macros controls**
+**1.16.1.2. Macro controls**
 
 Virtel provides several options which can control the display and functionality of the macro logic. The features are enabled or disabled through w2hparm settings. The features are:-
 
-- w2hparm.keymapping
+- w2hparm.keymapping true|false 
 
 Boolean setting to indicate whether keymapping is supported. When set to "true", a hot key combination can be allocated to the macro. The default is false. When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will only invoke the browser refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:-
 ::
@@ -5687,20 +5716,20 @@ With keyboard mapping enabled the macro interface will display the associated ke
 |image96|
 *Editing macro with keymapping* 
 
-- W2hparm.keepmacpad
+- w2hparm.keepmacpad true|false
 
 Boolean setting to indicate whether to maintain the macro interface open or to close it as soon as a macro has been executed.
 
-- W2hparm.macroPad 
+- w2hparm.macroPad true|false
 
 Boolean to indicate whether the macro interface should be presented as a sub-window in the VWA window, or as a separate window.
 
 **1.16.1.3. Macros in VIRTEL Storage. Using the DDI interface**
 
 The “VirtelMacros” function allows global, group, and user macros to be stored under the name “macro.json” in a
-VSAM file on the VIRTEL host system. This feature uses the DDI capability of Virtel to store macros in a central depository or dynamic directory, in this case a VSAM file on the mainframe. The macros can the be automatically refreshed on a users workstation as required depending on the options set in the w2hparm settings. The DDI and administration features of Virtel should only be made available to an Administrator. For example, in RACF an Administrator would be a user who has READ access to the FACILITY profile VIRTEL.*.
+VSAM file on the VIRTEL host system. This feature uses the DDI capability of Virtel to store macros in a central repository, in this case a VSAM file on the mainframe. With this centralised environment macros can be managed, thereby keeping control of critical business logic. Macros will be automatically downloaded and refreshed on a users workstation depending on the options set in the w2hparm settings.
 
-Protecting access to DDI and the macros contained therein is through security profiles. As distributed these are the profiles that relate to macros and DDI:-
+The DDI and administration features of Virtel should only be made available to an "Administrator". In Virtel an "Administrator" would be a user who has READ access to all the Virtel security profiles, in particular those starting VIRTEL.*. See the section :ref:`"Security"<#_V457IG_Security>` for details on setting up Virtel Administrators and protecting resources. The following transactions and related security profiles are used by DDI. 
 
 ::
  
@@ -5713,98 +5742,32 @@ Protecting access to DDI and the macros contained therein is through security pr
  virtel.GLB-DIR                                                                          Global directory
 
 
-The following job shows an example of setting up the security profiles for Administrators to control DDI and macro administration:-
-
-::
- 
-	//*---------------------------------------------------------*
-	//* RACF : AUTHORIZATIONS FOR VIRTEL DDI *
-	//*---------------------------------------------------------*
-	//STEP1 EXEC PGM=IKJEFT01,DYNAMNBR=20
-	//SYSTSPRT DD SYSOUT=*
-	//SYSTSIN DD *
-	/*-------------------------------------------------------*/
-	/* Setup for DDI */
-	/*-------------------------------------------------------*/
-	  RDEF FACILITY SPVIRPLI.W2H-03G UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.W2H-03U UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.W2H-03A UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.CLI-03G UACC(NONE) /* CLI */
-	  RDEF FACILITY SPVIRPLI.CLI-03U UACC(NONE) /* CLI */
-	  RDEF FACILITY SPVIRPLI.CLI-03A UACC(NONE) /* CLI */
-	  RDEF FACILITY SPVIRPLI.W2H-07 UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.W2H-66 UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.W2H-80U UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.W2H-80G UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.W2H-80A UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.USR-DIR UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.GRP-DIR UACC(NONE) /* W2H */
-	  RDEF FACILITY SPVIRPLI.GLB-DIR UACC(NONE) /* W2H */
-	  PE SPVIRPLI.W2H-03G CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-03U CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-03A CL(FACILITY) RESET
-	  PE SPVIRPLI.CLI-03G CL(FACILITY) RESET
-	  PE SPVIRPLI.CLI-03U CL(FACILITY) RESET
-	  PE SPVIRPLI.CLI-03A CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-07 CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-66 CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-80U CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-80G CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-80A CL(FACILITY) RESET
-	  PE SPVIRPLI.USR-DIR CL(FACILITY) RESET
-	  PE SPVIRPLI.GRP-DIR CL(FACILITY) RESET
-	  PE SPVIRPLI.GLB-DIR CL(FACILITY) RESET
-	  PE SPVIRPLI.W2H-07 CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.W2H-66 CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.W2H-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.W2H-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.W2H-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.CLI-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.CLI-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.CLI-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.W2H-80U CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.W2H-80G CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.W2H-80A CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.USR-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.GRP-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  PE SPVIRPLI.GLB-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
-	  /*-------------------------------------------------------*/
-	  /* REFRESH THE RACF PROFILES */
-	  /*-------------------------------------------------------*/
-	  SETR REFRESH RACLIST(FACILITY)
-	/*
-	//
-
-
-
-An administrator would have READ access to all profiles whereas a user may only have access to the some of the profiles.
-
 **1.16.2 Setting up to use DDI and macros**
 
-Run the ARBOLOAD job with the "SET VMACROS=YES" parameter coded. This allows the definitions needed for the VirtelMacros function to be loaded during VIRTEL installation. If this setup is not run the message "Your Virtel is not configured for dynamic directories" will appear when DDI is selected from the main Admin. portal page. 
+Run the SAMPLIB/CNTL ARBOLOAD job with the "SET VMACROS=YES" parameter coded. This defines the VirtelMacros functions and transactions requied by DDI and macro suport. If this setup is not run the message "Your Virtel is not configured for dynamic directories" will appear when DDI is selected from the main Admin. portal page. 
 
 |image97|
 *The Main DDI Page*
 
-A user has access to macros stored in one of the following DDI directories:-
+Depending on the security setup a user can have access to macros stored in one of the following centralized DDI directories:-
 
 - a dedicated directory labeled with his userid - USR-DIR
 - a group directory labeled with his groupid - GRP-DIR
 - a global directory which can be accessed by all users -Global DIR.
 
-A user can only manage the macros stored in his dedicated directory. The “Dynamic Directory Interface” is avalaible to the administrators to manage macros strored int he the group and global directories.
+A user can only manage the macros stored in their dedicated directory. The “Dynamic Directory Interface” is avalaible to the administrators to manage macros stored in the the GROUP and GLOBAL directories.
 
 Multiple macros.json files can be defined: a global file containing shared macros for all users, and group and user files where macros specific to a group or to a user are stored.
 
 User macros created by each user are stored in macros.json files loaded into the USR-DIR directory with keyword %USER%. When the macros are loaded into or read from this directory, VIRTEL substitutes the keyword %USER% by the users security userid.
 
-Group macros are defined for a specific group name recognized by the security subsystem (RACF, TOPS, ACF2). They are stored in a macros.json file loaded into the GRP-DIR directory with keyword %GROUP%. At execution time, VIRTEL substitutes the keyword %GROUP% by the name of the group supplied by the security subsystem.
+Group macros are defined for a specific group name recognized by the security subsystem (RACF, TOPS, ACF2). They are stored in a macros.json file loaded into the GRP-DIR directory with keyword %GROUP%. At execution time, VIRTEL substitutes the keyword %GROUP% by the name of the group supplied by the security subsystem. Group macros are avaialble to users who belong to the group.
 
 Global macros accessible to all users are stored in the macros.json file loaded into the GLB-DIR directory.
 
 A prerequisite for using group and user macros is that the user must sign on to VIRTEL with a userid and password, either by accessing VIRTEL via a secure transaction (one whose “Security” field is non-zero), or by executing a SET$ SIGNON instruction contained in a scenario.
 
-If used in a Sysplex distributed environment, the VSAM file that contains the macros cannot be shared between multiple instances of the VIRTEL STC (i.e. each VIRTEL must have its own VSAM macro file).
+In a Sysplex distributed environment, the VSAM files that contains the macros, normally the HTML TRSF file, cannot be shared between multiple instances of the VIRTEL STC. Each VIRTEL must have its own HTML VSAM macro file if administration is to be performed on the "running" system. For production environments where mutilple instances share the same VSAM files (SAMP,HTML,ARBO) and run in a "Read only' environment enforced through the use of the TCT paramater VSAMTYP=READONLY, DDI management will not be possible. This an incompatible environment for DDI macro management as macros cannot be updated. A solution to this is to have an "update" window where "READ ONLY" is turn off while macro maintenance is performed. Once checked out, the READ ONLY can be re-installed. New macros will then be available to users. In a "READ ONLY" environment users will not be able to maintain any user environment as they willl not have "write" access to the HTML file.        
 
 **1.16.2.1. Enabeling the storage of macros on the host**
 
@@ -12556,6 +12519,8 @@ Example of the e-mail generated by the above program:
 
 *Example of e-mail generated by structured field FAD4*
 
+.. _#_V457UG_security:
+
 4. Security
 ===========
 
@@ -12628,8 +12593,8 @@ as the value of the network.automatic-ntlm-auth.trusted-uris parameter.
 
 .. _#_V457UG_data_encryption_SSL:
 
-4.2.5. Data encryption by SSL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4.2.5. Data encryption by AT-TLS/SSL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The AT-TLS feature (“Application Transparent Transport Layer Security”), available with z/OS Communication Server
 V1R7 and later releases, allows direct access to the VIRTEL Web Access server in SSL mode (HTTPS), without using an
@@ -12639,6 +12604,8 @@ VIRTEL Web Access sessions under AT-TLS control.
 For VSE sites, or earlier versions of MVS where AT-TLS is not available, access to VIRTEL in HTTPS mode can be achieved
 by means of an intermediate server (such as Apache) operating in Reverse-Proxy mode. The function of the reverse
 proxy is to transform the dataflow into HTTP mode before sending it on to VIRTEL.
+
+.. warning:: Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.
 
 4.2.6. Identification by certificate
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13639,6 +13606,7 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image95| image:: images/media/image95.png
 .. |image96| image:: images/media/image96.png
 .. |image97| image:: images/media/image97.png
+.. |image98| image:: images/media/image98.png
 .. |image105| image:: images/media/image105.png
 .. |image106| image:: images/media/image106.png
 .. |image107| image:: images/media/image107.png

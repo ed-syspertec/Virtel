@@ -5346,6 +5346,7 @@ This tells VIRTEL that its security definitions are stored in the FACILITY class
 
 Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of the VIRTEL CNTL library. Be sure to specify the correct member name MEMBER=VIRTCTxx in the job. Stop and start VIRTEL to pick up the new VIRTCT.
 
+
 8.1.2 Add RACF definitions
 --------------------------
 
@@ -5401,7 +5402,75 @@ Later you can refine the definitions so that other VIRTEL users can use VIRTEL t
 
 *RACFDEF : JCL to update RACF definitions*
 
-For more information about protecting VIRTEL Web Access resources, refer to the “Security” section of the VIRTEL Web Access Guide.
+8.1.3. Virtel Administrators
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Virtel Administrators have access to all the features of Virtel and are rsponsible for the administration of the product. For example this includes defining transactions and maintaining macros in the DDI central repository. Virtel uses the security subsystem to protect transactions. The following job shows an example of setting up the security profiles for Administrators in group SPGPTECH. This will enable them to control DDI and macro administration:-
+
+::
+ 
+  //*---------------------------------------------------------*
+  //* RACF : AUTHORIZATIONS FOR VIRTEL DDI *
+  //*---------------------------------------------------------*
+  //STEP1 EXEC PGM=IKJEFT01,DYNAMNBR=20
+  //SYSTSPRT DD SYSOUT=*
+  //SYSTSIN DD *
+  /*-------------------------------------------------------*/
+  /* Setup for DDI */
+  /*-------------------------------------------------------*/
+    RDEF FACILITY SPVIRPLI.W2H-03G UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-03U UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-03A UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.CLI-03G UACC(NONE) /* CLI */
+    RDEF FACILITY SPVIRPLI.CLI-03U UACC(NONE) /* CLI */
+    RDEF FACILITY SPVIRPLI.CLI-03A UACC(NONE) /* CLI */
+    RDEF FACILITY SPVIRPLI.W2H-07 UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-66 UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-80U UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-80G UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.W2H-80A UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.USR-DIR UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.GRP-DIR UACC(NONE) /* W2H */
+    RDEF FACILITY SPVIRPLI.GLB-DIR UACC(NONE) /* W2H */
+    PE SPVIRPLI.W2H-03G CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-03U CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-03A CL(FACILITY) RESET
+    PE SPVIRPLI.CLI-03G CL(FACILITY) RESET
+    PE SPVIRPLI.CLI-03U CL(FACILITY) RESET
+    PE SPVIRPLI.CLI-03A CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-07 CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-66 CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-80U CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-80G CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-80A CL(FACILITY) RESET
+    PE SPVIRPLI.USR-DIR CL(FACILITY) RESET
+    PE SPVIRPLI.GRP-DIR CL(FACILITY) RESET
+    PE SPVIRPLI.GLB-DIR CL(FACILITY) RESET
+    PE SPVIRPLI.W2H-07 CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-66 CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.CLI-03G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.CLI-03U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.CLI-03A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-80U CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-80G CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.W2H-80A CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.USR-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.GRP-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    PE SPVIRPLI.GLB-DIR CL(FACILITY) ACC(READ) ID(SPGPTECH)
+    /*-------------------------------------------------------*/
+    /* REFRESH THE RACF PROFILES */
+    /*-------------------------------------------------------*/
+    SETR REFRESH RACLIST(FACILITY)
+  /*
+  //
+
+
+An administrator would have READ access to all profiles whereas a user may only have access to the some of the profiles.
+
+For more information about protecting VIRTEL Web Access resources, refer to the :ref:`"Security"<#_V457UG_security>` of the VIRTEL Web Access Guide.
 
 8.2 How to activate ACF2 Security
 ---------------------------------

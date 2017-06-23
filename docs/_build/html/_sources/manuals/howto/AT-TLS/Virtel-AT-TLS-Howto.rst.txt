@@ -21,6 +21,8 @@ How To - AT-TLS
     socket, but data sent over the network is protected by system SSL.
     The supported protocols are TLS, SSLv3, and SSLv2.
 
+.. warning:: Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.    
+
 **1.2 Installation steps**
 
 *1.2.1 Install Policy Agent procedure*
