@@ -163,7 +163,7 @@ This will create the LOAD library SPTHOLT.XMIT.LOADLIB which should contain the 
   REP 0138 00536980
   IDRDATA PTF5369A
 
-6. Run the following ARBO update job to add some definitions to support USSMSG10. Here we are adding new line/entry point/terminals/transaction definitions. *Change LOCADDR IP address!*
+6. Run the following ARBO update job to add some definitions to support USSMSG10. Here we are adding new line/entry point/terminals/transaction definitions. *Change LOCADDR IP address!*. Transaction EDS-16A adds the support for VIR0021W which is the USSTAB support module. 
 
 ::
 
@@ -319,26 +319,65 @@ Press PF1, PF3, PF3, PF1 to save the changes. The “usstab=ussn” string will 
 
 12. If the default Virtel USSTAB appears than VIRTEL hasn’t be able to locate your USSTAB load module. Check that it is either concatenated into the VIRTEL steplib or copied into the VIRTEL load library. Check the Virtel log for any error messages.
 
-**Constraints**
+Version 1.1
+-----------
 
-VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
-APPLID=TSO. Both would be accepted. 
+Version 1.1 of VIR0021W introduced the following enhancements. 
 
-VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.
+System Symbolic support
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Only buffer displacement coding is supported, not buffer addresse. For example to position to col. 1, row 1 the following should be coded:-
+VIR0021W now supports system symbolics within the MSG10 area and in the usstab= keyword. For example in the MSG10 buffer definition any area that has a symbolic will be translated using the values defined in the SYS1.PARMLIB member IEASYMXX. The z/OS command *D SYMBOLS* can be use to list the defined system symbolics. 
+
+::
+ 
+            DC CL80' This is system &&SYSNAME. running on SYSPLEX &&SYSPLEX.'
+
+would be translated and displayed as:-
+
+::
+
+            DC CL80' This is system ZAMVS1 running on SYSPLEX PLEX1'
+
+In the usstab= keyword, in the transaction definition, a symbolic can form part of the usstab name. This enables different usstabs to be loaded depending on the system. For example the following would load USSTAB1A if the symbolic &SYSCLONE. was defined as 1A.
+
+::
+ 
+     usstab=usstab&SYSCLONE.
+
+Feedback support
+^^^^^^^^^^^^^^^^
+
+A new keyword has been added to support feedback within the support module. If errmsg=y is coded then any error messages will be displayed in line 24. If the USSTAB is uses row 24 for presentation
+purposes then the errmsg= keyword should not be used. Error reporting will report on invalid application selection and invalid key usage. Any other error messqges will be reported to the Virtel SYSLOG. For example:-
+
+::
+ 
+     usstab=usstab&Sysclone.,errmsg=y 
+
+Will load a USSTAB module depending on the &SYSCLONE. system symbolic value and report error messages to line 24. 
+
+Extended fields and buffer address support.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Both buffer displacement and buffer addresses are now supported as well as extended fields(X'29'). For example to position to col. 1, row 1 the following can be coded:-
 
 ::
 
 	DC    X'11',AL2(((01-1)*80)+(01-1)) R=01,C=01 < Assembles as displacement
 	DC    C'z/OS Z110 Level 0809                    '             
    
-And not:-
+or
 
 ::
 
 	DC    X'114040’ R=01, C=01 < Assembles as a row:col. Position
 	DC    C'z/OS Z110 Level 0809                    '             
+
+**Constraints**
+
+VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
+APPLID=TSO. Both would be accepted. 
 
 The SCAN parameter must be included on the BUFFER statement:-
 

@@ -101,7 +101,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201507/TN201507.html">Customising Virtel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201515/TN201515.html">Using Virtel as a Secure Single Access Control Point</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201517/TN201517.html">Virtel Chinese Character Language Support</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Processing the VTAM USS MSG10 buffer</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Processing the VTAM USS MSG10 buffer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-1-1">Version 1.1</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201520/TN201520.html">Using the IBM System Logger with Virtel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201522/TN201522.html">What’s new in Virtel 4.55</a></li>
 </ul>
@@ -320,7 +323,7 @@ EIRM00W Dummy MAP module required by VIR0021W</dd>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Run the following ARBO update job to add some definitions to support USSMSG10. Here we are adding new line/entry point/terminals/transaction definitions. <em>Change LOCADDR IP address!</em></li>
+<li>Run the following ARBO update job to add some definitions to support USSMSG10. Here we are adding new line/entry point/terminals/transaction definitions. <em>Change LOCADDR IP address!</em>. Transaction EDS-16A adds the support for VIR0021W which is the USSTAB support module.</li>
 </ol>
 <div class="highlight-default"><div class="highlight"><pre><span></span>//SPTHOLTA JOB 9000,&#39;UPGRADE&#39;,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,
 // REGION=0M,RESTART=*
@@ -465,20 +468,48 @@ returned to the VIRTEL menu and not the VTAM screen. This can be changed. See no
 <ol class="arabic simple" start="12">
 <li>If the default Virtel USSTAB appears than VIRTEL hasn’t be able to locate your USSTAB load module. Check that it is either concatenated into the VIRTEL steplib or copied into the VIRTEL load library. Check the Virtel log for any error messages.</li>
 </ol>
-<p><strong>Constraints</strong></p>
-<p>VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
-APPLID=TSO. Both would be accepted.</p>
-<p>VIR0021W only supports USSMSG10 and has no error feedback provided by other USSMSG entries. Any error messages are written to the VIRTEL log.</p>
-<p>Only buffer displacement coding is supported, not buffer addresse. For example to position to col. 1, row 1 the following should be coded:-</p>
+<div class="section" id="version-1-1">
+<h2>Version 1.1<a class="headerlink" href="#version-1-1" title="Permalink to this headline">¶</a></h2>
+<p>Version 1.1 of VIR0021W introduced the following enhancements.</p>
+<div class="section" id="system-symbolic-support">
+<h3>System Symbolic support<a class="headerlink" href="#system-symbolic-support" title="Permalink to this headline">¶</a></h3>
+<p>VIR0021W now supports system symbolics within the MSG10 area and in the usstab= keyword. For example in the MSG10 buffer definition any area that has a symbolic will be translated using the values defined in the SYS1.PARMLIB member IEASYMXX. The z/OS command <em>D SYMBOLS</em> can be use to list the defined system symbolics.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="n">CL80</span><span class="s1">&#39; This is system &amp;&amp;SYSNAME. running on SYSPLEX &amp;&amp;SYSPLEX.&#39;</span>
+</pre></div>
+</div>
+<p>would be translated and displayed as:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="n">CL80</span><span class="s1">&#39; This is system ZAMVS1 running on SYSPLEX PLEX1&#39;</span>
+</pre></div>
+</div>
+<p>In the usstab= keyword, in the transaction definition, a symbolic can form part of the usstab name. This enables different usstabs to be loaded depending on the system. For example the following would load USSTAB1A if the symbolic &amp;SYSCLONE. was defined as 1A.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usstab</span><span class="o">=</span><span class="n">usstab</span><span class="o">&amp;</span><span class="n">SYSCLONE</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="feedback-support">
+<h3>Feedback support<a class="headerlink" href="#feedback-support" title="Permalink to this headline">¶</a></h3>
+<p>A new keyword has been added to support feedback within the support module. If errmsg=y is coded then any error messages will be displayed in line 24. If the USSTAB is uses row 24 for presentation
+purposes then the errmsg= keyword should not be used. Error reporting will report on invalid application selection and invalid key usage. Any other error messqges will be reported to the Virtel SYSLOG. For example:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usstab</span><span class="o">=</span><span class="n">usstab</span><span class="o">&amp;</span><span class="n">Sysclone</span><span class="o">.</span><span class="p">,</span><span class="n">errmsg</span><span class="o">=</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>Will load a USSTAB module depending on the &amp;SYSCLONE. system symbolic value and report error messages to line 24.</p>
+</div>
+<div class="section" id="extended-fields-and-buffer-address-support">
+<h3>Extended fields and buffer address support.<a class="headerlink" href="#extended-fields-and-buffer-address-support" title="Permalink to this headline">¶</a></h3>
+<p>Both buffer displacement and buffer addresses are now supported as well as extended fields(X&#8216;29&#8217;). For example to position to col. 1, row 1 the following can be coded:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="n">AL2</span><span class="p">(((</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="n">R</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="mi">01</span> <span class="o">&lt;</span> <span class="n">Assembles</span> <span class="k">as</span> <span class="n">displacement</span>
 <span class="n">DC</span>    <span class="n">C</span><span class="s1">&#39;z/OS Z110 Level 0809                    &#39;</span>
 </pre></div>
 </div>
-<p>And not:-</p>
+<p>or</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;114040’ R=01, C=01 &lt; Assembles as a row:col. Position</span>
 <span class="n">DC</span>    <span class="n">C</span><span class="s1">&#39;z/OS Z110 Level 0809                    &#39;</span>
 </pre></div>
 </div>
+<p><strong>Constraints</strong></p>
+<p>VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
+APPLID=TSO. Both would be accepted.</p>
 <p>The SCAN parameter must be included on the BUFFER statement:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG10</span>    <span class="n">USSMSG</span>  <span class="n">MSG</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">BUFFER</span><span class="o">=</span><span class="p">(</span><span class="n">MSG10BUF</span><span class="p">,</span><span class="n">SCAN</span><span class="p">)</span>
 </pre></div>
@@ -498,6 +529,8 @@ APPLID=TSO. Both would be accepted.</p>
 <p>Module  : VIR0021W</p>
 <p>Meaning : Virtel was unable to load the USS table as defined either in the transaction or TCT.</p>
 <p>Action  : Check that the correct USSTAB has be defined and that the relevant load module is accessible through the VIRTEL STEPLIB concatenation.</p>
+</div>
+</div>
 </div>
 
 
