@@ -137,7 +137,7 @@ characteristics:
 ========
 
 2.1. Introduction
------------------
+=================
 
 **2.1.1. Access to the application**
 
@@ -176,7 +176,7 @@ sub-application is started, it first displays a summary of existing
 definitions in alphanumeric order.
 
 2.2. Summary of existing definitions
-------------------------------------
+====================================
 
 The first screen shows a summay of existing line definitions in
 alphanumeric order:
@@ -223,8 +223,8 @@ Search
     with the cursor on an existing definition to copy its attributes, or
     on an empty line to create a new definition from a blank screen.
 
-2.3. Parameters of the line
----------------------------
+2.3. Line Parameters
+====================
 
     Pressing [PF12] at the line summary screen displays the line detail
     definition screen. This sub-application allows the definition of the
@@ -534,9 +534,10 @@ Delay
     default delay is 2 seconds.
 
 2.4. Examples of line definitions
----------------------------------
+=================================
 
-**2.4.1 Definition of a HTTP line**    
+2.4.1 Definition of a HTTP line
+-------------------------------    
 
 When an HTTP line is started, VIRTEL becomes an HTTP server,
 authorising connections from a web browser to applications at the
@@ -3096,7 +3097,7 @@ LLCLIST
     Must contain the value LLC5.
 
 2.5 Lines Overview
-------------------
+==================
 
 *2.5.1 Introduction*
 
@@ -3152,13 +3153,13 @@ LLCLIST
 ========
 
 3.1 Introduction
-----------------
+================
 
 Each line can have a set of rules which allow the selection of an entry point for each incoming call according to the
 characteristics of the call.
 
 3.2. Summary Of Existing Definitions
-------------------------------------
+====================================
 
 Press [PF5] at the line definition screen to display the list of rules associated with the line:
 
@@ -3216,8 +3217,8 @@ Description
 Entry Point
     Name of the entry point which will be assigned to incoming calls whose characteristics match this rule.
 
-3.3. Parameters Of The Rule
----------------------------
+3.3. Rule Parameters
+====================
 
 To display the detailed characteristics of a rule, position the cursor on the desired rule on the summary screen and press [PF12].
 
@@ -3332,46 +3333,63 @@ Start Time / End Time
 ===============
 
 4.1 Introduction
-----------------
+================
 
 Entry points define the session context for a terminal or for certain types of lines. A terminal connecting to VIRTEL must connect via an entry point. This chapter describes the functions associated with entry point management, as well as the correlation with other elements of VIRTEL system administration, for example, line and terminal management.
 
 **4.1.1. Definition of an Entry Point**
+
 An entry point is a named entity that groups certain information designed to authorise, personalise and protect access to the host site. Entry points define the type of emulation required, the type of security control, which sign-on screen
 must be sent to the user at log on time, what type of Multi-session menu must be used and what applications are to be made available to the user.
+
 **4.1.2. Accessing the application**
+
 The Entry Point Management sub-application is accessed by pressing [PF3] in the Configuration Menu, or [PF13] in the
 Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This subapplication
 allows management of the parameters associated with each entry point.
+
 **4.1.3. Security**
+
 When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu
 is controlled by the resource $$GLOG$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+
 **4.1.4. Choosing the Entry Point**
+
 The entry point used in the connection from a terminal may be specified in various ways:
+
 *4.1.4.1. 3270 Terminals*
+
 The entry point to be used for a connection from a 3270 terminal can be specified:
 • In the DATA parameter of a logon sequence. For example: LOGON APPLID(VIRTEL) DATA(PE-0001)
 • In the VIRTEL terminal definition (see “Parameters Of The Terminal”, page 109).
 • If no entry point is specified, the default entry point is the first value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the terminal receives a signon screen compatible with the original Multi-Session VIRTEL (before version 3.0).
+
 *4.1.4.2. Asynchronous terminals on X25 non-GATE lines*
+
 A Minitel connecting to VIRTEL in LLC5 mode uses a VIRTEL terminal not associated with any line (see “Support of X25
 non GATE terminals”, page 71). The entry point used for this type of connection can be specified:
 • In the X25 call packet. The entry point is specified in the CUD (Call User Data) field of the call packet. The entry point name is in ASCII character format starting at the 5th byte of the CUD field, following the 4-byte protocol identifier.
 • In the VIRTEL terminal definition (see “Parameters Of The Terminal”, page 109).
 • If no entry point is specified, the default entry point is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the terminal is rejected.
+
 *4.1.4.3. Incoming calls on X25 lines - GATE, FastC, XOT*
+
 The entry point to be used for an X25 connection (GATE, FastConnect, XOT) can be specified:
 • By the rules of the line. If one of the rules associated with the line matches the characteristics of the call, the entry point chosen by the rule takes precedence over that specified in the call packet.
 • In the X25 call packet. The entry point is specified in the CUD (Call User Data) field of the call packet. The entry point name is in ASCII character format starting at the 5th byte of the CUD field, following the 4-byte protocol identifier. 
 • A default entry point can be specified in the line definition (see “Parameters of the line”, page 11).
 • If no entry point is specified, the default entry point is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.
+
 *4.1.4.4. Incoming calls on HTTP or SMTP lines*
+
 For an incoming call on this type of line, the entry point is chosen:
 • By the rules of the line, if a rule exists which matches the characteristics of the request.
 • Otherwise the default entry point specified in the definition of the HTTP or SMTP line will be used.
+
 *4.1.4.5. Outgoing calls from an X25 application via a reverse X25 line - /GATE, /FASTC, or /PCNE*
+
 For an outgoing call from an application connected to VIRTEL via this type of line, the entry point is chosen according
 to the following procedure. Note that incoming calls (network to application) on this type of line are processed by the
 rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules attached to the reverse X25 line.
@@ -3382,7 +3400,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 • If no entry point was specified by any of the preceding steps, the default is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.
 
 4.2. Summary Of Existing Definitions
-------------------------------------
+====================================
 
 The entry point management application manages the entry points and their associated transactions. The first screen
 displayed shows a summary of existing entry points in alphanumeric order. A complete description of each field is
@@ -3395,20 +3413,27 @@ presented in the following section.
 **4.2.1 Associated functions**
 
 *4.2.1.2. Modifying an entry point definition*
+
 To modify the definition of an entry point, enter the required information in the field then press [PF1]. Several
 definitions may be modified simultaneously. If the field you wish to modify does not appear on the summary screen,
 position the cursor on the entry and press [PF12] to display the definition detail screen.
 Modifications do not take effect until you press [PF1]. Certain modifications, for instance a modification to an entry
 point used by a line, require a restart of VIRTEL.
+
 *4.2.1.3. Deleting an entry point definition*
+
 To delete a definition, position the cursor on the name of the entry to be deleted and press [PF2]. The line associated
 with the entry to be deleted will appear highlighted with the message CONFIRM DELETE. Press [PF2] again to confirm
 deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each
 entry to be deleted.
+
 *4.2.1.4. Adding an entry point definition*
+
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy
 certain of its attributes, or on an empty line to create a new definition.
+
 *4.2.1.5. Displaying the list of associated transactions*
+
 To access the list of transactions associated with an entry point, position the cursor on the desired entry point and
 press [PF4]. The transaction management menu will then appear.
 
@@ -3421,8 +3446,8 @@ Description
 Transaction
     Prefix of the names of the transactions associated with this entry point (maximum 6 characters).
 
-4.3. Parameters Of The Entry Point
-----------------------------------
+4.3. The Entry Point Parameters
+===============================
 
 To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press
 [PF12].
@@ -3516,15 +3541,18 @@ Extended colors
     An 'E' in this field indicates support for 3270 extended attributes and colors. An 'X' indicates support for 3270 extended attributes and colors together with support for DBCS (Double Byte Character Set).
 
 **4.3.2. Associated functions**
+
 *4.3.2.1. Updating an entry point*
-Type the modifications and press [PF1]. The message UPDATE OK is displayed to indicate successful completion of the operation.
+    Type the modifications and press [PF1]. The message UPDATE OK is displayed to indicate successful completion of the operation.
+
 *4.3.2.2. Creating a new entry point*
-To create a new entry point, complete the fields on the screen and press [Enter]. The message CREATION OK is displayed to indicate successful completion of the operation.
+    To create a new entry point, complete the fields on the screen and press [Enter]. The message CREATION OK is displayed to indicate successful completion of the operation.
+
 *4.3.2.3. Display list of associated transactions*
-Press [PF4] to display the list of transactions associated with the entry point
+    Press [PF4] to display the list of transactions associated with the entry point
 
 4.4. Signon Programs
---------------------
+====================
 
 The Signon Program field of the entry point indicates the name of the program used to control user sign-on. The following signon programs are supplied with VIRTEL:
 
@@ -3544,7 +3572,7 @@ VIR0020P
     Program similar to VIR0020L which allows access to public transactions (those defined with security = 0), if sign-on is rejected by the security system.
 
 4.5. Menu Programs
-------------------
+==================
 
 The Menu Program field of the entry point indicates the name of the program which presents the list of transactions which the user is allowed to access. The following program names can be specified:
 
@@ -3573,7 +3601,7 @@ VIR0021O
 ===============
 
 5.1 Introduction
-----------------
+================
 
 A transaction is a named entity that allows access to an “application” at the host site. The term “application” may be
 either a VTAM application, a VIRTEL sub-application, an external server, or an HTML directory.
@@ -3586,7 +3614,8 @@ Each entry point has a list of associated transactions. The entry point manageme
 administrator to manage the entry point and its associated transactions.
 
 5.2. Summary Of Existing Definitions
-------------------------------------
+====================================
+
 Press [PF4] at the entry point detail screen to display the list of associated transactions:
 
 |image62|
@@ -3609,6 +3638,7 @@ Search
     Display the next page of the list.
 
 *5.2.1.2. Modifying a transaction definition*
+
 To modify the details of a transaction, type the required changes in the appropriate fields and press [PF1]. You can
 change more than one definition at a time. To modify a field not shown on the summary screen, position the cursor on
 the transaction and press [PF12] to display the transaction detail screen.
@@ -3617,16 +3647,19 @@ update the entry point(s) concerned by pressing [PF3] twice (to return to the li
 the change(s) to the entry point.
 
 *5.2.1.3. Deleting a transaction definition*
+
 To delete a definition, position the cursor on the name of the transaction to be deleted and press [PF2]. The line
 associated with the transaction to be deleted will appear highlighted with the message CONFIRM DELETE. Press [PF2]
 again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the
 procedure for each transaction to be deleted.
 
 *5.2.1.4. Adding a transaction definition*
+
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy
 certain of its attributes, or on an empty line to create a new definition.
 
 *5.2.1.5. Displaying the transaction detail screen*
+
 To access the detailed transaction definition, position the cursor on the desired transaction and press [PF12]. The
 transaction detail definition screen will then be displayed.
 
@@ -3645,8 +3678,8 @@ Description
 Application
     Indicates the name of the application accessed via the transaction. This application can be a VTAM application, a VIRTEL sub-application, an external server, or a directory of HTML pages.
 
-5.3. Parameters Of The Transaction
-----------------------------------
+5.3. Transaction Parameters
+===========================
 
 Pressing [PF12] in the transaction summary screen allows access to the transaction definition detail screen:
 
@@ -3810,7 +3843,7 @@ Create a new transaction
     After adding, deleting or updating a transaction, it is essential to update the entry points used by this transaction by pressing [PF1] at the entry point summary screen.
 
 5.4. Connection / Disconnection Scripts
----------------------------------------
+=======================================
 
 When connecting to an application, it may be useful, if desired, to automatically execute certain operations to direct
 the user to a defined point within the application. The most commonly used operations are application signon
@@ -3974,11 +4007,12 @@ a 3270 command code and WCC. VIRTEL will translate the message to the format req
 example, HTML or Minitel) as appropriate.
 
 *5.4.3. Examples of scripts*
-..note::
 
+..note::
     In these examples, script commands are introduced by the preferred sequence &/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.
 
 *5.4.3.1. Connection to CICS (no sign-on) with automatic start of a transaction*
+
 In the simplest case, the CICS transaction code is entered in the field “TIOA at logon”. The script below simply sends the ABC1 transaction code to CICS at connection time:
 
 ::
@@ -4019,6 +4053,7 @@ This script waits for the initial message from CICS, then enters the transaction
 the host. Security=1 is specified to ensure that the user is signed on to VIRTEL. The SBA orders 11xxxx identify the position of the userid and password fields in the CESN signon panel and may vary as a function of the site.
 
 *5.4.3.3. Connection to CICS VSE with ICCF sign-on and start transaction CEMT*
+
 The following script illustrates the use of a PF key:
 
 ::
@@ -4077,6 +4112,7 @@ order (114040), a Start Field order (1D40) and an Insert Cursor order (13). Havi
 application. When the terminal user disconnects, the logoff script sends the “Clear” key to CICS followed by CESF LOGOFF.
 
 *5.4.3.6. Connect and run service transaction*
+
 This example shows a script which connects to CICS and repeatedly issues an enquiry transaction whose parameters are supplied in the URL of an HTTP request:
 
 ::
@@ -4091,15 +4127,14 @@ This example shows a script which connects to CICS and repeatedly issues an enqu
     TIOA at logon    ===> Signon to CICS&/W&*F34BE9&/A&(TRA1&=MYPARAM=&/A&)
 
 *Connection script for service transaction*
-The first part of this script signs on to CICS using the default CICS userid. This part of the script is executed once only when the VIRTEL transaction is called for the first time. The remainder of the script, bracketed by the &( and &) orders, is executed repeatedly. Because the script has a repeating part, this transaction is known as a “Service Transaction”. Each time an HTTP request arrives in the form http://ipaddr:port/pagename+cics5?myparam=xyz123 it is dispatched
-to the service transaction, if one is available, and the script executes the CICS transaction TRA1xyz123 where xyz123 is the value of the URL parameter “myparam=” specified in the HTTP request. The result of this CICS transaction is
-returned to the requester using pagename as a page template. The request is then terminated, but the session between VIRTEL and CICS remains connected waiting for the next request.
+
+The first part of this script signs on to CICS using the default CICS userid. This part of the script is executed once only when the VIRTEL transaction is called for the first time. The remainder of the script, bracketed by the &( and &) orders, is executed repeatedly. Because the script has a repeating part, this transaction is known as a “Service Transaction”. Each time an HTTP request arrives in the form http://ipaddr:port/pagename+cics5?myparam=xyz123 it is dispatched to the service transaction, if one is available, and the script executes the CICS transaction TRA1xyz123 where xyz123 is the value of the URL parameter “myparam=” specified in the HTTP request. The result of this CICS transaction is returned to the requester using pagename as a page template. The request is then terminated, but the session between VIRTEL and CICS remains connected waiting for the next request.
 
 6. External Servers
 ===================
 
 6.1 Introduction
-----------------
+================
 
 The external server management sub-application allows the administrator to maintain the call parameters relating to
 the various servers available for outgoing calls. External server definitions allow users at 3270 terminals to access
@@ -4109,15 +4144,21 @@ and Inter.PEL. Starting with VIRTEL version 4.42, the external server may also b
 outbound calls to a PESIT/IP file transfer server via a VIRPESIT line.
 
 **6.1.1. Access to the application**
+
 The external server management sub-application is accessed by pressing [PF7] in the Configuration Menu, or [PF11] in
 the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0031. This subapplication
 allows management of the parameters associated with each external server.
+
 *6.1.2. Security*
+
 When security is active, access to external server management from the Configuration Menu or the Sub-Application
 Menu is controlled by the resource $$SERV$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.
-**6.2. Summary Of Existing Definitions**
+
+6.2. Summary Of Existing Definitions
+====================================
+
 The first screen displayed by the external server management sub-application shows a summary of existing definitions
 in alphanumeric order:
 
@@ -4141,26 +4182,35 @@ Search
     Display the next page.
 
 *6.2.1.2. Modifying an external server definition*
+
 Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the
 same time. The message UPDATE OK indicates that the modifications have been accepted. If the modification affects a
 field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to
 access the definition detail screen.
+
 *6.2.1.3. Deleting an external server definition*
+
 To delete a definition, position the cursor on the name of the service to be deleted and press [PF2]. The line associated
 with the service to be deleted will appear highlighted with the message CONFIRM DELETE. Press [PF2] again to confirm
 deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each
 external server to be deleted.
+
 *6.2.1.4. Adding an external server definition*
+
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its
 attributes, or on an empty line to create a new definition.
+
 *6.2.1.5. Displaying the external server detail screen*
+
 To access the detailed definition of an external server, position the cursor on the desired service and press [PF12]. The
 external server detail definition screen will then be displayed.
+
 *6.2.1.6. Return to the configuration menu*
+
 To return to the configuration menu, press [PF3] or [Clear].
 
-6.3. Parameters Of The External Server
---------------------------------------
+6.3. The External Server
+========================
 
 Pressing [PF12] in the list of external servers displays the detail definition screen for the selected service:
 
@@ -4282,31 +4332,39 @@ TIOA at start up
 ============
 
 7.1 Introduction
-----------------
+================
 
 All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the
 group of functions associated with the management of the terminals as well as their existing relationship to other
 administration functions, for example, management of lines or entry points.
+
 **7.1.1. Access to the application**
+
 The terminal management sub-application is accessed by pressing [PF2] in the Configuration Menu, or [PF5] in the Sub
 Application Menu, or from the Multi-session Menu via a transaction referencing module VIR0023. This sub-application
 allows for the management of the parameters associated with each terminal under control of VIRTEL. This subapplication
 is also accessible by pressing [PF4] from the line management sub-application.
+
 **7.1.2. Security**
+
 When security is active, access to the terminal management menu from the Configuration Menu or the Sub-
 Application Menu is controlled by the resource $$TERM$$.
 When this menu is accessed via a transaction, the rules governing the security management of transactions will apply.
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+
 **7.1.3. Objectives**
+
 This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the
 sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
+
 **7.1.4. Note**
+
 VIRTEL version 4.0 introduces the concepts of dynamic repetition and logical pools.
 In the remainder of this chapter, the terms “entity”, “terminal entry” and “terminal” all refer to the concept of a
 terminal, a dynamic pool of terminals or a repeating pool of terminals.
 
 7.2. Summary Of Existing Definitions
-------------------------------------
+====================================
 
 The first screen displayed by the terminal management sub-application shows a summary of existing definitions in
 alphanumeric order. A complete description of each field is given in the following paragraphs.
@@ -4330,6 +4388,7 @@ Search
     Display the next page.
 
 *7.2.1.2. Modifying a terminal entry*
+
 Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the
 same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the
 definition concerned, then press [PF12] to access the definition detail screen.
@@ -4337,18 +4396,24 @@ Modifications are not recognized until you press the [PF1] key. Certain modifica
 system.
 
 *7.2.1.3. Adding a terminal entry*
+
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its
 attributes, or on an empty line to create a new definition.
+
 *7.2.1.4. Deleting a terminal entry*
+
 Position the cursor under the name of the entry to be deleted, then press [PF2]. The line associated with the terminal
 to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to
 confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for
 each entry to be deleted.
+
 *7.2.1.5. Exiting the terminal management sub-application*
+
 To return to the previous menu, press [PF3]. To return to the Configuration Menu, press [Clear].
 
 7.3. Parameters Of The Terminal
--------------------------------
+===============================
+
 Pressing [PF12] at the summary screen displays the Terminal Detail Definition screen, which allows creation of a new
 terminal definition, or modification of an existing definition:
 
@@ -4469,41 +4534,38 @@ Repeat
     A repeat count of blank, zero, or 1 indicates definition of a single terminal.
 
 7.4. Choosing A Definition Mode
--------------------------------
+===============================
 
 There are various methods of connecting terminals to VIRTEL.
+
 **7.4.1. Connection in WELCOME mode**
+
 Exclusively for 3270 terminals, WELCOME mode allows 3270 terminals to connect to VIRTEL without being predefinied.
 There are two conditions which must be fulfilled:
 • The ACCUEIL parameter in the VIRTCT must be set to YES,
 • The connecting terminal must not match any existing fixed terminal definition or terminal pool definition.
+
 In this mode, terminals not defined in VIRTEL can connect, but they cannot benefit from compression or full Multi-
 Session functionality. The first screen displayed depends on the characteristics of the entry point used. If no entry
 point is used, each terminal connecting in WELCOME mode will see the VIRTEL sign-on screen, or the Multi-Session
 Menu, or the Configuration Menu depending on the options specified in the VIRTCT for the SECUR and MULTI
 parameters.
+
 If the Multi-Session Menu is accessible from a terminal connected in WELCOME mode, it is regarded simply as a
 selection screen. Thus, when an application is selected, VIRTEL connects the terminal directly to this application and
 relinquishes control of the terminal. In this case, VIRTEL functions somewhat like a dynamic USSTAB.
+
 **7.4.2. Connection in RELAY mode**
-3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to
-VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or
-Multi-Session functionality. Whether a sign-on screen or a Multi-Session Menu is displayed depends on the
-characteristics associated with the entry point used. When no entry point is used, the rules described in the previous
-paragraph apply.
+
+3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or Multi-Session functionality. Whether a sign-on screen or a Multi-Session Menu is displayed depends on the characteristics associated with the entry point used. When no entry point is used, the rules described in the previous paragraph apply.
+
 **7.4.3. Fixed entry, physical pool, or logical pool?**
-The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in
-a physical pool (which may be dynamic or non-dynamic); or by means of a reserved entry (logical pool). A fixed entry is
-a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared
-by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to
-VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a
-Minitel, to be presented to applications with different relays depending on the context.
-Each type of definition can be explicit or repeated.
+
+The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in a physical pool (which may be dynamic or non-dynamic); or by means of a reserved entry (logical pool). A fixed entry is a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a Minitel, to be presented to applications with different relays depending on the context. Each type of definition can be explicit or repeated.
+
 **7.4.4. Explicit fixed entries**
-Each terminal in the group is explicitly named within VIRTEL. This mode of definition is useful when a group of relays
-must be attached to a line via a common terminal name prefix, but the relay LU names do not follow a numeric
-pattern. The following example shows a group of terminals and corresponding relay LU names associated with a line
-via prefix PCN1:
+
+Each terminal in the group is explicitly named within VIRTEL. This mode of definition is useful when a group of relays must be attached to a line via a common terminal name prefix, but the relay LU names do not follow a numeric pattern. The following example shows a group of terminals and corresponding relay LU names associated with a line via prefix PCN1:
 
 ::
 
@@ -4523,13 +4585,14 @@ via prefix PCN1:
 *Explicit fixed terminals*
 
 **7.4.5. Repeated fixed entries**
-Only the first terminal in the list is defined. The repeat count indicates the number of terminals which VIRTEL will create. The numeric portion of the terminal name, relay name, and 2nd relay name (if supplied) are incremented for
-each occurrence of the terminal.
+
+Only the first terminal in the list is defined. The repeat count indicates the number of terminals which VIRTEL will create. The numeric portion of the terminal name, relay name, and 2nd relay name (if supplied) are incremented for each occurrence of the terminal.
 
 ..note::
 The repetition increment takes effect from the rightmost numeric character and continues until the next nonnumeric character to the left. The increment is decimal and not hexadecimal.
 
 *7.4.5.1. Examples*
+
 In the examples shown below:
 • Terminal TERM0001, relay RELAY001, repetition 0016 causes the creation of 16 terminals TERM0001 to TERM0016 with relays RELAY001 to RELAY016.
 • Terminal G001T001, relay RELAY200, repetition 0020 causes the creation of 20 terminals G001T001 to G001T020 with relays RELAY200 to RELAY219.
@@ -4553,20 +4616,16 @@ In the examples shown below:
 *Repeated fixed terminals*
 
 **7.4.6. Physical pools**
-Physical pools allow 3270 terminals to connect to VIRTEL and to be assigned a relay LU, without the need to create an
-individual defininition for each connecting terminal. A relay LU is assigned from the physical pool at the time the
-terminal connects to VIRTEL. There are two types of physical pool, dynamic and non-dynamic, as described later.
 
-Whether or not a pool is dynamic, the definition of a physical pool is indicated by the presence of a “?” character in
-the first position of the terminal name. The next three characters denote the characteristics of the pool. The last four
-characters are free-format and serve to distinguish one definition from another.
+Physical pools allow 3270 terminals to connect to VIRTEL and to be assigned a relay LU, without the need to create an individual defininition for each connecting terminal. A relay LU is assigned from the physical pool at the time the terminal connects to VIRTEL. There are two types of physical pool, dynamic and non-dynamic, as described later.
+
+Whether or not a pool is dynamic, the definition of a physical pool is indicated by the presence of a “?” character in the first position of the terminal name. The next three characters denote the characteristics of the pool. The last four characters are free-format and serve to distinguish one definition from another.
 
 A physical pool thus has a name in the format ?xxxyyyy.
 
 The concept of a physical pool only applies to 3270 terminals. Other types of terminal cannot be defined by means of a physical pool.
 
-Although a physical pool allows connection of a large number of terminals, it is sometimes necessary to restrict the connection to certain types of terminals This selection is done with the three characters represented by “x” in the
-name of the physical pool definition.
+Although a physical pool allows connection of a large number of terminals, it is sometimes necessary to restrict the connection to certain types of terminals This selection is done with the three characters represented by “x” in the name of the physical pool definition.
 
 1st character
     Tests the terminal type.
@@ -4577,6 +4636,7 @@ name of the physical pool definition.
         SNA terminal
     N
         Non SNA terminal
+
 2nd character
     Tests the terminal model
 
@@ -4584,6 +4644,7 @@ name of the physical pool definition.
         No restriction on model
     2 to 5
         Restricted to specified model
+
 3rd character
     Tests colour support
 
@@ -4595,8 +4656,9 @@ name of the physical pool definition.
         Monochrome terminal
 
 Examples:
-    • ?S\*\*YZABVIRTEL tests only if the terminal is SNA.
-    • ?S3CYZABVIRTEL tests if the terminal is SNA model 3 colour.
+
+    - ?S\*\*YZABVIRTEL tests only if the terminal is SNA.
+    - ?S3CYZABVIRTEL tests if the terminal is SNA model 3 colour.
 
 *7.4.6.1. Dynamic pool*
 
@@ -4612,13 +4674,14 @@ For example, for a definition specifying VIR===== as the relay name, each termin
 A single definition may be sufficient to connect all 3270 terminals in the network.
 
 *7.4.6.2. Non-dynamic pool*
+
 In a non-dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters without “=” signs. A given terminal may be assigned a different relay on each connection according to availability. Each relay in the pool must be defined to VTAM by means of an APPL statement.
 
 It is advisable to define as many entries as there are terminals to be connected.
 
 *7.4.6.3. Examples*
-In the examples shown below, ?\*\*\*0000 is a dynamic physical pool which allows connection of an unlimited number of terminals. ?S5CTM01 is a non-dynamic physical pool which allows connection of up to 8 terminals (of type 3270-5 SNA
-Colour) which will be assigned relay names VIR5LU01 to VIR5LU08.
+
+In the examples shown below, ?\*\*\*0000 is a dynamic physical pool which allows connection of an unlimited number of terminals. ?S5CTM01 is a non-dynamic physical pool which allows connection of up to 8 terminals (of type 3270-5 SNA Colour) which will be assigned relay names VIR5LU01 to VIR5LU08.
 
 ::
 
@@ -4634,20 +4697,10 @@ Colour) which will be assigned relay names VIR5LU01 to VIR5LU08.
 *Physical pools of terminals*
 
 *7.4.7. Logical pools*
-A logical pool is a group of relays which are not permanently assigned to any terminal. Instead, the relays in the group
-are available for allocation by terminals as and when required. The logical pool is defined as a group of terminals (the
-definitions can be explicit or repeated) whose “\*Pool name” field contains a name prefixed preceded by the character
-“\*”. The terminal name is not significant, except to distinguish it from other terminal definitions. Terminals which use
-the pool specify the pool name (with the “\*” prefix) in their relay name field. The difference between a logical pool
-and a physical pool is that a relay in a physical pool is assigned when the requesting terminal connects, whereas a relay
-in a logical pool is assigned at the time the requesting terminal needs the relay to connect to a VTAM application.
 
-In the example shown below, W2HTP000 is a logical pool whose pool name is \*W2HPOOL. The logical pool contains 16
-relay LU’s named RHDVT000 to RHDVT015, with associated printer LU’s named RHDIM000 to RHDIM015. The relays in
-7. Terminals
-117
-the \*W2HPOOL logical pool are available for use by terminals CLVTA000-015, DEVTA000-015, and HTVTA000-015.
-Appropriate VTAM APPL statements must be provided for RHDVT??? And RHDIM???.
+A logical pool is a group of relays which are not permanently assigned to any terminal. Instead, the relays in the group are available for allocation by terminals as and when required. The logical pool is defined as a group of terminals (the definitions can be explicit or repeated) whose “\*Pool name” field contains a name prefixed preceded by the character “\*”. The terminal name is not significant, except to distinguish it from other terminal definitions. Terminals which use the pool specify the pool name (with the “\*” prefix) in their relay name field. The difference between a logical pool and a physical pool is that a relay in a physical pool is assigned when the requesting terminal connects, whereas a relay in a logical pool is assigned at the time the requesting terminal needs the relay to connect to a VTAM application.
+
+In the example shown below, W2HTP000 is a logical pool whose pool name is \*W2HPOOL. The logical pool contains 16 relay LU’s named RHDVT000 to RHDVT015, with associated printer LU’s named RHDIM000 to RHDIM015. The relays in 7. Terminals 117 the \*W2HPOOL logical pool are available for use by terminals CLVTA000-015, DEVTA000-015, and HTVTA000-015. Appropriate VTAM APPL statements must be provided for RHDVT??? And RHDIM???.
 
 ::
 
@@ -4671,34 +4724,28 @@ Appropriate VTAM APPL statements must be provided for RHDVT??? And RHDIM???.
 
 *Definition of a logical pool of terminals*
 
-Terminals using a logical pool are defined with a “Relay” field referencing the logical pool rather than a VTAM APPL
-statement.
+Terminals using a logical pool are defined with a “Relay” field referencing the logical pool rather than a VTAM APPL statement.
 
 *7.4.8. Pool selection*
-When a 3270 terminal is defined to a physical pool, the selection of a pool is managed automatically by VIRTEL at
-connection time. It starts from the end of the list of defined terminals. When the characteristics of the terminal
-match those of the entry being processed, the terminal assumes an application relay.
+
+When a 3270 terminal is defined to a physical pool, the selection of a pool is managed automatically by VIRTEL at connection time. It starts from the end of the list of defined terminals. When the characteristics of the terminal match those of the entry being processed, the terminal assumes an application relay.
+
 *7.4.9. Rules for opening relay ACBs*
-For explicit or repeated fixed entry definitions, the relay ACBs are opened at VIRTEL startup time. For terminals defined
-in a physical pool, the relay ACBs are opened at terminal connection time. For terminals which reference a logical pool,
-the relay ACB is opened only when accessing an application.
+
+For explicit or repeated fixed entry definitions, the relay ACBs are opened at VIRTEL startup time. For terminals defined in a physical pool, the relay ACBs are opened at terminal connection time. For terminals which reference a logical pool, the relay ACB is opened only when accessing an application.
+
 *7.4.10. Use of a terminal logical pool*
-When a single terminal must be presented under a different name according to the applications it logs on to across the
-same line, a logical pool must be used.
+
+When a single terminal must be presented under a different name according to the applications it logs on to across the same line, a logical pool must be used.
 
 ..note::
     Logical pools are not usable on X25 Fast-Connect lines managed by NPSI. The following examples reference type 3 (Fast-Connect) terminals, used for example on an XOT line.
 
-As a concrete example, suppose that Minitels use an X25 line with 50 logical channels to logon to 3 distinct
-applications under different names according to sub-address or a specific user data value. The first two applications
-are accessible via the same entry point ENTRYP01, the third via entry point ENTRYP02. Applications APPLI01, APPLI02,
-APPLI03 must be accessed via relays with prefixes AP01R, BP02R and CP03R respectively. The first application only
-allows 5 simultaneous logons, the second has no limit, and the third allows 2 simultaneous logons. The set of VIRTEL
-definitions to resolve this problem is as follows.
+As a concrete example, suppose that Minitels use an X25 line with 50 logical channels to logon to 3 distinct applications under different names according to sub-address or a specific user data value. The first two applications are accessible via the same entry point ENTRYP01, the third via entry point ENTRYP02. Applications APPLI01, APPLI02, APPLI03 must be accessed via relays with prefixes AP01R, BP02R and CP03R respectively. The first application only allows 5 simultaneous logons, the second has no limit, and the third allows 2 simultaneous logons. The set of VIRTEL definitions to resolve this problem is as follows.
 
 *7.4.10.1. Terminal definitions*
-The definition of the physical terminals and their association with the 3 sub-groups of logical terminals belonging to
-the same pool is:
+
+The definition of the physical terminals and their association with the 3 sub-groups of logical terminals belonging to the same pool is:
 
 ::
 
@@ -4718,6 +4765,7 @@ the same pool is:
     These 3 terminal groups contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they may be defined as fixed explicit or repeated entries, but they must not be placed in a logical pool.
 
 *7.4.10.2. Entry point definitions*
+
 The two entry points are assigned transactions TRPE01 and TRPE02 respectively.
 
 ::
@@ -4728,6 +4776,7 @@ The two entry points are assigned transactions TRPE01 and TRPE02 respectively.
     ENTRYP02 EP for APPLI03                 TRPE02
 
 *7.4.10.3. Transaction definitions and terminal selection*
+
 Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
 
 ::
@@ -4767,16 +4816,18 @@ Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
     Terminaux           ===> CRESA   Préfixe des terminaux associés
 
 7.5. Example Terminal Definitions
----------------------------------
+=================================
 
 This section presents a number of examples covering the definitions relating to terminals and details the parameters
 required on the VIRTEL and VTAM sides. The list is not exhaustive.
+
 **7.5.1. 3270 terminal in WELCOME mode**
-This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There
-must be no definition which allows an application relay to be assigned to the terminal.
+
+This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There must be no definition which allows an application relay to be assigned to the terminal.
+
 **7.5.2. 3270 terminal in RELAY mode**
-A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is
-issued at VIRTEL startup time. Example definitions:
+
+A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
 ::
 
@@ -4817,8 +4868,8 @@ issued at VIRTEL startup time. Example definitions:
     ?***0004 0000 RELAY004 Libre 2 Libre Vide
 
 **7.5.3. Asynchronous terminal on an X25 or XOT line**
-A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is
-issued at VIRTEL startup time. Example definitions:
+
+A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
 ::
 
@@ -4866,13 +4917,11 @@ issued at VIRTEL startup time. Example definitions:
     X25F0001 0002    RX25F001  Libre     3       2           IMPRF001
     X25G0001 0002    RX25G001  Libre     1       2           IMPRG001
 
-The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the
-pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to
-VTAM.
+The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.
 
 *7.5.4. Logical terminals*
-It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead
-of when the terminal connects to VIRTEL. An example of such a definition is:
+
+It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:
 
 ::
 
@@ -4900,7 +4949,7 @@ A. Appendix
 ===========
 
 A.1 Trademarks
---------------
+==============
 
 SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
 Communication Group, registered in France and other countries.
@@ -4922,7 +4971,7 @@ Linux is a trademark of Linus Torvalds in the United States, other countries, or
 Other company, product, or service names may be trademarks or service names of others.
 
 A.2. Open Source Software
--------------------------
+=========================
 
 The current VIRTEL Web Access product uses the following open source software:
 
