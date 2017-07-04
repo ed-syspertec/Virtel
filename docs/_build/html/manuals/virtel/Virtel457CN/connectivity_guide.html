@@ -808,6 +808,7 @@ definition is $LINE$:</div></blockquote>
 <blockquote>
 <div>The name of the pool is only used to match the pool to its associated line.</div></blockquote>
 <p>Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.</p>
+<p>The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.</p>
 <p>2.4.1.3.2 Reconnecting to an existing session</p>
 <p>The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session.</p>
 <p>If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line.</p>
