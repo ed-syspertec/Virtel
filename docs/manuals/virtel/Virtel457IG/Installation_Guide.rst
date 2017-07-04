@@ -1,12 +1,4 @@
-6.2.116. XM1 parameter
-^^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-	XM1=xmname Default=no XM connection
-	XM1=(xmname,,,,[pgmname])
-
-This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM1... _Virtel457IG:
+.. _Virtel457IG:
 
 ========================
 Installation Guide V4.57
