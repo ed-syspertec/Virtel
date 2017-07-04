@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -126,8 +132,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -136,25 +144,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Processing the VTAM USS MSG10 buffer</li>
+        
+      <li>Processing the VTAM USS MSG10 buffer</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201519/TN201519.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -488,7 +513,7 @@ returned to the VIRTEL menu and not the VTAM screen. This can be changed. See no
 </div>
 <div class="section" id="feedback-support">
 <h3>Feedback support<a class="headerlink" href="#feedback-support" title="Permalink to this headline">¶</a></h3>
-<p>A new keyword has been added to support feedback within the support module. If errmsg=y is coded then any error messages will be displayed in line 24. If the USSTAB is uses row 24 for presentation
+<p>A new keyword has been added to support feedback within the support module. If errmsg=y is coded then any error messages will be displayed on line 24. If the USSTAB is uses row 24 for presentation
 purposes then the errmsg= keyword should not be used. Error reporting will report on invalid application selection and invalid key usage. Any other error messqges will be reported to the Virtel SYSLOG. For example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usstab</span><span class="o">=</span><span class="n">usstab</span><span class="o">&amp;</span><span class="n">Sysclone</span><span class="o">.</span><span class="p">,</span><span class="n">errmsg</span><span class="o">=</span><span class="n">y</span>
 </pre></div>
@@ -497,7 +522,7 @@ purposes then the errmsg= keyword should not be used. Error reporting will repor
 </div>
 <div class="section" id="extended-fields-and-buffer-address-support">
 <h3>Extended fields and buffer address support.<a class="headerlink" href="#extended-fields-and-buffer-address-support" title="Permalink to this headline">¶</a></h3>
-<p>Both buffer displacement and buffer addresses are now supported as well as extended fields(X&#8216;29&#8217;). For example to position to col. 1, row 1 the following can be coded:-</p>
+<p>Both buffer displacement and buffer addresses are now supported as well as extended fields(X‘29’). For example to position to col. 1, row 1 the following can be coded:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="n">AL2</span><span class="p">(((</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="n">R</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="mi">01</span> <span class="o">&lt;</span> <span class="n">Assembles</span> <span class="k">as</span> <span class="n">displacement</span>
 <span class="n">DC</span>    <span class="n">C</span><span class="s1">&#39;z/OS Z110 Level 0809                    &#39;</span>
 </pre></div>
@@ -535,15 +560,18 @@ APPLID=TSO. Both would be accepted.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201520/TN201520.html" class="btn btn-neutral float-right" title="Using the IBM System Logger with Virtel" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201520/TN201520.html" class="btn btn-neutral float-right" title="Using the IBM System Logger with Virtel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201517/TN201517.html" class="btn btn-neutral" title="Virtel Chinese Character Language Support" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201517/TN201517.html" class="btn btn-neutral" title="Virtel Chinese Character Language Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -577,7 +605,8 @@ APPLID=TSO. Both would be accepted.</p>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

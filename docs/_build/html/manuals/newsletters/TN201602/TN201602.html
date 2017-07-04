@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -123,8 +129,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -133,25 +141,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Installing Virtel V4.53 from scratch</li>
+        
+      <li>Installing Virtel V4.53 from scratch</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201602/TN201602.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -506,7 +531,7 @@ So they sequence for a transaction looks like:-</p>
 the transaction, as defined by the NAME= keyword, is the same as the ENTRY POINT name it belongs to. There must be at least one transaction which is the default transaction for the ENTRY POINT and this transaction has the same name as the ENTRY POINT. This comes into play when Virtel is searching for a transaction based upon the URL it has received. If VIRTEL is presented with a URL <a class="reference external" href="http://192.168.0.1:410001">http://192.168.0.1:410001</a> this doesn’t identify any particular transaction, therefore the default transaction for the ENTRY POINT will be used. What the transaction does is determined by the other keywords which we will cover later.</p>
 <p>So to summarise, we have a line which identifies a Virtel domain through its associated port number. The LINE is also associated with an Entry Point, which in turns identifies a collection of transactions through a
 prefix setting.</p>
-<p>LINE:PORT&#8212;&#8211;&gt; ENTRY POINT&#8212;&#8211;&gt; TRANSACTIONS</p>
+<p>LINE:PORT—–&gt; ENTRY POINT—–&gt; TRANSACTIONS</p>
 <p><strong>Transaction Type 1 – VTAM Applications</strong></p>
 <p>If we look at the transactions in the default ARBO configuration we can see that most are either Type 1, 2 or 4. Here were look at the type 1 transaction, a VTAM transaction. An example follows:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span>
@@ -726,7 +751,7 @@ If we look at our previous CICS failure we can see these terminals being allocat
 <p>The terminal types and I/O fields are described in the Virtel Connectivity Guide. If we look in the ARBO configuration file we can see the definitions that support the TERMINAL configuration.</p>
 <blockquote>
 <div>TERMINAL ID=CLLOC000, -
-DESC=&#8217;HTTP terminals (no relay)&#8217;, -
+DESC=’HTTP terminals (no relay)’, -
 TYPE=3, -
 COMPRESS=2, -
 INOUT=3, -
@@ -734,7 +759,7 @@ STATS=26, -
 REPEAT=0050
 TERMINAL ID=CLVTA000, -
 RELAY=*W2HPOOL, -
-DESC=&#8217;HTTP terminals (with relay)&#8217;, -
+DESC=’HTTP terminals (with relay)’, -
 TYPE=3, -
 COMPRESS=2, -
 INOUT=3, -
@@ -743,7 +768,7 @@ REPEAT=0080
 TERMINAL ID=W2HTP000, -
 RELAY=RHTVT000, -
 POOL=*W2HPOOL, -
-DESC=&#8217;Relay pool for HTTP&#8217;, -
+DESC=’Relay pool for HTTP’, -
 RELAY2=RHTIM000, -
 TYPE=3, -
 COMPRESS=2, -
@@ -854,15 +879,18 @@ REPEAT=0080</div></blockquote>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201603/TN201603.html" class="btn btn-neutral float-right" title="Field Level Encryption" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201603/TN201603.html" class="btn btn-neutral float-right" title="Field Level Encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201601/TN201601.html" class="btn btn-neutral" title="Customizing colours with CSS in Virtel 4.53" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201601/TN201601.html" class="btn btn-neutral" title="Customizing colours with CSS in Virtel 4.53" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -896,7 +924,8 @@ REPEAT=0080</div></blockquote>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

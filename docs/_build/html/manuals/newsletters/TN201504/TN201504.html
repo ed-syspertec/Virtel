@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -123,8 +129,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -133,25 +141,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Running multiple instances of Virtel</li>
+        
+      <li>Running multiple instances of Virtel</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201504/TN201504.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -261,7 +286,7 @@ Generic Resource or CICSPLEX group name.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span>
 </pre></div>
 </div>
-<p>This VIRTCT parameter allows the setup of &#8216;READ-ONLY&#8217; Virtels, to be used in production or in a Sysplex. Almost all Virtel VSAM files may be set to read-only mode. (But note that the VIRSWAP file; being a work file it cannot be read-only.)</p>
+<p>This VIRTCT parameter allows the setup of ‘READ-ONLY’ Virtels, to be used in production or in a Sysplex. Almost all Virtel VSAM files may be set to read-only mode. (But note that the VIRSWAP file; being a work file it cannot be read-only.)</p>
 <p>If this TCT value is coded then the following changes should also be made to the TCT.</p>
 <ul class="simple">
 <li>The MACRF statements should be amended from MACRF=(SEQ,DIR,OUT,LSR) to MACRF=(SEQ,DIR,LSR).</li>
@@ -517,15 +542,18 @@ number. For example:</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201505/TN201505.html" class="btn btn-neutral float-right" title="Virtel Macros in Virtel 4.53" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201505/TN201505.html" class="btn btn-neutral float-right" title="Virtel Macros in Virtel 4.53" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201501/TN201501.html" class="btn btn-neutral" title="Dynamic Directory Interface (DDI)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201501/TN201501.html" class="btn btn-neutral" title="Dynamic Directory Interface (DDI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -559,7 +587,8 @@ number. For example:</p>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

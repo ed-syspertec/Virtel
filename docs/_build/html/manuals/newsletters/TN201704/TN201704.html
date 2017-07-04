@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -119,8 +125,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -129,25 +137,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Virtel Macros</li>
+        
+      <li>Virtel Macros</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201704/TN201704.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -189,7 +214,7 @@ an Administrator through the DDI interface. The macros.json file can be
 edited outside of these interfaces but this is not recommended unless
 you understand the macro structure and are familiar with JavaScript.
 There are various synchronization options which will determine how the
-central DDI repository is synchronized with the user&#8217;s local macros. By
+central DDI repository is synchronized with the user’s local macros. By
 default Virtel maintains macros in local mode. In both modes, local and
 DDI, the macros.json file is stored in the browsers local storage.</p>
 <p><strong>The User Macro Interface</strong></p>
@@ -275,7 +300,7 @@ avoid any changes being lost during a Virtel upgrade.</p>
 <p>Fig. 4 - Modified CLI-03P transaction</p>
 <p>To use the DDI interface the options must be set in the w2hparm.js
 member. The various options control the synchronisation between the
-user&#8217;s local macro storage and the DDI central repository. Specify one
+user’s local macro storage and the DDI central repository. Specify one
 of the following options to turn on DDI or remote macro mode:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;w2hparm.useVirtelMacros&quot;</span><span class="p">:[</span><span class="n">false</span> <span class="o">|</span> <span class="n">true</span> <span class="o">|</span> <span class="n">never</span> <span class="o">|</span> <span class="n">once</span> <span class="o">|</span> <span class="n">daily</span> <span class="o">|</span><span class="n">session</span> <span class="p">]</span>
 </pre></div>
@@ -296,7 +321,7 @@ of the following options to turn on DDI or remote macro mode:-</p>
 <td>Do not synchronise with DDI unless the user presses the refresh button.</td>
 </tr>
 <tr class="row-odd"><td>Once</td>
-<td>Synchronise with DDI only when local storage hasn&#8217;t been initialised</td>
+<td>Synchronise with DDI only when local storage hasn’t been initialised</td>
 </tr>
 <tr class="row-even"><td>Daily</td>
 <td>Once a day</td>
@@ -719,15 +744,18 @@ LOGMSG=USR-DIR
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201705/TN201705     .html" class="btn btn-neutral float-right" title="Printing PCL files with NodeJS" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201705/TN201705     .html" class="btn btn-neutral float-right" title="Printing PCL files with NodeJS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201703/TN201703.html" class="btn btn-neutral" title="Passticket support with CA Top Secret" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201703/TN201703.html" class="btn btn-neutral" title="Passticket support with CA Top Secret" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -761,7 +789,8 @@ LOGMSG=USR-DIR
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

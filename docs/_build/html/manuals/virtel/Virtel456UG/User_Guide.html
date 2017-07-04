@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
@@ -125,8 +131,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -135,25 +143,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
-      
-    <li>User Guide V4.56</li>
+        
+      <li>User Guide V4.56</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/virtel/Virtel456UG/User_Guide.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -184,7 +209,7 @@ any damages, direct or indirect, caused by errors or omissions in this document.
 contained in this document may be subject to change without notice. Nothing in this
 document should be construed in any manner as conferring a right to use, in whole or in
 part, the products or trademarks quoted herein.</p>
-<p class="last">&#8220;SysperTec Communication&#8221; and &#8220;VIRTEL&#8221; are registered trademarks. Names of other products
+<p class="last">“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
@@ -513,7 +538,7 @@ the template page.</dd>
 <dd>Is the name of the transaction which provides the dynamic data for
 the template page. This transaction must be defined with the name of
 a presentation module in its “Output Scenario” field.</dd>
-<dt>param1, param2, ...</dt>
+<dt>param1, param2, …</dt>
 <dd>These are the names of the parameters which the scenario can pick up using
 the COPY$ INPUT-TO-VARIABLE or COPY$ INPUT-TO-SCREEN instructions
 (described 153) or which can be substituted in a script by means of
@@ -767,7 +792,7 @@ followed by option 3, or from the VIRTEL Multi-Session menu via a transaction wh
 </div>
 <div class="section" id="using-the-associated-admin-3270-functions">
 <h4>1.3.4. Using the associated Admin(3270) functions<a class="headerlink" href="#using-the-associated-admin-3270-functions" title="Permalink to this headline">¶</a></h4>
-<p>These funcations are accessed from either the browsers Administration portal or by logging on to Virtel using it&#8217;s VTAM interface.</p>
+<p>These funcations are accessed from either the browsers Administration portal or by logging on to Virtel using it’s VTAM interface.</p>
 <p><strong>1.3.4.1. Deleting a directory definition</strong></p>
 <p>To delete a directory definition, place the cursor on the name of the directory to be deleted and press [PF2]. The message CONFIRM DELETE appears at the bottom of the screen. Press [PF2] again. The message DELETE OK indicates that the deletion of the directory definition was successful. While the message CONFIRM DELETE is displayed, you can press any function key other than [PF2] to cancel the operation.</p>
 <p><strong>1.3.4.2. Displaying directory contents</strong></p>
@@ -1216,7 +1241,7 @@ Example : V00002E9 for an input field, blank for an output field</dd>
 <dt>prefixVALUE</dt>
 <dd>The text contained in the field (excluding attribute)</dd>
 </dl>
-<p>For example, the tag {{{ GENERATE-VARIABLES (01,01,1920) &#8220;MYPREFIX&#8221; }}} generates a set of table variables describing the entire contents of the 3270 screen. Normally, any binary zeroes in the field will be removed from the VALUE. However, if the BLANK-BINARY-ZEROES option is set (see <a class="reference internal" href="#v456ug-setting-local-options"><span class="std std-ref">“Setting and unsetting local options”</span></a>) then binary zeroes will be converted to blanks.</p>
+<p>For example, the tag {{{ GENERATE-VARIABLES (01,01,1920) “MYPREFIX” }}} generates a set of table variables describing the entire contents of the 3270 screen. Normally, any binary zeroes in the field will be removed from the VALUE. However, if the BLANK-BINARY-ZEROES option is set (see <a class="reference internal" href="#v456ug-setting-local-options"><span class="std std-ref">“Setting and unsetting local options”</span></a>) then binary zeroes will be converted to blanks.</p>
 <p><strong>1.4.6.10. GENERATE-VIR3270 tag</strong></p>
 <p>GENERATE-VIR3270, in conjunction with supporting JavaScript functions, is used by VIRTEL Web Access to generate an HTML page which reproduces as closely as possible the look and feel of a classic 3270 screen.
 The GENERATE-VIR3270 tag functions like GENERATE-HTML except that, instead of generating HTML form fields corresponding to 3270 input fields, it generates all 3270 fields as HTML spans. Special attribute keywords are added to each span to indicate the type of field, the screen position, and the 3270 field attributes. A subspan is generated for characters whose character attributes differ from the field attributes. In addition, GENERATE-VIR3270 generates a hidden HTML form field for each 3270 input field, and these fields are written as HTML fragments into a VIRTEL table variable so that they can be inserted later in the page.</p>
@@ -1473,10 +1498,10 @@ function setfocus()
 </div>
 <dl class="docutils">
 <dt>Cursor position initialisation</dt>
-<dd>&lt;body onload=&#8221;setfocus()&#8221;&gt;</dd>
+<dd>&lt;body onload=”setfocus()”&gt;</dd>
 </dl>
 <p><em>1.4.8.5.2. Positioning the focus in the browser</em></p>
-<p>Once present in the client&#8217;s browser, the user may need to move the focus to a different field, either by using the TAB key on the keyboard or by using the mouse. The focusField field is automatically updated if the ADD-TO-FIELDS tag calls a script which updates the focus field. Script for saving the name of the field having the focus:-</p>
+<p>Once present in the client’s browser, the user may need to move the focus to a different field, either by using the TAB key on the keyboard or by using the mouse. The focusField field is automatically updated if the ADD-TO-FIELDS tag calls a script which updates the focus field. Script for saving the name of the field having the focus:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&lt;script language=&quot;Javascript&quot;&gt;
 &lt;!-- comment to mask script for some browsers
 function savefocus(CurrentFieldName)
@@ -1634,7 +1659,7 @@ page, and take effect from the point in the page at which they appear.</p>
 <dt>BLANK-BINARY-ZEROES</dt>
 <dd>Affects the processing of the COPY-FROM and GENERATE-VARIABLES tags (see <a class="reference internal" href="#v456ug-inserting-host-data"><span class="std std-ref">“Inserting host application data in a page”</span></a>).</dd>
 <dt>DO-NOT-IGNORE-BINARY-ZEROES</dt>
-<dd>When this option is activated, then all 3270 NUL characters in input fields generated by VIRTEL will be sent to the browser as SUB characters (x&#8216;1A&#8217;). When this option is not activated, then VIRTEL will remove 3270 NUL characters from input fields.</dd>
+<dd>When this option is activated, then all 3270 NUL characters in input fields generated by VIRTEL will be sent to the browser as SUB characters (x‘1A’). When this option is not activated, then VIRTEL will remove 3270 NUL characters from input fields.</dd>
 <dt>HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, NO-ESCAPES, XML-ESCAPES</dt>
 <dd>Affects the processing of the CURRENT-VALUE-OF, TRIMMED-VALUE-OF and NO-BLANKS-VALUE-OF tags (see <a class="reference internal" href="#v456ug-table-variables"><span class="std std-ref">“Handling table variables”</span></a>). Similarly affects the processing of the values generated by GENERATEVARIABLES.</dd>
 <dt>ID</dt>
@@ -1707,7 +1732,7 @@ page, and take effect from the point in the page at which they appear.</p>
 <tr class="row-odd"><td>&gt;</td>
 <td>&amp;gt;</td>
 </tr>
-<tr class="row-even"><td>&#8220;</td>
+<tr class="row-even"><td>“</td>
 <td>&amp;quote;</td>
 </tr>
 <tr class="row-odd"><td>&amp;</td>
@@ -1727,11 +1752,11 @@ page, and take effect from the point in the page at which they appear.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#8220;</td>
-<td>\&#8221;</td>
+<tr class="row-even"><td>“</td>
+<td>&quot;</td>
 </tr>
-<tr class="row-odd"><td>&#8216;</td>
-<td>\&#8217;</td>
+<tr class="row-odd"><td>‘</td>
+<td>'</td>
 </tr>
 <tr class="row-even"><td>\</td>
 <td>\ \</td>
@@ -1750,8 +1775,8 @@ page, and take effect from the point in the page at which they appear.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#8220;</td>
-<td>\&#8221;</td>
+<tr class="row-even"><td>“</td>
+<td>&quot;</td>
 </tr>
 <tr class="row-odd"><td>\</td>
 <td>\ \</td>
@@ -1777,14 +1802,14 @@ page, and take effect from the point in the page at which they appear.</p>
 <tr class="row-odd"><td>&gt;</td>
 <td>&amp;#62;</td>
 </tr>
-<tr class="row-even"><td>&#8220;</td>
-<td>&amp;#34;</td>
+<tr class="row-even"><td>“</td>
+<td>&quot;</td>
 </tr>
 <tr class="row-odd"><td>&amp;</td>
 <td>&amp;#38;</td>
 </tr>
-<tr class="row-even"><td>&#8216;</td>
-<td>&amp;#39;</td>
+<tr class="row-even"><td>‘</td>
+<td>'</td>
 </tr>
 </tbody>
 </table>
@@ -1895,12 +1920,12 @@ the codes. A hyperlink is generated for each code, by removing any trailing blan
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">IP</span><span class="o">-</span><span class="n">ADDRESS</span><span class="o">-</span><span class="n">OF</span><span class="o">-</span><span class="n">LINE</span> <span class="s2">&quot;n-xxxxxx&quot;</span><span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The IP-ADDRESS-OF-LINE tag will be replaced by the IP address of the specified VIRTEL line. For example, {{{IPADDRESS-OF-LINE &#8220;H-HTTP&#8221;}}} might generate 192.168.229.147.</p>
+<p>The IP-ADDRESS-OF-LINE tag will be replaced by the IP address of the specified VIRTEL line. For example, {{{IPADDRESS-OF-LINE “H-HTTP”}}} might generate 192.168.229.147.</p>
 <p><strong>1.4.12.2. IP-PORT-OF-LINE tag</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">IP</span><span class="o">-</span><span class="n">PORT</span><span class="o">-</span><span class="n">OF</span><span class="o">-</span><span class="n">LINE</span> <span class="s2">&quot;n-xxxxxx&quot;</span><span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The IP-PORT-OF-LINE tag will be replaced by the port number of the specified VIRTEL line. For example, {{{IP-PORT-OFLINE&#8221;H-HTTP&#8221;}}} might generate 41000</p>
+<p>The IP-PORT-OF-LINE tag will be replaced by the port number of the specified VIRTEL line. For example, {{{IP-PORT-OFLINE”H-HTTP”}}} might generate 41000</p>
 <p><strong>1.4.12.3. NAME-OF tag</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">xxxxxx</span><span class="p">)}}}</span>
 <span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">xxxxxx</span><span class="p">,</span> <span class="nb">len</span><span class="p">)}}}</span>
@@ -1988,24 +2013,24 @@ the codes. A hyperlink is generated for each code, by removing any trailing blan
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">AFTER</span><span class="o">-</span><span class="n">NOT</span><span class="o">-</span><span class="n">LAST</span><span class="o">-</span><span class="n">VALUE</span><span class="o">-</span><span class="n">OF</span> <span class="s2">&quot;varname&quot;</span> <span class="o">...</span><span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The AFTER-NOT-LAST-VALUE-OF tag brackets a section of the page which is to be generated for all except the last iteration of a FOR-EACH-VALUE-IN loop. The HTML content represented by “...” is generated unless the current value of the variable varname is the last in the table. The AFTER-NOT-LAST-VALUE-OF tag is useful, for example, when generating a comma-separated list of values, as shown in the example below:</p>
+<p>The AFTER-NOT-LAST-VALUE-OF tag brackets a section of the page which is to be generated for all except the last iteration of a FOR-EACH-VALUE-IN loop. The HTML content represented by “…” is generated unless the current value of the variable varname is the last in the table. The AFTER-NOT-LAST-VALUE-OF tag is useful, for example, when generating a comma-separated list of values, as shown in the example below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="p">{{{</span><span class="n">FOR</span><span class="o">-</span><span class="n">EACH</span><span class="o">-</span><span class="n">VALUE</span><span class="o">-</span><span class="n">IN</span> <span class="s2">&quot;MYVAR&quot;</span><span class="p">}}}</span> <span class="s2">&quot;{{{CURRENT-VALUE-OF &quot;</span><span class="n">MYVAR</span><span class="s2">&quot;}}} &quot;</span>
 <span class="p">{{{</span><span class="n">AFTER</span><span class="o">-</span><span class="n">NOT</span><span class="o">-</span><span class="n">LAST</span><span class="o">-</span><span class="n">VALUE</span><span class="o">-</span><span class="n">OF</span> <span class="s2">&quot;MYVAR&quot;</span> <span class="p">,}}}{{{</span><span class="n">END</span><span class="o">-</span><span class="n">FOR</span> <span class="s2">&quot;MYVAR&quot;</span><span class="p">}}}</span> <span class="p">]</span>
 </pre></div>
 </div>
-<p>If the variable myvar contains the values 1, 2, and 3, then this example would generate [ &#8220;1&#8221;, &#8220;2&#8221;, &#8220;3&#8221; ]</p>
+<p>If the variable myvar contains the values 1, 2, and 3, then this example would generate [ “1”, “2”, “3” ]</p>
 <p><strong>1.4.13.2. IF-USER-IS-ALLOWED-TO tag</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">IF</span><span class="o">-</span><span class="n">USER</span><span class="o">-</span><span class="n">IS</span><span class="o">-</span><span class="n">ALLOWED</span><span class="o">-</span><span class="n">TO</span> <span class="s2">&quot;resourcename&quot;</span> <span class="o">...</span><span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The IF-USER-IS-ALLOWED-TO tag brackets a section of the page whose appearance is conditional on the user’s authorization to access the resource resourcename. The HTML content represented by “...” is generated only if the signed-on user is authorized to access the specified resource.</p>
+<p>The IF-USER-IS-ALLOWED-TO tag brackets a section of the page whose appearance is conditional on the user’s authorization to access the resource resourcename. The HTML content represented by “…” is generated only if the signed-on user is authorized to access the specified resource.</p>
 <p><strong>1.4.13.3. WHEN-EXISTS and END-WHEN-EXISTS tags</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">WHEN</span><span class="o">-</span><span class="n">EXISTS</span> <span class="s2">&quot;varname&quot;</span><span class="p">}}}</span>
 <span class="o">...</span>
 <span class="p">{{{</span><span class="n">END</span><span class="o">-</span><span class="n">WHEN</span><span class="o">-</span><span class="n">EXISTS</span> <span class="s2">&quot;varname&quot;</span><span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The WHEN-EXISTS and END-WHEN-EXISTS tags bracket a section of the page whose appearance is conditional on the existence of a named table variable. The variable can be created by a VIRTEL Web Integration application using the FAE5 or FAE6 structured fields, or it can be created by a scenario. The HTML content represented by “...” is generated only if the named variable exists in the context of the current page and has at least one value.</p>
+<p>The WHEN-EXISTS and END-WHEN-EXISTS tags bracket a section of the page whose appearance is conditional on the existence of a named table variable. The variable can be created by a VIRTEL Web Integration application using the FAE5 or FAE6 structured fields, or it can be created by a scenario. The HTML content represented by “…” is generated only if the named variable exists in the context of the current page and has at least one value.</p>
 <p><strong>1.4.13.4. WHEN-NOT-EXISTS and END-WHEN-NOT-EXISTS tags</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">WHEN</span><span class="o">-</span><span class="n">NOT</span><span class="o">-</span><span class="n">EXISTS</span> <span class="s2">&quot;varname&quot;</span><span class="p">}}}</span>
 <span class="o">...</span>
@@ -2019,7 +2044,7 @@ the codes. A hyperlink is generated for each code, by removing any trailing blan
 <span class="p">{{{</span><span class="n">END</span><span class="o">-</span><span class="n">WHEN</span><span class="o">-</span><span class="n">NOT</span><span class="o">-</span><span class="n">BLANK</span> <span class="s2">&quot;varname&quot;</span><span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags bracket a section of the page which is generated only if the current value of a named table variable is non-blank. The HTML content represented by “...” is omitted if the named variable does not exist, or if its current value is null or all blanks.</p>
+<p>The WHEN-NOT-BLANK and END-WHEN-NOT-BLANK tags bracket a section of the page which is generated only if the current value of a named table variable is non-blank. The HTML content represented by “…” is omitted if the named variable does not exist, or if its current value is null or all blanks.</p>
 <p><strong>1.4.13.6. WHEN-NEXT-EVENT and END-WHEN-NEXT-EVENT tags</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">WHEN</span><span class="o">-</span><span class="n">NEXT</span><span class="o">-</span><span class="n">EVENT</span> <span class="s2">&quot;eventname&quot;</span><span class="p">}}}</span>
 <span class="o">...</span>
@@ -2161,8 +2186,8 @@ Guide).</p>
 <span class="n">CRYPT2</span><span class="o">=</span><span class="p">(</span><span class="n">CRYPT3270</span><span class="p">,</span><span class="mi">3</span><span class="n">TDEA</span><span class="p">,</span><span class="n">RSA</span><span class="o">-</span><span class="mi">1024</span><span class="p">,</span><span class="n">ICSF</span><span class="p">,</span><span class="n">HEX</span><span class="p">),</span> <span class="o">*</span>
 </pre></div>
 </div>
-<p>then the tag {{{ENCRYPTION-PARAMETERS (ALGORITHM) &#8220;CRYPT3270&#8221;}}} returns the value 3TDEA, and the tag {{{ENCRYPTION-PARAMETERS &#8220;CRYPT3270&#8221;}}}
-returns the value &#8216;CRYPT3270&#8217;,&#8216;3TDEA&#8217;,&#8217;RSA-1024&#8217;,&#8217;ICSF&#8217;,&#8217;HEX&#8217;,&#8217;CBC&#8217;,&#8217;PKCS7&#8217;</p>
+<p>then the tag {{{ENCRYPTION-PARAMETERS (ALGORITHM) “CRYPT3270”}}} returns the value 3TDEA, and the tag {{{ENCRYPTION-PARAMETERS “CRYPT3270”}}}
+returns the value ‘CRYPT3270’,‘3TDEA’,’RSA-1024’,’ICSF’,’HEX’,’CBC’,’PKCS7’</p>
 <p><strong>1.4.16.3. PUBLIC-KEY tag</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">PUBLIC</span><span class="o">-</span><span class="n">KEY</span> <span class="p">(</span><span class="n">component</span><span class="p">)</span> <span class="s2">&quot;cryptname&quot;</span><span class="p">}}}</span>
 </pre></div>
@@ -2298,7 +2323,7 @@ ISO-8859-1. This is done by embedding the SET-OUTPUT-ENCODING-UTF-8 tag in the p
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span> <span class="n">SET</span><span class="o">-</span><span class="n">OUTPUT</span><span class="o">-</span><span class="n">ENCODING</span><span class="o">-</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="s2">&quot;charset&quot;</span> <span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The SET-OUTPUT-ENCODING-UTF-8 tag indicates that host data inserted in the template page by VIRTEL is to be in UTF-8 format, translated according to the EBCDIC country codepage whose name is specified within quotes. The possible values for charset are given under the description of the DEFUTF8 parameter of the VIRTCT. If no charset value is specified, as for example {{{SET-OUTPUT-ENCODING-UTF-8 &#8220;&#8221;}}}, then the default value of charset is the codepage
+<p>The SET-OUTPUT-ENCODING-UTF-8 tag indicates that host data inserted in the template page by VIRTEL is to be in UTF-8 format, translated according to the EBCDIC country codepage whose name is specified within quotes. The possible values for charset are given under the description of the DEFUTF8 parameter of the VIRTCT. If no charset value is specified, as for example {{{SET-OUTPUT-ENCODING-UTF-8 “”}}}, then the default value of charset is the codepage
 specified by the DEFUTF8 parameter of the VIRTCT described in the VIRTEL Installation Guide.</p>
 <p>When SET-OUTPUT-ENCODING-UTF-8 is specified, the rest of the template page must also be coded in UTF-8, and, in the case of an HTML page, must contain the HTML tag:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s2">&quot;Content-Type&quot;</span> <span class="n">content</span><span class="o">=</span><span class="s2">&quot;text/html; charset=UTF-8&quot;</span><span class="o">&gt;</span>
@@ -2464,7 +2489,7 @@ var VirtelRef = &quot;{{{SECURITY-TOKEN}}}&quot;;
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span> <span class="n">IF</span><span class="o">-</span><span class="n">PRINT</span><span class="o">-</span><span class="n">IS</span><span class="o">-</span><span class="n">READY</span> <span class="o">...</span> <span class="p">}}}</span>
 </pre></div>
 </div>
-<p>The IF-PRINT-IS-READY tag encloses a section of the page which is generated only if print data exists on the virtual printer associated with the user’s session. The HTML content represented by “...” is generated only if VIRTEL has data ready to be printed.</p>
+<p>The IF-PRINT-IS-READY tag encloses a section of the page which is generated only if print data exists on the virtual printer associated with the user’s session. The HTML content represented by “…” is generated only if VIRTEL has data ready to be printed.</p>
 <p><strong>1.4.23.3. SESSION-CODE tag</strong></p>
 <p>The SESSION-CODE tag, prefixed by the word “Print”, generates a sessioncode which allows a subsidiary window to be opened for the print data associated with the specified session. The template page displayed in this window can retrieve the stored print data by means of the PRINT tag. The user can then view the print data, and can, if desired, send the data to a physical workstation printer using the normal procedure for printing from a browser.</p>
 <p>For example:</p>
@@ -3101,7 +3126,7 @@ the command window.</p>
 <dl class="docutils">
 <dt>ctlfile</dt>
 <dd>specifies the name of a control file containing a list of file names to be uploaded</dd>
-<dt>file1 file2 ...</dt>
+<dt>file1 file2 …</dt>
 <dd>are the names of files to be uploaded</dd>
 <dt>-r</dt>
 <dd>specifies recursion into subdirectories</dd>
@@ -3166,7 +3191,7 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="referen
 <dd><p class="first">The shape of the 3270 cursor. The possible settings are:</p>
 <dl class="last docutils">
 <dt>Smart</dt>
-<dd>The character at the cursor position is underlined and his position and color changes to always remain visible for any character (depending on the selected character&#8217;s style : bgnd color, reverse, underlined).</dd>
+<dd>The character at the cursor position is underlined and his position and color changes to always remain visible for any character (depending on the selected character’s style : bgnd color, reverse, underlined).</dd>
 <dt>Block</dt>
 <dd>The character at the cursor position is in reverse video</dd>
 <dt>Blink</dt>
@@ -3249,7 +3274,7 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="referen
 <dt>Highlight input fields</dt>
 <dd>Permits the user to display a different background color for 3270 input fields. When this option is selected, all input fields will have a class designator HIGHLIGHTED_INPUTFIELD in addition to their regular class. The style definition may be overridden by the administrator in the custom.css file.</dd>
 <dt>Remap caret to logical not</dt>
-<dd>If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X&#8216;5F&#8217;, which is the “logical not” sign (¬) in codepage 037/1140.</dd>
+<dd>If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X‘5F’, which is the “logical not” sign (¬) in codepage 037/1140.</dd>
 <dt>Adapt font size ratio</dt>
 <dd>If checked, characters will be stretched to fill the window. This option functions in Internet Explorer versions 9 and later, in Firefox, and Chrome. For Internet Explorer versions 6, 7, and 8 this option has no effect.</dd>
 <dt>Character spacing</dt>
@@ -3302,7 +3327,7 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="referen
 <dd><p class="first">The shape of the 3270 cursor. The possible settings are:</p>
 <dl class="last docutils">
 <dt>Smart</dt>
-<dd>The character at the cursor position is underlined and his position and color changes to always remain visible for any character (depending on the selected character&#8217;s style : bgnd color, reverse, underlined).</dd>
+<dd>The character at the cursor position is underlined and his position and color changes to always remain visible for any character (depending on the selected character’s style : bgnd color, reverse, underlined).</dd>
 <dt>Bar</dt>
 <dd>The character at the cursor position is underlined</dd>
 <dt>Block</dt>
@@ -3427,18 +3452,18 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="referen
 <dt>Omit nulls from input</dt>
 <dd>When activated, VIRTELWeb Access will remove all nulls from modified input fields before sending to the server, in strict conformance with 3270 protocol. When not activated, leading and embedded nulls are converted to blanks, and only trailing nulls are suppressed, which many users find more convenient.</dd>
 <dt>Remap caret to logical not</dt>
-<dd>If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X&#8216;5F&#8217;, which is the “logical not” sign (¬) in codepage 037/1140.</dd>
+<dd>If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X‘5F’, which is the “logical not” sign (¬) in codepage 037/1140.</dd>
 </dl>
 </div>
 <p><strong>1.7.4.3. Key Mappings tab parameters</strong></p>
 <p>This tab is used to map specific functions to certain keyboard keys. The tab contains five sub categories whose names
 are explicit enough to not require more precision.</p>
 <p><strong>1.7.4.4. Import / Export tab parameters</strong></p>
-<p>This tab lets the user to save and restore his settings into (or from) a local file. This backup method is different and independent of the method used when the &#8220;save&#8221; button is pressed. (See below).</p>
+<p>This tab lets the user to save and restore his settings into (or from) a local file. This backup method is different and independent of the method used when the “save” button is pressed. (See below).</p>
 </div>
 <div class="section" id="where-user-settings-are-stored">
 <h4>1.7.5. Where user settings are stored<a class="headerlink" href="#where-user-settings-are-stored" title="Permalink to this headline">¶</a></h4>
-<p>When the user press the &#8220;save&#8221; button, his Web Access settings and macros are stored in browser local storage. For Internet Explorer 6, local storage is stored in the folder :
+<p>When the user press the “save” button, his Web Access settings and macros are stored in browser local storage. For Internet Explorer 6, local storage is stored in the folder :
 %userprofile%/UserData For Internet Explorer 8 and 9, local storage is stored in the folder :</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">userprofile</span><span class="o">%/</span><span class="n">Local</span> <span class="n">Settings</span><span class="o">/</span><span class="n">Application</span> <span class="n">Data</span><span class="o">/</span><span class="n">Microsoft</span><span class="o">/</span><span class="n">Internet</span> <span class="n">Explorer</span><span class="o">/</span><span class="n">DOMStore</span>
 </pre></div>
@@ -3495,248 +3520,248 @@ are explicit enough to not require more precision.</p>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>&#8220;fontsize&#8221;</td>
+<tr class="row-even"><td>“fontsize”</td>
 <td>Font size</td>
-<td>&#8220;window&#8221;, &#8220;screen&#8221;, &#8220;8&#8221;, &#8220;10&#8221;, &#8220;12&#8221;, &#8220;14&#8221;, &#8220;16&#8221;</td>
+<td>“window”, “screen”, “8”, “10”, “12”, “14”, “16”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;font&#8221;</td>
+<tr class="row-odd"><td>“font”</td>
 <td>Font family</td>
-<td>&#8220;font name&#8221;</td>
+<td>“font name”</td>
 </tr>
-<tr class="row-even"><td>&#8220;autocapture&#8221;</td>
+<tr class="row-even"><td>“autocapture”</td>
 <td>Auto-capture</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;autoprint&#8221;</td>
+<tr class="row-odd"><td>“autoprint”</td>
 <td>Auto-print</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;cursor&#8221;</td>
-<td>Cursor &#8220;Bar&#8221;,</td>
-<td>&#8220;Blink&#8221;, &#8220;Block&#8221;</td>
+<tr class="row-even"><td>“cursor”</td>
+<td>Cursor “Bar”,</td>
+<td>“Blink”, “Block”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;vline&#8221;</td>
+<tr class="row-odd"><td>“vline”</td>
 <td>Vertical line</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;hline&#8221;</td>
+<tr class="row-even"><td>“hline”</td>
 <td>Horiz line</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;esc&#8221;</td>
+<tr class="row-odd"><td>“esc”</td>
 <td>Esc key</td>
-<td>&#8220;no&#8221;, &#8220;ATTN&#8221;, &#8220;CLEAR&#8221;, &#8220;Reset&#8221;</td>
+<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
 </tr>
-<tr class="row-even"><td>&#8220;ctrl&#8221;</td>
+<tr class="row-even"><td>“ctrl”</td>
 <td>Ctrl key</td>
-<td>&#8220;no&#8221;, &#8220;ENTER&#8221;, &#8220;Newline&#8221;</td>
+<td>“no”, “ENTER”, “Newline”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;cmdleft&#8221;</td>
+<tr class="row-odd"><td>“cmdleft”</td>
 <td>Left Cmd key</td>
-<td>&#8220;no&#8221;, &#8220;Reset&#8221;</td>
+<td>“no”, “Reset”</td>
 </tr>
-<tr class="row-even"><td>&#8220;cmdright&#8221;</td>
+<tr class="row-even"><td>“cmdright”</td>
 <td>Right Cmd key</td>
-<td>&#8220;no&#8221;, “ENTER&#8221;</td>
+<td>“no”, “ENTER”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;enter&#8221;</td>
+<tr class="row-odd"><td>“enter”</td>
 <td>Enter key</td>
-<td>&#8220;ENTER&#8221;, &#8220;Newline&#8221;</td>
+<td>“ENTER”, “Newline”</td>
 </tr>
-<tr class="row-even"><td>&#8220;home&#8221;</td>
+<tr class="row-even"><td>“home”</td>
 <td>Home key</td>
-<td>&#8220;no&#8221;, &#8220;Home&#8221;</td>
+<td>“no”, “Home”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;end&#8221;</td>
+<tr class="row-odd"><td>“end”</td>
 <td>End key</td>
-<td>&#8220;no&#8221;, &#8220;ErEof&#8221;, &#8220;End&#8221;</td>
+<td>“no”, “ErEof”, “End”</td>
 </tr>
-<tr class="row-even"><td>&#8220;pgup&#8221;</td>
+<tr class="row-even"><td>“pgup”</td>
 <td>PageUp key</td>
-<td>&#8220;PF7&#8221;, &#8220;PF19&#8221;, &#8220;PA1&#8221;, &#8220;no&#8221;</td>
+<td>“PF7”, “PF19”, “PA1”, “no”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;pgdn&#8221;</td>
+<tr class="row-odd"><td>“pgdn”</td>
 <td>PageDown key</td>
-<td>&#8220;PF8&#8221;, &#8220;PF20&#8221;, &#8220;PA2&#8221;, &#8220;no&#8221;</td>
+<td>“PF8”, “PF20”, “PA2”, “no”</td>
 </tr>
-<tr class="row-even"><td>&#8220;pause&#8221;</td>
+<tr class="row-even"><td>“pause”</td>
 <td>Pause key</td>
-<td>&#8220;CLEAR&#8221;, &#8220;ATTN&#8221;, &#8220;PA3&#8221;, &#8220;no&#8221;</td>
+<td>“CLEAR”, “ATTN”, “PA3”, “no”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;kpenter&#8221;</td>
+<tr class="row-odd"><td>“kpenter”</td>
 <td>Keypad Enter</td>
-<td>&#8220;ENTER&#8221;, &#8220;Newline&#8221;</td>
+<td>“ENTER”, “Newline”</td>
 </tr>
-<tr class="row-even"><td>&#8220;shiftenter&#8221;</td>
+<tr class="row-even"><td>“shiftenter”</td>
 <td>Shift+Enter</td>
-<td>&#8220;no&#8221;,&#8221;ENTER&#8221;, &#8220;Newline&#8221;</td>
+<td>“no”,”ENTER”, “Newline”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;shiftesc&#8221;</td>
+<tr class="row-odd"><td>“shiftesc”</td>
 <td>Shift+Esc</td>
-<td>&#8220;no&#8221;, &#8220;ATTN&#8221;, &#8220;CLEAR&#8221;, &#8220;Reset&#8221;</td>
+<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
 </tr>
-<tr class="row-even"><td>&#8220;shiftins&#8221;</td>
+<tr class="row-even"><td>“shiftins”</td>
 <td>Shift+Insert</td>
-<td>&#8220;no&#8221;, &#8220;Dup&#8221;</td>
+<td>“no”, “Dup”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;shiftdel&#8221;</td>
+<tr class="row-odd"><td>“shiftdel”</td>
 <td>Shift+Delete</td>
-<td>&#8220;no&#8221;, &#8220;ErEof&#8221;</td>
+<td>“no”, “ErEof”</td>
 </tr>
-<tr class="row-even"><td>&#8220;shifthome&#8221;</td>
+<tr class="row-even"><td>“shifthome”</td>
 <td>Shift+Home</td>
-<td>&#8220;no&#8221;, &#8220;FieldMark&#8221;, &#8220;Home&#8221;</td>
+<td>“no”, “FieldMark”, “Home”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;shiftend&#8221;</td>
+<tr class="row-odd"><td>“shiftend”</td>
 <td>Shift+End</td>
-<td>&#8220;no&#8221;, &#8220;ErEof&#8221;, &#8220;End&#8221;</td>
+<td>“no”, “ErEof”, “End”</td>
 </tr>
-<tr class="row-even"><td>&#8220;shiftpgdn&#8221;</td>
+<tr class="row-even"><td>“shiftpgdn”</td>
 <td>Shift+PageDown</td>
-<td>&#8220;no&#8221;, &#8220;PA3&#8221;</td>
+<td>“no”, “PA3”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;ctrlenter&#8221;</td>
+<tr class="row-odd"><td>“ctrlenter”</td>
 <td>Ctrl+Enter</td>
-<td>&#8220;no&#8221;,&#8221;ENTER&#8221;, &#8220;Newline&#8221;</td>
+<td>“no”,”ENTER”, “Newline”</td>
 </tr>
-<tr class="row-even"><td>&#8220;ctrlins&#8221;</td>
+<tr class="row-even"><td>“ctrlins”</td>
 <td>Ctrl+Insert</td>
-<td>&#8220;no&#8221;, &#8220;PA1&#8221;</td>
+<td>“no”, “PA1”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;ctrldel&#8221;</td>
+<tr class="row-odd"><td>“ctrldel”</td>
 <td>Ctrl+Delete</td>
-<td>&#8220;no&#8221;, &#8220;PA2&#8221;, &#8220;ErEof&#8221;</td>
+<td>“no”, “PA2”, “ErEof”</td>
 </tr>
-<tr class="row-even"><td>&#8220;ctrlhome&#8221;</td>
+<tr class="row-even"><td>“ctrlhome”</td>
 <td>Ctrl+Home</td>
-<td>&#8220;no&#8221;, &#8220;PA3&#8221;, &#8220;Home&#8221;, &#8220;ChgCur&#8221;</td>
+<td>“no”, “PA3”, “Home”, “ChgCur”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;ctrlend&#8221;</td>
+<tr class="row-odd"><td>“ctrlend”</td>
 <td>Ctrl+End</td>
-<td>&#8220;no&#8221;, &#8220;ErEof&#8221;, &#8220;End&#8221;</td>
+<td>“no”, “ErEof”, “End”</td>
 </tr>
-<tr class="row-even"><td>&#8220;altins&#8221;</td>
+<tr class="row-even"><td>“altins”</td>
 <td>Alt+Ins</td>
-<td>&#8220;no&#8221;, &#8220;PA1&#8221;</td>
+<td>“no”, “PA1”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;althome&#8221;</td>
+<tr class="row-odd"><td>“althome”</td>
 <td>Alt+Home</td>
-<td>&#8220;no&#8221;, &#8220;PA2&#8221;</td>
+<td>“no”, “PA2”</td>
 </tr>
-<tr class="row-even"><td>&#8220;altpgup&#8221;</td>
+<tr class="row-even"><td>“altpgup”</td>
 <td>Alt+PageUp</td>
-<td>&#8220;no&#8221;, &#8220;PA1&#8221;</td>
+<td>“no”, “PA1”</td>
 </tr>
-<tr class="row-odd"><td rowspan="2">&#8220;altpgdn&#8221;</td>
+<tr class="row-odd"><td rowspan="2">“altpgdn”</td>
 <td rowspan="2">Alt+PageDown</td>
-<td rowspan="2">&#8220;no&#8221;, &#8220;PA2&#8221;</td>
+<td rowspan="2">“no”, “PA2”</td>
 </tr>
 <tr class="row-even"></tr>
-<tr class="row-odd"><td>&#8220;altpause&#8221;</td>
+<tr class="row-odd"><td>“altpause”</td>
 <td>Alt+Pause</td>
-<td>&#8220;no&#8221;, &#8220;ATTN&#8221;, &#8220;CLEAR&#8221;, &#8220;PA3&#8221;</td>
+<td>“no”, “ATTN”, “CLEAR”, “PA3”</td>
 </tr>
-<tr class="row-even"><td>&#8220;altf1&#8221;</td>
+<tr class="row-even"><td>“altf1”</td>
 <td>Alt+F1</td>
-<td>&#8220;no&#8221;, &#8220;PA1&#8221;, &#8220;ENTER&#8221;</td>
+<td>“no”, “PA1”, “ENTER”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;altf2&#8221;</td>
+<tr class="row-odd"><td>“altf2”</td>
 <td>Alt+F2</td>
-<td>&#8220;no&#8221;, &#8220;PA2&#8221;</td>
+<td>“no”, “PA2”</td>
 </tr>
-<tr class="row-even"><td>&#8220;altf3&#8221;</td>
+<tr class="row-even"><td>“altf3”</td>
 <td>Alt+F3</td>
-<td>&#8220;no&#8221;, &#8220;PA3&#8221;, &#8220;ChgCur&#8221;</td>
+<td>“no”, “PA3”, “ChgCur”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;kpslash&#8221;</td>
+<tr class="row-odd"><td>“kpslash”</td>
 <td>Keypad /</td>
-<td>&#8220;/&#8221;, &#8220;PA1&#8221;</td>
+<td>“/”, “PA1”</td>
 </tr>
-<tr class="row-even"><td>&#8220;kpaster&#8221;</td>
+<tr class="row-even"><td>“kpaster”</td>
 <td>Keypad *</td>
-<td>&#8220;*&#8221;, &#8220;PA2&#8221;</td>
+<td>“*”, “PA2”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;kpminus&#8221;</td>
+<tr class="row-odd"><td>“kpminus”</td>
 <td>Keypad -</td>
-<td>&#8220;-&#8221;, &#8220;Backtab&#8221;</td>
+<td>“-“, “Backtab”</td>
 </tr>
-<tr class="row-even"><td>&#8220;kpplus&#8221;</td>
+<tr class="row-even"><td>“kpplus”</td>
 <td>Keypad +</td>
-<td>&#8220;+&#8221;, &#8220;Tab&#8221;, &#8220;Newline&#8221;</td>
+<td>“+”, “Tab”, “Newline”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;kpdot&#8221;</td>
+<tr class="row-odd"><td>“kpdot”</td>
 <td>Keypad .</td>
-<td>&#8221;.&#8221;, &#8221;,&#8221;</td>
+<td>“.”, “,”</td>
 </tr>
-<tr class="row-even"><td>&#8220;dblclick&#8221;</td>
+<tr class="row-even"><td>“dblclick”</td>
 <td>Double Click</td>
-<td>&#8220;Word&#8221;, &#8220;ENTER&#8221;, &#8220;no&#8221;</td>
+<td>“Word”, “ENTER”, “no”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;urlhotspot&#8221;</td>
+<tr class="row-odd"><td>“urlhotspot”</td>
 <td>URL hotspots</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;pfkhotspot&#8221;</td>
+<tr class="row-even"><td>“pfkhotspot”</td>
 <td>PF key hotspots</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;pasteereof&#8221;</td>
+<tr class="row-odd"><td>“pasteereof”</td>
 <td>Paste erase EOF</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;movecursor&#8221;</td>
+<tr class="row-even"><td>“movecursor”</td>
 <td>Move cursor on activat</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;style&#8221;</td>
+<tr class="row-odd"><td>“style”</td>
 <td>Style</td>
-<td>&#8220;3270&#8221;, &#8220;gray&#8221;, &#8220;white&#8221;</td>
+<td>“3270”, “gray”, “white”</td>
 </tr>
-<tr class="row-even"><td>&#8220;printstyle”</td>
+<tr class="row-even"><td>“printstyle”</td>
 <td>Print style</td>
-<td>&#8220;3270&#8221;, &#8220;color&#8221;, &#8220;white&#8221;</td>
+<td>“3270”, “color”, “white”</td>
 </tr>
-<tr class="row-odd"><td>&#8220;rtm&#8221;</td>
+<tr class="row-odd"><td>“rtm”</td>
 <td>Response time monitor</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;omitnulls&#8221;</td>
+<tr class="row-even"><td>“omitnulls”</td>
 <td>Omit nulls from input</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;keepmacpad&#8221;</td>
+<tr class="row-odd"><td>“keepmacpad”</td>
 <td>Keep macro pad open</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;keepkeypad&#8221;</td>
+<tr class="row-even"><td>“keepkeypad”</td>
 <td>Keep keypad open</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;hiliteinput&#8221;</td>
+<tr class="row-odd"><td>“hiliteinput”</td>
 <td>Highlight input fields</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;caretnot&#8221;</td>
+<tr class="row-even"><td>“caretnot”</td>
 <td>Remap ^ to logical not</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;adaptfontrati</td>
+<tr class="row-odd"><td>“adaptfontrati</td>
 <td>Adapt font size ratio</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;charspace&#8221;</td>
+<tr class="row-even"><td>“charspace”</td>
 <td>Character spacing</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>&#8220;linespace&#8221;</td>
+<tr class="row-odd"><td>“linespace”</td>
 <td>Line spacing</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>&#8220;settingsGUI&#8221;</td>
+<tr class="row-even"><td>“settingsGUI”</td>
 <td>Uuser interface type</td>
 <td>v2</td>
 </tr>
-<tr class="row-odd"><td>&#8220;preservein&#8221;</td>
+<tr class="row-odd"><td>“preservein”</td>
 <td>Preserve insert mode</td>
 <td>true, false</td>
 </tr>
@@ -3746,7 +3771,7 @@ are explicit enough to not require more precision.</p>
 </div>
 <div class="section" id="choosing-web-access-settings-pattern">
 <h4>1.7.7. Choosing Web Access settings pattern<a class="headerlink" href="#choosing-web-access-settings-pattern" title="Permalink to this headline">¶</a></h4>
-<p>User interface settings may be presented under two different forms which are shown at the beginning of this section. The desired form may be defined using the variable &#8220;settingsGUI&#8221; present in the w2hparms.js file. The possible values for this parameter are :</p>
+<p>User interface settings may be presented under two different forms which are shown at the beginning of this section. The desired form may be defined using the variable “settingsGUI” present in the w2hparms.js file. The possible values for this parameter are :</p>
 <dl class="docutils">
 <dt>version</dt>
 <dd>Allows a choice beetwen older and or newest form. Possible values are:</dd>
@@ -4063,7 +4088,7 @@ VIRTEL IND$FILE receive dialog (part 4)</p>
 toolbar. The “Send File” dialog will open:</p>
 <p><img alt="image34" src="../../../_images/image341.jpeg" />
 VIRTEL IND$FILE send dialog (part 1)</p>
-<p>Click the “Browse...” button and the “Choose File to Upload” dialog will appear:</p>
+<p>Click the “Browse…” button and the “Choose File to Upload” dialog will appear:</p>
 <p><img alt="image35" src="../../../_images/image351.jpeg" />
 VIRTEL IND$FILE send dialog (part 2)</p>
 <p>Choose the file you want to upload, and click “Open” to return to the “Send File” dialog:</p>
@@ -4093,7 +4118,7 @@ transfer.</p>
 <dd>When selected, causes the file being translated by VIRTEL according to the CP-850 ASCII-EBCDIC translation table.</dd>
 </dl>
 <p>The selected CP-850 table depends on the value of the COUNTRY parameter specified in the VIRTCT. If this value is
-&#8220;FR&#8221;, &#8220;DE&#8221; or &#8220;BE&#8221;, system will use corresponding table FR-850, DE-850 or BE-850. If the specified country value is
+“FR”, “DE” or “BE”, system will use corresponding table FR-850, DE-850 or BE-850. If the specified country value is
 different, by default the BE-850 table will be used to support CECP 500 international EBCDIC.
 1.10.6. Saving and reusing file transfer parameters
 Users who frequently carry out the same or similar file transfers can save the file transfer parameters for later reuse.
@@ -4248,8 +4273,8 @@ removed by modifying the w2hparm.hideinfo attribut present in the customized w2h
 </pre></div>
 </div>
 <p><em>Example w2hparm.js for hiding the mainframe application name on which a user is connected to.</em></p>
-<p>If the default value is preserved, the user can hide this information for his own usage by checking &#8220;Hide Virtel
-information in toolbar&#8221; in the Display tab of the settings panel.</p>
+<p>If the default value is preserved, the user can hide this information for his own usage by checking “Hide Virtel
+information in toolbar” in the Display tab of the settings panel.</p>
 </div>
 <div class="section" id="hiding-the-toolbar">
 <span id="v456ug-hide-toolbar"></span><h4>1.12.5. Hiding the toolbar<a class="headerlink" href="#hiding-the-toolbar" title="Permalink to this headline">¶</a></h4>
@@ -4404,7 +4429,7 @@ described below.</p>
 <p>This function is called before submitting a request to the VIRTEL server. The arguments passed to before_submitForm are:</p>
 <dl class="docutils">
 <dt>pfKey</dt>
-<dd>the name of the key pressed: &#8220;ENTER&#8221;, &#8220;PF1&#8221;, etc.</dd>
+<dd>the name of the key pressed: “ENTER”, “PF1”, etc.</dd>
 <dt>oForm</dt>
 <dd>a DOM object representing the form to be submitted (usually document.virtelForm)</dd>
 </dl>
@@ -4480,7 +4505,7 @@ unchanged.</p>
 </div>
 <div class="section" id="centering-non-standard-icons">
 <h4>1.13.2.1. Centering non standard icons<a class="headerlink" href="#centering-non-standard-icons" title="Permalink to this headline">¶</a></h4>
-<p>The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribut passed within the &#8220;addtoolbarbutton&#8221; function in conjunction of using a specific css attribut.</p>
+<p>The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribut passed within the “addtoolbarbutton” function in conjunction of using a specific css attribut.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2014</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
@@ -4544,14 +4569,14 @@ unchanged.</p>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">settingsV2 is présent only if w2hparms.js contains &#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V2&#8221;}, or &#8220;settingsGUI&#8221;:{&#8220;version&#8221;:&#8221;V1+V2&#8221;}</p>
+<p class="last">settingsV2 is présent only if w2hparms.js contains “settingsGUI”:{“version”:”V2”}, or “settingsGUI”:{“version”:”V1+V2”}</p>
 </div>
 <p>To hide the toolbar completely, see <a class="reference internal" href="#v456ug-hide-toolbar"><span class="std std-ref">“Hiding the toolbar”</span></a>.</p>
 <p>To hide only the VIRTEL Application name, see <a class="reference internal" href="#v456ug-hide-information"><span class="std std-ref">“Showing / Hiding server informations”</span></a>.</p>
 </div>
 <div class="section" id="positionning-toolbar-icons">
 <h4>1.13.4. Positionning toolbar icons<a class="headerlink" href="#positionning-toolbar-icons" title="Permalink to this headline">¶</a></h4>
-<p>In certain circumstances, the default position of an icon may not be at the user&#8217;s convenence. Is possible to change an icon&#8217;s position based on the position of another icon.</p>
+<p>In certain circumstances, the default position of an icon may not be at the user’s convenence. Is possible to change an icon’s position based on the position of another icon.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Customize</span> <span class="n">the</span> <span class="n">location</span> <span class="n">of</span> <span class="n">dynamic</span> <span class="n">toolbar</span> <span class="n">buttons</span><span class="o">.</span>
 <span class="o">*</span> <span class="n">The</span> <span class="n">calls</span> <span class="n">to</span> <span class="n">this</span> <span class="n">function</span> <span class="n">are</span> <span class="n">ignored</span> <span class="n">when</span> <span class="n">they</span>
@@ -4714,7 +4739,7 @@ VIR3270.customPfKeysHotspotRegex =
 <div class="section" id="modifying-web-access-settings">
 <h4>1.13.8. Modifying Web Access Settings<a class="headerlink" href="#modifying-web-access-settings" title="Permalink to this headline">¶</a></h4>
 <p>The callback function modify_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
-The example shown below replaces the list of fonts, and adds two extra values &#8220;20&#8221; and &#8220;24&#8221; to the list of fontsizes:-</p>
+The example shown below replaces the list of fonts, and adds two extra values “20” and “24” to the list of fontsizes:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
@@ -4979,9 +5004,9 @@ or copy a macro, just right-click on the macro and choose the desired function. 
 <p><strong>1.16.2.2. Global and Group macros management</strong></p>
 <p>Only the administrator can upload macros.json files into the global (GLB-DIR) and group (GRP-DIR) directories.
 To define a new global or group macros.json file, the administrator must use the “Dynamic Directory Interface” wich is
-available in the “Macros and add-ons&#8221; area of the default page displayed when connecting to the W-HTTP line. To be
+available in the “Macros and add-ons” area of the default page displayed when connecting to the W-HTTP line. To be
 authorized to access the DDI, the user must be granted to access the VIRTEL transaction defined under WEB2HOST
-entry point with external name “usrcap&#8221;.</p>
+entry point with external name “usrcap”.</p>
 <p><strong>1.16.2.3. Format of the macros.json file</strong></p>
 <p>Each macros.json file contains a set of macros as shown in the example below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -5066,7 +5091,7 @@ list panel.</p>
 <p>To download a file, select it on the list, and cick the download button.</p>
 <p><strong>1.17.3.3. Macro Support</strong></p>
 <p>If the VIRTEL is configured for the use of macros to be stored in the dynamic VIRTEL directories, the macros of a user
-will be saved as the &#8220;macros.json&#8221; in its user VIRTEL directory. By clicking the row of this file in the list, the
+will be saved as the “macros.json” in its user VIRTEL directory. By clicking the row of this file in the list, the
 administrator will be able to click the edit button and access the macro interface to manage these macros.</p>
 </div>
 <div class="section" id="definition-of-a-virtel-group-directory">
@@ -5084,7 +5109,7 @@ Only the VIRTEL administrator can update the group files (there are no group adm
 <p>To download a file, select it on the list, and cick the download button.</p>
 <p><strong>1.17.6.3. Macros Support</strong></p>
 <p>If the VIRTEL is configured for the use of macros to be stored in the dynamic VIRTEL directories, the macros of a group
-will be saved as the &#8220;macros.json&#8221; in its group VIRTEL directory. By clicking the row of this file in the list, the
+will be saved as the “macros.json” in its group VIRTEL directory. By clicking the row of this file in the list, the
 administrator will be able to click the edit button and access the macro interface to manage these macros.</p>
 <div class="section" id="definition-of-a-global-virtel-directory">
 <h4>1.17.7. Definition of a global VIRTEL directory<a class="headerlink" href="#definition-of-a-global-virtel-directory" title="Permalink to this headline">¶</a></h4>
@@ -5101,7 +5126,7 @@ Only the VIRTEL administrator can update the global files.</p>
 <p>To download a file, select it on the list, and cick the download button.</p>
 <p><strong>1.17.8.3. Macros Support</strong></p>
 <p>If the VIRTEL is configured for the use of macros to be stored in the dynamic VIRTEL directories, the global macros will
-be saved as the &#8220;macros.json&#8221; in the global VIRTEL directory. By clicking the row of this file in the list, the administrator
+be saved as the “macros.json” in the global VIRTEL directory. By clicking the row of this file in the list, the administrator
 will be able to click the edit button and access the macro interface to manage these macros.</p>
 </div>
 </div>
@@ -5368,12 +5393,12 @@ LASTMSG=YES,ASYNCH=YES
 </tbody>
 </table>
 </dd>
-<dt>AND=(WAIT,&#8217;string&#8217;)</dt>
+<dt>AND=(WAIT,’string’)</dt>
 <dd>(optional) after sending the message to the application, the scenario waits until the application sends a message containing the specified character string. Intervening messages are processed by VIRTEL but are not passed to the scenario or sent to the terminal.</dd>
-<dt>AND=(SCRIPT,&#8217;string&#8217;)</dt>
-<dd>(optional) after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see <a class="reference internal" href="../Virtel456CN/connectivity_guide.html"><span class="doc">“Connection/Disconnection Scripts&#8221;</span></a>)  in the VIRTEL Connectivity Reference manual).</dd>
-<dt>AND=(PROCESS-RESPONSE,&#8217;string&#8217;)</dt>
-<dd>(optional) allows an input scenario to explicitly request that control is to be returned when the next message is received from the application. The string is optional. If specified, after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see <a class="reference internal" href="../Virtel456CN/connectivity_guide.html"><span class="doc">“Connection/Disconnection Scripts&#8221;</span></a> in the VIRTEL Connectivity Reference manual).</dd>
+<dt>AND=(SCRIPT,’string’)</dt>
+<dd>(optional) after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see <a class="reference internal" href="../Virtel456CN/connectivity_guide.html"><span class="doc">“Connection/Disconnection Scripts”</span></a>)  in the VIRTEL Connectivity Reference manual).</dd>
+<dt>AND=(PROCESS-RESPONSE,’string’)</dt>
+<dd>(optional) allows an input scenario to explicitly request that control is to be returned when the next message is received from the application. The string is optional. If specified, after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see <a class="reference internal" href="../Virtel456CN/connectivity_guide.html"><span class="doc">“Connection/Disconnection Scripts”</span></a> in the VIRTEL Connectivity Reference manual).</dd>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -5422,7 +5447,7 @@ AND=(SCRIPT, *
 &#39;Signon to CICS&amp;&amp;/W&amp;&amp;*F34BE9&amp;&amp;/A&amp;&amp;/T&#39;)
 </pre></div>
 </div>
-<p>Send ENTER to the application before sending two tab key followed by a message containing the string “Test&#8221;.</p>
+<p>Send ENTER to the application before sending two tab key followed by a message containing the string “Test”.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>ACTION$ TO-APPLICATION,KEY=7D, *
 AND=(SCRIPT,&#39;&amp;&amp;&gt;&amp;&amp;&gt;Test&amp;&amp;/T&#39;)
 </pre></div>
@@ -5431,7 +5456,7 @@ AND=(SCRIPT,&#39;&amp;&amp;&gt;&amp;&amp;&gt;Test&amp;&amp;/T&#39;)
 <div class="highlight-default"><div class="highlight"><pre><span></span>ACTION$ TO-APPLICATION,KEY=6D,LASTMSG=YES,ASYNCH=YES
 </pre></div>
 </div>
-<p>Exit from the scenario (equivalent to IF$ ... SUCCESS), display the screen as normal, send 6D (CLEAR) to the application, and when the application responds, disconnect.</p>
+<p>Exit from the scenario (equivalent to IF$ … SUCCESS), display the screen as normal, send 6D (CLEAR) to the application, and when the application responds, disconnect.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>ACTION$ TO-APPLICATION,KEY=7D, *
 AND=(PROCESS-RESPONSE)
 </pre></div>
@@ -5478,7 +5503,7 @@ processing flow according to the value.</p>
 <dd><p class="first">(optional) Removes a set of characters from the start of a list variable (see Note) before copying it).</p>
 <blockquote class="last">
 <div><dl class="docutils">
-<dt>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]</dt>
+<dt>‘string1’ [,’string2’, …]</dt>
 <dd>one or more strings of text to be removed from the start of the variable.</dd>
 </dl>
 </div></blockquote>
@@ -5487,7 +5512,7 @@ processing flow according to the value.</p>
 <dd><p class="first">(optional) Removes a set of characters from the end of a list variable (see Note) before copying it.</p>
 <blockquote class="last">
 <div><dl class="docutils">
-<dt>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]</dt>
+<dt>‘string1’ [,’string2’, …]</dt>
 <dd>one or more strings of text to be removed from the endof the variable.</dd>
 </dl>
 </div></blockquote>
@@ -5498,7 +5523,7 @@ processing flow according to the value.</p>
 <dd>Specifies whether the data tested must be equal (EQ), not equal (NE), prefixed by (BEGIN), less than (LT), less than or equal (LE), greater than (GT), greater than or equal (GE), or must contain (CONTAINS) the specified value.</dd>
 <dt>value</dt>
 <dd>Specifies the value against which the data is tested (must be placed in quotes)</dd>
-<dt>process1,2,...</dt>
+<dt>process1,2,…</dt>
 <dd><p class="first">Specifies the address of the branch exit of the script if the condition is satisfied. Permitted values are:</p>
 <blockquote class="last">
 <div><dl class="docutils">
@@ -5516,9 +5541,9 @@ processing flow according to the value.</p>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Note 1: For row, col and len, a value of &#8216;=&#8217; means the value of the current rown col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</p>
+<p>Note 1: For row, col and len, a value of ‘=’ means the value of the current rown col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</p>
 <p>Note 2: If the variable being tested does not exist, it is not considered empty and the CASE$ branches at the ELSE=label.</p>
-<p class="last">Note 3: Any number of (condition,&#8217;value&#8217;,process) parameters may be specified, within the limits set by the assembler. Use assembler conventions (non-blank in column 72 and continuation starting in column 16) to continue the statement over more than one line.</p>
+<p class="last">Note 3: Any number of (condition,’value’,process) parameters may be specified, within the limits set by the assembler. Use assembler conventions (non-blank in column 72 and continuation starting in column 16) to continue the statement over more than one line.</p>
 </div>
 </div>
 <div class="section" id="convert-instruction">
@@ -5645,7 +5670,7 @@ lower case.</p>
 <dd><p class="first">(optional) Removes a set of characters from the start of a list variable (see Note) before copying it).</p>
 <blockquote class="last">
 <div><dl class="docutils">
-<dt>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]</dt>
+<dt>‘string1’ [,’string2’, …]</dt>
 <dd>one or more strings of text to be removed from the start of the variable.</dd>
 </dl>
 </div></blockquote>
@@ -5654,7 +5679,7 @@ lower case.</p>
 <dd><p class="first">(optional) Removes a set of characters from the end of a list variable (see Note) before copying it.</p>
 <blockquote class="last">
 <div><dl class="docutils">
-<dt>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]</dt>
+<dt>‘string1’ [,’string2’, …]</dt>
 <dd>one or more strings of text to be removed from the endof the variable.</dd>
 </dl>
 </div></blockquote>
@@ -5678,7 +5703,7 @@ RTRIM=(&#39;_&#39;,&#39; &#39;),LTRIM=(&#39;_&#39;,&#39; &#39;), *
 LIST=(&#39;string1&#39;,&#39;*var1&#39;,VARIABLE,&#39;var2&#39;)
 </pre></div>
 </div>
-<p>The variable VAR1 is created/modified, with &#8216;string1&#8217; copied as is, var1 and var2 left and right trimmed.</p>
+<p>The variable VAR1 is created/modified, with ‘string1’ copied as is, var1 and var2 left and right trimmed.</p>
 <p><strong>1.18.13.6. COPY$ OUTPUT-FILE-TO-VARIABLE</strong></p>
 <p>Generates an output page from a page template, and copies the result into a VIRTEL variable. Any VIRTEL tags withinthe page template are processed as if the page were being generated as the response to an HTTP request, but the generated page is placed in a variable instead of being sent to the terminal.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;filename&#39;,VAR=&#39;varname&#39;,
@@ -5738,7 +5763,7 @@ COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;*filenameVar&#39;,VAR=&#39;varname&#39;,
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Note 1: for row, col and len, a value of &#8216;=&#8217; means the value of the current row, col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</p>
+<p>Note 1: for row, col and len, a value of ‘=’ means the value of the current row, col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</p>
 <p class="last">Note 2: the fourth sub-parameter (ht) of the SCREEN parameter is optional. If the fourth sub-parameter is specified, then attributes and binary zeroes will be replaced by blanks. To keep compatibility with existing scenarios, the instruction will ignore attributes and binary zeroes if the fourth SCREEN sub-parameter is NOT specified.</p>
 </div>
 <p><strong>1.18.13.8. COPY$ SYSTEM-TO-VARIABLE</strong></p>
@@ -5997,76 +6022,76 @@ COPY$ SYSTEM-TO-VARIABLE,                                      X
 </thead>
 <tbody valign="top">
 <tr class="row-odd"><td>HOST</td>
-<td>&#8220;192.168.235.30:41001&#8221;</td>
+<td>“192.168.235.30:41001”</td>
 </tr>
 <tr class="row-even"><td>BROWSER</td>
-<td>&#8220;Mozilla/5.0 (Windows) Gecko/20070219 Firefox/2.0.0.2&#8221;</td>
+<td>“Mozilla/5.0 (Windows) Gecko/20070219 Firefox/2.0.0.2”</td>
 </tr>
 <tr class="row-odd"><td>APPLID</td>
-<td>&#8220;VIRTEL&#8221;</td>
+<td>“VIRTEL”</td>
 </tr>
 <tr class="row-even"><td>LINEINT</td>
-<td>&#8220;W-HTTP&#8221;</td>
+<td>“W-HTTP”</td>
 </tr>
 <tr class="row-odd"><td>TERMID</td>
-<td>&#8220;DEVTA003&#8221;</td>
+<td>“DEVTA003”</td>
 </tr>
 <tr class="row-even"><td>LUNAME</td>
-<td>&#8220;RHTVT000&#8221;</td>
+<td>“RHTVT000”</td>
 </tr>
 <tr class="row-odd"><td>EPNAME</td>
-<td>&#8220;WEB2HOST&#8221;</td>
+<td>“WEB2HOST”</td>
 </tr>
 <tr class="row-even"><td>TRANINT</td>
-<td>&#8220;W2H-13&#8221;</td>
+<td>“W2H-13”</td>
 </tr>
 <tr class="row-odd"><td>TRANEXT</td>
-<td>&#8220;Tso&#8221;</td>
+<td>“Tso”</td>
 </tr>
 <tr class="row-even"><td>ROUTPARM</td>
-<td>&#8220;model2&#8221;</td>
+<td>“model2”</td>
 </tr>
 <tr class="row-odd"><td>URL</td>
-<td>&#8220;/w2h/WEB2AJAX.htm+Tso+model2&#8221;</td>
+<td>“/w2h/WEB2AJAX.htm+Tso+model2”</td>
 </tr>
 <tr class="row-even"><td>QSTRING</td>
-<td>&#8220;u=rxb&amp;g=sys1&#8221;</td>
+<td>“u=rxb&amp;g=sys1”</td>
 </tr>
 <tr class="row-odd"><td>PAGENAME</td>
-<td>&#8220;WEB2AJAX.htm&#8221;</td>
+<td>“WEB2AJAX.htm”</td>
 </tr>
 <tr class="row-even"><td>DIRNAME</td>
-<td>&#8220;W2H-DIR&#8221;</td>
+<td>“W2H-DIR”</td>
 </tr>
 <tr class="row-odd"><td>SNASTAT</td>
-<td>&#8221; &#8220;</td>
+<td>” “</td>
 </tr>
 <tr class="row-even"><td>CLIENT</td>
-<td>&#8220;192.168.000.049&#8221;</td>
+<td>“192.168.000.049”</td>
 </tr>
 <tr class="row-odd"><td>CHARSET</td>
-<td>&#8220;IBM1140&#8221;</td>
+<td>“IBM1140”</td>
 </tr>
 <tr class="row-even"><td>DATETIME</td>
-<td>&#8220;20110731093522&#8221;</td>
+<td>“20110731093522”</td>
 </tr>
 <tr class="row-odd"><td>VERSION</td>
-<td>&#8220;4.56 &#8220;</td>
+<td>“4.56 “</td>
 </tr>
 <tr class="row-even"><td>SYSNAME</td>
-<td>&#8220;MVSPROD1&#8221;</td>
+<td>“MVSPROD1”</td>
 </tr>
 <tr class="row-odd"><td>SYSPLEX</td>
-<td>&#8220;PRODPLEX&#8221;</td>
+<td>“PRODPLEX”</td>
 </tr>
 <tr class="row-even"><td>COLS</td>
-<td>&#8220;80&#8221;</td>
+<td>“80”</td>
 </tr>
 <tr class="row-odd"><td>ROWS</td>
-<td>&#8220;24&#8221;</td>
+<td>“24”</td>
 </tr>
 <tr class="row-even"><td>DEPT</td>
-<td>&#8220;SYSPROG&#8221;</td>
+<td>“SYSPROG”</td>
 </tr>
 </tbody>
 </table>
@@ -6112,8 +6137,8 @@ COPY$ SYSTEM-TO-VARIABLE,                                      X
 </div></blockquote>
 </dd>
 </dl>
-<p>The COPY$ VALUE-TO-VARIABLE instruction allows the DUP (X&#8216;1C&#8217;) and FM (X&#8216;1E&#8217;) characters to be included in the value of a variable which can subsequently be referenced by the COPY$ VARIABLE-TO-SCREEN instruction.</p>
-<p>The following example shows the instructions required to place FIELD MARK (X&#8216;1E&#8217;) followed by W (X&#8217;E6&#8217;) at the cursor position and press ENTER:</p>
+<p>The COPY$ VALUE-TO-VARIABLE instruction allows the DUP (X‘1C’) and FM (X‘1E’) characters to be included in the value of a variable which can subsequently be referenced by the COPY$ VARIABLE-TO-SCREEN instruction.</p>
+<p>The following example shows the instructions required to place FIELD MARK (X‘1E’) followed by W (X’E6’) at the cursor position and press ENTER:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ VALUE-TO-VARIABLE,VAR=&#39;FIELDMARK-W&#39;,TYPE=REPLACE,                    *
         VALUE=X&#39;1EE6&#39;
 COPY$ VARIABLE-TO-SCREEN,VAR=&#39;FIELDMARK-W’
@@ -6129,7 +6154,7 @@ ACTION$ TO-APPLICATION,KEY=7D
 <dt>name2</dt>
 <dd>the name of a VIRTEL variable.</dd>
 <dt>row,col,len</dt>
-<dd>row, column, and length of the destination field on the screen. If the SCREEN parameter is not specified, the variable will be copied to the current cursor position. For row, col and len, a value of &#8216;=&#8217; means the value of the current row, col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</dd>
+<dd>row, column, and length of the destination field on the screen. If the SCREEN parameter is not specified, the variable will be copied to the current cursor position. For row, col and len, a value of ‘=’ means the value of the current row, col or len as set by <a class="reference internal" href="#v456ug-set-screen-position"><span class="std std-ref">“SET$ SCREEN-POSITION”</span></a>.</dd>
 <dt>type</dt>
 <dd><p class="first">(optional) may indicate one of the following values:</p>
 <blockquote class="last">
@@ -6159,7 +6184,7 @@ ACTION$ TO-APPLICATION,KEY=7D
 <dt>VALUE-OF</dt>
 <dd>A VIRTEL data item is to be updated. When VALUE-OF is specified, item represents the name of a VIRTEL data item. VALUE-OF is synonymous with NAME-OF.</dd>
 <dt>OLD-PASSTICKET-FOR-TRANSACTION</dt>
-<dd>Evaluates the Passticket currently in &#8216;varname&#8217; for the transaction &#8216;item&#8217;. If the evaluation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</dd>
+<dd>Evaluates the Passticket currently in ‘varname’ for the transaction ‘item’. If the evaluation fails, the NOT-FOUND condition will be raised. This condition can be tested by means of the <a class="reference internal" href="#v456ug-if"><span class="std std-ref">“IF$ instruction”</span></a>.</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -6218,7 +6243,7 @@ To validate the PassTicket for TSO</div></blockquote>
 <dt>type</dt>
 <dd>(optional) indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values.</dd>
 </dl>
-<p>The following example will display &#8216;Target value is : Doe____&#8217;</p>
+<p>The following example will display ‘Target value is : Doe____’</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ VALUE-TO-VARIABLE,VAR=&#39;source&#39;,VALUE=&#39;John Doe&#39;
 COPY$ VARIABLE-TO-VARIABLE,VAR=(&#39;source&#39;,&#39;target&#39;),OFFSET=5,                    X
         LENGTH=7,PAD=&#39;_&#39;
@@ -6250,7 +6275,7 @@ DEBUG$ SNAP[,TERMINAL],
 <dd>Generates a snapshot including terminal information (same as the command F VIRTEL,SNAP,T=termid where termid is the current terminal name).</dd>
 <dt>WHEN=ALWAYS</dt>
 <dd>The DEBUG$ instruction is executed unconditionally. This is the default.</dd>
-<dt>WHEN=(TRANSACTION-NAME-STARTS-WITH,&#8217;prefix&#8217;)</dt>
+<dt>WHEN=(TRANSACTION-NAME-STARTS-WITH,’prefix’)</dt>
 <dd>The DEBUG$ instruction is executed only if the external name of the transaction being used begins with the characters specified by the string prefix.</dd>
 </dl>
 </div>
@@ -6334,7 +6359,7 @@ DEBUG$ SNAP[,TERMINAL],
 <div class="highlight-default"><div class="highlight"><pre><span></span>DECLARE$ (20,02,06),AS-PARAMETER,&#39;PF12&#39;,TO=VClick
 </pre></div>
 </div>
-<p>Row 20 column 2 length 6 becomes a clickable field. It calls the JavaScript function VClick(&#8216;Vxxxxxxx&#8217;,&#8217;cccccc&#8217;,&#8217;PF12&#8217;) where Vxxxxxxx is an internally generated field name, cccccc is the contents of the field, and PF12 is a constant specified in the DECLARE$ instruction.</p>
+<p>Row 20 column 2 length 6 becomes a clickable field. It calls the JavaScript function VClick(‘Vxxxxxxx’,’cccccc’,’PF12’) where Vxxxxxxx is an internally generated field name, cccccc is the contents of the field, and PF12 is a constant specified in the DECLARE$ instruction.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>DECLARE$ (04,09,17),AS-HREF,&#39;&amp;&amp;hl=fr&#39;,                              X
     TO=&#39;http://www.google.com/search?q=&#39;
 </pre></div>
@@ -6343,7 +6368,7 @@ DEBUG$ SNAP[,TERMINAL],
 <div class="highlight-default"><div class="highlight"><pre><span></span>http//www.google.com/search?=ccc...ccc&amp;hl=fr
 </pre></div>
 </div>
-<p>(where ccc...ccc is replaced by the contents of the clickable field)</p>
+<p>(where ccc…ccc is replaced by the contents of the clickable field)</p>
 </div>
 <div class="section" id="endfor-instruction">
 <h4>1.18.16. ENDFOR$ instruction<a class="headerlink" href="#endfor-instruction" title="Permalink to this headline">¶</a></h4>
@@ -6359,14 +6384,14 @@ DEBUG$ SNAP[,TERMINAL],
 <div class="section" id="error-instruction">
 <h4>1.18.17. ERROR$ instruction<a class="headerlink" href="#error-instruction" title="Permalink to this headline">¶</a></h4>
 <p>This instruction returns an error code to the calling program. When this instruction is used, the return code in the
-HTTP response will be &#8220;400 Bad Request&#8221; instead of &#8220;200 Ok&#8221;.</p>
+HTTP response will be “400 Bad Request” instead of “200 Ok”.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>ERROR$ value [,&#39;string1&#39;,&#39;string2&#39;,...]
 </pre></div>
 </div>
 <dl class="docutils">
 <dt>value</dt>
 <dd>Specifies the error code (decimal 0 to 255). If the error code is non-zero, a message is issued to the console and the scenario returns the error code to the calling program. If the error code is zero, a message is issued to the console and the scenario continues.</dd>
-<dt>&#8216;string1&#8217; [,&#8217;string2&#8217;, …]</dt>
+<dt>‘string1’ [,’string2’, …]</dt>
 <dd>(optional) one or more strings of text to be concatenated together and displayed as a message on the console. If a string begins with an asterisk it represents the name of a VIRTEL variable whose contents is to be included in the message. The number of quoted strings is not limited, but the message itself cannot be larger than 252 characters.</dd>
 </dl>
 </div>
@@ -6486,7 +6511,7 @@ FROM=&#39;varname1&#39;,TO=&#39;varname2&#39;,
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For row, col,len and ht, a value of &#8216;=&#8217; means the value of the current row, col, len or height</p>
+<p class="last">For row, col,len and ht, a value of ‘=’ means the value of the current row, col, len or height</p>
 </div>
 <p id="v456ug-foreach-variable"><strong>1.18.20.2. FOREACH$ VALUE-IN-VARIABLE instruction</strong></p>
 <p>The FOREACH$ VALUE-IN-VARIABLE instruction marks the start of a loop on a table variable. Nested pairs of FOREACH$
@@ -6740,12 +6765,12 @@ parameters described below, the 12-byte value thus produced can subsequently be 
 </dl>
 </dd>
 <dt>pattern,char</dt>
-<dd>Specifies an editing pattern to be applied when the field is processed during commarea-to-output conversion. Character positions in pattern which contain char represent variable characters to be obtained from the field in the commarea, other characters in pattern represent constants. For example, if FORMAT=(&#8216;9999-99-99&#8217;,9) is specified and the commarea field contains 20060621 then a result value of
+<dd>Specifies an editing pattern to be applied when the field is processed during commarea-to-output conversion. Character positions in pattern which contain char represent variable characters to be obtained from the field in the commarea, other characters in pattern represent constants. For example, if FORMAT=(‘9999-99-99’,9) is specified and the commarea field contains 20060621 then a result value of
 2006-06-21 will be generated.</dd>
 </dl>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">XML tag names are case sensitive. WITH=&#8217;Title&#8217; is not the same as WITH=&#8217;TITLE&#8217; A variation of the MAP$ AREA instruction allows the value of the field to be copied into a VIRTEL variable, in addition to being placed in the commarea. The variable will be created, if necessary, and its value will be set when the commarea is created by a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction. The value can then be tested by means of an IF$ VARIABLE instruction (see <a class="reference internal" href="#v456ug-virtel-scenarios"><span class="std std-ref">“Examples of VIRTEL Scenarios”</span></a>):</p>
+<p class="last">XML tag names are case sensitive. WITH=’Title’ is not the same as WITH=’TITLE’ A variation of the MAP$ AREA instruction allows the value of the field to be copied into a VIRTEL variable, in addition to being placed in the commarea. The variable will be created, if necessary, and its value will be set when the commarea is created by a subsequent MAP$ FROM-FIELD, MAP$ FROM-INPUT, or MAP$ FROM-VARIABLE instruction. The value can then be tested by means of an IF$ VARIABLE instruction (see <a class="reference internal" href="#v456ug-virtel-scenarios"><span class="std std-ref">“Examples of VIRTEL Scenarios”</span></a>):</p>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span>MAP$ AREA,TO-VARIABLE,VAR=&#39;varname&#39;,
     WITH=&#39;name&#39;,LENGTH=nnn,TYPE=type
@@ -6790,7 +6815,7 @@ are copied exactly from the input data.</p>
 <dt>varname</dt>
 <dd>The name of the VIRTEL variable to which the field value is to be copied. The variable name must be placed in quotes.</dd>
 </dl>
-<p>If the variable already exists, the new value will be appended to any existing values. The WITH, LENGTH and TYPE parameters are as previously described. For convenience, if the variable name is the same as the value of the WITH parameter, the variable name may be specified as VAR=&#8217;=WITH&#8217; or VAR==WITH.</p>
+<p>If the variable already exists, the new value will be appended to any existing values. The WITH, LENGTH and TYPE parameters are as previously described. For convenience, if the variable name is the same as the value of the WITH parameter, the variable name may be specified as VAR=’=WITH’ or VAR==WITH.</p>
 <p>The FROM-LAST-ELEMENT-FOUND-NAME keyword of the MAP$ AREA instruction copies into the output commarea the name of the last XML element found in the input stream. This may be used in conjunction with the NEXT-ELEMENT keyword of the MAP$ BEGIN instruction.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>MAP$ AREA,FROM-LAST-FOUND-ELEMENT-NAME,
     LENGTH=nnn,TYPE=X
@@ -7066,7 +7091,7 @@ QUERY: specifies that the input data is in Query format</p>
 <dt>varname</dt>
 <dd>The name of the VIRTEL variable into which the commarea is to be copied.</dd>
 </dl>
-<p>MAP$ COPY,VAR=&#8217;varname&#8217; is equivalent to MAP$ TO-VARIABLE,VAR=&#8217;varname&#8217;</p>
+<p>MAP$ COPY,VAR=’varname’ is equivalent to MAP$ TO-VARIABLE,VAR=’varname’</p>
 </div>
 <div class="section" id="option-instruction">
 <span id="v456ug-option"></span><h4>1.18.27. OPTION$ instruction<a class="headerlink" href="#option-instruction" title="Permalink to this headline">¶</a></h4>
@@ -7125,7 +7150,7 @@ variable. The scenario must send the command to the TSO session to initiate the 
 </div>
 <dl class="docutils">
 <dt>options</dt>
-<dd>optional parameters (for example, &#8216;ASCII CRLF&#8217;) to be appended to the IND$FILE command line (see note 1 below).</dd>
+<dd>optional parameters (for example, ‘ASCII CRLF’) to be appended to the IND$FILE command line (see note 1 below).</dd>
 <dt>dsname</dt>
 <dd>(required) the TSO dataset name to be downloaded (see notes 1 and 2 below).</dd>
 <dt>outvar</dt>
@@ -7146,7 +7171,7 @@ variable. The scenario must send the command to the TSO session to initiate the 
 </div>
 <dl class="docutils">
 <dt>options</dt>
-<dd>optional parameters (for example, &#8216;ASCII CRLF NEW&#8217;) to be appended to the IND$FILE command line (see note 1 below).</dd>
+<dd>optional parameters (for example, ‘ASCII CRLF NEW’) to be appended to the IND$FILE command line (see note 1 below).</dd>
 <dt>dsname</dt>
 <dd>(required) the destination TSO dataset name (see notes 1 and 2 below).</dd>
 <dt>invar</dt>
@@ -7159,7 +7184,7 @@ variable. The scenario must send the command to the TSO session to initiate the 
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>1: If the field begins with “*” then it is treated as the name of a variable.</p>
-<p class="last">2: TSO will prefix the dataset name by your prefix (usually your userid) unless the dataset name is enclosed in quotes. If you specify the dataset name as a literal in the instruction (as opposed to indirectly as the value of a variable) then triple quotes must be used, for example: (FROM,&#8217;&#8216;&#8217;SYS1.PARMLIB(IEASYS00)&#8217;&#8216;&#8217;)</p>
+<p class="last">2: TSO will prefix the dataset name by your prefix (usually your userid) unless the dataset name is enclosed in quotes. If you specify the dataset name as a literal in the instruction (as opposed to indirectly as the value of a variable) then triple quotes must be used, for example: (FROM,’‘’SYS1.PARMLIB(IEASYS00)’‘’)</p>
 </div>
 <p><strong>1.18.27.3. Examples:</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>OPTION$ FOR-IND$FILE-DOWNLOAD,                            *
@@ -7173,7 +7198,7 @@ variable. The scenario must send the command to the TSO session to initiate the 
 <p>In this example, the VIRTEL variable OPT contains the IND$FILE optional parameters and DSN contains the dataset
 name. On completion of the instruction, FTCOMMAND contains the IND$FILE command to be sent to TSO. When the
 file transfer completes, the VIRTEL variable DOWNLOAD contains the contents of the downloaded file, and RETURNCODE
-contains the IND$FILE completion message &#8220;TRANS03 File transfer complete&#8221; or an error message.</p>
+contains the IND$FILE completion message “TRANS03 File transfer complete” or an error message.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>OPTION$ FOR-IND$FILE-UPLOAD,                              *
 (METHOD,&#39;*OPT&#39;),                    &quot;ASCII CRLF&quot; or null  *
 (TO,&#39;*DSN&#39;),                             TSO dataset name *
@@ -7185,7 +7210,7 @@ TOVAR=&#39;FTCOMMAND&#39;
 <p>In this example, the VIRTEL variable OPT contains the IND$FILE optional parameters and DSN contains the dataset
 name. On completion of the instruction, FTCOMMAND contains the IND$FILE command to be sent to TSO. When the
 file transfer is initiated, VIRTEL sends the contents of the variable UPLOAD to IND$FILE. When the file transfer
-completes, RETURN-CODE contains the IND$FILE completion message &#8220;TRANS03 File transfer complete&#8221; or an error
+completes, RETURN-CODE contains the IND$FILE completion message “TRANS03 File transfer complete” or an error
 message.</p>
 <p><strong>1.18.27.4. OPTION$ FOR-MQ</strong></p>
 <p>Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line type is MQ.</p>
@@ -7252,15 +7277,15 @@ OPTION$ FOR-QUICKLNK,
 <dt>terminal</dt>
 <dd>(optional) the name of a CICS terminal.</dd>
 <dt>channel</dt>
-<dd>name (1–16 characters) of the channel that owns the container (see Note). Mandatory if METHOD is &#8216;CALL-CONTAINER&#8217; or &#8216;CALL-CONTAINER-LIST&#8217;.</dd>
+<dd>name (1–16 characters) of the channel that owns the container (see Note). Mandatory if METHOD is ‘CALL-CONTAINER’ or ‘CALL-CONTAINER-LIST’.</dd>
 <dt>contIn</dt>
-<dd>the name of the VIRTEL variable which contains the input data as a containers list (see Note). Mandatory if METHOD is &#8216;CALL-CONTAINER-LIST&#8217;, invalid otherwise.</dd>
+<dd>the name of the VIRTEL variable which contains the input data as a containers list (see Note). Mandatory if METHOD is ‘CALL-CONTAINER-LIST’, invalid otherwise.</dd>
 <dt>contOut</dt>
-<dd>the name of the VIRTEL variable which will receive the output data as a containers list (see Note). Mandatory if METHOD is &#8216;CALL-CONTAINER-LIST&#8217;, invalid otherwise.</dd>
+<dd>the name of the VIRTEL variable which will receive the output data as a containers list (see Note). Mandatory if METHOD is ‘CALL-CONTAINER-LIST’, invalid otherwise.</dd>
 <dt>fileIn</dt>
-<dd>the name of the VIRTEL variable which contains the input data (COMMAREA or container) (see Note). Mandatory if METHOD is &#8216;CALL&#8217; or &#8216;CALL-CONTAINER&#8217;, invalid otherwise.</dd>
+<dd>the name of the VIRTEL variable which contains the input data (COMMAREA or container) (see Note). Mandatory if METHOD is ‘CALL’ or ‘CALL-CONTAINER’, invalid otherwise.</dd>
 <dt>fileOut</dt>
-<dd>the name of the VIRTEL variable which will receive the output data (COMMAREA or container) (see Note). Mandatory if METHOD is &#8216;CALL&#8217; or &#8216;CALL-CONTAINER&#8217;, invalid otherwise.</dd>
+<dd>the name of the VIRTEL variable which will receive the output data (COMMAREA or container) (see Note). Mandatory if METHOD is ‘CALL’ or ‘CALL-CONTAINER’, invalid otherwise.</dd>
 <dt>retCode</dt>
 <dd>(Mandatory) the name of the VIRTEL variable which will receive the service return code.</dd>
 <dt>retCics1</dt>
@@ -7455,7 +7480,7 @@ POP$ VAR=&#39;varname&#39;
 <dt>varname</dt>
 <dd>the name of the VIRTEL variable.</dd>
 </dl>
-<p>POP$ VAR=&#8217;varname&#8217; is equivalent to POP$ FIRST-VALUE-OF,VAR=&#8217;varname&#8217;</p>
+<p>POP$ VAR=’varname’ is equivalent to POP$ FIRST-VALUE-OF,VAR=’varname’</p>
 </div>
 <div class="section" id="return-instruction">
 <h4>1.18.28. RETURN$ instruction<a class="headerlink" href="#return-instruction" title="Permalink to this headline">¶</a></h4>
@@ -7502,9 +7527,9 @@ displays a “Save As” dialog box instead of attempting to display the file in
 <dt>varname</dt>
 <dd>the name of the VIRTEL variable which contains the file.</dd>
 <dt>filetype</dt>
-<dd>the file type to be sent in the Content-Type HTTP header. This parameter may be specified as a literal, or as &#8216;*varname&#8217; where varname is the name of a VIRTEL variable whose value is the filetype. Examples of typical file types are application/pdf, application/x-tar</dd>
+<dd>the file type to be sent in the Content-Type HTTP header. This parameter may be specified as a literal, or as ‘*varname’ where varname is the name of a VIRTEL variable whose value is the filetype. Examples of typical file types are application/pdf, application/x-tar</dd>
 <dt>filename</dt>
-<dd>the file name to be included in the Content-Disposition HTTP header. This parameter may be specified as a literal, or as &#8216;*varname&#8217; where varname is the name of a VIRTEL variable whose value is the filename.</dd>
+<dd>the file name to be included in the Content-Disposition HTTP header. This parameter may be specified as a literal, or as ‘*varname’ where varname is the name of a VIRTEL variable whose value is the filename.</dd>
 </dl>
 <p><strong>1.18.29.3. SEND$ TO</strong></p>
 <p>Sends an outbound message to a VIRTEL line. The name of the destination line is specified indirectly through a VIRTEL transaction. The SEND$ TO instruction must be preceded by an <a class="reference internal" href="#v456ug-option"><span class="std std-ref">“OPTION$”</span></a> instruction which sets up the parameters for the outbound message according to the line type.</p>
@@ -7647,7 +7672,7 @@ SET$ PAGE-FROM-VARIABLE,&#39;MYSCREEN&#39;,&#39;.html&#39;
 </dd>
 </dl>
 <p id="v456ug-set-screen-position"><strong>1.18.30.5. SET$ SCREEN-POSITION</strong></p>
-<p>The SET$ SCREEN-POSITION instruction allows a scenario to specify a rectangular screen area and loop on it letting VIRTEL handle the current line (column, length) value, referenced by the equal sign (&#8216;=&#8217;).</p>
+<p>The SET$ SCREEN-POSITION instruction allows a scenario to specify a rectangular screen area and loop on it letting VIRTEL handle the current line (column, length) value, referenced by the equal sign (‘=’).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SET$ SCREEN-POSITION,(row,col,len,ht),
 SET$ SCREEN-POSITION,TO-NEXT-LINE
 </pre></div>
@@ -7677,7 +7702,7 @@ SET$ SCREEN-POSITION,TO-NEXT-LINE
 <dt>newpassword</dt>
 <dd>The new password, if the user’s current password is to be changed.</dd>
 <dt>retvar</dt>
-<dd>The name of a VIRTEL variable into which the security manager return code will be stored. The return code is stored as a decimal string (for example, &#8216;0&#8217;).</dd>
+<dd>The name of a VIRTEL variable into which the security manager return code will be stored. The return code is stored as a decimal string (for example, ‘0’).</dd>
 </dl>
 <p>The user name and password fields may be specified as a string constant (not recommended), or as the name of a VIRTEL variable preceded by an asterisk. The retvar variable name is not preceded by an asterisk.</p>
 <p><strong>1.18.30.7. SET$ TEMPORARY-PAGE</strong></p>
@@ -7708,7 +7733,7 @@ SET$ URL-ENCODING,ISO-FOR-COUNTRY
 of a session, where no page has yet been sent to the user. If the encoding is not set by a scenario, VIRTEL assumes that
 the first URL of a session is encoded using the ISO encoding for the default country.</p>
 <p><strong>1.18.30.10. SET$ Example:</strong></p>
-<p>Loop on the screen from line 11 to 20, looking for a given reference. When found, enter &#8216;X&#8217; on colum 4 and key Enter</p>
+<p>Loop on the screen from line 11 to 20, looking for a given reference. When found, enter ‘X’ on colum 4 and key Enter</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>            SET$ SCREEN-POSITION,(11,01,80,10)
 *
 LOOP_FORM   EQU *
@@ -7846,17 +7871,17 @@ the parameter type, these fullwords may contain a binary value, an address, or a
 The address of the request input area is passed to the service program in the LIST-ADR-REQU field of the LIST-POINTER
 structure built by the CALL VSVPSYNC routine.</p>
 <dl class="docutils">
-<dt>(NUMBER,&#8217;n&#8217;)</dt>
+<dt>(NUMBER,’n’)</dt>
 <dd>Indicates a parameter passed to the service program. n is a decimal number whose value is converted to a 32-bit binary integer and stored in the request input area. The number n must be placed in quotes.</dd>
-<dt>(POINTER-TO-NUMBER,&#8217;n&#8217;)</dt>
+<dt>(POINTER-TO-NUMBER,’n’)</dt>
 <dd>Indicates a parameter passed to the service program. n is a decimal number whose value is converted to a 32-bit binary integer. A fullword containing the address of this 32-bit value is stored in the request input area. The number n must be placed in quotes.</dd>
-<dt>(STRINGZ,&#8217;cc..cc&#8217;)</dt>
-<dd>Indicates a parameter passed to the service program. A terminating character (X&#8216;00&#8217;) is appended to the character string cc..cc, and a fullword containing the address of the string is stored in the request input area. The string must be placed in quotes.</dd>
-<dt>(STRINGZ-FROM-VARIABLE,&#8217;varname&#8217;)</dt>
-<dd>Indicates a parameter passed to the service program. The value of the VIRTEL variable varname is copied to a character string and a terminating character (X&#8216;00&#8217;) is appended. A fullword containing the address of this nullterminated string is stored in the request input area. The variable name must be placed in quotes.</dd>
-<dt>(IN-VARIABLE,&#8217;varname&#8217;,len)</dt>
-<dd>Indicates a parameter passed to the service program. Two fullwords are stored in the request input area: the first contains the address of the value of the VIRTEL variable varname and the second contains the address of a fullword containing the length of this value. The len parameter is ignored unless it contains the special value *n (see below). The variable name must be placed in quotes. For a scenario which processes an inbound request on an MQ line, the special variable name &#8216;$INFILE$&#8217; denotes the contents of the input request.</dd>
-<dt>(OUT-VARIABLE,&#8217;varname&#8217;,len)</dt>
+<dt>(STRINGZ,’cc..cc’)</dt>
+<dd>Indicates a parameter passed to the service program. A terminating character (X‘00’) is appended to the character string cc..cc, and a fullword containing the address of the string is stored in the request input area. The string must be placed in quotes.</dd>
+<dt>(STRINGZ-FROM-VARIABLE,’varname’)</dt>
+<dd>Indicates a parameter passed to the service program. The value of the VIRTEL variable varname is copied to a character string and a terminating character (X‘00’) is appended. A fullword containing the address of this nullterminated string is stored in the request input area. The variable name must be placed in quotes.</dd>
+<dt>(IN-VARIABLE,’varname’,len)</dt>
+<dd>Indicates a parameter passed to the service program. Two fullwords are stored in the request input area: the first contains the address of the value of the VIRTEL variable varname and the second contains the address of a fullword containing the length of this value. The len parameter is ignored unless it contains the special value *n (see below). The variable name must be placed in quotes. For a scenario which processes an inbound request on an MQ line, the special variable name ‘$INFILE$’ denotes the contents of the input request.</dd>
+<dt>(OUT-VARIABLE,’varname’,len)</dt>
 <dd>Indicates an output parameter returned by the service program. VIRTEL allocates a buffer of length len and stores two fullwords in the request input area: the first contains the address of the buffer and the second contains the address of a fullword which contains the buffer length. The service program places the output value in the buffer and updates the length fullword. VIRTEL copies the contents of the buffer into the VIRTEL variable varname after the service program returns. The len parameter contains the desired buffer length (nn, nnK, or nnM), or the special value *n (see below). The variable name must be placed in quotes.</dd>
 </dl>
 <p><strong>1.18.32.1. Allocating variable length output buffers</strong></p>
@@ -8088,7 +8113,7 @@ END
 <p><strong>1.19.4.1. SUGGEST$ instruction</strong></p>
 <p>The parameters of the SUGGEST$ macro instruction are as follows:</p>
 <dl class="docutils">
-<dt>TRAN=&#8217;name&#8217;</dt>
+<dt>TRAN=’name’</dt>
 <dd><p class="first">the name of the VIRTEL transaction which provides the link to the data source for the field. The following transactions are supplied as standard in the VIRTEL entry point WEB2HOST:</p>
 <blockquote class="last">
 <div><dl class="docutils">
@@ -8101,9 +8126,9 @@ END
 </dl>
 </div></blockquote>
 </dd>
-<dt>TABLE=&#8217;name&#8217;</dt>
+<dt>TABLE=’name’</dt>
 <dd>the name of the DB2 table, or the name of the FLECS application</dd>
-<dt>FIELD=&#8217;name&#8217;</dt>
+<dt>FIELD=’name’</dt>
 <dd>the name of the DB2 column, or the name of the FLECS field</dd>
 <dt>SCREEN=(row,col)</dt>
 <dd>the screen position (row, column) of the field on the 3270 screen</dd>
@@ -8246,7 +8271,7 @@ The extract below shows the necessary statements which are included in the VIRTE
 </div>
 <p><em>HTML page template for 3270 auto-refresh</em></p>
 <p>This page supplies a default value which takes effect if no AUTOREFRESH variable is specified by the scenario. The
-default value is set to &#8216;1.2,10&#8217; which means that a refresh will occur immediately after each screen is loaded, another
+default value is set to ‘1.2,10’ which means that a refresh will occur immediately after each screen is loaded, another
 refresh will occur 1.2 seconds later, then at intervals of 2.4 seconds, 4.8 seconds, and 9.6 seconds, and finally a refresh
 will occur every 10 seconds thereafter.</p>
 <p>The autorefresh function may be disabled by specifying SCENAUTN in the “Output scenario” field of the VIRTEL
@@ -8331,26 +8356,26 @@ DEFINEOVERLAY FORM3 FILE=OVERLAY3
 </div>
 <p><em>MakePDF DOCOPT.TXT file for PDF generation</em></p>
 <blockquote>
-<div>&lt;!&#8211;VIRTEL start=&#8221;{{{&#8221; end=&#8221;}}}&#8221; &#8211;&gt;
-{{{PDF-NEW-LAYOUT &#8220;1&#8221;}}}
+<div>&lt;!–VIRTEL start=”{{{” end=”}}}” –&gt;
+{{{PDF-NEW-LAYOUT “1”}}}
 APPLYOVERLAY FORM1
-AT (3.0&#8217; 18.0&#8217;)
+AT (3.0’ 18.0’)
 TEXTBEGIN
 Font Font1 size(8 9)
 PAGECONTENTS LINES(ALL)
 TEXTEND
 ;
-{{{PDF-NEW-LAYOUT &#8220;2&#8221;}}}
+{{{PDF-NEW-LAYOUT “2”}}}
 APPLYOVERLAY FORM2
-AT (3.0&#8217; 18.0&#8217;)
+AT (3.0’ 18.0’)
 TEXTBEGIN
 Font Font2 size(8 9)
 PAGECONTENTS LINES(ALL)
 TEXTEND
 ;
-{{{PDF-NEW-LAYOUT &#8220;3&#8221;}}}
+{{{PDF-NEW-LAYOUT “3”}}}
 APPLYOVERLAY FORM3
-AT (3.0&#8217; 18.0&#8217;)
+AT (3.0’ 18.0’)
 TEXTBEGIN
 Font Font3 size(8 9)
 PAGECONTENTS LINES(ALL)
@@ -8571,7 +8596,7 @@ Accept: */*
 <p><em>XML input data in URL-encoded format (HTTP POST method)</em></p>
 <p>Both of these request formats can be processed by a presentation module similar to the SCENXMLI module shown
 previously. The only change necessary to process URL-encoded data is that the statement OUTAREA MAP$ FROMINPUT
-must be replaced by the statement OUTAREA MAP$ FROM-FIELD,FIELD=&#8217;MYINPUT&#8217;</p>
+must be replaced by the statement OUTAREA MAP$ FROM-FIELD,FIELD=’MYINPUT’</p>
 <p>1.20.3.5. Transaction definition for XML input data</p>
 <p>The HTTP requests shown above use the URL /demohttp/xmldemo.xml+tran3 to invoke the VIRTEL transaction shown
 below (tran3 is the “external name” of the transaction). The “TIOA at logon” field contains a connection script. After
@@ -8819,7 +8844,7 @@ detailed examples which follow.</p>
 <p>A client program running under CICS on MVS can use VIRKIX to establish the HTTP connection, send the request, and
 receive the response. The client program may send the request in either ASCII or EBCDIC; both formats are recognized
 and supported by VIRTEL. Notice the use of the special header GIVE-LENGTH-PREFIX which requests VIRTEL to add a
-4-byte length prefix to the HTTP response, to conform with the format expected by VIRKIX CALL type &#8216;M&#8217;.</p>
+4-byte length prefix to the HTTP response, to conform with the format expected by VIRKIX CALL type ‘M’.</p>
 <p><strong>1.20.5.2. Example MAP$ statements</strong></p>
 <p>The copy member SCONVMAP shown below contains the MAP$ statements common to both examples presented in
 this section. This member is copied into each of the scenarios SCONVXML and SCONVPLA by means of an assembler
@@ -9067,7 +9092,7 @@ SAMPLIB. The start of the MAPGJCL job is shown below:</p>
 <dd>Member name of the input copybook in the COPYLIB library</dd>
 <dt>STYLE=APOST|QUOTE</dt>
 <dd>STYLE specifies whether the copybook uses single or double quotation marks to delimit strings. APOST (single quotation marks) is the default.</dd>
-<dt>PREFIX=&#8217;prefix&#8217;</dt>
+<dt>PREFIX=’prefix’</dt>
 <dd>(optional) If specified, the prefix will be removed from the field names in the copybook</dd>
 <dt>CASE=LOWER|UPPER</dt>
 <dd>(optional) If specified, all field names in the copybook will be converted to LOWER or UPPER case. If not specified, the case will be preserved.</dd>
@@ -9079,8 +9104,8 @@ SAMPLIB. The start of the MAPGJCL job is shown below:</p>
 <dd>Input form-fields are encoded in UTF-8 format</dd>
 <dt>ISO</dt>
 <dd>Input form-fields are encoded in non-UTF-8 format</dd>
-<dt>&#8216;ENC=fieldname&#8217;</dt>
-<dd>The contents of the URL form-field named fieldname are queried to obtain the encoding value (UTF-8 or ISO). This allows the client to dynamically specify the encoding method by means of a URL parameter. If CODE is not specified, or if CODE=&#8217;ENC=fieldname&#8217; is specified and the URL does not contain the parameter fieldname=UTF-8 or fieldname=ISO, then the VIRTEL default encoding (ISO) is assumed.</dd>
+<dt>‘ENC=fieldname’</dt>
+<dd>The contents of the URL form-field named fieldname are queried to obtain the encoding value (UTF-8 or ISO). This allows the client to dynamically specify the encoding method by means of a URL parameter. If CODE is not specified, or if CODE=’ENC=fieldname’ is specified and the URL does not contain the parameter fieldname=UTF-8 or fieldname=ISO, then the VIRTEL default encoding (ISO) is assumed.</dd>
 </dl>
 </div></blockquote>
 </dd>
@@ -9092,27 +9117,27 @@ SAMPLIB. The start of the MAPGJCL job is shown below:</p>
 <dd>Generates an INITIAL scenario which accepts input data encoded as HTML form-fields, and produces an output commarea. The generated scenario contains a <a class="reference internal" href="#v456ug-map-from-input"><span class="std std-ref">“MAP$ FROM-INPUT”</span></a>, QUERY instruction.</dd>
 <dt>XML</dt>
 <dd>Generates an INITIAL scenario which accepts XML input data in the body of an HTTP request, and produces an output commarea. The generated scenario contains a <a class="reference internal" href="#v456ug-map-from-input"><span class="std std-ref">“MAP$ FROM-INPUT”</span></a>, XML instruction.</dd>
-<dt>&#8216;XML=fieldname&#8217;</dt>
+<dt>‘XML=fieldname’</dt>
 <dd>Generates an INITIAL scenario which accepts XML input encoded within an HTML form-field named fieldname, and produces an output commarea. The generated scenario contains a <a class="reference internal" href="#v456ug-map-from-field"><span class="std std-ref">“MAP$ FROM-FIELD”</span></a> instruction with the parameter FIELD=fieldname.</dd>
 <dt>COM</dt>
 <dd><p class="first">When VAR is not specified: Generates an INITIAL scenario which accepts an input commarea in the body of an HTTP request, and produces a set of VIRTEL variables whose names correspond to the fields in the copybook. The generated scenario contains a <a class="reference internal" href="#v456ug-tovar-from-input"><span class="std std-ref">“TOVAR$ FROM-INPUT”</span></a> instruction.</p>
 <p class="last">When VAR is specified: Generates an OUTPUT scenario which accepts an input commarea contained in the VIRTEL variable named by the VAR parameter, and produces a set of VIRTEL variables whose names correspond to the fields in the copybook. The generated scenario contains a <a class="reference internal" href="#v456ug-map-from-variable"><span class="std std-ref">“MAP$ FROM-VARIABLE”</span></a> instruction.</p>
 </dd>
-<dt>&#8216;COM=fieldname&#8217;</dt>
+<dt>‘COM=fieldname’</dt>
 <dd>Generates an INITIAL scenario which accepts an input commarea encoded within an HTML form-field named fieldname, and produces a set of VIRTEL variables whose names correspond to the fields in the copybook. The generated scenario contains a <a class="reference internal" href="#v456ug-map-from-field"><span class="std std-ref">“MAP$ FROM-FIELD”</span></a> instruction with the parameter FIELD=fieldname.</dd>
 </dl>
 </div></blockquote>
 </dd>
 <dt>VAR=commareaname</dt>
 <dd><dl class="first last docutils">
-<dt>For FORMAT=QUERY, FORMAT=XML, FORMAT=&#8217;XML=fieldname&#8217;</dt>
+<dt>For FORMAT=QUERY, FORMAT=XML, FORMAT=’XML=fieldname’</dt>
 <dd>Specifies the name of the VIRTEL variable into which the output commarea is written. If not specified, the default is VAR=AREA</dd>
 <dt>For FORMAT=COM</dt>
 <dd>Optionally specifies the name of the VIRTEL variable which contains the input commarea</dd>
 </dl>
 </dd>
 <dt>XMLGEN=YES|NO</dt>
-<dd>Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT=&#8217;COM=fieldname&#8217; is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see <a class="reference internal" href="#v456ug-http-uploading-pages"><span class="std std-ref">“Uploading pages by HTTP”</span></a>).</dd>
+<dd>Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT=’COM=fieldname’ is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see <a class="reference internal" href="#v456ug-http-uploading-pages"><span class="std std-ref">“Uploading pages by HTTP”</span></a>).</dd>
 </dl>
 </div>
 </div>
@@ -9679,9 +9704,9 @@ VIRTEL version 4.28 onwards)</li>
 <div><p>In addition to sending normal screen display data, a 3270
 application may also send data in specially formatted fields known
 as “structured fields”. Structured fields are sent using a special
-3270 command “Write Structured Field” (code X&#8217;F3&#8217;). Each structured
+3270 command “Write Structured Field” (code X’F3’). Each structured
 field contains a 2-byte identification code. VIRTEL intercepts
-structured fields whose code begins with X&#8217;FA&#8217;. By sending
+structured fields whose code begins with X’FA’. By sending
 structured fields to VIRTEL on the 3270 session, the VIRTEL Web
 Integration application can direct VIRTEL to perform certain
 functions.</p>
@@ -9708,15 +9733,15 @@ As a general rule, the format of a structured field is as shown below:</p>
 fields, thus nnnn is always 4 more than the length of the data.</dd>
 <dt>cccc</dt>
 <dd>the identification code</dd>
-<dt>dd....dd</dt>
+<dt>dd….dd</dt>
 <dd>the data.</dd>
 </dl>
 <div class="section" id="sending-structured-fields-via-the-write-structured-field-command">
 <h4>3.2.2. Sending structured fields via the Write Structured Field command<a class="headerlink" href="#sending-structured-fields-via-the-write-structured-field-command" title="Permalink to this headline">¶</a></h4>
-<p>VIRTEL recognizes that a message contains structured fields whenever the application uses the 3270 command X&#8217;F3&#8217;
+<p>VIRTEL recognizes that a message contains structured fields whenever the application uses the 3270 command X’F3’
 (Write Structured Field) to send the message to the terminal.
 For CICS applications, the STRFIELD option of the EXEC CICS SEND command requests CICS to send the message using
-command code X&#8217;F3&#8217;:</p>
+command code X’F3’:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EXEC</span> <span class="n">CICS</span> <span class="n">SEND</span> <span class="n">FROM</span><span class="p">(</span><span class="n">DATA1</span><span class="p">)</span>
     <span class="n">LENGTH</span><span class="p">(</span><span class="n">LENGTH</span> <span class="n">OF</span> <span class="n">DATA1</span><span class="p">)</span>
     <span class="n">STRFIELD</span>
@@ -9729,17 +9754,17 @@ message exit).</p>
 </div>
 <div class="section" id="sending-structured-fields-using-the-srtvirtel-prefix">
 <h4>3.2.3. Sending structured fields using the SRTVIRTEL prefix<a class="headerlink" href="#sending-structured-fields-using-the-srtvirtel-prefix" title="Permalink to this headline">¶</a></h4>
-<p>If the application monitor does not support the X&#8217;F3&#8217; (Write Structured Field) command for sending structured fields
+<p>If the application monitor does not support the X’F3’ (Write Structured Field) command for sending structured fields
 (for example, IMS), VIRTEL provides an alternative method for processing structured field data. If the 3270 message
 begins with the special header:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">X</span><span class="s1">&#39;1140401D40&#39;</span><span class="p">,</span><span class="n">C</span><span class="s1">&#39;SRTVIRTEL&#39;</span><span class="p">,</span><span class="n">X</span><span class="s1">&#39;11404B&#39;</span>
 </pre></div>
 </div>
 <p>then VIRTEL treats the remainder of the message as structured fields.
-The SRTVIRTEL header is built by the application, and the application monitor adds 3270 command byte X&#8217;F1&#8217; (Write),
-X&#8217;F5&#8217; (Erase/Write), or X&#8216;7E&#8217; (Erase/Write Alternate), followed by an appropriate WCC (Write Control Character).
+The SRTVIRTEL header is built by the application, and the application monitor adds 3270 command byte X’F1’ (Write),
+X’F5’ (Erase/Write), or X‘7E’ (Erase/Write Alternate), followed by an appropriate WCC (Write Control Character).
 For example,</p>
-<p>F1 C3 1140401D40 C&#8217;SRTVIRTEL&#8217; 11404B 0016 FAE5 08 08 E3D9F0F0F0F0F0F1 818683A796A34040</p>
+<p>F1 C3 1140401D40 C’SRTVIRTEL’ 11404B 0016 FAE5 08 08 E3D9F0F0F0F0F0F1 818683A796A34040</p>
 <p>is processed identically to:</p>
 <p>F3 0016 FAE5 08 08 E3D9F0F0F0F0F0F1 818683A796A34040</p>
 </div>
@@ -10126,7 +10151,7 @@ create a VIRTEL table variable containing values of varying lengths, use CALL VI
 <ol class="arabic simple">
 <li>DFHEIBLK</li>
 <li>DFHCOMMAREA</li>
-<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X&#8216;00&#8217;)</li>
+<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X‘00’)</li>
 <li>An array of elements each containing one data item</li>
 <li>Element size (signed halfword) contains the length of each element of the array</li>
 <li>Count (signed halfword) contains the number of elements in the array</li>
@@ -10160,7 +10185,7 @@ create a VIRTEL table variable containing values of varying lengths, use CALL VI
 The following abend codes may be issued by VIRSETA:</p>
 <dl class="docutils">
 <dt>VSA1</dt>
-<dd>Length of variable name is outside the range 1-255, or the required terminator (blank or X&#8216;00&#8217;) is missing</dd>
+<dd>Length of variable name is outside the range 1-255, or the required terminator (blank or X‘00’) is missing</dd>
 <dt>VSA2</dt>
 <dd>Data length is less than 1, or exceeds the element length.</dd>
 <dt>VSA3</dt>
@@ -10181,7 +10206,7 @@ variable and adds the first value to it. Subsequent calls add additional values 
 <ol class="arabic simple">
 <li>DFHEIBLK</li>
 <li>DFHCOMMAREA</li>
-<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X&#8216;00&#8217;)</li>
+<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X‘00’)</li>
 <li>Value (variable length)</li>
 <li>Length (signed halfword field containing length of value)</li>
 </ol>
@@ -10204,7 +10229,7 @@ variable and adds the first value to it. Subsequent calls add additional values 
 The following abend codes may be issued by VIRSETV:</p>
 <dl class="docutils">
 <dt>VSV1</dt>
-<dd>Length of variable name is outside the range 1-255, or the required terminator (blank or X&#8216;00&#8217;) is missing</dd>
+<dd>Length of variable name is outside the range 1-255, or the required terminator (blank or X‘00’) is missing</dd>
 <dt>VSV2</dt>
 <dd>Length of value is negative or exceeds the maximum allowed length (32760 minus the length of the variable name).</dd>
 </dl>
@@ -10213,7 +10238,7 @@ The following abend codes may be issued by VIRSETV:</p>
 <p>This module allows an IMS application program to copy an array of values into a VIRTEL table variable. The calling
 program supplies the name of the variable and an array containing the values. The VIRSETAI module builds one or
 more FAE6 structured fields containing the variable name and the values, and sends the structured field(s) to VIRTEL
-using the CALL &#8216;CBLTDLI&#8217; USING ISRT, LS-IOPCB, OUTPUT-MESSAGE, MFS command.</p>
+using the CALL ‘CBLTDLI’ USING ISRT, LS-IOPCB, OUTPUT-MESSAGE, MFS command.</p>
 <p>The total size of the structured fields sent by a single call to VIRSETAI cannot exceed 32K, but additional data can be
 added to the VIRTEL table variable by calling VIRSETAI again with the same variable name.</p>
 <p>When VIRSETAI is used to copy values into a VIRTEL table variable, all of the values must have the same length. To
@@ -10221,7 +10246,7 @@ create a VIRTEL table variable containing values of varying lengths, use CALL VI
 <p><em>3.4.4.3.5. CALL VIRSETAI parameters</em></p>
 <p>Parameters passed by calling program:</p>
 <ol class="arabic simple">
-<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X&#8216;00&#8217;)</li>
+<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X‘00’)</li>
 <li>An array of elements each containing one data item</li>
 <li>Element size (signed halfword) contains the length of each element of the array</li>
 <li>Count (signed halfword) contains the number of elements in the array</li>
@@ -10261,7 +10286,7 @@ create a VIRTEL table variable containing values of varying lengths, use CALL VI
 <p><strong>3.4.4.4. CALL VIRSETVI</strong></p>
 <p>This module allows an IMS application program to set the value of a VIRTEL variable. The calling program supplies the
 name of the variable and the value to be set. The VIRSETVI module builds an FAE6 structured field containing the
-variable name and value, and sends the structured field to VIRTEL using the CALL &#8216;CBLTDLI&#8217; USING ISRT, LS-IOPCB,
+variable name and value, and sends the structured field to VIRTEL using the CALL ‘CBLTDLI’ USING ISRT, LS-IOPCB,
 OUTPUT-MESSAGE, MFS command.
 VIRTEL variables containing more than one value are known as table variables. The application program can create a
 table variable by calling the VIRSETVI module several times with the same variable name. The first call creates the
@@ -10269,7 +10294,7 @@ variable and adds the first value to it. Subsequent calls add additional values 
 <p><em>3.4.4.4.1. CALL VIRSETVI parameters</em></p>
 <p>Parameters passed by calling program:</p>
 <ol class="arabic simple">
-<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X&#8216;00&#8217;)</li>
+<li>Variable name (variable length EBCDIC string of 1-255 characters terminated by blank or X‘00’)</li>
 <li>Value (variable length)</li>
 <li>Length (signed halfword field containing length of value)</li>
 <li>IMS I/O PCB</li>
@@ -10604,7 +10629,7 @@ Values are same as the ‘option’ field of the corresponding request.
 <li>Response types other than 0020 do not contain the number of lines or flags.</li>
 <li>Response types are returned in the same order as specified in the request.</li>
 <li>All of the response types requested are present, even if they are zero length.</li>
-<li>Lines of message text are delimited by X&#8216;0D25&#8217; (EBCDIC carriage-return / line-feed).</li>
+<li>Lines of message text are delimited by X‘0D25’ (EBCDIC carriage-return / line-feed).</li>
 </ul>
 </div>
 <p><strong>3.5.1.2. Structured field FAC8 code 13</strong></p>
@@ -10632,7 +10657,7 @@ Values are same as the ‘option’ field of the corresponding request.
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <ul class="last simple">
-<li>The data returned includes the character string searched for, and all characters which follow, up to the end of the line. The characters X&#8216;0D25&#8217;, indicating the end of line, are not included in the response.</li>
+<li>The data returned includes the character string searched for, and all characters which follow, up to the end of the line. The characters X‘0D25’, indicating the end of line, are not included in the response.</li>
 <li>Response types are returned in the same order as specified in the request.</li>
 <li>All of the response types requested are present, even if they are zero length.</li>
 <li>Structured fields FAC8 code 12 and code 13 can be combined in the same request / response.</li>
@@ -10752,16 +10777,16 @@ consists of a sequence of FAD4 structured fields as described below:</p>
 <dd>(Name) e-mail address of recipient.</dd>
 <dt>F</dt>
 <dd>(From) e-mail address of sender. If this code is not supplied, the default sender address specified on the SMTP line will be used.</dd>
-<dt>X&#8217;CD&#8217;</dt>
+<dt>X’CD’</dt>
 <dd>(Code) Message identification.</dd>
 <dt>S</dt>
 <dd>(Subject) Message subject line.</dd>
 <dt>T</dt>
-<dd>(Text) Message text. The sequence X&#8216;0D25&#8217; (EBCDIC carriage-return / line-feed) can be used to separate lines of text.</dd>
+<dd>(Text) Message text. The sequence X‘0D25’ (EBCDIC carriage-return / line-feed) can be used to separate lines of text.</dd>
 <dt>C</dt>
 <dd>(Charset) Add a message header indicating the character set used; ISO-8859-15 for European character set with Euro currency sign.</dd>
 <dt>H</dt>
-<dd>(Header) Add one or more headers. The sequence X&#8216;0D25&#8217; (EBCDIC carriage-return / line-feed) indicates the end of each of the headers in this structured field.</dd>
+<dd>(Header) Add one or more headers. The sequence X‘0D25’ (EBCDIC carriage-return / line-feed) indicates the end of each of the headers in this structured field.</dd>
 </dl>
 <p>The entry point used to invoke the host application must contain a type-3 transaction whose external name is $MAIL$
 and whose “Application” field contains the name of the SMTP line to be used for sending the outgoing e-mail.</p>
@@ -10929,17 +10954,17 @@ proxy is to transform the dataflow into HTTP mode before sending it on to VIRTEL
 <h4>4.2.6. Identification by certificate<a class="headerlink" href="#identification-by-certificate" title="Permalink to this headline">¶</a></h4>
 <p>The definition of a transaction with SECURITY 3 (TLS) allows VIRTEL to recognize a VIRTEL Web Access user by means of
 a digital certificate installed in the user’s web browser. VIRTEL will use the RACF userid associated with the certificate
-to determine the user&#8217;s authority to execute the transaction.</p>
+to determine the user’s authority to execute the transaction.</p>
 <p>VIRTEL is able to obtain the client’s userid, without requiring the user to sign on, when all of the following conditions
 are true:
 - The user enters VIRTEL via a secure https session using the AT-TLS function of z/OS V1R7 or later
 - The TTLSConnectionAction or TTLSEnvironmentAction statement in the policy agent configuration file contains the parameter HandshakeRole ServerWithClientAuth
 - The client’s browser presents a valid certificate during SSL handshake
-- The z/OS Security Server (RACF) recognizes the certificate as belonging to the user (Refer to &#8220;Chapter 21 RACF and Digital Certificates&#8221; in &#8220;SA22-7683-05 z/OS Security Server RACF Security Administrator&#8217;s Guide&#8221; for more information on associating user IDs with certificates)</p>
+- The z/OS Security Server (RACF) recognizes the certificate as belonging to the user (Refer to “Chapter 21 RACF and Digital Certificates” in “SA22-7683-05 z/OS Security Server RACF Security Administrator’s Guide” for more information on associating user IDs with certificates)</p>
 <p>The sample job SSLUCERT in the VIRTEL SAMPLIB illustrates how to generate a user client certificate using RACF. The
 certificate is registered in the RACF database and is exported to a PKCS12 (.P12) file which contains both the user
-certificate and the user&#8217;s private key encrypted under a passphrase. The .P12 file must be downloaded in binary to the
-user&#8217;s workstation and installed in the user&#8217;s browser.</p>
+certificate and the user’s private key encrypted under a passphrase. The .P12 file must be downloaded in binary to the
+user’s workstation and installed in the user’s browser.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">When a user is identified by certificate, VIRTEL does not have access to the user’s password, and therefore cannot propagate the signon to other applications such as CICS.</p>
@@ -11449,7 +11474,7 @@ directly to the host application simply by entering a URL of the format:</p>
 </div>
 <p>The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the
 transaction whose external name is “Cics”:</p>
-<p>TRANSACTION DETAIL DEFINITION &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;- Applid: VIRTEL 15:01:02
+<p>TRANSACTION DETAIL DEFINITION ———————- Applid: VIRTEL 15:01:02
 Internal name    ===&gt; W2H-00            To associate with an entry point name
 External name    ===&gt; WEB2HOST          Name displayed on user menu
 Description      ===&gt; Default directory = entry point name
@@ -11507,7 +11532,7 @@ between the left and right Ctrl keys like Internet Explorer.</p>
 <div class="section" id="managing-ctrl-keydown-being-lost">
 <h4>5.7.1. Managing CTRL keydown being lost<a class="headerlink" href="#managing-ctrl-keydown-being-lost" title="Permalink to this headline">¶</a></h4>
 <p>With some Windows Operating System, the CTRL keydown events may be lost half the time. In such case, you must
-turn on a special feature by introducing the following command into a &#8220;custom.js&#8221; file.</p>
+turn on a special feature by introducing the following command into a “custom.js” file.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">The</span> <span class="n">workaround</span> <span class="k">for</span> <span class="n">missing</span> <span class="n">CTRL</span> <span class="n">key</span> <span class="n">events</span> <span class="p">(</span><span class="n">on</span> <span class="n">some</span> <span class="n">Windows</span> <span class="n">system</span><span class="p">)</span> <span class="ow">is</span>
 <span class="o">*</span> <span class="n">activated</span> <span class="k">if</span> <span class="n">this</span> <span class="nb">property</span> <span class="ow">is</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">true</span><span class="o">.</span>
@@ -11634,7 +11659,7 @@ feature.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This code can also be found into the &#8220;custom-blink.css&#8221; source file store into the &#8220;tools&#8221; subdirectory of any update
+<p>This code can also be found into the “custom-blink.css” source file store into the “tools” subdirectory of any update
 delivered from number #5310 and over.</p>
 </div>
 </div>
@@ -11706,15 +11731,18 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Virtel457AP/audit_operations_ and_performance.html" class="btn btn-neutral float-right" title="Audit, Operations and Performance V4.57" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Virtel457AP/audit_operations_ and_performance.html" class="btn btn-neutral float-right" title="Audit, Operations and Performance V4.57" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel456MG/messages.html" class="btn btn-neutral" title="Messages Guide V4.56" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel456MG/messages.html" class="btn btn-neutral" title="Messages Guide V4.56" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -11748,7 +11776,8 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

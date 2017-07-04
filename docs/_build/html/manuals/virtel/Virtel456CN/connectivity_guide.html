@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
@@ -127,8 +133,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -137,25 +145,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
-      
-    <li>Connectivity Reference V4.56</li>
+        
+      <li>Connectivity Reference V4.56</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/virtel/Virtel456CN/connectivity_guide.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -182,7 +207,7 @@ any damages, direct or indirect, caused by errors or omissions in this document.
 contained in this document may be subject to change without notice. Nothing in this
 document should be construed in any manner as conferring a right to use, in whole or in
 part, the products or trademarks quoted herein.</p>
-<p class="last">&#8220;SysperTec Communication&#8221; and &#8220;VIRTEL&#8221; are registered trademarks. Names of other products
+<p class="last">“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
@@ -1630,9 +1655,9 @@ message length is specified in the definition of the NATIVE TCP/IP
 line.</p>
 <p>The variants NATIVE2P and NATIVE4P may be used if the terminal is
 defined to the application as a 3270 (LU2) device. In this case,
-VIRTEL will add the prefix X&#8216;7D4040&#8217; to inbound messages before
+VIRTEL will add the prefix X‘7D4040’ to inbound messages before
 sending them to the application, and will remove the 3270 prefix
-(for example X&#8217;F1C1&#8217;) from outbound messages before sending them to
+(for example X’F1C1’) from outbound messages before sending them to
 the terminal. The message format to the terminal is the same as
 described above for NATIVE2 and NATIVE4.</p>
 </div></blockquote>
@@ -2090,9 +2115,9 @@ LU.</p>
 <p class="last">Let us suppose for example that we have a configuration made up of
 two TRANSPAC lines, L1 and L2, containing respectively 16 and 8
 entries. The Minitels are installed on line L2. The value yyy
-assigned to the first Minitel is X&#8216;030&#8217; ((16 + 8) x 2) in
+assigned to the first Minitel is X‘030’ ((16 + 8) x 2) in
 hexadecimal. The values of yyy respectively assigned to the other
-Minitels are X&#8216;02E&#8217;, X&#8216;02C&#8217;, X&#8216;02A&#8217;, X&#8216;028&#8217;, etc.</p>
+Minitels are X‘02E’, X‘02C’, X‘02A’, X‘028’, etc.</p>
 </dd>
 <dt>Note 2</dt>
 <dd>The value of MAXDATA must not exceed MAXBFRU times UNITSZ, nor must
@@ -2922,7 +2947,7 @@ The detail definition screen will then be displayed.</p>
 <dl class="docutils">
 <dt>Parameter</dt>
 <dd>(optional) A parameter which will be associated with incoming calls matched by this rule. This parameter can be used in the following cases:
-• the value of the parameter can be retrieved in a connection script via the &#8216;&amp;1&#8217; variable (see “Connection – Disconnection Scripts”, page 95)
+• the value of the parameter can be retrieved in a connection script via the ‘&amp;1’ variable (see “Connection – Disconnection Scripts”, page 95)
 • For an XOT line: the parameter can specify the LU name for an incoming PCNE call. The terminals on the AntiPCNE
 line to which the call is routed must be defined in a logical pool (see “Terminals on an AntiPCNE line”, page 66)
 • For an HTTP line: the parameter can specify the LU name to be used as the VTAM relay for an incoming HTTP call.
@@ -3181,13 +3206,13 @@ press [PF4]. The transaction management menu will then appear.</p>
 <p class="last">Scenarios are described under the heading “Presentation modules” in the VIRTEL Web Access Guide.</p>
 </dd>
 <dt>Type 3 compression</dt>
-<dd>Indicates whether this entry point allows the use of level 3 compression. For more information on this subject, refer to “Parameters Of The Terminal”, page 109. An &#8216;X&#8217; in this field activates support for level 3 compression.</dd>
+<dd>Indicates whether this entry point allows the use of level 3 compression. For more information on this subject, refer to “Parameters Of The Terminal”, page 109. An ‘X’ in this field activates support for level 3 compression.</dd>
 <dt>Mandatory identification</dt>
-<dd>Indicates whether connections made via VIRTEL/PC must present a physical identification of the connecting PC. Refer to the chapter VIRTEL PC/VT100 for more information on this subject. An &#8216;X&#8217; in this field activates the PC identification process.</dd>
+<dd>Indicates whether connections made via VIRTEL/PC must present a physical identification of the connecting PC. Refer to the chapter VIRTEL PC/VT100 for more information on this subject. An ‘X’ in this field activates the PC identification process.</dd>
 <dt>3270 swap key</dt>
 <dd>Indicates the function key which allows the user to return from a transaction to the Multi-Session Menu. Permissible values are PF1 to PF24, PA1, PA2, PA3. If this field is blank, the swap key is specified by the SWAP parameter in the VIRTCT.</dd>
 <dt>Extended colors</dt>
-<dd>An &#8216;E&#8217; in this field indicates support for 3270 extended attributes and colors. An &#8216;X&#8217; indicates support for 3270 extended attributes and colors together with support for DBCS (Double Byte Character Set).</dd>
+<dd>An ‘E’ in this field indicates support for 3270 extended attributes and colors. An ‘X’ indicates support for 3270 extended attributes and colors together with support for DBCS (Double Byte Character Set).</dd>
 </dl>
 <p><strong>4.3.2. Associated functions</strong>
 <em>4.3.2.1. Updating an entry point</em>
@@ -3232,7 +3257,7 @@ Press [PF4] to display the list of transactions associated with the entry point<
 <dt>VIR0021E</dt>
 <dd>Program for connecting incoming X25 calls destined for an AntiPCNE line. This program emulates the function of a VTAM logon interpret table. It reads the first message and selects the transaction whose external name matches the first 8 characters of the message. If there is no matching transaction then message VIR2151E is issued and the call is cleared.</dd>
 <dt>VIR0021F</dt>
-<dd>Program for connecting incoming X25 calls destined for an AntiPCNE line. This program emulates the function of a VTAM logon interpret table. It reads the first message sent by the partner (known as the pre-connexion message) and selects the transaction whose “Logon message” field matches the start of the pre-connextion message. The “Logon message” field can contain an EBCDIC character string enclosed in apostrophes (case sensitive), or a hexadecimal string in the format X’hh...hh’. An empty string (two apostrophes) matches any message. The pre-connexion message is passed on to the application. If there is no transaction whose “Logon message” matches the pre-connexion message, then console message VIR2161E is issued and the call is cleared.</dd>
+<dd>Program for connecting incoming X25 calls destined for an AntiPCNE line. This program emulates the function of a VTAM logon interpret table. It reads the first message sent by the partner (known as the pre-connexion message) and selects the transaction whose “Logon message” field matches the start of the pre-connextion message. The “Logon message” field can contain an EBCDIC character string enclosed in apostrophes (case sensitive), or a hexadecimal string in the format X’hh…hh’. An empty string (two apostrophes) matches any message. The pre-connexion message is passed on to the application. If there is no transaction whose “Logon message” matches the pre-connexion message, then console message VIR2161E is issued and the call is cleared.</dd>
 <dt>VIR0021G</dt>
 <dd>Program for connecting incoming X25 calls destined for an AntiPCNE line. This program is similar to VIR0021F except that (a) the pre-connexion message is not passed on to the transaction, and (b) if the pre-connexion message does not match any transaction, the program continues to read incoming messages until a match is found. The entry point may contain additional transactions whose external name is USSMSGnn. These transactions do not participate in the matching of pre-connexion messages, but instead are used to generate responses to the terminal during the preconnexion phase. If a transaction with external name USSMSG10 is present, the contents of its “Logon message” field are sent to the terminal upon receipt of the call packet. If a pre-connexion message arrives from the terminal which does not match any transaction, then the program looks for a transaction whose external name is USSMSG01 and sends the contents of its “Logon message” field to the terminal; if there is no transaction named USSMSG01 then message VIR2172E is issued and the call is cleared. If a transaction with external name USSMSG00 is present, the contents of its “Logon message” field are sent to the terminal immediately before the call is connected to the target application.</dd>
 <dt>VIR0021J</dt>
@@ -3496,7 +3521,7 @@ attention keys to the application, send data to the terminal, and wait for speci
 <p><strong>5.4.1. Script language description</strong>
 A connection / disconnection script consists of a sequence of “clauses”. A clause consists of some data (which may
 contain embedded variables and orders) followed by a command. All commands, variables, and orders begin with the
-&#8216;&amp;&#8217; character.</p>
+‘&amp;’ character.</p>
 <p><em>5.4.1.1. Transmission and filter commands</em></p>
 <p>The command acts upon the data which precedes it. The commands are as follows:-</p>
 <table border="1" class="docutils">
@@ -3577,7 +3602,7 @@ Available information Corresponding variable:-</p>
 <td>&amp;P</td>
 </tr>
 <tr class="row-odd"><td>Rerouting parameters</td>
-<td>&amp;1, &amp;82, &amp;83,..., &amp;8F</td>
+<td>&amp;1, &amp;82, &amp;83,…, &amp;8F</td>
 </tr>
 <tr class="row-even"><td>URL parameter</td>
 <td>&amp;=paramn=</td>
@@ -3624,7 +3649,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 7B=EndPage, 7C=Corr, 7D=Envoi, 6D=Conn/Fin</td>
 </tr>
 <tr class="row-odd"><td>Data in hexadecimal (note 4)</td>
-<td>&amp;&#8217;hhhhhhhhhhh&#8217;</td>
+<td>&amp;’hhhhhhhhhhh’</td>
 </tr>
 <tr class="row-even"><td>Ampersand character (note 4)</td>
 <td>&amp;&amp;</td>
@@ -3657,7 +3682,7 @@ F1=Guide, F2=Repet, F3=Somm, F4=Annul, F7=Retour, F8=Suite, F9=Copier,
 <dt>Note 3</dt>
 <dd>The &amp;W order is processed only if it appears at the start of the script; otherwise it is ignored.</dd>
 <dt>Note 4</dt>
-<dd>Orders &amp;’hh...hh’ and &amp;&amp; may also be coded in the Logon Message field.</dd>
+<dd>Orders &amp;’hh…hh’ and &amp;&amp; may also be coded in the Logon Message field.</dd>
 <dt>Note 5</dt>
 <dd>&amp;( and &amp;) enclose a section of the script which will be repeated. When the script reaches the &amp;) order, the transaction is converted into a “service transaction” and remains active waiting for similar requests from other users (see “Service transactions” in the VIRTEL Web Access Guide).</dd>
 <dt>Note 6</dt>
@@ -3941,7 +3966,7 @@ For outbound calls via a VIRPESIT line:
 <dt>0</dt>
 <dd>User receives no warning of disconnection</dd>
 <dt>1</dt>
-<dd>User is warned by an audible &#8216;bip&#8217; 30 seconds before disconnection</dd>
+<dd>User is warned by an audible ‘bip’ 30 seconds before disconnection</dd>
 <dt>2</dt>
 <dd>User is warned by a message 30 seconds before disconnection or if the server does not respond</dd>
 </dl>
@@ -4053,7 +4078,7 @@ terminal definition, or modification of an existing definition:</p>
 </dd>
 <dt>Relay</dt>
 <dd><p class="first">(Optional) The name of the relay LU associated with this terminal. The relay name corresponds to a VTAM APPL statement. The same relay cannot be shared between multiple definitions.</p>
-<p class="last">The “Relay” field may alternatively contain a name in the form *POOLNAM which refers to the logical pool which has the same name *POOLNAM specified in its “*Pool name” field. In this case, a relay will be assigned dynamically from the specified logical pool each time a relay is required. See “logical pool of relays”, page 117. Certain terminals (those associated with an AntiPCNE line) require the definition of an external server whose name is equal to the relay name of the terminal. In this case, you can press [PF12] to display the external server detail definition. If the “Repeat” field contains a value greater than 1, then the relay name, if supplied, must contain a numeric portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below), or it must refer to a logical pool. If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any &#8216;+&#8217; character in the relay name will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.</p>
+<p class="last">The “Relay” field may alternatively contain a name in the form *POOLNAM which refers to the logical pool which has the same name *POOLNAM specified in its “*Pool name” field. In this case, a relay will be assigned dynamically from the specified logical pool each time a relay is required. See “logical pool of relays”, page 117. Certain terminals (those associated with an AntiPCNE line) require the definition of an external server whose name is equal to the relay name of the terminal. In this case, you can press [PF12] to display the external server detail definition. If the “Repeat” field contains a value greater than 1, then the relay name, if supplied, must contain a numeric portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below), or it must refer to a logical pool. If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any ‘+’ character in the relay name will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.</p>
 </dd>
 <dt>*Pool name</dt>
 <dd>In the definition of a logical pool, this field contains the name of the pool. A logical pool name is a 7 character name preceded by an asterisk, in the form *POOLNAM, which matches the logical pool name specified in the “Relay” field of all terminals which use the logical pool. See “logical pool of relays”, page 117. For regular terminals, this field must be blank.</dd>
@@ -4587,15 +4612,18 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Virtel456IG/Installation_Guide.html" class="btn btn-neutral float-right" title="Installation Guide V4.56" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Virtel456IG/Installation_Guide.html" class="btn btn-neutral float-right" title="Installation Guide V4.56" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel456AP/audit_operations_ and_performance.html" class="btn btn-neutral" title="Audit, Operations and Performance V4.56" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel456AP/audit_operations_ and_performance.html" class="btn btn-neutral" title="Audit, Operations and Performance V4.56" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -4629,7 +4657,8 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

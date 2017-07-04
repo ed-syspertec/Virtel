@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -132,8 +138,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -142,25 +150,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Mainframe printing with Virtel 4.56</li>
+        
+      <li>Mainframe printing with Virtel 4.56</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201409/TN201409.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -168,7 +193,7 @@
             
   <div class="section" id="mainframe-printing-with-virtel-4-56">
 <span id="tn201409"></span><h1>Mainframe printing with Virtel 4.56<a class="headerlink" href="#mainframe-printing-with-virtel-4-56" title="Permalink to this headline">¶</a></h1>
-<p>This newsletters highlights some of the ways you can configure Virtel to utilize its printing capabilities. First and foremost let’s understand what Virtel can support with regard to printing. Just for clarification Virtel currently doesn’t support seamless or unattended printing. In other words a user cannot initiate a print transaction from CICS and expect the output to automatically pop out on the user&#8217;s default workstation printer. This is because Virtel is restricted to whatever the browser printer functionality provides. See the section <a class="reference internal" href="#tn201409-bookmark01"><span class="std std-ref">“Seemless or unattended printing”</span></a> at the end of this document for more details. However, having said that, there are several ways mainframe printing can be achieved with Virtel. This newsletter highlights the Virtel features that support mainframe
+<p>This newsletters highlights some of the ways you can configure Virtel to utilize its printing capabilities. First and foremost let’s understand what Virtel can support with regard to printing. Just for clarification Virtel currently doesn’t support seamless or unattended printing. In other words a user cannot initiate a print transaction from CICS and expect the output to automatically pop out on the user’s default workstation printer. This is because Virtel is restricted to whatever the browser printer functionality provides. See the section <a class="reference internal" href="#tn201409-bookmark01"><span class="std std-ref">“Seemless or unattended printing”</span></a> at the end of this document for more details. However, having said that, there are several ways mainframe printing can be achieved with Virtel. This newsletter highlights the Virtel features that support mainframe
 printing and provides some guidance on how to implement them.</p>
 <p>In the scenarios that follow user involvement is required. The supported Virtel LU printer types are LU Type 1(SNA SCS) and LU Type 0/3(3270 datastream).</p>
 <p>Depending on the Virtel printer configuration one of several things can happen at the browser end:-</p>
@@ -265,7 +290,7 @@ browser window. Here is a screen shot of my terminal session before sending any 
 <p>Pressing the ICON will open a second browser window which will reveal the print data. See the following screen shot:-</p>
 <p><img alt="image4" src="../../../_images/image51.jpeg" /> <em>Fig. 5 - Print data displayed in second browser window.</em></p>
 <p>From this window the print data can be printed using the normal windows menu dialogs. Virtel does have an Auto-print option in the Virtel settings panel. This will automatically open up the Windows Print dialog
-so that you can just click &#8220;print&#8221; to print the data. Once you have printed your output you can close the Virtel Print window and continue with your terminal session.</p>
+so that you can just click “print” to print the data. Once you have printed your output you can close the Virtel Print window and continue with your terminal session.</p>
 </div>
 <div class="section" id="lu1-type-printing-scs">
 <h3>LU1 Type printing SCS<a class="headerlink" href="#lu1-type-printing-scs" title="Permalink to this headline">¶</a></h3>
@@ -843,15 +868,18 @@ END
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201410/TN201410.html" class="btn btn-neutral float-right" title="Taking a VTAM trace" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201410/TN201410.html" class="btn btn-neutral float-right" title="Taking a VTAM trace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201407/TN201407.html" class="btn btn-neutral" title="Pass tickets and supporting Proxy Servers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201407/TN201407.html" class="btn btn-neutral" title="Pass tickets and supporting Proxy Servers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -885,7 +913,8 @@ END
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

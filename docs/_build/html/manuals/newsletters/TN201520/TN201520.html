@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -123,8 +129,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -133,25 +141,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Using the IBM System Logger with Virtel</li>
+        
+      <li>Using the IBM System Logger with Virtel</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201520/TN201520.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -322,10 +347,10 @@ copied. The time span will</p>
 days before today (that is,</p>
 <p>records dated more than nnn days before today will be copied. nnn is a
 number between zero and 999.</p>
-<p>For example, if the program is run on May 25, specifying &#8220;COPY(&gt;3)&#8221; will
+<p>For example, if the program is run on May 25, specifying “COPY(&gt;3)” will
 copy records dated up to and including May 21. Note that &gt;0 corresponds
-to yesterday. To copy today&#8217;s records, you must use the
-&#8220;[start_date][,end_date]&#8221; form and specify today as the end date.</p>
+to yesterday. To copy today’s records, you must use the
+“[start_date][,end_date]” form and specify today as the end date.</p>
 <p><strong>DELETE</strong></p>
 <p>Records are to be deleted. If DELETE is not specified, no records are
 deleted.</p>
@@ -337,48 +362,51 @@ log stream will be deleted.</p>
 <p><strong>&gt;nnn</strong></p>
 <p>Indicates that records dated more than nnn days before today are to be
 deleted. nnn is a number between zero and 999. For example, if the program is run on July 15,
-specifying &#8220;DELETE(&gt;5)&#8221; will delete records dated up to and including
-July 9. Note that &gt;0 corresponds to yesterday. To delete today&#8217;s
-records, you must use the &#8220;date&#8221; form and specify today as the date. If
-DELETE is specified, either the date or &#8220;&gt;nnn&#8221; must be given.</p>
+specifying “DELETE(&gt;5)” will delete records dated up to and including
+July 9. Note that &gt;0 corresponds to yesterday. To delete today’s
+records, you must use the “date” form and specify today as the date. If
+DELETE is specified, either the date or “&gt;nnn” must be given.</p>
 <p>You may specify either COPY or DELETE or both. If you specify both they
 must be separated by a comma and may appear in either order. However,
 regardless of the order in which the parameters are specified, the copy
 operation will always occur before the delete.</p>
 <p><strong>Notes:-</strong></p>
 <p>When copying records, this program detects the end of a
-day&#8217;s records when it either reads the first record for the next day or
+day’s records when it either reads the first record for the next day or
 attempts to read past the newest record in the log stream. This means
 that, if end_date is today and the log stream is being written at the
 time this program runs, the records that are copied may not be
 predictable. In particular, if both COPY with an ending date of today
 and DELETE with a date of today are specified, there may be more records
 deleted than copied.</p>
-<p>When the &#8220;&gt;nnn&#8221; form of the COPY or DELETE parameter is
+<p>When the “&gt;nnn” form of the COPY or DELETE parameter is
 specified, program converts it to a date by subtracting nnn days from
 the date the program is run. The calculation is done once, at the
 beginning of the program. If the program is run shortly before midnight,
 so that the calculation occurs before midnight and the actual copying or
 deletion of records occurs after midnight, the records copied or deleted
 will not reflect the number of days specified. To prevent this, you
-should avoid running the program close to midnight with the &#8220;&gt;nnn&#8221; form.</p>
+should avoid running the program close to midnight with the “&gt;nnn” form.</p>
 <p>If the program is run regularly after midnight with the
-parameter &#8220;COPY(&gt;0),DELETE(&gt;1)&#8221;, it will copy records from the previous
+parameter “COPY(&gt;0),DELETE(&gt;1)”, it will copy records from the previous
 day and earlier, and will delete from the records from two days ago,
-leaving something over 24 hours&#8217; worth of records in the log each time.</p>
+leaving something over 24 hours’ worth of records in the log each time.</p>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201522/TN201522.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.55" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201522/TN201522.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.55" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201519/TN201519.html" class="btn btn-neutral" title="Processing the VTAM USS MSG10 buffer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201519/TN201519.html" class="btn btn-neutral" title="Processing the VTAM USS MSG10 buffer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -412,7 +440,8 @@ leaving something over 24 hours&#8217; worth of records in the log each time.</p
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

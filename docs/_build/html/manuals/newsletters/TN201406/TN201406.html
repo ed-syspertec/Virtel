@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -125,8 +131,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -135,25 +143,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Taking a VIRTEL terminal trace</li>
+        
+      <li>Taking a VIRTEL terminal trace</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201406/TN201406.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -242,7 +267,7 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">TSO</span>
 </pre></div>
 </div>
-<p>This will display a TSO session on the web browser. The &#8220;+TSO&#8221; parameter in the URL indicates that VIRTEL should establish a session with the application TSO. Of course this could be any VTAM application that has been defined to VIRTEL through the ARBLOAD process. Before continuing with our TSO session we need to start the trace on the correct terminal/relay. The VTAM LU relay name that Virtel uses is displayed in the bottom right corner of the TSO screen.</p>
+<p>This will display a TSO session on the web browser. The “+TSO” parameter in the URL indicates that VIRTEL should establish a session with the application TSO. Of course this could be any VTAM application that has been defined to VIRTEL through the ARBLOAD process. Before continuing with our TSO session we need to start the trace on the correct terminal/relay. The VTAM LU relay name that Virtel uses is displayed in the bottom right corner of the TSO screen.</p>
 <p>Displaying the VITREL relays indicates which session have been establish.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTA</span><span class="p">,</span><span class="n">RELAYS</span>
 <span class="o">+</span><span class="n">VIR0200I</span> <span class="n">RELAYS</span>
@@ -280,15 +305,18 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201407/TN201407.html" class="btn btn-neutral float-right" title="Pass tickets and supporting Proxy Servers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201407/TN201407.html" class="btn btn-neutral float-right" title="Pass tickets and supporting Proxy Servers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../../../newsletters.html" class="btn btn-neutral" title="Technical Newsletters" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../../newsletters.html" class="btn btn-neutral" title="Technical Newsletters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -322,7 +350,8 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

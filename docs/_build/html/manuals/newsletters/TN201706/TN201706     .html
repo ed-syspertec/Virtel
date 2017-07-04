@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -128,8 +134,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -138,25 +146,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>What’s new in Virtel 4.57 (July 2017)</li>
+        
+      <li>What’s new in Virtel 4.57 (July 2017)</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201706/TN201706     .rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -170,13 +195,13 @@
 <div class="section" id="option-mode-and-compatibility-mode">
 <h3>Option mode and Compatibility mode<a class="headerlink" href="#option-mode-and-compatibility-mode" title="Permalink to this headline">¶</a></h3>
 <p>As of Virtel 4.56 two modes of customisation are available, the ‘option
-mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting options and customization. As of Virtel V4.56 this is the preferred mode for Virtel customisation. By default, neither mode is active. Certain steps must be followed to activate either &#8220;compatibility&#8221; or &#8220;option&#8221; mode. As distributed Virtel will use programmatically set defaults and search for customization elements from the W2H directories. See the default transactions shipped with Virtel for custom.js, custom.css, w2hparm.js elements.</p>
+mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting options and customization. As of Virtel V4.56 this is the preferred mode for Virtel customisation. By default, neither mode is active. Certain steps must be followed to activate either “compatibility” or “option” mode. As distributed Virtel will use programmatically set defaults and search for customization elements from the W2H directories. See the default transactions shipped with Virtel for custom.js, custom.css, w2hparm.js elements.</p>
 <p>The previous “Compatibility “ mode is still supported. But requires users to re-assemble their TCTs with the ‘Option-default-compatibility’ keyword in the TCT. This will maintain previous customised behaviour for the custom.css, w2hparm.js and custom.js files.</p>
 <p><em>TCT keyword for compatibility mode</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span> <span class="o">=</span> <span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="o">/*</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mi">4</span> <span class="o">*/</span>
 </pre></div>
 </div>
-<p>The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customised versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56. To operate in &#8220;option mode&#8221; requires changes to the ARBO file with the additional of two new transactions to support the &#8220;option&#8221; pathname. See the ARBOLOAD (Option=YES) or ARBOMIGR in the SAMPLIB file for details on how to include these new transactions.</p>
+<p>The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customised versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56. To operate in “option mode” requires changes to the ARBO file with the additional of two new transactions to support the “option” pathname. See the ARBOLOAD (Option=YES) or ARBOMIGR in the SAMPLIB file for details on how to include these new transactions.</p>
 <p>Customers are advised to migrate old customisation elements to the new
 “option” mode enabling those elements to be located through the use of
 the /option/ pathname. Two new transactions have been added to support
@@ -198,7 +223,7 @@ compared to the default where each line is centred. When the font is not
 exactly monospace, lines may not have the same length and vertical
 alignments may be lost.</p>
 <p><strong>5453 Add CSS rules for old versions of IE8</strong></p>
-<p>Added CSS rules for older versions of IE where the logo&#8217;s display codes
+<p>Added CSS rules for older versions of IE where the logo’s display codes
 for the new graphics were not displayed with the correct size.</p>
 <p><strong>5469 Customizable HELP solution</strong></p>
 <p>Help panels can now be customized using the /option/pathToHelp key of
@@ -212,16 +237,16 @@ by the browser, the browser may try to display lines of text from right
 to left. This may not be what is required. Using this option, the user
 will be able to override the default Locale behaviour and force the
 display of Hebrew from left to right.</p>
-<p><strong>5482 Provide a control to switch &#8220;write mode&#8221;</strong></p>
-<p>When the &#8216;Bidirectional Data &#8216; option is set, the key combination &#8216;Alt +
-Shift&#8217; will switch the writing mode to Between “L2R” and “R2L”:</p>
-<p>The indicator &#8216;&lt;&#8217; will appear on right of the status line. All text
+<p><strong>5482 Provide a control to switch “write mode”</strong></p>
+<p>When the ‘Bidirectional Data ‘ option is set, the key combination ‘Alt +
+Shift’ will switch the writing mode to Between “L2R” and “R2L”:</p>
+<p>The indicator ‘&lt;’ will appear on right of the status line. All text
 input (Hebrew or otherwise) will progress from right to left. Tabbing
 into a field will go to the end of the field, not the start. If “R2L”
 input reaches the start of the field, it remains there.</p>
 <p><strong>5481 New “BiDirectional” Option</strong></p>
 <p>The new BiDirectional option will now trigger the CSS unicodeBidi =
-&#8220;bidi-override&#8221; style on the Virtel “printReady” HTML Div template. This
+“bidi-override” style on the Virtel “printReady” HTML Div template. This
 options enables user to have control on how text alignment should be
 set. Right of the page or Left of the Page. This replaces the “Right to
 Left” option of modification 5477.</p>
@@ -229,11 +254,11 @@ Left” option of modification 5477.</p>
 <p>Figure 1 - BiDirectional Data Option</p>
 <p><strong>5501 Arabic support - Reverse screen display option.</strong></p>
 <p>The “Alt-ENTER key” combination can globally switch the screen display
-from &#8216;left to right&#8217; to &#8216;right to left&#8217; and return. This is the way some
+from ‘left to right’ to ‘right to left’ and return. This is the way some
 countries support 3270 Arabic.</p>
 <p>Note:-</p>
 <ul class="simple">
-<li>The Alt-ENTER is active only if the &#8216;Bidirectional data&#8217; Display
+<li>The Alt-ENTER is active only if the ‘Bidirectional data’ Display
 option is set.</li>
 <li>The Alt-ENTER key may be unset by going to w2h key mappings options.</li>
 <li>The w2hparm.mirrorMode may be set in a w2hparm.js file to preset the
@@ -242,8 +267,8 @@ option:-</li>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">mirrorMode</span> <span class="o">=</span> <span class="n">true</span>
 </pre></div>
 </div>
-<p><strong>5504 continuing=&#8221;YES&#8221; attribute to indicate a split input field</strong></p>
-<p>Adds an attribute &#8216;continuing=&#8221;YES&#8221;&#8217; to a W2H SPAN for a 3270 field when
+<p><strong>5504 continuing=”YES” attribute to indicate a split input field</strong></p>
+<p>Adds an attribute ‘continuing=”YES”’ to a W2H SPAN for a 3270 field when
 it is the continuation of a field. For example when the 3270 continues
 after the end of a line and/or the screen.</p>
 <p>Example:-</p>
@@ -274,7 +299,7 @@ involved.</p>
 <p><strong>5444 RACROUTE,TOPS Mixed Case Passwords.</strong></p>
 <p>This extends 4196 RACF mixed-case passwords to allow specifying, through
 a VIRTCT parameter, that passwords should not be uppercased before
-SIGNON. A new sub-parameter &#8216;MIXEDCASE&#8217; of the TCT SECUR= parameter has
+SIGNON. A new sub-parameter ‘MIXEDCASE’ of the TCT SECUR= parameter has
 been added. This update also transposes update 4196 RACF mixed-case
 passwords to Top Secret to allow automatic detection of mixed case
 support.</p>
@@ -302,7 +327,7 @@ A old code” and IBM4899 is the “Hebrew Set A old code maximal set
 including euro and new sheqel”.</p>
 <p><strong>5459 Batch transfer of TRSF files</strong></p>
 <p>This update allows exporting/importing of raw TRSF data files in batch.
-See the section &#8216;Virtel Batch – exporting/importing TRSF files&lt;Virtel457UG&gt;&#8217; in the
+See the section ‘Virtel Batch – exporting/importing TRSF files&lt;Virtel457UG&gt;’ in the
 Virtel Users Guide.</p>
 <p><strong>5496 Add Cucumber diagnostic support</strong></p>
 <p>To aid in unit testing and diagnosis the Cucumber Diagnostic Tool is now
@@ -404,7 +429,7 @@ Because the cursor is not in an input field, this triggers the creation
 of a dummy input field to allow cursor positioning in classic pages with
 a visible FORM.</p>
 <p>A new “NOFIELD” option has been added as a fieldname to
-{{{DEFAULT-FIELD-WITH-CURSOR &#8220;<em>fieldname</em>&#8220;}}} statement. This prevents
+{{{DEFAULT-FIELD-WITH-CURSOR “<em>fieldname</em>”}}} statement. This prevents
 creation of a dummy input field.</p>
 <p><strong>5458 COPY$ TO-SYSTEM NAME-OF RELAY</strong></p>
 <p>Allows an IDENTIFICATION scenario to override the name of the relay
@@ -509,15 +534,18 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../../howto.html" class="btn btn-neutral float-right" title="Miscellaneous" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../../howto.html" class="btn btn-neutral float-right" title="Miscellaneous" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201705/TN201705     .html" class="btn btn-neutral" title="Printing PCL files with NodeJS" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201705/TN201705     .html" class="btn btn-neutral" title="Printing PCL files with NodeJS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -551,7 +579,8 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

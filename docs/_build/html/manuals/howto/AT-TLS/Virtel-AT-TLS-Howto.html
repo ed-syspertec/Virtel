@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
@@ -116,8 +122,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -126,25 +134,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../howto.html">Miscellaneous</a> &raquo;</li>
-      
-    <li>How To - AT-TLS</li>
+        
+      <li>How To - AT-TLS</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/howto/AT-TLS/Virtel-AT-TLS-Howto.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -348,8 +373,8 @@ and 128-bit or higher cipher suites are enabled.</p>
 <p><em>1.5.1 Extracting the userid from a client certificate</em></p>
 <p>Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-</p>
 <ul class="simple">
-<li>The HTTP session is secured using AT-TLS. URL = <a class="reference external" href="https://">https://</a>....</li>
-<li>The Policy Agent TTLSConnectionAction or TTLSEnvironmentAction statement contains the parameter &#8220;HandShakeRole ServerWithClientAuth&#8221;</li>
+<li>The HTTP session is secured using AT-TLS. URL = <a class="reference external" href="https://">https://</a>….</li>
+<li>The Policy Agent TTLSConnectionAction or TTLSEnvironmentAction statement contains the parameter “HandShakeRole ServerWithClientAuth”</li>
 <li>The client has provided a valid certificate.</li>
 <li>The security subsystem has validate the certificate as belonging to a user.</li>
 <li>The Virtel transaction has Security = 3 defined.</li>
@@ -386,15 +411,18 @@ and 128-bit or higher cipher suites are enabled.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../FAQ/Virtel-FAQ.html" class="btn btn-neutral float-right" title="How To - FAQs" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../FAQ/Virtel-FAQ.html" class="btn btn-neutral float-right" title="How To - FAQs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../../../howto.html" class="btn btn-neutral" title="Miscellaneous" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../../howto.html" class="btn btn-neutral" title="Miscellaneous" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -428,7 +456,8 @@ and 128-bit or higher cipher suites are enabled.</p>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

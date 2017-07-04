@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a><ul class="current">
@@ -216,8 +222,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -226,25 +234,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
-      
-    <li>Messages and Operations V4.53</li>
+        
+      <li>Messages and Operations V4.53</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/virtel/Virtel453OM/operations_messages.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -272,7 +297,7 @@ any damages, direct or indirect, caused by errors or omissions in this document.
 contained in this document may be subject to change without notice. Nothing in this
 document should be construed in any manner as conferring a right to use, in whole or in
 part, the products or trademarks quoted herein.</p>
-<p class="last">&#8220;SysperTec Communication&#8221; and &#8220;VIRTEL&#8221; are registered trademarks. Names of other products
+<p class="last">“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
@@ -339,7 +364,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <dt>p</dt>
 <dd><dl class="first last docutils">
 <dt>Stops a line.</dt>
-<dd>The LINE START and STOP commands can also be issued from the z/OS or VSE console. See “Starting and stopping a line&#8221;</dd>
+<dd>The LINE START and STOP commands can also be issued from the z/OS or VSE console. See “Starting and stopping a line”</dd>
 </dl>
 </dd>
 </dl>
@@ -747,7 +772,7 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <p>The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the     operator console.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Refer to the section SILENCE parameter in the &#8220;Parameters of the VIRTCT&#8221; in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
+<p class="last">Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
 </div>
 </div>
 <div class="section" id="patching-a-virtel-program">
@@ -1094,7 +1119,7 @@ X001T007 XOT: OUTBOUND X25 COMMAND                          15:10:33.27
 00000 17                                                                            *.                               * 09891182
 </pre></div>
 </div>
-<p><em>Fig. 11 Example of &#8220;trace by rule&#8221; (XOT terminal to application on /PCNE line)</em></p>
+<p><em>Fig. 11 Example of “trace by rule” (XOT terminal to application on /PCNE line)</em></p>
 </div>
 </div>
 </div>
@@ -1593,7 +1618,7 @@ SELDATE 01012010 30122011
 <p>Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.</p>
 <p>4.3.1 Printing the VIRSTAT SMF record</p>
 <p>The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.</p>
-<p>Messages &#8220;VIR0612E VIRSTAT SMFWTM FAILED. RC=rc&#8221; and &#8220;VIR0611I VIRSTAT NOW RECORDING TO SMF&#8221; are in relation with SMF support. See &#8220;Virtel Messages and Operations&#8221; manual for more details.</p>
+<p>Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.</p>
 </div>
 <div class="section" id="memory-management">
 <h2>4.4 Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
@@ -1791,7 +1816,7 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
 </div>
 </div>
 <div class="section" id="connection-in-progress">
-<h4>0 CONNECTION IN PROGRESS...<a class="headerlink" href="#connection-in-progress" title="Permalink to this headline">¶</a></h4>
+<h4>0 CONNECTION IN PROGRESS…<a class="headerlink" href="#connection-in-progress" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0015, VIR0021A, VIR0021R, VIR0025, VIR0025T</dd>
@@ -2220,7 +2245,7 @@ Choose one of the options displayed on the screen.</p>
 </dl>
 </div>
 <div class="section" id="please-wait">
-<h4>43 PLEASE WAIT....<a class="headerlink" href="#please-wait" title="Permalink to this headline">¶</a></h4>
+<h4>43 PLEASE WAIT….<a class="headerlink" href="#please-wait" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0012, VIR0016, VIR0032, VIR0036</dd>
@@ -3200,7 +3225,7 @@ Enter a value in the description field.</p>
 </dl>
 </div>
 <div class="section" id="should-contain-the-sign">
-<h4>137 Should contain the &#8216;&#64;&#8217; sign<a class="headerlink" href="#should-contain-the-sign" title="Permalink to this headline">¶</a></h4>
+<h4>137 Should contain the ‘&#64;’ sign<a class="headerlink" href="#should-contain-the-sign" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0041A</dd>
@@ -3514,7 +3539,7 @@ Enter a value in the description field.</p>
 <dt>Module</dt>
 <dd>VIR0004</dd>
 <dt>Meaning</dt>
-<dd>An abend with code abendtype was produced in the program progname at offset xxxxx during a session from terminal termid. ppp...ppp represents the program status word at the time of the abend, nnnn is the instruction length code, cccc is the interruption code, and aaaaaaaa is the translation exception address. For VSE, only the program status word is displayed. A partial formatted DUMP is written to the SYSPRINT file.</dd>
+<dd>An abend with code abendtype was produced in the program progname at offset xxxxx during a session from terminal termid. ppp…ppp represents the program status word at the time of the abend, nnnn is the instruction length code, cccc is the interruption code, and aaaaaaaa is the translation exception address. For VSE, only the program status word is displayed. A partial formatted DUMP is written to the SYSPRINT file.</dd>
 <dt>Action</dt>
 <dd>Contact technical support.</dd>
 </dl>
@@ -3603,7 +3628,7 @@ Enter a value in the description field.</p>
 <dt>Meaning</dt>
 <dd>Error code xx has occurred when generating the VSAM buffer pools.</dd>
 <dt>Action</dt>
-<dd>Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X&#8216;08&#8217; indicates that the memory allocated to VIRTEL is insufficient.</dd>
+<dd>Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X‘08’ indicates that the memory allocated to VIRTEL is insufficient.</dd>
 </dl>
 </div>
 <div class="section" id="vir0023e-error-xx-opening-file-filename">
@@ -3614,7 +3639,7 @@ Enter a value in the description field.</p>
 <dt>Meaning</dt>
 <dd>VSAM error xx occurred when opening file filename.</dd>
 <dt>Action</dt>
-<dd>Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X&#8216;5C&#8217; (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.</dd>
+<dd>Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X‘5C’ (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.</dd>
 </dl>
 </div>
 <div class="section" id="vir0024i">
@@ -4691,7 +4716,7 @@ Enter a value in the description field.</p>
 </dl>
 </div>
 <div class="section" id="vir0096i-virtel-is-using-virtct-virtctnn">
-<h4>VIR0096I VIRTEL IS USING VIRTCT &#8216;VIRTCTnn&#8217;<a class="headerlink" href="#vir0096i-virtel-is-using-virtct-virtctnn" title="Permalink to this headline">¶</a></h4>
+<h4>VIR0096I VIRTEL IS USING VIRTCT ‘VIRTCTnn’<a class="headerlink" href="#vir0096i-virtel-is-using-virtct-virtctnn" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0000</dd>
@@ -5044,7 +5069,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dl>
 </div>
 <div class="section" id="vir0528i-termid-caller-x25callernumber-gets-entry-point-epname-from-rule-rulename">
-<h4>VIR0528I termid CALLER x25callernumber GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#vir0528i-termid-caller-x25callernumber-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIR0528I termid CALLER x25callernumber GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#vir0528i-termid-caller-x25callernumber-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0005</dd>
@@ -5066,7 +5091,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dl>
 </div>
 <div class="section" id="vir0530e-termid-failed-call-to-servname-thru-line-n-xxxxxx">
-<h4>VIR0530E termid FAILED CALL TO &#8216;servname&#8217; THRU LINE n-xxxxxx<a class="headerlink" href="#vir0530e-termid-failed-call-to-servname-thru-line-n-xxxxxx" title="Permalink to this headline">¶</a></h4>
+<h4>VIR0530E termid FAILED CALL TO ‘servname’ THRU LINE n-xxxxxx<a class="headerlink" href="#vir0530e-termid-failed-call-to-servname-thru-line-n-xxxxxx" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0005</dd>
@@ -5154,7 +5179,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dl>
 </div>
 <div class="section" id="vir0538i-termid-gets-entry-point-epname-from-rule-rulename">
-<h4>VIR0538I termid GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#vir0538i-termid-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIR0538I termid GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#vir0538i-termid-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0005</dd>
@@ -5279,7 +5304,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dl>
 </div>
 <div class="section" id="vir0555e-invalid-rule-rulename-entry-point-epname">
-<h4>VIR0555E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#vir0555e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIR0555E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#vir0555e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0005</dd>
@@ -5640,7 +5665,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dl>
 </div>
 <div class="section" id="vir0921w-no-more-relay-available-for-termid-pool-poolname-prefix-prefix">
-<h4>VIR0921W NO MORE RELAY AVAILABLE FOR termid POOL &#8216;poolname&#8217; PREFIX &#8216;prefix&#8217;<a class="headerlink" href="#vir0921w-no-more-relay-available-for-termid-pool-poolname-prefix-prefix" title="Permalink to this headline">¶</a></h4>
+<h4>VIR0921W NO MORE RELAY AVAILABLE FOR termid POOL ‘poolname’ PREFIX ‘prefix’<a class="headerlink" href="#vir0921w-no-more-relay-available-for-termid-pool-poolname-prefix-prefix" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0009</dd>
@@ -5662,7 +5687,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dl>
 </div>
 <div class="section" id="vir0923e-no-relay-available-for-termid-pool-poolname-with-name-luname">
-<h4>VIR0923E NO RELAY AVAILABLE FOR termid POOL &#8216;poolname&#8217; WITH NAME &#8216;luname’<a class="headerlink" href="#vir0923e-no-relay-available-for-termid-pool-poolname-with-name-luname" title="Permalink to this headline">¶</a></h4>
+<h4>VIR0923E NO RELAY AVAILABLE FOR termid POOL ‘poolname’ WITH NAME ‘luname’<a class="headerlink" href="#vir0923e-no-relay-available-for-termid-pool-poolname-with-name-luname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0009</dd>
@@ -5739,7 +5764,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dt>Module</dt>
 <dd>VIR0010</dd>
 <dt>Meaning</dt>
-<dd>User userid at terminal termid has added, updated, or deleted a record in the VIRTEL configuration file. type is the record type (LINE, TERMINAL, SERVER, ...) and name is the entity name.</dd>
+<dd>User userid at terminal termid has added, updated, or deleted a record in the VIRTEL configuration file. type is the record type (LINE, TERMINAL, SERVER, …) and name is the entity name.</dd>
 <dt>Action</dt>
 <dd>None.</dd>
 </dl>
@@ -5867,7 +5892,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 </dl>
 </div>
 <div class="section" id="vir1502e-termid-passticket-error-for-applname-userid-saf-rc-safrc-racf-rc-racrc-racf-reason-racreas">
-<h4>VIR1502E termid PASSTICKET ERROR FOR applname / userid SAF RC: &#8216;safrc&#8217; RACF RC: &#8216;racrc&#8217; RACF REASON: &#8216;racreas&#8217;<a class="headerlink" href="#vir1502e-termid-passticket-error-for-applname-userid-saf-rc-safrc-racf-rc-racrc-racf-reason-racreas" title="Permalink to this headline">¶</a></h4>
+<h4>VIR1502E termid PASSTICKET ERROR FOR applname / userid SAF RC: ‘safrc’ RACF RC: ‘racrc’ RACF REASON: ‘racreas’<a class="headerlink" href="#vir1502e-termid-passticket-error-for-applname-userid-saf-rc-safrc-racf-rc-racrc-racf-reason-racreas" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0015</dd>
@@ -5879,7 +5904,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="vir1551i-termid-luname-connected-to-applname">
-<h4>VIR1551I termid(luname) CONNECTED TO &#8220;applname&#8221;<a class="headerlink" href="#vir1551i-termid-luname-connected-to-applname" title="Permalink to this headline">¶</a></h4>
+<h4>VIR1551I termid(luname) CONNECTED TO “applname”<a class="headerlink" href="#vir1551i-termid-luname-connected-to-applname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0015</dd>
@@ -5929,7 +5954,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="vir1725e-linename-error-accessing-key-on-filename">
-<h4>VIR1725E linename: ERROR ACCESSING &#8216;key&#8217; ON filename<a class="headerlink" href="#vir1725e-linename-error-accessing-key-on-filename" title="Permalink to this headline">¶</a></h4>
+<h4>VIR1725E linename: ERROR ACCESSING ‘key’ ON filename<a class="headerlink" href="#vir1725e-linename-error-accessing-key-on-filename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0017</dd>
@@ -5940,7 +5965,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="vir1726e-termid-error-adding-to-file-filename">
-<h4>VIR1726E termid ERROR ADDING TO FILE &#8216;filename&#8217;<a class="headerlink" href="#vir1726e-termid-error-adding-to-file-filename" title="Permalink to this headline">¶</a></h4>
+<h4>VIR1726E termid ERROR ADDING TO FILE ‘filename’<a class="headerlink" href="#vir1726e-termid-error-adding-to-file-filename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0017</dd>
@@ -5956,7 +5981,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <dt>Module</dt>
 <dd>VIR0B17</dd>
 <dt>Meaning</dt>
-<dd>An instruction in a scenario (SEND$ TO-LINE, SEND$ VARIABLE-TO-LINE), or a tag in an HTML page, for example: {{{IP- ADDR &#8220;linename&#8221;}}}, refers to a non-existent line.</dd>
+<dd>An instruction in a scenario (SEND$ TO-LINE, SEND$ VARIABLE-TO-LINE), or a tag in an HTML page, for example: {{{IP- ADDR “linename”}}}, refers to a non-existent line.</dd>
 <dt>Action</dt>
 <dd>Specify a valid line name.</dd>
 </dl>
@@ -6007,7 +6032,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="vir2151e-epname-has-no-transaction-named-tranid">
-<h4>VIR2151E epname HAS NO TRANSACTION NAMED &#8216;tranid&#8217;<a class="headerlink" href="#vir2151e-epname-has-no-transaction-named-tranid" title="Permalink to this headline">¶</a></h4>
+<h4>VIR2151E epname HAS NO TRANSACTION NAMED ‘tranid’<a class="headerlink" href="#vir2151e-epname-has-no-transaction-named-tranid" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0021E</dd>
@@ -6084,7 +6109,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <div class="section" id="id22">
 <h3>6.23.0. Virtel Commuincation modules<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="vir2701w-user-userid-sent-c-to-line-n-xxxxxx-from-terminal-termid">
-<h4>VIR2701W USER userid SENT &#8216;c&#8217; TO LINE &#8216;n-xxxxxx&#8217; FROM TERMINAL &#8216;termid&#8217;<a class="headerlink" href="#vir2701w-user-userid-sent-c-to-line-n-xxxxxx-from-terminal-termid" title="Permalink to this headline">¶</a></h4>
+<h4>VIR2701W USER userid SENT ‘c’ TO LINE ‘n-xxxxxx’ FROM TERMINAL ‘termid’<a class="headerlink" href="#vir2701w-user-userid-sent-c-to-line-n-xxxxxx-from-terminal-termid" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0027</dd>
@@ -6118,7 +6143,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <div class="section" id="id24">
 <h3>6.25.0. Virtel Commuincation modules<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="vir3551i-termid-connecting-as-personal-computer-xxxxxxxx">
-<h4>VIR3551I termid CONNECTING AS PERSONAL COMPUTER &#8220;xxxxxxxx&#8221;<a class="headerlink" href="#vir3551i-termid-connecting-as-personal-computer-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
+<h4>VIR3551I termid CONNECTING AS PERSONAL COMPUTER “xxxxxxxx”<a class="headerlink" href="#vir3551i-termid-connecting-as-personal-computer-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0035</dd>
@@ -6140,7 +6165,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="vir3553i-termid-identification-error-for-personal-computer-xxxxxxxx">
-<h4>VIR3553I termid IDENTIFICATION ERROR FOR PERSONAL COMPUTER &#8220;xxxxxxxx&#8221;<a class="headerlink" href="#vir3553i-termid-identification-error-for-personal-computer-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
+<h4>VIR3553I termid IDENTIFICATION ERROR FOR PERSONAL COMPUTER “xxxxxxxx”<a class="headerlink" href="#vir3553i-termid-identification-error-for-personal-computer-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0035</dd>
@@ -6617,7 +6642,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <dt>Module</dt>
 <dd>VIR0B17</dd>
 <dt>Meaning</dt>
-<dd>An memory allocation attempt failed while trying to store a VIRTEL variable above &#8216;above the BAR&#8217; (ie in 64 bits storage). The hexadecimal return code and reason code could be researched in the DC2 code in the IBM “z/OS   MVS System Codes” manual or possibly in the IBM IARV64 service documentation in the “MVS Assembler Services Reference” manual. Virtel currently limits the maximum size of a Virtel variable to 2 gigabytes. The maximum amount of 64-bit private virtual memory available to the Virtel address space can be controles by the MEMLIMIT JCL parameter.</dd>
+<dd>An memory allocation attempt failed while trying to store a VIRTEL variable above ‘above the BAR’ (ie in 64 bits storage). The hexadecimal return code and reason code could be researched in the DC2 code in the IBM “z/OS   MVS System Codes” manual or possibly in the IBM IARV64 service documentation in the “MVS Assembler Services Reference” manual. Virtel currently limits the maximum size of a Virtel variable to 2 gigabytes. The maximum amount of 64-bit private virtual memory available to the Virtel address space can be controles by the MEMLIMIT JCL parameter.</dd>
 <dt>Action</dt>
 <dd>Use an appropriate value in the MEMLIMIT JCL parameter.</dd>
 </dl>
@@ -6690,7 +6715,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="virb908e-x-nnnnnn-invalid-command-xxxx-replaced-by-eoj">
-<h4>VIRB908E x-nnnnnn INVALID COMMAND &#8216;xxxx&#8217; REPLACED BY &#8216;.EOJ&#8217;<a class="headerlink" href="#virb908e-x-nnnnnn-invalid-command-xxxx-replaced-by-eoj" title="Permalink to this headline">¶</a></h4>
+<h4>VIRB908E x-nnnnnn INVALID COMMAND ‘xxxx’ REPLACED BY ‘.EOJ’<a class="headerlink" href="#virb908e-x-nnnnnn-invalid-command-xxxx-replaced-by-eoj" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0B09</dd>
@@ -6762,7 +6787,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <div class="section" id="id34">
 <h3>6.37.0. Virtel Base modules<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virc121e-page-not-found-for-termid-entry-point-epname-directory-tranid-dirname-dirkey-page-filename-url-url">
-<h4>VIRC121E PAGE NOT FOUND FOR termid ENTRY POINT &#8216;epname&#8217; DIRECTORY &#8216;tranid&#8217;(dirname dirkey) PAGE &#8216;filename&#8217; URL&#8217;url&#8217;<a class="headerlink" href="#virc121e-page-not-found-for-termid-entry-point-epname-directory-tranid-dirname-dirkey-page-filename-url-url" title="Permalink to this headline">¶</a></h4>
+<h4>VIRC121E PAGE NOT FOUND FOR termid ENTRY POINT ‘epname’ DIRECTORY ‘tranid’(dirname dirkey) PAGE ‘filename’ URL’url’<a class="headerlink" href="#virc121e-page-not-found-for-termid-entry-point-epname-directory-tranid-dirname-dirkey-page-filename-url-url" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0C12</dd>
@@ -6773,7 +6798,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="virc122e-error-termid-is-sending-a-scenario-pf-key-but-scenario-is-missing-in-transaction-tranid-entry-point-epname">
-<h4>VIRC122E ERROR termid IS SENDING A SCENARIO PF KEY BUT SCENARIO IS MISSING IN TRANSACTION &#8216;tranid&#8217; ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#virc122e-error-termid-is-sending-a-scenario-pf-key-but-scenario-is-missing-in-transaction-tranid-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRC122E ERROR termid IS SENDING A SCENARIO PF KEY BUT SCENARIO IS MISSING IN TRANSACTION ‘tranid’ ENTRY POINT ‘epname’<a class="headerlink" href="#virc122e-error-termid-is-sending-a-scenario-pf-key-but-scenario-is-missing-in-transaction-tranid-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0C12</dd>
@@ -6902,7 +6927,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <dt>Meaning</dt>
 <dd>A call to an ICSF cryptographic service servname failed with return code xxxx and reason code yyyy. The return code and reason code are shown in hexadecimal.</dd>
 <dt>Action</dt>
-<dd>Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer&#8217;s Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.</dd>
+<dd>Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer’s Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.</dd>
 </dl>
 </div>
 <div class="section" id="virca18e-termid-keylen-nnnn-fieldlen-nnnn">
@@ -6995,7 +7020,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 <div class="section" id="id36">
 <h3>6.41.0. Virtel Cryptography modules<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virct01e-cryn-error-installing-no-encryption-subtask">
-<h4>VIRCT01E CRYn ERROR INSTALLING &#8216;NO-ENCRYPTION&#8217; SUBTASK<a class="headerlink" href="#virct01e-cryn-error-installing-no-encryption-subtask" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT01E CRYn ERROR INSTALLING ‘NO-ENCRYPTION’ SUBTASK<a class="headerlink" href="#virct01e-cryn-error-installing-no-encryption-subtask" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0CT0</dd>
@@ -7006,7 +7031,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="virct02w-cryn-no-encryption-subtask-started">
-<h4>VIRCT02W CRYn &#8216;NO-ENCRYPTION&#8217; SUBTASK STARTED<a class="headerlink" href="#virct02w-cryn-no-encryption-subtask-started" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT02W CRYn ‘NO-ENCRYPTION’ SUBTASK STARTED<a class="headerlink" href="#virct02w-cryn-no-encryption-subtask-started" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0CT0</dd>
@@ -7017,7 +7042,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="virct03w-cryn-no-encryption-subtask-ended">
-<h4>VIRCT03W CRYn &#8216;NO-ENCRYPTION&#8217; SUBTASK ENDED<a class="headerlink" href="#virct03w-cryn-no-encryption-subtask-ended" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT03W CRYn ‘NO-ENCRYPTION’ SUBTASK ENDED<a class="headerlink" href="#virct03w-cryn-no-encryption-subtask-ended" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0CT0</dd>
@@ -7028,7 +7053,7 @@ For an explanation of the return codes and reason codes, see z/OS Security Serve
 </dl>
 </div>
 <div class="section" id="virct05w-cryn-no-encryption-session-key-ready">
-<h4>VIRCT05W CRYn &#8216;NO-ENCRYPTION&#8217; SESSION KEY READY<a class="headerlink" href="#virct05w-cryn-no-encryption-session-key-ready" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT05W CRYn ‘NO-ENCRYPTION’ SESSION KEY READY<a class="headerlink" href="#virct05w-cryn-no-encryption-session-key-ready" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0CT0</dd>
@@ -7092,7 +7117,7 @@ MAX-SYMMERTIC-MODULUS : Maximum modulus size enabled for asymmetric encryption o
 </dl>
 </div>
 <div class="section" id="virct11e-cryn-error-installing-icsf-subtask">
-<h4>VIRCT11E CRYn ERROR INSTALLING &#8216;ICSF&#8217; SUBTASK<a class="headerlink" href="#virct11e-cryn-error-installing-icsf-subtask" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT11E CRYn ERROR INSTALLING ‘ICSF’ SUBTASK<a class="headerlink" href="#virct11e-cryn-error-installing-icsf-subtask" title="Permalink to this headline">¶</a></h4>
 <p>Module
 VIR0CT1
 Meaning
@@ -7101,7 +7126,7 @@ Action
 Contact technical support.</p>
 </div>
 <div class="section" id="virct12w-cryn-icsf-subtask-started">
-<h4>VIRCT12W CRYn &#8216;ICSF&#8217; SUBTASK STARTED<a class="headerlink" href="#virct12w-cryn-icsf-subtask-started" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT12W CRYn ‘ICSF’ SUBTASK STARTED<a class="headerlink" href="#virct12w-cryn-icsf-subtask-started" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0CT1</dd>
@@ -7112,7 +7137,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virct13w-cryn-icsf-subtask-ended">
-<h4>VIRCT13W CRYn &#8216;ICSF&#8217; SUBTASK ENDED<a class="headerlink" href="#virct13w-cryn-icsf-subtask-ended" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT13W CRYn ‘ICSF’ SUBTASK ENDED<a class="headerlink" href="#virct13w-cryn-icsf-subtask-ended" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0CT1</dd>
@@ -7123,7 +7148,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virct15w-cryn-icsf-session-key-ready">
-<h4>VIRCT15W CRYn &#8216;ICSF&#8217; SESSION KEY READY<a class="headerlink" href="#virct15w-cryn-icsf-session-key-ready" title="Permalink to this headline">¶</a></h4>
+<h4>VIRCT15W CRYn ‘ICSF’ SESSION KEY READY<a class="headerlink" href="#virct15w-cryn-icsf-session-key-ready" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0CT1</dd>
@@ -7141,7 +7166,7 @@ Contact technical support.</p>
 <dt>Meaning</dt>
 <dd>A call to an ICSF cryptographic service servname failed with return code xxxx and reason code yyyy. The return code and reason code are shown in hexadecimal.</dd>
 <dt>Action</dt>
-<dd>Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer&#8217;s Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.</dd>
+<dd>Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer’s Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.</dd>
 </dl>
 </div>
 <div class="section" id="virct17e-cryn-error-text">
@@ -7206,7 +7231,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virht28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h4>VIRHT28I linename CALLER ipaddr:port GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#virht28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIRHT28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virht28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRHTTP</dd>
@@ -7261,7 +7286,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virht54e-invalid-request-on-linename-entry-point-epname-directory-dirname-page-filename-url-url-transaction-tranid-caller-ipaddr-port-reason">
-<h4>VIRHT54E INVALID REQUEST ON linename ENTRY POINT &#8216;epname&#8217; DIRECTORY &#8216;dirname&#8217; PAGE &#8216;filename&#8217; URL &#8216;url&#8217; TRANSACTION &#8216;tranid&#8217; CALLER ipaddr:port reason<a class="headerlink" href="#virht54e-invalid-request-on-linename-entry-point-epname-directory-dirname-page-filename-url-url-transaction-tranid-caller-ipaddr-port-reason" title="Permalink to this headline">¶</a></h4>
+<h4>VIRHT54E INVALID REQUEST ON linename ENTRY POINT ‘epname’ DIRECTORY ‘dirname’ PAGE ‘filename’ URL ‘url’ TRANSACTION ‘tranid’ CALLER ipaddr:port reason<a class="headerlink" href="#virht54e-invalid-request-on-linename-entry-point-epname-directory-dirname-page-filename-url-url-transaction-tranid-caller-ipaddr-port-reason" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRHTTP</dd>
@@ -7272,7 +7297,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virht55e-invalid-rule-rulename-entry-point-epname">
-<h4>VIRHT55E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#virht55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRHT55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virht55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRHTTP</dd>
@@ -7597,7 +7622,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="viric28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h4>VIRIC28I linename CALLER ipaddr:port GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#viric28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIRIC28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#viric28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0ICON</dd>
@@ -7619,7 +7644,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="viric51i-linename-connection-starting-on-termname-to-entry-point-epname-transaction-tranname">
-<h4>VIRIC51I linename CONNECTION STARTING ON termname TO ENTRY POINT &#8216;epname&#8217; TRANSACTION &#8216;tranname&#8217;<a class="headerlink" href="#viric51i-linename-connection-starting-on-termname-to-entry-point-epname-transaction-tranname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRIC51I linename CONNECTION STARTING ON termname TO ENTRY POINT ‘epname’ TRANSACTION ‘tranname’<a class="headerlink" href="#viric51i-linename-connection-starting-on-termname-to-entry-point-epname-transaction-tranname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0ICON</dd>
@@ -7641,7 +7666,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="viric53e-linename-entry-point-epname-was-not-found">
-<h4>VIRIC53E linename ENTRY POINT &#8216;epname&#8217; WAS NOT FOUND<a class="headerlink" href="#viric53e-linename-entry-point-epname-was-not-found" title="Permalink to this headline">¶</a></h4>
+<h4>VIRIC53E linename ENTRY POINT ‘epname’ WAS NOT FOUND<a class="headerlink" href="#viric53e-linename-entry-point-epname-was-not-found" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0ICON</dd>
@@ -7652,7 +7677,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="viric54e-linename-ims-status-error-retcode-reason-reascode-text">
-<h4>VIRIC54E linename IMS STATUS ERROR &#8216;retcode&#8217; REASON &#8216;reascode&#8217; text<a class="headerlink" href="#viric54e-linename-ims-status-error-retcode-reason-reascode-text" title="Permalink to this headline">¶</a></h4>
+<h4>VIRIC54E linename IMS STATUS ERROR ‘retcode’ REASON ‘reascode’ text<a class="headerlink" href="#viric54e-linename-ims-status-error-retcode-reason-reascode-text" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0ICON</dd>
@@ -7663,7 +7688,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="viric55e-invalid-rule-rulename-entry-point-epname">
-<h4>VIRIC55E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#viric55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRIC55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#viric55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0ICON</dd>
@@ -7685,7 +7710,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="viric57e-linename-in-entry-point-epname-the-transaction-tranname-was-not-found-and-there-is-no-default-transaction">
-<h4>VIRIC57E linename IN ENTRY POINT &#8216;epname&#8217;, THE TRANSACTION &#8216;tranname&#8217; WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION<a class="headerlink" href="#viric57e-linename-in-entry-point-epname-the-transaction-tranname-was-not-found-and-there-is-no-default-transaction" title="Permalink to this headline">¶</a></h4>
+<h4>VIRIC57E linename IN ENTRY POINT ‘epname’, THE TRANSACTION ‘tranname’ WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION<a class="headerlink" href="#viric57e-linename-in-entry-point-epname-the-transaction-tranname-was-not-found-and-there-is-no-default-transaction" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0ICON</dd>
@@ -8178,7 +8203,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virna28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h4>VIRNA28I linename CALLER ipaddr:port GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#virna28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIRNA28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virna28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRNATV</dd>
@@ -8222,7 +8247,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virna55e-invalid-rule-rulename-entry-point-epname">
-<h4>VIRNA55E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#virna55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRNA55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virna55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRNATV</dd>
@@ -8273,7 +8298,7 @@ Contact technical support.</p>
 <div class="section" id="id45">
 <h3>6.50.0. Virtel Base modules<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virp121e-page-not-found-for-termid-entry-point-epname-scenario-scenname-directory-tranid-dirname-name-filename-url-url">
-<h4>VIRP121E PAGE NOT FOUND FOR termid ENTRY POINT &#8216;epname&#8217; SCENARIO &#8216;scenname&#8217; DIRECTORY &#8216;tranid&#8217;(dirname) NAME &#8216;filename&#8217; URL&#8217;url&#8217;<a class="headerlink" href="#virp121e-page-not-found-for-termid-entry-point-epname-scenario-scenname-directory-tranid-dirname-name-filename-url-url" title="Permalink to this headline">¶</a></h4>
+<h4>VIRP121E PAGE NOT FOUND FOR termid ENTRY POINT ‘epname’ SCENARIO ‘scenname’ DIRECTORY ‘tranid’(dirname) NAME ‘filename’ URL’url’<a class="headerlink" href="#virp121e-page-not-found-for-termid-entry-point-epname-scenario-scenname-directory-tranid-dirname-name-filename-url-url" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0P12</dd>
@@ -8284,7 +8309,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virp122e-variable-not-found-for-termid-entry-point-epname-scenario-scenname-directory-tranid-dirname-name-varname-url-url">
-<h4>VIRP122E VARIABLE NOT FOUND FOR termid ENTRY POINT &#8216;epname&#8217; SCENARIO &#8216;scenname&#8217; DIRECTORY &#8216;tranid&#8217;(dirname) NAME &#8216;varname&#8217; URL&#8217;url&#8217;<a class="headerlink" href="#virp122e-variable-not-found-for-termid-entry-point-epname-scenario-scenname-directory-tranid-dirname-name-varname-url-url" title="Permalink to this headline">¶</a></h4>
+<h4>VIRP122E VARIABLE NOT FOUND FOR termid ENTRY POINT ‘epname’ SCENARIO ‘scenname’ DIRECTORY ‘tranid’(dirname) NAME ‘varname’ URL’url’<a class="headerlink" href="#virp122e-variable-not-found-for-termid-entry-point-epname-scenario-scenname-directory-tranid-dirname-name-varname-url-url" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0P12</dd>
@@ -8295,7 +8320,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virp123e-scenario-not-found-for-termid-entry-point-epname-directory-dirname-name-filename-url-url">
-<h4>VIRP123E SCENARIO NOT FOUND FOR termid ENTRY POINT &#8216;epname&#8217; DIRECTORY &#8216;dirname’ NAME &#8216;filename&#8217; URL &#8216;url&#8217;<a class="headerlink" href="#virp123e-scenario-not-found-for-termid-entry-point-epname-directory-dirname-name-filename-url-url" title="Permalink to this headline">¶</a></h4>
+<h4>VIRP123E SCENARIO NOT FOUND FOR termid ENTRY POINT ‘epname’ DIRECTORY ‘dirname’ NAME ‘filename’ URL ‘url’<a class="headerlink" href="#virp123e-scenario-not-found-for-termid-entry-point-epname-directory-dirname-name-filename-url-url" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0P12</dd>
@@ -8306,7 +8331,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virp1251i-termid-connected-to-epname">
-<h4>VIRP1251I termid CONNECTED TO &#8220;epname&#8221;<a class="headerlink" href="#virp1251i-termid-connected-to-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRP1251I termid CONNECTED TO “epname”<a class="headerlink" href="#virp1251i-termid-connected-to-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0P12</dd>
@@ -8323,7 +8348,7 @@ Contact technical support.</p>
 <div class="section" id="id46">
 <h3>6.51.0. Virtel Communication modules<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virpa54e-termid-invalid-request-on-linename-from-caller-ipaddr-port-entry-point-epname-transaction-or-server-servid">
-<h4>VIRPA54E termid INVALID REQUEST ON linename FROM CALLER ipaddr:port ENTRY POINT &#8216;epname&#8217; TRANSACTION OR SERVER &#8216;servid&#8217;<a class="headerlink" href="#virpa54e-termid-invalid-request-on-linename-from-caller-ipaddr-port-entry-point-epname-transaction-or-server-servid" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPA54E termid INVALID REQUEST ON linename FROM CALLER ipaddr:port ENTRY POINT ‘epname’ TRANSACTION OR SERVER ‘servid’<a class="headerlink" href="#virpa54e-termid-invalid-request-on-linename-from-caller-ipaddr-port-entry-point-epname-transaction-or-server-servid" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0PASS</dd>
@@ -8401,7 +8426,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virpf28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h4>VIRPF28I linename CALLER ipaddr:port GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#virpf28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPF28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virpf28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0PRF</dd>
@@ -8445,7 +8470,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virpf54e-invalid-request-on-linename-entry-point-epname-directory-dirname">
-<h4>VIRPF54E INVALID REQUEST ON linename ENTRY POINT &#8216;epname&#8217; DIRECTORY &#8216;dirname&#8217;<a class="headerlink" href="#virpf54e-invalid-request-on-linename-entry-point-epname-directory-dirname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPF54E INVALID REQUEST ON linename ENTRY POINT ‘epname’ DIRECTORY ‘dirname’<a class="headerlink" href="#virpf54e-invalid-request-on-linename-entry-point-epname-directory-dirname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0PRF</dd>
@@ -8456,7 +8481,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virpf55e-invalid-rule-rulename-entry-point-epname">
-<h4>VIRPF55E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#virpf55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPF55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virpf55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0PRF</dd>
@@ -8583,7 +8608,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps13i-linename-outbound-connection-starting-on-termname-linename-client-requesterid-server-serverid-protocol-protocol">
-<h4>VIRPS13I linename OUTBOUND CONNECTION STARTING ON termname | linename CLIENT &#8216;requesterid&#8217; SERVER &#8216;serverid&#8217; PROTOCOL &#8216;protocol&#8217;<a class="headerlink" href="#virps13i-linename-outbound-connection-starting-on-termname-linename-client-requesterid-server-serverid-protocol-protocol" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS13I linename OUTBOUND CONNECTION STARTING ON termname | linename CLIENT ‘requesterid’ SERVER ‘serverid’ PROTOCOL ‘protocol’<a class="headerlink" href="#virps13i-linename-outbound-connection-starting-on-termname-linename-client-requesterid-server-serverid-protocol-protocol" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8594,7 +8619,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps14i-linename-inbound-connection-starting-on-termname-to-entry-point-epname-transaction-tranid-linename-client-requesterid-server-serverid-protocol-protocol">
-<h4>VIRPS14I linename INBOUND CONNECTION STARTING ON termname TO ENTRY POINT &#8216;epname&#8217; TRANSACTION &#8216;tranid&#8217; | linename CLIENT &#8216;&#8217;requesterid&#8217; SERVER &#8216;serverid&#8217; PROTOCOL &#8216;protocol&#8217;<a class="headerlink" href="#virps14i-linename-inbound-connection-starting-on-termname-to-entry-point-epname-transaction-tranid-linename-client-requesterid-server-serverid-protocol-protocol" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS14I linename INBOUND CONNECTION STARTING ON termname TO ENTRY POINT ‘epname’ TRANSACTION ‘tranid’ | linename CLIENT ‘’requesterid’ SERVER ‘serverid’ PROTOCOL ‘protocol’<a class="headerlink" href="#virps14i-linename-inbound-connection-starting-on-termname-to-entry-point-epname-transaction-tranid-linename-client-requesterid-server-serverid-protocol-protocol" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8605,7 +8630,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps15i-linename-received-reject-connect-request-from-serverid-to-requesterid-with-diagnostic-hexcode-deccode">
-<h4>VIRPS15I linename RECEIVED REJECT CONNECT REQUEST FROM &#8216;serverid&#8217; TO &#8216;requesterid&#8217; WITH DIAGNOSTIC :&#8217;hexcode&#8217; (&#8216;deccode&#8217;)<a class="headerlink" href="#virps15i-linename-received-reject-connect-request-from-serverid-to-requesterid-with-diagnostic-hexcode-deccode" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS15I linename RECEIVED REJECT CONNECT REQUEST FROM ‘serverid’ TO ‘requesterid’ WITH DIAGNOSTIC :’hexcode’ (‘deccode’)<a class="headerlink" href="#virps15i-linename-received-reject-connect-request-from-serverid-to-requesterid-with-diagnostic-hexcode-deccode" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8616,7 +8641,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps16i-linename-received-reject-connect-request-for-termname-with-diagnostic-hexcode-deccode">
-<h4>VIRPS16I linename RECEIVED REJECT CONNECT REQUEST FOR &#8216;termname&#8217; WITH DIAGNOSTIC :&#8217;hexcode&#8217; (&#8216;deccode&#8217;)<a class="headerlink" href="#virps16i-linename-received-reject-connect-request-for-termname-with-diagnostic-hexcode-deccode" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS16I linename RECEIVED REJECT CONNECT REQUEST FOR ‘termname’ WITH DIAGNOSTIC :’hexcode’ (‘deccode’)<a class="headerlink" href="#virps16i-linename-received-reject-connect-request-for-termname-with-diagnostic-hexcode-deccode" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8627,7 +8652,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps17i-linename-connection-ending-for-termname">
-<h4>VIRPS17I linename CONNECTION ENDING FOR &#8216;termname&#8217;<a class="headerlink" href="#virps17i-linename-connection-ending-for-termname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS17I linename CONNECTION ENDING FOR ‘termname’<a class="headerlink" href="#virps17i-linename-connection-ending-for-termname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8638,7 +8663,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps18i-linename-connection-ending-for-termname">
-<h4>VIRPS18I linename CONNECTION ENDING FOR &#8216;termname&#8217;<a class="headerlink" href="#virps18i-linename-connection-ending-for-termname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS18I linename CONNECTION ENDING FOR ‘termname’<a class="headerlink" href="#virps18i-linename-connection-ending-for-termname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8649,7 +8674,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h4>VIRPS28I linename CALLER ipaddr:port GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#virps28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virps28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8660,7 +8685,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps29e-invalid-rule-rulename-entry-point-epname">
-<h4>VIRPS29E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#virps29e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS29E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virps29e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8693,7 +8718,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps52e-linename-entry-point-epname-was-not-found">
-<h4>VIRPS52E linename ENTRY POINT &#8216;epname&#8217; WAS NOT FOUND<a class="headerlink" href="#virps52e-linename-entry-point-epname-was-not-found" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS52E linename ENTRY POINT ‘epname’ WAS NOT FOUND<a class="headerlink" href="#virps52e-linename-entry-point-epname-was-not-found" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8715,7 +8740,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps54e-linename-in-entry-point-epname-transaction-tranid-the-server-servname-was-not-found">
-<h4>VIRPS54E linename IN ENTRY POINT &#8216;epname&#8217;, TRANSACTION &#8216;tranid&#8217;, THE SERVER &#8216;servname&#8217; WAS NOT FOUND<a class="headerlink" href="#virps54e-linename-in-entry-point-epname-transaction-tranid-the-server-servname-was-not-found" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS54E linename IN ENTRY POINT ‘epname’, TRANSACTION ‘tranid’, THE SERVER ‘servname’ WAS NOT FOUND<a class="headerlink" href="#virps54e-linename-in-entry-point-epname-transaction-tranid-the-server-servname-was-not-found" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8726,7 +8751,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps56e-linename-in-entry-point-epname-the-transaction-partnerid-was-not-found-and-there-is-no-default-transaction">
-<h4>VIRPS56E linename IN ENTRY POINT &#8216;epname&#8217;, THE TRANSACTION &#8216;partnerid&#8217; WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION<a class="headerlink" href="#virps56e-linename-in-entry-point-epname-the-transaction-partnerid-was-not-found-and-there-is-no-default-transaction" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS56E linename IN ENTRY POINT ‘epname’, THE TRANSACTION ‘partnerid’ WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION<a class="headerlink" href="#virps56e-linename-in-entry-point-epname-the-transaction-partnerid-was-not-found-and-there-is-no-default-transaction" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8737,7 +8762,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virps57e-linename-in-entry-point-epname-the-emulation-emtype-is-not-supported-should-be-none">
-<h4>VIRPS57E linename IN ENTRY POINT &#8216;epname&#8217;, THE EMULATION &#8216;emtype&#8217; IS NOT SUPPORTED, SHOULD BE &#8216;$NONE$&#8217;<a class="headerlink" href="#virps57e-linename-in-entry-point-epname-the-emulation-emtype-is-not-supported-should-be-none" title="Permalink to this headline">¶</a></h4>
+<h4>VIRPS57E linename IN ENTRY POINT ‘epname’, THE EMULATION ‘emtype’ IS NOT SUPPORTED, SHOULD BE ‘$NONE$’<a class="headerlink" href="#virps57e-linename-in-entry-point-epname-the-emulation-emtype-is-not-supported-should-be-none" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRPESIT</dd>
@@ -8776,7 +8801,7 @@ Contact technical support.</p>
 </dl>
 </div>
 <div class="section" id="virq904w-linename-object-socknum-has-message-of-length-hexlen-waiting">
-<h4>VIRQ904W linename OBJECT socknum HAS MESSAGE OF LENGTH &#8216;hexlen&#8217; WAITING<a class="headerlink" href="#virq904w-linename-object-socknum-has-message-of-length-hexlen-waiting" title="Permalink to this headline">¶</a></h4>
+<h4>VIRQ904W linename OBJECT socknum HAS MESSAGE OF LENGTH ‘hexlen’ WAITING<a class="headerlink" href="#virq904w-linename-object-socknum-has-message-of-length-hexlen-waiting" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0Q09</dd>
@@ -8852,7 +8877,7 @@ The following codes are commonly encountered:
 <div class="section" id="id50">
 <h3>6.56.0. Virtel Communication modules<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virr211e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid">
-<h4>VIRR211E termid INVALID SERVER CALLED: &#8216;servid&#8217; FROM TRANSACTION tranid BY USER userid<a class="headerlink" href="#virr211e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid" title="Permalink to this headline">¶</a></h4>
+<h4>VIRR211E termid INVALID SERVER CALLED: ‘servid’ FROM TRANSACTION tranid BY USER userid<a class="headerlink" href="#virr211e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0021R</dd>
@@ -8902,7 +8927,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virrw28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h4>VIRRW28I linename CALLER ipaddr:port GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#virrw28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIRRW28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virrw28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0RAW</dd>
@@ -8979,7 +9004,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virrw54e-invalid-request-on-linename-entry-point-epname-directory-dirname">
-<h4>VIRRW54E INVALID REQUEST ON linename ENTRY POINT &#8216;epname&#8217; DIRECTORY &#8216;dirname&#8217;<a class="headerlink" href="#virrw54e-invalid-request-on-linename-entry-point-epname-directory-dirname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRRW54E INVALID REQUEST ON linename ENTRY POINT ‘epname’ DIRECTORY ‘dirname’<a class="headerlink" href="#virrw54e-invalid-request-on-linename-entry-point-epname-directory-dirname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0RAW</dd>
@@ -8990,7 +9015,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virrw55e-invalid-rule-rulename-entry-point-epname">
-<h4>VIRRW55E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#virrw55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRRW55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virrw55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0RAW</dd>
@@ -9106,7 +9131,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virs129e-termid-error-scenario-scenname-abended-at-offset-xxxxxxxx-on-instruction-starting-with-yyyyyyyy-input-output-identification-scenario-is-discarded">
-<h4>VIRS129E termid ERROR: SCENARIO scenname ABENDED AT OFFSET &#8216;xxxxxxxx&#8217; ON INSTRUCTION STARTING WITH &#8216;yyyyyyyy&#8217; [INPUT|OUTPUT|IDENTIFICATION SCENARIO IS DISCARDED]<a class="headerlink" href="#virs129e-termid-error-scenario-scenname-abended-at-offset-xxxxxxxx-on-instruction-starting-with-yyyyyyyy-input-output-identification-scenario-is-discarded" title="Permalink to this headline">¶</a></h4>
+<h4>VIRS129E termid ERROR: SCENARIO scenname ABENDED AT OFFSET ‘xxxxxxxx’ ON INSTRUCTION STARTING WITH ‘yyyyyyyy’ [INPUT|OUTPUT|IDENTIFICATION SCENARIO IS DISCARDED]<a class="headerlink" href="#virs129e-termid-error-scenario-scenname-abended-at-offset-xxxxxxxx-on-instruction-starting-with-yyyyyyyy-input-output-identification-scenario-is-discarded" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0S12</dd>
@@ -9117,7 +9142,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virs12ai-termid-error-scenario-scenname-was-abnormally-stopped-at-offset-xxxxxxxx">
-<h4>VIRS12AI termid ERROR: SCENARIO scenname WAS ABNORMALLY STOPPED AT OFFSET &#8216;xxxxxxxx&#8217;<a class="headerlink" href="#virs12ai-termid-error-scenario-scenname-was-abnormally-stopped-at-offset-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
+<h4>VIRS12AI termid ERROR: SCENARIO scenname WAS ABNORMALLY STOPPED AT OFFSET ‘xxxxxxxx’<a class="headerlink" href="#virs12ai-termid-error-scenario-scenname-was-abnormally-stopped-at-offset-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0S12</dd>
@@ -9128,7 +9153,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virs12be-scenario-requires-header-headername-not-found-in-tct-aborting">
-<h4>VIRS12BE SCENARIO REQUIRES HEADER &#8216;headername&#8217; NOT FOUND IN TCT : ABORTING<a class="headerlink" href="#virs12be-scenario-requires-header-headername-not-found-in-tct-aborting" title="Permalink to this headline">¶</a></h4>
+<h4>VIRS12BE SCENARIO REQUIRES HEADER ‘headername’ NOT FOUND IN TCT : ABORTING<a class="headerlink" href="#virs12be-scenario-requires-header-headername-not-found-in-tct-aborting" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0S12</dd>
@@ -9161,7 +9186,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virs12ee-termid-scenario-scenname-returned-error-dddddddd">
-<h4>VIRS12EE termid SCENARIO scenname RETURNED ERROR : &#8216;dddddddd&#8217;<a class="headerlink" href="#virs12ee-termid-scenario-scenname-returned-error-dddddddd" title="Permalink to this headline">¶</a></h4>
+<h4>VIRS12EE termid SCENARIO scenname RETURNED ERROR : ‘dddddddd’<a class="headerlink" href="#virs12ee-termid-scenario-scenname-returned-error-dddddddd" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0S12</dd>
@@ -9172,7 +9197,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virs12fe-termid-error-scenario-scenname-calls-undefined-transaction-tranname-at-offset-xxxxxxxx">
-<h4>VIRS12FE termid ERROR: SCENARIO &#8216;scenname&#8217; CALLS UNDEFINED TRANSACTION &#8216;tranname&#8217; AT OFFSET &#8216;xxxxxxxx&#8217;<a class="headerlink" href="#virs12fe-termid-error-scenario-scenname-calls-undefined-transaction-tranname-at-offset-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
+<h4>VIRS12FE termid ERROR: SCENARIO ‘scenname’ CALLS UNDEFINED TRANSACTION ‘tranname’ AT OFFSET ‘xxxxxxxx’<a class="headerlink" href="#virs12fe-termid-error-scenario-scenname-calls-undefined-transaction-tranname-at-offset-xxxxxxxx" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0S12</dd>
@@ -9183,7 +9208,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virs12ge-cannot-resolve-passticket-of-type-applname-aborting-scenario">
-<h4>VIRS12GE CANNOT RESOLVE PASSTICKET OF TYPE &#8216;applname&#8217; ABORTING SCENARIO<a class="headerlink" href="#virs12ge-cannot-resolve-passticket-of-type-applname-aborting-scenario" title="Permalink to this headline">¶</a></h4>
+<h4>VIRS12GE CANNOT RESOLVE PASSTICKET OF TYPE ‘applname’ ABORTING SCENARIO<a class="headerlink" href="#virs12ge-cannot-resolve-passticket-of-type-applname-aborting-scenario" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0S12</dd>
@@ -9194,7 +9219,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virs12he-termid-error-scenario-scenname-racf-ticketserv-generate-evaluate-saf-rc-safrc-racf-rc-racfrc-racf-reason-racfreas">
-<h4>VIRS12HE termid ERROR: SCENARIO scenname RACF ticketserv GENERATE|EVALUATE SAF RC: &#8216;safrc&#8217; RACF RC: &#8216;racfrc&#8217; RACF reason: &#8216;racfreas&#8217;<a class="headerlink" href="#virs12he-termid-error-scenario-scenname-racf-ticketserv-generate-evaluate-saf-rc-safrc-racf-rc-racfrc-racf-reason-racfreas" title="Permalink to this headline">¶</a></h4>
+<h4>VIRS12HE termid ERROR: SCENARIO scenname RACF ticketserv GENERATE|EVALUATE SAF RC: ‘safrc’ RACF RC: ‘racfrc’ RACF reason: ‘racfreas’<a class="headerlink" href="#virs12he-termid-error-scenario-scenname-racf-ticketserv-generate-evaluate-saf-rc-safrc-racf-rc-racfrc-racf-reason-racfreas" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0S12</dd>
@@ -9255,7 +9280,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virsm28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename">
-<h4>VIRSM28I linename CALLER ipaddr:port GETS ENTRY POINT &#8216;epname&#8217; FROM RULE &#8216;rulename&#8217;<a class="headerlink" href="#virsm28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
+<h4>VIRSM28I linename CALLER ipaddr:port GETS ENTRY POINT ‘epname’ FROM RULE ‘rulename’<a class="headerlink" href="#virsm28i-linename-caller-ipaddr-port-gets-entry-point-epname-from-rule-rulename" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRSMTP</dd>
@@ -9299,7 +9324,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="virsm55e-invalid-rule-rulename-entry-point-epname">
-<h4>VIRSM55E INVALID RULE rulename ENTRY POINT &#8216;epname&#8217;<a class="headerlink" href="#virsm55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRSM55E INVALID RULE rulename ENTRY POINT ‘epname’<a class="headerlink" href="#virsm55e-invalid-rule-rulename-entry-point-epname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIRSMTP</dd>
@@ -9327,7 +9352,7 @@ The following codes are commonly encountered:
 <div class="section" id="id53">
 <h3>6.60.0. Virtel Communication modules<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virt251e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid">
-<h4>VIRT251E termid INVALID SERVER CALLED: &#8216;servid&#8217; FROM TRANSACTION tranid BY USER userid<a class="headerlink" href="#virt251e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid" title="Permalink to this headline">¶</a></h4>
+<h4>VIRT251E termid INVALID SERVER CALLED: ‘servid’ FROM TRANSACTION tranid BY USER userid<a class="headerlink" href="#virt251e-termid-invalid-server-called-servid-from-transaction-tranid-by-user-userid" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0025T</dd>
@@ -9344,7 +9369,7 @@ The following codes are commonly encountered:
 <div class="section" id="virtel-communication-ip-modules">
 <h3>6.61.0. Virtel Communication IP modules<a class="headerlink" href="#virtel-communication-ip-modules" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virt903w-line-linename-has-a-session-started-with-tcp-ip-tcpname-highest-socket-is-xxxxxxxx-dddddddd">
-<h4>VIRT903W LINE linename HAS A SESSION STARTED WITH TCP/IP tcpname HIGHEST SOCKET IS &#8216;xxxxxxxx&#8217; (dddddddd)<a class="headerlink" href="#virt903w-line-linename-has-a-session-started-with-tcp-ip-tcpname-highest-socket-is-xxxxxxxx-dddddddd" title="Permalink to this headline">¶</a></h4>
+<h4>VIRT903W LINE linename HAS A SESSION STARTED WITH TCP/IP tcpname HIGHEST SOCKET IS ‘xxxxxxxx’ (dddddddd)<a class="headerlink" href="#virt903w-line-linename-has-a-session-started-with-tcp-ip-tcpname-highest-socket-is-xxxxxxxx-dddddddd" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0T09</dd>
@@ -9493,7 +9518,7 @@ The following codes are commonly encountered:
 <div class="section" id="id54">
 <h3>6.62.0. Virtel Utility modules<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="viru121e-termid-file-upload-failed-entry-point-epname-directory-dirname-file-filename-user-username">
-<h4>VIRU121E termid FILE UPLOAD FAILED : ENTRY POINT &#8216;epname&#8217; DIRECTORY &#8216;dirname&#8217; FILE &#8216;filename’ USER &#8216;username’<a class="headerlink" href="#viru121e-termid-file-upload-failed-entry-point-epname-directory-dirname-file-filename-user-username" title="Permalink to this headline">¶</a></h4>
+<h4>VIRU121E termid FILE UPLOAD FAILED : ENTRY POINT ‘epname’ DIRECTORY ‘dirname’ FILE ‘filename’ USER ‘username’<a class="headerlink" href="#viru121e-termid-file-upload-failed-entry-point-epname-directory-dirname-file-filename-user-username" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0U12</dd>
@@ -9504,7 +9529,7 @@ The following codes are commonly encountered:
 </dl>
 </div>
 <div class="section" id="viru122i-termid-file-upload-entry-point-epname-directory-dirname-file-filename-user-username">
-<h4>VIRU122I termid FILE UPLOAD : ENTRY POINT &#8216;epname&#8217; DIRECTORY &#8216;dirname&#8217; FILE &#8216;filename’ USER &#8216;username’<a class="headerlink" href="#viru122i-termid-file-upload-entry-point-epname-directory-dirname-file-filename-user-username" title="Permalink to this headline">¶</a></h4>
+<h4>VIRU122I termid FILE UPLOAD : ENTRY POINT ‘epname’ DIRECTORY ‘dirname’ FILE ‘filename’ USER ‘username’<a class="headerlink" href="#viru122i-termid-file-upload-entry-point-epname-directory-dirname-file-filename-user-username" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0U12</dd>
@@ -9538,7 +9563,7 @@ The following codes are commonly encountered:
 <div class="section" id="id56">
 <h3>6.64.0. Virtel Base modules<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virv121e-termid-could-not-find-translation-table-tablname-for-page-pagename-directory-tranid-dirname">
-<h4>VIRV121E termid COULD NOT FIND TRANSLATION TABLE &#8216;tablname&#8217; FOR PAGE &#8216;pagename&#8217; DIRECTORY &#8216;tranid&#8217; (dirname)<a class="headerlink" href="#virv121e-termid-could-not-find-translation-table-tablname-for-page-pagename-directory-tranid-dirname" title="Permalink to this headline">¶</a></h4>
+<h4>VIRV121E termid COULD NOT FIND TRANSLATION TABLE ‘tablname’ FOR PAGE ‘pagename’ DIRECTORY ‘tranid’ (dirname)<a class="headerlink" href="#virv121e-termid-could-not-find-translation-table-tablname-for-page-pagename-directory-tranid-dirname" title="Permalink to this headline">¶</a></h4>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0V12</dd>
@@ -9838,15 +9863,18 @@ The following codes are commonly encountered:
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Virtel453UG/user_guide.html" class="btn btn-neutral float-right" title="User Guide V4.53" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Virtel453UG/user_guide.html" class="btn btn-neutral float-right" title="User Guide V4.53" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel453IG/Installation_Guide.html" class="btn btn-neutral" title="Installation Guide V4.53" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel453IG/Installation_Guide.html" class="btn btn-neutral" title="Installation Guide V4.53" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -9880,7 +9908,8 @@ The following codes are commonly encountered:
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

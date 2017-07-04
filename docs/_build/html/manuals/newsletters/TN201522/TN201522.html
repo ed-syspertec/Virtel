@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -123,8 +129,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -133,25 +141,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>What’s new in Virtel 4.55</li>
+        
+      <li>What’s new in Virtel 4.55</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201522/TN201522.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -273,7 +298,7 @@ This would convert the JSON input to variables with the names specified in the J
 <p class="last">This new form of the instruction alleviates the need for an OCCURS=UNLIMITED at the end of a description.</p>
 </div>
 <p><strong>Allow re-execution of a MAP$ FROM-INPUT</strong></p>
-<p>In the following scenario, the two &#8216;MAP$ FROM-INPUT&#8217; will produce the same output.</p>
+<p>In the following scenario, the two ‘MAP$ FROM-INPUT’ will produce the same output.</p>
 <p>Example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>JSON1 SCREENS APPL=JSON1
 *
@@ -336,13 +361,13 @@ SCENARIO END
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p>1: CASE$ do not change the contents of the variables or parts of the screen being compared.</p>
-<p class="last">2: If the variable being tested does not exist, (eg &#8216;MYVAR&#8217; does not exist), it is not considered empty. Rather, the CASE$ branches at the ELSE= label.</p>
+<p class="last">2: If the variable being tested does not exist, (eg ‘MYVAR’ does not exist), it is not considered empty. Rather, the CASE$ branches at the ELSE= label.</p>
 </div>
 <p>LTRIM and RTRIM will trim both the value being tested (variable or part of the screen buffer) and the variable arguments, but not the static arguments.</p>
 <p>For example:-</p>
 <blockquote>
-<div><p>(EQ,&#8217;*VAR1&#8217;,label1) The value of the VAR1 variable will be trimmed prior to comparison.</p>
-<p>(EQ,&#8217;zagreb &#8216;,label2) The value of the string &#8216;zagreb &#8216; will NOT be trimmed – it is a static argument.</p>
+<div><p>(EQ,’*VAR1’,label1) The value of the VAR1 variable will be trimmed prior to comparison.</p>
+<p>(EQ,’zagreb ‘,label2) The value of the string ‘zagreb ‘ will NOT be trimmed – it is a static argument.</p>
 </div></blockquote>
 <p><strong>New trimming functions. COPY$ RTRIM and LTRIM</strong></p>
 <p>Two new optional parameters for the COPY$ LIST-TO-VARIABLE instruction, RTRIM= and LTRIM=, will trim one or more characters from the various variable operands of the COPY$ instruction prior to performing the copy.</p>
@@ -352,7 +377,7 @@ SCENARIO END
     LIST=(&#39;string1&#39;,&#39;*var1&#39;,VARIABLE,&#39;var2&#39;)
 </pre></div>
 </div>
-<p>The variable VAR1 is created/modified, with &#8216;string1&#8217; copied as is, var1 and var2 left and right trimmed.</p>
+<p>The variable VAR1 is created/modified, with ‘string1’ copied as is, var1 and var2 left and right trimmed.</p>
 <p><strong>Indirection on OUTPUT-FILE-TO-VARIABLE FILE=</strong></p>
 <p>This feature allows indirection of a file name. The filename is pointed to by the variable *variable_name.</p>
 <p>Example:-</p>
@@ -501,7 +526,7 @@ COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;H1&#39;,                                *
 <p>For example in the above display in SP5 we can see that there is an allocated value of 317DC bytes, represented by 00C5 in 1K chunks, and a peak value of 04C7 in 1K chunks.</p>
 <p>At the bottom of the display is a line which provide allocated, free and total values.</p>
 <p><em>Messages</em></p>
-<p><strong>VIRT0085I</strong> INVALID MEMORY FREE REQUEST. ADDR=aaaaaaaa, SUBPOOL=ss, CALLER=aaaaaaaa&#8217;</p>
+<p><strong>VIRT0085I</strong> INVALID MEMORY FREE REQUEST. ADDR=aaaaaaaa, SUBPOOL=ss, CALLER=aaaaaaaa’</p>
 <p>Module : VIR0000
 Meaning : The Virtel memory request is invalid because:-</p>
 <ul class="simple">
@@ -512,8 +537,8 @@ Meaning : The Virtel memory request is invalid because:-</p>
 <p>Action : Virtel continues. If you get a significant number of these messages you consider a schedule a restart of Virtel.</p>
 <p><strong>VIRT0086E</strong> GETMAIN FAILED. MEMORY DSA DISABLED.</p>
 <p>Module :VIR0000</p>
-<p>Meaning: Virtel was ubale to GETMAIN storage &#8220;above the bar&#8221; for the DSA table.</p>
-<p>Action: Increase MEMLIMIT= in the JCL to provide more &#8220;above the bar&#8221; storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.</p>
+<p>Meaning: Virtel was ubale to GETMAIN storage “above the bar” for the DSA table.</p>
+<p>Action: Increase MEMLIMIT= in the JCL to provide more “above the bar” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.</p>
 <p><strong>VIRT0087E</strong> FATAL DSA TABEL ERROR</p>
 <p>Module :VIR0000</p>
 <p>Meaning: The DSA memory table has been corrupted or has been invalidated. Memory diagnostics has been disabled.</p>
@@ -552,7 +577,7 @@ services. This will depend on VIRTEL demand.</p>
 <li>Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</li>
 </ul>
 <p><em>Messages</em></p>
-<p><strong>&#8216;VIR0262W</strong> SNAPMSG TRIGGERED - VIRTEL ABENDED | SNAP TAKEN&#8217;,</p>
+<p><strong>‘VIR0262W</strong> SNAPMSG TRIGGERED - VIRTEL ABENDED | SNAP TAKEN’,</p>
 <p>Module :VIR0002</p>
 <p>Meaning A message has been trapped by the SNAPMSG function. Action taken will be either a SNAP dump or an ABEND of VirteL.</p>
 <p>Action :Determined by TCT parameters or the action set in the SNAPMSG=command.</p>
@@ -680,16 +705,16 @@ Response:-
 <p>This reduces the need to specify the HOME address in the ARBO for inbound lines thereby reducing the coupling between the various VIRTEL instances that could be running within a complex and the ARBO structures. Inbound address can just define the port via the :port structure only rather than the full nnn.nnn.nnn.nnn:port specification. The IP= keyword will provide the nnn.nnn.nnn.nnn address structure for a particular instance of Virtel. So one ARBO file could provide common port addresses and the VIRTEL instance complements this with a specific IP address using the JCL IP= parameter.</p>
 <p>This also allows VIRTEL to utilize a multi TCP/IP stack environment without the need for duplicated ARBO files.</p>
 <p><em>CLONE=NN keyword</em></p>
-<p>Currently, VIRTEL makes use of the System Symbolic &amp;SYSCLONE to enable substitution of the &#8220;+&#8221; character with the two character symbolic value of the System Symbolic. This can be used the TCT APPLID field and
+<p>Currently, VIRTEL makes use of the System Symbolic &amp;SYSCLONE to enable substitution of the “+” character with the two character symbolic value of the System Symbolic. This can be used the TCT APPLID field and
 terminal relay names defined in the ARBO. The purpose is to facilitate the common use of an ARBO file across multiple instances of VIRTEL, however, this feature is restricted to supporting only one instance of
 VIRTEL per LPAR.</p>
 <p>When multiple instances are required on any one LPAR the System Symbolic &amp;SYSCLONE and SYSPLUS=YES feature do not provide sufficient uniqueness, consequently multiple ARBO files are required. This feature endeavours to remove the restriction by providing an override through the use of the CLONE=nn keyword in the JCL parameter.</p>
-<p>When specified, the CLONE value will override the IBM system symbolic value and will be used to replace the &#8220;plus&#8221; character as defined in the APPLID or terminal relay names.</p>
+<p>When specified, the CLONE value will override the IBM system symbolic value and will be used to replace the “plus” character as defined in the APPLID or terminal relay names.</p>
 <p>JCL example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0000</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;EH,,,192.168.170.30,00&#39;</span>
 </pre></div>
 </div>
-<p>This will start Virtel with the TCT called VIRTCTEH, use a default home address of 192.168.170.30 and override and &#8220;+&#8221; character with the value &#8220;00&#8221;.</p>
+<p>This will start Virtel with the TCT called VIRTCTEH, use a default home address of 192.168.170.30 and override and “+” character with the value “00”.</p>
 <p>The APPLID=APPLEH+ keyword, as defined in the TCT, will become APPLID=APPLEH00</p>
 <p>The CLONE= value replaces the IBM symbolic value, consequently the SYSCLONE-SYMBOL within scenario statements will now represent the JCL CLONE= value in scenario statements such as:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VALUE</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">SYSCLONE</span><span class="o">-</span><span class="n">SYMBOL</span><span class="p">)</span>
@@ -716,7 +741,7 @@ VIRTEL per LPAR.</p>
 <p>Action : Correct the VIRTEL JCL PARM field.</p>
 <p><strong>VIR0089W</strong> HOST IPADDR. OVERRIDDEN FROM PARM WITH IP=nnn.nnn.nnn.nnn</p>
 <p>Module :VIR0000</p>
-<p>Meaning :The ARBO didn&#8217;t specify an IP address for this line. GETHOSTID
+<p>Meaning :The ARBO didn’t specify an IP address for this line. GETHOSTID
 would have been used but this been overidden by the IP=address specified
 in the JCL PARM.</p>
 <p>Action : Virtel will use the IP address in the JCL PARM rather than default to the IP address returned by GETHOSTID.</p>
@@ -790,7 +815,7 @@ identified in message VIR0208I, or through an operator command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">VIT</span><span class="o">=</span><span class="n">OFFLOAD</span><span class="o">.</span>
 </pre></div>
 </div>
-<p><em>Setting up for trace &#8220;OFFLOAD&#8221;</em></p>
+<p><em>Setting up for trace “OFFLOAD”</em></p>
 <p>The trace buffers are offloaded to a GDG dataset which means historical trace data can be kept. To set up the GDG see the below. This job can also be found in the SAMPLIB dataset as member DEFTRGDG:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span>
 <span class="o">//*</span> <span class="n">DEFINE</span> <span class="n">THE</span> <span class="n">TRACE</span> <span class="n">GDG</span> <span class="n">DATASET</span>
@@ -866,15 +891,18 @@ it will subsequently be converted into a HTML template and served to the browser
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201601/TN201601.html" class="btn btn-neutral float-right" title="Customizing colours with CSS in Virtel 4.53" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201601/TN201601.html" class="btn btn-neutral float-right" title="Customizing colours with CSS in Virtel 4.53" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201520/TN201520.html" class="btn btn-neutral" title="Using the IBM System Logger with Virtel" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201520/TN201520.html" class="btn btn-neutral" title="Using the IBM System Logger with Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -908,7 +936,8 @@ it will subsequently be converted into a HTML template and served to the browser
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

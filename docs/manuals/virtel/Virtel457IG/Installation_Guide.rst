@@ -1,4 +1,12 @@
-.. _Virtel457IG:
+6.2.116. XM1 parameter
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	XM1=xmname Default=no XM connection
+	XM1=(xmname,,,,[pgmname])
+
+This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM1... _Virtel457IG:
 
 ========================
 Installation Guide V4.57
@@ -42,7 +50,54 @@ Syspertec Communication
 1. Summary of Amendments
 ========================
 
-1.10 Virtel version 4.57 (21 Jun 2016)
+1.11 Virtel version 4.57 (1st Jul 2017)
+--------------------------------------
+
+*VIRTEL Web Access:*
+
+- Bidirectional presentation support.
+
+- Enhanced font stretch mode. Optimization of screen size.
+
+- Additional RACHECK support for ForceLUNAME
+
+- Licence warning feature
+
+- Enhancements to USSMSG10 support module 
+
+- Enhancements to Virtel Web Macro interface (VWM)
+
+  - Keyboard mapping enhancements
+
+- Enhancements to Virtel Dynamic Directories Interface (DDI)
+
+  - Hotkey support for DDI macros
+
+  - New refresh options.
+
+*VIRTEL Web Modernisation & Integration:*
+
+- Enhancements to COPY$ NAME-OF. Support for TERMINAL, GROUP and RELAY items.
+
+- Enhancements to DEFAULT-FILED-WITH-CURSOR statement.  
+
+*Miscellaneous:*
+
+- Customizable HELP solution.
+
+- DNS access to resolve IP address or DNS name.
+
+- TCT option to support mixed case passwords
+
+- Additional language support
+
+- Batch export/import of RAW TRSF files.
+
+.. note:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.57 <tn201706>`.
+
+
+
+1.10 Virtel version 4.56 (21 Jun 2016)
 --------------------------------------
 
 *VIRTEL Web Access:*
@@ -3316,7 +3371,7 @@ This parameter allows you to override various VIRTEL Web Access settings. If HTP
 
 These parameters allow various HTML processing options to be set as defaults. Each parameter has the form HTSETx = (option, option, ...) where option can take the values listed below:
 
-**HTSET1** - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES
+**HTSET1** - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES, OPTION-DEFAULT-COMPATIBILITY
 
 **HTSET2** - NO-ADD-TO-CHECKBOX, NO-ADD-TO-LISTBOX, DO-NOT-IGNORE-BINARY-ZEROES
 
@@ -3703,12 +3758,21 @@ This parameter specifies the name presented by VIRTEL to the browser in the HTTP
 
 **rnode** - The name of the security management resource class which contains Minitel tree structure nodes, VIRTEL subapplication names, internal names of transactions associated with entry points, and directory names for file transfer.
 
-6.2.86. SECUR parameter
+6.2.86. RTERM parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
-	SECUR=NO/VIRTEL/RACF/TOPS/ACF2/RACROUTE Default=NO
+  RTERM=class 
+
+**class** = The security resource class for terminals. This options forces RACF to validate the name of the LU specified on the ForceLUNAME parameter.
+
+6.2.87. SECUR parameter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+	SECUR=NO/VIRTEL/RACF/TOPS/ACF2/RACROUTE/MIXEDCASE Default=NO
 
 For the MVS environment, the following options can be specified:
 
@@ -3742,7 +3806,15 @@ The following options are retained for compatibility with previous releases:
 
 If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
 
-6.2.87. SILENCE parameter
+Mixedcase supports prevents a password being automatically "UPPERCASED" prior to signon. This applies to RACF and Top Secret only. For example:-
+
+::
+
+  SECUR=(RACROUTE,MIXEDCASE),
+  or
+  SECUR=(RACROUTE,TOPS,MIXEDCASE),
+
+6.2.88. SILENCE parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3755,7 +3827,7 @@ If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
 
 The VIRTEL command SILENCE can be used to dynamically modify this parameter.
 
-6.2.88. SNAPMSG parameter
+6.2.89. SNAPMSG parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3773,7 +3845,7 @@ The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular me
 **Action**
   Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used. Default action is SNAP.
 
-6.2.89. SNAPW parameter
+6.2.90. SNAPW parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3782,7 +3854,7 @@ The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular me
 
 Indicates the default presentation format for SNAP and other dumps (80 or 132 columns). This parameter can be dynamically modified by the VIRTEL SNAPW command.
 
-6.2.90. SOMMR parameter
+6.2.91. SOMMR parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3793,7 +3865,7 @@ Indicates the default presentation format for SNAP and other dumps (80 or 132 co
 
 By default, the [SUMMARY] key is not transmitted to the application but serves to return the user to the tree structure. This parameter allows for the definition of a default which may be modified in the sub-server node definition. Where the value specified is a ‘01’, use of the [SUMMARY] key sets the cursor on the first field to be entered in the current screen.
 
-6.2.91. STATDSN parameter
+6.2.92. STATDSN parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3802,7 +3874,7 @@ By default, the [SUMMARY] key is not transmitted to the application but serves t
 
 **dsn1,...** - Dataset names of the files to be used for recording statistics if the parameter STATS=MULTI is specified. From 2 to 10 datasets can be specified. The datasets must be cataloged.
 
-6.2.92. STATS parameter
+6.2.93. STATS parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3830,7 +3902,7 @@ The STATS=MULTI option is only available in the MVS environment.
 
 **STATS=(SMF,nnn)** - The SMF record number used will be nnn. The specified number must be between 128 and 255. The STATS=SMF/(SMF,nnn) option is only available in the MVS environment.
 
-6.2.93. STRNO parameter
+6.2.94. STRNO parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3839,7 +3911,7 @@ The STATS=MULTI option is only available in the MVS environment.
 
 **n** - Number of concurrent accesses to VSAM files.
 
-6.2.94. SUITE parameter
+6.2.95. SUITE parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3848,7 +3920,7 @@ The STATS=MULTI option is only available in the MVS environment.
 
 **xx** - The 3270 AID function key which will be transmitted to the application when the Minitel user presses the [SUITE] function key. By default the [SUITE] function key is not transmitted to the application but serves to set the cursor to the following field. This parameter allows the definition of a general value by default that may be modified in the definition of the sub server node.
 
-6.2.95. SWAP parameter
+6.2.96. SWAP parameter
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3857,7 +3929,7 @@ The STATS=MULTI option is only available in the MVS environment.
 
 **Pnn** - Identifies the 3270 function key that causes VIRTEL to return to the multi-session menu (for SNA terminals, the ATTN key also performs this function). This parameter may take the following parameter values P1 to P24, PA1, PA2, or CLR.
 
-6.2.96. SYSPLUS parameter
+6.2.97. SYSPLUS parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3867,7 +3939,7 @@ The STATS=MULTI option is only available in the MVS environment.
 **YES** - VIRTEL will retrieve certain system symbols from z/OS. Whenever the '+' character appears in the APPLID parameter or in a terminal relay name, VIRTEL will replace the '+' by the value of the SYSCLONE symbol.
 **NO** - System symbols will not be retrieved, the '+' character will not be substituted in LU names, and the xxx-SYMBOL functionality of the NAME-OF tag and the COPY$ SYSTEM-TO-VARIABLE instruction is not active (see VIRTEL Web Access Guide).
 
-6.2.97. TCP1 parameter
+6.2.98. TCP1 parameter
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3889,7 +3961,7 @@ This parameter defines the characteristics of the connection to the TCP/IP stack
 
 **adsname** - The name which VIRTEL uses to identify itself to TCP/IP. The value * indicates that VIRTEL uses its VTAM APPLID as the address space identifier. The default value is blank, which means that TCP/IP will assign the name of the VIRTEL started task as the address space identifier. This parameter is ignored by the TCP/IP for VSE stack.
 
-6.2.98. TCP2 parameter
+6.2.99. TCP2 parameter
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3899,7 +3971,7 @@ This parameter defines the characteristics of the connection to the TCP/IP stack
 
 This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP2. The subparameters are the same as those of TCP1.
 
-6.2.99. TIMEOUT parameter
+6.2.100. TIMEOUT parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3908,7 +3980,7 @@ This parameter defines the characteristics of the connection to the TCP/IP stack
 
 **n** - Indicates in minutes the time-out after which a terminal connected to an external server will be force disconnected if no line activity is seen. A value of 0 means that the terminal will not be disconnected even if no activity is detected. The value specified here applies only when the “User time out” field in the external server definition is set to zero (see “Parameters of the external server” in the VIRTEL Connectivity Reference manual).
 
-6.2.100. TIMERQS parameter
+6.2.101. TIMERQS parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3925,7 +3997,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **n4** - Reserved for future use.
 
-6.2.101. TITRE1 parameter
+6.2.102. TITRE1 parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3934,7 +4006,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **ccccc** - The first line of the Multi-Session menu screen.
 
-6.2.102. TITRE2 parameter
+6.2.103. TITRE2 parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3943,7 +4015,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **ccccc** - The second line of the Multi-Session menu screen.
 
-6.2.103. TRACALL parameter
+6.2.104. TRACALL parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3958,7 +4030,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **XM** - Additional trace data for Cross-Memory communication
 
-6.2.104. TRACBIG parameter
+6.2.105. TRACBIG parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3967,7 +4039,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **n** - The number of entries reserved for the VIRTEL internal trace. The value indicated corresponds to n times 256 entries.
 
-6.2.105. TRACEB parameter
+6.2.106. TRACEB parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3976,7 +4048,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **nn** - The number of 1K buffers reserved for buffer data associated with entries in the VIRTEL internal trace. From VIRTEL 4.20 onwards, trace data is allocated above the 16MB line if possible.
 
-6.2.106. TRACEOJ parameter
+6.2.107. TRACEOJ parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -3989,7 +4061,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **NO** - No SNAP at VIRTEL termination.
 
-6.2.107. TRACEON parameter
+6.2.108. TRACEON parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4000,7 +4072,7 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 **NO** - The VIRTEL internal trace is not active.
 
-6.2.108. TRACTIM parameter
+6.2.109. TRACTIM parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4017,7 +4089,7 @@ VIRTEL uses the TOD clock to timestamp each entry in its internal trace table. T
 
 **TOD** - Timestamps are not adjusted for local time.
 
-6.2.109. TRAN parameter
+6.2.110. TRAN parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4026,7 +4098,7 @@ VIRTEL uses the TOD clock to timestamp each entry in its internal trace table. T
 
 This parameter should be coded in the same way as for the X25MCH macro in NPSI.
 
-6.2.110. UFILE1 to UFILE20 parameters
+6.2.111. UFILE1 to UFILE20 parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4051,7 +4123,7 @@ These parameters define the VSAM files used by VIRTEL for HTML directories. Each
 
 The UFILEx parameters must be defined in sequence with no intervening gaps in the suffix number x.
 
-6.2.111. VIRSECU parameter
+6.2.112. VIRSECU parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4062,7 +4134,7 @@ The UFILEx parameters must be defined in sequence with no intervening gaps in th
 
 **NO** - VIRTEL internal security is not available.
 
-6.2.112. VIRSV1 parameter
+6.2.113. VIRSV1 parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4073,7 +4145,7 @@ This parameter defines the characteristics of the interface to the VIRSV service
 
 **vsvname** - Name of the service request manager. Must be VIRSV.
 
-6.2.113. VSAMTYP parameter
+6.2.114. VSAMTYP parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4088,7 +4160,7 @@ This parameter defines the characteristics of the interface to the VIRSV service
 
 	VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see “Additional parameters for VSAM files”, page 78) and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see “UFILE1 to UFILE20”, page 75).
 
-6.2.114. VTKEYS parameter
+6.2.115. VTKEYS parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4097,7 +4169,7 @@ This parameter defines the characteristics of the interface to the VIRSV service
 
 **xxxxxxxx** - The name of a table added to the end of the VIRTCT allowing for redefinition of the function keys for VT100. Please refer to the member VTSAMPLE in SAMPLIB.
 
-6.2.115. VTOVER parameter
+6.2.116. VTOVER parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4106,7 +4178,16 @@ This parameter defines the characteristics of the interface to the VIRSV service
 
 **xxxxxxxx** - The name of a table added to the end of the VIRTCT allowing for dynamic override of certain parameters in the VIRTCT. Please refer to the section “Dynamic VIRTCT overrides”, page 81 for further details.
 
-6.2.116. XM1 parameter
+6.2.117. Warning parameter
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+  WARNING=nn, 
+
+Where nn is the number of days prior to issuing a licence warning message. If not specified no warning is given and Virtel will automatically close.
+
+6.2.118. XM1 parameter
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4126,7 +4207,7 @@ This parameter defines the characteristics of the connection to the cross-memory
 
 	**VIR0X09** - Interface program for MVS systems. This is the default.
 
-6.2.117. XM2 parameter
+6.2.119. XM2 parameter
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -4136,7 +4217,7 @@ This parameter defines the characteristics of the connection to the cross-memory
 
 This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM2. The subparameters are the same as those of the XM1 parameter.
 
-6.2.118. ZAPH parameter
+6.2.120. ZAPH parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ::

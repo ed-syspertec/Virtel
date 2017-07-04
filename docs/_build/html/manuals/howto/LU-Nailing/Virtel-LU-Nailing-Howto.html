@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -44,6 +46,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -87,7 +90,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
@@ -122,8 +128,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -132,25 +140,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../howto.html">Miscellaneous</a> &raquo;</li>
-      
-    <li>How To - Virtel Nailing</li>
+        
+      <li>How To - Virtel Nailing</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/howto/LU-Nailing/Virtel-LU-Nailing-Howto.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -668,7 +693,7 @@ EXCWHOST.</p>
 <dt>::</dt>
 <dd><ul class="first last simple">
 <li>ENTRY ID=EPREJECT,
-DESC=&#8217;Entry point for unauthorized HTTP users&#8217;,
+DESC=’Entry point for unauthorized HTTP users’,
 TRANSACT=REJ,
 TIMEOUT=0720,
 ACTION=0,
@@ -677,7 +702,7 @@ SIGNON=VIR0020H,
 MENU=VIR0021A,
 EXTCOLOR=X
 ENTRY ID=EXCWHOST,
-DESC=&#8217;EXC WEB entry point (users with cookie)&#8217;,
+DESC=’EXC WEB entry point (users with cookie)’,
 TRANSACT=EXCW,
 TIMEOUT=0720,
 ACTION=0,
@@ -686,7 +711,7 @@ SIGNON=VIR0020H,
 MENU=VIR0021A,
 EXTCOLOR=X
 ENTRY ID=INITVTAM,
-DESC=&#8217;Self-registration for line X-HTTP&#8217;,
+DESC=’Self-registration for line X-HTTP’,
 TRANSACT=INITV,
 TIMEOUT=0025,
 ACTION=0,
@@ -946,13 +971,16 @@ contained with the cookie.</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../FAQ/Virtel-FAQ.html" class="btn btn-neutral" title="How To - FAQs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../FAQ/Virtel-FAQ.html" class="btn btn-neutral" title="How To - FAQs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -986,7 +1014,8 @@ contained with the cookie.</p>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

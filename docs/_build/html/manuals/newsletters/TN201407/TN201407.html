@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -125,8 +131,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -135,25 +143,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Pass tickets and supporting Proxy Servers</li>
+        
+      <li>Pass tickets and supporting Proxy Servers</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201407/TN201407.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -205,7 +230,7 @@ Server: Virtel/4.53
 <p>In the above trace the CA-SiteMinder specific header “SM_User” can be seen as identifying the userid and the X-Forwarded-For:, a standard HTTP header, identifies the source IP address. For security reasons this proxy IP address must be tested for in a VIRTEL rule before the session can be established between the caller and the asset. There is no password associated with this logon – this will be generated via a passsTicket request on behalf of the userid identified in the “SM_User” header. The PassTicket will be created as part of the session setup between Virtel and the asset and on behalf of the caller.</p>
 <p><strong>Adding headers to the HTTP request.</strong></p>
 <p>Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.</p>
-<p><img alt="image1" src="../../../_images/image2.png" /> <em>Fig. 2. - Using the Firefox &#8220;Modify Headers&#8221; addin.</em></p>
+<p><img alt="image1" src="../../../_images/image2.png" /> <em>Fig. 2. - Using the Firefox “Modify Headers” addin.</em></p>
 <p>When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.</p>
 <p><img alt="image2" src="../../../_images/image3.png" /> <em>Fig. 3 - Modify Header active - red ICON</em></p>
 <p>The following definitions define what needs to be done to enable a user to log on without specifying a userid/password to an asset supported by the SSO server. In our example Virtel will logon to a CICS asset on
@@ -256,7 +281,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 <span class="n">PERMIT</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To allow Virtel to generate Pass Tickets for a particular application we must define any entry in the PTKTDATA class. This entry has the name &#8220;IRRPTAUTH.passTicketName.*&#8221;&#8221; and is a Group Entry. The Virtel USERID
+<p>To allow Virtel to generate Pass Tickets for a particular application we must define any entry in the PTKTDATA class. This entry has the name “IRRPTAUTH.passTicketName.*”” and is a Group Entry. The Virtel USERID
 should have update authority to this profile.</p>
 <p><img alt="image10" src="../../../_images/image11.png" /> <em>Fig. 11 - Seting Virtel up with RACF access to PTKTDATA class.</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
@@ -373,15 +398,18 @@ application. See preceding ICH408I message in the log.</td>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201409/TN201409.html" class="btn btn-neutral float-right" title="Mainframe printing with Virtel 4.56" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201409/TN201409.html" class="btn btn-neutral float-right" title="Mainframe printing with Virtel 4.56" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201406/TN201406.html" class="btn btn-neutral" title="Taking a VIRTEL terminal trace" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201406/TN201406.html" class="btn btn-neutral" title="Taking a VIRTEL terminal trace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -415,7 +443,8 @@ application. See preceding ICH408I message in the log.</td>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

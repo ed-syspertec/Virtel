@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
@@ -125,8 +131,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -135,25 +143,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-      
-    <li>Overview of a Virtel Session</li>
+        
+      <li>Overview of a Virtel Session</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/newsletters/TN201413/TN201413.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -236,13 +261,7 @@ maintains in order to identify a particular session. The session id
 logic is handled and managed by Virtel’s internal session manager.
 An example of a line trace is shown below:-</p>
 <p><img alt="image02" src="../../../_images/image02.png" /></p>
-<p>Loss of affinity will cause unpredictable results as Virtel will not
-be able to tie up the two half sessions. Loss of affinity can result
-from network configurations which do not employ affinity
-technologies. For example IBMs Sysplex Distributor requires the
-<strong>TIMEDAFF</strong> parameter to be specified. If Proxy Servers are used
-than the “Sticky Session” feature must be set<em>. See z/OS
-Communications Server: IP Configuration Reference SC27-3651-00&nbsp;</em></p>
+<p>Loss of affinity will cause unpredictable results as Virtel will not be able to tie up the two half sessions. Loss of affinity can result from network configurations which do not employ affinity technologies.  For example IBMs Sysplex Distributor requires the <strong>TIMEDAFF</strong> parameter to be specified. If Proxy Servers are used than the “Sticky Session” feature must be set. See z/OS Communications Server: IP Configuration Reference SC27-3651-00.</p>
 <p>For more information on setting up a Sysplex Distributor or visit
 <a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html</a> for
 further information on “sticky sessions”. In the following
@@ -374,15 +393,18 @@ session looks like this :-</p>
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN201414/TN201414.html" class="btn btn-neutral float-right" title="CICS Printing problem" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201414/TN201414.html" class="btn btn-neutral float-right" title="CICS Printing problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201412/TN201412.html" class="btn btn-neutral" title="Sharing user macros across multiple instances of Virtel" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201412/TN201412.html" class="btn btn-neutral" title="Sharing user macros across multiple instances of Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -416,7 +438,8 @@ session looks like this :-</p>
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

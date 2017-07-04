@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -88,7 +91,10 @@
           
             
             
-                <p class="caption"><span class="caption-text">Contents:</span></p>
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
@@ -146,8 +152,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">Virtel</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
       </nav>
 
 
@@ -156,25 +164,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
-      
-    <li>Audit, Operations and Performance V4.56</li>
+        
+      <li>Audit, Operations and Performance V4.56</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../../../_sources/manuals/virtel/Virtel456AP/audit_operations_ and_performance.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -201,7 +226,7 @@ any damages, direct or indirect, caused by errors or omissions in this document.
 contained in this document may be subject to change without notice. Nothing in this
 document should be construed in any manner as conferring a right to use, in whole or in
 part, the products or trademarks quoted herein.</p>
-<p class="last">&#8220;SysperTec Communication&#8221; and &#8220;VIRTEL&#8221; are registered trademarks. Names of other products
+<p class="last">“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
@@ -265,7 +290,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <dt>p</dt>
 <dd><dl class="first last docutils">
 <dt>Stops a line.</dt>
-<dd>The LINE START and STOP commands can also be issued from the z/OS or VSE console. See “Starting and stopping a line&#8221;</dd>
+<dd>The LINE START and STOP commands can also be issued from the z/OS or VSE console. See “Starting and stopping a line”</dd>
 </dl>
 </dd>
 </dl>
@@ -677,7 +702,7 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <p>The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the     operator console.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Refer to the section SILENCE parameter in the &#8220;Parameters of the VIRTCT&#8221; in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
+<p class="last">Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
 </div>
 </div>
 <div class="section" id="patching-a-virtel-program">
@@ -1024,7 +1049,7 @@ X001T007 XOT: OUTBOUND X25 COMMAND                          15:10:33.27
 00000 17                                                                            *.                               * 09891182
 </pre></div>
 </div>
-<p><em>Fig. 11 Example of &#8220;trace by rule&#8221; (XOT terminal to application on /PCNE line)</em></p>
+<p><em>Fig. 11 Example of “trace by rule” (XOT terminal to application on /PCNE line)</em></p>
 </div>
 </div>
 </div>
@@ -1523,7 +1548,7 @@ SELDATE 01012010 30122011
 <p>Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.</p>
 <p>4.3.1 Printing the VIRSTAT SMF record</p>
 <p>The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.</p>
-<p>Messages &#8220;VIR0612E VIRSTAT SMFWTM FAILED. RC=rc&#8221; and &#8220;VIR0611I VIRSTAT NOW RECORDING TO SMF&#8221; are in relation with SMF support. See &#8220;Virtel Messages and Operations&#8221; manual for more details.</p>
+<p>Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.</p>
 </div>
 <div class="section" id="memory-management">
 <h2>4.4 Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
@@ -1669,15 +1694,18 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
 
 
            </div>
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../Virtel456CN/connectivity_guide.html" class="btn btn-neutral float-right" title="Connectivity Reference V4.56" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../Virtel456CN/connectivity_guide.html" class="btn btn-neutral float-right" title="Connectivity Reference V4.56" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel453UG/user_guide.html" class="btn btn-neutral" title="User Guide V4.53" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel453UG/user_guide.html" class="btn btn-neutral" title="User Guide V4.53" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1711,7 +1739,8 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
             VERSION:'1',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
