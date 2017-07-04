@@ -694,7 +694,9 @@ other VTAM applications.
     address; in this case, the user is identified by a “Cookie” which
     the browser presents to VIRTEL with the HTTP request.
 
-*2.4.1.3. HTTP connections with non-predefined terminals*    
+.. _V453CN_Introduction:
+
+*2.4.1.3. HTTP connections with non-predefined terminals. ForceLUNAME option*    
 
 It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
 

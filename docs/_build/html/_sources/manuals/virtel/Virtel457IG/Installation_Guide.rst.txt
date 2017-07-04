@@ -3757,7 +3757,13 @@ This parameter specifies the name presented by VIRTEL to the browser in the HTTP
 
   RTERM=class 
 
-**class** = The security resource class for terminals. This options forces RACF to validate the name of the LU specified on the ForceLUNAME parameter.
+**class** = The security resource class for terminals. This options forces RACF to validate the name of the LU specified on the ForceLUNAME parameter. For further details on setting an LU name with the ForcedLUNAME parameter see '"ForcedLUNAME in the Virtel Connectivity guide."<#_V457CN_ForceLUNAME>'
+
+For example:-
+
+::
+
+	RTERM=Facility
 
 6.2.87. SECUR parameter
 ^^^^^^^^^^^^^^^^^^^^^^^
