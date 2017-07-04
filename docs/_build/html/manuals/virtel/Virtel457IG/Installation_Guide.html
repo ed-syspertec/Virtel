@@ -218,8 +218,45 @@ their respective owners.</p>
 </div>
 <div class="section" id="summary-of-amendments">
 <h2>1. Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="virtel-version-4-57-21-jun-2016">
-<h3>1.10 Virtel version 4.57 (21 Jun 2016)<a class="headerlink" href="#virtel-version-4-57-21-jun-2016" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="virtel-version-4-57-1st-jul-2017">
+<h3>1.11 Virtel version 4.57 (1st Jul 2017)<a class="headerlink" href="#virtel-version-4-57-1st-jul-2017" title="Permalink to this headline">¶</a></h3>
+<p><em>VIRTEL Web Access:</em></p>
+<ul class="simple">
+<li>Bidirectional presentation support.</li>
+<li>Enhanced font stretch mode. Optimization of screen size.</li>
+<li>Additional RACHECK support for ForceLUNAME</li>
+<li>Licence warning feature</li>
+<li>Enhancements to USSMSG10 support module</li>
+<li>Enhancements to Virtel Web Macro interface (VWM)<ul>
+<li>Keyboard mapping enhancements</li>
+</ul>
+</li>
+<li>Enhancements to Virtel Dynamic Directories Interface (DDI)<ul>
+<li>Hotkey support for DDI macros</li>
+<li>New refresh options.</li>
+</ul>
+</li>
+</ul>
+<p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
+<ul class="simple">
+<li>Enhancements to COPY$ NAME-OF. Support for TERMINAL, GROUP and RELAY items.</li>
+<li>Enhancements to DEFAULT-FILED-WITH-CURSOR statement.</li>
+</ul>
+<p><em>Miscellaneous:</em></p>
+<ul class="simple">
+<li>Customizable HELP solution.</li>
+<li>DNS access to resolve IP address or DNS name.</li>
+<li>TCT option to support mixed case passwords</li>
+<li>Additional language support</li>
+<li>Batch export/import of RAW TRSF files.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For further details see the Technical Newsletter <a class="reference internal" href="../../newsletters/TN201706/TN201706     .html#tn201706"><span class="std std-ref">Whats new in Virtel 4.57</span></a>.</p>
+</div>
+</div>
+<div class="section" id="virtel-version-4-56-21-jun-2016">
+<h3>1.10 Virtel version 4.56 (21 Jun 2016)<a class="headerlink" href="#virtel-version-4-56-21-jun-2016" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>VIRPLEX VSAMTYP=WRITER support in TCT.</li>
@@ -3091,7 +3128,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 </pre></div>
 </div>
 <p>These parameters allow various HTML processing options to be set as defaults. Each parameter has the form HTSETx = (option, option, …) where option can take the values listed below:</p>
-<p><strong>HTSET1</strong> - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES</p>
+<p><strong>HTSET1</strong> - MAXLENGTH, ID, BLANK-BINARY-ZEROES, HTML-ESCAPES, JAVASCRIPT-ESCAPES, XML-ESCAPES, AUTO-INCREMENTVARIABLES, OPTION-DEFAULT-COMPATIBILITY</p>
 <p><strong>HTSET2</strong> - NO-ADD-TO-CHECKBOX, NO-ADD-TO-LISTBOX, DO-NOT-IGNORE-BINARY-ZEROES</p>
 <p><strong>HTSET3</strong> - Reserved for future use</p>
 <p><strong>HTSET4</strong> - Reserved for future use</p>
@@ -3383,9 +3420,16 @@ applications with very large numbers of terminals defined. TEST allows monitorin
 </div>
 <p><strong>rnode</strong> - The name of the security management resource class which contains Minitel tree structure nodes, VIRTEL subapplication names, internal names of transactions associated with entry points, and directory names for file transfer.</p>
 </div>
+<div class="section" id="rterm-parameter">
+<h4>6.2.86. RTERM parameter<a class="headerlink" href="#rterm-parameter" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RTERM</span><span class="o">=</span><span class="k">class</span>
+</pre></div>
+</div>
+<p><strong>class</strong> = The security resource class for terminals. This options forces RACF to validate the name of the LU specified on the ForceLUNAME parameter.</p>
+</div>
 <div class="section" id="secur-parameter">
-<h4>6.2.86. SECUR parameter<a class="headerlink" href="#secur-parameter" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">NO</span><span class="o">/</span><span class="n">VIRTEL</span><span class="o">/</span><span class="n">RACF</span><span class="o">/</span><span class="n">TOPS</span><span class="o">/</span><span class="n">ACF2</span><span class="o">/</span><span class="n">RACROUTE</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
+<h4>6.2.87. SECUR parameter<a class="headerlink" href="#secur-parameter" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">NO</span><span class="o">/</span><span class="n">VIRTEL</span><span class="o">/</span><span class="n">RACF</span><span class="o">/</span><span class="n">TOPS</span><span class="o">/</span><span class="n">ACF2</span><span class="o">/</span><span class="n">RACROUTE</span><span class="o">/</span><span class="n">MIXEDCASE</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
 <p>For the MVS environment, the following options can be specified:</p>
@@ -3404,9 +3448,15 @@ applications with very large numbers of terminals defined. TEST allows monitorin
 <p><strong>ACF2</strong> - ACF2 with ACFDIAG (Only for VM). For MVS, this is treated as (RACROUTE,ACF2).</p>
 <p><strong>RACROUTE</strong> - Multi product interface security (via SAF).</p>
 <p>If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.</p>
+<p>Mixedcase supports prevents a password being automatically “UPPERCASED” prior to signon. This applies to RACF and Top Secret only. For example:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">MIXEDCASE</span><span class="p">),</span>
+<span class="ow">or</span>
+<span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">TOPS</span><span class="p">,</span><span class="n">MIXEDCASE</span><span class="p">),</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="silence-parameter">
-<h4>6.2.87. SILENCE parameter<a class="headerlink" href="#silence-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.88. SILENCE parameter<a class="headerlink" href="#silence-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SILENCE</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3415,7 +3465,7 @@ applications with very large numbers of terminals defined. TEST allows monitorin
 <p>The VIRTEL command SILENCE can be used to dynamically modify this parameter.</p>
 </div>
 <div class="section" id="snapmsg-parameter">
-<h4>6.2.88. SNAPMSG parameter<a class="headerlink" href="#snapmsg-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.89. SNAPMSG parameter<a class="headerlink" href="#snapmsg-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="p">(</span><span class="n">message</span><span class="p">,</span><span class="n">search</span><span class="p">,</span><span class="n">action</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3430,14 +3480,14 @@ applications with very large numbers of terminals defined. TEST allows monitorin
 </dl>
 </div>
 <div class="section" id="snapw-parameter">
-<h4>6.2.89. SNAPW parameter<a class="headerlink" href="#snapw-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.90. SNAPW parameter<a class="headerlink" href="#snapw-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPW</span><span class="o">=</span><span class="mi">80</span><span class="o">/</span><span class="mi">132</span> <span class="n">Default</span><span class="o">=</span><span class="mi">132</span>
 </pre></div>
 </div>
 <p>Indicates the default presentation format for SNAP and other dumps (80 or 132 columns). This parameter can be dynamically modified by the VIRTEL SNAPW command.</p>
 </div>
 <div class="section" id="sommr-parameter">
-<h4>6.2.90. SOMMR parameter<a class="headerlink" href="#sommr-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.91. SOMMR parameter<a class="headerlink" href="#sommr-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SOMMR</span><span class="o">=</span><span class="n">xx</span> <span class="n">Default</span><span class="o">=</span><span class="mi">00</span>
 </pre></div>
 </div>
@@ -3445,14 +3495,14 @@ applications with very large numbers of terminals defined. TEST allows monitorin
 <p>By default, the [SUMMARY] key is not transmitted to the application but serves to return the user to the tree structure. This parameter allows for the definition of a default which may be modified in the sub-server node definition. Where the value specified is a ‘01’, use of the [SUMMARY] key sets the cursor on the first field to be entered in the current screen.</p>
 </div>
 <div class="section" id="statdsn-parameter">
-<h4>6.2.91. STATDSN parameter<a class="headerlink" href="#statdsn-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.92. STATDSN parameter<a class="headerlink" href="#statdsn-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STATDSN</span><span class="o">=</span><span class="p">(</span><span class="n">dsn1</span><span class="p">,</span><span class="n">dsn2</span><span class="p">,</span><span class="o">...</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
 <p><strong>dsn1,…</strong> - Dataset names of the files to be used for recording statistics if the parameter STATS=MULTI is specified. From 2 to 10 datasets can be specified. The datasets must be cataloged.</p>
 </div>
 <div class="section" id="stats-parameter">
-<h4>6.2.92. STATS parameter<a class="headerlink" href="#stats-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.93. STATS parameter<a class="headerlink" href="#stats-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STATS</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span><span class="o">/</span><span class="p">(</span><span class="n">MULTI</span><span class="p">,</span><span class="n">CONTINUE</span><span class="o">/</span><span class="n">TERMINATE</span><span class="p">)</span> <span class="o">|</span> <span class="n">SMF</span> <span class="o">|</span> <span class="p">(</span><span class="n">SMF</span><span class="p">,</span><span class="n">nnn</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">YES</span>
 </pre></div>
 </div>
@@ -3469,28 +3519,28 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>STATS=(SMF,nnn)</strong> - The SMF record number used will be nnn. The specified number must be between 128 and 255. The STATS=SMF/(SMF,nnn) option is only available in the MVS environment.</p>
 </div>
 <div class="section" id="strno-parameter">
-<h4>6.2.93. STRNO parameter<a class="headerlink" href="#strno-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.94. STRNO parameter<a class="headerlink" href="#strno-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STRNO</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">8</span>
 </pre></div>
 </div>
 <p><strong>n</strong> - Number of concurrent accesses to VSAM files.</p>
 </div>
 <div class="section" id="suite-parameter">
-<h4>6.2.94. SUITE parameter<a class="headerlink" href="#suite-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.95. SUITE parameter<a class="headerlink" href="#suite-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SUITE</span><span class="o">=</span><span class="n">xx</span> <span class="n">Default</span><span class="o">=</span><span class="mi">00</span>
 </pre></div>
 </div>
 <p><strong>xx</strong> - The 3270 AID function key which will be transmitted to the application when the Minitel user presses the [SUITE] function key. By default the [SUITE] function key is not transmitted to the application but serves to set the cursor to the following field. This parameter allows the definition of a general value by default that may be modified in the definition of the sub server node.</p>
 </div>
 <div class="section" id="swap-parameter">
-<h4>6.2.95. SWAP parameter<a class="headerlink" href="#swap-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.96. SWAP parameter<a class="headerlink" href="#swap-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SWAP</span><span class="o">=</span><span class="n">Pnn</span> <span class="n">Default</span><span class="o">=</span><span class="n">P24</span>
 </pre></div>
 </div>
 <p><strong>Pnn</strong> - Identifies the 3270 function key that causes VIRTEL to return to the multi-session menu (for SNA terminals, the ATTN key also performs this function). This parameter may take the following parameter values P1 to P24, PA1, PA2, or CLR.</p>
 </div>
 <div class="section" id="sysplus-parameter">
-<h4>6.2.96. SYSPLUS parameter<a class="headerlink" href="#sysplus-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.97. SYSPLUS parameter<a class="headerlink" href="#sysplus-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SYSPLUS</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3498,7 +3548,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <strong>NO</strong> - System symbols will not be retrieved, the ‘+’ character will not be substituted in LU names, and the xxx-SYMBOL functionality of the NAME-OF tag and the COPY$ SYSTEM-TO-VARIABLE instruction is not active (see VIRTEL Web Access Guide).</p>
 </div>
 <div class="section" id="tcp1-parameter">
-<h4>6.2.97. TCP1 parameter<a class="headerlink" href="#tcp1-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.98. TCP1 parameter<a class="headerlink" href="#tcp1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TCP1</span><span class="o">=</span><span class="n">tcpname</span> <span class="n">Default</span><span class="o">=</span><span class="n">no</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> <span class="n">connection</span>
 <span class="n">TCP1</span><span class="o">=</span><span class="p">([</span><span class="n">tcpname</span><span class="p">],,,[</span><span class="n">maxsock</span><span class="p">],[</span><span class="n">pgmname</span><span class="p">],[</span><span class="n">adsname</span><span class="p">])</span>
 </pre></div>
@@ -3514,7 +3564,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>adsname</strong> - The name which VIRTEL uses to identify itself to TCP/IP. The value * indicates that VIRTEL uses its VTAM APPLID as the address space identifier. The default value is blank, which means that TCP/IP will assign the name of the VIRTEL started task as the address space identifier. This parameter is ignored by the TCP/IP for VSE stack.</p>
 </div>
 <div class="section" id="tcp2-parameter">
-<h4>6.2.98. TCP2 parameter<a class="headerlink" href="#tcp2-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.99. TCP2 parameter<a class="headerlink" href="#tcp2-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TCP2</span><span class="o">=</span><span class="n">tcpname</span> <span class="n">Default</span><span class="o">=</span><span class="n">no</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> <span class="n">connection</span>
 <span class="n">TCP2</span><span class="o">=</span><span class="p">([</span><span class="n">tcpname</span><span class="p">],,,[</span><span class="n">maxsock</span><span class="p">],[</span><span class="n">pgmname</span><span class="p">],[</span><span class="n">adsname</span><span class="p">])</span>
 </pre></div>
@@ -3522,14 +3572,14 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p>This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP2. The subparameters are the same as those of TCP1.</p>
 </div>
 <div class="section" id="timeout-parameter">
-<h4>6.2.99. TIMEOUT parameter<a class="headerlink" href="#timeout-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.100. TIMEOUT parameter<a class="headerlink" href="#timeout-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TIMEOUT</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">5</span>
 </pre></div>
 </div>
 <p><strong>n</strong> - Indicates in minutes the time-out after which a terminal connected to an external server will be force disconnected if no line activity is seen. A value of 0 means that the terminal will not be disconnected even if no activity is detected. The value specified here applies only when the “User time out” field in the external server definition is set to zero (see “Parameters of the external server” in the VIRTEL Connectivity Reference manual).</p>
 </div>
 <div class="section" id="timerqs-parameter">
-<h4>6.2.100. TIMERQS parameter<a class="headerlink" href="#timerqs-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.101. TIMERQS parameter<a class="headerlink" href="#timerqs-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TIMERQS</span><span class="o">=</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">,</span><span class="n">n3</span><span class="p">,</span><span class="n">n4</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3540,21 +3590,21 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>n4</strong> - Reserved for future use.</p>
 </div>
 <div class="section" id="titre1-parameter">
-<h4>6.2.101. TITRE1 parameter<a class="headerlink" href="#titre1-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.102. TITRE1 parameter<a class="headerlink" href="#titre1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TITRE1</span><span class="o">=</span><span class="s1">&#39;ccccc&#39;</span> <span class="n">Default</span><span class="o">=</span><span class="s1">&#39;SYSPERTEC&#39;</span>
 </pre></div>
 </div>
 <p><strong>ccccc</strong> - The first line of the Multi-Session menu screen.</p>
 </div>
 <div class="section" id="titre2-parameter">
-<h4>6.2.102. TITRE2 parameter<a class="headerlink" href="#titre2-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.103. TITRE2 parameter<a class="headerlink" href="#titre2-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TITRE2</span><span class="o">=</span><span class="s1">&#39;ccccc&#39;</span> <span class="n">Default</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
 </pre></div>
 </div>
 <p><strong>ccccc</strong> - The second line of the Multi-Session menu screen.</p>
 </div>
 <div class="section" id="tracall-parameter">
-<h4>6.2.103. TRACALL parameter<a class="headerlink" href="#tracall-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.104. TRACALL parameter<a class="headerlink" href="#tracall-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACALL</span><span class="o">=</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">,</span><span class="o">...</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -3564,21 +3614,21 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>XM</strong> - Additional trace data for Cross-Memory communication</p>
 </div>
 <div class="section" id="tracbig-parameter">
-<h4>6.2.104. TRACBIG parameter<a class="headerlink" href="#tracbig-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.105. TRACBIG parameter<a class="headerlink" href="#tracbig-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACBIG</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">40</span>
 </pre></div>
 </div>
 <p><strong>n</strong> - The number of entries reserved for the VIRTEL internal trace. The value indicated corresponds to n times 256 entries.</p>
 </div>
 <div class="section" id="traceb-parameter">
-<h4>6.2.105. TRACEB parameter<a class="headerlink" href="#traceb-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.106. TRACEB parameter<a class="headerlink" href="#traceb-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEB</span><span class="o">=</span><span class="n">nn</span> <span class="n">Default</span><span class="o">=</span><span class="mi">200</span>
 </pre></div>
 </div>
 <p><strong>nn</strong> - The number of 1K buffers reserved for buffer data associated with entries in the VIRTEL internal trace. From VIRTEL 4.20 onwards, trace data is allocated above the 16MB line if possible.</p>
 </div>
 <div class="section" id="traceoj-parameter">
-<h4>6.2.106. TRACEOJ parameter<a class="headerlink" href="#traceoj-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.107. TRACEOJ parameter<a class="headerlink" href="#traceoj-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEOJ</span><span class="o">=</span><span class="n">STANDARD</span><span class="o">/</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3587,7 +3637,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>NO</strong> - No SNAP at VIRTEL termination.</p>
 </div>
 <div class="section" id="traceon-parameter">
-<h4>6.2.107. TRACEON parameter<a class="headerlink" href="#traceon-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.108. TRACEON parameter<a class="headerlink" href="#traceon-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEON</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">YES</span>
 </pre></div>
 </div>
@@ -3595,7 +3645,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>NO</strong> - The VIRTEL internal trace is not active.</p>
 </div>
 <div class="section" id="tractim-parameter">
-<h4>6.2.108. TRACTIM parameter<a class="headerlink" href="#tractim-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.109. TRACTIM parameter<a class="headerlink" href="#tractim-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACTIM</span><span class="o">=</span><span class="n">CPU</span><span class="o">/</span><span class="n">LOCAL</span><span class="o">/</span><span class="n">TOD</span> <span class="n">Default</span><span class="o">=</span><span class="n">LOCAL</span>
 </pre></div>
 </div>
@@ -3609,14 +3659,14 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>TOD</strong> - Timestamps are not adjusted for local time.</p>
 </div>
 <div class="section" id="tran-parameter">
-<h4>6.2.109. TRAN parameter<a class="headerlink" href="#tran-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.110. TRAN parameter<a class="headerlink" href="#tran-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRAN</span><span class="o">=</span><span class="n">EVEN</span><span class="o">/</span><span class="n">ODD</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">Even</span>
 </pre></div>
 </div>
 <p>This parameter should be coded in the same way as for the X25MCH macro in NPSI.</p>
 </div>
 <div class="section" id="ufile1-to-ufile20-parameters">
-<h4>6.2.110. UFILE1 to UFILE20 parameters<a class="headerlink" href="#ufile1-to-ufile20-parameters" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.111. UFILE1 to UFILE20 parameters<a class="headerlink" href="#ufile1-to-ufile20-parameters" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UFILEx</span><span class="o">=</span><span class="p">(</span><span class="n">ddname</span><span class="p">,</span><span class="n">acbcard</span><span class="p">,</span><span class="n">rkp</span><span class="p">,</span><span class="n">keylen</span><span class="p">,</span><span class="n">mode</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
 </pre></div>
 </div>
@@ -3643,7 +3693,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p>The UFILEx parameters must be defined in sequence with no intervening gaps in the suffix number x.</p>
 </div>
 <div class="section" id="virsecu-parameter">
-<h4>6.2.111. VIRSECU parameter<a class="headerlink" href="#virsecu-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.112. VIRSECU parameter<a class="headerlink" href="#virsecu-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3651,7 +3701,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>NO</strong> - VIRTEL internal security is not available.</p>
 </div>
 <div class="section" id="virsv1-parameter">
-<h4>6.2.112. VIRSV1 parameter<a class="headerlink" href="#virsv1-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.113. VIRSV1 parameter<a class="headerlink" href="#virsv1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSV1</span><span class="o">=</span><span class="p">(</span><span class="n">vsvname</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -3659,7 +3709,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>vsvname</strong> - Name of the service request manager. Must be VIRSV.</p>
 </div>
 <div class="section" id="vsamtyp-parameter">
-<h4>6.2.113. VSAMTYP parameter<a class="headerlink" href="#vsamtyp-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.114. VSAMTYP parameter<a class="headerlink" href="#vsamtyp-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span> <span class="n">Default</span><span class="o">=</span><span class="n">NORMAL</span>
 </pre></div>
 </div>
@@ -3671,21 +3721,28 @@ The VIRTEL STAT command allows the console operator to display the status of the
 </div>
 </div>
 <div class="section" id="vtkeys-parameter">
-<h4>6.2.114. VTKEYS parameter<a class="headerlink" href="#vtkeys-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.115. VTKEYS parameter<a class="headerlink" href="#vtkeys-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VTKEYS</span><span class="o">=</span><span class="n">xxxxxxxx</span> <span class="n">Default</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p><strong>xxxxxxxx</strong> - The name of a table added to the end of the VIRTCT allowing for redefinition of the function keys for VT100. Please refer to the member VTSAMPLE in SAMPLIB.</p>
 </div>
 <div class="section" id="vtover-parameter">
-<h4>6.2.115. VTOVER parameter<a class="headerlink" href="#vtover-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.116. VTOVER parameter<a class="headerlink" href="#vtover-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VTOVER</span><span class="o">=</span><span class="n">xxxxxxxx</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
 <p><strong>xxxxxxxx</strong> - The name of a table added to the end of the VIRTCT allowing for dynamic override of certain parameters in the VIRTCT. Please refer to the section “Dynamic VIRTCT overrides”, page 81 for further details.</p>
 </div>
+<div class="section" id="warning-parameter">
+<h4>6.2.117. Warning parameter<a class="headerlink" href="#warning-parameter" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="o">=</span><span class="n">nn</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Where nn is the number of days prior to issuing a licence warning message. If not specified no warning is given and Virtel will automatically close.</p>
+</div>
 <div class="section" id="xm1-parameter">
-<h4>6.2.116. XM1 parameter<a class="headerlink" href="#xm1-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.118. XM1 parameter<a class="headerlink" href="#xm1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XM1</span><span class="o">=</span><span class="n">xmname</span> <span class="n">Default</span><span class="o">=</span><span class="n">no</span> <span class="n">XM</span> <span class="n">connection</span>
 <span class="n">XM1</span><span class="o">=</span><span class="p">(</span><span class="n">xmname</span><span class="p">,,,,[</span><span class="n">pgmname</span><span class="p">])</span>
 </pre></div>
@@ -3701,7 +3758,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <div><strong>VIR0X09</strong> - Interface program for MVS systems. This is the default.</div></blockquote>
 </div>
 <div class="section" id="xm2-parameter">
-<h4>6.2.117. XM2 parameter<a class="headerlink" href="#xm2-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.119. XM2 parameter<a class="headerlink" href="#xm2-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XM2</span><span class="o">=</span><span class="n">xmname</span> <span class="n">Default</span><span class="o">=</span><span class="n">no</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">XM</span> <span class="n">connection</span>
 <span class="n">XM2</span><span class="o">=</span><span class="p">([</span><span class="n">xmname</span><span class="p">],,,,[</span><span class="n">pgmname</span><span class="p">])</span>
 </pre></div>
@@ -3709,7 +3766,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p>This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM2. The subparameters are the same as those of the XM1 parameter.</p>
 </div>
 <div class="section" id="zaph-parameter">
-<h4>6.2.118. ZAPH parameter<a class="headerlink" href="#zaph-parameter" title="Permalink to this headline">¶</a></h4>
+<h4>6.2.120. ZAPH parameter<a class="headerlink" href="#zaph-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ZAPH</span><span class="o">=</span><span class="n">xxxxxxxx</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>

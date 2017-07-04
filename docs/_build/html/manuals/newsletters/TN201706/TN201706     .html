@@ -215,43 +215,21 @@ the /option/ pathname. See the <a class="reference internal" href="../../virtel/
 </div>
 <div class="section" id="presentation">
 <h2>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">¶</a></h2>
-<p><strong>5447 Option to align W2H page LEFT or CENTER</strong></p>
-<p>New Display Option in the “Miscellaneous” settings page to allow left
-alignment of the W2H page. This may be useful when no monospace font is
-available. Aligning LEFT may give a better appearance to the page as
-compared to the default where each line is centred. When the font is not
-exactly monospace, lines may not have the same length and vertical
-alignments may be lost.</p>
 <p><strong>5453 Add CSS rules for old versions of IE8</strong></p>
 <p>Added CSS rules for older versions of IE where the logo’s display codes
 for the new graphics were not displayed with the correct size.</p>
 <p><strong>5469 Customizable HELP solution</strong></p>
 <p>Help panels can now be customized using the /option/pathToHelp key of
 “option customisation” mode.</p>
-<p><strong>5477 Option to switch R2L or L2R</strong></p>
-<p>A new display option in the miscellaneous settings panel to define how
-text is displayed in the W2H page. The options are “Right to Left” or
-“Left to Right (Default)”.</p>
-<p>As an example in Hebrew, locale text support is detected and determined
-by the browser, the browser may try to display lines of text from right
-to left. This may not be what is required. Using this option, the user
-will be able to override the default Locale behaviour and force the
-display of Hebrew from left to right.</p>
-<p><strong>5482 Provide a control to switch “write mode”</strong></p>
-<p>When the ‘Bidirectional Data ‘ option is set, the key combination ‘Alt +
-Shift’ will switch the writing mode to Between “L2R” and “R2L”:</p>
-<p>The indicator ‘&lt;’ will appear on right of the status line. All text
-input (Hebrew or otherwise) will progress from right to left. Tabbing
-into a field will go to the end of the field, not the start. If “R2L”
-input reaches the start of the field, it remains there.</p>
-<p><strong>5481 New “BiDirectional” Option</strong></p>
+<p><strong>5481, 5482 New “BiDirectional” Option</strong></p>
 <p>The new BiDirectional option will now trigger the CSS unicodeBidi =
 “bidi-override” style on the Virtel “printReady” HTML Div template. This
 options enables user to have control on how text alignment should be
-set. Right of the page or Left of the Page. This replaces the “Right to
-Left” option of modification 5477.</p>
+set. Right of the page or Left of the Page.</p>
 <p><a class="reference internal" href="../../../_images/image147.png"><img alt="image0" src="../../../_images/image147.png" style="width: 3.52851in; height: 5.30278in;" /></a></p>
 <p>Figure 1 - BiDirectional Data Option</p>
+<p><strong>5490 Disable Long Poll</strong></p>
+<p>To support the i4web AS/400 interface a new option to disable “Long Poll” has been implemented. This can be defined in w2hparm.js or through a setting in the miscellaneous settings panel</p>
 <p><strong>5501 Arabic support - Reverse screen display option.</strong></p>
 <p>The “Alt-ENTER key” combination can globally switch the screen display
 from ‘left to right’ to ‘right to left’ and return. This is the way some
@@ -267,6 +245,8 @@ option:-</li>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">mirrorMode</span> <span class="o">=</span> <span class="n">true</span>
 </pre></div>
 </div>
+<p><img alt="image3" src="../../../_images/image329.png" /></p>
+<p>Figure 2 - Arabic Support using Right to Left presentation</p>
 <p><strong>5504 continuing=”YES” attribute to indicate a split input field</strong></p>
 <p>Adds an attribute ‘continuing=”YES”’ to a W2H SPAN for a 3270 field when
 it is the continuation of a field. For example when the 3270 continues

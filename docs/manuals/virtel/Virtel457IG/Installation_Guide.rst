@@ -43,7 +43,7 @@ Syspertec Communication
 ========================
 
 1.11 Virtel version 4.57 (1st Jul 2017)
---------------------------------------
+---------------------------------------
 
 *VIRTEL Web Access:*
 
@@ -85,7 +85,7 @@ Syspertec Communication
 
 - Batch export/import of RAW TRSF files.
 
-.. note:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.57 <tn201706>`.
+.. note:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.57 <#_tn201706>`.
 
 
 
@@ -3964,7 +3964,7 @@ This parameter defines the characteristics of the connection to the TCP/IP stack
 This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP2. The subparameters are the same as those of TCP1.
 
 6.2.100. TIMEOUT parameter
-^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 

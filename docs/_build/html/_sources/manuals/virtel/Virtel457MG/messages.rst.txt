@@ -3201,6 +3201,15 @@ Meaning
 Action
     None.
 
+VIR0843I MIXED-CASE PASSWORD SUPPORT IS ACTIVE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    Security
+Meaning
+    The user has defined the MIXEDCASE subparameter in the SECUR TCT keyword for TOP SECRET. This indicates to VIRTEL that it should support lower-case characters in passwords. Consequently VIRTEL will pass passwords to the security manager exactly as entered by the user, without translating them to upper case.
+Action
+    None.       
+
 VIR0850I VIRTEL IS USING ACF2 SECURITY
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
@@ -3228,8 +3237,36 @@ Meaning
 Action
     None.
 
+VIR0863I MIXED-CASE PASSWORD SUPPORT IS ACTIVE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    Security
+Meaning
+    The user has defined the MIXEDCASE subparameter in the SECUR TCT keyword. This indicates to VIRTEL that it should support lower-case characters in passwords. Consequently VIRTEL will pass passwords to the security manager exactly as entered by the user, without translating them to upper case.
+Action
+    None.    
+
 2.16.   Messages VIR09xxx
 =========================
+
+VIR0900I LICENCE VIRTEL licence information       
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0009
+Meaning
+    VIRTEL licence information messagee.
+Action
+    None.
+
+VIR0901I LICENCE IS ABOUT TO EXPIRE       
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0009
+Meaning
+    VIRTEL licence renewal has been triggered as determined by the TCT option WARNING=.
+Action
+    Contact Virtel Support to renew licence.
+
 
 VIR0904I ACQUIRING TERMINAL relayname(termid)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
