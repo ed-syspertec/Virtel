@@ -3237,32 +3237,25 @@ Description
 Entry point
     The name of the entry point which will be assigned to the incoming call if this rule matches the call characteristics.
 
-..note::
+.. note::
 
      The value $COOKIE$ in the “Entry Point” field has a special meaning. This value is meaningful only in rules attached to an HTTP line. If a rule with this value is found, and if the HTTP request contains a cookie named VirtelRef, then the value of the cookie is used to identify the user, and VIRTEL switches to the rule set associated with the user, instead of processing the remainder of the rules attached to the line. If the HTTP request does not contain a cookie named VirtelRef, VIRTEL ignores this rule, and continues with the next rule attached to the line. See “Correspondent management” in the VIRTEL Web Access Guide.
 
 Parameter
     (optional) A parameter which will be associated with incoming calls matched by this rule. This parameter can be used in the following cases:
-    • the value of the parameter can be retrieved in a connection script via the '&1' variable (see “Connection – Disconnection Scripts”, page 95)
-    • For an XOT line: the parameter can specify the LU name for an incoming PCNE call. The terminals on the AntiPCNE
-    line to which the call is routed must be defined in a logical pool (see “Terminals on an AntiPCNE line”, page 66)
-    • For an HTTP line: the parameter can specify the LU name to be used as the VTAM relay for an incoming HTTP call.
-    The relay terminals on the HTTP line must be defined in a logical pool (see “Terminals on an HTTP line”, page 17).
+    
+    - the value of the parameter can be retrieved in a connection script via the '&1' variable (see “Connection – Disconnection Scripts”, page 95)
+    - For an XOT line: the parameter can specify the LU name for an incoming PCNE call. The terminals on the AntiPCNE line to which the call is routed must be defined in a logical pool (see “Terminals on an AntiPCNE line”) 
+    - For an HTTP line: the parameter can specify the LU name to be used as the VTAM relay for an incoming HTTP call. The relay terminals on the HTTP line must be defined in a logical pool (see “Terminals on an HTTP line”).
 
 An asterisk at the end of the LU name signifies that the parameter is a prefix rather than a specific value.
 
 For an HTTP line: The value $URL$ in the “Parameter” field indicates that the actual parameter value will be obtained
 from the userdata field of the URL (see “VIRTEL URL formats” in the VIRTEL Web Access Guide).
 
-..note::
+.. note::
 
-    The value $COOKIE$ in the “Parameter” field has a special meaning. This value is meaningful only in rules attached to
-    an HTTP line. If a rule with this value is found, and if the HTTP request contains a cookie named VirtelRef, and the value
-    of the cookie matches a record in the VIRTEL correspondent file (see “Correspondent management” in the VIRTEL Web
-    Access Guide), then VIRTEL selects this rule and uses the VTAM LU name contained in the correspondent record as the
-    VTAM relay for the incoming HTTP call. If the HTTP request does not contain a cookie named VirtelRef, or if the value
-    of the cookie does not match any user in the correspondent file, then VIRTEL ignores this rule, and continues with the
-    next rule attached to the line.
+    The value $COOKIE$ in the “Parameter” field has a special meaning. This value is meaningful only in rules attached to an HTTP line. If a rule with this value is found, and if the HTTP request contains a cookie named VirtelRef, and the value of the cookie matches a record in the VIRTEL correspondent file (see “Correspondent management” in the VIRTEL Web Access Guide), then VIRTEL selects this rule and uses the VTAM LU name contained in the correspondent record as the VTAM relay for the incoming HTTP call. If the HTTP request does not contain a cookie named VirtelRef, or if the value of the cookie does not match any user in the correspondent file, then VIRTEL ignores this rule, and continues with the next rule attached to the line.
 
 Trace
     Trace indicator for incoming calls which match this rule.
@@ -3278,12 +3271,9 @@ Trace
     123
         Where the call is rerouted via an external server, the trace will also be applied on the line used for the outgoing call.
 
-..note::
-    Each of the following fields is preceded by a comparison indicator. The comparison indicator can be 0 (ignore), 1 (must
-    equal), 2 (must not equal), 3 (must begin with), 4 (must not begin with), 5 (must end with), or 6 (must not end with).
-    An incoming call matches this rule if all of the fields (except those whose comparison indicator is 0) match the
-    corresponding characteristic of the call. A rule with all its comparison indicators set to 0 is an unconditional rule, which
-    matches all incoming calls not matched by a higher priority rule.
+.. note::
+    Each of the following fields is preceded by a comparison indicator. The comparison indicator can be 0 (ignore), 1 (must equal), 2 (must not equal), 3 (must begin with), 4 (must not begin with), 5 (must end with), or 6 (must not end with). An incoming call matches this rule if all of the fields (except those whose comparison indicator is 0) match the corresponding characteristic of the call. A rule with all its comparison indicators set to 0 is an unconditional rule, which matches all incoming calls not matched by a higher priority rule.
+
 IP Subnet
     For an HTTP or SMTP line: The originating IP address or subnet address.
 Mask
@@ -3301,27 +3291,25 @@ eMail
     For an SMTP line: The sender’s email address.
 Calling DTE
     For an X25 line: The calling number specified in the X25 call packet.
-    For an HTTP line: The IP address of the reverse proxy (bastion host) which forwarded the request on behalf of the
-    originating user. If this field is present in the rule, and matches the source IP address of the HTTP request, then a
-    “forwarding header” (see below) in the HTTP request is considered to contain the real originating IP address. This
-    real originating IP address will be the one used for testing against the “IP Subnet” and “Mask” fields (if any) in the
-    rule. If the rule matches, then message VIRHT56I will be issued and the call will henceforth be considered to have
-    originated from the real originating IP address for the purposes of console messages and VIRLOG.
+
+    For an HTTP line: The IP address of the reverse proxy (bastion host) which forwarded the request on behalf of the originating user. If this field is present in the rule, and matches the source IP address of the HTTP request, then a “forwarding header” (see below) in the HTTP request is considered to contain the real originating IP address. This real originating IP address will be the one used for testing against the “IP Subnet” and “Mask” fields (if any) in the rule. If the rule matches, then message VIRHT56I will be issued and the call will henceforth be considered to have originated from the real originating IP address for the purposes of console messages and VIRLOG. 
+
     VIRTEL recognizes the following “forwarding headers” (in order of priority):
-    • iv-remote-address:
-    • X-Forwarded-For:
+    
+    - iv-remote-address:
+    - X-Forwarded-For:
 
-..note::
-           When the “Calling DTE” field contains an IP address, leading zeroes must be included where necessary. For example, 192.168.001.020
+    .. note::
+       When the “Calling DTE” field contains an IP address, leading zeroes must be included where necessary. For example, 192.168.001.020
 
-    Reverse proxy addresses may also be specified in the HTFORWD parameter of the VIRTCT (see “Parameters of the
-    VIRTCT” in the VIRTEL Installation Guide).
+    Reverse proxy addresses may also be specified in the HTFORWD parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide).
+
 Called
     For an X25 line: The called number specified in the X25 call packet. CUD0 (Hex)For an X25 line: Up to 8 hexadecimal digits representing the first 4 bytes of the CUD field of the X25 call packet. For example, 01000000 (PAD), C0123450 (PCNE), C4 (GATE).
 User Data
     For an X25 line: The remaining part of the CUD (call user data) in the X25 call packet. The data in this field is expressed in character format. It is compared with the ASCII data starting at the 5th byte of the CUD field in the X25 call packet. VIRTEL performs the necessary ASCII-EBCDIC translation prior to comparing the contents of this field. To test the first 4 bytes of the CUD, use the CUD0 field in the rule instead. Example: a call packet whose “Call User Data” field contains: C0123450 41424331 matches a rule which specifies CUD0=C0123450 and UserData=ABC1. For an HTTP line: The contents of the userdata field of the URL (see “VIRTEL URL formats” in the VIRTEL Web Access Guide).
 
-..note::
+.. note::
     The following fields indicate the time periods during which this rule is active. The comparison indicator can be 0, 1, or 2.
 
 Days
@@ -3467,14 +3455,14 @@ Transactions
 Last page
     This field, which is used only for HTTP connections, indicates the name of the HTML page which will be displayed after the connection with the host application terminates. If blank, then the default page (whose name is equal to the entry point name) will be displayed.
 
-..note::    
+.. note::    
     
     For Minitel entry points, the “Last page” field is not displayed, and the “Videotex key” field is displayed instead.
 
 Videotex key
     This field, which is used only for Minitel connections, indicates the key word used to direct the request to the Minitel tree structure.
 
-..note::
+.. note::
     
     If routing is not necessary, for example for STI or JOUTEL, the keyword $NONE$ may be used.
 
@@ -3493,7 +3481,7 @@ Do if timeout
         2
             Generate an inaudible alarm to avoid X25 PAD timeout.
 
-..note::
+.. note::
 
     While the terminal is connected to an external server application, session outage can also occur if the timeouts specified in the external server definition are exceeded.
 
@@ -3668,7 +3656,7 @@ transaction detail definition screen will then be displayed.
 Internal name
     Indicates the internal name of the transaction as it is known to the system. If a security tool is used, this name must be defined as a resource. Only those users with the resource in one of their profiles can access this transaction.
 
-..note::
+.. note::
      Note that on the Multi-Session Menu, these transactions appear by alphanumeric order of their internal name.
 
 External name
@@ -3725,7 +3713,7 @@ PassTicket
         2
             specifies that VIRTEL should generate a PassTicket, even if the user has not signed on to VIRTEL. The PASSTCK=YES parameter must also be specified in the VIRTCT.
 
-..note::            
+.. note::            
     Note: The value 2 implies that the user has supplied the userid in some other way, for example by means of a scenario containing the COPY$ VARIABLE-TO-SYSTEM,FIELD=(NAME-OF,USER) instruction (see VIRTEL Web Access Guide)
 
 Name
@@ -3760,7 +3748,7 @@ How started
 
     Do not confuse automatic startup in transparent mode (menu program VIR0021B + transaction startup mode 1) with automatic startup offering the possibility to return to a selection menu screen (menu program other than VIR0021B or VIR0021C + transaction startup mode 3).
 
-..note::    
+.. note::    
 
     Note than startup mode 4 which was present in VIRTEL prior to version 4.0 has been replaced by value 0 in the “Security” field.
 
@@ -3827,7 +3815,7 @@ Output Scenario
     For HTML transactions, each of these fields may contain the name of an HTML presentation module. For each field which is non-blank, VIRTEL will call the corresponding scenario (INITIAL, FINAL, INPUT, or OUTPUT) in the named presentation module.
     An OUTPUT scenario may also be referenced by a VIRTEL Multi-Session transaction.
 
-..note::
+.. note::
 
     Scenarios are described under the heading “Presentation modules” in the VIRTEL Web Access Guide.
 
@@ -3838,7 +3826,7 @@ Update a transaction
 Create a new transaction
     To create a new transaction, complete all required fields and press [ENTER]. The message CREATE OK indicates that the operation completed successfully.
 
-..note::
+.. note::
 
     After adding, deleting or updating a transaction, it is essential to update the entry points used by this transaction by pressing [PF1] at the entry point summary screen.
 
@@ -3878,7 +3866,7 @@ The command acts upon the data which precedes it. The commands are as follows:-
 | Kill the script (connection / disconnection)                                                               | &/K       |
 +------------------------------------------------------------------------------------------------------------+-----------+
 
-..note::
+.. note::
     
     Any blanks immediately following a &/ command are ignored.
 
@@ -3976,39 +3964,27 @@ Note 7
 
 *5.4.2. Script method of operation*
 
-If present, a script is first called when the initial connection is made to the application. VIRTEL examines the start of
-the script to see if it begins with the order &W (wait for first message from application). If so, then no further action is
-taken at this time, and script processing continues after the first message is received from the application. Otherwise,
-the first clause of the script is actioned according to its command code, as follows:
+If present, a script is first called when the initial connection is made to the application. VIRTEL examines the start of the script to see if it begins with the order &W (wait for first message from application). If so, then no further action is taken at this time, and script processing continues after the first message is received from the application. Otherwise, the first clause of the script is actioned according to its command code, as follows:
 
-• &/W, &/F, &/I : no further action is taken at this time, the clause will be reprocessed when the first message arrives from the application
-• &/T, &/A : the data preceding the command is transmitted to the terminal or application
-• &/K : the connection is scheduled for termination
+- &/W, &/F, &/I : no further action is taken at this time, the clause will be reprocessed when the first message arrives from the application
+- &/T, &/A : the data preceding the command is transmitted to the terminal or application
+- &/K : the connection is scheduled for termination
 
-Subsequently, VIRTEL processes one clause of the script each time a message arrives from the application. Each clause
-is actioned according to its command code, as follows:
+Subsequently, VIRTEL processes one clause of the script each time a message arrives from the application. Each clause is actioned according to its command code, as follows:
 
-• &/W : VIRTEL tests whether the data preceding the &/W command appears in the message. If the data is not found, then the message is discarded, and the &/W clause is processed again when the next message arrives from the application. If the data is found, then the message is discarded and the next clause in the script is immediately processed.
-• &/F : VIRTEL tests whether the data preceding the &/F command appears in the message. If the data is not found, then the message is sent to the terminal, and the &/F clause is processed again when the next message arrives from the application. If the data is found, then the message is discarded and the next clause in the script is immediatelyprocessed.
-• &/I : the application message is discarded.
-• &/T, &/A : the data preceding the command is transmitted to the terminal or application.
-• &/K : VIRTEL will send the message and immediately disconnect the communication, without waiting for the response (asynchronous mode used with certain servers).
+- &/W : VIRTEL tests whether the data preceding the &/W command appears in the message. If the data is not found, then the message is discarded, and the &/W clause is processed again when the next message arrives from the application. If the data is found, then the message is discarded and the next clause in the script is immediately processed.
+- &/F : VIRTEL tests whether the data preceding the &/F command appears in the message. If the data is not found, then the message is sent to the terminal, and the &/F clause is processed again when the next message arrives from the application. If the data is found, then the message is discarded and the next clause in the script is immediatelyprocessed.
+- &/I : the application message is discarded.
+- &/T, &/A : the data preceding the command is transmitted to the terminal or application.
+- &/K : VIRTEL will send the message and immediately disconnect the communication, without waiting for the response (asynchronous mode used with certain servers).
 
-Data sent to the application by means of the &/A command must be constructed in the format expected by the
-application. In the case of a 3270 application, the message is in the form of a 3270 data stream. VIRTEL adds a
-standard 3-byte 3270 prefix (consisting of AID character and cursor SBA) which defaults to default is 7D4040 but may
-be overridden by a &* or &£ order embedded in the preceding script data. In the case of a Minitel application, VIRTEL
-adds the appropriate suffix (0Dxx) as indicated by an &* order embedded in the preceding script data (see table of
-script orders below).
+Data sent to the application by means of the &/A command must be constructed in the format expected by the application. In the case of a 3270 application, the message is in the form of a 3270 data stream. VIRTEL adds a standard 3-byte 3270 prefix (consisting of AID character and cursor SBA) which defaults to default is 7D4040 but may be overridden by a &* or &£ order embedded in the preceding script data. In the case of a Minitel application, VIRTEL adds the appropriate suffix (0Dxx) as indicated by an &* order embedded in the preceding script data (see table of script orders below).
 
-Data sent to the terminal by means of the &/T command must be constructed in the same format as the application
-would generate. In the case of a 3270 application, the message must be in the form of a 3270 data stream prefixed by
-a 3270 command code and WCC. VIRTEL will translate the message to the format required by the terminal (for
-example, HTML or Minitel) as appropriate.
+Data sent to the terminal by means of the &/T command must be constructed in the same format as the application would generate. In the case of a 3270 application, the message must be in the form of a 3270 data stream prefixed by a 3270 command code and WCC. VIRTEL will translate the message to the format required by the terminal (for example, HTML or Minitel) as appropriate.
 
 *5.4.3. Examples of scripts*
 
-..note::
+.. note::
     In these examples, script commands are introduced by the preferred sequence &/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.
 
 *5.4.3.1. Connection to CICS (no sign-on) with automatic start of a transaction*
@@ -4252,7 +4228,7 @@ Data
 Line number
     Specifies the internal name of the line on which the outgoing call will be made. The line type may be either X25 (GATE, FASTC, XOT, AntiGATE, AntiPCNE, AntiFC) or TCP with protocol VIRPESIT. “*” indicates that the first available line will be used.
 
-..Note::
+.. note::
 
     For users of VIRTEL prior to version 4.20:
 
@@ -4495,7 +4471,7 @@ Compression
        
     This level of compression allows a reduction of approximately 80% of the message volume. It can for example be used for PC’s connected at 1200 or 2400 Bps, thereby allowing response times approaching those of a 9600 Bps synchronous line.
 
-..note::
+.. note::
 
     This value can only be used for VIRTEL/PC connections. It is however possible to assign this value to type 2 color terminals in order to facilitate the learning of “screen types”.
 
@@ -4588,16 +4564,16 @@ Each terminal in the group is explicitly named within VIRTEL. This mode of defin
 
 Only the first terminal in the list is defined. The repeat count indicates the number of terminals which VIRTEL will create. The numeric portion of the terminal name, relay name, and 2nd relay name (if supplied) are incremented for each occurrence of the terminal.
 
-..note::
-The repetition increment takes effect from the rightmost numeric character and continues until the next nonnumeric character to the left. The increment is decimal and not hexadecimal.
+.. note::
+    The repetition increment takes effect from the rightmost numeric character and continues until the next nonnumeric character to the left. The increment is decimal and not hexadecimal.
 
 *7.4.5.1. Examples*
 
 In the examples shown below:
-• Terminal TERM0001, relay RELAY001, repetition 0016 causes the creation of 16 terminals TERM0001 to TERM0016 with relays RELAY001 to RELAY016.
-• Terminal G001T001, relay RELAY200, repetition 0020 causes the creation of 20 terminals G001T001 to G001T020 with relays RELAY200 to RELAY219.
-• Terminal TER00LUA, relay REL00CVA, 2nd relay FIX00CVA, repetition 0100 causes the creation of 100 terminals TER00LUA to TER99LUA with relays REL00CVA to REL99CVA and 2nd relays FIC00CVA to FIC99CVA.
-• The remaining examples show invalid repetitions caused by improper definitions. In each case the size of the numeric portion of one or more of the names is insufficient to allow the generation of a unique name for each occurrence in the repeat range.
+- Terminal TERM0001, relay RELAY001, repetition 0016 causes the creation of 16 terminals TERM0001 to TERM0016 with relays RELAY001 to RELAY016.
+- Terminal G001T001, relay RELAY200, repetition 0020 causes the creation of 20 terminals G001T001 to G001T020 with relays RELAY200 to RELAY219.
+- Terminal TER00LUA, relay REL00CVA, 2nd relay FIX00CVA, repetition 0100 causes the creation of 100 terminals TER00LUA to TER99LUA with relays REL00CVA to REL99CVA and 2nd relays FIC00CVA to FIC99CVA.
+- The remaining examples show invalid repetitions caused by improper definitions. In each case the size of the numeric portion of one or more of the names is insufficient to allow the generation of a unique name for each occurrence in the repeat range.
 
 ::
 
@@ -4738,7 +4714,7 @@ For explicit or repeated fixed entry definitions, the relay ACBs are opened at V
 
 When a single terminal must be presented under a different name according to the applications it logs on to across the same line, a logical pool must be used.
 
-..note::
+.. note::
     Logical pools are not usable on X25 Fast-Connect lines managed by NPSI. The following examples reference type 3 (Fast-Connect) terminals, used for example on an XOT line.
 
 As a concrete example, suppose that Minitels use an X25 line with 50 logical channels to logon to 3 distinct applications under different names according to sub-address or a specific user data value. The first two applications are accessible via the same entry point ENTRYP01, the third via entry point ENTRYP02. Applications APPLI01, APPLI02, APPLI03 must be accessed via relays with prefixes AP01R, BP02R and CP03R respectively. The first application only allows 5 simultaneous logons, the second has no limit, and the third allows 2 simultaneous logons. The set of VIRTEL definitions to resolve this problem is as follows.
@@ -4761,7 +4737,7 @@ The definition of the physical terminals and their association with the 3 sub-gr
     BRESA001 0050      BP02R001 Libre    3    2           Libre
     CRESA001 0002      CP03R001 Libre    3    2           Libre
 
-..note::
+.. note::
     These 3 terminal groups contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they may be defined as fixed explicit or repeated entries, but they must not be placed in a logical pool.
 
 *7.4.10.2. Entry point definitions*
@@ -4941,9 +4917,7 @@ It is possible to assign a physical terminal to a relay when a transaction conne
     TRESB001 0050    RELAYB01 Free     3 or 3  2           Free
     TRESC001 0002    RELAYC01 Free     3 or 3  2           Free
 
-The 3 groups of terminals contain the value \*POOL001 under the heading “\*Pool name” in their definition. When
-virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries – they
-cannot be placed in a logical pool.
+The 3 groups of terminals contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries – they cannot be placed in a logical pool.
 
 A. Appendix
 ===========
