@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation Guide V4.57 &mdash; Virtel 1 documentation</title>
+  <title>Installation Guide V4.57 &mdash; Virtel 7 documentation</title>
   
 
   
@@ -35,7 +35,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 1 documentation" href="../../../index.html"/>
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
         <link rel="up" title="Virtel Manuals" href="../../../virtel.html"/>
         <link rel="next" title="Messages Guide V4.57" href="../Virtel457MG/messages.html"/>
         <link rel="prev" title="Connectivity Reference V4.57" href="../Virtel457CN/connectivity_guide.html"/> 
@@ -70,7 +70,7 @@
             
             
               <div class="version">
-                1
+                4.57
               </div>
             
           
@@ -3642,11 +3642,59 @@ The VIRTEL STAT command allows the console operator to display the status of the
 </div>
 <div class="section" id="traceon-parameter">
 <h4>6.2.108. TRACEON parameter<a class="headerlink" href="#traceon-parameter" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEON</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">YES</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>TRACEON= ON | OFF | (Y|N,Y|N,Y|N)
+
+Default = ON    Equivalent VIT = YYN    Tracing ON
+
+OFF             Equivalent VIT = NNN    Tracing OFF (Not recommended)
+
+TRACEON=(n,n,n)         n = Y|N         Set Tracing options
+
+TRACEON=(N,N,N)                 Tracing OFF
+TRACEON=(Y,N,N)                 Minimal tracing, no data elements
+TRACEON=(Y,Y,N) Default         Full tracing with data, no archive      .
+TRACEON=(Y,Y,Y)                 Full tracing with data and archive
+
+Command Option:
+The VIT tracing categories can be set through the F VIRTEL,TRACE command
+
+F VIRTEL,TRACE,VIT=nnn                  nnn correspond to the three Y|N indicators.
+
+Example:
+
+F VIRTEL,TRACE,VIT=YYY                  Turn on full VIT tracing plus external buffer archive.
+
+Ability to offload external trace buffers to a dataset.
+With the external VIT trace facility comes the ability to offload the trace buffers to a dataset. This offload capability can be triggered when the maximum number of external trace buffers have been reached, as identified in message VIR0208I, or through an operator command:
+
+F VIRTEL,TRACE,VIT=OFFLOAD.
+
+Note: IF VIT is not equal to YYY then you will receive the message “VIR0068E INVALID COMMAND”. Offloading the VIT only applies to the external VIT data store.
+
+Setting up for trace &quot;OFFLOAD&quot;.
+The trace buffers are offloaded to a GDG dataset which means historical trace data can be kept. To set up the GDG see the below. This job can also be found in the SAMPLIB dataset as member DEFTRGDG.
+
+//*
+//* DEFINE THE TRACE GDG DATASET
+//*
+//DELETE   EXEC PGM=IDCAMS
+//SYSPRINT DD SYSOUT=*
+ DELETE VIRTEL.TRACE.GDG GDG
+ DELETE VIRTEL.TRACE.GDG.DSCB NVSAM
+ SET MAXCC=0
+//ALLOC1   EXEC PGM=IEFBR14
+//FILE     DD DSN=VIRTEL.TRACE.GDG.DSCB,
+//            UNIT=3390,DISP=(NEW,CATLG),
+//            SPACE=(TRK,(0,0)),VOL=SER=VVVVVV,
+//            DCB=BLKSIZE=13300
+//*
+//ALLOC2   EXEC PGM=IDCAMS
+//SYSPRINT  DD SYSOUT=*
+//SYSIN     DD *
+ DEF GDG(NAME(VIRTEL.TRACE.GDG) LIMIT(5) SCRATCH NOEMPTY)
+/*
 </pre></div>
 </div>
-<p><strong>YES</strong> - The VIRTEL internal trace is active.</p>
-<p><strong>NO</strong> - The VIRTEL internal trace is not active.</p>
 </div>
 <div class="section" id="tractim-parameter">
 <h4>6.2.109. TRACTIM parameter<a class="headerlink" href="#tractim-parameter" title="Permalink to this headline">¶</a></h4>
@@ -5912,7 +5960,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
-            VERSION:'1',
+            VERSION:'7',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,

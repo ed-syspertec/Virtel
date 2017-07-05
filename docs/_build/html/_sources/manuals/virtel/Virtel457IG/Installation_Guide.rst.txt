@@ -4064,11 +4064,58 @@ This parameter indicates the timeout values (in seconds) used by VIRTEL when att
 
 ::
 
-	TRACEON=YES/NO Default=YES
+	TRACEON= ON | OFF | (Y|N,Y|N,Y|N)
 
-**YES** - The VIRTEL internal trace is active.
+	Default = ON	Equivalent VIT = YYN	Tracing ON
 
-**NO** - The VIRTEL internal trace is not active.
+	OFF		Equivalent VIT = NNN	Tracing OFF (Not recommended)
+
+	TRACEON=(n,n,n) 	n = Y|N		Set Tracing options
+
+	TRACEON=(N,N,N)			Tracing OFF
+	TRACEON=(Y,N,N)			Minimal tracing, no data elements
+	TRACEON=(Y,Y,N)	Default		Full tracing with data, no archive	.
+	TRACEON=(Y,Y,Y)			Full tracing with data and archive
+
+	Command Option:
+	The VIT tracing categories can be set through the F VIRTEL,TRACE command
+
+	F VIRTEL,TRACE,VIT=nnn			nnn correspond to the three Y|N indicators.
+
+	Example:
+
+	F VIRTEL,TRACE,VIT=YYY			Turn on full VIT tracing plus external buffer archive.
+
+	Ability to offload external trace buffers to a dataset.
+	With the external VIT trace facility comes the ability to offload the trace buffers to a dataset. This offload capability can be triggered when the maximum number of external trace buffers have been reached, as identified in message VIR0208I, or through an operator command:
+
+	F VIRTEL,TRACE,VIT=OFFLOAD.
+
+	Note: IF VIT is not equal to YYY then you will receive the message “VIR0068E INVALID COMMAND”. Offloading the VIT only applies to the external VIT data store. 
+
+	Setting up for trace "OFFLOAD".
+	The trace buffers are offloaded to a GDG dataset which means historical trace data can be kept. To set up the GDG see the below. This job can also be found in the SAMPLIB dataset as member DEFTRGDG.
+
+	//*                                                        
+	//* DEFINE THE TRACE GDG DATASET                           
+	//*                                                        
+	//DELETE   EXEC PGM=IDCAMS                                 
+	//SYSPRINT DD SYSOUT=*                                     
+	 DELETE VIRTEL.TRACE.GDG GDG                               
+	 DELETE VIRTEL.TRACE.GDG.DSCB NVSAM                        
+	 SET MAXCC=0                                               
+	//ALLOC1   EXEC PGM=IEFBR14                                
+	//FILE     DD DSN=VIRTEL.TRACE.GDG.DSCB,                   
+	//            UNIT=3390,DISP=(NEW,CATLG),                  
+	//            SPACE=(TRK,(0,0)),VOL=SER=VVVVVV,            
+	//            DCB=BLKSIZE=13300                            
+	//*                                                        
+	//ALLOC2   EXEC PGM=IDCAMS                                 
+	//SYSPRINT  DD SYSOUT=*                                    
+	//SYSIN     DD *                                           
+	 DEF GDG(NAME(VIRTEL.TRACE.GDG) LIMIT(5) SCRATCH NOEMPTY)  
+	/*                                                         
+
 
 6.2.109. TRACTIM parameter
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
