@@ -111,7 +111,7 @@ What is Virtel
 
 Simply, Virtel is a host-based protocol converter that runs as a started task on the manframe. At the core of Virtel is a dynamic protocol converter which sits between host applications and the web. Inboard Virtel uses VTAM and IP technologies to interface with host applications and services, outbound it runs as an IP web server to interface with web technologies. The following diagram illustrates some of the protocols and applications supported by the Virtel Engine. 
 
-|image1|
+|image0|
 *The Virtel Engine*         
 
 VIRTEL Web Access (VWA)
