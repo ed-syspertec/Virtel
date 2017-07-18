@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>490</y>
+      <x>660</x>
+      <y>450</y>
       <w>110</w>
       <h>120</h>
     </coordinates>
@@ -18,8 +18,8 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>530</y>
+      <x>480</x>
+      <y>490</y>
       <w>200</w>
       <h>50</h>
     </coordinates>
@@ -29,21 +29,10 @@ bg=red</panel_attributes>
     <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>750</x>
-      <y>540</y>
-      <w>140</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-&gt;</panel_attributes>
-    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLState</id>
     <coordinates>
-      <x>870</x>
-      <y>530</y>
+      <x>910</x>
+      <y>370</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -54,43 +43,43 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>390</y>
+      <x>700</x>
+      <y>350</y>
       <w>30</w>
-      <h>330</h>
+      <h>350</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;310.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;330.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>870</x>
-      <y>600</y>
+      <x>910</x>
+      <y>440</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>XML
+    <panel_attributes>SOAP/XML
 type=sender</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>870</x>
-      <y>460</y>
+      <x>910</x>
+      <y>300</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>JSON
+    <panel_attributes>REST/JSON
 type=sender</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>460</y>
+      <x>850</x>
+      <y>300</y>
       <w>80</w>
       <h>110</h>
     </coordinates>
@@ -101,8 +90,8 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>810</x>
-      <y>540</y>
+      <x>850</x>
+      <y>380</y>
       <w>80</w>
       <h>100</h>
     </coordinates>
@@ -113,32 +102,37 @@ type=sender</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>690</x>
-      <y>400</y>
-      <w>200</w>
-      <h>40</h>
+      <x>760</x>
+      <y>360</y>
+      <w>140</w>
+      <h>130</h>
     </coordinates>
     <panel_attributes>lt=-
-&lt;             TCP/IP             &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+&lt; TCP/IP &gt;</panel_attributes>
+    <additional_attributes>10.0;110.0;50.0;110.0;50.0;10.0;100.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>380</x>
-      <y>530</y>
-      <w>100</w>
-      <h>40</h>
+      <x>320</x>
+      <y>440</y>
+      <w>170</w>
+      <h>140</h>
     </coordinates>
-    <panel_attributes>Applications
+    <panel_attributes>Applications:
+3270
+CICS (CommArea)
+IMS (CommArea)
+TSO
+MQ
 type=receiver</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>400</y>
+      <x>490</x>
+      <y>360</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
@@ -149,34 +143,58 @@ type=receiver</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>660</y>
+      <x>490</x>
+      <y>650</y>
       <w>240</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-
-&lt;                VTAM                    &gt;</panel_attributes>
+&lt;                   SNA                      &gt;</panel_attributes>
     <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>470</x>
-      <y>410</y>
+      <x>480</x>
+      <y>370</y>
       <w>30</w>
-      <h>290</h>
+      <h>330</h>
     </coordinates>
     <panel_attributes>lw=5
 lt=-</panel_attributes>
-    <additional_attributes>10.0;270.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;310.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>530</y>
+      <w>150</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-
+&lt; SNA &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;60.0;130.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLState</id>
+    <coordinates>
+      <x>890</x>
+      <y>570</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>type=sender
+LU 6.2</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>340</x>
-      <y>380</y>
-      <w>720</w>
-      <h>370</h>
+      <x>290</x>
+      <y>280</y>
+      <w>770</w>
+      <h>430</h>
     </coordinates>
     <panel_attributes>MAINFRAME
 bg=white
@@ -184,5 +202,17 @@ layer=0
 
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>850</x>
+      <y>370</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>

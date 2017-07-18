@@ -45,7 +45,7 @@
 
 
 \title{Virtel User Guide}
-\date{Jul 12, 2017}
+\date{Jul 18, 2017}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -175,15 +175,22 @@ For further details see the Technical Newsletter \DUrole{xref,std,std-ref}{Whats
 \end{sphinxadmonition}
 
 
-\chapter{Incoming calls}
-\label{\detokenize{User_Guide:virtel457ug}}\label{\detokenize{User_Guide:index-0}}\label{\detokenize{User_Guide:incoming-calls}}\label{\detokenize{User_Guide:user-guide-v4-57}}
+\chapter{The Virtel Engine}
+\label{\detokenize{User_Guide:virtel457ug}}\label{\detokenize{User_Guide:the-virtel-engine}}\label{\detokenize{User_Guide:index-0}}\label{\detokenize{User_Guide:user-guide-v4-57}}
 
 \section{Introduction}
 \label{\detokenize{User_Guide:introduction}}
 \index{Web Access!Virtel}\index{Virtel!Web Access}
 
+\subsection{What is Virtel}
+\label{\detokenize{User_Guide:what-is-virtel}}\label{\detokenize{User_Guide:index-1}}
+Simply, Virtel is a host-based protocol converter that runs as a started task on the manframe. At the core of Virtel is a dynamic protocol converter which sits between host applications and the web. Inboard Virtel uses VTAM and IP technologies to interface with host applications and services, outbound it runs as an IP web server to interface with web technogies.
+
+\sphinxincludegraphics{{virtel_overview}.png}
+
+
 \subsection{VIRTEL Web Access (VWA)}
-\label{\detokenize{User_Guide:index-1}}\label{\detokenize{User_Guide:virtel-web-access-vwa}}\begin{quote}
+\label{\detokenize{User_Guide:virtel-web-access-vwa}}\begin{quote}
 
 VIRTEL Web Access, formerly known as “Web-to-Host” (W2H), is a set
 of functions which enable information produced by host applications
