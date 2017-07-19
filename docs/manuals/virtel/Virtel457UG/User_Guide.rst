@@ -6055,19 +6055,17 @@ Click on the extension item and then, on the next page, click “Add to Chrome�
 Additional installation requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once the additional module has been installed, it will be necessary to specify the permissions.
+Once the extension has been installed, it will be necessary to specify the permissions.
 
-On the toolbar, click on the “Customize and control Google Chrome” icon in the upper right (1), then click on the “Settings” (2), then the extensions section. It is also possible to directly access the extension manager by typing “chrome://extensions” in the URL bar of the browser. From the extensions page, select “Extension” to display the VIRTEL extension.
-
-|image55|
-
-Verify that the extension is activated and click on the “Options” link.
+Go to the Chrome extension manager by typing “chrome://extensions” in the URL bar of the browser. From the extensions page, Locate the VIRTEL extension. Verify that the extension is activated and then click on the “Options” link.
 
 |image56|
 
 The following options should be set:
 
 |image57|
+
+To view the log screen select "See Logs" from the Virtel Extension Options. The following log screen will be displayed.
 
 |image58|
 
@@ -6083,14 +6081,14 @@ Allow copy / paste operation:
         - http://192.168.92.161:41001/* allows URLs communicating on the 41001 port access to the clipboard for specified IP address. URLs using another port will be denied access.
         - http://192.168.92.161:*/* allows URL communicating on any port to access the clipboard for specified IP address.
 
-IFrame support:
+**IFrame support:**
 
 Allows operation of copy / cut / paste operation when VIRTEL Web Access window is encapsulated in an IFrame.This
 information is supplemented by a list of areas on which these operations are allowed. This list may be identical to
 that defined in the previous section and, if required, may contain additional restrictions through a restrictive list.
 When a restrictive list is specified, the relevant fields should appear in the previous list.
 
-Logging:
+**Logging:**
 
 Whenever a copy / cut / paste operation is attempted the domain involved can be saved to a list. This list is presented in the following form:
 By default the system registers a historical log all operations. It is possible to restrict registration to only rejected
@@ -6098,22 +6096,182 @@ requests by checking the “Record only the gold failes Rejected requests” box
 and setting a retention time is configurable via “Maximum entries in history” and “Delete history entries after”
 settings.
 
-Operational audit - Firefox and Chrome
---------------------------------------
+.. index::
+   pair: Copy, Cut and Paste; Chrome Extension
+   pair: Host managed; Chrome Extension
+   pair: Chrome Extension; waaoAddOnHost.js file
+   pair: Chrome Extension; w2hparm.js setting
+
+Manage the settings on Host with chrome
+---------------------------------------
+
+Under certain conditions, it is possible to manage domain authorizations centrally by storing on the extension parameters on the host. Usually these parameters are managed by the user as described in the previous paragraph. The implementation of this method of extension management requires:
+
+- Virtel version V4.56 or later
+- Presence of Update # 5503 or later
+- Use of the Virtel Chrome Extension Version 40.0 or later
+
+To enable host management the "waaoAddOnHost" parameter must be set to "true" in the w2hparm.js file. If the "waaoAddOnHost" parameter is not present or set to anything other than true, the domain management of the permissions remains under control of the end user.
+
+::
+    
+     var w2hparm = {
+    "settingsGUI":{"version":"v2"},
+    "font":"Droid Sans Mono",
+    "fontsize":"window",
+    "ctrl":"ENTER",
+    "enter":"Newline",
+    "home":"Home",  
+    "end":"ErEof",
+    "shiftins":"Dup",
+    "shifthome":"FieldMark",
+    "shiftend":"End",
+    "ctrlins":"PA1",
+    "ctrldel":"PA2",
+    "ctrlend":"End",
+    "pgup":"PF7",
+    "pgdn":"PF8",
+    "pause":"CLEAR",
+    "style":"3270",
+    "waaoAddOnHost":true};
+
+*Set the waaoAddOnHost parameter to 'true' to manage Copy / Cut / Paste authorization from the Host.*
+
+In addition to the parameter 'waaoAddOnHost' being set to "true", a Javascript file named "waao-setting.js" maintains a list of parameters and permissions. This Javascript file must be uploaded into a directory that should then be referenced in the Virtel Entry Point by the transaction with an external name of "option" (lowercase). 
+
+|image55|
+
+The 'option' transactions can be installed using the ARBOLOAD member in the CNTL library, setting the parameter OPTION=YES. This will install the transactions CLI-03CO and W2H-03CO, setting the 'option' directory to point to the CLI-DIR through the internal pathname /option/. 
+
+An example of the waao-setting.js follows:-
+
+::
+
+    function getDefaults() {
+        /*
+        * This object contains the default settings for the Chrome Add-on options panel.
+        *
+        * If the add-on has no options saved (or if these default are enforced using 'settings_* then these values are used as the add-on configuration.
+        */
+        return {
+        /*
+        * Allow the user to change these extension settings using the options page?
+        * When false, the user can still see the options, but is cannot change them.
+        *
+        * Valid values : {true,false}
+        */
+        settings_locked : true,
+        /*
+        * Default options for the "Copy/Paste Settings" section of the options page
+        */
+        system_copy_paste: {
+            /*
+            * Allow copy/paste operations in system clipboard?
+            * Setting this to false will also disable copy/paste operations across iframes ('iframes_*
+            * Valid values : {true,false}
+            */
+            allow : true,
+            from_all_domains : false,
+            allowed_domains :
+            [
+            // 'https://*',
+            'http://192.168.170.46:41333/*'
+            ]
+            },
+            /*
+            * Default options for the "IFrames Support" section of the options page
+            */
+            iframes_copy_paste: {
+            allow : true,
+            from_system_domains : false,
+            allowed_domains :
+            [
+            // 'https://*',
+            // 'http://*',
+            ]
+        },
+        /*
+        * Default options for the "Logging" section of the options page
+        */
+        logs: {
+            /*
+            * Enable logging of the copy/paste operations?
+            *
+            * Valid values : {true,false}
+            */
+            allow : true,
+            /*
+            * Only record the copy/paste operations that failed or were rejected?
+            *
+            * Valid values : {true,false}
+            */
+            only_failures: false,
+            /*
+            * Limit the maximum number of entries to keep in the history log?
+            * Please note that the log is only cleaned when a new entry is recorded.
+            *
+            * Valid values : {true,false}
+            */
+            do_limit_count: true,
+            /*
+            * Maximum number of entries to keep in the history log.
+            * When recording a new entry in the log, the oldest entry is discarded if this limit *
+            * Only meaningful if 'logs.do_limit_count' is true (not used otherwise).
+            *
+            * Valid values : any integer greater or equal than 1.
+            */
+            limit_count: 25,
+            /*
+            * Limit the number of days that entries should be kept in the history log?
+            * Please note that the log is only cleaned when a new entry is recorded.
+            *
+            * Valid values : {true,false}
+            */
+            do_limit_days: false,
+            /*
+            * Maximum number of days that entries will be kept in the history log.
+            * When recording a new entry in the log, any entry older than this threshold will be *
+            * Only meaningful if 'logs.do_limit_days' is true (not used otherwise).
+            *
+            * Valid values : any integer greater or equal than 1.
+            */
+            limit_days: 7
+            },
+        };
+    }
+
+    
+
+Using Extensions
+----------------
 
 Use the right mouse button to open a selection menu for copy / cut / paste operations. The operational status of this feature is displayed in an ICON in top right.
 
 |image59|
+|image59a|
 
-*Green: Indicates that the module is properly installed and that the field is allowed.*
+*Green*: Indicates that the module is properly installed and that the URL is allowed. A leading "H" indicates that the settings are being controlled by the host.(Chrome only)*
 
 |image60|
 
-*Orange: Indicates that the module is installed correctly but the field is not defined as an authorized domain. (Available only for Chrome).*
+*Orange*: Indicates that the module is installed correctly but the URL is not defined as an authorized domain. A leading "H" indicates that the settings are managed by the host.(Chrome only)*
 
 |image61|
 
-*Red: The expansion module is not installed. For Firefox, it may also indicate that the field is not allowed, or that the navigation is done in private mode. If running in private mode, the function is supported from version 0.6.33.1 and above.*
+*Red*: 
+- For Chrome, the expansion module is not installed or for Host maintained environments, the waao-setting.js has not be located (Chrome only).
+    
+    Host related problems could be that:-
+
+        - The Virtel Entry Point does not include the 'option' transaction.
+
+        - The "waao-setting.js" cannot be found in the directory defined in the 'option' transaction. In this case an error message will be displayed in the Virtel log. 
+
+        - The "waao-setting.js is invalid or corrupt. In this case an error message will be displayed in the Virtel log. 
+
+
+- For Firefox, it may indicate that the field is not allowed, or that the navigation is done in private mode. If running in private mode, the function is supported from version 0.6.33.1 and above.*
+
 
 .. index::
    pair: Copy, cut and Paste; Edge
@@ -14800,13 +14958,16 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image52| image:: images/media/image52.png
 .. |image53| image:: images/media/image53.jpeg
 .. |image54| image:: images/media/image54.jpeg
-.. |image55| image:: images/media/image55.jpeg
-.. |image56| image:: images/media/image56.jpeg
-.. |image57| image:: images/media/image57.jpeg
+.. |image55| image:: images/media/image55.png
+.. |image56| image:: images/media/image56.png
+.. |image57| image:: images/media/image57.png
 .. |image58| image:: images/media/image58.png
 .. |image59| image:: images/media/image59.png
    :width: 1.95686in
    :height: 1.92531in
+.. |image59a| image:: images/media/image59a.png
+   :width: 1.95686in
+   :height: 1.92531in   
 .. |image60| image:: images/media/image60.png
    :width: 1.95686in
    :height: 1.93583in
