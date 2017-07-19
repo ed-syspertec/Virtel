@@ -14736,7 +14736,6 @@ The current VIRTEL Web Access product uses the following open source software:
     Under MIT license - http://en.wikipedia.org/wiki/JQuery_UI
 
 .. |image0| image:: images/media/overview.png
-            :scale: 50 %
 .. |image1| image:: images/media/logo_virtel_web.png
             :scale: 50 % 
 .. |image4| image:: images/media/image4.png
