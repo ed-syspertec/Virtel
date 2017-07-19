@@ -6081,7 +6081,7 @@ Allow copy / paste operation:
     Example of definitions:
         - http://www.mydomain.com/\* allow access to the clipboard for the domain. Typing http://www.mydomain.com:8080/ will be denied access, the presence of a port number in the URL does not match the rule.
         - http://192.168.92.161:41001/* allows URLs communicating on the 41001 port access to the clipboard for specified IP address. URLs using another port will be denied access.
-        -  http://192.168.92.161:*/* allows URL communicating on any port to access the clipboard for specified IP address.
+        - http://192.168.92.161:*/* allows URL communicating on any port to access the clipboard for specified IP address.
 
 IFrame support:
 
@@ -14735,7 +14735,7 @@ The current VIRTEL Web Access product uses the following open source software:
 - jQuery_UI
     Under MIT license - http://en.wikipedia.org/wiki/JQuery_UI
 
-.. |image0| image:: images/media/virtel_overview.png
+.. |image0| image:: images/media/overview.png
             :scale: 50 %
 .. |image1| image:: images/media/logo_virtel_web.png
             :scale: 50 % 
