@@ -109,54 +109,58 @@ Introduction
 What is Virtel
 --------------
 
-Simply, Virtel is a host-based protocol converter that runs as a started task on the manframe. At the core of Virtel is a dynamic protocol converter which sits between host applications and the web. Inboard Virtel uses VTAM and IP technologies to interface with host applications and services, outbound it runs as an IP web server to interface with web technologies. The following diagram illustrates some of the protocols and applications supported by the Virtel Engine. 
+Simply put, Virtel is a host-based protocol converter that runs as a started task on the manframe. At the core of Virtel is the Virtel Engine which sits between host applications and external environments such as the web or another external server. Virtel uses SNA and IP protocols to interface between host applications and external services. A classic example for Virtel would be interfacing between legacy 3270 applications, running on the host, and the web. Virtel would provide protocol conversion between 3270 datastreams and HTML. Users would no longer require 3270 terminal emulators to interface with legacy host applications as access would be through the standard web browser. 
+
+The following diagram illustrates some of the protocols and applications supported by the Virtel Engine. 
 
 |image0|
 *The Virtel Engine*         
 
+Virtel provides three models. Web access, Web modernisation and Web intergration.
+
+.. raw:: latex
+
+    \newpage   
+
+.. index::
+   pair: Web Access Overview; Virtel 
+
 VIRTEL Web Access (VWA)
 -----------------------
 
-    VIRTEL Web Access, formerly known as “Web-to-Host” (W2H), is a set
-    of functions which enable information produced by host applications
-    to be presented in an Internet browser.
+VIRTEL Web Access, formerly known as “Web-to-Host” (W2H), is a set of functions which enable information produced by host applications to be presented in an Internet browser.
 
-    The principle of operation of this program relies on the production
-    of HTML pages stored in a directory at the host site containing
-    standard tags and also tags specific to VIRTEL. Invoked by a browser
-    or a program, these pages form the basis of translation “on the fly”
-    of the specific tags, thus enabling the dynamic generation of pages
-    sent to the browser. The VWA model also includes functions which
-    allow dynamic modification of the presentation of the 3270 screens
-    in an HTML page, with the aim of making the interface as “clickable”
-    as possible. This chapter describes the set of functions required to
-    support this function and presupposes a certain knowledge of the
-    development of HTML pages.
+The principle of operation of VWA is the production and delivery of HTML pages stored in a Virtel directory at the host site. The pages delivered contain standard HTML tags and also tags specific to VIRTEL. Invoked by a browser or a program, these pages form the basis of translation “on the fly” of the specific tags, thus enabling the dynamic generation and delivery of pages to the browser. The VWA model also includes functions which allow dynamic modification of the presentation of the 3270 screens in an HTML page, with the aim of making the interface as “clickable” as possible. This chapter describes the set of functions required to support this function and presupposes a certain knowledge of the development of HTML pages.
 
-    Some fundamental principles must be taken into consideration:
+Some fundamental principles must be taken into consideration:
 
-1. Sessions between a browser and an HTTP server are in disconnected
-   mode, while they are in connected mode between VIRTEL and the host
-   application.
+1. Sessions between a browser and an HTTP server are in disconnected mode, while they are in connected mode between VIRTEL and the host application.
 
-2. The flow of information between an HTTP server and a client’s browser
-   always occurs on the initiative of the client.
+2. The flow of information between an HTTP server and a client’s browser always occurs on the initiative of the client.
 
-3. A single request from the browser will only invoke a single response
-   from the HTTP server, while the transmission of a message to an
-   application on the host may generate several response messages at
-   once (for example, a message to clear the screen followed by a new
-   screen image).
+3. A single request from the browser will only invoke a single response from the HTTP server, while the transmission of a message to an application on the host may generate several response messages at once (for example, a message to clear the screen followed by a new screen image).
 
-    These differences give rise to a need to ensure maintenance of
-    session context between a client and a host application. This is
-    done by the :index:`SESSION-CODE <pair: SESSION-CODE;Virtel session>` tag embedded in each template page.
+    These differences give rise to a need to ensure maintenance of session context between a client and a host application. This is done by the :index:`SESSION-CODE <pair: SESSION-CODE;Virtel session>` tag embedded in each template page.
 
-    Although the HTML pages used to display 3270 data contain specific
-    VIRTEL tags, these pages can be developed using standard web
-    development tools. The pages containing VIRTEL specific tags are
-    stored in a VIRTEL directory along with any images and other
-    elements required.
+    Although the HTML pages used to display 3270 data contain specific VIRTEL tags, these pages can be developed using standard web development tools. The pages containing VIRTEL specific tags are stored in a VIRTEL directory along with any images and other elements required.
+
+Let's look at how VWA works.
+
+|vwa_overview|
+
+1. The user enters a URL which points to the Virtel Engine. Virtel, running as a web server, will be listening on port 80 for any incoming calls. The pathname of the URL will be sed by Virtel to determine a course of action.
+
+2. Virtel receives the incoming call and processes the URL. The pathname /VIRT3270+TSO identifies a Virtel TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application. Virtel initiates a VTAM session. Subsequent HTML pages received from the browser will now be converted to 3270 datastreams. 
+
+3. A VTAM connection is established between TSO and Virtel with Virtel acting as a terminal relay between the browser and TSO.
+
+4. TSO sends the first 3270 screen to Virtel.
+
+5. Virtel, acting as a SLU in the VTAM session, receives the 3270 datastream and converts it to a web-page. It uses the page VIRT3270 as a template. Virtel pages are maintained on a VSAM file known as a TRSF.
+
+6. The constructed page is sent to the users browser.
+
+7. The browser displays the page which should resemble a TSO 3270 screen presentation.      
 
 .. index::
    pair: Web Modernisation; Virtel 
@@ -15034,3 +15038,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image110| image:: images/media/image110.png
 .. |image111| image:: images/media/image111.png
 .. |image112| image:: images/media/image112.png
+.. |vwa_overview| image:: images/media/vwa_overview.png
