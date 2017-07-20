@@ -147,20 +147,26 @@ Some fundamental principles must be taken into consideration:
 Let's look at how VWA works.
 
 |vwa_overview|
+*VWA Overview*
 
-1. The user enters a URL which points to the Virtel Engine. Virtel, running as a web server, will be listening on port 80 for any incoming calls. The pathname of the URL (/VIRT3270+TSO) will be processed by Virtel to determine a course of action.
 
-2. Virtel receives the incoming call and processes the URL. The pathname /VIRT3270+TSO identifies a Virtel TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application. Virtel initiates a VTAM session. Subsequent HTML pages received from the browser will now be converted to 3270 datastreams. 
+1. The user enters a URL which points to the Virtel Engine. In this case *http:www.myHost.com/virt3270+TSO*. Virtel, running as a web server, will be listening on default port 80 for any incoming calls. When Virtel receives the call-in it will process the pathname of the URL (*/virt3270+TSO*) to determine a course of action.
 
-3. A VTAM connection is established between TSO and Virtel with Virtel act as a terminal relay between the browser and TSO.
+2. The pathname /VIRT3270+TSO identifies a Virtel HTML page TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application and initiates a VTAM session with TSO. 
 
-4. TSO sends the first 3270 screen to Virtel.
+3. A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 datastreams and will be sent to TSO as if they had come from a 3270 terminal. 3270 datastreams sent by the TSO application will be converted into HTML pages using the VIRT3270 template and sent to the browser.  
+
+4. TSO responds to the session request and sends a 3270 screen to Virtel.
 
 5. Virtel, acting as a SLU in the VTAM session, receives the 3270 datastream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page VIRT3270 as a template. Virtel pages are maintained on a VSAM file known as a TRSF.
 
-6. The constructed page is sent to the users browser.
+6. The constructed HTML page is sent to the users browser.
 
-7. The browser displays the page which will resemble a standard 3270 screen.      
+7. The browser displays the page which will resemble a standard 3270 screen.
+
+.. raw:: latex
+
+    \newpage       
 
 .. index::
    pair: Web Modernisation; Virtel 
@@ -168,20 +174,29 @@ Let's look at how VWA works.
 VIRTEL Web Modernisation (VWM)
 ------------------------------
 
-    VIRTEL Web Modernisation, formerly known as “Host-Web-Services”
-    (HWS), allows the presentation of host applications to be modified,
-    without modifying the application itself. The presentation can be
-    adapted to a format (HTML, XML, Excel, etc) suited to the requester,
-    while hiding the details of navigation within the 3270 transactions.
+    VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc) suited to the requester, while hiding the details of navigation within the 3270 transactions.
 
     This function is implemented through a combination of the VIRTEL Web Access functions described in :ref:`Creating HTML and XML templates <#_V457UG_creating_HTML>`, and the scenario language described in :ref:`Web Modernisation VIRTEL Scenarios <#_V457UG_virtel_scenarios>`.
 
-    VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270
-    transactions to be accessed by intermediate servers (n-tier
-    architecture) or from a browser, while hiding the details of
-    navigation within the transactions. Variable input data for the
-    transaction can either be included in the URL (GET method), or sent
-    as data with the HTTP request (POST method).
+    VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of
+    navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).
+
+    With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenarion. Data could be extracted from the indivdual host responses and encapsulated into one HTML page. For example when a user requests a "list" this could result in a sequence of key strokes and displays. Taking the example:-
+
+    ..
+
+        User enters "ASMITH" in CICS MAP as a search operand. Presses Enter
+        First Screen returned.
+        User press PFK8 to obtain next screen.
+        Second screen returned.
+        User press PFK8 to obtain next screen.
+        Third screen returned. Last in sequence.
+
+    The above business logic i.e. "search for a name" can be encorporated into a Virtel Scenario. The user enters the search argument "ASMITH" and presses Enter. The HTML request is sent to Virtel. The request is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA. This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI "drop down list" encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data but presented in a "modernised" GUI fashion.        
+
+    |vwm_overview|
+    *VWM Overview*
+
 
 .. index::
    pair: Web Intergration; Virtel 
@@ -15039,3 +15054,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image111| image:: images/media/image111.png
 .. |image112| image:: images/media/image112.png
 .. |vwa_overview| image:: images/media/vwa_overview.png
+.. |vwm_overview| image:: images/media/vwm_overview.png

@@ -280,32 +280,36 @@ their respective owners.</p>
 </li>
 </ol>
 <p>Let’s look at how VWA works.</p>
-<p><img alt="vwa_overview" src="../../../_images/vwa_overview.png" /></p>
+<p><img alt="vwa_overview" src="../../../_images/vwa_overview.png" />
+<em>VWA Overview</em></p>
 <ol class="arabic simple">
-<li>The user enters a URL which points to the Virtel Engine. Virtel, running as a web server, will be listening on port 80 for any incoming calls. The pathname of the URL will be sed by Virtel to determine a course of action.</li>
-<li>Virtel receives the incoming call and processes the URL. The pathname /VIRT3270+TSO identifies a Virtel TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application. Virtel initiates a VTAM session. Subsequent HTML pages received from the browser will now be converted to 3270 datastreams.</li>
-<li>A VTAM connection is established between TSO and Virtel with Virtel acting as a terminal relay between the browser and TSO.</li>
-<li>TSO sends the first 3270 screen to Virtel.</li>
-<li>Virtel, acting as a SLU in the VTAM session, receives the 3270 datastream and converts it to a web-page. It uses the page VIRT3270 as a template. Virtel pages are maintained on a VSAM file known as a TRSF.</li>
-<li>The constructed page is sent to the users browser.</li>
-<li>The browser displays the page which should resemble a TSO 3270 screen presentation.</li>
+<li>The user enters a URL which points to the Virtel Engine. In this case <em>http:www.myHost.com/virt3270+TSO</em>. Virtel, running as a web server, will be listening on default port 80 for any incoming calls. When Virtel receives the call-in it will process the pathname of the URL (<em>/virt3270+TSO</em>) to determine a course of action.</li>
+<li>The pathname /VIRT3270+TSO identifies a Virtel HTML page TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application and initiates a VTAM session with TSO.</li>
+<li>A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 datastreams and will be sent to TSO as if they had come from a 3270 terminal. 3270 datastreams sent by the TSO application will be converted into HTML pages using the VIRT3270 template and sent to the browser.</li>
+<li>TSO responds to the session request and sends a 3270 screen to Virtel.</li>
+<li>Virtel, acting as a SLU in the VTAM session, receives the 3270 datastream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page VIRT3270 as a template. Virtel pages are maintained on a VSAM file known as a TRSF.</li>
+<li>The constructed HTML page is sent to the users browser.</li>
+<li>The browser displays the page which will resemble a standard 3270 screen.</li>
 </ol>
 </div>
 <div class="section" id="virtel-web-modernisation-vwm">
 <span id="index-4"></span><h4>VIRTEL Web Modernisation (VWM)<a class="headerlink" href="#virtel-web-modernisation-vwm" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div><p>VIRTEL Web Modernisation, formerly known as “Host-Web-Services”
-(HWS), allows the presentation of host applications to be modified,
-without modifying the application itself. The presentation can be
-adapted to a format (HTML, XML, Excel, etc) suited to the requester,
-while hiding the details of navigation within the 3270 transactions.</p>
+<div><p>VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc) suited to the requester, while hiding the details of navigation within the 3270 transactions.</p>
 <p>This function is implemented through a combination of the VIRTEL Web Access functions described in <a class="reference internal" href="#v457ug-creating-html"><span class="std std-ref">Creating HTML and XML templates</span></a>, and the scenario language described in <a class="reference internal" href="#v457ug-virtel-scenarios"><span class="std std-ref">Web Modernisation VIRTEL Scenarios</span></a>.</p>
-<p>VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270
-transactions to be accessed by intermediate servers (n-tier
-architecture) or from a browser, while hiding the details of
-navigation within the transactions. Variable input data for the
-transaction can either be included in the URL (GET method), or sent
-as data with the HTTP request (POST method).</p>
+<p>VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of
+navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).</p>
+<p>With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenarion. Data could be extracted from the indivdual host responses and encapsulated into one HTML page. For example when a user requests a “list” this could result in a sequence of key strokes and displays. Taking the example:-</p>
+<blockquote>
+<div>User enters “ASMITH” in CICS MAP as a search operand. Presses Enter
+First Screen returned.
+User press PFK8 to obtain next screen.
+Second screen returned.
+User press PFK8 to obtain next screen.
+Third screen returned. Last in sequence.</div></blockquote>
+<p>The above business logic i.e. “search for a name” can be encorporated into a Virtel Scenario. The user enters the search argument “ASMITH” and presses Enter. The HTML request is sent to Virtel. The request is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA. This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI “drop down list” encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data but presented in a “modernised” GUI fashion.</p>
+<p><img alt="vwm_overview" src="../../../_images/vwm_overview.png" />
+<em>VWM Overview</em></p>
 </div></blockquote>
 </div>
 <div class="section" id="virtel-web-integration-vwi">
