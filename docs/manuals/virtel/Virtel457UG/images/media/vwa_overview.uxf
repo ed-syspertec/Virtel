@@ -11,8 +11,7 @@
     </coordinates>
     <panel_attributes>fontsize=24
 Virtel Engine
-bg=red
-</panel_attributes>
+bg=red</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -88,7 +87,6 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>valign=center
 halign=center
-fontsize=14
 style=wordwrap
 lw=0
 4
@@ -109,7 +107,6 @@ it to be a normal 3270 terminal.
     </coordinates>
     <panel_attributes>valign=center
 halign=center
-fontsize=14
 style=wordwrap
 lw=0
 1
@@ -127,7 +124,6 @@ User enters URL to logon to TSO through Virtel
     </coordinates>
     <panel_attributes>valign=center
 halign=center
-fontsize=14
 style=wordwrap
 lw=0
 2
@@ -139,13 +135,12 @@ Acting as a web server, waiting on port 80, the URL connects the users browser t
     <id>UMLClass</id>
     <coordinates>
       <x>290</x>
-      <y>190</y>
+      <y>180</y>
       <w>130</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>valign=center
 halign=center
-fontsize=14
 style=wordwrap
 lw=0
 3
@@ -163,7 +158,6 @@ Virtel interrogates the URL and initiates a VTAM conection with the TSO applicat
     </coordinates>
     <panel_attributes>valign=center
 halign=center
-fontsize=14
 style=wordwrap
 lw=0
 5
@@ -182,8 +176,6 @@ in the initial URL. In this case VIRT3270.</panel_attributes>
     </coordinates>
     <panel_attributes>valign=center
 halign=center
-fontsize=14
-
 style=wordwrap
 lw=0
 6
@@ -200,7 +192,6 @@ Virtel sends the constructed page to the web browser.</panel_attributes>
     </coordinates>
     <panel_attributes>valign=center
 halign=center
-fontsize=14
 style=wordwrap
 lw=0
 7
@@ -246,17 +237,6 @@ IKJ56700A ENTER LOGON</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>510</x>
-      <y>360</y>
-      <w>120</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>420</x>
       <y>430</y>
       <w>210</w>
@@ -270,12 +250,12 @@ IKJ56700A ENTER LOGON</panel_attributes>
     <coordinates>
       <x>420</x>
       <y>350</y>
-      <w>110</w>
+      <w>130</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=[]-()
 </panel_attributes>
-    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -302,5 +282,16 @@ m1=//http:www.myHost.com/virt3270+TSO
 Tab
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>360</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
   </element>
 </diagram>
