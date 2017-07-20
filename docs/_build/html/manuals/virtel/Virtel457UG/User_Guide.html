@@ -294,77 +294,35 @@ their respective owners.</p>
 </div>
 <div class="section" id="virtel-web-modernisation-vwm">
 <span id="index-4"></span><h4>VIRTEL Web Modernisation (VWM)<a class="headerlink" href="#virtel-web-modernisation-vwm" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><p>VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc) suited to the requester, while hiding the details of navigation within the 3270 transactions.</p>
+<p>VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc) suited to the requester, while hiding the details of navigation within the 3270 transactions.</p>
 <p>This function is implemented through a combination of the VIRTEL Web Access functions described in <a class="reference internal" href="#v457ug-creating-html"><span class="std std-ref">Creating HTML and XML templates</span></a>, and the scenario language described in <a class="reference internal" href="#v457ug-virtel-scenarios"><span class="std std-ref">Web Modernisation VIRTEL Scenarios</span></a>.</p>
-<p>VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of
-navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).</p>
+<p>VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of     navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).</p>
 <p>With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenarion. Data could be extracted from the indivdual host responses and encapsulated into one HTML page. For example when a user requests a “list” this could result in a sequence of key strokes and displays. Taking the example:-</p>
-<blockquote>
-<div>User enters “ASMITH” in CICS MAP as a search operand. Presses Enter
-First Screen returned.
-User press PFK8 to obtain next screen.
-Second screen returned.
-User press PFK8 to obtain next screen.
-Third screen returned. Last in sequence.</div></blockquote>
-<p>The above business logic i.e. “search for a name” can be encorporated into a Virtel Scenario. The user enters the search argument “ASMITH” and presses Enter. The HTML request is sent to Virtel. The request is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA. This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI “drop down list” encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data but presented in a “modernised” GUI fashion.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">User</span> <span class="n">enters</span> <span class="s2">&quot;ASMITH&quot;</span> <span class="ow">in</span> <span class="n">CICS</span> <span class="n">MAP</span> <span class="k">as</span> <span class="n">a</span> <span class="n">search</span> <span class="n">operand</span><span class="o">.</span> <span class="n">Presses</span> <span class="n">Enter</span><span class="o">.</span>
+<span class="n">First</span> <span class="n">Screen</span> <span class="n">returned</span><span class="o">.</span>
+<span class="n">User</span> <span class="n">press</span> <span class="n">PFK8</span> <span class="n">to</span> <span class="n">obtain</span> <span class="nb">next</span> <span class="n">screen</span><span class="o">.</span>
+<span class="n">Second</span> <span class="n">screen</span> <span class="n">returned</span><span class="o">.</span>
+<span class="n">User</span> <span class="n">press</span> <span class="n">PFK8</span> <span class="n">to</span> <span class="n">obtain</span> <span class="nb">next</span> <span class="n">screen</span><span class="o">.</span>
+<span class="n">Third</span> <span class="n">screen</span> <span class="n">returned</span><span class="o">.</span> <span class="n">Last</span> <span class="ow">in</span> <span class="n">sequence</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The above business logic i.e. “search for a name” can be encorporated into a Virtel Scenario and in the example below we have called the scenario GETDATA. The user enters the search argument “ASMITH” and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA.</p>
+<p>This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI “drop down list” encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data presented in a “modernised” GUI fashion.</p>
 <p><img alt="vwm_overview" src="../../../_images/vwm_overview.png" />
 <em>VWM Overview</em></p>
-</div></blockquote>
 </div>
 <div class="section" id="virtel-web-integration-vwi">
 <span id="index-5"></span><h4>VIRTEL Web Integration (VWI)<a class="headerlink" href="#virtel-web-integration-vwi" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><p>The objective of VIRTEL Web Integration, formerly known as
-“Host-for-Web” (H4W), is to allow a host application to take maximum
-control of its web interface. This is in complete contrast to
-VWA/VWM, whose objective is to avoid modification of host
-applications.</p>
-<p>To control its web interface, an application has at its disposal
-primarily the 3270 screen, the VIRTEL table variable facility, the
-HTML page template, and a set of VIRTEL commands contained in
-structured fields. Additionally, for browser requests which enter
-VIRTEL using an entry point which specifies emulation type
-“HOST4WEB”, the application can also use a set of VIRTEL control
-commands which can be embedded in the 3270 screen via a BMS map,
-ISPF panel, or 3270 datastream. These HOST4WEB commands, available
-from VIRTEL version 4.28 onwards, provide the same general functions
-as the structured field commands in earlier versions.</p>
-<p>Table variables, structured field commands, and HOST4WEB commands,
-are sent by the application to the 3270 session using standard
-methods (EXEC CICS SEND, ISPEXEC DISPLAY PANEL, TSO TPUT, etc).
-VIRTEL intercepts and acts upon these commands, for example by
-selecting the page template or loading data which can be referenced
-by VIRTEL orders embedded in the page templates and used to build
-lists of values or data tables.</p>
+<p>The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.</p>
+<p>To control its web interface, an application has at its disposal primarily the 3270 screen, the VIRTEL table variable facility, the HTML page template, and a set of VIRTEL commands contained in structured fields. Additionally, for browser requests which enter VIRTEL using an entry point which specifies emulation type “HOST4WEB”, the application can also use a set of VIRTEL control commands which can be embedded in the 3270 screen via a BMS map, ISPF panel, or 3270 datastream. These HOST4WEB commands, available from VIRTEL version 4.28 onwards, provide the same general functions as the structured field commands in earlier versions.</p>
+<p>Table variables, structured field commands, and HOST4WEB commands, are sent by the application to the 3270 session using standard methods (EXEC CICS SEND, ISPEXEC DISPLAY PANEL, TSO TPUT, etc). VIRTEL intercepts and acts upon these commands, for example by selecting the page template or loading data which can be referenced by VIRTEL orders embedded in the page templates and used to build lists of values or data tables.</p>
 <p>For more information, refer to the chapter <a class="reference internal" href="#v457ug-programming-interfaces"><span class="std std-ref">“Programming Interfaces”</span></a>.</p>
-</div></blockquote>
 <span class="target" id="v457ug-service-transactions"></span></div>
 <div class="section" id="virtel-service-transactions">
 <span id="index-6"></span><h4>VIRTEL Service Transactions<a class="headerlink" href="#virtel-service-transactions" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><p>A Service Transaction is a long-running VIRTEL transaction which
-maintains a session with a host application and uses this session to
-serve a series of HTTP request / responses. Unlike a regular HTTP
-transaction, which serves requests only from its originating user,
-identified by a specific VIRTEL SESSION-CODE, a service transaction
-can serve a different user each time it processes an HTTP request.
-Service transactions are typically used to provide fast access to
-public information such as the lists of field values displayed by
-the “VIRTEL Suggest” feature.</p>
-<p>A service transaction is started by an HTTP URL in exactly the same
-way as a regular transaction, but when it has finished processing
-its first HTTP request, it indicates its readiness to serve another
-user, either by means of the script command &amp;) described under the
-heading “Transactions — Connection / Disconnection Scripts” in the
-VIRTEL Connectivity Reference documentation, or by means of the <a class="reference internal" href="#v457ug-action-serve-another-users"><span class="std std-ref">ACTION$ SERVE-ANOTHER-USER</span></a> command in a scenario.</p>
-<p>A service transaction remains connected to the host application
-between input messages. It is then eligible to process any HTTP
-request which specifies the same entry point and transaction name.
-Since service transactions can potentially be used by many different
-users, a typical service transaction will provide information which
-is not sensitive to being signed-on as a particular user.</p>
-</div></blockquote>
+<p>A Service Transaction is a long-running VIRTEL transaction which maintains a session with a host application and uses this session to serve a series of HTTP request / responses. Unlike a regular HTTP transaction, which serves requests only from its originating user, identified by a specific VIRTEL SESSION-CODE, a service transaction can serve a different user each time it processes an HTTP request. Service transactions are typically used to provide fast access to public information such as the lists of field values displayed by the “VIRTEL Suggest” feature.</p>
+<p>A service transaction is started by an HTTP URL in exactly the same way as a regular transaction, but when it has finished processing its first HTTP request, it indicates its readiness to serve another user, either by means of the script command &amp;) described under the heading “Transactions — Connection / Disconnection Scripts” in the VIRTEL Connectivity Reference documentation, or by means of the <a class="reference internal" href="#v457ug-action-serve-another-users"><span class="std std-ref">ACTION$ SERVE-ANOTHER-USER</span></a> command in a scenario.</p>
+<p>A service transaction remains connected to the host application between input messages. It is then eligible to process any HTTP request which specifies the same entry point and transaction name. Since service transactions can potentially be used by many different users, a typical service transaction will provide information which is not sensitive to being signed-on as a particular user.</p>
 <span class="target" id="v457ug-url-formats"></span></div>
 </div>
 <div class="section" id="virtel-url-formats">
