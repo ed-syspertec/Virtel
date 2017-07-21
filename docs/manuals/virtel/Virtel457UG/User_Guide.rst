@@ -4494,141 +4494,9 @@ Adding the global-settings property to the “VWA settings” file w2hparms.js p
 .. index::
    pair: w2hparm.js defaults;Web Customization 
 
-The list of keywords and possible values which can be coded in the w2hparm.js file is shown below:
+The list of keywords and possible values which can be coded in the w2hparm.js file is listed in :ref:`“Appendix A - w2hparm values” <#_V457UG_w2hparm_defaults>`.
 
-+---------------+-----------------------+---------------------------------------------------+
-| Keyword       | Caption               | Possible values                                   |
-+===============+=======================+===================================================+
-|"fontsize"     | Font size             | "window", "screen", "8", "10", "12", "14", "16"   |
-+---------------+-----------------------+---------------------------------------------------+
-|"font"         | Font family           | "font name"                                       |
-+---------------+-----------------------+---------------------------------------------------+
-|"autocapture"  | Auto-capture          | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-|"autoprint"    | Auto-print            | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-|"cursor"       | Cursor "Bar",         | "Blink", "Block"                                  |
-+---------------+-----------------------+---------------------------------------------------+
-|"vline"        | Vertical line         | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-|"hline"        | Horiz line            | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-|"esc"          | Esc key               | "no", "ATTN", "CLEAR", "Reset"                    |
-+---------------+-----------------------+---------------------------------------------------+
-|"ctrl"         | Ctrl key              | "no", "ENTER", "Newline"                          |
-+---------------+-----------------------+---------------------------------------------------+
-|"cmdleft"      | Left Cmd key          | "no", "Reset"                                     |
-+---------------+-----------------------+---------------------------------------------------+
-|"cmdright"     | Right Cmd key         | "no", “ENTER"                                     |
-+---------------+-----------------------+---------------------------------------------------+
-|"enter"        | Enter key             | "ENTER", "Newline"                                |
-+---------------+-----------------------+---------------------------------------------------+
-| "home"        | Home key              | "no", "Home"                                      |
-+---------------+-----------------------+---------------------------------------------------+
-| "end"         | End key               | "no", "ErEof", "End"                              |
-+---------------+-----------------------+---------------------------------------------------+
-| "pgup"        | PageUp key            | "PF7", "PF19", "PA1", "no"                        |
-+---------------+-----------------------+---------------------------------------------------+
-| "pgdn"        | PageDown key          | "PF8", "PF20", "PA2", "no"                        |
-+---------------+-----------------------+---------------------------------------------------+
-| "pause"       | Pause key             | "CLEAR", "ATTN", "PA3", "no"                      |
-+---------------+-----------------------+---------------------------------------------------+
-| "kpenter"     | Keypad Enter          | "ENTER", "Newline"                                |
-+---------------+-----------------------+---------------------------------------------------+
-| "shiftenter"  | Shift+Enter           | "no","ENTER", "Newline"                           |
-+---------------+-----------------------+---------------------------------------------------+
-| "shiftesc"    | Shift+Esc             | "no", "ATTN", "CLEAR", "Reset"                    |
-+---------------+-----------------------+---------------------------------------------------+
-| "shiftins"    | Shift+Insert          | "no", "Dup"                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "shiftdel"    | Shift+Delete          | "no", "ErEof"                                     |
-+---------------+-----------------------+---------------------------------------------------+
-| "shifthome"   | Shift+Home            | "no", "FieldMark", "Home"                         |
-+---------------+-----------------------+---------------------------------------------------+
-| "shiftend"    | Shift+End             | "no", "ErEof", "End"                              |
-+---------------+-----------------------+---------------------------------------------------+
-| "shiftpgdn"   | Shift+PageDown        | "no", "PA3"                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "ctrlenter"   | Ctrl+Enter            | "no","ENTER", "Newline"                           |
-+---------------+-----------------------+---------------------------------------------------+
-| "ctrlins"     | Ctrl+Insert           | "no", "PA1"                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "ctrldel"     | Ctrl+Delete           | "no", "PA2", "ErEof"                              |
-+---------------+-----------------------+---------------------------------------------------+
-| "ctrlhome"    | Ctrl+Home             | "no", "PA3", "Home", "ChgCur"                     |
-+---------------+-----------------------+---------------------------------------------------+
-| "ctrlend"     | Ctrl+End              | "no", "ErEof", "End"                              |
-+---------------+-----------------------+---------------------------------------------------+
-| "altins"      | Alt+Ins               | "no", "PA1"                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "althome"     | Alt+Home              | "no", "PA2"                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "altpgup"     | Alt+PageUp            | "no", "PA1"                                       | 
-+---------------+-----------------------+---------------------------------------------------+
-| "altpgdn"     | Alt+PageDown          | "no", "PA2"                                       +
-+---------------+-----------------------+---------------------------------------------------+
-| "altpause"    | Alt+Pause             | "no", "ATTN", "CLEAR", "PA3"                      | 
-+---------------+-----------------------+---------------------------------------------------+
-| "altf1"       | Alt+F1                | "no", "PA1", "ENTER"                              | 
-+---------------+-----------------------+---------------------------------------------------+
-| "altf2"       | Alt+F2                | "no", "PA2"                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "altf3"       | Alt+F3                | "no", "PA3", "ChgCur"                             |
-+---------------+-----------------------+---------------------------------------------------+
-| "kpslash"     | Keypad /              | "/", "PA1"                                        |
-+---------------+-----------------------+---------------------------------------------------+
-| "kpaster"     | Keypad *              | "*", "PA2"                                        |
-+---------------+-----------------------+---------------------------------------------------+
-| "kpminus"     | Keypad -              | "-", "Backtab"                                    |
-+---------------+-----------------------+---------------------------------------------------+
-| "kpplus"      | Keypad +              | "+", "Tab", "Newline"                             |
-+---------------+-----------------------+---------------------------------------------------+
-| "kpdot"       | Keypad .              | ".", ","                                          |
-+---------------+-----------------------+---------------------------------------------------+
-| "dblclick"    | Double Click          | "Word", "ENTER", "no"                             |
-+---------------+-----------------------+---------------------------------------------------+
-| "urlhotspot"  | URL hotspots          | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "pfkhotspot"  | PF key hotspots       | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "pasteereof"  | Paste erase EOF       | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "movecursor"  | Move cursor on activat| true, false                                       | 
-+---------------+-----------------------+---------------------------------------------------+
-| "style"       | Style                 |"3270", "gray", "white"                            |
-+---------------+-----------------------+---------------------------------------------------+
-| "printstyle”  | Print style           | "3270", "color", "white"                          |
-+---------------+-----------------------+---------------------------------------------------+
-| "rtm"         | Response time monitor | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "omitnulls"   | Omit nulls from input | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "keepmacpad"  | Keep macro pad open   | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "keepkeypad"  | Keep keypad open      | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+ 
-| "hiliteinput" | Highlight input fields| true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "caretnot"    | Remap ^ to logical not| true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "adaptfontrati| Adapt font size ratio | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "charspace"   | Character spacing     | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "linespace"   | Line spacing          | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "settingsGUI" | Uuser interface type  | v2                                                |
-+---------------+-----------------------+---------------------------------------------------+
-| "preservein"  | Preserve insert mode  | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
-| "asyncsupport"| Long Poll mode        | "Off", "LongPoll","None"                          |
-+---------------+-----------------------+---------------------------------------------------+
-| "MirrorMode"  | BiDirectional mode    | true, false                                       |
-+---------------+-----------------------+---------------------------------------------------+
 
-*w2hparm.js: List of keywords and possible values*
-
-.. note:: Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility. 
 
 .. index::
    pair: Settings modes;Web Customization 
@@ -4649,14 +4517,7 @@ To prevent the user from overriding the site defaults, the administrator can rem
 
 :: 
 
-    // w2hparm default values
-    var w2hparm = {
-    "fontsize":"window",
-    "font":"Lucida Console",
-    "ctrl":"ENTER",
-    "enter":"Newline",
-    "home":"Home",
-    "style":"3270"};
+    // w2hparmHide values
     var w2hparmHide = ["font", "fontsize", "style"];
 
 *w2hparm.js: Hiding VIRTEL Web Access settings*
@@ -5487,8 +5348,16 @@ To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls 
 .. index::
    pair: Javascript Exits; Customization
 
-Exits which can be coded in custom.js
--------------------------------------
+Javascript Exits which can be customized
+----------------------------------------
+.. index::
+   pair: before_launchApplink; Exits
+
+::
+
+    before_launchApplink(href)
+
+This function is called before launching an application from the applist menu.
 
 .. index::
    pair: after_StandardInit; Exits
@@ -6101,25 +5970,9 @@ To enable host management the "waaoAddOnHost" parameter must be set to "true" in
 
 ::
     
-     var w2hparm = {
-    "settingsGUI":{"version":"v2"},
-    "font":"Droid Sans Mono",
-    "fontsize":"window",
-    "ctrl":"ENTER",
-    "enter":"Newline",
-    "home":"Home",  
-    "end":"ErEof",
-    "shiftins":"Dup",
-    "shifthome":"FieldMark",
-    "shiftend":"End",
-    "ctrlins":"PA1",
-    "ctrldel":"PA2",
-    "ctrlend":"End",
-    "pgup":"PF7",
-    "pgdn":"PF8",
-    "pause":"CLEAR",
-    "style":"3270",
-    "waaoAddOnHost":true};
+     var w2hparm = {    
+    "waaoAddOnHost":true
+    };
 
 *Set the waaoAddOnHost parameter to 'true' to manage Copy / Cut / Paste authorization from the Host.*
 
@@ -6322,6 +6175,13 @@ As an example, if the w2hparm option "Enter=Enter" is required rather than the d
 	CLI-03CJ	Application = CLI-DIR   Default = W2H-DIR. Will now locate custom.js from CLI-DIR.   	
 
 - w2hparm.js would be modified and uploaded to CLI-DIR.
+
+::
+ 
+    var w2hparm = {
+        "enter":"ENTER"
+    };      
+
 - Custom.js would be modified to support the tool bar change and uploaded to CLI-DIR.   
 
 The transaction W2H-03CJ is left pointing to W2H-DIR meaning that applications under the WEB2HOST entry point would have the default tool bar.
@@ -6334,11 +6194,14 @@ Option mode
 This Option mode uses the /option/ pathname to locate a directory where all the relevant customisation elements reside. The recommended directory is CLI-DIR. To use this mode the w2hparm.js file must include the "global-settings" attribute. The following is an example:-
 ::
 
-	"global-settings":{
-	    "pathToJsCustom":"../option/custJS.global.js",
-	    "pathToCssCustom": "../option/custCSS.global.css",
-	    "pathToHelp": "../option/myHelp.html"
-	}	  
+    var w2hparm = {
+        "enter":"ENTER",    
+        "global-settings":{
+            "pathToJsCustom":"../option/custJS.global.js",
+            "pathToCssCustom": "../option/custCSS.global.css",
+            "pathToHelp": "../option/myHelp.html"
+        }
+    }	  
 
 This attribute defines the "global" customised names using the following pattern:- key.id.type where:-
 
@@ -6381,11 +6244,14 @@ For example, to support a global modified w2hparm and a modified toolbar for tra
 
 For the "Enter" key requirment update the default w2hparm.js to include a global setting for pathToW2hparm:-
 ::  
- 
-  "global-settings":{
-		"pathToW2hparm":"../option/w2hparm.global.js",
-		"pathToJSCustom":"../option/custJS.global.js"
-	}
+
+    var w2hparm = {
+        "enter":"ENTER", 
+        "global-settings":{
+             "pathToW2hparm":"../option/w2hparm.global.js",
+             "pathToJSCustom":"../option/custJS.global.js"
+        }
+    }
 
 Create the file w2hparm.global.js file and define the required changes. Upload this file to CLI-DIR. For example to modify the keyboard Enter key:-
 
@@ -6395,7 +6261,7 @@ Create the file w2hparm.global.js file and define the required changes. Upload t
 	/*
  	 * Override default w2hparm values. Change Enter key to equal "Enter". Default = "Newline" key.
  	 */
-		w2hparm={
+		var w2hparm={
   			"enter":"Enter"
         }; 
 
@@ -14841,9 +14707,172 @@ attached to the HTTP line, VIRTEL can recognize the site name and direct the req
 “Rules” in the VIRTEL Connectivity Reference manual for further details. You can install a set sample definitions for
 virtual hosting by running the ARBOLOAD job (delivered in the VIRTEL SAMPLIB) with the VHOST=YES parameter.
 
+.. index::
+   pair: Control APPLIST behaviour; HOWTOs 
+
+How To Control APPLIST behaviour
+================================
+
+To open an application in a new TAB instead of the current window code the following in the customizable exit *before_launchApplink(href)*.
+
+::
+
+    /* To open an application (issued from applist transaction) in a new TAB instead of the same window */
+    function before_launchApplink(href) {
+        return {
+                url: href,            // Return received URL
+                target: '_blank'    // Target is a new TAB
+        };
+    }
+
+Create an options entry to support this modification against transaction applist (CLI-90). For example, using the Virtel HTML Admin. panel, select transaction applist and use the toolbox Icon to generate the options file. In the transaction set the options field to appmenu. Remember to save the changes to the transaction!  Place the above code into a file called custJS.appmenu.js and upload to the directory defined for the 'options' path. You must have setup the "options" mode customization before you can generate "option" files. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` on how to set up customising with the options mode. 
+
 ********
 Appendix
 ********
+
+Appendix A
+==========
+
+.. _#_V457UG_w2hparm_defaults:
+
+Values for w2hparm.js
+---------------------
+
++---------------+-----------------------+---------------------------------------------------+
+| Keyword       | Caption               | Possible values                                   |
++===============+=======================+===================================================+
+|"fontsize"     | Font size             | "window", "screen", "8", "10", "12", "14", "16"   |
++---------------+-----------------------+---------------------------------------------------+
+|"font"         | Font family           | "font name"                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"autocapture"  | Auto-capture          | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"autoprint"    | Auto-print            | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"cursor"       | Cursor "Bar",         | "Blink", "Block"                                  |
++---------------+-----------------------+---------------------------------------------------+
+|"vline"        | Vertical line         | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"hline"        | Horiz line            | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+|"esc"          | Esc key               | "no", "ATTN", "CLEAR", "Reset"                    |
++---------------+-----------------------+---------------------------------------------------+
+|"ctrl"         | Ctrl key              | "no", "ENTER", "Newline"                          |
++---------------+-----------------------+---------------------------------------------------+
+|"cmdleft"      | Left Cmd key          | "no", "Reset"                                     |
++---------------+-----------------------+---------------------------------------------------+
+|"cmdright"     | Right Cmd key         | "no", “ENTER"                                     |
++---------------+-----------------------+---------------------------------------------------+
+|"enter"        | Enter key             | "ENTER", "Newline"                                |
++---------------+-----------------------+---------------------------------------------------+
+| "home"        | Home key              | "no", "Home"                                      |
++---------------+-----------------------+---------------------------------------------------+
+| "end"         | End key               | "no", "ErEof", "End"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "pgup"        | PageUp key            | "PF7", "PF19", "PA1", "no"                        |
++---------------+-----------------------+---------------------------------------------------+
+| "pgdn"        | PageDown key          | "PF8", "PF20", "PA2", "no"                        |
++---------------+-----------------------+---------------------------------------------------+
+| "pause"       | Pause key             | "CLEAR", "ATTN", "PA3", "no"                      |
++---------------+-----------------------+---------------------------------------------------+
+| "kpenter"     | Keypad Enter          | "ENTER", "Newline"                                |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftenter"  | Shift+Enter           | "no","ENTER", "Newline"                           |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftesc"    | Shift+Esc             | "no", "ATTN", "CLEAR", "Reset"                    |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftins"    | Shift+Insert          | "no", "Dup"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftdel"    | Shift+Delete          | "no", "ErEof"                                     |
++---------------+-----------------------+---------------------------------------------------+
+| "shifthome"   | Shift+Home            | "no", "FieldMark", "Home"                         |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftend"    | Shift+End             | "no", "ErEof", "End"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "shiftpgdn"   | Shift+PageDown        | "no", "PA3"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlenter"   | Ctrl+Enter            | "no","ENTER", "Newline"                           |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlins"     | Ctrl+Insert           | "no", "PA1"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrldel"     | Ctrl+Delete           | "no", "PA2", "ErEof"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlhome"    | Ctrl+Home             | "no", "PA3", "Home", "ChgCur"                     |
++---------------+-----------------------+---------------------------------------------------+
+| "ctrlend"     | Ctrl+End              | "no", "ErEof", "End"                              |
++---------------+-----------------------+---------------------------------------------------+
+| "altins"      | Alt+Ins               | "no", "PA1"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "althome"     | Alt+Home              | "no", "PA2"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "altpgup"     | Alt+PageUp            | "no", "PA1"                                       | 
++---------------+-----------------------+---------------------------------------------------+
+| "altpgdn"     | Alt+PageDown          | "no", "PA2"                                       +
++---------------+-----------------------+---------------------------------------------------+
+| "altpause"    | Alt+Pause             | "no", "ATTN", "CLEAR", "PA3"                      | 
++---------------+-----------------------+---------------------------------------------------+
+| "altf1"       | Alt+F1                | "no", "PA1", "ENTER"                              | 
++---------------+-----------------------+---------------------------------------------------+
+| "altf2"       | Alt+F2                | "no", "PA2"                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "altf3"       | Alt+F3                | "no", "PA3", "ChgCur"                             |
++---------------+-----------------------+---------------------------------------------------+
+| "kpslash"     | Keypad /              | "/", "PA1"                                        |
++---------------+-----------------------+---------------------------------------------------+
+| "kpaster"     | Keypad *              | "*", "PA2"                                        |
++---------------+-----------------------+---------------------------------------------------+
+| "kpminus"     | Keypad -              | "-", "Backtab"                                    |
++---------------+-----------------------+---------------------------------------------------+
+| "kpplus"      | Keypad +              | "+", "Tab", "Newline"                             |
++---------------+-----------------------+---------------------------------------------------+
+| "kpdot"       | Keypad .              | ".", ","                                          |
++---------------+-----------------------+---------------------------------------------------+
+| "dblclick"    | Double Click          | "Word", "ENTER", "no"                             |
++---------------+-----------------------+---------------------------------------------------+
+| "urlhotspot"  | URL hotspots          | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "pfkhotspot"  | PF key hotspots       | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "pasteereof"  | Paste erase EOF       | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "movecursor"  | Move cursor on activat| true, false                                       | 
++---------------+-----------------------+---------------------------------------------------+
+| "style"       | Style                 |"3270", "gray", "white"                            |
++---------------+-----------------------+---------------------------------------------------+
+| "printstyle”  | Print style           | "3270", "color", "white"                          |
++---------------+-----------------------+---------------------------------------------------+
+| "rtm"         | Response time monitor | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "omitnulls"   | Omit nulls from input | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "keepmacpad"  | Keep macro pad open   | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "keepkeypad"  | Keep keypad open      | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+ 
+| "hiliteinput" | Highlight input fields| true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "caretnot"    | Remap ^ to logical not| true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "adaptfontrati| Adapt font size ratio | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "charspace"   | Character spacing     | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "linespace"   | Line spacing          | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "settingsGUI" | Uuser interface type  | v2                                                |
++---------------+-----------------------+---------------------------------------------------+
+| "preservein"  | Preserve insert mode  | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+| "asyncsupport"| Long Poll mode        | "Off", "LongPoll","None"                          |
++---------------+-----------------------+---------------------------------------------------+
+| "MirrorMode"  | BiDirectional mode    | true, false                                       |
++---------------+-----------------------+---------------------------------------------------+
+
+*w2hparm.js: List of keywords and possible values*
+
+.. note:: Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility. 
+
 
 Trademarks
 ==========

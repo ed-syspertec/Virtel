@@ -45,7 +45,7 @@
 
 
 \title{Virtel User Guide}
-\date{Jul 20, 2017}
+\date{Jul 21, 2017}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -4848,501 +4848,7 @@ Updating w2hparm.js in the default W2H-DIR directory is not recommended as chang
 \end{sphinxadmonition}
 
 \index{w2hparm.js defaults!Web Customization}\index{Web Customization!w2hparm.js defaults}
-The list of keywords and possible values which can be coded in the w2hparm.js file is shown below:
-
-
-\begin{savenotes}\sphinxatlongtablestart\begin{longtable}{|l|l|l|}
-\hline
-\sphinxstylethead{\sphinxstyletheadfamily 
-Keyword
-\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-Caption
-\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-Possible values
-\unskip}\relax \\
-\hline
-\endfirsthead
-
-\multicolumn{3}{c}%
-{\makebox[0pt]{\sphinxtablecontinued{\tablename\ \thetable{} -- continued from previous page}}}\\
-\hline
-\sphinxstylethead{\sphinxstyletheadfamily 
-Keyword
-\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-Caption
-\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-Possible values
-\unskip}\relax \\
-\hline
-\endhead
-
-\hline
-\multicolumn{3}{r}{\makebox[0pt][r]{\sphinxtablecontinued{Continued on next page}}}\\
-\endfoot
-
-\endlastfoot
-
-“fontsize”
-&
-Font size
-&
-“window”, “screen”, “8”, “10”, “12”, “14”, “16”
-\\
-\hline
-“font”
-&
-Font family
-&
-“font name”
-\\
-\hline
-“autocapture”
-&
-Auto-capture
-&
-true, false
-\\
-\hline
-“autoprint”
-&
-Auto-print
-&
-true, false
-\\
-\hline
-“cursor”
-&
-Cursor “Bar”,
-&
-“Blink”, “Block”
-\\
-\hline
-“vline”
-&
-Vertical line
-&
-true, false
-\\
-\hline
-“hline”
-&
-Horiz line
-&
-true, false
-\\
-\hline
-“esc”
-&
-Esc key
-&
-“no”, “ATTN”, “CLEAR”, “Reset”
-\\
-\hline
-“ctrl”
-&
-Ctrl key
-&
-“no”, “ENTER”, “Newline”
-\\
-\hline
-“cmdleft”
-&
-Left Cmd key
-&
-“no”, “Reset”
-\\
-\hline
-“cmdright”
-&
-Right Cmd key
-&
-“no”, “ENTER”
-\\
-\hline
-“enter”
-&
-Enter key
-&
-“ENTER”, “Newline”
-\\
-\hline
-“home”
-&
-Home key
-&
-“no”, “Home”
-\\
-\hline
-“end”
-&
-End key
-&
-“no”, “ErEof”, “End”
-\\
-\hline
-“pgup”
-&
-PageUp key
-&
-“PF7”, “PF19”, “PA1”, “no”
-\\
-\hline
-“pgdn”
-&
-PageDown key
-&
-“PF8”, “PF20”, “PA2”, “no”
-\\
-\hline
-“pause”
-&
-Pause key
-&
-“CLEAR”, “ATTN”, “PA3”, “no”
-\\
-\hline
-“kpenter”
-&
-Keypad Enter
-&
-“ENTER”, “Newline”
-\\
-\hline
-“shiftenter”
-&
-Shift+Enter
-&
-“no”,”ENTER”, “Newline”
-\\
-\hline
-“shiftesc”
-&
-Shift+Esc
-&
-“no”, “ATTN”, “CLEAR”, “Reset”
-\\
-\hline
-“shiftins”
-&
-Shift+Insert
-&
-“no”, “Dup”
-\\
-\hline
-“shiftdel”
-&
-Shift+Delete
-&
-“no”, “ErEof”
-\\
-\hline
-“shifthome”
-&
-Shift+Home
-&
-“no”, “FieldMark”, “Home”
-\\
-\hline
-“shiftend”
-&
-Shift+End
-&
-“no”, “ErEof”, “End”
-\\
-\hline
-“shiftpgdn”
-&
-Shift+PageDown
-&
-“no”, “PA3”
-\\
-\hline
-“ctrlenter”
-&
-Ctrl+Enter
-&
-“no”,”ENTER”, “Newline”
-\\
-\hline
-“ctrlins”
-&
-Ctrl+Insert
-&
-“no”, “PA1”
-\\
-\hline
-“ctrldel”
-&
-Ctrl+Delete
-&
-“no”, “PA2”, “ErEof”
-\\
-\hline
-“ctrlhome”
-&
-Ctrl+Home
-&
-“no”, “PA3”, “Home”, “ChgCur”
-\\
-\hline
-“ctrlend”
-&
-Ctrl+End
-&
-“no”, “ErEof”, “End”
-\\
-\hline
-“altins”
-&
-Alt+Ins
-&
-“no”, “PA1”
-\\
-\hline
-“althome”
-&
-Alt+Home
-&
-“no”, “PA2”
-\\
-\hline
-“altpgup”
-&
-Alt+PageUp
-&
-“no”, “PA1”
-\\
-\hline\sphinxmultirow{2}{103}{%
-\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
-“altpgdn”
-\par
-\vskip-\baselineskip\strut\end{varwidth}%
-}%
-&\sphinxmultirow{2}{104}{%
-\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
-Alt+PageDown
-\par
-\vskip-\baselineskip\strut\end{varwidth}%
-}%
-&\sphinxmultirow{2}{105}{%
-\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
-“no”, “PA2”
-\par
-\vskip-\baselineskip\strut\end{varwidth}%
-}%
-\\
-\sphinxtablestrut{103}&\sphinxtablestrut{104}&\sphinxtablestrut{105}\\
-\hline
-“altpause”
-&
-Alt+Pause
-&
-“no”, “ATTN”, “CLEAR”, “PA3”
-\\
-\hline
-“altf1”
-&
-Alt+F1
-&
-“no”, “PA1”, “ENTER”
-\\
-\hline
-“altf2”
-&
-Alt+F2
-&
-“no”, “PA2”
-\\
-\hline
-“altf3”
-&
-Alt+F3
-&
-“no”, “PA3”, “ChgCur”
-\\
-\hline
-“kpslash”
-&
-Keypad /
-&
-“/”, “PA1”
-\\
-\hline
-“kpaster”
-&
-Keypad *
-&
-“*”, “PA2”
-\\
-\hline
-“kpminus”
-&
-Keypad -
-&
-“-“, “Backtab”
-\\
-\hline
-“kpplus”
-&
-Keypad +
-&
-“+”, “Tab”, “Newline”
-\\
-\hline
-“kpdot”
-&
-Keypad .
-&
-“.”, “,”
-\\
-\hline
-“dblclick”
-&
-Double Click
-&
-“Word”, “ENTER”, “no”
-\\
-\hline
-“urlhotspot”
-&
-URL hotspots
-&
-true, false
-\\
-\hline
-“pfkhotspot”
-&
-PF key hotspots
-&
-true, false
-\\
-\hline
-“pasteereof”
-&
-Paste erase EOF
-&
-true, false
-\\
-\hline
-“movecursor”
-&
-Move cursor on activat
-&
-true, false
-\\
-\hline
-“style”
-&
-Style
-&
-“3270”, “gray”, “white”
-\\
-\hline
-“printstyle”
-&
-Print style
-&
-“3270”, “color”, “white”
-\\
-\hline
-“rtm”
-&
-Response time monitor
-&
-true, false
-\\
-\hline
-“omitnulls”
-&
-Omit nulls from input
-&
-true, false
-\\
-\hline
-“keepmacpad”
-&
-Keep macro pad open
-&
-true, false
-\\
-\hline
-“keepkeypad”
-&
-Keep keypad open
-&
-true, false
-\\
-\hline
-“hiliteinput”
-&
-Highlight input fields
-&
-true, false
-\\
-\hline
-“caretnot”
-&
-Remap \textasciicircum{} to logical not
-&
-true, false
-\\
-\hline
-“adaptfontrati
-&
-Adapt font size ratio
-&
-true, false
-\\
-\hline
-“charspace”
-&
-Character spacing
-&
-true, false
-\\
-\hline
-“linespace”
-&
-Line spacing
-&
-true, false
-\\
-\hline
-“settingsGUI”
-&
-Uuser interface type
-&
-v2
-\\
-\hline
-“preservein”
-&
-Preserve insert mode
-&
-true, false
-\\
-\hline
-“asyncsupport”
-&
-Long Poll mode
-&
-“Off”, “LongPoll”,”None”
-\\
-\hline
-“MirrorMode”
-&
-BiDirectional mode
-&
-true, false
-\\
-\hline
-\end{longtable}\sphinxatlongtableend\end{savenotes}
-
-\sphinxstyleemphasis{w2hparm.js: List of keywords and possible values}
-
-\begin{sphinxadmonition}{note}{Note:}
-Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility.
-\end{sphinxadmonition}
+The list of keywords and possible values which can be coded in the w2hparm.js file is listed in {\hyperref[\detokenize{User_Guide:v457ug-w2hparm-defaults}]{\sphinxcrossref{\DUrole{std,std-ref}{“Appendix A - w2hparm values”}}}}.
 
 \index{Settings modes!Web Customization}\index{Web Customization!Settings modes}
 
@@ -5357,14 +4863,7 @@ As of Virtel Release V4.57 only the “Version 2” user interface settings are 
 To prevent the user from overriding the site defaults, the administrator can remove individual settings from the user’s Web Access Settings menu. The names of settings to be hidden are specified in the w2hparmHide variable in the w2hparm.js file. The example below shows how to hide the default font, font size, and style settings from the menu:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{/} \PYG{n}{w2hparm} \PYG{n}{default} \PYG{n}{values}
-\PYG{n}{var} \PYG{n}{w2hparm} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fontsize}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{window}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{font}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Lucida Console}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ctrl}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ENTER}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{enter}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Newline}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{home}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Home}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{style}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{3270}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{w2hparmHide} \PYG{n}{values}
 \PYG{n}{var} \PYG{n}{w2hparmHide} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{font}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fontsize}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{style}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{]}\PYG{p}{;}
 \end{sphinxVerbatim}
 
@@ -6174,10 +5673,19 @@ To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls 
 
 \index{Javascript Exits!Customization}\index{Customization!Javascript Exits}
 
-\subsection{Exits which can be coded in custom.js}
-\label{\detokenize{User_Guide:index-183}}\label{\detokenize{User_Guide:exits-which-can-be-coded-in-custom-js}}
-\index{after\_StandardInit!Exits}\index{Exits!after\_StandardInit}
+\subsection{Javascript Exits which can be customized}
+\label{\detokenize{User_Guide:index-183}}\label{\detokenize{User_Guide:javascript-exits-which-can-be-customized}}
+\index{before\_launchApplink!Exits}\index{Exits!before\_launchApplink}
 \def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-184}}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{before\PYGZus{}launchApplink}\PYG{p}{(}\PYG{n}{href}\PYG{p}{)}
+\end{sphinxVerbatim}
+\let\sphinxLiteralBlockLabel\empty
+
+This function is called before launching an application from the applist menu.
+
+\index{after\_StandardInit!Exits}\index{Exits!after\_StandardInit}
+\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-185}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -6186,7 +5694,7 @@ To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls 
 This function is called after the session with the host application has started.
 
 \index{before\_submitForm!Exits}\index{Exits!before\_submitForm}
-\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-185}}}
+\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-186}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{before\PYGZus{}submitForm}\PYG{p}{(}\PYG{n}{pfKey}\PYG{p}{,}\PYG{n}{oForm}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -6203,7 +5711,7 @@ a DOM object representing the form to be submitted (usually document.virtelForm)
 \end{description}
 
 \index{after\_responseHandle!Exits}\index{Exits!after\_responseHandle}
-\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-186}}}
+\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-187}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{after\PYGZus{}responseHandle}\PYG{p}{(}\PYG{n}{o}\PYG{p}{,}\PYG{n}{url}\PYG{p}{,}\PYG{n}{xtim}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -6223,7 +5731,7 @@ a Javascript Date object representing the time the request was sent to the serve
 \end{description}
 
 \index{modify\_settingsValue!Exits}\index{Exits!modify\_settingsValue}
-\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-187}}}
+\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-188}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{modify\PYGZus{}settingsValues}\PYG{p}{(}\PYG{n}{name}\PYG{p}{,}\PYG{n}{values}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -6243,7 +5751,7 @@ The return value is treated as the new list of possible values. If the function 
 unchanged.
 
 \index{when\_init!Exits}\index{Exits!when\_init}
-\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-188}}}
+\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-189}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{when\PYGZus{}init}\PYG{p}{(}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -6252,7 +5760,7 @@ unchanged.
 This function is called for each subpage after vir3270 initialisation.
 
 \index{when\_focusGained!Exits}\index{Exits!when\_focusGained}
-\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-189}}}
+\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-190}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{when\PYGZus{}focusGained}\PYG{p}{(}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -6261,7 +5769,7 @@ This function is called for each subpage after vir3270 initialisation.
 This function is called whenever the 3270 window gains the focus.
 
 \index{when\_focusLost!Exits}\index{Exits!when\_focusLost}
-\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-190}}}
+\def\sphinxLiteralBlockLabel{\label{\detokenize{User_Guide:index-191}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{when\PYGZus{}focusLost}\PYG{p}{(}\PYG{p}{)}
 \end{sphinxVerbatim}
@@ -6272,7 +5780,7 @@ This function is called whenever the 3270 window loses the focus.
 \index{Customizing Toolbar Icons!Customization}\index{Customization!Customizing Toolbar Icons}
 
 \subsection{Customizing Toolbar icons}
-\label{\detokenize{User_Guide:customizing-toolbar-icons}}\label{\detokenize{User_Guide:index-191}}
+\label{\detokenize{User_Guide:customizing-toolbar-icons}}\label{\detokenize{User_Guide:index-192}}
 This example uses the after\_standardInit function to insert additional icons into the toolbar when the session is started. Icons may subsequently be added or removed from the toolbar after each screen by means of the after\_responseHandle function.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6309,7 +5817,7 @@ This example uses the after\_standardInit function to insert additional icons in
 \index{Customizing non-standard Icons!Customization}\index{Customization!Customizing non-standard Icons}
 
 \subsection{Centering non-standard icons}
-\label{\detokenize{User_Guide:centering-non-standard-icons}}\label{\detokenize{User_Guide:index-192}}
+\label{\detokenize{User_Guide:centering-non-standard-icons}}\label{\detokenize{User_Guide:index-193}}
 The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribut passed within the “addtoolbarbutton” function in conjunction of using a specific css attribut.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6345,7 +5853,7 @@ The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possi
 \index{Removing Toolbar Icons!Customization}\index{Customization!Removing Toolbar Icons}
 
 \subsection{Removing unwanted toolbar icons}
-\label{\detokenize{User_Guide:removing-unwanted-toolbar-icons}}\label{\detokenize{User_Guide:index-193}}
+\label{\detokenize{User_Guide:index-194}}\label{\detokenize{User_Guide:removing-unwanted-toolbar-icons}}
 This example uses the after\_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6421,7 +5929,7 @@ To hide only the VIRTEL Application name, see {\hyperref[\detokenize{User_Guide:
 \index{Positioning Toolbar Icons!Customization}\index{Customization!Positioning Toolbar Icons}
 
 \subsection{Positionning Toolbar Icons}
-\label{\detokenize{User_Guide:index-194}}\label{\detokenize{User_Guide:positionning-toolbar-icons}}
+\label{\detokenize{User_Guide:index-195}}\label{\detokenize{User_Guide:positionning-toolbar-icons}}
 In certain circumstances, the default position of an icon may not be at the user’s convenence. Is possible to change an icon’s position based on the position of another icon.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6449,7 +5957,7 @@ In certain circumstances, the default position of an icon may not be at the user
 \index{Modifying the text of the status bar!Customization}\index{Customization!Modifying the text of the status bar}
 
 \subsection{Modifying the text of the status bar}
-\label{\detokenize{User_Guide:index-195}}\label{\detokenize{User_Guide:modifying-the-text-of-the-status-bar}}
+\label{\detokenize{User_Guide:index-196}}\label{\detokenize{User_Guide:modifying-the-text-of-the-status-bar}}
 This example uses the after\_responseHandle function to modify the text in the status bar at the bottom of the Web Access screen. This example displays the text “Your printer name is xxxx” in the status bar.
 The status bar text is an object which can therefore be modified using an API.
 
@@ -6565,7 +6073,7 @@ When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” val
 \index{Setting Custom Hotspots!Customization}\index{Customization!Setting Custom Hotspots}
 
 \subsection{Custom hotspot recognition}
-\label{\detokenize{User_Guide:index-196}}\label{\detokenize{User_Guide:custom-hotspot-recognition}}
+\label{\detokenize{User_Guide:index-197}}\label{\detokenize{User_Guide:custom-hotspot-recognition}}
 This example uses the after\_responseHandle function to modify the regular expression which is used to identify PF key hotspots.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6584,7 +6092,7 @@ VIR3270.customPfKeysHotspotRegex =
 \index{Adding a screen watermark!Customization}\index{Customization!Adding a screen watermark}
 
 \subsection{Adding a watermark to the 3270 screen}
-\label{\detokenize{User_Guide:index-197}}\label{\detokenize{User_Guide:adding-a-watermark-to-the-3270-screen}}
+\label{\detokenize{User_Guide:index-198}}\label{\detokenize{User_Guide:adding-a-watermark-to-the-3270-screen}}
 This example uses the after\_standardInit function in conjunction with a custom stylesheet to add a watermark to the Web Access screen. The watermark displays the application name in light text behind the 3270 screen content. The application name is obtained from the class attribute of the body tag.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6633,7 +6141,7 @@ This example uses the after\_standardInit function in conjunction with a custom 
 \index{Modifying Web Access Settings!Customization}\index{Customization!Modifying Web Access Settings}
 
 \subsection{Modifying Web Access Settings}
-\label{\detokenize{User_Guide:modifying-web-access-settings}}\label{\detokenize{User_Guide:index-198}}
+\label{\detokenize{User_Guide:modifying-web-access-settings}}\label{\detokenize{User_Guide:index-199}}
 The exit modify\_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
 The example shown below replaces the list of fonts, and adds two extra values “20” and “24” to the list of fontsizes:-
 
@@ -6657,7 +6165,7 @@ The example shown below replaces the list of fonts, and adds two extra values �
 \index{Site Customization - The Help Page}
 
 \section{Site Customization - The Help Page}
-\label{\detokenize{User_Guide:site-customization-the-help-page}}\label{\detokenize{User_Guide:index-199}}
+\label{\detokenize{User_Guide:index-200}}\label{\detokenize{User_Guide:site-customization-the-help-page}}
 Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:
 
 \sphinxincludegraphics{{image47}.png}
@@ -6669,7 +6177,7 @@ site-specific pages, such as CLI-DIR.
 \index{Standard Help Page!Customization}\index{Customization!Standard Help Page}
 
 \subsection{Standard Help Page}
-\label{\detokenize{User_Guide:index-200}}\label{\detokenize{User_Guide:standard-help-page}}
+\label{\detokenize{User_Guide:index-201}}\label{\detokenize{User_Guide:standard-help-page}}
 The standard help.html page is shown below:
 
 \sphinxincludegraphics{{image48}.jpeg}
@@ -6678,7 +6186,7 @@ The standard help.html page is shown below:
 \index{Installing a Custom Help Page!Customization}\index{Customization!Installing a Custom Help Page}
 
 \subsection{Installing a Custom Help Page}
-\label{\detokenize{User_Guide:index-201}}\label{\detokenize{User_Guide:installing-a-custom-help-page}}
+\label{\detokenize{User_Guide:index-202}}\label{\detokenize{User_Guide:installing-a-custom-help-page}}
 To install a customized help.html page, the administrator must perform the following operations:-
 \begin{itemize}
 \item {} 
@@ -6694,19 +6202,19 @@ Modify the VIRTEL transactions CLI-03CH so that it points to the CLI-DIR directo
 \index{Copy, Cut and Paste}
 
 \section{Enable Copy, Cut And Paste}
-\label{\detokenize{User_Guide:index-202}}\label{\detokenize{User_Guide:enable-copy-cut-and-paste}}
+\label{\detokenize{User_Guide:index-203}}\label{\detokenize{User_Guide:enable-copy-cut-and-paste}}
 Copy, cut or paste operation are done using standard function key combinations CTRL + C, CTRL + X or CTRL + V or using a pop-up menu when using the right mouse button. These operations often require access to the clipboard, which, depending on the browser used, may require the installation of an additional module.
 
 \index{Copy, cut and Paste!Internet Explorer}\index{Internet Explorer!Copy, cut and Paste}
 
 \subsection{Internet Explorer}
-\label{\detokenize{User_Guide:index-203}}\label{\detokenize{User_Guide:internet-explorer}}
+\label{\detokenize{User_Guide:internet-explorer}}\label{\detokenize{User_Guide:index-204}}
 For Internet Explorer, the usage of the clipboard is systematic for copy / cut / paste operation and does not require any additional module. From IE9 and above, depending on the value of “Tools \textbar{} Internet options \textbar{} Security tab \textbar{} Custom level \textbar{} Scroll to, Drag and drop or cut and paste files” you will be authorized - or not - to access the clipboard. If prompted, during the first attempt to use copy / cut / paste function the browser will display a window requesting confirmation to access the clipboard. Once the decision is communicated, it remains valid until closing the window with the domain.
 
 \index{Copy, cut and Paste!Firefox}\index{Firefox!Copy, cut and Paste}
 
 \subsection{Firefox}
-\label{\detokenize{User_Guide:firefox}}\label{\detokenize{User_Guide:index-204}}
+\label{\detokenize{User_Guide:firefox}}\label{\detokenize{User_Guide:index-205}}
 An ADDON is required to perform any copy / cut / paste operation with another application or with another internet
 domain. The ADDON is available for download at the following address:
 
@@ -6791,7 +6299,7 @@ Saves the last configuration changes.
 \index{Copy, cut and Paste!Chrome}\index{Chrome!Copy, cut and Paste}
 
 \subsection{Chrome}
-\label{\detokenize{User_Guide:chrome}}\label{\detokenize{User_Guide:index-205}}
+\label{\detokenize{User_Guide:chrome}}\label{\detokenize{User_Guide:index-206}}
 An extension is required for any copy / cut / paste operation with another application or with another internet
 domain. The extension can be obtained on the Chrome WebStore at the following address:-
 
@@ -6863,7 +6371,7 @@ settings.
 \index{Copy, Cut and Paste!Chrome Extension}\index{Chrome Extension!Copy, Cut and Paste}\index{Host managed!Chrome Extension}\index{Chrome Extension!Host managed}\index{Chrome Extension!waaoAddOnHost.js file}\index{waaoAddOnHost.js file!Chrome Extension}\index{Chrome Extension!w2hparm.js setting}\index{w2hparm.js setting!Chrome Extension}
 
 \subsection{Manage the settings on Host with chrome}
-\label{\detokenize{User_Guide:manage-the-settings-on-host-with-chrome}}\label{\detokenize{User_Guide:index-206}}
+\label{\detokenize{User_Guide:manage-the-settings-on-host-with-chrome}}\label{\detokenize{User_Guide:index-207}}
 Under certain conditions, it is possible to manage domain authorizations centrally by storing on the extension parameters on the host. Usually these parameters are managed by the user as described in the previous paragraph. The implementation of this method of extension management requires:
 \begin{itemize}
 \item {} 
@@ -6881,24 +6389,8 @@ To enable host management the “waaoAddOnHost” parameter must be set to “tr
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
  \PYG{n}{var} \PYG{n}{w2hparm} \PYG{o}{=} \PYG{p}{\PYGZob{}}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{settingsGUI}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{p}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{version}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{v2}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{font}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Droid Sans Mono}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fontsize}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{window}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ctrl}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ENTER}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{enter}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Newline}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{home}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Home}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{end}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ErEof}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{shiftins}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Dup}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{shifthome}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{FieldMark}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{shiftend}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{End}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ctrlins}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{PA1}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ctrldel}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{PA2}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ctrlend}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{End}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pgup}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{PF7}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pgdn}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{PF8}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pause}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{CLEAR}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{style}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{3270}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{waaoAddOnHost}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{n}{true}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{waaoAddOnHost}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{n}{true}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
 \end{sphinxVerbatim}
 
 \sphinxstyleemphasis{Set the waaoAddOnHost parameter to ‘true’ to manage Copy / Cut / Paste authorization from the Host.}
@@ -7048,7 +6540,7 @@ For Firefox, it may indicate that the field is not allowed, or that the navigati
 \index{Copy, cut and Paste!Edge}\index{Edge!Copy, cut and Paste}
 
 \subsection{Edge}
-\label{\detokenize{User_Guide:edge}}\label{\detokenize{User_Guide:index-207}}
+\label{\detokenize{User_Guide:index-208}}\label{\detokenize{User_Guide:edge}}
 As of July, 2017 Microsoft has yet to release an API to support Copy, Cut and Paste operations within the Edge browser. These opertions will not work in Virtel when using Edge.
 
 \newpage
@@ -7056,7 +6548,7 @@ As of July, 2017 Microsoft has yet to release an API to support Copy, Cut and Pa
 \index{Customizing Virtel}
 
 \section{Virtel Customization Modes}
-\label{\detokenize{User_Guide:index-208}}\label{\detokenize{User_Guide:virtel-customization-modes}}\label{\detokenize{User_Guide:v457ug-customizing-with-option}}
+\label{\detokenize{User_Guide:index-209}}\label{\detokenize{User_Guide:virtel-customization-modes}}\label{\detokenize{User_Guide:v457ug-customizing-with-option}}
 \index{Compatibility mode!Customization}\index{Customization!Compatibility mode}\index{Option mode!Customization}\index{Customization!Option mode}\index{Default mode!Customization}\index{Customization!Default mode}
 Virtel V4.56 introduces some enhancements to customisation. With Virtel 4.56, customization is possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific transactions. Previous customisation was only at the entry point level.
 
@@ -7102,6 +6594,14 @@ As an example, if the w2hparm option “Enter=Enter” is required rather than t
 \item {} 
 w2hparm.js would be modified and uploaded to CLI-DIR.
 
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{var} \PYG{n}{w2hparm} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{enter}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ENTER}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\end{sphinxVerbatim}
+\begin{itemize}
 \item {} 
 Custom.js would be modified to support the tool bar change and uploaded to CLI-DIR.
 
@@ -7119,10 +6619,13 @@ Updating elements in the default W2H-DIR directory is not recommended as they wi
 This Option mode uses the /option/ pathname to locate a directory where all the relevant customisation elements reside. The recommended directory is CLI-DIR. To use this mode the w2hparm.js file must include the “global-settings” attribute. The following is an example:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{global\PYGZhy{}settings}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{p}{\PYGZob{}}
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToJsCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custJS.global.js}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToCssCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custCSS.global.css}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToHelp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/myHelp.html}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{n}{var} \PYG{n}{w2hparm} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{enter}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ENTER}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{global\PYGZhy{}settings}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{p}{\PYGZob{}}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToJsCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custJS.global.js}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToCssCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custCSS.global.css}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+        \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToHelp}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/myHelp.html}\PYG{l+s+s2}{\PYGZdq{}}
+    \PYG{p}{\PYGZcb{}}
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
@@ -7171,16 +6674,19 @@ As delivered, the default mode level is used. This means all web elements are ob
 \index{Global level modifications!Customization}\index{Customization!Global level modifications}
 
 \subsection{Global level modifications (All transactions under an Entry Point)}
-\label{\detokenize{User_Guide:global-level-modifications-all-transactions-under-an-entry-point}}\label{\detokenize{User_Guide:index-210}}
+\label{\detokenize{User_Guide:global-level-modifications-all-transactions-under-an-entry-point}}\label{\detokenize{User_Guide:index-211}}
 For example, to support a global modified w2hparm and a modified toolbar for transactions running under the CLIWHOST entry point the following actions would be required.
 
 For the “Enter” key requirment update the default w2hparm.js to include a global setting for pathToW2hparm:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{global\PYGZhy{}settings}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{p}{\PYGZob{}}
-              \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToW2hparm}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/w2hparm.global.js}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
-              \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToJSCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custJS.global.js}\PYG{l+s+s2}{\PYGZdq{}}
-      \PYG{p}{\PYGZcb{}}
+\PYG{n}{var} \PYG{n}{w2hparm} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{enter}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ENTER}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{global\PYGZhy{}settings}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{p}{\PYGZob{}}
+         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToW2hparm}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/w2hparm.global.js}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+         \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{pathToJSCustom}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../option/custJS.global.js}\PYG{l+s+s2}{\PYGZdq{}}
+    \PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
 Create the file w2hparm.global.js file and define the required changes. Upload this file to CLI-DIR. For example to modify the keyboard Enter key:-
@@ -7190,7 +6696,7 @@ Create the file w2hparm.global.js file and define the required changes. Upload t
 \PYG{o}{/}\PYG{o}{*}
  \PYG{o}{*} \PYG{n}{Override} \PYG{n}{default} \PYG{n}{w2hparm} \PYG{n}{values}\PYG{o}{.} \PYG{n}{Change} \PYG{n}{Enter} \PYG{n}{key} \PYG{n}{to} \PYG{n}{equal} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Enter}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.} \PYG{n}{Default} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Newline}\PYG{l+s+s2}{\PYGZdq{}} \PYG{n}{key}\PYG{o}{.}
  \PYG{o}{*}\PYG{o}{/}
-        \PYG{n}{w2hparm}\PYG{o}{=}\PYG{p}{\PYGZob{}}
+        \PYG{n}{var} \PYG{n}{w2hparm}\PYG{o}{=}\PYG{p}{\PYGZob{}}
                 \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{enter}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Enter}\PYG{l+s+s2}{\PYGZdq{}}
 \PYG{p}{\PYGZcb{}}\PYG{p}{;}
 \end{sphinxVerbatim}
@@ -7214,7 +6720,7 @@ This has the effect of changing the tool bar for all transactions which is not w
 \index{TRansaction level modifications!Customization}\index{Customization!TRansaction level modifications}
 
 \subsection{Transaction level modifications (Individual transactions)}
-\label{\detokenize{User_Guide:transaction-level-modifications-individual-transactions}}\label{\detokenize{User_Guide:index-211}}
+\label{\detokenize{User_Guide:transaction-level-modifications-individual-transactions}}\label{\detokenize{User_Guide:index-212}}
 If only certain transactions should have the modified tool bar then set a unique option identifier for those transactions. The “option” identifier will be used to associate customized elements against specific transaction(s). In this example the value “myOptions” has been chosen as an identifier. A transaction level “core option file”, using the format “option.identifier.js”, will be used to locate customized elements. Using the option identifier “myOptions” the file will be called option.myOptions.js. It should be created and uploaded to CLI-DIR. The customized settings are held in a Javascript variable named oCustom.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7255,13 +6761,13 @@ Files defined in the core option files “option.id.js” with the keys pathTo{[
 \index{Compatibility Option id!Customization Transactions}\index{Customization!Transactions, Compatibility Option id}\index{Transactions!Compatibility Option id Customization}
 
 \subsection{Compatibility Option id}
-\label{\detokenize{User_Guide:index-212}}\label{\detokenize{User_Guide:compatibility-option-id}}
+\label{\detokenize{User_Guide:index-213}}\label{\detokenize{User_Guide:compatibility-option-id}}
 For compatibility the transaction option field can be defined with the special identifier “compatibility”. This indicates that the “compatibility” mode of operation should be used to search for customized elements. For example custom.css would be located through the transaction XXX-03CJ.
 
 \index{Defining Transaction options!Customization Transactions}\index{Customization!Transactions, Defining Transaction options}\index{Transactions!Defining Transaction options Customization}
 
 \subsection{Defining Transaction Options}
-\label{\detokenize{User_Guide:index-213}}\label{\detokenize{User_Guide:defining-transaction-options}}
+\label{\detokenize{User_Guide:index-214}}\label{\detokenize{User_Guide:defining-transaction-options}}
 Using the HTML transaction display a user can click on the “Spanner” ICON to help in setting up the option files. This include the core option file and the relevant javascript and CSS files.
 
 \sphinxincludegraphics{{image94}.png}
@@ -7302,7 +6808,7 @@ By selecting the Advanced mode tab the core option file can be downloaded in pre
 \index{Macros}
 
 \section{Macros}
-\label{\detokenize{User_Guide:macros}}\label{\detokenize{User_Guide:index-214}}
+\label{\detokenize{User_Guide:macros}}\label{\detokenize{User_Guide:index-215}}
 In the world of the 3270 emulation, the term of “Macro” brings together two separate concepts. The first one designates the recording of a sequence of repetitive actions that the user wishes to automate such as for example a signon process, the second designates a complex dialogue between the terminal and an application running on the mainframe side. This second category often requires the usage of a programming language to develop an executable module that operates from the workstation in partnership with the 3270 emulator.
 
 This section disusses the answer to the first concept, the second one is discussed in the section {\hyperref[\detokenize{User_Guide:v457ug-virtel-scenarios}]{\sphinxcrossref{\DUrole{std,std-ref}{“Web Modernisation VIRTEL Scenarios”}}}}.
@@ -7317,7 +6823,7 @@ macro.
 \index{Storing the macros!Macros}\index{Macros!Storing the macros}
 
 \subsection{Storing the Macros}
-\label{\detokenize{User_Guide:storing-the-macros}}\label{\detokenize{User_Guide:index-215}}
+\label{\detokenize{User_Guide:storing-the-macros}}\label{\detokenize{User_Guide:index-216}}
 Depending on the version of VIRTEL, the macros can be saved in:
 \begin{itemize}
 \item {} 
@@ -7341,7 +6847,7 @@ Macros are stored as a JavaScript array of JSON objects in a file called macros.
 \index{local Storage!Macros}\index{Macros!local Storage}
 
 \subsection{Macros in Local Storage}
-\label{\detokenize{User_Guide:index-217}}\label{\detokenize{User_Guide:macros-in-local-storage}}
+\label{\detokenize{User_Guide:macros-in-local-storage}}\label{\detokenize{User_Guide:index-218}}
 By default macros created by the user are saved on the workstation in the “Browsers Local Storage”.
 
 Because the browsers Local Storage isn’t persitent storage macros can be easily destroyed by actions at the browser level. For this reason it is possible to export the Local Storage data of the user macros to a file on a hard drive. Conversely, the saved macros can be re-imported back into Local Storage. Import and Export feature are available in the pop-up windows opened using the PLAY button on the toolbar.
@@ -7369,7 +6875,7 @@ Run
 \index{Key mapping controls!Macros}\index{Macros!Key mapping controls}\index{keymapping!W2HParm Settings}\index{W2HParm Settings!keymapping}\index{keepmacpad!W2HParm Settings}\index{W2HParm Settings!keepmacpad}\index{macroPad!W2HParm Settings}\index{W2HParm Settings!macroPad}
 
 \subsection{Macro controls}
-\label{\detokenize{User_Guide:macro-controls}}\label{\detokenize{User_Guide:index-218}}
+\label{\detokenize{User_Guide:macro-controls}}\label{\detokenize{User_Guide:index-219}}
 Virtel provides several options which can control the display and functionality of the macro logic. The features are enabled or disabled through w2hparm settings. The features are:-
 
 
@@ -7409,7 +6915,7 @@ Boolean to indicate whether the macro interface should be presented as a sub-win
 \index{Using DDI to store macros!Macros}\index{Macros!Using DDI to store macros}\index{Using Virtel storage for macros!Virtel Dynamic Directory Interface}\index{Virtel!Dynamic Directory Interface, Using Virtel storage for macros}\index{Dynamic Directory Interface!Using Virtel storage for macros Virtel}
 
 \subsection{Using VIRTEL Storage for macros}
-\label{\detokenize{User_Guide:using-virtel-storage-for-macros}}\label{\detokenize{User_Guide:index-219}}
+\label{\detokenize{User_Guide:index-220}}\label{\detokenize{User_Guide:using-virtel-storage-for-macros}}
 The “VirtelMacros” function allows GLOBAL, GROUP, and USER macros to be stored under the name “macro.json” in a VSAM file on the VIRTEL host system. This feature uses the dynamic directory interface(DDI) capability of Virtel to store macros in a central repository, in this case a VSAM file on the mainframe. With this centralised environment macros can be managed, thereby keeping control of critical business logic. Macros will be automatically downloaded and refreshed on a users workstation depending on the options set in the w2hparm settings. Each DDi directory maintains a separate copy of the macros.json file.
 
 The DDI and administration features of Virtel should only be made available to an “Administrator”. In Virtel an “Administrator” would be a user who has READ access to all the Virtel security profiles, in particular those starting VIRTEL.*. See the section \DUrole{xref,std,std-ref}{“Security”} for details on setting up Virtel Administrators and protecting resources. The following transactions and related security profiles are used by DDI.
@@ -7528,7 +7034,7 @@ A user can only manage the macros stored in his own directory. To be able to man
 \index{Macro synchronization!Virtel}\index{Virtel!Macro synchronization}\index{synchronizeVirtelMacros!W2HParm Settings}\index{W2HParm Settings!synchronizeVirtelMacros}
 
 \subsection{Macros synchronization between two VIRTEL STC}
-\label{\detokenize{User_Guide:index-223}}\label{\detokenize{User_Guide:macros-synchronization-between-two-virtel-stc}}
+\label{\detokenize{User_Guide:index-224}}\label{\detokenize{User_Guide:macros-synchronization-between-two-virtel-stc}}
 When the VirtelMacros function is implemented on two differents VIRTEL, it is possible to synchronize automatically the Macros between them.
 
 To allow this, the administrator activates the VirtelMacros synchronization function by adding the w2hparm option, shown below, to the w2hparm file. This should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if “Option” mode customization is being used.
@@ -7542,7 +7048,7 @@ The w2hparm modification must be activated as described in {\hyperref[\detokeniz
 \index{Managing macros with DDI!Macros}\index{Macros!Managing macros with DDI}\index{macros.json file!Macros}\index{Macros!macros.json file}\index{Macros!Dynamic Directories Interface}\index{Dynamic Directories Interface!Macros}
 
 \subsection{Managing macros with DDI}
-\label{\detokenize{User_Guide:managing-macros-with-ddi}}\label{\detokenize{User_Guide:index-224}}
+\label{\detokenize{User_Guide:managing-macros-with-ddi}}\label{\detokenize{User_Guide:index-225}}
 The normal practice for an administrator in managing the macro repository would be to capture and create a macro in their user directory, upload it to the mainframe repository using the DDI interface, modify it for general use, and then copy it to any group, user or global directory for general availability. The upload process is through a drag and drop operation within DDI interface. To copy a macros.json to another user or group requires downloading the macro first then dragging the file into the relevant DDI panel area designated by the dotted lines.
 
 \begin{sphinxadmonition}{danger}{Danger:}
@@ -7552,7 +7058,7 @@ Do not use the Virtel Drag and Drop function to upload DDI macros. You must use 
 \index{Uploading macros with DDI!Macros}\index{Macros!Uploading macros with DDI}
 
 \subsubsection{Uploading a macro.json file to the DDI directory}
-\label{\detokenize{User_Guide:uploading-a-macro-json-file-to-the-ddi-directory}}\label{\detokenize{User_Guide:index-225}}
+\label{\detokenize{User_Guide:uploading-a-macro-json-file-to-the-ddi-directory}}\label{\detokenize{User_Guide:index-226}}
 Open the DDI interface, select Global. The Global directory will open. Drag the macros.json file into the area designated by a series of dotted lines. This will initiate a file upload into the global directory of the macro repository:-
 
 \sphinxincludegraphics{{image105}.png}
@@ -7596,7 +7102,7 @@ An Administrator can update any macros held within the DDI repository. Changes w
 \index{Updating macros at the Group Level!Macros}\index{Macros!Updating macros at the Group Level}
 
 \subsubsection{Updating DDI macros at the Group level}
-\label{\detokenize{User_Guide:updating-ddi-macros-at-the-group-level}}\label{\detokenize{User_Guide:index-226}}
+\label{\detokenize{User_Guide:updating-ddi-macros-at-the-group-level}}\label{\detokenize{User_Guide:index-227}}
 To make macros available at a Group level, select the Group TAB from the DDI main panel. Enter the Group name in the group name field and press the “Green Tick” icon. This will create an area within the DDI macro repository were macros for this group can be held. Upload the Group macros.json file you wish to make available to this group by dragging the file into the area designated by the dotted lines. This will initiate an upload of the Group macro.
 
 \sphinxincludegraphics{{image111}.png}
@@ -7627,13 +7133,13 @@ Save with key board mapping.
 \index{Refreshling local macros!Macros}\index{Macros!Refreshling local macros}
 
 \subsection{Automatic refresh of macros in local storage}
-\label{\detokenize{User_Guide:index-228}}\label{\detokenize{User_Guide:automatic-refresh-of-macros-in-local-storage}}
+\label{\detokenize{User_Guide:automatic-refresh-of-macros-in-local-storage}}\label{\detokenize{User_Guide:index-229}}
 Updates to DDI macros held in local storage can only be updated once the user refreshes or redisplays the macros. This triggers the download from the mainframe. Macros are not “automatically” updated in the background due to the performance. If an Administrator updates a macro on the mainframe that update will only be available to the user when the user redisplays or refreshes his local storage by using the “Green” display ICON. This behaviour can be overridden by setting the “macrosAutoRefresh” value in w2hparm. For example, setting the value “daily” will update the local storage of the macros from the Virtel storage once a day. This will ensure that users have the latest copy of the macros.json files.
 
 \index{Format of macros.json!Macros}\index{Macros!Format of macros.json}
 
 \subsection{Format of the macros.json file}
-\label{\detokenize{User_Guide:index-229}}\label{\detokenize{User_Guide:format-of-the-macros-json-file}}
+\label{\detokenize{User_Guide:index-230}}\label{\detokenize{User_Guide:format-of-the-macros-json-file}}
 Each macros.json file contains a set of macros as shown in the example below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7659,7 +7165,7 @@ An empty file (containing no macros) contains only:
 \index{Macro commands!Macros}\index{Macros!Macro commands}
 
 \subsection{Available macro commands}
-\label{\detokenize{User_Guide:index-230}}\label{\detokenize{User_Guide:v457ug-macro-commands}}\label{\detokenize{User_Guide:available-macro-commands}}
+\label{\detokenize{User_Guide:index-231}}\label{\detokenize{User_Guide:v457ug-macro-commands}}\label{\detokenize{User_Guide:available-macro-commands}}
 The following commands can be used in a macro file :
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7698,11 +7204,11 @@ List of available key identifiers (case sensitive!!):
 \index{Virtel Web Modernisation}
 
 \section{VIRTEL Web Modernisation}
-\label{\detokenize{User_Guide:v457ug-virtel-scenarios}}\label{\detokenize{User_Guide:virtel-web-modernisation}}\label{\detokenize{User_Guide:index-231}}
+\label{\detokenize{User_Guide:v457ug-virtel-scenarios}}\label{\detokenize{User_Guide:virtel-web-modernisation}}\label{\detokenize{User_Guide:index-232}}
 \index{390 Object modules!Virtel Web Modernisation}\index{Virtel Web Modernisation!390 Object modules}\index{Virtel Studio!Virtel Web Modernisation}\index{Virtel Web Modernisation!Virtel Studio}\index{Scenarios!Virtel Web Modernisation}\index{Virtel Web Modernisation!Scenarios}\index{Presntation module!Virtel Web Modernisation}\index{Virtel Web Modernisation!Presntation module}
 
 \subsection{VIRTEL Presentation modules and Scenarios}
-\label{\detokenize{User_Guide:virtel-presentation-modules-and-scenarios}}\label{\detokenize{User_Guide:index-232}}
+\label{\detokenize{User_Guide:virtel-presentation-modules-and-scenarios}}\label{\detokenize{User_Guide:index-233}}
 Without modifying existing applications, VIRTEL offers several possibilities for dynamic modification of 3270 data extracted by the \{\{\{GENERATE-HTML\}\}\} tag before it is presented in an HTML page. For instance, it is possible to define, for each field selected, a list of permitted values, or to generate a URL as a function of the value of a fixed field.
 
 \begin{sphinxadmonition}{note}{Note:}
@@ -7716,7 +7222,7 @@ must contain at least one SCENARIO.
 \index{Load library!Scenarios}\index{Scenarios!Load library}
 
 \subsection{Scenarios stored in a load library}
-\label{\detokenize{User_Guide:scenarios-stored-in-a-load-library}}\label{\detokenize{User_Guide:index-234}}
+\label{\detokenize{User_Guide:scenarios-stored-in-a-load-library}}\label{\detokenize{User_Guide:index-235}}
 After compilation, the resulting module must be placed in one of the libraries defined in the DFHRPL concatenation in the VIRTEL started task (for MVS), or in one of the libraries in the LIBDEF SEARCH statement (for VSE). Refer to member ASMSCEN in the VIRTEL SAMPLIB for an example job to assemble and link a presentation module in z/OS.
 
 The F VIRTEL,NEW=scenario-name command (see VIRTEL Messages and Operations Guide) allows VIRTEL to take into account the new version of a scenario assembled and link-edited into a load library.
@@ -7724,7 +7230,7 @@ The F VIRTEL,NEW=scenario-name command (see VIRTEL Messages and Operations Guide
 \index{VSAM Directory!Scenarios}\index{Scenarios!VSAM Directory}
 
 \subsection{Scenarios stored in a VSAM directory}
-\label{\detokenize{User_Guide:scenarios-stored-in-a-vsam-directory}}\label{\detokenize{User_Guide:index-235}}
+\label{\detokenize{User_Guide:scenarios-stored-in-a-vsam-directory}}\label{\detokenize{User_Guide:index-236}}
 If the “Directory for scenarios” field in the Entry Point is non-blank, VIRTEL will load scenarios from the specified directory instead of from the DFHRPL load library.
 Scenarios in VSAM are ordinary VIRTEL files and their extension must be .390; they are normally assembled on a workstation and uploaded to the “Directory for scenarios” by means of Virtel Studio. If a new version of a scenario is uploaded in a VSAM directory, the new version will be used immediately whenever a new connection needs it; no VIRTEL command is necessary. If a terminal is already executing the old version of the scenario, it is not affected, and continues with a copy of the old version. If another scenario with the same name exists
 in another directory, it is not modified by the upload.
@@ -7745,7 +7251,7 @@ A presentation module can contain one of each of the following types of scenario
 \index{Identification!Scenarios}\index{Scenarios!Identification}
 
 \subsubsection{Identification scenario}
-\label{\detokenize{User_Guide:identification-scenario}}\label{\detokenize{User_Guide:index-236}}
+\label{\detokenize{User_Guide:identification-scenario}}\label{\detokenize{User_Guide:index-237}}
 An identification scenario is invoked when an inbound call is assigned to an entry point. Because an identification
 scenario is executed before a transaction is selected and before connecting to a host application, the scenario may use
 the SET\$ TRANSACTION instruction to select the transaction which specifies the host application (if any) to be used.
@@ -7755,7 +7261,7 @@ The identification scenario is required when the entry point specifies the name 
 \index{Initial!Scenarios}\index{Scenarios!Initial}
 
 \subsubsection{Initial scenario}
-\label{\detokenize{User_Guide:initial-scenario}}\label{\detokenize{User_Guide:index-237}}
+\label{\detokenize{User_Guide:index-238}}\label{\detokenize{User_Guide:initial-scenario}}
 An initial scenario is invoked when an \&/S order is processed in a connection script (see “Connection / Disconnection
 Scripts” in the VIRTEL Connectivity Reference manual). The initial scenario is required when the “TIOA at logon” field
 of the transaction contains \&/S and the name of the presentation module is coded in the “Initial Scenario” field of the
@@ -7764,7 +7270,7 @@ transaction.
 \index{Final!Scenarios}\index{Scenarios!Final}
 
 \subsubsection{Final scenario}
-\label{\detokenize{User_Guide:index-238}}\label{\detokenize{User_Guide:final-scenario}}
+\label{\detokenize{User_Guide:index-239}}\label{\detokenize{User_Guide:final-scenario}}
 A final scenario is invoked when an \&/S order is processed in a disconnection script (see “Connection / Disconnection
 Scripts” in the VIRTEL Connectivity Reference manual). The final scenario is required when the “TIOA at logoff” field of
 the transaction contains \&/S and the name of the presentation module is coded in the “Final Scenario” field of the
@@ -7773,7 +7279,7 @@ transaction.
 \index{Input!Scenarios}\index{Scenarios!Input}
 
 \subsubsection{Input scenario}
-\label{\detokenize{User_Guide:index-239}}\label{\detokenize{User_Guide:input-scenario}}
+\label{\detokenize{User_Guide:index-240}}\label{\detokenize{User_Guide:input-scenario}}
 An input scenario is invoked once at the start of the session (on receipt of the first message from the application to the
 terminal after the connection has been established with the host application), and again on receipt of each inbound
 message (from the terminal to the application). The input scenario is required when the name of the presentation
@@ -7789,7 +7295,7 @@ each inbound message.
 \index{Output!Scenarios}\index{Scenarios!Output}
 
 \subsubsection{Output scenario}
-\label{\detokenize{User_Guide:output-scenario}}\label{\detokenize{User_Guide:index-240}}
+\label{\detokenize{User_Guide:output-scenario}}\label{\detokenize{User_Guide:index-241}}
 An output scenario is invoked on receipt of each outbound message (sent from the application to the terminal). The
 output scenario is required when the name of the presentation module is coded in the “Output Scenario” field of the
 transaction.
@@ -7797,7 +7303,7 @@ transaction.
 \index{Subroutine!Scenarios}\index{Scenarios!Subroutine}
 
 \subsubsection{Subroutine scenario}
-\label{\detokenize{User_Guide:index-241}}\label{\detokenize{User_Guide:subroutine-scenario}}
+\label{\detokenize{User_Guide:subroutine-scenario}}\label{\detokenize{User_Guide:index-242}}
 Subroutine scenario represent a certain part of code that can be invoked from within a scenario. Subroutine scenario starts with a SCENARIO SUBROUTINE intruction and ends with a SCENARIO END instruction.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7841,7 +7347,7 @@ subroutine scenario, but level\_3 connot call level\_4 subroutine scenario.
 \index{Mult-Session!Scenarios}\index{Scenarios!Mult-Session}
 
 \subsection{VIRTEL Multi-Session scenarios}
-\label{\detokenize{User_Guide:virtel-multi-session-scenarios}}\label{\detokenize{User_Guide:index-242}}
+\label{\detokenize{User_Guide:virtel-multi-session-scenarios}}\label{\detokenize{User_Guide:index-243}}
 A scenario may also be specified in the “Output Scenario” field of a transaction invoked by VIRTEL Multi-Session. By
 executing an OUTPUT scenario on a 3270 terminal, VIRTEL allows automated 3270 navigation (for example, logon to
 VTAM application) from the Multi-Session screen.
@@ -7854,7 +7360,7 @@ useful (refer to {\hyperref[\detokenize{User_Guide:v457ug-if}]{\sphinxcrossref{\
 \index{SCREENS Instruction!Scenarios}\index{Scenarios!SCREENS Instruction}
 
 \subsection{SCREENS instruction}
-\label{\detokenize{User_Guide:screens-instruction}}\label{\detokenize{User_Guide:index-243}}
+\label{\detokenize{User_Guide:index-244}}\label{\detokenize{User_Guide:screens-instruction}}
 This instruction specifies the name of the presentation module and its execution mode. Each SCREENS instructions is
 terminated by a SCRNEND instruction and may contain only SCENARIO or ERROR\$ instructions.
 
@@ -7886,7 +7392,7 @@ The script may not be externally called.
 \index{SCRNEND Instruction!Scenarios}\index{Scenarios!SCRNEND Instruction}
 
 \subsection{SCRNEND instruction}
-\label{\detokenize{User_Guide:index-244}}\label{\detokenize{User_Guide:scrnend-instruction}}
+\label{\detokenize{User_Guide:index-245}}\label{\detokenize{User_Guide:scrnend-instruction}}
 This instruction marks the end of a presentation module.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7896,7 +7402,7 @@ This instruction marks the end of a presentation module.
 \index{SCENARIO Instruction!Scenarios}\index{Scenarios!SCENARIO Instruction}
 
 \subsection{SCENARIO instruction}
-\label{\detokenize{User_Guide:index-245}}\label{\detokenize{User_Guide:scenario-instruction}}
+\label{\detokenize{User_Guide:scenario-instruction}}\label{\detokenize{User_Guide:index-246}}
 This instruction encloses ACTION\$, CONVERT\$, COPY\$, DECLARE\$, ERROR\$, FIELD\$, GOTO\$, IF\$, MAP\$, SET\$, TOVAR\$, and VIRSV\$ instructions.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7942,7 +7448,7 @@ Stops scenario processing but continue normal VIRTEL processing of the current m
 \index{ACTION\$ Instruction!Scenarios}\index{Scenarios!ACTION\$ Instruction}
 
 \subsubsection{ACTION\$ instruction}
-\label{\detokenize{User_Guide:index-246}}\label{\detokenize{User_Guide:action-instruction}}
+\label{\detokenize{User_Guide:index-247}}\label{\detokenize{User_Guide:action-instruction}}
 This instruction specifies actions to be taken.
 
 \sphinxstylestrong{ACTION\$ DISCONNECT}
@@ -8177,7 +7683,7 @@ doubled to conform withinh assembler syntax requirements.
 \index{CASE\$ Instruction!Scenarios}\index{Scenarios!CASE\$ Instruction}
 
 \subsubsection{CASE\$ instruction}
-\label{\detokenize{User_Guide:case-instruction}}\label{\detokenize{User_Guide:index-248}}
+\label{\detokenize{User_Guide:case-instruction}}\label{\detokenize{User_Guide:index-249}}
 This instruction tests a value in a 3270 screen position, or a value in a VIRTEL variable, and directs the subsequent
 processing flow according to the value.
 
@@ -8265,7 +7771,7 @@ Note 3: Any number of (condition,’value’,process) parameters may be specifie
 \index{CONVERT\$ Instruction!Scenarios}\index{Scenarios!CONVERT\$ Instruction}
 
 \subsubsection{CONVERT\$ instruction}
-\label{\detokenize{User_Guide:index-249}}\label{\detokenize{User_Guide:convert-instruction}}
+\label{\detokenize{User_Guide:index-250}}\label{\detokenize{User_Guide:convert-instruction}}
 This instruction allows a scenario to translate a VIRTEL variable to or from EBCDIC, or to convert a variable to upper or
 lower case.
 
@@ -8307,7 +7813,7 @@ is the name of the translate table to be used for UTF-8 conversion. The possible
 \index{COPY\$ Instruction!Scenarios}\index{Scenarios!COPY\$ Instruction}
 
 \subsubsection{COPY\$ instruction}
-\label{\detokenize{User_Guide:copy-instruction}}\label{\detokenize{User_Guide:index-250}}
+\label{\detokenize{User_Guide:copy-instruction}}\label{\detokenize{User_Guide:index-251}}
 This instruction allows various copy operations within the context of a scenario.
 
 \sphinxstylestrong{COPY\$ FIELD-NAME-TO-VARIABLE}
@@ -9233,7 +8739,7 @@ ERROR\PYGZdl{} 0,\PYGZsq{}Target value is : \PYGZsq{},\PYGZsq{}*target\PYGZsq{}
 \index{DEBUG\$ Instruction!Scenarios}\index{Scenarios!DEBUG\$ Instruction}
 
 \subsubsection{DEBUG\$ instruction}
-\label{\detokenize{User_Guide:index-251}}\label{\detokenize{User_Guide:debug-instruction}}
+\label{\detokenize{User_Guide:index-252}}\label{\detokenize{User_Guide:debug-instruction}}
 This instruction allows a scenario to activate various debugging functions.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -9271,7 +8777,7 @@ The DEBUG\$ instruction is executed only if the external name of the transaction
 \index{DECLARE\$ Instruction!Scenarios}\index{Scenarios!DECLARE\$ Instruction}
 
 \subsubsection{DECLARE\$ instruction}
-\label{\detokenize{User_Guide:index-252}}\label{\detokenize{User_Guide:declare-instruction}}
+\label{\detokenize{User_Guide:index-253}}\label{\detokenize{User_Guide:declare-instruction}}
 This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key (ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is generated only if the specified screen position is non-blank.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -9402,7 +8908,7 @@ http//www.google.com/search?=ccc...ccc\PYGZam{}hl=fr
 \index{ENDFOR\$ Instruction!Scenarios}\index{Scenarios!ENDFOR\$ Instruction}
 
 \subsubsection{ENDFOR\$ instruction}
-\label{\detokenize{User_Guide:endfor-instruction}}\label{\detokenize{User_Guide:index-255}}
+\label{\detokenize{User_Guide:index-256}}\label{\detokenize{User_Guide:endfor-instruction}}
 This instruction marks the end of a FOREACH loop.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -9417,7 +8923,7 @@ The label is required. It must match the label on the corresponding FOREACH\$ VA
 \index{ERROR\$ Instruction!Scenarios}\index{Scenarios!ERROR\$ Instruction}
 
 \subsubsection{ERROR\$ instruction}
-\label{\detokenize{User_Guide:error-instruction}}\label{\detokenize{User_Guide:index-256}}
+\label{\detokenize{User_Guide:error-instruction}}\label{\detokenize{User_Guide:index-257}}
 This instruction returns an error code to the calling program. When this instruction is used, the return code in the
 HTTP response will be “400 Bad Request” instead of “200 Ok”.
 
@@ -9436,7 +8942,7 @@ Specifies the error code (decimal 0 to 255). If the error code is non-zero, a me
 \index{FIELDS\$ Instruction!Scenarios}\index{Scenarios!FIELDS\$ Instruction}
 
 \subsubsection{FIELD\$ instruction}
-\label{\detokenize{User_Guide:field-instruction}}\label{\detokenize{User_Guide:index-257}}
+\label{\detokenize{User_Guide:field-instruction}}\label{\detokenize{User_Guide:index-258}}
 This instruction defines the position and the length of the 3270 selection involved, as well as the set of presentation rules.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -9531,7 +9037,7 @@ FIELD\PYGZdl{} (row,col,len),HIDE
 \index{FILTER Instruction!Scenarios}\index{Scenarios!FILTER Instruction}
 
 \subsubsection{FILTER\$ instruction}
-\label{\detokenize{User_Guide:index-258}}\label{\detokenize{User_Guide:filter-instruction}}
+\label{\detokenize{User_Guide:index-259}}\label{\detokenize{User_Guide:filter-instruction}}
 \sphinxstylestrong{FILTER\$ VARIABLE-TO-VARIABLE}
 
 The FILTER\$ VARIABLE-TO-VARIABLE instruction creates or adds values to a variable from another variable according to
@@ -9566,7 +9072,7 @@ the default action, if none of the preceding conditions is met, is to copy the v
 \index{FOREACH Instruction!Scenarios}\index{Scenarios!FOREACH Instruction}
 
 \subsubsection{FOREACH\$}
-\label{\detokenize{User_Guide:index-259}}\label{\detokenize{User_Guide:foreach}}
+\label{\detokenize{User_Guide:foreach}}\label{\detokenize{User_Guide:index-260}}
 \sphinxstylestrong{FOREACH\$ VALUE-IN-SCREEN instruction}
 
 The FOREACH\$ VALUE-IN-SCREEN instruction marks the start of a loop on a screen. Nested pairs of FOREACH\$ and ENDFOR\$ instructions are permitted.
@@ -9616,7 +9122,7 @@ The name of the table variable beeing looped on.
 \index{GOTO\$ Instruction!Scenarios}\index{Scenarios!GOTO\$ Instruction}
 
 \subsubsection{GOTO\$ instruction}
-\label{\detokenize{User_Guide:goto-instruction}}\label{\detokenize{User_Guide:index-260}}
+\label{\detokenize{User_Guide:goto-instruction}}\label{\detokenize{User_Guide:index-261}}
 This instruction directs the subsequent processing flow to a specified label.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -9631,7 +9137,7 @@ Specifies the instruction label at which execution of the scenario is to continu
 \index{HANDLE\$ Instruction!Scenarios}\index{Scenarios!HANDLE\$ Instruction}
 
 \subsubsection{HANDLE\$ instruction}
-\label{\detokenize{User_Guide:handle-instruction}}\label{\detokenize{User_Guide:index-261}}
+\label{\detokenize{User_Guide:handle-instruction}}\label{\detokenize{User_Guide:index-262}}
 This instruction allows to manage various handle operations within the context of a scenario.
 
 \sphinxstylestrong{HANDLE\$ ABEND instruction}
@@ -9692,7 +9198,7 @@ scenario.
 \index{IF\$ Instruction!Scenarios}\index{Scenarios!IF\$ Instruction}
 
 \subsubsection{IF\$ instruction}
-\label{\detokenize{User_Guide:if-instruction}}\label{\detokenize{User_Guide:index-262}}
+\label{\detokenize{User_Guide:if-instruction}}\label{\detokenize{User_Guide:index-263}}
 This instruction enables the testing of the presence of a value in a 3270 screen, or a value in a VIRTEL variable, or a
 condition set by a previous instruction, and directs the subsequent processing flow.
 
@@ -9780,7 +9286,7 @@ Specifies the address of the branch exit of the script if the condition is not s
 \index{INDSCEN\$ Instruction!Scenarios}\index{Scenarios!INDSCEN\$ Instruction}
 
 \subsubsection{INDSCEN\$ instruction}
-\label{\detokenize{User_Guide:indscen-instruction}}\label{\detokenize{User_Guide:index-263}}
+\label{\detokenize{User_Guide:index-264}}\label{\detokenize{User_Guide:indscen-instruction}}
 This instruction allows a scenario to enable the IND\$FILE file transfer function. The INDSCEN\$ macro instruction must
 be included in both the input scenario and the output scenario.
 
@@ -9796,7 +9302,7 @@ Specifies the type of host system running the IND\$FILE program. TSO is the only
 \index{LABEL\$ Instruction!Scenarios}\index{Scenarios!LABEL\$ Instruction}
 
 \subsubsection{LABEL\$ instruction}
-\label{\detokenize{User_Guide:label-instruction}}\label{\detokenize{User_Guide:index-264}}
+\label{\detokenize{User_Guide:label-instruction}}\label{\detokenize{User_Guide:index-265}}
 This instruction allows to define a label in a scenario.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -9831,7 +9337,7 @@ A sample of the usage of LABEL\$ instruction is available in the PERFORM\$ insct
 \index{MAP\$ Instruction!Scenarios}\index{Scenarios!MAP\$ Instruction}
 
 \subsubsection{MAP\$ instruction}
-\label{\detokenize{User_Guide:index-265}}\label{\detokenize{User_Guide:map-instruction}}
+\label{\detokenize{User_Guide:index-266}}\label{\detokenize{User_Guide:map-instruction}}
 The MAP\$ instruction defines the format of a flat-format data area known as a “commarea”, and describes how VIRTEL
 converts XML or Query input data to commarea format. The MAP\$ instruction may also be used in conjunction with
 the TOVAR\$ instruction to convert an output commarea to VIRTEL variables, which can be used with an appropriate
@@ -10367,7 +9873,7 @@ MAP\$ COPY,VAR=’varname’ is equivalent to MAP\$ TO-VARIABLE,VAR=’varname�
 \index{OPTION\$ Instruction!Scenarios}\index{Scenarios!OPTION\$ Instruction}
 
 \subsubsection{OPTION\$ instruction}
-\label{\detokenize{User_Guide:index-266}}\label{\detokenize{User_Guide:option-instruction}}
+\label{\detokenize{User_Guide:index-267}}\label{\detokenize{User_Guide:option-instruction}}
 This instruction allows the scenario to set up parameters for a subsequent SEND\$ TO-LINE instruction.
 
 \sphinxstylestrong{OPTION\$ FOR-HTTP}
@@ -10759,7 +10265,7 @@ In the above example, the variable DESTADDR contains the value of the TO paramet
 \index{PERFORM\$ Instruction!Scenarios}\index{Scenarios!PERFORM\$ Instruction}
 
 \subsubsection{PERFORM\$ instruction}
-\label{\detokenize{User_Guide:perform-instruction}}\label{\detokenize{User_Guide:index-269}}
+\label{\detokenize{User_Guide:perform-instruction}}\label{\detokenize{User_Guide:index-270}}
 This instruction allows to execute a SUBROUTINE scenario before continuing in sequence.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -11464,11 +10970,11 @@ measurement.
 \index{Web Modernisation Scenario Example!Scenarios}\index{Scenarios!Web Modernisation Scenario Example}
 
 \subsection{Examples of VIRTEL Web Modernisation Scenarios}
-\label{\detokenize{User_Guide:index-270}}\label{\detokenize{User_Guide:examples-of-virtel-web-modernisation-scenarios}}
+\label{\detokenize{User_Guide:index-271}}\label{\detokenize{User_Guide:examples-of-virtel-web-modernisation-scenarios}}
 \index{Create a list of values for selected field!Scenarios}\index{Scenarios!Create a list of values for selected field}
 
 \subsubsection{Creation of a list of values for a selected field}
-\label{\detokenize{User_Guide:index-271}}\label{\detokenize{User_Guide:creation-of-a-list-of-values-for-a-selected-field}}
+\label{\detokenize{User_Guide:creation-of-a-list-of-values-for-a-selected-field}}\label{\detokenize{User_Guide:index-272}}
 Many 3270 applications consist of fields which can take only one of a restricted set of values. In this case, it is possible
 to offer the end user a list of allowable values by requesting VIRTEL to generate the field in the form of a SELECT rather
 than in the form of a normal field. This type of modification is performed by the FIELD\$ instruction.
@@ -11507,7 +11013,7 @@ END
 \index{Make clickable fields!Scenarios}\index{Scenarios!Make clickable fields}
 
 \subsubsection{Making clickable fields}
-\label{\detokenize{User_Guide:making-clickable-fields}}\label{\detokenize{User_Guide:index-272}}
+\label{\detokenize{User_Guide:making-clickable-fields}}\label{\detokenize{User_Guide:index-273}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 TESTCT1 SCREENS APPL=Demopfks,EXEC=NO
 *
@@ -11557,7 +11063,7 @@ END
 \index{Add calendars to date fields!Scenarios}\index{Scenarios!Add calendars to date fields}
 
 \subsubsection{Adding calendars to date fields}
-\label{\detokenize{User_Guide:index-273}}\label{\detokenize{User_Guide:adding-calendars-to-date-fields}}
+\label{\detokenize{User_Guide:index-274}}\label{\detokenize{User_Guide:adding-calendars-to-date-fields}}
 By using a combination of an output scenario and a JavaScript application, date fields on the 3270 screen can be
 transformed into HTML fields on which a small calendar window appears when the user clicks on the field. The user
 chooses the desired date from the calendar, and VIRTEL inserts the date in the correct format into the 3270 input field.
@@ -11652,7 +11158,7 @@ WEB2VIRT.htm:
 \index{Virtel Suggest!Scenarios}\index{Scenarios!Virtel Suggest}
 
 \subsubsection{VIRTEL suggest}
-\label{\detokenize{User_Guide:index-274}}\label{\detokenize{User_Guide:virtel-suggest}}
+\label{\detokenize{User_Guide:index-275}}\label{\detokenize{User_Guide:virtel-suggest}}
 VIRTEL Suggest is a facility which presents lists of suggested values for specific 3270 fields. The suggested values are
 presented in a drop-down list which appears automatically when the user starts typing into a field. The list modifies
 itself dynamically as the user types. At any time the user can select one of the suggested values by clicking or moving
@@ -11787,7 +11293,7 @@ on the page, the second entry corresponds to the second VIRTEL Suggest field on 
 \index{Auto-Refresh!Scenarios}\index{Scenarios!Auto-Refresh}
 
 \subsection{Scenario Auto-refresh}
-\label{\detokenize{User_Guide:index-276}}\label{\detokenize{User_Guide:scenario-auto-refresh}}
+\label{\detokenize{User_Guide:index-277}}\label{\detokenize{User_Guide:scenario-auto-refresh}}
 The majority of host applications use the 3270 protocol in a synchronous manner, meaning that each user input
 (ENTER or PF key) generates one response consisting of a 3270 screen built by a single VTAM message. Certain host
 applications, however, may build a 3270 screen in two or more segments, by sending more than one VTAM message to
@@ -11911,7 +11417,7 @@ transaction definition. The source code for the SCENAUTN scenario is supplied in
 \index{PDF Output Generation!Scenarios}\index{Scenarios!PDF Output Generation}\index{MakePDF!Virtel}\index{Virtel!MakePDF}
 
 \subsection{PDF output generation}
-\label{\detokenize{User_Guide:index-277}}\label{\detokenize{User_Guide:pdf-output-generation}}
+\label{\detokenize{User_Guide:pdf-output-generation}}\label{\detokenize{User_Guide:index-278}}
 This example shows a scenario which generates a PDF output file using the MakePDF program product via the service
 program VIRSVPDF.
 
@@ -12032,13 +11538,13 @@ TEXTEND
 \index{Virtel Web Intergration}
 
 \section{VIRTEL Web Integration}
-\label{\detokenize{User_Guide:virtel-web-integration}}\label{\detokenize{User_Guide:v457ug-virtel-intergration}}\label{\detokenize{User_Guide:index-278}}
+\label{\detokenize{User_Guide:virtel-web-integration}}\label{\detokenize{User_Guide:index-279}}\label{\detokenize{User_Guide:v457ug-virtel-intergration}}
 VIRTEL Web Integration allows XML or other web services requests to be interpreted and transformed into requests which can be processed by legacy applications such as CICS/COBOL, with the results being transformed back into XML format for transmission via HTTP or SMTP. By using the scenario language described in section {\hyperref[\detokenize{User_Guide:v457ug-virtel-scenarios}]{\sphinxcrossref{\DUrole{std,std-ref}{“Web Modernisation VIRTEL Scenarios”}}}}, legacy transactions can be converted into Web Services.
 \phantomsection\label{\detokenize{User_Guide:v457ug-parsing-query-input}}
 \index{Parsing Query Parameters!Virtel}\index{Virtel!Parsing Query Parameters}
 
 \subsection{Parsing Query input}
-\label{\detokenize{User_Guide:index-279}}\label{\detokenize{User_Guide:parsing-query-input}}
+\label{\detokenize{User_Guide:index-280}}\label{\detokenize{User_Guide:parsing-query-input}}
 By using a combination of an INITIAL scenario and a VIRTEL transaction script, VIRTEL can transform Query parameters
 in an HTTP request into a fixed-format data area for processing by a COBOL legacy application program.
 
@@ -12078,7 +11584,7 @@ The “/” characters in the user’s input have been encoded by the browser as
 \index{Sending Query Data with POST!Virtel Scenarios}\index{Virtel!Scenarios, Sending Query Data with POST}\index{Scenarios!Sending Query Data with POST Virtel}
 
 \subsubsection{HTTP request with Query data (POST method)}
-\label{\detokenize{User_Guide:index-280}}\label{\detokenize{User_Guide:http-request-with-query-data-post-method}}
+\label{\detokenize{User_Guide:http-request-with-query-data-post-method}}\label{\detokenize{User_Guide:index-281}}
 By changing the FORM METHOD to POST (instead of GET) in the HTML form, the HTTP request can be presented to VIRTEL in the alternative format shown below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -12097,7 +11603,7 @@ VIRTEL considers this POST request to be identical to the GET request presented 
 \index{Extracting Query Data!Virtel Scenarios}\index{Virtel!Scenarios, Extracting Query Data}\index{Scenarios!Extracting Query Data Virtel}
 
 \subsubsection{Presentation module for Query input data}
-\label{\detokenize{User_Guide:presentation-module-for-query-input-data}}\label{\detokenize{User_Guide:index-281}}
+\label{\detokenize{User_Guide:presentation-module-for-query-input-data}}\label{\detokenize{User_Guide:index-282}}
 An example INITIAL scenario for converting this Query data to commarea format is coded in the presentation module SCENQRYI shown below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -12122,7 +11628,7 @@ The same presentation module may be used to process both GET and POST requests.
 \index{Commarea Example!Scenarios}\index{Scenarios!Commarea Example}
 
 \subsubsection{Contents of generated commarea}
-\label{\detokenize{User_Guide:contents-of-generated-commarea}}\label{\detokenize{User_Guide:index-282}}
+\label{\detokenize{User_Guide:contents-of-generated-commarea}}\label{\detokenize{User_Guide:index-283}}
 The figure below shows the 20-byte commarea generated in the VIRTEL variable MYAREA:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -12135,7 +11641,7 @@ The figure below shows the 20-byte commarea generated in the VIRTEL variable MYA
 \index{Query input Data!Transactions}\index{Transactions!Query input Data}
 
 \subsubsection{Transaction definition for Query input data}
-\label{\detokenize{User_Guide:transaction-definition-for-query-input-data}}\label{\detokenize{User_Guide:index-283}}
+\label{\detokenize{User_Guide:transaction-definition-for-query-input-data}}\label{\detokenize{User_Guide:index-284}}
 The HTTP requests shown in the GET and POST examples above use the URL querydemo.htm+tranq to invoke the
 VIRTEL transaction shown below (tranq is the “external name” of the transaction). The “TIOA at logon” field contains a
 connection script. After signing on to CICS, the connection script uses the \&/S order to process the INITIAL scenario in
@@ -12175,7 +11681,7 @@ P1=Update                          P3=Return                        P12=Server
 \index{Processing XML Data!XML}\index{XML!Processing XML Data}
 
 \subsection{Parsing XML input}
-\label{\detokenize{User_Guide:parsing-xml-input}}\label{\detokenize{User_Guide:index-284}}
+\label{\detokenize{User_Guide:parsing-xml-input}}\label{\detokenize{User_Guide:index-285}}
 By using a combination of an INITIAL scenario and a VIRTEL transaction script, VIRTEL can transform XML input data in
 an HTTP request into a fixed-format data area for processing by a COBOL legacy application program.
 
@@ -12208,7 +11714,7 @@ Content\PYGZhy{}Length: 197
 \index{Processing XML Data!Scenarios}\index{Scenarios!Processing XML Data}
 
 \subsubsection{Presentation module for XML input data}
-\label{\detokenize{User_Guide:index-285}}\label{\detokenize{User_Guide:presentation-module-for-xml-input-data}}
+\label{\detokenize{User_Guide:index-286}}\label{\detokenize{User_Guide:presentation-module-for-xml-input-data}}
 An example INITIAL scenario for processing this XML input data is coded in the presentation module SCENXMLI shown below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -12248,7 +11754,7 @@ The figure below shows the 36-byte commarea generated in the VIRTEL variable MYA
 \index{Encoding XML Data!XML}\index{XML!Encoding XML Data}\index{XML Data!Virtel}\index{Virtel!XML Data}
 
 \subsubsection{Sending XML input as URL-encoded data}
-\label{\detokenize{User_Guide:sending-xml-input-as-url-encoded-data}}\label{\detokenize{User_Guide:index-286}}
+\label{\detokenize{User_Guide:sending-xml-input-as-url-encoded-data}}\label{\detokenize{User_Guide:index-287}}
 For some applications it may be more convenient to send the XML data as part of the URL. To conform with URL syntax
 rules, the XML data is embedded in an HTML text field, and blanks and other special characters in the XML data are
 replaced by their corresponding URL-encoded values (“+” signs and “\%xx” sequences). This format can be generated
@@ -12315,7 +11821,7 @@ must be replaced by the statement OUTAREA MAP\$ FROM-FIELD,FIELD=’MYINPUT’
 \index{XML Data!Transactions}\index{Transactions!XML Data}
 
 \subsubsection{Transaction definition for XML input data}
-\label{\detokenize{User_Guide:transaction-definition-for-xml-input-data}}\label{\detokenize{User_Guide:index-287}}
+\label{\detokenize{User_Guide:index-288}}\label{\detokenize{User_Guide:transaction-definition-for-xml-input-data}}
 The HTTP requests shown above use the URL /demohttp/xmldemo.xml+tran3 to invoke the VIRTEL transaction shown
 below (tran3 is the “external name” of the transaction). The “TIOA at logon” field contains a connection script. After
 signing on to CICS, the connection script uses the \&/S order to process the INITIAL scenario in the presentation module
@@ -12418,7 +11924,7 @@ The figure below shows the 77-byte commarea generated in the VIRTEL variable MYC
 \index{Redefinition of data fields!XML}\index{XML!Redefinition of data fields}
 
 \subsubsection{XML input with redefinition of fields}
-\label{\detokenize{User_Guide:index-289}}\label{\detokenize{User_Guide:xml-input-with-redefinition-of-fields}}
+\label{\detokenize{User_Guide:xml-input-with-redefinition-of-fields}}\label{\detokenize{User_Guide:index-290}}
 This example shows how the commarea can be redefined according to the value of a field in the XML input. In this
 example, the input can be in one of two formats, depending on the value of the field whose name is “reqtype”:-
 
@@ -12522,7 +12028,7 @@ By using an output scenario and a suitable page template, VIRTEL can transform a
 \index{Presentation module!XML}\index{XML!Presentation module}
 
 \subsubsection{Presentation module for XML output}
-\label{\detokenize{User_Guide:presentation-module-for-xml-output}}\label{\detokenize{User_Guide:index-290}}
+\label{\detokenize{User_Guide:presentation-module-for-xml-output}}\label{\detokenize{User_Guide:index-291}}
 An output scenario is used to extract data from the output 3270 data stream of the transaction and place it into one or
 more table variables. The example presentation module SCENXMLO shown below contains an OUTPUT scenario which
 creates two variables, ACCTNUM and FULLNAME, from a table of values displayed on the 3270 screen:
@@ -12560,7 +12066,7 @@ It is also possible for the application program to create VIRTEL table variables
 \index{Template example!XML}\index{XML!Template example}
 
 \subsubsection{Page template for XML output}
-\label{\detokenize{User_Guide:page-template-for-xml-output}}\label{\detokenize{User_Guide:index-291}}
+\label{\detokenize{User_Guide:page-template-for-xml-output}}\label{\detokenize{User_Guide:index-292}}
 The URL in this example is /demohttp/xmldemo.xml+tran3 which requests VIRTEL to use the page template
 xmldemo.xml to process the output of the tran3 transaction. The purpose of the page template is to convert the
 transaction output into XML format.
@@ -12588,7 +12094,7 @@ program:
 \index{XML parser/generator!Virtel}\index{Virtel!XML parser/generator}
 
 \subsection{VIRTEL as an XML parser/generator}
-\label{\detokenize{User_Guide:virtel-as-an-xml-parser-generator}}\label{\detokenize{User_Guide:index-292}}
+\label{\detokenize{User_Guide:virtel-as-an-xml-parser-generator}}\label{\detokenize{User_Guide:index-293}}
 An application can use the VIRTEL HTTP server as an XML parser/generator engine. A client program establishes a TCP/
 IP session with the VIRTEL HTTP server, and sends XML or commarea data to VIRTEL in an HTTP request. VIRTEL
 performs conversion to or from XML, and returns the resulting commarea or XML data to the client program in the
@@ -12605,7 +12111,7 @@ detailed examples which follow.
 \index{VIRKIX!Virtel}\index{Virtel!VIRKIX}
 
 \subsubsection{Communication via VIRKIX}
-\label{\detokenize{User_Guide:communication-via-virkix}}\label{\detokenize{User_Guide:index-293}}
+\label{\detokenize{User_Guide:communication-via-virkix}}\label{\detokenize{User_Guide:index-294}}
 A client program running under CICS on MVS can use VIRKIX to establish the HTTP connection, send the request, and
 receive the response. The client program may send the request in either ASCII or EBCDIC; both formats are recognized
 and supported by VIRTEL. Notice the use of the special header GIVE-LENGTH-PREFIX which requests VIRTEL to add a
@@ -12614,7 +12120,7 @@ and supported by VIRTEL. Notice the use of the special header GIVE-LENGTH-PREFIX
 \index{MAP\$ Example!Scenarios XML Parser/Generator}\index{Scenarios!XML Parser/Generator, MAP\$ Example}\index{XML Parser/Generator!MAP\$ Example Scenarios}
 
 \subsubsection{Example MAP\$ statements}
-\label{\detokenize{User_Guide:example-map-statements}}\label{\detokenize{User_Guide:index-294}}
+\label{\detokenize{User_Guide:example-map-statements}}\label{\detokenize{User_Guide:index-295}}
 The copy member SCONVMAP shown below contains the MAP\$ statements common to both examples presented in
 this section. This member is copied into each of the scenarios SCONVXML and SCONVPLA by means of an assembler
 COPY statement.
@@ -12748,7 +12254,7 @@ The figure below shows the HTTP response returned by VIRTEL. The body of the res
 \index{Commarea conversion!XML Parser/Generator}\index{XML Parser/Generator!Commarea conversion}\index{Commarea conversion!XML}\index{XML!Commarea conversion}
 
 \subsubsection{Commarea-to-XML conversion using the VIRTEL XML generator}
-\label{\detokenize{User_Guide:commarea-to-xml-conversion-using-the-virtel-xml-generator}}\label{\detokenize{User_Guide:index-295}}
+\label{\detokenize{User_Guide:index-296}}\label{\detokenize{User_Guide:commarea-to-xml-conversion-using-the-virtel-xml-generator}}
 The figure below shows an example transaction definition to be used for commarea-to-XML conversion using the
 VIRTEL XML generator. The external name “trancom” is the name referenced in the URL of the HTTP request which
 calls the transaction. The special application name \$NONE\$ indicates that no host application is to be called. The /\&S
@@ -12867,7 +12373,7 @@ Content\PYGZhy{}type: text/xml
 \index{Automatic scenario generation!Scenarios MAPGEN}\index{Scenarios!MAPGEN, Automatic scenario generation}\index{MAPGEN!Automatic scenario generation Scenarios}
 
 \subsection{Automatic scenario generation}
-\label{\detokenize{User_Guide:index-297}}\label{\detokenize{User_Guide:automatic-scenario-generation}}
+\label{\detokenize{User_Guide:automatic-scenario-generation}}\label{\detokenize{User_Guide:index-298}}
 
 \subsubsection{MAPGEN program}
 \label{\detokenize{User_Guide:mapgen-program}}
@@ -13034,7 +12540,7 @@ used:
 \index{File transfer!SMTP Virtel}\index{SMTP!Virtel, File transfer}\index{Virtel!File transfer SMTP}
 
 \subsection{File transfer by e-mail}
-\label{\detokenize{User_Guide:file-transfer-by-e-mail}}\label{\detokenize{User_Guide:index-299}}
+\label{\detokenize{User_Guide:index-300}}\label{\detokenize{User_Guide:file-transfer-by-e-mail}}
 An entry point which is used for file file transfer (including the upload of HTML pages) has a single transaction which
 calls VIRTEL module VIR0041B. This transaction is defined with application type 2 and startup mode 1. The menu
 program specified in the entry point must be VIR0021B.
@@ -13097,7 +12603,7 @@ Enter=Add
 \index{Starting an application by e-mail!SMTP Virtel}\index{SMTP!Virtel, Starting an application by e-mail}\index{Virtel!Starting an application by e-mail SMTP}
 
 \subsection{Starting an application by e-mail}
-\label{\detokenize{User_Guide:starting-an-application-by-e-mail}}\label{\detokenize{User_Guide:index-300}}
+\label{\detokenize{User_Guide:index-301}}\label{\detokenize{User_Guide:starting-an-application-by-e-mail}}
 When an entry point is used for starting an application by e-mail, the application must be associated with a relay (or
 pseudo-3270 terminal) through which the application can retrieve the contents of the e-mail. It is therefore necessary
 to specify the name of a relay LU in the definition of the terminals attached to the SMTP line (refer to the VIRTEL
@@ -13188,7 +12694,7 @@ field to VIRTEL via the relay LU and reading the response (see {\hyperref[\detok
 \index{Virtel Batch}
 
 \section{VIRTEL Batch}
-\label{\detokenize{User_Guide:index-301}}\label{\detokenize{User_Guide:virtel-batch}}
+\label{\detokenize{User_Guide:virtel-batch}}\label{\detokenize{User_Guide:index-302}}
 The VIRTEL Batch facility allows you to run VIRTEL as a batch job to execute HTTP-like requests. VIRTEL reads HTTP-like
 requests from a SYSIN dataset, executes the desired transaction, and writes an HTTP-like response to a SYSOUT
 dataset. When all of the HTTP-like requests have been processed, VIRTEL terminates if requested.
@@ -13223,7 +12729,7 @@ These preparatory steps, which in general only need to be performed once, are de
 \index{Assembling TCT!Virtel Batch}\index{Virtel Batch!Assembling TCT}
 
 \subsection{Assembling the VIRTCT for VIRTEL Batch}
-\label{\detokenize{User_Guide:index-302}}\label{\detokenize{User_Guide:assembling-the-virtct-for-virtel-batch}}
+\label{\detokenize{User_Guide:index-303}}\label{\detokenize{User_Guide:assembling-the-virtct-for-virtel-batch}}
 VIRTEL Batch requires a special VIRTCT which must be assembled and link-edited into the VIRTEL load library. The
 figure below shows SAMPLIB member VIRTCTBA, which is an example VIRTCT suitable for running VIRTEL Batch. The
 job ASMTCT in the VIRTEL SAMPLIB should be run once to assemble and link-edit this module as VIRTCTBA in the
@@ -13503,7 +13009,7 @@ recfm=fb,lrecl=200\PYGZam{}input\PYGZus{}encoding=U HTTP/1.1
 \index{POST Command!Virtel Batch}\index{Virtel Batch!POST Command}
 
 \subsubsection{VIRTEL Batch POST command}
-\label{\detokenize{User_Guide:index-305}}\label{\detokenize{User_Guide:virtel-batch-post-command}}
+\label{\detokenize{User_Guide:virtel-batch-post-command}}\label{\detokenize{User_Guide:index-306}}
 The following figure shows an example SYSIN file containing a POST command followed by XML data:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -13554,7 +13060,7 @@ Special: GIVE\PYGZhy{}LENGTH\PYGZhy{}PREFIX
 \index{RAW Command!Virtel Batch}\index{Virtel Batch!RAW Command}
 
 \subsection{VIRTEL Batch RAW command}
-\label{\detokenize{User_Guide:virtel-batch-raw-command}}\label{\detokenize{User_Guide:index-306}}
+\label{\detokenize{User_Guide:virtel-batch-raw-command}}\label{\detokenize{User_Guide:index-307}}
 The following figure shows an example SYSIN file containing a RAW command followed by HTTP request data:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -13581,7 +13087,7 @@ HTTP request exactly as contained in the data statements.
 \index{Return Codes!Virtel Batch}\index{Virtel Batch!Return Codes}
 
 \subsection{VIRTEL Batch return codes}
-\label{\detokenize{User_Guide:virtel-batch-return-codes}}\label{\detokenize{User_Guide:index-307}}
+\label{\detokenize{User_Guide:index-308}}\label{\detokenize{User_Guide:virtel-batch-return-codes}}
 When a VIRTEL Batch job terminates, the condition code is set to the highest ERROR\$ code set by the of the scenarios
 executed (value 0 to 255).
 
@@ -13598,7 +13104,7 @@ statement, or insufficient memory) then the condition code is set to 16.
 \index{Outgoing Calls}
 
 \chapter{Outgoing Calls}
-\label{\detokenize{User_Guide:outgoing-calls}}\label{\detokenize{User_Guide:index-308}}
+\label{\detokenize{User_Guide:index-309}}\label{\detokenize{User_Guide:outgoing-calls}}
 
 \section{Outgoing E-mails}
 \label{\detokenize{User_Guide:outgoing-e-mails}}
@@ -13643,7 +13149,7 @@ Refer to the VIRTEL Connectivity Reference documentation for details of defining
 \index{Programming interfaces}
 
 \chapter{Programming Interfaces}
-\label{\detokenize{User_Guide:v457ug-programming-interfaces}}\label{\detokenize{User_Guide:index-310}}\label{\detokenize{User_Guide:programming-interfaces}}
+\label{\detokenize{User_Guide:v457ug-programming-interfaces}}\label{\detokenize{User_Guide:index-311}}\label{\detokenize{User_Guide:programming-interfaces}}
 Certain VIRTEL functions can be driven by application programs. These functions are generally requested by sending specially formatted commands to VIRTEL on the same 3270 session through which the application communicates with the end user. An application can request VIRTEL functions in the following ways:
 \begin{itemize}
 \item {} 
@@ -13657,7 +13163,7 @@ By embedding HOST4WEB commands in the 3270 screen (available from VIRTEL version
 \index{Structured Fields!Programming Interfaces}\index{Programming Interfaces!Structured Fields}
 
 \section{Structred Fields}
-\label{\detokenize{User_Guide:structred-fields}}\label{\detokenize{User_Guide:index-311}}\begin{quote}
+\label{\detokenize{User_Guide:index-312}}\label{\detokenize{User_Guide:structred-fields}}\begin{quote}
 
 In addition to sending normal screen display data, a 3270
 application may also send data in specially formatted fields known
@@ -13716,7 +13222,7 @@ the data.
 \index{Write Structured Field command!Programming Interfaces}\index{Programming Interfaces!Write Structured Field command}
 
 \subsection{Sending structured fields via the Write Structured Field command}
-\label{\detokenize{User_Guide:index-312}}\label{\detokenize{User_Guide:sending-structured-fields-via-the-write-structured-field-command}}
+\label{\detokenize{User_Guide:index-313}}\label{\detokenize{User_Guide:sending-structured-fields-via-the-write-structured-field-command}}
 VIRTEL recognizes that a message contains structured fields whenever the application uses the 3270 command X’F3’
 (Write Structured Field) to send the message to the terminal.
 For CICS applications, the STRFIELD option of the EXEC CICS SEND command requests CICS to send the message using
@@ -13736,7 +13242,7 @@ message exit).
 \index{SRTVIRTEL!Programming Interfaces}\index{Programming Interfaces!SRTVIRTEL}
 
 \subsection{Sending structured fields using the SRTVIRTEL prefix}
-\label{\detokenize{User_Guide:index-313}}\label{\detokenize{User_Guide:sending-structured-fields-using-the-srtvirtel-prefix}}
+\label{\detokenize{User_Guide:sending-structured-fields-using-the-srtvirtel-prefix}}\label{\detokenize{User_Guide:index-314}}
 If the application monitor does not support the X’F3’ (Write Structured Field) command for sending structured fields
 (for example, IMS), VIRTEL provides an alternative method for processing structured field data. If the 3270 message
 begins with the special header:
@@ -13759,7 +13265,7 @@ F3 0016 FAE5 08 08 E3D9F0F0F0F0F0F1 818683A796A34040
 \index{How to if running under Virtel!Programming Interfaces}\index{Programming Interfaces!How to if running under Virtel}
 
 \subsection{How To Determine If Running Under VIRTEL}
-\label{\detokenize{User_Guide:how-to-determine-if-running-under-virtel}}\label{\detokenize{User_Guide:index-314}}
+\label{\detokenize{User_Guide:how-to-determine-if-running-under-virtel}}\label{\detokenize{User_Guide:index-315}}
 Because the structured fields described in this chapter are understood only by VIRTEL and not by regular 3270
 terminals, your application will need to determine whether it is communicating with a VIRTEL pseudo-terminal before
 writing a VIRTEL structured field. This section describes some techniques that your application can use to decide if it is
@@ -13943,7 +13449,7 @@ VIRTVT?? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 \index{FA88 - Request data!Programming Interfaces}\index{Programming Interfaces!FA88 - Request data}
 
 \subsection{FA88: Transmit large data message to application}
-\label{\detokenize{User_Guide:fa88-transmit-large-data-message-to-application}}\label{\detokenize{User_Guide:index-315}}
+\label{\detokenize{User_Guide:fa88-transmit-large-data-message-to-application}}\label{\detokenize{User_Guide:index-316}}
 By using the FA88 structured field, an application can request data from an HTTP terminal without being limited to the
 size of a 3270 screen.
 
@@ -13994,7 +13500,7 @@ The format of the FA88 structured field response returned by VIRTEL is shown bel
 \index{FAC8 Structured field!Programming Interfaces}\index{Programming Interfaces!FAC8 Structured field}
 
 \subsection{FAC8: Selection of page template}
-\label{\detokenize{User_Guide:index-316}}\label{\detokenize{User_Guide:fac8-selection-of-page-template}}
+\label{\detokenize{User_Guide:index-317}}\label{\detokenize{User_Guide:fac8-selection-of-page-template}}
 VIRTEL recognizes the FAC8 structured field for the following operations:
 - Change of directory for HTML page templates
 - Change of HTML page template
@@ -14004,7 +13510,7 @@ To perform more than one function at a time, multiple FAC8 structured fields can
 \index{FAC8.06 - Specify Virtel directory!Programming Interfaces}\index{Programming Interfaces!FAC8.06 - Specify Virtel directory}
 
 \subsubsection{Structured field FAC8 code 06}
-\label{\detokenize{User_Guide:index-317}}\label{\detokenize{User_Guide:structured-field-fac8-code-06}}
+\label{\detokenize{User_Guide:index-318}}\label{\detokenize{User_Guide:structured-field-fac8-code-06}}
 Structured field FAC8 code 06 allows the application to specify the name of the VIRTEL directory to be used to retrieve
 the page template for the current 3270 screen and all subsequent screens.
 The format of a structured field FAC8 code 06 is:
@@ -14021,7 +13527,7 @@ The format of a structured field FAC8 code 06 is:
 \index{FAC8.07 - Specify template!Programming Interfaces}\index{Programming Interfaces!FAC8.07 - Specify template}
 
 \subsubsection{Structured field FAC8 code 07}
-\label{\detokenize{User_Guide:index-318}}\label{\detokenize{User_Guide:structured-field-fac8-code-07}}
+\label{\detokenize{User_Guide:index-319}}\label{\detokenize{User_Guide:structured-field-fac8-code-07}}
 Structured field FAC8 code 07 allows the application to specify the name of the page template for the current 3270
 screen and all subsequent screens.
 
@@ -14099,7 +13605,7 @@ An example of this function is supplied in member FAC8SAMP of the VIRTEL SAMPLIB
 \index{FAE5 - Send a table variable!Programming Interfaces}\index{Programming Interfaces!FAE5 - Send a table variable}\index{FAE6 - Send a table variable!Programming Interfaces}\index{Programming Interfaces!FAE6 - Send a table variable}
 
 \subsection{FAE5, FAE6: Sending a table variable}
-\label{\detokenize{User_Guide:index-319}}\label{\detokenize{User_Guide:fae5-fae6-sending-a-table-variable}}
+\label{\detokenize{User_Guide:fae5-fae6-sending-a-table-variable}}\label{\detokenize{User_Guide:index-320}}
 Structured field FAE5 allows the application to send a named data table (“table variable”) to VIRTEL. The data in the
 table variable is made available for insertion in the current HTML page by means of VIRTEL tags coded in the page
 template (see {\hyperref[\detokenize{User_Guide:v457ug-table-variables}]{\sphinxcrossref{\DUrole{std,std-ref}{“Handling table variables”}}}}), or by means of a scenario instruction (see “FIELD\$ DEFINE-CHOICE”,
@@ -14190,7 +13696,7 @@ waits for a further output message from the application before sending the respo
 \index{Call interface!Virtel}\index{Virtel!Call interface}
 
 \subsection{Call Interface}
-\label{\detokenize{User_Guide:call-interface}}\label{\detokenize{User_Guide:index-320}}
+\label{\detokenize{User_Guide:call-interface}}\label{\detokenize{User_Guide:index-321}}
 Application programs running in a CICS or IMS environment using Language Environment (LE) can request certain
 VIRTEL Web Integration functions by means of callable modules. These modules construct the necessary structured
 fields and send them to VIRTEL via CICS or IMS, thus simplifying the job of the application programmer. These modules
@@ -14201,7 +13707,7 @@ VIRSETVI (for IMS) and CALL VIRTEL, are described in the following sections.
 \index{VIRSETA!Call Interface}\index{Call Interface!VIRSETA}
 
 \subsubsection{CALL VIRSETA}
-\label{\detokenize{User_Guide:call-virseta}}\label{\detokenize{User_Guide:index-321}}
+\label{\detokenize{User_Guide:call-virseta}}\label{\detokenize{User_Guide:index-322}}
 This module allows a CICS application program to copy an array of values into a VIRTEL table variable. The calling
 program supplies the name of the variable and an array containing the values. The VIRSETA module builds one or more
 FAE6 structured fields containing the variable name and the values, and sends the structured field(s) to VIRTEL using
@@ -14291,7 +13797,7 @@ Additionally CICS may issue an abend if the EXEC CICS SEND STRFIELD command is u
 \index{VIRSETV!Call Interface}\index{Call Interface!VIRSETV}\index{Set value of varibale!VIRSETV}\index{VIRSETV!Set value of varibale}
 
 \subsubsection{CALL VIRSETV}
-\label{\detokenize{User_Guide:index-322}}\label{\detokenize{User_Guide:call-virsetv}}
+\label{\detokenize{User_Guide:index-323}}\label{\detokenize{User_Guide:call-virsetv}}
 This module allows a CICS application program to set the value of a VIRTEL variable. The calling program supplies the
 name of the variable and the value to be set. The VIRSETV module builds an FAE6 structured field containing the
 variable name and value, and sends the structured field to VIRTEL using the EXEC CICS SEND STRFIELD command.
@@ -14359,7 +13865,7 @@ Additionally CICS may issue an abend if the EXEC CICS SEND STRFIELD command is u
 \index{VIRSETAI!Call Interface}\index{Call Interface!VIRSETAI}\index{Copy an array!VIRSETAI}\index{VIRSETAI!Copy an array}
 
 \subsubsection{CALL VIRSETAI}
-\label{\detokenize{User_Guide:call-virsetai}}\label{\detokenize{User_Guide:index-323}}
+\label{\detokenize{User_Guide:call-virsetai}}\label{\detokenize{User_Guide:index-324}}
 This module allows an IMS application program to copy an array of values into a VIRTEL table variable. The calling
 program supplies the name of the variable and an array containing the values. The VIRSETAI module builds one or
 more FAE6 structured fields containing the variable name and the values, and sends the structured field(s) to VIRTEL
@@ -14433,7 +13939,7 @@ IMS I/O PCB
 \index{VIRSETVI!Call Interface}\index{Call Interface!VIRSETVI}\index{Set value of variable!VIRSETVI}\index{VIRSETVI!Set value of variable}
 
 \subsubsection{CALL VIRSETVI}
-\label{\detokenize{User_Guide:call-virsetvi}}\label{\detokenize{User_Guide:index-324}}
+\label{\detokenize{User_Guide:index-325}}\label{\detokenize{User_Guide:call-virsetvi}}
 This module allows an IMS application program to set the value of a VIRTEL variable. The calling program supplies the
 name of the variable and the value to be set. The VIRSETVI module builds an FAE6 structured field containing the
 variable name and value, and sends the structured field to VIRTEL using the CALL ‘CBLTDLI’ USING ISRT, LS-IOPCB,
@@ -14486,7 +13992,7 @@ IMS I/O PCB
 \index{VIRTEL!Call Interface}\index{Call Interface!VIRTEL}\index{Build and send structured fields!VIRTEL}\index{VIRTEL!Build and send structured fields}
 
 \subsubsection{CALL VIRTEL}
-\label{\detokenize{User_Guide:call-virtel}}\label{\detokenize{User_Guide:index-325}}
+\label{\detokenize{User_Guide:call-virtel}}\label{\detokenize{User_Guide:index-326}}
 Application programs running in a CICS environment with LE can also call a module named VIRTEL (see source
 delivered in the VIRTEL SAMPLIB library at installation time) which builds and sends the structured fields necessary to
 invoke the following functions:
@@ -14640,7 +14146,7 @@ Number of values is non-numeric
 \index{VIRTEL!HOST4WEB}\index{HOST4WEB!VIRTEL}\index{Commands!HOST4WEB}\index{HOST4WEB!Commands}
 
 \subsection{HOST4WEB commands}
-\label{\detokenize{User_Guide:index-326}}\label{\detokenize{User_Guide:host4web-commands}}
+\label{\detokenize{User_Guide:index-327}}\label{\detokenize{User_Guide:host4web-commands}}
 When an application is invoked from a browser via an entry point defined with emulation type HOST4WEB, the
 application can use a set of VIRTEL control commands known as “HOST4WEB” commands, which are coded in the 3270
 screen.2
@@ -14668,7 +14174,7 @@ command to ensure that HOST4WEB commands are transmitted to VIRTEL in their enti
 \index{2VIRTEL prefix!HOST4WEB}\index{HOST4WEB!2VIRTEL prefix}
 
 \subsubsection{2VIRTEL prefix}
-\label{\detokenize{User_Guide:index-327}}\label{\detokenize{User_Guide:virtel-prefix}}
+\label{\detokenize{User_Guide:virtel-prefix}}\label{\detokenize{User_Guide:index-328}}
 An application can send a 3270 message with a special prefix to indicate to VIRTEL that the screen contains HOST4WEB
 commands.
 
@@ -14683,7 +14189,7 @@ The field can be defined with the “non-display” attribute, if desired, to pr
 \index{HOST4WEB Commands!HOST4WEB}\index{HOST4WEB!HOST4WEB Commands}\index{C AUTO VARIABLES!HOST4WEB Commands}\index{HOST4WEB Commands!C AUTO VARIABLES}
 
 \subsubsection{C AUTO VARIABLES (Command Auto Variables)}
-\label{\detokenize{User_Guide:c-auto-variables-command-auto-variables}}\label{\detokenize{User_Guide:index-328}}
+\label{\detokenize{User_Guide:c-auto-variables-command-auto-variables}}\label{\detokenize{User_Guide:index-329}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{C} \PYG{n}{AUTO} \PYG{n}{VARIABLES}
 \end{sphinxVerbatim}
@@ -14698,7 +14204,7 @@ Structured field FAD5 code 08 produces the same effect as this command.
 \index{C KEEP VARIABLES!HOST4WEB Commands}\index{HOST4WEB Commands!C KEEP VARIABLES}
 
 \subsubsection{C KEEP VARIABLES (Command Keep Variables)}
-\label{\detokenize{User_Guide:c-keep-variables-command-keep-variables}}\label{\detokenize{User_Guide:index-329}}\begin{description}
+\label{\detokenize{User_Guide:index-330}}\label{\detokenize{User_Guide:c-keep-variables-command-keep-variables}}\begin{description}
 \item[{::}] \leavevmode
 C KEEP VARIABLES
 
@@ -14716,7 +14222,7 @@ Structured field FAD5 code 02 produces the same effect as this command.
 \index{C KILL VARIABLES!HOST4WEB Commands}\index{HOST4WEB Commands!C KILL VARIABLES}
 
 \subsubsection{C KILL VARIABLES (Command Kill Variables)}
-\label{\detokenize{User_Guide:index-330}}\label{\detokenize{User_Guide:c-kill-variables-command-kill-variables}}
+\label{\detokenize{User_Guide:index-331}}\label{\detokenize{User_Guide:c-kill-variables-command-kill-variables}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{C} \PYG{n}{KILL} \PYG{n}{VARIABLES}
 \end{sphinxVerbatim}
@@ -14730,7 +14236,7 @@ Structured field FAD5 code 04 produces the same effect as this command.
 \index{C RETURN!HOST4WEB Commands}\index{HOST4WEB Commands!C RETURN}
 
 \subsubsection{C RETURN (Command Return)}
-\label{\detokenize{User_Guide:index-331}}\label{\detokenize{User_Guide:c-return-command-return}}
+\label{\detokenize{User_Guide:index-332}}\label{\detokenize{User_Guide:c-return-command-return}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{C} \PYG{n}{RETURN}
 \end{sphinxVerbatim}
@@ -14741,7 +14247,7 @@ this command is never displayed to the user.
 \index{C SCAN NEXT SCREEN!HOST4WEB Commands}\index{HOST4WEB Commands!C SCAN NEXT SCREEN}
 
 \subsubsection{C SCAN NEXT SCREEN (Command Scan)}
-\label{\detokenize{User_Guide:c-scan-next-screen-command-scan}}\label{\detokenize{User_Guide:index-332}}
+\label{\detokenize{User_Guide:c-scan-next-screen-command-scan}}\label{\detokenize{User_Guide:index-333}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{C} \PYG{n}{SCAN} \PYG{n}{NEXT} \PYG{n}{SCREEN}
 \end{sphinxVerbatim}
@@ -14756,7 +14262,7 @@ Structured field FAD5 code 01 produces the same effect as this command.
 \index{C WAIT NEXT SCREEN!HOST4WEB Commands}\index{HOST4WEB Commands!C WAIT NEXT SCREEN}
 
 \subsubsection{C WAIT NEXT SCREEN (Command Wait)}
-\label{\detokenize{User_Guide:c-wait-next-screen-command-wait}}\label{\detokenize{User_Guide:index-333}}
+\label{\detokenize{User_Guide:c-wait-next-screen-command-wait}}\label{\detokenize{User_Guide:index-334}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{C} \PYG{n}{WAIT} \PYG{n}{NEXT} \PYG{n}{SCREEN}
 \end{sphinxVerbatim}
@@ -14766,7 +14272,7 @@ Indicates that the current screen should not be sent to the user yet.
 \index{C TERMSESS!HOST4WEB Commands}\index{HOST4WEB Commands!C TERMSESS}
 
 \subsubsection{C TERMSESS (Command Terminate Session)}
-\label{\detokenize{User_Guide:c-termsess-command-terminate-session}}\label{\detokenize{User_Guide:index-334}}
+\label{\detokenize{User_Guide:c-termsess-command-terminate-session}}\label{\detokenize{User_Guide:index-335}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{C} \PYG{n}{TERMSESS}
 \end{sphinxVerbatim}
@@ -14777,7 +14283,7 @@ sent.
 \index{G EMULATION TYPE!HOST4WEB Commands}\index{HOST4WEB Commands!G EMULATION TYPE}
 
 \subsubsection{G EMULATION TYPE (Get Emulation Type)}
-\label{\detokenize{User_Guide:index-335}}\label{\detokenize{User_Guide:g-emulation-type-get-emulation-type}}
+\label{\detokenize{User_Guide:g-emulation-type-get-emulation-type}}\label{\detokenize{User_Guide:index-336}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{G} \PYG{n}{EMULATION} \PYG{n}{TYPE}
 \end{sphinxVerbatim}
@@ -14788,7 +14294,7 @@ defined in the entry point.
 \index{G PAGE NAME!HOST4WEB Commands}\index{HOST4WEB Commands!G PAGE NAME}
 
 \subsubsection{G PAGE NAME (Get Current Template Name)}
-\label{\detokenize{User_Guide:g-page-name-get-current-template-name}}\label{\detokenize{User_Guide:index-336}}
+\label{\detokenize{User_Guide:g-page-name-get-current-template-name}}\label{\detokenize{User_Guide:index-337}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{G} \PYG{n}{PAGE} \PYG{n}{NAME}
 \end{sphinxVerbatim}
@@ -14799,7 +14305,7 @@ current page template.
 \index{G URL PARAMETER!HOST4WEB Commands}\index{HOST4WEB Commands!G URL PARAMETER}
 
 \subsubsection{G URL PARAMETER (Get URL Parameter)}
-\label{\detokenize{User_Guide:g-url-parameter-get-url-parameter}}\label{\detokenize{User_Guide:index-337}}
+\label{\detokenize{User_Guide:index-338}}\label{\detokenize{User_Guide:g-url-parameter-get-url-parameter}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{G} \PYG{n}{URL} \PYG{n}{PARAMETER} \PYG{n}{paramname}
 \end{sphinxVerbatim}
@@ -14810,7 +14316,7 @@ parameter paramname in the URL.
 \index{S DIRECTORY!HOST4WEB Commands}\index{HOST4WEB Commands!S DIRECTORY}
 
 \subsubsection{S DIRECTORY (Set Temporary Directory Name)}
-\label{\detokenize{User_Guide:index-338}}\label{\detokenize{User_Guide:s-directory-set-temporary-directory-name}}
+\label{\detokenize{User_Guide:index-339}}\label{\detokenize{User_Guide:s-directory-set-temporary-directory-name}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{S} \PYG{n}{DIRECTORY} \PYG{n}{dirname}
 \end{sphinxVerbatim}
@@ -14822,7 +14328,7 @@ sub-application (as described 23). This name must not contain any blanks.
 \index{S GLOBAL PAGE!HOST4WEB Commands}\index{HOST4WEB Commands!S GLOBAL PAGE}
 
 \subsubsection{S GLOBAL PAGE (Set Global Template Name)}
-\label{\detokenize{User_Guide:index-339}}\label{\detokenize{User_Guide:s-global-page-set-global-template-name}}
+\label{\detokenize{User_Guide:index-340}}\label{\detokenize{User_Guide:s-global-page-set-global-template-name}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{S} \PYG{n}{GLOBAL} \PYG{n}{PAGE} \PYG{n}{pagename}
 \end{sphinxVerbatim}
@@ -14833,7 +14339,7 @@ must not contain any blanks.
 \index{S PAGE!HOST4WEB Commands}\index{HOST4WEB Commands!S PAGE}
 
 \subsubsection{S PAGE (Set Temporary Template Name)}
-\label{\detokenize{User_Guide:s-page-set-temporary-template-name}}\label{\detokenize{User_Guide:index-340}}
+\label{\detokenize{User_Guide:s-page-set-temporary-template-name}}\label{\detokenize{User_Guide:index-341}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{S} \PYG{n}{PAGE} \PYG{n}{pagename}
 \end{sphinxVerbatim}
@@ -14844,7 +14350,7 @@ name must not contain any blanks.
 \index{S VARIABLE!HOST4WEB Commands}\index{HOST4WEB Commands!S VARIABLE}
 
 \subsubsection{S VARIABLE (Set Variable)}
-\label{\detokenize{User_Guide:s-variable-set-variable}}\label{\detokenize{User_Guide:index-341}}
+\label{\detokenize{User_Guide:s-variable-set-variable}}\label{\detokenize{User_Guide:index-342}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{S} \PYG{n}{VARIABLE} \PYG{n}{varname}\PYG{o}{+}\PYG{n}{value}\PYG{o}{+}
 \end{sphinxVerbatim}
@@ -14859,11 +14365,11 @@ which act as field delimiters.
 \index{E-mail}
 
 \section{E-mail}
-\label{\detokenize{User_Guide:e-mail}}\label{\detokenize{User_Guide:index-342}}\phantomsection\label{\detokenize{User_Guide:v457ug-email-retrieve-data}}
+\label{\detokenize{User_Guide:e-mail}}\label{\detokenize{User_Guide:index-343}}\phantomsection\label{\detokenize{User_Guide:v457ug-email-retrieve-data}}
 \index{FAC8 - Retrieve data from email!Programming Interfaces}\index{Programming Interfaces!FAC8 - Retrieve data from email}
 
 \subsection{FAC8: Retrieve data from an e-mail}
-\label{\detokenize{User_Guide:fac8-retrieve-data-from-an-e-mail}}\label{\detokenize{User_Guide:index-343}}
+\label{\detokenize{User_Guide:index-344}}\label{\detokenize{User_Guide:fac8-retrieve-data-from-an-e-mail}}
 An application started by an incoming e-mail (see {\hyperref[\detokenize{User_Guide:v457ug-email-incoming}]{\sphinxcrossref{\DUrole{std,std-ref}{“Incomming e-mails”}}}}) can retrieve data from the content
 of the e-mail. To request VIRTEL to extract the data from the e-mail, the application sends a structured field FAC8 code
 12 or 13 to the associated relay (3270 pseudo-terminal). VIRTEL intercepts the structured field and sends a response to
@@ -15077,7 +14583,7 @@ Example (in Cobol format) of receiving an e-mail:
 \index{FAD4 - Send e-mail from application!Programming Interfaces}\index{Programming Interfaces!FAD4 - Send e-mail from application}
 
 \subsection{FAD4: Sending an e-mail from a host application}
-\label{\detokenize{User_Guide:index-344}}\label{\detokenize{User_Guide:fad4-sending-an-e-mail-from-a-host-application}}
+\label{\detokenize{User_Guide:index-345}}\label{\detokenize{User_Guide:fad4-sending-an-e-mail-from-a-host-application}}
 It is possible at any time to send an e-mail from a host application under VIRTEL control. This operation is performed
 by sending a WRITE STRUCTURED FIELD to the 3270 session which is intercepted by VIRTEL. The structured field data
 consists of a sequence of FAD4 structured fields as described below:
@@ -15222,11 +14728,11 @@ Total is \texteuro{}2345
 \index{Security}
 
 \chapter{Security}
-\label{\detokenize{User_Guide:index-345}}\label{\detokenize{User_Guide:id12}}\label{\detokenize{User_Guide:v457ug-security}}
+\label{\detokenize{User_Guide:id12}}\label{\detokenize{User_Guide:index-346}}\label{\detokenize{User_Guide:v457ug-security}}
 \index{Virtel Web Access Security!Security}\index{Security!Virtel Web Access Security}
 
 \section{VIRTEL Web Access Security}
-\label{\detokenize{User_Guide:index-346}}\label{\detokenize{User_Guide:virtel-web-access-security}}
+\label{\detokenize{User_Guide:index-347}}\label{\detokenize{User_Guide:virtel-web-access-security}}
 VIRTEL examines the URL of every VIRTEL Web Access request which arrives from a browser. Since there is no
 permanent IP session between the browser and VIRTEL, there is less risk of a session being “hijacked”. In addition to
 standard network security features (firewall, network sign on, SSO, etc.), each URL sent to VIRTEL has a structure which
@@ -15236,7 +14742,7 @@ described in the “VIRTEL Connectivity Reference” manual.
 \index{Entry point security!Virtel Web Access Security}\index{Virtel Web Access Security!Entry point security}
 
 \subsection{Specifying security in the entry point}
-\label{\detokenize{User_Guide:index-347}}\label{\detokenize{User_Guide:specifying-security-in-the-entry-point}}
+\label{\detokenize{User_Guide:specifying-security-in-the-entry-point}}\label{\detokenize{User_Guide:index-348}}
 VIRTEL supplies a signon program for HTTP lines called VIR0020H (refer to the “VIRTEL Connectivity Reference” manual
 for more details about how to specify a signon program in an entry point).
 
@@ -15254,7 +14760,7 @@ Depending on the userid, the security manager may authorize or deny access to th
 \index{Transaction!Virtel Web Access Security}\index{Virtel Web Access Security!Transaction}
 
 \subsection{Specifying security in the transaction}
-\label{\detokenize{User_Guide:specifying-security-in-the-transaction}}\label{\detokenize{User_Guide:index-348}}
+\label{\detokenize{User_Guide:specifying-security-in-the-transaction}}\label{\detokenize{User_Guide:index-349}}
 To display the signon dialog box shown above, the transaction under the entry point must specify SECURITY 1
 (standard). Refer to the “Transactions” section of the “VIRTEL Connectivity Reference” manual for details of the
 security field in the VIRTEL transaction definition.
@@ -15267,7 +14773,7 @@ displaying a static page which has no associated application transaction.
 \index{Password support!Virtel Web Access Security}\index{Virtel Web Access Security!Password support}
 
 \subsection{Mixed-case password support}
-\label{\detokenize{User_Guide:index-349}}\label{\detokenize{User_Guide:mixed-case-password-support}}
+\label{\detokenize{User_Guide:mixed-case-password-support}}\label{\detokenize{User_Guide:index-350}}
 If SECUR=RACROUTE or SECUR=(RACROUTE,RACF) is specified in the VIRTCT, and if the security manager reports that it
 supports lower-case characters in passwords, then VIRTEL will pass all passwords to the security manager in mixed
 case as entered by the user. Otherwise VIRTEL will translate all passwords to upper case before passing them to the
@@ -15276,7 +14782,7 @@ security manager. Message VIR0861I at startup indicates that VIRTEL will use mix
 \index{Username retrieval!Virtel Web Access Security}\index{Virtel Web Access Security!Username retrieval}
 
 \subsection{Automatic retrieval of username}
-\label{\detokenize{User_Guide:automatic-retrieval-of-username}}\label{\detokenize{User_Guide:index-350}}
+\label{\detokenize{User_Guide:automatic-retrieval-of-username}}\label{\detokenize{User_Guide:index-351}}
 NTLM security allows VIRTEL to retrieve the username under which the user has already signed on to Windows. This
 allows VIRTEL Web Access to sign on the user without requiring him or her to enter a username and password.
 
@@ -15295,7 +14801,7 @@ as the value of the network.automatic-ntlm-auth.trusted-uris parameter.
 \index{Encryption!Virtel Web Access Security}\index{Virtel Web Access Security!Encryption}\index{Encryption!AT-TLS Virtel}\index{AT-TLS!Virtel, Encryption}\index{Virtel!Encryption AT-TLS}
 
 \subsection{Data encryption by AT-TLS/SSL}
-\label{\detokenize{User_Guide:data-encryption-by-at-tls-ssl}}\label{\detokenize{User_Guide:index-351}}
+\label{\detokenize{User_Guide:index-352}}\label{\detokenize{User_Guide:data-encryption-by-at-tls-ssl}}
 The AT-TLS feature (“Application Transparent Transport Layer Security”), available with z/OS Communication Server
 V1R7 and later releases, allows direct access to the VIRTEL Web Access server in SSL mode (HTTPS), without using an
 intermediate server. The SSLSETUP job in the VIRTEL SAMPLIB contains an example of the definitions required to place
@@ -15312,7 +14818,7 @@ Higher CPU usgage will result in the TCP/IP address space if this feature is use
 \index{Certificates!Virtel Web Access Security}\index{Virtel Web Access Security!Certificates}\index{Certificates!AT-TLS Virtel}\index{AT-TLS!Virtel, Certificates}\index{Virtel!Certificates AT-TLS}
 
 \subsection{Identification by certificate}
-\label{\detokenize{User_Guide:index-352}}\label{\detokenize{User_Guide:identification-by-certificate}}
+\label{\detokenize{User_Guide:index-353}}\label{\detokenize{User_Guide:identification-by-certificate}}
 The definition of a transaction with SECURITY 3 (TLS) allows VIRTEL to recognize a VIRTEL Web Access user by means of
 a digital certificate installed in the user’s web browser. VIRTEL will use the RACF userid associated with the certificate
 to determine the user’s authority to execute the transaction.
@@ -15336,7 +14842,7 @@ When a user is identified by certificate, VIRTEL does not have access to the use
 \index{Password Encryption!Virtel Web Access Security}\index{Virtel Web Access Security!Password Encryption}
 
 \subsection{Password encryption}
-\label{\detokenize{User_Guide:password-encryption}}\label{\detokenize{User_Guide:index-353}}
+\label{\detokenize{User_Guide:index-354}}\label{\detokenize{User_Guide:password-encryption}}
 VIRTEL Web Access offers the possibility of encrypting passwords (3270 non-display fields) transmitted in HTML pages.
 VIRTEL uses the encryption facilities provided by the System z hardware through the z/OS Integrated Cryptographic
 Service Facility (ICSF). Password encryption is available only when using VIRTEL Web Access in Ajax mode using the
@@ -15355,7 +14861,7 @@ the name and ICSF as the encryption engine, as in example shown below:
 \index{Signing on using HTML fields!Virtel Web Access Security}\index{Virtel Web Access Security!Signing on using HTML fields}
 
 \subsection{Signon using HTML fields}
-\label{\detokenize{User_Guide:index-354}}\label{\detokenize{User_Guide:signon-using-html-fields}}
+\label{\detokenize{User_Guide:index-355}}\label{\detokenize{User_Guide:signon-using-html-fields}}
 The definition of a transaction with SECURITY 4 (HTML) allows VIRTEL to obtain the userid and password from fields
 embedded in the HTML page.
 
@@ -15452,7 +14958,7 @@ genloginform(\PYGZdq{}\PYGZob{}\PYGZob{}\PYGZob{}NAME\PYGZhy{}OF (PAGE)\PYGZcb{}
 \index{Using rules!Virtel Web Access Security}\index{Virtel Web Access Security!Using rules}\index{Using rules!Security}\index{Security!Using rules}
 
 \subsection{Security by rule}
-\label{\detokenize{User_Guide:index-356}}\label{\detokenize{User_Guide:security-by-rule}}
+\label{\detokenize{User_Guide:index-357}}\label{\detokenize{User_Guide:security-by-rule}}
 The rules attached to an HTTP line allow security to be implemented at the entry point level. The following example
 shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point
 specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
@@ -15573,11 +15079,11 @@ CREATION OK
 \index{HOWTOs}
 
 \chapter{HOWTOs}
-\label{\detokenize{User_Guide:index-357}}\label{\detokenize{User_Guide:howtos}}
+\label{\detokenize{User_Guide:howtos}}\label{\detokenize{User_Guide:index-358}}
 \index{HOWTOs!Virtel}\index{Virtel!HOWTOs}\index{Use different screen size!HOWTOs}\index{HOWTOs!Use different screen size}
 
 \section{How To Use Different Screen Sizes}
-\label{\detokenize{User_Guide:how-to-use-different-screen-sizes}}\label{\detokenize{User_Guide:index-358}}
+\label{\detokenize{User_Guide:how-to-use-different-screen-sizes}}\label{\detokenize{User_Guide:index-359}}
 Although the standard 3270 screen size is 24 rows by 80 columns, certain applications benefit from the use of
 terminals with larger screen sizes. The screen size is determined by the LOGMODE used for the session between
 VIRTEL and the host application. VTAM offers logmodes for the following standard screen sizes:
@@ -15774,7 +15280,7 @@ non-standard screen sizes.
 \index{Support multile Code Pages!HOWTOs}\index{HOWTOs!Support multile Code Pages}
 
 \section{How To Support Multiple Codes Pages}
-\label{\detokenize{User_Guide:how-to-support-multiple-codes-pages}}\label{\detokenize{User_Guide:index-359}}
+\label{\detokenize{User_Guide:how-to-support-multiple-codes-pages}}\label{\detokenize{User_Guide:index-360}}
 VIRTEL can use two methods of EBCDIC translation and this is governed by the template or web page being displayed. If
 the page contains the embedded VIRTEL tag \{\{\{SET-OUTPUT-ENCODING-UTF-8\}\}\} than the TCT DEFUTF8 parameter is
 used. If the page doesn’t contain the tag then the code pages identified by the COUNTRY parameter are used. (See
@@ -15839,7 +15345,7 @@ For each country supported, have a common line/port and use the URL overrides.
 \index{Session Termination!HOWTOs}\index{HOWTOs!Session Termination}
 
 \section{How To Handle Host Session Termination}
-\label{\detokenize{User_Guide:how-to-handle-host-session-termination}}\label{\detokenize{User_Guide:index-360}}
+\label{\detokenize{User_Guide:index-361}}\label{\detokenize{User_Guide:how-to-handle-host-session-termination}}
 When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available:
 - Return to the application selection menu
 - Display a specific HTML page
@@ -15908,7 +15414,7 @@ The figure below shows an example of an entry point definition with close.htm sp
 \index{Access Host Application!HOWTOs}\index{HOWTOs!Access Host Application}
 
 \section{How To Access A Host Application Directly}
-\label{\detokenize{User_Guide:index-361}}\label{\detokenize{User_Guide:how-to-access-a-host-application-directly}}
+\label{\detokenize{User_Guide:index-362}}\label{\detokenize{User_Guide:how-to-access-a-host-application-directly}}
 It is not always necessary to pass via an application selection menu to connect to a host application. A host application
 may be accessed directly by opening the URL containing the complete path to the application. This URL may result in
 the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a
@@ -15973,7 +15479,7 @@ For more information see {\hyperref[\detokenize{User_Guide:v457ug-url-formats}]{
 \index{Change Font!HOWTOs}\index{HOWTOs!Change Font}
 
 \section{How To Change The Font For Web Access}
-\label{\detokenize{User_Guide:index-362}}\label{\detokenize{User_Guide:how-to-change-the-font-for-web-access}}
+\label{\detokenize{User_Guide:index-363}}\label{\detokenize{User_Guide:how-to-change-the-font-for-web-access}}
 The {\hyperref[\detokenize{User_Guide:v457ug-settings-menu}]{\sphinxcrossref{\DUrole{std,std-ref}{“Web Access settings menu”}}}} allows you to change the font family and font size. By default VIRTEL will
 calculate an appropriate font size to fit the browser window size, but you can choose a fixed font size if you prefer.
 VIRTEL Web Access uses a fixed-pitch font to display the 3270 screen. If you do not like the default font then you can
@@ -15984,7 +15490,7 @@ the installed fonts.
 \index{Change Display Style!HOWTOs}\index{HOWTOs!Change Display Style}
 
 \section{How To Change The 3270 Display Style}
-\label{\detokenize{User_Guide:index-363}}\label{\detokenize{User_Guide:how-to-change-the-3270-display-style}}
+\label{\detokenize{User_Guide:how-to-change-the-3270-display-style}}\label{\detokenize{User_Guide:index-364}}
 The {\hyperref[\detokenize{User_Guide:v457ug-settings-menu}]{\sphinxcrossref{\DUrole{std,std-ref}{“Web Access settings menu”}}}} allows you to change the display style to suit your needs. By default VIRTEL
 provides 3 defaults models named “3270”, “Gray” and “White”, If you need some more, you must request your
 Administrators.
@@ -15994,7 +15500,7 @@ Selecting display pattern : The display model changes will take effect at the ne
 \index{Change Key Settings!HOWTOs}\index{HOWTOs!Change Key Settings}
 
 \section{How To Customize The Enter Key Settings}
-\label{\detokenize{User_Guide:how-to-customize-the-enter-key-settings}}\label{\detokenize{User_Guide:index-364}}
+\label{\detokenize{User_Guide:how-to-customize-the-enter-key-settings}}\label{\detokenize{User_Guide:index-365}}
 Many 3270 users prefer to customize the keyboard mapping so that the “Enter” key on the main keyboard is handled
 as a 3270 newline, while the right “Ctrl” key and the “Enter” key on the numeric keypad are treated as 3270 Enter.
 The {\hyperref[\detokenize{User_Guide:v457ug-settings-menu}]{\sphinxcrossref{\DUrole{std,std-ref}{“Web Access settings menu”}}}} allows you to specify this configuration using the following settings:
@@ -16032,7 +15538,7 @@ turn on a special feature by introducing the following command into a “custom.
 \index{Customize Display Styles!HOWTOs}\index{HOWTOs!Customize Display Styles}
 
 \section{How To Customize Display Styles}
-\label{\detokenize{User_Guide:how-to-customize-display-styles}}\label{\detokenize{User_Guide:index-365}}
+\label{\detokenize{User_Guide:index-366}}\label{\detokenize{User_Guide:how-to-customize-display-styles}}
 VIRTEL users can customise the screen display to suit their needs. An exception to this is the model type which is an
 Administration function. Administrators will configure model types which can then be selected by a user.
 
@@ -16166,13 +15672,13 @@ delivered from number \#5310 and over.
 \index{Change default settings!HOWTOs}\index{HOWTOs!Change default settings}
 
 \section{How To Change The Default User Settings}
-\label{\detokenize{User_Guide:index-366}}\label{\detokenize{User_Guide:how-to-change-the-default-user-settings}}
+\label{\detokenize{User_Guide:index-367}}\label{\detokenize{User_Guide:how-to-change-the-default-user-settings}}
 The site default settings for Web Access are stored in the file w2hparm.js (see {\hyperref[\detokenize{User_Guide:v457ug-global-modifications}]{\sphinxcrossref{\DUrole{std,std-ref}{“Global modification of Web Access settings”}}}})
 
 \index{Support a reverse proxy!HOWTOs}\index{HOWTOs!Support a reverse proxy}
 
 \section{How To Support A Reverse Proxy}
-\label{\detokenize{User_Guide:how-to-support-a-reverse-proxy}}\label{\detokenize{User_Guide:index-367}}
+\label{\detokenize{User_Guide:how-to-support-a-reverse-proxy}}\label{\detokenize{User_Guide:index-368}}
 If your installation uses a reverse proxy (or bastion host) between the user’s browser and the VIRTEL Web Access
 server, then the VIRTEL log and statistics file will show the IP address of the proxy instead of the address of the end
 user. In order for VIRTEL to recognize and log the originating user’s IP address, you must declare the proxy in the
@@ -16182,16 +15688,534 @@ attached to the HTTP line (see “Rules” in the VIRTEL Connectivity Reference 
 \index{Support Virtual Hosting!HOWTOs}\index{HOWTOs!Support Virtual Hosting}
 
 \section{How To Support Virtual Hosting}
-\label{\detokenize{User_Guide:index-368}}\label{\detokenize{User_Guide:how-to-support-virtual-hosting}}
+\label{\detokenize{User_Guide:index-369}}\label{\detokenize{User_Guide:how-to-support-virtual-hosting}}
 Name-based virtual hosting is a method for supporting multiple sites (for example, site1.mycompany.com and
 site2.mycompany.com) using the same IP address and port number. By means of the “HTTP Host” field in the rules
 attached to the HTTP line, VIRTEL can recognize the site name and direct the request to a specific entry point. Refer to
 “Rules” in the VIRTEL Connectivity Reference manual for further details. You can install a set sample definitions for
 virtual hosting by running the ARBOLOAD job (delivered in the VIRTEL SAMPLIB) with the VHOST=YES parameter.
 
+\index{Control APPLIST behaviour!HOWTOs}\index{HOWTOs!Control APPLIST behaviour}
+
+\section{How To Control APPLIST behaviour}
+\label{\detokenize{User_Guide:how-to-control-applist-behaviour}}\label{\detokenize{User_Guide:index-370}}
+To open an application in a new TAN instead of the current window code the following in the customizable exit \sphinxstyleemphasis{before\_launchApplink(href)}.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{To} \PYG{n+nb}{open} \PYG{n}{an} \PYG{n}{application} \PYG{p}{(}\PYG{n}{issued} \PYG{k+kn}{from} \PYG{n+nn}{applist} \PYG{n}{transaction}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{a} \PYG{n}{new} \PYG{n}{TAB} \PYG{n}{instead} \PYG{n}{of} \PYG{n}{the} \PYG{n}{same} \PYG{n}{window} \PYG{o}{*}\PYG{o}{/}
+\PYG{n}{function} \PYG{n}{before\PYGZus{}launchApplink}\PYG{p}{(}\PYG{n}{href}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{k}{return} \PYG{p}{\PYGZob{}}
+            \PYG{n}{url}\PYG{p}{:} \PYG{n}{href}\PYG{p}{,}            \PYG{o}{/}\PYG{o}{/} \PYG{n}{Return} \PYG{n}{received} \PYG{n}{URL}
+            \PYG{n}{target}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZus{}blank}\PYG{l+s+s1}{\PYGZsq{}}    \PYG{o}{/}\PYG{o}{/} \PYG{n}{Target} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{new} \PYG{n}{TAB}
+    \PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+Create an options entry to support this modification against transaction applist (CLI-90). For example, using the Virtel HTML Admin. panel, select transaction applist and use the toolbox Icon to generate the options file. In the transaction set the options field to appmenu. Remember to save the changes to the transaction!  Place the above code into a file called custJS.appmenu.js and upload to the directory defined for the ‘options’ path. You must have setup the “options” mode customization before you can generate “option” files. See {\hyperref[\detokenize{User_Guide:v457ug-customizing-with-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“customization modes”}}}} on how to set up customising with the options mode.
+
 
 \chapter{Appendix}
 \label{\detokenize{User_Guide:appendix}}
+
+\section{Appendix A}
+\label{\detokenize{User_Guide:appendix-a}}
+
+\subsection{Values for w2hparm.js}
+\label{\detokenize{User_Guide:values-for-w2hparm-js}}\label{\detokenize{User_Guide:v457ug-w2hparm-defaults}}
+
+\begin{savenotes}\sphinxatlongtablestart\begin{longtable}{|l|l|l|}
+\hline
+\sphinxstylethead{\sphinxstyletheadfamily 
+Keyword
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Caption
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Possible values
+\unskip}\relax \\
+\hline
+\endfirsthead
+
+\multicolumn{3}{c}%
+{\makebox[0pt]{\sphinxtablecontinued{\tablename\ \thetable{} -- continued from previous page}}}\\
+\hline
+\sphinxstylethead{\sphinxstyletheadfamily 
+Keyword
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Caption
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Possible values
+\unskip}\relax \\
+\hline
+\endhead
+
+\hline
+\multicolumn{3}{r}{\makebox[0pt][r]{\sphinxtablecontinued{Continued on next page}}}\\
+\endfoot
+
+\endlastfoot
+
+“fontsize”
+&
+Font size
+&
+“window”, “screen”, “8”, “10”, “12”, “14”, “16”
+\\
+\hline
+“font”
+&
+Font family
+&
+“font name”
+\\
+\hline
+“autocapture”
+&
+Auto-capture
+&
+true, false
+\\
+\hline
+“autoprint”
+&
+Auto-print
+&
+true, false
+\\
+\hline
+“cursor”
+&
+Cursor “Bar”,
+&
+“Blink”, “Block”
+\\
+\hline
+“vline”
+&
+Vertical line
+&
+true, false
+\\
+\hline
+“hline”
+&
+Horiz line
+&
+true, false
+\\
+\hline
+“esc”
+&
+Esc key
+&
+“no”, “ATTN”, “CLEAR”, “Reset”
+\\
+\hline
+“ctrl”
+&
+Ctrl key
+&
+“no”, “ENTER”, “Newline”
+\\
+\hline
+“cmdleft”
+&
+Left Cmd key
+&
+“no”, “Reset”
+\\
+\hline
+“cmdright”
+&
+Right Cmd key
+&
+“no”, “ENTER”
+\\
+\hline
+“enter”
+&
+Enter key
+&
+“ENTER”, “Newline”
+\\
+\hline
+“home”
+&
+Home key
+&
+“no”, “Home”
+\\
+\hline
+“end”
+&
+End key
+&
+“no”, “ErEof”, “End”
+\\
+\hline
+“pgup”
+&
+PageUp key
+&
+“PF7”, “PF19”, “PA1”, “no”
+\\
+\hline
+“pgdn”
+&
+PageDown key
+&
+“PF8”, “PF20”, “PA2”, “no”
+\\
+\hline
+“pause”
+&
+Pause key
+&
+“CLEAR”, “ATTN”, “PA3”, “no”
+\\
+\hline
+“kpenter”
+&
+Keypad Enter
+&
+“ENTER”, “Newline”
+\\
+\hline
+“shiftenter”
+&
+Shift+Enter
+&
+“no”,”ENTER”, “Newline”
+\\
+\hline
+“shiftesc”
+&
+Shift+Esc
+&
+“no”, “ATTN”, “CLEAR”, “Reset”
+\\
+\hline
+“shiftins”
+&
+Shift+Insert
+&
+“no”, “Dup”
+\\
+\hline
+“shiftdel”
+&
+Shift+Delete
+&
+“no”, “ErEof”
+\\
+\hline
+“shifthome”
+&
+Shift+Home
+&
+“no”, “FieldMark”, “Home”
+\\
+\hline
+“shiftend”
+&
+Shift+End
+&
+“no”, “ErEof”, “End”
+\\
+\hline
+“shiftpgdn”
+&
+Shift+PageDown
+&
+“no”, “PA3”
+\\
+\hline
+“ctrlenter”
+&
+Ctrl+Enter
+&
+“no”,”ENTER”, “Newline”
+\\
+\hline
+“ctrlins”
+&
+Ctrl+Insert
+&
+“no”, “PA1”
+\\
+\hline
+“ctrldel”
+&
+Ctrl+Delete
+&
+“no”, “PA2”, “ErEof”
+\\
+\hline
+“ctrlhome”
+&
+Ctrl+Home
+&
+“no”, “PA3”, “Home”, “ChgCur”
+\\
+\hline
+“ctrlend”
+&
+Ctrl+End
+&
+“no”, “ErEof”, “End”
+\\
+\hline
+“altins”
+&
+Alt+Ins
+&
+“no”, “PA1”
+\\
+\hline
+“althome”
+&
+Alt+Home
+&
+“no”, “PA2”
+\\
+\hline
+“altpgup”
+&
+Alt+PageUp
+&
+“no”, “PA1”
+\\
+\hline\sphinxmultirow{2}{103}{%
+\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+“altpgdn”
+\par
+\vskip-\baselineskip\strut\end{varwidth}%
+}%
+&\sphinxmultirow{2}{104}{%
+\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+Alt+PageDown
+\par
+\vskip-\baselineskip\strut\end{varwidth}%
+}%
+&\sphinxmultirow{2}{105}{%
+\begin{varwidth}[t]{\sphinxcolwidth{1}{3}}
+“no”, “PA2”
+\par
+\vskip-\baselineskip\strut\end{varwidth}%
+}%
+\\
+\sphinxtablestrut{103}&\sphinxtablestrut{104}&\sphinxtablestrut{105}\\
+\hline
+“altpause”
+&
+Alt+Pause
+&
+“no”, “ATTN”, “CLEAR”, “PA3”
+\\
+\hline
+“altf1”
+&
+Alt+F1
+&
+“no”, “PA1”, “ENTER”
+\\
+\hline
+“altf2”
+&
+Alt+F2
+&
+“no”, “PA2”
+\\
+\hline
+“altf3”
+&
+Alt+F3
+&
+“no”, “PA3”, “ChgCur”
+\\
+\hline
+“kpslash”
+&
+Keypad /
+&
+“/”, “PA1”
+\\
+\hline
+“kpaster”
+&
+Keypad *
+&
+“*”, “PA2”
+\\
+\hline
+“kpminus”
+&
+Keypad -
+&
+“-“, “Backtab”
+\\
+\hline
+“kpplus”
+&
+Keypad +
+&
+“+”, “Tab”, “Newline”
+\\
+\hline
+“kpdot”
+&
+Keypad .
+&
+“.”, “,”
+\\
+\hline
+“dblclick”
+&
+Double Click
+&
+“Word”, “ENTER”, “no”
+\\
+\hline
+“urlhotspot”
+&
+URL hotspots
+&
+true, false
+\\
+\hline
+“pfkhotspot”
+&
+PF key hotspots
+&
+true, false
+\\
+\hline
+“pasteereof”
+&
+Paste erase EOF
+&
+true, false
+\\
+\hline
+“movecursor”
+&
+Move cursor on activat
+&
+true, false
+\\
+\hline
+“style”
+&
+Style
+&
+“3270”, “gray”, “white”
+\\
+\hline
+“printstyle”
+&
+Print style
+&
+“3270”, “color”, “white”
+\\
+\hline
+“rtm”
+&
+Response time monitor
+&
+true, false
+\\
+\hline
+“omitnulls”
+&
+Omit nulls from input
+&
+true, false
+\\
+\hline
+“keepmacpad”
+&
+Keep macro pad open
+&
+true, false
+\\
+\hline
+“keepkeypad”
+&
+Keep keypad open
+&
+true, false
+\\
+\hline
+“hiliteinput”
+&
+Highlight input fields
+&
+true, false
+\\
+\hline
+“caretnot”
+&
+Remap \textasciicircum{} to logical not
+&
+true, false
+\\
+\hline
+“adaptfontrati
+&
+Adapt font size ratio
+&
+true, false
+\\
+\hline
+“charspace”
+&
+Character spacing
+&
+true, false
+\\
+\hline
+“linespace”
+&
+Line spacing
+&
+true, false
+\\
+\hline
+“settingsGUI”
+&
+Uuser interface type
+&
+v2
+\\
+\hline
+“preservein”
+&
+Preserve insert mode
+&
+true, false
+\\
+\hline
+“asyncsupport”
+&
+Long Poll mode
+&
+“Off”, “LongPoll”,”None”
+\\
+\hline
+“MirrorMode”
+&
+BiDirectional mode
+&
+true, false
+\\
+\hline
+\end{longtable}\sphinxatlongtableend\end{savenotes}
+
+\sphinxstyleemphasis{w2hparm.js: List of keywords and possible values}
+
+\begin{sphinxadmonition}{note}{Note:}
+Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility.
+\end{sphinxadmonition}
+
 
 \section{Trademarks}
 \label{\detokenize{User_Guide:trademarks}}
