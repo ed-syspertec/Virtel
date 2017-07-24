@@ -14729,6 +14729,8 @@ Create an options entry to support this modification against transaction applist
 
 .. note:: You must have setup the "options" mode customization before you can generate "option" files. The ARBOLOAD job must be run with OPTIONS=YES to add the options transactions. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` on how to set up customising with the options mode. 
 
+ 
+
 ********
 Appendix
 ********
