@@ -15091,3 +15091,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |vwa_overview| image:: images/media/vwa_overview.png
 .. |vwm_overview| image:: images/media/vwm_overview.png
 .. |vwi_overview| image:: images/media/vwi_overview.png
+.. |static_pages| image:: images/media/static_pages.png
