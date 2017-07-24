@@ -45,7 +45,7 @@
 
 
 \title{Virtel User Guide}
-\date{Jul 21, 2017}
+\date{Jul 24, 2017}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -70,7 +70,7 @@ This book is currently under construction. Do not use!
 
 Version : 4.57
 
-Release Date : 01 Jul 2017 Publication Date : 01/07/2017
+Release Date : 31 Jul 2017 Publication Date : 24/07/2017
 
 Syspertec Communication
 
@@ -184,7 +184,7 @@ For further details see the Technical Newsletter \DUrole{xref,std,std-ref}{Whats
 
 \subsection{What is Virtel}
 \label{\detokenize{User_Guide:what-is-virtel}}\label{\detokenize{User_Guide:index-1}}
-Simply put, Virtel is a host-based protocol converter that runs as a started task on the manframe. At the core of Virtel is the Virtel Engine which sits between host applications and external environments such as the web or another external server. Virtel uses SNA and IP protocols to interface between host applications and external services. A classic example for Virtel would be interfacing between legacy 3270 applications, running on the host, and the web. Virtel would provide protocol conversion between 3270 datastreams and HTML. Users would no longer require 3270 terminal emulators to interface with legacy host applications as access would be through the standard web browser.
+Simply put, Virtel is a host-based protocol converter that runs as a started task on the manframe. At the core of Virtel is the Virtel Engine which sits between host applications and external environments such as the web or another external server. Virtel supports the following standard protocol - TCP/IP, SMTP, HTTP/S, SOAP, MQ-SERIES, SNA, 3270, ICAL (IMS) and the inherited protocols - X25, XOT, XTP, LU 6.2 to interface between host applications and external services. A classic example for Virtel would be interfacing between legacy 3270 applications, running on the host, and the web. Virtel would provide protocol conversion between 3270 datastreams and HTML. Users would no longer require 3270 terminal emulators to interface with legacy host applications as access would be through the standard web browser.Tansnslation between ASCII and EBCDIC is provided as well as support for U-TF8 and UTF-16 and various character code page sets.
 
 The following diagram illustrates some of the protocols and applications supported by the Virtel Engine.
 
@@ -286,11 +286,75 @@ This configuration information is maintained in the VIRTEL ARBO file. Virtel est
 
 \subsection{VIRTEL Web Integration (VWI)}
 \label{\detokenize{User_Guide:index-5}}\label{\detokenize{User_Guide:virtel-web-integration-vwi}}
-The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.
+The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface, for example through web services. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.
 
 To control its web interface, an application has at its disposal primarily the 3270 screen, the VIRTEL table variable facility, the HTML page template, and a set of VIRTEL commands contained in structured fields. Additionally, for browser requests which enter VIRTEL using an entry point which specifies emulation type “HOST4WEB”, the application can also use a set of VIRTEL control commands which can be embedded in the 3270 screen via a BMS map, ISPF panel, or 3270 datastream. These HOST4WEB commands, available from VIRTEL version 4.28 onwards, provide the same general functions as the structured field commands in earlier versions.
 
 Table variables, structured field commands, and HOST4WEB commands, are sent by the application to the 3270 session using standard methods (EXEC CICS SEND, ISPEXEC DISPLAY PANEL, TSO TPUT, etc). VIRTEL intercepts and acts upon these commands, for example by selecting the page template or loading data which can be referenced by VIRTEL orders embedded in the page templates and used to build lists of values or data tables.
+
+VMI enables an application to create a dynamic dialog between its transactions and web applications through the creation of interactive bidirectional dialogs across the Internet between host (CICS, IMS, Ideal, Natural, etc) and server-based applications using XML/HTML web services or other communication procedures.
+
+\sphinxstylestrong{Incoming and outgoing Web Services Support}
+
+Incoming calls
+\begin{itemize}
+\item {} 
+To expose host applications to web clients though web services, Virtel can be configured to:
+
+\item {} 
+Receive and parse incoming web service calls
+
+\item {} 
+Execute the appropriate transactions
+
+\item {} 
+Receive data returned by the transactions in the form of screens, structured fields, COMMAREA, or database segments
+
+\item {} 
+Reformat and wrap that data with XML, JSON, HTML, SOAP, CSV, PDF, Word, JSON, etc.
+
+\item {} 
+Serve it back to the web callers
+
+\end{itemize}
+
+Outgoing calls
+\begin{itemize}
+\item {} 
+In the outgoing direction (host-initiated web services) the mechanism is the same, just reverse.
+
+\end{itemize}
+
+VWI can be configured to support a wide range of interfaces, protocols and APIs which can :-
+\begin{itemize}
+\item {} 
+Expose mainframe applications and data as web services to web clients
+
+\item {} 
+Invoke web services for the count of mainframe applications
+
+\item {} 
+Support interactive exchange procedures between mainframe and web applications for cooperative work
+
+\item {} 
+Function as a SOAP, MQ, PHP… server
+
+\item {} 
+Transfer data blocks larger than 32KB, or blocks of data with variable format
+
+\item {} 
+Convert data from DBCS (Double Byte Character Set) used by Japanese, Chinese, Russian… workstations or applications to EBCDIC, and vice/versa
+
+\item {} 
+Serve 3270 data as international icons to eliminate natural languages from user interfaces
+
+\item {} 
+Replace web connectors developed by IBM (CWS, CTG, HOD, IMS Connect, etc) and ISVs, or homegrown (CICS socket programming)
+
+\end{itemize}
+
+\sphinxincludegraphics{{vwi_overview}.png}
+\sphinxstyleemphasis{VWI Overview}
 
 For more information, refer to the chapter {\hyperref[\detokenize{User_Guide:v457ug-programming-interfaces}]{\sphinxcrossref{\DUrole{std,std-ref}{“Programming Interfaces”}}}}.
 \phantomsection\label{\detokenize{User_Guide:v457ug-service-transactions}}
@@ -15699,7 +15763,7 @@ virtual hosting by running the ARBOLOAD job (delivered in the VIRTEL SAMPLIB) wi
 
 \section{How To Control APPLIST behaviour}
 \label{\detokenize{User_Guide:how-to-control-applist-behaviour}}\label{\detokenize{User_Guide:index-370}}
-To open an application in a new TAN instead of the current window code the following in the customizable exit \sphinxstyleemphasis{before\_launchApplink(href)}.
+To open an application in a new TAB instead of the current window code the following in the customizable exit \sphinxstyleemphasis{before\_launchApplink(href)}.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*} \PYG{n}{To} \PYG{n+nb}{open} \PYG{n}{an} \PYG{n}{application} \PYG{p}{(}\PYG{n}{issued} \PYG{k+kn}{from} \PYG{n+nn}{applist} \PYG{n}{transaction}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{a} \PYG{n}{new} \PYG{n}{TAB} \PYG{n}{instead} \PYG{n}{of} \PYG{n}{the} \PYG{n}{same} \PYG{n}{window} \PYG{o}{*}\PYG{o}{/}
@@ -15711,7 +15775,11 @@ To open an application in a new TAN instead of the current window code the follo
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-Create an options entry to support this modification against transaction applist (CLI-90). For example, using the Virtel HTML Admin. panel, select transaction applist and use the toolbox Icon to generate the options file. In the transaction set the options field to appmenu. Remember to save the changes to the transaction!  Place the above code into a file called custJS.appmenu.js and upload to the directory defined for the ‘options’ path. You must have setup the “options” mode customization before you can generate “option” files. See {\hyperref[\detokenize{User_Guide:v457ug-customizing-with-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“customization modes”}}}} on how to set up customising with the options mode.
+Create an options entry to support this modification against transaction applist (CLI-90). For example, using the Virtel HTML Admin. panel, select transaction applist and use the toolbox Icon to generate the options file. In the transaction set the options field to appmenu. Remember to save the changes to the transaction!  Place the above code into a file called custJS.appmenu.js and upload to the directory defined for the ‘options’ path.
+
+\begin{sphinxadmonition}{note}{Note:}
+You must have setup the “options” mode customization before you can generate “option” files. The ARBOLOAD job must be run with OPTIONS=YES to add the options transactions. See {\hyperref[\detokenize{User_Guide:v457ug-customizing-with-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“customization modes”}}}} on how to set up customising with the options mode.
+\end{sphinxadmonition}
 
 
 \chapter{Appendix}
