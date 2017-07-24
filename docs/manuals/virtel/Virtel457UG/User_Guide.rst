@@ -229,6 +229,7 @@ Incoming calls
     - Serve it back to the web callers
 
 Outgoing calls
+
     - In the outgoing direction (host-initiated web services) the mechanism is the same, just reverse.
 
 VWI can be configured to support a wide range of interfaces, protocols and APIs which can :-
@@ -241,9 +242,6 @@ VWI can be configured to support a wide range of interfaces, protocols and APIs 
     - Convert data from DBCS (Double Byte Character Set) used by Japanese, Chinese, Russian… workstations or applications to EBCDIC, and vice/versa
     - Serve 3270 data as international icons to eliminate natural languages from user interfaces
     - Replace web connectors developed by IBM (CWS, CTG, HOD, IMS Connect, etc) and ISVs, or homegrown (CICS socket programming)     
-
-|vwi_overview|
-*VWI Overview*
 
 For more information, refer to the chapter :ref:`“Programming Interfaces” <#_V457UG_programming_interfaces>`.
 
