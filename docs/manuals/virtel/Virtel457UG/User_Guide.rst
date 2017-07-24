@@ -14725,7 +14725,9 @@ To open an application in a new TAB instead of the current window code the follo
         };
     }
 
-Create an options entry to support this modification against transaction applist (CLI-90). For example, using the Virtel HTML Admin. panel, select transaction applist and use the toolbox Icon to generate the options file. In the transaction set the options field to appmenu. Remember to save the changes to the transaction!  Place the above code into a file called custJS.appmenu.js and upload to the directory defined for the 'options' path. You must have setup the "options" mode customization before you can generate "option" files. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` on how to set up customising with the options mode. 
+Create an options entry to support this modification against transaction applist (CLI-90). For example, using the Virtel HTML Admin. panel, select transaction applist and use the toolbox Icon to generate the options file. In the transaction set the options field to appmenu. Remember to save the changes to the transaction!  Place the above code into a file called custJS.appmenu.js and upload to the directory defined for the 'options' path. 
+
+.. note:: You must have setup the "options" mode customization before you can generate "option" files. The ARBOLOAD job must be run with OPTIONS=YES to add the options transactions. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` on how to set up customising with the options mode. 
 
 ********
 Appendix
