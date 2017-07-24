@@ -274,6 +274,11 @@ VIRTEL URL Formats
 Static pages
 ------------
 
+Virtel locates static HTML pages through the URL passed to Virtel Engine and the configuration definitions defined within the Virtel ARBO. The end point for Virtel is defined by a Virtel line definition which identifies the TCP/IP that Virtel listens on for incoming calls. By default this is the standard web server port of 80, however, the Virtel distribution tape doesn't use this well know port, but instead opts for port 41001 (Administration) and port 41002 (User). 
+
+|static_pages|
+*Virtel Static Pages*
+
 The general form of the URL for an HTML page stored in a VIRTEL directory is:
 
 ::
