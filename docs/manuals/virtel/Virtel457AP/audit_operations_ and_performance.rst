@@ -12,7 +12,7 @@ Audit, Operations and Performance V4.57
 
 Version : 4.57
 
-Release Date : 01 Jul 2017 Publication Date : 01/07/2017
+Release Date : 31 Jul 2017 Publication Date : 31/07/2017
 
 Syspertec Communication
 
