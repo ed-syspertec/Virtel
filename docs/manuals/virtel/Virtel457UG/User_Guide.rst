@@ -19,7 +19,7 @@ User Guide V4.57
 
 Version : 4.57
 
-Release Date : 01 Jul 2017 Publication Date : 01/07/2017
+Release Date : 31 Jul 2017 Publication Date : 24/07/2017
 
 Syspertec Communication
 
@@ -208,11 +208,41 @@ This configuration information is maintained in the VIRTEL ARBO file. Virtel est
 VIRTEL Web Integration (VWI)
 ----------------------------
 
-The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.
+The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface, for example through web services. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.
 
 To control its web interface, an application has at its disposal primarily the 3270 screen, the VIRTEL table variable facility, the HTML page template, and a set of VIRTEL commands contained in structured fields. Additionally, for browser requests which enter VIRTEL using an entry point which specifies emulation type “HOST4WEB”, the application can also use a set of VIRTEL control commands which can be embedded in the 3270 screen via a BMS map, ISPF panel, or 3270 datastream. These HOST4WEB commands, available from VIRTEL version 4.28 onwards, provide the same general functions as the structured field commands in earlier versions.
 
 Table variables, structured field commands, and HOST4WEB commands, are sent by the application to the 3270 session using standard methods (EXEC CICS SEND, ISPEXEC DISPLAY PANEL, TSO TPUT, etc). VIRTEL intercepts and acts upon these commands, for example by selecting the page template or loading data which can be referenced by VIRTEL orders embedded in the page templates and used to build lists of values or data tables.
+
+VMI enables an application to create a dynamic dialog between its transactions and web applications through the creation of interactive bidirectional dialogs across the Internet between host (CICS, IMS, Ideal, Natural, etc) and server-based applications using XML/HTML web services or other communication procedures.
+
+**Incoming and outgoing Web Services Support**
+
+Incoming calls
+
+    - To expose host applications to web clients though web services, Virtel can be configured to:
+    - Receive and parse incoming web service calls
+    - Execute the appropriate transactions
+    - Receive data returned by the transactions in the form of screens, structured fields, COMMAREA, or database segments
+    - Reformat and wrap that data with XML, JSON, HTML, SOAP, CSV, PDF, Word, JSON, etc.    
+    - Serve it back to the web callers
+
+Outgoing calls
+    - In the outgoing direction (host-initiated web services) the mechanism is the same, just reverse.
+
+VWI can be configured to support a wide range of interfaces, protocols and APIs which can :-
+
+    - Expose mainframe applications and data as web services to web clients
+    - Invoke web services for the count of mainframe applications
+    - Support interactive exchange procedures between mainframe and web applications for cooperative work
+    - Function as a SOAP, MQ, PHP… server
+    - Transfer data blocks larger than 32KB, or blocks of data with variable format
+    - Convert data from DBCS (Double Byte Character Set) used by Japanese, Chinese, Russian… workstations or applications to EBCDIC, and vice/versa
+    - Serve 3270 data as international icons to eliminate natural languages from user interfaces
+    - Replace web connectors developed by IBM (CWS, CTG, HOD, IMS Connect, etc) and ISVs, or homegrown (CICS socket programming)     
+
+|vwi_overview|
+*VWI Overview*
 
 For more information, refer to the chapter :ref:`“Programming Interfaces” <#_V457UG_programming_interfaces>`.
 
@@ -15053,3 +15083,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image112| image:: images/media/image112.png
 .. |vwa_overview| image:: images/media/vwa_overview.png
 .. |vwm_overview| image:: images/media/vwm_overview.png
+.. |vwi_overview| image:: images/media/vwi_overview.png

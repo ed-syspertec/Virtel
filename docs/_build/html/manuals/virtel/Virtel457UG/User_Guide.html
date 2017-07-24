@@ -195,7 +195,7 @@
 <p class="last">This book is currently under construction. Do not use!</p>
 </div>
 <p>Version : 4.57</p>
-<p>Release Date : 01 Jul 2017 Publication Date : 01/07/2017</p>
+<p>Release Date : 31 Jul 2017 Publication Date : 24/07/2017</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -313,9 +313,44 @@ their respective owners.</p>
 </div>
 <div class="section" id="virtel-web-integration-vwi">
 <span id="index-5"></span><h4>VIRTEL Web Integration (VWI)<a class="headerlink" href="#virtel-web-integration-vwi" title="Permalink to this headline">¶</a></h4>
-<p>The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.</p>
+<p>The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface, for example through web services. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.</p>
 <p>To control its web interface, an application has at its disposal primarily the 3270 screen, the VIRTEL table variable facility, the HTML page template, and a set of VIRTEL commands contained in structured fields. Additionally, for browser requests which enter VIRTEL using an entry point which specifies emulation type “HOST4WEB”, the application can also use a set of VIRTEL control commands which can be embedded in the 3270 screen via a BMS map, ISPF panel, or 3270 datastream. These HOST4WEB commands, available from VIRTEL version 4.28 onwards, provide the same general functions as the structured field commands in earlier versions.</p>
 <p>Table variables, structured field commands, and HOST4WEB commands, are sent by the application to the 3270 session using standard methods (EXEC CICS SEND, ISPEXEC DISPLAY PANEL, TSO TPUT, etc). VIRTEL intercepts and acts upon these commands, for example by selecting the page template or loading data which can be referenced by VIRTEL orders embedded in the page templates and used to build lists of values or data tables.</p>
+<p>VMI enables an application to create a dynamic dialog between its transactions and web applications through the creation of interactive bidirectional dialogs across the Internet between host (CICS, IMS, Ideal, Natural, etc) and server-based applications using XML/HTML web services or other communication procedures.</p>
+<p><strong>Incoming and outgoing Web Services Support</strong></p>
+<p>Incoming calls</p>
+<blockquote>
+<div><ul class="simple">
+<li>To expose host applications to web clients though web services, Virtel can be configured to:</li>
+<li>Receive and parse incoming web service calls</li>
+<li>Execute the appropriate transactions</li>
+<li>Receive data returned by the transactions in the form of screens, structured fields, COMMAREA, or database segments</li>
+<li>Reformat and wrap that data with XML, JSON, HTML, SOAP, CSV, PDF, Word, JSON, etc.</li>
+<li>Serve it back to the web callers</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>Outgoing calls</dt>
+<dd><ul class="first last simple">
+<li>In the outgoing direction (host-initiated web services) the mechanism is the same, just reverse.</li>
+</ul>
+</dd>
+</dl>
+<p>VWI can be configured to support a wide range of interfaces, protocols and APIs which can :-</p>
+<blockquote>
+<div><ul class="simple">
+<li>Expose mainframe applications and data as web services to web clients</li>
+<li>Invoke web services for the count of mainframe applications</li>
+<li>Support interactive exchange procedures between mainframe and web applications for cooperative work</li>
+<li>Function as a SOAP, MQ, PHP… server</li>
+<li>Transfer data blocks larger than 32KB, or blocks of data with variable format</li>
+<li>Convert data from DBCS (Double Byte Character Set) used by Japanese, Chinese, Russian… workstations or applications to EBCDIC, and vice/versa</li>
+<li>Serve 3270 data as international icons to eliminate natural languages from user interfaces</li>
+<li>Replace web connectors developed by IBM (CWS, CTG, HOD, IMS Connect, etc) and ISVs, or homegrown (CICS socket programming)</li>
+</ul>
+</div></blockquote>
+<p><img alt="vwi_overview" src="../../../_images/vwi_overview.png" />
+<em>VWI Overview</em></p>
 <p>For more information, refer to the chapter <a class="reference internal" href="#v457ug-programming-interfaces"><span class="std std-ref">“Programming Interfaces”</span></a>.</p>
 <span class="target" id="v457ug-service-transactions"></span></div>
 <div class="section" id="virtel-service-transactions">
