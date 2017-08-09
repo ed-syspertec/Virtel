@@ -109,7 +109,7 @@ Introduction
 What is Virtel
 --------------
 
-Simply put, Virtel is a host-based protocol converter that runs as a started task on the manframe. At the core of Virtel is the Virtel Engine which sits between host applications and external environments such as the web or another external server. Virtel supports the following standard protocol - TCP/IP, SMTP, HTTP/S, SOAP, MQ-SERIES, SNA, 3270, ICAL (IMS) and the inherited protocols - X25, XOT, XTP, LU 6.2 to interface between host applications and external services. A classic example for Virtel would be interfacing between legacy 3270 applications, running on the host, and the web. Virtel would provide protocol conversion between 3270 datastreams and HTML. Users would no longer require 3270 terminal emulators to interface with legacy host applications as access would be through the standard web browser.Tansnslation between ASCII and EBCDIC is provided as well as support for U-TF8 and UTF-16 and various character code page sets.
+Simply put, Virtel is a host-based protocol converter that runs as a started task on the mainframe. At the core of Virtel is the Virtel Engine which sits between host applications and external environments such as the web or another external server. Virtel supports the following standard protocol - TCP/IP, SMTP, HTTP/S, SOAP, MQ-SERIES, SNA, 3270, ICAL (IMS) and the inherited protocols - X25, XOT, XTP, LU 6.2 to interface between host applications and external services. A classic example for Virtel would be interfacing between legacy 3270 applications, running on the host, and the web. Virtel would provide protocol conversion between 3270 data streams and HTML. Users would no longer require 3270 terminal emulators to interface with legacy host applications as access would be through the standard web browser. Translation between ASCII and EBCDIC is provided as well as support for U-TF8 and UTF-16 and various character code page sets.
 
 The following diagram illustrates some of the protocols and applications supported by the Virtel Engine. 
 
@@ -117,7 +117,7 @@ The following diagram illustrates some of the protocols and applications support
 |image0|
 *The Virtel Engine*         
 
-Virtel provides three models. Web access, Web modernisation and Web intergration.
+Virtel provides three models. Web access, Web modernisation and Web integration.
 
 .. raw:: latex
 
@@ -155,11 +155,11 @@ Let's look at how VWA works.
 
 2. The pathname /VIRT3270+TSO identifies a Virtel HTML page TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application and initiates a VTAM session with TSO. 
 
-3. A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 datastreams and will be sent to TSO as if they had come from a 3270 terminal. 3270 datastreams sent by the TSO application will be converted into HTML pages using the VIRT3270 template and sent to the browser.  
+3. A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 data streams and will be sent to TSO as if they had come from a 3270 terminal. 3270 data streams sent by the TSO application will be converted into HTML pages using the VIRT3270 template and sent to the browser.  
 
 4. TSO responds to the session request and sends a 3270 screen to Virtel.
 
-5. Virtel, acting as a SLU in the VTAM session, receives the 3270 datastream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page VIRT3270 as a template. Virtel pages are maintained on a VSAM file known as a TRSF.
+5. Virtel, acting as a SLU in the VTAM session, receives the 3270 data stream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page VIRT3270 as a template. Virtel pages are maintained on a VSAM file known as a TRSF.
 
 6. The constructed HTML page is sent to the users browser.
 
@@ -181,7 +181,7 @@ This function is implemented through a combination of the VIRTEL Web Access func
 
 VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of     navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).
 
-With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenarion. Data could be extracted from the indivdual host responses and encapsulated into one HTML page. For example when a user requests a "list" this could result in a sequence of key strokes and displays. Taking the example:-
+With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenario. Data could be extracted from the indivdual host responses and encapsulated into one HTML page. For example when a user requests a "list" this could result in a sequence of key strokes and displays. Taking the example:-
 
 ::
 
@@ -192,7 +192,7 @@ With modernisation, for example, several 3270 round trips can be made to the hos
     User press PFK8 to obtain next screen.
     Third screen returned. Last in sequence.
 
-The above business logic i.e. "search for a name" can be encorporated into a Virtel Scenario and in the example below we have called the scenario GETDATA. The user enters the search argument "ASMITH" and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA.
+The above business logic i.e. "search for a name" can be incorporated into a Virtel Scenario and in the example below we have called the scenario GETDATA. The user enters the search argument "ASMITH" and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA.
     
 This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI "drop down list" encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data presented in a "modernised" GUI fashion.        
 
@@ -204,18 +204,18 @@ This configuration information is maintained in the VIRTEL ARBO file. Virtel est
     \newpage  
 
 .. index::
-   pair: Web Intergration; Virtel 
+   pair: Web integration; Virtel 
 
 VIRTEL Web Integration (VWI)
 ----------------------------
 
 The objective of VIRTEL Web Integration, formerly known as  “Host-for-Web” (H4W), is to allow a host application to take maximum control of its web interface, for example through web services. This is in complete contrast to VWA/VWM, whose objective is to avoid modification of host applications.
 
-To control its web interface, an application has at its disposal primarily the 3270 screen, the VIRTEL table variable facility, the HTML page template, and a set of VIRTEL commands contained in structured fields. Additionally, for browser requests which enter VIRTEL using an entry point which specifies emulation type “HOST4WEB”, the application can also use a set of VIRTEL control commands which can be embedded in the 3270 screen via a BMS map, ISPF panel, or 3270 datastream. These HOST4WEB commands, available from VIRTEL version 4.28 onwards, provide the same general functions as the structured field commands in earlier versions.
+To control its web interface, an application has at its disposal primarily the 3270 screen, the VIRTEL table variable facility, the HTML page template, and a set of VIRTEL commands contained in structured fields. Additionally, for browser requests which enter VIRTEL using an entry point which specifies emulation type “HOST4WEB”, the application can also use a set of VIRTEL control commands which can be embedded in the 3270 screen via a BMS map, ISPF panel, or 3270 data stream. These HOST4WEB commands, available from VIRTEL version 4.28 onwards, provide the same general functions as the structured field commands in earlier versions.
 
 Table variables, structured field commands, and HOST4WEB commands, are sent by the application to the 3270 session using standard methods (EXEC CICS SEND, ISPEXEC DISPLAY PANEL, TSO TPUT, etc). VIRTEL intercepts and acts upon these commands, for example by selecting the page template or loading data which can be referenced by VIRTEL orders embedded in the page templates and used to build lists of values or data tables.
 
-VMI enables an application to create a dynamic dialog between its transactions and web applications through the creation of interactive bidirectional dialogs across the Internet between host (CICS, IMS, Ideal, Natural, etc) and server-based applications using XML/HTML web services or other communication procedures.
+VMI enables an application to create a dynamic dialog between its transactions and web applications through the creation of interactive bidirectional dialogs across the Internet between host (CICS, IMS, Ideal, Natural, etc.) and server-based applications using XML/HTML web services or other communication procedures.
 
 **Incoming and outgoing Web Services Support**
 
@@ -241,7 +241,7 @@ VWI can be configured to support a wide range of interfaces, protocols and APIs 
     - Transfer data blocks larger than 32KB, or blocks of data with variable format
     - Convert data from DBCS (Double Byte Character Set) used by Japanese, Chinese, Russian… workstations or applications to EBCDIC, and vice/versa
     - Serve 3270 data as international icons to eliminate natural languages from user interfaces
-    - Replace web connectors developed by IBM (CWS, CTG, HOD, IMS Connect, etc) and ISVs, or homegrown (CICS socket programming)     
+    - Replace web connectors developed by IBM (CWS, CTG, HOD, IMS Connect, etc) and ISVs, or home-grown (CICS socket programming)     
 
 |vwi_overview|
 *VWI Overview*
@@ -263,9 +263,14 @@ A service transaction is started by an HTTP URL in exactly the same way as a reg
 
 A service transaction remains connected to the host application between input messages. It is then eligible to process any HTTP request which specifies the same entry point and transaction name. Since service transactions can potentially be used by many different users, a typical service transaction will provide information which is not sensitive to being signed-on as a particular user. 
 
+.. raw:: latex
+
+    \newpage  
+
 .. _#_V457UG_url_formats:
 
 .. index::
+   URL Formats
    pair: Static Pages; URL Formats
 
 VIRTEL URL Formats
@@ -274,12 +279,11 @@ VIRTEL URL Formats
 Static pages
 ------------
 
-Virtel locates static HTML pages through the URL passed to Virtel Engine and the configuration definitions defined within the Virtel ARBO. The end point for Virtel is defined by a Virtel line definition which identifies the TCP/IP that Virtel listens on for incoming calls. By default this is the standard web server port of 80, however, the Virtel distribution tape doesn't use this well know port, but instead opts for port 41001 (Administration) and port 41002 (User). 
-
+Virtel locates static HTML pages through the URL passed to the Virtel Engine and the configuration definitions defined within the Virtel ARBO VSAM file. An endpoint for Virtel is defined by a Virtel line definition which identifies the TCP/IP port that Virtel listens on for incoming calls. By default Virtel uses two endpoints or ports, 41001 for Administration and port 41002 for user or client transactions. Each endpoint is associated with a default Entry Point; WEB2HOST in the case of 41001 and CLIWHOST for 41002. Transactions are associated with End Points. An endpoint can be associated with more than one Entry Point.  Virtel provides a Rule facility whereby an Entry Point can be selected by incoming call criteria - IP address for example.    
 |static_pages|
 *Virtel Static Pages*
 
-The general form of the URL for an HTML page stored in a VIRTEL directory is:
+Virtel stores pages and web elements within VIRTEL diretories located in TRSF VSAM files. The general form of the URL for an HTML page stored in a VIRTEL directory is:
 
 ::
 
@@ -400,7 +404,7 @@ Example 1: Neither pathname nor pagename specified
 
 The pathname defaults to the entry point name, WEB2HOST, which  matches transaction W2H-00. The pagename also defaults to WEB2HOST.  VIRTEL therefore fetches page WEB2HOST from the directory W2H-DIR.
 
-Example 2: Pagename specified
+Example 2: pagename specified
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -474,7 +478,7 @@ had been specified.
 
 |image69| *Example of a default transaction with default URL*
 
-The entry point CLIWHOST can access the w2h directory through a directory definition specifing the external directory path as an external name in the transaction. Here the transaction needs access to web elements located in the W2H-DIR. The /w2h/ pathname in w2h/appmenu.htm matches the external name of the diectory transaction CLI-03W. This match defines a path to the W2H-DIR:-
+The entry point CLIWHOST can access the w2h directory through a directory definition specifing the external directory path as an external name in the transaction. Here the transaction needs access to web elements located in the W2H-DIR. The /w2h/ pathname in w2h/appmenu.htm matches the external name of the directory transaction CLI-03W. This match defines a path to the W2H-DIR:-
 
 |image70| *Providing access to a directory through a transactions external name*  
 
@@ -703,7 +707,7 @@ sessionid
 
 .. note:: 
 
-    For compatability with previous versions, the keyword VerifyVirtelSession is also accepted. VerifyVirtelSession is similar to ValidateVirtelSession except that it produces only two possible return codes: 
+    For compatibility with previous versions, the keyword VerifyVirtelSession is also accepted. VerifyVirtelSession is similar to ValidateVirtelSession except that it produces only two possible return codes: 
 
         - 205 (screen updated)
         - 304 (screen not updated or session invalid)
@@ -733,7 +737,7 @@ pagename
 $UseCookieSession$
     Indicates that the SESSION-CODE is contained in the VirtelSession cookie.
 
-The VirtelSession cookie should be generated by Javascript as shown in the example below. This function may be added to the custom.js script (see :ref:`“Site customization of Javascript functions” <#_V457UG_customization_javascript_functions>`):
+The VirtelSession cookie should be generated by Javascript as shown in the example below. This function may be added to the custom Javascript script (see :ref:`“Site customization of Javascript functions” <#_V457UG_customization_Javascript_functions>`):
 
 ::
 
@@ -785,10 +789,10 @@ capability
 .. index::  
    single: Transmission of upload cookie by URL 
 
-Transmission of upload cookie by URL
-------------------------------------
+Transmission of Security Tokens by URL
+--------------------------------------
 
-The security code, which identifies a user during page upload by HTTP, is normally transmitted between the browser and VIRTEL as a cookie (see :ref:`“Uploading HTML Pages” <#_V457UG_uploading_HTML_pages>`). If, for security or other reasons, your browser does not allow the use of cookies, then the security code can, as an alternative, be embedded in a URL of the form shown below:-
+A security code, which identifies a user during a HTTP page upload request, is normally transmitted between the browser and VIRTEL as a cookie (see :ref:`“Uploading HTML Pages” <#_V457UG_uploading_HTML_pages>`). If, for security or other reasons, your browser does not allow the use of cookies, then the security code can, as an alternative, be embedded in a URL of the form shown below:-
 
 ::
 
@@ -874,6 +878,10 @@ The Universal Transaction
 
 A transaction may be defined with an external name consisting of an asterisk, and this is considered to be a “universal” transaction. A universal transaction matches any URL not already matched by a preceding transaction in the entry point. This allows VIRTEL to process URLs whose format does not conform to the classic VIRTEL formats previously described.
 
+.. raw:: latex
+
+    \newpage  
+
 .. _#_V457UG_directory_management:
 
 Directory Management
@@ -882,14 +890,27 @@ Directory Management
 .. index::  
    single: Directory Management     
 
-
 HTML and XML template pages and other entities such as CSS stylesheets, JavaScript procedures, and GIF or JPEG images used by VIRTEL Web Access are stored in directories within a VSAM KSDS managed by VIRTEL. Each KSDS defined to VIRTEL can contain one or more directories. The system administrator can upload pages and other elements into a VIRTEL directory by using a web browser or by e-mail, as described in detail in the section :ref:`“Uploading HTML Pages” <#_V457UG_uploading_HTML_pages>`.
 
-Accessing the application
--------------------------
+Accessing the administration application
+----------------------------------------
 
-The directory management sub-application allows the administrator to define directories. The sub-application is accessible by [PF6] from the configuration menu, or by [PF12] from the system services menu
-followed by option 3, or from the VIRTEL Multi-Session menu via a transaction which invokes VIRTEL module VIR0042.
+Virtel provides an administrative portal which contains various sub applications used to administer Virtel. The administrative portal can be access either through the 3270 administration application or the HTML GUI portal.   
+
+Access through 3270
+-------------------
+
+Access to the 3270 application is through a normal VTAM logon using the VIRTEL APPLID as the application name. For example, from a VTAM screen enter LOGON APPLID=VIRTEL. The following screen will appear:-
+
+|image113|
+*Logon screen for 3270 Administration*
+
+After logging in with security details the main application menu will be presented. Select PF1 from the main menu to access the administration and configuration menu.
+
+|image114|
+*Directory sub application*
+
+The directory management sub-application allows the administrator to define directories. The sub-application is accessible by [PF6] from the configuration menu, or by [PF12] from the system services menu followed by option 3, or from the VIRTEL Multi-Session menu via a transaction which invokes VIRTEL module VIR0042. 
 
 Security
 --------
@@ -912,7 +933,7 @@ When the directory management sub-application is invoked, it displays a list of 
 Using the associated Admin(3270) functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-These funcations are accessed from either the browsers Administration portal or by logging on to Virtel using it's VTAM interface.
+These functions are accessed from either the browsers Administration portal or by logging on to Virtel using it's VTAM interface.
 
 Deleting a directory definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1007,13 +1028,40 @@ Exiting from directory contents management
 
 To return to the list of directories, press [PF3].
 
+Acccess administration portal via the web
+-----------------------------------------
+
+Access to the HTML GUI Administration portal is through the web using the Administration endpoint. By default this is port 41001. The URL http://192.168.129.33:41001 is an example of a URL to access the WEB administration portal. After providing security information the following screen will appear:-
+
+|image115|
+*Logon screen for Web Administration* 
+
+Selecting the Admin (HTML) will prompt for a userid and password. After providing security details the following administration portal will appear:-
+
+|image116|
+*Web Administration Portal*
+
+ Directory administration can be invoked from the Directory link. Selecting a directory will display a content menu proving options to list, edit, delete or create new directories.
+
+|image117|
+*Directory Context Menu*  
+
+When selecting a directory, the detail panel will be displayed. The ICONs on the right hand side of the title bar provide actions such as add, update or list.
+
+|image118|
+*Directory Detail Display*   
+
+.. raw:: latex
+
+    \newpage  
+
 .. _#_V457UG_creating_HTML:
 
 .. index::  
-   single: Template pages
+   single: Virtel template pages
 
-Creating HTML And XML Template Pages
-====================================
+Creating Virtel Template Pages
+==============================
 
 .. index::  
    pair: HTML;Template pages
@@ -1024,6 +1072,13 @@ Introduction
 
 Template pages are the means by which VIRTEL presents host application data to the user via a web browser. In addition to standard HTML or XML tags, template pages contain VIRTEL-specific tags enabling integration of information delivered by the mainframe application programs. HTML template pages may contain GIF or JPEG images, sounds, scripts such as JavaScript or any other function or program elements that are compatible with the browser. Template pages may be produced either by hand or by using standard HTML or XML design tools available on the market.
 
+For VWA, users would not be required to produce or modify any template pages as all the necessary template pages are provided by the Virtel product. For VWM or VWI, new pages may be produced by Virtel tools such as Virtel Screen Redesigner to support modernisation or integration projects. Virtel Studio may also introduce new templates to support business logic in Virtel scenarios. Sometimes it may be necessary to modify these pages.
+
+The following sections provide details on Virtel tags.   
+
+.. index::  
+   single: Virtel tags
+
 Defining the tag delimiters
 ---------------------------
 
@@ -1033,7 +1088,45 @@ VIRTEL-specific tags are used to insert data originating at the host into an HTM
 
     <!--VIRTEL start="{{{" end="}}}" -->
 
-In this example, VIRTEL-specific tags are defined as being represented by a succession of 3 opening braces and terminated by a succession of 3 closing braces. This convention is maintained throughout the remainder of this chapter.
+In this example, VIRTEL-specific tags are defined as being represented by a succession of 3 opening braces and terminated by a succession of 3 closing braces. This convention is maintained throughout the remainder of this chapter. A minimum template required for Virtel to work with and display a 3270 application looks something like this:-
+
+::
+    
+    <html>
+        <head>
+            <!--VIRTEL start="{{{" end="}}}" -->
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <title>Virtel Unplugged - Example 1</title>
+            <script>
+                function SetFocus() {
+                console.log("SetFocus");
+                        document.virtelForm.{{{FIELD-WITH-CURSOR}}}.focus();
+                }
+
+                function SubmitForm(e) {
+                if (e && e.keyCode == 13) {
+                document.virtelForm.submit();
+                }
+                }
+            </script>
+
+        </head>
+        <body onLoad="SetFocus()">
+            <form name="virtelForm" action="{{{NAME-OF (PAGE)}}}++{{{SESSION-CODE}}}" method="POST">
+                <pre>
+                <div id="printReady" onkeypress="SubmitForm(event)">
+                {{{ GENERATE-HTML (1,1,1920) }}}
+                </div>
+                </pre>
+                {{{DEFINE-HTML-FOCUS-FIELD "FOCUSFIELD"}}}
+                <input name="FOCUSFIELD" type="HIDDEN" value="{{{FIELD-WITH-CURSOR}}}">
+            </form>
+        </body>
+    </html>
+
+*Sample Virtel Template*
+
+.. note:: See the use of the Virtel tags {{{ }}} within the HTML template. Virtel injects data into these fields before sending the template to the browser. 
 
 .. _#_V457UG_session_context_mangement:
 
@@ -1043,7 +1136,7 @@ In this example, VIRTEL-specific tags are defined as being represented by a succ
 Session and context management
 ------------------------------
 
-VIRTEL uses the concept of a sessioncode to maintain the context between a client using a browser and the host application to which the client is connected. This code allows VIRTEL to identify the client and to associate the client with a session already established with a host application.
+VIRTEL uses the concept of a session code to maintain the context between a client using a browser and the host application to which the client is connected. This code allows VIRTEL to identify the client and to associate the client with a session already established with a host application.
 
 .. index::
    pair: SESSION-CODE; tags
@@ -1057,7 +1150,7 @@ The SESSION-CODE tag is used to create the URL associated with form submission.
 
     {{{ SESSION-CODE }}}
 
-The SESSION-CODE tag allows a sessioncode to be inserted in the template page in the format VirtelSession=xxxxxxxxxxxxxxxx. The value of the sessioncode changes after each message. For examples of its use, see :ref:`“Transmitting Data To The Host” <#_V457UG_transmitting_data>`, and :ref:`“3287 Printing” <#_V457UG_printing>`.
+The SESSION-CODE tag allows a session code to be inserted in the template page in the format VirtelSession=xxxxxxxxxxxxxxxx. The value of the session code changes after each message. For examples of its use, see :ref:`“Transmitting Data To The Host” <#_V457UG_transmitting_data>`, and :ref:`“3287 Printing” <#_V457UG_printing>`.
 
 .. index::
    pair: AJAX-SESSION-CODE; tags
@@ -1071,7 +1164,7 @@ The AJAX-SESSION-CODE tag is similar to the SESSION-CODE tag, but it generates t
 
     {{{ AJAX-SESSION-CODE }}}
 
-The AJAX-SESSION-CODE tag allows a sessioncode to be inserted in the template page in the format AjaxSession=xxxxxxxxxxxxxxxx. For example:-
+The AJAX-SESSION-CODE tag allows a session code to be inserted in the template page in the format AjaxSession=xxxxxxxxxxxxxxxx. For example:-
 
 ::
 
@@ -1206,7 +1299,7 @@ As shown previously, data transmitted to the HTTP server by the client is itself
     <!--------------------- end of HTML form    ---------------------->
     
     <!—-Place submit buttons and hypertext links here. For example:-->
-    <a href="javascript:submitform('PF1')" >soumettre avec PF01</a>
+    <a href="Javascript:submitform('PF1')" >soumettre avec PF01</a>
     <INPUT TYPE="BUTTON" size="5" onclick="SubmitForm(this.value)"    value="PF01">
     <script language="JavaScript"><!--    {{{IF-PRINT-IS-READY
         ShowPopUp();
@@ -1727,7 +1820,6 @@ GENERATE-HTML does not generate HTML code for character attributes within input 
 
 ::
 
-
     {{{ ON-CHARACTER-ATTRIBUTE (p1,p2) <standard HTML tag> }}}
 
 p1,p2
@@ -2016,7 +2108,7 @@ Automatic call of the SCRIPT from a hypertext link
 
 ::
 
-    <a href="javascript:submitform('PF1')" >submit with PF01</a>
+    <a href="Javascript:submitform('PF1')" >submit with PF01</a>
 
 The function keys may be defined in the following manner in the “value” keyword of the INPUT TYPE=BUTTON field.
 
@@ -2192,12 +2284,12 @@ option
 
 .. index::
    single: Handling table variables
-
+   pair: Virtel Structured field;FAE5 and FAE6  
 
 Handling table variables
 ------------------------
 
-A table variable is a list of values sent to VIRTEL by a host application in a structured field of type “FAE5 or FAE6”,^page 247. Table variables may also be created by means of a VIRTEL tag embedded in the page template (see :ref:`“CREATE-VARIABLE-FROM” <#_V457UG_create-variable-from>`), via a scenario (see :ref:`“COPY$ instructions” <#_V457UG_copy$>`), or by means of a S VARIABLE command contained in the host 3270 datastream (see :ref:`“HOST4WEB commands” <#_V457UG_host4web>`).
+A table variable is a list of values sent to VIRTEL by a host application in a structured field of type “FAE5 or FAE6”,^page 247. Table variables may also be created by means of a VIRTEL tag embedded in the page template (see :ref:`“CREATE-VARIABLE-FROM” <#_V457UG_create-variable-from>`), via a scenario (see :ref:`“COPY$ instructions” <#_V457UG_copy$>`), or by means of a S VARIABLE command contained in the host 3270 data stream (see :ref:`“HOST4WEB commands” <#_V457UG_host4web>`).
 
 .. index::
    pair: FOR-EACH-VALUE; tags
@@ -2396,7 +2488,10 @@ count
 subname
     the name of the sub-variable
 
-A sub-variable consists of count values, each of length bytes, starting at offset in the loop master variable. The first byte of the loop master variable is considered to be offset 0. Sub-variables are defined outside but referenced within a FOR-EACH-VALUE-IN loop. A sub-variable can be referenced wherever a normal table variable would be valid, including the loop master variable of an inner FOR-EACH-VALUE-IN loop, which could in itself be redefined by other subvariables. When the sub-variable is referenced, it acts as an implicit redefinition of the current value of the master variable of the innermost FOR-EACH-VALUE-IN loop in which the reference appears. Thus, the same sub-variable could possibly redefine different loop master variables if it is referenced in more than one place.
+A sub-variable consists of count values, each of length bytes, starting at offset in the loop master variable. The first byte of the loop master variable is considered to be offset 0. Sub-variables are defined outside but referenced within a FOR-EACH-VALUE-IN loop. A sub-variable can be referenced wherever a normal table variable would be valid, including the loop master variable of an inner FOR-EACH-VALUE-IN loop, which could in itself be redefined by other sub-variables. When the sub-variable is referenced, it acts as an implicit redefinition of the current value of the master variable of the innermost FOR-EACH-VALUE-IN loop in which the reference appears. Thus, the same sub-variable could possibly redefine different loop master variables if it is referenced in more than one place.
+
+.. index::   
+   pair: Virtel Structured field;FAE5 Example  
 
 **Examples**
 
@@ -2470,7 +2565,6 @@ The IP-PORT-OF-LINE tag will be replaced by the port number of the specified VIR
 
 NAME-OF tag
 ^^^^^^^^^^^
-
 ::
 
     {{{NAME-OF (xxxxxx)}}}
@@ -2542,7 +2636,7 @@ For this to work, it is necessary to specify a value to the 3rd sub-parameter of
 
        TCP1=(TCPIP,,DNS,65535),  
 
-During Virtel startup, the following messages will appear in the Virtel log:
+During Virtel integration, the following messages will appear in the Virtel log:
 
 ::
 
@@ -3107,7 +3201,7 @@ Cache management
 ----------------
 
 When delivering static elements such as menu pages, images, and JavaScript programs, VIRTEL indicates to the browser that the element is eligible to be stored in the browser’s cache. This improves performance because the browser does not have to request the element from VIRTEL each time it is required. By contrast, dynamic elements (i.e. elements which contain VIRTEL tags) are generally marked as non-cacheable because their content is likely to
-change each time the page is requested. The VIRTEL tags described in this section are used to override the default cacheable/non-cacheable behavior.
+change each time the page is requested. The VIRTEL tags described in this section are used to override the default cacheable/non-cacheable behaviour.
 
 .. index::
    pair: SET-PAGE-CACHEABLE; tags
@@ -3119,7 +3213,7 @@ SET-PAGE-CACHEABLE tag
 
     {{{ SET-PAGE-CACHEABLE }}}
 
-When an element contains a SET-PAGE-CACHEABLE tag, VIRTEL will generate two HTTP headers: an Expires: header which indicates that the browser may cache the element until midnight, and a Last-Modified:.header which containsthe date that the element was uploaded to VIRTEL. This is the default for static elements.
+When an element contains a SET-PAGE-CACHEABLE tag, VIRTEL will generate two HTTP headers: an Expires: header which indicates that the browser may cache the element until midnight, and a Last-Modified:.header which contains the date that the element was uploaded to VIRTEL. This is the default for static elements.
 
 .. index::
    pair: SET-PAGE-NON-CACHEABLE; tags
@@ -3169,7 +3263,7 @@ SET-CONTENT-TYPE tag
 
     {{{SET-CONTENT-TYPE "mimetype"}}}
 
-The SET-CONTENT-TYPE tag allows the administrator to override the MIME-type supplied by the browser or mailer when the element is uploaded. VIRTEL stores the value of the parameter mimetype in the directory with the element. In the following example, the page template is to be stored with a MIME-type which will cause the browser to process it as speadsheet data:-
+The SET-CONTENT-TYPE tag allows the administrator to override the MIME-type supplied by the browser or mailer when the element is uploaded. VIRTEL stores the value of the parameter mimetype in the directory with the element. In the following example, the page template is to be stored with a MIME-type which will cause the browser to process it as spreadsheet data:-
 
 ::
 
@@ -3184,7 +3278,7 @@ Capability tokens
 -----------------
 
 VIRTEL capability tokens permit an HTTP transaction to access data associated with an transaction running on another terminal. The token is delivered by VIRTEL by means of an x-Virtel HTTP response header from the terminal which owns the capability, and the same token is returned to VIRTEL in a subsequent URL sent by the terminal which wishes to use the capability (see :ref:`“Capability URLs” <#_V457UG_capability_types>`). The x-Virtel HTTP header is generated by a SET-HEADER tag
-embedded in a page template sent by the terminal which owns the capablity.
+embedded in a page template sent by the terminal which owns the capability.
 
 .. _#_V457UG_SET-HEADER:
 
@@ -3300,6 +3394,7 @@ The IF-SECURITY-TOKEN-IS-READY tag encloses HTML or JavaScript code to be genera
 .. note::
 
     The total size of this tag, including the enclosed code, must not exceed the size of an inter-block buffer (120 characters) otherwise it will not be correctly processed if it spans blocks.
+
 .. _#_V457UG_printing:    
 
 .. index::
@@ -3329,13 +3424,13 @@ generated only if VIRTEL has data ready to be printed.
 SESSION-CODE tag
 ^^^^^^^^^^^^^^^^
 
-The SESSION-CODE tag, prefixed by the word “Print”, generates a sessioncode which allows a subsidiary window to be opened for the print data associated with the specified session. The template page displayed in this window can retrieve the stored print data by means of the PRINT tag. The user can then view the print data, and can, if desired, send the data to a physical workstation printer using the normal procedure for printing from a browser.
+The SESSION-CODE tag, prefixed by the word “Print”, generates a session code which allows a subsidiary window to be opened for the print data associated with the specified session. The template page displayed in this window can retrieve the stored print data by means of the PRINT tag. The user can then view the print data, and can, if desired, send the data to a physical workstation printer using the normal procedure for printing from a browser.
 
 For example:
 
 ::
 
-    <script language="javascript" type="text/javascript">
+    <script language="Javascript" type="text/Javascript">
     <!--
         function ShowPopup()
         {
@@ -3480,6 +3575,10 @@ PDF-VARIABLE tag
 
 The PDF-VARIABLE tag inserts “=” in the ASA carriage control character position.
 
+.. raw:: latex
+
+    \newpage  
+
 .. _#_V457UG_correspondent_management:
 
 .. index::
@@ -3500,10 +3599,10 @@ VIRTEL uses the correspondent file for the following purposes:
 
 There are two types of correspondent: an e-mail correspondent and a local correspondent:
 - An **e-mail correspondent** is always defined by the VIRTEL administrator. When the administrator activates an email correspondent, VIRTEL sends an e-mail message to the correspondent containing the security code. The correspondent then either replies to the e-mail message or clicks on a link in the message to connect to VIRTEL.
-- A **local correspondent** is activated by the correspondent using a procedure known as “self-registration”. The selfregistration rocedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.
+- A **local correspondent** is activated by the correspondent using a procedure known as “self-registration”. The self-registration procedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.
 
 .. index::
-   pair: Access; Coresspondent Manangement
+   pair: Access; Correspondent Manangement
 
 Access to the application
 -------------------------
@@ -3514,7 +3613,7 @@ system services sub-application menu, or from the VIRTEL Multi-Session screen vi
 module VIR0041A.
 
 .. index::
-   pair: Security; Coresspondent Manangement
+   pair: Security; Correspondent Manangement
 
 Security
 --------
@@ -3525,7 +3624,7 @@ When it is accessed by a transaction, the rules of security management of transa
 Security management is described under the heading “Security” 282.
 
 .. index::
-   pair: Objectives; Coresspondent Manangement
+   pair: Objectives; Correspondent Manangement
 
 Objectives
 ----------
@@ -3566,7 +3665,7 @@ to the detail of a correspondent is achieved by positioning the cursor and press
 *Correspondent detail screen (local correspondent)*
 
 .. index::
-   pair: Field contents; Coresspondent Manangement
+   pair: Field contents; Correspondent Manangement
 
 Field Contents
 --------------
@@ -3599,7 +3698,7 @@ Contacts
 .. _#_V457UG_account_activation:    
 
 .. index::
-   pair: Account activation; Coresspondent Manangement
+   pair: Account activation; Correspondent Manangement
 
 Account activation
 ------------------
@@ -3612,7 +3711,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
     To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name $MAIL$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the $MAIL$ transaction is not defined.
 
 .. index::
-   pair: Account deactivation; Coresspondent Manangement
+   pair: Account deactivation; Correspondent Manangement
 
 Account deactivation
 --------------------
@@ -3620,12 +3719,16 @@ Account deactivation
 A correspondent’s security code may be cancelled by deactivating with the [PF5] key. The message DISABLE WAS DONE indicates that the deactivation was successful.
 
 .. index::
-   pair: Access to rules; Coresspondent Manangement
+   pair: Access to rules; Correspondent Manangement
 
 Access to associated rule set
 -----------------------------
 
 To display the list of rules associated with this correspondent, press the [PF6] key.
+
+.. raw:: latex
+
+    \newpage  
 
 .. _#_V457UG_uploading_HTML_pages:
 
@@ -3637,6 +3740,7 @@ HTML pages and other elements such as graphics can be uploaded to VIRTEL by any 
     1. by e-mail (SMTP)
     2. by web browser (HTTP), with cookie security
     3. by web browser (HTTP), with signon security
+    4. Via a batch process
 
 .. _#_V457UG_http_uploading_pages_smtp:    
 
@@ -4383,7 +4487,7 @@ Miscellaneous
         If checked, translates the “caret” sign (Shift+6 on a US keyboard) to EBCDIC X'5F', which is the “logical not” sign (¬) in codepage 037/1140.
 
     AsynchSupport
-        By default Virtel uses a "Long Poll" technique to asynchronously update the display when the mainframe has data to send regardless of the users input key requests. This feature may be disabled through this check box. Users who use the Virtel i4web AS/400 interface should disbale “Long Poll”. This option may be set in w2hparm through the "w2hparm.AsynchSupport" setting.
+        By default Virtel uses a "Long Poll" technique to asynchronously update the display when the mainframe has data to send regardless of the users input key requests. This feature may be disabled through this check box. Users who use the Virtel i4web AS/400 interface should disable “Long Poll”. This option may be set in w2hparm through the "w2hparm.AsynchSupport" setting.
 
         .. note:: If disabled Virtel will only update the screen after receiveing an input key request from the user.     
 
@@ -4469,37 +4573,35 @@ Global modification of Web Access settings
 
 Those installations who wish to modify the default Web Access settings for all users can do so by modifying the w2hparm.js file. This file is included in the sources.zip file which can be obtained from the VIRTEL Web Access menu accessible by URL http://n.n.n.n:41001. 
 
-The w2hparm.js file as delivered contains the following default settings:
+The w2hparm.js file as delivered is just a dummy file and contains no default settings. See `“Appendix A - w2hparm values” <#_V457UG_w2hparm_defaults>` for a list of the possible w2hparm values.
 
 ::
 
-   	// w2hparm default values
-	// see w2hparmdefns in js01.js for parameters and allowable values
-	var w2hparm = {
-	  "settingsGUI":{"version":"v2"},
-	  "font":"Droid Sans Mono",
-	  "fontsize":"window",
-	  "ctrl":"ENTER",
-	  "enter":"Newline",
-	  "home":"Home",
-	  "end":"ErEof",
-	  "shiftins":"Dup",
-	  "shifthome":"FieldMark",
-	  "shiftend":"End",
-	  "ctrlins":"PA1",
-	  "ctrldel":"PA2",
-	  "ctrlend":"End",
-	  "pgup":"PF7",
-	  "pgdn":"PF8",
-	  "pause":"CLEAR",
-	  "style":"3270"};
-	// w2hparm parameters to hide (e.g "home" and "shiftins")
-	// Remove the // and update the items
-	// var w2hparmHide = ["home","shiftins"];
+   	// w2hparm.js (W2H-DIR)
+    // w2h parameters to override or hide.
+    //
+    // NOTE: this file is a sample and will be replaced after a new install.
+    // please see the documentation on possible parameter values
+    // and on how to set this file up in CLI-DIR instead of W2H-DIR
+    //
+    var w2hparm = {};      // empty objet: no overrides
+    //
+    // sample values:
+    //  "font":"Droid Sans Mono",
+    //  "ctrl":"ENTER",
+    //  "ctrl":"Newline",
+    //  "enter":"Newline",
+    //  "enter":"ENTER",
+    // sample:
+    // var w2hparm = {"ctrl":"no","enter":"ENTER"};
+    //
+    // w2hparm parameters to hide (e.g "home" and "shiftins")
+    // Remove the // and update the items
+    // var w2hparmHide = ["home","shiftins"];
 
-*w2hparm.js: Default settings for VIRTEL Web Access*
+*w2hparm.js: Dummy file as delivered for VIRTEL Web Access*
 
-Default values may be changed or added.
+w2hparm values values may be changed or added by creating a new w2hparm.js file.
 
 For example, installations who wish to map the 3270 ATTN key to the Esc (Escape) key for use with Multisession applications such as NVAS (IBM® NetView™ Access Services) can add the following instruction to the w2hparm.js file: 
 ::
@@ -4515,7 +4617,7 @@ After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s CLI-DIR d
 .. index::
    pair: global-settings property;Web Customization 
 
-As of Virtel V4.56 an enhanced customisation feature is available which provides customization at a global and transaction level for javascript, CSS and other web elements. To use this feature the w2hparm.js should include the "global-settings" attribute. The following is an example:-
+As of Virtel V4.56 an enhanced customisation feature is available which provides customization at a global and transaction level for Javascript, CSS and other web elements. To use this feature the w2hparm.js should include the "global-settings" attribute. The following is an example:-
 ::
 
 	"global-settings":{
@@ -4523,6 +4625,16 @@ As of Virtel V4.56 an enhanced customisation feature is available which provides
 	"pathToCssCustom": "../option/custCSS.global.css",
 	"pathToHelp": "../option/myHelp.html"
 	}	  
+
+The following supported global properties are:-
+
+::
+
+    "pathToJsCustom"  - Customized JavaSCript elements
+    "pathToW2hparm"   - Customized w2hparm parameters
+    "pathToCssCustom" - Customized CSS stylesheets
+    "pathToPrintCss"  - Customized Print CSS Style sheets
+    "pathToHelp"      - Customized Help pages   
 
 Adding the global-settings property to the “VWA settings” file w2hparms.js provides the pointers to the customized components located within the “option” directory as identified by the /option/ pathname. In the sample above customised CSS, Javascript and Help element pointers are defined. For further details see :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>`.
 
@@ -4659,6 +4771,8 @@ Specifying the application selection menu in the default transaction
 .. index::
    single: Printing with Web Access
 
+.. _#_V457UG_printing_Web_Access:
+
 Printing With Web Access
 ========================
 
@@ -4717,7 +4831,7 @@ the display terminal’s LU name and the printer LU name.
 Autoconnect for virtual printers
 --------------------------------
 
-Virtual printer LUs are activated by VIRTEL at startup time, and will remain in ACTIV state until they are acquired by the
+Virtual printer LUs are activated by VIRTEL at start-up time, and will remain in ACTIV state until they are acquired by the
 application. For virtual printers defined with terminal type 1 or 2, the application must initiate the acquire (for
 example, by CEMT SET TERM(xxxx) ACQ in CICS).
 Virtual printers defined with terminal type P or S may be automatically connected to a controlling host application
@@ -4789,7 +4903,7 @@ VIRTEL to send the print data to the browser as an attached file.
 Several suitable scenarios are delivered as standard in the VIRTEL SAMPLIB and LOADLIB:
 
 SCENFPDF
-    converts an SCS datastream into a PDF document
+    converts an SCS data stream into a PDF document
 SCENFPCL
     downloads PCL data into a raw printer file
 SCENPPDF
@@ -4813,8 +4927,8 @@ PCL printing
 Certain applications such as VPS are capable of sending print data in PCL (HP Printer Command Language) format to
 SNA printers. The PCL commands and data are sent as SCS transparent data on sessions with LUTYPE1 logical units.
 The transparent data (contained in blocks of up to 253 ASCII characters preceded by a X’35’ SCS command) is extracted
-from the SCS datastream and is copied into the VIRTEL variable $PRINT$.
-PCL data may also be delivered in EBCDIC as part of the normal SCS datastream, and this data will be converted to
+from the SCS data stream and is copied into the VIRTEL variable $PRINT$.
+PCL data may also be delivered in EBCDIC as part of the normal SCS data stream, and this data will be converted to
 ASCII using the codepage defined by the COUNTRY parameter in the VIRTCT (see “Parameters of the VIRTCT” in the
 VIRTEL Installation Guide).
 
@@ -4844,6 +4958,8 @@ added to the VIRTEL configuration.
 
 .. index::
    single: TSO File Transfer
+
+.. _#_V457UG_TSO_File_Transfer:
 
 TSO File Transfer
 =================
@@ -4971,7 +5087,7 @@ the user clicks the name of the saved transfer to retrieve the parameters, then 
 |image39|
 VIRTEL IND$FILE Saving the file transfer parameters
 
-Users can save transfer parameters for both “Send” and “Receive”. The paramters are saved in browser local storage.
+Users can save transfer parameters for both “Send” and “Receive”. The parameters are saved in browser local storage.
 The number of sets of parameters which can be saved is limited only by the amount of local storage available.
 
 .. raw:: latex
@@ -4980,6 +5096,8 @@ The number of sets of parameters which can be saved is limited only by the amoun
 
 .. index::
    single: Accessing VTAM Applications
+
+.. _#_V457UG_accessing_VTAM_applications:   
 
 Accessing VTAM Applications
 ===========================
@@ -5036,14 +5154,14 @@ screen.
 
 .. index::
    single: Site Customization - Colors and Logo
-
-.. index::
    pair: Colors and Logo; Customization
+
+.. _#_V457UG_Customization_Colors_Logo:   
 
 Site Customization - Colors And Logo
 ====================================
 
-The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom settings are defined in a style sheet which by default is called  custom.css. The file is modified by an administrator and then uploaded to a VIRTEL directory designated for storage of customer files. In compatability mode this is usually CLI-DIR, normally found within the HTML-TRSF VSAM file. In "Option mode", however, this can be any user directory or file name. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the customization modes.  
+The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom settings are defined in a style sheet which by default is called  custom.css. The file is modified by an administrator and then uploaded to a VIRTEL directory designated for storage of customer files. In compatibility mode this is usually CLI-DIR, normally found within the HTML-TRSF VSAM file. In "Option mode", however, this can be any user directory or file name. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the customization modes.  
 
 .. index::
    pair: CSS; Customization
@@ -5054,7 +5172,7 @@ The VIRTEL administrator can customize the color settings for all applications o
 Using a CSS file for customization
 ----------------------------------
 
-In "Default mode" the custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST on port 41001) or CLI-03CC (for entry point CLIWHOST on port 41002). These transactions have external name w2h and specify the path name /w2h/custom-css in the URL Prefix field. When VIRTEL is first installed, these transactions point to directory W2H-DIR for W2H-03CC and to directory CLI-DIR for CLI-03CC which contains a dummy version of the file custom.css. A custom.css file or a designated "Option" mode CSS file can can be modified to include bespoke CSS customization. The following process looks at how to customize the delivered custom.css file, maintaining a copy in the CLI-DIR, and running in "Compatibility Mode". See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the customization modes. All of the following examples relate to updating a customized copy of custom.css. If running in "Option mode" this file could be called /option/custCSS.myCICS1.css, applicable to a transaction only, or /option/custCSS.global.css, a global entry applicable to all Entry Points and transactions.   
+In "Default mode" the custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST on port 41001) or CLI-03CC (for entry point CLIWHOST on port 41002). These transactions have external name w2h and specify the path name /w2h/custom-css in the URL Prefix field. When VIRTEL is first installed, these transactions point to directory W2H-DIR for W2H-03CC and to directory CLI-DIR for CLI-03CC which contains a dummy version of the file custom.css. A custom.css file or a designated "Option" mode CSS file can be modified to include bespoke CSS customization. The following process looks at how to customize the delivered custom.css file, maintaining a copy in the CLI-DIR, and running in "Compatibility Mode". See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the customization modes. All of the following examples relate to updating a customized copy of custom.css. If running in "Option mode" this file could be called /option/custCSS.myCICS1.css, applicable to a transaction only, or /option/custCSS.global.css, a global entry applicable to all Entry Points and transactions.   
 
 .. danger:: Updating custom.css in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements such as custom.css in the CLI-DIR directory or in a designated "option" file.
 
@@ -5165,12 +5283,12 @@ Another way of providing a clear visual indication of which application the user
 Showing / Hiding server informations
 ------------------------------------
 
-It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
+It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
 and the VIRTEL Web access level of maintenance used. This last information is enclosed in parentheses.
 
 |image45|
 
-The running version and the level of maintenance cannot be hidden, only the server name can be permanently removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:
+The running version and the level of maintenance cannot be hidden, only the server name can be permanently removed by modifying the w2hparm.hideinfo attributes present in the customized w2hparms.js file:
 
 ::
 
@@ -5202,9 +5320,9 @@ The administrator may wish to prevent users from accessing features like copy/pa
     */
     #toolbar {display:none;}/*
 
-*Example custom.css for hiding the toolbar*
+*Example custom css for hiding the toolbar*
 
-You can also use custom.js to remove icons individually from the toolbar, see :ref:`“Removing unwanted toolbar icons” <#_V457UG_remove_icons>`.
+You can also use a custom Javascript to remove icons individually from the toolbar, see :ref:`“Removing unwanted toolbar icons” <#_V457UG_remove_icons>`.
 
 .. index::
    pair: Modifying colors; Customization
@@ -5239,7 +5357,7 @@ This example shows how to modify the colors used by VIRTEL Web Access:
 
 *Example custom.css for modifying the 3270 colors*
 
-In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and WHITE represent the 7 colors of the 3270 pallette, with a prefix indicating the highlighting mode: N=normal, U=underscore, B=blink, R=reverse video. The color values (for example, #7890F0) are expressed in hexadecimal RGB encoding or as color names. For more explanation, see :-
+In this stylesheet, BLUE, RED, PINK, GREEN, TURQUOISE, YELLOW, and WHITE represent the 7 colors of the 3270 palette, with a prefix indicating the highlighting mode: N=normal, U=underscore, B=blink, R=reverse video. The color values (for example, #7890F0) are expressed in hexadecimal RGB encoding or as color names. For more explanation, see :-
 
 - `http://en.wikipedia.org/wiki/Web_colors <http://en.wikipedia.org/wiki/Web_colors>`__
 - `http://www.w3schools.com/html/html_colornames.asp <http://www.w3schools.com/html/html_colornames.asp>`__
@@ -5346,7 +5464,7 @@ This example shows how to change the backgroung color of the toolbar buttons by 
     border: 1px solid transparent;
     }
 
-*Example custom.css managin the background color of the toolbar buttons*
+*Example custom.css managing the background color of the toolbar buttons*
 
 .. index::
    pair: Icon display; Customization
@@ -5356,7 +5474,7 @@ Icon display troubleshooting
 
 If some icons on the toolbar are displayed with some parasites on the border, please check that the browser is not in a zoom mode greater than 100%.
 
-.. _#_V457UG_customization_javascript_functions:
+.. _#_V457UG_customization_Javascript_functions:
 
 .. raw:: latex
 
@@ -5374,11 +5492,11 @@ Site Customization - Javascript Functions
    pair: Option mode; Customization
    pair: Compatibility mode; Customization
 
-A custom javascript file can be used for calling bespoke functions or setting attributes in Virtel objects which can control or modify default behaviour. When running in "default" or "compatibility mode" this file is normally called custom.js. An alternate mode, known as "Option Mode" provides better granularity for bespoke enhancements. See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise Virtel using the available mode settings. AS delivered, Virtel runs in the "default" mode, locating a dummy custom.js file from the W2H-DIR directory. The remainder of this section refers to running Virtel in "compatibility" mode qnd customizing a custom.js file and maintaining it in the CLI-DIR directory.
+A custom Javascript file can be used for calling bespoke functions or setting attributes in Virtel objects which can control or modify default behaviour. When running in "default" or "compatibility mode" this file is normally called custom.js. An alternate mode, known as "Option Mode" provides better granularity for bespoke enhancements. See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise Virtel using the available mode settings. AS delivered, Virtel runs in the "default" mode, locating a dummy custom.js file from the W2H-DIR directory. The remainder of this section refers to running Virtel in "compatibility" mode qnd customizing a custom.js file and maintaining it in the CLI-DIR directory.
 
 .. danger:: Updating custom.js in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements such as custom.js in the CLI-DIR directory or in a designated "option" file.
 
-To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads a custom javascript file when a session is started. An empty file, called custom.js by default, is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction as delivered under the CLIWHOST entry point refers to the W2H-DIR directory. An administrator can modify this transaction to reference a different directory containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be used for this purpose.  The changes as described in this section pertain to running in "Compatibility mode" whereby modifications are made to a modified custom.js file. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the available customization modes.    
+To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads a custom Javascript file when a session is started. An empty file, called custom.js by default, is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction as delivered under the CLIWHOST entry point refers to the W2H-DIR directory. An administrator can modify this transaction to reference a different directory containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be used for this purpose.  The changes as described in this section pertain to running in "Compatibility mode" whereby modifications are made to a modified custom.js file. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the available customization modes.    
 
 To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls various custom exits at strategic points in its processing. These exits are optional Javascript functions which can be codes custom.js if required. The exits are described below.
 
@@ -5494,7 +5612,7 @@ This example uses the after_standardInit function to insert additional icons int
     * (c)Copyright SysperTec Communication 2012 All Rights Reserved
     1. Incoming calls
     125
-    * VIRTEL Web Access customer-specific javascript functions
+    * VIRTEL Web Access customer-specific Javascript functions
     */
     /*
     * Adds a button to the toolbar which performs a Google search for
@@ -5526,14 +5644,14 @@ This example uses the after_standardInit function to insert additional icons int
 Centering non-standard icons
 ----------------------------
 
-The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribut passed within the "addtoolbarbutton" function in conjunction of using a specific css attribut.
+The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribute passed within the "addtoolbarbutton" function in conjunction of using a specific css attribute.
 
 ::
 
 
     /*
     * (c)Copyright SysperTec Communication 2014 All Rights Reserved
-    * VIRTEL Web Access customer-specific javascript functions
+    * VIRTEL Web Access customer-specific Javascript functions
     * Resizing a too small or too big toolbar icon.
     * For example toosmall_pic.png=22x22 and toobig_pic.jpg=145x30
     */
@@ -5548,13 +5666,13 @@ The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possi
     #toolbar td img.tbButton.size22x22 {
       width: 22px;
       height: 22px;
-      padding: 5px; /* padding is calculated to center the picture horizontaly and verticaly in the 32x32 allocated */
+      padding: 5px; /* padding is calculated to center the picture horizontally and vertically in the 32x32 allocated */
     }
 
     #toolbar td img.tbButton.size145x30 {
       width: 145px;
       height: 30px;
-      padding: 1px 0; /* padding is calculated to center the picture verticaly in the 32x32 allocated area (1+30+1 */
+      padding: 1px 0; /* padding is calculated to center the picture vertically in the 32x32 allocated area (1+30+1 */
     }
 
 *Example custom.css to manage a toolbar icon with a non standard size*
@@ -5573,7 +5691,7 @@ This example uses the after_standardInit function to disable macro functions by 
 
     /*
     * (c)Copyright SysperTec Communication 2012 All Rights Reserved
-    * VIRTEL Web Access customer-specific javascript functions
+    * VIRTEL Web Access customer-specific Javascript functions
     */
     function after_standardInit() {
       /* Remove macro buttons from the toolbar */
@@ -5609,10 +5727,10 @@ To hide only the VIRTEL Application name, see :ref:`“Showing / Hiding server i
 .. index::
    pair: Positioning Toolbar Icons; Customization
 
-Positionning Toolbar Icons
---------------------------
+Positioning Toolbar Icons
+-------------------------
 
-In certain circumstances, the default position of an icon may not be at the user's convenence. Is possible to change an icon's position based on the position of another icon.
+In certain circumstances, the default position of an icon may not be at the user's convenience. Is possible to change an icon's position based on the position of another icon.
 
 ::
 
@@ -5651,7 +5769,7 @@ The status bar text is an object which can therefore be modified using an API.
 
     /*
     * (c)Copyright SysperTec Communication 2012 All Rights Reserved
-    * VIRTEL Web Access customer-specific javascript functions
+    * VIRTEL Web Access customer-specific Javascript functions
     */
     function after_responseHandle(httpXmlObj, url, xmitTimestamp) {
     vwaStatusBar.setRelay(); // clears relay field
@@ -5698,7 +5816,7 @@ The query functions are:-
 
     - For the “getRelay()” and “getPrinterRelay()” functions, an optional parameter may be specified.
     - When specified, valid values are “true” or “false” (without the quotes). When the parameter is ommited, or is not a valid value, the default “false” will be used.
-    - When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by VIRTEL mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()” functions, you may want to retrieive the inital or overprinted value. When in “false” mode the function returns the initial value. When in “true” mode the function retruns the overprinted value.
+    - When “setRelay(txt)” or “setPrinterRelay(txt)” is used the “txt” value overprints the field at the browser level before displaying to the end user. Behind this “overprinted value”, an initial value exists that has been placed by VIRTEL mainframe side before sending message to the browser. When using the “getRelay()” or “getPrinterRelay()” functions, you may want to retrieve the initial or overprinted value. When in “false” mode the function returns the initial value. When in “true” mode the function retruns the overprinted value.
 
 .. index::
    pair: Setting Custom Hotspots; Customization
@@ -5712,7 +5830,7 @@ This example uses the after_responseHandle function to modify the regular expres
 
     /*
     * (c)Copyright SysperTec Communication 2012 All Rights Reserved
-    * VIRTEL Web Access customer-specific javascript functions
+    * VIRTEL Web Access customer-specific Javascript functions
     */
     function after_responseHandle(httpXmlObj, url, xmitTimestamp) {
     VIR3270.customPfKeysHotspotRegex =
@@ -5735,7 +5853,7 @@ This example uses the after_standardInit function in conjunction with a custom s
 
     /*
     * (c)Copyright SysperTec Communication 2012 All Rights Reserved
-    * VIRTEL Web Access customer-specific javascript functions
+    * VIRTEL Web Access customer-specific Javascript functions
     */
     function after_standardInit() {
     var o = document.createElement("div");
@@ -5781,13 +5899,13 @@ Modifying Web Access Settings
 -----------------------------
 
 The exit modify_settingsValues allows the administrator to modify or replace the list of values allowed for specific parameters in the VIRTEL Web Access Settings menu.
-The example shown below replaces the list of fonts, and adds two extra values "20" and "24" to the list of fontsizes:-
+The example shown below replaces the list of fonts, and adds two extra values "20" and "24" to the list of font sizes:-
 
 ::
 
     /*
     * (c)Copyright SysperTec Communication 2012 All Rights Reserved
-    * VIRTEL Web Access customer-specific javascript functions
+    * VIRTEL Web Access customer-specific Javascript functions
     */
     function modify_settingsValues(name, values) {
     if (name == "font")
@@ -5836,7 +5954,7 @@ Installing a Custom Help Page
 To install a customized help.html page, the administrator must perform the following operations:-
 
 - Upload the customized help.html file into a VIRTEL directory such as CLI-DIR
-- Modify the VIRTEL transactions CLI-03CH so that it points to the CLI-DIR directory (instead of W2H-DIR as initiallyinstalled), then press F1-F3-F3-F1 to update the transaction and the CLIWHOST entry point. Perform the same operation on transaction W2H-03CH and entry point WEB2HOST.
+- Modify the VIRTEL transactions CLI-03CH so that it points to the CLI-DIR directory (instead of W2H-DIR as initially installed), then press F1-F3-F3-F1 to update the transaction and the CLIWHOST entry point. Perform the same operation on transaction W2H-03CH and entry point WEB2HOST.
 
 .. raw:: latex
 
@@ -5876,7 +5994,7 @@ additional window will open to confirm the installation.
 |image49|
 
 If the browser version is too old to be supported by the latest version of ADDON published, the link “+ Add to Firefox”
-will not be available. Click on the link “View full history version”at the bottom of the page as shown below.
+will not be available. Click on the link “View full history version” at the bottom of the page as shown below.
 
 |image50|
 
@@ -6155,7 +6273,7 @@ Use the right mouse button to open a selection menu for copy / cut / paste opera
 Edge
 ----   
 
-As of July, 2017 Microsoft has yet to release an API to support Copy, Cut and Paste operations within the Edge browser. These opertions will not work in Virtel when using Edge.     
+As of July, 2017 Microsoft has yet to release an API to support Copy, Cut and Paste operations within the Edge browser and the clipboard. These opertions will not work in Virtel when using Edge.     
 
 .. raw:: latex
 
@@ -6174,24 +6292,21 @@ Virtel Customization Modes
    pair: Option mode; Customization
    pair: Default mode; Customization 
 
-Virtel V4.56 introduces some enhancements to customisation. With Virtel 4.56, customization is possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific transactions. Previous customisation was only at the entry point level. 
+Virtel V4.56 introduces some enhancements to customisation. From Virtel 4.56 onwards, customization is now possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific transactions. Previous customisation was only at the entry point level. The two customization modes are known as "Compatibility" mode and "Option" mode. As delivered, Virtel V4.56 defaults to having no customization mode active. This means neither "compatibility" mode or "option" mode. To turn one on these modes on the following actions must be performed.   
 
 .. _#_V457UG_compatibility mode:
 
 Compatibility Mode
 ------------------
 
-To maintain compatibility with older release of Virtel the original customisation design continues to be supported under a feature called "compatibility mode". This compatibility feature can be activated by including the following statement in the TCT:-
+To maintain compatibility with older releases of Virtel, the original customisation design continues to be supported as "compatibility" mode. This mode can be activated performing the following actions
+
+- Included the following statement in the TCT:-
 
 ::
 
 	HTSETn=(OPTION-DEFAULT-COMPATIBILITY) where n = 1_4.     
 
-As delivered, Virtel V4.56 defaults to having no custom mode active. That means neither compatibility mode or the option mode is active. To turn one on these modes on the following actions must be performed. 
-
-
-
-- Update the TCT with the HTSETn statement to turn on compatibility mode and reassemble the TCT.
 - Modify the elements (w2hparm.js, custom.css, custom.js etc.) and upload to the relevant directory. This would normally be CLI-DIR
 - Update the relevant transactions to point to the CLI-DIR for the elements you wish to customize or modify. The transactions are:-
 
@@ -6199,17 +6314,17 @@ As delivered, Virtel V4.56 defaults to having no custom mode active. That means 
  
 	XXX-03Cz   where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point).
 			   z = C for custom.css, H for help.html and J for custom.js
+
 	XXX-03P    where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point).
 			   This transaction provides the directory for a modified w2hparm.js
 
-By default, the applications associated with these transactions is set to "W2H-DIR".
+By default, the applications associated with these transactions are set to "W2H-DIR". See job SAMPLIB(CUSTCSS). Run this job after changing the directory(APPL=) from W2H-DIR to CLI-DIR. 
 
-As an example, if the w2hparm option "Enter=Enter" is required rather than the default "Enter=Newline" and a modified toolbar is also required for transctions running under the CLIWHOST entry point then the following transactions would be changed:-
+As an example, if the w2hparm option "Enter=Enter" is required rather than the default "Enter=Newline" and a modified toolbar is also required for transactions running under the CLIWHOST entry point then the following transactions would be changed:-
 ::
- 
-	W2H-03P		Application = CLI-DIR.  Default = W2H-DIR. Locate w2hparm.js from CLI-DIR.
-	CLI-03P		Application = CLI-DIR   Default = W2H-DIR. Locate w2hparm.js from CLI-DIR.
-	CLI-03CJ	Application = CLI-DIR   Default = W2H-DIR. Will now locate custom.js from CLI-DIR.   	
+ 	
+	CLI-03P		Appl. = CLI-DIR   Default = W2H-DIR. w2hparm.js for CLI transactions
+	CLI-03CJ	Appl. = CLI-DIR   Default = W2H-DIR. Custom.js for CLI transactions   	
 
 - w2hparm.js would be modified and uploaded to CLI-DIR.
 
@@ -6240,31 +6355,33 @@ This Option mode uses the /option/ pathname to locate a directory where all the 
         }
     }	  
 
+
+
 This attribute defines the "global" customised names using the following pattern:- key.id.type where:-
 
 ::
 
 	key 	= one of the supported key values prefixed with the string "pathTo" 
-	id  	= global or an option identifer
+	id  	= global or an option identifier
 	type    = css, html or js (The customized type)
 
 
 The supported "pathToxxxxx" keys are used to select the file where the customised elements should be located. Note the customized elements are located through the /option/ pathname. Customized elements currently supported are:-
 ::
-
-	CssCustom     Custom CSS files.
-	JSCustom      Custom Javascript files
-	W2hparm       Custom w2hparm parameters
-	PrintCss      Custom print style CSS
-	Help          Custom Help pages
+    
+	pathToCssCustom     Custom CSS files.
+	pathToJSCustom      Custom Javascript files
+	pathToW2hparm       Custom w2hparm parameters
+	pathToPrintCss      Custom print style CSS
+	pathToHelp          Custom Help pages
 
 To activate the "option" mode perform the following actions:-
 
 - Update the W2hparm.js to include the global-settings option. Include the relevant keynames within the global option settings you wish to modify. 
-- Update the XXX-03P transactions to point to the CLI-DIR. The modifified w2hparm.js will now be loaded from CLI-DIR and not the default W2H-DIR.
+- Update the XXX-03P transactions to point to the CLI-DIR. The modified w2hparm.js will now be loaded from CLI-DIR and not the default W2H-DIR.
 - Upload the modified w2hparm.js to the CLI-DIR directory.
 - Run the supplied ARBOLOAD job in the CNTL library with OPTION=YES set. This will add two new transactions to the W2H and CLI entries to define the /option pathname.
-- Create the customized files (javascript, CSS, help, parm) and upload them to the CLI directory.
+- Create the customized files (Javascript, CSS, help, parm) and upload them to the CLI directory.
 
 Default mode
 ------------
@@ -6279,11 +6396,10 @@ Global level modifications (All transactions under an Entry Point)
 
 For example, to support a global modified w2hparm and a modified toolbar for transactions running under the CLIWHOST entry point the following actions would be required. 
 
-For the "Enter" key requirment update the default w2hparm.js to include a global setting for pathToW2hparm:-
+For the "Enter" key requirment, update the default w2hparm.js to include a global setting for pathToW2hparm. The w2hparm.js should be uploaded to the CLI-DIR directory or another directory other than W2H-DIR. The transaction CLI-03P application field will also have to be updated to point to the correct directory for the modified w2hparm.js. Normally CLI-DIR:-
 ::  
 
-    var w2hparm = {
-        "enter":"ENTER", 
+    var w2hparm = {      
         "global-settings":{
              "pathToW2hparm":"../option/w2hparm.global.js",
              "pathToJSCustom":"../option/custJS.global.js"
@@ -6297,23 +6413,22 @@ Create the file w2hparm.global.js file and define the required changes. Upload t
  	//CLI-DIR - w2hparm.global.js
 	/*
  	 * Override default w2hparm values. Change Enter key to equal "Enter". Default = "Newline" key.
- 	 */
-		var w2hparm={
-  			"enter":"Enter"
-        }; 
+ 	*/
+	
+    w2hparm.enter="Enter"; 
 
 
 Create the file custJS.global.js file and define the required changes. Upload this file to CLI-DIR. For example to modify the toolbar:-
 
 ::
  
- //CLI-DIR - custJS.myOptions.js
- //Add Print Button To Toolbar
- function after_standardInit() {
- 	addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
- }
+    //CLI-DIR - custJS.myOptions.js
+    //Add Print Button To Toolbar
+    function after_standardInit() {
+        addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
+    }
 
-Note that the print.ico should also be uploaded to the CLI-DIR directory. 
+.. note:: The print.ico should also be uploaded to the CLI-DIR directory. 
 
 This has the effect of changing the tool bar for all transactions which is not what is required. The transactions under WEB2HOST will require there option field to be set to "compatibility" to ensure that the default toolbar is shown.
 
@@ -6329,38 +6444,38 @@ If only certain transactions should have the modified tool bar then set a unique
 
 ::
  
- //CLI-DIR - option.myOptions.js. Transaction level core option file 
- var oCustom={
- 	"pathToJsCustom":"../option/custJS.myOptions.js"
- }
+    //CLI-DIR - option.myOptions.js. Transaction level core option file 
+    var oCustom={
+        "pathToJsCustom":"../option/custJS.myOptions.js"
+    }
 
 A file called custJS.myOptions.js is created which will contain the toolbar modification code:-
 
 ::
  
- //CLI-DIR - custJS.myOptions.js
- //Add Print Button To Toolbar
- function after_standardInit() {
- 	addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
- }
+    //CLI-DIR - custJS.myOptions.js
+    //Add Print Button To Toolbar
+    function after_standardInit() {
+        addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
+    }
 
 Using "option" mode In the above examples all transactions will be subjected to parm changes defined in the file w2hparm.global.js. Transactions which have the option id set to "myOptions" will have any customized changes located through the core option file "option.myOption.js". These will override any "global" settings. The following files are created and copied to CLI-DIR:-
 
 ::
  
- option.myOptions.js  - core option file for identifier "myOptions"
- custjJS.myOptions.js - customized java script file for "myOptions".
- w2hparm.js           - contains "global-settings" attribute.
- w2hparm.global.js    - global settings
+    option.myOptions.js  - core option file for identifier "myOptions"
+    custjJS.myOptions.js - customized java script file for "myOptions".
+    w2hparm.js           - contains "global-settings" attribute.
+    w2hparm.global.js    - global settings
 
 Files defined in the core option files "option.id.js" with the keys pathTo[key] are copied to the CLI-DIR. They will be located through the /option/ pathname. The values associated the the keys pathTo[key] can be any file name and not necessarily the names used in the examples. The /option/ path is always required. For example:-
 
 ::
  
- //CLI-DIR - option.myTest.js. Transaction level option settings
- var oCustom={
- 	"pathToW2hparm":"../option/my_parms.js"
- }
+    //CLI-DIR - option.myTest.js. Transaction level option settings
+    var oCustom={
+        "pathToW2hparm":"../option/my_parms.js"
+    }
 
 .. index::
    triple: Compatibility Option id; Customization; Transactions  
@@ -6377,7 +6492,7 @@ For compatibility the transaction option field can be defined with the special i
 Defining Transaction Options 
 ----------------------------
 
-Using the HTML transaction display a user can click on the "Spanner" ICON to help in setting up the option files. This include the core option file and the relevant javascript and CSS files.
+Using the HTML transaction display a user can click on the "Spanner" ICON to help in setting up the option files. This include the core option file and the relevant Javascript and CSS files.
 
 |image94|
 *Transaction display with the option spanner ICON*
@@ -6390,7 +6505,7 @@ On clicking the "spanner" icon a tabbed "Option" panel will be displayed. A pre-
 Basic Mode
 ^^^^^^^^^^
 
-Within the Basic mode of operation, the Validate button will create a core option file and upload it to the CLI-DIR directory. Within this file, javascript and CSS settings keys, if selected, will point to the customisation files as defined by the "option" field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file *option.myOptions.js* which will be loaded upto the CLI_DIR. Within this core option file the key elements pathToJsCustom and pathtoCssCustom will be generated. These will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css. 
+Within the Basic mode of operation, the Validate button will create a core option file and upload it to the CLI-DIR directory. Within this file, Javascript and CSS settings keys, if selected, will point to the customisation files as defined by the "option" field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file *option.myOptions.js* which will be loaded upto the CLI_DIR. Within this core option file the key elements pathToJsCustom and pathtoCssCustom will be generated. These will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css. 
 
 |image93|
 *Basic Mode Operation*
@@ -6399,8 +6514,8 @@ The generated core option file option.myOptions.js will look like thsi:-
 
 ::
  
- // customization for option=myOptions
- var oCustom={"pathToCssCustom":"../option/custCSS.myOptions.css","pathToJsCustom":"../option/custJS.myOptions.js"}
+    // customization for option=myOptions
+    var oCustom={"pathToCssCustom":"../option/custCSS.myOptions.css","pathToJsCustom":"../option/custJS.myOptions.js"}
 
 This can be modified to add other custom elements such as PrintCSS, Parm or Help.
 
@@ -6424,7 +6539,7 @@ Macros
 
 In the world of the 3270 emulation, the term of “Macro” brings together two separate concepts. The first one designates the recording of a sequence of repetitive actions that the user wishes to automate such as for example a signon process, the second designates a complex dialogue between the terminal and an application running on the mainframe side. This second category often requires the usage of a programming language to develop an executable module that operates from the workstation in partnership with the 3270 emulator.
 
-This section disusses the answer to the first concept, the second one is discussed in the section :ref:`“Web Modernisation VIRTEL Scenarios” <#_V457UG_virtel_scenarios>`.
+This section discusses the answer to the first concept, the second one is discussed in the section :ref:`“Web Modernisation VIRTEL Scenarios” <#_V457UG_virtel_scenarios>`.
 
 The macro interface is accessed from the Virtel toolbar. By pressing the REC button on the VIRTEL Web Access toolbar, the user can start recording a sequence of keystrokes. A second click on the REC button terminates the recording and allows the user to assign a name to the macro which has been recorded. The PLAY button on the toolbar allows the user to display a list of macros already recorded. From here a sub-menu can be displayed where macros can be replayed, edited, saved or deleted.
 macro.
@@ -6462,7 +6577,7 @@ Macros in Local Storage
 
 By default macros created by the user are saved on the workstation in the “Browsers Local Storage”.
 
-Because the browsers Local Storage isn't persitent storage macros can be easily destroyed by actions at the browser level. For this reason it is possible to export the Local Storage data of the user macros to a file on a hard drive. Conversely, the saved macros can be re-imported back into Local Storage. Import and Export feature are available in the pop-up windows opened using the PLAY button on the toolbar.
+Because the browsers Local Storage isn't persistent storage macros can be easily destroyed by actions at the browser level. For this reason it is possible to export the Local Storage data of the user macros to a file on a hard drive. Conversely, the saved macros can be re-imported back into Local Storage. Import and Export feature are available in the pop-up windows opened using the PLAY button on the toolbar.
 
 The recorded macros display has a small context window which can be opened with a right-click. This menu provides the following functions:-
 
@@ -6524,14 +6639,14 @@ Boolean to indicate whether the macro interface should be presented as a sub-win
    pair: Using DDI to store macros; Macros
    triple: Using Virtel storage for macros; Virtel; Dynamic Directory Interface    
 
-Using VIRTEL Storage for macros
--------------------------------
+Macros in VIRTEL Storage
+------------------------
 
 The “VirtelMacros” function allows GLOBAL, GROUP, and USER macros to be stored under the name “macro.json” in a VSAM file on the VIRTEL host system. This feature uses the dynamic directory interface(DDI) capability of Virtel to store macros in a central repository, in this case a VSAM file on the mainframe. With this centralised environment macros can be managed, thereby keeping control of critical business logic. Macros will be automatically downloaded and refreshed on a users workstation depending on the options set in the w2hparm settings. Each DDi directory maintains a separate copy of the macros.json file.
 
 The DDI and administration features of Virtel should only be made available to an "Administrator". In Virtel an "Administrator" would be a user who has READ access to all the Virtel security profiles, in particular those starting VIRTEL.*. See the section :ref:`"Security"<#_V457IG_Security>` for details on setting up Virtel Administrators and protecting resources. The following transactions and related security profiles are used by DDI. 
 
-For the minimal authorization to access the DDI, a user must be granted to access the VIRTEL transaction defined under WEB2HOST entry point with the external name “usrcap". 
+For the minimal authorization to access the DDI, a user must be granted to access the VIRTEL transaction defined under WEB2HOST entry point with the external name. The following transactions are implemented as part of the Virtel macros feature 
 
 ::
  
@@ -6539,19 +6654,21 @@ For the minimal authorization to access the DDI, a user must be granted to acces
 
     where xxx = W2H or CLI, z = G for GROUP, U for USER and A for GLOBAL.
 
-    virtel.xxx-07            DDI Interface
-    virtel.xxx-66            Upload capability token.
-    virtel.xxx-80z           Directory upload 
-    virtel.USR-DIR           User directory
-    virtel.GRP-DIR           Group directory
-    virtel.GLB-DIR           Global directory
+    virtel.W2H-07            DDI Interface                  W2H only
+    virtel.W2H-66            Upload capability token.       W2H only
+    virtel.xxx-80z           Directory upload               W2H and CLI
+    virtel.USR-DIR           User directory                 W2H and CLI
+    virtel.GRP-DIR           Group directory                W2H and CLI
+    virtel.GLB-DIR           Global directory               W2H and CLI
 
 Setting up to use DDI and macros
 --------------------------------
 
-Run the SAMPLIB/CNTL ARBOLOAD job with the "SET VMACROS=YES" parameter coded. This defines the VirtelMacros functions and transactions requied by DDI and macro suport. If this setup is not run the following message will appear when DDI is selected from the main Admin. portal page:-
+Run the SAMPLIB/CNTL ARBOLOAD job with the "SET VMACROS=YES" parameter coded. This defines the VirtelMacros functions and transactions required by DDI and macro suport. If this setup is not run the following message will appear when DDI is selected from the main Admin. portal page:-
 
-*"Your Virtel is not configured for dynamic directories"* 
+*"Your Virtel is not configured for dynamic directories"*
+
+Assuming everything has been configured correctly, the following display should be appear when selecting the DDI option from the main portal interface. 
 
 |image97|
 
@@ -6567,7 +6684,7 @@ A User can only manage the macros stored in their dedicated user directory where
 
 Multiple macros.json files can be defined: a global file containing shared macros for all users, and group and user files where macros specific to a group or to a user are stored.
 
-User macros created by each user are stored in macros.json files loaded into the USR-DIR directory with keyword %USER%. When the macros are loaded into or read from this directory, VIRTEL substitutes the keyword %USER% by the users security userid.
+User macros created by each user are stored in macros.json files loaded into the USR-DIR directory with keyword %USER%. When the macros are loaded into or read from this directory, VIRTEL substitutes the keyword %USER% with the users security userid.
 
 Group macros are defined for a specific group name recognized by the security subsystem (RACF, TOPS, ACF2). They are stored in a macros.json file loaded into the GRP-DIR directory with keyword %GROUP%. At execution time, VIRTEL substitutes the keyword %GROUP% by the name of the group supplied by the security subsystem. Group macros are avaialble to users who belong to the group.
 
@@ -6581,32 +6698,30 @@ A prerequisite for using group and user macros is that the user must sign on to 
    pair: VSAMTYP=READONLY;TCT   
 
 
-In a Sysplex distributed environment, the VSAM files that contains the macros, normally the HTML TRSF file, cannot be shared between multiple instances of the VIRTEL STC. Each VIRTEL must have its own HTML VSAM macro file if administration is to be performed on the "running" system. For production environments where mutilple instances share the same VSAM files (SAMP,HTML,ARBO) and run in a "Read only' environment enforced through the use of the TCT paramater VSAMTYP=READONLY, DDI management will not be possible. This an incompatible environment for DDI macro management as macros cannot be updated. A solution to this is to have an "update" window where "READ ONLY" is turn off while macro maintenance is performed. Once checked out, the READ ONLY can be re-installed. New macros will then be available to users. In a "READ ONLY" environment users will not be able to maintain any user environment as they willl not have "write" access to the HTML file.        
+In a Sysplex distributed environment, the VSAM files that contains the macros, normally the HTML TRSF file, cannot be shared between multiple instances of the VIRTEL STC. Each VIRTEL must have its own HTML VSAM macro file if administration is to be performed on the "running" system. For production environments where multiple instances share the same VSAM files (SAMP,HTML,ARBO) and run in a "READ ONLY" environment enforced through the use of the TCT parameter VSAMTYP=READONLY, DDI management will not be possible. This an incompatible environment for DDI macro management as macros cannot be updated. A solution to this is to have an "update" window where "READ ONLY" is turn off while macro maintenance is performed. Once checked out, the "READ ONLY" environment can be re-initialized. New macros will then be available to users. In a "READ ONLY" environment users will not be able to maintain any user environment as they will not have "write" access to the HTML.TRSF VSAM file.        
 
-Enabeling the storage of macros on the host
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Enabeling macros in Virtel Storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    pair: useVirtelMacros; W2HParm Settings
 
 When VIRTEL is first installed, no macros.json files exist. To allow macros to be stored and loaded from the host site, the administrator activates the VirtelMacros function by
-adding the code shown below to a customised w2hparm.js. This file should reside in the CLI-DIR directory (or another site-defined directory). See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise Virtel.
+adding the code shown below to a customised w2hparm parm file. This file should reside in the CLI-DIR directory (or another site-defined directory). See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise and configure Virtel.
 
 ::
  
     w2hparm.useVirtelMacros = {
-        "macrosAutoRefresh": value
+        "macrosAutoRefresh": "value"
     };
 
 Where value can be:-
 
 ::
 
-    true | false[default] | “never” | “once” | “daily” | “session”     
+    “never” | “once” | “daily” | “session”     
 
-- true.      DDI is on and will use the "never" refresh option. 
-- false.     DDI is off. Macros will be maintained in local storage.
-- "never"    DDI is on. Macros will not be automatically refreshed.
+- "never"    DDI is on. Macros will not be automatically refreshed. This is the default. User has to use the refresh button.  
 - "once"     DDI is on. Macros will be refreshed automatically at the start of the session.
 - "daily"    DDI is on. Macros will be refreshed daily. 
 - "session"  DDi is on. Macros will be refreshed at the start of each session.      
@@ -6622,18 +6737,20 @@ Once VirtelMAcros have been activated each VIRTEL Web Access user has access to 
 A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or Gloabl directories requires that specific authorizations are defined within the security tool. If no file exists, a 404 error is produced, and no macros are listed in the macro window. Access to the DDI interface is the the Administration Portal. Ensure that Administrators have access to the security profiles.
 
 .. index::
-   pair: synchronizing Macros; Macros
+   pair: synchronizing User Macros; Macros
 
 .. index::
-   pair: Macro synchronization; Virtel
+   pair: User Macro synchronization; Virtel
    pair: synchronizeVirtelMacros; W2HParm Settings
 
-Macros synchronization between two VIRTEL STC
----------------------------------------------
+User Macros synchronization
+---------------------------
 
-When the VirtelMacros function is implemented on two differents VIRTEL, it is possible to synchronize automatically the Macros between them.
+The sharing of user macros across multiple instances of Virtel was introduced in Virtel 4.54. This feature is particularly useful where a user can connect to one of several instances of Virtel within in Sysplex Distributed environment. User macros are maintained in the browser’s cache and in the TRSF files through the %USR% directory entry defined in the ARBO file. Before, if the user added or updated a macro and then reconnected to a different Virtel instance the macro entry maintained in the TRSF wouldn’t reflect the latest updates, consequently any cache refresh would lose those updates.
 
-To allow this, the administrator activates the VirtelMacros synchronization function by adding the w2hparm option, shown below, to the w2hparm file. This should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if "Option" mode customization is being used.
+With this feature a timestamp is used to synchronize user macros between the browser’s cache and any local TRSF file that the user connects to. If the timestamp in the cache is later than the macro entry in the local TRSF file, the TRSF file will be updated. Conversely, if the macros in the local TRSF is later than the cache equivalent, then the macro will be reloaded in cache from the TRSF file. Any changes made will be refelcted back to the local TRSF file. If a subsequent logon is targeted to a different Virtel instance, and possibly a different TRSF, then the cache in the the browser will updated the local TRSF file as the timestamp in the browser for the macro will be later than the timestamp held in the TRSF file. 
+
+This feature is activated setting the following w2hparm setting. This should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if "Option" mode customization is being used.
 
 ::
  
@@ -6813,6 +6930,21 @@ The following commands can be used in a macro file :
     - FieldMark
     - Dup
 
+.. index::
+   DDI Macro Errors
+   pair: DDI Macro Errors; Macros    
+
+DDI Macro Errors
+----------------
+Error message : Failed to upload the user macros to Virtel (Status code 400 Bad Request). This message can appear when editing a macro. Virtel is unable to reflect your macro changes in the USR-DIR directory. This could be because:-
+
+- Virtel is running in a READ ONLY mode.
+- You do not have the authority to upload to the USR-DIR. See transaction xxx-80U. 
+
+If you get the following Error Panal when trying to execute a DDI macro it could be due to the fact thet the transaction you are running doesn't have security set. Make sure the transaction is secure with "Security = basic". DDI requires USERID and GROUP information. This can only be obtained with secure transactions.
+
+|image119| 
+
 
 .. raw:: latex
 
@@ -6844,7 +6976,7 @@ Without modifying existing applications, VIRTEL offers several possibilities for
    pair: scenarios; Presentation modules
    pair: scenario instructions; Presentation modules
      
-An HTML presentation module is made up of several scenarios composed of the following instructions: SCREENS, SCRNEND, SCENARIO, ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, VIRSV$ and END. These instructions are assembler macros contained in the VIRT457.SCRNAPI.MACLIB library (for MVS) or the VIRT457.VIRSAPI sublibrary (for VSE). The other instructions included in this library are for internal use and must not be used directly. Each module begins with a SCREENS instruction, is terminated by a SCRNEND instruction, and
+An HTML presentation module is made up of several scenarios composed of the following instructions: SCREENS, SCRNEND, SCENARIO, ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, VIRSV$ and END. These instructions are assembler macros contained in the VIRT457.SCRNAPI.MACLIB library (for MVS) or the VIRT457.VIRSAPI SUBLIB library (for VSE). The other instructions included in this library are for internal use and must not be used directly. Each module begins with a SCREENS instruction, is terminated by a SCRNEND instruction, and
 must contain at least one SCENARIO.
 
 .. index::
@@ -6948,7 +7080,7 @@ transaction.
 Subroutine scenario
 ^^^^^^^^^^^^^^^^^^^
 
-Subroutine scenario represent a certain part of code that can be invoked from within a scenario. Subroutine scenario starts with a SCENARIO SUBROUTINE intruction and ends with a SCENARIO END instruction.
+Subroutine scenario represent a certain part of code that can be invoked from within a scenario. Subroutine scenario starts with a SCENARIO SUBROUTINE instruction and ends with a SCENARIO END instruction.
 
 ::
 
@@ -6975,7 +7107,7 @@ instruction will be reached.
 
 A subroutine may contains a PERFORM$ instruction to call another subroutine up to 3 levels. For example, main
 scenario may call level_1 subroutine scenario, which may call level_2 subroutine scenario, which may call level_3
-subroutine scenario, but level_3 connot call level_4 subroutine scenario.
+subroutine scenario, but level_3 cannot call level_4 subroutine scenario.
 
 .. index::
    pair: Mult-Session;Scenarios
@@ -7060,7 +7192,7 @@ value
         DISCARD
             Marks the end of a scenario. In the case of an input or output scenario, the scenario stops, and does not resume for the remainder of the life of the VIRTEL transaction.
         SUBROUTINE
-            Marks the start of a subroutine scenario which must ends with a SCENARIO END instruction. A subroutine scenario is invoked using PERFORM$ instruction. A subroutine scenario can invoke another subroutine scenario, and so on up to 3 levels. A sample of such type of scenario is available in the PREFORM$ insctruction description.    
+            Marks the start of a subroutine scenario which must ends with a SCENARIO END instruction. A subroutine scenario is invoked using PERFORM$ instruction. A subroutine scenario can invoke another subroutine scenario, and so on up to 3 levels. A sample of such type of scenario is available in the PREFORM$ instruction description.    
         SUCCESS
             Stops scenario processing but continue normal VIRTEL processing of the current message.
 
@@ -7116,12 +7248,12 @@ specified by pfkey.
 
 ::
 
-    ACTION$ TO-APPLICATION,KEY=pfkey,
-    AND=(WAIT|SCRIPT,'string'),
-    AND=(PROCESS-RESPONSE,'string'),
-    AND=(DO-NOT-PROCESS-RESPONSE),
-    MAXTIME=nnn,
-    LASTMSG=YES,ASYNCH=YES
+    ACTION$ TO-APPLICATION,KEY=pfkey,                     X
+        AND=(WAIT|SCRIPT,'string'),                       X
+        AND=(PROCESS-RESPONSE,'string'),                  X
+        AND=(DO-NOT-PROCESS-RESPONSE),                    X
+        MAXTIME=nnn,                                      X
+        LASTMSG=YES,ASYNCH=YES
 
 pfkey
     a 3270 AID key. The allowable values are:
@@ -7292,7 +7424,7 @@ RTRIM
     (optional) Removes a set of characters from the end of a list variable (see Note) before copying it.
 
         'string1' [,'string2', …]
-            one or more strings of text to be removed from the endof the variable.
+            one or more strings of text to be removed from the end of the variable.
 EMPTY
     Specifies whether the tested is empty (see Note 2).
 condition
@@ -7314,7 +7446,7 @@ processx
 
 .. note::   
 
-    Note 1: For row, col and len, a value of '=' means the value of the current rown col or len as set by :ref:`“SET$ SCREEN-POSITION” <#_V457UG_SET$_SCREEN-POSITION>`.
+    Note 1: For row, col and len, a value of '=' means the value of the current row col or len as set by :ref:`“SET$ SCREEN-POSITION” <#_V457UG_SET$_SCREEN-POSITION>`.
 
     Note 2: If the variable being tested does not exist, it is not considered empty and the CASE$ branches at the ELSE=label.
 
@@ -7461,7 +7593,7 @@ RTRIM
     (optional) Removes a set of characters from the end of a list variable (see Note) before copying it.
 
         'string1' [,'string2', …]
-            one or more strings of text to be removed from the endof the variable.
+            one or more strings of text to be removed from the end of the variable.
 type
     (optional) may indicate one of the following values:
 
@@ -7482,7 +7614,7 @@ The variable VAR1 is created/modified, with 'string1' copied as is, var1 and var
 
 **COPY$ OUTPUT-FILE-TO-VARIABLE**
 
-Generates an output page from a page template, and copies the result into a VIRTEL variable. Any VIRTEL tags withinthe page template are processed as if the page were being generated as the response to an HTTP request, but the generated page is placed in a variable instead of being sent to the terminal.
+Generates an output page from a page template, and copies the result into a VIRTEL variable. Any VIRTEL tags within the page template are processed as if the page were being generated as the response to an HTTP request, but the generated page is placed in a variable instead of being sent to the terminal.
 
 ::
 
@@ -7731,7 +7863,7 @@ Example of COPY$ SYSTEM-TO-VARIABLE:
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,QUERY),                X
         VAR='QSTRING'
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,PAGE),                 X
-        VAR='PAGENAME'
+        VAR='pagename'
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,DIRECTORY),            X
         VAR='DIRNAME'
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(NAME-OF,SNA-STATUS),           X
@@ -7789,7 +7921,7 @@ The following table shows a possible result of this example scenario when used i
 +-------------+--------------------------------------------------------+
 | QSTRING     | "u=rxb&g=sys1"                                         |
 +-------------+--------------------------------------------------------+
-| PAGENAME    | "WEB2AJAX.htm"                                         |
+| pagename    | "WEB2AJAX.htm"                                         |
 +-------------+--------------------------------------------------------+
 | DIRNAME     | "W2H-DIR"                                              | 
 +-------------+--------------------------------------------------------+
@@ -8028,7 +8160,7 @@ P1
 AS-PFKEY
     Indicates that the indicated portion of the screen is to be interpreted as a function key hyperlink. The value of the function key (ENTER, PF1, etc) can be specified by parameter P2. If P2 is not specified, then the data at the indicated screen position is interpreted as the name of the function key. The values allowable as function key names are the same as those for :ref:`“PfkField” <#_V457UG_pfkField>`)
 AS-PARAMETER
-    Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the $DECLARE instruction. See :ref:`“JavaScript functions” <#_V457UG_javascript_functions>` for further details.
+    Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the $DECLARE instruction. See :ref:`“JavaScript functions” <#_V457UG_Javascript_functions>` for further details.
 AS-HREF
     Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the $DECLARE instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the $DECLARE instruction, if specified.
 P2
@@ -8042,7 +8174,7 @@ P4
 
     In conformance with assembler syntax, quotes and ampersands in the URL must be specified as double quotes and double ampersands.
 
-.. _#_V457UG_javascript_functions:
+.. _#_V457UG_Javascript_functions:
 
 .. index::
    pair: DECLARE and JavaScript functions; Scenarios
@@ -8431,7 +8563,7 @@ SCREEN-IS-BLANK
 SCREEN-IS-UNFORMATTED
     Tests whether the 3270 screen is unformatted. This condition is true if the screen contains no attribute characters.
 SESSION-SWITCH
-    Tests whether the scenario is entered for a VTAM application which was already connected to this terminal. This condition is useful in VIRTEL multisession scenarios which must reestablish the environment before starting the transaction requested by the user. This condition remains true until the end of this activation of the scenario (for example until the scenario is reused for another session).
+    Tests whether the scenario is entered for a VTAM application which was already connected to this terminal. This condition is useful in VIRTEL multisession scenarios which must re-establish the environment before starting the transaction requested by the user. This condition remains true until the end of this activation of the scenario (for example until the scenario is reused for another session).
 process1
     Specifies the address of the branch exit of the script if the condition is satisfied. Permitted values are:
 
@@ -8491,7 +8623,7 @@ If the scenario is a subroutine, you must use LABEL$ instruction to define each 
 mylabel
     Specifies the instruction label at which execution of a scenario is to continue.
 
-A sample of the usage of LABEL$ instruction is available in the PERFORM$ insctruction description.
+A sample of the usage of LABEL$ instruction is available in the PERFORM$ instruction description.
 
 .. _#_V457UG_MAP$:
 
@@ -8578,14 +8710,14 @@ type
         indicates that the numeric value is to be left-aligned in the field in the commarea
     
     BASE64
-        indicates that the data is encoded in Base64 format in the XML datastream
+        indicates that the data is encoded in Base64 format in the XML data stream
     
     OFFSET-LENGTH
 
     OFFSET-LENGTH-TEXT
 
     OFFSET-LENGTH-BINARY
-        For input-to-commarea conversion, calculates the offset and length of the XML data element identified by the WITH parameter. The offset is calculated relative to the start of the XML datastream. 
+        For input-to-commarea conversion, calculates the offset and length of the XML data element identified by the WITH parameter. The offset is calculated relative to the start of the XML data stream. 
         
         For OFFSET-LENGTH-TEXT the offset and length values are stored in the result commarea as two decimal numbers separated by a comma. OFFSET-LENGTH is a synonym for OFFSET-LENGTH-TEXT. 
         
@@ -9342,7 +9474,7 @@ This instruction allows to execute a SUBROUTINE scenario before continuing in se
 
 It may be used in any scenario. A subroutine may contains a PERFORM$ instruction to call another subroutine up to 3
 levels. For example, main scenario may call level_1 subroutine scenario, which may call level_2 subroutine scenario,
-which may call level_3 subroutine scenario, but level_3 connot call level_4 subroutine scenario.
+which may call level_3 subroutine scenario, but level_3 cannot call level_4 subroutine scenario.
 
 mylabel
     Specifies the subroutine scenario label to be performed.
@@ -9780,7 +9912,7 @@ TOVAR$ instruction
 
 The TOVAR$ instruction assists in the generation of XML from a fixed-format data area known as a commarea. The
 TOVAR$ instruction works in conjunction with the MAP$ instruction, which describes the format of the commarea and
-its relation to the XML datastream.
+its relation to the XML data stream.
 
 Whereas the MAP$ instruction allows the XML stream to be converted into commarea format, the TOVAR$ instruction
 uses the MAP$ instructions to perform the reverse operation (“commarea-to-output” conversion). In other words, it
@@ -10119,16 +10251,16 @@ WEB2VIRT.htm:
         {{{ WHEN-EXISTS "CALENDAR" }}}
             <link rel="stylesheet" type="text/css" media="all"
                     href="dynarch/cal-w2k-c1.css" title="win2k-cold-1" />
-            <script type="text/javascript" src="dynarch/calendar.js"></script>
-            <script type="text/javascript" src="dynarch/cal-en.js"></script>
-            <script type="text/javascript" src="dynarch/cal-setup.js"></script>
+            <script type="text/Javascript" src="dynarch/calendar.js"></script>
+            <script type="text/Javascript" src="dynarch/cal-en.js"></script>
+            <script type="text/Javascript" src="dynarch/cal-setup.js"></script>
             {{{ SET-LOCAL-OPTIONS (ID) }}}
         {{{ END-WHEN-EXISTS "CALENDAR" }}}
         
         After the <form> section:
         
         {{{ WHEN-EXISTS "CALENDAR" }}}
-            <script language="javascript" type="text/javascript">
+            <script language="Javascript" type="text/Javascript">
                 {{{ FOR-EACH-VALUE-IN "CALENDAR" }}}
                     Calendar.setup({inputField:"{{{CURRENT-VALUE-OF "CALENDAR"}}}",
                             ifFormat:"{{{CURRENT-VALUE-OF "DATEFMT"}}}"});
@@ -10245,7 +10377,7 @@ page WEB2VIRT.htm:
     
     {{{ WHEN-EXISTS "SUGGEST-ELEMENT" }}}
         <link rel="stylesheet" type="text/css" href="suggest.css" />
-        <script type="text/javascript" src="suggest.js"></script>
+        <script type="text/Javascript" src="suggest.js"></script>
     {{{ END-WHEN-EXISTS "SUGGEST-ELEMENT" }}}
     
     After the <form> section:
@@ -10348,7 +10480,7 @@ The extract below shows the necessary statements which are included in the VIRTE
 
         In the <head> section:
 
-        <script src="js01.js" type="text/javascript"></script>
+        <script src="js01.js" type="text/Javascript"></script>
         
         After the <form> section:
         
@@ -10498,9 +10630,9 @@ The files INPUT.TXT, DOCOPT.TXT, and LAYOUT.TXT for this example are shown below
     \newpage 
 
 .. index::
-   single: Virtel Web Intergration
+   single: Virtel Web integration
 
-.. _#_V457UG_virtel_Intergration:
+.. _#_V457UG_virtel_integration:
 
 VIRTEL Web Integration
 ======================
@@ -11539,7 +11671,7 @@ File transfer by e-mail
 -----------------------
 
 An entry point which is used for file file transfer (including the upload of HTML pages) has a single transaction which
-calls VIRTEL module VIR0041B. This transaction is defined with application type 2 and startup mode 1. The menu
+calls VIRTEL module VIR0041B. This transaction is defined with application type 2 and integration mode 1. The menu
 program specified in the entry point must be VIR0021B.
 Only authorized users (see :ref:`“Correspondent Management” <#_V457UG_correspondent_management>`) can perform transfers.
 
@@ -11609,7 +11741,7 @@ to specify the name of a relay LU in the definition of the terminals attached to
 Connectivity Reference documentation for details of defining an SMTP line).
 
 For this type of application, the entry point chosen by the rules of the SMTP line has a single VIRTEL transaction,
-defined with application type 1 and startup mode 1, which calls the target VTAM application (such as CICS). The name
+defined with application type 1 and integration mode 1, which calls the target VTAM application (such as CICS). The name
 of the CICS transaction to be started can be specified in the “TIOA at logon” field of the VIRTEL transaction definition.
 
 The menu program specified in the entry point must be VIR0021B.
@@ -11818,11 +11950,11 @@ Batch Entry Point, and the Transactions which will be executed by the VIRTEL Bat
             TRANSACT ID=BAT-00,NAME=EPBATCH,
                  DESC='Default directory = entry point name',
                 APPL=W2H-DIR,TYPE=4,
-                TERMINAL=BTLOC,STARTUP=2,SECURITY=0
+                TERMINAL=BTLOC,integration=2,SECURITY=0
             TRANSACT ID=BAT-14,NAME='Protide',
                 DESC='XML conversion',
                 APPL=$NONE$,TYPE=2,
-                TERMINAL=BTLOC,STARTUP=1,SECURITY=0,
+                TERMINAL=BTLOC,integration=1,SECURITY=0,
                 TIOASTA='&/S OK &/T',
                 EXITSTA=SCENSVIO
         * END OF CONFIGURATION
@@ -12303,7 +12435,7 @@ the CICS transaction code VEMO:
                 APPL=DBDCCICS,
                 TYPE=1,
                 TERMINAL=CLVTA,
-                STARTUP=1,
+                integration=1,
                 SECURITY=1,
                 TIOASTA="Signon&/W&*7D4C7D&'114BE9'&U&'114CF9'&P&/Acomplete&/W VEMO&/A"
 
@@ -12347,7 +12479,7 @@ DEMO with an additional parameter (“V”):
                 APPL=DBDCCICS,
                 TYPE=1,
                 TERMINAL=CLVTA,
-                STARTUP=1,
+                integration=1,
                 SECURITY=1,
                 TIOASTA="Signon&/W&*7D4C7D&'114BE9'&U&'114CF9'&P&/Acomplete&/W DEMOV&/A"
 
@@ -13799,7 +13931,7 @@ Mixed-case password support
 If SECUR=RACROUTE or SECUR=(RACROUTE,RACF) is specified in the VIRTCT, and if the security manager reports that it
 supports lower-case characters in passwords, then VIRTEL will pass all passwords to the security manager in mixed
 case as entered by the user. Otherwise VIRTEL will translate all passwords to upper case before passing them to the
-security manager. Message VIR0861I at startup indicates that VIRTEL will use mixed-case passwords.
+security manager. Message VIR0861I at integration indicates that VIRTEL will use mixed-case passwords.
 
 .. index::
    pair: Username retrieval; Virtel Web Access Security
@@ -13954,14 +14086,14 @@ the security type 4 transaction as shown above.
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         {{{CREATE-VARIABLE-IF (SIGNON-IS-NEEDED) "$$SIGTYPE"}}}
         {{{CREATE-VARIABLE-IF (APPLICATION-IS-CONNECTED) "$$APP"}}}
-            <script language="javascript" src="../w2h/js01.js"
-        type="text/javascript"></script>
+            <script language="Javascript" src="../w2h/js01.js"
+        type="text/Javascript"></script>
             <script>document.write("<link rel='stylesheet' type='text/css'
         href='../w2h/STYL"+w2hparm.style+".css' />")</script>
             {{{WHEN-EXISTS "$$SIGTYPE"}}}
             <link rel="stylesheet" type="text/css" href="../w2h/login.css" />
             <title>{{{NAME-OF (VIRTEL)}}} signon</title>
-            <script src="../w2h/md5.js" type="text/javascript"></script>
+            <script src="../w2h/md5.js" type="text/Javascript"></script>
         </head>
         <body>
         {{{DECLARE-FIELD-AS (USERNAME) "USERNAME"}}}
@@ -14366,7 +14498,7 @@ and SET$ URL-ENCODING instructions. These are described in the VWA Users Guide.
 Supporting multiple countries.
 ------------------------------
 
-If we take the scenario that applications can be accessible world wide than VIRTEL can incorporate the country differences through one of the following methods. In most case the TCT or URL override will accommodate such a set up.
+If we take the scenario that applications can be accessible globally than VIRTEL can incorporate the country differences through one of the following methods. In most case the TCT or URL override will accommodate such a set up.
 
 - For each country supported, have a different instance of VIRTEL specifying the relevant country code pages at the TCT level.
 - For each country supported, have a separate line/port and use the URL overrides.
@@ -15088,6 +15220,13 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image110| image:: images/media/image110.png
 .. |image111| image:: images/media/image111.png
 .. |image112| image:: images/media/image112.png
+.. |image113| image:: images/media/image113.png
+.. |image114| image:: images/media/image114.png
+.. |image115| image:: images/media/image115.png
+.. |image116| image:: images/media/image116.png
+.. |image117| image:: images/media/image117.png
+.. |image118| image:: images/media/image118.png
+.. |image119| image:: images/media/image119.png
 .. |vwa_overview| image:: images/media/vwa_overview.png
 .. |vwm_overview| image:: images/media/vwm_overview.png
 .. |vwi_overview| image:: images/media/vwi_overview.png

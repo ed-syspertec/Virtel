@@ -133,6 +133,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel457CN/connectivity_guide.html">Connectivity Reference V4.57</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel457IG/Installation_Guide.html">Installation Guide V4.57</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel457MG/messages.html">Messages Guide V4.57</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel457MI/Migration_Guide.html">Migration Guide V4.57</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel457UG/User_Guide.html">User Guide V4.57</a></li>
 </ul>
 </li>
@@ -530,6 +531,32 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <p class="first admonition-title">Note</p>
 <p class="last">This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.</p>
 </div>
+</div>
+<div class="section" id="console-messages">
+<h3>2.3.2 Console messages<a class="headerlink" href="#console-messages" title="Permalink to this headline">¶</a></h3>
+<p>The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">[,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">])</span>
+
+<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">EDSPRT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
+</pre></div>
+</div>
+<p>The LOG command has the following format:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> <span class="o">|</span> <span class="n">SYSOUT</span> <span class="o">|</span> <span class="n">BOTH</span> <span class="o">|</span> <span class="n">SPIN</span>
+</pre></div>
+</div>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li>CONSOLE means switch console messages back to the console.</li>
+<li>SYSOUT means switch to spooling consoles messages to SYSOUT.</li>
+<li>BOTH means write console messages to the console and SYSOUT.</li>
+<li>SPIN means spin off the current SYSOUT dataset.</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="stopping-virtel">

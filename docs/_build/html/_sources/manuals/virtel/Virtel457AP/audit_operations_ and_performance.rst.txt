@@ -363,6 +363,36 @@ It can be deactivated by using the command:
 
         This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.
 
+2.3.2 Console messages 
+----------------------
+
+The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-
+
+::
+
+    LOG=(SYSOUT[,class,destination])
+
+    For example, LOG=(SYSOUT,A,EDSPRT)
+
+This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-
+
+::
+
+    F VIRTEL,LOG=BOTH
+
+The LOG command has the following format:-
+
+::
+
+    F VIRTEL,LOG=CONSOLE | SYSOUT | BOTH | SPIN
+
+where
+
+    - CONSOLE means switch console messages back to the console.
+    - SYSOUT means switch to spooling consoles messages to SYSOUT.
+    - BOTH means write console messages to the console and SYSOUT.
+    - SPIN means spin off the current SYSOUT dataset. 
+    
 2.4 Stopping Virtel
 ===================
 
