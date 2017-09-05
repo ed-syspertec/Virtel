@@ -46,6 +46,20 @@ make
 make clean	Clean directories
 make html	Build files
 
+Building PDFs with Sphinx
+=========================
+
+Sphinx Build
+------------
+
+From within the directory issue the command:-
+
+::
+
+	sphinx-build -b latex . latex 
+
+Then open TexWorks folder and process the .tex file to create the PDF. Select LuaLaTex+... in the drop down.
+ 
 ================================
 ReStructuredText Markup Language
 ================================
