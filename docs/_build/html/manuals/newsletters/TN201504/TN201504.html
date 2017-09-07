@@ -457,9 +457,12 @@ to applications.</p>
 <p>Line W-HTTP should be defined using the base address of the LPAR (i.e.
 the home address of the default interface) by specifying only the port
 number. For example:</p>
-<p>Local address ==&gt; :41001</p>
-<p>Line C-HTTP should be defined using the distributed VIPA address with port number:</p>
-<p>Local address ==&gt; 192.168.170.15:41002</p>
+<p>Local ident ==&gt; :41001</p>
+<p>Line C-HTTP should be defined using the distributed VIPA address and port number if you are using a dynamic VIPA:</p>
+<p>Local ident ==&gt; 192.168.170.15:41002</p>
+<p>If you are not using a dynamic VIPA to point to your Virtel then the port address must be prefixed with 0 or 0.0.0.0. For example:-</p>
+<p>Local ident ==&gt; 0:41002</p>
+<p>This will ensure the Virtel doesn’t associate itself with a particular IP address.</p>
 <p>The Virtel Line display command displays this configuration:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LINES</span>
 <span class="n">VIR0200I</span> <span class="n">LINES</span>

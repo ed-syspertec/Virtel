@@ -45,7 +45,7 @@
 
 
 \title{Virtel User Guide}
-\date{Aug 10, 2017}
+\date{Sep 05, 2017}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -7154,7 +7154,7 @@ In a Sysplex distributed environment, the VSAM files that contains the macros, n
 \label{\detokenize{User_Guide:enabeling-macros-in-virtel-storage}}
 \index{useVirtelMacros!W2HParm Settings}\index{W2HParm Settings!useVirtelMacros}\index{macrosAutoRefresh!W2HParm Settings}\index{W2HParm Settings!macrosAutoRefresh}
 When VIRTEL is first installed, no macros.json files exist. To allow macros to be stored and loaded from the host site, the administrator activates the VirtelMacros function by
-adding the code shown below to a customised w2hparm parm file. This file should reside in the CLI-DIR directory (or another site-defined directory). See {\hyperref[\detokenize{User_Guide:v457ug-customizing-with-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“Customising Virtel using the Option pathname”}}}} for further details on how to customise and configure Virtel.
+adding the code shown below to a customised w2hparm parm file. This parameter file should reside in the CLI-DIR directory (or another option site-defined directory). See {\hyperref[\detokenize{User_Guide:v457ug-customizing-with-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“Customising Virtel using the Option pathname”}}}} for further details on how to customise and configure Virtel.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{w2hparm}\PYG{o}{.}\PYG{n}{useVirtelMacros} \PYG{o}{=} \PYG{p}{\PYGZob{}}
@@ -7197,24 +7197,22 @@ a global directory which can be accessed by all users - Global DIR
 
 \end{itemize}
 
-A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or Gloabl directories requires that specific authorizations are defined within the security tool. If no file exists, a 404 error is produced, and no macros are listed in the macro window. Access to the DDI interface is the the Administration Portal. Ensure that Administrators have access to the security profiles.
+A user can only manage the macros stored in his own directory. To be able to manage macros stored in Group or Gloabl directories requires that specific authorizations are defined within the security tool. If no file exists, a 404 error is produced, and no macros are listed in the macro window. Access to the DDI interface is through the Administration Portal. Ensure that Administrators have access to the relevant security profiles.
 
-\index{synchronizing User Macros!Macros}\index{Macros!synchronizing User Macros}
-\index{User Macro synchronization!Virtel}\index{Virtel!User Macro synchronization}\index{synchronizeVirtelMacros!W2HParm Settings}\index{W2HParm Settings!synchronizeVirtelMacros}
+\index{synchronizing Macros!Macros}\index{Macros!synchronizing Macros}
+\index{Macro synchronization!Virtel}\index{Virtel!Macro synchronization}\index{synchronizeVirtelMacros!W2HParm Settings}\index{W2HParm Settings!synchronizeVirtelMacros}
 
 \subsection{User Macros synchronization}
 \label{\detokenize{User_Guide:user-macros-synchronization}}\label{\detokenize{User_Guide:index-225}}
-The sharing of user macros across multiple instances of Virtel was introduced in Virtel 4.54. This feature is particularly useful where a user can connect to one of several instances of Virtel within in Sysplex Distributed environment. User macros are maintained in the browser’s cache and in the TRSF files through the \%USR\% directory entry defined in the ARBO file. Before, if the user added or updated a macro and then reconnected to a different Virtel instance the macro entry maintained in the TRSF wouldn’t reflect the latest updates, consequently any cache refresh would lose those updates.
+The sharing of macros across multiple instances of Virtel was introduced in Virtel 4.54. This feature is particularly useful where a user can connect to one of several instances of Virtel within in Sysplex Distributed environment. User macros are maintained in the browser’s cache and in the TRSF files through the \%USR\% directory entry defined in the ARBO file. Before the synchronization feature, if a user added or updated a macro and then reconnected to a different Virtel instance the macro entry maintained in the host TRSF wouldn’t reflect the latest updates held within the user’s browser cache, consequently any cache refresh would lose those updates.
 
-With this feature a timestamp is used to synchronize user macros between the browser’s cache and any local TRSF file that the user connects to. If the timestamp in the cache is later than the macro entry in the local TRSF file, the TRSF file will be updated. Conversely, if the macros in the local TRSF is later than the cache equivalent, then the macro will be reloaded in cache from the TRSF file. Any changes made will be refelcted back to the local TRSF file. If a subsequent logon is targeted to a different Virtel instance, and possibly a different TRSF, then the cache in the the browser will updated the local TRSF file as the timestamp in the browser for the macro will be later than the timestamp held in the TRSF file.
+With this feature a timestamp is used to synchronize macros between the browser’s cache and the supporting TRSF file. If the timestamp in the cache is later than the macro entry in the local TRSF file, the TRSF file will be updated. Conversely, if the macros in the local TRSF is later than the cache equivalent, then the macro will be reloaded in cache from the TRSF file. Any changes made will be refelcted back to the local TRSF file. If a subsequent logon is targeted to a different Virtel instance, and possibly a different TRSF, then the cache in the the browser will updated the local TRSF file as the timestamp in the browser for the macro will be later than the timestamp held in the TRSF file. Using this timestamp comparison ensures that the macros and synchronized between the users browser cache and the supporting TRSF file.
 
-This feature is activated setting the following w2hparm setting. This should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if “Option” mode customization is being used.
+This feature is activated by setting the following w2hparm setting. This parameter file should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if “Option” mode customization is being used. The w2hparm modification must be activated as described in {\hyperref[\detokenize{User_Guide:v457ug-customizing-with-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“Customising Virtel using the Option pathname”}}}}. Once this customization has been done, the macros will be automaticaly be synchonized across VIRTEL instances.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{w2hparm}\PYG{o}{.}\PYG{n}{synchronizeVirtelMacros} \PYG{o}{=} \PYG{n}{true}\PYG{p}{;}
 \end{sphinxVerbatim}
-
-The w2hparm modification must be activated as described in {\hyperref[\detokenize{User_Guide:v457ug-customizing-with-option}]{\sphinxcrossref{\DUrole{std,std-ref}{“Customising Virtel using the Option pathname”}}}}. Once this customization has been done, each VIRTEL Web Access user macros will be automaticaly synchonized across VIRTEL instances.
 
 \index{Managing macros with DDI!Macros}\index{Macros!Managing macros with DDI}\index{macros.json file!Macros}\index{Macros!macros.json file}\index{Macros!Dynamic Directories Interface}\index{Dynamic Directories Interface!Macros}
 
