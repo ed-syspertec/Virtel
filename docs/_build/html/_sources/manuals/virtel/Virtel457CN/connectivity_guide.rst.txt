@@ -4371,7 +4371,7 @@ Relay
 
     Pattern characters:
 
-..    
+::    
 
     >  Alphabetic A-Z
     ?  Alphanumeric A-Z, 0-9, $, #, @
@@ -4381,7 +4381,7 @@ Relay
     Notes:
     - Different combinations of pattern characters may be specified within a single field, for example RH>VT?%% the terminal name and relay names do not have to follow the same pattern (see example below). The '?' character cannot be used in the first character position of the terminal name field because this indicates a physical pool
 
-..
+::
 
     Example:
     Terminal name W2HVT000
