@@ -6977,8 +6977,15 @@ Without modifying existing applications, VIRTEL offers several possibilities for
    pair: scenarios; Presentation modules
    pair: scenario instructions; Presentation modules
      
-An HTML presentation module is made up of several scenarios composed of the following instructions: SCREENS, SCRNEND, SCENARIO, ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, VIRSV$ and END. These instructions are assembler macros contained in the VIRT457.SCRNAPI.MACLIB library (for MVS) or the VIRT457.VIRSAPI SUBLIB library (for VSE). The other instructions included in this library are for internal use and must not be used directly. Each module begins with a SCREENS instruction, is terminated by a SCRNEND instruction, and
-must contain at least one SCENARIO.
+An HTML presentation module is made up of several scenarios composed of the following instructions: SCREENS, SCRNEND, SCENARIO, ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, VIRSV$ and END. These instructions are assembler macros contained in the VIRT457.SCRNAPI.MACLIB library (for MVS) or the VIRT457.VIRSAPI SUBLIB library (for VSE). The other instructions included in this library are for internal use and must not be used directly. Each module begins with a SCREENS instruction, is terminated by a SCRNEND instruction, and must contain at least one SCENARIO.
+
+The types of scenarios that can be stored in a presentation module are:-
+
+- Identification scenario. Specified on the Entry Point definition. Processes inbound calls and cqn be used to route requests to other Entry points.
+- Initial scenario. Invoked during transaction connection.
+- Final scenario. Invoked during transaction disconnection.
+- Input scenario. Invoked to process inbound message data - from the browser.
+- Output scenario. Invoked to process outbound message data - to the browser.   
 
 .. index::
    pair: Load library; Scenarios
@@ -7076,98 +7083,30 @@ output scenario is required when the name of the presentation module is coded in
 transaction.
 
 .. index::
-   pair: Subroutine; Scenarios
+    Virtel Studio
 
-Subroutine scenario
-^^^^^^^^^^^^^^^^^^^
+Developing presentation modules with Virtel Studio
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Subroutine scenario represent a certain part of code that can be invoked from within a scenario. Subroutine scenario starts with a SCENARIO SUBROUTINE instruction and ends with a SCENARIO END instruction.
+Although presentation modules can be hard coded as an assembler routine and loaded into a Load library the recommended approach is to use the Eclipse Virtel Studio development aid. Virtel Studio is a Eclipse framework which runs on a PC. It enables a developer to assemble and upload presentation modules to a Virtel Server.
 
-::
+|image120|
 
-    mysub SCENARIO SUBROUTINE
-    ... / ...
-    SCENARIO END
+*Virtel Studio presentation IDE*
 
-The following restrictions apply to a SCENARIO SUBROUTINE :-
-
-- It must not contain any other scenario.
-- It must not be included in a scenario.
-- All its labels must use the LABEL$ instruction
-- It must end with a SCENARIO END instruction which acts as a RETURN$ instruction.
-- It must not try to branch outside of its limits.
-
-The subroutine scenario can be invoked from a main scenario using :
-
-::
-
-    PERFORM$ mysub
-
-This will call the subroutine and the calling scenario will continue in sequence when the subroutine SCENARIO END
-instruction will be reached.
-
-A subroutine may contains a PERFORM$ instruction to call another subroutine up to 3 levels. For example, main
-scenario may call level_1 subroutine scenario, which may call level_2 subroutine scenario, which may call level_3
-subroutine scenario, but level_3 cannot call level_4 subroutine scenario.
+Virtel Studio assembles a VSC module and produces a .390 object deck. This is loaded upto the Virtel server. Virtel Studio only supports scenarios within a VSAM directory. 
 
 .. index::
-   pair: Mult-Session;Scenarios
+   pair: Virtel Scenario language; Scenarios
 
-VIRTEL Multi-Session scenarios
-------------------------------
-
-A scenario may also be specified in the “Output Scenario” field of a transaction invoked by VIRTEL Multi-Session. By
-executing an OUTPUT scenario on a 3270 terminal, VIRTEL allows automated 3270 navigation (for example, logon to
-VTAM application) from the Multi-Session screen.
-
-When the same VTAM application is re-invoked from a VIRTEL Multi-Session screen using a different transaction from
-the one which was previously active, VIRTEL will call the OUTPUT scenario of the new transaction so that the scenario
-can terminate the previous transaction and start the new one. In this case the IF$ SESSION-SWITCH instruction is
-useful (refer to :ref:`“IF$ instructions” <#_V457UG_IF$>` for further details).
-
-.. index::
-   pair: SCREENS Instruction; Scenarios
-
-SCREENS instruction
--------------------
-
-This instruction specifies the name of the presentation module and its execution mode. Each SCREENS instructions is
-terminated by a SCRNEND instruction and may contain only SCENARIO or ERROR$ instructions.
-
-::
-
-    modname SCREENS APPL=value1,EXEC=value2
-
-modname
-    Name of the presentation module (8 characters maximum). Under certain conditions, this value will allow calls to a script from a subsystem by way of a CALL command.
-APPL
-    Specifies the name of the target transaction when the presentation module is called by a program.
-
-EXEC
-    Determines the mode in which the script is used. The possible values are:
-        
-        YES
-            The script may be called by a CALL from a subsystem with the possible passing of parameters
-        NO
-            The script may not be externally called.    
-
-.. index::
-   pair: SCRNEND Instruction; Scenarios
-
-SCRNEND instruction
--------------------
-
-This instruction marks the end of a presentation module.
-
-::
-
-    SCRNEND
+Virtel Scenario language
+------------------------
 
 .. index::
    pair: SCENARIO Instruction; Scenarios
 
 SCENARIO instruction
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 This instruction encloses ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, and VIRSV$ instructions.
 
@@ -7198,12 +7137,54 @@ value
             Stops scenario processing but continue normal VIRTEL processing of the current message.
 
 .. index::
+   pair: SCREENS Instruction; Scenarios
+
+SCREENS instruction
+^^^^^^^^^^^^^^^^^^^
+
+This instruction specifies the name of the presentation module and its execution mode. Each SCREENS instructions is
+terminated by a SCRNEND instruction and may contain only SCENARIO or ERROR$ instructions.
+
+::
+
+    modname SCREENS APPL=value1,EXEC=value2
+
+modname
+    Name of the presentation module (8 characters maximum). Under certain conditions, this value will allow calls to a script from a subsystem by way of a CALL command.
+APPL
+    Specifies the name of the target transaction when the presentation module is called by a program.
+
+EXEC
+    Determines the mode in which the script is used. The possible values are:
+        
+        YES
+            The script may be called by a CALL from a subsystem with the possible passing of parameters
+        NO
+            The script may not be externally called.    
+
+.. index::
+   pair: SCRNEND Instruction; Scenarios
+
+SCRNEND instruction
+^^^^^^^^^^^^^^^^^^^
+
+This instruction marks the end of a presentation module.
+
+::
+
+    SCRNEND
+
+
+.. index::
    pair: ACTION$ Instruction; Scenarios
 
 ACTION$ instruction
 ^^^^^^^^^^^^^^^^^^^
 
 This instruction specifies actions to be taken.
+
+.. index::
+   pair: ACTION$ DISCONNECT; Action$
 
 **ACTION$ DISCONNECT**
 
@@ -7213,6 +7194,8 @@ Terminate the application.
 
     ACTION$ DISCONNECT
 
+.. index::
+   pair: ACTION$ REFRESH-TERMINAL; ACTION$
 
 **ACTION$ REFRESH-TERMINAL**
 
@@ -7224,6 +7207,9 @@ whatever was changed by the scenario.
 
     ACTION$ REFRESH-TERMINAL
 
+.. index::
+   pair: ACTION$ SERVE-ANOTHER_USER; ACTION$    
+
 .. _#_V457UG_ACTION$_serve-another-users:
 
 **ACTION$ SERVE-ANOTHER-USER**
@@ -7234,6 +7220,9 @@ Indicates that the transaction is now a service transaction (see :ref:`“Servic
 
     ACTION$ SERVE-ANOTHER-USER
 
+.. index::
+   pair: ACTION$ TERMSESS; ACTION$    
+
 **ACTION$ TERMSESS**
 
 Requests disconnection from the host application after the next message has been sent to the client’s browser.
@@ -7241,6 +7230,9 @@ Requests disconnection from the host application after the next message has been
 ::
 
     ACTION$ TERMSESS
+
+.. index::
+   pair: ACTION$ TO-APPLICATION; ACTION$    
 
 **ACTION$ TO-APPLICATION**
 
@@ -7311,6 +7303,9 @@ ASYNCH=YES
       When the ACTION$ TO-APPLICATION instruction is executed in an input scenario driven by an inbound message, the data in the inbound message is sent to the application together with the 3270 AID key specified in the KEY parameter. Subsequent inbound messages will cause the input scenario to resume execution again at the instruction after the ACTION$ TO-APPLICATION instruction until a SCENARIO END instruction is executed. After a SCENARIO END instruction is executed, subsequent inbound messages will once again cause the input scenario to resume at the beginning.
 
       To allow an input scenario to see the responses from the host application in addition to the input messages from the terminal, the ACTION$ TO-APPLICATION instruction contains an AND= parameter which allows the scenario to explicitly request whether or not it expects to process the application response message following the ACTION$ instruction.
+
+.. index::
+   pair: ACTION$ TO-TERMINAL; ACTION$  
 
 **ACTION$ TO-TERMINAL**
 
@@ -7454,6 +7449,37 @@ processx
     Note 3: Any number of (condition,'value',process) parameters may be specified, within the limits set by the assembler. Use assembler conventions (non-blank in column 72 and continuation starting in column 16) to continue the statement over more than one line.
 
 .. index::
+   pair: CASE$ Examples; Scenarios
+
+**CASE$ Examples**
+
+::
+
+    CASE$ 'VAR1',                             *              
+          (EQ,'DIT000',MENU000),              *   : exactly equals 'DIT000' 
+          (BEGIN,'DIT',MENUOTH),              *   : starts with 'DIT' ?
+          ELSE=ERR999	
+
+Example of testing a variable with CASE$.
+
+::
+
+    * loop on a variable:
+
+    LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR='TOTO'  
+
+            CASE$ CURRENT-FOREACH-VARIABLE-OF,LOOP1,(EQ,'XXXX',ET1)   
+
+            COPY$ SYSTEM-TO-VARIABLE,VAR='I1',LENGTH=2,                   *
+                FIELD=(VALUE-OF,CURRENT-FOREACH-INDEX),TYPE=REPLACE
+            COPY$ SYSTEM-TO-VARIABLE,VAR='V1',                            *
+                FIELD=(VALUE-OF,CURRENT-FOREACH-VARIABLE),TYPE=REPLACE
+            ERROR$ 0,'TOTO: ','*I1','==','*V1'
+            ENDFOR$ LOOP1                  
+
+Example of CASE$ with FOR loops.
+
+.. index::
    pair: CONVERT$ Instruction; Scenarios
 
 CONVERT$ instruction
@@ -7481,6 +7507,58 @@ varname
 tabname
     is the name of the translate table to be used for UTF-8 conversion. The possible values are given under the description of the DEFUTF8 parameter of the VIRTCT. The table name must be placed in quotes. If the TABLE parameter is not specified, then the table specified by the DEFUTF8 parameter is used as a default. VIRTCT parameters are described in the VIRTEL Installation Guide.
 
+.. raw:: latex
+
+    \newpage    
+
+.. index::
+   pair: CONVERT$ Examples; Scenarios
+
+**CONVERT$ Examples**   
+
+::
+
+    GETGOOG  SCREENS APPL=GETGOOG                                               
+    *                                                                           
+            SCENARIO INITIAL                                                   
+    *                                                                           
+            SET$  ENCODING,UTF-8,'IBM1147'                                     
+            COPY$ INPUT-TO-VARIABLE,FIELD='MYINPUT',VAR='QUESTION'   * URL     
+            IF$      NOT-FOUND,THEN=NOSCENAR                                   
+            COPY$ OUTPUT-FILE-TO-VARIABLE,FILE='getreq.txt',         * Build req.  
+                VAR='QUERY'                                                  
+            CONVERT$ UTF8-TO-EBCDIC,VAR='QUERY',TABLE='IBM1147'                
+    *                                                                           
+            OPTION$ FOR-HTTP,                                        *    
+                (METHOD,'GET'),                                      *    
+                (TO,'/search'),                                      *    
+                (TEXT,'*QUERY'),                                     *  Req. variable 
+                (SITE,'www.google.com'),                             *    
+                (HEADER,'Accept: text/html'),                        *   
+                (FILE-IN,'ANSWER'),                                  *  GOOGLE Response
+                (RET-CODE,'HTTP-RC'),                                *  Return Code 
+                TOVAR='MYPARMS'                                              
+    *                                                                           
+            SEND$ TO-LINE,LINE='G-GOOG',PARMS='MYPARMS',ERROR=ERRSCENAR  Call GOOGLE 
+    *                                                                           
+            CONVERT$ UTF8-TO-EBCDIC,VAR='ANSWER',TABLE='IBM1147'         Convert Response 
+            COPY$ VALUE-TO-VARIABLE,VAR='ERRORMESSAGE',              *    
+                VALUE='Your message was sent '                               
+            SCENARIO END                                                       
+    *                                                                           
+    ERRSCENAR EQU   *                                                           
+            COPY$ VALUE-TO-VARIABLE,VAR='ERRORMESSAGE',              *    
+                VALUE='Sorry, your message could NOT be sent '               
+            ERROR$ 1                                                           
+    *                                                                           
+    NOSCENAR  EQU   *                                                           
+            SCENARIO END                                                       
+    *                                                                           
+            SCRNEND                                                            
+            END    ,   
+
+Example of CONVERT$ in a scenario        
+
 .. _#_V457UG_COPY$:
 
 .. index::
@@ -7490,6 +7568,10 @@ COPY$ instruction
 ^^^^^^^^^^^^^^^^^
 
 This instruction allows various copy operations within the context of a scenario.
+
+.. index::
+   pair: COPY$ FIELD-NAME-TO-VARIABLE; COPY$  
+
 
 **COPY$ FIELD-NAME-TO-VARIABLE**
 
@@ -7509,6 +7591,9 @@ type
         TYPE=REPLACE
             indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values.
 
+.. index::
+   pair: COPY$ INPUT-FILE-TO-VARIABLE; COPY$  
+
 **COPY$ INPUT-FILE-TO-VARIABLE**
 
 Copies the contents of a file into a VIRTEL variable. This instruction can be used in an input scenario which processes an HTTP request or SMTP input message having one or more attached files.
@@ -7523,6 +7608,9 @@ filename
     the name of a file attached to the HTTP request or SMTP message. If this parameter is omitted, the first attached file will be read.
 
 If the input request does not contain the requested file, the NOT-FOUND condition will be raised. This condition can be tested by means of the :ref:`“IF$ instruction” <#_V457UG_IF$>`.
+
+.. index::
+   pair: COPY$ INPUT-TO-SCREEN; COPY$ 
 
 **COPY$ INPUT-TO-SCREEN**
 
@@ -7546,6 +7634,9 @@ If the parameter name1 is not present in the input request, the NOT-FOUND condit
 
 If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the input value is too long for the field, the data will be silently truncated.
 
+.. index::
+   pair: COPY$ INPUT-TO-VARIABLE; COPY$ 
+
 **COPY$ INPUT-TO-VARIABLE**
 
 Copies the value of an HTTP query parameter into a VIRTEL variable.
@@ -7565,6 +7656,9 @@ type
             indicates that the input parameter consists of two numeric values separated by a comma. The first numeric value is converted to binary and stored in the first 8 bytes of the result variable, and the second numeric value is converted to binary and stored in the next 4 bytes of the result variable. The 12-byte value thus produced is in the format required by the OFFAREA parameter for the read-partial and write-append functions of the VIRSVFIO service program.
         TYPE=REPLACE
             indicates that the new value will replace the existing value of the variable. If TYPE=REPLACE is not specified, and the variable already exists, the new value will be appended to any existing values. If the parameter name1 is not present in the input request, the NOT-FOUND condition will be raised. This condition can be tested by means of the :ref:`“IF$ instruction” <#_V457UG_IF$>`.
+
+.. index::
+   pair: COPY$ LIST-TO-VARIABLE; COPY$          
 
 **COPY$ LIST-TO-VARIABLE**
 
@@ -7613,6 +7707,9 @@ type
 
 The variable VAR1 is created/modified, with 'string1' copied as is, var1 and var2 left and right trimmed.
 
+.. index::
+   pair: COPY$ OUTPUT-FILE-TO-VARIABLE; COPY$ 
+
 **COPY$ OUTPUT-FILE-TO-VARIABLE**
 
 Generates an output page from a page template, and copies the result into a VIRTEL variable. Any VIRTEL tags within the page template are processed as if the page were being generated as the response to an HTTP request, but the generated page is placed in a variable instead of being sent to the terminal.
@@ -7641,6 +7738,9 @@ type
             indicates that the result should be converted to MakePDF “LINEBUF” format for input to the VIRSVPDF service program. The page template contains special tags (see :ref:`“Generating PDF output” <#_V457UG_PDF_Output>`) which are converted to the format required by MakePDF. 
 
             If the specified file does not exist in the current VIRTEL directory, the NOT-FOUND condition will be raised. This condition can be tested by means of the :ref:`“IF$ instruction” <#_V457UG_IF$>`.
+
+.. index::
+   pair: COPY$ SCREEN-TO-VARIABLE; COPY$ 
 
 **COPY$ SCREEN-TO-VARIABLE**
 
@@ -7671,6 +7771,9 @@ type
     Note 1: for row, col and len, a value of '=' means the value of the current row, col or len as set by :ref:`“SET$ SCREEN-POSITION” <#_V457UG_SET$_SCREEN-POSITION>`.
 
     Note 2: the fourth sub-parameter (ht) of the SCREEN parameter is optional. If the fourth sub-parameter is specified, then attributes and binary zeroes will be replaced by blanks. To keep compatibility with existing scenarios, the instruction will ignore attributes and binary zeroes if the fourth SCREEN sub-parameter is NOT specified.
+
+.. index::
+   pair: COPY$ SYSTEM-TO-VARIABLE; COPY$     
 
 **COPY$ SYSTEM-TO-VARIABLE**
 
@@ -7947,6 +8050,9 @@ The following table shows a possible result of this example scenario when used i
 | DEPT        | "SYSPROG"                                              |
 +-------------+--------------------------------------------------------+
 
+.. index::
+   pair: COPY$ VALUE-TO-SCREEN; COPY$     
+
 **COPY$ VALUE-TO-SCREEN**
 
 Copies a constant value to a given position on the 3270 screen.
@@ -7965,6 +8071,9 @@ type
             indicates that the destination field is cleared to nulls before copying the data.
 
 If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the string is too long for the field, the string will be silently truncated.
+
+.. index::
+   pair: COPY$ VALUE-TO-VARIABLE; COPY$     
 
 **COPY$ VALUE-TO-VARIABLE**
 
@@ -7996,6 +8105,9 @@ The following example shows the instructions required to place FIELD MARK (X'1E'
     COPY$ VARIABLE-TO-SCREEN,VAR='FIELDMARK-W’
     ACTION$ TO-APPLICATION,KEY=7D
 
+.. index::
+   pair: COPY$ VARIABLE-TO-SCREEN; COPY$     
+
 **COPY$ VARIABLE-TO-SCREEN**
 
 Copies the value of a variable to a given position on the 3270 screen. In the case of a table variable, only the first value is copied.
@@ -8014,6 +8126,8 @@ type
 
         TYPE=ERASE-FIELD
             indicates that the destination field is cleared to nulls before copying the data. If the variable name2 does not exist, the NOT-FOUND condition will be raised. This condition can be tested by means of the :ref:`“IF$ instruction” <#_V457UG_IF$>`. If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the variable value is too long for the field, the data will be silently truncated.
+.. index::
+   pair: COPY$ VARIABLE-TO-SYSTEM; COPY$                 
 
 **COPY$ VARIABLE-TO-SYSTEM**
 
@@ -8065,6 +8179,9 @@ item
         TSO
         To validate the PassTicket for TSO
 
+.. index::
+   pair: COPY$ VARIABLE-TO-VARIABLE; COPY$               
+
 **COPY$ VARIABLE-TO-VARIABLE**
 
 Copies a source variable to a target variable.
@@ -8095,6 +8212,36 @@ The following example will display 'Target value is : Doe____'
     COPY$ VARIABLE-TO-VARIABLE,VAR=('source','target'),OFFSET=5,                    X
             LENGTH=7,PAD='_'
     ERROR$ 0,'Target value is : ','*target'
+
+**COPY$ Example**     
+
+::
+
+        SCENSITE SCREENS APPL=SCENSITE,EXEC=NO
+    *
+    * SCENARIO for SiteMinder
+    *
+    * The purpose of this scenario is to retrieve the contents of
+    * the identification headers inserted by the SiteMinder Proxy
+    *
+        SCENARIO IDENTIFICATION
+    *
+        COPY$ SYSTEM-TO-VARIABLE,VAR='USER', -
+            FIELD=(TCT-HTTP-HEADER,SM_USER)
+        IF$ NOT-FOUND,THEN=NOUSER1
+        COPY$ VARIABLE-TO-SYSTEM,VAR='USER', -
+            FIELD=(NAME-OF,USER)
+    *
+    EXIT1 DS 0H
+        SCENARIO END
+    *
+    NOUSER1 DS 0H
+        ERROR$ 0,'SCENSITE ERROR: NO USER VARIABLE'
+    GOTO$ EXIT1
+        SCRNEND
+        END    
+
+Example scenario with COPY$
 
 .. index::
    pair: DEBUG$ Instruction; Scenarios
@@ -8129,8 +8276,38 @@ WHEN=ALWAYS
 WHEN=(TRANSACTION-NAME-STARTS-WITH,'prefix')
     The DEBUG$ instruction is executed only if the external name of the transaction being used begins with the characters specified by the string prefix.
 
+**DEBUG$ Example**    
+
+::
+
+        TSTSCLON SCREENS APPL=TSTSCLON    *
+            SCENARIO INITIAL     
+            DEBUG$ TRACE,LINE,WHEN=ALWAYS                   
+            DEBUG$ TRACE,TERMINAL
+    *
+            DEBUG$ TRACE,SCENARIO,                                        *
+                WHEN=(TRANSACTION-NAME-STARTS-WITH,'DB') 
+                                          
+            COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1',                          *
+                FIELD=(VALUE-OF,SYSCLONE-SYMBOL)      
+            ERROR$ 0,'SYSCLONE: ','*VAR1'
+            COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1',                          *
+                FIELD=(VALUE-OF,SYSPLEX-SYMBOL)  
+            ERROR$ 0,'SYSPLEX: ','*VAR1'
+    *
+            COPY$ SYSTEM-TO-VARIABLE,VAR='VAR1',                          *
+                FIELD=(NAME-OF,CHARACTER-SET)  
+            ERROR$ 0,'CHARACTER-SET: ','*VAR1'
+            DEBUG$ NOTRACE,SCENARIO
+            DEBUG$ SNAP,TERMINAL                            
+            SCENARIO END 
+            SCRNEND      
+            END    ,
+
+Example scenario with DEBUG$
+
 .. index::
-   pair: DECLARE$ Instruction; Scenarios
+   pair: DECLARE$ Instruction; Scenarios 
 
 DECLARE$ instruction
 ^^^^^^^^^^^^^^^^^^^^
@@ -8257,6 +8434,23 @@ This instruction marks the end of a FOREACH loop.
 groupname
     The label is required. It must match the label on the corresponding FOREACH$ VALUE-IN-SCREEN or FOREACH$ VALUE-IN-VARIABLE instruction.
 
+**ENDFOR$ Examples**
+
+In the example below, the value of VAR1 which is copied is the current value in the FOREACH$ loop.
+
+::
+
+    LOOP1    FOREACH$ VALUE-IN-VARIABLE,VAR='VAR1'
+        
+            COPY$ VARIABLE-TO-SCREEN,VAR='VAR1',FOREACH=LOOP1,            *            
+                SCREEN=(=,=,=)
+        
+            COPY$ VARIABLE-TO-VARIABLE,VAR=('VAR1','VAR2'),FOREACH=LOOP1, * 
+                OFFSET=8,LENGTH=5,PAD=' '                  
+
+        
+            ENDFOR$ LOOP1            
+
 .. index::
    pair: ERROR$ Instruction; Scenarios
 
@@ -8274,6 +8468,17 @@ value
     Specifies the error code (decimal 0 to 255). If the error code is non-zero, a message is issued to the console and the scenario returns the error code to the calling program. If the error code is zero, a message is issued to the console and the scenario continues.
 'string1' [,'string2', …]
     (optional) one or more strings of text to be concatenated together and displayed as a message on the console. If a string begins with an asterisk it represents the name of a VIRTEL variable whose contents is to be included in the message. The number of quoted strings is not limited, but the message itself cannot be larger than 252 characters.
+
+**ERROR$ Examples**
+
+::
+
+    GOOD$ DS 0H
+        ERROR$ 0,'SCENSITE FINISHED: OK'
+        GOTO$ EXIT
+    BADG$ DS 0H
+        ERROR$ 1,'SCENSITE FAILED: RC = 1'
+        GOTO$ EXIT
 
 .. index::
    pair: FIELDS$ Instruction; Scenarios
@@ -8307,7 +8512,10 @@ operation
             
             Depends on the contents of the operation.
 
-The FIELD$ instruction only operates on input fields
+The FIELD$ instruction only operates on input fields.
+
+.. index::
+   pair: FIELD$ DEFINE-CHOICE; FIELDS$   
 
 **FIELD$ DEFINE-CHOICE**
 
@@ -10081,6 +10289,56 @@ the buffer length allocated is one unit, or 1500 bytes. The output variable BODY
 length is 3 units, or 4500 bytes. By contrast, the output variable SIGNATURE has a fixed buffer length of 4 bytes.
 If more than one input variable specifies a len parameter in the format \*n then the largest value is taken as the unit of
 measurement.
+
+.. index::
+   pair: Subroutine scenarios;Scenarios
+
+Subroutine scenario
+^^^^^^^^^^^^^^^^^^^
+
+Subroutine scenario represent a certain part of code that can be invoked from within a scenario. Subroutine scenario starts with a SCENARIO SUBROUTINE instruction and ends with a SCENARIO END instruction.
+
+::
+
+    mysub SCENARIO SUBROUTINE
+    ... / ...
+    SCENARIO END
+
+The following restrictions apply to a SCENARIO SUBROUTINE :-
+
+- It must not contain any other scenario.
+- It must not be included in a scenario.
+- All its labels must use the LABEL$ instruction
+- It must end with a SCENARIO END instruction which acts as a RETURN$ instruction.
+- It must not try to branch outside of its limits.
+
+The subroutine scenario can be invoked from a main scenario using :
+
+::
+
+    PERFORM$ mysub
+
+This will call the subroutine and the calling scenario will continue in sequence when the subroutine SCENARIO END
+instruction will be reached.
+
+A subroutine may contains a PERFORM$ instruction to call another subroutine up to 3 levels. For example, main
+scenario may call level_1 subroutine scenario, which may call level_2 subroutine scenario, which may call level_3
+subroutine scenario, but level_3 cannot call level_4 subroutine scenario.
+
+.. index::
+   pair: Multi-Session;Scenarios
+
+Multi-Session scenarios
+^^^^^^^^^^^^^^^^^^^^^^^
+
+A scenario may also be specified in the “Output Scenario” field of a transaction invoked by VIRTEL Multi-Session. By
+executing an OUTPUT scenario on a 3270 terminal, VIRTEL allows automated 3270 navigation (for example, logon to
+VTAM application) from the Multi-Session screen.
+
+When the same VTAM application is re-invoked from a VIRTEL Multi-Session screen using a different transaction from
+the one which was previously active, VIRTEL will call the OUTPUT scenario of the new transaction so that the scenario
+can terminate the previous transaction and start the new one. In this case the IF$ SESSION-SWITCH instruction is
+useful (refer to :ref:`“IF$ instructions” <#_V457UG_IF$>` for further details).
 
 .. index::
    pair: Web Modernisation Scenario Example; Scenarios
@@ -15228,6 +15486,7 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image117| image:: images/media/image117.png
 .. |image118| image:: images/media/image118.png
 .. |image119| image:: images/media/image119.png
+.. |image120| image:: images/media/image120.png
 .. |vwa_overview| image:: images/media/vwa_overview.png
 .. |vwm_overview| image:: images/media/vwm_overview.png
 .. |vwi_overview| image:: images/media/vwi_overview.png
