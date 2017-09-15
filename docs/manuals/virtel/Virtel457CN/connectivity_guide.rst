@@ -4378,8 +4378,8 @@ Relay
     %  Hexadecimal digits 0-9, A-F
     <  Decimal digits 0-9
 
-Notes:
- - Different combinations of pattern characters may be specified within a single field, for example RH>VT?%% the terminal name and relay names do not have to follow the same pattern (see example below). The '?' character cannot be used in the first character position of the terminal name field because this indicates a physical pool
+.. note::
+    Different combinations of pattern characters may be specified within a single field, for example RH>VT?%% the terminal name and relay names do not have to follow the same pattern (see example below). The '?' character cannot be used in the first character position of the terminal name field because this indicates a physical pool
 
 ::
 
@@ -4388,8 +4388,9 @@ Notes:
     Relay name       RHTERM%%
     Relay2 name      RH>X<Z00
     Repeat count     256
-    
-Would generate terminals W2HVT000-W2HVT255 with relay names RHTERM00-RHTERMFF and relay2 names RHAX0Z00-RHIX5Z00
+
+    Would generate terminals W2HVT000-W2HVT255 with relay names 
+    RHTERM00-RHTERMFF and relay2 names RHAX0Z00-RHIX5Z00
 
 \*Pool name
     In the definition of a logical pool, this field contains the name of the pool. A logical pool name is a 7 character name preceded by an asterisk, in the form \*POOLNAM, which matches the logical pool name specified in the “Relay” field of all terminals which use the logical pool. See “logical pool of relays”. For regular terminals, this field must be blank.
