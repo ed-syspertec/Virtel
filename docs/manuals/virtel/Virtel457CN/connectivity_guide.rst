@@ -1233,7 +1233,7 @@ Remote ident
     x25 route .* xot 10.0.1.1 xot-source loopback0
 
 Local ident
-    The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading :ref:“Line Parameters”<#_bookmark13>`.
+    The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”,<#_bookmark13>`.
 
     The port number must be 1998. This port number is fixed by the XOT
     protocol, and the router does not provide any configuration
