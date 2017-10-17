@@ -8530,6 +8530,9 @@ The VAL parameter generates an OPTION value for the SELECT field.
 The optional SHOW parameter allows the specification of the text displayed in the SELECT field for the given value. If
 the SHOW parameter is omitted, the text displayed is identical to the value.
 
+.. index::
+   pair: FIELD$ DEFINE-VARIABLE-CHOICE; FIELDS$   
+
 **FIELD$ DEFINE-VARIABLE-CHOICE**
 
 Generates a list of SELECT entries for the 3270 field concerned. This instruction requires a VAL parameter.
@@ -8543,6 +8546,9 @@ OPTION values for the SELECT statement generated for the 3270 field concerned. T
 3270 application by means of a structured field type FAE5 or FAE6, or by means of the HOST4WEB command S
 VARIABLE. Structured fields are described in the VIRTEL Programming Interface documentation 263 HOST4WEB
 commands are described in the VIRTEL Programming Interface documentation 274
+
+.. index::
+   pair: FIELD$ IS-BINARY-CHOICE; FIELDS$   
 
 **FIELD$ IS-BINARY-CHOICE**
 

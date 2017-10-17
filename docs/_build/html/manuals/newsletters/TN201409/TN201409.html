@@ -586,11 +586,11 @@ when the user presses the print ICON. Our custJS.CICSPRNT.js looks like
 this. Details about toolbar customization can be found in the Virtel
 User Guide:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
-<span class="n">function</span> <span class="n">after</span>\<span class="n">_standardInit</span><span class="p">()</span> <span class="p">{</span>
-<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do</span>\<span class="n">_print</span><span class="p">);</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do_print</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">function</span> <span class="n">do</span>\<span class="n">_print</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">function</span> <span class="n">do_print</span><span class="p">()</span> <span class="p">{</span>
 <span class="n">window</span><span class="o">.</span><span class="n">print</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>

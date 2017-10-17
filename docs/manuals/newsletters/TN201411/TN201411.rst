@@ -59,7 +59,7 @@ template.
 Fig. 4 – The template USSWSYSP display
 
 The URL for this template is
-*line\_ip\_address:line\_port/entrypoint/:*\ USSWSYSP.HTML which in our
+*line_ip_address:line_port/entrypoint/:*\ USSWSYSP.HTML which in our
 case is 192.168.170.30:41003/EDSHOST/USSWSYSP.HTML. It looks very
 similar to what a VTAM USSTAB might produce. Notice that there is a tool
 bar on top with some functions and a cursor/row counter in the bottom
@@ -137,7 +137,7 @@ of code:-
    * (c)Copyright SysperTec Communication 2012 All Rights Reserved
    * VIRTEL Web Access customer-specific javascript functions
    */
-   function after\_standardInit() {
+   function after_standardInit() {
    /* Remove macro buttons from the toolbar */
    removetoolbarbutton("startrecording");
    removetoolbarbutton("playback");
@@ -211,7 +211,7 @@ Code for template USSWSYSP.HTML
          <head> <!--VIRTEL start="{{{" end="}}}" -->
             <!--
             $Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $
-            Example of Home Page for VIRTEL Web Access \_ USS Replacement
+            Example of Home Page for VIRTEL Web Access _ USS Replacement
             -->
             <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
             <meta http-equiv="Content-Type" content="text/html;
@@ -280,8 +280,8 @@ Code for template USSWSYSP.HTML
          setFontsize("window", 80, 24);
          genkeypad();
          gentoolbar();
-         if (typeof after\_standardInit === "function") {
-         after\_standardInit();
+         if (typeof after_standardInit === "function") {
+         after_standardInit();
          }
          </script>
  

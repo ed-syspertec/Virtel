@@ -285,7 +285,7 @@ of code:-</p>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
 <span class="o">*/</span>
-<span class="n">function</span> <span class="n">after</span>\<span class="n">_standardInit</span><span class="p">()</span> <span class="p">{</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
 <span class="o">/*</span> <span class="n">Remove</span> <span class="n">macro</span> <span class="n">buttons</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">toolbar</span> <span class="o">*/</span>
 <span class="n">removetoolbarbutton</span><span class="p">(</span><span class="s2">&quot;startrecording&quot;</span><span class="p">);</span>
 <span class="n">removetoolbarbutton</span><span class="p">(</span><span class="s2">&quot;playback&quot;</span><span class="p">);</span>
@@ -346,7 +346,7 @@ directory and not from your default EntryPoint directory.</p>
       &lt;head&gt; &lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
          &lt;!--
          $Id: USSWSYSP.html XXXX 2014-05 09:07:41Z holt $
-         Example of Home Page for VIRTEL Web Access \_ USS Replacement
+         Example of Home Page for VIRTEL Web Access _ USS Replacement
          --&gt;
          &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;/&gt;
          &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;
@@ -415,8 +415,8 @@ directory and not from your default EntryPoint directory.</p>
       setFontsize(&quot;window&quot;, 80, 24);
       genkeypad();
       gentoolbar();
-      if (typeof after\_standardInit === &quot;function&quot;) {
-      after\_standardInit();
+      if (typeof after_standardInit === &quot;function&quot;) {
+      after_standardInit();
       }
       &lt;/script&gt;
 

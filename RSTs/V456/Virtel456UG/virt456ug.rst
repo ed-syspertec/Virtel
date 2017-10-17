@@ -2664,7 +2664,7 @@ name
     subsequent reference wraps back to the first row number. In
     addition, the DEFINE-DFHMDF-COLUMN tag implicitly generates a series
     of DEFINE-HTML-FIELD-NAME tags, each of which contains the field
-    name suffixed by \_1, \_2, etc.
+    name suffixed by _1, _2, etc.
 
     For example, the following tag defines a column of 5-character input
     fields having attribute bytes in column 1. The fields themselves
@@ -4600,7 +4600,7 @@ Contacts
     entry point WEB2HOST. You can also carry out these steps in batch by
     running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL
     version 4.27. Having updated the configuration, you then need to
-    upload three new elements (upload.htm, default.js, and logo\_3.gif)
+    upload three new elements (upload.htm, default.js, and logo_3.gif)
     to the W2H- DIR directory using the existing SMTP upload method.
 
 1. In entry point WEB2HOST, define a new transaction W2H–70, with
@@ -5457,7 +5457,7 @@ Highlight input fields
 
     Permits the user to display a different background color for 3270
     input fields. When this option is selected, all input fields will
-    have a class designator HIGHLIGHTED\_INPUTFIELD in addition to their
+    have a class designator HIGHLIGHTED_INPUTFIELD in addition to their
     regular class. The style definition may be overridden by the
     administrator in the custom.css file.
 
@@ -5665,7 +5665,7 @@ Miscellaneous
 
     Permits the user to display a different background color for 3270
     input fields. When this option is selected, all input fields will
-    have a class designator HIGHLIGHTED\_INPUTFIELD in addition to their
+    have a class designator HIGHLIGHTED_INPUTFIELD in addition to their
     regular class. The style definition may be overridden by the
     administrator in the custom.css file.
 
@@ -6875,7 +6875,7 @@ MS-DOS (CP-850)
     has started.
 
     This function is called before submitting a request to the VIRTEL
-    server. The arguments passed to before\_submitForm are:
+    server. The arguments passed to before_submitForm are:
 
 pfKey
 ~~~~~
@@ -6889,7 +6889,7 @@ oForm
     document.virtelForm)
 
     This function is called after receiving a response from the VIRTEL
-    server. The arguments passed to after\_responseHandle are:
+    server. The arguments passed to after_responseHandle are:
 
 o
 ~
@@ -6911,7 +6911,7 @@ xtim
     parameter is displayed in the VIRTEL Web Access Settings menu. It
     allows the list of values to be modified.
 
-    The arguments passed to modify\_settingsValues are:
+    The arguments passed to modify_settingsValues are:
 
 name
 ~~~~
@@ -6933,10 +6933,10 @@ values
 
     This function is called whenever the 3270 window loses the focus.
 
-    This example uses the after\_standardInit function to insert
+    This example uses the after_standardInit function to insert
     additional icons into the toolbar when the session is started. Icons
     may subsequently be added or removed from the toolbar after each
-    screen by means of the after\_responseHandle function.
+    screen by means of the after_responseHandle function.
 
     *Example custom.js to customize the toolbar icons*
 
@@ -6953,13 +6953,13 @@ values
 
 -  Resizing a too small or too big toolbar icon.
 
--  For example toosmall\_pic.png=22x22 and toobig\_pic.jpg=145x30
+-  For example toosmall_pic.png=22x22 and toobig_pic.jpg=145x30
 
     \*/
 
-    addtoolbarbutton(999, "/w2h/toosmall\_pic.png", "Custom button #1
-    tooltip", do\_search, "tbButton size22x22"); addtoolbarbutton(999,
-    "/w2h/toobig\_pic.jpg", "Custom button #2 tooltip", do\_search,
+    addtoolbarbutton(999, "/w2h/toosmall_pic.png", "Custom button #1
+    tooltip", do_search, "tbButton size22x22"); addtoolbarbutton(999,
+    "/w2h/toobig_pic.jpg", "Custom button #2 tooltip", do_search,
     "tbButton size145x30");
 
     *Example custom.js to specify the toolbar icon size*
@@ -6987,7 +6987,7 @@ values
     *Example custom.css to manage a toolbar icon with a non standard
     size*
 
-    This example uses the after\_standardInit function to disable macro
+    This example uses the after_standardInit function to disable macro
     functions by removing the corresponding icons from the toolbar.
 
     *Example custom.js to remove selected toolbar icons*
@@ -7043,7 +7043,7 @@ values
 
     *Example custom.js to select a position for printer icon*
 
-    This example uses the after\_responseHandle function to modify the
+    This example uses the after_responseHandle function to modify the
     text in the status bar at the bottom of the Web Access screen. This
     example displays the text “Your printer name is xxxx” in the status
     bar.
@@ -7059,7 +7059,7 @@ values
 
     \*/
 
-    function after\_responseHandle(httpXmlObj, url, xmitTimestamp) {
+    function after_responseHandle(httpXmlObj, url, xmitTimestamp) {
     vwaStatusBar.setRelay(); // clears relay field
 
     vwaStatusBar.setPrintRelay("Your printer name is: " +
@@ -7115,12 +7115,12 @@ values
     value. When in “false” mode the function returns the initial value.
     When in “true” mode the function retruns the overprinted value.
 
-    This example uses the after\_responseHandle function to modify the
+    This example uses the after_responseHandle function to modify the
     regular expression which is used to identify PF key hotspots.
 
     *Example custom.js to modify PF key hotspot recognition*
 
-    This example uses the after\_standardInit function in conjunction
+    This example uses the after_standardInit function in conjunction
     with a custom stylesheet to add a watermark to the Web Access
     screen. The watermark displays the application name in light text
     behind the 3270 screen content. The application name is obtained
@@ -7162,7 +7162,7 @@ values
 
     *Web Access screen with application name as watermark*
 
-    The callback function modify\_settingsValues allows the
+    The callback function modify_settingsValues allows the
     administrator to modify or replace the list of values allowed for
     specific parameters in the VIRTEL Web Access Settings menu.
 
@@ -7320,7 +7320,7 @@ Authorized domains:
 Show notifications:
 ~~~~~~~~~~~~~~~~~~~
 
-    Display a POP\_UP window in the bottom right of the screen
+    Display a POP_UP window in the bottom right of the screen
     summarizing the result of last copy / paste operation.
 
 Refresh preferences:
@@ -7851,9 +7851,9 @@ This will call the subroutine and the calling scenario will continue in sequence
 
     **A subroutine may contains a PERFORM$ instruction to call another
     subroutine up to 3 levels. For example, main scenario may call
-    level\_1 subroutine scenario, which may call level\_2 subroutine
-    scenario, which may call level\_3 subroutine scenario, but level\_3
-    connot call level\_4 subroutine scenario.**
+    level_1 subroutine scenario, which may call level_2 subroutine
+    scenario, which may call level_3 subroutine scenario, but level_3
+    connot call level_4 subroutine scenario.**
 
     A scenario may also be specified in the “Output Scenario” field of a
     transaction invoked by VIRTEL Multi-Session. By executing an OUTPUT
@@ -11019,9 +11019,9 @@ varnamep
 
     It may be used in any scenario. A subroutine may contains a PERFORM$
     instruction to call another subroutine up to 3 levels. For example,
-    main scenario may call level\_1 subroutine scenario, which may call
-    level\_2 subroutine scenario, which may call level\_3 subroutine
-    scenario, but level\_3 connot call level\_4 subroutine scenario.
+    main scenario may call level_1 subroutine scenario, which may call
+    level_2 subroutine scenario, which may call level_3 subroutine
+    scenario, but level_3 connot call level_4 subroutine scenario.
 
 mylabel
 ~~~~~~~
@@ -13514,7 +13514,7 @@ VSV2
 -  send data for table variables (structured field FAE6)
 
     The following COBOL example shows how to use CALL VIRTEL to send two
-    table variables (CHP\_NUM1 and CPT\_NUM1) and to request the use of
+    table variables (CHP_NUM1 and CPT_NUM1) and to request the use of
     a specific page template (page WEB2VIRT in directory DEMO):
 
     *in Working-Storage:*
@@ -13622,7 +13622,7 @@ VSV2
 +------------+----------------------+----------------------------------+
 |     MOVE   |     08               |     TO VIRTEL-LONG-NOM.          |
 +------------+----------------------+----------------------------------+
-|     MOVE   |     'CHP\_NUM1'      |     TO VIRTEL-NOM.               |
+|     MOVE   |     'CHP_NUM1'      |     TO VIRTEL-NOM.               |
 +------------+----------------------+----------------------------------+
 |     MOVE   |     'VAL-001'        |     TO VIRTEL-POSTE-01           |
 +------------+----------------------+----------------------------------+
@@ -13662,7 +13662,7 @@ VSV2
 +--------+-------------------+------+-------------------------------+
 | MOVE   |     08            | TO   |     VIRTEL-LONG-NOM.          |
 +--------+-------------------+------+-------------------------------+
-| MOVE   |     'CPT\_NUM1'   | TO   |     VIRTEL-NOM1.              |
+| MOVE   |     'CPT_NUM1'   | TO   |     VIRTEL-NOM1.              |
 +--------+-------------------+------+-------------------------------+
 | MOVE   |     'CPT-0001'    | TO   |     VIRTEL-POSTE1-01.         |
 +--------+-------------------+------+-------------------------------+
@@ -14850,7 +14850,7 @@ HOWTOs
 
     \*/
 
-    function modify\_settingsValues(name, values) {
+    function modify_settingsValues(name, values) {
 
     // The target is the "style" list settings if (name == "style") {
 
@@ -15031,7 +15031,7 @@ Trademarks
     Under MIT license
     `https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7 <#_bookmark0>`__.
 
-    jQuery\_UI
+    jQuery_UI
 
     Under MIT license http://en.wikipedia.org/wiki/JQuery_UI.
 

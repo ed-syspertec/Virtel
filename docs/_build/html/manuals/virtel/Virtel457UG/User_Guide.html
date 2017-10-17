@@ -6829,7 +6829,7 @@ optionally a SHOW parameter.</p>
 <p>The VAL parameter generates an OPTION value for the SELECT field.
 The optional SHOW parameter allows the specification of the text displayed in the SELECT field for the given value. If
 the SHOW parameter is omitted, the text displayed is identical to the value.</p>
-<p><strong>FIELD$ DEFINE-VARIABLE-CHOICE</strong></p>
+<p id="index-283"><strong>FIELD$ DEFINE-VARIABLE-CHOICE</strong></p>
 <p>Generates a list of SELECT entries for the 3270 field concerned. This instruction requires a VAL parameter.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>FIELD$ (row,col,len),DEFINE-VARIABLE-CHOICE,VAL=varname
 </pre></div>
@@ -6839,7 +6839,7 @@ OPTION values for the SELECT statement generated for the 3270 field concerned. T
 3270 application by means of a structured field type FAE5 or FAE6, or by means of the HOST4WEB command S
 VARIABLE. Structured fields are described in the VIRTEL Programming Interface documentation 263 HOST4WEB
 commands are described in the VIRTEL Programming Interface documentation 274</p>
-<p><strong>FIELD$ IS-BINARY-CHOICE</strong></p>
+<p id="index-284"><strong>FIELD$ IS-BINARY-CHOICE</strong></p>
 <p>Generates an INPUT TYPE=CHECKBOX field for the 3270 field concerned. This is useful for 3270 fields which can take
 two values: one value representing a “checked” box and the other value representing an “unchecked” box. This
 instruction requires a VAL parameter and optionally a NOTVAL parameter.</p>
@@ -6858,7 +6858,7 @@ field will be transmitted to the application if the box is unchecked.</p>
 </div>
 </div>
 <div class="section" id="filter-instruction">
-<span id="index-283"></span><h5>FILTER$ instruction<a class="headerlink" href="#filter-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-285"></span><h5>FILTER$ instruction<a class="headerlink" href="#filter-instruction" title="Permalink to this headline">¶</a></h5>
 <p><strong>FILTER$ VARIABLE-TO-VARIABLE</strong></p>
 <p>The FILTER$ VARIABLE-TO-VARIABLE instruction creates or adds values to a variable from another variable according to
 a list of conditions, similar to the conditions in a CASE$ instruction.</p>
@@ -6884,7 +6884,7 @@ FROM=&#39;varname1&#39;,TO=&#39;varname2&#39;,
 </dl>
 </div>
 <div class="section" id="foreach">
-<span id="index-284"></span><h5>FOREACH$<a class="headerlink" href="#foreach" title="Permalink to this headline">¶</a></h5>
+<span id="index-286"></span><h5>FOREACH$<a class="headerlink" href="#foreach" title="Permalink to this headline">¶</a></h5>
 <p><strong>FOREACH$ VALUE-IN-SCREEN instruction</strong></p>
 <p>The FOREACH$ VALUE-IN-SCREEN instruction marks the start of a loop on a screen. Nested pairs of FOREACH$ and ENDFOR$ instructions are permitted.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>groupname FOREACH$ VALUE-IN-SCREEN,SCREEN=(row,col,len,ht)
@@ -6920,7 +6920,7 @@ VALUE-IN-VARIABLE and ENDFOR$ instructions are permitted.</p>
 </dl>
 </div>
 <div class="section" id="goto-instruction">
-<span id="index-285"></span><h5>GOTO$ instruction<a class="headerlink" href="#goto-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-287"></span><h5>GOTO$ instruction<a class="headerlink" href="#goto-instruction" title="Permalink to this headline">¶</a></h5>
 <p>This instruction directs the subsequent processing flow to a specified label.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>GOTO$ label
 </pre></div>
@@ -6931,7 +6931,7 @@ VALUE-IN-VARIABLE and ENDFOR$ instructions are permitted.</p>
 </dl>
 </div>
 <div class="section" id="handle-instruction">
-<span id="index-286"></span><h5>HANDLE$ instruction<a class="headerlink" href="#handle-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-288"></span><h5>HANDLE$ instruction<a class="headerlink" href="#handle-instruction" title="Permalink to this headline">¶</a></h5>
 <p>This instruction allows to manage various handle operations within the context of a scenario.</p>
 <p><strong>HANDLE$ ABEND instruction</strong></p>
 <p>This instruction allows a scenario to continue after an ABEND, due for instance to trying to write on the screen at a
@@ -6973,7 +6973,7 @@ issued and processing may continue.</p>
 scenario.</p>
 <span class="target" id="v457ug-if"></span></div>
 <div class="section" id="if-instruction">
-<span id="index-287"></span><h5>IF$ instruction<a class="headerlink" href="#if-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-289"></span><h5>IF$ instruction<a class="headerlink" href="#if-instruction" title="Permalink to this headline">¶</a></h5>
 <p>This instruction enables the testing of the presence of a value in a 3270 screen, or a value in a VIRTEL variable, or a
 condition set by a previous instruction, and directs the subsequent processing flow.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>IF$ (row,col,len),EQ=&#39;value&#39;,THEN=process1,ELSE=process2
@@ -7039,7 +7039,7 @@ IF$ SESSION-SWITCH,THEN=process1,ELSE=process2
 </dl>
 </div>
 <div class="section" id="indscen-instruction">
-<span id="index-288"></span><h5>INDSCEN$ instruction<a class="headerlink" href="#indscen-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-290"></span><h5>INDSCEN$ instruction<a class="headerlink" href="#indscen-instruction" title="Permalink to this headline">¶</a></h5>
 <p>This instruction allows a scenario to enable the IND$FILE file transfer function. The INDSCEN$ macro instruction must
 be included in both the input scenario and the output scenario.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>INDSCEN$ HOST=type
@@ -7051,7 +7051,7 @@ be included in both the input scenario and the output scenario.</p>
 </dl>
 </div>
 <div class="section" id="label-instruction">
-<span id="index-289"></span><h5>LABEL$ instruction<a class="headerlink" href="#label-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-291"></span><h5>LABEL$ instruction<a class="headerlink" href="#label-instruction" title="Permalink to this headline">¶</a></h5>
 <p>This instruction allows to define a label in a scenario.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>mylabel LABEL$
 </pre></div>
@@ -7074,7 +7074,7 @@ be included in both the input scenario and the output scenario.</p>
 <p>A sample of the usage of LABEL$ instruction is available in the PERFORM$ instruction description.</p>
 <span class="target" id="v457ug-map"></span></div>
 <div class="section" id="map-instruction">
-<span id="index-290"></span><h5>MAP$ instruction<a class="headerlink" href="#map-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-292"></span><h5>MAP$ instruction<a class="headerlink" href="#map-instruction" title="Permalink to this headline">¶</a></h5>
 <p>The MAP$ instruction defines the format of a flat-format data area known as a “commarea”, and describes how VIRTEL
 converts XML or Query input data to commarea format. The MAP$ instruction may also be used in conjunction with
 the TOVAR$ instruction to convert an output commarea to VIRTEL variables, which can be used with an appropriate
@@ -7487,7 +7487,7 @@ QUERY: specifies that the input data is in Query format</p>
 <p>MAP$ COPY,VAR=’varname’ is equivalent to MAP$ TO-VARIABLE,VAR=’varname’</p>
 <span class="target" id="v457ug-option"></span></div>
 <div class="section" id="option-instruction">
-<span id="index-291"></span><h5>OPTION$ instruction<a class="headerlink" href="#option-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-293"></span><h5>OPTION$ instruction<a class="headerlink" href="#option-instruction" title="Permalink to this headline">¶</a></h5>
 <p>This instruction allows the scenario to set up parameters for a subsequent SEND$ TO-LINE instruction.</p>
 <p><strong>OPTION$ FOR-HTTP</strong></p>
 <p>The OPTION$ FOR-HTTP instruction, when used in conjunction with a SEND$ TO-LINE instruction referencing an outbound HTTP line, allows a scenario to make a request to an HTTP server and to receive the response. The OPTION$ FOR-HTTP instruction builds the parameter list for the subsequent SEND$ TO-LINE instruction.</p>
@@ -7579,7 +7579,7 @@ variable. The scenario must send the command to the TSO session to initiate the 
 <p>1: If the field begins with “*” then it is treated as the name of a variable.</p>
 <p class="last">2: TSO will prefix the dataset name by your prefix (usually your userid) unless the dataset name is enclosed in quotes. If you specify the dataset name as a literal in the instruction (as opposed to indirectly as the value of a variable) then triple quotes must be used, for example: (FROM,’‘’SYS1.PARMLIB(IEASYS00)’‘’)</p>
 </div>
-<p id="index-292"><strong>OPTION IND$FILE Examples</strong></p>
+<p id="index-294"><strong>OPTION IND$FILE Examples</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>OPTION$ FOR-IND$FILE-DOWNLOAD,                            *
     (METHOD,&#39;*OPT&#39;),              &quot;ASCII CRLF&quot; or null    *
     (FROM,&#39;*DSN&#39;),                 TSO dataset name       *
@@ -7748,7 +7748,7 @@ OPTION$ FOR-QUICKLNK,
 <p class="first admonition-title">Note</p>
 <p class="last">If the field begins with “*” then it is treated as the name of a variable.</p>
 </div>
-<p id="index-293"><strong>1.18.25.7. OPTION$ Example:</strong></p>
+<p id="index-295"><strong>1.18.25.7. OPTION$ Example:</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>OPTION$ FOR-HTTP,                                  *
     (METHOD,&#39;POST&#39;),                               *
     (SITE,&#39;api.google.com:80&#39;),                    *
@@ -7791,7 +7791,7 @@ OPTION$ FOR-QUICKLNK,
 <p>In the above example, the variable DESTADDR contains the value of the TO parameter.</p>
 </div>
 <div class="section" id="perform-instruction">
-<span id="index-294"></span><h5>PERFORM$ instruction<a class="headerlink" href="#perform-instruction" title="Permalink to this headline">¶</a></h5>
+<span id="index-296"></span><h5>PERFORM$ instruction<a class="headerlink" href="#perform-instruction" title="Permalink to this headline">¶</a></h5>
 <p>This instruction allows to execute a SUBROUTINE scenario before continuing in sequence.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>PERFORM$ mylabel
 </pre></div>
@@ -8327,7 +8327,7 @@ If more than one input variable specifies a len parameter in the format *n then 
 measurement.</p>
 </div>
 <div class="section" id="subroutine-scenario">
-<span id="index-295"></span><h5>Subroutine scenario<a class="headerlink" href="#subroutine-scenario" title="Permalink to this headline">¶</a></h5>
+<span id="index-297"></span><h5>Subroutine scenario<a class="headerlink" href="#subroutine-scenario" title="Permalink to this headline">¶</a></h5>
 <p>Subroutine scenario represent a certain part of code that can be invoked from within a scenario. Subroutine scenario starts with a SCENARIO SUBROUTINE instruction and ends with a SCENARIO END instruction.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysub</span> <span class="n">SCENARIO</span> <span class="n">SUBROUTINE</span>
 <span class="o">...</span> <span class="o">/</span> <span class="o">...</span>
@@ -8353,7 +8353,7 @@ scenario may call level_1 subroutine scenario, which may call level_2 subroutine
 subroutine scenario, but level_3 cannot call level_4 subroutine scenario.</p>
 </div>
 <div class="section" id="multi-session-scenarios">
-<span id="index-296"></span><h5>Multi-Session scenarios<a class="headerlink" href="#multi-session-scenarios" title="Permalink to this headline">¶</a></h5>
+<span id="index-298"></span><h5>Multi-Session scenarios<a class="headerlink" href="#multi-session-scenarios" title="Permalink to this headline">¶</a></h5>
 <p>A scenario may also be specified in the “Output Scenario” field of a transaction invoked by VIRTEL Multi-Session. By
 executing an OUTPUT scenario on a 3270 terminal, VIRTEL allows automated 3270 navigation (for example, logon to
 VTAM application) from the Multi-Session screen.</p>
@@ -8364,9 +8364,9 @@ useful (refer to <a class="reference internal" href="#v457ug-if"><span class="st
 </div>
 </div>
 <div class="section" id="examples-of-virtel-web-modernisation-scenarios">
-<span id="index-297"></span><h4>Examples of VIRTEL Web Modernisation Scenarios<a class="headerlink" href="#examples-of-virtel-web-modernisation-scenarios" title="Permalink to this headline">¶</a></h4>
+<span id="index-299"></span><h4>Examples of VIRTEL Web Modernisation Scenarios<a class="headerlink" href="#examples-of-virtel-web-modernisation-scenarios" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="creation-of-a-list-of-values-for-a-selected-field">
-<span id="index-298"></span><h5>Creation of a list of values for a selected field<a class="headerlink" href="#creation-of-a-list-of-values-for-a-selected-field" title="Permalink to this headline">¶</a></h5>
+<span id="index-300"></span><h5>Creation of a list of values for a selected field<a class="headerlink" href="#creation-of-a-list-of-values-for-a-selected-field" title="Permalink to this headline">¶</a></h5>
 <p>Many 3270 applications consist of fields which can take only one of a restricted set of values. In this case, it is possible
 to offer the end user a list of allowable values by requesting VIRTEL to generate the field in the form of a SELECT rather
 than in the form of a normal field. This type of modification is performed by the FIELD$ instruction.</p>
@@ -8401,7 +8401,7 @@ END
 <p><em>HTTP presentation module: List of values for input field</em></p>
 </div>
 <div class="section" id="making-clickable-fields">
-<span id="index-299"></span><h5>Making clickable fields<a class="headerlink" href="#making-clickable-fields" title="Permalink to this headline">¶</a></h5>
+<span id="index-301"></span><h5>Making clickable fields<a class="headerlink" href="#making-clickable-fields" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span>TESTCT1 SCREENS APPL=Demopfks,EXEC=NO
 *
         SCENARIO OUTPUT
@@ -8448,7 +8448,7 @@ END
 <p><em>HTTP presentation module: Clickable fields using DECLARE$</em></p>
 </div>
 <div class="section" id="adding-calendars-to-date-fields">
-<span id="index-300"></span><h5>Adding calendars to date fields<a class="headerlink" href="#adding-calendars-to-date-fields" title="Permalink to this headline">¶</a></h5>
+<span id="index-302"></span><h5>Adding calendars to date fields<a class="headerlink" href="#adding-calendars-to-date-fields" title="Permalink to this headline">¶</a></h5>
 <p>By using a combination of an output scenario and a JavaScript application, date fields on the 3270 screen can be
 transformed into HTML fields on which a small calendar window appears when the user clicks on the field. The user
 chooses the desired date from the calendar, and VIRTEL inserts the date in the correct format into the 3270 input field.</p>
@@ -8525,7 +8525,7 @@ WEB2VIRT.htm:</p>
 <p><em>HTML page template for calendar fields</em></p>
 </div>
 <div class="section" id="virtel-suggest">
-<span id="index-301"></span><h5>VIRTEL suggest<a class="headerlink" href="#virtel-suggest" title="Permalink to this headline">¶</a></h5>
+<span id="index-303"></span><h5>VIRTEL suggest<a class="headerlink" href="#virtel-suggest" title="Permalink to this headline">¶</a></h5>
 <p>VIRTEL Suggest is a facility which presents lists of suggested values for specific 3270 fields. The suggested values are
 presented in a drop-down list which appears automatically when the user starts typing into a field. The list modifies
 itself dynamically as the user types. At any time the user can select one of the suggested values by clicking or moving
@@ -8565,7 +8565,7 @@ END
 </pre></div>
 </div>
 <p><em>HTTP presentation module: Defining VIRTEL Suggest fields</em></p>
-<p id="index-302"><strong>SUGGEST$ instruction</strong></p>
+<p id="index-304"><strong>SUGGEST$ instruction</strong></p>
 <p>The parameters of the SUGGEST$ macro instruction are as follows:</p>
 <dl class="docutils">
 <dt>TRAN=’name’</dt>
@@ -8635,7 +8635,7 @@ on the page, the second entry corresponds to the second VIRTEL Suggest field on 
 </div>
 </div>
 <div class="section" id="scenario-auto-refresh">
-<span id="index-303"></span><h4>Scenario Auto-refresh<a class="headerlink" href="#scenario-auto-refresh" title="Permalink to this headline">¶</a></h4>
+<span id="index-305"></span><h4>Scenario Auto-refresh<a class="headerlink" href="#scenario-auto-refresh" title="Permalink to this headline">¶</a></h4>
 <p>The majority of host applications use the 3270 protocol in a synchronous manner, meaning that each user input
 (ENTER or PF key) generates one response consisting of a 3270 screen built by a single VTAM message. Certain host
 applications, however, may build a 3270 screen in two or more segments, by sending more than one VTAM message to
@@ -8736,7 +8736,7 @@ will occur every 10 seconds thereafter.</p>
 transaction definition. The source code for the SCENAUTN scenario is supplied in the VIRTEL SAMPLIB.</p>
 <span class="target" id="v457ug-pdf"></span></div>
 <div class="section" id="pdf-output-generation">
-<span id="index-304"></span><h4>PDF output generation<a class="headerlink" href="#pdf-output-generation" title="Permalink to this headline">¶</a></h4>
+<span id="index-306"></span><h4>PDF output generation<a class="headerlink" href="#pdf-output-generation" title="Permalink to this headline">¶</a></h4>
 <p>This example shows a scenario which generates a PDF output file using the MakePDF program product via the service
 program VIRSVPDF.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENPDF SCREENS EXEC=NO
@@ -8843,10 +8843,10 @@ TEXTEND
 </div>
 </div>
 <div class="section" id="virtel-web-integration">
-<span id="v457ug-virtel-integration"></span><span id="index-305"></span><h3>VIRTEL Web Integration<a class="headerlink" href="#virtel-web-integration" title="Permalink to this headline">¶</a></h3>
+<span id="v457ug-virtel-integration"></span><span id="index-307"></span><h3>VIRTEL Web Integration<a class="headerlink" href="#virtel-web-integration" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL Web Integration allows XML or other web services requests to be interpreted and transformed into requests which can be processed by legacy applications such as CICS/COBOL, with the results being transformed back into XML format for transmission via HTTP or SMTP. By using the scenario language described in section <a class="reference internal" href="#v457ug-virtel-scenarios"><span class="std std-ref">“Web Modernisation VIRTEL Scenarios”</span></a>, legacy transactions can be converted into Web Services.</p>
 <span class="target" id="v457ug-parsing-query-input"></span><div class="section" id="parsing-query-input">
-<span id="index-306"></span><h4>Parsing Query input<a class="headerlink" href="#parsing-query-input" title="Permalink to this headline">¶</a></h4>
+<span id="index-308"></span><h4>Parsing Query input<a class="headerlink" href="#parsing-query-input" title="Permalink to this headline">¶</a></h4>
 <p>By using a combination of an INITIAL scenario and a VIRTEL transaction script, VIRTEL can transform Query parameters
 in an HTTP request into a fixed-format data area for processing by a COBOL legacy application program.</p>
 <div class="section" id="http-request-with-query-data-get-method">
@@ -8877,7 +8877,7 @@ Accept: */*
 </div>
 </div>
 <div class="section" id="http-request-with-query-data-post-method">
-<span id="index-307"></span><h5>HTTP request with Query data (POST method)<a class="headerlink" href="#http-request-with-query-data-post-method" title="Permalink to this headline">¶</a></h5>
+<span id="index-309"></span><h5>HTTP request with Query data (POST method)<a class="headerlink" href="#http-request-with-query-data-post-method" title="Permalink to this headline">¶</a></h5>
 <p>By changing the FORM METHOD to POST (instead of GET) in the HTML form, the HTTP request can be presented to VIRTEL in the alternative format shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">demohttp</span><span class="o">/</span><span class="n">querydemo</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">tran4</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.0</span>
 <span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">235.30</span><span class="p">:</span><span class="mi">41000</span>
@@ -8891,7 +8891,7 @@ Accept: */*
 <p>VIRTEL considers this POST request to be identical to the GET request presented in the previous paragraph.</p>
 </div>
 <div class="section" id="presentation-module-for-query-input-data">
-<span id="index-308"></span><h5>Presentation module for Query input data<a class="headerlink" href="#presentation-module-for-query-input-data" title="Permalink to this headline">¶</a></h5>
+<span id="index-310"></span><h5>Presentation module for Query input data<a class="headerlink" href="#presentation-module-for-query-input-data" title="Permalink to this headline">¶</a></h5>
 <p>An example INITIAL scenario for converting this Query data to commarea format is coded in the presentation module SCENQRYI shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENQRYI SCREENS APPL=SCENQRYI
          SCENARIO INITIAL
@@ -8911,7 +8911,7 @@ COMMAREA MAP$ TO-VARIABLE,VAR=&#39;MYAREA&#39;
 <p>The same presentation module may be used to process both GET and POST requests.</p>
 </div>
 <div class="section" id="contents-of-generated-commarea">
-<span id="index-309"></span><h5>Contents of generated commarea<a class="headerlink" href="#contents-of-generated-commarea" title="Permalink to this headline">¶</a></h5>
+<span id="index-311"></span><h5>Contents of generated commarea<a class="headerlink" href="#contents-of-generated-commarea" title="Permalink to this headline">¶</a></h5>
 <p>The figure below shows the 20-byte commarea generated in the VIRTEL variable MYAREA:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">----+----</span><span class="mi">1</span><span class="o">----+----</span><span class="mi">2</span>
 <span class="mi">15314991360507</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="mi">15</span>
@@ -8920,7 +8920,7 @@ COMMAREA MAP$ TO-VARIABLE,VAR=&#39;MYAREA&#39;
 <p><em>Commarea generated from Query data</em></p>
 </div>
 <div class="section" id="transaction-definition-for-query-input-data">
-<span id="index-310"></span><h5>Transaction definition for Query input data<a class="headerlink" href="#transaction-definition-for-query-input-data" title="Permalink to this headline">¶</a></h5>
+<span id="index-312"></span><h5>Transaction definition for Query input data<a class="headerlink" href="#transaction-definition-for-query-input-data" title="Permalink to this headline">¶</a></h5>
 <p>The HTTP requests shown in the GET and POST examples above use the URL querydemo.htm+tranq to invoke the
 VIRTEL transaction shown below (tranq is the “external name” of the transaction). The “TIOA at logon” field contains a
 connection script. After signing on to CICS, the connection script uses the &amp;/S order to process the INITIAL scenario in
@@ -8955,7 +8955,7 @@ P1=Update                          P3=Return                        P12=Server
 <span class="target" id="v457ug-xml-input-data"></span></div>
 </div>
 <div class="section" id="parsing-xml-input">
-<span id="index-311"></span><h4>Parsing XML input<a class="headerlink" href="#parsing-xml-input" title="Permalink to this headline">¶</a></h4>
+<span id="index-313"></span><h4>Parsing XML input<a class="headerlink" href="#parsing-xml-input" title="Permalink to this headline">¶</a></h4>
 <p>By using a combination of an INITIAL scenario and a VIRTEL transaction script, VIRTEL can transform XML input data in
 an HTTP request into a fixed-format data area for processing by a COBOL legacy application program.</p>
 <div class="section" id="http-request-with-xml-input-data">
@@ -8982,7 +8982,7 @@ Content-Length: 197
 <p><em>Example HTTP request with XML input data</em></p>
 </div>
 <div class="section" id="presentation-module-for-xml-input-data">
-<span id="index-312"></span><h5>Presentation module for XML input data<a class="headerlink" href="#presentation-module-for-xml-input-data" title="Permalink to this headline">¶</a></h5>
+<span id="index-314"></span><h5>Presentation module for XML input data<a class="headerlink" href="#presentation-module-for-xml-input-data" title="Permalink to this headline">¶</a></h5>
 <p>An example INITIAL scenario for processing this XML input data is coded in the presentation module SCENXMLI shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENXMLI    SCREENS APPL=SCENXMLI
 *
@@ -9015,7 +9015,7 @@ END ,
 <p><em>Commarea generated from XML input data</em></p>
 <span class="target" id="v457ug-sending-xml"></span></div>
 <div class="section" id="sending-xml-input-as-url-encoded-data">
-<span id="index-313"></span><h5>Sending XML input as URL-encoded data<a class="headerlink" href="#sending-xml-input-as-url-encoded-data" title="Permalink to this headline">¶</a></h5>
+<span id="index-315"></span><h5>Sending XML input as URL-encoded data<a class="headerlink" href="#sending-xml-input-as-url-encoded-data" title="Permalink to this headline">¶</a></h5>
 <p>For some applications it may be more convenient to send the XML data as part of the URL. To conform with URL syntax
 rules, the XML data is embedded in an HTML text field, and blanks and other special characters in the XML data are
 replaced by their corresponding URL-encoded values (“+” signs and “%xx” sequences). This format can be generated
@@ -9071,7 +9071,7 @@ previously. The only change necessary to process URL-encoded data is that the st
 must be replaced by the statement OUTAREA MAP$ FROM-FIELD,FIELD=’MYINPUT’</p>
 </div>
 <div class="section" id="transaction-definition-for-xml-input-data">
-<span id="index-314"></span><h5>Transaction definition for XML input data<a class="headerlink" href="#transaction-definition-for-xml-input-data" title="Permalink to this headline">¶</a></h5>
+<span id="index-316"></span><h5>Transaction definition for XML input data<a class="headerlink" href="#transaction-definition-for-xml-input-data" title="Permalink to this headline">¶</a></h5>
 <p>The HTTP requests shown above use the URL /demohttp/xmldemo.xml+tran3 to invoke the VIRTEL transaction shown
 below (tran3 is the “external name” of the transaction). The “TIOA at logon” field contains a connection script. After
 signing on to CICS, the connection script uses the &amp;/S order to process the INITIAL scenario in the presentation module
@@ -9124,7 +9124,7 @@ P1=Update                          P3=Return                        P12=Server
 </pre></div>
 </div>
 <p><em>Example XML input data with attributes and repeating groups</em></p>
-<p id="index-315">An INITIAL scenario for processing this XML input data is coded in the presentation module SCENXMLA shown below:</p>
+<p id="index-317">An INITIAL scenario for processing this XML input data is coded in the presentation module SCENXMLA shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENXMLA    SCREENS APPL=SCENXMLA
 *
             SCENARIO INITIAL
@@ -9160,7 +9160,7 @@ END
 <p><em>Commarea generated from XML input with attributes and repeating groups</em></p>
 </div>
 <div class="section" id="xml-input-with-redefinition-of-fields">
-<span id="index-316"></span><h5>XML input with redefinition of fields<a class="headerlink" href="#xml-input-with-redefinition-of-fields" title="Permalink to this headline">¶</a></h5>
+<span id="index-318"></span><h5>XML input with redefinition of fields<a class="headerlink" href="#xml-input-with-redefinition-of-fields" title="Permalink to this headline">¶</a></h5>
 <p>This example shows how the commarea can be redefined according to the value of a field in the XML input. In this
 example, the input can be in one of two formats, depending on the value of the field whose name is “reqtype”:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>Request type A
@@ -9253,7 +9253,7 @@ END
 <h4>Presentation of XML output<a class="headerlink" href="#presentation-of-xml-output" title="Permalink to this headline">¶</a></h4>
 <p>By using an output scenario and a suitable page template, VIRTEL can transform application program output into XML when the result is sent back in the HTTP response.</p>
 <div class="section" id="presentation-module-for-xml-output">
-<span id="index-317"></span><h5>Presentation module for XML output<a class="headerlink" href="#presentation-module-for-xml-output" title="Permalink to this headline">¶</a></h5>
+<span id="index-319"></span><h5>Presentation module for XML output<a class="headerlink" href="#presentation-module-for-xml-output" title="Permalink to this headline">¶</a></h5>
 <p>An output scenario is used to extract data from the output 3270 data stream of the transaction and place it into one or
 more table variables. The example presentation module SCENXMLO shown below contains an OUTPUT scenario which
 creates two variables, ACCTNUM and FULLNAME, from a table of values displayed on the 3270 screen:</p>
@@ -9287,7 +9287,7 @@ SKIP07      EQU *
 </div>
 </div>
 <div class="section" id="page-template-for-xml-output">
-<span id="index-318"></span><h5>Page template for XML output<a class="headerlink" href="#page-template-for-xml-output" title="Permalink to this headline">¶</a></h5>
+<span id="index-320"></span><h5>Page template for XML output<a class="headerlink" href="#page-template-for-xml-output" title="Permalink to this headline">¶</a></h5>
 <p>The URL in this example is /demohttp/xmldemo.xml+tran3 which requests VIRTEL to use the page template
 xmldemo.xml to process the output of the tran3 transaction. The purpose of the page template is to convert the
 transaction output into XML format.</p>
@@ -9311,7 +9311,7 @@ program:</p>
 <span class="target" id="v457ug-xml-parser"></span></div>
 </div>
 <div class="section" id="virtel-as-an-xml-parser-generator">
-<span id="index-319"></span><h4>VIRTEL as an XML parser/generator<a class="headerlink" href="#virtel-as-an-xml-parser-generator" title="Permalink to this headline">¶</a></h4>
+<span id="index-321"></span><h4>VIRTEL as an XML parser/generator<a class="headerlink" href="#virtel-as-an-xml-parser-generator" title="Permalink to this headline">¶</a></h4>
 <p>An application can use the VIRTEL HTTP server as an XML parser/generator engine. A client program establishes a TCP/
 IP session with the VIRTEL HTTP server, and sends XML or commarea data to VIRTEL in an HTTP request. VIRTEL
 performs conversion to or from XML, and returns the resulting commarea or XML data to the client program in the
@@ -9324,14 +9324,14 @@ instruction. Both scenarios can reference a common set of MAP$ statements which 
 the XML stream and the commarea. In each case an appropriate page template must also be used, as shown in the
 detailed examples which follow.</p>
 <div class="section" id="communication-via-virkix">
-<span id="index-320"></span><h5>Communication via VIRKIX<a class="headerlink" href="#communication-via-virkix" title="Permalink to this headline">¶</a></h5>
+<span id="index-322"></span><h5>Communication via VIRKIX<a class="headerlink" href="#communication-via-virkix" title="Permalink to this headline">¶</a></h5>
 <p>A client program running under CICS on MVS can use VIRKIX to establish the HTTP connection, send the request, and
 receive the response. The client program may send the request in either ASCII or EBCDIC; both formats are recognized
 and supported by VIRTEL. Notice the use of the special header GIVE-LENGTH-PREFIX which requests VIRTEL to add a
 4-byte length prefix to the HTTP response, to conform with the format expected by VIRKIX CALL type ‘M’.</p>
 </div>
 <div class="section" id="example-map-statements">
-<span id="index-321"></span><h5>Example MAP$ statements<a class="headerlink" href="#example-map-statements" title="Permalink to this headline">¶</a></h5>
+<span id="index-323"></span><h5>Example MAP$ statements<a class="headerlink" href="#example-map-statements" title="Permalink to this headline">¶</a></h5>
 <p>The copy member SCONVMAP shown below contains the MAP$ statements common to both examples presented in
 this section. This member is copied into each of the scenarios SCONVXML and SCONVPLA by means of an assembler
 COPY statement.</p>
@@ -9444,7 +9444,7 @@ INITIAL scenario SCONVXML is inserted into the HTTP response data:</p>
 <p><em>Output response from XML-to-commarea conversion</em></p>
 </div>
 <div class="section" id="commarea-to-xml-conversion-using-the-virtel-xml-generator">
-<span id="index-322"></span><h5>Commarea-to-XML conversion using the VIRTEL XML generator<a class="headerlink" href="#commarea-to-xml-conversion-using-the-virtel-xml-generator" title="Permalink to this headline">¶</a></h5>
+<span id="index-324"></span><h5>Commarea-to-XML conversion using the VIRTEL XML generator<a class="headerlink" href="#commarea-to-xml-conversion-using-the-virtel-xml-generator" title="Permalink to this headline">¶</a></h5>
 <p>The figure below shows an example transaction definition to be used for commarea-to-XML conversion using the
 VIRTEL XML generator. The external name “trancom” is the name referenced in the URL of the HTTP request which
 calls the transaction. The special application name $NONE$ indicates that no host application is to be called. The /&amp;S
@@ -9473,7 +9473,7 @@ P1=Update                       P3=Return                           P12=Server
 </pre></div>
 </div>
 <p><em>VIRTEL transaction definition for commarea-to-XML conversion</em></p>
-<p id="index-323">The initial scenario for commarea-to-XML conversion is shown below:</p>
+<p id="index-325">The initial scenario for commarea-to-XML conversion is shown below:</p>
 <div class="highlight-default" id="v457ug-sconvpla"><div class="highlight"><pre><span></span>Member name SCONVPLA
 
 SCONVPLA SCREENS APPL=SCONVPLA
@@ -9545,7 +9545,7 @@ Content-type: text/xml
 </div>
 </div>
 <div class="section" id="automatic-scenario-generation">
-<span id="index-324"></span><h4>Automatic scenario generation<a class="headerlink" href="#automatic-scenario-generation" title="Permalink to this headline">¶</a></h4>
+<span id="index-326"></span><h4>Automatic scenario generation<a class="headerlink" href="#automatic-scenario-generation" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="mapgen-program">
 <h5>MAPGEN program<a class="headerlink" href="#mapgen-program" title="Permalink to this headline">¶</a></h5>
 <p>The MAPGEN program allows the automatic generation of scenarios from COBOL copybooks.
@@ -9631,7 +9631,7 @@ SAMPLIB. The start of the MAPGJCL job is shown below:</p>
 <dt>XMLGEN=YES|NO</dt>
 <dd>Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT=’COM=fieldname’ is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see <a class="reference internal" href="#v457ug-http-uploading-pages"><span class="std std-ref">“Uploading pages by HTTP”</span></a>).</dd>
 </dl>
-<span id="index-325"></span><dl class="docutils" id="v457ug-email-incoming">
+<span id="index-327"></span><dl class="docutils" id="v457ug-email-incoming">
 <dt>. index::</dt>
 <dd>triple: Incoming Emails; SMTP; Virtel</dd>
 </dl>
@@ -9679,7 +9679,7 @@ used:</p>
 <p><em>Rule for routing an incoming e-mail on an SMTP line</em></p>
 </div>
 <div class="section" id="file-transfer-by-e-mail">
-<span id="index-326"></span><h4>File transfer by e-mail<a class="headerlink" href="#file-transfer-by-e-mail" title="Permalink to this headline">¶</a></h4>
+<span id="index-328"></span><h4>File transfer by e-mail<a class="headerlink" href="#file-transfer-by-e-mail" title="Permalink to this headline">¶</a></h4>
 <p>An entry point which is used for file file transfer (including the upload of HTML pages) has a single transaction which
 calls VIRTEL module VIR0041B. This transaction is defined with application type 2 and integration mode 1. The menu
 program specified in the entry point must be VIR0021B.
@@ -9736,7 +9736,7 @@ Enter=Add
 <p><em>Transaction for file transfer by SMTP</em></p>
 </div>
 <div class="section" id="starting-an-application-by-e-mail">
-<span id="index-327"></span><h4>Starting an application by e-mail<a class="headerlink" href="#starting-an-application-by-e-mail" title="Permalink to this headline">¶</a></h4>
+<span id="index-329"></span><h4>Starting an application by e-mail<a class="headerlink" href="#starting-an-application-by-e-mail" title="Permalink to this headline">¶</a></h4>
 <p>When an entry point is used for starting an application by e-mail, the application must be associated with a relay (or
 pseudo-3270 terminal) through which the application can retrieve the contents of the e-mail. It is therefore necessary
 to specify the name of a relay LU in the definition of the terminals attached to the SMTP line (refer to the VIRTEL
@@ -9814,7 +9814,7 @@ field to VIRTEL via the relay LU and reading the response (see <a class="referen
 </div>
 </div>
 <div class="section" id="virtel-batch">
-<span id="index-328"></span><h3>VIRTEL Batch<a class="headerlink" href="#virtel-batch" title="Permalink to this headline">¶</a></h3>
+<span id="index-330"></span><h3>VIRTEL Batch<a class="headerlink" href="#virtel-batch" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTEL Batch facility allows you to run VIRTEL as a batch job to execute HTTP-like requests. VIRTEL reads HTTP-like
 requests from a SYSIN dataset, executes the desired transaction, and writes an HTTP-like response to a SYSOUT
 dataset. When all of the HTTP-like requests have been processed, VIRTEL terminates if requested.
@@ -9832,7 +9832,7 @@ VIRTEL runs as a batch job when both of the following conditions are true:</p>
 </ul>
 <p>These preparatory steps, which in general only need to be performed once, are described in the following sections.</p>
 <div class="section" id="assembling-the-virtct-for-virtel-batch">
-<span id="index-329"></span><h4>Assembling the VIRTCT for VIRTEL Batch<a class="headerlink" href="#assembling-the-virtct-for-virtel-batch" title="Permalink to this headline">¶</a></h4>
+<span id="index-331"></span><h4>Assembling the VIRTCT for VIRTEL Batch<a class="headerlink" href="#assembling-the-virtct-for-virtel-batch" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL Batch requires a special VIRTCT which must be assembled and link-edited into the VIRTEL load library. The
 figure below shows SAMPLIB member VIRTCTBA, which is an example VIRTCT suitable for running VIRTEL Batch. The
 job ASMTCT in the VIRTEL SAMPLIB should be run once to assemble and link-edit this module as VIRTCTBA in the
@@ -10035,13 +10035,13 @@ VIRBATAW, which is an example job to allocate these files:</p>
 <dt>.EOJ</dt>
 <dd>causes VIRTEL to terminate</dd>
 </dl>
-<p id="index-330">These commands are described in the following sections.</p>
+<p id="index-332">These commands are described in the following sections.</p>
 </div>
 <div class="section" id="virtel-batch-commands">
 <h4>VIRTEL Batch commands<a class="headerlink" href="#virtel-batch-commands" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="virtel-batch-get-command">
 <h5>VIRTEL Batch GET command<a class="headerlink" href="#virtel-batch-get-command" title="Permalink to this headline">¶</a></h5>
-<p id="index-331">The following figure shows an example SYSIN file containing two GET commands:</p>
+<p id="index-333">The following figure shows an example SYSIN file containing two GET commands:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">GET</span>
 <span class="o">/</span><span class="n">protide</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">protide</span> <span class="n">VIRTEL</span> <span class="n">transaction</span> <span class="n">name</span>
 <span class="n">schema</span><span class="o">=</span><span class="n">TCC</span> <span class="n">Schema</span> <span class="n">name</span>
@@ -10077,7 +10077,7 @@ recfm=fb,lrecl=200&amp;input_encoding=U HTTP/1.1
 <p><em>Example VIRTEL Batch GET requests</em></p>
 </div>
 <div class="section" id="virtel-batch-post-command">
-<span id="index-332"></span><h5>VIRTEL Batch POST command<a class="headerlink" href="#virtel-batch-post-command" title="Permalink to this headline">¶</a></h5>
+<span id="index-334"></span><h5>VIRTEL Batch POST command<a class="headerlink" href="#virtel-batch-post-command" title="Permalink to this headline">¶</a></h5>
 <p>The following figure shows an example SYSIN file containing a POST command followed by XML data:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>.POST text/xml
 /xmldemo.xml+tran3
@@ -10120,7 +10120,7 @@ Special: GIVE-LENGTH-PREFIX
 </div>
 </div>
 <div class="section" id="virtel-batch-raw-command">
-<span id="index-333"></span><h4>VIRTEL Batch RAW command<a class="headerlink" href="#virtel-batch-raw-command" title="Permalink to this headline">¶</a></h4>
+<span id="index-335"></span><h4>VIRTEL Batch RAW command<a class="headerlink" href="#virtel-batch-raw-command" title="Permalink to this headline">¶</a></h4>
 <p>The following figure shows an example SYSIN file containing a RAW command followed by HTTP request data:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">RAW</span>
 <span class="n">POST</span> <span class="o">/</span><span class="n">virmsg</span><span class="o">.</span><span class="n">txt</span><span class="o">+</span><span class="n">uplw2h</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span>
@@ -10142,7 +10142,7 @@ headers, and the request body. A blank line separates the request headers from t
 HTTP request exactly as contained in the data statements.</p>
 </div>
 <div class="section" id="virtel-batch-return-codes">
-<span id="index-334"></span><h4>VIRTEL Batch return codes<a class="headerlink" href="#virtel-batch-return-codes" title="Permalink to this headline">¶</a></h4>
+<span id="index-336"></span><h4>VIRTEL Batch return codes<a class="headerlink" href="#virtel-batch-return-codes" title="Permalink to this headline">¶</a></h4>
 <p>When a VIRTEL Batch job terminates, the condition code is set to the highest ERROR$ code set by the of the scenarios
 executed (value 0 to 255).</p>
 <p>The condition code may also be set to 4 or 5 (unless a scenario has indicated a higher value) if a request executed by
@@ -10154,10 +10154,10 @@ statement, or insufficient memory) then the condition code is set to 16.</p>
 </div>
 </div>
 <div class="section" id="outgoing-calls">
-<span id="index-335"></span><h2>Outgoing Calls<a class="headerlink" href="#outgoing-calls" title="Permalink to this headline">¶</a></h2>
+<span id="index-337"></span><h2>Outgoing Calls<a class="headerlink" href="#outgoing-calls" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="outgoing-e-mails">
 <h3>Outgoing E-mails<a class="headerlink" href="#outgoing-e-mails" title="Permalink to this headline">¶</a></h3>
-<p id="index-336">The FAD4 structured field allows a host application to send an e-mail. This function is described in the VIRTEL
+<p id="index-338">The FAD4 structured field allows a host application to send an e-mail. This function is described in the VIRTEL
 Programming Interface documentation 280.
 The entry point used to invoke the host application must contain a type-3 transaction with external name $MAIL$. The
 “Application” field must contain the name of the SMTP line to be used for sending the outgoing e-mail.
@@ -10191,14 +10191,14 @@ P1=Update                        P3=Return                     P12=Server
 </div>
 </div>
 <div class="section" id="programming-interfaces">
-<span id="v457ug-programming-interfaces"></span><span id="index-337"></span><h2>Programming Interfaces<a class="headerlink" href="#programming-interfaces" title="Permalink to this headline">¶</a></h2>
+<span id="v457ug-programming-interfaces"></span><span id="index-339"></span><h2>Programming Interfaces<a class="headerlink" href="#programming-interfaces" title="Permalink to this headline">¶</a></h2>
 <p>Certain VIRTEL functions can be driven by application programs. These functions are generally requested by sending specially formatted commands to VIRTEL on the same 3270 session through which the application communicates with the end user. An application can request VIRTEL functions in the following ways:</p>
 <ul class="simple">
 <li>By sending a message containing structured fields recognized by VIRTEL</li>
 <li>By embedding HOST4WEB commands in the 3270 screen (available from VIRTEL version 4.28 onwards)</li>
 </ul>
 <div class="section" id="structred-fields">
-<span id="index-338"></span><h3>Structred Fields<a class="headerlink" href="#structred-fields" title="Permalink to this headline">¶</a></h3>
+<span id="index-340"></span><h3>Structred Fields<a class="headerlink" href="#structred-fields" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>In addition to sending normal screen display data, a 3270
 application may also send data in specially formatted fields known
@@ -10238,7 +10238,7 @@ fields, thus nnnn is always 4 more than the length of the data.</dd>
 </dl>
 </div>
 <div class="section" id="sending-structured-fields-via-the-write-structured-field-command">
-<span id="index-339"></span><h4>Sending structured fields via the Write Structured Field command<a class="headerlink" href="#sending-structured-fields-via-the-write-structured-field-command" title="Permalink to this headline">¶</a></h4>
+<span id="index-341"></span><h4>Sending structured fields via the Write Structured Field command<a class="headerlink" href="#sending-structured-fields-via-the-write-structured-field-command" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL recognizes that a message contains structured fields whenever the application uses the 3270 command X’F3’
 (Write Structured Field) to send the message to the terminal.
 For CICS applications, the STRFIELD option of the EXEC CICS SEND command requests CICS to send the message using
@@ -10254,7 +10254,7 @@ is also possible to convert a normal message into a structured field message by 
 message exit).</p>
 </div>
 <div class="section" id="sending-structured-fields-using-the-srtvirtel-prefix">
-<span id="index-340"></span><h4>Sending structured fields using the SRTVIRTEL prefix<a class="headerlink" href="#sending-structured-fields-using-the-srtvirtel-prefix" title="Permalink to this headline">¶</a></h4>
+<span id="index-342"></span><h4>Sending structured fields using the SRTVIRTEL prefix<a class="headerlink" href="#sending-structured-fields-using-the-srtvirtel-prefix" title="Permalink to this headline">¶</a></h4>
 <p>If the application monitor does not support the X’F3’ (Write Structured Field) command for sending structured fields
 (for example, IMS), VIRTEL provides an alternative method for processing structured field data. If the 3270 message
 begins with the special header:</p>
@@ -10270,7 +10270,7 @@ For example,</p>
 <p>F3 0016 FAE5 08 08 E3D9F0F0F0F0F0F1 818683A796A34040</p>
 </div>
 <div class="section" id="how-to-determine-if-running-under-virtel">
-<span id="index-341"></span><h4>How To Determine If Running Under VIRTEL<a class="headerlink" href="#how-to-determine-if-running-under-virtel" title="Permalink to this headline">¶</a></h4>
+<span id="index-343"></span><h4>How To Determine If Running Under VIRTEL<a class="headerlink" href="#how-to-determine-if-running-under-virtel" title="Permalink to this headline">¶</a></h4>
 <p>Because the structured fields described in this chapter are understood only by VIRTEL and not by regular 3270
 terminals, your application will need to determine whether it is communicating with a VIRTEL pseudo-terminal before
 writing a VIRTEL structured field. This section describes some techniques that your application can use to decide if it is
@@ -10428,7 +10428,7 @@ id or the VTAM LU name to determine if it is running under VIRTEL, as shown in t
 <p><em>Detecting VIRTEL by testing the VTAM LU name</em></p>
 </div>
 <div class="section" id="fa88-transmit-large-data-message-to-application">
-<span id="index-342"></span><h4>FA88: Transmit large data message to application<a class="headerlink" href="#fa88-transmit-large-data-message-to-application" title="Permalink to this headline">¶</a></h4>
+<span id="index-344"></span><h4>FA88: Transmit large data message to application<a class="headerlink" href="#fa88-transmit-large-data-message-to-application" title="Permalink to this headline">¶</a></h4>
 <p>By using the FA88 structured field, an application can request data from an HTTP terminal without being limited to the
 size of a 3270 screen.</p>
 <p>The application sends an FA88 structured field containing the name of a URL parameter to be retrieved. The “send
@@ -10470,13 +10470,13 @@ bytes remaining. The application continues the procedure until there is no more 
 <p><em>Format of structured field response FA88</em></p>
 </div>
 <div class="section" id="fac8-selection-of-page-template">
-<span id="index-343"></span><h4>FAC8: Selection of page template<a class="headerlink" href="#fac8-selection-of-page-template" title="Permalink to this headline">¶</a></h4>
+<span id="index-345"></span><h4>FAC8: Selection of page template<a class="headerlink" href="#fac8-selection-of-page-template" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL recognizes the FAC8 structured field for the following operations:
 - Change of directory for HTML page templates
 - Change of HTML page template</p>
 <p>To perform more than one function at a time, multiple FAC8 structured fields can be sent in the same message.</p>
 <div class="section" id="structured-field-fac8-code-06">
-<span id="index-344"></span><h5>Structured field FAC8 code 06<a class="headerlink" href="#structured-field-fac8-code-06" title="Permalink to this headline">¶</a></h5>
+<span id="index-346"></span><h5>Structured field FAC8 code 06<a class="headerlink" href="#structured-field-fac8-code-06" title="Permalink to this headline">¶</a></h5>
 <p>Structured field FAC8 code 06 allows the application to specify the name of the VIRTEL directory to be used to retrieve
 the page template for the current 3270 screen and all subsequent screens.
 The format of a structured field FAC8 code 06 is:</p>
@@ -10489,7 +10489,7 @@ The format of a structured field FAC8 code 06 is:</p>
 <p><em>Format of structured field FAC8 code 06</em></p>
 </div>
 <div class="section" id="structured-field-fac8-code-07">
-<span id="index-345"></span><h5>Structured field FAC8 code 07<a class="headerlink" href="#structured-field-fac8-code-07" title="Permalink to this headline">¶</a></h5>
+<span id="index-347"></span><h5>Structured field FAC8 code 07<a class="headerlink" href="#structured-field-fac8-code-07" title="Permalink to this headline">¶</a></h5>
 <p>Structured field FAC8 code 07 allows the application to specify the name of the page template for the current 3270
 screen and all subsequent screens.</p>
 <p>The format of a structured field FAC8 code 07 is:</p>
@@ -10560,7 +10560,7 @@ screen and all subsequent screens.</p>
 </div>
 </div>
 <div class="section" id="fae5-fae6-sending-a-table-variable">
-<span id="index-346"></span><h4>FAE5, FAE6: Sending a table variable<a class="headerlink" href="#fae5-fae6-sending-a-table-variable" title="Permalink to this headline">¶</a></h4>
+<span id="index-348"></span><h4>FAE5, FAE6: Sending a table variable<a class="headerlink" href="#fae5-fae6-sending-a-table-variable" title="Permalink to this headline">¶</a></h4>
 <p>Structured field FAE5 allows the application to send a named data table (“table variable”) to VIRTEL. The data in the
 table variable is made available for insertion in the current HTML page by means of VIRTEL tags coded in the page
 template (see <a class="reference internal" href="#v457ug-table-variables"><span class="std std-ref">“Handling table variables”</span></a>), or by means of a scenario instruction (see “FIELD$ DEFINE-CHOICE”,
@@ -10639,7 +10639,7 @@ waits for a further output message from the application before sending the respo
 </div>
 </div>
 <div class="section" id="call-interface">
-<span id="index-347"></span><h4>Call Interface<a class="headerlink" href="#call-interface" title="Permalink to this headline">¶</a></h4>
+<span id="index-349"></span><h4>Call Interface<a class="headerlink" href="#call-interface" title="Permalink to this headline">¶</a></h4>
 <p>Application programs running in a CICS or IMS environment using Language Environment (LE) can request certain
 VIRTEL Web Integration functions by means of callable modules. These modules construct the necessary structured
 fields and send them to VIRTEL via CICS or IMS, thus simplifying the job of the application programmer. These modules
@@ -10647,7 +10647,7 @@ are primarily designed to be called by CICS or IMS-COBOL programs, however they 
 programs written in other languages. The modules, CALL VIRSETA, CALL VIRSETV (for CICS), CALL VIRSETAI, CALL
 VIRSETVI (for IMS) and CALL VIRTEL, are described in the following sections.</p>
 <div class="section" id="call-virseta">
-<span id="index-348"></span><h5>CALL VIRSETA<a class="headerlink" href="#call-virseta" title="Permalink to this headline">¶</a></h5>
+<span id="index-350"></span><h5>CALL VIRSETA<a class="headerlink" href="#call-virseta" title="Permalink to this headline">¶</a></h5>
 <p>This module allows a CICS application program to copy an array of values into a VIRTEL table variable. The calling
 program supplies the name of the variable and an array containing the values. The VIRSETA module builds one or more
 FAE6 structured fields containing the variable name and the values, and sends the structured field(s) to VIRTEL using
@@ -10712,7 +10712,7 @@ The following abend codes may be issued by VIRSETA:</p>
 <p>Additionally CICS may issue an abend if the EXEC CICS SEND STRFIELD command is unsuccessful.</p>
 </div>
 <div class="section" id="call-virsetv">
-<span id="index-349"></span><h5>CALL VIRSETV<a class="headerlink" href="#call-virsetv" title="Permalink to this headline">¶</a></h5>
+<span id="index-351"></span><h5>CALL VIRSETV<a class="headerlink" href="#call-virsetv" title="Permalink to this headline">¶</a></h5>
 <p>This module allows a CICS application program to set the value of a VIRTEL variable. The calling program supplies the
 name of the variable and the value to be set. The VIRSETV module builds an FAE6 structured field containing the
 variable name and value, and sends the structured field to VIRTEL using the EXEC CICS SEND STRFIELD command.</p>
@@ -10760,7 +10760,7 @@ The following abend codes may be issued by VIRSETV:</p>
 <p>Additionally CICS may issue an abend if the EXEC CICS SEND STRFIELD command is unsuccessful.</p>
 </div>
 <div class="section" id="call-virsetai">
-<span id="index-350"></span><h5>CALL VIRSETAI<a class="headerlink" href="#call-virsetai" title="Permalink to this headline">¶</a></h5>
+<span id="index-352"></span><h5>CALL VIRSETAI<a class="headerlink" href="#call-virsetai" title="Permalink to this headline">¶</a></h5>
 <p>This module allows an IMS application program to copy an array of values into a VIRTEL table variable. The calling
 program supplies the name of the variable and an array containing the values. The VIRSETAI module builds one or
 more FAE6 structured fields containing the variable name and the values, and sends the structured field(s) to VIRTEL
@@ -10815,7 +10815,7 @@ create a VIRTEL table variable containing values of varying lengths, use CALL VI
 <p><em>Example of VIRTEL Web Integration application using CALL VIRSETAI</em></p>
 </div>
 <div class="section" id="call-virsetvi">
-<span id="index-351"></span><h5>CALL VIRSETVI<a class="headerlink" href="#call-virsetvi" title="Permalink to this headline">¶</a></h5>
+<span id="index-353"></span><h5>CALL VIRSETVI<a class="headerlink" href="#call-virsetvi" title="Permalink to this headline">¶</a></h5>
 <p>This module allows an IMS application program to set the value of a VIRTEL variable. The calling program supplies the
 name of the variable and the value to be set. The VIRSETVI module builds an FAE6 structured field containing the
 variable name and value, and sends the structured field to VIRTEL using the CALL ‘CBLTDLI’ USING ISRT, LS-IOPCB,
@@ -10855,7 +10855,7 @@ variable and adds the first value to it. Subsequent calls add additional values 
 <p><em>Example of VIRTEL Web Integration application using CALL VIRSETVI</em></p>
 </div>
 <div class="section" id="call-virtel">
-<span id="index-352"></span><h5>CALL VIRTEL<a class="headerlink" href="#call-virtel" title="Permalink to this headline">¶</a></h5>
+<span id="index-354"></span><h5>CALL VIRTEL<a class="headerlink" href="#call-virtel" title="Permalink to this headline">¶</a></h5>
 <p>Application programs running in a CICS environment with LE can also call a module named VIRTEL (see source
 delivered in the VIRTEL SAMPLIB library at installation time) which builds and sends the structured fields necessary to
 invoke the following functions:
@@ -10992,7 +10992,7 @@ CPT_NUM1) and to request the use of a specific page template (page WEB2VIRT in d
 <span class="target" id="v457ug-host4web"></span></div>
 </div>
 <div class="section" id="host4web-commands">
-<span id="index-353"></span><h4>HOST4WEB commands<a class="headerlink" href="#host4web-commands" title="Permalink to this headline">¶</a></h4>
+<span id="index-355"></span><h4>HOST4WEB commands<a class="headerlink" href="#host4web-commands" title="Permalink to this headline">¶</a></h4>
 <p>When an application is invoked from a browser via an entry point defined with emulation type HOST4WEB, the
 application can use a set of VIRTEL control commands known as “HOST4WEB” commands, which are coded in the 3270
 screen.2</p>
@@ -11014,7 +11014,7 @@ in ISPF, use an attribute character defined as INTENS(NON) in the )ATTR section 
 command to ensure that HOST4WEB commands are transmitted to VIRTEL in their entirety.</p>
 </div>
 <div class="section" id="virtel-prefix">
-<span id="index-354"></span><h5>2VIRTEL prefix<a class="headerlink" href="#virtel-prefix" title="Permalink to this headline">¶</a></h5>
+<span id="index-356"></span><h5>2VIRTEL prefix<a class="headerlink" href="#virtel-prefix" title="Permalink to this headline">¶</a></h5>
 <p>An application can send a 3270 message with a special prefix to indicate to VIRTEL that the screen contains HOST4WEB
 commands.</p>
 <p>The prefix consists of a 3270 field starting with the characters ‘2VIRTEL’. This field must be the first field transmitted in
@@ -11025,7 +11025,7 @@ the message.</p>
 <h5>List of commands<a class="headerlink" href="#list-of-commands" title="Permalink to this headline">¶</a></h5>
 </div>
 <div class="section" id="c-auto-variables-command-auto-variables">
-<span id="index-355"></span><h5>C AUTO VARIABLES (Command Auto Variables)<a class="headerlink" href="#c-auto-variables-command-auto-variables" title="Permalink to this headline">¶</a></h5>
+<span id="index-357"></span><h5>C AUTO VARIABLES (Command Auto Variables)<a class="headerlink" href="#c-auto-variables-command-auto-variables" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">AUTO</span> <span class="n">VARIABLES</span>
 </pre></div>
 </div>
@@ -11037,7 +11037,7 @@ cancels the effect of the KEEP VARIABLES command.</p>
 </div>
 </div>
 <div class="section" id="c-keep-variables-command-keep-variables">
-<span id="index-356"></span><h5>C KEEP VARIABLES (Command Keep Variables)<a class="headerlink" href="#c-keep-variables-command-keep-variables" title="Permalink to this headline">¶</a></h5>
+<span id="index-358"></span><h5>C KEEP VARIABLES (Command Keep Variables)<a class="headerlink" href="#c-keep-variables-command-keep-variables" title="Permalink to this headline">¶</a></h5>
 <dl class="docutils">
 <dt>::</dt>
 <dd>C KEEP VARIABLES</dd>
@@ -11052,7 +11052,7 @@ freed at the end of the transaction.</p>
 </div>
 </div>
 <div class="section" id="c-kill-variables-command-kill-variables">
-<span id="index-357"></span><h5>C KILL VARIABLES (Command Kill Variables)<a class="headerlink" href="#c-kill-variables-command-kill-variables" title="Permalink to this headline">¶</a></h5>
+<span id="index-359"></span><h5>C KILL VARIABLES (Command Kill Variables)<a class="headerlink" href="#c-kill-variables-command-kill-variables" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">KILL</span> <span class="n">VARIABLES</span>
 </pre></div>
 </div>
@@ -11063,7 +11063,7 @@ freed at the end of the transaction.</p>
 </div>
 </div>
 <div class="section" id="c-return-command-return">
-<span id="index-358"></span><h5>C RETURN (Command Return)<a class="headerlink" href="#c-return-command-return" title="Permalink to this headline">¶</a></h5>
+<span id="index-360"></span><h5>C RETURN (Command Return)<a class="headerlink" href="#c-return-command-return" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">RETURN</span>
 </pre></div>
 </div>
@@ -11071,7 +11071,7 @@ freed at the end of the transaction.</p>
 this command is never displayed to the user.</p>
 </div>
 <div class="section" id="c-scan-next-screen-command-scan">
-<span id="index-359"></span><h5>C SCAN NEXT SCREEN (Command Scan)<a class="headerlink" href="#c-scan-next-screen-command-scan" title="Permalink to this headline">¶</a></h5>
+<span id="index-361"></span><h5>C SCAN NEXT SCREEN (Command Scan)<a class="headerlink" href="#c-scan-next-screen-command-scan" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">SCAN</span> <span class="n">NEXT</span> <span class="n">SCREEN</span>
 </pre></div>
 </div>
@@ -11083,14 +11083,14 @@ need for a ‘2VIRTEL’ prefix.</p>
 </div>
 </div>
 <div class="section" id="c-wait-next-screen-command-wait">
-<span id="index-360"></span><h5>C WAIT NEXT SCREEN (Command Wait)<a class="headerlink" href="#c-wait-next-screen-command-wait" title="Permalink to this headline">¶</a></h5>
+<span id="index-362"></span><h5>C WAIT NEXT SCREEN (Command Wait)<a class="headerlink" href="#c-wait-next-screen-command-wait" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">WAIT</span> <span class="n">NEXT</span> <span class="n">SCREEN</span>
 </pre></div>
 </div>
 <p>Indicates that the current screen should not be sent to the user yet.</p>
 </div>
 <div class="section" id="c-termsess-command-terminate-session">
-<span id="index-361"></span><h5>C TERMSESS (Command Terminate Session)<a class="headerlink" href="#c-termsess-command-terminate-session" title="Permalink to this headline">¶</a></h5>
+<span id="index-363"></span><h5>C TERMSESS (Command Terminate Session)<a class="headerlink" href="#c-termsess-command-terminate-session" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="n">TERMSESS</span>
 </pre></div>
 </div>
@@ -11098,7 +11098,7 @@ need for a ‘2VIRTEL’ prefix.</p>
 sent.</p>
 </div>
 <div class="section" id="g-emulation-type-get-emulation-type">
-<span id="index-362"></span><h5>G EMULATION TYPE (Get Emulation Type)<a class="headerlink" href="#g-emulation-type-get-emulation-type" title="Permalink to this headline">¶</a></h5>
+<span id="index-364"></span><h5>G EMULATION TYPE (Get Emulation Type)<a class="headerlink" href="#g-emulation-type-get-emulation-type" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="n">EMULATION</span> <span class="n">TYPE</span>
 </pre></div>
 </div>
@@ -11106,7 +11106,7 @@ sent.</p>
 defined in the entry point.</p>
 </div>
 <div class="section" id="g-page-name-get-current-template-name">
-<span id="index-363"></span><h5>G PAGE NAME (Get Current Template Name)<a class="headerlink" href="#g-page-name-get-current-template-name" title="Permalink to this headline">¶</a></h5>
+<span id="index-365"></span><h5>G PAGE NAME (Get Current Template Name)<a class="headerlink" href="#g-page-name-get-current-template-name" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="n">PAGE</span> <span class="n">NAME</span>
 </pre></div>
 </div>
@@ -11114,7 +11114,7 @@ defined in the entry point.</p>
 current page template.</p>
 </div>
 <div class="section" id="g-url-parameter-get-url-parameter">
-<span id="index-364"></span><h5>G URL PARAMETER (Get URL Parameter)<a class="headerlink" href="#g-url-parameter-get-url-parameter" title="Permalink to this headline">¶</a></h5>
+<span id="index-366"></span><h5>G URL PARAMETER (Get URL Parameter)<a class="headerlink" href="#g-url-parameter-get-url-parameter" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="n">URL</span> <span class="n">PARAMETER</span> <span class="n">paramname</span>
 </pre></div>
 </div>
@@ -11122,7 +11122,7 @@ current page template.</p>
 parameter paramname in the URL.</p>
 </div>
 <div class="section" id="s-directory-set-temporary-directory-name">
-<span id="index-365"></span><h5>S DIRECTORY (Set Temporary Directory Name)<a class="headerlink" href="#s-directory-set-temporary-directory-name" title="Permalink to this headline">¶</a></h5>
+<span id="index-367"></span><h5>S DIRECTORY (Set Temporary Directory Name)<a class="headerlink" href="#s-directory-set-temporary-directory-name" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">DIRECTORY</span> <span class="n">dirname</span>
 </pre></div>
 </div>
@@ -11131,7 +11131,7 @@ parameter paramname in the URL.</p>
 sub-application (as described 23). This name must not contain any blanks.</p>
 </div>
 <div class="section" id="s-global-page-set-global-template-name">
-<span id="index-366"></span><h5>S GLOBAL PAGE (Set Global Template Name)<a class="headerlink" href="#s-global-page-set-global-template-name" title="Permalink to this headline">¶</a></h5>
+<span id="index-368"></span><h5>S GLOBAL PAGE (Set Global Template Name)<a class="headerlink" href="#s-global-page-set-global-template-name" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">GLOBAL</span> <span class="n">PAGE</span> <span class="n">pagename</span>
 </pre></div>
 </div>
@@ -11139,7 +11139,7 @@ sub-application (as described 23). This name must not contain any blanks.</p>
 must not contain any blanks.</p>
 </div>
 <div class="section" id="s-page-set-temporary-template-name">
-<span id="index-367"></span><h5>S PAGE (Set Temporary Template Name)<a class="headerlink" href="#s-page-set-temporary-template-name" title="Permalink to this headline">¶</a></h5>
+<span id="index-369"></span><h5>S PAGE (Set Temporary Template Name)<a class="headerlink" href="#s-page-set-temporary-template-name" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">PAGE</span> <span class="n">pagename</span>
 </pre></div>
 </div>
@@ -11147,7 +11147,7 @@ must not contain any blanks.</p>
 name must not contain any blanks.</p>
 <span class="target" id="v457ug-set-variable"></span></div>
 <div class="section" id="s-variable-set-variable">
-<span id="index-368"></span><h5>S VARIABLE (Set Variable)<a class="headerlink" href="#s-variable-set-variable" title="Permalink to this headline">¶</a></h5>
+<span id="index-370"></span><h5>S VARIABLE (Set Variable)<a class="headerlink" href="#s-variable-set-variable" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">VARIABLE</span> <span class="n">varname</span><span class="o">+</span><span class="n">value</span><span class="o">+</span>
 </pre></div>
 </div>
@@ -11159,9 +11159,9 @@ which act as field delimiters.</p>
 </div>
 </div>
 <div class="section" id="e-mail">
-<span id="index-369"></span><h3>E-mail<a class="headerlink" href="#e-mail" title="Permalink to this headline">¶</a></h3>
+<span id="index-371"></span><h3>E-mail<a class="headerlink" href="#e-mail" title="Permalink to this headline">¶</a></h3>
 <span class="target" id="v457ug-email-retrieve-data"></span><div class="section" id="fac8-retrieve-data-from-an-e-mail">
-<span id="index-370"></span><h4>FAC8: Retrieve data from an e-mail<a class="headerlink" href="#fac8-retrieve-data-from-an-e-mail" title="Permalink to this headline">¶</a></h4>
+<span id="index-372"></span><h4>FAC8: Retrieve data from an e-mail<a class="headerlink" href="#fac8-retrieve-data-from-an-e-mail" title="Permalink to this headline">¶</a></h4>
 <p>An application started by an incoming e-mail (see <a class="reference internal" href="#v457ug-email-incoming"><span class="std std-ref">“Incomming e-mails”</span></a>) can retrieve data from the content
 of the e-mail. To request VIRTEL to extract the data from the e-mail, the application sends a structured field FAC8 code
 12 or 13 to the associated relay (3270 pseudo-terminal). VIRTEL intercepts the structured field and sends a response to
@@ -11343,7 +11343,7 @@ Values are same as the ‘option’ field of the corresponding request.
 </div>
 </div>
 <div class="section" id="fad4-sending-an-e-mail-from-a-host-application">
-<span id="index-371"></span><h4>FAD4: Sending an e-mail from a host application<a class="headerlink" href="#fad4-sending-an-e-mail-from-a-host-application" title="Permalink to this headline">¶</a></h4>
+<span id="index-373"></span><h4>FAD4: Sending an e-mail from a host application<a class="headerlink" href="#fad4-sending-an-e-mail-from-a-host-application" title="Permalink to this headline">¶</a></h4>
 <p>It is possible at any time to send an e-mail from a host application under VIRTEL control. This operation is performed
 by sending a WRITE STRUCTURED FIELD to the 3270 session which is intercepted by VIRTEL. The structured field data
 consists of a sequence of FAD4 structured fields as described below:</p>
@@ -11469,16 +11469,16 @@ Total is €2345
 </div>
 </div>
 <div class="section" id="v457ug-security">
-<span id="index-372"></span><span id="id12"></span><h2>Security<a class="headerlink" href="#v457ug-security" title="Permalink to this headline">¶</a></h2>
+<span id="index-374"></span><span id="id12"></span><h2>Security<a class="headerlink" href="#v457ug-security" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-web-access-security">
-<span id="index-373"></span><h3>VIRTEL Web Access Security<a class="headerlink" href="#virtel-web-access-security" title="Permalink to this headline">¶</a></h3>
+<span id="index-375"></span><h3>VIRTEL Web Access Security<a class="headerlink" href="#virtel-web-access-security" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL examines the URL of every VIRTEL Web Access request which arrives from a browser. Since there is no
 permanent IP session between the browser and VIRTEL, there is less risk of a session being “hijacked”. In addition to
 standard network security features (firewall, network sign on, SSO, etc.), each URL sent to VIRTEL has a structure which
 allows VIRTEL to enforce authorization rules based on Entry Point, Rules, and Transactions, which are VIRTEL entities
 described in the “VIRTEL Connectivity Reference” manual.</p>
 <div class="section" id="specifying-security-in-the-entry-point">
-<span id="index-374"></span><h4>Specifying security in the entry point<a class="headerlink" href="#specifying-security-in-the-entry-point" title="Permalink to this headline">¶</a></h4>
+<span id="index-376"></span><h4>Specifying security in the entry point<a class="headerlink" href="#specifying-security-in-the-entry-point" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL supplies a signon program for HTTP lines called VIR0020H (refer to the “VIRTEL Connectivity Reference” manual
 for more details about how to specify a signon program in an entry point).</p>
 <p>When the first call is made to a secure transaction under an entry point which specifies VIR0020H as its signon
@@ -11491,7 +11491,7 @@ Depending on the userid, the security manager may authorize or deny access to th
 <p><em>Example of signon dialog box displayed by browser</em></p>
 </div>
 <div class="section" id="specifying-security-in-the-transaction">
-<span id="index-375"></span><h4>Specifying security in the transaction<a class="headerlink" href="#specifying-security-in-the-transaction" title="Permalink to this headline">¶</a></h4>
+<span id="index-377"></span><h4>Specifying security in the transaction<a class="headerlink" href="#specifying-security-in-the-transaction" title="Permalink to this headline">¶</a></h4>
 <p>To display the signon dialog box shown above, the transaction under the entry point must specify SECURITY 1
 (standard). Refer to the “Transactions” section of the “VIRTEL Connectivity Reference” manual for details of the
 security field in the VIRTEL transaction definition.</p>
@@ -11501,14 +11501,14 @@ transaction. Specifying security at the directory level can be useful in that it
 displaying a static page which has no associated application transaction.</p>
 </div>
 <div class="section" id="mixed-case-password-support">
-<span id="index-376"></span><h4>Mixed-case password support<a class="headerlink" href="#mixed-case-password-support" title="Permalink to this headline">¶</a></h4>
+<span id="index-378"></span><h4>Mixed-case password support<a class="headerlink" href="#mixed-case-password-support" title="Permalink to this headline">¶</a></h4>
 <p>If SECUR=RACROUTE or SECUR=(RACROUTE,RACF) is specified in the VIRTCT, and if the security manager reports that it
 supports lower-case characters in passwords, then VIRTEL will pass all passwords to the security manager in mixed
 case as entered by the user. Otherwise VIRTEL will translate all passwords to upper case before passing them to the
 security manager. Message VIR0861I at integration indicates that VIRTEL will use mixed-case passwords.</p>
 </div>
 <div class="section" id="automatic-retrieval-of-username">
-<span id="index-377"></span><h4>Automatic retrieval of username<a class="headerlink" href="#automatic-retrieval-of-username" title="Permalink to this headline">¶</a></h4>
+<span id="index-379"></span><h4>Automatic retrieval of username<a class="headerlink" href="#automatic-retrieval-of-username" title="Permalink to this headline">¶</a></h4>
 <p>NTLM security allows VIRTEL to retrieve the username under which the user has already signed on to Windows. This
 allows VIRTEL Web Access to sign on the user without requiring him or her to enter a username and password.</p>
 <p>When SECURITY 2 (NTLM) is specified in the VIRTEL transaction definition (either the application transaction or the
@@ -11523,7 +11523,7 @@ cannot verify the validity of the username, and cannot propagate the signon to o
 as the value of the network.automatic-ntlm-auth.trusted-uris parameter.</p>
 <span class="target" id="v457ug-data-encryption-ssl"></span></div>
 <div class="section" id="data-encryption-by-at-tls-ssl">
-<span id="index-378"></span><h4>Data encryption by AT-TLS/SSL<a class="headerlink" href="#data-encryption-by-at-tls-ssl" title="Permalink to this headline">¶</a></h4>
+<span id="index-380"></span><h4>Data encryption by AT-TLS/SSL<a class="headerlink" href="#data-encryption-by-at-tls-ssl" title="Permalink to this headline">¶</a></h4>
 <p>The AT-TLS feature (“Application Transparent Transport Layer Security”), available with z/OS Communication Server
 V1R7 and later releases, allows direct access to the VIRTEL Web Access server in SSL mode (HTTPS), without using an
 intermediate server. The SSLSETUP job in the VIRTEL SAMPLIB contains an example of the definitions required to place
@@ -11536,8 +11536,8 @@ proxy is to transform the dataflow into HTTP mode before sending it on to VIRTEL
 <p class="last">Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.</p>
 </div>
 </div>
-<div class="section" id="index-379">
-<span id="identification-by-certificate"></span><h4>Identification by certificate<a class="headerlink" href="#index-379" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="index-381">
+<span id="identification-by-certificate"></span><h4>Identification by certificate<a class="headerlink" href="#index-381" title="Permalink to this headline">¶</a></h4>
 <p>The definition of a transaction with SECURITY 3 (TLS) allows VIRTEL to recognize a VIRTEL Web Access user by means of
 a digital certificate installed in the user’s web browser. VIRTEL will use the RACF userid associated with the certificate
 to determine the user’s authority to execute the transaction.</p>
@@ -11557,7 +11557,7 @@ user’s workstation and installed in the user’s browser.</p>
 </div>
 <span class="target" id="v457ug-password-encryption"></span></div>
 <div class="section" id="password-encryption">
-<span id="index-380"></span><h4>Password encryption<a class="headerlink" href="#password-encryption" title="Permalink to this headline">¶</a></h4>
+<span id="index-382"></span><h4>Password encryption<a class="headerlink" href="#password-encryption" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL Web Access offers the possibility of encrypting passwords (3270 non-display fields) transmitted in HTML pages.
 VIRTEL uses the encryption facilities provided by the System z hardware through the z/OS Integrated Cryptographic
 Service Facility (ICSF). Password encryption is available only when using VIRTEL Web Access in Ajax mode using the
@@ -11571,7 +11571,7 @@ the name and ICSF as the encryption engine, as in example shown below:</p>
 <p><em>CRYPTn parameter for password encryption using WEB2AJAX.htm</em></p>
 <span class="target" id="v457ug-signon-using-html"></span></div>
 <div class="section" id="signon-using-html-fields">
-<span id="index-381"></span><h4>Signon using HTML fields<a class="headerlink" href="#signon-using-html-fields" title="Permalink to this headline">¶</a></h4>
+<span id="index-383"></span><h4>Signon using HTML fields<a class="headerlink" href="#signon-using-html-fields" title="Permalink to this headline">¶</a></h4>
 <p>The definition of a transaction with SECURITY 4 (HTML) allows VIRTEL to obtain the userid and password from fields
 embedded in the HTML page.</p>
 <p>When a security type 4 transaction is requested, and the user is not already signed on, VIRTEL will send the requested
@@ -11605,7 +11605,7 @@ P1=Update                          P3=Return                        P12=Server
 </pre></div>
 </div>
 <p><em>HTML security: Example transaction with security type 4</em></p>
-<p id="index-382">The figure below shows an example of a page template containing userid and password fields which can be used with
+<p id="index-384">The figure below shows an example of a page template containing userid and password fields which can be used with
 the security type 4 transaction as shown above.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
 &lt;!doctype html public &quot;-//w3c//dtd html 4.0//en&quot;&gt;
@@ -11657,7 +11657,7 @@ genloginform(&quot;{{{NAME-OF (PAGE)}}}++{{{AJAX-SESSION-CODE}}}&quot;,
 <p><em>HTML security: Example page template</em></p>
 </div>
 <div class="section" id="security-by-rule">
-<span id="index-383"></span><h4>Security by rule<a class="headerlink" href="#security-by-rule" title="Permalink to this headline">¶</a></h4>
+<span id="index-385"></span><h4>Security by rule<a class="headerlink" href="#security-by-rule" title="Permalink to this headline">¶</a></h4>
 <p>The rules attached to an HTTP line allow security to be implemented at the entry point level. The following example
 shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point
 specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
@@ -11768,9 +11768,9 @@ CREATION OK
 </div>
 </div>
 <div class="section" id="howtos">
-<span id="index-384"></span><h2>HOWTOs<a class="headerlink" href="#howtos" title="Permalink to this headline">¶</a></h2>
+<span id="index-386"></span><h2>HOWTOs<a class="headerlink" href="#howtos" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-use-different-screen-sizes">
-<span id="index-385"></span><h3>How To Use Different Screen Sizes<a class="headerlink" href="#how-to-use-different-screen-sizes" title="Permalink to this headline">¶</a></h3>
+<span id="index-387"></span><h3>How To Use Different Screen Sizes<a class="headerlink" href="#how-to-use-different-screen-sizes" title="Permalink to this headline">¶</a></h3>
 <p>Although the standard 3270 screen size is 24 rows by 80 columns, certain applications benefit from the use of
 terminals with larger screen sizes. The screen size is determined by the LOGMODE used for the session between
 VIRTEL and the host application. VTAM offers logmodes for the following standard screen sizes:</p>
@@ -11927,7 +11927,7 @@ non-standard screen sizes.</p>
 </div>
 </div>
 <div class="section" id="how-to-support-multiple-codes-pages">
-<span id="index-386"></span><h3>How To Support Multiple Codes Pages<a class="headerlink" href="#how-to-support-multiple-codes-pages" title="Permalink to this headline">¶</a></h3>
+<span id="index-388"></span><h3>How To Support Multiple Codes Pages<a class="headerlink" href="#how-to-support-multiple-codes-pages" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL can use two methods of EBCDIC translation and this is governed by the template or web page being displayed. If
 the page contains the embedded VIRTEL tag {{{SET-OUTPUT-ENCODING-UTF-8}}} than the TCT DEFUTF8 parameter is
 used. If the page doesn’t contain the tag then the code pages identified by the COUNTRY parameter are used. (See
@@ -11974,7 +11974,7 @@ and SET$ URL-ENCODING instructions. These are described in the VWA Users Guide.<
 </div>
 </div>
 <div class="section" id="how-to-handle-host-session-termination">
-<span id="index-387"></span><h3>How To Handle Host Session Termination<a class="headerlink" href="#how-to-handle-host-session-termination" title="Permalink to this headline">¶</a></h3>
+<span id="index-389"></span><h3>How To Handle Host Session Termination<a class="headerlink" href="#how-to-handle-host-session-termination" title="Permalink to this headline">¶</a></h3>
 <p>When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available:
 - Return to the application selection menu
 - Display a specific HTML page
@@ -12033,7 +12033,7 @@ standard in the W2H-DIR directory but may be copied to another directory if requ
 </div>
 </div>
 <div class="section" id="how-to-access-a-host-application-directly">
-<span id="index-388"></span><h3>How To Access A Host Application Directly<a class="headerlink" href="#how-to-access-a-host-application-directly" title="Permalink to this headline">¶</a></h3>
+<span id="index-390"></span><h3>How To Access A Host Application Directly<a class="headerlink" href="#how-to-access-a-host-application-directly" title="Permalink to this headline">¶</a></h3>
 <p>It is not always necessary to pass via an application selection menu to connect to a host application. A host application
 may be accessed directly by opening the URL containing the complete path to the application. This URL may result in
 the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a
@@ -12083,7 +12083,7 @@ Input Scenario   ===&gt;                   Output Scenario ===&gt;</p>
 </div>
 </div>
 <div class="section" id="how-to-change-the-font-for-web-access">
-<span id="index-389"></span><h3>How To Change The Font For Web Access<a class="headerlink" href="#how-to-change-the-font-for-web-access" title="Permalink to this headline">¶</a></h3>
+<span id="index-391"></span><h3>How To Change The Font For Web Access<a class="headerlink" href="#how-to-change-the-font-for-web-access" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#v457ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to change the font family and font size. By default VIRTEL will
 calculate an appropriate font size to fit the browser window size, but you can choose a fixed font size if you prefer.
 VIRTEL Web Access uses a fixed-pitch font to display the 3270 screen. If you do not like the default font then you can
@@ -12092,14 +12092,14 @@ New, Fixedsys, Terminal, Consolas, and Lucida Console. You can use the Windows C
 the installed fonts.</p>
 </div>
 <div class="section" id="how-to-change-the-3270-display-style">
-<span id="index-390"></span><h3>How To Change The 3270 Display Style<a class="headerlink" href="#how-to-change-the-3270-display-style" title="Permalink to this headline">¶</a></h3>
+<span id="index-392"></span><h3>How To Change The 3270 Display Style<a class="headerlink" href="#how-to-change-the-3270-display-style" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference internal" href="#v457ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to change the display style to suit your needs. By default VIRTEL
 provides 3 defaults models named “3270”, “Gray” and “White”, If you need some more, you must request your
 Administrators.</p>
 <p>Selecting display pattern : The display model changes will take effect at the next connection to a 3270 application.</p>
 </div>
 <div class="section" id="how-to-customize-the-enter-key-settings">
-<span id="index-391"></span><h3>How To Customize The Enter Key Settings<a class="headerlink" href="#how-to-customize-the-enter-key-settings" title="Permalink to this headline">¶</a></h3>
+<span id="index-393"></span><h3>How To Customize The Enter Key Settings<a class="headerlink" href="#how-to-customize-the-enter-key-settings" title="Permalink to this headline">¶</a></h3>
 <p>Many 3270 users prefer to customize the keyboard mapping so that the “Enter” key on the main keyboard is handled
 as a 3270 newline, while the right “Ctrl” key and the “Enter” key on the numeric keypad are treated as 3270 Enter.
 The <a class="reference internal" href="#v457ug-settings-menu"><span class="std std-ref">“Web Access settings menu”</span></a> allows you to specify this configuration using the following settings:</p>
@@ -12130,7 +12130,7 @@ turn on a special feature by introducing the following command into a “custom.
 <span class="target" id="v457ug-customize-display"></span></div>
 </div>
 <div class="section" id="how-to-customize-display-styles">
-<span id="index-392"></span><h3>How To Customize Display Styles<a class="headerlink" href="#how-to-customize-display-styles" title="Permalink to this headline">¶</a></h3>
+<span id="index-394"></span><h3>How To Customize Display Styles<a class="headerlink" href="#how-to-customize-display-styles" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL users can customise the screen display to suit their needs. An exception to this is the model type which is an
 Administration function. Administrators will configure model types which can then be selected by a user.</p>
 <div class="section" id="add-or-remove-a-display-style">
@@ -12250,11 +12250,11 @@ delivered from number #5310 and over.</p>
 </div>
 </div>
 <div class="section" id="how-to-change-the-default-user-settings">
-<span id="index-393"></span><h3>How To Change The Default User Settings<a class="headerlink" href="#how-to-change-the-default-user-settings" title="Permalink to this headline">¶</a></h3>
+<span id="index-395"></span><h3>How To Change The Default User Settings<a class="headerlink" href="#how-to-change-the-default-user-settings" title="Permalink to this headline">¶</a></h3>
 <p>The site default settings for Web Access are stored in the file w2hparm.js (see <a class="reference internal" href="#v457ug-global-modifications"><span class="std std-ref">“Global modification of Web Access settings”</span></a>)</p>
 </div>
 <div class="section" id="how-to-support-a-reverse-proxy">
-<span id="index-394"></span><h3>How To Support A Reverse Proxy<a class="headerlink" href="#how-to-support-a-reverse-proxy" title="Permalink to this headline">¶</a></h3>
+<span id="index-396"></span><h3>How To Support A Reverse Proxy<a class="headerlink" href="#how-to-support-a-reverse-proxy" title="Permalink to this headline">¶</a></h3>
 <p>If your installation uses a reverse proxy (or bastion host) between the user’s browser and the VIRTEL Web Access
 server, then the VIRTEL log and statistics file will show the IP address of the proxy instead of the address of the end
 user. In order for VIRTEL to recognize and log the originating user’s IP address, you must declare the proxy in the
@@ -12262,7 +12262,7 @@ HTFORWD parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTE
 attached to the HTTP line (see “Rules” in the VIRTEL Connectivity Reference manual).</p>
 </div>
 <div class="section" id="how-to-support-virtual-hosting">
-<span id="index-395"></span><h3>How To Support Virtual Hosting<a class="headerlink" href="#how-to-support-virtual-hosting" title="Permalink to this headline">¶</a></h3>
+<span id="index-397"></span><h3>How To Support Virtual Hosting<a class="headerlink" href="#how-to-support-virtual-hosting" title="Permalink to this headline">¶</a></h3>
 <p>Name-based virtual hosting is a method for supporting multiple sites (for example, site1.mycompany.com and
 site2.mycompany.com) using the same IP address and port number. By means of the “HTTP Host” field in the rules
 attached to the HTTP line, VIRTEL can recognize the site name and direct the request to a specific entry point. Refer to
@@ -12270,7 +12270,7 @@ attached to the HTTP line, VIRTEL can recognize the site name and direct the req
 virtual hosting by running the ARBOLOAD job (delivered in the VIRTEL SAMPLIB) with the VHOST=YES parameter.</p>
 </div>
 <div class="section" id="how-to-control-applist-behaviour">
-<span id="index-396"></span><h3>How To Control APPLIST behaviour<a class="headerlink" href="#how-to-control-applist-behaviour" title="Permalink to this headline">¶</a></h3>
+<span id="index-398"></span><h3>How To Control APPLIST behaviour<a class="headerlink" href="#how-to-control-applist-behaviour" title="Permalink to this headline">¶</a></h3>
 <p>To open an application in a new TAB instead of the current window code the following in the customizable exit <em>before_launchApplink(href)</em>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">To</span> <span class="nb">open</span> <span class="n">an</span> <span class="n">application</span> <span class="p">(</span><span class="n">issued</span> <span class="kn">from</span> <span class="nn">applist</span> <span class="n">transaction</span><span class="p">)</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">new</span> <span class="n">TAB</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">the</span> <span class="n">same</span> <span class="n">window</span> <span class="o">*/</span>
 <span class="n">function</span> <span class="n">before_launchApplink</span><span class="p">(</span><span class="n">href</span><span class="p">)</span> <span class="p">{</span>

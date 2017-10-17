@@ -1249,7 +1249,7 @@ address to VIRTEL for incoming calls. Example:</dd>
 </div>
 <dl class="docutils">
 <dt>Local ident</dt>
-<dd><p class="first">The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading :ref:“Line Parameters”&lt;#_bookmark13&gt;`.</p>
+<dd><p class="first">The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="#bookmark13"><span class="std std-ref">“Line Parameters”,</span></a>.</p>
 <p>The port number must be 1998. This port number is fixed by the XOT
 protocol, and the router does not provide any configuration
 statement which allows the port number to be altered.</p>
@@ -4066,21 +4066,20 @@ terminal definition, or modification of an existing definition:</p>
 &lt;  Decimal digits 0-9
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>Notes:</dt>
-<dd><ul class="first last simple">
-<li>Different combinations of pattern characters may be specified within a single field, for example RH&gt;VT?%% the terminal name and relay names do not have to follow the same pattern (see example below). The ‘?’ character cannot be used in the first character position of the terminal name field because this indicates a physical pool</li>
-</ul>
-</dd>
-</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Different combinations of pattern characters may be specified within a single field, for example RH&gt;VT?%% the terminal name and relay names do not have to follow the same pattern (see example below). The ‘?’ character cannot be used in the first character position of the terminal name field because this indicates a physical pool</p>
+</div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Example</span><span class="p">:</span><span class="o">-</span>
 <span class="n">Terminal</span> <span class="n">name</span>    <span class="n">W2HVT000</span>
 <span class="n">Relay</span> <span class="n">name</span>       <span class="n">RHTERM</span><span class="o">%%</span>
 <span class="n">Relay2</span> <span class="n">name</span>      <span class="n">RH</span><span class="o">&gt;</span><span class="n">X</span><span class="o">&lt;</span><span class="n">Z00</span>
 <span class="n">Repeat</span> <span class="n">count</span>     <span class="mi">256</span>
+
+<span class="n">Would</span> <span class="n">generate</span> <span class="n">terminals</span> <span class="n">W2HVT000</span><span class="o">-</span><span class="n">W2HVT255</span> <span class="k">with</span> <span class="n">relay</span> <span class="n">names</span>
+<span class="n">RHTERM00</span><span class="o">-</span><span class="n">RHTERMFF</span> <span class="ow">and</span> <span class="n">relay2</span> <span class="n">names</span> <span class="n">RHAX0Z00</span><span class="o">-</span><span class="n">RHIX5Z00</span>
 </pre></div>
 </div>
-<p>Would generate terminals W2HVT000-W2HVT255 with relay names RHTERM00-RHTERMFF and relay2 names RHAX0Z00-RHIX5Z00</p>
 <dl class="docutils">
 <dt>*Pool name</dt>
 <dd>In the definition of a logical pool, this field contains the name of the pool. A logical pool name is a 7 character name preceded by an asterisk, in the form *POOLNAM, which matches the logical pool name specified in the “Relay” field of all terminals which use the logical pool. See “logical pool of relays”. For regular terminals, this field must be blank.</dd>
