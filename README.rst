@@ -36,7 +36,7 @@ readthedocs
 
 `readthedocs <https://readthedocs.org>`_
 
-ed-syspertec.com ed.holt@syspertec.com
+ed-syspertec/l7777
 
 `Virtel <http://virtel.readthedocs.io>`_
 
