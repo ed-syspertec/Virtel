@@ -117,7 +117,7 @@ panel. See the example javascript below:-
    * This implementation adds 3 custom CSS to the settings "Display Style" list choice,
    * and removes the "white" default choice from this list.
    */
-   function modify\_settingsValues(name, values) {
+   function modify_settingsValues(name, values) {
       // The target is the "style" list settings
       if (name == "style") {
          // Remove the "white" default entry from the list of choices values.splice( values.indexOf('white'), 1);
@@ -301,14 +301,14 @@ Default 3270 style sheet WEB3270.CSS. Can be found within sources.zip. See Admin
    .RTURQUOISE {background-color: #40E0D0; color: #000000;}
    .RYELLOW {background-color: #FFFF33; color: #000000;}
    .RWHITE {background-color: #FFFFFF; color: #000000;}
-   .SMARTCURSOR\_DEFAULT {text-decoration: underline; color: white;}
-   .SMARTCURSOR\_RBLUE {text-decoration: underline; color: #000090;}
-   .SMARTCURSOR\_RRED {text-decoration: underline; color: #FFFF60;}
-   .SMARTCURSOR\_RPINK {text-decoration: underline; color: #600060;}
-   .SMARTCURSOR\_RGREEN {text-decoration: underline; color: #005000;}
-   .SMARTCURSOR\_RTURQUOISE {text-decoration: underline; color: #200080;}
-   .SMARTCURSOR\_RYELLOW {text-decoration: underline; color: #B00000;}
-   .SMARTCURSOR\_RWHITE {text-decoration: underline; color: black;}
+   .SMARTCURSOR_DEFAULT {text-decoration: underline; color: white;}
+   .SMARTCURSOR_RBLUE {text-decoration: underline; color: #000090;}
+   .SMARTCURSOR_RRED {text-decoration: underline; color: #FFFF60;}
+   .SMARTCURSOR_RPINK {text-decoration: underline; color: #600060;}
+   .SMARTCURSOR_RGREEN {text-decoration: underline; color: #005000;}
+   .SMARTCURSOR_RTURQUOISE {text-decoration: underline; color: #200080;}
+   .SMARTCURSOR_RYELLOW {text-decoration: underline; color: #B00000;}
+   .SMARTCURSOR_RWHITE {text-decoration: underline; color: black;}
    @-webkit-keyframes fieldblinker {
       0% {}
       50% {opacity:0.0}
@@ -375,7 +375,7 @@ Default 3270 style sheet WEB3270.CSS. Can be found within sources.zip. See Admin
       animation: cursorblinker 1s steps(1,start) infinite normal;
       background-color:white;color:black;
    }
-   .HIGHLIGHTED\_INPUTFIELD {background-color:#2F4F4F;}
+   .HIGHLIGHTED_INPUTFIELD {background-color:#2F4F4F;}
    /* Styles for the color of the crosshair cursor lines */
    #vLine {border-left-color:#F2F5A9;}
    #hLine {border-top-color:#F2F5A9;}

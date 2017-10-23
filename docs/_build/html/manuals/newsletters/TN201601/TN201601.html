@@ -281,7 +281,7 @@ panel. See the example javascript below:-</p>
 <span class="o">*</span> <span class="n">This</span> <span class="n">implementation</span> <span class="n">adds</span> <span class="mi">3</span> <span class="n">custom</span> <span class="n">CSS</span> <span class="n">to</span> <span class="n">the</span> <span class="n">settings</span> <span class="s2">&quot;Display Style&quot;</span> <span class="nb">list</span> <span class="n">choice</span><span class="p">,</span>
 <span class="o">*</span> <span class="ow">and</span> <span class="n">removes</span> <span class="n">the</span> <span class="s2">&quot;white&quot;</span> <span class="n">default</span> <span class="n">choice</span> <span class="kn">from</span> <span class="nn">this</span> <span class="nb">list</span><span class="o">.</span>
 <span class="o">*/</span>
-<span class="n">function</span> <span class="n">modify</span>\<span class="n">_settingsValues</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
+<span class="n">function</span> <span class="n">modify_settingsValues</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> <span class="p">{</span>
    <span class="o">//</span> <span class="n">The</span> <span class="n">target</span> <span class="ow">is</span> <span class="n">the</span> <span class="s2">&quot;style&quot;</span> <span class="nb">list</span> <span class="n">settings</span>
    <span class="k">if</span> <span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;style&quot;</span><span class="p">)</span> <span class="p">{</span>
       <span class="o">//</span> <span class="n">Remove</span> <span class="n">the</span> <span class="s2">&quot;white&quot;</span> <span class="n">default</span> <span class="n">entry</span> <span class="kn">from</span> <span class="nn">the</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">choices</span> <span class="n">values</span><span class="o">.</span><span class="n">splice</span><span class="p">(</span> <span class="n">values</span><span class="o">.</span><span class="n">indexOf</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
@@ -438,14 +438,14 @@ input, #classic input {
 .RTURQUOISE {background-color: #40E0D0; color: #000000;}
 .RYELLOW {background-color: #FFFF33; color: #000000;}
 .RWHITE {background-color: #FFFFFF; color: #000000;}
-.SMARTCURSOR\_DEFAULT {text-decoration: underline; color: white;}
-.SMARTCURSOR\_RBLUE {text-decoration: underline; color: #000090;}
-.SMARTCURSOR\_RRED {text-decoration: underline; color: #FFFF60;}
-.SMARTCURSOR\_RPINK {text-decoration: underline; color: #600060;}
-.SMARTCURSOR\_RGREEN {text-decoration: underline; color: #005000;}
-.SMARTCURSOR\_RTURQUOISE {text-decoration: underline; color: #200080;}
-.SMARTCURSOR\_RYELLOW {text-decoration: underline; color: #B00000;}
-.SMARTCURSOR\_RWHITE {text-decoration: underline; color: black;}
+.SMARTCURSOR_DEFAULT {text-decoration: underline; color: white;}
+.SMARTCURSOR_RBLUE {text-decoration: underline; color: #000090;}
+.SMARTCURSOR_RRED {text-decoration: underline; color: #FFFF60;}
+.SMARTCURSOR_RPINK {text-decoration: underline; color: #600060;}
+.SMARTCURSOR_RGREEN {text-decoration: underline; color: #005000;}
+.SMARTCURSOR_RTURQUOISE {text-decoration: underline; color: #200080;}
+.SMARTCURSOR_RYELLOW {text-decoration: underline; color: #B00000;}
+.SMARTCURSOR_RWHITE {text-decoration: underline; color: black;}
 @-webkit-keyframes fieldblinker {
    0% {}
    50% {opacity:0.0}
@@ -512,7 +512,7 @@ input, #classic input {
    animation: cursorblinker 1s steps(1,start) infinite normal;
    background-color:white;color:black;
 }
-.HIGHLIGHTED\_INPUTFIELD {background-color:#2F4F4F;}
+.HIGHLIGHTED_INPUTFIELD {background-color:#2F4F4F;}
 /* Styles for the color of the crosshair cursor lines */
 #vLine {border-left-color:#F2F5A9;}
 #hLine {border-top-color:#F2F5A9;}

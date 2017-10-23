@@ -302,7 +302,11 @@ avoid any changes being lost during a Virtel upgrade.</p>
 member. The various options control the synchronisation between the
 user’s local macro storage and the DDI central repository. Specify one
 of the following options to turn on DDI or remote macro mode:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;w2hparm.useVirtelMacros&quot;</span><span class="p">:[</span><span class="n">false</span> <span class="o">|</span> <span class="n">true</span> <span class="o">|</span> <span class="s2">&quot;never&quot;</span> <span class="o">|</span> <span class="s2">&quot;once&quot;</span> <span class="o">|</span> <span class="s2">&quot;daily&quot;</span> <span class="o">|</span> <span class="s2">&quot;session&quot;</span> <span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Where value can be:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>“never” [default] | “once” | “daily” | “session”
 </pre></div>
 </div>
 <p>Macro options:</p>
@@ -328,12 +332,6 @@ of the following options to turn on DDI or remote macro mode:-</p>
 </tr>
 <tr class="row-odd"><td>Session</td>
 <td>Every time a new browser session is opened</td>
-</tr>
-<tr class="row-even"><td>True</td>
-<td>Same as never</td>
-</tr>
-<tr class="row-odd"><td>False</td>
-<td>DDI macros disabled. This is the default</td>
 </tr>
 </tbody>
 </table>
@@ -459,7 +457,7 @@ arrangement, using separate HTMLTRSF files then the
 that macro changes are reflected in all DDI repositories and
 consequently associated local storage. Update the w2hparm.js file to
 include:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">},</span>
 <span class="s2">&quot;synchronizeVirtelMacros&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -520,12 +518,16 @@ Def     : The “def” keyword identifies the commands and entry values.
 </div>
 <p><strong>Appendix C</strong></p>
 <p><strong>FAQ</strong></p>
-<p>1. Why do I get the following error message after setting
-“w2hparm.useVirtelMacros= true”?</p>
+<ol class="arabic simple">
+<li>Why do I get the following error message after setting</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
 <p><a class="reference internal" href="../../../_images/image1310.png"><img alt="image12" src="../../../_images/image1310.png" style="width: 4.53125in; height: 5.27097in;" /></a></p>
 <p><em>Answer.</em>
 You have turned on DDI macro support (BLUE interface ICON) but the
-application you are accessing is secured. DDI is unable to determine the
+application you are accessing is not secured. DDI is unable to determine the
 userid associated with the transaction.</p>
 <p><strong>Appendix D</strong></p>
 <p><strong>Virtel DDI Support for Macros</strong></p>

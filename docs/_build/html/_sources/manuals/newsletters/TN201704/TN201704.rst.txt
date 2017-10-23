@@ -164,7 +164,13 @@ of the following options to turn on DDI or remote macro mode:-
 
 ::
 
-	"w2hparm.useVirtelMacros":[false | true | "never" | "once" | "daily" | "session" ]
+	w2hparm.useVirtelMacros = {"macrosAutoRefresh":"value"};
+
+Where value can be:-
+
+::
+
+	“never” [default] | “once” | “daily” | “session”
 
 Macro options:
 
@@ -178,10 +184,6 @@ Macro options:
 | Daily     | Once a day                                                                |
 +-----------+---------------------------------------------------------------------------+
 | Session   | Every time a new browser session is opened                                |
-+-----------+---------------------------------------------------------------------------+
-| True      | Same as never                                                             |
-+-----------+---------------------------------------------------------------------------+
-| False     | DDI macros disabled. This is the default                                  |
 +-----------+---------------------------------------------------------------------------+
 
 The w2hparm.js member can be found in the sources.zip file. This can be
@@ -349,7 +351,7 @@ include:-
 
 ::
 
-	"useVirtelMacros":true,
+	"useVirtelMacros":{"macrosAutoRefresh":"session"},
 	"synchronizeVirtelMacros":true,
 
 **Appendix A**
@@ -426,13 +428,16 @@ The macro editor supports the following commands:-
 **FAQ**
 
 1. Why do I get the following error message after setting
-“w2hparm.useVirtelMacros= true”?
+
+::
+
+   w2hparm.useVirtelMacros = {"macrosAutoRefresh":"session"};
 
 |image12|
 
 *Answer.*
 You have turned on DDI macro support (BLUE interface ICON) but the
-application you are accessing is secured. DDI is unable to determine the
+application you are accessing is not secured. DDI is unable to determine the
 userid associated with the transaction.
 
 **Appendix D**
