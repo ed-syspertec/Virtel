@@ -335,6 +335,23 @@ of the following options to turn on DDI or remote macro mode:-</p>
 </tr>
 </tbody>
 </table>
+<p>Examples:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">}};</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>var w2hparm = {
+&quot;ctrl&quot;:&quot;Newline&quot;,
+&quot;enter&quot;:&quot;ENTER&quot;,
+&quot;pgup&quot;:&quot;PA1&quot;,
+&quot;pgdn&quot;:&quot;PA2&quot;
+};
+
+w2hparm.userVirtelMacros={“macrosAutoRefresh”:”daily”};
+w2hparm.synchronizeVirtelMacros=true;
+w2hparm.keymapping=true;
+</pre></div>
+</div>
 <p>The w2hparm.js member can be found in the sources.zip file. This can be
 downloaded using the following url: myVirtel:41001/w2h/sources.zip or
 from the Administration portal. Extract the zip file and locate the

@@ -186,6 +186,27 @@ Macro options:
 | Session   | Every time a new browser session is opened                                |
 +-----------+---------------------------------------------------------------------------+
 
+Examples:-
+
+::
+
+	var w2hparm = {"useVirtelMacros":{"macrosAutoRefresh":"session"}};  
+
+or 
+
+::
+
+	var w2hparm = {
+	"ctrl":"Newline",	
+	"enter":"ENTER",
+	"pgup":"PA1",
+	"pgdn":"PA2"
+	};
+
+	w2hparm.userVirtelMacros={“macrosAutoRefresh”:”daily”};
+	w2hparm.synchronizeVirtelMacros=true;	
+	w2hparm.keymapping=true;                   
+
 The w2hparm.js member can be found in the sources.zip file. This can be
 downloaded using the following url: myVirtel:41001/w2h/sources.zip or
 from the Administration portal. Extract the zip file and locate the
