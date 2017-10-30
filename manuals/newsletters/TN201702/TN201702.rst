@@ -3,62 +3,22 @@
 Protecting Virtel Applications with Shibboleth
 ==============================================
 
-This newsletter provides a summary of the configuration tasks involved
-in setting up a Shibboleth / Virtel SAML environment. It does not go
-through the Shibboleth IDP or SP installation in detail. The reader
-should research further for that information. It does, however,
-highlight the relevant files that had to be configured to get the
-interfaces to work within the context of an SSO solution.
+This newsletter provides a summary of the configuration tasks involved in setting up a Shibboleth / Virtel SAML environment. It does not go through the Shibboleth IDP or SP installation in detail. The reader
+should research further for that information. It does, however, highlight the relevant files that had to be configured to get the interfaces to work within the context of an Single Sign On(SSO) solution.
 
-Shibboleth is an “authentication” service, sometimes referred to as a
-federated identity management tool. It consists of two parts – a service
-provider (SP) and an identify provider (IDP). It also uses an LDAP
-server and Apache web servers to provide additional services. The
-communication protocol between the IDP, SP and other components is
-through SAML, a XML based language. The SP protects its supporting
-applications by authorising a user first before allowing access. It can
-protect its applications with a SSO facility. It builds a security
-context by communicating with the IDP to obtain attributes like userid
-(uid), common name (cun), surname (sun) and email address (mail).
+Shibboleth is an “authentication” service, sometimes referred to as a federated identity management tool. It consists of two parts – a service provider (SP) and an identify provider (IDP). It also uses an LDAP server and Apache web servers to provide additional services. The communication protocol between the IDP, SP and other components is through SAML, a XML based language. The SP protects its supporting
+applications by authorising a user first before allowing access. It can protect its applications with a SSO facility. It builds a security context by communicating with the IDP to obtain attributes like userid (uid), common name (cun), surname (sun) and email address (mail).
 
-Normally there is one local “home” identity provider which can be shared
-by many service providers. The security attributes are maintained in a
-LDAP server, with the IDP making requests to extract information on
-behave of the SP when validating users. The extracted information is
-return to the SP once the user has been validated. Validation can be
-through certificates or a simple userid and password.
+Normally there is one local “home” identity provider which can be shared by many service providers. The security attributes are maintained in a LDAP server, with the IDP making requests to extract information on behave of the SP when validating users. The extracted information is return to the SP once the user has been validated. Validation can be through certificates or a simple userid and password.
 
-The Virtel applications, as listed under the APPMENU, are accessed
-through the protected URL https://sp.syspertec.com/Virtel. Once a user
-has been validated by Shibboleth the the Virtel APPMENU will appear
-listing the applications supported by Virtel. A user will select their
-application and will be logged on with further need to provide any
-userid or password. Virtel and Shibboleth use a SSO method for accessing
-Virtel applications. The UID from the LDAP is used in a HTTP SM\_Header
-which is passed to Virtel. Using a Scenario, Virtel obtains a PASSTICKET
-and logs onto the application using the USERID and generated pass
-ticket. See the technical newsletter *2014/07 – Pass tickets and
-supporting Proxy Servers* for further details on how to configure Virtel
-to use HTTP headers in support of an SSO environment.
+The Virtel applications, as listed under the Virtel APPMENU transaction, are accessed through the protected URL https://sp.syspertec.com/Virtel which is defined to the SSO environment. A user accesses The SP for validation prior to being "passed" through to Virtel. Once a user has been validated by Shibboleth, the "pass through" will take place and the the Virtel APPMENU menu will appear listing the applications supported by Virtel. A user will select their application and will then be logged onto that application without further need to provide any userid or password. Virtel and Shibboleth use a SSO method for accessing Virtel applications. The UID from the LDAP, representing the USERID, is used in a special HTTP header - "SM_Header" which is passed to Virtel. Using a Virtel scenario, Virtel obtains a PASSTICKET and logs onto the application using the USERID and generated pass ticket to associate with the userid passed in the SM_HEADER. See the technical newsletter *2014/07 – Pass tickets and supporting Proxy Servers* for further details on how to configure Virtel to use HTTP headers in support of an SSO environment.
 
-Once a user has been validated the security context built by Shibboleth
-will remain within the browser cache so access to any protected resource
-will be permitted using the same security attributes. This means that
-any secure application listed in the Virtel APPMEN can be access without
-further signon validation. Each time a new application is selected a new
-passticket will be generated. This assume that all applications within
-the APPMENU list have been set up to support PASSTICKETS.
+Once a user has been validated the associated security context built by Shibboleth will remain within the browser's cache so that access to any protected resource will be permitted using the same security attributes. This means that any secure application listed in the Virtel APPMENU transaction can be access without further signon validation. Each time a new application is selected a new passticket will be generated. This assumes that all user Virtel Applications within the APPMENU list have been set up to support PASSTICKETS.
 
-Security between the SP and Virtel is over TLS/SSL. To implement this
-secure HTTPS session requires that Virtel is setup to interface with
-AT-TLS. See the Virtel document *“How to activate VIRTEL https using
-AT-TLS”* for further information on setting up the z/OS PAGENT
-configuration. The newsletter *2014/16 – Virtel TLS/SSL Security:
-Signing on using server and client certificates* is also a good
+Security between the SP and Virtel is over TLS/SSL session. To implement this secure session requires that Virtel is setup to interface with AT-TLS. See the Virtel document *“How to activate VIRTEL https using AT-TLS”* for further information on setting up the z/OS PAGENT configuration. The newsletter "*2014/16 – Virtel TLS/SSL Security: Signing on using server and client certificates* is also another good
 reference.
 
-Note: that our Shibboleth testing we did not use client certificates in
-establishing a session with Virtel.
+Note: In our Shibboleth testing we did not use client certificates when establishing a session with Virtel.
 
 **Flow overview**
 
@@ -66,11 +26,9 @@ establishing a session with Virtel.
 
 Fig.1 - Overview of logon sequence
 
-1. User accesses Virtel entity through URL
-   https://sp.syspertec.com/Virtel
+1. User accesses Virtel entity through the protected URL https://sp.syspertec.com/Virtel
 
-2. Service provider requests userid and password through logon
-   template:-
+2. Service provider requests userid and password through logon template:-
 
     |image1|
 
@@ -78,11 +36,9 @@ Fig.2 - Identity Provider logon
 
 3. IDP validates user credentials against LDAP attributes.
 
-4. IDP returns selected attributes to SP. In this case only the UID is
-   required.
+4. IDP returns selected attributes to SP. In this case only the UID, representing the UID, is required.
 
-5. SP redirects user to Virtel APPMENU passing the UID as a header in
-   the HTTP request – SM\_USER.
+5. SP redirects user to Virtel APPMENU transaction passing the UID information, the USERID, as a header in  the HTTP request – SM_USER.
 
 6. Virtel presents application menu.
 
@@ -90,9 +46,7 @@ Fig.2 - Identity Provider logon
 
 Fig.3 - Virtel application menu    
 
-7. User selects applications and logs on without specifying userid or
-   password. Virtel uses the SM\_USER header to generate a PASSTICKET
-   for the userid.
+7. User selects applications and logs on without specifying userid or password. Virtel uses the SM_USER header and generates a PASSTICKET to associate with the userid.
 
     |image3|
 
@@ -131,9 +85,7 @@ NOT IN USE!
 
 Authentication method.
 
-The IDP authentication handler can authenticate a user by one of several
-authentication methods. The default Userid/Password authentication
-handler is currently be used. Authentication flows are defined in
+The IDP authentication handler can authenticate a user by one of several authentication methods. The default Userid/Password authentication handler is used in our setup. Authentication flows are defined in
 $IDP_HOME/conf/authn.
 
 See https://wiki.shibboleth.net/confluence/display/IDP30/AuthenticationConfiguration for further details.
@@ -142,7 +94,9 @@ The IDP Configuration maintained on the Milan Server:-
 
 *File= /opt/shibboleth-idp/conf/idp.properties*
 
-In this file we define the entity id of our IDP server:- ::
+In this file we define the entity ID of our IDP server:-
+
+::
 
   # Set the entityID of the IdP
   idp.entityID= https://idp.syspertec.com/idp/Shibboleth                    <<< Our IDP entity**
@@ -175,7 +129,7 @@ In this file we configure what security attributes are passed to the SP. Within 
 
 *File = /opt/shibboleth-idp/conf/ldap.properties*
 
-In this file we identify the LDAP server the IDP will use. We also set the TLS security flag and identify the Java trustStore. ::
+In this file we identify the LDAP server that the IDP will use. We also set the TLS security flag to true and identify the Java trustStore. ::
 
   ## Connection properties ##
   idp.authn.LDAP.ldapURL = ldap://milan:10389 **<<< Our LDAP Server**
@@ -186,8 +140,9 @@ In this file we identify the LDAP server the IDP will use. We also set the TLS s
 
 *File=/opt/shibboleth-idp/conf/metadata-providers.xml*
 
-In this file we identity the location of the metadata that represents
-our SP. ::
+In this file we identity the location of the metadata that represents our SP. 
+
+::
 
   <MetadataProvider xsi:type="FilesystemMetadataProvider" id="SPMETADATA"
   metadataFile="/opt/shibboleth-idp/metadata/sp-metadata.xml"/>
@@ -195,13 +150,14 @@ our SP. ::
 
 **Setting up the Service Provider V2**
 
-SP Configuration maintained on Windows workstation HOLT-WIN7
+Our SP Configuration is maintained on Windows workstation HOLT-WIN7
 
 To support the SP environment we installed the latest XAMPP tool. This
 provides an Apache container from which we can use and configure
 Shibboleth SP V2. The Apache Server runs as a reverse proxy redirecting
-request towards Virtel. Here are some of the paths and variables setto support the Shibboleth SP. ::
+request towards Virtel. Here are some of the paths and variables setto support the Shibboleth SP. 
 
+::
 
   SP                              sp.syspertec.com
   SP_HOME (distribution)          C:\\opt\\shibboleth-sp
@@ -211,8 +167,7 @@ request towards Virtel. Here are some of the paths and variables setto support t
   Apache Configuration files      C:\\xampp\\apache\\conf
   SP Configuration files          C:\\xampp\\apache\\conf\\extra
 
-After installing XAMPP and the Shibboleth V2 make sure that the Windows
-Service is running:-
+Note: After installing XAMPP and the Shibboleth V2 make sure that the Shibboleth Windows Service is running:-
 
 |image4|
 
@@ -224,7 +179,9 @@ The files modified in the Shibboleth setup for the SP are as follows:-
 
 *File = C:\\opt\\shibboleth-sp\\etc\\Shibboleth2.xml*
 
-This is the main shibboleth configuration file. Here are some of the elements that were modified. ::
+This is the main shibboleth configuration file. Here are some of the elements that were modified.
+
+::
 
   <ApplicationDefaults entityID=https://sp.syspertec.com/shibboleth                <<< Entity ID
         REMOTE_USER="uid eppn persistent-id targeted-id"                           <<< UID
@@ -246,7 +203,9 @@ This is the main shibboleth configuration file. Here are some of the elements th
 
 *File = C:\\opt\\shibboleth-sp\\etc\\attribute-map.xml*
 
-The UID attribute was uncommented in the attribute-map.xml file. ::
+The UID attribute was uncommented in the attribute-map.xml file.
+
+::
 
   -->
   <Attribute name="urn:oid:0.9.2342.19200300.100.1.1" id="uid"/>
@@ -264,22 +223,26 @@ Metadata file for SP.
 
 *File =C:\\XAMPP\\Apache\\Conf\\httpd.conf*
 
-This is the standard Apache HTTP configuration file. In here we
-configure the protected resources and configure the Shibboleth SP. The
-following statements are added or modified:-
+This is the standard Apache HTTP configuration file. In here we configure the protected resources and configure the Shibboleth SP. The following statements are added or modified:-
 
-Set the Server name for the Apache Server:- ::
+Set the Server name for the Apache Server:- 
+
+::
 
   ServerName sp.syspertec.com:80
 
-Set the required Proxy Modules:- ::
+Set the required Proxy Modules:- 
+
+::
 
   LoadModule proxy\_module modules/mod\_proxy.so
   LoadModule proxy\_ajp\_module modules/mod\_proxy\_ajp.so
   LoadModule proxy\_balancer\_module modules/mod\_proxy\_balancer.so
   LoadModule proxy\_connect\_module modules/mod\_proxy\_connect.so
 
-Set redirect on to support redirect request within Virtel HTTP responses:- ::
+Set redirect on to support redirect request within Virtel HTTP responses:- 
+
+::
 
   <IfModule alias\_module>
      #Send /w2h request to /xampp/htdocs/virtel
@@ -287,7 +250,9 @@ Set redirect on to support redirect request within Virtel HTTP responses:- ::
      ScriptAlias /cgi-bin/ "C:/xampp/cgi-bin/"
   </IfModule>
 
-Add the include for the Shibboleth HTTP configuration file:- ::
+Add the include for the Shibboleth HTTP configuration file:- 
+
+::
 
   #Shibboleth
   #include 'C:\\opt\\shibboleth-sp\\etc\\shibboleth\\apache24.config'
@@ -295,13 +260,10 @@ Add the include for the Shibboleth HTTP configuration file:- ::
 
 *File = C:\\XAMPP\\Apache\\Conf\\extra\\httpd-shibboleth.conf*
 
-Within this file add the location “Virtel” as a protected resource. Any
-access to the Virtel application we have to be validated through the IDP
-and SP interface. The SP will set the variable REMOTE\_USER based upon
-the IUD attribute returned by the IDP on successful validation. This
-will be passed through to Virtel to use to generate a PASSTICKET. The
-userid /PASSTICKET combination will be used to sign on to any secure
-applications within the APPMENU list. ::
+Within this file we add the location “Virtel” as a protected resource. Any access to the Virtel application we have to be validated through the IDP and SP interface. The SP will set the variable REMOTE_USER using the IUD attribute (USERID) as returned by the IDP on successful validation. This value will be passed through to Virtel in the SM_USER header and wll be used to generate a PASSTICKET. The
+userid /PASSTICKET combination will then be used to sign on to any secure applications definied within the Virtel APPMENU list.
+
+::
 
   # Connect using HTTPS to SPVIRSSL on ZAMVS2
   <Location /virtel>
@@ -316,14 +278,9 @@ applications within the APPMENU list. ::
 
 **LDAP**
 
-The LDAP environment that was used to support the Shibboleth IDP was the
-Apache Data Services LDAP offering. This was installed on the Milan
-Server. Configuration of the LDAP is through the Windows Apache Data
-Services client. This has to be installed on a Windows machine and then
-pointed at the LDAP Server.
+The LDAP environment that was used to support the Shibboleth IDP was the Apache Data Services LDAP offering. This was installed on the Milan Server. Configuration of the LDAP is through the Windows Apache Data Services client. This has to be installed on a Windows machine and then pointed at the LDAP Server.
 
-Once configured correctly, the client can access the LDAP structures and
-build the necessary security attributes that the IDP will require.
+Once configured correctly, the client can access the LDAP structures and build the necessary security credentials that the IDP will require.
 
 |image5|
 
