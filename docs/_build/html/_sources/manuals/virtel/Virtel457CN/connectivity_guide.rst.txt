@@ -4014,11 +4014,11 @@ This is an example of an HTTP transaction which uses the “Logon Message” fie
     Application type ===> 1                  1=VTAM 2=VIRTEL 3=SERV 4=PAGE 5=LINE
     Security         ===> 1                  0=none 1=basic 2=NTLM 3=TLS 4=HTML
     Logon message    ===> &U
-    TIOA at logon    ===> TSO/E LOGON&/W&'11C9C3'&P&/A***&/W&/Aispf&/W&/A
+    TIOA at logon    ===> TSO/E LOGON&/W&'11C9C3'&P&/A***&/W&/A
 
 *Connection script with automatic logon to TSO/ISPF*
 
-The script waits for the TSO/E LOGON panel for the specified userid, then enters the password into the appropriate field. It waits for the \*\*\* prompt to appear, and presses enter. It waits for the ISPF command to appear (this is assumed to be already in the user’s TSO/E LOGON Command field) and presses enter. Security=1 is specified to ensure that the user is already signed on to VIRTEL. The SBA order 11C9C3 identifies the password field (at row 8 col 20) in the TSO/E LOGON panel and may vary as a function of the site.
+The script waits for the TSO/E LOGON panel for the specified userid, then enters the password into the appropriate field. It waits for the *** prompt to appear, and presses enter. Security=1 is specified to ensure that the user is already signed on to VIRTEL. The SBA order 11C9C3 identifies the password field (at row 8 col 20) in the TSO/E LOGON panel and may vary as a function of the site.
 
 *5.4.3.5. Connect to CICS and navigate a user applicaction*
 

@@ -125,12 +125,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#transaction-parameters">5.3. Transaction Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#connection-disconnection-scripts">5.4. Connection / Disconnection Scripts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#external-servers">6. External Servers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">6.1 Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">6.2. Summary Of Existing Definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">6.1 Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">6.2. Summary Of Existing Definitions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#the-external-server">6.3. The External Server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#terminals">7. Terminals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">7.1 Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">7.2. Summary Of Existing Definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">7.1 Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">7.2. Summary Of Existing Definitions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#parameters-of-the-terminal">7.3. Parameters Of The Terminal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#choosing-a-definition-mode">7.4. Choosing A Definition Mode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#example-terminal-definitions">7.5. Example Terminal Definitions</a></li>
@@ -3756,11 +3756,11 @@ word “Escape”) and presses F6. It then enters the transaction code CEMT. The
 <span class="n">Application</span> <span class="nb">type</span> <span class="o">===&gt;</span> <span class="mi">1</span>                  <span class="mi">1</span><span class="o">=</span><span class="n">VTAM</span> <span class="mi">2</span><span class="o">=</span><span class="n">VIRTEL</span> <span class="mi">3</span><span class="o">=</span><span class="n">SERV</span> <span class="mi">4</span><span class="o">=</span><span class="n">PAGE</span> <span class="mi">5</span><span class="o">=</span><span class="n">LINE</span>
 <span class="n">Security</span>         <span class="o">===&gt;</span> <span class="mi">1</span>                  <span class="mi">0</span><span class="o">=</span><span class="n">none</span> <span class="mi">1</span><span class="o">=</span><span class="n">basic</span> <span class="mi">2</span><span class="o">=</span><span class="n">NTLM</span> <span class="mi">3</span><span class="o">=</span><span class="n">TLS</span> <span class="mi">4</span><span class="o">=</span><span class="n">HTML</span>
 <span class="n">Logon</span> <span class="n">message</span>    <span class="o">===&gt;</span> <span class="o">&amp;</span><span class="n">U</span>
-<span class="n">TIOA</span> <span class="n">at</span> <span class="n">logon</span>    <span class="o">===&gt;</span> <span class="n">TSO</span><span class="o">/</span><span class="n">E</span> <span class="n">LOGON</span><span class="o">&amp;/</span><span class="n">W</span><span class="o">&amp;</span><span class="s1">&#39;11C9C3&#39;</span><span class="o">&amp;</span><span class="n">P</span><span class="o">&amp;/</span><span class="n">A</span><span class="o">***&amp;/</span><span class="n">W</span><span class="o">&amp;/</span><span class="n">Aispf</span><span class="o">&amp;/</span><span class="n">W</span><span class="o">&amp;/</span><span class="n">A</span>
+<span class="n">TIOA</span> <span class="n">at</span> <span class="n">logon</span>    <span class="o">===&gt;</span> <span class="n">TSO</span><span class="o">/</span><span class="n">E</span> <span class="n">LOGON</span><span class="o">&amp;/</span><span class="n">W</span><span class="o">&amp;</span><span class="s1">&#39;11C9C3&#39;</span><span class="o">&amp;</span><span class="n">P</span><span class="o">&amp;/</span><span class="n">A</span><span class="o">***&amp;/</span><span class="n">W</span><span class="o">&amp;/</span><span class="n">A</span>
 </pre></div>
 </div>
 <p><em>Connection script with automatic logon to TSO/ISPF</em></p>
-<p>The script waits for the TSO/E LOGON panel for the specified userid, then enters the password into the appropriate field. It waits for the *** prompt to appear, and presses enter. It waits for the ISPF command to appear (this is assumed to be already in the user’s TSO/E LOGON Command field) and presses enter. Security=1 is specified to ensure that the user is already signed on to VIRTEL. The SBA order 11C9C3 identifies the password field (at row 8 col 20) in the TSO/E LOGON panel and may vary as a function of the site.</p>
+<p>The script waits for the TSO/E LOGON panel for the specified userid, then enters the password into the appropriate field. It waits for the <a href="#id9"><span class="problematic" id="id10">**</span></a>* prompt to appear, and presses enter. Security=1 is specified to ensure that the user is already signed on to VIRTEL. The SBA order 11C9C3 identifies the password field (at row 8 col 20) in the TSO/E LOGON panel and may vary as a function of the site.</p>
 <p><em>5.4.3.5. Connect to CICS and navigate a user applicaction</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Internal</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">14</span>                <span class="n">To</span> <span class="n">associate</span> <span class="k">with</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span> <span class="n">name</span>
 <span class="n">External</span> <span class="n">name</span> <span class="o">===&gt;</span> <span class="n">Cics4</span>                 <span class="n">Name</span> <span class="n">displayed</span> <span class="n">on</span> <span class="n">user</span> <span class="n">menu</span>
@@ -3795,8 +3795,8 @@ application. When the terminal user disconnects, the logoff script sends the “
 <div class="section" id="external-servers">
 <h2>6. External Servers<a class="headerlink" href="#external-servers" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="id9">
-<h2>6.1 Introduction<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h2>6.1 Introduction<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>The external server management sub-application allows the administrator to maintain the call parameters relating to
 the various servers available for outgoing calls. External server definitions allow users at 3270 terminals to access
 Videotex servers via an X25 network. Additionally, starting with VIRTEL version 4.14, the concept of an external server
@@ -3813,8 +3813,8 @@ Menu is controlled by the resource $$SERV$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.</p>
 </div>
-<div class="section" id="id10">
-<h2>6.2. Summary Of Existing Definitions<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h2>6.2. Summary Of Existing Definitions<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>The first screen displayed by the external server management sub-application shows a summary of existing definitions
 in alphanumeric order:</p>
 <p><img alt="image65" src="../../../_images/image655.png" /></p>
@@ -3973,8 +3973,8 @@ For outbound calls via a VIRPESIT line:
 <div class="section" id="terminals">
 <h2>7. Terminals<a class="headerlink" href="#terminals" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="id11">
-<h2>7.1 Introduction<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h2>7.1 Introduction<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the
 group of functions associated with the management of the terminals as well as their existing relationship to other
 administration functions, for example, management of lines or entry points.</p>
@@ -3996,8 +3996,8 @@ sub-application is started, it first presents a summary of existing terminal def
 In the remainder of this chapter, the terms “entity”, “terminal entry” and “terminal” all refer to the concept of a
 terminal, a dynamic pool of terminals or a repeating pool of terminals.</p>
 </div>
-<div class="section" id="id12">
-<h2>7.2. Summary Of Existing Definitions<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id14">
+<h2>7.2. Summary Of Existing Definitions<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p>The first screen displayed by the terminal management sub-application shows a summary of existing definitions in
 alphanumeric order. A complete description of each field is given in the following paragraphs.</p>
 <p><img alt="image67" src="../../../_images/image675.png" /></p>

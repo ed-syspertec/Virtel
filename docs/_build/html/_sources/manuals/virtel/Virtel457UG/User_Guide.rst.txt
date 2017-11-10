@@ -94,7 +94,7 @@ What's new in Virtel 4.57
 
 - Batch export/import of RAW TRSF files.
 
-.. note:: For further details see the Technical Newsletter :ref:`Whats new in Virtel 4.57 <#_tn201706>`.
+.. note:: For further details see the Technical Newsletter: TN201706 - What's new in Virtel 4.57.
 
 *****************
 The Virtel Engine
@@ -109,7 +109,7 @@ Introduction
 What is Virtel
 --------------
 
-Simply put, Virtel is a host-based protocol converter that runs as a started task on the mainframe. At the core of Virtel is the Virtel Engine which sits between host applications and external environments such as the web or another external server. Virtel supports the following standard protocol - TCP/IP, SMTP, HTTP/S, SOAP, MQ-SERIES, SNA, 3270, ICAL (IMS) and the inherited protocols - X25, XOT, XTP, LU 6.2 to interface between host applications and external services. A classic example for Virtel would be interfacing between legacy 3270 applications, running on the host, and the web. Virtel would provide protocol conversion between 3270 data streams and HTML. Users would no longer require 3270 terminal emulators to interface with legacy host applications as access would be through the standard web browser. Translation between ASCII and EBCDIC is provided as well as support for U-TF8 and UTF-16 and various character code page sets.
+Simply put, Virtel is a host-based protocol converter that runs as a started task on the mainframe. At the core of Virtel is the Virtel Engine which sits between host applications and external environments such as the web or another external server. Virtel supports the following standard protocol - TCP/IP, SMTP, HTTP/S, SOAP, MQ-SERIES, SNA, 3270, ICAL (IMS) and the inherited protocols - X25, XOT, XTP, LU 6.2 to interface between host applications and external services. A classic example for Virtel would be interfacing between legacy 3270 applications, running on the host, and the web. Virtel would provide protocol conversion between data arriving from the browser is converted into a 3270 data-stream and sent to the application. Users would no longer require 3270 terminal emulators products to interface with legacy host applications. Access can now be provided through the users standard web browser. Various character code page sets are supported, including DBCS character code sets.
 
 The following diagram illustrates some of the protocols and applications supported by the Virtel Engine. 
 
@@ -117,7 +117,23 @@ The following diagram illustrates some of the protocols and applications support
 |image0|
 *The Virtel Engine*         
 
-Virtel provides three models. Web access, Web modernisation and Web integration.
+Virtel provides three models. Web to Host access (VWA/W2H), Web Modernisation (VWM) and Web Integration (VWI). In the next section each model is described in detail. Regardless of the model, Virtel's mainframe requirements are the same. The basic file requirements are as follows:-
+
+   - SAMP TRSF VSAM File. Contains the templates and web artefacts (JavaScript, Images, HTML, CSS elements etc.) which are served to the browser.
+   - HTML TRSF VSAM File. Contains user customisation web artefacts (JavaScript, HTML, Images, HTML, CSS elements etc.)
+   - LOADLIB PDS.         Virtel load library
+   - ARBO VSAM File.      Contains customer configuration data.
+   - Ancillary files.     Statistics, logs, tracing etc.
+
+Normally, Virtel runs as a started task. Multiple instances of Virtel can be run on the same LPAR. Virtel can run within a SYSPLEX environment, benefiting from the load balancing services that such environments provide. See the Virtel Installation manual for a full description of the Virtel mainframe requirements. Virtel can also be run as a batch process, providing a "batch" service between external servers. See the section :ref:`Virtel Batch <#_V457UG_virtel_batch>` or the Virtel Connectivity Manual for further information on running Virtel in batch.
+
+Like any other web page server Virtel responds to an incoming URL targeted at any one of the TCPIP ports Virtel is listening on. The URL will identify the IP address of the z/OS environment, and the port address will target the Virtel Instance. The pathname and parameters of the URL will identify the Virtel Transaction that will be used to process the URL request. An example is shown below. This is a URL requesting a connection to a CICS application called SPCICS. SPCICS is the name of the Virtel transaction that will deal with the request. The pathname "/w2h/WEB2AJAX.htm" identifies a Virtel 3270 template that will be used to support the conversion between 3270 data-stream and HTML presentations.     
+
+::
+
+    http://192.168.170.33:41002/w2h/WEB2AJAX.htm+SPCICS
+
+For more information on the Virtel URL formats see the section :ref:`Virtel URL Formats<#_V457UG_url_formats>`.     
 
 .. raw:: latex
 
@@ -155,7 +171,8 @@ Let's look at how VWA works.
 
 2. The pathname /VIRT3270+TSO identifies a Virtel HTML page TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application and initiates a VTAM session with TSO. 
 
-3. A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 data streams and will be sent to TSO as if they had come from a 3270 terminal. 3270 data streams sent by the TSO application will be converted into HTML pages using the VIRT3270 template and sent to the browser.  
+3. A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 data streams and will be sent to TS
+O as if they had come from a 3270 terminal. 3270 data streams sent by the TSO application will be converted into HTML pages using the VIRT3270 template and sent to the browser.  
 
 4. TSO responds to the session request and sends a 3270 screen to Virtel.
 
@@ -181,7 +198,7 @@ This function is implemented through a combination of the VIRTEL Web Access func
 
 VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of     navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).
 
-With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenario. Data could be extracted from the indivdual host responses and encapsulated into one HTML page. For example when a user requests a "list" this could result in a sequence of key strokes and displays. Taking the example:-
+With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenario. Data could be extracted from the individual host responses and encapsulated into one HTML page. For example when a user requests a "list" this could result in a sequence of key strokes and displays. Taking the example:-
 
 ::
 
@@ -1169,20 +1186,6 @@ The AJAX-SESSION-CODE tag allows a session code to be inserted in the template p
 ::
 
     result.txt+cics+{{{ AJAX-SESSION-CODE }}}
-
-.. index::
-   pair: ACTION$ REFRESH-TERMINAL; tags
-
-ACTION$ REFRESH-TERMINAL
-^^^^^^^^^^^^^^^^^^^^^^^^    
-
-This instruction allows a scenario to trigger a 205 response to the Long Poll session. 
-
-This 205 response will then tell the JavaScript to refresh the terminal 3270 emulation screen, so that the user can see whatever was changed by the scenario.
-
-::
-
-    ACTION$ REFRESH-TERMINAL
 
 .. index::
    pair: SET-INITIAL-TIMEOUT; tags
@@ -4787,8 +4790,8 @@ When the user clicks on this icon, VIRTEL sends the print data to the user’s b
 pop-up window.
 
 .. index::
-   triple: SCS printers; LU Type 1; Printing
-   triple: 3270 data stream; LU Type 3; Printing
+   pair: SCS printers LU1 ; Printing
+   pair: 3270 data stream printers LU3; Printing
 
 Two types of virtual printer are supported:
 
@@ -6273,7 +6276,7 @@ Use the right mouse button to open a selection menu for copy / cut / paste opera
 Edge
 ----   
 
-As of July, 2017 Microsoft has yet to release an API to support Copy, Cut and Paste operations within the Edge browser and the clipboard. These opertions will not work in Virtel when using Edge.     
+Virtel uses the browsers Clipboard API to support Copy, Cut and Paste operations.     
 
 .. raw:: latex
 
@@ -6478,7 +6481,7 @@ Files defined in the core option files "option.id.js" with the keys pathTo[key] 
     }
 
 .. index::
-   triple: Compatibility Option id; Customization; Transactions  
+   pair: Compatibility Option id; Customization  
 
 
 Compatibility Option id
@@ -6487,7 +6490,7 @@ Compatibility Option id
 For compatibility the transaction option field can be defined with the special identifier "compatibility". This indicates that the "compatibility" mode of operation should be used to search for customized elements. For example custom.css would be located through the transaction XXX-03CJ.
 
 .. index::
-   triple: Defining Transaction options; Customization; Transactions  
+   pair: Defining Transaction options; Customization  
 
 Defining Transaction Options 
 ----------------------------
@@ -6637,14 +6640,14 @@ Boolean to indicate whether the macro interface should be presented as a sub-win
 
 .. index::
    pair: Using DDI to store macros; Macros
-   triple: Using Virtel storage for macros; Virtel; Dynamic Directory Interface    
+   pair: Using Virtel storage for macros; Macros    
 
 Macros in VIRTEL Storage
 ------------------------
 
 The “VirtelMacros” function allows GLOBAL, GROUP, and USER macros to be stored under the name “macro.json” in a VSAM file on the VIRTEL host system. This feature uses the dynamic directory interface(DDI) capability of Virtel to store macros in a central repository, in this case a VSAM file on the mainframe. With this centralised environment macros can be managed, thereby keeping control of critical business logic. Macros will be automatically downloaded and refreshed on a users workstation depending on the options set in the w2hparm settings. Each DDi directory maintains a separate copy of the macros.json file.
 
-The DDI and administration features of Virtel should only be made available to an "Administrator". In Virtel an "Administrator" would be a user who has READ access to all the Virtel security profiles, in particular those starting VIRTEL.*. See the section :ref:`"Security"<#_V457IG_Security>` for details on setting up Virtel Administrators and protecting resources. The following transactions and related security profiles are used by DDI. 
+The DDI and administration features of Virtel should only be made available to an "Administrator". In Virtel an "Administrator" would be a user who has READ access to all the Virtel security profiles, in particular those starting VIRTEL.*. See the section "Security" in the Virtel Installation Guide for details on setting up Virtel Administrators and protecting resources. The following transactions and related security profiles are used by DDI. 
 
 For the minimal authorization to access the DDI, a user must be granted to access the VIRTEL transaction defined under WEB2HOST entry point with the external name. The following transactions are implemented as part of the Virtel macros feature 
 
@@ -6747,11 +6750,11 @@ A user can only manage the macros stored in his own directory. To be able to man
 User Macros synchronization
 ---------------------------
 
-The sharing of macros across multiple instances of Virtel was introduced in Virtel 4.54. This feature is particularly useful where a user can connect to one of several instances of Virtel within in Sysplex Distributed environment. User macros are maintained in the browser’s cache and in the TRSF files through the %USR% directory entry defined in the ARBO file. Before the synchronization feature, if a user added or updated a macro and then reconnected to a different Virtel instance the macro entry maintained in the host TRSF wouldn’t reflect the latest updates held within the user's browser cache, consequently any cache refresh would lose those updates.
+The sharing of macros across multiple instances of Virtel was introduced in Virtel 4.54. This feature is particularly useful where a user can connect to one of several instances of Virtel within in Sysplex Distributed environment zith separate HTML TRSF files. User macros are maintained in the browser’s cache and in the TRSF files through the %USR% directory entry defined in the ARBO file. Before the synchronization feature, if a user added or updated a macro and then reconnected to a different Virtel instance the macro entry maintained in the host TRSF wouldn’t reflect the latest updates held within the user's browser cache, consequently any cache refresh would lose those updates.
 
 With this feature a timestamp is used to synchronize macros between the browser’s cache and the supporting TRSF file. If the timestamp in the cache is later than the macro entry in the local TRSF file, the TRSF file will be updated. Conversely, if the macros in the local TRSF is later than the cache equivalent, then the macro will be reloaded in cache from the TRSF file. Any changes made will be refelcted back to the local TRSF file. If a subsequent logon is targeted to a different Virtel instance, and possibly a different TRSF, then the cache in the the browser will updated the local TRSF file as the timestamp in the browser for the macro will be later than the timestamp held in the TRSF file. Using this timestamp comparison ensures that the macros and synchronized between the users browser cache and the supporting TRSF file. 
 
-This feature is activated by setting the following w2hparm setting. This parameter file should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if "Option" mode customization is being used. The w2hparm modification must be activated as described in :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>`. Once this customization has been done, the macros will be automaticaly be synchonized across VIRTEL instances.
+This feature is activated by setting the following w2hparm setting. This parameter file should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if "Option" mode customization is being used. The w2hparm modification must be activated as described in :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>`. Once this customization has been done, the macros will be automaticaly be synchonized across VIRTEL instances where each Virtel has its own HTML TRSF file.
 
 ::
  
@@ -6974,8 +6977,8 @@ Without modifying existing applications, VIRTEL offers several possibilities for
     As opposed to the specific tags presented in the Virtel Web Access section, the set of presentation rules in Web Modernisation are not defined in an HTML page, but as an assembled program. The program can be stored as a .390 object module in the scenario directory SCE-DIR or as a linked module in the Virtel loadlib. The default for Virtel V4.57 is to maintain these .390 object modules in the SCE-DIR. VIRTEL scenarios were originally assembled and link-edited into a load library concatenated to the DFHRPL DD statement in the VIRTEL started task. From VIRTEL version 4.48 onwards, there is also the possibility of generating, syntax checking, and compiling scenarios using Virtel Studio on an Eclipse platform, and uploading the resulting executable code into a VIRTEL directory stored in a VSAM file. This is now the default for Virtel. 
 
 .. index::
-   pair: scenarios; Presentation modules
-   pair: scenario instructions; Presentation modules
+   pair: Scenarios; Presentation modules
+   pair: Scenario instructions; Presentation modules
      
 An HTML presentation module is made up of several scenarios composed of the following instructions: SCREENS, SCRNEND, SCENARIO, ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, VIRSV$ and END. These instructions are assembler macros contained in the VIRT457.SCRNAPI.MACLIB library (for MVS) or the VIRT457.VIRSAPI SUBLIB library (for VSE). The other instructions included in this library are for internal use and must not be used directly. Each module begins with a SCREENS instruction, is terminated by a SCRNEND instruction, and must contain at least one SCENARIO.
 
@@ -7021,7 +7024,7 @@ Types of scenario
 A presentation module can contain one of each of the following types of scenario:
 
 .. index::
-   pair: Identification; Scenarios
+   pair: Scenarios; Identification
 
 Identification scenario
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -7033,7 +7036,7 @@ The identification scenario is required when the entry point specifies the name 
 “Identification scenario” field.
 
 .. index::
-   pair: Initial; Scenarios
+   pair: Scenarios; Initial
 
 Initial scenario
 ^^^^^^^^^^^^^^^^
@@ -7044,7 +7047,7 @@ of the transaction contains &/S and the name of the presentation module is coded
 transaction.
 
 .. index::
-   pair: Final; Scenarios
+   pair: Scenarios; Final
 
 Final scenario
 ^^^^^^^^^^^^^^
@@ -7055,7 +7058,7 @@ the transaction contains &/S and the name of the presentation module is coded in
 transaction.
 
 .. index::
-   pair: Input; Scenarios
+   pair: Scenarios; Input
 
 Input scenario
 ^^^^^^^^^^^^^^
@@ -7073,7 +7076,7 @@ SCENARIO END, after which the input scenario stops processing outbound messages 
 each inbound message.
 
 .. index::
-   pair: Output; Scenarios
+   pair: Scenarios; Output
 
 Output scenario
 ^^^^^^^^^^^^^^^
@@ -7103,10 +7106,10 @@ Virtel Scenario language
 ------------------------
 
 .. index::
-   pair: SCENARIO Instruction; Scenarios
+   pair: SCENARIO; Scenario Instructions
 
-SCENARIO instruction
-^^^^^^^^^^^^^^^^^^^^
+SCENARIO instructions
+^^^^^^^^^^^^^^^^^^^^^
 
 This instruction encloses ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, and VIRSV$ instructions.
 
@@ -7137,7 +7140,7 @@ value
             Stops scenario processing but continue normal VIRTEL processing of the current message.
 
 .. index::
-   pair: SCREENS Instruction; Scenarios
+   pair: SCREENS; Scenario Instructions
 
 SCREENS instruction
 ^^^^^^^^^^^^^^^^^^^
@@ -7163,7 +7166,7 @@ EXEC
             The script may not be externally called.    
 
 .. index::
-   pair: SCRNEND Instruction; Scenarios
+   pair: SCRNEND; Scenario Instructions
 
 SCRNEND instruction
 ^^^^^^^^^^^^^^^^^^^
@@ -7176,7 +7179,7 @@ This instruction marks the end of a presentation module.
 
 
 .. index::
-   pair: ACTION$ Instruction; Scenarios
+   pair: ACTION$; Scenario Instructions
 
 ACTION$ instruction
 ^^^^^^^^^^^^^^^^^^^
@@ -7184,7 +7187,8 @@ ACTION$ instruction
 This instruction specifies actions to be taken.
 
 .. index::
-   pair: ACTION$ DISCONNECT; Action$
+   pair: ACTION$ DISCONNECT; ACTION$
+   pair: ACTION$ DISCONNECT; Scenario Instructions
 
 **ACTION$ DISCONNECT**
 
@@ -7196,6 +7200,7 @@ Terminate the application.
 
 .. index::
    pair: ACTION$ REFRESH-TERMINAL; ACTION$
+   pair: ACTION$ REFRESH-TERMINAL; Scenario Instructions
 
 **ACTION$ REFRESH-TERMINAL**
 
@@ -7208,7 +7213,8 @@ whatever was changed by the scenario.
     ACTION$ REFRESH-TERMINAL
 
 .. index::
-   pair: ACTION$ SERVE-ANOTHER_USER; ACTION$    
+   pair: ACTION$ SERVE-ANOTHER_USER; ACTION$
+   pair: ACTION$ SERVE-ANOTHER_USER; Scenario Instructions    
 
 .. _#_V457UG_ACTION$_serve-another-users:
 
@@ -7221,7 +7227,9 @@ Indicates that the transaction is now a service transaction (see :ref:`“Servic
     ACTION$ SERVE-ANOTHER-USER
 
 .. index::
-   pair: ACTION$ TERMSESS; ACTION$    
+   pair: ACTION$ TERMSESS; ACTION$
+   pair: ACTION$ TERMSESS; Scenario Instructions    
+    
 
 **ACTION$ TERMSESS**
 
@@ -7232,7 +7240,8 @@ Requests disconnection from the host application after the next message has been
     ACTION$ TERMSESS
 
 .. index::
-   pair: ACTION$ TO-APPLICATION; ACTION$    
+   pair: ACTION$ TO-APPLICATION; ACTION$
+   pair: ACTION$ TO-APPLICATION; Scenario Instructions     
 
 **ACTION$ TO-APPLICATION**
 
@@ -7278,9 +7287,9 @@ pfkey
 AND=(WAIT,'string')
     (optional) after sending the message to the application, the scenario waits until the application sends a message containing the specified character string. Intervening messages are processed by VIRTEL but are not passed to the scenario or sent to the terminal.
 AND=(SCRIPT,'string')
-    (optional) after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see :doc:`“Connection/Disconnection Scripts" <../Virtel457CN/connectivity_guide>`)  in the VIRTEL Connectivity Reference manual).
+    (optional) after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script. See “Connection/Disconnection Scripts" in the Virtel in the VIRTEL Connectivity Reference manual.
 AND=(PROCESS-RESPONSE,'string')
-    (optional) allows an input scenario to explicitly request that control is to be returned when the next message is received from the application. The string is optional. If specified, after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script (see :doc:`“Connection/Disconnection Scripts" <../Virtel457CN/connectivity_guide>` in the VIRTEL Connectivity Reference manual). 
+    (optional) allows an input scenario to explicitly request that control is to be returned when the next message is received from the application. The string is optional. If specified, after sending the message to the application, VIRTEL executes the string as a Connection/Disconnection script. See “Connection/Disconnection Scripts" in the VIRTEL Connectivity Reference manual. 
 
 .. note::
      For an input scenario, AND=(PROCESS-RESPONSE) is the default value immediately after the connection.
@@ -7306,6 +7315,7 @@ ASYNCH=YES
 
 .. index::
    pair: ACTION$ TO-TERMINAL; ACTION$  
+   pair: ACTION$ TO-TERMINAL; Scenario Instructions  
 
 **ACTION$ TO-TERMINAL**
 
@@ -7320,8 +7330,8 @@ are sent to the terminal. The scenario may use instructions such as COPY$ VARIAB
 screen image buffer before issuing the ACTION$ TO-TERMINAL instruction.
 
 .. index::
-   pair: ACTION$ Examples; Scenarios
-
+   pair: ACTION$ Examples; Scenario Instructions
+   
 **ACTION$ Examples**
 
 ::
@@ -7381,7 +7391,7 @@ This is the same as for PROCESS-RESPONSE but with execution of a script in addit
 doubled to conform withinh assembler syntax requirements.
 
 .. index::
-   pair: CASE$ Instruction; Scenarios
+   pair: CASE$; Scenario Instructions 
 
 CASE$ instruction
 ^^^^^^^^^^^^^^^^^
@@ -7449,7 +7459,7 @@ processx
     Note 3: Any number of (condition,'value',process) parameters may be specified, within the limits set by the assembler. Use assembler conventions (non-blank in column 72 and continuation starting in column 16) to continue the statement over more than one line.
 
 .. index::
-   pair: CASE$ Examples; Scenarios
+   pair: CASE$ Examples; Scenario Instructions 
 
 **CASE$ Examples**
 
@@ -7480,7 +7490,7 @@ Example of testing a variable with CASE$.
 Example of CASE$ with FOR loops.
 
 .. index::
-   pair: CONVERT$ Instruction; Scenarios
+   pair: CONVERT$; Scenario Instructions 
 
 CONVERT$ instruction
 ^^^^^^^^^^^^^^^^^^^^
@@ -7512,7 +7522,7 @@ tabname
     \newpage    
 
 .. index::
-   pair: CONVERT$ Examples; Scenarios
+   pair: CONVERT$; Scenario Instructions
 
 **CONVERT$ Examples**   
 
@@ -7562,7 +7572,7 @@ Example of CONVERT$ in a scenario
 .. _#_V457UG_COPY$:
 
 .. index::
-   pair: COPY$ Instruction; Scenarios
+   pair: COPY$; Scenario Instructions
 
 COPY$ instruction
 ^^^^^^^^^^^^^^^^^
@@ -7780,7 +7790,6 @@ type
 Copies a system information field into a table variable.
 
 ::
-
 
     COPY$ SYSTEM-TO-VARIABLE,FIELD=(class,item),
     VAR='varname',LENGTH=len,OFFSET=offset,
@@ -8126,6 +8135,7 @@ type
 
         TYPE=ERASE-FIELD
             indicates that the destination field is cleared to nulls before copying the data. If the variable name2 does not exist, the NOT-FOUND condition will be raised. This condition can be tested by means of the :ref:`“IF$ instruction” <#_V457UG_IF$>`. If the destination row and column specify a protected field of the 3270 screen, the scenario terminates abnormally and message VIRS129E is issued to the system console. If the destination field is unprotected but the variable value is too long for the field, the data will be silently truncated.
+
 .. index::
    pair: COPY$ VARIABLE-TO-SYSTEM; COPY$                 
 
@@ -8244,7 +8254,7 @@ The following example will display 'Target value is : Doe____'
 Example scenario with COPY$
 
 .. index::
-   pair: DEBUG$ Instruction; Scenarios
+   pair: DEBUG$; Scenario Intructions
 
 DEBUG$ instruction
 ^^^^^^^^^^^^^^^^^^
@@ -8275,6 +8285,9 @@ WHEN=ALWAYS
     The DEBUG$ instruction is executed unconditionally. This is the default.
 WHEN=(TRANSACTION-NAME-STARTS-WITH,'prefix')
     The DEBUG$ instruction is executed only if the external name of the transaction being used begins with the characters specified by the string prefix.
+
+.. index::
+   pair: DEBUG$ Example; Scenario Intructions    
 
 **DEBUG$ Example**    
 
@@ -8307,7 +8320,7 @@ WHEN=(TRANSACTION-NAME-STARTS-WITH,'prefix')
 Example scenario with DEBUG$
 
 .. index::
-   pair: DECLARE$ Instruction; Scenarios 
+   pair: DECLARE$; Scenario Instructions 
 
 DECLARE$ instruction
 ^^^^^^^^^^^^^^^^^^^^
@@ -8355,7 +8368,7 @@ P4
 .. _#_V457UG_Javascript_functions:
 
 .. index::
-   pair: DECLARE and JavaScript functions; Scenarios
+   pair: DECLARE and JavaScript functions; Scenario Instructions
 
 **$DECLARE and JavaScript functions**
 
@@ -8378,7 +8391,8 @@ VClick3
     Copies the contents of the clickable area to the following input field and sends the indicated function key (P2 parameter) to the host application
 
 .. index::
-   pair: DECLARE Examples; Scenarios
+   pair: $DECLARE Examples; Scenario Instructions
+ 
 
 **$DECLARE Examples**
 
@@ -8420,7 +8434,8 @@ Row 4 column 9 length 17 becomes a clickable field, hyperlinked to the URL:
 (where ccc...ccc is replaced by the contents of the clickable field)
 
 .. index::
-   pair: ENDFOR$ Instruction; Scenarios
+   pair: ENDFOR$; Scenario Instructions
+
 
 ENDFOR$ instruction
 ^^^^^^^^^^^^^^^^^^^
@@ -8452,7 +8467,7 @@ In the example below, the value of VAR1 which is copied is the current value in 
             ENDFOR$ LOOP1            
 
 .. index::
-   pair: ERROR$ Instruction; Scenarios
+   pair: ERROR$; Scenario Instructions
 
 ERROR$ instruction
 ^^^^^^^^^^^^^^^^^^
@@ -8481,7 +8496,9 @@ value
         GOTO$ EXIT
 
 .. index::
-   pair: FIELDS$ Instruction; Scenarios
+   pair: FIELDS$; Scenario Instructions
+   
+Scenarios
 
 FIELD$ instruction
 ^^^^^^^^^^^^^^^^^^
@@ -8515,6 +8532,7 @@ operation
 The FIELD$ instruction only operates on input fields.
 
 .. index::
+   pair: FIELD$ DEFINE-CHOICE; Scenario Instructions
    pair: FIELD$ DEFINE-CHOICE; FIELDS$   
 
 **FIELD$ DEFINE-CHOICE**
@@ -8531,7 +8549,8 @@ The optional SHOW parameter allows the specification of the text displayed in th
 the SHOW parameter is omitted, the text displayed is identical to the value.
 
 .. index::
-   pair: FIELD$ DEFINE-VARIABLE-CHOICE; FIELDS$   
+   pair: FIELD$ DEFINE-VARIABLE-CHOICE; FIELDS$
+   pair: FIELD$ DEFINE-VARIABLE-CHOICE; Scenario Instructions     
 
 **FIELD$ DEFINE-VARIABLE-CHOICE**
 
@@ -8548,7 +8567,8 @@ VARIABLE. Structured fields are described in the VIRTEL Programming Interface do
 commands are described in the VIRTEL Programming Interface documentation 274
 
 .. index::
-   pair: FIELD$ IS-BINARY-CHOICE; FIELDS$   
+   pair: FIELD$ IS-BINARY-CHOICE; FIELDS$
+   pair: FIELD$ IS-BINARY-CHOICE; Scenario Instructions    
 
 **FIELD$ IS-BINARY-CHOICE**
 
@@ -8575,7 +8595,7 @@ Generates an INPUT TYPE=HIDDEN field for the 3270 field concerned. This instruct
     FIELD$ (row,col,len),HIDE
 
 .. index::
-   pair: FILTER Instruction; Scenarios
+   pair: FILTER; Scenario Instructions
 
 FILTER$ instruction
 ^^^^^^^^^^^^^^^^^^^
@@ -8606,7 +8626,7 @@ OTHERWISE,KEEP
     the default action, if none of the preceding conditions is met, is to copy the value from varname1 to a new value in varname2.
 
 .. index::
-   pair: FOREACH Instruction; Scenarios
+   pair: FOREACH ; Scenario Instructions
 
 FOREACH$
 ^^^^^^^^    
@@ -8651,7 +8671,7 @@ varname
     The name of the table variable beeing looped on.
 
 .. index::
-   pair: GOTO$ Instruction; Scenarios
+   pair: GOTO$ ; Scenario Instructions
 
 GOTO$ instruction
 ^^^^^^^^^^^^^^^^^
@@ -8666,12 +8686,16 @@ label
     Specifies the instruction label at which execution of the scenario is to continue.
 
 .. index::
-   pair: HANDLE$ Instruction; Scenarios
+   pair: HANDLE$ ; Scenario Instructions
 
 HANDLE$ instruction
 ^^^^^^^^^^^^^^^^^^^
 
-This instruction allows to manage various handle operations within the context of a scenario.
+This instruction manages various handle operations within the context of a scenario.
+
+. index::
+   pair: HANDLE$ ABEND ; Scenario Instructions
+   pair: HANDLE$ ABEND ; HANDLE$
 
 **HANDLE$ ABEND instruction**
 
@@ -8682,6 +8706,10 @@ HANDLE$ ABEND=label
 
 label
     Specifies the instruction label at which execution of the scenario is to continue.
+
+. index::
+   pair: HANDLE$ LOOP ; Scenario Instructions
+   pair: HANDLE$ LOOP ; HANDLE$    
 
 **HANDLE$ LOOP instruction**
 
@@ -8726,7 +8754,7 @@ scenario.
 .. _#_V457UG_IF$:
 
 .. index::
-   pair: IF$ Instruction; Scenarios
+   pair: IF$ ; Scenario Instructions
 
 IF$ instruction
 ^^^^^^^^^^^^^^^
@@ -8792,7 +8820,7 @@ process2
     Specifies the address of the branch exit of the script if the condition is not satisfied. Permitted values are identical to process1.
 
 .. index::
-   pair: INDSCEN$ Instruction; Scenarios
+   pair: INDSCEN$; Scenario Instructions
 
 INDSCEN$ instruction
 ^^^^^^^^^^^^^^^^^^^^
@@ -8843,7 +8871,7 @@ A sample of the usage of LABEL$ instruction is available in the PERFORM$ instruc
 .. _#_V457UG_MAP$:
 
 .. index::
-   pair: MAP$ Instruction; Scenarios
+   pair: MAP$; Scenario Instructions
 
 MAP$ instruction
 ^^^^^^^^^^^^^^^^
@@ -8869,6 +8897,10 @@ means of an INITIAL scenario or an OUTPUT scenario. The scenario begins with a d
 (MAP$ BEGIN, MAP$ END, MAP$ AREA, and MAP$ AREA-ATTRIBUTE), and continues with a TOVAR$ instruction which
 defines the source of the commarea. See the description of the :ref:`“TOVAR$ instruction” <#_V457UG_TOVAR$>` for further details of
 commarea-to-output conversion.
+
+.. index::
+   pair: MAP$ ABEND; Scenario Instructions
+   pair: MAP$ ABEND; MAP$
 
 **MAP$ ABEND**
 
@@ -8897,6 +8929,11 @@ text
     A free-format description which will be printed in the SNAP at the time of the abend.
 n
     The SNAP will be produced after the MAP$ ABEND-AT instruction has been executed n times.
+
+.. index::
+   pair: MAP$ AREA; Scenario Instructions
+   pair: MAP$ AREA; MAP$
+
 
 **MAP$ AREA**
 
@@ -9052,6 +9089,10 @@ varname
 
 The parameters WITH and VALUEOF are as previously described. If the LENGTH and TYPE parameters are specified, then the attribute value is edited, as previously described, to conform to the length and type specified. If the LENGTH and TYPE parameters are omitted, then the length and value of the attribute are copied exactly.
 
+.. index::
+   pair: MAP$ BEGIN; Scenario Instructions
+   pair: MAP$ BEGIN; MAP$
+
 **MAP$ BEGIN**
 
 The MAP$ BEGIN instruction marks the start of a commarea, or the start of a group of fields within a commarea. The optional WITH parameter indicates a group of fields enclosed by a specific XML tag in the input data. The optional OCCURS parameter indicates a repeating group of fields. Nested pairs of MAP$ BEGIN and MAP$ END instructions are
@@ -9086,6 +9127,10 @@ Another variation of the MAP$ BEGIN instruction introduces a group of fields whi
 
 The group of fields enclosed by the MAP$ BEGIN and MAP$ END instructions are processed only if the “current event” set by a previous MAP$ EVENTUAL-AREA or MAP$ ELSETHEN-AREA instruction matches the eventname specified. For commarea-to-output conversion, the names of the variables generated for this group are prefixed by eventname/
 
+.. index::
+   pair: MAP$ END; Scenario Instructions
+   pair: MAP$ END; MAP$
+
 **MAP$ END**
 
 The MAP$ END instruction marks the end of a commarea or field group.
@@ -9099,6 +9144,9 @@ groupname
 
 .. _#_V457UG_MAP$_EVENTUAL_ELSETHEN:
 
+.. index::
+   pair: MAP$ EVENTUAL-AREA; Scenario Instructions
+   pair: MAP$ EVENTUAL-AREA; MAP$
 
 **MAP$ EVENTUAL-AREA, MAP$ ELSETHEN-AREA**
 
@@ -9192,7 +9240,11 @@ generated if the tag data has any other value. This is achieved by means of the 
 
     XML tag names are case sensitive.
 
-.. _#_V457UG_MAP$_EXECUTE:    
+.. _#_V457UG_MAP$_EXECUTE:
+
+.. index::
+   pair: MAP$ EXECUTE; Scenario Instructions
+   pair: MAP$ EXECUTE; MAP$    
 
 **MAP$ EXECUTE**
 
@@ -9239,6 +9291,10 @@ mylabel
 
 .. _#_V457UG_MAP$_FROM-FIELD:
 
+.. index::
+   pair: MAP$ FROM-FIELD; Scenario Instructions
+   pair: MAP$ FROM-FIELD; MAP$  
+
 **MAP$ FROM-FIELD**
 
 The MAP$ FROM-FIELD instruction requests VIRTEL to generate a commarea from XML input data (“XML input-tocommarea” conversion). The XML input data is obtained from an HTML form field in the incoming HTTP request.
@@ -9260,6 +9316,10 @@ the URL (HTTP “GET” method) or it may be contained in the body of the HTTP r
 (unencoded) format, use instead the :ref:`“MAP$ FROM-INPUT” <#_V457UG_MAP$_FROM-INPUT>`.
 
 .. _#_V457UG_MAP$_FROM-INPUT:
+
+.. index::
+   pair: MAP$ FROM-INPUT; Scenario Instructions
+   pair: MAP$ FROM-INPUT; MAP$  
 
 **MAP$ FROM-INPUT**
 
@@ -9298,8 +9358,11 @@ When the input format is QUERY, MAP$ FROM-INPUT expects the input data to contai
 
 .. _#_V457UG_MAP$_FROM-VARIABLE:
 
-**MAP$ FROM-VARIABLE**
+.. index::
+   pair: MAP$ FROM-VARIABLE; Scenario Instructions
+   pair: MAP$ FROM-VARIABLE; MAP$  
 
+**MAP$ FROM-VARIABLE**
 
 The MAP$ FROM-VARIABLE instruction requests VIRTEL to generate a commarea from XML or Query format input data (“input-to-commarea” conversion). The input data is contained in a VIRTEL variable.
 
@@ -9319,6 +9382,10 @@ format
 varname
     The name of the VIRTEL variable which contains the input data.
 
+.. index::
+   pair: MAP$ TO-VARIABLE; Scenario Instructions
+   pair: MAP$ TO-VARIABLE; MAP$  
+
 **MAP$ TO-VARIABLE**
 
 The MAP$ TO-VARIABLE instruction requests VIRTEL to copy a commarea into a VIRTEL variable. The commarea must have been already generated by a previous MAP$ FROM-FIELD, FROM-INPUT, or FROM-VARIABLE instruction.
@@ -9337,12 +9404,16 @@ MAP$ COPY,VAR='varname' is equivalent to MAP$ TO-VARIABLE,VAR='varname'
 .. _#_V457UG_OPTION$:
 
 .. index::
-   pair: OPTION$ Instruction; Scenarios
+   pair: OPTION$; Scenario Instructions
 
 OPTION$ instruction
 ^^^^^^^^^^^^^^^^^^^
 
 This instruction allows the scenario to set up parameters for a subsequent SEND$ TO-LINE instruction.
+
+.. index::
+   pair: OPTION$ FOR-HTTP; Scenario Instructions
+   pair: OPTION$ FOR-HTTP; OPTION$  
 
 **OPTION$ FOR-HTTP**
 
@@ -9385,6 +9456,10 @@ varnamep
     If the field begins with “*” then it is treated as the name of a variable.
 
 You can use the SITE parameter to specify the name and port of the remote HTTP server, provided that the outbound HTTP line specified by the SEND$ TO-LINE instruction is defined with the special value $SITE$ in the “Remote Ident” field. The value of the SITE parameter is also used to build the Host: header of the outbound HTTP request.
+
+.. index::
+   pair: OPTION$ FOR-IND$FILE; Scenario Instructions
+   pair: OPTION$ FOR-IND$FILE; OPTION$  
 
 **OPTION$ FOR-IND$FILE**
 
@@ -9443,7 +9518,8 @@ cmdvar
     2: TSO will prefix the dataset name by your prefix (usually your userid) unless the dataset name is enclosed in quotes. If you specify the dataset name as a literal in the instruction (as opposed to indirectly as the value of a variable) then triple quotes must be used, for example: (FROM,'''SYS1.PARMLIB(IEASYS00)''')
 
 .. index::
-   pair: Option IND$FILE Examples; Scenarios
+   pair: OPTION$ FOR-IND$FILE Examples; Scenario Instructions   
+   pair: OPTION$ FOR-IND$FILE Examples; OPTION$  
 
 **OPTION IND$FILE Examples**
 
@@ -9476,6 +9552,10 @@ file transfer is initiated, VIRTEL sends the contents of the variable UPLOAD to 
 completes, RETURN-CODE contains the IND$FILE completion message "TRANS03 File transfer complete" or an error
 message.
 
+.. index::
+   pair: OPTION$ FOR-MQ; Scenario Instructions   
+   pair: OPTION$ FOR-MQ; OPTION$ 
+
 **OPTION$ FOR-MQ**
 
 Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line type is MQ.
@@ -9490,6 +9570,10 @@ varname1
     the name of the VIRTEL variable which contains data to be written to the MQ line.
 varnamep
     the name of the VIRTEL variable which will contain the parameter list.
+
+.. index::
+   pair: OPTION$ FOR-QUICKLNK; Scenario Instructions   
+   pair: OPTION$ FOR-QUICKLNK; OPTION$   
 
 **OPTION$ FOR-QUICKLNK**
 
@@ -9567,6 +9651,10 @@ params
 
     If the field begins with “*” then it is treated as the name of a variable.
 
+.. index::
+   pair: OPTION$ FOR-SMTP; Scenario Instructions   
+   pair: OPTION$ FOR-SMTP; OPTION$     
+
 **OPTION$ FOR-SMTP**
 
 Builds a parameter list for a subsequent SEND$ TO-LINE instruction when the line type is SMTP.
@@ -9626,7 +9714,8 @@ varnamep
     If the field begins with “*” then it is treated as the name of a variable.
 
 .. index::
-   pair: Option Examples; Scenarios
+   pair: OPTION$ FOR-HTTP Example; Scenario Instructions   
+   pair: OPTION$ FOR-HTTP Example; OPTION$     
 
 **1.18.25.7. OPTION$ Example:**
 
@@ -9676,7 +9765,7 @@ In the above example, the VIRTEL variable SITENAME contains the value of the SIT
 In the above example, the variable DESTADDR contains the value of the TO parameter.
 
 .. index::
-   pair: PERFORM$ Instruction; Scenarios
+   pair: PERFORM$; Scenario Instructions
 
 PERFORM$ instruction
 ^^^^^^^^^^^^^^^^^^^^
@@ -9695,7 +9784,7 @@ mylabel
     Specifies the subroutine scenario label to be performed.
 
 . index::
-   pair: PERFORM$ Examples; Scenarios
+   pair: PERFORM$ Examples; Scenario Instructions
 
 **PERFORM$ Example**
 
@@ -9755,7 +9844,7 @@ Here is a sample of the usage of PERFORM$ and LABEL$ instructions.
     END
 
 . index::
-   pair: POP$ Instruction; Scenarios
+   pair: POP$; Scenario Instructions
 
 POP$ instruction
 ^^^^^^^^^^^^^^^^
@@ -9763,7 +9852,6 @@ POP$ instruction
 This instruction allows a scenario to delete values from VIRTEL table variables.
 
 ::
-
 
     POP$ ALL-VALUES-OF,VAR='varname'
     POP$ FIRST-VALUE-OF,VAR='varname'
@@ -9779,7 +9867,7 @@ varname
 POP$ VAR='varname' is equivalent to POP$ FIRST-VALUE-OF,VAR='varname'
 
 . index::
-   pair: RETURN$ Instruction; Scenarios
+   pair: RETURN$; Scenario Instructions
 
 RETURN$ instruction
 ^^^^^^^^^^^^^^^^^^^
@@ -9791,12 +9879,16 @@ This instruction terminates a subroutine called by a :ref:`“MAP$ EXECUTE” <#
     RETURN$
 
 . index::
-   pair: SEND$ Instruction; Scenarios
+   pair: SEND$; Scenario Instructions
 
 SEND$ instruction
 ^^^^^^^^^^^^^^^^^
 
 This instruction allows a scenario to construct the response to an input request.
+
+.. index::
+   pair: SEND$ AS-ANSWER; Scenario Instructions   
+   pair: SEND$ AS-ANSWER; SEND$     
 
 **SEND$ AS-ANSWER**
 
@@ -9823,6 +9915,10 @@ instruction instead.
 If the line type is not HTTP, the SEND$ AS-ANSWER and SEND$ AS-FILE instructions are processed as “SEND$ VARIABLETO-
 LINE” <#_V457UG_capability_types9 with the LINE parameter set to the line on which the scenario is running.
 
+.. index::
+   pair: SEND$ AS-ANSWER; Scenario Instructions   
+   pair: SEND$ AS-ANSWER; SEND$     
+
 **SEND$ AS-FILE**
 
 Sends the contents of a VIRTEL variable as an attached file in response to an HTTP request. Unlike the SEND$ ASANSWER
@@ -9840,6 +9936,10 @@ filetype
 filename
     the file name to be included in the Content-Disposition HTTP header. This parameter may be specified as a literal, or as '\*varname' where varname is the name of a VIRTEL variable whose value is the filename.
 
+.. index::
+   pair: SEND$ TO; Scenario Instructions   
+   pair: SEND$ TO; SEND$     
+
 **SEND$ TO**
 
 Sends an outbound message to a VIRTEL line. The name of the destination line is specified indirectly through a VIRTEL transaction. The SEND$ TO instruction must be preceded by an :ref:`“OPTION$” <#_V457UG_OPTION$>` instruction which sets up the parameters for the outbound message according to the line type.
@@ -9854,6 +9954,10 @@ varnamep
     the name of the VIRTEL variable which contains the parameter list. This variable must have been created by a previous OPTION$ instruction.
 errlabel
     A branch will be made to this label if the message cannot be sent to the requested line.
+
+.. index::
+   pair: SEND$ TO-LINE; Scenario Instructions   
+   pair: SEND$ TO-LINE; SEND$     
 
 **SEND$ TO-LINE**
 
@@ -9874,6 +9978,10 @@ maxtime
     
     This only apply to SEND$ requests which imply a response, like sending a SOAP request to an HTTP server which would wait for a SOAP response.
 
+.. index::
+   pair: SEND$ VARIABLE-TO; Scenario Instructions   
+   pair: SEND$ VARIABLE-TO; SEND$     
+
 **SEND$ VARIABLE-TO**
 
 Sends the contents of the specified variable as an outbound message on a VIRTEL line. The name of the destination line is specified indirectly through a VIRTEL transaction. A SEND$ VARIABLE-TO instruction is equivalent to an :ref:`“OPTION$ instructions” <#_V457UG_OPTION$>`  instruction followed by a SEND$ TO instruction in the case where OPTION$ specifies only a variable name.
@@ -9892,6 +10000,10 @@ errlabel
 .. note::
 
     When an input scenario sends a variable to a VIRPASS line, the response from the VIRPASS line is passed to the output scenario in the $VIRPASS$ variable.
+
+.. index::
+   pair: SEND$ VARIABLE-TO-LINE; Scenario Instructions   
+   pair: SEND$ VARIABLE-TO-LINE; SEND$    
 
 **SEND$ VARIABLE-TO-LINE**
 
@@ -9913,7 +10025,7 @@ errlabel
     A branch will be made to this label if the message cannot be sent to the requested line.
 
 . index::
-   pair: SET$ Instruction; Scenarios
+   pair: SET$; Scenario Instruction
 
 SET$ instruction
 ^^^^^^^^^^^^^^^^
@@ -9921,6 +10033,10 @@ SET$ instruction
 This instruction allows various parameters to be set.
 
 .. _#_V457UG_SET$_encoding:
+
+.. index::
+   pair: SET$ ENCODING; Scenario Instructions   
+   pair: SET$ ENCODING; SET$    
 
 **SET$ ENCODING**
 
@@ -9962,6 +10078,10 @@ The following example shows part of an input scenario. The scenario allows the u
 
 See also the :ref:`“SET$ URL-ENCODING” <#_V457UG_SET$_URL-ENCODING>`.
 
+.. index::
+   pair: SET$ PAGE; Scenario Instructions   
+   pair: SET$ PAGE; SET$    
+
 **SET$ PAGE**
 
 Indicates the name of the page template to be used for the current 3270 screen and all subsequent screens. This instruction has the same effect as the HOST4WEB command S GLOBAL PAGE.
@@ -9969,6 +10089,10 @@ Indicates the name of the page template to be used for the current 3270 screen a
 ::
 
     SET$ PAGE,'pagename'
+
+.. index::
+   pair: SET$ PAGE-FROM-VARIABLE; Scenario Instructions   
+   pair: SET$ PAGE-FROM-VARIABLE; SET$        
 
 **SET$ PAGE-FROM-VARIABLE**
 
@@ -9992,6 +10116,10 @@ Example:
 
 In this example, if row 2 column 12 of the 3270 screen contains the characters “MAPъъ” (where ъ represents a blank) then the page name will be set to “MAP.html”
 
+.. index::
+   pair: SET$ PRIORITY; Scenario Instructions   
+   pair: SET$ PRIORITY; SET$   
+
 **SET$ PRIORITY**
 
 Allows a running scenario to reduce its priority in order to limit its CPU consumption.
@@ -10010,7 +10138,11 @@ level
     HIGH
         the scenario runs at high priority. This is the default priority assigned to a scenario if no SET$ PRIORITY instruction is executed.
 
-.. _#_V457UG_SET$_SCREEN-POSITION:        
+.. _#_V457UG_SET$_SCREEN-POSITION:
+
+.. index::
+   pair: SET$ SCREEN-POSITION; Scenario Instructions   
+   pair: SET$ SCREEN-POSITION; SET$           
 
 **SET$ SCREEN-POSITION**
 
@@ -10032,6 +10164,10 @@ ht
 TO-NEXT-LINE
     sets the current position to the next line. If the next line is after the end of the current screen rectangle,the NOTFOUND condition will be raised. This condition can be tested by means of the :ref:`“IF$ instruction” <#_V457UG_IF$>`.
 
+.. index::
+   pair: SET$ SIGNON; Scenario Instructions   
+   pair: SET$ SIGON; SET$           
+
 **SET$ SIGNON**
 
 Allows an IDENTIFICATION scenario to sign on to the security manager.
@@ -10051,6 +10187,10 @@ retvar
 
 The user name and password fields may be specified as a string constant (not recommended), or as the name of a VIRTEL variable preceded by an asterisk. The retvar variable name is not preceded by an asterisk.
 
+.. index::
+   pair: SET$ TEMPORARY-PAGE; Scenario Instructions   
+   pair: SET$ TEMPORARY-PAGE; SET$      
+
 **SET$ TEMPORARY-PAGE**
 
 Indicates the name of the page template to be used for the current 3270 screen (but not for subsequent screens). This instruction has the same effect as the HOST4WEB command S PAGE.
@@ -10058,6 +10198,10 @@ Indicates the name of the page template to be used for the current 3270 screen (
 ::
 
     SET$ TEMPORARY-PAGE,'pagename'
+
+.. index::
+   pair: SET$ TRANSACTION; Scenario Instructions   
+   pair: SET$ TRANSACTION; SET$      
 
 **SET$ TRANSACTION**
 
@@ -10071,6 +10215,10 @@ tranname
     The external name of the transaction to be executed.
 
 .. _#_V457UG_SET$_URL-ENCODING:    
+
+.. index::
+   pair: SET$ URL-ENCODING; Scenario Instructions   
+   pair: SET$ URL-ENCODING; SET$      
 
 **SET$ URL-ENCODING**
 
@@ -10090,8 +10238,9 @@ The SET$ URL-ENCODING instruction can be used in an identification scenario to s
 of a session, where no page has yet been sent to the user. If the encoding is not set by a scenario, VIRTEL assumes that
 the first URL of a session is encoded using the ISO encoding for the default country.
 
-. index::
-   pair: SET$ Examples; Scenarios
+.. index::
+   pair: SET$ SCREEN-POSITION Example; Scenario Instructions   
+   pair: SET$ SCREEN-POSITION Example; SET$  
 
 **SET$ Example**
 
@@ -10119,8 +10268,8 @@ Loop on the screen from line 11 to 20, looking for a given reference. When found
 
 .. _#_V457UG_TOVAR$:
 
-. index::
-   pair: TOVAR$ Instruction; Scenarios
+.. index::
+   pair: TOVAR$; Scenario Instruction
 
 TOVAR$ instruction
 ^^^^^^^^^^^^^^^^^^
@@ -10136,6 +10285,10 @@ can be used to generate XML. See :ref:`“VIRTEL as an XML parser/generator” <
 
 The input commarea is specified according to one of the several formats of the TOVAR$ instruction, as shown in the
 following paragraphs.
+
+.. index::
+   pair: TOVAR$ FROM-FIELD; Scenario Instructions   
+   pair: TOVAR$ FROM-FIELD; TOVAR$  
 
 **TOVAR$ FROM-FIELD**
 
@@ -10153,6 +10306,10 @@ fieldname
     The name of the HTML form field which contains the input commarea data.
 
 .. _#_V457UG_TOVAR$_FROM-INPUT:
+
+.. index::
+   pair: TOVAR$ FROM-INPUT; Scenario Instructions   
+   pair: TOVAR$ FROM-INPUT; TOVAR$
 
 **TOVAR$ FROM-INPUT**
 
@@ -10180,6 +10337,10 @@ URL-encoded data (a “+” sign represents a space, and “%xx” represents th
 character). TOVAR$ FROM-FIELD is preferred when using the GET method, because certain characters cannot be
 included in a URL without using URL-encoding.
 
+.. index::
+   pair: TOVAR$ FROM-VARIABLE; Scenario Instructions   
+   pair: TOVAR$ FROM-VARIABLE; TOVAR$
+
 **TOVAR$ FROM-VARIABLE**
 
 The TOVAR$ FROM-VARIABLE instruction requests VIRTEL to generate a set of VIRTEL variables from an input
@@ -10196,7 +10357,7 @@ varname
     The name of the VIRTEL variable which contains the input commarea data.
 
 . index::
-   pair: VIRSV$ Instruction; Scenarios
+   pair: VIRSV$; Scenario Instructions
 
 VIRSV$ instruction
 ^^^^^^^^^^^^^^^^^^
@@ -10269,6 +10430,10 @@ structure built by the CALL VSVPSYNC routine.
 (OUT-VARIABLE,'varname',len)
     Indicates an output parameter returned by the service program. VIRTEL allocates a buffer of length len and stores two fullwords in the request input area: the first contains the address of the buffer and the second contains the address of a fullword which contains the buffer length. The service program places the output value in the buffer and updates the length fullword. VIRTEL copies the contents of the buffer into the VIRTEL variable varname after the service program returns. The len parameter contains the desired buffer length (nn, nnK, or nnM), or the special value \*n (see below). The variable name must be placed in quotes.
 
+.. index::
+   pair: VIRSV$ - Allocating buffers; Scenario Instructions
+   pair: VIRSV$ - Allocating buffers; VIRSV$ 
+
 **VIRSV$ - Allocating variable length output buffers**
 
 A special form of the len parameter may be used to allocate output buffers whose length varies depending on the
@@ -10297,7 +10462,7 @@ If more than one input variable specifies a len parameter in the format \*n then
 measurement.
 
 .. index::
-   pair: Subroutine scenarios;Scenarios
+   pair: SCENARION SUBROUTINE;Scenario Instructions
 
 Subroutine scenario
 ^^^^^^^^^^^^^^^^^^^
@@ -10536,10 +10701,11 @@ WEB2VIRT.htm:
 *HTML page template for calendar fields*
 
 .. index::
-   pair: Virtel Suggest; Scenarios
+   pair: VIRTEL-SUGGEST Function; Scenarios
+   pair: VIRTEL-SUGGEST Function; SUGGEST$ 
 
-VIRTEL suggest
-^^^^^^^^^^^^^^
+VIRTEL SUGGUEST
+^^^^^^^^^^^^^^^
 
 VIRTEL Suggest is a facility which presents lists of suggested values for specific 3270 fields. The suggested values are
 presented in a drop-down list which appears automatically when the user starts typing into a field. The list modifies
@@ -10587,8 +10753,8 @@ table named “DSN8810.EMP”:
 *HTTP presentation module: Defining VIRTEL Suggest fields*
 
 .. index::
-   pair: SUGGEST$ Instruction; Scenarios
-
+   pair: SUGGEST$; Scenario Instructions
+ 
 **SUGGEST$ instruction**
 
 The parameters of the SUGGEST$ macro instruction are as follows:
@@ -10615,6 +10781,10 @@ SUGGEST$ instructions. Each SUGGEST$ instruction which contains a SCREEN paramet
 generates a VIRTEL Suggest field. If the TRAN and TABLE parameters are not specified then the values from the
 previous SUGGEST$ instruction are used.
 
+.. index::
+   pair: SUGGEST$ installation; Scenario Instructions
+   pair: SUGGEST$ installation; SUGGEST$  
+
 **Suggest$ - Installation pre-requisites**
 
 Before you can use the suggestD transaction, you must install the program VDBSUGST in your CICS system with
@@ -10629,6 +10799,10 @@ region in which FLECS is installed.
 If you plan to use the suggestV transaction, you must add DD statements to the VIRTEL started task JCL specifying the
 FLECS catalog file (F20CAT) and the pointer files it references. You must also update the VIRTCT by adding UFILEn
 parameters for the FLECS catalog file and each pointer file, together with the corresponding ACB definitions.
+
+.. index::
+   pair: SUGGEST$ Page Template; Scenario Instructions
+   pair: SUGGEST$ Page Template; SUGGEST$  
 
 **Page template for VIRTEL Suggest**
 
@@ -10665,9 +10839,9 @@ SUGGEST-TABLENAME, SUGGEST-FIELDNAME. The first entry in each table corresponds 
 on the page, the second entry corresponds to the second VIRTEL Suggest field on the page, and so on.
 
 .. index::
-   pair: Auto-Refresh; Scenarios
+   pair: AUTOREFRESH; Scenario Instructions
 
-Scenario Auto-refresh
+Scenario AUTOREFRESH
 ---------------------
 
 The majority of host applications use the 3270 protocol in a synchronous manner, meaning that each user input
@@ -10772,7 +10946,7 @@ transaction definition. The source code for the SCENAUTN scenario is supplied in
 
 .. index::
    pair: PDF Output Generation; Scenarios
-   pair: MakePDF;Virtel
+   pair: MakePDF;Scenarios
 
 PDF output generation
 ---------------------
@@ -10895,7 +11069,7 @@ The files INPUT.TXT, DOCOPT.TXT, and LAYOUT.TXT for this example are shown below
     \newpage 
 
 .. index::
-   single: Virtel Web integration
+   single: Virtel Web integration (VWI)
 
 .. _#_V457UG_virtel_integration:
 
@@ -10907,7 +11081,7 @@ VIRTEL Web Integration allows XML or other web services requests to be interpret
 .. _#_V457UG_parsing_query_input:
 
 .. index::
-   pair: Parsing Query Parameters; Virtel
+   pair: Parsing Query Parameters; Virtel Web Intergration
 
 Parsing Query input
 -------------------
@@ -10949,7 +11123,8 @@ If the user enters, for example, the values “1531499136”, “05”, and “0
     The “/” characters in the user’s input have been encoded by the browser as “%2F” because Query parameters are always transmitted in URL-encoded format in the HTTP request.
 
 .. index::
-   triple: Sending Query Data with POST; Virtel; Scenarios
+   pair: Sending Query Data with POST; Virtel Web Intergration
+   pair: Sending Query Data with POST; Scenario Instructions
   
 HTTP request with Query data (POST method)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -10971,7 +11146,7 @@ By changing the FORM METHOD to POST (instead of GET) in the HTML form, the HTTP 
 VIRTEL considers this POST request to be identical to the GET request presented in the previous paragraph.
 
 .. index::
-   triple: Extracting Query Data; Virtel; Scenarios
+   pair: Extracting Query Data; Scenarios
   
 Presentation module for Query input data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11013,7 +11188,8 @@ The figure below shows the 20-byte commarea generated in the VIRTEL variable MYA
 *Commarea generated from Query data*
 
 .. index::
-   pair: Query input Data; Transactions
+   pair: Query input Data; Virtel Web Intergration
+   pair: Query input Data; Scenarios
 
 
 Transaction definition for Query input data
@@ -11059,6 +11235,7 @@ CICS transaction performs an EXEC CICS RECEIVE to obtain the input data.
 
 .. index::
    pair: Processing XML Data; XML
+   pair: Processing XML Data; Virtel Web Intergration
 
 Parsing XML input
 -----------------
@@ -11094,6 +11271,7 @@ shows an example of an HTTP request containing XML input data:
 
 .. index::
    pair: Processing XML Data; Scenarios
+   pair: Processing XML Data; Virtel Web Intergration
 
 Presentation module for XML input data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11138,7 +11316,7 @@ The figure below shows the 36-byte commarea generated in the VIRTEL variable MYA
 
 .. index::
    pair: Encoding XML Data; XML
-   pair: XML Data; Virtel
+   pair: Encoding XML Data; Virtel Web Intergration
 
 Sending XML input as URL-encoded data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11207,7 +11385,9 @@ previously. The only change necessary to process URL-encoded data is that the st
 must be replaced by the statement OUTAREA MAP$ FROM-FIELD,FIELD='MYINPUT'
 
 .. index::
-     pair: XML Data; Transactions
+   pair: XML Data Transactions; XML
+   pair: XML Data Transactions; Virtel Web Intergration
+
 
 Transaction definition for XML input data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11246,6 +11426,10 @@ to obtain the input data.
 
 *VIRTEL transaction definition for XML input data*
 
+.. index::
+   pair: XML nput attrubutes and repeating Groups; XML
+   pair: XML nput attrubutes and repeating Groups; Virtel Web Intergration
+
 XML input with attributes and repeating groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -11271,7 +11455,8 @@ The figure below shows an example of XML input data containing attributes and re
 *Example XML input data with attributes and repeating groups*
 
 .. index::
-     pair: Example of using XML Data; Scenarios
+     pair: Example of using XML Data; XML 
+     pair: Example of using XML Data; Virte Web Intergration
 
 An INITIAL scenario for processing this XML input data is coded in the presentation module SCENXMLA shown below:
 
@@ -11314,7 +11499,8 @@ The figure below shows the 77-byte commarea generated in the VIRTEL variable MYC
 *Commarea generated from XML input with attributes and repeating groups*
 
 .. index::
-     pair: Redefinition of data fields; XML
+     pair: Redefinition of data fields; XML 
+     pair: Redefinition of data fields; Virte Web Intergration     
 
 XML input with redefinition of fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11414,13 +11600,14 @@ This scenario generates two commareas, which are saved in VIRTEL variables MYHEA
 
 *Commarea generated from XML input with redefinition of fields*
 
+.. index::
+     pair: Presentation of XML output; XML 
+     pair: Presentation of XML output; Virte Web Intergration     
+
 Presentation of XML output
 --------------------------
 
 By using an output scenario and a suitable page template, VIRTEL can transform application program output into XML when the result is sent back in the HTTP response.
-
-.. index::
-     pair: Presentation module; XML
 
 Presentation module for XML output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
@@ -11460,7 +11647,8 @@ creates two variables, ACCTNUM and FULLNAME, from a table of values displayed on
     It is also possible for the application program to create VIRTEL table variables directly, either by means of an :ref:`“FAE5” <#_V457UG_FAE5>` structured field, or via the HOST4WEB command :ref:`“SET VARIABLE” <#_V457UG_set_variable>`. The FAE5 structured field allows the application to pass large amounts of raw data to VIRTEL without being constrained by the limitations of the 3270 screen geometry. For such “VIRTEL-aware” applications, an output scenario is not necessary.
 
 .. index::
-     pair: Template example; XML
+     pair: Page template for XML output; XML 
+     pair: Page template for XML output; Virte Web Intergration    
 
 Page template for XML output
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11492,7 +11680,8 @@ program:
 .. _#_V457UG_XML_parser:
 
 .. index::
-     pair: XML parser/generator; Virtel
+     pair: XML Parser/Generator; XML 
+     pair: XML Parser/Generator; Virte Web Intergration    
 
 VIRTEL as an XML parser/generator
 ---------------------------------
@@ -11510,8 +11699,9 @@ instruction. Both scenarios can reference a common set of MAP$ statements which 
 the XML stream and the commarea. In each case an appropriate page template must also be used, as shown in the
 detailed examples which follow.
 
-.. index::
-     pair: VIRKIX; Virtel
+
+.. index::  
+     pair: VIRKIX; Virte Web Intergration         
 
 Communication via VIRKIX
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11522,7 +11712,9 @@ and supported by VIRTEL. Notice the use of the special header GIVE-LENGTH-PREFIX
 4-byte length prefix to the HTTP response, to conform with the format expected by VIRKIX CALL type 'M'.
 
 .. index::
-     triple: MAP$ Example; Scenarios; XML Parser/Generator
+     pair: VIRKIX MAP$ Example; VIRKIX
+     pair: VIRKIX MAP$ Example; Scenarios  
+     pair: VIRKIX MAP$ Example; Virte Web Intergration       
 
 Example MAP$ statements
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -11555,6 +11747,12 @@ COPY statement.
         CAREA MAP$ END
 
 *MAP$ statements for VIRTEL XML parser/generator*
+
+.. index::
+     pair: XML-To-COMMAREA Example; XML
+     pair: XML-To-COMMAREA Example; Scenarios  
+     pair: XML-To-COMMAREA Example; Virte Web Intergration       
+
 
 XML-to-commarea conversion using the VIRTEL XML parser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11659,8 +11857,9 @@ The figure below shows the HTTP response returned by VIRTEL. The body of the res
 *Output response from XML-to-commarea conversion*
 
 .. index::
-     pair: Commarea conversion; XML Parser/Generator
-     pair: Commarea conversion; XML
+     pair: COMMAREA-To-XML Example; XML
+     pair: COMMAREA-To-XML Example; Scenarios  
+     pair: COMMAREA-To-XML Example; Virte Web Intergration          
 
 Commarea-to-XML conversion using the VIRTEL XML generator
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -11696,14 +11895,14 @@ order specified in the “TIOA at Logon” field causes the INITIAL scenario :re
 
 *VIRTEL transaction definition for commarea-to-XML conversion*
 
+.. _#_V457UG_sconvpla:
+
 .. index::
-     pair: Commarea conversion; XML Parser/Generator
-     pair: Commarea conversion; Scenarios
+     pair: COMMAREA Conversion Example; XML
+     pair: COMMAREA Conversion Example; Scenarios  
+     pair: COMMAREA Conversion Example;  Virte Web Intergration       
 
 The initial scenario for commarea-to-XML conversion is shown below:
-
-
-.. _#_V457UG_sconvpla:
 
 ::
 
@@ -11785,10 +11984,14 @@ commarea data converted to XML format:
 *Output response from commarea-to-XML conversion*
 
 .. index::
-     triple: Automatic scenario generation; Scenarios; MAPGEN
+     pair: Automatic Scenario Generation; Virtel Web Intergration    
 
 Automatic scenario generation
 -----------------------------
+
+.. index::
+     pair: Using MAPGEN; Virtel Web Intergration    
+     pair: Using MAPGEN; Scenarios
 
 MAPGEN program
 ^^^^^^^^^^^^^^
@@ -11876,13 +12079,11 @@ XMLGEN=YES|NO
 
     \newpage 
 
-.. index::
-   single: Incoming E-mails
-
 .. _#_V457UG_email_incoming:
 
-. index::
-     triple: Incoming Emails; SMTP; Virtel
+.. index::
+     single: Incoming E-Mail Calls
+     pair: Incoming E-Mail Calls; SMTP
 
 Incoming E-mails
 ================
@@ -11891,6 +12092,10 @@ The arrival of an e-mail on an SMTP line can trigger one of two types of action 
 
 - Transfer of attached files to a VIRTEL directory
 - Start a CICS transaction (or other VTAM application)
+
+.. index::
+     pair: SMTP line Rules; SMTP
+     pair: SMTP line Rules; Incoming E-Mail Calls
 
 Rules of the SMTP line
 ----------------------
@@ -11929,7 +12134,8 @@ used:
 *Rule for routing an incoming e-mail on an SMTP line*
 
 .. index::
-     triple: File transfer; SMTP; Virtel
+     pair: File Transfer by E-Mail; SMTP
+     pair: File Trasnfer by E-Mail; Incoming E-Mail Calls
 
 
 File transfer by e-mail
@@ -11994,10 +12200,11 @@ Only authorized users (see :ref:`“Correspondent Management” <#_V457UG_corres
 
 *Transaction for file transfer by SMTP*
 
-.. index::
-     triple: Starting an application by e-mail; SMTP; Virtel
+.. index::   
+     pair: Starting an application by E-Mail; Incoming E-Mail Calls
+     pair: Starting an application by E-Mail; SMTP
 
-Starting an application by e-mail
+Starting an application by E-Mail
 ---------------------------------
 
 When an entry point is used for starting an application by e-mail, the application must be associated with a relay (or
@@ -12090,6 +12297,8 @@ field to VIRTEL via the relay LU and reading the response (see :ref:`“Retrieve
 .. raw:: latex
 
     \newpage 
+
+.. _#_V457UG_virtel_batch:
 
 .. index::
    single: Virtel Batch
@@ -12226,6 +12435,9 @@ Batch Entry Point, and the Transactions which will be executed by the VIRTEL Bat
 
 *Job to build configuration file for VIRTEL Batch*
 
+.. index::
+   pair: Page Template File; Virtel Batch
+
 Allocating the page template file for VIRTEL Batch
 --------------------------------------------------
 
@@ -12259,6 +12471,9 @@ VIRTEL. This job should be run once before the first execution of a VIRTEL Batch
             REPRO INFILE(SAMPTRSF) OUTFILE(HTMLTRSF)
 
 *Job to allocate page template file for VIRTEL Batch*
+
+.. index::
+   pair: Allocating work files; Virtel Batch
 
 Allocating work files for VIRTEL Batch
 --------------------------------------
@@ -12299,6 +12514,10 @@ VIRBATAW, which is an example job to allocate these files:
             REPRO INFILE(INIT) OUTFILE(VIRHTML)
 
 *Job to allocate work files for VIRTEL Batch*
+
+.. index::
+   pair: Running the VIRTEL batch job; Virtel Batch
+
 
 Running the VIRTEL Batch job
 ----------------------------
@@ -12344,14 +12563,18 @@ The SYSIN file contains commands and data statements. The following commands are
 
 These commands are described in the following sections.
 
+.. index::
+   pair: VIRTEL Batch Commands; Virtel Batch
+
 VIRTEL Batch commands
 ---------------------
 
-VIRTEL Batch GET command
-^^^^^^^^^^^^^^^^^^^^^^^^
-
 .. index::
    pair: GET Command; Virtel Batch
+   pair: GET Command; Virtel Batch Commands
+
+VIRTEL Batch GET command
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following figure shows an example SYSIN file containing two GET commands:
 
@@ -12397,6 +12620,7 @@ subsequent parameter. Thus, in the above example, VIRTEL generates two HTTP requ
 
 .. index::
    pair: POST Command; Virtel Batch
+   pair: POST Command; Virtel Batch Commands
 
 VIRTEL Batch POST command
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -12451,6 +12675,9 @@ above example, VIRTEL generates the following HTTP request:
 .. index::
    pair: RAW Command; Virtel Batch
 
+.. index::
+   pair: RAW Command; Virtel Batch
+   pair: RAW Command; Virtel Batch Commands
 
 VIRTEL Batch RAW command
 ------------------------
@@ -12500,16 +12727,21 @@ statement, or insufficient memory) then the condition code is set to 16.
     \newpage 
 
 .. index::
-   single: Outgoing Calls
+   single: Outgoing Calls 
 
 **************
 Outgoing Calls
 **************
 
+.. index::
+   single: Outgoing Calls
+   pair: Outgoing E-Mails;Outgoing Calls
+
 Outgoing E-mails
 ================
 
 .. index::
+   pair: Transactions; Outgoing Calls
    pair: Transactions; Outgoing E-mails
 
 The FAD4 structured field allows a host application to send an e-mail. This function is described in the VIRTEL
@@ -12598,6 +12830,9 @@ Structred Fields
 
 -  Retrieve the contents of an incoming e-mail
 
+.. index::
+   pair: Structured Fields Format Example; Programming Interfaces
+
 General format of a 3270 structured field
 -----------------------------------------
 
@@ -12637,7 +12872,7 @@ is also possible to convert a normal message into a structured field message by 
 message exit).
 
 .. index::
-   pair: SRTVIRTEL; Programming Interfaces
+   pair: SRTVIRTEL prefix; Programming Interfaces
 
 Sending structured fields using the SRTVIRTEL prefix
 ----------------------------------------------------
@@ -12664,7 +12899,7 @@ F3 0016 FAE5 08 08 E3D9F0F0F0F0F0F1 818683A796A34040
 .. index::
    pair: How to if running under Virtel; Programming Interfaces
 
-How To Determine If Running Under VIRTEL
+How To Determine If Running Under Virtel
 ----------------------------------------
 
 Because the structured fields described in this chapter are understood only by VIRTEL and not by regular 3270
@@ -12727,6 +12962,9 @@ based upon the CICS transaction code:
 
 *Detecting VIRTEL by testing the transaction code*
 
+.. index::
+   pair: Including Parameters; Programming Interfaces
+
 Include parameters after the transaction code
 ---------------------------------------------
 
@@ -12779,6 +13017,9 @@ field contains spaces:
         END-IF
 
 *Detecting VIRTEL by inspecting the contents of the TIOA*
+
+.. index::
+   pair: Including Specific Terminal Ranges; Programming Interfaces
 
 Use a specific range of terminal names
 --------------------------------------
@@ -12915,7 +13156,6 @@ To perform more than one function at a time, multiple FAC8 structured fields can
 .. index::
      pair: FAC8.06 - Specify Virtel directory; Programming Interfaces
 
-
 Structured field FAC8 code 06
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -12952,8 +13192,11 @@ The format of a structured field FAC8 code 07 is:
 
 *Format of structured field FAC8 code 07*
 
-COBOL example
-^^^^^^^^^^^^^
+.. index::
+     pair: COBOL Example; Programming Interfaces
+
+COBOL example using FAC8
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -13027,6 +13270,9 @@ page 174) which allows the application to supply lists of drop-down values for s
 
 .. _#_V457UG_FAE5:
 
+.. index::
+   pair: FAE5 - Structured fields; Programming Interfaces
+
 Structured field FAE5
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -13063,14 +13309,20 @@ field allows the application to set a single value whose length is equal to the 
 After the application has sent a message containing an FAE5 structured field, VIRTEL considers the current screen
 complete and sends the response to the user.
 
+.. index::
+   pair: FAE6 - Structured fields; Programming Interfaces
+
 Structured field FAE6
 ^^^^^^^^^^^^^^^^^^^^^
 
 Structured field FAE6 is identical to FAE5, except that VIRTEL does not consider the current screen to be complete, and
 waits for a further output message from the application before sending the response to the user.
 
-COBOL example
-^^^^^^^^^^^^^
+.. index::
+     pair: COBOL Example using FAE5; Programming Interfaces
+
+COBOL example using FAE5
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -13137,6 +13389,10 @@ added to the VIRTEL table variable by calling VIRSETA again with the same variab
 When VIRSETA is used to copy values into a VIRTEL table variable, all of the values must have the same length. To
 create a VIRTEL table variable containing values of varying lengths, use CALL VIRSETV described in the next section.
 
+.. index::
+   pair: VIRSETA Parameters; Call Interface
+   pair: VIRSETA Parameters; VIRSETA
+
 CALL VIRSETA parameters
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -13155,6 +13411,10 @@ Parameters passed by calling program:
 6. Count (signed halfword) contains the number of elements in the array
 
 7. Data length (signed halfword) contains the length of the data item contained in each element of the array. This may be less than or equal to the element size.
+
+.. index::
+   pair: VIRSETA Example; Call Interface
+   pair: VIRSETA Example; VIRSETA
 
 CALL VIRSETA example
 ^^^^^^^^^^^^^^^^^^^^
@@ -13183,6 +13443,10 @@ CALL VIRSETA example
 
 *Example of VIRTEL Web Integration application using CALL VIRSETA*
 
+.. index::
+   pair: VIRSETA return codes; Call Interface
+   pair: VIRSETA return codes; VIRSETA
+
 CALL VIRSETA return codes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -13201,12 +13465,11 @@ VSA4
 Additionally CICS may issue an abend if the EXEC CICS SEND STRFIELD command is unsuccessful.
 
 .. index::
-   pair: VIRSETV; Call Interface
+   pair: VIRSETV (CICS); Call Interface
    pair: Set value of varibale; VIRSETV
 
-
-CALL VIRSETV
-^^^^^^^^^^^^
+CALL VIRSETV (CICS)
+^^^^^^^^^^^^^^^^^^^
 
 This module allows a CICS application program to set the value of a VIRTEL variable. The calling program supplies the
 name of the variable and the value to be set. The VIRSETV module builds an FAE6 structured field containing the
@@ -13215,6 +13478,10 @@ variable name and value, and sends the structured field to VIRTEL using the EXEC
 VIRTEL variables containing more than one value are known as table variables. The application program can create a
 table variable by calling the VIRSETV module several times with the same variable name. The first call creates the
 variable and adds the first value to it. Subsequent calls add additional values to the table variable.
+
+.. index::
+   pair: VIRSETV Parameters; Call Interface
+   pair: VIRSETV Parameters; VIRSETV
 
 CALL VIRSETV parameters
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -13230,6 +13497,10 @@ Parameters passed by calling program:
 4. Value (variable length)
 
 5. Length (signed halfword field containing length of value)
+
+.. index::
+   pair: VIRSETV Example; Call Interface
+   pair: VIRSETV Example; VIRSETV
 
 CALL VIRSETV example
 ^^^^^^^^^^^^^^^^^^^^
@@ -13249,6 +13520,10 @@ CALL VIRSETV example
 
 *Example of VIRTEL Web Integration application using CALL VIRSETV*
 
+.. index::
+   pair: VIRSETV return codes; Call Interface
+   pair: VIRSETV return codes; VIRSETV
+
 CALL VIRSETV return codes
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -13266,9 +13541,8 @@ Additionally CICS may issue an abend if the EXEC CICS SEND STRFIELD command is u
    pair: VIRSETAI; Call Interface
    pair: Copy an array; VIRSETAI
 
-
-CALL VIRSETAI
-^^^^^^^^^^^^^
+CALL VIRSETAI (IMS)
+^^^^^^^^^^^^^^^^^^^
 
 This module allows an IMS application program to copy an array of values into a VIRTEL table variable. The calling
 program supplies the name of the variable and an array containing the values. The VIRSETAI module builds one or
@@ -13280,6 +13554,10 @@ added to the VIRTEL table variable by calling VIRSETAI again with the same varia
 
 When VIRSETAI is used to copy values into a VIRTEL table variable, all of the values must have the same length. To
 create a VIRTEL table variable containing values of varying lengths, use CALL VIRSETVI described in the next section.
+
+.. index::
+   pair: VIRSETAI parameters; Call Interface
+   pair: VIRSETAI parameters; VIRSETAI
 
 CALL VIRSETAI parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13297,6 +13575,10 @@ Parameters passed by calling program:
 5. Data length (signed halfword) contains the length of the data item contained in each element of the array. This may be less than or equal to the element size.
 
 6. IMS I/O PCB
+
+.. index::
+   pair: VIRSETAI Example; Call Interface
+   pair: VIRSETAI Example; VIRSETAI
 
 CALL VIRSETAI example
 ^^^^^^^^^^^^^^^^^^^^^
@@ -13336,8 +13618,8 @@ CALL VIRSETAI example
    pair: VIRSETVI; Call Interface
    pair: Set value of variable; VIRSETVI
 
-CALL VIRSETVI
-^^^^^^^^^^^^^
+CALL VIRSETVI (IMS)
+^^^^^^^^^^^^^^^^^^^
 
 This module allows an IMS application program to set the value of a VIRTEL variable. The calling program supplies the
 name of the variable and the value to be set. The VIRSETVI module builds an FAE6 structured field containing the
@@ -13387,14 +13669,19 @@ CALL VIRSETVI example
    pair: Build and send structured fields; VIRTEL
 
 
-CALL VIRTEL
-^^^^^^^^^^^
+CALL VIRTEL (CICS)
+^^^^^^^^^^^^^^^^^^
 
 Application programs running in a CICS environment with LE can also call a module named VIRTEL (see source
 delivered in the VIRTEL SAMPLIB library at installation time) which builds and sends the structured fields necessary to
 invoke the following functions:
 - specify page template and directory (structured field FAC8)
 - send data for table variables (structured field FAE6)
+
+.. index::
+   pair: VIRTEL; Call Interface
+   pair: VIRTEL Example; VIRTEL
+
 
 CALL VIRTEL example
 ^^^^^^^^^^^^^^^^^^^
@@ -13494,6 +13781,10 @@ CPT_NUM1) and to request the use of a specific page template (page WEB2VIRT in d
 
 *Example of VIRTEL Web Integration application using CALL VIRTEL*
 
+.. index::
+   pair: VIRTEL; Call Interface
+   pair: VIRTEL return codes; VIRTEL
+
 CALL VIRTEL return codes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -13525,10 +13816,14 @@ Return codes for the SENDTABW function
     13  
         Number of values is non-numeric
 
+.. raw:: latex
+
+    \newpage 
+
 .. _#_V457UG_host4web:
 
 .. index::
-   pair: VIRTEL; HOST4WEB
+   single: HOST4WEB
    pair: Commands; HOST4WEB
 
 HOST4WEB commands
@@ -13538,11 +13833,14 @@ When an application is invoked from a browser via an entry point defined with em
 application can use a set of VIRTEL control commands known as “HOST4WEB” commands, which are coded in the 3270
 screen.2
 
-Conditions for processing
-^^^^^^^^^^^^^^^^^^^^^^^^^
+.. index::   
+   pair: Processing conditions; HOST4WEB
 
-HOST4WEB commands are recognized by VIRTEL when the entry point definition specifies emulation type HTML,
-HOST4WEB, or H4W, and any of the following conditions is true:
+Processing conditions
+^^^^^^^^^^^^^^^^^^^^^
+
+HOST4WEB commands are recognized by VIRTEL when the entry point definition specifies emulation type HTML, HOST4WEB, or H4W, and any of the following conditions is true:
+
 - the VIRTEL transaction definition contains value 1 in the “H4W Commands” field
 - the VIRTEL transaction definition contains value 2 in the “H4W Commands” field and the message has a ‘2VIRTEL’ prefix (see below)
 - the VIRTEL transaction definition contains value 4 in the “H4W Commands” field and the entry point definition specifies emulation type HOST4WEB or H4W
@@ -13550,10 +13848,7 @@ HOST4WEB, or H4W, and any of the following conditions is true:
 - the previous screen contained the HOST4WEB command C SCAN NEXT SCREEN
 - the application previously sent an FAD5 code 01 structured field
 
-All HOST4WEB commands must begin immediately after a 3270 attrbute byte, in other words each command must
-appear at the start of a 3270 field. The non-display attribute may be used, if desired, to prevent the command
-appearing on the screen. To define a non-display field in BMS, specify ATTRB=(ASKIP,DRK). To define a non-display field
-in ISPF, use an attribute character defined as INTENS(NON) in the )ATTR section of the panel.
+All HOST4WEB commands must begin immediately after a 3270 attrbute byte, in other words each command must appear at the start of a 3270 field. The non-display attribute may be used, if desired, to prevent the command appearing on the screen. To define a non-display field in BMS, specify ATTRB=(ASKIP,DRK). To define a non-display field in ISPF, use an attribute character defined as INTENS(NON) in the )ATTR section of the panel.
 
 ISPF applications must use the ISPEXEC CONTROL DISPLAY REFRESH command before the ISPEXEC DISPLAY PANEL
 command to ensure that HOST4WEB commands are transmitted to VIRTEL in their entirety.
@@ -13564,19 +13859,16 @@ command to ensure that HOST4WEB commands are transmitted to VIRTEL in their enti
 2VIRTEL prefix
 ^^^^^^^^^^^^^^
 
-An application can send a 3270 message with a special prefix to indicate to VIRTEL that the screen contains HOST4WEB
-commands.
+An application can send a 3270 message with a special prefix to indicate to VIRTEL that the screen contains HOST4WEB commands. The prefix consists of a 3270 field starting with the characters ‘2VIRTEL’. This field must be the first field transmitted in the message. The field can be defined with the “non-display” attribute, if desired, to prevent the prefix appearing on the screen.
 
-The prefix consists of a 3270 field starting with the characters ‘2VIRTEL’. This field must be the first field transmitted in
-the message.
-
-The field can be defined with the “non-display” attribute, if desired, to prevent the prefix appearing on the screen.
+.. index::
+   pair: HOST4WEB Commands; HOST4WEB     
 
 List of commands
 ^^^^^^^^^^^^^^^^
-.. index::
-   pair: HOST4WEB Commands; HOST4WEB 
+.. index::  
    pair: C AUTO VARIABLES; HOST4WEB Commands
+   pair: C AUTO VARIABLES; HOST4WEB   
 
 C AUTO VARIABLES (Command Auto Variables)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13594,6 +13886,7 @@ cancels the effect of the KEEP VARIABLES command.
 
 .. index::
      pair: C KEEP VARIABLES; HOST4WEB Commands
+     pair: C KEEP VARIABLES; HOST4WEB 
 
 C KEEP VARIABLES (Command Keep Variables)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13612,6 +13905,7 @@ freed at the end of the transaction.
 
 .. index::
      pair: C KILL VARIABLES; HOST4WEB Commands
+     pair: C KILL VARIABLES; HOST4WEB 
 
 C KILL VARIABLES (Command Kill Variables)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13628,6 +13922,7 @@ Requests VIRTEL to free all variables.
 
 .. index::
      pair: C RETURN; HOST4WEB Commands
+     pair: C RETURN; HOST4WEB 
 
 C RETURN (Command Return)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13641,6 +13936,7 @@ this command is never displayed to the user.
 
 .. index::
      pair: C SCAN NEXT SCREEN; HOST4WEB Commands
+     pair: C SCAN NEXT SCREEN; HOST4WEB 
 
 C SCAN NEXT SCREEN (Command Scan)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13658,6 +13954,7 @@ need for a ‘2VIRTEL’ prefix.
 
 .. index::
      pair: C WAIT NEXT SCREEN; HOST4WEB Commands
+     pair: C WAIT NEXT SCREEN; HOST4WEB 
 
 C WAIT NEXT SCREEN (Command Wait)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13670,6 +13967,7 @@ Indicates that the current screen should not be sent to the user yet.
 
 .. index::
      pair: C TERMSESS; HOST4WEB Commands
+     pair: C TERMSESS; HOST4WEB
 
 C TERMSESS (Command Terminate Session)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13683,6 +13981,7 @@ sent.
 
 .. index::
      pair: G EMULATION TYPE; HOST4WEB Commands
+     pair: G EMULATION TYPE; HOST4WEB
 
 G EMULATION TYPE (Get Emulation Type)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13696,6 +13995,8 @@ defined in the entry point.
 
 .. index::
      pair: G PAGE NAME; HOST4WEB Commands
+     pair: G PAGE NAME; HOST4WEB
+
 
 G PAGE NAME (Get Current Template Name)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13709,6 +14010,8 @@ current page template.
 
 .. index::
      pair: G URL PARAMETER; HOST4WEB Commands
+     pair: G URL PARAMETER; HOST4WEB
+
 
 G URL PARAMETER (Get URL Parameter)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13722,7 +14025,7 @@ parameter paramname in the URL.
 
 .. index::
      pair: S DIRECTORY; HOST4WEB Commands
-
+     pair: S DIRECTORY; HOST4WEB
 
 S DIRECTORY (Set Temporary Directory Name)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13737,6 +14040,7 @@ sub-application (as described 23). This name must not contain any blanks.
 
 .. index::
      pair: S GLOBAL PAGE; HOST4WEB Commands
+     pair: S GLOBAL PAGE; HOST4WEB
 
 
 S GLOBAL PAGE (Set Global Template Name)
@@ -13751,6 +14055,8 @@ must not contain any blanks.
 
 .. index::
      pair: S PAGE; HOST4WEB Commands
+     pair: S PAGE; HOST4WEB
+
 
 S PAGE (Set Temporary Template Name)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13766,6 +14072,7 @@ name must not contain any blanks.
 
 .. index::
      pair: S VARIABLE; HOST4WEB Commands
+     pair: S VARIABLE; HOST4WEB
 
 S VARIABLE (Set Variable)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -13784,16 +14091,25 @@ which act as field delimiters.
     \newpage 
 
 .. index::
-   single: E-mail
+   single: Incoming Calls 
 
-E-mail
-======
+**************
+Incoming Calls
+**************
+
+.. index::
+   single: Incoming Calls
+   pair: Incoming Calls E-Mails;Incoming Calls
+
+Incoming E-mails
+================
 
 .. _#_V457UG_email_retrieve_data:
 
 .. index::
-     pair: FAC8 - Retrieve data from email; Programming Interfaces
-
+   pair: Transactions; Incoming Calls
+   pair: Transactions; Incoming E-mails
+   pair: FAC8 - Retrieve data from email; Programming Interfaces
 
 FAC8: Retrieve data from an e-mail
 ----------------------------------
@@ -13803,8 +14119,12 @@ of the e-mail. To request VIRTEL to extract the data from the e-mail, the applic
 12 or 13 to the associated relay (3270 pseudo-terminal). VIRTEL intercepts the structured field and sends a response to
 the application in the form of a QUERY REPLY (x‘88’) structured field.
 
-Structured field FAC8 code 12
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. index::
+   pair: FAC8 - Structured field code 12; Incoming E-mails
+   pair: FAC8 - Structured field code 12; Programming Interfaces
+
+FAC8 - Structured field code 13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The format of a structured field FAC8 code 12 is:
 
@@ -13852,8 +14172,12 @@ query reply structured field is:
     - All of the response types requested are present, even if they are zero length.
     - Lines of message text are delimited by X'0D25' (EBCDIC carriage-return / line-feed).
 
-Structured field FAC8 code 13
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. index::
+   pair: FAC8 - Structured field code 13; Incoming E-mails
+   pair: FAC8 - Structured field code 13; Programming Interfaces    
+
+FAC8 - Structured field code 13
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Structured field FAC8 code 13 searches the e-mail for a specific character string, then returns the string together with
 the remainder of the line.
@@ -13890,8 +14214,12 @@ query reply structured field is:
     - All of the response types requested are present, even if they are zero length.
     - Structured fields FAC8 code 12 and code 13 can be combined in the same request / response.
 
-COBOL example
-^^^^^^^^^^^^^
+.. index::
+   pair: COBOL FAC8 example; Incoming E-mails
+   pair: COBOL FAC8 example; Programming Interfaces      
+
+COBOL FAC8 example
+^^^^^^^^^^^^^^^^^^
 
 Example (in Cobol format) of receiving an e-mail:
 
@@ -13991,7 +14319,8 @@ Example (in Cobol format) of receiving an e-mail:
 *Example of sending structured field FAC8 code 12 and 13*
 
 .. index::
-     pair: FAD4 - Send e-mail from application; Programming Interfaces
+     pair: FAD4 - Send e-mail from application; Incoming E-Mails
+     pair: FAD4 - Send e-mail from application; Programming Interfaces 
 
 FAD4: Sending an e-mail from a host application
 -----------------------------------------------
@@ -14029,8 +14358,12 @@ H
 The entry point used to invoke the host application must contain a type-3 transaction whose external name is $MAIL$
 and whose “Application” field contains the name of the SMTP line to be used for sending the outgoing e-mail.
 
-COBOL example
-^^^^^^^^^^^^^
+.. index::
+     pair: COBOL FAD4 example; Incoming E-Mails
+     pair: COBOL FAD4 example; Programming Interfaces 
+
+COBOL FAD4 example
+^^^^^^^^^^^^^^^^^^
 
 Example (in Cobol format) of sending an e-mail :
 
@@ -14223,7 +14556,7 @@ as the value of the network.automatic-ntlm-auth.trusted-uris parameter.
 
 .. index::
    pair: Encryption; Virtel Web Access Security
-   triple: Encryption; AT-TLS;Virtel
+   pair: Encryption; AT-TLS
 
 Data encryption by AT-TLS/SSL
 -----------------------------
@@ -14241,7 +14574,7 @@ proxy is to transform the dataflow into HTTP mode before sending it on to VIRTEL
 
 .. index::
    pair: Certificates; Virtel Web Access Security
-   triple: Certificates; AT-TLS;Virtel
+   pair: Certificates; AT-TLS
 
 Identification by certificate
 -----------------------------
@@ -14284,7 +14617,6 @@ To activate the password encryption option for WEB2AJAX.htm you must specify a C
 the name and ICSF as the encryption engine, as in example shown below:
 
 ::
-
 
         CRYPT1=(CRYPT3270,3TDEA,RSA-1024,ICSF,HEX), *
 
@@ -14394,21 +14726,16 @@ the security type 4 transaction as shown above.
 *HTML security: Example page template*
 
 .. index::
-   pair: Using rules; Virtel Web Access Security
-   pair: Using rules; Security
+   pair: Virtel Rules; Virtel Web Access Security
+   pair: Virtel Rules; Security
 
 
-Security by rule
-----------------
+Virtel Rules
+------------
 
-The rules attached to an HTTP line allow security to be implemented at the entry point level. The following example
-shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point
-specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
-case, the entry point will be chosen according to the set of rules associated with that particular user (see
-:ref:`“Correspondent Management” <#_V457UG_correspondent_management>`). The second rule, 1HT00200, assigns the entry point EPINTERN to clients
-whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
-third rule, 1HT00900, assigns the entry point EPPUBLIC to all other requests (this entry point could, for example,
-display a page containing the message “Access not authorised”).
+The rules attached to an HTTP line allow security to be implemented at the entry point level. The following example shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
+case, the entry point will be chosen according to the set of rules associated with that particular user (see :ref:`“Correspondent Management” <#_V457UG_correspondent_management>`). The second rule, 1HT00200, assigns the entry point EPINTERN to clients whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
+third rule, 1HT00900, assigns the entry point EPPUBLIC to all other requests (this entry point could, for example, display a page containing the message “Access not authorised”).
 
 ::
 
@@ -14720,15 +15047,12 @@ non-standard screen sizes.
 How To Support Multiple Codes Pages
 ===================================
 
-VIRTEL can use two methods of EBCDIC translation and this is governed by the template or web page being displayed. If
-the page contains the embedded VIRTEL tag {{{SET-OUTPUT-ENCODING-UTF-8}}} than the TCT DEFUTF8 parameter is
-used. If the page doesn’t contain the tag then the code pages identified by the COUNTRY parameter are used. (See
-“COUNTRY” and “DEFUTF8” parameters in the VIRTEL Installation Guide for further details).
-Code Page Support can be provided at the following levels:
+VIRTEL can use two methods of EBCDIC translation and this is governed by the template or web page being displayed. If the page contains the embedded VIRTEL tag {{{SET-OUTPUT-ENCODING-UTF-8}}} than the TCT DEFUTF8 parameter is used. If the page doesn’t contain the tag then the code pages identified by the COUNTRY parameter are used. (See
+“COUNTRY” and “DEFUTF8” parameters in the VIRTEL Installation Guide for further details). Code Page Support can be provided at the following levels:
+
 - TCT Level - This would provide Code Page translation defaults for all lines and transaction. Effectively a Global option for an instance of VIRTEL.
 - URL Level – This overrides the TCT default.
-- Transaction level - Code pages can be determined through the VIRTEL Scenario language using the SET$ ENCODING
-and SET$ URL-ENCODING instructions.
+- Transaction level - Code pages can be determined through the VIRTEL Scenario language using the SET$ ENCODING and SET$ URL-ENCODING instructions.
 
 Defining Code Pages translation defaults
 ----------------------------------------
@@ -14785,31 +15109,20 @@ Remember that it is always best to exit cleanly from the host application by pre
 Return to the application selection menu
 ----------------------------------------
 
-When a “Disconnect” request is received, VIRTEL returns to the root URL and displays the default page for the line,
-which will normally be an application selection menu. For detailed information, see :ref:`“Virtel URL formats” <#_V457UG_url_formats>`.
-The user can then choose to connect to the same or a different application by clicking on the appropriate link in the
+When a “Disconnect” request is received, VIRTEL returns to the root URL and displays the default page for the line, which will normally be an application selection menu. For detailed information, see :ref:`“Virtel URL formats” <#_V457UG_url_formats>`. The user can then choose to connect to the same or a different application by clicking on the appropriate link in the
 application selection menu.
 
 Displaying a specific page on disconnection
 -------------------------------------------
 
-Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of
-the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field
-indicates the name of the page to be displayed following disconnection from the host application. The indicated file
-must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the
-URL specifies /w2h/WEB3270.htm).
+Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the URL specifies /w2h/WEB3270.htm).
 
-The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as
-the application and terminal name, date and time, etc.)
+The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.)
 
 Closing the browser window automatically
 ----------------------------------------
 
-Sites who wish to close the browser window and return to the desktop when the user disconnects from the host
-application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript
-code which will attempt to close the current browser window. Depending on the browser version and security settings,
-the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as
-standard in the W2H-DIR directory but may be copied to another directory if required.
+Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required.
 
 The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:
 
@@ -14841,38 +15154,28 @@ The figure below shows an example of an entry point definition with close.htm sp
 *Example of entry point with last page*
 
 .. index::
-   pair: Access Host Application; HOWTOs 
-
+   pair: Access Host Application Directly; HOWTOs 
 
 How To Access A Host Application Directly
 =========================================
 
-It is not always necessary to pass via an application selection menu to connect to a host application. A host application
-may be accessed directly by opening the URL containing the complete path to the application. This URL may result in
-the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a
-subsequent screen sent by the application. For more information about how VIRTEL can be used to automate the
-process of connection to a host application, see :ref:`“Virtel URL formats” <#_V457UG_url_formats>` of this manual, and “Connection/
-Disconnection Scripts” in the VIRTEL Connectivity Reference manual.
+It is not always necessary to pass via an application selection menu to connect to a host application. A host application may be accessed directly by opening the URL containing the complete path to the application. This URL may result in the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a subsequent screen sent by the application. For more information about how VIRTEL can be used to automate the process of connection to a host application, see :ref:`“Virtel URL formats” <#_V457UG_url_formats>` of this manual, and “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual.
 
 Full path URL
 -------------
 
-For example, you can access the VIRTEL transaction whose external name is “Cics” by pointing the browser at a URL of
-the following format:
+For example, you can access the VIRTEL transaction whose external name is “CICS” by pointing the browser at a URL of the following format:
 
 ::
 
     http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Cics
 
-At the end of the session with the host application, VIRTEL examines the “Last page” field (see previous section) to
-decide whether to return to the desktop or to redisplay the application selection menu.
+At the end of the session with the host application, VIRTEL examines the “Last page” field (see previous section) to decide whether to return to the desktop or to redisplay the application selection menu.
 
 Default URL for the entry point
 -------------------------------
 
-An application URL may be coded in the “TIOA at logon” field of the default transaction for the entry point (the default
-transaction is the transaction whose external name is the same as the entry point name). This allows the user to go
-directly to the host application simply by entering a URL of the format:
+An application URL may be coded in the “TIOA at logon” field of the default transaction for the entry point (the default transaction is the transaction whose external name is the same as the entry point name). This allows the user to go directly to the host application simply by entering a URL of the format:
 
 ::
 
@@ -14915,12 +15218,7 @@ For more information see :ref:`“Virtel URL formats” <#_V457UG_url_formats>`.
 How To Change The Font For Web Access
 =====================================
 
-The :ref:`“Web Access settings menu” <#_V457UG_settings_menu>` allows you to change the font family and font size. By default VIRTEL will
-calculate an appropriate font size to fit the browser window size, but you can choose a fixed font size if you prefer.
-VIRTEL Web Access uses a fixed-pitch font to display the 3270 screen. If you do not like the default font then you can
-choose any fixed-pitch font installed on the workstation. Typical fonts available on Windows workstations are Courier
-New, Fixedsys, Terminal, Consolas, and Lucida Console. You can use the Windows Control Panel – Fonts dialog to view
-the installed fonts.
+The :ref:`“Web Access settings menu” <#_V457UG_settings_menu>` allows you to change the font family and font size. By default VIRTEL will calculate an appropriate font size to fit the browser window size, but you can choose a fixed font size if you prefer. VIRTEL Web Access uses a fixed-pitch font to display the 3270 screen. If you do not like the default font then you can choose any fixed-pitch font installed on the workstation. Typical fonts available on Windows workstations are Courier New, Fixedsys, Terminal, Consolas, and Lucida Console. You can use the Windows Control Panel – Fonts dialog to view the installed fonts.
 
 .. index::
    pair: Change Display Style; HOWTOs 
@@ -14940,9 +15238,7 @@ Selecting display pattern : The display model changes will take effect at the ne
 How To Customize The Enter Key Settings
 =======================================
 
-Many 3270 users prefer to customize the keyboard mapping so that the “Enter” key on the main keyboard is handled
-as a 3270 newline, while the right “Ctrl” key and the “Enter” key on the numeric keypad are treated as 3270 Enter.
-The :ref:`“Web Access settings menu” <#_V457UG_settings_menu>` allows you to specify this configuration using the following settings:
+Many 3270 users prefer to customize the keyboard mapping so that the “Enter” key on the main keyboard is handled as a 3270 newline, while the right “Ctrl” key and the “Enter” key on the numeric keypad are treated as 3270 Enter. The :ref:`“Web Access settings menu” <#_V457UG_settings_menu>` allows you to specify this configuration using the following settings:
 
 ::
 
@@ -14952,18 +15248,12 @@ The :ref:`“Web Access settings menu” <#_V457UG_settings_menu>` allows you to
 
 Versions 6, 7, and 8 of Internet Explorer do not distinguish between the Enter key on the main keyboard and the Enter key on the numeric keypad. For users who want the two “Enter” keys to be handled differently, Syspertec supplies an additional DLL to be installed in Internet Explorer as a “Browser Helper Object”. This DLL can be installed by clicking on the “Install VirtKey BHO” link on the VIRTEL Web Access menu. After installing the DLL, go to “Tools” – “Internet Options” – “Advanced” and check that the option “Enable third-party browser extensions” is ticked, then stop and restart Internet Explorer. Administrator privilege is needed to install the Browser Helper Object, but once installed the BHO can be used by users without administrator privileges.
 
-Although other browsers (including Internet Explorer 9) are capable of recognizing the keypad Enter key without the
-need for a BHO, older releases of Firefox, Chrome, and Safari do not distinguish between the left and right Ctrl keys.
-This means that when “ctrl” is set to “ENTER” then both Ctrl keys will be handled as 3270 Enter. In addition, the AltGr
-key will be treated as Ctrl under Firefox. The most recent versions of Firefox (from version 15 onwards for Windows 7
-and from version 17 onwards for Windows XP) and Chrome (from version 23 onwards) are capable of distinguishing
-between the left and right Ctrl keys like Internet Explorer.
+Although other browsers (including Internet Explorer 9) are capable of recognizing the keypad Enter key without the need for a BHO, older releases of Firefox, Chrome, and Safari do not distinguish between the left and right Ctrl keys. This means that when “ctrl” is set to “ENTER” then both Ctrl keys will be handled as 3270 Enter. In addition, the AltGr key will be treated as Ctrl under Firefox. The most recent versions of Firefox (from version 15 onwards for Windows 7 and from version 17 onwards for Windows XP) and Chrome (from version 23 onwards) are capable of distinguishing between the left and right Ctrl keys like Internet Explorer.
 
 Managing CTRL keydown being lost
 --------------------------------
 
-With some Windows Operating System, the CTRL keydown events may be lost half the time. In such case, you must
-turn on a special feature by introducing the following command into a "custom.js" file.
+With some Windows Operating System, the CTRL keydown events may be lost half the time. In such case, you must turn on a special feature by introducing the following command into a "custom.js" file.
 
 ::
 
@@ -14982,13 +15272,13 @@ turn on a special feature by introducing the following command into a "custom.js
 How To Customize Display Styles
 ===============================
 
-VIRTEL users can customise the screen display to suit their needs. An exception to this is the model type which is an
-Administration function. Administrators will configure model types which can then be selected by a user.
+VIRTEL users can customise the screen display to suit their needs. An exception to this is the model type which is an Administration function. Administrators will configure model types which can then be selected by a user.
 
 Add or remove a display style
 -----------------------------
 
 To add a new display style, you must :
+
 - Create a CSS file with a “.css” extension name,
 - Load this file in any directory of your choice except in W2H-DIR,
 - Make sure that this directory is referenced in the entry point by using a transaction that contains the string “/w2h/custom-css” (without the quotes) in the “URL prefix” field.
@@ -15076,12 +15366,7 @@ To add a new print style, proceed as for a display style, but in the VWAmsg.cust
 3270 support blinking fields
 ----------------------------
 
-Becoming unpopular over time, and even stated as being the cause of adverse reactions in people with epilepsy, the
-“<blink>” tag was retired from the HTML API, although it still remains within the browsers code. The feature can be
-reactivated through the use of CSS code but by doing so Web Accessibility guidelines may be compromised. This may
-be a violation in certain jurisdictions, contravening laws and regulations with regard to web design and accessibility
-and what is permissible. It is up to each individual to determine the purpose and usefulness of reactivating this
-feature.
+Becoming unpopular over time, and even stated as being the cause of adverse reactions in people with epilepsy, the “<blink>” tag was retired from the HTML API, although it still remains within the browsers code. The feature can be reactivated through the use of CSS code but by doing so Web Accessibility guidelines may be compromised. This may be a violation in certain jurisdictions, contravening laws and regulations with regard to web design and accessibility and what is permissible. It is up to each individual to determine the purpose and usefulness of reactivating this feature.
 
 To reactivate blinking support, you can include the following code in your custom.css file :
 
@@ -15106,8 +15391,7 @@ To reactivate blinking support, you can include the following code in your custo
         67% { opacity: 0 }
         }
 
-This code can also be found into the "custom-blink.css" source file store into the "tools" subdirectory of any update
-delivered from number #5310 and over.
+This code can also be found into the "custom-blink.css" source file store into the "tools" subdirectory of any update delivered from number #5310 and over.
 
 .. index::
    pair: Change default settings; HOWTOs 
@@ -15123,11 +15407,7 @@ The site default settings for Web Access are stored in the file w2hparm.js (see 
 How To Support A Reverse Proxy
 ==============================
 
-If your installation uses a reverse proxy (or bastion host) between the user’s browser and the VIRTEL Web Access
-server, then the VIRTEL log and statistics file will show the IP address of the proxy instead of the address of the end
-user. In order for VIRTEL to recognize and log the originating user’s IP address, you must declare the proxy in the
-HTFORWD parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide) or in a rule
-attached to the HTTP line (see “Rules” in the VIRTEL Connectivity Reference manual).
+If your installation uses a reverse proxy (or bastion host) between the user’s browser and the VIRTEL Web Access server, then the VIRTEL log and statistics file will show the IP address of the proxy instead of the address of the end user. In order for VIRTEL to recognize and log the originating user’s IP address, you must declare the proxy in the HTFORWD parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide) or in a rule attached to the HTTP line (see “Rules” in the VIRTEL Connectivity Reference manual).
 
 .. index::
    pair: Support Virtual Hosting; HOWTOs 
@@ -15135,11 +15415,7 @@ attached to the HTTP line (see “Rules” in the VIRTEL Connectivity Reference 
 How To Support Virtual Hosting
 ==============================
 
-Name-based virtual hosting is a method for supporting multiple sites (for example, site1.mycompany.com and
-site2.mycompany.com) using the same IP address and port number. By means of the “HTTP Host” field in the rules
-attached to the HTTP line, VIRTEL can recognize the site name and direct the request to a specific entry point. Refer to
-“Rules” in the VIRTEL Connectivity Reference manual for further details. You can install a set sample definitions for
-virtual hosting by running the ARBOLOAD job (delivered in the VIRTEL SAMPLIB) with the VHOST=YES parameter.
+Name-based virtual hosting is a method for supporting multiple sites (for example, site1.mycompany.com and site2.mycompany.com) using the same IP address and port number. By means of the “HTTP Host” field in the rules attached to the HTTP line, VIRTEL can recognize the site name and direct the request to a specific entry point. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details. You can install a set sample definitions for virtual hosting by running the ARBOLOAD job (delivered in the VIRTEL SAMPLIB) with the VHOST=YES parameter.
 
 .. index::
    pair: Control APPLIST behaviour; HOWTOs 
@@ -15172,8 +15448,8 @@ Appendix A
 
 .. _#_V457UG_w2hparm_defaults:
 
-Values for w2hparm.js
----------------------
+Default values for W2H parameters
+---------------------------------
 
 +---------------+-----------------------+---------------------------------------------------+
 | Keyword       | Caption               | Possible values                                   |
@@ -15305,7 +15581,7 @@ Values for w2hparm.js
 | "MirrorMode"  | BiDirectional mode    | true, false                                       |
 +---------------+-----------------------+---------------------------------------------------+
 
-*w2hparm.js: List of keywords and possible values*
+*Default W2H parameters: List of keywords and possible values*
 
 .. note:: Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility. 
 
