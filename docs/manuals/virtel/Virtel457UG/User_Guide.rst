@@ -117,7 +117,7 @@ The following diagram illustrates some of the protocols and applications support
 |image0|
 *The Virtel Engine*         
 
-Virtel provides three models. Web to Host access (VWA/W2H), Web Modernisation (VWM) and Web Integration (VWI). In the next section each model is described in detail. Regardless of the model, Virtel's mainframe requirements are the same. The basic file requirements are as follows:-
+Virtel provides three models. Web Access (VWA/W2H), Web Modernisation (VWM) and Web Integration (VWI). In the next section each model is described in detail. Regardless of the model, Virtel's mainframe requirements are the same. The basic file requirements are as follows:-
 
    - SAMP TRSF VSAM File. Contains the templates and web artefacts (JavaScript, Images, HTML, CSS elements etc.) which are served to the browser.
    - HTML TRSF VSAM File. Contains user customisation web artefacts (JavaScript, HTML, Images, HTML, CSS elements etc.)
@@ -125,9 +125,9 @@ Virtel provides three models. Web to Host access (VWA/W2H), Web Modernisation (V
    - ARBO VSAM File.      Contains customer configuration data.
    - Ancillary files.     Statistics, logs, tracing etc.
 
-Normally, Virtel runs as a started task. Multiple instances of Virtel can be run on the same LPAR. Virtel can run within a SYSPLEX environment, benefiting from the load balancing services that such environments provide. See the Virtel Installation manual for a full description of the Virtel mainframe requirements. Virtel can also be run as a batch process, providing a "batch" service between external servers. See the section :ref:`Virtel Batch <#_V457UG_virtel_batch>` or the Virtel Connectivity Manual for further information on running Virtel in batch.
+Virtel normally runs as a started task on the mainframe. Multiple instances of Virtel can be run on the same LPAR and can run within a SYSPLEX environment, benefiting from the load balancing services that such environments provide. See the Virtel Installation manual for a full description of the Virtel mainframe requirements. Virtel can also be run as a batch process, providing a "batch" service between external servers. See the section :ref:`Virtel Batch <#_V457UG_virtel_batch>` or the Virtel Connectivity Manual for further information on running Virtel in batch.
 
-Like any other web page server Virtel responds to an incoming URL targeted at any one of the TCPIP ports Virtel is listening on. The URL will identify the IP address of the z/OS environment, and the port address will target the Virtel Instance. The pathname and parameters of the URL will identify the Virtel Transaction that will be used to process the URL request. An example is shown below. This is a URL requesting a connection to a CICS application called SPCICS. SPCICS is the name of the Virtel transaction that will deal with the request. The pathname "/w2h/WEB2AJAX.htm" identifies a Virtel 3270 template that will be used to support the conversion between 3270 data-stream and HTML presentations.     
+Like any other web page servers Virtel responds to an incoming URL and serves template pages. The URL targets one of the TCPIP ports that Virtel is listening on. The URL will identify the IP address of the z/OS environment, and the port address will target the Virtel Instance. The pathname and parameters of the URL will identify the Virtel Transaction that will be used to process the URL request. A URL example is shown below. This is a URL requesting a connection to a CICS application called SPCICS. SPCICS is the name of the Virtel transaction that will deal with the request. The pathname "/w2h/WEB2AJAX.htm" identifies a Virtel 3270 template that will be used to support the transaction, providing the framework to convert between 3270 data-stream and HTML presentations.     
 
 ::
 
@@ -145,21 +145,23 @@ For more information on the Virtel URL formats see the section :ref:`Virtel URL 
 VIRTEL Web Access (VWA)
 -----------------------
 
-VIRTEL Web Access, formerly known as “Web-to-Host” (W2H), is a set of functions which enable information produced by host applications to be presented in an Internet browser.
+VIRTEL Web Access, formerly known as “Web-to-Host” (W2H), is a set of functions which provides access to mainframe 3270 legacy applications via the user's browser window. In the VWA model the Virtel Engine comprises of two components, a HTTP server and a VTAM component serving the back-end VTAM legacy applications, pertaining to operate as an LU2 device(s).  
 
-The principle of operation of VWA is the production and delivery of HTML pages stored in a Virtel directory at the host site. The pages delivered contain standard HTML tags and also tags specific to VIRTEL. Invoked by a browser or a program, these pages form the basis of translation “on the fly” of the specific tags, thus enabling the dynamic generation and delivery of pages to the browser. The VWA model also includes functions which allow dynamic modification of the presentation of the 3270 screens in an HTML page, with the aim of making the interface as “clickable” as possible. This chapter describes the set of functions required to support this function and presupposes a certain knowledge of the development of HTML pages.
+The principle operation of VWA is the production and delivery of 3270 data-streams as HTML pages. Static template page and web elements supporting VWA are stored and maintained in a Virtel directory on the mainframe at the host site. The pages served to the browser contain standard HTML tags, CSS, JavaScript elements and HTML tags specific to VIRTEL. Invoked by a browser or a program, these pages form the basis of an “on the fly” translation of 3270 data-streams, thus enabling the dynamic generation and delivery of a 3270 presentation to the browser. No terminal emulation software is required. The VWA model also includes functions which allow dynamic modification of the original 3270 presentation, with the aim of making the interface as “clickable” as possible. This chapter describes the set of functions required to support VWA and presupposes a certain knowledge Web technologies and HTML page construction.
 
-Some fundamental principles must be taken into consideration:
+Some fundamental differences to standard terminal emulation protocol must be taken into consideration:
 
-1. Sessions between a browser and an HTTP server are in disconnected mode, while they are in connected mode between VIRTEL and the host application.
+1. Sessions between a browser and the Virtel HTTP server are in disconnected mode, while they are in connected mode between VIRTEL VTAM component and the host application.
 
-2. The flow of information between an HTTP server and a client’s browser always occurs on the initiative of the client.
+2. The flow of information between the Virtel HTTP server and a client’s browser occurs on the initiative of the client or through an optional 'Long Poll' asynchronous session.
 
 3. A single request from the browser will only invoke a single response from the HTTP server, while the transmission of a message to an application on the host may generate several response messages at once (for example, a message to clear the screen followed by a new screen image).
 
-    These differences give rise to a need to ensure maintenance of session context between a client and a host application. This is done by the :index:`SESSION-CODE <pair: SESSION-CODE;Virtel session>` tag embedded in each template page.
+These differences give rise to a need to ensure maintenance of session context between a client and a host application. This is done by the :index:`SESSION-CODE <pair: SESSION-CODE;Virtel session>` tag embedded in each template page. Although the HTML pages used to display 3270 data contain specific VIRTEL tags, these pages can be developed using standard web development tools. The pages containing VIRTEL specific tags are stored in a VIRTEL directory along with any images and other elements required.
 
-    Although the HTML pages used to display 3270 data contain specific VIRTEL tags, these pages can be developed using standard web development tools. The pages containing VIRTEL specific tags are stored in a VIRTEL directory along with any images and other elements required.
+.. raw:: latex
+
+    \newpage     
 
 Let's look at how VWA works.
 
@@ -167,20 +169,43 @@ Let's look at how VWA works.
 *VWA Overview*
 
 
-1. The user enters a URL which points to the Virtel Engine. In this case *http:www.myHost.com/virt3270+TSO*. Virtel, running as a web server, will be listening on default port 80 for any incoming calls. When Virtel receives the call-in it will process the pathname of the URL (*/virt3270+TSO*) to determine a course of action.
+1. The user enters a URL which points to the Virtel Engine. In this case *http:www.myHost.com/WEB2AJAX+TSO5*. Virtel, running as a web server, will be listening on default port 80 for any incoming calls. When Virtel receives the call-in it will process the pathname of the URL (*/WEB2AJAX+TSO5*) to determine a course of action.
 
-2. The pathname /VIRT3270+TSO identifies a Virtel HTML page TEMPLATE (VIRT3270) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application and initiates a VTAM session with TSO. 
+2. The pathname /WEB2AJAX+TSO identifies a Virtel HTML page TEMPLATE (WEB2AJAX) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application and initiates a VTAM session with TSO. 
 
-3. A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 data streams and will be sent to TS
-O as if they had come from a 3270 terminal. 3270 data streams sent by the TSO application will be converted into HTML pages using the VIRT3270 template and sent to the browser.  
+3. A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 data streams and will be sent to TSO as if they had come from a 3270 terminal. 3270 data streams sent by the TSO application will be converted into HTML pages using the WEB2AJAX template and sent to the browser.  
 
 4. TSO responds to the session request and sends a 3270 screen to Virtel.
 
-5. Virtel, acting as a SLU in the VTAM session, receives the 3270 data stream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page VIRT3270 as a template. Virtel pages are maintained on a VSAM file known as a TRSF.
+5. Virtel, acting as a SLU in the VTAM session, receives the 3270 data stream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page WEB2AJAX as a template. Virtel pages are maintained on a VSAM file known as a TRSF.
 
 6. The constructed HTML page is sent to the users browser.
 
 7. The browser displays the page which will resemble a standard 3270 screen.
+
+.. raw:: latex
+
+    \newpage 
+
+Features of Virtels VWA Presentation
+
+A sophisticated and rich set of features are available with VWA through the use of the tool bar. Configuration of the tool-bar is also possible. The following list summarizes the tool-bar features presented with the standard VWA 3270 template:-  
+
+|vwa_example|
+*VWA 3270 Example*
+
+    - Keyboard Controls. A user can send a variety of keyboard functions, such as PA2, ATTN, etc. through the keyboard control.
+    - IND$FILE support.
+    
+    .. note::
+       The IND$FILE function must not be considered a replacement for a FTP client/server architecture. Sending or receiving large files across this interface could result in a performance issues. Virtel provides a means of restricting file transfer sizes to avoid such a situation.
+
+    - Screen capture controls which provide a variety of capture options including 1/2/3 up images within a capture buffer.
+    - User setting controls enables an individual user to set Virtel controls and preferences.
+    - Macro Support. Enables a user to create macros to drive screen logic and repetitive tasks.
+    - Configurable help panels. Bespoke help panels can be devloped to support business applications.
+    - Language support. Virtel a variety of different languages. 
+
 
 .. raw:: latex
 
@@ -15773,3 +15798,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |vwm_overview| image:: images/media/vwm_overview.png
 .. |vwi_overview| image:: images/media/vwi_overview.png
 .. |static_pages| image:: images/media/static_pages.png
+.. |vwa_example| image:: images/media/vwa_example.png
