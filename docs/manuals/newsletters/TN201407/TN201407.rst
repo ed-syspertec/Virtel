@@ -253,15 +253,17 @@ shows the name of the resource to which VIRTEL must be granted access.
 
 Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.
 
-For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R_ticketserv”. Some common codes are:
+For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services Chapter 2 “R_ticketserv”. Some common codes are:
 
 +----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
 | SAF RC   | RACF RETC   | RACF Reason   | Description                                                                                                     |
 +==========+=============+===============+=================================================================================================================+
-| 8        | 8           | 10            | VIRTEL is not authorized to generate passtickets, or is not authorized to generate passtickets for this         | 
+| 8        | 8           | 4             | Paramlist error. Ensure that the SCENSITE scenario is available to process the sm_header.                       |
++----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
+| 8        | 8           | 16            | VIRTEL is not authorized to generate passtickets, or is not authorized to generate passtickets for this         | 
 |          |             |               | application. See preceding ICH408I message in the log.                                                          |
 +----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
-| 8        | 10          | 1C            | There is no profile in the PTKTDATA class for this application or the PTKTDATA class is not active.             |
+| 8        | 16          | 28            | There is no profile in the PTKTDATA class for this application or the PTKTDATA class is not active.             |
 +----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
 
 Related material:

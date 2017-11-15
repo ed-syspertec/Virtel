@@ -198,13 +198,13 @@ A sophisticated and rich set of features are available with VWA through the use 
     - IND$FILE support.
     
     .. note::
-       The IND$FILE function must not be considered a replacement for a FTP client/server architecture. Sending or receiving large files across this interface could result in a performance issues. Virtel provides a means of restricting file transfer sizes to avoid such a situation.
+       The IND$FILE function must not be considered as a replacement for a FTP client/server architecture. Sending or receiving large files across this interface could result in performance issues. Virtel provides a means of restricting file transfer sizes to avoid such a situation.
 
-    - Screen capture controls which provide a variety of capture options including 1/2/3 up images within a capture buffer.
-    - User setting controls enables an individual user to set Virtel controls and preferences.
+    - Screen capture controls which provide a variety of capture options including 1/2/3 page-up images within a single capture buffer.
+    - User setting controls enables an individual user to set their own Virtel controls and preferences.
     - Macro Support. Enables a user to create macros to drive screen logic and repetitive tasks.
-    - Configurable help panels. Bespoke help panels can be devloped to support business applications.
-    - Language support. Virtel a variety of different languages. 
+    - Configurable help panels. Bespoke help panels can be developed to support business applications.
+    - Language support. Virtel supports a variety of different languages. 
 
 
 .. raw:: latex
@@ -219,7 +219,7 @@ VIRTEL Web Modernisation (VWM)
 
 VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc) suited to the requester, while hiding the details of navigation within the 3270 transactions.
 
-This function is implemented through a combination of the VIRTEL Web Access functions described in :ref:`Creating HTML and XML templates <#_V457UG_creating_HTML>`, and the scenario language described in :ref:`Web Modernisation VIRTEL Scenarios <#_V457UG_virtel_scenarios>`.
+This function is implemented through a combination of the VIRTEL Web Access functions described in :ref:`Creating HTML and XML templates <#_V457UG_creating_HTML>`, and the Virtel scenario language described in :ref:`Web Modernisation VIRTEL Scenarios <#_V457UG_virtel_scenarios>`.
 
 VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of     navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).
 
@@ -235,11 +235,26 @@ With modernisation, for example, several 3270 round trips can be made to the hos
     Third screen returned. Last in sequence.
 
 The above business logic i.e. "search for a name" can be incorporated into a Virtel Scenario and in the example below we have called the scenario GETDATA. The user enters the search argument "ASMITH" and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA.
+
+.. raw:: latex
+
+    \newpage   
     
 This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI "drop down list" encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data presented in a "modernised" GUI fashion.        
 
 |vwm_overview|
 *VWM Overview*
+
+1. The user enters a URL which identifies the Virtel transaction CUSTDATA. 
+
+2. The configuration data for the transaction CUSTDATA is loaded from the Virtel Configuration repository held within the Virtel ARBO VSAM dataset. The transaction CUSTDATA has a scenario associated with it called GETDATA. 
+
+3. The GETDATA scenario is then used to navaigate through 3270 screens, collecting data from each screen.  
+
+4. The scenarion builds a "clickable" GUI template using the data extracted from the three 3270 screens. The template is presented to the browser.
+
+5. The user has a modernised version of the original 3270 presentation incorporating a GUI drop down from which they can navigate to the next sceen. A master/detail pattern has been deployed by the Virtel scenario, presenting the user with data from three separate 3270 screens. Modernisation improves the users UX/UI presentation experince and by doing so enhances and improvers navigation of the legacy business logic. Less network transfer is consumed as the number of original 3270 screens is consolidated into one Virtel GUI master/detail screen.   
+
 
 .. raw:: latex
 

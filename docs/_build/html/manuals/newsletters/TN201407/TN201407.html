@@ -363,7 +363,7 @@ scenario sets the Virtel system USER variable which will be used in the PassTick
 shows the name of the resource to which VIRTEL must be granted access.</p>
 <p><strong>Action</strong></p>
 <p>Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.</p>
-<p>For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R_ticketserv”. Some common codes are:</p>
+<p>For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services Chapter 2 “R_ticketserv”. Some common codes are:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="7%" />
@@ -381,13 +381,18 @@ shows the name of the resource to which VIRTEL must be granted access.</p>
 <tbody valign="top">
 <tr class="row-even"><td>8</td>
 <td>8</td>
-<td>10</td>
+<td>4</td>
+<td>Paramlist error. Ensure that the SCENSITE scenario is available to process the sm_header.</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>8</td>
+<td>16</td>
 <td>VIRTEL is not authorized to generate passtickets, or is not authorized to generate passtickets for this
 application. See preceding ICH408I message in the log.</td>
 </tr>
-<tr class="row-odd"><td>8</td>
-<td>10</td>
-<td>1C</td>
+<tr class="row-even"><td>8</td>
+<td>16</td>
+<td>28</td>
 <td>There is no profile in the PTKTDATA class for this application or the PTKTDATA class is not active.</td>
 </tr>
 </tbody>
