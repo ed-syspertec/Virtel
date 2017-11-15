@@ -710,26 +710,32 @@ URL.</p>
 <tr class="row-odd"><td>402/12</td>
 <td>Client and server cannot agree cipher suite</td>
 </tr>
-<tr class="row-even"><td>416</td>
+<tr class="row-even"><td>403</td>
+<td>Client Certificate not available or invalid.</td>
+</tr>
+<tr class="row-odd"><td>416</td>
 <td>Virtel does not have permission to list keyring</td>
 </tr>
-<tr class="row-odd"><td>431</td>
+<tr class="row-even"><td>431</td>
 <td>Certificate is revoked</td>
 </tr>
-<tr class="row-even"><td>434</td>
+<tr class="row-odd"><td>434</td>
 <td>Certificate key not compatible with cipher suite</td>
 </tr>
-<tr class="row-odd"><td>435</td>
+<tr class="row-even"><td>435</td>
 <td>Certificate authority unknown</td>
 </tr>
-<tr class="row-even"><td>5003</td>
+<tr class="row-odd"><td>5003</td>
 <td>Browser sent clear text.</td>
 </tr>
-<tr class="row-odd"><td>5006</td>
+<tr class="row-even"><td>5006</td>
 <td>SSL failed to initialize. Check RACF SSLSETUP job.</td>
 </tr>
 </tbody>
 </table>
+<p>For code 403, check that your browser has access to a valid client certificate.</p>
+<p>For 5006, list the Virtel key ring and ensure all the relevant keys are attached. The should be a client certificate (if using client certificates), a server certificate and a one CA certificate.</p>
+<p>For 5003, make sure your url is HTTPS and not HTTP.</p>
 <p><strong>Virtel messages</strong></p>
 <p>VIRHT57E LINE IS NOT SET UP FOR HTTPS</p>
 <blockquote>

@@ -611,6 +611,8 @@ Common PAGENT return codes:-
 +------------+----------------------------------------------------+
 | 402/12     | Client and server cannot agree cipher suite        |
 +------------+----------------------------------------------------+
+| 403        | Client Certificate not available or invalid.       |
++------------+----------------------------------------------------+
 | 416        | Virtel does not have permission to list keyring    |
 +------------+----------------------------------------------------+
 | 431        | Certificate is revoked                             |
@@ -623,6 +625,12 @@ Common PAGENT return codes:-
 +------------+----------------------------------------------------+
 | 5006       | SSL failed to initialize. Check RACF SSLSETUP job. |
 +------------+----------------------------------------------------+
+
+For code 403, check that your browser has access to a valid client certificate.
+
+For 5006, list the Virtel key ring and ensure all the relevant keys are attached. The should be a client certificate (if using client certificates), a server certificate and a one CA certificate.
+
+For 5003, make sure your url is HTTPS and not HTTP.
 
 **Virtel messages**
 
