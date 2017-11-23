@@ -19,7 +19,7 @@ User Guide V4.57
 
 Version : 4.57
 
-Release Date : 31 Jul 2017 Publication Date : 24/07/2017
+Release Date : 01 Sep 2017 Publication Date : 21/11/2017
 
 Syspertec Communication
 
@@ -157,7 +157,7 @@ Some fundamental differences to standard terminal emulation protocol must be tak
 
 3. A single request from the browser will only invoke a single response from the HTTP server, while the transmission of a message to an application on the host may generate several response messages at once (for example, a message to clear the screen followed by a new screen image).
 
-These differences give rise to a need to ensure maintenance of session context between a client and a host application. This is done by the :index:`SESSION-CODE <pair: SESSION-CODE;Virtel session>` tag embedded in each template page. Although the HTML pages used to display 3270 data contain specific VIRTEL tags, these pages can be developed using standard web development tools. The pages containing VIRTEL specific tags are stored in a VIRTEL directory along with any images and other elements required.
+These differences give rise to a need to ensure maintenance of session context between a client and a host application. This is done by the :index:`SESSION-CODE <pair: SESSION-CODE;Virtel session>` tag embedded in the Virtel template pages. Although the HTML pages used to display 3270 data contain specific VIRTEL tags, these pages can be developed using standard web development tools. The pages containing VIRTEL specific tags are stored in a VIRTEL directory along with other Virtel web elements such as Java Script modules, CSS style sheets and images. The VIRTEL directory, known as the W2H directory, is located in the VSAM SAMP.TRSF file. 
 
 .. raw:: latex
 
@@ -177,11 +177,11 @@ Let's look at how VWA works.
 
 4. TSO responds to the session request and sends a 3270 screen to Virtel.
 
-5. Virtel, acting as a SLU in the VTAM session, receives the 3270 data stream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page WEB2AJAX as a template. Virtel pages are maintained on a VSAM file known as a TRSF.
+5. Virtel, acting as a SLU in the VTAM session, receives the 3270 data stream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page WEB2AJAX.HTML as a template. Virtel pages are maintained in the W2H directory located within the SAMP.TRSF VSAM file.
 
 6. The constructed HTML page is sent to the users browser.
 
-7. The browser displays the page which will resemble a standard 3270 screen.
+7. The browser displays the page created by Virtel which will resemble a 3270 screen.
 
 .. raw:: latex
 
@@ -217,13 +217,13 @@ A sophisticated and rich set of features are available with VWA through the use 
 VIRTEL Web Modernisation (VWM)
 ------------------------------
 
-VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc) suited to the requester, while hiding the details of navigation within the 3270 transactions.
+VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of 3270 host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc.) suited to the requester, while hiding the details of navigation within the 3270 transactions.
 
 This function is implemented through a combination of the VIRTEL Web Access functions described in :ref:`Creating HTML and XML templates <#_V457UG_creating_HTML>`, and the Virtel scenario language described in :ref:`Web Modernisation VIRTEL Scenarios <#_V457UG_virtel_scenarios>`.
 
 VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of     navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).
 
-With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenario. Data could be extracted from the individual host responses and encapsulated into one HTML page. For example when a user requests a "list" this could result in a sequence of key strokes and displays. Taking the example:-
+With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenario before returning the final result to the browser. Data could be extracted from the individual host responses and encapsulated into one HTML page. For example when a user requests a "list" this could result in a sequence of key strokes and displays between the application and Virtel. Taking the example:-
 
 ::
 
@@ -234,13 +234,15 @@ With modernisation, for example, several 3270 round trips can be made to the hos
     User press PFK8 to obtain next screen.
     Third screen returned. Last in sequence.
 
-The above business logic i.e. "search for a name" can be incorporated into a Virtel Scenario and in the example below we have called the scenario GETDATA. The user enters the search argument "ASMITH" and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA.
+The above business logic i.e. "search for a name" can be incorporated into a Virtel Scenario as illustrated in the diagram below. We have called the scenario GETDATA. The user enters the search argument "ASMITH" and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is targeted towards transaction CUSTDATA which is a VTAM application transaction associated with CICS6, a legacy CICS application. The CUSTDATA Virtel transaction is defined with scenario GETDATA. This configuration data is maintained in the VIRTEL ARBO file.
 
 .. raw:: latex
 
     \newpage   
     
-This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI "drop down list" encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data presented in a "modernised" GUI fashion.        
+When the user submits the URL from the browser Virtel will establishe a VTAM session with CICS6 and then will continue to run the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data from multiple 3270 screens. The scenario will then build a modernised web page which will contain a GUI "drop down list" encapsulating all data obtained from the three 3270 CICS displays. The HTML response is sent back to the user. 
+
+The user has entered only one keystroke to submit the transaction and received one response. The data within the HTML response will represent all the data extracted from several 3270 displays. The response data will be presented in a "modernised" GUI fashion.        
 
 |vwm_overview|
 *VWM Overview*
@@ -15588,9 +15590,12 @@ Default values for W2H parameters
 +-----------------+-----------------------+---------------------------------------------------+
 | "pasteereof"    | Paste erase EOF       | true, false                                       |
 +-----------------+-----------------------+---------------------------------------------------+
+| "pastetyping"   | Map Ctrl+V to Paste   | true, false                                       |
+|                 | by Typing             |                                                   |
++-----------------+-----------------------+---------------------------------------------------+
 | "movecursor"    | Move cursor on activat| true, false                                       | 
 +-----------------+-----------------------+---------------------------------------------------+
-| "style"         | Style                 |"3270", "gray", "white"                            |
+| "style"         | Style                 | "3270", "gray", "white"                           |
 +-----------------+-----------------------+---------------------------------------------------+
 | "printstyle”    | Print style           | "3270", "color", "white"                          |
 +-----------------+-----------------------+---------------------------------------------------+
@@ -15616,7 +15621,7 @@ Default values for W2H parameters
 +-----------------+-----------------------+---------------------------------------------------+
 | "preservein"    | Preserve insert mode  | true, false                                       |
 +-----------------+-----------------------+---------------------------------------------------+
-| "asyncsupport"  | Long Poll mode        | "Off", "LongPoll","None"                          |
+| "nolongpoll"    | AsynchSupport         | true, false                                       |
 +-----------------+-----------------------+---------------------------------------------------+
 | "MirrorMode"    | BiDirectional mode    | true, false                                       |
 +-----------------+-----------------------+---------------------------------------------------+

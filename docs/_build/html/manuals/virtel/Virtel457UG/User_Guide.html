@@ -197,7 +197,7 @@
 <p class="last">This book is currently under construction. Do not use!</p>
 </div>
 <p>Version : 4.57</p>
-<p>Release Date : 31 Jul 2017 Publication Date : 24/07/2017</p>
+<p>Release Date : 01 Sep 2017 Publication Date : 21/11/2017</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -289,7 +289,7 @@ their respective owners.</p>
 <li>The flow of information between the Virtel HTTP server and a client’s browser occurs on the initiative of the client or through an optional ‘Long Poll’ asynchronous session.</li>
 <li>A single request from the browser will only invoke a single response from the HTTP server, while the transmission of a message to an application on the host may generate several response messages at once (for example, a message to clear the screen followed by a new screen image).</li>
 </ol>
-<p>These differences give rise to a need to ensure maintenance of session context between a client and a host application. This is done by the <span class="target" id="index-3"></span>SESSION-CODE tag embedded in each template page. Although the HTML pages used to display 3270 data contain specific VIRTEL tags, these pages can be developed using standard web development tools. The pages containing VIRTEL specific tags are stored in a VIRTEL directory along with any images and other elements required.</p>
+<p>These differences give rise to a need to ensure maintenance of session context between a client and a host application. This is done by the <span class="target" id="index-3"></span>SESSION-CODE tag embedded in the Virtel template pages. Although the HTML pages used to display 3270 data contain specific VIRTEL tags, these pages can be developed using standard web development tools. The pages containing VIRTEL specific tags are stored in a VIRTEL directory along with other Virtel web elements such as Java Script modules, CSS style sheets and images. The VIRTEL directory, known as the W2H directory, is located in the VSAM SAMP.TRSF file.</p>
 <p>Let’s look at how VWA works.</p>
 <p><img alt="vwa_overview" src="../../../_images/vwa_overview.png" />
 <em>VWA Overview</em></p>
@@ -298,9 +298,9 @@ their respective owners.</p>
 <li>The pathname /WEB2AJAX+TSO identifies a Virtel HTML page TEMPLATE (WEB2AJAX) and a transaction. In this case the transaction is TSO. Virtel, through its configuration, recognizes the TSO transaction as being a VTAM application and initiates a VTAM session with TSO.</li>
 <li>A VTAM connection is established between TSO and Virtel with Virtel acting as a virtual terminal relay between the browser and TSO. Subsequent HTML pages received from the browser will now be converted to 3270 data streams and will be sent to TSO as if they had come from a 3270 terminal. 3270 data streams sent by the TSO application will be converted into HTML pages using the WEB2AJAX template and sent to the browser.</li>
 <li>TSO responds to the session request and sends a 3270 screen to Virtel.</li>
-<li>Virtel, acting as a SLU in the VTAM session, receives the 3270 data stream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page WEB2AJAX as a template. Virtel pages are maintained on a VSAM file known as a TRSF.</li>
+<li>Virtel, acting as a SLU in the VTAM session, receives the 3270 data stream from the host and constructs a HTML web-page incorporating the 3270 data. It uses the HTML page WEB2AJAX.HTML as a template. Virtel pages are maintained in the W2H directory located within the SAMP.TRSF VSAM file.</li>
 <li>The constructed HTML page is sent to the users browser.</li>
-<li>The browser displays the page which will resemble a standard 3270 screen.</li>
+<li>The browser displays the page created by Virtel which will resemble a 3270 screen.</li>
 </ol>
 <p>Features of Virtels VWA Presentation</p>
 <p>A sophisticated and rich set of features are available with VWA through the use of the tool bar. Configuration of the tool-bar is also possible. The following list summarizes the tool-bar features presented with the standard VWA 3270 template:-</p>
@@ -326,10 +326,10 @@ their respective owners.</p>
 </div>
 <div class="section" id="virtel-web-modernisation-vwm">
 <span id="index-4"></span><h4>VIRTEL Web Modernisation (VWM)<a class="headerlink" href="#virtel-web-modernisation-vwm" title="Permalink to this headline">¶</a></h4>
-<p>VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc) suited to the requester, while hiding the details of navigation within the 3270 transactions.</p>
+<p>VIRTEL Web Modernisation, formerly known as “Host-Web-Services” (HWS), allows the presentation of 3270 host applications to be modified, without modifying the application itself. The presentation can be adapted to a format (HTML, XML, Excel, etc.) suited to the requester, while hiding the details of navigation within the 3270 transactions.</p>
 <p>This function is implemented through a combination of the VIRTEL Web Access functions described in <a class="reference internal" href="#v457ug-creating-html"><span class="std std-ref">Creating HTML and XML templates</span></a>, and the Virtel scenario language described in <a class="reference internal" href="#v457ug-virtel-scenarios"><span class="std std-ref">Web Modernisation VIRTEL Scenarios</span></a>.</p>
 <p>VIRTEL Web Modernisation allows “frozen” or “untouchable” 3270 transactions to be accessed by intermediate servers (n-tier architecture) or from a browser, while hiding the details of     navigation within the transactions. Variable input data for the transaction can either be included in the URL (GET method), or sent as data with the HTTP request (POST method).</p>
-<p>With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenario. Data could be extracted from the individual host responses and encapsulated into one HTML page. For example when a user requests a “list” this could result in a sequence of key strokes and displays. Taking the example:-</p>
+<p>With modernisation, for example, several 3270 round trips can be made to the host application within a presentation scenario before returning the final result to the browser. Data could be extracted from the individual host responses and encapsulated into one HTML page. For example when a user requests a “list” this could result in a sequence of key strokes and displays between the application and Virtel. Taking the example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">User</span> <span class="n">enters</span> <span class="s2">&quot;ASMITH&quot;</span> <span class="ow">in</span> <span class="n">CICS</span> <span class="n">MAP</span> <span class="k">as</span> <span class="n">a</span> <span class="n">search</span> <span class="n">operand</span><span class="o">.</span> <span class="n">Presses</span> <span class="n">Enter</span><span class="o">.</span>
 <span class="n">First</span> <span class="n">Screen</span> <span class="n">returned</span><span class="o">.</span>
 <span class="n">User</span> <span class="n">press</span> <span class="n">PFK8</span> <span class="n">to</span> <span class="n">obtain</span> <span class="nb">next</span> <span class="n">screen</span><span class="o">.</span>
@@ -338,8 +338,9 @@ their respective owners.</p>
 <span class="n">Third</span> <span class="n">screen</span> <span class="n">returned</span><span class="o">.</span> <span class="n">Last</span> <span class="ow">in</span> <span class="n">sequence</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>The above business logic i.e. “search for a name” can be incorporated into a Virtel Scenario and in the example below we have called the scenario GETDATA. The user enters the search argument “ASMITH” and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is for transaction CUSTDATA which is a VTAM application towards CICS6 and has an associated scenario GETDATA.</p>
-<p>This configuration information is maintained in the VIRTEL ARBO file. Virtel establishes a VTAM session with CICS6 and then runs the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data. The scenario will then build a modernised web page which will contain a GUI “drop down list” encapsulating all data obtained from the three CICS displays. The HTML response is sent back to the user. The user has entered one transaction and received one response. The data within the HTML response will represent all the data presented in a “modernised” GUI fashion.</p>
+<p>The above business logic i.e. “search for a name” can be incorporated into a Virtel Scenario as illustrated in the diagram below. We have called the scenario GETDATA. The user enters the search argument “ASMITH” and presses Enter. The HTML request is sent to Virtel. The HTML request, based upon the submitted URL, is targeted towards transaction CUSTDATA which is a VTAM application transaction associated with CICS6, a legacy CICS application. The CUSTDATA Virtel transaction is defined with scenario GETDATA. This configuration data is maintained in the VIRTEL ARBO file.</p>
+<p>When the user submits the URL from the browser Virtel will establishe a VTAM session with CICS6 and then will continue to run the scenario GETDATA. The scenario contains the business logic which will perfom the key stokes to obtain all the relevant data from multiple 3270 screens. The scenario will then build a modernised web page which will contain a GUI “drop down list” encapsulating all data obtained from the three 3270 CICS displays. The HTML response is sent back to the user.</p>
+<p>The user has entered only one keystroke to submit the transaction and received one response. The data within the HTML response will represent all the data extracted from several 3270 displays. The response data will be presented in a “modernised” GUI fashion.</p>
 <p><img alt="vwm_overview" src="../../../_images/vwm_overview.png" />
 <em>VWM Overview</em></p>
 <ol class="arabic simple">
@@ -12471,71 +12472,76 @@ oVWAmsg.custom( { &quot;printstyle:GREEN.CSS&quot; : &quot;Custom&quot; // Use t
 <td>Paste erase EOF</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“movecursor”</td>
+<tr class="row-even"><td>“pastetyping”</td>
+<td>Map Ctrl+V to Paste
+by Typing</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“movecursor”</td>
 <td>Move cursor on activat</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>“style”</td>
+<tr class="row-even"><td>“style”</td>
 <td>Style</td>
 <td>“3270”, “gray”, “white”</td>
 </tr>
-<tr class="row-even"><td>“printstyle”</td>
+<tr class="row-odd"><td>“printstyle”</td>
 <td>Print style</td>
 <td>“3270”, “color”, “white”</td>
 </tr>
-<tr class="row-odd"><td>“rtm”</td>
+<tr class="row-even"><td>“rtm”</td>
 <td>Response time monitor</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“omitnulls”</td>
+<tr class="row-odd"><td>“omitnulls”</td>
 <td>Omit nulls from input</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>“keepmacpad”</td>
+<tr class="row-even"><td>“keepmacpad”</td>
 <td>Keep macro pad open</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“keepkeypad”</td>
+<tr class="row-odd"><td>“keepkeypad”</td>
 <td>Keep keypad open</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>“hiliteinput”</td>
+<tr class="row-even"><td>“hiliteinput”</td>
 <td>Highlight input fields</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“caretnot”</td>
+<tr class="row-odd"><td>“caretnot”</td>
 <td>Remap ^ to logical not</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>“adaptfontratio”</td>
+<tr class="row-even"><td>“adaptfontratio”</td>
 <td>Adapt font size ratio</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“charspace”</td>
+<tr class="row-odd"><td>“charspace”</td>
 <td>Character spacing</td>
 <td>true, false</td>
 </tr>
-<tr class="row-odd"><td>“linespace”</td>
+<tr class="row-even"><td>“linespace”</td>
 <td>Line spacing</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“settingsGUI”</td>
+<tr class="row-odd"><td>“settingsGUI”</td>
 <td>Uuser interface type</td>
 <td>v2</td>
 </tr>
-<tr class="row-odd"><td>“preservein”</td>
+<tr class="row-even"><td>“preservein”</td>
 <td>Preserve insert mode</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“asyncsupport”</td>
-<td>Long Poll mode</td>
-<td>“Off”, “LongPoll”,”None”</td>
+<tr class="row-odd"><td>“nolongpoll”</td>
+<td>AsynchSupport</td>
+<td>true, false</td>
 </tr>
-<tr class="row-odd"><td>“MirrorMode”</td>
+<tr class="row-even"><td>“MirrorMode”</td>
 <td>BiDirectional mode</td>
 <td>true, false</td>
 </tr>
-<tr class="row-even"><td>“NOstretch”</td>
+<tr class="row-odd"><td>“NOstretch”</td>
 <td>Font Size Stretch</td>
 <td>true, false</td>
 </tr>
