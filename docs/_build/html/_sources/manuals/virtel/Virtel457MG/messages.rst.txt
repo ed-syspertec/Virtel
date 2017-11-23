@@ -2704,6 +2704,78 @@ Meaning
 Action
     None.
 
+VIR0230I DYNAMIC ALLOCATION FAILED FOR SYSOUT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    Dynamic allocation has failed for a SYSOUT dataset. Log option will be set to CONSOLE.
+Action
+    Check the VIRTEL log and SYSLOG for further information.
+
+VIR0231I ERROR OPENING DDNAME XXXXXXXX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    An error has occurred trying to open the log output destination. Log option will be set to CONSOLE.
+Action
+    Check the VIRTEL log and SYSLOG for further information.
+
+VIR0233I VIRTEL XXXXXXXX DATASET HAS BEEN SPUN OFF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    A log output destination file has been closed and made available.
+Action
+    None.
+
+VIR0234I CLOSE FAILED FOR XXXXXXXX DATASET
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    An error has occurred closing a log output destination. Log option will be set to CONSOLE.
+Action
+    Check the VIRTEL log and SYSLOG for further information.
+
+VIR0235I VIRTEL LOG RECORDING TO XXXXXXXX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    Reports reporing destination for Virtel messages. XXXXXXXX = CONSOLE, LOGSTREAM or SYSOUT
+Action
+    None.
+
+VIR0236I VIRTEL LOGFILE SWITCHED FROM XXXXXXXX TO XXXXXXXX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    A log file switch has occurred
+Action
+    None.
+
+VIR0237I VIRTEL LOG ROUTINE VIR0002A LOADED
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002
+Meaning
+    ^The Virtel log module has been successfully loaded.
+Action
+    None.
+
+VIR0239I VIRTEL LOGGER: xxxxxxxx STRNAME= xxxxxxxx FULL. STRUCTURE OFFLOADED
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    The Virtel logsream has been offloaded.
+Action
+    None.
+
 VIR0260W SERVICE servname IS A NEW COPY
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
 Module
