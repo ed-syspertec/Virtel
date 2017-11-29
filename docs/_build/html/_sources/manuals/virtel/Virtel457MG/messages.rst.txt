@@ -2704,12 +2704,12 @@ Meaning
 Action
     None.
 
-VIR0230I DYNAMIC ALLOCATION FAILED FOR SYSOUT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+VIR0230I DYNAMIC ALLOCATION FAILED FOR XXXXXXXX
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Module
     VIR0002A
 Meaning
-    Dynamic allocation has failed for a SYSOUT dataset. Log option will be set to CONSOLE.
+    Dynamic allocation has failed for a dataset. Log option will be set to CONSOLE.
 Action
     Check the VIRTEL log and SYSLOG for further information.
 
@@ -2745,7 +2745,7 @@ VIR0235I VIRTEL LOG RECORDING TO XXXXXXXX
 Module
     VIR0002A
 Meaning
-    Reports reporing destination for Virtel messages. XXXXXXXX = CONSOLE, LOGSTREAM or SYSOUT
+    Reports reporing destination for Virtel messages. XXXXXXXX = CONSOLE, LOGFILEx, LOGSTREAM or SYSOUT
 Action
     None.
 
@@ -2754,7 +2754,7 @@ VIR0236I VIRTEL LOGFILE SWITCHED FROM XXXXXXXX TO XXXXXXXX
 Module
     VIR0002A
 Meaning
-    A log file switch has occurred
+    A log file switch has occurred to the inactive LOGFILE.
 Action
     None.
 
@@ -2766,6 +2766,15 @@ Meaning
     ^The Virtel log module has been successfully loaded.
 Action
     None.
+
+VIR0238I VIRTEL LOG RECORDING TO LOGFILE
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Module
+    VIR0002A
+Meaning
+    Reports reporing destination for Virtel LOGFILE messages. 
+Action
+    Use to LOG,D command to display the active LOGFILE.
 
 VIR0239I VIRTEL LOGGER: xxxxxxxx STRNAME= xxxxxxxx FULL. STRUCTURE OFFLOADED
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

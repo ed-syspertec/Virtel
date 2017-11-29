@@ -3438,13 +3438,13 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dd>None.</dd>
 </dl>
 </div>
-<div class="section" id="vir0230i-dynamic-allocation-failed-for-sysout">
-<h3>VIR0230I DYNAMIC ALLOCATION FAILED FOR SYSOUT<a class="headerlink" href="#vir0230i-dynamic-allocation-failed-for-sysout" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="vir0230i-dynamic-allocation-failed-for-xxxxxxxx">
+<h3>VIR0230I DYNAMIC ALLOCATION FAILED FOR XXXXXXXX<a class="headerlink" href="#vir0230i-dynamic-allocation-failed-for-xxxxxxxx" title="Permalink to this headline">¶</a></h3>
 <dl class="docutils">
 <dt>Module</dt>
 <dd>VIR0002A</dd>
 <dt>Meaning</dt>
-<dd>Dynamic allocation has failed for a SYSOUT dataset. Log option will be set to CONSOLE.</dd>
+<dd>Dynamic allocation has failed for a dataset. Log option will be set to CONSOLE.</dd>
 <dt>Action</dt>
 <dd>Check the VIRTEL log and SYSLOG for further information.</dd>
 </dl>
@@ -3488,7 +3488,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dt>Module</dt>
 <dd>VIR0002A</dd>
 <dt>Meaning</dt>
-<dd>Reports reporing destination for Virtel messages. XXXXXXXX = CONSOLE, LOGSTREAM or SYSOUT</dd>
+<dd>Reports reporing destination for Virtel messages. XXXXXXXX = CONSOLE, LOGFILEx, LOGSTREAM or SYSOUT</dd>
 <dt>Action</dt>
 <dd>None.</dd>
 </dl>
@@ -3499,7 +3499,7 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dt>Module</dt>
 <dd>VIR0002A</dd>
 <dt>Meaning</dt>
-<dd>A log file switch has occurred</dd>
+<dd>A log file switch has occurred to the inactive LOGFILE.</dd>
 <dt>Action</dt>
 <dd>None.</dd>
 </dl>
@@ -3513,6 +3513,17 @@ acbname is the LU name of the line, acbstat is the line LU status which can be b
 <dd>^The Virtel log module has been successfully loaded.</dd>
 <dt>Action</dt>
 <dd>None.</dd>
+</dl>
+</div>
+<div class="section" id="vir0238i-virtel-log-recording-to-logfile">
+<h3>VIR0238I VIRTEL LOG RECORDING TO LOGFILE<a class="headerlink" href="#vir0238i-virtel-log-recording-to-logfile" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Module</dt>
+<dd>VIR0002A</dd>
+<dt>Meaning</dt>
+<dd>Reports reporing destination for Virtel LOGFILE messages.</dd>
+<dt>Action</dt>
+<dd>Use to LOG,D command to display the active LOGFILE.</dd>
 </dl>
 </div>
 <div class="section" id="vir0239i-virtel-logger-xxxxxxxx-strname-xxxxxxxx-full-structure-offloaded">

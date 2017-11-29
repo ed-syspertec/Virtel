@@ -636,11 +636,10 @@ For 5003, make sure your url is HTTPS and not HTTP.
 
 VIRHT57E LINE IS NOT SET UP FOR HTTPS
 
-    This means that the browser has sent encypted text (https) but that
-    AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT
-    rules haven’t correctly identified this port as a SSL jobname/port.
-    Check the /etc/pagent.conf member. The message is a bit misleading
-    as there is no line setup required by Virtel.
+    This means that the browser has sent encypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven’t correctly identified this port as a SSL jobname/port.
+    Check the /etc/pagent.conf member. The message is a bit misleading as there is no line setup required by Virtel. Also check the /tmp/pagent.log for any error messages.
+
+    Check the PAGENT started task for any error messages that imply that TTLS has not been configured for the TCPIP stack. Message EZD1579I in the PAGENT log indicates that the TCP/IP profile may not have been setup for TTLS. Check the the TTLS parameter has been specified in the TCPCONFIG statement.  See the information about the TCPCONFIG statement in z/OS Communications Server: IP Configuration Reference for more information.   
 
     Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the
     decryption and transforms the https request into an http request
