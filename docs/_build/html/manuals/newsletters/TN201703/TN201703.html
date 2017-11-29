@@ -193,21 +193,21 @@ is a prefixed resource class.</p>
 <li>Add the ownership of the PassTicket resource (IRRPTAUTH)</li>
 </ol>
 <p>TSS ADDTO(owner) PTKTDATA(IRRPTAUTH)</p>
-<p>Note: The resource can be one of the following where resource is the
-Application Name defined in the NDT and ‘userid’ is the Userid:</p>
-<p>PTKTDATA(IRRPTAUTH.)</p>
-<p>PTKTDATA(IRRPTAUTH.applname.)</p>
-<p>PTKTDATA(IRRPTAUTH.applname.userid)</p>
+<p>Note: The resource can be one of the following where resource name is the Application Name defined in the NDT and ‘userid’ is the Userid:</p>
+<p>PTKTDATA(IRRPTAUTH.name.)</p>
+<p>or</p>
+<p>PTKTDATA(IRRPTAUTH.name.userid)</p>
+<p>Note: The name must equal the name in the Passticket field of the Virtel transaction. This can be different to the ACB or Virtel Application name.</p>
+<p><a class="reference internal" href="../../../_images/image001.png"><img alt="image0" src="../../../_images/image001.png" style="width: 6.26806in; height: 3.68681in;" /></a></p>
 <ol class="arabic simple" start="3">
 <li>Define the application session key</li>
 </ol>
-<p>TSS ADDTO(NDT) PSTKAPPL(applid) SESSKEY(0123456789ABCDEF) SIGNMULTI</p>
+<p>TSS ADDTO(NDT) PSTKAPPL(name) SESSKEY(0123456789ABCDEF) SIGNMULTI</p>
 <ol class="arabic simple" start="4">
 <li>Permit access to the PassTicket resource</li>
 </ol>
-<p>TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)</p>
-<p>Note: The stc-userid is the ACID of any started task that requires
-access to the PassTicket resource such as CA LDAP.</p>
+<p>TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.name) ACCESS(UPDATE)</p>
+<p>Note: The stc-userid is the ACID of any started task that requires access to the PassTicket resource such as CA LDAP.</p>
 <p>Reference: <a class="reference external" href="https://www.ca.com/us/services-support/ca-support/ca-support-online/support-by-product/ca-top-secret-for-zos.html">CA Top Secret for z/OS</a></p>
 </div>
 
