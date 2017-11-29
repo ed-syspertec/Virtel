@@ -18,27 +18,27 @@ is a prefixed resource class.
 
 TSS ADDTO(owner) PTKTDATA(IRRPTAUTH)
 
-Note: The resource can be one of the following where resource name is the Application Name defined in the NDT and ‘userid’ is the Userid:
-
-PTKTDATA(IRRPTAUTH.name.)
-
-or
-
-PTKTDATA(IRRPTAUTH.name.userid)
-
-Note: The name must equal the name in the Passticket field of the Virtel transaction. This can be different to the ACB or Virtel Application name.
-
-|image0|
-
 3. Define the application session key
 
 TSS ADDTO(NDT) PSTKAPPL(name) SESSKEY(0123456789ABCDEF) SIGNMULTI
+
+.. note:: The name must equal the value of the “Name” field linked to the “Passticket” field as defined in the Virtel transaction definition screen. This can be different to the ACB of the targeted Application name defined in “Application” field.
+
+|image0|
 
 4. Permit access to the PassTicket resource
 
 TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.name) ACCESS(UPDATE)
 
-Note: The stc-userid is the ACID of any started task that requires access to the PassTicket resource such as CA LDAP.
+Or
+
+TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.name.userid) ACCESS(UPDATE)
+
+.. note::
+
+	- The stc-userid is the ACID of any started task that requires access to the PassTicket resource such as CA LDAP.
+	- The name is the same as in section 3.
+	- The userid (if used) enables and controls PassTicket generation for specific users
 
 Reference: `CA Top Secret for z/OS <https://www.ca.com/us/services-support/ca-support/ca-support-online/support-by-product/ca-top-secret-for-zos.html>`__
 
