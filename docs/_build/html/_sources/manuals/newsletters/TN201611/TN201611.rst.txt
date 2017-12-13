@@ -1,29 +1,29 @@
 .. _#_tn201611:
 
-Customising Virtel in V4.56
+Customizing Virtel in V4.56
 ===========================
 
-Virtel V4.56 introduces some enhancements to customisation. With Virtel
+Virtel V4.56 introduces some enhancements to customization. With Virtel
 4.56, customization is possible at an entry point level, effecting all
 transactions for that entry point, or a transaction level, effecting
-just one transaction. Previous customisation was at an entry level only.
+just one transaction. Previous customization was at an entry level only.
 
 So what can be customized?
 
 As delivered, Virtel contains several web elements which can be
-customised to turn on/off features, introduce bespoke JavaScript code
-and customise presentation formats using modified CSS rules. This
-newsletter discusses how to implement a customised Virtel and how to
-maintain those customisations across Virtel upgrades. The main elements
+customized to turn on/off features, introduce bespoke JavaScript code
+and customize presentation formats using modified CSS rules. This
+newsletter discusses how to implement a customized Virtel and how to
+maintain those customizations across Virtel upgrades. The main elements
 which a customer might wish to customize are the “VWA settings”,
 customer JavaScript functions, Help files, print style sheets, and CSS
 elements. The “VWA settings” element, the w2hparm.js file, is now the
-root file for Entry Point customised components.
+root file for Entry Point customized components.
 
 By default, w2hparm.js is retrieved from the directory allocated to the
 transaction XXX-03P. In the distributed version of Virtel this is
 W2H-03P and CLI-03P. Both of these transactions point to W2H-DIR and
-will load the w2hparm.js from that directory. If you wish to customise
+will load the w2hparm.js from that directory. If you wish to customize
 the settings and modify the default w2hparm you must change the
 “XXX-03P” transaction of your entry point to the custom directory. For
 example, to modify the “VWA Settings” for the default custom directory
@@ -39,7 +39,7 @@ w2hparm.js file by entering the following URL:-
 
 Customized components are now located in a Virtel “option” directory
 identified by the new pathname /option/. By default this pathname will
-point to the recommended customised directory CLI-DIR which is located
+point to the recommended customized directory CLI-DIR which is located
 in the HTMLTRSF VSAM file. The pathname /option/ associated with
 transaction XXX-03O is used to direct Virtel to the correct directory
 for the customized components.
@@ -49,7 +49,7 @@ in the SAMPTRSF VSAM files is used as the default settings by all entry
 points. It is referenced by the W2H-03P and CLI-03P transaction for the
 pathname “/w2h/w2hparm-js”.
 
-The following shipped transactions are associated with the customisation
+The following shipped transactions are associated with the customization
 settings support.
 
 +------------------+-------------+------------------------------------+-------------------+-------------------------------------+
@@ -71,10 +71,10 @@ settings support.
 |                  |             | using path /option/.               |                   | components.                         |
 +------------------+-------------+------------------------------------+-------------------+-------------------------------------+
 
-*Table 1 – Virtel default transactions for customisation*
+*Table 1 – Virtel default transactions for customization*
 
-Any customised changes will be stored in the “customer directory” which
-by default is the CLI-DIR. The customised directory is associated with
+Any customized changes will be stored in the “customer directory” which
+by default is the CLI-DIR. The customized directory is associated with
 the HTMLTRSF VSAM file and as such will not be affected by a Virtel
 upgrade. Customers can setup their own customized directories but should
 ensure that they are associated with the HTMLTRSF file.
@@ -121,12 +121,12 @@ components.
 Adding the global-settings attribute to the “VWA settings” file
 w2hparms.js provides the pointers to the customized components located
 within the “option” directory as identified by the /option/ pathname. In
-the sample above customised CSS, Javascript and Help element pointers
+the sample above customized CSS, Javascript and Help element pointers
 are defined.
 
 When modifying the default w2hparm.js you must keep the customized
 version of w2hparm.js in the CLI-DIR directory. This will avoid it being
-overwritten during a Virtel release migration. Maintaining “customised”
+overwritten during a Virtel release migration. Maintaining “customized”
 versions of w2hparm.js also requires that the transaction CLI-03P is
 modify to reflect that the customized w2hparm.js is now located in the
 CLI-DIR directory and not the default W2H-DIR. This means changing the
@@ -188,7 +188,7 @@ customized elements have been uploaded to CLI-DIR:-
 ::
 
 	/*
-	Customised CSS
+	Customized CSS
 	Change RED to BLUE with background GREY for CSS class .NRED1
 	*/
 	.NRED1 {background-color: grey;
@@ -200,13 +200,13 @@ Modified Virtel help.html template, created myHELP.html and uploaded to
 CLI-DIR. Changed Tile.
 
 When logging onto an application under CLIWHOST the results of the
-customised elements are displayed:-
+customized elements are displayed:-
 
 |image0|
 
-Figure 1 Customised Elements at a Global Line level.
+Figure 1 Customized Elements at a Global Line level.
 
-**Customising at the transaction level.**
+**Customizing at the transaction level.**
 
 Using the Option field with in the VIRTE VWA transaction definition we
 can specify an identifier that we be used to associate customized
@@ -225,7 +225,7 @@ using the value from the option field. In this case the recommended
 element names are “../option/custCSS.test.css” and
 “../option/custJS.test.js”, however, the names are arbitrary and can be
 whatever the Virtel administrator considers appropriate for the
-customisation:-
+customization:-
 
 |image2|
 
@@ -238,7 +238,7 @@ all boxes.
 
 Pressing the “Validate” button creates a stub option element called
 “option.test.js” and places it in the CLI-DIR directory. This stub
-element points to the customised JavaScript and CSS elements associated
+element points to the customized JavaScript and CSS elements associated
 with the transaction. Having created the “stub” option element the
 associated JavaScript and CSS elements must be created and uploaded to
 the CLI directory. Here are the examples used:-
@@ -257,7 +257,7 @@ the CLI directory. Here are the examples used:-
 ::
 
 	/*
-	Customised CSS
+	Customized CSS
 	Set class NRED1 to default values for CICS transactions.
 	*/
 	.NRED1 {background-color: black;
@@ -345,15 +345,15 @@ specify the following parameter in the TCT. This is known as
 
 If you only want certain transactions to behave in “compatibility mode”
 specify “compatibility” in the option field of the transaction. In
-compatibility mode customised elements are maintained in the CLI
-directory. For example, to maintain a customised css file in
+compatibility mode customized elements are maintained in the CLI
+directory. For example, to maintain a customized css file in
 “compatibility mode” the following operations are necessary:-
 
 Transaction CLI-03CC is modified to point to the CLI-DIR. The default
 was W2H-DIR.
 
 A custom.css file is uploaded to the CLI-DIR. If the TCT HTSETn option
-has been set then this customised file will have “Global” presence and
+has been set then this customized file will have “Global” presence and
 will affect all transactions.
 
 An alternative to the TCT option is to define compatibility at the
@@ -377,7 +377,7 @@ versions of Virtel:-
 	      }
 	};
 
-**Customising elements.**
+**Customizing elements.**
 
 CSS (\pathToCssCustom - key of oCustom)
 
