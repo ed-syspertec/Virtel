@@ -101,33 +101,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-57">V4.57</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Audit, Operations and Performance V4.57</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#monitoring">1. Monitoring</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#monitoring-lines-and-terminals">1.1 Monitoring lines and terminals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-line-usage">1.2 Displaying Line Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#operations">2. Operations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-virtel-lines-and-terminals">2.1 Displaying VIRTEL Lines And Terminals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#starting-and-stopping-a-line">2.2 Starting and Stopping A Line</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#display-internal-memory-usage">2.3 Display Internal Memory Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#stopping-virtel">2.4 Stopping Virtel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#stopping-a-scenario">2.5 Stopping a scenario</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtel-trace-commands">2.6 Virtel Trace Commands</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#snap-command">2.7 SNAP Command</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#refreshing-a-virtel-program">2.8 Refreshing a VIRTEL program</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sending-a-mesage-to-virtel-multi-session-users">2.9 Sending a mesage to VIRTEL Multi-Session users</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#supressing-messages">2.10 Supressing messages</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#patching-a-virtel-program">2.11 - Patching a Virtel Program</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#performance">3. Performance</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-virlog-file">3.1 The VIRLOG file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtel-trace">3.2 Virtel trace</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#virtel-snap">3.3 VIRTEL SNAP</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#audit-and-statistics">4. Audit and Statistics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-virstat-file">4.1 The VIRSTAT file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#statistics-file-management">4.2 Statistics file management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#smf-support">4.3 SMF Support</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-management">4.4 Memory management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#memory-trace-management">4.5 Memory trace management</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#setting-memory-trace-in-the-virtct">4.6 Setting Memory Trace in the VIRTCT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#a-appendix">A. Appendix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operations">Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#administration">Administration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix">Appendix</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel457CN/connectivity_guide.html">Connectivity Reference V4.57</a></li>
@@ -215,7 +192,7 @@
 <p class="last">This book is currently under construction. Do not use!</p>
 </div>
 <p>Version : 4.57</p>
-<p>Release Date : 1 Jul 2017 Publication Date : 1/07/2017</p>
+<p>Release Date : 1 Sep 2017 Publication Date : 1/09/2017</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
 <p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
@@ -235,12 +212,496 @@ part, the products or trademarks quoted herein.</p>
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div>
-<div class="section" id="monitoring">
-<span id="v457ap-introduction"></span><h2>1. Monitoring<a class="headerlink" href="#monitoring" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="operations">
+<span id="v457ap-introduction"></span><h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="issuing-commands">
+<h3>Issuing Commands<a class="headerlink" href="#issuing-commands" title="Permalink to this headline">¶</a></h3>
+<p>VIRTEL allows certain functions to be controlled dynamically by console commands. Use one of the following methods to send a command to VIRTEL, according to the operating system:</p>
+<div class="section" id="z-os-environment">
+<h4>z/OS Environment<a class="headerlink" href="#z-os-environment" title="Permalink to this headline">¶</a></h4>
+<p>The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">stcvirte</span><span class="p">,</span><span class="n">virtel</span><span class="o">-</span><span class="n">command</span>
+</pre></div>
 </div>
+<dl class="docutils">
+<dt>stcvirte</dt>
+<dd>the name of the VIRTEL started task STC</dd>
+<dt>virtel-cmd</dt>
+<dd>a VIRTEL command, as described in the following section.</dd>
+</dl>
+</div>
+<div class="section" id="z-vse-environment">
+<h4>z/VSE Environment<a class="headerlink" href="#z-vse-environment" title="Permalink to this headline">¶</a></h4>
+<p>To send a command to VIRTEL, issue the following command at the VSE operator console:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">virtel</span><span class="p">,</span><span class="n">DATA</span><span class="o">=</span><span class="n">cirtel</span><span class="o">-</span><span class="n">command</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>virtel</dt>
+<dd>The VIRTEL jobname (usually VIRTEL), or the partition in which VIRTEL is executing (for example, F4)</dd>
+<dt>virtel-cmd</dt>
+<dd>A VIRTEL command, as described in the following section. Alternatively, issue the following command at the VSE operator console:</dd>
+</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">Fx</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Fx</dt>
+<dd><p class="first">Partition in which VIRTEL is executing</p>
+<p class="last">The system responds with:</p>
+</dd>
+</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AR</span> <span class="mi">0015</span> <span class="mi">1</span><span class="n">I40I</span> <span class="n">READY</span>
+<span class="n">Fx</span><span class="o">-</span><span class="n">nnnnAR</span> <span class="mi">0015</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Note the reply number (nnnn) and issue the following command:</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nnnn</span> <span class="n">virtel</span><span class="o">-</span><span class="n">cmd</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>nnnn</dt>
+<dd>reply number</dd>
+<dt>virtel-cmd</dt>
+<dd>A VIRTEL command, as described in the following section</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="lines-command">
+<h3>LINES Command<a class="headerlink" href="#lines-command" title="Permalink to this headline">¶</a></h3>
+<p>The LINES command can be used to display a summary of the line status.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LINES</span> <span class="o">|</span> <span class="n">LINES</span><span class="p">,</span><span class="n">ACT</span> <span class="o">|</span> <span class="n">LINES</span><span class="p">,</span><span class="n">INACT</span>
+</pre></div>
+</div>
+<p>The LINES command displays the VIRTEL ACB name and a list of the lines defined in the VIRTEL configuration file. The optional keywords ACT or INACT may be used to restrict the display to lines that are in a “active” or “inactive” state respectively.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>F SPVIREH,LINES
+VIR0200I LINES
+VIR0201I VIRTEL 4.57 APPLID=SPVIREH  LINES
+VIR0202I ALLOCATED IP ADDRESS = 192.168.170.047
+VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP
+VIR0202I -------- -------- ----- ---------
+VIR0202I C-HTTP   HTTP-CLI TCP1  :41002
+VIR0202I E-HTTP   HTTP-EDS TCP1  :41003
+VIR0202I F-HTTP   HTTP-FOR TCP1  :41005
+VIR0202I I-CONN   IVP1    *TCP1
+VIR0202I LM01TX1  LM01TX1  /FAST UMEHTX1
+VIR0202I O-HTTP   HTTP-OUT TCP1  £NONE£
+VIR0202I P-PCLPDF PCL2PDF  TCP1  £NONE£
+VIR0202I V-HTTP   HTTP-VSR TCP1  :41004
+VIR0202I W-HTTP   HTTP-W2H TCP1  :41001
+VIR0202I 9-XMPASS VIRTELXM*XM2   XM44000
+VIR0202I 9-XMVTA  QLNKHOLT XM1   QLNKCICH
+VIR0202I ---END OF LIST---
+</pre></div>
+</div>
+</div>
+<div class="section" id="line-command">
+<h3>LINE Command<a class="headerlink" href="#line-command" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="display-line-detail">
+<h4>Display line detail<a class="headerlink" href="#display-line-detail" title="Permalink to this headline">¶</a></h4>
+<p>To display detail information about a Virtel line use the line detail display command.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>linename</dt>
+<dd><p class="first">Internal or external name of the line</p>
+<p class="last">The LINE DISPLAY command displays the status of a line and its  associated terminals.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">LINE</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">D</span>
+<span class="n">VIR0200I</span> <span class="n">LINE</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">D</span>
+<span class="n">VIR0207I</span> <span class="n">LINE</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">TCP1</span>  <span class="n">HTTP</span> <span class="n">STARTED</span>
+<span class="n">VIR0203I</span> <span class="n">TERMINALS</span> <span class="n">ASSOCIATED</span> <span class="n">WITH</span> <span class="n">LINE</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>
+<span class="n">VIR0203I</span> <span class="n">TERMINAL</span> <span class="n">RELAY</span>    <span class="n">STATUS</span>
+<span class="n">VIR0203I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">--------</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC000</span><span class="o">+</span>                              <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC001</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC002</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC003</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC004</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC005</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC006</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC007</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC008</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLLOC009</span>                               <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLVTA000</span> <span class="o">*</span><span class="n">W2HPOOL</span>                      <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLVTA001</span> <span class="o">*</span><span class="n">W2HPOOL</span>                      <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLVTA002</span> <span class="o">*</span><span class="n">W2HPOOL</span>                      <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLVTA003</span> <span class="o">*</span><span class="n">W2HPOOL</span>                      <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="n">CLVTA004</span> <span class="o">*</span><span class="n">W2HPOOL</span>                      <span class="n">LINKED</span>
+<span class="n">VIR0203I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+<span class="n">VIR0204I</span> <span class="n">TERMINALS</span> <span class="n">IN</span> <span class="n">POOL</span> <span class="o">*</span><span class="n">W2HPOOL</span>
+<span class="n">VIR0204I</span> <span class="n">TERMINAL</span> <span class="n">RELAY</span>    <span class="n">PRINTER</span>  <span class="n">USED</span> <span class="n">BY</span>
+<span class="n">VIR0204I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">--------</span>
+<span class="n">VIR0204I</span> <span class="n">W2HTP000</span> <span class="n">REHVT000</span> <span class="n">REHIP000</span>
+<span class="n">VIR0204I</span> <span class="n">W2HTP001</span> <span class="n">REHVT001</span> <span class="n">REHIP001</span>
+<span class="n">VIR0204I</span> <span class="n">W2HTP002</span> <span class="n">REHVT002</span> <span class="n">REHIP002</span>
+<span class="n">VIR0204I</span> <span class="n">W2HTP003</span> <span class="n">REHVT003</span> <span class="n">REHIP003</span>
+<span class="n">VIR0204I</span> <span class="n">W2HTP004</span> <span class="n">REHVT004</span> <span class="n">REHIP004</span>
+<span class="n">VIR0204I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="starting-and-stopping-a-line">
+<h4>Starting and Stopping A Line<a class="headerlink" href="#starting-and-stopping-a-line" title="Permalink to this headline">¶</a></h4>
+<p>To STOP or START a line use the LINE command with the START or STOP function.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">START</span> <span class="o">|</span> <span class="n">STOP</span>
+
+<span class="n">OR</span>
+
+<span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">P</span> <span class="o">|</span> <span class="n">S</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>linename</dt>
+<dd>Internal or external name of the line</dd>
+</dl>
+<p>The LINE START and LINE STOP commands perform the same function as the <a class="reference external" href="#_bookmark12">“S” and “P” commands</a> on the “Status of lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.</p>
+</div>
+</div>
+<div class="section" id="relays-command">
+<h3>RELAYS Command<a class="headerlink" href="#relays-command" title="Permalink to this headline">¶</a></h3>
+<p>To display a list of Virtel LU relays use the RELAY command.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RELAYS</span>
+</pre></div>
+</div>
+<p>The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs opened by VIRTEL. Foe example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">RELAYS</span>
+<span class="n">VIR0200I</span> <span class="n">RELAYS</span>
+<span class="n">VIR0214I</span> <span class="n">ACTIVE</span> <span class="n">RELAY</span> <span class="n">ACBS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="mf">4.57</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span>
+<span class="n">VIR0214I</span> <span class="n">TERMINAL</span> <span class="n">RELAY</span>    <span class="n">APPLID</span>   <span class="n">CLIENT</span>
+<span class="n">VIR0214I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">---------------</span>
+<span class="n">VIR0214I</span> <span class="n">CLVTA004</span> <span class="n">REHVT000</span> <span class="n">SPCICST</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.58</span>
+<span class="n">VIR0214I</span> <span class="n">W2HIP000</span> <span class="n">REHIP000</span>
+<span class="n">VIR0214I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="memdisplay-command">
+<h3>MEMDISPLAY Command<a class="headerlink" href="#memdisplay-command" title="Permalink to this headline">¶</a></h3>
+<p>To display Virtel Internal Memory Usage use the MEMDISPLAY command.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMDISPLAY</span>
+</pre></div>
+</div>
+<p>With the memory diagnostic tool active the MEMDISPLAY command summarize the VIRTEL subpool active allocated memory.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0200I</span> <span class="n">MEMDISPLAY</span>
+<span class="n">VIR0271I</span> <span class="n">DISPLAY</span> <span class="mi">978</span>
+<span class="n">SP1</span><span class="o">=</span><span class="mi">00024478</span> <span class="n">SP2</span><span class="o">=</span><span class="mi">00001044</span> <span class="n">SP3</span><span class="o">=</span><span class="mf">0008E35</span><span class="n">F</span> <span class="n">SP4</span><span class="o">=</span><span class="mi">00002</span><span class="n">F61</span>
+    <span class="mi">00910091</span> <span class="mi">00040009</span> <span class="mi">02380294</span> <span class="mi">000</span><span class="n">B0011</span>
+<span class="n">SP5</span><span class="o">=</span><span class="mi">000317</span><span class="n">DC</span> <span class="n">SP6</span><span class="o">=</span><span class="mi">0004</span><span class="n">DF73</span> <span class="n">SP7</span><span class="o">=</span><span class="mi">00000000</span> <span class="n">SP8</span><span class="o">=</span><span class="mi">00000220</span>
+    <span class="mi">00</span><span class="n">C504C7</span> <span class="mi">01370137</span> <span class="mi">00000000</span> <span class="mi">00000002</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">00109000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">00109008</span> <span class="c1">#FQ=00000001 FRE=0000B2A0</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">000</span><span class="n">F9000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">000</span><span class="n">F9008</span> <span class="c1">#FQ=00000001 FRE=00000080</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mf">000E9000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mf">000E9008</span> <span class="c1">#FQ=00000001 FRE=00000078</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC14000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC14008</span> <span class="c1">#FQ=00000005 FRE=0000EF68</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECD4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECD4008</span> <span class="c1">#FQ=00000002 FRE=00009DF8</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED54000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED54008</span> <span class="c1">#FQ=00000002 FRE=00001750</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC84000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC84008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED04008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED94000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED94008</span> <span class="c1">#FQ=00000002 FRE=00002768</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECF4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECF4008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EE04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EE04008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED74000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED74008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECE4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECE4008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC64000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC64008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">4</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC04008</span> <span class="c1">#FQ=00000004 FRE=0000CFA0</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECA4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECA4008</span> <span class="c1">#FQ=00000002 FRE=0000D870</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED14000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED14008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED24000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED24008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC74000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC74008</span> <span class="c1">#FQ=00000001 FRE=0000A1D8</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC54000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC54008</span> <span class="c1">#FQ=00000001 FRE=0000A1D8</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBB4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBB4008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">6</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBF4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBF4008</span> <span class="c1">#FQ=00000002 FRE=00000A50</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBE4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBE4008</span> <span class="c1">#FQ=00000001 FRE=00000088</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBD4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBD4008</span> <span class="c1">#FQ=00000001 FRE=000000B8</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBC4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBC4008</span> <span class="c1">#FQ=00000001 FRE=000000D0</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBA4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBA4008</span> <span class="c1">#FQ=00000001 FRE=00000108</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">7</span>
+<span class="n">PAG</span><span class="o">=</span><span class="mi">00000000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">00000000</span> <span class="c1">#FQ=00000000 FRE=00000000</span>
+<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">8</span>
+</pre></div>
+</div>
+<p>The display response is split into a summary section for each subpool and a detailed allocated page block and free queue element display for each subpool.In the summary display, each subpool has two displayed values. The top value is the amount of storage currently allocated and the value below represents the current allocation in 1K chunks and a peak allocation in 1K chunks.</p>
+<p>For example in the above display in SP5 we can see that there is an allocated value of 317DC bytes, represented by 00C5 in 1K chunks, and a peak value of 04C7 in 1K chunks.At the bottom of the display is a line which provide allocated, free and total values.</p>
+<div class="section" id="enabling-the-memdisplay-function">
+<h4>Enabling the MEMDISPLAY function<a class="headerlink" href="#enabling-the-memdisplay-function" title="Permalink to this headline">¶</a></h4>
+<p>Memory Display feature is activated by using the MEMHST subparameter in the MEMORY parameter present in the VIRTCT.(see the VIRTCT subparameter MEMHST in “VIRTEL457 Installation User Guide”).</p>
+</div>
+<div class="section" id="disabling-the-memdisplay-function">
+<h4>Disabling the MEMDISPLAY function<a class="headerlink" href="#disabling-the-memdisplay-function" title="Permalink to this headline">¶</a></h4>
+<p>It can be deactivated by using the command.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span><span class="p">,</span><span class="n">DISABLE</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.</p>
+</div>
+</div>
+</div>
+<div class="section" id="log-command">
+<h3>LOG command<a class="headerlink" href="#log-command" title="Permalink to this headline">¶</a></h3>
+<p>The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">[,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">])</span>
+
+<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">EDSPRT</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
+</pre></div>
+</div>
+<p>The LOG command has the following format:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> <span class="o">|</span> <span class="n">SYSOUT</span> <span class="o">|</span> <span class="n">BOTH</span> <span class="o">|</span> <span class="n">SPIN</span>
+</pre></div>
+</div>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li>CONSOLE means switch console messages back to the console.</li>
+<li>SYSOUT means switch to spooling consoles messages to SYSOUT.</li>
+<li>BOTH means write console messages to the console and SYSOUT.</li>
+<li>SPIN means spin off the current SYSOUT dataset.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="stop-command">
+<h3>STOP Command<a class="headerlink" href="#stop-command" title="Permalink to this headline">¶</a></h3>
+<p>To stop Virtel issue the STOP command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STOP</span>
+</pre></div>
+</div>
+<p>The STOP command allows to STOP the VIRTEL task. This command is intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">VIRTEL</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kill-command">
+<h3>KILL Command<a class="headerlink" href="#kill-command" title="Permalink to this headline">¶</a></h3>
+<p>The KILL command can be used to stop a scenario:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">KILL</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>termid</dt>
+<dd>terminal name</dd>
+</dl>
+<p>The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.</p>
+</div>
+<div class="section" id="trace-notrace-command">
+<h3>TRACE | NOTRACE Command<a class="headerlink" href="#trace-notrace-command" title="Permalink to this headline">¶</a></h3>
+<p>A trace can be activated on a terminal, line or relay.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>termid</dt>
+<dd>terminal name</dd>
+<dt>relayname</dt>
+<dd>relay associated to the terminal</dd>
+</dl>
+<p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
+<p><img alt="image_03" src="../../../_images/image032.png" />
+<em>Fig.3 - Associated relay names</em></p>
+<dl class="docutils">
+<dt>linename</dt>
+<dd>Internal or external name of the line</dd>
+</dl>
+<p>The following alternate forms of the TRACE/NOTRACE commands are also  valid</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
+<span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
+<span class="n">TRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
+<span class="n">NOTRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
+<span class="n">NOTRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
+<span class="n">NOTRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>termid</dt>
+<dd>terminal name</dd>
+<dt>linename</dt>
+<dd>Internal or external name of the line</dd>
+<dt>relayname</dt>
+<dd>Name of VTAM relay LU currently associated with the terminal</dd>
+</dl>
+<div class="section" id="display-a-list-of-active-traces">
+<h4>Display a list of active traces<a class="headerlink" href="#display-a-list-of-active-traces" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="o">|</span> <span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deactivate-all-traces">
+<h4>Deactivate all traces<a class="headerlink" href="#deactivate-all-traces" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">ALL</span>
+</pre></div>
+</div>
+<p>This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”</p>
+</div>
+</div>
+<div class="section" id="snap-command">
+<h3>SNAP Command<a class="headerlink" href="#snap-command" title="Permalink to this headline">¶</a></h3>
+<p>This command is used to take a dump of the Virtel SNAP internal trace table.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAP</span>
+</pre></div>
+</div>
+<p>The SNAP command prints the contents of the VIRTEL internal trace table to the SYSPRINT file . See “VIRTEL SNAP” for further information.</p>
+<div class="section" id="terminal-or-relay-snap">
+<h4>Terminal or Relay SNAP<a class="headerlink" href="#terminal-or-relay-snap" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAP</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span> <span class="o">|</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>termid</dt>
+<dd>terminal name</dd>
+<dt>relayname</dt>
+<dd>name of VTAM relay LU currently associated with the terminal</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="snapmsg-command">
+<h3>SNAPMSG Command<a class="headerlink" href="#snapmsg-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="p">,</span><span class="n">ALL</span>
+</pre></div>
+</div>
+<p>The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W VIR0026W VIR0052I VIR1552I VIR0526W VIR1952I).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">message</span><span class="p">,</span><span class="n">search</span><span class="p">,</span><span class="n">action</span>
+</pre></div>
+</div>
+<p>The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG command from the console. See “SNAPMSG command”.</p>
+<dl class="docutils">
+<dt>message</dt>
+<dd>Any message that can be issued by Virtel.</dd>
+<dt>search</dt>
+<dd>Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.</dd>
+<dt>action</dt>
+<dd>Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</dd>
+</dl>
+<p>Default action is SNAP.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">VIRHT51I</span><span class="p">,</span><span class="n">CALL</span><span class="p">,</span><span class="n">S</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="snap80-command">
+<h3>SNAP80 Command<a class="headerlink" href="#snap80-command" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAP80</span>
+</pre></div>
+</div>
+<p>The SNAP80 command prints the contents of the VIRTEL internal trace table in 80 column format, whatever the current value of the SNAPW parameter.</p>
+</div>
+<div class="section" id="snapw-command">
+<h3>SNAPW Command<a class="headerlink" href="#snapw-command" title="Permalink to this headline">¶</a></h3>
+<p>The format of the SNAP output can be adjusted with the SNAPW command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPW</span><span class="o">=</span><span class="mi">80</span> <span class="o">|</span> <span class="mi">132</span>
+</pre></div>
+</div>
+<p>The SNAPW command sets the width for future SNAP commands (80 or 132 columns). The SNAPW parameter in the VIRTCT determines the default width at VIRTEL startup. Refer to the section “Parameters of the VIRTCT” in the VIRTEL Installation Guide for details of the SNAPW parameter.</p>
+</div>
+<div class="section" id="new-command">
+<h3>NEW Command<a class="headerlink" href="#new-command" title="Permalink to this headline">¶</a></h3>
+<p>The NEW command refreshes a VIRTEL program, VIRSV service or scenario.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NEW</span><span class="o">=</span><span class="n">progname</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>progname</dt>
+<dd>program name</dd>
+</dl>
+<p>The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.</p>
+<div class="section" id="refreshing-a-virsv-service-program">
+<h4>Refreshing a VIRSV Service program<a class="headerlink" href="#refreshing-a-virsv-service-program" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSV</span><span class="p">,</span><span class="n">NEW</span><span class="o">=</span><span class="n">servname</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>servname</dt>
+<dd>service name</dd>
+</dl>
+<p>The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This has the effect of loading a fresh copy of the associated service program the next time the service is invoked by a scenario. The message VIR0260W SERVICE servname IS A NEW COPY indicates that the service was stopped successfully. The message VIR0261W</p>
+<p>SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.</p>
+</div>
+</div>
+<div class="section" id="msg-command">
+<h3>MSG Command<a class="headerlink" href="#msg-command" title="Permalink to this headline">¶</a></h3>
+<p>To send a mesage to VIRTEL Multi-Session users use the MSG command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span><span class="o">=</span><span class="n">message</span> <span class="n">text</span>
+</pre></div>
+</div>
+<p>The specified message will be displayed on the VIRTEL multi-session screen.</p>
+</div>
+<div class="section" id="silence-command">
+<h3>SILENCE Command<a class="headerlink" href="#silence-command" title="Permalink to this headline">¶</a></h3>
+<p>To supppress Virtel messages use the SILENCE command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SILENCE</span>
+</pre></div>
+</div>
+<p>The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
+</div>
+</div>
+<div class="section" id="zap-command">
+<h3>ZAP Command<a class="headerlink" href="#zap-command" title="Permalink to this headline">¶</a></h3>
+<p>The ZAP command allows dynamic patching of a Virtel Program:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ZAP</span><span class="o">=</span><span class="n">progname</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span><span class="n">verify</span><span class="p">,</span><span class="n">replace</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>progname</dt>
+<dd>program name</dd>
+<dt>offset</dt>
+<dd>offset into program</dd>
+<dt>verify</dt>
+<dd>verify value (2 to 8 hexadecimal digits)</dd>
+<dt>replace</dt>
+<dd>replacement value (2 to 8 hexadecimal digits)</dd>
+</dl>
+<p>The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.</p>
+</div>
+<div class="section" id="stat-command">
+<h3>STAT Command<a class="headerlink" href="#stat-command" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="display-statistics-file-information">
+<h4>Display statistics file information<a class="headerlink" href="#display-statistics-file-information" title="Permalink to this headline">¶</a></h4>
+<p>To display information about the Virtel statistics file management use the STAT command.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STAT</span><span class="p">,</span><span class="n">D</span>
+</pre></div>
+</div>
+<p>This command displays the status of the VIRSTATx files (message VIR0601I). The STAT command is used to manage the VIRTEL statistics recording files (VIRSTATx). This command can be used only if STATS=MULTI is specified in the VIRTCT.</p>
+</div>
+<div class="section" id="switch-the-virstat-file">
+<h4>Switch the VIRSTAT file<a class="headerlink" href="#switch-the-virstat-file" title="Permalink to this headline">¶</a></h4>
+<p>To switch the STATISTIC file using the STAT switch command.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STAT</span><span class="p">,</span><span class="n">I</span>
+</pre></div>
+</div>
+<p>This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file.</p>
+</div>
+</div>
+</div>
+<div class="section" id="administration">
+<h2>Administration<a class="headerlink" href="#administration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="monitoring-lines-and-terminals">
-<h2>1.1 Monitoring lines and terminals<a class="headerlink" href="#monitoring-lines-and-terminals" title="Permalink to this headline">¶</a></h2>
+<h3>Monitoring lines and terminals<a class="headerlink" href="#monitoring-lines-and-terminals" title="Permalink to this headline">¶</a></h3>
 <p>The Line Status sub-application allows the administrator to display the current status of lines and terminals or irtual circuits (CVC) managed by VIRTEL control, and optionally to modify the status of lines.</p>
+</div>
 <div class="section" id="displaying-line-status">
 <h3>Displaying line status<a class="headerlink" href="#displaying-line-status" title="Permalink to this headline">¶</a></h3>
 <p>The Line Status sub-application is invoked by pressing [PF9] in the Configuration Menu, by pressing [PF10] in the Sub- Application Menu, or via the Multi-Session Menu using a transaction which calls module VIR0027.</p>
@@ -301,15 +762,11 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 </dl>
 <p>To return to the configuration menu, press [PF3] or [Clear].</p>
 </div>
-</div>
 <div class="section" id="displaying-line-usage">
-<h2>1.2 Displaying Line Usage<a class="headerlink" href="#displaying-line-usage" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>To display the status and line usage place the cursor on the desired line in the Line Status
-Display screen and press [PF12].</p>
+<h3>Displaying Line Usage<a class="headerlink" href="#displaying-line-usage" title="Permalink to this headline">¶</a></h3>
+<p>To display the status and line usage place the cursor on the desired line in the Line Status Display screen and press [PF12].</p>
 <p>Security rules are the same as those which apply to the previous screen.</p>
 <p>This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:</p>
-</div></blockquote>
 <p><img alt="image_02" src="../../../_images/image023.png" /></p>
 <p><em>Fig.2 - Line Usage Detail Display screen</em></p>
 <dl class="docutils">
@@ -362,399 +819,9 @@ Display screen and press [PF12].</p>
 </dd>
 </dl>
 </div>
-<div class="section" id="operations">
-<h2>2. Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>VIRTEL allows certain functions to be controlled dynamically by
-console commands.</p>
-<p>Use one of the following methods to send a command to VIRTEL, according to the operating system:</p>
-</div></blockquote>
-<div class="section" id="z-os-environment">
-<h3>2.0.1 z/OS Environment<a class="headerlink" href="#z-os-environment" title="Permalink to this headline">¶</a></h3>
-<p>The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">stcvirte</span><span class="p">,</span><span class="n">virtel</span><span class="o">-</span><span class="n">command</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>stcvirte</dt>
-<dd>the name of the VIRTEL started task STC</dd>
-<dt>virtel-cmd</dt>
-<dd>a VIRTEL command, as described in the following section.</dd>
-</dl>
-</div>
-<div class="section" id="z-vse-environment">
-<h3>2.0.2 z/VSE Environment<a class="headerlink" href="#z-vse-environment" title="Permalink to this headline">¶</a></h3>
-<p>To send a command to VIRTEL, issue the following command at the VSE operator console:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">virtel</span><span class="p">,</span><span class="n">DATA</span><span class="o">=</span><span class="n">cirtel</span><span class="o">-</span><span class="n">command</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>virtel</dt>
-<dd>The VIRTEL jobname (usually VIRTEL), or the partition in which VIRTEL is executing (for example, F4)</dd>
-<dt>virtel-cmd</dt>
-<dd>A VIRTEL command, as described in the following section. Alternatively, issue the following command at the VSE operator console:</dd>
-</dl>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">Fx</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>Fx</dt>
-<dd><p class="first">Partition in which VIRTEL is executing</p>
-<p class="last">The system responds with:</p>
-</dd>
-</dl>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">AR</span> <span class="mi">0015</span> <span class="mi">1</span><span class="n">I40I</span> <span class="n">READY</span>
-<span class="n">Fx</span><span class="o">-</span><span class="n">nnnnAR</span> <span class="mi">0015</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Note the reply number (nnnn) and issue the following command:</p>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nnnn</span> <span class="n">virtel</span><span class="o">-</span><span class="n">cmd</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>nnnn</dt>
-<dd>reply number</dd>
-<dt>virtel-cmd</dt>
-<dd>A VIRTEL command, as described in the following section</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="displaying-virtel-lines-and-terminals">
-<h2>2.1 Displaying VIRTEL Lines And Terminals<a class="headerlink" href="#displaying-virtel-lines-and-terminals" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="display-lines">
-<h3>2.1.2   Display lines<a class="headerlink" href="#display-lines" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span>LINES | LINES,ACT | LINES,INACT
-
-
-The LINES command displays the VIRTEL ACB name and a list of the lines defined in the VIRTEL configuration file. The optional keywords ACT or INACT may be used to restrict the display to lines in “started” or “stopped” state respectively.
-</pre></div>
-</div>
-</div>
-<div class="section" id="display-line-detail">
-<h3>2.1.2   Display line detail<a class="headerlink" href="#display-line-detail" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">D</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>linename</dt>
-<dd><p class="first">Internal or external name of the line</p>
-<p class="last">The LINE DISPLAY command displays the status of a line and its
-associated terminals.</p>
-</dd>
-</dl>
-<p>2.1.3 List of Virtel LU relays</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RELAYS</span>
-
-<span class="n">The</span> <span class="n">RELAYS</span> <span class="n">command</span> <span class="n">displays</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">ACB</span> <span class="n">name</span> <span class="ow">and</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">the</span> <span class="n">relay</span> <span class="n">LUs</span> <span class="n">opened</span> <span class="n">by</span> <span class="n">VIRTEL</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="starting-and-stopping-a-line">
-<h2>2.2 Starting and Stopping A Line<a class="headerlink" href="#starting-and-stopping-a-line" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">START</span> <span class="o">|</span> <span class="n">STOP</span>
-<span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">P</span> <span class="o">|</span> <span class="n">S</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>linename</dt>
-<dd><p class="first">Internal or external name of the line</p>
-<p class="last">The LINE START and LINE STOP commands perform the same function as the <a class="reference external" href="#_bookmark12">“S” and “P” commands</a> on the “Status of
-lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="display-internal-memory-usage">
-<h2>2.3 Display Internal Memory Usage<a class="headerlink" href="#display-internal-memory-usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMDISPLAY</span>
-</pre></div>
-</div>
-<p>With the memory diagnostic tool active the MEMDISPLAY command summarize the VIRTEL subpool active allocated memory.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0200I</span> <span class="n">MEMDISPLAY</span>
-<span class="n">VIR0271I</span> <span class="n">DISPLAY</span> <span class="mi">978</span>
-<span class="n">SP1</span><span class="o">=</span><span class="mi">00024478</span> <span class="n">SP2</span><span class="o">=</span><span class="mi">00001044</span> <span class="n">SP3</span><span class="o">=</span><span class="mf">0008E35</span><span class="n">F</span> <span class="n">SP4</span><span class="o">=</span><span class="mi">00002</span><span class="n">F61</span>
-    <span class="mi">00910091</span> <span class="mi">00040009</span> <span class="mi">02380294</span> <span class="mi">000</span><span class="n">B0011</span>
-<span class="n">SP5</span><span class="o">=</span><span class="mi">000317</span><span class="n">DC</span> <span class="n">SP6</span><span class="o">=</span><span class="mi">0004</span><span class="n">DF73</span> <span class="n">SP7</span><span class="o">=</span><span class="mi">00000000</span> <span class="n">SP8</span><span class="o">=</span><span class="mi">00000220</span>
-    <span class="mi">00</span><span class="n">C504C7</span> <span class="mi">01370137</span> <span class="mi">00000000</span> <span class="mi">00000002</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">1</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">00109000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">00109008</span> <span class="c1">#FQ=00000001 FRE=0000B2A0</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">000</span><span class="n">F9000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">000</span><span class="n">F9008</span> <span class="c1">#FQ=00000001 FRE=00000080</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mf">000E9000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mf">000E9008</span> <span class="c1">#FQ=00000001 FRE=00000078</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">2</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC14000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC14008</span> <span class="c1">#FQ=00000005 FRE=0000EF68</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">3</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECD4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECD4008</span> <span class="c1">#FQ=00000002 FRE=00009DF8</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED54000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED54008</span> <span class="c1">#FQ=00000002 FRE=00001750</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC84000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC84008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED04008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED94000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED94008</span> <span class="c1">#FQ=00000002 FRE=00002768</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECF4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECF4008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EE04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EE04008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED74000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED74008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECE4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECE4008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC64000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC64008</span> <span class="c1">#FQ=00000001 FRE=00000878</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">4</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC04000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC04008</span> <span class="c1">#FQ=00000004 FRE=0000CFA0</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">5</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ECA4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ECA4008</span> <span class="c1">#FQ=00000002 FRE=0000D870</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED14000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED14008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">ED24000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">ED24008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC74000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC74008</span> <span class="c1">#FQ=00000001 FRE=0000A1D8</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EC54000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EC54008</span> <span class="c1">#FQ=00000001 FRE=0000A1D8</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBB4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBB4008</span> <span class="c1">#FQ=00000001 FRE=000043B8</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">6</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBF4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBF4008</span> <span class="c1">#FQ=00000002 FRE=00000A50</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBE4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBE4008</span> <span class="c1">#FQ=00000001 FRE=00000088</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBD4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBD4008</span> <span class="c1">#FQ=00000001 FRE=000000B8</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBC4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBC4008</span> <span class="c1">#FQ=00000001 FRE=000000D0</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">1</span><span class="n">EBA4000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">1</span><span class="n">EBA4008</span> <span class="c1">#FQ=00000001 FRE=00000108</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">7</span>
-<span class="n">PAG</span><span class="o">=</span><span class="mi">00000000</span> <span class="n">NFQ</span><span class="o">=</span><span class="mi">00000000</span> <span class="c1">#FQ=00000000 FRE=00000000</span>
-<span class="n">POOL</span> <span class="n">CONTROL</span> <span class="n">BLOCK</span><span class="o">.</span> <span class="n">SUBPOOL</span><span class="o">=</span><span class="mi">8</span>
-</pre></div>
-</div>
-<p>The display response is split into a summary section for each subpool and a detailed allocated page block and free queue element display for each subpool.</p>
-<p>In the summary display, each subpool has two displayed values. The top value is the amount of storage currently allocated and the value below represents the current allocation in 1K chunks and a peak allocation in 1K chunks.</p>
-<p>For example in the above display in SP5 we can see that there is an allocated value of 317DC bytes, represented by 00C5 in 1K chunks, and a peak value of 04C7 in 1K chunks.</p>
-<p>At the bottom of the display is a line which provide allocated, free and total values.</p>
-<div class="section" id="memory-management-commands">
-<h3>2.3.1 Memory Management Commands<a class="headerlink" href="#memory-management-commands" title="Permalink to this headline">¶</a></h3>
-<p>Memory Display feature is activated by using the MEMHST subparameter in the MEMORY parameter present in the VIRTCT.(see the VIRTCT subparameter MEMHST in “VIRTEL457 Installation User Guide”).</p>
-<p>It can be deactivated by using the command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">MEMDISPLAY</span><span class="p">,</span><span class="n">DISABLE</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.</p>
-</div>
-</div>
-<div class="section" id="console-messages">
-<h3>2.3.2 Console messages<a class="headerlink" href="#console-messages" title="Permalink to this headline">¶</a></h3>
-<p>The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">[,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">])</span>
-
-<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">EDSPRT</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
-</pre></div>
-</div>
-<p>The LOG command has the following format:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> <span class="o">|</span> <span class="n">SYSOUT</span> <span class="o">|</span> <span class="n">BOTH</span> <span class="o">|</span> <span class="n">SPIN</span>
-</pre></div>
-</div>
-<p>where</p>
-<blockquote>
-<div><ul class="simple">
-<li>CONSOLE means switch console messages back to the console.</li>
-<li>SYSOUT means switch to spooling consoles messages to SYSOUT.</li>
-<li>BOTH means write console messages to the console and SYSOUT.</li>
-<li>SPIN means spin off the current SYSOUT dataset.</li>
-</ul>
-</div></blockquote>
-</div>
-</div>
-<div class="section" id="stopping-virtel">
-<h2>2.4 Stopping Virtel<a class="headerlink" href="#stopping-virtel" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STOP</span>
-</pre></div>
-</div>
-<p>The STOP command allows to STOP the VIRTEL task. This command is  intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">stcvirte</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>stcvirte</dt>
-<dd>The name of the VIRTEL started task STC</dd>
-</dl>
-</div>
-<div class="section" id="stopping-a-scenario">
-<h2>2.5 Stopping a scenario<a class="headerlink" href="#stopping-a-scenario" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">KILL</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd><p class="first">terminal name</p>
-<p class="last">The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="virtel-trace-commands">
-<h2>2.6 Virtel Trace Commands<a class="headerlink" href="#virtel-trace-commands" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div>A trace can be activated on the device or on his relay.</div></blockquote>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
-<span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
-<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>relayname</dt>
-<dd>relay associated to the terminal</dd>
-</dl>
-<p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
-<p><img alt="image_03" src="../../../_images/image032.png" />
-<em>Fig.3 - Associated relay names</em></p>
-<dl class="docutils">
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
-</dl>
-<p>The following alternate forms of the TRACE/NOTRACE commands are also  valid</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
-<span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
-<span class="n">TRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
-<span class="n">NOTRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
-<span class="n">NOTRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
-<span class="n">NOTRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
-<dt>relayname</dt>
-<dd>Name of VTAM relay LU currently associated with the terminal</dd>
-</dl>
-<div class="section" id="display-a-list-of-active-traces">
-<h3>2.6.1 Display a list of active traces<a class="headerlink" href="#display-a-list-of-active-traces" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="o">|</span> <span class="n">D</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="deactivate-all-traces">
-<h3>2.6.2 Deactivate all traces<a class="headerlink" href="#deactivate-all-traces" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">ALL</span>
-</pre></div>
-</div>
-<p>This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”</p>
-</div>
-</div>
-<div class="section" id="snap-command">
-<h2>2.7 SNAP Command<a class="headerlink" href="#snap-command" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="snap-internal-trace-table">
-<h3>2.7.1 SNAP internal trace table<a class="headerlink" href="#snap-internal-trace-table" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAP</span>
-</pre></div>
-</div>
-<p>The SNAP command prints the contents of the VIRTEL internal trace table. See “VIRTEL SNAP”.</p>
-</div>
-<div class="section" id="terminal-or-relay-snap">
-<h3>2.7.2 Terminal or Relay SNAP<a class="headerlink" href="#terminal-or-relay-snap" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAP</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span> <span class="o">|</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>relayname</dt>
-<dd>name of VTAM relay LU currently associated with the terminal</dd>
-</dl>
-<p>2.7.2 Message trigger SNAP</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="p">,</span><span class="n">ALL</span>
-</pre></div>
-</div>
-<p>The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W VIR0026W VIR0052I VIR1552I VIR0526W VIR1952I).</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">message</span><span class="p">,</span><span class="n">search</span><span class="p">,</span><span class="n">action</span>
-</pre></div>
-</div>
-<p>The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG command from the console. See “SNAPMSG command”.</p>
-<dl class="docutils">
-<dt>message</dt>
-<dd>Any message that can be issued by Virtel.</dd>
-<dt>search</dt>
-<dd>Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.</dd>
-<dt>action</dt>
-<dd>Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</dd>
-</dl>
-<p>Default action is SNAP.</p>
-<p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">SNAPMSG</span><span class="o">=</span><span class="n">VIRHT51I</span><span class="p">,</span><span class="n">CALL</span><span class="p">,</span><span class="n">S</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="column-snap">
-<h3>2.7.3 80-column SNAP<a class="headerlink" href="#column-snap" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAP80</span>
-</pre></div>
-</div>
-<p>The SNAP80 command prints the contents of the VIRTEL internal trace table in 80 column format, whatever the current value of the SNAPW parameter.</p>
-</div>
-<div class="section" id="adjustng-the-snap-format">
-<h3>2.7.4 Adjustng the SNAP format<a class="headerlink" href="#adjustng-the-snap-format" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPW</span><span class="o">=</span><span class="mi">80</span> <span class="o">|</span> <span class="mi">132</span>
-</pre></div>
-</div>
-<p>The SNAPW command sets the width for future SNAP commands (80 or 132 columns). The SNAPW parameter in the VIRTCT determines the default width at VIRTEL startup. Refer to the section “Parameters of the     VIRTCT” in the VIRTEL Installation Guide for details of the SNAPW parameter.</p>
-</div>
-</div>
-<div class="section" id="refreshing-a-virtel-program">
-<h2>2.8 Refreshing a VIRTEL program<a class="headerlink" href="#refreshing-a-virtel-program" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NEW</span><span class="o">=</span><span class="n">progname</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>progname</dt>
-<dd>program name</dd>
-</dl>
-<p>The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.</p>
-<p>2.9 Refreshing a VIRSV Service program</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSV</span><span class="p">,</span><span class="n">NEW</span><span class="o">=</span><span class="n">servname</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>servname</dt>
-<dd>service name</dd>
-</dl>
-<p>The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This has the effect of loading a fresh copy of the associated service program the next time the service is invoked by a scenario. The message VIR0260W SERVICE servname IS A NEW COPY indicates that the service was stopped successfully. The message VIR0261W</p>
-<p>SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.</p>
-</div>
-<div class="section" id="sending-a-mesage-to-virtel-multi-session-users">
-<h2>2.9 Sending a mesage to VIRTEL Multi-Session users<a class="headerlink" href="#sending-a-mesage-to-virtel-multi-session-users" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span><span class="o">=</span><span class="n">message</span> <span class="n">text</span>
-</pre></div>
-</div>
-<p>The specified message will be displayed on the VIRTEL multi-session screen.</p>
-</div>
-<div class="section" id="supressing-messages">
-<h2>2.10 Supressing messages<a class="headerlink" href="#supressing-messages" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SILENCE</span>
-</pre></div>
-</div>
-<p>The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the     operator console.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
-</div>
-</div>
-<div class="section" id="patching-a-virtel-program">
-<h2>2.11 - Patching a Virtel Program<a class="headerlink" href="#patching-a-virtel-program" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ZAP</span><span class="o">=</span><span class="n">progname</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span><span class="n">verify</span><span class="p">,</span><span class="n">replace</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>progname</dt>
-<dd>program name</dd>
-<dt>offset</dt>
-<dd>offset into program</dd>
-<dt>verify</dt>
-<dd>verify value (2 to 8 hexadecimal digits)</dd>
-<dt>replace</dt>
-<dd>replacement value (2 to 8 hexadecimal digits)</dd>
-</dl>
-<p>The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.</p>
 </div>
 <div class="section" id="performance">
-<h2>3. Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this headline">¶</a></h2>
 <p>The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning and performance of VIRTEL, to monitor its activity, or to diagnose possible problems:</p>
 <ul class="simple">
 <li>the CONSOLE file</li>
@@ -763,7 +830,8 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <li>the TRACE in the VIRTRACE file</li>
 <li>the SNAP in the SYSPRINT file</li>
 </ul>
-<p>3.1 The console file</p>
+<div class="section" id="console-file">
+<h3>CONSOLE file<a class="headerlink" href="#console-file" title="Permalink to this headline">¶</a></h3>
 <p>In <strong>z/OS environment</strong>, the CONSOLE file is written to the VIRTEL started task’s JESMSGLG file.</p>
 <p>In <strong>VSE environment</strong>, the CONSOLE file is written to the VIRTEL partition’s POWER LST file (LISTLOG)</p>
 <p>The CONSOLE file allows the administrator to monitor the startup and subsequent activity of VIRTEL. Using the console file, the administrator can check that the VSAM files are correctly opened, verify that the customer key has been correctly recognized, check the initialization of the TCP/IP sockets interface using the correct IP address and port, and monitor connections and disconnections of terminals and applications.</p>
@@ -774,8 +842,8 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <p><img alt="image_04" src="../../../_images/image042.png" />
 <em>Fig. 4 Example of CONSOLE file</em></p>
 </div>
-<div class="section" id="the-virlog-file">
-<h2>3.1 The VIRLOG file<a class="headerlink" href="#the-virlog-file" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="virlog-file">
+<h3>VIRLOG file<a class="headerlink" href="#virlog-file" title="Permalink to this headline">¶</a></h3>
 <p>This is a printable file with record length 131 and record format FA which provides a record of IP connections to VIRTEL. The figure below shows an example of VIRLOG entries for incoming
 HTTP calls:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>£Software: VIRTEL 4.32
@@ -827,8 +895,9 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 <p>The RECEIVED and SENT columns contain the number of bytes received from and sent to the X25 line.</p>
 <p>The REMOTE ADDRESS column contains the caller X25 number for incoming calls, or the called X25 number for outgoing calls.</p>
 <p>The last column contains the PCNE call user data (if present), otherwise it contains the default entry point name for X25 calls specified by the DEFENTR parameter in the VIRTCT. For GATE calls this column is blank.</p>
-<div class="section" id="the-virtel-logger">
-<h3>3.1.2 The VIRTEL logger<a class="headerlink" href="#the-virtel-logger" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="virtel-logger">
+<h3>VIRTEL logger<a class="headerlink" href="#virtel-logger" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTEL log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.</p>
 <p>The figure below shows an example of JCL to extract and format the VIRTEL LOG entries recorded in the System Logger:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">LOGGER</span> <span class="n">PROC</span> <span class="n">P</span><span class="o">=</span>
@@ -853,7 +922,7 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 </div>
 <p>The date format is yyyyddd.</p>
 <div class="section" id="examples">
-<h4>3.1.2.1 Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">COPY</span> <span class="n">Copy</span> <span class="nb">all</span> <span class="n">records</span>
 <span class="n">COPY</span><span class="p">(</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span> <span class="n">Copy</span> <span class="n">records</span> <span class="n">older</span> <span class="n">than</span> <span class="mi">2</span> <span class="n">days</span>
 <span class="n">COPY</span><span class="p">(</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="n">Copy</span> <span class="n">up</span> <span class="n">to</span> <span class="n">yesterday</span>
@@ -867,9 +936,8 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 <p><em>Fig. 8  Example of VIRTEL LOGGER extraction parameter</em></p>
 </div>
 </div>
-</div>
 <div class="section" id="virtel-trace">
-<h2>3.2 Virtel trace<a class="headerlink" href="#virtel-trace" title="Permalink to this headline">¶</a></h2>
+<h3>Virtel trace<a class="headerlink" href="#virtel-trace" title="Permalink to this headline">¶</a></h3>
 <p>All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.</p>
 <p>Activation and deactivation of a trace on a terminal or a line is performed by means of the TRACE and NOTRACE commands (see “VIRTEL commands” and “Activating and deactivating a terminal or line trace”).</p>
 <div class="admonition note">
@@ -886,7 +954,7 @@ X001LINE G001T003 X001T002 O 13.49.01 13.49.22 00002147 00000001 00000001 001870
 In <strong>VSE environment</strong>, the trace data is written to the POWER LST file of the VIRTEL partition.</p>
 <p>Activation and deactivation of a memory trace is performed by means of the MEMTRACE and NOMEMTRACE commands (see “Memory Trace Management”). The allocation memory is written in the SNAP file when a SNAP command is issued.</p>
 <div class="section" id="contents-of-the-trace">
-<h3>3.2.1 Contents of the trace<a class="headerlink" href="#contents-of-the-trace" title="Permalink to this headline">¶</a></h3>
+<h4>Contents of the trace<a class="headerlink" href="#contents-of-the-trace" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><table border="1" class="docutils">
 <colgroup>
@@ -988,8 +1056,9 @@ VIRTEL and the host application.</td>
 </tbody>
 </table>
 </div></blockquote>
-<div class="section" id="examples-of-traces">
-<h4>3.2.1.2 Examples of traces<a class="headerlink" href="#examples-of-traces" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="trace-examples">
+<h4>Trace Examples<a class="headerlink" href="#trace-examples" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>LCL712 11A: from application SPCICST 13:05:47.48
 00000 F1C2 *1B * 099A95B4
 LCL712 11A: from application SPCICST 13:05:47.49
@@ -1083,9 +1152,8 @@ X001T007 XOT: OUTBOUND X25 COMMAND                          15:10:33.27
 <p><em>Fig. 11 Example of “trace by rule” (XOT terminal to application on /PCNE line)</em></p>
 </div>
 </div>
-</div>
 <div class="section" id="virtel-snap">
-<h2>3.3 VIRTEL SNAP<a class="headerlink" href="#virtel-snap" title="Permalink to this headline">¶</a></h2>
+<h3>VIRTEL SNAP<a class="headerlink" href="#virtel-snap" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL maintains an internal trace table in which it records  significant events which occur during VIRTEL processing. The SNAP command allows the administrator to obtain a snapshot listing of the contents of the trace table at a given point in time.</p>
 <p>The SNAP listing is primarily intended for use by VIRTEL development personnel and will normally need to be forwarded to Syspertec for analysis. For customer diagnostics, the TRACE command (described     above) may often be more useful.</p>
 <div class="admonition note">
@@ -1109,10 +1177,9 @@ In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER L
 <p>Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.</p>
 </div>
 <div class="section" id="audit-and-statistics">
-<h2>4. Audit and Statistics<a class="headerlink" href="#audit-and-statistics" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="the-virstat-file">
-<h2>4.1 The VIRSTAT file<a class="headerlink" href="#the-virstat-file" title="Permalink to this headline">¶</a></h2>
+<h3>Audit and Statistics<a class="headerlink" href="#audit-and-statistics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="virstat-file">
+<h4>VIRSTAT file<a class="headerlink" href="#virstat-file" title="Permalink to this headline">¶</a></h4>
 <p>The VIRSTAT file is a sequential file into which VIRTEL writes connection statistics.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1133,7 +1200,7 @@ the records are buffered in memory before being written in block.</p>
 <p>For terminals associated with all other line types (including /GATE, /PCNE, and /FASTC) the statistics record may not contain meaningful information and the statistics field in the terminal definition     should be left blank.</p>
 <p>The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.</p>
 <div class="section" id="virstat-classsic-format">
-<h3>4.1.1 VIRSTAT classsic format<a class="headerlink" href="#virstat-classsic-format" title="Permalink to this headline">¶</a></h3>
+<h5>VIRSTAT classsic format<a class="headerlink" href="#virstat-classsic-format" title="Permalink to this headline">¶</a></h5>
 <p>For terminals which specify classic format recording (STATS=1), the  VIRSTAT record format is shown in the following table:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">Position</span>    <span class="n">Format</span>          <span class="n">Type</span> <span class="n">of</span> <span class="n">information</span><span class="o">**</span>
 <span class="o">-----------------------------------------------</span>
@@ -1176,7 +1243,7 @@ the records are buffered in memory before being written in block.</p>
 </dl>
 </div>
 <div class="section" id="virstat-alternative-x25-format">
-<h3>4.1.2 VIRSTAT alternative X25 format<a class="headerlink" href="#virstat-alternative-x25-format" title="Permalink to this headline">¶</a></h3>
+<h5>VIRSTAT alternative X25 format<a class="headerlink" href="#virstat-alternative-x25-format" title="Permalink to this headline">¶</a></h5>
 <p>For terminals which specify alternate X25 format recording (STATS=4), the VIRSTAT record format is shown in the following  table:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Position</span>        <span class="n">Format</span>          <span class="n">Type</span> <span class="n">of</span> <span class="n">information</span>
 <span class="mi">1</span> <span class="n">to</span> <span class="mi">8</span>          <span class="n">Alphanumeric</span>    <span class="n">Terminal</span> <span class="n">name</span>
@@ -1263,25 +1330,9 @@ the records are buffered in memory before being written in block.</p>
 <p>This record type is written when 6 is specified in the STATS field of the terminal definition used for the HTTP line.</p>
 </div>
 </div>
-<div class="section" id="statistics-file-management">
-<h2>4.2 Statistics file management<a class="headerlink" href="#statistics-file-management" title="Permalink to this headline">¶</a></h2>
-<p>The STAT command is used to manage the VIRTEL statistics recording files (VIRSTATx). This command can be used only if STATS=MULTI is specified in the VIRTCT.</p>
-<div class="section" id="display-virstat">
-<h3>4.2.1 Display VIRSTAT<a class="headerlink" href="#display-virstat" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STAT</span><span class="p">,</span><span class="n">D</span>
-</pre></div>
-</div>
-<p>This command displays the status of the VIRSTATx files (message VIR0601I).</p>
-</div>
-<div class="section" id="switch-virstat">
-<h3>4.2.2 Switch VIRSTAT<a class="headerlink" href="#switch-virstat" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STAT</span><span class="p">,</span><span class="n">I</span>
-</pre></div>
-</div>
-<p>This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file.</p>
 </div>
 <div class="section" id="printing-the-contents-of-the-virstat-file-x25">
-<h3>4.2.3 Printing the contents of the VIRSTAT file (X25)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-x25" title="Permalink to this headline">¶</a></h3>
+<h3>Printing the contents of the VIRSTAT file (X25)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-x25" title="Permalink to this headline">¶</a></h3>
 <p>The VIR0070 program allows the contents of the VIRSTAT file to be printed. The source for this program is supplied in the SSL (VSE) or in the SAMPLIB (z/OS) and you can use this as the basis of a     user-written program to print statistics.</p>
 <p>Examples of the JCL required to execute this program are shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRSTAT,CLASS=0,DISP=D
@@ -1320,11 +1371,11 @@ the records are buffered in memory before being written in block.</p>
 <p><em>Fig. 18 VIR0070 JCL to print VIRSTAT file (z/OS)</em></p>
 </div>
 <div class="section" id="printing-the-contents-of-the-virstat-file-http">
-<h3>4.2.4 Printing the contents of the VIRSTAT file (HTTP)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-http" title="Permalink to this headline">¶</a></h3>
-<p>The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and     the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB.</p>
+<h3>Printing the contents of the VIRSTAT file (HTTP)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-http" title="Permalink to this headline">¶</a></h3>
+<p>The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB.</p>
 <p>Examples of the execution JCL for this program are shown below.</p>
 <div class="section" id="z-vse">
-<h4>4.2.4.1 z/VSE<a class="headerlink" href="#z-vse" title="Permalink to this headline">¶</a></h4>
+<h4>z/VSE<a class="headerlink" href="#z-vse" title="Permalink to this headline">¶</a></h4>
 <p>In the VSE environment the VIRPRTST job, loaded into the POWER reader queue during VIRTEL installation, contains an example of JCL for printing the VIRSTAT file. This job is an example only and must be modified before execution:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRPRTST,CLASS=0,DISP=D
 * $$ LST DA
@@ -1385,7 +1436,7 @@ SELTERM DEVTA* CLVTA*
 <p><em>Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)</em></p>
 </div>
 <div class="section" id="z-os">
-<h4>4.2.4.2 z/OS<a class="headerlink" href="#z-os" title="Permalink to this headline">¶</a></h4>
+<h4>z/OS<a class="headerlink" href="#z-os" title="Permalink to this headline">¶</a></h4>
 <p>In the z/OS environment the JCL for executing the PRTSTATW program is supplied as member JCLPRTST in the VIRTEL SAMPLIB:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>//VIRPRTST JOB 1,USER,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID
 /*JOBPARM LINES=9999
@@ -1453,8 +1504,9 @@ SELTERM DEVTA* CLVTA*
 </dd>
 </dl>
 </div>
+</div>
 <div class="section" id="sorting-the-file">
-<h4>4.2.4.3 Sorting the File<a class="headerlink" href="#sorting-the-file" title="Permalink to this headline">¶</a></h4>
+<h3>Sorting the File<a class="headerlink" href="#sorting-the-file" title="Permalink to this headline">¶</a></h3>
 <p>The sort requirements are determined by the type of report desired. Since the PRTSTATW program offers the option of selecting records and also offers up to two levels of report break to allow printing of subtotals, it is important to specify the appropriate sort criteria to obtain the correct result.</p>
 <p>The sort operates on one or more criteria, in ascending (A) or descending (D) mode. You should adapt the SORT SYSIN according to the syntax of the specific SORT program being used.</p>
 <p>Several examples of sort criteria are shown below for various fields: terminal (TERM), date (DATE), user name (USER), URL parameter (PARM)</p>
@@ -1476,8 +1528,8 @@ SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for $ALL$ request
 </pre></div>
 </div>
 </div>
-<div class="section" id="the-prtstatw-program">
-<h4>4.2.4.4 The PRTSTATW program<a class="headerlink" href="#the-prtstatw-program" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="prtstatw-program">
+<h3>PRTSTATW program<a class="headerlink" href="#prtstatw-program" title="Permalink to this headline">¶</a></h3>
 <p>The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>First card (Required)
          1         2         3         4         5         6
@@ -1532,9 +1584,8 @@ PRTSTATW PRINT                BREAK USER          NNN  PPPP
 <dt>Columns 21 to 36</dt>
 <dd>For SELPARM: up to 16 characters for the URL parameter. The value  may end in ‘*’ for a generic search.</dd>
 </dl>
-</div>
 <div class="section" id="counter-report">
-<h4>4.2.4.5 Counter Report<a class="headerlink" href="#counter-report" title="Permalink to this headline">¶</a></h4>
+<h4>Counter Report<a class="headerlink" href="#counter-report" title="Permalink to this headline">¶</a></h4>
 <p>Clients who wish to obtain the total number of unique users can execute the PRTSTATW program with the SYSIN shown below.</p>
 <p>For the SORT: the first sort field is the user name, and the second sort field is the IP address:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
@@ -1573,23 +1624,19 @@ SELDATE 01012010 30122011
 <p><em>Fig 24. PRTSTATW user counter report</em></p>
 </div>
 </div>
-</div>
 <div class="section" id="smf-support">
-<h2>4.3 SMF Support<a class="headerlink" href="#smf-support" title="Permalink to this headline">¶</a></h2>
+<h3>SMF Support<a class="headerlink" href="#smf-support" title="Permalink to this headline">¶</a></h3>
 <p>Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.</p>
 <p>4.3.1 Printing the VIRSTAT SMF record</p>
 <p>The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.</p>
 <p>Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.</p>
 </div>
 <div class="section" id="memory-management">
-<h2>4.4 Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h2>
+<h3>Memory management<a class="headerlink" href="#memory-management" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="memory-display-sub-application">
-<h3>4.4.1 Memory display Sub-Application<a class="headerlink" href="#memory-display-sub-application" title="Permalink to this headline">¶</a></h3>
-<p>The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display
-which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used
-by the administrator to help understand VIRTEL’s memory requirements during normal operation.</p>
-<p>To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a
-screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.</p>
+<h4>Memory display Sub-Application<a class="headerlink" href="#memory-display-sub-application" title="Permalink to this headline">¶</a></h4>
+<p>The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.</p>
+<p>To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.</p>
 <p><img alt="image_06" src="../../../_images/image062.png" /></p>
 <p><em>Fig 25. Memory display of VIRTEL address space</em></p>
 <p>Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.</p>
@@ -1606,7 +1653,7 @@ screen similar to the example shown below. This screen represents the contents o
 </div></blockquote>
 </div>
 <div class="section" id="memory-display-in-memory-test-mode">
-<h3>4.4.2 Memory display in Memory=Test mode.<a class="headerlink" href="#memory-display-in-memory-test-mode" title="Permalink to this headline">¶</a></h3>
+<h4>Memory display in Memory=Test mode.<a class="headerlink" href="#memory-display-in-memory-test-mode" title="Permalink to this headline">¶</a></h4>
 <p>If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.</p>
 <p><img alt="image_08" src="../../../_images/image082.png" /></p>
 <p><em>Fig. 26 - Memory display in MEMORY=TEST mode</em></p>
@@ -1621,11 +1668,10 @@ screen similar to the example shown below. This screen represents the contents o
 <p class="last">This diagnostic tool should only be used when recommended by Technical Support.</p>
 </div>
 </div>
-</div>
 <div class="section" id="memory-trace-management">
-<h2>4.5 Memory trace management<a class="headerlink" href="#memory-trace-management" title="Permalink to this headline">¶</a></h2>
+<h4>Memory trace management<a class="headerlink" href="#memory-trace-management" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="activating-the-memory-trace">
-<h3>4.5.1 Activating the memory trace<a class="headerlink" href="#activating-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<h5>Activating the memory trace<a class="headerlink" href="#activating-the-memory-trace" title="Permalink to this headline">¶</a></h5>
 <p>A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMTRACE</span>
 </pre></div>
@@ -1638,7 +1684,7 @@ screen similar to the example shown below. This screen represents the contents o
 </div>
 </div>
 <div class="section" id="resetting-the-memory-trace">
-<h3>4.5.2 Resetting the memory trace<a class="headerlink" href="#resetting-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<h5>Resetting the memory trace<a class="headerlink" href="#resetting-the-memory-trace" title="Permalink to this headline">¶</a></h5>
 <p>A memory trace can be reseted by using the following command:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MEMTRACE</span><span class="p">,</span><span class="n">Clear</span>
 </pre></div>
@@ -1654,16 +1700,15 @@ screen similar to the example shown below. This screen represents the contents o
 </div>
 </div>
 <div class="section" id="stopping-the-memory-trace">
-<h3>4.5.3 Stopping the memory trace<a class="headerlink" href="#stopping-the-memory-trace" title="Permalink to this headline">¶</a></h3>
+<h5>Stopping the memory trace<a class="headerlink" href="#stopping-the-memory-trace" title="Permalink to this headline">¶</a></h5>
 <p>A memory trace can be stopped by using the following command:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOMEMTRACE</span>
 </pre></div>
 </div>
 <p>The trace is stopped, memory blocks used by the memory trace are released.</p>
 </div>
-</div>
 <div class="section" id="setting-memory-trace-in-the-virtct">
-<h2>4.6 Setting Memory Trace in the VIRTCT<a class="headerlink" href="#setting-memory-trace-in-the-virtct" title="Permalink to this headline">¶</a></h2>
+<h5>Setting Memory Trace in the VIRTCT<a class="headerlink" href="#setting-memory-trace-in-the-virtct" title="Permalink to this headline">¶</a></h5>
 <p>A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.</p>
 <p>Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.</p>
@@ -1687,10 +1732,13 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
 </dl>
 <p>Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.</p>
 </div>
-<div class="section" id="a-appendix">
-<h2>A. Appendix<a class="headerlink" href="#a-appendix" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="a-1-trademarks">
-<h3>A.1 Trademarks<a class="headerlink" href="#a-1-trademarks" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="trademarks">
+<h3>Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this headline">¶</a></h3>
 <p>SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec Communication Group, registered in France and other countries.</p>
 <p>IBM, VTAM, CICS, IMS, RACF, DB2, MVS, WebSphere, MQSeries, System z are trademarks or registered trademarks of International Business Machines Corp., registered in United States and other countries.</p>
 <p>Adobe, Acrobat, PostScript and all Adobe-based trademarks are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and other countries.</p>
@@ -1699,8 +1747,8 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
 <p>Linux is a trademark of Linus Torvalds in the United States, other countries, or both.</p>
 <p>Other company, product, or service names may be trademarks or service names of others.</p>
 </div>
-<div class="section" id="a-2-open-source-software">
-<h3>A.2. Open Source Software<a class="headerlink" href="#a-2-open-source-software" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="open-source-software">
+<h3>Open Source Software<a class="headerlink" href="#open-source-software" title="Permalink to this headline">¶</a></h3>
 <p>The current VIRTEL Web Access product uses the following open source software:</p>
 <ul class="simple">
 <li><dl class="first docutils">
