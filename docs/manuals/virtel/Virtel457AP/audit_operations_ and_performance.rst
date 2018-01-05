@@ -12,7 +12,7 @@ Audit, Operations and Performance V4.57
 
 Version : 4.57
 
-Release Date : 1 Jul 2017 Publication Date : 1/07/2017
+Release Date : 1 Sep 2017 Publication Date : 1/09/2017
 
 Syspertec Communication
 
@@ -41,11 +41,551 @@ Syspertec Communication
 
 .. _V457AP_Introduction:
 
-1. Monitoring
-=============
+Operations
+==========
 
-1.1 Monitoring lines and terminals
-==================================
+Issuing Commands
+----------------
+
+VIRTEL allows certain functions to be controlled dynamically by console commands. Use one of the following methods to send a command to VIRTEL, according to the operating system:
+
+
+z/OS Environment
+^^^^^^^^^^^^^^^^
+
+The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:
+
+::
+
+    F stcvirte,virtel-command    
+
+stcvirte
+    the name of the VIRTEL started task STC
+
+virtel-cmd
+    a VIRTEL command, as described in the following section.
+
+z/VSE Environment
+^^^^^^^^^^^^^^^^^
+
+To send a command to VIRTEL, issue the following command at the VSE operator console:
+
+::
+
+    MSG virtel,DATA=cirtel-command    
+
+virtel
+    The VIRTEL jobname (usually VIRTEL), or the partition in which VIRTEL is executing (for example, F4)
+
+virtel-cmd
+    A VIRTEL command, as described in the following section. Alternatively, issue the following command at the VSE operator console:
+
+::
+
+    MSG Fx    
+
+Fx
+    Partition in which VIRTEL is executing
+
+    The system responds with: 
+
+::
+
+    AR 0015 1I40I READY
+    Fx-nnnnAR 0015     
+
+.. note::
+    
+    Note the reply number (nnnn) and issue the following command:
+
+::
+
+    nnnn virtel-cmd    
+
+nnnn
+    reply number
+
+virtel-cmd
+    A VIRTEL command, as described in the following section
+
+LINES Command
+-------------
+
+The LINES command can be used to display a summary of the line status.::
+    
+    LINES | LINES,ACT | LINES,INACT    
+
+The LINES command displays the VIRTEL ACB name and a list of the lines defined in the VIRTEL configuration file. The optional keywords ACT or INACT may be used to restrict the display to lines that are in a “active” or “inactive” state respectively.
+
+Example::
+
+    F SPVIREH,LINES                                     
+    VIR0200I LINES                                      
+    VIR0201I VIRTEL 4.57 APPLID=SPVIREH  LINES          
+    VIR0202I ALLOCATED IP ADDRESS = 192.168.170.047     
+    VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP          
+    VIR0202I -------- -------- ----- ---------          
+    VIR0202I C-HTTP   HTTP-CLI TCP1  :41002             
+    VIR0202I E-HTTP   HTTP-EDS TCP1  :41003             
+    VIR0202I F-HTTP   HTTP-FOR TCP1  :41005             
+    VIR0202I I-CONN   IVP1    *TCP1                     
+    VIR0202I LM01TX1  LM01TX1  /FAST UMEHTX1            
+    VIR0202I O-HTTP   HTTP-OUT TCP1  £NONE£             
+    VIR0202I P-PCLPDF PCL2PDF  TCP1  £NONE£             
+    VIR0202I V-HTTP   HTTP-VSR TCP1  :41004             
+    VIR0202I W-HTTP   HTTP-W2H TCP1  :41001             
+    VIR0202I 9-XMPASS VIRTELXM*XM2   XM44000            
+    VIR0202I 9-XMVTA  QLNKHOLT XM1   QLNKCICH           
+    VIR0202I ---END OF LIST---                          
+
+LINE Command
+------------
+
+Display line detail
+^^^^^^^^^^^^^^^^^^^
+
+To display detail information about a Virtel line use the line detail display command.::
+
+    LINE=linename,DISPLAY (or L=linename,D)
+
+linename
+    Internal or external name of the line
+
+    The LINE DISPLAY command displays the status of a line and its  associated terminals.
+
+Example::
+
+    F SPTHOLTV,LINE=C-HTTP,D                              
+    VIR0200I LINE=C-HTTP,D                                
+    VIR0207I LINE C-HTTP   TCP1  HTTP STARTED             
+    VIR0203I TERMINALS ASSOCIATED WITH LINE C-HTTP        
+    VIR0203I TERMINAL RELAY    STATUS                     
+    VIR0203I -------- -------- --------                   
+    VIR0203I CLLOC000+                              LINKED
+    VIR0203I CLLOC001                               LINKED
+    VIR0203I CLLOC002                               LINKED
+    VIR0203I CLLOC003                               LINKED
+    VIR0203I CLLOC004                               LINKED
+    VIR0203I CLLOC005                               LINKED
+    VIR0203I CLLOC006                               LINKED
+    VIR0203I CLLOC007                               LINKED
+    VIR0203I CLLOC008                               LINKED
+    VIR0203I CLLOC009                               LINKED
+    VIR0203I CLVTA000 *W2HPOOL                      LINKED
+    VIR0203I CLVTA001 *W2HPOOL                      LINKED
+    VIR0203I CLVTA002 *W2HPOOL                      LINKED
+    VIR0203I CLVTA003 *W2HPOOL                      LINKED
+    VIR0203I CLVTA004 *W2HPOOL                      LINKED
+    VIR0203I ---END OF LIST---                            
+    VIR0204I TERMINALS IN POOL *W2HPOOL                   
+    VIR0204I TERMINAL RELAY    PRINTER  USED BY           
+    VIR0204I -------- -------- -------- --------          
+    VIR0204I W2HTP000 REHVT000 REHIP000                   
+    VIR0204I W2HTP001 REHVT001 REHIP001                   
+    VIR0204I W2HTP002 REHVT002 REHIP002                   
+    VIR0204I W2HTP003 REHVT003 REHIP003                   
+    VIR0204I W2HTP004 REHVT004 REHIP004                   
+    VIR0204I ---END OF LIST---           
+
+Starting and Stopping A Line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To STOP or START a line use the LINE command with the START or STOP function.::
+
+    LINE=linename,START | STOP
+
+    OR
+    
+    L=linename,P | S  
+
+linename
+    Internal or external name of the line
+
+The LINE START and LINE STOP commands perform the same function as the `“S” and “P” commands <#_bookmark12>`__ on the “Status of lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.
+                     
+
+RELAYS Command
+--------------
+
+To display a list of Virtel LU relays use the RELAY command.::  
+  
+    RELAYS    
+
+The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs opened by VIRTEL. Foe example::
+
+    F SPTHOLTV,RELAYS                                         
+    VIR0200I RELAYS                                           
+    VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.57 APPLID=APPLHOLT
+    VIR0214I TERMINAL RELAY    APPLID   CLIENT                
+    VIR0214I -------- -------- -------- ---------------       
+    VIR0214I CLVTA004 REHVT000 SPCICST  192.168.92.58         
+    VIR0214I W2HIP000 REHIP000                                
+    VIR0214I ---END OF LIST---                                
+
+
+MEMDISPLAY Command 
+------------------
+
+To display Virtel Internal Memory Usage use the MEMDISPLAY command.::
+
+    MEMDISPLAY
+
+With the memory diagnostic tool active the MEMDISPLAY command summarize the VIRTEL subpool active allocated memory.
+
+::
+
+    VIR0200I MEMDISPLAY
+    VIR0271I DISPLAY 978
+    SP1=00024478 SP2=00001044 SP3=0008E35F SP4=00002F61
+        00910091 00040009 02380294 000B0011
+    SP5=000317DC SP6=0004DF73 SP7=00000000 SP8=00000220
+        00C504C7 01370137 00000000 00000002
+    POOL CONTROL BLOCK. SUBPOOL=1
+    PAG=00109000 NFQ=00109008 #FQ=00000001 FRE=0000B2A0
+    PAG=000F9000 NFQ=000F9008 #FQ=00000001 FRE=00000080
+    PAG=000E9000 NFQ=000E9008 #FQ=00000001 FRE=00000078
+    POOL CONTROL BLOCK. SUBPOOL=2
+    PAG=1EC14000 NFQ=1EC14008 #FQ=00000005 FRE=0000EF68
+    POOL CONTROL BLOCK. SUBPOOL=3
+    PAG=1ECD4000 NFQ=1ECD4008 #FQ=00000002 FRE=00009DF8
+    PAG=1ED54000 NFQ=1ED54008 #FQ=00000002 FRE=00001750
+    PAG=1EC84000 NFQ=1EC84008 #FQ=00000001 FRE=00000878
+    PAG=1ED04000 NFQ=1ED04008 #FQ=00000001 FRE=00000878
+    PAG=1ED94000 NFQ=1ED94008 #FQ=00000002 FRE=00002768
+    PAG=1ECF4000 NFQ=1ECF4008 #FQ=00000001 FRE=00000878
+    PAG=1EE04000 NFQ=1EE04008 #FQ=00000001 FRE=00000878
+    PAG=1ED74000 NFQ=1ED74008 #FQ=00000001 FRE=00000878
+    PAG=1ECE4000 NFQ=1ECE4008 #FQ=00000001 FRE=00000878
+    PAG=1EC64000 NFQ=1EC64008 #FQ=00000001 FRE=00000878
+    POOL CONTROL BLOCK. SUBPOOL=4
+    PAG=1EC04000 NFQ=1EC04008 #FQ=00000004 FRE=0000CFA0
+    POOL CONTROL BLOCK. SUBPOOL=5
+    PAG=1ECA4000 NFQ=1ECA4008 #FQ=00000002 FRE=0000D870
+    PAG=1ED14000 NFQ=1ED14008 #FQ=00000001 FRE=000043B8
+    PAG=1ED24000 NFQ=1ED24008 #FQ=00000001 FRE=000043B8
+    PAG=1EC74000 NFQ=1EC74008 #FQ=00000001 FRE=0000A1D8
+    PAG=1EC54000 NFQ=1EC54008 #FQ=00000001 FRE=0000A1D8
+    PAG=1EBB4000 NFQ=1EBB4008 #FQ=00000001 FRE=000043B8
+    POOL CONTROL BLOCK. SUBPOOL=6
+    PAG=1EBF4000 NFQ=1EBF4008 #FQ=00000002 FRE=00000A50
+    PAG=1EBE4000 NFQ=1EBE4008 #FQ=00000001 FRE=00000088
+    PAG=1EBD4000 NFQ=1EBD4008 #FQ=00000001 FRE=000000B8
+    PAG=1EBC4000 NFQ=1EBC4008 #FQ=00000001 FRE=000000D0
+    PAG=1EBA4000 NFQ=1EBA4008 #FQ=00000001 FRE=00000108
+    POOL CONTROL BLOCK. SUBPOOL=7
+    PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000
+    POOL CONTROL BLOCK. SUBPOOL=8
+
+
+The display response is split into a summary section for each subpool and a detailed allocated page block and free queue element display for each subpool.In the summary display, each subpool has two displayed values. The top value is the amount of storage currently allocated and the value below represents the current allocation in 1K chunks and a peak allocation in 1K chunks.
+
+For example in the above display in SP5 we can see that there is an allocated value of 317DC bytes, represented by 00C5 in 1K chunks, and a peak value of 04C7 in 1K chunks.At the bottom of the display is a line which provide allocated, free and total values.
+
+Enabling the MEMDISPLAY function 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Memory Display feature is activated by using the MEMHST subparameter in the MEMORY parameter present in the VIRTCT.(see the VIRTCT subparameter MEMHST in “VIRTEL457 Installation User Guide”).
+
+Disabling the MEMDISPLAY function
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It can be deactivated by using the command.::
+
+    F VIRTEL,MEMDISPLAY,DISABLE
+
+.. note::
+
+        This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.
+
+LOG command 
+-----------
+
+The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-
+
+::
+
+    LOG=(SYSOUT[,class,destination])
+
+    For example, LOG=(SYSOUT,A,EDSPRT)
+
+This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-
+
+::
+
+    F VIRTEL,LOG=BOTH
+
+The LOG command has the following format:-
+
+::
+
+    F VIRTEL,LOG=CONSOLE | SYSOUT | BOTH | SPIN
+
+where
+
+    - CONSOLE means switch console messages back to the console.
+    - SYSOUT means switch to spooling consoles messages to SYSOUT.
+    - BOTH means write console messages to the console and SYSOUT.
+    - SPIN means spin off the current SYSOUT dataset. 
+    
+STOP Command
+------------
+
+To stop Virtel issue the STOP command::
+
+    STOP        
+
+The STOP command allows to STOP the VIRTEL task. This command is intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :
+
+::
+
+    P VIRTEL
+
+KILL Command
+------------
+
+The KILL command can be used to stop a scenario::
+
+    KILL,T=termid
+
+termid
+    terminal name
+
+The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.
+
+TRACE | NOTRACE Command
+-----------------------
+
+A trace can be activated on a terminal, line or relay.::
+    
+    TERM=termid,TRACE (or T=termid,T)
+    TERM=termid,NOTRACE (or T=termid,N)
+    LINE=linename,TRACE (or L=linename,T)
+    LINE=linename,NOTRACE (or L=linename,N)
+    RELAY=relayname,TRACE (or R=relayname,T)
+    RELAY=relayname,NOTRACE (or R=relayname,N)
+
+termid
+    terminal name
+
+relayname
+    relay associated to the terminal
+
+It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
+
+|image_03|
+*Fig.3 - Associated relay names*
+
+linename
+    Internal or external name of the line
+
+The following alternate forms of the TRACE/NOTRACE commands are also  valid
+
+::
+
+    TRACE,T=termid
+    TRACE,L=linename
+    TRACE,R=relayname
+    NOTRACE,T=termid
+    NOTRACE,L=linename
+    NOTRACE,R=relayname
+
+termid
+    terminal name
+
+linename
+    Internal or external name of the line
+
+relayname
+    Name of VTAM relay LU currently associated with the terminal
+
+Display a list of active traces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    TRACE,DISPLAY | D
+
+Deactivate all traces        
+^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    NOTRACE,ALL
+
+This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
+
+SNAP Command
+------------
+
+This command is used to take a dump of the Virtel SNAP internal trace table.
+
+::
+
+    SNAP
+ 
+The SNAP command prints the contents of the VIRTEL internal trace table to the SYSPRINT file . See “VIRTEL SNAP” for further information.
+
+Terminal or Relay SNAP
+^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    SNAP,T=termid | R=relayname
+
+termid
+    terminal name
+
+relayname
+    name of VTAM relay LU currently associated with the terminal
+
+SNAPMSG Command
+---------------
+::
+
+    SNAPMSG,ALL    
+
+The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W VIR0026W VIR0052I VIR1552I VIR0526W VIR1952I).
+
+::
+
+    SNAPMSG=message,search,action
+
+The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG command from the console. See “SNAPMSG command”.
+
+message
+    Any message that can be issued by Virtel.
+
+search
+    Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.
+
+action
+    Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
+    
+Default action is SNAP.
+
+Example:
+::
+ 
+	F VIRTEL,SNAPMSG=VIRHT51I,CALL,S
+
+SNAP80 Command
+--------------
+
+::
+
+    SNAP80 
+
+The SNAP80 command prints the contents of the VIRTEL internal trace table in 80 column format, whatever the current value of the SNAPW parameter.
+
+SNAPW Command
+-------------
+
+The format of the SNAP output can be adjusted with the SNAPW command.
+
+::
+
+    SNAPW=80 | 132
+
+The SNAPW command sets the width for future SNAP commands (80 or 132 columns). The SNAPW parameter in the VIRTCT determines the default width at VIRTEL startup. Refer to the section “Parameters of the VIRTCT” in the VIRTEL Installation Guide for details of the SNAPW parameter.
+
+NEW Command
+-----------
+
+The NEW command refreshes a VIRTEL program, VIRSV service or scenario.
+
+::
+
+    NEW=progname
+
+progname
+    program name
+
+The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.
+
+Refreshing a VIRSV Service program
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    VIRSV,NEW=servname    
+
+servname
+    service name
+
+The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This has the effect of loading a fresh copy of the associated service program the next time the service is invoked by a scenario. The message VIR0260W SERVICE servname IS A NEW COPY indicates that the service was stopped successfully. The message VIR0261W
+
+
+SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.
+
+MSG Command
+-----------
+
+To send a mesage to VIRTEL Multi-Session users use the MSG command::
+
+    MSG=message text
+
+The specified message will be displayed on the VIRTEL multi-session screen.
+
+SILENCE Command
+---------------
+
+To supppress Virtel messages use the SILENCE command::
+
+    SILENCE
+
+The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.
+
+.. note::
+
+    Refer to the section SILENCE parameter in the "Parameters of the VIRTCT" in the VIRTEL Installation Guide for a list messages affected by this command.)
+
+ZAP Command
+-----------
+
+The ZAP command allows dynamic patching of a Virtel Program::
+
+    ZAP=progname+offset,verify,replace
+
+progname
+    program name
+
+offset
+    offset into program
+
+verify
+    verify value (2 to 8 hexadecimal digits)
+
+replace
+    replacement value (2 to 8 hexadecimal digits)
+
+The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.
+
+STAT Command
+------------
+
+Display statistics file information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To display information about the Virtel statistics file management use the STAT command.::
+    
+    STAT,D
+
+This command displays the status of the VIRSTATx files (message VIR0601I). The STAT command is used to manage the VIRTEL statistics recording files (VIRSTATx). This command can be used only if STATS=MULTI is specified in the VIRTCT.
+
+Switch the VIRSTAT file
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To switch the STATISTIC file using the STAT switch command.::
+    
+    STAT,I    
+
+This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file. 
+
+Administration
+==============
+
+Monitoring lines and terminals
+------------------------------
 
 The Line Status sub-application allows the administrator to display the current status of lines and terminals or irtual circuits (CVC) managed by VIRTEL control, and optionally to modify the status of lines.
 
@@ -110,15 +650,14 @@ p
 
 To return to the configuration menu, press [PF3] or [Clear].
 
-1.2 Displaying Line Usage
-=========================
+Displaying Line Usage
+---------------------
 
-    To display the status and line usage place the cursor on the desired line in the Line Status
-    Display screen and press [PF12].
+To display the status and line usage place the cursor on the desired line in the Line Status Display screen and press [PF12].
 
-    Security rules are the same as those which apply to the previous screen.
+Security rules are the same as those which apply to the previous screen.
 
-    This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:
+This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:
 
 |image_02|
 
@@ -175,458 +714,8 @@ Call Data (for HTTP lines)
 
     To return to the Lines Status Display, press [PF3]. To return to the Configuration Menu, press [Clear].
 
-2. Operations
-=============
-
-    VIRTEL allows certain functions to be controlled dynamically by
-    console commands.
-
-    Use one of the following methods to send a command to VIRTEL, according to the operating system:
-
-2.0.1 z/OS Environment
-----------------------
-The following modify command may be issued at the z/OS operator console, or from an SDSF session under TSO, in which case the command must be prefixed by the character “/”:
-
-::
-
-    F stcvirte,virtel-command    
-
-stcvirte
-    the name of the VIRTEL started task STC
-
-virtel-cmd
-    a VIRTEL command, as described in the following section.
-
-2.0.2 z/VSE Environment
------------------------ 
-To send a command to VIRTEL, issue the following command at the VSE operator console:
-
-::
-
-    MSG virtel,DATA=cirtel-command    
-
-virtel
-    The VIRTEL jobname (usually VIRTEL), or the partition in which VIRTEL is executing (for example, F4)
-
-virtel-cmd
-    A VIRTEL command, as described in the following section. Alternatively, issue the following command at the VSE operator console:
-
-::
-
-    MSG Fx    
-
-Fx
-    Partition in which VIRTEL is executing
-
-    The system responds with: 
-
-::
-
-    AR 0015 1I40I READY
-    Fx-nnnnAR 0015     
-
-.. note::
-    
-    Note the reply number (nnnn) and issue the following command:
-
-::
-
-    nnnn virtel-cmd    
-
-nnnn
-    reply number
-
-virtel-cmd
-    A VIRTEL command, as described in the following section
-
-2.1 Displaying VIRTEL Lines And Terminals
-=========================================
-
-2.1.2   Display lines
----------------------
-::
-    
-    LINES | LINES,ACT | LINES,INACT    
-
-
-    The LINES command displays the VIRTEL ACB name and a list of the lines defined in the VIRTEL configuration file. The optional keywords ACT or INACT may be used to restrict the display to lines in “started” or “stopped” state respectively.
-
-2.1.2   Display line detail
----------------------------
-
-::
-
-    LINE=linename,DISPLAY (or L=linename,D)
-
-linename
-    Internal or external name of the line
-
-    The LINE DISPLAY command displays the status of a line and its
-    associated terminals.
-
-2.1.3 List of Virtel LU relays
-
-::
-    
-    RELAYS    
-
-    The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs opened by VIRTEL.
-
-2.2 Starting and Stopping A Line
-================================
-
-::
-
-    LINE=linename,START | STOP
-    L=linename,P | S  
-
-linename
-    Internal or external name of the line
-
-    The LINE START and LINE STOP commands perform the same function as the `“S” and “P” commands <#_bookmark12>`__ on the “Status of
-    lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.
-
-2.3 Display Internal Memory Usage
-=================================
-
-::
-
-    MEMDISPLAY
-
-With the memory diagnostic tool active the MEMDISPLAY command summarize the VIRTEL subpool active allocated memory.
-
-::
-
-    VIR0200I MEMDISPLAY
-    VIR0271I DISPLAY 978
-    SP1=00024478 SP2=00001044 SP3=0008E35F SP4=00002F61
-        00910091 00040009 02380294 000B0011
-    SP5=000317DC SP6=0004DF73 SP7=00000000 SP8=00000220
-        00C504C7 01370137 00000000 00000002
-    POOL CONTROL BLOCK. SUBPOOL=1
-    PAG=00109000 NFQ=00109008 #FQ=00000001 FRE=0000B2A0
-    PAG=000F9000 NFQ=000F9008 #FQ=00000001 FRE=00000080
-    PAG=000E9000 NFQ=000E9008 #FQ=00000001 FRE=00000078
-    POOL CONTROL BLOCK. SUBPOOL=2
-    PAG=1EC14000 NFQ=1EC14008 #FQ=00000005 FRE=0000EF68
-    POOL CONTROL BLOCK. SUBPOOL=3
-    PAG=1ECD4000 NFQ=1ECD4008 #FQ=00000002 FRE=00009DF8
-    PAG=1ED54000 NFQ=1ED54008 #FQ=00000002 FRE=00001750
-    PAG=1EC84000 NFQ=1EC84008 #FQ=00000001 FRE=00000878
-    PAG=1ED04000 NFQ=1ED04008 #FQ=00000001 FRE=00000878
-    PAG=1ED94000 NFQ=1ED94008 #FQ=00000002 FRE=00002768
-    PAG=1ECF4000 NFQ=1ECF4008 #FQ=00000001 FRE=00000878
-    PAG=1EE04000 NFQ=1EE04008 #FQ=00000001 FRE=00000878
-    PAG=1ED74000 NFQ=1ED74008 #FQ=00000001 FRE=00000878
-    PAG=1ECE4000 NFQ=1ECE4008 #FQ=00000001 FRE=00000878
-    PAG=1EC64000 NFQ=1EC64008 #FQ=00000001 FRE=00000878
-    POOL CONTROL BLOCK. SUBPOOL=4
-    PAG=1EC04000 NFQ=1EC04008 #FQ=00000004 FRE=0000CFA0
-    POOL CONTROL BLOCK. SUBPOOL=5
-    PAG=1ECA4000 NFQ=1ECA4008 #FQ=00000002 FRE=0000D870
-    PAG=1ED14000 NFQ=1ED14008 #FQ=00000001 FRE=000043B8
-    PAG=1ED24000 NFQ=1ED24008 #FQ=00000001 FRE=000043B8
-    PAG=1EC74000 NFQ=1EC74008 #FQ=00000001 FRE=0000A1D8
-    PAG=1EC54000 NFQ=1EC54008 #FQ=00000001 FRE=0000A1D8
-    PAG=1EBB4000 NFQ=1EBB4008 #FQ=00000001 FRE=000043B8
-    POOL CONTROL BLOCK. SUBPOOL=6
-    PAG=1EBF4000 NFQ=1EBF4008 #FQ=00000002 FRE=00000A50
-    PAG=1EBE4000 NFQ=1EBE4008 #FQ=00000001 FRE=00000088
-    PAG=1EBD4000 NFQ=1EBD4008 #FQ=00000001 FRE=000000B8
-    PAG=1EBC4000 NFQ=1EBC4008 #FQ=00000001 FRE=000000D0
-    PAG=1EBA4000 NFQ=1EBA4008 #FQ=00000001 FRE=00000108
-    POOL CONTROL BLOCK. SUBPOOL=7
-    PAG=00000000 NFQ=00000000 #FQ=00000000 FRE=00000000
-    POOL CONTROL BLOCK. SUBPOOL=8
-
-
-The display response is split into a summary section for each subpool and a detailed allocated page block and free queue element display for each subpool.
-
-In the summary display, each subpool has two displayed values. The top value is the amount of storage currently allocated and the value below represents the current allocation in 1K chunks and a peak allocation in 1K chunks.
-
-For example in the above display in SP5 we can see that there is an allocated value of 317DC bytes, represented by 00C5 in 1K chunks, and a peak value of 04C7 in 1K chunks.
-
-At the bottom of the display is a line which provide allocated, free and total values.
-
-2.3.1 Memory Management Commands 
---------------------------------
-
-Memory Display feature is activated by using the MEMHST subparameter in the MEMORY parameter present in the VIRTCT.(see the VIRTCT subparameter MEMHST in “VIRTEL457 Installation User Guide”).
-
-It can be deactivated by using the command:
-
-::
-
-    F VIRTEL,MEMDISPLAY,DISABLE
-
-.. note::
-
-        This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.
-
-2.3.2 Console messages 
-----------------------
-
-The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-
-
-::
-
-    LOG=(SYSOUT[,class,destination])
-
-    For example, LOG=(SYSOUT,A,EDSPRT)
-
-This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-
-
-::
-
-    F VIRTEL,LOG=BOTH
-
-The LOG command has the following format:-
-
-::
-
-    F VIRTEL,LOG=CONSOLE | SYSOUT | BOTH | SPIN
-
-where
-
-    - CONSOLE means switch console messages back to the console.
-    - SYSOUT means switch to spooling consoles messages to SYSOUT.
-    - BOTH means write console messages to the console and SYSOUT.
-    - SPIN means spin off the current SYSOUT dataset. 
-    
-2.4 Stopping Virtel
-===================
-
-::
-
-    STOP        
-
-The STOP command allows to STOP the VIRTEL task. This command is  intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :
-
-::
-
-    P stcvirte
-
-stcvirte
-    The name of the VIRTEL started task STC
-
-2.5 Stopping a scenario
-=======================
-::
-
-    KILL,T=termid
-
-
-termid
-    terminal name
-
-    The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.
-
-2.6 Virtel Trace Commands
-=========================
-
-    A trace can be activated on the device or on his relay.
-
-::
-    
-    TERM=termid,TRACE (or T=termid,T)
-    TERM=termid,NOTRACE (or T=termid,N)
-    RELAY=relayname,TRACE (or R=relayname,T)
-    RELAY=relayname,NOTRACE (or R=relayname,N)
-
-termid
-    terminal name
-
-relayname
-    relay associated to the terminal
-
-It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
-
-|image_03|
-*Fig.3 - Associated relay names*
-
-linename
-    Internal or external name of the line
-
-The following alternate forms of the TRACE/NOTRACE commands are also  valid
-
-::
-
-    TRACE,T=termid
-    TRACE,L=linename
-    TRACE,R=relayname
-    NOTRACE,T=termid
-    NOTRACE,L=linename
-    NOTRACE,R=relayname
-
-termid
-    terminal name
-
-linename
-    Internal or external name of the line
-
-relayname
-    Name of VTAM relay LU currently associated with the terminal
-
-2.6.1 Display a list of active traces
--------------------------------------
-
-::
-
-    TRACE,DISPLAY | D
-
-2.6.2 Deactivate all traces        
----------------------------
-
-::
-
-    NOTRACE,ALL
-
-This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
-
-2.7 SNAP Command
-================
-
-2.7.1 SNAP internal trace table
--------------------------------
-
-::
-
-    SNAP
- 
-The SNAP command prints the contents of the VIRTEL internal trace table. See “VIRTEL SNAP”.
-
-2.7.2 Terminal or Relay SNAP
-----------------------------
-
-::
-
-    SNAP,T=termid | R=relayname
-
-termid
-    terminal name
-
-relayname
-    name of VTAM relay LU currently associated with the terminal
-
-2.7.2 Message trigger SNAP
-
-::
-
-    SNAPMSG,ALL    
-
-The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W VIR0026W VIR0052I VIR1552I VIR0526W VIR1952I).
-
-::
-
-    SNAPMSG=message,search,action
-
-The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG command from the console. See “SNAPMSG command”.
-
-message
-    Any message that can be issued by Virtel.
-
-search
-    Any seache criteria issued within the message. The search file is restricted to a maximu of 10 characters. Anything beyond will be ignored. Default search is none.
-
-action
-    Possible values are S for SNAP or A for ABEND. Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.
-    
-Default action is SNAP.
-
-Example:
-::
- 
-	F VIRTEL,SNAPMSG=VIRHT51I,CALL,S
-
-2.7.3 80-column SNAP
---------------------
-
-::
-
-    SNAP80 
-
-The SNAP80 command prints the contents of the VIRTEL internal trace table in 80 column format, whatever the current value of the SNAPW parameter.
-
-2.7.4 Adjustng the SNAP format
-------------------------------
-
-::
-
-    SNAPW=80 | 132
-
-The SNAPW command sets the width for future SNAP commands (80 or 132 columns). The SNAPW parameter in the VIRTCT determines the default width at VIRTEL startup. Refer to the section “Parameters of the     VIRTCT” in the VIRTEL Installation Guide for details of the SNAPW parameter.
-
-2.8 Refreshing a VIRTEL program
-===============================
-
-::
-
-    NEW=progname
-
-progname
-    program name
-
-The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.
-
-2.9 Refreshing a VIRSV Service program
-
-::
-
-    VIRSV,NEW=servname    
-
-servname
-    service name
-
-The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This has the effect of loading a fresh copy of the associated service program the next time the service is invoked by a scenario. The message VIR0260W SERVICE servname IS A NEW COPY indicates that the service was stopped successfully. The message VIR0261W
-
-
-SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.
-
-2.9 Sending a mesage to VIRTEL Multi-Session users
-==================================================
-
-::
-
-    MSG=message text
-
-The specified message will be displayed on the VIRTEL multi-session screen.
-
-2.10 Supressing messages
-========================
-
-::
-
-    SILENCE
-
-The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the     operator console.
-
-.. note::
-
-    Refer to the section SILENCE parameter in the "Parameters of the VIRTCT" in the VIRTEL Installation Guide for a list messages affected by this command.)
-
-2.11 - Patching a Virtel Program
-================================
-
-::
-
-    ZAP=progname+offset,verify,replace
-
-progname
-    program name
-
-offset
-    offset into program
-
-verify
-    verify value (2 to 8 hexadecimal digits)
-
-replace
-    replacement value (2 to 8 hexadecimal digits)
-
-The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.
-
-3. Performance
-==============
+Performance
+===========
 
 The VIRTEL started task offers the administrator 5 sources of information to verify the correct functioning and performance of VIRTEL, to monitor its activity, or to diagnose possible problems:
 
@@ -640,7 +729,8 @@ The VIRTEL started task offers the administrator 5 sources of information to ver
 
 -  the SNAP in the SYSPRINT file
 
-3.1 The console file
+CONSOLE file
+------------
 
 In **z/OS environment**, the CONSOLE file is written to the VIRTEL started task’s JESMSGLG file.
 
@@ -655,8 +745,8 @@ The CONSOLE file allows the administrator to monitor the startup and subsequent 
 |image_04|
 *Fig. 4 Example of CONSOLE file*
 
-3.1 The VIRLOG file
-===================
+VIRLOG file
+-----------
 
 This is a printable file with record length 131 and record format FA which provides a record of IP connections to VIRTEL. The figure below shows an example of VIRLOG entries for incoming
 HTTP calls:
@@ -724,8 +814,8 @@ The REMOTE ADDRESS column contains the caller X25 number for incoming calls, or 
 
 The last column contains the PCNE call user data (if present), otherwise it contains the default entry point name for X25 calls specified by the DEFENTR parameter in the VIRTCT. For GATE calls this column is blank.
 
-3.1.2 The VIRTEL logger
------------------------
+VIRTEL logger
+-------------
 
 The VIRTEL log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
 
@@ -756,8 +846,8 @@ The available JCL parameters are:
 
 The date format is yyyyddd.
 
-3.1.2.1 Examples
-^^^^^^^^^^^^^^^^
+Examples
+^^^^^^^^
 
 ::
 
@@ -772,8 +862,8 @@ The date format is yyyyddd.
 
 *Fig. 8  Example of VIRTEL LOGGER extraction parameter*
 
-3.2 Virtel trace
-================
+Virtel trace
+------------
 
 All messages which pass between a terminal and a host application, or all messages received and sent on a line, can be traced to a print file.
 
@@ -796,8 +886,8 @@ In **VSE environment**, the trace data is written to the POWER LST file of the V
 
 Activation and deactivation of a memory trace is performed by means of the MEMTRACE and NOMEMTRACE commands (see “Memory Trace Management”). The allocation memory is written in the SNAP file when a SNAP command is issued.
 
-3.2.1 Contents of the trace
----------------------------
+Contents of the trace
+^^^^^^^^^^^^^^^^^^^^^
 
     +-----------+------------------------------------------+-----------------------------------------------+
     + Line type + Contents of line trace                   + Contents of terminal trace or trace by rule   +
@@ -835,8 +925,8 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
     +           +                                          + VIRTEL and the host application.              + 
     +-----------+------------------------------------------+-----------------------------------------------+ 
 
-3.2.1.2 Examples of traces
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Trace Examples
+^^^^^^^^^^^^^^
 
 ::
 
@@ -935,8 +1025,8 @@ Activation and deactivation of a memory trace is performed by means of the MEMTR
 
 *Fig. 11 Example of "trace by rule" (XOT terminal to application on /PCNE line)*
 
-3.3 VIRTEL SNAP
-===============
+VIRTEL SNAP
+-----------
 
 VIRTEL maintains an internal trace table in which it records  significant events which occur during VIRTEL processing. The SNAP command allows the administrator to obtain a snapshot listing of the contents of the trace table at a given point in time.
 
@@ -971,11 +1061,11 @@ The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain 
 
 Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.
 
-4. Audit and Statistics
-=======================
+Audit and Statistics
+--------------------
 
-4.1 The VIRSTAT file
-====================
+VIRSTAT file
+^^^^^^^^^^^^
 
 The VIRSTAT file is a sequential file into which VIRTEL writes connection statistics.
 
@@ -1002,8 +1092,9 @@ For terminals associated with all other line types (including /GATE, /PCNE, and 
 
 The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.
 
-4.1.1 VIRSTAT classsic format 
------------------------------
+VIRSTAT classsic format 
+"""""""""""""""""""""""
+
 For terminals which specify classic format recording (STATS=1), the  VIRSTAT record format is shown in the following table:
 
 ::
@@ -1047,8 +1138,9 @@ Type P (partial)
 Type E (end of job) 
     Records are implemented at VIRTEL shutdown.
 
-4.1.2 VIRSTAT alternative X25 format
-------------------------------------
+VIRSTAT alternative X25 format
+""""""""""""""""""""""""""""""
+
 For terminals which specify alternate X25 format recording (STATS=4), the VIRSTAT record format is shown in the following  table:
 
 ::
@@ -1144,30 +1236,9 @@ For this record type, the counters are in binary, and the Session Date and Time 
 
 This record type is written when 6 is specified in the STATS field of the terminal definition used for the HTTP line.
 
-4.2 Statistics file management
-==============================
 
-The STAT command is used to manage the VIRTEL statistics recording files (VIRSTATx). This command can be used only if STATS=MULTI is specified in the VIRTCT.
-
-4.2.1 Display VIRSTAT
----------------------
-
-::
-    
-    STAT,D
-
-This command displays the status of the VIRSTATx files (message VIR0601I).
-
-4.2.2 Switch VIRSTAT
---------------------
-::
-    
-    STAT,I    
-
-This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file.
-
-4.2.3 Printing the contents of the VIRSTAT file (X25)
------------------------------------------------------
+Printing the contents of the VIRSTAT file (X25)
+-----------------------------------------------
 
 The VIR0070 program allows the contents of the VIRSTAT file to be printed. The source for this program is supplied in the SSL (VSE) or in the SAMPLIB (z/OS) and you can use this as the basis of a     user-written program to print statistics. 
 
@@ -1211,14 +1282,15 @@ Examples of the JCL required to execute this program are shown below:
 
 *Fig. 18 VIR0070 JCL to print VIRSTAT file (z/OS)*
 
-4.2.4 Printing the contents of the VIRSTAT file (HTTP)
-------------------------------------------------------
-The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and     the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB. 
+Printing the contents of the VIRSTAT file (HTTP)
+------------------------------------------------
+
+The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB. 
 
 Examples of the execution JCL for this program are shown below.
 
-4.2.4.1 z/VSE
-^^^^^^^^^^^^^
+z/VSE
+^^^^^
 
 In the VSE environment the VIRPRTST job, loaded into the POWER reader queue during VIRTEL installation, contains an example of JCL for printing the VIRSTAT file. This job is an example only and must be modified before execution:
 
@@ -1282,8 +1354,8 @@ In the VSE environment the VIRPRTST job, loaded into the POWER reader queue duri
 
 *Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)*
 
-4.2.4.2 z/OS
-^^^^^^^^^^^^
+z/OS
+^^^^
 
 In the z/OS environment the JCL for executing the PRTSTATW program is supplied as member JCLPRTST in the VIRTEL SAMPLIB:
 
@@ -1350,8 +1422,8 @@ This JCL consists of two main steps:
     -  a first step to sort the file
     -  a second step to PRINT or COUNT the records
 
-4.2.4.3 Sorting the File 
-^^^^^^^^^^^^^^^^^^^^^^^^
+Sorting the File 
+----------------
 
 The sort requirements are determined by the type of report desired. Since the PRTSTATW program offers the option of selecting records and also offers up to two levels of report break to allow printing of subtotals, it is important to specify the appropriate sort criteria to obtain the correct result.
 
@@ -1380,8 +1452,9 @@ For example, to obtain a report in ascending order of session start date, specif
     SORT FIELDS=(9,4,A),FORMAT=CH
     //*
 
-4.2.4.4 The PRTSTATW program
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PRTSTATW program
+----------------
+
 The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.
 
 ::
@@ -1453,8 +1526,9 @@ Columns 21 to 40
 Columns 21 to 36
     For SELPARM: up to 16 characters for the URL parameter. The value  may end in ‘\*’ for a generic search.
 
-4.2.4.5 Counter Report
-^^^^^^^^^^^^^^^^^^^^^^
+Counter Report
+^^^^^^^^^^^^^^
+
 Clients who wish to obtain the total number of unique users can execute the PRTSTATW program with the SYSIN shown below.
 
 For the SORT: the first sort field is the user name, and the second sort field is the IP address:
@@ -1500,8 +1574,8 @@ For z/OS, sample JCL for the user counter report is supplied in the JCLCOUST mem
 
 *Fig 24. PRTSTATW user counter report*
 
-4.3 SMF Support
-===============
+SMF Support
+-----------
 
 Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.
 
@@ -1511,18 +1585,15 @@ The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the
 
 Messages "VIR0612E VIRSTAT SMFWTM FAILED. RC=rc" and "VIR0611I VIRSTAT NOW RECORDING TO SMF" are in relation with SMF support. See "Virtel Messages and Operations" manual for more details.
 
-4.4 Memory management
-=====================
+Memory management
+-----------------
 
-4.4.1 Memory display Sub-Application
-------------------------------------
+Memory display Sub-Application
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display
-which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used
-by the administrator to help understand VIRTEL’s memory requirements during normal operation.
+The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.
 
-To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a
-screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
+To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
 
 |image_06|
 
@@ -1539,8 +1610,8 @@ Permanently allocated memory blocks are represented by the following character t
     5. Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.
     6. Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.
 
-4.4.2 Memory display in Memory=Test mode.
------------------------------------------
+Memory display in Memory=Test mode.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
 
@@ -1564,11 +1635,12 @@ The Memory display feature is a memory diagnostic tool created to trap possible 
     
     This diagnostic tool should only be used when recommended by Technical Support.
 
-4.5 Memory trace management
-===========================
+Memory trace management
+^^^^^^^^^^^^^^^^^^^^^^^
 
-4.5.1 Activating the memory trace
----------------------------------
+Activating the memory trace
+"""""""""""""""""""""""""""
+
 A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command
 
 ::
@@ -1583,8 +1655,9 @@ The will produce the following response:
     VIR0214I MEMORY TRACE STARTED
     VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
 
-4.5.2 Resetting the memory trace
---------------------------------
+Resetting the memory trace
+""""""""""""""""""""""""""
+
 A memory trace can be reseted by using the following command:-
 
 ::
@@ -1602,8 +1675,9 @@ The trace is stopped, memory blocks used by the memory trace are released, the t
     VIR0214I MEMORY TRACE STARTED
     VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
 
-4.5.3 Stopping the memory trace
--------------------------------
+Stopping the memory trace
+"""""""""""""""""""""""""
+
 A memory trace can be stopped by using the following command:-
 
 ::
@@ -1612,8 +1686,9 @@ A memory trace can be stopped by using the following command:-
 
 The trace is stopped, memory blocks used by the memory trace are released.
 
-4.6 Setting Memory Trace in the VIRTCT 
-======================================
+Setting Memory Trace in the VIRTCT 
+""""""""""""""""""""""""""""""""""
+
 A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.
 
 Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
@@ -1637,11 +1712,11 @@ Column Explanations
 
 Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
 
-A. Appendix
-===========
+Appendix
+========
 
-A.1 Trademarks
---------------
+Trademarks
+----------
 
 SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec Communication Group, registered in France and other countries.
 
@@ -1657,8 +1732,8 @@ Linux is a trademark of Linus Torvalds in the United States, other countries, or
 
 Other company, product, or service names may be trademarks or service names of others.
 
-A.2. Open Source Software
--------------------------
+Open Source Software
+--------------------
 
 The current VIRTEL Web Access product uses the following open source software:
 
