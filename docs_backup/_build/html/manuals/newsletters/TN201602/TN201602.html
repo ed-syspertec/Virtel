@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installing Virtel V4.53 from scratch &mdash; Virtel 7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Field Level Encryption" href="../TN201603/TN201603.html"/>
+        <link rel="prev" title="Customizing colours with CSS in Virtel 4.53" href="../TN201601/TN201601.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.57
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installing Virtel V4.53 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201604/TN201604.html">Controlling LU Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201605/TN201605.html">CICS Printing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201606/TN201606.html">Virtel Screen Redesigner in action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201607/TN201607.html">What’s new in Virtel 4.56 (September 2016)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201608/TN201608.html">Installing Virtel V4.56 from scratch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201609/TN201609.html">Nailing LUS with an Identification scenario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customizing Virtel in V4.56</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Installing Virtel V4.53 from scratch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manuals/newsletters/TN201602/TN201602.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installing-virtel-v4-53-from-scratch">
+<span id="tn201602"></span><h1>Installing Virtel V4.53 from scratch<a class="headerlink" href="#installing-virtel-v4-53-from-scratch" title="Permalink to this headline">¶</a></h1>
+<p><strong>Cleaning up from a previous installation</strong></p>
+<p>If you want to delete all the files from a previous installation use the
+following job:-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S00</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADRDSSU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">TEMP</span> <span class="n">DD</span> <span class="n">DUMMY</span>
+<span class="n">DUMP</span> <span class="n">DATASET</span> <span class="o">-</span>
+<span class="p">(</span><span class="n">INCLUDE</span><span class="p">(</span> <span class="o">-</span>
+<span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.**</span> <span class="o">-</span>
+<span class="p">))</span> <span class="o">-</span>
+<span class="n">DELETE</span> <span class="o">-</span>
+<span class="n">PURGE</span> <span class="o">-</span>
+<span class="n">TOL</span><span class="p">(</span><span class="n">ENQF</span><span class="p">)</span> <span class="o">-</span>
+<span class="n">OUTDDNAME</span><span class="p">(</span><span class="n">TEMP</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Getting the software</strong></p>
+<ol class="arabic">
+<li><p class="first">Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></p>
+<blockquote>
+<div><ul class="simple">
+<li>/VIRTEL 4.53/Produits/virtel453mvs.zip</li>
+<li>/VIRTEL 4.53/Produits/allptfs-mvs453.txt</li>
+<li>/VIRTEL 4.53/Produits/virtel453updt5380.zip</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Unzip “virtel453mvs.zip” into a folder on your workstation.</p>
+</li>
+<li><p class="first">Print off the “install.txt” document.</p>
+</li>
+<li><p class="first">Unzip “/VIRTEL 4.53/Produits/virtel453updt5380.zip” into a folder on your workstation.</p>
+</li>
+<li><p class="first">Print off the readme document.</p>
+</li>
+</ol>
+<p><strong>Installing the software</strong></p>
+<ol class="arabic">
+<li><p class="first">Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.</p>
+</li>
+<li><p class="first">Upload the XMIT file virt453.xmit to the file allocated by $alocdsu.</p>
+</li>
+<li><p class="first">Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.</p>
+</li>
+<li><p class="first">Upload text file allptfs-mvs453.txt to <em>yourqual.VIRT453.CNTL(PTF453MV).</em></p>
+</li>
+<li><p class="first">Modify and run job <em>yourqual.VIRT453.CNTL(ZAPJCL)</em>. This will apply maintenance to the VIRTEL load library.</p>
+</li>
+<li><p class="first">Authorize the VIRTEL load library. Use the z/OS SETPROG APF command:-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SETPROG</span> <span class="n">APF</span><span class="p">,</span><span class="n">ADD</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">LOADLIB</span><span class="p">,[</span><span class="n">VOL</span><span class="o">=</span><span class="n">volser</span><span class="o">|</span><span class="n">SMS</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Edit the VIRTEL TCT member <em>yourqual.VIRT453.CNTL(VIRTCT01</em>) and assemble using <em>yourqual.VIRT453.CNTL(ASMTCT).</em> See note 6 of
+“install.txt” for further information.</p>
+</li>
+<li><p class="first">Edit <em>yourqual.VIRT453.CNTL(ARBOLOAD)</em> and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.</p>
+</li>
+<li><p class="first">Copy <em>yourqual.VIRT453.CNTL(member)</em> to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.</p>
+</li>
+<li><p class="first">Edit member <em>yourqual.VIRT453.CNTL(VIRTEL4)</em> and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</p>
+</li>
+<li><p class="first">Start Virtel.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-</p>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTV</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">VIRTEL</span> <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">TCT</span><span class="o">=</span><span class="mi">01</span> <span class="o">=</span> <span class="n">Change</span> <span class="n">to</span> <span class="mi">01</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//*</span> <span class="n">PROCEDURE</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="n">STARTER</span> <span class="n">EDITION</span>                              <span class="o">*</span>
+<span class="o">//*-------------------------------------------------------------------*</span>
+<span class="o">//</span><span class="n">VIRTEL</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR6000</span><span class="p">,</span><span class="n">TIME</span><span class="o">=</span><span class="mi">1440</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">32</span><span class="n">M</span><span class="p">,</span><span class="n">PARM</span><span class="o">=&amp;</span><span class="n">TCT</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">DFHRPL</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SERVLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SERVLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRARBO</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRSWAP</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SWAP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRHTML</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">HTML</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SAMPTRSF</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SAMP</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">HTMLTRSF</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">HTML</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSOUT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRLOG</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRTRACE</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span> <span class="n">PEND</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTEL</span>
+</pre></div>
+</div>
+<p>Once Virtel is started you now need to apply maintenance to the SAMPTRSF
+file. This file contains all the related web elements used by VIRTEL.
+Before doing so, just check that VIRTEL is running and has correctly
+opened sessions to ports 41001 and 41002. Issue the following command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
+</pre></div>
+</div>
+<p>The output should be similar to:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.53</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span> <span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+<p><strong>Applying maintenance to Virtel.</strong></p>
+<p>Stop VIRTEL if it is running. ARBO updates can only be applied when Virtel is not running.</p>
+<p><strong>ARBO Changes</strong></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">ARBOMIGR:</th><td class="field-body">Adds the SCE-DIR (Scenario directory) for loading scenarios.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">ARBOMACR:</th><td class="field-body">Turns on the new macro support.</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li>Upload the text files ARBOMACR and ARBOMIGR to yourqual.VIRT453.SAMPLIB.</li>
+<li>Edit and run ARBOMACR and ARBOMIGR to apply maintenance to the ARBO file in preparation for the TRSF maintenance. Change the following SET XXXX=keywords in the JCL to reflect the relevant library names:-</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">ARBO</span>
+</pre></div>
+</div>
+<p><strong>MACLIB changes</strong></p>
+<ol class="arabic simple">
+<li>Upload the text file VIRTERM to yourqual.VIRT453.MACLIB. Reassemble TCT01 using <em>yourqual.VIRT453.CNTL(ASMTCT</em>).</li>
+</ol>
+<p>Note: If the assembly fails because the at (&#64;) character has been translated to a French accent à using codepage 1147 (French Euro) when doing the file upload.</p>
+<p><strong>TRSF changes</strong></p>
+<ol class="arabic simple">
+<li>Start Virtel.</li>
+<li>Using a Chrome Browser navigate to the Administration Virtel Portal which can be accessed through port 41001. The Drag and Drop upload feature is supported by Chrome and Firefox only.-</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span>
+</pre></div>
+</div>
+<ol class="arabic">
+<li><p class="first">The following screen image should appear:-</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../_images/image126.png"><img alt="image0" src="../../../_images/image126.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Select Drag and Drop Upload and login with your credentials. The Drag and Drop Interface will be displayed.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../_images/image221.png"><img alt="image1" src="../../../_images/image221.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Keeping this browser window open, go to your desktop directory where you unzipped the virtel453updt5380.zip file.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../_images/image319.png"><img alt="image2" src="../../../_images/image319.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Open the SCE directory and select all the files (CTRL-A). Drag this selection across to the browser window and drop over the SCE-DIR ICON. This should start an upload of all the files in the SCE directory on your desktop into the SCE-DIR directory of the SAMP TRSF VSAM file. There should be 4 files.</p>
+<blockquote>
+<div><p><a class="reference internal" href="../../../_images/image413.png"><img alt="image3" src="../../../_images/image413.png" style="width: 6.26806in; height: 2.41667in;" /></a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Repeat the exercise, but this time with the W2H directory, dragging the 83 elements into the W2H-DIR directory.</p>
+</li>
+<li><p class="first">After all the elements have been uploaded into the TRSF VSAM file, press CTRL-R in your browser to refresh the browser’s cache.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>With some versions of Chrome there is a bug which prevents the upload from starting. In this case:-</p>
+<ul class="last">
+<li><p class="first">Close the browser.</p>
+</li>
+<li><p class="first">Re-open a browser window and type in the following URL replacing the IP stack address (192.168.170.30) with yours. The rest of the URL should be the same. For example:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">SECURE</span><span class="o">/</span><span class="n">upload</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">dirlist</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">This will open the Drag and Drop interface Window. Continue to upload the “w2h” and “sce” directories. Once these uploads have completed, CTRL-R in the browser to refresh the browser’s cache. Close the browser window and reopen the Virtel portal with the URL <a class="reference external" href="http://192.168.170.30:41001/">http://192.168.170.30:41001/</a></p>
+</li>
+</ul>
+</div>
+<ol class="arabic">
+<li><p class="first">The last thing to do is to modify the WEB2HOST entry point to use the SCE-DIR. Stop VIRTEL and then run the following JCL:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//--------------------------------------------------------------*</span>
+<span class="o">//*</span>                                                             <span class="o">*</span>
+<span class="o">//*</span> <span class="n">ARBO</span> <span class="n">MIGRATION</span><span class="o">.</span> <span class="n">UPDATE</span> <span class="n">ARBO</span> <span class="n">TO</span> <span class="n">CHANGE</span> <span class="n">WEB2HOSTS</span>             <span class="o">*</span>
+<span class="o">//*</span>                                                             <span class="o">*</span>
+<span class="o">//*</span> <span class="n">Change</span> <span class="n">Description</span> <span class="n">Release</span>                                  <span class="o">*</span>
+<span class="o">//*</span> <span class="n">UPDT5380</span> <span class="n">Change</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">WEB2HOST</span> <span class="n">V453</span>                 <span class="o">*</span>
+<span class="o">//*</span>                                                             <span class="o">*</span>
+<span class="o">//*-------------------------------------------------------------*</span>
+<span class="o">//*</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRTnnn</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRTnnn</span><span class="o">.</span><span class="n">ARBO</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">CONFIG</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,REPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
+<span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">WEB2HOST</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP entry point (SysperTec menu)&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TRANSACT</span><span class="o">=</span><span class="n">W2H</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0720</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">IDENT</span><span class="o">=</span><span class="n">SCENLOGM</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">E</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SCENDIR</span><span class="o">=</span><span class="n">SCE</span><span class="o">-</span><span class="n">DIR</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start VIRTEL.</p>
+</li>
+</ol>
+<p>Virtel 4.53 maintenance is now complete.</p>
+<p><strong>Basic health test of Virtel</strong></p>
+<p>From the Virtel Portal Page select “Other Applications”. An application
+menu should appear with some default applications. Note that your list
+may be different.</p>
+<p><a class="reference internal" href="../../../_images/image515.png"><img alt="image4" src="../../../_images/image515.png" style="width: 6.26806in; height: 1.80556in;" /></a></p>
+<p>Select any application that is flagged green. If no applications are
+flagged green (available) then configure you ARBO and add applications
+relevant to your site. See the <em>Virtel Connectivity Guide</em> for more
+information.</p>
+<p>This completes the Virtel 4.53 installation, now let’s look at some
+simple configuration.</p>
+<p><strong>Configuring Virtel with VIRCONF program.</strong></p>
+<p>This section looks at how to perform some simple configuration tasks using only the ARBO configuration statements and the VIRCONF program. Of course Virtel has other ways in which the Virtel configuration can be changed dynamically. For example you can logon to the Administration Panels through your browser or VTAM direct. See the Virtel User Guide for further information. In this section will focus on batch updates to the ARBO configuration using the VIRCONF program. When doing any work with VIRCONF Virtel must not be running.</p>
+<p>The basic JCL for VIRCONF looks like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>//VIRCONF EXEC PGM=VIRCONF,PARM=‘LOAD | UNLOAD[,REPL | NOREPL] [,LANG = EN | FR’]
+//STEPLIB DD DSN=your.VIRTEL.LOADLIB,DISP=SHR
+//SYSPRINT DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//VIRARBO DD DSN=your.ARBO,DISP=SHR,AMP=(&#39;RMODE31=NONE&#39;)
+//SYSPUNCH DD DSN=your.ARBO.CNTL,DISP=SHR
+</pre></div>
+</div>
+<p>First, let’s get an overview of Virtel of some of its terminology. As delivered, when starting up Virtel 4.53 you should see two active <strong>*LINES*</strong>. With Virtel running Issue the “<em>F VIRTEL,LINES</em>” command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.53</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span> <span class="n">LINES</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span>
+<span class="o">+</span><span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+<p>These two LINES are related to two separate DOMAINS in VIRTEL. Each line is opened with a unique PORT number which identifies the Virtel domain. The default ports are 41001 and 41002. Port 41001 is considered an Administration interface into the Web2Host (W2H) domain. Port 41002 is the client interface into the Client (CLI) domain.</p>
+<p>What’s in a domain?</p>
+<p>Well a domain is a container for related Virtel transactions. For example, in the <strong>W2H domain</strong> you will find Virtel Administration transactions plus a couple of VTAM applications, like TSO. The <strong>CLI domain</strong> is where the majority of customer applications are defined – things like production CICS, IMS and TSO applications. Virtel listens on the IP ports 41001 and 41002 are these are associated with <strong>LINES</strong> within Virtel. This information and other Virtel configuration data is stored and maintained in the ARBO VSAM file. The ARBO VSAM file is the main configuration file for VIRTEL. It contains all the configuration information for Virtel elements like <strong>TERMINAL, ENTRY POINTS, LINES, TRANSACTION</strong> and <strong>RULE</strong> definitions amongst other things.</p>
+<p><a class="reference internal" href="../../../_images/image6.jpg"><img alt="image5" src="../../../_images/image6.jpg" style="width: 6.26806in; height: 3.88611in;" /></a></p>
+<p>The VSAM ARBO configuration file can be unloaded through the VIRCONF program. To unload a copy of the data held in the ARBO VSAM file run the following ARBOUNLD job. You’ll need to stop Virtel first. The unload will write out to the SYSPUNCH DD file and create a ARBO configuration dadatset:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH</span><span class="o">.</span><span class="n">ARBO</span> <span class="o">=</span> <span class="n">Your</span> <span class="n">ARBO</span> <span class="n">file</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">DEL</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
+<span class="o">//</span><span class="n">DDA</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="o">..</span><span class="n">VIRCONF</span><span class="o">.</span><span class="n">TEST</span><span class="o">.</span><span class="n">SYSIN</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">MOD</span><span class="p">,</span><span class="n">DELETE</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">UNLOAD</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">UNLOAD</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span><span class="p">,</span><span class="n">AMP</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;RMODE31=NONE&#39;</span><span class="p">)</span>
+<span class="o">//</span><span class="n">SYSPUNCH</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="o">..</span><span class="n">VIRCONF</span><span class="o">.</span><span class="n">TEST</span><span class="o">.</span><span class="n">SYSIN</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(,</span><span class="n">CATLG</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span><span class="n">VOL</span><span class="o">=</span><span class="n">SER</span><span class="o">=</span><span class="n">SPT308</span><span class="p">,</span><span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">CYL</span><span class="p">,(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>
+<span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6080</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This file will be used through theis section to look at the
+configuration elements that support Virtel.</p>
+<p>Browse the dataset &amp;SYSUID..VIRCONF.TEST.SYSIN and look for the LINE definitions.</p>
+<p><strong>LINE Definitions</strong></p>
+<p>Here is the line definition for the CLI domain. The ID= keyword is an internal Virtel, the NAME=key word is an external name; the name that is displayed in Virtel Commands. The LOCADDR= identifies the port that is
+associated with this Virtel Domain (CLI). By default it will take the IP address from the TCPIP stack. If you are using a VIPA then you will need to specify it here. So if my VIPA is 192.168.170.22 then the LOCADDR
+definition should be changed to:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOCADDR</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.22</span><span class="p">:</span><span class="mi">41002</span>
+<span class="n">LINE</span> <span class="n">ID</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span><span class="p">,</span>
+<span class="o">**</span><span class="n">LOCADDR</span><span class="o">=</span><span class="p">:</span><span class="mi">41002</span><span class="p">,</span> <span class="o">**</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP line (entry point CLIWHOST)&#39;</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CL</span><span class="p">,</span>
+<span class="o">**</span><span class="n">ENTRY</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span> <span class="o">**</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>
+<span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">PROTOCOL</span><span class="o">=</span><span class="n">VIRHTTP</span><span class="p">,</span>
+<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+<span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+<span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span><span class="p">,</span>
+<span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>
+</pre></div>
+</div>
+<p>Note: Remember that if you are using a VIPA then you will have to change the LINE LOCADDR= definitions for other lines which default to the TCPIP stack. These lines can be identified as just having a port only
+definition in the LOCADDR= keyword. The next important definition to discuss is the ENTRY=keyword. The defines a Virtel <strong>ENTRY POINT</strong></p>
+<p><strong>ENTRY POINT Definitions</strong></p>
+<p>An entry point is another container definition which contains all the transactions associated with a particular domain. So for the W2H domain I would have W2H transactions, the CLI domain CLI transactions. There is
+always a default Entry Point associated with each line. This is identified by the ENTRY= keyword on the LINE statement. From the ARBO configuration file the ENTRY POINT looks like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ENTRY</span> <span class="o">**</span><span class="n">ID</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span><span class="o">**</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP entry point (CLIENT application)&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="o">**</span><span class="n">TRANSACT</span><span class="o">=</span><span class="n">CLI</span><span class="p">,</span><span class="o">**</span> <span class="o">-</span>
+<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0015</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">IDENT</span><span class="o">=</span><span class="n">SCENLOGM</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">E</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SCENDIR</span><span class="o">=</span><span class="n">SCE</span><span class="o">-</span><span class="n">DIR</span>
+</pre></div>
+</div>
+<p>The salient keywords here are the ID= and the TRANSACT= keywords. The ID= keyword defines that name of the entry point. If this is the default entry point for the line then it will match the ENTRY= keyword. The
+TRANSACT= keyword identifies the prefix, normally 3 characters, of all the transactions that relate to this ENTRY POINT. So all transactions
+that have an ID=CLI-something will be associated with his ENTRY POINT. This ENTRY POINT is associated by default to a LINE, in this case the
+LINE that is servicing PORT 41002, and that PORT defines the CLI domain.
+So they sequence for a transaction looks like:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">-&gt;</span> <span class="n">OSA</span> <span class="o">-&gt;</span> <span class="n">TCPIP</span> <span class="o">-&gt;</span> <span class="n">VIRTEL</span> <span class="o">-&gt;</span> <span class="n">LINE</span><span class="p">(</span><span class="n">PORT</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DOMAIN</span><span class="p">(</span><span class="n">W2H</span> \<span class="o">|</span> <span class="n">CLI</span><span class="p">)</span> <span class="o">-&gt;</span>
+<span class="n">ENTRY</span> <span class="n">POINT</span> <span class="o">-&gt;</span> <span class="n">TRANSACTIONS</span> <span class="o">-&gt;</span> <span class="n">TRANSACTION</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../../_images/image7.jpg"><img alt="image6" src="../../../_images/image7.jpg" style="width: 6.26806in; height: 4.07778in;" /></a></p>
+<p><strong>TRANSACTION Definitions</strong></p>
+<p>As already stated transactions belong to a particular Virtel Entry Point and are identified within the entry point by the keyword TRANSACT=prefix. Here is a transaction definition from the ARBO configuration file:.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="n">WEB2HOST</span><span class="o">*</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Default directory = entry point name&#39;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>It belongs to the W2H administration domain because its ID= begins W2H. This would tie up with the ENTRY POINT definition for W2H. That would specify TRANSACT=W2H. Another thing to note is that the external name of
+the transaction, as defined by the NAME= keyword, is the same as the ENTRY POINT name it belongs to. There must be at least one transaction which is the default transaction for the ENTRY POINT and this transaction has the same name as the ENTRY POINT. This comes into play when Virtel is searching for a transaction based upon the URL it has received. If VIRTEL is presented with a URL <a class="reference external" href="http://192.168.0.1:410001">http://192.168.0.1:410001</a> this doesn’t identify any particular transaction, therefore the default transaction for the ENTRY POINT will be used. What the transaction does is determined by the other keywords which we will cover later.</p>
+<p>So to summarise, we have a line which identifies a Virtel domain through its associated port number. The LINE is also associated with an Entry Point, which in turns identifies a collection of transactions through a
+prefix setting.</p>
+<p>LINE:PORT—–&gt; ENTRY POINT—–&gt; TRANSACTIONS</p>
+<p><strong>Transaction Type 1 – VTAM Applications</strong></p>
+<p>If we look at the transactions in the default ARBO configuration we can see that most are either Type 1, 2 or 4. Here were look at the type 1 transaction, a VTAM transaction. An example follows:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Cics&#39;</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Logon to CICS&#39;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span> <span class="n">DBDCCICS</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">TIOASTA</span><span class="o">=</span><span class="s2">&quot;Signon&amp;/F&amp;*7D4EC9&amp;&#39;114BE9&#39;&amp;U&amp;&#39;114CF9&#39;&amp;P&amp;/A&quot;</span>
+</pre></div>
+</div>
+<p>In this transaction we define a CICS application who’s APPLID is DBDCCICS. The external name is CICS. So, the first question is how we can invoke this application. There are several ways but we will look at two methods. The first involves the default Entry Point transaction for this domain’s Entry Point. We can see that this is a CLI transaction so therefore it belongs to the CLI Entry Point which in turn is serviced by the LINE that identifies the CLI domain with port 41002:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">URL</span><span class="o">-&gt;</span><span class="n">LINE</span><span class="p">:</span><span class="mi">41002</span><span class="o">-&gt;</span><span class="n">CLI</span> <span class="n">DOMAIN</span><span class="o">-&gt;</span><span class="n">CLIHOST</span><span class="p">(</span><span class="n">EP</span> <span class="o">-</span> <span class="n">CLIWHOST</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">CLIHOST</span> <span class="n">TRANSACTION</span><span class="p">(</span><span class="n">CLIWHOST</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If I fire the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a> to Virtel I should get something like this:-</p>
+<p><a class="reference internal" href="../../../_images/image88.png"><img alt="image7" src="../../../_images/image88.png" style="width: 6.01204in; height: 2.36458in;" /></a></p>
+<p>Now, it is very unlikely you will see exactly the same colours against these applications but nevertheless you should see the same Application in the Menus because they are all defined as CLI Type 1 or Type 2 applications in the default ARBO. In my case I have two applications which are “highlighted” green – IMS and Session manager. Now, if I select IMS3270 Virtel will log me onto that application. The CICS DBDCCICS application isn’t active so that’s why it is flagged RED. We got here through the URL //<a class="reference external" href="HTTP:192.168.0.1:41002">HTTP:192.168.0.1:41002</a>. So how did that happen? Well we know that the URL will fire the default transaction for the Entry POINT CLIWHOST. That transaction is also called CLIWHOST, so let’s take a look at that transaction:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Default directory = entry point name&#39;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLOC</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="n">TIOASTA</span><span class="o">=</span><span class="s1">&#39;/w2h/appmenu.htm+applist&#39;</span>
+</pre></div>
+</div>
+<p>If you look at the URL in the screen shot you can see that the string “/w2h/appmenu.htm+applist” has been added after the port 41002. This has come from the CLIWHOST transaction. So the process is that default URL
+has been amended to identify a particular Virtel transaction by appending the string defined in the TIOASTA= keyword. That has caused Virtel to run the appmenu transaction passing it a parameter of applist.</p>
+<p>If we search the ARBO load for a transaction called APPLIST this is what we find:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;applist&#39;</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;List of applications for appmenu.htm&#39;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">VIR0021S</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLOC</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Well, again it’s a CLI transaction so it is part of our domain, and it’s a Type=2. A type 2 transaction is a means of invoking a program internally within Virtel. So when this transaction is called, through the updated URL, then the program VIR0021S will run. What VIR0021S does is to build the APPLICATION MENU page and go and test all the Type=1 VTAM transactions to determine if they are ACTIVE in VTAM. If they are active a green flag is set otherwise it is red. Also, VIR0021S enables you to access the active applications from this menu page. This is the sequence:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">URL</span><span class="o">-&gt;</span><span class="n">LINE</span><span class="p">:</span><span class="mi">41002</span><span class="o">-&gt;</span><span class="n">CLI</span> <span class="n">DOMAIN</span><span class="o">-&gt;</span><span class="n">CLIHOST</span><span class="p">(</span><span class="n">EP</span> <span class="o">-</span> <span class="n">CLIWHOST</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">CLIHOST</span> <span class="n">TRANSACTION</span><span class="p">(</span><span class="n">CLIWHOST</span><span class="p">)</span> <span class="o">-&gt;</span>
+<span class="n">Build</span> <span class="n">new</span> <span class="n">URL</span> <span class="o">-&gt;</span> <span class="n">URL</span> <span class="o">//</span><span class="n">HTTP</span><span class="p">:</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">appmenu</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">applist</span><span class="s1">&#39;-&gt;</span>
+<span class="n">CALLS</span> <span class="n">APPLIST</span> <span class="n">transaction</span> <span class="o">-&gt;</span><span class="n">APPLIST</span><span class="o">-&gt;</span>
+</pre></div>
+</div>
+<p>APPLIST transaction will invoke internal program which will:-</p>
+<p>Test all VTAM applications (TYPE 1’s) and (TYPE 2’s) and build a HTML template identifying ACTIVE (GREEN) and INACTIVE(RED) application status for TYPE 1 VTAM applications. Template will be sent to the user’s browser as a page.</p>
+<p>Phew…</p>
+<p>If you check the ARBO configuration you will see that in the CLI domain there are only 5 Type 1 VTAM Transactions. This corresponds with the Application Menu list.</p>
+<p>The other method of invoking a transaction is through a full URL reference that identifies the application through the URL. Here is an example of accessing the IMS application through a URL - <a class="reference external" href="http://192.168.0.1:41002/w2h/WEB2AJAX.htm+IMS">http://192.168.0.1:41002/w2h/WEB2AJAX.htm+IMS</a></p>
+<p>We have appended some additional information after the port which will enable Virtel to identify a transaction called IMS and attempt to logon onto it as a VTAM application. The WEB2AJAX.HTM script kicks the process off but the important thing from a VTAM application access is the suffix of the application you want to log on to – in this case IMS. The +IMS appended to the WEB2AJAX.htm is what Virtel requires. If we look for a transaction called IMS in the ARBO configuration file we find the following:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;IMS&#39;</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Logon to IMS&#39;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">IMS3270</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>So the sequence here is:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">URL</span><span class="o">-&gt;</span><span class="n">LINE</span><span class="p">:</span><span class="mi">41002</span><span class="o">-&gt;</span><span class="n">CLI</span> <span class="n">DOMAIN</span><span class="o">-&gt;</span><span class="n">CLIWHOST</span><span class="p">(</span><span class="n">EP</span> <span class="o">-</span> <span class="n">CLIWHOST</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">CLI</span> <span class="n">TRANSACTION</span><span class="p">(</span><span class="n">IMS</span><span class="p">)</span> <span class="o">-&gt;</span>
+</pre></div>
+</div>
+<p>Logon to applid=IMS3270 using Virtel terminals prefixed CLTVTA.</p>
+<p>Now we haven’t discussed terminals yet, and they are pretty important in the context of Virtel. We will come to those later, for now though it’s good enough to understand that you can access an application using a default URL which will bring up some Menu List or Administration Portal in the case of the W2H 42001 port. Or, we can use a full URL to identify a specific transaction in the domain that I want to execute. In the case of VTAM applications it is usually:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">transaction</span> <span class="n">where</span> <span class="n">transaction</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">transaction</span> <span class="n">defined</span> <span class="n">to</span> <span class="n">Virtel</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><em>Question</em></p>
+<p>If I try <a class="reference external" href="http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA">http://192.168.0.1:41002/w2h/WEB2AJAX.htm+CICSA</a> it doesn’t work. I get some messages on the browser that looks like:-</p>
+<p><a class="reference internal" href="../../../_images/image96.png"><img alt="image8" src="../../../_images/image96.png" style="width: 3.61458in; height: 1.89181in;" /></a></p>
+<p>And in the z/OS console I can see the following messages:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLLOC049</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.047</span><span class="p">:</span><span class="mi">50678</span>
+<span class="n">VIRC121E</span> <span class="n">PAGE</span> <span class="n">NOT</span> <span class="n">FOUND</span> <span class="n">FOR</span> <span class="n">CLLOC049</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39; 176</span>
+<span class="n">CLIWHOST</span><span class="s1">&#39;(CLI-DIR CLI-KEY )</span>
+<span class="n">PAGE</span> <span class="p">:</span> <span class="s1">&#39;FAVICON.ICO&#39;</span> <span class="n">URL</span> <span class="p">:</span> <span class="s1">&#39;/favicon.ico&#39;</span>
+<span class="n">VIR0052I</span> <span class="n">CLLOC049</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span> <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="n">VIRHT54E</span> <span class="n">INVALID</span> <span class="n">REQUEST</span> <span class="n">ON</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39; 178</span>
+<span class="n">W2H</span> <span class="s1">&#39;</span>
+<span class="n">PAGE</span> <span class="s1">&#39;WEB2AJAX.HTM&#39;</span> <span class="n">URL</span> <span class="s1">&#39;/w2h/WEB2AJAX.htm+CICSA&#39;</span>
+<span class="n">TRANSACTION</span> <span class="s1">&#39;CICSA &#39;</span> <span class="n">CALLER</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.047</span><span class="p">:</span><span class="mi">50678</span> <span class="n">rejected</span> <span class="n">transaction</span> <span class="p">:</span><span class="n">CICSA</span>
+<span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00010000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.047</span><span class="p">:</span><span class="mi">50678</span>
+</pre></div>
+</div>
+<p>So whats happening here, well the browser has connected, message VIRHT51I, Virtel is then looking for a “FAVICON.ICO” to place in the top left corner of the web page. We can ignore this. Then we see that Entry Point CLIWHOST has been unable to find the Transaction CICSA. The browser session is the closed – message VIRT922W.</p>
+<p>That sort of all ties up as we haven’t defined the CICSA transaction to Virtel so there is no way we can log on to CICSA. We need to define a CICSA transaction which reflects the VTAM application that we are trying to logon onto.</p>
+<p><strong>Defining a VTAM application to Virtel</strong></p>
+<p>Using an existing CICS definition from the ARBO config we will define a new CICS system. Here is our template taken from the ARBO config:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;Cics&#39;</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Logon to CICS&#39;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">DBDCCICS</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>So, we modify it to look like this:-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">10</span><span class="n">A</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;CICSA&#39;</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Logon to CICSA&#39;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">SPCICSQ</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLVTA</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>We have given the transaction a new transaction an internal ID of CLI-10A. This should be unique. It is associated with the CLI domain so will be accessible via the CLI port of 41002. The external name for this application is CICSA. This is what will appear in the APPLICATION MENU. Access to the application will be through the APPMENU if we do not use a fully qualified URL to identify the transaction. The APPLID of the CICS system is SPCICSQ. This is what we want Virtel to logon on to. The terminals we are going to use to support this transaction are prefixed CLVTA. We will discuss these terminal definitions later. The other parameters will can leave as is. We add this to our ARBO config and after the CLI-10 transaction.</p>
+<p>Stop Virtel and the run an ARBO LOAD to load up the ARBO VSAM file. See the JCL below:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>// SET LOAD=yourqual.VIRTnnn.LOADLIB
+// SET ARBO=yourqual.VIRTnnn.ARBO
+//LOAD EXEC PGM=VIRCONF,PARM=’LOAD,REPL’
+//STEPLIB DD DSN=&amp;LOAD,DISP=SHR
+//SYSPRINT DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//VIRARBO DD DSN=&amp;ARBO,DISP=SHR,AMP=(&#39;RMODE31=NONE&#39;)
+//SYSPUNCH DD DSN=&amp;SYSUID..VIRCONF.TEST.SYSIN,DISP=OLD
+</pre></div>
+</div>
+<p>This will rebuild the ARBO VSAM file and add in the new CICS application. If we start up Virtel now we should see the following APPMENU list display. I’ve accessed this with just the port number in my URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a>.</p>
+<p><a class="reference internal" href="../../../_images/image106.png"><img alt="image9" src="../../../_images/image106.png" style="width: 6.26806in; height: 3.37708in;" /></a></p>
+<p>To directly access my CICS definition I could use the fully qualified URL of:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">html</span><span class="o">+</span><span class="n">CICSA</span>
+</pre></div>
+</div>
+<p>Let’s try that and see if I can establish a session with CICS. Nope….I’m taking straight back to the Virtel APPMENU. What’s in the VIRTEL log:-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50751</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA079</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50734</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHVT000</span><span class="p">(</span><span class="n">W2HTP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHIM000</span><span class="p">(</span><span class="n">W2HIM000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0915E</span> <span class="n">CLVTA079</span><span class="p">(</span><span class="n">REHVT000</span><span class="p">)</span> <span class="n">SESSION</span> <span class="n">REQUEST</span> <span class="n">REFUSED</span> <span class="n">BY</span> <span class="n">SPCICSQ</span> <span class="n">SENSE</span><span class="o">=</span><span class="mi">08210000</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0052I</span> <span class="n">CLVTA079</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span> <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0918W</span> <span class="n">W2HIM000</span> <span class="n">RELAY</span> <span class="n">REHIM000</span> <span class="n">INACTIVATED</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0918W</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHVT000</span> <span class="n">INACTIVATED</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00060000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50734</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">13</span> <span class="n">JOB03882</span> <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLLOC049</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50750</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">13</span> <span class="n">JOB03882</span> <span class="n">VIR0052I</span> <span class="n">CLLOC049</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span> <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">24</span> <span class="n">JOB03882</span> <span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50751</span>
+</pre></div>
+</div>
+<p>I can see a call coming in from laptop, 192.168.092.41. Then some activation messages with RELAY names and my session being refused SPCICSQ. Let’s have a look in the CICS log:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TNADDR</span> <span class="n">DUMY</span><span class="p">,</span><span class="n">CSNE</span><span class="p">,</span><span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.41</span> <span class="mi">50749</span>
+<span class="n">DFHZC6907</span> <span class="n">I</span> <span class="mi">03</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">2016</span> <span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">11</span> <span class="n">SPCICSQ</span> <span class="n">Autoinstall</span> <span class="n">starting</span> <span class="k">for</span> <span class="n">netname</span> <span class="n">REHVT000</span><span class="o">.</span> <span class="n">Network</span> <span class="n">qualified</span> <span class="n">name</span> <span class="ow">is</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">REHVT000</span><span class="o">.</span>
+<span class="n">DFHZC6908</span> <span class="n">I</span> <span class="mi">03</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">2016</span> <span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">11</span> <span class="n">SPCICSQ</span> <span class="n">Autoinstall</span> <span class="ow">in</span> <span class="n">progress</span> <span class="k">for</span> <span class="n">netname</span> <span class="n">REHVT000</span><span class="o">.</span> <span class="n">TN3270</span> <span class="n">IP</span> <span class="n">address</span> <span class="ow">is</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.41</span> <span class="mf">50734.</span>
+<span class="n">DFHZC6903</span> <span class="n">W</span> <span class="mi">03</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">2016</span> <span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">11</span> <span class="n">SPCICSQ</span> <span class="n">Autoinstall</span> <span class="k">for</span> <span class="n">terminal</span> <span class="n">T000</span><span class="p">,</span> <span class="n">netname</span> <span class="n">REHVT000</span> <span class="n">using</span> <span class="n">model</span> <span class="n">DFHLU2E2</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">DFHZC5983</span> <span class="n">E</span> <span class="mi">03</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">2016</span> <span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">11</span> <span class="n">SPCICSQ</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">replace</span> <span class="n">T000</span>
+<span class="n">DFHZC6942</span> <span class="n">W</span> <span class="mi">03</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">2016</span> <span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">11</span> <span class="n">SPCICSQ</span> <span class="n">Autoinstall</span> <span class="k">for</span> <span class="n">terminal</span> <span class="n">T000</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">DFHZC2411</span> <span class="n">E</span> <span class="mi">03</span><span class="o">/</span><span class="mi">17</span><span class="o">/</span><span class="mi">2016</span> <span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">12</span> <span class="n">SPCICSQ</span> <span class="n">DUMY</span> <span class="n">CSNE</span> <span class="n">REHVT000</span> <span class="n">attempted</span> <span class="n">invalid</span> <span class="n">logon</span><span class="o">.</span> <span class="p">((</span><span class="mi">7</span><span class="p">)</span> <span class="n">Module</span> <span class="n">name</span><span class="p">:</span> <span class="n">DFHZATA</span><span class="p">)</span>
+<span class="n">NQNAME</span> <span class="n">DUMY</span><span class="p">,</span><span class="n">CSNE</span><span class="p">,</span><span class="mi">19</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span><span class="n">SPNET</span> <span class="n">REHVT000</span>
+</pre></div>
+</div>
+<p>So I can see VIRTEL attempting to establish a session using a VTAM LU name of REHVT000. That doesn’t exist in my CICS system so I will have define it or use a different CICS system where it is defined. Virtel requires that the RELAY LUNAME be defined to CICS as this name is effectively representing a 3270 terminal within Virtel. Likewise, the
+other relay name REHIM00, which was also activated as part of this session set up, would also have to be defined. This LU represents a printer which is associated with the terminal or relay REHVT000.</p>
+<p>In my case, I stop Virtel, add some new ARBO transaction definition to CICS systems that I know have the Virtel relay definitions defined. I start up VIRTEL and access the APPMENU with URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a></p>
+<p><a class="reference internal" href="../../../_images/image1111.png"><img alt="image10" src="../../../_images/image1111.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
+<p>I select CICSH and hopefully can logon; yes indeed I can. In fact I can open another browser window and logon to TSO1A.</p>
+<p><a class="reference internal" href="../../../_images/image127.png"><img alt="image11" src="../../../_images/image127.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
+<p>So now my browser is acting like a session manager with each tab representing a different session. Two to the mainframe, CICS and TSO, and one Virtel APPMENU display. Using Virtel in place of a session manager is worth considering as it provides you with similar functionality as a session manager but at no cost.</p>
+<p>Note: As I have mentioned the ARBO VSAM file contains all the configuration data. This is upload through an ARBO load job which reads in a configuration data set. The ARBO program has some peculiarities in that if you specify PARM option of NOREPL than it will not replace any configurations elements it already finds and returns with a condition
+code 0. That’s all well and good but if your trying to update the ARBO and replace elements that’s not so good. You’ll think the ARBO has been updated when in fact it hasn’t. To replace elements change the NOREPL to REPL. NOREPL is also a default so add REPL into the PARM if it is not already there.</p>
+<p>I tend to delete and reallocate my ARBO file and always use NOREPL in my ARBO build. Here is my JCL:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span> <span class="n">SAMPLE</span> <span class="n">JOB</span> <span class="n">TO</span> <span class="n">ALLOC</span> <span class="n">AN</span> <span class="n">ARBO</span>
+<span class="o">//</span><span class="n">DEFINE</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+ <span class="n">DELETE</span> <span class="p">(</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">ARBO</span><span class="p">)</span> <span class="n">CLUSTER</span> <span class="n">PURGE</span>
+ <span class="n">SET</span> <span class="n">MAXCC</span> <span class="o">=</span> <span class="mi">0</span>
+ <span class="n">DEFINE</span> <span class="n">CLUSTER</span><span class="p">(</span><span class="n">NAME</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">ARBO</span><span class="p">)</span> <span class="o">-</span>
+ <span class="n">KEYS</span><span class="p">(</span><span class="mi">9</span> <span class="mi">0</span><span class="p">)</span> <span class="n">RECSZ</span><span class="p">(</span><span class="mi">100</span> <span class="mi">4089</span><span class="p">)</span> <span class="n">FSPC</span><span class="p">(</span><span class="mi">10</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span>
+ <span class="n">VOL</span><span class="p">(</span><span class="n">SPT30E</span><span class="p">)</span> <span class="n">REC</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span> <span class="n">SHR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="n">SPEED</span><span class="p">)</span> <span class="o">-</span>
+ <span class="n">DATA</span><span class="p">(</span><span class="n">NAME</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">ARBO</span><span class="o">.</span><span class="n">DATA</span><span class="p">)</span> <span class="n">CISZ</span><span class="p">(</span><span class="mi">4096</span><span class="p">))</span> <span class="o">-</span>
+ <span class="n">INDEX</span><span class="p">(</span><span class="n">NAME</span><span class="p">(</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">ARBO</span><span class="o">.</span><span class="n">INDEX</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Another thing, from time to time ARBO updates are issued as a part of maintenance. Any updates should be incorporated in a “master ARBO configuration file” so that when you rebuild your ARBO you don’t regress any changes. Likewise, when adding transactions etc. make sure that you update a master ARBO configuration file and always keep a previous
+backup.</p>
+<p><strong>Terminals definitions</strong></p>
+<p>We have mention terminals throughout the document so far but have not really looked into them in great detail. A terminal in Virtel represents a task or function that virtel has to do. Several different types of work will run under a terminal definition with Virtel. If you look at the Virtel log you will see terminals being allocated and deallocated as URLs are processed – dealing with session connection, disconnection etc. Terminals also have a counterpart which is related to VTAM units of work, for example a CICS session. These related terminals are known as relay terminals and are only ever used when a VTAM transaction is involved. You defined some relay definitions in VTAM. By default they began RHTVT***, RHTIM*** and RHTIP***. The IM and IP group relays are terminals to support SCS and 3270 printers. Printer terminals are associated with a screen terminal (RHTVT***).</p>
+<p>Let’s take a look at the terminal definitions that are delivered with the base Virtel product. We can do in in one of three ways:-</p>
+<ol class="arabic simple">
+<li>Logon to Virtel Administration through its VTAM interface.</li>
+<li>Access the 3270 Administration through a browser</li>
+<li>Access the HTML GUI Administration interface through a browser.</li>
+</ol>
+<p>I go for option 2, we will user the browser to access the Administration panels. Start up Virtel and access the W2H domain using just the port number in the URL.</p>
+<p><a class="reference external" href="http://192.168.0.1:41001">http://192.168.0.1:41001</a></p>
+<p>You should get a screen that looks like this:-</p>
+<p><a class="reference internal" href="../../../_images/image133.png"><img alt="image12" src="../../../_images/image133.png" style="width: 6.26806in; height: 3.31736in;" /></a></p>
+<p>Select Admin(3270).That will take you to the 3270 administration pages. The first page displayed should be the configuration menu :-</p>
+<p><a class="reference internal" href="../../../_images/image143.png"><img alt="image13" src="../../../_images/image143.png" style="width: 6.26806in; height: 3.85000in;" /></a></p>
+<p>Select PF2 to display the default terminal setup.</p>
+<p><a class="reference internal" href="../../../_images/image153.png"><img alt="image14" src="../../../_images/image153.png" style="width: 6.26806in; height: 4.02500in;" /></a></p>
+<p>So from the top down we have:-</p>
+<p>CLLOC000 – CLLOC050 terminals which are defined for use in the CLI domain.</p>
+<p><em>The CL prefix</em></p>
+<p>This ties up with the TERMINAL= on the LINE definition. We also have a group of 80 terminals (Repeated field) with have been allocated a starting prefix of CLIVTA. This would tie up with the transaction definitions and the TERMINAL= keyword. Whats interesting about this group of terminals is that they have been allocated a pool relay as defined by the *poolname option in the relay column. So a relay pool is where VIRTEL can grab a relay terminal when it wants it and return it to the pool when it has finished with it. This happens during session initiation with a CICS system – a relay terminal is grabbed, used for the CICS session and then when the user logs off it relay terminal is released back to the pool. We can see that there are two distinct groups that use the relay pool; the terminals beginning CLVTA(CLI Domain) and another group, DEVTA. This group belongs to the W2H domain. So, any VTAM transactions defined in the administration domain can use the same pool as the CLI domain. The pool name used by default is *W2HPOOL.The POOL has 80 terminals defined beginning W2HTP. These terminals have an associated relay terminal prefixed REHVT which in turn has a second relay, normally a printer, beginning REHIM***.
+If we look at our previous CICS failure we can see these terminals being allocated and returned to the pool.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50751</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="o">**</span><span class="n">CLVTA079</span><span class="o">**</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50734</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0919I</span> <span class="o">**</span><span class="n">CLVTA079</span><span class="o">**</span> <span class="o">**</span><span class="n">RELAY</span> <span class="n">REHVT000</span><span class="p">(</span><span class="n">W2HTP000</span><span class="p">)</span> <span class="n">ACTIVATED</span><span class="o">**</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0919I</span> <span class="o">**</span><span class="n">CLVTA079</span><span class="o">**</span> <span class="o">**</span><span class="n">RELAY</span> <span class="n">REHIM000</span><span class="p">(</span><span class="n">W2HIM000</span><span class="p">)</span> <span class="n">ACTIVATED</span><span class="o">**</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0915E</span> <span class="o">**</span><span class="n">CLVTA079</span><span class="o">**</span>\ <span class="p">(</span><span class="n">REHVT000</span><span class="p">)</span> <span class="n">SESSION</span> <span class="n">REQUEST</span> <span class="n">REFUSED</span> <span class="n">BY</span> <span class="n">SPCICSQ</span> <span class="n">SENSE</span><span class="o">=</span><span class="mi">08210000</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0052I</span> <span class="o">**</span><span class="n">CLVTA079</span><span class="o">**</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span> <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0918W</span> <span class="o">**</span><span class="n">W2HIM000</span> <span class="n">RELAY</span> <span class="n">REHIM000</span><span class="o">**</span> <span class="n">INACTIVATED</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIR0918W</span> <span class="o">**</span><span class="n">CLVTA079</span><span class="o">**</span> <span class="o">**</span><span class="n">RELAY</span> <span class="n">REHVT000</span><span class="o">**</span> <span class="n">INACTIVATED</span>
+<span class="mf">19.24</span><span class="o">.</span><span class="mi">11</span> <span class="n">JOB03882</span> <span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00060000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.041</span><span class="p">:</span><span class="mi">50734</span>
+</pre></div>
+</div>
+<p>The terminal types and I/O fields are described in the Virtel Connectivity Guide. If we look in the ARBO configuration file we can see the definitions that support the TERMINAL configuration.</p>
+<blockquote>
+<div>TERMINAL ID=CLLOC000, -
+DESC=’HTTP terminals (no relay)’, -
+TYPE=3, -
+COMPRESS=2, -
+INOUT=3, -
+STATS=26, -
+REPEAT=0050
+TERMINAL ID=CLVTA000, -
+RELAY=*W2HPOOL, -
+DESC=’HTTP terminals (with relay)’, -
+TYPE=3, -
+COMPRESS=2, -
+INOUT=3, -
+STATS=26, -
+REPEAT=0080
+TERMINAL ID=W2HTP000, -
+RELAY=RHTVT000, -
+POOL=*W2HPOOL, -
+DESC=’Relay pool for HTTP’, -
+RELAY2=RHTIM000, -
+TYPE=3, -
+COMPRESS=2, -
+INOUT=3, -
+STATS=26, -
+REPEAT=0080</div></blockquote>
+<p><a class="reference internal" href="../../../_images/image161.jpg"><img alt="image15" src="../../../_images/image161.jpg" style="width: 6.26806in; height: 4.17847in;" /></a></p>
+<p>Close the terminal screen by pressing PF3 the RETURN/ENTER key. You should be back to the Administration Portal.</p>
+<p><strong>Adding a terminal definition pool</strong></p>
+<p>Most Virtel users have large CICS or IMS environments that need to be supported by Virtel. In order to do this we need to add terminal definitions that will support thousands of users. In this section will add a new terminal pool to our CLI domain capable of supporting up to 1000 concurrent users accessing a CICS application known as CICSPROD. We also introduce the RULE statement to show how we can separate traffic by IP address. Let’s look at a schematic.</p>
+<p><a class="reference internal" href="../../../_images/image17.jpg"><img alt="image16" src="../../../_images/image17.jpg" style="width: 6.26806in; height: 5.39583in;" /></a></p>
+<p>Our requirement is that any user coming in on port 192.0.2.*** or 192.0.3.*** should be routed to a particular entry point. Within this entry point, the only VTAM transaction defined is PRODCICS. This VTAM transaction uses a terminals prefix CLFD. The CLFD terminals pull a VTAM relay from the FWDPOOL through terminal W2HD****. The VTAM relay is prefix TNCS****. This prefix will corresponds to the VTAM definitions and to the CICS terminal definitions. Here is the ARBOLOAD definitions that supports this requirement:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2HD0000</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">RELAY</span><span class="o">=</span><span class="n">TNCD0000</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">POOL</span><span class="o">*</span><span class="n">FWDPOOL</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Relay pool for FWD W2H&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">REPEAT</span><span class="o">=</span><span class="mi">1000</span>
+
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLFD0000</span><span class="p">,</span>
+<span class="n">RELAY</span><span class="o">=*</span><span class="n">FWDPOOL</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals (with relay)&#39;</span><span class="p">,</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>
+<span class="n">REPEAT</span><span class="o">=</span><span class="mi">1000</span>
+<span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLIWFWD1</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP entry point (FWD Test)&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TRANSACT</span><span class="o">=</span><span class="n">FWD</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0001</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">IDENT</span><span class="o">=</span><span class="n">SCENLOGM</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">E</span>
+
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">FWD</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">NAME</span><span class="o">=</span><span class="n">CLIWFWD1</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Default directory = CLIWFWD1&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">PASSTCKT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLC</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TIOASTA</span><span class="o">=</span><span class="s1">&#39;/w2h/appmenu.htm+applist&#39;</span>
+
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">FWD</span><span class="o">-</span><span class="mi">03</span><span class="n">W</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;w2h&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;W2H toolkit directory (/w2h)&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">PASSTCKT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLC</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">FWD</span><span class="o">-</span><span class="mi">11</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">NAME</span><span class="o">=</span><span class="n">CICSPROD</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Logon to CICSPROD using TNCD**** LUs&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">TSO</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">PASSTCKT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLFD</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">FWD</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;applist&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Application list&#39;</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">VIR0021S</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">PASSTCKT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLC</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">C100FWD1</span><span class="p">,</span>
+<span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
+<span class="n">STATUS</span><span class="o">=</span><span class="n">ACTIVE</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;FWD Rule 1&#39;</span><span class="p">,</span>
+<span class="n">ENTRY</span><span class="o">=</span><span class="n">CLIWFWD1</span><span class="p">,</span>
+<span class="n">IPADDR</span><span class="o">=</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span><span class="mf">192.0</span><span class="o">.</span><span class="mf">3.000</span><span class="p">),</span>
+<span class="n">NETMASK</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.000</span>
+
+<span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">C100FWD2</span><span class="p">,</span>
+<span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
+<span class="n">STATUS</span><span class="o">=</span><span class="n">ACTIVE</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;FWD Rule 2&#39;</span><span class="p">,</span>
+<span class="n">ENTRY</span><span class="o">=</span><span class="n">CLIWFWD1</span><span class="p">,</span>
+<span class="n">IPADDR</span><span class="o">=</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span><span class="mf">192.0</span><span class="o">.</span><span class="mf">2.000</span><span class="p">),</span>
+<span class="n">NETMASK</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.000</span>
+</pre></div>
+</div>
+<p>You will notice that the two rules, defined as C100FWD1 and C100FWD2 control the Entry point selection by comparing the incoming callers IP address. If the IP address matches then the call will be routed towards Entry Point CLIWFWD1. There are also some Administration transactions that have been added to support administration functions within the Entry Point. These are:-</p>
+<ul class="simple">
+<li>FWD-00 Entry Point Transaction. Identifies our default domain directory CLI-DIR.</li>
+<li>FWD-03W Identifies the Administration directory and provides a link to it.</li>
+<li>FWD-11 CICSPROD transaction. Type=1 (VTAM Application).</li>
+<li>FWD-90 APPLIST MENU transaction</li>
+</ul>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201603/TN201603.html" class="btn btn-neutral float-right" title="Field Level Encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201601/TN201601.html" class="btn btn-neutral" title="Customizing colours with CSS in Virtel 4.53" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

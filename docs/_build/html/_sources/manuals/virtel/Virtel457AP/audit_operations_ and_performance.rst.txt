@@ -108,6 +108,18 @@ nnnn
 virtel-cmd
     A VIRTEL command, as described in the following section
 
+KILL Command
+------------
+
+The KILL command can be used to stop a scenario::
+
+    KILL,T=termid
+
+termid
+    terminal name
+
+The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.   
+
 LINES Command
 -------------
 
@@ -187,6 +199,14 @@ Example::
     VIR0204I W2HTP004 REHVT004 REHIP004                   
     VIR0204I ---END OF LIST---           
 
+Tracing a line
+^^^^^^^^^^^^^^^
+
+To activate or deactive a trace on the line the following command can be used:-::
+
+    LINE=linename,NOTRACE | TRACE  [ or L=linename,N | T ]
+
+
 Starting and Stopping A Line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -202,26 +222,64 @@ linename
     Internal or external name of the line
 
 The LINE START and LINE STOP commands perform the same function as the `“S” and “P” commands <#_bookmark12>`__ on the “Status of lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.
-                     
+                  
 
-RELAYS Command
---------------
+LOG command 
+-----------
 
-To display a list of Virtel LU relays use the RELAY command.::  
-  
-    RELAYS    
+The LOG command enables the VIRTEL log to be spun off to the console, a JES2 output dataset , a dataset [new in V4.58]. The LOG command has the following format:-
 
-The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs opened by VIRTEL. Foe example::
+::
 
-    F SPTHOLTV,RELAYS                                         
-    VIR0200I RELAYS                                           
-    VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.57 APPLID=APPLHOLT
-    VIR0214I TERMINAL RELAY    APPLID   CLIENT                
-    VIR0214I -------- -------- -------- ---------------       
-    VIR0214I CLVTA004 REHVT000 SPCICST  192.168.92.58         
-    VIR0214I W2HIP000 REHIP000                                
-    VIR0214I ---END OF LIST---                                
+    F VIRTEL,LOG=CONSOLE | SYSOUT | BOTH | SPIN | FILE
 
+where
+
+    - CONSOLE means switch console messages back to the console.
+    - SYSOUT means switch to spooling consoles messages to SYSOUT.
+    - BOTH means write console messages to the console and SYSOUT.
+    - SPIN means spin off the current SYSOUT dataset.
+    - FILE means write messages to file.  
+
+LOG=SYSOUT
+^^^^^^^^^^
+
+Setting up VIRTEL to use the LOG=SYSOUT facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-
+
+::
+
+    LOG=(SYSOUT[,class,destination])
+
+    For example, LOG=(SYSOUT,A,EDSPRT)
+
+This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-
+
+::
+
+    F VIRTEL,LOG=BOTH
+
+LOG=FILE [New in V4.58]
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Setting up Virtel to use the LOG=FILE facility requires a change to the TCT definition. In the TCT code the following statement:- 
+
+::
+
+    LOG=FILE 
+
+This will trigger VIR0021A to write messages ether to The DD statements VIRLOGX or VIRLOGY depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE with the following DCB attributes. 
+
+::
+
+    LOGFILEX and LOGFILEY 
+    DCB attributes : PS, LRECL=165, RECFM=VB, BLKSIZE=32000
+
+If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile. To determine the status of the LOG file, or to switch the log file manually issue one of the following commands:-
+
+::   
+    
+    F VIRTEL,LOG,D		Display active logfile
+    F VIRTEL,LOG,I		Switch logfiles
 
 MEMDISPLAY Command 
 ------------------
@@ -297,122 +355,66 @@ It can be deactivated by using the command.::
 
         This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.
 
-LOG command 
+MSG Command
 -----------
 
-The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-
+To send a mesage to VIRTEL Multi-Session users use the MSG command::
+
+    MSG=message text
+
+The specified message will be displayed on the VIRTEL multi-session screen.
+
+NEW Command
+-----------
+
+The NEW command refreshes a VIRTEL program, VIRSV service or scenario.
 
 ::
 
-    LOG=(SYSOUT[,class,destination])
+    NEW=progname
 
-    For example, LOG=(SYSOUT,A,EDSPRT)
+progname
+    program name
 
-This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-
+The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.
 
-::
+RELAY Command
+-------------
 
-    F VIRTEL,LOG=BOTH
+Use the RELAY command to trace the Virtel buffers between Virtel and the application.
 
-The LOG command has the following format:-
+RELAY=relayname,NOTRACE | TRACE
 
-::
+RELAYS Command
+--------------
 
-    F VIRTEL,LOG=CONSOLE | SYSOUT | BOTH | SPIN
+To display a list of Virtel LU relays use the RELAY command.::  
+  
+    RELAYS    
 
-where
+The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs opened by VIRTEL. Foe example::
 
-    - CONSOLE means switch console messages back to the console.
-    - SYSOUT means switch to spooling consoles messages to SYSOUT.
-    - BOTH means write console messages to the console and SYSOUT.
-    - SPIN means spin off the current SYSOUT dataset. 
-    
-STOP Command
-------------
+    F SPTHOLTV,RELAYS                                         
+    VIR0200I RELAYS                                           
+    VIR0214I ACTIVE RELAY ACBS FOR VIRTEL 4.57 APPLID=APPLHOLT
+    VIR0214I TERMINAL RELAY    APPLID   CLIENT                
+    VIR0214I -------- -------- -------- ---------------       
+    VIR0214I CLVTA004 REHVT000 SPCICST  192.168.92.58         
+    VIR0214I W2HIP000 REHIP000                                
+    VIR0214I ---END OF LIST---                                
 
-To stop Virtel issue the STOP command::
+SILENCE Command
+---------------
 
-    STOP        
+To supppress Virtel messages use the SILENCE command::
 
-The STOP command allows to STOP the VIRTEL task. This command is intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :
+    SILENCE
 
-::
+The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.
 
-    P VIRTEL
+.. note::
 
-KILL Command
-------------
-
-The KILL command can be used to stop a scenario::
-
-    KILL,T=termid
-
-termid
-    terminal name
-
-The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.
-
-TRACE | NOTRACE Command
------------------------
-
-A trace can be activated on a terminal, line or relay.::
-    
-    TERM=termid,TRACE (or T=termid,T)
-    TERM=termid,NOTRACE (or T=termid,N)
-    LINE=linename,TRACE (or L=linename,T)
-    LINE=linename,NOTRACE (or L=linename,N)
-    RELAY=relayname,TRACE (or R=relayname,T)
-    RELAY=relayname,NOTRACE (or R=relayname,N)
-
-termid
-    terminal name
-
-relayname
-    relay associated to the terminal
-
-It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
-
-|image_03|
-*Fig.3 - Associated relay names*
-
-linename
-    Internal or external name of the line
-
-The following alternate forms of the TRACE/NOTRACE commands are also  valid
-
-::
-
-    TRACE,T=termid
-    TRACE,L=linename
-    TRACE,R=relayname
-    NOTRACE,T=termid
-    NOTRACE,L=linename
-    NOTRACE,R=relayname
-
-termid
-    terminal name
-
-linename
-    Internal or external name of the line
-
-relayname
-    Name of VTAM relay LU currently associated with the terminal
-
-Display a list of active traces
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    TRACE,DISPLAY | D
-
-Deactivate all traces        
-^^^^^^^^^^^^^^^^^^^^^
-
-::
-
-    NOTRACE,ALL
-
-This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
+    Refer to the section SILENCE parameter in the "Parameters of the VIRTCT" in the VIRTEL Installation Guide for a list messages affected by this command.)
 
 SNAP Command
 ------------
@@ -488,22 +490,154 @@ The format of the SNAP output can be adjusted with the SNAPW command.
 
 The SNAPW command sets the width for future SNAP commands (80 or 132 columns). The SNAPW parameter in the VIRTCT determines the default width at VIRTEL startup. Refer to the section “Parameters of the VIRTCT” in the VIRTEL Installation Guide for details of the SNAPW parameter.
 
-NEW Command
------------
+STAT Command
+------------
 
-The NEW command refreshes a VIRTEL program, VIRSV service or scenario.
+Display statistics file information
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To display information about the Virtel statistics file management use the STAT command.::
+    
+    STAT,D
+
+This command displays the status of the VIRSTATx files (message VIR0601I). The STAT command is used to manage the VIRTEL statistics recording files (VIRSTATx). This command can be used only if STATS=MULTI is specified in the VIRTCT.
+
+Switch the VIRSTAT file
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To switch the STATISTIC file using the STAT switch command.::
+    
+    STAT,I    
+
+This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file. 
+
+STOP Command
+------------
+
+To stop Virtel issue the STOP command::
+
+    STOP        
+
+The STOP command allows to STOP the VIRTEL task. This command is intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :
 
 ::
 
-    NEW=progname
+    P VIRTEL
 
-progname
-    program name
+TCT Command
+-----------
 
-The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.
+The TCT command displays some of the TCT options that have been defined in the active TCT.
+
+::
+
+    F SPVIREH,TCT                                                       
+    VIR0200I TCT                                                        
+    VIR0270I DISPLAY                                                 
+    VIRTEL TCT=VIRTCTEH:                                                
+    SILENCE=N,MEMORY=(A,N),BFVSAM=32768,BUFDATA=016,BUFSIZE=20000,STR=03
+    COUNTRY=FR,GMT=SYSTZ,DEFUTF8=IBM1147 ,LANG=E,MAXSOCK=00240,VSAMTYP=N
+    APPLID=SPVIREH ,SMF=N,PASSTCK=Y,VIRSECU=Y,SWA=N,NBTERM=0500,NTASK=04
+    MEMORY=(SYS(0001688K,0001688K),DATA(0002304K,0003200K)),LOG=CONSOLE 
+    VIR0280I END                                                        
+
+TERM Command
+------------
+
+Use the TERM command to activate a Terminal trace. This will trace data between the browser and Virtel.
+
+TERM=termid,NOTRACE | TRACE  [or T=termid,N | T ] 
+
+
+TRACE | NOTRACE Command
+-----------------------
+
+A trace can be activated on a terminal, line or relay.::
+    
+    TERM=termid,TRACE (or T=termid,T)
+    TERM=termid,NOTRACE (or T=termid,N)
+    LINE=linename,TRACE (or L=linename,T)
+    LINE=linename,NOTRACE (or L=linename,N)
+    RELAY=relayname,TRACE (or R=relayname,T)
+    RELAY=relayname,NOTRACE (or R=relayname,N)
+
+termid
+    terminal name
+
+relayname
+    relay associated to the terminal
+
+It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
+
+|image_03|
+*Fig.3 - Associated relay names*
+
+linename
+    Internal or external name of the line
+
+The following alternate forms of the TRACE/NOTRACE commands are also  valid
+
+::
+
+    TRACE,T=termid
+    TRACE,L=linename
+    TRACE,R=relayname
+    NOTRACE,T=termid
+    NOTRACE,L=linename
+    NOTRACE,R=relayname
+
+termid
+    terminal name
+
+linename
+    Internal or external name of the line
+
+relayname
+    Name of VTAM relay LU currently associated with the terminal
+
+Display a list of active traces
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    TRACE,DISPLAY | D 
+
+An example of the response is:-::
+
+    F VIRTEL,TRACE,DISPLAY or F SPVIREH,TRACE,D
+    VIR0200I TRACE,D
+    VIR0208I VIRTEL INTERNAL TRACE = YYY. EXT. BUFFERS = 0001/00FF.
+    VIR0213I NO ACTIVE TRACES      
+    
+Setting trace options
+^^^^^^^^^^^^^^^^^^^^^
+
+To set the trace options issue the following command::
+
+    TRACE,VIT=Y|N Y|N Y|N  
+
+The default VIT trace parametr is YYN. The external trace setting should only be set hen instructed to by Virtel support.
+
+The VIT indicators apply the the level of tracing.::
+
+    - Y|N           No tracing or minimal tracing
+    - Y|N           Data elements traced
+    - Y|N           External Archive active
+
+Deactivate all traces        
+^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    NOTRACE,ALL
+
+This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
+
+VIRSV Command
+-------------
 
 Refreshing a VIRSV Service program
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 ::
 
@@ -516,28 +650,6 @@ The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This 
 
 
 SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.
-
-MSG Command
------------
-
-To send a mesage to VIRTEL Multi-Session users use the MSG command::
-
-    MSG=message text
-
-The specified message will be displayed on the VIRTEL multi-session screen.
-
-SILENCE Command
----------------
-
-To supppress Virtel messages use the SILENCE command::
-
-    SILENCE
-
-The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.
-
-.. note::
-
-    Refer to the section SILENCE parameter in the "Parameters of the VIRTCT" in the VIRTEL Installation Guide for a list messages affected by this command.)
 
 ZAP Command
 -----------
@@ -560,37 +672,17 @@ replace
 
 The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.
 
-STAT Command
-------------
-
-Display statistics file information
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To display information about the Virtel statistics file management use the STAT command.::
-    
-    STAT,D
-
-This command displays the status of the VIRSTATx files (message VIR0601I). The STAT command is used to manage the VIRTEL statistics recording files (VIRSTATx). This command can be used only if STATS=MULTI is specified in the VIRTCT.
-
-Switch the VIRSTAT file
-^^^^^^^^^^^^^^^^^^^^^^^
-
-To switch the STATISTIC file using the STAT switch command.::
-    
-    STAT,I    
-
-This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file. 
 
 Administration
 ==============
 
-Monitoring lines and terminals
-------------------------------
+Line Status Sub-Application
+---------------------------
 
 The Line Status sub-application allows the administrator to display the current status of lines and terminals or irtual circuits (CVC) managed by VIRTEL control, and optionally to modify the status of lines.
 
 Displaying line status
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 The Line Status sub-application is invoked by pressing [PF9] in the Configuration Menu, by pressing [PF10] in the Sub- Application Menu, or via the Multi-Session Menu using a transaction which calls module VIR0027.
 
@@ -624,7 +716,7 @@ Seen
     User name.
 
 Positioning the list
---------------------
+^^^^^^^^^^^^^^^^^^^^
 If the line status display occupies more than one screen, you can scroll through the list of lines by using [PF5], [PF7] and [PF8].
 
 [PF5]
@@ -637,7 +729,7 @@ If the line status display occupies more than one screen, you can scroll through
     scroll forward to next page.
 
 Sending a command
------------------
+^^^^^^^^^^^^^^^^^
 To send a command to a line, place the cursor in the “C” field in front of the line name, type the command, then press [Enter]. The  commands available are:
 
 S
@@ -651,7 +743,7 @@ p
 To return to the configuration menu, press [PF3] or [Clear].
 
 Displaying Line Usage
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 To display the status and line usage place the cursor on the desired line in the Line Status Display screen and press [PF12].
 
@@ -713,6 +805,54 @@ Call Data (for HTTP lines)
     You can use the [PF4] and [PF5] keys to display information about the other lines under VIRTEL control. To view the terminal or Virtual Circuit Status Display screen for the following line, press [PF4]. To return to the Detail Usage Status Display screen for the first line defined in VIRTEL, press [PF5].
 
     To return to the Lines Status Display, press [PF3]. To return to the Configuration Menu, press [Clear].
+
+Applying Maintenance
+--------------------
+
+Maintence is normally through email or by downloading from the Virtel ftp web server - http://ftp.syspertec.com/login/. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. The application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elemnts is through a GUI Drag and Drop interface or via a Virtel Batch process. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
+
+Applying z/OS maintenance.
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as accumulation file called either allptfs-mshpvrr.txt (z/VSE) or allptfs-mvsvrr-txt (z/OS). 
+
+|image_09|
+
+*Syspertec ftp web server*
+
+Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTF457MV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTF457MV file. As the PTF457MV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.::
+
+    VIR0018I VIRTEL 4.57 HAS THE FOLLOWING PTF(S) APPLIED
+    VIR0018I 5530,5540,5549,5557,5559,5567               
+    VIR0089I VIRTEL RUNNING FROM AN AUTHORIZED LIBRARY   
+
+Applying maintenance to the TRSF files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The updates to the web entities are delivered as an accumulation update file called virtelvrrupdtnnnn1.zip where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
+
+|image_10|
+
+*Unzipped update file* 
+
+In the above example, the update file contains updates to the W2H and DOC directories. The members in each directory should be selected (CTRL-A) and dragged over to the "Drag and Drop" upload option of the Virtel Administration portal, normally setup on port 41001.
+
+|image_11|
+
+*Virtel Administration Portal*
+
+Open the "Drag and Drop" interface in Virtel, and then drag the files over on to the relvant directory in the upload interface. A upload window will open showing the results of the upload.
+
+|image_12|
+
+
+Applying maintence via batch.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn't require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter "TN2017-09 Virtel batch maintenance". This can be viewed online at   
+
+
+
 
 Performance
 ===========
@@ -1754,3 +1894,7 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image_06| image:: images/media/image06.png
 .. |image_07| image:: images/media/image07.png
 .. |image_08| image:: images/media/image08.png
+.. |image_09| image:: images/media/image09.png
+.. |image_10| image:: images/media/image10.png
+.. |image_11| image:: images/media/image11.png
+.. |image_12| image:: images/media/image12.png

@@ -1,0 +1,248 @@
+.. _#_tn201705:
+
+Printing PCL files with NodeJS
+==============================
+
+**Introduction**
+
+Because of the security restrictions within the browser environment
+Virtel is unable to print directly to a printer – the standard windows
+printer dialogue box is not available. The print options available are
+restricted compared to other terminal emulators which run outside of a
+browser environment. Users like to have the ability to send a print
+request to a printer the moment it arrives. With Virtel, when a print
+data stream arrives several options are available depending on the type
+of Virtel printer receiving the source data stream. For Virtel terminals
+designated as type P, these are LU0/3 3270 printers, when a print
+request is processed by one of these terminals a new browser window will
+open displaying the print data. From within this window the output can
+be printed using the standard print feature of the browser.
+
+With Virtel terminals designated as type S, these are considered SCS or
+LU type 1 printers. These are normally associated with CICS
+applications. When the Virtel terminal processes the print request a
+printer ICON appears on the right hand side of the tool bar.
+
+|image0|
+
+Figure 1 Virtel Print request
+
+Pressing the Printer ICON initiates the print processing which, if
+successful, results in a PCL file being downloaded to the users default
+download directory. To print the file the user has to perform some
+external function to send the file to a printer. Today, there are
+several options or solutions available to the user in initiating this
+function. There are a variety of directory watcher products/solutions
+available; some are free and some of them can automate printing of
+files.
+
+In this newsletter we implement a small directory watcher script which
+will send any new PCL files to a designated printer. The script is
+written in JavaScript and runs within the NodeJS (https://nodejs.org)
+program. Using this script we can automate the print function so that
+PCL files are routed directly to a designated printer, once Virtel has
+downloaded the file.
+
+**Pre-Installation setup**
+
+To use this script certain pre-requisites are required. NodeJS needs to
+be installed on your PC and the Windows LPR program must be accessible.
+By default, Windows doesn’t install this program. You will need to
+ensure that the correct Windows features have been selected and
+installed. See below.
+
+|image1|
+
+Figure 2 Required Windows features
+
+Validation of these requisites can be done by issuing the following two
+commands.
+
+::
+ 
+  node –version Determine node is installed and accessible.
+  lpr The print route program is installed and accessible
+
+The following screen capture shows the response from these commands:-
+
+|image2|
+
+Figure 3 Validating pre-requisites
+
+Once the pre-requisite software has been installed and validated we can
+install the nodeJS script. First create a directory to contain the
+script and relevant nodeJS components. In our example we will create a
+directory called c:\\virtel\\VirtelSpooler where we will install the
+necessary nodeJS script and bat files. Open a command window in this
+directory and type the following command:-
+
+::
+ 
+ npm install chokidar --save **
+
+This will download a bunch of modules required by the Virtel Spooler
+script. Next, create a file in the directory called main.js and copy and
+paste the script listed in Appendix A.
+
+Now, in the same directory as main.js, create a small bat file called
+printPCL.bat. This is also listed Appendix A.
+
+Now we are ready to go!
+
+**Starting the Virtel Spooler**
+
+The Virtel Spooler script is started with the following commands:-
+
+::
+ 
+    cd c:\\virtel\\VirtelSpooler
+    node main.js myServer myPrinter myDownloadDirectory
+
+So, for example, in my installation I use the following commands:-
+
+::
+ 
+  cd c:\\virtel\\VirtelSpooler
+  node main.js CSD KONICA\_Couleur\_C284e d:\\downloads
+
+With the spooler running and monitory the download directory, I can now
+fire off PCL print requests from my CICS program which will be
+automatically print on my designated printer. When Virtel downloads the
+PCL file to my download directory the Virtel Spooler script will be
+notified of the event. The Virtel Spooler program will then send the PCL
+file to my designated “server.printer”, in my case
+CSD.KONICA\_Couleur\_C284e. The PCL file will be printed without any
+manual intervention.
+
+The Virtel Spooler will issue a message each time it prints a file:-
+
+|image3|
+
+Figure 4 Virtel Spooler log
+
+To terminate the Virtel Spooler, issue CTRL-C in the command window.
+
+**What can go wrong!**
+
+Well quite a lot actually, and it is not always obvious. In my
+environment I have tested the Virtel Spooler with Window 7 and Windows
+10.
+
+*I have PCL files in my directory but nothing prints.*
+
+This is probably because the monitored directory is wrong or the PCL
+files have the wrong suffix. The suffix is lower case and must be
+“.pcl”.
+
+*The LPR command is issued but it hangs.*
+
+This is probably because the print server or printer name are not valid.
+Do a test print to your printer and check that:-
+
+The “Computer name:” = the Virtel Spooler server name
+
+The “Share name:” = the Virtel Spooler printer name
+
+The “Data format:” = RAW
+
+Issue a LPR command from a command prompt to make sure that the printer
+is printing.
+
+*The “LPR command is not found or is not executable.”*
+
+I experienced this problem on one Windows 7 environment despite the fact
+that when I executed the LPR command in a command prompt it responded
+correctly. It was only when spawning the batch job from the Virtel
+Spooler script did this message appear. The quick resolution was to copy
+the lpd.exe program from c:\\windows\\system32 to
+c:\\virtel\\VirtelSpooler. All worked fine after that.
+
+*I already have nodeJS installed but get errors when running nodeJS main.js.*
+
+Install a later release of NodeJS.
+
+Appendix A
+----------
+
+**main.js**
+
+::
+
+  /* Virtel PCL Print Spooler.
+   * Monitors spool directory and automatically sends PCL file to network printer.
+   *
+   * npm install chokidar –save
+   *
+   * To run this script : node main.js PrintServerName PrinterName Directory
+   * For Example:-
+   *
+   * node main.js CSD KONICA\_Couleur\_C284e d:\\downloads
+   *
+   * References:
+   * https://github.com/paulmillr/chokidar
+   *
+   */
+  
+  var chokidar = require('chokidar');
+  
+  const printer = process.argv[3], server = process.argv[2];
+  const spawn = require('child\_process').spawn;
+  var directory = process.argv[4];
+  directory = directory + "\\*.pcl";
+  
+  // Initialize watcher.
+  var watcher = chokidar.watch(directory, {
+    ignored: /(^|[\/\\])\../,
+    persistent: true
+  });
+  
+  function execBatFile(file) {
+    const args = [
+      '/c',
+        'printPCL.bat ' +
+        server + ' ' +
+        printer + ' ' + file
+    ];
+
+  const bat = spawn('cmd.exe', args);
+  bat.stdout.on('data', (data) => {
+    console.log(data.toString());
+  });
+  bat.stderr.on('data', (data) => {
+    console.log(data.toString());
+  });
+  bat.on('exit', (code) => {
+    //console.log(\`Child exited with code ${code}\`);
+  });
+  bat.on('error', (code) => {
+    console.log(\`Child exited with error code ${code}\`);
+  });
+  console.log('VIRU099I - Batch command executed for ' + file);
+  }
+  // Add event listeners.
+  watcher.on('add', path => execBatFile(\`${path}\`));
+
+**printPCL.bat**
+
+::
+ 
+  @Echo off
+  set arg1=%1
+  set arg2=%2
+  set arg3=%3
+  echo lpr -S %arg1% -P %arg2% %arg3%
+  lpr -S %arg1% -P %arg2% %arg3%
+  del %arg3%
+
+.. |image0| image:: images/media/image1.png
+   :width: 6.30000in
+   :height: 3.47500in
+.. |image1| image:: images/media/image2.png
+   :width: 6.30000in
+   :height: 3.46042in
+.. |image2| image:: images/media/image3.png
+   :width: 6.30000in
+   :height: 3.86389in
+.. |image3| image:: images/media/image4.png
+   :width: 6.30000in
+   :height: 3.21944in

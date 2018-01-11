@@ -270,6 +270,18 @@ their respective owners.</p>
 </dl>
 </div>
 </div>
+<div class="section" id="kill-command">
+<h3>KILL Command<a class="headerlink" href="#kill-command" title="Permalink to this headline">¶</a></h3>
+<p>The KILL command can be used to stop a scenario:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">KILL</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>termid</dt>
+<dd>terminal name</dd>
+</dl>
+<p>The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.</p>
+</div>
 <div class="section" id="lines-command">
 <h3>LINES Command<a class="headerlink" href="#lines-command" title="Permalink to this headline">¶</a></h3>
 <p>The LINES command can be used to display a summary of the line status.:</p>
@@ -348,6 +360,13 @@ VIR0202I ---END OF LIST---
 </pre></div>
 </div>
 </div>
+<div class="section" id="tracing-a-line">
+<h4>Tracing a line<a class="headerlink" href="#tracing-a-line" title="Permalink to this headline">¶</a></h4>
+<p>To activate or deactive a trace on the line the following command can be used:-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="o">|</span> <span class="n">TRACE</span>  <span class="p">[</span> <span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">N</span> <span class="o">|</span> <span class="n">T</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="starting-and-stopping-a-line">
 <h4>Starting and Stopping A Line<a class="headerlink" href="#starting-and-stopping-a-line" title="Permalink to this headline">¶</a></h4>
 <p>To STOP or START a line use the LINE command with the START or STOP function.:</p>
@@ -365,22 +384,51 @@ VIR0202I ---END OF LIST---
 <p>The LINE START and LINE STOP commands perform the same function as the <a class="reference external" href="#_bookmark12">“S” and “P” commands</a> on the “Status of lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.</p>
 </div>
 </div>
-<div class="section" id="relays-command">
-<h3>RELAYS Command<a class="headerlink" href="#relays-command" title="Permalink to this headline">¶</a></h3>
-<p>To display a list of Virtel LU relays use the RELAY command.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RELAYS</span>
+<div class="section" id="log-command">
+<h3>LOG command<a class="headerlink" href="#log-command" title="Permalink to this headline">¶</a></h3>
+<p>The LOG command enables the VIRTEL log to be spun off to the console, a JES2 output dataset , a dataset [new in V4.58]. The LOG command has the following format:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> <span class="o">|</span> <span class="n">SYSOUT</span> <span class="o">|</span> <span class="n">BOTH</span> <span class="o">|</span> <span class="n">SPIN</span> <span class="o">|</span> <span class="n">FILE</span>
 </pre></div>
 </div>
-<p>The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs opened by VIRTEL. Foe example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">RELAYS</span>
-<span class="n">VIR0200I</span> <span class="n">RELAYS</span>
-<span class="n">VIR0214I</span> <span class="n">ACTIVE</span> <span class="n">RELAY</span> <span class="n">ACBS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="mf">4.57</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span>
-<span class="n">VIR0214I</span> <span class="n">TERMINAL</span> <span class="n">RELAY</span>    <span class="n">APPLID</span>   <span class="n">CLIENT</span>
-<span class="n">VIR0214I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">---------------</span>
-<span class="n">VIR0214I</span> <span class="n">CLVTA004</span> <span class="n">REHVT000</span> <span class="n">SPCICST</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.58</span>
-<span class="n">VIR0214I</span> <span class="n">W2HIP000</span> <span class="n">REHIP000</span>
-<span class="n">VIR0214I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+<p>where</p>
+<blockquote>
+<div><ul class="simple">
+<li>CONSOLE means switch console messages back to the console.</li>
+<li>SYSOUT means switch to spooling consoles messages to SYSOUT.</li>
+<li>BOTH means write console messages to the console and SYSOUT.</li>
+<li>SPIN means spin off the current SYSOUT dataset.</li>
+<li>FILE means write messages to file.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="log-sysout">
+<h4>LOG=SYSOUT<a class="headerlink" href="#log-sysout" title="Permalink to this headline">¶</a></h4>
+<p>Setting up VIRTEL to use the LOG=SYSOUT facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">[,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">])</span>
+
+<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">EDSPRT</span><span class="p">)</span>
 </pre></div>
+</div>
+<p>This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log-file-new-in-v4-58">
+<h4>LOG=FILE [New in V4.58]<a class="headerlink" href="#log-file-new-in-v4-58" title="Permalink to this headline">¶</a></h4>
+<p>Setting up Virtel to use the LOG=FILE facility requires a change to the TCT definition. In the TCT code the following statement:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="n">FILE</span>
+</pre></div>
+</div>
+<p>This will trigger VIR0021A to write messages ether to The DD statements VIRLOGX or VIRLOGY depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE with the following DCB attributes.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOGFILEX</span> <span class="ow">and</span> <span class="n">LOGFILEY</span>
+<span class="n">DCB</span> <span class="n">attributes</span> <span class="p">:</span> <span class="n">PS</span><span class="p">,</span> <span class="n">LRECL</span><span class="o">=</span><span class="mi">165</span><span class="p">,</span> <span class="n">RECFM</span><span class="o">=</span><span class="n">VB</span><span class="p">,</span> <span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">32000</span>
+</pre></div>
+</div>
+<p>If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile. To determine the status of the LOG file, or to switch the log file manually issue one of the following commands:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="p">,</span><span class="n">D</span>              <span class="n">Display</span> <span class="n">active</span> <span class="n">logfile</span>
+<span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="p">,</span><span class="n">I</span>              <span class="n">Switch</span> <span class="n">logfiles</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="memdisplay-command">
@@ -451,108 +499,59 @@ VIR0202I ---END OF LIST---
 </div>
 </div>
 </div>
-<div class="section" id="log-command">
-<h3>LOG command<a class="headerlink" href="#log-command" title="Permalink to this headline">¶</a></h3>
-<p>The LOG command enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">[,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">])</span>
-
-<span class="n">For</span> <span class="n">example</span><span class="p">,</span> <span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">EDSPRT</span><span class="p">)</span>
+<div class="section" id="msg-command">
+<h3>MSG Command<a class="headerlink" href="#msg-command" title="Permalink to this headline">¶</a></h3>
+<p>To send a mesage to VIRTEL Multi-Session users use the MSG command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span><span class="o">=</span><span class="n">message</span> <span class="n">text</span>
 </pre></div>
 </div>
-<p>This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
-</pre></div>
+<p>The specified message will be displayed on the VIRTEL multi-session screen.</p>
 </div>
-<p>The LOG command has the following format:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> <span class="o">|</span> <span class="n">SYSOUT</span> <span class="o">|</span> <span class="n">BOTH</span> <span class="o">|</span> <span class="n">SPIN</span>
-</pre></div>
-</div>
-<p>where</p>
-<blockquote>
-<div><ul class="simple">
-<li>CONSOLE means switch console messages back to the console.</li>
-<li>SYSOUT means switch to spooling consoles messages to SYSOUT.</li>
-<li>BOTH means write console messages to the console and SYSOUT.</li>
-<li>SPIN means spin off the current SYSOUT dataset.</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="stop-command">
-<h3>STOP Command<a class="headerlink" href="#stop-command" title="Permalink to this headline">¶</a></h3>
-<p>To stop Virtel issue the STOP command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STOP</span>
-</pre></div>
-</div>
-<p>The STOP command allows to STOP the VIRTEL task. This command is intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">VIRTEL</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="kill-command">
-<h3>KILL Command<a class="headerlink" href="#kill-command" title="Permalink to this headline">¶</a></h3>
-<p>The KILL command can be used to stop a scenario:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">KILL</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
+<div class="section" id="new-command">
+<h3>NEW Command<a class="headerlink" href="#new-command" title="Permalink to this headline">¶</a></h3>
+<p>The NEW command refreshes a VIRTEL program, VIRSV service or scenario.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NEW</span><span class="o">=</span><span class="n">progname</span>
 </pre></div>
 </div>
 <dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
+<dt>progname</dt>
+<dd>program name</dd>
 </dl>
-<p>The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.</p>
+<p>The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.</p>
 </div>
-<div class="section" id="trace-notrace-command">
-<h3>TRACE | NOTRACE Command<a class="headerlink" href="#trace-notrace-command" title="Permalink to this headline">¶</a></h3>
-<p>A trace can be activated on a terminal, line or relay.:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
-<span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-<span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
-<span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
-<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
-<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<div class="section" id="relay-command">
+<h3>RELAY Command<a class="headerlink" href="#relay-command" title="Permalink to this headline">¶</a></h3>
+<p>Use the RELAY command to trace the Virtel buffers between Virtel and the application.</p>
+<p>RELAY=relayname,NOTRACE | TRACE</p>
+</div>
+<div class="section" id="relays-command">
+<h3>RELAYS Command<a class="headerlink" href="#relays-command" title="Permalink to this headline">¶</a></h3>
+<p>To display a list of Virtel LU relays use the RELAY command.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RELAYS</span>
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>relayname</dt>
-<dd>relay associated to the terminal</dd>
-</dl>
-<p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
-<p><img alt="image_03" src="../../../_images/image032.png" />
-<em>Fig.3 - Associated relay names</em></p>
-<dl class="docutils">
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
-</dl>
-<p>The following alternate forms of the TRACE/NOTRACE commands are also  valid</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
-<span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
-<span class="n">TRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
-<span class="n">NOTRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
-<span class="n">NOTRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
-<span class="n">NOTRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>termid</dt>
-<dd>terminal name</dd>
-<dt>linename</dt>
-<dd>Internal or external name of the line</dd>
-<dt>relayname</dt>
-<dd>Name of VTAM relay LU currently associated with the terminal</dd>
-</dl>
-<div class="section" id="display-a-list-of-active-traces">
-<h4>Display a list of active traces<a class="headerlink" href="#display-a-list-of-active-traces" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="o">|</span> <span class="n">D</span>
+<p>The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs opened by VIRTEL. Foe example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">RELAYS</span>
+<span class="n">VIR0200I</span> <span class="n">RELAYS</span>
+<span class="n">VIR0214I</span> <span class="n">ACTIVE</span> <span class="n">RELAY</span> <span class="n">ACBS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="mf">4.57</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span>
+<span class="n">VIR0214I</span> <span class="n">TERMINAL</span> <span class="n">RELAY</span>    <span class="n">APPLID</span>   <span class="n">CLIENT</span>
+<span class="n">VIR0214I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">---------------</span>
+<span class="n">VIR0214I</span> <span class="n">CLVTA004</span> <span class="n">REHVT000</span> <span class="n">SPCICST</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.58</span>
+<span class="n">VIR0214I</span> <span class="n">W2HIP000</span> <span class="n">REHIP000</span>
+<span class="n">VIR0214I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="deactivate-all-traces">
-<h4>Deactivate all traces<a class="headerlink" href="#deactivate-all-traces" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">ALL</span>
+<div class="section" id="silence-command">
+<h3>SILENCE Command<a class="headerlink" href="#silence-command" title="Permalink to this headline">¶</a></h3>
+<p>To supppress Virtel messages use the SILENCE command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SILENCE</span>
 </pre></div>
 </div>
-<p>This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”</p>
+<p>The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
 </div>
 </div>
 <div class="section" id="snap-command">
@@ -614,68 +613,6 @@ VIR0202I ---END OF LIST---
 </div>
 <p>The SNAPW command sets the width for future SNAP commands (80 or 132 columns). The SNAPW parameter in the VIRTCT determines the default width at VIRTEL startup. Refer to the section “Parameters of the VIRTCT” in the VIRTEL Installation Guide for details of the SNAPW parameter.</p>
 </div>
-<div class="section" id="new-command">
-<h3>NEW Command<a class="headerlink" href="#new-command" title="Permalink to this headline">¶</a></h3>
-<p>The NEW command refreshes a VIRTEL program, VIRSV service or scenario.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NEW</span><span class="o">=</span><span class="n">progname</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>progname</dt>
-<dd>program name</dd>
-</dl>
-<p>The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.</p>
-<div class="section" id="refreshing-a-virsv-service-program">
-<h4>Refreshing a VIRSV Service program<a class="headerlink" href="#refreshing-a-virsv-service-program" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSV</span><span class="p">,</span><span class="n">NEW</span><span class="o">=</span><span class="n">servname</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>servname</dt>
-<dd>service name</dd>
-</dl>
-<p>The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This has the effect of loading a fresh copy of the associated service program the next time the service is invoked by a scenario. The message VIR0260W SERVICE servname IS A NEW COPY indicates that the service was stopped successfully. The message VIR0261W</p>
-<p>SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.</p>
-</div>
-</div>
-<div class="section" id="msg-command">
-<h3>MSG Command<a class="headerlink" href="#msg-command" title="Permalink to this headline">¶</a></h3>
-<p>To send a mesage to VIRTEL Multi-Session users use the MSG command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span><span class="o">=</span><span class="n">message</span> <span class="n">text</span>
-</pre></div>
-</div>
-<p>The specified message will be displayed on the VIRTEL multi-session screen.</p>
-</div>
-<div class="section" id="silence-command">
-<h3>SILENCE Command<a class="headerlink" href="#silence-command" title="Permalink to this headline">¶</a></h3>
-<p>To supppress Virtel messages use the SILENCE command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SILENCE</span>
-</pre></div>
-</div>
-<p>The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. Its purpose is to activate or deactivate the suppression of terminal connection and disconnection messages written to the operator console.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Refer to the section SILENCE parameter in the “Parameters of the VIRTCT” in the VIRTEL Installation Guide for a list messages affected by this command.)</p>
-</div>
-</div>
-<div class="section" id="zap-command">
-<h3>ZAP Command<a class="headerlink" href="#zap-command" title="Permalink to this headline">¶</a></h3>
-<p>The ZAP command allows dynamic patching of a Virtel Program:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ZAP</span><span class="o">=</span><span class="n">progname</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span><span class="n">verify</span><span class="p">,</span><span class="n">replace</span>
-</pre></div>
-</div>
-<dl class="docutils">
-<dt>progname</dt>
-<dd>program name</dd>
-<dt>offset</dt>
-<dd>offset into program</dd>
-<dt>verify</dt>
-<dd>verify value (2 to 8 hexadecimal digits)</dd>
-<dt>replace</dt>
-<dd>replacement value (2 to 8 hexadecimal digits)</dd>
-</dl>
-<p>The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.</p>
-</div>
 <div class="section" id="stat-command">
 <h3>STAT Command<a class="headerlink" href="#stat-command" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="display-statistics-file-information">
@@ -695,15 +632,152 @@ VIR0202I ---END OF LIST---
 <p>This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file.</p>
 </div>
 </div>
+<div class="section" id="stop-command">
+<h3>STOP Command<a class="headerlink" href="#stop-command" title="Permalink to this headline">¶</a></h3>
+<p>To stop Virtel issue the STOP command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STOP</span>
+</pre></div>
+</div>
+<p>The STOP command allows to STOP the VIRTEL task. This command is intended to be mainly used in VSE environment even if it is also available in z/OS environmment. On z/OS environment you can also use the following command :</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">VIRTEL</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tct-command">
+<h3>TCT Command<a class="headerlink" href="#tct-command" title="Permalink to this headline">¶</a></h3>
+<p>The TCT command displays some of the TCT options that have been defined in the active TCT.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIREH</span><span class="p">,</span><span class="n">TCT</span>
+<span class="n">VIR0200I</span> <span class="n">TCT</span>
+<span class="n">VIR0270I</span> <span class="n">DISPLAY</span>
+<span class="n">VIRTEL</span> <span class="n">TCT</span><span class="o">=</span><span class="n">VIRTCTEH</span><span class="p">:</span>
+<span class="n">SILENCE</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">MEMORY</span><span class="o">=</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">N</span><span class="p">),</span><span class="n">BFVSAM</span><span class="o">=</span><span class="mi">32768</span><span class="p">,</span><span class="n">BUFDATA</span><span class="o">=</span><span class="mi">016</span><span class="p">,</span><span class="n">BUFSIZE</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span><span class="n">STR</span><span class="o">=</span><span class="mi">03</span>
+<span class="n">COUNTRY</span><span class="o">=</span><span class="n">FR</span><span class="p">,</span><span class="n">GMT</span><span class="o">=</span><span class="n">SYSTZ</span><span class="p">,</span><span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1147</span> <span class="p">,</span><span class="n">LANG</span><span class="o">=</span><span class="n">E</span><span class="p">,</span><span class="n">MAXSOCK</span><span class="o">=</span><span class="mi">00240</span><span class="p">,</span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">N</span>
+<span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIREH</span> <span class="p">,</span><span class="n">SMF</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">PASSTCK</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span><span class="n">VIRSECU</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span><span class="n">SWA</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">NBTERM</span><span class="o">=</span><span class="mi">0500</span><span class="p">,</span><span class="n">NTASK</span><span class="o">=</span><span class="mi">04</span>
+<span class="n">MEMORY</span><span class="o">=</span><span class="p">(</span><span class="n">SYS</span><span class="p">(</span><span class="mi">0001688</span><span class="n">K</span><span class="p">,</span><span class="mi">0001688</span><span class="n">K</span><span class="p">),</span><span class="n">DATA</span><span class="p">(</span><span class="mi">0002304</span><span class="n">K</span><span class="p">,</span><span class="mi">0003200</span><span class="n">K</span><span class="p">)),</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>
+<span class="n">VIR0280I</span> <span class="n">END</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="term-command">
+<h3>TERM Command<a class="headerlink" href="#term-command" title="Permalink to this headline">¶</a></h3>
+<p>Use the TERM command to activate a Terminal trace. This will trace data between the browser and Virtel.</p>
+<p>TERM=termid,NOTRACE | TRACE  [or T=termid,N | T ]</p>
+</div>
+<div class="section" id="trace-notrace-command">
+<h3>TRACE | NOTRACE Command<a class="headerlink" href="#trace-notrace-command" title="Permalink to this headline">¶</a></h3>
+<p>A trace can be activated on a terminal, line or relay.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<span class="n">TERM</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">T</span><span class="o">=</span><span class="n">termid</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<span class="n">LINE</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">L</span><span class="o">=</span><span class="n">linename</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">TRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">T</span><span class="p">)</span>
+<span class="n">RELAY</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">NOTRACE</span> <span class="p">(</span><span class="ow">or</span> <span class="n">R</span><span class="o">=</span><span class="n">relayname</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>termid</dt>
+<dd>terminal name</dd>
+<dt>relayname</dt>
+<dd>relay associated to the terminal</dd>
+</dl>
+<p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
+<p><img alt="image_03" src="../../../_images/image032.png" />
+<em>Fig.3 - Associated relay names</em></p>
+<dl class="docutils">
+<dt>linename</dt>
+<dd>Internal or external name of the line</dd>
+</dl>
+<p>The following alternate forms of the TRACE/NOTRACE commands are also  valid</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
+<span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
+<span class="n">TRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
+<span class="n">NOTRACE</span><span class="p">,</span><span class="n">T</span><span class="o">=</span><span class="n">termid</span>
+<span class="n">NOTRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">linename</span>
+<span class="n">NOTRACE</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">relayname</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>termid</dt>
+<dd>terminal name</dd>
+<dt>linename</dt>
+<dd>Internal or external name of the line</dd>
+<dt>relayname</dt>
+<dd>Name of VTAM relay LU currently associated with the terminal</dd>
+</dl>
+<div class="section" id="display-a-list-of-active-traces">
+<h4>Display a list of active traces<a class="headerlink" href="#display-a-list-of-active-traces" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="o">|</span> <span class="n">D</span>
+</pre></div>
+</div>
+<p>An example of the response is:-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="ow">or</span> <span class="n">F</span> <span class="n">SPVIREH</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">D</span>
+<span class="n">VIR0200I</span> <span class="n">TRACE</span><span class="p">,</span><span class="n">D</span>
+<span class="n">VIR0208I</span> <span class="n">VIRTEL</span> <span class="n">INTERNAL</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="n">YYY</span><span class="o">.</span> <span class="n">EXT</span><span class="o">.</span> <span class="n">BUFFERS</span> <span class="o">=</span> <span class="mi">0001</span><span class="o">/</span><span class="mi">00</span><span class="n">FF</span><span class="o">.</span>
+<span class="n">VIR0213I</span> <span class="n">NO</span> <span class="n">ACTIVE</span> <span class="n">TRACES</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setting-trace-options">
+<h4>Setting trace options<a class="headerlink" href="#setting-trace-options" title="Permalink to this headline">¶</a></h4>
+<p>To set the trace options issue the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="p">,</span><span class="n">VIT</span><span class="o">=</span><span class="n">Y</span><span class="o">|</span><span class="n">N</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span>
+</pre></div>
+</div>
+<p>The default VIT trace parametr is YYN. The external trace setting should only be set hen instructed to by Virtel support.</p>
+<p>The VIT indicators apply the the level of tracing.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span>           <span class="n">No</span> <span class="n">tracing</span> <span class="ow">or</span> <span class="n">minimal</span> <span class="n">tracing</span>
+<span class="o">-</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span>           <span class="n">Data</span> <span class="n">elements</span> <span class="n">traced</span>
+<span class="o">-</span> <span class="n">Y</span><span class="o">|</span><span class="n">N</span>           <span class="n">External</span> <span class="n">Archive</span> <span class="n">active</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deactivate-all-traces">
+<h4>Deactivate all traces<a class="headerlink" href="#deactivate-all-traces" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">ALL</span>
+</pre></div>
+</div>
+<p>This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”</p>
+</div>
+</div>
+<div class="section" id="virsv-command">
+<h3>VIRSV Command<a class="headerlink" href="#virsv-command" title="Permalink to this headline">¶</a></h3>
+<p>Refreshing a VIRSV Service program</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSV</span><span class="p">,</span><span class="n">NEW</span><span class="o">=</span><span class="n">servname</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>servname</dt>
+<dd>service name</dd>
+</dl>
+<p>The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This has the effect of loading a fresh copy of the associated service program the next time the service is invoked by a scenario. The message VIR0260W SERVICE servname IS A NEW COPY indicates that the service was stopped successfully. The message VIR0261W</p>
+<p>SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.</p>
+</div>
+<div class="section" id="zap-command">
+<h3>ZAP Command<a class="headerlink" href="#zap-command" title="Permalink to this headline">¶</a></h3>
+<p>The ZAP command allows dynamic patching of a Virtel Program:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ZAP</span><span class="o">=</span><span class="n">progname</span><span class="o">+</span><span class="n">offset</span><span class="p">,</span><span class="n">verify</span><span class="p">,</span><span class="n">replace</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>progname</dt>
+<dd>program name</dd>
+<dt>offset</dt>
+<dd>offset into program</dd>
+<dt>verify</dt>
+<dd>verify value (2 to 8 hexadecimal digits)</dd>
+<dt>replace</dt>
+<dd>replacement value (2 to 8 hexadecimal digits)</dd>
+</dl>
+<p>The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.</p>
+</div>
 </div>
 <div class="section" id="administration">
 <h2>Administration<a class="headerlink" href="#administration" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="monitoring-lines-and-terminals">
-<h3>Monitoring lines and terminals<a class="headerlink" href="#monitoring-lines-and-terminals" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="line-status-sub-application">
+<h3>Line Status Sub-Application<a class="headerlink" href="#line-status-sub-application" title="Permalink to this headline">¶</a></h3>
 <p>The Line Status sub-application allows the administrator to display the current status of lines and terminals or irtual circuits (CVC) managed by VIRTEL control, and optionally to modify the status of lines.</p>
-</div>
 <div class="section" id="displaying-line-status">
-<h3>Displaying line status<a class="headerlink" href="#displaying-line-status" title="Permalink to this headline">¶</a></h3>
+<h4>Displaying line status<a class="headerlink" href="#displaying-line-status" title="Permalink to this headline">¶</a></h4>
 <p>The Line Status sub-application is invoked by pressing [PF9] in the Configuration Menu, by pressing [PF10] in the Sub- Application Menu, or via the Multi-Session Menu using a transaction which calls module VIR0027.</p>
 <p>When the security subsystem is active, access to Line Status sub-application from the Configuration Menu or the Sub- Application Menu is controlled by the resource $$UTIL$$.
 When accessed by a transaction, normal transaction security rules will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.</p>
@@ -732,7 +806,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 </dl>
 </div>
 <div class="section" id="positioning-the-list">
-<h3>Positioning the list<a class="headerlink" href="#positioning-the-list" title="Permalink to this headline">¶</a></h3>
+<h4>Positioning the list<a class="headerlink" href="#positioning-the-list" title="Permalink to this headline">¶</a></h4>
 <p>If the line status display occupies more than one screen, you can scroll through the list of lines by using [PF5], [PF7] and [PF8].</p>
 <dl class="docutils">
 <dt>[PF5]</dt>
@@ -744,7 +818,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 </dl>
 </div>
 <div class="section" id="sending-a-command">
-<h3>Sending a command<a class="headerlink" href="#sending-a-command" title="Permalink to this headline">¶</a></h3>
+<h4>Sending a command<a class="headerlink" href="#sending-a-command" title="Permalink to this headline">¶</a></h4>
 <p>To send a command to a line, place the cursor in the “C” field in front of the line name, type the command, then press [Enter]. The  commands available are:</p>
 <dl class="docutils">
 <dt>S</dt>
@@ -763,7 +837,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <p>To return to the configuration menu, press [PF3] or [Clear].</p>
 </div>
 <div class="section" id="displaying-line-usage">
-<h3>Displaying Line Usage<a class="headerlink" href="#displaying-line-usage" title="Permalink to this headline">¶</a></h3>
+<h4>Displaying Line Usage<a class="headerlink" href="#displaying-line-usage" title="Permalink to this headline">¶</a></h4>
 <p>To display the status and line usage place the cursor on the desired line in the Line Status Display screen and press [PF12].</p>
 <p>Security rules are the same as those which apply to the previous screen.</p>
 <p>This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:</p>
@@ -818,6 +892,38 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <p class="last">To return to the Lines Status Display, press [PF3]. To return to the Configuration Menu, press [Clear].</p>
 </dd>
 </dl>
+</div>
+</div>
+<div class="section" id="applying-maintenance">
+<h3>Applying Maintenance<a class="headerlink" href="#applying-maintenance" title="Permalink to this headline">¶</a></h3>
+<p>Maintence is normally through email or by downloading from the Virtel ftp web server - <a class="reference external" href="http://ftp.syspertec.com/login/">http://ftp.syspertec.com/login/</a>. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. The application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elemnts is through a GUI Drag and Drop interface or via a Virtel Batch process. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.</p>
+<div class="section" id="applying-z-os-maintenance">
+<h4>Applying z/OS maintenance.<a class="headerlink" href="#applying-z-os-maintenance" title="Permalink to this headline">¶</a></h4>
+<p>By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as accumulation file called either allptfs-mshpvrr.txt (z/VSE) or allptfs-mvsvrr-txt (z/OS).</p>
+<p><img alt="image_09" src="../../../_images/image09.png" /></p>
+<p><em>Syspertec ftp web server</em></p>
+<p>Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTF457MV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTF457MV file. As the PTF457MV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0018I</span> <span class="n">VIRTEL</span> <span class="mf">4.57</span> <span class="n">HAS</span> <span class="n">THE</span> <span class="n">FOLLOWING</span> <span class="n">PTF</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="n">APPLIED</span>
+<span class="n">VIR0018I</span> <span class="mi">5530</span><span class="p">,</span><span class="mi">5540</span><span class="p">,</span><span class="mi">5549</span><span class="p">,</span><span class="mi">5557</span><span class="p">,</span><span class="mi">5559</span><span class="p">,</span><span class="mi">5567</span>
+<span class="n">VIR0089I</span> <span class="n">VIRTEL</span> <span class="n">RUNNING</span> <span class="n">FROM</span> <span class="n">AN</span> <span class="n">AUTHORIZED</span> <span class="n">LIBRARY</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="applying-maintenance-to-the-trsf-files">
+<h4>Applying maintenance to the TRSF files<a class="headerlink" href="#applying-maintenance-to-the-trsf-files" title="Permalink to this headline">¶</a></h4>
+<p>The updates to the web entities are delivered as an accumulation update file called virtelvrrupdtnnnn1.zip where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.</p>
+<p><img alt="image_10" src="../../../_images/image1014.png" /></p>
+<p><em>Unzipped update file</em></p>
+<p>In the above example, the update file contains updates to the W2H and DOC directories. The members in each directory should be selected (CTRL-A) and dragged over to the “Drag and Drop” upload option of the Virtel Administration portal, normally setup on port 41001.</p>
+<p><img alt="image_11" src="../../../_images/image1119.png" /></p>
+<p><em>Virtel Administration Portal</em></p>
+<p>Open the “Drag and Drop” interface in Virtel, and then drag the files over on to the relvant directory in the upload interface. A upload window will open showing the results of the upload.</p>
+<p><img alt="image_12" src="../../../_images/image1217.png" /></p>
+</div>
+<div class="section" id="applying-maintence-via-batch">
+<h4>Applying maintence via batch.<a class="headerlink" href="#applying-maintence-via-batch" title="Permalink to this headline">¶</a></h4>
+<p>A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn’t require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter “TN2017-09 Virtel batch maintenance”. This can be viewed online at</p>
+</div>
 </div>
 </div>
 <div class="section" id="performance">

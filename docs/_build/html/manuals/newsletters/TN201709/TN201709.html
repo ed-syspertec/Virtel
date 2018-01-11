@@ -1,0 +1,565 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Virtel Batch Maintenance &mdash; Virtel 7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Miscellaneous" href="../../../howto.html"/>
+        <link rel="prev" title="What’s new in Virtel 4.57 (July 2017)" href="../TN201706/TN201706     .html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.57
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id4">2017</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201701/TN201701.html">Protecting business assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201702/TN201702.html">Protecting Virtel Applications with Shibboleth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201703/TN201703.html">Passticket support with CA Top Secret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201704/TN201704.html">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201705/TN201705     .html">Printing PCL files with NodeJS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201706/TN201706     .html">What’s new in Virtel 4.57 (July 2017)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel Batch Maintenance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installing-the-maintenance-package">Installing the maintenance package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#control-members-to-be-uploaded-to-the-virtel-cntl-library">Control members to be uploaded to the VIRTEL CNTL library:-</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#appendix-a">Appendix A</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#member-virtctbt">Member VIRTCTBT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#member-scenload">Member SCENLOAD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#member-eoj">Member EOJ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#member-batch">Member BATCH</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Virtel Batch Maintenance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manuals/newsletters/TN201709/TN201709.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virtel-batch-maintenance">
+<h1>Virtel Batch Maintenance<a class="headerlink" href="#virtel-batch-maintenance" title="Permalink to this headline">¶</a></h1>
+<p>This newsletter documents the procedure to maintain the VIRTEL SAMP TRSF VSAM file using a batch facility. Previously, updates to the Virtel SAMP TRSF VSAM file were through the “Drag and Drop” interface provided by the administration portal. Using this procedure removes the manual process required to perform the “drag and drop” operation. Using batch also improves the automation and maintenance distribution in a complex environment supporting multiple instances of Virtel.</p>
+<div class="section" id="installing-the-maintenance-package">
+<h2>Installing the maintenance package<a class="headerlink" href="#installing-the-maintenance-package" title="Permalink to this headline">¶</a></h2>
+<p>The maintenance package is delivered to the customer as a zip file. It contains the following members:-</p>
+<ul class="simple">
+<li>updtnnnn.trs File to be uploaded to mainframe</li>
+<li>Newsletter PDF on how to install maintenance packages</li>
+<li>readme-updtnnnn.txt Fix details contained within the package</li>
+</ul>
+</div>
+<div class="section" id="control-members-to-be-uploaded-to-the-virtel-cntl-library">
+<h2>Control members to be uploaded to the VIRTEL CNTL library:-<a class="headerlink" href="#control-members-to-be-uploaded-to-the-virtel-cntl-library" title="Permalink to this headline">¶</a></h2>
+<p>BATCH Batch control member</p>
+<p>EOJ EOJ Control member</p>
+<p>UPLMAINT.JCL Upload maintenance procedure</p>
+<p>VIRTELUP.JCL Upload maintenance batch job.</p>
+<p>VIRTCTBT.ASM Example Batch TCT</p>
+<p>SCENLOAD.ASM Batch SCENARIO</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These control members need only to be uploaded once unless instructed otherwise.</p>
+</div>
+<ol class="arabic simple">
+<li>Upload and copy members BATCH, EOJ, UPLMAINT.JCL, VIRTELUP.JCL, VIRTCTBT.ASM,SCENLOAD.ASM to the VIRTEL CNTL library.</li>
+</ol>
+<p><em>These members are also listed in Appendix A of this newsletter. The JCL members and TCT will need modifying to conform to you standards. For the TCT, areas that need to be changed are highlighted in RED.</em></p>
+<ol class="arabic simple" start="2">
+<li>Assemble the modified TCT and SCENLOAD into the VIRTEL LOADLIB using the ASMTCT and ASMSCEN procedures located in the VIRTEL CNTL library.</li>
+</ol>
+<ol class="arabic" start="2">
+<li><p class="first">Upload the TRS dataset updtnnnn.TRS to a pre-allocated TRS file. Use the sample JCL below to allocate the file:-:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
+<span class="o">//</span><span class="n">OUTFILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="o">..</span><span class="n">MAINT</span><span class="o">.</span><span class="n">UPDTNNNN</span><span class="o">.</span><span class="n">TRS</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(,</span><span class="n">CATLG</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">),</span>
+<span class="o">//</span> <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">CYL</span><span class="p">,(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>After modifying the JCL in UPLMAINT.JCL and VIRTELUP.JCL to you site standards, submit the job VIRTELUP. This will upload the maintenance fixes to the destination SAMP TRSF as identified in the UPLMAINT procedure. This procedure also uses a temporary ARBO file which has been configured to support only BATCH updates.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="appendix-a">
+<h1>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="member-virtctbt">
+<h2>Member VIRTCTBT<a class="headerlink" href="#member-virtctbt" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">TITLE</span> <span class="s1">&#39;VIRTEL TCT FOR BATCH&#39;</span>
+    <span class="n">PRINT</span> <span class="n">GEN</span>
+    <span class="n">VIRTERM</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">INITIAL</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span><span class="p">,</span>                   <span class="o">*</span>
+        <span class="n">LANG</span><span class="o">=</span><span class="s1">&#39;EN&#39;</span><span class="p">,</span> <span class="n">LANGUAGE</span> <span class="n">FOR</span> <span class="n">USER</span> <span class="n">MESSAGES</span>               <span class="o">*</span>
+        <span class="n">COUNTRY</span><span class="o">=</span><span class="n">FR</span><span class="p">,</span> <span class="n">EBCDIC</span><span class="o">-</span><span class="n">ASCII</span> <span class="n">TRANSLATION</span>                <span class="o">*</span>
+        <span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1147</span><span class="p">,</span> <span class="n">DEFAULT</span> <span class="n">OUTPUT</span> <span class="n">ENCODING</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>      <span class="o">*</span>
+        <span class="n">CHARSET</span><span class="o">=</span><span class="p">,</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="p">:</span> <span class="n">ADDITIONAL</span> <span class="n">CHARSETS</span>                <span class="o">*</span>
+        <span class="n">GMT</span><span class="o">=</span><span class="n">SYSTZ</span><span class="p">,</span>                                          <span class="o">*</span>
+        <span class="n">TCP1</span><span class="o">=</span><span class="p">(</span><span class="n">TCPIP</span><span class="p">,,,</span><span class="mi">250</span><span class="p">),</span> <span class="n">TCPIPNAME</span><span class="p">,,,</span><span class="n">MAXSOCKETS</span>          <span class="o">*</span>
+        <span class="n">VIRSV1</span><span class="o">=</span><span class="p">(</span><span class="n">VIRSV</span><span class="p">),</span>                                     <span class="o">*</span>
+        <span class="n">HTVSAM</span><span class="o">=</span><span class="n">VIRHTML</span><span class="p">,</span>                                     <span class="o">*</span>
+        <span class="n">HTMINI</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>                                       <span class="o">*</span>
+        <span class="n">BATCH1</span><span class="o">=</span><span class="p">(</span><span class="n">SYSIN1</span><span class="p">,</span><span class="n">DCBI1</span><span class="p">,</span><span class="n">SYSOUT1</span><span class="p">,</span><span class="n">DCBO1</span><span class="p">,</span><span class="n">SYSPCH1</span><span class="p">,</span><span class="n">DCBP1</span><span class="p">),</span>  <span class="o">*</span>
+        <span class="n">BUFSIZE</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span>                                      <span class="o">*</span>
+        <span class="n">BFVSAM</span><span class="o">=</span><span class="mi">32768</span><span class="p">,</span>                                       <span class="o">*</span>
+        <span class="n">ACCUEIL</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">DEFENTR</span><span class="o">=</span><span class="p">(</span><span class="n">PC</span><span class="p">,</span><span class="n">MINITEL</span><span class="p">),</span>                               <span class="o">*</span>
+        <span class="n">CORRECT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span>                                         <span class="o">*</span>
+        <span class="n">SILENCE</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="n">SMF</span><span class="p">,</span> <span class="n">OR</span> <span class="p">(</span><span class="n">MULTI</span><span class="p">,</span><span class="n">CONTINUE</span><span class="o">/</span><span class="n">TERMINATE</span><span class="p">)</span>            <span class="o">*</span>
+        <span class="n">STATDSN</span><span class="o">=</span><span class="p">(</span><span class="n">YOURQUAL</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">STATA</span><span class="p">,</span> <span class="n">IF</span> <span class="n">STATS</span><span class="o">=</span><span class="n">MULTI</span>      <span class="o">*</span>
+        <span class="n">YOURQUAL</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">STATB</span><span class="p">),</span> <span class="n">IF</span> <span class="n">STATS</span><span class="o">=</span><span class="n">MULTI</span>              <span class="o">*</span>
+        <span class="n">APPSTAT</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">SYSPLUS</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">DONTSWA</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">NBDYNAM</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">MULTI</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">RESO</span><span class="o">=</span><span class="n">NO</span><span class="p">,</span><span class="n">ARBO</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">MINITEL</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>             <span class="o">*</span>
+        <span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span>                  <span class="o">*</span>
+        <span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">SPVIREH</span><span class="p">,</span>      <span class="o">*</span>
+        <span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                    <span class="o">*</span>
+        <span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                    <span class="o">*</span>
+        <span class="n">UFILE3</span><span class="o">=</span><span class="p">,</span> <span class="p">(</span><span class="n">PLUGTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                  <span class="o">*</span>
+        <span class="n">GATE</span><span class="o">=</span><span class="n">GENERAL</span><span class="p">,</span>                                       <span class="o">*</span>
+        <span class="n">NBCVC</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">MEMORY</span><span class="o">=</span><span class="n">ABOVE</span><span class="p">,</span>                                       <span class="o">*</span>
+        <span class="n">COMPANY</span><span class="o">=</span><span class="s1">&#39;YOUR DETAILS HERE&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>           <span class="n">X</span>
+        <span class="n">ADDR1</span><span class="o">=</span><span class="s1">&#39;ADDRESS1&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>                      <span class="n">X</span>
+        <span class="n">ADDR2</span><span class="o">=</span><span class="s1">&#39;ADDRESS2&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>                      <span class="n">X</span>
+        <span class="n">LICENCE</span><span class="o">=</span><span class="s1">&#39;P500 - PERMANENT&#39;</span><span class="p">,</span> <span class="n">LICENCE</span> <span class="n">INFO</span>            <span class="n">X</span>
+        <span class="n">EXPIRE</span><span class="o">=</span><span class="p">(</span><span class="mi">2999</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span> <span class="n">LICENCE</span> <span class="n">EXPIRATION</span>             <span class="n">X</span>
+        <span class="n">CODE</span><span class="o">=</span><span class="s1">&#39;12356789&#39;</span><span class="p">,</span> <span class="n">LICENCE</span> <span class="n">CODE</span>                       <span class="n">X</span>
+        <span class="n">TITRE1</span><span class="o">=</span><span class="s1">&#39;S Y S P E R T E C  F R A N C E &#39;</span><span class="p">,</span>           <span class="o">*</span>
+        <span class="n">TITRE2</span><span class="o">=</span><span class="s1">&#39;V I R T E L&#39;</span>
+<span class="o">*-------------------------------------------------------</span>
+<span class="n">DCBP1</span>   <span class="n">DCB</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">SYSPCH1</span><span class="p">,</span> <span class="n">SYSPCH1</span> <span class="n">DD</span>                      <span class="o">*</span>
+        <span class="n">DCBE</span><span class="o">=</span><span class="n">DCBP1X</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">LRECL</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">DSORG</span><span class="o">=</span><span class="n">PS</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">PM</span><span class="p">)</span>
+<span class="n">DCBP1X</span>  <span class="n">DCBE</span> <span class="n">RMODE31</span><span class="o">=</span><span class="n">BUFF</span>
+<span class="o">*-------------------------------------------------------</span>
+<span class="n">DCBI1</span>   <span class="n">DCB</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">SYSIN1</span><span class="p">,</span> <span class="n">SYSIN</span> <span class="n">DD</span>                         <span class="o">*</span>
+        <span class="n">DCBE</span><span class="o">=</span><span class="n">DCBI1X</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">LRECL</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">DSORG</span><span class="o">=</span><span class="n">PS</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">GL</span><span class="p">)</span>
+<span class="n">DCBI1X</span>  <span class="n">DCBE</span> <span class="n">EODAD</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">RMODE31</span><span class="o">=</span><span class="n">BUFF</span>
+<span class="o">*------------------------------------------------------</span>
+<span class="n">DCBO1</span>   <span class="n">DCB</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">SYSOUT1</span><span class="p">,</span> <span class="n">SYSPRINT</span> <span class="n">DD</span>                     <span class="o">*</span>
+        <span class="n">DCBE</span><span class="o">=</span><span class="n">DCBO1X</span><span class="p">,</span>                                        <span class="o">*</span>
+        <span class="n">LRECL</span><span class="o">=</span><span class="mi">133</span><span class="p">,</span>                                          <span class="o">*</span>
+        <span class="n">DSORG</span><span class="o">=</span><span class="n">PS</span><span class="p">,</span>                                           <span class="o">*</span>
+        <span class="n">RECFM</span><span class="o">=</span><span class="n">FBA</span><span class="p">,</span>                                          <span class="o">*</span>
+        <span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">PM</span><span class="p">)</span>
+<span class="n">DCBO1X</span>  <span class="n">DCBE</span> <span class="n">RMODE31</span><span class="o">=</span><span class="n">BUFF</span>
+<span class="o">*------------------------------------------------------</span>
+<span class="n">ACBH1</span>   <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span><span class="o">*</span>
+            <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH2</span>   <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span><span class="o">*</span>
+            <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH3</span>   <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">PLUGTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span><span class="o">*</span>
+            <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+        <span class="n">END</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-scenload">
+<h2>Member SCENLOAD<a class="headerlink" href="#member-scenload" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>SCENLOAD SCREENS APPL=SCENLOAD
+*
+* SCENARIO TO load/download a page
+* normally used in BATCH Virtel.
+*
+SCENARIO INITIAL
+*
+** test DEBUG$ TRACE,TERMINAL
+** test DEBUG$ TRACE,LINE
+*
+    COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;PAGENAME&#39;, &lt;&lt; mypagename *
+        FIELD=(VALUE-OF,ROUTING-PARAMETER)
+*
+    COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;APPLID&#39;, *
+        FIELD=(NAME-OF,VIRTEL)
+*
+    COPY$ INPUT-TO-VARIABLE,FIELD=&#39;TODO&#39;,VAR=&#39;TODO&#39;
+    CASE$ &#39;TODO&#39;, *
+        (EQ,&#39;DUMP&#39;,DODUMP), *
+        (EQ,&#39;LOAD&#39;,DOLOAD), *
+        ELSE=ERROR1
+*
+DODUMP LABEL$
+    COPY$ OUTPUT-FILE-TO-VARIABLE,FILE=&#39;*PAGENAME&#39;, *
+        VAR=&#39;MYPAGE&#39;,TYPE=(ASIS,BASE64)
+    ERROR$ 0,&#39;*APPLID&#39;,&#39; SCENLOAD IS DUMPING &#39;,&#39;*PAGENAME&#39;
+    SEND$ AS-FILE,VAR=&#39;MYPAGE&#39;, *
+        NAME=&#39;MYFILE&#39;, *
+        TYPE=&#39;image/x-virtel&#39;
+    GOTO$ DONE
+*
+DOLOAD LABEL$
+    COPY$ INPUT-FILE-TO-VARIABLE,VAR=&#39;MYPAGE&#39;, &lt;&lt; page in BASE64 *
+        FILE=&#39;MYFILE&#39;
+    IF$ NOT-FOUND,THEN=ERROR2
+**  COPY$ LIST-TO-VARIABLE,VAR=&#39;PAGENAME&#39;,TYPE=REPLACE, *
+        LIST=(&#39;AA&#39;,&#39;*PAGENAME&#39;)
+    ERROR$ 0,&#39;*APPLID&#39;,&#39; SCENLOAD IS LOADING &#39;,&#39;*PAGENAME&#39;
+    COPY$ VARIABLE-TO-FILE,FILE=&#39;*PAGENAME&#39;, *
+        VAR=&#39;MYPAGE&#39;,TYPE=(ASIS,BASE64)
+    IF$ NOT-FOUND,THEN=ERROR3
+    COPY$ LIST-TO-VARIABLE,VAR=&#39;RESP&#39;, *
+        LIST=(&#39;file &#39;,&#39;*PAGENAME&#39;,&#39; was loaded Ok&#39;)
+    GOTO$ RESPTHAT
+*
+ERROR1 COPY$ LIST-TO-VARIABLE,VAR=&#39;RESP&#39;, *
+        LIST=(&#39;ERROR1: INVALID COMMAND &#39;,&#39;*TODO&#39;)
+    GOTO$ RESPTHAT
+*
+ERROR2 COPY$ LIST-TO-VARIABLE,VAR=&#39;RESP&#39;, *
+        LIST=(&#39;ERROR2: FILE NOT FOUND &#39;,&#39;*PAGENAME&#39;)
+    GOTO$ RESPTHAT
+ERROR3 COPY$ LIST-TO-VARIABLE,VAR=&#39;RESP&#39;, *
+        LIST=(&#39;ERROR3: ERROR LOADING &#39;,&#39;*PAGENAME&#39;)
+    GOTO$ RESPTHAT
+*
+RESPTHAT LABEL$
+    ERROR$ 0,&#39;*APPLID&#39;,&#39; SCENLOAD RESPONSE IS &#39;,&#39;*RESP&#39;
+    SEND$ AS-ANSWER,VAR=&#39;RESP&#39;,TYPE=&#39;TEXT&#39;
+    GOTO$ DONE
+*
+DONE LABEL$
+** test DEBUG$ SNAP,TERMINAL
+    ACTION$ SERVE-ANOTHER-USER
+    SCENARIO END
+*
+    SCRNEND
+    END
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-eoj">
+<h2>Member EOJ<a class="headerlink" href="#member-eoj" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">EOJ</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="member-batch">
+<h2>Member BATCH<a class="headerlink" href="#member-batch" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>*--------------------------------------------------------------*
+* BATCH INTERFACE TRANSACTIONS -                               *
+*--------------------------------------------------------------*
+SUBDIR  ID=W2H-DIR,
+        DESC=&#39;Pages for WEB2HOST&#39;,
+        DDNAME=SAMPTRSF,
+        KEY=W2H-KEY,
+        NAMELEN=64,
+        AUTHUP=X,
+        AUTHDOWN=X,
+        AUTHDEL=X
+SUBDIR ID=DOC-DIR,
+        DESC=&#39;Pages for WEB2HOST&#39;,
+        DDNAME=SAMPTRSF,
+        KEY=DOC-KEY,
+        NAMELEN=64,
+        AUTHUP=X,
+        AUTHDOWN=X,
+        AUTHDEL=X
+LINE ID=BATCH,
+        NAME=BATCH,
+        DESC=&#39;HTTP line for Batch&#39;,
+        TERMINAL=BT1,
+        ENTRY=BATCH,
+        TYPE=BATCH1,
+        INOUT=1,
+        PROTOCOL=VIRHTTP
+TERMINAL ID=BT1LOC00,
+        DESC=&#39;Batch terminals&#39;,
+        TYPE=3,
+        COMPRESS=2,
+        INOUT=3,
+        STATS=12,
+        REPEAT=0006
+ENTRY ID=BATCH,
+        DESC=&#39;Batch Entry Point&#39;,
+        TRANSACT=BT1,
+        TIMEOUT=0060,
+        ACTION=0,
+        EMUL=HTML
+TRANSACT ID=BT1-00,
+        DESC=&#39;HTML Pages&#39;,
+        NAME=PUBLIC,
+        APPL=W2H-DIR,
+        TYPE=4,
+        STARTUP=1,
+        TERMINAL=BT
+TRANSACT ID=BT1-02,
+        DESC=&#39;HTML Pages&#39;,
+        NAME=DYN,
+        APPL=DYN-DIR,
+        TYPE=4,
+        STARTUP=1,
+        TERMINAL=BT
+TRANSACT ID=BT1-03,
+        DESC=&#39;Scenario upload/download&#39;,
+        NAME=LOADER,
+        APPL=$NONE$,
+        TYPE=2,
+        TERMINAL=BT,
+        STARTUP=1,
+        TIOASTA=&amp;/S,
+        EXITSTA=SCENLOAD
+TRANSACT ID=BT1-04,
+        DESC=&#39;SAMP Pages&#39;,
+        NAME=W2H,
+        APPL=W2H-DIR,
+        TYPE=4,
+        STARTUP=1,
+        TERMINAL=BT
+TRANSACT ID=BT1-05,
+        DESC=&#39;DOC Pages&#39;,
+        NAME=DOC,
+        APPL=DOC-DIR,
+        TYPE=4,
+        STARTUP=1,
+        TERMINAL=BT
+TRANSACT ID=BT1-72,
+        DESC=&#39;Directory upload&#39;,
+        NAME=uplw2h,
+        APPL=VIR0041C,
+        TYPE=2,
+        TERMINAL=BT,
+        LOGMSG=W2H-DIR,
+        STARTUP=2
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../howto.html" class="btn btn-neutral float-right" title="Miscellaneous" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201706/TN201706     .html" class="btn btn-neutral" title="What’s new in Virtel 4.57 (July 2017)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

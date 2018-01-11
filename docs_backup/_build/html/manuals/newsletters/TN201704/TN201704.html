@@ -1,0 +1,836 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Virtel Macros &mdash; Virtel 7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Printing PCL files with NodeJS" href="../TN201705/TN201705     .html"/>
+        <link rel="prev" title="Passticket support with CA Top Secret" href="../TN201703/TN201703.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.57
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id4">2017</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201701/TN201701.html">Protecting business assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201702/TN201702.html">Protecting Virtel Applications with Shibboleth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201703/TN201703.html">Passticket support with CA Top Secret</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201705/TN201705     .html">Printing PCL files with NodeJS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201706/TN201706     .html">What’s new in Virtel 4.57 (July 2017)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Virtel Macros</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manuals/newsletters/TN201704/TN201704.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="virtel-macros">
+<span id="tn201704"></span><h1>Virtel Macros<a class="headerlink" href="#virtel-macros" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This Newsletter applies to Virtel 4.56 (updt5484 and above)
+running with default parameters or in “Compatibility mode”. References
+to the file w2hparm.js refer to the default file distributed in the W2H
+directory. This file can be found in the distributed sources.zip file
+which can be downloaded from the Administration portal. See <a class="reference internal" href="#tn201704-appendix-b"><span class="std std-ref">*Appendix
+B*</span></a> in this newsletter for an example of the distributed w2hparm.js
+file.*</p>
+</div>
+<p><strong>Introduction</strong></p>
+<p>Virtel macros capture keystroke operations which can subsequently be
+used to automate 3270 functions. These user captured macros are stored
+within a file called macros.json. This file is a JavaScript array of
+JSON objects, with each object representing a user macro. Here is an
+example:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
+<span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;mylogon&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;sptholt&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;bastet&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">],</span><span class="s2">&quot;mapping&quot;</span><span class="p">:{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;ctrl&quot;</span><span class="p">,</span><span class="s2">&quot;keycode&quot;</span><span class="p">:</span><span class="mi">76</span><span class="p">}},</span>
+<span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;logoff&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;=x&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;logoff&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">],</span><span class="s2">&quot;mapping&quot;</span><span class="p">:{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;ctrl&quot;</span><span class="p">,</span><span class="s2">&quot;keycode&quot;</span><span class="p">:</span><span class="mi">79</span><span class="p">}},</span>
+<span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;logon&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="s2">&quot;Tab&quot;</span><span class="p">,</span><span class="s2">&quot;Down&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;sptholx&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;MOONRAY&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">],</span><span class="s2">&quot;mapping&quot;</span><span class="p">:{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;alt&quot;</span><span class="p">,</span><span class="s2">&quot;keycode&quot;</span><span class="p">:</span><span class="mi">76</span><span class="p">}}</span>
+<span class="p">],</span><span class="s2">&quot;fmt&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Macro modes</strong></p>
+<p>The macros.json file can be maintained locally, known as local mode, or
+can be downloaded from a centralized repository on the host through the
+Virtel’s Dynamic Directory Interface (DDI). This is known as remote or
+DDI mode. See: *Using macros with the DDI interface* for further
+information. The macros.json file is maintained through either the local
+macro interface, as launched by the user from the Virtel toolbar, or by
+an Administrator through the DDI interface. The macros.json file can be
+edited outside of these interfaces but this is not recommended unless
+you understand the macro structure and are familiar with JavaScript.
+There are various synchronization options which will determine how the
+central DDI repository is synchronized with the user’s local macros. By
+default Virtel maintains macros in local mode. In both modes, local and
+DDI, the macros.json file is stored in the browsers local storage.</p>
+<p><strong>The User Macro Interface</strong></p>
+<p><strong>Macro functions</strong></p>
+<p>You can capture and list macros by using the two macro ICON functions
+displayed in the Virtel tool bar. These are the red record/stop button
+and the green/blue triangular display button. Green indicates local mode
+and blue DDI mode. When the ICON is blue macros will be synchronized
+between the users local storage and the DDI repository. The type of
+synchronization will depend on the options set in the w2hparm.js member.</p>
+<p><strong>The Record and Save functions</strong></p>
+<p><a class="reference internal" href="../../../_images/image140.png"><img alt="image0" src="../../../_images/image140.png" style="width: 6.30000in; height: 1.51389in;" /></a></p>
+<p>Fig. 1 - The Macro Record ICON</p>
+<p>The record function is an on/off button that will record key strokes.
+When recording, the ICON will flash until it is clicked at which point
+it will stop recording and save the key strokes. A save panel will be
+displayed asking for the name of the macro entry. Note that an ENTER/PFK
+key must be pressed at least once, i.e. data must be sent by some key
+operation in order to create and save an entry within the macro.JSON
+file.</p>
+<p><a class="reference internal" href="../../../_images/image233.png"><img alt="image1" src="../../../_images/image233.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
+<p>Fig. 2 - Saving a macro</p>
+<p><strong>Keyboard Mapping</strong></p>
+<p>When saving the macro you have the option of assigning a “hot key” or
+shortcut to the macro through keyboard mapping. Keyboard mapping can be
+a combination of ALT or CTRL keys and another keyboard key (F1 thru F12,
+A thru to Z, 1 thru 9). Beware that some keyboard combinations may be
+reserved for</p>
+<p>the operating system or Virtel functions. For example, CTRL-R is a
+browser refresh option. Allocating this combination as a hotkey will
+only invoke the refresh option and not the Virtel macro. Keyboard
+mapping is a feature that is turned on through a parameter in the
+w2hparm.js file. By default, keyboard mapping is set to false. To turn
+on keyboard mapping specify the following in the w2hparm.js member:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span>
+</pre></div>
+</div>
+<p>With keyboard mapping enabled the macro interface will display the
+associated key mapping against the macro.</p>
+<p><a class="reference internal" href="../../../_images/image327.png"><img alt="image2" src="../../../_images/image327.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
+<p>Fig. 2a - Keymapping association</p>
+<p><strong>The Display button</strong></p>
+<p>The green triangular button will display the local storage macros. From
+here a context menu can be opened against each macro using the mouse
+right click. This will provide delete, edit, save as and run functions.</p>
+<p><a class="reference internal" href="../../../_images/image420.png"><img alt="image3" src="../../../_images/image420.png" style="width: 6.06335in; height: 5.36533in;" /></a></p>
+<p>Fig. 3 - Context menu associated with a macro</p>
+<p><strong>Export and Import options</strong></p>
+<p>Macros can be exported or imported using the Export and Import buttons.
+On export, the macros.json file will be created. If you plan to migrate
+to using the DDI option you will need to export the macros and then
+upload the relevant macros.json file through the DDI interface. See: <a class="reference internal" href="#tn201704-using-ddi"><span class="std std-ref">Using macros with the DDI interface</span></a> for more information.</p>
+<p id="tn201704-using-ddi"><strong>Using macros with the DDI interface</strong></p>
+<p>An alternative to maintaining macros in a user’s local browser storage
+is to maintain and manage macros in a central repository on the
+mainframe. Within the central repository all of the macros can be
+managed by a Virtel administrator. The advantage of maintaining macros
+in a central repository is that the administrator has control over the
+macros and how they are maintained and distributed. A user can now be
+provided with site controlled macros as part of their Virtel interface –
+they do not have to write the own unsupported macros. The repository is
+part of the DDI interface which can be used to administer and manage
+files – Virtel uses the DDI feature to manage the macro file
+macros.json.</p>
+<p>For any user the repository can hold three distinct levels of a macro.
+The user, group and global level. A user’s user and group level are
+assigned based upon their corresponding security subsystem userid and
+group names. The global macro level contains macros applicable to all
+users. A user may maintain macros at their user level only whereas an
+Administrator can maintain macros at all three levels.</p>
+<p><strong>DDI Installation</strong></p>
+<p>In this example the DDI macro interface is turned on for transactions
+defined in the CLI custom directory, normally associated with port
+41002. By default, the transaction CLI-03P identifies the w2hparm.js as
+belonging to the W2H directory. This transaction needs to be modified so
+that the directory for w2hparm.js (Application field) will now be the
+CLI directory. The transaction should be updated so the path
+w2h/w2hparm-js points to the CLI-DIR directory. A modified w2hparm.js
+file, with the macros enabled option set, should then be uploaded to the
+CLI directory. We use the CLI directory for customer modifications to
+avoid any changes being lost during a Virtel upgrade.</p>
+<p><a class="reference internal" href="../../../_images/image519.png"><img alt="image4" src="../../../_images/image519.png" style="width: 4.71111in; height: 4.41667in;" /></a></p>
+<p>Fig. 4 - Modified CLI-03P transaction</p>
+<p>To use the DDI interface the options must be set in the w2hparm.js
+member. The various options control the synchronisation between the
+user’s local macro storage and the DDI central repository. Specify one
+of the following options to turn on DDI or remote macro mode:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p>Where value can be:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>“never” [default] | “once” | “daily” | “session”
+</pre></div>
+</div>
+<p>Macro options:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Never</td>
+<td>Do not synchronise with DDI unless the user presses the refresh button.</td>
+</tr>
+<tr class="row-odd"><td>Once</td>
+<td>Synchronise with DDI only when local storage hasn’t been initialised</td>
+</tr>
+<tr class="row-even"><td>Daily</td>
+<td>Once a day</td>
+</tr>
+<tr class="row-odd"><td>Session</td>
+<td>Every time a new browser session is opened</td>
+</tr>
+</tbody>
+</table>
+<p>Examples:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">}};</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>var w2hparm = {
+&quot;ctrl&quot;:&quot;Newline&quot;,
+&quot;enter&quot;:&quot;ENTER&quot;,
+&quot;pgup&quot;:&quot;PA1&quot;,
+&quot;pgdn&quot;:&quot;PA2&quot;
+};
+
+w2hparm.userVirtelMacros={“macrosAutoRefresh”:”daily”};
+w2hparm.synchronizeVirtelMacros=true;
+w2hparm.keymapping=true;
+</pre></div>
+</div>
+<p>The w2hparm.js member can be found in the sources.zip file. This can be
+downloaded using the following url: myVirtel:41001/w2h/sources.zip or
+from the Administration portal. Extract the zip file and locate the
+w2hparm.js file. Modify the w2hparm definition to include the above
+option then use the Virtel file upload facility to upload the modified
+w2hparm.js to the CLI directory.</p>
+<p>The next step is to run the ARBOLOAD JCL with the VMACROS=YES option
+set. The ARBOLOAD job can be found in the CNTL or SAMPLIB library and
+can only be run when Virtel is down. This will add the relevant Virtel
+transactions and elements to support DDI.</p>
+<p><strong>Managing macros with DDI</strong></p>
+<p>Obtain a “default” copy of a macros.json file. This could be one that
+has been exported from local storage. This file needs to be copied,
+using DDI, to Global directory within the DDI interface using the DDI
+upload interface.</p>
+<p>The normal practice for an administrator in managing the macro
+repository would be to capture and create a macro in their user
+directory, upload it to the mainframe repository using the DDI
+interface, modify it for general use, and then copy it to any group,
+user or global directory for general availability. The upload process is
+through a drag and drop operation within DDI interface. To copy a
+macros.json to another user or group requires downloading the macro
+first then dragging the file into the relevant DDI panel area designated
+by the dotted lines.</p>
+<p><strong>Uploading a macro.json file to the Global directory</strong></p>
+<p>Open the DDI interface, select Global. The Global directory will open.
+Drag the macros.json file into the area designated by a series of dotted
+lines. This will initiate a file upload into the global directory of the
+macro repository:-</p>
+<p><a class="reference internal" href="../../../_images/image625.png"><img alt="image5" src="../../../_images/image625.png" style="width: 4.51042in; height: 3.34652in;" /></a></p>
+<p>Fig. 5 - The DDI Global Upload</p>
+<p>Once you have a copy in the global area, right click on the macros.json
+file to open a context menu. This menu provides some additional
+functions such as Copy, Download, Delete and Edit. For macros.json the
+copy function is not applicable.</p>
+<p><a class="reference internal" href="../../../_images/image712.png"><img alt="image6" src="../../../_images/image712.png" style="width: 5.36385in; height: 3.13542in;" /></a></p>
+<p>Fig. 6 - Additional file functions in DDI</p>
+<p>Selecting “Edit” will open the same editor interface that was used when
+editing macros in local storage. Here the administrator can modify the
+macros held within the macros.json file. Macros can be saved with
+different names and associated with different key mappings. Options like
+Save As, Edit and Delete are available within a context menu when you
+right click on a macro.</p>
+<p><a class="reference internal" href="../../../_images/image811.png"><img alt="image7" src="../../../_images/image811.png" style="width: 5.38542in; height: 3.37360in;" /></a></p>
+<p>Fig. 7 - Updating macros with the Global Directory</p>
+<p>**
+Making macros available to users.**</p>
+<p>Any macros an administrator creates can be made available to users
+either at the Global, Group or Userid level. To make macros available at
+a userid level, select the User TAB from the DDI main panel. Enter the
+user’s USERID in the user name field and press the “Green Tick” icon.
+This will create an area within the DDI macro repository. Upload the
+macros.json file you wish to make available to this user by dragging the
+file into the area designated by the dotted lines. This will initiate an
+upload of the macro into the users userid area.</p>
+<p><a class="reference internal" href="../../../_images/image99.png"><img alt="image8" src="../../../_images/image99.png" style="width: 4.21875in; height: 3.59654in;" /></a></p>
+<p>Fig. 8 - Creating a macros.json file for a user</p>
+<p>As with any file within the DDI repository a context menu can be brought
+up by right clicking on the file name.</p>
+<p><a class="reference internal" href="../../../_images/image109.png"><img alt="image9" src="../../../_images/image109.png" style="width: 4.47917in; height: 3.26309in;" /></a></p>
+<p>Fig. 9 - Editing a global macro</p>
+<p>An administrator can update any macros held within the DDI repository.
+Changes will be reflected in the user’s local storage once the user
+open’s their macro display with the “Green” ICON arrow. The following
+display shows the DDI repository macros as displayed in the user’s
+browser. Remember that User macros are related to the users’ Userid and
+the Group. This ability to associate macros to a userid and group means
+that all macros, related to business assets, can be managed and
+maintained in a central DDI repository. Maintenance can be applied
+centrally and distributed out to the user’s browser. Users only have the
+option of modifying their User macros. Any changes will be uploaded to
+the mainframe and stored in the users’ macro area within the DDI
+repository. This keeps the user macro modifications in sync with the
+repository.</p>
+<p><a class="reference internal" href="../../../_images/image1114.png"><img alt="image10" src="../../../_images/image1114.png" style="width: 5.41667in; height: 5.26501in;" /></a></p>
+<p>Fig. 10 - User display of the DDI macro interface</p>
+<p><strong>Updating DDI macros at the Group level</strong></p>
+<p>To make macros available at a Group level, select the Group TAB from the
+DDI main panel. Enter the Group name in the group name field and press
+the “Green Tick” icon. This will create an area within the DDI macro
+repository were macros for this group can be held. Upload the Group
+macros.json file you wish to make available to this group by dragging
+the file into the area designated by the dotted lines. This will
+initiate an upload of the Group macro.</p>
+<p><a class="reference internal" href="../../../_images/image1212.png"><img alt="image11" src="../../../_images/image1212.png" style="width: 6.30000in; height: 5.19931in;" /></a></p>
+<p>Fig. 11 - Macro Group Directory</p>
+<p>To obtain the associated context menu right click on the file name –
+macros .json. This will provide the additional functionality to Edit,
+Download or Delete the macro.</p>
+<p><strong>Notes:</strong></p>
+<p><strong>File macros.json</strong></p>
+<p>Macros are maintained in the macros.json file. Each macro mode, local or
+DDI (User, Group and Global) will maintain a separate macros.json file.
+Virtel’s DDI can also be used to store other files other than the
+macros.json file. Things like corporate images, bespoke Javascript
+deployments etc. When copying files to DDI you must use the DDI drag and
+drop interface. Do not use the Administration drag and drop interface.</p>
+<p><strong>Save As feature</strong></p>
+<p>The “SAVE AS” function does not have the ability to re-assign key
+mapping. This can only be done through the macro editor. To clone a
+macro with a new key mapping perform the following operations:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>Open macro “A”
+Save as “B”
+Open macro “B” in Editor.
+Save with key board mapping.
+</pre></div>
+</div>
+<p><strong>Autoupdate of macros in local storage.</strong></p>
+<p>Updates to DDI macros held in local storage can only be updated once the
+user refreshes or redisplays the macros. This triggers the download from
+the mainframe. Macros are not “automatically” updated in the background
+due to the performance. If an Administrator updates a macro on the
+mainframe that update will only be available to the user when the user
+redisplays or refreshes his local storage by using the “Green” display
+ICON.</p>
+<p><strong>Synchronisation of macros in multiple Virtel environments.</strong></p>
+<p>If you are running multiple images of Virtel, say in a SYSPLEX
+arrangement, using separate HTMLTRSF files then the
+“synchronizeVirtelMacros” option should be set to true. This ensures
+that macro changes are reflected in all DDI repositories and
+consequently associated local storage. Update the w2hparm.js file to
+include:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">},</span>
+<span class="s2">&quot;synchronizeVirtelMacros&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
+<p><strong>Appendix A</strong></p>
+<p><strong>Macro format and commands</strong></p>
+<p>The format of the macro.json is embedded JSON structures. Each name
+structure represents a keystroke macro identified by the “name” keyword.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>name    : The name of the macro entry.
+Rev     : The “rev” is a user revision keyword.
+Def     : The “def” keyword identifies the commands and entry values.
+</pre></div>
+</div>
+<p>The macro editor supports the following commands:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="s2">&quot;any string of characters to input into 3270 screen&quot;</span>
+<span class="o">-</span>  <span class="n">move</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<span class="o">-</span>  <span class="n">copy</span><span class="p">(</span><span class="n">startRow</span><span class="p">,</span><span class="n">startCol</span><span class="p">,</span><span class="n">endRow</span><span class="p">,</span><span class="n">endCol</span><span class="p">)</span>
+<span class="o">-</span>  <span class="n">paste</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<span class="o">-</span>  <span class="n">paste</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="n">nbRows</span><span class="p">,</span><span class="n">nbCols</span><span class="p">)</span>
+<span class="o">-</span>  <span class="n">key</span><span class="p">(</span><span class="n">keyIdentifier</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Macro example</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
+<span class="p">{</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSFLOG&quot;</span><span class="p">,</span>
+<span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+<span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="s2">&quot;move(435)&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;=M&quot;</span><span class="p">},</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;6&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">]</span>
+<span class="p">},</span>
+<span class="p">{</span>
+<span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSFDA&quot;</span><span class="p">,</span>
+<span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+<span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="mi">77</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="p">],</span><span class="s2">&quot;fmt&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+<p id="tn201704-appendix-b"><strong>Appendix – B</strong></p>
+<p><strong>Distributed w2hparm.js</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;settingsGUI&quot;</span><span class="p">:{</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;v2&quot;</span><span class="p">},</span>
+<span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;Droid Sans Mono&quot;</span><span class="p">,</span>
+<span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;home&quot;</span><span class="p">:</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span>
+<span class="s2">&quot;end&quot;</span><span class="p">:</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftins&quot;</span><span class="p">:</span><span class="s2">&quot;Dup&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shifthome&quot;</span><span class="p">:</span><span class="s2">&quot;FieldMark&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlins&quot;</span><span class="p">:</span><span class="s2">&quot;PA1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrldel&quot;</span><span class="p">:</span><span class="s2">&quot;PA2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgup&quot;</span><span class="p">:</span><span class="s2">&quot;PF7&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PF8&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pause&quot;</span><span class="p">:</span><span class="s2">&quot;CLEAR&quot;</span><span class="p">,</span>
+<span class="s2">&quot;style&quot;</span><span class="p">:</span><span class="s2">&quot;3270&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p><strong>Appendix C</strong></p>
+<p><strong>FAQ</strong></p>
+<ol class="arabic simple">
+<li>Why do I get the following error message after setting</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">};</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../../_images/image1310.png"><img alt="image12" src="../../../_images/image1310.png" style="width: 4.53125in; height: 5.27097in;" /></a></p>
+<p><em>Answer.</em>
+You have turned on DDI macro support (BLUE interface ICON) but the
+application you are accessing is not secured. DDI is unable to determine the
+userid associated with the transaction.</p>
+<p><strong>Appendix D</strong></p>
+<p><strong>Virtel DDI Support for Macros</strong></p>
+<p>Virtel V4.56 Macros enhanced to include key mapping. Run ARBOLOAD with
+MACROS=YES to install feature.</p>
+<p>Virtel V4.54 Macros are delivered as a part of the base product. Run
+ARBOLOAD with MACROS=YES to install feature.</p>
+<p>Virtel V4.53 To upgrade your 4.53 system to include the new macro
+feature the following ARBO updates are required. Run this JCL to update
+your 4.53 ARBO to include the directories and transactions required for
+macros. You will also need to update transaction W2H-20 in WEB2HOST and
+changing the output scenario to ADMINVWM.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>//VIRARBLD JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID
+//*--------------------------------------------------------------*
+// SET LANG=EN
+// SET LOAD=SP000.VIRT453.LOADLIB
+// SET ARBO=SP000.SPVIREH.ARBO
+// SET VMACROS=YES
+//*--------------------------------------------------------------*
+//VIRLOAD PROC PROCESS=&#39;YES-OR-NO&#39;
+//VIRLOAD EXEC PGM=VIRCONF,PARM=&#39;LOAD,NOREPL,LANG=&amp;LANG&#39;,REGION=2M
+//STEPLIB DD DISP=SHR,DSN=&amp;LOAD
+//VIRARBO DD DISP=SHR,DSN=&amp;ARBO
+//SYSPRINT DD SYSOUT=*
+//SYSIN DD DDNAME=SYSIN&amp;PROCESS
+//SYSINNO DD DUMMY,DCB=(RECFM=FB,LRECL=80,BLKSIZE=80)
+// PEND
+//VMACROS EXEC VIRLOAD,PROCESS=&amp;VMACROS
+//SYSINYES DD * &lt;--START VMACROS SECTION--&gt;
+*--------------------------------------------------------------*
+*
+(EN)* Definitions for VIRTEL dynamic directories
+(FR)* Dbfinitions des rbpertoires VIRTEL dynamiques
+*
+SUBDIR ID=GLB-DIR,
+(EN) DESC=&#39;Global files&#39;,
+(FR) DESC=&#39;Fichiers globaux&#39;,
+FSTYPE=V,
+DDNAME=HTMLTRSF,
+KEY=GLOBAL,
+NAMELEN=0064,
+AUTHUP=X,
+AUTHDOWN=X,
+AUTHDEL=X
+SUBDIR ID=GRP-DIR,
+(EN) DESC=&#39;Group files&#39;,
+(FR) DESC=&#39;Fichiers de groupe&#39;,
+FSTYPE=V,
+DDNAME=HTMLTRSF,
+KEY=%GROUP%,
+NAMELEN=0064,
+AUTHUP=X,
+AUTHDOWN=X,
+AUTHDEL=X
+SUBDIR ID=USR-DIR,
+(EN) DESC=&#39;User files&#39;,
+(FR) DESC=&#39;Fichiers utilisateur&#39;,
+FSTYPE=V,
+DDNAME=HTMLTRSF,
+KEY=%USER%,
+NAMELEN=0064,
+AUTHUP=X,
+AUTHDOWN=X,
+AUTHDEL=X
+*
+(EN)* Transactions to access VIRTEL dynamic directories via WEB2HOST
+(FR)* Transactions pour accbder aux rbpertoires VIRTEL dynamiques via
+WEB2HOST
+*
+TRANSACT ID=W2H-03A,
+NAME=&#39;w2h&#39;,
+(EN) DESC=&#39;Global files directory&#39;,
+(FR) DESC=&#39;Rbpertoire des fichiers globaux&#39;,
+APPL=GLB-DIR,
+TYPE=4,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=0,
+LOGMSG=&#39;/w2h/global&#39;
+TRANSACT ID=W2H-03G,
+NAME=&#39;w2h&#39;,
+(EN) DESC=&#39;Group files directory&#39;,
+(FR) DESC=&#39;Rbpertoire des fichiers de groupe&#39;,
+APPL=GRP-DIR,
+TYPE=4,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=0,
+LOGMSG=&#39;/w2h/group&#39;
+TRANSACT ID=W2H-03U,
+NAME=&#39;w2h&#39;,
+(EN) DESC=&#39;User files directory&#39;,
+(FR) DESC=&#39;Rbpertoire des fichiers utilisateur&#39;,
+APPL=USR-DIR,
+TYPE=4,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=0,
+LOGMSG=&#39;/w2h/user&#39;
+*
+(EN)* Transactions to access VIRTEL dynamic directories via CLIWHOST
+(FR)* Transactions pour accbder aux rbpertoires VIRTEL dynamiques via
+CLIWHOST
+*
+TRANSACT ID=CLI-03A,
+NAME=&#39;w2h&#39;,
+(EN) DESC=&#39;Global files directory&#39;,
+(FR) DESC=&#39;Rbpertoire des fichiers globaux&#39;,
+APPL=GLB-DIR,
+TYPE=4,
+TERMINAL=CLLOC,
+STARTUP=2,
+SECURITY=0,
+LOGMSG=&#39;/w2h/global&#39;
+TRANSACT ID=CLI-03G,
+NAME=&#39;w2h&#39;,
+(EN) DESC=&#39;Group files directory&#39;,
+(FR) DESC=&#39;Rbpertoire des fichiers de groupe&#39;,
+APPL=GRP-DIR,
+TYPE=4,
+TERMINAL=CLLOC,
+STARTUP=2,
+SECURITY=0,
+LOGMSG=&#39;/w2h/group&#39;
+TRANSACT ID=CLI-03U,
+NAME=&#39;w2h&#39;,
+(EN) DESC=&#39;User files directory&#39;,
+(FR) DESC=&#39;Rbpertoire des fichiers utilisateur&#39;,
+APPL=USR-DIR,
+TYPE=4,
+TERMINAL=CLLOC,
+STARTUP=2,
+SECURITY=0,
+LOGMSG=&#39;/w2h/user&#39;
+*
+(EN)* Transaction for the Dynamic Directory Interface application
+(FR)* Transaction pour l&#39;application Dynamic Directory Interface
+*
+TRANSACT ID=W2H-07,
+NAME=&#39;dynadmin&#39;,
+(EN) DESC=&#39;Dynamic Directory Interface&#39;,
+(FR) DESC=&#39;Dynamic Directory Interface&#39;,
+APPL=VIR0022,
+TYPE=2,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=1,
+TRANSL=1,
+EXITMSGI=SCDYNADM,
+EXITMSGO=SCDYNADM
+*
+(EN)* Transaction to allow users to upload macros via CLIWHOST
+(FR)* Transaction pour chargement des macros utilisateur via CLIWHOST
+*
+TRANSACT ID=CLI-80U,
+NAME=&#39;uplusr&#39;,
+(EN) DESC=&#39;Upload user macros&#39;,
+(FR) DESC=&quot;Chargement des macros de l&#39;utilisateur&quot;,
+APPL=VIR0041C,
+TYPE=2,
+TERMINAL=CLLOC,
+STARTUP=2,
+SECURITY=0,
+LOGMSG=USR-DIR
+*
+(EN)* Transactions to allow administrator to upload macros
+(FR)* Transactions pour chargement des macros par l&#39;administrateur
+*
+TRANSACT ID=W2H-66,
+NAME=&#39;usrcap&#39;,
+(EN) DESC=&#39;Generate administrator upload capability token&#39;,
+(FR) DESC=&#39;Generation de jeton de capacitb administrateur&#39;,
+APPL=$NONE$,
+TYPE=2,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=1,
+TRANSL=0,
+TIOASTA=&#39;&amp;/S OK &amp;/T&#39;,
+EXITSTA=SCENUCAP
+TRANSACT ID=W2H-80A,
+NAME=&#39;uplglb&#39;,
+(EN) DESC=&#39;Upload macros (GLB-DIR directory)&#39;,
+(FR) DESC=&#39;Chargement des macros (rbpertoire GLB-DIR)&#39;,
+APPL=VIR0041C,
+TYPE=2,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=1,
+LOGMSG=GLB-DIR
+TRANSACT ID=W2H-80G,
+NAME=&#39;uplgrp&#39;,
+(EN) DESC=&#39;Upload macros (GRP-DIR directory)&#39;,
+(FR) DESC=&#39;Chargement des macros (rbpertoire GRP-DIR)&#39;,
+APPL=VIR0041C,
+TYPE=2,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=1,
+LOGMSG=GRP-DIR
+TRANSACT ID=W2H-80U,
+NAME=&#39;uplusr&#39;,
+(EN) DESC=&#39;Upload macros (USR-DIR directory)&#39;,
+(FR) DESC=&#39;Chargement des macros (rbpertoire USR-DIR)&#39;,
+APPL=VIR0041C,
+TYPE=2,
+TERMINAL=DELOC,
+STARTUP=2,
+SECURITY=1,
+LOGMSG=USR-DIR
+*--------------------------------------------------------------*
+//* &lt;--END VMACROS SECTION--&gt;
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201705/TN201705     .html" class="btn btn-neutral float-right" title="Printing PCL files with NodeJS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201703/TN201703.html" class="btn btn-neutral" title="Passticket support with CA Top Secret" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
