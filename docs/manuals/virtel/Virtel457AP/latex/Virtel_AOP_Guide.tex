@@ -169,10 +169,12 @@ A VIRTEL command, as described in the following section
 
 \end{description}
 
+\newpage
+
 
 \section{KILL Command}
 \label{\detokenize{audit_operations_ and_performance:kill-command}}
-The KILL command can be used to stop a scenario:
+The KILL command can be used to stop a scenario.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{KILL}\PYG{p}{,}\PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}
@@ -188,7 +190,7 @@ The KILL command requests VIRTEL to abnormally terminate the scenario currently 
 
 \section{LINES Command}
 \label{\detokenize{audit_operations_ and_performance:lines-command}}
-The LINES command can be used to display a summary of the line status.:
+The LINES command can be used to display a summary of the line status.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{LINES} \PYG{o}{\textbar{}} \PYG{n}{LINES}\PYG{p}{,}\PYG{n}{ACT} \PYG{o}{\textbar{}} \PYG{n}{LINES}\PYG{p}{,}\PYG{n}{INACT}
@@ -225,7 +227,7 @@ VIR0202I \PYGZhy{}\PYGZhy{}\PYGZhy{}END OF LIST\PYGZhy{}\PYGZhy{}\PYGZhy{}
 
 \subsection{Display line detail}
 \label{\detokenize{audit_operations_ and_performance:display-line-detail}}
-To display detail information about a Virtel line use the line detail display command.:
+To display detail information about a Virtel line use the line detail command.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{LINE}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{DISPLAY} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{D}\PYG{p}{)}
@@ -234,9 +236,9 @@ To display detail information about a Virtel line use the line detail display co
 \item[{linename}] \leavevmode
 Internal or external name of the line
 
-The LINE DISPLAY command displays the status of a line and its  associated terminals.
-
 \end{description}
+
+The LINE DISPLAY command displays the status of a line and its associated terminals.
 
 Example:
 
@@ -274,6 +276,8 @@ Example:
 \PYG{n}{VIR0204I} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{END} \PYG{n}{OF} \PYG{n}{LIST}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
 \end{sphinxVerbatim}
 
+\newpage
+
 
 \subsection{Tracing a line}
 \label{\detokenize{audit_operations_ and_performance:tracing-a-line}}
@@ -286,7 +290,7 @@ To activate or deactive a trace on the line the following command can be used:-:
 
 \subsection{Starting and Stopping A Line}
 \label{\detokenize{audit_operations_ and_performance:starting-and-stopping-a-line}}
-To STOP or START a line use the LINE command with the START or STOP function.:
+To STOP or START a line use the LINE command with the START or STOP function.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{LINE}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{START} \PYG{o}{\textbar{}} \PYG{n}{STOP}
@@ -332,15 +336,17 @@ FILE means write messages to file.
 \end{itemize}
 
 
-\subsection{LOG=SYSOUT}
-\label{\detokenize{audit_operations_ and_performance:log-sysout}}
+\subsection{LOG=SYSOUT TCT definition}
+\label{\detokenize{audit_operations_ and_performance:log-sysout-tct-definition}}
 Setting up VIRTEL to use the LOG=SYSOUT facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{LOG}\PYG{o}{=}\PYG{p}{(}\PYG{n}{SYSOUT}\PYG{p}{[}\PYG{p}{,}\PYG{n}{class}\PYG{p}{,}\PYG{n}{destination}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{LOG}\PYG{o}{=}\PYG{p}{(}\PYG{n}{SYSOUT}\PYG{p}{[}\PYG{p}{,}\PYG{n}{class}\PYG{p}{[}\PYG{p}{,}\PYG{n}{destination}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 
 \PYG{n}{For} \PYG{n}{example}\PYG{p}{,} \PYG{n}{LOG}\PYG{o}{=}\PYG{p}{(}\PYG{n}{SYSOUT}\PYG{p}{,}\PYG{n}{A}\PYG{p}{,}\PYG{n}{EDSPRT}\PYG{p}{)}
 \end{sphinxVerbatim}
+
+\newpage
 
 This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-
 
@@ -357,24 +363,31 @@ Setting up Virtel to use the LOG=FILE facility requires a change to the TCT defi
 \PYG{n}{LOG}\PYG{o}{=}\PYG{n}{FILE}
 \end{sphinxVerbatim}
 
-This will trigger VIR0021A to write messages ether to The DD statements VIRLOGX or VIRLOGY depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE with the following DCB attributes.
+This will trigger the log program VIR0021A to write messages to either the VIRLOGX DD statement or the VIRLOGY DD statement depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE option. The following DCB attributes. Recommended space allocation could be 10 tracks for each dataset.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{LOGFILEX} \PYG{o+ow}{and} \PYG{n}{LOGFILEY}
 \PYG{n}{DCB} \PYG{n}{attributes} \PYG{p}{:} \PYG{n}{PS}\PYG{p}{,} \PYG{n}{LRECL}\PYG{o}{=}\PYG{l+m+mi}{165}\PYG{p}{,} \PYG{n}{RECFM}\PYG{o}{=}\PYG{n}{VB}\PYG{p}{,} \PYG{n}{BLKSIZE}\PYG{o}{=}\PYG{l+m+mi}{32000}
 \end{sphinxVerbatim}
 
-If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile. To determine the status of the LOG file, or to switch the log file manually issue one of the following commands:-
+If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile.
+
+
+\section{LOG Status \textbar{} Switch Commands}
+\label{\detokenize{audit_operations_ and_performance:log-status-switch-commands}}
+To determine the status of the LOG file, or to switch the log file manually issue one of the following commands:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{F} \PYG{n}{VIRTEL}\PYG{p}{,}\PYG{n}{LOG}\PYG{p}{,}\PYG{n}{D}              \PYG{n}{Display} \PYG{n}{active} \PYG{n}{logfile}
 \PYG{n}{F} \PYG{n}{VIRTEL}\PYG{p}{,}\PYG{n}{LOG}\PYG{p}{,}\PYG{n}{I}              \PYG{n}{Switch} \PYG{n}{logfiles}
 \end{sphinxVerbatim}
 
+\newpage
+
 
 \section{MEMDISPLAY Command}
 \label{\detokenize{audit_operations_ and_performance:memdisplay-command}}
-To display Virtel Internal Memory Usage use the MEMDISPLAY command.:
+To display Virtel Internal Memory Usage use the MEMDISPLAY command.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MEMDISPLAY}
@@ -438,7 +451,7 @@ Memory Display feature is activated by using the MEMHST subparameter in the MEMO
 
 \subsection{Disabling the MEMDISPLAY function}
 \label{\detokenize{audit_operations_ and_performance:disabling-the-memdisplay-function}}
-It can be deactivated by using the command.:
+It can be deactivated by using the command.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{F} \PYG{n}{VIRTEL}\PYG{p}{,}\PYG{n}{MEMDISPLAY}\PYG{p}{,}\PYG{n}{DISABLE}
@@ -447,6 +460,8 @@ It can be deactivated by using the command.:
 \begin{sphinxadmonition}{note}{Note:}
 This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.
 \end{sphinxadmonition}
+
+\newpage
 
 
 \section{MSG Command}
@@ -476,8 +491,8 @@ program name
 The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.
 
 
-\section{RELAY Command}
-\label{\detokenize{audit_operations_ and_performance:relay-command}}
+\section{RELAY TRACE Command}
+\label{\detokenize{audit_operations_ and_performance:relay-trace-command}}
 Use the RELAY command to trace the Virtel buffers between Virtel and the application.
 
 RELAY=relayname,NOTRACE \textbar{} TRACE
@@ -485,7 +500,7 @@ RELAY=relayname,NOTRACE \textbar{} TRACE
 
 \section{RELAYS Command}
 \label{\detokenize{audit_operations_ and_performance:relays-command}}
-To display a list of Virtel LU relays use the RELAY command.:
+To display a list of Virtel LU relays use the RELAY command.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RELAYS}
@@ -503,6 +518,8 @@ The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs open
 \PYG{n}{VIR0214I} \PYG{n}{W2HIP000} \PYG{n}{REHIP000}
 \PYG{n}{VIR0214I} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{END} \PYG{n}{OF} \PYG{n}{LIST}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
 \end{sphinxVerbatim}
+
+\newpage
 
 
 \section{SILENCE Command}
@@ -558,7 +575,7 @@ The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain 
 \PYG{n}{SNAPMSG}\PYG{o}{=}\PYG{n}{message}\PYG{p}{,}\PYG{n}{search}\PYG{p}{,}\PYG{n}{action}
 \end{sphinxVerbatim}
 
-The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG command from the console. See “SNAPMSG command”.
+The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG parameter in the TCT. See “SNAPMSG parameter” in the Virtel Installation Guide.
 \begin{description}
 \item[{message}] \leavevmode
 Any message that can be issued by Virtel.
@@ -605,7 +622,7 @@ The SNAPW command sets the width for future SNAP commands (80 or 132 columns). T
 
 \subsection{Display statistics file information}
 \label{\detokenize{audit_operations_ and_performance:display-statistics-file-information}}
-To display information about the Virtel statistics file management use the STAT command.:
+To display information about the Virtel statistics file management use the STAT command.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{STAT}\PYG{p}{,}\PYG{n}{D}
@@ -616,7 +633,7 @@ This command displays the status of the VIRSTATx files (message VIR0601I). The S
 
 \subsection{Switch the VIRSTAT file}
 \label{\detokenize{audit_operations_ and_performance:switch-the-virstat-file}}
-To switch the STATISTIC file using the STAT switch command.:
+To switch the STATISTIC file using the STAT switch command.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{STAT}\PYG{p}{,}\PYG{n}{I}
@@ -663,22 +680,27 @@ Use the TERM command to activate a Terminal trace. This will trace data between 
 
 TERM=termid,NOTRACE \textbar{} TRACE  {[}or T=termid,N \textbar{} T {]}
 
+\newpage
+
 
 \section{TRACE \textbar{} NOTRACE Command}
 \label{\detokenize{audit_operations_ and_performance:trace-notrace-command}}
-A trace can be activated on a terminal, line or relay.:
+A trace can be activated or deactivated on a terminal, line or relay.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{TERM}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{TRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{T}\PYG{p}{)}
-\PYG{n}{TERM}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{NOTRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{N}\PYG{p}{)}
-\PYG{n}{LINE}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{TRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{T}\PYG{p}{)}
-\PYG{n}{LINE}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{NOTRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{N}\PYG{p}{)}
-\PYG{n}{RELAY}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{TRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{T}\PYG{p}{)}
-\PYG{n}{RELAY}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{NOTRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{N}\PYG{p}{)}
+\PYG{n}{TRACE}\PYG{p}{,}\PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}
+\PYG{n}{TRACE}\PYG{p}{,}\PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}
+\PYG{n}{TRACE}\PYG{p}{,}\PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}
+\PYG{n}{NOTRACE}\PYG{p}{,}\PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}
+\PYG{n}{NOTRACE}\PYG{p}{,}\PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}
+\PYG{n}{NOTRACE}\PYG{p}{,}\PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}
 \end{sphinxVerbatim}
 \begin{description}
 \item[{termid}] \leavevmode
 terminal name
+
+\item[{linename}] \leavevmode
+Internal or external name of the line
 
 \item[{relayname}] \leavevmode
 relay associated to the terminal
@@ -688,7 +710,7 @@ relay associated to the terminal
 It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
 
 \sphinxincludegraphics{{image23}.png}
-\sphinxstyleemphasis{Fig.3 - Associated relay names}
+\sphinxstyleemphasis{Associated relay names}
 \begin{description}
 \item[{linename}] \leavevmode
 Internal or external name of the line
@@ -698,12 +720,12 @@ Internal or external name of the line
 The following alternate forms of the TRACE/NOTRACE commands are also  valid
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{TRACE}\PYG{p}{,}\PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}
-\PYG{n}{TRACE}\PYG{p}{,}\PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}
-\PYG{n}{TRACE}\PYG{p}{,}\PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}
-\PYG{n}{NOTRACE}\PYG{p}{,}\PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}
-\PYG{n}{NOTRACE}\PYG{p}{,}\PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}
-\PYG{n}{NOTRACE}\PYG{p}{,}\PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}
+\PYG{n}{TERM}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{TRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{T}\PYG{p}{)}
+\PYG{n}{TERM}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{NOTRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{T}\PYG{o}{=}\PYG{n}{termid}\PYG{p}{,}\PYG{n}{N}\PYG{p}{)}
+\PYG{n}{LINE}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{TRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{T}\PYG{p}{)}
+\PYG{n}{LINE}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{NOTRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{L}\PYG{o}{=}\PYG{n}{linename}\PYG{p}{,}\PYG{n}{N}\PYG{p}{)}
+\PYG{n}{RELAY}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{TRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{T}\PYG{p}{)}
+\PYG{n}{RELAY}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{NOTRACE} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{R}\PYG{o}{=}\PYG{n}{relayname}\PYG{p}{,}\PYG{n}{N}\PYG{p}{)}
 \end{sphinxVerbatim}
 \begin{description}
 \item[{termid}] \leavevmode
@@ -733,6 +755,8 @@ An example of the response is:-:
 \PYG{n}{VIR0213I} \PYG{n}{NO} \PYG{n}{ACTIVE} \PYG{n}{TRACES}
 \end{sphinxVerbatim}
 
+\newpage
+
 
 \subsection{Setting trace options}
 \label{\detokenize{audit_operations_ and_performance:setting-trace-options}}
@@ -742,9 +766,9 @@ To set the trace options issue the following command:
 \PYG{n}{TRACE}\PYG{p}{,}\PYG{n}{VIT}\PYG{o}{=}\PYG{n}{Y}\PYG{o}{\textbar{}}\PYG{n}{N} \PYG{n}{Y}\PYG{o}{\textbar{}}\PYG{n}{N} \PYG{n}{Y}\PYG{o}{\textbar{}}\PYG{n}{N}
 \end{sphinxVerbatim}
 
-The default VIT trace parametr is YYN. The external trace setting should only be set hen instructed to by Virtel support.
+The default VIT trace parametr is YYN. The external archive trace setting should only be set when instructed to by Virtel support.
 
-The VIT indicators apply the the level of tracing.:
+The VIT indicators apply the the level of tracing.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{\PYGZhy{}} \PYG{n}{Y}\PYG{o}{\textbar{}}\PYG{n}{N}           \PYG{n}{No} \PYG{n}{tracing} \PYG{o+ow}{or} \PYG{n}{minimal} \PYG{n}{tracing}
@@ -782,7 +806,7 @@ SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In
 
 \section{ZAP Command}
 \label{\detokenize{audit_operations_ and_performance:zap-command}}
-The ZAP command allows dynamic patching of a Virtel Program:
+The ZAP command allows dynamic patching of a Virtel Program
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{ZAP}\PYG{o}{=}\PYG{n}{progname}\PYG{o}{+}\PYG{n}{offset}\PYG{p}{,}\PYG{n}{verify}\PYG{p}{,}\PYG{n}{replace}
@@ -975,21 +999,187 @@ To return to the Lines Status Display, press {[}PF3{]}. To return to the Configu
 
 \end{description}
 
+\newpage
 
-\section{Applying Maintenance}
-\label{\detokenize{audit_operations_ and_performance:applying-maintenance}}
-Maintence is normally through email or by downloading from the Virtel ftp web server - \sphinxurl{http://ftp.syspertec.com/login/}. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. The application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elemnts is through a GUI Drag and Drop interface or via a Virtel Batch process. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
+
+\section{Memory Display Sub-Application}
+\label{\detokenize{audit_operations_ and_performance:memory-display-sub-application}}
+The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.
+
+To invoke the memory management sub-application, press {[}PA2{]} in the Configuration Menu to display the Sub- Application Menu, then press {[}PF4{]} in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
+
+\sphinxincludegraphics{{image26}.png}
+
+\sphinxstyleemphasis{Fig 25. Memory display of VIRTEL address space}
+
+Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.
+
+Permanently allocated memory blocks are represented by the following character types:
+\begin{enumerate}
+\item {} 
+To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space.
+
+\item {} 
+Temporarily allocated memory blocks. Blocks of this type are allocated and freed by VIRTEL as required.
+
+\item {} 
+Memory blocks used by the VIRTEL Multi-Session feature to save screen images. Blocks of this type are allocated and freed by VIRTEL as required.
+
+\item {} 
+Memory blocks used for saving EIB and other session-related information. Blocks of this type are allocated and freed by VIRTEL as required.
+
+\item {} 
+Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.
+
+\item {} 
+Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.
+
+\end{enumerate}
+
+
+\subsection{Memory display in Memory=Test mode.}
+\label{\detokenize{audit_operations_ and_performance:memory-display-in-memory-test-mode}}
+If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
+
+\sphinxincludegraphics{{image28}.png}
+
+\sphinxstyleemphasis{Fig. 26 - Memory display in MEMORY=TEST mode}
+
+Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.
+
+Where the memory display occupies more than one screen, you can press {[}PF8{]} to view the following page, {[}PF7{]} to view the previous page, and {[}PF6{]} to go back to the first page.
+
+To refresh the display with up-to-date information, press {[}Enter{]}.
+
+To return to the sub-application menu, press {[}PF3{]} or {[}Clear{]}
+
+5.2 Virtual Memory Display
+
+The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar. The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).
+
+\begin{sphinxadmonition}{note}{Note:}
+This diagnostic tool should only be used when recommended by Technical Support.
+\end{sphinxadmonition}
+
+
+\subsection{Memory trace management}
+\label{\detokenize{audit_operations_ and_performance:memory-trace-management}}
+
+\subsubsection{Activating the memory trace}
+\label{\detokenize{audit_operations_ and_performance:activating-the-memory-trace}}
+A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{MEMTRACE}
+\end{sphinxVerbatim}
+
+The will produce the following response:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VIR0200I} \PYG{n}{MEMTRACE}
+\PYG{n}{VIR0214I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{STARTED}
+\PYG{n}{VIR0218I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{FOUND} \PYG{l+m+mi}{00000000} \PYG{n}{BLOCKS} \PYG{n}{USING} \PYG{l+m+mi}{0000000000000000} \PYG{n}{BYTES} \PYG{p}{(}\PYG{l+m+mi}{00000000} \PYG{n}{MEGS}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+
+\subsubsection{Resetting the memory trace}
+\label{\detokenize{audit_operations_ and_performance:resetting-the-memory-trace}}
+A memory trace can be reseted by using the following command:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{MEMTRACE}\PYG{p}{,}\PYG{n}{Clear}
+\end{sphinxVerbatim}
+
+The trace is stopped, memory blocks used by the memory trace are released, the trace is restarted.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VIR0200I} \PYG{n}{MEMTRACE}\PYG{p}{,}\PYG{n}{CLEAR}
+\PYG{n}{VIR0218I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{FOUND} \PYG{l+m+mi}{00000011} \PYG{n}{BLOCKS} \PYG{n}{USING} \PYG{l+m+mi}{0000000000053344} \PYG{n}{BYTES} \PYG{p}{(}\PYG{l+m+mi}{00000000} \PYG{n}{MEGS}\PYG{p}{)}
+\PYG{n}{VIR0216I} \PYG{n}{CLEARING} \PYG{n}{MEMORY} \PYG{n}{TRACE}
+\PYG{n}{VIR0217I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{CLEARED}
+\PYG{n}{VIR0214I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{STARTED}
+\PYG{n}{VIR0218I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{FOUND} \PYG{l+m+mi}{00000000} \PYG{n}{BLOCKS} \PYG{n}{USING} \PYG{l+m+mi}{0000000000000000} \PYG{n}{BYTES} \PYG{p}{(}\PYG{l+m+mi}{00000000} \PYG{n}{MEGS}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+
+\subsubsection{Stopping the memory trace}
+\label{\detokenize{audit_operations_ and_performance:stopping-the-memory-trace}}
+A memory trace can be stopped by using the following command:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{NOMEMTRACE}
+\end{sphinxVerbatim}
+
+The trace is stopped, memory blocks used by the memory trace are released.
+
+
+\subsubsection{Setting Memory Trace in the VIRTCT}
+\label{\detokenize{audit_operations_ and_performance:setting-memory-trace-in-the-virtct}}
+A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.
+
+Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
+Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.
+
+\sphinxincludegraphics{{image27}.png}
+
+\sphinxstyleemphasis{Example of a memory allocataion history}
+\begin{description}
+\item[{Column Explanations}] \leavevmode\begin{enumerate}
+\item {} 
+Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.
+
+\item {} 
+Task number behind the allocation request.
+
+\item {} 
+Register 14 value.
+
+\item {} 
+Register 15 value.
+
+\item {} 
+Program name + offset of the origin request.
+
+\item {} 
+Memory allocation type. (8040 = GETMAIN).
+
+\item {} 
+Memory block state.
+
+\item {} 
+Time of the allocation.
+
+\item {} 
+Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.
+
+\item {} 
+Reserved for internal use.
+
+\end{enumerate}
+
+\end{description}
+
+Tracing memory activity can produce an important overhead estimated to 20-30\% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
+
+\newpage
+
+
+\section{Maintenance}
+\label{\detokenize{audit_operations_ and_performance:maintenance}}
+Maintence is normally delivered through email or by downloading a maintenance package from the Virtel ftp web server - \sphinxurl{http://ftp.syspertec.com/login/}. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. Application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elements is through a Virtel GUI Drag and Drop interface or via a Virtel Batch process. This is found in the Administration Portal of Virtel. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
 
 
 \subsection{Applying z/OS maintenance.}
 \label{\detokenize{audit_operations_ and_performance:applying-z-os-maintenance}}
-By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as accumulation file called either allptfs-mshpvrr.txt (z/VSE) or allptfs-mvsvrr-txt (z/OS).
+By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as an accumulation file called either \sphinxstyleemphasis{allptfs-mshpvrr.txt} (z/VSE) or \sphinxstyleemphasis{allptfs-mvsvrr-txt} (z/OS).
 
 \sphinxincludegraphics{{image29}.png}
 
 \sphinxstyleemphasis{Syspertec ftp web server}
 
-Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTF457MV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTF457MV file. As the PTF457MV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.:
+\newpage
+
+Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTFvrrMV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTFvrrMV file. As the PTFvrrMV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VIR0018I} \PYG{n}{VIRTEL} \PYG{l+m+mf}{4.57} \PYG{n}{HAS} \PYG{n}{THE} \PYG{n}{FOLLOWING} \PYG{n}{PTF}\PYG{p}{(}\PYG{n}{S}\PYG{p}{)} \PYG{n}{APPLIED}
@@ -1000,7 +1190,7 @@ Once downloaded and unzipped, the zap package will contain a sequential text fil
 
 \subsection{Applying maintenance to the TRSF files}
 \label{\detokenize{audit_operations_ and_performance:applying-maintenance-to-the-trsf-files}}
-The updates to the web entities are delivered as an accumulation update file called virtelvrrupdtnnnn1.zip where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
+The updates to the web entities are delivered as an accumulation update file called \sphinxstyleemphasis{virtelvrrupdtnnnn1.zip} where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
 
 \sphinxincludegraphics{{image30}.png}
 
@@ -1016,20 +1206,19 @@ Open the “Drag and Drop” interface in Virtel, and then drag the files over o
 
 \sphinxincludegraphics{{image32}.png}
 
+\sphinxstyleemphasis{Virtel Drag and Drop Interface}
+
 
 \subsection{Applying maintence via batch.}
 \label{\detokenize{audit_operations_ and_performance:applying-maintence-via-batch}}
-A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn’t require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter “TN2017-09 Virtel batch maintenance”. This can be viewed online at
+A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn’t require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter “TN201709 Virtel batch maintenance”. This can be viewed online at \sphinxurl{http://virtel.readthedocs.io/en/latest/manuals/newsletters/TN201709/TN201709.html}
 
-
-\section{Correspondent Management}
-\label{\detokenize{audit_operations_ and_performance:correspondent-management}}
 \newpage
 \phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-correspondent-management}}
 \index{Correspondent Management}
 
-\chapter{Correspondent Management}
-\label{\detokenize{audit_operations_ and_performance:index-0}}\label{\detokenize{audit_operations_ and_performance:id1}}
+\section{Correspondent Management}
+\label{\detokenize{audit_operations_ and_performance:correspondent-management}}\label{\detokenize{audit_operations_ and_performance:index-0}}
 One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user which VIRTEL recognizes in this way is known as a “Correspondent”. VIRTEL stores the list of correspondents in a VSAM file known as the “Correspondent file”, also known as the “VIRHTML” file.
 
 VIRTEL uses the correspondent file for the following purposes:
@@ -1043,7 +1232,7 @@ There are two types of correspondent: an e-mail correspondent and a local corres
 
 \index{Access!Correspondent Manangement}\index{Correspondent Manangement!Access}
 
-\section{Access to the application}
+\subsection{Access to the application}
 \label{\detokenize{audit_operations_ and_performance:access-to-the-application}}\label{\detokenize{audit_operations_ and_performance:index-1}}
 The correspondent management sub-application, which allows the VIRTEL administrator to define the parameters
 associated with a correspondent, is accessible by pressing {[}PF5{]} in the VIRTEL configuration menu, or {[}PF12{]} in the
@@ -1052,7 +1241,7 @@ module VIR0041A.
 
 \index{Security!Correspondent Manangement}\index{Correspondent Manangement!Security}
 
-\section{Security}
+\subsection{Security}
 \label{\detokenize{audit_operations_ and_performance:security}}\label{\detokenize{audit_operations_ and_performance:index-2}}
 When security is active, access to the correspondent management sub-application from the configuration menu or
 from the system services sub-application menu is controlled by the resource \$\$PCPC\$\$.
@@ -1061,7 +1250,7 @@ Security management is described under the heading “Security” 282.
 
 \index{Objectives!Correspondent Manangement}\index{Correspondent Manangement!Objectives}
 
-\section{Objectives}
+\subsection{Objectives}
 \label{\detokenize{audit_operations_ and_performance:objectives}}\label{\detokenize{audit_operations_ and_performance:index-3}}
 This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
 to the detail of a correspondent is achieved by positioning the cursor and pressing {[}PF12{]}.
@@ -1098,9 +1287,11 @@ to the detail of a correspondent is achieved by positioning the cursor and press
 
 \sphinxstyleemphasis{Correspondent detail screen (local correspondent)}
 
+\newpage
+
 \index{Field contents!Correspondent Manangement}\index{Correspondent Manangement!Field contents}
 
-\section{Field Contents}
+\subsection{Field Contents}
 \label{\detokenize{audit_operations_ and_performance:index-4}}\label{\detokenize{audit_operations_ and_performance:field-contents}}\begin{description}
 \item[{Id}] \leavevmode
 For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.
@@ -1145,7 +1336,7 @@ The number of contacts since the last activation.
 \phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-account-activation}}
 \index{Account activation!Correspondent Manangement}\index{Correspondent Manangement!Account activation}
 
-\section{Account activation}
+\subsection{Account activation}
 \label{\detokenize{audit_operations_ and_performance:account-activation}}\label{\detokenize{audit_operations_ and_performance:index-5}}
 In order to be operational, a correspondent account must be activated. This is achieved by pressing {[}PF4{]} at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
 correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero.
@@ -1156,47 +1347,368 @@ To activate an e-mail correspondent, the administrator must be logged on to VIRT
 
 \index{Account deactivation!Correspondent Manangement}\index{Correspondent Manangement!Account deactivation}
 
-\section{Account deactivation}
+\subsection{Account deactivation}
 \label{\detokenize{audit_operations_ and_performance:index-6}}\label{\detokenize{audit_operations_ and_performance:account-deactivation}}
 A correspondent’s security code may be cancelled by deactivating with the {[}PF5{]} key. The message DISABLE WAS DONE indicates that the deactivation was successful.
 
 \index{Access to rules!Correspondent Manangement}\index{Correspondent Manangement!Access to rules}
 
-\section{Access to associated rule set}
+\subsection{Access to associated rule set}
 \label{\detokenize{audit_operations_ and_performance:index-7}}\label{\detokenize{audit_operations_ and_performance:access-to-associated-rule-set}}
 To display the list of rules associated with this correspondent, press the {[}PF6{]} key.
 
 \newpage
 
 
-\chapter{Uploading HTML Pages}
-\label{\detokenize{audit_operations_ and_performance:v457ap-uploading-html-pages}}\label{\detokenize{audit_operations_ and_performance:uploading-html-pages}}
-HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:
+\section{Web Entity Management}
+\label{\detokenize{audit_operations_ and_performance:web-entity-management}}\label{\detokenize{audit_operations_ and_performance:v457ap-uploading-html-pages}}
+Web entities, such as HTML template pages, CSS, JavaScript elements and images, can be uploaded to the VIRTEL directories by any of the following methods:
 \begin{enumerate}
 \item {} 
-by e-mail (SMTP)
-
-\item {} 
-by web browser (HTTP), with cookie security
-
-\item {} 
-by web browser (HTTP), with signon security
+by web browser (HTTP), with signon security. Provided by Administration Portatl.
 
 \item {} 
 Via a batch process
 
+\item {} 
+by e-mail (SMTP) (Corresspondence Management only)
+
+\item {} 
+by web browser (HTTP), with cookie security (Corresspondence Management only)
+
 \end{enumerate}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-signon}}
+\index{Uploading pages HTTP (Signon)!Uploading pages}\index{Uploading pages!Uploading pages HTTP (Signon)}
+
+\subsection{Uploading by web browser (HTTP) (secured by signon)}
+\label{\detokenize{audit_operations_ and_performance:index-8}}\label{\detokenize{audit_operations_ and_performance:uploading-by-web-browser-http-secured-by-signon}}
+The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
+
+\index{HTTP definitions (Signon)!Uploading pages}\index{Uploading pages!HTTP definitions (Signon)}
+
+\subsection{Definitions for upload (secured by signon)}
+\label{\detokenize{audit_operations_ and_performance:index-9}}\label{\detokenize{audit_operations_ and_performance:definitions-for-upload-secured-by-signon}}
+All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
+
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
+\begin{enumerate}
+\item {} 
+In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image77}.png}
+\sphinxstyleemphasis{Page upload by HTTP with signon : Transaction dirlist}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Still in entry point WEB2HOST, define three new transactions W2H\textendash{}71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image78}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory HTMLBAS}
+
+\sphinxincludegraphics{{image79}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory W2HDIR}
+
+\sphinxincludegraphics{{image80}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory CLIDIR}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item {} 
+Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
+
+\end{enumerate}
+
+\index{HTTP definitions (Signon)!Uploading pages}\index{Uploading pages!HTTP definitions (Signon)}
+
+\subsection{Procedure for upload (secured by signon)}
+\label{\detokenize{audit_operations_ and_performance:procedure-for-upload-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-10}}\begin{enumerate}
+\item {} 
+Display the upload4.htm page by entering the URL \sphinxurl{http://ipaddr:port/SECURE/upload4.htm+dirlist} in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image8}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Entering the userid and password}
+
+The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+After entering the user name and password, the upload4.htm page will be displayed:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image9}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Displaying the upload4.htm page}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item {} 
+Press the “Browse” button to display the file selection dialog:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image10}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : File selection dialog}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item {} 
+Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image11}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Sending the file}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item {} 
+Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image12}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Confirmation of file upload}
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+
+\newpage
+
+\index{Uploading pages by drag and Drop!Uploading pages}\index{Uploading pages!Uploading pages by drag and Drop}
+
+\subsection{Uploading by web browser (HTTP) by GUI drag and drop}
+\label{\detokenize{audit_operations_ and_performance:uploading-by-web-browser-http-by-gui-drag-and-drop}}\label{\detokenize{audit_operations_ and_performance:index-11}}
+The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
+
+
+\subsubsection{Upload interface in the VIRTEL menu}
+\label{\detokenize{audit_operations_ and_performance:upload-interface-in-the-virtel-menu}}
+After clicking on the Drag \& Drop Upload link on the VIRTEL Web Access menu (URL \sphinxurl{http://n.n.n.n:41001}), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
+
+\sphinxincludegraphics{{image13}.png}
+
+\sphinxstyleemphasis{Drag and drop upload interface}
+
+The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
+
+
+\subsubsection{Displaying upload results}
+\label{\detokenize{audit_operations_ and_performance:displaying-upload-results}}
+\sphinxincludegraphics{{image14}.png}
+
+\sphinxstyleemphasis{Displaying upload results}
+
+The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
+
+
+\subsubsection{Upload summary report}
+\label{\detokenize{audit_operations_ and_performance:upload-summary-report}}
+After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes.
+
+The summary is not displayed when files are dragged and dropped one at a time.
+
+In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
+
+\sphinxincludegraphics{{image15}.png}
+
+\sphinxstyleemphasis{Upload summary report}
+
+
+\subsection{Extracting upload results as an Excel spreadsheet}
+\label{\detokenize{audit_operations_ and_performance:extracting-upload-results-as-an-excel-spreadsheet}}
+\sphinxincludegraphics{{image16}.png} The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
+
+
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|T|T|}
+\hline
+\sphinxstylethead{\sphinxstyletheadfamily 
+Directory
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+File name
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Report
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Time
+\unskip}\relax \\
+\hline
+CLI-DIR
+&
+custom.css
+&
+RETURN CODE IS: 00
+&
+Thu, 13 Sep 2012 08:13:16 GMT
+\\
+\hline
+CLI-DIR
+&
+custom.js
+&
+RETURN CODE IS: 00
+&
+Thu, 13 Sep 2012 08:13:16 GMT
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
+
+\sphinxincludegraphics{{image17}.png} The Delete button allows the administrator to clear the results log.
+\begin{quote}
+
+\index{Uploading pages in batch!Uploading pages}\index{Uploading pages!Uploading pages in batch}
+\index{Uploading (batch) using cURL!Uploading pages}\index{Uploading pages!Uploading (batch) using cURL}\end{quote}
+
+\newpage
+
+
+\subsection{Uploading in batch with cURL}
+\label{\detokenize{audit_operations_ and_performance:uploading-in-batch-with-curl}}
+You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
+The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{o}{\PYGZpc{}}\PYG{n}{F} \PYG{o+ow}{in} \PYG{p}{(}\PYG{o}{*}\PYG{o}{.}\PYG{n}{htm}\PYG{p}{)} \PYG{n}{do} \PYG{n}{curl} \PYG{o}{\PYGZhy{}}\PYG{n}{v} \PYG{o}{\PYGZhy{}}\PYG{n}{F} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{file=@}\PYG{l+s+si}{\PYGZpc{}F}\PYG{l+s+s2}{;type=text/html}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZhy{}}\PYG{n}{u}
+\PYG{n}{virdba}\PYG{p}{:}\PYG{n}{virdbapw} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{235.30}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{SECURE}\PYG{o}{/}\PYG{n}{virmsg}\PYG{o}{.}\PYG{n}{txt}\PYG{o}{+}\PYG{n}{uplbas}
+\end{sphinxVerbatim}
+
+In this example:
+\begin{description}
+\item[{*.htm}] \leavevmode
+the files to be uploaded
+
+\item[{virdba:virdbapw}] \leavevmode
+userid and password for VIRTEL
+
+\item[{192.168.235.30:41001}] \leavevmode
+identifies the VIRTEL HTTP line
+
+\item[{virmsg.txt}] \leavevmode
+page template for displaying upload result messages
+
+\item[{uplbas}] \leavevmode
+external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-signon}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by signon)”}}}} for a list of upload transactions.
+
+\end{description}
+
+\begin{sphinxadmonition}{note}{Note:}\begin{quote}
+
+\%F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use \%F if you execute the command from the command prompt, but \%\%F if you execute the command from within a command (.cmd) file.
+\end{quote}
+
+\index{Uploading (batch) using upl2virt procedure!Uploading pages}\index{Uploading pages!Uploading (batch) using upl2virt procedure}\end{sphinxadmonition}
+
+
+\subsection{Uploading in batch using the upl2virt command}
+\label{\detokenize{audit_operations_ and_performance:index-14}}\label{\detokenize{audit_operations_ and_performance:uploading-in-batch-using-the-upl2virt-command}}
+For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
+
+\sphinxstylestrong{Pre-requisites}
+
+upl2virt requires as a pre-requisite the cURL package described in the previous section.
+
+Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
+the command window.
+
+\sphinxstylestrong{Installation}
+
+upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{upl2virt}\PYG{o}{.}\PYG{n}{cmd}
+\end{sphinxVerbatim}
+
+where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:WINDOWS).
+
+\sphinxstylestrong{Using upl2virt at the command prompt}
+
+\index{Executing upl2virt!Uploading pages}\index{Uploading pages!Executing upl2virt}
+To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{upl2virt} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{u} \PYG{n}{userid}\PYG{p}{:}\PYG{n}{password}\PYG{p}{]} \PYG{o}{\PYGZhy{}}\PYG{n}{d} \PYG{n}{directory} \PYG{o}{\PYGZhy{}}\PYG{n}{a} \PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}
+         \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{p} \PYG{n}{port}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{r}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{f} \PYG{n}{ctlfile}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{k}\PYG{p}{]} \PYG{p}{[}\PYG{n}{file1} \PYG{n}{file2} \PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{p}{]}
+\end{sphinxVerbatim}
+
+In the above command:
+\begin{description}
+\item[{userid:password}] \leavevmode
+is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
+
+\item[{directory}] \leavevmode
+is the name of the target VIRTEL directory (for example, CLI-DIR)
+
+\item[{n.n.n.n}] \leavevmode
+is the IP address of VIRTEL
+
+\item[{port}] \leavevmode
+is the VIRTEL administration port number (default 41001).
+
+\end{description}
+
+\begin{sphinxadmonition}{note}{Note:}
+This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.
+\end{sphinxadmonition}
+\begin{description}
+\item[{ctlfile}] \leavevmode
+specifies the name of a control file containing a list of file names to be uploaded
+
+\item[{file1 file2 …}] \leavevmode
+are the names of files to be uploaded
+
+\item[{-r}] \leavevmode
+specifies recursion into subdirectories
+
+\item[{-k}] \leavevmode
+keeps the command window open after the last upload
+
+\end{description}
+
+If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the \textendash{}r option is specified).
+
+\index{Using upl2virt with Windows Explorer!Uploading pages}\index{Uploading pages!Using upl2virt with Windows Explorer}
+\sphinxstylestrong{Using upl2virt from Windows Explorer}
+
+The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu. To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:Documents and SettingsusernameSendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” \textendash{} “Folder options” \textendash{} “View”, tick the option “Display hidden files and folders”, and click “OK”.
+
+In the “SendTo” folder, right click and select “New” \textendash{} “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”. You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+C:\PYGZbs{}WINDOWS\PYGZbs{}upl2virt.cmd \PYGZhy{}u MYUSERID \PYGZhy{}d CLI\PYGZhy{}DIR \PYGZhy{}a 10.1.12.101 \textendash{}k
+\end{sphinxVerbatim}
+
+where:
+\begin{description}
+\item[{MYUSERID}] \leavevmode
+is your VIRTEL userid
+
+\item[{CLI-DIR}] \leavevmode
+is the name of the VIRTEL directory that this shortcut will upload to
+
+\item[{10.1.12.101}] \leavevmode
+is the IP address of VIRTEL.
+
+\end{description}
+
+You may omit the \textendash{}u MYUSERID parameter and upl2virt will prompt you for your userid.
+
+\newpage
 \phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-smtp}}
 \index{Uploading template pages using SMTP}
 
-\section{Uploading template pages using SMTP}
-\label{\detokenize{audit_operations_ and_performance:uploading-template-pages-using-smtp}}\label{\detokenize{audit_operations_ and_performance:index-8}}
+\subsection{Uploading template pages using SMTP}
+\label{\detokenize{audit_operations_ and_performance:index-17}}\label{\detokenize{audit_operations_ and_performance:uploading-template-pages-using-smtp}}
 Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.
 
 \index{SMTP Definitions!Uploading Pages}\index{Uploading Pages!SMTP Definitions}
 
 \subsection{Definitions for page upload by SMTP}
-\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-9}}\begin{itemize}
+\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-18}}\begin{itemize}
 \item {} 
 Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
 
@@ -1233,7 +1745,7 @@ Press F5 from the Configuration Menu and define an e-mail correspondent specifyi
 \index{Upload page procedure using SMTP!Uploading pages}\index{Uploading pages!Upload page procedure using SMTP}
 
 \subsection{Procedure for page upload by SMTP}
-\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-10}}\begin{enumerate}
+\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-19}}\begin{enumerate}
 \item {} 
 Activate the e-mail correspondent: see “Account activation” under the heading {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-correspondent-management}]{\sphinxcrossref{\DUrole{std,std-ref}{“Correspondent Management”}}}}. This triggers the sending of an e-mail containing the security code, as in the following example:-
 
@@ -1298,7 +1810,7 @@ under the name LINKS.GI
 \index{Upload page procedure using HTML!Uploading pages}\index{Uploading pages!Upload page procedure using HTML}
 
 \subsection{Uploading pages by HTTP (secured by cookie)}
-\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-http-secured-by-cookie}}\label{\detokenize{audit_operations_ and_performance:index-11}}
+\label{\detokenize{audit_operations_ and_performance:index-20}}\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-http-secured-by-cookie}}
 The upload.htm page allows HTML pages or graphics to be uploaded to VIRTEL. The user’s identity is guaranteed by a
 cookie named VirtelRef= whose value changes after each upload. The value of the cookie is the same as the security
 code used for uploading by SMTP.
@@ -1325,7 +1837,7 @@ SMTP.
 \index{HTTP definitions (Cookie)!Uploading pages}\index{Uploading pages!HTTP definitions (Cookie)}
 
 \subsection{Definitions for page upload (secured by cookie)}
-\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-secured-by-cookie}}\label{\detokenize{audit_operations_ and_performance:index-12}}
+\label{\detokenize{audit_operations_ and_performance:index-21}}\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-secured-by-cookie}}
 All the elements needed for page upload by HTTP secured by cookie are contained in the base configuration delivered
 with VIRTEL 4.27. Users who upgrade to VIRTEL 4.27 while keeping their existing configuration need to add certain
 elements to their existing configuration to benefit from the new “page upload secured by cookie” function.
@@ -1551,330 +2063,6 @@ Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the
 From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”.
 
 Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
-\phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-signon}}
-\index{Uploading pages HTTP (Signon)!Uploading pages}\index{Uploading pages!Uploading pages HTTP (Signon)}
-
-\subsection{Uploading pages by HTTP (secured by signon)}
-\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-http-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-13}}
-The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
-
-\index{HTTP definitions (Signon)!Uploading pages}\index{Uploading pages!HTTP definitions (Signon)}
-
-\subsection{Definitions for page upload (secured by signon)}
-\label{\detokenize{audit_operations_ and_performance:index-14}}\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-secured-by-signon}}
-All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
-
-The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
-\begin{enumerate}
-\item {} 
-In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
-
-\end{enumerate}
-
-\sphinxincludegraphics{{image77}.png}
-\sphinxstyleemphasis{Page upload by HTTP with signon : Transaction dirlist}
-\begin{enumerate}
-\setcounter{enumi}{1}
-\item {} 
-Still in entry point WEB2HOST, define three new transactions W2H\textendash{}71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
-
-\end{enumerate}
-
-\sphinxincludegraphics{{image78}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory HTMLBAS}
-
-\sphinxincludegraphics{{image79}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory W2HDIR}
-
-\sphinxincludegraphics{{image80}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory CLIDIR}
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item {} 
-Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
-
-\end{enumerate}
-
-\index{HTTP definitions (Signon)!Uploading pages}\index{Uploading pages!HTTP definitions (Signon)}
-
-\subsection{Procedure for page upload (secured by signon)}
-\label{\detokenize{audit_operations_ and_performance:index-15}}\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-secured-by-signon}}\begin{enumerate}
-\item {} 
-Display the upload4.htm page by entering the URL \sphinxurl{http://ipaddr:port/SECURE/upload4.htm+dirlist} in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
-
-\end{enumerate}
-
-\sphinxincludegraphics{{image8}.png}
-
-\sphinxstyleemphasis{Page upload by HTTP with signon : Entering the userid and password}
-
-The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
-\begin{enumerate}
-\setcounter{enumi}{1}
-\item {} 
-After entering the user name and password, the upload4.htm page will be displayed:
-
-\end{enumerate}
-
-\sphinxincludegraphics{{image9}.png}
-
-\sphinxstyleemphasis{Page upload by HTTP with signon : Displaying the upload4.htm page}
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item {} 
-Press the “Browse” button to display the file selection dialog:
-
-\end{enumerate}
-
-\sphinxincludegraphics{{image10}.png}
-
-\sphinxstyleemphasis{Page upload by HTTP with signon : File selection dialog}
-\begin{enumerate}
-\setcounter{enumi}{3}
-\item {} 
-Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
-
-\end{enumerate}
-
-\sphinxincludegraphics{{image11}.png}
-
-\sphinxstyleemphasis{Page upload by HTTP with signon : Sending the file}
-\begin{enumerate}
-\setcounter{enumi}{4}
-\item {} 
-Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
-
-\end{enumerate}
-
-\sphinxincludegraphics{{image12}.png}
-
-\sphinxstyleemphasis{Page upload by HTTP with signon : Confirmation of file upload}
-
-Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
-
-\index{Uploading pages by drag and Drop!Uploading pages}\index{Uploading pages!Uploading pages by drag and Drop}
-
-\section{Uploading pages by drag and drop}
-\label{\detokenize{audit_operations_ and_performance:index-16}}\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-drag-and-drop}}
-The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
-
-
-\subsection{Upload interface in the VIRTEL menu}
-\label{\detokenize{audit_operations_ and_performance:upload-interface-in-the-virtel-menu}}
-After clicking on the Drag \& Drop Upload link on the VIRTEL Web Access menu (URL \sphinxurl{http://n.n.n.n:41001}), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
-
-\sphinxincludegraphics{{image13}.png}
-
-\sphinxstyleemphasis{Drag and drop upload interface}
-
-The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
-
-
-\subsection{Displaying upload results}
-\label{\detokenize{audit_operations_ and_performance:displaying-upload-results}}
-\sphinxincludegraphics{{image14}.png}
-
-\sphinxstyleemphasis{Displaying upload results}
-
-The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
-
-
-\subsection{Upload summary report}
-\label{\detokenize{audit_operations_ and_performance:upload-summary-report}}
-After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes.
-
-The summary is not displayed when files are dragged and dropped one at a time.
-
-In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
-
-\sphinxincludegraphics{{image15}.png}
-
-\sphinxstyleemphasis{Upload summary report}
-
-
-\subsection{Extracting upload results as an Excel spreadsheet}
-\label{\detokenize{audit_operations_ and_performance:extracting-upload-results-as-an-excel-spreadsheet}}
-\sphinxincludegraphics{{image16}.png} The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
-
-
-\begin{savenotes}\sphinxattablestart
-\centering
-\begin{tabulary}{\linewidth}[t]{|T|T|T|T|}
-\hline
-\sphinxstylethead{\sphinxstyletheadfamily 
-Directory
-\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-File name
-\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-Report
-\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-Time
-\unskip}\relax \\
-\hline
-CLI-DIR
-&
-custom.css
-&
-RETURN CODE IS: 00
-&
-Thu, 13 Sep 2012 08:13:16 GMT
-\\
-\hline
-CLI-DIR
-&
-custom.js
-&
-RETURN CODE IS: 00
-&
-Thu, 13 Sep 2012 08:13:16 GMT
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
-
-\sphinxincludegraphics{{image17}.png} The Delete button allows the administrator to clear the results log.
-\begin{quote}
-
-\index{Uploading pages in batch!Uploading pages}\index{Uploading pages!Uploading pages in batch}\end{quote}
-
-
-\section{Uploading pages in batch}
-\label{\detokenize{audit_operations_ and_performance:index-17}}\label{\detokenize{audit_operations_ and_performance:uploading-pages-in-batch}}\begin{quote}
-
-\index{Uploading (batch) using cURL!Uploading pages}\index{Uploading pages!Uploading (batch) using cURL}\end{quote}
-
-
-\subsection{Uploading with cURL}
-\label{\detokenize{audit_operations_ and_performance:uploading-with-curl}}\label{\detokenize{audit_operations_ and_performance:index-18}}
-You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
-The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{k}{for} \PYG{o}{\PYGZpc{}}\PYG{n}{F} \PYG{o+ow}{in} \PYG{p}{(}\PYG{o}{*}\PYG{o}{.}\PYG{n}{htm}\PYG{p}{)} \PYG{n}{do} \PYG{n}{curl} \PYG{o}{\PYGZhy{}}\PYG{n}{v} \PYG{o}{\PYGZhy{}}\PYG{n}{F} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{file=@}\PYG{l+s+si}{\PYGZpc{}F}\PYG{l+s+s2}{;type=text/html}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZhy{}}\PYG{n}{u}
-\PYG{n}{virdba}\PYG{p}{:}\PYG{n}{virdbapw} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{235.30}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{SECURE}\PYG{o}{/}\PYG{n}{virmsg}\PYG{o}{.}\PYG{n}{txt}\PYG{o}{+}\PYG{n}{uplbas}
-\end{sphinxVerbatim}
-
-In this example:
-\begin{description}
-\item[{*.htm}] \leavevmode
-the files to be uploaded
-
-\item[{virdba:virdbapw}] \leavevmode
-userid and password for VIRTEL
-
-\item[{192.168.235.30:41001}] \leavevmode
-identifies the VIRTEL HTTP line
-
-\item[{virmsg.txt}] \leavevmode
-page template for displaying upload result messages
-
-\item[{uplbas}] \leavevmode
-external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-signon}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by signon)”}}}} for a list of upload transactions.
-
-\end{description}
-
-\begin{sphinxadmonition}{note}{Note:}\begin{quote}
-
-\%F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use \%F if you execute the command from the command prompt, but \%\%F if you execute the command from within a command (.cmd) file.
-\end{quote}
-
-\index{Uploading (batch) using upl2virt procedure!Uploading pages}\index{Uploading pages!Uploading (batch) using upl2virt procedure}\end{sphinxadmonition}
-
-
-\subsection{The upl2virt command procedure}
-\label{\detokenize{audit_operations_ and_performance:the-upl2virt-command-procedure}}\label{\detokenize{audit_operations_ and_performance:index-19}}
-For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
-
-\sphinxstylestrong{Pre-requisites}
-
-upl2virt requires as a pre-requisite the cURL package described in the previous section.
-
-Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
-the command window.
-
-\sphinxstylestrong{Installation}
-
-upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{upl2virt}\PYG{o}{.}\PYG{n}{cmd}
-\end{sphinxVerbatim}
-
-where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:WINDOWS).
-
-\sphinxstylestrong{Using upl2virt at the command prompt}
-
-\index{Executing upl2virt!Uploading pages}\index{Uploading pages!Executing upl2virt}
-To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{upl2virt} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{u} \PYG{n}{userid}\PYG{p}{:}\PYG{n}{password}\PYG{p}{]} \PYG{o}{\PYGZhy{}}\PYG{n}{d} \PYG{n}{directory} \PYG{o}{\PYGZhy{}}\PYG{n}{a} \PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}
-         \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{p} \PYG{n}{port}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{r}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{f} \PYG{n}{ctlfile}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{k}\PYG{p}{]} \PYG{p}{[}\PYG{n}{file1} \PYG{n}{file2} \PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{p}{]}
-\end{sphinxVerbatim}
-
-In the above command:
-\begin{description}
-\item[{userid:password}] \leavevmode
-is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
-
-\item[{directory}] \leavevmode
-is the name of the target VIRTEL directory (for example, CLI-DIR)
-
-\item[{n.n.n.n}] \leavevmode
-is the IP address of VIRTEL
-
-\item[{port}] \leavevmode
-is the VIRTEL administration port number (default 41001).
-
-\end{description}
-
-\begin{sphinxadmonition}{note}{Note:}
-This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.
-\end{sphinxadmonition}
-\begin{description}
-\item[{ctlfile}] \leavevmode
-specifies the name of a control file containing a list of file names to be uploaded
-
-\item[{file1 file2 …}] \leavevmode
-are the names of files to be uploaded
-
-\item[{-r}] \leavevmode
-specifies recursion into subdirectories
-
-\item[{-k}] \leavevmode
-keeps the command window open after the last upload
-
-\end{description}
-
-If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the \textendash{}r option is specified).
-
-\index{Using upl2virt with Windows Explorer!Uploading pages}\index{Uploading pages!Using upl2virt with Windows Explorer}
-\sphinxstylestrong{Using upl2virt from Windows Explorer}
-
-The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.
-
-To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:Documents and SettingsusernameSendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” \textendash{} “Folder options” \textendash{} “View”, tick the option “Display hidden files and folders”, and click “OK”.
-
-In the “SendTo” folder, right click and select “New” \textendash{} “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”.
-
-You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-C:\PYGZbs{}WINDOWS\PYGZbs{}upl2virt.cmd \PYGZhy{}u MYUSERID \PYGZhy{}d CLI\PYGZhy{}DIR \PYGZhy{}a 10.1.12.101 \textendash{}k
-\end{sphinxVerbatim}
-
-where:
-\begin{description}
-\item[{MYUSERID}] \leavevmode
-is your VIRTEL userid
-
-\item[{CLI-DIR}] \leavevmode
-is the name of the VIRTEL directory that this shortcut will upload to
-
-\item[{10.1.12.101}] \leavevmode
-is the IP address of VIRTEL.
-
-\end{description}
-
-You may omit the \textendash{}u MYUSERID parameter and upl2virt will prompt you for your userid.
 
 
 \chapter{Performance}
@@ -1992,10 +2180,12 @@ The REMOTE ADDRESS column contains the caller X25 number for incoming calls, or 
 
 The last column contains the PCNE call user data (if present), otherwise it contains the default entry point name for X25 calls specified by the DEFENTR parameter in the VIRTCT. For GATE calls this column is blank.
 
+\newpage
+
 
 \section{VIRTEL logger}
 \label{\detokenize{audit_operations_ and_performance:virtel-logger}}
-The VIRTEL log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
+The CONSOLE log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
 
 The figure below shows an example of JCL to extract and format the VIRTEL LOG entries recorded in the System Logger:
 
@@ -2366,19 +2556,9 @@ LCL712 11A: from application SPCICST 13:05:47.49
 00120 1150F11D F0115A50 1D7C115B 5B1DF011 5B602902 42F2C0F8 C4C6C8C3 C5F3F5F2 *.\PYGZam{}1.0.\PYGZam{}.to.\PYGZdl{}\PYGZdl{}.0.\PYGZdl{}\PYGZhy{}...2é8DFHCE352* 099A96D4
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 9 Example of terminal trace (inbound 3270 terminal)}
+\sphinxstyleemphasis{Example of terminal trace (inbound 3270 terminal)}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.26
-00000 00000019 10010B96 00188019 13348330 0A420707 43030302 CC0300C4 80       * ....o .....c........... D.     * 0989117C
-X001T007 XOT: SENT TO ROUTER                                13:48:15.37
-00000 00000003 10010F                                                         * ....                           * 09896178
-X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.53
-00000 0000001B 100100D7 C5E2C9E3 404040E2 E8E2E7C3 C6E3C1E2 E8E2D7C1 E24040   * ... PESIT SYSXCFTASYSPAS       * 0989117C
-X001T007 XOT: SENT TO ROUTER                                13:48:15.54
-00000 00000003 100121                                                         * ....                           * 0989117C
-X001T007 XOT: SENT TO ROUTER                                13:48:15.55
-00000 00000007 100120C1 C3D2F0                                                * ....ACK0                       * 098A4176
 X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.57
 00000 00000003 100121                                                         * ....                           * 0989117C
 X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.72
@@ -2396,7 +2576,7 @@ X001T007 XOT: SENT TO ROUTER                                13:48:15.73
 00000 00000003 100161
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 10 Example of line trace (XOT line)}
+\sphinxstyleemphasis{Example of line trace (XOT line)}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 X001T007 005: INBOUND CALL PACKET                           15:10:11.97
@@ -2419,33 +2599,11 @@ P001I001 AP80LU51 I09: DATA TO CFTBACB1                     15:10:12.47
 00020 50425831 06010107 03002402 16010017 0101                                      *PBX1......\PYGZdl{}.......              * 098A419D
 P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:12.55
 00000 00114021 D9E20601 01070300 24021701 01                                        * . .RS..... .....               * 0989617C
-X001T007 XOT: OUTBOUND DATA                                 15:10:12.55
-00000 00001140 21D9E206 01010703 00240217 0101                                      * . .RS..... .....               * 098A417C
-X001T007 XOT: INBOUND DATA                                  15:10:12.89
-00000 440028C0 1FE20009 0C0B02FF FF0C0650 434E4531 410D0307 DC1D5C0D 414E5449       *D.(............PCNE1A.....ç.ANTI* 09891182
-00020 50434E45 20544553 54                                                          *PCNE TEST * 098911A2
-P001I001 AP80LU51 I09: DATA TO CFTBACB1                     15:10:12.90
-00000 0028C01F E200090C 0B02FFFF 0C065043 4E453141 0D0307DC 1D5C0D41 4E544950       *.(............PCNE1A.....ç.ANTIP* 098A417D
-00020 434E4520 54455354                                                             *CNE TEST                        * 098A419D
-P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:12.97
-00000 000BC03F D9000203 000000                                                      * .é.R ..                        * 0989617C
-X001T007 XOT: OUTBOUND DATA                                 15:10:12.97
-00000 00000BC0 3FD90002 03000000                                                    * .é.R ..                        * 098A417C
-X001T007 XOT: INBOUND DATA                                  15:10:33.11
-00000 66000B40 23E2D902 03000000                                                    *. . .SR..                       * 09891182
-P001I001 AP80LU51 I09: DATA TO CFTBACB1                     15:10:33.12
-00000 000B4023 E2D90203 000000                                                      * . .SR..                        * 098A417D
-P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:33.14
-00000 00064024 D9E2                                                                 * . .RS                          * 0989617C
-X001T007 XOT: OUTBOUND DATA                                 15:10:33.14
-00000 00000640 24D9E2                                                               * . .RS                          * 098A417C
-X001T007 XOT: INBOUND X25 COMMAND                           15:10:33.27
-00000 130000                                                                        *.                               * 09891182
-X001T007 XOT: OUTBOUND X25 COMMAND                          15:10:33.27
-00000 17                                                                            *.                               * 09891182
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 11 Example of “trace by rule” (XOT terminal to application on /PCNE line)}
+\sphinxstyleemphasis{Example of “trace by rule” (XOT terminal to application on /PCNE line)}
+
+\newpage
 
 
 \section{VIRTEL SNAP}
@@ -2460,9 +2618,9 @@ The format, the contents, and the size of the SNAP depend on the SNAPW, TRACBIG,
 
 The internal trace table is recorded in a circular fashion, so that each new event added to the table overlays and replaces the oldest event in the table. The table contains a fixed number of event slots (determined by the TRACBIG parameter in the VIRTCT), and additionally certain events may have a variable amount (up to 256 bytes) of data recorded. The variable data is stored in a separate area whose size is determined by the TRACEB parameter in the VIRTCT, and this area is also filled in a circular manner, with the oldest information being dropped from the table when new information is added. Thus, depending on the values of the TRACBIG and TRACB parameters, older entries in the trace table may no longer have data associated with them.
 
-Clearly, the greater the level of activity in the VIRTEL system, the quicker the trace table will wrap and information will be pushed out to make way for new entries. Thus, in order for the SNAP listing to     provide useful information, the size of the trace table and its associated buffer area must be adequate for the level of system activity, and the SNAP command must be issued as quickly as possible after the event under investigation occurs. In some cases it may be necessary to use an automation tool to issue the SNAP command immediately following the appearance of a certain console message.
+Clearly, the greater the level of activity in the VIRTEL system, the quicker the trace table will wrap and information will be pushed out to make way for new entries. Thus, in order for the SNAP listing to provide useful information, the size of the trace table and its associated buffer area must be adequate for the level of system activity, and the SNAP command must be issued as quickly as possible after the event under investigation occurs. In some cases it may be necessary to use an automation tool to issue the SNAP command immediately following the appearance of a certain console message.
 
-As well as dumping the contents of the internal trace table, the SNAP command also dumps certain VIRTEL internal control blocks. A dump of the control blocks associated with a particular terminal may    optionally be requested.
+As well as dumping the contents of the internal trace table, the SNAP command also dumps certain VIRTEL internal control blocks. A dump of the control blocks associated with a particular terminal may optionally be requested.
 
 The SNAP command is described under the heading “VIRTEL commands”. VIRTEL may also produce a SNAP listing automatically if a program check or other abend occurs during VIRTEL processing.
 
@@ -2475,13 +2633,12 @@ Several SNAP commands may be issued during a single run of VIRTEL. The output fi
 
 \sphinxincludegraphics{{image25}.png}
 
-\sphinxstyleemphasis{Fig. 12 Example of SNAP listing}
+\sphinxstyleemphasis{Example of SNAP listing}
 
-3.3.1 Message-triggered SNAPMSG
 
-The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).
-
-Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.
+\subsection{Message-triggered SNAPMSG}
+\label{\detokenize{audit_operations_ and_performance:message-triggered-snapmsg}}
+The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”. See the SNAPMSG command for further details.
 
 
 \chapter{Audit}
@@ -2515,6 +2672,8 @@ VIRSTAT format suitable for terminals associated with an HTTP line.
 For terminals associated with all other line types (including /GATE, /PCNE, and /FASTC) the statistics record may not contain meaningful information and the statistics field in the terminal definition     should be left blank.
 
 The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.
+
+\newpage
 
 
 \subsection{VIRSTAT classsic format}
@@ -2551,7 +2710,7 @@ For terminals which specify classic format recording (STATS=1), the  VIRSTAT rec
 \PYG{l+m+mi}{121} \PYG{n}{to} \PYG{l+m+mi}{124}  \PYG{n}{Hexadecimal}     \PYG{n}{X25} \PYG{n}{units} \PYG{n}{sent} \PYG{p}{(}\PYG{n}{Fast}\PYG{o}{\PYGZhy{}}\PYG{n}{Connect}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 13 Format of VIRSTAT record (classic format)}
+\sphinxstyleemphasis{Format of VIRSTAT record (classic format)}
 
 For NPSI Fast Connect lines, the X25 accounting statistics are recorded in billing units provided by NPSI at virtual circuit disconnection time. Their interpretation depends on the TAXUNIT parameter in the NPSI X25.MCH macro. Similarly, the session start and end times (Fast Connect only) are provided by NPSI and depend on the clock settings in the NCP. For other types of lines, accounting statistics and times are generated by VIRTEL.
 \begin{description}
@@ -2565,6 +2724,8 @@ Records are implemented at regular intervals.
 Records are implemented at VIRTEL shutdown.
 
 \end{description}
+
+\newpage
 
 
 \subsection{VIRSTAT alternative X25 format}
@@ -2600,7 +2761,7 @@ For terminals which specify alternate X25 format recording (STATS=4), the VIRSTA
 \PYG{l+m+mi}{121} \PYG{n}{to} \PYG{l+m+mi}{124}      \PYG{n}{Hexadecimal}     \PYG{n}{Call} \PYG{n}{duration} \PYG{o+ow}{in} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{100} \PYG{n}{second}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 14 Format of VIRSTAT record (alternate X25 format)}
+\sphinxstyleemphasis{Format of VIRSTAT record (alternate X25 format)}
 
 For NPSI Fast Connect lines, the X25 session start and end times are provided by NPSI at virtual circuit disconnection time and depend on the clock settings in the NCP. For other types of lines, times are     generated by VIRTEL.
 \begin{description}
@@ -2636,7 +2797,7 @@ Position        Format          Type of information
 117 to 124      Alphanumeric    Session end time (HH.MM.SS)
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 15 Format of VIRSTAT record (type 5 for Web Access)}
+\sphinxstyleemphasis{Format of VIRSTAT record (type 5 for Web Access)}
 
 This record type is written when 5 is specified in the STATS field of the terminal definition used for the HTTP line. If the terminal is disconnected by TIMEOUT, the “Error Code” field contains the word     “TIME”.
 
@@ -2661,7 +2822,7 @@ Position        Format          Type of information
 109 to 124      Alphanumeric    URL parameter
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 16 Format of VIRSTAT record (type 6 for Web Access)}
+\sphinxstyleemphasis{Format of VIRSTAT record (type 6 for Web Access)}
 
 For this record type, the counters are in binary, and the Session Date and Time fields are replaced by User name (20 bytes) and URL parameter (first 16 bytes).
 
@@ -2710,7 +2871,7 @@ Examples of the JCL required to execute this program are shown below:
 \PYG{o}{/}\PYG{o}{/}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 18 VIR0070 JCL to print VIRSTAT file (z/OS)}
+\sphinxstyleemphasis{VIR0070 JCL to print VIRSTAT file (z/OS)}
 
 
 \subsection{Printing the contents of the VIRSTAT file (HTTP)}
@@ -2781,7 +2942,7 @@ SELTERM DEVTA* CLVTA*
 * \PYGZdl{}\PYGZdl{} EOJ
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)}
+\sphinxstyleemphasis{PRTSTATW JCL to print VIRSTAT file in VSE (type=6)}
 
 
 \subsubsection{z/OS JCL}
@@ -2845,7 +3006,7 @@ SELTERM DEVTA* CLVTA*
 //
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 20 PRTSTATW JCL to print VIRSTAT file in z/OS (type=6)}
+\sphinxstyleemphasis{PRTSTATW JCL to print VIRSTAT file in z/OS (type=6)}
 \begin{description}
 \item[{This JCL consists of two main steps:}] \leavevmode\begin{itemize}
 \item {} 
@@ -2857,6 +3018,8 @@ a second step to PRINT or COUNT the records
 \end{itemize}
 
 \end{description}
+
+\newpage
 
 
 \subsection{Sorting the VIRSTAT file}
@@ -2878,7 +3041,9 @@ SORT FIELDS=(17,15,A) \PYGZhy{}\PYGZhy{}\PYGZgt{} IP Adress (for \PYGZdl{}ALL\PY
 SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for \PYGZdl{}ALL\PYGZdl{} request
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig. 21 PRTSTATW JCL sort criteria}
+\sphinxstyleemphasis{PRTSTATW JCL sort criteria}
+
+\newpage
 
 For example, to obtain a report in ascending order of session start date, specify the following statements in the SORT SYSIN:
 
@@ -2900,7 +3065,7 @@ First card (Required)
 PRTSTATW PRINT                BREAK USER          NNN  PPPP
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig.22 PRTSTATW first SYSIN card}
+\sphinxstyleemphasis{PRTSTATW first SYSIN card}
 \begin{description}
 \item[{Columns 1 to 8}] \leavevmode
 Program name: must be PRTSTATW
@@ -2937,7 +3102,7 @@ Maximum number of pages to be printed (default 50 pages)
 \PYG{n}{SELPARM}   \PYG{n}{PARM457189012345}         \PYG{p}{(}\PYG{n}{up} \PYG{n}{to} \PYG{l+m+mi}{16} \PYG{n+nb}{bytes}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig.23 PRTSTATW second SYSIN card}
+\sphinxstyleemphasis{PRTSTATW second SYSIN card}
 
 This card allows records to be selected according to 4 fields: DATE (selection by date range), TERM (selection of up to 4 different terminal names, otherwise 4 different HTTP lines), USER (selection by user name), PARM (selection by URL parameter).
 
@@ -3012,181 +3177,21 @@ SELDATE 01012010 30122011
 18\PYGZhy{}01\PYGZhy{}2011      14:23:12                End of execution
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Fig 24. PRTSTATW user counter report}
+\sphinxstyleemphasis{PRTSTATW user counter report}
+
+\newpage
 
 
 \section{SMF Support}
 \label{\detokenize{audit_operations_ and_performance:smf-support}}
 Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.
 
-4.3.1 Printing the VIRSTAT SMF record
 
+\subsection{Printing the VIRSTAT SMF record}
+\label{\detokenize{audit_operations_ and_performance:printing-the-virstat-smf-record}}
 The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.
 
 Messages “VIR0612E VIRSTAT SMFWTM FAILED. RC=rc” and “VIR0611I VIRSTAT NOW RECORDING TO SMF” are in relation with SMF support. See “Virtel Messages and Operations” manual for more details.
-
-
-\section{Memory management}
-\label{\detokenize{audit_operations_ and_performance:memory-management}}
-
-\subsection{Memory display Sub-Application}
-\label{\detokenize{audit_operations_ and_performance:memory-display-sub-application}}
-The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.
-
-To invoke the memory management sub-application, press {[}PA2{]} in the Configuration Menu to display the Sub- Application Menu, then press {[}PF4{]} in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
-
-\sphinxincludegraphics{{image26}.png}
-
-\sphinxstyleemphasis{Fig 25. Memory display of VIRTEL address space}
-
-Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.
-
-Permanently allocated memory blocks are represented by the following character types:
-\begin{enumerate}
-\item {} 
-To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space.
-
-\item {} 
-Temporarily allocated memory blocks. Blocks of this type are allocated and freed by VIRTEL as required.
-
-\item {} 
-Memory blocks used by the VIRTEL Multi-Session feature to save screen images. Blocks of this type are allocated and freed by VIRTEL as required.
-
-\item {} 
-Memory blocks used for saving EIB and other session-related information. Blocks of this type are allocated and freed by VIRTEL as required.
-
-\item {} 
-Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.
-
-\item {} 
-Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.
-
-\end{enumerate}
-
-
-\subsection{Memory display in Memory=Test mode.}
-\label{\detokenize{audit_operations_ and_performance:memory-display-in-memory-test-mode}}
-If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
-
-\sphinxincludegraphics{{image28}.png}
-
-\sphinxstyleemphasis{Fig. 26 - Memory display in MEMORY=TEST mode}
-
-Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.
-
-Where the memory display occupies more than one screen, you can press {[}PF8{]} to view the following page, {[}PF7{]} to view the previous page, and {[}PF6{]} to go back to the first page.
-
-To refresh the display with up-to-date information, press {[}Enter{]}.
-
-To return to the sub-application menu, press {[}PF3{]} or {[}Clear{]}
-
-5.2 Virtual Memory Display
-
-The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar. The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).
-
-\begin{sphinxadmonition}{note}{Note:}
-This diagnostic tool should only be used when recommended by Technical Support.
-\end{sphinxadmonition}
-
-
-\subsection{Memory trace management}
-\label{\detokenize{audit_operations_ and_performance:memory-trace-management}}
-
-\subsubsection{Activating the memory trace}
-\label{\detokenize{audit_operations_ and_performance:activating-the-memory-trace}}
-A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{MEMTRACE}
-\end{sphinxVerbatim}
-
-The will produce the following response:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{VIR0200I} \PYG{n}{MEMTRACE}
-\PYG{n}{VIR0214I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{STARTED}
-\PYG{n}{VIR0218I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{FOUND} \PYG{l+m+mi}{00000000} \PYG{n}{BLOCKS} \PYG{n}{USING} \PYG{l+m+mi}{0000000000000000} \PYG{n}{BYTES} \PYG{p}{(}\PYG{l+m+mi}{00000000} \PYG{n}{MEGS}\PYG{p}{)}
-\end{sphinxVerbatim}
-
-
-\subsubsection{Resetting the memory trace}
-\label{\detokenize{audit_operations_ and_performance:resetting-the-memory-trace}}
-A memory trace can be reseted by using the following command:-
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{MEMTRACE}\PYG{p}{,}\PYG{n}{Clear}
-\end{sphinxVerbatim}
-
-The trace is stopped, memory blocks used by the memory trace are released, the trace is restarted.
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{VIR0200I} \PYG{n}{MEMTRACE}\PYG{p}{,}\PYG{n}{CLEAR}
-\PYG{n}{VIR0218I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{FOUND} \PYG{l+m+mi}{00000011} \PYG{n}{BLOCKS} \PYG{n}{USING} \PYG{l+m+mi}{0000000000053344} \PYG{n}{BYTES} \PYG{p}{(}\PYG{l+m+mi}{00000000} \PYG{n}{MEGS}\PYG{p}{)}
-\PYG{n}{VIR0216I} \PYG{n}{CLEARING} \PYG{n}{MEMORY} \PYG{n}{TRACE}
-\PYG{n}{VIR0217I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{CLEARED}
-\PYG{n}{VIR0214I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{STARTED}
-\PYG{n}{VIR0218I} \PYG{n}{MEMORY} \PYG{n}{TRACE} \PYG{n}{FOUND} \PYG{l+m+mi}{00000000} \PYG{n}{BLOCKS} \PYG{n}{USING} \PYG{l+m+mi}{0000000000000000} \PYG{n}{BYTES} \PYG{p}{(}\PYG{l+m+mi}{00000000} \PYG{n}{MEGS}\PYG{p}{)}
-\end{sphinxVerbatim}
-
-
-\subsubsection{Stopping the memory trace}
-\label{\detokenize{audit_operations_ and_performance:stopping-the-memory-trace}}
-A memory trace can be stopped by using the following command:-
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{NOMEMTRACE}
-\end{sphinxVerbatim}
-
-The trace is stopped, memory blocks used by the memory trace are released.
-
-
-\subsubsection{Setting Memory Trace in the VIRTCT}
-\label{\detokenize{audit_operations_ and_performance:setting-memory-trace-in-the-virtct}}
-A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.
-
-Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
-Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.
-
-\sphinxincludegraphics{{image27}.png}
-
-\sphinxstyleemphasis{Fig. 27 Example of a memory allocataion history}
-\begin{description}
-\item[{Column Explanations}] \leavevmode\begin{enumerate}
-\item {} 
-Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.
-
-\item {} 
-Task number behind the allocation request.
-
-\item {} 
-Register 14 value.
-
-\item {} 
-Register 15 value.
-
-\item {} 
-Program name + offset of the origin request.
-
-\item {} 
-Memory allocation type. (8040 = GETMAIN).
-
-\item {} 
-Memory block state.
-
-\item {} 
-Time of the allocation.
-
-\item {} 
-Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.
-
-\item {} 
-Reserved for internal use.
-
-\end{enumerate}
-
-\end{description}
-
-Tracing memory activity can produce an important overhead estimated to 20-30\% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
 
 
 \chapter{Appendix}

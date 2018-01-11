@@ -108,10 +108,16 @@ nnnn
 virtel-cmd
     A VIRTEL command, as described in the following section
 
+.. raw:: latex
+
+    \newpage      
+
 KILL Command
 ------------
 
-The KILL command can be used to stop a scenario::
+The KILL command can be used to stop a scenario.
+
+::
 
     KILL,T=termid
 
@@ -123,7 +129,9 @@ The KILL command requests VIRTEL to abnormally terminate the scenario currently 
 LINES Command
 -------------
 
-The LINES command can be used to display a summary of the line status.::
+The LINES command can be used to display a summary of the line status.
+
+::
     
     LINES | LINES,ACT | LINES,INACT    
 
@@ -156,14 +164,16 @@ LINE Command
 Display line detail
 ^^^^^^^^^^^^^^^^^^^
 
-To display detail information about a Virtel line use the line detail display command.::
+To display detail information about a Virtel line use the line detail command.
+
+::
 
     LINE=linename,DISPLAY (or L=linename,D)
 
 linename
     Internal or external name of the line
 
-    The LINE DISPLAY command displays the status of a line and its  associated terminals.
+The LINE DISPLAY command displays the status of a line and its associated terminals.
 
 Example::
 
@@ -199,6 +209,10 @@ Example::
     VIR0204I W2HTP004 REHVT004 REHIP004                   
     VIR0204I ---END OF LIST---           
 
+.. raw:: latex
+
+    \newpage  
+
 Tracing a line
 ^^^^^^^^^^^^^^^
 
@@ -210,7 +224,9 @@ To activate or deactive a trace on the line the following command can be used:-:
 Starting and Stopping A Line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To STOP or START a line use the LINE command with the START or STOP function.::
+To STOP or START a line use the LINE command with the START or STOP function.
+
+::
 
     LINE=linename,START | STOP
 
@@ -241,16 +257,20 @@ where
     - SPIN means spin off the current SYSOUT dataset.
     - FILE means write messages to file.  
 
-LOG=SYSOUT
-^^^^^^^^^^
+LOG=SYSOUT TCT definition
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Setting up VIRTEL to use the LOG=SYSOUT facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:-
 
 ::
 
-    LOG=(SYSOUT[,class,destination])
+    LOG=(SYSOUT[,class[,destination]])
 
     For example, LOG=(SYSOUT,A,EDSPRT)
+
+.. raw:: latex
+
+    \newpage  
 
 This directs all WTOs to a SYSOUT dataset rather than the system console log (SYSLOG). If you want WTO messages going to both the system console and a SYSOUT dataset than issue the following VIRTEL command:-
 
@@ -267,24 +287,35 @@ Setting up Virtel to use the LOG=FILE facility requires a change to the TCT defi
 
     LOG=FILE 
 
-This will trigger VIR0021A to write messages ether to The DD statements VIRLOGX or VIRLOGY depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE with the following DCB attributes. 
+This will trigger the log program VIR0021A to write messages to either the VIRLOGX DD statement or the VIRLOGY DD statement depending on the active LOG. These DDNAMES need to be added to the Virtel procedure to support LOG=FILE option. The following DCB attributes. Recommended space allocation could be 10 tracks for each dataset.  
 
 ::
 
     LOGFILEX and LOGFILEY 
     DCB attributes : PS, LRECL=165, RECFM=VB, BLKSIZE=32000
 
-If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile. To determine the status of the LOG file, or to switch the log file manually issue one of the following commands:-
+If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile. 
+
+LOG Status | Switch Commands
+----------------------------
+
+To determine the status of the LOG file, or to switch the log file manually issue one of the following commands:-
 
 ::   
     
     F VIRTEL,LOG,D		Display active logfile
     F VIRTEL,LOG,I		Switch logfiles
 
+.. raw:: latex
+
+    \newpage  
+
 MEMDISPLAY Command 
 ------------------
 
-To display Virtel Internal Memory Usage use the MEMDISPLAY command.::
+To display Virtel Internal Memory Usage use the MEMDISPLAY command.
+
+::
 
     MEMDISPLAY
 
@@ -347,13 +378,19 @@ Memory Display feature is activated by using the MEMHST subparameter in the MEMO
 Disabling the MEMDISPLAY function
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-It can be deactivated by using the command.::
+It can be deactivated by using the command.
+
+::
 
     F VIRTEL,MEMDISPLAY,DISABLE
 
 .. note::
 
         This command should only be implemented when advised to do so by Technical Support. Performance degradation might occur due to the additional monitoring services. This will depend on VIRTEL demand.
+
+.. raw:: latex
+
+    \newpage  
 
 MSG Command
 -----------
@@ -363,6 +400,7 @@ To send a mesage to VIRTEL Multi-Session users use the MSG command::
     MSG=message text
 
 The specified message will be displayed on the VIRTEL multi-session screen.
+
 
 NEW Command
 -----------
@@ -378,8 +416,8 @@ progname
 
 The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.
 
-RELAY Command
--------------
+RELAY TRACE Command
+-------------------
 
 Use the RELAY command to trace the Virtel buffers between Virtel and the application.
 
@@ -388,7 +426,9 @@ RELAY=relayname,NOTRACE | TRACE
 RELAYS Command
 --------------
 
-To display a list of Virtel LU relays use the RELAY command.::  
+To display a list of Virtel LU relays use the RELAY command.
+
+::  
   
     RELAYS    
 
@@ -402,6 +442,10 @@ The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs open
     VIR0214I CLVTA004 REHVT000 SPCICST  192.168.92.58         
     VIR0214I W2HIP000 REHIP000                                
     VIR0214I ---END OF LIST---                                
+
+.. raw:: latex
+
+    \newpage  
 
 SILENCE Command
 ---------------
@@ -452,7 +496,7 @@ The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain 
 
     SNAPMSG=message,search,action
 
-The SNAPMSG parameter allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG command from the console. See “SNAPMSG command”.
+The SNAPMSG commmand allows a SNAP or DUMP to be taken whenever a particular message number is issued by VIRTEL. The command has an additional search field which can be used to identify a message with a paticular character string, for example a specific return code. This feature is also avalable by using the SNAPMSG parameter in the TCT. See “SNAPMSG parameter” in the Virtel Installation Guide.
 
 message
     Any message that can be issued by Virtel.
@@ -496,7 +540,9 @@ STAT Command
 Display statistics file information
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To display information about the Virtel statistics file management use the STAT command.::
+To display information about the Virtel statistics file management use the STAT command.
+
+::
     
     STAT,D
 
@@ -505,7 +551,9 @@ This command displays the status of the VIRSTATx files (message VIR0601I). The S
 Switch the VIRSTAT file
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-To switch the STATISTIC file using the STAT switch command.::
+To switch the STATISTIC file using the STAT switch command.
+
+::
     
     STAT,I    
 
@@ -548,21 +596,31 @@ Use the TERM command to activate a Terminal trace. This will trace data between 
 
 TERM=termid,NOTRACE | TRACE  [or T=termid,N | T ] 
 
+.. raw:: latex
+
+    \newpage  
 
 TRACE | NOTRACE Command
 -----------------------
 
-A trace can be activated on a terminal, line or relay.::
-    
-    TERM=termid,TRACE (or T=termid,T)
-    TERM=termid,NOTRACE (or T=termid,N)
-    LINE=linename,TRACE (or L=linename,T)
-    LINE=linename,NOTRACE (or L=linename,N)
-    RELAY=relayname,TRACE (or R=relayname,T)
-    RELAY=relayname,NOTRACE (or R=relayname,N)
+A trace can be activated or deactivated on a terminal, line or relay.
 
+::
+
+    
+    TRACE,T=termid
+    TRACE,L=linename
+    TRACE,R=relayname
+    NOTRACE,T=termid
+    NOTRACE,L=linename
+    NOTRACE,R=relayname
+    
+    
 termid
     terminal name
+
+linename
+    Internal or external name of the line    
 
 relayname
     relay associated to the terminal
@@ -570,7 +628,7 @@ relayname
 It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
 
 |image23|
-*Fig.3 - Associated relay names*
+*Associated relay names*
 
 linename
     Internal or external name of the line
@@ -579,12 +637,12 @@ The following alternate forms of the TRACE/NOTRACE commands are also  valid
 
 ::
 
-    TRACE,T=termid
-    TRACE,L=linename
-    TRACE,R=relayname
-    NOTRACE,T=termid
-    NOTRACE,L=linename
-    NOTRACE,R=relayname
+    TERM=termid,TRACE (or T=termid,T)
+    TERM=termid,NOTRACE (or T=termid,N)
+    LINE=linename,TRACE (or L=linename,T)
+    LINE=linename,NOTRACE (or L=linename,N)
+    RELAY=relayname,TRACE (or R=relayname,T)
+    RELAY=relayname,NOTRACE (or R=relayname,N)
 
 termid
     terminal name
@@ -608,7 +666,11 @@ An example of the response is:-::
     VIR0200I TRACE,D
     VIR0208I VIRTEL INTERNAL TRACE = YYY. EXT. BUFFERS = 0001/00FF.
     VIR0213I NO ACTIVE TRACES      
-    
+
+.. raw:: latex
+
+    \newpage
+
 Setting trace options
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -616,9 +678,11 @@ To set the trace options issue the following command::
 
     TRACE,VIT=Y|N Y|N Y|N  
 
-The default VIT trace parametr is YYN. The external trace setting should only be set hen instructed to by Virtel support.
+The default VIT trace parametr is YYN. The external archive trace setting should only be set when instructed to by Virtel support.
 
-The VIT indicators apply the the level of tracing.::
+The VIT indicators apply the the level of tracing.
+
+::
 
     - Y|N           No tracing or minimal tracing
     - Y|N           Data elements traced
@@ -638,7 +702,6 @@ VIRSV Command
 
 Refreshing a VIRSV Service program
 
-
 ::
 
     VIRSV,NEW=servname    
@@ -654,7 +717,9 @@ SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In
 ZAP Command
 -----------
 
-The ZAP command allows dynamic patching of a Virtel Program::
+The ZAP command allows dynamic patching of a Virtel Program
+
+::
 
     ZAP=progname+offset,verify,replace
 
@@ -806,21 +871,159 @@ Call Data (for HTTP lines)
 
     To return to the Lines Status Display, press [PF3]. To return to the Configuration Menu, press [Clear].
 
-Applying Maintenance
---------------------
+.. raw:: latex
 
-Maintence is normally through email or by downloading from the Virtel ftp web server - http://ftp.syspertec.com/login/. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. The application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elemnts is through a GUI Drag and Drop interface or via a Virtel Batch process. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
+    \newpage      
+
+Memory Display Sub-Application
+------------------------------
+
+The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.
+
+To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
+
+|image26|
+
+*Fig 25. Memory display of VIRTEL address space*
+
+Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.
+
+Permanently allocated memory blocks are represented by the following character types: 
+ 
+    1. To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space. 
+    2. Temporarily allocated memory blocks. Blocks of this type are allocated and freed by VIRTEL as required.  
+    3. Memory blocks used by the VIRTEL Multi-Session feature to save screen images. Blocks of this type are allocated and freed by VIRTEL as required.
+    4. Memory blocks used for saving EIB and other session-related information. Blocks of this type are allocated and freed by VIRTEL as required.
+    5. Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.
+    6. Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.
+
+Memory display in Memory=Test mode.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
+
+|image28|
+
+*Fig. 26 - Memory display in MEMORY=TEST mode*
+
+Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.
+
+Where the memory display occupies more than one screen, you can press [PF8] to view the following page, [PF7] to view the previous page, and [PF6] to go back to the first page.
+
+To refresh the display with up-to-date information, press [Enter].
+
+To return to the sub-application menu, press [PF3] or [Clear]
+
+5.2 Virtual Memory Display
+
+The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar. The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).
+
+.. note::
+    
+    This diagnostic tool should only be used when recommended by Technical Support.
+
+Memory trace management
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Activating the memory trace
+"""""""""""""""""""""""""""
+
+A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command
+
+::
+    
+    MEMTRACE
+
+The will produce the following response:
+
+::
+
+    VIR0200I MEMTRACE
+    VIR0214I MEMORY TRACE STARTED
+    VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
+
+Resetting the memory trace
+""""""""""""""""""""""""""
+
+A memory trace can be reseted by using the following command:-
+
+::
+
+    MEMTRACE,Clear     
+
+The trace is stopped, memory blocks used by the memory trace are released, the trace is restarted.
+
+::
+
+    VIR0200I MEMTRACE,CLEAR
+    VIR0218I MEMORY TRACE FOUND 00000011 BLOCKS USING 0000000000053344 BYTES (00000000 MEGS)
+    VIR0216I CLEARING MEMORY TRACE
+    VIR0217I MEMORY TRACE CLEARED
+    VIR0214I MEMORY TRACE STARTED
+    VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
+
+Stopping the memory trace
+"""""""""""""""""""""""""
+
+A memory trace can be stopped by using the following command:-
+
+::
+
+    NOMEMTRACE
+
+The trace is stopped, memory blocks used by the memory trace are released.
+
+Setting Memory Trace in the VIRTCT 
+""""""""""""""""""""""""""""""""""
+
+A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.
+
+Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
+Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.
+
+|image27|
+
+*Example of a memory allocataion history*
+
+Column Explanations
+    1. Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.
+    2. Task number behind the allocation request.
+    3. Register 14 value.
+    4. Register 15 value.
+    5. Program name + offset of the origin request.
+    6. Memory allocation type. (8040 = GETMAIN).
+    7. Memory block state.
+    8.  Time of the allocation.
+    9.  Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.
+    10. Reserved for internal use.
+
+Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
+
+.. raw:: latex
+
+    \newpage  
+
+Maintenance
+-----------
+
+Maintence is normally delivered through email or by downloading a maintenance package from the Virtel ftp web server - http://ftp.syspertec.com/login/. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. Application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elements is through a Virtel GUI Drag and Drop interface or via a Virtel Batch process. This is found in the Administration Portal of Virtel. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
 
 Applying z/OS maintenance.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as accumulation file called either allptfs-mshpvrr.txt (z/VSE) or allptfs-mvsvrr-txt (z/OS). 
+By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as an accumulation file called either *allptfs-mshpvrr.txt* (z/VSE) or *allptfs-mvsvrr-txt* (z/OS). 
 
 |image29|
 
 *Syspertec ftp web server*
 
-Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTF457MV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTF457MV file. As the PTF457MV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.::
+.. raw:: latex
+
+    \newpage
+
+Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTFvrrMV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTFvrrMV file. As the PTFvrrMV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.
+
+::
 
     VIR0018I VIRTEL 4.57 HAS THE FOLLOWING PTF(S) APPLIED
     VIR0018I 5530,5540,5549,5557,5559,5567               
@@ -829,7 +1032,7 @@ Once downloaded and unzipped, the zap package will contain a sequential text fil
 Applying maintenance to the TRSF files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The updates to the web entities are delivered as an accumulation update file called virtelvrrupdtnnnn1.zip where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
+The updates to the web entities are delivered as an accumulation update file called *virtelvrrupdtnnnn1.zip* where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
 
 |image30|
 
@@ -845,14 +1048,13 @@ Open the "Drag and Drop" interface in Virtel, and then drag the files over on to
 
 |image32|
 
+*Virtel Drag and Drop Interface*
+
 
 Applying maintence via batch.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn't require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter "TN2017-09 Virtel batch maintenance". This can be viewed online at   
-
-Correspondent Management
-------------------------
+A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn't require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter "TN201709 Virtel batch maintenance". This can be viewed online at http://virtel.readthedocs.io/en/latest/manuals/newsletters/TN201709/TN201709.html  
 
 .. raw:: latex
 
@@ -864,7 +1066,7 @@ Correspondent Management
    single: Correspondent Management
 
 Correspondent Management
-========================
+------------------------
 
 One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user which VIRTEL recognizes in this way is known as a “Correspondent”. VIRTEL stores the list of correspondents in a VSAM file known as the “Correspondent file”, also known as the “VIRHTML” file.
 
@@ -881,7 +1083,7 @@ There are two types of correspondent: an e-mail correspondent and a local corres
    pair: Access; Correspondent Manangement
 
 Access to the application
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The correspondent management sub-application, which allows the VIRTEL administrator to define the parameters
 associated with a correspondent, is accessible by pressing [PF5] in the VIRTEL configuration menu, or [PF12] in the
@@ -892,7 +1094,7 @@ module VIR0041A.
    pair: Security; Correspondent Manangement
 
 Security
---------
+^^^^^^^^
 
 When security is active, access to the correspondent management sub-application from the configuration menu or
 from the system services sub-application menu is controlled by the resource $$PCPC$$.
@@ -903,7 +1105,7 @@ Security management is described under the heading “Security” 282.
    pair: Objectives; Correspondent Manangement
 
 Objectives
-----------
+^^^^^^^^^^
 
 This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
 to the detail of a correspondent is achieved by positioning the cursor and pressing [PF12].
@@ -940,11 +1142,15 @@ to the detail of a correspondent is achieved by positioning the cursor and press
 
 *Correspondent detail screen (local correspondent)*
 
+.. raw:: latex
+
+    \newpage 
+
 .. index::
    pair: Field contents; Correspondent Manangement
 
 Field Contents
---------------
+^^^^^^^^^^^^^^
 
 Id
     For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.
@@ -977,7 +1183,7 @@ Contacts
    pair: Account activation; Correspondent Manangement
 
 Account activation
-------------------
+^^^^^^^^^^^^^^^^^^
 
 In order to be operational, a correspondent account must be activated. This is achieved by pressing [PF4] at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
 correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero. 
@@ -990,7 +1196,7 @@ correspondent, that the e-mail was sent successfully. The number of contacts is 
    pair: Account deactivation; Correspondent Manangement
 
 Account deactivation
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 A correspondent’s security code may be cancelled by deactivating with the [PF5] key. The message DISABLE WAS DONE indicates that the deactivation was successful.
 
@@ -998,7 +1204,7 @@ A correspondent’s security code may be cancelled by deactivating with the [PF5
    pair: Access to rules; Correspondent Manangement
 
 Access to associated rule set
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To display the list of rules associated with this correspondent, press the [PF6] key.
 
@@ -1008,15 +1214,283 @@ To display the list of rules associated with this correspondent, press the [PF6]
 
 .. _#_V457AP_uploading_HTML_pages:
 
-Uploading HTML Pages
-====================
+Web Entity Management
+---------------------
 
-HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:
+Web entities, such as HTML template pages, CSS, JavaScript elements and images, can be uploaded to the VIRTEL directories by any of the following methods:
 
-    1. by e-mail (SMTP)
-    2. by web browser (HTTP), with cookie security
-    3. by web browser (HTTP), with signon security
-    4. Via a batch process
+1. by web browser (HTTP), with signon security. Provided by Administration Portatl.
+2. Via a batch process
+3. by e-mail (SMTP) (Corresspondence Management only) 
+4. by web browser (HTTP), with cookie security (Corresspondence Management only)
+
+.. _#_V457AP_http_uploading_pages_signon:
+
+.. index::
+   pair: Uploading pages HTTP (Signon); Uploading pages
+
+Uploading by web browser (HTTP) (secured by signon)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
+
+.. index::
+   pair: HTTP definitions (Signon); Uploading pages
+
+Definitions for upload (secured by signon)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
+
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
+
+1. In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
+
+|image77|
+*Page upload by HTTP with signon : Transaction dirlist*
+
+2. Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
+
+|image78| *Page upload by HTTP with signon : Directory HTMLBAS*
+
+|image79| *Page upload by HTTP with signon : Directory W2HDIR*
+
+|image80| *Page upload by HTTP with signon : Directory CLIDIR*
+
+3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
+
+.. index::
+   pair: HTTP definitions (Signon); Uploading pages
+
+Procedure for upload (secured by signon)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Display the upload4.htm page by entering the URL http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
+
+|image8|
+
+*Page upload by HTTP with signon : Entering the userid and password*
+
+The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
+
+2. After entering the user name and password, the upload4.htm page will be displayed:
+
+|image9| 
+
+*Page upload by HTTP with signon : Displaying the upload4.htm page*
+
+3. Press the “Browse” button to display the file selection dialog:
+
+|image10| 
+
+*Page upload by HTTP with signon : File selection dialog*
+
+4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+|image11| 
+
+*Page upload by HTTP with signon : Sending the file*
+
+5. Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
+
+|image12| 
+
+*Page upload by HTTP with signon : Confirmation of file upload*
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+
+.. raw:: latex
+
+    \newpage  
+
+.. index::
+   pair: Uploading pages by drag and Drop; Uploading pages   
+
+Uploading by web browser (HTTP) by GUI drag and drop
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
+
+Upload interface in the VIRTEL menu
+"""""""""""""""""""""""""""""""""""
+
+After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
+
+|image13| 
+
+*Drag and drop upload interface*
+
+The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
+
+Displaying upload results
+"""""""""""""""""""""""""
+
+|image14| 
+
+*Displaying upload results*
+
+The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
+
+Upload summary report
+"""""""""""""""""""""
+
+After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes. 
+
+The summary is not displayed when files are dragged and dropped one at a time.
+
+In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
+
+|image15| 
+
+*Upload summary report*
+
+Extracting upload results as an Excel spreadsheet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image16| The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
+
++-----------------+------------------------+--------------------------+-------------------------------+
+| Directory       | File name              | Report                   | Time                          |
++=================+========================+==========================+===============================+ 
+| CLI-DIR         | custom.css             | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
++-----------------+------------------------+--------------------------+-------------------------------+
+| CLI-DIR         | custom.js              | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
++-----------------+------------------------+--------------------------+-------------------------------+
+
+|image17| The Delete button allows the administrator to clear the results log.
+
+ .. index::
+   pair: Uploading pages in batch; Uploading pages
+
+ .. index::
+   pair: Uploading (batch) using cURL; Uploading pages
+
+.. raw:: latex
+
+    \newpage  
+
+Uploading in batch with cURL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
+The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
+
+::
+
+    for %F in (*.htm) do curl -v -F "file=@%F;type=text/html" -u
+    virdba:virdbapw http://192.168.235.30:41001/SECURE/virmsg.txt+uplbas
+
+In this example:
+
+\*.htm
+    the files to be uploaded
+
+virdba:virdbapw
+    userid and password for VIRTEL
+
+192.168.235.30:41001
+    identifies the VIRTEL HTTP line
+
+virmsg.txt
+    page template for displaying upload result messages
+
+uplbas
+    external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See :ref:`“Uploading pages by HTTP (secured by signon)” <#_V457AP_http_uploading_pages_signon>` for a list of upload transactions.
+
+.. note::
+
+    %F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you execute the command from within a command (.cmd) file.
+
+ .. index::
+    pair: Uploading (batch) using upl2virt procedure; Uploading pages
+
+Uploading in batch using the upl2virt command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
+
+**Pre-requisites**
+
+upl2virt requires as a pre-requisite the cURL package described in the previous section.
+
+Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
+the command window.
+
+**Installation**
+
+upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
+
+::
+
+    http://n.n.n.n:41001/upl2virt.cmd 
+
+where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:\WINDOWS).
+
+**Using upl2virt at the command prompt**
+
+.. index::
+   pair: Executing upl2virt; Uploading pages
+
+To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:
+
+::
+
+    upl2virt [-u userid:password] -d directory -a n.n.n.n
+             [-p port] [-r] [-f ctlfile] [-k] [file1 file2 ...]
+
+In the above command:
+
+userid:password
+    is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
+directory
+    is the name of the target VIRTEL directory (for example, CLI-DIR)
+n.n.n.n
+    is the IP address of VIRTEL
+port
+    is the VIRTEL administration port number (default 41001).
+
+.. note::
+    This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.
+
+ctlfile
+    specifies the name of a control file containing a list of file names to be uploaded
+
+file1 file2 ...
+    are the names of files to be uploaded
+\-r
+    specifies recursion into subdirectories
+\-k
+    keeps the command window open after the last upload
+
+If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the –r option is specified).
+
+.. index::
+   pair: Using upl2virt with Windows Explorer; Uploading pages
+
+**Using upl2virt from Windows Explorer**
+
+The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu. To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:\Documents and Settings\username\SendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” – “Folder options” – “View”, tick the option “Display hidden files and folders”, and click “OK”.
+
+In the “SendTo” folder, right click and select “New” – “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”. You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:
+
+::
+
+    C:\WINDOWS\upl2virt.cmd -u MYUSERID -d CLI-DIR -a 10.1.12.101 –k
+
+where:
+
+MYUSERID
+    is your VIRTEL userid
+CLI-DIR
+    is the name of the VIRTEL directory that this shortcut will upload to
+10.1.12.101
+    is the IP address of VIRTEL.
+
+You may omit the –u MYUSERID parameter and upl2virt will prompt you for your userid.    
+
+.. raw:: latex
+
+    \newpage  
 
 .. _#_V457AP_http_uploading_pages_smtp:    
 
@@ -1024,7 +1498,7 @@ HTML pages and other elements such as graphics can be uploaded to VIRTEL by any 
    single: Uploading template pages using SMTP
 
 Uploading template pages using SMTP
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.
 
@@ -1344,269 +1818,6 @@ From now on, the cookies are managed automatically. After each upload, VIRTEL se
 
 Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
 
-.. _#_V457AP_http_uploading_pages_signon:
-
-.. index::
-   pair: Uploading pages HTTP (Signon); Uploading pages
-
-Uploading pages by HTTP (secured by signon)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
-
-.. index::
-   pair: HTTP definitions (Signon); Uploading pages
-
-Definitions for page upload (secured by signon)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
-
-The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
-
-1. In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
-
-|image77|
-*Page upload by HTTP with signon : Transaction dirlist*
-
-2. Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
-
-|image78| *Page upload by HTTP with signon : Directory HTMLBAS*
-
-|image79| *Page upload by HTTP with signon : Directory W2HDIR*
-
-|image80| *Page upload by HTTP with signon : Directory CLIDIR*
-
-3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
-
-.. index::
-   pair: HTTP definitions (Signon); Uploading pages
-
-Procedure for page upload (secured by signon)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Display the upload4.htm page by entering the URL http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
-
-|image8|
-
-*Page upload by HTTP with signon : Entering the userid and password*
-
-The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
-
-2. After entering the user name and password, the upload4.htm page will be displayed:
-
-|image9| 
-
-*Page upload by HTTP with signon : Displaying the upload4.htm page*
-
-3. Press the “Browse” button to display the file selection dialog:
-
-|image10| 
-
-*Page upload by HTTP with signon : File selection dialog*
-
-4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
-
-|image11| 
-
-*Page upload by HTTP with signon : Sending the file*
-
-5. Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
-
-|image12| 
-
-*Page upload by HTTP with signon : Confirmation of file upload*
-
-Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
-
-.. index::
-   pair: Uploading pages by drag and Drop; Uploading pages   
-
-Uploading pages by drag and drop
---------------------------------
-
-The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
-
-Upload interface in the VIRTEL menu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
-
-|image13| 
-
-*Drag and drop upload interface*
-
-The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
-
-Displaying upload results
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-|image14| 
-
-*Displaying upload results*
-
-The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
-
-Upload summary report
-^^^^^^^^^^^^^^^^^^^^^
-
-After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes. 
-
-The summary is not displayed when files are dragged and dropped one at a time.
-
-In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
-
-|image15| 
-
-*Upload summary report*
-
-Extracting upload results as an Excel spreadsheet
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-|image16| The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
-
-+-----------------+------------------------+--------------------------+-------------------------------+
-| Directory       | File name              | Report                   | Time                          |
-+=================+========================+==========================+===============================+ 
-| CLI-DIR         | custom.css             | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
-+-----------------+------------------------+--------------------------+-------------------------------+
-| CLI-DIR         | custom.js              | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
-+-----------------+------------------------+--------------------------+-------------------------------+
-
-|image17| The Delete button allows the administrator to clear the results log.
-
- .. index::
-   pair: Uploading pages in batch; Uploading pages
-
-Uploading pages in batch
-------------------------
-
- .. index::
-   pair: Uploading (batch) using cURL; Uploading pages
-
-Uploading with cURL
-^^^^^^^^^^^^^^^^^^^
-
-You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
-The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
-
-::
-
-    for %F in (*.htm) do curl -v -F "file=@%F;type=text/html" -u
-    virdba:virdbapw http://192.168.235.30:41001/SECURE/virmsg.txt+uplbas
-
-In this example:
-
-\*.htm
-    the files to be uploaded
-
-virdba:virdbapw
-    userid and password for VIRTEL
-
-192.168.235.30:41001
-    identifies the VIRTEL HTTP line
-
-virmsg.txt
-    page template for displaying upload result messages
-
-uplbas
-    external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See :ref:`“Uploading pages by HTTP (secured by signon)” <#_V457AP_http_uploading_pages_signon>` for a list of upload transactions.
-
-.. note::
-
-    %F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you execute the command from within a command (.cmd) file.
-
- .. index::
-    pair: Uploading (batch) using upl2virt procedure; Uploading pages
-
-The upl2virt command procedure
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
-
-**Pre-requisites**
-
-upl2virt requires as a pre-requisite the cURL package described in the previous section.
-
-Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
-the command window.
-
-**Installation**
-
-upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
-
-::
-
-    http://n.n.n.n:41001/upl2virt.cmd 
-
-where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:\WINDOWS).
-
-**Using upl2virt at the command prompt**
-
-.. index::
-   pair: Executing upl2virt; Uploading pages
-
-To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:
-
-::
-
-    upl2virt [-u userid:password] -d directory -a n.n.n.n
-             [-p port] [-r] [-f ctlfile] [-k] [file1 file2 ...]
-
-In the above command:
-
-userid:password
-    is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
-directory
-    is the name of the target VIRTEL directory (for example, CLI-DIR)
-n.n.n.n
-    is the IP address of VIRTEL
-port
-    is the VIRTEL administration port number (default 41001).
-
-.. note::
-    This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.
-
-ctlfile
-    specifies the name of a control file containing a list of file names to be uploaded
-
-file1 file2 ...
-    are the names of files to be uploaded
-\-r
-    specifies recursion into subdirectories
-\-k
-    keeps the command window open after the last upload
-
-If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the –r option is specified).
-
-.. index::
-   pair: Using upl2virt with Windows Explorer; Uploading pages
-
-**Using upl2virt from Windows Explorer**
-
-The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.
-
-To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:\Documents and Settings\username\SendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” – “Folder options” – “View”, tick the option “Display hidden files and folders”, and click “OK”.
-
-In the “SendTo” folder, right click and select “New” – “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”.
-
-You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:
-
-::
-
-    C:\WINDOWS\upl2virt.cmd -u MYUSERID -d CLI-DIR -a 10.1.12.101 –k
-
-where:
-
-MYUSERID
-    is your VIRTEL userid
-CLI-DIR
-    is the name of the VIRTEL directory that this shortcut will upload to
-10.1.12.101
-    is the IP address of VIRTEL.
-
-You may omit the –u MYUSERID parameter and upl2virt will prompt you for your userid.
-
 Performance
 ===========
 
@@ -1707,10 +1918,14 @@ The REMOTE ADDRESS column contains the caller X25 number for incoming calls, or 
 
 The last column contains the PCNE call user data (if present), otherwise it contains the default entry point name for X25 calls specified by the DEFENTR parameter in the VIRTCT. For GATE calls this column is blank.
 
+.. raw:: latex
+
+    \newpage  
+
 VIRTEL logger
 -------------
 
-The VIRTEL log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
+The CONSOLE log can also be written to the system logger when LOG=LOGGER is specified in the TCT. VIR0002B is a batch program that can be run to extract the VIRTEL records from the System Logger.
 
 The figure below shows an example of JCL to extract and format the VIRTEL LOG entries recorded in the System Logger:
 
@@ -1837,20 +2052,10 @@ Trace Examples
     00100 290242F4 C0F0D585 A640D781 A2A2A696 9984404B 404B404B 290341F4 42F5C04C *...4é0New Password . . ....4.5é<* 099A96B4
     00120 1150F11D F0115A50 1D7C115B 5B1DF011 5B602902 42F2C0F8 C4C6C8C3 C5F3F5F2 *.&1.0.&.to.$$.0.$-...2é8DFHCE352* 099A96D4
 
-*Fig. 9 Example of terminal trace (inbound 3270 terminal)*
+*Example of terminal trace (inbound 3270 terminal)*
 
-::
+::   
     
-    X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.26
-    00000 00000019 10010B96 00188019 13348330 0A420707 43030302 CC0300C4 80       * ....o .....c........... D.     * 0989117C
-    X001T007 XOT: SENT TO ROUTER                                13:48:15.37
-    00000 00000003 10010F                                                         * ....                           * 09896178
-    X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.53
-    00000 0000001B 100100D7 C5E2C9E3 404040E2 E8E2E7C3 C6E3C1E2 E8E2D7C1 E24040   * ... PESIT SYSXCFTASYSPAS       * 0989117C
-    X001T007 XOT: SENT TO ROUTER                                13:48:15.54
-    00000 00000003 100121                                                         * ....                           * 0989117C
-    X001T007 XOT: SENT TO ROUTER                                13:48:15.55
-    00000 00000007 100120C1 C3D2F0                                                * ....ACK0                       * 098A4176
     X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.57
     00000 00000003 100121                                                         * ....                           * 0989117C
     X001T007 XOT: RECEIVED FROM ROUTER                          13:48:15.72
@@ -1867,7 +2072,7 @@ Trace Examples
     X001T007 XOT: SENT TO ROUTER                                13:48:15.73
     00000 00000003 100161
 
-*Fig. 10 Example of line trace (XOT line)*    
+*Example of line trace (XOT line)*    
 
 ::
 
@@ -1891,32 +2096,13 @@ Trace Examples
     00020 50425831 06010107 03002402 16010017 0101                                      *PBX1......$.......              * 098A419D
     P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:12.55
     00000 00114021 D9E20601 01070300 24021701 01                                        * . .RS..... .....               * 0989617C
-    X001T007 XOT: OUTBOUND DATA                                 15:10:12.55
-    00000 00001140 21D9E206 01010703 00240217 0101                                      * . .RS..... .....               * 098A417C
-    X001T007 XOT: INBOUND DATA                                  15:10:12.89
-    00000 440028C0 1FE20009 0C0B02FF FF0C0650 434E4531 410D0307 DC1D5C0D 414E5449       *D.(............PCNE1A.....ç.ANTI* 09891182
-    00020 50434E45 20544553 54                                                          *PCNE TEST * 098911A2
-    P001I001 AP80LU51 I09: DATA TO CFTBACB1                     15:10:12.90
-    00000 0028C01F E200090C 0B02FFFF 0C065043 4E453141 0D0307DC 1D5C0D41 4E544950       *.(............PCNE1A.....ç.ANTIP* 098A417D
-    00020 434E4520 54455354                                                             *CNE TEST                        * 098A419D
-    P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:12.97
-    00000 000BC03F D9000203 000000                                                      * .é.R ..                        * 0989617C
-    X001T007 XOT: OUTBOUND DATA                                 15:10:12.97
-    00000 00000BC0 3FD90002 03000000                                                    * .é.R ..                        * 098A417C
-    X001T007 XOT: INBOUND DATA                                  15:10:33.11
-    00000 66000B40 23E2D902 03000000                                                    *. . .SR..                       * 09891182
-    P001I001 AP80LU51 I09: DATA TO CFTBACB1                     15:10:33.12
-    00000 000B4023 E2D90203 000000                                                      * . .SR..                        * 098A417D
-    P001I001 AP80LU51 I09: DATA FROM CFTBACB1                   15:10:33.14
-    00000 00064024 D9E2                                                                 * . .RS                          * 0989617C
-    X001T007 XOT: OUTBOUND DATA                                 15:10:33.14
-    00000 00000640 24D9E2                                                               * . .RS                          * 098A417C
-    X001T007 XOT: INBOUND X25 COMMAND                           15:10:33.27
-    00000 130000                                                                        *.                               * 09891182
-    X001T007 XOT: OUTBOUND X25 COMMAND                          15:10:33.27
-    00000 17                                                                            *.                               * 09891182
+   
 
-*Fig. 11 Example of "trace by rule" (XOT terminal to application on /PCNE line)*
+*Example of "trace by rule" (XOT terminal to application on /PCNE line)*
+
+.. raw:: latex
+
+    \newpage  
 
 VIRTEL SNAP
 -----------
@@ -1931,9 +2117,9 @@ The SNAP listing is primarily intended for use by VIRTEL development personnel a
 
 The internal trace table is recorded in a circular fashion, so that each new event added to the table overlays and replaces the oldest event in the table. The table contains a fixed number of event slots (determined by the TRACBIG parameter in the VIRTCT), and additionally certain events may have a variable amount (up to 256 bytes) of data recorded. The variable data is stored in a separate area whose size is determined by the TRACEB parameter in the VIRTCT, and this area is also filled in a circular manner, with the oldest information being dropped from the table when new information is added. Thus, depending on the values of the TRACBIG and TRACB parameters, older entries in the trace table may no longer have data associated with them.
 
-Clearly, the greater the level of activity in the VIRTEL system, the quicker the trace table will wrap and information will be pushed out to make way for new entries. Thus, in order for the SNAP listing to     provide useful information, the size of the trace table and its associated buffer area must be adequate for the level of system activity, and the SNAP command must be issued as quickly as possible after the event under investigation occurs. In some cases it may be necessary to use an automation tool to issue the SNAP command immediately following the appearance of a certain console message.
+Clearly, the greater the level of activity in the VIRTEL system, the quicker the trace table will wrap and information will be pushed out to make way for new entries. Thus, in order for the SNAP listing to provide useful information, the size of the trace table and its associated buffer area must be adequate for the level of system activity, and the SNAP command must be issued as quickly as possible after the event under investigation occurs. In some cases it may be necessary to use an automation tool to issue the SNAP command immediately following the appearance of a certain console message.
 
-As well as dumping the contents of the internal trace table, the SNAP command also dumps certain VIRTEL internal control blocks. A dump of the control blocks associated with a particular terminal may    optionally be requested.
+As well as dumping the contents of the internal trace table, the SNAP command also dumps certain VIRTEL internal control blocks. A dump of the control blocks associated with a particular terminal may optionally be requested.
 
 The SNAP command is described under the heading “VIRTEL commands”. VIRTEL may also produce a SNAP listing automatically if a program check or other abend occurs during VIRTEL processing.
 
@@ -1946,13 +2132,12 @@ In **z/VSE environment**, the SNAP output is written to the POWER LST file of th
 
 |image25|
 
-*Fig. 12 Example of SNAP listing*
+*Example of SNAP listing*
 
-3.3.1 Message-triggered SNAPMSG
+Message-triggered SNAPMSG
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).
-
-Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.
+The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”. See the SNAPMSG command for further details.
 
 Audit
 =====
@@ -1984,6 +2169,10 @@ Web
 For terminals associated with all other line types (including /GATE, /PCNE, and /FASTC) the statistics record may not contain meaningful information and the statistics field in the terminal definition     should be left blank.
 
 The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.
+
+.. raw:: latex
+
+    \newpage  
 
 VIRSTAT classsic format 
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -2020,7 +2209,7 @@ For terminals which specify classic format recording (STATS=1), the  VIRSTAT rec
     117 to 120  Hexadecimal     X25 units received (Fast-Connect)
     121 to 124  Hexadecimal     X25 units sent (Fast-Connect)
 
-*Fig. 13 Format of VIRSTAT record (classic format)*
+*Format of VIRSTAT record (classic format)*
 
 For NPSI Fast Connect lines, the X25 accounting statistics are recorded in billing units provided by NPSI at virtual circuit disconnection time. Their interpretation depends on the TAXUNIT parameter in the NPSI X25.MCH macro. Similarly, the session start and end times (Fast Connect only) are provided by NPSI and depend on the clock settings in the NCP. For other types of lines, accounting statistics and times are generated by VIRTEL.
 
@@ -2030,6 +2219,10 @@ Type P (partial)
     Records are implemented at regular intervals.
 Type E (end of job) 
     Records are implemented at VIRTEL shutdown.
+
+.. raw:: latex
+
+    \newpage  
 
 VIRSTAT alternative X25 format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2065,7 +2258,7 @@ For terminals which specify alternate X25 format recording (STATS=4), the VIRSTA
     117 to 120      Hexadecimal     Unused
     121 to 124      Hexadecimal     Call duration in 1/100 second
 
-*Fig. 14 Format of VIRSTAT record (alternate X25 format)*
+*Format of VIRSTAT record (alternate X25 format)*
 
 For NPSI Fast Connect lines, the X25 session start and end times are provided by NPSI at virtual circuit disconnection time and depend on the clock settings in the NCP. For other types of lines, times are     generated by VIRTEL.
 
@@ -2098,7 +2291,7 @@ For terminals which specify web format recording (STATS=5 or STATS=6), the VIRST
     109 to 116      Alphanumeric    Session start time (HH.MM.SS)
     117 to 124      Alphanumeric    Session end time (HH.MM.SS)
 
-*Fig. 15 Format of VIRSTAT record (type 5 for Web Access)*
+*Format of VIRSTAT record (type 5 for Web Access)*
 
 This record type is written when 5 is specified in the STATS field of the terminal definition used for the HTTP line. If the terminal is disconnected by TIMEOUT, the “Error Code” field contains the word     “TIME”.
 
@@ -2123,7 +2316,7 @@ This record type is written when 5 is specified in the STATS field of the termin
     89 to 108       Alphanumeric    User name
     109 to 124      Alphanumeric    URL parameter
 
-*Fig. 16 Format of VIRSTAT record (type 6 for Web Access)*
+*Format of VIRSTAT record (type 6 for Web Access)*
 
 For this record type, the counters are in binary, and the Session Date and Time fields are replaced by User name (20 bytes) and URL parameter (first 16 bytes).
 
@@ -2173,7 +2366,7 @@ Examples of the JCL required to execute this program are shown below:
     //VIRSTAT DD DISP=(OLD,DELETE),DSN=&&STAT
     //
 
-*Fig. 18 VIR0070 JCL to print VIRSTAT file (z/OS)*
+*VIR0070 JCL to print VIRSTAT file (z/OS)*
 
 Printing the contents of the VIRSTAT file (HTTP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2245,7 +2438,7 @@ In the VSE environment the VIRPRTST job, loaded into the POWER reader queue duri
     /&
     * $$ EOJ
 
-*Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)*
+*PRTSTATW JCL to print VIRSTAT file in VSE (type=6)*
 
 z/OS JCL
 """"""""
@@ -2309,11 +2502,15 @@ In the z/OS environment the JCL for executing the PRTSTATW program is supplied a
     //* The '*' character allows a generic evaluation.
     // 
 
-*Fig. 20 PRTSTATW JCL to print VIRSTAT file in z/OS (type=6)*
+*PRTSTATW JCL to print VIRSTAT file in z/OS (type=6)*
 
 This JCL consists of two main steps:
     -  a first step to sort the file
     -  a second step to PRINT or COUNT the records
+
+.. raw:: latex
+
+    \newpage      
 
 Sorting the VIRSTAT file 
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2335,7 +2532,11 @@ Several examples of sort criteria are shown below for various fields: terminal (
     SORT FIELDS=(17,15,A) --> IP Adress (for $ALL$ request)
     SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for $ALL$ request
 
-*Fig. 21 PRTSTATW JCL sort criteria*
+*PRTSTATW JCL sort criteria*
+
+.. raw:: latex
+
+    \newpage  
 
 For example, to obtain a report in ascending order of session start date, specify the following statements in the SORT SYSIN:
 
@@ -2357,7 +2558,7 @@ The PRTSTATW program executed in the second step reads the sorted output file fr
     1...!....0....!....0....!....0....!....0....!....0....!....0...
     PRTSTATW PRINT                BREAK USER          NNN  PPPP
 
-*Fig.22 PRTSTATW first SYSIN card*
+*PRTSTATW first SYSIN card*
 
 Columns 1 to 8
     Program name: must be PRTSTATW
@@ -2392,7 +2593,7 @@ Columns 56 to 59
     SELUSER   USER4571890123457789     (up to 20 bytes)
     SELPARM   PARM457189012345         (up to 16 bytes)
 
-*Fig.23 PRTSTATW second SYSIN card*
+*PRTSTATW second SYSIN card*
 
 This card allows records to be selected according to 4 fields: DATE (selection by date range), TERM (selection of up to 4 different terminal names, otherwise 4 different HTTP lines), USER (selection by user name), PARM (selection by URL parameter).
 
@@ -2465,145 +2666,24 @@ For z/OS, sample JCL for the user counter report is supplied in the JCLCOUST mem
     18-01-2011      14:23:12                Total Calls without signature   : 00001
     18-01-2011      14:23:12                End of execution  
 
-*Fig 24. PRTSTATW user counter report*
+*PRTSTATW user counter report*
+
+.. raw:: latex
+
+    \newpage  
 
 SMF Support
 -----------
 
 Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.
 
-4.3.1 Printing the VIRSTAT SMF record
+Printing the VIRSTAT SMF record
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SMFPRINT job in VIRTEL.SAMPLIB can be used to print the SMF records from the SYS1.MANx dataset using SMFREXXP REXX procedure.
 
 Messages "VIR0612E VIRSTAT SMFWTM FAILED. RC=rc" and "VIR0611I VIRSTAT NOW RECORDING TO SMF" are in relation with SMF support. See "Virtel Messages and Operations" manual for more details.
 
-Memory management
------------------
-
-Memory display Sub-Application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.
-
-To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
-
-|image26|
-
-*Fig 25. Memory display of VIRTEL address space*
-
-Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.
-
-Permanently allocated memory blocks are represented by the following character types: 
- 
-    1. To avoid memory shortages as a result of fragmentation, these blocks are always allocated at the end of the VIRTEL address space. 
-    2. Temporarily allocated memory blocks. Blocks of this type are allocated and freed by VIRTEL as required.  
-    3. Memory blocks used by the VIRTEL Multi-Session feature to save screen images. Blocks of this type are allocated and freed by VIRTEL as required.
-    4. Memory blocks used for saving EIB and other session-related information. Blocks of this type are allocated and freed by VIRTEL as required.
-    5. Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.
-    6. Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.
-
-Memory display in Memory=Test mode.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
-
-|image28|
-
-*Fig. 26 - Memory display in MEMORY=TEST mode*
-
-Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.
-
-Where the memory display occupies more than one screen, you can press [PF8] to view the following page, [PF7] to view the previous page, and [PF6] to go back to the first page.
-
-To refresh the display with up-to-date information, press [Enter].
-
-To return to the sub-application menu, press [PF3] or [Clear]
-
-5.2 Virtual Memory Display
-
-The Memory display feature is a memory diagnostic tool created to trap possible invalid Virtel memory free requests. Such request can lead to ABEND0C4s and other unwanted behaviour. Virtel memory requests (PRENDRE and RENDRE) are tracked in a diagnostic storage area located above the bar. The area is 1MB in size and can contain 65536 active storage requests. An active storage request is a storage area that has been gotten (PRENDRE) and is pending a Virtel storage release (RENDRE).
-
-.. note::
-    
-    This diagnostic tool should only be used when recommended by Technical Support.
-
-Memory trace management
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Activating the memory trace
-"""""""""""""""""""""""""""
-
-A memory trace can be activated using a command or from the VIRTCT. In both case, VIRTEL records an history of memory allocations that appears in a SNAP listing. A memory trace can be activated by using the following command
-
-::
-    
-    MEMTRACE
-
-The will produce the following response:
-
-::
-
-    VIR0200I MEMTRACE
-    VIR0214I MEMORY TRACE STARTED
-    VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
-
-Resetting the memory trace
-""""""""""""""""""""""""""
-
-A memory trace can be reseted by using the following command:-
-
-::
-
-    MEMTRACE,Clear     
-
-The trace is stopped, memory blocks used by the memory trace are released, the trace is restarted.
-
-::
-
-    VIR0200I MEMTRACE,CLEAR
-    VIR0218I MEMORY TRACE FOUND 00000011 BLOCKS USING 0000000000053344 BYTES (00000000 MEGS)
-    VIR0216I CLEARING MEMORY TRACE
-    VIR0217I MEMORY TRACE CLEARED
-    VIR0214I MEMORY TRACE STARTED
-    VIR0218I MEMORY TRACE FOUND 00000000 BLOCKS USING 0000000000000000 BYTES (00000000 MEGS)
-
-Stopping the memory trace
-"""""""""""""""""""""""""
-
-A memory trace can be stopped by using the following command:-
-
-::
-
-    NOMEMTRACE
-
-The trace is stopped, memory blocks used by the memory trace are released.
-
-Setting Memory Trace in the VIRTCT 
-""""""""""""""""""""""""""""""""""
-
-A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.
-
-Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
-Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.
-
-|image27|
-
-*Fig. 27 Example of a memory allocataion history*
-
-Column Explanations
-    1. Line or terminal name for which memory allocation is performed. This information is omitted when the allocation relates VIRTEL itself.
-    2. Task number behind the allocation request.
-    3. Register 14 value.
-    4. Register 15 value.
-    5. Program name + offset of the origin request.
-    6. Memory allocation type. (8040 = GETMAIN).
-    7. Memory block state.
-    8.  Time of the allocation.
-    9.  Type and size of the allocation. The two first bytes represents the type of memory allocated (See “Memory display of VIRTEL address space” for a complete description of the memory block type.). The six last bytes represents the size of the memory block allocated.
-    10. Reserved for internal use.
-
-Tracing memory activity can produce an important overhead estimated to 20-30% of the activity. When using MEMTRACE command, the memory previously allocated to records history is released.
 
 Appendix
 ========
