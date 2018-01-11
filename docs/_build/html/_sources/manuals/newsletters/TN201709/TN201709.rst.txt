@@ -1,10 +1,11 @@
+.. _#_tn201719:
+
 Virtel Batch Maintenance
 ========================
 
 This newsletter documents the procedure to maintain the VIRTEL SAMP TRSF VSAM file using a batch facility. Previously, updates to the Virtel SAMP TRSF VSAM file were through the “Drag and Drop” interface provided by the administration portal. Using this procedure removes the manual process required to perform the “drag and drop” operation. Using batch also improves the automation and maintenance distribution in a complex environment supporting multiple instances of Virtel.
 
-Installing the maintenance package
-----------------------------------
+**Installing the maintenance package**
 
 The maintenance package is delivered to the customer as a zip file. It contains the following members:-
 
@@ -14,8 +15,7 @@ The maintenance package is delivered to the customer as a zip file. It contains 
 
 * readme-updtnnnn.txt Fix details contained within the package
 
-Control members to be uploaded to the VIRTEL CNTL library:-
------------------------------------------------------------
+**Control members to be uploaded to the VIRTEL CNTL library:-**
 
 BATCH Batch control member
 
@@ -53,20 +53,19 @@ SCENLOAD.ASM Batch SCENARIO
 
     \newpage 
 
-Appendix A
-==========
+**Appendix A**
 
-Member VIRTCTBT
----------------
+*Member VIRTCTBT*
 
 ::
 
         TITLE 'VIRTEL TCT FOR BATCH'
-        PRINT GEN
-        VIRTERM TYPE=INITIAL,APPLID=APPLHOLT,                   *
-            LANG='EN', LANGUAGE FOR USER MESSAGES               *
-            COUNTRY=FR, EBCDIC-ASCII TRANSLATION                *
-            DEFUTF8=IBM1147, DEFAULT OUTPUT ENCODING UTF-8      *
+        PRINT NOGEN
+    * Change lines identified by <    
+        VIRTERM TYPE=INITIAL,APPLID=APPLHOLT,                   * <
+            LANG='EN', LANGUAGE FOR USER MESSAGES               * <
+            COUNTRY=FR, EBCDIC-ASCII TRANSLATION                * <
+            DEFUTF8=IBM1147, DEFAULT OUTPUT ENCODING UTF-8      * <
             CHARSET=, UTF-8: ADDITIONAL CHARSETS                *
             GMT=SYSTZ,                                          *
             TCP1=(TCPIP,,,250), TCPIPNAME,,,MAXSOCKETS          *
@@ -88,20 +87,20 @@ Member VIRTCTBT
             DONTSWA=YES,                                        *
             NBDYNAM=250,                                        *
             MULTI=YES,RESO=NO,ARBO=YES,MINITEL=YES,             *
-            VIRSECU=YES,SECUR=(RACROUTE,RACF),                  *
-            RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,      *
-            UFILE1=(SAMPTRSF,ACBH1,0,10,01),                    *
+            VIRSECU=YES,SECUR=(RACROUTE,RACF),                  * <
+            RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,      * <
+            UFILE1=(SAMPTRSF,ACBH1,0,10,01),                    * 
             UFILE2=(HTMLTRSF,ACBH2,0,10,01),                    *
             UFILE3=, (PLUGTRSF,ACBH3,0,10,01),                  *
             GATE=GENERAL,                                       *
             NBCVC=32,                                           *
             MEMORY=ABOVE,                                       *
-            COMPANY='YOUR DETAILS HERE', COMPANY INFO           X
-            ADDR1='ADDRESS1', COMPANY INFO                      X
-            ADDR2='ADDRESS2', COMPANY INFO                      X
-            LICENCE='P500 - PERMANENT', LICENCE INFO            X
-            EXPIRE=(2999,12,31), LICENCE EXPIRATION             X
-            CODE='12356789', LICENCE CODE                       X
+            COMPANY='YOUR DETAILS HERE', COMPANY INFO           X <
+            ADDR1='ADDRESS1', COMPANY INFO                      X <
+            ADDR2='ADDRESS2', COMPANY INFO                      X <
+            LICENCE='P500 - PERMANENT', LICENCE INFO            X <
+            EXPIRE=(2999,12,31), LICENCE EXPIRATION             X <
+            CODE='12356789', LICENCE CODE                       X <
             TITRE1='S Y S P E R T E C  F R A N C E ',           *
             TITRE2='V I R T E L'    
     *-------------------------------------------------------   
@@ -141,8 +140,7 @@ Member VIRTCTBT
 
     \newpage 
 
-Member SCENLOAD
----------------
+*Member SCENLOAD*
 
 ::
 
@@ -219,15 +217,13 @@ Member SCENLOAD
 
     \newpage 
 
-Member EOJ
-----------
+*Member EOJ*
 
 ::
 
     .EOJ
 
-Member BATCH
-------------
+*Member BATCH*
 
 ::
 

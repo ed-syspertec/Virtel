@@ -43,8 +43,8 @@
 \setmonofont{Courier New}
 
 
-\title{Virtel Audit, Operations and Performance Guide}
-\date{Jan 10, 2018}
+\title{Virtel Audit, Administration, Operations and Performance Guide}
+\date{Jan 11, 2018}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -60,7 +60,7 @@
 
 \sphinxincludegraphics[scale=0.5]{{logo_virtel_web}.png}
 
-\sphinxstylestrong{VIRTEL Audit, Operations and Performance}
+\sphinxstylestrong{VIRTEL Audit, Administration, Operations and Performance}
 
 \begin{sphinxadmonition}{danger}{Danger:}
 This book is currently under construction. Do not use!
@@ -97,7 +97,7 @@ their respective owners.
 
 
 \chapter{Operations}
-\label{\detokenize{audit_operations_ and_performance:operations}}\label{\detokenize{audit_operations_ and_performance:virtel457ap}}\label{\detokenize{audit_operations_ and_performance:v457ap-introduction}}\label{\detokenize{audit_operations_ and_performance:audit-operations-and-performance-v4-57}}
+\label{\detokenize{audit_operations_ and_performance:operations}}\label{\detokenize{audit_operations_ and_performance:virtel457ap}}\label{\detokenize{audit_operations_ and_performance:audit-administration-operations-and-performance-v4-57}}\label{\detokenize{audit_operations_ and_performance:v457ap-introduction}}
 
 \section{Issuing Commands}
 \label{\detokenize{audit_operations_ and_performance:issuing-commands}}
@@ -687,7 +687,7 @@ relay associated to the terminal
 
 It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
 
-\sphinxincludegraphics{{image03}.png}
+\sphinxincludegraphics{{image23}.png}
 \sphinxstyleemphasis{Fig.3 - Associated relay names}
 \begin{description}
 \item[{linename}] \leavevmode
@@ -822,7 +822,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 
 The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.
 
-\sphinxincludegraphics{{image01}.png}
+\sphinxincludegraphics{{image21}.png}
 
 \sphinxstyleemphasis{Fig.1 - Line Status Display screen}
 \begin{description}
@@ -900,7 +900,7 @@ Security rules are the same as those which apply to the previous screen.
 
 This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:
 
-\sphinxincludegraphics{{image02}.png}
+\sphinxincludegraphics{{image22}.png}
 
 \sphinxstyleemphasis{Fig.2 - Line Usage Detail Display screen}
 \begin{description}
@@ -985,7 +985,7 @@ Maintence is normally through email or by downloading from the Virtel ftp web se
 \label{\detokenize{audit_operations_ and_performance:applying-z-os-maintenance}}
 By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as accumulation file called either allptfs-mshpvrr.txt (z/VSE) or allptfs-mvsvrr-txt (z/OS).
 
-\sphinxincludegraphics{{image09}.png}
+\sphinxincludegraphics{{image29}.png}
 
 \sphinxstyleemphasis{Syspertec ftp web server}
 
@@ -1002,24 +1002,879 @@ Once downloaded and unzipped, the zap package will contain a sequential text fil
 \label{\detokenize{audit_operations_ and_performance:applying-maintenance-to-the-trsf-files}}
 The updates to the web entities are delivered as an accumulation update file called virtelvrrupdtnnnn1.zip where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
 
-\sphinxincludegraphics{{image10}.png}
+\sphinxincludegraphics{{image30}.png}
 
 \sphinxstyleemphasis{Unzipped update file}
 
 In the above example, the update file contains updates to the W2H and DOC directories. The members in each directory should be selected (CTRL-A) and dragged over to the “Drag and Drop” upload option of the Virtel Administration portal, normally setup on port 41001.
 
-\sphinxincludegraphics{{image11}.png}
+\sphinxincludegraphics{{image31}.png}
 
 \sphinxstyleemphasis{Virtel Administration Portal}
 
 Open the “Drag and Drop” interface in Virtel, and then drag the files over on to the relvant directory in the upload interface. A upload window will open showing the results of the upload.
 
-\sphinxincludegraphics{{image12}.png}
+\sphinxincludegraphics{{image32}.png}
 
 
 \subsection{Applying maintence via batch.}
 \label{\detokenize{audit_operations_ and_performance:applying-maintence-via-batch}}
 A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn’t require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter “TN2017-09 Virtel batch maintenance”. This can be viewed online at
+
+
+\section{Correspondent Management}
+\label{\detokenize{audit_operations_ and_performance:correspondent-management}}
+\newpage
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-correspondent-management}}
+\index{Correspondent Management}
+
+\chapter{Correspondent Management}
+\label{\detokenize{audit_operations_ and_performance:index-0}}\label{\detokenize{audit_operations_ and_performance:id1}}
+One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user which VIRTEL recognizes in this way is known as a “Correspondent”. VIRTEL stores the list of correspondents in a VSAM file known as the “Correspondent file”, also known as the “VIRHTML” file.
+
+VIRTEL uses the correspondent file for the following purposes:
+- the rules of an HTTP line permit VIRTEL to distinguish between correspondents and non-correspondents when processing incoming HTTP requests. When the requesting user is identified as a correspondent, a special entry point may be assigned, or a set of rules specific to the user may be executed. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details.
+- the rules of an HTTP line may assign a specific LU name to a correspondent connecting to a host application via web access. This is known as “LU nailing” and is described in more detail in the VIRTEL LU Nailing HOWTO manual.
+- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-smtp}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by SMTP”}}}} and {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by cookie)”}}}}.
+
+There are two types of correspondent: an e-mail correspondent and a local correspondent:
+- An \sphinxstylestrong{e-mail correspondent} is always defined by the VIRTEL administrator. When the administrator activates an email correspondent, VIRTEL sends an e-mail message to the correspondent containing the security code. The correspondent then either replies to the e-mail message or clicks on a link in the message to connect to VIRTEL.
+- A \sphinxstylestrong{local correspondent} is activated by the correspondent using a procedure known as “self-registration”. The self-registration procedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.
+
+\index{Access!Correspondent Manangement}\index{Correspondent Manangement!Access}
+
+\section{Access to the application}
+\label{\detokenize{audit_operations_ and_performance:access-to-the-application}}\label{\detokenize{audit_operations_ and_performance:index-1}}
+The correspondent management sub-application, which allows the VIRTEL administrator to define the parameters
+associated with a correspondent, is accessible by pressing {[}PF5{]} in the VIRTEL configuration menu, or {[}PF12{]} in the
+system services sub-application menu, or from the VIRTEL Multi-Session screen via an application referencing the
+module VIR0041A.
+
+\index{Security!Correspondent Manangement}\index{Correspondent Manangement!Security}
+
+\section{Security}
+\label{\detokenize{audit_operations_ and_performance:security}}\label{\detokenize{audit_operations_ and_performance:index-2}}
+When security is active, access to the correspondent management sub-application from the configuration menu or
+from the system services sub-application menu is controlled by the resource \$\$PCPC\$\$.
+When it is accessed by a transaction, the rules of security management of transactions will apply.
+Security management is described under the heading “Security” 282.
+
+\index{Objectives!Correspondent Manangement}\index{Correspondent Manangement!Objectives}
+
+\section{Objectives}
+\label{\detokenize{audit_operations_ and_performance:objectives}}\label{\detokenize{audit_operations_ and_performance:index-3}}
+This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
+to the detail of a correspondent is achieved by positioning the cursor and pressing {[}PF12{]}.
+
+\sphinxincludegraphics{{image74}.png}
+
+\sphinxstyleemphasis{Summary of correspondence}
+
+\sphinxincludegraphics{{image75}.png}
+\sphinxstyleemphasis{Correspondent detail screen (e-mail correspondent)}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{CORRESPONDENT} \PYG{n}{DETAIL} \PYG{n}{DEFINITION} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRE2} \PYG{l+m+mi}{16}\PYG{p}{:}\PYG{l+m+mi}{40}\PYG{p}{:}\PYG{l+m+mi}{04}
+\PYG{n}{Id}                 \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WKSTN}\PYG{o}{\PYGZhy{}}\PYG{n}{A2FE}\PYG{o}{/}\PYG{n}{SYSPERTEC}
+                        \PYG{n}{workstation}\PYG{o}{/}\PYG{n}{lan}
+\PYG{n}{Type} \PYG{n}{of} \PYG{n}{Id}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{2}             \PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{Email} \PYG{l+m+mi}{2}\PYG{p}{:}\PYG{n}{Local}\PYG{o}{+}\PYG{n}{fixed} \PYG{l+m+mi}{3}\PYG{p}{:}\PYG{n}{Local}\PYG{o}{+}\PYG{n}{changing}
+\PYG{n}{Activation} \PYG{n}{message} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+                                      \PYG{n}{Text} \PYG{n}{of} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{OK}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{message} \PYG{n}{to} \PYG{n}{user}\PYG{o}{.}
+\PYG{n}{VTAM} \PYG{n}{name}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{RRVTC006}      \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{parameter} \PYG{n}{to} \PYG{n}{specify} \PYG{n}{VTAM} \PYG{n}{LU} \PYG{n}{name}
+\PYG{n}{Rule} \PYG{n}{Set}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}               \PYG{n}{Rules} \PYG{n}{to} \PYG{n}{choose} \PYG{n}{an} \PYG{n}{entry} \PYG{n}{point}
+\PYG{n}{Directory}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}               \PYG{n}{Where} \PYG{n}{data} \PYG{o+ow}{is} \PYG{n}{to} \PYG{n}{be} \PYG{n}{uploaded}
+\PYG{n}{Last} \PYG{n}{contact}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{30} \PYG{n}{Jun} \PYG{l+m+mi}{2009} \PYG{l+m+mi}{11}\PYG{p}{:}\PYG{l+m+mi}{24}\PYG{p}{:}\PYG{l+m+mi}{49} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{002.082}
+\PYG{n}{Contacts}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{00000010} \PYG{n}{Number} \PYG{n}{of} \PYG{n}{times} \PYG{n}{cookie} \PYG{n}{was} \PYG{n}{updated}
+\PYG{n}{Date} \PYG{n}{created}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{30} \PYG{n}{Jun} \PYG{l+m+mi}{2009} \PYG{l+m+mi}{10}\PYG{p}{:}\PYG{l+m+mi}{35}\PYG{p}{:}\PYG{l+m+mi}{30}
+\PYG{n}{Created} \PYG{n}{by}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{VIRDBA}
+\PYG{n}{Date} \PYG{n}{activated}     \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{30} \PYG{n}{Jun} \PYG{l+m+mi}{2009} \PYG{l+m+mi}{10}\PYG{p}{:}\PYG{l+m+mi}{35}\PYG{p}{:}\PYG{l+m+mi}{30}
+\PYG{n}{Activated} \PYG{n}{by}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{VIRDBA}
+\PYG{n}{Date} \PYG{n}{disabled}      \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Disabled} \PYG{n}{by}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+
+\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update}                           \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return}                      \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}
+\PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate}                         \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Disable}                     \PYG{n}{P6}\PYG{o}{=}\PYG{n}{Rules}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Correspondent detail screen (local correspondent)}
+
+\index{Field contents!Correspondent Manangement}\index{Correspondent Manangement!Field contents}
+
+\section{Field Contents}
+\label{\detokenize{audit_operations_ and_performance:index-4}}\label{\detokenize{audit_operations_ and_performance:field-contents}}\begin{description}
+\item[{Id}] \leavevmode
+For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.
+
+\item[{Type of Id}] \leavevmode\begin{enumerate}
+\item {} 
+this is an e-mail correspondent
+
+\item {} 
+this is a local correspondent whose security code is generated at activation time and subsequently remains constant
+
+\item {} 
+this is a local correspondent whose security code changes each time it is accessed.
+
+\end{enumerate}
+
+\item[{Activation message}] \leavevmode
+Message received by the user at time of activation of his account. This message can contain a link allowing the user to connect to a host application or to open the upload.htm page with automatic installation of an authorization cookie.
+\begin{quote}
+\begin{description}
+\item[{The activation message may include the following variables:}] \leavevmode
+\&R meaning “insert a blank line”.
+
+\&C meaning “insert security code”. The activation security code is inserted into the message in the form VirtelCookie=xxx.
+
+\end{description}
+\end{quote}
+
+\item[{Rule Set}] \leavevmode
+(optional) The name of the rule set associated with this user.
+
+\item[{Directory}] \leavevmode
+(optional) Name of the directory into which this correspondent may upload files.
+
+\item[{Last contact}] \leavevmode
+Date and time of the last transfer, and the IP address of the correspondent.
+
+\item[{Contacts}] \leavevmode
+The number of contacts since the last activation.
+
+\end{description}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-account-activation}}
+\index{Account activation!Correspondent Manangement}\index{Correspondent Manangement!Account activation}
+
+\section{Account activation}
+\label{\detokenize{audit_operations_ and_performance:account-activation}}\label{\detokenize{audit_operations_ and_performance:index-5}}
+In order to be operational, a correspondent account must be activated. This is achieved by pressing {[}PF4{]} at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
+correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero.
+
+\begin{sphinxadmonition}{note}{Note:}
+To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name \$MAIL\$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the \$MAIL\$ transaction is not defined.
+\end{sphinxadmonition}
+
+\index{Account deactivation!Correspondent Manangement}\index{Correspondent Manangement!Account deactivation}
+
+\section{Account deactivation}
+\label{\detokenize{audit_operations_ and_performance:index-6}}\label{\detokenize{audit_operations_ and_performance:account-deactivation}}
+A correspondent’s security code may be cancelled by deactivating with the {[}PF5{]} key. The message DISABLE WAS DONE indicates that the deactivation was successful.
+
+\index{Access to rules!Correspondent Manangement}\index{Correspondent Manangement!Access to rules}
+
+\section{Access to associated rule set}
+\label{\detokenize{audit_operations_ and_performance:index-7}}\label{\detokenize{audit_operations_ and_performance:access-to-associated-rule-set}}
+To display the list of rules associated with this correspondent, press the {[}PF6{]} key.
+
+\newpage
+
+
+\chapter{Uploading HTML Pages}
+\label{\detokenize{audit_operations_ and_performance:v457ap-uploading-html-pages}}\label{\detokenize{audit_operations_ and_performance:uploading-html-pages}}
+HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:
+\begin{enumerate}
+\item {} 
+by e-mail (SMTP)
+
+\item {} 
+by web browser (HTTP), with cookie security
+
+\item {} 
+by web browser (HTTP), with signon security
+
+\item {} 
+Via a batch process
+
+\end{enumerate}
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-smtp}}
+\index{Uploading template pages using SMTP}
+
+\section{Uploading template pages using SMTP}
+\label{\detokenize{audit_operations_ and_performance:uploading-template-pages-using-smtp}}\label{\detokenize{audit_operations_ and_performance:index-8}}
+Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.
+
+\index{SMTP Definitions!Uploading Pages}\index{Uploading Pages!SMTP Definitions}
+
+\subsection{Definitions for page upload by SMTP}
+\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-9}}\begin{itemize}
+\item {} 
+Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
+
+\item {} 
+Press F5 from the Configuration Menu and define an e-mail correspondent specifying W2H-DIR as the directory name:
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{CORRESPONDENT} \PYG{n}{DETAIL} \PYG{n}{DEFINITION} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRE2} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{19}\PYG{p}{:}\PYG{l+m+mi}{33}
+\PYG{n}{Id}                  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{upload2}\PYG{n+nd}{@saint}\PYG{o}{.}\PYG{n}{cloud}\PYG{o}{.}\PYG{n}{com}
+                    \PYG{n}{email} \PYG{n}{address} \PYG{k}{with} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{@}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{sign}
+\PYG{n}{Type} \PYG{n}{of} \PYG{n}{Id}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1} \PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{Email} \PYG{l+m+mi}{2}\PYG{p}{:}\PYG{n}{Local}\PYG{o}{+}\PYG{n}{fixed} \PYG{l+m+mi}{3}\PYG{p}{:}\PYG{n}{Local}\PYG{o}{+}\PYG{n}{changing}
+\PYG{n}{Activation} \PYG{n}{message}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{To} \PYG{n}{upload} \PYG{n}{file}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{to} \PYG{n}{VIRTEL}\PYG{p}{,} \PYG{n}{reply} \PYG{n}{to} \PYG{n}{this} \PYG{n}{message}\PYG{o}{.}
+                    \PYG{n}{Text} \PYG{n}{of} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{OK}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{message} \PYG{n}{to} \PYG{n}{user}\PYG{o}{.}
+\PYG{n}{VTAM} \PYG{n}{name}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{parameter} \PYG{n}{to} \PYG{n}{specify} \PYG{n}{VTAM} \PYG{n}{LU} \PYG{n}{name}
+\PYG{n}{Rule} \PYG{n}{Set}            \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ADMRSET1} \PYG{n}{Rules} \PYG{n}{to} \PYG{n}{choose} \PYG{n}{an} \PYG{n}{entry} \PYG{n}{point}
+\PYG{n}{Directory}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{n}{Where} \PYG{n}{data} \PYG{o+ow}{is} \PYG{n}{to} \PYG{n}{be} \PYG{n}{uploaded}
+\PYG{n}{Last} \PYG{n}{contact}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{QUEUE} \PYG{n}{ACTIVATION}
+\PYG{n}{Contacts}            \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{00000000} \PYG{n}{Number} \PYG{n}{of} \PYG{n}{times} \PYG{n}{cookie} \PYG{n}{was} \PYG{n}{updated}
+\PYG{n}{Date} \PYG{n}{created}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{11} \PYG{n}{May} \PYG{l+m+mi}{2004} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{19}\PYG{p}{:}\PYG{l+m+mi}{29}
+\PYG{n}{Created} \PYG{n}{by}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{VIRDBA}
+\PYG{n}{Date} \PYG{n}{activated}      \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{11} \PYG{n}{May} \PYG{l+m+mi}{2004} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{19}\PYG{p}{:}\PYG{l+m+mi}{33}
+\PYG{n}{Activated} \PYG{n}{by}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{VIRDBA}
+\PYG{n}{Date} \PYG{n}{disabled}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Disabled} \PYG{n}{by}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update}                       \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return}                           \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}
+\PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate}                     \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Disable}                          \PYG{n}{P6}\PYG{o}{=}\PYG{n}{Rules}
+\PYG{n}{ACTIVATION} \PYG{n}{WAS} \PYG{n}{REQUESTED}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by SMTP: Creating an e-mail correspondent}
+
+\index{Upload page procedure using SMTP!Uploading pages}\index{Uploading pages!Upload page procedure using SMTP}
+
+\subsection{Procedure for page upload by SMTP}
+\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-by-smtp}}\label{\detokenize{audit_operations_ and_performance:index-10}}\begin{enumerate}
+\item {} 
+Activate the e-mail correspondent: see “Account activation” under the heading {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-correspondent-management}]{\sphinxcrossref{\DUrole{std,std-ref}{“Correspondent Management”}}}}. This triggers the sending of an e-mail containing the security code, as in the following example:-
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Date}\PYG{p}{:} \PYG{n}{Tue}\PYG{p}{,} \PYG{l+m+mi}{27} \PYG{n}{Apr} \PYG{l+m+mi}{2004} \PYG{l+m+mi}{12}\PYG{p}{:}\PYG{l+m+mi}{04}\PYG{p}{:}\PYG{l+m+mi}{40} \PYG{o}{+}\PYG{l+m+mi}{0100}
+\PYG{n}{From}\PYG{p}{:} \PYG{n}{virtel}\PYG{n+nd}{@client}\PYG{o}{.}\PYG{n}{com}
+\PYG{n}{Organization}\PYG{p}{:} \PYG{n}{SYSPERTEC} \PYG{n}{COMMUNICATION}
+\PYG{n}{To}\PYG{p}{:} \PYG{n}{upload2}\PYG{n+nd}{@saint}\PYG{o}{.}\PYG{n}{cloud}\PYG{o}{.}\PYG{n}{com}
+\PYG{n}{Message}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{id}\PYG{p}{:}
+\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{20040427120439.07}\PYG{n}{F5DA7C}\PYG{o}{.}\PYG{l+m+mf}{5E416500}\PYG{n}{Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA}\PYG{o}{==}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Subject}\PYG{p}{:} \PYG{n}{OK} \PYG{p}{:} \PYG{o}{\PYGZlt{}} \PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{o}{\PYGZgt{}}
+\PYG{n}{SECURITY} \PYG{n}{TOKEN}\PYG{p}{:}
+\PYG{l+m+mf}{20040427120439.07}\PYG{n}{F5DA7C}\PYG{o}{.}\PYG{l+m+mf}{5E416500}\PYG{n}{Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA}\PYG{o}{==}
+\PYG{n}{To} \PYG{n}{upload} \PYG{n}{file}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{to} \PYG{n}{VIRTEL}\PYG{p}{,} \PYG{n}{reply} \PYG{n}{to} \PYG{n}{this} \PYG{n}{message}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by SMTP : activation e-mail}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the attached files into the directory defined in the definition of the correspondent.
+
+\item {} 
+VIRTEL replies by sending an e-mail containing the result of the upload. The following example shows the reply sent by VIRTEL to a request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The “Message-id” field in this e-mail contains the new security code. You can reply to this e-mail the next time you have files to upload.
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Date}\PYG{p}{:} \PYG{n}{Tue}\PYG{p}{,} \PYG{l+m+mi}{27} \PYG{n}{Apr} \PYG{l+m+mi}{2004} \PYG{l+m+mi}{12}\PYG{p}{:}\PYG{l+m+mi}{39}\PYG{p}{:}\PYG{l+m+mi}{14} \PYG{o}{+}\PYG{l+m+mi}{0100}
+\PYG{n}{From}\PYG{p}{:} \PYG{n}{virtel}\PYG{n+nd}{@client}\PYG{o}{.}\PYG{n}{com}
+\PYG{n}{Organization}\PYG{p}{:} \PYG{n}{SYSPERTEC} \PYG{n}{COMMUNICATION}
+\PYG{n}{To}\PYG{p}{:} \PYG{n}{upload2}\PYG{n+nd}{@saint}\PYG{o}{.}\PYG{n}{cloud}\PYG{o}{.}\PYG{n}{com}
+\PYG{n}{Message}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{id}\PYG{p}{:}
+\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{20040427123911.07}\PYG{n}{F5CDC4}\PYG{o}{.}\PYG{n}{F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA}\PYG{o}{==}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Subject}\PYG{p}{:} \PYG{n}{OK} \PYG{p}{:} \PYG{o}{\PYGZlt{}}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{o}{\PYGZgt{}}
+\PYG{n}{VirtelCookie}\PYG{o}{=}
+\PYG{l+m+mf}{20040427123911.07}\PYG{n}{F5CDC4}\PYG{o}{.}\PYG{n}{F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA}\PYG{o}{==}
+\PYG{n}{RETURN} \PYG{n}{CODE} \PYG{n}{IS}\PYG{p}{:} \PYG{l+m+mi}{00}
+\PYG{l+m+mi}{123911} \PYG{n}{MESSAGE} \PYG{n}{RECEIVED}
+\PYG{l+m+mi}{123912} \PYG{n}{LOADING} \PYG{n}{FILE}\PYG{p}{:} \PYG{n}{LOGOVERT}
+\PYG{l+m+mi}{123912} \PYG{n}{SIZE} \PYG{p}{:} \PYG{l+m+mi}{14357} \PYG{n}{BYTES} \PYG{p}{(}\PYG{n}{BINARY}\PYG{p}{)}
+\PYG{l+m+mi}{123912} \PYG{n}{MIME} \PYG{p}{:} \PYG{n}{image}\PYG{o}{/}\PYG{n}{jpeg}
+\PYG{l+m+mi}{123914} \PYG{n}{LOADING} \PYG{n}{FILE}\PYG{p}{:} \PYG{n}{WEB2VIRT}
+\PYG{l+m+mi}{123914} \PYG{n}{SIZE} \PYG{p}{:} \PYG{l+m+mi}{11477} \PYG{n}{BYTES} \PYG{p}{(}\PYG{n}{TEXT}\PYG{p}{)}
+\PYG{l+m+mi}{123914} \PYG{n}{MIME} \PYG{p}{:} \PYG{n}{text}\PYG{o}{/}\PYG{n}{html}
+\PYG{l+m+mi}{123914} \PYG{n}{FIELD} \PYG{p}{:} \PYG{n}{SET}\PYG{o}{\PYGZhy{}}\PYG{n}{OUTPUT}\PYG{o}{\PYGZhy{}}\PYG{n}{ENCODING}\PYG{o}{\PYGZhy{}}\PYG{n}{UTF}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{l+m+mi}{123914} \PYG{n}{FIELD} \PYG{p}{:} \PYG{n}{COPY}\PYG{o}{\PYGZhy{}}\PYG{n}{FROM} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{43}\PYG{p}{)}
+\PYG{l+m+mi}{123914} \PYG{n}{FIELD} \PYG{p}{:} \PYG{n}{FIELD}\PYG{o}{\PYGZhy{}}\PYG{n}{WITH}\PYG{o}{\PYGZhy{}}\PYG{n}{CURSOR}
+\PYG{l+m+mi}{123914} \PYG{n}{FIELD} \PYG{p}{:} \PYG{n}{FIELD}\PYG{o}{\PYGZhy{}}\PYG{n}{WITH}\PYG{o}{\PYGZhy{}}\PYG{n}{CURSOR}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by SMTP : upload response e-mail}
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and
+truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
+truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
+using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
+under the name LINKS.GI
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages}}
+\index{Upload page procedure using HTML!Uploading pages}\index{Uploading pages!Upload page procedure using HTML}
+
+\subsection{Uploading pages by HTTP (secured by cookie)}
+\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-http-secured-by-cookie}}\label{\detokenize{audit_operations_ and_performance:index-11}}
+The upload.htm page allows HTML pages or graphics to be uploaded to VIRTEL. The user’s identity is guaranteed by a
+cookie named VirtelRef= whose value changes after each upload. The value of the cookie is the same as the security
+code used for uploading by SMTP.
+
+To upload a page, a user must:
+\begin{itemize}
+\item {} 
+have a valid cookie (obtained by activation of the VIRTEL e-mail correspondent)
+
+\item {} 
+click on the link contained in the e-mail, which displays the upload.htm page and loads the cookie into the browser (first time only)
+
+\item {} 
+click the “Browse” button and select a file
+
+\item {} 
+click the “Send” button
+
+\end{itemize}
+
+The VIRTEL response is displayed in the page and is similar to the response received by e-mail when uploading via
+SMTP.
+
+\index{HTTP definitions (Cookie)!Uploading pages}\index{Uploading pages!HTTP definitions (Cookie)}
+
+\subsection{Definitions for page upload (secured by cookie)}
+\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-secured-by-cookie}}\label{\detokenize{audit_operations_ and_performance:index-12}}
+All the elements needed for page upload by HTTP secured by cookie are contained in the base configuration delivered
+with VIRTEL 4.27. Users who upgrade to VIRTEL 4.27 while keeping their existing configuration need to add certain
+elements to their existing configuration to benefit from the new “page upload secured by cookie” function.
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out
+these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL version 4.27. Having updated
+the configuration, you then need to upload three new elements (upload.htm, default.js, and logo\_3.gif) to the W2HDIR
+directory using the existing SMTP upload method.
+
+1. In entry point WEB2HOST, define a new transaction W2H\textendash{}70, with external name upload. This transaction specifies
+VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
+that the name of the target directory is to be found in the definition of the e-mail correspondent:
+
+\sphinxincludegraphics{{image76}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Creating the ‘upload’ transaction}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
+
+\item {} 
+Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and ruleset name ADMRSET1 :
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{CORRESPONDENT} \PYG{n}{DETAIL} \PYG{n}{DEFINITION} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRE2} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{39}\PYG{p}{:}\PYG{l+m+mi}{04}
+\PYG{n}{e}\PYG{o}{\PYGZhy{}}\PYG{n}{mail} \PYG{n}{address} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{upload2}\PYG{n+nd}{@saint}\PYG{o}{.}\PYG{n}{cloud}\PYG{o}{.}\PYG{n}{com}
+                    \PYG{n}{email} \PYG{n}{address} \PYG{k}{with} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{@}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{sign}
+\PYG{n}{Type} \PYG{n}{of} \PYG{n}{Id}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}              \PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{Email} \PYG{l+m+mi}{2}\PYG{p}{:}\PYG{n}{Local}\PYG{o}{+}\PYG{n}{fixed} \PYG{l+m+mi}{3}\PYG{p}{:}\PYG{n}{Local}\PYG{o}{+}\PYG{n}{changing}
+\PYG{n}{Activation} \PYG{n}{message} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{To} \PYG{n}{upload} \PYG{n}{to} \PYG{n}{VIRTEL}\PYG{p}{,} \PYG{n}{click}\PYG{p}{:}\PYG{o}{\PYGZam{}}\PYG{n}{Rhttp}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{229.20}\PYG{p}{:}\PYG{l+m+mi}{4100}
+\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{web2host}\PYG{o}{/}\PYG{n}{upload}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{upload}\PYG{o}{+}\PYG{o}{\PYGZam{}}\PYG{n}{C}
+                                       \PYG{n}{Text} \PYG{n}{of} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{OK}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{message} \PYG{n}{to} \PYG{n}{user}\PYG{o}{.}
+\PYG{n}{VTAM} \PYG{n}{name}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{parameter} \PYG{n}{to} \PYG{n}{specify} \PYG{n}{VTAM} \PYG{n}{LU} \PYG{n}{name}
+\PYG{n}{Rule} \PYG{n}{Set}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ADMRSET1} \PYG{n}{Rules} \PYG{n}{to} \PYG{n}{choose} \PYG{n}{an} \PYG{n}{entry} \PYG{n}{point}
+\PYG{n}{Directory}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{n}{Where} \PYG{n}{data} \PYG{o+ow}{is} \PYG{n}{to} \PYG{n}{be} \PYG{n}{uploaded}
+\PYG{n}{Last} \PYG{n}{contact}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Contacts}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{00000000} \PYG{n}{Number} \PYG{n}{of} \PYG{n}{times} \PYG{n}{cookie} \PYG{n}{was} \PYG{n}{updated}
+\PYG{n}{Date} \PYG{n}{created}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{11} \PYG{n}{May} \PYG{l+m+mi}{2004} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{19}\PYG{p}{:}\PYG{l+m+mi}{29}
+\PYG{n}{Created} \PYG{n}{by}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{VIRDBA}
+\PYG{n}{Date} \PYG{n}{activated}     \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{11} \PYG{n}{May} \PYG{l+m+mi}{2004} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{39}\PYG{p}{:}\PYG{l+m+mi}{04}
+\PYG{n}{Activated} \PYG{n}{by}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{VIRDBA}
+\PYG{n}{Date} \PYG{n}{disabled}      \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Disabled} \PYG{n}{by}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+
+
+\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update}                           \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return}                        \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}
+\PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate}                         \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Disable}                       \PYG{n}{P6}\PYG{o}{=}\PYG{n}{Rules}
+\PYG{n}{ACTIVATION} \PYG{n}{WAS} \PYG{n}{REQUESTED}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Creating the e-mail correspondent}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item {} 
+Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{DETAIL} \PYG{n}{of} \PYG{n}{RULE} \PYG{k+kn}{from} \PYG{n+nn}{RULE} \PYG{n}{SET}\PYG{p}{:} \PYG{n}{ADMRSET1} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRE2} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{40}\PYG{p}{:}\PYG{l+m+mi}{59}
+
+\PYG{n}{Name}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{UPLOAD1B}               \PYG{n}{Rule} \PYG{n}{priority} \PYG{o+ow}{is} \PYG{n}{per} \PYG{n}{name}
+\PYG{n}{Status}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ACTIVE}                 \PYG{n}{Mon}\PYG{p}{,} \PYG{l+m+mi}{24} \PYG{n}{Sep} \PYG{l+m+mi}{2001} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{19}\PYG{p}{:}\PYG{l+m+mi}{14}
+\PYG{n}{Description}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Rule} \PYG{k}{for} \PYG{n}{WEB2HOST} \PYG{n}{administrator}
+\PYG{n}{Entry} \PYG{n}{point}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WEB2HOST}               \PYG{n}{Target} \PYG{n}{Entry} \PYG{n}{Point}
+\PYG{n}{Parameter}     \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                                    \PYG{n}{optional} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{value}
+\PYG{n}{Trace} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                                \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{commands} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{data} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{partner}
+
+\PYG{n}{C} \PYG{p}{:} \PYG{l+m+mi}{0}\PYG{o}{=}\PYG{n}{IGNORE} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{IS} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{IS} \PYG{n}{NOT} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{STARTS} \PYG{n}{WITH} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{ENDS} \PYG{n}{WITH} \PYG{l+m+mi}{6}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT}
+\PYG{l+m+mi}{0} \PYG{n}{IP} \PYG{n}{Subnet}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                        \PYG{n}{Mask}     \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{5} \PYG{n}{HTTP} \PYG{n}{Host}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{p}{:}\PYG{l+m+mi}{41001}
+\PYG{l+m+mi}{0} \PYG{n}{eMail}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                        \PYG{n}{Calling} \PYG{n}{DTE} \PYG{n}{address}
+\PYG{l+m+mi}{0} \PYG{n}{Called}      \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                        \PYG{n}{Called} \PYG{n}{DTE} \PYG{n}{address}
+\PYG{l+m+mi}{0} \PYG{n}{CUD0} \PYG{p}{(}\PYG{n}{Hex}\PYG{p}{)}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                        \PYG{n}{First} \PYG{l+m+mi}{4} \PYG{n+nb}{bytes} \PYG{n}{of} \PYG{n}{CUD} \PYG{p}{(}\PYG{n}{X25} \PYG{n}{protocol}\PYG{p}{)}
+\PYG{l+m+mi}{0} \PYG{n}{User} \PYG{n}{Data}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Days}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{M}\PYG{p}{:}      \PYG{n}{T}\PYG{p}{:}      \PYG{n}{W}\PYG{p}{:}      \PYG{n}{T}\PYG{p}{:}      \PYG{n}{F}\PYG{p}{:}      \PYG{n}{S}\PYG{p}{:}      \PYG{n}{S}\PYG{p}{:}
+\PYG{l+m+mi}{0} \PYG{n}{Start} \PYG{n}{time}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:}      \PYG{n}{M}\PYG{p}{:}      \PYG{n}{S}\PYG{p}{:}     \PYG{n}{End} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:}     \PYG{n}{M}\PYG{p}{:}     \PYG{n}{S}\PYG{p}{:}
+
+\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update}                          \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return}                      \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}
+\PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate}                        \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Inactivate}                  \PYG{n}{P12}\PYG{o}{=}\PYG{n}{Entry} \PYG{n}{P}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Creating rule UPLOAD1B}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item {} 
+Define two new rules attached to the HTTP line. The first rule, which specifies \$COOKIE\$ as the entry point name, will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+LIST of RULES in RULE SET: W\PYGZhy{}HTTP \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} Applid: SPVIRE2     14:44:14
+
+Name     Status   Description                                        Entry
+                                                                     Point
+WHT00100 ACTIVE   HTTP access (users authorised by cookie)           \PYGZdl{}COOKIE\PYGZdl{}
+WHT00200 ACTIVE   HTTP access (other users)                          WEB2HOST
+
+P1=Update            P2=Suppress             P3=Return
+P6=1st page          P7=Page\PYGZhy{}1               P8=Page+1              P12=Edit
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{List of rules associated with UPLOAD}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+DETAIL of RULE from RULE SET: W\PYGZhy{}HTTP \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} Applid: SPVIRE2 14:45:34
+Name          ===\PYGZgt{} WHT00100              Rule priority is per name
+Status        ===\PYGZgt{} ACTIVE                Mon, 24 Sep 2001 14:19:14
+Description   ===\PYGZgt{} HTTP access (users authorised by cookie)
+Entry point   ===\PYGZgt{} \PYGZdl{}COOKIE\PYGZdl{}              Target Entry Point
+Parameter     ===\PYGZgt{}                                  optional \PYGZam{}1 value
+Trace         ===\PYGZgt{}                       1=commands 2=data 3=partner
+C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+0 IP Subnet   ===\PYGZgt{}                       Mask ===\PYGZgt{}
+0 HTTP Host   ===\PYGZgt{}
+0 eMail       ===\PYGZgt{}
+0 Calling DTE ===\PYGZgt{}                       Calling DTE address
+0 Called      ===\PYGZgt{}                       Called DTE address
+0 CUD0 (Hex)  ===\PYGZgt{}                       First 4 bytes of CUD (X25 protocol)
+0 User Data   ===\PYGZgt{}
+0 Days        ===\PYGZgt{} M:      T:      W:      T:      F:      S:      S:
+0 Start time  ===\PYGZgt{} H:      M:      S:     End time ===\PYGZgt{} H:     M:     S:
+
+P1=Update                          P3=Return                    Enter=Add
+P4=Activate                        P5=Inactivate                P12=Entry P.
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Rule \$COOKIE\$ of the HTTP line}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{DETAIL} \PYG{n}{of} \PYG{n}{RULE} \PYG{k+kn}{from} \PYG{n+nn}{RULE} \PYG{n}{SET}\PYG{p}{:} \PYG{n}{W}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRE2} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{45}\PYG{p}{:}\PYG{l+m+mi}{34}
+\PYG{n}{Name}          \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WHT00200}              \PYG{n}{Rule} \PYG{n}{priority} \PYG{o+ow}{is} \PYG{n}{per} \PYG{n}{name}
+\PYG{n}{Status}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ACTIVE}                \PYG{n}{Mon}\PYG{p}{,} \PYG{l+m+mi}{24} \PYG{n}{Sep} \PYG{l+m+mi}{2001} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{19}\PYG{p}{:}\PYG{l+m+mi}{14}
+\PYG{n}{Description}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{HTTP} \PYG{n}{a}
+\PYG{n}{ccess} \PYG{p}{(}\PYG{n}{users} \PYG{n}{authorised} \PYG{n}{by} \PYG{n}{cookie}\PYG{p}{)}
+\PYG{n}{Entry} \PYG{n}{point}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WEB2HOST}              \PYG{n}{Target} \PYG{n}{Entry} \PYG{n}{Point}
+\PYG{n}{Parameter}     \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                                  \PYG{n}{optional} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{value}
+\PYG{n}{Trace}         \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                       \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{commands} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{data} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{partner}
+\PYG{n}{C} \PYG{p}{:} \PYG{l+m+mi}{0}\PYG{o}{=}\PYG{n}{IGNORE} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{IS} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{IS} \PYG{n}{NOT} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{STARTS} \PYG{n}{WITH} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{ENDS} \PYG{n}{WITH} \PYG{l+m+mi}{6}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT}
+\PYG{l+m+mi}{0} \PYG{n}{IP} \PYG{n}{Subnet}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                       \PYG{n}{Mask} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{HTTP} \PYG{n}{Host}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{eMail}       \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                       \PYG{n}{Calling} \PYG{n}{DTE} \PYG{n}{address}
+\PYG{l+m+mi}{0} \PYG{n}{Called}      \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                       \PYG{n}{Called} \PYG{n}{DTE} \PYG{n}{address}
+\PYG{l+m+mi}{0} \PYG{n}{CUD0} \PYG{p}{(}\PYG{n}{Hex}\PYG{p}{)}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}                       \PYG{n}{First} \PYG{l+m+mi}{4} \PYG{n+nb}{bytes} \PYG{n}{of} \PYG{n}{CUD} \PYG{p}{(}\PYG{n}{X25} \PYG{n}{protocol}\PYG{p}{)}
+\PYG{l+m+mi}{0} \PYG{n}{User} \PYG{n}{Data}   \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Days}        \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{M}\PYG{p}{:}      \PYG{n}{T}\PYG{p}{:}      \PYG{n}{W}\PYG{p}{:}      \PYG{n}{T}\PYG{p}{:}      \PYG{n}{F}\PYG{p}{:}      \PYG{n}{S}\PYG{p}{:}      \PYG{n}{S}\PYG{p}{:}
+\PYG{l+m+mi}{0} \PYG{n}{Start} \PYG{n}{time}  \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:}      \PYG{n}{M}\PYG{p}{:}      \PYG{n}{S}\PYG{p}{:}     \PYG{n}{End} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:}     \PYG{n}{M}\PYG{p}{:}     \PYG{n}{S}\PYG{p}{:}
+
+\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update}                          \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return}                    \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}
+\PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate}                        \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Inactivate}                \PYG{n}{P12}\PYG{o}{=}\PYG{n}{Entry} \PYG{n}{P}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Rule WEB2HOST of the HTTP line}
+
+
+\subsection{Procedure for page upload (secured by cookie)}
+\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-secured-by-cookie}}\begin{enumerate}
+\item {} 
+(First time only) Activate the e-mail correspondent: see {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-account-activation}]{\sphinxcrossref{\DUrole{std,std-ref}{“Account activation”}}}}. This triggers the sending of an e-mail containing the security code, as in the following example:
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Date}\PYG{p}{:} \PYG{n}{Tue}\PYG{p}{,} \PYG{l+m+mi}{27} \PYG{n}{Apr} \PYG{l+m+mi}{2004} \PYG{l+m+mi}{13}\PYG{p}{:}\PYG{l+m+mi}{08}\PYG{p}{:}\PYG{l+m+mi}{44} \PYG{o}{+}\PYG{l+m+mi}{0100}
+\PYG{n}{From}\PYG{p}{:} \PYG{n}{virtel}\PYG{n+nd}{@client}\PYG{o}{.}\PYG{n}{com}
+\PYG{n}{Organization}\PYG{p}{:} \PYG{n}{SYSPERTEC} \PYG{n}{COMMUNICATION}
+\PYG{n}{To}\PYG{p}{:} \PYG{n}{upload2}\PYG{n+nd}{@saint}\PYG{o}{.}\PYG{n}{cloud}\PYG{o}{.}\PYG{n}{com}
+\PYG{n}{Message}\PYG{o}{\PYGZhy{}}\PYG{n+nb}{id}\PYG{p}{:}
+\PYG{o}{\PYGZlt{}}\PYG{l+m+mf}{20040427130843.07}\PYG{n}{F5D1DC}\PYG{o}{.}\PYG{l+m+mi}{56}\PYG{n}{A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA}\PYG{o}{==}\PYG{o}{\PYGZgt{}}
+\PYG{n}{Subject}\PYG{p}{:} \PYG{n}{OK} \PYG{p}{:} \PYG{o}{\PYGZlt{}} \PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{o}{\PYGZgt{}}
+\PYG{n}{SECURITY} \PYG{n}{TOKEN}\PYG{p}{:}
+\PYG{l+m+mf}{20040427130843.07}\PYG{n}{F5D1DC}\PYG{o}{.}\PYG{l+m+mi}{56}\PYG{n}{A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA}\PYG{o}{==}
+\PYG{n}{To} \PYG{n}{upload} \PYG{n}{to} \PYG{n}{VIRTEL}\PYG{p}{,} \PYG{n}{click}\PYG{p}{:}
+\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{229.20}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{web2host}\PYG{o}{/}\PYG{n}{upload}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{upload}\PYG{o}{+}\PYG{n}{VirtelCookie}\PYG{o}{=}\PYG{l+m+mi}{20040}
+\PYG{l+m+mf}{427130843.07}\PYG{n}{F5D1DC}\PYG{o}{.}\PYG{l+m+mi}{56}\PYG{n}{A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA}\PYG{o}{==}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : activation e-mail}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Click the link in the e-mail to open the upload.htm page:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image4}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Displaying the upload.htm page}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item {} 
+Click the “Browse” button and the file selection dialog will be displayed:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image5}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : File selection dialog}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item {} 
+Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image6}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Sending the file}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item {} 
+Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image7}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with cookie : Confirmation of file uploadr}
+
+From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”.
+
+Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+\phantomsection\label{\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-signon}}
+\index{Uploading pages HTTP (Signon)!Uploading pages}\index{Uploading pages!Uploading pages HTTP (Signon)}
+
+\subsection{Uploading pages by HTTP (secured by signon)}
+\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-http-secured-by-signon}}\label{\detokenize{audit_operations_ and_performance:index-13}}
+The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
+
+\index{HTTP definitions (Signon)!Uploading pages}\index{Uploading pages!HTTP definitions (Signon)}
+
+\subsection{Definitions for page upload (secured by signon)}
+\label{\detokenize{audit_operations_ and_performance:index-14}}\label{\detokenize{audit_operations_ and_performance:definitions-for-page-upload-secured-by-signon}}
+All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
+
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
+\begin{enumerate}
+\item {} 
+In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image77}.png}
+\sphinxstyleemphasis{Page upload by HTTP with signon : Transaction dirlist}
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+Still in entry point WEB2HOST, define three new transactions W2H\textendash{}71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image78}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory HTMLBAS}
+
+\sphinxincludegraphics{{image79}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory W2HDIR}
+
+\sphinxincludegraphics{{image80}.png} \sphinxstyleemphasis{Page upload by HTTP with signon : Directory CLIDIR}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item {} 
+Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
+
+\end{enumerate}
+
+\index{HTTP definitions (Signon)!Uploading pages}\index{Uploading pages!HTTP definitions (Signon)}
+
+\subsection{Procedure for page upload (secured by signon)}
+\label{\detokenize{audit_operations_ and_performance:index-15}}\label{\detokenize{audit_operations_ and_performance:procedure-for-page-upload-secured-by-signon}}\begin{enumerate}
+\item {} 
+Display the upload4.htm page by entering the URL \sphinxurl{http://ipaddr:port/SECURE/upload4.htm+dirlist} in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image8}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Entering the userid and password}
+
+The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item {} 
+After entering the user name and password, the upload4.htm page will be displayed:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image9}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Displaying the upload4.htm page}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item {} 
+Press the “Browse” button to display the file selection dialog:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image10}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : File selection dialog}
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item {} 
+Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image11}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Sending the file}
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item {} 
+Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
+
+\end{enumerate}
+
+\sphinxincludegraphics{{image12}.png}
+
+\sphinxstyleemphasis{Page upload by HTTP with signon : Confirmation of file upload}
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+
+\index{Uploading pages by drag and Drop!Uploading pages}\index{Uploading pages!Uploading pages by drag and Drop}
+
+\section{Uploading pages by drag and drop}
+\label{\detokenize{audit_operations_ and_performance:index-16}}\label{\detokenize{audit_operations_ and_performance:uploading-pages-by-drag-and-drop}}
+The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
+
+
+\subsection{Upload interface in the VIRTEL menu}
+\label{\detokenize{audit_operations_ and_performance:upload-interface-in-the-virtel-menu}}
+After clicking on the Drag \& Drop Upload link on the VIRTEL Web Access menu (URL \sphinxurl{http://n.n.n.n:41001}), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
+
+\sphinxincludegraphics{{image13}.png}
+
+\sphinxstyleemphasis{Drag and drop upload interface}
+
+The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
+
+
+\subsection{Displaying upload results}
+\label{\detokenize{audit_operations_ and_performance:displaying-upload-results}}
+\sphinxincludegraphics{{image14}.png}
+
+\sphinxstyleemphasis{Displaying upload results}
+
+The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
+
+
+\subsection{Upload summary report}
+\label{\detokenize{audit_operations_ and_performance:upload-summary-report}}
+After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes.
+
+The summary is not displayed when files are dragged and dropped one at a time.
+
+In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
+
+\sphinxincludegraphics{{image15}.png}
+
+\sphinxstyleemphasis{Upload summary report}
+
+
+\subsection{Extracting upload results as an Excel spreadsheet}
+\label{\detokenize{audit_operations_ and_performance:extracting-upload-results-as-an-excel-spreadsheet}}
+\sphinxincludegraphics{{image16}.png} The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
+
+
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|T|T|}
+\hline
+\sphinxstylethead{\sphinxstyletheadfamily 
+Directory
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+File name
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Report
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Time
+\unskip}\relax \\
+\hline
+CLI-DIR
+&
+custom.css
+&
+RETURN CODE IS: 00
+&
+Thu, 13 Sep 2012 08:13:16 GMT
+\\
+\hline
+CLI-DIR
+&
+custom.js
+&
+RETURN CODE IS: 00
+&
+Thu, 13 Sep 2012 08:13:16 GMT
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
+
+\sphinxincludegraphics{{image17}.png} The Delete button allows the administrator to clear the results log.
+\begin{quote}
+
+\index{Uploading pages in batch!Uploading pages}\index{Uploading pages!Uploading pages in batch}\end{quote}
+
+
+\section{Uploading pages in batch}
+\label{\detokenize{audit_operations_ and_performance:index-17}}\label{\detokenize{audit_operations_ and_performance:uploading-pages-in-batch}}\begin{quote}
+
+\index{Uploading (batch) using cURL!Uploading pages}\index{Uploading pages!Uploading (batch) using cURL}\end{quote}
+
+
+\subsection{Uploading with cURL}
+\label{\detokenize{audit_operations_ and_performance:uploading-with-curl}}\label{\detokenize{audit_operations_ and_performance:index-18}}
+You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
+The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{k}{for} \PYG{o}{\PYGZpc{}}\PYG{n}{F} \PYG{o+ow}{in} \PYG{p}{(}\PYG{o}{*}\PYG{o}{.}\PYG{n}{htm}\PYG{p}{)} \PYG{n}{do} \PYG{n}{curl} \PYG{o}{\PYGZhy{}}\PYG{n}{v} \PYG{o}{\PYGZhy{}}\PYG{n}{F} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{file=@}\PYG{l+s+si}{\PYGZpc{}F}\PYG{l+s+s2}{;type=text/html}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZhy{}}\PYG{n}{u}
+\PYG{n}{virdba}\PYG{p}{:}\PYG{n}{virdbapw} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{235.30}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{SECURE}\PYG{o}{/}\PYG{n}{virmsg}\PYG{o}{.}\PYG{n}{txt}\PYG{o}{+}\PYG{n}{uplbas}
+\end{sphinxVerbatim}
+
+In this example:
+\begin{description}
+\item[{*.htm}] \leavevmode
+the files to be uploaded
+
+\item[{virdba:virdbapw}] \leavevmode
+userid and password for VIRTEL
+
+\item[{192.168.235.30:41001}] \leavevmode
+identifies the VIRTEL HTTP line
+
+\item[{virmsg.txt}] \leavevmode
+page template for displaying upload result messages
+
+\item[{uplbas}] \leavevmode
+external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See {\hyperref[\detokenize{audit_operations_ and_performance:v457ap-http-uploading-pages-signon}]{\sphinxcrossref{\DUrole{std,std-ref}{“Uploading pages by HTTP (secured by signon)”}}}} for a list of upload transactions.
+
+\end{description}
+
+\begin{sphinxadmonition}{note}{Note:}\begin{quote}
+
+\%F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use \%F if you execute the command from the command prompt, but \%\%F if you execute the command from within a command (.cmd) file.
+\end{quote}
+
+\index{Uploading (batch) using upl2virt procedure!Uploading pages}\index{Uploading pages!Uploading (batch) using upl2virt procedure}\end{sphinxadmonition}
+
+
+\subsection{The upl2virt command procedure}
+\label{\detokenize{audit_operations_ and_performance:the-upl2virt-command-procedure}}\label{\detokenize{audit_operations_ and_performance:index-19}}
+For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
+
+\sphinxstylestrong{Pre-requisites}
+
+upl2virt requires as a pre-requisite the cURL package described in the previous section.
+
+Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
+the command window.
+
+\sphinxstylestrong{Installation}
+
+upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{upl2virt}\PYG{o}{.}\PYG{n}{cmd}
+\end{sphinxVerbatim}
+
+where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:WINDOWS).
+
+\sphinxstylestrong{Using upl2virt at the command prompt}
+
+\index{Executing upl2virt!Uploading pages}\index{Uploading pages!Executing upl2virt}
+To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{upl2virt} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{u} \PYG{n}{userid}\PYG{p}{:}\PYG{n}{password}\PYG{p}{]} \PYG{o}{\PYGZhy{}}\PYG{n}{d} \PYG{n}{directory} \PYG{o}{\PYGZhy{}}\PYG{n}{a} \PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}
+         \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{p} \PYG{n}{port}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{r}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{f} \PYG{n}{ctlfile}\PYG{p}{]} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{k}\PYG{p}{]} \PYG{p}{[}\PYG{n}{file1} \PYG{n}{file2} \PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{p}{]}
+\end{sphinxVerbatim}
+
+In the above command:
+\begin{description}
+\item[{userid:password}] \leavevmode
+is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
+
+\item[{directory}] \leavevmode
+is the name of the target VIRTEL directory (for example, CLI-DIR)
+
+\item[{n.n.n.n}] \leavevmode
+is the IP address of VIRTEL
+
+\item[{port}] \leavevmode
+is the VIRTEL administration port number (default 41001).
+
+\end{description}
+
+\begin{sphinxadmonition}{note}{Note:}
+This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.
+\end{sphinxadmonition}
+\begin{description}
+\item[{ctlfile}] \leavevmode
+specifies the name of a control file containing a list of file names to be uploaded
+
+\item[{file1 file2 …}] \leavevmode
+are the names of files to be uploaded
+
+\item[{-r}] \leavevmode
+specifies recursion into subdirectories
+
+\item[{-k}] \leavevmode
+keeps the command window open after the last upload
+
+\end{description}
+
+If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the \textendash{}r option is specified).
+
+\index{Using upl2virt with Windows Explorer!Uploading pages}\index{Uploading pages!Using upl2virt with Windows Explorer}
+\sphinxstylestrong{Using upl2virt from Windows Explorer}
+
+The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.
+
+To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:Documents and SettingsusernameSendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” \textendash{} “Folder options” \textendash{} “View”, tick the option “Display hidden files and folders”, and click “OK”.
+
+In the “SendTo” folder, right click and select “New” \textendash{} “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”.
+
+You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+C:\PYGZbs{}WINDOWS\PYGZbs{}upl2virt.cmd \PYGZhy{}u MYUSERID \PYGZhy{}d CLI\PYGZhy{}DIR \PYGZhy{}a 10.1.12.101 \textendash{}k
+\end{sphinxVerbatim}
+
+where:
+\begin{description}
+\item[{MYUSERID}] \leavevmode
+is your VIRTEL userid
+
+\item[{CLI-DIR}] \leavevmode
+is the name of the VIRTEL directory that this shortcut will upload to
+
+\item[{10.1.12.101}] \leavevmode
+is the IP address of VIRTEL.
+
+\end{description}
+
+You may omit the \textendash{}u MYUSERID parameter and upl2virt will prompt you for your userid.
 
 
 \chapter{Performance}
@@ -1056,7 +1911,7 @@ The CONSOLE file allows the administrator to monitor the startup and subsequent 
 The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.
 \end{sphinxadmonition}
 
-\sphinxincludegraphics{{image04}.png}
+\sphinxincludegraphics{{image24}.png}
 \sphinxstyleemphasis{Fig. 4 Example of CONSOLE file}
 
 
@@ -1618,7 +2473,7 @@ In \sphinxstylestrong{z/VSE environment}, the SNAP output is written to the POWE
 Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.
 \end{sphinxadmonition}
 
-\sphinxincludegraphics{{image05}.png}
+\sphinxincludegraphics{{image25}.png}
 
 \sphinxstyleemphasis{Fig. 12 Example of SNAP listing}
 
@@ -1629,10 +2484,10 @@ The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain 
 Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.
 
 
-\section{Audit and Statistics}
-\label{\detokenize{audit_operations_ and_performance:audit-and-statistics}}
+\chapter{Audit}
+\label{\detokenize{audit_operations_ and_performance:audit}}
 
-\subsection{VIRSTAT file}
+\section{VIRSTAT file}
 \label{\detokenize{audit_operations_ and_performance:virstat-file}}
 The VIRSTAT file is a sequential file into which VIRTEL writes connection statistics.
 
@@ -1662,7 +2517,7 @@ For terminals associated with all other line types (including /GATE, /PCNE, and 
 The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.
 
 
-\subsubsection{VIRSTAT classsic format}
+\subsection{VIRSTAT classsic format}
 \label{\detokenize{audit_operations_ and_performance:virstat-classsic-format}}
 For terminals which specify classic format recording (STATS=1), the  VIRSTAT record format is shown in the following table:
 
@@ -1712,7 +2567,7 @@ Records are implemented at VIRTEL shutdown.
 \end{description}
 
 
-\subsubsection{VIRSTAT alternative X25 format}
+\subsection{VIRSTAT alternative X25 format}
 \label{\detokenize{audit_operations_ and_performance:virstat-alternative-x25-format}}
 For terminals which specify alternate X25 format recording (STATS=4), the VIRSTAT record format is shown in the following  table:
 
@@ -1813,7 +2668,7 @@ For this record type, the counters are in binary, and the Session Date and Time 
 This record type is written when 6 is specified in the STATS field of the terminal definition used for the HTTP line.
 
 
-\section{Printing the contents of the VIRSTAT file (X25)}
+\subsection{Printing the contents of the VIRSTAT file (X25)}
 \label{\detokenize{audit_operations_ and_performance:printing-the-contents-of-the-virstat-file-x25}}
 The VIR0070 program allows the contents of the VIRSTAT file to be printed. The source for this program is supplied in the SSL (VSE) or in the SAMPLIB (z/OS) and you can use this as the basis of a     user-written program to print statistics.
 
@@ -1858,15 +2713,15 @@ Examples of the JCL required to execute this program are shown below:
 \sphinxstyleemphasis{Fig. 18 VIR0070 JCL to print VIRSTAT file (z/OS)}
 
 
-\section{Printing the contents of the VIRSTAT file (HTTP)}
+\subsection{Printing the contents of the VIRSTAT file (HTTP)}
 \label{\detokenize{audit_operations_ and_performance:printing-the-contents-of-the-virstat-file-http}}
 The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB.
 
 Examples of the execution JCL for this program are shown below.
 
 
-\subsection{z/VSE}
-\label{\detokenize{audit_operations_ and_performance:z-vse}}
+\subsubsection{z/VSE JCL}
+\label{\detokenize{audit_operations_ and_performance:z-vse-jcl}}
 In the VSE environment the VIRPRTST job, loaded into the POWER reader queue during VIRTEL installation, contains an example of JCL for printing the VIRSTAT file. This job is an example only and must be modified before execution:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1929,8 +2784,8 @@ SELTERM DEVTA* CLVTA*
 \sphinxstyleemphasis{Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)}
 
 
-\subsection{z/OS}
-\label{\detokenize{audit_operations_ and_performance:z-os}}
+\subsubsection{z/OS JCL}
+\label{\detokenize{audit_operations_ and_performance:z-os-jcl}}
 In the z/OS environment the JCL for executing the PRTSTATW program is supplied as member JCLPRTST in the VIRTEL SAMPLIB:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2004,8 +2859,8 @@ a second step to PRINT or COUNT the records
 \end{description}
 
 
-\section{Sorting the File}
-\label{\detokenize{audit_operations_ and_performance:sorting-the-file}}
+\subsection{Sorting the VIRSTAT file}
+\label{\detokenize{audit_operations_ and_performance:sorting-the-virstat-file}}
 The sort requirements are determined by the type of report desired. Since the PRTSTATW program offers the option of selecting records and also offers up to two levels of report break to allow printing of subtotals, it is important to specify the appropriate sort criteria to obtain the correct result.
 
 The sort operates on one or more criteria, in ascending (A) or descending (D) mode. You should adapt the SORT SYSIN according to the syntax of the specific SORT program being used.
@@ -2034,7 +2889,7 @@ For example, to obtain a report in ascending order of session start date, specif
 \end{sphinxVerbatim}
 
 
-\section{PRTSTATW program}
+\subsection{PRTSTATW program}
 \label{\detokenize{audit_operations_ and_performance:prtstatw-program}}
 The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.
 
@@ -2180,7 +3035,7 @@ The VIRTEL memory management sub-application allows the system  administrator to
 
 To invoke the memory management sub-application, press {[}PA2{]} in the Configuration Menu to display the Sub- Application Menu, then press {[}PF4{]} in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
 
-\sphinxincludegraphics{{image06}.png}
+\sphinxincludegraphics{{image26}.png}
 
 \sphinxstyleemphasis{Fig 25. Memory display of VIRTEL address space}
 
@@ -2213,7 +3068,7 @@ Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are all
 \label{\detokenize{audit_operations_ and_performance:memory-display-in-memory-test-mode}}
 If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
 
-\sphinxincludegraphics{{image08}.png}
+\sphinxincludegraphics{{image28}.png}
 
 \sphinxstyleemphasis{Fig. 26 - Memory display in MEMORY=TEST mode}
 
@@ -2292,7 +3147,7 @@ A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(
 Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.
 
-\sphinxincludegraphics{{image07}.png}
+\sphinxincludegraphics{{image27}.png}
 
 \sphinxstyleemphasis{Fig. 27 Example of a memory allocataion history}
 \begin{description}

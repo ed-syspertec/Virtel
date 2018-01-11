@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Audit, Operations and Performance V4.57 &mdash; Virtel 7 documentation</title>
+  <title>Audit, Administration, Operations and Performance V4.57 &mdash; Virtel 7 documentation</title>
   
 
   
@@ -100,10 +100,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-57">V4.57</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Audit, Operations and Performance V4.57</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Audit, Administration, Operations and Performance V4.57</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#operations">Operations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#administration">Administration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#index-0">Correspondent Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-html-pages">Uploading HTML Pages</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#audit">Audit</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#appendix">Appendix</a></li>
 </ul>
 </li>
@@ -164,7 +167,7 @@
         
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
         
-      <li>Audit, Operations and Performance V4.57</li>
+      <li>Audit, Administration, Operations and Performance V4.57</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -183,10 +186,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="audit-operations-and-performance-v4-57">
-<span id="virtel457ap"></span><h1>Audit, Operations and Performance V4.57<a class="headerlink" href="#audit-operations-and-performance-v4-57" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web6.png"><img alt="image_logo" src="../../../_images/logo_virtel_web6.png" style="width: 275.0px; height: 102.0px;" /></a></p>
-<p><strong>VIRTEL Audit, Operations and Performance</strong></p>
+  <div class="section" id="audit-administration-operations-and-performance-v4-57">
+<span id="virtel457ap"></span><h1>Audit, Administration, Operations and Performance V4.57<a class="headerlink" href="#audit-administration-operations-and-performance-v4-57" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web6.png"><img alt="imagelogo" src="../../../_images/logo_virtel_web6.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><strong>VIRTEL Audit, Administration, Operations and Performance</strong></p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
 <p class="last">This book is currently under construction. Do not use!</p>
@@ -681,7 +684,7 @@ VIR0202I ---END OF LIST---
 <dd>relay associated to the terminal</dd>
 </dl>
 <p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
-<p><img alt="image_03" src="../../../_images/image032.png" />
+<p><img alt="image23" src="../../../_images/image2312.png" />
 <em>Fig.3 - Associated relay names</em></p>
 <dl class="docutils">
 <dt>linename</dt>
@@ -782,7 +785,7 @@ VIR0202I ---END OF LIST---
 <p>When the security subsystem is active, access to Line Status sub-application from the Configuration Menu or the Sub- Application Menu is controlled by the resource $$UTIL$$.
 When accessed by a transaction, normal transaction security rules will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.</p>
 <p>The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.</p>
-<p><img alt="image_01" src="../../../_images/image013.png" /></p>
+<p><img alt="image21" src="../../../_images/image2116.png" /></p>
 <p><em>Fig.1 - Line Status Display screen</em></p>
 <dl class="docutils">
 <dt>STATUS OF-LINES</dt>
@@ -841,7 +844,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <p>To display the status and line usage place the cursor on the desired line in the Line Status Display screen and press [PF12].</p>
 <p>Security rules are the same as those which apply to the previous screen.</p>
 <p>This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:</p>
-<p><img alt="image_02" src="../../../_images/image023.png" /></p>
+<p><img alt="image22" src="../../../_images/image2212.png" /></p>
 <p><em>Fig.2 - Line Usage Detail Display screen</em></p>
 <dl class="docutils">
 <dt>ACTIVE TERMINALS for LINE</dt>
@@ -900,7 +903,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <div class="section" id="applying-z-os-maintenance">
 <h4>Applying z/OS maintenance.<a class="headerlink" href="#applying-z-os-maintenance" title="Permalink to this headline">¶</a></h4>
 <p>By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as accumulation file called either allptfs-mshpvrr.txt (z/VSE) or allptfs-mvsvrr-txt (z/OS).</p>
-<p><img alt="image_09" src="../../../_images/image09.png" /></p>
+<p><img alt="image29" src="../../../_images/image293.png" /></p>
 <p><em>Syspertec ftp web server</em></p>
 <p>Once downloaded and unzipped, the zap package will contain a sequential text file of AMASPZAP statements. These should be uploaded to the Virtel CNTL file as PTF457MV. The JOB ZAPJCL, also located in the CNTL file, should then be submiited to apply the zaps contained in the PTF457MV file. As the PTF457MV is an accumulation of PTFs some editing will have to be done to remove zaps that have already been applied. Virtel will report the zap maintenace level when it starts up.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0018I</span> <span class="n">VIRTEL</span> <span class="mf">4.57</span> <span class="n">HAS</span> <span class="n">THE</span> <span class="n">FOLLOWING</span> <span class="n">PTF</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="n">APPLIED</span>
@@ -912,17 +915,626 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <div class="section" id="applying-maintenance-to-the-trsf-files">
 <h4>Applying maintenance to the TRSF files<a class="headerlink" href="#applying-maintenance-to-the-trsf-files" title="Permalink to this headline">¶</a></h4>
 <p>The updates to the web entities are delivered as an accumulation update file called virtelvrrupdtnnnn1.zip where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.</p>
-<p><img alt="image_10" src="../../../_images/image1014.png" /></p>
+<p><img alt="image30" src="../../../_images/image302.png" /></p>
 <p><em>Unzipped update file</em></p>
 <p>In the above example, the update file contains updates to the W2H and DOC directories. The members in each directory should be selected (CTRL-A) and dragged over to the “Drag and Drop” upload option of the Virtel Administration portal, normally setup on port 41001.</p>
-<p><img alt="image_11" src="../../../_images/image1119.png" /></p>
+<p><img alt="image31" src="../../../_images/image3112.png" /></p>
 <p><em>Virtel Administration Portal</em></p>
 <p>Open the “Drag and Drop” interface in Virtel, and then drag the files over on to the relvant directory in the upload interface. A upload window will open showing the results of the upload.</p>
-<p><img alt="image_12" src="../../../_images/image1217.png" /></p>
+<p><img alt="image32" src="../../../_images/image3212.png" /></p>
 </div>
 <div class="section" id="applying-maintence-via-batch">
 <h4>Applying maintence via batch.<a class="headerlink" href="#applying-maintence-via-batch" title="Permalink to this headline">¶</a></h4>
 <p>A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn’t require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter “TN2017-09 Virtel batch maintenance”. This can be viewed online at</p>
+</div>
+</div>
+<div class="section" id="correspondent-management">
+<h3>Correspondent Management<a class="headerlink" href="#correspondent-management" title="Permalink to this headline">¶</a></h3>
+<span class="target" id="v457ap-correspondent-management"></span></div>
+</div>
+<div class="section" id="index-0">
+<span id="id1"></span><h2>Correspondent Management<a class="headerlink" href="#index-0" title="Permalink to this headline">¶</a></h2>
+<p>One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user which VIRTEL recognizes in this way is known as a “Correspondent”. VIRTEL stores the list of correspondents in a VSAM file known as the “Correspondent file”, also known as the “VIRHTML” file.</p>
+<p>VIRTEL uses the correspondent file for the following purposes:
+- the rules of an HTTP line permit VIRTEL to distinguish between correspondents and non-correspondents when processing incoming HTTP requests. When the requesting user is identified as a correspondent, a special entry point may be assigned, or a set of rules specific to the user may be executed. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details.
+- the rules of an HTTP line may assign a specific LU name to a correspondent connecting to a host application via web access. This is known as “LU nailing” and is described in more detail in the VIRTEL LU Nailing HOWTO manual.
+- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to <a class="reference internal" href="#v457ap-http-uploading-pages-smtp"><span class="std std-ref">“Uploading pages by SMTP”</span></a> and <a class="reference internal" href="#v457ap-http-uploading-pages"><span class="std std-ref">“Uploading pages by HTTP (secured by cookie)”</span></a>.</p>
+<p>There are two types of correspondent: an e-mail correspondent and a local correspondent:
+- An <strong>e-mail correspondent</strong> is always defined by the VIRTEL administrator. When the administrator activates an email correspondent, VIRTEL sends an e-mail message to the correspondent containing the security code. The correspondent then either replies to the e-mail message or clicks on a link in the message to connect to VIRTEL.
+- A <strong>local correspondent</strong> is activated by the correspondent using a procedure known as “self-registration”. The self-registration procedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.</p>
+<div class="section" id="access-to-the-application">
+<span id="index-1"></span><h3>Access to the application<a class="headerlink" href="#access-to-the-application" title="Permalink to this headline">¶</a></h3>
+<p>The correspondent management sub-application, which allows the VIRTEL administrator to define the parameters
+associated with a correspondent, is accessible by pressing [PF5] in the VIRTEL configuration menu, or [PF12] in the
+system services sub-application menu, or from the VIRTEL Multi-Session screen via an application referencing the
+module VIR0041A.</p>
+</div>
+<div class="section" id="security">
+<span id="index-2"></span><h3>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h3>
+<p>When security is active, access to the correspondent management sub-application from the configuration menu or
+from the system services sub-application menu is controlled by the resource $$PCPC$$.
+When it is accessed by a transaction, the rules of security management of transactions will apply.
+Security management is described under the heading “Security” 282.</p>
+</div>
+<div class="section" id="objectives">
+<span id="index-3"></span><h3>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h3>
+<p>This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
+to the detail of a correspondent is achieved by positioning the cursor and pressing [PF12].</p>
+<p><img alt="image74" src="../../../_images/image744.png" /></p>
+<p><em>Summary of correspondence</em></p>
+<p><img alt="image75" src="../../../_images/image754.png" />
+<em>Correspondent detail screen (e-mail correspondent)</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORRESPONDENT</span> <span class="n">DETAIL</span> <span class="n">DEFINITION</span> <span class="o">--------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">16</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">04</span>
+<span class="n">Id</span>                 <span class="o">===&gt;</span> <span class="n">WKSTN</span><span class="o">-</span><span class="n">A2FE</span><span class="o">/</span><span class="n">SYSPERTEC</span>
+                        <span class="n">workstation</span><span class="o">/</span><span class="n">lan</span>
+<span class="n">Type</span> <span class="n">of</span> <span class="n">Id</span>         <span class="o">===&gt;</span> <span class="mi">2</span>             <span class="mi">1</span><span class="p">:</span><span class="n">Email</span> <span class="mi">2</span><span class="p">:</span><span class="n">Local</span><span class="o">+</span><span class="n">fixed</span> <span class="mi">3</span><span class="p">:</span><span class="n">Local</span><span class="o">+</span><span class="n">changing</span>
+<span class="n">Activation</span> <span class="n">message</span> <span class="o">===&gt;</span>
+                                      <span class="n">Text</span> <span class="n">of</span> <span class="s1">&#39;OK&#39;</span> <span class="n">message</span> <span class="n">to</span> <span class="n">user</span><span class="o">.</span>
+<span class="n">VTAM</span> <span class="n">name</span>          <span class="o">===&gt;</span> <span class="n">RRVTC006</span>      <span class="o">&amp;</span><span class="mi">1</span> <span class="n">parameter</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">VTAM</span> <span class="n">LU</span> <span class="n">name</span>
+<span class="n">Rule</span> <span class="n">Set</span>           <span class="o">===&gt;</span>               <span class="n">Rules</span> <span class="n">to</span> <span class="n">choose</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span>
+<span class="n">Directory</span>          <span class="o">===&gt;</span>               <span class="n">Where</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">be</span> <span class="n">uploaded</span>
+<span class="n">Last</span> <span class="n">contact</span>       <span class="o">===&gt;</span> <span class="mi">30</span> <span class="n">Jun</span> <span class="mi">2009</span> <span class="mi">11</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mi">49</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">002.082</span>
+<span class="n">Contacts</span>           <span class="o">===&gt;</span> <span class="mi">00000010</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">cookie</span> <span class="n">was</span> <span class="n">updated</span>
+<span class="n">Date</span> <span class="n">created</span>       <span class="o">===&gt;</span> <span class="mi">30</span> <span class="n">Jun</span> <span class="mi">2009</span> <span class="mi">10</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span>
+<span class="n">Created</span> <span class="n">by</span>         <span class="o">===&gt;</span> <span class="n">VIRDBA</span>
+<span class="n">Date</span> <span class="n">activated</span>     <span class="o">===&gt;</span> <span class="mi">30</span> <span class="n">Jun</span> <span class="mi">2009</span> <span class="mi">10</span><span class="p">:</span><span class="mi">35</span><span class="p">:</span><span class="mi">30</span>
+<span class="n">Activated</span> <span class="n">by</span>       <span class="o">===&gt;</span> <span class="n">VIRDBA</span>
+<span class="n">Date</span> <span class="n">disabled</span>      <span class="o">===&gt;</span>
+<span class="n">Disabled</span> <span class="n">by</span>        <span class="o">===&gt;</span>
+
+<span class="n">P1</span><span class="o">=</span><span class="n">Update</span>                           <span class="n">P3</span><span class="o">=</span><span class="n">Return</span>                      <span class="n">Enter</span><span class="o">=</span><span class="n">Add</span>
+<span class="n">P4</span><span class="o">=</span><span class="n">Activate</span>                         <span class="n">P5</span><span class="o">=</span><span class="n">Disable</span>                     <span class="n">P6</span><span class="o">=</span><span class="n">Rules</span>
+</pre></div>
+</div>
+<p><em>Correspondent detail screen (local correspondent)</em></p>
+</div>
+<div class="section" id="field-contents">
+<span id="index-4"></span><h3>Field Contents<a class="headerlink" href="#field-contents" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Id</dt>
+<dd>For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.</dd>
+<dt>Type of Id</dt>
+<dd><ol class="first last arabic simple">
+<li>this is an e-mail correspondent</li>
+<li>this is a local correspondent whose security code is generated at activation time and subsequently remains constant</li>
+<li>this is a local correspondent whose security code changes each time it is accessed.</li>
+</ol>
+</dd>
+<dt>Activation message</dt>
+<dd><p class="first">Message received by the user at time of activation of his account. This message can contain a link allowing the user to connect to a host application or to open the upload.htm page with automatic installation of an authorization cookie.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>The activation message may include the following variables:</dt>
+<dd><p class="first">&amp;R meaning “insert a blank line”.</p>
+<p class="last">&amp;C meaning “insert security code”. The activation security code is inserted into the message in the form VirtelCookie=xxx.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt>Rule Set</dt>
+<dd>(optional) The name of the rule set associated with this user.</dd>
+<dt>Directory</dt>
+<dd>(optional) Name of the directory into which this correspondent may upload files.</dd>
+<dt>Last contact</dt>
+<dd>Date and time of the last transfer, and the IP address of the correspondent.</dd>
+<dt>Contacts</dt>
+<dd>The number of contacts since the last activation.</dd>
+</dl>
+<span class="target" id="v457ap-account-activation"></span></div>
+<div class="section" id="account-activation">
+<span id="index-5"></span><h3>Account activation<a class="headerlink" href="#account-activation" title="Permalink to this headline">¶</a></h3>
+<p>In order to be operational, a correspondent account must be activated. This is achieved by pressing [PF4] at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
+correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name $MAIL$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the $MAIL$ transaction is not defined.</p>
+</div>
+</div>
+<div class="section" id="account-deactivation">
+<span id="index-6"></span><h3>Account deactivation<a class="headerlink" href="#account-deactivation" title="Permalink to this headline">¶</a></h3>
+<p>A correspondent’s security code may be cancelled by deactivating with the [PF5] key. The message DISABLE WAS DONE indicates that the deactivation was successful.</p>
+</div>
+<div class="section" id="access-to-associated-rule-set">
+<span id="index-7"></span><h3>Access to associated rule set<a class="headerlink" href="#access-to-associated-rule-set" title="Permalink to this headline">¶</a></h3>
+<p>To display the list of rules associated with this correspondent, press the [PF6] key.</p>
+</div>
+</div>
+<div class="section" id="uploading-html-pages">
+<span id="v457ap-uploading-html-pages"></span><h2>Uploading HTML Pages<a class="headerlink" href="#uploading-html-pages" title="Permalink to this headline">¶</a></h2>
+<p>HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>by e-mail (SMTP)</li>
+<li>by web browser (HTTP), with cookie security</li>
+<li>by web browser (HTTP), with signon security</li>
+<li>Via a batch process</li>
+</ol>
+</div></blockquote>
+<span class="target" id="v457ap-http-uploading-pages-smtp"></span><div class="section" id="uploading-template-pages-using-smtp">
+<span id="index-8"></span><h3>Uploading template pages using SMTP<a class="headerlink" href="#uploading-template-pages-using-smtp" title="Permalink to this headline">¶</a></h3>
+<p>Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.</p>
+<div class="section" id="definitions-for-page-upload-by-smtp">
+<span id="index-9"></span><h4>Definitions for page upload by SMTP<a class="headerlink" href="#definitions-for-page-upload-by-smtp" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</li>
+<li>Press F5 from the Configuration Menu and define an e-mail correspondent specifying W2H-DIR as the directory name:</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORRESPONDENT</span> <span class="n">DETAIL</span> <span class="n">DEFINITION</span> <span class="o">--------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">14</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">33</span>
+<span class="n">Id</span>                  <span class="o">===&gt;</span> <span class="n">upload2</span><span class="nd">@saint</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">com</span>
+                    <span class="n">email</span> <span class="n">address</span> <span class="k">with</span> <span class="s1">&#39;@&#39;</span> <span class="n">sign</span>
+<span class="n">Type</span> <span class="n">of</span> <span class="n">Id</span>          <span class="o">===&gt;</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">:</span><span class="n">Email</span> <span class="mi">2</span><span class="p">:</span><span class="n">Local</span><span class="o">+</span><span class="n">fixed</span> <span class="mi">3</span><span class="p">:</span><span class="n">Local</span><span class="o">+</span><span class="n">changing</span>
+<span class="n">Activation</span> <span class="n">message</span>  <span class="o">===&gt;</span> <span class="n">To</span> <span class="n">upload</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">VIRTEL</span><span class="p">,</span> <span class="n">reply</span> <span class="n">to</span> <span class="n">this</span> <span class="n">message</span><span class="o">.</span>
+                    <span class="n">Text</span> <span class="n">of</span> <span class="s1">&#39;OK&#39;</span> <span class="n">message</span> <span class="n">to</span> <span class="n">user</span><span class="o">.</span>
+<span class="n">VTAM</span> <span class="n">name</span>           <span class="o">===&gt;</span> <span class="o">&amp;</span><span class="mi">1</span> <span class="n">parameter</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">VTAM</span> <span class="n">LU</span> <span class="n">name</span>
+<span class="n">Rule</span> <span class="n">Set</span>            <span class="o">===&gt;</span> <span class="n">ADMRSET1</span> <span class="n">Rules</span> <span class="n">to</span> <span class="n">choose</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span>
+<span class="n">Directory</span>           <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span> <span class="n">Where</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">be</span> <span class="n">uploaded</span>
+<span class="n">Last</span> <span class="n">contact</span>        <span class="o">===&gt;</span> <span class="n">QUEUE</span> <span class="n">ACTIVATION</span>
+<span class="n">Contacts</span>            <span class="o">===&gt;</span> <span class="mi">00000000</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">cookie</span> <span class="n">was</span> <span class="n">updated</span>
+<span class="n">Date</span> <span class="n">created</span>        <span class="o">===&gt;</span> <span class="mi">11</span> <span class="n">May</span> <span class="mi">2004</span> <span class="mi">14</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">29</span>
+<span class="n">Created</span> <span class="n">by</span>          <span class="o">===&gt;</span> <span class="n">VIRDBA</span>
+<span class="n">Date</span> <span class="n">activated</span>      <span class="o">===&gt;</span> <span class="mi">11</span> <span class="n">May</span> <span class="mi">2004</span> <span class="mi">14</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">33</span>
+<span class="n">Activated</span> <span class="n">by</span>        <span class="o">===&gt;</span> <span class="n">VIRDBA</span>
+<span class="n">Date</span> <span class="n">disabled</span>       <span class="o">===&gt;</span>
+<span class="n">Disabled</span> <span class="n">by</span>         <span class="o">===&gt;</span>
+<span class="n">P1</span><span class="o">=</span><span class="n">Update</span>                       <span class="n">P3</span><span class="o">=</span><span class="n">Return</span>                           <span class="n">Enter</span><span class="o">=</span><span class="n">Add</span>
+<span class="n">P4</span><span class="o">=</span><span class="n">Activate</span>                     <span class="n">P5</span><span class="o">=</span><span class="n">Disable</span>                          <span class="n">P6</span><span class="o">=</span><span class="n">Rules</span>
+<span class="n">ACTIVATION</span> <span class="n">WAS</span> <span class="n">REQUESTED</span>
+</pre></div>
+</div>
+<p><em>Page upload by SMTP: Creating an e-mail correspondent</em></p>
+</div>
+<div class="section" id="procedure-for-page-upload-by-smtp">
+<span id="index-10"></span><h4>Procedure for page upload by SMTP<a class="headerlink" href="#procedure-for-page-upload-by-smtp" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>Activate the e-mail correspondent: see “Account activation” under the heading <a class="reference internal" href="#v457ap-correspondent-management"><span class="std std-ref">“Correspondent Management”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:-</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">12</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">40</span> <span class="o">+</span><span class="mi">0100</span>
+<span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Organization</span><span class="p">:</span> <span class="n">SYSPERTEC</span> <span class="n">COMMUNICATION</span>
+<span class="n">To</span><span class="p">:</span> <span class="n">upload2</span><span class="nd">@saint</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Message</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="mf">20040427120439.07</span><span class="n">F5DA7C</span><span class="o">.</span><span class="mf">5E416500</span><span class="n">Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA</span><span class="o">==&gt;</span>
+<span class="n">Subject</span><span class="p">:</span> <span class="n">OK</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span> <span class="o">&gt;</span>
+<span class="n">SECURITY</span> <span class="n">TOKEN</span><span class="p">:</span>
+<span class="mf">20040427120439.07</span><span class="n">F5DA7C</span><span class="o">.</span><span class="mf">5E416500</span><span class="n">Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA</span><span class="o">==</span>
+<span class="n">To</span> <span class="n">upload</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">VIRTEL</span><span class="p">,</span> <span class="n">reply</span> <span class="n">to</span> <span class="n">this</span> <span class="n">message</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><em>Page upload by SMTP : activation e-mail</em></p>
+<ol class="arabic simple" start="2">
+<li>Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the attached files into the directory defined in the definition of the correspondent.</li>
+<li>VIRTEL replies by sending an e-mail containing the result of the upload. The following example shows the reply sent by VIRTEL to a request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The “Message-id” field in this e-mail contains the new security code. You can reply to this e-mail the next time you have files to upload.</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">12</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">14</span> <span class="o">+</span><span class="mi">0100</span>
+<span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Organization</span><span class="p">:</span> <span class="n">SYSPERTEC</span> <span class="n">COMMUNICATION</span>
+<span class="n">To</span><span class="p">:</span> <span class="n">upload2</span><span class="nd">@saint</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Message</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="mf">20040427123911.07</span><span class="n">F5CDC4</span><span class="o">.</span><span class="n">F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA</span><span class="o">==&gt;</span>
+<span class="n">Subject</span><span class="p">:</span> <span class="n">OK</span> <span class="p">:</span> <span class="o">&lt;</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span> <span class="o">&gt;</span>
+<span class="n">VirtelCookie</span><span class="o">=</span>
+<span class="mf">20040427123911.07</span><span class="n">F5CDC4</span><span class="o">.</span><span class="n">F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA</span><span class="o">==</span>
+<span class="n">RETURN</span> <span class="n">CODE</span> <span class="n">IS</span><span class="p">:</span> <span class="mi">00</span>
+<span class="mi">123911</span> <span class="n">MESSAGE</span> <span class="n">RECEIVED</span>
+<span class="mi">123912</span> <span class="n">LOADING</span> <span class="n">FILE</span><span class="p">:</span> <span class="n">LOGOVERT</span>
+<span class="mi">123912</span> <span class="n">SIZE</span> <span class="p">:</span> <span class="mi">14357</span> <span class="n">BYTES</span> <span class="p">(</span><span class="n">BINARY</span><span class="p">)</span>
+<span class="mi">123912</span> <span class="n">MIME</span> <span class="p">:</span> <span class="n">image</span><span class="o">/</span><span class="n">jpeg</span>
+<span class="mi">123914</span> <span class="n">LOADING</span> <span class="n">FILE</span><span class="p">:</span> <span class="n">WEB2VIRT</span>
+<span class="mi">123914</span> <span class="n">SIZE</span> <span class="p">:</span> <span class="mi">11477</span> <span class="n">BYTES</span> <span class="p">(</span><span class="n">TEXT</span><span class="p">)</span>
+<span class="mi">123914</span> <span class="n">MIME</span> <span class="p">:</span> <span class="n">text</span><span class="o">/</span><span class="n">html</span>
+<span class="mi">123914</span> <span class="n">FIELD</span> <span class="p">:</span> <span class="n">SET</span><span class="o">-</span><span class="n">OUTPUT</span><span class="o">-</span><span class="n">ENCODING</span><span class="o">-</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="s2">&quot;&quot;</span>
+<span class="mi">123914</span> <span class="n">FIELD</span> <span class="p">:</span> <span class="n">COPY</span><span class="o">-</span><span class="n">FROM</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">43</span><span class="p">)</span>
+<span class="mi">123914</span> <span class="n">FIELD</span> <span class="p">:</span> <span class="n">FIELD</span><span class="o">-</span><span class="n">WITH</span><span class="o">-</span><span class="n">CURSOR</span>
+<span class="mi">123914</span> <span class="n">FIELD</span> <span class="p">:</span> <span class="n">FIELD</span><span class="o">-</span><span class="n">WITH</span><span class="o">-</span><span class="n">CURSOR</span>
+</pre></div>
+</div>
+<p><em>Page upload by SMTP : upload response e-mail</em></p>
+<p>Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and
+truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
+truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
+using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
+under the name LINKS.GI</p>
+<span class="target" id="v457ap-http-uploading-pages"></span></div>
+<div class="section" id="uploading-pages-by-http-secured-by-cookie">
+<span id="index-11"></span><h4>Uploading pages by HTTP (secured by cookie)<a class="headerlink" href="#uploading-pages-by-http-secured-by-cookie" title="Permalink to this headline">¶</a></h4>
+<p>The upload.htm page allows HTML pages or graphics to be uploaded to VIRTEL. The user’s identity is guaranteed by a
+cookie named VirtelRef= whose value changes after each upload. The value of the cookie is the same as the security
+code used for uploading by SMTP.</p>
+<p>To upload a page, a user must:</p>
+<ul class="simple">
+<li>have a valid cookie (obtained by activation of the VIRTEL e-mail correspondent)</li>
+<li>click on the link contained in the e-mail, which displays the upload.htm page and loads the cookie into the browser (first time only)</li>
+<li>click the “Browse” button and select a file</li>
+<li>click the “Send” button</li>
+</ul>
+<p>The VIRTEL response is displayed in the page and is similar to the response received by e-mail when uploading via
+SMTP.</p>
+</div>
+<div class="section" id="definitions-for-page-upload-secured-by-cookie">
+<span id="index-12"></span><h4>Definitions for page upload (secured by cookie)<a class="headerlink" href="#definitions-for-page-upload-secured-by-cookie" title="Permalink to this headline">¶</a></h4>
+<p>All the elements needed for page upload by HTTP secured by cookie are contained in the base configuration delivered
+with VIRTEL 4.27. Users who upgrade to VIRTEL 4.27 while keeping their existing configuration need to add certain
+elements to their existing configuration to benefit from the new “page upload secured by cookie” function.
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out
+these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL version 4.27. Having updated
+the configuration, you then need to upload three new elements (upload.htm, default.js, and logo_3.gif) to the W2HDIR
+directory using the existing SMTP upload method.</p>
+<p>1. In entry point WEB2HOST, define a new transaction W2H–70, with external name upload. This transaction specifies
+VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
+that the name of the target directory is to be found in the definition of the e-mail correspondent:</p>
+<p><img alt="image76" src="../../../_images/image764.png" /></p>
+<p><em>Page upload by HTTP with cookie : Creating the ‘upload’ transaction</em></p>
+<ol class="arabic simple" start="2">
+<li>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</li>
+<li>Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and ruleset name ADMRSET1 :</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CORRESPONDENT</span> <span class="n">DETAIL</span> <span class="n">DEFINITION</span> <span class="o">--------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">14</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">04</span>
+<span class="n">e</span><span class="o">-</span><span class="n">mail</span> <span class="n">address</span> <span class="o">===&gt;</span> <span class="n">upload2</span><span class="nd">@saint</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">com</span>
+                    <span class="n">email</span> <span class="n">address</span> <span class="k">with</span> <span class="s1">&#39;@&#39;</span> <span class="n">sign</span>
+<span class="n">Type</span> <span class="n">of</span> <span class="n">Id</span>         <span class="o">===&gt;</span> <span class="mi">1</span>              <span class="mi">1</span><span class="p">:</span><span class="n">Email</span> <span class="mi">2</span><span class="p">:</span><span class="n">Local</span><span class="o">+</span><span class="n">fixed</span> <span class="mi">3</span><span class="p">:</span><span class="n">Local</span><span class="o">+</span><span class="n">changing</span>
+<span class="n">Activation</span> <span class="n">message</span> <span class="o">===&gt;</span> <span class="n">To</span> <span class="n">upload</span> <span class="n">to</span> <span class="n">VIRTEL</span><span class="p">,</span> <span class="n">click</span><span class="p">:</span><span class="o">&amp;</span><span class="n">Rhttp</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">229.20</span><span class="p">:</span><span class="mi">4100</span>
+<span class="mi">1</span><span class="o">/</span><span class="n">web2host</span><span class="o">/</span><span class="n">upload</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">upload</span><span class="o">+&amp;</span><span class="n">C</span>
+                                       <span class="n">Text</span> <span class="n">of</span> <span class="s1">&#39;OK&#39;</span> <span class="n">message</span> <span class="n">to</span> <span class="n">user</span><span class="o">.</span>
+<span class="n">VTAM</span> <span class="n">name</span>          <span class="o">===&gt;</span> <span class="o">&amp;</span><span class="mi">1</span> <span class="n">parameter</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">VTAM</span> <span class="n">LU</span> <span class="n">name</span>
+<span class="n">Rule</span> <span class="n">Set</span>           <span class="o">===&gt;</span> <span class="n">ADMRSET1</span> <span class="n">Rules</span> <span class="n">to</span> <span class="n">choose</span> <span class="n">an</span> <span class="n">entry</span> <span class="n">point</span>
+<span class="n">Directory</span>          <span class="o">===&gt;</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span> <span class="n">Where</span> <span class="n">data</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">be</span> <span class="n">uploaded</span>
+<span class="n">Last</span> <span class="n">contact</span>       <span class="o">===&gt;</span>
+<span class="n">Contacts</span>           <span class="o">===&gt;</span> <span class="mi">00000000</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">times</span> <span class="n">cookie</span> <span class="n">was</span> <span class="n">updated</span>
+<span class="n">Date</span> <span class="n">created</span>       <span class="o">===&gt;</span> <span class="mi">11</span> <span class="n">May</span> <span class="mi">2004</span> <span class="mi">14</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">29</span>
+<span class="n">Created</span> <span class="n">by</span>         <span class="o">===&gt;</span> <span class="n">VIRDBA</span>
+<span class="n">Date</span> <span class="n">activated</span>     <span class="o">===&gt;</span> <span class="mi">11</span> <span class="n">May</span> <span class="mi">2004</span> <span class="mi">14</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span><span class="mi">04</span>
+<span class="n">Activated</span> <span class="n">by</span>       <span class="o">===&gt;</span> <span class="n">VIRDBA</span>
+<span class="n">Date</span> <span class="n">disabled</span>      <span class="o">===&gt;</span>
+<span class="n">Disabled</span> <span class="n">by</span>        <span class="o">===&gt;</span>
+
+
+<span class="n">P1</span><span class="o">=</span><span class="n">Update</span>                           <span class="n">P3</span><span class="o">=</span><span class="n">Return</span>                        <span class="n">Enter</span><span class="o">=</span><span class="n">Add</span>
+<span class="n">P4</span><span class="o">=</span><span class="n">Activate</span>                         <span class="n">P5</span><span class="o">=</span><span class="n">Disable</span>                       <span class="n">P6</span><span class="o">=</span><span class="n">Rules</span>
+<span class="n">ACTIVATION</span> <span class="n">WAS</span> <span class="n">REQUESTED</span>
+</pre></div>
+</div>
+<p><em>Page upload by HTTP with cookie : Creating the e-mail correspondent</em></p>
+<ol class="arabic simple" start="4">
+<li>Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DETAIL</span> <span class="n">of</span> <span class="n">RULE</span> <span class="kn">from</span> <span class="nn">RULE</span> <span class="n">SET</span><span class="p">:</span> <span class="n">ADMRSET1</span> <span class="o">-------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">14</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">59</span>
+
+<span class="n">Name</span>          <span class="o">===&gt;</span> <span class="n">UPLOAD1B</span>               <span class="n">Rule</span> <span class="n">priority</span> <span class="ow">is</span> <span class="n">per</span> <span class="n">name</span>
+<span class="n">Status</span>        <span class="o">===&gt;</span> <span class="n">ACTIVE</span>                 <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Sep</span> <span class="mi">2001</span> <span class="mi">14</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">14</span>
+<span class="n">Description</span>   <span class="o">===&gt;</span> <span class="n">Rule</span> <span class="k">for</span> <span class="n">WEB2HOST</span> <span class="n">administrator</span>
+<span class="n">Entry</span> <span class="n">point</span>   <span class="o">===&gt;</span> <span class="n">WEB2HOST</span>               <span class="n">Target</span> <span class="n">Entry</span> <span class="n">Point</span>
+<span class="n">Parameter</span>     <span class="o">===&gt;</span>                                    <span class="n">optional</span> <span class="o">&amp;</span><span class="mi">1</span> <span class="n">value</span>
+<span class="n">Trace</span> <span class="o">===&gt;</span>                                <span class="mi">1</span><span class="o">=</span><span class="n">commands</span> <span class="mi">2</span><span class="o">=</span><span class="n">data</span> <span class="mi">3</span><span class="o">=</span><span class="n">partner</span>
+
+<span class="n">C</span> <span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">IGNORE</span> <span class="mi">1</span><span class="o">=</span><span class="n">IS</span> <span class="mi">2</span><span class="o">=</span><span class="n">IS</span> <span class="n">NOT</span> <span class="mi">3</span><span class="o">=</span><span class="n">STARTS</span> <span class="n">WITH</span> <span class="mi">4</span><span class="o">=</span><span class="n">DOES</span> <span class="n">NOT</span> <span class="mi">5</span><span class="o">=</span><span class="n">ENDS</span> <span class="n">WITH</span> <span class="mi">6</span><span class="o">=</span><span class="n">DOES</span> <span class="n">NOT</span>
+<span class="mi">0</span> <span class="n">IP</span> <span class="n">Subnet</span>   <span class="o">===&gt;</span>                        <span class="n">Mask</span>     <span class="o">===&gt;</span>
+<span class="mi">5</span> <span class="n">HTTP</span> <span class="n">Host</span>   <span class="o">===&gt;</span> <span class="p">:</span><span class="mi">41001</span>
+<span class="mi">0</span> <span class="n">eMail</span>       <span class="o">===&gt;</span>
+<span class="mi">0</span> <span class="n">Calling</span> <span class="n">DTE</span> <span class="o">===&gt;</span>                        <span class="n">Calling</span> <span class="n">DTE</span> <span class="n">address</span>
+<span class="mi">0</span> <span class="n">Called</span>      <span class="o">===&gt;</span>                        <span class="n">Called</span> <span class="n">DTE</span> <span class="n">address</span>
+<span class="mi">0</span> <span class="n">CUD0</span> <span class="p">(</span><span class="n">Hex</span><span class="p">)</span>  <span class="o">===&gt;</span>                        <span class="n">First</span> <span class="mi">4</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">CUD</span> <span class="p">(</span><span class="n">X25</span> <span class="n">protocol</span><span class="p">)</span>
+<span class="mi">0</span> <span class="n">User</span> <span class="n">Data</span>   <span class="o">===&gt;</span>
+<span class="mi">0</span> <span class="n">Days</span>        <span class="o">===&gt;</span> <span class="n">M</span><span class="p">:</span>      <span class="n">T</span><span class="p">:</span>      <span class="n">W</span><span class="p">:</span>      <span class="n">T</span><span class="p">:</span>      <span class="n">F</span><span class="p">:</span>      <span class="n">S</span><span class="p">:</span>      <span class="n">S</span><span class="p">:</span>
+<span class="mi">0</span> <span class="n">Start</span> <span class="n">time</span>  <span class="o">===&gt;</span> <span class="n">H</span><span class="p">:</span>      <span class="n">M</span><span class="p">:</span>      <span class="n">S</span><span class="p">:</span>     <span class="n">End</span> <span class="n">time</span> <span class="o">===&gt;</span> <span class="n">H</span><span class="p">:</span>     <span class="n">M</span><span class="p">:</span>     <span class="n">S</span><span class="p">:</span>
+
+<span class="n">P1</span><span class="o">=</span><span class="n">Update</span>                          <span class="n">P3</span><span class="o">=</span><span class="n">Return</span>                      <span class="n">Enter</span><span class="o">=</span><span class="n">Add</span>
+<span class="n">P4</span><span class="o">=</span><span class="n">Activate</span>                        <span class="n">P5</span><span class="o">=</span><span class="n">Inactivate</span>                  <span class="n">P12</span><span class="o">=</span><span class="n">Entry</span> <span class="n">P</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><em>Page upload by HTTP with cookie : Creating rule UPLOAD1B</em></p>
+<ol class="arabic simple" start="5">
+<li>Define two new rules attached to the HTTP line. The first rule, which specifies $COOKIE$ as the entry point name, will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span>LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRE2     14:44:14
+
+Name     Status   Description                                        Entry
+                                                                     Point
+WHT00100 ACTIVE   HTTP access (users authorised by cookie)           $COOKIE$
+WHT00200 ACTIVE   HTTP access (other users)                          WEB2HOST
+
+P1=Update            P2=Suppress             P3=Return
+P6=1st page          P7=Page-1               P8=Page+1              P12=Edit
+</pre></div>
+</div>
+<p><em>List of rules associated with UPLOAD</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
+Name          ===&gt; WHT00100              Rule priority is per name
+Status        ===&gt; ACTIVE                Mon, 24 Sep 2001 14:19:14
+Description   ===&gt; HTTP access (users authorised by cookie)
+Entry point   ===&gt; $COOKIE$              Target Entry Point
+Parameter     ===&gt;                                  optional &amp;1 value
+Trace         ===&gt;                       1=commands 2=data 3=partner
+C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+0 IP Subnet   ===&gt;                       Mask ===&gt;
+0 HTTP Host   ===&gt;
+0 eMail       ===&gt;
+0 Calling DTE ===&gt;                       Calling DTE address
+0 Called      ===&gt;                       Called DTE address
+0 CUD0 (Hex)  ===&gt;                       First 4 bytes of CUD (X25 protocol)
+0 User Data   ===&gt;
+0 Days        ===&gt; M:      T:      W:      T:      F:      S:      S:
+0 Start time  ===&gt; H:      M:      S:     End time ===&gt; H:     M:     S:
+
+P1=Update                          P3=Return                    Enter=Add
+P4=Activate                        P5=Inactivate                P12=Entry P.
+</pre></div>
+</div>
+<p><em>Page upload by HTTP with cookie : Rule $COOKIE$ of the HTTP line</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DETAIL</span> <span class="n">of</span> <span class="n">RULE</span> <span class="kn">from</span> <span class="nn">RULE</span> <span class="n">SET</span><span class="p">:</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="o">-------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">14</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mi">34</span>
+<span class="n">Name</span>          <span class="o">===&gt;</span> <span class="n">WHT00200</span>              <span class="n">Rule</span> <span class="n">priority</span> <span class="ow">is</span> <span class="n">per</span> <span class="n">name</span>
+<span class="n">Status</span>        <span class="o">===&gt;</span> <span class="n">ACTIVE</span>                <span class="n">Mon</span><span class="p">,</span> <span class="mi">24</span> <span class="n">Sep</span> <span class="mi">2001</span> <span class="mi">14</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mi">14</span>
+<span class="n">Description</span>   <span class="o">===&gt;</span> <span class="n">HTTP</span> <span class="n">a</span>
+<span class="n">ccess</span> <span class="p">(</span><span class="n">users</span> <span class="n">authorised</span> <span class="n">by</span> <span class="n">cookie</span><span class="p">)</span>
+<span class="n">Entry</span> <span class="n">point</span>   <span class="o">===&gt;</span> <span class="n">WEB2HOST</span>              <span class="n">Target</span> <span class="n">Entry</span> <span class="n">Point</span>
+<span class="n">Parameter</span>     <span class="o">===&gt;</span>                                  <span class="n">optional</span> <span class="o">&amp;</span><span class="mi">1</span> <span class="n">value</span>
+<span class="n">Trace</span>         <span class="o">===&gt;</span>                       <span class="mi">1</span><span class="o">=</span><span class="n">commands</span> <span class="mi">2</span><span class="o">=</span><span class="n">data</span> <span class="mi">3</span><span class="o">=</span><span class="n">partner</span>
+<span class="n">C</span> <span class="p">:</span> <span class="mi">0</span><span class="o">=</span><span class="n">IGNORE</span> <span class="mi">1</span><span class="o">=</span><span class="n">IS</span> <span class="mi">2</span><span class="o">=</span><span class="n">IS</span> <span class="n">NOT</span> <span class="mi">3</span><span class="o">=</span><span class="n">STARTS</span> <span class="n">WITH</span> <span class="mi">4</span><span class="o">=</span><span class="n">DOES</span> <span class="n">NOT</span> <span class="mi">5</span><span class="o">=</span><span class="n">ENDS</span> <span class="n">WITH</span> <span class="mi">6</span><span class="o">=</span><span class="n">DOES</span> <span class="n">NOT</span>
+<span class="mi">0</span> <span class="n">IP</span> <span class="n">Subnet</span>   <span class="o">===&gt;</span>                       <span class="n">Mask</span> <span class="o">===&gt;</span>
+<span class="mi">0</span> <span class="n">HTTP</span> <span class="n">Host</span>   <span class="o">===&gt;</span>
+<span class="mi">0</span> <span class="n">eMail</span>       <span class="o">===&gt;</span>
+<span class="mi">0</span> <span class="n">Calling</span> <span class="n">DTE</span> <span class="o">===&gt;</span>                       <span class="n">Calling</span> <span class="n">DTE</span> <span class="n">address</span>
+<span class="mi">0</span> <span class="n">Called</span>      <span class="o">===&gt;</span>                       <span class="n">Called</span> <span class="n">DTE</span> <span class="n">address</span>
+<span class="mi">0</span> <span class="n">CUD0</span> <span class="p">(</span><span class="n">Hex</span><span class="p">)</span>  <span class="o">===&gt;</span>                       <span class="n">First</span> <span class="mi">4</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">CUD</span> <span class="p">(</span><span class="n">X25</span> <span class="n">protocol</span><span class="p">)</span>
+<span class="mi">0</span> <span class="n">User</span> <span class="n">Data</span>   <span class="o">===&gt;</span>
+<span class="mi">0</span> <span class="n">Days</span>        <span class="o">===&gt;</span> <span class="n">M</span><span class="p">:</span>      <span class="n">T</span><span class="p">:</span>      <span class="n">W</span><span class="p">:</span>      <span class="n">T</span><span class="p">:</span>      <span class="n">F</span><span class="p">:</span>      <span class="n">S</span><span class="p">:</span>      <span class="n">S</span><span class="p">:</span>
+<span class="mi">0</span> <span class="n">Start</span> <span class="n">time</span>  <span class="o">===&gt;</span> <span class="n">H</span><span class="p">:</span>      <span class="n">M</span><span class="p">:</span>      <span class="n">S</span><span class="p">:</span>     <span class="n">End</span> <span class="n">time</span> <span class="o">===&gt;</span> <span class="n">H</span><span class="p">:</span>     <span class="n">M</span><span class="p">:</span>     <span class="n">S</span><span class="p">:</span>
+
+<span class="n">P1</span><span class="o">=</span><span class="n">Update</span>                          <span class="n">P3</span><span class="o">=</span><span class="n">Return</span>                    <span class="n">Enter</span><span class="o">=</span><span class="n">Add</span>
+<span class="n">P4</span><span class="o">=</span><span class="n">Activate</span>                        <span class="n">P5</span><span class="o">=</span><span class="n">Inactivate</span>                <span class="n">P12</span><span class="o">=</span><span class="n">Entry</span> <span class="n">P</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><em>Page upload by HTTP with cookie : Rule WEB2HOST of the HTTP line</em></p>
+</div>
+<div class="section" id="procedure-for-page-upload-secured-by-cookie">
+<h4>Procedure for page upload (secured by cookie)<a class="headerlink" href="#procedure-for-page-upload-secured-by-cookie" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>(First time only) Activate the e-mail correspondent: see <a class="reference internal" href="#v457ap-account-activation"><span class="std std-ref">“Account activation”</span></a>. This triggers the sending of an e-mail containing the security code, as in the following example:</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Date</span><span class="p">:</span> <span class="n">Tue</span><span class="p">,</span> <span class="mi">27</span> <span class="n">Apr</span> <span class="mi">2004</span> <span class="mi">13</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">44</span> <span class="o">+</span><span class="mi">0100</span>
+<span class="n">From</span><span class="p">:</span> <span class="n">virtel</span><span class="nd">@client</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Organization</span><span class="p">:</span> <span class="n">SYSPERTEC</span> <span class="n">COMMUNICATION</span>
+<span class="n">To</span><span class="p">:</span> <span class="n">upload2</span><span class="nd">@saint</span><span class="o">.</span><span class="n">cloud</span><span class="o">.</span><span class="n">com</span>
+<span class="n">Message</span><span class="o">-</span><span class="nb">id</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="mf">20040427130843.07</span><span class="n">F5D1DC</span><span class="o">.</span><span class="mi">56</span><span class="n">A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA</span><span class="o">==&gt;</span>
+<span class="n">Subject</span><span class="p">:</span> <span class="n">OK</span> <span class="p">:</span> <span class="o">&lt;</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span> <span class="o">&gt;</span>
+<span class="n">SECURITY</span> <span class="n">TOKEN</span><span class="p">:</span>
+<span class="mf">20040427130843.07</span><span class="n">F5D1DC</span><span class="o">.</span><span class="mi">56</span><span class="n">A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA</span><span class="o">==</span>
+<span class="n">To</span> <span class="n">upload</span> <span class="n">to</span> <span class="n">VIRTEL</span><span class="p">,</span> <span class="n">click</span><span class="p">:</span>
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">229.20</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">web2host</span><span class="o">/</span><span class="n">upload</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">upload</span><span class="o">+</span><span class="n">VirtelCookie</span><span class="o">=</span><span class="mi">20040</span>
+<span class="mf">427130843.07</span><span class="n">F5D1DC</span><span class="o">.</span><span class="mi">56</span><span class="n">A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA</span><span class="o">==</span>
+</pre></div>
+</div>
+<p><em>Page upload by HTTP with cookie : activation e-mail</em></p>
+<ol class="arabic simple" start="2">
+<li>Click the link in the e-mail to open the upload.htm page:</li>
+</ol>
+<p><img alt="image4" src="../../../_images/image428.png" /></p>
+<p><em>Page upload by HTTP with cookie : Displaying the upload.htm page</em></p>
+<ol class="arabic simple" start="3">
+<li>Click the “Browse” button and the file selection dialog will be displayed:</li>
+</ol>
+<p><img alt="image5" src="../../../_images/image528.png" /></p>
+<p><em>Page upload by HTTP with cookie : File selection dialog</em></p>
+<ol class="arabic simple" start="4">
+<li>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</li>
+</ol>
+<p><img alt="image6" src="../../../_images/image635.png" /></p>
+<p><em>Page upload by HTTP with cookie : Sending the file</em></p>
+<ol class="arabic simple" start="5">
+<li>Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:</li>
+</ol>
+<p><img alt="image7" src="../../../_images/image719.png" /></p>
+<p><em>Page upload by HTTP with cookie : Confirmation of file uploadr</em></p>
+<p>From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”.</p>
+<p>Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
+<span class="target" id="v457ap-http-uploading-pages-signon"></span></div>
+<div class="section" id="uploading-pages-by-http-secured-by-signon">
+<span id="index-13"></span><h4>Uploading pages by HTTP (secured by signon)<a class="headerlink" href="#uploading-pages-by-http-secured-by-signon" title="Permalink to this headline">¶</a></h4>
+<p>The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.</p>
+</div>
+<div class="section" id="definitions-for-page-upload-secured-by-signon">
+<span id="index-14"></span><h4>Definitions for page upload (secured by signon)<a class="headerlink" href="#definitions-for-page-upload-secured-by-signon" title="Permalink to this headline">¶</a></h4>
+<p>All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.</p>
+<p>The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.</p>
+<ol class="arabic simple">
+<li>In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:</li>
+</ol>
+<p><img alt="image77" src="../../../_images/image774.png" />
+<em>Page upload by HTTP with signon : Transaction dirlist</em></p>
+<ol class="arabic simple" start="2">
+<li>Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :</li>
+</ol>
+<p><img alt="image78" src="../../../_images/image784.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
+<p><img alt="image79" src="../../../_images/image794.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
+<p><img alt="image80" src="../../../_images/image803.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
+<ol class="arabic simple" start="3">
+<li>Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.</li>
+</ol>
+</div>
+<div class="section" id="procedure-for-page-upload-secured-by-signon">
+<span id="index-15"></span><h4>Procedure for page upload (secured by signon)<a class="headerlink" href="#procedure-for-page-upload-secured-by-signon" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>Display the upload4.htm page by entering the URL <a class="reference external" href="http://ipaddr:port/SECURE/upload4.htm+dirlist">http://ipaddr:port/SECURE/upload4.htm+dirlist</a> in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:</li>
+</ol>
+<p><img alt="image8" src="../../../_images/image818.png" /></p>
+<p><em>Page upload by HTTP with signon : Entering the userid and password</em></p>
+<p>The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.</p>
+<ol class="arabic simple" start="2">
+<li>After entering the user name and password, the upload4.htm page will be displayed:</li>
+</ol>
+<p><img alt="image9" src="../../../_images/image916.png" /></p>
+<p><em>Page upload by HTTP with signon : Displaying the upload4.htm page</em></p>
+<ol class="arabic simple" start="3">
+<li>Press the “Browse” button to display the file selection dialog:</li>
+</ol>
+<p><img alt="image10" src="../../../_images/image1014.png" /></p>
+<p><em>Page upload by HTTP with signon : File selection dialog</em></p>
+<ol class="arabic simple" start="4">
+<li>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</li>
+</ol>
+<p><img alt="image11" src="../../../_images/image1119.png" /></p>
+<p><em>Page upload by HTTP with signon : Sending the file</em></p>
+<ol class="arabic simple" start="5">
+<li>Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:</li>
+</ol>
+<p><img alt="image12" src="../../../_images/image1217.png" /></p>
+<p><em>Page upload by HTTP with signon : Confirmation of file upload</em></p>
+<p>Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
+</div>
+</div>
+<div class="section" id="uploading-pages-by-drag-and-drop">
+<span id="index-16"></span><h3>Uploading pages by drag and drop<a class="headerlink" href="#uploading-pages-by-drag-and-drop" title="Permalink to this headline">¶</a></h3>
+<p>The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.</p>
+<div class="section" id="upload-interface-in-the-virtel-menu">
+<h4>Upload interface in the VIRTEL menu<a class="headerlink" href="#upload-interface-in-the-virtel-menu" title="Permalink to this headline">¶</a></h4>
+<p>After clicking on the Drag &amp; Drop Upload link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:</p>
+<p><img alt="image13" src="../../../_images/image1317.png" /></p>
+<p><em>Drag and drop upload interface</em></p>
+<p>The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.</p>
+</div>
+<div class="section" id="displaying-upload-results">
+<h4>Displaying upload results<a class="headerlink" href="#displaying-upload-results" title="Permalink to this headline">¶</a></h4>
+<p><img alt="image14" src="../../../_images/image1415.png" /></p>
+<p><em>Displaying upload results</em></p>
+<p>The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.</p>
+</div>
+<div class="section" id="upload-summary-report">
+<h4>Upload summary report<a class="headerlink" href="#upload-summary-report" title="Permalink to this headline">¶</a></h4>
+<p>After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes.</p>
+<p>The summary is not displayed when files are dragged and dropped one at a time.</p>
+<p>In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:</p>
+<p><img alt="image15" src="../../../_images/image1512.png" /></p>
+<p><em>Upload summary report</em></p>
+</div>
+<div class="section" id="extracting-upload-results-as-an-excel-spreadsheet">
+<h4>Extracting upload results as an Excel spreadsheet<a class="headerlink" href="#extracting-upload-results-as-an-excel-spreadsheet" title="Permalink to this headline">¶</a></h4>
+<p><img alt="image16" src="../../../_images/image1610.png" /> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="24%" />
+<col width="27%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Directory</th>
+<th class="head">File name</th>
+<th class="head">Report</th>
+<th class="head">Time</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CLI-DIR</td>
+<td>custom.css</td>
+<td>RETURN CODE IS: 00</td>
+<td>Thu, 13 Sep 2012 08:13:16 GMT</td>
+</tr>
+<tr class="row-odd"><td>CLI-DIR</td>
+<td>custom.js</td>
+<td>RETURN CODE IS: 00</td>
+<td>Thu, 13 Sep 2012 08:13:16 GMT</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image17" src="../../../_images/image1710.png" /> The Delete button allows the administrator to clear the results log.</p>
+<blockquote>
+<div></div></blockquote>
+</div>
+</div>
+<div class="section" id="uploading-pages-in-batch">
+<span id="index-17"></span><h3>Uploading pages in batch<a class="headerlink" href="#uploading-pages-in-batch" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div></div></blockquote>
+<div class="section" id="uploading-with-curl">
+<span id="index-18"></span><h4>Uploading with cURL<a class="headerlink" href="#uploading-with-curl" title="Permalink to this headline">¶</a></h4>
+<p>You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
+The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">%</span><span class="n">F</span> <span class="ow">in</span> <span class="p">(</span><span class="o">*.</span><span class="n">htm</span><span class="p">)</span> <span class="n">do</span> <span class="n">curl</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">F</span> <span class="s2">&quot;file=@</span><span class="si">%F</span><span class="s2">;type=text/html&quot;</span> <span class="o">-</span><span class="n">u</span>
+<span class="n">virdba</span><span class="p">:</span><span class="n">virdbapw</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">235.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">SECURE</span><span class="o">/</span><span class="n">virmsg</span><span class="o">.</span><span class="n">txt</span><span class="o">+</span><span class="n">uplbas</span>
+</pre></div>
+</div>
+<p>In this example:</p>
+<dl class="docutils">
+<dt>*.htm</dt>
+<dd>the files to be uploaded</dd>
+<dt>virdba:virdbapw</dt>
+<dd>userid and password for VIRTEL</dd>
+<dt>192.168.235.30:41001</dt>
+<dd>identifies the VIRTEL HTTP line</dd>
+<dt>virmsg.txt</dt>
+<dd>page template for displaying upload result messages</dd>
+<dt>uplbas</dt>
+<dd>external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See <a class="reference internal" href="#v457ap-http-uploading-pages-signon"><span class="std std-ref">“Uploading pages by HTTP (secured by signon)”</span></a> for a list of upload transactions.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<blockquote class="last">
+<div>%F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you execute the command from within a command (.cmd) file.</div></blockquote>
+</div>
+</div>
+<div class="section" id="the-upl2virt-command-procedure">
+<span id="index-19"></span><h4>The upl2virt command procedure<a class="headerlink" href="#the-upl2virt-command-procedure" title="Permalink to this headline">¶</a></h4>
+<p>For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.</p>
+<p><strong>Pre-requisites</strong></p>
+<p>upl2virt requires as a pre-requisite the cURL package described in the previous section.</p>
+<p>Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
+the command window.</p>
+<p><strong>Installation</strong></p>
+<p>upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">upl2virt</span><span class="o">.</span><span class="n">cmd</span>
+</pre></div>
+</div>
+<p>where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:WINDOWS).</p>
+<p><strong>Using upl2virt at the command prompt</strong></p>
+<p id="index-20">To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">upl2virt</span> <span class="p">[</span><span class="o">-</span><span class="n">u</span> <span class="n">userid</span><span class="p">:</span><span class="n">password</span><span class="p">]</span> <span class="o">-</span><span class="n">d</span> <span class="n">directory</span> <span class="o">-</span><span class="n">a</span> <span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span>
+         <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">port</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="n">ctlfile</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">k</span><span class="p">]</span> <span class="p">[</span><span class="n">file1</span> <span class="n">file2</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>In the above command:</p>
+<dl class="docutils">
+<dt>userid:password</dt>
+<dd>is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.</dd>
+<dt>directory</dt>
+<dd>is the name of the target VIRTEL directory (for example, CLI-DIR)</dd>
+<dt>n.n.n.n</dt>
+<dd>is the IP address of VIRTEL</dd>
+<dt>port</dt>
+<dd>is the VIRTEL administration port number (default 41001).</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.</p>
+</div>
+<dl class="docutils">
+<dt>ctlfile</dt>
+<dd>specifies the name of a control file containing a list of file names to be uploaded</dd>
+<dt>file1 file2 …</dt>
+<dd>are the names of files to be uploaded</dd>
+<dt>-r</dt>
+<dd>specifies recursion into subdirectories</dd>
+<dt>-k</dt>
+<dd>keeps the command window open after the last upload</dd>
+</dl>
+<p>If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the –r option is specified).</p>
+<p id="index-21"><strong>Using upl2virt from Windows Explorer</strong></p>
+<p>The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.</p>
+<p>To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:Documents and SettingsusernameSendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” – “Folder options” – “View”, tick the option “Display hidden files and folders”, and click “OK”.</p>
+<p>In the “SendTo” folder, right click and select “New” – “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”.</p>
+<p>You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>C:\WINDOWS\upl2virt.cmd -u MYUSERID -d CLI-DIR -a 10.1.12.101 –k
+</pre></div>
+</div>
+<p>where:</p>
+<dl class="docutils">
+<dt>MYUSERID</dt>
+<dd>is your VIRTEL userid</dd>
+<dt>CLI-DIR</dt>
+<dd>is the name of the VIRTEL directory that this shortcut will upload to</dd>
+<dt>10.1.12.101</dt>
+<dd>is the IP address of VIRTEL.</dd>
+</dl>
+<p>You may omit the –u MYUSERID parameter and upl2virt will prompt you for your userid.</p>
 </div>
 </div>
 </div>
@@ -945,7 +1557,7 @@ pressing [Enter]. If the field is blank, all lines are displayed.</dd>
 <p class="first admonition-title">Note</p>
 <p class="last">The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.</p>
 </div>
-<p><img alt="image_04" src="../../../_images/image042.png" />
+<p><img alt="image24" src="../../../_images/image246.png" />
 <em>Fig. 4 Example of CONSOLE file</em></p>
 </div>
 <div class="section" id="virlog-file">
@@ -1276,16 +1888,17 @@ In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER L
 <p class="first admonition-title">Note</p>
 <p class="last">Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.</p>
 </div>
-<p><img alt="image_05" src="../../../_images/image052.png" /></p>
+<p><img alt="image25" src="../../../_images/image256.png" /></p>
 <p><em>Fig. 12 Example of SNAP listing</em></p>
 <p>3.3.1 Message-triggered SNAPMSG</p>
 <p>The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).</p>
 <p>Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.</p>
 </div>
-<div class="section" id="audit-and-statistics">
-<h3>Audit and Statistics<a class="headerlink" href="#audit-and-statistics" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="audit">
+<h2>Audit<a class="headerlink" href="#audit" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virstat-file">
-<h4>VIRSTAT file<a class="headerlink" href="#virstat-file" title="Permalink to this headline">¶</a></h4>
+<h3>VIRSTAT file<a class="headerlink" href="#virstat-file" title="Permalink to this headline">¶</a></h3>
 <p>The VIRSTAT file is a sequential file into which VIRTEL writes connection statistics.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1306,7 +1919,7 @@ the records are buffered in memory before being written in block.</p>
 <p>For terminals associated with all other line types (including /GATE, /PCNE, and /FASTC) the statistics record may not contain meaningful information and the statistics field in the terminal definition     should be left blank.</p>
 <p>The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.</p>
 <div class="section" id="virstat-classsic-format">
-<h5>VIRSTAT classsic format<a class="headerlink" href="#virstat-classsic-format" title="Permalink to this headline">¶</a></h5>
+<h4>VIRSTAT classsic format<a class="headerlink" href="#virstat-classsic-format" title="Permalink to this headline">¶</a></h4>
 <p>For terminals which specify classic format recording (STATS=1), the  VIRSTAT record format is shown in the following table:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">Position</span>    <span class="n">Format</span>          <span class="n">Type</span> <span class="n">of</span> <span class="n">information</span><span class="o">**</span>
 <span class="o">-----------------------------------------------</span>
@@ -1349,7 +1962,7 @@ the records are buffered in memory before being written in block.</p>
 </dl>
 </div>
 <div class="section" id="virstat-alternative-x25-format">
-<h5>VIRSTAT alternative X25 format<a class="headerlink" href="#virstat-alternative-x25-format" title="Permalink to this headline">¶</a></h5>
+<h4>VIRSTAT alternative X25 format<a class="headerlink" href="#virstat-alternative-x25-format" title="Permalink to this headline">¶</a></h4>
 <p>For terminals which specify alternate X25 format recording (STATS=4), the VIRSTAT record format is shown in the following  table:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Position</span>        <span class="n">Format</span>          <span class="n">Type</span> <span class="n">of</span> <span class="n">information</span>
 <span class="mi">1</span> <span class="n">to</span> <span class="mi">8</span>          <span class="n">Alphanumeric</span>    <span class="n">Terminal</span> <span class="n">name</span>
@@ -1435,10 +2048,8 @@ the records are buffered in memory before being written in block.</p>
 <p>For this record type, the counters are in binary, and the Session Date and Time fields are replaced by User name (20 bytes) and URL parameter (first 16 bytes).</p>
 <p>This record type is written when 6 is specified in the STATS field of the terminal definition used for the HTTP line.</p>
 </div>
-</div>
-</div>
 <div class="section" id="printing-the-contents-of-the-virstat-file-x25">
-<h3>Printing the contents of the VIRSTAT file (X25)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-x25" title="Permalink to this headline">¶</a></h3>
+<h4>Printing the contents of the VIRSTAT file (X25)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-x25" title="Permalink to this headline">¶</a></h4>
 <p>The VIR0070 program allows the contents of the VIRSTAT file to be printed. The source for this program is supplied in the SSL (VSE) or in the SAMPLIB (z/OS) and you can use this as the basis of a     user-written program to print statistics.</p>
 <p>Examples of the JCL required to execute this program are shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRSTAT,CLASS=0,DISP=D
@@ -1477,11 +2088,11 @@ the records are buffered in memory before being written in block.</p>
 <p><em>Fig. 18 VIR0070 JCL to print VIRSTAT file (z/OS)</em></p>
 </div>
 <div class="section" id="printing-the-contents-of-the-virstat-file-http">
-<h3>Printing the contents of the VIRSTAT file (HTTP)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-http" title="Permalink to this headline">¶</a></h3>
+<h4>Printing the contents of the VIRSTAT file (HTTP)<a class="headerlink" href="#printing-the-contents-of-the-virstat-file-http" title="Permalink to this headline">¶</a></h4>
 <p>The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB.</p>
 <p>Examples of the execution JCL for this program are shown below.</p>
-<div class="section" id="z-vse">
-<h4>z/VSE<a class="headerlink" href="#z-vse" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="z-vse-jcl">
+<h5>z/VSE JCL<a class="headerlink" href="#z-vse-jcl" title="Permalink to this headline">¶</a></h5>
 <p>In the VSE environment the VIRPRTST job, loaded into the POWER reader queue during VIRTEL installation, contains an example of JCL for printing the VIRSTAT file. This job is an example only and must be modified before execution:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRPRTST,CLASS=0,DISP=D
 * $$ LST DA
@@ -1541,8 +2152,8 @@ SELTERM DEVTA* CLVTA*
 </div>
 <p><em>Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)</em></p>
 </div>
-<div class="section" id="z-os">
-<h4>z/OS<a class="headerlink" href="#z-os" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="z-os-jcl">
+<h5>z/OS JCL<a class="headerlink" href="#z-os-jcl" title="Permalink to this headline">¶</a></h5>
 <p>In the z/OS environment the JCL for executing the PRTSTATW program is supplied as member JCLPRTST in the VIRTEL SAMPLIB:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>//VIRPRTST JOB 1,USER,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID
 /*JOBPARM LINES=9999
@@ -1611,8 +2222,8 @@ SELTERM DEVTA* CLVTA*
 </dl>
 </div>
 </div>
-<div class="section" id="sorting-the-file">
-<h3>Sorting the File<a class="headerlink" href="#sorting-the-file" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="sorting-the-virstat-file">
+<h4>Sorting the VIRSTAT file<a class="headerlink" href="#sorting-the-virstat-file" title="Permalink to this headline">¶</a></h4>
 <p>The sort requirements are determined by the type of report desired. Since the PRTSTATW program offers the option of selecting records and also offers up to two levels of report break to allow printing of subtotals, it is important to specify the appropriate sort criteria to obtain the correct result.</p>
 <p>The sort operates on one or more criteria, in ascending (A) or descending (D) mode. You should adapt the SORT SYSIN according to the syntax of the specific SORT program being used.</p>
 <p>Several examples of sort criteria are shown below for various fields: terminal (TERM), date (DATE), user name (USER), URL parameter (PARM)</p>
@@ -1635,7 +2246,7 @@ SORT FIELDS=(89,20,A,17,15,A),FORMAT=CH sort for $ALL$ request
 </div>
 </div>
 <div class="section" id="prtstatw-program">
-<h3>PRTSTATW program<a class="headerlink" href="#prtstatw-program" title="Permalink to this headline">¶</a></h3>
+<h4>PRTSTATW program<a class="headerlink" href="#prtstatw-program" title="Permalink to this headline">¶</a></h4>
 <p>The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>First card (Required)
          1         2         3         4         5         6
@@ -1690,6 +2301,7 @@ PRTSTATW PRINT                BREAK USER          NNN  PPPP
 <dt>Columns 21 to 36</dt>
 <dd>For SELPARM: up to 16 characters for the URL parameter. The value  may end in ‘*’ for a generic search.</dd>
 </dl>
+</div>
 <div class="section" id="counter-report">
 <h4>Counter Report<a class="headerlink" href="#counter-report" title="Permalink to this headline">¶</a></h4>
 <p>Clients who wish to obtain the total number of unique users can execute the PRTSTATW program with the SYSIN shown below.</p>
@@ -1743,7 +2355,7 @@ SELDATE 01012010 30122011
 <h4>Memory display Sub-Application<a class="headerlink" href="#memory-display-sub-application" title="Permalink to this headline">¶</a></h4>
 <p>The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.</p>
 <p>To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.</p>
-<p><img alt="image_06" src="../../../_images/image062.png" /></p>
+<p><img alt="image26" src="../../../_images/image266.png" /></p>
 <p><em>Fig 25. Memory display of VIRTEL address space</em></p>
 <p>Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.</p>
 <p>Permanently allocated memory blocks are represented by the following character types:</p>
@@ -1761,7 +2373,7 @@ SELDATE 01012010 30122011
 <div class="section" id="memory-display-in-memory-test-mode">
 <h4>Memory display in Memory=Test mode.<a class="headerlink" href="#memory-display-in-memory-test-mode" title="Permalink to this headline">¶</a></h4>
 <p>If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.</p>
-<p><img alt="image_08" src="../../../_images/image082.png" /></p>
+<p><img alt="image28" src="../../../_images/image285.png" /></p>
 <p><em>Fig. 26 - Memory display in MEMORY=TEST mode</em></p>
 <p>Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.</p>
 <p>Where the memory display occupies more than one screen, you can press [PF8] to view the following page, [PF7] to view the previous page, and [PF6] to go back to the first page.</p>
@@ -1818,7 +2430,7 @@ SELDATE 01012010 30122011
 <p>A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.</p>
 <p>Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.</p>
-<p><img alt="image_07" src="../../../_images/image072.png" /></p>
+<p><img alt="image27" src="../../../_images/image273.png" /></p>
 <p><em>Fig. 27 Example of a memory allocataion history</em></p>
 <dl class="docutils">
 <dt>Column Explanations</dt>

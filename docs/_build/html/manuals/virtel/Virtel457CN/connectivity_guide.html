@@ -38,7 +38,7 @@
     <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
         <link rel="up" title="Virtel Manuals" href="../../../virtel.html"/>
         <link rel="next" title="Installation Guide V4.57" href="../Virtel457IG/Installation_Guide.html"/>
-        <link rel="prev" title="Audit, Operations and Performance V4.57" href="../Virtel457AP/audit_operations_ and_performance.html"/> 
+        <link rel="prev" title="Audit, Administration, Operations and Performance V4.57" href="../Virtel457AP/audit_operations_ and_performance.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -100,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-57">V4.57</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../Virtel457AP/audit_operations_ and_performance.html">Audit, Operations and Performance V4.57</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel457AP/audit_operations_ and_performance.html">Audit, Administration, Operations and Performance V4.57</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Connectivity Reference V4.57</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#introduction">1. Introduction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lines">2. Lines</a></li>
@@ -346,7 +346,7 @@ definitions in alphanumeric order.</p>
 <h2>2.2. Summary of existing definitions<a class="headerlink" href="#summary-of-existing-definitions" title="Permalink to this headline">¶</a></h2>
 <p>The first screen shows a summay of existing line definitions in
 alphanumeric order:</p>
-<p><img alt="image4" src="../../../_images/image428.png" /></p>
+<p><img alt="image4" src="../../../_images/image429.png" /></p>
 <p><em>Fig. 4 - Summary of existing lines</em></p>
 <p><strong>2.2.1 Associated Functions</strong></p>
 <dl class="docutils">
@@ -389,7 +389,7 @@ on an empty line to create a new definition from a blank screen.</dd>
 <div>Pressing [PF12] at the line summary screen displays the line detail
 definition screen. This sub-application allows the definition of the
 various parameters for each type of line.</div></blockquote>
-<p><img alt="image5" src="../../../_images/image528.png" /></p>
+<p><img alt="image5" src="../../../_images/image529.png" /></p>
 <p><em>Fig. 5 - Line detail definition screen</em></p>
 <dl class="docutils">
 <dt>Internal name</dt>
@@ -674,7 +674,7 @@ authorising connections from a web browser to applications at the
 host site. Activation of this type of line is subject to the
 presence of the TCP1 parameter in the VIRTCT, as well as to a
 definition providing linkage to a file containing the HTML pages.</p>
-<p><img alt="image6" src="../../../_images/image635.png" /></p>
+<p><img alt="image6" src="../../../_images/image636.png" /></p>
 <p><em>Fig. 6 - Definition of an HTTP line</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -753,11 +753,11 @@ the terminal name is an internal name used only within VIRTEL, while
 the relay name is an LU name defined by a VTAM APPL statement. The
 relay LU name is the name by which the terminal is known to CICS or
 other VTAM applications.</p>
-<p><img alt="image7" src="../../../_images/image719.png" /></p>
+<p><img alt="image7" src="../../../_images/image720.png" /></p>
 <p><em>Fig. 7 - Definition of terminals associated with an HTTP line</em></p>
-<p><img alt="image8" src="../../../_images/image818.png" /></p>
+<p><img alt="image8" src="../../../_images/image819.png" /></p>
 <p><em>Fig. 8 - Definition of HTTP terminals without relay</em></p>
-<p><img alt="image9" src="../../../_images/image916.png" /></p>
+<p><img alt="image9" src="../../../_images/image917.png" /></p>
 <p><em>Fig. 9 - Definition of HTTP terminals with relay</em></p>
 <p><img alt="image10" src="../../../_images/image1015.png" /></p>
 <p><em>Fig. 10 - Definition of logical pool of relays for HTTP</em></p>
@@ -1131,7 +1131,7 @@ name is the same as the entry point name. If there is no such
 default transaction, then the request is rejected and VIRTEL issues
 message VIRIC57E.</dd>
 </dl>
-<p><img alt="image21" src="../../../_images/image2116.png" /></p>
+<p><img alt="image21" src="../../../_images/image2117.png" /></p>
 <p><em>Fig. 21 - Definition of a transaction associated with an IMS Connect entry point</em></p>
 <dl class="docutils">
 <dt>Internal name</dt>
@@ -1221,7 +1221,7 @@ justified and padded with blanks</td>
 router. Across this type of line, VIRTEL processes incoming and
 outgoing calls to and from the X25 network. Activation of this type
 of line requires the presence of the TCP1 parameter in the VIRTCT.</div></blockquote>
-<p><img alt="image22" src="../../../_images/image2212.png" /></p>
+<p><img alt="image22" src="../../../_images/image2213.png" /></p>
 <p><em>Fig. 22 - Definition of an XOT line</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -1301,7 +1301,7 @@ example). Each terminal may be associated with an application relay
 defined by a VTAM APPL statement. The number of terminals defined
 determines the maximum number of simultaneous sessions (or virtual
 circuits) between the router and VIRTEL.</div></blockquote>
-<p><img alt="image23" src="../../../_images/image2312.png" /></p>
+<p><img alt="image23" src="../../../_images/image2313.png" /></p>
 <p><em>Fig. 23 - Definition of terminals associated with an XOT line</em></p>
 <dl class="docutils">
 <dt>Terminal</dt>
@@ -1346,7 +1346,7 @@ line requires the presence of the MQ1 or MQ2 parameter in the
 VIRTCT. The queue can be shared with another application (another
 VIRTEL for instance) or used in exclusive mode depending on its own
 definition.</div></blockquote>
-<p><img alt="image24" src="../../../_images/image246.png" /></p>
+<p><img alt="image24" src="../../../_images/image247.png" /></p>
 <p><em>Fig. 24 - Definition of an MQ line</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -1389,7 +1389,7 @@ terminals associated with an MQ line. An MQ line uses a single
 sub-group of type-3 terminals having a common prefix (MQIN in this
 example). The number of terminals defined determines the maximum
 number of messages which can be processed simultaneously by VIRTEL.</div></blockquote>
-<p><img alt="image25" src="../../../_images/image256.png" /></p>
+<p><img alt="image25" src="../../../_images/image257.png" /></p>
 <blockquote>
 <div><em>Fig. 25 - Definition of terminals associated with an MQ line</em></div></blockquote>
 <dl class="docutils">
@@ -1416,7 +1416,7 @@ reads HTTP requests from an input sequential file at startup,
 processes the requests, writes the responses to an output sequential
 file, and shuts down. Activation of this type of line is subject to
 the presence of the BATCHn parameter in the VIRTCT.</div></blockquote>
-<p><img alt="image26" src="../../../_images/image266.png" /></p>
+<p><img alt="image26" src="../../../_images/image267.png" /></p>
 <p><em>Fig. 26 - Definition of a batch line</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -1472,7 +1472,7 @@ the line definition. Then press [PF12] to display the terminal
 detail definition. The example below shows the terminals for a batch
 line without relays:</p>
 </div></blockquote>
-<p><img alt="image27" src="../../../_images/image273.png" /></p>
+<p><img alt="image27" src="../../../_images/image274.png" /></p>
 <p><em>Fig. 27 - Definition of terminals without relay for a batch line</em></p>
 <p><strong>2.4.8 Definition of a Native TCP/IP</strong></p>
 <blockquote>
@@ -1491,7 +1491,7 @@ communicate with banking terminals such as the IBM 3650.</p>
 <p>The activation of this type of line requires the presence of the
 TCP1 parameter in the VIRTCT.</p>
 </div></blockquote>
-<p><img alt="image28" src="../../../_images/image285.png" /></p>
+<p><img alt="image28" src="../../../_images/image286.png" /></p>
 <p><em>Fig. 28 Definition of a NATIVE TCP/IP line</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -1526,7 +1526,7 @@ example). The number of terminals defined determines the number of
 simultaneous conversations authorised.</p>
 <p>The example below shows a group of 4 NATIVE TCP/IP terminals:</p>
 </div></blockquote>
-<p><img alt="image29" src="../../../_images/image293.png" /></p>
+<p><img alt="image29" src="../../../_images/image294.png" /></p>
 <p><em>Fig. 29 - Definition of terminals associated with a NATIVE TCP/IP line</em></p>
 <dl class="docutils">
 <dt>Terminal</dt>
@@ -1551,7 +1551,7 @@ of the line) for this type of terminal.</dd>
 <blockquote>
 <div>The figure below shows the definition of the NATIVE TCP/IP relay
 pool:</div></blockquote>
-<p><img alt="image30" src="../../../_images/image302.png" /></p>
+<p><img alt="image30" src="../../../_images/image303.png" /></p>
 <p><em>Fig. 30 - Definition of terminals associated with a NATIVE TCP/IP line</em></p>
 <dl class="docutils">
 <dt>Terminal</dt>
@@ -1680,7 +1680,7 @@ described above for NATIVE2 and NATIVE4.</p>
 <div>Communication between VIRTEL and CICS can be established via APPC,
 TCP/IP, or Cross-memory. This section describes communications in
 TCP/IP mode using the VIRKIX program on the CICS side.</div></blockquote>
-<p><img alt="image31" src="../../../_images/image3112.png" /></p>
+<p><img alt="image31" src="../../../_images/image3113.png" /></p>
 <p><em>Fig. 31 - Definition of a VIRPASS TCP line for VIRKIX</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -1727,7 +1727,7 @@ VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type de
 ligne” field in the relay definition must contain the value X25VIRPA
 (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal
 types, the relay name specified here is not the name of a VTAM LU.</div></blockquote>
-<p><img alt="image32" src="../../../_images/image3212.png" /></p>
+<p><img alt="image32" src="../../../_images/image3213.png" /></p>
 <p><em>Fig. 32 - Terminals on a VIRPASS TCP line for VIRKIX</em></p>
 <p><strong>2.4.10 Definition of a VIRPASS TCP line for VIRNT</strong></p>
 <blockquote>
@@ -2024,7 +2024,7 @@ of the line) for this type of terminal.</dd>
 <blockquote>
 <div>An X25 GATE Non Fast-Connect line establishes a connection between VIRTEL and an X25 line connected to an IBM 3745 communications controller. Across this type of line, VIRTEL handles incoming and
 outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the GATE and MINITEL parameters in the VIRTCT.</div></blockquote>
-<p><img alt="image42" src="../../../_images/image429.png" /></p>
+<p><img alt="image42" src="../../../_images/image4210.png" /></p>
 <p><em>Fig. 42 - Definition of an X25 GATE non-Fast Connect line</em></p>
 <dl class="docutils">
 <dt>Remote ident</dt>
@@ -2653,7 +2653,7 @@ external server containing the X25 call parameters:</p>
 </div></blockquote>
 <p><img alt="image51" src="../../../_images/image5112.png" /></p>
 <p><em>Fig. 51 - Outbound terminal definition for X25 AntiPCNE</em></p>
-<p><img alt="image52" src="../../../_images/image529.png" /></p>
+<p><img alt="image52" src="../../../_images/image5210.png" /></p>
 <p><em>Fig. 52 - External server definition for X25 AntiPCNE</em></p>
 <blockquote>
 <div>The second sub-group is used for incoming calls (from the point of
@@ -3319,7 +3319,7 @@ transaction detail definition screen will then be displayed.</p>
 <div class="section" id="transaction-parameters">
 <h2>5.3. Transaction Parameters<a class="headerlink" href="#transaction-parameters" title="Permalink to this headline">¶</a></h2>
 <p>Pressing [PF12] in the transaction summary screen allows access to the transaction definition detail screen:</p>
-<p><img alt="image63" src="../../../_images/image636.png" /></p>
+<p><img alt="image63" src="../../../_images/image637.png" /></p>
 <p><em>Fig. 63 - Transaction definition detail screen - non-HTML transaction</em></p>
 <p><img alt="image64" src="../../../_images/image645.png" /></p>
 <p><em>Fig. 64 - Transaction definition detail screen - HTML transaction</em></p>
@@ -4575,7 +4575,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
         <a href="../Virtel457IG/Installation_Guide.html" class="btn btn-neutral float-right" title="Installation Guide V4.57" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel457AP/audit_operations_ and_performance.html" class="btn btn-neutral" title="Audit, Operations and Performance V4.57" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel457AP/audit_operations_ and_performance.html" class="btn btn-neutral" title="Audit, Administration, Operations and Performance V4.57" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

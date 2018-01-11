@@ -108,18 +108,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201704/TN201704.html">Virtel Macros</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201705/TN201705     .html">Printing PCL files with NodeJS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201706/TN201706     .html">What’s new in Virtel 4.57 (July 2017)</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel Batch Maintenance</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#installing-the-maintenance-package">Installing the maintenance package</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#control-members-to-be-uploaded-to-the-virtel-cntl-library">Control members to be uploaded to the VIRTEL CNTL library:-</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#appendix-a">Appendix A</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#member-virtctbt">Member VIRTCTBT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#member-scenload">Member SCENLOAD</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#member-eoj">Member EOJ</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#member-batch">Member BATCH</a></li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel Batch Maintenance</a></li>
 </ul>
 </li>
 </ul>
@@ -191,19 +180,16 @@
            <div itemprop="articleBody">
             
   <div class="section" id="virtel-batch-maintenance">
-<h1>Virtel Batch Maintenance<a class="headerlink" href="#virtel-batch-maintenance" title="Permalink to this headline">¶</a></h1>
+<span id="tn201719"></span><h1>Virtel Batch Maintenance<a class="headerlink" href="#virtel-batch-maintenance" title="Permalink to this headline">¶</a></h1>
 <p>This newsletter documents the procedure to maintain the VIRTEL SAMP TRSF VSAM file using a batch facility. Previously, updates to the Virtel SAMP TRSF VSAM file were through the “Drag and Drop” interface provided by the administration portal. Using this procedure removes the manual process required to perform the “drag and drop” operation. Using batch also improves the automation and maintenance distribution in a complex environment supporting multiple instances of Virtel.</p>
-<div class="section" id="installing-the-maintenance-package">
-<h2>Installing the maintenance package<a class="headerlink" href="#installing-the-maintenance-package" title="Permalink to this headline">¶</a></h2>
+<p><strong>Installing the maintenance package</strong></p>
 <p>The maintenance package is delivered to the customer as a zip file. It contains the following members:-</p>
 <ul class="simple">
 <li>updtnnnn.trs File to be uploaded to mainframe</li>
 <li>Newsletter PDF on how to install maintenance packages</li>
 <li>readme-updtnnnn.txt Fix details contained within the package</li>
 </ul>
-</div>
-<div class="section" id="control-members-to-be-uploaded-to-the-virtel-cntl-library">
-<h2>Control members to be uploaded to the VIRTEL CNTL library:-<a class="headerlink" href="#control-members-to-be-uploaded-to-the-virtel-cntl-library" title="Permalink to this headline">¶</a></h2>
+<p><strong>Control members to be uploaded to the VIRTEL CNTL library:-</strong></p>
 <p>BATCH Batch control member</p>
 <p>EOJ EOJ Control member</p>
 <p>UPLMAINT.JCL Upload maintenance procedure</p>
@@ -235,18 +221,15 @@
 <ol class="arabic simple" start="4">
 <li>After modifying the JCL in UPLMAINT.JCL and VIRTELUP.JCL to you site standards, submit the job VIRTELUP. This will upload the maintenance fixes to the destination SAMP TRSF as identified in the UPLMAINT procedure. This procedure also uses a temporary ARBO file which has been configured to support only BATCH updates.</li>
 </ol>
-</div>
-</div>
-<div class="section" id="appendix-a">
-<h1>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="member-virtctbt">
-<h2>Member VIRTCTBT<a class="headerlink" href="#member-virtctbt" title="Permalink to this headline">¶</a></h2>
+<p><strong>Appendix A</strong></p>
+<p><em>Member VIRTCTBT</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">TITLE</span> <span class="s1">&#39;VIRTEL TCT FOR BATCH&#39;</span>
-    <span class="n">PRINT</span> <span class="n">GEN</span>
-    <span class="n">VIRTERM</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">INITIAL</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span><span class="p">,</span>                   <span class="o">*</span>
-        <span class="n">LANG</span><span class="o">=</span><span class="s1">&#39;EN&#39;</span><span class="p">,</span> <span class="n">LANGUAGE</span> <span class="n">FOR</span> <span class="n">USER</span> <span class="n">MESSAGES</span>               <span class="o">*</span>
-        <span class="n">COUNTRY</span><span class="o">=</span><span class="n">FR</span><span class="p">,</span> <span class="n">EBCDIC</span><span class="o">-</span><span class="n">ASCII</span> <span class="n">TRANSLATION</span>                <span class="o">*</span>
-        <span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1147</span><span class="p">,</span> <span class="n">DEFAULT</span> <span class="n">OUTPUT</span> <span class="n">ENCODING</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>      <span class="o">*</span>
+    <span class="n">PRINT</span> <span class="n">NOGEN</span>
+<span class="o">*</span> <span class="n">Change</span> <span class="n">lines</span> <span class="n">identified</span> <span class="n">by</span> <span class="o">&lt;</span>
+    <span class="n">VIRTERM</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">INITIAL</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span><span class="p">,</span>                   <span class="o">*</span> <span class="o">&lt;</span>
+        <span class="n">LANG</span><span class="o">=</span><span class="s1">&#39;EN&#39;</span><span class="p">,</span> <span class="n">LANGUAGE</span> <span class="n">FOR</span> <span class="n">USER</span> <span class="n">MESSAGES</span>               <span class="o">*</span> <span class="o">&lt;</span>
+        <span class="n">COUNTRY</span><span class="o">=</span><span class="n">FR</span><span class="p">,</span> <span class="n">EBCDIC</span><span class="o">-</span><span class="n">ASCII</span> <span class="n">TRANSLATION</span>                <span class="o">*</span> <span class="o">&lt;</span>
+        <span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1147</span><span class="p">,</span> <span class="n">DEFAULT</span> <span class="n">OUTPUT</span> <span class="n">ENCODING</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>      <span class="o">*</span> <span class="o">&lt;</span>
         <span class="n">CHARSET</span><span class="o">=</span><span class="p">,</span> <span class="n">UTF</span><span class="o">-</span><span class="mi">8</span><span class="p">:</span> <span class="n">ADDITIONAL</span> <span class="n">CHARSETS</span>                <span class="o">*</span>
         <span class="n">GMT</span><span class="o">=</span><span class="n">SYSTZ</span><span class="p">,</span>                                          <span class="o">*</span>
         <span class="n">TCP1</span><span class="o">=</span><span class="p">(</span><span class="n">TCPIP</span><span class="p">,,,</span><span class="mi">250</span><span class="p">),</span> <span class="n">TCPIPNAME</span><span class="p">,,,</span><span class="n">MAXSOCKETS</span>          <span class="o">*</span>
@@ -268,20 +251,20 @@
         <span class="n">DONTSWA</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                        <span class="o">*</span>
         <span class="n">NBDYNAM</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>                                        <span class="o">*</span>
         <span class="n">MULTI</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">RESO</span><span class="o">=</span><span class="n">NO</span><span class="p">,</span><span class="n">ARBO</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">MINITEL</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>             <span class="o">*</span>
-        <span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span>                  <span class="o">*</span>
-        <span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">SPVIREH</span><span class="p">,</span>      <span class="o">*</span>
+        <span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span>                  <span class="o">*</span> <span class="o">&lt;</span>
+        <span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">SPVIREH</span><span class="p">,</span>      <span class="o">*</span> <span class="o">&lt;</span>
         <span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                    <span class="o">*</span>
         <span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                    <span class="o">*</span>
         <span class="n">UFILE3</span><span class="o">=</span><span class="p">,</span> <span class="p">(</span><span class="n">PLUGTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                  <span class="o">*</span>
         <span class="n">GATE</span><span class="o">=</span><span class="n">GENERAL</span><span class="p">,</span>                                       <span class="o">*</span>
         <span class="n">NBCVC</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>                                           <span class="o">*</span>
         <span class="n">MEMORY</span><span class="o">=</span><span class="n">ABOVE</span><span class="p">,</span>                                       <span class="o">*</span>
-        <span class="n">COMPANY</span><span class="o">=</span><span class="s1">&#39;YOUR DETAILS HERE&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>           <span class="n">X</span>
-        <span class="n">ADDR1</span><span class="o">=</span><span class="s1">&#39;ADDRESS1&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>                      <span class="n">X</span>
-        <span class="n">ADDR2</span><span class="o">=</span><span class="s1">&#39;ADDRESS2&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>                      <span class="n">X</span>
-        <span class="n">LICENCE</span><span class="o">=</span><span class="s1">&#39;P500 - PERMANENT&#39;</span><span class="p">,</span> <span class="n">LICENCE</span> <span class="n">INFO</span>            <span class="n">X</span>
-        <span class="n">EXPIRE</span><span class="o">=</span><span class="p">(</span><span class="mi">2999</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span> <span class="n">LICENCE</span> <span class="n">EXPIRATION</span>             <span class="n">X</span>
-        <span class="n">CODE</span><span class="o">=</span><span class="s1">&#39;12356789&#39;</span><span class="p">,</span> <span class="n">LICENCE</span> <span class="n">CODE</span>                       <span class="n">X</span>
+        <span class="n">COMPANY</span><span class="o">=</span><span class="s1">&#39;YOUR DETAILS HERE&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>           <span class="n">X</span> <span class="o">&lt;</span>
+        <span class="n">ADDR1</span><span class="o">=</span><span class="s1">&#39;ADDRESS1&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>                      <span class="n">X</span> <span class="o">&lt;</span>
+        <span class="n">ADDR2</span><span class="o">=</span><span class="s1">&#39;ADDRESS2&#39;</span><span class="p">,</span> <span class="n">COMPANY</span> <span class="n">INFO</span>                      <span class="n">X</span> <span class="o">&lt;</span>
+        <span class="n">LICENCE</span><span class="o">=</span><span class="s1">&#39;P500 - PERMANENT&#39;</span><span class="p">,</span> <span class="n">LICENCE</span> <span class="n">INFO</span>            <span class="n">X</span> <span class="o">&lt;</span>
+        <span class="n">EXPIRE</span><span class="o">=</span><span class="p">(</span><span class="mi">2999</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">31</span><span class="p">),</span> <span class="n">LICENCE</span> <span class="n">EXPIRATION</span>             <span class="n">X</span> <span class="o">&lt;</span>
+        <span class="n">CODE</span><span class="o">=</span><span class="s1">&#39;12356789&#39;</span><span class="p">,</span> <span class="n">LICENCE</span> <span class="n">CODE</span>                       <span class="n">X</span> <span class="o">&lt;</span>
         <span class="n">TITRE1</span><span class="o">=</span><span class="s1">&#39;S Y S P E R T E C  F R A N C E &#39;</span><span class="p">,</span>           <span class="o">*</span>
         <span class="n">TITRE2</span><span class="o">=</span><span class="s1">&#39;V I R T E L&#39;</span>
 <span class="o">*-------------------------------------------------------</span>
@@ -318,9 +301,7 @@
         <span class="n">END</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="member-scenload">
-<h2>Member SCENLOAD<a class="headerlink" href="#member-scenload" title="Permalink to this headline">¶</a></h2>
+<p><em>Member SCENLOAD</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>SCENLOAD SCREENS APPL=SCENLOAD
 *
 * SCENARIO TO load/download a page
@@ -391,15 +372,11 @@ DONE LABEL$
     END
 </pre></div>
 </div>
-</div>
-<div class="section" id="member-eoj">
-<h2>Member EOJ<a class="headerlink" href="#member-eoj" title="Permalink to this headline">¶</a></h2>
+<p><em>Member EOJ</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">EOJ</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="member-batch">
-<h2>Member BATCH<a class="headerlink" href="#member-batch" title="Permalink to this headline">¶</a></h2>
+<p><em>Member BATCH</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>*--------------------------------------------------------------*
 * BATCH INTERFACE TRANSACTIONS -                               *
 *--------------------------------------------------------------*
@@ -486,7 +463,6 @@ TRANSACT ID=BT1-72,
         LOGMSG=W2H-DIR,
         STARTUP=2
 </pre></div>
-</div>
 </div>
 </div>
 

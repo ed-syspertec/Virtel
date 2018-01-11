@@ -1,12 +1,12 @@
 .. _Virtel457AP:
 
-=======================================
-Audit, Operations and Performance V4.57
-=======================================
+=======================================================
+Audit, Administration, Operations and Performance V4.57
+=======================================================
 
-|image_logo|
+|imagelogo|
 
-**VIRTEL Audit, Operations and Performance**
+**VIRTEL Audit, Administration, Operations and Performance**
 
 .. danger:: This book is currently under construction. Do not use!
 
@@ -569,7 +569,7 @@ relayname
 
 It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.
 
-|image_03|
+|image23|
 *Fig.3 - Associated relay names*
 
 linename
@@ -691,7 +691,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 
 The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.
 
-|image_01|
+|image21|
 
 *Fig.1 - Line Status Display screen*
 
@@ -751,7 +751,7 @@ Security rules are the same as those which apply to the previous screen.
 
 This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:
 
-|image_02|
+|image22|
 
 *Fig.2 - Line Usage Detail Display screen*
 
@@ -816,7 +816,7 @@ Applying z/OS maintenance.
 
 By default, maintenance to the z/OS components of Virtel is delivered as AMASPZAP control statements either delivered as an email attachment or dowloaded from the Syspertec ftp web server. The mainframe zap packages come as accumulation file called either allptfs-mshpvrr.txt (z/VSE) or allptfs-mvsvrr-txt (z/OS). 
 
-|image_09|
+|image29|
 
 *Syspertec ftp web server*
 
@@ -831,19 +831,19 @@ Applying maintenance to the TRSF files
 
 The updates to the web entities are delivered as an accumulation update file called virtelvrrupdtnnnn1.zip where nnnn is the update number. These update files can be downloaded from the Syspertec ftp web server. Applying updates to the web elements is through a manual drap and drop GUI or via a batch process. Download the update package and unzip the contents. A directory structure representing the Virtel SAMPTRSF directories will be built. Note, not all of the directories are shipped with an update package, only those that have maintenance will be shipped. Normally, the W2H-DIR contains the majority of web element updates. The Administration portal is used to upload the updates to the Virtel directories. After applying the updates to the Virtel directories refresh the browsers cache to force an update of the client web elements.
 
-|image_10|
+|image30|
 
 *Unzipped update file* 
 
 In the above example, the update file contains updates to the W2H and DOC directories. The members in each directory should be selected (CTRL-A) and dragged over to the "Drag and Drop" upload option of the Virtel Administration portal, normally setup on port 41001.
 
-|image_11|
+|image31|
 
 *Virtel Administration Portal*
 
 Open the "Drag and Drop" interface in Virtel, and then drag the files over on to the relvant directory in the upload interface. A upload window will open showing the results of the upload.
 
-|image_12|
+|image32|
 
 
 Applying maintence via batch.
@@ -851,8 +851,761 @@ Applying maintence via batch.
 
 A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn't require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter "TN2017-09 Virtel batch maintenance". This can be viewed online at   
 
+Correspondent Management
+------------------------
+
+.. raw:: latex
+
+    \newpage  
+
+.. _#_V457AP_correspondent_management:
+
+.. index::
+   single: Correspondent Management
+
+Correspondent Management
+========================
+
+One of the methods which VIRTEL may use to identify users is by means of a security code which the user presents to VIRTEL, either in an incoming e-mail, or by means of a “cookie” included in an HTTP request by the browser. A user which VIRTEL recognizes in this way is known as a “Correspondent”. VIRTEL stores the list of correspondents in a VSAM file known as the “Correspondent file”, also known as the “VIRHTML” file.
+
+VIRTEL uses the correspondent file for the following purposes:
+- the rules of an HTTP line permit VIRTEL to distinguish between correspondents and non-correspondents when processing incoming HTTP requests. When the requesting user is identified as a correspondent, a special entry point may be assigned, or a set of rules specific to the user may be executed. Refer to “Rules” in the VIRTEL Connectivity Reference manual for further details.
+- the rules of an HTTP line may assign a specific LU name to a correspondent connecting to a host application via web access. This is known as “LU nailing” and is described in more detail in the VIRTEL LU Nailing HOWTO manual.
+- a correspondent may be authorized to upload HTML pages and other elements into an HTMLTRSF file. For further details, refer to :ref:`“Uploading pages by SMTP” <#_V457AP_http_uploading_pages_smtp>` and :ref:`“Uploading pages by HTTP (secured by cookie)” <#_V457AP_http_uploading_pages>`.
+
+There are two types of correspondent: an e-mail correspondent and a local correspondent:
+- An **e-mail correspondent** is always defined by the VIRTEL administrator. When the administrator activates an email correspondent, VIRTEL sends an e-mail message to the correspondent containing the security code. The correspondent then either replies to the e-mail message or clicks on a link in the message to connect to VIRTEL.
+- A **local correspondent** is activated by the correspondent using a procedure known as “self-registration”. The self-registration procedure creates a clickable link which delivers the security code to the correspondent’s browser via a cookie. The VIRTEL administrator may optionally pre-define or change the characteristics of a correspondent by using the correspondent management sub-application. Self-registration is described in the VIRTEL LU Nailing HOWTO manual.
+
+.. index::
+   pair: Access; Correspondent Manangement
+
+Access to the application
+-------------------------
+
+The correspondent management sub-application, which allows the VIRTEL administrator to define the parameters
+associated with a correspondent, is accessible by pressing [PF5] in the VIRTEL configuration menu, or [PF12] in the
+system services sub-application menu, or from the VIRTEL Multi-Session screen via an application referencing the
+module VIR0041A.
+
+.. index::
+   pair: Security; Correspondent Manangement
+
+Security
+--------
+
+When security is active, access to the correspondent management sub-application from the configuration menu or
+from the system services sub-application menu is controlled by the resource $$PCPC$$.
+When it is accessed by a transaction, the rules of security management of transactions will apply.
+Security management is described under the heading “Security” 282.
+
+.. index::
+   pair: Objectives; Correspondent Manangement
+
+Objectives
+----------
+
+This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
+to the detail of a correspondent is achieved by positioning the cursor and pressing [PF12].
+
+|image74| 
+
+*Summary of correspondence*
+
+|image75|
+*Correspondent detail screen (e-mail correspondent)*
+
+::
+
+        CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2 16:40:04
+        Id                 ===> WKSTN-A2FE/SYSPERTEC
+                                workstation/lan
+        Type of Id         ===> 2             1:Email 2:Local+fixed 3:Local+changing
+        Activation message ===>
+                                              Text of 'OK' message to user.
+        VTAM name          ===> RRVTC006      &1 parameter to specify VTAM LU name
+        Rule Set           ===>               Rules to choose an entry point
+        Directory          ===>               Where data is to be uploaded
+        Last contact       ===> 30 Jun 2009 11:24:49 192.168.002.082
+        Contacts           ===> 00000010 Number of times cookie was updated
+        Date created       ===> 30 Jun 2009 10:35:30
+        Created by         ===> VIRDBA
+        Date activated     ===> 30 Jun 2009 10:35:30
+        Activated by       ===> VIRDBA
+        Date disabled      ===>
+        Disabled by        ===>
+
+        P1=Update                           P3=Return                      Enter=Add
+        P4=Activate                         P5=Disable                     P6=Rules
+
+*Correspondent detail screen (local correspondent)*
+
+.. index::
+   pair: Field contents; Correspondent Manangement
+
+Field Contents
+--------------
+
+Id
+    For an e-mail correspondent: the e-mail address of the correspondent. For a local correspondent: a unique identifier generated by the self-registration procedure, or assigned by the VIRTEL administrator.
+
+Type of Id
+    1. this is an e-mail correspondent
+    2. this is a local correspondent whose security code is generated at activation time and subsequently remains constant
+    3. this is a local correspondent whose security code changes each time it is accessed.
+
+Activation message    
+    Message received by the user at time of activation of his account. This message can contain a link allowing the user to connect to a host application or to open the upload.htm page with automatic installation of an authorization cookie.
+
+        The activation message may include the following variables: 
+            &R meaning “insert a blank line”. 
+
+            &C meaning “insert security code”. The activation security code is inserted into the message in the form VirtelCookie=xxx.
+
+Rule Set
+    (optional) The name of the rule set associated with this user.
+Directory
+    (optional) Name of the directory into which this correspondent may upload files.
+Last contact
+    Date and time of the last transfer, and the IP address of the correspondent.
+Contacts
+    The number of contacts since the last activation.
+
+.. _#_V457AP_account_activation:    
+
+.. index::
+   pair: Account activation; Correspondent Manangement
+
+Account activation
+------------------
+
+In order to be operational, a correspondent account must be activated. This is achieved by pressing [PF4] at the CORRESPONDENT DETAIL DEFINITION screen. In the case of an e-mail correspondent, VIRTEL will transmit an initial email to the correspondent containing the security code to be used for the transfers. The message ACTIVATION WAS REQUESTED indicates that the correspondent’s security code has been activated, and, in the case of an e-mail
+correspondent, that the e-mail was sent successfully. The number of contacts is reset to zero. 
+
+.. note::
+
+    To activate an e-mail correspondent, the administrator must be logged on to VIRTEL via an entry point containing a transaction with external name $MAIL$ (application type=3) which contains, in the application field, the name of the SMTP line used by VIRTEL. The message YOU ARE NOT AUTHORISED TO USE THIS APPLICATION indicates that the $MAIL$ transaction is not defined.
+
+.. index::
+   pair: Account deactivation; Correspondent Manangement
+
+Account deactivation
+--------------------
+
+A correspondent’s security code may be cancelled by deactivating with the [PF5] key. The message DISABLE WAS DONE indicates that the deactivation was successful.
+
+.. index::
+   pair: Access to rules; Correspondent Manangement
+
+Access to associated rule set
+-----------------------------
+
+To display the list of rules associated with this correspondent, press the [PF6] key.
+
+.. raw:: latex
+
+    \newpage  
+
+.. _#_V457AP_uploading_HTML_pages:
+
+Uploading HTML Pages
+====================
+
+HTML pages and other elements such as graphics can be uploaded to VIRTEL by any of the following methods:
+
+    1. by e-mail (SMTP)
+    2. by web browser (HTTP), with cookie security
+    3. by web browser (HTTP), with signon security
+    4. Via a batch process
+
+.. _#_V457AP_http_uploading_pages_smtp:    
+
+.. index::
+   single: Uploading template pages using SMTP
+
+Uploading template pages using SMTP
+-----------------------------------
+
+Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail. VIRTEL sends the administrator an e-mail, and the administrator replies to this e-mail with the pages to be uploaded included as attachments. VIRTEL sends another e-mail to inform the administrator that the upload was successful. The administrator saves this e-mail and replies to it the next time he has a set of pages to upload.
+
+.. index::
+   pair: SMTP Definitions; Uploading Pages
+
+Definitions for page upload by SMTP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
+- Press F5 from the Configuration Menu and define an e-mail correspondent specifying W2H-DIR as the directory name:
+
+::
+
+    CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2 14:19:33
+    Id                  ===> upload2@saint.cloud.com    
+                        email address with '@' sign
+    Type of Id          ===> 1 1:Email 2:Local+fixed 3:Local+changing
+    Activation message  ===> To upload file(s) to VIRTEL, reply to this message.
+                        Text of 'OK' message to user.
+    VTAM name           ===> &1 parameter to specify VTAM LU name
+    Rule Set            ===> ADMRSET1 Rules to choose an entry point
+    Directory           ===> W2H-DIR Where data is to be uploaded
+    Last contact        ===> QUEUE ACTIVATION
+    Contacts            ===> 00000000 Number of times cookie was updated
+    Date created        ===> 11 May 2004 14:19:29
+    Created by          ===> VIRDBA
+    Date activated      ===> 11 May 2004 14:19:33
+    Activated by        ===> VIRDBA
+    Date disabled       ===>
+    Disabled by         ===>
+    P1=Update                       P3=Return                           Enter=Add
+    P4=Activate                     P5=Disable                          P6=Rules
+    ACTIVATION WAS REQUESTED
+
+*Page upload by SMTP: Creating an e-mail correspondent*
+
+.. index::
+   pair: Upload page procedure using SMTP; Uploading pages
+
+Procedure for page upload by SMTP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Activate the e-mail correspondent: see “Account activation” under the heading :ref:`“Correspondent Management” <#_V457AP_correspondent_management>`. This triggers the sending of an e-mail containing the security code, as in the following example:-
+
+::
+
+    Date: Tue, 27 Apr 2004 12:04:40 +0100
+    From: virtel@client.com
+    Organization: SYSPERTEC COMMUNICATION
+    To: upload2@saint.cloud.com
+    Message-id:
+    <20040427120439.07F5DA7C.5E416500Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
+    Subject: OK : < W2H-DIR >
+    SECURITY TOKEN:
+    20040427120439.07F5DA7C.5E416500Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+    To upload file(s) to VIRTEL, reply to this message.
+
+*Page upload by SMTP : activation e-mail*
+
+2. Reply to this e-mail, with the files to be uploaded (HTML pages, graphics, etc) included as attachments. VIRTEL recognizes the security code returned automatically by the e-mail client in the “Message-id” field, and loads the attached files into the directory defined in the definition of the correspondent.
+
+3. VIRTEL replies by sending an e-mail containing the result of the upload. The following example shows the reply sent by VIRTEL to a request to upload two files: LOGOVERT.GIF and WEB2VIRT.HTM. The “Message-id” field in this e-mail contains the new security code. You can reply to this e-mail the next time you have files to upload.
+
+::
+
+    Date: Tue, 27 Apr 2004 12:39:14 +0100
+    From: virtel@client.com
+    Organization: SYSPERTEC COMMUNICATION
+    To: upload2@saint.cloud.com
+    Message-id:
+    <20040427123911.07F5CDC4.F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
+    Subject: OK : <W2H-DIR >
+    VirtelCookie=
+    20040427123911.07F5CDC4.F669FC80Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+    RETURN CODE IS: 00
+    123911 MESSAGE RECEIVED
+    123912 LOADING FILE: LOGOVERT
+    123912 SIZE : 14357 BYTES (BINARY)
+    123912 MIME : image/jpeg
+    123914 LOADING FILE: WEB2VIRT
+    123914 SIZE : 11477 BYTES (TEXT)
+    123914 MIME : text/html
+    123914 FIELD : SET-OUTPUT-ENCODING-UTF-8 ""
+    123914 FIELD : COPY-FROM (1,1,43)
+    123914 FIELD : FIELD-WITH-CURSOR
+    123914 FIELD : FIELD-WITH-CURSOR
+
+*Page upload by SMTP : upload response e-mail*
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and
+truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and
+truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined
+using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored
+under the name LINKS.GI
+
+.. _#_V457AP_http_uploading_pages:
+
+.. index::
+   pair: Upload page procedure using HTML; Uploading pages
+
+Uploading pages by HTTP (secured by cookie)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The upload.htm page allows HTML pages or graphics to be uploaded to VIRTEL. The user’s identity is guaranteed by a
+cookie named VirtelRef= whose value changes after each upload. The value of the cookie is the same as the security
+code used for uploading by SMTP.
+
+To upload a page, a user must:
+
+- have a valid cookie (obtained by activation of the VIRTEL e-mail correspondent)
+- click on the link contained in the e-mail, which displays the upload.htm page and loads the cookie into the browser (first time only)
+- click the “Browse” button and select a file
+- click the “Send” button
+
+The VIRTEL response is displayed in the page and is similar to the response received by e-mail when uploading via
+SMTP.
+
+.. index::
+   pair: HTTP definitions (Cookie); Uploading pages
+
+Definitions for page upload (secured by cookie)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All the elements needed for page upload by HTTP secured by cookie are contained in the base configuration delivered
+with VIRTEL 4.27. Users who upgrade to VIRTEL 4.27 while keeping their existing configuration need to add certain
+elements to their existing configuration to benefit from the new “page upload secured by cookie” function.
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out
+these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL version 4.27. Having updated
+the configuration, you then need to upload three new elements (upload.htm, default.js, and logo_3.gif) to the W2HDIR
+directory using the existing SMTP upload method.
+
+1. In entry point WEB2HOST, define a new transaction W2H–70, with external name upload. This transaction specifies
+VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
+that the name of the target directory is to be found in the definition of the e-mail correspondent:
+
+|image76|
+
+*Page upload by HTTP with cookie : Creating the ‘upload’ transaction*
+
+2. Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
+
+3. Press F5 from the Configuration Menu and define an e-mail correspondent specifying directory name W2H-DIR and ruleset name ADMRSET1 :
+
+::
 
 
+    CORRESPONDENT DETAIL DEFINITION -------------------- Applid: SPVIRE2 14:39:04
+    e-mail address ===> upload2@saint.cloud.com
+                        email address with '@' sign
+    Type of Id         ===> 1              1:Email 2:Local+fixed 3:Local+changing
+    Activation message ===> To upload to VIRTEL, click:&Rhttp://192.168.229.20:4100
+    1/web2host/upload.htm+upload+&C
+                                           Text of 'OK' message to user.
+    VTAM name          ===> &1 parameter to specify VTAM LU name
+    Rule Set           ===> ADMRSET1 Rules to choose an entry point
+    Directory          ===> W2H-DIR Where data is to be uploaded
+    Last contact       ===>
+    Contacts           ===> 00000000 Number of times cookie was updated
+    Date created       ===> 11 May 2004 14:19:29
+    Created by         ===> VIRDBA
+    Date activated     ===> 11 May 2004 14:39:04
+    Activated by       ===> VIRDBA
+    Date disabled      ===>
+    Disabled by        ===>
+ 
+ 
+    P1=Update                           P3=Return                        Enter=Add
+    P4=Activate                         P5=Disable                       P6=Rules
+    ACTIVATION WAS REQUESTED
+
+*Page upload by HTTP with cookie : Creating the e-mail correspondent*
+
+4. Press F6 then F12 to create rule UPLOAD1B in ruleset ADMRSET1 :
+
+::
+
+    DETAIL of RULE from RULE SET: ADMRSET1 ------------- Applid: SPVIRE2 14:40:59
+
+    Name          ===> UPLOAD1B               Rule priority is per name
+    Status        ===> ACTIVE                 Mon, 24 Sep 2001 14:19:14
+    Description   ===> Rule for WEB2HOST administrator
+    Entry point   ===> WEB2HOST               Target Entry Point
+    Parameter     ===>                                    optional &1 value
+    Trace ===>                                1=commands 2=data 3=partner
+
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    0 IP Subnet   ===>                        Mask     ===>
+    5 HTTP Host   ===> :41001
+    0 eMail       ===>
+    0 Calling DTE ===>                        Calling DTE address
+    0 Called      ===>                        Called DTE address
+    0 CUD0 (Hex)  ===>                        First 4 bytes of CUD (X25 protocol)
+    0 User Data   ===>
+    0 Days        ===> M:      T:      W:      T:      F:      S:      S:
+    0 Start time  ===> H:      M:      S:     End time ===> H:     M:     S:
+
+    P1=Update                          P3=Return                      Enter=Add
+    P4=Activate                        P5=Inactivate                  P12=Entry P.
+
+*Page upload by HTTP with cookie : Creating rule UPLOAD1B*
+
+5. Define two new rules attached to the HTTP line. The first rule, which specifies $COOKIE$ as the entry point name, will be used for administrators; the second rule, which specifies entry point WEB2HOST, is for all other users:
+
+::
+
+    LIST of RULES in RULE SET: W-HTTP ---------------- Applid: SPVIRE2     14:44:14
+
+    Name     Status   Description                                        Entry
+                                                                         Point
+    WHT00100 ACTIVE   HTTP access (users authorised by cookie)           $COOKIE$
+    WHT00200 ACTIVE   HTTP access (other users)                          WEB2HOST
+ 
+    P1=Update            P2=Suppress             P3=Return
+    P6=1st page          P7=Page-1               P8=Page+1              P12=Edit
+
+*List of rules associated with UPLOAD*
+
+::
+
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
+    Name          ===> WHT00100              Rule priority is per name
+    Status        ===> ACTIVE                Mon, 24 Sep 2001 14:19:14
+    Description   ===> HTTP access (users authorised by cookie)
+    Entry point   ===> $COOKIE$              Target Entry Point
+    Parameter     ===>                                  optional &1 value
+    Trace         ===>                       1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    0 IP Subnet   ===>                       Mask ===>
+    0 HTTP Host   ===>
+    0 eMail       ===>
+    0 Calling DTE ===>                       Calling DTE address
+    0 Called      ===>                       Called DTE address
+    0 CUD0 (Hex)  ===>                       First 4 bytes of CUD (X25 protocol)
+    0 User Data   ===>
+    0 Days        ===> M:      T:      W:      T:      F:      S:      S:
+    0 Start time  ===> H:      M:      S:     End time ===> H:     M:     S:
+
+    P1=Update                          P3=Return                    Enter=Add
+    P4=Activate                        P5=Inactivate                P12=Entry P.
+
+*Page upload by HTTP with cookie : Rule $COOKIE$ of the HTTP line*    
+
+::
+
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRE2 14:45:34
+    Name          ===> WHT00200              Rule priority is per name
+    Status        ===> ACTIVE                Mon, 24 Sep 2001 14:19:14
+    Description   ===> HTTP a
+    ccess (users authorised by cookie)
+    Entry point   ===> WEB2HOST              Target Entry Point
+    Parameter     ===>                                  optional &1 value
+    Trace         ===>                       1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    0 IP Subnet   ===>                       Mask ===>
+    0 HTTP Host   ===>
+    0 eMail       ===>
+    0 Calling DTE ===>                       Calling DTE address
+    0 Called      ===>                       Called DTE address
+    0 CUD0 (Hex)  ===>                       First 4 bytes of CUD (X25 protocol)
+    0 User Data   ===>
+    0 Days        ===> M:      T:      W:      T:      F:      S:      S:
+    0 Start time  ===> H:      M:      S:     End time ===> H:     M:     S:
+
+    P1=Update                          P3=Return                    Enter=Add
+    P4=Activate                        P5=Inactivate                P12=Entry P.
+
+*Page upload by HTTP with cookie : Rule WEB2HOST of the HTTP line*
+
+Procedure for page upload (secured by cookie)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. (First time only) Activate the e-mail correspondent: see :ref:`“Account activation” <#_V457AP_account_activation>`. This triggers the sending of an e-mail containing the security code, as in the following example:
+
+:: 
+
+    Date: Tue, 27 Apr 2004 13:08:44 +0100
+    From: virtel@client.com
+    Organization: SYSPERTEC COMMUNICATION
+    To: upload2@saint.cloud.com
+    Message-id:
+    <20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==>
+    Subject: OK : < W2H-DIR >
+    SECURITY TOKEN:
+    20040427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+    To upload to VIRTEL, click:
+    http://192.168.229.20:41001/web2host/upload.htm+upload+VirtelCookie=20040
+    427130843.07F5D1DC.56A85680Bgpamk4WZRKKBiZWjS4OTlqSES4OWlA==
+
+*Page upload by HTTP with cookie : activation e-mail*
+
+2. Click the link in the e-mail to open the upload.htm page:
+
+|image4|
+
+*Page upload by HTTP with cookie : Displaying the upload.htm page*
+
+3. Click the “Browse” button and the file selection dialog will be displayed:
+
+|image5|
+
+*Page upload by HTTP with cookie : File selection dialog*
+
+4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+|image6|
+
+*Page upload by HTTP with cookie : Sending the file*
+
+5. Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:
+
+|image7|
+
+*Page upload by HTTP with cookie : Confirmation of file uploadr*
+
+From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”. 
+
+Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+
+.. _#_V457AP_http_uploading_pages_signon:
+
+.. index::
+   pair: Uploading pages HTTP (Signon); Uploading pages
+
+Uploading pages by HTTP (secured by signon)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
+
+.. index::
+   pair: HTTP definitions (Signon); Uploading pages
+
+Definitions for page upload (secured by signon)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+All the elements needed for page upload by HTTP secured by signon are contained in the base configuration delivered with VIRTEL. Users who upgrade from a version prior to VIRTEL 4.27 while keeping their existing configuration need to add certain elements to their existing configuration to benefit from the new “page upload secured by signon” function.
+
+The following steps show how to upgrade your configuration based on entry point WEB2HOST. You can also carry out these steps in batch by running the DEFUPLOD job in the SAMPLIB delivered with VIRTEL. Having updated the configuration, you then need to upload one new page (upload4.htm) to the W2H-DIR directory using the existing SMTP upload method.
+
+1. In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:
+
+|image77|
+*Page upload by HTTP with signon : Transaction dirlist*
+
+2. Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :
+
+|image78| *Page upload by HTTP with signon : Directory HTMLBAS*
+
+|image79| *Page upload by HTTP with signon : Directory W2HDIR*
+
+|image80| *Page upload by HTTP with signon : Directory CLIDIR*
+
+3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
+
+.. index::
+   pair: HTTP definitions (Signon); Uploading pages
+
+Procedure for page upload (secured by signon)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Display the upload4.htm page by entering the URL http://ipaddr:port/SECURE/upload4.htm+dirlist in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:
+
+|image8|
+
+*Page upload by HTTP with signon : Entering the userid and password*
+
+The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.
+
+2. After entering the user name and password, the upload4.htm page will be displayed:
+
+|image9| 
+
+*Page upload by HTTP with signon : Displaying the upload4.htm page*
+
+3. Press the “Browse” button to display the file selection dialog:
+
+|image10| 
+
+*Page upload by HTTP with signon : File selection dialog*
+
+4. Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:
+
+|image11| 
+
+*Page upload by HTTP with signon : Sending the file*
+
+5. Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:
+
+|image12| 
+
+*Page upload by HTTP with signon : Confirmation of file upload*
+
+Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
+
+.. index::
+   pair: Uploading pages by drag and Drop; Uploading pages   
+
+Uploading pages by drag and drop
+--------------------------------
+
+The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.
+
+Upload interface in the VIRTEL menu
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After clicking on the Drag & Drop Upload link on the VIRTEL Web Access menu (URL http://n.n.n.n:41001), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:
+
+|image13| 
+
+*Drag and drop upload interface*
+
+The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.
+
+Displaying upload results
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image14| 
+
+*Displaying upload results*
+
+The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.
+
+Upload summary report
+^^^^^^^^^^^^^^^^^^^^^
+
+After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes. 
+
+The summary is not displayed when files are dragged and dropped one at a time.
+
+In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:
+
+|image15| 
+
+*Upload summary report*
+
+Extracting upload results as an Excel spreadsheet
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+|image16| The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.
+
++-----------------+------------------------+--------------------------+-------------------------------+
+| Directory       | File name              | Report                   | Time                          |
++=================+========================+==========================+===============================+ 
+| CLI-DIR         | custom.css             | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
++-----------------+------------------------+--------------------------+-------------------------------+
+| CLI-DIR         | custom.js              | RETURN CODE IS: 00       | Thu, 13 Sep 2012 08:13:16 GMT |
++-----------------+------------------------+--------------------------+-------------------------------+
+
+|image17| The Delete button allows the administrator to clear the results log.
+
+ .. index::
+   pair: Uploading pages in batch; Uploading pages
+
+Uploading pages in batch
+------------------------
+
+ .. index::
+   pair: Uploading (batch) using cURL; Uploading pages
+
+Uploading with cURL
+^^^^^^^^^^^^^^^^^^^
+
+You can upload multiple pages (or other elements) at a time from a Windows workstation by using a command-line HTTP-client program, such as cURL from www.haxx.se.
+The following example shows a Windows command to upload all files of type .htm from the current directory to VIRTEL:
+
+::
+
+    for %F in (*.htm) do curl -v -F "file=@%F;type=text/html" -u
+    virdba:virdbapw http://192.168.235.30:41001/SECURE/virmsg.txt+uplbas
+
+In this example:
+
+\*.htm
+    the files to be uploaded
+
+virdba:virdbapw
+    userid and password for VIRTEL
+
+192.168.235.30:41001
+    identifies the VIRTEL HTTP line
+
+virmsg.txt
+    page template for displaying upload result messages
+
+uplbas
+    external name of the upload transaction in VIRTEL which specifies the target directory (HTMLBAS). See :ref:`“Uploading pages by HTTP (secured by signon)” <#_V457AP_http_uploading_pages_signon>` for a list of upload transactions.
+
+.. note::
+
+    %F appears twice in the command shown above. In conformance with the syntax requirements of the Windows command interpreter, you must use %F if you execute the command from the command prompt, but %%F if you execute the command from within a command (.cmd) file.
+
+ .. index::
+    pair: Uploading (batch) using upl2virt procedure; Uploading pages
+
+The upl2virt command procedure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For users of Windows XP and above, the command procedure upl2virt.cmd may be used to upload elements to VIRTEL from the Windows command prompt, or from Windows Explorer. upl2virt automatically generates the required cURL commands as described in the previous section.
+
+**Pre-requisites**
+
+upl2virt requires as a pre-requisite the cURL package described in the previous section.
+
+Optionally, Bill Stewart’s editvar freeware package from www.westmesatech.com may also be installed. This package allows upl2virt to securely prompt the administrator for a password. If the editvar package is not installed, then upl2virt can still prompt for a password but it will be unable to mask the password as the administrator types it into
+the command window.
+
+**Installation**
+
+upl2virt may be downloaded from VIRTEL to the workstation by entering the following URL in your browser:
+
+::
+
+    http://n.n.n.n:41001/upl2virt.cmd 
+
+where n.n.n.n is the IP address of VIRTEL). When prompted, save the upl2virt.cmd file in a directory in your path (for example, C:\WINDOWS).
+
+**Using upl2virt at the command prompt**
+
+.. index::
+   pair: Executing upl2virt; Uploading pages
+
+To execute upl2virt as a command, open a Windows command prompt, navigate to the directory which contains the file(s) to be uploaded, and execute the command:
+
+::
+
+    upl2virt [-u userid:password] -d directory -a n.n.n.n
+             [-p port] [-r] [-f ctlfile] [-k] [file1 file2 ...]
+
+In the above command:
+
+userid:password
+    is your VIRTEL userid and password. If not specified, upl2virt will prompt for userid and password. If userid is specified without the password, then upl2virt will prompt for password.
+directory
+    is the name of the target VIRTEL directory (for example, CLI-DIR)
+n.n.n.n
+    is the IP address of VIRTEL
+port
+    is the VIRTEL administration port number (default 41001).
+
+.. note::
+    This is the port number for the WEB2HOST entry point, not the port number associated with the directory you are uploading to.
+
+ctlfile
+    specifies the name of a control file containing a list of file names to be uploaded
+
+file1 file2 ...
+    are the names of files to be uploaded
+\-r
+    specifies recursion into subdirectories
+\-k
+    keeps the command window open after the last upload
+
+If no file names are specified, and no control file is specified, the default is to upload all web elements from the current directory (and also from all subdirectories if the –r option is specified).
+
+.. index::
+   pair: Using upl2virt with Windows Explorer; Uploading pages
+
+**Using upl2virt from Windows Explorer**
+
+The upl2virt command may also be used to upload elements to VIRTEL from the Windows Explorer interface. Having selected one or more files in Windows Explorer, the administrator right-clicks on the selected files and chooses the “Send To” option, then chooses “Upload to VIRTEL” from the “Send To” menu.
+
+To activate the “Upload to VIRTEL” option in the “Send To” menu, use Windows Explorer to navigate to the “c:\Documents and Settings\username\SendTo” folder, where username is your Windows username. If you cannot see the SendTo folder, then click on “Tools” – “Folder options” – “View”, tick the option “Display hidden files and folders”, and click “OK”.
+
+In the “SendTo” folder, right click and select “New” – “Shortcut”. Then click “Browse”, navigate to the place where you stored the upl2virt.cmd file, and click on it. Click “Next” and enter a descriptive title for the menu item, such as “Upload to VIRTEL”. Then click “Finish”.
+
+You now have an item in the “SendTo” folder named “Upload to VIRTEL”. Right-click on this item and choose “Properties”. In the “Target” field you will see the path to the upl2virt.cmd file which you specified. Update this field with parameters as shown in the example below:
+
+::
+
+    C:\WINDOWS\upl2virt.cmd -u MYUSERID -d CLI-DIR -a 10.1.12.101 –k
+
+where:
+
+MYUSERID
+    is your VIRTEL userid
+CLI-DIR
+    is the name of the VIRTEL directory that this shortcut will upload to
+10.1.12.101
+    is the IP address of VIRTEL.
+
+You may omit the –u MYUSERID parameter and upl2virt will prompt you for your userid.
 
 Performance
 ===========
@@ -882,7 +1635,7 @@ The CONSOLE file allows the administrator to monitor the startup and subsequent 
     
     The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.
 
-|image_04|
+|image24|
 *Fig. 4 Example of CONSOLE file*
 
 VIRLOG file
@@ -1191,7 +1944,7 @@ In **z/VSE environment**, the SNAP output is written to the POWER LST file of th
     
     Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.
 
-|image_05|
+|image25|
 
 *Fig. 12 Example of SNAP listing*
 
@@ -1201,11 +1954,11 @@ The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain 
 
 Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”.
 
-Audit and Statistics
---------------------
+Audit
+=====
 
 VIRSTAT file
-^^^^^^^^^^^^
+------------
 
 The VIRSTAT file is a sequential file into which VIRTEL writes connection statistics.
 
@@ -1233,7 +1986,7 @@ For terminals associated with all other line types (including /GATE, /PCNE, and 
 The statistics file may contain a mixture of classic, alternate X25, and web format records. The record type indicator at position 61 of each record identifies the format of the particular record.
 
 VIRSTAT classsic format 
-"""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^
 
 For terminals which specify classic format recording (STATS=1), the  VIRSTAT record format is shown in the following table:
 
@@ -1279,7 +2032,7 @@ Type E (end of job)
     Records are implemented at VIRTEL shutdown.
 
 VIRSTAT alternative X25 format
-""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For terminals which specify alternate X25 format recording (STATS=4), the VIRSTAT record format is shown in the following  table:
 
@@ -1378,7 +2131,7 @@ This record type is written when 6 is specified in the STATS field of the termin
 
 
 Printing the contents of the VIRSTAT file (X25)
------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The VIR0070 program allows the contents of the VIRSTAT file to be printed. The source for this program is supplied in the SSL (VSE) or in the SAMPLIB (z/OS) and you can use this as the basis of a     user-written program to print statistics. 
 
@@ -1423,14 +2176,14 @@ Examples of the JCL required to execute this program are shown below:
 *Fig. 18 VIR0070 JCL to print VIRSTAT file (z/OS)*
 
 Printing the contents of the VIRSTAT file (HTTP)
-------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The PRTSTATW program supplied with the system allows printing of type 6 records from the VIRSTAT file. This program is delivered as a load module in the VIRTEL LOADLIB (from version 4.45 onwards) and the execution JCL is provided as member JCLPRTST in the VIRTEL SAMPLIB. 
 
 Examples of the execution JCL for this program are shown below.
 
-z/VSE
-^^^^^
+z/VSE JCL
+"""""""""
 
 In the VSE environment the VIRPRTST job, loaded into the POWER reader queue during VIRTEL installation, contains an example of JCL for printing the VIRSTAT file. This job is an example only and must be modified before execution:
 
@@ -1494,8 +2247,8 @@ In the VSE environment the VIRPRTST job, loaded into the POWER reader queue duri
 
 *Fig. 19 PRTSTATW JCL to print VIRSTAT file in VSE (type=6)*
 
-z/OS
-^^^^
+z/OS JCL
+""""""""
 
 In the z/OS environment the JCL for executing the PRTSTATW program is supplied as member JCLPRTST in the VIRTEL SAMPLIB:
 
@@ -1562,8 +2315,8 @@ This JCL consists of two main steps:
     -  a first step to sort the file
     -  a second step to PRINT or COUNT the records
 
-Sorting the File 
-----------------
+Sorting the VIRSTAT file 
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The sort requirements are determined by the type of report desired. Since the PRTSTATW program offers the option of selecting records and also offers up to two levels of report break to allow printing of subtotals, it is important to specify the appropriate sort criteria to obtain the correct result.
 
@@ -1593,7 +2346,7 @@ For example, to obtain a report in ascending order of session start date, specif
     //*
 
 PRTSTATW program
-----------------
+^^^^^^^^^^^^^^^^
 
 The PRTSTATW program executed in the second step reads the sorted output file from the first step. It contains required and optional SYSIN cards.
 
@@ -1735,7 +2488,7 @@ The VIRTEL memory management sub-application allows the system  administrator to
 
 To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.
 
-|image_06|
+|image26|
 
 *Fig 25. Memory display of VIRTEL address space*
 
@@ -1755,7 +2508,7 @@ Memory display in Memory=Test mode.
 
 If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.
 
-|image_08|
+|image28|
 
 *Fig. 26 - Memory display in MEMORY=TEST mode*
 
@@ -1834,7 +2587,7 @@ A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(
 Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.
 
-|image_07|
+|image27|
 
 *Fig. 27 Example of a memory allocataion history*
 
@@ -1884,17 +2637,38 @@ The current VIRTEL Web Access product uses the following open source software:
 - jQuery_UI
     Under MIT license - http://en.wikipedia.org/wiki/JQuery_UI
 
-.. |image_logo| image:: images/media/logo_virtel_web.png
-            :scale: 50 % 
-.. |image_01| image:: images/media/image01.png
-.. |image_02| image:: images/media/image02.png
-.. |image_03| image:: images/media/image03.png
-.. |image_04| image:: images/media/image04.png
-.. |image_05| image:: images/media/image05.png
-.. |image_06| image:: images/media/image06.png
-.. |image_07| image:: images/media/image07.png
-.. |image_08| image:: images/media/image08.png
-.. |image_09| image:: images/media/image09.png
-.. |image_10| image:: images/media/image10.png
-.. |image_11| image:: images/media/image11.png
-.. |image_12| image:: images/media/image12.png
+.. |imagelogo| image:: images/media/logo_virtel_web.png
+            :scale: 50 %
+.. |image4| image:: images/media/image4.png
+.. |image5| image:: images/media/image5.png
+.. |image6| image:: images/media/image6.png
+.. |image7| image:: images/media/image7.png
+.. |image8| image:: images/media/image8.png
+.. |image9| image:: images/media/image9.png
+.. |image10| image:: images/media/image10.png
+.. |image11| image:: images/media/image11.png
+.. |image12| image:: images/media/image12.png
+.. |image13| image:: images/media/image13.png
+.. |image14| image:: images/media/image14.png
+.. |image15| image:: images/media/image15.png
+.. |image16| image:: images/media/image16.png
+.. |image17| image:: images/media/image17.png             
+.. |image21| image:: images/media/image21.png
+.. |image22| image:: images/media/image22.png
+.. |image23| image:: images/media/image23.png
+.. |image24| image:: images/media/image24.png
+.. |image25| image:: images/media/image25.png
+.. |image26| image:: images/media/image26.png
+.. |image27| image:: images/media/image27.png
+.. |image28| image:: images/media/image28.png
+.. |image29| image:: images/media/image29.png
+.. |image30| image:: images/media/image30.png
+.. |image31| image:: images/media/image31.png
+.. |image32| image:: images/media/image32.png
+.. |image74| image:: images/media/image74.png
+.. |image75| image:: images/media/image75.png
+.. |image76| image:: images/media/image76.png
+.. |image77| image:: images/media/image77.png
+.. |image78| image:: images/media/image78.png
+.. |image79| image:: images/media/image79.png
+.. |image80| image:: images/media/image80.png
