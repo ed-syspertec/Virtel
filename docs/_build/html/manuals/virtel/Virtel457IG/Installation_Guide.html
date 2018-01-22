@@ -103,11 +103,11 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel457AP/audit_operations_ and_performance.html">Audit, Administration, Operations and Performance V4.57</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel457CN/connectivity_guide.html">Connectivity Reference V4.57</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installation Guide V4.57</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#summary-of-amendments">1. Summary of Amendments</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#introduction">2. Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installing-virtel-under-mvs">3. Installing VIRTEL under MVS</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installing-virtel-under-vse">4. Installing VIRTEL under VSE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#vtam-parameters">5. VTAM Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#summary-of-amendments">Summary of Amendments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-virtel-under-z-os">Installing VIRTEL under z/OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-virtel-under-z-vse">Installing VIRTEL under z/VSE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vtam">VTAM</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtct">6. VIRTCT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virconf">7. VIRCONF</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#security">8. Security</a></li>
@@ -188,7 +188,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation-guide-v4-57">
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="installation-guide-v4-57">
 <span id="virtel457ig"></span><h1>Installation Guide V4.57<a class="headerlink" href="#installation-guide-v4-57" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web8.png"><img alt="image1" src="../../../_images/logo_virtel_web8.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Installation Guide</strong></p>
@@ -218,9 +220,9 @@ and companies mentioned in this document may be trademarks or registered tradema
 their respective owners.</p>
 </div>
 <div class="section" id="summary-of-amendments">
-<h2>1. Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
+<span id="v457ig-summary-of-ammendments"></span><h2>Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-version-4-57-1st-jul-2017">
-<h3>1.11 Virtel version 4.57 (1st Jul 2017)<a class="headerlink" href="#virtel-version-4-57-1st-jul-2017" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.57 (1st Jul 2017)<a class="headerlink" href="#virtel-version-4-57-1st-jul-2017" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>Bidirectional presentation support.</li>
@@ -228,15 +230,11 @@ their respective owners.</p>
 <li>Additional RACHECK support for ForceLUNAME</li>
 <li>Licence warning feature</li>
 <li>Enhancements to USSMSG10 support module</li>
-<li>Enhancements to Virtel Web Macro interface (VWM)<ul>
+<li>Enhancements to Virtel Web Macro interface (VWM)</li>
 <li>Keyboard mapping enhancements</li>
-</ul>
-</li>
-<li>Enhancements to Virtel Dynamic Directories Interface (DDI)<ul>
+<li>Enhancements to Virtel Dynamic Directories Interface (DDI)</li>
 <li>Hotkey support for DDI macros</li>
 <li>New refresh options.</li>
-</ul>
-</li>
 </ul>
 <p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
 <ul class="simple">
@@ -253,25 +251,20 @@ their respective owners.</p>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For further details see the Technical Newsletter <a class="reference internal" href="../../newsletters/TN201706/TN201706     .html#tn201706"><span class="std std-ref">Whats new in Virtel 4.57</span></a>.</p>
+<p class="last">For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.57.</p>
 </div>
 </div>
 <div class="section" id="virtel-version-4-56-21-jun-2016">
-<h3>1.10 Virtel version 4.56 (21 Jun 2016)<a class="headerlink" href="#virtel-version-4-56-21-jun-2016" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.56 (21 Jun 2016)<a class="headerlink" href="#virtel-version-4-56-21-jun-2016" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>VIRPLEX VSAMTYP=WRITER support in TCT.</li>
 <li>Enhancements to HTML Administration interface</li>
-<li>Enhancements to Virtel Web Macro interface (VWM)<ul>
+<li>Enhancements to Virtel Web Macro interface (VWM)</li>
 <li>Keyboard mapping</li>
-</ul>
-</li>
-<li>Enhancements to Virtel Dynamic Directories Interface (DDI)<ul>
+<li>Enhancements to Virtel Dynamic Directories Interface (DDI)</li>
 <li>Synchronisation with VWM</li>
 </ul>
-</li>
-</ul>
-<p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
 <p><em>Miscellaneous:</em></p>
 <ul class="simple">
 <li>LSR and WTO corrections.</li>
@@ -279,30 +272,23 @@ their respective owners.</p>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For further details see the Technical Newsletter <a class="reference internal" href="../../newsletters/TN201607/TN201607.html#tn201607"><span class="std std-ref">Whats new in Virtel 4.57</span></a>.</p>
+<p class="last">For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.57.</p>
 </div>
 </div>
 <div class="section" id="virtel-version-4-55-31-mar-2015">
-<h3>1.9 Virtel version 4.55 (31 Mar 2015)<a class="headerlink" href="#virtel-version-4-55-31-mar-2015" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.55 (31 Mar 2015)<a class="headerlink" href="#virtel-version-4-55-31-mar-2015" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>New toolbar button to toggle the 3278T mode for APL and TEXT conversion.</li>
 </ul>
 <p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
-<ul>
-<li><p class="first">‘QUICKLNK’ supports multiple containers.</p>
-</li>
-<li><p class="first">VIRPLEX ‘SHRHTTP’ line type.</p>
-</li>
-<li><p class="first">VIRPLEX communication.</p>
-</li>
-<li><p class="first">Enhancements to RULE processing - $REJECT$ parameter.</p>
-</li>
-<li><p class="first">Transaction SCRIPT command enhancements</p>
-</li>
-<li><p class="first">Additional commands for scenarios:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
+<li>‘QUICKLNK’ supports multiple containers.</li>
+<li>VIRPLEX ‘SHRHTTP’ line type.</li>
+<li>VIRPLEX communication.</li>
+<li>Enhancements to RULE processing - $REJECT$ parameter.</li>
+<li>Transaction SCRIPT command enhancements</li>
+<li>Additional commands for scenarios:</li>
 <li>COPY$ supports column to variable with TYPE=REP</li>
 <li>Screen positioning support for SET$, CASE$ and COPY$</li>
 <li>MAP$ JSON support for COMMAREA</li>
@@ -315,9 +301,6 @@ their respective owners.</p>
 <li>COPY$ CURRENT-LINE copies SCREEN-POSITION ifield values to a variable.</li>
 <li>APPLICATON-OPTION support.</li>
 <li>SCENARIO FAIL | SUCCESS parameter.</li>
-</ul>
-</div></blockquote>
-</li>
 </ul>
 <p><em>Miscellaneous:</em></p>
 <ul class="simple">
@@ -341,11 +324,11 @@ their respective owners.</p>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For further details see the Technical Newsletter <a class="reference internal" href="../../newsletters/TN201522/TN201522.html#tn201522"><span class="std std-ref">Whats new in Virtel 4.55</span></a>.</p>
+<p class="last">For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.57.</p>
 </div>
 </div>
 <div class="section" id="virtel-version-4-54-05-mar-2015">
-<h3>1.8 Virtel version 4.54 (05 Mar 2015)<a class="headerlink" href="#virtel-version-4-54-05-mar-2015" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.54 (05 Mar 2015)<a class="headerlink" href="#virtel-version-4-54-05-mar-2015" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Universal Protocol:</em></p>
 <ul class="simple">
 <li>TPIPE now supports multiple ICONNECT lines</li>
@@ -366,14 +349,12 @@ their respective owners.</p>
 <li>OPTION$ statement now supports ‘QUICKLNK’ line type.</li>
 <li>Support of VTA protocol through ‘QUICKLNK’ line type.</li>
 <li>Support of VTA CONTAINERS</li>
-<li>Additional commands for scenarios:<ul>
+<li>Additional commands for scenarios:</li>
 <li>ACTION$ now allows ‘Program Tab’ key to invoke scenario</li>
 <li>COPY$ SYSTEM-TO-VARIABLE now supports TYPE=REPLACE</li>
 <li>MAP$ instruction now supports positive/negative sign</li>
 <li>MAP$ instruction supports decimal point for FORMAT TYPE=S9</li>
 <li>New template instruction IF-SOUND-ALARM-IS-REQUESTED</li>
-</ul>
-</li>
 </ul>
 <p><em>Miscellaneous:</em></p>
 <ul class="simple">
@@ -388,7 +369,7 @@ their respective owners.</p>
 <p>‘TRAN’ parameter can be specified on MQ Line definition - Character translation.</p>
 </div>
 <div class="section" id="virtel-version-4-53-24-sep-2014">
-<h3>1.7 Virtel version 4.53 (24 Sep 2014)<a class="headerlink" href="#virtel-version-4-53-24-sep-2014" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.53 (24 Sep 2014)<a class="headerlink" href="#virtel-version-4-53-24-sep-2014" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>Allow FR-850 charset for IND$FILE transfer</li>
@@ -396,21 +377,17 @@ their respective owners.</p>
 <li>Macro management enhancements for multi files synchronisation</li>
 <li>Outsourcing of all messages for multi-language support</li>
 <li>Support of cut and paste in I-Frame mode for Firefox, and Chrome</li>
-<li>Additional HTML tags:<ul>
+<li>Additional HTML tags:</li>
 <li>VALUE-OF URL and QUERY</li>
-</ul>
-</li>
 </ul>
 <p><em>VIRTEL Web Integration:</em></p>
 <ul class="simple">
-<li>Additional commands for scenarios:<ul>
+<li>Additional commands for scenarios:</li>
 <li>ACTION$ REFRESH-TERMINAL</li>
 <li>HANDLE$ ABEND</li>
 <li>HANDLE$ LOOP</li>
 <li>PERFORM$ subroutine</li>
 <li>LABEL$</li>
-</ul>
-</li>
 </ul>
 <p><em>Miscellaneous:</em></p>
 <ul class="simple">
@@ -430,7 +407,7 @@ sub-parameter</li>
 </ul>
 </div>
 <div class="section" id="virtel-version-4-52-4-dec-2013">
-<h3>1.6 Virtel version 4.52 (4 Dec 2013)<a class="headerlink" href="#virtel-version-4-52-4-dec-2013" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.52 (4 Dec 2013)<a class="headerlink" href="#virtel-version-4-52-4-dec-2013" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Universal Protocol:</em></p>
 <ul class="simple">
 <li>OTMAPRM parameter to specify security parameters for RESUME TPIPE</li>
@@ -442,19 +419,15 @@ sub-parameter</li>
 <li>Macro management enhancements</li>
 <li>Size limit for IND$FILE upload</li>
 <li>Support for BLINK attribute in IE8+, Firefox, and Chrome</li>
-<li>Additional HTML tags:<ul>
+<li>Additional HTML tags:</li>
 <li>VALUE-OF URL and QUERY</li>
-</ul>
-</li>
 </ul>
 <p><em>VIRTEL Web Modernisation:</em></p>
 <ul class="simple">
 <li>Timeout specifiable for SEND$ TO-LINE</li>
-<li>Additional commands for scenarios:<ul>
+<li>Additional commands for scenarios:</li>
 <li>COPY$ SYSTEM-TO-VARIABLE URL and QUERY</li>
 <li>SEND$ MAXTIME</li>
-</ul>
-</li>
 </ul>
 <p><em>Miscellaneous:</em></p>
 <ul class="simple">
@@ -467,24 +440,20 @@ sub-parameter</li>
 </ul>
 </div>
 <div class="section" id="virtel-version-4-51-18-jul-2013">
-<h3>1.5 Virtel version 4.51 (18 Jul 2013)<a class="headerlink" href="#virtel-version-4-51-18-jul-2013" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.51 (18 Jul 2013)<a class="headerlink" href="#virtel-version-4-51-18-jul-2013" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Universal Protocol:</em></p>
 <ul class="simple">
 <li>Protocol ICONNECT (RESUME TPIPE) for communication with IMS</li>
 </ul>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
-<li>Additional HTML tags:<ul>
+<li>Additional HTML tags:</li>
 <li>NAME-OF VIRTEL-VERSION</li>
-</ul>
-</li>
 </ul>
 <p><em>VIRTEL Web Modernisation:</em></p>
 <ul class="simple">
-<li>Additional commands for scenarios:<ul>
+<li>Additional commands for scenarios:</li>
 <li>COPY$ SYSTEM-TO-VARIABLE VIRTEL-VERSION</li>
-</ul>
-</li>
 </ul>
 <p><em>Miscellaneous:</em></p>
 <ul class="simple">
@@ -496,15 +465,13 @@ sub-parameter</li>
 </ul>
 </div>
 <div class="section" id="virtel-version-4-50-30-jun-2013">
-<h3>1.4 Virtel version 4.50 (30 Jun 2013)<a class="headerlink" href="#virtel-version-4-50-30-jun-2013" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.50 (30 Jun 2013)<a class="headerlink" href="#virtel-version-4-50-30-jun-2013" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>Passticket support</li>
-<li>New Web Access Settings:<ul>
+<li>New Web Access Settings:</li>
 <li>Shift+Enter, Ctrl+Enter</li>
 <li>Line spacing, Character spacing</li>
-</ul>
-</li>
 <li>Ctrl-A to mark whole 3270 screen for copy</li>
 <li>Support for 3270 Graphic Escape characters</li>
 <li>Downloadable fonts</li>
@@ -515,11 +482,9 @@ sub-parameter</li>
 </ul>
 <p><em>VIRTEL Web Modernisation:</em></p>
 <ul class="simple">
-<li>Additional commands for scenarios:<ul>
+<li>Additional commands for scenarios:</li>
 <li>CONVERT$ EBCDIC-TO-UPPERCASE, EBCDIC-TO-LOWERCASE</li>
 <li>COPY$ PASSTICKET</li>
-</ul>
-</li>
 </ul>
 <p><em>MQSeries:</em></p>
 <ul class="simple">
@@ -532,23 +497,19 @@ sub-parameter</li>
 </ul>
 </div>
 <div class="section" id="virtel-version-4-49-30-apr-2013">
-<h3>1.3 Virtel version 4.49 (30 Apr 2013)<a class="headerlink" href="#virtel-version-4-49-30-apr-2013" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.49 (30 Apr 2013)<a class="headerlink" href="#virtel-version-4-49-30-apr-2013" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>Codepages 0037 and 1047 included as standard</li>
-<li>New Web Access Settings:<ul>
+<li>New Web Access Settings:</li>
 <li>Adapt font size ratio</li>
 <li>Additional keyboard remappings for Alt+Ins, Alt+Home, and Alt+F1</li>
 <li>ChgCur key to change cursor shape</li>
-</ul>
-</li>
 <li>Settings page in French and German</li>
 <li>Administrator can hide specific settings</li>
-<li>Additional HTML tags:<ul>
+<li>Additional HTML tags:</li>
 <li>CREATE-VARIABLE-IF TRACING-SCENARIO</li>
 <li>SET-HEADER</li>
-</ul>
-</li>
 <li>Allow Virtel session code to be stored in cookie</li>
 <li>Custom hotspot recognition</li>
 <li>Custom logo for Web Access and Application menus</li>
@@ -557,13 +518,11 @@ sub-parameter</li>
 </ul>
 <p><em>VIRTEL Web Modernisation:</em></p>
 <ul class="simple">
-<li>Additional commands for scenarios:<ul>
+<li>Additional commands for scenarios:</li>
 <li>COPY$ SYSTEM-TO-VARIABLE USER-SECURITY-PROFILE</li>
 <li>DEBUG$</li>
 <li>SET$ SIGNON</li>
 <li>VIRSV$ TRANSACTION OPTION=CLOSE</li>
-</ul>
-</li>
 </ul>
 <p><em>SYSPLEX support:</em></p>
 <ul class="simple">
@@ -575,7 +534,7 @@ sub-parameter</li>
 </ul>
 </div>
 <div class="section" id="virtel-version-4-48-27-nov-2012">
-<h3>1.2 Virtel version 4.48 (27 Nov 2012)<a class="headerlink" href="#virtel-version-4-48-27-nov-2012" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel version 4.48 (27 Nov 2012)<a class="headerlink" href="#virtel-version-4-48-27-nov-2012" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Universal Protocol:</em></p>
 <ul class="simple">
 <li>Menu program VIR0021J</li>
@@ -588,49 +547,35 @@ sub-parameter</li>
 <li>REALM parameter to reduce multiple signon</li>
 <li>Codepage 1047 for C programming</li>
 <li>Codepage override by URL</li>
-<li>New Web Access Settings:<ul>
+<li>New Web Access Settings:</li>
 <li>End key</li>
 <li>Remap caret to logical not</li>
-</ul>
-</li>
-<li>Additional HTML tags:<ul>
+<li>Additional HTML tags:</li>
 <li>CREATE-VARIABLE-FROM (allows a rectangle to be copied from the 3270 screen)</li>
-</ul>
-</li>
 <li>Miscellaneous ergonomic enhancements</li>
 </ul>
-<p><em>VIRTEL Web Modernisation:</em></p>
-<ul>
-<li><p class="first">Support for scenarios stored in VSAM</p>
-</li>
-<li><p class="first">Additional commands for scenarios:</p>
+<p><em>VIRTEL Web Modernisation</em></p>
 <ul class="simple">
+<li>Support for scenarios stored in VSAM</li>
+<li>Additional commands for scenarios:</li>
 <li>ACTION$ PROCESS-RESPONSE</li>
 <li>COPY$ VARIABLE-TO-SYSTEM PASSWORD</li>
 <li>IF$ SCREEN-IS-BLANK</li>
 <li>IF$ SCREEN-IS-UNFORMATTED</li>
 </ul>
-<blockquote>
-<div><p>VIRTEL Web Integration:</p>
-</div></blockquote>
-</li>
-<li><p class="first">New programs CALL VIRSETAI, VIRSETVI for IMS SYSPLEX support:</p>
-</li>
-<li><p class="first">SYSCLONE parameter in LU names</p>
-</li>
-<li><p class="first">Dynamic VIRTCT overrides Miscellaneous:</p>
-</li>
-<li><p class="first">Restart VIRSV service by console command</p>
-</li>
-<li><p class="first">Patch application via the VIRTCT</p>
-</li>
-<li><p class="first">Miscellaneous editorial corrections and enhancements</p>
-</li>
+<p><em>VIRTEL Web Integration</em></p>
+<ul class="simple">
+<li>New programs CALL VIRSETAI, VIRSETVI for IMS SYSPLEX support:</li>
+<li>SYSCLONE parameter in LU names</li>
+<li>Dynamic VIRTCT overrides Miscellaneous:</li>
+<li>Restart VIRSV service by console command</li>
+<li>Patch application via the VIRTCT</li>
+<li>Miscellaneous editorial corrections and enhancements</li>
 </ul>
 </div>
 <div class="section" id="virtel-version-4-47-21-may-2012">
-<h3>1.1 Virtel version 4.47 (21 May 2012)<a class="headerlink" href="#virtel-version-4-47-21-may-2012" title="Permalink to this headline">¶</a></h3>
-<p><em>VIRTEL Universal Protocol:</em></p>
+<h3>Virtel version 4.47 (21 May 2012)<a class="headerlink" href="#virtel-version-4-47-21-may-2012" title="Permalink to this headline">¶</a></h3>
+<p><em>VIRTEL Universal Protocol</em></p>
 <ul class="simple">
 <li>Native TCP/IP protocol</li>
 </ul>
@@ -638,19 +583,15 @@ sub-parameter</li>
 <ul class="simple">
 <li>Support for 3270 FieldMark and Dup characters</li>
 <li>Keystroke buffering</li>
-<li>New Web Access Settings:<ul>
+<li>New Web Access Settings:</li>
 <li>Move cursor on activate</li>
 <li>Omit nulls from input</li>
 <li>Select word by double-click</li>
 <li>Highlight input fields</li>
 <li>Keep keypad and macro pad open</li>
 <li>Field mark and Dup</li>
-</ul>
-</li>
-<li>Additional HTML tags:<ul>
+<li>Additional HTML tags:</li>
 <li>DELETE-ALL-VARIABLES (allows the variable pool to be reset from within page template)</li>
-</ul>
-</li>
 <li>SET-INITIAL-TIMEOUT (allows an initial timeout to be specified within a page)</li>
 <li>SET-LOCAL-OPTIONS JSON-ESCAPES (allows generation of JSON page templates)</li>
 <li>SET-LOCAL-OPTIONS TRACE-LINE, TRACE-RELAY (allows traces to be activated from a page template)</li>
@@ -661,19 +602,17 @@ sub-parameter</li>
 <li>Site customization of colors and logo (custom.css)</li>
 <li>Miscellaneous ergonomic enhancements</li>
 </ul>
-<p><em>VIRTEL Web Modernisation:</em></p>
+<p><em>VIRTEL Web Modernisation</em></p>
 <ul class="simple">
 <li>Screen redesigner upgrade</li>
-<li>Additional commands for scenarios:<ul>
+<li>Additional commands for scenarios:</li>
 <li>CASE$ VARIABLE</li>
 <li>COPY$ LIST-TO-VARIABLE</li>
 <li>COPY$ VARIABLE-TO-SYSTEM NAME-OF DIRECTORY</li>
 <li>FILTER$ VARIABLE-TO-VARIABLE</li>
 <li>MAP$ EXECUTE and RETURN$</li>
 </ul>
-</li>
-</ul>
-<p><em>Miscellaneous:</em></p>
+<p><em>Miscellaneous</em></p>
 <ul class="simple">
 <li>Logon screen for VTAM applications</li>
 <li>Latin-2 translate tables for Eastern European countries</li>
@@ -682,9 +621,9 @@ sub-parameter</li>
 </div>
 </div>
 <div class="section" id="introduction">
-<span id="v457ig-introduction"></span><h2>2. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<span id="v457ig-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-modules">
-<h3>2.1 Virtel Modules<a class="headerlink" href="#virtel-modules" title="Permalink to this headline">¶</a></h3>
+<h3>Virtel Modules<a class="headerlink" href="#virtel-modules" title="Permalink to this headline">¶</a></h3>
 <p>The functionality of VIRTEL is divided into components known as “modules”. The following is a list of the VIRTEL modules:</p>
 <ul class="simple">
 <li>The VIRTEL base kernel</li>
@@ -717,45 +656,47 @@ sub-parameter</li>
 </div>
 </div>
 <div class="section" id="required-environment">
-<h3>2.2 Required Environment<a class="headerlink" href="#required-environment" title="Permalink to this headline">¶</a></h3>
-<p>VIRTEL operates in the MVS or VSE environments. Throughout the VIRTEL documentation, the term “MVS” should be understood to include OS/390 and z/OS, and the term “VSE” should be understood to include VSE/ESA and z/VSE.</p>
-<div class="section" id="mvs-environment">
-<h4>2.2.1 MVS environment<a class="headerlink" href="#mvs-environment" title="Permalink to this headline">¶</a></h4>
-<p>In the MVS environment, VIRTEL runs under the OS/390 or z/OS operating systems. If the VIRTEL MQ interface is used, then MQSeries Version 6 or later is required. Support for the cryptographic functions of VIRTEL requires ICSF Version HCR7740 or later.</p>
+<h3>Required Environment<a class="headerlink" href="#required-environment" title="Permalink to this headline">¶</a></h3>
+<p>VIRTEL operates in the z/OS or z/VSE environments. Throughout the VIRTEL documentation, the term “z/OS” should be understood to include OS/390 and z/OS, and the term “z/VSE” should be understood to include z/VSE/ESA and z/VSE.</p>
+<div class="section" id="z-os-environment">
+<h4>z/OS environment<a class="headerlink" href="#z-os-environment" title="Permalink to this headline">¶</a></h4>
+<p>In the z/OS environment, VIRTEL runs under the OS/390 or z/OS operating systems. If the VIRTEL MQ interface is used, then MQSeries Version 6 or later is required. Support for the cryptographic functions of VIRTEL requires ICSF Version HCR7740 or later.</p>
 </div>
-<div class="section" id="vse-environment">
-<h4>2.2.2 VSE environment<a class="headerlink" href="#vse-environment" title="Permalink to this headline">¶</a></h4>
-<p>In the VSE environment, VIRTEL runs under the VSE/ESA or z/VSE operating systems. TCP/IP access (XOT, VIRTEL Web Access) requires VSE/ESA 2.5.1 or later, or any version of z/VSE.</p>
+<div class="section" id="z-vse-environment">
+<h4>z/VSE environment<a class="headerlink" href="#z-vse-environment" title="Permalink to this headline">¶</a></h4>
+<p>In the z/VSE environment, VIRTEL runs under the z/VSE/ESA or z/VSE operating systems. TCP/IP access (XOT, VIRTEL Web Access) requires z/VSE/ESA 2.5.1 or later, or any version of z/VSE.</p>
 </div>
 <div class="section" id="workstation-pre-requisities">
-<h4>2.2.3 Workstation pre-requisities<a class="headerlink" href="#workstation-pre-requisities" title="Permalink to this headline">¶</a></h4>
+<h4>Workstation pre-requisities<a class="headerlink" href="#workstation-pre-requisities" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL Web Access requires a standard web browser on the user’s workstation. Supported browsers include:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Microsoft Internet Explorer Version 6 or above</li>
+<ul class="simple">
+<li>Microsoft Edge (For Windows 10)</li>
+<li>Microsoft Internet Explorer Version 8 or above</li>
 <li>Firefox Version 15 or above (for Windows 7 or Vista)</li>
 <li>Firefox Version 17 or above (for Windows XP)</li>
 <li>Chrome Version 23 or above</li>
 <li>Opera Version 15 or above</li>
 <li>Safari Version 5 or above</li>
 </ul>
-</div></blockquote>
 <p>VIRTEL Web Access requires JavaScript to be enabled in the browser.</p>
 </div>
 </div>
 </div>
-<div class="section" id="installing-virtel-under-mvs">
-<span id="v457ig-installmvs"></span><h2>3. Installing VIRTEL under MVS<a class="headerlink" href="#installing-virtel-under-mvs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-virtel-under-z-os">
+<span id="v457ig-installz-os"></span><h2>Installing VIRTEL under z/OS<a class="headerlink" href="#installing-virtel-under-z-os" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="installation-procedure">
-<h3>3.1 Installation procedure<a class="headerlink" href="#installation-procedure" title="Permalink to this headline">¶</a></h3>
-<p>In the MVS environment, VIRTEL is delivered as a zipped XMIT file containing the VIRTEL datasets compressed in DF/ DSS dump format. The following sections provide details of the installation method.</p>
-<p>A quick “installation check-list” to start the VIRTEL Web Access function for MVS can be found at the end of this section.</p>
+<h3>Installation procedure<a class="headerlink" href="#installation-procedure" title="Permalink to this headline">¶</a></h3>
+<p>In the z/OS environment, VIRTEL is delivered as a zipped XMIT file containing the VIRTEL datasets compressed in DF/ DSS dump format. The following sections provide details of the installation method.</p>
+<p>A quick “installation check-list” to start the VIRTEL Web Access function for z/OS can be found at the end of this section.</p>
 <div class="section" id="restoring-from-the-xmit-file">
-<h4>3.1.1 Restoring from the XMIT file<a class="headerlink" href="#restoring-from-the-xmit-file" title="Permalink to this headline">¶</a></h4>
+<h4>Restoring from the XMIT file<a class="headerlink" href="#restoring-from-the-xmit-file" title="Permalink to this headline">¶</a></h4>
 <p>All the VSAM and non-VSAM datasets required for the installation of VIRTEL are contained in a zipped XMIT file which can be downloaded from the Syspertec file server. The size of the zipped file is approximately 2MB. Two JCL files ($ALOCDSU and $RESTDSU) are also     included in the zip file. The procedure for obtaining and uploading the file is as follows:</p>
-<p>3.1.1.1 Step 1</p>
+<div class="section" id="step-1">
+<h5>Step 1<a class="headerlink" href="#step-1" title="Permalink to this headline">¶</a></h5>
 <p>Login to the Syspertec file server <a class="reference external" href="http://ftp.syspertec.com/">http://ftp.syspertec.com</a> using the userid and password supplied to you by Syspertec. Navigate to the “Public” – “VIRTEL 4.57” – “Products” folder and download the virtel457mvs.zip file. Unzip this file into a folder on your workstation.</p>
-<p>3.1.1.2 Step 2</p>
+</div>
+<div class="section" id="step-2">
+<h5>Step 2<a class="headerlink" href="#step-2" title="Permalink to this headline">¶</a></h5>
 <p>Run the job $ALOCDSU to allocate a sequential file named userid.TRANSFER.XMIT with DCB attributes (RECFM=FB, LRECL=80):</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>//SPALODSU JOB 1,MSGCLASS=X,CLASS=A,NOTIFY=&amp;SYSUID
 //*-------------------------------------------------------------------*
@@ -798,9 +739,11 @@ PROF                                            /* POUR GENERER CC=0 */
 //*-------------------------------------------------------------------*
 </pre></div>
 </div>
-<p>Figure 3.1 <em>JCL for allocating an XMIT file (MVS)</em></p>
+<p><em>JCL for allocating an XMIT file (z/OS)</em></p>
 <p>The parameters SET VOLM=SPT001 and SET UNIT=3390 at the start of this job should be changed as appropriate to match the volume on which the userid.TRANSFER.XMIT dataset is to be allocated.</p>
-<p>3.1.1.3 Step 3</p>
+</div>
+<div class="section" id="step-3">
+<h5>Step 3<a class="headerlink" href="#step-3" title="Permalink to this headline">¶</a></h5>
 <p>Using FTP or IND$FILE, upload the file virtel457mvs.xmit to the host transfer file created in step 1. It is very important to ensure that the upload is performed in binary mode. The following is an example of an FTP session to perform the upload:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">:</span>\<span class="n">temp</span><span class="o">&gt;</span><span class="n">ftp</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.1</span>
 <span class="n">Connected</span> <span class="n">to</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">0.1</span><span class="o">.</span>
@@ -822,37 +765,39 @@ PROF                                            /* POUR GENERER CC=0 */
 <span class="n">C</span><span class="p">:</span>\<span class="n">temp</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p><em>Figure 2.2 FTP session for uploading an XMIT file (MVS)</em></p>
-<p>3.1.1.4 Step 4</p>
+<p><em>FTP session for uploading an XMIT file (z/OS)</em></p>
+</div>
+<div class="section" id="step-4">
+<h5>Step 4<a class="headerlink" href="#step-4" title="Permalink to this headline">¶</a></h5>
 <p>Run the job $RESTDSU to unpack the transfer file and to restore the VIRTEL datasets by means of the ADRDSSU utility program:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>//SPRESDSU JOB 1,MSGCLASS=X,CLASS=A,NOTIFY=&amp;SYSUID
-//\*-------------------------------------------------------------------\*
-//\*--\* Binary File Transfer - STEP No 3 \*--\*
-//\*--\* \*--\*
-//\*--\* Function : Reception and reload of the files \*--\*
-//\*--\* \*--\*
-//\*--\* Replace &#39;??????&#39; by target volume serial number \*--\*
-//\*--\* Replace &#39;yourqual&#39; by target DSN high-level qualifier
-\*--\*
-//\*-------------------------------------------------------------------\*
-//\*-------------------------------------------------------------------\*
-//\* Reception of the .XMIT File \*
-//\*-------------------------------------------------------------------\*
+//*-------------------------------------------------------------------*
+//*--* Binary File Transfer - STEP No 3 *--*
+//*--* *--*
+//*--* Function : Reception and reload of the files *--*
+//*--* *--*
+//*--* Replace &#39;??????&#39; by target volume serial number *--*
+//*--* Replace &#39;yourqual&#39; by target DSN high-level qualifier
+*--*
+//*-------------------------------------------------------------------*
+//*-------------------------------------------------------------------*
+//* Reception of the .XMIT File *
+//*-------------------------------------------------------------------*
 //BATCHTS EXEC PGM=IKJEFT1A,REGION=4M
-//SYSPRINT DD SYSOUT=\*
-//SYSTSPRT DD SYSOUT=\*
+//SYSPRINT DD SYSOUT=*
+//SYSTSPRT DD SYSOUT=*
 //XMITFILE DD DSN=&amp;SYSUID..TRANSFER.XMIT,DISP=OLD
-//SYSTSIN DD \*
+//SYSTSIN DD *
 RECEIVE INFILE(XMITFILE) DA(TRANSFER.DSSDUMP)
-//\*
-//\*-------------------------------------------------------------------\*
-//\* Reload of the initial files \*
-//\*-------------------------------------------------------------------\*
+//*
+//*-------------------------------------------------------------------*
+//* Reload of the initial files *
+//*-------------------------------------------------------------------*
 //DSSREST EXEC PGM=ADRDSSU,REGION=6M,COND=(0,NE)
-//SYSPRINT DD SYSOUT=\*
+//SYSPRINT DD SYSOUT=*
 //DUMPFILE DD DSN=&amp;SYSUID..TRANSFER.DSSDUMP,DISP=(OLD,DELETE)
 RESTORE -
-DS(INCLUDE(SPRODUIT.VIRTEL.BASE\*.\*\*)) -
+DS(INCLUDE(SPRODUIT.VIRTEL.BASE*.**)) -
 OUTDYNAM(??????,3390) /* &lt;==== VOLUME, UNIT ===== */ -
 RENAMEUNC( -
     (SPRODUIT.VIRTEL.BASE457.LOADLIB, -
@@ -902,7 +847,7 @@ RENAMEUNC( -
     //
 </pre></div>
 </div>
-<p><em>Figure 3.2 JCL for restoring from an XMIT file (MVS)</em></p>
+<p><em>JCL for restoring from an XMIT file (z/OS)</em></p>
 <p>The following changes should be made to this job before submitting it:</p>
 <ul class="simple">
 <li>If the VIRTEL datasets are not to be managed by SMS, alter the statement OUTDYNAM(??????,3390) to specify the volume on which the datasets are to be allocated.</li>
@@ -911,17 +856,24 @@ RENAMEUNC( -
 <li>The ADMIN and TOL(ENQF) parameters may be uncommented if you are authorized to the necessary STGADMIN profiles.</li>
 </ul>
 </div>
-<div class="section" id="applying-ptfs">
-<h4>3.1.2 Applying PTFs<a class="headerlink" href="#applying-ptfs" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="maintenance-procedure">
+<h3>Maintenance Procedure<a class="headerlink" href="#maintenance-procedure" title="Permalink to this headline">¶</a></h3>
 <p>As a general rule the application of PTFs is necessary and recommended. PTFs are maintenance files which must be applied to the VIRTEL LOADLIB to correct problems which have been discovered subsequent to the building of the VIRTEL 4.57 release, or to add new function which will be included as standard in the next release. A second type of PTF consists of elements such as HTML pages, style sheets, and JavaScript files, which must be uploaded into the VIRTEL directories in the SAMPTRSF VSAM file. This type of PTF may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format.</p>
-<p>3.1.2.1 Obtaining PTFs</p>
+<div class="section" id="obtaining-ptfs-and-updates">
+<h4>Obtaining PTFs and Updates<a class="headerlink" href="#obtaining-ptfs-and-updates" title="Permalink to this headline">¶</a></h4>
 <p>To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the “Public” – “VIRTEL 4.57” – “PTFS for version 4.57” folder, and download the ptfs-mvs457.txt file. If the file does not exist, then there are no PTFs to be applied.</p>
 <p>Alternatively, you may receive the allptfs-mvs457.txt file by e-mail from Syspertec support.</p>
-<p>3.1.2.2 Uploading PTFs</p>
-<p>The allptfs-mvs457.txt file should be uploaded in text format to member PTF457MV of the VIRTEL CNTL library.</p>
+</div>
+<div class="section" id="uploading-ptfs">
+<h4>Uploading PTFs<a class="headerlink" href="#uploading-ptfs" title="Permalink to this headline">¶</a></h4>
+<p>The allptfs-z/OS457.txt file should be uploaded in text format to member PTF457MV of the VIRTEL CNTL library.</p>
 <p>For PTFs which contain elements to be uploaded to VIRTEL, first unzip the elements to a directory on your workstation. Then use the “Upload” link from the VIRTEL Web Access page at <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a> to upload the elements one by one to the W2H-DIR directory.</p>
 <p>In the case of a PTF containing a replacement SAMPTRSF file in DF/DSS XMIT format, use the procedure previously described ($ALOCDSU and $RESTDSU) to upload the file in binary and retrieve the SAMPTRSF VSAM file.</p>
-<p>3.1.2.3 Applying PTFs</p>
+</div>
+<div class="section" id="applying-ptfs">
+<h4>Applying PTFs<a class="headerlink" href="#applying-ptfs" title="Permalink to this headline">¶</a></h4>
 <p>The recovered PTFs are applied to the VIRTEL LOADLIB by using AMASPZAP with the IGNIDRFULL parameter. The ZAPJCL member in the VIRTEL CNTL library (shown below) performs the apply. This job should complete with return code 0000 or 0004.:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRPTF</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">ZAPJCL</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span>
@@ -937,8 +889,10 @@ RENAMEUNC( -
 <span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">CNTL</span><span class="p">(</span><span class="o">&amp;</span><span class="n">MEMBER</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
 </pre></div>
 </div>
-<p><em>Figure 3.3 Member ZAPJCL for applying PTFs (MVS)</em></p>
-<p>3.1.2.4 Restarting VIRTEL and validation of PTF level</p>
+<p><em>Member ZAPJCL for applying PTFs (z/OS)</em></p>
+</div>
+<div class="section" id="restarting-virtel-and-validation-of-ptf-level">
+<h4>Restarting VIRTEL and validation of PTF level<a class="headerlink" href="#restarting-virtel-and-validation-of-ptf-level" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL must be stopped and restarted to allow the newly-applied PTFs to take effect. The list of PTFs applied is displayed near the beginning of the SYSMSGLG dataset during VIRTEL startup by message VIR0018I, as shown in the following example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">VIR0018I</span> <span class="mi">3876</span><span class="p">,</span><span class="mi">3876</span><span class="n">A</span><span class="p">,</span><span class="mi">3882</span><span class="p">,</span><span class="mi">3902</span><span class="p">,</span><span class="mi">3904</span><span class="p">,</span><span class="mi">3906</span><span class="p">,</span><span class="mi">3928</span><span class="p">,</span><span class="mi">3934</span>
 
@@ -947,8 +901,9 @@ RENAMEUNC( -
 </div>
 </div>
 <div class="section" id="upgrading-a-previous-release">
-<h4>3.1.3 Upgrading a previous release<a class="headerlink" href="#upgrading-a-previous-release" title="Permalink to this headline">¶</a></h4>
-<p>3.1.3.1 Datasets to be upgraded</p>
+<h4>Upgrading a previous release<a class="headerlink" href="#upgrading-a-previous-release" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="datasets-to-be-upgraded">
+<h5>Datasets to be upgraded<a class="headerlink" href="#datasets-to-be-upgraded" title="Permalink to this headline">¶</a></h5>
 <p>If you already have a previous release of VIRTEL installed (version 4.00 or later) then you only need the datasets shown in the figure below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT457</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT457</span><span class="o">.</span><span class="n">MACLIB</span>
@@ -979,7 +934,11 @@ RENAMEUNC( -
 <p class="first admonition-title">Note</p>
 <p class="last">It is also possible to copy your existing files into the files of the new release using IDCAMS REPRO (or by ARBOLOAD for the VIRARBO file).</p>
 </div>
-<p>3.1.3.2 Upgrade procedure</p>
+</div>
+</div>
+</div>
+<div class="section" id="upgrade-procedure">
+<h3>Upgrade procedure<a class="headerlink" href="#upgrade-procedure" title="Permalink to this headline">¶</a></h3>
 <p>The procedure for upgrading from a previous release of VIRTEL (version 4.00 or later) is as follows. Customers upgrading from  earlier releases of VIRTEL should contact Syspertec for technical support.</p>
 <ol class="arabic simple">
 <li>Upload and unpack the virtel457mvs.xmit file as described in the previous section.</li>
@@ -987,23 +946,22 @@ RENAMEUNC( -
 <li>Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new VIRT457.CNTL</li>
 <li>Reassemble your VIRTCTnn module using the ASMTCT job in VIRT457.CNTL</li>
 <li>If you have any scenario or user exit modules, copy them to the VIRT457.CNTL library and reassemble them using the ASMSCEN and ASMEXIT jobs respectively.</li>
-<li>Add the new VIRT457.LOADLIB library to the system APF list in the MVS PARMLIB and use the SETPROG command to authorize the VIRT457.LOADLIB library.</li>
-<li>Edit your VIRTEL procedure in the MVS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRT457.LOADLIB, and that the SAMPTRSF DD statement references the new VIRT457.SAMP.TRSF dataset.</li>
+<li>Add the new VIRT457.LOADLIB library to the system APF list in the z/OS PARMLIB and use the SETPROG command to authorize the VIRT457.LOADLIB library.</li>
+<li>Edit your VIRTEL procedure in the z/OS PROCLIB, to ensure that the STEPLIB, DFHRPL, and SERVLIB DD statements reference the new VIRT457.LOADLIB, and that the SAMPTRSF DD statement references the new VIRT457.SAMP.TRSF dataset.</li>
 <li>If upgrading from a version prior to VIRTEL 4.43, add a VIRTRACE DD statement to the VIRTEL procedure, as shown in the next section.</li>
 <li>If you have modified the default values for the VIRTEL Web Access Settings (as described in the VIRTEL Web Access Guide), upload your customized w2hparm.js file into the CLI-DIR directory and check that the CLI-03P transaction (under the CLIWHOST entry point) references CLI-DIR in the “Application” field. If you do not find a CLI-03P transaction, run job CUSTCSS from the VIRTEL SAMPLIB.</li>
 <li>Stop and restart VIRTEL.</li>
 </ol>
 </div>
-</div>
-<div class="section" id="applying-vwa-user-interface-update">
-<h3>3.2. Applying VWA User Interface Update<a class="headerlink" href="#applying-vwa-user-interface-update" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="applying-maintenace-updates">
+<h3>Applying Maintenace Updates<a class="headerlink" href="#applying-maintenace-updates" title="Permalink to this headline">¶</a></h3>
 <p>Under certain circumstances it may be necessary to apply maintenance in the form of User Interface Updates. These may be distributed either by e-mail, or available on Syspertec FTP Server.
 An update is available as a ZIP file containing the cumulative days update the version. The file is represented in the form VirtelxxxUpdtnnnnn.zip where xxx is the version of Virtel to which it relates and nnnn the reference of the update itself. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by category, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate.</p>
 <p>Generally, the file still contains a sub directory named ” W2H ” whose content must be reloaded into the W2H-DIR using one of the methods described in section “Uploading HTML Pages” from document “Virtel Web Access User Guide”.</p>
 </div>
-<div class="section" id="executing-virtel-in-an-mvs-environment">
-<h3>3.3 Executing Virtel in an MVS environment<a class="headerlink" href="#executing-virtel-in-an-mvs-environment" title="Permalink to this headline">¶</a></h3>
-<p>VIRTEL can run as a JOB or as an STC. An example JCL procedure is contained in member VIRTEL4 of the VIRTEL SAMPLIB. If VIRTEL is to be run as an STC, this member must be copied into a system PROCLIB and renamed as VIRTEL:</p>
+<div class="section" id="executing-virtel-in-an-z-os-environment">
+<h3>Executing Virtel in an z/OS environment<a class="headerlink" href="#executing-virtel-in-an-z-os-environment" title="Permalink to this headline">¶</a></h3>
+<p>VIRTEL can run as a JOB or as an STC. An example JCL procedure is contained in member VIRTEL4 of the VIRTEL SAMPLIB. If VIRTEL is to be run as an STC, this member must be copied into a system PROCLIB and renamed as VIRTEL.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTEL</span> <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT457</span><span class="p">,</span>
 <span class="o">//*</span> <span class="n">QUALMQ</span><span class="o">=</span><span class="n">CSQ600</span><span class="p">,</span>   <span class="o">&lt;--</span> <span class="n">MQSeries</span> <span class="n">qualifier</span>
 <span class="o">//</span>  <span class="n">APPLID</span><span class="o">=</span><span class="p">,</span>         <span class="o">&lt;--</span> <span class="n">Default</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">VIRTCT</span>
@@ -1036,9 +994,9 @@ An update is available as a ZIP file containing the cumulative days update the v
 <span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 </pre></div>
 </div>
-<p><em>Figure 3.4 VIRTEL started task JCL procedure (MVS)</em></p>
+<p><em>VIRTEL started task JCL procedure for (z/OS)</em></p>
 <div class="section" id="required-and-optional-files-for-virtel">
-<h4>3.3.1 Required and optional files for Virtel<a class="headerlink" href="#required-and-optional-files-for-virtel" title="Permalink to this headline">¶</a></h4>
+<h4>Required and optional files for Virtel<a class="headerlink" href="#required-and-optional-files-for-virtel" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>Files STEPLIB, DFHRPL are always required</li>
 <li>Files VIRARBO, VIRSWAP are always required</li>
@@ -1055,7 +1013,7 @@ An update is available as a ZIP file containing the cumulative days update the v
 </ul>
 </div>
 <div class="section" id="apf-authorisation-userid-and-priority">
-<h4>3.3.2 APF authorisation, userid and priority<a class="headerlink" href="#apf-authorisation-userid-and-priority" title="Permalink to this headline">¶</a></h4>
+<h4>APF authorisation, userid and priority<a class="headerlink" href="#apf-authorisation-userid-and-priority" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL must run from an APF-authorized library if either of the following is true:</p>
 <ul class="simple">
 <li>External security (RACF, TOP SECRET, or ACF2) is selected by means of the SECUR parameter of the VIRTCT</li>
@@ -1066,23 +1024,28 @@ An update is available as a ZIP file containing the cumulative days update the v
 <p>It is necessary for VIRTEL to run at the same priority as VTAM and TCP/IP. This is usually done by assigning VIRTEL to service class SYSSTC in the workload manager. It is also recommended that VIRTEL run non swappable (DONTSWA=YES in the VIRTCT).</p>
 </div>
 <div class="section" id="optional-jcl-parameters">
-<h4>3.3.3. Optional JCL parameters<a class="headerlink" href="#optional-jcl-parameters" title="Permalink to this headline">¶</a></h4>
+<h4>Optional JCL parameters<a class="headerlink" href="#optional-jcl-parameters" title="Permalink to this headline">¶</a></h4>
 <p>Some parameters have a value taken by VIRTEL either from the VIRTCT or from some definition contained in the
 VIRARBO file. The purpose of using JCL parameters is to lower the coupling between the TCT, ARBO and instances of
 VIRTEL so that there is less dependency on the parameters defined in the ARBO and TCT for any one VIRTEL instance.
-If running under z/OS, the parameter list can be transmitted by using the PARM card. If under VSE, it can be done by
+If running under z/OS, the parameter list can be transmitted by using the PARM card. If under z/VSE, it can be done by
 using a SYSIN card. In both cases, parameters are positionnals and coma separated as above:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TCT</span><span class="p">,</span><span class="n">APPLID</span><span class="p">,</span><span class="n">VTOVER</span><span class="p">,</span><span class="n">IP</span><span class="p">,</span><span class="n">CLONE</span>
 </pre></div>
 </div>
-<p>3.3.3.1. TCT parameter</p>
+<div class="section" id="tct-parameter">
+<h5>TCT parameter<a class="headerlink" href="#tct-parameter" title="Permalink to this headline">¶</a></h5>
 <p>All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. By default, VIRTEL
 try to use the module VIRTCT01. If you want to use another specific VIRTCT module for startup you must specify its
 suffix in the first position of the PARM card.</p>
-<p>3.3.3.2. APPLID parameter</p>
+</div>
+<div class="section" id="applid-parameter">
+<h5>APPLID parameter<a class="headerlink" href="#applid-parameter" title="Permalink to this headline">¶</a></h5>
 <p>The APPLID parameter of the VIRTCT specifies the label or ACBNAME parameter of the VTAM APPL for the primary
 VIRTEL ACB. The value specified in the second position of the PARM card will overide this value.</p>
-<p>3.3.3.3. VTOVER parameter</p>
+</div>
+<div class="section" id="vtover-parameter">
+<h5>VTOVER parameter<a class="headerlink" href="#vtover-parameter" title="Permalink to this headline">¶</a></h5>
 <p>The VTOVER parameter may overrides any VIRTCT MQn parameter defined with the “%” wildchar characters. This
 feature is depending on the presence of VTOVER=VTDYNAM within the VIRTCT. For exemple:-</p>
 <p>In the VIRTCT:</p>
@@ -1104,9 +1067,7 @@ feature is depending on the presence of VTOVER=VTDYNAM within the VIRTCT. For ex
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIR0000</span> <span class="n">EXEC</span> <span class="n">SPVIR5</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="s1">&#39;SP3VIR5&#39;</span><span class="p">,</span><span class="n">VTOVER</span><span class="o">=</span><span class="s1">&#39;67BCD&#39;</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">At</span> <span class="n">execution</span> <span class="n">time</span><span class="p">:</span>
-</pre></div>
-</div>
+<p>At execution time:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRQ903W</span> <span class="n">LINE</span> <span class="n">lin1name</span> <span class="n">HAS</span> <span class="n">A</span> <span class="n">SESSION</span> <span class="n">STARTED</span> <span class="n">WITH</span> <span class="n">MQM</span> <span class="n">CSQ7</span>
 <span class="n">VIRQ923E</span> <span class="n">lin1name</span> <span class="n">REQ</span> <span class="n">MQOPEN</span> <span class="n">COMPLETION</span> <span class="n">CODE</span> <span class="mi">00000002</span> <span class="n">REASON</span> <span class="n">CODE</span> <span class="mi">00000825</span> <span class="p">(</span><span class="mi">00002085</span><span class="p">)</span> <span class="n">MQM</span> <span class="n">CSQ7</span>
 <span class="n">VIRQ923E</span> <span class="n">lin1name</span> <span class="n">PARAM</span> <span class="n">ABCD</span><span class="o">.</span><span class="n">VIRTELOUT</span>
@@ -1118,7 +1079,9 @@ feature is depending on the presence of VTOVER=VTDYNAM within the VIRTCT. For ex
 <p class="first admonition-title">Note</p>
 <p class="last">The value specified must be placed in the third position of the PARM card.</p>
 </div>
-<p>3.3.3.4. IP parameter</p>
+</div>
+<div class="section" id="ip-parameter">
+<h5>IP parameter<a class="headerlink" href="#ip-parameter" title="Permalink to this headline">¶</a></h5>
 <p>Currently the IP address used by VIRTEL for a particular line can be derived from being:-</p>
 <blockquote>
 <div><ol class="arabic simple">
@@ -1132,7 +1095,9 @@ option (2) with the ability to specify the IP address as a keyword in the JCL PA
 </pre></div>
 </div>
 <p>This reduces the need to specify the HOME address in the ARBO for inbound lines thereby reducing the coupling between the various VIRTEL instances that could be running within a complex and the ARBO structures. Inbound address can just define the port via the :port structure only rather than the full nnn.nnn.nnn.nnn:port specification. The IP= keyword will provide the nnn.nnn.nnn.nnn address structure for a particular instance of Virtel. So one ARBO file could provide common port addresses and the VIRTEL instance complements this with a specific IP address using the JCL IP= parameter. This also allows VIRTEL to utilize a multi TCP/IP stack environment without the need for duplicated ARBO files. This value can be placed ine the fourth position of the PARM card.</p>
-<p>3.3.3.5. CLONE parameter</p>
+</div>
+<div class="section" id="clone-parameter">
+<h5>CLONE parameter<a class="headerlink" href="#clone-parameter" title="Permalink to this headline">¶</a></h5>
 <p>Currently, VIRTEL makes use of the System Symbolic &amp;SYSCLONE to enable substitution of the “+” character with the two character symbolic value of the System Symbolic. This can be used with the TCT APPLID field and terminal relay names defined in the ARBO. The purpose is to facilitate the common use of an ARBO file across multiple instances of VIRTEL, however, this feature is restricted to supporting only one instance of VIRTEL per LPAR. When multiple instances are required on any one LPAR the System Symbolic &amp;SYSCLONE and SYSPLUS=YES feature do not provide sufficient uniqueness, consequently multiple ARBO files are required. This feature endeavours to remove the restriction by providing an override through the use of the CLONE=nn in the JCL parameter. When specified, the CLONE value will override the IBM system symbolic value and will be used to replace the “plus” character as defined in the APPLID or terminal relay names. JCL example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR6000</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;EH,,,192.168.170.30,00&#39;</span>
 </pre></div>
@@ -1156,17 +1121,20 @@ option (2) with the ability to specify the IP address as a keyword in the JCL PA
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="executing-virtel">
-<h4>3.3.4 Executing Virtel<a class="headerlink" href="#executing-virtel" title="Permalink to this headline">¶</a></h4>
+<h4>Executing Virtel<a class="headerlink" href="#executing-virtel" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL is started by executing the command S VIRTEL from the system console. Message VIR0000I indicates that the product started properly.</p>
 </div>
 <div class="section" id="stopping-virtel">
-<h4>3.3.5 Stopping Virtel<a class="headerlink" href="#stopping-virtel" title="Permalink to this headline">¶</a></h4>
+<h4>Stopping Virtel<a class="headerlink" href="#stopping-virtel" title="Permalink to this headline">¶</a></h4>
 <p>VIRTEL may be stopped by issuing the following command:-</p>
-<p>P VIRTEL</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">VIRTEL</span>
+</pre></div>
 </div>
-<div class="section" id="mvs-installation-check-list">
-<h4>3.4 MVS Installation Check-list<a class="headerlink" href="#mvs-installation-check-list" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="z-os-installation-check-list">
+<h4>z/OS Installation Check-list<a class="headerlink" href="#z-os-installation-check-list" title="Permalink to this headline">¶</a></h4>
 <p>Here is a standard “check-list” to start the WEB to HOST VIRTEL function:</p>
 <ol class="arabic simple">
 <li>Download the following files from our FTP server <a class="reference external" href="http://ftp.syspertec.com/">http://ftp.syspertec.com</a><ul>
@@ -1176,7 +1144,7 @@ option (2) with the ability to specify the IP address as a keyword in the JCL PA
 </ul>
 </li>
 <li>Run job $ALOCDSU to create the TRANSFER.XMIT file.</li>
-<li>Upload the virtel457mvs.xmit file to the TRANSFER.XMIT file in binary    mode.</li>
+<li>Upload the virtel457mvs.xmit file to the TRANSFER.XMIT file in binary mode.</li>
 <li>Edit job $RESTDSU specifying the high-level qualifiers and SMS or volume serial information for the VIRTEL datasets. Run job $RESTDSU to create the VIRTEL datasets yourqual.VIRT457.xxxxxx</li>
 <li>Apply the PTFs in the allptfs-mvs457.txt file using job ZAPJCL in the VIRTEL CNTL library. If this file does not exist, skip this step.</li>
 <li>Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list</li>
@@ -1208,20 +1176,17 @@ into VIRT457.LOADLIB.</p>
 <li>Set ARBO= the name of your VIRTEL ARBO file</li>
 <li>Set VTAMLST= the name of a your VIRTEL CNTL library. The job will create a sample VTAMLST member in this library.</li>
 <li>CHANGE ALL ‘DBDCCICS’ ‘xxxxxx’ where xxxxxx is the APPLID of your CICS system.</li>
+<li>If you changed the APPLID of VIRTEL in step 4 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01.</li>
 </ol>
 </div></blockquote>
 </li>
 </ol>
 <blockquote>
-<div><ol class="loweralpha simple" start="7">
-<li>If you changed the APPLID of VIRTEL in step 4 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01.</li>
-</ol>
-<p>Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.</p>
+<div><p>Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">If you need to rerun the ARBOLOAD job, you must change PARM=’LOAD,NOREPL’ to PARM=’LOAD,REPL’</p>
+<p class="last">If you need to rerun the ARBOLOAD job, you must change PARM=’LOAD,NOREPL’ to PARM=’LOAD,REPL’. If you wish to completely start over from the beginning, you can run the job ARBOBASE to delete and reinitialize the ARBO file, followed by a rerun of the ARBOLOAD job.</p>
 </div>
-<p>If you wish to completely start over from the beginning, you can run the job ARBOBASE to delete and reinitialize the ARBO file, followed by a rerun of the ARBOLOAD job.</p>
 </div></blockquote>
 <ol class="arabic simple" start="10">
 <li>Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.</li>
@@ -1243,11 +1208,11 @@ into VIRT457.LOADLIB.</p>
 </div>
 </div>
 </div>
-<div class="section" id="installing-virtel-under-vse">
-<h2>4. Installing VIRTEL under VSE<a class="headerlink" href="#installing-virtel-under-vse" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installing-virtel-under-z-vse">
+<h2>Installing VIRTEL under z/VSE<a class="headerlink" href="#installing-virtel-under-z-vse" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id1">
-<h3>4.1 Installation procedure<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Installation of VIRTEL under VSE consists of the following steps. Each step is described in detail in the sections which follow.</p>
+<h3>Installation procedure<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Installation of VIRTEL under z/VSE consists of the following steps. Each step is described in detail in the sections which follow.</p>
 <ul class="simple">
 <li>Load the installation jobs into the POWER READER QUEUE</li>
 <li>Define the VIRT457.SUBLIB sublibrary</li>
@@ -1262,15 +1227,15 @@ into VIRT457.LOADLIB.</p>
 <li>Define the VIRTEL start procedure</li>
 </ul>
 <div class="section" id="loading-the-installation-jobs">
-<h4>4.1.1 Loading the installation jobs<a class="headerlink" href="#loading-the-installation-jobs" title="Permalink to this headline">¶</a></h4>
-<p>The installation jobs are delivered on an unlabeled 3480 tape cartridge. To load the installation jobs into the POWER reader queue, enter the command S RDR,cuu at the VSE console (where cuu represents the address of the tape drive on which you have mounted the cartridge). The following jobs will be loaded into your Reader:-</p>
+<h4>Loading the installation jobs<a class="headerlink" href="#loading-the-installation-jobs" title="Permalink to this headline">¶</a></h4>
+<p>The installation jobs are delivered on an unlabeled 3480 tape cartridge. To load the installation jobs into the POWER reader queue, enter the command S RDR,cuu at the z/VSE console (where cuu represents the address of the tape drive on which you have mounted the cartridge). The following jobs will be loaded into your Reader:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Queue</span> <span class="k">with</span> <span class="n">DISP</span><span class="o">=</span><span class="n">L</span><span class="p">,</span> <span class="n">CLASS</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="15%" />
-<col width="85%" />
+<col width="18%" />
+<col width="82%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Module</th>
@@ -1296,17 +1261,24 @@ into VIRT457.LOADLIB.</p>
 <tr class="row-odd"><td>VIRSAPI</td>
 <td>load the SCRNAPI macro library</td>
 </tr>
-<tr class="row-even"><td>VIRTVS</td>
-<td><p class="first"><strong>VIRTVS1</strong> - define VIRARBO and VIRSWAP files</p>
-<p><strong>VIRTVS2</strong> - initialise VIRARBO file</p>
-<p><strong>VIRTVS3</strong> -define VIRSTAT file</p>
-<p><strong>VIRTVS4</strong> - define VIRCMP3 file</p>
-<p><strong>VIRTVS5</strong> - define VIRCAPT file</p>
-<p><strong>VIRTVS6</strong> - define SAMPTRF file</p>
-<p><strong>VIRTVS7</strong> - define HTMLTRF file</p>
-<p><strong>VIRTVS8</strong> - load SAMPTRF file</p>
-<p class="last"><strong>VIRTVS9</strong> - define VIRHTML file</p>
-</td>
+<tr class="row-even"><td rowspan="9">VIRTVS</td>
+<td><strong>VIRTVS1</strong> - define VIRARBO and VIRSWAP files</td>
+</tr>
+<tr class="row-odd"><td><strong>VIRTVS2</strong> - initialise VIRARBO file</td>
+</tr>
+<tr class="row-even"><td><strong>VIRTVS3</strong> -define VIRSTAT file</td>
+</tr>
+<tr class="row-odd"><td><strong>VIRTVS4</strong> - define VIRCMP3 file</td>
+</tr>
+<tr class="row-even"><td><strong>VIRTVS5</strong> - define VIRCAPT file</td>
+</tr>
+<tr class="row-odd"><td><strong>VIRTVS6</strong> - define SAMPTRF file</td>
+</tr>
+<tr class="row-even"><td><strong>VIRTVS7</strong> - define HTMLTRF file</td>
+</tr>
+<tr class="row-odd"><td><strong>VIRTVS8</strong> - load SAMPTRF file</td>
+</tr>
+<tr class="row-even"><td><strong>VIRTVS9</strong> - define VIRHTML file</td>
 </tr>
 <tr class="row-odd"><td>VIRTCT</td>
 <td>VIRTEL parameter table assembly example</td>
@@ -1332,17 +1304,25 @@ into VIRT457.LOADLIB.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">You will need to modify certain of the installation jobs before submitting them. Once the jobs have been read onto the POWER queue, you can copy them to an ICCF library (using ICCF option 3224 Operations - Manage Batch Queues – Input Queue – Copy to Primary Library) or read them into your VM machine for editing.</p>
 </div>
-<p>4.1.1.1 Sites installing VIRTEL for the first time</p>
+</div>
+<div class="section" id="sites-installing-virtel-for-the-first-time">
+<h4>Sites installing VIRTEL for the first time<a class="headerlink" href="#sites-installing-virtel-for-the-first-time" title="Permalink to this headline">¶</a></h4>
 <p>Jobs VIRTLIB, VIRTCIL, VIRTSSL, VIRTVS, VIRTCT, VIRMOD, and VIRTAPPL must be executed as described below.</p>
-<p>4.1.1.2 Sites upgrading from a previous version</p>
+</div>
+<div class="section" id="sites-upgrading-from-a-previous-version">
+<h4>Sites upgrading from a previous version<a class="headerlink" href="#sites-upgrading-from-a-previous-version" title="Permalink to this headline">¶</a></h4>
 <p>Execute jobs VIRTLIB, VIRTCIL and VIRTSSL to create a new VIRT457.SUBLIB. Change your VIRTEL execution JCL to reference the new sublibrary You can retain your existing VSAM files.</p>
-<p>4.1.1.3 Sites using VIRTEL Web Access</p>
-<p>The files required for VIRTEL Web Access base functions are loaded in steps VIRTVS6, VIRTVS7, VIRTVS8, and VIRTVS9 of job VIRTVS. If you wish to use VIRTEL Host-Web Services to script your 3270 applications, run job VIRSAPI also.</p>
-<p>4.1.1.4 Sites using VIRTEL A2A</p>
+</div>
+<div class="section" id="sites-using-virtel-web-access">
+<h4>Sites using VIRTEL Web Access<a class="headerlink" href="#sites-using-virtel-web-access" title="Permalink to this headline">¶</a></h4>
+<p>The files required for VIRTEL Web Access base functions are loaded in steps VIRTVS6, VIRTVS7, VIRTVS8, and VIRTVS9 of job VIRTVS. If you wish to use VIRTEL Host-Web Services to script your 3270 applications, run job VIRSAPI also. See Host-Web-Services in the Virtel User Guide for further information.</p>
+</div>
+<div class="section" id="sites-using-virtel-a2a">
+<h4>Sites using VIRTEL A2A<a class="headerlink" href="#sites-using-virtel-a2a" title="Permalink to this headline">¶</a></h4>
 <p>Customers wishing to use VIRTEL Application-to-Application functions should also run jobs VIRFA29 and VIRAPI.</p>
 </div>
 <div class="section" id="defining-the-library">
-<h4>4.1.2 Defining the library<a class="headerlink" href="#defining-the-library" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the library<a class="headerlink" href="#defining-the-library" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRTLIB,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRTLIB
@@ -1387,11 +1367,11 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.1 VIRTLIB : JCL to define the sublibrary (VSE)</em></p>
+<p><em>VIRTLIB : JCL to define the sublibrary (z/VSE)</em></p>
 <p>Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRT457.SUBLIB for version 4.57. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.</p>
 </div>
 <div class="section" id="loading-the-executable-modules">
-<h4>4.1.3 Loading the executable modules<a class="headerlink" href="#loading-the-executable-modules" title="Permalink to this headline">¶</a></h4>
+<h4>Loading the executable modules<a class="headerlink" href="#loading-the-executable-modules" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRTCIL,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRTCIL
@@ -1415,9 +1395,8 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.2 VIRTCIL : JCL to load the executable modules (VSE)</em></p>
-<blockquote>
-<div>Start the job to load the executable modules by entering the POWER command</div></blockquote>
+<p><em>VIRTCIL : JCL to load the executable modules (z/VSE)</em></p>
+<p>Start the job to load the executable modules by entering the POWER command</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">RDR</span><span class="p">,</span><span class="n">VIRTCIL</span>
 </pre></div>
 </div>
@@ -1428,7 +1407,7 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 <p>where xxxxx represents the name of the sublibrary you defined in the previous job.</p>
 </div>
 <div class="section" id="loading-the-source-modules">
-<h4>4.1.4 Loading the source modules<a class="headerlink" href="#loading-the-source-modules" title="Permalink to this headline">¶</a></h4>
+<h4>Loading the source modules<a class="headerlink" href="#loading-the-source-modules" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRTSSL,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRTSSL
@@ -1450,7 +1429,7 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.3 VIRTSSL : JCL to load the source modules (VSE)</em></p>
+<p><em>VIRTSSL : JCL to load the source modules (z/VSE)</em></p>
 <p>Start the job to load the source modules by entering the POWER commands:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">RDR</span><span class="p">,</span><span class="n">VIRTSSL</span>
 <span class="n">R</span> <span class="n">RDR</span><span class="p">,</span><span class="n">VIRFA29</span>
@@ -1484,7 +1463,7 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.4 VIRFA29 : JCL to load the FA29 macros (VSE)</em></p>
+<p><em>VIRFA29 : JCL to load the FA29 macros (z/VSE)</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRAPI,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRAPI
@@ -1506,7 +1485,7 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.5 VIRAPI : JCL to load the VIRAPI macros (VSE)</em></p>
+<p><em>VIRAPI : JCL to load the VIRAPI macros (z/VSE)</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRSAPI,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRSAPI
@@ -1528,10 +1507,10 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.6 VIRAPI : JCL to load the SCRNAPI macros (VSE)</em></p>
+<p><em>VIRAPI : JCL to load the SCRNAPI macros (z/VSE)</em></p>
 </div>
 <div class="section" id="defining-the-virarbo-and-virswap-files">
-<h4>4.1.5. Defining the VIRARBO and VIRSWAP files<a class="headerlink" href="#defining-the-virarbo-and-virswap-files" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the VIRARBO and VIRSWAP files<a class="headerlink" href="#defining-the-virarbo-and-virswap-files" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">JOB</span> <span class="n">VIRTVS</span>
 <span class="o">//</span> <span class="n">SETPARM</span> <span class="n">TAPE</span><span class="o">=</span><span class="mi">590</span>
 <span class="o">*</span> <span class="o">*****************************************************************</span>
@@ -1585,11 +1564,11 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 4.7 VIRTVS1 : JCL to define the VIRARBO and VIRSWAP files (VSE)</em></p>
+<p><em>VIRTVS1 : JCL to define the VIRARBO and VIRSWAP files (z/VSE)</em></p>
 <p>Step VIRTVS1 of job VIRTVS contains an example of defining the VIRARBO and VIRSWAP files. This job is provided as an example, and may need to be modified prior to execution. The parameters SETPARM TAPE=590 and VOLUMES(SYSWK1), and possible the catalog name, may need to be modified.</p>
 </div>
 <div class="section" id="initialisation-of-the-virarbo-file">
-<h4>4.1.6. Initialisation of the VIRARBO file<a class="headerlink" href="#initialisation-of-the-virarbo-file" title="Permalink to this headline">¶</a></h4>
+<h4>Initialisation of the VIRARBO file<a class="headerlink" href="#initialisation-of-the-virarbo-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">*****************************************************************</span>
 <span class="o">*</span> <span class="o">*</span> <span class="n">VIRTVS2</span> <span class="o">*</span> <span class="n">INITIALISATION</span> <span class="n">OF</span> <span class="n">VIRARBO</span> <span class="n">FILE</span> <span class="o">*</span>
 <span class="o">*</span> <span class="o">*****************************************************************</span>
@@ -1604,7 +1583,7 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 4.8 VIRTVS2 : JCL to initialise the VIRARBO file (VSE)</em></p>
+<p><em>VIRTVS2 : JCL to initialise the VIRARBO file (z/VSE)</em></p>
 <p>Step VIRTVS2 of job VIRTVS loads the base configuration definitions into the VIRARBO file. The default language is English. To load the French language version of the base configuration, change the</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">MTC</span> <span class="n">FSF</span><span class="p">,</span><span class="n">SYS004</span><span class="p">,</span><span class="mi">2</span>
 </pre></div>
@@ -1616,7 +1595,7 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 <p>before submitting this job.</p>
 </div>
 <div class="section" id="defining-the-virstat-file">
-<h4>4.1.7. Defining the VIRSTAT file<a class="headerlink" href="#defining-the-virstat-file" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the VIRSTAT file<a class="headerlink" href="#defining-the-virstat-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">*****************************************************************</span>
 <span class="o">*</span> <span class="o">*</span> <span class="n">VIRTVS3</span> <span class="o">*</span> <span class="n">DEFINITION</span> <span class="n">OF</span> <span class="n">VIRSTAT</span> <span class="n">FILE</span> <span class="o">*</span>
 <span class="o">*</span> <span class="o">*****************************************************************</span>
@@ -1644,11 +1623,11 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
  <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 4.9 VIRTVS3 : JCL to define the VIRSTAT file (VSE)</em></p>
+<p><em>Figure 4.9 VIRTVS3 : JCL to define the VIRSTAT file (z/VSE)</em></p>
 <p>Step VIRTVS3 of job VIRTVS contains an example of defining the VIRSTAT file. This job is provided as an example, and may need to be modified prior to execution. The VIRSTAT file is required unless the STATS parameter of the VIRTCT is set to NO.</p>
 </div>
 <div class="section" id="defining-the-vircmp3-file">
-<h4>4.1.8. Defining the VIRCMP3 file<a class="headerlink" href="#defining-the-vircmp3-file" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the VIRCMP3 file<a class="headerlink" href="#defining-the-vircmp3-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">*****************************************************************</span>
 <span class="o">*</span> <span class="o">*</span> <span class="n">VIRTVS4</span> <span class="o">*</span> <span class="n">DEFINITION</span> <span class="n">AND</span> <span class="n">INITIALIZATION</span> <span class="n">OF</span> <span class="n">VIRCMP3</span> <span class="n">FILE</span> <span class="o">*</span>
 <span class="o">*</span> <span class="o">*****************************************************************</span>
@@ -1679,11 +1658,11 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 4.10 VIRTVS4 : JCL to define the VIRCMP3 file (VSE)</em></p>
+<p><em>VIRTVS4 : JCL to define the VIRCMP3 file (z/VSE)</em></p>
 <p>Step VIRTVS4 of job VIRTVS contains an example of defining the VIRCMP3 file. This job is provided as an example, and may need to be modified prior to execution. The VIRCMP3 file is used by the level 3 compression feature of VIRTEL/PC, and is required unless the COMPR3 parameter of the VIRTCT is set to NO.</p>
 </div>
 <div class="section" id="defining-the-vircapt-file">
-<h4>4.1.9. Defining the VIRCAPT file<a class="headerlink" href="#defining-the-vircapt-file" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the VIRCAPT file<a class="headerlink" href="#defining-the-vircapt-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">*****************************************************************</span>
 <span class="o">*</span> <span class="o">*</span> <span class="n">VIRTVS5</span> <span class="o">*</span> <span class="n">DEFINITION</span> <span class="n">AND</span> <span class="n">INITIALIZATION</span> <span class="n">OF</span> <span class="n">VIRCAPT</span> <span class="n">FILE</span> <span class="o">*</span>
 <span class="o">*</span> <span class="o">*****************************************************************</span>
@@ -1714,11 +1693,11 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 4.11 VIRTVS5 : JCL to define the VIRCAPT file (VSE)</em></p>
+<p><em>Figure 4.11 VIRTVS5 : JCL to define the VIRCAPT file (z/VSE)</em></p>
 <p>Step VIRTVS5 of job VIRTVS contains an example of defining the VIRCAPT file. This job is provided as an example, and may need to be modified prior to execution. The VIRCAPT file is used by the videotext page capture feature, and is referenced by the FCAPT parameter of the VIRTCT.</p>
 </div>
 <div class="section" id="defining-the-samptrf-file">
-<h4>4.1.10. Defining the SAMPTRF file<a class="headerlink" href="#defining-the-samptrf-file" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the SAMPTRF file<a class="headerlink" href="#defining-the-samptrf-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* *****************************************************************
 * * VIRTVS6 * DEFINITION AND INITIALIZATION OF SAMPTRF FILE *
 * *****************************************************************
@@ -1755,11 +1734,11 @@ $$$$IWS.WORKREC.INW$TEMP
 /*
 </pre></div>
 </div>
-<p><em>Figure 4.12 VIRTVS6 : JCL to define the SAMPTRF file (VSE)</em></p>
+<p><em>VIRTVS6 : JCL to define the SAMPTRF file (z/VSE)</em></p>
 <p>Step VIRTVS6 of job VIRTVS contains an example of defining the SAMPTRF file. This job is provided as an example, and may need to be modified prior to execution. The SAMPTRF file contains sample HTML page templates and other elements for the VIRTEL Web Access feature, and is referenced by the UFILEx parameter of the VIRTCT.</p>
 </div>
 <div class="section" id="defining-the-htmltrf-file">
-<h4>4.1.11. Defining the HTMLTRF file<a class="headerlink" href="#defining-the-htmltrf-file" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the HTMLTRF file<a class="headerlink" href="#defining-the-htmltrf-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* *****************************************************************
 * * VIRTVS7 * DEFINITION AND INITIALIZATION OF HTMLTRF FILE *
 * *****************************************************************
@@ -1797,11 +1776,11 @@ $$$$IWS.WORKREC.INW$TEMP
 /*
 </pre></div>
 </div>
-<p><em>Figure 4.13 VIRTVS7 : JCL to define the HTMLTRF file (VSE)</em></p>
+<p><em>Figure 4.13 VIRTVS7 : JCL to define the HTMLTRF file (z/VSE)</em></p>
 <p>Step VIRTVS7 of job VIRTVS contains an example of defining the HTMLTRF file. This job is provided as an example, and may need to be modified prior to execution. The HTMLTRF file is used by the VIRTEL Web Access feature to store HTML pages, and is referenced by the UFILEx parameter of the VIRTCT.</p>
 </div>
 <div class="section" id="loading-the-samptrf-file">
-<h4>4.1.12. Loading the SAMPTRF file<a class="headerlink" href="#loading-the-samptrf-file" title="Permalink to this headline">¶</a></h4>
+<h4>Loading the SAMPTRF file<a class="headerlink" href="#loading-the-samptrf-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">*****************************************************************</span>
 <span class="o">*</span> <span class="o">*</span> <span class="n">VIRTVS8</span> <span class="o">*</span> <span class="n">LOAD</span> <span class="n">DATA</span> <span class="n">INTO</span> <span class="n">SAMPTRF</span> <span class="n">FILE</span> <span class="o">*</span>
 <span class="o">*</span> <span class="o">*****************************************************************</span>
@@ -1816,11 +1795,11 @@ $$$$IWS.WORKREC.INW$TEMP
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 4.14 VIRTVS8 : JCL to load the SAMPTRF file (VSE)</em></p>
+<p><em>VIRTVS8 : JCL to load the SAMPTRF file (z/VSE)</em></p>
 <p>Step VIRTVS8 of job VIRTVS contains and example of the JCL required to load the sample HTML pages into the SAMPTRF file. This job is required for sites using VIRTEL Web Access.</p>
 </div>
 <div class="section" id="defining-the-virhtml-file">
-<h4>4.1.13. Defining the VIRHTML file<a class="headerlink" href="#defining-the-virhtml-file" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the VIRHTML file<a class="headerlink" href="#defining-the-virhtml-file" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">*****************************************************************</span>
 <span class="o">*</span> <span class="o">*</span> <span class="n">VIRTVS9</span> <span class="o">*</span> <span class="n">DEFINITION</span> <span class="n">AND</span> <span class="n">INITIALIZATION</span> <span class="n">OF</span> <span class="n">VIRHTML</span> <span class="n">FILE</span> <span class="o">*</span>
 <span class="o">*</span> <span class="o">*****************************************************************</span>
@@ -1856,19 +1835,19 @@ $$$$IWS.WORKREC.INW$TEMP
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 4.15 VIRTVS9 : JCL to define the VIRHTML file (VSE)</em></p>
+<p><em>VIRTVS9 : JCL to define the VIRHTML file (z/VSE)</em></p>
 <p>Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. This job is provided as an example, and may need to be modified prior to execution. The VIRHTML file is used by the VIRTEL Web Access feature to store the names of E-mail correspondents, and is referenced by the HTVSAM parameter of the VIRTCT.</p>
 </div>
 <div class="section" id="assembling-the-virtct">
-<h4>4.1.14. Assembling the VIRTCT<a class="headerlink" href="#assembling-the-virtct" title="Permalink to this headline">¶</a></h4>
-<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the VSE, MVS and VM environments, please refer to section <a class="reference internal" href="#v457ig-bookmark01"><span class="std std-ref">VIRTCT</span></a>.</p>
+<h4>Assembling the VIRTCT<a class="headerlink" href="#assembling-the-virtct" title="Permalink to this headline">¶</a></h4>
+<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section <a class="reference internal" href="#v457ig-bookmark01"><span class="std std-ref">VIRTCT</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Users in France should use job VIRTCTFR instead of VIRTCTUS.</p>
 </div>
 </div>
 <div class="section" id="assembling-the-modvirt-mode-table">
-<h4>4.1.15. Assembling the MODVIRT mode table<a class="headerlink" href="#assembling-the-modvirt-mode-table" title="Permalink to this headline">¶</a></h4>
+<h4>Assembling the MODVIRT mode table<a class="headerlink" href="#assembling-the-modvirt-mode-table" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRMOD,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRMOD
@@ -1894,11 +1873,11 @@ $$$$IWS.WORKREC.INW$TEMP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.16 VIRMOD : Assembling the MODVIRT mode table (VSE)</em></p>
+<p><em>VIRMOD : Assembling the MODVIRT mode table (z/VSE)</em></p>
 <p>Job VIRMOD contains an example of the JCL required to assemble the VTAM mode table (MODVIRT) supplied with VIRTEL.</p>
 </div>
 <div class="section" id="updating-the-virarbo-file-arboload">
-<h4>4.1.16. Updating the VIRARBO file (ARBOLOAD)<a class="headerlink" href="#updating-the-virarbo-file-arboload" title="Permalink to this headline">¶</a></h4>
+<h4>Updating the VIRARBO file (ARBOLOAD)<a class="headerlink" href="#updating-the-virarbo-file-arboload" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRCONF,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRCONF
@@ -1949,8 +1928,8 @@ $$$$IWS.WORKREC.INW$TEMP
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.17 VIRCONF : ARBOLOAD job to update the VIRARBO file (VSE)</em></p>
-<p>Job VIRCONF contains an example of a job to load configuration elements into the VIRARBO file. This is the equivalent of the MVS job known as ARBOLOAD. Before running this job, you will need to make the following modifications:</p>
+<p><em>Figure 4.17 VIRCONF : ARBOLOAD job to update the VIRARBO file (z/VSE)</em></p>
+<p>Job VIRCONF contains an example of a job to load configuration elements into the VIRARBO file. This is the equivalent of the z/OS job known as ARBOLOAD. Before running this job, you will need to make the following modifications:</p>
 <ul class="simple">
 <li>Select the desired features (for example, WEB=YES, XOT=YES)</li>
 <li>Change all ‘DBDCCICS’ to the APPLID of your CICS system.</li>
@@ -1961,7 +1940,7 @@ $$$$IWS.WORKREC.INW$TEMP
 </div>
 </div>
 <div class="section" id="cataloging-the-vtam-application-book">
-<h4>4.1.17. Cataloging the VTAM application book<a class="headerlink" href="#cataloging-the-vtam-application-book" title="Permalink to this headline">¶</a></h4>
+<h4>Cataloging the VTAM application book<a class="headerlink" href="#cataloging-the-vtam-application-book" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRTAPPL,CLASS=0,DISP=L
 * $$ LST DA
 // JOB VIRTAPPL
@@ -1988,11 +1967,11 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.18 VIRTAPPL : Cataloging the application major node (VSE)</em></p>
+<p><em>VIRTAPPL : Cataloging the application major node (z/VSE)</em></p>
 <p>Job VIRTAPPL contains an example of cataloging the VTAM application book. The VTAM application node VIRTAPPL must be activated before starting VIRTEL. This job is provided as an example, and may need to be modified prior to execution.</p>
 </div>
 <div class="section" id="defining-the-cics-resources">
-<h4>4.1.18. Defining the CICS resources<a class="headerlink" href="#defining-the-cics-resources" title="Permalink to this headline">¶</a></h4>
+<h4>Defining the CICS resources<a class="headerlink" href="#defining-the-cics-resources" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRGROUP,CLASS=A,DISP=D,NTFY=YES
 * $$ LST DA
 // JOB VIRGROUP CREATION CICS CSD GROUP VIRTEL
@@ -2011,41 +1990,40 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 * *****************************************************************
 // EXEC DFHCSDUP,SIZE=AUTO
 * VIRTEL 3270 TERMINALS FOR WEB2HOST
-  DEFINE TE(T000) G(VIRTEL) TY(VSELU2Q) NE(RHTVT000) PRINTER(I000)
+  DEFINE TE(T000) G(VIRTEL) TY(z/VSELU2Q) NE(RHTVT000) PRINTER(I000)
       DESC(VIRTEL WEB TO HOST TERMINAL)
-  DEFINE TE(T001) G(VIRTEL) TY(VSELU2Q) NE(RHTVT001) PRINTER(I001)
+  DEFINE TE(T001) G(VIRTEL) TY(z/VSELU2Q) NE(RHTVT001) PRINTER(I001)
       DESC(VIRTEL WEB TO HOST TERMINAL)
-  DEFINE TE(T002) G(VIRTEL) TY(VSELU2Q) NE(RHTVT002) PRINTER(I002)
+  DEFINE TE(T002) G(VIRTEL) TY(z/VSELU2Q) NE(RHTVT002) PRINTER(I002)
       DESC(VIRTEL WEB TO HOST TERMINAL)
       etc.
 * VIRTEL 3284 PRINTERS FOR WEB2HOST
-  DEFINE TE(I000) G(VIRTEL) TY(VSELU3Q) NE(RHTIM000)
+  DEFINE TE(I000) G(VIRTEL) TY(z/VSELU3Q) NE(RHTIM000)
       DESC(VIRTEL WEB TO HOST PRINTER)
-  DEFINE TE(I001) G(VIRTEL) TY(VSELU3Q) NE(RHTIM001)
+  DEFINE TE(I001) G(VIRTEL) TY(z/VSELU3Q) NE(RHTIM001)
       DESC(VIRTEL WEB TO HOST PRINTER)
-  DEFINE TE(I002) G(VIRTEL) TY(VSELU3Q) NE(RHTIM002)
+  DEFINE TE(I002) G(VIRTEL) TY(z/VSELU3Q) NE(RHTIM002)
       DESC(VIRTEL WEB TO HOST PRINTER)
     etc.
 * ADD VIRTEL GROUP TO STARTUP LIST
-  ADD GROUP(VIRTEL) LIST(VSELIST)
+  ADD GROUP(VIRTEL) LIST(z/VSELIST)
  /*
 /&amp;
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.19 VIRGROUP : Defining the CICS resources (VSE)</em></p>
+<p><em>VIRGROUP : Defining the CICS resources (z/VSE)</em></p>
 <p>Job VIRGROUP contains an example of defining the the CICS resources which are correspond to the relays and virtual printers used by VIRTEL Web Access. This job is provided as an example, and may need to be modified prior to execution.</p>
 </div>
-<div class="section" id="v457ig-bookmark02">
-<span id="id2"></span><h4>4.2. Applying VWA User Interface Update<a class="headerlink" href="#v457ig-bookmark02" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="applying-vwa-user-interface-update">
+<span id="v457ig-bookmark02"></span><h4>Applying VWA User Interface Update<a class="headerlink" href="#applying-vwa-user-interface-update" title="Permalink to this headline">¶</a></h4>
 <p>Under certain circumstances it may be necessary to apply maintenance in the form of User Interface Updates. These may be distributed either by e-mail, or available on Syspertec FTP Server.
-An update is available as a ZIP file containing the cumulative days update the version. The file is represented in the form VirtelxxxUpdtnnnnn.zip where xxx is the version of Virtel to which it relates and nnnn the reference of the update itself. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by category, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate. Generally, the file still contains a sub directory named ” W2H ” whose content must be reloaded into the W2H-DIR
-using one of the methods described in section “Uploading HTML Pages” from document “Virtel Web Access User Guide”.</p>
+An update is available as a ZIP file containing the cumulative days update the version. The file is represented in the form VirtelxxxUpdtnnnnn.zip where xxx is the version of Virtel to which it relates and nnnn the reference of the update itself. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by category, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate. Generally, the file still contains a sub directory named ” W2H ” whose content must be reloaded into the W2H-DIR using one of the methods described in section “Web Enitity Management” in the “Virtel Administration Guide”.</p>
 </div>
 </div>
-<div class="section" id="executing-virtel-in-a-vse-environment">
-<h3>4.3. Executing VIRTEL In A VSE Environment<a class="headerlink" href="#executing-virtel-in-a-vse-environment" title="Permalink to this headline">¶</a></h3>
-<p>Job VIRTEL contains an example of the VSE startup JCL for VIRTEL. Program VIR0000 reads a parameter card indicating the suffix of the VIRTCT to be used. This suffix must be two characters long and must start in column 1 of the parameter card. In the example supplied, the suffix is 01, indicating that parameter table VIRTCT01 is to be used. The TCT suffix may optionally be followed by a comma and the VTAM APPLID. If the APPLID is not specified then the value in the VIRTCT is used. The partition used must have a size of at least 1.5MB and must have 1MB of GETVIS. The priority of the VIRTEL partition must be immediately below that of VTAM.</p>
+<div class="section" id="executing-virtel-in-a-z-vse-environment">
+<h3>Executing VIRTEL In A z/VSE Environment<a class="headerlink" href="#executing-virtel-in-a-z-vse-environment" title="Permalink to this headline">¶</a></h3>
+<p>Job VIRTEL contains an example of the z/VSE startup JCL for VIRTEL. Program VIR0000 reads a parameter card indicating the suffix of the VIRTCT to be used. This suffix must be two characters long and must start in column 1 of the parameter card. In the example supplied, the suffix is 01, indicating that parameter table VIRTCT01 is to be used. The TCT suffix may optionally be followed by a comma and the VTAM APPLID. If the APPLID is not specified then the value in the VIRTCT is used. The partition used must have a size of at least 1.5MB and must have 1MB of GETVIS. The priority of the VIRTEL partition must be immediately below that of VTAM.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRTEL,CLASS=4,DISP=L,PRI=9
 * $$ LST DA
 // JOB VIRTEL
@@ -2079,13 +2057,13 @@ using one of the methods described in section “Uploading HTML Pages” from do
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.20 VIRTEL startup JCL (VSE)</em></p>
+<p><em>VIRTEL startup JCL (z/VSE)</em></p>
 <div class="section" id="specifying-the-tcp-ip-partition">
-<h4>4.2.1. Specifying the TCP/IP partition<a class="headerlink" href="#specifying-the-tcp-ip-partition" title="Permalink to this headline">¶</a></h4>
+<h4>Specifying the TCP/IP partition<a class="headerlink" href="#specifying-the-tcp-ip-partition" title="Permalink to this headline">¶</a></h4>
 <p>If you have more than one TCP/IP stack, you can use the OPTION SYSPARM=’nn’ statement to specify the ID of the TCP/IP stack. VIRTEL will attempt to connect to the TCP/IP partition which has PARM=’ID=nn’ in its JCL. If OPTION is not specified, VIRTEL will attempt to connect to the default TCP/IP whose ID is 00.</p>
 </div>
-<div class="section" id="id3">
-<h4>4.2.2. Stopping VIRTEL<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h4>Stopping VIRTEL<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>To stop VIRTEL, enter the command:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">xx</span><span class="p">,</span><span class="n">DATA</span><span class="o">=</span><span class="n">STOP</span>
 </pre></div>
@@ -2093,15 +2071,11 @@ using one of the methods described in section “Uploading HTML Pages” from do
 <p>where xx is the identifier of the partition in which VIRTEL is running.</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h3>4.3. Applying PTFs<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>Under certain circumstances it may be necessary to apply maintenance in the form of PTFs. These may be distributed either by e-mail, or on a 3480 cartridge.</p>
-<div class="section" id="loading-from-a-3480-cartridge">
-<h4>4.3.1. Loading from a 3480 cartridge<a class="headerlink" href="#loading-from-a-3480-cartridge" title="Permalink to this headline">¶</a></h4>
-<p>PTFs are supplied on an unlabeled tape. The tape contains the PTFs to be applied at your site and has been generated by DITTO. The record length is 81 and the blocksize is 8100. To load the PTFs from the tape, enter the command DITTO TC cuu where cuu is the address of your tape unit. The contents of the tape will be placed in the VSE Punch. Copy the contents of the Punch into a library and add the necessary execution JCL before submitting the job.</p>
-</div>
+<div class="section" id="id3">
+<h3>Applying PTFs<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Under certain circumstances it may be necessary to apply maintenance in the form of PTFs. These may be distributed through the Virtel FTP Server or by e-mail.</p>
 <div class="section" id="application-of-the-ptfs">
-<h4>4.3.2. Application of the PTFs<a class="headerlink" href="#application-of-the-ptfs" title="Permalink to this headline">¶</a></h4>
+<h4>Application of the PTFs<a class="headerlink" href="#application-of-the-ptfs" title="Permalink to this headline">¶</a></h4>
 <p>To apply the PTFs, use the following JCL:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=PTFnnnn,CLASS=0,DISP=D,PRI=9
 * $$ LST DA
@@ -2115,15 +2089,15 @@ using one of the methods described in section “Uploading HTML Pages” from do
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 4.21 JCL for applying PTFs (VSE)</em></p>
+<p><em>JCL for applying PTFs (z/VSE)</em></p>
 </div>
 </div>
 </div>
+<div class="section" id="vtam">
+<h2>VTAM<a class="headerlink" href="#vtam" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="vtam-parameters">
-<h2>5. VTAM Parameters<a class="headerlink" href="#vtam-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3>5.1 VTAM parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>This section describes the VTAM definitions required for VIRTEL. The same definitions are used in both the MVS and VSE environments.</p>
+<h3>VTAM parameters<a class="headerlink" href="#vtam-parameters" title="Permalink to this headline">¶</a></h3>
+<p>This section describes the VTAM definitions required for VIRTEL. The same definitions are used in both the z/OS and z/VSE environments.</p>
 </div>
 <div class="section" id="definition-of-the-virtel-primary-acb">
 <h3>5.2. Definition Of The VIRTEL Primary ACB<a class="headerlink" href="#definition-of-the-virtel-primary-acb" title="Permalink to this headline">¶</a></h3>
@@ -2135,7 +2109,7 @@ using one of the methods described in section “Uploading HTML Pages” from do
 <dt>applname</dt>
 <dd>Presents the name of the ACB as it is defined in the APPLID statement of the VIRTCT.</dd>
 </dl>
-<p>An example of a VTAM application node is provided in member VIRTAPPL of the VIRTEL SAMPLIB dataset for MVS, or in the VIRTAPPL installation job for VSE.</p>
+<p>An example of a VTAM application node is provided in member VIRTAPPL of the VIRTEL SAMPLIB dataset for z/OS, or in the VIRTAPPL installation job for VSE.</p>
 </div>
 <div class="section" id="defining-the-vtam-application-relays">
 <h3>5.3. Defining The VTAM Application Relays<a class="headerlink" href="#defining-the-vtam-application-relays" title="Permalink to this headline">¶</a></h3>
@@ -2158,7 +2132,7 @@ logmode such as SNX32702. For 3270 emulation via Minitel, use DLOGREL which is d
 </div>
 <div class="section" id="modetab-for-minitel-x25-and-appc">
 <h3>5.4. MODETAB For Minitel, X25, And APPC<a class="headerlink" href="#modetab-for-minitel-x25-and-appc" title="Permalink to this headline">¶</a></h3>
-<p>If you intend to use Minitel, X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For MVS, a sample job is provided     in the ASMMOD member of the VIRTEL SAMPLIB. For VSE, sample JCL is provided in the VIRMOD installation job.</p>
+<p>If you intend to use Minitel, X25, or APPC, then a mode table named MODVIRT must be assembled and link-edited into the library from which VTAM loads its mode tables. For z/OS, a sample job is provided     in the ASMMOD member of the VIRTEL SAMPLIB. For z/VSE, sample JCL is provided in the VIRMOD installation job.</p>
 <p>The source for the MODVIRT mode table is defined as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MODVIRT</span> <span class="n">MODETAB</span>
 <span class="o">*</span> <span class="n">LOGMODE</span> <span class="k">for</span> <span class="n">LUTYPE2</span> <span class="n">terminals</span>
@@ -2407,11 +2381,11 @@ BINDSecurity ==&gt; No   No ! Yes
 </div>
 <div class="section" id="virtct">
 <span id="v457ig-bookmark01"></span><h2>6. VIRTCT<a class="headerlink" href="#virtct" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id6">
-<h3>6.1 introduction<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. After initialising the different  parameters, this table must be assembled and link edited with the name VIRTCTxx, where xx are the two characters that identify the     VIRTCT at start up time to the system. This xx value will be contained in the parameter of the PARM operand of the VIRTEL start procedure in MVS, or behind the EXEC card in the VSE environment.</p>
-<p>The VIRTCT must be assembled before VIRTEL can be run. At the time of the assembly the VIRTEL macro library VIRT4XX.MACLIB must be on-line. Options RENT and REUS must not be specified when assembling the VIRTCT for an MVS environment. The resulting phase or load module must be placed in the library containing the other phases or load modules required by VIRTEL.</p>
-<p>For MVS, a sample VIRTCT source member is provided in the VIRTCT01 member of the VIRTEL SAMPLIB, and the assembly and link-edit JCL is in member ASMTCT. For VSE, a sample VIRTCT with assembly and link-edit JCL is in the VIRTCT installation job.</p>
+<div class="section" id="id4">
+<h3>6.1 introduction<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. After initialising the different  parameters, this table must be assembled and link edited with the name VIRTCTxx, where xx are the two characters that identify the     VIRTCT at start up time to the system. This xx value will be contained in the parameter of the PARM operand of the VIRTEL start procedure in z/OS, or behind the EXEC card in the z/VSE environment.</p>
+<p>The VIRTCT must be assembled before VIRTEL can be run. At the time of the assembly the VIRTEL macro library VIRT4XX.MACLIB must be on-line. Options RENT and REUS must not be specified when assembling the VIRTCT for an z/OS environment. The resulting phase or load module must be placed in the library containing the other phases or load modules required by VIRTEL.</p>
+<p>For z/OS, a sample VIRTCT source member is provided in the VIRTCT01 member of the VIRTEL SAMPLIB, and the assembly and link-edit JCL is in member ASMTCT. For z/VSE, a sample VIRTCT with assembly and link-edit JCL is in the VIRTCT installation job.</p>
 </div>
 <div class="section" id="parameters-of-the-virtct">
 <h3>6.2. Parameters Of The VIRTCT<a class="headerlink" href="#parameters-of-the-virtct" title="Permalink to this headline">¶</a></h3>
@@ -2456,13 +2430,13 @@ BINDSecurity ==&gt; No   No ! Yes
 <p><strong>xx</strong> - The 3270 AID function key which will be transmitted to the application when the Minitel user presses the [ANNULATION] key. This parameter allows the user to define a general parameter by default which may be modified in the definition of the sub-server nodes.
 ANNUL=00 allows the cursor to be placed at the start of the field with erasure of the field.</p>
 </div>
-<div class="section" id="applid-parameter">
-<h4>6.2.6. APPLID parameter<a class="headerlink" href="#applid-parameter" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>6.2.6. APPLID parameter<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">APPLID</span><span class="o">=</span><span class="n">nappl</span> <span class="n">Default</span><span class="o">=</span><span class="n">VIRTEL</span>
 </pre></div>
 </div>
 <p><strong>nappl</strong> - The name of the primary VIRTEL ACB.</p>
-<p>The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an MVS environment”, page 21 or “Executing VIRTEL in a VSE environment”, page 39 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL*</p>
+<p>The APPLID parameter specifies the label or ACBNAME parameter of the VTAM APPL for the primary VIRTEL ACB. The value specified here can be overridden in the VIRTEL startup JCL (see “Executing VIRTEL in an z/OS environment”, page 21 or “Executing VIRTEL in a z/VSE environment”, page 39 for details). When no primary VTAM ACB is required (for example, in the VIRTCT for a VIRTEL Batch job), then this parameter may be coded as APPLID=*NOAPPL*</p>
 <p>If SYSPLUS=YES is specified, a ‘+’ character in the APPLID will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.</p>
 </div>
 <div class="section" id="appstat-parameter">
@@ -2901,8 +2875,8 @@ may be loaded at startup time by means of the “CHARSET parameter”, page 0.</
 </div>
 <p><strong>xx</strong> - Hex code of the character of the 3270 keyboard that will be used to switch directly from one session to another. If DIRECT=00 then this function will be disabled.</p>
 </div>
-<div class="section" id="dontswa-parameter-mvs-only">
-<h4>6.2.25. DONTSWA parameter (MVS only)<a class="headerlink" href="#dontswa-parameter-mvs-only" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="dontswa-parameter-z-os-only">
+<h4>6.2.25. DONTSWA parameter (z/OS only)<a class="headerlink" href="#dontswa-parameter-z-os-only" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DONTSWA</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3020,7 +2994,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 <p><strong>y</strong> - The second subparameter is the number of hours which must be added to GMT to arrive at the local time. Negative values indicate that local time is behind GMT (west), positive values indicate that local time is ahead of GMT (east).</p>
 <p>For example, USA EASTERN DAYLIGHT SAVINGS TIME with the TOD clock set to GMT should be coded as GMT=(0,-4). If the TOD clock is set to CENTRAL EUROPEAN TIME (GMT+1) and the local time is EUROPEAN SUMMER TIME (GMT+2) then this parameter should be coded as GMT=(-1,+2). GMT=(-1,+1) indicates that both TOD clock and local time are CENTRAL EUROPEAN TIME.</p>
 <p>To avoid the need to modify the GMT parameter when daylight savings time is in effect, you may specify GMT=SYSTZ or GMT=(x,SYSTZ)</p>
-<p><strong>GMT=SYSTZ</strong> - indicates that the TOD clock is set to GMT and that VIRTEL will obtain the timezone difference by inspecting the system local time offset. For z/OS the local time offset is specified in the CLOCKxx member of the system PARMLIB, which may be modified by the SET CLOCK command in the event of a transition between winter and summer time. For VSE the local time offset is specified by the SET ZONEDEF command in the $IPL procedure.</p>
+<p><strong>GMT=SYSTZ</strong> - indicates that the TOD clock is set to GMT and that VIRTEL will obtain the timezone difference by inspecting the system local time offset. For z/OS the local time offset is specified in the CLOCKxx member of the system PARMLIB, which may be modified by the SET CLOCK command in the event of a transition between winter and summer time. For z/VSE the local time offset is specified by the SET ZONEDEF command in the $IPL procedure.</p>
 <p><strong>GMT=(x,SYSTZ)</strong> - indicates that the TOD clock is set to GMT-x, and VIRTEL will use the system local time offset to calculate the timezone difference. In this case, x is the number of hours which must be added to the TOD clock value to arrive at GMT, and VIRTEL considers the local time to be GMT + w – x where w is the system local time offset. GMT=SYSTZ is equivalent to GMT=(0,SYSTZ).</p>
 </div>
 <div class="section" id="grname-parameter">
@@ -3221,11 +3195,11 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 <p>Indicates the type of memory management used by VIRTEL:</p>
 <p><strong>BELOW</strong> - Memory managed by VIRTEL, with memory obtained below the 16 megabyte line.</p>
 <p><strong>ABOVE</strong> - Memory is managed by VIRTEL, with memory obtained above the 16 megabyte line.</p>
-<p><strong>NATIVE</strong> - Memory managed by MVS or VSE</p>
+<p><strong>NATIVE</strong> - Memory managed by z/OS or z/VSE</p>
 <p><strong>TEST</strong> - NATIVE plus ability to track memory usage.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">MEMORY=ABOVE is recommended under MVS. MEMORY=(ABOVE,DEBUG) consumes more resources and is intended for debugging of memory corruption errors. NATIVE may produce a smaller real storage footprint for some HTML
+<p class="last">MEMORY=ABOVE is recommended under z/OS. MEMORY=(ABOVE,DEBUG) consumes more resources and is intended for debugging of memory corruption errors. NATIVE may produce a smaller real storage footprint for some HTML
 applications with very large numbers of terminals defined. TEST allows monitoring of memory usage by module via sub-application F4. TEST also produces a report of allocated memory via the output of the SNAP command.</p>
 </div>
 </div>
@@ -3426,7 +3400,7 @@ applications with very large numbers of terminals defined. TEST allows monitorin
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RTERM</span><span class="o">=</span><span class="k">class</span>
 </pre></div>
 </div>
-<p><strong>class</strong> = The security resource class for terminals. This options forces RACF to validate the name of the LU specified on the ForceLUNAME parameter. For further details on setting an LU name with the ForcedLUNAME parameter see <a class="reference internal" href="../Virtel457CN/connectivity_guide.html#v457cn-forceluname"><span class="std std-ref">“ForcedLUNAME in the Virtel Connectivity guide.”</span></a></p>
+<p><strong>class</strong> = The security resource class for terminals. This options forces RACF to validate the name of the LU specified on the ForceLUNAME parameter. For further details on setting an LU name with the ForcedLUNAME parameter. See the Virtel Connectivity Guide: ForcedLUNAME.</p>
 <p>For example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RTERM</span><span class="o">=</span><span class="n">Facility</span>
 </pre></div>
@@ -3437,16 +3411,16 @@ applications with very large numbers of terminals defined. TEST allows monitorin
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">NO</span><span class="o">/</span><span class="n">VIRTEL</span><span class="o">/</span><span class="n">RACF</span><span class="o">/</span><span class="n">TOPS</span><span class="o">/</span><span class="n">ACF2</span><span class="o">/</span><span class="n">RACROUTE</span><span class="o">/</span><span class="n">MIXEDCASE</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
-<p>For the MVS environment, the following options can be specified:</p>
+<p>For the z/OS environment, the following options can be specified:</p>
 <p><strong>NO</strong> - No security software is used to control access.</p>
 <p><strong>VIRTEL</strong> - VIRTEL’s internal security management feature is used.</p>
 <p><strong>(RACROUTE,RACF)</strong> - IBM’s security management product is used (via SAF).</p>
 <p><strong>(RACROUTE,TOPS)</strong> - The TOP SECRET security management product is used (via SAF).</p>
 <p><strong>(RACROUTE,ACF2)</strong> - The ACF2 security management system is used (via SAF).</p>
-<p>For the VSE environment, the following options can be specified:</p>
+<p>For the z/VSE environment, the following options can be specified:</p>
 <p><strong>NO</strong> - No security software is used to control access.</p>
 <p><strong>VIRTEL</strong> - VIRTEL’s internal security management feature is used.</p>
-<p><strong>RACROUTE</strong> - (for z/VSE Version 3 or later) VIRTEL uses the VSE Basic Security Manager (via SAF), or the External Security Manager if specified in the VSE IPL parameters.</p>
+<p><strong>RACROUTE</strong> - (for z/VSE Version 3 or later) VIRTEL uses the z/VSE Basic Security Manager (via SAF), or the External Security Manager if specified in the z/VSE IPL parameters.</p>
 <p>The following options are retained for compatibility with previous releases:</p>
 <p><strong>RACF</strong> - RACF without SAF.</p>
 <p><strong>TOPS</strong> - TOP SECRET without SAF.</p>
@@ -3518,7 +3492,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p>If all of the statistics datasets are full, there are two options:</p>
 <p><strong>STATS=(MULTI,TERMINATE)</strong> - VIRTEL terminates, to avoid the possibility of losing any further statistics.</p>
 <p><strong>STATS=(MULTI,CONTINUE)</strong> - (default) VIRTEL continues, without recording any further statistics. To restart statistics recording, run a STATCOPY batch job to empty at least one VIRSTATx dataset, then issue the STAT,I command.</p>
-<p>The STATS=MULTI option is only available in the MVS environment.</p>
+<p>The STATS=MULTI option is only available in the z/OS environment.</p>
 <p><strong>SMF.</strong> Statistics recording is active and are written into SMF. The VIRTEL STAT command allows the console operator to display the status of the VIRSTATx datasets, or to force VIRTEL to switch to the next statistics dataset. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The options are:</p>
 <p><strong>STATS=SMF</strong> - The default SMF record number is 223.</p>
 <p><strong>STATS=(SMF,nnn)</strong> - The SMF record number used will be nnn. The specified number must be between 128 and 255. The STATS=SMF/(SMF,nnn) option is only available in the MVS environment.</p>
@@ -3559,14 +3533,14 @@ The VIRTEL STAT command allows the console operator to display the status of the
 </pre></div>
 </div>
 <p>This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP1.</p>
-<p><strong>tcpname</strong> - The name of the TCP/IP stack. This name should match the TCPIPJOBNAME parameter in the TCPIP.TCPIP.DATA file of the TCP/IP stack, or the name of the TCP/IP started task itself if TCPIPJOBNAME is not specified. The value ANY indicates that a connection can be established which any TCP/IP stack. This parameter is ignored by the TCP/IP for VSE stack.</p>
-<p><strong>maxsock</strong> - In MVS, this is the maximum number of sockets for each type TCP1 line defined in VIRTEL. If this subparameter is not specified, TCP/IP determines the number (50 by default). The maximum value allowed by VIRTEL is 65535. However, for customers using older versions of MVS (z/OS V1R4 or earlier), the TCP/IP stack enforces an upper limit of 2000 on this subparameter. Also, the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx must exceed the maxsock value. In VSE, this is the total maximum number of sockets for all VIRTEL lines of type TCP1. The TCP/IP for VSE stack currently ignores the value specified here, and uses a fixed value of 8001 instead.</p>
+<p><strong>tcpname</strong> - The name of the TCP/IP stack. This name should match the TCPIPJOBNAME parameter in the TCPIP.TCPIP.DATA file of the TCP/IP stack, or the name of the TCP/IP started task itself if TCPIPJOBNAME is not specified. The value ANY indicates that a connection can be established which any TCP/IP stack. This parameter is ignored by the TCP/IP for z/VSE stack.</p>
+<p><strong>maxsock</strong> - In z/OS, this is the maximum number of sockets for each type TCP1 line defined in VIRTEL. If this subparameter is not specified, TCP/IP determines the number (50 by default). The maximum value allowed by VIRTEL is 65535. However, for customers using older versions of z/OS (z/OS V1R4 or earlier), the TCP/IP stack enforces an upper limit of 2000 on this subparameter. Also, the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx must exceed the maxsock value. In z/VSE, this is the total maximum number of sockets for all VIRTEL lines of type TCP1. The TCP/IP for z/VSE stack currently ignores the value specified here, and uses a fixed value of 8001 instead.</p>
 <p><strong>pgmname</strong> - The name of the VIRTEL TCP/IP interface program used for this connection. The following values can be specified:</p>
 <blockquote>
-<div><p><strong>VIR0T09</strong> - Interface program using ASYNC=EXIT mode. This is the default for MVS systems.</p>
-<p><strong>VIR0T10</strong> - Interface program using ASYNC=ECB mode. This is the default for VSE systems.</p>
+<div><p><strong>VIR0T09</strong> - Interface program using ASYNC=EXIT mode. This is the default for z/OS systems.</p>
+<p><strong>VIR0T10</strong> - Interface program using ASYNC=ECB mode. This is the default for z/VSE systems.</p>
 </div></blockquote>
-<p><strong>adsname</strong> - The name which VIRTEL uses to identify itself to TCP/IP. The value * indicates that VIRTEL uses its VTAM APPLID as the address space identifier. The default value is blank, which means that TCP/IP will assign the name of the VIRTEL started task as the address space identifier. This parameter is ignored by the TCP/IP for VSE stack.</p>
+<p><strong>adsname</strong> - The name which VIRTEL uses to identify itself to TCP/IP. The value * indicates that VIRTEL uses its VTAM APPLID as the address space identifier. The default value is blank, which means that TCP/IP will assign the name of the VIRTEL started task as the address space identifier. This parameter is ignored by the TCP/IP for z/VSE stack.</p>
 </div>
 <div class="section" id="tcp2-parameter">
 <h4>6.2.99. TCP2 parameter<a class="headerlink" href="#tcp2-parameter" title="Permalink to this headline">¶</a></h4>
@@ -3780,8 +3754,8 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 <p><strong>xxxxxxxx</strong> - The name of a table added to the end of the VIRTCT allowing for redefinition of the function keys for VT100. Please refer to the member VTSAMPLE in SAMPLIB.</p>
 </div>
-<div class="section" id="vtover-parameter">
-<h4>6.2.116. VTOVER parameter<a class="headerlink" href="#vtover-parameter" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id6">
+<h4>6.2.116. VTOVER parameter<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VTOVER</span><span class="o">=</span><span class="n">xxxxxxxx</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -3803,12 +3777,12 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p>This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM1.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Cross-memory is supported only on MVS systems (OS/390 or z/OS). The VIRXM product from Syspertec must also be installed.</p>
+<p class="last">Cross-memory is supported only on z/OS systems (OS/390 or z/OS). The VIRXM product from Syspertec must also be installed.</p>
 </div>
 <p><strong>xmname</strong> - The name of the cross-memory manager started task (VIRXM).</p>
 <p><strong>pgmname</strong> - The name of the VIRTEL XM interface program used for this connection. The following values can be specified:</p>
 <blockquote>
-<div><strong>VIR0X09</strong> - Interface program for MVS systems. This is the default.</div></blockquote>
+<div><strong>VIR0X09</strong> - Interface program for z/OS systems. This is the default.</div></blockquote>
 </div>
 <div class="section" id="xm2-parameter">
 <h4>6.2.119. XM2 parameter<a class="headerlink" href="#xm2-parameter" title="Permalink to this headline">¶</a></h4>
@@ -3886,7 +3860,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 <div class="section" id="example-of-the-virtct">
 <h3>6.6. Example Of The VIRTCT<a class="headerlink" href="#example-of-the-virtct" title="Permalink to this headline">¶</a></h3>
-<p>An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB for MVS, and in the installation job VIRTCT for VSE:</p>
+<p>An example of the VIRTCT is supplied in member VIRTCT01 in the VIRTEL SAMPLIB for z/OS, and in the installation job VIRTCT for z/VSE:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PRINT</span> <span class="n">GEN</span>
 <span class="n">VIRTERM</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">INITIAL</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span> <span class="o">*</span>
         <span class="n">COMPR3</span><span class="o">=</span><span class="n">AUTO</span><span class="p">,</span> <span class="o">*</span>
@@ -3977,9 +3951,9 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 <div class="section" id="id7">
 <h3>6.7. Assembling The VIRTCT<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the MVS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the MVS environment. In the VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.</p>
-<div class="section" id="mvs-example">
-<h4>6.7.1. MVS example<a class="headerlink" href="#mvs-example" title="Permalink to this headline">¶</a></h4>
+<p>The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the z/OS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the z/OS environment. In the z/VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.</p>
+<div class="section" id="z-os-example">
+<h4>6.7.1. z/OS example<a class="headerlink" href="#z-os-example" title="Permalink to this headline">¶</a></h4>
 <p>A sample job for assembling the VIRTCT is supplied in member ASMTCT of the VIRTEL SAMPLIB:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTASM</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">ASMTCT</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*--------------------------------------------------------------*</span>
@@ -4017,10 +3991,10 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <span class="o">//</span><span class="n">VIRTASM</span> <span class="n">EXEC</span> <span class="n">ASMTCT</span>
 </pre></div>
 </div>
-<p><em>Figure 6.1 VIRTCT assembly in MVS</em></p>
+<p><em>Figure 6.1 VIRTCT assembly in z/OS</em></p>
 </div>
-<div class="section" id="vse-example">
-<h4>6.7.2. VSE example<a class="headerlink" href="#vse-example" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="z-vse-example">
+<h4>6.7.2. z/VSE example<a class="headerlink" href="#z-vse-example" title="Permalink to this headline">¶</a></h4>
 <p>A sample job for assembling the VIRTCT is supplied on the installation tape:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRTCT,CLASS=0,DISP=D
 * $$ LST DISP=D,CLASS=Q
@@ -4039,7 +4013,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 6.2 VIRTCT assembly in VSE</em></p>
+<p><em>Figure 6.2 VIRTCT assembly in z/VSE</em></p>
 </div>
 <div class="section" id="dynamic-virtct-overrides">
 <h4>6.8. Dynamic VIRTCT Overrides<a class="headerlink" href="#dynamic-virtct-overrides" title="Permalink to this headline">¶</a></h4>
@@ -4156,7 +4130,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 7.1 VIRCONF JCL in VSE to define and upload a new VIRARBO file</em></p>
+<p><em>Figure 7.1 VIRCONF JCL in z/VSE to define and upload a new VIRARBO file</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">DEFINES</span> <span class="n">AND</span> <span class="n">LOADS</span> <span class="n">A</span> <span class="n">NEW</span> <span class="n">ARBO</span> <span class="n">FILE</span>
 <span class="o">//</span><span class="n">DEFARBO</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
@@ -4173,8 +4147,8 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="o">..</span><span class="n">VIRCONF</span><span class="o">.</span><span class="n">SYSIN</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
 </pre></div>
 </div>
-<p><em>Figure 7.2 VIRCONF JCL in MVS to define and upload a new VIRARBO file</em></p>
-<p>When VIRCONF is executed with PARM=LOAD, control cards are read from SYSIPT (VSE) or SYSIN (MVS) and are loaded into the VIRARBO file.</p>
+<p><em>Figure 7.2 VIRCONF JCL in z/OS to define and upload a new VIRARBO file</em></p>
+<p>When VIRCONF is executed with PARM=LOAD, control cards are read from SYSIPT (z/VSE) or SYSIN (z/OS) and are loaded into the VIRARBO file.</p>
 <div class="section" id="updating-a-virarbo-file">
 <h4>7.2.2. Updating a VIRARBO file<a class="headerlink" href="#updating-a-virarbo-file" title="Permalink to this headline">¶</a></h4>
 <p>Below are some JCL examples to add, replace, or delete one or more definitions from an existing VIRARBO file:-</p>
@@ -4200,7 +4174,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 7.3 VIRCONF JCL in VSE to update a VIRARBO file</em></p>
+<p><em>Figure 7.3 VIRCONF JCL in z/VSE to update a VIRARBO file</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">UPDATES</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span>
 <span class="o">//</span><span class="n">UPDARBO</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">LOAD</span>
@@ -4215,7 +4189,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 7.4 VIRCONF JCL in MVS to update a VIRARBO file</em></p>
+<p><em>Figure 7.4 VIRCONF JCL in z/OS to update a VIRARBO file</em></p>
 <p>Submitting VIRCONF with PARM=LOAD for an existing VIRARBO file allows definitions to be added, replaced, or deleted, while keeping existing definitions in the VIRARBO file. Using PARM=’LOAD,NOREPL’ parameter allows only new definitions to be added, while keeping existing definitions. In this case, VIRCONF will ignore any statement with the same name as existing definitions, returning a zero return code, except if another error was encountered.</p>
 </div>
 <div class="section" id="unloading-a-virarbo-file">
@@ -4232,7 +4206,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 7.5 VIRCONF JCL in VSE to unload a VIRARBO file</em></p>
+<p><em>Figure 7.5 VIRCONF JCL in z/VSE to unload a VIRARBO file</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">UNLOADS</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span> <span class="n">TO</span> <span class="n">SYSPUNCH</span>
 <span class="o">//</span><span class="n">UNLOAD</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">UNLOAD</span>
@@ -4243,8 +4217,8 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <span class="o">//</span> <span class="n">SPACE</span><span class="o">=</span><span class="p">(</span><span class="n">TRK</span><span class="p">,(</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span><span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6080</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><em>Figure 7.6 VIRCONF JCL in MVS to unload a VIRARBO file</em></p>
-<p>When VIRCONF is run with the PARM=UNLOAD parameter, the existing VIRARBO definitions are converted into control cards and are written to SYSPCH (VSE) or SYSPUNCH (MVS). The created cards issued by VIRCONF may be edited and then reused with another VIRCONF job with the PARM=LOAD parameter.</p>
+<p><em>Figure 7.6 VIRCONF JCL in z/OS to unload a VIRARBO file</em></p>
+<p>When VIRCONF is run with the PARM=UNLOAD parameter, the existing VIRARBO definitions are converted into control cards and are written to SYSPCH (z/VSE) or SYSPUNCH (z/OS). The created cards issued by VIRCONF may be edited and then reused with another VIRCONF job with the PARM=LOAD parameter.</p>
 </div>
 <div class="section" id="verify-control-card-syntax">
 <h4>7.2.4. Verify control card syntax<a class="headerlink" href="#verify-control-card-syntax" title="Permalink to this headline">¶</a></h4>
@@ -4260,7 +4234,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 7.7 VIRCONF JCL in VSE for syntax verification</em></p>
+<p><em>Figure 7.7 VIRCONF JCL in z/VSE for syntax verification</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">VIRCONF</span> <span class="n">SYNTAX</span> <span class="n">CHECK</span>
 <span class="o">//</span><span class="n">CONFCHK</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">SCAN</span>
@@ -4271,8 +4245,8 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 7.8 VIRCONF JCL in MVS for syntax verification</em></p>
-<p>Submitting the VIRCONF program with PARM=SCAN allows you to scan the SYSIPT (VSE) or SYSIN (MVS) cards for potential syntax errors. There is no access to the VIRCONF file.</p>
+<p><em>Figure 7.8 VIRCONF JCL in z/OS for syntax verification</em></p>
+<p>Submitting the VIRCONF program with PARM=SCAN allows you to scan the SYSIPT (z/VSE) or SYSIN (z/OS) cards for potential syntax errors. There is no access to the VIRCONF file.</p>
 </div>
 <div class="section" id="multi-language-support">
 <h4>7.2.5. Multi-language support<a class="headerlink" href="#multi-language-support" title="Permalink to this headline">¶</a></h4>
@@ -4295,7 +4269,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 * $$ EOJ
 </pre></div>
 </div>
-<p><em>Figure 7.9 VIRCONF JCL in VSE for multi-language upload</em></p>
+<p><em>Figure 7.9 VIRCONF JCL in z/VSE for multi-language upload</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">LOAD</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span> <span class="n">USING</span> <span class="n">MULTILINGUAL</span> <span class="n">SOURCE</span>
 <span class="o">//</span><span class="n">VIRCONF</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,LANG=EN&#39;</span>
@@ -4314,7 +4288,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <span class="o">/*</span>
 </pre></div>
 </div>
-<p><em>Figure 7.10 VIRCONF JCL in MVS for multi-language upload</em></p>
+<p><em>Figure 7.10 VIRCONF JCL in z/OS for multi-language upload</em></p>
 </div>
 </div>
 <div class="section" id="virconf-control-cards">
@@ -5510,7 +5484,7 @@ check URL prefix</td>
 </div>
 <div class="section" id="security">
 <span id="v457ig-security"></span><h2>8. Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
-<p>Perform the following steps to activate RACF security for VIRTEL in the MVS environment.</p>
+<p>Perform the following steps to activate RACF security for VIRTEL in the z/OS environment.</p>
 <div class="section" id="modify-the-virtct">
 <h3>8.1.1 Modify the VIRTCT<a class="headerlink" href="#modify-the-virtct" title="Permalink to this headline">¶</a></h3>
 <p>In the VIRTCTxx member of the VIRTEL CNTL library,</p>
@@ -5643,12 +5617,12 @@ check URL prefix</td>
 </pre></div>
 </div>
 <p>An administrator would have READ access to all profiles whereas a user may only have access to the some of the profiles.</p>
-<p>For more information about protecting VIRTEL Web Access resources, refer to the <a class="reference internal" href="../Virtel457UG/User_Guide.html#v457ug-security"><span class="std std-ref">“Security”</span></a> of the VIRTEL Web Access Guide.</p>
+<p>For more information about protecting VIRTEL Web Access resources, refer to the Security section of the the VIRTEL User Guide.</p>
 </div>
 </div>
 <div class="section" id="how-to-activate-acf2-security">
 <h3>8.2 How to activate ACF2 Security<a class="headerlink" href="#how-to-activate-acf2-security" title="Permalink to this headline">¶</a></h3>
-<p>Perform the following steps to activate ACF2 security for VIRTEL in the MVS environment.</p>
+<p>Perform the following steps to activate ACF2 security for VIRTEL in the z/OS environment.</p>
 <div class="section" id="id9">
 <h4>8.2.1 Modify the VIRTCT<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameters:</p>
@@ -5690,7 +5664,7 @@ $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 </div>
 <p><em>ACF2DEF : ACF2 commands to grant general user permissions</em></p>
 <p>These commands permit users in group user-group-name to access specific VIRTEL transactions.</p>
-<p>Resource W2H-10 permits specific access to the CICS Web Access transaction on port 41001. Resource CLI-**** is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) on port 41002 and to the directory CLI-DIR.</p>
+<p>Resource W2H-10 permits specific access to the CICS Web Access transaction on port 41001. Resource CLI-** is a generic resource which permits access to customer-defined transactions (internal name CLI-nn) on port 41002 and to the directory CLI-DIR.</p>
 <p>8.2.3.4. Allow everyone to use the 3270 LOGOFF transactions</p>
 <dl class="docutils">
 <dt>::</dt>
@@ -5702,7 +5676,7 @@ $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 </div>
 <div class="section" id="how-to-activate-top-secret-tss-security-perform">
 <h3>8.3. How To Activate Top Secret (TSS) Security Perform<a class="headerlink" href="#how-to-activate-top-secret-tss-security-perform" title="Permalink to this headline">¶</a></h3>
-<p>Perform the following steps to activate TSS security for VIRTEL in the MVS environment.</p>
+<p>Perform the following steps to activate TSS security for VIRTEL in the z/OS environment.</p>
 <div class="section" id="modify-the-tct">
 <h4>8.3.1 Modify the TCT<a class="headerlink" href="#modify-the-tct" title="Permalink to this headline">¶</a></h4>
 <p>In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameters:</p>
@@ -5882,7 +5856,7 @@ TSS PERMIT(VIRTADP) VIRTNODE(CLI(G))
 <h3>A.1 Trademarks<a class="headerlink" href="#a-1-trademarks" title="Permalink to this headline">¶</a></h3>
 <p>SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
 Communication Group, registered in France and other countries.</p>
-<p>IBM, VTAM, CICS, IMS, RACF, DB2, MVS, WebSphere, MQSeries, System z are trademarks or registered trademarks of
+<p>IBM, VTAM, CICS, IMS, RACF, DB2, z/OS, WebSphere, MQSeries, System z are trademarks or registered trademarks of
 International Business Machines Corp., registered in United States and other countries.</p>
 <p>Adobe, Acrobat, PostScript and all Adobe-based trademarks are either registered trademarks or trademarks of Adobe
 Systems Incorporated in the United States and other countries.</p>

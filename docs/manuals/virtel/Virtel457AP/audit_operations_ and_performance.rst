@@ -44,10 +44,16 @@ Syspertec Communication
 Operations
 ==========
 
-Issuing Commands
-----------------
+.. index::
+   single: Issuing commands    
+
+Commands
+--------
 
 VIRTEL allows certain functions to be controlled dynamically by console commands. Use one of the following methods to send a command to VIRTEL, according to the operating system:
+
+.. index::
+   pair: z/OS environment; Commands    
 
 
 z/OS Environment
@@ -64,6 +70,9 @@ stcvirte
 
 virtel-cmd
     a VIRTEL command, as described in the following section.
+
+.. index::
+   pair: z/VSE environment; Commands      
 
 z/VSE Environment
 ^^^^^^^^^^^^^^^^^
@@ -112,6 +121,9 @@ virtel-cmd
 
     \newpage      
 
+.. index::
+   pair: KILL command; Commands    
+
 KILL Command
 ------------
 
@@ -125,6 +137,9 @@ termid
     terminal name
 
 The KILL command requests VIRTEL to abnormally terminate the scenario currently active on the specified terminal.   
+
+.. index::
+   pair: LINES command; Commands    
 
 LINES Command
 -------------
@@ -157,6 +172,9 @@ Example::
     VIR0202I 9-XMPASS VIRTELXM*XM2   XM44000            
     VIR0202I 9-XMVTA  QLNKHOLT XM1   QLNKCICH           
     VIR0202I ---END OF LIST---                          
+
+.. index::
+   pair: LINE command; Commands    
 
 LINE Command
 ------------
@@ -213,6 +231,9 @@ Example::
 
     \newpage  
 
+.. index::
+   pair: Tracing a line; Commands        
+
 Tracing a line
 ^^^^^^^^^^^^^^^
 
@@ -220,6 +241,8 @@ To activate or deactive a trace on the line the following command can be used:-:
 
     LINE=linename,NOTRACE | TRACE  [ or L=linename,N | T ]
 
+.. index::
+   pair: Starting and Stopping A line; Commands      
 
 Starting and Stopping A Line
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -239,6 +262,8 @@ linename
 
 The LINE START and LINE STOP commands perform the same function as the `“S” and “P” commands <#_bookmark12>`__ on the “Status of lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.
                   
+.. index::
+   pair: LOG Command; Commands      
 
 LOG command 
 -----------
@@ -296,6 +321,12 @@ This will trigger the log program VIR0021A to write messages to either the VIRLO
 
 If either LOGFILE becomes full (X37 Abend) an automatic switch will occur to to the inactive logfile. 
 
+.. index::
+   pair: LOG Status Command; Commands
+
+.. index::
+   pair: LOG Switch; Commands      
+
 LOG Status | Switch Commands
 ----------------------------
 
@@ -309,6 +340,9 @@ To determine the status of the LOG file, or to switch the log file manually issu
 .. raw:: latex
 
     \newpage  
+
+.. index::
+   pair: MEMDISPLAY Command; Commands          
 
 MEMDISPLAY Command 
 ------------------
@@ -370,10 +404,16 @@ The display response is split into a summary section for each subpool and a deta
 
 For example in the above display in SP5 we can see that there is an allocated value of 317DC bytes, represented by 00C5 in 1K chunks, and a peak value of 04C7 in 1K chunks.At the bottom of the display is a line which provide allocated, free and total values.
 
+.. index::
+   pair: Enbaling MEMDISPLAY; MEMDISPLAY Command    
+
 Enabling the MEMDISPLAY function 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Memory Display feature is activated by using the MEMHST subparameter in the MEMORY parameter present in the VIRTCT.(see the VIRTCT subparameter MEMHST in “VIRTEL457 Installation User Guide”).
+
+.. index::
+   pair: Disabling MEMDISPLAY; MEMDISPLAY Command    
 
 Disabling the MEMDISPLAY function
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -392,6 +432,9 @@ It can be deactivated by using the command.
 
     \newpage  
 
+.. index::
+   pair: MSG Command; Commands    
+
 MSG Command
 -----------
 
@@ -401,6 +444,8 @@ To send a mesage to VIRTEL Multi-Session users use the MSG command::
 
 The specified message will be displayed on the VIRTEL multi-session screen.
 
+.. index::
+   pair: NEW Command; Commands   
 
 NEW Command
 -----------
@@ -416,12 +461,18 @@ progname
 
 The NEW command requests VIRTEL to load a fresh copy of a program  (presentation module, exit, etc) into the VIRTEL address space. This is required after an update has been made to a program. The message     VIR0060W PROGRAM progname IS A NEW COPY indicates a successful reload. The message VIR0061W PROGRAM progname NOT IN MEMORY indicates that the program has not yet been loaded into the VIRTEL address space. In this case, VIRTEL will load the program automatically when it is next needed.
 
+.. index::
+   pair: RELAY Trace Command; Commands   
+
 RELAY TRACE Command
 -------------------
 
 Use the RELAY command to trace the Virtel buffers between Virtel and the application.
 
 RELAY=relayname,NOTRACE | TRACE
+
+.. index::
+   pair: RELAYS; Commands   
 
 RELAYS Command
 --------------
@@ -447,6 +498,9 @@ The RELAYS command displays the VIRTEL ACB name and a list of the relay LUs open
 
     \newpage  
 
+.. index::
+   pair: SILENCE Command; Commands     
+
 SILENCE Command
 ---------------
 
@@ -459,6 +513,9 @@ The SILENCE command reverses the state of the SILENCE parameter in the VIRTCT. I
 .. note::
 
     Refer to the section SILENCE parameter in the "Parameters of the VIRTCT" in the VIRTEL Installation Guide for a list messages affected by this command.)
+
+.. index::
+   pair: SNAP Command; Commands         
 
 SNAP Command
 ------------
@@ -483,6 +540,9 @@ termid
 
 relayname
     name of VTAM relay LU currently associated with the terminal
+
+.. index::
+   pair: SNAPMSG Command; Commands     
 
 SNAPMSG Command
 ---------------
@@ -514,6 +574,9 @@ Example:
  
 	F VIRTEL,SNAPMSG=VIRHT51I,CALL,S
 
+.. index::
+   pair: SNAP80 Command; Commands         
+
 SNAP80 Command
 --------------
 
@@ -522,6 +585,9 @@ SNAP80 Command
     SNAP80 
 
 The SNAP80 command prints the contents of the VIRTEL internal trace table in 80 column format, whatever the current value of the SNAPW parameter.
+
+.. index::
+   pair: SNAPW Command; Commands         
 
 SNAPW Command
 -------------
@@ -533,6 +599,9 @@ The format of the SNAP output can be adjusted with the SNAPW command.
     SNAPW=80 | 132
 
 The SNAPW command sets the width for future SNAP commands (80 or 132 columns). The SNAPW parameter in the VIRTCT determines the default width at VIRTEL startup. Refer to the section “Parameters of the VIRTCT” in the VIRTEL Installation Guide for details of the SNAPW parameter.
+
+.. index::
+   pair: STAT Command; Commands      
 
 STAT Command
 ------------
@@ -559,6 +628,9 @@ To switch the STATISTIC file using the STAT switch command.
 
 This command forces VIRTEL to free the current VIRSTATx file and to start recording onto the next file. 
 
+.. index::
+   pair: STOP Command; Commands   
+
 STOP Command
 ------------
 
@@ -571,6 +643,9 @@ The STOP command allows to STOP the VIRTEL task. This command is intended to be 
 ::
 
     P VIRTEL
+
+.. index::
+   pair: TCT Command; Commands     
 
 TCT Command
 -----------
@@ -589,6 +664,9 @@ The TCT command displays some of the TCT options that have been defined in the a
     MEMORY=(SYS(0001688K,0001688K),DATA(0002304K,0003200K)),LOG=CONSOLE 
     VIR0280I END                                                        
 
+.. index::
+   pair: TERM Command; Commands  
+
 TERM Command
 ------------
 
@@ -600,21 +678,25 @@ TERM=termid,NOTRACE | TRACE  [or T=termid,N | T ]
 
     \newpage  
 
+.. index::
+   pair: TRACE Command; Commands
+
+.. index::
+   pair: NOTRACE Command; Commands             
+
 TRACE | NOTRACE Command
 -----------------------
 
 A trace can be activated or deactivated on a terminal, line or relay.
 
 ::
-
     
     TRACE,T=termid
     TRACE,L=linename
     TRACE,R=relayname
     NOTRACE,T=termid
     NOTRACE,L=linename
-    NOTRACE,R=relayname
-    
+    NOTRACE,R=relayname    
     
 termid
     terminal name
@@ -653,6 +735,9 @@ linename
 relayname
     Name of VTAM relay LU currently associated with the terminal
 
+.. index::
+   single: Display active traces     
+
 Display a list of active traces
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -671,6 +756,9 @@ An example of the response is:-::
 
     \newpage
 
+.. index::
+   single: Setting trace options        
+
 Setting trace options
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -688,6 +776,9 @@ The VIT indicators apply the the level of tracing.
     - Y|N           Data elements traced
     - Y|N           External Archive active
 
+.. index::
+   single: Deactivating all traces     
+
 Deactivate all traces        
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -696,6 +787,9 @@ Deactivate all traces
     NOTRACE,ALL
 
 This command does not affect any memory trace. To stop a memory trace, refer to “Memory trace management”
+
+.. index::
+   pair: VIRSV Command; Commands            
 
 VIRSV Command
 -------------
@@ -713,6 +807,9 @@ The VIRSV,NEW command requests VIRTEL to stop the requested VIRSV service. This 
 
 
 SERVICE servname NOT IN MEMORY indicates that the service is not yet started. In this case, VIRTEL will start the service and load the  program automatically when it is next needed.
+
+.. index::
+   pair: ZAP Command; Commands            
 
 ZAP Command
 -----------
@@ -737,14 +834,23 @@ replace
 
 The ZAP command allows the dynamic application of a corrective patch to a program while VIRTEL is running. This command is intended to be used only under the advice of Syspertec technical support personnel.
 
+.. index::
+   singlepair: Administration  
 
 Administration
 ==============
 
-Line Status Sub-Application
----------------------------
+.. index::
+   pair: Line Status Application; Administration        
+
+Line Status Application
+-----------------------
 
 The Line Status sub-application allows the administrator to display the current status of lines and terminals or irtual circuits (CVC) managed by VIRTEL control, and optionally to modify the status of lines.
+
+.. index::
+   pair: Displaying Line Status; Line Status Application        
+
 
 Displaying line status
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -793,6 +899,9 @@ If the line status display occupies more than one screen, you can scroll through
 [PF8]
     scroll forward to next page.
 
+.. index::
+   pair: Sending a command; Line Status Application        
+
 Sending a command
 ^^^^^^^^^^^^^^^^^
 To send a command to a line, place the cursor in the “C” field in front of the line name, type the command, then press [Enter]. The  commands available are:
@@ -806,6 +915,9 @@ p
         The LINE START and STOP commands can also be issued from the z/OS or VSE console. See “Starting and stopping a line"
 
 To return to the configuration menu, press [PF3] or [Clear].
+
+.. index::
+   pair: Displaying Line Usage; Line Status Application   
 
 Displaying Line Usage
 ^^^^^^^^^^^^^^^^^^^^^
@@ -873,10 +985,13 @@ Call Data (for HTTP lines)
 
 .. raw:: latex
 
-    \newpage      
+    \newpage  
 
-Memory Display Sub-Application
-------------------------------
+.. index::
+   single: Memory Display Application           
+
+Memory Display Application
+--------------------------
 
 The VIRTEL memory management sub-application allows the system  administrator to display VIRTEL memory utilisation in real time. The memory management sub-application is a pseudo-graphical display which shows the allocation of VIRTEL memory by function. VIRTEL manages its own memory, in order to avoid memory shortages as a result of fragmentation. The memory management display can be used by the administrator to help understand VIRTEL’s memory requirements during normal operation.
 
@@ -896,6 +1011,9 @@ Permanently allocated memory blocks are represented by the following character t
     4. Memory blocks used for saving EIB and other session-related information. Blocks of this type are allocated and freed by VIRTEL as required.
     5. Communication areas by VIRTEL sub-applications. Blocks of this type are allocated and freed by VIRTEL as required.
     6. Sub-application modules loaded in the z/VSE SUBPOOL. Blocks of this type are allocated and freed by VIRTELas required.
+
+.. index::
+   pair: Using Memory=Test; Memory Display Application   
 
 Memory display in Memory=Test mode.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -921,6 +1039,9 @@ The Memory display feature is a memory diagnostic tool created to trap possible 
 .. note::
     
     This diagnostic tool should only be used when recommended by Technical Support.
+
+.. index::
+   pair: Memory trace management; Memory Display Application       
 
 Memory trace management
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -1003,10 +1124,21 @@ Tracing memory activity can produce an important overhead estimated to 20-30% of
 
     \newpage  
 
+.. _#_V457AP_maintenance:
+
+.. index::
+   single: Maintenance    
+
+.. index::
+   pair: Maintenance; Administration          
+
 Maintenance
 -----------
 
 Maintence is normally delivered through email or by downloading a maintenance package from the Virtel ftp web server - http://ftp.syspertec.com/login/. Maintenance comes as either zaps to the Virtel mainframe modules or updates to the web elements. Application of the mainframe zaps is through the IBM Utility AMASPZAP. The updates to the web elements is through a Virtel GUI Drag and Drop interface or via a Virtel Batch process. This is found in the Administration Portal of Virtel. The Drag and Drop interface is described in section 1.6.2 in the Virtel User Guide.
+
+.. index::
+   pair: Applying z/OS maintenace via batch; Maintenance
 
 Applying z/OS maintenance.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1029,6 +1161,9 @@ Once downloaded and unzipped, the zap package will contain a sequential text fil
     VIR0018I 5530,5540,5549,5557,5559,5567               
     VIR0089I VIRTEL RUNNING FROM AN AUTHORIZED LIBRARY   
 
+.. index::
+   pair: Applying maintenace to the TRSF files; Maintenance
+
 Applying maintenance to the TRSF files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1050,9 +1185,11 @@ Open the "Drag and Drop" interface in Virtel, and then drag the files over on to
 
 *Virtel Drag and Drop Interface*
 
+.. index::
+   pair: Applying maintenace via batch; Maintenance
 
-Applying maintence via batch.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Applying maintenance via batch.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A batch maintenace package called virtelrvvVMPnnnn.zip can also be used to apply maintenance to the SAMPTRSF file. Using the batch process doesn't require any manual process, it runs as a batch job on the mainfram. However, the target Virtel instance cannot be running at the same time. the process for applying a Virtel Maintenace Package is outlined in the Virtel Technical newsletter "TN201709 Virtel batch maintenance". This can be viewed online at http://virtel.readthedocs.io/en/latest/manuals/newsletters/TN201709/TN201709.html  
 
@@ -1212,22 +1349,25 @@ To display the list of rules associated with this correspondent, press the [PF6]
 
     \newpage  
 
-.. _#_V457AP_uploading_HTML_pages:
+.. _#_V457AP_web_entity_management:
+
+.. index::
+   single: Web Entity Manangement
 
 Web Entity Management
 ---------------------
 
-Web entities, such as HTML template pages, CSS, JavaScript elements and images, can be uploaded to the VIRTEL directories by any of the following methods:
+Web Entity Management is concerned with maintaining the Virtel Web entities, such as HTML template pages, CSS, JavaScript elements and images etc. These can all be uploaded to the VIRTEL directories by any of the following methods:
 
-1. by web browser (HTTP), with signon security. Provided by Administration Portatl.
-2. Via a batch process
-3. by e-mail (SMTP) (Corresspondence Management only) 
-4. by web browser (HTTP), with cookie security (Corresspondence Management only)
+1. by web browser (HTTP) from a PC, with signon security. Provided by Administration Portal.
+2. Via a batch process from a PC.
+3. by e-mail (SMTP). (Corresspondence Management only) 
+4. by web browser (HTTP), with cookie security. (Corresspondence Management only)
 
 .. _#_V457AP_http_uploading_pages_signon:
 
 .. index::
-   pair: Uploading pages HTTP (Signon); Uploading pages
+   pair: Uploading pages HTTP (Signon); Web Entity Management
 
 Uploading by web browser (HTTP) (secured by signon)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1235,7 +1375,7 @@ Uploading by web browser (HTTP) (secured by signon)
 The upload4.htm page allows the administrator to upload HTML pages and graphics to VIRTEL. When this page is first loaded, the web browser displays a signon dialog box requesting a userid and password. The userid allows the security product (RACF, ACF2, TSS, or VIRTEL) to determine which, if any, of the page upload transactions the user is authorized to use. Each VIRTEL directory has its own upload transaction, so that upload security can be applied individually to each directory, by authorizing users to the corresponding directory’s upload transaction.
 
 .. index::
-   pair: HTTP definitions (Signon); Uploading pages
+   pair: HTTP definitions (Signon); Web Entity Management
 
 Definitions for upload (secured by signon)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1260,7 +1400,7 @@ The following steps show how to upgrade your configuration based on entry point 
 3. Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.
 
 .. index::
-   pair: HTTP definitions (Signon); Uploading pages
+   pair: HTTP definitions (Signon); Web Entity Management
 
 Procedure for upload (secured by signon)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1304,7 +1444,7 @@ Depending on the values specified in the directory definition, VIRTEL may conver
     \newpage  
 
 .. index::
-   pair: Uploading pages by drag and Drop; Uploading pages   
+   pair: Uploading pages by drag and Drop; Web Entity Management   
 
 Uploading by web browser (HTTP) by GUI drag and drop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1344,6 +1484,9 @@ In this example, one file has failed to upload because of an invalid VIRTEL tag,
 
 *Upload summary report*
 
+.. index::
+   pair: Extracting upload results; Web Entity Management
+
 Extracting upload results as an Excel spreadsheet
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1368,6 +1511,9 @@ Extracting upload results as an Excel spreadsheet
 .. raw:: latex
 
     \newpage  
+
+.. index::
+   pair: Uploading in batch with cURL; Web Entity Management    
 
 Uploading in batch with cURL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1403,6 +1549,9 @@ uplbas
 
  .. index::
     pair: Uploading (batch) using upl2virt procedure; Uploading pages
+
+.. index::
+   pair: Uploading in batch with the upl2virt command; Web Entity Management        
 
 Uploading in batch using the upl2virt command
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1495,7 +1644,7 @@ You may omit the –u MYUSERID parameter and upl2virt will prompt you for your u
 .. _#_V457AP_http_uploading_pages_smtp:    
 
 .. index::
-   single: Uploading template pages using SMTP
+   pair: Uploading template pages using SMTP; Web Entity Management 
 
 Uploading template pages using SMTP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1506,7 +1655,7 @@ Upload by SMTP allows the administrator to load HTML pages into VIRTEL by e-mail
    pair: SMTP Definitions; Uploading Pages
 
 Definitions for page upload by SMTP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 
 - Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).
 - Press F5 from the Configuration Menu and define an e-mail correspondent specifying W2H-DIR as the directory name:
@@ -1540,7 +1689,7 @@ Definitions for page upload by SMTP
    pair: Upload page procedure using SMTP; Uploading pages
 
 Procedure for page upload by SMTP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 
 1. Activate the e-mail correspondent: see “Account activation” under the heading :ref:`“Correspondent Management” <#_V457AP_correspondent_management>`. This triggers the sending of an e-mail containing the security code, as in the following example:-
 
@@ -1598,7 +1747,7 @@ under the name LINKS.GI
 .. _#_V457AP_http_uploading_pages:
 
 .. index::
-   pair: Upload page procedure using HTML; Uploading pages
+   pair: Upload page procedure using HTML; Web Entity Management 
 
 Uploading pages by HTTP (secured by cookie)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1617,11 +1766,8 @@ To upload a page, a user must:
 The VIRTEL response is displayed in the page and is similar to the response received by e-mail when uploading via
 SMTP.
 
-.. index::
-   pair: HTTP definitions (Cookie); Uploading pages
-
 Definitions for page upload (secured by cookie)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 All the elements needed for page upload by HTTP secured by cookie are contained in the base configuration delivered
 with VIRTEL 4.27. Users who upgrade to VIRTEL 4.27 while keeping their existing configuration need to add certain
@@ -1769,7 +1915,7 @@ that the name of the target directory is to be found in the definition of the e-
 *Page upload by HTTP with cookie : Rule WEB2HOST of the HTTP line*
 
 Procedure for page upload (secured by cookie)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 
 1. (First time only) Activate the e-mail correspondent: see :ref:`“Account activation” <#_V457AP_account_activation>`. This triggers the sending of an e-mail containing the security code, as in the following example:
 
@@ -1818,6 +1964,9 @@ From now on, the cookies are managed automatically. After each upload, VIRTEL se
 
 Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI
 
+.. index::
+   single: Performance
+
 Performance
 ===========
 
@@ -1832,6 +1981,9 @@ The VIRTEL started task offers the administrator 5 sources of information to ver
 -  the TRACE in the VIRTRACE file
 
 -  the SNAP in the SYSPRINT file
+
+.. index::
+   pair: Console file; Performance 
 
 CONSOLE file
 ------------
@@ -1848,6 +2000,9 @@ The CONSOLE file allows the administrator to monitor the startup and subsequent 
 
 |image24|
 *Fig. 4 Example of CONSOLE file*
+
+.. index::
+   pair: Virlog file; Performance 
 
 VIRLOG file
 -----------
@@ -1922,6 +2077,9 @@ The last column contains the PCNE call user data (if present), otherwise it cont
 
     \newpage  
 
+.. index::
+   pair: Virtel logger; Performance     
+
 VIRTEL logger
 -------------
 
@@ -1954,6 +2112,9 @@ The available JCL parameters are:
 
 The date format is yyyyddd.
 
+.. index::
+   pair: Virtel logger examples; Performance     
+
 Examples
 ^^^^^^^^
 
@@ -1969,6 +2130,9 @@ Examples
     and will then delete from 2 days ago leaving about 24 hours of data in the log stream.
 
 *Fig. 8  Example of VIRTEL LOGGER extraction parameter*
+
+.. index::
+   pair: Virtel trace; Performance     
 
 Virtel trace
 ------------
@@ -1993,6 +2157,9 @@ In **z/OS environment**, the trace data is written to the VIRTRACE file in the V
 In **VSE environment**, the trace data is written to the POWER LST file of the VIRTEL partition.
 
 Activation and deactivation of a memory trace is performed by means of the MEMTRACE and NOMEMTRACE commands (see “Memory Trace Management”). The allocation memory is written in the SNAP file when a SNAP command is issued.
+
+.. index::
+   pair: Virtel trace contents; Performance     
 
 Contents of the trace
 ^^^^^^^^^^^^^^^^^^^^^
@@ -2032,6 +2199,10 @@ Contents of the trace
     + (Minitel) +                                          + and VIRTEL, and the 3270 datastream between   + 
     +           +                                          + VIRTEL and the host application.              + 
     +-----------+------------------------------------------+-----------------------------------------------+ 
+
+.. index::
+   pair: Virtel trace output examples; Performance     
+
 
 Trace Examples
 ^^^^^^^^^^^^^^
@@ -2104,6 +2275,9 @@ Trace Examples
 
     \newpage  
 
+.. index::
+   pair: Virtel Snap output; Performance         
+
 VIRTEL SNAP
 -----------
 
@@ -2134,13 +2308,22 @@ In **z/VSE environment**, the SNAP output is written to the POWER LST file of th
 
 *Example of SNAP listing*
 
+.. index::
+   pair: Trigger SNAPS with SNAPMSG; Performance     
+
 Message-triggered SNAPMSG
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).Only one SNAP can also be obtained with user specific code provided by SYSPERTEC for messages VIRHT31E and VIRHT63E. See “VIRTEL commands”. See the SNAPMSG command for further details.
 
+.. index::
+   single: Audit     
+
 Audit
 =====
+
+.. index::
+   pair: VIRSTAT file; Audit     
 
 VIRSTAT file
 ------------
@@ -2173,6 +2356,10 @@ The statistics file may contain a mixture of classic, alternate X25, and web for
 .. raw:: latex
 
     \newpage  
+
+.. index::
+   pair: VIRSTAT classic format; Audit     
+
 
 VIRSTAT classsic format 
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -2223,6 +2410,9 @@ Type E (end of job)
 .. raw:: latex
 
     \newpage  
+
+.. index::
+   pair: VIRSTAT alternative X25 format; Audit     
 
 VIRSTAT alternative X25 format
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2322,6 +2512,8 @@ For this record type, the counters are in binary, and the Session Date and Time 
 
 This record type is written when 6 is specified in the STATS field of the terminal definition used for the HTTP line.
 
+.. index::
+   pair: Printing the VIRSTAT file (X25); Audit     
 
 Printing the contents of the VIRSTAT file (X25)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2367,6 +2559,9 @@ Examples of the JCL required to execute this program are shown below:
     //
 
 *VIR0070 JCL to print VIRSTAT file (z/OS)*
+
+.. index::
+   pair: Printing the VIRSTAT file (HTTP); Audit     
 
 Printing the contents of the VIRSTAT file (HTTP)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2512,6 +2707,9 @@ This JCL consists of two main steps:
 
     \newpage      
 
+.. index::
+   pair: Sorting the VIRSTAT file (HTTP); Audit     
+
 Sorting the VIRSTAT file 
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2545,6 +2743,9 @@ For example, to obtain a report in ascending order of session start date, specif
     //SYSIN DD *
     SORT FIELDS=(9,4,A),FORMAT=CH
     //*
+
+.. index::
+   pair: The PRTSTATW Program; Audit    
 
 PRTSTATW program
 ^^^^^^^^^^^^^^^^
@@ -2621,7 +2822,7 @@ Columns 21 to 36
     For SELPARM: up to 16 characters for the URL parameter. The value  may end in ‘\*’ for a generic search.
 
 Counter Report
-^^^^^^^^^^^^^^
+""""""""""""""
 
 Clients who wish to obtain the total number of unique users can execute the PRTSTATW program with the SYSIN shown below.
 
@@ -2672,10 +2873,16 @@ For z/OS, sample JCL for the user counter report is supplied in the JCLCOUST mem
 
     \newpage  
 
+.. index::
+   pair: SMF Support; Audit    
+
 SMF Support
 -----------
 
 Using VIRTEL 4.53+ and onwards allows VIRTEL SMF support writing VIRSTATS records into SMF. The VIRTCT must be reassembled and link-edited with a new value SMF or (SMF,nnn) for the STATS parameter to have this feature active. The SMF record format is the same as the current STATS record but prefixed by the standard SMF header. The default SMF record number is 223, but it can be modified using the (SMF,nnn) syntax.
+
+.. index::
+   pair: Printing the SMF file; Audit   
 
 Printing the VIRSTAT SMF record
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2712,8 +2919,7 @@ The current VIRTEL Web Access product uses the following open source software:
 
 - jQuery 
     Under MIT license - https://jquery.org/license/
-- StoreJson
-    Under MIT license - https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7
+    
 - jQuery_UI
     Under MIT license - http://en.wikipedia.org/wiki/JQuery_UI
 

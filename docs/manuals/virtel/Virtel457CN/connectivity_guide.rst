@@ -3421,7 +3421,7 @@ Videotex key
 Transparency
     Indicates the type(s) of external server(s) where translation from ASCII to EBCDIC must not used.
 Time Out
-    User inactivity timeout period (in minutes). If the user (or calling terminal) sends no messages during this period,the “Do if timeout” procedure is invoked. This timeout takes effect only for terminals using this entry point via HTTP, VIRTELPC, or X25 connections. It has no effect for 3270 connections.
+    User inactivity timeout period (in minutes). If the user (or calling terminal) sends no messages during this period,the “Do if timeout” procedure is invoked. This timeout takes effect only for terminals using this entry point via HTTP, VIRTELPC, or X25 connections. It has no effect for 3270 connections. The default is 720 minutes. A value of 0 implies no timeout.
 
 Do if timeout    
     Action to be taken if the value specified in the “Time Out” field is exceeded.
