@@ -843,7 +843,7 @@ capability
     The code is case-sensitive and so the capitalization must be exactly
     the same as the generated token.
 
-.. _#_V457UG_cookie_upload:    
+.. _#_V457UG_cookie_upload: 
 
 .. index::  
    single: Transmission of upload cookie by URL 
@@ -3386,7 +3386,7 @@ GIVING-ACCESS-TO-%GROUP%-DIRECTORY-IN-VARIABLE-%GROUP%
 Template Page upload
 --------------------
 
-The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used during uploading of HTML pages from a browser (see :ref:`“Uploading pages by HTTP (secured by cookie)” <#_V457UG_http_uploading_pages>`).
+The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used during uploading of HTML pages from a browser (see :ref:`“Uploading pages by HTTP (secured by cookie)” <#_V457UG_uploading_HTML_pages>`).
 
 .. index::
    pair: SECURITY-TOKEN; tags
@@ -3624,8 +3624,18 @@ The PDF-VARIABLE tag inserts “=” in the ASA carriage control character posit
 
     \newpage 
 
+.. _#_V457UG_uploading_HTML_pages:       
+
 Web Access Customization
 ========================
+
+Uploading HTML Pages
+--------------------
+
+A aprt of Web Access Customization will require the uploading of HTML templates or other web entities such as customised Javascript or CSS files. The Virtel Administration guide provides information on how to upload files to the Virtel mainframe server.
+
+Web Access Settings
+-------------------
 
 The VIRTEL Web Access user can use the Settings menu to modify certain options such as font size, 3270 key mappings, and color schemes. The user’s settings are stored in a browser local storage which remains valid so long as cookies are not deleted from the workstation. The settings stored in the user’s local storage override the default settings for VIRTEL Web Access which are distributed in the w2hparm.js file, located in the default W2H-DIR directory. See :ref:`“Global modification of Web Access settings” <#_V457UG_global_modifications>`.
 
@@ -3635,7 +3645,7 @@ The VIRTEL Web Access user can use the Settings menu to modify certain options s
    single: Web Access Settings
 
 Web Access Settings menu
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image18| When the user clicks the settings ICON on the VIRTEL Web Access toolbar, the Virtel Web Access settings panel is displayed. The panel has four setting tabs which are described below.  
 
@@ -11359,7 +11369,7 @@ VAR=commareaname
         Optionally specifies the name of the VIRTEL variable which contains the input commarea
 
 XMLGEN=YES|NO
-    Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT='COM=fieldname' is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see :ref:`“Uploading pages by HTTP” <#_V457UG_http_uploading_pages>`).
+    Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT='COM=fieldname' is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see :ref:`“Uploading pages by HTTP” <#_V457UG_uploading_HTML_pages>`).
 
 .. raw:: latex
 
@@ -11429,9 +11439,7 @@ File transfer by e-mail
 
 An entry point which is used for file file transfer (including the upload of HTML pages) has a single transaction which
 calls VIRTEL module VIR0041B. This transaction is defined with application type 2 and integration mode 1. The menu
-program specified in the entry point must be VIR0021B.
-Only authorized users (see :ref:`“Correspondent Management” <#_V457UG_correspondent_management>`) can perform transfers.
-
+program specified in the entry point must be VIR0021B. Only authorized users can perform transfers. See *Correspondent Management* in the Virtel Administration Guide. 
 ::
 
         ENTRY POINT DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:52:26
@@ -14020,7 +14028,7 @@ Virtel Rules
 ------------
 
 The rules attached to an HTTP line allow security to be implemented at the entry point level. The following example shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
-case, the entry point will be chosen according to the set of rules associated with that particular user (see :ref:`“Correspondent Management” <#_V457UG_correspondent_management>`). The second rule, 1HT00200, assigns the entry point EPINTERN to clients whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
+case, the entry point will be chosen according to the set of rules associated with that particular user. See *Correspondent Management* in the Virtel Administration Guide. The second rule, 1HT00200, assigns the entry point EPINTERN to clients whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
 third rule, 1HT00900, assigns the entry point EPPUBLIC to all other requests (this entry point could, for example, display a page containing the message “Access not authorised”).
 
 ::

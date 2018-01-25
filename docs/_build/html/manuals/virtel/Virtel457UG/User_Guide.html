@@ -805,7 +805,7 @@ the same as the generated token.</dd>
 <span class="target" id="v457ug-cookie-upload"></span></div>
 <div class="section" id="transmission-of-security-tokens-by-url">
 <span id="index-18"></span><h4>Transmission of Security Tokens by URL<a class="headerlink" href="#transmission-of-security-tokens-by-url" title="Permalink to this headline">¶</a></h4>
-<p>A security code, which identifies a user during a HTTP page upload request, is normally transmitted between the browser and VIRTEL as a cookie (see <span class="xref std std-ref">“Uploading HTML Pages”</span>). If, for security or other reasons, your browser does not allow the use of cookies, then the security code can, as an alternative, be embedded in a URL of the form shown below:-</p>
+<p>A security code, which identifies a user during a HTTP page upload request, is normally transmitted between the browser and VIRTEL as a cookie (see <a class="reference internal" href="#v457ug-uploading-html-pages"><span class="std std-ref">“Uploading HTML Pages”</span></a>). If, for security or other reasons, your browser does not allow the use of cookies, then the security code can, as an alternative, be embedded in a URL of the form shown below:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">pathname</span><span class="o">/</span><span class="n">pagename</span><span class="o">+</span><span class="n">tranname</span><span class="o">+</span><span class="n">securitycode</span>
 </pre></div>
 </div>
@@ -870,7 +870,7 @@ the same as the generated token.</dd>
 </div>
 <div class="section" id="directory-management">
 <span id="v457ug-directory-management"></span><h3>Directory Management<a class="headerlink" href="#directory-management" title="Permalink to this headline">¶</a></h3>
-<p id="index-21">HTML and XML template pages and other entities such as CSS stylesheets, JavaScript procedures, and GIF or JPEG images used by VIRTEL Web Access are stored in directories within a VSAM KSDS managed by VIRTEL. Each KSDS defined to VIRTEL can contain one or more directories. The system administrator can upload pages and other elements into a VIRTEL directory by using a web browser or by e-mail, as described in detail in the section <span class="xref std std-ref">“Uploading HTML Pages”</span>.</p>
+<p id="index-21">HTML and XML template pages and other entities such as CSS stylesheets, JavaScript procedures, and GIF or JPEG images used by VIRTEL Web Access are stored in directories within a VSAM KSDS managed by VIRTEL. Each KSDS defined to VIRTEL can contain one or more directories. The system administrator can upload pages and other elements into a VIRTEL directory by using a web browser or by e-mail, as described in detail in the section <a class="reference internal" href="#v457ug-uploading-html-pages"><span class="std std-ref">“Uploading HTML Pages”</span></a>.</p>
 <div class="section" id="accessing-the-administration-application">
 <h4>Accessing the administration application<a class="headerlink" href="#accessing-the-administration-application" title="Permalink to this headline">¶</a></h4>
 <p>Virtel provides an administrative portal which contains various sub applications used to administer Virtel. The administrative portal can be access either through the 3270 administration application or the HTML GUI portal.</p>
@@ -2733,7 +2733,7 @@ embedded in a page template sent by the terminal which owns the capability.</p>
 </div>
 <div class="section" id="template-page-upload">
 <span id="index-111"></span><h4>Template Page upload<a class="headerlink" href="#template-page-upload" title="Permalink to this headline">¶</a></h4>
-<p>The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used during uploading of HTML pages from a browser (see <span class="xref std std-ref">“Uploading pages by HTTP (secured by cookie)”</span>).</p>
+<p>The SECURITY-TOKEN and IF-SECURITY-TOKEN-IS-READY tags are used during uploading of HTML pages from a browser (see <a class="reference internal" href="#v457ug-uploading-html-pages"><span class="std std-ref">“Uploading pages by HTTP (secured by cookie)”</span></a>).</p>
 <div class="section" id="security-token-tag">
 <span id="index-112"></span><h5>SECURITY-TOKEN tag<a class="headerlink" href="#security-token-tag" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span> <span class="n">SECURITY</span><span class="o">-</span><span class="n">TOKEN</span> <span class="p">}}}</span>
@@ -2881,11 +2881,18 @@ generated only if VIRTEL has data ready to be printed.</p>
 </div>
 </div>
 <div class="section" id="web-access-customization">
-<h3>Web Access Customization<a class="headerlink" href="#web-access-customization" title="Permalink to this headline">¶</a></h3>
+<span id="v457ug-uploading-html-pages"></span><h3>Web Access Customization<a class="headerlink" href="#web-access-customization" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="uploading-html-pages">
+<h4>Uploading HTML Pages<a class="headerlink" href="#uploading-html-pages" title="Permalink to this headline">¶</a></h4>
+<p>A aprt of Web Access Customization will require the uploading of HTML templates or other web entities such as customised Javascript or CSS files. The Virtel Administration guide provides information on how to upload files to the Virtel mainframe server.</p>
+</div>
+<div class="section" id="web-access-settings">
+<h4>Web Access Settings<a class="headerlink" href="#web-access-settings" title="Permalink to this headline">¶</a></h4>
 <p>The VIRTEL Web Access user can use the Settings menu to modify certain options such as font size, 3270 key mappings, and color schemes. The user’s settings are stored in a browser local storage which remains valid so long as cookies are not deleted from the workstation. The settings stored in the user’s local storage override the default settings for VIRTEL Web Access which are distributed in the w2hparm.js file, located in the default W2H-DIR directory. See <a class="reference internal" href="#v457ug-global-modifications"><span class="std std-ref">“Global modification of Web Access settings”</span></a>.</p>
 <span class="target" id="v457ug-settings-menu"></span><div class="section" id="web-access-settings-menu">
-<span id="index-127"></span><h4>Web Access Settings menu<a class="headerlink" href="#web-access-settings-menu" title="Permalink to this headline">¶</a></h4>
+<span id="index-127"></span><h5>Web Access Settings menu<a class="headerlink" href="#web-access-settings-menu" title="Permalink to this headline">¶</a></h5>
 <p><a class="reference internal" href="../../../_images/image182.jpeg"><img alt="image18" src="../../../_images/image182.jpeg" style="width: 0.22500in; height: 0.22500in;" /></a> When the user clicks the settings ICON on the VIRTEL Web Access toolbar, the Virtel Web Access settings panel is displayed. The panel has four setting tabs which are described below.</p>
+</div>
 <div class="section" id="display-tab">
 <span id="index-128"></span><h5>Display Tab<a class="headerlink" href="#display-tab" title="Permalink to this headline">¶</a></h5>
 <p><a class="reference internal" href="../../../_images/image198.png"><img alt="image19" src="../../../_images/image198.png" style="width: 4.0in; height: 5.5in;" /></a></p>
@@ -8199,7 +8206,7 @@ END
 </div>
 <p><em>HTTP presentation module: PDF output generation</em></p>
 <p>For the purpose of this scenario, INPUT.TXT, DOCOPT.TXT and LAYOUT.TXT are files created on a PC, then uploaded to
-VIRTEL as page templates (see <span class="xref std std-ref">“Uploading HTML Pages”</span>). The TYPE=LINEBUFFER parameters on the COPY$
+VIRTEL as page templates (see <a class="reference internal" href="#v457ug-uploading-html-pages"><span class="std std-ref">“Uploading HTML Pages”</span></a>). The TYPE=LINEBUFFER parameters on the COPY$
 statements tell VIRTEL that these files should be converted to MakePDF “LINEBUF” format. The VIRSV$ statement calls
 an intermediary service program VIRSVPDF which sets up the commarea and calls MakePDF. Then the SEND$
 statement sends back the result file to the browser, giving it the name my.pdf.</p>
@@ -9052,7 +9059,7 @@ SAMPLIB. The start of the MAPGJCL job is shown below:</p>
 </dl>
 </dd>
 <dt>XMLGEN=YES|NO</dt>
-<dd>Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT=’COM=fieldname’ is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see <span class="xref std std-ref">“Uploading pages by HTTP”</span>).</dd>
+<dd>Specifies whether an additional XMLGEN step is to be run. This parameter is useful when FORMAT=COM or FORMAT=’COM=fieldname’ is specified. If XMLGEN=YES then the job also generates a VIRTEL page template suitable for converting the VIRTEL result variables into XML format. The generated page template is written to userid.XMLGEN.OUTPUT which must be preallocated as a sequential dataset. The contents of this dataset should then be transferred to your workstation where it can be uploaded into a VIRTEL directory (see <a class="reference internal" href="#v457ug-uploading-html-pages"><span class="std std-ref">“Uploading pages by HTTP”</span></a>).</dd>
 </dl>
 <span class="target" id="v457ug-email-incoming"></span></div>
 </div>
@@ -9101,8 +9108,7 @@ used:</p>
 <span id="index-348"></span><h4>File transfer by e-mail<a class="headerlink" href="#file-transfer-by-e-mail" title="Permalink to this headline">¶</a></h4>
 <p>An entry point which is used for file file transfer (including the upload of HTML pages) has a single transaction which
 calls VIRTEL module VIR0041B. This transaction is defined with application type 2 and integration mode 1. The menu
-program specified in the entry point must be VIR0021B.
-Only authorized users (see <span class="xref std std-ref">“Correspondent Management”</span>) can perform transfers.</p>
+program specified in the entry point must be VIR0021B. Only authorized users can perform transfers. See <em>Correspondent Management</em> in the Virtel Administration Guide.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>ENTRY POINT DETAIL DEFINITION ---------------------- Applid: SPVIRE2 15:52:26
 Name          ===&gt; SMTP                Name this ENTRY POINT (LOGON DATA)
 Description   ===&gt; Receive e-mail for file transfer
@@ -11075,7 +11081,7 @@ genloginform(&quot;{{{NAME-OF (PAGE)}}}++{{{AJAX-SESSION-CODE}}}&quot;,
 <div class="section" id="virtel-rules">
 <span id="index-435"></span><h4>Virtel Rules<a class="headerlink" href="#virtel-rules" title="Permalink to this headline">¶</a></h4>
 <p>The rules attached to an HTTP line allow security to be implemented at the entry point level. The following example shows a set of three rules which are used to filter incoming HTTP calls. The first rule, 1HT00100, assigns an entry point specifically for users known to VIRTEL and identified by means of a “cookie” included in their HTTP request. In this
-case, the entry point will be chosen according to the set of rules associated with that particular user (see <span class="xref std std-ref">“Correspondent Management”</span>). The second rule, 1HT00200, assigns the entry point EPINTERN to clients whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
+case, the entry point will be chosen according to the set of rules associated with that particular user. See <em>Correspondent Management</em> in the Virtel Administration Guide. The second rule, 1HT00200, assigns the entry point EPINTERN to clients whose IP address is 192.168.n.n, and only during the period Monday to Friday during the hours 08:30 to 17:30. The
 third rule, 1HT00900, assigns the entry point EPPUBLIC to all other requests (this entry point could, for example, display a page containing the message “Access not authorised”).</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>LIST of RULES in RULE SET: H-HTTP ---------------- Applid: SPVIRD2 13:57:53
 

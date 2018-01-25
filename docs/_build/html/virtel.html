@@ -3912,7 +3912,7 @@
 <li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#required-environment">Required Environment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-os-environment">z/OS environment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-vse-environment">z/VSE environment</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#workstation-pre-requisities">Workstation pre-requisities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#browser-pre-requisities">Browser pre-requisities</a></li>
 </ul>
 </li>
 </ul>
@@ -3922,7 +3922,7 @@
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#restoring-from-the-xmit-file">Restoring from the XMIT file</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#maintenance-procedure">Maintenance Procedure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applying-maintenance">Applying Maintenance</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#obtaining-ptfs-and-updates">Obtaining PTFs and Updates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#uploading-ptfs">Uploading PTFs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applying-ptfs">Applying PTFs</a></li>
@@ -3930,13 +3930,15 @@
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#upgrading-a-previous-release">Upgrading a previous release</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#upgrade-procedure">Upgrade procedure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#upgrade-from-a-previous-release">Upgrade from a previous release</a></li>
 <li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applying-maintenace-updates">Applying Maintenace Updates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#executing-virtel-in-an-z-os-environment">Executing Virtel in an z/OS environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#executing-virtel-in-a-z-os-environment">Executing Virtel in a z/OS environment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#required-and-optional-files-for-virtel">Required and optional files for Virtel</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#apf-authorisation-userid-and-priority">APF authorisation, userid and priority</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-os-apf-authorisation-userid-and-priority">z/OS APF authorisation, userid and priority</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#optional-jcl-parameters">Optional JCL parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#executing-virtel">Executing Virtel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#executing-virtel-as-a-started-task">Executing Virtel as a Started Task</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#stopping-virtel">Stopping Virtel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-os-installation-check-list">z/OS Installation Check-list</a></li>
 </ul>
@@ -3967,7 +3969,6 @@
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#updating-the-virarbo-file-arboload">Updating the VIRARBO file (ARBOLOAD)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#cataloging-the-vtam-application-book">Cataloging the VTAM application book</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#defining-the-cics-resources">Defining the CICS resources</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applying-vwa-user-interface-update">Applying VWA User Interface Update</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#executing-virtel-in-a-z-vse-environment">Executing VIRTEL In A z/VSE Environment</a><ul>
@@ -3975,220 +3976,219 @@
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id2">Stopping VIRTEL</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id3">Applying PTFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#application-of-the-ptfs">Application of the PTFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applying-virtel-maintenance">Applying Virtel Maintenance</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vwa-maintenace">VWA Maintenace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mainframe-ptfs">Mainframe PTFs</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vtam">VTAM</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vtam-parameters">VTAM parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#definition-of-the-virtel-primary-acb">5.2. Definition Of The VIRTEL Primary ACB</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#defining-the-vtam-application-relays">5.3. Defining The VTAM Application Relays</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#modetab-for-minitel-x25-and-appc">5.4. MODETAB For Minitel, X25, And APPC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#usstab-for-minitels-and-pcs">5.5. USSTAB For Minitels And PC’s</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#cics-definitions">5.6. CICS Definitions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virtel-web-access-terminals">5.6.1. VIRTEL Web Access Terminals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#minitel-terminals">5.6.2. Minitel Terminals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vtam-parameters">VTAM parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#definition-of-the-virtel-primary-acb">Definition Of The VIRTEL Primary ACB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#defining-the-vtam-application-relays">Defining The VTAM Application Relays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#modetab-for-x25-and-appc">MODETAB For X25 and APPC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#usstab-for-pcs">USSTAB For PC’s</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#cics-definitions">CICS Definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virtel-web-access-terminals">VIRTEL Web Access Terminals</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virtct">6. VIRTCT</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id4">6.1 introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#parameters-of-the-virtct">6.2. Parameters Of The VIRTCT</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#accueil-parameter">6.2.1. ACCUEIL parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#addr1-parameter">6.2.2. ADDR1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#addr2-parameter">6.2.3. ADDR2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#aic-parameter">6.2.4. AIC parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#annul-parameter">6.2.5. ANNUL parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id5">6.2.6. APPLID parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#appstat-parameter">6.2.7. APPSTAT parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#arbo-parameter">6.2.8. ARBO parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#batch1-parameter">6.2.9. BATCH1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#batch2-parameter">6.2.10. BATCH2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#bfvsam-parameter">6.2.11. BFVSAM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#bufdata-parameter">6.2.12. BUFDATA parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#bufsize-parameter">6.2.13. BUFSIZE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#charset-parameter">6.2.14. CHARSET parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#code-parameter">6.2.15. CODE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#company-parameter">6.2.16. COMPANY parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#compr3-parameter">6.2.17. COMPR3 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#correct-parameter">6.2.18. CORRECT parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#country-parameter">6.2.19. COUNTRY parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#crypt1-parameter">6.2.20. CRYPT1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#crypt2-parameter">6.2.21. CRYPT2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#defentr-parameter">6.2.22. DEFENTR parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#defutf8-parameter">6.2.23. DEFUTF8 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#direct-parameter">6.2.24. DIRECT parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#dontswa-parameter-z-os-only">6.2.25. DONTSWA parameter (z/OS only)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit1-parameter">6.2.26. EXIT1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit2-parameter">6.2.27. EXIT2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit3-parameter">6.2.28. EXIT3 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit4-parameter">6.2.29. EXIT4 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit5-parameter">6.2.30. EXIT5 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit6-parameter">6.2.31. EXIT6 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit7-parameter">6.2.32. EXIT7 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit8-parameter">6.2.33. EXIT8 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#expire-parameter">6.2.34. EXPIRE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#fastc-parameter">6.2.35. FASTC parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#fcapt-parameter">6.2.36. FCAPT parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#fcmp3-parameter">6.2.37. FCMP3 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gate-parameter">6.2.38. GATE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gmt-parameter">6.2.39. GMT parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#grname-parameter">6.2.40. GRNAME parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtload-parameter">6.2.41. GTLOAD parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtprfe1-parameter">6.2.42. GTPRFE1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtprfe2-parameter">6.2.43. GTPRFE2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtvsam-parameter">6.2.44. GTVSAM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtvskip-parameter">6.2.45. GTVSKIP parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#guide-parameter">6.2.46. GUIDE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htforwd-parameter">6.2.47. HTFORWD parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htheadr-parameter">6.2.48. HTHEADR parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htmini-parameter">6.2.49. HTMINI parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htparm-parameter">6.2.50. HTPARM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htset1-to-htset4-parameters">6.2.51. HTSET1 to HTSET4 parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htvsam-parameter">6.2.52. HTVSAM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#ibertex-parameter">6.2.53. IBERTEX parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#ignlu-parameter">6.2.54. IGNLU parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#lang-parameter">6.2.55. LANG parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#licence-parameter">6.2.56. LICENCE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#lock-parameter">6.2.57. LOCK parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#log-parameter">6.2.58. LOG parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mark-parameter">6.2.59. MARK parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#maxappl-parameter">6.2.60. MAXAPPL parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#memory-parameter">6.2.61. MEMORY parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#minitel-parameter">6.2.62. MINITEL parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq1-parameter">6.2.63. MQ1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq2-parameter">6.2.64. MQ2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq3-parameter">6.2.65. MQ3 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq4-parameter">6.2.66. MQ4 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#multi-parameter">6.2.67. MULTI parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#nbcvc-parameter">6.2.68. NBCVC parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#nbdynam-parameter">6.2.69. NBDYNAM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#nbterm-parameter">6.2.70. NBTERM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#numtask-parameter">6.2.71. NUMTASK parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#otmaprm-parameter">6.2.72. OTMAPRM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#oscore-parameter">6.2.73. OSCORE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#packet-parameter">6.2.74. PACKET parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#passtck-parameter">6.2.75. PASSTCK parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#prez900-parameter">6.2.76. PREZ900 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#prfsecu-parameter">6.2.77. PRFSECU parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#pwprot-parameter">6.2.78. PWPROT parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#racappl-parameter">6.2.79. RACAPPL parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rappl-parameter">6.2.80. RAPPL parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#realm-parameter">6.2.81. REALM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#repet-parameter">6.2.82. REPET parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#reso-parameter">6.2.83. RESO parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#retour-parameter">6.2.84. RETOUR parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rnode-parameter">6.2.85. RNODE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rterm-parameter">6.2.86. RTERM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#secur-parameter">6.2.87. SECUR parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#silence-parameter">6.2.88. SILENCE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#snapmsg-parameter">6.2.89. SNAPMSG parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#snapw-parameter">6.2.90. SNAPW parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#sommr-parameter">6.2.91. SOMMR parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#statdsn-parameter">6.2.92. STATDSN parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#stats-parameter">6.2.93. STATS parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#strno-parameter">6.2.94. STRNO parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#suite-parameter">6.2.95. SUITE parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#swap-parameter">6.2.96. SWAP parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virtct">VIRTCT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id3">introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#parameters-of-the-virtct">Parameters Of The VIRTCT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#accueil-parameter">ACCUEIL parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#addr1-parameter">ADDR1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#addr2-parameter">ADDR2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#aic-parameter">AIC parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#annul-parameter">ANNUL parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id4">APPLID parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#appstat-parameter">APPSTAT parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#arbo-parameter">ARBO parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#batch1-parameter">BATCH1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#batch2-parameter">BATCH2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#bfvsam-parameter">BFVSAM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#bufdata-parameter">BUFDATA parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#bufsize-parameter">BUFSIZE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#charset-parameter">CHARSET parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#code-parameter">CODE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#company-parameter">COMPANY parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#compr3-parameter">COMPR3 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#correct-parameter">CORRECT parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#country-parameter">COUNTRY parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#crypt1-parameter">CRYPT1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#crypt2-parameter">CRYPT2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#defentr-parameter">DEFENTR parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#defutf8-parameter">DEFUTF8 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#direct-parameter">DIRECT parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#dontswa-parameter-z-os-only">DONTSWA parameter (z/OS only)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit1-parameter">EXIT1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit2-parameter">EXIT2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit3-parameter">EXIT3 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit4-parameter">EXIT4 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit5-parameter">EXIT5 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit6-parameter">EXIT6 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit7-parameter">EXIT7 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#exit8-parameter">EXIT8 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#expire-parameter">EXPIRE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#fastc-parameter">FASTC parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#fcapt-parameter">FCAPT parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#fcmp3-parameter">FCMP3 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gate-parameter">GATE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gmt-parameter">GMT parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#grname-parameter">GRNAME parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtload-parameter">GTLOAD parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtprfe1-parameter">GTPRFE1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtprfe2-parameter">GTPRFE2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtvsam-parameter">GTVSAM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#gtvskip-parameter">GTVSKIP parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#guide-parameter">GUIDE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htforwd-parameter">HTFORWD parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htheadr-parameter">HTHEADR parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htmini-parameter">HTMINI parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htparm-parameter">HTPARM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htset1-to-htset4-parameters">HTSET1 to HTSET4 parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#htvsam-parameter">HTVSAM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#ibertex-parameter">IBERTEX parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#ignlu-parameter">IGNLU parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#lang-parameter">LANG parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#licence-parameter">LICENCE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#lock-parameter">LOCK parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#log-parameter">LOG parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mark-parameter">MARK parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#maxappl-parameter">MAXAPPL parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#memory-parameter">MEMORY parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq1-parameter">MQ1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq2-parameter">MQ2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq3-parameter">MQ3 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#mq4-parameter">MQ4 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#multi-parameter">MULTI parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#nbcvc-parameter">NBCVC parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#nbdynam-parameter">NBDYNAM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#nbterm-parameter">NBTERM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#numtask-parameter">NUMTASK parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#otmaprm-parameter">OTMAPRM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#oscore-parameter">OSCORE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#packet-parameter">PACKET parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#passtck-parameter">PASSTCK parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#prez900-parameter">PREZ900 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#prfsecu-parameter">PRFSECU parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#pwprot-parameter">PWPROT parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#racappl-parameter">RACAPPL parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rappl-parameter">RAPPL parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#realm-parameter">REALM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#repet-parameter">REPET parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#reso-parameter">RESO parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#retour-parameter">RETOUR parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rnode-parameter">RNODE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rterm-parameter">RTERM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#secur-parameter">SECUR parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#silence-parameter">SILENCE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#snapmsg-parameter">SNAPMSG parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#snapw-parameter">SNAPW parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#sommr-parameter">SOMMR parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#statdsn-parameter">STATDSN parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#stats-parameter">STATS parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#strno-parameter">STRNO parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#suite-parameter">SUITE parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#swap-parameter">SWAP parameter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#sysplus-parameter">6.2.97. SYSPLUS parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tcp1-parameter">6.2.98. TCP1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tcp2-parameter">6.2.99. TCP2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#timeout-parameter">6.2.100. TIMEOUT parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#timerqs-parameter">6.2.101. TIMERQS parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#titre1-parameter">6.2.102. TITRE1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#titre2-parameter">6.2.103. TITRE2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tracall-parameter">6.2.104. TRACALL parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tracbig-parameter">6.2.105. TRACBIG parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#traceb-parameter">6.2.106. TRACEB parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#traceoj-parameter">6.2.107. TRACEOJ parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#traceon-parameter">6.2.108. TRACEON parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tractim-parameter">6.2.109. TRACTIM parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tran-parameter">6.2.110. TRAN parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#ufile1-to-ufile20-parameters">6.2.111. UFILE1 to UFILE20 parameters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virsecu-parameter">6.2.112. VIRSECU parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virsv1-parameter">6.2.113. VIRSV1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vsamtyp-parameter">6.2.114. VSAMTYP parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vtkeys-parameter">6.2.115. VTKEYS parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id6">6.2.116. VTOVER parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#warning-parameter">6.2.117. Warning parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#xm1-parameter">6.2.118. XM1 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#xm2-parameter">6.2.119. XM2 parameter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#zaph-parameter">6.2.120. ZAPH parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tcp1-parameter">TCP1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tcp2-parameter">TCP2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#timeout-parameter">TIMEOUT parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#timerqs-parameter">TIMERQS parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#titre1-parameter">TITRE1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#titre2-parameter">TITRE2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tracall-parameter">TRACALL parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tracbig-parameter">TRACBIG parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#traceb-parameter">TRACEB parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#traceoj-parameter">TRACEOJ parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#traceon-parameter">TRACEON parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tractim-parameter">TRACTIM parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#tran-parameter">TRAN parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#ufile1-to-ufile20-parameters">UFILE1 to UFILE20 parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virsecu-parameter">VIRSECU parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virsv1-parameter">VIRSV1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vsamtyp-parameter">VSAMTYP parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#vtkeys-parameter">VTKEYS parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id5">VTOVER parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#warning-parameter">Warning parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#xm1-parameter">XM1 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#xm2-parameter">XM2 parameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#zaph-parameter">ZAPH parameter</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#additional-parameters-for-vsam-files">6.3. Additional Parameters For VSAM Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#additional-parameters-for-batch-files">6.4. Additional Parameters For Batch Files</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#how-to-share-vsam-files-between-multiple-instances-of-virtel">6.5. How To Share VSAM Files Between Multiple Instances Of VIRTEL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#additional-parameters-for-vsam-files">Additional Parameters For VSAM Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#additional-parameters-for-batch-files">Additional Parameters For Batch Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#how-to-share-vsam-files-between-multiple-instances-of-virtel">How To Share VSAM Files Between Multiple Instances Of VIRTEL</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#example-of-the-virtct">6.6. Example Of The VIRTCT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id7">6.7. Assembling The VIRTCT</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-os-example">6.7.1. z/OS example</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-vse-example">6.7.2. z/VSE example</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#dynamic-virtct-overrides">6.8. Dynamic VIRTCT Overrides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#example-of-the-virtct">Example Of The VIRTCT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id6">Assembling The VIRTCT</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-os-example">z/OS example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#z-vse-example">z/VSE example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#dynamic-virtct-overrides">Dynamic VIRTCT Overrides</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applying-patches-via-the-virtct">6.9. Applying Patches Via The VIRTCT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applying-patches-via-the-virtct">Applying Patches Via The VIRTCT</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virconf">7. VIRCONF</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id8">7.1 Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#jcl">7.2 JCL</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#updating-a-virarbo-file">7.2.2. Updating a VIRARBO file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#unloading-a-virarbo-file">7.2.3. Unloading a VIRARBO file</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#verify-control-card-syntax">7.2.4. Verify control card syntax</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#multi-language-support">7.2.5. Multi-language support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virconf-utility">VIRCONF UTILITY</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id7">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#jcl">JCL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#updating-a-virarbo-file">Updating a VIRARBO file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#unloading-a-virarbo-file">Unloading a VIRARBO file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#verify-control-card-syntax">Verify control card syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#multi-language-support">Multi-language support</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virconf-control-cards">7.3. VIRCONF Control Cards</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virconf-control-card-syntax">7.3.1. VIRCONF control card syntax</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applic">7.3.2. APPLIC</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#delete">7.3.3. DELETE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#dept">7.3.4. DEPT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#entry">7.3.5. ENTRY</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#index">7.3.6. INDEX</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#line">7.3.7. LINE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#node">7.3.8. NODE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#pc">7.3.9. PC</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#profile">7.3.10. PROFILE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#resource">7.3.11. RESOURCE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rule">7.3.12. RULE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#server">7.3.13. SERVER</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#sserv">7.3.14. SSERV</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#subdir">7.3.15. SUBDIR</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#terminal">7.3.16. TERMINAL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#transact">7.3.17. TRANSACT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#update">7.3.18. UPDATE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#user">7.3.19. USER</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#security">8. Security</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#modify-the-virtct">8.1.1 Modify the VIRTCT</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#add-racf-definitions">8.1.2 Add RACF definitions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virtel-administrators">8.1.3. Virtel Administrators</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#how-to-activate-acf2-security">8.2 How to activate ACF2 Security</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id9">8.2.1 Modify the VIRTCT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#determine-the-acf2-resource-type">8.2.2. Determine the ACF2 resource type</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#add-acf2-definitions">8.2.3. Add ACF2 definitions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#how-to-activate-top-secret-tss-security-perform">8.3. How To Activate Top Secret (TSS) Security Perform</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#modify-the-tct">8.3.1 Modify the TCT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#add-tss-definitions">8.3.2 Add TSS definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virconf-control-cards">VIRCONF Control Cards</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virconf-control-card-syntax">VIRCONF control card syntax</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#applic">APPLIC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#delete">DELETE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#dept">DEPT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#entry">ENTRY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#index">INDEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#line">LINE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#node">NODE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#pc">PC</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#profile">PROFILE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#resource">RESOURCE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#rule">RULE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#server">SERVER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#sserv">SSERV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#subdir">SUBDIR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#terminal">TERMINAL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#transact">TRANSACT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#update">UPDATE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#user">USER</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#a-appendix">A. Appendix</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#a-1-trademarks">A.1 Trademarks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#a-2-open-source-software">A.2. Open Source Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#security">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#modify-the-virtct">Modify the VIRTCT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#add-racf-definitions">Add RACF definitions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#virtel-administrators">Virtel Administrators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#how-to-activate-acf2-security">How to activate ACF2 Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#id8">Modify the VIRTCT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#determine-the-acf2-resource-type">Determine the ACF2 resource type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#add-acf2-definitions">Add ACF2 definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#how-to-activate-top-secret-tss-security-perform">How To Activate Top Secret (TSS) Security Perform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#modify-the-tct">Modify the TCT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#add-tss-definitions">Add TSS definitions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#appendix">Appendix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#trademarks">Trademarks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457IG/Installation_Guide.html#open-source-software">Open Source Software</a></li>
 </ul>
 </li>
 </ul>
@@ -5164,7 +5164,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457UG/User_Guide.html#web-access-customization">Web Access Customization</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457UG/User_Guide.html#web-access-settings-menu">Web Access Settings menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457UG/User_Guide.html#uploading-html-pages">Uploading HTML Pages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="manuals/virtel/Virtel457UG/User_Guide.html#web-access-settings">Web Access Settings</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="manuals/virtel/Virtel457UG/User_Guide.html#application-selection-menu">Application Selection Menu</a><ul>
