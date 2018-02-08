@@ -45,7 +45,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Feb 01, 2018}
+\date{Feb 08, 2018}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -100,7 +100,7 @@ their respective owners.
 
 
 \chapter{Summary of Amendments}
-\label{\detokenize{Installation_Guide:summary-of-amendments}}\label{\detokenize{Installation_Guide:virtel457ig}}\label{\detokenize{Installation_Guide:v457ig-summary-of-ammendments}}\label{\detokenize{Installation_Guide:installation-guide-v4-57}}
+\label{\detokenize{Installation_Guide:vvrrig-summary-of-ammendments}}\label{\detokenize{Installation_Guide:summary-of-amendments}}\label{\detokenize{Installation_Guide:virtelvrrig}}\label{\detokenize{Installation_Guide:installation-guide-v4-57}}
 
 \section{Virtel version 4.57 (1st Jul 2017)}
 \label{\detokenize{Installation_Guide:virtel-version-4-57-1st-jul-2017}}
@@ -207,7 +207,7 @@ TCT MAXSOC defaults to 1000.
 \end{itemize}
 
 \begin{sphinxadmonition}{note}{Note:}
-For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.57.
+For further details see the Virtel Technical Newsletter TN201607: Whats new in Virtel 4.56.
 \end{sphinxadmonition}
 
 
@@ -329,7 +329,7 @@ TCT additional MQ3 and MQ4 keywords.
 \end{itemize}
 
 \begin{sphinxadmonition}{note}{Note:}
-For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.57.
+For further details see the Virtel Technical Newsletter TN201522: Whats new in Virtel 4.55.
 \end{sphinxadmonition}
 
 
@@ -999,7 +999,7 @@ Miscellaneous editorial corrections and enhancements
 
 
 \chapter{Introduction}
-\label{\detokenize{Installation_Guide:introduction}}\label{\detokenize{Installation_Guide:v457ig-introduction}}
+\label{\detokenize{Installation_Guide:introduction}}\label{\detokenize{Installation_Guide:vvrrig-introduction}}
 \index{Virtel Modules}
 
 \section{Virtel Modules}
@@ -1177,7 +1177,7 @@ Safari Version 5 or above
 \end{itemize}
 
 VIRTEL Web Access requires JavaScript to be enabled in the browser.
-\phantomsection\label{\detokenize{Installation_Guide:v457ig-installz-os}}
+\phantomsection\label{\detokenize{Installation_Guide:vvrrig-installz-os}}
 \index{Installation!Installing under z/OS}\index{Installing under z/OS!Installation}
 
 \chapter{Installing VIRTEL under z/OS}
@@ -1185,7 +1185,7 @@ VIRTEL Web Access requires JavaScript to be enabled in the browser.
 
 \section{Installation procedure}
 \label{\detokenize{Installation_Guide:installation-procedure}}
-In the z/OS environment, VIRTEL is delivered as a zipped XMIT file containing the VIRTEL datasets compressed in DF/ DSS dump format. The following sections provide details of the installation method.
+In the z/OS environment, VIRTEL is delivered as a zipped XMIT file containing the VIRTEL datasets compressed in DF/DSS dump format. The following sections provide details of the installation method.
 
 A quick “installation check-list” to start the VIRTEL Web Access function for z/OS can be found at the end of this section.
 
@@ -1198,7 +1198,9 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 
 \subsubsection{Step 1}
 \label{\detokenize{Installation_Guide:step-1}}
-Login to the Syspertec file server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.57” \textendash{} “Products” folder and download the virtel457mvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.57” \textendash{} “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.
+
+\newpage
 
 
 \subsubsection{Step 2}
@@ -1251,10 +1253,12 @@ PROF                                            /* POUR GENERER CC=0 */
 
 The parameters SET VOLM=SPT001 and SET UNIT=3390 at the start of this job should be changed as appropriate to match the volume on which the userid.TRANSFER.XMIT dataset is to be allocated.
 
+\newpage
+
 
 \subsubsection{Step 3}
 \label{\detokenize{Installation_Guide:step-3}}
-Using FTP or IND\$FILE, upload the file virtel457mvs.xmit to the host transfer file created in step 1. It is very important to ensure that the upload is performed in binary mode. The following is an example of an FTP session to perform the upload:
+Using FTP or IND\$FILE, upload the file virtelvrrmvs.xmit to the host transfer file created in step 1. It is very important to ensure that the upload is performed in binary mode. The following is an example of an FTP session to perform the upload:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{C}\PYG{p}{:}\PYGZbs{}\PYG{n}{temp}\PYG{o}{\PYGZgt{}}\PYG{n}{ftp} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{0.1}
@@ -1267,7 +1271,7 @@ Using FTP or IND\$FILE, upload the file virtel457mvs.xmit to the host transfer f
 \PYG{l+m+mi}{230} \PYG{n}{SPTUSER} \PYG{o+ow}{is} \PYG{n}{logged} \PYG{n}{on}\PYG{o}{.} \PYG{n}{Working} \PYG{n}{directory} \PYG{o+ow}{is} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SPTUSER.}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{.}
 \PYG{n}{ftp}\PYG{o}{\PYGZgt{}} \PYG{n+nb}{bin}
 \PYG{l+m+mi}{200} \PYG{n}{Representation} \PYG{n+nb}{type} \PYG{o+ow}{is} \PYG{n}{Image}
-\PYG{n}{ftp}\PYG{o}{\PYGZgt{}} \PYG{n}{put} \PYG{n}{virtel457mvs}\PYG{o}{.}\PYG{n}{xmit} \PYG{n}{TRANSFER}\PYG{o}{.}\PYG{n}{XMIT}
+\PYG{n}{ftp}\PYG{o}{\PYGZgt{}} \PYG{n}{put} \PYG{n}{virtelvrrmvs}\PYG{o}{.}\PYG{n}{xmit} \PYG{n}{TRANSFER}\PYG{o}{.}\PYG{n}{XMIT}
 \PYG{l+m+mi}{200} \PYG{n}{Port} \PYG{n}{request} \PYG{n}{OK}\PYG{o}{.}
 \PYG{l+m+mi}{125} \PYG{n}{Storing} \PYG{n}{data} \PYG{n+nb}{set} \PYG{n}{SPTUSER}\PYG{o}{.}\PYG{n}{TRANSFER}\PYG{o}{.}\PYG{n}{XMIT}
 \PYG{l+m+mi}{250} \PYG{n}{Transfer} \PYG{n}{completed} \PYG{n}{successfully}\PYG{o}{.}
@@ -1315,44 +1319,44 @@ RESTORE \PYGZhy{}
 DS(INCLUDE(SPRODUIT.VIRTEL.BASE*.**)) \PYGZhy{}
 OUTDYNAM(??????,3390) /* \PYGZlt{}==== VOLUME, UNIT ===== */ \PYGZhy{}
 RENAMEUNC( \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.LOADLIB, \PYGZhy{}
-            yourqual.VIRT457.LOADLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.MACLIB, \PYGZhy{}
-            yourqual.VIRT457.MACLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.SAMPLIB, \PYGZhy{}
-            yourqual.VIRT457.SAMPLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.SERVLIB, \PYGZhy{}
-            yourqual.VIRT457.SERVLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.DBRMLIB, \PYGZhy{}
-            yourqual.VIRT457.DBRMLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.CNTL, \PYGZhy{}
-            yourqual.VIRT457.CNTL), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.SAMP.TRSF, \PYGZhy{}
-            yourqual.VIRT457.SAMP.TRSF), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.CONFGEN.MACLIB, \PYGZhy{}
-            yourqual.VIRT457.CONFGEN.MACLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.FA29API.MACLIB, \PYGZhy{}
-            yourqual.VIRT457.FA29API.MACLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.SCRNAPI.MACLIB, \PYGZhy{}
-            yourqual.VIRT457.SCRNAPI.MACLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.VIRAPI.MACLIB, \PYGZhy{}
-            yourqual.VIRT457.VIRAPI.MACLIB), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.ARBO, \PYGZhy{}
-            yourqual.VIRT457.ARBO), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.CAPT, \PYGZhy{}
-            yourqual.VIRT457.CAPT), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.CMP3, \PYGZhy{}
-            yourqual.VIRT457.CMP3), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.HTML, \PYGZhy{}
-            yourqual.VIRT457.HTML), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.HTML.TRSF, \PYGZhy{}
-            yourqual.VIRT457.HTML.TRSF), \PYGZhy{}
-    (SPRODUIT.VIRTEL.BASE457.PLUG.TRSF, \PYGZhy{}
-            yourqual.VIRT457.PLUG.TRSF), \PYGZhy{}
-            (SPRODUIT.VIRTEL.BASE457.SWAP, \PYGZhy{}
-                    yourqual.VIRT457.SWAP), \PYGZhy{}
-            (SPRODUIT.VIRTEL.BASE457.STAT, \PYGZhy{}
-                    yourqual.VIRT457.STAT), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.LOADLIB, \PYGZhy{}
+            yourqual.VIRTvrr.LOADLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.MACLIB, \PYGZhy{}
+            yourqual.VIRTvrr.MACLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.SAMPLIB, \PYGZhy{}
+            yourqual.VIRTvrr.SAMPLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.SERVLIB, \PYGZhy{}
+            yourqual.VIRTvrr.SERVLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.DBRMLIB, \PYGZhy{}
+            yourqual.VIRTvrr.DBRMLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.CNTL, \PYGZhy{}
+            yourqual.VIRTvrr.CNTL), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.SAMP.TRSF, \PYGZhy{}
+            yourqual.VIRTvrr.SAMP.TRSF), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.CONFGEN.MACLIB, \PYGZhy{}
+            yourqual.VIRTvrr.CONFGEN.MACLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.FA29API.MACLIB, \PYGZhy{}
+            yourqual.VIRTvrr.FA29API.MACLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.SCRNAPI.MACLIB, \PYGZhy{}
+            yourqual.VIRTvrr.SCRNAPI.MACLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.VIRAPI.MACLIB, \PYGZhy{}
+            yourqual.VIRTvrr.VIRAPI.MACLIB), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.ARBO, \PYGZhy{}
+            yourqual.VIRTvrr.ARBO), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.CAPT, \PYGZhy{}
+            yourqual.VIRTvrr.CAPT), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.CMP3, \PYGZhy{}
+            yourqual.VIRTvrr.CMP3), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.HTML, \PYGZhy{}
+            yourqual.VIRTvrr.HTML), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.HTML.TRSF, \PYGZhy{}
+            yourqual.VIRTvrr.HTML.TRSF), \PYGZhy{}
+    (SPRODUIT.VIRTEL.BASEvrr.PLUG.TRSF, \PYGZhy{}
+            yourqual.VIRTvrr.PLUG.TRSF), \PYGZhy{}
+            (SPRODUIT.VIRTEL.BASEvrr.SWAP, \PYGZhy{}
+                    yourqual.VIRTvrr.SWAP), \PYGZhy{}
+            (SPRODUIT.VIRTEL.BASEvrr.STAT, \PYGZhy{}
+                    yourqual.VIRTvrr.STAT), \PYGZhy{}
                     ) \textendash{}
     /* NULLSTORCLAS BYPASSACS(**) */ /* \PYGZlt{}==== SMS OVERRIDE ===== */ \PYGZhy{}
     /* ADMIN TOL(ENQF) */                    /* \PYGZlt{}==== OPTIONAL ========= */ \PYGZhy{}
@@ -1380,23 +1384,25 @@ The ADMIN and TOL(ENQF) parameters may be uncommented if you are authorized to t
 
 \end{itemize}
 
+\newpage
+
 \index{Installation!Applying maintenance}\index{Applying maintenance!Installation}
 
 \section{Applying Maintenance}
 \label{\detokenize{Installation_Guide:index-5}}\label{\detokenize{Installation_Guide:applying-maintenance}}
-As a general rule the application of PTFs is necessary and recommended. PTFs are maintenance files which must be applied to the VIRTEL LOADLIB to correct problems which have been discovered subsequent to the building of the VIRTEL 4.57 release, or to add new function which will be included as standard in the next release. A second type of PTF consists of elements such as HTML pages, style sheets, and JavaScript files, which must be uploaded into the VIRTEL directories in the SAMPTRSF VSAM file. This type of PTF may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format.
+As a general rule the application of PTFs is necessary and recommended. PTFs are maintenance files which must be applied to the VIRTEL LOADLIB to correct problems which have been discovered subsequent to the building of the VIRTEL V.RR version, or to add new function which will be included as standard in the next version. A second type of PTF, known as \sphinxstylestrong{Updates} consists of web elements or artifacts such as HTML pages, style sheets, and JavaScript files, which must be uploaded into VIRTEL internal directories contained in the SAMPTRSF VSAM file. This type of PTF is delivered with the naming convention of UPDTnnnn. The Virtel Administration portal is used to upload the udates to the SAMPTRSF file. An alternative batch process using a Virtel maintenace package (VMP) can also be deployed. The updates may sometimes be supplied as a complete replacement for the SAMPTRSF file in the form of a DF/DSS dump in XMIT format.
 
 
 \subsection{Obtaining PTFs and Updates}
 \label{\detokenize{Installation_Guide:obtaining-ptfs-and-updates}}
-To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the “Public” \textendash{} “VIRTEL 4.57” \textendash{} “PTFS for version 4.57” folder, and download the ptfs-mvs457.txt file. If the file does not exist, then there are no PTFs to be applied.
+To download PTFs from the Syspertec file server, use your web browser to login to the file server as described 13, navigate to the “Public” \textendash{} “VIRTEL 4.57” \textendash{} “PTFS for version 4.57” folder, and download the ptfs-mvsvrr.txt file. If the file does not exist, then there are no PTFs to be applied.
 
-Alternatively, you may receive the allptfs-mvs457.txt file by e-mail from Syspertec support.
+Alternatively, you may receive the allptfs-mvsvrr.txt file by e-mail from Syspertec support.
 
 
 \subsection{Uploading PTFs}
 \label{\detokenize{Installation_Guide:uploading-ptfs}}
-The allptfs-z/OS457.txt file should be uploaded in text format to member PTF457MV of the VIRTEL CNTL library.
+The allptfs-z/OSvrr.txt file should be uploaded in text format to member PTFvrrMV of the VIRTEL CNTL library.
 
 For PTFs which contain elements to be uploaded to VIRTEL, first unzip the elements to a directory on your workstation. Then use the “Upload” link from the VIRTEL Web Access page at \sphinxurl{http://n.n.n.n:41001} to upload the elements one by one to the W2H-DIR directory.
 
@@ -1412,9 +1418,9 @@ The recovered PTFs are applied to the VIRTEL LOADLIB by using AMASPZAP with the 
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{PTF} \PYG{n}{à} \PYG{n}{APPLIQUER}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
-\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{LOAD}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}
-\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{CNTL}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{CNTL}
-\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{MEMBER}\PYG{o}{=}\PYG{n}{PTF457MV}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{LOAD}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{CNTL}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{CNTL}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{MEMBER}\PYG{o}{=}\PYG{n}{PTFvrrMV}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{PTFZAP} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{AMASPZAP}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{IGNIDRFULL}\PYG{l+s+s1}{\PYGZsq{}}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
@@ -1436,28 +1442,28 @@ VIRTEL must be stopped and restarted to allow the newly-applied PTFs to take eff
 \end{sphinxVerbatim}
 
 
-\subsection{Upgrading a previous release}
-\label{\detokenize{Installation_Guide:upgrading-a-previous-release}}
+\subsection{Upgrading from a previous version}
+\label{\detokenize{Installation_Guide:upgrading-from-a-previous-version}}
 
 \subsubsection{Datasets to be upgraded}
 \label{\detokenize{Installation_Guide:datasets-to-be-upgraded}}
-If you already have a previous release of VIRTEL installed (version 4.00 or later) then you only need the datasets shown in the figure below:
+If you already have a previous version of VIRTEL installed (version 4.00 or later) then you only need the datasets shown in the figure below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{MACLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{SAMPLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{SERVLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{DBRMLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{CNTL}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{SAMP}\PYG{o}{.}\PYG{n}{TRSF}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{CONFGEN}\PYG{o}{.}\PYG{n}{MACLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{FA29API}\PYG{o}{.}\PYG{n}{MACLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{SCRNAPI}\PYG{o}{.}\PYG{n}{MACLIB}
-\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{VIRAPI}\PYG{o}{.}\PYG{n}{MACLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{MACLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{SAMPLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{SERVLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{DBRMLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{CNTL}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{SAMP}\PYG{o}{.}\PYG{n}{TRSF}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{CONFGEN}\PYG{o}{.}\PYG{n}{MACLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{FA29API}\PYG{o}{.}\PYG{n}{MACLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{SCRNAPI}\PYG{o}{.}\PYG{n}{MACLIB}
+\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{VIRAPI}\PYG{o}{.}\PYG{n}{MACLIB}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Datasets upgraded during release change}
+\sphinxstyleemphasis{Datasets upgraded during version change}
 
 For the remaining datasets, shown in the figure below, you should continue to use your existing datasets, as these may containing customer-specific configuration information which you do not want to overwrite:
 
@@ -1471,17 +1477,19 @@ For the remaining datasets, shown in the figure below, you should continue to us
 \PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTnnn}\PYG{o}{.}\PYG{n}{STAT}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Datasets to be retained from previous release}
+\sphinxstyleemphasis{Datasets to be retained from previous version}
 
 \begin{sphinxadmonition}{note}{Note:}
-It is also possible to copy your existing files into the files of the new release using IDCAMS REPRO (or by ARBOLOAD for the VIRARBO file).
+It is also possible to copy your existing files into the files of the new version using IDCAMS REPRO (or by ARBOLOAD for the VIRARBO file).
 \end{sphinxadmonition}
 
-\index{Installation!Upgrading from a previous release}\index{Upgrading from a previous release!Installation}
+\newpage
 
-\section{Upgrade from a previous release}
-\label{\detokenize{Installation_Guide:upgrade-from-a-previous-release}}\label{\detokenize{Installation_Guide:index-6}}
-The procedure for upgrading from a previous release of VIRTEL (version 4.00 or later) is as follows. Customers upgrading from  earlier releases of VIRTEL should contact Syspertec for technical support. This process should not change you CLI-DIR or other directories which resilde in the HTML.TRSF dataset.
+\index{Installation!Upgrading from a previous version}\index{Upgrading from a previous version!Installation}
+
+\section{Upgrading from a previous version}
+\label{\detokenize{Installation_Guide:index-6}}\label{\detokenize{Installation_Guide:id1}}
+The procedure for upgrading from a previous version of VIRTEL (version 4.00 or later) is as follows. Customers upgrading from earlier versions of VIRTEL should contact Syspertec for technical support. This process should not change you CLI-DIR or other directories which resilde in the HTML.TRSF dataset.
 
 \begin{sphinxadmonition}{danger}{Danger:}
 If you have modified default settings or added customized elements to the W2H-DIR directory these will be overridden when upgrading. The upgrade process installs a new SAMP.TRSF VSAM file which is the VSAM file associated with W2H-DIR. See note 9. You are advised not to use the Administration port 41001 for user transasctions as this port is reserved for Virtel administration and is tied to web elements distributed in W2H-DIR. User transaction should be associated with another port. The sample provide is port 41002 which is associated with the CLI-DIR directory. This directory is not affected by an upgrade.
@@ -1520,22 +1528,26 @@ Stop and restart VIRTEL.
 \end{enumerate}
 
 \index{Installation!Applying Maintenance Updates}\index{Applying Maintenance Updates!Installation}
+\newpage
+
 
 \section{Applying Maintenace Updates}
-\label{\detokenize{Installation_Guide:applying-maintenace-updates}}\label{\detokenize{Installation_Guide:index-7}}
+\label{\detokenize{Installation_Guide:applying-maintenace-updates}}
 Under certain circumstances it may be necessary to apply maintenance in the form of User Interface Updates. These may be distributed either by e-mail, or available on Syspertec FTP Server.
-An update is available as a ZIP file containing the cumulative days update the version. The file is represented in the form VirtelxxxUpdtnnnnn.zip where xxx is the version of Virtel to which it relates and nnnn the reference of the update itself. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by category, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate.
+An update is available as a ZIP file containing the cumulative days update the version. The file is represented in the form VirtelvrrUpdtnnnnn.zip where vrr is the version of Virtel to which it relates and nnnn the reference of the update itself. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by category, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate.
 
 Generally, the file still contains a sub directory named ” W2H ” whose content must be reloaded into the W2H-DIR using one of the methods described in section “Uploading HTML Pages” from document “Virtel Web Access User Guide”.
 
 \index{Execution!Executing Virtel in a z/OS Environment}\index{Executing Virtel in a z/OS Environment!Execution}
+\newpage
+
 
 \section{Executing Virtel in a z/OS environment}
-\label{\detokenize{Installation_Guide:index-8}}\label{\detokenize{Installation_Guide:executing-virtel-in-a-z-os-environment}}
+\label{\detokenize{Installation_Guide:executing-virtel-in-a-z-os-environment}}
 VIRTEL can run as a JOB or as an STC. An example JCL procedure is contained in member VIRTEL4 of the VIRTEL SAMPLIB. If VIRTEL is to be run as an STC, this member must be copied into a system PROCLIB and renamed as VIRTEL.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRTEL} \PYG{n}{PROC} \PYG{n}{QUAL}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{p}{,}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRTEL} \PYG{n}{PROC} \PYG{n}{QUAL}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{p}{,}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{QUALMQ}\PYG{o}{=}\PYG{n}{CSQ600}\PYG{p}{,}   \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{MQSeries} \PYG{n}{qualifier}
 \PYG{o}{/}\PYG{o}{/}  \PYG{n}{APPLID}\PYG{o}{=}\PYG{p}{,}         \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Default} \PYG{o+ow}{is} \PYG{o+ow}{in} \PYG{n}{VIRTCT}
 \PYG{o}{/}\PYG{o}{/}  \PYG{n}{TCT}\PYG{o}{=}\PYG{l+m+mi}{01}           \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Suffix} \PYG{n}{of} \PYG{n}{VIRTCT}
@@ -1607,6 +1619,8 @@ The libraries SCSQANLE, SCSQAUTH must be concatenated to the STEPLIB unless thes
 The CSF.SCSFMOD0 library must be concatenated to the STEPLIB or must be present in the system link list (only if the CRYPTn=(…,ICSF,…) parameter is coded in the VIRTCT)
 
 \end{itemize}
+
+\newpage
 
 \index{Execution!z/OS APF Authorisation, Userid and Priority}\index{z/OS APF Authorisation, Userid and Priority!Execution}
 
@@ -1783,20 +1797,20 @@ VIRTEL may be stopped by issuing the following command:-
 Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 
 \begin{sphinxadmonition}{warning}{Warning:}
-If you are upgrading to a new release of Virtel, plan to move any user transactions or customisations out of W2H-DIR as this directory will be overriden as part of the installation process.
+If you are upgrading to a new version of Virtel, plan to move any user transactions or customisations out of W2H-DIR as this directory will be overriden as part of the installation process.
 \end{sphinxadmonition}
 \begin{enumerate}
 \item {} 
 Download the following files from our FTP server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com}
 \begin{itemize}
 \item {} 
-Virtelrll.zip.
+Virtelvrr.zip.
 
 \item {} 
-allptfs-mvsrll.txt if available.
+allptfs-mvsvrr.txt if available.
 
 \item {} 
-virtelrllupdtnnnn.zip if available.
+virtelvrrupdtnnnn.zip if available.
 
 \end{itemize}
 
@@ -1804,13 +1818,13 @@ virtelrllupdtnnnn.zip if available.
 Run job \$ALOCDSU to create the TRANSFER.XMIT file.
 
 \item {} 
-Upload the virtelrllmvs.xmit file to the TRANSFER.XMIT file in binary mode.
+Upload the virtelvrrmvs.xmit file to the TRANSFER.XMIT file in binary mode.
 
 \item {} 
-Edit job \$RESTDSU specifying the high-level qualifiers and SMS or volume serial information for the VIRTEL datasets. Run job \$RESTDSU to create the VIRTEL datasets yourqual.VIRTrll.xxxxxx
+Edit job \$RESTDSU specifying the high-level qualifiers and SMS or volume serial information for the VIRTEL datasets. Run job \$RESTDSU to create the VIRTEL datasets yourqual.VIRTvrr.xxxxxx
 
 \item {} 
-Apply the PTFs in the allptfs-mvsrll.txt file using job ZAPJCL in the VIRTEL CNTL library. If this file does not exist, skip this step.
+Apply the PTFs in the allptfs-mvsvrr.txt file using job ZAPJCL in the VIRTEL CNTL library. If this file does not exist, skip this step.
 
 \item {} 
 Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list
@@ -1818,7 +1832,7 @@ Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authori
 \end{enumerate}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SETPROG} \PYG{n}{APF}\PYG{p}{,}\PYG{n}{ADD}\PYG{p}{,}\PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTrll}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{VOL}\PYG{o}{=}\PYG{n}{volser}
+\PYG{n}{SETPROG} \PYG{n}{APF}\PYG{p}{,}\PYG{n}{ADD}\PYG{p}{,}\PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{VOL}\PYG{o}{=}\PYG{n}{volser}
 \end{sphinxVerbatim}
 \begin{enumerate}
 \setcounter{enumi}{6}
@@ -1843,7 +1857,7 @@ Set the COMPANY ADDR1 ADDR2 LICENCE EXPIRE CODE parameters using the license key
 \end{enumerate}
 
 \item {} 
-Run the job ASMTCT in the VIRTEL CNTL library to assemble VIRTCT01 into VIRTrll.LOADLIB.
+Run the job ASMTCT in the VIRTEL CNTL library to assemble VIRTCT01 into VIRTvrr.LOADLIB.
 
 \item {} 
 Edit member ARBOLOAD in the VIRTEL CNTL library:
@@ -1911,7 +1925,7 @@ You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in t
 Apply any Virtel Web Access (See VWA maintenance) according the instructions in the Readme-updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step. If yo do apply maintenance then refresh the browser (CTRL-R) after updating the relevant TRSF directories. Check that the updtnnn is the correct number in the Administration Portal Screen.
 
 \item {} 
-The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the {\hyperref[\detokenize{Installation_Guide:v457ig-security}]{\sphinxcrossref{\DUrole{std,std-ref}{“Security Chapter”}}}}.
+The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the {\hyperref[\detokenize{Installation_Guide:vvrrig-security}]{\sphinxcrossref{\DUrole{std,std-ref}{“Security Chapter”}}}}.
 
 \end{enumerate}
 \begin{description}
@@ -1925,14 +1939,14 @@ pair: Installation; Installing under z/VSE
 \label{\detokenize{Installation_Guide:installing-virtel-under-z-vse}}
 
 \section{Installation procedure}
-\label{\detokenize{Installation_Guide:id1}}
+\label{\detokenize{Installation_Guide:id2}}
 Installation of VIRTEL under z/VSE consists of the following steps. Each step is described in detail in the sections which follow.
 \begin{itemize}
 \item {} 
 Load the installation jobs into the POWER READER QUEUE
 
 \item {} 
-Define the VIRT457.SUBLIB sublibrary
+Define the VIRTvrr.SUBLIB sublibrary
 
 \item {} 
 Load the CIL and SSL libraries
@@ -1985,7 +1999,7 @@ Description
 \hline
 VIRTLIB
 &
-define the VIRT457.SUBLIB sublibrary
+define the VIRTvrr.SUBLIB sublibrary
 \\
 \hline
 VIRTCIL
@@ -2092,7 +2106,7 @@ Jobs VIRTLIB, VIRTCIL, VIRTSSL, VIRTVS, VIRTCT, VIRMOD, and VIRTAPPL must be exe
 
 \subsection{Sites upgrading from a previous version}
 \label{\detokenize{Installation_Guide:sites-upgrading-from-a-previous-version}}
-Execute jobs VIRTLIB, VIRTCIL and VIRTSSL to create a new VIRT457.SUBLIB. Change your VIRTEL execution JCL to reference the new sublibrary You can retain your existing VSAM files.
+Execute jobs VIRTLIB, VIRTCIL and VIRTSSL to create a new VIRTvrr.SUBLIB. Change your VIRTEL execution JCL to reference the new sublibrary You can retain your existing VSAM files.
 
 
 \subsection{Sites using VIRTEL Web Access}
@@ -2112,7 +2126,7 @@ Customers wishing to use VIRTEL Application-to-Application functions should also
 * \PYGZdl{}\PYGZdl{} LST DA
 // JOB VIRTLIB
 * *****************************************************************
-* * VIRTLIB * CREATE VIRT457 LIBRARY                              *
+* * VIRTLIB * CREATE VIRTvrr LIBRARY                              *
 * *****************************************************************
 * *                                                               *
 * * THIS JOB IS SUPPLIED AS AN EXAMPLE ONLY AND MUST BE MODIFIED  *
@@ -2120,13 +2134,13 @@ Customers wishing to use VIRTEL Application-to-Application functions should also
 * *                                                               *
 * *****************************************************************
 // EXEC IDCAMS,SIZE=AUTO
- DELETE (VSE.VIRT457.LIBRARY ) \PYGZhy{}
+ DELETE (VSE.VIRTvrr.LIBRARY ) \PYGZhy{}
           CLUSTER \PYGZhy{}
           PURGE \PYGZhy{}
     CATALOG (VSESP.USER.CATALOG )
  SET MAXCC=0
  DEFINE CLUSTER ( \PYGZhy{}
-            NAME (VSE.VIRT457.LIBRARY ) \PYGZhy{}
+            NAME (VSE.VIRTvrr.LIBRARY ) \PYGZhy{}
             TRACKS (150 25) \PYGZhy{}
             SHAREOPTIONS (3) \PYGZhy{}
             RECORDFORMAT (NOCIFORMAT) \PYGZhy{}
@@ -2134,19 +2148,19 @@ Customers wishing to use VIRTEL Application-to-Application functions should also
             NOREUSE \PYGZhy{}
             NONINDEXED \PYGZhy{}
             TO (99366)) \PYGZhy{}
-            DATA (NAME (VSE.VIRT457.LIBRARY.DATA ) ) \PYGZhy{}
+            DATA (NAME (VSE.VIRTvrr.LIBRARY.DATA ) ) \PYGZhy{}
             CATALOG (VSESP.USER.CATALOG )
  IF LASTCC NE 0 THEN CANCEL JOB
 /*
 // OPTION STDLABEL=ADD
-// DLBL VIRT457,\PYGZsq{}VSE.VIRT457.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC
+// DLBL VIRTvrr,\PYGZsq{}VSE.VIRTvrr.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC
 /*
 // EXEC IESVCLUP,SIZE=AUTO
-A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
+A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
 /*
 // EXEC LIBR,PARM=\PYGZsq{}MSHP\PYGZsq{}
-              DEFINE LIB=VIRT457 REPLACE=YES
-              DEFINE SUBLIB=VIRT457.SUBLIB REPLACE=YES
+              DEFINE LIB=VIRTvrr REPLACE=YES
+              DEFINE SUBLIB=VIRTvrr.SUBLIB REPLACE=YES
 /*
 /\PYGZam{}
 * \PYGZdl{}\PYGZdl{} EOJ
@@ -2154,7 +2168,7 @@ A VSE.VIRT457.LIBRARY        VIRT457 VSESPUC OLD KEEP
 
 \sphinxstyleemphasis{VIRTLIB : JCL to define the sublibrary (z/VSE)}
 
-Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRT457.SUBLIB for version 4.57. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
+Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.57. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
 
 
 \subsection{Loading the executable modules}
@@ -2169,8 +2183,8 @@ Job VIRTLIB contains an example of JCL to define the library which will contain 
 * *                                                               *
 * * AT THE PAUSE, ENTER YOUR DLBL AND LIBDEF FOR THE CIL SUBLIB   *
 * *                                                               *
-* * // DLBL VIRT457,\PYGZsq{}VSE.VIRT457.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC       *
-* * // LIBDEF PHASE,CATALOG=VIRT457.SUBLIB                        *
+* * // DLBL VIRTvrr,\PYGZsq{}VSE.VIRTvrr.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC       *
+* * // LIBDEF PHASE,CATALOG=VIRTvrr.SUBLIB                        *
 * *                                                               *
 * *****************************************************************
 // PAUSE ENTER YOUR LIBDEF PHASE STATEMENT AS IN THE ABOVE EXAMPLE
@@ -2213,7 +2227,7 @@ where xxxxx represents the name of the sublibrary you defined in the previous jo
 * * AT THE PAUSE, ENTER THE NAME OF THE SUB\PYGZhy{}LIBRARY               *
 * * FOR CATALOGING THE VIRTEL SOURCE BOOKS                        *
 * *                                                               *
-* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRT457.SUBLIB\PYGZsq{}                      *
+* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRTvrr.SUBLIB\PYGZsq{}                      *
 * *                                                               *
 * *****************************************************************
 // PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
@@ -2254,7 +2268,7 @@ where  xxxxxxx represents the name of the sublibrary you defined in the first jo
 * * AT THE PAUSE, ENTER THE NAME OF THE SUB\PYGZhy{}LIBRARY               *
 * * FOR THE FA29 MACRO SOURCE BOOKS                               *
 * *                                                               *
-* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRT457.SUBLIB\PYGZsq{}                      *
+* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRTvrr.SUBLIB\PYGZsq{}                      *
 * *                                                               *
 * *****************************************************************
 // PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
@@ -2278,7 +2292,7 @@ where  xxxxxxx represents the name of the sublibrary you defined in the first jo
 * * AT THE PAUSE, ENTER THE NAME OF THE SUB\PYGZhy{}LIBRARY               *
 * * FOR THE VIRAPI MACRO SOURCE BOOKS                             *
 * *                                                               *
-* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRT457.SUBLIB\PYGZsq{}                      *
+* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRTvrr.SUBLIB\PYGZsq{}                      *
 * *                                                               *
 * *****************************************************************
 // PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
@@ -2302,7 +2316,7 @@ where  xxxxxxx represents the name of the sublibrary you defined in the first jo
 * * AT THE PAUSE, ENTER THE NAME OF THE SUB\PYGZhy{}LIBRARY               *
 * * FOR THE SCRNAPI MACRO SOURCE BOOKS                            *
 * *                                                               *
-* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRT457.SUBLIB\PYGZsq{}                      *
+* * EXAMPLE: // SETPARM SUB=\PYGZsq{}VIRTvrr.SUBLIB\PYGZsq{}                      *
 * *                                                               *
 * *****************************************************************
 // PAUSE ENTER YOUR SETPARM CARD AS SHOWN ABOVE
@@ -2678,7 +2692,7 @@ Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. Thi
 
 \subsection{Assembling the VIRTCT}
 \label{\detokenize{Installation_Guide:assembling-the-virtct}}
-Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section {\hyperref[\detokenize{Installation_Guide:v457ig-virtct}]{\sphinxcrossref{\DUrole{std,std-ref}{VIRTCT}}}}.
+Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section {\hyperref[\detokenize{Installation_Guide:vvrrig-virtct}]{\sphinxcrossref{\DUrole{std,std-ref}{VIRTCT}}}}.
 
 \begin{sphinxadmonition}{note}{Note:}
 Users in France should use job VIRTCTFR instead of VIRTCTUS.
@@ -2699,9 +2713,9 @@ Users in France should use job VIRTCTFR instead of VIRTCTUS.
 * * BEFORE EXECUTION *
 * * *
 * *****************************************************************
-// DLBL VIRT457,\PYGZsq{}VSE.VIRT457.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC
+// DLBL VIRTvrr,\PYGZsq{}VSE.VIRTvrr.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC
 // LIBDEF PHASE,CATALOG=PRD2.CONFIG
-// LIBDEF SOURCE,SEARCH=(VIRT457.SUBLIB,PRD1.BASE)
+// LIBDEF SOURCE,SEARCH=(VIRTvrr.SUBLIB,PRD1.BASE)
 // OPTION CATAL
   PHASE MODVIRT,*
 // EXEC ASSEMBLY,SIZE=512K
@@ -2732,7 +2746,7 @@ Job VIRMOD contains an example of the JCL required to assemble the VTAM mode tab
 * * BEFORE EXECUTION *
 * * *
 * *****************************************************************
-// LIBDEF *,SEARCH=(VIRT457.SUBLIB)
+// LIBDEF *,SEARCH=(VIRTvrr.SUBLIB)
 // DLBL VIRARBO,\PYGZsq{}VIRTEL.ARBO\PYGZsq{},,VSAM,CAT=VSESPUC
 // SETPARM LANG=EN
 // SETPARM WEB=YES
@@ -2887,7 +2901,7 @@ Job VIRTEL contains an example of the z/VSE startup JCL for VIRTEL. Program VIR0
 * * *
 * *****************************************************************
 // OPTION SYSPARM=\PYGZsq{}00\PYGZsq{} MUST MATCH PARM ID=NN IN TCP/IP PARTITION
-// LIBDEF *,SEARCH=(VIRT457.SUBLIB,PRD2.CONFIG,PRD1.BASE)
+// LIBDEF *,SEARCH=(VIRTvrr.SUBLIB,PRD2.CONFIG,PRD1.BASE)
 // DLBL VIRARBO,\PYGZsq{}VIRTEL.ARBO\PYGZsq{},,VSAM,CAT=VSESPUC
 // DLBL VIRSWAP,\PYGZsq{}VIRTEL.SWAP\PYGZsq{},,VSAM,CAT=VSESPUC
 // DLBL VIRCAPT,\PYGZsq{}VIRTEL.CAPT\PYGZsq{},,VSAM,CAT=VSESPUC
@@ -2917,7 +2931,7 @@ If you have more than one TCP/IP stack, you can use the OPTION SYSPARM=’nn’ 
 
 
 \subsection{Stopping VIRTEL}
-\label{\detokenize{Installation_Guide:id2}}
+\label{\detokenize{Installation_Guide:id3}}
 To stop VIRTEL, enter the command:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2925,6 +2939,8 @@ To stop VIRTEL, enter the command:
 \end{sphinxVerbatim}
 
 where xx is the identifier of the partition in which VIRTEL is running.
+
+\newpage
 \begin{description}
 \item[{. index::}] \leavevmode
 pair: Installing under z/VSE;Applying Maintenace
@@ -2935,10 +2951,9 @@ pair: Installing under z/VSE;Applying Maintenace
 \section{Applying Virtel Maintenance}
 \label{\detokenize{Installation_Guide:applying-virtel-maintenance}}
 
-\subsection{VWA Maintenace}
-\label{\detokenize{Installation_Guide:vwa-maintenace}}
-Under certain circumstances it may be necessary to apply maintenance in the form of User Interface Updates. These may be distributed either by e-mail, or available on Syspertec FTP Server.
-An update is available as a ZIP file containing the cumulative days update the version. The file is represented in the form VirtelxxxUpdtnnnnn.zip where xxx is the version of Virtel to which it relates and nnnn the reference of the update itself. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by category, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate. Generally, the file still contains a sub directory named ” W2H ” whose content must be reloaded into the W2H-DIR using one of the methods described in section “Web Enitity Management” in the “Virtel Administration Guide”.
+\subsection{VWA Maintenance}
+\label{\detokenize{Installation_Guide:vwa-maintenance}}
+Under certain circumstances it may be necessary to apply maintenance in the form of User Interface Updates. These may be distributed either by e-mail, or available on Syspertec FTP Server. An update is available as a ZIP file containing the cumulative days update for a version. The file is represented in the form VirtelxxxUpdtnnnnn.zip where xxx is the version of Virtel to which it relates and nnnn the reference of the update itself. Once unzipped, the file content is in the form of a tree where each folder contains one or more files grouped by category, the root contains a file named updtnnnn.txt which summarized the history of changes and any special instructions to operate. Generally, the file still contains a sub directory named ” W2H ” whose content must be reloaded into the W2H-DIR using one of the methods described in section “Web Enitity Management” in the “Virtel Administration Guide”.
 
 
 \subsection{Mainframe PTFs}
@@ -2952,7 +2967,7 @@ To apply the PTFs, use the following JCL:
 * \PYGZdl{}\PYGZdl{} LST DA
 // JOB PTFnnnn
 // EXEC MSHP
-  PATCH SUBLIB=VIRT457.SUBLIB
+  PATCH SUBLIB=VIRTvrr.SUBLIB
   AFFECTS PHASE=modname
   ALTER xxxx vvvvvvvv:rrrrrrrr
 /*
@@ -3173,7 +3188,7 @@ The following example shows CSD definitions for VIRTEL Web Access terminals. The
 \end{sphinxVerbatim}
 
 \sphinxstyleemphasis{CICS definitions for VIRTEL Web Access terminals}
-\phantomsection\label{\detokenize{Installation_Guide:v457ig-virtct}}\begin{description}
+\phantomsection\label{\detokenize{Installation_Guide:vvrrig-virtct}}\begin{description}
 \item[{. index::}] \leavevmode
 single: The Virtel TCT
 
@@ -3184,7 +3199,7 @@ single: The Virtel TCT
 \label{\detokenize{Installation_Guide:the-virtel-tct}}
 
 \section{introduction}
-\label{\detokenize{Installation_Guide:id3}}
+\label{\detokenize{Installation_Guide:id4}}
 All the general information necessary for VIRTEL to run is contained in a table known as the VIRTCT. After initialising the different  parameters, this table must be assembled and link edited with the name VIRTCTxx, where xx are the two characters that identify the VIRTCT at start up time to the system. This xx value will be contained in the parameter of the PARM operand of the VIRTEL start procedure in z/OS, or behind the EXEC card in the z/VSE environment.
 
 The VIRTCT must be assembled before VIRTEL can be run. At the time of the assembly the VIRTEL macro library VIRT4XX.MACLIB must be on-line. Options RENT and REUS must not be specified when assembling the VIRTCT for an z/OS environment. The resulting phase or load module must be placed in the library containing the other phases or load modules required by VIRTEL.
@@ -3282,7 +3297,7 @@ pair: Virtel TCT; APPLID parameter
 
 
 \subsection{APPLID parameter}
-\label{\detokenize{Installation_Guide:id4}}
+\label{\detokenize{Installation_Guide:id5}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{APPLID}\PYG{o}{=}\PYG{n}{nappl} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{VIRTEL}
 \end{sphinxVerbatim}
@@ -3341,11 +3356,11 @@ This parameter defines the batch processing characteristics for all lines which 
 
 \sphinxstylestrong{indd} - The batch input DD name (for example, SYSIN).
 
-\sphinxstylestrong{indcb} - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see {\hyperref[\detokenize{Installation_Guide:v457ig-bookmark72}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for batch files”}}}}).
+\sphinxstylestrong{indcb} - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see {\hyperref[\detokenize{Installation_Guide:vvrrig-bookmark72}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for batch files”}}}}).
 
 \sphinxstylestrong{outdd} - The batch output DD name (for example, SYSPRINT).
 
-\sphinxstylestrong{outdcb} - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see {\hyperref[\detokenize{Installation_Guide:v457ig-bookmark72}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for batch files”}}}}).
+\sphinxstylestrong{outdcb} - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see {\hyperref[\detokenize{Installation_Guide:vvrrig-bookmark72}]{\sphinxcrossref{\DUrole{std,std-ref}{“Additional parameters for batch files”}}}}).
 \begin{description}
 \item[{. index::}] \leavevmode
 pair: Virtel TCT; BATCH2 parameter
@@ -4845,7 +4860,7 @@ pair: Virtel TCT; PACKET parameter
 \end{sphinxVerbatim}
 
 \sphinxstylestrong{n} - The size of the packets used for transfer over the packet switched network.
-\phantomsection\label{\detokenize{Installation_Guide:virt457ig-passtck}}\begin{description}
+\phantomsection\label{\detokenize{Installation_Guide:virtvrrig-passtck}}\begin{description}
 \item[{. index::}] \leavevmode
 pair: Virtel TCT; PASSTCK parameter
 
@@ -5080,7 +5095,7 @@ For the z/VSE environment, the following options can be specified:
 
 \sphinxstylestrong{RACROUTE} - (for z/VSE Version 3 or later) VIRTEL uses the z/VSE Basic Security Manager (via SAF), or the External Security Manager if specified in the z/VSE IPL parameters.
 
-The following options are retained for compatibility with previous releases:
+The following options are retained for compatibility with previous versions:
 
 \sphinxstylestrong{RACF} - RACF without SAF.
 
@@ -5646,7 +5661,7 @@ pair: Virtel TCT; VTOVER parameter
 
 
 \subsection{VTOVER parameter}
-\label{\detokenize{Installation_Guide:id5}}
+\label{\detokenize{Installation_Guide:id6}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VTOVER}\PYG{o}{=}\PYG{n}{xxxxxxxx} \PYG{n}{Default}\PYG{o}{=}\PYG{n}{none}
 \end{sphinxVerbatim}
@@ -5717,6 +5732,8 @@ pair: Virtel TCT; ZAPH parameter
 \end{sphinxVerbatim}
 
 \sphinxstylestrong{xxxxxxxx} - The name of a table added to the end of the VIRTCT allowing for one or more patches to be applied at startup. Please refer to the section “Applying patches via the VIRTCT”, page 82 for further details.
+
+\newpage
 \begin{description}
 \item[{. index::}] \leavevmode
 pair: VSAM Files; Additional Parameters
@@ -5745,7 +5762,9 @@ pn represents the authorisations granted to the transfer file. The permitted val
 The value OUT should be omitted from MACRF if you want the mode (read-only or read/write) to be determined by the value of the VSAMTYP parameter in the VIRTCT (see “VSAMTYP parameter”, page 76).
 
 \end{itemize}
-\phantomsection\label{\detokenize{Installation_Guide:v457ig-bookmark72}}\begin{description}
+
+\newpage
+\phantomsection\label{\detokenize{Installation_Guide:vvrrig-bookmark72}}\begin{description}
 \item[{. index::}] \leavevmode
 pair: Batch; Additional Parameters
 
@@ -5816,6 +5835,8 @@ pair: Virtel; Sharing files
 Some VSAM files are shareable between multiple instances of Virtel with the condition that a file can be opened in “write” mode by only one instance. File sharing can be implemented by modifying the corresponding UFILEx entry in the TCT and/or by using the VSAMTYP definition. Some files are not shareable, for example the statistics and swap files. These must be opened in read/write mode for each instance of Virtel.
 
 For more detailed informations on this subject, see “UFILE1 to UFILE20”, and “VSAMTYP parameters of the VIRTCT. Also refer to “Additional parameters for VSAM files”.
+
+\newpage
 
 
 \section{Example Of The VIRTCT}
@@ -5918,7 +5939,7 @@ pair: Virtel TCT; Assembly
 
 
 \section{Assembling The VIRTCT}
-\label{\detokenize{Installation_Guide:id6}}
+\label{\detokenize{Installation_Guide:id7}}
 The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the z/OS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the z/OS environment. In the z/VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.
 \begin{description}
 \item[{. index::}] \leavevmode
@@ -5937,7 +5958,7 @@ A sample job for assembling the VIRTCT is supplied in member ASMTCT of the VIRTE
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{GENERATION} \PYG{n}{VIRTCT} \PYG{n}{ET} \PYG{n}{EXIT} \PYG{n}{DE} \PYG{n}{VIRTEL} \PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{ASMTCT} \PYG{n}{PROC} \PYG{n}{OUTC}\PYG{o}{=}\PYG{o}{*}\PYG{p}{,}\PYG{n}{WORK}\PYG{o}{=}\PYG{n}{SYSDA}\PYG{p}{,}
-\PYG{o}{/}\PYG{o}{/} \PYG{n}{QUAL}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{p}{,}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{QUAL}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{p}{,}
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{MEMBER}\PYG{o}{=}\PYG{n}{VIRTCT01}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{ASSEMBLAGE} \PYG{o}{*}
@@ -5984,9 +6005,9 @@ A sample job for assembling the VIRTCT is supplied on the installation tape:
 * \PYGZdl{}\PYGZdl{} JOB JNM=VIRTCT,CLASS=0,DISP=D
 * \PYGZdl{}\PYGZdl{} LST DISP=D,CLASS=Q
 // JOB VIRTCT
-// DLBL VIRT457,\PYGZsq{}VSE.VIRT457.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC
-// LIBDEF PHASE,CATALOG=VIRT457.SUBLIB
-// LIBDEF SOURCE,SEARCH=(VIRT457.SUBLIB,PRD1.MACLIB)
+// DLBL VIRTvrr,\PYGZsq{}VSE.VIRTvrr.LIBRARY\PYGZsq{},,VSAM,CAT=VSESPUC
+// LIBDEF PHASE,CATALOG=VIRTvrr.SUBLIB
+// LIBDEF SOURCE,SEARCH=(VIRTvrr.SUBLIB,PRD1.MACLIB)
 // OPTION CATAL,NODECK,ALIGN
         PHASE VIRTCT01,*
 // EXEC ASSEMBLY,SIZE=512K
@@ -6071,6 +6092,8 @@ With these definitions and VTOVER=‘12345’, the MQ1 and MQ2 parameters of the
 \end{sphinxVerbatim}
 
 If an error occurs during substitution, VIRTEL will issue message VIR0025E indicating the error code specified in the ERRORC parameter of the VTOVER macro.
+
+\newpage
 \begin{description}
 \item[{. index::}] \leavevmode
 pair: Virtel TCT; Applying patches
@@ -6120,7 +6143,7 @@ The format of each ZAPD instruction is as follows:
 \label{\detokenize{Installation_Guide:index-17}}\label{\detokenize{Installation_Guide:virconf-utility}}
 
 \section{Introduction}
-\label{\detokenize{Installation_Guide:id7}}
+\label{\detokenize{Installation_Guide:id8}}
 The VIRCONF utility program allows a batch job to manage the VIRARBO file, which is the main configuration file for VIRTEL. VIRCONF allows you to:
 \begin{itemize}
 \item {} 
@@ -6163,7 +6186,7 @@ z/VSE
               CATALOG(VSESP.USER.CATALOG)
 IF LASTCC NE 0 THEN CANCEL JOB
 /*
-// LIBDEF *,SEARCH=(VIRT457.SUBLIB)
+// LIBDEF *,SEARCH=(VIRTvrr.SUBLIB)
 // DLBL VIRARBO,\PYGZsq{}VIRTEL.TESTARBO.KSDS\PYGZsq{},,VSAM,CAT=VSESPUC
 // EXEC VIRCONF,PARM=\PYGZsq{}LOAD\PYGZsq{}
         (insert sysin control statements here)
@@ -6188,7 +6211,7 @@ z/OS
         \PYG{n}{DATA} \PYG{p}{(}\PYG{n}{NAME}\PYG{p}{(}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{o}{.}\PYG{n}{DATA}\PYG{p}{)} \PYG{n}{CISZ}\PYG{p}{(}\PYG{l+m+mi}{4096}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
         \PYG{n}{INDEX} \PYG{p}{(}\PYG{n}{NAME}\PYG{p}{(}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{o}{.}\PYG{n}{INDEX}\PYG{p}{)}\PYG{p}{)}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{RELOAD} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{COND}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{NE}\PYG{p}{,}\PYG{n}{DEFARBO}\PYG{p}{)}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{n}{LOAD}
-\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}\PYG{o}{.}\PYG{o}{.}\PYG{n}{VIRCONF}\PYG{o}{.}\PYG{n}{SYSIN}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
@@ -6210,7 +6233,7 @@ z/VSE
 * \PYGZdl{}\PYGZdl{} JOB JNM=VIRCONF,CLASS=0,DISP=D
 * \PYGZdl{}\PYGZdl{} LST DISP=D,CLASS=V,DEST=(,SPTUSER)
 // JOB VIRCONF UPDATE VIRARBO
-// LIBDEF *,SEARCH=(VIRT457.SUBLIB)
+// LIBDEF *,SEARCH=(VIRTvrr.SUBLIB)
 // DLBL VIRARBO,\PYGZsq{}VIRTEL4.VIRARBO.KSDS\PYGZsq{},,VSAM,CAT=VSESPUC
 // EXEC VIRCONF,PARM=\PYGZsq{}LOAD\PYGZsq{}
         LINE  ID=A\PYGZhy{}XOT,
@@ -6238,7 +6261,7 @@ z/VS
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRCONF} \PYG{n}{JOB} \PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{MSGLEVEL}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{THIS} \PYG{n}{JOB} \PYG{n}{UPDATES} \PYG{n}{AN} \PYG{n}{ARBO} \PYG{n}{FILE}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{UPDARBO} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{n}{LOAD}
-\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN} \PYG{n}{DD} \PYG{o}{*}
@@ -6269,7 +6292,7 @@ Below are some JCL examples to obtain existing VIRARBO definitions in the form o
 * \PYGZdl{}\PYGZdl{} LST DISP=D,CLASS=V,DEST=(,SPTUSER)
 * \PYGZdl{}\PYGZdl{} PUN DISP=D,CLASS=W,DEST=(,SPTUSER)
 // JOB VIRCONF UNLOAD VIRARBO TO SYSPCH
-// LIBDEF *,SEARCH=VIRT457.SUBLIB
+// LIBDEF *,SEARCH=VIRTvrr.SUBLIB
 // DLBL VIRARBO,\PYGZsq{}VIRTEL.TESTARBO.KSDS\PYGZsq{},,VSAM,CAT=VSESPUC
 // EXEC VIRCONF,PARM=\PYGZsq{}UNLOAD\PYGZsq{}
 /\PYGZam{}
@@ -6282,7 +6305,7 @@ Below are some JCL examples to obtain existing VIRARBO definitions in the form o
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRCONF} \PYG{n}{JOB} \PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{MSGLEVEL}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{THIS} \PYG{n}{JOB} \PYG{n}{UNLOADS} \PYG{n}{AN} \PYG{n}{ARBO} \PYG{n}{FILE} \PYG{n}{TO} \PYG{n}{SYSPUNCH}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{UNLOAD} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{n}{UNLOAD}
-\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}\PYG{p}{,}\PYG{n}{AMP}\PYG{o}{=}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{RMODE31=NONE}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPUNCH} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}\PYG{o}{.}\PYG{o}{.}\PYG{n}{VIRCONF}\PYG{o}{.}\PYG{n}{SYSIN}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{p}{(}\PYG{p}{,}\PYG{n}{CATLG}\PYG{p}{)}\PYG{p}{,}\PYG{n}{UNIT}\PYG{o}{=}\PYG{n}{SYSDA}\PYG{p}{,}
@@ -6303,7 +6326,7 @@ Below are some JCL examples to verify the control card syntax:-
 * \PYGZdl{}\PYGZdl{} JOB JNM=VIRCONF,CLASS=0,DISP=D
 * \PYGZdl{}\PYGZdl{} LST DISP=D,CLASS=V,DEST=(,SPTUSER)
 // JOB VIRCONF SYNTAX CHECK
-// LIBDEF *,SEARCH=(VIRT457.SUBLIB)
+// LIBDEF *,SEARCH=(VIRTvrr.SUBLIB)
 // EXEC VIRCONF,PARM=\PYGZsq{}SCAN\PYGZsq{}
         (insert sysin control statements here)
 /*
@@ -6317,7 +6340,7 @@ Below are some JCL examples to verify the control card syntax:-
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRCONF} \PYG{n}{JOB} \PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{MSGLEVEL}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{VIRCONF} \PYG{n}{SYNTAX} \PYG{n}{CHECK}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{CONFCHK} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{n}{SCAN}
-\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN} \PYG{n}{DD} \PYG{o}{*}
         \PYG{p}{(}\PYG{n}{insert} \PYG{n}{sysin} \PYG{n}{control} \PYG{n}{statements} \PYG{n}{here}\PYG{p}{)}
@@ -6337,7 +6360,7 @@ When uploading the VIRARBO file, VIRCONF may select one among several versions o
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 * \PYGZdl{}\PYGZdl{} JOB JNM=VIRCONF,CLASS=0,DISP=D
 // JOB VIRCONF LOAD VIRARBO
-// LIBDEF *,SEARCH=(VIRT457.SUBLIB)
+// LIBDEF *,SEARCH=(VIRTvrr.SUBLIB)
 // DLBL VIRARBO,\PYGZsq{}VIRTEL.TESTARBO.KSDS\PYGZsq{},,VSAM,CAT=VSESPUC
 // EXEC VIRCONF,PARM=\PYGZsq{}LOAD,LANG=FR\PYGZsq{}
         TRANSACT ID=PC\PYGZhy{}0003, \PYGZhy{}
@@ -6359,7 +6382,7 @@ When uploading the VIRARBO file, VIRCONF may select one among several versions o
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRCONF} \PYG{n}{JOB} \PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{MSGLEVEL}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
 \PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{LOAD} \PYG{n}{AN} \PYG{n}{ARBO} \PYG{n}{FILE} \PYG{n}{USING} \PYG{n}{MULTILINGUAL} \PYG{n}{SOURCE}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRCONF} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LOAD,LANG=EN}\PYG{l+s+s1}{\PYGZsq{}}
-\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN} \PYG{n}{DD} \PYG{o}{*}
@@ -6375,6 +6398,8 @@ When uploading the VIRARBO file, VIRCONF may select one among several versions o
 \end{sphinxVerbatim}
 
 \sphinxstyleemphasis{VIRCONF JCL in z/OS for multi-language upload}
+
+\newpage
 
 \index{VIRCONF Utility!Control Cards}\index{Control Cards!VIRCONF Utility}
 
@@ -8096,7 +8121,7 @@ List of profiles assigned
 
 {[}2{]} The PARM=’UNLOAD,PLAINTXT’ function unloads the password in readable format (PASSWORD instead of PASSCODE). To use this function, the user that submits this VIRCONF job must be RACF authorized (or by another securiyy tool) with READ access for the VIRTEL.PASSWORD.DECRYPT resource in the FACILITY class.
 \end{sphinxadmonition}
-\phantomsection\label{\detokenize{Installation_Guide:v457ig-security}}
+\phantomsection\label{\detokenize{Installation_Guide:vvrrig-security}}
 \index{Security}
 
 \chapter{Security}
@@ -8137,6 +8162,8 @@ with the following parameters:
 This tells VIRTEL that its security definitions are stored in the FACILITY class, and the resource names are prefixed by “VIRTEL.”. You can choose your own prefix for each VIRTEL. Multiple VIRTEL started tasks can share the same resource name prefix if their security definitions are identical. You can also choose the class name, but it must already be defined in RACF with the correct attributes. It is recommended to use the FACILITY class which is standard in RACF.
 
 Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of the VIRTEL CNTL library. Be sure to specify the correct member name MEMBER=VIRTCTxx in the job. Stop and start VIRTEL to pick up the new VIRTCT.
+
+\newpage
 \begin{description}
 \item[{. index::}] \leavevmode
 pair: Security; RACF definitions
@@ -8199,6 +8226,8 @@ Later you can refine the definitions so that other VIRTEL users can use VIRTEL t
 \end{sphinxVerbatim}
 
 \sphinxstyleemphasis{RACFDEF : JCL to update RACF definitions}
+
+\newpage
 \begin{description}
 \item[{. index::}] \leavevmode
 pair: Security; Virtel Administrators
@@ -8206,7 +8235,7 @@ pair: Security; Virtel Administrators
 \end{description}
 
 
-\subsection{Virtel Administrators}
+\section{Virtel Administrators}
 \label{\detokenize{Installation_Guide:virtel-administrators}}
 Virtel Administrators have access to all the features of Virtel and are rsponsible for the administration of the product. For example this includes defining transactions and maintaining macros in the DDI central repository. Virtel uses the security subsystem to protect transactions. The following job shows an example of setting up the security profiles for Administrators in group SPGPTECH. This will enable them to control DDI and macro administration:-
 
@@ -8286,7 +8315,7 @@ Perform the following steps to activate ACF2 security for VIRTEL in the z/OS env
 
 
 \subsection{Modify the VIRTCT}
-\label{\detokenize{Installation_Guide:id8}}
+\label{\detokenize{Installation_Guide:id9}}
 In the VIRTCTxx member of the VIRTEL CNTL library, replace the default parameters:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -8366,6 +8395,8 @@ Resource W2H-10 permits specific access to the CICS Web Access transaction on po
 \sphinxstyleemphasis{ACF2DEF : ACF2 command to permit access to 3270 Logoff transaction}
 
 This command permits all users to use the 3270 Logoff transaction, whose internal name is PC-0020.
+
+\newpage
 \begin{description}
 \item[{. index::}] \leavevmode
 pair: Security; Top Secret Security platform.
@@ -8477,7 +8508,7 @@ This command associates the VIRTEL started task with the VIRTSTC ACID. VIRTEL is
 
 
 \subsubsection{Create OMVS segment for VIRTEL}
-\label{\detokenize{Installation_Guide:id9}}
+\label{\detokenize{Installation_Guide:id10}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TSS} \PYG{n}{ADDTO}\PYG{p}{(}\PYG{n}{VIRTSTC}\PYG{p}{)} \PYG{n}{UID}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{DFLTGRP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{n}{GROUP}\PYG{p}{(}\PYG{n}{OMVSGRP}\PYG{p}{)} \PYG{o}{+}
         \PYG{n}{OMVSPGM}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/bin/sh}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{n}{HOME}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
