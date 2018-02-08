@@ -8,11 +8,11 @@ Audit, Administration, Operations and Performance V4.57
 
 **VIRTEL Audit, Administration, Operations and Performance**
 
-.. danger:: This book is currently under construction. Do not use!
+.. warning:: This is a draft version of the document.
 
 Version : 4.57
 
-Release Date : 1 Sep 2017 Publication Date : 1/09/2017
+Release Date : 08 Jan 2018. Publication Date : 08/02/2018
 
 Syspertec Communication
 
