@@ -194,7 +194,7 @@ The Entry point element is associated with a group of transactions. Transactions
 \sphinxincludegraphics{{image71}.png}
 \sphinxstyleemphasis{Entry Point Definition}
 
-It is also defined in the Arbo Configuration statements:-
+It is also defined in with the Arbo Configuration statements:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{ENTRY} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLIWHOST}\PYG{p}{,}                                      \PYG{o}{\PYGZhy{}}
@@ -224,6 +224,88 @@ When the Virtel Engine receives this call-in it directs to line C-HTTP(41002) an
 
 \sphinxincludegraphics{{image72}.png}
 \sphinxstyleemphasis{Transaction Definition}
+
+It is also defined in with the Arbo Configuration statements:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}                                     \PYG{o}{\PYGZhy{}}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Cics}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Logon to CICS}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                   \PYG{o}{\PYGZhy{}}
+\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{SPCICST}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{CLVTA}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
+\end{sphinxVerbatim}
+
+The salient points here are the internal name or ID, CLI-10 which ties up with the Entry Point transaction prefix of transactions beginning “CLI”, the external name, “CICS” relates to the transaction name identified in the call-in URL. The APPL keyword identifies a name that will be used depending on the transaction type. The transaction type for this particular transaction definition is a VTAM transaction, TYPE=1. Virtel will attempt to logon to VTAM application identified by the VTAM APPL name SPCICST. The final point is the terminal prefix which identifies what Virtel terminals should be used to support this connection. In this instance the terminals must be prefixed with the characters “CLVTA”.
+
+
+\subsection{Terminal Elements}
+\label{\detokenize{connectivity_guide:terminal-elements}}
+Terminal elements are used to support units of work within Virtel such as running a program, transmitting data to a browser, representing a VTAM LU to a VTAM APPLICATION. These are just a few examples. Terminal elements are defined to Virtel as either dynamic, static or pool. The following Summary Display lists the terminals delivered in the default installation.
+
+\sphinxincludegraphics{{image73}.png}
+\sphinxstyleemphasis{Terminal definitions}
+
+The terminal name is used to associate terminals with lines and transactions. In the example for the line C-HTTP(41002) we had a terminal prefix of CL. So terminals CLLOC000-CLLOC079 and CLVTA000-CLVTA079 will be associated with this line. Our Transaction CLI-10 requires a terminal whose prefix is CLVTA. CL terminals are allocated top down, meaning that the terminal allocated to the transaction will be the highest CLVTA079. The display shows that CLLOC000-CLLOC079 are static terminal entries. CLVTA000-CLVTA079 are dynamic entries and point to a pool called *W2HPOOL. Whenever a terminal is required from a pool the terminal name returned will be the first free terminal within the pool. Defining pool terminals is through the use of the Pool name in the terminal definition. So in the pool *W2HPOOL terminals whose name begin with W2HTP000-WH2HTP079 have been defined. So, when the TSO transaction is kicked off Virtel will request a terminal whose name begins CLVTA, CLVTA079 will be assigned. This will grab the first available terminal in the *W2HPOOL as that is where CLVTA points to. The first available terminal in the pool will be W2HTP000. Virtel always works from the lowest free name entry when returning pool entries.
+
+\sphinxincludegraphics{{image74}.png}
+\sphinxstyleemphasis{Terminal Pool definition}
+
+Terminal definitions defined within the Arbo configuration statements:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLLOC000}\PYG{p}{,}                        \PYG{n}{Static} \PYG{n}{Definition}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP terminals (no relay)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{n}{STATS}\PYG{o}{=}\PYG{l+m+mi}{26}\PYG{p}{,}
+\PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0050}
+
+\PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLVTA000}\PYG{p}{,}                        \PYG{n}{Dynamic} \PYG{n}{Definition}
+\PYG{n}{RELAY}\PYG{o}{=}\PYGZbs{}\PYG{o}{*}\PYG{n}{W2HPOOL}\PYG{p}{,}                             \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Use} \PYG{n}{this} \PYG{n}{pool}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP terminals (with relay)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{n}{STATS}\PYG{o}{=}\PYG{l+m+mi}{26}\PYG{p}{,}
+\PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0080}
+
+\PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{W2HTP000}\PYG{p}{,}                        \PYG{n}{Pool} \PYG{n}{definition}
+\PYG{n}{RELAY}\PYG{o}{=}\PYG{n}{REHVT000}\PYG{p}{,}
+\PYG{n}{POOL}\PYG{o}{=}\PYGZbs{}\PYG{o}{*}\PYG{n}{W2HPOOL}\PYG{p}{,}                              \PYG{o}{\PYGZlt{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Defines} \PYG{n}{which} \PYG{n}{pool}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Relay pool for HTTP}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{RELAY2}\PYG{o}{=}\PYG{n}{REHIM000}\PYG{p}{,}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}
+\PYG{n}{STATS}\PYG{o}{=}\PYG{l+m+mi}{26}\PYG{p}{,}
+\PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0080}
+\end{sphinxVerbatim}
+
+In the case of logging onto CICS, the Virtel transaction will request a CLVTA terminal(CLVTA079) and terminal WH2TP000 will be returned from *W2HPOOL. This terminal has an association with a relay name represented by a VTAM terminal definition - in this case REHVT000. This relay name should be defined to VTAM. Also, this terminal definition has a 2nd relay called REHIM000. Again, this is a VTAM APPL definition which represents a SNA printer associated with the screen LU REHVT000. This name must also be defined to VTAM. REHIM000 is a relay name associated with the static terminal definitions beginning W2HIM000. In the logon to CICS we have three terminal names associated with the VTAM interface - CLVTA079, W2HTP000(REHVT000) and W2HIM000(REHIM000).
+
+Here are the VTAM definitions:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+VIRTAPPL VBUILD TYPE=APPL
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* Product     :  VIRTEL                                              *
+* Description :  Main ACB for VIRTEL application                     *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+APPLHOLT APPL  EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=APPLHOLT               \PYGZlt{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} VIRTEL ACB
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* REHVTxxx    : VTAM application relays for VIRTEL Web Access        *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+REHVT??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1          \PYGZlt{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} Terminal  Relay definitions
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* REHIMxxx    : Printer relays for VIRTEL Web Access terminals       *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+REHIM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1               \PYGZlt{}\PYGZhy{}\PYGZhy{}\PYGZhy{} Printer definitions SCS
+REHIP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1          \PYGZlt{}\PYGZhy{}\PYGZhy{}\PYGZhy{} Printer definitions 3270
+\end{sphinxVerbatim}
 
 
 \section{Accessing the Sub-Applications}

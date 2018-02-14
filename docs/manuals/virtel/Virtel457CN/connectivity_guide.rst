@@ -186,6 +186,73 @@ It is also defined in with the Arbo Configuration statements:-
 
 The salient points here are the internal name or ID, CLI-10 which ties up with the Entry Point transaction prefix of transactions beginning "CLI", the external name, "CICS" relates to the transaction name identified in the call-in URL. The APPL keyword identifies a name that will be used depending on the transaction type. The transaction type for this particular transaction definition is a VTAM transaction, TYPE=1. Virtel will attempt to logon to VTAM application identified by the VTAM APPL name SPCICST. The final point is the terminal prefix which identifies what Virtel terminals should be used to support this connection. In this instance the terminals must be prefixed with the characters "CLVTA". 
 
+Terminal Elements
+^^^^^^^^^^^^^^^^^
+
+Terminal elements are used to support units of work within Virtel such as running a program, transmitting data to a browser, representing a VTAM LU to a VTAM APPLICATION. These are just a few examples. Terminal elements are defined to Virtel as either dynamic, static or pool. The following Summary Display lists the terminals delivered in the default installation. 
+
+|image73|
+*Terminal definitions*
+
+The terminal name is used to associate terminals with lines and transactions. In the example for the line C-HTTP(41002) we had a terminal prefix of CL. So terminals CLLOC000-CLLOC079 and CLVTA000-CLVTA079 will be associated with this line. Our Transaction CLI-10 requires a terminal whose prefix is CLVTA. CL terminals are allocated top down, meaning that the terminal allocated to the transaction will be the highest CLVTA079. The display shows that CLLOC000-CLLOC079 are static terminal entries. CLVTA000-CLVTA079 are dynamic entries and point to a pool called \*W2HPOOL. Whenever a terminal is required from a pool the terminal name returned will be the first free terminal within the pool. Defining pool terminals is through the use of the Pool name in the terminal definition. So in the pool \*W2HPOOL terminals whose name begin with W2HTP000-WH2HTP079 have been defined. So, when the TSO transaction is kicked off Virtel will request a terminal whose name begins CLVTA, CLVTA079 will be assigned. This will grab the first available terminal in the \*W2HPOOL as that is where CLVTA points to. The first available terminal in the pool will be W2HTP000. Virtel always works from the lowest free name entry when returning pool entries.
+
+|image74|
+*Terminal Pool definition*
+
+Terminal definitions defined within the Arbo configuration statements:-
+
+::
+
+         TERMINAL ID=CLLOC000,                        Static Definition
+         DESC='HTTP terminals (no relay)',   
+         TYPE=3,                             
+         COMPRESS=2,                         
+         INOUT=3,                            
+         STATS=26,                           
+         REPEAT=0050
+                                  
+         TERMINAL ID=CLVTA000,                        Dynamic Definition
+         RELAY=\*W2HPOOL,                             <---- Use this pool
+         DESC='HTTP terminals (with relay)', 
+         TYPE=3,                             
+         COMPRESS=2,                         
+         INOUT=3,                            
+         STATS=26,                           
+         REPEAT=0080
+    
+         TERMINAL ID=W2HTP000,                        Pool definition   
+         RELAY=REHVT000,                      
+         POOL=\*W2HPOOL,                              <---- Defines which pool
+         DESC='Relay pool for HTTP',          
+         RELAY2=REHIM000,                     
+         TYPE=3,                              
+         COMPRESS=2,                          
+         INOUT=3,                             
+         STATS=26,                            
+         REPEAT=0080                                                        
+
+In the case of logging onto CICS, the Virtel transaction will request a CLVTA terminal(CLVTA079) and terminal WH2TP000 will be returned from \*W2HPOOL. This terminal has an association with a relay name represented by a VTAM terminal definition - in this case REHVT000. This relay name should be defined to VTAM. Also, this terminal definition has a 2nd relay called REHIM000. Again, this is a VTAM APPL definition which represents a SNA printer associated with the screen LU REHVT000. This name must also be defined to VTAM. REHIM000 is a relay name associated with the static terminal definitions beginning W2HIM000. In the logon to CICS we have three terminal names associated with the VTAM interface - CLVTA079, W2HTP000(REHVT000) and W2HIM000(REHIM000).
+
+Here are the VTAM definitions:-
+
+::
+
+    VIRTAPPL VBUILD TYPE=APPL                                             
+    * ------------------------------------------------------------------ *
+    * Product     :  VIRTEL                                              *
+    * Description :  Main ACB for VIRTEL application                     *
+    * ------------------------------------------------------------------ *
+    APPLHOLT APPL  EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=APPLHOLT               <---- VIRTEL ACB
+    * ------------------------------------------------------------------ *
+    * REHVTxxx    : VTAM application relays for VIRTEL Web Access        *
+    * ------------------------------------------------------------------ *
+    REHVT??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1          <---- Terminal  Relay definitions    
+    * ------------------------------------------------------------------ *
+    * REHIMxxx    : Printer relays for VIRTEL Web Access terminals       *
+    * ------------------------------------------------------------------ *
+    REHIM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1               <--- Printer definitions SCS
+    REHIP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1          <--- Printer definitions 3270
+
  
 Accessing the Sub-Applications
 ------------------------------
@@ -4653,3 +4720,5 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image70| image:: images/media/image70.png
 .. |image71| image:: images/media/image71.png
 .. |image72| image:: images/media/image72.png
+.. |image73| image:: images/media/image73.png
+.. |image74| image:: images/media/image74.png
