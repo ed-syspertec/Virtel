@@ -49,6 +49,72 @@ Syspertec Communication
 Configuring Virtel
 ==================
 
+Accessing the configuration manager
+-----------------------------------
+
+The configuration manager can be access in one of three ways.
+
+Virtel 3270 Application
+^^^^^^^^^^^^^^^^^^^^^^^
+
+1. By logging onto the Virtel application as defined by the APPLNAME in the TCT or at start up in the Virtel JCL parameters.
+
+::
+
+    LOGON APPLID=VIRTEL
+
+The following main menu will appear:-
+
+|image76|
+
+Enter you security credentials and the primary menu will appear.
+
+|image77|
+
+.. raw:: latex
+
+    \newpage  
+
+Enter F1 to enter the configuration menu of the configuration manager.
+
+|image78|
+
+.. raw:: latex
+
+    \newpage  
+
+THe Web Portal (3270)
+^^^^^^^^^^^^^^^^^^^^^
+
+Access Virtel through the administration port 41001.
+
+::
+
+    http://192.168.170.33:41001/
+
+The following page will be displayed:-
+
+|image79|
+
+Click the Admin (3270) link and the configuration menu will appear.
+
+|image80|    
+
+.. raw:: latex
+
+    \newpage  
+
+The Web portal (GUI)
+^^^^^^^^^^^^^^^^^^^^
+
+Access Virtel as in the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
+
+|image81|
+
+.. raw:: latex
+
+    \newpage  
+
 Configurable Elements
 ---------------------
 
@@ -268,19 +334,25 @@ Example of configurable Elements
 Adding new configurable elements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or via batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDS has the following transactions:-
+Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or via batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDSHOST has the following transactions:-
 
--EDS-00 Transaction to support the Entry Point. Must have an external name the same as the Entry Point. In this case EDSHOST. Identifies the default transaction. That being what transaction should be initiated is none is specified in the URL.
+EDS-00
+    Transaction to support the Entry Point. Must have an external name the same as the Entry Point. In this case EDSHOST. Identifies the default transaction. That being what transaction should be initiated is none is specified in the URL.
 
--EDS-03W Point to the w2h directory where all the Virtel web artifacts are maintained. In this case the W2H directory.
+EDS-03W
+    Point to the w2h directory where all the Virtel web artifacts are maintained. In this case the W2H directory.
 
--EDS-03X Point to the directory that is associated with this line. This would contain customized web elements such as a company image or logo. The directory is EDS-DIR which has a pathname of /eds.
+EDS-03X
+    Point to the directory that is associated with this line. This would contain customized web elements such as a company image or logo. The directory is EDS-DIR which has a pathname of /eds.
 
--EDS-04 Vtam transaction identifying SPCICST
+EDS-04
+    Vtam transaction identifying SPCICST
 
--EDS-90 Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
+EDS-90
+    Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
 
--W2H-80S A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this "upload" transaction the new directory will not appear in the administration portal display of in the directory summary display.
+W2H-80S
+    A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this "upload" transaction the new directory will not appear in the administration portal display of in the directory summary display.
 
 Apart from the LINE, Entry Point and Transaction there is one other configurable element which must also be added to support a new interface. This is the SUBDIR element. The SUBDIR element identifies a new directory.
 
@@ -4882,3 +4954,9 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image73| image:: images/media/image73.png
 .. |image74| image:: images/media/image74.png
 .. |image75| image:: images/media/image75.png
+.. |image76| image:: images/media/image76.png
+.. |image77| image:: images/media/image77.png
+.. |image78| image:: images/media/image78.png
+.. |image79| image:: images/media/image79.png
+.. |image80| image:: images/media/image80.png
+.. |image81| image:: images/media/image81.png

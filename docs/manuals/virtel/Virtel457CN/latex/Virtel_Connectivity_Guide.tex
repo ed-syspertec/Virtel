@@ -100,6 +100,67 @@ their respective owners.
 \chapter{Configuring Virtel}
 \label{\detokenize{connectivity_guide:v457cn-introduction}}\label{\detokenize{connectivity_guide:configuring-virtel}}\label{\detokenize{connectivity_guide:connectivity-reference-v4-57}}\label{\detokenize{connectivity_guide:virtel457cn}}
 
+\section{Accessing the configuration manager}
+\label{\detokenize{connectivity_guide:accessing-the-configuration-manager}}
+The configuration manager can be access in one of three ways.
+
+
+\subsection{Virtel 3270 Application}
+\label{\detokenize{connectivity_guide:virtel-3270-application}}\begin{enumerate}
+\item {} 
+By logging onto the Virtel application as defined by the APPLNAME in the TCT or at start up in the Virtel JCL parameters.
+
+\end{enumerate}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{LOGON} \PYG{n}{APPLID}\PYG{o}{=}\PYG{n}{VIRTEL}
+\end{sphinxVerbatim}
+
+The following main menu will appear:-
+
+\sphinxincludegraphics{{image76}.png}
+
+Enter you security credentials and the primary menu will appear.
+
+\sphinxincludegraphics{{image77}.png}
+
+\newpage
+
+Enter F1 to enter the configuration menu of the configuration manager.
+
+\sphinxincludegraphics{{image78}.png}
+
+\newpage
+
+
+\subsection{THe Web Portal (3270)}
+\label{\detokenize{connectivity_guide:the-web-portal-3270}}
+Access Virtel through the administration port 41001.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.33}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}
+\end{sphinxVerbatim}
+
+The following page will be displayed:-
+
+\sphinxincludegraphics{{image79}.png}
+
+Click the Admin (3270) link and the configuration menu will appear.
+
+\sphinxincludegraphics{{image80}.png}
+
+\newpage
+
+
+\subsection{The Web portal (GUI)}
+\label{\detokenize{connectivity_guide:the-web-portal-gui}}
+Access Virtel as in the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
+
+\sphinxincludegraphics{{image81}.png}
+
+\newpage
+
+
 \section{Configurable Elements}
 \label{\detokenize{connectivity_guide:configurable-elements}}
 The VIRTEL configuration is stored in a VSAM file called the “ARBO file” (VIRARBO). The ARBO file contains various types of elements, which are described in this chapter:
@@ -318,19 +379,27 @@ Example of configurable Elements
 
 \subsection{Adding new configurable elements}
 \label{\detokenize{connectivity_guide:adding-new-configurable-elements}}
-Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or via batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDS has the following transactions:-
+Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or via batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDSHOST has the following transactions:-
+\begin{description}
+\item[{EDS-00}] \leavevmode
+Transaction to support the Entry Point. Must have an external name the same as the Entry Point. In this case EDSHOST. Identifies the default transaction. That being what transaction should be initiated is none is specified in the URL.
 
--EDS-00 Transaction to support the Entry Point. Must have an external name the same as the Entry Point. In this case EDSHOST. Identifies the default transaction. That being what transaction should be initiated is none is specified in the URL.
+\item[{EDS-03W}] \leavevmode
+Point to the w2h directory where all the Virtel web artifacts are maintained. In this case the W2H directory.
 
--EDS-03W Point to the w2h directory where all the Virtel web artifacts are maintained. In this case the W2H directory.
+\item[{EDS-03X}] \leavevmode
+Point to the directory that is associated with this line. This would contain customized web elements such as a company image or logo. The directory is EDS-DIR which has a pathname of /eds.
 
--EDS-03X Point to the directory that is associated with this line. This would contain customized web elements such as a company image or logo. The directory is EDS-DIR which has a pathname of /eds.
+\item[{EDS-04}] \leavevmode
+Vtam transaction identifying SPCICST
 
--EDS-04 Vtam transaction identifying SPCICST
+\item[{EDS-90}] \leavevmode
+Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
 
--EDS-90 Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
+\item[{W2H-80S}] \leavevmode
+A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.
 
--W2H-80S A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.
+\end{description}
 
 Apart from the LINE, Entry Point and Transaction there is one other configurable element which must also be added to support a new interface. This is the SUBDIR element. The SUBDIR element identifies a new directory.
 
