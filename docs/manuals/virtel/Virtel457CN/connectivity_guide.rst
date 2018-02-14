@@ -86,7 +86,7 @@ Enter F1 to enter the configuration menu of the configuration manager.
 THe Web Portal (3270)
 ^^^^^^^^^^^^^^^^^^^^^
 
-Access Virtel through the administration port 41001.
+2. By accessing Virtel through the administration port 41001.
 
 ::
 
@@ -104,10 +104,10 @@ Click the Admin (3270) link and the configuration menu will appear.
 
     \newpage  
 
-The Web portal (GUI)
+The Web Portal (GUI)
 ^^^^^^^^^^^^^^^^^^^^
 
-Access Virtel as in the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
+3. Accessing Virtel as in the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
 
 |image81|
 
@@ -513,8 +513,8 @@ You can optionally display the Sub-Application Menu by pressing
 
 To invoke a sub-application, press one of the function keys shown in the menu (for example, F7 – Videotex Definitions). To exit from the Sub-Application Menu and return to the Configuration Menu, press CLEAR or PA2.
 
-Navigating the Sub-Applications
--------------------------------
+Navigation
+----------
 
 The sub-applications have certain common operational characteristics:
 
@@ -536,6 +536,8 @@ The sub-applications have certain common operational characteristics:
 
 - To rename an element, first copy it to a new element as above, then delete the old element.
 
+- To exiting a sub-application, return to the previous menu, press [PF3]. To return to the Configuration Menu, press [Clear].
+
 Lines
 =====
 
@@ -552,16 +554,22 @@ Line Management Sub-Application
 
 This sub-application facilitates the definition of X25 and Reverse X25 lines, APPC connections, and TCP/IP lines. When the sub-application is started, it first displays a summary of existing definitions in alphanumeric order. The Line Management sub-application is invoked by pressing [PF1] in the Configuration Menu, by pressing [PF14] in the Sub-Application Menu, or via the Multi-Session Menu using a transaction which calls module VIR0046. This sub- application allows the management of all the line parameters under VIRTEL control.
 
-Line Summary display
+Sub-Application security
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+When the security subsystem is active, access to Line Management sub-application from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$LINE$$. 
+When accessed by a transaction, normal transaction security rules will apply. Security management and securing access to sub-applications is described in the VIRTEL Installation Guide.
+
+Line Summary Display
 ^^^^^^^^^^^^^^^^^^^^
 
 The first screen shows a summay of existing line definitions in alphanumeric order:
 
 |image4|
-*Summary of existing lines*
+*Line Summary Display*
 
-Navigating within sub-application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Navigation
+""""""""""
 
 *Positioning a line*
     In browse, alter, or delete mode, it is possible to scroll the list of lines under the control of VIRTEL.
@@ -574,22 +582,17 @@ Search
 [PF7]
     Display the previous page.
 [PF8]
-    Display the next page.
+    Display the next page.  
 
-*Modifying a line*    
+**Modifying a line**
+    Pressing [PF12] at the line summary screen displays the line detail definition screen. This sub-application allows the definition of the various parameters for each type of line. 
     Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to access the definition detail screen. Modifications are not recognized until you press the [PF1] key. Certain modifications require a restart of the VIRTEL system.
 
-*Deleing a line*    
-    Position the cursor under the name of the entity to be deleted, then press [PF2]. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
+**Deleing a line**    
+    In the summary screen position the cursor under the name of the entity to be deleted, then press [PF2]. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
 
-*Adding a line*
+**Adding a line**
     To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
-
-Sub-Application security
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-When the security subsystem is active, access to Line Management sub-application from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$LINE$$. 
-When accessed by a transaction, normal transaction security rules will apply. Security management and securing access to sub-applications is described in the VIRTEL Installation Guide.
 
 Lines Overview Sub-Application
 ------------------------------
@@ -605,20 +608,16 @@ The summary screen displayed by the Lines Overview sub-application presents an o
 |image57|
 *Lines overview summary display*
 
-Sub-Application Security
-^^^^^^^^^^^^^^^^^^^^^^^^
+Line Detal Display
+^^^^^^^^^^^^^^^^^^
 
-When the security subsystem is active, access to Lines Overview sub-application from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$LINE$$. When accessed by a transaction, normal transaction security rules will apply. Security management is described in Chapter 5 of the VIRTEL Users Guide.
+The screen shows a line detail display.
 
-
+|image5|
+*Line Summary Display*
 
 Line Parameters
 ---------------
-
-    Pressing [PF12] at the line summary screen displays the line detail definition screen. This sub-application allows the definition of the various parameters for each type of line.
-
-|image5|
-*Line detail definition screen*
 
 Internal name
     Internal name of the line. This is the name by which VIRTEL refers to the line internally. It must be unique within a VIRTEL instance.
@@ -3004,10 +3003,9 @@ Rule Summary Display
 Press [PF5] at the line detail definition screen to display the list of rules associated with the line:
 
 |image58|
-*List of rules for a line*
+*Rule Summary Display*
 
-Field Contents
-^^^^^^^^^^^^^^
+**Field Contents**
 
 Name
     The name of the rule. Rules associated with a line are processed in alphanumeric order.
@@ -3018,8 +3016,8 @@ Description
 Entry Point
     Name of the entry point which will be assigned to incoming calls whose characteristics match this rule.
 
-Screen Navigation
------------------
+Navigation
+^^^^^^^^^^
 
 Search
     Type the name (or partial name) of the required entity on the first line under the heading “Name”, then press [Enter].
@@ -3030,26 +3028,20 @@ Search
 [PF8]
     Display the next page.
 
-Modifying a rule
-^^^^^^^^^^^^^^^^
-
-Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to access the definition detail screen.
+**Modifying a rule**
+Pressing [PF12] at the Rules screen displays the rule detail definition screen. Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to access the definition detail screen.
 
 ..note::
     Modifications are not recognized until you press the [PF1] key. Certain modifications require a restart of the VIRTEL system.
 
-Deleting a rule
-^^^^^^^^^^^^^^^
+**Deleting a rule**
+In the summary screen position the cursor under the name of the entity to be deleted, then press [PF2]. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
 
-Position the cursor under the name of the entity to be deleted, then press [PF2]. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
+**Adding a rule**
+To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.    
 
-Adding a rule
-^^^^^^^^^^^^^
-
-To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
-
-Displaying detailed definitions
--------------------------------
+Rule Detail Display
+-------------------
 
 To display or update the detailed definition of an entity, place the cursor on the name of the entity within the summary display and press [PF12]. The detail definition screen will then be displayed.
 
@@ -3057,7 +3049,7 @@ To display or update the detailed definition of an entity, place the cursor on t
 *Rule detail definition screen*
 
 Rule Parameters
-^^^^^^^^^^^^^^^^
+---------------
 
 Name
     The name of the rule. This name must be unique across all rules in the system. The rules associated with a line are processed in alphanumeric order of this name. The rule name thus determines the priority of the rule within the line.
@@ -3156,40 +3148,34 @@ Introduction
 
 All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the group of functions associated with the management of the terminals as well as their existing relationship to other administration functions, for example, management of lines or entry points.
 
-Access to the application
--------------------------
+Terminal Management Sub-Application
+-----------------------------------
+
+This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
 
 The terminal management sub-application is accessed by pressing [PF2] in the Configuration Menu, or [PF5] in the Sub Application Menu, or from the Multi-session Menu via a transaction referencing module VIR0023. This sub-application allows for the management of the parameters associated with each terminal under control of VIRTEL. This subapplication
 is also accessible by pressing [PF4] from the line management sub-application.
 
-Security
---------
-
-When security is active, access to the terminal management menu from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$TERM$$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
-
-Objectives
-----------
-
-This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the
-sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
 
 .. Note
 
     VIRTEL version 4.0 introduces the concepts of dynamic repetition and logical pools. In the remainder of this chapter, the terms “entity”, “terminal entry” and “terminal” all refer to the concept of a terminal, a dynamic pool of terminals or a repeating pool of terminals.
 
-Summary Of Existing Definitions
--------------------------------
+Sub-Application Security
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-The first screen displayed by the terminal management sub-application shows a summary of existing definitions in alphanumeric order. A complete description of each field is given in the following paragraphs.
+When security is active, access to the terminal management menu from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$TERM$$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
+
+Terminal Summary Display
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The first screen displayed by the terminal management sub-application shows a summary of existing definitions in alphanumeric order. A complete description of each field is given in the following paragraphs. Place the cursor under an entry a press [PF12] to display the terminal details.
 
 |image67|
-*Summary of terminal definitions*
+*Terminal Summary Display*
 
-Associated functions
---------------------
-
-Positioning the list
-^^^^^^^^^^^^^^^^^^^^^
+Navigation
+""""""""""    
 
 In browse, alter, or delete mode, it is possible to scroll the list of terminals under the control of VIRTEL.
 
@@ -3202,37 +3188,26 @@ Search
 [PF8]
     Display the next page.
 
-Modifying a terminal entry
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to access the definition detail screen. Modifications are not recognized until you press the [PF1] key. Certain modifications require a restart of the VIRTEL
+**Modifying a terminal entry**
+Pressing [PF12] at the summary screen displays the Terminal Detail Definition screen, which allows creation of a new terminal definition, or modification of an existing definition. Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to access the definition detail screen. Modifications are not recognized until you press the [PF1] key. Certain modifications require a restart of the VIRTEL
 system.
 
-Adding a terminal entry
-^^^^^^^^^^^^^^^^^^^^^^^
-
+**Adding a terminal entry**
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition.
 
-Deleting a terminal entry
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
+**Deleting a terminal entry**
 Position the cursor under the name of the entry to be deleted, then press [PF2]. The line associated with the terminal to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
 
-Exiting the terminal management sub-application
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To return to the previous menu, press [PF3]. To return to the Configuration Menu, press [Clear].
-
-Terminal Parameter
-------------------
-
-Pressing [PF12] at the summary screen displays the Terminal Detail Definition screen, which allows creation of a new terminal definition, or modification of an existing definition:
+Terminal Detail  Display
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image68|
 *Terminal definition detail screen*
 
-Contents of each field
-^^^^^^^^^^^^^^^^^^^^^^
+From within the detail display the following functions can be carried out:-
+
+Terminal Parameters
+-------------------
 
 Terminal
     Maximum of 8 characters containing:
@@ -3381,25 +3356,22 @@ Entry Points
 Introduction
 ------------
 
-Entry points define the session context for a terminal or for certain types of lines. A terminal connecting to VIRTEL must connect via an entry point. This chapter describes the functions associated with entry point management, as well as the correlation with other elements of VIRTEL system administration, for example, line and terminal management.
-
-Definition of an Entry Point
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Entry points define the session context for a terminal or for certain types of lines. A terminal connecting to VIRTEL must connect via an entry point. This section describes the functions associated with entry point management, as well as the correlation with other elements of VIRTEL system administration, for example, line and terminal management.
 
 An entry point is a named entity that groups certain information designed to authorise, personalise and protect access to the host site. Entry points define the type of emulation required, the type of security control, which sign-on screen must be sent to the user at log on time, what type of Multi-session menu must be used and what applications are to be made available to the user.
 
-Accessing the application
-"""""""""""""""""""""""""
+Entry Point Management Sub Application
+--------------------------------------
 
 The Entry Point Management sub-application is accessed by pressing [PF3] in the Configuration Menu, or [PF13] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This subapplication allows management of the parameters associated with each entry point.
 
-Security
-""""""""
+Sub-Application Security
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$GLOG$$. When accessed by a transaction, the rules governing the management of transaction security apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
-Choosing the Entry Point
-""""""""""""""""""""""""
+Choosing an Entry Point
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The entry point used in the connection from a terminal may be specified in various ways:
 
@@ -3447,39 +3419,24 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 - The default entry point defined in the reverse X25 line, if specified.
 - If no entry point was specified by any of the preceding steps, the default is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.
 
-Summary Of Existing Definitions
--------------------------------
+Entry Point Summary Display
+---------------------------
 
 The entry point management application manages the entry points and their associated transactions. The first screen displayed shows a summary of existing entry points in alphanumeric order. A complete description of each field is presented in the following section.
 
 |image60|
+*Entry Point Summary Display*
 
-*Summary of existing entry point definitions*
-
-Associated functions
-^^^^^^^^^^^^^^^^^^^^
-
-Modifying an entry point definition
-"""""""""""""""""""""""""""""""""""
-
+**Modifying an entry point definition**
 To modify the definition of an entry point, enter the required information in the field then press [PF1]. Several definitions may be modified simultaneously. If the field you wish to modify does not appear on the summary screen, position the cursor on the entry and press [PF12] to display the definition detail screen. Modifications do not take effect until you press [PF1]. Certain modifications, for instance a modification to an entry point used by a line, require a restart of VIRTEL.
 
-Deleting an entry point definition
-""""""""""""""""""""""""""""""""""
-
+**Deleting an entry point definition**
 To delete a definition, position the cursor on the name of the entry to be deleted and press [PF2]. The line associated with the entry to be deleted will appear highlighted with the message CONFIRM DELETE. Press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
 
-Adding an entry point definition
-""""""""""""""""""""""""""""""""
-
+**Adding an entry point definition**
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition.
 
-Displaying the list of associated transactions
-""""""""""""""""""""""""""""""""""""""""""""""
-
-To access the list of transactions associated with an entry point, position the cursor on the desired entry point and press [PF4]. The transaction management menu will then appear.
-
-**Contents of each field**
+**Field Contents**
 
 Name
     The name of the entry point.
@@ -3488,18 +3445,21 @@ Description
 Transaction
     Prefix of the names of the transactions associated with this entry point (maximum 6 characters).
 
-The Entry Point Parameters
+Display list of associated transactions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To access the list of transactions associated with an entry point, position the cursor on the desired entry point and press [PF4]. The transaction management menu will then appear.
+
+Entry Point Detail Display
 --------------------------
 
 To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press [PF12].
 
 |image61|
+*Entry point detail display*
 
-*Entry point detail definition screen*
-
-
-Contents of each field
-^^^^^^^^^^^^^^^^^^^^^^
+Entry Point Parameters
+----------------------
 
 Name
     Represents the name of the entry point as specified in a logon sequence, or in the “Entry point” field of a terminal, line, or rule definition.
@@ -3584,26 +3544,8 @@ Mandatory identification
 Extended colors
     An 'E' in this field indicates support for 3270 extended attributes and colors. An 'X' indicates support for 3270 extended attributes and colors together with support for DBCS (Double Byte Character Set).
 
-Associated functions
-^^^^^^^^^^^^^^^^^^^^
-
-Updating an entry point
-"""""""""""""""""""""""
-
-Type the modifications and press [PF1]. The message UPDATE OK is displayed to indicate successful completion of the operation.
-
-Creating a new entry point
-""""""""""""""""""""""""""
-
-To create a new entry point, complete the fields on the screen and press [Enter]. The message CREATION OK is displayed to indicate successful completion of the operation.
-
-Display list of associated transactions
-"""""""""""""""""""""""""""""""""""""""
-
-Press [PF4] to display the list of transactions associated with the entry point
-
-Signon Programs
----------------
+Entry Point Signon Programs
+---------------------------
 
 The Signon Program field of the entry point indicates the name of the program used to control user sign-on. The following signon programs are supplied with VIRTEL:
 
@@ -3622,8 +3564,8 @@ VIR0020L
 VIR0020P
     Program similar to VIR0020L which allows access to public transactions (those defined with security = 0), if sign-on is rejected by the security system.
 
-Menu Programs
--------------
+Entry Point Menu Programs
+-------------------------
 
 The Menu Program field of the entry point indicates the name of the program which presents the list of transactions which the user is allowed to access. The following program names can be specified:
 
@@ -3660,53 +3602,15 @@ Each transaction is known to the user by its external name, and defines the rule
 
 Each entry point has a list of associated transactions. The entry point management sub-application allows the administrator to manage the entry point and its associated transactions.
 
-Summary Of Existing Definitions
--------------------------------
+Transaction Summary Display
+---------------------------
 
 Press [PF4] at the entry point detail screen to display the list of associated transactions:
 
 |image62|
-*Summary of transactions associated with an entry point*
+*Transaction Summary Display*
 
-Associated functions
---------------------
-
-Positioning the list
-^^^^^^^^^^^^^^^^^^^^
-
-The list can be positioned in the following ways:
-
-Search
-    Type the name, or the partial name, of the desired entity in the first line of the first column and press [Enter].
-[PF6]
-    Return to the first page of the list.
-[PF7]
-    Display the previous page of the list.
-[PF8]
-    Display the next page of the list.
-
-Modifying a transaction definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To modify the details of a transaction, type the required changes in the appropriate fields and press [PF1]. You can change more than one definition at a time. To modify a field not shown on the summary screen, position the cursor on the transaction and press [PF12] to display the transaction detail screen. Important note: Changes do not take effect until you press [PF1]. After updating a transaction definition, you must also update the entry point(s) concerned by pressing [PF3] twice (to return to the list of entry points) then [PF1] to register the change(s) to the entry point.
-
-Deleting a transaction definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To delete a definition, position the cursor on the name of the transaction to be deleted and press [PF2]. The line associated with the transaction to be deleted will appear highlighted with the message CONFIRM DELETE. Press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each transaction to be deleted.
-
-Adding a transaction definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition.
-
-Displaying the transaction detail screen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To access the detailed transaction definition, position the cursor on the desired transaction and press [PF12]. The transaction detail definition screen will then be displayed.
-
-Contents of each field
-""""""""""""""""""""""
+**Field Contents**
 
 Internal name
     Indicates the internal name of the transaction as it is known to the system. If a security tool is used, this name must be defined as a resource. Only those users with the resource in one of their profiles can access this transaction.
@@ -3721,19 +3625,43 @@ Description
 Application
     Indicates the name of the application accessed via the transaction. This application can be a VTAM application, a VIRTEL sub-application, an external server, or a directory of HTML pages.
 
-Transaction Parameters
-----------------------
+Navigation
+^^^^^^^^^^
 
-Pressing [PF12] in the transaction summary screen allows access to the transaction definition detail screen:
+The list can be positioned in the following ways:
+
+Search
+    Type the name, or the partial name, of the desired entity in the first line of the first column and press [Enter].
+[PF6]
+    Return to the first page of the list.
+[PF7]
+    Display the previous page of the list.
+[PF8]
+    Display the next page of the list.
+
+**Modifying a transaction definition**  
+To modify the details of a transaction, type the required changes in the appropriate fields and press [PF1]. You can change more than one definition at a time. To modify a field not shown on the summary screen, position the cursor on the transaction and press [PF12] to display the transaction detail screen. Important note: Changes do not take effect until you press [PF1]. After updating a transaction definition, you must also update the entry point(s) concerned by pressing [PF3] twice (to return to the list of entry points) then [PF1] to register the change(s) to the entry point.
+
+**Deleting a transaction definition**
+To delete a definition, position the cursor on the name of the transaction to be deleted and press [PF2]. The line associated with the transaction to be deleted will appear highlighted with the message CONFIRM DELETE. Press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each transaction to be deleted.
+
+**Adding a transaction definition**
+To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition. Complete all required fields and press [ENTER]. The message CREATE OK indicates that the operation completed successfully
+
+Transaction Summary Display
+---------------------------
+
+To access the detailed transaction definition, position the cursor on the desired transaction and press [PF12]. The transaction detail definition screen will then be displayed.
 
 |image63|
-*Transaction definition detail screen - non-HTML transaction*
+*Transaction Detail Screen - non-HTML transaction*
 
 |image64|
-*Transaction definition detail screen - HTML transaction*
+*Transaction Definition Screen - HTML transaction*
 
-Contents of each field
-^^^^^^^^^^^^^^^^^^^^^^
+
+Transaction Parameters
+----------------------
 
 Internal name
     The name of the transaction as it is known to the system. The first “n” characters of this name are the prefix by which the transaction is linked to one or more entry points. Transaction security is based on this internal name. It should be noted that the transactions are placed on the Multi-Session Menu in alphanumeric order of the internal name.
@@ -3881,18 +3809,7 @@ For HTML transactions, each of these fields may contain the name of an HTML pres
 
     Scenarios are described under the heading “Presentation modules” in the VIRTEL User Guide.
 
-Associated functions
-^^^^^^^^^^^^^^^^^^^^
-
-Update a transaction
-""""""""""""""""""""
-    After entering the modifications press [PF1]. The message UPDATE OK indicates that the operation completed successfully.
-
-Create a new transaction
-""""""""""""""""""""""""
-    To create a new transaction, complete all required fields and press [ENTER]. The message CREATE OK indicates that the operation completed successfully.
-
-.. note::
+.. warning::
 
     After adding, deleting or updating a transaction, it is essential to update the entry points used by this transaction by pressing [PF1] at the entry point summary screen.
 
@@ -4046,12 +3963,13 @@ Data sent to the application by means of the &/A command must be constructed in 
 Data sent to the terminal by means of the &/T command must be constructed in the same format as the application would generate. In the case of a 3270 application, the message must be in the form of a 3270 data stream prefixed by a 3270 command code and WCC. VIRTEL will translate the message to the format required by the terminal (for example, HTML or Minitel) as appropriate.
 
 Examples of scripts
-"""""""""""""""""""
+-------------------
 
 .. note::
     In these examples, script commands are introduced by the preferred sequence &/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.
 
-**Connection to CICS (no sign-on) with automatic start of a transaction**
+Connection to CICS (no sign-on) with automatic start of a transaction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the simplest case, the CICS transaction code is entered in the field “TIOA at logon”. The script below simply sends the ABC1 transaction code to CICS at connection time:
 
@@ -4071,7 +3989,8 @@ In the simplest case, the CICS transaction code is entered in the field “TIOA 
 
 This example works only if the CICS TYPETERM definition specifies LOGONMSG(NO). If CICS is configured to send an initial message to the terminal at logon, by means of the LOGONMSG(YES) parameter, then a bracket error would occur when the above script is executed. To avoid this, the transaction code must be prefixed by &W to wait for the initial message to be delivered, as shown in the next example.
 
-**Connect to CICS and start transaction CESN with transmission of USER PASSWORD**
+Connect to CICS and start transaction CESN with transmission of USER PASSWORD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The variables &U and &P can be used to pass the current VIRTEL userid and password to the CICS signon transaction:-
 
@@ -4090,7 +4009,8 @@ The variables &U and &P can be used to pass the current VIRTEL userid and passwo
 
 This script waits for the initial message from CICS, then enters the transaction code CESN. It waits for the “Signon” prompt to be displayed, then enters the userid and password in two separate fields and sends the completed screen to the host. Security=1 is specified to ensure that the user is signed on to VIRTEL. The SBA orders 11xxxx identify the position of the userid and password fields in the CESN signon panel and may vary as a function of the site.
 
-**Connection to CICS VSE with ICCF sign-on and start transaction CEMT**
+Connection to CICS VSE with ICCF sign-on and start transaction CEMT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following script illustrates the use of a PF key:
 
@@ -4109,7 +4029,8 @@ The following script illustrates the use of a PF key:
 
 This script waits for the ICCF signon screen (recognized by the word ‘REMOTE’), then enters the userid and password in two separate fields and sends the completed screen to the host. It waits for the ICCF main menu (recognized by the word “Escape”) and presses F6. It then enters the transaction code CEMT. The SBA orders 11xxxx identify the position of the userid and password fields in the ICCF signon panel and may vary as a function of the site.
 
-**Connect to TSO with USER and PASSWORD and await start of ISPF**
+Connect to TSO with USER and PASSWORD and await start of ISPF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is an example of an HTTP transaction which uses the “Logon Message” field to pass the userid to TSO, followed by a script to complete the TSO/ISPF logon process:
 
@@ -4128,7 +4049,8 @@ This is an example of an HTTP transaction which uses the “Logon Message” fie
 
 The script waits for the TSO/E LOGON panel for the specified userid, then enters the password into the appropriate field. It waits for the \*** prompt to appear, and presses enter. Security=1 is specified to ensure that the user is already signed on to VIRTEL. The SBA order 11C9C3 identifies the password field (at row 8 col 20) in the TSO/E LOGON panel and may vary as a function of the site.
 
-**Connect to CICS and navigate a user applicaction**
+Connect to CICS and navigate a user applicaction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -4146,7 +4068,8 @@ The script waits for the TSO/E LOGON panel for the specified userid, then enters
 
 This script sends an initial 3270 message to the terminal to format the screen and position the cursor. The data in this initial message consists of a 3270 Write-Erase command (F5), a Write Control Character (C2), a Set Buffer Address order (114040), a Start Field order (1D40) and an Insert Cursor order (13). Having sent this message, the script waits for the CICS application to send a message containing the string “WELCOME”, then it sends the “Enter” key to the CICS application. When the terminal user disconnects, the logoff script sends the “Clear” key to CICS followed by CESF LOGOFF.
 
-**Connect and run service transaction**
+Connect and run service transaction
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This example shows a script which connects to CICS and repeatedly issues an enquiry transaction whose parameters are supplied in the URL of an HTTP request:
 
@@ -4174,33 +4097,28 @@ Introduction
 The external server management sub-application allows the administrator to maintain the call parameters relating to the various servers available for outgoing calls. External server definitions allow users at 3270 terminals to access Videotex servers via an X25 network. Additionally, starting with VIRTEL version 4.14, the concept of an external server
 is extended to handle the routing of incoming and outgoing calls to and from X25 GATE/PCNE applications such as CFT and Inter.PEL. Starting with VIRTEL version 4.42, the external server may also be used to define the parameters for outbound calls to a PESIT/IP file transfer server via a VIRPESIT line.
 
-Access to the application
-^^^^^^^^^^^^^^^^^^^^^^^^^
+External Server Management Sub-Application
+------------------------------------------
 
 The external server management sub-application is accessed by pressing [PF7] in the Configuration Menu, or [PF11] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0031. This subapplication allows management of the parameters associated with each external server.
 
-Security
-^^^^^^^^
+Sub-Application security
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-When security is active, access to external server management from the Configuration Menu or the Sub-Application
-Menu is controlled by the resource $$SERV$$.
+When security is active, access to external server management from the Configuration Menu or the Sub-Application Menu is controlled by the resource $$SERV$$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
-Summary Of Existing Definitions
+External Server Summary Display
 -------------------------------
 
 The first screen displayed by the external server management sub-application shows a summary of existing definitions in alphanumeric order:
 
 |image65|
+*External Server Summary Display*
 
-*External server list*
-
-Associated functions
---------------------
-
-Positioning the list
-^^^^^^^^^^^^^^^^^^^^
+Navigation
+^^^^^^^^^^
 
 In browse, alter, or delete mode, it is possible to scroll the list of external servers under the control of VIRTEL.
 
@@ -4213,38 +4131,27 @@ Search
 [PF8]
     Display the next page.
 
-Modifying an external server definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+**Modifying an external server definition**
 Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. The message UPDATE OK indicates that the modifications have been accepted. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to
 access the definition detail screen.
 
-Deleting an external server definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+**Deleting an external server definition**
 To delete a definition, position the cursor on the name of the service to be deleted and press [PF2]. The line associated with the service to be deleted will appear highlighted with the message CONFIRM DELETE. Press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each
 external server to be deleted.
 
-Adding an external server definition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+**Adding an external server definition**
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition.
 
-Displaying the external server detail screen
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+External Server Detail Display
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To access the detailed definition of an external server, position the cursor on the desired service and press [PF12]. The external server detail definition screen will then be displayed. To return to the configuration menu, press [PF3] or [Clear].
-
-The External Server
-===================
-
-Pressing [PF12] in the list of external servers displays the detail definition screen for the selected service:
+To access the detailed definition of an external server, position the cursor on the desired service in the summary screen and press [PF12]. The external server detail definition screen will then be displayed. To return to the configuration menu, press [PF3] or [Clear].
 
 |image66|
-*External server detail definition screen*
+*External Server Detail display*
 
-Contents of each field
-----------------------
+External Server Parameters
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Name
     Contains the name of the service as displayed to the user in the “Call External Server” screen. This name may also be referenced in the “Application” field of a type 3 transaction.
@@ -4622,7 +4529,7 @@ The two entry points are assigned transactions TRPE01 and TRPE02 respectively.
     ENTRYP01 EP for APPLI01 and APPLI02     TRPE01
     ENTRYP02 EP for APPLI03                 TRPE02
 
-*7.4.10.3. Transaction definitions and terminal selection*
+*Transaction definitions and terminal selection*
 
 Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
 
@@ -4793,11 +4700,11 @@ It is possible to assign a physical terminal to a relay when a transaction conne
 
 The 3 groups of terminals contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries – they cannot be placed in a logical pool.
 
-A. Appendix
-===========
+Appendix
+========
 
-A.1 Trademarks
---------------
+Trademarks
+----------
 
 SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec
 Communication Group, registered in France and other countries.
@@ -4818,8 +4725,8 @@ Linux is a trademark of Linus Torvalds in the United States, other countries, or
 
 Other company, product, or service names may be trademarks or service names of others.
 
-A.2. Open Source Software
--------------------------
+Open Source Software
+--------------------
 
 The current VIRTEL Web Access product uses the following open source software:
 
@@ -4919,3 +4826,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image79| image:: images/media/image79.png
 .. |image80| image:: images/media/image80.png
 .. |image81| image:: images/media/image81.png
+.. |image82| image:: images/media/image82.png
