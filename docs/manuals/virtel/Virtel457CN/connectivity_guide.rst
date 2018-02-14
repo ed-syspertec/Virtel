@@ -136,7 +136,7 @@ The VIRTEL configuration is stored in a VSAM file called the “ARBO file” (VI
 
 *Configurable elements of Virtel*
 
-The diagram above decribes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser's URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use serveral Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention "LOC" terminals reflect units of work in supporting the browser and "VTA" terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.
+The diagram above describes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser's URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use several Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention "LOC" terminals reflect units of work in supporting the browser and "VTA" terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.
 
 Unloading Configurable Elements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -496,13 +496,11 @@ If you log on to VIRTEL in 3270 mode using the default entry point (“PC”), t
 The first screen you will see is the Multi-Session menu:
 
 |image1|
-
 *The VIRTEL Multi-Session menu*
 
 Press [F1] to display the Configuration Menu:
 
 |image2|
-
 *Configuration Menu*
 
 To invoke a sub-application, press one of the function keys shown in the menu (for example, F1 – Lines). To exit from the Configuration Menu and return to the Multi-Session menu, press CLEAR.
@@ -511,12 +509,11 @@ You can optionally display the Sub-Application Menu by pressing
 [PA2]:
 
 |image3|
-
 *Sub-Application Menu*
 
 To invoke a sub-application, press one of the function keys shown in the menu (for example, F7 – Videotex Definitions). To exit from the Sub-Application Menu and return to the Configuration Menu, press CLEAR or PA2.
 
-Navigating the Sub-applications
+Navigating the Sub-Applications
 -------------------------------
 
 The sub-applications have certain common operational characteristics:
@@ -561,7 +558,6 @@ Line Summary display
 The first screen shows a summay of existing line definitions in alphanumeric order:
 
 |image4|
-
 *Summary of existing lines*
 
 Navigating within sub-application
@@ -607,7 +603,6 @@ Line Overview Summary display
 The summary screen displayed by the Lines Overview sub-application presents an overall view and allows the administrator to zoom in on individual definitions to display and optionally modify the detailed definition. Missing definitions (those referenced by another entity but not defined in the configuration) are highlighted in red. This sub-application allows the administrator to display and optionally modify the various entities associated with each line defined in the VIRTEL configuration. The Lines Overview sub-application is invoked by pressing [PF8] at the Configuration Menu, by pressing [PF15] at the Sub-Application Menu, or via the Multi-Session using a transaction which calls module VIR0049.
 
 |image57|
-
 *Lines overview summary display*
 
 Sub-Application Security
@@ -623,7 +618,6 @@ Line Parameters
     Pressing [PF12] at the line summary screen displays the line detail definition screen. This sub-application allows the definition of the various parameters for each type of line.
 
 |image5|
-
 *Line detail definition screen*
 
 Internal name
@@ -1003,23 +997,18 @@ The example below shows the terminals for two HTTP lines which share a logical p
 terminal names W2HIP000-015 and LU names RHTIP000-015. In each case, the terminal name is an internal name used only within VIRTEL, while the relay name is an LU name defined by a VTAM APPL statement. The relay LU name is the name by which the terminal is known to CICS or other VTAM applications.
 
 |image7|
-
 *Definition of terminals associated with an HTTP line*
 
 |image8|
-
 *Definition of HTTP terminals without relay*
 
 |image9|
-
 *Definition of HTTP terminals with relay*
 
 |image10|
-
 *Definition of logical pool of relays for HTTP*
 
 |image11|
-
 *Definition of associated printer relays for HTTP*
 
     Refer to the VIRTEL Web Access Guide for further information about printers.
@@ -1061,19 +1050,16 @@ An example of a line with non-predefined LU names is shown below.
     In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:
 
 |image12|
-
 *Transaction definition using non-predefined LU names*    
 
 The definition of line C-HTTP on port 41002 specifies \*MYPOOL as the line pool name:
 
 |image13|
-
 *HTTP line definition using non-predefined LU names*
 
 The definition of the terminal pool \*MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:
 
 |image14|
-
 *Terminal pool definition using non-predefined LU names*
 
 ..note:
@@ -1158,8 +1144,7 @@ An HTTP Outbound line allows VIRTEL to act as an HTTP requester. Activation of t
 By means of the OPTION$ FOR-HTTP and SEND$ TO-LINE instructions, a VIRTEL scenario can make requests to the remote HTTP server whose address is specified in the HTTP Outbound line definition. Multiple HTTP Outbound lines may be defined to allow requests to be sent to different HTTP servers. Refer to “VIRTEL Web Modernisation Scenarios” in the VIRTEL Web Access Guide for examples of the OPTION$ FOR-HTTP instruction. The $SITE$ defines the IP address of the outbound server. It is passed via a sceanrio. See the OPTION$ FOR-HTTP scenario instruction.
 
 |image15|
-
-*Fig. 15 - Definition of an HTTP Outbound line*
+*Definition of an HTTP Outbound line*
 
 Internal name
     Must be unique.
@@ -1203,7 +1188,6 @@ Definition of a HTTP Outbound line
     In case of SMTP problems, use the command F VIRTEL,TRACE,L=S-SMTP to trace the dialog between VIRTEL and the SMTP server. The trace output is written to SYSPRINT or SYSLST.
 
 |image16|
-
 *Definition of an SMTP line*
 
 Remote ident
@@ -1251,14 +1235,13 @@ Pad
 Tran
     Always blank.
 
-*2.4.3.1 SMTP terminals*
+*SMTP terminals*
 
     By pressing [PF4], the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorised. Either explicit or repeated terminal definitions may be used.
 
     The example below shows a group of 16 SMTP terminals with associated relays:
 
 |image17|
-
 *Definition of terminals associated with an SMTP line*
 
 Terminal
@@ -1324,7 +1307,6 @@ IMS Connect line
 An IMS Connect line establishes a TCP/IP connection between VIRTEL and IMS Connect using the RESUME TPIPE protocol. Once the connection is established, IMS application programs running in an MPP or BMP region can send requests to VIRTEL using the ICAL DL/I call. VIRTEL processes these requests by launching a customer-written scenario. The scenario can perform actions such as making an outbound HTTP call to a web service before returning the result to the IMS application program. Activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
 
 |image18|
-
 *Definition of an IMS Connect line*
 
 Internal name
@@ -1360,7 +1342,6 @@ IMS Connect Terminals
 Press [PF4] at the Line Detail Definition screen to display the list of terminals associated with an IMS Connect line. An IMS Connect line uses a single sub-group of type-3 terminals having a common prefix (ICAL in this example). No relays are defined for this type of line. The number of terminals defined determines the maximum number of simultaneous RESUME TPIPE sessions between VIRTEL and IMS Connect.
 
 |image19|
-
 *Definition of terminals associated with an IMS Connect line*
 
 Terminal
@@ -1390,7 +1371,6 @@ IMS Connect Entry Point
 Each IMS Connect line must have an associated Entry Point whose name is specified in the line definition. An example is shown below:
 
 |image20|
-
 *Definition of entry point associated with an IMS Connect line*
 
 Name
@@ -1413,7 +1393,6 @@ IMS Connect transactions
 Each IMS Connect entry point must have one or more associated transactions. Press [PF4] at the Entry Point Detail Definition screen to display the list of transactions associated with an IMS Connect entry point. The transaction definition specifies the name of the scenario which will be invoked to process an incoming request from IMS. If the incoming request does not specify a transaction name, or if the specified transaction name is not defined in the entry point, then VIRTEL will invoke the transaction whose external name is the same as the entry point name. If there is no such default transaction, then the request is rejected and VIRTEL issues message VIRIC57E.
 
 |image21|
-
 *Definition of a transaction associated with an IMS Connect entry point*
 
 Internal name
@@ -1978,7 +1957,6 @@ Terminals on a VIRPASS TCP line for VIRKIX
     ligne” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
 
 |image32|
-
 *Terminals on a VIRPASS TCP line for VIRKIX*
 
 VIRPASS TCP line for VIRNT
@@ -2035,13 +2013,11 @@ List of terminals for a VIRPASS TCP line for VIRNT*
 Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:
 
 |image34|
-
 *Inbound terminals for a VIRPASS TCP line for VIRNT*
 
     Terminals in the pool dedicated to outgoing calls do not have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 2:
 
 |image35|
-
 *Outbound terminals for a VIRPASS TCP line for VIRNT*
 
 VIRPASS XM line for VIRKIX
@@ -2097,7 +2073,6 @@ A VIRPASS XM line for communication with VIRKIX uses a single sub-group of termi
 Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
 
 |image37|
-
 *Terminals on a VIRPASS XM line for VIRKIX*
 
 A VIRPASS cross-memory connection is defined in VIRKIX by means of an entity known as a “Virpass cross-memory interface”:
@@ -2276,8 +2251,7 @@ Definition of a X25 GATE Non Fast-Connect line
 
 An X25 GATE Non Fast-Connect line establishes a connection between VIRTEL and an X25 line connected to an IBM 3745 communications controller. Across this type of line, VIRTEL handles incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the GATE and MINITEL parameters in the VIRTCT.
 
-|image42|    
-
+|image42|
 *Definition of an X25 GATE non-Fast Connect line*
 
 Remote ident
@@ -2798,8 +2772,7 @@ Terminals on an AnticFastC line
     An AntiFastC link uses a single sub-group of terminals which represent the virtual circuits allocated to the line (analogous to the LU’s linked to the virtual circuits defined by the NPSI macro X25.VC in the NCP). The terminal name is an internal name which is used to associate the terminal definition with the AntiFastC line. The associated relay name must match the name of a VTAM APPL statement. Either explicit or repeated terminal definitions may be used.
 
 |image49|
-
-*Fig. 49 - Terminals on an X25 AntiFastC line*
+*Terminals on an X25 AntiFastC line*
 
 The LU’s representing the line and the virtual circuits must be defined by APPL statements in a VTAM application major node similar to the following example:
 
@@ -2884,18 +2857,15 @@ application name. This makes the link with an external server whose name is iden
 The example below shows the definition of an AntiPCNE terminal for outbound calls made using LU name AP1LU01O, and the associated external server containing the X25 call parameters:
 
 |image51|
-
-*Fig. 51 - Outbound terminal definition for X25 AntiPCNE*
+*Outbound terminal definition for X25 AntiPCNE*
 
 |image52|
-
-*Fig. 52 - External server definition for X25 AntiPCNE*
+*External server definition for X25 AntiPCNE*
 
 The second sub-group is used for incoming calls (from the point of view of the application). In this sub-group, the “Possible calls” field is set to 2. Either explicit or repeated terminal definitions may be used for this second sub-group, and no entry point is necessary. Each terminal in the second sub-group can be used for calls originating from any remote partner. This method is suitable for applications such as CFT which do not verify the LU name for incoming calls.
 
 |image53|    
-
-*Fig. 53 - Inbound terminal definition for X25 AntiPCNE (method 1)*
+*Inbound terminal definition for X25 AntiPCNE (method 1)*
 
 A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see :ref:`“logical pool of relays”<#_bookmark246>`). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
 
@@ -2928,16 +2898,13 @@ The example below shows the definition of a set of inbound terminals (PCN1TM51-5
 *List of inbound terminal definitions for X25 AntiPCNE*
 
 |image54|
-
-*Fig. 54 - Inbound terminal definition for X25 AntiPCNE*
+*Inbound terminal definition for X25 AntiPCNE*
 
 |image55|
-
-*Fig. 55 - Logical pool definition for X25 AntiPCNE*
+*Logical pool definition for X25 AntiPCNE*
 
 |image56|
-
-*Fig. 56 - Rule for incoming X25 AntiPCNE calls*
+*Rule for incoming X25 AntiPCNE calls*
 
 VTAM definitions for AntiPCNE
 """""""""""""""""""""""""""""
@@ -3037,7 +3004,6 @@ Rule Summary Display
 Press [PF5] at the line detail definition screen to display the list of rules associated with the line:
 
 |image58|
-
 *List of rules for a line*
 
 Field Contents
@@ -3088,7 +3054,6 @@ Displaying detailed definitions
 To display or update the detailed definition of an entity, place the cursor on the name of the entity within the summary display and press [PF12]. The detail definition screen will then be displayed.
 
 |image59|
-
 *Rule detail definition screen*
 
 Rule Parameters
@@ -3218,7 +3183,6 @@ Summary Of Existing Definitions
 The first screen displayed by the terminal management sub-application shows a summary of existing definitions in alphanumeric order. A complete description of each field is given in the following paragraphs.
 
 |image67|
-
 *Summary of terminal definitions*
 
 Associated functions
@@ -3265,7 +3229,6 @@ Terminal Parameter
 Pressing [PF12] at the summary screen displays the Terminal Detail Definition screen, which allows creation of a new terminal definition, or modification of an existing definition:
 
 |image68|
-
 *Terminal definition detail screen*
 
 Contents of each field
@@ -3703,7 +3666,6 @@ Summary Of Existing Definitions
 Press [PF4] at the entry point detail screen to display the list of associated transactions:
 
 |image62|
-
 *Summary of transactions associated with an entry point*
 
 Associated functions
@@ -3765,11 +3727,9 @@ Transaction Parameters
 Pressing [PF12] in the transaction summary screen allows access to the transaction definition detail screen:
 
 |image63|
-
 *Transaction definition detail screen - non-HTML transaction*
 
 |image64|
-
 *Transaction definition detail screen - HTML transaction*
 
 Contents of each field
@@ -4281,7 +4241,6 @@ The External Server
 Pressing [PF12] in the list of external servers displays the detail definition screen for the selected service:
 
 |image66|
-
 *External server detail definition screen*
 
 Contents of each field
