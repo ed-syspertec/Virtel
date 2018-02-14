@@ -264,7 +264,155 @@ Example of configurable Elements
 .. raw:: latex
 
     \newpage 
- 
+
+Adding new configurable elements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or via batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDS has the following transactions:-
+
+-EDS-00 Transaction to support the Entry Point. Must have an external name the same as the Entry Point. In this case EDSHOST. Identifies the default transaction. That being what transaction should be initiated is none is specified in the URL.
+
+-EDS-03W Point to the w2h directory where all the Virtel web artifacts are maintained. In this case the W2H directory.
+
+-EDS-03X Point to the directory that is associated with this line. This would contain customized web elements such as a company image or logo. The directory is EDS-DIR which has a pathname of /eds.
+
+-EDS-04 Vtam transaction identifying SPCICST
+
+-EDS-90 Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
+
+-W2H-80S A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this "upload" transaction the new directory will not appear in the administration portal display of in the directory summary display.
+
+Apart from the LINE, Entry Point and Transaction there is one other configurable element which must also be added to support a new interface. This is the SUBDIR element. The SUBDIR element identifies a new directory.
+
+.. raw:: latex
+
+    \newpage 
+
+::     
+
+    //SPTHOLTV JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID             
+    //*--------------------------------------------------------------*      
+    //*                                                              *      
+    //* ARBO MIGRATION. UPDATE ARBO TO ADD NEW ELEMENTS              *      
+    //*                                                              *      
+    //* Change          Description                       Release    *      
+    //*                 Create directory for poc test     V457       *      
+    //*                                                              *      
+    //*--------------------------------------------------------------*      
+    //*                                                                     
+    // SET LOAD=SPTHOLT.VIRT457.LOADLIB                                     
+    // SET ARBO=SPTHOLT.VIRT457.ARBO                                        
+    //*                                                                     
+    //CONFIG  EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M                   
+    //STEPLIB  DD  DSN=&LOAD,DISP=SHR                                       
+    //SYSPRINT DD  SYSOUT=*                                                 
+    //SYSUDUMP DD  SYSOUT=*                                                 
+    //VIRARBO  DD  DSN=&ARBO,DISP=SHR                                       
+    //SYSIN      DD *                                                       
+        TERMINAL ID=EHLOC000,                                            -
+                DESC='Psuedo Terminals',                                -
+                TYPE=3,                                                 -
+                COMPRESS=2,                                             -
+                INOUT=3,                                                -
+                REPEAT=0016                                              
+        TERMINAL ID=EHVTA000,                                            -
+                RELAY=*W2HPOOL,                                         -
+                DESC='HTTP terminals (with relay)',                     -
+                TYPE=3,                                                 -
+                COMPRESS=2,                                             -
+                INOUT=3,                                                -
+                STATS=26,                                               -
+                REPEAT=0016                                              
+        SUBDIR   ID=EDS-DIR,                                             -
+                DESC='EDS directory',                                   -
+                DDNAME=HTMLTRSF,                                        -
+                KEY=EDS-KEY,                                            -
+                NAMELEN=0064,                                           -
+                AUTHUP=X,                                               -
+                AUTHDOWN=X,                                             -
+                AUTHDEL=X                                                
+        ENTRY    ID=EDSHOST,                                             -
+                DESC='HTTP entry point (EDS application)',              -
+                TRANSACT=EDS,                                           -
+                TIMEOUT=0720,                                           -
+                ACTION=0,                                               -
+                EMUL=HTML,                                              -
+                SIGNON=VIR0020H,                                        -
+                MENU=VIR0021A,                                          -
+                IDENT=SCENLOGM,                                         -
+                SCENDIR=SCE-DIR,                                        -
+                EXTCOLOR=E                                               
+        TRANSACT ID=EDS-00,                                              -
+                NAME=EDSHOST,                                           -
+                DESC='Default Directory',                               -
+                APPL=EDS-DIR,                                           -
+                TYPE=4,                                                 -
+                TERMINAL=EHLOC,                                         -
+                STARTUP=2,                                              -
+                SECURITY=0,                                             -
+                TIOASTA='/w2h/appmenu.htm+applist'                       
+        TRANSACT ID=EDS-03W,                                             -
+                NAME='w2h',                                             -
+                DESC='W2H toolkit directory (/w2h)',                    -
+                APPL=W2H-DIR,                                           -
+                TYPE=4,                                                 -
+                STARTUP=2,                                              -
+                SECURITY=0                                               
+        TRANSACT ID=EDS-03X,                                             -
+                NAME='eds',                                             -
+                DESC='EDS directory (/eds)',                            -
+                APPL=EDS-DIR,                                           -
+                TYPE=4,                                                 -
+                STARTUP=2,                                              -
+                SECURITY=0                                               
+        TRANSACT ID=EDS-04,                                              -
+                NAME='CICS',                                            -
+                DESC='CICS',                                            -
+                APPL=SPCICST,                                           -
+                TYPE=1,                                                 -
+                TERMINAL=EHVTA,                                         -
+                STARTUP=1,                                              -
+                SECURITY=0                                               
+        TRANSACT ID=EDS-90,                                              -
+                NAME='applist',                                         -
+                DESC='List of applications for appmenu.htm',            -
+                APPL=VIR0021S,                                          -
+                TYPE=2,                                                 -
+                TERMINAL=EHLOC,                                         -
+                STARTUP=2,                                              -
+                SECURITY=1                                               
+        TRANSACT ID=W2H-80S,                                             -
+                NAME='upleds',                                          -
+                DESC='Upload macros (EDS-DIR directory)',               -
+                APPL=VIR0041C,                                          -
+                TYPE=2,                                                 -
+                TERMINAL=DELOC,                                         -
+                STARTUP=2,                                              -
+                SECURITY=1,                                             -
+                LOGMSG=EDS-DIR                                           
+        LINE     ID=E-HTTP,                                              -
+                NAME=HTTP-EDS,                                          -
+                LOCADDR=:41003,                                         -
+                DESC='HTTP line (entry point EDSHOST)',                 -
+                TERMINAL=EH,                                            -
+                ENTRY=EDSHOST,                                          -
+                TYPE=TCP1,                                              -
+                INOUT=1,                                                -
+                PROTOCOL=VIRHTTP,                                       -
+                TIMEOUT=0000,                                           -
+                ACTION=0,                                               -
+                WINSZ=0000,                                             -
+                PKTSZ=0000,                                             -
+                RETRY=0010                                                   
+
+*Configuration statements to add a new interface*
+
+After running the VIRCONF utility check to make sure that the condition code is zero and that all elements have been added.
+
+.. raw:: latex
+
+    \newpage 
+
 Accessing the Sub-Applications
 ------------------------------
 

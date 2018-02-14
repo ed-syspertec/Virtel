@@ -316,6 +316,150 @@ Example of configurable Elements
 \newpage
 
 
+\subsection{Adding new configurable elements}
+\label{\detokenize{connectivity_guide:adding-new-configurable-elements}}
+Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or via batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDS has the following transactions:-
+
+-EDS-00 Transaction to support the Entry Point. Must have an external name the same as the Entry Point. In this case EDSHOST. Identifies the default transaction. That being what transaction should be initiated is none is specified in the URL.
+
+-EDS-03W Point to the w2h directory where all the Virtel web artifacts are maintained. In this case the W2H directory.
+
+-EDS-03X Point to the directory that is associated with this line. This would contain customized web elements such as a company image or logo. The directory is EDS-DIR which has a pathname of /eds.
+
+-EDS-04 Vtam transaction identifying SPCICST
+
+-EDS-90 Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
+
+-W2H-80S A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this “upload” transaction the new directory will not appear in the administration portal display of in the directory summary display.
+
+Apart from the LINE, Entry Point and Transaction there is one other configurable element which must also be added to support a new interface. This is the SUBDIR element. The SUBDIR element identifies a new directory.
+
+\newpage
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SPTHOLTV} \PYG{n}{JOB} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{ARBOLOAD}\PYG{p}{,}\PYG{n}{CLASS}\PYG{o}{=}\PYG{n}{A}\PYG{p}{,}\PYG{n}{MSGCLASS}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}\PYG{n}{NOTIFY}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{SYSUID}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}                                                              \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{ARBO} \PYG{n}{MIGRATION}\PYG{o}{.} \PYG{n}{UPDATE} \PYG{n}{ARBO} \PYG{n}{TO} \PYG{n}{ADD} \PYG{n}{NEW} \PYG{n}{ELEMENTS}              \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}                                                              \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{Change}          \PYG{n}{Description}                       \PYG{n}{Release}    \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}                 \PYG{n}{Create} \PYG{n}{directory} \PYG{k}{for} \PYG{n}{poc} \PYG{n}{test}     \PYG{n}{V457}       \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}                                                              \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{LOAD}\PYG{o}{=}\PYG{n}{SPTHOLT}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{LOADLIB}
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{ARBO}\PYG{o}{=}\PYG{n}{SPTHOLT}\PYG{o}{.}\PYG{n}{VIRT457}\PYG{o}{.}\PYG{n}{ARBO}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{CONFIG}  \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LOAD,NOREPL}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{REGION}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{n}{M}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB}  \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{LOAD}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSUDUMP} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO}  \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN}      \PYG{n}{DD} \PYG{o}{*}
+    \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHLOC000}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Psuedo Terminals}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
+            \PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0016}
+    \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHVTA000}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{RELAY}\PYG{o}{=}\PYG{o}{*}\PYG{n}{W2HPOOL}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP terminals (with relay)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                     \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
+            \PYG{n}{STATS}\PYG{o}{=}\PYG{l+m+mi}{26}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0016}
+    \PYG{n}{SUBDIR}   \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDS directory}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                   \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DDNAME}\PYG{o}{=}\PYG{n}{HTMLTRSF}\PYG{p}{,}                                        \PYG{o}{\PYGZhy{}}
+            \PYG{n}{KEY}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{KEY}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAMELEN}\PYG{o}{=}\PYG{l+m+mi}{0064}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{AUTHUP}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{AUTHDOWN}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{AUTHDEL}\PYG{o}{=}\PYG{n}{X}
+    \PYG{n}{ENTRY}    \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSHOST}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP entry point (EDS application)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TRANSACT}\PYG{o}{=}\PYG{n}{EDS}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0720}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{EMUL}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SIGNON}\PYG{o}{=}\PYG{n}{VIR0020H}\PYG{p}{,}                                        \PYG{o}{\PYGZhy{}}
+            \PYG{n}{MENU}\PYG{o}{=}\PYG{n}{VIR0021A}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+            \PYG{n}{IDENT}\PYG{o}{=}\PYG{n}{SCENLOGM}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SCENDIR}\PYG{o}{=}\PYG{n}{SCE}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                        \PYG{o}{\PYGZhy{}}
+            \PYG{n}{EXTCOLOR}\PYG{o}{=}\PYG{n}{E}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{n}{EDSHOST}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Default Directory}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TIOASTA}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/w2h/appmenu.htm+applist}\PYG{l+s+s1}{\PYGZsq{}}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{n}{W}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{w2h}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{W2H toolkit directory (/w2h)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                    \PYG{o}{\PYGZhy{}}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{n}{X}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{eds}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDS directory (/eds)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{04}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CICS}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CICS}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{SPCICST}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTA}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{applist}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{List of applications for appmenu.htm}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0021S}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{80}\PYG{n}{S}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{upleds}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Upload macros (EDS\PYGZhy{}DIR directory)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0041C}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{DELOC}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{LOGMSG}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}
+    \PYG{n}{LINE}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{E}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{NAME}\PYG{o}{=}\PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{EDS}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+            \PYG{n}{LOCADDR}\PYG{o}{=}\PYG{p}{:}\PYG{l+m+mi}{41003}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+            \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP line (entry point EDSHOST)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                 \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EH}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+            \PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EDSHOST}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{TCP1}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+            \PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
+            \PYG{n}{PROTOCOL}\PYG{o}{=}\PYG{n}{VIRHTTP}\PYG{p}{,}                                       \PYG{o}{\PYGZhy{}}
+            \PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0000}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+            \PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+            \PYG{n}{WINSZ}\PYG{o}{=}\PYG{l+m+mi}{0000}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{PKTSZ}\PYG{o}{=}\PYG{l+m+mi}{0000}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+            \PYG{n}{RETRY}\PYG{o}{=}\PYG{l+m+mi}{0010}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Configuration statements to add a new interface}
+
+After running the VIRCONF utility check to make sure that the condition code is zero and that all elements have been added.
+
+\newpage
+
+
 \section{Accessing the Sub-Applications}
 \label{\detokenize{connectivity_guide:accessing-the-sub-applications}}
 The VIRTEL system administrator uses a set of programs called sub-applications to display and update the various elements in the VIRTEL configuration. The sub-applications are invoked via the Configuration Menu or the Sub- Application Menu. The Configuration Menu, introduced in VIRTEL version 4.27, provides access to the most commonly- used sub-applications required for VIRTEL Web Access and XOT. It is invoked from the VIRTEL Multi-Session menu via a transaction which calls module VIR0022. The Sub-Application Menu,
