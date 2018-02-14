@@ -2,9 +2,6 @@
    :maxdepth: 3
    :caption: Table of Contents:
 
-.. index:: 
-   single: Virtel; Logical Pools
-
 .. _Virtel457UG:
 
 ================
