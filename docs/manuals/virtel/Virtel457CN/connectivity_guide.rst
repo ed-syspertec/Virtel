@@ -70,8 +70,123 @@ The VIRTEL configuration is stored in a VSAM file called the “ARBO file” (VI
 
 *Configurable elements of Virtel*
 
-The diagram above decribes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser's URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use serveral Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention "LOC" terminals reflect units of work in supporting the browser and "VTA" terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.     
+The diagram above decribes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser's URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use serveral Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention "LOC" terminals reflect units of work in supporting the browser and "VTA" terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.
 
+Unloading Configurable Elements
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Virtel program VIRCONF can be used to LOAD or UNLOAD the ARBO VSAM file which contains the configurable elements. The default statements that are used to build the initial ARBO VSAM file are contained in the CNTL library as member ARBOLOAD. This member contains every statement that could potentially be used when defining the Virtel ARBO VSAM file, including optional statements which may not be applicable. To unload the default ARBO VSAM file run the following JCL:-
+
+::
+
+    //VIRARBOU JOB 1,ARBOUNLD,CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID   
+    //*                                                           
+    //* THIS JOB UNLOADS AN ARBO FILE                             
+    //*                                                           
+    // SET LOAD=yourqual.VIRTnnn.LOADLIB                          
+    // SET ARBO=yourqual.VIRTnnn.ARBO                             
+    //*                                                           
+    //UNLOAD  EXEC PGM=VIRCONF,PARM=UNLOAD                        
+    //STEPLIB  DD  DSN=&LOAD,DISP=SHR                             
+    //SYSPRINT DD  SYSOUT=*                                       
+    //SYSUDUMP DD  SYSOUT=*                                       
+    //VIRARBO  DD  DSN=&ARBO,DISP=SHR,AMP=('RMODE31=NONE')        
+    //SYSPUNCH DD  DSN=&SYSUID..VIRCONF.SYSIN,DISP=(,CATLG),      
+    //             UNIT=SYSDA,VOL=SER=??????,SPACE=(TRK,(5,1)),   
+    //             DCB=(RECFM=FB,LRECL=80,BLKSIZE=6080)           
+
+*The ARBO UNLOAD Job*    
+
+The output file contains all the default definitions that make up the configurable Virtel elements. These definitions can be used as a template for building new configurable elements such as lines, entry points, transactions, etc. See the VIRCONF utility section in the **Virtel Installation Guide** for further information on the VIRCONF utility and maintaining the VSAM ARBO file. 
+
+.. note:
+
+    The VIRCONF utility cannot be run with Virtel running. 
+
+Line Element
+^^^^^^^^^^^^
+
+The Line element is the main control element in the definition hierarchy. When Virtel receives a call in from a user, via their browser, it is targeted towards a particular port which is associated with a Line element.  The Line element points to the default entry point and also identifies the listening port. By default, Virtel delivers two HTTP line elements in its default configuration. Line W-HTTP associated with port 41001 and Line C-HTTP associated with port 41002. Line W-HTTP(41001) is usually associated with administration functions and should be secured for administration use only. Line C-HTTP(41002) is an example of a line for for client applications. It is not advisable to use 41001 as your client port. USe 41002 or set-up another line using 41002 as a template, for example 41003.
+
+|image70|
+*Line Detail Definition*
+
+It is also defined in the Arbo Configuration statements:-
+
+::
+
+         LINE ID=C-HTTP,                                         -
+         NAME=HTTP-CLI,                                          -
+         LOCADDR=:41002,                                         -
+         DESC='HTTP line (entry point CLIWHOST)',                -
+         TERMINAL=CL,                                            -
+         ENTRY=CLIWHOST,                                         -
+         TYPE=TCP1,                                              -
+         INOUT=1,                                                -
+         PROTOCOL=VIRHTTP,                                       -
+         TIMEOUT=0000,                                           -
+         ACTION=0,                                               -
+         WINSZ=0000,                                             -
+         PKTSZ=0000,                                             -
+         RETRY=0010                                               
+
+The same information is reflected in both. The ARBO definitions are used to build the ARBO VSAM file which the Virtel Sub Applications access to display, modify and delete configuration elements. Another key item in the line definition is the TERMINAL prefix. This prefix is used to associate a line with the terminal definitions. In the example above the prefix of CL means that this line will only use terminal beginning "CL".
+
+Entry Point Element
+^^^^^^^^^^^^^^^^^^^
+
+The Entry point element is associated with a group of transactions. Transactions are the interface to external components like VTAM applications (CICS, TSO, IMS etc.) or external servers. Transactions are also used to define internal Virtel tasks and configuration elements like directory entries, upload programs, menu programs, signon programs. A line can be associated with any entry point defined within the configuration. Every line must have a default entry point. Virtel Rule definitions can be used to assign a different Entry point to a call in request based upon a range of criteria - incoming IP Address, Work Station Name, Userid etc. 
+
+|image71|    
+*Entry Point Definition*
+
+It is also defined in with the Arbo Configuration statements:-
+
+::
+    
+         ENTRY ID=CLIWHOST,                                      -
+         DESC='HTTP entry point (CLIENT application)',           -
+         TRANSACT=CLI,                                           -
+         TIMEOUT=0720,                                           -
+         ACTION=0,                                               -
+         EMUL=HTML,                                              -
+         SIGNON=VIR0020H,                                        -
+         MENU=VIR0021A,                                          -
+         IDENT=SCENLOGM,                                         -
+         EXTCOLOR=E                                               
+
+The salient point in the Entry Point element is the TRANSACT prefix. This associates transactions with a particular Entry point. In the sample above transactions that begin with CLI will be associated with entry point CLIWHOST which is the default entry point for line C-HTTP(41002). An example of using an Entry point is that you might want to associate productions users with line 41004 and other users with line 41005. In this example you would define two new lines, set default entry points PRODHOST and USERHOST. In those entry point definitions the prefix for production transactions would PRD and for user transactions USR.
+
+Transaction Element
+^^^^^^^^^^^^^^^^^^^
+
+Transactions define the programs that Virtel will run in order to support a session requirement. Transactions are normally identified within the incoming URL. For example the following URL requests that Virtel starts a Virtel transaction called CICS:-
+
+::
+
+    http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics
+
+When the Virtel Engine receives this call-in it directs to line C-HTTP(41002) and established a session with the user's browser. Session initiation begins with the downloading of various Virtel web elements such as templates, JavasSrcipt and CSS pages. The line will invoke a transaction called CICS which will be associated with the entry point defined for this call-in. This normally would be a transaction associated with the default entry point CLIWHOST. However, Virtel Rules may well associate a different entry point depending on call-in criteria. The transaction CICS is an external name, the Virtel Internal name for this transactions is CLI-10. It is the internal name that is related to the transaction prefix defined in the Entry Point. 
+
+|image72|
+*Transaction Definition*
+
+It is also defined in with the Arbo Configuration statements:-
+
+::
+    
+         TRANSACT ID=CLI-10,                                     -
+         NAME='Cics',                                            -
+         DESC='Logon to CICS',                                   -
+         APPL=SPCICST,                                           -
+         TYPE=1,                                                 -
+         TERMINAL=CLVTA,                                         -
+         STARTUP=1,                                              -
+         SECURITY=1                                               
+
+The salient points here are the internal name or ID, CLI-10 which ties up with the Entry Point transaction prefix of transactions beginning "CLI", the external name, "CICS" relates to the transaction name identified in the call-in URL. The APPL keyword identifies a name that will be used depending on the transaction type. The transaction type for this particular transaction definition is a VTAM transaction, TYPE=1. Virtel will attempt to logon to VTAM application identified by the VTAM APPL name SPCICST. The final point is the terminal prefix which identifies what Virtel terminals should be used to support this connection. In this instance the terminals must be prefixed with the characters "CLVTA". 
+
+ 
 Accessing the Sub-Applications
 ------------------------------
 
@@ -4535,3 +4650,6 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image67| image:: images/media/image67.png
 .. |image68| image:: images/media/image68.png
 .. |image69| image:: images/media/image69.png
+.. |image70| image:: images/media/image70.png
+.. |image71| image:: images/media/image71.png
+.. |image72| image:: images/media/image72.png

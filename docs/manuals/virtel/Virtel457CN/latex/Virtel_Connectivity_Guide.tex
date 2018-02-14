@@ -45,7 +45,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Feb 13, 2018}
+\date{Feb 14, 2018}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -129,6 +129,101 @@ External servers, which define the connection parameters used by VIRTEL to conne
 \sphinxstyleemphasis{Configurable elements of Virtel}
 
 The diagram above decribes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser’s URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use serveral Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention “LOC” terminals reflect units of work in supporting the browser and “VTA” terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.
+
+
+\subsection{Unloading Configurable Elements}
+\label{\detokenize{connectivity_guide:unloading-configurable-elements}}
+The Virtel program VIRCONF can be used to LOAD or UNLOAD the ARBO VSAM file which contains the configurable elements. The default statements that are used to build the initial ARBO VSAM file are contained in the CNTL library as member ARBOLOAD. This member contains every statement that could potentially be used when defining the Virtel ARBO VSAM file, including optional statements which may not be applicable. To unload the default ARBO VSAM file run the following JCL:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+//VIRARBOU JOB 1,ARBOUNLD,CLASS=A,MSGCLASS=X,NOTIFY=\PYGZam{}SYSUID
+//*
+//* THIS JOB UNLOADS AN ARBO FILE
+//*
+// SET LOAD=yourqual.VIRTnnn.LOADLIB
+// SET ARBO=yourqual.VIRTnnn.ARBO
+//*
+//UNLOAD  EXEC PGM=VIRCONF,PARM=UNLOAD
+//STEPLIB  DD  DSN=\PYGZam{}LOAD,DISP=SHR
+//SYSPRINT DD  SYSOUT=*
+//SYSUDUMP DD  SYSOUT=*
+//VIRARBO  DD  DSN=\PYGZam{}ARBO,DISP=SHR,AMP=(\PYGZsq{}RMODE31=NONE\PYGZsq{})
+//SYSPUNCH DD  DSN=\PYGZam{}SYSUID..VIRCONF.SYSIN,DISP=(,CATLG),
+//             UNIT=SYSDA,VOL=SER=??????,SPACE=(TRK,(5,1)),
+//             DCB=(RECFM=FB,LRECL=80,BLKSIZE=6080)
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{The ARBO UNLOAD Job}
+
+The output file contains all the default definitions that make up the configurable Virtel elements. These definitions can be used as a template for building new configurable elements such as lines, entry points, transactions, etc. See the VIRCONF utility section in the \sphinxstylestrong{Virtel Installation Guide} for further information on the VIRCONF utility and maintaining the VSAM ARBO file.
+
+
+\subsection{Line Element}
+\label{\detokenize{connectivity_guide:line-element}}
+The Line element is the main control element in the definition hierarchy. When Virtel receives a call in from a user, via their browser, it is targeted towards a particular port which is associated with a Line element.  The Line element points to the default entry point and also identifies the listening port. By default, Virtel delivers two HTTP line elements in its default configuration. Line W-HTTP associated with port 41001 and Line C-HTTP associated with port 41002. Line W-HTTP(41001) is usually associated with administration functions and should be secured for administration use only. Line C-HTTP(41002) is an example of a line for for client applications. It is not advisable to use 41001 as your client port. USe 41002 or set-up another line using 41002 as a template, for example 41003.
+
+\sphinxincludegraphics{{image70}.png}
+\sphinxstyleemphasis{Line Detail Definition}
+
+It is also defined in the Arbo Configuration statements:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{LINE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{C}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{CLI}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+\PYG{n}{LOCADDR}\PYG{o}{=}\PYG{p}{:}\PYG{l+m+mi}{41002}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP line (entry point CLIWHOST)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                \PYG{o}{\PYGZhy{}}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{CL}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+\PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{CLIWHOST}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{TCP1}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+\PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
+\PYG{n}{PROTOCOL}\PYG{o}{=}\PYG{n}{VIRHTTP}\PYG{p}{,}                                       \PYG{o}{\PYGZhy{}}
+\PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0000}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+\PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+\PYG{n}{WINSZ}\PYG{o}{=}\PYG{l+m+mi}{0000}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+\PYG{n}{PKTSZ}\PYG{o}{=}\PYG{l+m+mi}{0000}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+\PYG{n}{RETRY}\PYG{o}{=}\PYG{l+m+mi}{0010}
+\end{sphinxVerbatim}
+
+The same information is reflected in both. The ARBO definitions are used to build the ARBO VSAM file which the Virtel Sub Applications access to display, modify and delete configuration elements. Another key item in the line definition is the TERMINAL prefix. This prefix is used to associate a line with the terminal definitions. In the example above the prefix of CL means that this line will only use terminal beginning “CL”.
+
+
+\subsection{Entry Point Element}
+\label{\detokenize{connectivity_guide:entry-point-element}}
+The Entry point element is associated with a group of transactions. Transactions are the interface to external components like VTAM applications (CICS, TSO, IMS etc.) or external servers. Transactions are also used to define internal Virtel tasks and configuration elements like directory entries, upload programs, menu programs, signon programs. A line can be associated with any entry point defined within the configuration. Every line must have a default entry point. Virtel Rule definitions can be used to assign a different Entry point to a call in request based upon a range of criteria - incoming IP Address, Work Station Name, Userid etc.
+
+\sphinxincludegraphics{{image71}.png}
+\sphinxstyleemphasis{Entry Point Definition}
+
+It is also defined in the Arbo Configuration statements:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ENTRY} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLIWHOST}\PYG{p}{,}                                      \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP entry point (CLIENT application)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}           \PYG{o}{\PYGZhy{}}
+\PYG{n}{TRANSACT}\PYG{o}{=}\PYG{n}{CLI}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+\PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0720}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
+\PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
+\PYG{n}{EMUL}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+\PYG{n}{SIGNON}\PYG{o}{=}\PYG{n}{VIR0020H}\PYG{p}{,}                                        \PYG{o}{\PYGZhy{}}
+\PYG{n}{MENU}\PYG{o}{=}\PYG{n}{VIR0021A}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
+\PYG{n}{IDENT}\PYG{o}{=}\PYG{n}{SCENLOGM}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
+\PYG{n}{EXTCOLOR}\PYG{o}{=}\PYG{n}{E}
+\end{sphinxVerbatim}
+
+The salient point in the Entry Point element is the TRANSACT prefix. This associates transactions with a particular Entry point. In the sample above transactions that begin with CLI will be associated with entry point CLIWHOST which is the default entry point for line C-HTTP(41002). An example of using an Entry point is that you might want to associate productions users with line 41004 and other users with line 41005. In this example you would define two new lines, set default entry points PRODHOST and USERHOST. In those entry point definitions the prefix for production transactions would PRD and for user transactions USR.
+
+
+\subsection{Transaction Element}
+\label{\detokenize{connectivity_guide:transaction-element}}
+Transactions define the programs that Virtel will run in order to support a session requirement. Transactions are normally identified within the incoming URL. For example the following URL requests that Virtel starts a Virtel transaction called CICS:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.33}\PYG{p}{:}\PYG{l+m+mi}{41002}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{WEB2AJAX}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{Cics}
+\end{sphinxVerbatim}
+
+When the Virtel Engine receives this call-in it directs to line C-HTTP(41002) and established a session with the user’s browser. Session initiation begins with the downloading of various Virtel web elements such as templates, JavasSrcipt and CSS pages. The line will invoke a transaction called CICS which will be associated with the entry point defined for this call-in. This normally would be a transaction associated with the default entry point CLIWHOST. However, Virtel Rules may well associate a different entry point depending on call-in criteria. The transaction CICS is an external name, the Virtel Internal name for this transactions is CLI-10. It is the internal name that is related to the transaction prefix defined in the Entry Point.
+
+\sphinxincludegraphics{{image72}.png}
+\sphinxstyleemphasis{Transaction Definition}
 
 
 \section{Accessing the Sub-Applications}
