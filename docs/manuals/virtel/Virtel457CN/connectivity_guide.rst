@@ -253,6 +253,17 @@ Here are the VTAM definitions:-
     REHIM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1               <--- Printer definitions SCS
     REHIP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1          <--- Printer definitions 3270
 
+.. raw:: latex
+
+    \newpage   
+
+Example of configurable Elements
+
+|image75|    
+
+.. raw:: latex
+
+    \newpage 
  
 Accessing the Sub-Applications
 ------------------------------
@@ -4722,3 +4733,4 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image72| image:: images/media/image72.png
 .. |image73| image:: images/media/image73.png
 .. |image74| image:: images/media/image74.png
+.. |image75| image:: images/media/image75.png
