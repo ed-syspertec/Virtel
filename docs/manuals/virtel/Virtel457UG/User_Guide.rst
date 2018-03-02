@@ -7129,8 +7129,8 @@ In addition, the following non-standard HTTP headers, described in the IBM Tivol
 
     IV headers provide reliable user identification only when the request comes from a trusted proxy. The proxy IP address can be specified in the “Calling DTE” field of a rule attached to the HTTP line. See the “Rules” chapter of the VIRTEL Configuration Reference manual for further information.
 
-item
-    When class is NAME-OF or VALUE-OF, the following VIRTEL data items may be specified:
+**NAME-OF or VALUE-OF Item list**
+    The following VIRTEL data items may be specified:
         CHARACTER-SET
             The name of the current UTF-8 character set, or the country code if the page is not in UTF-8 mode (see :ref:`“EBCDIC translation management” <#_V457UG_EBCDIC_translation>`)
         CURRENT-FOREACH-INDEX
@@ -7192,14 +7192,16 @@ item
             The VIRTEL version number
         xxx-SYMBOL
             The value of the system symbol xxx (only if SYSPLUS=YES is specified in the VIRTCT). Example: SYSNAME-SYMBOL 
-    item
-        When class is NUMBER-OF, the following VIRTEL numeric data items may be specified:
+
+**NUMBER-OF Item list**
+        The following VIRTEL numeric data items may be specified:
             SCREEN-COLUMNS
                 The width of the current host 3270 screen
             SCREEN-LINES
                 The depth of the current host 3270 screen
-    item
-        When class is USER-SECURITY-PROFILE, the following RACF field names may be specified:
+
+**USER-SECURITY-PROFILE Item list**                
+    The following RACF field names may be specified:
             USERID
                 The signed-on user id
             GROUP

@@ -71,10 +71,6 @@ Enter you security credentials and the primary menu will appear.
 
 |image77|
 
-.. raw:: latex
-
-    \newpage  
-
 Enter F1 to enter the configuration menu of the configuration manager.
 
 |image78|
@@ -169,6 +165,10 @@ The output file contains all the default definitions that make up the configurab
 
     The VIRCONF utility cannot be run with Virtel running. 
 
+.. raw:: latex
+
+    \newpage 
+
 Line Element
 ^^^^^^^^^^^^
 
@@ -206,7 +206,7 @@ The Entry point element is associated with a group of transactions. Transactions
 |image71|    
 *Entry Point Definition*
 
-It is also defined in with the Arbo Configuration statements:-
+It can also defined with the Arbo Configuration statements:-
 
 ::
     
@@ -237,7 +237,7 @@ When the Virtel Engine receives this call-in it directs to line C-HTTP(41002) an
 |image72|
 *Transaction Definition*
 
-It is also defined in with the Arbo Configuration statements:-
+It can also defined with the Arbo Configuration statements:-
 
 ::
     
@@ -265,7 +265,7 @@ The terminal name is used to associate terminals with lines and transactions. In
 |image74|
 *Terminal Pool definition*
 
-Terminal definitions defined within the Arbo configuration statements:-
+Terminal definitions defined with Arbo configuration statements:-
 
 ::
 
@@ -514,7 +514,7 @@ You can optionally display the Sub-Application Menu by pressing
 To invoke a sub-application, press one of the function keys shown in the menu (for example, F7 – Videotex Definitions). To exit from the Sub-Application Menu and return to the Configuration Menu, press CLEAR or PA2.
 
 Navigation
-----------
+^^^^^^^^^^
 
 The sub-applications have certain common operational characteristics:
 
@@ -571,12 +571,8 @@ The first screen shows a summay of existing line definitions in alphanumeric ord
 Navigation
 """"""""""
 
-*Positioning a line*
-    In browse, alter, or delete mode, it is possible to scroll the list of lines under the control of VIRTEL.
-
 Search
-    Type the name (or partial name) of the required entity on the first
-    line under the heading “Internal Name”, then press [Enter].
+    Type the name (or partial name) of the required entity on the first line under the heading “Internal Name”, then press [Enter].
 [PF6]
     Return to the first page of the list.
 [PF7]
@@ -585,8 +581,7 @@ Search
     Display the next page.  
 
 **Modifying a line**
-    Pressing [PF12] at the line summary screen displays the line detail definition screen. This sub-application allows the definition of the various parameters for each type of line. 
-    Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press [PF12] to access the definition detail screen. Modifications are not recognized until you press the [PF1] key. Certain modifications require a restart of the VIRTEL system.
+    In the summary screen position the cursor under the name of the entity to be modified. Press [PF12]. The line detail definition screen is displayed. Type the desired modifications into the appropriate fields then press [PF1]. Multiple definitions can be modified at the same time. Modifications are not recognized until you press the [PF1] key. Certain modifications require a restart of the VIRTEL system.
 
 **Deleing a line**    
     In the summary screen position the cursor under the name of the entity to be deleted, then press [PF2]. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
@@ -594,11 +589,10 @@ Search
 **Adding a line**
     To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
 
-Lines Overview Sub-Application
-------------------------------
+Line Overview Sub-Application
+-----------------------------
 
 VIRTEL call routing is performed by sets of interrelated definitions. A call arriving on a line is processed by a set of rules which assign an entry point. The entry point contains a set of transactions which indicate the application or external server which will process the call. An external server refers to one or more lines on which the call may exit from VIRTEL. Each type of entity (lines, terminals, entry points, external servers) is defined by a separate sub-application but it is often useful to have an overall view of all the related definitions. 
-
 
 Line Overview Summary display
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -608,16 +602,30 @@ The summary screen displayed by the Lines Overview sub-application presents an o
 |image57|
 *Lines overview summary display*
 
-Line Detal Display
-^^^^^^^^^^^^^^^^^^
+.. raw:: latex
+
+    \newpage 
+
+Line Detail Display
+^^^^^^^^^^^^^^^^^^^
 
 The screen shows a line detail display.
 
 |image5|
-*Line Summary Display*
+*Line Detail Display*
+
+Navigation
+""""""""""
+
+[PF1]
+    Update fields
+[PF4]
+    Display associated terminals.
+[PF5]
+    Display associated rules.  
 
 Line Parameters
----------------
+^^^^^^^^^^^^^^^
 
 Internal name
     Internal name of the line. This is the name by which VIRTEL refers to the line internally. It must be unique within a VIRTEL instance.
@@ -670,39 +678,25 @@ Local ident
             Note that the use of port numbers less than 1024 may require authorization in the profile of the TCP/IP stack (see for example the RESTRICTLOWPORTS, PORT, and PORTRANGE parameters of the z/OS Communications Server). In general, port numbers 1024 and above do not require authorization.
 
 Description
-    Free-form description with no particular significance or syntax
-    requirement, except for SMTP lines (see the detailed example of an
-    SMTP line which follows).
+    Free-form description with no particular significance or syntax requirement, except for SMTP lines (see the detailed example of an SMTP line which follows).
 
 Prefix
-    Terminal prefix associated with the line. As a general rule, the
-    terminal prefix is a required field. It allows VIRTEL to associate a
-    series of terminals to a line. Two lines cannot share the same group
-    of terminals. The particular details of this field are described for
-    each line type in the detailed examples which follow.
+    Terminal prefix associated with the line. As a general rule, the terminal prefix is a required field. It allows VIRTEL to associate a series of terminals to a line. Two lines cannot share the same group of terminals. The particular details of this field are described for each line type in the detailed examples which follow.
 
 Pool
-    The name of a logical pool of terminals associated with the line.
-    This pool is used for HTTP connections without predefined terminals
-    (see :ref:`“HTTP connections with non-predefined LU names”,<#_V457CN_ForceLUNAME>`). In all other cases this field can be left
-    blank.
+    The name of a logical pool of terminals associated with the line. This pool is used for HTTP connections without predefined terminals
+    (see :ref:`“HTTP connections with non-predefined LU names”,<#_V457CN_ForceLUNAME>`). In all other cases this field can be left blank.
 
 Entry Point
-    Defines the default entry point used by the line. This is a required
-    field for HTTP and SMTP lines. It is optional in all other cases.
-    Entry point management is described in section 1.4.
+    Defines the default entry point used by the line. This is a required field for HTTP and SMTP lines. It is optional in all other cases. 
 
 Rule Set
-    The name of the rule set used by this line. The same rule set can be
-    used by more than one line. If this field is blank, no rules are
-    used. Rules are described in detail in section .
+    The name of the rule set used by this line. The same rule set can be used by more than one line. If this field is blank, no rules are used. Rules are described in detail in section .
 
-    For compatability with VIRTEL versions prior to 4.26, the rule set
-    name is usually the same as the internal name of the line.
+    For compatability with VIRTEL versions prior to 4.26, the rule set name is usually the same as the internal name of the line.
 
 Line type
-    Defines the category to which the line belongs. VIRTEL supports the
-    following categories of lines:
+    Defines the category to which the line belongs. VIRTEL supports the following categories of lines:
 
     X25 lines
         Represented by the values GATE or FASTC
@@ -916,8 +910,8 @@ Delay
     Interval in seconds between attempts to reacquire terminals. The
     default delay is 2 seconds.
 
-Examples of line definitions
-----------------------------
+Line Definition Examples (Non X25)
+----------------------------------
 
 HTTP inbound line
 ^^^^^^^^^^^^^^^^^    
@@ -925,7 +919,6 @@ HTTP inbound line
 When an HTTP line is started, VIRTEL becomes an HTTP server, authorising connections from a web browser to applications at the host site. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT, as well as to a definition providing linkage to a file containing the HTML pages.
 
 |image6|
-
 *Definition of an HTTP line*
 
 Remote ident
@@ -939,12 +932,7 @@ Prefix
     Terminal name prefix (see below).
 
 Entry Point
-    When defining an HTTP line, it is obligatory to define a default
-    entry point. This entry point will be used for all incoming calls
-    which do not match any of the rules of the line. The entry point
-    contains a list of transactions, and these transactions determine which directories are used to retrieve
-    the HTML pages, and which 3270 applications are accessible to the
-    user.
+    When defining an HTTP line, it is obligatory to define a default entry point. This entry point will be used for all incoming calls which do not match any of the rules of the line. The entry point contains a list of transactions, and these transactions determine which directories are used to retrieve the HTML pages, and which 3270 applications are accessible to the user.
 
     .. note::
         According to the type of application accessed, each transaction must
@@ -966,7 +954,7 @@ Possible calls
     represents a listening port where VIRTEL is acting as an HTTP
     server.
 
-    For the case where VIRTEL acts as an HTTP requester, refer to the following section :ref:`“Definition of a HTTP Outbound line”<#_bookmark42>`.
+    For the case where VIRTEL acts as an HTTP requester, refer to the following section :ref:`“Definition of a HTTP Outbound line”<#_V457CN_HTTPOutbound>`.
 
 Protocol
     VIRHTTP or HTTP.
@@ -983,99 +971,37 @@ Pad
 Tran
     Always blank.
 
-HTTP terminals
-""""""""""""""    
+HTTP Inbound terminal definitions
+"""""""""""""""""""""""""""""""""    
 
-An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case HT). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub- group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to :ref:`“logical pool of relays”<#_bookmark246>`. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
+An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case CL). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub-group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to :ref:`“logical pool of relays”<#_V457CN_LogicalPool>`. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
 
 Press [PF4] at the HTTP line detail definition screen to display the list of associated terminals whose prefix matches the prefix specified in the line definition. If the terminals refer to a logical pool, the pool itself may have a different prefix and will therefore not be displayed. In this case you can press [PF2] at the Configuration Menu to display a list of all terminals.
 
-The example below shows the terminals for two HTTP lines which share a logical pool of relays. This list was displayed by pressing [PF2] at the Configuration Menu. The terminals with prefix HT belong to line H-HTTP, while the terminals with prefix DE belong to line W-HTTP. For line H-HTTP, the first sub-group consists of terminals HTLOC000-015 without a relay. The second sub-group consists of terminals HTVTA000-015 which refer to a logical pool of relays named
+The example below shows the terminals for two HTTP lines which share a logical pool of relays. This list was displayed by pressing [PF2] at the Configuration Menu. The terminals with prefix CL belong to line C-HTTP, while the terminals with prefix DE belong to line W-HTTP. For line C-HTTP, the first sub-group consists of terminals CLLOC000-049 without a relay. The second sub-group consists of terminals CLVTA000-079 which refer to a logical pool of relays named
 
-\*W2HPOOL. For line W-HTTP, the first sub-group is DELOC000-015, and the second sub-group is DEVTA000-015 which also refers to the logical pool named \*W2HPOOL. The logical pool itself consists of terminals W2HTP000-015 whose relay LU names are RHTVT000-015. The logical pool also refers to a pool of associated printer LU’s. The printers are defined with
-terminal names W2HIP000-015 and LU names RHTIP000-015. In each case, the terminal name is an internal name used only within VIRTEL, while the relay name is an LU name defined by a VTAM APPL statement. The relay LU name is the name by which the terminal is known to CICS or other VTAM applications.
+\*W2HPOOL. For line W-HTTP, the first sub-group is DELOC000-009, and the second sub-group is DEVTA000-015 which also refers to the logical pool named \*W2HPOOL. The logical pool itself consists of terminals W2HTP000-015 whose relay LU names are REHVT000-079. The logical pool also refers to a pool of associated printer LU’s. The printers are defined with
+terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the terminal name is an internal name used only within VIRTEL, while the relay name is an LU name defined by a VTAM APPL statement. The relay LU name is the name by which the terminal is known to CICS or other VTAM applications.
 
 |image7|
-*Definition of terminals associated with an HTTP line*
+*Terminals associated with an HTTP line*
 
 |image8|
-*Definition of HTTP terminals without relay*
+*HTTP terminals without relay*
 
 |image9|
-*Definition of HTTP terminals with relay*
+*HTTP terminals with relay*
 
 |image10|
-*Definition of logical pool of relays for HTTP*
+*logical pool of relays for HTTP*
 
 |image11|
-*Definition of associated printer relays for HTTP*
+*Associated printer relays for HTTP*
 
-    Refer to the VIRTEL Web Access Guide for further information about printers.
+Refer to the VIRTEL Web Access Guide for further information about printers.
 
-Selection of LU by rule
-"""""""""""""""""""""""    
-
-    When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).
-
-    The rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The rules associated with a user (see “Correspondent management” in the VIRTEL Web Access Guide) allow an LU name to be assigned to a user according to the user’s e-mail address; in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request.
-
-.. _#_V457CN_ForceLUNAME:
-
-HTTP connections with non-predefined terminals. ForceLUNAME option
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""    
-
-It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
-
--  the VTAM LU name should be specified in the connection URL. For
-   example, if the desired LU name is RLHVT500:
-
-::
-
-   http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500
-
--  the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals”
-   field instead of a terminal name prefix.
-
--  the HTTP line must specify a pool name
-
--  a terminal pool of the same name should be defined; only the pool is needed, not the predefined pseudo- terminals that are normaly defined alongside a pool. The terminal and printer pseudo-terminals will be automatically generated using the pool as a template together with the relay name specified in the ForceLUNAME parameter of the URL.
-
-The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.
-
-An example of a line with non-predefined LU names is shown below.
-
-**Examples**
-
-    In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:
-
-|image12|
-*Transaction definition using non-predefined LU names*    
-
-The definition of line C-HTTP on port 41002 specifies \*MYPOOL as the line pool name:
-
-|image13|
-*HTTP line definition using non-predefined LU names*
-
-The definition of the terminal pool \*MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:
-
-|image14|
-*Terminal pool definition using non-predefined LU names*
-
-..note:
-
-    The name of the pool is only used to match the pool to its associated line.
-
-Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.
-
-The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
-
-Reconnecting to an existing session
-"""""""""""""""""""""""""""""""""""
-
-The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
-
-VTAM definitions for HTTP terminals
-"""""""""""""""""""""""""""""""""""
+HTTP Inbound VTAM definitions
+"""""""""""""""""""""""""""""
 
 HTTP relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
 
@@ -1098,6 +1024,9 @@ HTTP relay LU’s must be defined to VTAM by means of APPL statements in an appl
     RHTIP004 APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 
 *VTAM definitions for HTTP terminals*
+
+HTTP Inbound CICS definitions
+"""""""""""""""""""""""""""""
 
 The HTTP relay LU’s must also be defined to CICS, as shown in the following example:
 
@@ -1133,7 +1062,7 @@ The HTTP relay LU’s must also be defined to CICS, as shown in the following ex
 
 This job is supplied in member CSDW2H of the VIRTEL SAMPLIB.
 
-.. _#_bookmark42:
+.. _#_V457CN_HTTPOutbound:
 
 HTTP Outbound line
 ^^^^^^^^^^^^^^^^^^    
@@ -1174,8 +1103,8 @@ Possible calls
 Protocol
     VIRHTTP or HTTP.
 
-Definition of a HTTP Outbound line
-""""""""""""""""""""""""""""""""""        
+HTTP Outbound line definitions
+""""""""""""""""""""""""""""""        
 
     An SMTP line establishes a TCP/IP link between VIRTEL and an external SMTP server. The external SMTP server receives outgoing
     mail from VIRTEL for distribution to users. The SMTP line also defines the characteristics of VIRTEL’s internal SMTP server which
@@ -1187,7 +1116,7 @@ Definition of a HTTP Outbound line
     In case of SMTP problems, use the command F VIRTEL,TRACE,L=S-SMTP to trace the dialog between VIRTEL and the SMTP server. The trace output is written to SYSPRINT or SYSLST.
 
 |image16|
-*Definition of an SMTP line*
+*SMTP line definition*
 
 Remote ident
     This field is required and represents the IP address and port number of the SMTP server to which VIRTEL sends outgoing mail.
@@ -1241,7 +1170,7 @@ Tran
     The example below shows a group of 16 SMTP terminals with associated relays:
 
 |image17|
-*Definition of terminals associated with an SMTP line*
+*SMTP terminal definitions*
 
 Terminal
     The terminal name must match the prefix of the line.
@@ -1264,8 +1193,8 @@ Possible Calls
 Repeat
     The number of terminals defined.
 
-VTAM definitions for SMTP terminals
-"""""""""""""""""""""""""""""""""""
+HTTP Oubtbound (SMTP) VTAM definitions
+""""""""""""""""""""""""""""""""""""""
 
 ::
 
@@ -1274,8 +1203,10 @@ VTAM definitions for SMTP terminals
     RWSVT202 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
     RWSVT203 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL    
 
-*CICS definitions for SMTP relay LUs*
+*VTAM definitions for SMTP relay LUs*
 
+HTTP Oubtbound (SMTP) CICS definitions
+""""""""""""""""""""""""""""""""""""""
 
 Where incoming e-mails are used to trigger a CICS transaction (or other VTAM application), the SMTP relay LU’s must be defined by APPL statements in a VTAM application major node, as shown in this example:
 
@@ -1463,6 +1394,538 @@ IMS Connect message format
 
 All data following the header is treated as binary data which is passed to the scenario without translation in the $INFILE$ variable.
 
+MQ line parameters
+""""""""""""""""""
+
+Remote ident
+    For the RAW protocol: Leave blank.
+
+    For the PREFIXED, PREFIX12, and PREFIX20 protocols: The special
+    value $REPLYTOQ indicates that outbound messages are sent to the
+    destination indicated by the REPLYTOQ and REPLYTOQMGR parameters
+    taken from the inbound message and saved in the 12- or 20-byte
+    header.
+
+Local ident
+    The name of the MQSeries message queue. The queue name prefix
+    specified in the MQn parameter of the VIRTCT will be added to the
+    front of this name. Refer to “Parameters of the VIRTCT” in the
+    VIRTEL Installation Guide for details of the MQn parameter.
+
+Prefix
+    Terminal name prefix (see below).
+
+Entry Point
+    Required for MQ input queue.
+
+Line type
+    One of the MQn protocols defined in the VIRTCT, for example MQ1.
+
+Possible calls
+    Specify one of the following values:
+
+    -1 = Input: VIRTEL receives messages from the MQSeries queue
+    -2 = Output: VIRTEL writes messages to the MQSeries queue
+
+Protocol
+    RAW, PREFIXED, PREFIX12, or PREFIX20.
+
+Tran
+    Specify the way in which messages are processed on the line.
+
+   -STR = The messages are processed as MQFMT_STRING formatted messages. This will allow MQ to perform the appropriate character set translations between the communicating systems. To support this feature, the PTF5135 must be applied on the system. 
+   
+   -no value = The messages are processed as MQFMT_NONE formatted messages.
+
+
+MQ Terminals
+""""""""""""
+
+    Press [PF4] at the line definition screen to display the list of terminals associated with an MQ line. An MQ line uses a single sub-group of type-3 terminals having a common prefix (MQIN in this example). The number of terminals defined determines the maximum number of messages which can be processed simultaneously by VIRTEL.
+
+|image25|
+
+MQ Line Terminal Definitions
+""""""""""""""""""""""""""""
+
+Terminal
+    The terminal name must match the prefix of the line.
+
+Relais
+    Leave blank.
+
+Entry point
+    Leave blank.
+
+Terminal Type
+    Always 3.
+
+Compression
+    Always 2.
+
+Possible calls
+    Always 3.
+
+Repeat
+    Number of terminals defined.
+
+Batch line
+^^^^^^^^^^
+
+    A batch line allows VIRTEL to process HTTP requests in batch mode. When a batch line is defined in the VIRTEL configuration, VIRTEL reads HTTP requests from an input sequential file at startup, processes the requests, writes the responses to an output sequential file, and shuts down. Activation of this type of line is subject to the presence of the BATCHn parameter in the VIRTCT.
+
+|image26|
+
+Batch Line Parameters
+"""""""""""""""""""""
+
+Remote ident
+    Always blank.
+
+Local ident
+    Always blank.
+
+Prefix
+    Terminal name prefix (see below).
+
+Entry Point
+    When defining a batch line, it is obligatory to define a default entry point. This entry point is similar to the entry point used for an HTTP line. The entry point contains a list of transactions, and these transactions determine which directories are used to retrieve page templates, and which 3270 applications are accessible to the batch requests.
+
+    Each transaction must refer to one of the terminal sub-groups associated with the batch line (see ”Batch terminals” below).
+
+    For type 1 (Application) transactions:
+        The prefix will be that of the terminal sub-group with an associated relay.
+
+    For type 2 (Virtel) or type 4 (Page) transactions
+        The prefix will be that of the terminal sub-group without an associated relay.
+
+    For type 3 (Server) transactions
+        No terminal prefix is required.
+
+Line type
+    BATCH1 or BATCH2, corresponding to one of the BATCH parameters defined in the VIRTCT.
+
+Possible calls
+    Specify 1 (incoming calls only).
+
+Protocol
+    VIRHTTP or HTTP.
+
+Window
+    Always 0.
+
+Packet
+    Always 0.
+
+Pad
+    Always blank.
+
+Tran
+    Always blank.
+
+Batch Line  terminals
+"""""""""""""""""""""
+
+    Like an HTTP line, a batch line uses up to two sub-groups of type-3 terminals having a common prefix (in this case BT1). Refer to “HTTP terminals” 26 for further details. If the batch requests do not require connection to a host VTAM application, then it is only necessary to define the first terminal sub-group (the sub-group without relays).
+
+    Press [PF4] at the line detail definition screen to display the list of associated terminals whose prefix matches the prefix specified in the line definition. Then press [PF12] to display the terminal detail definition. The example below shows the terminals for a batch line without relays:
+
+|image27|     
+
+*Definition of terminals without relay for a batch line*
+
+Native TCP/IP Gateway
+^^^^^^^^^^^^^^^^^^^^^
+
+    VIRTEL can act as an IP-to-SNA gateway allowing existing VTAM applications to communicate with partner applications via the IP network. By connecting to a VIRTEL NATIVE TCP/IP port, a remote application can establish a TCP/IP session with VIRTEL and exchange messages with a host VTAM application using a simple record-oriented protocol.
+
+    The connection is always established by the remote TCP/IP application, but messages can flow in both directions. Each message  exchanged between VIRTEL and the partner application is preceded by a two- or four-byte length field.
+
+    Typically the host application is a CICS application designed to communicate with banking terminals such as the IBM 3650.
+
+    The activation of this type of line requires the presence of the >TCP1 parameter in the VIRTCT.
+
+|image28|
+
+NATIVE TCP/IP line parameters
+"""""""""""""""""""""""""""""
+
+Remote ident
+    Not used for a NATIVE TCP/IP line.
+
+Local ident
+    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”<#_bookmark13>`.
+
+Prefix
+    Terminal name prefix (see below).
+
+Entry Point
+    The default entry point will be used for all incoming calls which do not match any of the rules of the line. Entry points for use with native TCP/IP lines must specify Emulation type $NONE$
+
+Line type
+    One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.
+
+Possible calls
+    Specify 1 to allow inbound calls.
+
+Protocol
+    NATIVE2 or NATIVE2P for native TCP/IP protocol with a two-byte length field NATIVE4 or NATIVE4P for native TCP/IP protocol with a four-byte length field
+
+Packet
+    Specify a packet size sufficient to contain the largest message sent by either the host or the partner application, plus 2 or 4 bytes for the length field.
+
+NATIVE TCP/IP Line Terminals
+""""""""""""""""""""""""""""
+
+    By pressing [PF4], the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorised.
+
+    The example below shows a group of 4 NATIVE TCP/IP terminals:
+
+|image29|
+
+NATIVE TCP/IP Line Terminal parameters
+""""""""""""""""""""""""""""""""""""""
+
+Terminal
+    The terminal name must match the prefix of the line.
+
+Relay
+    Specify the name of the relay pool which defines the terminal LU
+    names as seen by the VTAM application. The first character is an
+    asterisk indicating that this is the name of a pool.
+
+Entry point
+    Leave blank. The entry point is defined in the line (or in the rules
+    of the line) for this type of terminal.
+
+Terminal type
+    Always 3.
+
+Compression
+    Always 2.
+
+Possible Calls
+    Always 3.
+
+Repeat
+    The number of terminals defined.
+
+NATIVE TCP/IP Line Relay Pool
+"""""""""""""""""""""""""""""
+
+The figure below shows the definition of the NATIVE TCP/IP relay pool:
+
+|image30|
+
+NATIVE TCP/IP Line Terminal Parameters
+""""""""""""""""""""""""""""""""""""""
+
+Terminal
+    Any terminal name may be used for the relay pool.
+
+Relay
+    Specify the name of the the terminal LU names as seen by the VTAM
+    application.
+
+Pool name
+    Must match the relay name field in the NATIVE TCP/IP terminal
+    definition. The first character is an asterisk indicating that this
+    is the name of a pool.
+
+Entry point
+    Leave blank.
+
+Terminal type
+    Always 3.
+
+Compression
+    Always 2.
+
+Possible Calls
+    Always 3.
+
+Repeat
+    The number of terminals defined.
+
+NATIVE TCP/IP Line VTAM terminals definitions
+"""""""""""""""""""""""""""""""""""""""""""""
+
+    Relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
+
+::
+
+    VIRTAPPL VBUILD TYPE=APPL
+    * ------------------------------------------------------------------ *
+    * RVIPLU00 : VTAM relays for VIRTEL NATIVE TCP/IP terminals          *
+    * ------------------------------------------------------------------ *
+    RVIPLU00 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
+    RVIPLU01 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
+    RVIPLU02 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
+    RVIPLU03 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
+
+*VTAM definitions for NATIVE TCP/IP relay LU’s*
+
+NATIVE TCP/IP Line CICS Terminal definitions
+""""""""""""""""""""""""""""""""""""""""""""
+
+The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the following example:
+
+::
+
+    DEFINE TYPETERM(DT3650) GROUP(VIRTEL)
+    DESC(3650 FOR VIRTEL TCP/IP)
+    DEVICE(3650) SESSIONTYPE(USERPROG)
+    SENDSIZE(1536) RECEIVESIZE(1536)
+    DEFINE TERMINAL(VR00) GROUP(VIRTEL) NETNAME(RVIPLU00)
+    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
+    DEFINE TERMINAL(VR01) GROUP(VIRTEL) NETNAME(RVIPLU01)
+    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
+    DEFINE TERMINAL(VR02) GROUP(VIRTEL) NETNAME(RVIPLU02)
+    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
+    DEFINE TERMINAL(VR03) GROUP(VIRTEL) NETNAME(RVIPLU03)
+    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
+
+NATIVE TCP/IP Line Message Header
+"""""""""""""""""""""""""""""""""    
+
+All messages sent on a NATIVE TCP/IP conversation are prefixed by a 2-byte or 4-byte header. The format of the header for the NATIVE2 protocol is shown in the figure below:
+
++---------+--------+--------------------------------------------------------------+
++ Bytes   + Length + Meaning                                                      +
++=========+========+==============================================================+
++ 0 - 1   + 2      + Message length in bytes, excluding the length field itself   +
++         +        + This is a 16-bit unsigned binary number in big-endian format +
++         +        + (Most significant byte first)                                +
++---------+--------+--------------------------------------------------------------+         
+
+*Format of NATIVE2 message header*
+
+The format of the header for the NATIVE4 protocol is shown in the figure below:
+
++---------+--------+--------------------------------------------------------------+
++ Bytes   + Length + Meaning                                                      +
++=========+========+==============================================================+
++ 0 - 3   + 4      + Message length in bytes, excluding the length field itself   +
++         +        + This is a 32-bit unsigned binary number in big-endian format +
++         +        + (Most significant byte first)                                +
++---------+--------+--------------------------------------------------------------+      
+
+*Format of NATIVE4 message header*
+
+All data following the header is treated as binary data which is passed to the CICS application without translation. The maximum message length is specified in the definition of the NATIVE TCP/IP line.
+
+The variants NATIVE2P and NATIVE4P may be used if the terminal is defined to the application as a 3270 (LU2) device. In this case, VIRTEL will add the prefix X'7D4040' to inbound messages before sending them to the application, and will remove the 3270 prefix (for example X'F1C1') from outbound messages before sending them to the terminal. The message format to the terminal is the same as described above for NATIVE2 and NATIVE4.
+
+VIRPASS TCP line (VIRKIX)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in TCP/IP mode using the VIRKIX program on the CICS side.
+
+|image31|
+
+VIRPASS TCP line (VIRKIX) Parameters
+""""""""""""""""""""""""""""""""""""
+
+Remote ident
+    Contains the IP address and port number of the CICS side of the link. It must match the fields “adresse TCP/IP” and “port serveur” of the TCP/IP interface defined in VIRKIX. This field should only be used when the VIRKIX relay type is “Virpass TCP/IP” (previously known as “Virpass Symétrique”). If the VIRKIX relay type is “Virpass Asymétrique” (previously known as “Virtel TCP/IP”), this field must be blank, and VIRTEL will wait for VIRKIX to make the connection on he address specified in the “Local ident” field.
+
+Local ident
+    Must be specified. Contains the IP address and port number of the VIRTEL side of the link. Must match the fields “Adresse TCP/IP” and “port du serveur” specified in the VIRPASS interface (relay type “Virpass TCP/IP” or “Virpass Asymétrique”) defined in VIRKIX.
+
+Prefix
+    Terminal name prefix (see below).
+
+Entry point
+    Leave blank.
+
+Line type
+    TCP1
+
+Possible calls
+    Always 3.
+
+Protocol
+    Always VIRPASS.
+
+Window
+    Always 0.
+
+Packet
+    Always 0.
+
+Pad, Tran
+    Always blank.
+
+VIRPASS TCP line (VIRKIX) Terminals 
+"""""""""""""""""""""""""""""""""""
+
+    A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type of
+    line” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
+
+|image32|
+*Terminals on a VIRPASS TCP line for VIRKIX*
+
+VIRPASS TCP line (VIRNT)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+    A VIRNT system can be connected to VIRTEL to act as an X25 gateway handling incoming and outgoing connections to and from VIRTEL, or to act as a LECAM server. Communication between VIRTEL and VIRNT can be established using either an APPC line or a TCP/IP line. This section describes TCP/IP mode.
+
+|image33|
+
+VIRPASS TCP line (VIRNT) Parameters
+"""""""""""""""""""""""""""""""""""
+
+Remote ident
+    Always blank.
+
+Local ident
+    This field must be the same as the TCP/IP port referenced under the heading “HOST IP Port” in the VIRPASS.INI file on the VIRNT system.
+
+Prefix
+    Terminal name prefix (see below).
+
+Entry Point
+    Not required for this type of line.
+
+Line type
+    TCP1
+
+Possible calls
+    No special restriction.
+
+Protocol
+    Always VIRPASS.
+
+Window
+    Always 0.
+
+Packet
+    Always 0.
+
+Pad, Tran
+    Always blank.
+
+A VIRPASS TCP connection with a VIRNT system can use up to two sub-groups of terminals. The first sub-group is dedicated to incoming calls and has an associated relay. The second sub-group is dedicated to outgoing calls and has no associated relay. The two sub-groups have a common prefix which associates them with the line. Either explicit or repeated terminal definitions may be used.
+
++----------------+------------+----------------+-------------+-----+-----+
+|     NTTCE980   |     0020   |     RNTTC000   |     $X25$   | 3   | 1   |
++================+============+================+=============+=====+=====+
+|     NTTCS980   |     0020   |                |     $X25$   | 3   | 2   |
++----------------+------------+----------------+-------------+-----+-----+
+
+VIRPASS TCP line (VIRNT*) terminal definitions
+""""""""""""""""""""""""""""""""""""""""""""""
+
+Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:
+
+|image34|
+*Inbound terminals for a VIRPASS TCP line for VIRNT*
+
+    Terminals in the pool dedicated to outgoing calls do not have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 2:
+
+|image35|
+*Outbound terminals for a VIRPASS TCP line for VIRNT*
+
+VIRPASS XM line (VIRKIX)
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in Cross-memory (XM) mode using the VIRKIX program on the CICS side.
+
+|image36|   
+
+VIRPASS XM line (VIRKIX) Parameters
+"""""""""""""""""""""""""""""""""""
+
+External name
+    Must match the relay name of a VIRPASS cross-memory interface in VIRKIX.
+
+Remote ident
+    Contains the jobname of the CICS region in which VIRKIX is running.
+    The CICS region must be in the same MVS system as VIRTEL.
+
+Local ident
+    Must match the field “Nom de la liaison” specified in the definition
+    of the VIRPASS cross-memory interface in VIRKIX.
+
+Prefix
+    Terminal name prefix (see below).
+
+Entry point
+    Leave blank.
+
+Line type
+    XM1
+
+Possible calls
+    Always 3.
+
+Protocol
+    Always VIRPASS.
+
+Window
+    Always 0.
+
+Packet
+    Always 0.
+
+Pad, Tran
+    Always blank.
+
+VIRPASS XM line (VIRKIX) terminal definitions
+"""""""""""""""""""""""""""""""""""""""""""""
+
+A VIRPASS XM line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type de line” field in the relay definition must contain the value X25VIRPA (this is the same value as for VIRPASS TCP, which was coded as E25TCPIP in previous versions of VIRKIX).
+
+Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
+
+|image37|
+*Terminals on a VIRPASS XM line for VIRKIX*
+
+A VIRPASS cross-memory connection is defined in VIRKIX by means of an entity known as a “Virpass cross-memory interface”:
+
+::
+
+    KIXADMIN - Virpass Cross-Memory ----------        V2R5 - 30/06/2005 - 10:54:55
+                                                                  Sysid CICS: CICT
+    Nom interface XM: VIRTELXM
+    ------------------------------------------------------------------------------
+    Nom du job partenaire : SPTSABYV
+    Nom de la liaison :     XM44000
+    ------------------------------------------------------------------------------
+    Autres définitions:
+    Lancement :                             A M:Manuel A:Autom,évt dans SYSID:
+    Nbr maxi de connexions: 0010            de 01 à 1024
+    Transaction associée : APIW             APIW par défaut
+    Trace et Snap : O                       O:Oui N:Non
+    Trace Connexion : O                     O:Oui N:Non
+    Snap centralisé : O                     O:Oui N:Non
+    Priorité : 080                          de 000 à 255
+    ------------------------------------------------------------------------------
+   
+   
+    P3--------P4--------P5--------P6--------P7--------P8--------P12-------ENTER----
+    Menu Quitter M.A.J Supprimer Saisir Valider    
+
+*VIRKIX definitions for a VIRPASS XM connection*
+
+Nom interface
+    The name of the VIRPASS cross-memory interface (also known as the
+    relay name or “nom relais”) must match the “external name” of the
+    VIRPASS XM line in VIRTEL.
+
+Nom du job partenaire
+    Specifies the jobname of the VIRTEL STC, which must be in the same
+    MVS system as VIRKIX.
+
+Nom de la liaison
+    Must match the “Local ident” of the VIRPASS XM line in VIRTEL.
+
+    Refer to the VIRKIX Configuration documentation for details of the
+    other fields on this panel.
+
+X25 Line Definition Examples
+----------------------------
+
 XOT line
 ^^^^^^^^ 
 
@@ -1560,8 +2023,8 @@ Possible calls
 Repeat
     Number of terminals (virtual circuits) defined.
 
-VTAM definition for XOT terminals
-"""""""""""""""""""""""""""""""""
+XOT VTAM terminal definition
+""""""""""""""""""""""""""""
 
 When incoming calls are routed to a type-1 transaction (VTAM
     application), the relay LU’s must be defined by APPL statements in a
@@ -1587,535 +2050,6 @@ MQ line
 
 |image24|
 
-Definition of an MQ line
-""""""""""""""""""""""""
-
-Remote ident
-    For the RAW protocol: Leave blank.
-
-    For the PREFIXED, PREFIX12, and PREFIX20 protocols: The special
-    value $REPLYTOQ indicates that outbound messages are sent to the
-    destination indicated by the REPLYTOQ and REPLYTOQMGR parameters
-    taken from the inbound message and saved in the 12- or 20-byte
-    header.
-
-Local ident
-    The name of the MQSeries message queue. The queue name prefix
-    specified in the MQn parameter of the VIRTCT will be added to the
-    front of this name. Refer to “Parameters of the VIRTCT” in the
-    VIRTEL Installation Guide for details of the MQn parameter.
-
-Prefix
-    Terminal name prefix (see below).
-
-Entry Point
-    Required for MQ input queue.
-
-Line type
-    One of the MQn protocols defined in the VIRTCT, for example MQ1.
-
-Possible calls
-    Specify one of the following values:
-
-    -1 = Input: VIRTEL receives messages from the MQSeries queue
-    -2 = Output: VIRTEL writes messages to the MQSeries queue
-
-Protocol
-    RAW, PREFIXED, PREFIX12, or PREFIX20.
-
-Tran
-    Specify the way in which messages are processed on the line.
-
-   -STR = The messages are processed as MQFMT_STRING formatted messages. This will allow MQ to perform the appropriate character set translations between the communicating systems. To support this feature, the PTF5135 must be applied on the system. 
-   
-   -no value = The messages are processed as MQFMT_NONE formatted messages.
-
-
-MQ Terminals
-""""""""""""
-
-    Press [PF4] at the line definition screen to display the list of terminals associated with an MQ line. An MQ line uses a single sub-group of type-3 terminals having a common prefix (MQIN in this example). The number of terminals defined determines the maximum number of messages which can be processed simultaneously by VIRTEL.
-
-|image25|
-
-Definition of terminals associated with an MQ line
-""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Terminal
-    The terminal name must match the prefix of the line.
-
-Relais
-    Leave blank.
-
-Entry point
-    Leave blank.
-
-Terminal Type
-    Always 3.
-
-Compression
-    Always 2.
-
-Possible calls
-    Always 3.
-
-Repeat
-    Number of terminals defined.
-
-Batch line
-^^^^^^^^^^
-
-    A batch line allows VIRTEL to process HTTP requests in batch mode. When a batch line is defined in the VIRTEL configuration, VIRTEL reads HTTP requests from an input sequential file at startup, processes the requests, writes the responses to an output sequential file, and shuts down. Activation of this type of line is subject to the presence of the BATCHn parameter in the VIRTCT.
-
-|image26|
-
-Definition of a batch line
-""""""""""""""""""""""""""
-
-Remote ident
-    Always blank.
-
-Local ident
-    Always blank.
-
-Prefix
-    Terminal name prefix (see below).
-
-Entry Point
-    When defining a batch line, it is obligatory to define a default entry point. This entry point is similar to the entry point used for an HTTP line. The entry point contains a list of transactions, and these transactions determine which directories are used to retrieve page templates, and which 3270 applications are accessible to the batch requests.
-
-    Each transaction must refer to one of the terminal sub-groups associated with the batch line (see ”Batch terminals” below).
-
-    For type 1 (Application) transactions:
-        The prefix will be that of the terminal sub-group with an associated relay.
-
-    For type 2 (Virtel) or type 4 (Page) transactions
-        The prefix will be that of the terminal sub-group without an associated relay.
-
-    For type 3 (Server) transactions
-        No terminal prefix is required.
-
-Line type
-    BATCH1 or BATCH2, corresponding to one of the BATCH parameters defined in the VIRTCT.
-
-Possible calls
-    Specify 1 (incoming calls only).
-
-Protocol
-    VIRHTTP or HTTP.
-
-Window
-    Always 0.
-
-Packet
-    Always 0.
-
-Pad
-    Always blank.
-
-Tran
-    Always blank.
-
-Batch terminals
-"""""""""""""""
-
-    Like an HTTP line, a batch line uses up to two sub-groups of type-3 terminals having a common prefix (in this case BT1). Refer to “HTTP terminals” 26 for further details. If the batch requests do not require connection to a host VTAM application, then it is only necessary to define the first terminal sub-group (the sub-group without relays).
-
-    Press [PF4] at the line detail definition screen to display the list of associated terminals whose prefix matches the prefix specified in the line definition. Then press [PF12] to display the terminal detail definition. The example below shows the terminals for a batch line without relays:
-
-|image27|     
-
-*Definition of terminals without relay for a batch line*
-
-Native TCP/IP Gateway
-^^^^^^^^^^^^^^^^^^^^^
-
-    VIRTEL can act as an IP-to-SNA gateway allowing existing VTAM applications to communicate with partner applications via the IP network. By connecting to a VIRTEL NATIVE TCP/IP port, a remote application can establish a TCP/IP session with VIRTEL and exchange messages with a host VTAM application using a simple record-oriented protocol.
-
-    The connection is always established by the remote TCP/IP application, but messages can flow in both directions. Each message  exchanged between VIRTEL and the partner application is preceded by a two- or four-byte length field.
-
-    Typically the host application is a CICS application designed to communicate with banking terminals such as the IBM 3650.
-
-    The activation of this type of line requires the presence of the >TCP1 parameter in the VIRTCT.
-
-|image28|
-
-Definition of a NATIVE TCP/IP line
-""""""""""""""""""""""""""""""""""
-
-Remote ident
-    Not used for a NATIVE TCP/IP line.
-
-Local ident
-    The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”<#_bookmark13>`.
-
-Prefix
-    Terminal name prefix (see below).
-
-Entry Point
-    The default entry point will be used for all incoming calls which do not match any of the rules of the line. Entry points for use with native TCP/IP lines must specify Emulation type $NONE$
-
-Line type
-    One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.
-
-Possible calls
-    Specify 1 to allow inbound calls.
-
-Protocol
-    NATIVE2 or NATIVE2P for native TCP/IP protocol with a two-byte length field NATIVE4 or NATIVE4P for native TCP/IP protocol with a four-byte length field
-
-Packet
-    Specify a packet size sufficient to contain the largest message sent by either the host or the partner application, plus 2 or 4 bytes for the length field.
-
-NATIVE TCP/IP Terminals
-"""""""""""""""""""""""
-
-    By pressing [PF4], the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorised.
-
-    The example below shows a group of 4 NATIVE TCP/IP terminals:
-
-|image29|
-
-Definition of terminals associated with a NATIVE TCP/IP line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Terminal
-    The terminal name must match the prefix of the line.
-
-Relay
-    Specify the name of the relay pool which defines the terminal LU
-    names as seen by the VTAM application. The first character is an
-    asterisk indicating that this is the name of a pool.
-
-Entry point
-    Leave blank. The entry point is defined in the line (or in the rules
-    of the line) for this type of terminal.
-
-Terminal type
-    Always 3.
-
-Compression
-    Always 2.
-
-Possible Calls
-    Always 3.
-
-Repeat
-    The number of terminals defined.
-
-NATIVE TCP/IP relay pool
-""""""""""""""""""""""""
-
-The figure below shows the definition of the NATIVE TCP/IP relay pool:
-
-|image30|
-
-Definition of terminals associated with a NATIVE TCP/IP line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Terminal
-    Any terminal name may be used for the relay pool.
-
-Relay
-    Specify the name of the the terminal LU names as seen by the VTAM
-    application.
-
-Pool name
-    Must match the relay name field in the NATIVE TCP/IP terminal
-    definition. The first character is an asterisk indicating that this
-    is the name of a pool.
-
-Entry point
-    Leave blank.
-
-Terminal type
-    Always 3.
-
-Compression
-    Always 2.
-
-Possible Calls
-    Always 3.
-
-Repeat
-    The number of terminals defined.
-
-VTAM definitions for NATIVE TCP/IP terminals
-""""""""""""""""""""""""""""""""""""""""""""
-
-    Relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
-
-::
-
-    VIRTAPPL VBUILD TYPE=APPL
-    * ------------------------------------------------------------------ *
-    * RVIPLU00 : VTAM relays for VIRTEL NATIVE TCP/IP terminals          *
-    * ------------------------------------------------------------------ *
-    RVIPLU00 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
-    RVIPLU01 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
-    RVIPLU02 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
-    RVIPLU03 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGREL
-
-*VTAM definitions for NATIVE TCP/IP relay LU’s*
-
-CICS definitions for NATIVE TCP/IP terminals
-""""""""""""""""""""""""""""""""""""""""""""
-
-The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the following example:
-
-::
-
-    DEFINE TYPETERM(DT3650) GROUP(VIRTEL)
-    DESC(3650 FOR VIRTEL TCP/IP)
-    DEVICE(3650) SESSIONTYPE(USERPROG)
-    SENDSIZE(1536) RECEIVESIZE(1536)
-    DEFINE TERMINAL(VR00) GROUP(VIRTEL) NETNAME(RVIPLU00)
-    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
-    DEFINE TERMINAL(VR01) GROUP(VIRTEL) NETNAME(RVIPLU01)
-    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
-    DEFINE TERMINAL(VR02) GROUP(VIRTEL) NETNAME(RVIPLU02)
-    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
-    DEFINE TERMINAL(VR03) GROUP(VIRTEL) NETNAME(RVIPLU03)
-    DESC(VIRTEL NATIVE TCP/IP TERMINAL) TYPETERM(DT3650)
-
-CICS definitions for NATIVE TCP/IP relay LU’s
-"""""""""""""""""""""""""""""""""""""""""""""
-
-All messages sent on a NATIVE TCP/IP conversation are prefixed by a 2-byte or 4-byte header. The format of the header for the NATIVE2 protocol is shown in the figure below:
-
-+---------+--------+--------------------------------------------------------------+
-+ Bytes   + Length + Meaning                                                      +
-+=========+========+==============================================================+
-+ 0 - 1   + 2      + Message length in bytes, excluding the length field itself   +
-+         +        + This is a 16-bit unsigned binary number in big-endian format +
-+         +        + (Most significant byte first)                                +
-+---------+--------+--------------------------------------------------------------+         
-
-*Format of NATIVE2 message header*
-
-The format of the header for the NATIVE4 protocol is shown in the figure below:
-
-+---------+--------+--------------------------------------------------------------+
-+ Bytes   + Length + Meaning                                                      +
-+=========+========+==============================================================+
-+ 0 - 3   + 4      + Message length in bytes, excluding the length field itself   +
-+         +        + This is a 32-bit unsigned binary number in big-endian format +
-+         +        + (Most significant byte first)                                +
-+---------+--------+--------------------------------------------------------------+      
-
-*Format of NATIVE4 message header*
-
-All data following the header is treated as binary data which is passed to the CICS application without translation. The maximum message length is specified in the definition of the NATIVE TCP/IP line.
-
-The variants NATIVE2P and NATIVE4P may be used if the terminal is defined to the application as a 3270 (LU2) device. In this case, VIRTEL will add the prefix X'7D4040' to inbound messages before sending them to the application, and will remove the 3270 prefix (for example X'F1C1') from outbound messages before sending them to the terminal. The message format to the terminal is the same as described above for NATIVE2 and NATIVE4.
-
-VIRPASS TCP line for VIRKIX
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in TCP/IP mode using the VIRKIX program on the CICS side.
-
-|image31|
-
-Definition of a VIRPASS TCP line for VIRKIX
-"""""""""""""""""""""""""""""""""""""""""""
-
-Remote ident
-    Contains the IP address and port number of the CICS side of the link. It must match the fields “adresse TCP/IP” and “port serveur” of the TCP/IP interface defined in VIRKIX. This field should only be used when the VIRKIX relay type is “Virpass TCP/IP” (previously known as “Virpass Symétrique”). If the VIRKIX relay type is “Virpass Asymétrique” (previously known as “Virtel TCP/IP”), this field must be blank, and VIRTEL will wait for VIRKIX to make the connection on he address specified in the “Local ident” field.
-
-Local ident
-    Must be specified. Contains the IP address and port number of the VIRTEL side of the link. Must match the fields “Adresse TCP/IP” and “port du serveur” specified in the VIRPASS interface (relay type “Virpass TCP/IP” or “Virpass Asymétrique”) defined in VIRKIX.
-
-Prefix
-    Terminal name prefix (see below).
-
-Entry point
-    Leave blank.
-
-Line type
-    TCP1
-
-Possible calls
-    Always 3.
-
-Protocol
-    Always VIRPASS.
-
-Window
-    Always 0.
-
-Packet
-    Always 0.
-
-Pad, Tran
-    Always blank.
-
-Terminals on a VIRPASS TCP line for VIRKIX 
-""""""""""""""""""""""""""""""""""""""""""
-
-    A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type de
-    ligne” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
-
-|image32|
-*Terminals on a VIRPASS TCP line for VIRKIX*
-
-VIRPASS TCP line for VIRNT
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    A VIRNT system can be connected to VIRTEL to act as an X25 gateway handling incoming and outgoing connections to and from VIRTEL, or to act as a LECAM server. Communication between VIRTEL and VIRNT can be established using either an APPC line or a TCP/IP line. This section describes TCP/IP mode.
-
-|image33|
-
-Definition of a VIRPASS TCP line for VIRNT
-""""""""""""""""""""""""""""""""""""""""""
-
-Remote ident
-    Always blank.
-
-Local ident
-    This field must be the same as the TCP/IP port referenced under the heading “HOST IP Port” in the VIRPASS.INI file on the VIRNT system.
-
-Prefix
-    Terminal name prefix (see below).
-
-Entry Point
-    Not required for this type of line.
-
-Line type
-    TCP1
-
-Possible calls
-    No special restriction.
-
-Protocol
-    Always VIRPASS.
-
-Window
-    Always 0.
-
-Packet
-    Always 0.
-
-Pad, Tran
-    Always blank.
-
-A VIRPASS TCP connection with a VIRNT system can use up to two sub-groups of terminals. The first sub-group is dedicated to incoming calls and has an associated relay. The second sub-group is dedicated to outgoing calls and has no associated relay. The two sub-groups have a common prefix which associates them with the line. Either explicit or repeated terminal definitions may be used.
-
-+----------------+------------+----------------+-------------+-----+-----+
-|     NTTCE980   |     0020   |     RNTTC000   |     $X25$   | 3   | 1   |
-+================+============+================+=============+=====+=====+
-|     NTTCS980   |     0020   |                |     $X25$   | 3   | 2   |
-+----------------+------------+----------------+-------------+-----+-----+
-
-List of terminals for a VIRPASS TCP line for VIRNT*
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-
-Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:
-
-|image34|
-*Inbound terminals for a VIRPASS TCP line for VIRNT*
-
-    Terminals in the pool dedicated to outgoing calls do not have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 2:
-
-|image35|
-*Outbound terminals for a VIRPASS TCP line for VIRNT*
-
-VIRPASS XM line for VIRKIX
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in Cross-memory (XM) mode using the VIRKIX program on the CICS side.
-
-|image36|   
-
-Definition of a VIRPASS XM line for VIRKIX
-""""""""""""""""""""""""""""""""""""""""""
-
-External name
-    Must match the relay name of a VIRPASS cross-memory interface in VIRKIX.
-
-Remote ident
-    Contains the jobname of the CICS region in which VIRKIX is running.
-    The CICS region must be in the same MVS system as VIRTEL.
-
-Local ident
-    Must match the field “Nom de la liaison” specified in the definition
-    of the VIRPASS cross-memory interface in VIRKIX.
-
-Prefix
-    Terminal name prefix (see below).
-
-Entry point
-    Leave blank.
-
-Line type
-    XM1
-
-Possible calls
-    Always 3.
-
-Protocol
-    Always VIRPASS.
-
-Window
-    Always 0.
-
-Packet
-    Always 0.
-
-Pad, Tran
-    Always blank.
-
-Terminals on a VIRPASS XM line for VIRKIX
-"""""""""""""""""""""""""""""""""""""""""
-
-A VIRPASS XM line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type de ligne” field in the relay definition must contain the value X25VIRPA (this is the same value as for VIRPASS TCP, which was coded as E25TCPIP in previous versions of VIRKIX).
-
-Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
-
-|image37|
-*Terminals on a VIRPASS XM line for VIRKIX*
-
-A VIRPASS cross-memory connection is defined in VIRKIX by means of an entity known as a “Virpass cross-memory interface”:
-
-::
-
-    KIXADMIN - Virpass Cross-Memory ----------        V2R5 - 30/06/2005 - 10:54:55
-                                                                  Sysid CICS: CICT
-    Nom interface XM: VIRTELXM
-    ------------------------------------------------------------------------------
-    Nom du job partenaire : SPTSABYV
-    Nom de la liaison :     XM44000
-    ------------------------------------------------------------------------------
-    Autres définitions:
-    Lancement :                             A M:Manuel A:Autom,évt dans SYSID:
-    Nbr maxi de connexions: 0010            de 01 à 1024
-    Transaction associée : APIW             APIW par défaut
-    Trace et Snap : O                       O:Oui N:Non
-    Trace Connexion : O                     O:Oui N:Non
-    Snap centralisé : O                     O:Oui N:Non
-    Priorité : 080                          de 000 à 255
-    ------------------------------------------------------------------------------
-   
-   
-    P3--------P4--------P5--------P6--------P7--------P8--------P12-------ENTER----
-    Menu Quitter M.A.J Supprimer Saisir Valider    
-
-*VIRKIX definitions for a VIRPASS XM connection*
-
-Nom interface
-    The name of the VIRPASS cross-memory interface (also known as the
-    relay name or “nom relais”) must match the “external name” of the
-    VIRPASS XM line in VIRTEL.
-
-Nom du job partenaire
-    Specifies the jobname of the VIRTEL STC, which must be in the same
-    MVS system as VIRKIX.
-
-Nom de la liaison
-    Must match the “Local ident” of the VIRPASS XM line in VIRTEL.
-
-    Refer to the VIRKIX Configuration documentation for details of the
-    other fields on this panel.
-
 VIRPESIT line
 ^^^^^^^^^^^^^
 
@@ -2125,8 +2059,8 @@ The activation of this type of line requires the presence of the TCP1 parameter 
 
 |image38|
 
-Definition of a VIRPESIT line
-"""""""""""""""""""""""""""""
+VIRPESIT line Parameters
+""""""""""""""""""""""""
 
 Remote ident
     (optional) IP address and port number of the default partner (for
@@ -2157,8 +2091,8 @@ By pressing [PF4], the list of terminals associated with the VIRPESIT line will 
 
 |image39|
 
-Definition of terminals associated with a VIRPESIT line
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+VIRPESIT line terminal definitions
+""""""""""""""""""""""""""""""""""
 
 Terminal
     The terminal name must match the prefix of the line.
@@ -2189,8 +2123,8 @@ A VIRNEOX line allows VIRTEL to act as a server for communications with applicat
 
 |image40|
 
-Definition of a VIRNEOX line
-""""""""""""""""""""""""""""
+VIRNEOX line parameters
+"""""""""""""""""""""""
 
 Local ident
     The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading :ref:`“Line Parameters”<#_bookmark13>`.
@@ -2219,8 +2153,8 @@ Packet
 
 |image41|
 
-Definition of terminals associated with a VIRNEOX line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+VIRNEOX line terminal definitions
+"""""""""""""""""""""""""""""""""
 
 Terminal
     The terminal name must match the prefix of the line.
@@ -2243,15 +2177,18 @@ Possible Calls
 Repeat
     The number of terminals defined.
 
-.. _#_bookmark94:    
+.. _#_V457CN_X25GATELine:    
 
-Definition of a X25 GATE Non Fast-Connect line
-""""""""""""""""""""""""""""""""""""""""""""""
+X25 GATE Non Fast-Connect line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An X25 GATE Non Fast-Connect line establishes a connection between VIRTEL and an X25 line connected to an IBM 3745 communications controller. Across this type of line, VIRTEL handles incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the GATE and MINITEL parameters in the VIRTCT.
 
 |image42|
 *Definition of an X25 GATE non-Fast Connect line*
+
+X25 GATE NFC parameters
+"""""""""""""""""""""""
 
 Remote ident
     Name of the MCH LU generated by NPSI.
@@ -2295,8 +2232,8 @@ The relay name is compulsory for this type of terminal.
 
 |image43|
 
-Terminals on an X25 GATE Non Fast-Connect line
-""""""""""""""""""""""""""""""""""""""""""""""
+X25 GATE NFC terminal Definitions
+"""""""""""""""""""""""""""""""""
 
 Terminal
     The terminal name must match the virtual circuit LU names generated by the X25.VC macro in the NPSI.
@@ -2316,8 +2253,8 @@ Possible calls
 Repeat
     The number of virtual circuits defined by NPSI.
 
-VTAM definitions for GATE terminals
-"""""""""""""""""""""""""""""""""""
+X25 GATE NFC VTAM definitions
+"""""""""""""""""""""""""""""
 
 Each Minitel or PC wishing to benefit from VIRTEL functionality must be defined in a VTAM switched major node similar to the one shown below.
 
@@ -2362,13 +2299,13 @@ Note 4
 
     The LOGAPPL and USSTAB parameters are valid only for non GATE lines. For sites making outgoing calls, from NCP 5.40 onwards, USSTAB and GATE are incompatible, and therefore the USSTAB keyword should be omitted for a switched major node describing type 1 LU’s.
 
-NCP parameters for a GATE line
-""""""""""""""""""""""""""""""
+X25 GATE NFC NCP parameters
+"""""""""""""""""""""""""""
 
 The LUDRPOOL MACRO must contain an NUMTYP1 parameter with a value greater than or equal to the number of CVC available on the lines. For LU6.2 connections, check for the presence of the NUMILU parameter which indicates the number of available PU type 2.1.
 
-NPSI parameters for a GATE line
-"""""""""""""""""""""""""""""""
+X25 GATE NFC NPSI parameters
+""""""""""""""""""""""""""""
 
 The following parameters must agree with the specification of your TRANSPAC subscription.
 
@@ -2467,8 +2404,8 @@ An X25 GATE Fast-Connect line establishes a connection between VIRTEL and an X25
 
 |image44|    
 
-Definition of an X25 GATE Fast Connect line
-"""""""""""""""""""""""""""""""""""""""""""
+X25 GATE FC line Parameters
+"""""""""""""""""""""""""""
 
 Remote ident
     Name of the MCH LU generated by NPSI.
@@ -2511,8 +2448,9 @@ The relay name is compulsory for this type of terminal.
 
 |image45|    
 
-Terminals on an X25 GATE Fast-Connect line
-""""""""""""""""""""""""""""""""""""""""""
+X25 GATE FC line terminal definitions
+"""""""""""""""""""""""""""""""""""""
+
 
 Terminal
     The terminal name must match the virtual circuit LU names generated
@@ -2538,7 +2476,7 @@ Repeat
 VTAM definitions for Fast-Connect
 """""""""""""""""""""""""""""""""
 
-Each Minitel or PC wishing to take advantage of VIRTEL functionality must be defined to VTAM in a switched major node similar to that shown in section :ref:`“Definition of a X25 GATE Non Fast-Connect line”<#_bookmark94>`.
+Each Minitel or PC wishing to take advantage of VIRTEL functionality must be defined to VTAM in a switched major node similar to that shown in section :ref:`“Definition of a X25 GATE Non Fast-Connect line”<#_V457CN_X25GATELine>`.
 
 NCP/NPSI parameters for Fast-Connect
 """"""""""""""""""""""""""""""""""""
@@ -2866,33 +2804,33 @@ The second sub-group is used for incoming calls (from the point of view of the a
 |image53|    
 *Inbound terminal definition for X25 AntiPCNE (method 1)*
 
-A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see :ref:`“logical pool of relays”<#_bookmark246>`). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
+A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see :ref:`“logical pool of relays”<#_V457CN_LogicalPool>`). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
 
 The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool \*POOLPCN. Terminal definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.
 
 ::
 
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     Terminal   |     Repeated   |     Relay       |     Entry   |     Type   |     I/O   |     Pool        |     2nd Relay   |
-    +================+================+=================+=============+============+===========+=================+=================+
-    |     PCNETM51   |     0001       |     AP30LU51    |             |     3      |     2     |     *POOLPCN    |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCNETM52   |     0001       |     AP30LU52    |             |     3      |     2     |     *POOLPCN    |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCNETM53   |     0001       |     AP30LU53    |             |     3      |     2     |     *POOLPCN    |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCNETM54   |     0001       |     AP30LU54    |             |     3      |     2     |     *POOLPCN    |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCN1TM01   |     0000       |     AP30LU01    |             |     3      |     1     |                 |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCN1TM02   |     0001       |     AP30LU02    |             |     3      |     1     |                 |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCN1TM03   |     0001       |     AP30LU03    |             |     3      |     1     |                 |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCN1TM04   |     0001       |     AP30LU04    |             |     3      |     1     |                 |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
-    |     PCN1TM51   |     0004       |     *POOLPCN    |             |     3      |     2     |                 |                 |
-    +----------------+----------------+-----------------+-------------+------------+-----------+-----------------+-----------------+
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | Terminal | Repeated |  Relay   | Entry | Type | I/O |   Pool  | 2nd Relay |
+    +==========+==========+==========+=======+======+=====+=========+===========+
+    | PCNETM51 |  0001    | AP30LU51 |       |  3   |  2  |*POOLPCN |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCNETM52 |  0001    | AP30LU52 |       |  3   |  2  |*POOLPCN |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCNETM53 |  0001    | AP30LU53 |       |  3   |  2  |*POOLPCN |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCNETM54 |  0001    | AP30LU54 |       |  3   |  2  |*POOLPCN |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCN1TM01 |  0000    | AP30LU01 |       |  3   |  1  |         |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCN1TM02 |  0001    | AP30LU02 |       |  3   |  1  |         |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCN1TM03 |  0001    | AP30LU03 |       |  3   |  1  |         |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCN1TM04 |  0001    | AP30LU04 |       |  3   |  1  |         |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
+    | PCN1TM51 |  0004    | *POOLPCN |       |  3   |  2  |         |           |
+    +----------+----------+----------+-------+------+-----+---------+-----------+
 
 *List of inbound terminal definitions for X25 AntiPCNE*
 
@@ -2977,7 +2915,7 @@ Support of X25 non GATE terminals
 VTAM definitions for X25 non GATE terminals    
 """""""""""""""""""""""""""""""""""""""""""
 
-Each Minitel or PC which is to log on to VIRTEL must be defined in a VTAM switched major node as described in :ref:`“Definition of an X25 GATE Non Fast-Connect line”<#_bookmark94>`.
+Each Minitel or PC which is to log on to VIRTEL must be defined in a VTAM switched major node as described in :ref:`“Definition of an X25 GATE Non Fast-Connect line”<#_V457CN_X25GATELine>`.
 
 NCP/NPSI parameters for X25 non GATE terminals
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -2989,18 +2927,20 @@ The information presented in the section “Definition of an X25 GATE Non Fast-C
 LLCLIST
     Must contain the value LLC5.
 
-Rules
-=====
+.. _#_V457CN_VirtelRules:    
+
+Virtel Rules
+============
 
 Introduction
 ------------
 
-Each line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call.
+Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the "default" rule which is used to catch callers that didn't match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See the "How-To" guide 'Virtel LU Nailing' for examples on how to define and use Virtel Rules.  
 
 Rule Summary Display
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
-Press [PF5] at the line detail definition screen to display the list of rules associated with the line:
+Press [PF5] at the line detail definition screen to display the summary list of rules associated with the line:
 
 |image58|
 *Rule Summary Display*
@@ -3017,7 +2957,7 @@ Entry Point
     Name of the entry point which will be assigned to incoming calls whose characteristics match this rule.
 
 Navigation
-^^^^^^^^^^
+""""""""""
 
 Search
     Type the name (or partial name) of the required entity on the first line under the heading “Name”, then press [Enter].
@@ -3041,7 +2981,7 @@ In the summary screen position the cursor under the name of the entity to be del
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.    
 
 Rule Detail Display
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 To display or update the detailed definition of an entity, place the cursor on the name of the entity within the summary display and press [PF12]. The detail definition screen will then be displayed.
 
@@ -3049,7 +2989,7 @@ To display or update the detailed definition of an entity, place the cursor on t
 *Rule detail definition screen*
 
 Rule Parameters
----------------
+^^^^^^^^^^^^^^^
 
 Name
     The name of the rule. This name must be unique across all rules in the system. The rules associated with a line are processed in alphanumeric order of this name. The rule name thus determines the priority of the rule within the line.
@@ -3149,7 +3089,7 @@ Introduction
 All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the group of functions associated with the management of the terminals as well as their existing relationship to other administration functions, for example, management of lines or entry points.
 
 Terminal Management Sub-Application
------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
 
@@ -3198,7 +3138,7 @@ To add a new definition, press [PF12] at the summary screen, either with the cur
 **Deleting a terminal entry**
 Position the cursor under the name of the entry to be deleted, then press [PF2]. The line associated with the terminal to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press [PF2] again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
 
-Terminal Detail  Display
+Terminal Detail Display
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 |image68|
@@ -3207,7 +3147,7 @@ Terminal Detail  Display
 From within the detail display the following functions can be carried out:-
 
 Terminal Parameters
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 Terminal
     Maximum of 8 characters containing:
@@ -3361,7 +3301,7 @@ Entry points define the session context for a terminal or for certain types of l
 An entry point is a named entity that groups certain information designed to authorise, personalise and protect access to the host site. Entry points define the type of emulation required, the type of security control, which sign-on screen must be sent to the user at log on time, what type of Multi-session menu must be used and what applications are to be made available to the user.
 
 Entry Point Management Sub Application
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Entry Point Management sub-application is accessed by pressing [PF3] in the Configuration Menu, or [PF13] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This subapplication allows management of the parameters associated with each entry point.
 
@@ -3420,7 +3360,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 - If no entry point was specified by any of the preceding steps, the default is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.
 
 Entry Point Summary Display
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The entry point management application manages the entry points and their associated transactions. The first screen displayed shows a summary of existing entry points in alphanumeric order. A complete description of each field is presented in the following section.
 
@@ -3451,7 +3391,7 @@ Display list of associated transactions
 To access the list of transactions associated with an entry point, position the cursor on the desired entry point and press [PF4]. The transaction management menu will then appear.
 
 Entry Point Detail Display
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^-
 
 To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press [PF12].
 
@@ -3459,7 +3399,7 @@ To display the details of an entry point, position the cursor on the desired ent
 *Entry point detail display*
 
 Entry Point Parameters
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 Name
     Represents the name of the entry point as specified in a logon sequence, or in the “Entry point” field of a terminal, line, or rule definition.
@@ -3545,7 +3485,7 @@ Extended colors
     An 'E' in this field indicates support for 3270 extended attributes and colors. An 'X' indicates support for 3270 extended attributes and colors together with support for DBCS (Double Byte Character Set).
 
 Entry Point Signon Programs
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Signon Program field of the entry point indicates the name of the program used to control user sign-on. The following signon programs are supplied with VIRTEL:
 
@@ -3565,7 +3505,8 @@ VIR0020P
     Program similar to VIR0020L which allows access to public transactions (those defined with security = 0), if sign-on is rejected by the security system.
 
 Entry Point Menu Programs
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 The Menu Program field of the entry point indicates the name of the program which presents the list of transactions which the user is allowed to access. The following program names can be specified:
 
@@ -3603,7 +3544,7 @@ Each transaction is known to the user by its external name, and defines the rule
 Each entry point has a list of associated transactions. The entry point management sub-application allows the administrator to manage the entry point and its associated transactions.
 
 Transaction Summary Display
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Press [PF4] at the entry point detail screen to display the list of associated transactions:
 
@@ -3626,7 +3567,7 @@ Application
     Indicates the name of the application accessed via the transaction. This application can be a VTAM application, a VIRTEL sub-application, an external server, or a directory of HTML pages.
 
 Navigation
-^^^^^^^^^^
+""""""""""
 
 The list can be positioned in the following ways:
 
@@ -3648,8 +3589,8 @@ To delete a definition, position the cursor on the name of the transaction to be
 **Adding a transaction definition**
 To add a new definition, press [PF12] at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition. Complete all required fields and press [ENTER]. The message CREATE OK indicates that the operation completed successfully
 
-Transaction Summary Display
----------------------------
+Transaction Detail Display
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To access the detailed transaction definition, position the cursor on the desired transaction and press [PF12]. The transaction detail definition screen will then be displayed.
 
@@ -3661,7 +3602,7 @@ To access the detailed transaction definition, position the cursor on the desire
 
 
 Transaction Parameters
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 Internal name
     The name of the transaction as it is known to the system. The first “n” characters of this name are the prefix by which the transaction is linked to one or more entry points. Transaction security is based on this internal name. It should be noted that the transactions are placed on the Multi-Session Menu in alphanumeric order of the internal name.
@@ -3962,8 +3903,8 @@ Data sent to the application by means of the &/A command must be constructed in 
 
 Data sent to the terminal by means of the &/T command must be constructed in the same format as the application would generate. In the case of a 3270 application, the message must be in the form of a 3270 data stream prefixed by a 3270 command code and WCC. VIRTEL will translate the message to the format required by the terminal (for example, HTML or Minitel) as appropriate.
 
-Examples of scripts
--------------------
+Script examples
+---------------
 
 .. note::
     In these examples, script commands are introduced by the preferred sequence &/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.
@@ -4098,7 +4039,7 @@ The external server management sub-application allows the administrator to maint
 is extended to handle the routing of incoming and outgoing calls to and from X25 GATE/PCNE applications such as CFT and Inter.PEL. Starting with VIRTEL version 4.42, the external server may also be used to define the parameters for outbound calls to a PESIT/IP file transfer server via a VIRPESIT line.
 
 External Server Management Sub-Application
-------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The external server management sub-application is accessed by pressing [PF7] in the Configuration Menu, or [PF11] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0031. This subapplication allows management of the parameters associated with each external server.
 
@@ -4110,7 +4051,7 @@ When accessed by a transaction, the rules governing the management of transactio
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
 External Server Summary Display
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first screen displayed by the external server management sub-application shows a summary of existing definitions in alphanumeric order:
 
@@ -4118,7 +4059,7 @@ The first screen displayed by the external server management sub-application sho
 *External Server Summary Display*
 
 Navigation
-^^^^^^^^^^
+""""""""""
 
 In browse, alter, or delete mode, it is possible to scroll the list of external servers under the control of VIRTEL.
 
@@ -4297,8 +4238,8 @@ Connection in RELAY mode
 
 3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or Multi-Session functionality. Whether a sign-on screen or a Multi-Session Menu is displayed depends on the characteristics associated with the entry point used. When no entry point is used, the rules described in the previous paragraph apply.
 
-Fixed entry, physical pool, or logical pool?
---------------------------------------------
+Terminal Connection Types
+-------------------------
 
 The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in a physical pool (which may be dynamic or non-dynamic); or by means of a reserved entry (logical pool). A fixed entry is a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a Minitel, to be presented to applications with different relays depending on the context. Each type of definition can be explicit or repeated.
 
@@ -4444,7 +4385,7 @@ In the examples shown below, ?\*\*\*0000 is a dynamic physical pool which allows
 
 *Physical pools of terminals*
 
-.. _#_bookmark246:
+.. _#_V457CN_LogicalPool:
 
 Logical pool
 """"""""""""
@@ -4569,18 +4510,18 @@ Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
     Type d'application  ===> 1       1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES
     Terminaux           ===> CRESA   Préfixe des terminaux associés
 
-Virtel Definitions Examples
-===========================
+Virtel Terminal Definitions Examples
+------------------------------------
 
 This section presents a number of examples covering the definitions relating to terminals and details the parameters required on the VIRTEL and VTAM sides. The list is not exhaustive.
 
 3270 terminal in WELCOME mode
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There must be no definition which allows an application relay to be assigned to the terminal.
 
 3270 terminal in RELAY mode
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
@@ -4623,7 +4564,7 @@ A VTAM APPL statement must be defined for each terminal. If there is no such def
     ?***0004 0000 RELAY004 Libre 2 Libre Vide
 
 Asynchronous terminal on an X25 or XOT line
--------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
@@ -4676,7 +4617,7 @@ A VTAM APPL statement must be defined for each terminal. If there is no such def
 The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.
 
 Logical terminals
------------------
+^^^^^^^^^^^^^^^^^
 
 It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:
 
@@ -4699,6 +4640,72 @@ It is possible to assign a physical terminal to a relay when a transaction conne
     TRESC001 0002    RELAYC01 Free     3 or 3  2           Free
 
 The 3 groups of terminals contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries – they cannot be placed in a logical pool.
+
+.. _#_V457CN_ForceLUNAME:
+
+Controlling LUNAMEs
+===================
+
+In this section we look how we can control LUNAME selection for inbound HTTP calls.When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide). 
+
+The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V457CN_VirtelRules>` for further information on Virtel Rules. 
+
+Force LUNAME Selection
+----------------------
+
+HTTP connections with non-predefined terminals. ForceLUNAME option
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+
+It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
+
+-  the VTAM LU name should be specified in the connection URL. For
+   example, if the desired LU name is RLHVT500:
+
+::
+
+   http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500
+
+-  the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals”
+   field instead of a terminal name prefix.
+
+-  the HTTP line must specify a pool name
+
+-  a terminal pool of the same name should be defined; only the pool is needed, not the predefined pseudo- terminals that are normaly defined alongside a pool. The terminal and printer pseudo-terminals will be automatically generated using the pool as a template together with the relay name specified in the ForceLUNAME parameter of the URL.
+
+The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.
+
+An example of a line with non-predefined LU names is shown below.
+
+ForceLUNAME Examples
+^^^^^^^^^^^^^^^^^^^^
+
+In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:
+
+|image12|
+*Transaction definition using non-predefined LU names*    
+
+The definition of line C-HTTP on port 41002 specifies \*MYPOOL as the line pool name:
+
+|image13|
+*HTTP line definition using non-predefined LU names*
+
+The definition of the terminal pool \*MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:
+
+|image14|
+*Terminal pool definition using non-predefined LU names*
+
+..note:
+
+    The name of the pool is only used to match the pool to its associated line.
+
+Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.
+
+The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
+
+Reconnecting to an existing session
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
 
 Appendix
 ========
@@ -4822,8 +4829,14 @@ The current VIRTEL Web Access product uses the following open source software:
 .. |image75| image:: images/media/image75.png
 .. |image76| image:: images/media/image76.png
 .. |image77| image:: images/media/image77.png
+   :scale: 45 %
 .. |image78| image:: images/media/image78.png
+   :scale: 45 %
 .. |image79| image:: images/media/image79.png
+   :scale: 30 %
 .. |image80| image:: images/media/image80.png
+   :scale: 30 %
 .. |image81| image:: images/media/image81.png
+   :scale: 30 %
 .. |image82| image:: images/media/image82.png
+   :scale: 30 %

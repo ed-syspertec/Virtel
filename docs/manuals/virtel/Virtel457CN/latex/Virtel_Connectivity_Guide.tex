@@ -45,7 +45,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Feb 14, 2018}
+\date{Mar 02, 2018}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -122,13 +122,11 @@ The following main menu will appear:-
 
 Enter you security credentials and the primary menu will appear.
 
-\sphinxincludegraphics{{image77}.png}
-
-\newpage
+\sphinxincludegraphics[scale=0.45]{{image77}.png}
 
 Enter F1 to enter the configuration menu of the configuration manager.
 
-\sphinxincludegraphics{{image78}.png}
+\sphinxincludegraphics[scale=0.45]{{image78}.png}
 
 \newpage
 
@@ -147,11 +145,11 @@ By accessing Virtel through the administration port 41001.
 
 The following page will be displayed:-
 
-\sphinxincludegraphics{{image79}.png}
+\sphinxincludegraphics[scale=0.3]{{image79}.png}
 
 Click the Admin (3270) link and the configuration menu will appear.
 
-\sphinxincludegraphics{{image80}.png}
+\sphinxincludegraphics[scale=0.3]{{image80}.png}
 
 \newpage
 
@@ -164,7 +162,7 @@ Accessing Virtel as in the Web Portal (3270) but instead of clicking Admin (3270
 
 \end{enumerate}
 
-\sphinxincludegraphics{{image81}.png}
+\sphinxincludegraphics[scale=0.3]{{image81}.png}
 
 \newpage
 
@@ -226,6 +224,8 @@ The Virtel program VIRCONF can be used to LOAD or UNLOAD the ARBO VSAM file whic
 
 The output file contains all the default definitions that make up the configurable Virtel elements. These definitions can be used as a template for building new configurable elements such as lines, entry points, transactions, etc. See the VIRCONF utility section in the \sphinxstylestrong{Virtel Installation Guide} for further information on the VIRCONF utility and maintaining the VSAM ARBO file.
 
+\newpage
+
 
 \subsection{Line Element}
 \label{\detokenize{connectivity_guide:line-element}}
@@ -263,7 +263,7 @@ The Entry point element is associated with a group of transactions. Transactions
 \sphinxincludegraphics{{image71}.png}
 \sphinxstyleemphasis{Entry Point Definition}
 
-It is also defined in with the Arbo Configuration statements:-
+It can also defined with the Arbo Configuration statements:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{ENTRY} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLIWHOST}\PYG{p}{,}                                      \PYG{o}{\PYGZhy{}}
@@ -294,7 +294,7 @@ When the Virtel Engine receives this call-in it directs to line C-HTTP(41002) an
 \sphinxincludegraphics{{image72}.png}
 \sphinxstyleemphasis{Transaction Definition}
 
-It is also defined in with the Arbo Configuration statements:-
+It can also defined with the Arbo Configuration statements:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}                                     \PYG{o}{\PYGZhy{}}
@@ -322,7 +322,7 @@ The terminal name is used to associate terminals with lines and transactions. In
 \sphinxincludegraphics{{image74}.png}
 \sphinxstyleemphasis{Terminal Pool definition}
 
-Terminal definitions defined within the Arbo configuration statements:-
+Terminal definitions defined with Arbo configuration statements:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLLOC000}\PYG{p}{,}                        \PYG{n}{Static} \PYG{n}{Definition}
@@ -565,7 +565,7 @@ You can optionally display the Sub-Application Menu by pressing
 To invoke a sub-application, press one of the function keys shown in the menu (for example, F7 \textendash{} Videotex Definitions). To exit from the Sub-Application Menu and return to the Configuration Menu, press CLEAR or PA2.
 
 
-\section{Navigation}
+\subsection{Navigation}
 \label{\detokenize{connectivity_guide:navigation}}
 The sub-applications have certain common operational characteristics:
 \begin{itemize}
@@ -634,12 +634,8 @@ The first screen shows a summay of existing line definitions in alphanumeric ord
 
 \subsubsection{Navigation}
 \label{\detokenize{connectivity_guide:id1}}\begin{description}
-\item[{\sphinxstyleemphasis{Positioning a line}}] \leavevmode
-In browse, alter, or delete mode, it is possible to scroll the list of lines under the control of VIRTEL.
-
 \item[{Search}] \leavevmode
-Type the name (or partial name) of the required entity on the first
-line under the heading “Internal Name”, then press {[}Enter{]}.
+Type the name (or partial name) of the required entity on the first line under the heading “Internal Name”, then press {[}Enter{]}.
 
 \item[{{[}PF6{]}}] \leavevmode
 Return to the first page of the list.
@@ -651,8 +647,7 @@ Display the previous page.
 Display the next page.
 
 \item[{\sphinxstylestrong{Modifying a line}}] \leavevmode
-Pressing {[}PF12{]} at the line summary screen displays the line detail definition screen. This sub-application allows the definition of the various parameters for each type of line.
-Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press {[}PF12{]} to access the definition detail screen. Modifications are not recognized until you press the {[}PF1{]} key. Certain modifications require a restart of the VIRTEL system.
+In the summary screen position the cursor under the name of the entity to be modified. Press {[}PF12{]}. The line detail definition screen is displayed. Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. Modifications are not recognized until you press the {[}PF1{]} key. Certain modifications require a restart of the VIRTEL system.
 
 \item[{\sphinxstylestrong{Deleing a line}}] \leavevmode
 In the summary screen position the cursor under the name of the entity to be deleted, then press {[}PF2{]}. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
@@ -663,8 +658,8 @@ To add a new definition, press {[}PF12{]} at the summary screen, either with the
 \end{description}
 
 
-\section{Lines Overview Sub-Application}
-\label{\detokenize{connectivity_guide:lines-overview-sub-application}}
+\section{Line Overview Sub-Application}
+\label{\detokenize{connectivity_guide:line-overview-sub-application}}
 VIRTEL call routing is performed by sets of interrelated definitions. A call arriving on a line is processed by a set of rules which assign an entry point. The entry point contains a set of transactions which indicate the application or external server which will process the call. An external server refers to one or more lines on which the call may exit from VIRTEL. Each type of entity (lines, terminals, entry points, external servers) is defined by a separate sub-application but it is often useful to have an overall view of all the related definitions.
 
 
@@ -675,16 +670,32 @@ The summary screen displayed by the Lines Overview sub-application presents an o
 \sphinxincludegraphics{{image57}.png}
 \sphinxstyleemphasis{Lines overview summary display}
 
+\newpage
 
-\subsection{Line Detal Display}
-\label{\detokenize{connectivity_guide:line-detal-display}}
+
+\subsection{Line Detail Display}
+\label{\detokenize{connectivity_guide:line-detail-display}}
 The screen shows a line detail display.
 
 \sphinxincludegraphics{{image5}.png}
-\sphinxstyleemphasis{Line Summary Display}
+\sphinxstyleemphasis{Line Detail Display}
 
 
-\section{Line Parameters}
+\subsubsection{Navigation}
+\label{\detokenize{connectivity_guide:id2}}\begin{description}
+\item[{{[}PF1{]}}] \leavevmode
+Update fields
+
+\item[{{[}PF4{]}}] \leavevmode
+Display associated terminals.
+
+\item[{{[}PF5{]}}] \leavevmode
+Display associated rules.
+
+\end{description}
+
+
+\subsection{Line Parameters}
 \label{\detokenize{connectivity_guide:line-parameters}}\begin{description}
 \item[{Internal name}] \leavevmode
 Internal name of the line. This is the name by which VIRTEL refers to the line internally. It must be unique within a VIRTEL instance.
@@ -743,39 +754,25 @@ Note that the use of port numbers less than 1024 may require authorization in th
 \end{description}
 
 \item[{Description}] \leavevmode
-Free-form description with no particular significance or syntax
-requirement, except for SMTP lines (see the detailed example of an
-SMTP line which follows).
+Free-form description with no particular significance or syntax requirement, except for SMTP lines (see the detailed example of an SMTP line which follows).
 
 \item[{Prefix}] \leavevmode
-Terminal prefix associated with the line. As a general rule, the
-terminal prefix is a required field. It allows VIRTEL to associate a
-series of terminals to a line. Two lines cannot share the same group
-of terminals. The particular details of this field are described for
-each line type in the detailed examples which follow.
+Terminal prefix associated with the line. As a general rule, the terminal prefix is a required field. It allows VIRTEL to associate a series of terminals to a line. Two lines cannot share the same group of terminals. The particular details of this field are described for each line type in the detailed examples which follow.
 
 \item[{Pool}] \leavevmode
-The name of a logical pool of terminals associated with the line.
-This pool is used for HTTP connections without predefined terminals
-(see {\hyperref[\detokenize{connectivity_guide:v457cn-forceluname}]{\sphinxcrossref{\DUrole{std,std-ref}{“HTTP connections with non-predefined LU names”,}}}}). In all other cases this field can be left
-blank.
+The name of a logical pool of terminals associated with the line. This pool is used for HTTP connections without predefined terminals
+(see {\hyperref[\detokenize{connectivity_guide:v457cn-forceluname}]{\sphinxcrossref{\DUrole{std,std-ref}{“HTTP connections with non-predefined LU names”,}}}}). In all other cases this field can be left blank.
 
 \item[{Entry Point}] \leavevmode
-Defines the default entry point used by the line. This is a required
-field for HTTP and SMTP lines. It is optional in all other cases.
-Entry point management is described in section 1.4.
+Defines the default entry point used by the line. This is a required field for HTTP and SMTP lines. It is optional in all other cases.
 
 \item[{Rule Set}] \leavevmode
-The name of the rule set used by this line. The same rule set can be
-used by more than one line. If this field is blank, no rules are
-used. Rules are described in detail in section .
+The name of the rule set used by this line. The same rule set can be used by more than one line. If this field is blank, no rules are used. Rules are described in detail in section .
 
-For compatability with VIRTEL versions prior to 4.26, the rule set
-name is usually the same as the internal name of the line.
+For compatability with VIRTEL versions prior to 4.26, the rule set name is usually the same as the internal name of the line.
 
 \item[{Line type}] \leavevmode
-Defines the category to which the line belongs. VIRTEL supports the
-following categories of lines:
+Defines the category to which the line belongs. VIRTEL supports the following categories of lines:
 \begin{description}
 \item[{X25 lines}] \leavevmode
 Represented by the values GATE or FASTC
@@ -1018,15 +1015,14 @@ default delay is 2 seconds.
 \end{description}
 
 
-\section{Examples of line definitions}
-\label{\detokenize{connectivity_guide:examples-of-line-definitions}}
+\section{Line Definition Examples (Non X25)}
+\label{\detokenize{connectivity_guide:line-definition-examples-non-x25}}
 
 \subsection{HTTP inbound line}
 \label{\detokenize{connectivity_guide:http-inbound-line}}
 When an HTTP line is started, VIRTEL becomes an HTTP server, authorising connections from a web browser to applications at the host site. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT, as well as to a definition providing linkage to a file containing the HTML pages.
 
 \sphinxincludegraphics{{image6}.png}
-
 \sphinxstyleemphasis{Definition of an HTTP line}
 \begin{description}
 \item[{Remote ident}] \leavevmode
@@ -1040,12 +1036,7 @@ This is the VIRTEL IP address and port number which browser users must specify i
 Terminal name prefix (see below).
 
 \item[{Entry Point}] \leavevmode
-When defining an HTTP line, it is obligatory to define a default
-entry point. This entry point will be used for all incoming calls
-which do not match any of the rules of the line. The entry point
-contains a list of transactions, and these transactions determine which directories are used to retrieve
-the HTML pages, and which 3270 applications are accessible to the
-user.
+When defining an HTTP line, it is obligatory to define a default entry point. This entry point will be used for all incoming calls which do not match any of the rules of the line. The entry point contains a list of transactions, and these transactions determine which directories are used to retrieve the HTML pages, and which 3270 applications are accessible to the user.
 
 \begin{sphinxadmonition}{note}{Note:}
 According to the type of application accessed, each transaction must
@@ -1072,7 +1063,7 @@ Specify 1 (incoming calls only) to indicate that this line
 represents a listening port where VIRTEL is acting as an HTTP
 server.
 
-For the case where VIRTEL acts as an HTTP requester, refer to the following section {\hyperref[\detokenize{connectivity_guide:bookmark42}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of a HTTP Outbound line”}}}}.
+For the case where VIRTEL acts as an HTTP requester, refer to the following section {\hyperref[\detokenize{connectivity_guide:v457cn-httpoutbound}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of a HTTP Outbound line”}}}}.
 
 \item[{Protocol}] \leavevmode
 VIRHTTP or HTTP.
@@ -1092,113 +1083,37 @@ Always blank.
 \end{description}
 
 
-\subsubsection{HTTP terminals}
-\label{\detokenize{connectivity_guide:http-terminals}}
-An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case HT). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub- group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to {\hyperref[\detokenize{connectivity_guide:bookmark246}]{\sphinxcrossref{\DUrole{std,std-ref}{“logical pool of relays”}}}}. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
+\subsubsection{HTTP Inbound terminal definitions}
+\label{\detokenize{connectivity_guide:http-inbound-terminal-definitions}}
+An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case CL). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub-group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to {\hyperref[\detokenize{connectivity_guide:v457cn-logicalpool}]{\sphinxcrossref{\DUrole{std,std-ref}{“logical pool of relays”}}}}. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
 
 Press {[}PF4{]} at the HTTP line detail definition screen to display the list of associated terminals whose prefix matches the prefix specified in the line definition. If the terminals refer to a logical pool, the pool itself may have a different prefix and will therefore not be displayed. In this case you can press {[}PF2{]} at the Configuration Menu to display a list of all terminals.
 
-The example below shows the terminals for two HTTP lines which share a logical pool of relays. This list was displayed by pressing {[}PF2{]} at the Configuration Menu. The terminals with prefix HT belong to line H-HTTP, while the terminals with prefix DE belong to line W-HTTP. For line H-HTTP, the first sub-group consists of terminals HTLOC000-015 without a relay. The second sub-group consists of terminals HTVTA000-015 which refer to a logical pool of relays named
+The example below shows the terminals for two HTTP lines which share a logical pool of relays. This list was displayed by pressing {[}PF2{]} at the Configuration Menu. The terminals with prefix CL belong to line C-HTTP, while the terminals with prefix DE belong to line W-HTTP. For line C-HTTP, the first sub-group consists of terminals CLLOC000-049 without a relay. The second sub-group consists of terminals CLVTA000-079 which refer to a logical pool of relays named
 
-*W2HPOOL. For line W-HTTP, the first sub-group is DELOC000-015, and the second sub-group is DEVTA000-015 which also refers to the logical pool named *W2HPOOL. The logical pool itself consists of terminals W2HTP000-015 whose relay LU names are RHTVT000-015. The logical pool also refers to a pool of associated printer LU’s. The printers are defined with
-terminal names W2HIP000-015 and LU names RHTIP000-015. In each case, the terminal name is an internal name used only within VIRTEL, while the relay name is an LU name defined by a VTAM APPL statement. The relay LU name is the name by which the terminal is known to CICS or other VTAM applications.
+*W2HPOOL. For line W-HTTP, the first sub-group is DELOC000-009, and the second sub-group is DEVTA000-015 which also refers to the logical pool named *W2HPOOL. The logical pool itself consists of terminals W2HTP000-015 whose relay LU names are REHVT000-079. The logical pool also refers to a pool of associated printer LU’s. The printers are defined with
+terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the terminal name is an internal name used only within VIRTEL, while the relay name is an LU name defined by a VTAM APPL statement. The relay LU name is the name by which the terminal is known to CICS or other VTAM applications.
 
 \sphinxincludegraphics{{image7}.png}
-\sphinxstyleemphasis{Definition of terminals associated with an HTTP line}
+\sphinxstyleemphasis{Terminals associated with an HTTP line}
 
 \sphinxincludegraphics{{image8}.png}
-\sphinxstyleemphasis{Definition of HTTP terminals without relay}
+\sphinxstyleemphasis{HTTP terminals without relay}
 
 \sphinxincludegraphics{{image9}.png}
-\sphinxstyleemphasis{Definition of HTTP terminals with relay}
+\sphinxstyleemphasis{HTTP terminals with relay}
 
 \sphinxincludegraphics{{image10}.png}
-\sphinxstyleemphasis{Definition of logical pool of relays for HTTP}
+\sphinxstyleemphasis{logical pool of relays for HTTP}
 
 \sphinxincludegraphics{{image11}.png}
-\sphinxstyleemphasis{Definition of associated printer relays for HTTP}
-\begin{quote}
+\sphinxstyleemphasis{Associated printer relays for HTTP}
 
 Refer to the VIRTEL Web Access Guide for further information about printers.
-\end{quote}
 
 
-\subsubsection{Selection of LU by rule}
-\label{\detokenize{connectivity_guide:selection-of-lu-by-rule}}\begin{quote}
-
-When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the rule which selects the incoming HTTP request. Alternatively, if the value \$URL\$ is entered in the “Parameter” field of the rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).
-
-The rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The rules associated with a user (see “Correspondent management” in the VIRTEL Web Access Guide) allow an LU name to be assigned to a user according to the user’s e-mail address; in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request.
-\end{quote}
-
-
-\subsubsection{HTTP connections with non-predefined terminals. ForceLUNAME option}
-\label{\detokenize{connectivity_guide:http-connections-with-non-predefined-terminals-forceluname-option}}\label{\detokenize{connectivity_guide:v457cn-forceluname}}
-It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
-\begin{itemize}
-\item {} 
-the VTAM LU name should be specified in the connection URL. For
-example, if the desired LU name is RLHVT500:
-
-\end{itemize}
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41002}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{web2ajax}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{IMS}\PYG{o}{+}\PYG{n}{ForceLUNAME}\PYG{o}{=}\PYG{n}{RLHVT500}
-\end{sphinxVerbatim}
-\begin{itemize}
-\item {} 
-the VIRTEL transaction must specifiy \$LINE\$ in the “Pseudo-terminals”
-field instead of a terminal name prefix.
-
-\item {} 
-the HTTP line must specify a pool name
-
-\item {} 
-a terminal pool of the same name should be defined; only the pool is needed, not the predefined pseudo- terminals that are normaly defined alongside a pool. The terminal and printer pseudo-terminals will be automatically generated using the pool as a template together with the relay name specified in the ForceLUNAME parameter of the URL.
-
-\end{itemize}
-
-The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=\$LINE\$ when attached to a line which has an associated terminal pool.
-
-An example of a line with non-predefined LU names is shown below.
-
-\sphinxstylestrong{Examples}
-\begin{quote}
-
-In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is \$LINE\$:
-\end{quote}
-
-\sphinxincludegraphics{{image12}.png}
-\sphinxstyleemphasis{Transaction definition using non-predefined LU names}
-
-The definition of line C-HTTP on port 41002 specifies *MYPOOL as the line pool name:
-
-\sphinxincludegraphics{{image13}.png}
-\sphinxstyleemphasis{HTTP line definition using non-predefined LU names}
-
-The definition of the terminal pool *MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:
-
-\sphinxincludegraphics{{image14}.png}
-\sphinxstyleemphasis{Terminal pool definition using non-predefined LU names}
-
-..note:
-\begin{quote}
-
-The name of the pool is only used to match the pool to its associated line.
-\end{quote}
-
-Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.
-
-The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
-
-
-\subsubsection{Reconnecting to an existing session}
-\label{\detokenize{connectivity_guide:reconnecting-to-an-existing-session}}
-The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSession\$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
-
-
-\subsubsection{VTAM definitions for HTTP terminals}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-http-terminals}}
+\subsubsection{HTTP Inbound VTAM definitions}
+\label{\detokenize{connectivity_guide:http-inbound-vtam-definitions}}
 HTTP relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1221,6 +1136,9 @@ HTTP relay LU’s must be defined to VTAM by means of APPL statements in an appl
 
 \sphinxstyleemphasis{VTAM definitions for HTTP terminals}
 
+
+\subsubsection{HTTP Inbound CICS definitions}
+\label{\detokenize{connectivity_guide:http-inbound-cics-definitions}}
 The HTTP relay LU’s must also be defined to CICS, as shown in the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1256,7 +1174,7 @@ This job is supplied in member CSDW2H of the VIRTEL SAMPLIB.
 
 
 \subsection{HTTP Outbound line}
-\label{\detokenize{connectivity_guide:bookmark42}}\label{\detokenize{connectivity_guide:http-outbound-line}}
+\label{\detokenize{connectivity_guide:v457cn-httpoutbound}}\label{\detokenize{connectivity_guide:http-outbound-line}}
 An HTTP Outbound line allows VIRTEL to act as an HTTP requester. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT.
 
 By means of the OPTION\$ FOR-HTTP and SEND\$ TO-LINE instructions, a VIRTEL scenario can make requests to the remote HTTP server whose address is specified in the HTTP Outbound line definition. Multiple HTTP Outbound lines may be defined to allow requests to be sent to different HTTP servers. Refer to “VIRTEL Web Modernisation Scenarios” in the VIRTEL Web Access Guide for examples of the OPTION\$ FOR-HTTP instruction. The \$SITE\$ defines the IP address of the outbound server. It is passed via a sceanrio. See the OPTION\$ FOR-HTTP scenario instruction.
@@ -1296,8 +1214,8 @@ VIRHTTP or HTTP.
 \end{description}
 
 
-\subsubsection{Definition of a HTTP Outbound line}
-\label{\detokenize{connectivity_guide:definition-of-a-http-outbound-line}}\begin{quote}
+\subsubsection{HTTP Outbound line definitions}
+\label{\detokenize{connectivity_guide:http-outbound-line-definitions}}\begin{quote}
 
 An SMTP line establishes a TCP/IP link between VIRTEL and an external SMTP server. The external SMTP server receives outgoing
 mail from VIRTEL for distribution to users. The SMTP line also defines the characteristics of VIRTEL’s internal SMTP server which
@@ -1312,7 +1230,7 @@ In case of SMTP problems, use the command F VIRTEL,TRACE,L=S-SMTP to trace the d
 \end{description}
 
 \sphinxincludegraphics{{image16}.png}
-\sphinxstyleemphasis{Definition of an SMTP line}
+\sphinxstyleemphasis{SMTP line definition}
 \begin{description}
 \item[{Remote ident}] \leavevmode
 This field is required and represents the IP address and port number of the SMTP server to which VIRTEL sends outgoing mail.
@@ -1370,7 +1288,7 @@ The example below shows a group of 16 SMTP terminals with associated relays:
 \end{quote}
 
 \sphinxincludegraphics{{image17}.png}
-\sphinxstyleemphasis{Definition of terminals associated with an SMTP line}
+\sphinxstyleemphasis{SMTP terminal definitions}
 \begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
@@ -1396,8 +1314,8 @@ The number of terminals defined.
 \end{description}
 
 
-\subsubsection{VTAM definitions for SMTP terminals}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-smtp-terminals}}
+\subsubsection{HTTP Oubtbound (SMTP) VTAM definitions}
+\label{\detokenize{connectivity_guide:http-oubtbound-smtp-vtam-definitions}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RWSVT200} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
 \PYG{n}{RWSVT201} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
@@ -1405,8 +1323,11 @@ The number of terminals defined.
 \PYG{n}{RWSVT203} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{CICS definitions for SMTP relay LUs}
+\sphinxstyleemphasis{VTAM definitions for SMTP relay LUs}
 
+
+\subsubsection{HTTP Oubtbound (SMTP) CICS definitions}
+\label{\detokenize{connectivity_guide:http-oubtbound-smtp-cics-definitions}}
 Where incoming e-mails are used to trigger a CICS transaction (or other VTAM application), the SMTP relay LU’s must be defined by APPL statements in a VTAM application major node, as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1694,145 +1615,8 @@ justified and padded with blanks
 All data following the header is treated as binary data which is passed to the scenario without translation in the \$INFILE\$ variable.
 
 
-\subsection{XOT line}
-\label{\detokenize{connectivity_guide:xot-line}}\begin{quote}
-
-An XOT line establishes a connection between VIRTEL and a CISCO router. Across this type of line, VIRTEL processes incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
-\end{quote}
-
-\sphinxincludegraphics{{image22}.png}
-
-
-\subsubsection{Definition of an XOT line}
-\label{\detokenize{connectivity_guide:definition-of-an-xot-line}}\begin{description}
-\item[{Remote ident}] \leavevmode
-IP address of the router followed by the port number 1998.
-
-The address specified here is used by VIRTEL as the destination address for outgoing calls. Incoming calls are accepted from any IP address, except in the case of XOT lines which share a common IP address and port (specified in the “Local ident” field). Such lines only accept calls whose IP source address matches the router address specified in the “Remote ident” field. This allows VIRTEL to allocate incoming calls to the correct XOT line. The parameter UNIQUEP=Y (which can be specified only in batch definition mode
-using the VIRCONF utility) allows this check to be enforced regardless of whether the “Local ident” field specifies a shared
-address.
-
-\item[{..note::}] \leavevmode
-Take care to ensure that the router presents the expected address to VIRTEL. You may need to use the xot-source parameter in the router configuration to ensure that the router presents the correct IP address to VIRTEL for incoming calls. Example:
-
-\end{description}
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{x25} \PYG{n}{route} \PYG{o}{.}\PYG{o}{*} \PYG{n}{xot} \PYG{l+m+mf}{10.0}\PYG{o}{.}\PYG{l+m+mf}{1.1} \PYG{n}{xot}\PYG{o}{\PYGZhy{}}\PYG{n}{source} \PYG{n}{loopback0}
-\end{sphinxVerbatim}
-\begin{description}
-\item[{Local ident}] \leavevmode
-The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading {\hyperref[\detokenize{connectivity_guide:bookmark13}]{\sphinxcrossref{\DUrole{std,std-ref}{“Line Parameters”,}}}}.
-
-The port number must be 1998. This port number is fixed by the XOT protocol, and the router does not provide any configuration statement which allows the port number to be altered.
-
-From VIRTEL version 4.24 onwards, multiple XOT lines with the same local IP address and port number can be defined within a single instance of VIRTEL. As explained above, VIRTEL uses the router IP address (“Remote ident”) to match calls from a router with the correct XOT line. However, if multiple instances of VIRTEL are started on a single MVS system, each VIRTEL must have its own distinct IP address for XOT. The use of VIPA allows multiple IP addresses to be defined within a single TCP/IP stack (see the IBM manual z/OS Communications Server IP Configuration Guide for details of VIPA).
-
-\item[{Prefix}] \leavevmode
-Terminal name prefix (see below).
-
-\item[{Entry Point}] \leavevmode
-Not required for this type of line.
-
-\item[{Line type}] \leavevmode
-One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.
-
-\item[{Possible calls}] \leavevmode
-No special restriction.
-
-\item[{Protocol}] \leavevmode
-Always XOT.
-
-\item[{Window}] \leavevmode
-In accordance with the window size for the X25 line specified in the router configuration (see note below).
-
-\item[{Packet}] \leavevmode
-In accordance with the packet size for the X25 line specified in the router configuration (see note below).
-
-Note: VIRTEL will normally use the window size and packet size negotiated with the partner during call setup. The Window and Packet values specified in the line definition are the default values which will be used if no values are supplied by the partner in the Call or Call Accepted packets.
-
-\item[{Pad}] \leavevmode
-Always blank.
-
-\item[{Tran}] \leavevmode
-Normally blank, unless non-standard ASCII translation is required for special applications.
-
-\end{description}
-
-
-\subsubsection{XOT Terminals}
-\label{\detokenize{connectivity_guide:xot-terminals}}\begin{quote}
-
-Press {[}PF4{]} at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.
-\end{quote}
-
-\sphinxincludegraphics{{image23}.png}
-
-\sphinxstyleemphasis{Definition of terminals associated with an XOT line}
-\begin{description}
-\item[{Terminal}] \leavevmode
-The terminal name must match the prefix of the line.
-
-\item[{Relais}] \leavevmode
-The name of a relay LU must be specified if incoming calls are
-routed to a type-1 transaction (VTAM application). The relay LU’s
-must be defined by APPL statements in a VTAM application major node,
-as described below. If all incoming calls are routed to a type-3
-transaction (external server), as is the case for calls routed to a
-GATE or PCNE application such as CFT or Inter.PEL, no relay is
-required on the terminals attached to the XOT line.
-
-\item[{Entry point}] \leavevmode
-Leave blank.
-
-\item[{Terminal Type}] \leavevmode
-Always 3.
-
-\item[{Compression}] \leavevmode
-Always 2.
-
-\item[{Possible calls}] \leavevmode
-Always 3.
-
-\item[{Repeat}] \leavevmode
-Number of terminals (virtual circuits) defined.
-
-\end{description}
-
-
-\subsubsection{VTAM definition for XOT terminals}
-\label{\detokenize{connectivity_guide:vtam-definition-for-xot-terminals}}\begin{description}
-\item[{When incoming calls are routed to a type-1 transaction (VTAM}] \leavevmode
-application), the relay LU’s must be defined by APPL statements in a
-VTAM application major node, as shown in the example below:
-
-\end{description}
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{RXOTF000} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
-\PYG{n}{RXOTF001} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
-\PYG{n}{RXOTF002} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
-\PYG{n}{RXOTF003} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
-\end{sphinxVerbatim}
-
-
-\subsection{MQ line}
-\label{\detokenize{connectivity_guide:mq-line}}\begin{quote}
-
-An MQ line establishes a connection between VIRTEL and an MQSeries
-message queue. Each MQ line can receive messages from, or send
-messages to, one MQSeries message queue. Activation of this type of
-line requires the presence of the MQ1 or MQ2 parameter in the
-VIRTCT. The queue can be shared with another application (another
-VIRTEL for instance) or used in exclusive mode depending on its own
-definition.
-\end{quote}
-
-\sphinxincludegraphics{{image24}.png}
-
-
-\subsubsection{Definition of an MQ line}
-\label{\detokenize{connectivity_guide:definition-of-an-mq-line}}\begin{description}
+\subsubsection{MQ line parameters}
+\label{\detokenize{connectivity_guide:mq-line-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 For the RAW protocol: Leave blank.
 
@@ -1887,8 +1671,8 @@ Press {[}PF4{]} at the line definition screen to display the list of terminals a
 \sphinxincludegraphics{{image25}.png}
 
 
-\subsubsection{Definition of terminals associated with an MQ line}
-\label{\detokenize{connectivity_guide:definition-of-terminals-associated-with-an-mq-line}}\begin{description}
+\subsubsection{MQ Line Terminal Definitions}
+\label{\detokenize{connectivity_guide:mq-line-terminal-definitions}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -1922,8 +1706,8 @@ A batch line allows VIRTEL to process HTTP requests in batch mode. When a batch 
 \sphinxincludegraphics{{image26}.png}
 
 
-\subsubsection{Definition of a batch line}
-\label{\detokenize{connectivity_guide:definition-of-a-batch-line}}\begin{description}
+\subsubsection{Batch Line Parameters}
+\label{\detokenize{connectivity_guide:batch-line-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Always blank.
 
@@ -1973,8 +1757,8 @@ Always blank.
 \end{description}
 
 
-\subsubsection{Batch terminals}
-\label{\detokenize{connectivity_guide:batch-terminals}}\begin{quote}
+\subsubsection{Batch Line  terminals}
+\label{\detokenize{connectivity_guide:batch-line-terminals}}\begin{quote}
 
 Like an HTTP line, a batch line uses up to two sub-groups of type-3 terminals having a common prefix (in this case BT1). Refer to “HTTP terminals” 26 for further details. If the batch requests do not require connection to a host VTAM application, then it is only necessary to define the first terminal sub-group (the sub-group without relays).
 
@@ -2001,8 +1785,8 @@ The activation of this type of line requires the presence of the \textgreater{}T
 \sphinxincludegraphics{{image28}.png}
 
 
-\subsubsection{Definition of a NATIVE TCP/IP line}
-\label{\detokenize{connectivity_guide:definition-of-a-native-tcp-ip-line}}\begin{description}
+\subsubsection{NATIVE TCP/IP line parameters}
+\label{\detokenize{connectivity_guide:native-tcp-ip-line-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Not used for a NATIVE TCP/IP line.
 
@@ -2030,8 +1814,8 @@ Specify a packet size sufficient to contain the largest message sent by either t
 \end{description}
 
 
-\subsubsection{NATIVE TCP/IP Terminals}
-\label{\detokenize{connectivity_guide:native-tcp-ip-terminals}}\begin{quote}
+\subsubsection{NATIVE TCP/IP Line Terminals}
+\label{\detokenize{connectivity_guide:native-tcp-ip-line-terminals}}\begin{quote}
 
 By pressing {[}PF4{]}, the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorised.
 
@@ -2041,8 +1825,8 @@ The example below shows a group of 4 NATIVE TCP/IP terminals:
 \sphinxincludegraphics{{image29}.png}
 
 
-\subsubsection{Definition of terminals associated with a NATIVE TCP/IP line}
-\label{\detokenize{connectivity_guide:definition-of-terminals-associated-with-a-native-tcp-ip-line}}\begin{description}
+\subsubsection{NATIVE TCP/IP Line Terminal parameters}
+\label{\detokenize{connectivity_guide:native-tcp-ip-line-terminal-parameters}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -2070,15 +1854,15 @@ The number of terminals defined.
 \end{description}
 
 
-\subsubsection{NATIVE TCP/IP relay pool}
-\label{\detokenize{connectivity_guide:native-tcp-ip-relay-pool}}
+\subsubsection{NATIVE TCP/IP Line Relay Pool}
+\label{\detokenize{connectivity_guide:native-tcp-ip-line-relay-pool}}
 The figure below shows the definition of the NATIVE TCP/IP relay pool:
 
 \sphinxincludegraphics{{image30}.png}
 
 
-\subsubsection{Definition of terminals associated with a NATIVE TCP/IP line}
-\label{\detokenize{connectivity_guide:id2}}\begin{description}
+\subsubsection{NATIVE TCP/IP Line Terminal Parameters}
+\label{\detokenize{connectivity_guide:id3}}\begin{description}
 \item[{Terminal}] \leavevmode
 Any terminal name may be used for the relay pool.
 
@@ -2109,8 +1893,8 @@ The number of terminals defined.
 \end{description}
 
 
-\subsubsection{VTAM definitions for NATIVE TCP/IP terminals}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-native-tcp-ip-terminals}}\begin{quote}
+\subsubsection{NATIVE TCP/IP Line VTAM terminals definitions}
+\label{\detokenize{connectivity_guide:native-tcp-ip-line-vtam-terminals-definitions}}\begin{quote}
 
 Relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
 \end{quote}
@@ -2129,8 +1913,8 @@ Relay LU’s must be defined to VTAM by means of APPL statements in an applicati
 \sphinxstyleemphasis{VTAM definitions for NATIVE TCP/IP relay LU’s}
 
 
-\subsubsection{CICS definitions for NATIVE TCP/IP terminals}
-\label{\detokenize{connectivity_guide:cics-definitions-for-native-tcp-ip-terminals}}
+\subsubsection{NATIVE TCP/IP Line CICS Terminal definitions}
+\label{\detokenize{connectivity_guide:native-tcp-ip-line-cics-terminal-definitions}}
 The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2149,8 +1933,8 @@ The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the fol
 \end{sphinxVerbatim}
 
 
-\subsubsection{CICS definitions for NATIVE TCP/IP relay LU’s}
-\label{\detokenize{connectivity_guide:cics-definitions-for-native-tcp-ip-relay-lus}}
+\subsubsection{NATIVE TCP/IP Line Message Header}
+\label{\detokenize{connectivity_guide:native-tcp-ip-line-message-header}}
 All messages sent on a NATIVE TCP/IP conversation are prefixed by a 2-byte or 4-byte header. The format of the header for the NATIVE2 protocol is shown in the figure below:
 
 
@@ -2272,8 +2056,8 @@ All data following the header is treated as binary data which is passed to the C
 The variants NATIVE2P and NATIVE4P may be used if the terminal is defined to the application as a 3270 (LU2) device. In this case, VIRTEL will add the prefix X‘7D4040’ to inbound messages before sending them to the application, and will remove the 3270 prefix (for example X’F1C1’) from outbound messages before sending them to the terminal. The message format to the terminal is the same as described above for NATIVE2 and NATIVE4.
 
 
-\subsection{VIRPASS TCP line for VIRKIX}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-for-virkix}}\begin{quote}
+\subsection{VIRPASS TCP line (VIRKIX)}
+\label{\detokenize{connectivity_guide:virpass-tcp-line-virkix}}\begin{quote}
 
 Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in TCP/IP mode using the VIRKIX program on the CICS side.
 \end{quote}
@@ -2281,8 +2065,8 @@ Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cr
 \sphinxincludegraphics{{image31}.png}
 
 
-\subsubsection{Definition of a VIRPASS TCP line for VIRKIX}
-\label{\detokenize{connectivity_guide:definition-of-a-virpass-tcp-line-for-virkix}}\begin{description}
+\subsubsection{VIRPASS TCP line (VIRKIX) Parameters}
+\label{\detokenize{connectivity_guide:virpass-tcp-line-virkix-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Contains the IP address and port number of the CICS side of the link. It must match the fields “adresse TCP/IP” and “port serveur” of the TCP/IP interface defined in VIRKIX. This field should only be used when the VIRKIX relay type is “Virpass TCP/IP” (previously known as “Virpass Symétrique”). If the VIRKIX relay type is “Virpass Asymétrique” (previously known as “Virtel TCP/IP”), this field must be blank, and VIRTEL will wait for VIRKIX to make the connection on he address specified in the “Local ident” field.
 
@@ -2316,19 +2100,19 @@ Always blank.
 \end{description}
 
 
-\subsubsection{Terminals on a VIRPASS TCP line for VIRKIX}
-\label{\detokenize{connectivity_guide:terminals-on-a-virpass-tcp-line-for-virkix}}\begin{quote}
+\subsubsection{VIRPASS TCP line (VIRKIX) Terminals}
+\label{\detokenize{connectivity_guide:virpass-tcp-line-virkix-terminals}}\begin{quote}
 
-A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” \textendash{} “Appels X25 entrant”. The “Type de
-ligne” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
+A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” \textendash{} “Appels X25 entrant”. The “Type of
+line” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
 \end{quote}
 
 \sphinxincludegraphics{{image32}.png}
 \sphinxstyleemphasis{Terminals on a VIRPASS TCP line for VIRKIX}
 
 
-\subsection{VIRPASS TCP line for VIRNT}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-for-virnt}}\begin{quote}
+\subsection{VIRPASS TCP line (VIRNT)}
+\label{\detokenize{connectivity_guide:virpass-tcp-line-virnt}}\begin{quote}
 
 A VIRNT system can be connected to VIRTEL to act as an X25 gateway handling incoming and outgoing connections to and from VIRTEL, or to act as a LECAM server. Communication between VIRTEL and VIRNT can be established using either an APPC line or a TCP/IP line. This section describes TCP/IP mode.
 \end{quote}
@@ -2336,8 +2120,8 @@ A VIRNT system can be connected to VIRTEL to act as an X25 gateway handling inco
 \sphinxincludegraphics{{image33}.png}
 
 
-\subsubsection{Definition of a VIRPASS TCP line for VIRNT}
-\label{\detokenize{connectivity_guide:definition-of-a-virpass-tcp-line-for-virnt}}\begin{description}
+\subsubsection{VIRPASS TCP line (VIRNT) Parameters}
+\label{\detokenize{connectivity_guide:virpass-tcp-line-virnt-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Always blank.
 
@@ -2407,8 +2191,8 @@ NTTCS980
 \sphinxattableend\end{savenotes}
 
 
-\subsubsection{List of terminals for a VIRPASS TCP line for VIRNT*}
-\label{\detokenize{connectivity_guide:list-of-terminals-for-a-virpass-tcp-line-for-virnt}}
+\subsubsection{VIRPASS TCP line (VIRNT*) terminal definitions}
+\label{\detokenize{connectivity_guide:virpass-tcp-line-virnt-terminal-definitions}}
 Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:
 
 \sphinxincludegraphics{{image34}.png}
@@ -2422,15 +2206,15 @@ Terminals in the pool dedicated to outgoing calls do not have an associated rela
 \sphinxstyleemphasis{Outbound terminals for a VIRPASS TCP line for VIRNT}
 
 
-\subsection{VIRPASS XM line for VIRKIX}
-\label{\detokenize{connectivity_guide:virpass-xm-line-for-virkix}}
+\subsection{VIRPASS XM line (VIRKIX)}
+\label{\detokenize{connectivity_guide:virpass-xm-line-virkix}}
 Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in Cross-memory (XM) mode using the VIRKIX program on the CICS side.
 
 \sphinxincludegraphics{{image36}.png}
 
 
-\subsubsection{Definition of a VIRPASS XM line for VIRKIX}
-\label{\detokenize{connectivity_guide:definition-of-a-virpass-xm-line-for-virkix}}\begin{description}
+\subsubsection{VIRPASS XM line (VIRKIX) Parameters}
+\label{\detokenize{connectivity_guide:virpass-xm-line-virkix-parameters}}\begin{description}
 \item[{External name}] \leavevmode
 Must match the relay name of a VIRPASS cross-memory interface in VIRKIX.
 
@@ -2469,9 +2253,9 @@ Always blank.
 \end{description}
 
 
-\subsubsection{Terminals on a VIRPASS XM line for VIRKIX}
-\label{\detokenize{connectivity_guide:terminals-on-a-virpass-xm-line-for-virkix}}
-A VIRPASS XM line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” \textendash{} “Appels X25 entrant”. The “Type de ligne” field in the relay definition must contain the value X25VIRPA (this is the same value as for VIRPASS TCP, which was coded as E25TCPIP in previous versions of VIRKIX).
+\subsubsection{VIRPASS XM line (VIRKIX) terminal definitions}
+\label{\detokenize{connectivity_guide:virpass-xm-line-virkix-terminal-definitions}}
+A VIRPASS XM line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” \textendash{} “Appels X25 entrant”. The “Type de line” field in the relay definition must contain the value X25VIRPA (this is the same value as for VIRPASS TCP, which was coded as E25TCPIP in previous versions of VIRKIX).
 
 Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
 
@@ -2523,6 +2307,146 @@ other fields on this panel.
 \end{description}
 
 
+\section{X25 Line Definition Examples}
+\label{\detokenize{connectivity_guide:x25-line-definition-examples}}
+
+\subsection{XOT line}
+\label{\detokenize{connectivity_guide:xot-line}}\begin{quote}
+
+An XOT line establishes a connection between VIRTEL and a CISCO router. Across this type of line, VIRTEL processes incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
+\end{quote}
+
+\sphinxincludegraphics{{image22}.png}
+
+
+\subsubsection{Definition of an XOT line}
+\label{\detokenize{connectivity_guide:definition-of-an-xot-line}}\begin{description}
+\item[{Remote ident}] \leavevmode
+IP address of the router followed by the port number 1998.
+
+The address specified here is used by VIRTEL as the destination address for outgoing calls. Incoming calls are accepted from any IP address, except in the case of XOT lines which share a common IP address and port (specified in the “Local ident” field). Such lines only accept calls whose IP source address matches the router address specified in the “Remote ident” field. This allows VIRTEL to allocate incoming calls to the correct XOT line. The parameter UNIQUEP=Y (which can be specified only in batch definition mode
+using the VIRCONF utility) allows this check to be enforced regardless of whether the “Local ident” field specifies a shared
+address.
+
+\item[{..note::}] \leavevmode
+Take care to ensure that the router presents the expected address to VIRTEL. You may need to use the xot-source parameter in the router configuration to ensure that the router presents the correct IP address to VIRTEL for incoming calls. Example:
+
+\end{description}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{x25} \PYG{n}{route} \PYG{o}{.}\PYG{o}{*} \PYG{n}{xot} \PYG{l+m+mf}{10.0}\PYG{o}{.}\PYG{l+m+mf}{1.1} \PYG{n}{xot}\PYG{o}{\PYGZhy{}}\PYG{n}{source} \PYG{n}{loopback0}
+\end{sphinxVerbatim}
+\begin{description}
+\item[{Local ident}] \leavevmode
+The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading {\hyperref[\detokenize{connectivity_guide:bookmark13}]{\sphinxcrossref{\DUrole{std,std-ref}{“Line Parameters”,}}}}.
+
+The port number must be 1998. This port number is fixed by the XOT protocol, and the router does not provide any configuration statement which allows the port number to be altered.
+
+From VIRTEL version 4.24 onwards, multiple XOT lines with the same local IP address and port number can be defined within a single instance of VIRTEL. As explained above, VIRTEL uses the router IP address (“Remote ident”) to match calls from a router with the correct XOT line. However, if multiple instances of VIRTEL are started on a single MVS system, each VIRTEL must have its own distinct IP address for XOT. The use of VIPA allows multiple IP addresses to be defined within a single TCP/IP stack (see the IBM manual z/OS Communications Server IP Configuration Guide for details of VIPA).
+
+\item[{Prefix}] \leavevmode
+Terminal name prefix (see below).
+
+\item[{Entry Point}] \leavevmode
+Not required for this type of line.
+
+\item[{Line type}] \leavevmode
+One of the TCP/IP protocols defined in the VIRTCT, for example TCP1.
+
+\item[{Possible calls}] \leavevmode
+No special restriction.
+
+\item[{Protocol}] \leavevmode
+Always XOT.
+
+\item[{Window}] \leavevmode
+In accordance with the window size for the X25 line specified in the router configuration (see note below).
+
+\item[{Packet}] \leavevmode
+In accordance with the packet size for the X25 line specified in the router configuration (see note below).
+
+Note: VIRTEL will normally use the window size and packet size negotiated with the partner during call setup. The Window and Packet values specified in the line definition are the default values which will be used if no values are supplied by the partner in the Call or Call Accepted packets.
+
+\item[{Pad}] \leavevmode
+Always blank.
+
+\item[{Tran}] \leavevmode
+Normally blank, unless non-standard ASCII translation is required for special applications.
+
+\end{description}
+
+
+\subsubsection{XOT Terminals}
+\label{\detokenize{connectivity_guide:xot-terminals}}\begin{quote}
+
+Press {[}PF4{]} at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.
+\end{quote}
+
+\sphinxincludegraphics{{image23}.png}
+
+\sphinxstyleemphasis{Definition of terminals associated with an XOT line}
+\begin{description}
+\item[{Terminal}] \leavevmode
+The terminal name must match the prefix of the line.
+
+\item[{Relais}] \leavevmode
+The name of a relay LU must be specified if incoming calls are
+routed to a type-1 transaction (VTAM application). The relay LU’s
+must be defined by APPL statements in a VTAM application major node,
+as described below. If all incoming calls are routed to a type-3
+transaction (external server), as is the case for calls routed to a
+GATE or PCNE application such as CFT or Inter.PEL, no relay is
+required on the terminals attached to the XOT line.
+
+\item[{Entry point}] \leavevmode
+Leave blank.
+
+\item[{Terminal Type}] \leavevmode
+Always 3.
+
+\item[{Compression}] \leavevmode
+Always 2.
+
+\item[{Possible calls}] \leavevmode
+Always 3.
+
+\item[{Repeat}] \leavevmode
+Number of terminals (virtual circuits) defined.
+
+\end{description}
+
+
+\subsubsection{XOT VTAM terminal definition}
+\label{\detokenize{connectivity_guide:xot-vtam-terminal-definition}}\begin{description}
+\item[{When incoming calls are routed to a type-1 transaction (VTAM}] \leavevmode
+application), the relay LU’s must be defined by APPL statements in a
+VTAM application major node, as shown in the example below:
+
+\end{description}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RXOTF000} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
+\PYG{n}{RXOTF001} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
+\PYG{n}{RXOTF002} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
+\PYG{n}{RXOTF003} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
+\end{sphinxVerbatim}
+
+
+\subsection{MQ line}
+\label{\detokenize{connectivity_guide:mq-line}}\begin{quote}
+
+An MQ line establishes a connection between VIRTEL and an MQSeries
+message queue. Each MQ line can receive messages from, or send
+messages to, one MQSeries message queue. Activation of this type of
+line requires the presence of the MQ1 or MQ2 parameter in the
+VIRTCT. The queue can be shared with another application (another
+VIRTEL for instance) or used in exclusive mode depending on its own
+definition.
+\end{quote}
+
+\sphinxincludegraphics{{image24}.png}
+
+
 \subsection{VIRPESIT line}
 \label{\detokenize{connectivity_guide:virpesit-line}}
 A VIRPESIT line establishes a TCP/IP link between VIRTEL and a file transfer application such as CFT. A VIRPESIT line allows VIRTEL to act as an IP-to-X25 gateway for file transfer sessions using the PESIT and ETEBAC protocols. File transfer requests arriving via IP on a VIRPESIT line may be routed either to a local GATE or PCNE application, or to a remote partner via the X25 network. Similarly, file transfer requests from the X25 network or from local GATE or PCNE applications may be routed to the IP network via a VIRPESIT line.
@@ -2532,8 +2456,8 @@ The activation of this type of line requires the presence of the TCP1 parameter 
 \sphinxincludegraphics{{image38}.png}
 
 
-\subsubsection{Definition of a VIRPESIT line}
-\label{\detokenize{connectivity_guide:definition-of-a-virpesit-line}}\begin{description}
+\subsubsection{VIRPESIT line Parameters}
+\label{\detokenize{connectivity_guide:virpesit-line-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 (optional) IP address and port number of the default partner (for
 outbound calls when the external server does not specify a partner
@@ -2566,8 +2490,8 @@ By pressing {[}PF4{]}, the list of terminals associated with the VIRPESIT line w
 \sphinxincludegraphics{{image39}.png}
 
 
-\subsubsection{Definition of terminals associated with a VIRPESIT line}
-\label{\detokenize{connectivity_guide:definition-of-terminals-associated-with-a-virpesit-line}}\begin{description}
+\subsubsection{VIRPESIT line terminal definitions}
+\label{\detokenize{connectivity_guide:virpesit-line-terminal-definitions}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -2600,8 +2524,8 @@ A VIRNEOX line allows VIRTEL to act as a server for communications with applicat
 \sphinxincludegraphics{{image40}.png}
 
 
-\subsubsection{Definition of a VIRNEOX line}
-\label{\detokenize{connectivity_guide:definition-of-a-virneox-line}}\begin{description}
+\subsubsection{VIRNEOX line parameters}
+\label{\detokenize{connectivity_guide:virneox-line-parameters}}\begin{description}
 \item[{Local ident}] \leavevmode
 The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading {\hyperref[\detokenize{connectivity_guide:bookmark13}]{\sphinxcrossref{\DUrole{std,std-ref}{“Line Parameters”}}}}.
 
@@ -2632,8 +2556,8 @@ The example below shows a group of 8 VIRNEOX terminals:
 \sphinxincludegraphics{{image41}.png}
 
 
-\subsubsection{Definition of terminals associated with a VIRNEOX line}
-\label{\detokenize{connectivity_guide:definition-of-terminals-associated-with-a-virneox-line}}\begin{description}
+\subsubsection{VIRNEOX line terminal definitions}
+\label{\detokenize{connectivity_guide:virneox-line-terminal-definitions}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -2658,13 +2582,16 @@ The number of terminals defined.
 \end{description}
 
 
-\subsubsection{Definition of a X25 GATE Non Fast-Connect line}
-\label{\detokenize{connectivity_guide:bookmark94}}\label{\detokenize{connectivity_guide:definition-of-a-x25-gate-non-fast-connect-line}}
+\subsection{X25 GATE Non Fast-Connect line}
+\label{\detokenize{connectivity_guide:v457cn-x25gateline}}\label{\detokenize{connectivity_guide:x25-gate-non-fast-connect-line}}
 An X25 GATE Non Fast-Connect line establishes a connection between VIRTEL and an X25 line connected to an IBM 3745 communications controller. Across this type of line, VIRTEL handles incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the GATE and MINITEL parameters in the VIRTCT.
 
 \sphinxincludegraphics{{image42}.png}
 \sphinxstyleemphasis{Definition of an X25 GATE non-Fast Connect line}
-\begin{description}
+
+
+\subsubsection{X25 GATE NFC parameters}
+\label{\detokenize{connectivity_guide:x25-gate-nfc-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Name of the MCH LU generated by NPSI.
 
@@ -2710,8 +2637,8 @@ The relay name is compulsory for this type of terminal.
 \sphinxincludegraphics{{image43}.png}
 
 
-\subsubsection{Terminals on an X25 GATE Non Fast-Connect line}
-\label{\detokenize{connectivity_guide:terminals-on-an-x25-gate-non-fast-connect-line}}\begin{description}
+\subsubsection{X25 GATE NFC terminal Definitions}
+\label{\detokenize{connectivity_guide:x25-gate-nfc-terminal-definitions}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the virtual circuit LU names generated by the X25.VC macro in the NPSI.
 
@@ -2733,8 +2660,8 @@ The number of virtual circuits defined by NPSI.
 \end{description}
 
 
-\subsubsection{VTAM definitions for GATE terminals}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-gate-terminals}}
+\subsubsection{X25 GATE NFC VTAM definitions}
+\label{\detokenize{connectivity_guide:x25-gate-nfc-vtam-definitions}}
 Each Minitel or PC wishing to benefit from VIRTEL functionality must be defined in a VTAM switched major node similar to the one shown below.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2784,13 +2711,13 @@ The LOGAPPL and USSTAB parameters are valid only for non GATE lines. For sites m
 \end{sphinxVerbatim}
 
 
-\subsubsection{NCP parameters for a GATE line}
-\label{\detokenize{connectivity_guide:ncp-parameters-for-a-gate-line}}
+\subsubsection{X25 GATE NFC NCP parameters}
+\label{\detokenize{connectivity_guide:x25-gate-nfc-ncp-parameters}}
 The LUDRPOOL MACRO must contain an NUMTYP1 parameter with a value greater than or equal to the number of CVC available on the lines. For LU6.2 connections, check for the presence of the NUMILU parameter which indicates the number of available PU type 2.1.
 
 
-\subsubsection{NPSI parameters for a GATE line}
-\label{\detokenize{connectivity_guide:npsi-parameters-for-a-gate-line}}
+\subsubsection{X25 GATE NFC NPSI parameters}
+\label{\detokenize{connectivity_guide:x25-gate-nfc-npsi-parameters}}
 The following parameters must agree with the specification of your TRANSPAC subscription.
 
 \sphinxstylestrong{Macro X25VCCPT}
@@ -2895,8 +2822,8 @@ An X25 GATE Fast-Connect line establishes a connection between VIRTEL and an X25
 \sphinxincludegraphics{{image44}.png}
 
 
-\subsubsection{Definition of an X25 GATE Fast Connect line}
-\label{\detokenize{connectivity_guide:definition-of-an-x25-gate-fast-connect-line}}\begin{description}
+\subsubsection{X25 GATE FC line Parameters}
+\label{\detokenize{connectivity_guide:x25-gate-fc-line-parameters}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Name of the MCH LU generated by NPSI.
 
@@ -2941,8 +2868,8 @@ The relay name is compulsory for this type of terminal.
 \sphinxincludegraphics{{image45}.png}
 
 
-\subsubsection{Terminals on an X25 GATE Fast-Connect line}
-\label{\detokenize{connectivity_guide:terminals-on-an-x25-gate-fast-connect-line}}\begin{description}
+\subsubsection{X25 GATE FC line terminal definitions}
+\label{\detokenize{connectivity_guide:x25-gate-fc-line-terminal-definitions}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the virtual circuit LU names generated
 by the X25.VC macro in the NPSI.
@@ -2969,7 +2896,7 @@ The number of virtual circuits defined by NPSI.
 
 \subsubsection{VTAM definitions for Fast-Connect}
 \label{\detokenize{connectivity_guide:vtam-definitions-for-fast-connect}}
-Each Minitel or PC wishing to take advantage of VIRTEL functionality must be defined to VTAM in a switched major node similar to that shown in section {\hyperref[\detokenize{connectivity_guide:bookmark94}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of a X25 GATE Non Fast-Connect line”}}}}.
+Each Minitel or PC wishing to take advantage of VIRTEL functionality must be defined to VTAM in a switched major node similar to that shown in section {\hyperref[\detokenize{connectivity_guide:v457cn-x25gateline}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of a X25 GATE Non Fast-Connect line”}}}}.
 
 
 \subsubsection{NCP/NPSI parameters for Fast-Connect}
@@ -3317,32 +3244,32 @@ The second sub-group is used for incoming calls (from the point of view of the a
 \sphinxincludegraphics{{image53}.png}
 \sphinxstyleemphasis{Inbound terminal definition for X25 AntiPCNE (method 1)}
 
-A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see {\hyperref[\detokenize{connectivity_guide:bookmark246}]{\sphinxcrossref{\DUrole{std,std-ref}{“logical pool of relays”}}}}). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
+A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see {\hyperref[\detokenize{connectivity_guide:v457cn-logicalpool}]{\sphinxcrossref{\DUrole{std,std-ref}{“logical pool of relays”}}}}). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
 
 The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool *POOLPCN. Terminal definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{Terminal}   \PYG{o}{\textbar{}}     \PYG{n}{Repeated}   \PYG{o}{\textbar{}}     \PYG{n}{Relay}       \PYG{o}{\textbar{}}     \PYG{n}{Entry}   \PYG{o}{\textbar{}}     \PYG{n}{Type}   \PYG{o}{\textbar{}}     \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}   \PYG{o}{\textbar{}}     \PYG{n}{Pool}        \PYG{o}{\textbar{}}     \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay}   \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCNETM51}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0001}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU51}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{2}     \PYG{o}{\textbar{}}     \PYG{o}{*}\PYG{n}{POOLPCN}    \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCNETM52}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0001}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU52}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{2}     \PYG{o}{\textbar{}}     \PYG{o}{*}\PYG{n}{POOLPCN}    \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCNETM53}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0001}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU53}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{2}     \PYG{o}{\textbar{}}     \PYG{o}{*}\PYG{n}{POOLPCN}    \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCNETM54}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0001}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU54}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{2}     \PYG{o}{\textbar{}}     \PYG{o}{*}\PYG{n}{POOLPCN}    \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCN1TM01}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0000}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU01}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{1}     \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCN1TM02}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0001}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU02}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{1}     \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCN1TM03}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0001}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU03}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{1}     \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCN1TM04}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0001}       \PYG{o}{\textbar{}}     \PYG{n}{AP30LU04}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{1}     \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
-\PYG{o}{\textbar{}}     \PYG{n}{PCN1TM51}   \PYG{o}{\textbar{}}     \PYG{l+m+mi}{0004}       \PYG{o}{\textbar{}}     \PYG{o}{*}\PYG{n}{POOLPCN}    \PYG{o}{\textbar{}}             \PYG{o}{\textbar{}}     \PYG{l+m+mi}{3}      \PYG{o}{\textbar{}}     \PYG{l+m+mi}{2}     \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}                 \PYG{o}{\textbar{}}
-\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{Terminal} \PYG{o}{\textbar{}} \PYG{n}{Repeated} \PYG{o}{\textbar{}}  \PYG{n}{Relay}   \PYG{o}{\textbar{}} \PYG{n}{Entry} \PYG{o}{\textbar{}} \PYG{n}{Type} \PYG{o}{\textbar{}} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O} \PYG{o}{\textbar{}}   \PYG{n}{Pool}  \PYG{o}{\textbar{}} \PYG{l+m+mi}{2}\PYG{n}{nd} \PYG{n}{Relay} \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCNETM51} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0001}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU51} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{2}  \PYG{o}{\textbar{}}\PYG{o}{*}\PYG{n}{POOLPCN} \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCNETM52} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0001}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU52} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{2}  \PYG{o}{\textbar{}}\PYG{o}{*}\PYG{n}{POOLPCN} \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCNETM53} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0001}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU53} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{2}  \PYG{o}{\textbar{}}\PYG{o}{*}\PYG{n}{POOLPCN} \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCNETM54} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0001}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU54} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{2}  \PYG{o}{\textbar{}}\PYG{o}{*}\PYG{n}{POOLPCN} \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCN1TM01} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0000}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU01} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{1}  \PYG{o}{\textbar{}}         \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCN1TM02} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0001}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU02} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{1}  \PYG{o}{\textbar{}}         \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCN1TM03} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0001}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU03} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{1}  \PYG{o}{\textbar{}}         \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCN1TM04} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0001}    \PYG{o}{\textbar{}} \PYG{n}{AP30LU04} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{1}  \PYG{o}{\textbar{}}         \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
+\PYG{o}{\textbar{}} \PYG{n}{PCN1TM51} \PYG{o}{\textbar{}}  \PYG{l+m+mi}{0004}    \PYG{o}{\textbar{}} \PYG{o}{*}\PYG{n}{POOLPCN} \PYG{o}{\textbar{}}       \PYG{o}{\textbar{}}  \PYG{l+m+mi}{3}   \PYG{o}{\textbar{}}  \PYG{l+m+mi}{2}  \PYG{o}{\textbar{}}         \PYG{o}{\textbar{}}           \PYG{o}{\textbar{}}
+\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
 \end{sphinxVerbatim}
 
 \sphinxstyleemphasis{List of inbound terminal definitions for X25 AntiPCNE}
@@ -3450,7 +3377,7 @@ Support for incoming connections via an X25 non GATE line still exists. This typ
 
 \subsubsection{VTAM definitions for X25 non GATE terminals}
 \label{\detokenize{connectivity_guide:vtam-definitions-for-x25-non-gate-terminals}}
-Each Minitel or PC which is to log on to VIRTEL must be defined in a VTAM switched major node as described in {\hyperref[\detokenize{connectivity_guide:bookmark94}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of an X25 GATE Non Fast-Connect line”}}}}.
+Each Minitel or PC which is to log on to VIRTEL must be defined in a VTAM switched major node as described in {\hyperref[\detokenize{connectivity_guide:v457cn-x25gateline}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of an X25 GATE Non Fast-Connect line”}}}}.
 
 
 \subsubsection{NCP/NPSI parameters for X25 non GATE terminals}
@@ -3465,17 +3392,17 @@ Must contain the value LLC5.
 \end{description}
 
 
-\chapter{Rules}
-\label{\detokenize{connectivity_guide:rules}}
+\chapter{Virtel Rules}
+\label{\detokenize{connectivity_guide:virtel-rules}}\label{\detokenize{connectivity_guide:v457cn-virtelrules}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id3}}
-Each line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call.
+\label{\detokenize{connectivity_guide:id4}}
+Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the “default” rule which is used to catch callers that didn’t match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See the “How-To” guide ‘Virtel LU Nailing’ for examples on how to define and use Virtel Rules.
 
 
-\section{Rule Summary Display}
+\subsection{Rule Summary Display}
 \label{\detokenize{connectivity_guide:rule-summary-display}}
-Press {[}PF5{]} at the line detail definition screen to display the list of rules associated with the line:
+Press {[}PF5{]} at the line detail definition screen to display the summary list of rules associated with the line:
 
 \sphinxincludegraphics{{image58}.png}
 \sphinxstyleemphasis{Rule Summary Display}
@@ -3497,8 +3424,8 @@ Name of the entry point which will be assigned to incoming calls whose character
 \end{description}
 
 
-\subsection{Navigation}
-\label{\detokenize{connectivity_guide:id4}}\begin{description}
+\subsubsection{Navigation}
+\label{\detokenize{connectivity_guide:id5}}\begin{description}
 \item[{Search}] \leavevmode
 Type the name (or partial name) of the required entity on the first line under the heading “Name”, then press {[}Enter{]}.
 
@@ -3528,7 +3455,7 @@ In the summary screen position the cursor under the name of the entity to be del
 To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
 
 
-\section{Rule Detail Display}
+\subsection{Rule Detail Display}
 \label{\detokenize{connectivity_guide:rule-detail-display}}
 To display or update the detailed definition of an entity, place the cursor on the name of the entity within the summary display and press {[}PF12{]}. The detail definition screen will then be displayed.
 
@@ -3536,7 +3463,7 @@ To display or update the detailed definition of an entity, place the cursor on t
 \sphinxstyleemphasis{Rule detail definition screen}
 
 
-\section{Rule Parameters}
+\subsection{Rule Parameters}
 \label{\detokenize{connectivity_guide:rule-parameters}}\begin{description}
 \item[{Name}] \leavevmode
 The name of the rule. This name must be unique across all rules in the system. The rules associated with a line are processed in alphanumeric order of this name. The rule name thus determines the priority of the rule within the line.
@@ -3671,11 +3598,11 @@ Indicates the period of operation of this rule for each applicable day.
 \label{\detokenize{connectivity_guide:terminals}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id5}}
+\label{\detokenize{connectivity_guide:id6}}
 All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the group of functions associated with the management of the terminals as well as their existing relationship to other administration functions, for example, management of lines or entry points.
 
 
-\section{Terminal Management Sub-Application}
+\subsection{Terminal Management Sub-Application}
 \label{\detokenize{connectivity_guide:terminal-management-sub-application}}
 This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
 
@@ -3684,7 +3611,7 @@ is also accessible by pressing {[}PF4{]} from the line management sub-applicatio
 
 
 \subsection{Sub-Application Security}
-\label{\detokenize{connectivity_guide:id6}}
+\label{\detokenize{connectivity_guide:id7}}
 When security is active, access to the terminal management menu from the Configuration Menu or the Sub-Application Menu is controlled by the resource \$\$TERM\$\$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
 
@@ -3697,7 +3624,7 @@ The first screen displayed by the terminal management sub-application shows a su
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id7}}
+\label{\detokenize{connectivity_guide:id8}}
 In browse, alter, or delete mode, it is possible to scroll the list of terminals under the control of VIRTEL.
 \begin{description}
 \item[{Search}] \leavevmode
@@ -3725,7 +3652,7 @@ To add a new definition, press {[}PF12{]} at the summary screen, either with the
 Position the cursor under the name of the entry to be deleted, then press {[}PF2{]}. The line associated with the terminal to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
 
 
-\subsection{Terminal Detail  Display}
+\subsection{Terminal Detail Display}
 \label{\detokenize{connectivity_guide:terminal-detail-display}}
 \sphinxincludegraphics{{image68}.png}
 \sphinxstyleemphasis{Terminal definition detail screen}
@@ -3733,7 +3660,7 @@ Position the cursor under the name of the entry to be deleted, then press {[}PF2
 From within the detail display the following functions can be carried out:-
 
 
-\section{Terminal Parameters}
+\subsection{Terminal Parameters}
 \label{\detokenize{connectivity_guide:terminal-parameters}}\begin{description}
 \item[{Terminal}] \leavevmode
 Maximum of 8 characters containing:
@@ -3934,19 +3861,19 @@ A repeat count of blank, zero, or 1 indicates definition of a single terminal.
 \label{\detokenize{connectivity_guide:entry-points}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id8}}
+\label{\detokenize{connectivity_guide:id9}}
 Entry points define the session context for a terminal or for certain types of lines. A terminal connecting to VIRTEL must connect via an entry point. This section describes the functions associated with entry point management, as well as the correlation with other elements of VIRTEL system administration, for example, line and terminal management.
 
 An entry point is a named entity that groups certain information designed to authorise, personalise and protect access to the host site. Entry points define the type of emulation required, the type of security control, which sign-on screen must be sent to the user at log on time, what type of Multi-session menu must be used and what applications are to be made available to the user.
 
 
-\section{Entry Point Management Sub Application}
+\subsection{Entry Point Management Sub Application}
 \label{\detokenize{connectivity_guide:entry-point-management-sub-application}}
 The Entry Point Management sub-application is accessed by pressing {[}PF3{]} in the Configuration Menu, or {[}PF13{]} in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This subapplication allows management of the parameters associated with each entry point.
 
 
 \subsection{Sub-Application Security}
-\label{\detokenize{connectivity_guide:id9}}
+\label{\detokenize{connectivity_guide:id10}}
 When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu is controlled by the resource \$\$GLOG\$\$. When accessed by a transaction, the rules governing the management of transaction security apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
 
@@ -3956,7 +3883,7 @@ The entry point used in the connection from a terminal may be specified in vario
 
 
 \subsubsection{3270 Terminals}
-\label{\detokenize{connectivity_guide:id10}}
+\label{\detokenize{connectivity_guide:id11}}
 The entry point to be used for a connection from a 3270 terminal can be specified:
 - In the DATA parameter of a logon sequence. For example: LOGON APPLID(VIRTEL) DATA(PE-0001)
 - In the VIRTEL terminal definition (see “Parameters Of The Terminal”).
@@ -3999,7 +3926,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 - If no entry point was specified by any of the preceding steps, the default is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.
 
 
-\section{Entry Point Summary Display}
+\subsection{Entry Point Summary Display}
 \label{\detokenize{connectivity_guide:entry-point-summary-display}}
 The entry point management application manages the entry points and their associated transactions. The first screen displayed shows a summary of existing entry points in alphanumeric order. A complete description of each field is presented in the following section.
 
@@ -4033,16 +3960,16 @@ Prefix of the names of the transactions associated with this entry point (maximu
 \label{\detokenize{connectivity_guide:display-list-of-associated-transactions}}
 To access the list of transactions associated with an entry point, position the cursor on the desired entry point and press {[}PF4{]}. The transaction management menu will then appear.
 
+Entry Point Detail Display
+\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}-
 
-\section{Entry Point Detail Display}
-\label{\detokenize{connectivity_guide:entry-point-detail-display}}
 To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press {[}PF12{]}.
 
 \sphinxincludegraphics{{image61}.png}
 \sphinxstyleemphasis{Entry point detail display}
 
 
-\section{Entry Point Parameters}
+\subsection{Entry Point Parameters}
 \label{\detokenize{connectivity_guide:entry-point-parameters}}\begin{description}
 \item[{Name}] \leavevmode
 Represents the name of the entry point as specified in a logon sequence, or in the “Entry point” field of a terminal, line, or rule definition.
@@ -4165,7 +4092,7 @@ An ‘E’ in this field indicates support for 3270 extended attributes and colo
 \end{description}
 
 
-\section{Entry Point Signon Programs}
+\subsection{Entry Point Signon Programs}
 \label{\detokenize{connectivity_guide:entry-point-signon-programs}}
 The Signon Program field of the entry point indicates the name of the program used to control user sign-on. The following signon programs are supplied with VIRTEL:
 \begin{description}
@@ -4193,7 +4120,7 @@ Program similar to VIR0020L which allows access to public transactions (those de
 \end{description}
 
 
-\section{Entry Point Menu Programs}
+\subsection{Entry Point Menu Programs}
 \label{\detokenize{connectivity_guide:entry-point-menu-programs}}
 The Menu Program field of the entry point indicates the name of the program which presents the list of transactions which the user is allowed to access. The following program names can be specified:
 \begin{description}
@@ -4234,7 +4161,7 @@ Program for connecting to a single transaction. Identical to VIR0021B, except th
 \label{\detokenize{connectivity_guide:transactions}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id11}}
+\label{\detokenize{connectivity_guide:id12}}
 A transaction is a named entity that allows access to an “application” at the host site. The term “application” may be either a VTAM application, a VIRTEL sub-application, an external server, or an HTML directory.
 
 Each transaction is known to the user by its external name, and defines the rules of connection / disconnection of the referenced application. When a security tool is used, for example VIRTEL security, only the transactions defined as resources appearing in the profiles of a user are accessible by that user.
@@ -4242,7 +4169,7 @@ Each transaction is known to the user by its external name, and defines the rule
 Each entry point has a list of associated transactions. The entry point management sub-application allows the administrator to manage the entry point and its associated transactions.
 
 
-\section{Transaction Summary Display}
+\subsection{Transaction Summary Display}
 \label{\detokenize{connectivity_guide:transaction-summary-display}}
 Press {[}PF4{]} at the entry point detail screen to display the list of associated transactions:
 
@@ -4272,8 +4199,8 @@ Indicates the name of the application accessed via the transaction. This applica
 \end{description}
 
 
-\subsection{Navigation}
-\label{\detokenize{connectivity_guide:id12}}
+\subsubsection{Navigation}
+\label{\detokenize{connectivity_guide:id13}}
 The list can be positioned in the following ways:
 \begin{description}
 \item[{Search}] \leavevmode
@@ -4300,8 +4227,8 @@ To delete a definition, position the cursor on the name of the transaction to be
 To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition. Complete all required fields and press {[}ENTER{]}. The message CREATE OK indicates that the operation completed successfully
 
 
-\section{Transaction Summary Display}
-\label{\detokenize{connectivity_guide:id13}}
+\subsection{Transaction Detail Display}
+\label{\detokenize{connectivity_guide:transaction-detail-display}}
 To access the detailed transaction definition, position the cursor on the desired transaction and press {[}PF12{]}. The transaction detail definition screen will then be displayed.
 
 \sphinxincludegraphics{{image63}.png}
@@ -4311,7 +4238,7 @@ To access the detailed transaction definition, position the cursor on the desire
 \sphinxstyleemphasis{Transaction Definition Screen - HTML transaction}
 
 
-\section{Transaction Parameters}
+\subsection{Transaction Parameters}
 \label{\detokenize{connectivity_guide:transaction-parameters}}\begin{description}
 \item[{Internal name}] \leavevmode
 The name of the transaction as it is known to the system. The first “n” characters of this name are the prefix by which the transaction is linked to one or more entry points. Transaction security is based on this internal name. It should be noted that the transactions are placed on the Multi-Session Menu in alphanumeric order of the internal name.
@@ -4823,8 +4750,8 @@ Data sent to the application by means of the \&/A command must be constructed in
 Data sent to the terminal by means of the \&/T command must be constructed in the same format as the application would generate. In the case of a 3270 application, the message must be in the form of a 3270 data stream prefixed by a 3270 command code and WCC. VIRTEL will translate the message to the format required by the terminal (for example, HTML or Minitel) as appropriate.
 
 
-\section{Examples of scripts}
-\label{\detokenize{connectivity_guide:examples-of-scripts}}
+\section{Script examples}
+\label{\detokenize{connectivity_guide:script-examples}}
 \begin{sphinxadmonition}{note}{Note:}
 In these examples, script commands are introduced by the preferred sequence \&/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.
 \end{sphinxadmonition}
@@ -4959,7 +4886,7 @@ The external server management sub-application allows the administrator to maint
 is extended to handle the routing of incoming and outgoing calls to and from X25 GATE/PCNE applications such as CFT and Inter.PEL. Starting with VIRTEL version 4.42, the external server may also be used to define the parameters for outbound calls to a PESIT/IP file transfer server via a VIRPESIT line.
 
 
-\section{External Server Management Sub-Application}
+\subsection{External Server Management Sub-Application}
 \label{\detokenize{connectivity_guide:external-server-management-sub-application}}
 The external server management sub-application is accessed by pressing {[}PF7{]} in the Configuration Menu, or {[}PF11{]} in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0031. This subapplication allows management of the parameters associated with each external server.
 
@@ -4971,7 +4898,7 @@ When accessed by a transaction, the rules governing the management of transactio
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
 
-\section{External Server Summary Display}
+\subsection{External Server Summary Display}
 \label{\detokenize{connectivity_guide:external-server-summary-display}}
 The first screen displayed by the external server management sub-application shows a summary of existing definitions in alphanumeric order:
 
@@ -4979,7 +4906,7 @@ The first screen displayed by the external server management sub-application sho
 \sphinxstyleemphasis{External Server Summary Display}
 
 
-\subsection{Navigation}
+\subsubsection{Navigation}
 \label{\detokenize{connectivity_guide:id16}}
 In browse, alter, or delete mode, it is possible to scroll the list of external servers under the control of VIRTEL.
 \begin{description}
@@ -5198,8 +5125,8 @@ relinquishes control of the terminal. In this case, VIRTEL functions somewhat li
 3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or Multi-Session functionality. Whether a sign-on screen or a Multi-Session Menu is displayed depends on the characteristics associated with the entry point used. When no entry point is used, the rules described in the previous paragraph apply.
 
 
-\section{Fixed entry, physical pool, or logical pool?}
-\label{\detokenize{connectivity_guide:fixed-entry-physical-pool-or-logical-pool}}
+\section{Terminal Connection Types}
+\label{\detokenize{connectivity_guide:terminal-connection-types}}
 The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in a physical pool (which may be dynamic or non-dynamic); or by means of a reserved entry (logical pool). A fixed entry is a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a Minitel, to be presented to applications with different relays depending on the context. Each type of definition can be explicit or repeated.
 
 
@@ -5365,7 +5292,7 @@ P7=Page\PYGZhy{}1           P8=Page+1        P12=Details
 
 
 \subsubsection{Logical pool}
-\label{\detokenize{connectivity_guide:bookmark246}}\label{\detokenize{connectivity_guide:logical-pool}}
+\label{\detokenize{connectivity_guide:v457cn-logicalpool}}\label{\detokenize{connectivity_guide:logical-pool}}
 A logical pool is a group of relays which are not permanently assigned to any terminal. Instead, the relays in the group are available for allocation by terminals as and when required. The logical pool is defined as a group of terminals (the definitions can be explicit or repeated) whose “*Pool name” field contains a name prefixed preceded by the character “*”. The terminal name is not significant, except to distinguish it from other terminal definitions. Terminals which use the pool specify the pool name (with the “*” prefix) in their relay name field. The difference between a logical pool and a physical pool is that a relay in a physical pool is assigned when the requesting terminal connects, whereas a relay in a logical pool is assigned at the time the requesting terminal needs the relay to connect to a VTAM application.
 
 In the example shown below, W2HTP000 is a logical pool whose pool name is *W2HPOOL. The logical pool contains 16 relay LU’s named RHDVT000 to RHDVT015, with associated printer LU’s named RHDIM000 to RHDIM015. The relays in 7. Terminals 117 the *W2HPOOL logical pool are available for use by terminals CLVTA000-015, DEVTA000-015, and HTVTA000-015. Appropriate VTAM APPL statements must be provided for RHDVT??? And RHDIM???.
@@ -5489,17 +5416,17 @@ Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
 \end{sphinxVerbatim}
 
 
-\chapter{Virtel Definitions Examples}
-\label{\detokenize{connectivity_guide:virtel-definitions-examples}}
+\section{Virtel Terminal Definitions Examples}
+\label{\detokenize{connectivity_guide:virtel-terminal-definitions-examples}}
 This section presents a number of examples covering the definitions relating to terminals and details the parameters required on the VIRTEL and VTAM sides. The list is not exhaustive.
 
 
-\section{3270 terminal in WELCOME mode}
+\subsection{3270 terminal in WELCOME mode}
 \label{\detokenize{connectivity_guide:terminal-in-welcome-mode}}
 This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There must be no definition which allows an application relay to be assigned to the terminal.
 
 
-\section{3270 terminal in RELAY mode}
+\subsection{3270 terminal in RELAY mode}
 \label{\detokenize{connectivity_guide:terminal-in-relay-mode}}
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
@@ -5542,7 +5469,7 @@ Terminal Répété Relais Entrée Type Compression 2eme Relais
 \end{sphinxVerbatim}
 
 
-\section{Asynchronous terminal on an X25 or XOT line}
+\subsection{Asynchronous terminal on an X25 or XOT line}
 \label{\detokenize{connectivity_guide:asynchronous-terminal-on-an-x25-or-xot-line}}
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
@@ -5595,7 +5522,7 @@ A VTAM APPL statement must be defined for each terminal. If there is no such def
 The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.
 
 
-\section{Logical terminals}
+\subsection{Logical terminals}
 \label{\detokenize{connectivity_guide:logical-terminals}}
 It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:
 
@@ -5618,6 +5545,80 @@ It is possible to assign a physical terminal to a relay when a transaction conne
 \end{sphinxVerbatim}
 
 The 3 groups of terminals contain the value *POOL001 under the heading “*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries \textendash{} they cannot be placed in a logical pool.
+
+
+\chapter{Controlling LUNAMEs}
+\label{\detokenize{connectivity_guide:controlling-lunames}}\label{\detokenize{connectivity_guide:v457cn-forceluname}}
+In this section we look how we can control LUNAME selection for inbound HTTP calls.When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value \$URL\$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).
+
+The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address {[}Correspondent Management{]} which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See {\hyperref[\detokenize{connectivity_guide:v457cn-virtelrules}]{\sphinxcrossref{\DUrole{std,std-ref}{“Virtel Rules”,}}}} for further information on Virtel Rules.
+
+
+\section{Force LUNAME Selection}
+\label{\detokenize{connectivity_guide:force-luname-selection}}
+
+\subsection{HTTP connections with non-predefined terminals. ForceLUNAME option}
+\label{\detokenize{connectivity_guide:http-connections-with-non-predefined-terminals-forceluname-option}}
+It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
+\begin{itemize}
+\item {} 
+the VTAM LU name should be specified in the connection URL. For
+example, if the desired LU name is RLHVT500:
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41002}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{web2ajax}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{IMS}\PYG{o}{+}\PYG{n}{ForceLUNAME}\PYG{o}{=}\PYG{n}{RLHVT500}
+\end{sphinxVerbatim}
+\begin{itemize}
+\item {} 
+the VIRTEL transaction must specifiy \$LINE\$ in the “Pseudo-terminals”
+field instead of a terminal name prefix.
+
+\item {} 
+the HTTP line must specify a pool name
+
+\item {} 
+a terminal pool of the same name should be defined; only the pool is needed, not the predefined pseudo- terminals that are normaly defined alongside a pool. The terminal and printer pseudo-terminals will be automatically generated using the pool as a template together with the relay name specified in the ForceLUNAME parameter of the URL.
+
+\end{itemize}
+
+The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=\$LINE\$ when attached to a line which has an associated terminal pool.
+
+An example of a line with non-predefined LU names is shown below.
+
+
+\subsection{ForceLUNAME Examples}
+\label{\detokenize{connectivity_guide:forceluname-examples}}
+In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is \$LINE\$:
+
+\sphinxincludegraphics{{image12}.png}
+\sphinxstyleemphasis{Transaction definition using non-predefined LU names}
+
+The definition of line C-HTTP on port 41002 specifies *MYPOOL as the line pool name:
+
+\sphinxincludegraphics{{image13}.png}
+\sphinxstyleemphasis{HTTP line definition using non-predefined LU names}
+
+The definition of the terminal pool *MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:
+
+\sphinxincludegraphics{{image14}.png}
+\sphinxstyleemphasis{Terminal pool definition using non-predefined LU names}
+
+..note:
+\begin{quote}
+
+The name of the pool is only used to match the pool to its associated line.
+\end{quote}
+
+Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.
+
+The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
+
+
+\subsection{Reconnecting to an existing session}
+\label{\detokenize{connectivity_guide:reconnecting-to-an-existing-session}}
+The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSession\$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
 
 
 \chapter{Appendix}
