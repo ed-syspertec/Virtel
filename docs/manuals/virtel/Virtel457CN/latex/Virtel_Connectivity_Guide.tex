@@ -45,7 +45,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Mar 02, 2018}
+\date{Mar 07, 2018}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -536,9 +536,10 @@ After running the VIRCONF utility check to make sure that the condition code is 
 
 \newpage
 
+\index{Administration}
 
-\section{Accessing the Sub-Applications}
-\label{\detokenize{connectivity_guide:accessing-the-sub-applications}}
+\section{Administration}
+\label{\detokenize{connectivity_guide:administration}}\label{\detokenize{connectivity_guide:index-0}}
 The VIRTEL system administrator uses a set of programs called sub-applications to display and update the various elements in the VIRTEL configuration. The sub-applications are invoked via the Configuration Menu or the Sub- Application Menu. The Configuration Menu, introduced in VIRTEL version 4.27, provides access to the most commonly- used sub-applications required for VIRTEL Web Access and XOT. It is invoked from the VIRTEL Multi-Session menu via a transaction which calls module VIR0022. The Sub-Application Menu,
 invoked from the Configuration Menu, gives access to all of the sub-applications, including those rarely used today.
 
@@ -551,22 +552,38 @@ The first screen you will see is the Multi-Session menu:
 
 Press {[}F1{]} to display the Configuration Menu:
 
+\newpage
+
+\index{Administration!Configuration Menu}\index{Configuration Menu!Administration}
+
+\subsection{Configuration Menu}
+\label{\detokenize{connectivity_guide:configuration-menu}}\label{\detokenize{connectivity_guide:index-1}}
+The configuration Menu presents a list of sub applications which can be invoked to manage various Virtel entities such as lines, terminals, entry points etc.
+
 \sphinxincludegraphics[width=6.49562in,height=4.01500in]{{image2}.png}
 \sphinxstyleemphasis{Configuration Menu}
 
 To invoke a sub-application, press one of the function keys shown in the menu (for example, F1 \textendash{} Lines). To exit from the Configuration Menu and return to the Multi-Session menu, press CLEAR.
 
-You can optionally display the Sub-Application Menu by pressing
-{[}PA2{]}:
+From within the configuration Menu a further set of sub-applications can be accessible by pressing {[}PA2{]}
+
+\newpage
+
+\index{Administration!Sub-Application Menu}\index{Sub-Application Menu!Administration}
+
+\subsection{Sub-Application Menu}
+\label{\detokenize{connectivity_guide:sub-application-menu}}\label{\detokenize{connectivity_guide:index-2}}
+This menu presents a menu of additional sub-applications that can be used to manage Virtel.
 
 \sphinxincludegraphics[width=6.49562in,height=4.01500in]{{image3}.png}
 \sphinxstyleemphasis{Sub-Application Menu}
 
-To invoke a sub-application, press one of the function keys shown in the menu (for example, F7 \textendash{} Videotex Definitions). To exit from the Sub-Application Menu and return to the Configuration Menu, press CLEAR or PA2.
+To invoke a sub-application from this menu, press one of the function keys shown in the menu (for example, F7 \textendash{} Videotex Definitions). To exit from the Sub-Application Menu and return to the Configuration Menu, press CLEAR or PA2.
 
+\index{Administration!Screen Navigation}\index{Screen Navigation!Administration}
 
-\subsection{Navigation}
-\label{\detokenize{connectivity_guide:navigation}}
+\subsection{Screen Navigation}
+\label{\detokenize{connectivity_guide:screen-navigation}}\label{\detokenize{connectivity_guide:index-3}}
 The sub-applications have certain common operational characteristics:
 \begin{itemize}
 \item {} 
@@ -601,31 +618,34 @@ To exiting a sub-application, return to the previous menu, press {[}PF3{]}. To r
 
 \end{itemize}
 
+\index{Lines}
 
 \chapter{Lines}
-\label{\detokenize{connectivity_guide:lines}}
+\label{\detokenize{connectivity_guide:index-4}}\label{\detokenize{connectivity_guide:lines}}
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:introduction}}
-The “Line” is one of the basic elements of the VIRTEL configuration. A line represents a connection between VIRTEL and another network element: an NPSI MCH, an X25 router, an X25 application (GATE, PCNE), a CICS system, a VIRNT server, an SMTP server; alternatively, a line can represent a VIRTEL server (HTTP, SMTP) listening on a TCP/IP port.
+The “Line” is one of the basic elements of the VIRTEL configuration. A line represents a connection between VIRTEL and another network element: an NPSI MCH, an X25 router, an X25 application (GATE, PCNE), a CICS system, a VIRNT server, an SMTP server; alternatively, a line can represent a VIRTEL server (HTTP, SMTP) listening on a TCP/IP port. VIRTEL call routing is performed by sets of interrelated definitions. A call arriving on a line is processed by a set of rules which assign an entry point. The entry point contains a set of transactions which indicate the application or external server which will process the call. An external server refers to one or more lines on which the call may exit from VIRTEL. Each type of entity (lines, terminals, entry points, external servers) is defined by a separate sub-application but it is often useful to have an overall view of all the related definitions.
 
 This chapter describes all the functions associated with the definition of lines using the Line Managment sub-application. A detailed example will be presented later in
 this chapter for each type of line.
 
+\index{Lines!Line Management Sub-Application}\index{Line Management Sub-Application!Lines}
 
-\section{Line Management Sub-Application}
-\label{\detokenize{connectivity_guide:line-management-sub-application}}
+\section{Line Management Sub-Applications}
+\label{\detokenize{connectivity_guide:index-5}}\label{\detokenize{connectivity_guide:line-management-sub-applications}}
 This sub-application facilitates the definition of X25 and Reverse X25 lines, APPC connections, and TCP/IP lines. When the sub-application is started, it first displays a summary of existing definitions in alphanumeric order. The Line Management sub-application is invoked by pressing {[}PF1{]} in the Configuration Menu, by pressing {[}PF14{]} in the Sub-Application Menu, or via the Multi-Session Menu using a transaction which calls module VIR0046. This sub- application allows the management of all the line parameters under VIRTEL control.
 
 
-\subsection{Sub-Application security}
-\label{\detokenize{connectivity_guide:sub-application-security}}
+\subsection{Security}
+\label{\detokenize{connectivity_guide:security}}
 When the security subsystem is active, access to Line Management sub-application from the Configuration Menu or the Sub-Application Menu is controlled by the resource \$\$LINE\$\$.
 When accessed by a transaction, normal transaction security rules will apply. Security management and securing access to sub-applications is described in the VIRTEL Installation Guide.
 
+\index{Line Management Sub-Application!Summary Display}\index{Summary Display!Line Management Sub-Application}
 
-\subsection{Line Summary Display}
-\label{\detokenize{connectivity_guide:line-summary-display}}
+\subsection{Summary Display}
+\label{\detokenize{connectivity_guide:index-6}}\label{\detokenize{connectivity_guide:summary-display}}
 The first screen shows a summay of existing line definitions in alphanumeric order:
 
 \sphinxincludegraphics{{image4}.png}
@@ -633,9 +653,18 @@ The first screen shows a summay of existing line definitions in alphanumeric ord
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id1}}\begin{description}
+\label{\detokenize{connectivity_guide:navigation}}\begin{description}
 \item[{Search}] \leavevmode
 Type the name (or partial name) of the required entity on the first line under the heading “Internal Name”, then press {[}Enter{]}.
+
+\item[{{[}PF2{]}}] \leavevmode
+Delete Line under cursor position.
+
+\item[{{[}PF3{]}}] \leavevmode
+Return to Configuration menu.
+
+\item[{{[}PF4{]}}] \leavevmode
+List terminals associated with line.
 
 \item[{{[}PF6{]}}] \leavevmode
 Return to the first page of the list.
@@ -646,45 +675,36 @@ Display the previous page.
 \item[{{[}PF8{]}}] \leavevmode
 Display the next page.
 
-\item[{\sphinxstylestrong{Modifying a line}}] \leavevmode
-In the summary screen position the cursor under the name of the entity to be modified. Press {[}PF12{]}. The line detail definition screen is displayed. Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. Modifications are not recognized until you press the {[}PF1{]} key. Certain modifications require a restart of the VIRTEL system.
-
-\item[{\sphinxstylestrong{Deleing a line}}] \leavevmode
-In the summary screen position the cursor under the name of the entity to be deleted, then press {[}PF2{]}. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
-
-\item[{\sphinxstylestrong{Adding a line}}] \leavevmode
-To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
+\item[{{[}PF12{]}}] \leavevmode
+Enter Line detail Screen for line under cursor position.
 
 \end{description}
 
+\sphinxstylestrong{Modifying a line} - In the summary screen position the cursor under the name of the entity to be modified. Press {[}PF12{]}. The line detail definition screen is displayed. Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. Modifications are not recognized until you press the {[}PF1{]} key. Certain modifications require a restart of the VIRTEL system.
 
-\section{Line Overview Sub-Application}
-\label{\detokenize{connectivity_guide:line-overview-sub-application}}
-VIRTEL call routing is performed by sets of interrelated definitions. A call arriving on a line is processed by a set of rules which assign an entry point. The entry point contains a set of transactions which indicate the application or external server which will process the call. An external server refers to one or more lines on which the call may exit from VIRTEL. Each type of entity (lines, terminals, entry points, external servers) is defined by a separate sub-application but it is often useful to have an overall view of all the related definitions.
+\sphinxstylestrong{Deleing a line} - In the summary screen position the cursor under the name of the entity to be deleted, then press {[}PF2{]}. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
 
-
-\subsection{Line Overview Summary display}
-\label{\detokenize{connectivity_guide:line-overview-summary-display}}
-The summary screen displayed by the Lines Overview sub-application presents an overall view and allows the administrator to zoom in on individual definitions to display and optionally modify the detailed definition. Missing definitions (those referenced by another entity but not defined in the configuration) are highlighted in red. This sub-application allows the administrator to display and optionally modify the various entities associated with each line defined in the VIRTEL configuration. The Lines Overview sub-application is invoked by pressing {[}PF8{]} at the Configuration Menu, by pressing {[}PF15{]} at the Sub-Application Menu, or via the Multi-Session using a transaction which calls module VIR0049.
-
-\sphinxincludegraphics{{image57}.png}
-\sphinxstyleemphasis{Lines overview summary display}
+\sphinxstylestrong{Adding a line} - To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
 
 \newpage
 
+\index{Line Management Sub-Application!Detail Display}\index{Detail Display!Line Management Sub-Application}
 
-\subsection{Line Detail Display}
-\label{\detokenize{connectivity_guide:line-detail-display}}
-The screen shows a line detail display.
+\subsection{Detail Display}
+\label{\detokenize{connectivity_guide:detail-display}}\label{\detokenize{connectivity_guide:index-7}}
+The Line detail display is accessed from the Line summary screen via PF12(EDIT) on a selected line identified by the cursor position. The screen shows a line detail display.
 
 \sphinxincludegraphics{{image5}.png}
 \sphinxstyleemphasis{Line Detail Display}
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id2}}\begin{description}
+\label{\detokenize{connectivity_guide:id1}}\begin{description}
 \item[{{[}PF1{]}}] \leavevmode
-Update fields
+Update fields.
+
+\item[{{[}PF3{]}}] \leavevmode
+Return to Line Summary Display.
 
 \item[{{[}PF4{]}}] \leavevmode
 Display associated terminals.
@@ -692,11 +712,15 @@ Display associated terminals.
 \item[{{[}PF5{]}}] \leavevmode
 Display associated rules.
 
+\item[{{[}ENTER}] \leavevmode
+Add new line or update fields of current line.
+
 \end{description}
 
+\index{Line Management Sub-Application!Parameters}\index{Parameters!Line Management Sub-Application}
 
-\subsection{Line Parameters}
-\label{\detokenize{connectivity_guide:line-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-8}}\label{\detokenize{connectivity_guide:parameters}}\begin{description}
 \item[{Internal name}] \leavevmode
 Internal name of the line. This is the name by which VIRTEL refers to the line internally. It must be unique within a VIRTEL instance.
 
@@ -1014,17 +1038,29 @@ default delay is 2 seconds.
 
 \end{description}
 
+\newpage
 
-\section{Line Definition Examples (Non X25)}
-\label{\detokenize{connectivity_guide:line-definition-examples-non-x25}}
+\index{Lines!Line Overview Sub-Application}\index{Line Overview Sub-Application!Lines}
 
-\subsection{HTTP inbound line}
-\label{\detokenize{connectivity_guide:http-inbound-line}}
+\section{Line Overview Sub-Application}
+\label{\detokenize{connectivity_guide:index-9}}\label{\detokenize{connectivity_guide:line-overview-sub-application}}
+The Lines Overiew display presents an overall view and allows the administrator to zoom in on individual definitions to display and optionally modify the detailed definition. Missing definitions (those referenced by another entity but not defined in the configuration) are highlighted in red. This sub-application allows the administrator to display and optionally modify the various entities associated with each line defined in the VIRTEL configuration. The Lines Overview sub-application is invoked by pressing {[}PF8{]} at the Configuration Menu, by pressing {[}PF15{]} at the Sub-Application Menu, or via the Multi-Session using a transaction which calls module VIR0049.
+
+\sphinxincludegraphics{{image57}.png}
+\sphinxstyleemphasis{Lines overview summary display}
+
+\newpage
+
+\index{Lines!HTTP Inbound Line}\index{HTTP Inbound Line!Lines}
+
+\section{HTTP Inbound line}
+\label{\detokenize{connectivity_guide:http-inbound-line}}\label{\detokenize{connectivity_guide:index-10}}
 When an HTTP line is started, VIRTEL becomes an HTTP server, authorising connections from a web browser to applications at the host site. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT, as well as to a definition providing linkage to a file containing the HTML pages.
 
 \sphinxincludegraphics{{image6}.png}
 \sphinxstyleemphasis{Definition of an HTTP line}
-\begin{description}
+
+\index{HTTP Inbound Line!Parameters}\index{Parameters!HTTP Inbound Line}\begin{description}
 \item[{Remote ident}] \leavevmode
 Always blank.
 
@@ -1082,9 +1118,10 @@ Always blank.
 
 \end{description}
 
+\index{HTTP Inbound Line!Terminal definitions}\index{Terminal definitions!HTTP Inbound Line}
 
-\subsubsection{HTTP Inbound terminal definitions}
-\label{\detokenize{connectivity_guide:http-inbound-terminal-definitions}}
+\subsection{Terminal definitions}
+\label{\detokenize{connectivity_guide:index-12}}\label{\detokenize{connectivity_guide:terminal-definitions}}
 An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case CL). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub-group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to {\hyperref[\detokenize{connectivity_guide:v457cn-logicalpool}]{\sphinxcrossref{\DUrole{std,std-ref}{“logical pool of relays”}}}}. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
 
 Press {[}PF4{]} at the HTTP line detail definition screen to display the list of associated terminals whose prefix matches the prefix specified in the line definition. If the terminals refer to a logical pool, the pool itself may have a different prefix and will therefore not be displayed. In this case you can press {[}PF2{]} at the Configuration Menu to display a list of all terminals.
@@ -1111,9 +1148,10 @@ terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the termina
 
 Refer to the VIRTEL Web Access Guide for further information about printers.
 
+\index{HTTP Inbound Line!VTAM terminal definitions}\index{VTAM terminal definitions!HTTP Inbound Line}
 
-\subsubsection{HTTP Inbound VTAM definitions}
-\label{\detokenize{connectivity_guide:http-inbound-vtam-definitions}}
+\subsection{VTAM terminal definitions}
+\label{\detokenize{connectivity_guide:index-13}}\label{\detokenize{connectivity_guide:vtam-terminal-definitions}}
 HTTP relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1136,9 +1174,10 @@ HTTP relay LU’s must be defined to VTAM by means of APPL statements in an appl
 
 \sphinxstyleemphasis{VTAM definitions for HTTP terminals}
 
+\index{HTTP Inbound Line!CICS definitions}\index{CICS definitions!HTTP Inbound Line}
 
-\subsubsection{HTTP Inbound CICS definitions}
-\label{\detokenize{connectivity_guide:http-inbound-cics-definitions}}
+\subsection{CICS definitions}
+\label{\detokenize{connectivity_guide:index-14}}\label{\detokenize{connectivity_guide:cics-definitions}}
 The HTTP relay LU’s must also be defined to CICS, as shown in the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1172,16 +1211,21 @@ The HTTP relay LU’s must also be defined to CICS, as shown in the following ex
 
 This job is supplied in member CSDW2H of the VIRTEL SAMPLIB.
 
+\index{Lines!HTTP Outbound line}\index{HTTP Outbound line!Lines}
 
-\subsection{HTTP Outbound line}
-\label{\detokenize{connectivity_guide:v457cn-httpoutbound}}\label{\detokenize{connectivity_guide:http-outbound-line}}
+\section{HTTP Outbound line}
+\label{\detokenize{connectivity_guide:v457cn-httpoutbound}}\label{\detokenize{connectivity_guide:index-15}}\label{\detokenize{connectivity_guide:http-outbound-line}}
 An HTTP Outbound line allows VIRTEL to act as an HTTP requester. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT.
 
 By means of the OPTION\$ FOR-HTTP and SEND\$ TO-LINE instructions, a VIRTEL scenario can make requests to the remote HTTP server whose address is specified in the HTTP Outbound line definition. Multiple HTTP Outbound lines may be defined to allow requests to be sent to different HTTP servers. Refer to “VIRTEL Web Modernisation Scenarios” in the VIRTEL Web Access Guide for examples of the OPTION\$ FOR-HTTP instruction. The \$SITE\$ defines the IP address of the outbound server. It is passed via a sceanrio. See the OPTION\$ FOR-HTTP scenario instruction.
 
 \sphinxincludegraphics{{image15}.png}
 \sphinxstyleemphasis{Definition of an HTTP Outbound line}
-\begin{description}
+
+\index{HTTP Outbound Line!Parameters}\index{Parameters!HTTP Outbound Line}
+
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-16}}\label{\detokenize{connectivity_guide:id2}}\begin{description}
 \item[{Internal name}] \leavevmode
 Must be unique.
 
@@ -1213,16 +1257,11 @@ VIRHTTP or HTTP.
 
 \end{description}
 
+\index{Lines!HTTP Outbound SMTP line}\index{HTTP Outbound SMTP line!Lines}
 
-\subsubsection{HTTP Outbound line definitions}
-\label{\detokenize{connectivity_guide:http-outbound-line-definitions}}\begin{quote}
-
-An SMTP line establishes a TCP/IP link between VIRTEL and an external SMTP server. The external SMTP server receives outgoing
-mail from VIRTEL for distribution to users. The SMTP line also defines the characteristics of VIRTEL’s internal SMTP server which
-receives incoming mail sent to VIRTEL.
-
-The activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
-\end{quote}
+\section{HTTP Outbound SMTP line}
+\label{\detokenize{connectivity_guide:index-17}}\label{\detokenize{connectivity_guide:http-outbound-smtp-line}}
+An SMTP line establishes a TCP/IP link between VIRTEL and an external SMTP server. The external SMTP server receives outgoing mail from VIRTEL for distribution to users. The SMTP line also defines the characteristics of VIRTEL’s internal SMTP server which receives incoming mail sent to VIRTEL.  The activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
 \begin{description}
 \item[{..note::}] \leavevmode
 In case of SMTP problems, use the command F VIRTEL,TRACE,L=S-SMTP to trace the dialog between VIRTEL and the SMTP server. The trace output is written to SYSPRINT or SYSLST.
@@ -1231,7 +1270,11 @@ In case of SMTP problems, use the command F VIRTEL,TRACE,L=S-SMTP to trace the d
 
 \sphinxincludegraphics{{image16}.png}
 \sphinxstyleemphasis{SMTP line definition}
-\begin{description}
+
+\index{HTTP Outbound SMTP Line!Parameters}\index{Parameters!HTTP Outbound SMTP Line}
+
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id3}}\label{\detokenize{connectivity_guide:index-18}}\begin{description}
 \item[{Remote ident}] \leavevmode
 This field is required and represents the IP address and port number of the SMTP server to which VIRTEL sends outgoing mail.
 
@@ -1289,7 +1332,11 @@ The example below shows a group of 16 SMTP terminals with associated relays:
 
 \sphinxincludegraphics{{image17}.png}
 \sphinxstyleemphasis{SMTP terminal definitions}
-\begin{description}
+
+\index{HTTP Outbound SMTP Line!Terminal Definitions}\index{Terminal Definitions!HTTP Outbound SMTP Line}
+
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:id4}}\label{\detokenize{connectivity_guide:index-19}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -1313,9 +1360,10 @@ The number of terminals defined.
 
 \end{description}
 
+\index{HTTP Outbound SMTP Line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!HTTP Outbound SMTP Line}
 
-\subsubsection{HTTP Oubtbound (SMTP) VTAM definitions}
-\label{\detokenize{connectivity_guide:http-oubtbound-smtp-vtam-definitions}}
+\subsection{VTAM terminal definitions}
+\label{\detokenize{connectivity_guide:index-20}}\label{\detokenize{connectivity_guide:id5}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RWSVT200} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
 \PYG{n}{RWSVT201} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
@@ -1325,9 +1373,10 @@ The number of terminals defined.
 
 \sphinxstyleemphasis{VTAM definitions for SMTP relay LUs}
 
+\index{HTTP Ôutbound SMTP Line!CICS definitions}\index{CICS definitions!HTTP Ôutbound SMTP Line}
 
-\subsubsection{HTTP Oubtbound (SMTP) CICS definitions}
-\label{\detokenize{connectivity_guide:http-oubtbound-smtp-cics-definitions}}
+\subsection{CICS definitions}
+\label{\detokenize{connectivity_guide:id6}}\label{\detokenize{connectivity_guide:index-21}}
 Where incoming e-mails are used to trigger a CICS transaction (or other VTAM application), the SMTP relay LU’s must be defined by APPL statements in a VTAM application major node, as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1350,14 +1399,20 @@ Where incoming e-mails are used to trigger a CICS transaction (or other VTAM app
 \PYG{n}{TYPETERM}\PYG{p}{(}\PYG{n}{SMTP3270}\PYG{p}{)} \PYG{n}{NETNAME}\PYG{p}{(}\PYG{n}{RWSVT203}\PYG{p}{)} \PYG{n}{USERID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)}
 \end{sphinxVerbatim}
 
+\newpage
 
-\subsection{IMS Connect line}
-\label{\detokenize{connectivity_guide:ims-connect-line}}
+\index{Lines!IMS Connect Line}\index{IMS Connect Line!Lines}
+
+\section{IMS Connect line}
+\label{\detokenize{connectivity_guide:index-22}}\label{\detokenize{connectivity_guide:ims-connect-line}}
 An IMS Connect line establishes a TCP/IP connection between VIRTEL and IMS Connect using the RESUME TPIPE protocol. Once the connection is established, IMS application programs running in an MPP or BMP region can send requests to VIRTEL using the ICAL DL/I call. VIRTEL processes these requests by launching a customer-written scenario. The scenario can perform actions such as making an outbound HTTP call to a web service before returning the result to the IMS application program. Activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
 
 \sphinxincludegraphics{{image18}.png}
 \sphinxstyleemphasis{Definition of an IMS Connect line}
-\begin{description}
+
+
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id7}}\begin{description}
 \item[{Internal name}] \leavevmode
 The VIRTEL internal name for this connection.
 
@@ -1387,9 +1442,10 @@ Always ICONNECT.
 
 \end{description}
 
+\index{IMS Connect!Terminal Definitions}\index{Terminal Definitions!IMS Connect}
 
-\subsubsection{IMS Connect Terminals}
-\label{\detokenize{connectivity_guide:ims-connect-terminals}}
+\subsection{Terminals Definitions}
+\label{\detokenize{connectivity_guide:index-23}}\label{\detokenize{connectivity_guide:terminals-definitions}}
 Press {[}PF4{]} at the Line Detail Definition screen to display the list of terminals associated with an IMS Connect line. An IMS Connect line uses a single sub-group of type-3 terminals having a common prefix (ICAL in this example). No relays are defined for this type of line. The number of terminals defined determines the maximum number of simultaneous RESUME TPIPE sessions between VIRTEL and IMS Connect.
 
 \sphinxincludegraphics{{image19}.png}
@@ -1418,9 +1474,10 @@ Number of terminals (RESUME TPIPE sessions) defined.
 
 \end{description}
 
+\index{IMS Connect!Entry Point}\index{Entry Point!IMS Connect}
 
-\subsubsection{IMS Connect Entry Point}
-\label{\detokenize{connectivity_guide:ims-connect-entry-point}}
+\subsection{Entry Point}
+\label{\detokenize{connectivity_guide:entry-point}}\label{\detokenize{connectivity_guide:index-24}}
 Each IMS Connect line must have an associated Entry Point whose name is specified in the line definition. An example is shown below:
 
 \sphinxincludegraphics{{image20}.png}
@@ -1442,9 +1499,10 @@ processing requests from IMS.
 
 \end{description}
 
+\index{IMS Connect!Transactions}\index{Transactions!IMS Connect}
 
-\subsubsection{IMS Connect transactions}
-\label{\detokenize{connectivity_guide:ims-connect-transactions}}
+\subsection{Transactions}
+\label{\detokenize{connectivity_guide:index-25}}\label{\detokenize{connectivity_guide:transactions}}
 Each IMS Connect entry point must have one or more associated transactions. Press {[}PF4{]} at the Entry Point Detail Definition screen to display the list of transactions associated with an IMS Connect entry point. The transaction definition specifies the name of the scenario which will be invoked to process an incoming request from IMS. If the incoming request does not specify a transaction name, or if the specified transaction name is not defined in the entry point, then VIRTEL will invoke the transaction whose external name is the same as the entry point name. If there is no such default transaction, then the request is rejected and VIRTEL issues message VIRIC57E.
 
 \sphinxincludegraphics{{image21}.png}
@@ -1476,9 +1534,10 @@ for this transaction.
 
 \end{description}
 
+\index{ÎMS Connect!Scenarios}\index{Scenarios!ÎMS Connect}
 
-\subsubsection{IMS Connect Scenarios}
-\label{\detokenize{connectivity_guide:ims-connect-scenarios}}\begin{quote}
+\subsection{Scenarios}
+\label{\detokenize{connectivity_guide:scenarios}}\label{\detokenize{connectivity_guide:index-26}}\begin{quote}
 
 When a scenario is invoked to process a request message from IMS connect, VIRTEL places the contents of the request message in the variable \$INFILE\$. After processing the message, the scenario  returns a response message to IMS by means of the SEND\$ AS-ANSWER instruction. By way of illustration, the simple example shown below converts the request message to uppercase before sending it back as a response message to IMS:
 \end{quote}
@@ -1507,9 +1566,10 @@ END
 \PYG{n}{More} \PYG{n+nb}{complex} \PYG{n}{scenarios} \PYG{n}{may} \PYG{n}{be} \PYG{n}{constructed} \PYG{k}{with} \PYG{n}{the} \PYG{n}{aid} \PYG{n}{of} \PYG{n}{VIRTEL} \PYG{n}{Studio}\PYG{o}{.}
 \end{sphinxVerbatim}
 
+\index{ÎMS Connect!Message format}\index{Message format!ÎMS Connect}
 
-\subsubsection{IMS Connect message format}
-\label{\detokenize{connectivity_guide:ims-connect-message-format}}\begin{quote}
+\subsection{Message format}
+\label{\detokenize{connectivity_guide:message-format}}\label{\detokenize{connectivity_guide:index-27}}\begin{quote}
 
 Messages sent from an IMS application to VIRTEL may be prefixed by a 12-byte header. The format of the header is shown in the figure below:
 \end{quote}
@@ -1614,9 +1674,20 @@ justified and padded with blanks
 
 All data following the header is treated as binary data which is passed to the scenario without translation in the \$INFILE\$ variable.
 
+\newpage
 
-\subsubsection{MQ line parameters}
-\label{\detokenize{connectivity_guide:mq-line-parameters}}\begin{description}
+\index{Lines!MQ Line}\index{MQ Line!Lines}
+
+\section{MQ line}
+\label{\detokenize{connectivity_guide:mq-line}}\label{\detokenize{connectivity_guide:index-28}}
+An MQ line establishes a connection between VIRTEL and an MQSeries message queue. Each MQ line can receive messages from, or send messages to, one MQSeries message queue. Activation of this type of line requires the presence of the MQ1 or MQ2 parameter in the VIRTCT. The queue can be shared with another application (another VIRTEL for instance) or used in exclusive mode depending on its own definition.
+
+\sphinxincludegraphics{{image24}.png}
+
+\index{MQ Line!MQ Line parameters}\index{MQ Line parameters!MQ Line}
+
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-29}}\label{\detokenize{connectivity_guide:id8}}\begin{description}
 \item[{Remote ident}] \leavevmode
 For the RAW protocol: Leave blank.
 
@@ -1662,17 +1733,16 @@ Specify the way in which messages are processed on the line.
 \end{description}
 
 
-\subsubsection{MQ Terminals}
-\label{\detokenize{connectivity_guide:mq-terminals}}\begin{quote}
-
+\subsubsection{Navigation}
+\label{\detokenize{connectivity_guide:id9}}
 Press {[}PF4{]} at the line definition screen to display the list of terminals associated with an MQ line. An MQ line uses a single sub-group of type-3 terminals having a common prefix (MQIN in this example). The number of terminals defined determines the maximum number of messages which can be processed simultaneously by VIRTEL.
-\end{quote}
 
 \sphinxincludegraphics{{image25}.png}
 
+\index{MQ Line!Terminals Parameters}\index{Terminals Parameters!MQ Line}
 
-\subsubsection{MQ Line Terminal Definitions}
-\label{\detokenize{connectivity_guide:mq-line-terminal-definitions}}\begin{description}
+\subsection{Terminal Parameters}
+\label{\detokenize{connectivity_guide:index-30}}\label{\detokenize{connectivity_guide:terminal-parameters}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -1696,18 +1766,20 @@ Number of terminals defined.
 
 \end{description}
 
+\newpage
 
-\subsection{Batch line}
-\label{\detokenize{connectivity_guide:batch-line}}\begin{quote}
+\index{Lines!Batch Line}\index{Batch Line!Lines}
 
+\section{Batch line}
+\label{\detokenize{connectivity_guide:index-31}}\label{\detokenize{connectivity_guide:batch-line}}
 A batch line allows VIRTEL to process HTTP requests in batch mode. When a batch line is defined in the VIRTEL configuration, VIRTEL reads HTTP requests from an input sequential file at startup, processes the requests, writes the responses to an output sequential file, and shuts down. Activation of this type of line is subject to the presence of the BATCHn parameter in the VIRTCT.
-\end{quote}
 
 \sphinxincludegraphics{{image26}.png}
 
+\index{Batch Line!Parameters}\index{Parameters!Batch Line}
 
-\subsubsection{Batch Line Parameters}
-\label{\detokenize{connectivity_guide:batch-line-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id10}}\label{\detokenize{connectivity_guide:index-32}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Always blank.
 
@@ -1756,9 +1828,10 @@ Always blank.
 
 \end{description}
 
+\index{Batch Lines!Terminal Definitions}\index{Terminal Definitions!Batch Lines}
 
-\subsubsection{Batch Line  terminals}
-\label{\detokenize{connectivity_guide:batch-line-terminals}}\begin{quote}
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:id11}}\label{\detokenize{connectivity_guide:index-33}}\begin{quote}
 
 Like an HTTP line, a batch line uses up to two sub-groups of type-3 terminals having a common prefix (in this case BT1). Refer to “HTTP terminals” 26 for further details. If the batch requests do not require connection to a host VTAM application, then it is only necessary to define the first terminal sub-group (the sub-group without relays).
 
@@ -1769,9 +1842,12 @@ Press {[}PF4{]} at the line detail definition screen to display the list of asso
 
 \sphinxstyleemphasis{Definition of terminals without relay for a batch line}
 
+\newpage
 
-\subsection{Native TCP/IP Gateway}
-\label{\detokenize{connectivity_guide:native-tcp-ip-gateway}}\begin{quote}
+\index{Lines!Native TCP/IP Gateway line}\index{Native TCP/IP Gateway line!Lines}
+
+\section{Native TCP/IP Gateway line}
+\label{\detokenize{connectivity_guide:native-tcp-ip-gateway-line}}\label{\detokenize{connectivity_guide:index-34}}\begin{quote}
 
 VIRTEL can act as an IP-to-SNA gateway allowing existing VTAM applications to communicate with partner applications via the IP network. By connecting to a VIRTEL NATIVE TCP/IP port, a remote application can establish a TCP/IP session with VIRTEL and exchange messages with a host VTAM application using a simple record-oriented protocol.
 
@@ -1784,9 +1860,10 @@ The activation of this type of line requires the presence of the \textgreater{}T
 
 \sphinxincludegraphics{{image28}.png}
 
+\index{Native Gateway Line!Native TCP/IP Gateway line parameters}\index{Native TCP/IP Gateway line parameters!Native Gateway Line}
 
-\subsubsection{NATIVE TCP/IP line parameters}
-\label{\detokenize{connectivity_guide:native-tcp-ip-line-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id12}}\label{\detokenize{connectivity_guide:index-35}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Not used for a NATIVE TCP/IP line.
 
@@ -1813,9 +1890,10 @@ Specify a packet size sufficient to contain the largest message sent by either t
 
 \end{description}
 
+\index{Native Gateway Line!Line terminals}\index{Line terminals!Native Gateway Line}
 
-\subsubsection{NATIVE TCP/IP Line Terminals}
-\label{\detokenize{connectivity_guide:native-tcp-ip-line-terminals}}\begin{quote}
+\subsection{Line Terminals}
+\label{\detokenize{connectivity_guide:line-terminals}}\label{\detokenize{connectivity_guide:index-36}}\begin{quote}
 
 By pressing {[}PF4{]}, the list of terminals associated with the NATIVE TCP/IP line will be displayed. A NATIVE TCP/IP line uses a single group of type-3 terminals having a common prefix (VIP in this example). The number of terminals defined determines the number of simultaneous conversations authorised.
 
@@ -1824,9 +1902,10 @@ The example below shows a group of 4 NATIVE TCP/IP terminals:
 
 \sphinxincludegraphics{{image29}.png}
 
+\index{Native Gateway Line!Terminal parameters}\index{Terminal parameters!Native Gateway Line}
 
-\subsubsection{NATIVE TCP/IP Line Terminal parameters}
-\label{\detokenize{connectivity_guide:native-tcp-ip-line-terminal-parameters}}\begin{description}
+\subsection{Terminal parameters}
+\label{\detokenize{connectivity_guide:id13}}\label{\detokenize{connectivity_guide:index-37}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -1853,51 +1932,19 @@ The number of terminals defined.
 
 \end{description}
 
+\index{Native Gateway Line!Relay Pool}\index{Relay Pool!Native Gateway Line}
 
-\subsubsection{NATIVE TCP/IP Line Relay Pool}
-\label{\detokenize{connectivity_guide:native-tcp-ip-line-relay-pool}}
+\subsection{Relay Pool}
+\label{\detokenize{connectivity_guide:index-38}}\label{\detokenize{connectivity_guide:relay-pool}}
 The figure below shows the definition of the NATIVE TCP/IP relay pool:
 
 \sphinxincludegraphics{{image30}.png}
 
+\index{Native Gateway Line!VTAM terminal definitions}\index{VTAM terminal definitions!Native Gateway Line}
 
-\subsubsection{NATIVE TCP/IP Line Terminal Parameters}
-\label{\detokenize{connectivity_guide:id3}}\begin{description}
-\item[{Terminal}] \leavevmode
-Any terminal name may be used for the relay pool.
-
-\item[{Relay}] \leavevmode
-Specify the name of the the terminal LU names as seen by the VTAM
-application.
-
-\item[{Pool name}] \leavevmode
-Must match the relay name field in the NATIVE TCP/IP terminal
-definition. The first character is an asterisk indicating that this
-is the name of a pool.
-
-\item[{Entry point}] \leavevmode
-Leave blank.
-
-\item[{Terminal type}] \leavevmode
-Always 3.
-
-\item[{Compression}] \leavevmode
-Always 2.
-
-\item[{Possible Calls}] \leavevmode
-Always 3.
-
-\item[{Repeat}] \leavevmode
-The number of terminals defined.
-
-\end{description}
-
-
-\subsubsection{NATIVE TCP/IP Line VTAM terminals definitions}
-\label{\detokenize{connectivity_guide:native-tcp-ip-line-vtam-terminals-definitions}}\begin{quote}
-
+\subsection{VTAM terminals definitions}
+\label{\detokenize{connectivity_guide:index-39}}\label{\detokenize{connectivity_guide:vtam-terminals-definitions}}
 Relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
-\end{quote}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{VIRTAPPL} \PYG{n}{VBUILD} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{APPL}
@@ -1912,9 +1959,10 @@ Relay LU’s must be defined to VTAM by means of APPL statements in an applicati
 
 \sphinxstyleemphasis{VTAM definitions for NATIVE TCP/IP relay LU’s}
 
+\index{Native Gateway Line!CICS definitions}\index{CICS definitions!Native Gateway Line}
 
-\subsubsection{NATIVE TCP/IP Line CICS Terminal definitions}
-\label{\detokenize{connectivity_guide:native-tcp-ip-line-cics-terminal-definitions}}
+\subsection{CICS definitions}
+\label{\detokenize{connectivity_guide:id14}}\label{\detokenize{connectivity_guide:index-40}}
 The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1932,9 +1980,10 @@ The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the fol
 \PYG{n}{DESC}\PYG{p}{(}\PYG{n}{VIRTEL} \PYG{n}{NATIVE} \PYG{n}{TCP}\PYG{o}{/}\PYG{n}{IP} \PYG{n}{TERMINAL}\PYG{p}{)} \PYG{n}{TYPETERM}\PYG{p}{(}\PYG{n}{DT3650}\PYG{p}{)}
 \end{sphinxVerbatim}
 
+\index{Native Gateway Line!Message Format}\index{Message Format!Native Gateway Line}
 
-\subsubsection{NATIVE TCP/IP Line Message Header}
-\label{\detokenize{connectivity_guide:native-tcp-ip-line-message-header}}
+\subsection{Message format}
+\label{\detokenize{connectivity_guide:index-41}}\label{\detokenize{connectivity_guide:id15}}
 All messages sent on a NATIVE TCP/IP conversation are prefixed by a 2-byte or 4-byte header. The format of the header for the NATIVE2 protocol is shown in the figure below:
 
 
@@ -2055,18 +2104,20 @@ All data following the header is treated as binary data which is passed to the C
 
 The variants NATIVE2P and NATIVE4P may be used if the terminal is defined to the application as a 3270 (LU2) device. In this case, VIRTEL will add the prefix X‘7D4040’ to inbound messages before sending them to the application, and will remove the 3270 prefix (for example X’F1C1’) from outbound messages before sending them to the terminal. The message format to the terminal is the same as described above for NATIVE2 and NATIVE4.
 
+\newpage
 
-\subsection{VIRPASS TCP line (VIRKIX)}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-virkix}}\begin{quote}
+\index{Lines!VIRPASS TCP line (VIRKIX)}\index{VIRPASS TCP line (VIRKIX)!Lines}
 
+\section{VIRPASS TCP line (VIRKIX)}
+\label{\detokenize{connectivity_guide:virpass-tcp-line-virkix}}\label{\detokenize{connectivity_guide:index-42}}
 Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in TCP/IP mode using the VIRKIX program on the CICS side.
-\end{quote}
 
 \sphinxincludegraphics{{image31}.png}
 
+\index{VIRPASS (VIRKIX) line!Parameters}\index{Parameters!VIRPASS (VIRKIX) line}
 
-\subsubsection{VIRPASS TCP line (VIRKIX) Parameters}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-virkix-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id16}}\label{\detokenize{connectivity_guide:index-43}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Contains the IP address and port number of the CICS side of the link. It must match the fields “adresse TCP/IP” and “port serveur” of the TCP/IP interface defined in VIRKIX. This field should only be used when the VIRKIX relay type is “Virpass TCP/IP” (previously known as “Virpass Symétrique”). If the VIRKIX relay type is “Virpass Asymétrique” (previously known as “Virtel TCP/IP”), this field must be blank, and VIRTEL will wait for VIRKIX to make the connection on he address specified in the “Local ident” field.
 
@@ -2099,9 +2150,10 @@ Always blank.
 
 \end{description}
 
+\index{VIRPASS (VIRKIX) line!Terminal Definitions}\index{Terminal Definitions!VIRPASS (VIRKIX) line}
 
-\subsubsection{VIRPASS TCP line (VIRKIX) Terminals}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-virkix-terminals}}\begin{quote}
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-44}}\label{\detokenize{connectivity_guide:id17}}\begin{quote}
 
 A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” \textendash{} “Appels X25 entrant”. The “Type of
 line” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
@@ -2110,18 +2162,20 @@ line” field in the relay definition must contain the value X25VIRPA (or E25TCP
 \sphinxincludegraphics{{image32}.png}
 \sphinxstyleemphasis{Terminals on a VIRPASS TCP line for VIRKIX}
 
+\newpage
 
-\subsection{VIRPASS TCP line (VIRNT)}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-virnt}}\begin{quote}
+\index{Lines!VIRPASS TCP line (VIRNT)}\index{VIRPASS TCP line (VIRNT)!Lines}
 
+\section{VIRPASS TCP line (VIRNT)}
+\label{\detokenize{connectivity_guide:index-45}}\label{\detokenize{connectivity_guide:virpass-tcp-line-virnt}}
 A VIRNT system can be connected to VIRTEL to act as an X25 gateway handling incoming and outgoing connections to and from VIRTEL, or to act as a LECAM server. Communication between VIRTEL and VIRNT can be established using either an APPC line or a TCP/IP line. This section describes TCP/IP mode.
-\end{quote}
 
 \sphinxincludegraphics{{image33}.png}
 
+\index{VIRPASS (VIRNT) line!Parameters}\index{Parameters!VIRPASS (VIRNT) line}
 
-\subsubsection{VIRPASS TCP line (VIRNT) Parameters}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-virnt-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id18}}\label{\detokenize{connectivity_guide:index-46}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Always blank.
 
@@ -2190,9 +2244,10 @@ NTTCS980
 \par
 \sphinxattableend\end{savenotes}
 
+\index{VIRPASS (VIRNT) line!Terminal definitions}\index{Terminal definitions!VIRPASS (VIRNT) line}
 
-\subsubsection{VIRPASS TCP line (VIRNT*) terminal definitions}
-\label{\detokenize{connectivity_guide:virpass-tcp-line-virnt-terminal-definitions}}
+\subsection{Terminal definitions}
+\label{\detokenize{connectivity_guide:id19}}\label{\detokenize{connectivity_guide:index-47}}
 Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:
 
 \sphinxincludegraphics{{image34}.png}
@@ -2205,16 +2260,20 @@ Terminals in the pool dedicated to outgoing calls do not have an associated rela
 \sphinxincludegraphics{{image35}.png}
 \sphinxstyleemphasis{Outbound terminals for a VIRPASS TCP line for VIRNT}
 
+\newpage
 
-\subsection{VIRPASS XM line (VIRKIX)}
-\label{\detokenize{connectivity_guide:virpass-xm-line-virkix}}
+\index{Lines!VIRPASS XM line (VIRKIX)}\index{VIRPASS XM line (VIRKIX)!Lines}
+
+\section{VIRPASS XM line (VIRKIX)}
+\label{\detokenize{connectivity_guide:index-48}}\label{\detokenize{connectivity_guide:virpass-xm-line-virkix}}
 Communication between VIRTEL and CICS can be established via APPC, TCP/IP, or Cross-memory. This section describes communications in Cross-memory (XM) mode using the VIRKIX program on the CICS side.
 
 \sphinxincludegraphics{{image36}.png}
 
+\index{VIRPASS XM Line (VIRKIX)!Parameters}\index{Parameters!VIRPASS XM Line (VIRKIX)}
 
-\subsubsection{VIRPASS XM line (VIRKIX) Parameters}
-\label{\detokenize{connectivity_guide:virpass-xm-line-virkix-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id20}}\label{\detokenize{connectivity_guide:index-49}}\begin{description}
 \item[{External name}] \leavevmode
 Must match the relay name of a VIRPASS cross-memory interface in VIRKIX.
 
@@ -2252,9 +2311,10 @@ Always blank.
 
 \end{description}
 
+\index{VIRPASS XM Line (VIRKIX)!Terminal definitions}\index{Terminal definitions!VIRPASS XM Line (VIRKIX)}
 
-\subsubsection{VIRPASS XM line (VIRKIX) terminal definitions}
-\label{\detokenize{connectivity_guide:virpass-xm-line-virkix-terminal-definitions}}
+\subsection{Terminal definitions}
+\label{\detokenize{connectivity_guide:id21}}\label{\detokenize{connectivity_guide:index-50}}
 A VIRPASS XM line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” \textendash{} “Appels X25 entrant”. The “Type de line” field in the relay definition must contain the value X25VIRPA (this is the same value as for VIRPASS TCP, which was coded as E25TCPIP in previous versions of VIRKIX).
 
 Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.
@@ -2306,28 +2366,27 @@ other fields on this panel.
 
 \end{description}
 
+\newpage
 
-\section{X25 Line Definition Examples}
-\label{\detokenize{connectivity_guide:x25-line-definition-examples}}
+\index{Lines!X25 XOT line}\index{X25 XOT line!Lines}
 
-\subsection{XOT line}
-\label{\detokenize{connectivity_guide:xot-line}}\begin{quote}
-
+\section{X25 XOT line}
+\label{\detokenize{connectivity_guide:x25-xot-line}}\label{\detokenize{connectivity_guide:index-51}}
 An XOT line establishes a connection between VIRTEL and a CISCO router. Across this type of line, VIRTEL processes incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
-\end{quote}
 
 \sphinxincludegraphics{{image22}.png}
 
+\index{X25 XOT line!Parameters}\index{Parameters!X25 XOT line}
 
-\subsubsection{Definition of an XOT line}
-\label{\detokenize{connectivity_guide:definition-of-an-xot-line}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-52}}\label{\detokenize{connectivity_guide:id22}}\begin{description}
 \item[{Remote ident}] \leavevmode
 IP address of the router followed by the port number 1998.
 
 The address specified here is used by VIRTEL as the destination address for outgoing calls. Incoming calls are accepted from any IP address, except in the case of XOT lines which share a common IP address and port (specified in the “Local ident” field). Such lines only accept calls whose IP source address matches the router address specified in the “Remote ident” field. This allows VIRTEL to allocate incoming calls to the correct XOT line. The parameter UNIQUEP=Y (which can be specified only in batch definition mode
 using the VIRCONF utility) allows this check to be enforced regardless of whether the “Local ident” field specifies a shared
 address.
-
+\begin{description}
 \item[{..note::}] \leavevmode
 Take care to ensure that the router presents the expected address to VIRTEL. You may need to use the xot-source parameter in the router configuration to ensure that the router presents the correct IP address to VIRTEL for incoming calls. Example:
 
@@ -2336,7 +2395,7 @@ Take care to ensure that the router presents the expected address to VIRTEL. You
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{x25} \PYG{n}{route} \PYG{o}{.}\PYG{o}{*} \PYG{n}{xot} \PYG{l+m+mf}{10.0}\PYG{o}{.}\PYG{l+m+mf}{1.1} \PYG{n}{xot}\PYG{o}{\PYGZhy{}}\PYG{n}{source} \PYG{n}{loopback0}
 \end{sphinxVerbatim}
-\begin{description}
+
 \item[{Local ident}] \leavevmode
 The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading {\hyperref[\detokenize{connectivity_guide:bookmark13}]{\sphinxcrossref{\DUrole{std,std-ref}{“Line Parameters”,}}}}.
 
@@ -2375,9 +2434,10 @@ Normally blank, unless non-standard ASCII translation is required for special ap
 
 \end{description}
 
+\index{X25 XOT line!Terminal Definitions}\index{Terminal Definitions!X25 XOT line}
 
-\subsubsection{XOT Terminals}
-\label{\detokenize{connectivity_guide:xot-terminals}}\begin{quote}
+\subsection{Terminal definitions}
+\label{\detokenize{connectivity_guide:index-53}}\label{\detokenize{connectivity_guide:id23}}\begin{quote}
 
 Press {[}PF4{]} at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.
 \end{quote}
@@ -2411,13 +2471,14 @@ Always 2.
 Always 3.
 
 \item[{Repeat}] \leavevmode
-Number of terminals (virtual circuits) defined.
+Number of terminals (virtual circuits) defined.\textasciicircum{}
 
 \end{description}
 
+\index{X25 XOT line!VTAM terminal definitions}\index{VTAM terminal definitions!X25 XOT line}
 
-\subsubsection{XOT VTAM terminal definition}
-\label{\detokenize{connectivity_guide:xot-vtam-terminal-definition}}\begin{description}
+\subsection{VTAM terminal definition}
+\label{\detokenize{connectivity_guide:vtam-terminal-definition}}\label{\detokenize{connectivity_guide:index-54}}\begin{description}
 \item[{When incoming calls are routed to a type-1 transaction (VTAM}] \leavevmode
 application), the relay LU’s must be defined by APPL statements in a
 VTAM application major node, as shown in the example below:
@@ -2431,37 +2492,24 @@ VTAM application major node, as shown in the example below:
 \PYG{n}{RXOTF003} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
 \end{sphinxVerbatim}
 
+\newpage
 
-\subsection{MQ line}
-\label{\detokenize{connectivity_guide:mq-line}}\begin{quote}
+\index{Lines!X25 VIRPESIT line}\index{X25 VIRPESIT line!Lines}
 
-An MQ line establishes a connection between VIRTEL and an MQSeries
-message queue. Each MQ line can receive messages from, or send
-messages to, one MQSeries message queue. Activation of this type of
-line requires the presence of the MQ1 or MQ2 parameter in the
-VIRTCT. The queue can be shared with another application (another
-VIRTEL for instance) or used in exclusive mode depending on its own
-definition.
-\end{quote}
-
-\sphinxincludegraphics{{image24}.png}
-
-
-\subsection{VIRPESIT line}
-\label{\detokenize{connectivity_guide:virpesit-line}}
+\section{X25 VIRPESIT line}
+\label{\detokenize{connectivity_guide:x25-virpesit-line}}\label{\detokenize{connectivity_guide:index-55}}
 A VIRPESIT line establishes a TCP/IP link between VIRTEL and a file transfer application such as CFT. A VIRPESIT line allows VIRTEL to act as an IP-to-X25 gateway for file transfer sessions using the PESIT and ETEBAC protocols. File transfer requests arriving via IP on a VIRPESIT line may be routed either to a local GATE or PCNE application, or to a remote partner via the X25 network. Similarly, file transfer requests from the X25 network or from local GATE or PCNE applications may be routed to the IP network via a VIRPESIT line.
 
 The activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
 
 \sphinxincludegraphics{{image38}.png}
 
+\index{X25 VIRPESIT line!Parameters}\index{Parameters!X25 VIRPESIT line}
 
-\subsubsection{VIRPESIT line Parameters}
-\label{\detokenize{connectivity_guide:virpesit-line-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-56}}\label{\detokenize{connectivity_guide:id24}}\begin{description}
 \item[{Remote ident}] \leavevmode
-(optional) IP address and port number of the default partner (for
-outbound calls when the external server does not specify a partner
-IP address).
+(optional) IP address and port number of the default partner (for outbound calls when the external server does not specify a partner IP address).
 
 \item[{Local ident}] \leavevmode
 The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading {\hyperref[\detokenize{connectivity_guide:bookmark13}]{\sphinxcrossref{\DUrole{std,std-ref}{“Line Parameters”}}}}.
@@ -2489,9 +2537,10 @@ By pressing {[}PF4{]}, the list of terminals associated with the VIRPESIT line w
 
 \sphinxincludegraphics{{image39}.png}
 
+\index{X25 VIRPESIT line!Terminal definitions}\index{Terminal definitions!X25 VIRPESIT line}
 
-\subsubsection{VIRPESIT line terminal definitions}
-\label{\detokenize{connectivity_guide:virpesit-line-terminal-definitions}}\begin{description}
+\subsection{Terminal definitions}
+\label{\detokenize{connectivity_guide:id25}}\label{\detokenize{connectivity_guide:index-57}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -2516,16 +2565,20 @@ The number of terminals defined.
 
 \end{description}
 
+\newpage
 
-\subsection{VIRNEOX line}
-\label{\detokenize{connectivity_guide:virneox-line}}
+\index{Lines!X25 VIRNEOX line}\index{X25 VIRNEOX line!Lines}
+
+\section{X25 VIRNEOX line}
+\label{\detokenize{connectivity_guide:x25-virneox-line}}\label{\detokenize{connectivity_guide:index-58}}
 A VIRNEOX line allows VIRTEL to act as a server for communications with application programs over a TCP/IP connection using a simplified X25-like protocol. Typically the application will be an  existing X25 application which has been converted to TCP/IP. The activation of this type of line requires the presence of the TCP1 parameter in the VIRTCT.
 
 \sphinxincludegraphics{{image40}.png}
 
+\index{X25 VIRNEOX line!Parameters}\index{Parameters!X25 VIRNEOX line}
 
-\subsubsection{VIRNEOX line parameters}
-\label{\detokenize{connectivity_guide:virneox-line-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-59}}\label{\detokenize{connectivity_guide:id26}}\begin{description}
 \item[{Local ident}] \leavevmode
 The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading {\hyperref[\detokenize{connectivity_guide:bookmark13}]{\sphinxcrossref{\DUrole{std,std-ref}{“Line Parameters”}}}}.
 
@@ -2555,9 +2608,10 @@ The example below shows a group of 8 VIRNEOX terminals:
 
 \sphinxincludegraphics{{image41}.png}
 
+\index{X25 VIRNEOX line!Terminal definitions}\index{Terminal definitions!X25 VIRNEOX line}
 
-\subsubsection{VIRNEOX line terminal definitions}
-\label{\detokenize{connectivity_guide:virneox-line-terminal-definitions}}\begin{description}
+\subsection{Terminal definitions}
+\label{\detokenize{connectivity_guide:id27}}\label{\detokenize{connectivity_guide:index-60}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
 
@@ -2581,17 +2635,21 @@ The number of terminals defined.
 
 \end{description}
 
+\newpage
 
-\subsection{X25 GATE Non Fast-Connect line}
-\label{\detokenize{connectivity_guide:v457cn-x25gateline}}\label{\detokenize{connectivity_guide:x25-gate-non-fast-connect-line}}
+\index{Lines!X25 GATE Non Fast-Connect (NFC) line}\index{X25 GATE Non Fast-Connect (NFC) line!Lines}
+
+\section{X25 GATE Non Fast-Connect (NFC) line}
+\label{\detokenize{connectivity_guide:v457cn-x25gateline}}\label{\detokenize{connectivity_guide:x25-gate-non-fast-connect-nfc-line}}\label{\detokenize{connectivity_guide:index-61}}
 An X25 GATE Non Fast-Connect line establishes a connection between VIRTEL and an X25 line connected to an IBM 3745 communications controller. Across this type of line, VIRTEL handles incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the GATE and MINITEL parameters in the VIRTCT.
 
 \sphinxincludegraphics{{image42}.png}
 \sphinxstyleemphasis{Definition of an X25 GATE non-Fast Connect line}
 
+\index{X25 GATE NFC line!Parameters}\index{Parameters!X25 GATE NFC line}
 
-\subsubsection{X25 GATE NFC parameters}
-\label{\detokenize{connectivity_guide:x25-gate-nfc-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id28}}\label{\detokenize{connectivity_guide:index-62}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Name of the MCH LU generated by NPSI.
 
@@ -2636,9 +2694,10 @@ The relay name is compulsory for this type of terminal.
 
 \sphinxincludegraphics{{image43}.png}
 
+\index{X25 GATE NFC line!Terminal Definitions}\index{Terminal Definitions!X25 GATE NFC line}
 
-\subsubsection{X25 GATE NFC terminal Definitions}
-\label{\detokenize{connectivity_guide:x25-gate-nfc-terminal-definitions}}\begin{description}
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:id29}}\label{\detokenize{connectivity_guide:index-63}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the virtual circuit LU names generated by the X25.VC macro in the NPSI.
 
@@ -2659,9 +2718,10 @@ The number of virtual circuits defined by NPSI.
 
 \end{description}
 
+\index{X25 GATE NFC line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!X25 GATE NFC line}
 
-\subsubsection{X25 GATE NFC VTAM definitions}
-\label{\detokenize{connectivity_guide:x25-gate-nfc-vtam-definitions}}
+\subsection{VTAM Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-64}}\label{\detokenize{connectivity_guide:id30}}
 Each Minitel or PC wishing to benefit from VIRTEL functionality must be defined in a VTAM switched major node similar to the one shown below.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2710,14 +2770,16 @@ LOGAPPL takes the value specified in the APPLID TYPE=INITIAL parameter in the VI
 The LOGAPPL and USSTAB parameters are valid only for non GATE lines. For sites making outgoing calls, from NCP 5.40 onwards, USSTAB and GATE are incompatible, and therefore the USSTAB keyword should be omitted for a switched major node describing type 1 LU’s.
 \end{sphinxVerbatim}
 
+\index{X25 GATE NFC line!NCP Parameters}\index{NCP Parameters!X25 GATE NFC line}
 
-\subsubsection{X25 GATE NFC NCP parameters}
-\label{\detokenize{connectivity_guide:x25-gate-nfc-ncp-parameters}}
+\subsection{NCP parameters}
+\label{\detokenize{connectivity_guide:index-65}}\label{\detokenize{connectivity_guide:ncp-parameters}}
 The LUDRPOOL MACRO must contain an NUMTYP1 parameter with a value greater than or equal to the number of CVC available on the lines. For LU6.2 connections, check for the presence of the NUMILU parameter which indicates the number of available PU type 2.1.
 
+\index{X25 GATE NFC line!NPSI Parameters}\index{NPSI Parameters!X25 GATE NFC line}
 
-\subsubsection{X25 GATE NFC NPSI parameters}
-\label{\detokenize{connectivity_guide:x25-gate-nfc-npsi-parameters}}
+\subsection{NPSI parameters}
+\label{\detokenize{connectivity_guide:index-66}}\label{\detokenize{connectivity_guide:npsi-parameters}}
 The following parameters must agree with the specification of your TRANSPAC subscription.
 
 \sphinxstylestrong{Macro X25VCCPT}
@@ -2761,9 +2823,10 @@ Must be EVEN or NO.
 
 \end{description}
 
+\index{X25 GATE NFC line!Routing Incoming Calls}\index{Routing Incoming Calls!X25 GATE NFC line}
 
-\subsubsection{Routing on incoming calls}
-\label{\detokenize{connectivity_guide:routing-on-incoming-calls}}
+\subsection{Routing on incoming calls}
+\label{\detokenize{connectivity_guide:index-67}}\label{\detokenize{connectivity_guide:routing-on-incoming-calls}}
 Incoming calls are routed by means of an entry point name specified in the Call User Data of the incoming call packet. If no Call User Data is specified, the value specified in the “Entry Point” parameter of the terminal definition is used. If this field is not supplied, the second value of the DEFENTR parameter in the VIRTCT is used.
 
 Other possibilities are available through the use of a type 1 user exit.
@@ -2814,16 +2877,20 @@ To be able to support line sharing without Fast-Connect mode, the line must be d
 Each application can potentially use up to 20 CVC’s. It is not possible to limit the number of circuits which can be used by each application, as can be done with Fast\PYGZhy{}Connect.
 \end{sphinxVerbatim}
 
+\newpage
 
-\subsection{X25 GATE Fast-Connect line}
-\label{\detokenize{connectivity_guide:x25-gate-fast-connect-line}}
+\index{Lines!X25 GATE Fast-Connect (FC) line}\index{X25 GATE Fast-Connect (FC) line!Lines}
+
+\section{X25 GATE Fast-Connect (FastC) line}
+\label{\detokenize{connectivity_guide:x25-gate-fast-connect-fastc-line}}\label{\detokenize{connectivity_guide:index-68}}
 An X25 GATE Fast-Connect line establishes a connection between VIRTEL and an X25 line connected to an IBM 3745 communications controller. Across this type of line, VIRTEL handles incoming and outgoing calls to and from the X25 network. Activation of this type of line requires the presence of the FASTC, GATE and MINITEL parameters in the VIRTCT.
 
 \sphinxincludegraphics{{image44}.png}
 
+\index{X25 GATE FastC line!Parameters}\index{Parameters!X25 GATE FastC line}
 
-\subsubsection{X25 GATE FC line Parameters}
-\label{\detokenize{connectivity_guide:x25-gate-fc-line-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-69}}\label{\detokenize{connectivity_guide:id31}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Name of the MCH LU generated by NPSI.
 
@@ -2867,9 +2934,10 @@ The relay name is compulsory for this type of terminal.
 
 \sphinxincludegraphics{{image45}.png}
 
+\index{X25 GATE FastC line!Terminal Definitions}\index{Terminal Definitions!X25 GATE FastC line}
 
-\subsubsection{X25 GATE FC line terminal definitions}
-\label{\detokenize{connectivity_guide:x25-gate-fc-line-terminal-definitions}}\begin{description}
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:id32}}\label{\detokenize{connectivity_guide:index-70}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the virtual circuit LU names generated
 by the X25.VC macro in the NPSI.
@@ -2893,14 +2961,16 @@ The number of virtual circuits defined by NPSI.
 
 \end{description}
 
+\index{X25 GATE FastC line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!X25 GATE FastC line}
 
-\subsubsection{VTAM definitions for Fast-Connect}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-fast-connect}}
+\subsection{VTAM Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-71}}\label{\detokenize{connectivity_guide:id33}}
 Each Minitel or PC wishing to take advantage of VIRTEL functionality must be defined to VTAM in a switched major node similar to that shown in section {\hyperref[\detokenize{connectivity_guide:v457cn-x25gateline}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of a X25 GATE Non Fast-Connect line”}}}}.
 
+\index{X25 GATE FastC line!NCP/NPSI Definitions}\index{NCP/NPSI Definitions!X25 GATE FastC line}
 
-\subsubsection{NCP/NPSI parameters for Fast-Connect}
-\label{\detokenize{connectivity_guide:ncp-npsi-parameters-for-fast-connect}}
+\subsection{NCP/NPSI Definitions}
+\label{\detokenize{connectivity_guide:ncp-npsi-definitions}}\label{\detokenize{connectivity_guide:index-72}}
 As well as offering a noticable performance improvement, the use of Fast-Connect allows one line to be shared between several CTCP’s. When the Fast-Connect option is used, there is no VTAM switched major node. The switched virtual circuit is directly connected to the CTCP. This permanent connection minimizes connection time as well as the consumption of memory and CPU resources.
 
 The definition of a Fast-Connect line is similar to that of a GATE line, apart from:
@@ -2916,9 +2986,10 @@ Must contain the value LLC5.
 
 \end{description}
 
+\index{X25 GATE FastC line!Sharing of FastC Lines}\index{Sharing of FastC Lines!X25 GATE FastC line}
 
-\subsubsection{Sharing of Fast-Connect lines}
-\label{\detokenize{connectivity_guide:sharing-of-fast-connect-lines}}
+\subsection{Sharing of FastC lines}
+\label{\detokenize{connectivity_guide:sharing-of-fastc-lines}}\label{\detokenize{connectivity_guide:index-73}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{X25}\PYG{o}{.}\PYG{n}{MCH} \PYG{n}{ADRESS}\PYG{o}{=}\PYG{l+m+mi}{003}\PYG{p}{,}                                \PYG{o}{*}
 \PYG{n}{FRMLENGTH}\PYG{o}{=}\PYG{l+m+mi}{131}\PYG{p}{,}                                     \PYG{o}{*}
@@ -3003,31 +3074,32 @@ The number of “logical” virtual circuits can be greater than the number of �
 
 \sphinxstyleemphasis{Example of a Fast-Connect line with a single CTCP without subaddressing}
 
+\newpage
 
-\subsection{X25 AntiGATE line}
-\label{\detokenize{connectivity_guide:x25-antigate-line}}
+\index{Lines!X25 AntiGATE line}\index{X25 AntiGATE line!Lines}
+
+\section{X25 AntiGATE line}
+\label{\detokenize{connectivity_guide:index-74}}\label{\detokenize{connectivity_guide:x25-antigate-line}}
 A Reverse-X25 AntiGATE line establishes a link between VIRTEL and a Communication and Transmission Control Program (CTCP) application. On this type of line, VIRTEL communicates with the CTCP to manage incoming and outgoing calls to and from the X25 network. Once a virtual circuit is established, data flows across LU-LU sessions between the VIRTEL terminals and the CTCP. In this way, VIRTEL emulates an IBM 3745 controller with NPSI.
 
 \sphinxincludegraphics{{image46}.png}
 
+\index{X25 AntiGATE line!Parameters}\index{Parameters!X25 AntiGATE line}
 
-\subsubsection{Definition of an X25 AntiGATE line}
-\label{\detokenize{connectivity_guide:definition-of-an-x25-antigate-line}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-75}}\label{\detokenize{connectivity_guide:id34}}\begin{description}
 \item[{Remote ident}] \leavevmode
-LU name of the CTCP (CFT, Inter.PEL, etc). May be blank if
-WAIT-PARTNER is coded in the “Startup pre-requisite” field.
+LU name of the CTCP (CFT, Inter.PEL, etc). May be blank if WAIT-PARTNER is coded in the “Startup pre-requisite” field.
 
 \item[{Local ident}] \leavevmode
-Name of the LU which represents the physical circuit for the
-AntiGATE line (analogous to the LU generated by the NPSI X25.MCH
+Name of the LU which represents the physical circuit for the AntiGATE line (analogous to the LU generated by the NPSI X25.MCH
 macro in the NCP). This LU must be defined by a VTAM APPL statement.
 
 \item[{Prefix}] \leavevmode
 Terminal name prefix (see below).
 
 \item[{Entry Point}] \leavevmode
-The default entry point, if no entry point is defined at the
-terminal level, or in the line rules or call user data.
+The default entry point, if no entry point is defined at the terminal level, or in the line rules or call user data.
 
 \item[{Line type}] \leavevmode
 Always /GATE.
@@ -3036,8 +3108,7 @@ Always /GATE.
 No special restriction.
 
 \item[{Startup prerequisite}] \leavevmode
-WAIT-PARTNER is recommended for AntiGATE lines. WAIT-PARTNER must be
-specified if the partner is CFT.
+WAIT-PARTNER is recommended for AntiGATE lines. WAIT-PARTNER must be specified if the partner is CFT.
 
 \item[{Protocol}] \leavevmode
 Always blank.
@@ -3050,18 +3121,20 @@ Must agree with the definition in the CTCP.
 
 \end{description}
 
+\index{X25 AntiGATE line!Terminal Definitions}\index{Terminal Definitions!X25 AntiGATE line}
 
-\subsubsection{Terminals on an AntiGATE line}
-\label{\detokenize{connectivity_guide:terminals-on-an-antigate-line}}
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-76}}\label{\detokenize{connectivity_guide:id35}}
 An AntiGATE line uses a single sub-group of terminals which represent the virtual circuits allocated to the line (analogous to the LU’s linked to the virtual circuits defined by the NPSI macro X25.VC in the NCP). The terminal name is an internal name which is used to associate the terminal definition with the AntiGATE line. The associated relay name must match the name of a VTAM APPL statement. Either explicit or repeated terminal definitions may be used.
 
 \sphinxincludegraphics{{image47}.png}
 
 \sphinxstyleemphasis{Terminals on an X25 AntiGATE line}
 
+\index{X25 AntiGATE line!VTAM Terminals Definitions}\index{VTAM Terminals Definitions!X25 AntiGATE line}
 
-\subsubsection{VTAM definitions for ANTIGATE}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-antigate}}
+\subsection{VTAM Terminal Definitions}
+\label{\detokenize{connectivity_guide:id36}}\label{\detokenize{connectivity_guide:index-77}}
 The The LU’s representing the line and the virtual circuits must be defined by APPL statements in a VTAM application major node similar to the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3093,16 +3166,20 @@ The MODVIRT phase must be placed in an executable library (VSE) or in a LOADLIB 
 
 \end{description}
 
+\newpage
 
-\subsection{AntiFastConnect line}
-\label{\detokenize{connectivity_guide:antifastconnect-line}}
+\index{Lines!X25 Anti Fast Connect (FastC) line}\index{X25 Anti Fast Connect (FastC) line!Lines}
+
+\section{X25 Anti Fast Connect (FastC) line}
+\label{\detokenize{connectivity_guide:index-78}}\label{\detokenize{connectivity_guide:x25-anti-fast-connect-fastc-line}}
 Similar to an AntiGATE line, a Reverse-X25 AntiFastC line establishes a link between VIRTEL and a Communication and Transmission Control Program (CTCP) application. On this type of   line, VIRTEL communicates with the CTCP to manage incoming and outgoing calls to and from the X25 network. Once a virtual circuit is established, data flows across LU-LU sessions between the VIRTEL terminals and the CTCP. In this way, VIRTEL emulates an IBM 3745 controller with NPSI.
 
 \sphinxincludegraphics{{image48}.png}
 
+\index{X25 Anti-FastC line!Parameters}\index{Parameters!X25 Anti-FastC line}
 
-\subsubsection{Definition of an X25 AntiFastC line}
-\label{\detokenize{connectivity_guide:definition-of-an-x25-antifastc-line}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id37}}\label{\detokenize{connectivity_guide:index-79}}\begin{description}
 \item[{Remote ident}] \leavevmode
 CTCP LU name.
 
@@ -3135,12 +3212,11 @@ Specify EVEN, ODD, or NO according to the requirements of the CTCP. Additionally
 
 \end{description}
 
+\index{X25 Anti-FastC line!Terminal Definitions}\index{Terminal Definitions!X25 Anti-FastC line}
 
-\subsubsection{Terminals on an AnticFastC line}
-\label{\detokenize{connectivity_guide:terminals-on-an-anticfastc-line}}\begin{quote}
-
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-80}}\label{\detokenize{connectivity_guide:id38}}
 An AntiFastC link uses a single sub-group of terminals which represent the virtual circuits allocated to the line (analogous to the LU’s linked to the virtual circuits defined by the NPSI macro X25.VC in the NCP). The terminal name is an internal name which is used to associate the terminal definition with the AntiFastC line. The associated relay name must match the name of a VTAM APPL statement. Either explicit or repeated terminal definitions may be used.
-\end{quote}
 
 \sphinxincludegraphics{{image49}.png}
 \sphinxstyleemphasis{Terminals on an X25 AntiFastC line}
@@ -3162,9 +3238,10 @@ The LU’s representing the line and the virtual circuits must be defined by APP
 \PYG{n}{X25AF503} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGANTI}
 \end{sphinxVerbatim}
 
+\index{X25 Anti-FastC line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!X25 Anti-FastC line}
 
-\subsubsection{VTAM definitions for an X25 AntiFastC line}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-an-x25-antifastc-line}}\begin{description}
+\subsection{VTAM Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-81}}\label{\detokenize{connectivity_guide:id39}}\begin{description}
 \item[{Note 1}] \leavevmode
 The LU’s defined in the “Local ident” field of the line must specify logmode DLOGANTI.
 
@@ -3176,18 +3253,20 @@ The MODVIRT phase must be placed in an executable library (VSE) or in a LOADLIB 
 
 \end{description}
 
+\newpage
 
-\subsection{X25 AntiPCNE line}
-\label{\detokenize{connectivity_guide:x25-antipcne-line}}\begin{quote}
+\index{Lines!X25 AntiPCNE line}\index{X25 AntiPCNE line!Lines}
 
+\section{X25 AntiPCNE line}
+\label{\detokenize{connectivity_guide:x25-antipcne-line}}\label{\detokenize{connectivity_guide:index-82}}
 Like an AntiGATE or AntiFastC line, a Reverse-X25 AntiPCNE line establishes a link between VIRTEL and an application. By contrast however, VIRTEL does not use a line-level LU to manage call setup, and the application does not supply VIRTEL with a call packet. Instead, the application makes outgoing calls by choosing a particular LU associated with the AntiPCNE line. The X25 called number is defined at the terminal level by means of an associated external server definition. In this way, VIRTEL emulates an IBM 3745 controller with NPSI.
-\end{quote}
 
 \sphinxincludegraphics{{image50}.png}
 
+\index{X25 AntiPCNE line!Parameters}\index{Parameters!X25 AntiPCNE line}
 
-\subsubsection{Definition of an X25 AntiPCNE line}
-\label{\detokenize{connectivity_guide:definition-of-an-x25-antipcne-line}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-83}}\label{\detokenize{connectivity_guide:id40}}\begin{description}
 \item[{Remote ident}] \leavevmode
 Partner application LU name.
 
@@ -3223,9 +3302,10 @@ Always NO.
 
 \end{description}
 
+\index{X25 AntiPCNE line!Terminal Definitions}\index{Terminal Definitions!X25 AntiPCNE line}
 
-\subsubsection{Terminals on an AntiPCNE line}
-\label{\detokenize{connectivity_guide:terminals-on-an-antipcne-line}}
+\subsection{Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-84}}\label{\detokenize{connectivity_guide:id41}}
 An AntiPCNE line uses two sub-groups of terminals. In each case, the terminal name is an internal name which is used to associate the terminal definition with the AntiPCNE line. The associated relay name must match the name of a VTAM APPL statement.
 
 The first sub-group is used for outgoing calls (from the point of view of the application), and consists of explicitly defined  terminals with the “Possible calls” field set to 1. Each terminal in this first sub-group corresponds to a single remote partner. The “Relay” field of each terminal in this first sub-group must contain the LU name which the application uses to make outgoing calls to the remote partner concerned. The entry point specified by the rules of the line contains a type-3 transaction which specifies “\&R” as the
@@ -3283,42 +3363,37 @@ The example below shows the definition of a set of inbound terminals (PCN1TM51-5
 \sphinxincludegraphics{{image56}.png}
 \sphinxstyleemphasis{Rule for incoming X25 AntiPCNE calls}
 
+\index{X25 AntiPCNE line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!X25 AntiPCNE line}
 
-\subsubsection{VTAM definitions for AntiPCNE}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-antipcne}}
+\subsection{VTAM Terminal Definitions}
+\label{\detokenize{connectivity_guide:index-85}}\label{\detokenize{connectivity_guide:id42}}
 The LU’s representing the line and the virtual circuits must be defined by APPL statements in a VTAM application major node similar to the following example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{VIRAPCNE} \PYG{n}{VBUILD} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{APPL}
-\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
-\PYG{o}{*} \PYG{n}{Pseudo} \PYG{n}{cvcs} \PYG{n}{pour} \PYG{n}{ligne} \PYG{n}{pcne} \PYG{n}{émulée} \PYG{n}{par} \PYG{n}{Virtel} \PYG{p}{(}\PYG{n}{note} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{*}
-\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
-\PYG{n}{AP30LU01} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
-\PYG{n}{AP30LU02} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
-\PYG{n}{AP30LU03} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
-\PYG{n}{AP30LU04} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
-\PYG{n}{AP30LU51} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
-\PYG{n}{AP30LU52} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
-\PYG{n}{AP30LU53} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
-\PYG{n}{AP30LU54} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGPCNE}
+VIRAPCNE VBUILD TYPE=APPL
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* Pseudo cvcs pour ligne pcne émulée par Virtel (note 1) *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+AP30LU01 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+AP30LU02 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+AP30LU03 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+AP30LU04 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+AP30LU51 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+AP30LU52 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+AP30LU53 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+AP30LU54 APPL AUTH=(ACQ,PASS),MODETAB=MODVIRT,DLOGMOD=DLOGPCNE
+
+Note 1
+    The LU’s for the terminal relays must specify logmode DLOGPCNE.
+
+Note 2
+    The MODVIRT phase must be placed in an executable library (VSE) or in a LOADLIB (MVS, VM) defined to VTAM before the application major node can be activated.
 \end{sphinxVerbatim}
 
+\index{X25 AntiPCNE line!Add or changing LU Names}\index{Add or changing LU Names!X25 AntiPCNE line}
 
-\subsubsection{VTAM definitions for an X25 AntiPCNE line}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-an-x25-antipcne-line}}\begin{description}
-\item[{Note 1}] \leavevmode
-The LU’s for the terminal relays must specify logmode DLOGPCNE.
-
-\item[{Note 2}] \leavevmode
-The MODVIRT phase must be placed in an executable library (VSE) or
-in a LOADLIB (MVS, VM) defined to VTAM before the application major
-node can be activated.
-
-\end{description}
-
-
-\subsubsection{Adding or changing AntiPCNE LU names}
-\label{\detokenize{connectivity_guide:adding-or-changing-antipcne-lu-names}}
+\subsection{Add or changing AntiPCNE LU names}
+\label{\detokenize{connectivity_guide:add-or-changing-antipcne-lu-names}}\label{\detokenize{connectivity_guide:index-86}}
 From VIRTEL version 4.28 onwards, it is possible to add a new terminal to an AntiPCNE line, or to change the relay LU name in an existing terminal, without stopping and restarting VIRTEL.
 
 \sphinxstylestrong{The procedure for adding a new AntiPCNE terminal is as follows:}
@@ -3361,12 +3436,11 @@ Use the VIRTEL LINE START command to reactivate the changed terminal(s) on the A
 
 \end{enumerate}
 
+\index{X25 AntiPCNE line!Support of non GATE terminals}\index{Support of non GATE terminals!X25 AntiPCNE line}
 
-\subsubsection{Support of X25 non GATE terminals}
-\label{\detokenize{connectivity_guide:support-of-x25-non-gate-terminals}}\begin{quote}
-
+\subsection{Support of X25 non GATE terminals}
+\label{\detokenize{connectivity_guide:support-of-x25-non-gate-terminals}}\label{\detokenize{connectivity_guide:index-87}}
 Support for incoming connections via an X25 non GATE line still exists. This type of connection does not require a line definition in VIRTEL. All that is needed is to create a series of terminals using the Terminal Management sub- application. Each terminal is defined as type 1 compression 2 and is associated with an application relay.
-\end{quote}
 
 ..note:
 
@@ -3374,14 +3448,16 @@ Support for incoming connections via an X25 non GATE line still exists. This typ
 \PYG{n}{This} \PYG{n}{mode} \PYG{n}{allows} \PYG{n}{only} \PYG{n}{incoming} \PYG{n}{calls}\PYG{p}{,} \PYG{k}{with} \PYG{n}{no} \PYG{n}{facility} \PYG{k}{for} \PYG{n}{call} \PYG{n}{routing}\PYG{o}{.}
 \end{sphinxVerbatim}
 
+\index{X25 AntiPCNE line!VTAM terminal definitions for X25 Non Gate terminals.}\index{VTAM terminal definitions for X25 Non Gate terminals.!X25 AntiPCNE line}
 
-\subsubsection{VTAM definitions for X25 non GATE terminals}
-\label{\detokenize{connectivity_guide:vtam-definitions-for-x25-non-gate-terminals}}
+\subsection{VTAM definitions for X25 non GATE terminals}
+\label{\detokenize{connectivity_guide:index-88}}\label{\detokenize{connectivity_guide:vtam-definitions-for-x25-non-gate-terminals}}
 Each Minitel or PC which is to log on to VIRTEL must be defined in a VTAM switched major node as described in {\hyperref[\detokenize{connectivity_guide:v457cn-x25gateline}]{\sphinxcrossref{\DUrole{std,std-ref}{“Definition of an X25 GATE Non Fast-Connect line”}}}}.
 
+\index{X25 AntiPCNE line!NCP/NPSI definitions for X25 Non Gate terminals}\index{NCP/NPSI definitions for X25 Non Gate terminals!X25 AntiPCNE line}
 
-\subsubsection{NCP/NPSI parameters for X25 non GATE terminals}
-\label{\detokenize{connectivity_guide:ncp-npsi-parameters-for-x25-non-gate-terminals}}
+\subsection{NCP/NPSI parameters for X25 non GATE terminals}
+\label{\detokenize{connectivity_guide:index-89}}\label{\detokenize{connectivity_guide:ncp-npsi-parameters-for-x25-non-gate-terminals}}
 The information presented in the section “Definition of an X25 GATE Non Fast-Connect line” applies here with the following addition:
 
 \sphinxstylestrong{Macro X25.MCH}
@@ -3391,17 +3467,19 @@ Must contain the value LLC5.
 
 \end{description}
 
+\index{Virtel Rules}
 
 \chapter{Virtel Rules}
-\label{\detokenize{connectivity_guide:virtel-rules}}\label{\detokenize{connectivity_guide:v457cn-virtelrules}}
+\label{\detokenize{connectivity_guide:virtel-rules}}\label{\detokenize{connectivity_guide:index-90}}\label{\detokenize{connectivity_guide:v457cn-virtelrules}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id4}}
+\label{\detokenize{connectivity_guide:id43}}
 Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. Rules are processed in alphanumeric order of name, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the “default” rule which is used to catch callers that didn’t match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. See the “How-To” guide ‘Virtel LU Nailing’ for examples on how to define and use Virtel Rules.
 
+\index{Virtel Rules!Summary Display}\index{Summary Display!Virtel Rules}
 
-\subsection{Rule Summary Display}
-\label{\detokenize{connectivity_guide:rule-summary-display}}
+\subsection{Summary Display}
+\label{\detokenize{connectivity_guide:id44}}\label{\detokenize{connectivity_guide:index-91}}
 Press {[}PF5{]} at the line detail definition screen to display the summary list of rules associated with the line:
 
 \sphinxincludegraphics{{image58}.png}
@@ -3425,7 +3503,7 @@ Name of the entry point which will be assigned to incoming calls whose character
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id5}}\begin{description}
+\label{\detokenize{connectivity_guide:id45}}\begin{description}
 \item[{Search}] \leavevmode
 Type the name (or partial name) of the required entity on the first line under the heading “Name”, then press {[}Enter{]}.
 
@@ -3440,31 +3518,30 @@ Display the next page.
 
 \end{description}
 
-\sphinxstylestrong{Modifying a rule}
-Pressing {[}PF12{]} at the Rules screen displays the rule detail definition screen. Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press {[}PF12{]} to access the definition detail screen.
+\sphinxstylestrong{Modifying a rule} - Pressing {[}PF12{]} at the Rules screen displays the rule detail definition screen. Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press {[}PF12{]} to access the definition detail screen.
 \begin{description}
-\item[{..note::}] \leavevmode
+\item[{..warning::}] \leavevmode
 Modifications are not recognized until you press the {[}PF1{]} key. Certain modifications require a restart of the VIRTEL system.
 
 \end{description}
 
-\sphinxstylestrong{Deleting a rule}
-In the summary screen position the cursor under the name of the entity to be deleted, then press {[}PF2{]}. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
+\sphinxstylestrong{Deleting a rule} - In the summary screen position the cursor under the name of the entity to be deleted, then press {[}PF2{]}. The line associated with the entity to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entity to be deleted.
 
-\sphinxstylestrong{Adding a rule}
-To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
+\sphinxstylestrong{Adding a rule} - To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition from a blank screen.
 
+\index{Virtel Rules!Detail Display}\index{Detail Display!Virtel Rules}
 
-\subsection{Rule Detail Display}
-\label{\detokenize{connectivity_guide:rule-detail-display}}
+\subsection{Detail Display}
+\label{\detokenize{connectivity_guide:id46}}\label{\detokenize{connectivity_guide:index-92}}
 To display or update the detailed definition of an entity, place the cursor on the name of the entity within the summary display and press {[}PF12{]}. The detail definition screen will then be displayed.
 
 \sphinxincludegraphics{{image59}.png}
 \sphinxstyleemphasis{Rule detail definition screen}
 
+\index{Virtel Rules!Parameters}\index{Parameters!Virtel Rules}
 
-\subsection{Rule Parameters}
-\label{\detokenize{connectivity_guide:rule-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id47}}\label{\detokenize{connectivity_guide:index-93}}\begin{description}
 \item[{Name}] \leavevmode
 The name of the rule. This name must be unique across all rules in the system. The rules associated with a line are processed in alphanumeric order of this name. The rule name thus determines the priority of the rule within the line.
 
@@ -3593,38 +3670,43 @@ Indicates the period of operation of this rule for each applicable day.
 
 \end{description}
 
+\index{Terminals}
 
 \chapter{Terminals}
-\label{\detokenize{connectivity_guide:terminals}}
+\label{\detokenize{connectivity_guide:index-94}}\label{\detokenize{connectivity_guide:terminals}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id6}}
+\label{\detokenize{connectivity_guide:id48}}
 All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the group of functions associated with the management of the terminals as well as their existing relationship to other administration functions, for example, management of lines or entry points.
 
+\index{Terminals!Terminal Management Sub-Application}\index{Terminal Management Sub-Application!Terminals}
 
 \subsection{Terminal Management Sub-Application}
-\label{\detokenize{connectivity_guide:terminal-management-sub-application}}
+\label{\detokenize{connectivity_guide:index-95}}\label{\detokenize{connectivity_guide:terminal-management-sub-application}}
 This sub-application enables the definition of VIRTEL terminals either in the form of a pool, or individually. When the sub-application is started, it first presents a summary of existing terminal definitions presented in alphanumeric order.
 
 The terminal management sub-application is accessed by pressing {[}PF2{]} in the Configuration Menu, or {[}PF5{]} in the Sub Application Menu, or from the Multi-session Menu via a transaction referencing module VIR0023. This sub-application allows for the management of the parameters associated with each terminal under control of VIRTEL. This subapplication
 is also accessible by pressing {[}PF4{]} from the line management sub-application.
 
+\index{Terminal Sub-Application!Security}\index{Security!Terminal Sub-Application}
 
-\subsection{Sub-Application Security}
-\label{\detokenize{connectivity_guide:id7}}
+\subsection{Security}
+\label{\detokenize{connectivity_guide:index-96}}\label{\detokenize{connectivity_guide:id49}}
 When security is active, access to the terminal management menu from the Configuration Menu or the Sub-Application Menu is controlled by the resource \$\$TERM\$\$. When this menu is accessed via a transaction, the rules governing the security management of transactions will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
+\index{Terminal Management Sub-Application!Summary Display}\index{Summary Display!Terminal Management Sub-Application}
 
-\subsection{Terminal Summary Display}
-\label{\detokenize{connectivity_guide:terminal-summary-display}}
+\subsection{Summary Display}
+\label{\detokenize{connectivity_guide:index-97}}\label{\detokenize{connectivity_guide:id50}}
 The first screen displayed by the terminal management sub-application shows a summary of existing definitions in alphanumeric order. A complete description of each field is given in the following paragraphs. Place the cursor under an entry a press {[}PF12{]} to display the terminal details.
 
 \sphinxincludegraphics{{image67}.png}
 \sphinxstyleemphasis{Terminal Summary Display}
 
+\index{Terminal Management Sub-Application!Navigation}\index{Navigation!Terminal Management Sub-Application}
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id8}}
+\label{\detokenize{connectivity_guide:id51}}\label{\detokenize{connectivity_guide:index-98}}
 In browse, alter, or delete mode, it is possible to scroll the list of terminals under the control of VIRTEL.
 \begin{description}
 \item[{Search}] \leavevmode
@@ -3641,27 +3723,26 @@ Display the next page.
 
 \end{description}
 
-\sphinxstylestrong{Modifying a terminal entry}
-Pressing {[}PF12{]} at the summary screen displays the Terminal Detail Definition screen, which allows creation of a new terminal definition, or modification of an existing definition. Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press {[}PF12{]} to access the definition detail screen. Modifications are not recognized until you press the {[}PF1{]} key. Certain modifications require a restart of the VIRTEL
+\sphinxstylestrong{Modifying a terminal entry} - Pressing {[}PF12{]} at the summary screen displays the Terminal Detail Definition screen, which allows creation of a new terminal definition, or modification of an existing definition. Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press {[}PF12{]} to access the definition detail screen. Modifications are not recognized until you press the {[}PF1{]} key. Certain modifications require a restart of the VIRTEL
 system.
 
-\sphinxstylestrong{Adding a terminal entry}
-To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition.
+\sphinxstylestrong{Adding a terminal entry} - To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition.
 
-\sphinxstylestrong{Deleting a terminal entry}
-Position the cursor under the name of the entry to be deleted, then press {[}PF2{]}. The line associated with the terminal to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
+\sphinxstylestrong{Deleting a terminal entry} - Position the cursor under the name of the entry to be deleted, then press {[}PF2{]}. The line associated with the terminal to be deleted then appears highlighted, accompanied by the message CONFIRM DELETE. Then press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
 
+\index{Terminal Management Sub-Application!Detail Display}\index{Detail Display!Terminal Management Sub-Application}
 
-\subsection{Terminal Detail Display}
-\label{\detokenize{connectivity_guide:terminal-detail-display}}
+\subsection{Detail Display}
+\label{\detokenize{connectivity_guide:id52}}\label{\detokenize{connectivity_guide:index-99}}
 \sphinxincludegraphics{{image68}.png}
 \sphinxstyleemphasis{Terminal definition detail screen}
 
-From within the detail display the following functions can be carried out:-
+From within the detail display parameters can be updated.
 
+\index{Terminal Management Sub-Application!Parameters}\index{Parameters!Terminal Management Sub-Application}
 
-\subsection{Terminal Parameters}
-\label{\detokenize{connectivity_guide:terminal-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-100}}\label{\detokenize{connectivity_guide:id53}}\begin{description}
 \item[{Terminal}] \leavevmode
 Maximum of 8 characters containing:
 \begin{quote}
@@ -3693,9 +3774,10 @@ The “Relay” field may alternatively contain a name in the form *POOLNAM whic
 
 Terminal definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the “terminal name”, “relay”, and “2nd relay” fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
 
-Pattern characters:
-
 \end{description}
+
+\index{Terminal Management Sub-Application!Pattern Characters}\index{Pattern Characters!Terminal Management Sub-Application}
+Pattern characters:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYGZgt{}  Alphabetic A\PYGZhy{}Z
@@ -3714,10 +3796,9 @@ Different combinations of pattern characters may be specified within a single fi
 \PYG{n}{Relay} \PYG{n}{name}       \PYG{n}{RHTERM}\PYG{o}{\PYGZpc{}}\PYG{o}{\PYGZpc{}}
 \PYG{n}{Relay2} \PYG{n}{name}      \PYG{n}{RH}\PYG{o}{\PYGZgt{}}\PYG{n}{X}\PYG{o}{\PYGZlt{}}\PYG{n}{Z00}
 \PYG{n}{Repeat} \PYG{n}{count}     \PYG{l+m+mi}{256}
-
-\PYG{n}{Would} \PYG{n}{generate} \PYG{n}{terminals} \PYG{n}{W2HVT000}\PYG{o}{\PYGZhy{}}\PYG{n}{W2HVT255} \PYG{k}{with} \PYG{n}{relay} \PYG{n}{names}
-\PYG{n}{RHTERM00}\PYG{o}{\PYGZhy{}}\PYG{n}{RHTERMFF} \PYG{o+ow}{and} \PYG{n}{relay2} \PYG{n}{names} \PYG{n}{RHAX0Z00}\PYG{o}{\PYGZhy{}}\PYG{n}{RHIX5Z00}
 \end{sphinxVerbatim}
+
+Would generate terminals W2HVT000-W2HVT255 with relay names RHTERM00-RHTERMFF and relay2 names RHAX0Z00-RHIX5Z00
 \begin{description}
 \item[{*Pool name}] \leavevmode
 In the definition of a logical pool, this field contains the name of the pool. A logical pool name is a 7 character name preceded by an asterisk, in the form *POOLNAM, which matches the logical pool name specified in the “Relay” field of all terminals which use the logical pool. See “logical pool of relays”. For regular terminals, this field must be blank.
@@ -3801,12 +3882,10 @@ All messages destined for these terminals are subject to special processing. VIR
 
 This level of compression allows a reduction of approximately 80\% of the message volume. It can for example be used for PC’s connected at 1200 or 2400 Bps, thereby allowing response times approaching those of a 9600 Bps synchronous line.
 
-\end{description}
-
 \begin{sphinxadmonition}{note}{Note:}
 This value can only be used for VIRTEL/PC connections. It is however possible to assign this value to type 2 color terminals in order to facilitate the learning of “screen types”.
 \end{sphinxadmonition}
-\begin{description}
+
 \item[{Possible calls}] \leavevmode
 Determines which calls can be made on this terminal. Depending on the associated line, certain values are meaningless. For example, the value 2 (outgoing calls) is not appropriate for a definition associated with an HTTP line since outgoing calls are impossible on this type of line.
 
@@ -3856,34 +3935,38 @@ A repeat count of blank, zero, or 1 indicates definition of a single terminal.
 
 \end{description}
 
+\index{Entry Points}
 
 \chapter{Entry Points}
-\label{\detokenize{connectivity_guide:entry-points}}
+\label{\detokenize{connectivity_guide:index-102}}\label{\detokenize{connectivity_guide:entry-points}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id9}}
+\label{\detokenize{connectivity_guide:id54}}
 Entry points define the session context for a terminal or for certain types of lines. A terminal connecting to VIRTEL must connect via an entry point. This section describes the functions associated with entry point management, as well as the correlation with other elements of VIRTEL system administration, for example, line and terminal management.
 
 An entry point is a named entity that groups certain information designed to authorise, personalise and protect access to the host site. Entry points define the type of emulation required, the type of security control, which sign-on screen must be sent to the user at log on time, what type of Multi-session menu must be used and what applications are to be made available to the user.
 
+\index{Entry Points!Entry Point Management Sub-Application}\index{Entry Point Management Sub-Application!Entry Points}
 
-\subsection{Entry Point Management Sub Application}
-\label{\detokenize{connectivity_guide:entry-point-management-sub-application}}
+\subsection{Entry Point Management Sub-Application}
+\label{\detokenize{connectivity_guide:index-103}}\label{\detokenize{connectivity_guide:entry-point-management-sub-application}}
 The Entry Point Management sub-application is accessed by pressing {[}PF3{]} in the Configuration Menu, or {[}PF13{]} in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This subapplication allows management of the parameters associated with each entry point.
 
+\index{Entry Point Management Sub-Application!Security}\index{Security!Entry Point Management Sub-Application}
 
-\subsection{Sub-Application Security}
-\label{\detokenize{connectivity_guide:id10}}
+\subsection{Security}
+\label{\detokenize{connectivity_guide:id55}}\label{\detokenize{connectivity_guide:index-104}}
 When security is active, access to entry point management from the Configuration Menu or the Sub-Application Menu is controlled by the resource \$\$GLOG\$\$. When accessed by a transaction, the rules governing the management of transaction security apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
+\index{Entry Point Management Sub-Application!Selection an Entry Point}\index{Selection an Entry Point!Entry Point Management Sub-Application}
 
-\subsection{Choosing an Entry Point}
-\label{\detokenize{connectivity_guide:choosing-an-entry-point}}
+\subsection{Selecting an Entry Point}
+\label{\detokenize{connectivity_guide:selecting-an-entry-point}}\label{\detokenize{connectivity_guide:index-105}}
 The entry point used in the connection from a terminal may be specified in various ways:
 
 
 \subsubsection{3270 Terminals}
-\label{\detokenize{connectivity_guide:id11}}
+\label{\detokenize{connectivity_guide:id56}}
 The entry point to be used for a connection from a 3270 terminal can be specified:
 - In the DATA parameter of a logon sequence. For example: LOGON APPLID(VIRTEL) DATA(PE-0001)
 - In the VIRTEL terminal definition (see “Parameters Of The Terminal”).
@@ -3925,52 +4008,56 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 - The default entry point defined in the reverse X25 line, if specified.
 - If no entry point was specified by any of the preceding steps, the default is the second value of the DEFENTR parameter in the VIRTCT. If this value does not exist, the call is rejected.
 
+\index{Entry Point Sub-Application!Summary Display}\index{Summary Display!Entry Point Sub-Application}
 
-\subsection{Entry Point Summary Display}
-\label{\detokenize{connectivity_guide:entry-point-summary-display}}
+\subsection{Summary Display}
+\label{\detokenize{connectivity_guide:id57}}\label{\detokenize{connectivity_guide:index-106}}
 The entry point management application manages the entry points and their associated transactions. The first screen displayed shows a summary of existing entry points in alphanumeric order. A complete description of each field is presented in the following section.
 
 \sphinxincludegraphics{{image60}.png}
 \sphinxstyleemphasis{Entry Point Summary Display}
 
-\sphinxstylestrong{Modifying an entry point definition}
-To modify the definition of an entry point, enter the required information in the field then press {[}PF1{]}. Several definitions may be modified simultaneously. If the field you wish to modify does not appear on the summary screen, position the cursor on the entry and press {[}PF12{]} to display the definition detail screen. Modifications do not take effect until you press {[}PF1{]}. Certain modifications, for instance a modification to an entry point used by a line, require a restart of VIRTEL.
 
-\sphinxstylestrong{Deleting an entry point definition}
-To delete a definition, position the cursor on the name of the entry to be deleted and press {[}PF2{]}. The line associated with the entry to be deleted will appear highlighted with the message CONFIRM DELETE. Press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
-
-\sphinxstylestrong{Adding an entry point definition}
-To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition.
-
-\sphinxstylestrong{Field Contents}
+\subsubsection{Field Contents}
+\label{\detokenize{connectivity_guide:field-contents}}\begin{quote}
 \begin{description}
-\item[{Name}] \leavevmode
+\item[{Name:}] \leavevmode
 The name of the entry point.
 
-\item[{Description}] \leavevmode
+\item[{Description:}] \leavevmode
 Description of the entry point.
 
-\item[{Transaction}] \leavevmode
+\item[{Transaction:}] \leavevmode
 Prefix of the names of the transactions associated with this entry point (maximum 6 characters).
 
 \end{description}
+\end{quote}
 
+\sphinxstylestrong{Modifying an entry point definition:} - To modify the definition of an entry point, enter the required information in the field then press {[}PF1{]}. Several definitions may be modified simultaneously. If the field you wish to modify does not appear on the summary screen, position the cursor on the entry and press {[}PF12{]} to display the definition detail screen. Modifications do not take effect until you press {[}PF1{]}. Certain modifications, for instance a modification to an entry point used by a line, require a restart of VIRTEL.
 
-\subsection{Display list of associated transactions}
-\label{\detokenize{connectivity_guide:display-list-of-associated-transactions}}
+\sphinxstylestrong{Deleting an entry point definition:} - To delete a definition, position the cursor on the name of the entry to be deleted and press {[}PF2{]}. The line associated with the entry to be deleted will appear highlighted with the message CONFIRM DELETE. Press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each entry to be deleted.
+
+\sphinxstylestrong{Adding an entry point definition:} - To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition.
+
+\index{Entry Point Management Sub-Application!Transaction list Display}\index{Transaction list Display!Entry Point Management Sub-Application}
+
+\subsection{Transaction Display}
+\label{\detokenize{connectivity_guide:index-107}}\label{\detokenize{connectivity_guide:transaction-display}}
 To access the list of transactions associated with an entry point, position the cursor on the desired entry point and press {[}PF4{]}. The transaction management menu will then appear.
 
-Entry Point Detail Display
-\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}\textasciicircum{}-
+\index{Entry Point Management Sub-Application!Detail Display}\index{Detail Display!Entry Point Management Sub-Application}
 
+\subsection{Detail Display}
+\label{\detokenize{connectivity_guide:index-108}}\label{\detokenize{connectivity_guide:id58}}
 To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press {[}PF12{]}.
 
 \sphinxincludegraphics{{image61}.png}
 \sphinxstyleemphasis{Entry point detail display}
 
+\index{Entry Point Management Sub-Application!Parameters}\index{Parameters!Entry Point Management Sub-Application}
 
-\subsection{Entry Point Parameters}
-\label{\detokenize{connectivity_guide:entry-point-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-109}}\label{\detokenize{connectivity_guide:id59}}\begin{description}
 \item[{Name}] \leavevmode
 Represents the name of the entry point as specified in a logon sequence, or in the “Entry point” field of a terminal, line, or rule definition.
 
@@ -3983,21 +4070,17 @@ Indicates the prefix (0 to 6 charaters) of the transactions associated with this
 \item[{Last page}] \leavevmode
 This field, which is used only for HTTP connections, indicates the name of the HTML page which will be displayed after the connection with the host application terminates. If blank, then the default page (whose name is equal to the entry point name) will be displayed.
 
-\end{description}
-
 \begin{sphinxadmonition}{note}{Note:}
 For Minitel entry points, the “Last page” field is not displayed, and the “Videotex key” field is displayed instead.
 \end{sphinxadmonition}
-\begin{description}
+
 \item[{Videotex key}] \leavevmode
 This field, which is used only for Minitel connections, indicates the key word used to direct the request to the Minitel tree structure.
-
-\end{description}
 
 \begin{sphinxadmonition}{note}{Note:}
 If routing is not necessary, for example for STI or JOUTEL, the keyword \$NONE\$ may be used.
 \end{sphinxadmonition}
-\begin{description}
+
 \item[{Transparency}] \leavevmode
 Indicates the type(s) of external server(s) where translation from ASCII to EBCDIC must not used.
 
@@ -4020,12 +4103,10 @@ Generate an inaudible alarm to avoid X25 PAD timeout.
 \end{description}
 \end{quote}
 
-\end{description}
-
 \begin{sphinxadmonition}{note}{Note:}
 While the terminal is connected to an external server application, session outage can also occur if the timeouts specified in the external server definition are exceeded.
 \end{sphinxadmonition}
-\begin{description}
+
 \item[{Emulation}] \leavevmode
 Indicates the type of emulation if the terminal using the entry point is not a 3270.
 \begin{quote}
@@ -4091,9 +4172,10 @@ An ‘E’ in this field indicates support for 3270 extended attributes and colo
 
 \end{description}
 
+\index{Entry Point Management Sub-Application!Signon Programs}\index{Signon Programs!Entry Point Management Sub-Application}
 
-\subsection{Entry Point Signon Programs}
-\label{\detokenize{connectivity_guide:entry-point-signon-programs}}
+\subsection{Signon Programs}
+\label{\detokenize{connectivity_guide:signon-programs}}\label{\detokenize{connectivity_guide:index-110}}
 The Signon Program field of the entry point indicates the name of the program used to control user sign-on. The following signon programs are supplied with VIRTEL:
 \begin{description}
 \item[{VIR0020A}] \leavevmode
@@ -4119,9 +4201,10 @@ Program similar to VIR0020L which allows access to public transactions (those de
 
 \end{description}
 
+\index{Entry Point Management Sub-Application!Menu Programs}\index{Menu Programs!Entry Point Management Sub-Application}
 
-\subsection{Entry Point Menu Programs}
-\label{\detokenize{connectivity_guide:entry-point-menu-programs}}
+\subsection{Menu Programs}
+\label{\detokenize{connectivity_guide:menu-programs}}\label{\detokenize{connectivity_guide:index-111}}
 The Menu Program field of the entry point indicates the name of the program which presents the list of transactions which the user is allowed to access. The following program names can be specified:
 \begin{description}
 \item[{VIR0021A}] \leavevmode
@@ -4156,21 +4239,19 @@ Program for connecting to a single transaction. Identical to VIR0021B, except th
 
 \end{description}
 
+\index{Transactions}
 
 \chapter{Transactions}
-\label{\detokenize{connectivity_guide:transactions}}
+\label{\detokenize{connectivity_guide:id60}}\label{\detokenize{connectivity_guide:index-112}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id12}}
-A transaction is a named entity that allows access to an “application” at the host site. The term “application” may be either a VTAM application, a VIRTEL sub-application, an external server, or an HTML directory.
+\label{\detokenize{connectivity_guide:id61}}
+A transaction is a named entity that allows access to an “application” at the host site. The term “application” may be either a VTAM application, a VIRTEL sub-application, an external server, or an HTML directory. Each transaction is known to the user by its external name, and defines the rules of connection / disconnection of the referenced application. When a security tool is used, for example VIRTEL security, only the transactions defined as resources appearing in the profiles of a user are accessible by that user. Each entry point has a list of associated transactions. The entry point management sub-application allows the administrator to manage the entry point and its associated transactions.
 
-Each transaction is known to the user by its external name, and defines the rules of connection / disconnection of the referenced application. When a security tool is used, for example VIRTEL security, only the transactions defined as resources appearing in the profiles of a user are accessible by that user.
+\index{Transactions!Summary Display}\index{Summary Display!Transactions}
 
-Each entry point has a list of associated transactions. The entry point management sub-application allows the administrator to manage the entry point and its associated transactions.
-
-
-\subsection{Transaction Summary Display}
-\label{\detokenize{connectivity_guide:transaction-summary-display}}
+\subsection{Summary Display}
+\label{\detokenize{connectivity_guide:id62}}\label{\detokenize{connectivity_guide:index-113}}
 Press {[}PF4{]} at the entry point detail screen to display the list of associated transactions:
 
 \sphinxincludegraphics{{image62}.png}
@@ -4200,7 +4281,7 @@ Indicates the name of the application accessed via the transaction. This applica
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id13}}
+\label{\detokenize{connectivity_guide:id63}}
 The list can be positioned in the following ways:
 \begin{description}
 \item[{Search}] \leavevmode
@@ -4217,18 +4298,16 @@ Display the next page of the list.
 
 \end{description}
 
-\sphinxstylestrong{Modifying a transaction definition}
-To modify the details of a transaction, type the required changes in the appropriate fields and press {[}PF1{]}. You can change more than one definition at a time. To modify a field not shown on the summary screen, position the cursor on the transaction and press {[}PF12{]} to display the transaction detail screen. Important note: Changes do not take effect until you press {[}PF1{]}. After updating a transaction definition, you must also update the entry point(s) concerned by pressing {[}PF3{]} twice (to return to the list of entry points) then {[}PF1{]} to register the change(s) to the entry point.
+\sphinxstylestrong{Modifying a transaction definition} - To modify the details of a transaction, type the required changes in the appropriate fields and press {[}PF1{]}. You can change more than one definition at a time. To modify a field not shown on the summary screen, position the cursor on the transaction and press {[}PF12{]} to display the transaction detail screen. Important note: Changes do not take effect until you press {[}PF1{]}. After updating a transaction definition, you must also update the entry point(s) concerned by pressing {[}PF3{]} twice (to return to the list of entry points) then {[}PF1{]} to register the change(s) to the entry point.
 
-\sphinxstylestrong{Deleting a transaction definition}
-To delete a definition, position the cursor on the name of the transaction to be deleted and press {[}PF2{]}. The line associated with the transaction to be deleted will appear highlighted with the message CONFIRM DELETE. Press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each transaction to be deleted.
+\sphinxstylestrong{Deleting a transaction definition} - To delete a definition, position the cursor on the name of the transaction to be deleted and press {[}PF2{]}. The line associated with the transaction to be deleted will appear highlighted with the message CONFIRM DELETE. Press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each transaction to be deleted.
 
-\sphinxstylestrong{Adding a transaction definition}
-To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition. Complete all required fields and press {[}ENTER{]}. The message CREATE OK indicates that the operation completed successfully
+\sphinxstylestrong{Adding a transaction definition} - To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy certain of its attributes, or on an empty line to create a new definition. Complete all required fields and press {[}ENTER{]}. The message CREATE OK indicates that the operation completed successfully
 
+\index{Transactions!Detail Display}\index{Detail Display!Transactions}
 
-\subsection{Transaction Detail Display}
-\label{\detokenize{connectivity_guide:transaction-detail-display}}
+\subsection{Detail Display}
+\label{\detokenize{connectivity_guide:index-114}}\label{\detokenize{connectivity_guide:id64}}
 To access the detailed transaction definition, position the cursor on the desired transaction and press {[}PF12{]}. The transaction detail definition screen will then be displayed.
 
 \sphinxincludegraphics{{image63}.png}
@@ -4237,9 +4316,10 @@ To access the detailed transaction definition, position the cursor on the desire
 \sphinxincludegraphics{{image64}.png}
 \sphinxstyleemphasis{Transaction Definition Screen - HTML transaction}
 
+\index{Transactions!Parameters}\index{Parameters!Transactions}
 
-\subsection{Transaction Parameters}
-\label{\detokenize{connectivity_guide:transaction-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:id65}}\label{\detokenize{connectivity_guide:index-115}}\begin{description}
 \item[{Internal name}] \leavevmode
 The name of the transaction as it is known to the system. The first “n” characters of this name are the prefix by which the transaction is linked to one or more entry points. Transaction security is based on this internal name. It should be noted that the transactions are placed on the Multi-Session Menu in alphanumeric order of the internal name.
 
@@ -4359,6 +4439,10 @@ Public transaction. A public transaction is always available whatever security t
 \item[{1}] \leavevmode
 Secure transaction (Basic security). A secure transaction is only available to a user if authorized by the active security tool. For HTTP access, the user is prompted, if necessary, for a userid and password.
 
+\begin{sphinxadmonition}{note}{Note:}
+if passphrase is not active then passwords will be truncated to the first 8 characters. Passphrase support is activated by the PASSPHRASE option of the SECUR keyword in the TCT. See the Virtel Installation Guide for further details.
+\end{sphinxadmonition}
+
 \item[{2}] \leavevmode
 Secure transaction (NTLM security). For HTTP access only, security type 2 allows VIRTEL to obtain the Windows userid of the user, without prompting the user to signon again. The active security tool must recognize the userid and grant access to the transaction. This type of security should only be used on a LAN or on an encrypted session.
 
@@ -4450,19 +4534,22 @@ Scenarios are described under the heading “Presentation modules” in the VIRT
 After adding, deleting or updating a transaction, it is essential to update the entry points used by this transaction by pressing {[}PF1{]} at the entry point summary screen.
 \end{sphinxadmonition}
 
+\index{Connection / Disconnection Scripts}
 
 \chapter{Connection / Disconnection Scripts}
-\label{\detokenize{connectivity_guide:connection-disconnection-scripts}}
+\label{\detokenize{connectivity_guide:connection-disconnection-scripts}}\label{\detokenize{connectivity_guide:index-116}}
 When connecting to an application, it may be useful, if desired, to automatically execute certain operations to direct the user to a defined point within the application. The most commonly used operations are application signon procedures. Similarly, when the user logs off from an application, it can be useful to run various commands to release application resources. These operations are called “connection and disconnection scripts”. Scripts are entered in the fields “TIOA at logon” and “TIOA at logoff” of a transaction, or in the “TIOA at start up” field of an external server, with the help of the language described below. A script can send data and 3270 attention keys to the application, send data to the terminal, and wait for specific data from the application.
 
+\index{Connection / Disconnection Scripts!Script Programming Language}\index{Script Programming Language!Connection / Disconnection Scripts}
 
-\section{Script language description}
-\label{\detokenize{connectivity_guide:script-language-description}}
+\section{Script Programming Language}
+\label{\detokenize{connectivity_guide:index-117}}\label{\detokenize{connectivity_guide:script-programming-language}}
 A connection / disconnection script consists of a sequence of “clauses”. A clause consists of some data (which may contain embedded variables and orders) followed by a command. All commands, variables, and orders begin with the ‘\&’ character.
 
+\index{Connection / Disconnection Scripts!Transmission and filter commands}\index{Transmission and filter commands!Connection / Disconnection Scripts}
 
 \subsection{Transmission and filter commands}
-\label{\detokenize{connectivity_guide:transmission-and-filter-commands}}
+\label{\detokenize{connectivity_guide:transmission-and-filter-commands}}\label{\detokenize{connectivity_guide:index-118}}
 The command acts upon the data which precedes it. The commands are as follows:-
 
 
@@ -4516,9 +4603,10 @@ Any blanks immediately following a \&/ command are ignored.
 
 For compatibility with versions of VIRTEL prior to 4.31, the / (slash) in the above commands may also be coded as the EBCDIC character whose hexadecimal value is X’4F’. In the US, Canada, and UK codepages, X’4F’ is represented by a vertical bar. In some European countries, X’4F’ appears as an exclamation point.
 
+\index{Connection / Disconnection Scripts!System Variables}\index{System Variables!Connection / Disconnection Scripts}
 
 \subsection{System variables}
-\label{\detokenize{connectivity_guide:system-variables}}
+\label{\detokenize{connectivity_guide:index-119}}\label{\detokenize{connectivity_guide:system-variables}}
 System variables are information known only to VIRTEL at the time of accessing an application. These variables are in the format \&n where “n” represents the desired variable.
 Available information Corresponding variable:-
 
@@ -4605,9 +4693,10 @@ The system variable \&=name= is used to obtain the value of either a URL paramet
 
 \end{description}
 
+\index{Connection / Disconnection Scripts!Orders}\index{Orders!Connection / Disconnection Scripts}
 
 \subsection{Orders}
-\label{\detokenize{connectivity_guide:orders}}
+\label{\detokenize{connectivity_guide:index-120}}\label{\detokenize{connectivity_guide:orders}}
 Orders may be embedded in the clause data. Orders are used to set the 3270 (or Minitel) attention key to be sent by the following \&/A command, to embed hexadecimal or special values in the data, or to cause the script to wait for the first message from the application, or to process a scenario.
 
 
@@ -4710,9 +4799,10 @@ The \&\textgreater{} order does not transmit anything and must be completed with
 
 \end{description}
 
+\index{Connection / Disconnection Scripts!Method of Operation}\index{Method of Operation!Connection / Disconnection Scripts}
 
-\subsection{Script method of operation}
-\label{\detokenize{connectivity_guide:script-method-of-operation}}
+\subsection{Method of operation}
+\label{\detokenize{connectivity_guide:method-of-operation}}\label{\detokenize{connectivity_guide:index-121}}
 If present, a script is first called when the initial connection is made to the application. VIRTEL examines the start of the script to see if it begins with the order \&W (wait for first message from application). If so, then no further action is taken at this time, and script processing continues after the first message is received from the application. Otherwise, the first clause of the script is actioned according to its command code, as follows:
 \begin{itemize}
 \item {} 
@@ -4749,16 +4839,18 @@ Data sent to the application by means of the \&/A command must be constructed in
 
 Data sent to the terminal by means of the \&/T command must be constructed in the same format as the application would generate. In the case of a 3270 application, the message must be in the form of a 3270 data stream prefixed by a 3270 command code and WCC. VIRTEL will translate the message to the format required by the terminal (for example, HTML or Minitel) as appropriate.
 
+\index{Scripts Examples}
 
-\section{Script examples}
-\label{\detokenize{connectivity_guide:script-examples}}
+\section{Script Examples}
+\label{\detokenize{connectivity_guide:script-examples}}\label{\detokenize{connectivity_guide:index-122}}
 \begin{sphinxadmonition}{note}{Note:}
 In these examples, script commands are introduced by the preferred sequence \&/ (ampersand slash). For compatibility with existing scripts created before version 4.31 of VIRTEL, the slash may optionally be replaced by the EBCDIC character whose hexadecimal value is X’4F’.
 \end{sphinxadmonition}
 
+\index{Scripts Examples!Connect to CICS and autostart transaction}\index{Connect to CICS and autostart transaction!Scripts Examples}
 
-\subsection{Connection to CICS (no sign-on) with automatic start of a transaction}
-\label{\detokenize{connectivity_guide:connection-to-cics-no-sign-on-with-automatic-start-of-a-transaction}}
+\subsection{Connect to CICS (no sign-on) with automatic start of a transaction}
+\label{\detokenize{connectivity_guide:connect-to-cics-no-sign-on-with-automatic-start-of-a-transaction}}\label{\detokenize{connectivity_guide:index-123}}
 In the simplest case, the CICS transaction code is entered in the field “TIOA at logon”. The script below simply sends the ABC1 transaction code to CICS at connection time:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4777,9 +4869,10 @@ In the simplest case, the CICS transaction code is entered in the field “TIOA 
 
 This example works only if the CICS TYPETERM definition specifies LOGONMSG(NO). If CICS is configured to send an initial message to the terminal at logon, by means of the LOGONMSG(YES) parameter, then a bracket error would occur when the above script is executed. To avoid this, the transaction code must be prefixed by \&W to wait for the initial message to be delivered, as shown in the next example.
 
+\index{Scripts Examples!Connect to CICS and transmission of userid and password}\index{Connect to CICS and transmission of userid and password!Scripts Examples}
 
 \subsection{Connect to CICS and start transaction CESN with transmission of USER PASSWORD}
-\label{\detokenize{connectivity_guide:connect-to-cics-and-start-transaction-cesn-with-transmission-of-user-password}}
+\label{\detokenize{connectivity_guide:index-124}}\label{\detokenize{connectivity_guide:connect-to-cics-and-start-transaction-cesn-with-transmission-of-user-password}}
 The variables \&U and \&P can be used to pass the current VIRTEL userid and password to the CICS signon transaction:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4797,9 +4890,10 @@ The variables \&U and \&P can be used to pass the current VIRTEL userid and pass
 
 This script waits for the initial message from CICS, then enters the transaction code CESN. It waits for the “Signon” prompt to be displayed, then enters the userid and password in two separate fields and sends the completed screen to the host. Security=1 is specified to ensure that the user is signed on to VIRTEL. The SBA orders 11xxxx identify the position of the userid and password fields in the CESN signon panel and may vary as a function of the site.
 
+\index{Scripts Examples!Connect to CICS VSE with ICCF signon and start of CEMT transaction}\index{Connect to CICS VSE with ICCF signon and start of CEMT transaction!Scripts Examples}
 
-\subsection{Connection to CICS VSE with ICCF sign-on and start transaction CEMT}
-\label{\detokenize{connectivity_guide:connection-to-cics-vse-with-iccf-sign-on-and-start-transaction-cemt}}
+\subsection{Connect to CICS VSE with ICCF sign-on and start transaction CEMT}
+\label{\detokenize{connectivity_guide:index-125}}\label{\detokenize{connectivity_guide:connect-to-cics-vse-with-iccf-sign-on-and-start-transaction-cemt}}
 The following script illustrates the use of a PF key:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4817,9 +4911,10 @@ The following script illustrates the use of a PF key:
 
 This script waits for the ICCF signon screen (recognized by the word ‘REMOTE’), then enters the userid and password in two separate fields and sends the completed screen to the host. It waits for the ICCF main menu (recognized by the word “Escape”) and presses F6. It then enters the transaction code CEMT. The SBA orders 11xxxx identify the position of the userid and password fields in the ICCF signon panel and may vary as a function of the site.
 
+\index{Scripts Examples!Connect to TSO and start of ISPF}\index{Connect to TSO and start of ISPF!Scripts Examples}
 
 \subsection{Connect to TSO with USER and PASSWORD and await start of ISPF}
-\label{\detokenize{connectivity_guide:connect-to-tso-with-user-and-password-and-await-start-of-ispf}}
+\label{\detokenize{connectivity_guide:index-126}}\label{\detokenize{connectivity_guide:connect-to-tso-with-user-and-password-and-await-start-of-ispf}}
 This is an example of an HTTP transaction which uses the “Logon Message” field to pass the userid to TSO, followed by a script to complete the TSO/ISPF logon process:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4837,9 +4932,10 @@ This is an example of an HTTP transaction which uses the “Logon Message” fie
 
 The script waits for the TSO/E LOGON panel for the specified userid, then enters the password into the appropriate field. It waits for the *** prompt to appear, and presses enter. Security=1 is specified to ensure that the user is already signed on to VIRTEL. The SBA order 11C9C3 identifies the password field (at row 8 col 20) in the TSO/E LOGON panel and may vary as a function of the site.
 
+\index{Scripts Examples!Connect to CICS and navigation of user application}\index{Connect to CICS and navigation of user application!Scripts Examples}
 
 \subsection{Connect to CICS and navigate a user applicaction}
-\label{\detokenize{connectivity_guide:connect-to-cics-and-navigate-a-user-applicaction}}
+\label{\detokenize{connectivity_guide:index-127}}\label{\detokenize{connectivity_guide:connect-to-cics-and-navigate-a-user-applicaction}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{Internal} \PYG{n}{name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{14}                \PYG{n}{To} \PYG{n}{associate} \PYG{k}{with} \PYG{n}{an} \PYG{n}{entry} \PYG{n}{point} \PYG{n}{name}
 \PYG{n}{External} \PYG{n}{name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Cics4}                 \PYG{n}{Name} \PYG{n}{displayed} \PYG{n}{on} \PYG{n}{user} \PYG{n}{menu}
@@ -4856,9 +4952,10 @@ The script waits for the TSO/E LOGON panel for the specified userid, then enters
 
 This script sends an initial 3270 message to the terminal to format the screen and position the cursor. The data in this initial message consists of a 3270 Write-Erase command (F5), a Write Control Character (C2), a Set Buffer Address order (114040), a Start Field order (1D40) and an Insert Cursor order (13). Having sent this message, the script waits for the CICS application to send a message containing the string “WELCOME”, then it sends the “Enter” key to the CICS application. When the terminal user disconnects, the logoff script sends the “Clear” key to CICS followed by CESF LOGOFF.
 
+\index{Scripts Examples!Service Transactions}\index{Service Transactions!Scripts Examples}
 
-\subsection{Connect and run service transaction}
-\label{\detokenize{connectivity_guide:connect-and-run-service-transaction}}
+\subsection{Service Transaction}
+\label{\detokenize{connectivity_guide:service-transaction}}\label{\detokenize{connectivity_guide:index-128}}
 This example shows a script which connects to CICS and repeatedly issues an enquiry transaction whose parameters are supplied in the URL of an HTTP request:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4876,30 +4973,34 @@ This example shows a script which connects to CICS and repeatedly issues an enqu
 
 The first part of this script signs on to CICS using the default CICS userid. This part of the script is executed once only when the VIRTEL transaction is called for the first time. The remainder of the script, bracketed by the \&( and \&) orders, is executed repeatedly. Because the script has a repeating part, this transaction is known as a “Service Transaction”. Each time an HTTP request arrives in the form \sphinxurl{http://ipaddr:port/pagename+cics5?myparam=xyz123} it is dispatched to the service transaction, if one is available, and the script executes the CICS transaction TRA1xyz123 where xyz123 is the value of the URL parameter “myparam=” specified in the HTTP request. The result of this CICS transaction is returned to the requester using pagename as a page template. The request is then terminated, but the session between VIRTEL and CICS remains connected waiting for the next request.
 
+\index{External Servers}
 
 \chapter{External Servers}
-\label{\detokenize{connectivity_guide:external-servers}}
+\label{\detokenize{connectivity_guide:external-servers}}\label{\detokenize{connectivity_guide:index-129}}
 
 \section{Introduction}
-\label{\detokenize{connectivity_guide:id14}}
+\label{\detokenize{connectivity_guide:id66}}
 The external server management sub-application allows the administrator to maintain the call parameters relating to the various servers available for outgoing calls. External server definitions allow users at 3270 terminals to access Videotex servers via an X25 network. Additionally, starting with VIRTEL version 4.14, the concept of an external server
 is extended to handle the routing of incoming and outgoing calls to and from X25 GATE/PCNE applications such as CFT and Inter.PEL. Starting with VIRTEL version 4.42, the external server may also be used to define the parameters for outbound calls to a PESIT/IP file transfer server via a VIRPESIT line.
 
+\index{External Servers!External Server Management Sub-Application}\index{External Server Management Sub-Application!External Servers}
 
 \subsection{External Server Management Sub-Application}
-\label{\detokenize{connectivity_guide:external-server-management-sub-application}}
+\label{\detokenize{connectivity_guide:external-server-management-sub-application}}\label{\detokenize{connectivity_guide:index-130}}
 The external server management sub-application is accessed by pressing {[}PF7{]} in the Configuration Menu, or {[}PF11{]} in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0031. This subapplication allows management of the parameters associated with each external server.
 
+\index{External Server Management Sub-Application!Security}\index{Security!External Server Management Sub-Application}
 
-\subsection{Sub-Application security}
-\label{\detokenize{connectivity_guide:id15}}
+\subsection{Security}
+\label{\detokenize{connectivity_guide:id67}}\label{\detokenize{connectivity_guide:index-131}}
 When security is active, access to external server management from the Configuration Menu or the Sub-Application Menu is controlled by the resource \$\$SERV\$\$.
 When accessed by a transaction, the rules governing the management of transaction security apply.
 Security management is described in chapter 4 of the VIRTEL Technical Documentation.
 
+\index{External Server Management Sub-Application!Summary Display}\index{Summary Display!External Server Management Sub-Application}
 
-\subsection{External Server Summary Display}
-\label{\detokenize{connectivity_guide:external-server-summary-display}}
+\subsection{Summary Display}
+\label{\detokenize{connectivity_guide:index-132}}\label{\detokenize{connectivity_guide:id68}}
 The first screen displayed by the external server management sub-application shows a summary of existing definitions in alphanumeric order:
 
 \sphinxincludegraphics{{image65}.png}
@@ -4907,7 +5008,7 @@ The first screen displayed by the external server management sub-application sho
 
 
 \subsubsection{Navigation}
-\label{\detokenize{connectivity_guide:id16}}
+\label{\detokenize{connectivity_guide:id69}}
 In browse, alter, or delete mode, it is possible to scroll the list of external servers under the control of VIRTEL.
 \begin{description}
 \item[{Search}] \leavevmode
@@ -4924,28 +5025,25 @@ Display the next page.
 
 \end{description}
 
-\sphinxstylestrong{Modifying an external server definition}
-Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. The message UPDATE OK indicates that the modifications have been accepted. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press {[}PF12{]} to
-access the definition detail screen.
+\sphinxstylestrong{Modifying an external server definition} - Type the desired modifications into the appropriate fields then press {[}PF1{]}. Multiple definitions can be modified at the same time. The message UPDATE OK indicates that the modifications have been accepted. If the modification affects a field not displayed on the summary screen, first position the cursor on the definition concerned, then press {[}PF12{]} to access the definition detail screen.
 
-\sphinxstylestrong{Deleting an external server definition}
-To delete a definition, position the cursor on the name of the service to be deleted and press {[}PF2{]}. The line associated with the service to be deleted will appear highlighted with the message CONFIRM DELETE. Press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each
-external server to be deleted.
+\sphinxstylestrong{Deleting an external server definition} - To delete a definition, position the cursor on the name of the service to be deleted and press {[}PF2{]}. The line associated with the service to be deleted will appear highlighted with the message CONFIRM DELETE. Press {[}PF2{]} again to confirm deletion. The message DELETE OK confirms successful completion of the operation. Repeat the procedure for each external server to be deleted.
 
-\sphinxstylestrong{Adding an external server definition}
-To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition.
+\sphinxstylestrong{Adding an external server definition} - To add a new definition, press {[}PF12{]} at the summary screen, either with the cursor on an existing definition to copy its attributes, or on an empty line to create a new definition.
 
+\index{External Server Management Sub-Application!Detail Display}\index{Detail Display!External Server Management Sub-Application}
 
-\subsection{External Server Detail Display}
-\label{\detokenize{connectivity_guide:external-server-detail-display}}
+\subsection{Detail Display}
+\label{\detokenize{connectivity_guide:id70}}\label{\detokenize{connectivity_guide:index-133}}
 To access the detailed definition of an external server, position the cursor on the desired service in the summary screen and press {[}PF12{]}. The external server detail definition screen will then be displayed. To return to the configuration menu, press {[}PF3{]} or {[}Clear{]}.
 
 \sphinxincludegraphics{{image66}.png}
 \sphinxstyleemphasis{External Server Detail display}
 
+\index{External Server Management Sub-Application!Parameters}\index{Parameters!External Server Management Sub-Application}
 
-\subsection{External Server Parameters}
-\label{\detokenize{connectivity_guide:external-server-parameters}}\begin{description}
+\subsection{Parameters}
+\label{\detokenize{connectivity_guide:index-134}}\label{\detokenize{connectivity_guide:id71}}\begin{description}
 \item[{Name}] \leavevmode
 Contains the name of the service as displayed to the user in the “Call External Server” screen. This name may also be referenced in the “Application” field of a type 3 transaction.
 
@@ -5096,14 +5194,16 @@ Contains a connection script to be run immediately after connection to the serve
 
 \end{description}
 
+\index{Connection Modes}
 
 \chapter{Connection Modes}
-\label{\detokenize{connectivity_guide:connection-modes}}
-There are various methods of connecting terminals to VIRTEL.
+\label{\detokenize{connectivity_guide:connection-modes}}\label{\detokenize{connectivity_guide:index-135}}
+There are various methods of connecting terminals to VIRTEL. This chapter includes the \sphinxstylestrong{WELCOME} and \sphinxstylestrong{RELAY} modes of connection
 
+\index{Connection Modes!Welcome Mode}\index{Welcome Mode!Connection Modes}
 
-\section{Connection in WELCOME mode}
-\label{\detokenize{connectivity_guide:connection-in-welcome-mode}}
+\section{WELCOME mode}
+\label{\detokenize{connectivity_guide:index-136}}\label{\detokenize{connectivity_guide:welcome-mode}}
 Exclusively for 3270 terminals, WELCOME mode allows 3270 terminals to connect to VIRTEL without being predefinied.
 There are two conditions which must be fulfilled:
 - The ACCUEIL parameter in the VIRTCT must be set to YES,
@@ -5119,15 +5219,22 @@ If the Multi-Session Menu is accessible from a terminal connected in WELCOME mod
 selection screen. Thus, when an application is selected, VIRTEL connects the terminal directly to this application and
 relinquishes control of the terminal. In this case, VIRTEL functions somewhat like a dynamic USSTAB.
 
+\index{Connection Modes!Relay Mode}\index{Relay Mode!Connection Modes}
 
-\section{Connection in RELAY mode}
-\label{\detokenize{connectivity_guide:connection-in-relay-mode}}
+\section{RELAY mode}
+\label{\detokenize{connectivity_guide:index-137}}\label{\detokenize{connectivity_guide:relay-mode}}
 3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or Multi-Session functionality. Whether a sign-on screen or a Multi-Session Menu is displayed depends on the characteristics associated with the entry point used. When no entry point is used, the rules described in the previous paragraph apply.
 
+\index{Connection Modes!Terminal connection types}\index{Terminal connection types!Connection Modes}
 
 \section{Terminal Connection Types}
-\label{\detokenize{connectivity_guide:terminal-connection-types}}
+\label{\detokenize{connectivity_guide:terminal-connection-types}}\label{\detokenize{connectivity_guide:index-138}}
 The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in a physical pool (which may be dynamic or non-dynamic); or by means of a reserved entry (logical pool). A fixed entry is a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a Minitel, to be presented to applications with different relays depending on the context. Each type of definition can be explicit or repeated.
+\begin{description}
+\item[{. index::}] \leavevmode
+pair: Connection Modes; Explicit Fixed Terminal entries
+
+\end{description}
 
 
 \subsection{Explicit fixed entries}
@@ -5152,7 +5259,7 @@ Each terminal in the group is explicitly named within VIRTEL. This mode of defin
 \sphinxstyleemphasis{Explicit fixed terminals}
 
 
-\subsection{Repeated fixed entries}
+\subsubsection{Repeated fixed entries}
 \label{\detokenize{connectivity_guide:repeated-fixed-entries}}
 Only the first terminal in the list is defined. The repeat count indicates the number of terminals which VIRTEL will create. The numeric portion of the terminal name, relay name, and 2nd relay name (if supplied) are incremented for each occurrence of the terminal.
 
@@ -5184,9 +5291,10 @@ In the examples shown below:
 
 \sphinxstyleemphasis{Repeated fixed terminals}
 
+\index{Connection Modes!Physical Terminal Pools}\index{Physical Terminal Pools!Connection Modes}
 
-\subsection{Physical pools}
-\label{\detokenize{connectivity_guide:physical-pools}}
+\subsection{Physical Terminal Pools}
+\label{\detokenize{connectivity_guide:physical-terminal-pools}}\label{\detokenize{connectivity_guide:index-139}}
 Physical pools allow 3270 terminals to connect to VIRTEL and to be assigned a relay LU, without the need to create an individual defininition for each connecting terminal. A relay LU is assigned from the physical pool at the time the terminal connects to VIRTEL. There are two types of physical pool, dynamic and non-dynamic, as described later.
 
 Whether or not a pool is dynamic, the definition of a physical pool is indicated by the presence of a “?” character in the first position of the terminal name. The next three characters denote the characteristics of the pool. The last four characters are free-format and serve to distinguish one definition from another.
@@ -5248,9 +5356,10 @@ Examples:
 
 \end{itemize}
 
+\index{Connection Modes!Dynamic Terminal Pools}\index{Dynamic Terminal Pools!Connection Modes}
 
-\subsection{Dynamic pool}
-\label{\detokenize{connectivity_guide:dynamic-pool}}
+\subsection{Dynamic Terminal Pools}
+\label{\detokenize{connectivity_guide:dynamic-terminal-pools}}\label{\detokenize{connectivity_guide:index-140}}
 In a dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters and “=” signs. Each “=” sign will be dynamically replaced by the value of the corresponding character in the name of the connecting
 terminal.
 
@@ -5262,16 +5371,18 @@ VIR????? APPL AUTH=(ACQ,PASS)
 
 A single definition may be sufficient to connect all 3270 terminals in the network.
 
+\index{Connection Modes!Non-Dynamic Terminal Pools}\index{Non-Dynamic Terminal Pools!Connection Modes}
 
-\subsection{Non-dynamic pool}
-\label{\detokenize{connectivity_guide:non-dynamic-pool}}
+\subsection{Non-Dynamic Terminal Pools}
+\label{\detokenize{connectivity_guide:non-dynamic-terminal-pools}}\label{\detokenize{connectivity_guide:index-141}}
 In a non-dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters without “=” signs. A given terminal may be assigned a different relay on each connection according to availability. Each relay in the pool must be defined to VTAM by means of an APPL statement.
 
 It is advisable to define as many entries as there are terminals to be connected.
 
+\index{Connection Modes!Terminal Pool Definition Examples}\index{Terminal Pool Definition Examples!Connection Modes}
 
-\subsection{Examples}
-\label{\detokenize{connectivity_guide:examples}}
+\subsection{Terminal Pool Definition Examples}
+\label{\detokenize{connectivity_guide:terminal-pool-definition-examples}}\label{\detokenize{connectivity_guide:index-142}}
 
 \subsubsection{Physical Pool}
 \label{\detokenize{connectivity_guide:physical-pool}}
@@ -5321,9 +5432,10 @@ P7=Page\PYGZhy{}1            P8=Page+1            P12=Details
 
 Terminals using a logical pool are defined with a “Relay” field referencing the logical pool rather than a VTAM APPL statement.
 
+\index{Connection Modes!Terminal Pool Selection}\index{Terminal Pool Selection!Connection Modes}
 
-\subsection{Pool selection}
-\label{\detokenize{connectivity_guide:pool-selection}}
+\subsection{Terminal Pool Selection}
+\label{\detokenize{connectivity_guide:index-143}}\label{\detokenize{connectivity_guide:terminal-pool-selection}}
 When a 3270 terminal is defined to a physical pool, the selection of a pool is managed automatically by VIRTEL at connection time. It starts from the end of the list of defined terminals. When the characteristics of the terminal match those of the entry being processed, the terminal assumes an application relay.
 
 
@@ -5415,19 +5527,22 @@ Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
 \PYG{n}{Terminaux}           \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{CRESA}   \PYG{n}{Préfixe} \PYG{n}{des} \PYG{n}{terminaux} \PYG{n}{associés}
 \end{sphinxVerbatim}
 
+\index{Connection Modes!Virtel Terminal Connection Examples}\index{Virtel Terminal Connection Examples!Connection Modes}
 
-\section{Virtel Terminal Definitions Examples}
-\label{\detokenize{connectivity_guide:virtel-terminal-definitions-examples}}
+\section{Terminal Connection Examples}
+\label{\detokenize{connectivity_guide:index-144}}\label{\detokenize{connectivity_guide:terminal-connection-examples}}
 This section presents a number of examples covering the definitions relating to terminals and details the parameters required on the VIRTEL and VTAM sides. The list is not exhaustive.
 
+\index{Connection Modes!WELCOME Mode Terminal Connection Example}\index{WELCOME Mode Terminal Connection Example!Connection Modes}
 
 \subsection{3270 terminal in WELCOME mode}
-\label{\detokenize{connectivity_guide:terminal-in-welcome-mode}}
+\label{\detokenize{connectivity_guide:index-145}}\label{\detokenize{connectivity_guide:terminal-in-welcome-mode}}
 This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There must be no definition which allows an application relay to be assigned to the terminal.
 
+\index{Connection Modes!RELAY Mode Terminal Connection Example}\index{RELAY Mode Terminal Connection Example!Connection Modes}
 
 \subsection{3270 terminal in RELAY mode}
-\label{\detokenize{connectivity_guide:terminal-in-relay-mode}}
+\label{\detokenize{connectivity_guide:index-146}}\label{\detokenize{connectivity_guide:terminal-in-relay-mode}}
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5468,9 +5583,10 @@ Terminal Répété Relais Entrée Type Compression 2eme Relais
 ?***0004 0000 RELAY004 Libre 2 Libre Vide
 \end{sphinxVerbatim}
 
+\index{Connection Modes!X25 Asynchronous Terminal Connection Example}\index{X25 Asynchronous Terminal Connection Example!Connection Modes}
 
 \subsection{Asynchronous terminal on an X25 or XOT line}
-\label{\detokenize{connectivity_guide:asynchronous-terminal-on-an-x25-or-xot-line}}
+\label{\detokenize{connectivity_guide:index-147}}\label{\detokenize{connectivity_guide:asynchronous-terminal-on-an-x25-or-xot-line}}
 A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5521,9 +5637,10 @@ A VTAM APPL statement must be defined for each terminal. If there is no such def
 
 The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.
 
+\index{Connection Modes!Logical Terminals}\index{Logical Terminals!Connection Modes}
 
 \subsection{Logical terminals}
-\label{\detokenize{connectivity_guide:logical-terminals}}
+\label{\detokenize{connectivity_guide:logical-terminals}}\label{\detokenize{connectivity_guide:index-148}}
 It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5546,16 +5663,18 @@ It is possible to assign a physical terminal to a relay when a transaction conne
 
 The 3 groups of terminals contain the value *POOL001 under the heading “*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries \textendash{} they cannot be placed in a logical pool.
 
+\index{Controlling LUNAMEs}
 
 \chapter{Controlling LUNAMEs}
-\label{\detokenize{connectivity_guide:controlling-lunames}}\label{\detokenize{connectivity_guide:v457cn-forceluname}}
+\label{\detokenize{connectivity_guide:controlling-lunames}}\label{\detokenize{connectivity_guide:v457cn-forceluname}}\label{\detokenize{connectivity_guide:index-149}}
 In this section we look how we can control LUNAME selection for inbound HTTP calls.When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value \$URL\$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).
 
 The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address {[}Correspondent Management{]} which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See {\hyperref[\detokenize{connectivity_guide:v457cn-virtelrules}]{\sphinxcrossref{\DUrole{std,std-ref}{“Virtel Rules”,}}}} for further information on Virtel Rules.
 
+\index{Controlling LUNAMEs!ForceLUNAME Selection}\index{ForceLUNAME Selection!Controlling LUNAMEs}
 
 \section{Force LUNAME Selection}
-\label{\detokenize{connectivity_guide:force-luname-selection}}
+\label{\detokenize{connectivity_guide:index-150}}\label{\detokenize{connectivity_guide:force-luname-selection}}
 
 \subsection{HTTP connections with non-predefined terminals. ForceLUNAME option}
 \label{\detokenize{connectivity_guide:http-connections-with-non-predefined-terminals-forceluname-option}}
@@ -5587,9 +5706,10 @@ The ForceLUNAME=luname parameter in the URL is valid only for transactions which
 
 An example of a line with non-predefined LU names is shown below.
 
+\index{Controlling LUNAMEs!ForceLUNAME Examples}\index{ForceLUNAME Examples!Controlling LUNAMEs}
 
 \subsection{ForceLUNAME Examples}
-\label{\detokenize{connectivity_guide:forceluname-examples}}
+\label{\detokenize{connectivity_guide:index-151}}\label{\detokenize{connectivity_guide:forceluname-examples}}
 In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is \$LINE\$:
 
 \sphinxincludegraphics{{image12}.png}
@@ -5615,9 +5735,10 @@ Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically
 
 The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
 
+\index{Controlling LUNAMEs!Reconnecting to an existing session}\index{Reconnecting to an existing session!Controlling LUNAMEs}
 
 \subsection{Reconnecting to an existing session}
-\label{\detokenize{connectivity_guide:reconnecting-to-an-existing-session}}
+\label{\detokenize{connectivity_guide:index-152}}\label{\detokenize{connectivity_guide:reconnecting-to-an-existing-session}}
 The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSession\$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
 
 

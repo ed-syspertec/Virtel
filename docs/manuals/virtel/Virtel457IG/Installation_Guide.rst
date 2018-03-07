@@ -4098,7 +4098,7 @@ SECUR parameter
 
 ::
 
-	SECUR=NO/VIRTEL/RACF/TOPS/ACF2/RACROUTE/MIXEDCASE Default=NO
+	SECUR=NO/VIRTEL/RACF/TOPS/ACF2/RACROUTE/MIXEDCASE/PASSPHRASE Default=NO
 
 For the z/OS environment, the following options can be specified:
 
@@ -4111,6 +4111,12 @@ For the z/OS environment, the following options can be specified:
 **(RACROUTE,TOPS)** - The TOP SECRET security management product is used (via SAF).
 
 **(RACROUTE,ACF2)** - The ACF2 security management system is used (via SAF).
+
+.. index::
+   pair: Virtel TCT; Passphrase support
+
+.. note::
+	Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: **SECUR=(RACROUTE,[RACF|TOPS|ACF2],PASSPHRASE)**
 
 For the z/VSE environment, the following options can be specified:
 
