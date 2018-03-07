@@ -258,14 +258,14 @@ Terminal Elements
 Terminal elements are used to support units of work within Virtel such as running a program, transmitting data to a browser, representing a VTAM LU to a VTAM APPLICATION. These are just a few examples. Terminal elements are defined to Virtel as either dynamic, static or pool. The following Summary Display lists the terminals delivered in the default installation. 
 
 |image73|
-*Terminal definitions*
+*Terminal Definitions*
 
 The terminal name is used to associate terminals with lines and transactions. In the example for the line C-HTTP(41002) we had a terminal prefix of CL. So terminals CLLOC000-CLLOC079 and CLVTA000-CLVTA079 will be associated with this line. Our Transaction CLI-10 requires a terminal whose prefix is CLVTA. CL terminals are allocated top down, meaning that the terminal allocated to the transaction will be the highest CLVTA079. The display shows that CLLOC000-CLLOC079 are static terminal entries. CLVTA000-CLVTA079 are dynamic entries and point to a pool called \*W2HPOOL. Whenever a terminal is required from a pool the terminal name returned will be the first free terminal within the pool. Defining pool terminals is through the use of the Pool name in the terminal definition. So in the pool \*W2HPOOL terminals whose name begin with W2HTP000-WH2HTP079 have been defined. So, when the TSO transaction is kicked off Virtel will request a terminal whose name begins CLVTA, CLVTA079 will be assigned. This will grab the first available terminal in the \*W2HPOOL as that is where CLVTA points to. The first available terminal in the pool will be W2HTP000. Virtel always works from the lowest free name entry when returning pool entries.
 
 |image74|
 *Terminal Pool definition*
 
-Terminal definitions defined with Arbo configuration statements:-
+Terminal Definitions defined with Arbo configuration statements:-
 
 ::
 
@@ -1036,9 +1036,9 @@ Tran
     Always blank.
 
 .. index::
-   pair: HTTP Inbound Line; Terminal definitions     
+   pair: HTTP Inbound Line; Terminal Definitions     
 
-Terminal definitions
+Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^    
 
 An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case CL). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub-group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to :ref:`“logical pool of relays”<#_V457CN_LogicalPool>`. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
@@ -1068,9 +1068,9 @@ terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the termina
 Refer to the VIRTEL Web Access Guide for further information about printers.
 
 .. index::
-   pair: HTTP Inbound Line; VTAM terminal definitions     
+   pair: HTTP Inbound Line; VTAM Terminal Definitions     
 
-VTAM terminal definitions
+VTAM Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 HTTP relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
@@ -1096,9 +1096,9 @@ HTTP relay LU’s must be defined to VTAM by means of APPL statements in an appl
 *VTAM definitions for HTTP terminals*
 
 .. index::
-   pair: HTTP Inbound Line; CICS definitions     
+   pair: HTTP Inbound Line; CICS Definitions     
 
-CICS definitions
+CICS Definitions
 ^^^^^^^^^^^^^^^^
 
 The HTTP relay LU’s must also be defined to CICS, as shown in the following example:
@@ -1252,12 +1252,12 @@ Tran
 
 *SMTP terminals*
 
-    By pressing [PF4], the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorised. Either explicit or repeated terminal definitions may be used.
+    By pressing [PF4], the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorised. Either explicit or repeated Terminal Definitions may be used.
 
     The example below shows a group of 16 SMTP terminals with associated relays:
 
 |image17|
-*SMTP terminal definitions*
+*SMTP Terminal Definitions*
 
 .. index::
    pair: HTTP Outbound SMTP Line; Terminal Definitions
@@ -1290,7 +1290,7 @@ Repeat
    pair: HTTP Outbound SMTP Line; VTAM Terminal Definitions     
 
 
-VTAM terminal definitions
+VTAM Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
@@ -1303,9 +1303,9 @@ VTAM terminal definitions
 *VTAM definitions for SMTP relay LUs*
 
 .. index::
-   pair: HTTP Ôutbound SMTP Line; CICS definitions  
+   pair: HTTP Ôutbound SMTP Line; CICS Definitions  
 
-CICS definitions
+CICS Definitions
 ^^^^^^^^^^^^^^^^
 
 Where incoming e-mails are used to trigger a CICS transaction (or other VTAM application), the SMTP relay LU’s must be defined by APPL statements in a VTAM application major node, as shown in this example:
@@ -1754,9 +1754,9 @@ Line Terminals
 |image29|
 
 .. index::
-   pair: Native Gateway Line; Terminal parameters 
+   pair: Native Gateway Line; Terminal Parameters 
 
-Terminal parameters
+Terminal Parameters
 ^^^^^^^^^^^^^^^^^^^
 
 Terminal
@@ -1794,7 +1794,7 @@ The figure below shows the definition of the NATIVE TCP/IP relay pool:
 |image30|
 
 .. index::
-   pair: Native Gateway Line; VTAM terminal definitions     
+   pair: Native Gateway Line; VTAM Terminal Definitions     
 
 VTAM terminals definitions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1815,9 +1815,9 @@ Relay LU’s must be defined to VTAM by means of APPL statements in an applicati
 *VTAM definitions for NATIVE TCP/IP relay LU’s*
 
 .. index::
-   pair: Native Gateway Line; CICS definitions     
+   pair: Native Gateway Line; CICS Definitions     
 
-CICS definitions
+CICS Definitions
 ^^^^^^^^^^^^^^^^
 
 The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the following example:
@@ -1993,9 +1993,9 @@ A VIRPASS TCP connection with a VIRNT system can use up to two sub-groups of ter
 +----------------+------------+----------------+-------------+-----+-----+
 
 .. index::
-   pair: VIRPASS (VIRNT) line; Terminal definitions  
+   pair: VIRPASS (VIRNT) line; Terminal Definitions  
 
-Terminal definitions
+Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^
 
 Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:
@@ -2064,9 +2064,9 @@ Pad, Tran
     Always blank.
 
 .. index::
-   pair: VIRPASS XM Line (VIRKIX); Terminal definitions      
+   pair: VIRPASS XM Line (VIRKIX); Terminal Definitions      
 
-Terminal definitions
+Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^
 
 A VIRPASS XM line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type de line” field in the relay definition must contain the value X25VIRPA (this is the same value as for VIRPASS TCP, which was coded as E25TCPIP in previous versions of VIRKIX).
@@ -2191,7 +2191,7 @@ Tran
 .. index::
    pair: X25 XOT line; Terminal Definitions  
 
-Terminal definitions
+Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^
 
     Press [PF4] at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.
@@ -2229,9 +2229,9 @@ Repeat
     Number of terminals (virtual circuits) defined.^
 
 .. index::
-   pair: X25 XOT line; VTAM terminal definitions      
+   pair: X25 XOT line; VTAM Terminal Definitions      
 
-VTAM terminal definition
+VTAM Terminal Definition
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 When incoming calls are routed to a type-1 transaction (VTAM
@@ -2295,9 +2295,9 @@ By pressing [PF4], the list of terminals associated with the VIRPESIT line will 
 |image39|
 
 .. index::
-   pair: X25 VIRPESIT line; Terminal definitions 
+   pair: X25 VIRPESIT line; Terminal Definitions 
 
-Terminal definitions
+Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^
 
 Terminal
@@ -2370,9 +2370,9 @@ Packet
 |image41|
 
 .. index::
-   pair: X25 VIRNEOX line; Terminal definitions  
+   pair: X25 VIRNEOX line; Terminal Definitions  
 
-Terminal definitions
+Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^
 
 Terminal
@@ -2537,7 +2537,7 @@ Note 4
 .. index::
    pair: X25 GATE NFC line; NCP Parameters    
 
-NCP parameters
+NCP Parameters
 ^^^^^^^^^^^^^^
 
 The LUDRPOOL MACRO must contain an NUMTYP1 parameter with a value greater than or equal to the number of CVC available on the lines. For LU6.2 connections, check for the presence of the NUMILU parameter which indicates the number of available PU type 2.1.
@@ -2545,7 +2545,7 @@ The LUDRPOOL MACRO must contain an NUMTYP1 parameter with a value greater than o
 .. index::
    pair: X25 GATE NFC line; NPSI Parameters 
 
-NPSI parameters
+NPSI Parameters
 ^^^^^^^^^^^^^^^
 
 The following parameters must agree with the specification of your TRANSPAC subscription.
@@ -3101,7 +3101,7 @@ application name. This makes the link with an external server whose name is iden
 The example below shows the definition of an AntiPCNE terminal for outbound calls made using LU name AP1LU01O, and the associated external server containing the X25 call parameters:
 
 |image51|
-*Outbound terminal definition for X25 AntiPCNE*
+*Outbound Terminal Definition for X25 AntiPCNE*
 
 |image52|
 *External server definition for X25 AntiPCNE*
@@ -3113,7 +3113,7 @@ The second sub-group is used for incoming calls (from the point of view of the a
 
 A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see :ref:`“logical pool of relays”<#_V457CN_LogicalPool>`). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
 
-The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool \*POOLPCN. Terminal definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.
+The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool \*POOLPCN. Terminal Definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.
 
 ::
 
@@ -3225,7 +3225,7 @@ Support for incoming connections via an X25 non GATE line still exists. This typ
     This mode allows only incoming calls, with no facility for call routing.
 
 .. index::
-   pair: X25 AntiPCNE line; VTAM terminal definitions for X25 Non Gate terminals.       
+   pair: X25 AntiPCNE line; VTAM Terminal Definitions for X25 Non Gate terminals.       
 
 VTAM definitions for X25 non GATE terminals    
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3485,7 +3485,7 @@ Detail Display
 ^^^^^^^^^^^^^^
 
 |image68|
-*Terminal definition detail screen*
+*Terminal Definition detail screen*
 
 From within the detail display parameters can be updated.
 
@@ -3510,7 +3510,7 @@ Relay
     
     The “Relay” field may alternatively contain a name in the form \*POOLNAM which refers to the logical pool which has the same name \*POOLNAM specified in its “\*Pool name” field. In this case, a relay will be assigned dynamically from the specified logical pool each time a relay is required. See “logical pool of relays”. Certain terminals (those associated with an AntiPCNE line) require the definition of an external server whose name is equal to the relay name of the terminal. In this case, you can press [PF12] to display the external server detail definition. If the “Repeat” field contains a value greater than 1, then the relay name, if supplied, must contain a numeric portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below), or it must refer to a logical pool. If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any '+' character in the relay name will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
 
-    Terminal definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the "terminal name", "relay", and "2nd relay" fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
+    Terminal Definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the "terminal name", "relay", and "2nd relay" fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
 
 .. index::
    pair: Terminal Management Sub-Application; Pattern Characters
@@ -4334,10 +4334,10 @@ In the simplest case, the CICS transaction code is entered in the field “TIOA 
 This example works only if the CICS TYPETERM definition specifies LOGONMSG(NO). If CICS is configured to send an initial message to the terminal at logon, by means of the LOGONMSG(YES) parameter, then a bracket error would occur when the above script is executed. To avoid this, the transaction code must be prefixed by &W to wait for the initial message to be delivered, as shown in the next example.
 
 .. index::
-   pair: Scripts Examples; Connect to CICS and transmission of userid and password 
+   pair: Scripts Examples; Connect to CICS and transmission of credentials 
 
-Connect to CICS and start transaction CESN with transmission of USER PASSWORD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Connect to CICS and start transaction CESN with transmission of credentials
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The variables &U and &P can be used to pass the current VIRTEL userid and password to the CICS signon transaction:-
 
@@ -4898,7 +4898,7 @@ When a single terminal must be presented under a different name according to the
 
 As a concrete example, suppose that Minitels use an X25 line with 50 logical channels to logon to 3 distinct applications under different names according to sub-address or a specific user data value. The first two applications are accessible via the same entry point ENTRYP01, the third via entry point ENTRYP02. Applications APPLI01, APPLI02, APPLI03 must be accessed via relays with prefixes AP01R, BP02R and CP03R respectively. The first application only allows 5 simultaneous logons, the second has no limit, and the third allows 2 simultaneous logons. The set of VIRTEL definitions to resolve this problem is as follows.
 
-**Terminal definitions**
+**Terminal Definitions**
 
 The definition of the physical terminals and their association with the 3 sub-groups of logical terminals belonging to the same pool is:
 
@@ -5124,31 +5124,319 @@ The 3 groups of terminals contain the value \*POOL001 under the heading “\*Poo
 Controlling LUNAMEs
 ===================
 
+Introduction
+------------
+
 In this section we look how we can control LUNAME selection for inbound HTTP calls.When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide). 
 
 The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V457CN_VirtelRules>` for further information on Virtel Rules. 
 
 .. index::
+   pair: Controlling LUNAMEs; Reconnecting to an existing session
+
+
+Reconnecting to an existing session
+-----------------------------------
+
+The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
+
+.. index::
+   pair: Controlling LUNAMEs; Examples
+
+Examples
+--------
+
+When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a *Logical Unit* or *LU*, and each LU has a unique eight character name (*LU name)*. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
+
+While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser.
+
+This document describes the following types of LU nailing:
+
+-  LU nailing by work station name
+
+-  LU nailing by ForceLU (Pre-defined terminal)
+
+-  LU nailing by ForceLU (Non-predefined terminal)
+
+-  LU nailing by IP address
+
+-  LU nailing by cookie
+
+-  LU nailing by URL
+
+.. index::
+   pair: Controlling LUNAMEs; Using a work station name
+
+Using a work station name (Predefined terminals)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
+
+Here is an example of a Virtel RULE. ::
+
+    RULE ID=ESH0000,
+    RULESET=E-HTTP,
+    STATUS=ACTIVE,
+    DESC='Rule for terminal EHPMA00',
+    ENTRY=EDSWHOST,
+    PARAM=EHPMA000, /* Or EHPMA00* */
+    NETMASK=255.255.255.255,
+    USERDATA=(EQUAL,HOLT-W)
+
+The rule instructs Virtel to test the user data field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and direct the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.
+
+Our EDSWHOST entry point looks like:- ::
+
+    ENTRY ID=EDSWHOST, -
+    DESC='EDS WEB ENTRY POINT (USERS WITH USERDATA)', -
+    TRANSACT=EDSW, -
+    TIMEOUT=0720, -
+    ACTION=0, -
+    EMUL=HTML, -
+    SIGNON=VIR0020H, -
+    MENU=VIR0021A, -
+    EXTCOLOR=X, -
+    ENDPAGE=CLOSE.HTM
+
+In this entry point you would define the relevant transactions. In our case we have defined the following:-
+
+- Entry point transaction
+- Transaction to access the /w2h directory
+- A VTAM transaction for IMS
+- A VTAM transaction for TSO
+- A Virtel application transaction to support an application menu list.
+
+We reuse the EHLOC terminals that already exist for this line, but we will need to define a unique pool for our VTAM applications. This is prefixed with the EHVTS id:-
+
+::
+
+        TRANSACT ID=EDSW-00, -
+        NAME=EDSWHOST, -
+        DESC='HTML page directory (default access)', -
+        APPL=W2H-DIR, -
+        TYPE=4, -
+        TERMINAL=EHLOC, -
+        STARTUP=2, -
+        SECURITY=0
+        TRANSACT ID=EDSW-20, -
+        NAME='w2h', -
+        DESC='W2H toolkit directory (/w2h)', -
+        APPL=W2H-DIR, -
+        TYPE=4, -
+        TERMINAL=EHLOC, -
+        STARTUP=2, -
+        SECURITY=0
+        TRANSACT ID=EDSW-41, -
+        NAME=IMS, -
+        DESC='IMS access with userdata', -
+        APPL=IMS3270, -
+        PASSTCKT=0, -
+        TYPE=1, -
+        TERMINAL=EHVTS, -
+        STARTUP=1, -
+        SECURITY=0
+        TRANSACT ID=EDSW-42, -
+        NAME=TSO, -
+        DESC='TSO access with userdata', -
+        APPL=TSO, -
+        PASSTCKT=0, -
+        TYPE=1, -
+        TERMINAL=EHVTS, -
+        STARTUP=1, -
+        SECURITY=0
+        TRANSACT ID=EDSW-90, -
+        NAME='applist', -
+        DESC='List of applications for appmenu.htm', -
+        APPL=VIR0021S, -
+        TYPE=2, -
+        TERMINAL=EHLOC, -
+        STARTUP=2, -
+        SECURITY=1
+
+In VTAM we would have the following definition:- ::
+
+        * ------------------------------------------------------------------ *
+        * LU Test : VTAM application relays with user data.                  *
+        * ------------------------------------------------------------------ *
+        EHPMA000 APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+
+Or for the model EHPMA00?
+
+::
+
+        * ------------------------------------------------------------------ *
+        * LU Test : VTAM application relays with user data.                  *
+        * ------------------------------------------------------------------ *
+        EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+
+We also need a terminal and pool definition. Here is the pool definition:-
+
+::
+
+        TERMINAL ID=EHPMA000, -
+        RELAY=EHPMA000, /* Or EHPMA00* */ -
+        POOL=*STAPOOL, -
+        DESC='Terminal definition for EHPMA000', -
+        TYPE=3, -
+        COMPRESS=2, -
+        INOUT=3, -
+        STATS=26, -
+        REPEAT=\ **0001 **
+        …and a pool definition for out static pool:-
+        TERMINAL ID=EHVTS000, -
+        RELAY=*STAPOOL, -
+        DESC='Static definition pool', -
+        TYPE=3, -
+        COMPRESS=2, -
+        INOUT=3, -
+        STATS=26, -
+        REPEAT=0010
+
+This setup will support up to 10 predefined terminal definitions. For each terminal we have to provide a static definition. Of course we could have used a generic terminal definition of EHPMA00* but this would only work for numerically sequenced terminal names – EHPMA000 – EHPMA009.
+
+Getting the PC workstation name to Virtel is through a batch job which fires up the default browser and passes the work station name as a user
+data parameter. Here is an example:-
+
+::
+
+        title Test Propagation of Userdata Parameter
+        @echo on
+        color 1f
+        cls
+        SET P1=%COMPUTERNAME:~0,6%
+        start http://192.168.170.33:41003/w2h/appmenu.htm+applist+%P1% &goto:eof
+        :exit
+
+The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:-
+
+|image91|
+
+*Passing User Data to Virtel*
+
+When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.
+
+|image92|
+
+*Selecting a LU name through a rule and work station id in the URL*
+
+The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated.
+
+In the VTAM display we can see that a session has been set up using that LU name:-
+
+::
+
+        D NET,ID=EHPMA000,E
+        IST097I DISPLAY ACCEPTED
+        IST075I NAME = SPNET.\ **EHPMA000**, TYPE = DYNAMIC APPL 073
+        IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
+        IST1447I REGISTRATION TYPE = CDSERVR
+        IST1629I MODSRCH = NEVER
+        IST977I MDLTAB=***NA*** ASLTAB=***NA***
+        IST861I MODETAB=ISTINCLM USSTAB=***NA*** LOGTAB=***NA***
+        IST934I DLOGMOD=SNX32702 USS LANGTAB=***NA***
+        IST1632I VPACING = 7
+        IST1938I APPC = NO
+        IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
+        IST231I APPL MAJOR NODE = APPLSPEH
+        IST1425I DEFINED USING MODEL EHPMA???
+        IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
+        IST1500I STATE TRACE = OFF
+        IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE
+        IST228I ENCRYPTION = OPTIONAL , TYPE = DES
+        IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO
+        IST1552I MAC = NONE MACTYPE = NONE
+        IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0
+        IST1633I ASRCVLM = 1000000
+        IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0
+        IST1669I IPADDR..PORT 192.168.92.65..50027
+        IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
+        IST206I SESSIONS:
+        IST634I NAME STATUS SID SEND RECV VR TP NETID
+        IST635I **TSO1A005** ACTIV-P CA7B8B52114E7A85 0000 0002 SPNET
+        IST314I END
+
+.. index::
+   pair: Controlling LUNAMEs; Using an LU Name with predefined terminal        
+
+Using an LU Name with a predefined terminal
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name. For this example the rule looks like:-
+
+::
+
+        RULE ID=ESH0001,
+        RULESET=E-HTTP,
+        STATUS=ACTIVE,
+        DESC='Rule for terminal EHPMA00',
+        ENTRY=EDSWHOST,
+        PARAM=$URL$,
+        NETMASK=255.255.255.255
+
+We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.
+
+|image93|
+
+*Using $URL$ to pass a LU name in the URL*
+
+The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009.
+
+.. index::
+   pair: Controlling LUNAMEs; Using an LU Name with no predefined terminal 
+
+Using an LU Name with no predefined terminal
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
+grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this setup certain conditions must be in place. Also note that no rules are required. The definitions required are:-
+
+- The HTTP Line that must specify a pool name.
+- A pool name needs to be defined.
+- Transactions must specify $LINE$ in the “Pseudo-terminals” field.
+
+Here is the line definition:-
+
+|image94|
+
+*Line definition for non-predefined LU names*
+
+And the Pool definition:-
+
+|image95|
+
+*Pool definition for non-predefined LU Names*
+
+And an example of a transaction definition. Note that the Psuedo-Terminal is defined as $LINE$. We have also assign a printer definition to this setup. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.
+
+|image96|
+
+*Transaction definition for non-predefined LU Names*
+
+Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for \*DYNPOOL, but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.
+
+|image97|
+
+*Access a Transaction with the ForceLUNAME parameter*
+
+.. index::
    pair: Controlling LUNAMEs; ForceLUNAME Selection
 
 
-Force LUNAME Selection
-----------------------
+ForceLUNAME Selection
+^^^^^^^^^^^^^^^^^^^^^
 
 HTTP connections with non-predefined terminals. ForceLUNAME option
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""    
 
 It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
 
--  the VTAM LU name should be specified in the connection URL. For
-   example, if the desired LU name is RLHVT500:
+-  the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:
 
 ::
 
    http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500
 
--  the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals”
-   field instead of a terminal name prefix.
+-  the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals” field instead of a terminal name prefix.
 
 -  the HTTP line must specify a pool name
 
@@ -5161,8 +5449,8 @@ An example of a line with non-predefined LU names is shown below.
 .. index::
    pair: Controlling LUNAMEs; ForceLUNAME Examples
 
-ForceLUNAME Examples
-^^^^^^^^^^^^^^^^^^^^
+A ForceLUNAME Examples
+^^^^^^^^^^^^^^^^^^^^^^
 
 In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:
 
@@ -5188,12 +5476,95 @@ Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically
 The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
 
 .. index::
-   pair: Controlling LUNAMEs; Reconnecting to an existing session
+   pair: Controlling LUNAMEs; Using a cookie (“Correspondent Sub-Application)    
 
-Reconnecting to an existing session
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using a cookie (Correspondent Sub-Application)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
+Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see the How-To document *Virtel – How to Activate LU Nailing.*
+
+.. index::
+   pair: Controlling LUNAMEs; Using an IP address    
+
+Using an IP address
+^^^^^^^^^^^^^^^^^^^
+
+This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool.
+
+::
+
+
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW     14:30:38
+    Name ===> WHT00110 Rule priority is per name
+    Status ===> ACTIVE 15 Feb 2010 14:30:35 SPTBOWL
+    Description ===> HTTP access from IP 192.168.0.39
+    Entry point ===> WEB2HOST Target Entry Point
+    Parameter ===> RHTVT001 &1 value or LUNAME
+    Trace ===> 1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    1 IP Subnet ===> 192.168.000.039 Mask ===> 255.255.255.255
+    0 Host ===>
+    0 eMail ===>
+    0 Calling DTE ===> Calling DTE address or proxy
+    0 Called ===> Called DTE address
+    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
+    0 User Data ===>
+    0 Days ===> M: T: W: T: F: S: S:
+    0 Start time ===> H: M: S: End time ===> H: M: S:
+    P1=Update P3=Return Enter=Add
+    P4=Activate P5=Inactivate P12=Entry P.
+
+*Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx*
+
+Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx.
+
+::
+
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW     17:53:56
+    Name ===> WHT00140 Rule priority is per name
+    Status ===> ACTIVE 15 Feb 2010 17:53:49 SPTBOWL
+    Description ===> HTTP access from IP 192.168.100.nnn
+    Entry point ===> WEB2HOST Target Entry Point
+    Parameter ===> RHTVT1* &1 value or LUNAME
+    Trace ===> 1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    1 IP Subnet ===> 192.168.100.000 Mask ===> 255.255.255.000
+    0 Host ===>
+    0 eMail ===>
+    0 Calling DTE ===> Calling DTE address or proxy
+    0 Called ===> Called DTE address
+    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
+    0 User Data ===>
+    0 Days ===> M: T: W: T: F: S: S:
+    0 Start time ===> H: M: S: End time ===> H: M: S:
+    P1=Update P3=Return Enter=Add  P4=Activate P5=Inactivate P12=Entry P.
+
+*Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx*
+
+The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
+
+.. index::
+   pair: Controlling LUNAMEs; Comparison table
+
+Comparison Table
+^^^^^^^^^^^^^^^^
+
++-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
+|                               | RULE DEFN                 | TERMINAL DEFN.             | COOKIES   | Terminal POOL definitions required   |
+|                               |                           |                            |           |                                      |
+|                               |                           |                            | USED      |                                      |
++===============================+===========================+============================+===========+======================================+
+| By Work Station Name in URL   | Yes. 1 per work station   | Yes. Individual or group   | No        | Yes                                  |
++-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
+| By LUNAME in URL              | Yes. 1 generic Rule.      | Yes. Individual or group   | No        | Yes                                  |
++-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
+| By using Forced LU            | No                        | Pool Only                  | No        | Yes                                  |
++-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
+| Correspondent                 | Yes                       | Yes                        | Yes       | Yes                                  |
++-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
+| By IP                         | Yes                       | Yes                        | No        | Yes                                  |
++-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
+
 
 Appendix
 ========
@@ -5328,3 +5699,27 @@ The current VIRTEL Web Access product uses the following open source software:
    :scale: 30 %
 .. |image82| image:: images/media/image82.png
    :scale: 30 %
+.. |image91| image:: images/media/image91.png
+   :width: 5.16667in
+   :height: 3.98405in
+.. |image92| image:: images/media/image92.png
+   :width: 5.16667in
+   :height: 3.93654in
+.. |image93| image:: images/media/image93.png
+   :width: 6.26806in
+   :height: 4.76736in
+.. |image94| image:: images/media/image94.png
+   :width: 4.66650in
+   :height: 3.16667in
+.. |image95| image:: images/media/image95.png
+   :width: 4.68750in
+   :height: 3.15287in
+.. |image96| image:: images/media/image96.png
+   :width: 4.82292in
+   :height: 3.24663in
+.. |image97| image:: images/media/image97.png
+   :width: 6.06250in
+   :height: 4.59154in
+
+
+   

@@ -315,14 +315,14 @@ The salient points here are the internal name or ID, CLI-10 which ties up with t
 Terminal elements are used to support units of work within Virtel such as running a program, transmitting data to a browser, representing a VTAM LU to a VTAM APPLICATION. These are just a few examples. Terminal elements are defined to Virtel as either dynamic, static or pool. The following Summary Display lists the terminals delivered in the default installation.
 
 \sphinxincludegraphics{{image73}.png}
-\sphinxstyleemphasis{Terminal definitions}
+\sphinxstyleemphasis{Terminal Definitions}
 
 The terminal name is used to associate terminals with lines and transactions. In the example for the line C-HTTP(41002) we had a terminal prefix of CL. So terminals CLLOC000-CLLOC079 and CLVTA000-CLVTA079 will be associated with this line. Our Transaction CLI-10 requires a terminal whose prefix is CLVTA. CL terminals are allocated top down, meaning that the terminal allocated to the transaction will be the highest CLVTA079. The display shows that CLLOC000-CLLOC079 are static terminal entries. CLVTA000-CLVTA079 are dynamic entries and point to a pool called *W2HPOOL. Whenever a terminal is required from a pool the terminal name returned will be the first free terminal within the pool. Defining pool terminals is through the use of the Pool name in the terminal definition. So in the pool *W2HPOOL terminals whose name begin with W2HTP000-WH2HTP079 have been defined. So, when the TSO transaction is kicked off Virtel will request a terminal whose name begins CLVTA, CLVTA079 will be assigned. This will grab the first available terminal in the *W2HPOOL as that is where CLVTA points to. The first available terminal in the pool will be W2HTP000. Virtel always works from the lowest free name entry when returning pool entries.
 
 \sphinxincludegraphics{{image74}.png}
 \sphinxstyleemphasis{Terminal Pool definition}
 
-Terminal definitions defined with Arbo configuration statements:-
+Terminal Definitions defined with Arbo configuration statements:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{CLLOC000}\PYG{p}{,}                        \PYG{n}{Static} \PYG{n}{Definition}
@@ -1118,9 +1118,9 @@ Always blank.
 
 \end{description}
 
-\index{HTTP Inbound Line!Terminal definitions}\index{Terminal definitions!HTTP Inbound Line}
+\index{HTTP Inbound Line!Terminal Definitions}\index{Terminal Definitions!HTTP Inbound Line}
 
-\subsection{Terminal definitions}
+\subsection{Terminal Definitions}
 \label{\detokenize{connectivity_guide:index-12}}\label{\detokenize{connectivity_guide:terminal-definitions}}
 An HTTP line uses two sub-groups of type-3 terminals having a common prefix (in this case CL). Each terminal in the first sub-group represents one session between the client browser and VIRTEL; no relay is configured for this sub-group. Each terminal in the second sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to {\hyperref[\detokenize{connectivity_guide:v457cn-logicalpool}]{\sphinxcrossref{\DUrole{std,std-ref}{“logical pool of relays”}}}}. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
 
@@ -1148,9 +1148,9 @@ terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the termina
 
 Refer to the VIRTEL Web Access Guide for further information about printers.
 
-\index{HTTP Inbound Line!VTAM terminal definitions}\index{VTAM terminal definitions!HTTP Inbound Line}
+\index{HTTP Inbound Line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!HTTP Inbound Line}
 
-\subsection{VTAM terminal definitions}
+\subsection{VTAM Terminal Definitions}
 \label{\detokenize{connectivity_guide:index-13}}\label{\detokenize{connectivity_guide:vtam-terminal-definitions}}
 HTTP relay LU’s must be defined to VTAM by means of APPL statements in an application major node, as shown in the following example:
 
@@ -1174,9 +1174,9 @@ HTTP relay LU’s must be defined to VTAM by means of APPL statements in an appl
 
 \sphinxstyleemphasis{VTAM definitions for HTTP terminals}
 
-\index{HTTP Inbound Line!CICS definitions}\index{CICS definitions!HTTP Inbound Line}
+\index{HTTP Inbound Line!CICS Definitions}\index{CICS Definitions!HTTP Inbound Line}
 
-\subsection{CICS definitions}
+\subsection{CICS Definitions}
 \label{\detokenize{connectivity_guide:index-14}}\label{\detokenize{connectivity_guide:cics-definitions}}
 The HTTP relay LU’s must also be defined to CICS, as shown in the following example:
 
@@ -1325,13 +1325,13 @@ Always blank.
 \sphinxstyleemphasis{SMTP terminals}
 \begin{quote}
 
-By pressing {[}PF4{]}, the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorised. Either explicit or repeated terminal definitions may be used.
+By pressing {[}PF4{]}, the list of terminals associated with the SMTP line will be displayed. An SMTP line uses a single sub- group of type-3 terminals having a common prefix (in this case SM). The number of terminals defined determines the number of simultaneous SMTP sessions authorised. Either explicit or repeated Terminal Definitions may be used.
 
 The example below shows a group of 16 SMTP terminals with associated relays:
 \end{quote}
 
 \sphinxincludegraphics{{image17}.png}
-\sphinxstyleemphasis{SMTP terminal definitions}
+\sphinxstyleemphasis{SMTP Terminal Definitions}
 
 \index{HTTP Outbound SMTP Line!Terminal Definitions}\index{Terminal Definitions!HTTP Outbound SMTP Line}
 
@@ -1362,7 +1362,7 @@ The number of terminals defined.
 
 \index{HTTP Outbound SMTP Line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!HTTP Outbound SMTP Line}
 
-\subsection{VTAM terminal definitions}
+\subsection{VTAM Terminal Definitions}
 \label{\detokenize{connectivity_guide:index-20}}\label{\detokenize{connectivity_guide:id5}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RWSVT200} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{MODVIRT}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{DLOGREL}
@@ -1373,9 +1373,9 @@ The number of terminals defined.
 
 \sphinxstyleemphasis{VTAM definitions for SMTP relay LUs}
 
-\index{HTTP Ôutbound SMTP Line!CICS definitions}\index{CICS definitions!HTTP Ôutbound SMTP Line}
+\index{HTTP Ôutbound SMTP Line!CICS Definitions}\index{CICS Definitions!HTTP Ôutbound SMTP Line}
 
-\subsection{CICS definitions}
+\subsection{CICS Definitions}
 \label{\detokenize{connectivity_guide:id6}}\label{\detokenize{connectivity_guide:index-21}}
 Where incoming e-mails are used to trigger a CICS transaction (or other VTAM application), the SMTP relay LU’s must be defined by APPL statements in a VTAM application major node, as shown in this example:
 
@@ -1902,9 +1902,9 @@ The example below shows a group of 4 NATIVE TCP/IP terminals:
 
 \sphinxincludegraphics{{image29}.png}
 
-\index{Native Gateway Line!Terminal parameters}\index{Terminal parameters!Native Gateway Line}
+\index{Native Gateway Line!Terminal Parameters}\index{Terminal Parameters!Native Gateway Line}
 
-\subsection{Terminal parameters}
+\subsection{Terminal Parameters}
 \label{\detokenize{connectivity_guide:id13}}\label{\detokenize{connectivity_guide:index-37}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
@@ -1940,7 +1940,7 @@ The figure below shows the definition of the NATIVE TCP/IP relay pool:
 
 \sphinxincludegraphics{{image30}.png}
 
-\index{Native Gateway Line!VTAM terminal definitions}\index{VTAM terminal definitions!Native Gateway Line}
+\index{Native Gateway Line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!Native Gateway Line}
 
 \subsection{VTAM terminals definitions}
 \label{\detokenize{connectivity_guide:index-39}}\label{\detokenize{connectivity_guide:vtam-terminals-definitions}}
@@ -1959,9 +1959,9 @@ Relay LU’s must be defined to VTAM by means of APPL statements in an applicati
 
 \sphinxstyleemphasis{VTAM definitions for NATIVE TCP/IP relay LU’s}
 
-\index{Native Gateway Line!CICS definitions}\index{CICS definitions!Native Gateway Line}
+\index{Native Gateway Line!CICS Definitions}\index{CICS Definitions!Native Gateway Line}
 
-\subsection{CICS definitions}
+\subsection{CICS Definitions}
 \label{\detokenize{connectivity_guide:id14}}\label{\detokenize{connectivity_guide:index-40}}
 The NATIVE TCP/IP relay LU’s must also be defined to CICS, as shown in the following example:
 
@@ -2244,9 +2244,9 @@ NTTCS980
 \par
 \sphinxattableend\end{savenotes}
 
-\index{VIRPASS (VIRNT) line!Terminal definitions}\index{Terminal definitions!VIRPASS (VIRNT) line}
+\index{VIRPASS (VIRNT) line!Terminal Definitions}\index{Terminal Definitions!VIRPASS (VIRNT) line}
 
-\subsection{Terminal definitions}
+\subsection{Terminal Definitions}
 \label{\detokenize{connectivity_guide:id19}}\label{\detokenize{connectivity_guide:index-47}}
 Each terminal in the pool dedicated to incoming calls must have an associated relay. The terminals are defined as type 3, compression 2, and the “Possible Calls” field must be set to 1:
 
@@ -2311,9 +2311,9 @@ Always blank.
 
 \end{description}
 
-\index{VIRPASS XM Line (VIRKIX)!Terminal definitions}\index{Terminal definitions!VIRPASS XM Line (VIRKIX)}
+\index{VIRPASS XM Line (VIRKIX)!Terminal Definitions}\index{Terminal Definitions!VIRPASS XM Line (VIRKIX)}
 
-\subsection{Terminal definitions}
+\subsection{Terminal Definitions}
 \label{\detokenize{connectivity_guide:id21}}\label{\detokenize{connectivity_guide:index-50}}
 A VIRPASS XM line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” \textendash{} “Appels X25 entrant”. The “Type de line” field in the relay definition must contain the value X25VIRPA (this is the same value as for VIRPASS TCP, which was coded as E25TCPIP in previous versions of VIRKIX).
 
@@ -2436,7 +2436,7 @@ Normally blank, unless non-standard ASCII translation is required for special ap
 
 \index{X25 XOT line!Terminal Definitions}\index{Terminal Definitions!X25 XOT line}
 
-\subsection{Terminal definitions}
+\subsection{Terminal Definitions}
 \label{\detokenize{connectivity_guide:index-53}}\label{\detokenize{connectivity_guide:id23}}\begin{quote}
 
 Press {[}PF4{]} at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.
@@ -2475,9 +2475,9 @@ Number of terminals (virtual circuits) defined.\textasciicircum{}
 
 \end{description}
 
-\index{X25 XOT line!VTAM terminal definitions}\index{VTAM terminal definitions!X25 XOT line}
+\index{X25 XOT line!VTAM Terminal Definitions}\index{VTAM Terminal Definitions!X25 XOT line}
 
-\subsection{VTAM terminal definition}
+\subsection{VTAM Terminal Definition}
 \label{\detokenize{connectivity_guide:vtam-terminal-definition}}\label{\detokenize{connectivity_guide:index-54}}\begin{description}
 \item[{When incoming calls are routed to a type-1 transaction (VTAM}] \leavevmode
 application), the relay LU’s must be defined by APPL statements in a
@@ -2537,9 +2537,9 @@ By pressing {[}PF4{]}, the list of terminals associated with the VIRPESIT line w
 
 \sphinxincludegraphics{{image39}.png}
 
-\index{X25 VIRPESIT line!Terminal definitions}\index{Terminal definitions!X25 VIRPESIT line}
+\index{X25 VIRPESIT line!Terminal Definitions}\index{Terminal Definitions!X25 VIRPESIT line}
 
-\subsection{Terminal definitions}
+\subsection{Terminal Definitions}
 \label{\detokenize{connectivity_guide:id25}}\label{\detokenize{connectivity_guide:index-57}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
@@ -2608,9 +2608,9 @@ The example below shows a group of 8 VIRNEOX terminals:
 
 \sphinxincludegraphics{{image41}.png}
 
-\index{X25 VIRNEOX line!Terminal definitions}\index{Terminal definitions!X25 VIRNEOX line}
+\index{X25 VIRNEOX line!Terminal Definitions}\index{Terminal Definitions!X25 VIRNEOX line}
 
-\subsection{Terminal definitions}
+\subsection{Terminal Definitions}
 \label{\detokenize{connectivity_guide:id27}}\label{\detokenize{connectivity_guide:index-60}}\begin{description}
 \item[{Terminal}] \leavevmode
 The terminal name must match the prefix of the line.
@@ -2772,13 +2772,13 @@ The LOGAPPL and USSTAB parameters are valid only for non GATE lines. For sites m
 
 \index{X25 GATE NFC line!NCP Parameters}\index{NCP Parameters!X25 GATE NFC line}
 
-\subsection{NCP parameters}
+\subsection{NCP Parameters}
 \label{\detokenize{connectivity_guide:index-65}}\label{\detokenize{connectivity_guide:ncp-parameters}}
 The LUDRPOOL MACRO must contain an NUMTYP1 parameter with a value greater than or equal to the number of CVC available on the lines. For LU6.2 connections, check for the presence of the NUMILU parameter which indicates the number of available PU type 2.1.
 
 \index{X25 GATE NFC line!NPSI Parameters}\index{NPSI Parameters!X25 GATE NFC line}
 
-\subsection{NPSI parameters}
+\subsection{NPSI Parameters}
 \label{\detokenize{connectivity_guide:index-66}}\label{\detokenize{connectivity_guide:npsi-parameters}}
 The following parameters must agree with the specification of your TRANSPAC subscription.
 
@@ -3314,7 +3314,7 @@ application name. This makes the link with an external server whose name is iden
 The example below shows the definition of an AntiPCNE terminal for outbound calls made using LU name AP1LU01O, and the associated external server containing the X25 call parameters:
 
 \sphinxincludegraphics{{image51}.png}
-\sphinxstyleemphasis{Outbound terminal definition for X25 AntiPCNE}
+\sphinxstyleemphasis{Outbound Terminal Definition for X25 AntiPCNE}
 
 \sphinxincludegraphics{{image52}.png}
 \sphinxstyleemphasis{External server definition for X25 AntiPCNE}
@@ -3326,7 +3326,7 @@ The second sub-group is used for incoming calls (from the point of view of the a
 
 A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see {\hyperref[\detokenize{connectivity_guide:v457cn-logicalpool}]{\sphinxcrossref{\DUrole{std,std-ref}{“logical pool of relays”}}}}). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.
 
-The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool *POOLPCN. Terminal definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.
+The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool *POOLPCN. Terminal Definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{+}
@@ -3448,7 +3448,7 @@ Support for incoming connections via an X25 non GATE line still exists. This typ
 \PYG{n}{This} \PYG{n}{mode} \PYG{n}{allows} \PYG{n}{only} \PYG{n}{incoming} \PYG{n}{calls}\PYG{p}{,} \PYG{k}{with} \PYG{n}{no} \PYG{n}{facility} \PYG{k}{for} \PYG{n}{call} \PYG{n}{routing}\PYG{o}{.}
 \end{sphinxVerbatim}
 
-\index{X25 AntiPCNE line!VTAM terminal definitions for X25 Non Gate terminals.}\index{VTAM terminal definitions for X25 Non Gate terminals.!X25 AntiPCNE line}
+\index{X25 AntiPCNE line!VTAM Terminal Definitions for X25 Non Gate terminals.}\index{VTAM Terminal Definitions for X25 Non Gate terminals.!X25 AntiPCNE line}
 
 \subsection{VTAM definitions for X25 non GATE terminals}
 \label{\detokenize{connectivity_guide:index-88}}\label{\detokenize{connectivity_guide:vtam-definitions-for-x25-non-gate-terminals}}
@@ -3735,7 +3735,7 @@ system.
 \subsection{Detail Display}
 \label{\detokenize{connectivity_guide:id52}}\label{\detokenize{connectivity_guide:index-99}}
 \sphinxincludegraphics{{image68}.png}
-\sphinxstyleemphasis{Terminal definition detail screen}
+\sphinxstyleemphasis{Terminal Definition detail screen}
 
 From within the detail display parameters can be updated.
 
@@ -3772,7 +3772,7 @@ If the “Repeat” field contains a value greater than 1, then the terminal nam
 
 The “Relay” field may alternatively contain a name in the form *POOLNAM which refers to the logical pool which has the same name *POOLNAM specified in its “*Pool name” field. In this case, a relay will be assigned dynamically from the specified logical pool each time a relay is required. See “logical pool of relays”. Certain terminals (those associated with an AntiPCNE line) require the definition of an external server whose name is equal to the relay name of the terminal. In this case, you can press {[}PF12{]} to display the external server detail definition. If the “Repeat” field contains a value greater than 1, then the relay name, if supplied, must contain a numeric portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below), or it must refer to a logical pool. If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any ‘+’ character in the relay name will be replaced by the value of the SYSCLONE system symbol. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
 
-Terminal definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the “terminal name”, “relay”, and “2nd relay” fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
+Terminal Definition records in the VIRARBO file whose repeat count is greater than 1 may now contain special pattern characters in the “terminal name”, “relay”, and “2nd relay” fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If a name contains no pattern characters then Virtel will increment the rightmost numeric portion of the name, as before.
 
 \end{description}
 
@@ -4869,10 +4869,10 @@ In the simplest case, the CICS transaction code is entered in the field “TIOA 
 
 This example works only if the CICS TYPETERM definition specifies LOGONMSG(NO). If CICS is configured to send an initial message to the terminal at logon, by means of the LOGONMSG(YES) parameter, then a bracket error would occur when the above script is executed. To avoid this, the transaction code must be prefixed by \&W to wait for the initial message to be delivered, as shown in the next example.
 
-\index{Scripts Examples!Connect to CICS and transmission of userid and password}\index{Connect to CICS and transmission of userid and password!Scripts Examples}
+\index{Scripts Examples!Connect to CICS and transmission of credentials}\index{Connect to CICS and transmission of credentials!Scripts Examples}
 
-\subsection{Connect to CICS and start transaction CESN with transmission of USER PASSWORD}
-\label{\detokenize{connectivity_guide:index-124}}\label{\detokenize{connectivity_guide:connect-to-cics-and-start-transaction-cesn-with-transmission-of-user-password}}
+\subsection{Connect to CICS and start transaction CESN with transmission of credentials}
+\label{\detokenize{connectivity_guide:index-124}}\label{\detokenize{connectivity_guide:connect-to-cics-and-start-transaction-cesn-with-transmission-of-credentials}}
 The variables \&U and \&P can be used to pass the current VIRTEL userid and password to the CICS signon transaction:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -5454,7 +5454,7 @@ Logical pools are not usable on X25 Fast-Connect lines managed by NPSI. The foll
 
 As a concrete example, suppose that Minitels use an X25 line with 50 logical channels to logon to 3 distinct applications under different names according to sub-address or a specific user data value. The first two applications are accessible via the same entry point ENTRYP01, the third via entry point ENTRYP02. Applications APPLI01, APPLI02, APPLI03 must be accessed via relays with prefixes AP01R, BP02R and CP03R respectively. The first application only allows 5 simultaneous logons, the second has no limit, and the third allows 2 simultaneous logons. The set of VIRTEL definitions to resolve this problem is as follows.
 
-\sphinxstylestrong{Terminal definitions}
+\sphinxstylestrong{Terminal Definitions}
 
 The definition of the physical terminals and their association with the 3 sub-groups of logical terminals belonging to the same pool is:
 
@@ -5667,22 +5667,332 @@ The 3 groups of terminals contain the value *POOL001 under the heading “*Pool 
 
 \chapter{Controlling LUNAMEs}
 \label{\detokenize{connectivity_guide:controlling-lunames}}\label{\detokenize{connectivity_guide:v457cn-forceluname}}\label{\detokenize{connectivity_guide:index-149}}
+
+\section{Introduction}
+\label{\detokenize{connectivity_guide:id72}}
 In this section we look how we can control LUNAME selection for inbound HTTP calls.When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value \$URL\$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).
 
 The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address {[}Correspondent Management{]} which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See {\hyperref[\detokenize{connectivity_guide:v457cn-virtelrules}]{\sphinxcrossref{\DUrole{std,std-ref}{“Virtel Rules”,}}}} for further information on Virtel Rules.
 
+\index{Controlling LUNAMEs!Reconnecting to an existing session}\index{Reconnecting to an existing session!Controlling LUNAMEs}
+
+\section{Reconnecting to an existing session}
+\label{\detokenize{connectivity_guide:index-150}}\label{\detokenize{connectivity_guide:reconnecting-to-an-existing-session}}
+The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSession\$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
+
+\index{Controlling LUNAMEs!Examples}\index{Examples!Controlling LUNAMEs}
+
+\section{Examples}
+\label{\detokenize{connectivity_guide:index-151}}\label{\detokenize{connectivity_guide:examples}}
+When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a \sphinxstyleemphasis{Logical Unit} or \sphinxstyleemphasis{LU}, and each LU has a unique eight character name (\sphinxstyleemphasis{LU name)}. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
+
+While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser.
+
+This document describes the following types of LU nailing:
+\begin{itemize}
+\item {} 
+LU nailing by work station name
+
+\item {} 
+LU nailing by ForceLU (Pre-defined terminal)
+
+\item {} 
+LU nailing by ForceLU (Non-predefined terminal)
+
+\item {} 
+LU nailing by IP address
+
+\item {} 
+LU nailing by cookie
+
+\item {} 
+LU nailing by URL
+
+\end{itemize}
+
+\index{Controlling LUNAMEs!Using a work station name}\index{Using a work station name!Controlling LUNAMEs}
+
+\subsection{Using a work station name (Predefined terminals)}
+\label{\detokenize{connectivity_guide:index-152}}\label{\detokenize{connectivity_guide:using-a-work-station-name-predefined-terminals}}
+In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
+
+Here is an example of a Virtel RULE.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RULE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{ESH0000}\PYG{p}{,}
+\PYG{n}{RULESET}\PYG{o}{=}\PYG{n}{E}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}
+\PYG{n}{STATUS}\PYG{o}{=}\PYG{n}{ACTIVE}\PYG{p}{,}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rule for terminal EHPMA00}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,}
+\PYG{n}{PARAM}\PYG{o}{=}\PYG{n}{EHPMA000}\PYG{p}{,} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Or} \PYG{n}{EHPMA00}\PYG{o}{*} \PYG{o}{*}\PYG{o}{/}
+\PYG{n}{NETMASK}\PYG{o}{=}\PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}\PYG{p}{,}
+\PYG{n}{USERDATA}\PYG{o}{=}\PYG{p}{(}\PYG{n}{EQUAL}\PYG{p}{,}\PYG{n}{HOLT}\PYG{o}{\PYGZhy{}}\PYG{n}{W}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+The rule instructs Virtel to test the user data field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and direct the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.
+
+Our EDSWHOST entry point looks like:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ENTRY} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDS WEB ENTRY POINT (USERS WITH USERDATA)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TRANSACT}\PYG{o}{=}\PYG{n}{EDSW}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0720}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{EMUL}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{SIGNON}\PYG{o}{=}\PYG{n}{VIR0020H}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{MENU}\PYG{o}{=}\PYG{n}{VIR0021A}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{EXTCOLOR}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{ENDPAGE}\PYG{o}{=}\PYG{n}{CLOSE}\PYG{o}{.}\PYG{n}{HTM}
+\end{sphinxVerbatim}
+
+In this entry point you would define the relevant transactions. In our case we have defined the following:-
+\begin{itemize}
+\item {} 
+Entry point transaction
+
+\item {} 
+Transaction to access the /w2h directory
+
+\item {} 
+A VTAM transaction for IMS
+
+\item {} 
+A VTAM transaction for TSO
+
+\item {} 
+A Virtel application transaction to support an application menu list.
+
+\end{itemize}
+
+We reuse the EHLOC terminals that already exist for this line, but we will need to define a unique pool for our VTAM applications. This is prefixed with the EHVTS id:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTML page directory (default access)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{w2h}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{W2H toolkit directory (/w2h)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{41}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{IMS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{IMS access with userdata}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{IMS3270}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{42}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{TSO access with userdata}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{applist}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{List of applications for appmenu.htm}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0021S}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
+\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
+\end{sphinxVerbatim}
+
+In VTAM we would have the following definition:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
+\PYG{o}{*} \PYG{n}{LU} \PYG{n}{Test} \PYG{p}{:} \PYG{n}{VTAM} \PYG{n}{application} \PYG{n}{relays} \PYG{k}{with} \PYG{n}{user} \PYG{n}{data}\PYG{o}{.}                  \PYG{o}{*}
+\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
+\PYG{n}{EHPMA000} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{ISTINCLM}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{SNX32702}\PYG{p}{,}\PYG{n}{EAS}\PYG{o}{=}\PYG{l+m+mi}{1}
+\end{sphinxVerbatim}
+
+Or for the model EHPMA00?
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* LU Test : VTAM application relays with user data.                  *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+\end{sphinxVerbatim}
+
+We also need a terminal and pool definition. Here is the pool definition:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+TERMINAL ID=EHPMA000, \PYGZhy{}
+RELAY=EHPMA000, /* Or EHPMA00* */ \PYGZhy{}
+POOL=*STAPOOL, \PYGZhy{}
+DESC=\PYGZsq{}Terminal definition for EHPMA000\PYGZsq{}, \PYGZhy{}
+TYPE=3, \PYGZhy{}
+COMPRESS=2, \PYGZhy{}
+INOUT=3, \PYGZhy{}
+STATS=26, \PYGZhy{}
+REPEAT=\PYGZbs{} **0001 **
+…and a pool definition for out static pool:\PYGZhy{}
+TERMINAL ID=EHVTS000, \PYGZhy{}
+RELAY=*STAPOOL, \PYGZhy{}
+DESC=\PYGZsq{}Static definition pool\PYGZsq{}, \PYGZhy{}
+TYPE=3, \PYGZhy{}
+COMPRESS=2, \PYGZhy{}
+INOUT=3, \PYGZhy{}
+STATS=26, \PYGZhy{}
+REPEAT=0010
+\end{sphinxVerbatim}
+
+This setup will support up to 10 predefined terminal definitions. For each terminal we have to provide a static definition. Of course we could have used a generic terminal definition of EHPMA00* but this would only work for numerically sequenced terminal names \textendash{} EHPMA000 \textendash{} EHPMA009.
+
+Getting the PC workstation name to Virtel is through a batch job which fires up the default browser and passes the work station name as a user
+data parameter. Here is an example:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{title} \PYG{n}{Test} \PYG{n}{Propagation} \PYG{n}{of} \PYG{n}{Userdata} \PYG{n}{Parameter}
+\PYG{n+nd}{@echo} \PYG{n}{on}
+\PYG{n}{color} \PYG{l+m+mi}{1}\PYG{n}{f}
+\PYG{n+nb+bp}{cls}
+\PYG{n}{SET} \PYG{n}{P1}\PYG{o}{=}\PYG{o}{\PYGZpc{}}\PYG{n}{COMPUTERNAME}\PYG{p}{:}\PYG{o}{\PYGZti{}}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{o}{\PYGZpc{}}
+\PYG{n}{start} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.33}\PYG{p}{:}\PYG{l+m+mi}{41003}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{appmenu}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{applist}\PYG{o}{+}\PYG{o}{\PYGZpc{}}\PYG{n}{P1}\PYG{o}{\PYGZpc{}} \PYG{o}{\PYGZam{}}\PYG{n}{goto}\PYG{p}{:}\PYG{n}{eof}
+\PYG{p}{:}\PYG{n}{exit}
+\end{sphinxVerbatim}
+
+The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:-
+
+\sphinxincludegraphics[width=5.16667in,height=3.98405in]{{image91}.png}
+
+\sphinxstyleemphasis{Passing User Data to Virtel}
+
+When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.
+
+\sphinxincludegraphics[width=5.16667in,height=3.93654in]{{image92}.png}
+
+\sphinxstyleemphasis{Selecting a LU name through a rule and work station id in the URL}
+
+The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated.
+
+In the VTAM display we can see that a session has been set up using that LU name:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+D NET,ID=EHPMA000,E
+IST097I DISPLAY ACCEPTED
+IST075I NAME = SPNET.\PYGZbs{} **EHPMA000**, TYPE = DYNAMIC APPL 073
+IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
+IST1447I REGISTRATION TYPE = CDSERVR
+IST1629I MODSRCH = NEVER
+IST977I MDLTAB=***NA*** ASLTAB=***NA***
+IST861I MODETAB=ISTINCLM USSTAB=***NA*** LOGTAB=***NA***
+IST934I DLOGMOD=SNX32702 USS LANGTAB=***NA***
+IST1632I VPACING = 7
+IST1938I APPC = NO
+IST597I CAPABILITY\PYGZhy{}PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
+IST231I APPL MAJOR NODE = APPLSPEH
+IST1425I DEFINED USING MODEL EHPMA???
+IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
+IST1500I STATE TRACE = OFF
+IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE
+IST228I ENCRYPTION = OPTIONAL , TYPE = DES
+IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO
+IST1552I MAC = NONE MACTYPE = NONE
+IST1050I MAXIMUM COMPRESSION LEVEL \PYGZhy{} INPUT = 0, OUTPUT = 0
+IST1633I ASRCVLM = 1000000
+IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0
+IST1669I IPADDR..PORT 192.168.92.65..50027
+IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
+IST206I SESSIONS:
+IST634I NAME STATUS SID SEND RECV VR TP NETID
+IST635I **TSO1A005** ACTIV\PYGZhy{}P CA7B8B52114E7A85 0000 0002 SPNET
+IST314I END
+\end{sphinxVerbatim}
+
+\index{Controlling LUNAMEs!Using an LU Name with predefined terminal}\index{Using an LU Name with predefined terminal!Controlling LUNAMEs}
+
+\subsection{Using an LU Name with a predefined terminal}
+\label{\detokenize{connectivity_guide:index-153}}\label{\detokenize{connectivity_guide:using-an-lu-name-with-a-predefined-terminal}}
+Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name. For this example the rule looks like:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+RULE ID=ESH0001,
+RULESET=E\PYGZhy{}HTTP,
+STATUS=ACTIVE,
+DESC=\PYGZsq{}Rule for terminal EHPMA00\PYGZsq{},
+ENTRY=EDSWHOST,
+PARAM=\PYGZdl{}URL\PYGZdl{},
+NETMASK=255.255.255.255
+\end{sphinxVerbatim}
+
+We use the special PARAM=\$URL\$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.
+
+\sphinxincludegraphics[width=6.26806in,height=4.76736in]{{image93}.png}
+
+\sphinxstyleemphasis{Using \$URL\$ to pass a LU name in the URL}
+
+The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009.
+
+\index{Controlling LUNAMEs!Using an LU Name with no predefined terminal}\index{Using an LU Name with no predefined terminal!Controlling LUNAMEs}
+
+\subsection{Using an LU Name with no predefined terminal}
+\label{\detokenize{connectivity_guide:using-an-lu-name-with-no-predefined-terminal}}\label{\detokenize{connectivity_guide:index-154}}
+Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
+grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this setup certain conditions must be in place. Also note that no rules are required. The definitions required are:-
+\begin{itemize}
+\item {} 
+The HTTP Line that must specify a pool name.
+
+\item {} 
+A pool name needs to be defined.
+
+\item {} 
+Transactions must specify \$LINE\$ in the “Pseudo-terminals” field.
+
+\end{itemize}
+
+Here is the line definition:-
+
+\sphinxincludegraphics[width=4.66650in,height=3.16667in]{{image94}.png}
+
+\sphinxstyleemphasis{Line definition for non-predefined LU names}
+
+And the Pool definition:-
+
+\sphinxincludegraphics[width=4.68750in,height=3.15287in]{{image95}.png}
+
+\sphinxstyleemphasis{Pool definition for non-predefined LU Names}
+
+And an example of a transaction definition. Note that the Psuedo-Terminal is defined as \$LINE\$. We have also assign a printer definition to this setup. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.
+
+\sphinxincludegraphics[width=4.82292in,height=3.24663in]{{image96}.png}
+
+\sphinxstyleemphasis{Transaction definition for non-predefined LU Names}
+
+Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for *DYNPOOL, but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.
+
+\sphinxincludegraphics[width=6.06250in,height=4.59154in]{{image97}.png}
+
+\sphinxstyleemphasis{Access a Transaction with the ForceLUNAME parameter}
+
 \index{Controlling LUNAMEs!ForceLUNAME Selection}\index{ForceLUNAME Selection!Controlling LUNAMEs}
 
-\section{Force LUNAME Selection}
-\label{\detokenize{connectivity_guide:index-150}}\label{\detokenize{connectivity_guide:force-luname-selection}}
+\subsection{ForceLUNAME Selection}
+\label{\detokenize{connectivity_guide:forceluname-selection}}\label{\detokenize{connectivity_guide:index-155}}
 
-\subsection{HTTP connections with non-predefined terminals. ForceLUNAME option}
+\subsubsection{HTTP connections with non-predefined terminals. ForceLUNAME option}
 \label{\detokenize{connectivity_guide:http-connections-with-non-predefined-terminals-forceluname-option}}
 It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
 \begin{itemize}
 \item {} 
-the VTAM LU name should be specified in the connection URL. For
-example, if the desired LU name is RLHVT500:
+the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:
 
 \end{itemize}
 
@@ -5691,8 +6001,7 @@ example, if the desired LU name is RLHVT500:
 \end{sphinxVerbatim}
 \begin{itemize}
 \item {} 
-the VIRTEL transaction must specifiy \$LINE\$ in the “Pseudo-terminals”
-field instead of a terminal name prefix.
+the VIRTEL transaction must specifiy \$LINE\$ in the “Pseudo-terminals” field instead of a terminal name prefix.
 
 \item {} 
 the HTTP line must specify a pool name
@@ -5708,8 +6017,8 @@ An example of a line with non-predefined LU names is shown below.
 
 \index{Controlling LUNAMEs!ForceLUNAME Examples}\index{ForceLUNAME Examples!Controlling LUNAMEs}
 
-\subsection{ForceLUNAME Examples}
-\label{\detokenize{connectivity_guide:index-151}}\label{\detokenize{connectivity_guide:forceluname-examples}}
+\subsection{A ForceLUNAME Examples}
+\label{\detokenize{connectivity_guide:a-forceluname-examples}}\label{\detokenize{connectivity_guide:index-156}}
 In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is \$LINE\$:
 
 \sphinxincludegraphics{{image12}.png}
@@ -5735,11 +6044,148 @@ Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically
 
 The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
 
-\index{Controlling LUNAMEs!Reconnecting to an existing session}\index{Reconnecting to an existing session!Controlling LUNAMEs}
+\index{Controlling LUNAMEs!Using a cookie (“Correspondent Sub-Application)}\index{Using a cookie (“Correspondent Sub-Application)!Controlling LUNAMEs}
 
-\subsection{Reconnecting to an existing session}
-\label{\detokenize{connectivity_guide:index-152}}\label{\detokenize{connectivity_guide:reconnecting-to-an-existing-session}}
-The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSession\$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
+\subsection{Using a cookie (Correspondent Sub-Application)}
+\label{\detokenize{connectivity_guide:using-a-cookie-correspondent-sub-application}}\label{\detokenize{connectivity_guide:index-157}}
+Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see the How-To document \sphinxstyleemphasis{Virtel \textendash{} How to Activate LU Nailing.}
+
+\index{Controlling LUNAMEs!Using an IP address}\index{Using an IP address!Controlling LUNAMEs}
+
+\subsection{Using an IP address}
+\label{\detokenize{connectivity_guide:index-158}}\label{\detokenize{connectivity_guide:using-an-ip-address}}
+This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{DETAIL} \PYG{n}{of} \PYG{n}{RULE} \PYG{k+kn}{from} \PYG{n+nn}{RULE} \PYG{n}{SET}\PYG{p}{:} \PYG{n}{W}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRBW}     \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{30}\PYG{p}{:}\PYG{l+m+mi}{38}
+\PYG{n}{Name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WHT00110} \PYG{n}{Rule} \PYG{n}{priority} \PYG{o+ow}{is} \PYG{n}{per} \PYG{n}{name}
+\PYG{n}{Status} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ACTIVE} \PYG{l+m+mi}{15} \PYG{n}{Feb} \PYG{l+m+mi}{2010} \PYG{l+m+mi}{14}\PYG{p}{:}\PYG{l+m+mi}{30}\PYG{p}{:}\PYG{l+m+mi}{35} \PYG{n}{SPTBOWL}
+\PYG{n}{Description} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{HTTP} \PYG{n}{access} \PYG{k+kn}{from} \PYG{n+nn}{IP} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{0.39}
+\PYG{n}{Entry} \PYG{n}{point} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WEB2HOST} \PYG{n}{Target} \PYG{n}{Entry} \PYG{n}{Point}
+\PYG{n}{Parameter} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{RHTVT001} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{value} \PYG{o+ow}{or} \PYG{n}{LUNAME}
+\PYG{n}{Trace} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{commands} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{data} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{partner}
+\PYG{n}{C} \PYG{p}{:} \PYG{l+m+mi}{0}\PYG{o}{=}\PYG{n}{IGNORE} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{IS} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{IS} \PYG{n}{NOT} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{STARTS} \PYG{n}{WITH} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{ENDS} \PYG{n}{WITH} \PYG{l+m+mi}{6}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT}
+\PYG{l+m+mi}{1} \PYG{n}{IP} \PYG{n}{Subnet} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{000.039} \PYG{n}{Mask} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
+\PYG{l+m+mi}{0} \PYG{n}{Host} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{eMail} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{n}{address} \PYG{o+ow}{or} \PYG{n}{proxy}
+\PYG{l+m+mi}{0} \PYG{n}{Called} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Called} \PYG{n}{DTE} \PYG{n}{address}
+\PYG{l+m+mi}{0} \PYG{n}{CUD0} \PYG{p}{(}\PYG{n}{Hex}\PYG{p}{)} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{First} \PYG{l+m+mi}{4} \PYG{n+nb}{bytes} \PYG{n}{of} \PYG{n}{CUD} \PYG{p}{(}\PYG{n}{X25} \PYG{n}{protocol}\PYG{p}{)}
+\PYG{l+m+mi}{0} \PYG{n}{User} \PYG{n}{Data} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Days} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{M}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{W}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{F}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
+\PYG{l+m+mi}{0} \PYG{n}{Start} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{End} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
+\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update} \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return} \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}
+\PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate} \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Inactivate} \PYG{n}{P12}\PYG{o}{=}\PYG{n}{Entry} \PYG{n}{P}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx}
+
+Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{DETAIL} \PYG{n}{of} \PYG{n}{RULE} \PYG{k+kn}{from} \PYG{n+nn}{RULE} \PYG{n}{SET}\PYG{p}{:} \PYG{n}{W}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{SPVIRBW}     \PYG{l+m+mi}{17}\PYG{p}{:}\PYG{l+m+mi}{53}\PYG{p}{:}\PYG{l+m+mi}{56}
+\PYG{n}{Name} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WHT00140} \PYG{n}{Rule} \PYG{n}{priority} \PYG{o+ow}{is} \PYG{n}{per} \PYG{n}{name}
+\PYG{n}{Status} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{ACTIVE} \PYG{l+m+mi}{15} \PYG{n}{Feb} \PYG{l+m+mi}{2010} \PYG{l+m+mi}{17}\PYG{p}{:}\PYG{l+m+mi}{53}\PYG{p}{:}\PYG{l+m+mi}{49} \PYG{n}{SPTBOWL}
+\PYG{n}{Description} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{HTTP} \PYG{n}{access} \PYG{k+kn}{from} \PYG{n+nn}{IP} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{100.}\PYG{n}{nnn}
+\PYG{n}{Entry} \PYG{n}{point} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{WEB2HOST} \PYG{n}{Target} \PYG{n}{Entry} \PYG{n}{Point}
+\PYG{n}{Parameter} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{RHTVT1}\PYG{o}{*} \PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{n}{value} \PYG{o+ow}{or} \PYG{n}{LUNAME}
+\PYG{n}{Trace} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{commands} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{data} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{partner}
+\PYG{n}{C} \PYG{p}{:} \PYG{l+m+mi}{0}\PYG{o}{=}\PYG{n}{IGNORE} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n}{IS} \PYG{l+m+mi}{2}\PYG{o}{=}\PYG{n}{IS} \PYG{n}{NOT} \PYG{l+m+mi}{3}\PYG{o}{=}\PYG{n}{STARTS} \PYG{n}{WITH} \PYG{l+m+mi}{4}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT} \PYG{l+m+mi}{5}\PYG{o}{=}\PYG{n}{ENDS} \PYG{n}{WITH} \PYG{l+m+mi}{6}\PYG{o}{=}\PYG{n}{DOES} \PYG{n}{NOT}
+\PYG{l+m+mi}{1} \PYG{n}{IP} \PYG{n}{Subnet} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{100.000} \PYG{n}{Mask} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.000}
+\PYG{l+m+mi}{0} \PYG{n}{Host} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{eMail} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Calling} \PYG{n}{DTE} \PYG{n}{address} \PYG{o+ow}{or} \PYG{n}{proxy}
+\PYG{l+m+mi}{0} \PYG{n}{Called} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{Called} \PYG{n}{DTE} \PYG{n}{address}
+\PYG{l+m+mi}{0} \PYG{n}{CUD0} \PYG{p}{(}\PYG{n}{Hex}\PYG{p}{)} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{First} \PYG{l+m+mi}{4} \PYG{n+nb}{bytes} \PYG{n}{of} \PYG{n}{CUD} \PYG{p}{(}\PYG{n}{X25} \PYG{n}{protocol}\PYG{p}{)}
+\PYG{l+m+mi}{0} \PYG{n}{User} \PYG{n}{Data} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}}
+\PYG{l+m+mi}{0} \PYG{n}{Days} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{M}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{W}\PYG{p}{:} \PYG{n}{T}\PYG{p}{:} \PYG{n}{F}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
+\PYG{l+m+mi}{0} \PYG{n}{Start} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:} \PYG{n}{End} \PYG{n}{time} \PYG{o}{==}\PYG{o}{=}\PYG{o}{\PYGZgt{}} \PYG{n}{H}\PYG{p}{:} \PYG{n}{M}\PYG{p}{:} \PYG{n}{S}\PYG{p}{:}
+\PYG{n}{P1}\PYG{o}{=}\PYG{n}{Update} \PYG{n}{P3}\PYG{o}{=}\PYG{n}{Return} \PYG{n}{Enter}\PYG{o}{=}\PYG{n}{Add}  \PYG{n}{P4}\PYG{o}{=}\PYG{n}{Activate} \PYG{n}{P5}\PYG{o}{=}\PYG{n}{Inactivate} \PYG{n}{P12}\PYG{o}{=}\PYG{n}{Entry} \PYG{n}{P}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx}
+
+The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
+
+\index{Controlling LUNAMEs!Comparison table}\index{Comparison table!Controlling LUNAMEs}
+
+\subsection{Comparison Table}
+\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-159}}
+
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|T|T|T|}
+\hline
+\sphinxstylethead{\sphinxstyletheadfamily \unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+RULE DEFN
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+TERMINAL DEFN.
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+COOKIES
+
+USED
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Terminal POOL definitions required
+\unskip}\relax \\
+\hline
+By Work Station Name in URL
+&
+Yes. 1 per work station
+&
+Yes. Individual or group
+&
+No
+&
+Yes
+\\
+\hline
+By LUNAME in URL
+&
+Yes. 1 generic Rule.
+&
+Yes. Individual or group
+&
+No
+&
+Yes
+\\
+\hline
+By using Forced LU
+&
+No
+&
+Pool Only
+&
+No
+&
+Yes
+\\
+\hline
+Correspondent
+&
+Yes
+&
+Yes
+&
+Yes
+&
+Yes
+\\
+\hline
+By IP
+&
+Yes
+&
+Yes
+&
+No
+&
+Yes
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
 
 
 \chapter{Appendix}
