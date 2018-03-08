@@ -13,7 +13,7 @@ Connectivity Reference V4.57
 
 **VIRTEL Connectivity Reference**
 
-.. danger:: This book is currently under construction. Do not use!
+.. warning:: This book is currently under construction. This is a draft version!
 
 Version : 4.57
 
