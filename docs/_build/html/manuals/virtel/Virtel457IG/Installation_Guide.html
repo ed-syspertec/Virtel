@@ -3337,7 +3337,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 </div>
 <div class="section" id="secur-parameter">
 <span id="index-111"></span><h4>SECUR parameter<a class="headerlink" href="#secur-parameter" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">NO</span><span class="o">/</span><span class="n">VIRTEL</span><span class="o">/</span><span class="n">RACF</span><span class="o">/</span><span class="n">TOPS</span><span class="o">/</span><span class="n">ACF2</span><span class="o">/</span><span class="n">RACROUTE</span><span class="o">/</span><span class="n">MIXEDCASE</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="n">NO</span><span class="o">/</span><span class="n">VIRTEL</span><span class="o">/</span><span class="n">RACF</span><span class="o">/</span><span class="n">TOPS</span><span class="o">/</span><span class="n">ACF2</span><span class="o">/</span><span class="n">RACROUTE</span><span class="o">/</span><span class="n">MIXEDCASE</span><span class="o">/</span><span class="n">PASSPHRASE</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
 <p>For the z/OS environment, the following options can be specified:</p>
@@ -3346,6 +3346,10 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 <p><strong>(RACROUTE,RACF)</strong> - IBM’s security management product is used (via SAF).</p>
 <p><strong>(RACROUTE,TOPS)</strong> - The TOP SECRET security management product is used (via SAF).</p>
 <p><strong>(RACROUTE,ACF2)</strong> - The ACF2 security management system is used (via SAF).</p>
+<div class="admonition note" id="index-112">
+<p class="first admonition-title">Note</p>
+<p class="last">Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: <strong>SECUR=(RACROUTE,[RACF|TOPS|ACF2],PASSPHRASE)</strong></p>
+</div>
 <p>For the z/VSE environment, the following options can be specified:</p>
 <p><strong>NO</strong> - No security software is used to control access.</p>
 <p><strong>VIRTEL</strong> - VIRTEL’s internal security management feature is used.</p>
@@ -3364,7 +3368,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 </div>
 </div>
 <div class="section" id="silence-parameter">
-<span id="index-112"></span><h4>SILENCE parameter<a class="headerlink" href="#silence-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-113"></span><h4>SILENCE parameter<a class="headerlink" href="#silence-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SILENCE</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3373,7 +3377,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 <p>The VIRTEL command SILENCE can be used to dynamically modify this parameter.</p>
 </div>
 <div class="section" id="snapmsg-parameter">
-<span id="index-113"></span><h4>SNAPMSG parameter<a class="headerlink" href="#snapmsg-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-114"></span><h4>SNAPMSG parameter<a class="headerlink" href="#snapmsg-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPMSG</span><span class="o">=</span><span class="p">(</span><span class="n">message</span><span class="p">,</span><span class="n">search</span><span class="p">,</span><span class="n">action</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3388,7 +3392,7 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 </dl>
 </div>
 <div class="section" id="snapw-parameter">
-<span id="index-114"></span><h4>SNAPW parameter<a class="headerlink" href="#snapw-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-115"></span><h4>SNAPW parameter<a class="headerlink" href="#snapw-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SNAPW</span><span class="o">=</span><span class="mi">80</span><span class="o">/</span><span class="mi">132</span> <span class="n">Default</span><span class="o">=</span><span class="mi">132</span>
 </pre></div>
 </div>
@@ -3403,14 +3407,14 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 <p>By default, the [SUMMARY] key is not transmitted to the application but serves to return the user to the tree structure. This parameter allows for the definition of a default which may be modified in the sub-server node definition. Where the value specified is a ‘01’, use of the [SUMMARY] key sets the cursor on the first field to be entered in the current screen.</p>
 </div>
 <div class="section" id="statdsn-parameter">
-<span id="index-115"></span><h4>STATDSN parameter<a class="headerlink" href="#statdsn-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-116"></span><h4>STATDSN parameter<a class="headerlink" href="#statdsn-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STATDSN</span><span class="o">=</span><span class="p">(</span><span class="n">dsn1</span><span class="p">,</span><span class="n">dsn2</span><span class="p">,</span><span class="o">...</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
 <p><strong>dsn1,…</strong> - Dataset names of the files to be used for recording statistics if the parameter STATS=MULTI is specified. From 2 to 10 datasets can be specified. The datasets must be cataloged.</p>
 </div>
 <div class="section" id="stats-parameter">
-<span id="index-116"></span><h4>STATS parameter<a class="headerlink" href="#stats-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-117"></span><h4>STATS parameter<a class="headerlink" href="#stats-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STATS</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span><span class="o">/</span><span class="p">(</span><span class="n">MULTI</span><span class="p">,</span><span class="n">CONTINUE</span><span class="o">/</span><span class="n">TERMINATE</span><span class="p">)</span> <span class="o">|</span> <span class="n">SMF</span> <span class="o">|</span> <span class="p">(</span><span class="n">SMF</span><span class="p">,</span><span class="n">nnn</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">YES</span>
 </pre></div>
 </div>
@@ -3427,28 +3431,28 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>STATS=(SMF,nnn)</strong> - The SMF record number used will be nnn. The specified number must be between 128 and 255. The STATS=SMF/(SMF,nnn) option is only available in the MVS environment.</p>
 </div>
 <div class="section" id="strno-parameter">
-<span id="index-117"></span><h4>STRNO parameter<a class="headerlink" href="#strno-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-118"></span><h4>STRNO parameter<a class="headerlink" href="#strno-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">STRNO</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">8</span>
 </pre></div>
 </div>
 <p><strong>n</strong> - Number of concurrent accesses to VSAM files.</p>
 </div>
 <div class="section" id="suite-parameter">
-<span id="index-118"></span><h4>SUITE parameter<a class="headerlink" href="#suite-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-119"></span><h4>SUITE parameter<a class="headerlink" href="#suite-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SUITE</span><span class="o">=</span><span class="n">xx</span> <span class="n">Default</span><span class="o">=</span><span class="mi">00</span>
 </pre></div>
 </div>
 <p><strong>xx</strong> - The 3270 AID function key which will be transmitted to the application when the user presses the [SUITE] function key. By default the [SUITE] function key is not transmitted to the application but serves to set the cursor to the following field. This parameter allows the definition of a general value by default that may be modified in the definition of the sub server node.</p>
 </div>
 <div class="section" id="swap-parameter">
-<span id="index-119"></span><h4>SWAP parameter<a class="headerlink" href="#swap-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-120"></span><h4>SWAP parameter<a class="headerlink" href="#swap-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SWAP</span><span class="o">=</span><span class="n">Pnn</span> <span class="n">Default</span><span class="o">=</span><span class="n">P24</span>
 </pre></div>
 </div>
 <p><strong>Pnn</strong> - Identifies the 3270 function key that causes VIRTEL to return to the multi-session menu (for SNA terminals, the ATTN key also performs this function). This parameter may take the following parameter values P1 to P24, PA1, PA2, or CLR.</p>
 </div>
 <div class="section" id="sysplus-parameter">
-<span id="index-120"></span><h4>SYSPLUS parameter<a class="headerlink" href="#sysplus-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-121"></span><h4>SYSPLUS parameter<a class="headerlink" href="#sysplus-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SYSPLUS</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3456,7 +3460,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <strong>NO</strong> - System symbols will not be retrieved, the ‘+’ character will not be substituted in LU names, and the xxx-SYMBOL functionality of the NAME-OF tag and the COPY$ SYSTEM-TO-VARIABLE instruction is not active (see VIRTEL Web Access Guide).</p>
 </div>
 <div class="section" id="tcp1-parameter">
-<span id="index-121"></span><h4>TCP1 parameter<a class="headerlink" href="#tcp1-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-122"></span><h4>TCP1 parameter<a class="headerlink" href="#tcp1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TCP1</span><span class="o">=</span><span class="n">tcpname</span> <span class="n">Default</span><span class="o">=</span><span class="n">no</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> <span class="n">connection</span>
 <span class="n">TCP1</span><span class="o">=</span><span class="p">([</span><span class="n">tcpname</span><span class="p">],,,[</span><span class="n">maxsock</span><span class="p">],[</span><span class="n">pgmname</span><span class="p">],[</span><span class="n">adsname</span><span class="p">])</span>
 </pre></div>
@@ -3480,14 +3484,14 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p>This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP2. The subparameters are the same as those of TCP1.</p>
 </div>
 <div class="section" id="timeout-parameter">
-<span id="index-122"></span><h4>TIMEOUT parameter<a class="headerlink" href="#timeout-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-123"></span><h4>TIMEOUT parameter<a class="headerlink" href="#timeout-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TIMEOUT</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">5</span>
 </pre></div>
 </div>
 <p><strong>n</strong> - Indicates in minutes the time-out after which a terminal connected to an external server will be force disconnected if no line activity is seen. A value of 0 means that the terminal will not be disconnected even if no activity is detected. The value specified here applies only when the “User time out” field in the external server definition is set to zero (see “Parameters of the external server” in the VIRTEL Connectivity Reference manual).</p>
 </div>
 <div class="section" id="timerqs-parameter">
-<span id="index-123"></span><h4>TIMERQS parameter<a class="headerlink" href="#timerqs-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-124"></span><h4>TIMERQS parameter<a class="headerlink" href="#timerqs-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TIMERQS</span><span class="o">=</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span><span class="n">n2</span><span class="p">,</span><span class="n">n3</span><span class="p">,</span><span class="n">n4</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3498,7 +3502,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>n4</strong> - Reserved for future use.</p>
 </div>
 <div class="section" id="titre1-parameter">
-<span id="index-124"></span><h4>TITRE1 parameter<a class="headerlink" href="#titre1-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-125"></span><h4>TITRE1 parameter<a class="headerlink" href="#titre1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TITRE1</span><span class="o">=</span><span class="s1">&#39;ccccc&#39;</span> <span class="n">Default</span><span class="o">=</span><span class="s1">&#39;SYSPERTEC&#39;</span>
 </pre></div>
 </div>
@@ -3512,7 +3516,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>ccccc</strong> - The second line of the Multi-Session menu screen.</p>
 </div>
 <div class="section" id="tracall-parameter">
-<span id="index-125"></span><h4>TRACALL parameter<a class="headerlink" href="#tracall-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-126"></span><h4>TRACALL parameter<a class="headerlink" href="#tracall-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACALL</span><span class="o">=</span><span class="p">(</span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">,</span><span class="o">...</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -3522,21 +3526,21 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>XM</strong> - Additional trace data for Cross-Memory communication</p>
 </div>
 <div class="section" id="tracbig-parameter">
-<span id="index-126"></span><h4>TRACBIG parameter<a class="headerlink" href="#tracbig-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-127"></span><h4>TRACBIG parameter<a class="headerlink" href="#tracbig-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACBIG</span><span class="o">=</span><span class="n">n</span> <span class="n">Default</span><span class="o">=</span><span class="mi">40</span>
 </pre></div>
 </div>
 <p><strong>n</strong> - The number of entries reserved for the VIRTEL internal trace. The value indicated corresponds to n times 256 entries.</p>
 </div>
 <div class="section" id="traceb-parameter">
-<span id="index-127"></span><h4>TRACEB parameter<a class="headerlink" href="#traceb-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-128"></span><h4>TRACEB parameter<a class="headerlink" href="#traceb-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEB</span><span class="o">=</span><span class="n">nn</span> <span class="n">Default</span><span class="o">=</span><span class="mi">200</span>
 </pre></div>
 </div>
 <p><strong>nn</strong> - The number of 1K buffers reserved for buffer data associated with entries in the VIRTEL internal trace. From VIRTEL 4.20 onwards, trace data is allocated above the 16MB line if possible.</p>
 </div>
 <div class="section" id="traceoj-parameter">
-<span id="index-128"></span><h4>TRACEOJ parameter<a class="headerlink" href="#traceoj-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-129"></span><h4>TRACEOJ parameter<a class="headerlink" href="#traceoj-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACEOJ</span><span class="o">=</span><span class="n">STANDARD</span><span class="o">/</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3545,7 +3549,7 @@ The VIRTEL STAT command allows the console operator to display the status of the
 <p><strong>NO</strong> - No SNAP at VIRTEL termination.</p>
 </div>
 <div class="section" id="traceon-parameter">
-<span id="index-129"></span><h4>TRACEON parameter<a class="headerlink" href="#traceon-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-130"></span><h4>TRACEON parameter<a class="headerlink" href="#traceon-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span>TRACEON= ON | OFF | (Y|N,Y|N,Y|N)
 
 Default = ON    Equivalent VIT = YYN    Tracing ON
@@ -3601,7 +3605,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 </div>
 <div class="section" id="tractim-parameter">
-<span id="index-130"></span><h4>TRACTIM parameter<a class="headerlink" href="#tractim-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-131"></span><h4>TRACTIM parameter<a class="headerlink" href="#tractim-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACTIM</span><span class="o">=</span><span class="n">CPU</span><span class="o">/</span><span class="n">LOCAL</span><span class="o">/</span><span class="n">TOD</span> <span class="n">Default</span><span class="o">=</span><span class="n">LOCAL</span>
 </pre></div>
 </div>
@@ -3615,14 +3619,14 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p><strong>TOD</strong> - Timestamps are not adjusted for local time.</p>
 </div>
 <div class="section" id="tran-parameter">
-<span id="index-131"></span><h4>TRAN parameter<a class="headerlink" href="#tran-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-132"></span><h4>TRAN parameter<a class="headerlink" href="#tran-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRAN</span><span class="o">=</span><span class="n">EVEN</span><span class="o">/</span><span class="n">ODD</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">Even</span>
 </pre></div>
 </div>
 <p>This parameter should be coded in the same way as for the X25MCH macro in NPSI.</p>
 </div>
 <div class="section" id="ufile1-to-ufile20-parameters">
-<span id="index-132"></span><h4>UFILE1 to UFILE20 parameters<a class="headerlink" href="#ufile1-to-ufile20-parameters" title="Permalink to this headline">¶</a></h4>
+<span id="index-133"></span><h4>UFILE1 to UFILE20 parameters<a class="headerlink" href="#ufile1-to-ufile20-parameters" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UFILEx</span><span class="o">=</span><span class="p">(</span><span class="n">ddname</span><span class="p">,</span><span class="n">acbcard</span><span class="p">,</span><span class="n">rkp</span><span class="p">,</span><span class="n">keylen</span><span class="p">,</span><span class="n">mode</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="s1">&#39; &#39;</span>
 </pre></div>
 </div>
@@ -3649,7 +3653,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p>The UFILEx parameters must be defined in sequence with no intervening gaps in the suffix number x.</p>
 </div>
 <div class="section" id="virsecu-parameter">
-<span id="index-133"></span><h4>VIRSECU parameter<a class="headerlink" href="#virsecu-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-134"></span><h4>VIRSECU parameter<a class="headerlink" href="#virsecu-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="o">/</span><span class="n">NO</span> <span class="n">Default</span><span class="o">=</span><span class="n">NO</span>
 </pre></div>
 </div>
@@ -3657,7 +3661,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p><strong>NO</strong> - VIRTEL internal security is not available.</p>
 </div>
 <div class="section" id="virsv1-parameter">
-<span id="index-134"></span><h4>VIRSV1 parameter<a class="headerlink" href="#virsv1-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-135"></span><h4>VIRSV1 parameter<a class="headerlink" href="#virsv1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRSV1</span><span class="o">=</span><span class="p">(</span><span class="n">vsvname</span><span class="p">)</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -3665,7 +3669,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p><strong>vsvname</strong> - Name of the service request manager. Must be VIRSV.</p>
 </div>
 <div class="section" id="vsamtyp-parameter">
-<span id="index-135"></span><h4>VSAMTYP parameter<a class="headerlink" href="#vsamtyp-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-136"></span><h4>VSAMTYP parameter<a class="headerlink" href="#vsamtyp-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span> <span class="n">Default</span><span class="o">=</span><span class="n">NORMAL</span>
 </pre></div>
 </div>
@@ -3677,28 +3681,28 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 </div>
 <div class="section" id="vtkeys-parameter">
-<span id="index-136"></span><h4>VTKEYS parameter<a class="headerlink" href="#vtkeys-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-137"></span><h4>VTKEYS parameter<a class="headerlink" href="#vtkeys-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VTKEYS</span><span class="o">=</span><span class="n">xxxxxxxx</span> <span class="n">Default</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 </div>
 <p><strong>xxxxxxxx</strong> - The name of a table added to the end of the VIRTCT allowing for redefinition of the function keys for VT100. Please refer to the member VTSAMPLE in SAMPLIB.</p>
 </div>
-<div class="section" id="index-137">
-<span id="id7"></span><h4>VTOVER parameter<a class="headerlink" href="#index-137" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="index-138">
+<span id="id7"></span><h4>VTOVER parameter<a class="headerlink" href="#index-138" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VTOVER</span><span class="o">=</span><span class="n">xxxxxxxx</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
 <p><strong>xxxxxxxx</strong> - The name of a table added to the end of the VIRTCT allowing for dynamic override of certain parameters in the VIRTCT. Please refer to the section “Dynamic VIRTCT overrides”, page 81 for further details.</p>
 </div>
 <div class="section" id="warning-parameter">
-<span id="index-138"></span><h4>WARNING parameter<a class="headerlink" href="#warning-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-139"></span><h4>WARNING parameter<a class="headerlink" href="#warning-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="o">=</span><span class="n">nn</span><span class="p">,</span>
 </pre></div>
 </div>
 <p>Where nn is the number of days prior to issuing a licence warning message. If not specified no warning is given and Virtel will automatically close.</p>
 </div>
 <div class="section" id="xm1-parameter">
-<span id="index-139"></span><h4>XM1 parameter<a class="headerlink" href="#xm1-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-140"></span><h4>XM1 parameter<a class="headerlink" href="#xm1-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XM1</span><span class="o">=</span><span class="n">xmname</span> <span class="n">Default</span><span class="o">=</span><span class="n">no</span> <span class="n">XM</span> <span class="n">connection</span>
 <span class="n">XM1</span><span class="o">=</span><span class="p">(</span><span class="n">xmname</span><span class="p">,,,,[</span><span class="n">pgmname</span><span class="p">])</span>
 </pre></div>
@@ -3722,7 +3726,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p>This parameter defines the characteristics of the connection to the cross-memory manager (VIRXM) used by all lines which specify type XM2. The subparameters are the same as those of the XM1 parameter.</p>
 </div>
 <div class="section" id="zaph-parameter">
-<span id="index-140"></span><h4>ZAPH parameter<a class="headerlink" href="#zaph-parameter" title="Permalink to this headline">¶</a></h4>
+<span id="index-141"></span><h4>ZAPH parameter<a class="headerlink" href="#zaph-parameter" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ZAPH</span><span class="o">=</span><span class="n">xxxxxxxx</span> <span class="n">Default</span><span class="o">=</span><span class="n">none</span>
 </pre></div>
 </div>
@@ -3730,7 +3734,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 </div>
 <div class="section" id="additional-parameters-for-vsam-files">
-<span id="index-141"></span><h3>Additional Parameters For VSAM Files<a class="headerlink" href="#additional-parameters-for-vsam-files" title="Permalink to this headline">¶</a></h3>
+<span id="index-142"></span><h3>Additional Parameters For VSAM Files<a class="headerlink" href="#additional-parameters-for-vsam-files" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL uses VSAM files for storing HTML pages and for VIRTEL/PC file transfer. These VSAM files must be defined in the VIRTCT by means of a parameter UFILEx and an ACBHx macro for each file. The ACB macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>ACBHx ACB AM=VSAM,DDNAME=dddddddd,MACRF=(P1,P2,…....,Pn),STRNO=3
 </pre></div>
@@ -3743,7 +3747,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </ul>
 <span class="target" id="vvrrig-bookmark72"></span></div>
 <div class="section" id="additional-parameters-for-batch-files">
-<span id="index-142"></span><h3>Additional Parameters For Batch Files<a class="headerlink" href="#additional-parameters-for-batch-files" title="Permalink to this headline">¶</a></h3>
+<span id="index-143"></span><h3>Additional Parameters For Batch Files<a class="headerlink" href="#additional-parameters-for-batch-files" title="Permalink to this headline">¶</a></h3>
 <p>VIRTEL uses sequential files for batch input and output when the BATCHx parameter is defined in the VIRTCT, and a batch line is present in the configuration. These sequential files must be defined in the VIRTCT by means of a pair of DCB/DCBE macros for each file. The DCB/DCBE macros must be coded in the VIRTCT before the END card. The formats of these macros are as follows:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">label</span>  <span class="n">DCB</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">ddname</span><span class="p">,</span><span class="n">DCBE</span><span class="o">=</span><span class="n">labelx</span><span class="p">,</span><span class="n">DSORG</span><span class="o">=</span><span class="n">PS</span><span class="p">,</span>                          <span class="o">*</span>
           <span class="n">LRECL</span><span class="o">=</span><span class="n">lrecl</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">recfm</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">macrf</span><span class="p">)</span>
@@ -3782,7 +3786,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </pre></div>
 </div>
 <div class="section" id="how-to-share-vsam-files-between-multiple-instances-of-virtel">
-<span id="index-143"></span><h4>How To Share VSAM Files Between Multiple Instances Of VIRTEL<a class="headerlink" href="#how-to-share-vsam-files-between-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h4>
+<span id="index-144"></span><h4>How To Share VSAM Files Between Multiple Instances Of VIRTEL<a class="headerlink" href="#how-to-share-vsam-files-between-multiple-instances-of-virtel" title="Permalink to this headline">¶</a></h4>
 <p>Some VSAM files are shareable between multiple instances of Virtel with the condition that a file can be opened in “write” mode by only one instance. File sharing can be implemented by modifying the corresponding UFILEx entry in the TCT and/or by using the VSAMTYP definition. Some files are not shareable, for example the statistics and swap files. These must be opened in read/write mode for each instance of Virtel.</p>
 <p>For more detailed informations on this subject, see “UFILE1 to UFILE20”, and “VSAMTYP parameters of the VIRTCT. Also refer to “Additional parameters for VSAM files”.</p>
 </div>
@@ -3878,11 +3882,11 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 <p><em>Example VIRTCT</em></p>
 </div>
-<div class="section" id="index-144">
-<span id="id8"></span><h3>Assembling The VIRTCT<a class="headerlink" href="#index-144" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="index-145">
+<span id="id8"></span><h3>Assembling The VIRTCT<a class="headerlink" href="#index-145" title="Permalink to this headline">¶</a></h3>
 <p>The VIRTCT must be assembled before starting VIRTEL for the first time. The VIRTEL macro library must be available to the assembler. In the z/OS environment, the VIRTCT must be link-edited with the NORENT and NOREUS options. The RENT and REUS options must NOT be specified in the z/OS environment. In the z/VSE environment, PRD1.MACLIB must be specified. The resulting phase or load module must be placed in a STEPLIB or SEARCH PHASE library available to the VIRTEL started task.</p>
 <div class="section" id="z-os-example">
-<span id="index-145"></span><h4>z/OS example<a class="headerlink" href="#z-os-example" title="Permalink to this headline">¶</a></h4>
+<span id="index-146"></span><h4>z/OS example<a class="headerlink" href="#z-os-example" title="Permalink to this headline">¶</a></h4>
 <p>A sample job for assembling the VIRTCT is supplied in member ASMTCT of the VIRTEL SAMPLIB:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTASM</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">ASMTCT</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*--------------------------------------------------------------*</span>
@@ -3923,7 +3927,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p><em>VIRTCT assembly in z/OS</em></p>
 </div>
 <div class="section" id="z-vse-example">
-<span id="index-146"></span><h4>z/VSE example<a class="headerlink" href="#z-vse-example" title="Permalink to this headline">¶</a></h4>
+<span id="index-147"></span><h4>z/VSE example<a class="headerlink" href="#z-vse-example" title="Permalink to this headline">¶</a></h4>
 <p>A sample job for assembling the VIRTCT is supplied on the installation tape:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRTCT,CLASS=0,DISP=D
 * $$ LST DISP=D,CLASS=Q
@@ -3945,7 +3949,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 <p><em>VIRTCT assembly in z/VSE</em></p>
 </div>
 <div class="section" id="dynamic-virtct-overrides">
-<span id="index-147"></span><h4>Dynamic VIRTCT Overrides<a class="headerlink" href="#dynamic-virtct-overrides" title="Permalink to this headline">¶</a></h4>
+<span id="index-148"></span><h4>Dynamic VIRTCT Overrides<a class="headerlink" href="#dynamic-virtct-overrides" title="Permalink to this headline">¶</a></h4>
 <p>Data may be passed to the VIRTEL procedure via the start command which allows the value of certain parameters in the VIRTCT (APPLID, MQ1, MQ2) to be modified. For example the VIRTEL started task procedure should contain the TCT, APPLID, and VTOVER parameters which are substituted into the PARM as shown below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTEL</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0000</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">TIME</span><span class="o">=</span><span class="mi">1440</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">8192</span><span class="n">K</span><span class="p">,</span>
@@ -3997,7 +4001,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 </div>
 <div class="section" id="applying-patches-via-the-virtct">
-<span id="index-148"></span><h3>Applying Patches Via The VIRTCT<a class="headerlink" href="#applying-patches-via-the-virtct" title="Permalink to this headline">¶</a></h3>
+<span id="index-149"></span><h3>Applying Patches Via The VIRTCT<a class="headerlink" href="#applying-patches-via-the-virtct" title="Permalink to this headline">¶</a></h3>
 <p>The “ZAPH parameter” of the VIRTCT allows one or more patches to be applied to the VIRTEL kernel after the resident modules have been loaded into memory at startup. This parameter is intended to be used only under the advice of Syspertec technical support personnel.</p>
 <p>For example, if the VIRTCT contains the parameter:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ZAPH</span><span class="o">=</span><span class="n">MYPTFS</span><span class="p">,</span> <span class="o">*</span>
@@ -4022,7 +4026,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </div>
 </div>
 <div class="section" id="virconf-utility">
-<span id="index-149"></span><h2>VIRCONF UTILITY<a class="headerlink" href="#virconf-utility" title="Permalink to this headline">¶</a></h2>
+<span id="index-150"></span><h2>VIRCONF UTILITY<a class="headerlink" href="#virconf-utility" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id9">
 <h3>Introduction<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>The VIRCONF utility program allows a batch job to manage the VIRARBO file, which is the main configuration file for VIRTEL. VIRCONF allows you to:</p>
@@ -4035,7 +4039,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 </ul>
 </div>
 <div class="section" id="jcl">
-<span id="index-150"></span><h3>JCL<a class="headerlink" href="#jcl" title="Permalink to this headline">¶</a></h3>
+<span id="index-151"></span><h3>JCL<a class="headerlink" href="#jcl" title="Permalink to this headline">¶</a></h3>
 <p>Below are some JCL examples to define and upload a new VIRARBO file:-</p>
 <p>z/VSE</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
@@ -4062,7 +4066,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 </pre></div>
 </div>
 <p><em>VIRCONF JCL in z/VSE to define and upload a new VIRARBO file</em></p>
-<p id="index-151">z/OS</p>
+<p id="index-152">z/OS</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">DEFINES</span> <span class="n">AND</span> <span class="n">LOADS</span> <span class="n">A</span> <span class="n">NEW</span> <span class="n">ARBO</span> <span class="n">FILE</span>
 <span class="o">//</span><span class="n">DEFARBO</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IDCAMS</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
@@ -4084,7 +4088,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <div class="section" id="updating-a-virarbo-file">
 <h4>Updating a VIRARBO file<a class="headerlink" href="#updating-a-virarbo-file" title="Permalink to this headline">¶</a></h4>
 <p>Below are some JCL examples to add, replace, or delete one or more definitions from an existing VIRARBO file:-</p>
-<p id="index-152">z/VSE</p>
+<p id="index-153">z/VSE</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
 * $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
 // JOB VIRCONF UPDATE VIRARBO
@@ -4108,7 +4112,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 </pre></div>
 </div>
 <p><em>VIRCONF JCL in z/VSE to update a VIRARBO file</em></p>
-<p id="index-153">z/VS</p>
+<p id="index-154">z/VS</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRCONF</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">UPDATES</span> <span class="n">AN</span> <span class="n">ARBO</span> <span class="n">FILE</span>
 <span class="o">//</span><span class="n">UPDARBO</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">LOAD</span>
@@ -4132,7 +4136,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <p>Submitting VIRCONF with PARM=LOAD for an existing VIRARBO file allows definitions to be added, replaced, or deleted, while keeping existing definitions in the VIRARBO file. Using PARM=’LOAD,NOREPL’ parameter allows only new definitions to be added, while keeping existing definitions. In this case, VIRCONF will ignore any statement with the same name as existing definitions, returning a zero return code, except if another error was encountered.</p>
 </div>
 <div class="section" id="unloading-a-virarbo-file">
-<span id="index-154"></span><h4>Unloading a VIRARBO file<a class="headerlink" href="#unloading-a-virarbo-file" title="Permalink to this headline">¶</a></h4>
+<span id="index-155"></span><h4>Unloading a VIRARBO file<a class="headerlink" href="#unloading-a-virarbo-file" title="Permalink to this headline">¶</a></h4>
 <p>Below are some JCL examples to obtain existing VIRARBO definitions in the form of control cards:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
 * $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
@@ -4160,7 +4164,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <p>When VIRCONF is run with the PARM=UNLOAD parameter, the existing VIRARBO definitions are converted into control cards and are written to SYSPCH (z/VSE) or SYSPUNCH (z/OS). The created cards issued by VIRCONF may be edited and then reused with another VIRCONF job with the PARM=LOAD parameter.</p>
 </div>
 <div class="section" id="verify-control-card-syntax">
-<span id="index-155"></span><h4>Verify control card syntax<a class="headerlink" href="#verify-control-card-syntax" title="Permalink to this headline">¶</a></h4>
+<span id="index-156"></span><h4>Verify control card syntax<a class="headerlink" href="#verify-control-card-syntax" title="Permalink to this headline">¶</a></h4>
 <p>Below are some JCL examples to verify the control card syntax:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
 * $$ LST DISP=D,CLASS=V,DEST=(,SPTUSER)
@@ -4188,7 +4192,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <p>Submitting the VIRCONF program with PARM=SCAN allows you to scan the SYSIPT (z/VSE) or SYSIN (z/OS) cards for potential syntax errors. There is no access to the VIRCONF file.</p>
 </div>
 <div class="section" id="multi-language-support">
-<span id="index-156"></span><h4>Multi-language support<a class="headerlink" href="#multi-language-support" title="Permalink to this headline">¶</a></h4>
+<span id="index-157"></span><h4>Multi-language support<a class="headerlink" href="#multi-language-support" title="Permalink to this headline">¶</a></h4>
 <p>When uploading the VIRARBO file, VIRCONF may select one among several versions of a control card, based on the LANG=xx parameter defined in the JCL. In this way, the same SYSIN file may be used to generate several different language versions of the VIRARBO file. For example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>* $$ JOB JNM=VIRCONF,CLASS=0,DISP=D
 // JOB VIRCONF LOAD VIRARBO
@@ -4231,7 +4235,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 </div>
 </div>
 <div class="section" id="virconf-control-cards">
-<span id="index-157"></span><h3>VIRCONF Control Cards<a class="headerlink" href="#virconf-control-cards" title="Permalink to this headline">¶</a></h3>
+<span id="index-158"></span><h3>VIRCONF Control Cards<a class="headerlink" href="#virconf-control-cards" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="virconf-control-card-syntax">
 <h4>VIRCONF control card syntax<a class="headerlink" href="#virconf-control-card-syntax" title="Permalink to this headline">¶</a></h4>
 <p>The control card syntax for VIRCONF is similar to the syntax for JCL.</p>
@@ -4252,7 +4256,7 @@ IF LASTCC NE 0 THEN CANCEL JOB
 <p>You can generate some examples by submitting a job using the PARM=UNLOAD parameter (see “Unloading a VIRARBO file”, page 86) for a specific VIRARBO file, for instance the one delivered as VIRARBO base in the standard installation process.</p>
 </div>
 <div class="section" id="applic">
-<span id="index-158"></span><h4>APPLIC<a class="headerlink" href="#applic" title="Permalink to this headline">¶</a></h4>
+<span id="index-159"></span><h4>APPLIC<a class="headerlink" href="#applic" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces an APPLIC entity in the VIRARBO file. The parameters correspond to the various items
 described under the heading “Applications Management” on page 123</p>
 <table border="1" class="docutils">
@@ -4288,7 +4292,7 @@ described under the heading “Applications Management” on page 123</p>
 </table>
 </div>
 <div class="section" id="delete">
-<span id="index-159"></span><h4>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h4>
+<span id="index-160"></span><h4>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h4>
 <p>This operation deletes an entity of the specified type from the VIRARBO file.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4315,7 +4319,7 @@ described under the heading “Applications Management” on page 123</p>
 </table>
 </div>
 <div class="section" id="dept">
-<span id="index-160"></span><h4>DEPT<a class="headerlink" href="#dept" title="Permalink to this headline">¶</a></h4>
+<span id="index-161"></span><h4>DEPT<a class="headerlink" href="#dept" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a DEPT entity in the VIRARBO file. The parameters correspond to the various items
 described under the heading “Create a department” or “Profile lent to a department”.</p>
 <table border="1" class="docutils">
@@ -4351,7 +4355,7 @@ described under the heading “Create a department” or “Profile lent to a de
 </table>
 </div>
 <div class="section" id="entry">
-<span id="index-161"></span><h4>ENTRY<a class="headerlink" href="#entry" title="Permalink to this headline">¶</a></h4>
+<span id="index-162"></span><h4>ENTRY<a class="headerlink" href="#entry" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces an ENTRY entity in the VIRARBO file. The parameters correspond to the various items
 described under the heading “Parameters of the Entry Point”.</p>
 <table border="1" class="docutils">
@@ -4438,7 +4442,7 @@ Identification</td>
 </table>
 </div>
 <div class="section" id="index">
-<span id="index-162"></span><h4>INDEX<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h4>
+<span id="index-163"></span><h4>INDEX<a class="headerlink" href="#index" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces an INDEX entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Updating the keywords”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4472,7 +4476,7 @@ Characters 7-8: Choice</td>
 </div>
 </div>
 <div class="section" id="line">
-<span id="index-163"></span><h4>LINE<a class="headerlink" href="#line" title="Permalink to this headline">¶</a></h4>
+<span id="index-164"></span><h4>LINE<a class="headerlink" href="#line" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a LINE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of the line”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4586,7 +4590,7 @@ time out</td>
 </div>
 </div>
 <div class="section" id="node">
-<span id="index-164"></span><h4>NODE<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h4>
+<span id="index-165"></span><h4>NODE<a class="headerlink" href="#node" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a NODE entity in the VIRARBO file. The parameters correspond to the various items described under the heading ”Defining a native node”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4621,7 +4625,7 @@ time out</td>
 </table>
 </div>
 <div class="section" id="pc">
-<span id="index-165"></span><h4>PC<a class="headerlink" href="#pc" title="Permalink to this headline">¶</a></h4>
+<span id="index-166"></span><h4>PC<a class="headerlink" href="#pc" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a PC entity in the VIRARBO file. The parameters correspond to the various items described under the heading “PC management”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4660,7 +4664,7 @@ time out</td>
 </table>
 </div>
 <div class="section" id="profile">
-<span id="index-166"></span><h4>PROFILE<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h4>
+<span id="index-167"></span><h4>PROFILE<a class="headerlink" href="#profile" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces one entity with PROFILE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a profile”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4695,7 +4699,7 @@ time out</td>
 </table>
 </div>
 <div class="section" id="resource">
-<span id="index-167"></span><h4>RESOURCE<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h4>
+<span id="index-168"></span><h4>RESOURCE<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a RESOURCE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a resource”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4730,7 +4734,7 @@ time out</td>
 </table>
 </div>
 <div class="section" id="rule">
-<span id="index-168"></span><h4>RULE<a class="headerlink" href="#rule" title="Permalink to this headline">¶</a></h4>
+<span id="index-169"></span><h4>RULE<a class="headerlink" href="#rule" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a RULE entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of the rule”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4834,7 +4838,7 @@ HHMMSSHHMMSS</td>
 </div>
 </div>
 <div class="section" id="server">
-<span id="index-169"></span><h4>SERVER<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h4>
+<span id="index-170"></span><h4>SERVER<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a SERVER entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameters of external server”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -4921,7 +4925,7 @@ HHMMSSHHMMSS</td>
 </table>
 </div>
 <div class="section" id="sserv">
-<span id="index-170"></span><h4>SSERV<a class="headerlink" href="#sserv" title="Permalink to this headline">¶</a></h4>
+<span id="index-171"></span><h4>SSERV<a class="headerlink" href="#sserv" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces an SSERV entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Defining a sub-server node”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5109,7 +5113,7 @@ access</td>
 </table>
 </div>
 <div class="section" id="subdir">
-<span id="index-171"></span><h4>SUBDIR<a class="headerlink" href="#subdir" title="Permalink to this headline">¶</a></h4>
+<span id="index-172"></span><h4>SUBDIR<a class="headerlink" href="#subdir" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a SUBDIR entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of directory”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5168,7 +5172,7 @@ access</td>
 </table>
 </div>
 <div class="section" id="terminal">
-<span id="index-172"></span><h4>TERMINAL<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h4>
+<span id="index-173"></span><h4>TERMINAL<a class="headerlink" href="#terminal" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a TERMINAL entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of the terminal”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5231,7 +5235,7 @@ access</td>
 </table>
 </div>
 <div class="section" id="transact">
-<span id="index-173"></span><h4>TRANSACT<a class="headerlink" href="#transact" title="Permalink to this headline">¶</a></h4>
+<span id="index-174"></span><h4>TRANSACT<a class="headerlink" href="#transact" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a TRANSACT entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Parameter of the transaction”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5333,7 +5337,7 @@ check URL prefix</td>
 </table>
 </div>
 <div class="section" id="update">
-<span id="index-174"></span><h4>UPDATE<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h4>
+<span id="index-175"></span><h4>UPDATE<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h4>
 <p>This operation updates one or more parameters of an entity in the VIRARBO file.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5364,7 +5368,7 @@ check URL prefix</td>
 </table>
 </div>
 <div class="section" id="user">
-<span id="index-175"></span><h4>USER<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h4>
+<span id="index-176"></span><h4>USER<a class="headerlink" href="#user" title="Permalink to this headline">¶</a></h4>
 <p>This operation adds or replaces a USER entity in the VIRARBO file. The parameters correspond to the various items described under the heading “Managing users”.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -5422,10 +5426,10 @@ check URL prefix</td>
 </div>
 </div>
 <div class="section" id="security">
-<span id="index-176"></span><h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<span id="index-177"></span><h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
 <p>Perform the following steps to activate RACF security for VIRTEL in the z/OS environment.</p>
 <div class="section" id="modify-the-virtct">
-<span id="index-177"></span><h3>Modify the VIRTCT<a class="headerlink" href="#modify-the-virtct" title="Permalink to this headline">¶</a></h3>
+<span id="index-178"></span><h3>Modify the VIRTCT<a class="headerlink" href="#modify-the-virtct" title="Permalink to this headline">¶</a></h3>
 <p>In the VIRTCTxx member of the VIRTEL CNTL library,</p>
 <ul class="simple">
 <li>VIRTCTUS = English language.</li>
@@ -5444,7 +5448,7 @@ check URL prefix</td>
 <p>Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of the VIRTEL CNTL library. Be sure to specify the correct member name MEMBER=VIRTCTxx in the job. Stop and start VIRTEL to pick up the new VIRTCT.</p>
 </div>
 <div class="section" id="add-racf-definitions">
-<span id="index-178"></span><h3>Add RACF definitions<a class="headerlink" href="#add-racf-definitions" title="Permalink to this headline">¶</a></h3>
+<span id="index-179"></span><h3>Add RACF definitions<a class="headerlink" href="#add-racf-definitions" title="Permalink to this headline">¶</a></h3>
 <p>The following RACF definitions are the minimum you need to get started. They simply authorize the VIRTEL administrator (you) to do everything. In this job, replace youruserid by the administrator’s RACF userid or group name. This JCL can be found in member RACFDEF in the VIRTEL SAMPLIB.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VIRTRACF</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">RACFDEF</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//*---------------------------------------------------------*</span>
@@ -5495,7 +5499,7 @@ check URL prefix</td>
 <p><em>RACFDEF : JCL to update RACF definitions</em></p>
 </div>
 <div class="section" id="virtel-administrators">
-<span id="index-179"></span><h3>Virtel Administrators<a class="headerlink" href="#virtel-administrators" title="Permalink to this headline">¶</a></h3>
+<span id="index-180"></span><h3>Virtel Administrators<a class="headerlink" href="#virtel-administrators" title="Permalink to this headline">¶</a></h3>
 <p>Virtel Administrators have access to all the features of Virtel and are rsponsible for the administration of the product. For example this includes defining transactions and maintaining macros in the DDI central repository. Virtel uses the security subsystem to protect transactions. The following job shows an example of setting up the security profiles for Administrators in group SPGPTECH. This will enable them to control DDI and macro administration:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*---------------------------------------------------------*</span>
 <span class="o">//*</span> <span class="n">RACF</span> <span class="p">:</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="n">DDI</span> <span class="o">*</span>
@@ -5560,7 +5564,7 @@ check URL prefix</td>
 <p>For more information about protecting VIRTEL Web Access resources, refer to the Security section of the the VIRTEL User Guide.</p>
 </div>
 <div class="section" id="how-to-activate-acf2-security">
-<span id="index-180"></span><h3>How to activate ACF2 Security<a class="headerlink" href="#how-to-activate-acf2-security" title="Permalink to this headline">¶</a></h3>
+<span id="index-181"></span><h3>How to activate ACF2 Security<a class="headerlink" href="#how-to-activate-acf2-security" title="Permalink to this headline">¶</a></h3>
 <p>Perform the following steps to activate ACF2 security for VIRTEL in the z/OS environment.</p>
 <div class="section" id="id10">
 <h4>Modify the VIRTCT<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
@@ -5601,7 +5605,7 @@ check URL prefix</td>
 <p>This command permits users in group admin-group-name to access all VIRTEL transactions and administrator functions.</p>
 </div>
 <div class="section" id="add-permissions-for-virtel-general-users">
-<span id="index-181"></span><h5>Add permissions for VIRTEL general users<a class="headerlink" href="#add-permissions-for-virtel-general-users" title="Permalink to this headline">¶</a></h5>
+<span id="index-182"></span><h5>Add permissions for VIRTEL general users<a class="headerlink" href="#add-permissions-for-virtel-general-users" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$KEY(W2H-10) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 </pre></div>
@@ -5620,7 +5624,7 @@ $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 </div>
 </div>
 <div class="section" id="how-to-activate-top-secret-tss-security-perform">
-<span id="index-182"></span><h3>How To Activate Top Secret (TSS) Security Perform<a class="headerlink" href="#how-to-activate-top-secret-tss-security-perform" title="Permalink to this headline">¶</a></h3>
+<span id="index-183"></span><h3>How To Activate Top Secret (TSS) Security Perform<a class="headerlink" href="#how-to-activate-top-secret-tss-security-perform" title="Permalink to this headline">¶</a></h3>
 <p>Perform the following steps to activate TSS security for VIRTEL in the z/OS environment.</p>
 <div class="section" id="modify-the-tct">
 <h4>Modify the TCT<a class="headerlink" href="#modify-the-tct" title="Permalink to this headline">¶</a></h4>
@@ -5637,7 +5641,7 @@ $KEY(CLI-****) TYPE(VIR) UID(******** user-group-name) SERVICE(READ)
 <p>Having updated the VIRTCTxx source member, reassemble and relink the VIRTCT into VIRTEL LOADLIB using the sample JCL in member ASMTCT of the VIRTEL CNTL library. Stop and start VIRTEL to pick up the new VIRTCT.</p>
 </div>
 <div class="section" id="add-tss-definitions">
-<span id="index-183"></span><h4>Add TSS definitions<a class="headerlink" href="#add-tss-definitions" title="Permalink to this headline">¶</a></h4>
+<span id="index-184"></span><h4>Add TSS definitions<a class="headerlink" href="#add-tss-definitions" title="Permalink to this headline">¶</a></h4>
 <p>A example job to add VIRTEL definitions for TSS can be found in member TOPSDEF in the VIRTEL SAMPLIB. The commands in this job are explained in the following paragraphs.</p>
 <p>8.3.2.1 Add TSS definitions</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TSS</span> <span class="n">MODIFY</span> <span class="p">(</span><span class="n">FACILITY</span><span class="p">(</span><span class="n">USERnn</span><span class="o">=</span><span class="n">NAME</span><span class="o">=</span><span class="n">VIRTFAC</span><span class="p">))</span>
@@ -5811,7 +5815,7 @@ TSS PERMIT(VIRTADP) VIRTNODE(CLI(G))
 <p>These commands define admin1 and admin2 as VIRTEL administrators by adding the VIRTEL administrator profile to their ACID.</p>
 </div>
 <div class="section" id="authorize-the-virtel-loadlib">
-<span id="index-184"></span><h5>Authorize the VIRTEL LOADLIB<a class="headerlink" href="#authorize-the-virtel-loadlib" title="Permalink to this headline">¶</a></h5>
+<span id="index-185"></span><h5>Authorize the VIRTEL LOADLIB<a class="headerlink" href="#authorize-the-virtel-loadlib" title="Permalink to this headline">¶</a></h5>
 <p>The VIRTEL load library should normally be APF-authorized. If this is not the case, NOAUTH should be specified in the VIRTFAC facility.</p>
 </div>
 </div>

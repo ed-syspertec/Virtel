@@ -381,13 +381,13 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
     //SYSUDUMP DD  SYSOUT=*                                                 
     //VIRARBO  DD  DSN=&ARBO,DISP=SHR                                       
     //SYSIN      DD *                                                       
-        TERMINAL ID=EHLOC000,                                            -
+        TERMINAL ID=EHLOC000,                                           -
                 DESC='Psuedo Terminals',                                -
                 TYPE=3,                                                 -
                 COMPRESS=2,                                             -
                 INOUT=3,                                                -
                 REPEAT=0016                                              
-        TERMINAL ID=EHVTA000,                                            -
+        TERMINAL ID=EHVTA000,                                           -
                 RELAY=*W2HPOOL,                                         -
                 DESC='HTTP terminals (with relay)',                     -
                 TYPE=3,                                                 -
@@ -395,7 +395,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
                 INOUT=3,                                                -
                 STATS=26,                                               -
                 REPEAT=0016                                              
-        SUBDIR   ID=EDS-DIR,                                             -
+        SUBDIR  ID=EDS-DIR,                                             -
                 DESC='EDS directory',                                   -
                 DDNAME=HTMLTRSF,                                        -
                 KEY=EDS-KEY,                                            -
@@ -403,7 +403,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
                 AUTHUP=X,                                               -
                 AUTHDOWN=X,                                             -
                 AUTHDEL=X                                                
-        ENTRY    ID=EDSHOST,                                             -
+        ENTRY   ID=EDSHOST,                                             -
                 DESC='HTTP entry point (EDS application)',              -
                 TRANSACT=EDS,                                           -
                 TIMEOUT=0720,                                           -
@@ -414,7 +414,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
                 IDENT=SCENLOGM,                                         -
                 SCENDIR=SCE-DIR,                                        -
                 EXTCOLOR=E                                               
-        TRANSACT ID=EDS-00,                                              -
+        TRANSACT ID=EDS-00,                                             -
                 NAME=EDSHOST,                                           -
                 DESC='Default Directory',                               -
                 APPL=EDS-DIR,                                           -
@@ -423,21 +423,21 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
                 STARTUP=2,                                              -
                 SECURITY=0,                                             -
                 TIOASTA='/w2h/appmenu.htm+applist'                       
-        TRANSACT ID=EDS-03W,                                             -
+        TRANSACT ID=EDS-03W,                                            -
                 NAME='w2h',                                             -
                 DESC='W2H toolkit directory (/w2h)',                    -
                 APPL=W2H-DIR,                                           -
                 TYPE=4,                                                 -
                 STARTUP=2,                                              -
                 SECURITY=0                                               
-        TRANSACT ID=EDS-03X,                                             -
+        TRANSACT ID=EDS-03X,                                            -
                 NAME='eds',                                             -
                 DESC='EDS directory (/eds)',                            -
                 APPL=EDS-DIR,                                           -
                 TYPE=4,                                                 -
                 STARTUP=2,                                              -
                 SECURITY=0                                               
-        TRANSACT ID=EDS-04,                                              -
+        TRANSACT ID=EDS-04,                                             -
                 NAME='CICS',                                            -
                 DESC='CICS',                                            -
                 APPL=SPCICST,                                           -
@@ -445,7 +445,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
                 TERMINAL=EHVTA,                                         -
                 STARTUP=1,                                              -
                 SECURITY=0                                               
-        TRANSACT ID=EDS-90,                                              -
+        TRANSACT ID=EDS-90,                                             -
                 NAME='applist',                                         -
                 DESC='List of applications for appmenu.htm',            -
                 APPL=VIR0021S,                                          -
@@ -453,7 +453,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
                 TERMINAL=EHLOC,                                         -
                 STARTUP=2,                                              -
                 SECURITY=1                                               
-        TRANSACT ID=W2H-80S,                                             -
+        TRANSACT ID=W2H-80S,                                            -
                 NAME='upleds',                                          -
                 DESC='Upload macros (EDS-DIR directory)',               -
                 APPL=VIR0041C,                                          -
@@ -462,7 +462,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
                 STARTUP=2,                                              -
                 SECURITY=1,                                             -
                 LOGMSG=EDS-DIR                                           
-        LINE     ID=E-HTTP,                                              -
+        LINE    ID=E-HTTP,                                              -
                 NAME=HTTP-EDS,                                          -
                 LOCADDR=:41003,                                         -
                 DESC='HTTP line (entry point EDSHOST)',                 -
@@ -1677,7 +1677,7 @@ Tran
     Always blank.
 
 .. index::
-   pair: Batch Lines; Terminal Definitions    
+   pair: Batch Line; Terminal Definitions    
 
 Terminal Definitions
 ^^^^^^^^^^^^^^^^^^^^
@@ -5127,48 +5127,36 @@ Controlling LUNAMEs
 Introduction
 ------------
 
-In this section we look how we can control LUNAME selection for inbound HTTP calls.When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide). 
+In this section we look at how we can control LUNAME selection for inbound HTTP calls. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a *Logical Unit* or *LU*, and each LU has a unique eight character name (*LU name)*. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 
-The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V457CN_VirtelRules>` for further information on Virtel Rules. 
+While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following:- 
 
-.. index::
-   pair: Controlling LUNAMEs; Reconnecting to an existing session
+-  By IP address
 
+-  By by cookie
 
-Reconnecting to an existing session
------------------------------------
+-  By by URL
 
-The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
+LU Nailing By URL
+-----------------
 
-.. index::
-   pair: Controlling LUNAMEs; Examples
+The URL can contain information which can be used to force an LUNAME. This is done by by using either the FORCELUNAME= keyword or by using the *UserData* in the URL. 
 
-Examples
---------
+Using UserData to select an LU name requires that a rule be associated with the line whereas this is not required for the ForceLUNAME option. The rule is used to determine the action taken on processing the UserData. Coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide). 
 
-When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a *Logical Unit* or *LU*, and each LU has a unique eight character name (*LU name)*. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
+For example:-
 
-While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser.
+http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname            UserData example
 
-This document describes the following types of LU nailing:
+or 
 
--  LU nailing by work station name
-
--  LU nailing by ForceLU (Pre-defined terminal)
-
--  LU nailing by ForceLU (Non-predefined terminal)
-
--  LU nailing by IP address
-
--  LU nailing by cookie
-
--  LU nailing by URL
+http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500          ForceLUNAME example 
 
 .. index::
-   pair: Controlling LUNAMEs; Using a work station name
+   pair: Controlling LUNAMEs; UserData example using a work station name
 
-Using a work station name (Predefined terminals)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UserData example using a work station name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
 
@@ -5179,120 +5167,11 @@ Here is an example of a Virtel RULE. ::
     STATUS=ACTIVE,
     DESC='Rule for terminal EHPMA00',
     ENTRY=EDSWHOST,
-    PARAM=EHPMA000, /* Or EHPMA00* */
+    PARAM=EHPMA000, 
     NETMASK=255.255.255.255,
     USERDATA=(EQUAL,HOLT-W)
 
-The rule instructs Virtel to test the user data field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and direct the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.
-
-Our EDSWHOST entry point looks like:- ::
-
-    ENTRY ID=EDSWHOST, -
-    DESC='EDS WEB ENTRY POINT (USERS WITH USERDATA)', -
-    TRANSACT=EDSW, -
-    TIMEOUT=0720, -
-    ACTION=0, -
-    EMUL=HTML, -
-    SIGNON=VIR0020H, -
-    MENU=VIR0021A, -
-    EXTCOLOR=X, -
-    ENDPAGE=CLOSE.HTM
-
-In this entry point you would define the relevant transactions. In our case we have defined the following:-
-
-- Entry point transaction
-- Transaction to access the /w2h directory
-- A VTAM transaction for IMS
-- A VTAM transaction for TSO
-- A Virtel application transaction to support an application menu list.
-
-We reuse the EHLOC terminals that already exist for this line, but we will need to define a unique pool for our VTAM applications. This is prefixed with the EHVTS id:-
-
-::
-
-        TRANSACT ID=EDSW-00, -
-        NAME=EDSWHOST, -
-        DESC='HTML page directory (default access)', -
-        APPL=W2H-DIR, -
-        TYPE=4, -
-        TERMINAL=EHLOC, -
-        STARTUP=2, -
-        SECURITY=0
-        TRANSACT ID=EDSW-20, -
-        NAME='w2h', -
-        DESC='W2H toolkit directory (/w2h)', -
-        APPL=W2H-DIR, -
-        TYPE=4, -
-        TERMINAL=EHLOC, -
-        STARTUP=2, -
-        SECURITY=0
-        TRANSACT ID=EDSW-41, -
-        NAME=IMS, -
-        DESC='IMS access with userdata', -
-        APPL=IMS3270, -
-        PASSTCKT=0, -
-        TYPE=1, -
-        TERMINAL=EHVTS, -
-        STARTUP=1, -
-        SECURITY=0
-        TRANSACT ID=EDSW-42, -
-        NAME=TSO, -
-        DESC='TSO access with userdata', -
-        APPL=TSO, -
-        PASSTCKT=0, -
-        TYPE=1, -
-        TERMINAL=EHVTS, -
-        STARTUP=1, -
-        SECURITY=0
-        TRANSACT ID=EDSW-90, -
-        NAME='applist', -
-        DESC='List of applications for appmenu.htm', -
-        APPL=VIR0021S, -
-        TYPE=2, -
-        TERMINAL=EHLOC, -
-        STARTUP=2, -
-        SECURITY=1
-
-In VTAM we would have the following definition:- ::
-
-        * ------------------------------------------------------------------ *
-        * LU Test : VTAM application relays with user data.                  *
-        * ------------------------------------------------------------------ *
-        EHPMA000 APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
-
-Or for the model EHPMA00?
-
-::
-
-        * ------------------------------------------------------------------ *
-        * LU Test : VTAM application relays with user data.                  *
-        * ------------------------------------------------------------------ *
-        EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
-
-We also need a terminal and pool definition. Here is the pool definition:-
-
-::
-
-        TERMINAL ID=EHPMA000, -
-        RELAY=EHPMA000, /* Or EHPMA00* */ -
-        POOL=*STAPOOL, -
-        DESC='Terminal definition for EHPMA000', -
-        TYPE=3, -
-        COMPRESS=2, -
-        INOUT=3, -
-        STATS=26, -
-        REPEAT=\ **0001 **
-        …and a pool definition for out static pool:-
-        TERMINAL ID=EHVTS000, -
-        RELAY=*STAPOOL, -
-        DESC='Static definition pool', -
-        TYPE=3, -
-        COMPRESS=2, -
-        INOUT=3, -
-        STATS=26, -
-        REPEAT=0010
-
-This setup will support up to 10 predefined terminal definitions. For each terminal we have to provide a static definition. Of course we could have used a generic terminal definition of EHPMA00* but this would only work for numerically sequenced terminal names – EHPMA000 – EHPMA009.
+The rule instructs Virtel to test the **UserData** field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and directs the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.
 
 Getting the PC workstation name to Virtel is through a batch job which fires up the default browser and passes the work station name as a user
 data parameter. Here is an example:-
@@ -5321,47 +5200,17 @@ When a transaction is selected from the menu list the RULE will be invoked to al
 
 The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated.
 
-In the VTAM display we can see that a session has been set up using that LU name:-
-
-::
-
-        D NET,ID=EHPMA000,E
-        IST097I DISPLAY ACCEPTED
-        IST075I NAME = SPNET.\ **EHPMA000**, TYPE = DYNAMIC APPL 073
-        IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
-        IST1447I REGISTRATION TYPE = CDSERVR
-        IST1629I MODSRCH = NEVER
-        IST977I MDLTAB=***NA*** ASLTAB=***NA***
-        IST861I MODETAB=ISTINCLM USSTAB=***NA*** LOGTAB=***NA***
-        IST934I DLOGMOD=SNX32702 USS LANGTAB=***NA***
-        IST1632I VPACING = 7
-        IST1938I APPC = NO
-        IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
-        IST231I APPL MAJOR NODE = APPLSPEH
-        IST1425I DEFINED USING MODEL EHPMA???
-        IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
-        IST1500I STATE TRACE = OFF
-        IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE
-        IST228I ENCRYPTION = OPTIONAL , TYPE = DES
-        IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO
-        IST1552I MAC = NONE MACTYPE = NONE
-        IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0
-        IST1633I ASRCVLM = 1000000
-        IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0
-        IST1669I IPADDR..PORT 192.168.92.65..50027
-        IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
-        IST206I SESSIONS:
-        IST634I NAME STATUS SID SEND RECV VR TP NETID
-        IST635I **TSO1A005** ACTIV-P CA7B8B52114E7A85 0000 0002 SPNET
-        IST314I END
-
 .. index::
-   pair: Controlling LUNAMEs; Using an LU Name with predefined terminal        
+   pair: Controlling LUNAMEs; UserData example using a LU Name
 
-Using an LU Name with a predefined terminal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UserData example using a LU Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name. For this example the rule looks like:-
+Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name.
+
+http://192.168.170.33:41003/w2h/appmenu.htm+applist+EHPMA00*  
+
+For this example the rule looks like:-
 
 ::
 
@@ -5379,56 +5228,15 @@ We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used 
 
 *Using $URL$ to pass a LU name in the URL*
 
-The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009.
+The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME which supports a range from EHPMA000 through to EHPMA009.
 
 .. index::
    pair: Controlling LUNAMEs; Using an LU Name with no predefined terminal 
 
-Using an LU Name with no predefined terminal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ForceLUNAME Example
+^^^^^^^^^^^^^^^^^^^
 
-Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
-grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this setup certain conditions must be in place. Also note that no rules are required. The definitions required are:-
-
-- The HTTP Line that must specify a pool name.
-- A pool name needs to be defined.
-- Transactions must specify $LINE$ in the “Pseudo-terminals” field.
-
-Here is the line definition:-
-
-|image94|
-
-*Line definition for non-predefined LU names*
-
-And the Pool definition:-
-
-|image95|
-
-*Pool definition for non-predefined LU Names*
-
-And an example of a transaction definition. Note that the Psuedo-Terminal is defined as $LINE$. We have also assign a printer definition to this setup. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.
-
-|image96|
-
-*Transaction definition for non-predefined LU Names*
-
-Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for \*DYNPOOL, but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.
-
-|image97|
-
-*Access a Transaction with the ForceLUNAME parameter*
-
-.. index::
-   pair: Controlling LUNAMEs; ForceLUNAME Selection
-
-
-ForceLUNAME Selection
-^^^^^^^^^^^^^^^^^^^^^
-
-HTTP connections with non-predefined terminals. ForceLUNAME option
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""    
-
-It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
+In the preceding examples both required that a terminals and relays be predefined. For some installations this could be a maintenance headache and doesn’t scale up very well. It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:-
 
 -  the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:
 
@@ -5443,14 +5251,6 @@ It is possible for an HTTP client to connect to VIRTEL with a parameter specifyi
 -  a terminal pool of the same name should be defined; only the pool is needed, not the predefined pseudo- terminals that are normaly defined alongside a pool. The terminal and printer pseudo-terminals will be automatically generated using the pool as a template together with the relay name specified in the ForceLUNAME parameter of the URL.
 
 The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.
-
-An example of a line with non-predefined LU names is shown below.
-
-.. index::
-   pair: Controlling LUNAMEs; ForceLUNAME Examples
-
-A ForceLUNAME Examples
-^^^^^^^^^^^^^^^^^^^^^^
 
 In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:
 
@@ -5475,19 +5275,32 @@ Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically
 
 The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
 
-.. index::
-   pair: Controlling LUNAMEs; Using a cookie (“Correspondent Sub-Application)    
+.. note::
+    The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
 
-Using a cookie (Correspondent Sub-Application)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. raw:: latex
+
+    \newpage  
+
+.. index::
+   pair: Controlling LUNAMEs; LU Nailing by cookie    
+
+LU Nailing by cookie
+--------------------
 
 Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see the How-To document *Virtel – How to Activate LU Nailing.*
+
+.. raw:: latex
+
+    \newpage 
 
 .. index::
    pair: Controlling LUNAMEs; Using an IP address    
 
-Using an IP address
-^^^^^^^^^^^^^^^^^^^
+LU Nailing by IP address
+------------------------
+
+The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V457CN_VirtelRules>` for further information on Virtel Rules. 
 
 This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool.
 
@@ -5543,28 +5356,1179 @@ Multiple terminals can be defined with a rule by using the * suffix. In the foll
 
 The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
 
+.. raw:: latex
+
+    \newpage 
+
 .. index::
    pair: Controlling LUNAMEs; Comparison table
 
 Comparison Table
+----------------
+
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| Type                          | RULE Required             | TERMINAL Definition Reqd.  | COOKIES   | Terminal POOL Reqd.  |
++===============================+===========================+============================+===========+======================+
+| By UserData                   | Yes. 1 per work station   | Yes. Individual or group   | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| By $URL$ - LUNAME in URL      | Yes. 1 generic Rule.      | Yes. Individual or group   | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| ForceLUNAME                   | No                        | No                         | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| By IP (Correspondent)         | Yes                       | Yes                        | Yes       | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| By IP                         | Yes                       | Yes                        | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+
+.. index::
+   single: AT-TLS Secure Session
+
+AT-TLS Secure Session
+======================
+
+Introduction
+------------
+
+This section provides details on on to implement AT-TLS security. To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.
+
+AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. A Policy Agent task decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. Virtel continues to send and receive clear text over the socket, but data sent over the network is encrypted and protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.
+
+.. warning:: Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.    
+
+.. index::
+   pair: AT-TLS Secure Session; Installation
+
+Installation
+------------
+
+Install Policy Agent procedure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the cataloged procedure EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as PAGENT.
+
+Create the Policy Agent configuration file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+If you do not already run the Policy Agent, you will need to create a configuration file /etc/pagent.conf using z/OS Unix System Services. If you already run Policy Agent, you will need to find the existing configuration file and add the TTLS definitions to it to support Virtel. Sample jobs are provided in the Virtel SAMPLIB library to assist in performing this step.
+
+Member SSLSETUP
+"""""""""""""""
+
+Step PCONFIG in the SSLSETUP sample job contains a starter configuration. The following changes should be made:
+
+-  Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP line 70)
+
+-  Replace *41000-41002* by *41002* in the LocalPortRange parameter (SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP
+
+-  Replace *ServerWithClientAuth* by *Server* in the HandshakeRole parameter (SSLSETUP line 82) as we will not be using Client Certificates in the initial setup.
+
+Allow the Policy Agent to run during TCP/IP initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+The Policy Agent must be given READ access to the resource EZB.INITSTACK.\* in RACF class SERVAUTH. See step EZBAUTH in the SSLSETUP sample job (delivered in VIRTEL SAMPLIB).
+
+Create the server certificate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into RACF.
+
+At SSLSETUP line 228, replace %virtssl% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)
+
+Add the certificate to the keyring
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+The server certificate must be added to the Virtel keyring - VIRTRING. See step CCERTIF in the SSLSETUP sample job.
+
+Allow VIRTEL to access its own certificate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+To allow VIRTEL to access its own keyring and server certificate, the VIRTEL started task must have READ access to the resource IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH in the SSLSETUP sample job.
+
+Activate AT-TLS
+^^^^^^^^^^^^^^^
+    
+To activate AT-TLS, add the following statements to TCPIP PROFILE:
+
+::
+
+    TCPCONFIG TTLS
+    AUTOLOG 5 PAGENT ENDAUTOLOG
+
+Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AUTOLOG statement will cause the PAGENT procedure to be started automatically during TCP/IP initialization.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: AT-TLS Secure Session; Operations
+
+Operations
+----------
+
+Starting the Policy Agent
+^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+The AUTOLOG statement in the TCP/IP profile will start the PAGENT procedure automatically at TCP/IP initialization. Alternatively you can issue the MVS command **S PAGENT**.
+
+.. note::
+    if this is the first time you have activated the SERVAUTH class, you are likely to see RACF failure messages during TCP/IP initialization indicating that other applications are unable to access the resource EZB.INITSTACK. This is normal, because Communications Server uses this mechanism to prevent applications from accessing TCP/IP before the Policy Agent is started. Do not be tempted to authorize applications to use this RACF resource. Either ignore the messages (they will go away once PAGENT has started), or
+    ensure that PAGENT starts before all other applications.
+
+Altering the Policy Agent configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+To make changes to the Policy Agent configuration file, either edit and resubmit the PCONFIG step of the SSLSETUP sample job, or use the TSO ISHELL command to edit the file /etc/pagent.conf directly from ISPF.
+
+After you make changes to the Policy Agent configuration, use the MVS command **F PAGENT,REFRESH** to force PAGENT to reread the file.
+
+Logon to VIRTEL using secure session
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+To access VIRTEL line C-HTTP you must now use URL
+
+    *https://n.n.n.n:41002* instead of *http://n.n.n.n:41002* 
+
+    (where n.n.n.n is the IP address of the z/OS host running VIRTEL).
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: AT-TLS Secure Session; Problem determination    
+
+Problem determination
+---------------------
+
+Policy Agent log file
+^^^^^^^^^^^^^^^^^^^^^
+    
+Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.
+
+Common error messages
+^^^^^^^^^^^^^^^^^^^^^
+    
+Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:
+
+**EZD1287I TTLS Error RC: nnn event**
+
+    where nnn represents a return code. Return codes under 5000 are generated by System SSL and are defined in the System SSL Programming manual. Return codes over 5000 are generated by AT-TLS and are defined in the IP Diagnosis Guide. Some commonly encountered return codes are:
+
+    7   No certificate
+
+    8   Certificate not trusted
+
+    109 No certification authority certificates
+
+    202 Keyring does not exist
+
+    401 Certificate expired or not yet valid
+
+    402 or 412 Client and server cannot agree on cipher suite
+
+    416 VIRTEL does not have permission to list the keyring
+
+    431 Certificate is revoked
+
+    434 Certificate key not compatible with cipher suite
+
+    435 Certificate authority unknown
+
+    5003 Browser sent clear text (http instead of https)
+
+    5006 SSL failed to initialize. Check job SSLSETUP.
+
+**VIRHT57E LINE IS NOT SET UP FOR HTTPS**
+    
+    Means that the browser sent an https request, but it has not been decrypted by AT-TLS before being sent to VIRTEL, and VIRTEL has received the message in encrypted format. Normally this means the AT-TLS rules did not match the incoming request. This is not a Virtel configuration issue.
+
+**EZD1287I TTLS Error RC: 5003**
+
+    This is the opposite situation. It means that the AT-TLS rules matched the incoming request, and so AT-TLS was expecting to receive an https request, but it received an http request instead.
+
+Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate. In the normal case, you should specify HandshakeRole Server, ClientAuthType Full, and ApplicationControlled Off in the AT-TLS rules, as in the example in VIRT447.SAMPLIB(SSLSETUP).
+
+VIRTEL does not issue an IOCTL to turn decryption on and off, so if you specified ApplicationControlled On then you would get VIRHT57E because AT-TLS has not been instructed to start decryption.
+
+If you still get an error when you have ApplicationControlled Off then we will need to see the SYSLOG (for the EZD TTLS messages), the JESMSGLG from the VIRTEL started task, and the SYSPRINT resulting from a z/OS command F VIRTEL,SNAP immediately after the error occurs. We would also like to see the exact URL which was entered at the browser, as well as the AT-TLS pagent.conf file.
+
+Verifying AT-TLS is active
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To verify that AT-TLS is still activated, you can submit this MVS command:
+
+::
+
+    D TCPIP,,N,TTLS
+
+The response is:
+
+::
+
+    EZD0101I NETSTAT CS V1R12 TCPIP 378 TTLSGRPACTION GROUP ID CONNS VIRTELGROUP 00000002 0 1 OF 1 RECORDS DISPLAYED END OF THE REPORT
+
+The UNIX command 
+
+::
+
+    pasearch
+
+displays the parameters used by PAGENT from /etc/pagent.conf
+
+The TSO command:- 
+
+::
+
+    netstat conn
+
+displays active connexions for the VIRTEL STC.
+
+Once a connexion has been established between a client and a Virtel port, the TSO command:-
+
+::
+
+ netstat ttls conn nnnn detail 
+
+where nnnn is the identification of the connexion will display the AT-TLS parameters used in the Virtel connexion.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: AT-TLS Secure Session; The Cipher suites
+
+The Cipher suites
+-----------------
+    
+The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.
+
+In Microsoft Internet Explorer, follow the menu *Tools – Internet Options – Advanced*. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
+
+In Firefox the cipher specifications are accessed by typing *about:config* in the address bar and typing *security* in the filter box. By default, ssl2 is disabled, and ssl3 and tls are enabled. By default, all weak encryption cipher suites are disabled, and 128-bit or higher cipher suites are enabled.
+
+.. index::
+   pair: AT-TLS Secure Session; Client certificates
+
+Client certificates
+-------------------
+
+Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-
+
+- The HTTP session is secured using AT-TLS. URL = https://....
+- The Policy Agent TTLSConnectionAction or TTLSEnvironmentAction statement contains the parameter "HandShakeRole ServerWithClientAuth"
+- The client has provided a valid certificate.
+- The security subsystem has validate the certificate as belonging to a user.
+- The Virtel transaction has Security = 3 defined.
+
+If these conditions are met then the userid contained within the clients digital certificate can be extracted by Virtel and used in the signon process. In this process it is normal that a PASS Ticket is generated and associated with the extracted userid.
+
+See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT-TLS and client certificates.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: AT-TLS Secure Session; Resources
+
+Resources
+---------
+
+IBM Manuals
+^^^^^^^^^^^
+
+::
+
+  -  SA22-7683-07 z/OS V1R7 Security Server: RACF Security Administrator's Guide Chapter 21. RACF and Digital Certificates
+ 
+  -  SC24-5901-04 z/OS V1R6 Cryptographic Services: System SSL Programming Chapter 12. Messages and Codes
+ 
+  -  SC31-8775-07 z/OS V1R7 Communications Server: IP Configuration Guide
+     Chapter 14. Policy-based networking
+     Chapter 18. Application Transparent Transport Layer Security (AT-TLS) data protection Configuration Reference
+     Chapter 21. Policy Agent and policy applications
+ 
+  -  GC31-8782-06 z/OS V1R7 Communications Server:* IP Diagnosis Guide
+     Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)
+ 
+  -  SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD)
+     Chapter 10. EZD1xxxx messages
+
+Virtel Material
+^^^^^^^^^^^^^^^
+
+- `TN201407 Pass tickets and supporting Proxy Servers – CA-SiteMinder© & IBM Tivoli WebSeal©`
+- `TN201416 Virtel TLS/SSL Security: Signing on using server and client certificates`  
+
+.. index::
+   single: SSO, Passtickets and Proxy Servers  
+
+SSO, PassTickets and Proxy Servers
+==================================
+
+Introduction
+------------
+
+Many businesses now implement products which provide a centralized enterprise-class secure single sign-on (SSO) and authentication system. The products tend to run on a server(s) and provides access to a business’s assets like web enabled applications or portals. The basic process is to trap the incoming HTTP call request and establish some user credentials before llowing access to an asset. For example, the user credentials can be extracted from the callers request or determined by the callers IP address. The credentials will be validated against a LDAP or similar active directory server. The result of the validation will either allow or deny the caller access to the requested asset. Security and asset control is managed by the SSO server which as a central server can validate credentials to all business assets, be it on the mainframe or other platforms. Userid and password administration for all assets can be controlled through the functions of the SSO software employed. Virtel will integrate within this SSO infrastructure and process sign on request once they have passed validation. Virtel provides its own validation of the SSO server through the use of rules.
+
+In the example that follows we are using CA-Site Minder as an example SSO Server and we will document how to define Virtel to interface with the SSO Server and RACF. Our target asset is a CICS application called SPCICSH. The caller will provide no userid or password data. 
+
+|image100| *Data flow of an SSO session setup*
+
+The initial request is passed through the SSO server. The server will trap and validate the caller. If the validation is successful a session will be establish between the SSO server and Virtel. Two things to note at this point. One, the IP address presented to Virtel will be that of the SSO Proxy Server and two, that the server will modify the HTTP headers to provide addition information, that being the source IP address and the user id.
+
+A Virtel line trace will reveal these additional headers.
+
+::
+
+	GET /w2h/WEB2SUB.HTML++VirtelSession=AFo0JQAAAAMeuCAo+disconnect=1?pf=DISCONNECT HTTP/1.1
+	Host: 192.168.170.30:41002
+	User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101	Firefox/27.0
+	Accept: text/html,application/xhtml+xml,application/xml;q=0.9,\*/\*;q=0.8
+	Accept-Language: en-gb,en;q=0.5
+	Accept-Encoding: gzip, deflate
+	Referer: http://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS
+	Cookie: SYSLANG=en; SYSSTYL=BLUE; SYSPAGE=auto
+	**SM_User: sptholt <<**
+	**X-Forwarded-For: 192.168.100.100 <<**
+	Connection: keep-alive
+
+	HTTP/1.1 200 Ok
+	Server: Virtel/4.53
+	Date: Wed, 26 Mar 2014 15:31:12 GMT
+	Content-type: text/html
+	Content-length: 00000125
+
+	<html><head><Meta HTTP-EQUIV="refresh" CONTENT="1; URL=LASTPAGE.HTML"></head>
+	<body bgcolor="black"><br>
+	<br>
+	</body></html>
+	HTTP/1.0 205 Reset Content
+	Server: Virtel/4.53
+
+In the above trace the CA-SiteMinder specific header “SM_User” can be seen as identifying the userid and the X-Forwarded-For:, a standard HTTP header, identifies the source IP address. For security reasons this proxy IP address must be tested for in a VIRTEL rule before the session can be established between the caller and the asset. There is no password associated with this logon – this will be generated via a passsTicket request on behalf of the userid identified in the “SM_User” header. The PassTicket will be created as part of the session setup between Virtel and the asset and on behalf of the caller.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: SSO, Passtickets and Proxy Servers; Adding headers to the HTTP request  
+
+Adding headers to the HTTP request
+----------------------------------
+
+Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.
+
+|image101| *Using the Firefox "Modify Headers" addin.*
+
+When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.
+
+|image102| 
+
+*Modify Header active - red ICON*
+
+The following definitions define what needs to be done to enable a user to log on without specifying a userid/password to an asset supported by the SSO server. In our example Virtel will logon to a CICS asset on behalf of the caller using a userid passed by the SSO Proxy and a generated PassTicket. The caller provides no userid/password information. Once the SSO has validated the callers credential the caller will be logged on to CICS and will be presented with the following screen:-
+
+|image103| *Accessing CICS using a callers credentials. No LOGON required.*
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: SSO, Passtickets and Proxy Servers; RACF Passtickets 
+
+RACF Passtickets
+----------------
+
+Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.
+
+Define Pass Ticket RACF profiles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This job will have to be modified to a customer’s RACF setup. Some profiles may already be defined! If the PERMIT statements do not run then that probably means that some of the RDEFINE entries already exist in the RACF database - these need to be removed, or an RDELETE added to delete the profile entry, in order for the job to complete successfully. It should produce a RC=0. See the output in SDSF.
+
+::
+
+	//STEP1 EXEC PGM=IKJEFT1A,DYNAMNBR=20
+	//SYSTSPRT DD SYSOUT=*
+	//SYSTSIN DD *
+		SETROPTS CLASSACT(APPL)
+		SETROPTS CLASSACT(PTKTDATA)
+		SETROPTS RACLIST(PTKTDATA)
+		SETROPTS GENERIC(PTKTDATA)
+		RDEFINE FACILITY IRR.RTICKETSERV
+		RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.\* UACC(NONE)
+		RDEFINE PTKTDATA SPCICSH SSIGNON(KEYMASKED(998A654FEBCDA123)) +
+			UACC(NONE)
+		PERMIT IRR.RTICKETSERV CL(FACILITY) ID(SPVIRSTC) ACC(READ)
+		PERMIT IRRPTAUTH.SPCICSH.\* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
+		SETROPTS REFRESH RACLIST(PTKTDATA)
+		SETROPTS REFRESH RACLIST(FACILITY)
+
+Three distinct RACF profiles are required to use RACF pass tickets:-
+
+::
+
+	FACILITY IRR.RTICKETSERV           * Can use PassTickets *
+	PTKTDATA IRRPTAUTH.passTicketName. * Let’s VIRETL generate PassTickets on behalf of an application for all users. * or *userid*
+	PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
+
+**Virtel Name correlation**
+
+-  passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.
+
+-  profile\_name must equal the VTAM application name defined in the VIRTEL transaction.
+
+These names are normally the same, but they do not have to be.
+
+.. note::
+
+	If you are running separate RACF databases across LPARS the KEYMASKED must be the same in each RACF database or else the wrong password will be generated and the logon will fail.
+
+.. raw:: latex
+
+    \newpage 
+
+RACF Profiles related to Virtel and Pass Tickets
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+As mentioned RACF needs to have some profiles set up to allow Virtel to use Pass Tickets. The first profile is the FACILITY Class profile with the IRR.RTICKETSERV name. The Virtel STC userid must have READ access to this profile.
+
+|image109| *RACF profile to allow Virtel to use Pass Tickets* 
+
+::
+
+	RDEFINE FACILITY IRR.RTICKETSERV
+	PERMIT IRR.RTICKETSERV CL(FACILITY) ID(SPVIRSTC) ACC(READ)
+
+To allow Virtel to generate Pass Tickets for a particular application we must define any entry in the PTKTDATA class. This entry has the name "IRRPTAUTH.passTicketName.*"" and is a Group Entry. The Virtel USERID should have update authority to this profile.
+
+|image110| *Seting Virtel up with RACF access to PTKTDATA class.*
+
+::
+
+	RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.\* UACC(NONE)
+	PERMIT IRRPTAUTH.SPCICSH.\* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
+	SSIGNON(KEYMASKED(998A654FEBCDA123)) UACC(NONE)
+
+The name in IRRPTAUTH.passTicketName.* profile must match the name in the Virtel Transaction definition. The PassTicket Name is the name of the application as known to RACF for the generation of Passtickets. This may be different to the VTAM application name.
+
+Finally, define a PTKTDATA profile entry that matches the Virtel Transaction **APPLICATION** name. In this case it is SPCICSH. Virtel passes this APPLNAME to RACF via a RACROUTE REQUEST=VERIFY.
+
+|image111| *Setting the Pass Ticket name in the Virtel transaction.*
+
+::
+
+	RDEFINE PTKTDATA SPCICSH SSIGNON(KEYMASKED(998A654FEBCDA123)) +
+	UACC(NONE)
+
+The key thing here is that the PassTicket name must tie up with the generic IRRPTAUTH.SPCICSH.* entry and the VIRTEL application name must match the descrete PTKTDATA.SPCICSH profile. They can be the same but needn’t be!
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: SSO, Passtickets and Proxy Servers; Virtel Requirements 
+
+Virtel Requirements
+-------------------
+
+Transaction requirements
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-
+
+|image104| *Modified CICS Virtel transaction to support Pass Tickets.* 
+
+The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM_User header value.
+
+The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (&U) and PassTicket generated password (&P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.
+
+.. raw:: latex
+
+    \newpage
+
+Identification Scenario
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To obtain the “SM_User” value and set the userid in the Virtel System USER variable an identification scenario is used. The following is an example of such a scenario:-
+
+::
+
+	SCENSITE SCREENS APPL=SCENSITE,EXEC=NO
+	*
+	* SCENARIO for SiteMinder
+	*
+	* The purpose of this scenario is to retrieve the contents of
+	* the identification headers inserted by the SiteMinder Proxy
+	*
+	SCENARIO IDENTIFICATION
+	*
+		COPY$ SYSTEM-TO-VARIABLE,VAR='USER', -
+			FIELD=(TCT-HTTP-HEADER,SM\_USER)
+		IF$ NOT-FOUND,THEN=NOUSER1
+		COPY$ VARIABLE-TO-SYSTEM,VAR='USER', -
+			FIELD=(NAME-OF,USER)
+	*
+	EXIT1 DS 0H
+		SCENARIO END
+	*
+	NOUSER1 DS 0H
+		ERROR$ 0,'SCENSITE ERROR: NO USER VARIABLE'
+		GOTO$ EXIT1
+		SCRNEND
+		END
+
+This SCENARIO has to be set in the Entry Point definition for the line being used. In our case this is the default Entry Point, CLIWHOST, associated with the external line HTTP-CLI. The following is a snapshot of the entry point definition:-
+
+|image105| *Defining an Identification Scenario in the Virtel Entry Point.* 
+
+The Identification Scenario field is filled in with the name of our scenario SCENSITE. This scenario is called when the inbound call is assigned to an entry point and before any transactions are invoked. The scenario sets the Virtel system USER variable which will be used in the PassTicket generation.
+
+TCT Considerations
+^^^^^^^^^^^^^^^^^^
+
+The TCT has to include the following parameters if HTTP User Headers and PassTicket generation is required. The parameters are:-
+
+::
+
+	HTHEADR=(SM_USER),                              *
+	VIRSECU=YES,SECUR=(RACROUTE,RACF),              *
+	RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,  *
+	PASSTCK=YES,                                    *
+
+The HTHEADR identifies the “SM_USER“ as a non standard header and one that Virtel must process. The PASSTCK keyword enables Virtel to generate PassTickets.
+
+.. raw:: latex
+
+    \newpage
+
+Line Rules
+^^^^^^^^^^
+
+To ensure that the source SSO proxy IP address is valid we can code some rules and associate them with the line. In our example we have coded two sets of rules. The first one will test the calling proxy IP address. If that is successful the connection will continue and establish an association with the named Virtel entry point. If the first rule fails because the IP address doesn’t match what we expect, the second rule will be called. This does no more than establish an entry point with a default transaction. The default transaction will just return an error page to the browser. Here are the two rules that we have associated with our Virtel line:-
+
+|image106| *List of rules asssociated with the Virtel line*
+
+The second rule is coded as follows:-
+
+|image107| *Rule C100PROX to test Proxy IP Address* 
+
+If the IP address of the SSO Proxy matches the Caller DTE address we have specified in the rule than the Entry Point CLIWHOST will be associated with line and the transactions defined under that entry point, CLIWHOST in this case, can be invoked. If the address match fails then the next rule will be called. In our case this will be rule C999REJ which will invoke transaction EPREJECT, the default transaction for Entry Point EPREJECT.
+
+.. warning:: It is important that you use option 3 “STARTS WITH” when defining the Calling DTE option.
+
+|image108| *Rule C999REJ to reject the session request* 
+
+This rule does no more than to establish the entry point EPREJECT. EPREJECT will have a default transaction which just returns an error page to the caller.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: SSO, Passtickets and Proxy Servers; Common Errors 
+
+Common Errors
+-------------
+
+**Message VIR1502E**
+
+VIRTEL does not have sufficient access rights to create or validate a passticket allowing user userid at terminal termed to access application applname. This message is usually preceded by message ICH408I which shows the name of the resource to which VIRTEL must be granted access.
+
+**Action**
+
+Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.
+
+For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services Chapter 2 “R_ticketserv”. Some common codes are:
+
++----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
+| SAF RC   | RACF RETC   | RACF Reason   | Description                                                                                                     |
++==========+=============+===============+=================================================================================================================+
+| 8        | 8           | 4             | Paramlist error. Ensure that the SCENSITE scenario is available to process the sm_header.                       |
++----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
+| 8        | 8           | 16            | VIRTEL is not authorized to generate passtickets, or is not authorized to generate passtickets for this         | 
+|          |             |               | application. See preceding ICH408I message in the log.                                                          |
++----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
+| 8        | 16          | 28            | There is no profile in the PTKTDATA class for this application or the PTKTDATA class is not active.             |
++----------+-------------+---------------+-----------------------------------------------------------------------------------------------------------------+
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: SSO, Passtickets and Proxy Servers; Related material
+
+Related material
+----------------
+
+Technical newsletter - `TN201416 Virtel Security. Using server and client certificates`
+
+.. index::
+   single: Running multiple instances of Virtel
+
+Running multiple instances of Virtel
+====================================
+
+Introduction
+------------
+
+For High Availability and performance reasons it is often necessary to run multiple copies of Virtel, preferably within separate LPARs on separate physical machines. This newsletter discusses the issues raised when implementing such a setup and how Virtel can exploit the IBM Sysplex technologies. In the following example there are two instances of Virtel running on separate physical machines sharing the same ARBO configuration file. The configuration looks like this:-
+
+|image94|
+
+Virtel is using several Sysplex technologies to achieve this configuration. For example, Virtel is using VTAM Generic Resources to facilitate access to the Virtel Administration functions from either instance of Virtel. VTAM generic resources can be used to distribute workloads across applications that perform the same task or function. Administration of the ARBO file is through the Virtel Administrator who can logon on to Virtel using the generic Virtel ACB name VIRTPLEX. This generic ACB enables management of the ARBO file through either VIRTEL1A or VIRTEL2A. This can be useful, for example, If SYSA was down for maintenance. VIRTEL administration could still conducted via VIRTEL2A access. No change would be necessary to any session management tools. 
+
+Here are the relevant definitions required to support the VTAM generic resource within Virtel.
+
+.. index::
+   pair: Running multiple instances of Virtel; Virtel TCT Settings
+
+VIRTEL TCT Settings
+^^^^^^^^^^^^^^^^^^^
+
+GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME
+
+.. index::
+   pair: Running multiple instances of Virtel; SYSPLEX definitions
+
+SYSPLEX definitions
+^^^^^^^^^^^^^^^^^^^
+
+The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.
+
+Use the following command to display coupling allocation details for ISTGENERIC.
+
+::
+
+    D XCF,STR,STRNM=ISTGENERIC
+
+*VTAM displayof the generic resource*
+
+The results from the D NET,ID=VTAMPLEX,E identifies the two Virtel instances which are grouped into the generic resource name VIRTPLEX. The example below shows VIRTEL1A and VIRTEL2A as participating in the VIRTRPLEX resource name group.
+
+::
+
+  D NET,ID=VIRTPLEX,E 
+
+  IST097I DISPLAY ACCEPTED
+  IST075I NAME = VIRTPLEX, TYPE = GENERIC RESOURCE 917
+  IST1359I MEMBER NAME OWNING CP SELECTABLE APPC
+  IST1360I SPNET.VIRTEL1A ZAM1SSCP YES NO
+  IST1360I SPNET.VIRTEL2A ZAM2SSCP YES NO
+  IST2210I GR PREFERENCE TABLE ENTRY = **DEFAULT**
+  IST2202I GREXIT = NO WLM = YES LOCLU = YES
+  IST2204I LOCAPPL = YES PASSOLU = NO
+  IST314I END
+
+When the VIRTEL*A application is display in VTAM the following messages are written to the console log:-
+
+::
+
+    D NET,ID=VIRTEL1A,E
+    IST097I DISPLAY ACCEPTED
+    IST075I NAME = SPNET.VIRTEL1A, TYPE = APPL 925
+    IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
+    IST1447I REGISTRATION TYPE = CDSERVR
+    IST1363I GENERIC RESOURCE NAME VIRTPLEX REPRESENTS SPNET.VIRTEL1A
+    IST977I MDLTAB=***NA*** ASLTAB=***NA***
+    IST861I MODETAB=***NA*** USSTAB=***NA***LOGTAB=***NA***
+    IST934I DLOGMOD=***NA*** USS LANGTAB=***NA***
+    IST1632I VPACING = 7
+    IST1938I APPC = NO
+    IST597I CAPABILITY-PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
+    IST231I APPL MAJOR NODE = APPLVIPX
+    IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
+    IST1500I STATE TRACE = OFF
+    IST271I JOBNAME = SPVIR1A, STEPNAME = SPVIR1A, DSPNAME = ISTEBBDB
+    IST228I ENCRYPTION = OPTIONAL , TYPE = DES
+    IST1563I CKEYNAME = VIRTEL1A CKEY = PRIMARY CERTIFY = NO
+    IST1552I MAC = NONE MACTYPE = NONE
+    IST1050I MAXIMUM COMPRESSION LEVEL - INPUT = 0, OUTPUT = 0
+    IST1633I ASRCVLM = 1000000
+    IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 1280
+    IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
+    IST206I SESSIONS:
+    IST634I NAME STATUS SID SEND RECV VR TP NETID
+    IST635I SC0TCP13 ACTIV-S CA7B8B52D125F31F 0003 0001 SPNET
+    IST314I END
+
+Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is associated with the VTAM resource name VIRTPLEX.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: Running multiple instances of Virtel; Workload balancing
+
+Workload balancing in a SYSPLEX environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.
+
+|image95|
+
+From a High Availability aspect both CICSA and CICSB could both be down and service would still be provided by CICSC either through VIRTEL1A or VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to provide a HA solution. The only VIRTEL requirement is to define a VIRTEL transaction which targets CICSZ as the VTAM application, i.e. the VTAM
+Generic Resource or CICSPLEX group name.
+
+Sharing the ARBO and other VSAM files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In a SYSPLEX or sharing environment the VSAM files, like the ARBO and TRSF files, must be shared only in READ mode. To support this the following TCT parameter should be coded:-
+
+::
+ 
+ VSAMTYP=READONLY
+
+This VIRTCT parameter allows the setup of 'READ-ONLY' Virtels, to be used in production or in a Sysplex. Almost all Virtel VSAM files may be set to read-only mode. (But note that the VIRSWAP file; being a work file it cannot be read-only.) 
+
+If this TCT value is coded then the following changes should also be made to the TCT.
+
+- The MACRF statements should be amended from MACRF=(SEQ,DIR,OUT,LSR) to MACRF=(SEQ,DIR,LSR).
+
+- The UFILE parameter string should also be changed from 0,10,01 to 0,10,05. For example:-
+
+::
+ 
+ HTMLTRSF,ACBH2,0,10,01 becomes HTMLTRSF,ACBH2,0,10,05
+
+This will ensure the integrity of the VSAM files across a SYSPLEX or shared environment. When Virtel is started the following messages will be issued:-
+
+::
+
+ VIR0093I VTAM GENERIC RESOURCE NAME IS VIRTPLEX                 
+ VIR0024I OPENING FILE VIRARBO                                   
+ VIR0024I READ ONLY                                              
+ VIR0024I OPENING FILE VIRSWAP                                   
+ VIR0024I OPENING FILE VIRHTML                                   
+ VIR0024I READ ONLY                                              
+ VIR0024I OPENING FILE SAMPTRSF                                  
+ VIR0024I READ ONLY                                              
+ VIR0024I OPENING FILE HTMLTRSF                                  
+ VIR0024I READ ONLY                                              
+ VIR0024I ATTACHING SUBTASKS                                     
+
+.. danger:: Do not set the SHROPTIONS to (4,3) as this will have undesirable results!
+
+Using a READ only environment enables you to not only share the ARBO file but also the SAMP and HTML TRSF files.
+
+READ ONLY Restrictions
+^^^^^^^^^^^^^^^^^^^^^^
+
+If you share the VSAM files (SAMP.TRSF, ARBO, HTML.TRSF) in READ only mode Virtel Administration is not possible. For example uploading web updates to the SAMP.TRSF or adding macros to the DDI repositories. In this configuration you will have to have a maintenace instance of Virtel which can write to the VSAM files. This can be brought up during a maintenace slot when the READ ONLY instances are down. An alternative to this method is to maintain a copy of the VSAM files and use these for maintenace and updates then copy these VSAM files to the READ ONLY versions during a maintenace slot.  
+
+.. raw:: latex
+
+    \newpage 
+
+Virtel naming conventions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When running more than one VIRTEL STC care must be taken when defining the VTAM relay names that each VIRTEL tasks will use. In the above configuration each Virtel instance is running on a different LPAR, and for the HA reasons, probably on a different physical machine; however, the VTAM names employed must be unique. With Virtel you can define a
+single configuration within the ARBO and TCT which contains a unique pool of Virtel relays for each Virtel instance.
+
+Here are two possible ways to define the relay pools for multiple Virtel instances:
+
+The first way is to include the SYSCLONE value as part of the LU name. The relay definitions utilize the system symbolic SYSCLONE value in the IEASYMxx member of PARMLIB. The clone value is taken from the system symbolic &SYSCLONE and is identified in the VIRTEL definitions through the + (plus) character:
+
+::
+
+  LIST of TERMINALS ---------------------------------- Applid: VIRTEL1A 15:11:01
+  Terminal  Repeated Relay     Entry        Type   I/O  Pool      2nd  Relay       
+  CLLOC000  0050                            3      3
+  CLVTA000  0080     *W2HPOOL               3      3
+  DELOC000  0010                            3      3
+  DEVTA000  0016     *W2HPOOL               3      3
+  W2HIM000  0080     R+IM000                1      1
+  W2HTP000  0080     R+VT000                3      3    *W2HPOOL  R+IM000 
+
+TCT definition
+^^^^^^^^^^^^^^
+
+In the configuration above there are two Virtel STCs running on different LPARS whose &SYSCLONE values are 1A and 2A. With the same TCT being used for both VIRTEL1A and VIRTEL2A the following is specified in the common TCT:-
+
+::
+
+    APPLID=VIRTEL+,
+    SYSPLUS=YES,
+
+This will means that the two Virtels STCs will have a VTAM APPLID of^VIRTEL1A and VIRTEL2A. The Virtel relay LU names are R1AVT000-079 for LPAR 1A, and R2AVT000-079 for LPAR 2A. 
+The VTAM definition to support this configuration would like:-
+
+::
+
+    APPLVIPX VBUILD TYPE=APPL
+    * ------------------------------------------------------------------ *
+    * Product : VIRTEL                                                   *
+    * Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A)        *
+    * ------------------------------------------------------------------ *
+    VIRTEL&SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),               *
+          ACBNAME=VIRTEL&SYSCLONE
+    * ------------------------------------------------------------------ *
+    * R&SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access    *
+    * ------------------------------------------------------------------ *
+    R&SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
+          DLOGMOD=SNX32702,EAS=1
+    * ------------------------------------------------------------------ *
+    * R&SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals   *
+    * ------------------------------------------------------------------ *
+    R&SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
+          DLOGMOD=SCS,EAS=1
+    R&SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
+          DLOGMOD=DSILGMOD,EAS=1
+
+Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE characters as part of the LU name. In the next example two pools are defined. Pool \*W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool \*W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:-
+
+::
+
+    Terminal  Repeated Relay     Entry        Type   I/O  Pool     2nd  Relay       
+    CLLOC000  0500                            3      3
+    CLVTA000  1000     *W+POOL                3      3
+    CLVTB000  1000     *W+POOL                3      3
+    CLVTC000  1000     *W+POOL                3      3
+    DELOC000  0010                            3      3
+    DEVTA000  0016     *W+POOL                3      3
+    W2HIP000  1000     P000                   1      1
+    W2HIQ000  1000     Q000                   1      1
+    W2HIR000  1000     R000                   1      1
+    W2HIS000  1000     S000                   1      1
+    W2HIT000  1000     T000                   1      1
+    W2HIU000  1000     U000                   1      1
+    W2HTJ000  1000     J000                   3      3    *W1APOOL P000
+    W2HTK000  1000     K000                   3      3    *W1APOOL Q000
+    W2HTL000  1000     L000                   3      3    *W1APOOL R000
+    W2HTM000  1000     M000                   3      3    *W2APOOL S000
+    W2HTN000  1000     N000                   3      3    *W2APOOL T000
+    W2HTO000  1000     O000                   3      3    *W2APOOL U000
+
+The VTAM definitions would be similar to those from the previous example except the &SYSCLONE would be replaced by the relay characters.
+
+::
+
+    APVIRT&SYSCLONE. VBUILD TYPE=APPL
+    * ------------------------------------------------------------------*   
+    * Product     :  VIRTEL                                             *   
+    * Description :  Main ACB for VIRTEL application                    *   
+    * ------------------------------------------------------------------*   
+    VIRTEL&SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,               + 
+                 ACBNAME=VIRTEL&SYSCLONE 
+    * ------------------------------------------------------------------*   
+    * Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access*   
+    * Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access *
+    * Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access*      
+    * ------------------------------------------------------------------*   
+    J??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+    K??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1 
+    L??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+    M??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1   
+    N??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+    O??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+    * ------------------------------------------------------------------*   
+    * Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals      *   
+    * Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals      * 
+    * Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals      * 
+    * ------------------------------------------------------------------*
+    P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES     
+    Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES     
+    R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES     
+    S??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES        
+    T??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES      
+    U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+
+.. raw:: latex
+
+    \newpage 
+      
+.. index::
+   pair: Running multiple instances of Virtel; Load balancing with a Distributed VIPA
+
+Using a Distributed VIPA to load balance
+----------------------------------------
+
+Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one Virtel STC. The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD/WLM algorithm. For example this can be a Round Robin policy or WLM policy workload algorithm. Access to the Virtel tasks is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as
+192.168.170.15. The relevant PROFILE definitions for TCPIP would look like:-
+
+::
+
+    VIPADYNAMIC
+    VIPARANGE DEFINE MOVEABLE NONDISRUPTIVE 255.255.255.0 192.168.170.20
+    VIPADEFINE MOVE IMMED 255.255.255.0 192.168.170.15
+    VIPADISTRIBUTE DEFINE TIMEDAFF 60 DISTMETHOD ROUNDROBIN 192.168.170.15
+    DESTIP ALL
+    ENDVIPADYNAMIC
+
+.. index::
+   pair: Running multiple instances of Virtel; Session Affinity with DVIPA
+
+Session Affinity
 ^^^^^^^^^^^^^^^^
 
-+-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
-|                               | RULE DEFN                 | TERMINAL DEFN.             | COOKIES   | Terminal POOL definitions required   |
-|                               |                           |                            |           |                                      |
-|                               |                           |                            | USED      |                                      |
-+===============================+===========================+============================+===========+======================================+
-| By Work Station Name in URL   | Yes. 1 per work station   | Yes. Individual or group   | No        | Yes                                  |
-+-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
-| By LUNAME in URL              | Yes. 1 generic Rule.      | Yes. Individual or group   | No        | Yes                                  |
-+-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
-| By using Forced LU            | No                        | Pool Only                  | No        | Yes                                  |
-+-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
-| Correspondent                 | Yes                       | Yes                        | Yes       | Yes                                  |
-+-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
-| By IP                         | Yes                       | Yes                        | No        | Yes                                  |
-+-------------------------------+---------------------------+----------------------------+-----------+--------------------------------------+
+It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W-HTTP (port 41001) is used for Virtel Administration and line C-HTTP (port 41002) for user access
+to applications.
 
+Line W-HTTP should be defined using the base address of the LPAR (i.e.the home address of the default interface) by specifying only the port number. For example:
+
+Local ident ==> :41001
+
+Line C-HTTP should be defined using the distributed VIPA address and port number if you are using a dynamic VIPA:
+
+Local ident ==> 192.168.170.15:41002
+
+If you are not using a dynamic VIPA to point to your Virtel then the port address must be prefixed with 0 or 0.0.0.0. For example:-
+
+Local ident ==> 0:41002
+
+This will ensure the Virtel doesn't associate itself with a particular IP address. 
+
+The Virtel Line display command displays this configuration:
+
+::
+
+    F SPVIR1A,LINES
+    VIR0200I LINES
+    VIR0201I VIRTEL 4.54 APPLID=VIRTEL1A LINES
+    VIR0202I INT.NAME EXT.NAME TYPE ACB OR IP
+    VIR0202I -------- -------- ----- ---------
+    VIR0202I C-HTTP HTTP-CLI TCP1 192.168.170.15:41002
+    VIR0202I W-HTTP HTTP-W2H TCP1 :41001
+    VIR0202I ---END OF LIST---
+
+In this way the administrator can access a specific Virtel using port 41001 of the appropriate LPAR’s IP address, while the users can access both Virtels using port 41002 on the DVIPA address.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: Running multiple instances of Virtel; Load balancing with Apache Proxy
+
+Using an Apache Proxy to load balance
+-------------------------------------
+
+Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.
+
+|image96|
+
+.. index::
+   pair: Running multiple instances of Virtel; Session Affinity with Apache
+
+
+Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-
+
+::
+
+    #
+    # Virtel
+    #
+    ProxyPass / balancer://hostcluster/
+    ProxyPassReverse / balancer://hostcluster/
+    <Proxy balancer://hostcluster>
+    BalancerMember http://syt00101.gzaop.local:41002 retry=5
+    BalancerMember http://syt00101.gzaop.local:51002 retry=5
+    ProxySet lbmethod=byrequests
+    </Proxy>
+
+For more information on setting up an Apache Proxy Server visit http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html
+
+To use Apache as a Proxy Server it is essential that the correct configuration modules are loaded at startup. Here is an example:-
+
+::
+
+    #LoadModule foo_module modules/mod_foo.so
+    LoadModule authz_host_module modules/mod_authz_host.so
+    LoadModule auth_basic_module modules/mod_auth_basic.so
+    LoadModule authn_file_module modules/mod_authn_file.so
+    LoadModule authz_user_module modules/mod_authz_user.so
+    #LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+    LoadModule include_module modules/mod_include.so
+    LoadModule log_config_module modules/mod_log_config.so
+    LoadModule env_module modules/mod_env.so
+    #LoadModule mime_magic_module modules/mod_mime_magic.so
+    #LoadModule expires_module modules/mod_expires.so
+    LoadModule headers_module modules/mod_headers.so
+    LoadModule unique_id_module modules/mod_unique_id.so
+    LoadModule setenvif_module modules/mod_setenvif.so
+    LoadModule proxy_module modules/mod_proxy.so
+    LoadModule proxy_connect_module modules/mod_proxy_connect.so
+    #LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
+    LoadModule proxy_http_module modules/mod_proxy_http.so
+    LoadModule mime_module modules/mod_mime.so
+    #LoadModule dav_module modules/mod_dav.so
+    #LoadModule dav_fs_module modules/mod_dav_fs.so
+    LoadModule autoindex_module modules/mod_autoindex.so
+    #LoadModule asis_module modules/mod_asis.so
+    #LoadModule info_module modules/mod_info.so
+    LoadModule cgi_module modules/mod_cgi.so
+    LoadModule dir_module modules/mod_dir.so
+    LoadModule actions_module modules/mod_actions.so
+    #LoadModule speling_module modules/mod_speling.so
+    #LoadModule userdir_module modules/mod_userdir.so
+    LoadModule alias_module modules/mod_alias.so
+    #LoadModule rewrite_module modules/mod_rewrite.so
+    #LoadModule deflate_module modules/mod_deflate.so
+    LoadModule proxy_balancer_module modules/mod_proxy_balancer.so 
+
+Some other Apache configuration recommendations are:-
+
+::
+
+    * Timeouts
+    SSLDisable
+    SSLV3Timeout 18010
+    * Format log with router information
+    LogFormat "%h %l %u %t\"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" \"%{BALANCER_WORKER_ROUTE}e\"" combined
+    * set Max-Age to 12h (doesn't work with IE)  or 
+    * enable mod_expires and set: (this should be checked)
+    ExpiresActive On
+    ExpiresDefault "access plus 16 h"
+
+See https://httpd.apache.org/docs/2.2/mod/mod_expires.html for more information.
+
+.. index::
+   single: Protecting business assets with Virtel Rules
+
+Protecting business assets with Virtel Rules
+============================================
+
+Introduction
+------------
+
+In this chapter we discuss how to protect access to business assets using Virtel rules. In this scenario with have two types of business assets or applications. The first type is the production assets which are protected by LDAP and use SSO to facilitate security and automatic logon without the user having to specify a userid and password. The other type of business asset is a standard application, like TSO or CICS, which requires the user to enter a userid and password when the application is accessed. LDAP and SSO are not discussed in this newsletter. There may be alternatives to this SSO setup but for our scenario we are assuming two types of asset – secure (requiring no application logon) and insecure (application logon required). The scenario utilizes a proxy server to load balance across the Virtel instances.
+
+|image97|
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: Protecting business assets with Virtel Rules; Virtel Setup
+
+
+Virtel Setup
+------------
+
+From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non-secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
+and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address – 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.
+
+.. index::
+   pair: Protecting business assets with Virtel Rules; Example Rules
+
+Virtel Rules
+^^^^^^^^^^^^
+
+Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re-directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:- 
+
+::
+
+	RULE ID=R0000100,
+	RULESET=C-HTTP,                                < Our Line 41002
+	STATUS=ACTIVE,
+	DESC='HTTP access (Test calling address)',
+	ENTRY=EPSEC,                                   < Associated Entry point
+	IPADDR=(EQUAL,192.168.092.160),                < IP address of Proxy
+	NETMASK=255.255.255.255
+	*
+	RULE ID=R0000199,
+	RULESET=C-HTTP,                                < Our Line 41002
+	STATUS=ACTIVE,
+	DESC='HTTP access (Calling IP address not valid)',
+	ENTRY=EPREJECT
+	*
+	RULE ID=R0000200,
+	RULESET=R-HTTP,                                < Our Line 41003
+	STATUS=ACTIVE,
+	DESC='HTTP access (Test calling address)',
+	ENTRY=EPSEC,                                   < Associated Entry point
+	IPADDR=(EQUAL,192.168.092.160),                < IP address of Proxy
+	NETMASK=255.255.255.255
+	*
+	RULE ID=R0000299,
+	RULESET=R-HTTP,                                < Our Line 41003
+	STATUS=ACTIVE,
+	DESC='HTTP access (Calling IP address not valid)',
+	ENTRY=EPREJECT
+	ENTRY ID=EPREJECT,
+	DESC='Entry point for unauthorized HTTP users',
+	TRANSACT=REJ,
+	TIMEOUT=0720,
+	ACTION=0,
+	EMUL=HTML,
+	SIGNON=VIR0020H,
+	MENU=VIR0021A,
+	EXTCOLOR=X
+	*
+	TRANSACT ID=REJ-00,
+	NAME=EPREJECT,
+	DESC="Default directory = entry point name",
+	APPL=CLI-DIR,                                   < User template directory
+	TYPE=4,
+	TERMINAL=CLLOC,
+	STARTUP=2,
+	SECURITY=0
+
+So what is happening here? When a user attempts to establish a session Virtel will match the users calling IP address against the IPADDR in rule R0000x00. If it matches then they will be able to access the entry point defined in the rule – in this case EPSEC or EPNSEC. For line 41002 this Entry Point will contain a list of the W2H applications using SSO.
+For line 41003, using Entry Point EPNSEC, this will contain a list of W2H transactions which use standard RACF protection.
+
+Now, if the calling IP addressed is not matched, the RULE fails and the next rule in the ruleset is tested, in this case rule R0000x99. This is a catch all rule. Any user falling into this rule will be directed to entry point EPREJECT. The Entry Point EPREJECT only has one transaction, its default transaction, and this will invoke the template page
+EPREJECT.HTM.
+
+To protect the business assets the calling IP address can only be that of the proxy server - 192.168.092.160. Any other calling IP address will be rejected by the Virtel ruleset. By default, the ruleset associated with a line is normally the internal name of the line – C-HTTP for example. How the rejected session is handled depends on how Virtel has been setup. 
+
+.. index::
+   pair: Protecting business assets with Virtel Rules; Default Rule Template
+
+Default Rule Template
+^^^^^^^^^^^^^^^^^^^^^
+
+In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:- ::
+
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+	<!--VIRTEL start="{{{" end="}}}" -->
+	<html>
+	<script>
+	// customization for reject
+	window.location.replace("http://www.mycompany.com");
+	</script>
+	</html>
+
+This template must exist in the CLI-DIR directory as this is where the Entry Point EPREJECT expects to find them. When the template is served it will display the companies “public” web site.
+
+To upload the ARBO statements to your ARBO use the following JCL:- ::
+
+	//*
+	// SET LOAD=SPTHOLT.VIRT456.LOADLIB
+	// SET ARBO=SP000.SPVIREH0.ARBO1A
+	//*
+	//DELETE EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M
+	//STEPLIB DD DSN=&LOAD,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//SYSUDUMP DD SYSOUT=*
+	//VIRARBO DD DSN=&ARBO,DISP=SHR
+	//SYSIN DD *
+	DELETE TYPE=RULE,ID=R0000100 Delete rule
+	DELETE TYPE=RULE,ID=R0000199 Delete rule
+	DELETE TYPE=RULE,ID=R0000200 Delete rule
+	DELETE TYPE=RULE,ID=R0000299 Delete rule
+	DELETE TYPE=ENTRY,ID=EPREJECT Entry point
+	DELETE TYPE=TRANSACT,ID=REJ-00 Delete transaction
+	*
+	//CONFIG EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M
+	//STEPLIB DD DSN=&LOAD,DISP=SHR
+	//SYSPRINT DD SYSOUT=*
+	//SYSUDUMP DD SYSOUT=*
+	//VIRARBO DD DSN=&ARBO,DISP=SHR
+	//SYSIN DD *
+        RULE Definitions
+    /* 
 
 Appendix
 ========
@@ -5590,18 +6554,6 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 Linux is a trademark of Linus Torvalds in the United States, other countries, or both.
 
 Other company, product, or service names may be trademarks or service names of others.
-
-Open Source Software
---------------------
-
-The current VIRTEL Web Access product uses the following open source software:
-
-- jQuery 
-    Under MIT license - https://jquery.org/license/
-- StoreJson
-    Under MIT license - https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7
-- jQuery_UI
-    Under MIT license - http://en.wikipedia.org/wiki/JQuery_UI
 
 .. |image00| image:: images/media/logo_virtel_web.png
             :scale: 50 %    
@@ -5709,17 +6661,18 @@ The current VIRTEL Web Access product uses the following open source software:
    :width: 6.26806in
    :height: 4.76736in
 .. |image94| image:: images/media/image94.png
-   :width: 4.66650in
-   :height: 3.16667in
 .. |image95| image:: images/media/image95.png
-   :width: 4.68750in
-   :height: 3.15287in
 .. |image96| image:: images/media/image96.png
-   :width: 4.82292in
-   :height: 3.24663in
 .. |image97| image:: images/media/image97.png
-   :width: 6.06250in
-   :height: 4.59154in
-
-
-   
+.. |image100| image:: images/media/image100.png
+.. |image101| image:: images/media/image101.png
+.. |image102| image:: images/media/image102.png
+.. |image103| image:: images/media/image103.png
+.. |image104| image:: images/media/image104.png     
+.. |image105| image:: images/media/image105.png
+.. |image106| image:: images/media/image106.png
+.. |image107| image:: images/media/image107.png
+.. |image108| image:: images/media/image108.png
+.. |image109| image:: images/media/image109.png
+.. |image110| image:: images/media/image110.png
+.. |image111| image:: images/media/image111.png  

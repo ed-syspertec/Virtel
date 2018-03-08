@@ -3506,7 +3506,7 @@ enter its URL directly:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">VTAM</span>
 </pre></div>
 </div>
-<p><img alt="image91" src="../../../_images/image918.png" />
+<p><img alt="image91" src="../../../_images/image919.png" />
 <em>VTAM logon screen in VIRTEL Web Access mode</em></p>
 <p>To access, for example, TSO with logmode SNX32705, type TSO in the “LOGON APPLID” field and SNX32705 in the
 “LOGMODE” field, then press enter.</p>
@@ -4545,15 +4545,15 @@ settings.</p>
 <div class="section" id="defining-transaction-options">
 <span id="index-191"></span><h4>Defining Transaction Options<a class="headerlink" href="#defining-transaction-options" title="Permalink to this headline">¶</a></h4>
 <p>Using the HTML transaction display a user can click on the “Spanner” ICON to help in setting up the option files. This include the core option file and the relevant Javascript and CSS files.</p>
-<p><img alt="image94" src="../../../_images/image941.png" />
+<p><img alt="image94" src="../../../_images/image942.png" />
 <em>Transaction display with the option spanner ICON</em></p>
 <p>On clicking the “spanner” icon a tabbed “Option” panel will be displayed. A pre-allocated core option environment, based upon the “option” field value, will be built. Two tabbed options are available, “BASIC” and “ADVANCED”:-</p>
-<p><img alt="image92" src="../../../_images/image921.png" />
+<p><img alt="image92" src="../../../_images/image922.png" />
 <em>Defining core option file</em></p>
 <div class="section" id="basic-mode">
 <h5>Basic Mode<a class="headerlink" href="#basic-mode" title="Permalink to this headline">¶</a></h5>
 <p>Within the Basic mode of operation, the Validate button will create a core option file and upload it to the CLI-DIR directory. Within this file, Javascript and CSS settings keys, if selected, will point to the customisation files as defined by the “option” field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file <em>option.myOptions.js</em> which will be loaded upto the CLI_DIR. Within this core option file the key elements pathToJsCustom and pathtoCssCustom will be generated. These will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css.</p>
-<p><img alt="image93" src="../../../_images/image931.png" />
+<p><img alt="image93" src="../../../_images/image932.png" />
 <em>Basic Mode Operation</em></p>
 <p>The generated core option file option.myOptions.js will look like thsi:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">option</span><span class="o">=</span><span class="n">myOptions</span>
@@ -4565,7 +4565,7 @@ settings.</p>
 <div class="section" id="advanced-mode">
 <h5>Advanced Mode<a class="headerlink" href="#advanced-mode" title="Permalink to this headline">¶</a></h5>
 <p>By selecting the Advanced mode tab the core option file can be downloaded in preparation for further modification.</p>
-<p><img alt="image95" src="../../../_images/image951.png" />
+<p><img alt="image95" src="../../../_images/image952.png" />
 <em>Advanced Mode Operation</em></p>
 </div>
 </div>
@@ -4616,7 +4616,7 @@ By default, keyboard mapping is set to false.</p>
 </pre></div>
 </div>
 <p>With keyboard mapping enabled the macro interface will display the associated key mapping against the macro.</p>
-<p><img alt="image96" src="../../../_images/image961.png" /></p>
+<p><img alt="image96" src="../../../_images/image962.png" /></p>
 <p><em>Editing macro with keymapping</em></p>
 </div>
 <div class="section" id="keep-macro-pad">
@@ -4657,7 +4657,7 @@ By default, keyboard mapping is set to false.</p>
 <p>Run the SAMPLIB/CNTL ARBOLOAD job with the “SET VMACROS=YES” parameter coded. This defines the VirtelMacros functions and transactions required by DDI and macro suport. If this setup is not run the following message will appear when DDI is selected from the main Admin. portal page:-</p>
 <p><em>“Your Virtel is not configured for dynamic directories”</em></p>
 <p>Assuming everything has been configured correctly, the following display should be appear when selecting the DDI option from the main portal interface.</p>
-<p><img alt="image97" src="../../../_images/image971.png" /></p>
+<p><img alt="image97" src="../../../_images/image972.png" /></p>
 <p><em>The Main DDI Page</em></p>
 <p>Depending on the security setup a User or Administrator can have access to macros stored in one of the following centralized DDI directories:-</p>
 <ul class="simple">
@@ -4720,33 +4720,33 @@ adding the code shown below to a customised w2hparm parm file. This parameter fi
 <div class="section" id="uploading-a-macro-json-file-to-the-ddi-directory">
 <span id="index-203"></span><h5>Uploading a macro.json file to the DDI directory<a class="headerlink" href="#uploading-a-macro-json-file-to-the-ddi-directory" title="Permalink to this headline">¶</a></h5>
 <p>Open the DDI interface, select Global. The Global directory will open. Drag the macros.json file into the area designated by a series of dotted lines. This will initiate a file upload into the global directory of the macro repository:-</p>
-<p><img alt="image105" src="../../../_images/image1051.png" /></p>
+<p><img alt="image105" src="../../../_images/image1052.png" /></p>
 <p><em>The DDI Global Upload</em></p>
 <p>Once you have a copy in the global area, right click on the macros.json file to open a context menu. This menu provides some additional functions such as Copy, Download, Delete and Edit. For macros.json the copy function is not applicable.</p>
-<p><img alt="image106" src="../../../_images/image1061.png" /></p>
+<p><img alt="image106" src="../../../_images/image1062.png" /></p>
 <p><em>Additional file functions in DDI</em></p>
 <p>Selecting “Edit” will open the same editor interface that was used when editing macros in local storage. Here the Administrator can modify the macros held within the macros.json file. Macros can be saved with different names and associated with different key mappings. Options like Save As, Edit and Delete are available within a context menu when you right click on a macro.</p>
-<p><img alt="image107" src="../../../_images/image1071.png" /></p>
+<p><img alt="image107" src="../../../_images/image1072.png" /></p>
 <p><em>Updating macros with the Global Directory</em></p>
 </div>
 <div class="section" id="making-macros-available-to-users">
 <h5>Making macros available to users<a class="headerlink" href="#making-macros-available-to-users" title="Permalink to this headline">¶</a></h5>
 <p>Any macro that an Administrator creates can be made available to users either at the Global, Group or Userid level. To make macros available at a userid level, select the User TAB from the DDI main panel. Enter the user’s USERID in the user name field and press the “Green Tick” icon. This will create an area within the DDI macro repository. Upload the macros.json file you wish to make available to this user by dragging the file into the area designated by the dotted lines. This will initiate an upload of the macro into the User’s userid area.</p>
-<p><img alt="image108" src="../../../_images/image1081.png" /></p>
+<p><img alt="image108" src="../../../_images/image1082.png" /></p>
 <p><em>Creating a macros.json file for a user</em></p>
 <p>As with any file within the DDI repository, a context menu can be brought up by right clicking on the macro file name.</p>
-<p><img alt="image109" src="../../../_images/image1091.png" /></p>
+<p><img alt="image109" src="../../../_images/image1092.png" /></p>
 </div>
 <div class="section" id="editing-a-users-macro">
 <h5>Editing a Users macro<a class="headerlink" href="#editing-a-users-macro" title="Permalink to this headline">¶</a></h5>
 <p>An Administrator can update any macros held within the DDI repository. Changes will be reflected in the user’s local storage once the user open’s their macro display with the “Green” ICON arrow. The following display shows the DDI repository macros as displayed in the user’s browser. Remember that User macros are related to the User’s Userid and associated Group. This ability to associate macros to a Userid and Group means that all macros, related to business assets, can be managed and maintained in a central DDI repository. Maintenance can be applied centrally and distributed out to the User’s local storage browser. If allowed by the Administrator, Users will only have the option of modifying their own user macros. Any changes made by a user will be uploaded to the mainframe and stored in the User’s macro area within the DDI repository. This keeps the user macro modifications in sync with the DDI repository.</p>
-<p><img alt="image110" src="../../../_images/image1101.png" /></p>
+<p><img alt="image110" src="../../../_images/image1102.png" /></p>
 <p><em>User display of the DDI macro interface</em></p>
 </div>
 <div class="section" id="updating-ddi-macros-at-the-group-level">
 <span id="index-204"></span><h5>Updating DDI macros at the Group level<a class="headerlink" href="#updating-ddi-macros-at-the-group-level" title="Permalink to this headline">¶</a></h5>
 <p>To make macros available at a Group level, select the Group TAB from the DDI main panel. Enter the Group name in the group name field and press the “Green Tick” icon. This will create an area within the DDI macro repository were macros for this group can be held. Upload the Group macros.json file you wish to make available to this group by dragging the file into the area designated by the dotted lines. This will initiate an upload of the Group macro.</p>
-<p><img alt="image111" src="../../../_images/image11110.png" /></p>
+<p><img alt="image111" src="../../../_images/image11111.png" /></p>
 <p><em>Macro Group Directory List</em></p>
 <p>To obtain the associated context menu right click on the file name – macros.json. This will provide the additional functionality to Edit, Download or Delete the macro.</p>
 </div>

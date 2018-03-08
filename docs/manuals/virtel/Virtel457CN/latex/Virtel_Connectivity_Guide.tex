@@ -45,7 +45,7 @@
 
 
 \title{Virtel Connectivity Guide}
-\date{Mar 07, 2018}
+\date{Mar 08, 2018}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -433,13 +433,13 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSUDUMP} \PYG{n}{DD}  \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO}  \PYG{n}{DD}  \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN}      \PYG{n}{DD} \PYG{o}{*}
-    \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHLOC000}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHLOC000}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Psuedo Terminals}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                \PYG{o}{\PYGZhy{}}
             \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
             \PYG{n}{COMPRESS}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
             \PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0016}
-    \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHVTA000}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TERMINAL} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EHVTA000}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
             \PYG{n}{RELAY}\PYG{o}{=}\PYG{o}{*}\PYG{n}{W2HPOOL}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP terminals (with relay)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                     \PYG{o}{\PYGZhy{}}
             \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
@@ -447,7 +447,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
             \PYG{n}{INOUT}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,}                                                \PYG{o}{\PYGZhy{}}
             \PYG{n}{STATS}\PYG{o}{=}\PYG{l+m+mi}{26}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
             \PYG{n}{REPEAT}\PYG{o}{=}\PYG{l+m+mi}{0016}
-    \PYG{n}{SUBDIR}   \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+    \PYG{n}{SUBDIR}  \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDS directory}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                   \PYG{o}{\PYGZhy{}}
             \PYG{n}{DDNAME}\PYG{o}{=}\PYG{n}{HTMLTRSF}\PYG{p}{,}                                        \PYG{o}{\PYGZhy{}}
             \PYG{n}{KEY}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{KEY}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
@@ -455,7 +455,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
             \PYG{n}{AUTHUP}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}                                               \PYG{o}{\PYGZhy{}}
             \PYG{n}{AUTHDOWN}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{AUTHDEL}\PYG{o}{=}\PYG{n}{X}
-    \PYG{n}{ENTRY}    \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSHOST}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+    \PYG{n}{ENTRY}   \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSHOST}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP entry point (EDS application)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}              \PYG{o}{\PYGZhy{}}
             \PYG{n}{TRANSACT}\PYG{o}{=}\PYG{n}{EDS}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
             \PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0720}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
@@ -466,7 +466,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
             \PYG{n}{IDENT}\PYG{o}{=}\PYG{n}{SCENLOGM}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
             \PYG{n}{SCENDIR}\PYG{o}{=}\PYG{n}{SCE}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                        \PYG{o}{\PYGZhy{}}
             \PYG{n}{EXTCOLOR}\PYG{o}{=}\PYG{n}{E}
-    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{NAME}\PYG{o}{=}\PYG{n}{EDSHOST}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Default Directory}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                               \PYG{o}{\PYGZhy{}}
             \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
@@ -475,21 +475,21 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
             \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
             \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{TIOASTA}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/w2h/appmenu.htm+applist}\PYG{l+s+s1}{\PYGZsq{}}
-    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{n}{W}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{n}{W}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
             \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{w2h}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{W2H toolkit directory (/w2h)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                    \PYG{o}{\PYGZhy{}}
             \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
             \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
             \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
             \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{n}{X}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{03}\PYG{n}{X}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
             \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{eds}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDS directory (/eds)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                            \PYG{o}{\PYGZhy{}}
             \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
             \PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}                                                 \PYG{o}{\PYGZhy{}}
             \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
             \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{04}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{04}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CICS}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{CICS}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
             \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{SPCICST}\PYG{p}{,}                                           \PYG{o}{\PYGZhy{}}
@@ -497,7 +497,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
             \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTA}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
             \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
             \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{applist}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{List of applications for appmenu.htm}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}            \PYG{o}{\PYGZhy{}}
             \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0021S}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
@@ -505,7 +505,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
             \PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
             \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
             \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
-    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{80}\PYG{n}{S}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
+    \PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{80}\PYG{n}{S}\PYG{p}{,}                                            \PYG{o}{\PYGZhy{}}
             \PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{upleds}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Upload macros (EDS\PYGZhy{}DIR directory)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}               \PYG{o}{\PYGZhy{}}
             \PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0041C}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
@@ -514,7 +514,7 @@ Apart from the LINE, Entry Point and Transaction there is one other configurable
             \PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
             \PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,}                                             \PYG{o}{\PYGZhy{}}
             \PYG{n}{LOGMSG}\PYG{o}{=}\PYG{n}{EDS}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}
-    \PYG{n}{LINE}     \PYG{n}{ID}\PYG{o}{=}\PYG{n}{E}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
+    \PYG{n}{LINE}    \PYG{n}{ID}\PYG{o}{=}\PYG{n}{E}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                              \PYG{o}{\PYGZhy{}}
             \PYG{n}{NAME}\PYG{o}{=}\PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{EDS}\PYG{p}{,}                                          \PYG{o}{\PYGZhy{}}
             \PYG{n}{LOCADDR}\PYG{o}{=}\PYG{p}{:}\PYG{l+m+mi}{41003}\PYG{p}{,}                                         \PYG{o}{\PYGZhy{}}
             \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP line (entry point EDSHOST)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}                 \PYG{o}{\PYGZhy{}}
@@ -1828,7 +1828,7 @@ Always blank.
 
 \end{description}
 
-\index{Batch Lines!Terminal Definitions}\index{Terminal Definitions!Batch Lines}
+\index{Batch Line!Terminal Definitions}\index{Terminal Definitions!Batch Line}
 
 \subsection{Terminal Definitions}
 \label{\detokenize{connectivity_guide:id11}}\label{\detokenize{connectivity_guide:index-33}}\begin{quote}
@@ -5670,50 +5670,40 @@ The 3 groups of terminals contain the value *POOL001 under the heading “*Pool 
 
 \section{Introduction}
 \label{\detokenize{connectivity_guide:id72}}
-In this section we look how we can control LUNAME selection for inbound HTTP calls.When the terminals attached to an HTTP line are defined with a logical pool of relays, it is possible to force the use of a particular LU or group of LU’s for specific callers. This is done by coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value \$URL\$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).
+In this section we look at how we can control LUNAME selection for inbound HTTP calls. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a \sphinxstyleemphasis{Logical Unit} or \sphinxstyleemphasis{LU}, and each LU has a unique eight character name (\sphinxstyleemphasis{LU name)}. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 
-The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address {[}Correspondent Management{]} which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See {\hyperref[\detokenize{connectivity_guide:v457cn-virtelrules}]{\sphinxcrossref{\DUrole{std,std-ref}{“Virtel Rules”,}}}} for further information on Virtel Rules.
-
-\index{Controlling LUNAMEs!Reconnecting to an existing session}\index{Reconnecting to an existing session!Controlling LUNAMEs}
-
-\section{Reconnecting to an existing session}
-\label{\detokenize{connectivity_guide:index-150}}\label{\detokenize{connectivity_guide:reconnecting-to-an-existing-session}}
-The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSession\$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
-
-\index{Controlling LUNAMEs!Examples}\index{Examples!Controlling LUNAMEs}
-
-\section{Examples}
-\label{\detokenize{connectivity_guide:index-151}}\label{\detokenize{connectivity_guide:examples}}
-When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a \sphinxstyleemphasis{Logical Unit} or \sphinxstyleemphasis{LU}, and each LU has a unique eight character name (\sphinxstyleemphasis{LU name)}. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
-
-While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser.
-
-This document describes the following types of LU nailing:
+While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following:-
 \begin{itemize}
 \item {} 
-LU nailing by work station name
+By IP address
 
 \item {} 
-LU nailing by ForceLU (Pre-defined terminal)
+By by cookie
 
 \item {} 
-LU nailing by ForceLU (Non-predefined terminal)
-
-\item {} 
-LU nailing by IP address
-
-\item {} 
-LU nailing by cookie
-
-\item {} 
-LU nailing by URL
+By by URL
 
 \end{itemize}
 
-\index{Controlling LUNAMEs!Using a work station name}\index{Using a work station name!Controlling LUNAMEs}
 
-\subsection{Using a work station name (Predefined terminals)}
-\label{\detokenize{connectivity_guide:index-152}}\label{\detokenize{connectivity_guide:using-a-work-station-name-predefined-terminals}}
+\section{LU Nailing By URL}
+\label{\detokenize{connectivity_guide:lu-nailing-by-url}}
+The URL can contain information which can be used to force an LUNAME. This is done by by using either the FORCELUNAME= keyword or by using the \sphinxstyleemphasis{UserData} in the URL.
+
+Using UserData to select an LU name requires that a rule be associated with the line whereas this is not required for the ForceLUNAME option. The rule is used to determine the action taken on processing the UserData. Coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value \$URL\$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide).
+
+For example:-
+
+\sphinxurl{http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname}            UserData example
+
+or
+
+\sphinxurl{http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500}          ForceLUNAME example
+
+\index{Controlling LUNAMEs!UserData example using a work station name}\index{UserData example using a work station name!Controlling LUNAMEs}
+
+\subsection{UserData example using a work station name}
+\label{\detokenize{connectivity_guide:index-150}}\label{\detokenize{connectivity_guide:userdata-example-using-a-work-station-name}}
 In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
 
 Here is an example of a Virtel RULE.
@@ -5724,136 +5714,12 @@ Here is an example of a Virtel RULE.
 \PYG{n}{STATUS}\PYG{o}{=}\PYG{n}{ACTIVE}\PYG{p}{,}
 \PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Rule for terminal EHPMA00}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
 \PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,}
-\PYG{n}{PARAM}\PYG{o}{=}\PYG{n}{EHPMA000}\PYG{p}{,} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Or} \PYG{n}{EHPMA00}\PYG{o}{*} \PYG{o}{*}\PYG{o}{/}
+\PYG{n}{PARAM}\PYG{o}{=}\PYG{n}{EHPMA000}\PYG{p}{,}
 \PYG{n}{NETMASK}\PYG{o}{=}\PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}\PYG{p}{,}
 \PYG{n}{USERDATA}\PYG{o}{=}\PYG{p}{(}\PYG{n}{EQUAL}\PYG{p}{,}\PYG{n}{HOLT}\PYG{o}{\PYGZhy{}}\PYG{n}{W}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-The rule instructs Virtel to test the user data field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and direct the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.
-
-Our EDSWHOST entry point looks like:-
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{ENTRY} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{EDS WEB ENTRY POINT (USERS WITH USERDATA)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TRANSACT}\PYG{o}{=}\PYG{n}{EDSW}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0720}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{EMUL}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SIGNON}\PYG{o}{=}\PYG{n}{VIR0020H}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{MENU}\PYG{o}{=}\PYG{n}{VIR0021A}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{EXTCOLOR}\PYG{o}{=}\PYG{n}{X}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{ENDPAGE}\PYG{o}{=}\PYG{n}{CLOSE}\PYG{o}{.}\PYG{n}{HTM}
-\end{sphinxVerbatim}
-
-In this entry point you would define the relevant transactions. In our case we have defined the following:-
-\begin{itemize}
-\item {} 
-Entry point transaction
-
-\item {} 
-Transaction to access the /w2h directory
-
-\item {} 
-A VTAM transaction for IMS
-
-\item {} 
-A VTAM transaction for TSO
-
-\item {} 
-A Virtel application transaction to support an application menu list.
-
-\end{itemize}
-
-We reuse the EHLOC terminals that already exist for this line, but we will need to define a unique pool for our VTAM applications. This is prefixed with the EHVTS id:-
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{EDSWHOST}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTML page directory (default access)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{w2h}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{W2H toolkit directory (/w2h)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{W2H}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{41}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{IMS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{IMS access with userdata}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{IMS3270}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{42}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{TSO access with userdata}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{TSO}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{PASSTCKT}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHVTS}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
-\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EDSW}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{90}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{NAME}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{applist}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{List of applications for appmenu.htm}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{VIR0021S}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{EHLOC}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}
-\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{1}
-\end{sphinxVerbatim}
-
-In VTAM we would have the following definition:-
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
-\PYG{o}{*} \PYG{n}{LU} \PYG{n}{Test} \PYG{p}{:} \PYG{n}{VTAM} \PYG{n}{application} \PYG{n}{relays} \PYG{k}{with} \PYG{n}{user} \PYG{n}{data}\PYG{o}{.}                  \PYG{o}{*}
-\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{*}
-\PYG{n}{EHPMA000} \PYG{n}{APPL} \PYG{n}{AUTH}\PYG{o}{=}\PYG{p}{(}\PYG{n}{ACQ}\PYG{p}{,}\PYG{n}{PASS}\PYG{p}{)}\PYG{p}{,}\PYG{n}{MODETAB}\PYG{o}{=}\PYG{n}{ISTINCLM}\PYG{p}{,}\PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{n}{SNX32702}\PYG{p}{,}\PYG{n}{EAS}\PYG{o}{=}\PYG{l+m+mi}{1}
-\end{sphinxVerbatim}
-
-Or for the model EHPMA00?
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
-* LU Test : VTAM application relays with user data.                  *
-* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
-EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
-\end{sphinxVerbatim}
-
-We also need a terminal and pool definition. Here is the pool definition:-
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-TERMINAL ID=EHPMA000, \PYGZhy{}
-RELAY=EHPMA000, /* Or EHPMA00* */ \PYGZhy{}
-POOL=*STAPOOL, \PYGZhy{}
-DESC=\PYGZsq{}Terminal definition for EHPMA000\PYGZsq{}, \PYGZhy{}
-TYPE=3, \PYGZhy{}
-COMPRESS=2, \PYGZhy{}
-INOUT=3, \PYGZhy{}
-STATS=26, \PYGZhy{}
-REPEAT=\PYGZbs{} **0001 **
-…and a pool definition for out static pool:\PYGZhy{}
-TERMINAL ID=EHVTS000, \PYGZhy{}
-RELAY=*STAPOOL, \PYGZhy{}
-DESC=\PYGZsq{}Static definition pool\PYGZsq{}, \PYGZhy{}
-TYPE=3, \PYGZhy{}
-COMPRESS=2, \PYGZhy{}
-INOUT=3, \PYGZhy{}
-STATS=26, \PYGZhy{}
-REPEAT=0010
-\end{sphinxVerbatim}
-
-This setup will support up to 10 predefined terminal definitions. For each terminal we have to provide a static definition. Of course we could have used a generic terminal definition of EHPMA00* but this would only work for numerically sequenced terminal names \textendash{} EHPMA000 \textendash{} EHPMA009.
+The rule instructs Virtel to test the \sphinxstylestrong{UserData} field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and directs the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.
 
 Getting the PC workstation name to Virtel is through a batch job which fires up the default browser and passes the work station name as a user
 data parameter. Here is an example:-
@@ -5882,45 +5748,15 @@ When a transaction is selected from the menu list the RULE will be invoked to al
 
 The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated.
 
-In the VTAM display we can see that a session has been set up using that LU name:-
+\index{Controlling LUNAMEs!UserData example using a LU Name}\index{UserData example using a LU Name!Controlling LUNAMEs}
 
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-D NET,ID=EHPMA000,E
-IST097I DISPLAY ACCEPTED
-IST075I NAME = SPNET.\PYGZbs{} **EHPMA000**, TYPE = DYNAMIC APPL 073
-IST486I STATUS= ACT/S, DESIRED STATE= ACTIV
-IST1447I REGISTRATION TYPE = CDSERVR
-IST1629I MODSRCH = NEVER
-IST977I MDLTAB=***NA*** ASLTAB=***NA***
-IST861I MODETAB=ISTINCLM USSTAB=***NA*** LOGTAB=***NA***
-IST934I DLOGMOD=SNX32702 USS LANGTAB=***NA***
-IST1632I VPACING = 7
-IST1938I APPC = NO
-IST597I CAPABILITY\PYGZhy{}PLU ENABLED ,SLU ENABLED ,SESSION LIMIT NONE
-IST231I APPL MAJOR NODE = APPLSPEH
-IST1425I DEFINED USING MODEL EHPMA???
-IST654I I/O TRACE = OFF, BUFFER TRACE = OFF
-IST1500I STATE TRACE = OFF
-IST271I JOBNAME = SPVIREH, STEPNAME = SPVIREH, DSPNAME = IST217EE
-IST228I ENCRYPTION = OPTIONAL , TYPE = DES
-IST1563I CKEYNAME = EHPMA000 CKEY = PRIMARY CERTIFY = NO
-IST1552I MAC = NONE MACTYPE = NONE
-IST1050I MAXIMUM COMPRESSION LEVEL \PYGZhy{} INPUT = 0, OUTPUT = 0
-IST1633I ASRCVLM = 1000000
-IST1634I DATA SPACE USAGE: CURRENT = 0 MAXIMUM = 0
-IST1669I IPADDR..PORT 192.168.92.65..50027
-IST171I ACTIVE SESSIONS = 0000000001, SESSION REQUESTS = 0000000000
-IST206I SESSIONS:
-IST634I NAME STATUS SID SEND RECV VR TP NETID
-IST635I **TSO1A005** ACTIV\PYGZhy{}P CA7B8B52114E7A85 0000 0002 SPNET
-IST314I END
-\end{sphinxVerbatim}
+\subsection{UserData example using a LU Name}
+\label{\detokenize{connectivity_guide:index-151}}\label{\detokenize{connectivity_guide:userdata-example-using-a-lu-name}}
+Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name.
 
-\index{Controlling LUNAMEs!Using an LU Name with predefined terminal}\index{Using an LU Name with predefined terminal!Controlling LUNAMEs}
+\sphinxurl{http://192.168.170.33:41003/w2h/appmenu.htm+applist+EHPMA00*}
 
-\subsection{Using an LU Name with a predefined terminal}
-\label{\detokenize{connectivity_guide:index-153}}\label{\detokenize{connectivity_guide:using-an-lu-name-with-a-predefined-terminal}}
-Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name. For this example the rule looks like:-
+For this example the rule looks like:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 RULE ID=ESH0001,
@@ -5938,58 +5774,13 @@ We use the special PARAM=\$URL\$ which indicates that the VTAM LU Name to be use
 
 \sphinxstyleemphasis{Using \$URL\$ to pass a LU name in the URL}
 
-The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009.
+The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME which supports a range from EHPMA000 through to EHPMA009.
 
 \index{Controlling LUNAMEs!Using an LU Name with no predefined terminal}\index{Using an LU Name with no predefined terminal!Controlling LUNAMEs}
 
-\subsection{Using an LU Name with no predefined terminal}
-\label{\detokenize{connectivity_guide:using-an-lu-name-with-no-predefined-terminal}}\label{\detokenize{connectivity_guide:index-154}}
-Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
-grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this setup certain conditions must be in place. Also note that no rules are required. The definitions required are:-
-\begin{itemize}
-\item {} 
-The HTTP Line that must specify a pool name.
-
-\item {} 
-A pool name needs to be defined.
-
-\item {} 
-Transactions must specify \$LINE\$ in the “Pseudo-terminals” field.
-
-\end{itemize}
-
-Here is the line definition:-
-
-\sphinxincludegraphics[width=4.66650in,height=3.16667in]{{image94}.png}
-
-\sphinxstyleemphasis{Line definition for non-predefined LU names}
-
-And the Pool definition:-
-
-\sphinxincludegraphics[width=4.68750in,height=3.15287in]{{image95}.png}
-
-\sphinxstyleemphasis{Pool definition for non-predefined LU Names}
-
-And an example of a transaction definition. Note that the Psuedo-Terminal is defined as \$LINE\$. We have also assign a printer definition to this setup. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.
-
-\sphinxincludegraphics[width=4.82292in,height=3.24663in]{{image96}.png}
-
-\sphinxstyleemphasis{Transaction definition for non-predefined LU Names}
-
-Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for *DYNPOOL, but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.
-
-\sphinxincludegraphics[width=6.06250in,height=4.59154in]{{image97}.png}
-
-\sphinxstyleemphasis{Access a Transaction with the ForceLUNAME parameter}
-
-\index{Controlling LUNAMEs!ForceLUNAME Selection}\index{ForceLUNAME Selection!Controlling LUNAMEs}
-
-\subsection{ForceLUNAME Selection}
-\label{\detokenize{connectivity_guide:forceluname-selection}}\label{\detokenize{connectivity_guide:index-155}}
-
-\subsubsection{HTTP connections with non-predefined terminals. ForceLUNAME option}
-\label{\detokenize{connectivity_guide:http-connections-with-non-predefined-terminals-forceluname-option}}
-It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:
+\subsection{ForceLUNAME Example}
+\label{\detokenize{connectivity_guide:index-152}}\label{\detokenize{connectivity_guide:forceluname-example}}
+In the preceding examples both required that a terminals and relays be predefined. For some installations this could be a maintenance headache and doesn’t scale up very well. It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:-
 \begin{itemize}
 \item {} 
 the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:
@@ -6013,12 +5804,6 @@ a terminal pool of the same name should be defined; only the pool is needed, not
 
 The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=\$LINE\$ when attached to a line which has an associated terminal pool.
 
-An example of a line with non-predefined LU names is shown below.
-
-\index{Controlling LUNAMEs!ForceLUNAME Examples}\index{ForceLUNAME Examples!Controlling LUNAMEs}
-
-\subsection{A ForceLUNAME Examples}
-\label{\detokenize{connectivity_guide:a-forceluname-examples}}\label{\detokenize{connectivity_guide:index-156}}
 In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is \$LINE\$:
 
 \sphinxincludegraphics{{image12}.png}
@@ -6044,16 +5829,26 @@ Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically
 
 The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
 
-\index{Controlling LUNAMEs!Using a cookie (“Correspondent Sub-Application)}\index{Using a cookie (“Correspondent Sub-Application)!Controlling LUNAMEs}
+\begin{sphinxadmonition}{note}{Note:}
+The presence of a ForceLUNAME=luname parameter in the URL implies \$UseCookieSession\$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
+\end{sphinxadmonition}
 
-\subsection{Using a cookie (Correspondent Sub-Application)}
-\label{\detokenize{connectivity_guide:using-a-cookie-correspondent-sub-application}}\label{\detokenize{connectivity_guide:index-157}}
+\newpage
+
+\index{Controlling LUNAMEs!LU Nailing by cookie}\index{LU Nailing by cookie!Controlling LUNAMEs}
+
+\section{LU Nailing by cookie}
+\label{\detokenize{connectivity_guide:index-153}}\label{\detokenize{connectivity_guide:lu-nailing-by-cookie}}
 Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see the How-To document \sphinxstyleemphasis{Virtel \textendash{} How to Activate LU Nailing.}
+
+\newpage
 
 \index{Controlling LUNAMEs!Using an IP address}\index{Using an IP address!Controlling LUNAMEs}
 
-\subsection{Using an IP address}
-\label{\detokenize{connectivity_guide:index-158}}\label{\detokenize{connectivity_guide:using-an-ip-address}}
+\section{LU Nailing by IP address}
+\label{\detokenize{connectivity_guide:index-154}}\label{\detokenize{connectivity_guide:lu-nailing-by-ip-address}}
+The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address {[}Correspondent Management{]} which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See {\hyperref[\detokenize{connectivity_guide:v457cn-virtelrules}]{\sphinxcrossref{\DUrole{std,std-ref}{“Virtel Rules”,}}}} for further information on Virtel Rules.
+
 This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6107,28 +5902,30 @@ Multiple terminals can be defined with a rule by using the * suffix. In the foll
 
 The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
 
+\newpage
+
 \index{Controlling LUNAMEs!Comparison table}\index{Comparison table!Controlling LUNAMEs}
 
-\subsection{Comparison Table}
-\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-159}}
+\section{Comparison Table}
+\label{\detokenize{connectivity_guide:comparison-table}}\label{\detokenize{connectivity_guide:index-155}}
 
 \begin{savenotes}\sphinxattablestart
 \centering
 \begin{tabulary}{\linewidth}[t]{|T|T|T|T|T|}
 \hline
-\sphinxstylethead{\sphinxstyletheadfamily \unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-RULE DEFN
+\sphinxstylethead{\sphinxstyletheadfamily 
+Type
 \unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-TERMINAL DEFN.
+RULE Required
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+TERMINAL Definition Reqd.
 \unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
 COOKIES
-
-USED
 \unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
-Terminal POOL definitions required
+Terminal POOL Reqd.
 \unskip}\relax \\
 \hline
-By Work Station Name in URL
+By UserData
 &
 Yes. 1 per work station
 &
@@ -6139,7 +5936,7 @@ No
 Yes
 \\
 \hline
-By LUNAME in URL
+By \$URL\$ - LUNAME in URL
 &
 Yes. 1 generic Rule.
 &
@@ -6150,18 +5947,18 @@ No
 Yes
 \\
 \hline
-By using Forced LU
+ForceLUNAME
 &
 No
 &
-Pool Only
+No
 &
 No
 &
 Yes
 \\
 \hline
-Correspondent
+By IP (Correspondent)
 &
 Yes
 &
@@ -6187,6 +5984,1154 @@ Yes
 \par
 \sphinxattableend\end{savenotes}
 
+\index{AT-TLS Secure Session}
+
+\chapter{AT-TLS Secure Session}
+\label{\detokenize{connectivity_guide:at-tls-secure-session}}\label{\detokenize{connectivity_guide:howtoatls}}\label{\detokenize{connectivity_guide:index-156}}
+
+\section{Introduction}
+\label{\detokenize{connectivity_guide:id73}}
+This section provides details on on to implement AT-TLS security. To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.
+
+AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. A Policy Agent task decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. Virtel continues to send and receive clear text over the socket, but data sent over the network is encrypted and protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.
+
+\begin{sphinxadmonition}{warning}{Warning:}
+Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.
+\end{sphinxadmonition}
+
+\index{AT-TLS Secure Session!Installation}\index{Installation!AT-TLS Secure Session}
+
+\section{Installation}
+\label{\detokenize{connectivity_guide:installation}}\label{\detokenize{connectivity_guide:index-157}}
+
+\subsection{Install Policy Agent procedure}
+\label{\detokenize{connectivity_guide:install-policy-agent-procedure}}
+If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the cataloged procedure EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as PAGENT.
+
+
+\subsection{Create the Policy Agent configuration file}
+\label{\detokenize{connectivity_guide:create-the-policy-agent-configuration-file}}
+If you do not already run the Policy Agent, you will need to create a configuration file /etc/pagent.conf using z/OS Unix System Services. If you already run Policy Agent, you will need to find the existing configuration file and add the TTLS definitions to it to support Virtel. Sample jobs are provided in the Virtel SAMPLIB library to assist in performing this step.
+
+
+\subsubsection{Member SSLSETUP}
+\label{\detokenize{connectivity_guide:member-sslsetup}}
+Step PCONFIG in the SSLSETUP sample job contains a starter configuration. The following changes should be made:
+\begin{itemize}
+\item {} 
+Replace \%virtjob\% by the name of your VIRTEL started task (SSLSETUP line 70)
+
+\item {} 
+Replace \sphinxstyleemphasis{41000-41002} by \sphinxstyleemphasis{41002} in the LocalPortRange parameter (SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP
+
+\item {} 
+Replace \sphinxstyleemphasis{ServerWithClientAuth} by \sphinxstyleemphasis{Server} in the HandshakeRole parameter (SSLSETUP line 82) as we will not be using Client Certificates in the initial setup.
+
+\end{itemize}
+
+
+\subsection{Allow the Policy Agent to run during TCP/IP initialization}
+\label{\detokenize{connectivity_guide:allow-the-policy-agent-to-run-during-tcp-ip-initialization}}
+The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RACF class SERVAUTH. See step EZBAUTH in the SSLSETUP sample job (delivered in VIRTEL SAMPLIB).
+
+
+\subsection{Create the server certificate}
+\label{\detokenize{connectivity_guide:create-the-server-certificate}}
+A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into RACF.
+
+At SSLSETUP line 228, replace \%virtssl\% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)
+
+
+\subsection{Add the certificate to the keyring}
+\label{\detokenize{connectivity_guide:add-the-certificate-to-the-keyring}}
+The server certificate must be added to the Virtel keyring - VIRTRING. See step CCERTIF in the SSLSETUP sample job.
+
+
+\subsection{Allow VIRTEL to access its own certificate}
+\label{\detokenize{connectivity_guide:allow-virtel-to-access-its-own-certificate}}
+To allow VIRTEL to access its own keyring and server certificate, the VIRTEL started task must have READ access to the resource IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH in the SSLSETUP sample job.
+
+
+\subsection{Activate AT-TLS}
+\label{\detokenize{connectivity_guide:activate-at-tls}}
+To activate AT-TLS, add the following statements to TCPIP PROFILE:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TCPCONFIG} \PYG{n}{TTLS}
+\PYG{n}{AUTOLOG} \PYG{l+m+mi}{5} \PYG{n}{PAGENT} \PYG{n}{ENDAUTOLOG}
+\end{sphinxVerbatim}
+
+Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AUTOLOG statement will cause the PAGENT procedure to be started automatically during TCP/IP initialization.
+
+\newpage
+
+\index{AT-TLS Secure Session!Operations}\index{Operations!AT-TLS Secure Session}
+
+\section{Operations}
+\label{\detokenize{connectivity_guide:index-158}}\label{\detokenize{connectivity_guide:operations}}
+
+\subsection{Starting the Policy Agent}
+\label{\detokenize{connectivity_guide:starting-the-policy-agent}}
+The AUTOLOG statement in the TCP/IP profile will start the PAGENT procedure automatically at TCP/IP initialization. Alternatively you can issue the MVS command \sphinxstylestrong{S PAGENT}.
+
+\begin{sphinxadmonition}{note}{Note:}
+if this is the first time you have activated the SERVAUTH class, you are likely to see RACF failure messages during TCP/IP initialization indicating that other applications are unable to access the resource EZB.INITSTACK. This is normal, because Communications Server uses this mechanism to prevent applications from accessing TCP/IP before the Policy Agent is started. Do not be tempted to authorize applications to use this RACF resource. Either ignore the messages (they will go away once PAGENT has started), or
+ensure that PAGENT starts before all other applications.
+\end{sphinxadmonition}
+
+
+\subsection{Altering the Policy Agent configuration}
+\label{\detokenize{connectivity_guide:altering-the-policy-agent-configuration}}
+To make changes to the Policy Agent configuration file, either edit and resubmit the PCONFIG step of the SSLSETUP sample job, or use the TSO ISHELL command to edit the file /etc/pagent.conf directly from ISPF.
+
+After you make changes to the Policy Agent configuration, use the MVS command \sphinxstylestrong{F PAGENT,REFRESH} to force PAGENT to reread the file.
+
+
+\subsection{Logon to VIRTEL using secure session}
+\label{\detokenize{connectivity_guide:logon-to-virtel-using-secure-session}}
+To access VIRTEL line C-HTTP you must now use URL
+\begin{quote}
+
+\sphinxstyleemphasis{https://n.n.n.n:41002} instead of \sphinxstyleemphasis{http://n.n.n.n:41002}
+
+(where n.n.n.n is the IP address of the z/OS host running VIRTEL).
+\end{quote}
+
+\newpage
+
+\index{AT-TLS Secure Session!Problem determination}\index{Problem determination!AT-TLS Secure Session}
+
+\section{Problem determination}
+\label{\detokenize{connectivity_guide:index-159}}\label{\detokenize{connectivity_guide:problem-determination}}
+
+\subsection{Policy Agent log file}
+\label{\detokenize{connectivity_guide:policy-agent-log-file}}
+Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.
+
+
+\subsection{Common error messages}
+\label{\detokenize{connectivity_guide:common-error-messages}}
+Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:
+
+\sphinxstylestrong{EZD1287I TTLS Error RC: nnn event}
+\begin{quote}
+
+where nnn represents a return code. Return codes under 5000 are generated by System SSL and are defined in the System SSL Programming manual. Return codes over 5000 are generated by AT-TLS and are defined in the IP Diagnosis Guide. Some commonly encountered return codes are:
+
+7   No certificate
+
+8   Certificate not trusted
+
+109 No certification authority certificates
+
+202 Keyring does not exist
+
+401 Certificate expired or not yet valid
+
+402 or 412 Client and server cannot agree on cipher suite
+
+416 VIRTEL does not have permission to list the keyring
+
+431 Certificate is revoked
+
+434 Certificate key not compatible with cipher suite
+
+435 Certificate authority unknown
+
+5003 Browser sent clear text (http instead of https)
+
+5006 SSL failed to initialize. Check job SSLSETUP.
+\end{quote}
+
+\sphinxstylestrong{VIRHT57E LINE IS NOT SET UP FOR HTTPS}
+\begin{quote}
+
+Means that the browser sent an https request, but it has not been decrypted by AT-TLS before being sent to VIRTEL, and VIRTEL has received the message in encrypted format. Normally this means the AT-TLS rules did not match the incoming request. This is not a Virtel configuration issue.
+\end{quote}
+
+\sphinxstylestrong{EZD1287I TTLS Error RC: 5003}
+\begin{quote}
+
+This is the opposite situation. It means that the AT-TLS rules matched the incoming request, and so AT-TLS was expecting to receive an https request, but it received an http request instead.
+\end{quote}
+
+Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate. In the normal case, you should specify HandshakeRole Server, ClientAuthType Full, and ApplicationControlled Off in the AT-TLS rules, as in the example in VIRT447.SAMPLIB(SSLSETUP).
+
+VIRTEL does not issue an IOCTL to turn decryption on and off, so if you specified ApplicationControlled On then you would get VIRHT57E because AT-TLS has not been instructed to start decryption.
+
+If you still get an error when you have ApplicationControlled Off then we will need to see the SYSLOG (for the EZD TTLS messages), the JESMSGLG from the VIRTEL started task, and the SYSPRINT resulting from a z/OS command F VIRTEL,SNAP immediately after the error occurs. We would also like to see the exact URL which was entered at the browser, as well as the AT-TLS pagent.conf file.
+
+
+\subsection{Verifying AT-TLS is active}
+\label{\detokenize{connectivity_guide:verifying-at-tls-is-active}}
+To verify that AT-TLS is still activated, you can submit this MVS command:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{D} \PYG{n}{TCPIP}\PYG{p}{,}\PYG{p}{,}\PYG{n}{N}\PYG{p}{,}\PYG{n}{TTLS}
+\end{sphinxVerbatim}
+
+The response is:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{EZD0101I} \PYG{n}{NETSTAT} \PYG{n}{CS} \PYG{n}{V1R12} \PYG{n}{TCPIP} \PYG{l+m+mi}{378} \PYG{n}{TTLSGRPACTION} \PYG{n}{GROUP} \PYG{n}{ID} \PYG{n}{CONNS} \PYG{n}{VIRTELGROUP} \PYG{l+m+mi}{00000002} \PYG{l+m+mi}{0} \PYG{l+m+mi}{1} \PYG{n}{OF} \PYG{l+m+mi}{1} \PYG{n}{RECORDS} \PYG{n}{DISPLAYED} \PYG{n}{END} \PYG{n}{OF} \PYG{n}{THE} \PYG{n}{REPORT}
+\end{sphinxVerbatim}
+
+The UNIX command
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{pasearch}
+\end{sphinxVerbatim}
+
+displays the parameters used by PAGENT from /etc/pagent.conf
+
+The TSO command:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{netstat} \PYG{n}{conn}
+\end{sphinxVerbatim}
+
+displays active connexions for the VIRTEL STC.
+
+Once a connexion has been established between a client and a Virtel port, the TSO command:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{netstat} \PYG{n}{ttls} \PYG{n}{conn} \PYG{n}{nnnn} \PYG{n}{detail}
+\end{sphinxVerbatim}
+
+where nnnn is the identification of the connexion will display the AT-TLS parameters used in the Virtel connexion.
+
+\newpage
+
+\index{AT-TLS Secure Session!The Cipher suites}\index{The Cipher suites!AT-TLS Secure Session}
+
+\section{The Cipher suites}
+\label{\detokenize{connectivity_guide:index-160}}\label{\detokenize{connectivity_guide:the-cipher-suites}}
+The client and server cipher specifications must contain at least one value in common. The TTLSEnvironmentAdvancedParms parameter of the Policy Agent configuration file allows you to turn on or off the SSLv2, SSLv3, and TLSv1 protocols at the server end. The list of supported cipher suites for each protocol is in the TTLSCipherParms parameter. Check the /tmp/pagent.log file to determine whether any cipher suites were discarded at startup time.
+
+In Microsoft Internet Explorer, follow the menu \sphinxstyleemphasis{Tools \textendash{} Internet Options \textendash{} Advanced}. Under the security heading there are three options which allow you to enable or disable the SSL 2.0, SSL 3.0,and TLS 1.0 protocols. You cannot enable or disable individual cipher suites.
+
+In Firefox the cipher specifications are accessed by typing \sphinxstyleemphasis{about:config} in the address bar and typing \sphinxstyleemphasis{security} in the filter box. By default, ssl2 is disabled, and ssl3 and tls are enabled. By default, all weak encryption cipher suites are disabled, and 128-bit or higher cipher suites are enabled.
+
+\index{AT-TLS Secure Session!Client certificates}\index{Client certificates!AT-TLS Secure Session}
+
+\section{Client certificates}
+\label{\detokenize{connectivity_guide:index-161}}\label{\detokenize{connectivity_guide:client-certificates}}
+Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-
+\begin{itemize}
+\item {} 
+The HTTP session is secured using AT-TLS. URL = \sphinxurl{https://}….
+
+\item {} 
+The Policy Agent TTLSConnectionAction or TTLSEnvironmentAction statement contains the parameter “HandShakeRole ServerWithClientAuth”
+
+\item {} 
+The client has provided a valid certificate.
+
+\item {} 
+The security subsystem has validate the certificate as belonging to a user.
+
+\item {} 
+The Virtel transaction has Security = 3 defined.
+
+\end{itemize}
+
+If these conditions are met then the userid contained within the clients digital certificate can be extracted by Virtel and used in the signon process. In this process it is normal that a PASS Ticket is generated and associated with the extracted userid.
+
+See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT-TLS and client certificates.
+
+\newpage
+
+\index{AT-TLS Secure Session!Resources}\index{Resources!AT-TLS Secure Session}
+
+\section{Resources}
+\label{\detokenize{connectivity_guide:index-162}}\label{\detokenize{connectivity_guide:resources}}
+
+\subsection{IBM Manuals}
+\label{\detokenize{connectivity_guide:ibm-manuals}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZhy{}}  \PYG{n}{SA22}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{7683}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{07} \PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{V1R7} \PYG{n}{Security} \PYG{n}{Server}\PYG{p}{:} \PYG{n}{RACF} \PYG{n}{Security} \PYG{n}{Administrator}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Guide Chapter 21. RACF and Digital Certificates}
+
+\PYG{o}{\PYGZhy{}}  \PYG{n}{SC24}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5901}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{04} \PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{V1R6} \PYG{n}{Cryptographic} \PYG{n}{Services}\PYG{p}{:} \PYG{n}{System} \PYG{n}{SSL} \PYG{n}{Programming} \PYG{n}{Chapter} \PYG{l+m+mf}{12.} \PYG{n}{Messages} \PYG{o+ow}{and} \PYG{n}{Codes}
+
+\PYG{o}{\PYGZhy{}}  \PYG{n}{SC31}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8775}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{07} \PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{V1R7} \PYG{n}{Communications} \PYG{n}{Server}\PYG{p}{:} \PYG{n}{IP} \PYG{n}{Configuration} \PYG{n}{Guide}
+   \PYG{n}{Chapter} \PYG{l+m+mf}{14.} \PYG{n}{Policy}\PYG{o}{\PYGZhy{}}\PYG{n}{based} \PYG{n}{networking}
+   \PYG{n}{Chapter} \PYG{l+m+mf}{18.} \PYG{n}{Application} \PYG{n}{Transparent} \PYG{n}{Transport} \PYG{n}{Layer} \PYG{n}{Security} \PYG{p}{(}\PYG{n}{AT}\PYG{o}{\PYGZhy{}}\PYG{n}{TLS}\PYG{p}{)} \PYG{n}{data} \PYG{n}{protection} \PYG{n}{Configuration} \PYG{n}{Reference}
+   \PYG{n}{Chapter} \PYG{l+m+mf}{21.} \PYG{n}{Policy} \PYG{n}{Agent} \PYG{o+ow}{and} \PYG{n}{policy} \PYG{n}{applications}
+
+\PYG{o}{\PYGZhy{}}  \PYG{n}{GC31}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8782}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{06} \PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{V1R7} \PYG{n}{Communications} \PYG{n}{Server}\PYG{p}{:}\PYG{o}{*} \PYG{n}{IP} \PYG{n}{Diagnosis} \PYG{n}{Guide}
+   \PYG{n}{Chapter} \PYG{l+m+mf}{28.} \PYG{n}{Diagnosing} \PYG{n}{Application} \PYG{n}{Transparent} \PYG{n}{Transport} \PYG{n}{Layer} \PYG{n}{Security} \PYG{p}{(}\PYG{n}{AT}\PYG{o}{\PYGZhy{}}\PYG{n}{TLS}\PYG{p}{)}
+
+\PYG{o}{\PYGZhy{}}  \PYG{n}{SC31}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8784}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{05} \PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{V1R7} \PYG{n}{Communications} \PYG{n}{Server}\PYG{p}{:} \PYG{n}{IP} \PYG{n}{Messages}\PYG{p}{:} \PYG{n}{Volume} \PYG{l+m+mi}{2} \PYG{p}{(}\PYG{n}{EZB}\PYG{p}{,} \PYG{n}{EZD}\PYG{p}{)}
+   \PYG{n}{Chapter} \PYG{l+m+mf}{10.} \PYG{n}{EZD1xxxx} \PYG{n}{messages}
+\end{sphinxVerbatim}
+
+
+\subsection{Virtel Material}
+\label{\detokenize{connectivity_guide:virtel-material}}\begin{itemize}
+\item {} 
+\sphinxtitleref{TN201407 Pass tickets and supporting Proxy Servers \textendash{} CA-SiteMinder© \& IBM Tivoli WebSeal©}
+
+\item {} 
+\sphinxtitleref{TN201416 Virtel TLS/SSL Security: Signing on using server and client certificates}
+
+\end{itemize}
+
+\index{SSO, Passtickets and Proxy Servers}
+
+\chapter{SSO, PassTickets and Proxy Servers}
+\label{\detokenize{connectivity_guide:index-163}}\label{\detokenize{connectivity_guide:sso-passtickets-and-proxy-servers}}
+
+\section{Introduction}
+\label{\detokenize{connectivity_guide:id74}}
+Many businesses now implement products which provide a centralized enterprise-class secure single sign-on (SSO) and authentication system. The products tend to run on a server(s) and provides access to a business’s assets like web enabled applications or portals. The basic process is to trap the incoming HTTP call request and establish some user credentials before llowing access to an asset. For example, the user credentials can be extracted from the callers request or determined by the callers IP address. The credentials will be validated against a LDAP or similar active directory server. The result of the validation will either allow or deny the caller access to the requested asset. Security and asset control is managed by the SSO server which as a central server can validate credentials to all business assets, be it on the mainframe or other platforms. Userid and password administration for all assets can be controlled through the functions of the SSO software employed. Virtel will integrate within this SSO infrastructure and process sign on request once they have passed validation. Virtel provides its own validation of the SSO server through the use of rules.
+
+In the example that follows we are using CA-Site Minder as an example SSO Server and we will document how to define Virtel to interface with the SSO Server and RACF. Our target asset is a CICS application called SPCICSH. The caller will provide no userid or password data.
+
+\sphinxincludegraphics{{image100}.png} \sphinxstyleemphasis{Data flow of an SSO session setup}
+
+The initial request is passed through the SSO server. The server will trap and validate the caller. If the validation is successful a session will be establish between the SSO server and Virtel. Two things to note at this point. One, the IP address presented to Virtel will be that of the SSO Proxy Server and two, that the server will modify the HTTP headers to provide addition information, that being the source IP address and the user id.
+
+A Virtel line trace will reveal these additional headers.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+GET /w2h/WEB2SUB.HTML++VirtelSession=AFo0JQAAAAMeuCAo+disconnect=1?pf=DISCONNECT HTTP/1.1
+Host: 192.168.170.30:41002
+User\PYGZhy{}Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,\PYGZbs{}*/\PYGZbs{}*;q=0.8
+Accept\PYGZhy{}Language: en\PYGZhy{}gb,en;q=0.5
+Accept\PYGZhy{}Encoding: gzip, deflate
+Referer: http://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS
+Cookie: SYSLANG=en; SYSSTYL=BLUE; SYSPAGE=auto
+**SM\PYGZus{}User: sptholt \PYGZlt{}\PYGZlt{}**
+**X\PYGZhy{}Forwarded\PYGZhy{}For: 192.168.100.100 \PYGZlt{}\PYGZlt{}**
+Connection: keep\PYGZhy{}alive
+
+HTTP/1.1 200 Ok
+Server: Virtel/4.53
+Date: Wed, 26 Mar 2014 15:31:12 GMT
+Content\PYGZhy{}type: text/html
+Content\PYGZhy{}length: 00000125
+
+\PYGZlt{}html\PYGZgt{}\PYGZlt{}head\PYGZgt{}\PYGZlt{}Meta HTTP\PYGZhy{}EQUIV=\PYGZdq{}refresh\PYGZdq{} CONTENT=\PYGZdq{}1; URL=LASTPAGE.HTML\PYGZdq{}\PYGZgt{}\PYGZlt{}/head\PYGZgt{}
+\PYGZlt{}body bgcolor=\PYGZdq{}black\PYGZdq{}\PYGZgt{}\PYGZlt{}br\PYGZgt{}
+\PYGZlt{}br\PYGZgt{}
+\PYGZlt{}/body\PYGZgt{}\PYGZlt{}/html\PYGZgt{}
+HTTP/1.0 205 Reset Content
+Server: Virtel/4.53
+\end{sphinxVerbatim}
+
+In the above trace the CA-SiteMinder specific header “SM\_User” can be seen as identifying the userid and the X-Forwarded-For:, a standard HTTP header, identifies the source IP address. For security reasons this proxy IP address must be tested for in a VIRTEL rule before the session can be established between the caller and the asset. There is no password associated with this logon \textendash{} this will be generated via a passsTicket request on behalf of the userid identified in the “SM\_User” header. The PassTicket will be created as part of the session setup between Virtel and the asset and on behalf of the caller.
+
+\newpage
+
+\index{SSO, Passtickets and Proxy Servers!Adding headers to the HTTP request}\index{Adding headers to the HTTP request!SSO, Passtickets and Proxy Servers}
+
+\section{Adding headers to the HTTP request}
+\label{\detokenize{connectivity_guide:index-164}}\label{\detokenize{connectivity_guide:adding-headers-to-the-http-request}}
+Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.
+
+\sphinxincludegraphics{{image101}.png} \sphinxstyleemphasis{Using the Firefox “Modify Headers” addin.}
+
+When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.
+
+\sphinxincludegraphics{{image102}.png}
+
+\sphinxstyleemphasis{Modify Header active - red ICON}
+
+The following definitions define what needs to be done to enable a user to log on without specifying a userid/password to an asset supported by the SSO server. In our example Virtel will logon to a CICS asset on behalf of the caller using a userid passed by the SSO Proxy and a generated PassTicket. The caller provides no userid/password information. Once the SSO has validated the callers credential the caller will be logged on to CICS and will be presented with the following screen:-
+
+\sphinxincludegraphics{{image103}.png} \sphinxstyleemphasis{Accessing CICS using a callers credentials. No LOGON required.}
+
+\newpage
+
+\index{SSO, Passtickets and Proxy Servers!RACF Passtickets}\index{RACF Passtickets!SSO, Passtickets and Proxy Servers}
+
+\section{RACF Passtickets}
+\label{\detokenize{connectivity_guide:racf-passtickets}}\label{\detokenize{connectivity_guide:index-165}}
+Pass tickets are an alternative to passwords and can greatly improve the security surrounding SSO and multiple applications access. Passtickets are a dynamically generated password that lasts for approximately 10 minutes. Further information on RACF Passtickets can be found on the web. For the purpose of this newsletter we will look at the Virtel requirements needed to access our target CICS asset whose RACF APPL is SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.
+
+
+\subsection{Define Pass Ticket RACF profiles}
+\label{\detokenize{connectivity_guide:define-pass-ticket-racf-profiles}}
+This job will have to be modified to a customer’s RACF setup. Some profiles may already be defined! If the PERMIT statements do not run then that probably means that some of the RDEFINE entries already exist in the RACF database - these need to be removed, or an RDELETE added to delete the profile entry, in order for the job to complete successfully. It should produce a RC=0. See the output in SDSF.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEP1} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT1A}\PYG{p}{,}\PYG{n}{DYNAMNBR}\PYG{o}{=}\PYG{l+m+mi}{20}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
+        \PYG{n}{SETROPTS} \PYG{n}{CLASSACT}\PYG{p}{(}\PYG{n}{APPL}\PYG{p}{)}
+        \PYG{n}{SETROPTS} \PYG{n}{CLASSACT}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+        \PYG{n}{SETROPTS} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+        \PYG{n}{SETROPTS} \PYG{n}{GENERIC}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+        \PYG{n}{RDEFINE} \PYG{n}{FACILITY} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RTICKETSERV}
+        \PYG{n}{RDEFINE} \PYG{n}{PTKTDATA} \PYG{n}{IRRPTAUTH}\PYG{o}{.}\PYG{n}{SPCICSH}\PYG{o}{.}\PYGZbs{}\PYG{o}{*} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)}
+        \PYG{n}{RDEFINE} \PYG{n}{PTKTDATA} \PYG{n}{SPCICSH} \PYG{n}{SSIGNON}\PYG{p}{(}\PYG{n}{KEYMASKED}\PYG{p}{(}\PYG{l+m+mi}{998}\PYG{n}{A654FEBCDA123}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+}
+                \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)}
+        \PYG{n}{PERMIT} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RTICKETSERV} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)}
+        \PYG{n}{PERMIT} \PYG{n}{IRRPTAUTH}\PYG{o}{.}\PYG{n}{SPCICSH}\PYG{o}{.}\PYGZbs{}\PYG{o}{*} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{UPDATE}\PYG{p}{)}
+        \PYG{n}{SETROPTS} \PYG{n}{REFRESH} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+        \PYG{n}{SETROPTS} \PYG{n}{REFRESH} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+Three distinct RACF profiles are required to use RACF pass tickets:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+FACILITY IRR.RTICKETSERV           * Can use PassTickets *
+PTKTDATA IRRPTAUTH.passTicketName. * Let’s VIRETL generate PassTickets on behalf of an application for all users. * or *userid*
+PTKTDATA profile\PYGZus{}name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
+\end{sphinxVerbatim}
+
+\sphinxstylestrong{Virtel Name correlation}
+\begin{itemize}
+\item {} 
+passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.
+
+\item {} 
+profile\_name must equal the VTAM application name defined in the VIRTEL transaction.
+
+\end{itemize}
+
+These names are normally the same, but they do not have to be.
+
+\begin{sphinxadmonition}{note}{Note:}
+If you are running separate RACF databases across LPARS the KEYMASKED must be the same in each RACF database or else the wrong password will be generated and the logon will fail.
+\end{sphinxadmonition}
+
+\newpage
+
+
+\subsection{RACF Profiles related to Virtel and Pass Tickets}
+\label{\detokenize{connectivity_guide:racf-profiles-related-to-virtel-and-pass-tickets}}
+As mentioned RACF needs to have some profiles set up to allow Virtel to use Pass Tickets. The first profile is the FACILITY Class profile with the IRR.RTICKETSERV name. The Virtel STC userid must have READ access to this profile.
+
+\sphinxincludegraphics{{image109}.png} \sphinxstyleemphasis{RACF profile to allow Virtel to use Pass Tickets}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RDEFINE} \PYG{n}{FACILITY} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RTICKETSERV}
+\PYG{n}{PERMIT} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RTICKETSERV} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+To allow Virtel to generate Pass Tickets for a particular application we must define any entry in the PTKTDATA class. This entry has the name “IRRPTAUTH.passTicketName.*”” and is a Group Entry. The Virtel USERID should have update authority to this profile.
+
+\sphinxincludegraphics{{image110}.png} \sphinxstyleemphasis{Seting Virtel up with RACF access to PTKTDATA class.}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RDEFINE} \PYG{n}{PTKTDATA} \PYG{n}{IRRPTAUTH}\PYG{o}{.}\PYG{n}{SPCICSH}\PYG{o}{.}\PYGZbs{}\PYG{o}{*} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)}
+\PYG{n}{PERMIT} \PYG{n}{IRRPTAUTH}\PYG{o}{.}\PYG{n}{SPCICSH}\PYG{o}{.}\PYGZbs{}\PYG{o}{*} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{UPDATE}\PYG{p}{)}
+\PYG{n}{SSIGNON}\PYG{p}{(}\PYG{n}{KEYMASKED}\PYG{p}{(}\PYG{l+m+mi}{998}\PYG{n}{A654FEBCDA123}\PYG{p}{)}\PYG{p}{)} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+The name in IRRPTAUTH.passTicketName.* profile must match the name in the Virtel Transaction definition. The PassTicket Name is the name of the application as known to RACF for the generation of Passtickets. This may be different to the VTAM application name.
+
+Finally, define a PTKTDATA profile entry that matches the Virtel Transaction \sphinxstylestrong{APPLICATION} name. In this case it is SPCICSH. Virtel passes this APPLNAME to RACF via a RACROUTE REQUEST=VERIFY.
+
+\sphinxincludegraphics{{image111}.png} \sphinxstyleemphasis{Setting the Pass Ticket name in the Virtel transaction.}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RDEFINE} \PYG{n}{PTKTDATA} \PYG{n}{SPCICSH} \PYG{n}{SSIGNON}\PYG{p}{(}\PYG{n}{KEYMASKED}\PYG{p}{(}\PYG{l+m+mi}{998}\PYG{n}{A654FEBCDA123}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+The key thing here is that the PassTicket name must tie up with the generic IRRPTAUTH.SPCICSH.* entry and the VIRTEL application name must match the descrete PTKTDATA.SPCICSH profile. They can be the same but needn’t be!
+
+\newpage
+
+\index{SSO, Passtickets and Proxy Servers!Virtel Requirements}\index{Virtel Requirements!SSO, Passtickets and Proxy Servers}
+
+\section{Virtel Requirements}
+\label{\detokenize{connectivity_guide:virtel-requirements}}\label{\detokenize{connectivity_guide:index-166}}
+
+\subsection{Transaction requirements}
+\label{\detokenize{connectivity_guide:transaction-requirements}}
+The Virtel Transaction, under the Entry Point CLIWHOST, will be used to access the CICS asset. It has a Virtel external name of “CICS”. We modify our transaction to use pass tickets and add a TIOA to logon to our CICS transaction. The transaction details now look like:-
+
+\sphinxincludegraphics{{image104}.png} \sphinxstyleemphasis{Modified CICS Virtel transaction to support Pass Tickets.}
+
+The PassTicket option is set to 2 and uses the APPL name associated with CICS transaction. Using option 2 means that we do not have to sign onto Virtel first before generating a PassTicket. Virtel will expect the Virtel System variable USER to be established. This will be accomplished in an identification scenario where we have access to the SM\_User header value.
+
+The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (\&U) and PassTicket generated password (\&P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.
+
+\newpage
+
+
+\subsection{Identification Scenario}
+\label{\detokenize{connectivity_guide:identification-scenario}}
+To obtain the “SM\_User” value and set the userid in the Virtel System USER variable an identification scenario is used. The following is an example of such a scenario:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+SCENSITE SCREENS APPL=SCENSITE,EXEC=NO
+*
+* SCENARIO for SiteMinder
+*
+* The purpose of this scenario is to retrieve the contents of
+* the identification headers inserted by the SiteMinder Proxy
+*
+SCENARIO IDENTIFICATION
+*
+        COPY\PYGZdl{} SYSTEM\PYGZhy{}TO\PYGZhy{}VARIABLE,VAR=\PYGZsq{}USER\PYGZsq{}, \PYGZhy{}
+                FIELD=(TCT\PYGZhy{}HTTP\PYGZhy{}HEADER,SM\PYGZbs{}\PYGZus{}USER)
+        IF\PYGZdl{} NOT\PYGZhy{}FOUND,THEN=NOUSER1
+        COPY\PYGZdl{} VARIABLE\PYGZhy{}TO\PYGZhy{}SYSTEM,VAR=\PYGZsq{}USER\PYGZsq{}, \PYGZhy{}
+                FIELD=(NAME\PYGZhy{}OF,USER)
+*
+EXIT1 DS 0H
+        SCENARIO END
+*
+NOUSER1 DS 0H
+        ERROR\PYGZdl{} 0,\PYGZsq{}SCENSITE ERROR: NO USER VARIABLE\PYGZsq{}
+        GOTO\PYGZdl{} EXIT1
+        SCRNEND
+        END
+\end{sphinxVerbatim}
+
+This SCENARIO has to be set in the Entry Point definition for the line being used. In our case this is the default Entry Point, CLIWHOST, associated with the external line HTTP-CLI. The following is a snapshot of the entry point definition:-
+
+\sphinxincludegraphics{{image105}.png} \sphinxstyleemphasis{Defining an Identification Scenario in the Virtel Entry Point.}
+
+The Identification Scenario field is filled in with the name of our scenario SCENSITE. This scenario is called when the inbound call is assigned to an entry point and before any transactions are invoked. The scenario sets the Virtel system USER variable which will be used in the PassTicket generation.
+
+
+\subsection{TCT Considerations}
+\label{\detokenize{connectivity_guide:tct-considerations}}
+The TCT has to include the following parameters if HTTP User Headers and PassTicket generation is required. The parameters are:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{HTHEADR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{SM\PYGZus{}USER}\PYG{p}{)}\PYG{p}{,}                              \PYG{o}{*}
+\PYG{n}{VIRSECU}\PYG{o}{=}\PYG{n}{YES}\PYG{p}{,}\PYG{n}{SECUR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RACROUTE}\PYG{p}{,}\PYG{n}{RACF}\PYG{p}{)}\PYG{p}{,}              \PYG{o}{*}
+\PYG{n}{RAPPL}\PYG{o}{=}\PYG{n}{FACILITY}\PYG{p}{,}\PYG{n}{RNODE}\PYG{o}{=}\PYG{n}{FACILITY}\PYG{p}{,}\PYG{n}{PRFSECU}\PYG{o}{=}\PYG{n}{SPVIREH}\PYG{p}{,}  \PYG{o}{*}
+\PYG{n}{PASSTCK}\PYG{o}{=}\PYG{n}{YES}\PYG{p}{,}                                    \PYG{o}{*}
+\end{sphinxVerbatim}
+
+The HTHEADR identifies the “SM\_USER“ as a non standard header and one that Virtel must process. The PASSTCK keyword enables Virtel to generate PassTickets.
+
+\newpage
+
+
+\subsection{Line Rules}
+\label{\detokenize{connectivity_guide:line-rules}}
+To ensure that the source SSO proxy IP address is valid we can code some rules and associate them with the line. In our example we have coded two sets of rules. The first one will test the calling proxy IP address. If that is successful the connection will continue and establish an association with the named Virtel entry point. If the first rule fails because the IP address doesn’t match what we expect, the second rule will be called. This does no more than establish an entry point with a default transaction. The default transaction will just return an error page to the browser. Here are the two rules that we have associated with our Virtel line:-
+
+\sphinxincludegraphics{{image106}.png} \sphinxstyleemphasis{List of rules asssociated with the Virtel line}
+
+The second rule is coded as follows:-
+
+\sphinxincludegraphics{{image107}.png} \sphinxstyleemphasis{Rule C100PROX to test Proxy IP Address}
+
+If the IP address of the SSO Proxy matches the Caller DTE address we have specified in the rule than the Entry Point CLIWHOST will be associated with line and the transactions defined under that entry point, CLIWHOST in this case, can be invoked. If the address match fails then the next rule will be called. In our case this will be rule C999REJ which will invoke transaction EPREJECT, the default transaction for Entry Point EPREJECT.
+
+\begin{sphinxadmonition}{warning}{Warning:}
+It is important that you use option 3 “STARTS WITH” when defining the Calling DTE option.
+\end{sphinxadmonition}
+
+\sphinxincludegraphics{{image108}.png} \sphinxstyleemphasis{Rule C999REJ to reject the session request}
+
+This rule does no more than to establish the entry point EPREJECT. EPREJECT will have a default transaction which just returns an error page to the caller.
+
+\newpage
+
+\index{SSO, Passtickets and Proxy Servers!Common Errors}\index{Common Errors!SSO, Passtickets and Proxy Servers}
+
+\section{Common Errors}
+\label{\detokenize{connectivity_guide:common-errors}}\label{\detokenize{connectivity_guide:index-167}}
+\sphinxstylestrong{Message VIR1502E}
+
+VIRTEL does not have sufficient access rights to create or validate a passticket allowing user userid at terminal termed to access application applname. This message is usually preceded by message ICH408I which shows the name of the resource to which VIRTEL must be granted access.
+
+\sphinxstylestrong{Action}
+
+Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.
+
+For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services Chapter 2 “R\_ticketserv”. Some common codes are:
+
+
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|T|T|}
+\hline
+\sphinxstylethead{\sphinxstyletheadfamily 
+SAF RC
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+RACF RETC
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+RACF Reason
+\unskip}\relax &\sphinxstylethead{\sphinxstyletheadfamily 
+Description
+\unskip}\relax \\
+\hline
+8
+&
+8
+&
+4
+&
+Paramlist error. Ensure that the SCENSITE scenario is available to process the sm\_header.
+\\
+\hline
+8
+&
+8
+&
+16
+&
+VIRTEL is not authorized to generate passtickets, or is not authorized to generate passtickets for this
+application. See preceding ICH408I message in the log.
+\\
+\hline
+8
+&
+16
+&
+28
+&
+There is no profile in the PTKTDATA class for this application or the PTKTDATA class is not active.
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
+
+\newpage
+
+\index{SSO, Passtickets and Proxy Servers!Related material}\index{Related material!SSO, Passtickets and Proxy Servers}
+
+\section{Related material}
+\label{\detokenize{connectivity_guide:index-168}}\label{\detokenize{connectivity_guide:related-material}}
+Technical newsletter - \sphinxtitleref{TN201416 Virtel Security. Using server and client certificates}
+
+\index{Running multiple instances of Virtel}
+
+\chapter{Running multiple instances of Virtel}
+\label{\detokenize{connectivity_guide:index-169}}\label{\detokenize{connectivity_guide:running-multiple-instances-of-virtel}}
+
+\section{Introduction}
+\label{\detokenize{connectivity_guide:id75}}
+For High Availability and performance reasons it is often necessary to run multiple copies of Virtel, preferably within separate LPARs on separate physical machines. This newsletter discusses the issues raised when implementing such a setup and how Virtel can exploit the IBM Sysplex technologies. In the following example there are two instances of Virtel running on separate physical machines sharing the same ARBO configuration file. The configuration looks like this:-
+
+\sphinxincludegraphics{{image94}.png}
+
+Virtel is using several Sysplex technologies to achieve this configuration. For example, Virtel is using VTAM Generic Resources to facilitate access to the Virtel Administration functions from either instance of Virtel. VTAM generic resources can be used to distribute workloads across applications that perform the same task or function. Administration of the ARBO file is through the Virtel Administrator who can logon on to Virtel using the generic Virtel ACB name VIRTPLEX. This generic ACB enables management of the ARBO file through either VIRTEL1A or VIRTEL2A. This can be useful, for example, If SYSA was down for maintenance. VIRTEL administration could still conducted via VIRTEL2A access. No change would be necessary to any session management tools.
+
+Here are the relevant definitions required to support the VTAM generic resource within Virtel.
+
+\index{Running multiple instances of Virtel!Virtel TCT Settings}\index{Virtel TCT Settings!Running multiple instances of Virtel}
+
+\subsection{VIRTEL TCT Settings}
+\label{\detokenize{connectivity_guide:index-170}}\label{\detokenize{connectivity_guide:virtel-tct-settings}}
+GRNAME=VIRTPLEX, VTAM GENERIC RESOURCE NAME
+
+\index{Running multiple instances of Virtel!SYSPLEX definitions}\index{SYSPLEX definitions!Running multiple instances of Virtel}
+
+\subsection{SYSPLEX definitions}
+\label{\detokenize{connectivity_guide:sysplex-definitions}}\label{\detokenize{connectivity_guide:index-171}}
+The ISTGENERIC structure will have to be allocated before you can use VTAM generic resources. See the IBM Network Implementation Guide for further information on configuring the CFRM.
+
+Use the following command to display coupling allocation details for ISTGENERIC.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{D} \PYG{n}{XCF}\PYG{p}{,}\PYG{n}{STR}\PYG{p}{,}\PYG{n}{STRNM}\PYG{o}{=}\PYG{n}{ISTGENERIC}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{VTAM displayof the generic resource}
+
+The results from the D NET,ID=VTAMPLEX,E identifies the two Virtel instances which are grouped into the generic resource name VIRTPLEX. The example below shows VIRTEL1A and VIRTEL2A as participating in the VIRTRPLEX resource name group.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{D} \PYG{n}{NET}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{VIRTPLEX}\PYG{p}{,}\PYG{n}{E}
+
+\PYG{n}{IST097I} \PYG{n}{DISPLAY} \PYG{n}{ACCEPTED}
+\PYG{n}{IST075I} \PYG{n}{NAME} \PYG{o}{=} \PYG{n}{VIRTPLEX}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{=} \PYG{n}{GENERIC} \PYG{n}{RESOURCE} \PYG{l+m+mi}{917}
+\PYG{n}{IST1359I} \PYG{n}{MEMBER} \PYG{n}{NAME} \PYG{n}{OWNING} \PYG{n}{CP} \PYG{n}{SELECTABLE} \PYG{n}{APPC}
+\PYG{n}{IST1360I} \PYG{n}{SPNET}\PYG{o}{.}\PYG{n}{VIRTEL1A} \PYG{n}{ZAM1SSCP} \PYG{n}{YES} \PYG{n}{NO}
+\PYG{n}{IST1360I} \PYG{n}{SPNET}\PYG{o}{.}\PYG{n}{VIRTEL2A} \PYG{n}{ZAM2SSCP} \PYG{n}{YES} \PYG{n}{NO}
+\PYG{n}{IST2210I} \PYG{n}{GR} \PYG{n}{PREFERENCE} \PYG{n}{TABLE} \PYG{n}{ENTRY} \PYG{o}{=} \PYG{o}{*}\PYG{o}{*}\PYG{n}{DEFAULT}\PYG{o}{*}\PYG{o}{*}
+\PYG{n}{IST2202I} \PYG{n}{GREXIT} \PYG{o}{=} \PYG{n}{NO} \PYG{n}{WLM} \PYG{o}{=} \PYG{n}{YES} \PYG{n}{LOCLU} \PYG{o}{=} \PYG{n}{YES}
+\PYG{n}{IST2204I} \PYG{n}{LOCAPPL} \PYG{o}{=} \PYG{n}{YES} \PYG{n}{PASSOLU} \PYG{o}{=} \PYG{n}{NO}
+\PYG{n}{IST314I} \PYG{n}{END}
+\end{sphinxVerbatim}
+
+When the VIRTEL*A application is display in VTAM the following messages are written to the console log:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{D} \PYG{n}{NET}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{VIRTEL1A}\PYG{p}{,}\PYG{n}{E}
+\PYG{n}{IST097I} \PYG{n}{DISPLAY} \PYG{n}{ACCEPTED}
+\PYG{n}{IST075I} \PYG{n}{NAME} \PYG{o}{=} \PYG{n}{SPNET}\PYG{o}{.}\PYG{n}{VIRTEL1A}\PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{=} \PYG{n}{APPL} \PYG{l+m+mi}{925}
+\PYG{n}{IST486I} \PYG{n}{STATUS}\PYG{o}{=} \PYG{n}{ACT}\PYG{o}{/}\PYG{n}{S}\PYG{p}{,} \PYG{n}{DESIRED} \PYG{n}{STATE}\PYG{o}{=} \PYG{n}{ACTIV}
+\PYG{n}{IST1447I} \PYG{n}{REGISTRATION} \PYG{n}{TYPE} \PYG{o}{=} \PYG{n}{CDSERVR}
+\PYG{n}{IST1363I} \PYG{n}{GENERIC} \PYG{n}{RESOURCE} \PYG{n}{NAME} \PYG{n}{VIRTPLEX} \PYG{n}{REPRESENTS} \PYG{n}{SPNET}\PYG{o}{.}\PYG{n}{VIRTEL1A}
+\PYG{n}{IST977I} \PYG{n}{MDLTAB}\PYG{o}{=}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{NA}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*} \PYG{n}{ASLTAB}\PYG{o}{=}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{NA}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}
+\PYG{n}{IST861I} \PYG{n}{MODETAB}\PYG{o}{=}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{NA}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*} \PYG{n}{USSTAB}\PYG{o}{=}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{NA}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{LOGTAB}\PYG{o}{=}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{NA}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}
+\PYG{n}{IST934I} \PYG{n}{DLOGMOD}\PYG{o}{=}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{NA}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*} \PYG{n}{USS} \PYG{n}{LANGTAB}\PYG{o}{=}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}\PYG{n}{NA}\PYG{o}{*}\PYG{o}{*}\PYG{o}{*}
+\PYG{n}{IST1632I} \PYG{n}{VPACING} \PYG{o}{=} \PYG{l+m+mi}{7}
+\PYG{n}{IST1938I} \PYG{n}{APPC} \PYG{o}{=} \PYG{n}{NO}
+\PYG{n}{IST597I} \PYG{n}{CAPABILITY}\PYG{o}{\PYGZhy{}}\PYG{n}{PLU} \PYG{n}{ENABLED} \PYG{p}{,}\PYG{n}{SLU} \PYG{n}{ENABLED} \PYG{p}{,}\PYG{n}{SESSION} \PYG{n}{LIMIT} \PYG{n}{NONE}
+\PYG{n}{IST231I} \PYG{n}{APPL} \PYG{n}{MAJOR} \PYG{n}{NODE} \PYG{o}{=} \PYG{n}{APPLVIPX}
+\PYG{n}{IST654I} \PYG{n}{I}\PYG{o}{/}\PYG{n}{O} \PYG{n}{TRACE} \PYG{o}{=} \PYG{n}{OFF}\PYG{p}{,} \PYG{n}{BUFFER} \PYG{n}{TRACE} \PYG{o}{=} \PYG{n}{OFF}
+\PYG{n}{IST1500I} \PYG{n}{STATE} \PYG{n}{TRACE} \PYG{o}{=} \PYG{n}{OFF}
+\PYG{n}{IST271I} \PYG{n}{JOBNAME} \PYG{o}{=} \PYG{n}{SPVIR1A}\PYG{p}{,} \PYG{n}{STEPNAME} \PYG{o}{=} \PYG{n}{SPVIR1A}\PYG{p}{,} \PYG{n}{DSPNAME} \PYG{o}{=} \PYG{n}{ISTEBBDB}
+\PYG{n}{IST228I} \PYG{n}{ENCRYPTION} \PYG{o}{=} \PYG{n}{OPTIONAL} \PYG{p}{,} \PYG{n}{TYPE} \PYG{o}{=} \PYG{n}{DES}
+\PYG{n}{IST1563I} \PYG{n}{CKEYNAME} \PYG{o}{=} \PYG{n}{VIRTEL1A} \PYG{n}{CKEY} \PYG{o}{=} \PYG{n}{PRIMARY} \PYG{n}{CERTIFY} \PYG{o}{=} \PYG{n}{NO}
+\PYG{n}{IST1552I} \PYG{n}{MAC} \PYG{o}{=} \PYG{n}{NONE} \PYG{n}{MACTYPE} \PYG{o}{=} \PYG{n}{NONE}
+\PYG{n}{IST1050I} \PYG{n}{MAXIMUM} \PYG{n}{COMPRESSION} \PYG{n}{LEVEL} \PYG{o}{\PYGZhy{}} \PYG{n}{INPUT} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{OUTPUT} \PYG{o}{=} \PYG{l+m+mi}{0}
+\PYG{n}{IST1633I} \PYG{n}{ASRCVLM} \PYG{o}{=} \PYG{l+m+mi}{1000000}
+\PYG{n}{IST1634I} \PYG{n}{DATA} \PYG{n}{SPACE} \PYG{n}{USAGE}\PYG{p}{:} \PYG{n}{CURRENT} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{n}{MAXIMUM} \PYG{o}{=} \PYG{l+m+mi}{1280}
+\PYG{n}{IST171I} \PYG{n}{ACTIVE} \PYG{n}{SESSIONS} \PYG{o}{=} \PYG{l+m+mi}{0000000001}\PYG{p}{,} \PYG{n}{SESSION} \PYG{n}{REQUESTS} \PYG{o}{=} \PYG{l+m+mi}{0000000000}
+\PYG{n}{IST206I} \PYG{n}{SESSIONS}\PYG{p}{:}
+\PYG{n}{IST634I} \PYG{n}{NAME} \PYG{n}{STATUS} \PYG{n}{SID} \PYG{n}{SEND} \PYG{n}{RECV} \PYG{n}{VR} \PYG{n}{TP} \PYG{n}{NETID}
+\PYG{n}{IST635I} \PYG{n}{SC0TCP13} \PYG{n}{ACTIV}\PYG{o}{\PYGZhy{}}\PYG{n}{S} \PYG{n}{CA7B8B52D125F31F} \PYG{l+m+mi}{0003} \PYG{l+m+mi}{0001} \PYG{n}{SPNET}
+\PYG{n}{IST314I} \PYG{n}{END}
+\end{sphinxVerbatim}
+
+Message IST1363I confirms that VIRTEL operating under the ACB of VIRTEL1A is associated with the VTAM resource name VIRTPLEX.
+
+\newpage
+
+\index{Running multiple instances of Virtel!Workload balancing}\index{Workload balancing!Running multiple instances of Virtel}
+
+\subsection{Workload balancing in a SYSPLEX environment}
+\label{\detokenize{connectivity_guide:index-172}}\label{\detokenize{connectivity_guide:workload-balancing-in-a-sysplex-environment}}
+In the following configuration we can see how the VTAM generic resource facility can also be used to distribute workloads across applications. In this example there are several CICS TOR regions within CICSA, CICSB and CICSC that are accessed through a VTAM generic resource name or CICSPLEX group name. VIRTEL uses this name to access the CICS application. The WLM and/or VTAM will distribute sessions across the members of the CICS generic resource name.
+
+\sphinxincludegraphics{{image95}.png}
+
+From a High Availability aspect both CICSA and CICSB could both be down and service would still be provided by CICSC either through VIRTEL1A or VIRTEL2A. In this configuration VIRTEL exploits SYSPLEX technologies to provide a HA solution. The only VIRTEL requirement is to define a VIRTEL transaction which targets CICSZ as the VTAM application, i.e. the VTAM
+Generic Resource or CICSPLEX group name.
+
+
+\subsection{Sharing the ARBO and other VSAM files}
+\label{\detokenize{connectivity_guide:sharing-the-arbo-and-other-vsam-files}}
+In a SYSPLEX or sharing environment the VSAM files, like the ARBO and TRSF files, must be shared only in READ mode. To support this the following TCT parameter should be coded:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VSAMTYP}\PYG{o}{=}\PYG{n}{READONLY}
+\end{sphinxVerbatim}
+
+This VIRTCT parameter allows the setup of ‘READ-ONLY’ Virtels, to be used in production or in a Sysplex. Almost all Virtel VSAM files may be set to read-only mode. (But note that the VIRSWAP file; being a work file it cannot be read-only.)
+
+If this TCT value is coded then the following changes should also be made to the TCT.
+\begin{itemize}
+\item {} 
+The MACRF statements should be amended from MACRF=(SEQ,DIR,OUT,LSR) to MACRF=(SEQ,DIR,LSR).
+
+\item {} 
+The UFILE parameter string should also be changed from 0,10,01 to 0,10,05. For example:-
+
+\end{itemize}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{HTMLTRSF}\PYG{p}{,}\PYG{n}{ACBH2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{01} \PYG{n}{becomes} \PYG{n}{HTMLTRSF}\PYG{p}{,}\PYG{n}{ACBH2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{l+m+mi}{05}
+\end{sphinxVerbatim}
+
+This will ensure the integrity of the VSAM files across a SYSPLEX or shared environment. When Virtel is started the following messages will be issued:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VIR0093I} \PYG{n}{VTAM} \PYG{n}{GENERIC} \PYG{n}{RESOURCE} \PYG{n}{NAME} \PYG{n}{IS} \PYG{n}{VIRTPLEX}
+\PYG{n}{VIR0024I} \PYG{n}{OPENING} \PYG{n}{FILE} \PYG{n}{VIRARBO}
+\PYG{n}{VIR0024I} \PYG{n}{READ} \PYG{n}{ONLY}
+\PYG{n}{VIR0024I} \PYG{n}{OPENING} \PYG{n}{FILE} \PYG{n}{VIRSWAP}
+\PYG{n}{VIR0024I} \PYG{n}{OPENING} \PYG{n}{FILE} \PYG{n}{VIRHTML}
+\PYG{n}{VIR0024I} \PYG{n}{READ} \PYG{n}{ONLY}
+\PYG{n}{VIR0024I} \PYG{n}{OPENING} \PYG{n}{FILE} \PYG{n}{SAMPTRSF}
+\PYG{n}{VIR0024I} \PYG{n}{READ} \PYG{n}{ONLY}
+\PYG{n}{VIR0024I} \PYG{n}{OPENING} \PYG{n}{FILE} \PYG{n}{HTMLTRSF}
+\PYG{n}{VIR0024I} \PYG{n}{READ} \PYG{n}{ONLY}
+\PYG{n}{VIR0024I} \PYG{n}{ATTACHING} \PYG{n}{SUBTASKS}
+\end{sphinxVerbatim}
+
+\begin{sphinxadmonition}{danger}{Danger:}
+Do not set the SHROPTIONS to (4,3) as this will have undesirable results!
+\end{sphinxadmonition}
+
+Using a READ only environment enables you to not only share the ARBO file but also the SAMP and HTML TRSF files.
+
+
+\subsection{READ ONLY Restrictions}
+\label{\detokenize{connectivity_guide:read-only-restrictions}}
+If you share the VSAM files (SAMP.TRSF, ARBO, HTML.TRSF) in READ only mode Virtel Administration is not possible. For example uploading web updates to the SAMP.TRSF or adding macros to the DDI repositories. In this configuration you will have to have a maintenace instance of Virtel which can write to the VSAM files. This can be brought up during a maintenace slot when the READ ONLY instances are down. An alternative to this method is to maintain a copy of the VSAM files and use these for maintenace and updates then copy these VSAM files to the READ ONLY versions during a maintenace slot.
+
+\newpage
+
+
+\subsection{Virtel naming conventions}
+\label{\detokenize{connectivity_guide:virtel-naming-conventions}}
+When running more than one VIRTEL STC care must be taken when defining the VTAM relay names that each VIRTEL tasks will use. In the above configuration each Virtel instance is running on a different LPAR, and for the HA reasons, probably on a different physical machine; however, the VTAM names employed must be unique. With Virtel you can define a
+single configuration within the ARBO and TCT which contains a unique pool of Virtel relays for each Virtel instance.
+
+Here are two possible ways to define the relay pools for multiple Virtel instances:
+
+The first way is to include the SYSCLONE value as part of the LU name. The relay definitions utilize the system symbolic SYSCLONE value in the IEASYMxx member of PARMLIB. The clone value is taken from the system symbolic \&SYSCLONE and is identified in the VIRTEL definitions through the + (plus) character:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{LIST} \PYG{n}{of} \PYG{n}{TERMINALS} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Applid}\PYG{p}{:} \PYG{n}{VIRTEL1A} \PYG{l+m+mi}{15}\PYG{p}{:}\PYG{l+m+mi}{11}\PYG{p}{:}\PYG{l+m+mi}{01}
+\PYG{n}{Terminal}  \PYG{n}{Repeated} \PYG{n}{Relay}     \PYG{n}{Entry}        \PYG{n}{Type}   \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}  \PYG{n}{Pool}      \PYG{l+m+mi}{2}\PYG{n}{nd}  \PYG{n}{Relay}
+\PYG{n}{CLLOC000}  \PYG{l+m+mi}{0050}                            \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{CLVTA000}  \PYG{l+m+mi}{0080}     \PYG{o}{*}\PYG{n}{W2HPOOL}               \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{DELOC000}  \PYG{l+m+mi}{0010}                            \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{DEVTA000}  \PYG{l+m+mi}{0016}     \PYG{o}{*}\PYG{n}{W2HPOOL}               \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{W2HIM000}  \PYG{l+m+mi}{0080}     \PYG{n}{R}\PYG{o}{+}\PYG{n}{IM000}                \PYG{l+m+mi}{1}      \PYG{l+m+mi}{1}
+\PYG{n}{W2HTP000}  \PYG{l+m+mi}{0080}     \PYG{n}{R}\PYG{o}{+}\PYG{n}{VT000}                \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}    \PYG{o}{*}\PYG{n}{W2HPOOL}  \PYG{n}{R}\PYG{o}{+}\PYG{n}{IM000}
+\end{sphinxVerbatim}
+
+
+\subsection{TCT definition}
+\label{\detokenize{connectivity_guide:tct-definition}}
+In the configuration above there are two Virtel STCs running on different LPARS whose \&SYSCLONE values are 1A and 2A. With the same TCT being used for both VIRTEL1A and VIRTEL2A the following is specified in the common TCT:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{APPLID}\PYG{o}{=}\PYG{n}{VIRTEL}\PYG{o}{+}\PYG{p}{,}
+\PYG{n}{SYSPLUS}\PYG{o}{=}\PYG{n}{YES}\PYG{p}{,}
+\end{sphinxVerbatim}
+
+This will means that the two Virtels STCs will have a VTAM APPLID of\textasciicircum{}VIRTEL1A and VIRTEL2A. The Virtel relay LU names are R1AVT000-079 for LPAR 1A, and R2AVT000-079 for LPAR 2A.
+The VTAM definition to support this configuration would like:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+APPLVIPX VBUILD TYPE=APPL
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* Product : VIRTEL                                                   *
+* Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A)        *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+VIRTEL\PYGZam{}SYSCLONE APPL EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),               *
+      ACBNAME=VIRTEL\PYGZam{}SYSCLONE
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* R\PYGZam{}SYSCLONEVTxxx : VTAM application relays for VIRTEL Web Access    *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+R\PYGZam{}SYSCLONE.VT??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
+      DLOGMOD=SNX32702,EAS=1
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+* R\PYGZam{}SYSCLONEIMxxx : Printer relays for VIRTEL Web Access terminals   *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} *
+R\PYGZam{}SYSCLONE.IM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
+      DLOGMOD=SCS,EAS=1
+R\PYGZam{}SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
+      DLOGMOD=DSILGMOD,EAS=1
+\end{sphinxVerbatim}
+
+Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE characters as part of the LU name. In the next example two pools are defined. Pool *W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool *W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Terminal}  \PYG{n}{Repeated} \PYG{n}{Relay}     \PYG{n}{Entry}        \PYG{n}{Type}   \PYG{n}{I}\PYG{o}{/}\PYG{n}{O}  \PYG{n}{Pool}     \PYG{l+m+mi}{2}\PYG{n}{nd}  \PYG{n}{Relay}
+\PYG{n}{CLLOC000}  \PYG{l+m+mi}{0500}                            \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{CLVTA000}  \PYG{l+m+mi}{1000}     \PYG{o}{*}\PYG{n}{W}\PYG{o}{+}\PYG{n}{POOL}                \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{CLVTB000}  \PYG{l+m+mi}{1000}     \PYG{o}{*}\PYG{n}{W}\PYG{o}{+}\PYG{n}{POOL}                \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{CLVTC000}  \PYG{l+m+mi}{1000}     \PYG{o}{*}\PYG{n}{W}\PYG{o}{+}\PYG{n}{POOL}                \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{DELOC000}  \PYG{l+m+mi}{0010}                            \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{DEVTA000}  \PYG{l+m+mi}{0016}     \PYG{o}{*}\PYG{n}{W}\PYG{o}{+}\PYG{n}{POOL}                \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}
+\PYG{n}{W2HIP000}  \PYG{l+m+mi}{1000}     \PYG{n}{P000}                   \PYG{l+m+mi}{1}      \PYG{l+m+mi}{1}
+\PYG{n}{W2HIQ000}  \PYG{l+m+mi}{1000}     \PYG{n}{Q000}                   \PYG{l+m+mi}{1}      \PYG{l+m+mi}{1}
+\PYG{n}{W2HIR000}  \PYG{l+m+mi}{1000}     \PYG{n}{R000}                   \PYG{l+m+mi}{1}      \PYG{l+m+mi}{1}
+\PYG{n}{W2HIS000}  \PYG{l+m+mi}{1000}     \PYG{n}{S000}                   \PYG{l+m+mi}{1}      \PYG{l+m+mi}{1}
+\PYG{n}{W2HIT000}  \PYG{l+m+mi}{1000}     \PYG{n}{T000}                   \PYG{l+m+mi}{1}      \PYG{l+m+mi}{1}
+\PYG{n}{W2HIU000}  \PYG{l+m+mi}{1000}     \PYG{n}{U000}                   \PYG{l+m+mi}{1}      \PYG{l+m+mi}{1}
+\PYG{n}{W2HTJ000}  \PYG{l+m+mi}{1000}     \PYG{n}{J000}                   \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}    \PYG{o}{*}\PYG{n}{W1APOOL} \PYG{n}{P000}
+\PYG{n}{W2HTK000}  \PYG{l+m+mi}{1000}     \PYG{n}{K000}                   \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}    \PYG{o}{*}\PYG{n}{W1APOOL} \PYG{n}{Q000}
+\PYG{n}{W2HTL000}  \PYG{l+m+mi}{1000}     \PYG{n}{L000}                   \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}    \PYG{o}{*}\PYG{n}{W1APOOL} \PYG{n}{R000}
+\PYG{n}{W2HTM000}  \PYG{l+m+mi}{1000}     \PYG{n}{M000}                   \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}    \PYG{o}{*}\PYG{n}{W2APOOL} \PYG{n}{S000}
+\PYG{n}{W2HTN000}  \PYG{l+m+mi}{1000}     \PYG{n}{N000}                   \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}    \PYG{o}{*}\PYG{n}{W2APOOL} \PYG{n}{T000}
+\PYG{n}{W2HTO000}  \PYG{l+m+mi}{1000}     \PYG{n}{O000}                   \PYG{l+m+mi}{3}      \PYG{l+m+mi}{3}    \PYG{o}{*}\PYG{n}{W2APOOL} \PYG{n}{U000}
+\end{sphinxVerbatim}
+
+The VTAM definitions would be similar to those from the previous example except the \&SYSCLONE would be replaced by the relay characters.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+APVIRT\PYGZam{}SYSCLONE. VBUILD TYPE=APPL
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+* Product     :  VIRTEL                                             *
+* Description :  Main ACB for VIRTEL application                    *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+VIRTEL\PYGZam{}SYSCLONE APPL AUTH=(ACQ,BLOCK,PASS,SPO),EAS=160,               +
+             ACBNAME=VIRTEL\PYGZam{}SYSCLONE
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+* Jxxx,Kxxx   : VTAM application relays for VIRTEL Web Access*
+* Lxxx,Mxxx   : VTAM application relays for VIRTEL Web Access *
+* Nxxx,Oxxx   : VTAM application relays for VIRTEL Web Access*
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+J??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+K??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+L??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+M??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+N??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+O??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+* Pxxx,Qxxx   : Printer relays for VIRTEL Web Access terminals      *
+* Rxxx,Sxxx   : Printer relays for VIRTEL Web Access terminals      *
+* Txxx,Uxxx   : Printer relays for VIRTEL Web Access terminals      *
+* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*
+P??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+Q??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+R??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+S??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+T??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+U??? APPL AUTH=NVPACE,EAS=1,PARSESS=NO,MODETAB=ISTINCLM,SESSLIM=YES
+\end{sphinxVerbatim}
+
+\newpage
+
+\index{Running multiple instances of Virtel!Load balancing with a Distributed VIPA}\index{Load balancing with a Distributed VIPA!Running multiple instances of Virtel}
+
+\section{Using a Distributed VIPA to load balance}
+\label{\detokenize{connectivity_guide:index-173}}\label{\detokenize{connectivity_guide:using-a-distributed-vipa-to-load-balance}}
+Using a Dynamic VIPA with IBM’s SYSPLEX Distributor (SD) you can balance Virtel session workload across more than one Virtel STC. The distributing TCPIP stack will balance workload across the participating target TCPIP stacks. Allocation of new sessions on the IP side will depend on the selected SD/WLM algorithm. For example this can be a Round Robin policy or WLM policy workload algorithm. Access to the Virtel tasks is through using distributed VIPA address which is defined in a TCPIP profile. In the configuration above it is defined as
+192.168.170.15. The relevant PROFILE definitions for TCPIP would look like:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VIPADYNAMIC}
+\PYG{n}{VIPARANGE} \PYG{n}{DEFINE} \PYG{n}{MOVEABLE} \PYG{n}{NONDISRUPTIVE} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.0} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.20}
+\PYG{n}{VIPADEFINE} \PYG{n}{MOVE} \PYG{n}{IMMED} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.0} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.15}
+\PYG{n}{VIPADISTRIBUTE} \PYG{n}{DEFINE} \PYG{n}{TIMEDAFF} \PYG{l+m+mi}{60} \PYG{n}{DISTMETHOD} \PYG{n}{ROUNDROBIN} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.15}
+\PYG{n}{DESTIP} \PYG{n}{ALL}
+\PYG{n}{ENDVIPADYNAMIC}
+\end{sphinxVerbatim}
+
+\index{Running multiple instances of Virtel!Session Affinity with DVIPA}\index{Session Affinity with DVIPA!Running multiple instances of Virtel}
+
+\subsection{Session Affinity}
+\label{\detokenize{connectivity_guide:session-affinity}}\label{\detokenize{connectivity_guide:index-174}}
+It is essential to include the TIMEDAFF parameter in the VIPA definition as this maintains session affinity. The TIMEDAFF facility ensures that a user will always connect to the same VIRTEL while a session is open. Also, it is recommended that the Virtel line W-HTTP (port 41001) is used for Virtel Administration and line C-HTTP (port 41002) for user access
+to applications.
+
+Line W-HTTP should be defined using the base address of the LPAR (i.e.the home address of the default interface) by specifying only the port number. For example:
+
+Local ident ==\textgreater{} :41001
+
+Line C-HTTP should be defined using the distributed VIPA address and port number if you are using a dynamic VIPA:
+
+Local ident ==\textgreater{} 192.168.170.15:41002
+
+If you are not using a dynamic VIPA to point to your Virtel then the port address must be prefixed with 0 or 0.0.0.0. For example:-
+
+Local ident ==\textgreater{} 0:41002
+
+This will ensure the Virtel doesn’t associate itself with a particular IP address.
+
+The Virtel Line display command displays this configuration:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{F} \PYG{n}{SPVIR1A}\PYG{p}{,}\PYG{n}{LINES}
+\PYG{n}{VIR0200I} \PYG{n}{LINES}
+\PYG{n}{VIR0201I} \PYG{n}{VIRTEL} \PYG{l+m+mf}{4.54} \PYG{n}{APPLID}\PYG{o}{=}\PYG{n}{VIRTEL1A} \PYG{n}{LINES}
+\PYG{n}{VIR0202I} \PYG{n}{INT}\PYG{o}{.}\PYG{n}{NAME} \PYG{n}{EXT}\PYG{o}{.}\PYG{n}{NAME} \PYG{n}{TYPE} \PYG{n}{ACB} \PYG{n}{OR} \PYG{n}{IP}
+\PYG{n}{VIR0202I} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
+\PYG{n}{VIR0202I} \PYG{n}{C}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{CLI} \PYG{n}{TCP1} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.15}\PYG{p}{:}\PYG{l+m+mi}{41002}
+\PYG{n}{VIR0202I} \PYG{n}{W}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP} \PYG{n}{HTTP}\PYG{o}{\PYGZhy{}}\PYG{n}{W2H} \PYG{n}{TCP1} \PYG{p}{:}\PYG{l+m+mi}{41001}
+\PYG{n}{VIR0202I} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{END} \PYG{n}{OF} \PYG{n}{LIST}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
+\end{sphinxVerbatim}
+
+In this way the administrator can access a specific Virtel using port 41001 of the appropriate LPAR’s IP address, while the users can access both Virtels using port 41002 on the DVIPA address.
+
+\newpage
+
+\index{Running multiple instances of Virtel!Load balancing with Apache Proxy}\index{Load balancing with Apache Proxy!Running multiple instances of Virtel}
+
+\section{Using an Apache Proxy to load balance}
+\label{\detokenize{connectivity_guide:using-an-apache-proxy-to-load-balance}}\label{\detokenize{connectivity_guide:index-175}}
+Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.
+
+\sphinxincludegraphics{{image96}.png}
+
+\index{Running multiple instances of Virtel!Session Affinity with Apache}\index{Session Affinity with Apache!Running multiple instances of Virtel}
+Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}}
+\PYG{c+c1}{\PYGZsh{} Virtel}
+\PYG{c+c1}{\PYGZsh{}}
+\PYG{n}{ProxyPass} \PYG{o}{/} \PYG{n}{balancer}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{hostcluster}\PYG{o}{/}
+\PYG{n}{ProxyPassReverse} \PYG{o}{/} \PYG{n}{balancer}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{hostcluster}\PYG{o}{/}
+\PYG{o}{\PYGZlt{}}\PYG{n}{Proxy} \PYG{n}{balancer}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{hostcluster}\PYG{o}{\PYGZgt{}}
+\PYG{n}{BalancerMember} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{syt00101}\PYG{o}{.}\PYG{n}{gzaop}\PYG{o}{.}\PYG{n}{local}\PYG{p}{:}\PYG{l+m+mi}{41002} \PYG{n}{retry}\PYG{o}{=}\PYG{l+m+mi}{5}
+\PYG{n}{BalancerMember} \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{syt00101}\PYG{o}{.}\PYG{n}{gzaop}\PYG{o}{.}\PYG{n}{local}\PYG{p}{:}\PYG{l+m+mi}{51002} \PYG{n}{retry}\PYG{o}{=}\PYG{l+m+mi}{5}
+\PYG{n}{ProxySet} \PYG{n}{lbmethod}\PYG{o}{=}\PYG{n}{byrequests}
+\PYG{o}{\PYGZlt{}}\PYG{o}{/}\PYG{n}{Proxy}\PYG{o}{\PYGZgt{}}
+\end{sphinxVerbatim}
+
+For more information on setting up an Apache Proxy Server visit \sphinxurl{http://httpd.apache.org/docs/2.2/mod/mod\_proxy\_balancer.html}
+
+To use Apache as a Proxy Server it is essential that the correct configuration modules are loaded at startup. Here is an example:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}LoadModule foo\PYGZus{}module modules/mod\PYGZus{}foo.so}
+\PYG{n}{LoadModule} \PYG{n}{authz\PYGZus{}host\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}authz\PYGZus{}host}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{auth\PYGZus{}basic\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}auth\PYGZus{}basic}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{authn\PYGZus{}file\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}authn\PYGZus{}file}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{authz\PYGZus{}user\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}authz\PYGZus{}user}\PYG{o}{.}\PYG{n}{so}
+\PYG{c+c1}{\PYGZsh{}LoadModule authz\PYGZus{}groupfile\PYGZus{}module modules/mod\PYGZus{}authz\PYGZus{}groupfile.so}
+\PYG{n}{LoadModule} \PYG{n}{include\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}include}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{log\PYGZus{}config\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}log\PYGZus{}config}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{env\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}env}\PYG{o}{.}\PYG{n}{so}
+\PYG{c+c1}{\PYGZsh{}LoadModule mime\PYGZus{}magic\PYGZus{}module modules/mod\PYGZus{}mime\PYGZus{}magic.so}
+\PYG{c+c1}{\PYGZsh{}LoadModule expires\PYGZus{}module modules/mod\PYGZus{}expires.so}
+\PYG{n}{LoadModule} \PYG{n}{headers\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}headers}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{unique\PYGZus{}id\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}unique\PYGZus{}id}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{setenvif\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}setenvif}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{proxy\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}proxy}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{proxy\PYGZus{}connect\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}proxy\PYGZus{}connect}\PYG{o}{.}\PYG{n}{so}
+\PYG{c+c1}{\PYGZsh{}LoadModule proxy\PYGZus{}ftp\PYGZus{}module modules/mod\PYGZus{}proxy\PYGZus{}ftp.so}
+\PYG{n}{LoadModule} \PYG{n}{proxy\PYGZus{}http\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}proxy\PYGZus{}http}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{mime\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}mime}\PYG{o}{.}\PYG{n}{so}
+\PYG{c+c1}{\PYGZsh{}LoadModule dav\PYGZus{}module modules/mod\PYGZus{}dav.so}
+\PYG{c+c1}{\PYGZsh{}LoadModule dav\PYGZus{}fs\PYGZus{}module modules/mod\PYGZus{}dav\PYGZus{}fs.so}
+\PYG{n}{LoadModule} \PYG{n}{autoindex\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}autoindex}\PYG{o}{.}\PYG{n}{so}
+\PYG{c+c1}{\PYGZsh{}LoadModule asis\PYGZus{}module modules/mod\PYGZus{}asis.so}
+\PYG{c+c1}{\PYGZsh{}LoadModule info\PYGZus{}module modules/mod\PYGZus{}info.so}
+\PYG{n}{LoadModule} \PYG{n}{cgi\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}cgi}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{dir\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}dir}\PYG{o}{.}\PYG{n}{so}
+\PYG{n}{LoadModule} \PYG{n}{actions\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}actions}\PYG{o}{.}\PYG{n}{so}
+\PYG{c+c1}{\PYGZsh{}LoadModule speling\PYGZus{}module modules/mod\PYGZus{}speling.so}
+\PYG{c+c1}{\PYGZsh{}LoadModule userdir\PYGZus{}module modules/mod\PYGZus{}userdir.so}
+\PYG{n}{LoadModule} \PYG{n}{alias\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}alias}\PYG{o}{.}\PYG{n}{so}
+\PYG{c+c1}{\PYGZsh{}LoadModule rewrite\PYGZus{}module modules/mod\PYGZus{}rewrite.so}
+\PYG{c+c1}{\PYGZsh{}LoadModule deflate\PYGZus{}module modules/mod\PYGZus{}deflate.so}
+\PYG{n}{LoadModule} \PYG{n}{proxy\PYGZus{}balancer\PYGZus{}module} \PYG{n}{modules}\PYG{o}{/}\PYG{n}{mod\PYGZus{}proxy\PYGZus{}balancer}\PYG{o}{.}\PYG{n}{so}
+\end{sphinxVerbatim}
+
+Some other Apache configuration recommendations are:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{*} \PYG{n}{Timeouts}
+\PYG{n}{SSLDisable}
+\PYG{n}{SSLV3Timeout} \PYG{l+m+mi}{18010}
+\PYG{o}{*} \PYG{n}{Format} \PYG{n}{log} \PYG{k}{with} \PYG{n}{router} \PYG{n}{information}
+\PYG{n}{LogFormat} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+s2}{h }\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+s2}{l }\PYG{l+s+si}{\PYGZpc{}u}\PYG{l+s+s2}{ }\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+s2}{t}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+si}{\PYGZpc{}r}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+s2}{ }\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+s2}{\PYGZgt{}s }\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+s2}{b }\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+si}{\PYGZob{}Referer\PYGZcb{}}\PYG{l+s+s2}{i}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+s2}{ }\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+s2}{\PYGZob{}}\PYG{l+s+s2}{User\PYGZhy{}Agent\PYGZcb{}i}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+s2}{ }\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+s2}{\PYGZpc{}}\PYG{l+s+si}{\PYGZob{}BALANCER\PYGZus{}WORKER\PYGZus{}ROUTE\PYGZcb{}}\PYG{l+s+s2}{e}\PYG{l+s+se}{\PYGZbs{}\PYGZdq{}}\PYG{l+s+s2}{\PYGZdq{}} \PYG{n}{combined}
+\PYG{o}{*} \PYG{n+nb}{set} \PYG{n}{Max}\PYG{o}{\PYGZhy{}}\PYG{n}{Age} \PYG{n}{to} \PYG{l+m+mi}{12}\PYG{n}{h} \PYG{p}{(}\PYG{n}{doesn}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t work with IE)  or}
+\PYG{o}{*} \PYG{n}{enable} \PYG{n}{mod\PYGZus{}expires} \PYG{o+ow}{and} \PYG{n+nb}{set}\PYG{p}{:} \PYG{p}{(}\PYG{n}{this} \PYG{n}{should} \PYG{n}{be} \PYG{n}{checked}\PYG{p}{)}
+\PYG{n}{ExpiresActive} \PYG{n}{On}
+\PYG{n}{ExpiresDefault} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{access plus 16 h}\PYG{l+s+s2}{\PYGZdq{}}
+\end{sphinxVerbatim}
+
+See \sphinxurl{https://httpd.apache.org/docs/2.2/mod/mod\_expires.html} for more information.
+
+\index{Protecting business assets with Virtel Rules}
+
+\chapter{Protecting business assets with Virtel Rules}
+\label{\detokenize{connectivity_guide:index-177}}\label{\detokenize{connectivity_guide:protecting-business-assets-with-virtel-rules}}
+
+\section{Introduction}
+\label{\detokenize{connectivity_guide:id76}}
+In this chapter we discuss how to protect access to business assets using Virtel rules. In this scenario with have two types of business assets or applications. The first type is the production assets which are protected by LDAP and use SSO to facilitate security and automatic logon without the user having to specify a userid and password. The other type of business asset is a standard application, like TSO or CICS, which requires the user to enter a userid and password when the application is accessed. LDAP and SSO are not discussed in this newsletter. There may be alternatives to this SSO setup but for our scenario we are assuming two types of asset \textendash{} secure (requiring no application logon) and insecure (application logon required). The scenario utilizes a proxy server to load balance across the Virtel instances.
+
+\sphinxincludegraphics{{image97}.png}
+
+\newpage
+
+\index{Protecting business assets with Virtel Rules!Virtel Setup}\index{Virtel Setup!Protecting business assets with Virtel Rules}
+
+\section{Virtel Setup}
+\label{\detokenize{connectivity_guide:index-178}}\label{\detokenize{connectivity_guide:virtel-setup}}
+From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non-secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
+and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address \textendash{} 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.
+
+\index{Protecting business assets with Virtel Rules!Example Rules}\index{Example Rules!Protecting business assets with Virtel Rules}
+
+\subsection{Virtel Rules}
+\label{\detokenize{connectivity_guide:index-179}}\label{\detokenize{connectivity_guide:id77}}
+Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re-directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RULE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000100}\PYG{p}{,}
+\PYG{n}{RULESET}\PYG{o}{=}\PYG{n}{C}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                \PYG{o}{\PYGZlt{}} \PYG{n}{Our} \PYG{n}{Line} \PYG{l+m+mi}{41002}
+\PYG{n}{STATUS}\PYG{o}{=}\PYG{n}{ACTIVE}\PYG{p}{,}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP access (Test calling address)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EPSEC}\PYG{p}{,}                                   \PYG{o}{\PYGZlt{}} \PYG{n}{Associated} \PYG{n}{Entry} \PYG{n}{point}
+\PYG{n}{IPADDR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{EQUAL}\PYG{p}{,}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{092.160}\PYG{p}{)}\PYG{p}{,}                \PYG{o}{\PYGZlt{}} \PYG{n}{IP} \PYG{n}{address} \PYG{n}{of} \PYG{n}{Proxy}
+\PYG{n}{NETMASK}\PYG{o}{=}\PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
+\PYG{o}{*}
+\PYG{n}{RULE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000199}\PYG{p}{,}
+\PYG{n}{RULESET}\PYG{o}{=}\PYG{n}{C}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                \PYG{o}{\PYGZlt{}} \PYG{n}{Our} \PYG{n}{Line} \PYG{l+m+mi}{41002}
+\PYG{n}{STATUS}\PYG{o}{=}\PYG{n}{ACTIVE}\PYG{p}{,}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP access (Calling IP address not valid)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EPREJECT}
+\PYG{o}{*}
+\PYG{n}{RULE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000200}\PYG{p}{,}
+\PYG{n}{RULESET}\PYG{o}{=}\PYG{n}{R}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                \PYG{o}{\PYGZlt{}} \PYG{n}{Our} \PYG{n}{Line} \PYG{l+m+mi}{41003}
+\PYG{n}{STATUS}\PYG{o}{=}\PYG{n}{ACTIVE}\PYG{p}{,}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP access (Test calling address)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EPSEC}\PYG{p}{,}                                   \PYG{o}{\PYGZlt{}} \PYG{n}{Associated} \PYG{n}{Entry} \PYG{n}{point}
+\PYG{n}{IPADDR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{EQUAL}\PYG{p}{,}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{092.160}\PYG{p}{)}\PYG{p}{,}                \PYG{o}{\PYGZlt{}} \PYG{n}{IP} \PYG{n}{address} \PYG{n}{of} \PYG{n}{Proxy}
+\PYG{n}{NETMASK}\PYG{o}{=}\PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
+\PYG{o}{*}
+\PYG{n}{RULE} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000299}\PYG{p}{,}
+\PYG{n}{RULESET}\PYG{o}{=}\PYG{n}{R}\PYG{o}{\PYGZhy{}}\PYG{n}{HTTP}\PYG{p}{,}                                \PYG{o}{\PYGZlt{}} \PYG{n}{Our} \PYG{n}{Line} \PYG{l+m+mi}{41003}
+\PYG{n}{STATUS}\PYG{o}{=}\PYG{n}{ACTIVE}\PYG{p}{,}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{HTTP access (Calling IP address not valid)}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{ENTRY}\PYG{o}{=}\PYG{n}{EPREJECT}
+\PYG{n}{ENTRY} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{EPREJECT}\PYG{p}{,}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Entry point for unauthorized HTTP users}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}
+\PYG{n}{TRANSACT}\PYG{o}{=}\PYG{n}{REJ}\PYG{p}{,}
+\PYG{n}{TIMEOUT}\PYG{o}{=}\PYG{l+m+mi}{0720}\PYG{p}{,}
+\PYG{n}{ACTION}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,}
+\PYG{n}{EMUL}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,}
+\PYG{n}{SIGNON}\PYG{o}{=}\PYG{n}{VIR0020H}\PYG{p}{,}
+\PYG{n}{MENU}\PYG{o}{=}\PYG{n}{VIR0021A}\PYG{p}{,}
+\PYG{n}{EXTCOLOR}\PYG{o}{=}\PYG{n}{X}
+\PYG{o}{*}
+\PYG{n}{TRANSACT} \PYG{n}{ID}\PYG{o}{=}\PYG{n}{REJ}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00}\PYG{p}{,}
+\PYG{n}{NAME}\PYG{o}{=}\PYG{n}{EPREJECT}\PYG{p}{,}
+\PYG{n}{DESC}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Default directory = entry point name}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{n}{APPL}\PYG{o}{=}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR}\PYG{p}{,}                                   \PYG{o}{\PYGZlt{}} \PYG{n}{User} \PYG{n}{template} \PYG{n}{directory}
+\PYG{n}{TYPE}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{,}
+\PYG{n}{TERMINAL}\PYG{o}{=}\PYG{n}{CLLOC}\PYG{p}{,}
+\PYG{n}{STARTUP}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,}
+\PYG{n}{SECURITY}\PYG{o}{=}\PYG{l+m+mi}{0}
+\end{sphinxVerbatim}
+
+So what is happening here? When a user attempts to establish a session Virtel will match the users calling IP address against the IPADDR in rule R0000x00. If it matches then they will be able to access the entry point defined in the rule \textendash{} in this case EPSEC or EPNSEC. For line 41002 this Entry Point will contain a list of the W2H applications using SSO.
+For line 41003, using Entry Point EPNSEC, this will contain a list of W2H transactions which use standard RACF protection.
+
+Now, if the calling IP addressed is not matched, the RULE fails and the next rule in the ruleset is tested, in this case rule R0000x99. This is a catch all rule. Any user falling into this rule will be directed to entry point EPREJECT. The Entry Point EPREJECT only has one transaction, its default transaction, and this will invoke the template page
+EPREJECT.HTM.
+
+To protect the business assets the calling IP address can only be that of the proxy server - 192.168.092.160. Any other calling IP address will be rejected by the Virtel ruleset. By default, the ruleset associated with a line is normally the internal name of the line \textendash{} C-HTTP for example. How the rejected session is handled depends on how Virtel has been setup.
+
+\index{Protecting business assets with Virtel Rules!Default Rule Template}\index{Default Rule Template!Protecting business assets with Virtel Rules}
+
+\subsection{Default Rule Template}
+\label{\detokenize{connectivity_guide:default-rule-template}}\label{\detokenize{connectivity_guide:index-180}}
+In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZlt{}!DOCTYPE HTML PUBLIC \PYGZdq{}\PYGZhy{}//W3C//DTD HTML 4.01 Transitional//EN\PYGZdq{}
+\PYGZdq{}http://www.w3.org/TR/html4/loose.dtd\PYGZdq{}\PYGZgt{}
+\PYGZlt{}!\PYGZhy{}\PYGZhy{}VIRTEL start=\PYGZdq{}\PYGZob{}\PYGZob{}\PYGZob{}\PYGZdq{} end=\PYGZdq{}\PYGZcb{}\PYGZcb{}\PYGZcb{}\PYGZdq{} \PYGZhy{}\PYGZhy{}\PYGZgt{}
+\PYGZlt{}html\PYGZgt{}
+\PYGZlt{}script\PYGZgt{}
+// customization for reject
+window.location.replace(\PYGZdq{}http://www.mycompany.com\PYGZdq{});
+\PYGZlt{}/script\PYGZgt{}
+\PYGZlt{}/html\PYGZgt{}
+\end{sphinxVerbatim}
+
+This template must exist in the CLI-DIR directory as this is where the Entry Point EPREJECT expects to find them. When the template is served it will display the companies “public” web site.
+
+To upload the ARBO statements to your ARBO use the following JCL:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+    \PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+    \PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{LOAD}\PYG{o}{=}\PYG{n}{SPTHOLT}\PYG{o}{.}\PYG{n}{VIRT456}\PYG{o}{.}\PYG{n}{LOADLIB}
+    \PYG{o}{/}\PYG{o}{/} \PYG{n}{SET} \PYG{n}{ARBO}\PYG{o}{=}\PYG{n}{SP000}\PYG{o}{.}\PYG{n}{SPVIREH0}\PYG{o}{.}\PYG{n}{ARBO1A}
+    \PYG{o}{/}\PYG{o}{/}\PYG{o}{*}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{DELETE} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LOAD,NOREPL}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{REGION}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{n}{M}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{LOAD}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSUDUMP} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN} \PYG{n}{DD} \PYG{o}{*}
+    \PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RULE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000100} \PYG{n}{Delete} \PYG{n}{rule}
+    \PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RULE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000199} \PYG{n}{Delete} \PYG{n}{rule}
+    \PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RULE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000200} \PYG{n}{Delete} \PYG{n}{rule}
+    \PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{RULE}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{R0000299} \PYG{n}{Delete} \PYG{n}{rule}
+    \PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{ENTRY}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{EPREJECT} \PYG{n}{Entry} \PYG{n}{point}
+    \PYG{n}{DELETE} \PYG{n}{TYPE}\PYG{o}{=}\PYG{n}{TRANSACT}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{REJ}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{00} \PYG{n}{Delete} \PYG{n}{transaction}
+    \PYG{o}{*}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{CONFIG} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{LOAD,NOREPL}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{REGION}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{n}{M}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{STEPLIB} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{LOAD}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSUDUMP} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{VIRARBO} \PYG{n}{DD} \PYG{n}{DSN}\PYG{o}{=}\PYG{o}{\PYGZam{}}\PYG{n}{ARBO}\PYG{p}{,}\PYG{n}{DISP}\PYG{o}{=}\PYG{n}{SHR}
+    \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSIN} \PYG{n}{DD} \PYG{o}{*}
+    \PYG{n}{RULE} \PYG{n}{Definitions}
+\PYG{o}{/}\PYG{o}{*}
+\end{sphinxVerbatim}
+
 
 \chapter{Appendix}
 \label{\detokenize{connectivity_guide:appendix}}
@@ -6211,31 +7156,6 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
 Linux is a trademark of Linus Torvalds in the United States, other countries, or both.
 
 Other company, product, or service names may be trademarks or service names of others.
-
-
-\section{Open Source Software}
-\label{\detokenize{connectivity_guide:open-source-software}}
-The current VIRTEL Web Access product uses the following open source software:
-\begin{itemize}
-\item {} \begin{description}
-\item[{jQuery}] \leavevmode
-Under MIT license - \sphinxurl{https://jquery.org/license/}
-
-\end{description}
-
-\item {} \begin{description}
-\item[{StoreJson}] \leavevmode
-Under MIT license - \sphinxurl{https://github.com/marcuswestin/store.js/commit/baf3d41b7092f0bacd441b768a77650199c25fa7}
-
-\end{description}
-
-\item {} \begin{description}
-\item[{jQuery\_UI}] \leavevmode
-Under MIT license - \sphinxurl{http://en.wikipedia.org/wiki/JQuery\_UI}
-
-\end{description}
-
-\end{itemize}
 
 
 
