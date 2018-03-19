@@ -218,6 +218,61 @@ There are various synchronization options which will determine how the
 central DDI repository is synchronized with the user’s local macros. By
 default Virtel maintains macros in local mode. In both modes, local and
 DDI, the macros.json file is stored in the browsers local storage.</p>
+<p><strong>Getting started</strong></p>
+<p>Although local macros will work “out of the box” most users would probably want to have the key mapping option set. To use this function the global options parameters must be customized to add the w2hparm.keymapping=true to the w2hparm options file. The following instructions can be used as an example as to how to set up global w2hparm customization for the CLI port 41002.</p>
+<p>Add the option directory using the Administration portal or through a batch job. Also modify the CLI-03P so that the default directory is CLI-DIR and not the default W2H-DIR.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*--------------------------------------------------------------*</span>
+<span class="o">//*</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT457</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT457</span><span class="o">.</span><span class="n">ARBO</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">CONFIG</span>  <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,NOREPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span>      <span class="n">DD</span> <span class="o">*</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">CO</span><span class="p">,</span>
+         <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;option&#39;</span><span class="p">,</span>
+         <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;CLI option directory (/option)&#39;</span><span class="p">,</span>
+         <span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+         <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+         <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLOC</span><span class="p">,</span>
+         <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">P</span><span class="p">,</span>
+         <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;w2h&#39;</span><span class="p">,</span>
+         <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Directory for w2hparm.js&#39;</span><span class="p">,</span>
+         <span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+         <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+         <span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLOC</span><span class="p">,</span>
+         <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+         <span class="n">LOGMSG</span><span class="o">=</span><span class="s1">&#39;/w2h/w2hparm-js&#39;</span>
+<span class="o">/*</span>
+</pre></div>
+</div>
+<p>Create the following two JavaScript members and upload them to the CLI-DIR directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+     <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+        <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span><span class="p">,</span>
+     <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p><em>w2hparm.js</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Global</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">switchToolBarDisplay</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Consolas&quot;</span><span class="p">;</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span><span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span> <span class="s2">&quot;session&quot;</span>
+<span class="p">};</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><em>w2hparm.global.js</em></p>
+<p>The configuration is now set to retrieve customized w2hparms for CLI from the member w2hparms.global.js. So, references to w2hparm will be resolved using the options directory pointed to by the w2hparm.js member.</p>
+<p>(Transaction CLI-03P) -&gt; CLI-DIR -&gt; w2hparms.js -&gt; w2hparm.global.js</p>
 <p><strong>The User Macro Interface</strong></p>
 <p><strong>Macro functions</strong></p>
 <p>You can capture and list macros by using the two macro ICON functions

@@ -45,6 +45,75 @@ central DDI repository is synchronized with the user's local macros. By
 default Virtel maintains macros in local mode. In both modes, local and
 DDI, the macros.json file is stored in the browsers local storage.
 
+**Getting started**
+
+Although local macros will work “out of the box” most users would probably want to have the key mapping option set. To use this function the global options parameters must be customized to add the w2hparm.keymapping=true to the w2hparm options file. The following instructions can be used as an example as to how to set up global w2hparm customization for the CLI port 41002.
+
+Add the option directory using the Administration portal or through a batch job. Also modify the CLI-03P so that the default directory is CLI-DIR and not the default W2H-DIR.
+
+::
+
+	//*--------------------------------------------------------------* 
+	//*                                                                
+	// SET LOAD=SPTHOLT.VIRT457.LOADLIB                                
+	// SET ARBO=SPTHOLT.VIRT457.ARBO                                   
+	//*                                                                
+	//CONFIG  EXEC PGM=VIRCONF,PARM='LOAD,NOREPL',REGION=2M            
+	//STEPLIB  DD  DSN=&LOAD,DISP=SHR                                  
+	//SYSPRINT DD  SYSOUT=*                                            
+	//SYSUDUMP DD  SYSOUT=*                                            
+	//VIRARBO  DD  DSN=&ARBO,DISP=SHR                                  
+	//SYSIN      DD *                                                  
+	TRANSACT ID=CLI-03CO,                                              
+	         NAME='option',                                            
+	         DESC='CLI option directory (/option)',                    
+	         APPL=CLI-DIR,                                             
+	         TYPE=4,                                                   
+	         TERMINAL=CLLOC,                                           
+	         STARTUP=2,                                                
+	         SECURITY=0                                                
+	TRANSACT ID=CLI-03P,                                               
+	         NAME='w2h',                                               
+	         DESC='Directory for w2hparm.js',                          
+	         APPL=CLI-DIR,                                             
+	         TYPE=4,                                                   
+	         TERMINAL=CLLOC,                                           
+	         STARTUP=2,                                                
+	         SECURITY=0,                                               
+	         LOGMSG='/w2h/w2hparm-js'                                  
+	/*                                                                 
+ 
+
+Create the following two JavaScript members and upload them to the CLI-DIR directory:
+
+::
+
+	var w2hparm = {
+	     "global-settings":{
+	        "pathToW2hparm":"../option/w2hparm.global.js",        
+	     }
+	};  
+
+*w2hparm.js* 
+
+::
+
+	// Global w2hparm.global.js (CLI-DIR)
+	w2hparm.switchToolBarDisplay=true;
+	w2hparm.font="Consolas";
+	w2hparm.useVirtelMacros= {
+	   "macrosAutoRefresh": "session"
+	};
+	w2hparm.keymapping=true;           
+	    
+
+*w2hparm.global.js* 
+
+The configuration is now set to retrieve customized w2hparms for CLI from the member w2hparms.global.js. So, references to w2hparm will be resolved using the options directory pointed to by the w2hparm.js member.
+
+(Transaction CLI-03P) -> CLI-DIR -> w2hparms.js -> w2hparm.global.js
+
+
 **The User Macro Interface**
 
 **Macro functions**
