@@ -1,7 +1,11 @@
-.. _Virtel457MG:
+.. toctree::
+   :maxdepth: 3
+   :caption: Table of Contents:
+
+.. _#_Virtel457MG:
 
 ====================
-Messages Guide V4.57
+Messages V4.57
 ====================
 
 |image1|
@@ -41,32 +45,31 @@ Syspertec Communication
 
 .. _V457MG_Introduction:
 
-1. Virtel messages
-==================
+Virtel Messages
+===============
 
-1.1 Virtel user messages
-========================
+Virtel user messages
+--------------------
 
-
-1.1.1 ERRM121 - ERRM127
-^^^^^^^^^^^^^^^^^^^^^^^
+ERRM121 - ERRM127
+^^^^^^^^^^^^^^^^^
 
 .. note::
 
     These messages may be displayed in the user’s browser window following an unsuccessful upload of an HTML page, script, or other element to VIRTEL.
 
 ERRM121 -UPLOAD NOT AUTHORIZED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR0U12
 Meaning
     The user is not authorized to upload a page to the specified directory.
 Action
-    Ensure that the directory is defined to VIRTEL (see :ref:`“Directory Management” <#_V457UG_directory_management>` in the VIRTEL Web Access Guide). Ensure that the “Copy Up”, “Copy Down”, and “Delete” flags are all set in the directory definition. If using VIRTEL internal security or an external security product, ensure that you have authorization to the resource name which is the same as the VIRTEL directory name.
+    Ensure that the directory is defined to VIRTEL (see “Directory Management” in the VIRTEL Web Access Guide). Ensure that the “Copy Up”, “Copy Down”, and “Delete” flags are all set in the directory definition. If using VIRTEL internal security or an external security product, ensure that you have authorization to the resource name which is the same as the VIRTEL directory name.
 
 
 ERRM122 - ERROR IN VIRTEL HEADER COMMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0U12
 Meaning
@@ -81,7 +84,7 @@ Action
 
 
 ERRM124 - INVALID FIELD
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 Module
     VIR0U12
 Meaning
@@ -90,7 +93,7 @@ Action
     Refer to the section “Creating HTML and XML template pages” in the VIRTEL Web Access Guide. Correct the definition and upload the page again.
 
 ERRM125 - INTERNAL ERROR
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 Module
     VIR0U12
 Meaning
@@ -99,7 +102,7 @@ Action
     Use the VIRTEL SNAP command to take a snapshot of the internal trace table. Contact technical support.
 
 ERRM126 - OPEN ERROR
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR0U12
 Meaning
@@ -108,7 +111,7 @@ Action
     Check the directory definition in VIRTEL (see “Directory Management” in the VIRTEL Web Access Guide). Ensure that the DDNAME it refers to is defined in the UFILEn parameter of the VIRTCT and in the VIRTEL started task JCL, and that the file exists and can be opened. Check the console log for any VSAM error messages. Ensure that the “Copy Up”, “Copy Down”, and “Delete” flags are all set in the VIRTEL directory definition. For a newly-defined VSAM cluster, ensure that the file has been loaded with an $$$$IWS.WORKREC record using the installation job VIR4INST.
 
 ERRM127 - WRITE ERROR
-^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 Module
     VIR0U12
 Meaning
@@ -116,15 +119,15 @@ Meaning
 Action
     Check the console log for any VSAM error messages. Use the VIRTEL SNAP command to take a snapshot of the internal trace table. Contact technical support.
 
-1.1.2 User Interface Messages
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+User Interface Messages
+^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: 
 
     These messages may be displayed in the message area of the user’s terminal when logged on to VIRTEL. 
 
 0 CONNECTION IN PROGRESS...
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     VIR0015, VIR0021A, VIR0021R, VIR0025, VIR0025T
 Meaning
@@ -133,7 +136,7 @@ Action
     Wait for the response from the host application.
 
 1 DATA ENTERED IS INVALID FOR THIS SCREEN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
 VIR0021, VIR0021A, VIR0021R
 Meaning
@@ -142,7 +145,7 @@ Action
 Choose one of the options displayed on the screen.
 
 2 ERROR CONNECTING TO APPLICATION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0015, VIR0021H
 Meaning
@@ -151,7 +154,7 @@ Action
     Look for messages on the system console to find the reason for the error.
 
 3 APPLICATION HAS DISABLED THE SESSION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0015
 Meaning
@@ -165,7 +168,7 @@ This message is no longer issued.
 
 
 5 NO SAVED SCREEN FOR THIS SESSION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""" 
 Module
     VIR0022, VIR0022O
 Meaning
@@ -174,7 +177,7 @@ Action
     None.
 
 8 INSUFFICIENT MEMORY
-^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 Module
     VIR0043, VIR0043H
 Meaning
@@ -183,7 +186,7 @@ Action
     Increase VIRTEL region size.
 
 9 USER NAME UNKNOWN
-^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -192,7 +195,7 @@ Action
     Sign on again with a valid userid.
 
 10 INCORRECT PASSWORD
-^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""
 Module
     VIR0010, VIR0021H
 Meaning
@@ -201,7 +204,7 @@ Action
     Sign on again with the correct password.
 
 11 PASSWORD HAS EXPIRED
-^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""" 
 Module
     VIR0010
 Meaning
@@ -210,7 +213,7 @@ Action
     Sign on again specifying your expired password in the “your Password” field, and a password of your choice in the “NEW PASSWORD” field.
 
 12 NEW PASSWORD IS INVALID
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -219,7 +222,7 @@ Action
     Contact your security administrator to discover the rules for new passwords. Sign on again specifying a valid password in the “NEW PASSWORD” field.
 
 13 SIGNON IS SUSPENDED
-^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -228,7 +231,7 @@ Action
     Contact your security administrator to reinstate your userid.
 
 14 USER NOT AUTHORISED TO USE TERMINAL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -237,7 +240,7 @@ Action
     Choose a terminal which you are authorized to use.
 
 15 USER NOT AUTHORISED TO USE APPLICATION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -246,7 +249,7 @@ Action
     Ask your security administrator to authorize you to log on to the VIRTEL application.
 
 16 ERROR DURING SIGN-ON PROCESSING
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -255,7 +258,7 @@ Action
     Contact technical support. Look for messages in the system log which might indicate the reason for the failure.
 
 17 TRANSACTION ABEND
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -264,7 +267,7 @@ Action
     Look at the VIRTEL system log to detemine the cause of the error.
 
 18 ENTER YOUR USERID AND PASSWORD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -273,7 +276,7 @@ Action
     Enter your userid and password at the signon screen.
 
 19 SIGN ON CANCELED AND SESSION ENDED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0010, VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
 Meaning
@@ -282,7 +285,7 @@ Action
     VIRTEL signs off and ends the session.
 
 20 UNEXPECTED CHOICE
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR0014, VIR0034
 Meaning
@@ -291,7 +294,7 @@ Action
     Choose one of the services displayed on the screen.
 
 21 NO MORE PAGES AT THIS LEVEL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR0014, VIR0034
 Meaning
@@ -300,7 +303,7 @@ Action
     None.
 
 22 THIS SERVICE IS ACCESS RESTRICTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
     VIR0014, VIR0034
 Meaning
@@ -309,16 +312,16 @@ Action
     Sign on with a userid authorized to access the requested service.
 
 23 YOU ARE NOT AUTHORISED TO ACCESS THIS SERVICE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0014, VIR0034
 Meaning
     Your userid is not authorized to access the requested service.
 Action
-    Request the security administrator to authorize your userid to access the requested service.
+    Request the security administrator to authorize your userid to access the requested service. See the Security chapter in the Virtel user guide for more information on protecting Virtel resources and services. 
 
 24 SERVICE BRIEFLY INTERRUPTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR0014, VIR0034
 Meaning
@@ -327,7 +330,7 @@ Action
     Wait for the service to become available.
 
 25 NO PAGES / GUIDE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 Module
     VIR0014, VIR0034
 Meaning
@@ -336,7 +339,7 @@ Action
     None.
 
 26 THE REQUESTED SERVICE IS UNKNOWN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0014, VIR0034
 Meaning
@@ -345,7 +348,7 @@ Action
     None.
 
 27 PF KEY SELECTED IS INVALID FOR THIS SCREEN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0014, VIR0034, VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P, VIR0022A, VIR0025
 Meaning
@@ -354,7 +357,7 @@ Action
     Press one of the PF keys displayed on the screen.
 
 28 USER ID IS SUSPENDED
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 Module
     VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
 Meaning
@@ -363,7 +366,7 @@ Action
     Ask your security administrator to reinstate your access.
 
 30 TERMINAL NAME UNKNOWN
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 Module
     VIR0022, VIR0022O
 Meaning
@@ -372,7 +375,7 @@ Action
     None.
 
 31 YOU ARE ON THE FIRST PAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""" 
 Module
     Various
 Meaning
@@ -381,7 +384,7 @@ Action
     None.
 
 32 YOU ARE ON THE LAST PAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     Various
 Meaning
@@ -390,16 +393,16 @@ Action
     None.
 
 33 YOU ARE NOT AUTHORISED TO USE THIS APPLICATION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021, VIR0021A, VIR0022, VIR0022O, VIR0041A, VIR0043, VIR0043H
 Meaning
     You requested a VIRTEL subapplication but either you do not have the necessary authorization, or the subapplication has not been enabled in the VIRTCT. When this message is issued by VIR0043 or VIR0043H, it indicates that the VIRTEL directory does not permit the requested operation (upload, download, or delete).
 Action
-    Ask your security administrator to grant you authorization to the requested subapplication. Refer to the VIRTEL Connectivity Guide for details of the authorization mechanism for subapplications. The availability of certain subapplications is governed by the ARBO, RESO, HTVSAM, VIRSECU parameters of the VIRTCT, documented in the VIRTEL Installation Guide. Refer to :ref:`“Directory Management” <#_V457UG_directory_management>` in the VIRTEL Web Access Guide for details of VIRTEL directory permissions.
+    Ask your security administrator to grant you authorization to the requested subapplication. Refer to the VIRTEL Connectivity Guide for details of the authorization mechanism for subapplications. The availability of certain subapplications is governed by the ARBO, RESO, HTVSAM, VIRSECU parameters of the VIRTCT, documented in the VIRTEL Installation Guide. Refer to “Directory Management” in the VIRTEL Web Access Guide for details of VIRTEL directory permissions. Also, see the Security chapter in the Virtel user guide for more information on protecting Virtel resources and services. 
 
 34 UPDATE OK
-^^^^^^^^^^^^
+""""""""""""
 Module
     VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0044, VIR0045, VIR0046, VIR0047, VIR1001, VIR1002
 Meaning
@@ -408,7 +411,7 @@ Action
     None.
 
 35 CREATION OK
-^^^^^^^^^^^^^^
+""""""""""""""
 Module
     VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0044, VIR0045, VIR0046, VIR0047, VIR1001, VIR1002
 Meaning
@@ -417,7 +420,7 @@ Action
     None.
 
 36 DELETE OK
-^^^^^^^^^^^^
+""""""""""""
 Module
     VIR0023, VIR0026, VIR0031, VIR0033, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR0052, VIR1001, VIR1002
 Meaning
@@ -426,7 +429,7 @@ Action
     None.
 
 37 RECORD ALREADY EXISTS
-^^^^^^^^^^^^^^^^^^^^^^^^    
+""""""""""""""""""""""""    
 Module
     VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0044, VIR0045, VIR0046, VIR0047, VIR1001, VIR1002, VIR1005
 Meaning
@@ -435,7 +438,7 @@ Action
     Either choose a new identifier, or select the existing record and update it.
 
 38 RECORD DOES NOT EXIST
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 Module
     VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0044, VIR0045, VIR0046, VIR0047, VIR0052, VIR1001, VIR1002, VIR1003, VIR1004, VIR1005, VIR1006
 Meaning
@@ -444,7 +447,7 @@ Action
     None.
 
 39 INVALID CURSOR POSITION
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 Module
     VIR0023, VIR0026, VIR0031, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR1003, VIR1004, VIR1006
 Meaning
@@ -454,7 +457,7 @@ Action
 
 
 40 CONFIRM DELETE
-^^^^^^^^^^^^^^^^^ 
+""""""""""""""""" 
 Module
     VIR0023, VIR0026, VIR0031, VIR0033, VIR0041, VIR0041A, VIR0042, VIR0043, VIR0043H, VIR0044, VIR0045, VIR0046, VIR0047, VIR0052, VIR1001, VIR1002
 Meaning
@@ -463,7 +466,7 @@ Action
     Press F2 again if you wish to delete the highlighted record. Press any other function key to cancel the delete.
 
 41 KEY IN DATA AND PRESS ENTER
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR0023, VIR0026, VIR0041, VIR0041A, VIR0042, VIR1001
 Meaning
@@ -472,7 +475,7 @@ Action
     Fill in the fields on the screen and press Enter to add the new record to the VIRARBO file.
 
 42 INCORRECT VALUE
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
 Module
     VIR0023, VIR0031, VIR0041, VIR0041A, VIR0044, VIR0045, VIR0047, VIR1001
 Meaning
@@ -481,7 +484,7 @@ Action
     Correct the field in error and press Enter.
 
 43 PLEASE WAIT....
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
 Module
     VIR0012, VIR0016, VIR0032, VIR0036
 Meaning
@@ -490,7 +493,7 @@ Action
     Wait for the response from the host application.
 
 45 EXCESSIVE NUMBER OF ATTEMPTS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""" 
 Module
     VIR0010
 Meaning
@@ -499,7 +502,7 @@ Action
     Contact your security administrator.
 
 46 PASSWORD HAS BEEN CHANGED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""" 
 Module
     VIR0010
 Meaning
@@ -508,7 +511,7 @@ Action
     None.
 
 47 INACTIVITY TIMEOUT PLEASE ENTER YOUR PASSWORD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
 Meaning
@@ -517,7 +520,7 @@ Action
     Enter your password to unlock the terminal.
 
 48 INVALID FUNCTION KEY
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 Module
     VIR1001-1006, VIR2002-2013, VIR2015-2016, VIR2019
 Meaning
@@ -526,7 +529,7 @@ Action
     Press one of the PF keys displayed on the screen.
 
 49 NODE TYPE UNSUPPORTED
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 Module
     VIR2002, VIR2014, VIR2019
 Meaning
@@ -535,7 +538,7 @@ Action
     None.
 
 50 NODE TYPE INVALID
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR2002-2019
 Meaning
@@ -544,7 +547,7 @@ Action
     None.
 
 51 PROGRAM progname UNKNOWN OR DISABLED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0040, VIR1000-1006, VIR2002-2019, VIR4000-4023
 Meaning
@@ -553,7 +556,7 @@ Action
     Contact technical support.
 
 52 INVALID CHOICE
-^^^^^^^^^^^^^^^^^
+"""""""""""""""""
 Module
     VIR0040, VIR1000, VIR4000-4003, VIR4005
 Meaning
@@ -562,7 +565,7 @@ Action
     Choose one of the options displayed on the menu.
 
 53 FUNCTION RESERVED FOR ADMINISTRATOR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4000
 Meaning
@@ -571,7 +574,7 @@ Action
     Sign on with an administrator userid.
 
 54 OPTION RESERVED FOR HEAD OF DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0040, VIR4000-4003
 Meaning
@@ -580,7 +583,7 @@ Action
     Sign on with a userid which is marked as head of department.
 
 55 ENTER NAME OF DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     VIR4004, VIR4020, VIR4021
 Meaning
@@ -589,7 +592,7 @@ Action
     Enter a value in the indicated field.
 
 56 ENTER THE DESCRIPTION OF THE deptname DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4020, VIR4021
 Meaning
@@ -598,7 +601,7 @@ Action
     Enter a value in the indicated field.
 
 57 ENTER THE NAME OF THE PERSON RESPONSIBLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4020, VIR4021
 Meaning
@@ -607,7 +610,7 @@ Action
     Enter a value in the indicated field.
 
 58 ENTER THE TITLE OF THE PERSON RESPONSIBLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4020, VIR4021
 Meaning
@@ -617,7 +620,7 @@ Action
 
 
 59 THE DEPARTMENT ALREADY EXISTS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+""""""""""""""""""""""""""""""""  
 Module
     VIR4020
 Meaning
@@ -626,7 +629,7 @@ Action
     Choose a new department name or edit the existing department.
 
 60 THE RESPONSIBLE PERSON ALREADY EXISTS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4020
 Meaning
@@ -635,7 +638,7 @@ Action
     Choose a new person or edit the existing person.
 
 61 PRESS PF1 TO CONFIRM CREATION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""" 
 Module
     VIR4006, VIR4010, VIR4014, VIR4020
 Meaning
@@ -644,7 +647,7 @@ Action
     Press F1 to create the new record. Press any other function key to cancel creation of the new record.
 
 62 CREATION OK
-^^^^^^^^^^^^^^
+""""""""""""""
 Module
     VIR4006, VIR4010, VIR4014, VIR4020, VIR4022
 Meaning
@@ -653,7 +656,7 @@ Action
     None.
 
 63 END OF FILE
-^^^^^^^^^^^^^^
+""""""""""""""
 Module
     VIR1001-1006, VIR4004, VIR4007-4009, VIR4011-4014, VIR4015-4016, VIR4021-4023
 Meaning
@@ -663,7 +666,7 @@ Action
 
 
 64 THE DEPARTMENT DOES NOT EXIST
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+""""""""""""""""""""""""""""""""  
 Module
     VIR4004, VIR4021
 Meaning
@@ -672,7 +675,7 @@ Action
     None.
 
 65 UPDATE OK
-^^^^^^^^^^^^
+""""""""""""
 Module
     VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
 Meaning
@@ -681,7 +684,7 @@ Action
     None.
 
 66 BEGINNING OF FILE
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR4004, VIR4008, VIR4011, VIR4015, VIR4021, VIR4023
 Meaning
@@ -690,7 +693,7 @@ Action
     None.
 
 67 THE DEPARTMENT STILL CONTAINS PROFILES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4021
 Meaning
@@ -699,7 +702,7 @@ Action
     Delete the associated profiles before deleting the department.
 
 68 THE DEPARTMENT STILL CONTAINS USERS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4021
 Meaning
@@ -708,7 +711,7 @@ Action
     Delete the associated users before deleting the department.
 
 69 USE PF2 TO CONFIRM DELETE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""" 
 Module
     VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
 Meaning
@@ -717,7 +720,7 @@ Action
     Press F2 if you wish to delete the record. Press any other function key to cancel the delete.
 
 70 DELETE OK
-^^^^^^^^^^^^
+""""""""""""
 Module
     VIR4008-4009, VIR4011, VIR4015-4016, VIR4021
 Meaning
@@ -726,7 +729,7 @@ Action
     None.
 
 71 THE RESOURCE ALREADY EXISTS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR4010
 Meaning
@@ -735,7 +738,7 @@ Action
     Choose a new resource name or edit the existing resource.
 
 72 ENTER THE DESCRIPTION OF THE RESOURCE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4010, VIR4011
 Meaning
@@ -744,7 +747,7 @@ Action
     Enter a value in the resource description field.
 
 73 THE CURSOR POSITION IS INVALID
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""" 
 Module
     VIR4009, VIR4011, VIR4013, VIR4016, VIR4022
 Meaning
@@ -753,7 +756,7 @@ Action
     Position the cursor on the record you wish to operate upon.
 
 74 THE RESOURCE DOES NOT EXIST
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""" 
 Module
     VIR4011
 Meaning
@@ -762,7 +765,7 @@ Action
     None.
 
 75 MODIFIED BY ANOTHER USER
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     VIR4004, VIR4010-4011, VIR4015-4016, VIR4021-4023
 Meaning
@@ -771,7 +774,7 @@ Action
     Return to the previous menu and display the record again.
 
 76 ENTER THE NAME OF THE PROFILE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""" 
 Module
     VIR4006, VIR4008
 Meaning
@@ -780,7 +783,7 @@ Action
     Enter a value in the profile name field.
 
 77 ENTER THE DESCRIPTION OF THE PROFILE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4006, VIR4008
 Meaning
@@ -789,7 +792,7 @@ Action
     Enter a value in the profile description field.
 
 78 THE PROFILE ALREADY EXISTS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 Module
     VIR4006, VIR4008
 Meaning
@@ -798,7 +801,7 @@ Action
     Enter a different name in the profile name field.
 
 81 REQUESTED ELEMENT DOES NOT EXIST
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR1002, VIR4006, VIR4008
 Meaning
@@ -807,7 +810,7 @@ Action
     Correct the name of the referenced element.
 
 82 REQUESTED ELEMENT DOES NOT EXIST IN DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4006, VIR4008
 Meaning
@@ -816,7 +819,7 @@ Action
     Correct the name of the referenced element.
 
 83 YOU ARE ON THE FIRST PAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 Module
     VIR4004, VIR4006, VIR4008, VIR4012-4015
 Meaning
@@ -825,7 +828,7 @@ Action
     None.
 
 84 YOU ARE ON THE LAST PAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     VIR4004, VIR4006, VIR4008, VIR4012-4015
 Meaning
@@ -834,7 +837,7 @@ Action
     None.
 
 85 THE PROFILE DOES NOT EXIST
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""" 
 Module
     VIR4004, VIR4008, VIR4009, VIR4014-4015
 Meaning
@@ -843,7 +846,7 @@ Action
     None.
 
 86 THE PROFILE IS USED IN ANOTHER DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR4008
 Meaning
@@ -852,7 +855,7 @@ Action
     None.
 
 87 THE PROFILE IS EMPLOYED BY A USER
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""" 
 Module
     VIR4008, VIR4009
 Meaning
@@ -861,7 +864,7 @@ Action
     Display the profile again and re-enter the modifications.
 
 88 ENTER THE NAME OF THE USER
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 Module
     VIR4014, VIR4015, VIR4022
 Meaning
@@ -870,7 +873,7 @@ Action
     Enter a valid user name.
 
 89 ENTER THE DESCRIPTION OF THE USER
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
 VIR4014, VIR4015
 Meaning
@@ -879,7 +882,7 @@ Action
 Enter a value in the description field.
 
 90 USER ALREADY EXISTS
-^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 Module
     VIR4014, VIR4015
 Meaning
@@ -888,7 +891,7 @@ Action
     Enter a different value in the user name field.
 
 91 ERROR LOGICAL RECORD (name) NOT FOUND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021A, VIR0021R, VIR4004, VIR4014, VIR4015
 Meaning
@@ -897,7 +900,7 @@ Action
     Specify a valid name.
 
 92 THE PROFILE DOES NOT APPEAR IN THE DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR4004, VIR4008, VIR4009, VIR4013, VIR4015
 Meaning
@@ -906,7 +909,7 @@ Action
     Ensure that the profile matches the user’s department.
 
 93 AUTHORISED PROFILE LIMIT EXCEEDED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
     VIR4004, VIR4015
 Meaning
@@ -915,7 +918,7 @@ Action
     Contact technical support.
 
 94 USER DOES NOT EXIST
-^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 Module
     VIR4015, VIR4016, VIR4021-4023
 Meaning
@@ -924,7 +927,7 @@ Action
     None.
 
 95 USER DOES NOT APPEAR IN THE DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR4015, VIR4016, VIR4021, VIR4023
 Meaning
@@ -933,7 +936,7 @@ Action
     Only an administrator in the same department as the user can perform the requested operation.
 
 96 FUNCTION RESERVED FOR HEAD OF THE DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR4008, VIR4009, VIR4011, VIR4015, VIR4016
 Meaning
@@ -942,7 +945,7 @@ Action
     Only an administrator in the same department as the user can perform the requested operation.
 
 97 ENTER Y OR N
-^^^^^^^^^^^^^^^
+"""""""""""""""
 Module
     VIR4014, VIR4015
 Meaning
@@ -951,7 +954,7 @@ Action
     Enter O (yes) or N (no) in the indicated field.
 
 98 FIELD RESERVED FOR RESPONSIBLE OF DEPARTMENT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR4014, VIR4015
 Meaning
@@ -960,7 +963,7 @@ Action
     Only the head of department may put O (yes) in the indicated field.
 
 99 DELETION OF DEPARTMENT RESPONSIBLE FORBIDDEN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR4014, VIR4015
 Meaning
@@ -969,7 +972,7 @@ Action
     Update the department record to assign another user as head of department first.
 
 100 DELETION OF DEPUTY FORBIDDEN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     VIR4015
 Meaning
@@ -978,7 +981,7 @@ Action
     Set the assistant field to N (no) first.
 
 101 USER IS ALREADY ADMINISTRATOR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR4022
 Meaning
@@ -987,7 +990,7 @@ Action
     None.
 
 103 REPRODUCTION OK
-^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""
 Module
     VIR1001, VIR1002, VIR1005, VIR4008, VIR4015
 Meaning
@@ -996,7 +999,7 @@ Action
     None.
 
 104 REPRODUCTION OF DEPUTY FORBIDDEN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
     VIR4015
 Meaning
@@ -1005,7 +1008,7 @@ Action
     Set the assistant field to N (no) first, or choose another user to copy.
 
 105 USER SIGN-ON UNKNOWN
-^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""" 
 Module
     VIR4000
 Meaning
@@ -1014,7 +1017,7 @@ Action
     Log in with a valid VIRTEL userid.
 
 106 SIGN-ON RESTORED OK
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 Module
     VIR4023
 Meaning
@@ -1023,7 +1026,7 @@ Action
     None.
 
 107 CALL REJECTED BY THE NETWORK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     VIR0021A, VIR0021R, VIR0025, VIR0025T
 Meaning
@@ -1032,7 +1035,7 @@ Action
     Check for messages in the VIRTEL log which indicate the cause of the error.
 
 109 PREVIOUS CONNECTION: dd/mm/yy hh:mm:ss termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00081
 Meaning
@@ -1041,7 +1044,7 @@ Action
     None.
 
 110 THE FILE filename UNKNOWN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 Module
     VIR1001, VIR1002
 Meaning
@@ -1050,7 +1053,7 @@ Action
     Ensure that the file is correctly referenced in the VIRTCT, and that there is a DD statement for the indicated file.
 
 111 THE FILE filename IS CLOSED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""
 Module
     VIR1001, VIR1002
 Meaning
@@ -1059,7 +1062,7 @@ Action
     Check the VIRTEL log for messages relating to the indicated file.
 
 112 I/OERROR ON FILE filename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 Module
     VIR0043, VIR0043H, VIR1001, VIR1002
 Meaning
@@ -1068,7 +1071,7 @@ Action
     Check the VIRTEL log for messages relating to the indicated file.
 
 113 THIS IS NOT A MINITEL NATIVE NODE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR1003
 Meaning
@@ -1077,7 +1080,7 @@ Action
     Choose a native node record.
 
 114 ALL=END
-^^^^^^^^^^^
+"""""""""""
 Module
     VIR1003, VIR1004
 Meaning
@@ -1086,7 +1089,7 @@ Action
     None.
 
 115 PLEASE SUPPLY A VALID NODE NAME
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR2019
 Meaning
@@ -1095,7 +1098,7 @@ Action
     Enter the name of a valid VTAM node.
 
 116 THE NODE NAME IS INVALID
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 Module
     VIR2019
 Meaning
@@ -1104,7 +1107,7 @@ Action
     Enter the name of a valid VTAM node.
 
 117 CONFIRM CANCELLATION OF THE PASSWORD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0041
 Meaning
@@ -1113,7 +1116,7 @@ Action
     Press PF4 again to remove the password, or press any other key to cancel the operation.
 
 118 THIS FILE IS ALREADY IN THE TARGET DIRECTORY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0043, VIR0043H, VIR0052
 Meaning
@@ -1122,7 +1125,7 @@ Action
     Delete the file from the target directory and try again.
 
 119 COPY COMPLETED
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
 Module
     VIR0043, VIR0043H
 Meaning
@@ -1131,7 +1134,7 @@ Action
     None.
 
 120 THE RECORDED STATUS HAS CHANGED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0043, VIR0043H
 Meaning
@@ -1140,7 +1143,7 @@ Action
     None.
 
 121 FILE ERROR PLEASE SEE THE ADMINISTRATOR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0033, VIR0043, VIR0043H, VIR0052
 Meaning
@@ -1152,7 +1155,7 @@ Action
     Check the VIRTEL log for error messages indicating the cause of the error.
 
 122 FILE TRANSFER IN PROGRESS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 Module
     VIR0043, VIR0043H
 Meaning
@@ -1161,7 +1164,7 @@ Action
     None.
 
 123 CONFIRM COPY TO MEMORY
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 Module
     VIR0043, VIR0043H
 Meaning
@@ -1170,7 +1173,7 @@ Action
     Press PF6 again to copy the file, or press any other key to cancel the operation.
 
 124 CONFIRM THE COPY OF THIS PAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0043, VIR0043H
 Meaning
@@ -1179,7 +1182,7 @@ Action
     Press PF1 again to confirm, or press any other key to cancel the operation.
 
 125 IMPOSSIBLE OPERATION
-^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""" 
 Module
     VIR0022A
 Meaning
@@ -1188,7 +1191,7 @@ Action
     None.
 
 126 NAME OF PAGE TO LOAD :
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""
 Module
     VIR1010
 Meaning
@@ -1197,7 +1200,7 @@ Action
     Enter the name of the page to be uploaded.
 
 127 THE PAGE ALREADY EXISTS,REPLACE (Y / N)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR1010
 Meaning
@@ -1206,7 +1209,7 @@ Action
     Enter Y to overwrite the page in the VIRARBO file, or N to cancel the operation.
 
 128 SELECT THE PAGE THEN PRESS SEND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR1010
 Meaning
@@ -1215,7 +1218,7 @@ Action
     Select the page according to the procedure provided by your page composition software, then press the “SEND” (or “ENVOI”) key.
 
 129 CREATION COMPLETED
-^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 Module
     VIR1010
 Meaning
@@ -1224,7 +1227,7 @@ Action
     None.
 
 130 UPDATE COMPLETED
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR1010
 Meaning
@@ -1233,7 +1236,7 @@ Action
     None.
 
 131 PRESS PF1 TO CONFIRM THE UPDATE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0044, VIR0046
 Meaning
@@ -1242,7 +1245,7 @@ Action
     Press PF1 to confirm the update.
 
 132 PLEASE CONFIRM YOUR PASSWORD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     VIR0020, VIR0020A, VIR0020L, VIR0020M, VIR0020P
 Meaning
@@ -1251,7 +1254,7 @@ Action
     Enter your password again to reactivate your terminal.
 
 133 UNITS SPENT: nnnnn.nn
-^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""
 Module
     VIR0021A, VIR0025
 Meaning
@@ -1261,7 +1264,7 @@ Action
 
 
 134 POSITION IN QUEUE: nnnn
-^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""" 
 Module
     VIR0025, VIR0025T
 Meaning
@@ -1270,7 +1273,7 @@ Action
     None.
 
 135 ACTIVATION WAS REQUESTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 Module
     VIR0041A
 Meaning
@@ -1279,7 +1282,7 @@ Action
     None.
 
 136 DISABLE WAS DONE
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR0041A
 Meaning
@@ -1288,7 +1291,7 @@ Action
     None.
 
 137 Should contain the '@' sign
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""
 Module
     VIR0041A
 Meaning
@@ -1297,7 +1300,7 @@ Action
     When you enter an e-mail address, ensure that you use the same symbol as displayed in this message.
 
 138 Sample command: &|W
-^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""" 
 Module
     VIR0045
 Meaning
@@ -1305,11 +1308,14 @@ Meaning
 Action
     When you enter script commands in the “TIOA at logon” and “TIOA at logoff” fields, ensure that you use the same symbols as displayed in this message.
 
-1.2.    Web Access Messages
----------------------------
+Web Access Messages
+-------------------
 
 .. note::
     These messages are issued by VIRTEL Web Access scripts and are displayed as alerts in the user’s browser window. 
+
+Messages for js01.js
+^^^^^^^^^^^^^^^^^^^^    
 
 *Cannot open pop-up window for print data. You may need to disable your pop- up blocker*
 
@@ -1329,6 +1335,9 @@ Meaning
 Action
     Same as previous message.
 
+Messages for rsa.js
+^^^^^^^^^^^^^^^^^^^       
+
 *Message too long for RSA*
 
 Module
@@ -1346,6 +1355,9 @@ Meaning
     The RSA key supplied by VIRTEL is not valid.
 Action
     Contact technical support.
+
+Messages for vircrypt.js
+^^^^^^^^^^^^^^^^^^^^^^^^           
 
 *vircrypt.js: VIRTEL CRYPT parameters are missing*
 
@@ -1392,14 +1404,14 @@ Meaning
 Action
     Clear the browser cache to ensure that you are using the latest version of the script. If the problem persists, contact technical support.
 
-2.  VIRTEL console messages
-===========================
+VIRTEL console messages
+-----------------------
 
-2.1.    Messages VIR000xx
-=========================
+Messages VIR000xx
+^^^^^^^^^^^^^^^^^
 
 VIR0000I xxxx Date: Mon, 07 Jun 2004 15:20:23 GMT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1408,7 +1420,7 @@ Action
     None.
 
 VIR0001W VSAM ERROR ON FILE filename : yy yy (HEX) REQ : zz KEY : keyvalue
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0001
 Meaning
@@ -1417,7 +1429,7 @@ Action
     Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
 
 VIR0002W TERM=termid, REQUEST=qq, RTNCD=cc, FDBK2=dd, SENSE=ssss ssss xxxxxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1426,7 +1438,7 @@ Action
     Verify the values of the returned sense codes in the appropriate IBM documentation. VTAM codes are documented in the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manuals.
 
 VIR0003I xxxxxxxx ENDED
-^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1435,7 +1447,7 @@ Action
     None.
 
 VIR0004I CLEANUP : luname/ applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1444,7 +1456,7 @@ Action
     None.
 
 VIR0005W UNABLE TO ACTIVATE relayname (termid) ERROR: xx000000
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1458,7 +1470,7 @@ Action
     Verify that the VTAM node containing the relay relayname has been activated, verify that the relay is not already activated for an other terminal or application, and that the terminal is correctly defined in VIRTEL.
 
 VIR0006I DETACHING xxxxxxxx SUBTASK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1467,7 +1479,7 @@ Action
     None.
 
 VIR0007I luname/applname BIND FAILED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1476,7 +1488,7 @@ Action
     Verify the memory allocation to VIRTEL.
 
 VIR0008S INVALID RPL
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     	VIR0009
 Meaning
@@ -1485,7 +1497,7 @@ Action
     Contact technical support.
 
 VIR0009I xxxxxxx : SHUT DOWN IN PROGRESS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -1493,11 +1505,11 @@ Meaning
 Action
     None.
 
-2.2.    Messages VIR001xx
-=========================
+Messages VIR001xx
+^^^^^^^^^^^^^^^^^
 
 VIR0010I SUBPOOL SIZE = ssss K
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1506,7 +1518,7 @@ Action
     None.
 
 VIR0011E INSUFFICIENT MEMORY FOR START UP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 
 Module
     VIR0000
@@ -1518,7 +1530,7 @@ Action
     - in MVS, increase the REGION size.
 
 VIR0012W INSUFFICIENT MEMORY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -1527,7 +1539,7 @@ Action
     Increase the memory allocated to VIRTEL, and/or increase the value of the OSCORE parameter of the VIRTCT. (See message VIR0011E).
 
 VIR0013W VTAM SHORT ON STORAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1536,7 +1548,7 @@ Action
     Ensure that the VTAM definitions are correct.
 
 VIR0014S FREEMAIN FATAL ERROR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1545,7 +1557,7 @@ Action
     Contact technical support.
 
 VIR0015S ABEND WITHIN VIRTEL KERNEL, TASK=taskname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0007
 Meaning
@@ -1554,7 +1566,7 @@ Action
     In order to deal with this problem, two dumps are printed during VIRTEL termination, one formatted, the other non formatted. Contact technical support.
 
 VIR0016W ABEND abendtype TERM=termid, PROG=progname, OFFSET=+xxxxx VIR0016W PSW = pppppppp pppppppp nnnncccc aaaaaaaa
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0004
 Meaning
@@ -1563,7 +1575,7 @@ Action
     Contact technical support.
 
 VIR0017I LOGON luname/relayname DENIED STATE=ss
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1577,7 +1589,7 @@ Action
     None.
 
 VIR0018I VIRTEL r.vv HAS THE FOLLOWING PTF(S) APPLIED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning 
@@ -1586,7 +1598,7 @@ Action
     None.
 
 VIR0019I VIRTEL 4.nn HAS NO PTFS APPLIED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1594,11 +1606,11 @@ Meaning
 Action
     None.
 
-2.3.    Messages VIR002xx
-=========================
+Messages VIR002xx
+^^^^^^^^^^^^^^^^^
 
 VIR0020E APPLICATION acbname IS ALREADY ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -1607,7 +1619,7 @@ Action
     Check if another VIRTEL task is already active. Check that the correct APPLID was specified in the VIRTCT.
 
 VIR0021E ERROR xx OPENING MAIN TASK ACB acbname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1624,7 +1636,7 @@ Action
 For values of the ACB error code, refer to the IBM VTAM Programming manual.
 
 VIR0022E ERROR xx BUILDING VSAM BUFFER POOL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1633,7 +1645,7 @@ Action
     Evaluate the following operands BUFDATA, BUFSIZE and STRNO of the VIRTCT. Return code X'08' indicates that the memory allocated to VIRTEL is insufficient.
 
 VIR0023E ERROR xx OPENING FILE filename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0000
 Meaning
@@ -1642,7 +1654,7 @@ Action
     Verify in the appropriate IBM documentation the meaning of the returned code. Note that when opening the VIRSWAP file, a return code of X'5C' (empty file) is considered normal. The VIRSWAP file is always empty at start-up this does not constitute an error.
 
 VIR0024I
-^^^^^^^^
+""""""""
 This message indicates the progress of VIRTEL start-up : 
 
 OPENING FILE filename
@@ -1700,7 +1712,7 @@ Action
     None.
 
 VIR0025E ERROR progname IS NOT FOR VIRTEL VERSION vvv
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1709,7 +1721,7 @@ Action
     Re-assemble the VIRTCT using version vvv of the VIRTEL MACLIB.
 
 VIR0025E ERROR ON OVERRIDE: overname RETURN CODE: hhhh SUB CODE: ssssssss
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1718,7 +1730,7 @@ Action
     Correct the error, re-assemble the VIRTCT, and restart VIRTEL.
 
 VIR0026I COMPRESSION 3 IS NOT ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1727,7 +1739,7 @@ Action
     Verify the validity of the operands FCMP3 and COMPR3 of the VIRTCT.
 
 VIR0026W termid OPEN SESSION luname1 – luname2
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -1736,7 +1748,7 @@ Action
     None.
 
 VIR0026W linename HAS OPEN OBJECT socknum
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1745,7 +1757,7 @@ Action
     None.
 
 VIR0026W termid IS DISCONNECTED DUE TO TIME-OUT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1754,7 +1766,7 @@ Action
     None.
 
 VIR0027I
-^^^^^^^^
+""""""""
 Screen type management messages :
 
 nnnn SCREEN TYPES LOADED
@@ -1774,7 +1786,7 @@ SAVING SCREENS
         None.
 
 VIR0028I SCREEN screentype ADDED TO LIBRARY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1783,7 +1795,7 @@ Action
     None.
 
 VIR0028I SCREEN screentype MODIFIED TO LIBRARY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -1792,7 +1804,7 @@ Action
     None.
 
 VIR0028W SCREEN screentype WAS NOT MOVED TO LIBRARY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1801,7 +1813,7 @@ Action
     Verify that the VIRCMP3 file is not full or damaged.
 
 VIR0028W WELCOME OF UNDEFINED luname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1810,7 +1822,7 @@ Action
     None.
 
 VIR0029W WELCOME OF UNDEFINED luname DENIED : NO MORE ENTRIES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -1818,11 +1830,11 @@ Meaning
 Action
     If you wish to operate the terminal in “relay” mode, define the terminal in VIRTEL with an associated relay defined by a VTAM APPL card. If you wish to continue operating the terminal in “welcome” mode, increase the value of the NBDYNAM parameter in the VIRTCT.
 
-2.4.    Messages VIR003xx
-=========================
+Messages VIR003xx
+^^^^^^^^^^^^^^^^^
 
 VIR0030E ERROR xx LOADING progname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -1831,7 +1843,7 @@ Action
     This was probably an attempt to load an exit that was not assembled, or incorrectly referenced in the VIRTCT.
 
 VIR0030E ERROR: xx LOADING progname : CROSS MEMORY CANNOT START
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1840,7 +1852,7 @@ Action
     Ensure that the VIRXM load library is included in the STEPLIB of the VIRTEL STC.
 
 VIR0030E ERROR: xx LOADING progname : BATCH INTERFACE CANNOT START
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1849,7 +1861,7 @@ Action
     Ensure that the correct version of the VIRTEL load library is included in the STEPLIB of the VIRTEL STC.
 
 VIR0030S ERROR OPENING DFHRPL (MVS only)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0003
 Meaning
@@ -1858,7 +1870,7 @@ Action
     Verify the definition of the STC.
 
 VIR0030W PROGRAM progname NOT FOUND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0003
 Meaning
@@ -1867,7 +1879,7 @@ Action
     Contact technical support.
 
 VIR0031E UNDEFINED TCP TCPn FOR LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1876,7 +1888,7 @@ Action
     Correct the line definition, or define the TCPn parameter in the VIRTCT.
 
 VIR0031E UNSUPPORTED CROSS-MEMORY XMn (protocol) FOR LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""  
 Module
     VIR0000
 Meaning
@@ -1885,7 +1897,7 @@ Action
     Correct the line definition, or define the XMn parameter in the VIRTCT.
 
 VIR0031E UNSUPPORTED MQ SERIES TYPE MQn (protocol) FOR LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1894,7 +1906,7 @@ Action
     Correct the line definition, or define the MQn parameter in the VIRTCT.
 
 VIR0031E UNSUPPORTED BATCH LINE TYPE BATCHn (protocol) FOR LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1903,7 +1915,7 @@ Action
     Correct the line definition, or define the BATCHn parameter in the VIRTCT.
 
 VIR0031W PROGRAM progname NOT FOUND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0003
 Meaning
@@ -1912,7 +1924,7 @@ Action
     In MVS, verify that the DFHRPL DD card in the VIRTEL started task JCL specifies the name of the library that contains the VIRTEL load modules. In DOS, verify that the LIBDEF SEARCH card in the VIRTEL startup JCL references the library that contains the VIRTEL phases.
 
 VIR0032E PERMANENT I/O ERROR DURING FETCH
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0003
 Meaning
@@ -1921,7 +1933,7 @@ Action
     Verify the definition of the library containing VIRTEL modules.
 
 VIR0032W BYPASSING LINE n-xxxxxx : STATUS IS ZERO
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1930,7 +1942,7 @@ Action
     None.
 
 VIR0032W BYPASSING LINE n-xxxxxx : DISABLED IN VIRTCT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1939,7 +1951,7 @@ Action
     In the first case, remove the line name from the IGNLU parameter in the VIRTCT. In the second case, contact Syspertec to upgrade your license.
 
 VIR0033E NO LINE DEFINED FOR termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1948,7 +1960,7 @@ Action
     Check that the prefix of the terminal name is referenced in the definition of the appropriate line. This message is normal if the terminal is linked to an inactive line (indicated by message VIR0032W).
 
 VIR0033W INSUFICIENT MEMORY TO LOAD MODULE progname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0003
 Meaning
@@ -1957,7 +1969,7 @@ Action
     See message VIR0011E and VIR0012W.
 
 VIR0034E INVALID DEB DURING LOAD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     VIR0003
 Meaning
@@ -1966,7 +1978,7 @@ Action
     Call technical support.
 
 VIR0034W BYPASSING RULE rulename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -1975,7 +1987,7 @@ Action
     Check that VIRTEL has enough memory. Obtain a SNAP dump and call technical support.
 
 VIR0035E UNDEFINED LINE n-xxxxxx FOR RULE rulename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0000
 Meaning
@@ -1984,7 +1996,7 @@ Action
     This message is normal if the rule is linked to an inactive line (“Possible calls” set to 0, or line specified in the IGNLU parameter in the VIRTCT) or to a user ruleset.
 
 VIR0036W WARNING : RULE rulename FOR LINE n-xxxxxx HAS AN ACTIVE TRACE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -1993,7 +2005,7 @@ Action
     If the trace is not wanted, display the definition of rule rulename from the definition panel for line n-xxxxxx. Blank out the “Trace” field and press F1.
 
 VIR0037E ERREUR xx OUVERTURE SYSPRINT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0004
 Meaning
@@ -2002,7 +2014,7 @@ Action
     Verify the DD card or the DLBL referencing the print file.
 
 VIR0038I SNAP COMPLETE
-^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""
 Module
     	VIR0004
 Meaning
@@ -2011,7 +2023,7 @@ Action
     None.
 
 VIR0039E ERROR: THE VIRTCT VIRTCTxx IS INVALID: VIRTEL CANNOT CONTINUE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2020,7 +2032,7 @@ Action
     Use job ASMTCT in the VIRTEL CNTL library to reassemble the VIRTCT using the correct level VIRTERM macro.
 
 VIR0039I trace command VTAM
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     VIR2020
 Meaning
@@ -2028,11 +2040,11 @@ Meaning
 Action
     None.
 
-2.5.    Messages VIR004xx
-=========================
+Messages VIR004xx
+^^^^^^^^^^^^^^^^^
 
 VIR0040E ERROR: THE VIRTCT progname IS INVALID: VIRTEL CANNOT CONTINUE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2041,7 +2053,7 @@ Action
     Re-assemble the VIRTCT using the current version of the VIRTEL MACLIB.
 
 VIR0040I GATE : linetype LINE n-xxxxxx ACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -2050,7 +2062,7 @@ Action
     None.
 
 VIR0041I termid : CALL ABORTED ON LINE n-xxxxxx VC cccc CAUSE = xx DIAGNOSTIC = dd
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -2059,7 +2071,7 @@ Action
     For the meaning of the cause and diagnostic codes, refer to the X.25 documentation supplied by SAPONET.
 
 VIR0042I GATE : UNSUPPORTED COMMAND = xx ON MCH n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     	VIR0005
 Meaning
@@ -2068,7 +2080,7 @@ Action
     Contact technical services if the incident persists.
 
 VIR0043I GATE : DIAGNOSTIC = xx,yyyyy on MCH n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2077,7 +2089,7 @@ Action
     Refer to the SAPONET documentation.
 
 VIR0044I termid : COMMAND xx ERROR yy on VC cccccc
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -2086,7 +2098,7 @@ Action
     Refer to the SAPONET documentation.
 
 VIR0045E termid : NBCVC PARAMETER TOO SMALL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2095,7 +2107,7 @@ Action
     Increase the value of the NBCVC operand in the VIRTCT of VIRTEL.
 
 VIR0046E GATE : PROTOCOL ERROR ON MCH n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -2104,7 +2116,7 @@ Action
     This error is different to the lost session error, or the deactivation of the LU MCH. (See the possible associated message VIR0002W ).
 
 VIR0047W GATE : ERROR ACTIVATING linetype LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2113,7 +2125,7 @@ Action
     Check the definition of line n-xxxxxx. The value in the “Partner” field must match the name of the MCH LU generated by NPSI. Verify that the LU is active in VTAM.
 
 VIR0048W GATE : LINE n-xxxxxx INACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2122,7 +2134,7 @@ Action
     Verify the cause of the deactivation.
 
 VIR0049I X25 COMMAND xx RECEIVED FOR TERMINAL termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2130,11 +2142,11 @@ Meaning
 Action
     None.
 
-2.6.    Messages VIR005xx
-=========================
+Messages VIR005xx
+^^^^^^^^^^^^^^^^^
 
 VIR0050W INVALID EIB FREEMAIN FOR luname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -2143,7 +2155,7 @@ Action
     Contact technical support if the message persists.
 
 VIR0051I termid CONNECTED TO SERVICE ssssssss
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+"""""""""""""""""""""""""""""""""""""""""""""    
 Module
     VIR0014
 Meaning
@@ -2152,7 +2164,7 @@ Action
     None.
 
 VIR0052I termid DISCONNECTED AFTER nn MINUTES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0014
 Meaning
@@ -2161,7 +2173,7 @@ Action
     None.
 
 VIR0053W MISSING PAGE pagename IN NODE nodename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0014
 Meaning
@@ -2170,7 +2182,7 @@ Action
     Verify the definition of the Minitel tree structure.
 
 VIR0056S NO MORE OSCORE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -2179,7 +2191,7 @@ Action
     Verify the OSCORE parameter in the VIRTCT.
 
 VIR0059I termid RELAY relayname ACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2187,11 +2199,11 @@ Meaning
 Action
     None.
 
-2.7.    Messages VIR006xx
-=========================
+Messages VIR006xx
+^^^^^^^^^^^^^^^^^
 
 VIR0060W MAPFAIL WAS DETECTED ON TERMINAL luname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -2200,7 +2212,7 @@ Action
     Contact technical support.
 
 VIR0060W PROGRAM progname IS A NEW COPY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2209,7 +2221,7 @@ Action
     None.
 
 VIR0061E MAP mapname NOT FOUND IN MAPSET mapsetname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -2218,7 +2230,7 @@ Action
     An abend follows this message. Contact technical support.
 
 VIR0061W PROGRAM progname NOT IN MEMORY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000, VIR0002
 Meaning
@@ -2227,7 +2239,7 @@ Action
     For a NEW command: None. The module will be loaded by VIRTEL when required. For a ZAP command: Correct the command and reenter. For a ZAPD instruction: Correct the instruction and restart VIRTEL.
 
 VIR0062I termid TRACE ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""" 
 Module
     VIR0002
 Meaning
@@ -2236,7 +2248,7 @@ Action
     None.
 
 VIR0062I termid TRACE INACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     	VIR0002
 Meaning
@@ -2245,7 +2257,7 @@ Action
     None.
 
 VIR0062W LINE linename IS UNKNOWN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2254,7 +2266,7 @@ Action
     Reenter the command specifying a valid linename.
 
 VIR0063W LINE linename ALREADY ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2263,7 +2275,7 @@ Action
     None.
 
 VIR0064W LINE linename (n-xxxxxx) START / STOP REQUESTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2272,7 +2284,7 @@ Action
     None.
 
 VIR0064W ADDRESS aaaa NOW IS :  yyyy yyyy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000, VIR0002
 Meaning
@@ -2281,7 +2293,7 @@ Action
     A modification made by ZAP command is valid until the next restart of VIRTEL. The ZAPH parameter of the VIRTCT can be used to ensure that the modification is reappied at each restart.
 
 VIR0064W OFFSET LENGTH xxxx IS INVALID
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -2290,7 +2302,7 @@ Action
     Correct the ZAPD instruction and restart VIRTEL.
 
 VIR0065E VERIFY ERROR. ADDRESS aaaa IS : yyyy yyyy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000, VIR0002
 Meaning
@@ -2299,7 +2311,7 @@ Action
     None.
 
 VIR0066I APPLYING ptfid ON progname desc
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2308,7 +2320,7 @@ Action
     None.
 
 VIR0067I MESSAGES ARE NOW DISPLAYED VIR0067I MESSAGES ARE NOW DISCARDED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2317,7 +2329,7 @@ Action
     None.
 
 VIR0068E
-^^^^^^^^
+""""""""
 Invalid system command.
 
 INVALID COMMAND
@@ -2339,7 +2351,7 @@ Action
     Correct the command.
 
 VIR0068I SNAP WILL FOLLOW msgid1 msgid2 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2348,7 +2360,7 @@ Action
     None.
 
 VIR0069I READY
-^^^^^^^^^^^^^^
+""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2356,11 +2368,11 @@ Meaning
 Action
     None.
 
-2.8.    Messages VIR007xx
-========================= 
+Messages VIR007xx
+^^^^^^^^^^^^^^^^^ 
 
 VIR0070I SIMULTANEOUS TRANSACTION AT TERMINAL termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0010
 Meaning
@@ -2368,11 +2380,11 @@ Meaning
 Action
     If the first transaction results in a Multi-Session menu display, VIRTEL maybe did not obtain from VTAM the status of the menu applications (in cross domain for example). If this is the case, remove status control from this application (PF9 from the general Sub-Applications menu).
 
-2.9.    Messages VIR008xx
-=========================
+Messages VIR008xx
+^^^^^^^^^^^^^^^^^
 
 VIR0080W VSAM ERROR ON FILE VIRARBO xx xx REQ : yy, KEY: cccccccc
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -2381,7 +2393,7 @@ Action
     VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
 
 VIR0081W NO MORE OSCORE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -2390,7 +2402,7 @@ Action
     Check the value of the OSCORE parameter in the VIRTCT.
 
 VIR0082W UNAUTHORIZED USER TERMINAL : luname NAME : username
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	Security
 Meaning
@@ -2399,7 +2411,7 @@ Action
     The user username is revoked and may not be re established except by the security administrator of VIRTEL.
 
 VIR0083W opcode OF ELEMENT xxxxxxxx BY username FROM luname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     Security
 Meaning
@@ -2408,7 +2420,7 @@ Action
     None.
 
 VIR0084W ELEMENT REFERENCE ERROR xxxxxxxx ELEMENT yyyyyyyy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	Security
 Meaning
@@ -2417,7 +2429,7 @@ Action
     Modify the element reference in the security program of VIRTEL.
 
 VIR0085E INVALID MEMORY FREE REQUEST. ADDR=aaaaaaaa. SUBPOOL=ss. CALLER=cccccccc
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -2426,7 +2438,7 @@ Action
     Virtel continues. If you get a significant number of these messages you consider a schedule a restart of Virtel.
 
 VIR0086E GETMAIN FAILED. MEMORY DSA DISABLED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -2435,7 +2447,7 @@ Action
     Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
 
 VIRT0088E DSA TABLE FULL. MEMORY DIAGS. DISABLED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -2444,7 +2456,7 @@ Action
     Virtel contines but you should contact support support. Schedule a restart of Virtel.
 
 VIR0086E GETMAIN FAILED. MEMORY DSA DISABLED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -2453,7 +2465,7 @@ Action
     Increase MEMLIMIT= in the JCL to provide more “above the BAR” storage. Virtel continues but you should contact support if the problem continues. Suggest a default of MEMLIMIT=2G.
 
 VIR0089I VIRTEL RUNNING AUTHORIZED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -2461,11 +2473,11 @@ Meaning
 Action
     None. Information only.
 
-2.10.   Messages VIR009xx
-=========================
+Messages VIR009xx
+^^^^^^^^^^^^^^^^^
 
 VIR0090E VIRSV INITIALIZATION ERROR -VSVPOPTR R15 : xxxxxxxx (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -2474,7 +2486,7 @@ Action
     Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPOPTR return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check the VIRTEL started task JCL to ensure that the VIRSV load library is referenced in both the STEPLIB and the SERVLIB concatenations. Check that the VIRSV load library is APF- authorized.
 
 VIR0091E ERROR: VIRTEL MUST BE APF AUTHORIZED WHEN SECUR=RACROUTE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2483,7 +2495,7 @@ Action
     Check that all of the libraries referenced by the STEPLIB, DFHRPL, and SERVLIB (if present) statements in the VIRTEL started task JCL are defined as APF-authorized libraries in the MVS system APF-list.
 
 VIR0092E GNAMEADD FAILED FOR VTAM GENERIC RESOURCE grname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2493,7 +2505,7 @@ Action
     - RTNCD=10 FDBK2=19 Sysplex coupling facility does not exist; CFRM policy for the required coupling facility structure was not active; VTAM is not defined as an APPN node; or VTAM has lost connectivity to the required coupling facility structure.
 
 VIR0093I VTAM GENERIC RESOURCE NAME IS grname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2502,7 +2514,7 @@ Action
     None.
 
 VIR0094E PRODID [DEFINE | AUTH] ERROR: RC=code
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2511,7 +2523,7 @@ Action
     Contact technical support.
 
 VIR0095I PRODID AUTHORIZATION SUCCESSFUL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2520,7 +2532,7 @@ Action
     None.
 
 VIR0096I VIRTEL IS USING VIRTCT 'VIRTCTnn'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2529,7 +2541,7 @@ Action
     None.
 
 VIR0097E ERROR ALLOCATING MEMORY FOR termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2538,7 +2550,7 @@ Action
     Increase the VIRTEL region size or partition size.
 
 VIR0098I VIRTEL RUNNING AS A SUBTASK. LINKED FROM mmmmmmmm
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0000
 Meaning
@@ -2547,7 +2559,7 @@ Action
     None
 
 VIR0099I applid STARTED AT dd/mm/yy hh:mm:ss , VERSION vvvv
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -2555,11 +2567,11 @@ Meaning
 Action
     None.
 
-2.11.   Messages VIR02xxx
-=========================
+Messages VIR02xxx
+^^^^^^^^^^^^^^^^^
 
 VIR0200I, VIR0201I
-^^^^^^^^^^^^^^^^^^
+""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2568,7 +2580,7 @@ Action
     None.
 
 VIR0201I VIRTEL 4.xx APPLID=applid LINES [ACT/INACT]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2611,7 +2623,7 @@ Action
     None.
 
 VIR0205I NO TERMINALS ASSOCIATED WITH LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2620,7 +2632,7 @@ Action
     None.
 
 VIR0206I LINE n-xxxxxx linetype linestat acbname acbstat
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2630,7 +2642,7 @@ Action
     None.
 
 VIR0207I LINE n-xxxxxx linetype lineprot linestat
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2639,7 +2651,7 @@ Action
     None.
 
 VIR0210E command NOT VALID FOR linetype LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2648,7 +2660,7 @@ Action
     None.
 
 VIR0211I LINE linename TRACE ACTIVE VIR0211I TERM termid TRACE ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2657,7 +2669,7 @@ Action
     Use the NOTRACE command to deactivate tracing if desired.
 
 VIR0212I LINE linename TRACE INACTIVATED VIR0212I TERM termid TRACE INACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2666,7 +2678,7 @@ Action
     None.
 
 VIR0213I NO ACTIVE TRACES
-^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2687,7 +2699,7 @@ Action
     None.
 
 VIR0215I NO ACTIVE RELAY ACBS FOR VIRTEL 4.xx APPLID=applid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2696,7 +2708,7 @@ Action
     None.
 
 VIR0220I termid SCENARIO STOP REQUESTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2705,7 +2717,7 @@ Action
     None.
 
 VIR0230I DYNAMIC ALLOCATION FAILED FOR XXXXXXXX
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2714,7 +2726,7 @@ Action
     Check the VIRTEL log and SYSLOG for further information.
 
 VIR0231I ERROR OPENING DDNAME XXXXXXXX
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2723,7 +2735,7 @@ Action
     Check the VIRTEL log and SYSLOG for further information.
 
 VIR0233I VIRTEL XXXXXXXX DATASET HAS BEEN SPUN OFF
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2732,7 +2744,7 @@ Action
     None.
 
 VIR0234I CLOSE FAILED FOR XXXXXXXX DATASET
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2741,7 +2753,7 @@ Action
     Check the VIRTEL log and SYSLOG for further information.
 
 VIR0235I VIRTEL LOG RECORDING TO XXXXXXXX
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2750,7 +2762,7 @@ Action
     None.
 
 VIR0236I VIRTEL LOGFILE SWITCHED FROM XXXXXXXX TO XXXXXXXX
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2759,16 +2771,16 @@ Action
     None.
 
 VIR0237I VIRTEL LOG ROUTINE VIR0002A LOADED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
-    ^The Virtel log module has been successfully loaded.
+    "The Virtel log module has been successfully loaded.
 Action
     None.
 
 VIR0238I VIRTEL LOG RECORDING TO LOGFILE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2777,7 +2789,7 @@ Action
     Use to LOG,D command to display the active LOGFILE.
 
 VIR0239I VIRTEL LOGGER: xxxxxxxx STRNAME= xxxxxxxx FULL. STRUCTURE OFFLOADED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002A
 Meaning
@@ -2786,7 +2798,7 @@ Action
     None.
 
 VIR0260W SERVICE servname IS A NEW COPY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0002
 Meaning
@@ -2795,7 +2807,7 @@ Action
     None.
 
 VIR0261W SERVICE servname NOT IN MEMORY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0002
 Meaning
@@ -2804,7 +2816,7 @@ Action
     None. The service will be started by VIRTEL when required.
 
 VIR0262W SNAPMSG TRIGGERED - VIRTEL ABENDED | SNAP TAKEN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0002
 Meaning
@@ -2813,7 +2825,7 @@ Action
     Determined by TCT parameters or the action set in the SNAPMSG= command.
 
 VIR0270I DISPLAY 938 VIRTEL TCT=VIRTCTRJ:
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 .. 
     SILENCE=N,MEMORY=(A,N),BFVSAM=08192,BUFDATA=016,BUFSIZE=20000,
     STR=03 COUNTRY=FR,GMT=XXXXX,DEFUTF8=IBM1147 ,LANG= ,MAXSOCK=00250,
@@ -2828,7 +2840,7 @@ Action
     None.
 
 VIR0280I END
-^^^^^^^^^^^^
+""""""""""""
 Module
     VIR0002
 Meaning
@@ -2836,11 +2848,11 @@ Meaning
 Action
     None.
 
-2.12.   Messages VIR05xxx
-=========================
+Messages VIR05xxx
+^^^^^^^^^^^^^^^^^
 
 VIR0504I ACQUIRING TERMINAL luname(relayname) TO LINK n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2849,7 +2861,7 @@ Action
     None.
 
 VIR0505I  LINKING TERMINAL termid TO n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2858,7 +2870,7 @@ Action
     None.
 
 VIR0506E ERROR LINKING TERMINAL termid TO n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2867,7 +2879,7 @@ Action
     Check the terminal definition in VIRTEL and in VTAM.
 
 VIR0507I LINKING TERMINAL termid TO n-xxxxxx RELAY relayname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    	
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""    	
 Module
     VIR0005
 Meaning
@@ -2876,7 +2888,7 @@ Action
     None.
 
 VIR0508E ERROR: NO AVAILABLE PSEUDO TERMINALS WERE FOUND FOR LINE : n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    	
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""    	
 Module
     VIR0005
 Meaning
@@ -2885,7 +2897,7 @@ Action
     Check the definition of line n-xxxxxx. Use the VIRTEL console command LINE=n-xxxxxx,DISPLAY to display the associated terminals. Check that terminals are defined whose name starts with the prefix specified in the line definitions, and that these terminals do not belong to another line or to a pool.
 
 VIR0509E termid SERVER servname HAS MISSING OR INVALID DIALNO xxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  	
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""  	
 Module
     VIR0005
 Meaning
@@ -2894,7 +2906,7 @@ Action
     Check the definition of external server servname. Check that the “Number” field is valid (see “External Servers” in the VIRTEL Connectivity Reference manual). If the value of the “Number” field is blank or “=”, check the called number supplied by the application (CFT, Inter.PEL, STI) which initiated the call. In the case of a VIRKIX application, check that the entry point has a “Mirror” transaction as the first transaction.
 
 VIR0526W termid IS DISCONNECTED DUE TO TIME-OUT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2903,7 +2915,7 @@ Action
     None.
 
 VIR0527E termid CALLER x25callernumber REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2912,7 +2924,7 @@ Action
     Verify the call user data used in the connection. If it is acceptable, define the corresponding entry point in VIRTEL.
 
 VIR0528I termid CALLER x25callernumber GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2921,7 +2933,7 @@ Action
     None.
 
 VIR0529E termid REJECTING CONFLICTING IN AND OUT CALLS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -2930,7 +2942,7 @@ Action
     VIRTEL refuses the incoming call. VIRTEL considers the outgoing call as refused.
 
 VIR0530E termid FAILED CALL TO 'servname' THRU LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -2939,7 +2951,7 @@ Action
     Display the definition of the external server servname, and check that the line name is correctly specified. Check that the line is in session with the CTCP or partner application. Check the definition of line n-xxxxxx and ensure that the “Possible calls” field is set to 2 or 3.
 
 VIR0531E termid NO OUTPUT TERMINAL AVAILABLE ON LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2948,7 +2960,7 @@ Action
     Display the definition of line n-xxxxxx and press F4. Increase the number of terminals where the “I/O” (“Possible calls”) field is set to 2 or 3.
 
 VIR0532E termid OUTPUT CALL REFUSED BY EXIT5
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2957,7 +2969,7 @@ Action
     None.
 
 VIR0533E termid CALL IN PROGRESS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2966,7 +2978,7 @@ Action
     Retry the call later.
 
 VIR0534E termid EXTERNAL SERVER servname SPECIFIES NON-EXISTENT LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2975,7 +2987,7 @@ Action
     Display the definition of the external server servname, and check that the line name is correctly specified.
 
 VIR0535E termid LINE n-xxxxxx(linename) DOES NOT PERMIT CALLS TO SERVER
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2984,7 +2996,7 @@ Action
     Check the definition of line n-xxxxxx and ensure that the “Possible calls” field is set to 2 or 3.
 
 VIR0536E termid LINE n-xxxxxx(linename) IS NOT STARTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -2993,7 +3005,7 @@ Action
     Check that the line is started and in session with the CTCP or partner application.
 
 VIR0537E termid LINE n-xxxxxx(linename) HAS NO TERMINALS LINKED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3002,7 +3014,7 @@ Action
     Enter the VIRTEL command L=linename,D at the console to determine if the line has terminals and why they are   not linked. Check the definition of line n-xxxxxx and ensure that the appropriate terminals are defined and do not duplicate those of another line.
 
 VIR0538I termid GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3011,7 +3023,7 @@ Action
     None.
 
 VIR0539I termid CALLER x25callernumber GETS DEFAULT ENTRY POINT FOR LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3020,7 +3032,7 @@ Action
     VIRTEL uses the default entry point associated with line n-xxxxxx.
 
 VIR0540I termid GETS DEFAULT ENTRY POINT FOR LINE linename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -3029,7 +3041,7 @@ Action
     VIRTEL uses the default entry point associated with line linename.
 
 VIR0541I termid OUTBOUND GATE|FAST CALL FROM ctcpappl VIA mchlu TO x25callednumber
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -3038,7 +3050,7 @@ Action
     None.
 
 VIR0542I termid OUTBOUND PCNE CALL FROM pcneappl VIA pcnelu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3047,7 +3059,7 @@ Action
     None.
 
 VIR0545I termid CALL CLEARED BY VIRTEL CAUSE=xx DIAG=yy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3060,7 +3072,7 @@ Action
     For Cause=00, Diag=02: Check the definition of the line. For other codes, examine preceding error messages to determine the cause.
 
 VIR0550I ROUTAGE REJECTED FOR LUNAME luname CAUSE=xx DIAGNOSTIC=dd
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3069,7 +3081,7 @@ Action
     Refer to the SAPONET documentation for the values of the codes xx and dd also check that your TELETEL subscription supports re-rerouting .
 
 VIR0551I termid CONNECTED TO EXTERNAL SERVICE ssssssss
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3078,7 +3090,7 @@ Action
     None.
 
 VIR0552I termid DISCONNECTED AFTER nn MINUTES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3087,7 +3099,7 @@ Action
     None.
 
 VIR0553I RESET REQUEST RECEIVED FROM luname CAUSE=xx DIAGNOSTIC=dd
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3096,7 +3108,7 @@ Action
     Refer to the SAPONET documentation to determine the cause and diagnostic.
 
 VIR0554I pseudo-terminal LINKED TO service THRU terminal
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -3105,7 +3117,7 @@ Action
     None.
 
 VIR0555E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0005
 Meaning
@@ -3113,11 +3125,11 @@ Meaning
 Action
     Check the entry point name specified in the rule definition.
 
-2.13.   Messages VIR06xxx
-=========================
+Messages VIR06xxx
+^^^^^^^^^^^^^^^^^
 
 VIR0601I VIRSTATx status DSN=dsname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3132,7 +3144,7 @@ Action
     None.
 
 VIR0603I VIRSTATx OFFLOAD REQUIRED DSN=dsname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3141,7 +3153,7 @@ Action
     Run the STATCOPY batch job to empty the file. This message is designed to be trapped by an automated operator.
 
 VIR0604I VIRSTAT NOW RECORDING ON VIRSTATx DSN=dsname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3150,7 +3162,7 @@ Action
     None.
 
 VIR0605E NO AVAILABLE VIRSTAT FILES -VIRTEL TERMINATING
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0006
 Meaning
@@ -3159,7 +3171,7 @@ Action
     VIRTEL terminates.
 
 VIR0606I VIRSTAT RECORDING SUSPENDED - RUN OFFLOAD AND ISSUE F virtelstc,STAT,I
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3168,7 +3180,7 @@ Action
     VIRTEL continues processing, but statistics will no longer be recorded. To restart statistics recording, use the VIRTEL STAT,I command.
 
 VIR0607E VIRSTATx ALLOC ERR=errc-infc DSN=dsname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3177,7 +3189,7 @@ Action
     VIRTEL uses the next VIRSTATx file.
 
 VIR0608E VIRSTATx DEALC ERR=errc-infc DSN=dsname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3186,7 +3198,7 @@ Action
     See OS/390 MVS Programming: Authorized Assembler Services Guide under the heading Interpreting DYNALLOC Return Codes.
 
 VIR0609E VIRSTATx synadaf DSN=dsname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3195,7 +3207,7 @@ Action
     Check the DCB attributes of the file.
 
 VIR0610E VIRSTATx OPEN/CLOSE/GET/WRITE ABEND=ccc-rc DSN=dsname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
    	VIR0006
 Meaning
@@ -3204,7 +3216,7 @@ Action
     VIRTEL switches automatically to the next VIRSTATx file.
 
 VIR0611I VIRSTAT NOW RECORDING TO SMF
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3213,7 +3225,7 @@ Action
     None.
 
 VIR0612I VIRSTAT SMFWTM FAILED.RC=rc
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
     VIR0006
 Meaning
@@ -3221,11 +3233,11 @@ Meaning
 Action
     VIRTEL STATS SMF recording is disabled.
 
-2.14.   Messages VIR07xxx
-========================= 
+Messages VIR07xxx
+^^^^^^^^^^^^^^^^^ 
 
 VIR0700W ERROR IN TASK taskname PSW= xxxxxxxx xxxxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0007
 Meaning
@@ -3233,11 +3245,11 @@ Meaning
 Action
     See message VIR0015S and VIR0016W.
 
-2.15.   Messages VIR08xxx
-=========================
+Messages VIR08xxx
+^^^^^^^^^^^^^^^^^
 
 VIR0800I VIRTEL IS USING NO SECURITY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 
 Module
     Security
@@ -3247,7 +3259,7 @@ Action
     None.
 
 VIR0810I VIRTEL IS USING INTERNAL SECURITY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3256,7 +3268,7 @@ Action
     None.
 
 VIR0820I VIRTEL IS USING TSS SECURITY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3265,7 +3277,7 @@ Action
     None.
 
 VIR0830I VIRTEL IS USING RACF SECURITY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""" 
 Module
     Security
 Meaning
@@ -3274,7 +3286,7 @@ Action
     None.
 
 VIR0840I VIRTEL IS USING RACROUTE SECURITY WITH TSS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3283,7 +3295,7 @@ Action
     None.
 
 VIR0843I MIXED-CASE PASSWORD SUPPORT IS ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3292,7 +3304,7 @@ Action
     None.       
 
 VIR0850I VIRTEL IS USING ACF2 SECURITY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3301,7 +3313,7 @@ Action
     None.
 
 VIR0860I VIRTEL IS USING RACROUTE SECURITY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3310,7 +3322,7 @@ Action
     None.
 
 VIR0861I MIXED-CASE PASSWORD SUPPORT IS ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3319,7 +3331,7 @@ Action
     None.
 
 VIR0863I MIXED-CASE PASSWORD SUPPORT IS ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     Security
 Meaning
@@ -3327,11 +3339,11 @@ Meaning
 Action
     None.    
 
-2.16.   Messages VIR09xxx
-=========================
+Messages VIR09xxx
+^^^^^^^^^^^^^^^^^
 
 VIR0900I LICENCE VIRTEL licence information       
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3340,7 +3352,7 @@ Action
     None.
 
 VIR0901I LICENCE IS ABOUT TO EXPIRE       
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3350,7 +3362,7 @@ Action
 
 
 VIR0904I ACQUIRING TERMINAL relayname(termid)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3359,7 +3371,7 @@ Action
     None.
 
 VIR0905I termid RELEASED
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3368,7 +3380,7 @@ Action
     None.
 
 VIR0905W UNABLE TO ACTIVATE RELAY relayname(termid)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3377,7 +3389,7 @@ Action
     Check that the VTAM node containing the relay relayname has been activated, verify that the relay is not already activated for another terminal, and that the terminal is correctly defined in VIRTEL.
 
 VIR0906I applid CONNECTING LUTYPE n PRINTER prterm(luname) TO termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3386,7 +3398,7 @@ Action
     None.
 
 VIR0914E termid ERROR R15=xx R0=yy CONNECTING luname TO applid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""  
 Module
     VIR0009
 Meaning
@@ -3395,7 +3407,7 @@ Action
     If R15=00000020, activate the LU luname in VTAM, then enter a VIRTEL START command for the line. For any other value of R15, check that the application applid is active and ready to receive connections, and that the LU luname is in CONCT status.
 
 VIR0915E termid(luname) SESSION REQUEST REFUSED BY applid SENSE=xxxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3404,7 +3416,7 @@ Action
     Check the message log of the partner application (for example, the CICS MSGUSR file) to determine why the application rejected the session request. Refer to the IBM SNA Formats manual to determine the meaning of the sense code. Sense code 08010000 may indicate that the CICS terminal is out of service.
 
 VIR0918W termid RELAY relayname INACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3413,7 +3425,7 @@ Action
     None.
 
 VIR0919I termid RELAY relayname ACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3422,7 +3434,7 @@ Action
     None.
 
 VIR0920E RELAY relayname ALREADY ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0009
 Meaning
@@ -3431,7 +3443,7 @@ Action
     Check that the same relay has not been allocated to two different terminals.
 
 VIR0921W NO MORE RELAY AVAILABLE FOR termid POOL 'poolname' PREFIX 'prefix'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3440,7 +3452,7 @@ Action
     Check that the VTAM node containing the relays is activated. Increase the number of relays in the pool poolname.  If the message contains a PREFIX then there is a conflict between the prefix specified in the transaction and the terminal names of the relays in the pool.
 
 VIR0922W NBTERM IS TOO SMALL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3449,7 +3461,7 @@ Action
     VIRTEL automatically allocates additional memory and continues processing. To avoid this message, increase the value of the NBTERM parameter in the VIRTCT.
 
 VIR0923E NO RELAY AVAILABLE FOR termid POOL 'poolname' WITH NAME 'luname’
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3458,7 +3470,7 @@ Action
     Check the definitions of terminal termid and pool poolname (F2 from the configuration menu, or F5 from the sub-application system services menu). Check the definition of the rule which matched the incoming call. The relay specified in the “Parameter” field of the rule must exist in the pool.
 
 VIR0924E termid RELAY relayname COULD NOT BE ACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3467,7 +3479,7 @@ Action
     Check the definitions of the terminal and transaction.
 
 VIR0925E UNABLE TO ACTIVATE luname (termid) ERROR: errcode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3476,7 +3488,7 @@ Action
     Check that the VTAM node containing the relay has been activated. The command D NET,ID=luname,E should show luname defined as a VTAM APPL in CONCT status.
 
 VIR0951I termid CONNECTED TO EXTERNAL SERVICE ssssssss
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3485,7 +3497,7 @@ Action
     None.
 
 VIR0956S NO MORE OSCORE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0009
 Meaning
@@ -3494,7 +3506,7 @@ Action
     Check the OSCORE parameter of the VIRTCT.
 
 VIR0959E termid CANNOT CONNECT : THIS IS A DEMONSTRATION SYSTEM WITH LIMITED RESOURCES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0009
 Meaning
@@ -3502,11 +3514,11 @@ Meaning
 Action
     Wait until another terminal disconnects, or contact Syspertec to upgrade your license.
 
-2.17.   Messages VIR10xxx
-=========================
+Messages VIR10xxx
+^^^^^^^^^^^^^^^^^
 
 VIR1021I VIRARBO type RECORD name ADDED/UPDATED/DELETED BY USER userid AT TERMINAL termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -3515,7 +3527,7 @@ Action
     None.
 
 VIR1062W ERROR ACCESSING FILE filename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -3524,7 +3536,7 @@ Action
     Contact technical support.
 
 VIR1063W ERROR : FILE filename NOT FOUND IN VIRTCT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
    	VIR0010
 Meaning
@@ -3533,7 +3545,7 @@ Action
     Add the definition and reassemble the VIRTCT.
 
 VIR1064E ERROR : TERMINAL termid FAILED TO SEND MAIL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -3542,7 +3554,7 @@ Action
     Contact technical support.
 
 VIR1065W LINE linename IS UNKNOWN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -3551,7 +3563,7 @@ Action
     Contact technical support.
 
 VIR1066W LINE linename ALREADY ACTIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -3560,7 +3572,7 @@ Action
     None.
 
 VIR1067W LINE linename (n-xxxxxx) START / STOP REQUESTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -3569,7 +3581,7 @@ Action
     None.
 
 VIR1068E command NOT VALID FOR linetype LINE n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0010
 Meaning
@@ -3577,11 +3589,11 @@ Meaning
 Action
     None.
 
-2.18.   Messages VIR11xxx
-=========================
+Messages VIR11xxx
+^^^^^^^^^^^^^^^^^
 
 VIR11D1W termid ERROR LOADING SCRIPT scriptnam IN TRANSACTION tranid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0011D
 Meaning
@@ -3590,7 +3602,7 @@ Action
     Check the log for a previous message VIR0031W. Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of transaction tranid. Ensure that this module exists in the VIRTEL load library and is a valid scenario module. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
 
 VIR11D2W termid INVALID FA39 SCRIPT RECEIVED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0011D
 Meaning
@@ -3598,11 +3610,11 @@ Meaning
 Action
     Check the module name specified in the “Input Message Exit” or “Output Message Exit” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the scenario using the current version of the VIRTEL SCRNAPI macro library.
 
-2.19.   Messages VIR15xxx
-=========================
+Messages VIR15xxx
+^^^^^^^^^^^^^^^^^
 
 VIR1501E termid REQSESS FAILED, NO RELAY DEFINED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0015
 Meaning
@@ -3611,7 +3623,7 @@ Action
     Specify the name of a VIRTEL relay LU in the “Relay” field of the terminal definition. The relay LU must also be defined in a VTAM APPL statement.
 
 VIR1502E termid PASSTICKET ERROR FOR applname / userid SAF RC: 'safrc' RACF RC: 'racrc' RACF REASON: 'racreas'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0015
 Meaning
@@ -3621,7 +3633,7 @@ Action
     For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services chapter 2 “R_ticketserv”. Some common codes are:
 
 VIR1551I termid(luname) CONNECTED TO "applname"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0015
 Meaning
@@ -3630,7 +3642,7 @@ Action
     None.
 
 VIR1552I termid DISCONNECTED AFTER nn MINUTES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0015
 Meaning
@@ -3638,11 +3650,11 @@ Meaning
 Action
     None.
 
-2.20.   Messages VIR17xxx
-=========================
+Messages VIR17xxx
+^^^^^^^^^^^^^^^^^
 
 VIR1705W UNABLE TO ACTIVATE relayname(termid)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0017
 Meaning
@@ -3651,7 +3663,7 @@ Action
     Check the activation of the VTAM book containing the relay relayname, check also that the relay is not already activated for another terminal and that the relay is correctly defined in VIRTEL.
 
 VIR1724E FILE NOT FOUND filename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     VIR0017, VIR0B17
 Meaning
@@ -3660,7 +3672,7 @@ Action
     Check the state of the file and its definition in VIRTEL.
 
 VIR1725E linename: ERROR ACCESSING 'key' ON filename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0017
 Meaning
@@ -3669,7 +3681,7 @@ Action
     Check the state of the file and its definition in VIRTEL.
 
 VIR1726E termid ERROR ADDING TO FILE 'filename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0017
 Meaning
@@ -3678,7 +3690,7 @@ Action
     Check the SYSLOG for preceding message IEC070I.
 
 VIR1729E LINE linename NOT FOUND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""
 Module
     	VIR0B17
 Meaning
@@ -3687,7 +3699,7 @@ Action
     Specify a valid line name.
 
 VIR1756S NO MORE OSCORE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0017
 Meaning
@@ -3695,11 +3707,11 @@ Meaning
 Action
     Check the OCORE parameter of the VIRTCT.
 
-2.21.   Messages VIR19xxx
-=========================
+Messages VIR19xxx
+^^^^^^^^^^^^^^^^^
 
 VIR1952I luname DISCONNECTED AFTER nn MINUTES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0019
 Meaning
@@ -3707,11 +3719,11 @@ Meaning
 Action
     None.
 
-2.21.   Messages VIR21xxx
-=========================
+Messages VIR21xxx
+^^^^^^^^^^^^^^^^^
 
 VIR2121E epname HAS NO TRANSACTIONS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0021B
 Meaning
@@ -3720,7 +3732,7 @@ Action
     Define at least one transaction under entry point epname.
 
 VIR2151E epname HAS NO TRANSACTION NAMED 'tranid'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021E
 Meaning
@@ -3729,7 +3741,7 @@ Action
     Define a transaction with external name tranid under entry point epname. See the description of VIR0021E in the VIRTEL Connectivity Reference manual.
 
 VIR2161E epname HAS NO TRANSACTION FOR LOGON DATA logonmsg
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
    	VIR0021F
 Meaning
@@ -3738,7 +3750,7 @@ Action
     Under entry point epname, define a transaction whose “Logon message” field matches the start of logonmsg. Check that the contents of this field are within apostrophes. See the description of VIR0021F in the VIRTEL Connectivity Reference manual.
 
 VIR2162E epname TRANSACTION tranid HAS INCORRECT DATA IN LOGON MESSAGE FIELD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
    	VIR0021F
 Meaning
@@ -3747,7 +3759,7 @@ Action
     VIRTEL ignores this transaction definition. Check that the “Logon message” field contains a character string or hexadecimal string enclosed in apostrophes. See the description of VIR0021F in the VIRTEL Connectivity Reference manual.
 
 VIR2171E epname HAS NO TRANSACTION NAMED USSMSG01
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021G
 Meaning
@@ -3756,7 +3768,7 @@ Action
     Define a transaction with external name USSMSG01 under entry point epname. See the description of VIR0021G in the VIRTEL Connectivity Reference manual.
 
 VIR2172E epname TRANSACTION tranid HAS INCORRECT DATA IN LOGON MESSAGE FIELD
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021G
 Meaning
@@ -3765,7 +3777,7 @@ Action
     VIRTEL ignores this transaction definition. Check that the “Logon message” field contains a character string or hexadecimal string enclosed in apostrophes. See the description of VIR0021G in the VIRTEL Connectivity Reference manual.
 
 VIR21J1E epname HAS NO AVAILABLE TRANSACTION-ERROR=errcode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021J
 Meaning
@@ -3777,11 +3789,11 @@ Meaning
 Action
     For code 1, define at least one transaction under entry point epname. For code 2, start at least one of the VTAM applications referenced by the transactions under entry point epname.
 
-2.23.   Messages VIR27xxx
-=========================
+Messages VIR27xxx
+^^^^^^^^^^^^^^^^^
 
 VIR2701W USER userid SENT 'c' TO LINE 'n-xxxxxx' FROM TERMINAL 'termid'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0027
 Meaning
@@ -3789,11 +3801,11 @@ Meaning
 Action
     None.
 
-2.24.   Messages VIR31xxx
-=========================
+Messages VIR31xxx
+^^^^^^^^^^^^^^^^^
 
 VIR3101W WARNING: LECAM SERVER servname MODIFIED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0031
 Meaning
@@ -3801,11 +3813,11 @@ Meaning
 Action
     Following this type of modification, any previous “service proposition” from a LECAM PC is no longer available for use by new clients. A new “service proposition” must be generated by restarting the LECAM service application on the PC.
 
-2.25.   Messages VIR35xxx
-=========================
+Messages VIR35xxx
+^^^^^^^^^^^^^^^^^
 
 VIR3551I termid CONNECTING AS PERSONAL COMPUTER "xxxxxxxx"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0035
 Meaning
@@ -3814,7 +3826,7 @@ Action
     None.
 
 VIR3552I termid DISCONNECTED AFTER nn MINUTES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0035
 Meaning
@@ -3823,7 +3835,7 @@ Action
     None.
 
 VIR3553I termid IDENTIFICATION ERROR FOR PERSONAL COMPUTER "xxxxxxxx"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0035
 Meaning
@@ -3832,7 +3844,7 @@ Action
     Check the definition of the PC copy at the host site. If it exists purge the associated sign-on.
 
 VIR3554I Input call
-^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""
 Module
     VIR0035
 Meaning
@@ -3840,11 +3852,11 @@ Meaning
 Action
     None.
 
-2.26.   Messages VIR39xxx
-=========================
+Messages VIR39xxx
+^^^^^^^^^^^^^^^^^
 
 VIR3952I luname DISCONNECTED AFTER nn MINUTES
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0039
 Meaning
@@ -3852,11 +3864,11 @@ Meaning
 Action
     None.
 
-2.27.   Messages VIR60xxx
-========================= 
+Messages VIR60xxx
+^^^^^^^^^^^^^^^^^ 
 
 VIR6017I FORCIBLY DETACHING VIRTEL
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 Module
     VIR6000
 Meaning
@@ -3864,11 +3876,11 @@ Meaning
 Action
     None.
 
-2.28.   Messages VIR62xxx
-=========================
+Messages VIR62xxx
+^^^^^^^^^^^^^^^^^
 
 VIR6202W LU 6.2 SESSION STARTED WITH applname (luname)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
   	VIR0062
 Meaning
@@ -3877,7 +3889,7 @@ Action
     None.
 
 VIR6203W LU 6.2 SESSION STARTED WITH applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3886,7 +3898,7 @@ Action
     None.
 
 VIR6204W LU 6.2 SESSION REQUESTED BY UNDEFINED pseudolu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3895,7 +3907,7 @@ Action
     Check the parameters associated with the request.
 
 VIR6205W UNABLE TO ACTIVATE luname (n-xxxxxx) ERROR: xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Module
     VIR0062
@@ -3905,7 +3917,7 @@ Action
     Check that the VTAM node containing LU luname has been activated, check that the LU is not already in use on another line, and that the line is correctly defined in VIRTEL.
 
 VIR6206W LU 6.2 SESSION RESET FOR LU applname (luname)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3914,7 +3926,7 @@ Action
     None.
 
 VIR6208W LU 6.2 CONVERSATION (luname – applname) STARTING ON n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3923,7 +3935,7 @@ Action
     None.
 
 VIR6210W LU 6.2 CONVERSATION REQUESTED BY UNDEFINED pseudolu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3932,7 +3944,7 @@ Action
     Check the parameters associated with the request.
 
 VIR6212W CONVERSATION cccccccc STARTED  ON n-xxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3941,7 +3953,7 @@ Action
     None.
 
 VIR6216W luname(applname) INACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3950,7 +3962,7 @@ Action
     None.
 
 VIR6218S NO MORE OSCORE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3959,7 +3971,7 @@ Action
     Check the OSCORE parameter of the VIRTCT.
 
 VIR6220W LU 6.2 SESSION LOST FOR LINE n-xxxxxx (luname – applname)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3968,7 +3980,7 @@ Action
     None.
 
 VIR6222E ERROR ON applname - R15-R0 : yyyy zzzz RCPRI: pri RCSEC: sec REQ: req QUAL: qual STATE: stat SENSE: sens
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3977,7 +3989,7 @@ Action
     Contact technical support.
 
 VIR6223E ERROR ON applname - R15-R0 : yyyy zzzz RCPRI: pri RCSEC: sec REQ: req QUAL: qual STATE: stat SENSE: sens
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3986,7 +3998,7 @@ Action
     See return code RCPRI and RCSEC in the IBM VTAM Programming for LU 6.2 manual.
 
 VIR6224W ENDING CONVERSATION cccccccc WITH applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0062
 Meaning
@@ -3994,11 +4006,11 @@ Meaning
 Action
     None.
 
-2.29.   Messages VIR65xxx
-=========================
+Messages VIR65xxx
+^^^^^^^^^^^^^^^^^
 
 VIR6599E linename CANNOT START -DEFINITION IS INCOMPLETE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0615
 Meaning
@@ -4006,11 +4018,11 @@ Meaning
 Action
     Correct the line definition.
 
-2.30.   Messages VIR75xxx
-=========================
+Messages VIR75xxx
+^^^^^^^^^^^^^^^^^
 
 VIR7551I applname CONNECTING pseudolu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0715
 Meaning
@@ -4019,7 +4031,7 @@ Action
     None.
 
 VIR7552I applname DISCONNECTING pseudolu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0715
 Meaning
@@ -4028,7 +4040,7 @@ Action
     None.
 
 VIR7599I applname CONNECTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     VIR0715
 Meaning
@@ -4036,11 +4048,11 @@ Meaning
 Action
     None.
 
-2.31.   Messages VIR85xxx
-=========================
+Messages VIR85xxx
+^^^^^^^^^^^^^^^^^
 
 VIR8551I applname CONNECTING pseudolu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0815
 Meaning
@@ -4049,7 +4061,7 @@ Action
     None.
 
 VIR8552I applname DISCONNECTING pseudolu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0815
 Meaning
@@ -4058,7 +4070,7 @@ Action
     None.
 
 VIR8553I applname ACCEPTED pseudolu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0815
 Meaning
@@ -4067,7 +4079,7 @@ Action
     None.
 
 VIR8599I applname (n-xxxxxx) CONNECTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0815
 Meaning
@@ -4075,11 +4087,11 @@ Meaning
 Action
     None.
 
-2.32.   Messages VIR91xxx
-=========================
+Messages VIR91xxx
+^^^^^^^^^^^^^^^^^
 
 VIR9151I applid CONNECTING LUTYPE n PRINTER prname(luname) TO termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0915I
 Meaning
@@ -4087,11 +4099,11 @@ Meaning
 Action
     Aucune.
 
-2.33.   Messages VIR99xxx
-=========================
+Messages VIR99xxx
+^^^^^^^^^^^^^^^^^
 
 VIR9901E termid: ERROR nnnnnnnn CALLING TRANSACTION tranname FROM ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0099
 Meaning
@@ -4100,7 +4112,7 @@ Action
     Check the definition of the entry point and transactions to ensure that the terminal has been defined.
 
 VIR9905W LU 6.2 relayname (applname) ACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0000, VIR0062
 Meaning
@@ -4109,7 +4121,7 @@ Action
     None.
 
 VIR9999S GETMAIN FATAL ERROR
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""
 Module
     VIR0000
 Meaning
@@ -4118,7 +4130,7 @@ Action
     Contact technical support.
 
 VIR9999I INVITATION A LIBERER RECUE DE termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0005
 Meaning
@@ -4126,11 +4138,11 @@ Meaning
 Action
     None.
 
-2.34.   Messages VIRB1xxx
-=========================
+Messages VIRB1xxx
+^^^^^^^^^^^^^^^^^
 
 VIRB171I LINE linename (n-xxxxxx) IS WAITING FOR m-yyyyyy ACTIVATION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B17
 Meaning
@@ -4139,7 +4151,7 @@ Action
     Activate line m-yyyyyy, or wait until VIRTEL activates it.
 
 VIRB172I LINE linename (n-xxxxxx) FAILED TO PROCESS: condition
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B17
 Meaning
@@ -4148,7 +4160,7 @@ Action
     Correct the definition of line n-xxxxxx.
 
 VIRB173I LINE linename (n-xxxxxx) STARTUP IS NOT AUTOMATIC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0B17
 Meaning
@@ -4157,7 +4169,7 @@ Action
     To activate the line, enter the VIRTEL command LINE=n-xxxxxx,START at the system console.
 
 VIRB174I LINE linename (n-xxxxxx) STARTUP IS PASSIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B17
 Meaning
@@ -4166,7 +4178,7 @@ Action
     To activate the line, start the partner application.
 
 VIRB176I LINE linename (n-xxxxxx), RESTARTED BY m-yyyyyy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B17
 Meaning
@@ -4175,7 +4187,7 @@ Action
     None.
 
 VIRB177I LINE linename (n-xxxxxx) IS WAITING FOR m-yyyyyy ACTIVATION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B17
 Meaning
@@ -4184,7 +4196,7 @@ Action
     Activate line m-yyyyyy, or wait until VIRTEL activates it.
 
 VIRB178I LINE linename (n-xxxxxx), STOPPED BY m-yyyyyy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B17
 Meaning
@@ -4193,7 +4205,7 @@ Action
     None.
 
 VIRB179E ERROR ON: luname ALLOCATING 64 BITS STORAGE - RETCODE: xxxxxxxx - REASON CODE: xxxxxxxx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B17
 Meaning
@@ -4201,11 +4213,11 @@ Meaning
 Action
     Use an appropriate value in the MEMLIMIT JCL parameter.
 
-2.35.   Messages VIRB4xxx
-=========================
+Messages VIRB4xxx
+^^^^^^^^^^^^^^^^^
 
 VIRB411E termid UPLOAD FAILED FOR USER userid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0041B
 Meaning
@@ -4213,11 +4225,11 @@ Meaning
 Action
     See message sent by VIRTEL to the user.
 
-2.36.   Messages VIRB9xxx
-=========================
+Messages VIRB9xxx
+^^^^^^^^^^^^^^^^^
 
 VIRB903W LINE x-nnnnnn TAKES INPUT FROM: indd AND OUTPUTS TO: outdd
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4226,7 +4238,7 @@ Action
     None.
 
 VIRB904W linename PROCESSING .GET|.POST|.RAW|.END|.EOJ COMMAND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0B09
 Meaning
@@ -4235,7 +4247,7 @@ Action
     None.
 
 VIRB906W LINE x-nnnnnn CLOSING indd AND outdd
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4244,7 +4256,7 @@ Action
     None.
 
 VIRB907W linename ENDING WITH RETURN CODE xxxxxxxx (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4253,7 +4265,7 @@ Action
     None.
 
 VIRB908E x-nnnnnn INVALID COMMAND 'xxxx' REPLACED BY '.EOJ'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4262,7 +4274,7 @@ Action
     Check the input data for the batch line.
 
 VIRB909E x-nnnnnn OPEN ERROR, EOJ REQUESTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4271,7 +4283,7 @@ Action
     Check the console log for error messages. Check that the job contains DD statements for the input and output files associated with this batch line.
 
 VIRB912W termid OBJECT nnnnnnnn STARTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4280,7 +4292,7 @@ Action
     None.
 
 VIRB922W termid ENDING OBJECT nnnnnnnn
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4289,7 +4301,7 @@ Action
     None.
 
 VIRB923E termid REQ|PARAM xxxx COMPLETION CODE code REASON CODE xxxxxxxx (dddddddd) LINE linename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4298,7 +4310,7 @@ Action
     Inspect the console log for other error messages which may explain the cause. Contact technical support.
 
 VIRB924E termid OBJECT|PARAM nnnnnnnn REQ type COMPLETION CODE code REASON CODE xxxxxxxx (dddddddd) LINE linename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0B09
 Meaning
@@ -4306,11 +4318,11 @@ Meaning
 Action
     Check that the input file is correct.
 
-2.37.   Messages VIRC1xxx
-=========================
+Messages VIRC1xxx
+^^^^^^^^^^^^^^^^^
 
 VIRC121E PAGE NOT FOUND FOR termid ENTRY POINT 'epname' DIRECTORY 'tranid'(dirname dirkey) PAGE 'filename' URL'url'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0C12
 Meaning
@@ -4319,7 +4331,7 @@ Action
     Check that the browser requested the correct page. Upload the page into the directory dirname.
 
 VIRC122E ERROR termid IS SENDING A SCENARIO PF KEY BUT SCENARIO IS MISSING IN TRANSACTION 'tranid' ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0C12
 Meaning
@@ -4327,11 +4339,11 @@ Meaning
 Action
     Add the name of an input scenario to the transaction tranid defined under entry point epname.
 
-2.38.   Messages VIRC4xxx
-=========================
+Messages VIRC4xxx
+^^^^^^^^^^^^^^^^^
 
 VIRC411E termid UPLOAD FAILED FOR USER userid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0041C
 Meaning
@@ -4339,11 +4351,11 @@ Meaning
 Action
     See message sent by VIRTEL to the user.
 
-2.39.   Messages VIRCAxxx
-========================= 
+Messages VIRCAxxx
+^^^^^^^^^^^^^^^^^ 
 
 VIRCA01W CRYn INITIALISING CRYPTOGRAPHY WITH PARAMETERS: ’name1’,’algs’,’algp’,’engine’,’encoding’,’chaining’,’padding’
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA0
 Meaning
@@ -4352,7 +4364,7 @@ Action
     None.
 
 VIRCA02W CRYn termid REQUEST FOR PUBLIC KEY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA0
 Meaning
@@ -4361,7 +4373,7 @@ Action
     None.
 
 VIRCA03W CRYn termid DECRYPTING SESSION KEY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA0
 Meaning
@@ -4370,7 +4382,7 @@ Action
     None.
 
 VIRCA04W CRYn termid ENCRYPTING A MESSAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA0
 Meaning
@@ -4379,7 +4391,7 @@ Action
     None.
 
 VIRCA04W CRYn termid DECRYPTING A MESSAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0CA0
 Meaning
@@ -4388,7 +4400,7 @@ Action
     None.
 
 VIRCA11W CRYn INITIALISING CRYPTOGRAPHY WITH PARAMETERS: ’name1’,’algs’,’algp’,’engine’,’encoding’,’chaining’,’padding’
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA1
 Meaning
@@ -4397,7 +4409,7 @@ Action
     None.
 
 VIRCA12W termid CRYn REQUEST FOR PUBLIC KEY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA1
 Meaning
@@ -4406,7 +4418,7 @@ Action
     None.
 
 VIRCA13W termid CRYn DECRYPTING SESSION KEY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA1
 Meaning
@@ -4415,7 +4427,7 @@ Action
     None.
 
 VIRCA17E termid CRYn **Error** servname retc=xxxx reas=yyyy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     	VIR0CA1
 Meaning
@@ -4424,7 +4436,7 @@ Action
     Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer's Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.
 
 VIRCA18E termid keylen=nnnn fieldlen=nnnn
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CA1
 Meaning
@@ -4432,11 +4444,11 @@ Meaning
 Action
     Refer to preceding message VIRCA17E.
 
-2.40.   Messages VIRCFxxx
-=========================
+Messages VIRCFxxx
+^^^^^^^^^^^^^^^^^
 
 VIRCF27E SYNTAX ERROR IN EXEC PARAMETER INVALID EXEC PARAMETER - RC = 16
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRCONF
 Meaning
@@ -4445,7 +4457,7 @@ Action
     Correct the parameter.
 
 VIRCF28E NOT AUTHORIZED TO UNLOAD PLAINTXT SECURITY (eg RACF) ERROR - RC = 12
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRCONF
 Meaning
@@ -4454,7 +4466,7 @@ Action
     Contact security department to obtain sufficient permissions to perform the desired operation.
 
 VIRCF47E OPEN FAILED FOR SYSPUNCH DDNAME SYSPUNCH OPEN ERROR - RC = 16
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRCONF
 Meaning
@@ -4463,7 +4475,7 @@ Action
     Check the SYSPUNCH specification.
 
 VIRCF48E OPEN FAILED FOR SYSPRINT DDNAME SYSPRINT OPEN ERROR - RC = 16
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRCONF
 Meaning
@@ -4472,7 +4484,7 @@ Action
     Check the SYSPRINT specification.
 
 VIRCF50E OPEN FAILED FOR SYSIN DDNAME SYSPIN OPEN ERROR - RC = 16
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRCONF
 Meaning
@@ -4481,7 +4493,7 @@ Action
     Check the SYSPIN specification.
 
 VIRCF52E VSAM OPEN ERROR DDNAME=VIRARBO, R15=XXXXXXXX, ACBERFLG=XXXXXXXX VSAM error code opening VIRARBO - RC = 16
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRCONF
 Meaning
@@ -4489,11 +4501,11 @@ Meaning
 Action
     Verify the values of the return codes in the appropriate IBM documentation. VSAM error codes are documented in the chapter entitled VSAM Macro Return and Reason Codes in the IBM manual DFSMS Macro Instructions for Data Sets.
 
-2.41.   Messages VIRCTxxx
-========================= 
+Messages VIRCTxxx
+^^^^^^^^^^^^^^^^^ 
 
 VIRCT01E CRYn ERROR INSTALLING 'NO-ENCRYPTION' SUBTASK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CT0
 Meaning
@@ -4502,7 +4514,7 @@ Action
     Contact technical support.
 
 VIRCT02W CRYn 'NO-ENCRYPTION' SUBTASK STARTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CT0
 Meaning
@@ -4511,7 +4523,7 @@ Action
     None.
 
 VIRCT03W CRYn 'NO-ENCRYPTION' SUBTASK ENDED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CT0
 Meaning
@@ -4520,7 +4532,7 @@ Action
     None.
 
 VIRCT05W CRYn 'NO-ENCRYPTION' SESSION KEY READY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CT0
 Meaning
@@ -4529,7 +4541,7 @@ Action
     None.
 
 VIRCT101
-^^^^^^^^
+""""""""
 
 ::
 
@@ -4583,7 +4595,7 @@ Action
     None.
 
 VIRCT11E CRYn ERROR INSTALLING 'ICSF' SUBTASK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
 VIR0CT1
 Meaning
@@ -4592,7 +4604,7 @@ Action
 Contact technical support.
 
 VIRCT12W CRYn 'ICSF' SUBTASK STARTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""
 Module
     VIR0CT1
 Meaning
@@ -4601,7 +4613,7 @@ Action
     None.
 
 VIRCT13W CRYn 'ICSF' SUBTASK ENDED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 Module
     VIR0CT1
 Meaning
@@ -4610,7 +4622,7 @@ Action
     None.
 
 VIRCT15W CRYn 'ICSF' SESSION KEY READY
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CT1
 Meaning
@@ -4619,7 +4631,7 @@ Action
     None.
 
 VIRCT16E CRYn **Error** servname retc=xxxx reas=yyyy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0CT1
 Meaning
@@ -4628,7 +4640,7 @@ Action
     Refer to SA22-7522 z/OS Cryptographic Services ICSF Application Programmer's Guide Appendix A for the meaning of ICSF return codes and reason codes. Return code 0000000C means that ICSF services are not available, usually because the CSF started task is not correctly initialized.
 
 VIRCT17E CRYn ERROR: text
-^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""
 Module
     VIR0CT1
 Meaning
@@ -4636,11 +4648,11 @@ Meaning
 Action
     Refer to preceding message VIRCT16E.
 
-2.42.   Messages VIRHTxxx
-========================= 
+Messages VIRHTxxx
+^^^^^^^^^^^^^^^^^ 
 
 VIRHT01I HTTP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4649,7 +4661,7 @@ Action
     None.
 
 VIRHT02I LINE linename (n-xxxxxx) HAS URL http://ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4658,7 +4670,7 @@ Action
     None.
 
 VIRHT04I HTTP LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4667,7 +4679,7 @@ Action
     None.
 
 VIRHT27E linename IS REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4677,7 +4689,7 @@ Action
 
 
 VIRHT28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4686,7 +4698,7 @@ Action
     None.
 
 VIRHT29E n-xxxxxx DEFAULT ENTRY POINT MISSING OR INVALID
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4695,7 +4707,7 @@ Action
     	Either define a default rule for the HTTP line, or specify a valid default entry point in the line definition.
 
 VIRHT51I linename CONNECTING termname TO ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4704,7 +4716,7 @@ Action
     None.
 
 VIRHT52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4713,7 +4725,7 @@ Action
     None.
 
 VIRHT53E linename NO MORE PSEUDO FOUND WITH PREFIX xxxx FOR TRANSACTION tranname(tranid)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRHTTP
 Meaning
@@ -4722,7 +4734,7 @@ Action
     Check the “Prefix” field of the HTTP line and the “Pseudo-terminals” field of the transaction.
 
 VIRHT54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY 'dirname' PAGE 'filename' URL 'url' TRANSACTION 'tranid' CALLER ipaddr:port reason
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4731,7 +4743,7 @@ Action
     Check that the browser requested the correct URL. Check the definition of the entry point epname. If reason is “missing directory : dirname”, ensure that there is a type 4 transaction with external name dirname. If reason is “rejected transaction : tranid”, ensure that there is a type 1 transaction with external name tranid. See “VIRTEL URL formats” in the VIRTEL Web Access Guide.
 
 VIRHT55E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4740,7 +4752,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 VIRHT56I n-xxxxxx CALLER real-ip WAS FORWARDED BY proxy-ip
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4749,7 +4761,7 @@ Action
     VIRTEL henceforth treats the call as if it had been received from real-ip instead of from proxy-ip. The real-ip address will be displayed in console messages and recorded in the VIRLOG.
 
 VIRHT57E linename RECEIVED AN ERRONEOUS REQUEST FROM ipaddr:port : LINE IS NOT SET UP FOR HTTPS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4758,7 +4770,7 @@ Action
     Either resubmit the request without encryption (use http instead of https), or activate encryption on this line (see “Data encryption” in the “VIRTEL Web Access Security” chapter of the VIRTEL Web Access Guide.
 
 VIRHT58E linename IS NOT AN OUTPUT LINE: CANNOT CONNECT termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""  
 Module
     VIRHTTP
 Meaning
@@ -4767,7 +4779,7 @@ Action
     Modify the definition of line linename setting the “Possible calls” field to 2 or 3.
 
 VIRHT59E LINE linename IS NOT OPEN: CANNOT CONNECT termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4776,7 +4788,7 @@ Action
     Start the line by entering the VIRTEL command: line=linename,S
 
 VIRHT60E linename HAS NO PSEUDO TERMINALS: CANNOT CONTINUE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4785,7 +4797,7 @@ Action
     If this is a batch line then VIRTEL terminates; otherwise VIRTEL continues but the line cannot be used.
 
 VIRHT61E linename A PARAMETER IS NEEDED FOR PREFIX $LINE$ FOR TRANSACTION ttttttt (xxxxx)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRHTTP
 Meaning
@@ -4794,7 +4806,7 @@ Action
     Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
 
 VIRHT62E
-^^^^^^^^ 
+"""""""" 
 Module
     VIRHTTP
 Meaning
@@ -4803,7 +4815,7 @@ Action
     Check the URL value if possible or run a /F stsname,snapmsg,all command at the console.
 
 VIRHT63E linename ERROR STARTING PSEUDO FOR PREFIX $LINE$ FOR TRANSACTION ttttttt (xxxxx)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRHTTP
 Meaning
@@ -4811,11 +4823,11 @@ Meaning
 Action
     The request cannot be satisfied. The connection is closed. Run a /F stcname,snapmsg,all command at the console.
 
-2.43.   Messages VIRI9xxx
-=========================
+Messages VIRI9xxx
+^^^^^^^^^^^^^^^^^
 
 VIRI902W TERM=termid REQ=req RTNCD=rtncd FDBK2=fdbk2 SENSE=sense
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4824,7 +4836,7 @@ Action
     Refer to the IBM VTAM Messages and Codes or Communications Server IP and SNA Codes manual for an explanation of the VTAM codes.
 
 VIRI903I luname(termid) RECEIVED BIND FROM applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0I09
 Meaning
@@ -4833,7 +4845,7 @@ Action
     None.
 
 VIRI904I CLEANUP: linename / applid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4842,7 +4854,7 @@ Action
     None.
 
 VIRI905I luname RELEASED
-^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4851,7 +4863,7 @@ Action
     None.
 
 VIRI905W LU luname (n-xxxxxx) ACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4860,7 +4872,7 @@ Action
     None.
 
 VIRI906W LU luname (n-xxxxxx) INACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4869,7 +4881,7 @@ Action
     None.
 
 VIRI907I luname(termid) REJECTED BIND FROM applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4878,7 +4890,7 @@ Action
     Check that the application has specified the correct LU name. Check that “possible calls” is not set to “2” in the VIRTEL terminal definition.
 
 VIRI908S INVALID RPL
-^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4887,7 +4899,7 @@ Action
     Contact technical support.
 
 VIRI909E UNABLE TO ACTIVATE luname (n-xxxxxx) ERROR: xx000000
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4901,7 +4913,7 @@ Action
     Check that the VTAM node containing LU luname has been activated, check if the LU is not already active on another line, and that the line is correctly defined in VIRTEL.
 
 VIRI910I luname(termid) RECEIVED UNBIND FROM applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4910,7 +4922,7 @@ Action
     None.
 
 VIRI911I luname(termid) REQUESTING SESSION WITH applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4919,7 +4931,7 @@ Action
     None.
 
 VIRI913W VTAM SHORT ON STORAGE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4928,7 +4940,7 @@ Action
     VIRTEL retries the operation after 1 second.
 
 VIRI914E termid ERROR R15=xx R0=yy CONNECTING luname TO applid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4937,7 +4949,7 @@ Action
     If R15=00000020, activate the LU luname in VTAM, then enter a VIRTEL START command for the line. For any other value of R15, check that the application applid is active and ready to receive connections, and that the LU luname is in CONCT status.
 
 VIRI915E termid ERROR ACTIVATING luname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4946,7 +4958,7 @@ Action
     Refer to the SYSLOG. This message is normally accompanied by VTAM message IST663I which gives more information about the cause of the error.
 
 VIRI918W RELAY luname(termid) INACTIVATED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^    
+"""""""""""""""""""""""""""""""""""""""""    
 Module
     VIR0I09
 Meaning
@@ -4955,7 +4967,7 @@ Action
     Further connections using this relay will only be possible after the LU has been reactivated under VTAM, and a VIRTEL START command has been issued for the associated line, either from the “Status of lines” screen (F9 from the configuration menu, or F10 from the sub-applications system services menu), or by the console command LINE=linename,START.
 
 VIRI956S NO MORE OSCORE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0I09
 Meaning
@@ -4963,11 +4975,11 @@ Meaning
 Action
     Check the OSCORE parameter in the VIRTCT.
 
-2.44.   Messages VIRICxxx
-=========================
+Messages VIRICxxx
+^^^^^^^^^^^^^^^^^
 
 VIRIC01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -4976,7 +4988,7 @@ Action
     None.
 
 VIRIC04I LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -4985,7 +4997,7 @@ Action
     None.
 
 VIRIC27E linename IS REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0ICON
 Meaning
@@ -4994,7 +5006,7 @@ Action
     Correct the entry point name specified in the line definition.
 
 VIRIC28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5003,7 +5015,7 @@ Action
     None.
 
 VIRIC29I linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5012,7 +5024,7 @@ Action
     Check the definition of the line. Add more terminals if necessary.
 
 VIRIC51I linename CONNECTION STARTING ON termname TO ENTRY POINT 'epname' TRANSACTION 'tranname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5021,7 +5033,7 @@ Action
     None.
 
 VIRIC52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5030,7 +5042,7 @@ Action
     None.
 
 VIRIC53E linename ENTRY POINT 'epname' WAS NOT FOUND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5039,7 +5051,7 @@ Action
     Correct the entry point name specified in the line definition.
 
 VIRIC54E linename IMS STATUS ERROR 'retcode' REASON 'reascode' text
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5048,7 +5060,7 @@ Action
     Check the OTMAPRM parameter in the VIRTCT. Check the IMS Connect log for error messages. If the error is NACK_RSM_TPIPE_SEC_FAILED check for ICH408I and IRR012I messages in the system log.
 
 VIRIC55E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5057,7 +5069,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 VIRIC56W linename IS REQUESTING CLOSE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0ICON
 Meaning
@@ -5066,7 +5078,7 @@ Action
     None.
 
 VIRIC57E linename IN ENTRY POINT 'epname', THE TRANSACTION 'tranname' WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0ICON
 Meaning
@@ -5074,11 +5086,11 @@ Meaning
 Action
     Correct the transaction name specified by the calling IMS program. Alternatively, in entry point epname add a transaction named either tranname or epname.
 
-2.45.   Messages VIRIExxx
-=========================
+Messages VIRIExxx
+^^^^^^^^^^^^^^^^^
 
 VIRIE01I INVERSE PCNE INITIALISATION FOR linename (n-xxxxxx)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IE
 Meaning
@@ -5087,7 +5099,7 @@ Action
     None.
 
 VIRIE02I termid luname CONNECTED TO applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IE
 Meaning
@@ -5096,7 +5108,7 @@ Action
     None.
 
 VIRIE03I termid luname DISCONNECTED BY applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IE
 Meaning
@@ -5105,7 +5117,7 @@ Action
     None.
 
 VIRIE04I PCNE LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR00IE
 Meaning
@@ -5114,7 +5126,7 @@ Action
     None.
 
 VIRIE05I termid RELAY CHANGED FROM oldlu TO newlu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IE
 Meaning
@@ -5123,7 +5135,7 @@ Action
     None.
 
 VIRIE45I termid CALL CLEARED BY VIRTEL CAUSE=xx DIAG=yy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IE
 Meaning
@@ -5137,7 +5149,7 @@ Action
     For Cause=00, Diag=00: None. For other codes, examine preceding error messages to determine the cause.
 
 VIRIE52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IE
 Meaning
@@ -5145,11 +5157,11 @@ Meaning
 Action
     None.
 
-2.46.   Messages VIRIFxxx
-========================= 
+Messages VIRIFxxx
+^^^^^^^^^^^^^^^^^ 
 
 VIRIF01I INVERSE FASTC INITIALISATION FOR linename (n-xxxxxx)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IF
 Meaning
@@ -5158,7 +5170,7 @@ Action
     None.
 
 VIRIF02I linename (n-xxxxxx) CONNECTED TO ctcpname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IF
 Meaning
@@ -5167,7 +5179,7 @@ Action
     None.
 
 VIRIF03I linename (n-xxxxxx) DISCONNECTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IF
 Meaning
@@ -5176,7 +5188,7 @@ Action
     None.
 
 VIRIF04I FASTC LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IF
 Meaning
@@ -5185,7 +5197,7 @@ Action
     None.
 
 VIRIF42I FASTC : UNSUPPORTED COMMAND = xx ON MCH linename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IF
 Meaning
@@ -5194,7 +5206,7 @@ Action
     Obtain a SNAP. Contact technical support if the incident persists.
 
 VIRIF52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IF
 Meaning
@@ -5202,11 +5214,11 @@ Meaning
 Action
     None.
 
-2.47.   Messages VIRIGxxx
-=========================
+Messages VIRIGxxx
+^^^^^^^^^^^^^^^^^
 
 VIRIG01I INVERSE GATE INITIALISATION FOR linename (n-xxxxxx)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5215,7 +5227,7 @@ Action
     None.
 
 VIRIG02I n-xxxxxx luname CONNECTED TO applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5224,7 +5236,7 @@ Action
     None.
 
 VIRIG03I n-xxxxxx luname DISCONNECTED BY applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5233,7 +5245,7 @@ Action
     None.
 
 VIRIG04I n-xxxxxx GATE LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5242,7 +5254,7 @@ Action
     None.
 
 VIRIG05I n-xxxxxx(linename) LOCAL LU NAME CHANGED FROM oldlu TO newlu
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5251,7 +5263,7 @@ Action
     None.
 
 VIRIG12I termid luname CONNECTED TO applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5260,7 +5272,7 @@ Action
     None.
 
 VIRIG13I termid luname DISCONNECTED BY applname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5269,7 +5281,7 @@ Action
     None.
 
 VIRIG42I n-xxxxxx(linename) RECEIVED UNSUPPORTED COMMAND xx FROM applname ON MCH luname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR00IG
 Meaning
@@ -5278,7 +5290,7 @@ Action
     Obtain a SNAP. Contact technical support if the incident persists.
 
 VIRIG43I termid luname CLEAR RECEIVED FROM LOCAL applname CAUSE=xx DIAG=yy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5287,7 +5299,7 @@ Action
     If the cause and diagnostic codes are zero, this indicates a normal end of call. Otherwise, use the cause and diagnostic codes to determine why the CTCP application issued the CLEAR.
 
 VIRIG44I termid luname CLEAR RECEIVED FROM LOCAL applname CAUSE=xx DIAG=yy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5296,7 +5308,7 @@ Action
     If the cause and diagnostic codes are zero, this indicates a normal end of call. Otherwise, use the cause and diagnostic codes to determine why the CTCP application issued the CLEAR.
 
 VIRIG45I n-xxxxxx(linename) CALL FROM ctcpappl CLEARED BY VIRTEL CAUSE=xx DIAG=yy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5310,7 +5322,7 @@ Action
     For Cause=01, Diag=E5: Check the definition of the terminals associated with AntiGATE line n-xxxxxx and verify that the “Possible calls” field is set to 1 or 3. For other codes, examine preceding error messages to determine the cause.
 
 VIRIG52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR00IG
 Meaning
@@ -5318,11 +5330,11 @@ Meaning
 Action
     None.
 
-2.48.   Messages VIRIPAxx
-=========================
+Messages VIRIPAxx
+^^^^^^^^^^^^^^^^^
 
 VIRIPA1I linename CONNECTING termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5331,7 +5343,7 @@ Action
     None.
 
 VIRIPA2I linename DECONNECTING termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5340,7 +5352,7 @@ Action
     None.
 
 VIRIPA3I linename ACCEPTED termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5349,7 +5361,7 @@ Action
     None.
 
 VIRIPA4I linename NO OUTPUT LINE FOUND FOR termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5358,7 +5370,7 @@ Action
     Wait until the partner VIRNT server retries the connection. Restart the connection at the VIRNT server if necessary. Check the definition of line linename and the terminals associated with line linename.
 
 VIRIPA6E linename PROTOCOL ERROR - SNAP TAKEN
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5367,7 +5379,7 @@ Action
     Contact technical support.
 
 VIRIPA7I linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5376,7 +5388,7 @@ Action
     Check the definition of the line. Add more terminals if necessary.
 
 VIRIPA8E linename UNKNOWN CORRELATOR xxxxxxxx IN COMMAND c
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5386,7 +5398,7 @@ Action
 
 
 VIRIPA9I INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRPASS
 Meaning
@@ -5394,11 +5406,11 @@ Meaning
 Action
     None.
 
-2.49.   Messages VIRNAxxx
-=========================
+Messages VIRNAxxx
+^^^^^^^^^^^^^^^^^
 
 VIRNA01I NATIVE IP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5407,7 +5419,7 @@ Action
     None.
 
 VIRNA04I NATIVE IP LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5416,7 +5428,7 @@ Action
     None.
 
 VIRNA05E linename UNDEFINED PARTNER n.n.n.n:p IS CALLING m.m.m.m:q
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5425,7 +5437,7 @@ Action
     Define an XOT line specifying m.m.m.m:q in the “Local ident” field and n.n.n.n:p in the “Remote ident” field
 
 VIRNA06I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRNATV
 Meaning
@@ -5434,7 +5446,7 @@ Action
     None.
 
 VIRNA07I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5443,7 +5455,7 @@ Action
     None.
 
 VIRNA26E linename HAS NO PSEUDO TERMINALS: CANNOT CONTINUE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5452,7 +5464,7 @@ Action
     VIRTEL continues but the line cannot be used. Define the associated terminals, then stop and start the line.
 
 VIRNA27E linename IS REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5461,7 +5473,7 @@ Action
     Check the definition of the line.
 
 VIRNA28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5470,7 +5482,7 @@ Action
     None.
 
 VIRNA51I linename CONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5479,7 +5491,7 @@ Action
     None.
 
 VIRNA52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5488,7 +5500,7 @@ Action
     None.
 
 VIRNA53E linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5497,7 +5509,7 @@ Action
     Check the definition of the line. Add more terminals if necessary.
 
 VIRNA55E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5506,7 +5518,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 VIRNA98E linename ERROR errcode RECEIVING FROM SOCKET sockno
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRNATV
 Meaning
@@ -5522,7 +5534,7 @@ Action
     If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table. Determine whether the partner sent an invalid message, and if so, perform the appropriate diagnostic procedures. Otherwise contact technical support.
 
 VIRNA99I linename ERROR errcode SENDING TO SOCKET socknum
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRNATV
 Meaning
@@ -5537,11 +5549,11 @@ Meaning
 Action
     If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table and contact technical support.
 
-2.50.   Messages VIRP1xxx
-=========================
+Messages VIRP1xxx
+^^^^^^^^^^^^^^^^^
 
 VIRP121E PAGE NOT FOUND FOR termid ENTRY POINT 'epname' SCENARIO 'scenname' DIRECTORY 'tranid'(dirname) NAME 'filename' URL'url'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0P12
 Meaning
@@ -5550,7 +5562,7 @@ Action
     Change the scenario to specify the correct file name.
 
 VIRP122E VARIABLE NOT FOUND FOR termid ENTRY POINT 'epname' SCENARIO 'scenname' DIRECTORY 'tranid'(dirname) NAME 'varname' URL'url'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0P12
 Meaning
@@ -5559,7 +5571,7 @@ Action
     Change the scenario to specify the correct variable name.
 
 VIRP123E SCENARIO NOT FOUND FOR termid ENTRY POINT 'epname' DIRECTORY 'dirname’ NAME 'filename' URL 'url'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0P12
 Meaning
@@ -5568,7 +5580,7 @@ Action
     Use Virtel Studio to upload the scenario to the directory specified by the entry point.
 
 VIRP1251I termid CONNECTED TO "epname"
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIR0P12
 Meaning
@@ -5576,11 +5588,11 @@ Meaning
 Action
     None.
 
-2.51.   Messages VIRPAxxx
-=========================
+Messages VIRPAxxx
+^^^^^^^^^^^^^^^^^
 
 VIRPA54E termid INVALID REQUEST ON linename FROM CALLER ipaddr:port ENTRY POINT 'epname' TRANSACTION OR SERVER 'servid'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PASS
 Meaning
@@ -5588,11 +5600,11 @@ Meaning
 Action
     Check that entry point epname has been defined in accordance with the documentation for setting up the VIRTEL Videotex Plugin.
 
-2.52.   Messages VIRPExxx
-=========================
+Messages VIRPExxx
+^^^^^^^^^^^^^^^^^
 
 VIRPE27E termid IS REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00PE
 Meaning
@@ -5601,7 +5613,7 @@ Action
     Check the entry point specified in the logdata (for SNA) or in the call user data (for X25).
 
 VIRPE52I termid DISCONNECTED AFTER nn MINUTES
----------------------------------------------
+"""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR00PE
 Meaning
@@ -5609,11 +5621,11 @@ Meaning
 Action
     None.
 
-2.53.   Messages VIRPFxxx
-=========================
+Messages VIRPFxxx
+^^^^^^^^^^^^^^^^^
 
 VIRPF01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5622,7 +5634,7 @@ Action
     None.
 
 VIRPF04I LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""" 
 Module
     VIR0PRF
 Meaning
@@ -5631,7 +5643,7 @@ Action
     None.
 
 VIRPF27E linename IS REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5640,7 +5652,7 @@ Action
     Check the definition of the line.
 
 VIRPF28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5649,7 +5661,7 @@ Action
     None.
 
 VIRPF29I linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5658,7 +5670,7 @@ Action
     Check the definition of the line. Add more terminals if necessary.
 
 VIRPF51I linename CONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5667,7 +5679,7 @@ Action
     None.
 
 VIRPF52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5676,7 +5688,7 @@ Action
     None.
 
 VIRPF54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY 'dirname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5685,7 +5697,7 @@ Action
     Check the definition of the entry point epname. Ensure that there is a type 4 transaction with external name dirname.
 
 VIRPF55E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5694,7 +5706,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 VIRPF99I linename MESSAGE RECEIVED FROM SOCKET socknum
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0PRF
 Meaning
@@ -5703,7 +5715,7 @@ Action
     None.
 
 VIRPF99I linename SEND TO SOCKET socknum
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0PRF
 Meaning
@@ -5711,11 +5723,11 @@ Meaning
 Action
     None.
 
-2.54.   Messages VIRPSxxx
-=========================
+Messages VIRPSxxx
+^^^^^^^^^^^^^^^^^
 
 VIRPS01I INITIALISATION FOR linename (n-xxxxxx), VERSION nn.nn
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5724,7 +5736,7 @@ Action
     None.
 
 VIRPS02I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5733,7 +5745,7 @@ Action
     None.
 
 VIRPS04I VIRPESIT LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5742,7 +5754,7 @@ Action
     None.
 
 VIRPS06E linename HAS NO PSEUDO TERMINALS: CANNOT CONTINUE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRPESIT
 Meaning
@@ -5751,7 +5763,7 @@ Action
     VIRTEL continues but the line cannot be used. Define the associated terminals, then stop and start the line.
 
 VIRPS07I linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5760,7 +5772,7 @@ Action
     Check the line definition. Add more terminals if necessary.
 
 VIRPS08E linename PSEUDO termname LOST
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5769,7 +5781,7 @@ Action
     Contact technical support.
 
 VIRPS11I linename PSEUDO termname RECEIVED ABORT REQUEST FROM emitter TO receiver WITH FIRST ABORT PID : pid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5778,7 +5790,7 @@ Action
     The file transfer terminates. Inspect the emitter logs to determine why the partner application terminated the transfer.
 
 VIRPS12I linename RECEIVED ABORT REQUEST FOR termname (partnerid)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5787,7 +5799,7 @@ Action
     The file transfer terminates. Inspect the logs of the file transfer application to determine why the application terminated the transfer.
 
 VIRPS13I linename OUTBOUND CONNECTION STARTING ON termname | linename CLIENT 'requesterid' SERVER 'serverid' PROTOCOL 'protocol'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning 
@@ -5796,7 +5808,7 @@ Action
     None.
 
 VIRPS14I linename INBOUND CONNECTION STARTING ON termname TO ENTRY POINT 'epname' TRANSACTION 'tranid' | linename CLIENT ''requesterid' SERVER 'serverid' PROTOCOL 'protocol'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5805,7 +5817,7 @@ Action
     None.
 
 VIRPS15I linename RECEIVED REJECT CONNECT REQUEST FROM 'serverid' TO 'requesterid' WITH DIAGNOSTIC :'hexcode' ('deccode')
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5814,7 +5826,7 @@ Action
     Inspect the logs of the file transfer application to determine why the application terminated the transfer. Refer to the file transfer application’s protocol documentation to determine the meaning of the abort codes.
 
 VIRPS16I linename RECEIVED REJECT CONNECT REQUEST FOR 'termname' WITH DIAGNOSTIC :'hexcode' ('deccode')
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRPESIT
 Meaning
@@ -5823,7 +5835,7 @@ Action
     Inspect the logs of the file transfer application to determine why the application terminated the transfer. Refer to the file transfer application’s protocol documentation to determine the meaning of the abort codes.
 
 VIRPS17I linename CONNECTION ENDING FOR 'termname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5832,7 +5844,7 @@ Action
     None.
 
 VIRPS18I linename CONNECTION ENDING FOR 'termname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5841,7 +5853,7 @@ Action
     None.
 
 VIRPS28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5850,7 +5862,7 @@ Action
     None.
 
 VIRPS29E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5859,7 +5871,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 VIRPS50E linename CANNOT CONNECT termname TO CALLER ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5868,7 +5880,7 @@ Action
     Refer to subsequent message displayed on the console (VIRPS52E through VIRPS57E) for detailed explanation.
 
 VIRPS51I linename PSEUDO termname CALLING ipaddr:port (servname)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5877,7 +5889,7 @@ Action
     None.
 
 VIRPS52E linename ENTRY POINT 'epname' WAS NOT FOUND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5886,7 +5898,7 @@ Action
     Correct the default entry point name specified in the line definition.
 
 VIRPS53E linename DEFAULT ENTRY POINT MISSING OR INVALID
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5895,7 +5907,7 @@ Action
     Add a rule or specify a default entry point name in the line definition.
 
 VIRPS54E linename IN ENTRY POINT 'epname', TRANSACTION 'tranid', THE SERVER 'servname' WAS NOT FOUND
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5904,7 +5916,7 @@ Action
     Add an external server definition for servname.
 
 VIRPS56E linename IN ENTRY POINT 'epname', THE TRANSACTION 'partnerid' WAS NOT FOUND, AND THERE IS NO DEFAULT TRANSACTION
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5913,7 +5925,7 @@ Action
     Correct the definition of the entry point, either by adding a transaction whose external name is partnerid, or by adding a default transaction whose external name is the same as the entry point name epname.
 
 VIRPS57E linename IN ENTRY POINT 'epname', THE EMULATION 'emtype' IS NOT SUPPORTED, SHOULD BE '$NONE$'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRPESIT
 Meaning
@@ -5921,11 +5933,11 @@ Meaning
 Action
     Ensure that only entry points with emulation type $NONE$ are specified in the rules and in the line definition for a VIRPESIT line.
 
-2.55.   Messages VIRQ9xxx
-========================= 
+Messages VIRQ9xxx
+^^^^^^^^^^^^^^^^^ 
 
 VIRQ903W LINE linename HAS A SESSION STARTED WITH MQM mqmname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -5934,7 +5946,7 @@ Action
     None.
 
 VIRQ904W linename OBJECT socknum WAITING FOR INPUT
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -5943,7 +5955,7 @@ Action
     None.
 
 VIRQ904W linename OBJECT socknum HAS MESSAGE OF LENGTH 'hexlen' WAITING
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -5952,7 +5964,7 @@ Action
     None.
 
 VIRQ912W linename OBJECT socknum STARTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -5961,7 +5973,7 @@ Action
     None.
 
 VIRQ922W linename ENDING OBJECT socknum FOR mqmname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -5970,7 +5982,7 @@ Action
     None.
 
 VIRQ923E linename REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -5983,7 +5995,7 @@ Action
     - REQ MQCONN COMPLETION CODE 00000002 REASON CODE 00000851 (00002129) : indicates that the required MQSeries libraries are not present in the STEPLIB concatenation of the VIRTEL started task JCL. Refer to “Executing VIRTEL in an MVS environment” in the VIRTEL Installation Guide.
 
 VIRQ924E linename OBJECT socknum REQ reqtype COMPLETION CODE ccc REASON CODE xx (ddd) MQM mqmname | linename PARAM queuename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -5992,7 +6004,7 @@ Action
     For an explanation of the error codes, refer to Appendix A of the IBM manual MQSeries Application Programming Reference.
 
 VIRQ925W linename MQM mqmname IS QUIESCING
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0Q09
 Meaning
@@ -6000,11 +6012,11 @@ Meaning
 Action
     Restart the queue manager.
 
-2.56.   Messages VIRR2xxx
-=========================
+Messages VIRR2xxx
+^^^^^^^^^^^^^^^^^
 
 VIRR211E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY USER userid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0021R
 Meaning
@@ -6012,11 +6024,11 @@ Meaning
 Action
     Correct the definition of transaction tranid.
 
-2.57.   Messages VIRRWxxx
-=========================
+Messages VIRRWxxx
+^^^^^^^^^^^^^^^^^
 
 VIRRW01I INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6025,7 +6037,7 @@ Action
     None.
 
 VIRRW04I LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6034,7 +6046,7 @@ Action
     None.
 
 VIRRW27E linename IS REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0RAW
 Meaning
@@ -6043,7 +6055,7 @@ Action
     Check the definition of the line.
 
 VIRRW28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6052,7 +6064,7 @@ Action
     None.
 
 VIRRW29I linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6061,7 +6073,7 @@ Action
     Check the definition of the line. Add more terminals if necessary.
 
 VIRRW30I linename REQUEST FROM termname SENT AT timestamp1 CORR=correlator
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6070,7 +6082,7 @@ Action
     None.
 
 VIRRW30I linename REPLY timestamp1 AT timestamp2 CORR=correlator Q=qname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6079,7 +6091,7 @@ Action
     None.
 
 VIRRW31I linename REQUEST timestamp1 CORR=correlator TIMEOUT Q=qname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6088,7 +6100,7 @@ Action
     Check the message queue manager log to determine why no response was received.
 
 VIRRW51I linename CONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6097,7 +6109,7 @@ Action
     None.
 
 VIRRW52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6106,7 +6118,7 @@ Action
     None.
 
 VIRRW54E INVALID REQUEST ON linename ENTRY POINT 'epname' DIRECTORY 'dirname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6115,7 +6127,7 @@ Action
     Check the definition of the entry point epname. Ensure that there is a type 4 transaction with external name dirname.
 
 VIRRW55E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0RAW
 Meaning
@@ -6124,7 +6136,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 VIRRW99I linename MESSAGE RECEIVED FROM SOCKET socknum
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6133,7 +6145,7 @@ Action
     None.
 
 VIRRW99I linename SEND TO SOCKET socknum
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0RAW
 Meaning
@@ -6141,11 +6153,11 @@ Meaning
 Action
     None.
 
-2.58.   Messages VIRS1xxx
-=========================
+Messages VIRS1xxx
+^^^^^^^^^^^^^^^^^
 
 VIRS121W termid ERROR LOADING SCENARIO modname IN TRANSACTION tranid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6154,7 +6166,7 @@ Action
     Check the log for a previous message VIR0031W. Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of transaction tranid. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
 
 VIRS122W termid INVALID FA39 SCENARIO RECEIVED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0S12
 Meaning
@@ -6163,7 +6175,7 @@ Action
     Check the module name specified in the “Initial Scenario”, “Final Scenario”, “Input Scenario” or “Output Scenario” field of the transaction. Ensure that this module contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
 
 VIRS123W termid ERROR LOADING SCENARIO modname IN ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6172,7 +6184,7 @@ Action
     Check the log for a previous message VIR0031W. Check the module name specified in the “Identification Scenario” field of entry point epname. Ensure that this module exists in the VIRTEL load library and that it contains a valid scenario of the requested type. Recompile the module using the current version of the VIRTEL SCRNAPI macro library.
 
 VIRS124E termid VIRSV CREATE ERROR – R15 : xxxxxxxx (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6181,7 +6193,7 @@ Action
     Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPCREA return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check the VIRTEL started task JCL to ensure that the VIRSV load library is referenced in both the STEPLIB and the SERVLIB concatenations. If VIRTEL runs as an APF-authorized task, check that the VIRSV load library is APF-authorized.
 
 VIRS125E termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6190,7 +6202,7 @@ Action
     Refer to the VIRSV User’s Guide manual to determine the meaning of the VSVPREQS return code. Check the VIRTEL log and the VSVTRACE file for additional messages. Check that the requested service program exists in a load library in the SERVLIB concatenation of the VIRTEL started task JCL. If VIRTEL runs as an APF-authorized task, check that the load library containing the service program is APF-authorized.
 
 VIRS126E termid VIRSV APPLICATION ERROR CODE : xxxxxxxx (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6199,7 +6211,7 @@ Action
     Determine the meaning of the service program return code and take appropriate action.
 
 VIRS127E termid VIRSV SERVICES UNAVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6208,7 +6220,7 @@ Action
     Check that the VIRTCT contains a VIRSV1 parameter. If so, check the VIRTEL log to determine why the VIRSV facility failed to initialise at VIRTEL startup. Refer to message VIR0090E.
 
 VIRS129E termid ERROR: SCENARIO scenname ABENDED AT OFFSET 'xxxxxxxx' ON INSTRUCTION STARTING WITH 'yyyyyyyy' [INPUT|OUTPUT|IDENTIFICATION SCENARIO IS DISCARDED]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6217,7 +6229,7 @@ Action
     Check the assembly listing to verify that the scenario has been correctly assembled. Check that the correct level macro library was used.
 
 VIRS12AI termid ERROR: SCENARIO scenname WAS ABNORMALLY STOPPED AT OFFSET 'xxxxxxxx'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6226,7 +6238,7 @@ Action
     None.
 
 VIRS12BE SCENARIO REQUIRES HEADER 'headername' NOT FOUND IN TCT : ABORTING
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6235,7 +6247,7 @@ Action
     Add headername to the HTHEADR parameter of the VIRTCT.
 
 VIRS12CE termid VIRSV REQUEST ERROR – R15 : xxxxxxxx (dddddddd) FROM progname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6244,7 +6256,7 @@ Action
     Refer to the VIRSV documentation for the meaning of the return code.
 
 VIRS12DE termid VIRSV TRANSACTION ERROR CODE : xxxxxxxx (dddddddd) FROM progname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6253,7 +6265,7 @@ Action
     Refer to the VIRSV documentation for the meaning of the return code.
 
 VIRS12EE termid SCENARIO scenname RETURNED ERROR : 'dddddddd'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6262,7 +6274,7 @@ Action
     Determine the meaning of the scenario return code and take appropriate action.
 
 VIRS12FE termid ERROR: SCENARIO 'scenname' CALLS UNDEFINED TRANSACTION 'tranname' AT OFFSET 'xxxxxxxx'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6271,7 +6283,7 @@ Action
     Verify that the entry point contains a type 5 transaction whose external name is tranname, or correct the transaction name in the scenario.
 
 VIRS12GE CANNOT RESOLVE PASSTICKET OF TYPE 'applname' ABORTING SCENARIO
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6280,7 +6292,7 @@ Action
     Possible causes are: (1) Not signed on (2) Transaction not found (3) No application name in transaction (4) PASSTCK not specified in VIRTCT (5) Application name not found in PASSTCK table (6) Request is neither GENERATE nor EVALUATE (7) Request specifies GENERATE or EVALUATE but does not match corresponding entry in the PASSTCK table (8) Insufficient storage for workarea (9) Error linking to module IRRSPK00
 
 VIRS12HE termid ERROR: SCENARIO scenname RACF ticketserv GENERATE|EVALUATE SAF RC: 'safrc' RACF RC: 'racfrc' RACF reason: 'racfreas'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6289,7 +6301,7 @@ Action
     For an explanation of the return codes and reason codes, refer to the IBM manual z/OS Security Server RACF Callable Services chapter 2: “R_ticketserv”.
 
 VIRS12IE termid LOOP WAS DETECTED IN SCENARIO scenname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0S12
 Meaning
@@ -6297,11 +6309,11 @@ Meaning
 Action
     For an explanation on the way to identify or manage loops in scenario, refer to the HANDLE$ LOOP instrauction in the VIRTEL Web Access documentation.
 
-2.59.   Messages VIRSMxxx
-=========================
+Messages VIRSMxxx
+^^^^^^^^^^^^^^^^^
 
 VIRSM01I SMTP INITIALISATION FOR linename (n-xxxxxx), VERSION x.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6310,7 +6322,7 @@ Action
     None.
 
 VIRSM04I SMTP LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6319,7 +6331,7 @@ Action
     None.
 
 VIRSM27E linename IS REJECTED AT ENTRY POINT epname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6328,7 +6340,7 @@ Action
     Check the definition of the SMTP line.
 
 VIRSM28I linename CALLER ipaddr:port GETS ENTRY POINT 'epname' FROM RULE 'rulename'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6337,7 +6349,7 @@ Action
     None.
 
 VIRSM29I linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIRSMTP
 Meaning
@@ -6346,7 +6358,7 @@ Action
     Check the definition of the line. Add more terminals if necessary.
 
 VIRSM51I linename CONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6355,7 +6367,7 @@ Action
     None.
 
 VIRSM52I linename DECONNECTING termname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6364,7 +6376,7 @@ Action
     None.
 
 VIRSM55E INVALID RULE rulename ENTRY POINT 'epname'
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6373,7 +6385,7 @@ Action
     Check the entry point name specified in the rule definition.
 
 VIRSM571 MESSAGE FROM xxx@xxx.xxx TO xxx@xxx.xxx WAS REJECTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRSMTP
 Meaning
@@ -6381,11 +6393,11 @@ Meaning
 Action
     To upload an HTML page, you must reply to a message sent by VIRTEL and include an attached file.
 
-2.60.   Messages VIRT2xxx
-=========================
+Messages VIRT2xxx
+^^^^^^^^^^^^^^^^^
 
 VIRT251E termid INVALID SERVER CALLED: 'servid' FROM TRANSACTION tranid BY USER userid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0025T
 Meaning
@@ -6393,11 +6405,11 @@ Meaning
 Action
     Correct the definition of transaction tranid.
 
-2.61.   Messages VIRT9xxx
-=========================
+Messages VIRT9xxx
+^^^^^^^^^^^^^^^^^
 
 VIRT903W LINE linename HAS A SESSION STARTED WITH TCP/IP tcpname HIGHEST SOCKET IS 'xxxxxxxx' (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6406,7 +6418,7 @@ Action
     None
 
 VIRT904I LINE linename (n-xxxxxx) IS USING TCP/IP KEEPALIVE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6415,7 +6427,7 @@ Action
     None.
 
 VIRT905I linename SOCKET socknum LISTENING ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
+""""""""""""""""""""""""""""""""""""""""""""""""""""""   
 Module
     VIR0T09
 Meaning
@@ -6424,7 +6436,7 @@ Action
     None.
 
 VIRT906I linename SOCKET socknum CALL FROM ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6433,7 +6445,7 @@ Action
     None.
 
 VIRT907I linename SOCKET socknum CALLING ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6442,7 +6454,7 @@ Action
     None.
 
 VIRT912W linename SOCKET socknum STARTED FOR ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6451,7 +6463,7 @@ Action
     None.
 
 VIRT918S NO MORE OSCORE AVAILABLE
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+""""""""""""""""""""""""""""""""" 
 Module
     VIR0T09
 Meaning
@@ -6460,7 +6472,7 @@ Action
     Check the OSCORE parameter in the VIRTCT.
 
 VIRT920W TCP SESSION LOST FOR LU linename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6469,7 +6481,7 @@ Action
     Check the partner system to determine the cause of the error.
 
 VIRT922W linename SOCKET socknum ENDED FOR ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6478,7 +6490,7 @@ Action
     None.
 
 VIRT923E ERROR ON: linename REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6495,7 +6507,7 @@ Action
     - REQ: INITAPI - RETCODE: FFFFFFFF ERRNO: 000027D6 (00010198) : indicates that the maxsock subparameter of the TCPn parameter in the VIRTCT exceeds the maximum allowed by the TCP/IP stack.
 
 VIRT924E ERROR ON: linename SOCKET: socknum REQ: reqtype - RETCODE: FFFFFFFF ERRNO: xx (ddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6507,7 +6519,7 @@ Action
     - REQ :BIND - RETCODE: FFFFFFFF ERRNO: 00000031 (00000049) : indicates the the field “Local ident” in the line definition specifies an IP address which is not accepted by the TCP/IP stack as a valid home address.
 
 VIRT925E ERROR CALLING PORT port AT SERVER servname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0T09
 Meaning
@@ -6515,11 +6527,11 @@ Meaning
 Action
     Check preceding messages in the log. Check whether a firewall has blocked access to the specified port.
 
-2.62.   Messages VIRU1xxx
-========================= 
+Messages VIRU1xxx
+^^^^^^^^^^^^^^^^^ 
 
 VIRU121E termid FILE UPLOAD FAILED : ENTRY POINT 'epname' DIRECTORY 'dirname' FILE 'filename’ USER 'username’
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0U12
 Meaning
@@ -6528,7 +6540,7 @@ Action
     Check, if necessary, that the user has successfully installed a cookie (see “Uploading pages via HTML secured by cookie” in the VIRTEL Web Access Guide). Check the definition of entry point epname. Check (using F6 in the VIRTEL configuration menu) that the directory has permissions “Copy to”, “Copy from”, and “Delete” all marked with “X”. Check that the DD name specified in the directory definition is included in the VIRTEL started task JCL.
 
 VIRU122I termid FILE UPLOAD : ENTRY POINT 'epname' DIRECTORY 'dirname' FILE 'filename’ USER 'username’
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0U12
 Meaning
@@ -6536,11 +6548,11 @@ Meaning
 Action
     None.
 
-2.63.   Messages VIRUCSxx
-=========================
+Messages VIRUCSxx
+^^^^^^^^^^^^^^^^^
 
 VIRUCS1E termid COULD NOT FIND TRANSLATION TABLE tablename
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0UCS
 Meaning
@@ -6548,11 +6560,11 @@ Meaning
 Action
     Check that the CODEPAGE parameter of the URL contains a valid translation table name, and that the table has been loaded by VIRTEL at startup, either as standard, or by the CHARSET parameter of the VIRTCT (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide).
 
-2.64.   Messages VIRV1xxx
-========================= 
+Messages VIRV1xxx
+^^^^^^^^^^^^^^^^^ 
 
 VIRV121E termid COULD NOT FIND TRANSLATION TABLE 'tablname' FOR PAGE 'pagename' DIRECTORY 'tranid' (dirname)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0V12
 Meaning
@@ -6561,7 +6573,7 @@ Action
     Check that the table tablname specified in the SET-OUTPUT-ENCODING-UTF-8 instruction in the HTML page was loaded into VIRTEL at startup time, either as standard, or by being specified in the CHARSET parameter of the VIRTCT (see the VIRTEL Installation Guide manual).
 
 VIRV122E termid WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""
 Module
     VIR0V12
 Meaning
@@ -6569,11 +6581,11 @@ Meaning
 Action
     None.
 
-2.65.   Messages VIRX9xxx
-=========================
+Messages VIRX9xxx
+^^^^^^^^^^^^^^^^^
 
 VIRX903W linename STARTING A VIRPASS SERVICE OF LOCAL NAME xmident REMOTE NAME relayname IN JOB jobname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0X09
 Meaning
@@ -6582,7 +6594,7 @@ Action
     None.
 
 VIRX907I linename DETACHING VXMTRECV SUBTASK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0X09
 Meaning
@@ -6591,7 +6603,7 @@ Action
     None.
 
 VIRX908I linename DETACHING VXMTRECV SUBTASK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0X09
 Meaning
@@ -6600,7 +6612,7 @@ Action
     None.
 
 VIRX909I linename DETACHING VXMTRECV SUBTASK
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0X09
 Meaning
@@ -6609,7 +6621,7 @@ Action
     None.
 
 VIRX912W linename CONTEXT: sessionid STARTED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0X09
 Meaning
@@ -6618,7 +6630,7 @@ Action
     None.
 
 VIRX922W linename ENDING CONTEXT sessionid FOR jobname
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0X09
 Meaning
@@ -6627,7 +6639,7 @@ Action
     None.
 
 VIRX923E ERROR ON linename REQ reqtype R15 r15code RETCODE retcode ERRNO xxxxxxxx (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 Module
     VIR0X09
 Meaning
@@ -6636,7 +6648,7 @@ Action
     Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
 
 VIRX924E ERROR ON linename CONTEXT sessionid REQ reqtype RETCODE retcode ERRNO xxxxxxxx (dddddddd)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIR0X09
 Meaning
@@ -6644,11 +6656,11 @@ Meaning
 Action
     Refer to the VIRXM User Guide manual to determine the meaning of the return code and error code for the specified request type.
 
-2.66.   Messages VIRXOxxx
-=========================
+Messages VIRXOxxx
+^^^^^^^^^^^^^^^^^
 
 VIRXO01I XOT INITIALISATION FOR linename (n-xxxxxx), VERSION 4.xx
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6657,7 +6669,7 @@ Action
     None.
 
 VIRXO04I XOT LINE linename WAS STOPPED
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6666,7 +6678,7 @@ Action
     None.
 
 VIRXO05E linename UNDEFINED PARTNER n.n.n.n:p IS CALLING m.m.m.m:q
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6675,7 +6687,7 @@ Action
     Define an XOT line specifying m.m.m.m:q in the “Local ident” field and n.n.n.n:1998 in the “Remote ident” field. If necessary, use the xot-source parameter of the x25 route instruction in the router to ensure that the router presents the expected address to VIRTEL in its incoming calls. For additional information, refer to the section “Defining an XOT line” in the VIRTEL Connectivity Reference manual.
 
 VIRXO06I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6684,7 +6696,7 @@ Action
     None.
 
 VIRXO07I linename (n-xxxxxx) IS USING A GENERIC ADDRESS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6693,7 +6705,7 @@ Action
     None.
 
 VIRXO11I termid CLEAR RECEIVED FROM REMOTE linename CAUSE=xx DIAG=yy
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6702,7 +6714,7 @@ Action
     If the cause and diagnostic codes are zero, this indicates a normal end of call from the remote partner. Otherwise, use the cause and diagnostic codes to determine why the router or the remote partner application issued the CLEAR.
 
 VIRXO51I termid CALLING x25callednumber VIA ROUTER ipaddr:port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6711,7 +6723,7 @@ Action
     None.
 
 VIRXO52I linename DECONNECTING termid
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6720,7 +6732,7 @@ Action
     None.
 
 VIRXO53E linename HAS NO MORE PSEUDO TERMINALS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6729,7 +6741,7 @@ Action
     Check the line definition. Add more terminals if necessary.
 
 VIRXO98E termid ERROR errcode RECEIVING FROM SOCKET sockno
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
@@ -6746,7 +6758,7 @@ Action
     If the cause cannot be determined by preceding messages, use the VIRTEL SNAP command to produce a dump of the internal trace table. Determine whether the router sent an invalid XOT message, and if so, perform the appropriate router diagnostic procedures. Otherwise contact technical support.
 
 VIRXO99E termid ERROR errcode SENDING TO SOCKET sockno
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Module
     VIRXOT
 Meaning
