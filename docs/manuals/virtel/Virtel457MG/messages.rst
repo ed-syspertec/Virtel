@@ -12,7 +12,7 @@ Messages V4.57
 
 **VIRTEL Messages Guide**
 
-.. danger:: This book is currently under construction. Do not use!
+.. warning:: This book is a beta version.
 
 Version : 4.57
 
