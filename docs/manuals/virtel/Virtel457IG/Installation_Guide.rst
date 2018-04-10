@@ -1214,7 +1214,7 @@ Required and optional files for Virtel
 
 -  Files VIRARBO, VIRSWAP are always required
 
--  File SERVLIB must be present if the VIRSV1 parameter is coded in the VIRTCT
+-  File SERVLIB must be present if the VIRSV1 parameter is coded in the VIRTCT or Virtel is running authorized(PGM=VIR6000)
 
 -  File VIRSTAT must be present if the parameter STATS=YES is coded in the VIRTCT
 
@@ -4112,8 +4112,8 @@ For the z/OS environment, the following options can be specified:
 
 **(RACROUTE,ACF2)** - The ACF2 security management system is used (via SAF).
 
-.. index::
-   pair: Virtel TCT; Passphrase support
+
+
 
 .. note::
 	Passphrase support can be activated by coding PASSPHRASE as an option in the SECUR keyword. For example: **SECUR=(RACROUTE,[RACF|TOPS|ACF2],PASSPHRASE)**

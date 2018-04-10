@@ -24,26 +24,14 @@ example:-
 ::
 
 	{"macros":[
-	{"name":"mylogon","rev":2,"def":[{"txt":"sptholt"},"ENTER",{"txt":"bastet"},"ENTER","ENTER","ENTER"],"mapping":{"key":"ctrl","keycode":76}},
+	{"name":"mylogon","rev":2,"def":[{"txt":"sptholt"},"ENTER",{"txt":"password"},"ENTER","ENTER","ENTER"],"mapping":{"key":"ctrl","keycode":76}},
 	{"name":"logoff","rev":1,"def":[{"txt":"=x"},"ENTER",{"txt":"logoff"},"ENTER"],"mapping":{"key":"ctrl","keycode":79}},
-	{"name":"logon","rev":2,"def":["Tab","Down",{"txt":"sptholx"},"ENTER",{"txt":"MOONRAY"},"ENTER","ENTER","ENTER"],"mapping":{"key":"alt","keycode":76}}
+	{"name":"logon","rev":2,"def":["Tab","Down",{"txt":"sptholx"},"ENTER",{"txt":"PASSWORD"},"ENTER","ENTER","ENTER"],"mapping":{"key":"alt","keycode":76}}
 	],"fmt":2}
 
 **Macro modes**
 
-The macros.json file can be maintained locally, known as local mode, or
-can be downloaded from a centralized repository on the host through the
-Virtel’s Dynamic Directory Interface (DDI). This is known as remote or
-DDI mode. See: \*Using macros with the DDI interface\* for further
-information. The macros.json file is maintained through either the local
-macro interface, as launched by the user from the Virtel toolbar, or by
-an Administrator through the DDI interface. The macros.json file can be
-edited outside of these interfaces but this is not recommended unless
-you understand the macro structure and are familiar with JavaScript.
-There are various synchronization options which will determine how the
-central DDI repository is synchronized with the user's local macros. By
-default Virtel maintains macros in local mode. In both modes, local and
-DDI, the macros.json file is stored in the browsers local storage.
+The macros.json file can be maintained locally, known as local mode, or can be downloaded from a centralized repository on the host through the Virtel’s Dynamic Directory Interface (DDI). This is known as remote or DDI mode. See: *Using macros with the DDI interface* for further information. The macros.json file is maintained through either the local macro interface, as launched by the user from the Virtel toolbar, or by an Administrator through the DDI interface. The macros.json file can be edited outside of these interfaces but this is not recommended unless you understand the macro structure and are familiar with JavaScript. There are various synchronization options which will determine how the central DDI repository is synchronized with the user's local macros. By default Virtel maintains macros in local mode. In both modes, local and DDI, the macros.json file is stored in the browsers local storage.
 
 **Getting started**
 
@@ -190,46 +178,20 @@ upload the relevant macros.json file through the DDI interface. See: :ref:`Using
 
 **Using macros with the DDI interface**
 
-An alternative to maintaining macros in a user’s local browser storage
-is to maintain and manage macros in a central repository on the
-mainframe. Within the central repository all of the macros can be
-managed by a Virtel administrator. The advantage of maintaining macros
-in a central repository is that the administrator has control over the
-macros and how they are maintained and distributed. A user can now be
-provided with site controlled macros as part of their Virtel interface –
-they do not have to write the own unsupported macros. The repository is
-part of the DDI interface which can be used to administer and manage
-files – Virtel uses the DDI feature to manage the macro file
-macros.json.
+An alternative to maintaining macros in a user’s local browser storage is to maintain and manage macros in a central repository on the mainframe. Within the central repository all of the macros can be managed by a Virtel administrator. The advantage of maintaining macros in a central repository is that the administrator has control over the macros and how they are maintained and distributed. A user can now be provided with site controlled macros as part of their Virtel interface – they do not have to write the own unsupported macros. The repository is part of the DDI interface which can be used to administer and manage files – Virtel uses the DDI feature to manage the macro file macros.json.
 
-For any user the repository can hold three distinct levels of a macro.
-The user, group and global level. A user’s user and group level are
-assigned based upon their corresponding security subsystem userid and
-group names. The global macro level contains macros applicable to all
-users. A user may maintain macros at their user level only whereas an
-Administrator can maintain macros at all three levels.
+For any user the repository can hold three distinct levels of a macro. The user, group and global level. A user’s user and group level are assigned based upon their corresponding security subsystem userid and group names. The global macro level contains macros applicable to all users. A user may maintain macros at their user level only whereas an Administrator can maintain macros at all three levels.
 
 **DDI Installation**
 
-In this example the DDI macro interface is turned on for transactions
-defined in the CLI custom directory, normally associated with port
-41002. By default, the transaction CLI-03P identifies the w2hparm.js as
-belonging to the W2H directory. This transaction needs to be modified so
-that the directory for w2hparm.js (Application field) will now be the
-CLI directory. The transaction should be updated so the path
-w2h/w2hparm-js points to the CLI-DIR directory. A modified w2hparm.js
-file, with the macros enabled option set, should then be uploaded to the
-CLI directory. We use the CLI directory for customer modifications to
-avoid any changes being lost during a Virtel upgrade.
+In this example the DDI macro interface is turned on for transactions defined in the CLI custom directory, normally associated with port 41002. By default, the transaction CLI-03P identifies the w2hparm.js as belonging to the W2H directory. This transaction needs to be modified so that the directory for w2hparm.js (Application field) will now be the
+CLI directory. The transaction should be updated so the path w2h/w2hparm-js points to the CLI-DIR directory. A modified w2hparm.js file, with the macros enabled option set, should then be uploaded to the CLI directory. We use the CLI directory for customer modifications to avoid any changes being lost during a Virtel upgrade.
 
 |image4|
 
 Fig. 4 - Modified CLI-03P transaction
 
-To use the DDI interface the options must be set in the w2hparm.js
-member. The various options control the synchronisation between the
-user's local macro storage and the DDI central repository. Specify one
-of the following options to turn on DDI or remote macro mode:-
+To use the DDI interface the options must be set in the w2hparm.js member. The various options control the synchronisation between the user's local macro storage and the DDI central repository. Specify one of the following options to turn on DDI or remote macro mode:-
 
 ::
 
@@ -276,34 +238,47 @@ or
 	w2hparm.synchronizeVirtelMacros=true;	
 	w2hparm.keymapping=true;                   
 
-The w2hparm.js member can be found in the sources.zip file. This can be
-downloaded using the following url: myVirtel:41001/w2h/sources.zip or
-from the Administration portal. Extract the zip file and locate the
-w2hparm.js file. Modify the w2hparm definition to include the above
-option then use the Virtel file upload facility to upload the modified
-w2hparm.js to the CLI directory.
+The w2hparm.js member can be found in the sources.zip file. This can be downloaded using the following url: myVirtel:41001/w2h/sources.zip or from the Administration portal. Extract the zip file and locate the w2hparm.js file. Modify the w2hparm definition to include the above option then use the Virtel file upload facility to upload the modified w2hparm.js to the CLI directory.
 
-The next step is to run the ARBOLOAD JCL with the VMACROS=YES option
-set. The ARBOLOAD job can be found in the CNTL or SAMPLIB library and
-can only be run when Virtel is down. This will add the relevant Virtel
-transactions and elements to support DDI.
+Add DDI Transactions
+""""""""""""""""""""
+The next step is to re-run the ARBOLOAD JCL with the VMACROS=YES option set. The ARBOLOAD job can be found in the CNTL or SAMPLIB library and can only be run when Virtel is down. This will add the relevant Virtel transactions and elements to support DDI.
+
+Update Security profiles
+""""""""""""""""""""""""
+
+**Administrators**
+The final step is optional and depends on the security setup. If you are an administrator and have global access to all the Virtel resouces definied under the security profile, as defined in the TCT (RAPPL=FACILITY,PRFSECU=*value*), then no further action should be required. However, if you do not have global access you will need to define the following security profiles and provide READ access.
+
+::
+
+	PRFSECU.USR-DIR
+	PRFSECU.GRP-DIR
+	PRFSECU.GLB-DIR
+	PRFSECU.W2H-03U
+	PRFSECU.W2H-03G
+	PRFSECU.W2H-03A
+	PRFSECU.W2H-07 
+	PRFSECU.W2H-66 
+	PRFSECU.W2H-80U
+	PRFSECU.W2H-80G
+	PRFSECU.W2H-80A
+
+**Users**
+Aa well as administrators, users will require READ access to the following profiles to use DDI. It is recommended to use a group profile rather than individual user profiles. 
+
+::
+
+	PRFSECU.W2H-03U
+	PRFSECU.W2H-03G
+	PRFSECU.W2H-80U
+	PRFSECU.USR-DIR
 
 **Managing macros with DDI**
 
-Obtain a “default” copy of a macros.json file. This could be one that
-has been exported from local storage. This file needs to be copied,
-using DDI, to Global directory within the DDI interface using the DDI
-upload interface.
+Obtain a “default” copy of a macros.json file. This could be one that has been exported from local storage. This file needs to be copied, using DDI, to Global directory within the DDI interface using the DDI upload interface.
 
-The normal practice for an administrator in managing the macro
-repository would be to capture and create a macro in their user
-directory, upload it to the mainframe repository using the DDI
-interface, modify it for general use, and then copy it to any group,
-user or global directory for general availability. The upload process is
-through a drag and drop operation within DDI interface. To copy a
-macros.json to another user or group requires downloading the macro
-first then dragging the file into the relevant DDI panel area designated
-by the dotted lines.
+The normal practice for an administrator in managing the macro repository would be to capture and create a macro in their user directory, upload it to the mainframe repository using the DDI interface, modify it for general use, and then copy it to any group, user or global directory for general availability. The upload process is through a drag and drop operation within DDI interface. To copy a macros.json to another user or group requires downloading the macro first then dragging the file into the relevant DDI panel area designated by the dotted lines.
 
 **Uploading a macro.json file to the Global directory**
 
@@ -521,14 +496,39 @@ The macro editor supports the following commands:-
 
 ::
 
-   w2hparm.useVirtelMacros = {"macrosAutoRefresh":"session"};
+   w2hparm.useVirtelMacros = {"macrosAutoRefresh":"value"};
 
 |image12|
 
 *Answer.*
-You have turned on DDI macro support (BLUE interface ICON) but the
-application you are accessing is not secured. DDI is unable to determine the
-userid associated with the transaction.
+You have turned on DDI macro support (BLUE interface ICON) but the application you are accessing is not secured. DDI is unable to determine the userid associated with the transaction. DDI only supports secure transactions.
+
+2. Why do I get the following error message after setting
+
+::
+
+   w2hparm.useVirtelMacros = {"macrosAutoRefresh":"value"};
+
+|image14|
+
+*Answer.*
+No security profiles exist for the relevant DDI resources. The following profiles will require a default security definition with READ access.
+
+::
+
+	PRFSECU.USR-DIR
+	PRFSECU.GRP-DIR
+	PRFSECU.GLB-DIR
+	PRFSECU.W2H-03U
+	PRFSECU.W2H-03G
+	PRFSECU.W2H-03A
+	PRFSECU.W2H-07 
+	PRFSECU.W2H-66 
+	PRFSECU.W2H-80U
+	PRFSECU.W2H-80G
+	PRFSECU.W2H-80A
+
+PRFSECU is the value coded in the Virtel TCT on the RAPPL statement.	
 
 **Appendix D**
 
@@ -788,3 +788,6 @@ changing the output scenario to ADMINVWM.
 .. |image12| image:: images/media/image13.png
    :width: 4.53125in
    :height: 5.27097in
+.. |image14| image:: images/media/image14.png
+   :width: 4.53125in
+   :height: 5.27097in   
