@@ -7465,7 +7465,7 @@ item
         PASSWORD
             Allows a scenario to specify the password which will become the value of the system variable &P (see “Connection/disconnection scripts” in the VIRTEL Connectivity Guide).
         LOGMODE
-            The name of the logmode to be used for the VTAM session with the host application. The logmode can be set in an Identification Scenario. It overrides the logmode specified in the transaction or terminal definition.
+            The name of the logmode to be used for the VTAM session with the host application. The logmode can be set in an Identification Scenario. It overrides the logmode specified in the terminal definition. It **does not** override any logmode specified in the transaction definition.
         ROUTING-PARAMETER
             Allows an Identification Scenario to override the value of the routing parameter specified in the userdata field of the URL (see :ref:`“Virtel URL formats” <#_V457UG_url_formats>`).
         RELAY
