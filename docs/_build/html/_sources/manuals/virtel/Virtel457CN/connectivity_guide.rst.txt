@@ -4036,7 +4036,7 @@ Pseudo Terminals
     Specifies the prefix of the name of the VIRTEL terminal which will be used to connect to the application. The value $LINE$ in the “Pseudo Terminals” field indicates that this transaction is reserved for HTTP connections using non-predefined terminals (see :ref:`“HTTP connections with non-predefined LU names”<#_V457CN_ForceLUNAME>`).
 
 Logmode
-    The name of the new LOGMODE that **MUST** be used to connect to the application. This overrides any LOGMODE parameter specified in the URL.
+    The name of the new LOGMODE that **MUST** be used to connect to the application. This overrides any LOGMODE parameter specified in the URL or in an identification scenario.
 
 How started
     Represents the desired startup mode for the transaction. Permissible values are as follows:
