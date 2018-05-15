@@ -3629,7 +3629,7 @@ Web Access Customization
 Uploading HTML Pages
 --------------------
 
-A aprt of Web Access Customization will require the uploading of HTML templates or other web entities such as customised Javascript or CSS files. The Virtel Administration guide provides information on how to upload files to the Virtel mainframe server.
+A part of Web Access Customization will require the uploading of HTML templates or other web entities such as customised JavaScript or CSS files. The Virtel Administration guide provides information on how to upload files to the Virtel mainframe server.
 
 Web Access Settings
 -------------------
