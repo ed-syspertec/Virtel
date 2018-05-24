@@ -1476,7 +1476,7 @@ Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 
 	f) CHANGE ALL 'DBDCCICS' 'xxxxxx' where xxxxxx is the APPLID of your CICS system.
 
-  	g) If you changed the APPLID of VIRTEL in step 4 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
+  	g) If you changed the APPLID of VIRTEL in step 7 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
 
   .. note::
 

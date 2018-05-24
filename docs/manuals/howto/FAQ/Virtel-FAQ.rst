@@ -67,6 +67,19 @@ Can VIRTEL WEB ACCESS emulate z/OS Operator consoles
 
 Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.
 
+Can I customize hotspot recognition
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in custom.js.
+
+For example, an application requires strings of the format "PFnn-caption" to be recognized as PF hotspots. The customized code in a custom.js file would be:
+
+::
+
+    function after_responseHandle(o, url, xtim) {
+    VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/) :
+    }
+
+    
 .. |image1| image:: images/media/logo_virtel_web.png
             :scale: 50 %     

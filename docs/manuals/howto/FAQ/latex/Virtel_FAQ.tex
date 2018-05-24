@@ -119,6 +119,19 @@ Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port
 Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.
 
 
+\section{Can I customize hotspot recognition}
+\label{\detokenize{Virtel-FAQ:can-i-customize-hotspot-recognition}}
+The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in custom.js.
+
+For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in a custom.js file would be:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+function after\PYGZus{}responseHandle(o, url, xtim) \PYGZob{}
+VIR3270.customPfKeysHotspotRegex = /(P?F\PYGZbs{}d\PYGZob{}1,2\PYGZcb{}\textbar{}PA[1\PYGZhy{}3]\textbar{}ENTER\textbar{}CLEAR)((?:\PYGZbs{}/P?F\PYGZbs{}d\PYGZob{}1,2\PYGZcb{})?\PYGZbs{}s*[=:\PYGZhy{}])/) :
+\PYGZcb{}
+\end{sphinxVerbatim}
+
+
 
 \renewcommand{\indexname}{Index}
 \printindex
