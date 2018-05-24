@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>How To - FAQs &mdash; Virtel 7 documentation</title>
+  <title>Virtel FAQs &mdash; Virtel 7 documentation</title>
   
 
   
@@ -101,8 +101,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../howto.html">Miscellaneous</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../howto.html#how-to-docs">How To Docs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../AT-TLS/Virtel-AT-TLS-Howto.html">How To - AT-TLS</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">How To - FAQs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#faq-virtel-presentation">1. FAQ Virtel Presentation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virtel FAQs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#faqs">FAQs</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../LU-Nailing/Virtel-LU-Nailing-Howto.html">How To - Virtel Nailing</a></li>
@@ -156,7 +156,7 @@
         
           <li><a href="../../../howto.html">Miscellaneous</a> &raquo;</li>
         
-      <li>How To - FAQs</li>
+      <li>Virtel FAQs</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,14 +175,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="how-to-faqs">
-<span id="howtofaq"></span><h1>How To - FAQs<a class="headerlink" href="#how-to-faqs" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="faq-virtel-presentation">
-<h2>1. FAQ Virtel Presentation<a class="headerlink" href="#faq-virtel-presentation" title="Permalink to this headline">¶</a></h2>
-<p><strong>1.1 How to deactivate the Virtel status bar</strong></p>
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="virtel-faqs">
+<span id="virtel-faq"></span><h1>Virtel FAQs<a class="headerlink" href="#virtel-faqs" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web1.png"><img alt="image1" src="../../../_images/logo_virtel_web1.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><strong>VIRTEL Frequently asked Questions</strong></p>
+<p>Release Date : 24 May 2018. Publication Date : 08/01/2018</p>
+<p>Syspertec Communication</p>
+<p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
+<p><a class="reference external" href="http://www.syspertec.com/">www.syspertec.com</a></p>
+<p>NOTICE</p>
+<blockquote>
+<div><p>Reproduction, transfer, distribution, or storage, in any form, of all or any part of
+the contents of this document, except by prior authorization of SysperTec
+Communication, is prohibited.</p>
+<p>Every possible effort has been made by SysperTec Communication to ensure that this document
+is complete and relevant. In no case can SysperTec Communication be held responsible for
+any damages, direct or indirect, caused by errors or omissions in this document.</p>
+<p>As SysperTec Communication uses a continuous development methodology; the information
+contained in this document may be subject to change without notice. Nothing in this
+document should be construed in any manner as conferring a right to use, in whole or in
+part, the products or trademarks quoted herein.</p>
+<p>“SysperTec Communication” and “VIRTEL” are registered trademarks. Names of other products
+and companies mentioned in this document may be trademarks or registered trademarks of
+their respective owners.</p>
+</div></blockquote>
+<div class="section" id="faqs">
+<h2>FAQs<a class="headerlink" href="#faqs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-deactivate-the-virtel-status-bar">
+<h3>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h3>
 <p>To deativate the status bar create a ccs rule and add it to your custom css file. For example in custCSS.test1.css add the following statement:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">div</span><span class="c1">#statusbar {display:none!important}</span>
 </pre></div>
+</div>
+</div>
+<div class="section" id="how-to-use-the-tso-omvs-panel-command-with-vwa">
+<h3>How to use the TSO OMVS panel command with VWA<a class="headerlink" href="#how-to-use-the-tso-omvs-panel-command-with-vwa" title="Permalink to this headline">¶</a></h3>
+<p>TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING to INPUT. This asynchronous nature forces Virtel to generate a HTML page which updates the whole screen, erasing any partially entered input field. Once the screen is in INPUT mode OMVS will not write to the screen in this ASYNC fashion anymore. The work around for this is to wait for the status change before entering any input. Alternatively you can put the screen into INPUT mode immediately by pressing F12=Retrieve, and then pressing Home and End to clear the input area.</p>
+<p>Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.</p>
+</div>
+<div class="section" id="can-virtel-web-access-emulate-z-os-operator-consoles">
+<h3>Can VIRTEL WEB ACCESS emulate z/OS Operator consoles<a class="headerlink" href="#can-virtel-web-access-emulate-z-os-operator-consoles" title="Permalink to this headline">¶</a></h3>
+<p>Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.</p>
 </div>
 </div>
 </div>
