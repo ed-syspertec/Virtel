@@ -3932,7 +3932,7 @@ The following supported global properties are:-
     "pathToPrintCss"  - Customized Print CSS Style sheets
     "pathToHelp"      - Customized Help pages   
 
-Adding the global-settings property to the “VWA settings” file w2hparms.js provides the pointers to the customized components located within the “option” directory as identified by the /option/ pathname. In the sample above customised CSS, Javascript and Help element pointers are defined. For further details see :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>`.
+Adding the global-settings property to the “VWA settings” file w2hparms.js provides the pointers to the customized components located within the “option” directory as identified by the /option/ pathname. In the sample above customised CSS, Javascript and Help element pointers are defined. For further details see :ref:`"Customisation Modes"<#_V457UG_customizing_with_option>`.
 
 .. danger:: Updating w2hparm.js in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements sucha as w2hparm.js in the CLI-DIR directory.
 
@@ -4457,7 +4457,7 @@ screen.
 Site Customization - Colors And Logo
 ====================================
 
-The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom settings are defined in a style sheet which by default is called  custom.css. The file is modified by an administrator and then uploaded to a VIRTEL directory designated for storage of customer files. In compatibility mode this is usually CLI-DIR, normally found within the HTML-TRSF VSAM file. In "Option mode", however, this can be any user directory or file name. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the customization modes.  
+The VIRTEL administrator can customize the color settings for all applications or for specific applications. The custom settings are defined in a style sheet which by default is called  custom.css. The file is modified by an administrator and then uploaded to a VIRTEL directory designated for storage of customer files. In compatibility mode this is usually CLI-DIR, normally found within the HTML-TRSF VSAM file. In "Option mode", however, this can be any user directory or file name. See :ref:`"Virtel Customization modes"<#_V457UG_customizing_with_option>` for more details on the customization modes.  
 
 .. index::
    pair: CSS; Customization
@@ -4468,7 +4468,7 @@ The VIRTEL administrator can customize the color settings for all applications o
 Using a CSS file for customization
 ----------------------------------
 
-In "Default mode" the custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST on port 41001) or CLI-03CC (for entry point CLIWHOST on port 41002). These transactions have external name w2h and specify the path name /w2h/custom-css in the URL Prefix field. When VIRTEL is first installed, these transactions point to directory W2H-DIR for W2H-03CC and to directory CLI-DIR for CLI-03CC which contains a dummy version of the file custom.css. A custom.css file or a designated "Option" mode CSS file can be modified to include bespoke CSS customization. The following process looks at how to customize the delivered custom.css file, maintaining a copy in the CLI-DIR, and running in "Compatibility Mode". See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the customization modes. All of the following examples relate to updating a customized copy of custom.css. If running in "Option mode" this file could be called /option/custCSS.myCICS1.css, applicable to a transaction only, or /option/custCSS.global.css, a global entry applicable to all Entry Points and transactions.   
+In "Default mode" the custom.css file is loaded from the directory designated by the transaction W2H-03CC (for entry point WEB2HOST on port 41001) or CLI-03CC (for entry point CLIWHOST on port 41002). These transactions have external name w2h and specify the path name /w2h/custom-css in the URL Prefix field. When VIRTEL is first installed, these transactions point to directory W2H-DIR for W2H-03CC and to directory CLI-DIR for CLI-03CC which contains a dummy version of the file custom.css. A custom.css file or a designated "Option" mode CSS file can be modified to include bespoke CSS customization. The following process looks at how to customize the delivered custom.css file, maintaining a copy in the CLI-DIR, and running in "Compatibility Mode". See :ref:`"Virtel Customization Modes"<#_V457UG_customizing_with_option>` for more details on the customization modes. All of the following examples relate to updating a customized copy of custom.css. If running in "Option mode" this file could be called /option/custCSS.myCICS1.css, applicable to a transaction only, or /option/custCSS.global.css, a global entry applicable to all Entry Points and transactions.   
 
 .. danger:: Updating custom.css in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements such as custom.css in the CLI-DIR directory or in a designated "option" file.
 
@@ -4788,11 +4788,11 @@ Site Customization - Javascript Functions
    pair: Option mode; Customization
    pair: Compatibility mode; Customization
 
-A custom Javascript file can be used for calling bespoke functions or setting attributes in Virtel objects which can control or modify default behaviour. When running in "default" or "compatibility mode" this file is normally called custom.js. An alternate mode, known as "Option Mode" provides better granularity for bespoke enhancements. See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise Virtel using the available mode settings. AS delivered, Virtel runs in the "default" mode, locating a dummy custom.js file from the W2H-DIR directory. The remainder of this section refers to running Virtel in "compatibility" mode qnd customizing a custom.js file and maintaining it in the CLI-DIR directory.
+A custom Javascript file can be used for calling bespoke functions or setting attributes in Virtel objects which can control or modify default behaviour. When running in "default" or "compatibility mode" this file is normally called custom.js. An alternate mode, known as "Option Mode" provides better granularity for bespoke enhancements. See :ref:`"Virtel Customising modes" <#_V457UG_customizing_with_option>` for further details on how to customise Virtel using the available mode settings. AS delivered, Virtel runs in the "default" mode, locating a dummy custom.js file from the W2H-DIR directory. The remainder of this section refers to running Virtel in "compatibility" mode and customizing a custom.js file and maintaining it in the CLI-DIR directory. This will require that the HTSET1=(OPTION-DEFAULT-COMPATIBILITY) option is coded in the TCT. If running in "Option Mode" remove this statement from the TCT.  
 
 .. danger:: Updating custom.js in the default W2H-DIR directory is not recommended as changes will be overwritten by maintenance or future Virtel release updates. Keep customized elements such as custom.js in the CLI-DIR directory or in a designated "option" file.
 
-To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads a custom Javascript file when a session is started. An empty file, called custom.js by default, is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction as delivered under the CLIWHOST entry point refers to the W2H-DIR directory. An administrator can modify this transaction to reference a different directory containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be used for this purpose.  The changes as described in this section pertain to running in "Compatibility mode" whereby modifications are made to a modified custom.js file. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` for more details on the available customization modes.    
+To take into account site-specific Javascript extensions for Web Access, the WEB2AJAX.htm page template loads a custom Javascript file when a session is started. An empty file, called custom.js by default, is delivered as standard in the W2HDIR directory. The CLI-03CJ (/w2h/custom-js) transaction as delivered under the CLIWHOST entry point refers to the W2H-DIR directory. An administrator can modify this transaction to reference a different directory containing a site-specific version of custom.js. The CLI-DIR directory, which is intended for client-specific files, may be used for this purpose.  The changes as described in this section pertain to running in "Compatibility mode" whereby modifications are made to a modified custom.js file. See :ref:`"Virtel Customization modes"<#_V457UG_customizing_with_option>` for more details on the available customization modes.    
 
 To facilitate site-specific modifications to custom.js, VIRTEL Web Access calls various custom exits at strategic points in its processing. These exits are optional Javascript functions which can be codes custom.js if required. The exits are described below.
 
@@ -6004,7 +6004,7 @@ Enabeling macros in Virtel Storage
    pair: macrosAutoRefresh; W2HParm Settings
 
 When VIRTEL is first installed, no macros.json files exist. To allow macros to be stored and loaded from the host site, the administrator activates the VirtelMacros function by
-adding the code shown below to a customised w2hparm parm file. This parameter file should reside in the CLI-DIR directory (or another option site-defined directory). See :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>` for further details on how to customise and configure Virtel.
+adding the code shown below to a customised w2hparm parm file. This parameter file should reside in the CLI-DIR directory (or another option site-defined directory). See :ref:`"Customisation Modes" <#_V457UG_customizing_with_option>` for further details on how to customise and configure Virtel.
 
 ::
  
@@ -6047,7 +6047,7 @@ The sharing of macros across multiple instances of Virtel was introduced in Virt
 
 With this feature a timestamp is used to synchronize macros between the browser’s cache and the supporting TRSF file. If the timestamp in the cache is later than the macro entry in the local TRSF file, the TRSF file will be updated. Conversely, if the macros in the local TRSF is later than the cache equivalent, then the macro will be reloaded in cache from the TRSF file. Any changes made will be refelcted back to the local TRSF file. If a subsequent logon is targeted to a different Virtel instance, and possibly a different TRSF, then the cache in the the browser will updated the local TRSF file as the timestamp in the browser for the macro will be later than the timestamp held in the TRSF file. Using this timestamp comparison ensures that the macros and synchronized between the users browser cache and the supporting TRSF file. 
 
-This feature is activated by setting the following w2hparm setting. This parameter file should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if "Option" mode customization is being used. The w2hparm modification must be activated as described in :ref:`"Customising Virtel using the Option pathname" <#_V457UG_customizing_with_option>`. Once this customization has been done, the macros will be automaticaly be synchonized across VIRTEL instances where each Virtel has its own HTML TRSF file.
+This feature is activated by setting the following w2hparm setting. This parameter file should be loaded into the CLI-DIR directory or a directory designated by the /Option/ pathname if "Option" mode customization is being used. The w2hparm modification must be activated as described in :ref:`"Customising Modes" <#_V457UG_customizing_with_option>`. Once this customization has been done, the macros will be automaticaly be synchonized across VIRTEL instances where each Virtel has its own HTML TRSF file.
 
 ::
  
@@ -14730,7 +14730,7 @@ To open an application in a new TAB instead of the current window code the follo
 
 Create an options entry to support this modification against transaction applist (CLI-90). For example, using the Virtel HTML Admin. panel, select transaction applist and use the toolbox Icon to generate the options file. In the transaction set the options field to appmenu. Remember to save the changes to the transaction!  Place the above code into a file called custJS.appmenu.js and upload to the directory defined for the 'options' path. 
 
-.. note:: You must have setup the "options" mode customization before you can generate "option" files. The ARBOLOAD job must be run with OPTIONS=YES to add the options transactions. See :ref:`"customization modes"<#_V457UG_customizing_with_option>` on how to set up customising with the options mode. 
+.. note:: You must have setup the "options" mode customization before you can generate "option" files. The ARBOLOAD job must be run with OPTIONS=YES to add the options transactions. See :ref:`"Virtel Customization Modes"<#_V457UG_customizing_with_option>` on how to set up customising with the options mode. 
 
 ********
 Appendix
