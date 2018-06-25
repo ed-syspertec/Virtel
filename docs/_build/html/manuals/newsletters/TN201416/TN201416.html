@@ -211,26 +211,21 @@ by system SSL. System SSL has three supported protocol levels:</p>
 <p>SSLv2</p>
 <p>SSLv3</p>
 <p>In this configuration we will be using SSLv3.</p>
-<p>The server / client process, which in Virtel’s case is the Virtel
-started task (server) and the browser (client), implements the following
-SSL protocol or handshake during the “hello” phase of establishing a
-secure session:</p>
+<p>The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements the following SSL protocol or handshake during the “hello” phase of establishing a secure session:</p>
 <ol class="arabic simple">
-<li>The Client contacts the Server&nbsp;;</li>
-<li>The Server sends a certificate;</li>
-<li>Server authentication is performed by the Client&nbsp;;</li>
-<li>Client sends the certificate;</li>
-<li>Client authentication is performed by the Server&nbsp;;</li>
-<li>An encryption algorithm and single key is chosen to encrypt / decrypt
-data</li>
+<li>The Client contacts the Server with “Hello” message:
+<em>Incorporates a list of supported cipher suites and a random byte string.</em></li>
+<li>The Server sends “Hello” message back:
+<em>Incorporates selected cipher suite from client list, Session ID, random byte string, servers digital certificate and optional client certificate request.</em></li>
+<li>Server authentication is performed by the Client.</li>
+<li>Client responds to server:
+<em>Incorporates a random byte string that is used to compute a secret key for subsequent messages. The random byte string is encrypted with the server’s public key. Optionally sends client’s digital certificate or “no digital certificate’ alert. This may be rejected by server if a client certificate is required.</em></li>
+<li>Client authentication is performed by the Server.</li>
+<li>Client sends “Finished” message encrypted with secret key.</li>
+<li>Server sends “Finished” message encrypted with secret key.</li>
+<li>An encryption algorithm and secret key is chosen to encrypt / decrypt data further data transmission.</li>
 </ol>
-<p>The purpose of the authentication is to ensure that the server/client
-are in fact who they say they are. This is to ensure that they
-server/client private and public keys haven’t been stolen and are
-purporting to be an entity that they aren’t and thereby compromising
-security. Authentication uses X.509 digital certificates. Further
-details of this handshake and the certificate exchange can be found in
-Appendix B. TLS/SSL Security z/OS Communications Server: IP
+<p>The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in Appendix B. TLS/SSL Security z/OS Communications Server: IP
 Configuration Guide.</p>
 <p><strong>Certificate</strong></p>
 <p>What’s in a X.509 certificate?</p>
