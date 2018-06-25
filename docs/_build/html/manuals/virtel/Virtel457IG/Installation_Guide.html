@@ -1476,11 +1476,25 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="n">RDR</span><span class="p">,</span><span class="n">VIRTCIL</span>
 </pre></div>
 </div>
-<p>When this job executes, a // PAUSE card will ask you to enter a LIBDEF statement to specify the name of the library into which the modules are to be loaded. Enter</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">LIBDEF</span> <span class="n">PHASE</span><span class="p">,</span><span class="n">CATALOG</span><span class="o">=</span><span class="n">xxxxx</span>
+<p>When this job executes, a // PAUSE card will ask you to enter the statements to specify the name of the library into which the modules are to be loaded. Enter</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">DLBL</span> <span class="n">VIRTvrr</span><span class="p">,</span><span class="s1">&#39;VSE.VIRTvrr.LIBRARY&#39;</span><span class="p">,,</span><span class="n">VSAM</span><span class="p">,</span><span class="n">CAT</span><span class="o">=</span><span class="n">VSESPUC</span>
+<span class="o">//</span> <span class="n">LIBDEF</span> <span class="n">PHASE</span><span class="p">,</span><span class="n">CATALOG</span><span class="o">=</span><span class="n">xxxxx</span>
 </pre></div>
 </div>
 <p>where xxxxx represents the name of the sublibrary you defined in the previous job.</p>
+<p>As an example here is the commands entered in a VSE system:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">BG</span><span class="o">-</span><span class="mi">0000</span> <span class="o">//</span> <span class="n">PAUSE</span> <span class="n">ENTER</span> <span class="n">YOUR</span> <span class="n">LIBDEF</span> <span class="n">PHASE</span> <span class="n">STATEMENT</span> <span class="n">AS</span> <span class="n">IN</span> <span class="n">THE</span> <span class="n">ABOVE</span> <span class="n">EXAMPLE</span>
+<span class="mi">0</span> <span class="o">//</span> <span class="n">DLBL</span> <span class="n">VIRT458</span><span class="p">,</span><span class="s1">&#39;VSE.VIRT458.LIBRARY&#39;</span><span class="p">,,</span><span class="n">VSAM</span><span class="p">,</span><span class="n">CAT</span><span class="o">=</span><span class="n">SYSPUC1</span>           <span class="o">&lt;</span><span class="n">USER</span> <span class="n">INPUT</span><span class="o">&gt;</span>
+<span class="n">BG</span><span class="o">-</span><span class="mi">0000</span>
+<span class="mi">0</span> <span class="o">//</span> <span class="n">LIBDEF</span> <span class="n">PHASE</span><span class="p">,</span><span class="n">CATALOG</span><span class="o">=</span><span class="n">VIRT458</span><span class="o">.</span><span class="n">SUBLIB</span>                                                        <span class="o">&lt;</span><span class="n">USER</span> <span class="n">INPUT</span><span class="o">&gt;</span>
+<span class="n">BG</span><span class="o">-</span><span class="mi">0000</span>
+<span class="mi">0</span>                                                                   <span class="o">&lt;</span><span class="n">USER</span> <span class="n">INPUT</span><span class="o">&gt;</span>
+<span class="n">BG</span> <span class="mi">0000</span> <span class="o">//</span> <span class="n">OPTION</span> <span class="n">CATAL</span>
+<span class="n">BG</span> <span class="mi">0000</span>  <span class="n">INCLUDE</span>
+<span class="n">BG</span> <span class="mi">0000</span> <span class="o">//</span> <span class="n">EXEC</span> <span class="n">LNKEDT</span><span class="p">,</span><span class="n">SIZE</span><span class="o">=</span><span class="mi">512</span><span class="n">K</span>
+<span class="n">BG</span> <span class="mi">0000</span> <span class="n">EOJ</span> <span class="n">VIRTCIL</span>   <span class="n">MAX</span><span class="o">.</span><span class="n">RETURN</span> <span class="n">CODE</span><span class="o">=</span><span class="mi">0000</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="loading-the-source-modules">
 <h4>Loading the source modules<a class="headerlink" href="#loading-the-source-modules" title="Permalink to this headline">¶</a></h4>
@@ -5823,6 +5837,42 @@ TSS PERMIT(VIRTADP) VIRTNODE(CLI(G))
 </div>
 <div class="section" id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
+<p>Appendix A. VSE ICCF Editor commands</p>
+<p><em>PFKs</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F6</span>                      <span class="n">Find</span>
+<span class="n">F7</span>                      <span class="n">Scroll</span> <span class="n">back</span>
+<span class="n">F8</span>                      <span class="n">Scroll</span> <span class="n">forward</span>
+<span class="n">F9</span>                      <span class="n">Top</span> <span class="n">of</span> <span class="n">file</span>
+<span class="n">F10</span>                     <span class="n">Scroll</span> <span class="n">left</span>
+<span class="n">F11</span>                     <span class="n">Scroll</span> <span class="n">right</span>
+<span class="n">F12</span>                     <span class="n">End</span> <span class="n">of</span> <span class="n">file</span>
+</pre></div>
+</div>
+<p><em>Locate commands</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="n">string</span>        <span class="n">Find</span> <span class="nb">next</span>
+<span class="n">LU</span> <span class="n">string</span>       <span class="n">Find</span> <span class="n">previous</span>
+</pre></div>
+</div>
+<p><em>Global Change</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">C</span><span class="o">/</span><span class="n">oldstring</span><span class="o">/</span><span class="n">newstring</span><span class="o">/*</span> <span class="n">G</span>       <span class="n">Global</span> <span class="n">change</span>
+</pre></div>
+</div>
+<p><em>Cursor positioning</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="n">n</span>                     <span class="n">Scroll</span> <span class="n">forward</span> <span class="n">n</span> <span class="n">lines</span>
+<span class="n">U</span> <span class="n">n</span>                     <span class="n">Scroll</span> <span class="n">back</span> <span class="n">n</span> <span class="n">lines</span>
+</pre></div>
+</div>
+<p><em>Command Recall</em></p>
+<p>Prefix a command with &amp; to make it stay in the entry area.</p>
+<p><em>Line commands</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">An</span>                      <span class="n">Insert</span> <span class="n">n</span> <span class="n">blank</span> <span class="n">lines</span>
+<span class="n">Dn</span>                      <span class="n">Delete</span> <span class="n">n</span> <span class="n">lines</span>
+<span class="n">Cn</span>                      <span class="n">Copy</span> <span class="n">n</span> <span class="n">lines</span> <span class="n">to</span> <span class="n">scratchpad</span>
+<span class="n">Mn</span>                      <span class="n">Move</span> <span class="n">n</span> <span class="n">lines</span> <span class="n">to</span> <span class="n">scratchpad</span>
+<span class="n">I</span>                       <span class="n">Insert</span> <span class="n">scratchpad</span> <span class="n">after</span> <span class="n">this</span> <span class="n">line</span>
+<span class="s2">&quot;n                      Duplicate this line n times</span>
+</pre></div>
+</div>
 <div class="section" id="trademarks">
 <h3>Trademarks<a class="headerlink" href="#trademarks" title="Permalink to this headline">¶</a></h3>
 <p>SysperTec, the SysperTec logo, syspertec.com and VIRTEL are trademarks or registered trademarks of SysperTec

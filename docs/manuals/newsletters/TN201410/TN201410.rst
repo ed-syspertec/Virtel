@@ -3,10 +3,7 @@
 Taking a VTAM trace
 ===================
 
-This newsletters provides details on how to take a VTAM buffer trace and
-print the details. In this scenario we are taking a trace between VIRTEL
-and TSO via the IBM network session monitor Netview Access (NVAS). In my
-example the VIRTEL prefix for the relay is REH. Yours will be different.
+This newsletters provides details on how to take a z/OS VTAM buffer trace and print the details. In this scenario we are taking a trace between VIRTEL and TSO via the IBM network session monitor Netview Access (NVAS). In my example the VIRTEL prefix for the relay is REH. Yours will be different. Note, for z/VSE users, see the section “Tracing z/VSE” which discusses the differences in obtaining the trace.
 
 |image1|
 
@@ -283,6 +280,53 @@ Fig.1 - Example of SDPRT detail report.
 
 |image3|
 Fig.2 - Example of SSPRT summary report.
+
+**Tracing with z/VSE**
+
+The approach to obtaining a buffer trace with z/VSE is slightly different. The following command sequence should provide enough information to capture a trace in z/VSE.
+
+::
+
+	F NET,TRACE,TYPE=BUF,ID=luname      		   <- Start the Buffer trace
+				
+	AR 0015 1C39I COMMAND PASSED TO ACF/VTAM           
+	F3 0003 IST097I MODIFY ACCEPTED                    
+	F3 0003 IST513I TRACE INITIATED FOR NODE luname  
+	F3 0003 IST504I VTAM TRACE SUBTASK STARTED         
+
+	Perform the necessary tests
+
+	F NET,NOTRACE,TYPE=BUF,ID=luname               <- Stop the Buffer trace
+		
+	AR 0015 1C39I COMMAND PASSED TO ACF/VTAM             
+	F3 0003 IST097I MODIFY ACCEPTED                      
+	F3 0003 IST512I TRACE TERMINATED FOR NODE = luname 
+
+	F NET,SUBTASK,ID=TPRINT,FUNCTION=ATTACH        <- Start trace print task.           
+
+	AR 0015 1C39I COMMAND PASSED TO ACF/VTAM                
+	F3 0186 IST900I  TRACE PRINT UTILITY STARTED            
+	F3-0186 IST907A  SNAPSHOT MODE TPRINT? ENTER Y OR N     
+	F3 0003 IST266I TPRINT STARTED                          
+	186 y                                                   
+	F3-0186 IST905A  ENTER TRACE PRINT OPTIONS OR 'CANCEL'  
+	186 PRINT BUF=luname                                  
+	F3 0186 IST910I  TRACE PRINT UTILITY ENDED              
+
+	Eventually there are some messages :
+
+	F3 0120 4933D EQUAL FILE ID IN VTOC TRFILE SYS001=261 VSEWK1
+	VTAM.TRACE.FILE
+	186 delete
+
+	The VTAM sysout can be viewed from, short command 3.2.6:
+	(Operations - Manage Batch Queues - In-Creation Queue) 
+
+	To obtain the sysout in the Power Listing Queue,type a.9 
+	(SEGMENT IMMEDIATE) in the IN-CREATION QUEUE in front of VTAM job name...
+
+	FTP from VSE, and CD POWER.LST.ALL, then get VTAM sysout.
+
 
 .. |image1| image:: images/media/image1.jpeg
 .. |image2| image:: images/media/image2.png

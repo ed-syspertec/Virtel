@@ -1707,13 +1707,29 @@ Start the job to load the executable modules by entering the POWER command
 
   R RDR,VIRTCIL
 
-When this job executes, a // PAUSE card will ask you to enter a LIBDEF statement to specify the name of the library into which the modules are to be loaded. Enter
+When this job executes, a // PAUSE card will ask you to enter the statements to specify the name of the library into which the modules are to be loaded. Enter
 
 ::
 
+  // DLBL VIRTvrr,'VSE.VIRTvrr.LIBRARY',,VSAM,CAT=VSESPUC
   // LIBDEF PHASE,CATALOG=xxxxx 
 
 where xxxxx represents the name of the sublibrary you defined in the previous job.
+
+As an example here is the commands entered in a VSE system:-
+
+::
+
+	BG-0000 // PAUSE ENTER YOUR LIBDEF PHASE STATEMENT AS IN THE ABOVE EXAMPLE
+	0 // DLBL VIRT458,'VSE.VIRT458.LIBRARY',,VSAM,CAT=SYSPUC1           <USER INPUT>    
+	BG-0000                                                                   
+	0 // LIBDEF PHASE,CATALOG=VIRT458.SUBLIB  							<USER INPUT>                                
+	BG-0000                                                                   
+	0                                                                   <USER INPUT>      
+	BG 0000 // OPTION CATAL                                                   
+	BG 0000  INCLUDE                                                          	
+	BG 0000 // EXEC LNKEDT,SIZE=512K                                          
+	BG 0000 EOJ VIRTCIL   MAX.RETURN CODE=0000                                
 
 Loading the source modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -6529,6 +6545,55 @@ The VIRTEL load library should normally be APF-authorized. If this is not the ca
 
 Appendix
 ========
+
+Appendix A. VSE ICCF Editor commands
+
+*PFKs*
+
+::
+
+	F6			Find
+	F7			Scroll back
+	F8			Scroll forward
+	F9			Top of file
+	F10			Scroll left
+	F11			Scroll right
+	F12			End of file
+
+*Locate commands*
+
+::
+
+	L string	Find next
+	LU string	Find previous
+
+*Global Change*
+
+::
+
+	C/oldstring/newstring/* G	Global change
+
+*Cursor positioning*
+
+::
+
+	N n			Scroll forward n lines
+	U n			Scroll back n lines
+
+*Command Recall*
+
+Prefix a command with & to make it stay in the entry area.
+
+*Line commands*
+
+::
+
+	An			Insert n blank lines
+	Dn			Delete n lines
+	Cn			Copy n lines to scratchpad
+	Mn			Move n lines to scratchpad
+	I			Insert scratchpad after this line
+	"n			Duplicate this line n times
 
 Trademarks
 ----------
