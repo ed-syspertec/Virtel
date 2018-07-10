@@ -77,7 +77,7 @@ For example, an application requires strings of the format "PFnn-caption" to be 
 ::
 
     function after_responseHandle(o, url, xtim) {
-    VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/) :
+    VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;
     }
 
     
