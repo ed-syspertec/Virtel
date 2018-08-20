@@ -87,11 +87,11 @@ This job will have to be modified to a customer’s RACF setup. Some profiles ma
 		SETROPTS RACLIST(PTKTDATA)
 		SETROPTS GENERIC(PTKTDATA)
 		RDEFINE FACILITY IRR.RTICKETSERV
-		RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.\* UACC(NONE)
+		RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.* UACC(NONE)
 		RDEFINE PTKTDATA SPCICSH SSIGNON(KEYMASKED(998A654FEBCDA123)) +
 			UACC(NONE)
 		PERMIT IRR.RTICKETSERV CL(FACILITY) ID(SPVIRSTC) ACC(READ)
-		PERMIT IRRPTAUTH.SPCICSH.\* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
+		PERMIT IRRPTAUTH.SPCICSH.* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
 		SETROPTS REFRESH RACLIST(PTKTDATA)
 		SETROPTS REFRESH RACLIST(FACILITY)
 
@@ -107,7 +107,7 @@ Three distinct RACF profiles are required to use RACF pass tickets:-
 
 -  passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.
 
--  profile\_name must equal the VTAM application name defined in the VIRTEL transaction.
+-  profile_name must equal the VTAM application name defined in the VIRTEL transaction.
 
 These names are normally the same, but they do not have to be. See the :ref:`“RACF profiles related to Pass Tickets” <#_tn201407_bookmark01>` section for further information.
 
@@ -135,8 +135,8 @@ should have update authority to this profile.
 
 ::
 
-	RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.\* UACC(NONE)
-	PERMIT IRRPTAUTH.SPCICSH.\* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
+	RDEFINE PTKTDATA IRRPTAUTH.SPCICSH.* UACC(NONE)
+	PERMIT IRRPTAUTH.SPCICSH.* CL(PTKTDATA) ID(SPVIRSTC) ACC(UPDATE)
 	SSIGNON(KEYMASKED(998A654FEBCDA123)) UACC(NONE)
 
 The name in IRRPTAUTH.passTicketName.* profile must match the name in the Virtel Transaction definition. The PassTicket Name is the name of the application as known to RACF for the generation of Passtickets.
@@ -185,7 +185,7 @@ To obtain the “SM_User” value and set the userid in the Virtel System USER v
 	SCENARIO IDENTIFICATION
 	*
 		COPY$ SYSTEM-TO-VARIABLE,VAR='USER', -
-			FIELD=(TCT-HTTP-HEADER,SM\_USER)
+			FIELD=(TCT-HTTP-HEADER,SM_USER)
 		IF$ NOT-FOUND,THEN=NOUSER1
 		COPY$ VARIABLE-TO-SYSTEM,VAR='USER', -
 			FIELD=(NAME-OF,USER)
@@ -215,7 +215,7 @@ The TCT has to include the following parameters if HTTP User Headers and PassTic
 
 	HTHEADR=(SM_USER),                              *
 	VIRSECU=YES,SECUR=(RACROUTE,RACF),              *
-	RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=SPVIREH,  *
+	RAPPL=FACILITY,RNODE=FACILITY,PRFSECU=VIRTEL,   *  < CHANGE PRFSECU to your RACF setup
 	PASSTCK=YES,                                    *
 
 The HTHEADR identifies the “SM_USER“ as a non standard header and one that Virtel must process. The PASSTCK keyword enables Virtel to generate PassTickets.

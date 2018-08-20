@@ -249,11 +249,11 @@ SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RA
         <span class="n">SETROPTS</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
         <span class="n">SETROPTS</span> <span class="n">GENERIC</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
         <span class="n">RDEFINE</span> <span class="n">FACILITY</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span>
-        <span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+        <span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
         <span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">SPCICSH</span> <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="o">+</span>
                 <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
         <span class="n">PERMIT</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
-        <span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
+        <span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
         <span class="n">SETROPTS</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span>
         <span class="n">SETROPTS</span> <span class="n">REFRESH</span> <span class="n">RACLIST</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span>
 </pre></div>
@@ -284,8 +284,8 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 <p>To allow Virtel to generate Pass Tickets for a particular application we must define any entry in the PTKTDATA class. This entry has the name “IRRPTAUTH.passTicketName.*”” and is a Group Entry. The Virtel USERID
 should have update authority to this profile.</p>
 <p><img alt="image10" src="../../../_images/image11.png" /> <em>Fig. 11 - Seting Virtel up with RACF access to PTKTDATA class.</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
-<span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.</span>\<span class="o">*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+<span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
 <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -316,7 +316,7 @@ needn’t be!</p>
 SCENARIO IDENTIFICATION
 *
         COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;USER&#39;, -
-                FIELD=(TCT-HTTP-HEADER,SM\_USER)
+                FIELD=(TCT-HTTP-HEADER,SM_USER)
         IF$ NOT-FOUND,THEN=NOUSER1
         COPY$ VARIABLE-TO-SYSTEM,VAR=&#39;USER&#39;, -
                 FIELD=(NAME-OF,USER)
@@ -339,7 +339,7 @@ scenario sets the Virtel system USER variable which will be used in the PassTick
 <p>The TCT has to include the following parameters if HTTP User Headers and PassTicket generation is required. The parameters are:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTHEADR</span><span class="o">=</span><span class="p">(</span><span class="n">SM_USER</span><span class="p">),</span>                              <span class="o">*</span>
 <span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span>              <span class="o">*</span>
-<span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">SPVIREH</span><span class="p">,</span>  <span class="o">*</span>
+<span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span>   <span class="o">*</span>  <span class="o">&lt;</span> <span class="n">CHANGE</span> <span class="n">PRFSECU</span> <span class="n">to</span> <span class="n">your</span> <span class="n">RACF</span> <span class="n">setup</span>
 <span class="n">PASSTCK</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                    <span class="o">*</span>
 </pre></div>
 </div>
