@@ -3374,21 +3374,13 @@ timestamps in local time for the VIRLOG and VIRSTAT files.</p>
 <p><strong>ACF2</strong> - ACF2 with ACFDIAG (Only for VM). For MVS, this is treated as (RACROUTE,ACF2).</p>
 <p><strong>RACROUTE</strong> - Multi product interface security (via SAF).</p>
 <p>If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.</p>
-<p>Mixedcase supports prevents a password being automatically “UPPERCASED” prior to signon. This applies to Top Secret only. For example:-</p>
+<p>MIXEDCASE support prevents a password being automatically “UPPERCASED” prior to signon. This TCT option applies to Top Secret only. For example:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">TOPS</span><span class="p">,</span><span class="n">MIXEDCASE</span><span class="p">),</span>      <span class="o">*</span><span class="n">Setting</span> <span class="n">Mixedcase</span> <span class="k">with</span> <span class="n">TOPS</span><span class="o">*</span>
 
 <span class="ow">or</span>
 
 <span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">TOPS</span><span class="p">,</span><span class="n">MIXEDCASE</span><span class="p">,</span><span class="n">PASSPHRASE</span><span class="p">),</span> <span class="o">*</span><span class="n">Setting</span> <span class="n">mixedcase</span> <span class="ow">and</span> <span class="n">passphrase</span> <span class="n">support</span> <span class="k">for</span> <span class="n">TOPS</span><span class="o">*</span>
-
-<span class="ow">or</span>
-
-<span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">,</span><span class="n">PASSPHRASE</span><span class="p">),</span>  <span class="o">*</span><span class="n">Setting</span> <span class="n">Passphrase</span> <span class="k">with</span> <span class="n">RACFDEF</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">MIXEDCASE option is only required for TOPS.</p>
 </div>
 </div>
 <div class="section" id="silence-parameter">

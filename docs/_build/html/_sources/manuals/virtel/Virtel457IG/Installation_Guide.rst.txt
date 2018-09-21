@@ -4154,7 +4154,11 @@ The following options are retained for compatibility with previous versions:
 
 If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
 
-Mixedcase supports prevents a password being automatically "UPPERCASED" prior to signon. This applies to Top Secret only. For example:-
+.. raw:: latex
+
+    \newpage   
+
+MIXEDCASE support prevents a password being automatically "UPPERCASED" prior to signon. This TCT option applies to Top Secret only. For example:-
 
 ::
 
@@ -4163,14 +4167,6 @@ Mixedcase supports prevents a password being automatically "UPPERCASED" prior to
   or
 
   SECUR=(RACROUTE,TOPS,MIXEDCASE,PASSPHRASE), *Setting mixedcase and passphrase support for TOPS*
-
-  or
-
-  SECUR=(RACROUTE,RACF,PASSPHRASE),  *Setting Passphrase with RACFDEF
-
-.. note::
-
-	MIXEDCASE option is only required for TOPS.
 
 .. index::
    pair: Virtel TCT; SILENCE parameter     
