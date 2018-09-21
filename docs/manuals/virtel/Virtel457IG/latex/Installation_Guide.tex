@@ -45,7 +45,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Apr 10, 2018}
+\date{Sep 21, 2018}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1875,7 +1875,7 @@ Set VTAMLST= the name of a your VIRTEL CNTL library. The job will create a sampl
 CHANGE ALL ‘DBDCCICS’ ‘xxxxxx’ where xxxxxx is the APPLID of your CICS system.
 
 \item {} 
-If you changed the APPLID of VIRTEL in step 4 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
+If you changed the APPLID of VIRTEL in step 7 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
 
 \end{enumerate}
 
@@ -2197,13 +2197,29 @@ Start the job to load the executable modules by entering the POWER command
 \PYG{n}{R} \PYG{n}{RDR}\PYG{p}{,}\PYG{n}{VIRTCIL}
 \end{sphinxVerbatim}
 
-When this job executes, a // PAUSE card will ask you to enter a LIBDEF statement to specify the name of the library into which the modules are to be loaded. Enter
+When this job executes, a // PAUSE card will ask you to enter the statements to specify the name of the library into which the modules are to be loaded. Enter
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/} \PYG{n}{DLBL} \PYG{n}{VIRTvrr}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{VSE.VIRTvrr.LIBRARY}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{p}{,}\PYG{n}{VSAM}\PYG{p}{,}\PYG{n}{CAT}\PYG{o}{=}\PYG{n}{VSESPUC}
 \PYG{o}{/}\PYG{o}{/} \PYG{n}{LIBDEF} \PYG{n}{PHASE}\PYG{p}{,}\PYG{n}{CATALOG}\PYG{o}{=}\PYG{n}{xxxxx}
 \end{sphinxVerbatim}
 
 where xxxxx represents the name of the sublibrary you defined in the previous job.
+
+As an example here is the commands entered in a VSE system:-
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{BG}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0000} \PYG{o}{/}\PYG{o}{/} \PYG{n}{PAUSE} \PYG{n}{ENTER} \PYG{n}{YOUR} \PYG{n}{LIBDEF} \PYG{n}{PHASE} \PYG{n}{STATEMENT} \PYG{n}{AS} \PYG{n}{IN} \PYG{n}{THE} \PYG{n}{ABOVE} \PYG{n}{EXAMPLE}
+\PYG{l+m+mi}{0} \PYG{o}{/}\PYG{o}{/} \PYG{n}{DLBL} \PYG{n}{VIRT458}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{VSE.VIRT458.LIBRARY}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{p}{,}\PYG{n}{VSAM}\PYG{p}{,}\PYG{n}{CAT}\PYG{o}{=}\PYG{n}{SYSPUC1}           \PYG{o}{\PYGZlt{}}\PYG{n}{USER} \PYG{n}{INPUT}\PYG{o}{\PYGZgt{}}
+\PYG{n}{BG}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0000}
+\PYG{l+m+mi}{0} \PYG{o}{/}\PYG{o}{/} \PYG{n}{LIBDEF} \PYG{n}{PHASE}\PYG{p}{,}\PYG{n}{CATALOG}\PYG{o}{=}\PYG{n}{VIRT458}\PYG{o}{.}\PYG{n}{SUBLIB}                                                        \PYG{o}{\PYGZlt{}}\PYG{n}{USER} \PYG{n}{INPUT}\PYG{o}{\PYGZgt{}}
+\PYG{n}{BG}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{0000}
+\PYG{l+m+mi}{0}                                                                   \PYG{o}{\PYGZlt{}}\PYG{n}{USER} \PYG{n}{INPUT}\PYG{o}{\PYGZgt{}}
+\PYG{n}{BG} \PYG{l+m+mi}{0000} \PYG{o}{/}\PYG{o}{/} \PYG{n}{OPTION} \PYG{n}{CATAL}
+\PYG{n}{BG} \PYG{l+m+mi}{0000}  \PYG{n}{INCLUDE}
+\PYG{n}{BG} \PYG{l+m+mi}{0000} \PYG{o}{/}\PYG{o}{/} \PYG{n}{EXEC} \PYG{n}{LNKEDT}\PYG{p}{,}\PYG{n}{SIZE}\PYG{o}{=}\PYG{l+m+mi}{512}\PYG{n}{K}
+\PYG{n}{BG} \PYG{l+m+mi}{0000} \PYG{n}{EOJ} \PYG{n}{VIRTCIL}   \PYG{n}{MAX}\PYG{o}{.}\PYG{n}{RETURN} \PYG{n}{CODE}\PYG{o}{=}\PYG{l+m+mi}{0000}
+\end{sphinxVerbatim}
 
 
 \subsection{Loading the source modules}
@@ -4742,12 +4758,16 @@ The following options are retained for compatibility with previous versions:
 
 If MEMORY=ABOVE, RACF without SAF and TOPS without SAF are not supported.
 
-Mixedcase supports prevents a password being automatically “UPPERCASED” prior to signon. This applies to RACF and Top Secret only. For example:-
+\newpage
+
+MIXEDCASE support prevents a password being automatically “UPPERCASED” prior to signon. This TCT option applies to Top Secret only. For example:-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{SECUR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RACROUTE}\PYG{p}{,}\PYG{n}{MIXEDCASE}\PYG{p}{)}\PYG{p}{,}
+\PYG{n}{SECUR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RACROUTE}\PYG{p}{,}\PYG{n}{TOPS}\PYG{p}{,}\PYG{n}{MIXEDCASE}\PYG{p}{)}\PYG{p}{,}      \PYG{o}{*}\PYG{n}{Setting} \PYG{n}{Mixedcase} \PYG{k}{with} \PYG{n}{TOPS}\PYG{o}{*}
+
 \PYG{o+ow}{or}
-\PYG{n}{SECUR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RACROUTE}\PYG{p}{,}\PYG{n}{TOPS}\PYG{p}{,}\PYG{n}{MIXEDCASE}\PYG{p}{)}\PYG{p}{,}
+
+\PYG{n}{SECUR}\PYG{o}{=}\PYG{p}{(}\PYG{n}{RACROUTE}\PYG{p}{,}\PYG{n}{TOPS}\PYG{p}{,}\PYG{n}{MIXEDCASE}\PYG{p}{,}\PYG{n}{PASSPHRASE}\PYG{p}{)}\PYG{p}{,} \PYG{o}{*}\PYG{n}{Setting} \PYG{n}{mixedcase} \PYG{o+ow}{and} \PYG{n}{passphrase} \PYG{n}{support} \PYG{k}{for} \PYG{n}{TOPS}\PYG{o}{*}
 \end{sphinxVerbatim}
 
 \index{Virtel TCT!SILENCE parameter}\index{SILENCE parameter!Virtel TCT}
@@ -8101,6 +8121,55 @@ The VIRTEL load library should normally be APF-authorized. If this is not the ca
 
 \chapter{Appendix}
 \label{\detokenize{Installation_Guide:appendix}}
+Appendix A. VSE ICCF Editor commands
+
+\sphinxstyleemphasis{PFKs}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{F6}                      \PYG{n}{Find}
+\PYG{n}{F7}                      \PYG{n}{Scroll} \PYG{n}{back}
+\PYG{n}{F8}                      \PYG{n}{Scroll} \PYG{n}{forward}
+\PYG{n}{F9}                      \PYG{n}{Top} \PYG{n}{of} \PYG{n}{file}
+\PYG{n}{F10}                     \PYG{n}{Scroll} \PYG{n}{left}
+\PYG{n}{F11}                     \PYG{n}{Scroll} \PYG{n}{right}
+\PYG{n}{F12}                     \PYG{n}{End} \PYG{n}{of} \PYG{n}{file}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Locate commands}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{L} \PYG{n}{string}        \PYG{n}{Find} \PYG{n+nb}{next}
+\PYG{n}{LU} \PYG{n}{string}       \PYG{n}{Find} \PYG{n}{previous}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Global Change}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{C}\PYG{o}{/}\PYG{n}{oldstring}\PYG{o}{/}\PYG{n}{newstring}\PYG{o}{/}\PYG{o}{*} \PYG{n}{G}       \PYG{n}{Global} \PYG{n}{change}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Cursor positioning}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{N} \PYG{n}{n}                     \PYG{n}{Scroll} \PYG{n}{forward} \PYG{n}{n} \PYG{n}{lines}
+\PYG{n}{U} \PYG{n}{n}                     \PYG{n}{Scroll} \PYG{n}{back} \PYG{n}{n} \PYG{n}{lines}
+\end{sphinxVerbatim}
+
+\sphinxstyleemphasis{Command Recall}
+
+Prefix a command with \& to make it stay in the entry area.
+
+\sphinxstyleemphasis{Line commands}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{An}                      \PYG{n}{Insert} \PYG{n}{n} \PYG{n}{blank} \PYG{n}{lines}
+\PYG{n}{Dn}                      \PYG{n}{Delete} \PYG{n}{n} \PYG{n}{lines}
+\PYG{n}{Cn}                      \PYG{n}{Copy} \PYG{n}{n} \PYG{n}{lines} \PYG{n}{to} \PYG{n}{scratchpad}
+\PYG{n}{Mn}                      \PYG{n}{Move} \PYG{n}{n} \PYG{n}{lines} \PYG{n}{to} \PYG{n}{scratchpad}
+\PYG{n}{I}                       \PYG{n}{Insert} \PYG{n}{scratchpad} \PYG{n}{after} \PYG{n}{this} \PYG{n}{line}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{n                      Duplicate this line n times}
+\end{sphinxVerbatim}
+
 
 \section{Trademarks}
 \label{\detokenize{Installation_Guide:trademarks}}
