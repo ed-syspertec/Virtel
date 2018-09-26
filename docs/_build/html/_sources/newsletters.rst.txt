@@ -7,7 +7,7 @@ Technical Newsletters
    :glob:
    :maxdepth: 1   
    
-   manuals/newsletters/TN2014*/*   
+   manuals/newsletters/TN2018*/*   
 
 2015
 ----
@@ -39,4 +39,4 @@ Technical Newsletters
    :glob:
    :maxdepth: 1   
    
-   manuals/newsletters/TN2018*/*               
+   manuals/newsletters/TN2014*/*               
