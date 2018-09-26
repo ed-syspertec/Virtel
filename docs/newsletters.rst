@@ -39,4 +39,4 @@ Technical Newsletters
    :glob:
    :maxdepth: 1   
    
-   manuals/newsletters/TN2017*/*               
+   manuals/newsletters/TN2018*/*               
