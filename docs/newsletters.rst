@@ -32,3 +32,11 @@ Technical Newsletters
    :maxdepth: 1   
    
    manuals/newsletters/TN2017*/*               
+
+2018
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2018*/*               

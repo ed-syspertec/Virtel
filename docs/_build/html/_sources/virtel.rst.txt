@@ -24,3 +24,11 @@ V4.57
    :glob:
    
    manuals/virtel/Virtel457*/*       
+
+V4.58
+-----
+.. toctree::
+   :maxdepth: 4   
+   :glob:
+   
+   manuals/virtel/Virtel458*/*       
