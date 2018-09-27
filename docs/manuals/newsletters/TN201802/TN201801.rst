@@ -1,0 +1,26 @@
+.. _#_tn201803:
+
+Protecting business assets
+==========================
+
+In this newsletter we discuss how to protect access to business assets
+using Virtel rules. In this scenario with have two types of business
+assets or applications. The first type is the production assets which
+are protected by LDAP and use SSO to facilitate security and automatic
+logon without the user having to specify a userid and password. The
+other type of business asset is a standard application, like TSO or
+CICS, which requires the user to enter a userid and password when the
+application is accessed. LDAP and SSO are not discussed in this
+newsletter. There may be alternatives to this SSO setup but for our
+scenario we are assuming two types of asset – secure (requiring no
+application logon) and insecure (application logon required). The
+scenario utilizes a proxy server to load balance across the Virtel
+instances.
+
+|image0|
+
+
+
+.. |image0| image:: images/media/image0.jpg
+   :width: 6.26806in
+   :height: 5.52569in
