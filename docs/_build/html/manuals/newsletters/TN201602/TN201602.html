@@ -98,9 +98,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2013</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id4">2016</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installing Virtel V4.53 from scratch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
@@ -113,8 +114,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customizing Virtel in V4.56</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2018</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
@@ -333,17 +334,17 @@ opened sessions to ports 41001 and 41002. Issue the following command:-</p>
 <ol class="arabic">
 <li><p class="first">The following screen image should appear:-</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image126.png"><img alt="image0" src="../../../_images/image126.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image127.png"><img alt="image0" src="../../../_images/image127.png" style="width: 6.26806in; height: 3.90694in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Select Drag and Drop Upload and login with your credentials. The Drag and Drop Interface will be displayed.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image221.png"><img alt="image1" src="../../../_images/image221.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image222.png"><img alt="image1" src="../../../_images/image222.png" style="width: 6.26806in; height: 3.89722in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Keeping this browser window open, go to your desktop directory where you unzipped the virtel453updt5380.zip file.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image319.png"><img alt="image2" src="../../../_images/image319.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
+<div><p><a class="reference internal" href="../../../_images/image320.png"><img alt="image2" src="../../../_images/image320.png" style="width: 6.26806in; height: 1.67431in;" /></a></p>
 </div></blockquote>
 </li>
 <li><p class="first">Open the SCE directory and select all the files (CTRL-A). Drag this selection across to the browser window and drop over the SCE-DIR ICON. This should start an upload of all the files in the SCE directory on your desktop into the SCE-DIR directory of the SAMP TRSF VSAM file. There should be 4 files.</p>
@@ -698,7 +699,7 @@ other relay name REHIM00, which was also activated as part of this session set u
 <p>In my case, I stop Virtel, add some new ARBO transaction definition to CICS systems that I know have the Virtel relay definitions defined. I start up VIRTEL and access the APPMENU with URL <a class="reference external" href="http://192.168.170.33:41002">http://192.168.170.33:41002</a></p>
 <p><a class="reference internal" href="../../../_images/image1111.png"><img alt="image10" src="../../../_images/image1111.png" style="width: 6.26806in; height: 3.35486in;" /></a></p>
 <p>I select CICSH and hopefully can logon; yes indeed I can. In fact I can open another browser window and logon to TSO1A.</p>
-<p><a class="reference internal" href="../../../_images/image127.png"><img alt="image11" src="../../../_images/image127.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image128.png"><img alt="image11" src="../../../_images/image128.png" style="width: 6.26806in; height: 3.54722in;" /></a></p>
 <p>So now my browser is acting like a session manager with each tab representing a different session. Two to the mainframe, CICS and TSO, and one Virtel APPMENU display. Using Virtel in place of a session manager is worth considering as it provides you with similar functionality as a session manager but at no cost.</p>
 <p>Note: As I have mentioned the ARBO VSAM file contains all the configuration data. This is upload through an ARBO load job which reads in a configuration data set. The ARBO program has some peculiarities in that if you specify PARM option of NOREPL than it will not replace any configurations elements it already finds and returns with a condition
 code 0. That’s all well and good but if your trying to update the ARBO and replace elements that’s not so good. You’ll think the ARBO has been updated when in fact it hasn’t. To replace elements change the NOREPL to REPL. NOREPL is also a default so add REPL into the PARM if it is not already there.</p>

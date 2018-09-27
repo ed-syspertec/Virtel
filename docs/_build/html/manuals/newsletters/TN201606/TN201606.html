@@ -98,9 +98,10 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2016</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2013</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id4">2016</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201602/TN201602.html">Installing Virtel V4.53 from scratch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
@@ -113,8 +114,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customizing Virtel in V4.56</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2018</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
@@ -229,9 +230,9 @@ will be called MENU I create the transactions MENUCAPT and MENUAJAX.
 MENU is also the CICS transaction that invokes our 3270 MENU
 application.</p>
 <p>Our MENUCAPT transaction looks like this:-</p>
-<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image135.png"><img alt="image0" src="../../../_images/image135.png" style="width: 5.70510in; height: 3.14583in;" /></a></p>
 <p>And our MENUAJAX transaction look like this:</p>
-<p><a class="reference internal" href="../../../_images/image225.png"><img alt="image1" src="../../../_images/image225.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image226.png"><img alt="image1" src="../../../_images/image226.png" style="width: 5.76042in; height: 3.59819in;" /></a></p>
 <p>The TIOA string enables Virtel to use logon to CICS using the user
 id/password variables. The CICS application MENU is then called once
 CICS processes the logon and returns a 3270 screen image with the word
@@ -243,7 +244,7 @@ value in the Option field. To support this we need to add the options
 directory, as a transaction, to the CLI entry point. The following
 transaction, CLI-03O, is added to CLIWHOST. It is modeled on the W2H
 transaction CLI-03W.</p>
-<p><a class="reference internal" href="../../../_images/image322.png"><img alt="image2" src="../../../_images/image322.png" style="width: 6.26806in; height: 3.39375in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image323.png"><img alt="image2" src="../../../_images/image323.png" style="width: 6.26806in; height: 3.39375in;" /></a></p>
 <p>Our 3270 application front end screen looks like this:-</p>
 <p><a class="reference internal" href="../../../_images/image416.png"><img alt="image3" src="../../../_images/image416.png" style="width: 5.78147in; height: 3.77083in;" /></a></p>
 <p><strong>Mapping out the application</strong></p>
@@ -354,7 +355,7 @@ template.</p>
 <p><a class="reference internal" href="../../../_images/image1211.png"><img alt="image11" src="../../../_images/image1211.png" style="width: 6.26806in; height: 4.63681in;" /></a></p>
 <p>After pressing the “render” ICON we are presented with are modernized
 screen:-</p>
-<p><a class="reference internal" href="../../../_images/image135.png"><img alt="image12" src="../../../_images/image135.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image136.png"><img alt="image12" src="../../../_images/image136.png" style="width: 5.20833in; height: 5.31335in;" /></a></p>
 <p>Nothing too exciting here. We can see that Virtel has taken the various
 elements from the Map, created the Virtel tags within the template, and
 displayed them without any special markup. Of course, the markup is down
@@ -479,7 +480,7 @@ Pressing validate will display our modernized template area.</p>
 the application should return with the next panel in the navigation
 sequence. We select option 1 and press enter. The screen is updated with
 the next panel display un-modernized panel INQMAP2.</p>
-<p><a class="reference internal" href="../../../_images/image226.png"><img alt="image21" src="../../../_images/image226.png" style="width: 6.26806in; height: 4.29653in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image227.png"><img alt="image21" src="../../../_images/image227.png" style="width: 6.26806in; height: 4.29653in;" /></a></p>
 <p>All seems to be working. We have modernized the primary panel of our
 application and tested that it works with the back end application.
 There is still further work to be done. First we have to update the
