@@ -1,0 +1,47 @@
+.. _#_tn201703:
+
+Passticket support with CA Top Secret
+=====================================
+
+Supporting pass tickets with CA Top Secret requires the following
+definitions.
+
+1. Add the PTKTDATA class to the RDT
+
+TSS ADDTO(RDT) RESCLASS(PTKTDATA) RESCODE(n) ACLST(ALL,READ,UPDATE)
+MAXLEN(37)
+
+Note: RESCODE should be in the range 101 to 13F to ensure that PTKTDATA
+is a prefixed resource class.
+
+2. Add the ownership of the PassTicket resource (IRRPTAUTH)
+
+TSS ADDTO(owner) PTKTDATA(IRRPTAUTH)
+
+3. Define the application session key
+
+TSS ADDTO(NDT) PSTKAPPL(name) SESSKEY(0123456789ABCDEF) SIGNMULTI
+
+.. note:: The name must equal the value of the “Name” field linked to the “Passticket” field as defined in the Virtel transaction definition screen. This can be different to the ACB of the targeted Application name defined in “Application” field.
+
+|image0|
+
+4. Permit access to the PassTicket resource
+
+TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.name) ACCESS(UPDATE)
+
+Or
+
+TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.name.userid) ACCESS(UPDATE)
+
+.. note::
+
+	- The stc-userid is the ACID of any started task that requires access to the PassTicket resource such as CA LDAP.
+	- The name is the same as in section 3.
+	- The userid (if used) enables and controls PassTicket generation for specific users
+
+Reference: `CA Top Secret for z/OS <https://www.ca.com/us/services-support/ca-support/ca-support-online/support-by-product/ca-top-secret-for-zos.html>`__
+
+.. |image0| image:: images/media/image00.png
+   :width: 6.26806in
+   :height: 3.68681in

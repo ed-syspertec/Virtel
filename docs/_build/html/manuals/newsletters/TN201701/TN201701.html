@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Protecting business assets &mdash; Virtel 7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
+        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
+        <link rel="next" title="Protecting Virtel Applications with Shibboleth" href="../TN201702/TN201702.html"/>
+        <link rel="prev" title="Customizing Virtel in V4.56" href="../TN201611/TN201611.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.57
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2016</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id3">2017</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Protecting business assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201702/TN201702.html">Protecting Virtel Applications with Shibboleth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201703/TN201703.html">Passticket support with CA Top Secret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201704/TN201704.html">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201705/TN201705     .html">Printing PCL files with NodeJS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201706/TN201706     .html">What’s new in Virtel 4.57 (July 2017)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201709/TN201709.html">Virtel Batch Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2018</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>Protecting business assets</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manuals/newsletters/TN201701/TN201701.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="protecting-business-assets">
+<span id="tn201701"></span><h1>Protecting business assets<a class="headerlink" href="#protecting-business-assets" title="Permalink to this headline">¶</a></h1>
+<p>In this newsletter we discuss how to protect access to business assets
+using Virtel rules. In this scenario with have two types of business
+assets or applications. The first type is the production assets which
+are protected by LDAP and use SSO to facilitate security and automatic
+logon without the user having to specify a userid and password. The
+other type of business asset is a standard application, like TSO or
+CICS, which requires the user to enter a userid and password when the
+application is accessed. LDAP and SSO are not discussed in this
+newsletter. There may be alternatives to this SSO setup but for our
+scenario we are assuming two types of asset – secure (requiring no
+application logon) and insecure (application logon required). The
+scenario utilizes a proxy server to load balance across the Virtel
+instances.</p>
+<p><a class="reference internal" href="../../../_images/image0.jpg"><img alt="image0" src="../../../_images/image0.jpg" style="width: 6.26806in; height: 5.52569in;" /></a></p>
+<p>From a Virtel perspective it has been decided that secure assets are
+associated with port 41002, and non-secure through port 41003. Access to
+the assets should only be through the proxy server using a secure port,
+in our case the standard SSL port 443. Our goal is to protect the assets
+from being accessed internal, or external, using the assigned Virtel IP
+and port addresses. For example, John in accounts should be able to
+access PROD IMS, but Peter, who works offsite at home, but still has
+access via a VPN to the company, shouldn’t. In this simplistic scenario
+anyone could in theory, access any one of the Virtel instances through
+their internal IP address – 192.168.07x.10x:4100x and attempt to logon.
+What is required is means to guarantee that access to any of the assets
+should only be through the proxy server and not any other IP address.</p>
+<p>Using Virtel Rules we can compare the calling IP address and if it
+doesn’t match with the rule then the user will be re-directed to another
+Virtel entry point. To implement this protection we use the following
+ARBO statements for each line, 41002 and 41003:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000100</span><span class="p">,</span>
+<span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41002</span>
+<span class="n">STATUS</span><span class="o">=</span><span class="n">ACTIVE</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP access (Test calling address)&#39;</span><span class="p">,</span>
+<span class="n">ENTRY</span><span class="o">=</span><span class="n">EPSEC</span><span class="p">,</span>                                   <span class="o">&lt;</span> <span class="n">Associated</span> <span class="n">Entry</span> <span class="n">point</span>
+<span class="n">IPADDR</span><span class="o">=</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">092.160</span><span class="p">),</span>                <span class="o">&lt;</span> <span class="n">IP</span> <span class="n">address</span> <span class="n">of</span> <span class="n">Proxy</span>
+<span class="n">NETMASK</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
+<span class="o">*</span>
+<span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000199</span><span class="p">,</span>
+<span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41002</span>
+<span class="n">STATUS</span><span class="o">=</span><span class="n">ACTIVE</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP access (Calling IP address not valid)&#39;</span><span class="p">,</span>
+<span class="n">ENTRY</span><span class="o">=</span><span class="n">EPREJECT</span>
+<span class="o">*</span>
+<span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000200</span><span class="p">,</span>
+<span class="n">RULESET</span><span class="o">=</span><span class="n">R</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41003</span>
+<span class="n">STATUS</span><span class="o">=</span><span class="n">ACTIVE</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP access (Test calling address)&#39;</span><span class="p">,</span>
+<span class="n">ENTRY</span><span class="o">=</span><span class="n">EPSEC</span><span class="p">,</span>                                   <span class="o">&lt;</span> <span class="n">Associated</span> <span class="n">Entry</span> <span class="n">point</span>
+<span class="n">IPADDR</span><span class="o">=</span><span class="p">(</span><span class="n">EQUAL</span><span class="p">,</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">092.160</span><span class="p">),</span>                <span class="o">&lt;</span> <span class="n">IP</span> <span class="n">address</span> <span class="n">of</span> <span class="n">Proxy</span>
+<span class="n">NETMASK</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
+<span class="o">*</span>
+<span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000299</span><span class="p">,</span>
+<span class="n">RULESET</span><span class="o">=</span><span class="n">R</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41003</span>
+<span class="n">STATUS</span><span class="o">=</span><span class="n">ACTIVE</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP access (Calling IP address not valid)&#39;</span><span class="p">,</span>
+<span class="n">ENTRY</span><span class="o">=</span><span class="n">EPREJECT</span>
+<span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">EPREJECT</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Entry point for unauthorized HTTP users&#39;</span><span class="p">,</span>
+<span class="n">TRANSACT</span><span class="o">=</span><span class="n">REJ</span><span class="p">,</span>
+<span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0720</span><span class="p">,</span>
+<span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>
+<span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span>
+<span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span>
+<span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">X</span>
+<span class="o">*</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">REJ</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
+<span class="n">NAME</span><span class="o">=</span><span class="n">EPREJECT</span><span class="p">,</span>
+<span class="n">DESC</span><span class="o">=</span><span class="s2">&quot;Default directory = entry point name&quot;</span><span class="p">,</span>
+<span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                   <span class="o">&lt;</span> <span class="n">User</span> <span class="n">template</span> <span class="n">directory</span>
+<span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="n">TERMINAL</span><span class="o">=</span><span class="n">CLLOC</span><span class="p">,</span>
+<span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>So what is happening here? When a user attempts to establish a session
+Virtel will match the users calling IP address against the IPADDR in
+rule R0000x00. If it matches then they will be able to access the entry
+point defined in the rule – in this case EPSEC or EPNSEC. For line 41002
+this Entry Point will contain a list of the W2H applications using SSO.
+For line 41003, using Entry Point EPNSEC, this will contain a list of
+W2H transactions which use standard RACF protection.</p>
+<p>Now, if the calling IP addressed is not matched, the RULE fails and the
+next rule in the ruleset is tested, in this case rule R0000x99. This is
+a catch all rule. Any user falling into this rule will be directed to
+entry point EPREJECT. The Entry Point EPREJECT only has one transaction,
+its default transaction, and this will invoke the template page
+EPREJECT.HTM.</p>
+<p>To protect the business assets the calling IP address can only be that
+of the proxy server - 192.168.092.160. Any other calling IP address will
+be rejected by the Virtel ruleset. By default, the ruleset associated
+with a line is normally the internal name of the line – C-HTTP for
+example. How the rejected session is handled is up to the user. In the
+following example, the default template EPREJECT.HTM, which is
+associated with the entry point EPREJECT, looks like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+&quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
+&lt;html&gt;
+&lt;script&gt;
+// customization for reject
+window.location.replace(&quot;http://www.mycompany.com&quot;);
+&lt;/script&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p>This template must exist in the CLI-DIR directory as this is where the
+Entry Point EPREJECT expects to find them. When the template is served
+it will display the companies “public” web site.</p>
+<p>To upload the ARBO statements to your ARBO use the following JCL:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT456</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH0</span><span class="o">.</span><span class="n">ARBO1A</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">DELETE</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,NOREPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="o">*</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RULE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R0000100</span> <span class="n">Delete</span> <span class="n">rule</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RULE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R0000199</span> <span class="n">Delete</span> <span class="n">rule</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RULE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R0000200</span> <span class="n">Delete</span> <span class="n">rule</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">RULE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">R0000299</span> <span class="n">Delete</span> <span class="n">rule</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">ENTRY</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">EPREJECT</span> <span class="n">Entry</span> <span class="n">point</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REJ</span><span class="o">-</span><span class="mi">00</span> <span class="n">Delete</span> <span class="n">transaction</span>
+<span class="o">*</span>
+<span class="o">//</span><span class="n">CONFIG</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,NOREPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">CNTL</span><span class="p">(</span><span class="n">RULES</span><span class="p">),</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201702/TN201702.html" class="btn btn-neutral float-right" title="Protecting Virtel Applications with Shibboleth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201611/TN201611.html" class="btn btn-neutral" title="Customizing Virtel in V4.56" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'7',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
