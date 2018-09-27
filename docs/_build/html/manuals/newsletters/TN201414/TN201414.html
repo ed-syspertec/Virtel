@@ -35,10 +35,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Virtel JES Writer program" href="../TN201415/TN201415.html"/>
-        <link rel="prev" title="Overview of a Virtel Session" href="../TN201413/TN201413.html"/> 
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -95,31 +92,9 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2013</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2014</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201413/TN201413.html">Overview of a Virtel Session</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">CICS Printing problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2015</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2016</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2018</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
@@ -164,8 +139,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
       <li>CICS Printing problem</li>
     
@@ -253,14 +226,14 @@ have that relates to the printer. The following display will be the
 status of the printer after disconnecting from Virtel. This printer will
 not accept more print request.</p>
 <blockquote>
-<div><a class="reference internal" href="../../../_images/image110.png"><img alt="image0" src="../../../_images/image110.png" style="width: 6.30000in; height: 5.51528in;" /></a></div></blockquote>
+<div><a class="reference internal" href="../../../_images/image1.png"><img alt="image0" src="../../../_images/image1.png" style="width: 6.30000in; height: 5.51528in;" /></a></div></blockquote>
 <p>Tab down until the cursor is next to the Ter line and press enter. You
 will then see the full terminql display. Notice that the Createsess
 parameter is set to NoCreate. This is why there is no printing.</p>
-<p><a class="reference internal" href="../../../_images/image211.png"><img alt="image1" src="../../../_images/image211.png" style="width: 6.30000in; height: 5.51389in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image210.png"><img alt="image1" src="../../../_images/image210.png" style="width: 6.30000in; height: 5.51389in;" /></a></p>
 <p>Change this to create and press enter; PF3 and then press Enter to
 reissue the CEMT command. The printer display should look like this:-</p>
-<p><a class="reference internal" href="../../../_images/image38.png"><img alt="image2" src="../../../_images/image38.png" style="width: 6.30000in; height: 0.97778in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image37.png"><img alt="image2" src="../../../_images/image37.png" style="width: 6.30000in; height: 0.97778in;" /></a></p>
 <p>Virtel will now be able to print to using this printer terminal with the
 CMSG command.</p>
 <p><strong>How to fix the problem.</strong></p>
@@ -325,15 +298,6 @@ definition CLI-10</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../TN201415/TN201415.html" class="btn btn-neutral float-right" title="Virtel JES Writer program" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../TN201413/TN201413.html" class="btn btn-neutral" title="Overview of a Virtel Session" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

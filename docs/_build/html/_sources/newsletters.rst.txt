@@ -1,22 +1,6 @@
 Technical Newsletters
 =====================
 
-2013
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2013*/*   
-
-2014
-----
-.. toctree::
-   :glob:
-   :maxdepth: 1   
-   
-   manuals/newsletters/TN2014*/*   
-
 2015
 ----
 .. toctree::

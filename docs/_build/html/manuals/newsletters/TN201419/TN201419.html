@@ -35,10 +35,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Dynamic Directory Interface (DDI)" href="../TN201501/TN201501.html"/>
-        <link rel="prev" title="RACF Grouping Class and Virtel" href="../TN201417/TN201417.html"/> 
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -95,31 +92,9 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2013</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2014</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201412/TN201412.html">Sharing user macros across multiple instances of Virtel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201413/TN201413.html">Overview of a Virtel Session</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Maintaining TRSF file sets</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2015</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2016</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2018</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
@@ -164,8 +139,6 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
       <li>Maintaining TRSF file sets</li>
     
@@ -218,7 +191,7 @@ information on how this phase of the process is achieved.</p>
 <p>Before we can use the ADMINVWM administration tool we must define it to
 VIRTEL within the SPVIR1A VIRTEL task. The Virtel transaction definition
 to provide the ADMINVWM tool is defined as follows:-</p>
-<p><a class="reference internal" href="../../../_images/image115.png"><img alt="image0" src="../../../_images/image115.png" style="width: 6.30000in; height: 4.24931in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image114.png"><img alt="image0" src="../../../_images/image114.png" style="width: 6.30000in; height: 4.24931in;" /></a></p>
 <p>Once this has been defined to VIRTEL we can access the tool with the
 following URL:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">ADMVWM</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">ADMINVWM</span>
@@ -227,7 +200,7 @@ following URL:-</p>
 <p>This will present the developer with the Administrations tool panel and
 will provide administration functions from which directory management
 functions can be performed.</p>
-<p><a class="reference internal" href="../../../_images/image214.png"><img alt="image1" src="../../../_images/image214.png" style="width: 6.30000in; height: 4.77986in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image213.png"><img alt="image1" src="../../../_images/image213.png" style="width: 6.30000in; height: 4.77986in;" /></a></p>
 <p>In this newsletter we are only concerned with the Directories management
 function. We will not discuss any of the other administration tools.
 Using the Directories management function we can copy web elements
@@ -317,7 +290,7 @@ to SPVIR1A as directory SCNP-DIR. It will have a related development
 directory of SCN-DIR. When we add the directory name SCNP-DIR we
 associated it with the VSAM file DDNAME SCENPROD which we have just
 created and added to the VIRTEL started procedure.</p>
-<p><a class="reference internal" href="../../../_images/image311.png"><img alt="image2" src="../../../_images/image311.png" style="width: 6.30000in; height: 4.02639in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image310.png"><img alt="image2" src="../../../_images/image310.png" style="width: 6.30000in; height: 4.02639in;" /></a></p>
 <p>We have set the download attribute only as we do not want developers
 inadvertently uploading to this TRSF pre-production file. We only want
 to be able to copy elements from the related SCN-DIR to SCNP-DIR.</p>
@@ -690,15 +663,6 @@ files to production dataset names.</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../TN201501/TN201501.html" class="btn btn-neutral float-right" title="Dynamic Directory Interface (DDI)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../TN201417/TN201417.html" class="btn btn-neutral" title="RACF Grouping Class and Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

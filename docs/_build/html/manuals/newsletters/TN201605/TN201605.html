@@ -98,10 +98,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2013</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2014</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2015</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id4">2016</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2015</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2016</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN201601/TN201601.html">Customizing colours with CSS in Virtel 4.53</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201602/TN201602.html">Installing Virtel V4.53 from scratch</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TN201603/TN201603.html">Field Level Encryption</a></li>
@@ -114,8 +112,8 @@
 <li class="toctree-l3"><a class="reference internal" href="../TN201611/TN201611.html">Customizing Virtel in V4.56</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2018</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2017</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2018</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
@@ -243,7 +241,7 @@ supported features.</p>
 <p>In this example we have configured the Virtel display terminal REHVT000
 and its associate relay printer terminal REHIP000 with the following
 characteristics.</p>
-<p><a class="reference internal" href="../../../_images/image130.png"><img alt="image0" src="../../../_images/image130.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image129.png"><img alt="image0" src="../../../_images/image129.png" style="width: 6.26806in; height: 4.23542in;" /></a></p>
 <p><em>Fig. 1 - Terminal Display</em></p>
 <p>Display REHVT000 has an associate relay of REHIP000 which is defined as
 a Type = P. Type = P indicates that this is a dynamically allocated
@@ -255,9 +253,9 @@ LU at start up.</p>
 <p>In CICS we have defined the following terminal definitions. EHT0
 representing the display LU REHVT000 and EHS0 representing the printer
 LU REHIP000.</p>
-<p><a class="reference internal" href="../../../_images/image224.png"><img alt="image1" src="../../../_images/image224.png" style="width: 5.81250in; height: 3.92630in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image223.png"><img alt="image1" src="../../../_images/image223.png" style="width: 5.81250in; height: 3.92630in;" /></a></p>
 <p><em>Fig. 2 -CICS Display definition</em></p>
-<p><a class="reference internal" href="../../../_images/image322.png"><img alt="image2" src="../../../_images/image322.png" style="width: 5.81250in; height: 3.91729in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image321.png"><img alt="image2" src="../../../_images/image321.png" style="width: 5.81250in; height: 3.91729in;" /></a></p>
 <p><em>Fig. 3 - CICS Printer Definition</em></p>
 <p>Note that the characteristics for each device is determined by the
 TYpeterm association. For the printer we are using a user defined
@@ -466,7 +464,7 @@ display now looks like this.</p>
 <p>We also have to correct the CICS definition so that the terminal EHS0 is
 associated with the Virtel printer definition REHIM000. We use CEDA to
 alter and reinstall the terminal. Here is the new CICS table definition.</p>
-<p><a class="reference internal" href="../../../_images/image225.png"><img alt="image21" src="../../../_images/image225.png" style="width: 5.22917in; height: 3.53922in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image224.png"><img alt="image21" src="../../../_images/image224.png" style="width: 5.22917in; height: 3.53922in;" /></a></p>
 <p>We put the CICS printer EHS0 out of service and then re-install so that
 the correct LU name is picked up. A CICS CEMT display now shows this for
 CICS terminal EHS0.</p>

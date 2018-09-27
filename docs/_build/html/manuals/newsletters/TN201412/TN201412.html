@@ -35,10 +35,7 @@
         <link rel="index" title="Index"
               href="../../../genindex.html"/>
         <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Overview of a Virtel Session" href="../TN201413/TN201413.html"/>
-        <link rel="prev" title="Building a customized USSTAB using Virtel’s Web Access facility" href="../TN201411/TN201411.html"/> 
+    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -95,31 +92,9 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2013</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id2">2014</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../TN201406/TN201406.html">Taking a VIRTEL terminal trace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201407/TN201407.html">Pass tickets and supporting Proxy Servers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201409/TN201409.html">Mainframe printing with Virtel 4.56</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201410/TN201410.html">Taking a VTAM trace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201411/TN201411.html">Building a customized USSTAB using Virtel’s Web Access facility</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Sharing user macros across multiple instances of Virtel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201413/TN201413.html">Overview of a Virtel Session</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201414/TN201414.html">CICS Printing problem</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201415/TN201415.html">Virtel JES Writer program</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201416/TN201416.html">Virtel Security. Using server and client certificates</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201417/TN201417.html">RACF Grouping Class and Virtel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../TN201419/TN201419.html">Maintaining TRSF file sets</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2015</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2016</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2017</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2018</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
@@ -165,8 +140,6 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
-        
       <li>Sharing user macros across multiple instances of Virtel</li>
     
     
@@ -209,11 +182,11 @@ the local TRSF is later than the cache equivalent, then the macro will
 be reloaded in cache from the TRSF file.</p>
 <p>Implementation of synchronized user macros requires that the USR-DIR
 directory should be defined. See the following example.</p>
-<p><a class="reference internal" href="../../../_images/image29.png"><img alt="image1" src="../../../_images/image29.png" style="width: 6.30208in; height: 4.95833in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image28.png"><img alt="image1" src="../../../_images/image28.png" style="width: 6.30208in; height: 4.95833in;" /></a></p>
 <p>Also, the following transactions need to be defined in the W2H end
 point:-</p>
 <p>W2H-05U – maclib</p>
-<p><a class="reference internal" href="../../../_images/image36.png"><img alt="image2" src="../../../_images/image36.png" style="width: 6.10417in; height: 5.35417in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image35.png"><img alt="image2" src="../../../_images/image35.png" style="width: 6.10417in; height: 5.35417in;" /></a></p>
 <p>W2H-80U – uplusr</p>
 <p><a class="reference internal" href="../../../_images/image4.png"><img alt="image3" src="../../../_images/image4.png" style="width: 6.30208in; height: 5.53125in;" /></a></p>
 <p>Once these definitions are in place in the ARBO file and the UPDT5056
@@ -241,15 +214,6 @@ macro will be later than the timestamp held in the TRSF file.</p>
            </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../TN201413/TN201413.html" class="btn btn-neutral float-right" title="Overview of a Virtel Session" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../TN201411/TN201411.html" class="btn btn-neutral" title="Building a customized USSTAB using Virtel’s Web Access facility" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
