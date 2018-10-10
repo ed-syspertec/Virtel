@@ -221,7 +221,7 @@ and companies mentioned in this document may be trademarks or registered tradema
 their respective owners.</p>
 </div>
 <div class="section" id="summary-of-amendments">
-<span id="vvrrig-summary-of-ammendments"></span><h2>Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
+<span id="vvrrig57-summary-of-ammendments"></span><h2>Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="virtel-version-4-57-1st-jul-2017">
 <h3>Virtel version 4.57 (1st Jul 2017)<a class="headerlink" href="#virtel-version-4-57-1st-jul-2017" title="Permalink to this headline">¶</a></h3>
 <p><em>VIRTEL Web Access:</em></p>
@@ -1280,7 +1280,7 @@ option (2) with the ability to specify the IP address as a keyword in the JCL PA
 <p>You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in the VIRTCT01, and you can display the VIRTEL Web Access menu in your web browser using URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a> where n.n.n.n is the IP address of your z/OS system.</p>
 <ol class="arabic simple" start="15">
 <li>Apply any Virtel Web Access (See VWA maintenance) according the instructions in the Readme-updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step. If yo do apply maintenance then refresh the browser (CTRL-R) after updating the relevant TRSF directories. Check that the updtnnn is the correct number in the Administration Portal Screen.</li>
-<li>The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the <a class="reference internal" href="#vvrrig-security"><span class="std std-ref">“Security Chapter”</span></a>.</li>
+<li>The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the <a class="reference internal" href="../Virtel458IG/Installation_Guide.html#vvrrig-security"><span class="std std-ref">“Security Chapter”</span></a>.</li>
 </ol>
 </div>
 </div>
@@ -1420,7 +1420,7 @@ option (2) with the ability to specify the IP address as a keyword in the JCL PA
  DEFINE CLUSTER ( -
             NAME (VSE.VIRTvrr.LIBRARY ) -
             TRACKS (150 25) -
-            SHAREOPTIONS (3) -
+            SHAREOPTIONS (2) -
             RECORDFORMAT (NOCIFORMAT) -
             VOLUMES (SYSWK1) -
             NOREUSE -
@@ -1625,7 +1625,7 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
   <span class="n">DEFINE</span> <span class="n">CLUSTER</span> <span class="p">(</span> <span class="o">-</span>
     <span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">ARBO</span> <span class="p">)</span> <span class="o">-</span>
     <span class="n">RECORDS</span><span class="p">(</span><span class="mi">500</span> <span class="mi">100</span><span class="p">)</span> <span class="o">-</span>
-    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">4</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span>
+    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">RECSZ</span> <span class="p">(</span><span class="mi">600</span> <span class="mi">4089</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">VOLUMES</span> <span class="p">(</span><span class="n">SYSWK1</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">KEYS</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span>
@@ -1642,7 +1642,7 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
   <span class="n">DEFINE</span> <span class="n">CLUSTER</span> <span class="p">(</span> <span class="o">-</span>
     <span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">SWAP</span> <span class="p">)</span> <span class="o">-</span>
     <span class="n">RECORDS</span><span class="p">(</span><span class="mi">200</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-</span>
-    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span>
+    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">RECSZ</span> <span class="p">(</span><span class="mi">600</span> <span class="mi">4089</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">VOLUMES</span> <span class="p">(</span><span class="n">SYSWK1</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">REUSE</span> <span class="o">-</span>
@@ -1732,7 +1732,7 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
   <span class="n">DEFINE</span> <span class="n">CLUSTER</span> <span class="p">(</span> <span class="o">-</span>
     <span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">CMP3</span> <span class="p">)</span> <span class="o">-</span>
     <span class="n">RECORDS</span><span class="p">(</span><span class="mi">200</span> <span class="mi">50</span><span class="p">)</span><span class="o">-</span>
-    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span>
+    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">RECSZ</span> <span class="p">(</span><span class="mi">600</span> <span class="mi">8185</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">VOLUMES</span> <span class="p">(</span><span class="n">SYSWK1</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">KEYS</span> <span class="p">(</span><span class="mi">9</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span>
@@ -1767,7 +1767,7 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
   <span class="n">DEFINE</span> <span class="n">CLUSTER</span> <span class="p">(</span> <span class="o">-</span>
     <span class="n">NAME</span> <span class="p">(</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">CAPT</span> <span class="p">)</span> <span class="o">-</span>
     <span class="n">RECORDS</span><span class="p">(</span><span class="mi">200</span> <span class="mi">50</span><span class="p">)</span><span class="o">-</span>
-    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span>
+    <span class="n">SHAREOPTIONS</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">RECSZ</span> <span class="p">(</span><span class="mi">600</span> <span class="mi">8185</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">VOLUMES</span> <span class="p">(</span><span class="n">SYSWK1</span><span class="p">)</span> <span class="o">-</span>
     <span class="n">KEYS</span> <span class="p">(</span><span class="mi">16</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span>
@@ -1931,7 +1931,7 @@ $$$$IWS.WORKREC.INW$TEMP
 </div>
 <div class="section" id="assembling-the-virtct">
 <h4>Assembling the VIRTCT<a class="headerlink" href="#assembling-the-virtct" title="Permalink to this headline">¶</a></h4>
-<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section <a class="reference internal" href="#vvrrig-virtct"><span class="std std-ref">VIRTCT</span></a>.</p>
+<p>Job VIRTCTUS contains an example of assembling the VIRTEL parameter table (the VIRTCT). Since the VIRTCT parameters are common across the z/VSE, z/OS and VM environments, please refer to section <a class="reference internal" href="../Virtel458IG/Installation_Guide.html#vvrrig-virtct"><span class="std std-ref">VIRTCT</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Users in France should use job VIRTCTFR instead of VIRTCTUS.</p>
@@ -2419,9 +2419,9 @@ ANNUL=00 allows the cursor to be placed at the start of the field with erasure o
 </div>
 <p>This parameter defines the batch processing characteristics for all lines which specify type BATCH1.</p>
 <p><strong>indd</strong> - The batch input DD name (for example, SYSIN).</p>
-<p><strong>indcb</strong> - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
+<p><strong>indcb</strong> - The label of the DCB macro defining the batch input file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="../Virtel458IG/Installation_Guide.html#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
 <p><strong>outdd</strong> - The batch output DD name (for example, SYSPRINT).</p>
-<p><strong>outdcb</strong> - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
+<p><strong>outdcb</strong> - The label of the DCB macro defining the batch output file. This DCB macro must appear later in the VIRTCT (see <a class="reference internal" href="../Virtel458IG/Installation_Guide.html#vvrrig-bookmark72"><span class="std std-ref">“Additional parameters for batch files”</span></a>).</p>
 </div>
 <div class="section" id="batch2-parameter">
 <span id="index-38"></span><h4>BATCH2 parameter<a class="headerlink" href="#batch2-parameter" title="Permalink to this headline">¶</a></h4>
@@ -4065,7 +4065,7 @@ The trace buffers are offloaded to a GDG dataset which means historical trace da
 // DLBL IJSYSUC,&#39;VSESP.USER.CATALOG&#39;,,VSAM
 // EXEC IDCAMS,SIZE=AUTO
         DEFINE CLUSTER(NAME(VIRTEL.TESTARBO.KSDS) -
-              RECORDS(500 100) SHAREOPTIONS (4 3) -
+              RECORDS(500 100) SHAREOPTIONS (2) -
               RECSZ (600 4089) KEYS (9 0) -
               VOLUMES (DOSRES) TO (99366))-
         DATA (NAME(VIRTEL.TESTARBO.KSDS.DATA)) -

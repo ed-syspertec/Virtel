@@ -47,7 +47,7 @@ Syspertec Communication
 
     \newpage     
 
-.. _VVRRIG_Summary_Of_Ammendments:
+.. _VVRRIG57_Summary_Of_Ammendments:
 
 Summary of Amendments
 =====================
@@ -1645,7 +1645,7 @@ Defining the library
 	 DEFINE CLUSTER ( -
 		    NAME (VSE.VIRTvrr.LIBRARY ) -
 		    TRACKS (150 25) -
-		    SHAREOPTIONS (3) -
+		    SHAREOPTIONS (2) -
 		    RECORDFORMAT (NOCIFORMAT) -
 		    VOLUMES (SYSWK1) -
 		    NOREUSE -
@@ -1871,7 +1871,7 @@ Defining the VIRARBO and VIRSWAP files
     DEFINE CLUSTER ( -
       NAME (VIRTEL.ARBO ) -
       RECORDS(500 100) -
-      SHAREOPTIONS (4 3) -
+      SHAREOPTIONS (2) -
       RECSZ (600 4089) -
       VOLUMES (SYSWK1) -
       KEYS (9 0) -
@@ -1888,7 +1888,7 @@ Defining the VIRARBO and VIRSWAP files
     DEFINE CLUSTER ( -
       NAME (VIRTEL.SWAP ) -
       RECORDS(200 50) -
-      SHAREOPTIONS (2 3) -
+      SHAREOPTIONS (2) -
       RECSZ (600 4089) -
       VOLUMES (SYSWK1) -
       REUSE -
@@ -1991,7 +1991,7 @@ Defining the VIRCMP3 file
     DEFINE CLUSTER ( -
       NAME (VIRTEL.CMP3 ) -
       RECORDS(200 50)-
-      SHAREOPTIONS (2 3) -
+      SHAREOPTIONS (2) -
       RECSZ (600 8185) -
       VOLUMES (SYSWK1) -
       KEYS (9 0) -
@@ -2029,7 +2029,7 @@ Defining the VIRCAPT file
     DEFINE CLUSTER ( -
       NAME (VIRTEL.CAPT ) -
       RECORDS(200 50)-
-      SHAREOPTIONS (2 3) -
+      SHAREOPTIONS (2) -
       RECSZ (600 8185) -
       VOLUMES (SYSWK1) -
       KEYS (16 0) -
@@ -5109,7 +5109,7 @@ z/VSE
 	// DLBL IJSYSUC,'VSESP.USER.CATALOG',,VSAM
 	// EXEC IDCAMS,SIZE=AUTO
 		DEFINE CLUSTER(NAME(VIRTEL.TESTARBO.KSDS) -
-		      RECORDS(500 100) SHAREOPTIONS (4 3) -
+		      RECORDS(500 100) SHAREOPTIONS (2) -
 		      RECSZ (600 4089) KEYS (9 0) -
 		      VOLUMES (DOSRES) TO (99366))-
 		DATA (NAME(VIRTEL.TESTARBO.KSDS.DATA)) -
