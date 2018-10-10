@@ -5,7 +5,7 @@
 .. _Virtel458UG:
 
 ================
-User Guide V4.57
+User Guide V4.58
 ================
 
 |image1|
@@ -14,7 +14,7 @@ User Guide V4.57
 
 .. warning:: This is a draft version of the document.
 
-Version : 4.57
+Version : 4.58
 
 Release Date : 08 Jan 2018. Publication Date : 08/01/2018
 
@@ -49,7 +49,7 @@ NOTICE
 
 .. _V458UG_Introduction:
 
-What's new in Virtel 4.57
+What's new in Virtel 4.58
 
 *VIRTEL Web Access:*
 
@@ -91,7 +91,7 @@ What's new in Virtel 4.57
 
 - Batch export/import of RAW TRSF files.
 
-.. note:: For further details see the Technical Newsletter: TN201706 - What's new in Virtel 4.57.
+.. note:: For further details see the Technical Newsletter: TN201706 - What's new in Virtel 4.58.
 
 *****************
 The Virtel Engine
@@ -3949,7 +3949,7 @@ The list of keywords and possible values which can be coded in the w2hparm.js fi
 Choosing Web Access settings mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-As of Virtel Release V4.57 only the "Version 2" user interface settings are supported, as described at the beginning of this section. In previous versions of Virtel the w2hparm property "settingsGUI" was used to select either "V1" or "V2" presentation interfaces. The "V1" user interface has now been deprecated and is no longer supported.
+As of Virtel Release V4.58 only the "Version 2" user interface settings are supported, as described at the beginning of this section. In previous versions of Virtel the w2hparm property "settingsGUI" was used to select either "V1" or "V2" presentation interfaces. The "V1" user interface has now been deprecated and is no longer supported.
 
 .. index::
    pair: Hiding settings;Web Customization 
@@ -6267,7 +6267,7 @@ VIRTEL Presentation modules and Scenarios
 Without modifying existing applications, VIRTEL offers several possibilities for dynamic modification of 3270 data extracted by the {{{GENERATE-HTML}}} tag before it is presented in an HTML page. For instance, it is possible to define, for each field selected, a list of permitted values, or to generate a URL as a function of the value of a fixed field.
 
 .. note::
-    As opposed to the specific tags presented in the Virtel Web Access section, the set of presentation rules in Web Modernisation are not defined in an HTML page, but as an assembled program. The program can be stored as a .390 object module in the scenario directory SCE-DIR or as a linked module in the Virtel loadlib. The default for Virtel V4.57 is to maintain these .390 object modules in the SCE-DIR. VIRTEL scenarios were originally assembled and link-edited into a load library concatenated to the DFHRPL DD statement in the VIRTEL started task. From VIRTEL version 4.48 onwards, there is also the possibility of generating, syntax checking, and compiling scenarios using Virtel Studio on an Eclipse platform, and uploading the resulting executable code into a VIRTEL directory stored in a VSAM file. This is now the default for Virtel. 
+    As opposed to the specific tags presented in the Virtel Web Access section, the set of presentation rules in Web Modernisation are not defined in an HTML page, but as an assembled program. The program can be stored as a .390 object module in the scenario directory SCE-DIR or as a linked module in the Virtel loadlib. The default for Virtel V4.58 is to maintain these .390 object modules in the SCE-DIR. VIRTEL scenarios were originally assembled and link-edited into a load library concatenated to the DFHRPL DD statement in the VIRTEL started task. From VIRTEL version 4.48 onwards, there is also the possibility of generating, syntax checking, and compiling scenarios using Virtel Studio on an Eclipse platform, and uploading the resulting executable code into a VIRTEL directory stored in a VSAM file. This is now the default for Virtel. 
 
 .. index::
    pair: Scenarios; Presentation modules
@@ -7341,7 +7341,7 @@ The following table shows a possible result of this example scenario when used i
 +-------------+--------------------------------------------------------+
 | DATETIME    | "20110731093522"                                       |
 +-------------+--------------------------------------------------------+
-| VERSION     | "4.57 "                                                |
+| VERSION     | "4.58 "                                                |
 +-------------+--------------------------------------------------------+
 | SYSNAME     | "MVSPROD1"                                             |
 +-------------+--------------------------------------------------------+

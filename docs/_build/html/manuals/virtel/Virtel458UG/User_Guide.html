@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>User Guide V4.57 &mdash; Virtel 7 documentation</title>
+  <title>User Guide V4.58 &mdash; Virtel 7 documentation</title>
   
 
   
@@ -104,7 +104,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel458CN/connectivity_guide.html">Connectivity Reference V4.58</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel458IG/Installation_Guide.html">Installation Guide V4.58</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel458MI/Migration_Guide.html">Migration Guide V4.58</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">User Guide V4.57</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User Guide V4.58</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#the-virtel-engine">The Virtel Engine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#outgoing-calls">Outgoing Calls</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#programming-interfaces">Programming Interfaces</a></li>
@@ -166,7 +166,7 @@
         
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
         
-      <li>User Guide V4.57</li>
+      <li>User Guide V4.58</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,15 +187,15 @@
             
   <div class="toctree-wrapper compound">
 </div>
-<div class="section" id="user-guide-v4-57">
-<span id="virtel458ug"></span><h1>User Guide V4.57<a class="headerlink" href="#user-guide-v4-57" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="user-guide-v4-58">
+<span id="virtel458ug"></span><h1>User Guide V4.58<a class="headerlink" href="#user-guide-v4-58" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web16.png"><img alt="image1" src="../../../_images/logo_virtel_web16.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL User Guide</strong></p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">This is a draft version of the document.</p>
 </div>
-<p>Version : 4.57</p>
+<p>Version : 4.58</p>
 <p>Release Date : 08 Jan 2018. Publication Date : 08/01/2018</p>
 <p>Syspertec Communication</p>
 <p>196, Bureaux de la Colline 92213 Saint-Cloud Cedex Tél. : +33 (0) 1 46 02 60 42</p>
@@ -216,7 +216,7 @@ part, the products or trademarks quoted herein.</p>
 and companies mentioned in this document may be trademarks or registered trademarks of
 their respective owners.</p>
 </div></blockquote>
-<p id="v458ug-introduction">What’s new in Virtel 4.57</p>
+<p id="v458ug-introduction">What’s new in Virtel 4.58</p>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
 <li>Bidirectional presentation support.</li>
@@ -249,7 +249,7 @@ their respective owners.</p>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For further details see the Technical Newsletter: TN201706 - What’s new in Virtel 4.57.</p>
+<p class="last">For further details see the Technical Newsletter: TN201706 - What’s new in Virtel 4.58.</p>
 </div>
 <div class="section" id="the-virtel-engine">
 <h2>The Virtel Engine<a class="headerlink" href="#the-virtel-engine" title="Permalink to this headline">¶</a></h2>
@@ -3174,7 +3174,7 @@ generated only if VIRTEL has data ready to be printed.</p>
 </div>
 <div class="section" id="choosing-web-access-settings-mode">
 <span id="index-134"></span><h5>Choosing Web Access settings mode<a class="headerlink" href="#choosing-web-access-settings-mode" title="Permalink to this headline">¶</a></h5>
-<p>As of Virtel Release V4.57 only the “Version 2” user interface settings are supported, as described at the beginning of this section. In previous versions of Virtel the w2hparm property “settingsGUI” was used to select either “V1” or “V2” presentation interfaces. The “V1” user interface has now been deprecated and is no longer supported.</p>
+<p>As of Virtel Release V4.58 only the “Version 2” user interface settings are supported, as described at the beginning of this section. In previous versions of Virtel the w2hparm property “settingsGUI” was used to select either “V1” or “V2” presentation interfaces. The “V1” user interface has now been deprecated and is no longer supported.</p>
 </div>
 <div class="section" id="hiding-web-access-settings">
 <span id="index-135"></span><h5>Hiding Web Access settings<a class="headerlink" href="#hiding-web-access-settings" title="Permalink to this headline">¶</a></h5>
@@ -4838,7 +4838,7 @@ List of available key identifiers (case sensitive!!):
 <p>Without modifying existing applications, VIRTEL offers several possibilities for dynamic modification of 3270 data extracted by the {{{GENERATE-HTML}}} tag before it is presented in an HTML page. For instance, it is possible to define, for each field selected, a list of permitted values, or to generate a URL as a function of the value of a fixed field.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">As opposed to the specific tags presented in the Virtel Web Access section, the set of presentation rules in Web Modernisation are not defined in an HTML page, but as an assembled program. The program can be stored as a .390 object module in the scenario directory SCE-DIR or as a linked module in the Virtel loadlib. The default for Virtel V4.57 is to maintain these .390 object modules in the SCE-DIR. VIRTEL scenarios were originally assembled and link-edited into a load library concatenated to the DFHRPL DD statement in the VIRTEL started task. From VIRTEL version 4.48 onwards, there is also the possibility of generating, syntax checking, and compiling scenarios using Virtel Studio on an Eclipse platform, and uploading the resulting executable code into a VIRTEL directory stored in a VSAM file. This is now the default for Virtel.</p>
+<p class="last">As opposed to the specific tags presented in the Virtel Web Access section, the set of presentation rules in Web Modernisation are not defined in an HTML page, but as an assembled program. The program can be stored as a .390 object module in the scenario directory SCE-DIR or as a linked module in the Virtel loadlib. The default for Virtel V4.58 is to maintain these .390 object modules in the SCE-DIR. VIRTEL scenarios were originally assembled and link-edited into a load library concatenated to the DFHRPL DD statement in the VIRTEL started task. From VIRTEL version 4.48 onwards, there is also the possibility of generating, syntax checking, and compiling scenarios using Virtel Studio on an Eclipse platform, and uploading the resulting executable code into a VIRTEL directory stored in a VSAM file. This is now the default for Virtel.</p>
 </div>
 <p id="index-212">An HTML presentation module is made up of several scenarios composed of the following instructions: SCREENS, SCRNEND, SCENARIO, ACTION$, CONVERT$, COPY$, DECLARE$, ERROR$, FIELD$, GOTO$, IF$, MAP$, SET$, TOVAR$, VIRSV$ and END. These instructions are assembler macros contained in the VIRT458.SCRNAPI.MACLIB library (for MVS) or the VIRT458.VIRSAPI SUBLIB library (for VSE). The other instructions included in this library are for internal use and must not be used directly. Each module begins with a SCREENS instruction, is terminated by a SCRNEND instruction, and must contain at least one SCENARIO.</p>
 <p>The types of scenarios that can be stored in a presentation module are:-</p>
@@ -5818,7 +5818,7 @@ COPY$ SYSTEM-TO-VARIABLE,                                      X
 <td>“20110731093522”</td>
 </tr>
 <tr class="row-odd"><td>VERSION</td>
-<td>“4.57 “</td>
+<td>“4.58 “</td>
 </tr>
 <tr class="row-even"><td>SYSNAME</td>
 <td>“MVSPROD1”</td>
