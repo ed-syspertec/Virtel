@@ -6124,7 +6124,7 @@ READ ONLY Restrictions
 
 If you share the VSAM files (SAMP.TRSF, ARBO, HTML.TRSF) in READ only mode Virtel Administration is not possible. For example uploading web updates to the SAMP.TRSF or adding macros to the DDI repositories. In this configuration you will have to have a maintenace instance of Virtel which can write to the VSAM files. This can be brought up during a maintenace slot when the READ ONLY instances are down. An alternative to this method is to maintain a copy of the VSAM files and use these for maintenace and updates then copy these VSAM files to the READ ONLY versions during a maintenace slot.
 
-In Virtel V4.58 this restriction has been removed with the introduction of the VIRPLEX feature. VIRPLEX enables a nominated "WRITER" Virtel task to particpate in the Virtel infrastrure. Only administrators would have access to this "WRITER" instance. Maintenance and centralized entities, such as nacros, could be uploaded using the "WRITER" instance. The "writer" instance, which has "write access" to the Virtel files would then populate the files with the new updates. Virtel "READ" instances would detect the changes and automatically refresh the "cache" instances. See the :ref:`“VIRPLEX section”,<#_V458CN_VIRPLEX>` for move information.  
+In Virtel V4.58 this restriction has been removed with the introduction of the VIRPLEX feature. VIRPLEX enables a nominated "WRITER" Virtel task to particpate in the Virtel infrastrure. Only administrators would have access to this "WRITER" instance. Maintenance and centralized entities, such as macros, could be uploaded using the "WRITER" instance. The "writer" instance, which has "write access" to the Virtel files would then populate the files with the new updates. Virtel "READ" instances would detect the changes and automatically refresh the "cache" instances. See the :ref:`“VIRPLEX section”,<#_V458CN_VIRPLEX>` for move information.  
 
 .. raw:: latex
 
@@ -6402,12 +6402,9 @@ VIRPLEX
 =======
 
 The following are features of VIRPLEX:-
+* Eliminates need for external affinity support (Sysplex distributor or Reverse Proxy). Any receiving Virtel in a VIRPLEX complex will forward the incoming request to the correct target Virtel within the VIRPLEX.
 
-.. note::
-
-    Eliminates need for external affinity support (Sysplex distributor or Reverse Proxy). Any receiving Virtel in a VIRPLEX complex will forward the incoming request to the correct target Virtel within the VIRPLEX.
-
-    Allows a "writer" only task to distribute updates to the Virtel files. VIRPLEX will notify other particapting Virtel instances that an update has occured. This notification will cause other participating Virtels to refresh their internal cache. 
+* Allows a "writer" only task to distribute updates to the Virtel files. VIRPLEX will notify other particapting Virtel instances that an update has occured. This notification will cause other participating Virtels to refresh their internal cache. 
 
 
 .. index::

@@ -38,7 +38,7 @@
     <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
         <link rel="up" title="Virtel Manuals" href="../../../virtel.html"/>
         <link rel="next" title="Installation Guide V4.58" href="../Virtel458IG/Installation_Guide.html"/>
-        <link rel="prev" title="User Guide V4.58" href="../Virtel457UG/User_Guide.html"/> 
+        <link rel="prev" title="User Guide V4.57" href="../Virtel457UG/User_Guide.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -122,7 +122,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel458IG/Installation_Guide.html">Installation Guide V4.58</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel458MI/Migration_Guide.html">Migration Guide V4.58</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Virtel458UG/User_Guide.html">User Guide V4.57</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel458UG/User_Guide.html">User Guide V4.58</a></li>
 </ul>
 </li>
 </ul>
@@ -4996,7 +4996,7 @@ Generic Resource or CICSPLEX group name.</p>
 <div class="section" id="read-only-restrictions">
 <h4>READ ONLY Restrictions<a class="headerlink" href="#read-only-restrictions" title="Permalink to this headline">¶</a></h4>
 <p>If you share the VSAM files (SAMP.TRSF, ARBO, HTML.TRSF) in READ only mode Virtel Administration is not possible. For example uploading web updates to the SAMP.TRSF or adding macros to the DDI repositories. In this configuration you will have to have a maintenace instance of Virtel which can write to the VSAM files. This can be brought up during a maintenace slot when the READ ONLY instances are down. An alternative to this method is to maintain a copy of the VSAM files and use these for maintenace and updates then copy these VSAM files to the READ ONLY versions during a maintenace slot.</p>
-<p>In Virtel V4.58 this restriction has been removed with the introduction of the VIRPLEX feature. VIRPLEX enables a nominated “WRITER” Virtel task to particpate in the Virtel infrastrure. Only administrators would have access to this “WRITER” instance. Maintenance and centralized entities, such as nacros, could be uploaded using the “WRITER” instance. The “writer” instance, which has “write access” to the Virtel files would then populate the files with the new updates. Virtel “READ” instances would detect the changes and automatically refresh the “cache” instances. See the <a class="reference internal" href="#v458cn-virplex"><span class="std std-ref">“VIRPLEX section”,</span></a> for move information.</p>
+<p>In Virtel V4.58 this restriction has been removed with the introduction of the VIRPLEX feature. VIRPLEX enables a nominated “WRITER” Virtel task to particpate in the Virtel infrastrure. Only administrators would have access to this “WRITER” instance. Maintenance and centralized entities, such as macros, could be uploaded using the “WRITER” instance. The “writer” instance, which has “write access” to the Virtel files would then populate the files with the new updates. Virtel “READ” instances would detect the changes and automatically refresh the “cache” instances. See the <a class="reference internal" href="#v458cn-virplex"><span class="std std-ref">“VIRPLEX section”,</span></a> for move information.</p>
 </div>
 <div class="section" id="virtel-naming-conventions">
 <h4>Virtel naming conventions<a class="headerlink" href="#virtel-naming-conventions" title="Permalink to this headline">¶</a></h4>
@@ -5209,12 +5209,11 @@ to applications.</p>
 </div>
 <div class="section" id="virplex">
 <span id="v458cn-virplex"></span><span id="index-177"></span><h2>VIRPLEX<a class="headerlink" href="#virplex" title="Permalink to this headline">¶</a></h2>
-<p>The following are features of VIRPLEX:-</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Eliminates need for external affinity support (Sysplex distributor or Reverse Proxy). Any receiving Virtel in a VIRPLEX complex will forward the incoming request to the correct target Virtel within the VIRPLEX.</p>
-<p class="last">Allows a “writer” only task to distribute updates to the Virtel files. VIRPLEX will notify other particapting Virtel instances that an update has occured. This notification will cause other participating Virtels to refresh their internal cache.</p>
-</div>
+<p>The following are features of VIRPLEX:-
+* Eliminates need for external affinity support (Sysplex distributor or Reverse Proxy). Any receiving Virtel in a VIRPLEX complex will forward the incoming request to the correct target Virtel within the VIRPLEX.</p>
+<ul class="simple">
+<li>Allows a “writer” only task to distribute updates to the Virtel files. VIRPLEX will notify other particapting Virtel instances that an update has occured. This notification will cause other participating Virtels to refresh their internal cache.</li>
+</ul>
 </div>
 <div class="section" id="protecting-business-assets-with-virtel-rules">
 <span id="index-178"></span><h2>Protecting business assets with Virtel Rules<a class="headerlink" href="#protecting-business-assets-with-virtel-rules" title="Permalink to this headline">¶</a></h2>
@@ -5362,7 +5361,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
         <a href="../Virtel458IG/Installation_Guide.html" class="btn btn-neutral float-right" title="Installation Guide V4.58" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel457UG/User_Guide.html" class="btn btn-neutral" title="User Guide V4.58" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel457UG/User_Guide.html" class="btn btn-neutral" title="User Guide V4.57" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

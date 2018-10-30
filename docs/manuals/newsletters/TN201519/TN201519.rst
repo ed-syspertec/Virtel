@@ -356,28 +356,18 @@ purposes then the errmsg= keyword should not be used. Error reporting will repor
      usstab=usstab&Sysclone.,errmsg=y 
 
 Will load a USSTAB module depending on the &SYSCLONE. system symbolic value and report error messages to line 24. 
-
-Extended fields and buffer address support.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Both buffer displacement and buffer addresses are now supported as well as extended fields(X'29'). For example to position to col. 1, row 1 the following can be coded:-
-
-::
-
-	DC    X'11',AL2(((01-1)*80)+(01-1)) R=01,C=01 < Assembles as displacement
-	DC    C'z/OS Z110 Level 0809                    '             
-   
-or
-
-::
-
-	DC    X'114040’ R=01, C=01 < Assembles as a row:col. Position
-	DC    C'z/OS Z110 Level 0809                    '             
+    
 
 **Constraints**
 
 VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
 APPLID=TSO. Both would be accepted. 
+
+Use only SBA Buffer addresses. Do not use displacement addresses such as AL2(((24-1)*80)+(80-1)).
+
+The USSTAB module should only have ONE UNPROTECTED output field. This is used as the command area. It should not exceed 78 bytes. Use the tab key to check.
+
+To control colours use the extended attribute options rather than the basic field attributes. Some of the basic attributes imply unprotected fields.  
 
 The SCAN parameter must be included on the BUFFER statement:-
 
@@ -392,6 +382,8 @@ The cursor position must be preceded by a SBA:-
 	DC    X'11',AL2(((24-1)*80)+(10-1))                 R=23,C=80
 	DC    X'1D40'                                     UNPROTECTED
 	DC    X'13'                                      INSERTCURSOR
+
+Failure to comply with these constraints will result in unpredicatble behaviour.
 
 
 **Messages**

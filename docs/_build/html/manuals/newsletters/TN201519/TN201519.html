@@ -520,22 +520,12 @@ purposes then the errmsg= keyword should not be used. Error reporting will repor
 </pre></div>
 </div>
 <p>Will load a USSTAB module depending on the &amp;SYSCLONE. system symbolic value and report error messages to line 24.</p>
-</div>
-<div class="section" id="extended-fields-and-buffer-address-support">
-<h3>Extended fields and buffer address support.<a class="headerlink" href="#extended-fields-and-buffer-address-support" title="Permalink to this headline">¶</a></h3>
-<p>Both buffer displacement and buffer addresses are now supported as well as extended fields(X‘29’). For example to position to col. 1, row 1 the following can be coded:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;11&#39;</span><span class="p">,</span><span class="n">AL2</span><span class="p">(((</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="mi">01</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="n">R</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="mi">01</span> <span class="o">&lt;</span> <span class="n">Assembles</span> <span class="k">as</span> <span class="n">displacement</span>
-<span class="n">DC</span>    <span class="n">C</span><span class="s1">&#39;z/OS Z110 Level 0809                    &#39;</span>
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;114040’ R=01, C=01 &lt; Assembles as a row:col. Position</span>
-<span class="n">DC</span>    <span class="n">C</span><span class="s1">&#39;z/OS Z110 Level 0809                    &#39;</span>
-</pre></div>
-</div>
 <p><strong>Constraints</strong></p>
 <p>VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example on the above USSTAB, you could enter LOGON APPLID(TSO) or LOGON
 APPLID=TSO. Both would be accepted.</p>
+<p>Use only SBA Buffer addresses. Do not use displacement addresses such as AL2(((24-1)*80)+(80-1)).</p>
+<p>The USSTAB module should only have ONE UNPROTECTED output field. This is used as the command area. It should not exceed 78 bytes. Use the tab key to check.</p>
+<p>To control colours use the extended attribute options rather than the basic field attributes. Some of the basic attributes imply unprotected fields.</p>
 <p>The SCAN parameter must be included on the BUFFER statement:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG10</span>    <span class="n">USSMSG</span>  <span class="n">MSG</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">BUFFER</span><span class="o">=</span><span class="p">(</span><span class="n">MSG10BUF</span><span class="p">,</span><span class="n">SCAN</span><span class="p">)</span>
 </pre></div>
@@ -546,6 +536,7 @@ APPLID=TSO. Both would be accepted.</p>
 <span class="n">DC</span>    <span class="n">X</span><span class="s1">&#39;13&#39;</span>                                      <span class="n">INSERTCURSOR</span>
 </pre></div>
 </div>
+<p>Failure to comply with these constraints will result in unpredicatble behaviour.</p>
 <p><strong>Messages</strong></p>
 <p><strong>VIR2101E</strong> UNABLE TO LOAD A USSTAB</p>
 <p>Module  : VIR0021W</p>
