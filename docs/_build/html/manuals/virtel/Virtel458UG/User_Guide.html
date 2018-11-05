@@ -6079,7 +6079,7 @@ DEBUG$ SNAP[,TERMINAL],
 </div>
 <div class="section" id="declare-instruction">
 <span id="index-253"></span><h5>DECLARE$ instruction<a class="headerlink" href="#declare-instruction" title="Permalink to this headline">¶</a></h5>
-<p>This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key (ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is generated only if the specified screen position is non-blank.</p>
+<p>This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key (ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is generated only if the specified screen position is non-blank. It is designed to be used with the WEB2VIRT .htm template and in conjuction with the “GENERATE-HTML” tag.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>DECLARE$ (row,col,len,&#39;value&#39;,Condition),P1,P2,P3,TO=P4
 </pre></div>
 </div>
@@ -6108,9 +6108,9 @@ DEBUG$ SNAP[,TERMINAL],
 <dt>AS-PFKEY</dt>
 <dd>Indicates that the indicated portion of the screen is to be interpreted as a function key hyperlink. The value of the function key (ENTER, PF1, etc) can be specified by parameter P2. If P2 is not specified, then the data at the indicated screen position is interpreted as the name of the function key. The values allowable as function key names are the same as those for <a class="reference internal" href="#v458ug-pfkfield"><span class="std std-ref">“PfkField”</span></a>)</dd>
 <dt>AS-PARAMETER</dt>
-<dd>Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the $DECLARE instruction. See <a class="reference internal" href="#v458ug-javascript-functions"><span class="std std-ref">“JavaScript functions”</span></a> for further details.</dd>
+<dd>Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the DECLARE$ instruction. See <a class="reference internal" href="#v458ug-javascript-functions"><span class="std std-ref">“JavaScript functions”</span></a> for further details.</dd>
 <dt>AS-HREF</dt>
-<dd>Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the $DECLARE instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the $DECLARE instruction, if specified.</dd>
+<dd>Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the DECLARE$instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the DECLARE$instruction, if specified.</dd>
 <dt>P2</dt>
 <dd>(optional) Function parameter referenced by P1.</dd>
 <dt>P3</dt>
@@ -6122,15 +6122,15 @@ DEBUG$ SNAP[,TERMINAL],
 <p class="first admonition-title">Note</p>
 <p class="last">In conformance with assembler syntax, quotes and ampersands in the URL must be specified as double quotes and double ampersands.</p>
 </div>
-<span class="target" id="v458ug-javascript-functions"></span><p id="index-254"><strong>$DECLARE and JavaScript functions</strong></p>
-<p>For the AS-PARAMETER form of the $DECLARE instruction, the TO parameter specifies the name of a JavaScript function which will be called when the user clicks on the field. The function name is case-sensitive. The following parameters are passed to the JavaScript function:</p>
+<span class="target" id="v458ug-javascript-functions"></span><p id="index-254"><strong>DECLARE$ and JavaScript functions</strong></p>
+<p>For the AS-PARAMETER form of the DECLARE$ instruction, the TO parameter specifies the name of a JavaScript function which will be called when the user clicks on the field. The function name is case-sensitive. The following parameters are passed to the JavaScript function:</p>
 <dl class="docutils">
 <dt>Parameter 1</dt>
 <dd>an internally generated field name</dd>
 <dt>Parameter 2</dt>
 <dd>the data at the indicated screen position</dd>
 <dt>Parameter 3</dt>
-<dd>the contents of the P2 parameter of the $DECLARE instruction</dd>
+<dd>the contents of the P2 parameter of the DECLARE$ instruction</dd>
 </dl>
 <p>The JavaScript function itself must be defined in the HTML template page, or in an included page. The following standard functions are provided in the page js01.js delivered with VIRTEL in the W2H-DIR directory:</p>
 <dl class="docutils">
@@ -6141,7 +6141,7 @@ DEBUG$ SNAP[,TERMINAL],
 <dt>VClick3</dt>
 <dd>Copies the contents of the clickable area to the following input field and sends the indicated function key (P2 parameter) to the host application</dd>
 </dl>
-<p id="index-255"><strong>$DECLARE Examples</strong></p>
+<p id="index-255"><strong>DECLARE$ Examples</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>DECLARE$ (23,19,04),AS-PFKEY
 </pre></div>
 </div>

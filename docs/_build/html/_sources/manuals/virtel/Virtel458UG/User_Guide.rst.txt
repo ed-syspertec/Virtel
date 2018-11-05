@@ -7620,7 +7620,7 @@ Example scenario with DEBUG$
 DECLARE$ instruction
 ^^^^^^^^^^^^^^^^^^^^
 
-This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key (ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is generated only if the specified screen position is non-blank.
+This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key (ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is generated only if the specified screen position is non-blank. It is designed to be used with the WEB2VIRT .htm template and in conjuction with the "GENERATE-HTML" tag.
 
 ::
 
@@ -7646,9 +7646,9 @@ P1
 AS-PFKEY
     Indicates that the indicated portion of the screen is to be interpreted as a function key hyperlink. The value of the function key (ENTER, PF1, etc) can be specified by parameter P2. If P2 is not specified, then the data at the indicated screen position is interpreted as the name of the function key. The values allowable as function key names are the same as those for :ref:`“PfkField” <#_V458UG_pfkField>`)
 AS-PARAMETER
-    Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the $DECLARE instruction. See :ref:`“JavaScript functions” <#_V458UG_Javascript_functions>` for further details.
+    Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the DECLARE$ instruction. See :ref:`“JavaScript functions” <#_V458UG_Javascript_functions>` for further details.
 AS-HREF
-    Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the $DECLARE instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the $DECLARE instruction, if specified.
+    Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the DECLARE$instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the DECLARE$instruction, if specified.
 P2
     (optional) Function parameter referenced by P1.
 P3
@@ -7665,16 +7665,16 @@ P4
 .. index::
    pair: DECLARE and JavaScript functions; Scenario Instructions
 
-**$DECLARE and JavaScript functions**
+**DECLARE$ and JavaScript functions**
 
-For the AS-PARAMETER form of the $DECLARE instruction, the TO parameter specifies the name of a JavaScript function which will be called when the user clicks on the field. The function name is case-sensitive. The following parameters are passed to the JavaScript function:
+For the AS-PARAMETER form of the DECLARE$ instruction, the TO parameter specifies the name of a JavaScript function which will be called when the user clicks on the field. The function name is case-sensitive. The following parameters are passed to the JavaScript function:
 
 Parameter 1
     an internally generated field name
 Parameter 2
     the data at the indicated screen position
 Parameter 3
-    the contents of the P2 parameter of the $DECLARE instruction
+    the contents of the P2 parameter of the DECLARE$ instruction
 
 The JavaScript function itself must be defined in the HTML template page, or in an included page. The following standard functions are provided in the page js01.js delivered with VIRTEL in the W2H-DIR directory: 
 
@@ -7686,10 +7686,10 @@ VClick3
     Copies the contents of the clickable area to the following input field and sends the indicated function key (P2 parameter) to the host application
 
 .. index::
-   pair: $DECLARE Examples; Scenario Instructions
+   pair: DECLARE$Examples; Scenario Instructions
  
 
-**$DECLARE Examples**
+**DECLARE$ Examples**
 
 ::
 
