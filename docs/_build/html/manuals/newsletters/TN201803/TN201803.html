@@ -104,7 +104,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id5">2018</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">What’s new in Virtel 4.58 (Sept. 2018)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation-changes">Installation changes</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#migration-considerations">Migration considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#samplib-additions">SAMPLIB additions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#presentation">Presentation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#base-components">Base Components</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#virtel-web-administration">Virtel Web Administration</a></li>
@@ -190,28 +192,51 @@
   <div class="section" id="whats-new-in-virtel-4-58-sept-2018">
 <span id="tn201803"></span><h1>What’s new in Virtel 4.58 (Sept. 2018)<a class="headerlink" href="#whats-new-in-virtel-4-58-sept-2018" title="Permalink to this headline">¶</a></h1>
 <p>The following newsletter itemises the updates that can be found in Virtel Release 4.58.</p>
+<div class="section" id="installation-changes">
+<h2>Installation changes<a class="headerlink" href="#installation-changes" title="Permalink to this headline">¶</a></h2>
+<p><strong>Customization - OPTION Mode is now default</strong></p>
+<p>As of Virtel 4.58 the transactions to support compatibility have been deprecated and are no longer installed by default. These transactions have been moved to the COMPAT section in the ARBOLOAD JCL deck. The transactionsa are:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">CH</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">CC</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">CJ</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">CH</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">CC</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">CJ</span>
+</pre></div>
+</div>
+<p>Virtel 4.58 delivers a dummy w2hparm.js file in the W2H-DIR directory, identified by transaction W2H-03P, and also in the CLI-DIR, identified bu the transaction CLI-03P. New customers are advised to use the ‘option’ mode support for customization. See below for further details on the ‘Option’ mode and where to find more information. The ARBOLOAD JCL has been modified to include the OPTION mode transactions by default. To include compatibility mode transactions specify COMPAT=YES in the ARBOLOAD JCL.</p>
+<p><strong>USERPARM</strong></p>
+<p>A new section has been added to the ARBOLOAD to add the transactions required for the USERPARM support. By default these are not added to the ARBO. Specify USERPARM=YES in the ARBOLOAD JCL to include these transactions in your configuration.</p>
+</div>
 <div class="section" id="migration-considerations">
 <h2>Migration considerations<a class="headerlink" href="#migration-considerations" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="option-mode-and-compatibility-mode">
 <h3>Option mode and Compatibility mode<a class="headerlink" href="#option-mode-and-compatibility-mode" title="Permalink to this headline">¶</a></h3>
-<p>As of Virtel 4.56 two modes of customisation are available, the ‘option
-mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting options and customization. As of Virtel V4.56 this is the preferred mode for Virtel customisation. By default, neither mode is active. Certain steps must be followed to activate either “compatibility” or “option” mode. As distributed Virtel will use programmatically set defaults and search for customization elements from the W2H directories. See the default transactions shipped with Virtel for custom.js, custom.css, w2hparm.js elements.</p>
+<p>As of Virtel 4.56 two modes of customisation are available, the ‘option mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting options and customization. As of Virtel V4.56 this is the preferred mode for Virtel customisation. By default, neither mode is active. Certain steps must be followed to activate either “compatibility” or “option” mode. As distributed Virtel will use programmatically set defaults and search for customization elements from the W2H directories. See the default transactions shipped with Virtel for custom.js, custom.css, w2hparm.js elements.</p>
 <p>The previous “Compatibility “ mode is still supported. But requires users to re-assemble their TCTs with the ‘Option-default-compatibility’ keyword in the TCT. This will maintain previous customised behaviour for the custom.css, w2hparm.js and custom.js files.</p>
 <p><em>TCT keyword for compatibility mode</em></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span> <span class="o">=</span> <span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="o">/*</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mi">4</span> <span class="o">*/</span>
 </pre></div>
 </div>
 <p>The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customised versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56. To operate in “option mode” requires changes to the ARBO file with the additional of two new transactions to support the “option” pathname. See the ARBOLOAD (Option=YES) or ARBOMIGR in the SAMPLIB file for details on how to include these new transactions.</p>
-<p>Customers are advised to migrate old customisation elements to the new
-“option” mode enabling those elements to be located through the use of
-the /option/ pathname. Two new transactions have been added to support
-the /option/ pathname. See the <span class="xref std std-ref">Virtel Users Guide, Customizing Virtel using the Option mode.</span>.</p>
-<p>Further details can also be found in the Virtel technical newsletter <a class="reference internal" href="../TN201611/TN201611.html#tn201611"><span class="std std-ref">TN2016-11 Customising Virtel in V4.56</span></a>.</p>
+<p>Customers are advised to migrate old customisation elements to the new “option” mode enabling those elements to be located through the use of the /option/ pathname. Two new transactions have been added to support the /option/ pathname. See the ‘Option Mode’ section in <strong>Customizing Virtel</strong> in the Virtel User Guide and the Virtel Technical Newsletter <strong>TN2016-11 Customising Virtel in V4.56</strong>.</p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
 <p class="last">Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
 </div>
 </div>
+</div>
+<div class="section" id="samplib-additions">
+<h2>SAMPLIB additions<a class="headerlink" href="#samplib-additions" title="Permalink to this headline">¶</a></h2>
+<p>New members have been added to SAMPLIB to support the VIRPLEX configuration. These members are:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRPLEX</span>     <span class="n">A</span> <span class="n">sample</span> <span class="n">job</span> <span class="n">to</span> <span class="n">configure</span> <span class="n">Virtel</span> <span class="n">to</span> <span class="n">support</span> <span class="n">Virplex</span>
+<span class="n">VIRTELZ</span>     <span class="n">A</span> <span class="n">STC</span> <span class="n">procedure</span> <span class="n">to</span> <span class="n">support</span> <span class="n">the</span> <span class="n">Virtel</span> <span class="n">Reader</span> <span class="ow">and</span> <span class="n">Writer</span> <span class="n">instances</span>
+<span class="n">VIRTCT00</span>    <span class="n">A</span> <span class="n">sample</span> <span class="n">TCT</span> <span class="k">for</span> <span class="n">Reader</span> <span class="n">tasks</span>
+<span class="n">VIRTCT99</span>    <span class="n">A</span> <span class="n">sample</span> <span class="n">TCT</span> <span class="k">for</span> <span class="n">Writer</span> <span class="n">tasks</span>
+<span class="n">SPVIREnn</span>    <span class="n">JCL</span> <span class="n">samples</span> <span class="n">to</span> <span class="n">run</span> <span class="n">Virplex</span> <span class="n">instances</span> <span class="k">as</span> <span class="n">batch</span> <span class="n">jobs</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>For further information see the Virtel Technical newsletter <strong>TN2018-08 Virplex</strong></p>
 </div>
 <div class="section" id="presentation">
 <h2>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">¶</a></h2>
@@ -234,9 +259,12 @@ Improvements to the font size stretching computing algorithm.</p>
 <p>The code page IBM1097A Iranian “Farsi” is now supported.</p>
 <p><strong>5631 Add support for “Old Belgium”</strong>
 The code page IBM0274 “Old Belgium” is now supported.</p>
-<p><strong>5654/5655 Presentation Enhancements</strong></p>
-<p>Corrections to the Cross-Hair cursor positioning in large screen sizes (62*160). The Virtel Cut, Copy and Paste feature can now support macro definitions. This change only applies to cases where Virtel is using its own clipboard interface.
-Improvements to the font size stretching computing algorithm.</p>
+<p><strong>5654/5655/5698 Presentation Enhancements</strong></p>
+<p>Corrections to the Cross-Hair cursor positioning in large screen sizes (62*160). The Virtel Cut, Copy and Paste feature can now support macro definitions. This change only applies to cases where Virtel is using its own clipboard interface.</p>
+<p>Improvements to the font size stretching computing algorithm.</p>
+<p>Selection box in wrong position in non stretch mode</p>
+<p><strong>5697 Correct invalid 403 signon suspend message</strong></p>
+<p>Invalide template was being displayed when signing on with invalid credentials.</p>
 </div>
 <div class="section" id="base-components">
 <h2>Base Components<a class="headerlink" href="#base-components" title="Permalink to this headline">¶</a></h2>
@@ -462,48 +490,23 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 </div>
 <p>If setting up a separate physical VSAM file for the USERPARM directory, the following TCT definitions must be defined, otherwise, use the HTMLTRSF as your USERPARM repository.</p>
 <p>Additional TCT statements required to add a new VSAM TRSF file to support USERPARM:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>   <span class="n">VSAM</span> <span class="n">File</span> <span class="k">for</span> <span class="n">USERPARM</span><span class="o">.</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span><span class="p">),</span>   <span class="n">VSAM</span> <span class="n">File</span> <span class="k">for</span> <span class="n">USERPARM</span><span class="o">.</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span>
 </pre></div>
 </div>
 <p>Also add an ACB to support new directory file at the bottom of the TCT definitions:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ACBH3</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>       <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ACBH3</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">),</span>             <span class="o">*</span>
             <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
 </pre></div>
 </div>
 <p><strong>ARBO Changes</strong></p>
-<p>To support this feature a new subdirectory and associated transactions are added. The USERPARM member in VIRTEL.SAMPLIB performs the following steps:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">TRSF</span> <span class="n">VSAM</span> <span class="n">file</span> <span class="k">for</span> <span class="n">USERPARM</span> <span class="n">definitions</span><span class="o">.</span>
-<span class="mf">2.</span> <span class="n">Updates</span> <span class="n">the</span> <span class="n">ARBO</span> <span class="k">with</span> <span class="n">a</span> <span class="n">new</span> <span class="n">SUB</span><span class="o">-</span><span class="n">DIR</span> <span class="ow">and</span> <span class="n">associated</span> <span class="n">transactions</span><span class="o">.</span>
-
-<span class="n">SUBDIR</span>   <span class="n">ID</span><span class="o">=</span><span class="n">USERPARM</span><span class="p">,</span>                  <span class="o">&lt;-</span> <span class="n">Must</span> <span class="n">equal</span> <span class="n">UPARMS</span> <span class="n">value</span>
-<span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;USERPARM directory&#39;</span><span class="p">,</span>
-<span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;USERPARM R�pertoire&#39;</span><span class="p">,</span>
-      <span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span><span class="p">,</span>                 <span class="o">&lt;-</span> <span class="n">Must</span> <span class="n">equal</span> <span class="n">ACBH3</span> <span class="ow">in</span> <span class="n">TCT</span> <span class="p">(</span><span class="n">See</span> <span class="n">note</span><span class="p">)</span>
-      <span class="n">KEY</span><span class="o">=</span><span class="n">UPRMS</span><span class="p">,</span>
-      <span class="n">NAMELEN</span><span class="o">=</span><span class="mi">0064</span><span class="p">,</span>
-      <span class="n">AUTHUP</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-      <span class="n">AUTHDOWN</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
-      <span class="n">AUTHDEL</span><span class="o">=</span><span class="n">X</span>
-<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">00</span><span class="n">P</span><span class="p">,</span>
-<span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;User Parameters directory&#39;</span><span class="p">,</span>
-<span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Repertoire des parametres&#39;</span><span class="p">,</span>
-      <span class="n">NAME</span><span class="o">=</span><span class="n">USERPARM</span><span class="p">,</span>
-      <span class="n">APPL</span><span class="o">=</span><span class="n">USERPARM</span><span class="p">,</span>
-      <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-      <span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span>
-<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">74</span><span class="p">,</span>
-<span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Upload to USERPARM diretory&#39;</span><span class="p">,</span>
-<span class="p">(</span><span class="n">FR</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Chargement des parametres repetoire USERPARM&#39;</span><span class="p">,</span>
-      <span class="n">NAME</span><span class="o">=</span><span class="n">uplparms</span><span class="p">,</span>
-      <span class="n">APPL</span><span class="o">=</span><span class="n">VIR0041C</span><span class="p">,</span>
-      <span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-      <span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span><span class="p">,</span>
-      <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-      <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-      <span class="n">LOGMSG</span><span class="o">=</span><span class="n">USERPARM</span>
+<p>To support this feature a new subdirectory and associated transactions are added. The USERPARM member in VIRTEL.SAMPLIB provides an example of the transactions that are required to support the USERPARM feature. Running the ARBOLOAD JCL in the CNTL file with USERPARM=YES will add the relevant entries to the ARBO.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">TRSF</span> <span class="n">VSAM</span> <span class="n">file</span> <span class="k">for</span> <span class="n">USERPARM</span> <span class="n">definitions</span><span class="o">.</span> <span class="n">See</span> <span class="n">USERPARM</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">SAMPLIB</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">Run</span> <span class="n">ARBOLOAD</span><span class="p">(</span><span class="n">CNTL</span><span class="p">)</span> <span class="k">with</span> <span class="n">USERPARM</span><span class="o">=</span><span class="n">YES</span> <span class="n">to</span> <span class="n">allocate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">SUB</span><span class="o">-</span><span class="n">DIR</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">the</span> <span class="n">associated</span> <span class="n">transactions</span><span class="o">.</span>
+<span class="mf">3.</span> <span class="n">Update</span> <span class="n">the</span> <span class="n">TCT</span><span class="o">.</span> <span class="n">See</span> <span class="n">above</span><span class="o">.</span>
+<span class="mf">4.</span> <span class="n">Restart</span> <span class="n">Virtel</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Note. The HTMLTRSF can be used as a USERPARM repository. It is not necessary to set up a separate physical directory. Also, take care that the name given to the directory, USERPARM in this case, is correctly referenced by all components.</p>
+<p>Note. The HTMLTRSF can also be used as a USERPARM repository. It is not necessary to set up a separate physical VSAM file. Also, take care that the name given to the directory, USERPARM in this case, is correctly referenced by all components.</p>
 <p><strong>Scenario and Template updates</strong></p>
 <p>To access the name of the parameter directory:-</p>
 <p>Scenario</p>
@@ -534,13 +537,13 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 </div></blockquote>
 <p><strong>Testing</strong></p>
 <p>To test the feature:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>1. logon to a 3270 application, say TSO
-2. Open the settings dialog
-3. Change the �Display Style� to Gray and save. The back ground colour should change to gray.
-4. Disconnect from Virtel � the Red button in the tool bar.
-5. Reconnect in another browser and open a 3270 session.
-6. The background colour should still be set to gray.
-7. Open the settings dialogue and confirm that Gray button is still highlighted.
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">logon</span> <span class="n">to</span> <span class="n">a</span> <span class="mi">3270</span> <span class="n">application</span><span class="p">,</span> <span class="n">say</span> <span class="n">TSO</span>
+<span class="mf">2.</span> <span class="n">Open</span> <span class="n">the</span> <span class="n">settings</span> <span class="n">dialog</span>
+<span class="mf">3.</span> <span class="n">Change</span> <span class="n">the</span> <span class="s2">&quot;Display Style&quot;</span> <span class="n">to</span> <span class="n">Gray</span> <span class="ow">and</span> <span class="n">save</span><span class="o">.</span> <span class="n">The</span> <span class="n">back</span> <span class="n">ground</span> <span class="n">colour</span> <span class="n">should</span> <span class="n">change</span> <span class="n">to</span> <span class="n">gray</span><span class="o">.</span>
+<span class="mf">4.</span> <span class="n">Disconnect</span> <span class="kn">from</span> <span class="nn">Virtel</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Red</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">tool</span> <span class="n">bar</span><span class="o">.</span>
+<span class="mf">5.</span> <span class="n">Reconnect</span> <span class="ow">in</span> <span class="n">another</span> <span class="n">browser</span> <span class="ow">and</span> <span class="nb">open</span> <span class="n">a</span> <span class="mi">3270</span> <span class="n">session</span><span class="o">.</span>
+<span class="mf">6.</span> <span class="n">The</span> <span class="n">background</span> <span class="n">colour</span> <span class="n">should</span> <span class="n">still</span> <span class="n">be</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">gray</span><span class="o">.</span>
+<span class="mf">7.</span> <span class="n">Open</span> <span class="n">the</span> <span class="n">settings</span> <span class="n">dialogue</span> <span class="ow">and</span> <span class="n">confirm</span> <span class="n">that</span> <span class="n">Gray</span> <span class="n">button</span> <span class="ow">is</span> <span class="n">still</span> <span class="n">highlighted</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>In the console log you should see an ‘UPLOAD’ message:-</p>
@@ -705,7 +708,7 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <li>5638 Correct CCP and SmartCursor issues</li>
 <li>5639 Update VSE tape build</li>
 <li>5640 Update VIR0002A to support VSE SYSLST</li>
-<li>5642 Save VWA Parms. Enhancement � Part 2</li>
+<li>5642 Save VWA Parms. Enhancement - Part 2</li>
 <li>5644 Correct MAP length in VIR0021W</li>
 <li>5645 Save VWA Parms. Enhancement - Part3</li>
 <li>5646 Complete keypad.css for TBT</li>
@@ -717,7 +720,52 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <li>5652 Correct cursor position with unformatted screen</li>
 <li>5653 Some DBCS Characters are lost at end of a ?eld</li>
 <li>5654 Hotspot, CCP and Centralized Setting updates</li>
-<li>5655 Minor corrections and ?xes</li>
+<li>5655 Minor corrections and fixes I</li>
+<li>5656 compressed js and others</li>
+<li>5657 VWA perms on host for security type 4</li>
+<li>5658 Hotspots In INPUT fields</li>
+<li>5659 correct PTFGEN</li>
+<li>5660 DFHMDF map generation may be wrong due to binary zeroes in the screen</li>
+<li>5661 Minor corrections and fixes II</li>
+<li>5662 Centralized Parms update</li>
+<li>5663 Correct bug In Macro backup</li>
+<li>5664 Increase password length In PASSWD HTML</li>
+<li>5665 Web2ajax.htm now loads web2ajaxcjs</li>
+<li>5666 Videl update number missing in vwa toolbar</li>
+<li>5667 Correct bug In centralised settings with security—O</li>
+<li>5668 Correct defautt font setting in settings panel</li>
+<li>5669 Correct settings <a href="#id1"><span class="problematic" id="id2">*</span></a>nchronization</li>
+<li>5670 Minor corrections and fixes III</li>
+<li>5671 Correct Macro bug</li>
+<li>5672 Minor corrections and fixes IV</li>
+<li>5673 Create UPDT5673</li>
+<li>5674 FIX appmenu htm</li>
+<li>5675 correct VIRHTML abend</li>
+<li>5676 Correct switch problem</li>
+<li>5677 VIRPLEX at startup. we may see a series of VIRQLK51 messages</li>
+<li>5678 VIRPLEX supcn)rt for perms on host for READONLY servers</li>
+<li>5679 fix. Macro bug and other minor fixes</li>
+<li>5680 possible abend connecting to a VTAM application</li>
+<li>5681 Refactor of SVN 4800 and 4807</li>
+<li>5682 Updates to installation changes to defaults</li>
+<li>5683 various javascfipt fixes from SVN</li>
+<li>5684 more javascfipt fixes</li>
+<li>5685 Centralized Parms wrong VPLEX code sent by W2H-Settings</li>
+<li>5686 pseudo terminal not freed after close of the window</li>
+<li>5687 Centralized Parmy error with IE8</li>
+<li>5688 It-I VIR0021W causes ASRA/ABENDCC4 abends</li>
+<li>5689 Cleanup correctly following a REGS ESS failure In VIR0021W</li>
+<li>5690 V458 Installation updates</li>
+<li>5691 memory oveday after using VIR0021W USSTAB</li>
+<li>5692 Javascript fixes</li>
+<li>5693 set-local-option (use-htmini)</li>
+<li>5694 Loop with Trace option (Y,Y,Y)</li>
+<li>5695 some pseudos not released when closing several tabs</li>
+<li>5696 Virplex - error message if BROADCAST cannot be done</li>
+<li>5697 Incorrect 403 signon suspended error when signon is not suspended</li>
+<li>5698 selection box at wrong gn)sition In no stretch mode</li>
+<li>5699 VIR1728E ERROR: CANNOT OPEN message</li>
+<li>5700 Remove compressed option from appmenu htm</li>
 </ul>
 </div>
 </div>

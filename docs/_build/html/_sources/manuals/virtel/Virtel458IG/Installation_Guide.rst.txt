@@ -55,7 +55,7 @@ Summary of Amendments
 Virtel version 4.58 (1st Oct 2018)
 ----------------------------------
 
-See technical newsletter - "What's new in Virtel 4.58"
+.. note:: For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.57.
 
 Virtel version 4.57 (1st Jul 2017)
 ----------------------------------
@@ -100,7 +100,7 @@ Virtel version 4.57 (1st Jul 2017)
 
 - Batch export/import of RAW TRSF files.
 
-.. note:: For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.58.
+.. note:: For further details see the Virtel Technical Newsletter TN201706: Whats new in Virtel 4.57.
 
 Virtel version 4.56 (21 Jun 2016)
 ---------------------------------
@@ -643,143 +643,6 @@ Introduction
 ============
 
 .. index::
-   single: Virtel Modules
-
-Virtel Modules
---------------
-
-The functionality of VIRTEL is divided into components known as “modules”. The following is a list of the VIRTEL modules:
-
-**Kernel modules**
-
-::
-
-	VIR0000 System initialisation
-	VIR0001 VSAM access routines
-	VIR0002 Console command processing
-	VIR0004 SNAP trace/dump formatter
-	VIR0005 Terminal and line management, also X25 call packet management
-	VIR0006 Statistics I/O subtask
-	VIR0007 Abend recovery routine
-	VIR00080 Security functions for no security
-	VIR00081 Security functions for Virtel security
-	VIR00082 Security functions for TOP-SECRET without RACROUTE
-	VIR00083 Security functions for RACF without RACROUTE
-	VIR00084 Security functions for TOP-SECRET with RACROUTE
-	VIR00085 Security functions for ACF2 with ACFDIAG (for VM)
-	VIR00086 Security functions for ACF2 or RACF with RACROUTE
-	VIR0009 VTAM interface module
-
-**Communication modules**
-
-::
-
-	VIR0C12		Web-to-Host Interface CGI
-	VIR0U12 	Web-to-Host utility functions
-	VIR0V12 	Web-to-Host utility functions
-	VIR0X12 	X25 by structured field
-	VIR0011A 	3270 multisession processing
-	VIR0011B 	3270 Compr2 Minitel 40 colonnes
-	VIR0011C 	3270 Compr2 Minitel 80 colonnes
-	VIR0011D 	Web-to-Host 3270 scenario processing
-	VIR0012 	Minitel 3270 emulation
-	VIR0013 	3270 receive processing
-	VIR0014 	Minitel Support
-	VIR0014A	LU1 Term Support
-	VIR0015 	Multi-session 3270 + File Transfer
-	VIR0016 	Terminal 24x80 Support
-	VIR0018 	VT100 Support
-	VIR0019 	Inverse 3270 emulation
-	VIR0034 	CEPT1 Protocol Support
-	VIR0035 	VIRTEL/PC
-	VIR0039 	Interface LECAM
-
-**Transaction modules**
-
-::
-	
-	VIR0020 	Multi-session signon (pre-transaction version)
-	VIR0020A 	Multi-session signon
-	VIR0020B 	Multi-session signon with userid+password in logon data
-	VIR0020C 	Multi-session signon with userid in logon data
-	VIR0020H 	Basic authentication for HTTP
-	VIR0020L 	Multi-session signon (Minitel 40 columns)
-	VIR0020M 	Multi-session signon (Minitel 40 columns)
-	VIR0020P 	Multi-session signon (Minitel 40 columns)
-	VIR0021 	Multi-session menu
-	VIR0022 	Virtel administration: main menu
-	VIR0023 	Virtel administration: terminals
-	VIR0025S 	List of external servers in structured field
-	VIR0025T 	Call named external server
-	VIR0027 	Virtel administration: CVC status display
-	VIR0029 	3174 emulation (LLC3 client)
-	VIR0031 	Virtel administration: external servers
-	VIR0041B 	Page upload by SMTP
-	VIR0041C 	Page upload by HTTP
-	VIR0042 	Virtel administration: directories
-	VIR0043 	Virtel administration: directory contents
-	VIR0044 	Virtel administration: entry points
-	VIR0045 	Virtel administration: transactions
-	VIR0046 	Virtel administration: lines
-	VIR0047 	Virtel administration: rules
-	VIR0048 	Virtel administration: line summary display
-	VIR0049 	Virtel administration: line summary expanded display
-
-**Utility function modules**
-
-::
-
-	VIR0017 	Utility functions
-	VIR0B17 	Utility functions
-	VIR0C17 	Utility functions
-
-**Line interface modules**
-
-::
-
-	VIR0062 	APPC LU6.2 interface module
-	VIR0I09 	VTAM interface module (bis)
-	VIR0T09 	TCP/IP interface module (HPNS EXIT mode)
-	VIR0T10 	TCP/IP interface module (HPNS ECB mode)
-
-**Terminal 	interface modules**
-
-::
-
-	VIR0I19 	Interface Pseudo (AntiPCNE/AntiGATE/AntiFASTC)
-	VIR0T19 	Interface Pseudo (TCP/IP)
-
-.. raw:: latex
-
-    \newpage   
-
-**Protocol modules**
-
-::
-
-	VIRHTTP 	HTTP protocol module
-	VIRSMTP 	SMTP protocol module
-	VIRXOT 		XOT protocol module
-	VIRXTP 		XTP protocol module
-	VIR0PASS 	VIRPASS protocol module
-	VIR00IE 	AntiPCNE protocol module
-	VIR00IF 	AntiFASTC protocol module
-	VIR00IG 	AntiGATE protocol module
-	VIR0715 	APPC1 protocol module
-	VIR0815 	APPC2 protocol module
-	VIR0S15 	Structured fields protocol module
-
-The VIRTEL product contains support for the base kernel and all modules. The functionality of each module is activated either by setting specific parameters in the VIRTCT or by the activation of appropriate configuration definitions in the VIRARBO file.
-
-.. line-block:: 
-
-	*Please refer to your license agreement for the particular terms and conditions under which you are authorised to use the various VIRTEL modules.*
-
-.. raw:: latex
-
-    \newpage 	
-
-.. index::
    single: Virtel operating environments
 
 
@@ -833,9 +696,97 @@ Installing VIRTEL under z/OS
 Installation procedure
 ----------------------
 
-In the z/OS environment, VIRTEL is delivered as a zipped XMIT file containing the VIRTEL datasets compressed in DF/DSS dump format. The following sections provide details of the installation method.
+In the z/OS environment, VIRTEL is delivered as a zipped XMIT file containing the VIRTEL datasets compressed in DF/DSS dump format. The following sections provide details of the installation method. A quick “installation check-list” to start the VIRTEL installation procedure follows. For customers who do not have DF/DFSS, a non-DF/DFSS install package is available on request. Contact Syspertec Support for further details. 
 
-A quick “installation check-list” to start the VIRTEL Web Access function for z/OS can be found at the end of this section.
+.. index::
+   pair: Installing under z/OS  ; z/OS Check List.	
+
+
+z/OS Installation Check-list
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
+
+.. warning::
+
+	If you are upgrading to a new version of Virtel, plan to move any user transactions or customisations out of W2H-DIR as this directory will be overriden as part of the installation process. 
+
+1. Download the following files from our FTP server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__
+
+   -  Virtelvrr.zip.
+
+   -  allptfs-mvsvrr.txt if available.
+
+   -  virtelvrrupdtnnnn.zip if available.
+
+2. Run job $ALOCDSU to create the TRANSFER.XMIT file.
+
+3. Upload the virtelvrrmvs.xmit file to the TRANSFER.XMIT file in binary mode.
+
+4. Edit job $RESTDSU specifying the high-level qualifiers and SMS or volume serial information for the VIRTEL datasets. Run job $RESTDSU to create the VIRTEL datasets yourqual.VIRTvrr.xxxxxx
+
+5. Apply the PTFs in the allptfs-mvsvrr.txt file using job ZAPJCL in the VIRTEL CNTL library. If this file does not exist, skip this step.
+
+6. Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list
+
+::
+
+	SETPROG APF,ADD,DSN=yourqual.VIRTvrr.LOADLIB,VOL=volser
+
+7. Edit member VIRTCT01 in the VIRTEL CNTL library:-
+
+	a) Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)
+
+	b) The TCP1= parameter must match the jobname of your z/OS TCP/IP stack (the suggested value TCPIP is usually correct)
+
+	c) If you prefer VIRTEL to display English language panels, then set LANG='E'
+
+	d) Set the COUNTRY and DEFUTF8 parameters according to your country. 
+
+	e) Set the COMPANY ADDR1 ADDR2 LICENCE EXPIRE CODE parameters using the license key supplied to you by Syspertec.
+
+8. Run the job ASMTCT in the VIRTEL CNTL library to assemble VIRTCT01 into VIRTvrr.LOADLIB.
+
+9. Edit member ARBOLOAD in the VIRTEL CNTL library:
+
+	a) Change LANG=EN to LANG=FR if French language is desired
+
+	b) Set LOAD= the name of your VIRTEL LOADLIB
+
+	c) Set SAMP= the name of your VIRTEL SAMPLIB
+
+	d) Set ARBO= the name of your VIRTEL ARBO file
+
+	e) Set VTAMLST= the name of a your VIRTEL CNTL library. The job will create a sample VTAMLST member in this library.
+
+	f) CHANGE ALL 'DBDCCICS' 'xxxxxx' where xxxxxx is the APPLID of your CICS system.
+
+  	g) If you changed the APPLID of VIRTEL in step 7 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
+
+  .. note::
+
+	   If you need to rerun the ARBOLOAD job, you must change PARM='LOAD,NOREPL' to PARM='LOAD,REPL'. If you wish to completely start over from the beginning, you can run the job ARBOBASE to delete and reinitialize the ARBO file, followed by a rerun of the ARBOLOAD job.
+
+10. Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
+
+11. Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command:
+
+::
+
+    V NET,ACT,ID=VIRTAPPL
+
+12. Edit the procedure VIRTEL4 in your VIRTEL CNTL library so that the high-level qualifiers match the names you used when you loaded the files in step 4. Copy the procedure to your system PROCLIB, renaming it as VIRTEL.
+
+13. Ask your security administrator to create a userid for the VIRTEL started task, and to authorize this userid to access the datasets you created in step 3. This userid must also have an OMVS segment which authorizes VIRTEL to use TCP/IP. Your security administrator can use the job RACFSTC in the VIRTEL SAMPLIB as an example.
+
+14. Start VIRTEL
+
+You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in the VIRTCT01, and you can display the VIRTEL Web Access menu in your web browser using URL http://n.n.n.n:41001 where n.n.n.n is the IP address of your z/OS system.
+
+15. Apply any Virtel Web Access (See VWA maintenance) according the instructions in the Readme-updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step. If yo do apply maintenance then refresh the browser (CTRL-R) after updating the relevant TRSF directories. Check that the updtnnn is the correct number in the Administration Portal Screen.
+
+16. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the :ref:`“Security Chapter” <#_VVRRIG_security>`.
+
 
 .. index::
    pair: Installing under z/OS; Restoring from the XMIT file
@@ -1418,94 +1369,6 @@ VIRTEL may be stopped by issuing the following command:-
 
 	P VIRTEL
 
-.. index::
-   pair: Installing under z/OS  ; z/OS Check List.	
-
-
-z/OS Installation Check-list
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
-
-.. warning::
-
-	If you are upgrading to a new version of Virtel, plan to move any user transactions or customisations out of W2H-DIR as this directory will be overriden as part of the installation process. 
-
-1. Download the following files from our FTP server `http://ftp.syspertec.com <http://ftp.syspertec.com/>`__
-
-   -  Virtelvrr.zip.
-
-   -  allptfs-mvsvrr.txt if available.
-
-   -  virtelvrrupdtnnnn.zip if available.
-
-2. Run job $ALOCDSU to create the TRANSFER.XMIT file.
-
-3. Upload the virtelvrrmvs.xmit file to the TRANSFER.XMIT file in binary mode.
-
-4. Edit job $RESTDSU specifying the high-level qualifiers and SMS or volume serial information for the VIRTEL datasets. Run job $RESTDSU to create the VIRTEL datasets yourqual.VIRTvrr.xxxxxx
-
-5. Apply the PTFs in the allptfs-mvsvrr.txt file using job ZAPJCL in the VIRTEL CNTL library. If this file does not exist, skip this step.
-
-6. Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authorized program library list
-
-::
-
-	SETPROG APF,ADD,DSN=yourqual.VIRTvrr.LOADLIB,VOL=volser
-
-7. Edit member VIRTCT01 in the VIRTEL CNTL library:-
-
-	a) Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)
-
-	b) The TCP1= parameter must match the jobname of your z/OS TCP/IP stack (the suggested value TCPIP is usually correct)
-
-	c) If you prefer VIRTEL to display English language panels, then set LANG='E'
-
-	d) Set the COUNTRY and DEFUTF8 parameters according to your country. 
-
-	e) Set the COMPANY ADDR1 ADDR2 LICENCE EXPIRE CODE parameters using the license key supplied to you by Syspertec.
-
-8. Run the job ASMTCT in the VIRTEL CNTL library to assemble VIRTCT01 into VIRTvrr.LOADLIB.
-
-9. Edit member ARBOLOAD in the VIRTEL CNTL library:
-
-	a) Change LANG=EN to LANG=FR if French language is desired
-
-	b) Set LOAD= the name of your VIRTEL LOADLIB
-
-	c) Set SAMP= the name of your VIRTEL SAMPLIB
-
-	d) Set ARBO= the name of your VIRTEL ARBO file
-
-	e) Set VTAMLST= the name of a your VIRTEL CNTL library. The job will create a sample VTAMLST member in this library.
-
-	f) CHANGE ALL 'DBDCCICS' 'xxxxxx' where xxxxxx is the APPLID of your CICS system.
-
-  	g) If you changed the APPLID of VIRTEL in step 7 from its default value VIRTEL, then you must also change the ACBNAME= parameter in step VTAMDEF near the end of the ARBOLOAD job. The value of ACBNAME= in ARBOLOAD must match the value of APPLID= in VIRTCT01. Submit the ARBOLOAD job. This creates your VIRTEL configuration (the ARBO file) and a sample VTAMLST member VIRTAPPL.
-
-  .. note::
-
-	   If you need to rerun the ARBOLOAD job, you must change PARM='LOAD,NOREPL' to PARM='LOAD,REPL'. If you wish to completely start over from the beginning, you can run the job ARBOBASE to delete and reinitialize the ARBO file, followed by a rerun of the ARBOLOAD job.
-
-10. Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
-
-11. Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL CNTL library into your SYS1.VTAMLST dataset. Now activate the VTAMLST member using this command:
-
-::
-
-    V NET,ACT,ID=VIRTAPPL
-
-12. Edit the procedure VIRTEL4 in your VIRTEL CNTL library so that the high-level qualifiers match the names you used when you loaded the files in step 4. Copy the procedure to your system PROCLIB, renaming it as VIRTEL.
-
-13. Ask your security administrator to create a userid for the VIRTEL started task, and to authorize this userid to access the datasets you created in step 3. This userid must also have an OMVS segment which authorizes VIRTEL to use TCP/IP. Your security administrator can use the job RACFSTC in the VIRTEL SAMPLIB as an example.
-
-14. Start VIRTEL
-
-You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in the VIRTCT01, and you can display the VIRTEL Web Access menu in your web browser using URL http://n.n.n.n:41001 where n.n.n.n is the IP address of your z/OS system.
-
-15. Apply any Virtel Web Access (See VWA maintenance) according the instructions in the Readme-updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step. If yo do apply maintenance then refresh the browser (CTRL-R) after updating the relevant TRSF directories. Check that the updtnnn is the correct number in the Administration Portal Screen.
-
-16. The supplied system is configured with security disabled. If you wish, you can activate external security using RACF, ACF2, or TOP SECRET; please refer to the :ref:`“Security Chapter” <#_VVRRIG_security>`.
 
 .. index::
    single: Installing under z/VSE
@@ -6557,8 +6420,148 @@ The VIRTEL load library should normally be APF-authorized. If this is not the ca
 Appendix
 ========
 
-Appendix A. VSE ICCF Editor commands
+.. index::
+   single: Virtel Modules
 
+Appendix A. Virtel Modules
+--------------------------
+
+Virtel Modules
+^^^^^^^^^^^^^^
+
+The functionality of VIRTEL is divided into components known as “modules”. The following is a list of the VIRTEL modules:
+
+**Kernel modules**
+
+::
+
+	VIR0000 System initialisation
+	VIR0001 VSAM access routines
+	VIR0002 Console command processing
+	VIR0004 SNAP trace/dump formatter
+	VIR0005 Terminal and line management, also X25 call packet management
+	VIR0006 Statistics I/O subtask
+	VIR0007 Abend recovery routine
+	VIR00080 Security functions for no security
+	VIR00081 Security functions for Virtel security
+	VIR00082 Security functions for TOP-SECRET without RACROUTE
+	VIR00083 Security functions for RACF without RACROUTE
+	VIR00084 Security functions for TOP-SECRET with RACROUTE
+	VIR00085 Security functions for ACF2 with ACFDIAG (for VM)
+	VIR00086 Security functions for ACF2 or RACF with RACROUTE
+	VIR0009 VTAM interface module
+
+**Communication modules**
+
+::
+
+	VIR0C12		Web-to-Host Interface CGI
+	VIR0U12 	Web-to-Host utility functions
+	VIR0V12 	Web-to-Host utility functions
+	VIR0X12 	X25 by structured field
+	VIR0011A 	3270 multisession processing
+	VIR0011B 	3270 Compr2 Minitel 40 colonnes
+	VIR0011C 	3270 Compr2 Minitel 80 colonnes
+	VIR0011D 	Web-to-Host 3270 scenario processing
+	VIR0012 	Minitel 3270 emulation
+	VIR0013 	3270 receive processing
+	VIR0014 	Minitel Support
+	VIR0014A	LU1 Term Support
+	VIR0015 	Multi-session 3270 + File Transfer
+	VIR0016 	Terminal 24x80 Support
+	VIR0018 	VT100 Support
+	VIR0019 	Inverse 3270 emulation
+	VIR0034 	CEPT1 Protocol Support
+	VIR0035 	VIRTEL/PC
+	VIR0039 	Interface LECAM
+
+**Transaction modules**
+
+::
+	
+	VIR0020 	Multi-session signon (pre-transaction version)
+	VIR0020A 	Multi-session signon
+	VIR0020B 	Multi-session signon with userid+password in logon data
+	VIR0020C 	Multi-session signon with userid in logon data
+	VIR0020H 	Basic authentication for HTTP
+	VIR0020L 	Multi-session signon (Minitel 40 columns)
+	VIR0020M 	Multi-session signon (Minitel 40 columns)
+	VIR0020P 	Multi-session signon (Minitel 40 columns)
+	VIR0021 	Multi-session menu
+	VIR0022 	Virtel administration: main menu
+	VIR0023 	Virtel administration: terminals
+	VIR0025S 	List of external servers in structured field
+	VIR0025T 	Call named external server
+	VIR0027 	Virtel administration: CVC status display
+	VIR0029 	3174 emulation (LLC3 client)
+	VIR0031 	Virtel administration: external servers
+	VIR0041B 	Page upload by SMTP
+	VIR0041C 	Page upload by HTTP
+	VIR0042 	Virtel administration: directories
+	VIR0043 	Virtel administration: directory contents
+	VIR0044 	Virtel administration: entry points
+	VIR0045 	Virtel administration: transactions
+	VIR0046 	Virtel administration: lines
+	VIR0047 	Virtel administration: rules
+	VIR0048 	Virtel administration: line summary display
+	VIR0049 	Virtel administration: line summary expanded display
+
+**Utility function modules**
+
+::
+
+	VIR0017 	Utility functions
+	VIR0B17 	Utility functions
+	VIR0C17 	Utility functions
+
+**Line interface modules**
+
+::
+
+	VIR0062 	APPC LU6.2 interface module
+	VIR0I09 	VTAM interface module (bis)
+	VIR0T09 	TCP/IP interface module (HPNS EXIT mode)
+	VIR0T10 	TCP/IP interface module (HPNS ECB mode)
+
+**Terminal 	interface modules**
+
+::
+
+	VIR0I19 	Interface Pseudo (AntiPCNE/AntiGATE/AntiFASTC)
+	VIR0T19 	Interface Pseudo (TCP/IP)
+
+.. raw:: latex
+
+    \newpage   
+
+**Protocol modules**
+
+::
+
+	VIRHTTP 	HTTP protocol module
+	VIRSMTP 	SMTP protocol module
+	VIRXOT 		XOT protocol module
+	VIRXTP 		XTP protocol module
+	VIR0PASS 	VIRPASS protocol module
+	VIR00IE 	AntiPCNE protocol module
+	VIR00IF 	AntiFASTC protocol module
+	VIR00IG 	AntiGATE protocol module
+	VIR0715 	APPC1 protocol module
+	VIR0815 	APPC2 protocol module
+	VIR0S15 	Structured fields protocol module
+
+The VIRTEL product contains support for the base kernel and all modules. The functionality of each module is activated either by setting specific parameters in the VIRTCT or by the activation of appropriate configuration definitions in the VIRARBO file.
+
+.. line-block:: 
+
+	*Please refer to your license agreement for the particular terms and conditions under which you are authorised to use the various VIRTEL modules.*
+
+.. raw:: latex
+
+    \newpage 	
+
+Appendix B. VSE ICCF Editor commands
+------------------------------------
 *PFKs*
 
 ::

@@ -5585,84 +5585,40 @@ Virtel Customization Modes
 
 .. index::
    pair: Compatibility mode; Customization
-   pair: Option mode; Customization
+  
    pair: Default mode; Customization 
 
-Virtel V4.56 introduces some enhancements to customisation. From Virtel 4.56 onwards, customization is now possible at a global level, effecting all transactions for an entry point, or at a transaction level, effecting only specific transactions. Previous customisation was only at the entry point level. The two customization modes are known as "Compatibility" mode and "Option" mode. As delivered, Virtel V4.56 defaults to having no customization mode active. This means neither "compatibility" mode or "option" mode. To turn one on these modes on the following actions must be performed.   
+Virtel V4.58 uses the defaults as listed in Appendix A. Modification of these defaults can be implemented by modifying the w2hparm.js file. As delivered, there is a dummy 'w2hparm.js' in both the CLI-DIR and the W2H-DIR. Transactions W2H-03P and CLI-03P point to these respective w2hparm.js entries. Previous versions of Virtel used a different technical to locate customized entries, now refrerred to as "compatibility mode". The three customization modes are known as "Compatibility" mode, "Option" mode and "default" mode . As delivered, Virtel V4.58 defaults to having no customization mode active. All w2hparm values are defaulted to those listed in the Appendix. Neither "compatibility" mode or "option" mode are in effect. To turn one on these modes on the following actions must be performed.   
 
-.. _#_V458UG_compatibility mode:
-
-Compatibility Mode
-------------------
-
-To maintain compatibility with older releases of Virtel, the original customisation design continues to be supported as "compatibility" mode. This mode can be activated performing the following actions
-
-- Included the following statement in the TCT:-
-
-::
-
-	HTSETn=(OPTION-DEFAULT-COMPATIBILITY) where n = 1_4.     
-
-- Modify the elements (w2hparm.js, custom.css, custom.js etc.) and upload to the relevant directory. This would normally be CLI-DIR
-- Update the relevant transactions to point to the CLI-DIR for the elements you wish to customize or modify. The transactions are:-
-
-::
- 
-	XXX-03Cz   where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point).
-			   z = C for custom.css, H for help.html and J for custom.js
-
-	XXX-03P    where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point).
-			   This transaction provides the directory for a modified w2hparm.js
-
-By default, the applications associated with these transactions are set to "W2H-DIR". See job SAMPLIB(CUSTCSS). Run this job after changing the directory(APPL=) from W2H-DIR to CLI-DIR. 
-
-As an example, if the w2hparm option "Enter=Enter" is required rather than the default "Enter=Newline" and a modified toolbar is also required for transactions running under the CLIWHOST entry point then the following transactions would be changed:-
-::
- 	
-	CLI-03P		Appl. = CLI-DIR   Default = W2H-DIR. w2hparm.js for CLI transactions
-	CLI-03CJ	Appl. = CLI-DIR   Default = W2H-DIR. Custom.js for CLI transactions   	
-
-- w2hparm.js would be modified and uploaded to CLI-DIR.
-
-::
- 
-    var w2hparm = {
-        "enter":"ENTER"
-    };      
-
-- Custom.js would be modified to support the tool bar change and uploaded to CLI-DIR.   
-
-The transaction W2H-03CJ is left pointing to W2H-DIR meaning that applications under the WEB2HOST entry point would have the default tool bar.
-
-.. danger:: Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance or Virtel release updates. Keep customized elements in the CLI-DIR directory.
+.. index::
+   pair: Option Mode; Customization
 
 Option mode
 -----------  
 
-This Option mode uses the /option/ pathname to locate a directory where all the relevant customisation elements reside. The recommended directory is CLI-DIR. To use this mode the w2hparm.js file must include the "global-settings" attribute. The following is an example:-
+This Option mode, which is the preferred default V4.58, uses a global-settings object. The object has an attribute "/option/pathname" value used to locate the directory where all the relevant customisation elements reside. The CLI-3CO transaction denotes the location of the directory. By default this is CLI-DIR. To use this mode the w2hparm.js file in the CLI-DIR must be modified to include the "global-settings" object. The following is an example to have a global customized environment for w2hparms, custom Java Script and CSS styling pages :-
+
 ::
 
-    var w2hparm = {
-        "enter":"ENTER",    
+    var w2hparm = {         
         "global-settings":{
+            "pathToW2hparm":"../option/w2hparm.global.js",
             "pathToJsCustom":"../option/custJS.global.js",
-            "pathToCssCustom": "../option/custCSS.global.css",
-            "pathToHelp": "../option/myHelp.html"
+            "pathToCssCustom": "../option/custCSS.global.css"           
         }
     }	  
 
 
-
-This attribute defines the "global" customised names using the following pattern:- key.id.type where:-
+This attribute defines the "global" customised names using the following pattern:- "pathTo.key.id.type" where:-
 
 ::
 
-	key 	= one of the supported key values prefixed with the string "pathTo" 
-	id  	= global or an option identifier
+	key 	= one of the supported key values prefixed with the string "pathTo" - W2hparm, CssCustom, JSCustom, PrintCss or Help 
+	id  	= "global" or a transaction option identifier
 	type    = css, html or js (The customized type)
 
 
-The supported "pathToxxxxx" keys are used to select the file where the customised elements should be located. Note the customized elements are located through the /option/ pathname. Customized elements currently supported are:-
+The supported "pathToxxxxx" attribute keys are used to select the file values where the customised elements should be located. Note the customized elements are located through the /option/ pathname. Customized elements currently supported are:-
 ::
     
 	pathToCssCustom     Custom CSS files.
@@ -5673,24 +5629,71 @@ The supported "pathToxxxxx" keys are used to select the file where the customise
 
 To activate the "option" mode perform the following actions:-
 
-- Update the W2hparm.js to include the global-settings option. Include the relevant keynames within the global option settings you wish to modify. 
-- Update the XXX-03P transactions to point to the CLI-DIR. The modified w2hparm.js will now be loaded from CLI-DIR and not the default W2H-DIR.
-- Upload the modified w2hparm.js to the CLI-DIR directory.
-- Run the supplied ARBOLOAD job in the CNTL library with OPTION=YES set. This will add two new transactions to the W2H and CLI entries to define the /option pathname.
-- Create the customized files (Javascript, CSS, help, parm) and upload them to the CLI directory.
+- Create and upload to the CLI-DIR a w2hparm.js that includes the global-settings option. Include the relevant keynames within the global option settings you wish to modify. 
+- Create the customized "pathTo" files as defined in the "Global-settings" object (Javascript, CSS, help, parm) and upload those to the CLI directory.
 
-Default mode
-------------
+See the next section, "Global level modifications", for an example of how to implement global changes under the 'Option mode' customization.
 
-As delivered, the default mode level is used. This means all web elements are obtained or located within the supplied W2H-DIR using the default settings.
+.. _#_V458UG_compatibility mode:
+
+.. index::
+   pair: Compatibility Mode; Customization
+
+Compatibility Mode (Deprecated)
+-------------------------------
+
+To maintain compatibility with older releases of Virtel, the original customisation design continues to be supported as "compatibility" mode. This mode can be activated performing the following actions:-
+
+- Included the following statement in the TCT:-
+
+::
+
+	HTSETn=(OPTION-DEFAULT-COMPATIBILITY) where n = 1_4.     
+
+- Run the ARBOLOAD JCL with COMPAT=YES specified. This will add the XXX-03Cz transactions.
+- Modify the elements (w2hparm.js, custom.css, custom.js etc.) and upload to the relevant directory. This would normally be CLI-DIR.
+- Update the relevant transactions to point to the CLI-DIR for the elements you wish to customize or modify. The transactions are:-
+
+::
+ 
+	XXX-03Cz   where XXX = W2H (WEB2HOST Entry Point) or CLI (CLIWHOST Entry Point).
+			   z = C for custom.css, H for help.html and J for custom.js	
+
+By default, the applications associated with these transactions are set to "W2H-DIR". See job SAMPLIB(CUSTCSS). Run this job after changing the directory(APPL=) from W2H-DIR to CLI-DIR. 
+
+As an example, if the w2hparm option "Enter=Enter" is required rather than the default "Enter=Newline" and a modified toolbar is also required for transactions running under the CLIWHOST entry point then the following transactions would be changed:-
+::
+ 	
+	CLI-03P		Appl. = CLI-DIR. Pointer to w2hparm.js   
+	CLI-03CJ	Appl. = CLI-DIR. Custom.js for CLI transactions   	
+
+- w2hparm.js would be modified and uploaded to CLI-DIR.
+
+::
+ 
+    var w2hparm = {
+        "enter":"ENTER"
+    };      
+
+- Custom.js would be modified to support the tool bar change and uploaded to CLI-DIR. 
+
+These changes only effect transactions under the CLIWHOST entry point. Transaction under the WEB2HOST entry point would have the default tool bar.
+
+.. danger:: Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance or Virtel release updates. Keep customized elements in the CLI-DIR directory.
+
+
+Default Options
+---------------
+
+As delivered, the default options used are listed in Appendix A. There is a dummy w2hparm.js delivered in CLI-DIR and W2H-DIR and this should be used set customized options. 
 
 .. index::
    pair: Global level modifications; Customization
 
-Global level modifications (All transactions under an Entry Point)
-------------------------------------------------------------------
+Global level modifications (All transactions under one Entry Point)
+-------------------------------------------------------------------
 
-For example, to support a global modified w2hparm and a modified toolbar for transactions running under the CLIWHOST entry point the following actions would be required. 
+As an example, to support a global modified w2hparm and a modified toolbar for transactions running under the CLIWHOST entry point the following actions would be required. 
 
 For the "Enter" key requirment, update the default w2hparm.js to include a global setting for pathToW2hparm. The w2hparm.js should be uploaded to the CLI-DIR directory or another directory other than W2H-DIR. The transaction CLI-03P application field will also have to be updated to point to the correct directory for the modified w2hparm.js. Normally CLI-DIR:-
 ::  
@@ -5718,20 +5721,25 @@ Create the file custJS.global.js file and define the required changes. Upload th
 
 ::
  
-    //CLI-DIR - custJS.myOptions.js
-    //Add Print Button To Toolbar
+   //CLI-DIR - custJS.global.js
+   // Add Print Button To Toolbar
     function after_standardInit() {
         addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
     }
 
+    function do_print() {
+      window.print();
+    }   
+    
+
 .. note:: The print.ico should also be uploaded to the CLI-DIR directory. 
 
-This has the effect of changing the tool bar for all transactions which is not what is required. The transactions under WEB2HOST will require there option field to be set to "compatibility" to ensure that the default toolbar is shown.
+This has the effect of changing the tool bar for all transactions which is not what is required. The transactions under WEB2HOST will require their option fields to be set to "compatibility" to ensure that the default toolbar is shown.
 
 |image98|
 
 .. index::
-   pair: TRansaction level modifications; Customization  
+   pair: Transaction level modifications; Customization  
 
 Transaction level modifications (Individual transactions)
 ---------------------------------------------------------
@@ -7620,7 +7628,7 @@ Example scenario with DEBUG$
 DECLARE$ instruction
 ^^^^^^^^^^^^^^^^^^^^
 
-This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key (ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is generated only if the specified screen position is non-blank. It is designed to be used with the WEB2VIRT .htm template and in conjuction with the "GENERATE-HTML" tag.
+This instruction defines a portion of the screen as a clickable hyperlink. The hyperlink can invoke either a 3270 key (ENTER or PFnn), a JavaScript procedure, or an external URL. The generation of the hyperlink can optionally be conditional on the presence or absence of a particular value at the 3270 screen position. In any case, the hyperlink is generated only if the specified screen position is non-blank. It is designed to be used with the WEB2VIRT.htm template and in conjuction with the "GENERATE-HTML" tag.
 
 ::
 
@@ -7648,7 +7656,7 @@ AS-PFKEY
 AS-PARAMETER
     Indicates that the indicated portion of the screen is to be treated as a hyperlink which calls a JavaScript function. The data at the indicated screen position is passed as a parameter to the JavaScript function. The name of the JavaScript function is specified in the TO parameter of the DECLARE$ instruction. See :ref:`“JavaScript functions” <#_V458UG_Javascript_functions>` for further details.
 AS-HREF
-    Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the DECLARE$instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the DECLARE$instruction, if specified.
+    Indicates that the indicated portion of the screen is to be treated as a hyperlink which invokes the URL specified in the TO parameter of the DECLARE$instruction. The data at the indicated screen position is appended to the URL, followed by the contents of the P2 parameter of the DECLARE$ instruction, if specified.
 P2
     (optional) Function parameter referenced by P1.
 P3

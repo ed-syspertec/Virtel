@@ -45,8 +45,8 @@
 
 
 \title{Virtel Installation Guide}
-\date{Sep 21, 2018}
-\release{4.57}
+\date{Nov 08, 2018}
+\release{4.58}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
 \renewcommand{\releasename}{Release}
@@ -67,9 +67,9 @@
 This is a draft version of the document.
 \end{sphinxadmonition}
 
-Version : 4.57
+Version : 4.58
 
-Release Date : 08 Jan 2018. Publication Date : 08/01/2018
+Release Date : 01 Oct 2018. Publication Date : 01/10/2018
 
 Syspertec Communication
 
@@ -100,7 +100,14 @@ their respective owners.
 
 
 \chapter{Summary of Amendments}
-\label{\detokenize{Installation_Guide:vvrrig-summary-of-ammendments}}\label{\detokenize{Installation_Guide:summary-of-amendments}}\label{\detokenize{Installation_Guide:virtelvrrig}}\label{\detokenize{Installation_Guide:installation-guide-v4-57}}
+\label{\detokenize{Installation_Guide:installation-guide-v4-58}}\label{\detokenize{Installation_Guide:virtelvrrig58}}\label{\detokenize{Installation_Guide:vvrrig58-summary-of-ammendments}}\label{\detokenize{Installation_Guide:summary-of-amendments}}
+
+\section{Virtel version 4.58 (1st Oct 2018)}
+\label{\detokenize{Installation_Guide:virtel-version-4-58-1st-oct-2018}}
+\begin{sphinxadmonition}{note}{Note:}
+For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.57.
+\end{sphinxadmonition}
+
 
 \section{Virtel version 4.57 (1st Jul 2017)}
 \label{\detokenize{Installation_Guide:virtel-version-4-57-1st-jul-2017}}
@@ -999,7 +1006,7 @@ Miscellaneous editorial corrections and enhancements
 
 
 \chapter{Introduction}
-\label{\detokenize{Installation_Guide:introduction}}\label{\detokenize{Installation_Guide:vvrrig-introduction}}
+\label{\detokenize{Installation_Guide:introduction}}\label{\detokenize{Installation_Guide:vvrrig58-introduction}}
 \index{Virtel Modules}
 
 \section{Virtel Modules}
@@ -1198,7 +1205,7 @@ All the VSAM and non-VSAM datasets required for the installation of VIRTEL are c
 
 \subsubsection{Step 1}
 \label{\detokenize{Installation_Guide:step-1}}
-Login to the Syspertec file server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.57” \textendash{} “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.
+Login to the Syspertec file server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com} using the userid and password supplied to you by Syspertec. Navigate to the “Public” \textendash{} “VIRTEL 4.58” \textendash{} “Products” folder and download the virtelvrrmvs.zip file. Unzip this file into a folder on your workstation.
 
 \newpage
 
@@ -1595,7 +1602,7 @@ File VIRCMP3 must be present if the parameter COMPR3=AUTO or COMPR3=FIXED is cod
 File VIRCAPT must be present if the parameter FCAPT=VIRCAPT is coded in the VIRTCT
 
 \item {} 
-File VIRHTML must be present if the parameter HTVSAM=VIRHTML is coded in the VIRTCT (parameter required for clients wishing to use e-mail, VIRTEL Web Access, or the Videotex Plug-In function)
+File VIRHTML must be present if the parameter HTVSAM=VIRHTML is coded in the VIRTCT (parameter required for clients wishing to use e-mail or the centralised parameters feature of VIRTEL Web Access)
 
 \item {} 
 Files SAMPTRSF, HTMLTRSF must be present if referenced by the parameters UFILEn (and their corresponding ACBs) in the VIRTCT (required for clients wishing to use VIRTEL Web Access functions)
@@ -1703,7 +1710,7 @@ At execution time:
 \PYG{n}{VIRQ903W} \PYG{n}{LINE} \PYG{n}{lin1name} \PYG{n}{HAS} \PYG{n}{A} \PYG{n}{SESSION} \PYG{n}{STARTED} \PYG{n}{WITH} \PYG{n}{MQM} \PYG{n}{CSQ7}
 \PYG{n}{VIRQ923E} \PYG{n}{lin1name} \PYG{n}{REQ} \PYG{n}{MQOPEN} \PYG{n}{COMPLETION} \PYG{n}{CODE} \PYG{l+m+mi}{00000002} \PYG{n}{REASON} \PYG{n}{CODE} \PYG{l+m+mi}{00000825} \PYG{p}{(}\PYG{l+m+mi}{00002085}\PYG{p}{)} \PYG{n}{MQM} \PYG{n}{CSQ7}
 \PYG{n}{VIRQ923E} \PYG{n}{lin1name} \PYG{n}{PARAM} \PYG{n}{ABCD}\PYG{o}{.}\PYG{n}{VIRTELOUT}
-\PYG{n}{VIRRW01I} \PYG{n}{INITIALISATION} \PYG{n}{FOR} \PYG{n}{lin2name} \PYG{p}{(}\PYG{n}{MQI}\PYG{o}{\PYGZhy{}}\PYG{n}{XX} \PYG{p}{)}\PYG{p}{,} \PYG{n}{VERSION} \PYG{l+m+mf}{4.57}
+\PYG{n}{VIRRW01I} \PYG{n}{INITIALISATION} \PYG{n}{FOR} \PYG{n}{lin2name} \PYG{p}{(}\PYG{n}{MQI}\PYG{o}{\PYGZhy{}}\PYG{n}{XX} \PYG{p}{)}\PYG{p}{,} \PYG{n}{VERSION} \PYG{l+m+mf}{4.58}
 \PYG{n}{VIRQ903W} \PYG{n}{LINE} \PYG{n}{lin2name} \PYG{n}{HAS} \PYG{n}{A} \PYG{n}{SESSION} \PYG{n}{STARTED} \PYG{n}{WITH} \PYG{n}{MQM} \PYG{n}{CSQ6}
 \end{sphinxVerbatim}
 
@@ -2160,7 +2167,7 @@ A VSE.VIRTvrr.LIBRARY        VIRTvrr VSESPUC OLD KEEP
 
 \sphinxstyleemphasis{VIRTLIB : JCL to define the sublibrary (z/VSE)}
 
-Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.57. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
+Job VIRTLIB contains an example of JCL to define the library which will contain the VIRTEL executable modules and source books. This job is provided as an example, and may need to be modified prior to execution. The name VIRTnnn.SUBLIB indicates the VIRTEL version, for example VIRTvrr.SUBLIB for version 4.58. Parameters VOLUMES(SYSWK1), and possibly the cluster name and catalog name, may need to be modified.
 
 
 \subsection{Loading the executable modules}
@@ -2364,7 +2371,7 @@ where  xxxxxxx represents the name of the sublibrary you defined in the first jo
   \PYG{n}{DEFINE} \PYG{n}{CLUSTER} \PYG{p}{(} \PYG{o}{\PYGZhy{}}
     \PYG{n}{NAME} \PYG{p}{(}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{ARBO} \PYG{p}{)} \PYG{o}{\PYGZhy{}}
     \PYG{n}{RECORDS}\PYG{p}{(}\PYG{l+m+mi}{500} \PYG{l+m+mi}{100}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
-    \PYG{n}{SHAREOPTIONS} \PYG{p}{(}\PYG{l+m+mi}{4} \PYG{l+m+mi}{3}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
+    \PYG{n}{SHAREOPTIONS} \PYG{p}{(}\PYG{l+m+mi}{2} \PYG{l+m+mi}{3}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
     \PYG{n}{RECSZ} \PYG{p}{(}\PYG{l+m+mi}{600} \PYG{l+m+mi}{4089}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
     \PYG{n}{VOLUMES} \PYG{p}{(}\PYG{n}{SYSWK1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
     \PYG{n}{KEYS} \PYG{p}{(}\PYG{l+m+mi}{9} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
@@ -2695,7 +2702,7 @@ Step VIRTVS8 of job VIRTVS contains and example of the JCL required to load the 
 
 \sphinxstyleemphasis{VIRTVS9 : JCL to define the VIRHTML file (z/VSE)}
 
-Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. This job is provided as an example, and may need to be modified prior to execution. The VIRHTML file is used by the VIRTEL Web Access feature to store the names of E-mail correspondents, and is referenced by the HTVSAM parameter of the VIRTCT.
+Step VIRTVS9 of job VIRTVS contains an example of defining the VIRHTML file. This job is provided as an example, and may need to be modified prior to execution. The VIRHTML file is used by the VIRTEL Web Access feature to store the names of E-mail correspondents or centralized parameter information - UPARM= specifed in the TCT. It is referenced by the HTVSAM parameter of the VIRTCT.
 
 
 \subsection{Assembling the VIRTCT}
@@ -4305,7 +4312,7 @@ These processing options can be enabled or disabled within individual page templ
 \PYG{n}{HTVSAM}\PYG{o}{=}\PYG{n}{xxxxxxx}                     \PYG{n}{Default}\PYG{o}{=} \PYG{p}{(}\PYG{n}{none}\PYG{p}{)}
 \end{sphinxVerbatim}
 
-\sphinxstylestrong{xxxxxxxx} - Indicates the DD name in the VIRTEL JCL procedure of the VSAM file used to store the names of the e-mail correspondents for VIRTEL Web Access applications. Installations using the VIRTEL Web Access feature must specify HTVSAM=VIRHTML and include a VIRHTML DD/DLBL statement in the VIRTEL JCL procedure. If no HTTP or SMTP lines are defined in the VIRTEL configuration, then the HTVSAM parameter may be omitted, and the VIRHTML file is not required.
+\sphinxstylestrong{xxxxxxxx} - Indicates the DD name in the VIRTEL JCL procedure of the VSAM file used to store the names of the e-mail correspondents for VIRTEL Web Access applications or USERID information for the centralised parameter feature; UPARM= specified in the TCT. Installations using the VIRTEL Web Access feature must specify HTVSAM=VIRHTML and include a VIRHTML DD/DLBL statement in the VIRTEL JCL procedure. If no HTTP or SMTP lines are defined in the VIRTEL configuration, then the HTVSAM parameter may be omitted, and the VIRHTML file is not required.
 
 \index{Virtel TCT!IBERTEX parameter}\index{IBERTEX parameter!Virtel TCT}
 
@@ -5687,7 +5694,7 @@ z/VSE
 // DLBL IJSYSUC,\PYGZsq{}VSESP.USER.CATALOG\PYGZsq{},,VSAM
 // EXEC IDCAMS,SIZE=AUTO
         DEFINE CLUSTER(NAME(VIRTEL.TESTARBO.KSDS) \PYGZhy{}
-              RECORDS(500 100) SHAREOPTIONS (4 3) \PYGZhy{}
+              RECORDS(500 100) SHAREOPTIONS (2 3) \PYGZhy{}
               RECSZ (600 4089) KEYS (9 0) \PYGZhy{}
               VOLUMES (DOSRES) TO (99366))\PYGZhy{}
         DATA (NAME(VIRTEL.TESTARBO.KSDS.DATA)) \PYGZhy{}
