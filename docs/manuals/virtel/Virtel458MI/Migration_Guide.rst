@@ -12,7 +12,7 @@ Migration Guide V4.58
 
 Version : 4.58
 
-Release Date : 26 Jul 2018 Publication Date : 26/09/2018
+Release Date : 26 Jul 2018 Publication Date : 12/11/2018
 
 Syspertec Communication
 
@@ -297,6 +297,8 @@ What's new in this release
 - LOGFILE feature for VSE.
 
 - Hotspot enhancements including support for input fields. 
+
+- Virplex enhancements
 
 *VIRTEL Web Modernisation & Integration:*
 

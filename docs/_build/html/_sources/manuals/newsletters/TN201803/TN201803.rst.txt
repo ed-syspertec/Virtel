@@ -1,17 +1,17 @@
 .. _tn201803:
 
-What’s new in Virtel 4.58 (Sept. 2018)
-======================================
+What’s new in Virtel 4.58 (November 2018) General Release
+=========================================================
 
-The following newsletter itemises the updates that can be found in Virtel Release 4.58. 
+The following newsletter summaries the new features and maintenance updates that can be found in Virtel Release 4.58. 
 
 Installation changes
 --------------------
 
 
-**Customization - OPTION Mode is now default**
+**Customization - OPTION Mode is now the preferred default**
 
-As of Virtel 4.58 the transactions to support compatibility have been deprecated and are no longer installed by default. These transactions have been moved to the COMPAT section in the ARBOLOAD JCL deck. The transactionsa are:- 
+As of Virtel 4.58 the transactions to support compatibility mode have been deprecated and are no longer installed by default. These transactions have been moved to the COMPAT section in the ARBOLOAD JCL deck. The transactions are:- 
 
 ::
   
@@ -22,33 +22,13 @@ As of Virtel 4.58 the transactions to support compatibility have been deprecated
       TRANSACT ID=CLI-03CC
       TRANSACT ID=CLI-03CJ
 
-Virtel 4.58 delivers a dummy w2hparm.js file in the W2H-DIR directory, identified by transaction W2H-03P, and also in the CLI-DIR, identified bu the transaction CLI-03P. New customers are advised to use the 'option' mode support for customization. See below for further details on the 'Option' mode and where to find more information. The ARBOLOAD JCL has been modified to include the OPTION mode transactions by default. To include compatibility mode transactions specify COMPAT=YES in the ARBOLOAD JCL.
+Virtel 4.58 delivers a dummy w2hparm.js file in the W2H-DIR directory, identified by transaction W2H-03P, and also in the CLI-DIR, identified but the transaction CLI-03P. New customers are advised to use the 'option' mode support for customization. See below for further details on the 'Option' mode and where to find more information. The ARBOLOAD JCL has been modified to include the OPTION=YES keyword. Relevant Virtel transactions will be installed by default.
 
-**USERPARM**
+To include compatibility mode transactions specify COMPAT=YES in the ARBOLOAD JCL.
 
-A new section has been added to the ARBOLOAD to add the transactions required for the USERPARM support. By default these are not added to the ARBO. Specify USERPARM=YES in the ARBOLOAD JCL to include these transactions in your configuration.
+**USERPARM feature**
 
-Migration considerations
-------------------------
-
-Option mode and Compatibility mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-As of Virtel 4.56 two modes of customisation are available, the ‘option mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting options and customization. As of Virtel V4.56 this is the preferred mode for Virtel customisation. By default, neither mode is active. Certain steps must be followed to activate either "compatibility" or "option" mode. As distributed Virtel will use programmatically set defaults and search for customization elements from the W2H directories. See the default transactions shipped with Virtel for custom.js, custom.css, w2hparm.js elements.  
-
-The previous “Compatibility “ mode is still supported. But requires users to re-assemble their TCTs with the ‘Option-default-compatibility’ keyword in the TCT. This will maintain previous customised behaviour for the custom.css, w2hparm.js and custom.js files.
-
-*TCT keyword for compatibility mode*
-
-::
- 
- 	HTSETn = (OPTION-DEFAULT-COMPATIBILITY) /* n = 1-4 */
-
-The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customised versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56. To operate in "option mode" requires changes to the ARBO file with the additional of two new transactions to support the "option" pathname. See the ARBOLOAD (Option=YES) or ARBOMIGR in the SAMPLIB file for details on how to include these new transactions. 
-
-Customers are advised to migrate old customisation elements to the new “option” mode enabling those elements to be located through the use of the /option/ pathname. Two new transactions have been added to support the /option/ pathname. See the 'Option Mode' section in **Customizing Virtel** in the Virtel User Guide and the Virtel Technical Newsletter **TN2016-11 Customising Virtel in V4.56**.
-
-.. danger:: Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.
+A new section has been added to the ARBOLOAD to add the transactions required for the USERPARM feature. By default these are not added to the ARBO. Specify USERPARM=YES in the ARBOLOAD JCL to include these transactions in your configuration.
 
 SAMPLIB additions
 -----------------
@@ -63,7 +43,33 @@ New members have been added to SAMPLIB to support the VIRPLEX configuration. The
       VIRTCT99    A sample TCT for Writer tasks
       SPVIREnn    JCL samples to run Virplex instances as batch jobs.
 
-For further information see the Virtel Technical newsletter **TN2018-08 Virplex**      
+For further information see the Virtel Technical newsletter **TN2018-08 Virplex**    
+
+Migration considerations
+------------------------
+
+V4.58 None. 
+
+There have been no changes to the ARBO which would require migration from V4.57 or V4.56. Customers who are migrating from older releases should review the “What’s new in Virtel V4.XX” newsletters to determine applicable migration actions for new distributed features. Depending on requirements not all actions may be applicable. These newsletters are available online at https://virtel.readthedocs.io/en/latest/ 
+
+V4.58 Option mode default. Compatibility mode deprecated
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As of Virtel 4.56 two modes of customization were available, the ‘option mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting global options and bespoke customization. With Virtel V4.58, option mode is the preferred mode for Virtel customization. By default, neither mode is active.
+
+Certain steps must be followed to activate either "compatibility" or "option" mode. As distributed, Virtel will use parameter defaults set programmatically. See Appendix A in the Virtel User guide foe a list of the defaults. The w2hparm.js members in W2H-DIR and CLI-DIR are now dummy entries.  
+
+“Compatibility “ mode is still supported but requires users to re-assemble their TCTs with the ‘Option-default-compatibility’ keyword in the TCT and to run the ARBOLOAD job with COMPAT=YES. This will maintain previous customized behavior for the custom.css, w2hparm.js and custom.js files. For compatibility mode the option is:-
+
+::
+
+      HTSETn = (OPTION-DEFAULT-COMPATIBILITY) /* n = 1-4 */
+
+The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customized versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56. 
+
+Customers are advised to migrate old customization elements to the new “option” mode enabling those elements to be located through the use of the /option/ pathname. New transactions have been added to support the /option/ pathname. See the 'Option Mode' section in *Customizing Virtel* in the **Virtel User Guide** and the Virtel Technical Newsletter *TN2016-11 Customizing Virtel in V4.56*.
+
+.. danger:: Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.
 
 Presentation
 ------------
@@ -156,20 +162,25 @@ Support for FAC2 structured field which allows a CICS program to retrieve the TT
 
 **5635 Provide a LOGFILE feature for VSE**
 
-By setting LOG=FILE or LOG=SYSOUT in the TCT VSE users can now spool the VIRTEL log to a file or SYSLST dataset. In previous versions the Virtel log was only available through the console. See Appendix B for further details. 
+By setting LOG=FILE or LOG=SYSOUT in the TCT VSE users can now spool the VIRTEL log to a file or SYSLST dataset. In previous versions the Virtel log was only available through the console. See Appendix B for further details.
+
+**5677/5678/5696 Virplex support**
+
+Virtel introduces a new feature to allow communication between Virtel instances. For further information see the Virtel Technical newsletter - *TN2018-08 Virplex*   
+
 
 Virtel Web Administration
 -------------------------
 
-**5630/5654 Save user settings data on the host**
+**5630/5654/5662 Save user settings data on the host. Centralised settings**
 
 This feature secures user parameter setting information on the host within the Virtel. When a user refreshes their cache or uses a different machine/browser to access Virtel the users stored settings data will be downloaded from the mainframe. If there is no USERPARM transaction associated with a particular entry point then this feature will be disabled. See Appendix C for further details.
 
-**5649 Hotspots**
+**5649/5638 Hotspots**
 
-Virtel hotspot code has been reworked. It is now possible to add customized hotspots. Please contact Syspertec support for further information on hotspot customization.
+Virtel hotspot code has been reworked. It is now possible to add customized hotspots. Please contact Syspertec support for further information on hotspot customization. Input fields now also support hotspot strings.
 
-**5649 VWA API** 
+In this release a VWA API has been implemented to aid hotspot customization. Please contact Syspertec support for further information on hotspot customization. 
 
 In this release a VWA API has been implemented. Details can be found in Appendix D.
 
@@ -712,7 +723,7 @@ Appendix E
 - 5666 Videl update number missing in vwa toolbar
 - 5667 Correct bug In centralised settings with security—O
 - 5668 Correct defautt font setting in settings panel 
-- 5669 Correct settings *nchronization 
+- 5669 Correct synchronization settings 
 - 5670 Minor corrections and fixes III 
 - 5671 Correct Macro bug 
 - 5672 Minor corrections and fixes IV

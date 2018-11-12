@@ -6401,11 +6401,662 @@ See https://httpd.apache.org/docs/2.2/mod/mod_expires.html for more information.
 VIRPLEX
 =======
 
-The following are features of VIRPLEX:-
-* Eliminates need for external affinity support (Sysplex distributor or Reverse Proxy). Any receiving Virtel in a VIRPLEX complex will forward the incoming request to the correct target Virtel within the VIRPLEX.
+Virplex
 
-* Allows a "writer" only task to distribute updates to the Virtel files. VIRPLEX will notify other particapting Virtel instances that an update has occured. This notification will cause other participating Virtels to refresh their internal cache. 
+The new Virplex communication feature of Virtel provides the ability for multiple virtel instances to communicate with each other. This global knowledge of participating Virtel instances is referred to as a Virplex and enables Virtel instances to share the same ARBO and TRSF files. In a Virplex there is a number of Virtel “READ ONLY” instances and one “WRITER” instance. These instances all share the same ARBO and TRSF files, including any user defined TRSF files, with the read only instances only have a “READ” capability on the shared VSAM files and the “WRITER” instance having a standard tandard read/write capability to all files.  The ability to share files amongst participating Virtels provides support for the following functions:
 
+Dynamic Message Routing
+Removes the dependency of external “Timed Affinity” technologies to support session affinity between a Virtel instance and browser session. Changes in the URL format now enable participating Virtels within the Virplex to determine whether they are the target of the URL or if the URL belongs to another Virtel instance. In the latter case the URL is forwarded onto the target Virtel destination. A unique Virplex token is attached to each URL request which provides the affinity between a Virtel instance and browser session. This feature provides additional support in customer’s High Availability scenarios/implementations.   
+
+Dynamic Cache Updates
+Within a Virplex environment maintenance can now be distributed to all participating instances through the “WRITER” instance. This feature enables maintenance updates to be populated to each Virtel’s internal cache system without the need to recycle a Virtel instance. The sequence of events would be as follows:-
+
+- Virtel maintenance is uploaded, via the “Writer” task, to the SAMP.TRSF VSAM file. 
+- The “WRITER” tasks then contacts each participating “READER” tasks to inform them that their internal cache is no longer in sync.
+- The “Reader” instance resynchronizes their “internal cache” with the TRSF file thereby dynamically refreshing the browsers cache and introducing the new maintenance.    
+
+Central User Parameter Repository
+Using the features of Virplex users can now maintain a centralized repository for user’s VWA settings across multiple instances of Virtel. This repository keeps each users settings so that when a new browser session is initiated the same settings will be used. Previously settings were only maintained in local storage and were lost when moving to a different browser or device. Now the local storage is synchronized with the central repository enabling the user to maintain the same settings across different environments. 
+
+ 
+Setting up a Virplex
+--------------------
+
+|image112|
+
+
+.. index::
+   pair: TCT definitions; Virplex
+
+TCT definitions
+---------------
+
+Setting up a Virplex involves two TCTs, one for the ‘READER’ instances and another for the ‘WRITER’ instance. There can be multiple ‘READER’ instances but only one ‘WRITER’ instance.
+
+TCT for ‘READER’ tasks.
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The TCT for ‘READER’ tasks must have the following TCT definitions:-
+
+::
+
+    VSAMTYP=READONLY,				Set Read only. Default = Read/Write
+    IGNLU=W-HTTP,                           Disable the Admin line
+    . . .
+    UFILE1=(SAMPTRSF,ACBH1,0,10,05),		ACBHx fields set accordingly. Note 05
+    UFILE2=(HTMLTRSF,ACBH2,0,10,05),		and not 01.
+    . . .
+    ACBH1    ACB   AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR),                *
+                 STRNO=3                 OUT option removed            
+    ACBH2    ACB   AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR),                *
+                STRNO=3                 OUT option removed                                 
+ 
+TCT for ‘WRITER’ task
+^^^^^^^^^^^^^^^^^^^^^
+
+The TCT for a ‘WRITER’ task must have the following definitions in the TCT.   
+
+::
+
+    VSAMTYP=WRITER,				Set Writer Instance  
+    IGNLU=C-HTTP,                           Disable any user line
+    . . .
+    UFILE1=(SAMPTRSF,ACBH1,0,10,05),		ACBHx fields set to 05 and not 01.   
+    UFILE2=(HTMLTRSF,ACBH2,0,10,05),		
+    . . .
+    ACBH1    ACB   AM=VSAM,DDNAME=SAMPTRSF,MACRF=(SEQ,DIR),                *
+                  STRNO=3                             
+    ACBH2    ACB   AM=VSAM,DDNAME=HTMLTRSF,MACRF=(SEQ,DIR),                *
+                  STRNO=3                                                  
+
+.. index::
+   pair: Arbo definitions; Virplex
+
+ARBO definitions
+----------------
+
+To support a Virplex each Virtel instance must be aware of all instances within the Virplex. This internal communication is provide by defining Virtel lines between each instance. These lines are defined in a common ARBO file shared by all members of a Virplex. The communications protocol used between Virplex members is the proprietary QUICKLNK protocol. In the following sample definitions the W-HTTP line is the administration port only available to the ‘WRITER’ task and the common user line, V-HTTP provides the common port for the Virtel instances within the Virplex. 
+
+QLNK Line definitions for ‘READER’ instances.~
+
+::
+
+    * QLNK Lines for Virplex Reader tasks.                                 
+    LINE     ID=SPVIRE00,                                     
+            NAME=SPVIRE00,                                   
+            LOCADDR=192.168.170.81:41030,                    
+            DESC='Virplex READ ONLY instance - SPVIRE00',    
+            TYPE=TCP1,                                       
+            INOUT=3,                                         
+            PROTOCOL=QUICKLNK,                               
+            TIMEOUT=0000,                                    
+            ACTION=0,                                        
+            WINSZ=0000,                                      
+            PKTSZ=0000,                                      
+            RETRY=0000                                       
+
+The ID and Name keywords must refer to the instances VTAM ACB name. The address in the LOCADDR must be unique within the Virplex.
+
+QLNK Line definition for ‘WRITER’ instance.
+
+::
+
+    * QLNK Lines for Virplex Writer tasks
+    LINE     ID=SPVIRE99,                                           -
+            NAME=SPVIRE99,                                          -
+            LOCADDR=192.168.170.81:41099,  SHARED PORT              -
+            DESC='Virplex READ/WRITE instance - SPVIRE99',          - 
+            TERMINAL=VX,                                            -
+            TYPE=TCP1,                                              -
+            INOUT=3,                                                -
+            PROTOCOL=QUICKLNK,                                      -
+            TIMEOUT=0000,                                           -
+            ACTION=0,                                               -
+            WINSZ=0000,                                             -
+            PKTSZ=0000,                                             -
+            RETRY=0000                                              
+
+The ID and Name keywords must refer to the WRITER’s VTAM ACB name. The address in the LOCADDR must be unique within the Virplex. The WRITER task also requires additional terminal definitions – TERMINAL=VX.
+
+Terminal definitions for ‘WRITER’ instance.
+
+::
+
+    TERMINAL ID=VXLOC000,                                           -
+            DESC='HTTP terminals (no relay)',                       -
+            TYPE=3,                                                 -
+            COMPRESS=2,                                             -
+            INOUT=3,                                                -
+            STATS=26,                                               -
+            REPEAT=0010                                              
+
+Modifications to existing lines will also be required. Assuming that the ‘WRITER’ line will be using line W-HTTP to communicate with the ‘READER’ instances, and the C-HTTP line will be associated with the ‘READER’ instances serving incoming calls, the following changes are required.
+
+**Virtel lines for Administration (W-HTTP) and user access (V-HTTP).**
+
+In both the V-HTTP and W-HTTP line definitions, the COND='VIRPLEX-LINE(=VIRTEL=)' parameter must be added. Here is an example of the revised definition for W-HTTP.
+
+Administration line associated with the ‘WRITER’ task. 
+
+::
+
+    * UPDATE W-HTTP WITH COND=                                         
+    LINE     ID=W-HTTP,                                             - 
+            NAME=HTTP-W2H,                                          - 
+            LOCADDR=:41001,                                         - 
+            DESC='HTTP line (entry point WEB2HOST)',                - 
+            TERMINAL=DE,                                            - 
+            ENTRY=WEB2HOST,                                         - 
+            TYPE=TCP1,                                              - 
+            INOUT=1,                                                - 
+            COND='VIRPLEX-LINE(=VIRTEL=)',                          - 
+            PROTOCOL=VIRHTTP,                                       - 
+            TIMEOUT=0000,                                           - 
+            ACTION=0,                                               - 
+            WINSZ=0000,                                             - 
+            PKTSZ=0000,                                             - 
+            RETRY=0010
+
+The user interface line definition, V-HTTP, looks like this:-
+
+::
+
+    *                                                                 
+    * User line associated with Virplex VIPA 15.41902               *                        
+    *                                                                 
+    LINE     ID=V-HTTP,                                             -
+            NAME=HTTP-VPX,                                          -
+            LOCADDR=192.168.170.15:41902,                           -
+            DESC='HTTP line (Entry point VPXWHOST)',                -
+            TERMINAL=VP,                                            -
+            ENTRY=VPXWHOST,                                         -
+            COND='VIRPLEX-LINE(=VIRTEL=)',                           
+            TYPE=TCP1,                                              -
+            INOUT=1,                                                -
+            PROTOCOL=VIRHTTP,                                       -
+            TIMEOUT=0000,                                           -
+            ACTION=0,                                               -
+            WINSZ=0000,                                             -
+            PKTSZ=0000,                                             -
+            RETRY=0010                                               
+    *                                                                 
+
+Terminal definitions to support user interface on common port 41902.
+
+::
+
+    *                                                                 
+    TERMINAL ID=VPLOC000,                                           -
+            DESC='HTTP terminals (no relay) - V-HTTP',              -
+            TYPE=3,                                                 -
+            COMPRESS=2,                                             -
+            INOUT=3,                                                -
+            STATS=26,                                               -
+            REPEAT=0080  
+
+**Entry point definition for VPXHOST**
+
+::
+
+    *                                                                 
+    ENTRY    ID=VPXWHOST,                                           -
+            DESC='HTTP entry point for Virplex line)',              -
+            TRANSACT=VPX,                                           -
+            TIMEOUT=0720,                                           -
+            ACTION=0,                                               -
+            EMUL=HTML,                                              -
+            SIGNON=VIR0020H,                                        -
+            MENU=VIR0021A,                                          -
+            IDENT=SCENLOGM,                                         -
+            EXTCOLOR=E                                               
+
+**Pool definitions**
+
+::
+
+    *                                                                 
+    TERMINAL ID=VPXIM000,                                           -
+            RELAY=R+IM000,                                          -
+            DESC='SCS printers (LUTYPE1) for HTTP',                 -
+            TYPE=S,                                                 -
+            COMPRESS=2,                                             -
+            INOUT=1,                                                -
+            STATS=26,                                               -
+            REPEAT=0010                                              
+    TERMINAL ID=VPXTP000,                                           -
+            RELAY=R+VT000,                                          -
+            POOL=*VPXPOOL,                                          -
+            DESC='Relay pool for HTTP',                             -
+            RELAY2=R+IM000,                                         -
+            TYPE=3,                                                 -
+            COMPRESS=2,                                             -
+            INOUT=3,                                                -
+            STATS=26,                                               -
+            REPEAT=0010                                              
+
+**Terminal relay definitions**
+
+::
+
+    *                                                                 
+    TERMINAL ID=VPVTA000,                                           -
+            RELAY=*VPXPOOL,                                         -
+            DESC='HTTP terminals (with relay)',                     -
+            TYPE=3,                                                 -
+            COMPRESS=2,                                             -
+            INOUT=3,                                                -
+            STATS=26,                                               -
+            REPEAT=0010                                              
+
+Note the use of the + in the relay names. This will be overwritten with the clone parameter in the startup JCL for the ‘READER’ tasks.
+
+**Transaction definitions** 
+
+These transactions are required to support Virtel and Applications in a Virplex. 
+
+::
+
+    * Virtel Internal transactions                                                    
+    TRANSACT ID=VPX-00,                                   
+            NAME=VPXWHOST,                               
+            DESC='Default directory = entry point name', 
+            APPL=VPX-DIR,                                
+            TYPE=4,                                      
+            TERMINAL=VPLOC,                              
+            STARTUP=2,                                   
+            SECURITY=0,                                  
+            TIOASTA='/w2h/appmenu.htm+applist'           
+    TRANSACT ID=VPX-03W,                                  
+            NAME='w2h',                                  
+            DESC='W2H toolkit directory (/w2h)',         
+            APPL=W2H-DIR,                                
+            TYPE=4,                                      
+            STARTUP=2,                                   
+            SECURITY=0                                   
+    TRANSACT ID=VPX-03X,                                  
+            NAME='vpx',                                  
+            DESC='VPX directory (/vpx)',                 
+            APPL=VPX-DIR,                                
+            TYPE=4,                                      
+            STARTUP=2,                                   
+            SECURITY=0                                   
+    TRANSACT ID=VPX-03Y,                                  
+            NAME='yui',                                  
+            DESC='YUI toolkit directory (/yui)',         
+            APPL=YUI-DIR,                                
+            TYPE=4,                                      
+            STARTUP=2,                                   
+            SECURITY=0                                   
+    TRANSACT ID=VPX-90,                                                 
+            NAME='applist',                                              
+            DESC='List of applications for appmenu.htm',        
+            APPL=VIR0021S,                                         
+            TYPE=2,                                               
+            TERMINAL=VPLOC,                                     
+            STARTUP=2,                                              
+            SECURITY=1                                               
+    TRANSACT ID=W2H-80X,                                             
+            NAME='uplvpx',                                          
+            DESC='Upload macros (VPX-DIR directory)',               
+            APPL=VIR0041C,                                          
+            TYPE=2,                                                 
+            TERMINAL=DELOC,                                        
+            STARTUP=2,                                              
+            SECURITY=1,                                             
+            LOGMSG=VPX-DIR                          
+
+These transactions define the 3270 applications.
+
+    TRANSACT ID=VPX-14,                                          
+            NAME=TSO,                                           
+            DESC='Logon to TSO',                                
+            APPL=TSO,                                           
+            TYPE=1,                                             
+            TERMINAL=VPVTA,                                     
+            STARTUP=1,                                          
+            SECURITY=1                                          
+    TRANSACT ID=VPX-15,                                          
+            NAME=CICS,                                          
+            DESC='Logon to CICS',                               
+            APPL=SPCICST,                                       
+            TYPE=1,                                             
+            TERMINAL=VPVTA,                                     
+            STARTUP=1,                                          
+            SECURITY=1,                                         
+            TIOASTA="Signon&/F&*7D4EC9&'114BE9'&U&'114CF9'&P&/A" 
+
+**Sub directory definition for VIR-DIR**
+
+::
+
+    *                                                                  
+    SUBDIR   ID=VPX-DIR,                                              
+            DESC='Pages for VPXWHOST',                               
+            DDNAME=HTMLTRSF,                                         
+            KEY=VPX-KEY,                                             
+            NAMELEN=0064,                                            
+            AUTHUP=X,                                                
+            AUTHDOWN=X,                                              
+            AUTHDEL=X     
+
+.. index::
+   pair: JCL Examples; Virplex                                                        
+    
+**Virplex JCL examples**
+
+JCL Procedure for Virplex.
+
+::
+
+    //**********************************************************************
+    //* DEFAULT PROCEDURE FOR A VIRPLEX TASK                               *
+    //**********************************************************************
+    //VIRPLEX  PROC QUAL=&HLQ..VIRT&REL,                                    
+    //         TCT=00,                      READ ONLY TCT (99 = R/W)        
+    //         PROG=VIR6000,                PROGRAM TO CALL                 
+    //         CLONE=00,                    APPLID=SPVIRE&CLONE             
+    //         IP=192.168.170.48            Not Used                                
+    //VIRTEL   EXEC PGM=&PROG,                                              
+    //             TIME=1440,REGION=0M,                                     
+    //             PARM='&TCT,SPVIRE&CLONE,,&IP,&CLONE'                     
+    //STEPLIB  DD  DSN=&QUAL..LOADLIB,DISP=SHR                              
+    //DFHRPL   DD  DSN=&QUAL..LOADLIB,DISP=SHR                              
+    //SERVLIB  DD  DSN=&QUAL..SERVLIB,DISP=SHR                              
+    //* VSAM FILES SHARED                                                   
+    //VIRARBO  DD  DSN=&QUAL..VIRPLEX.ARBO,DISP=SHR                         
+    //SAMPTRSF DD  DSN=&QUAL..VIRPLEX.SAMP.TRSF,DISP=SHR                    
+    //HTMLTRSF DD  DSN=&QUAL..VIRPLEX.HTML.TRSF,DISP=SHR                    
+    //* VSAM FILES UNIQUE                                                   
+    //VIRHTML  DD  DSN=&QUAL..VIRTEL&CLONE..HTML,DISP=SHR                   
+    //VIRSWAP  DD  DSN=&QUAL..VIRTEL&CLONE..SWAP,DISP=SHR                   
+    //* NVSAM                                                               
+    //SYSOUT   DD  SYSOUT=*                                                 
+    //VIRLOG   DD  SYSOUT=*                                                 
+    //VIRTRACE DD  SYSOUT=*                                                 
+    //SYSPRINT DD  SYSOUT=*                                                 
+    //SYSUDUMP DD  SYSOUT=*                                                 
+
+**JCL example for Virtel ‘READER’ task 0**
+
+::
+
+    //SPTHOLT0 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID  
+    //PROCLIB JCLLIB ORDER=SPTHOLT.VIRT458.CNTL                    
+    //S01 EXEC VIRTELZ,TCT=00,HLQ=SPTHOLT,REL=458,CLONE=00         
+
+**JCL example for Virtel ‘READER’ task 1**
+
+::
+
+    //SPTHOLT1 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID
+    //PROCLIB JCLLIB ORDER=SPTHOLT.VIRT458.CNTL                   
+    //S01 EXEC VIRTELZ,TCT=00,HLQ=SPTHOLT,REL=458,CLONE=01,       
+    // IP=192.168.170.47 
+
+**JCL example for Virtel ‘WRITER’ task**
+
+::
+
+    //SPTHOLT9 JOB 9000,'VIRTEL',CLASS=A,MSGCLASS=X,NOTIFY=&SYSUID                          
+    //PROCLIB JCLLIB ORDER=SPTHOLT.VIRT458.CNTL                   
+    //S01 EXEC VIRTELZ,TCT=99,HLQ=SPTHOLT,REL=458,CLONE=99,       
+    // IP=192.168.170.39    
+
+.. index::
+   pair: VTAM definitions; Virplex    
+
+**VTAM Definitions**
+
+VTAM definitions required for Virtel ‘Reader’ task 0. In this example, a separate VTAMLST member would be require for each Virtel instance within the Virplex to support clone values of 00(RO) , 01(RO) and 99(RW). These VTAM definitions could be merged into one member. 
+
+::
+
+    VIRTEH00 VBUILD TYPE=APPL                                             
+    * ------------------------------------------------------------------ *
+    * Product     :  VIRTEL                                              *
+    * Description :  Definitions for a VIRTEL VIRPLEX instance           *
+    * ------------------------------------------------------------------ *
+    SPVIRE00 APPL  EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=SPVIRE00     
+    * ------------------------------------------------------------------ *
+    * R00VTxxx    : VTAM application relays for VIRTEL Web Access        *
+    * ------------------------------------------------------------------ *
+    R00VT??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+    * ------------------------------------------------------------------ *
+    * R00IMxxx    : Printer relays for VIRTEL Web Access terminals       *
+    * ------------------------------------------------------------------ *
+    R00IM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1     
+    R00IP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
+
+.. index::
+   pair: TCPIP definitions; Virplex    
+
+**TCPIP Changes**  
+The TCPIP profile definition requirements for a VIRPLEX are a shared Port address and a common VIPA for the Sysplex Distributor. 
+
+::
+
+    Shared Port Example
+    ; SPVIRExx User Range for Virplex                                 
+    41902 TCP SPVIRE00 SHAREPORT ; Virtel Portshare
+    41902 TCP SPVIRE01           ; Virtel Portshare
+
+    Common VIPA address
+    ; 192.168.170.15 VIPA for SPVIRExx distribution tests     
+    VIPADYNAMIC                                                                
+        VIPARANGE DEFINE MOVEABLE NONDISRUPTIVE 255.255.255.0 192.168.170.20   
+        VIPADEFINE MOVE IMMED 255.255.255.0 192.168.170.15                     
+        VIPADISTRIBUTE DEFINE TIMEDAFF 300 DISTMETHOD ROUNDROBIN 192.168.170.15
+        DESTIP ALL                                                             
+    ENDVIPADYNAMIC      
+
+.. index::
+   pair: Installation Overview; Virplex  
+
+**Installation overview to get Virplex up and running.**
+
+The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (SPTHOLT0 and SPTHOLT1), and one writer instance, SPTHOLT9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - SPTHOLT0(SPVIRE00), SPTHOLT1(SPVIRE01) and SPTHOLT9(SPVIRE99).
+
+Install Virtel and get base product up and running before attempting any Virplex changes.
+
+::
+
+    SAMPLIB Members:	 VIRPLEX, VIRTCT00, VIRTCT99, VIRTELZ, VIRTEL00, VIRTEL01, VIRTEL99
+
+-	Allocate common VSAM libraries and copy the SAMP, ARBO and HTML from existing/installation libraries.
+-	Allocate unique libraries for VIRHTML and VIRSWAP. If you are collecting statistics then VIRSTAT also has to be allocated as is unqiue to each Virtel instance.
+-	Updated you VTAMLST library to support each instance. Each instance will use VTAM resource names based upon the CLONE= keyword in the startup JCL. Activate VTAMLST members.
+-	Customize TCT VIRTCT00 ( Reader TCT). Update license and other details.
+-	Customize TCT VIRTCT99 (Writer TCT). Update license and other details. 
+-	Customize the JCL members VIRPLEX, VIRTELZ, VIRTEL00, VIRTEL01 and VIRTEL99
+-	Activate TCPIP changes – V TCPIP,,O,DSN=TCPIP.TCPPARMS(VIRTPROF)
+-	Update the sample VIRPLEX definitions to support your environment.
+-	Run the VIRPLEX job. This will perform the following steps:-
+    	Allocate unique VSAM files
+    	Allocate shared VSAM files
+    	Copy VSAM files from install or “existing” user files.
+    	Update the VIRPLEX ARBO with the definitions required to support a Virplex.
+    	Assemble to ‘READER’ and ‘WRITER’ TCT’s
+-	Start the ‘WRITER’ task by submitting Job VIRTEL99.
+
+You should see the following messages as the Administration line is activated:-
+
+::
+
+    VIRHT01I HTTP INITIALISATION FOR HTTP-W2H (W-HTTP  ), VERSION 4.58             
+    VIRT905I HTTP-W2H SOCKET 00000000 LISTENING 192.168.170.039:41001              
+    VIRHT02I LINE HTTP-W2H (W-HTTP  ) HAS URL http://192.168.170.39:41001          
+    VIRHT03I HTTP LINE HTTP-W2H (W-HTTP  ), IS A VIRPLEX SERVER WITH VSAMTYP=WRITER  
+                                                           
+The Administration portal can be access via URL 192.168.170.39:41001. Ignore any CONNECT error messages. This is normal at this stage.
+
+- Start the ‘READER’ tasks by submitting jobs VIRTEL00 and VIRTEL01
+
+In the ‘WRITER’ task you should see evidence that the ‘WRITER’ has connected to the ‘READER’ tasks:-
+
+::
+
+    VIRB17AI LINE SPVIRE00 (SPVIRE00), RESTARTED TO ALLOW CONNECTION TO SPVIRE00     
+    VIRQLK9I INITIALISATION FOR SPVIRE00 (SPVIRE00), VERSION 4.58                    
+    VIRT907I SPVIRE00 SOCKET 00000000 CALLING   192.168.170.081:41030                
+    VIRQLK8I LOCAL LINE SPVIRE00 (SPVIRE00) IS CONNECTED TO REMOTE VIRTEL : SPVIRE00 
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.58
+    . . .
+    VIRB17AI LINE SPVIRE01 (SPVIRE01), RESTARTED TO ALLOW CONNECTION TO SPVIRE01    
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.58                   
+    VIRT907I SPVIRE01 SOCKET 00000000 CALLING   192.168.170.081:41031               
+    VIRQLK8I LOCAL LINE SPVIRE01 (SPVIRE01) IS CONNECTED TO REMOTE VIRTEL : SPVIRE01               
+
+In the ‘READER’ tasks you should see evidence that the ‘READER ’ has connected to the ‘WRITER’ tasks:-
+
+SPTHOLT0 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT1
+
+::
+
+    VIRQLK9I INITIALISATION FOR SPVIRE99 (SPVIRE99), VERSION 4.58                   
+    VIRT907I SPVIRE99 SOCKET 00000000 CALLING   192.168.170.081:41099               
+    VIRQLK8I LOCAL LINE SPVIRE99 (SPVIRE99) IS CONNECTED TO REMOTE VIRTEL : SPVIRE99
+    . . .
+    VIRT905I HTTP-VPX SOCKET 00000000 LISTENING 192.168.170.015:41902                
+    VIRHT02I LINE HTTP-VPX (V-HTTP  ) HAS URL http://192.168.170.15:41902            
+    VIRHT03I HTTP LINE HTTP-VPX (V-HTTP  ), IS A VIRPLEX SERVER WITH VSAMTYP=READONLY
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.58
+    . . .
+    VIRB17AI LINE SPVIRE01 (SPVIRE01), RESTARTED TO ALLOW CONNECTION TO SPVIRE01    
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.58                   
+    VIRT907I SPVIRE01 SOCKET 00000000 CALLING   192.168.170.081:41031               
+    VIRQLK8I LOCAL LINE SPVIRE01 (SPVIRE01) IS CONNECTED TO REMOTE VIRTEL : SPVIRE01    
+
+SPTHOLT1 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT0
+
+::
+
+    VIRQLK8I LOCAL LINE SPVIRE00 (SPVIRE00) IS CONNECTED TO REMOTE VIRTEL : SPVIRE00
+    VIRT903W LINE SPVIRE01 HAS A SESSION STARTED WITH TCP/IP TCPIP    HIGHEST SOCKET
+    VIRQLK9I INITIALISATION FOR SPVIRE01 (SPVIRE01), VERSION 4.58                   
+    VIRT905I SPVIRE01 SOCKET 00000000 LISTENING 192.168.170.081:41031               
+    VIRT903W LINE SPVIRE99 HAS A SESSION STARTED WITH TCP/IP TCPIP    HIGHEST SOCKET
+    VIRQLK9I INITIALISATION FOR SPVIRE99 (SPVIRE99), VERSION 4.58                   
+    VIRT907I SPVIRE99 SOCKET 00000000 CALLING   192.168.170.081:41099               
+    VIRQLK8I LOCAL LINE SPVIRE99 (SPVIRE99) IS CONNECTED TO REMOTE VIRTEL : SPVIRE99
+    VIRT903W LINE HTTP-VPX HAS A SESSION STARTED WITH TCP/IP TCPIP    HIGHEST SOCKET
+
+Once the three tasks have initiated you should see no more “CONNECT” error messages. You can test that the tree tasks are communicating by doing a “Line” display:-
+
+::
+
+    F SPTHOLT0,LINES                                      
+    VIR0200I LINES                                        
+    VIR0201I VIRTEL 4.58 APPLID=SPVIRE00 LINES            
+    VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP            
+    VIR0202I -------- -------- ----- ---------            
+    VIR0202I W-HTTP           *GATE                       
+    VIR0202I C-HTTP           *GATE                       
+    VIR0202I SPVIRE00 SPVIRE00 TCP1  192.168.170.81:41030 
+    VIR0202I SPVIRE01 SPVIRE01 TCP1  192.168.170.81:41031 
+    VIR0202I SPVIRE99 SPVIRE99 TCP1  192.168.170.81:41099 
+    VIR0202I V-HTTP   HTTP-VPX TCP1  192.168.170.15:41902 
+    VIR0202I ---END OF LIST---                             
+
+    F SPTHOLT1,LINES                                         
+    VIR0200I LINES                                           
+    VIR0201I VIRTEL 4.58 APPLID=SPVIRE01 LINES               
+    VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP               
+    VIR0202I -------- -------- ----- ---------               
+    VIR0202I W-HTTP           *GATE                          
+    VIR0202I C-HTTP           *GATE                          
+    VIR0202I SPVIRE00 SPVIRE00 TCP1  192.168.170.81:41030    
+    VIR0202I SPVIRE01 SPVIRE01 TCP1  192.168.170.81:41031    
+    VIR0202I SPVIRE99 SPVIRE99 TCP1  192.168.170.81:41099    
+    VIR0202I V-HTTP   HTTP-VPX TCP1  192.168.170.15:41902    
+    VIR0202I ---END OF LIST--- 
+
+    F SPTHOLT9,LINES                                        
+    VIR0200I LINES                                          
+    VIR0201I VIRTEL 4.58 APPLID=SPVIRE99 LINES              
+    VIR0202I ALLOCATED IP ADDRESS = 192.168.170.39          
+    VIR0202I INT.NAME EXT.NAME TYPE  ACB OR IP              
+    VIR0202I -------- -------- ----- ---------              
+    VIR0202I C-HTTP           *GATE                         
+    VIR0202I V-HTTP           *GATE                         
+    VIR0202I SPVIRE00 SPVIRE00 TCP1  192.168.170.81:41030   
+    VIR0202I SPVIRE01 SPVIRE01 TCP1  192.168.170.81:41031   
+    VIR0202I SPVIRE99 SPVIRE99 TCP1  192.168.170.81:41099   
+    VIR0202I W-HTTP   HTTP-W2H TCP1  :41001                 
+    VIR0202I ---END OF LIST---  
+
+If the displays match those above then the VIRPLEX has initialized successfully.
+
+.. index::
+   pair: Validation; Virplex  
+
+**Validating the Virplex**
+
+Logon to Virtel using the common URL 192.168.170.15:41902. You should be presented with the Applist screen showing the two 3270 applications defined in the common ARBO.
+
+|image113|
+
+The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance SPTHOLT1 (SPVIRE01)
+
+|image114|
+
+On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance SPTHOLT0 (SPVIRE00).
+
+|image115|
+
+At this point validation of the Virplex is confirmed.
+
+.. index::
+   pair: QLNK communications; Virplex  
+
+**Testing QLNK communication.**
+
+To test that the Virtels are communicating, maintenance will be uploaded via the ‘WRITER’ task. The ‘WRITER’ task will distributed this to the two ‘READER’ tasks. Connect to the TSO application to determine the current maintenance level.
+
+|image116|
+
+Is shows as UPDT level V4.58 / 5687. Confirm this with the Administration Portal on the ‘WRITER’ task by accessing the ‘Admin Portal’ through the ‘WRITER’ URL 192.168.170.39:41001. The maintenance level is shown in the Middle of the Tool Bar area on the screen:-
+
+|image117|
+
+This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance SPTHOLT9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.58 (5695):-
+
+|image118|
+
+If a new browser window is opened on another machine, and TSO is accessed through the common URL / APPLIST navigation, the maintenance level has changed to V4.58 UPDT 5695:-
+
+|image119|
+
+This confirms that the ‘WRITER’ and ‘READER’ tasks are communicating and the automatic distribution of maintenance out to ‘READER’ task environments is working. The following traces on the ‘WRITER’ task show that the ‘WRITER is communicating with ‘READER’ tasks:-
+
+|image120|
+
+.. index::
+   pair: Debugging and diagnosing; Virplex  
+
+**Diagnosing Virplex issues**
+
+::
+
+    1.	Issue a trace command on the writer task to trace all QLNK lines. In this example the following commands would be issued:-
+
+    F SPTHOLT9,TRACE,L=SPVIRE00
+    F SPTHOLT9,TRACE,L=SPVIRE01
+    F SPTHOLT9,TRACE,L=SPVIRE99
+
+
+    2.	Perform some Virplex activing – upload some maintenance for example.
+
+    3.	Issue a line display for each Virplex instance.
+
+    F SPTHOLTx,LINES
+
+    4.	Take a Virtel SNAP of the ‘Writer’ task.
+
+    F SPTHOLT9,SNAP
+
+    5.	Obtain the Virtel logs from the ‘Writer’ task and the one of the ‘READER’ tasks.
+
+    Open a problem with your local Syspertec Support Engineer and send them the output plus a description of the problem you experienced. 
 
 .. index::
    single: Protecting business assets with Virtel Rules
@@ -6691,4 +7342,13 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image108| image:: images/media/image108.png
 .. |image109| image:: images/media/image109.png
 .. |image110| image:: images/media/image110.png
-.. |image111| image:: images/media/image111.png  
+.. |image111| image:: images/media/image111.png 
+.. |image112| image:: images/media/image112.png 
+.. |image113| image:: images/media/image113.png 
+.. |image114| image:: images/media/image114.png 
+.. |image115| image:: images/media/image115.png 
+.. |image116| image:: images/media/image116.png 
+.. |image117| image:: images/media/image117.png 
+.. |image118| image:: images/media/image118.png 
+.. |image119| image:: images/media/image119.png 
+.. |image120| image:: images/media/image120.png 

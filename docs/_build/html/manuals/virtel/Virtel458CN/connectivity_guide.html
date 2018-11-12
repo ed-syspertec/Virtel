@@ -5209,25 +5209,560 @@ to applications.</p>
 </div>
 <div class="section" id="virplex">
 <span id="v458cn-virplex"></span><span id="index-177"></span><h2>VIRPLEX<a class="headerlink" href="#virplex" title="Permalink to this headline">¶</a></h2>
-<p>The following are features of VIRPLEX:-
-* Eliminates need for external affinity support (Sysplex distributor or Reverse Proxy). Any receiving Virtel in a VIRPLEX complex will forward the incoming request to the correct target Virtel within the VIRPLEX.</p>
+<p>Virplex</p>
+<p>The new Virplex communication feature of Virtel provides the ability for multiple virtel instances to communicate with each other. This global knowledge of participating Virtel instances is referred to as a Virplex and enables Virtel instances to share the same ARBO and TRSF files. In a Virplex there is a number of Virtel “READ ONLY” instances and one “WRITER” instance. These instances all share the same ARBO and TRSF files, including any user defined TRSF files, with the read only instances only have a “READ” capability on the shared VSAM files and the “WRITER” instance having a standard tandard read/write capability to all files.  The ability to share files amongst participating Virtels provides support for the following functions:</p>
+<p>Dynamic Message Routing
+Removes the dependency of external “Timed Affinity” technologies to support session affinity between a Virtel instance and browser session. Changes in the URL format now enable participating Virtels within the Virplex to determine whether they are the target of the URL or if the URL belongs to another Virtel instance. In the latter case the URL is forwarded onto the target Virtel destination. A unique Virplex token is attached to each URL request which provides the affinity between a Virtel instance and browser session. This feature provides additional support in customer’s High Availability scenarios/implementations.</p>
+<p>Dynamic Cache Updates
+Within a Virplex environment maintenance can now be distributed to all participating instances through the “WRITER” instance. This feature enables maintenance updates to be populated to each Virtel’s internal cache system without the need to recycle a Virtel instance. The sequence of events would be as follows:-</p>
 <ul class="simple">
-<li>Allows a “writer” only task to distribute updates to the Virtel files. VIRPLEX will notify other particapting Virtel instances that an update has occured. This notification will cause other participating Virtels to refresh their internal cache.</li>
+<li>Virtel maintenance is uploaded, via the “Writer” task, to the SAMP.TRSF VSAM file.</li>
+<li>The “WRITER” tasks then contacts each participating “READER” tasks to inform them that their internal cache is no longer in sync.</li>
+<li>The “Reader” instance resynchronizes their “internal cache” with the TRSF file thereby dynamically refreshing the browsers cache and introducing the new maintenance.</li>
 </ul>
+<p>Central User Parameter Repository
+Using the features of Virplex users can now maintain a centralized repository for user’s VWA settings across multiple instances of Virtel. This repository keeps each users settings so that when a new browser session is initiated the same settings will be used. Previously settings were only maintained in local storage and were lost when moving to a different browser or device. Now the local storage is synchronized with the central repository enabling the user to maintain the same settings across different environments.</p>
+<div class="section" id="setting-up-a-virplex">
+<h3>Setting up a Virplex<a class="headerlink" href="#setting-up-a-virplex" title="Permalink to this headline">¶</a></h3>
+<p><img alt="image112" src="../../../_images/image1124.png" /></p>
+</div>
+<div class="section" id="tct-definitions">
+<span id="index-178"></span><h3>TCT definitions<a class="headerlink" href="#tct-definitions" title="Permalink to this headline">¶</a></h3>
+<p>Setting up a Virplex involves two TCTs, one for the ‘READER’ instances and another for the ‘WRITER’ instance. There can be multiple ‘READER’ instances but only one ‘WRITER’ instance.</p>
+<div class="section" id="tct-for-reader-tasks">
+<h4>TCT for ‘READER’ tasks.<a class="headerlink" href="#tct-for-reader-tasks" title="Permalink to this headline">¶</a></h4>
+<p>The TCT for ‘READER’ tasks must have the following TCT definitions:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span><span class="p">,</span>                           <span class="n">Set</span> <span class="n">Read</span> <span class="n">only</span><span class="o">.</span> <span class="n">Default</span> <span class="o">=</span> <span class="n">Read</span><span class="o">/</span><span class="n">Write</span>
+<span class="n">IGNLU</span><span class="o">=</span><span class="n">W</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                           <span class="n">Disable</span> <span class="n">the</span> <span class="n">Admin</span> <span class="n">line</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span><span class="p">),</span>            <span class="n">ACBHx</span> <span class="n">fields</span> <span class="nb">set</span> <span class="n">accordingly</span><span class="o">.</span> <span class="n">Note</span> <span class="mi">05</span>
+<span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span><span class="p">),</span>            <span class="ow">and</span> <span class="ow">not</span> <span class="mf">01.</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">ACBH1</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">),</span>                <span class="o">*</span>
+             <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>                 <span class="n">OUT</span> <span class="n">option</span> <span class="n">removed</span>
+<span class="n">ACBH2</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">),</span>                <span class="o">*</span>
+            <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>                 <span class="n">OUT</span> <span class="n">option</span> <span class="n">removed</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tct-for-writer-task">
+<h4>TCT for ‘WRITER’ task<a class="headerlink" href="#tct-for-writer-task" title="Permalink to this headline">¶</a></h4>
+<p>The TCT for a ‘WRITER’ task must have the following definitions in the TCT.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">WRITER</span><span class="p">,</span>                             <span class="n">Set</span> <span class="n">Writer</span> <span class="n">Instance</span>
+<span class="n">IGNLU</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                           <span class="n">Disable</span> <span class="nb">any</span> <span class="n">user</span> <span class="n">line</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span><span class="p">),</span>            <span class="n">ACBHx</span> <span class="n">fields</span> <span class="nb">set</span> <span class="n">to</span> <span class="mi">05</span> <span class="ow">and</span> <span class="ow">not</span> <span class="mf">01.</span>
+<span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span><span class="p">),</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">ACBH1</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">),</span>                <span class="o">*</span>
+              <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH2</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">),</span>                <span class="o">*</span>
+              <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arbo-definitions">
+<span id="index-179"></span><h3>ARBO definitions<a class="headerlink" href="#arbo-definitions" title="Permalink to this headline">¶</a></h3>
+<p>To support a Virplex each Virtel instance must be aware of all instances within the Virplex. This internal communication is provide by defining Virtel lines between each instance. These lines are defined in a common ARBO file shared by all members of a Virplex. The communications protocol used between Virplex members is the proprietary QUICKLNK protocol. In the following sample definitions the W-HTTP line is the administration port only available to the ‘WRITER’ task and the common user line, V-HTTP provides the common port for the Virtel instances within the Virplex.</p>
+<p>QLNK Line definitions for ‘READER’ instances.~</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">QLNK</span> <span class="n">Lines</span> <span class="k">for</span> <span class="n">Virplex</span> <span class="n">Reader</span> <span class="n">tasks</span><span class="o">.</span>
+<span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">SPVIRE00</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">SPVIRE00</span><span class="p">,</span>
+        <span class="n">LOCADDR</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41030</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Virplex READ ONLY instance - SPVIRE00&#39;</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="n">PROTOCOL</span><span class="o">=</span><span class="n">QUICKLNK</span><span class="p">,</span>
+        <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+        <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+        <span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>
+        <span class="n">RETRY</span><span class="o">=</span><span class="mi">0000</span>
+</pre></div>
+</div>
+<p>The ID and Name keywords must refer to the instances VTAM ACB name. The address in the LOCADDR must be unique within the Virplex.</p>
+<p>QLNK Line definition for ‘WRITER’ instance.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">QLNK</span> <span class="n">Lines</span> <span class="k">for</span> <span class="n">Virplex</span> <span class="n">Writer</span> <span class="n">tasks</span>
+<span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">SPVIRE99</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">SPVIRE99</span><span class="p">,</span>                                          <span class="o">-</span>
+        <span class="n">LOCADDR</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41099</span><span class="p">,</span>  <span class="n">SHARED</span> <span class="n">PORT</span>              <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Virplex READ/WRITE instance - SPVIRE99&#39;</span><span class="p">,</span>          <span class="o">-</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">VX</span><span class="p">,</span>                                            <span class="o">-</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>                                              <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">PROTOCOL</span><span class="o">=</span><span class="n">QUICKLNK</span><span class="p">,</span>                                      <span class="o">-</span>
+        <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">RETRY</span><span class="o">=</span><span class="mi">0000</span>
+</pre></div>
+</div>
+<p>The ID and Name keywords must refer to the WRITER’s VTAM ACB name. The address in the LOCADDR must be unique within the Virplex. The WRITER task also requires additional terminal definitions – TERMINAL=VX.</p>
+<p>Terminal definitions for ‘WRITER’ instance.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">VXLOC000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals (no relay)&#39;</span><span class="p">,</span>                       <span class="o">-</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                 <span class="o">-</span>
+        <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0010</span>
+</pre></div>
+</div>
+<p>Modifications to existing lines will also be required. Assuming that the ‘WRITER’ line will be using line W-HTTP to communicate with the ‘READER’ instances, and the C-HTTP line will be associated with the ‘READER’ instances serving incoming calls, the following changes are required.</p>
+<p><strong>Virtel lines for Administration (W-HTTP) and user access (V-HTTP).</strong></p>
+<p>In both the V-HTTP and W-HTTP line definitions, the COND=’VIRPLEX-LINE(=VIRTEL=)’ parameter must be added. Here is an example of the revised definition for W-HTTP.</p>
+<p>Administration line associated with the ‘WRITER’ task.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">UPDATE</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">WITH</span> <span class="n">COND</span><span class="o">=</span>
+<span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">W</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span><span class="p">,</span>                                          <span class="o">-</span>
+        <span class="n">LOCADDR</span><span class="o">=</span><span class="p">:</span><span class="mi">41001</span><span class="p">,</span>                                         <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP line (entry point WEB2HOST)&#39;</span><span class="p">,</span>                <span class="o">-</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">DE</span><span class="p">,</span>                                            <span class="o">-</span>
+        <span class="n">ENTRY</span><span class="o">=</span><span class="n">WEB2HOST</span><span class="p">,</span>                                         <span class="o">-</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>                                              <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">COND</span><span class="o">=</span><span class="s1">&#39;VIRPLEX-LINE(=VIRTEL=)&#39;</span><span class="p">,</span>                          <span class="o">-</span>
+        <span class="n">PROTOCOL</span><span class="o">=</span><span class="n">VIRHTTP</span><span class="p">,</span>                                       <span class="o">-</span>
+        <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span>
+</pre></div>
+</div>
+<p>The user interface line definition, V-HTTP, looks like this:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="o">*</span> <span class="n">User</span> <span class="n">line</span> <span class="n">associated</span> <span class="k">with</span> <span class="n">Virplex</span> <span class="n">VIPA</span> <span class="mf">15.41902</span>               <span class="o">*</span>
+<span class="o">*</span>
+<span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">V</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span><span class="p">,</span>                                          <span class="o">-</span>
+        <span class="n">LOCADDR</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41902</span><span class="p">,</span>                           <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP line (Entry point VPXWHOST)&#39;</span><span class="p">,</span>                <span class="o">-</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">VP</span><span class="p">,</span>                                            <span class="o">-</span>
+        <span class="n">ENTRY</span><span class="o">=</span><span class="n">VPXWHOST</span><span class="p">,</span>                                         <span class="o">-</span>
+        <span class="n">COND</span><span class="o">=</span><span class="s1">&#39;VIRPLEX-LINE(=VIRTEL=)&#39;</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>                                              <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">PROTOCOL</span><span class="o">=</span><span class="n">VIRHTTP</span><span class="p">,</span>                                       <span class="o">-</span>
+        <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span>
+<span class="o">*</span>
+</pre></div>
+</div>
+<p>Terminal definitions to support user interface on common port 41902.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPLOC000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals (no relay) - V-HTTP&#39;</span><span class="p">,</span>              <span class="o">-</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                 <span class="o">-</span>
+        <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0080</span>
+</pre></div>
+</div>
+<p><strong>Entry point definition for VPXHOST</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="n">ENTRY</span>    <span class="n">ID</span><span class="o">=</span><span class="n">VPXWHOST</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP entry point for Virplex line)&#39;</span><span class="p">,</span>              <span class="o">-</span>
+        <span class="n">TRANSACT</span><span class="o">=</span><span class="n">VPX</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0720</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>                                              <span class="o">-</span>
+        <span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span>                                        <span class="o">-</span>
+        <span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span>                                          <span class="o">-</span>
+        <span class="n">IDENT</span><span class="o">=</span><span class="n">SCENLOGM</span><span class="p">,</span>                                         <span class="o">-</span>
+        <span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">E</span>
+</pre></div>
+</div>
+<p><strong>Pool definitions</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPXIM000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">RELAY</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">IM000</span><span class="p">,</span>                                          <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SCS printers (LUTYPE1) for HTTP&#39;</span><span class="p">,</span>                 <span class="o">-</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="n">S</span><span class="p">,</span>                                                 <span class="o">-</span>
+        <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0010</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPXTP000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">RELAY</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">VT000</span><span class="p">,</span>                                          <span class="o">-</span>
+        <span class="n">POOL</span><span class="o">=*</span><span class="n">VPXPOOL</span><span class="p">,</span>                                          <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Relay pool for HTTP&#39;</span><span class="p">,</span>                             <span class="o">-</span>
+        <span class="n">RELAY2</span><span class="o">=</span><span class="n">R</span><span class="o">+</span><span class="n">IM000</span><span class="p">,</span>                                         <span class="o">-</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                 <span class="o">-</span>
+        <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0010</span>
+</pre></div>
+</div>
+<p><strong>Terminal relay definitions</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPVTA000</span><span class="p">,</span>                                           <span class="o">-</span>
+        <span class="n">RELAY</span><span class="o">=*</span><span class="n">VPXPOOL</span><span class="p">,</span>                                         <span class="o">-</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals (with relay)&#39;</span><span class="p">,</span>                     <span class="o">-</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                 <span class="o">-</span>
+        <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                             <span class="o">-</span>
+        <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                <span class="o">-</span>
+        <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>                                               <span class="o">-</span>
+        <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0010</span>
+</pre></div>
+</div>
+<p>Note the use of the + in the relay names. This will be overwritten with the clone parameter in the startup JCL for the ‘READER’ tasks.</p>
+<p><strong>Transaction definitions</strong></p>
+<p>These transactions are required to support Virtel and Applications in a Virplex.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Virtel</span> <span class="n">Internal</span> <span class="n">transactions</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="n">VPXWHOST</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Default directory = entry point name&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">VPLOC</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">TIOASTA</span><span class="o">=</span><span class="s1">&#39;/w2h/appmenu.htm+applist&#39;</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="mi">03</span><span class="n">W</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;w2h&#39;</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;W2H toolkit directory (/w2h)&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="mi">03</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;vpx&#39;</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;VPX directory (/vpx)&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="mi">03</span><span class="n">Y</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;yui&#39;</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;YUI toolkit directory (/yui)&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">YUI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;applist&#39;</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;List of applications for appmenu.htm&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">VIR0021S</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">VPLOC</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;uplvpx&#39;</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Upload macros (VPX-DIR directory)&#39;</span><span class="p">,</span>
+        <span class="n">APPL</span><span class="o">=</span><span class="n">VIR0041C</span><span class="p">,</span>
+        <span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span><span class="p">,</span>
+        <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">LOGMSG</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="n">DIR</span>
+</pre></div>
+</div>
+<p>These transactions define the 3270 applications.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>TRANSACT ID=VPX-14,</dt>
+<dd>NAME=TSO,
+DESC=’Logon to TSO’,
+APPL=TSO,
+TYPE=1,
+TERMINAL=VPVTA,
+STARTUP=1,
+SECURITY=1</dd>
+<dt>TRANSACT ID=VPX-15,</dt>
+<dd>NAME=CICS,
+DESC=’Logon to CICS’,
+APPL=SPCICST,
+TYPE=1,
+TERMINAL=VPVTA,
+STARTUP=1,
+SECURITY=1,
+TIOASTA=”Signon&amp;/F&amp;*7D4EC9&amp;‘114BE9’&amp;U&amp;‘114CF9’&amp;P&amp;/A”</dd>
+</dl>
+</div></blockquote>
+<p><strong>Sub directory definition for VIR-DIR</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
+<span class="n">SUBDIR</span>   <span class="n">ID</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+        <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Pages for VPXWHOST&#39;</span><span class="p">,</span>
+        <span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span>
+        <span class="n">KEY</span><span class="o">=</span><span class="n">VPX</span><span class="o">-</span><span class="n">KEY</span><span class="p">,</span>
+        <span class="n">NAMELEN</span><span class="o">=</span><span class="mi">0064</span><span class="p">,</span>
+        <span class="n">AUTHUP</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">AUTHDOWN</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>
+        <span class="n">AUTHDEL</span><span class="o">=</span><span class="n">X</span>
+</pre></div>
+</div>
+<p id="index-180"><strong>Virplex JCL examples</strong></p>
+<p>JCL Procedure for Virplex.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//**********************************************************************</span>
+<span class="o">//*</span> <span class="n">DEFAULT</span> <span class="n">PROCEDURE</span> <span class="n">FOR</span> <span class="n">A</span> <span class="n">VIRPLEX</span> <span class="n">TASK</span>                               <span class="o">*</span>
+<span class="o">//**********************************************************************</span>
+<span class="o">//</span><span class="n">VIRPLEX</span>  <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=&amp;</span><span class="n">HLQ</span><span class="o">..</span><span class="n">VIRT</span><span class="o">&amp;</span><span class="n">REL</span><span class="p">,</span>
+<span class="o">//</span>         <span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span>                      <span class="n">READ</span> <span class="n">ONLY</span> <span class="n">TCT</span> <span class="p">(</span><span class="mi">99</span> <span class="o">=</span> <span class="n">R</span><span class="o">/</span><span class="n">W</span><span class="p">)</span>
+<span class="o">//</span>         <span class="n">PROG</span><span class="o">=</span><span class="n">VIR6000</span><span class="p">,</span>                <span class="n">PROGRAM</span> <span class="n">TO</span> <span class="n">CALL</span>
+<span class="o">//</span>         <span class="n">CLONE</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span>                    <span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIRE</span><span class="o">&amp;</span><span class="n">CLONE</span>
+<span class="o">//</span>         <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span>            <span class="n">Not</span> <span class="n">Used</span>
+<span class="o">//</span><span class="n">VIRTEL</span>   <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=&amp;</span><span class="n">PROG</span><span class="p">,</span>
+<span class="o">//</span>             <span class="n">TIME</span><span class="o">=</span><span class="mi">1440</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span><span class="p">,</span>
+<span class="o">//</span>             <span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;&amp;TCT,SPVIRE&amp;CLONE,,&amp;IP,&amp;CLONE&#39;</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">DFHRPL</span>   <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">LOADLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SERVLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">SERVLIB</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//*</span> <span class="n">VSAM</span> <span class="n">FILES</span> <span class="n">SHARED</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SAMPTRSF</span> <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">SAMP</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">HTMLTRSF</span> <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRPLEX</span><span class="o">.</span><span class="n">HTML</span><span class="o">.</span><span class="n">TRSF</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//*</span> <span class="n">VSAM</span> <span class="n">FILES</span> <span class="n">UNIQUE</span>
+<span class="o">//</span><span class="n">VIRHTML</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRTEL</span><span class="o">&amp;</span><span class="n">CLONE</span><span class="o">..</span><span class="n">HTML</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">VIRSWAP</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">QUAL</span><span class="o">..</span><span class="n">VIRTEL</span><span class="o">&amp;</span><span class="n">CLONE</span><span class="o">..</span><span class="n">SWAP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//*</span> <span class="n">NVSAM</span>
+<span class="o">//</span><span class="n">SYSOUT</span>   <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRLOG</span>   <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRTRACE</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+</pre></div>
+</div>
+<p><strong>JCL example for Virtel ‘READER’ task 0</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLT0</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT458</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">458</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p><strong>JCL example for Virtel ‘READER’ task 1</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLT1</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT458</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">00</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">458</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">01</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.47</span>
+</pre></div>
+</div>
+<p><strong>JCL example for Virtel ‘WRITER’ task</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLT9</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<span class="o">//</span><span class="n">PROCLIB</span> <span class="n">JCLLIB</span> <span class="n">ORDER</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT458</span><span class="o">.</span><span class="n">CNTL</span>
+<span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">VIRTELZ</span><span class="p">,</span><span class="n">TCT</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span><span class="n">HLQ</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span><span class="n">REL</span><span class="o">=</span><span class="mi">458</span><span class="p">,</span><span class="n">CLONE</span><span class="o">=</span><span class="mi">99</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.39</span>
+</pre></div>
+</div>
+<p id="index-181"><strong>VTAM Definitions</strong></p>
+<p>VTAM definitions required for Virtel ‘Reader’ task 0. In this example, a separate VTAMLST member would be require for each Virtel instance within the Virplex to support clone values of 00(RO) , 01(RO) and 99(RW). These VTAM definitions could be merged into one member.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>VIRTEH00 VBUILD TYPE=APPL
+* ------------------------------------------------------------------ *
+* Product     :  VIRTEL                                              *
+* Description :  Definitions for a VIRTEL VIRPLEX instance           *
+* ------------------------------------------------------------------ *
+SPVIRE00 APPL  EAS=160,AUTH=(ACQ,BLOCK,PASS,SPO),ACBNAME=SPVIRE00
+* ------------------------------------------------------------------ *
+* R00VTxxx    : VTAM application relays for VIRTEL Web Access        *
+* ------------------------------------------------------------------ *
+R00VT??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
+* ------------------------------------------------------------------ *
+* R00IMxxx    : Printer relays for VIRTEL Web Access terminals       *
+* ------------------------------------------------------------------ *
+R00IM??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
+R00IP??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
+</pre></div>
+</div>
+<p id="index-182"><strong>TCPIP Changes</strong>
+The TCPIP profile definition requirements for a VIRPLEX are a shared Port address and a common VIPA for the Sysplex Distributor.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Shared</span> <span class="n">Port</span> <span class="n">Example</span>
+<span class="p">;</span> <span class="n">SPVIRExx</span> <span class="n">User</span> <span class="n">Range</span> <span class="k">for</span> <span class="n">Virplex</span>
+<span class="mi">41902</span> <span class="n">TCP</span> <span class="n">SPVIRE00</span> <span class="n">SHAREPORT</span> <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+<span class="mi">41902</span> <span class="n">TCP</span> <span class="n">SPVIRE01</span>           <span class="p">;</span> <span class="n">Virtel</span> <span class="n">Portshare</span>
+
+<span class="n">Common</span> <span class="n">VIPA</span> <span class="n">address</span>
+<span class="p">;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span> <span class="n">VIPA</span> <span class="k">for</span> <span class="n">SPVIRExx</span> <span class="n">distribution</span> <span class="n">tests</span>
+<span class="n">VIPADYNAMIC</span>
+    <span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPTIVE</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span>
+    <span class="n">VIPADEFINE</span> <span class="n">MOVE</span> <span class="n">IMMED</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span>
+    <span class="n">VIPADISTRIBUTE</span> <span class="n">DEFINE</span> <span class="n">TIMEDAFF</span> <span class="mi">300</span> <span class="n">DISTMETHOD</span> <span class="n">ROUNDROBIN</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span>
+    <span class="n">DESTIP</span> <span class="n">ALL</span>
+<span class="n">ENDVIPADYNAMIC</span>
+</pre></div>
+</div>
+<p id="index-183"><strong>Installation overview to get Virplex up and running.</strong></p>
+<p>The following guide is based upon the examples given in this document. Here the objective is to set up three Virtel batch instances, two reader instances (SPTHOLT0 and SPTHOLT1), and one writer instance, SPTHOLT9. The examples used are maintained in the VIRTEL.SAMPLIB. The instances are runs as batch jobs - SPTHOLT0(SPVIRE00), SPTHOLT1(SPVIRE01) and SPTHOLT9(SPVIRE99).</p>
+<p>Install Virtel and get base product up and running before attempting any Virplex changes.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SAMPLIB</span> <span class="n">Members</span><span class="p">:</span>     <span class="n">VIRPLEX</span><span class="p">,</span> <span class="n">VIRTCT00</span><span class="p">,</span> <span class="n">VIRTCT99</span><span class="p">,</span> <span class="n">VIRTELZ</span><span class="p">,</span> <span class="n">VIRTEL00</span><span class="p">,</span> <span class="n">VIRTEL01</span><span class="p">,</span> <span class="n">VIRTEL99</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Allocate common VSAM libraries and copy the SAMP, ARBO and HTML from existing/installation libraries.</li>
+<li>Allocate unique libraries for VIRHTML and VIRSWAP. If you are collecting statistics then VIRSTAT also has to be allocated as is unqiue to each Virtel instance.</li>
+<li>Updated you VTAMLST library to support each instance. Each instance will use VTAM resource names based upon the CLONE= keyword in the startup JCL. Activate VTAMLST members.</li>
+<li>Customize TCT VIRTCT00 ( Reader TCT). Update license and other details.</li>
+<li>Customize TCT VIRTCT99 (Writer TCT). Update license and other details.</li>
+<li>Customize the JCL members VIRPLEX, VIRTELZ, VIRTEL00, VIRTEL01 and VIRTEL99</li>
+<li>Activate TCPIP changes – V TCPIP,,O,DSN=TCPIP.TCPPARMS(VIRTPROF)</li>
+<li>Update the sample VIRPLEX definitions to support your environment.</li>
+<li>Run the VIRPLEX job. This will perform the following steps:-
+Allocate unique VSAM files
+Allocate shared VSAM files
+Copy VSAM files from install or “existing” user files.
+Update the VIRPLEX ARBO with the definitions required to support a Virplex.
+Assemble to ‘READER’ and ‘WRITER’ TCT’s</li>
+<li>Start the ‘WRITER’ task by submitting Job VIRTEL99.</li>
+</ul>
+<p>You should see the following messages as the Administration line is activated:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT01I</span> <span class="n">HTTP</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="p">(</span><span class="n">W</span><span class="o">-</span><span class="n">HTTP</span>  <span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="n">VIRT905I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">LISTENING</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.039</span><span class="p">:</span><span class="mi">41001</span>
+<span class="n">VIRHT02I</span> <span class="n">LINE</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="p">(</span><span class="n">W</span><span class="o">-</span><span class="n">HTTP</span>  <span class="p">)</span> <span class="n">HAS</span> <span class="n">URL</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.39</span><span class="p">:</span><span class="mi">41001</span>
+<span class="n">VIRHT03I</span> <span class="n">HTTP</span> <span class="n">LINE</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="p">(</span><span class="n">W</span><span class="o">-</span><span class="n">HTTP</span>  <span class="p">),</span> <span class="n">IS</span> <span class="n">A</span> <span class="n">VIRPLEX</span> <span class="n">SERVER</span> <span class="n">WITH</span> <span class="n">VSAMTYP</span><span class="o">=</span><span class="n">WRITER</span>
+</pre></div>
+</div>
+<p>The Administration portal can be access via URL 192.168.170.39:41001. Ignore any CONNECT error messages. This is normal at this stage.</p>
+<ul class="simple">
+<li>Start the ‘READER’ tasks by submitting jobs VIRTEL00 and VIRTEL01</li>
+</ul>
+<p>In the ‘WRITER’ task you should see evidence that the ‘WRITER’ has connected to the ‘READER’ tasks:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRB17AI</span> <span class="n">LINE</span> <span class="n">SPVIRE00</span> <span class="p">(</span><span class="n">SPVIRE00</span><span class="p">),</span> <span class="n">RESTARTED</span> <span class="n">TO</span> <span class="n">ALLOW</span> <span class="n">CONNECTION</span> <span class="n">TO</span> <span class="n">SPVIRE00</span>
+<span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE00</span> <span class="p">(</span><span class="n">SPVIRE00</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="n">VIRT907I</span> <span class="n">SPVIRE00</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">CALLING</span>   <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.081</span><span class="p">:</span><span class="mi">41030</span>
+<span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE00</span> <span class="p">(</span><span class="n">SPVIRE00</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE00</span>
+<span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">VIRB17AI</span> <span class="n">LINE</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">RESTARTED</span> <span class="n">TO</span> <span class="n">ALLOW</span> <span class="n">CONNECTION</span> <span class="n">TO</span> <span class="n">SPVIRE01</span>
+<span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="n">VIRT907I</span> <span class="n">SPVIRE01</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">CALLING</span>   <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.081</span><span class="p">:</span><span class="mi">41031</span>
+<span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE01</span>
+</pre></div>
+</div>
+<p>In the ‘READER’ tasks you should see evidence that the ‘READER ’ has connected to the ‘WRITER’ tasks:-</p>
+<p>SPTHOLT0 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT1</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE99</span> <span class="p">(</span><span class="n">SPVIRE99</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="n">VIRT907I</span> <span class="n">SPVIRE99</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">CALLING</span>   <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.081</span><span class="p">:</span><span class="mi">41099</span>
+<span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE99</span> <span class="p">(</span><span class="n">SPVIRE99</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE99</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">VIRT905I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">LISTENING</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.015</span><span class="p">:</span><span class="mi">41902</span>
+<span class="n">VIRHT02I</span> <span class="n">LINE</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="p">(</span><span class="n">V</span><span class="o">-</span><span class="n">HTTP</span>  <span class="p">)</span> <span class="n">HAS</span> <span class="n">URL</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41902</span>
+<span class="n">VIRHT03I</span> <span class="n">HTTP</span> <span class="n">LINE</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="p">(</span><span class="n">V</span><span class="o">-</span><span class="n">HTTP</span>  <span class="p">),</span> <span class="n">IS</span> <span class="n">A</span> <span class="n">VIRPLEX</span> <span class="n">SERVER</span> <span class="n">WITH</span> <span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span>
+<span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">VIRB17AI</span> <span class="n">LINE</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">RESTARTED</span> <span class="n">TO</span> <span class="n">ALLOW</span> <span class="n">CONNECTION</span> <span class="n">TO</span> <span class="n">SPVIRE01</span>
+<span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="n">VIRT907I</span> <span class="n">SPVIRE01</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">CALLING</span>   <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.081</span><span class="p">:</span><span class="mi">41031</span>
+<span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE01</span>
+</pre></div>
+</div>
+<p>SPTHOLT1 Connecting to the ‘WRITER’ task SPTHOLT9 and the other ‘READER’ tasks SPTHOLT0</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE00</span> <span class="p">(</span><span class="n">SPVIRE00</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE00</span>
+<span class="n">VIRT903W</span> <span class="n">LINE</span> <span class="n">SPVIRE01</span> <span class="n">HAS</span> <span class="n">A</span> <span class="n">SESSION</span> <span class="n">STARTED</span> <span class="n">WITH</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> <span class="n">TCPIP</span>    <span class="n">HIGHEST</span> <span class="n">SOCKET</span>
+<span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE01</span> <span class="p">(</span><span class="n">SPVIRE01</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="n">VIRT905I</span> <span class="n">SPVIRE01</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">LISTENING</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.081</span><span class="p">:</span><span class="mi">41031</span>
+<span class="n">VIRT903W</span> <span class="n">LINE</span> <span class="n">SPVIRE99</span> <span class="n">HAS</span> <span class="n">A</span> <span class="n">SESSION</span> <span class="n">STARTED</span> <span class="n">WITH</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> <span class="n">TCPIP</span>    <span class="n">HIGHEST</span> <span class="n">SOCKET</span>
+<span class="n">VIRQLK9I</span> <span class="n">INITIALISATION</span> <span class="n">FOR</span> <span class="n">SPVIRE99</span> <span class="p">(</span><span class="n">SPVIRE99</span><span class="p">),</span> <span class="n">VERSION</span> <span class="mf">4.58</span>
+<span class="n">VIRT907I</span> <span class="n">SPVIRE99</span> <span class="n">SOCKET</span> <span class="mi">00000000</span> <span class="n">CALLING</span>   <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.081</span><span class="p">:</span><span class="mi">41099</span>
+<span class="n">VIRQLK8I</span> <span class="n">LOCAL</span> <span class="n">LINE</span> <span class="n">SPVIRE99</span> <span class="p">(</span><span class="n">SPVIRE99</span><span class="p">)</span> <span class="n">IS</span> <span class="n">CONNECTED</span> <span class="n">TO</span> <span class="n">REMOTE</span> <span class="n">VIRTEL</span> <span class="p">:</span> <span class="n">SPVIRE99</span>
+<span class="n">VIRT903W</span> <span class="n">LINE</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">HAS</span> <span class="n">A</span> <span class="n">SESSION</span> <span class="n">STARTED</span> <span class="n">WITH</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> <span class="n">TCPIP</span>    <span class="n">HIGHEST</span> <span class="n">SOCKET</span>
+</pre></div>
+</div>
+<p>Once the three tasks have initiated you should see no more “CONNECT” error messages. You can test that the tree tasks are communicating by doing a “Line” display:-</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLT0</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.58</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIRE00</span> <span class="n">LINES</span>
+<span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span>  <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span>           <span class="o">*</span><span class="n">GATE</span>
+<span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>           <span class="o">*</span><span class="n">GATE</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE00</span> <span class="n">SPVIRE00</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41030</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE01</span> <span class="n">SPVIRE01</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41031</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE99</span> <span class="n">SPVIRE99</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41099</span>
+<span class="n">VIR0202I</span> <span class="n">V</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41902</span>
+<span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+
+<span class="n">F</span> <span class="n">SPTHOLT1</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.58</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIRE01</span> <span class="n">LINES</span>
+<span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span>  <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span>           <span class="o">*</span><span class="n">GATE</span>
+<span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>           <span class="o">*</span><span class="n">GATE</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE00</span> <span class="n">SPVIRE00</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41030</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE01</span> <span class="n">SPVIRE01</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41031</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE99</span> <span class="n">SPVIRE99</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41099</span>
+<span class="n">VIR0202I</span> <span class="n">V</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">VPX</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span><span class="p">:</span><span class="mi">41902</span>
+<span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+
+<span class="n">F</span> <span class="n">SPTHOLT9</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.58</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">SPVIRE99</span> <span class="n">LINES</span>
+<span class="n">VIR0202I</span> <span class="n">ALLOCATED</span> <span class="n">IP</span> <span class="n">ADDRESS</span> <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.39</span>
+<span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span>  <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>           <span class="o">*</span><span class="n">GATE</span>
+<span class="n">VIR0202I</span> <span class="n">V</span><span class="o">-</span><span class="n">HTTP</span>           <span class="o">*</span><span class="n">GATE</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE00</span> <span class="n">SPVIRE00</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41030</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE01</span> <span class="n">SPVIRE01</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41031</span>
+<span class="n">VIR0202I</span> <span class="n">SPVIRE99</span> <span class="n">SPVIRE99</span> <span class="n">TCP1</span>  <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.81</span><span class="p">:</span><span class="mi">41099</span>
+<span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span>  <span class="p">:</span><span class="mi">41001</span>
+<span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+<p>If the displays match those above then the VIRPLEX has initialized successfully.</p>
+<p id="index-184"><strong>Validating the Virplex</strong></p>
+<p>Logon to Virtel using the common URL 192.168.170.15:41902. You should be presented with the Applist screen showing the two 3270 applications defined in the common ARBO.</p>
+<p><img alt="image113" src="../../../_images/image1132.png" /></p>
+<p>The top right hand corner will identify the ‘READER’ instance support this session. In this example this is Virtel instance SPTHOLT1 (SPVIRE01)</p>
+<p><img alt="image114" src="../../../_images/image1142.png" /></p>
+<p>On a separate machine, one with a different IP address, logon again to Virtel using the same URL. This time, if the Sysplex Distributor is working in a “round robin” fashion, it will allocate a different ‘READER’ instance. Here is the sample of a second browser session, this time using Chrome, allocating a Virtel session on Virtel instance SPTHOLT0 (SPVIRE00).</p>
+<p><img alt="image115" src="../../../_images/image1152.png" /></p>
+<p>At this point validation of the Virplex is confirmed.</p>
+<p id="index-185"><strong>Testing QLNK communication.</strong></p>
+<p>To test that the Virtels are communicating, maintenance will be uploaded via the ‘WRITER’ task. The ‘WRITER’ task will distributed this to the two ‘READER’ tasks. Connect to the TSO application to determine the current maintenance level.</p>
+<p><img alt="image116" src="../../../_images/image1162.png" /></p>
+<p>Is shows as UPDT level V4.58 / 5687. Confirm this with the Administration Portal on the ‘WRITER’ task by accessing the ‘Admin Portal’ through the ‘WRITER’ URL 192.168.170.39:41001. The maintenance level is shown in the Middle of the Tool Bar area on the screen:-</p>
+<p><img alt="image117" src="../../../_images/image1172.png" /></p>
+<p>This confirms that both the ‘WRITER’ and ‘READER’ instances had loaded the SAMP TRSF file. Using the “Drag and Drop” feature upload some maintenance to the W2H-DIR file. In this example the maintenance level TP 5695 is uploaded via the ‘WRITER’ instance SPTHOLT9(SPVIRE99). A refresh of the browser (CTRL+UP+DEL + CTRL+R) now shows the maintenance level to be 4.58 (5695):-</p>
+<p><img alt="image118" src="../../../_images/image1182.png" /></p>
+<p>If a new browser window is opened on another machine, and TSO is accessed through the common URL / APPLIST navigation, the maintenance level has changed to V4.58 UPDT 5695:-</p>
+<p><img alt="image119" src="../../../_images/image1192.png" /></p>
+<p>This confirms that the ‘WRITER’ and ‘READER’ tasks are communicating and the automatic distribution of maintenance out to ‘READER’ task environments is working. The following traces on the ‘WRITER’ task show that the ‘WRITER is communicating with ‘READER’ tasks:-</p>
+<p><img alt="image120" src="../../../_images/image1202.png" /></p>
+<p id="index-186"><strong>Diagnosing Virplex issues</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>1.  Issue a trace command on the writer task to trace all QLNK lines. In this example the following commands would be issued:-
+
+F SPTHOLT9,TRACE,L=SPVIRE00
+F SPTHOLT9,TRACE,L=SPVIRE01
+F SPTHOLT9,TRACE,L=SPVIRE99
+
+
+2.  Perform some Virplex activing – upload some maintenance for example.
+
+3.  Issue a line display for each Virplex instance.
+
+F SPTHOLTx,LINES
+
+4.  Take a Virtel SNAP of the ‘Writer’ task.
+
+F SPTHOLT9,SNAP
+
+5.  Obtain the Virtel logs from the ‘Writer’ task and the one of the ‘READER’ tasks.
+
+Open a problem with your local Syspertec Support Engineer and send them the output plus a description of the problem you experienced.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="protecting-business-assets-with-virtel-rules">
-<span id="index-178"></span><h2>Protecting business assets with Virtel Rules<a class="headerlink" href="#protecting-business-assets-with-virtel-rules" title="Permalink to this headline">¶</a></h2>
+<span id="index-187"></span><h2>Protecting business assets with Virtel Rules<a class="headerlink" href="#protecting-business-assets-with-virtel-rules" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id76">
 <h3>Introduction<a class="headerlink" href="#id76" title="Permalink to this headline">¶</a></h3>
 <p>In this chapter we discuss how to protect access to business assets using Virtel rules. In this scenario with have two types of business assets or applications. The first type is the production assets which are protected by LDAP and use SSO to facilitate security and automatic logon without the user having to specify a userid and password. The other type of business asset is a standard application, like TSO or CICS, which requires the user to enter a userid and password when the application is accessed. LDAP and SSO are not discussed in this newsletter. There may be alternatives to this SSO setup but for our scenario we are assuming two types of asset – secure (requiring no application logon) and insecure (application logon required). The scenario utilizes a proxy server to load balance across the Virtel instances.</p>
 <p><img alt="image97" src="../../../_images/image973.png" /></p>
 </div>
 <div class="section" id="virtel-setup">
-<span id="index-179"></span><h3>Virtel Setup<a class="headerlink" href="#virtel-setup" title="Permalink to this headline">¶</a></h3>
+<span id="index-188"></span><h3>Virtel Setup<a class="headerlink" href="#virtel-setup" title="Permalink to this headline">¶</a></h3>
 <p>From a Virtel perspective it has been decided that secure assets are associated with port 41002, and non-secure through port 41003. Access to the assets should only be through the proxy server using a secure port, in our case the standard SSL port 443. Our goal is to protect the assets from being accessed internal, or external, using the assigned Virtel IP
 and port addresses. For example, users in the accounts department should be able to access PROD IMS/CICS. Other users, who work offsite or from home, and have access to the company VPN shouldn’t be able to access PROD IMS/CICS. In this simplistic scenario, anyone could in theory could access any one of the Virtel instances through their internal IP address – 192.168.07x.10x:4100x and attempt to logon. What is required is means to guarantee that access to any of the assets should only be via the proxy server and not through any other IP address.</p>
-<div class="section" id="index-180">
-<span id="id77"></span><h4>Virtel Rules<a class="headerlink" href="#index-180" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="index-189">
+<span id="id77"></span><h4>Virtel Rules<a class="headerlink" href="#index-189" title="Permalink to this headline">¶</a></h4>
 <p>Using Virtel Rules we can compare the calling IP address and if it doesn’t match with the rule then the user will be re-directed to another Virtel entry point. To implement this protection we use the following ARBO statements for each line, 41002 and 41003:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000100</span><span class="p">,</span>
 <span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41002</span>
@@ -5283,7 +5818,7 @@ EPREJECT.HTM.</p>
 <p>To protect the business assets the calling IP address can only be that of the proxy server - 192.168.092.160. Any other calling IP address will be rejected by the Virtel ruleset. By default, the ruleset associated with a line is normally the internal name of the line – C-HTTP for example. How the rejected session is handled depends on how Virtel has been setup.</p>
 </div>
 <div class="section" id="default-rule-template">
-<span id="index-181"></span><h4>Default Rule Template<a class="headerlink" href="#default-rule-template" title="Permalink to this headline">¶</a></h4>
+<span id="index-190"></span><h4>Default Rule Template<a class="headerlink" href="#default-rule-template" title="Permalink to this headline">¶</a></h4>
 <p>In the following example, the default template EPREJECT.HTM, which is associated with the entry point EPREJECT, looks like this:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
 &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;

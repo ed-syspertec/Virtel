@@ -877,10 +877,10 @@ the same as the generated token.</dd>
 <div class="section" id="access-through-3270">
 <h4>Access through 3270<a class="headerlink" href="#access-through-3270" title="Permalink to this headline">¶</a></h4>
 <p>Access to the 3270 application is through a normal VTAM logon using the VIRTEL APPLID as the application name. For example, from a VTAM screen enter LOGON APPLID=VIRTEL. The following screen will appear:-</p>
-<p><img alt="image113" src="../../../_images/image1132.png" />
+<p><img alt="image113" src="../../../_images/image1133.png" />
 <em>Logon screen for 3270 Administration</em></p>
 <p>After logging in with security details the main application menu will be presented. Select PF1 from the main menu to access the administration and configuration menu.</p>
-<p><img alt="image114" src="../../../_images/image1142.png" />
+<p><img alt="image114" src="../../../_images/image1143.png" />
 <em>Directory sub application</em></p>
 <p>The directory management sub-application allows the administrator to define directories. The sub-application is accessible by [PF6] from the configuration menu, or by [PF12] from the system services menu followed by option 3, or from the VIRTEL Multi-Session menu via a transaction which invokes VIRTEL module VIR0042.</p>
 </div>
@@ -976,17 +976,17 @@ started task JCL.</dd>
 <div class="section" id="acccess-administration-portal-via-the-web">
 <h4>Acccess administration portal via the web<a class="headerlink" href="#acccess-administration-portal-via-the-web" title="Permalink to this headline">¶</a></h4>
 <p>Access to the HTML GUI Administration portal is through the web using the Administration endpoint. By default this is port 41001. The URL <a class="reference external" href="http://192.168.129.33:41001">http://192.168.129.33:41001</a> is an example of a URL to access the WEB administration portal. After providing security information the following screen will appear:-</p>
-<p><img alt="image115" src="../../../_images/image1152.png" />
+<p><img alt="image115" src="../../../_images/image1153.png" />
 <em>Logon screen for Web Administration</em></p>
 <p>Selecting the Admin (HTML) will prompt for a userid and password. After providing security details the following administration portal will appear:-</p>
-<p><img alt="image116" src="../../../_images/image1162.png" />
+<p><img alt="image116" src="../../../_images/image1163.png" />
 <em>Web Administration Portal</em></p>
 <blockquote>
 <div>Directory administration can be invoked from the Directory link. Selecting a directory will display a content menu proving options to list, edit, delete or create new directories.</div></blockquote>
-<p><img alt="image117" src="../../../_images/image1172.png" />
+<p><img alt="image117" src="../../../_images/image1173.png" />
 <em>Directory Context Menu</em></p>
 <p>When selecting a directory, the detail panel will be displayed. The ICONs on the right hand side of the title bar provide actions such as add, update or list.</p>
-<p><img alt="image118" src="../../../_images/image1182.png" />
+<p><img alt="image118" src="../../../_images/image1183.png" />
 <em>Directory Detail Display</em></p>
 <span class="target" id="v458ug-creating-html"></span></div>
 </div>
@@ -4406,12 +4406,13 @@ settings.</p>
 </div>
 <p>The supported “pathToxxxxx” attribute keys are used to select the file values where the customised elements should be located. Note the customized elements are located through the /option/ pathname. Customized elements currently supported are:-</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pathToCssCustom</span>     <span class="n">Custom</span> <span class="n">CSS</span> <span class="n">files</span><span class="o">.</span>
-<span class="n">pathToJSCustom</span>      <span class="n">Custom</span> <span class="n">Javascript</span> <span class="n">files</span>
+<span class="n">pathToJsCustom</span>      <span class="n">Custom</span> <span class="n">Javascript</span> <span class="n">files</span>
 <span class="n">pathToW2hparm</span>       <span class="n">Custom</span> <span class="n">w2hparm</span> <span class="n">parameters</span>
 <span class="n">pathToPrintCss</span>      <span class="n">Custom</span> <span class="nb">print</span> <span class="n">style</span> <span class="n">CSS</span>
 <span class="n">pathToHelp</span>          <span class="n">Custom</span> <span class="n">Help</span> <span class="n">pages</span>
 </pre></div>
 </div>
+<p>The attribute key names are “case sensitive” - pathToW2Hparm would be incorrect, it should be pathToW2hparm.</p>
 <p>To activate the “option” mode perform the following actions:-</p>
 <ul class="simple">
 <li>Create and upload to the CLI-DIR a w2hparm.js that includes the global-settings option. Include the relevant keynames within the global option settings you wish to modify.</li>
@@ -4454,10 +4455,14 @@ settings.</p>
 <ul class="simple">
 <li>Custom.js would be modified to support the tool bar change and uploaded to CLI-DIR.</li>
 </ul>
-<p>These changes only effect transactions under the CLIWHOST entry point. Transaction under the WEB2HOST entry point would have the default tool bar.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Attribute values must be in UPPERCASE. For example “ENTER” and not “Enter”.</p>
+</div>
+<p>These changes only effect transactions under the CLIWHOST entry point. Transaction under the WEB2HOST entry point would have the default tool bar and a “NEWLINE” enter. To use the customize options set up in the CLI-DIR from other entry points change the XXX-03P transaction to point to the CLI-DIR. For example, if you have a TST-DIR, set the corressponding TST-03P transaction to use the CLI-DIR. To use the defaults for WEB2HOST transactions set the W2H transaction W2H-03P to use the CLI-DIR. See cautionary note below.</p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
-<p class="last">Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance or Virtel release updates. Keep customized elements in the CLI-DIR directory.</p>
+<p class="last">Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance or a future Virtel release. Keep customized elements in the CLI-DIR directory.</p>
 </div>
 </div>
 <div class="section" id="default-options">
@@ -4471,7 +4476,7 @@ settings.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
          <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;pathToJSCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span>
+         <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -4482,7 +4487,7 @@ settings.</p>
      <span class="o">*</span> <span class="n">Override</span> <span class="n">default</span> <span class="n">w2hparm</span> <span class="n">values</span><span class="o">.</span> <span class="n">Change</span> <span class="n">Enter</span> <span class="n">key</span> <span class="n">to</span> <span class="n">equal</span> <span class="s2">&quot;Enter&quot;</span><span class="o">.</span> <span class="n">Default</span> <span class="o">=</span> <span class="s2">&quot;Newline&quot;</span> <span class="n">key</span><span class="o">.</span>
     <span class="o">*/</span>
 
-<span class="n">w2hparm</span><span class="o">.</span><span class="n">enter</span><span class="o">=</span><span class="s2">&quot;Enter&quot;</span><span class="p">;</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">enter</span><span class="o">=</span><span class="s2">&quot;ENTER&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Create the file custJS.global.js file and define the required changes. Upload this file to CLI-DIR. For example to modify the toolbar:-</p>
@@ -4827,7 +4832,7 @@ List of available key identifiers (case sensitive!!):
 <li>You do not have the authority to upload to the USR-DIR. See transaction xxx-80U.</li>
 </ul>
 <p>If you get the following Error Panal when trying to execute a DDI macro it could be due to the fact thet the transaction you are running doesn’t have security set. Make sure the transaction is secure with “Security = basic”. DDI requires USERID and GROUP information. This can only be obtained with secure transactions.</p>
-<p><img alt="image119" src="../../../_images/image1192.png" /></p>
+<p><img alt="image119" src="../../../_images/image1193.png" /></p>
 </div>
 </div>
 <div class="section" id="virtel-web-modernisation">
@@ -4859,7 +4864,7 @@ List of available key identifiers (case sensitive!!):
 <p>If the “Directory for scenarios” field in the Entry Point is non-blank, VIRTEL will load scenarios from the specified directory instead of from the DFHRPL load library.
 Scenarios in VSAM are ordinary VIRTEL files and their extension must be .390; they are normally assembled on a workstation and uploaded to the “Directory for scenarios” by means of Virtel Studio. If a new version of a scenario is uploaded in a VSAM directory, the new version will be used immediately whenever a new connection needs it; no VIRTEL command is necessary. If a terminal is already executing the old version of the scenario, it is not affected, and continues with a copy of the old version. If another scenario with the same name exists
 in another directory, it is not modified by the upload.</p>
-<p><img alt="image112" src="../../../_images/image1124.png" />
+<p><img alt="image112" src="../../../_images/image1125.png" />
 <em>Entry Point display with SCE-DIR for scenarios</em></p>
 </div>
 <div class="section" id="using-a-presentation-module">
@@ -4913,7 +4918,7 @@ transaction.</p>
 <div class="section" id="developing-presentation-modules-with-virtel-studio">
 <span id="index-221"></span><h5>Developing presentation modules with Virtel Studio<a class="headerlink" href="#developing-presentation-modules-with-virtel-studio" title="Permalink to this headline">¶</a></h5>
 <p>Although presentation modules can be hard coded as an assembler routine and loaded into a Load library the recommended approach is to use the Eclipse Virtel Studio development aid. Virtel Studio is a Eclipse framework which runs on a PC. It enables a developer to assemble and upload presentation modules to a Virtel Server.</p>
-<p><img alt="image120" src="../../../_images/image1202.png" /></p>
+<p><img alt="image120" src="../../../_images/image1203.png" /></p>
 <p><em>Virtel Studio presentation IDE</em></p>
 <p>Virtel Studio assembles a VSC module and produces a .390 object deck. This is loaded upto the Virtel server. Virtel Studio only supports scenarios within a VSAM directory.</p>
 </div>

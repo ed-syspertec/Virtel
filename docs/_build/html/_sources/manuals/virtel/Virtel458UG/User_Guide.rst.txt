@@ -5622,10 +5622,12 @@ The supported "pathToxxxxx" attribute keys are used to select the file values wh
 ::
     
 	pathToCssCustom     Custom CSS files.
-	pathToJSCustom      Custom Javascript files
+	pathToJsCustom      Custom Javascript files
 	pathToW2hparm       Custom w2hparm parameters
 	pathToPrintCss      Custom print style CSS
 	pathToHelp          Custom Help pages
+
+The attribute key names are "case sensitive" - pathToW2Hparm would be incorrect, it should be pathToW2hparm.
 
 To activate the "option" mode perform the following actions:-
 
@@ -5677,9 +5679,11 @@ As an example, if the w2hparm option "Enter=Enter" is required rather than the d
 
 - Custom.js would be modified to support the tool bar change and uploaded to CLI-DIR. 
 
-These changes only effect transactions under the CLIWHOST entry point. Transaction under the WEB2HOST entry point would have the default tool bar.
+.. warning:: Attribute values must be in UPPERCASE. For example "ENTER" and not "Enter".
 
-.. danger:: Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance or Virtel release updates. Keep customized elements in the CLI-DIR directory.
+These changes only effect transactions under the CLIWHOST entry point. Transaction under the WEB2HOST entry point would have the default tool bar and a "NEWLINE" enter. To use the customize options set up in the CLI-DIR from other entry points change the XXX-03P transaction to point to the CLI-DIR. For example, if you have a TST-DIR, set the corressponding TST-03P transaction to use the CLI-DIR. To use the defaults for WEB2HOST transactions set the W2H transaction W2H-03P to use the CLI-DIR. See cautionary note below.   
+
+.. danger:: Updating elements in the default W2H-DIR directory is not recommended as they will be overwritten by maintenance or a future Virtel release. Keep customized elements in the CLI-DIR directory.
 
 
 Default Options
@@ -5701,7 +5705,7 @@ For the "Enter" key requirment, update the default w2hparm.js to include a globa
     var w2hparm = {      
         "global-settings":{
              "pathToW2hparm":"../option/w2hparm.global.js",
-             "pathToJSCustom":"../option/custJS.global.js"
+             "pathToJsCustom":"../option/custJS.global.js"
         }
     }
 
@@ -5714,7 +5718,7 @@ Create the file w2hparm.global.js file and define the required changes. Upload t
  	 * Override default w2hparm values. Change Enter key to equal "Enter". Default = "Newline" key.
  	*/
 	
-    w2hparm.enter="Enter"; 
+    w2hparm.enter="ENTER"; 
 
 
 Create the file custJS.global.js file and define the required changes. Upload this file to CLI-DIR. For example to modify the toolbar:-
