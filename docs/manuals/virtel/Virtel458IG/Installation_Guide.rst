@@ -4292,11 +4292,13 @@ TCP1 parameter
 ::
 
 	TCP1=tcpname Default=no TCP/IP connection
-	TCP1=([tcpname],,,[maxsock],[pgmname],[adsname])
+	TCP1=([tcpname],,[DNS],[maxsock],[pgmname],[adsname])
 
 This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP1.
 
 **tcpname** - The name of the TCP/IP stack. This name should match the TCPIPJOBNAME parameter in the TCPIP.TCPIP.DATA file of the TCP/IP stack, or the name of the TCP/IP started task itself if TCPIPJOBNAME is not specified. The value ANY indicates that a connection can be established which any TCP/IP stack. This parameter is ignored by the TCP/IP for z/VSE stack.
+
+**DNS** -  Start the DNS subtask VIRDNS1. This subtask supports the use of an asynchronous GETNAMEINFO function from within a scenario. See COPY$ NAME-OF-TERMINAL in the Virtel Users Guide for further information.
 
 **maxsock** - In z/OS, this is the maximum number of sockets for each type TCP1 line defined in VIRTEL. If this subparameter is not specified, TCP/IP determines the number (50 by default). The maximum value allowed by VIRTEL is 65535. However, for customers using older versions of z/OS (z/OS V1R4 or earlier), the TCP/IP stack enforces an upper limit of 2000 on this subparameter. Also, the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx must exceed the maxsock value. In z/VSE, this is the total maximum number of sockets for all VIRTEL lines of type TCP1. The TCP/IP for z/VSE stack currently ignores the value specified here, and uses a fixed value of 8001 instead.
 
@@ -4314,7 +4316,7 @@ TCP2 parameter
 ::
 
 	TCP2=tcpname Default=no 2nd TCP/IP connection
-	TCP2=([tcpname],,,[maxsock],[pgmname],[adsname])
+	TCP2=([tcpname],,[DNS],[maxsock],[pgmname],[adsname])
 
 This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP2. The subparameters are the same as those of TCP1.
 

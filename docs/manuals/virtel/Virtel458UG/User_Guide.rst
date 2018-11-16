@@ -7187,6 +7187,8 @@ In addition, the following non-standard HTTP headers, described in the IBM Tivol
                     input is inhibited
                 blank
                     input is allowed
+        TERMINAL
+            The DNS name of the connected terminal. Rquires DNS subtask to be active. See DNS paramter of TCPx statement in the TCT.            
         TRANSACTION-INTERNAL
             The internal name of the VIRTEL transaction
         TRANSACTION-EXTERNAL
@@ -7306,6 +7308,9 @@ Example of COPY$ SYSTEM-TO-VARIABLE:
     COPY$ SYSTEM-TO-VARIABLE,                                      X
         FIELD=(USER-SECURITY-PROFILE,WADEPT),                      X
         VAR='DEPT’
+     COPY$ SYSTEM-TO-VARIABLE,                                     X
+        FIELD=(NAME-OF,TERMINAL),                                  X
+        VAR='TERMINAL’    
 
 The following table shows a possible result of this example scenario when used in conjunction with the URL:-
 

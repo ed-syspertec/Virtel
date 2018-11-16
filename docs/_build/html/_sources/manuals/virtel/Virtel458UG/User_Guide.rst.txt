@@ -5584,8 +5584,7 @@ Virtel Customization Modes
 ==========================
 
 .. index::
-   pair: Compatibility mode; Customization
-  
+   pair: Compatibility mode; Customization  
    pair: Default mode; Customization 
 
 Virtel V4.58 uses the defaults as listed in Appendix A. Modification of these defaults can be implemented by modifying the w2hparm.js file. As delivered, there is a dummy 'w2hparm.js' in both the CLI-DIR and the W2H-DIR. Transactions W2H-03P and CLI-03P point to these respective w2hparm.js entries. Previous versions of Virtel used a different technical to locate customized entries, now refrerred to as "compatibility mode". The three customization modes are known as "Compatibility" mode, "Option" mode and "default" mode . As delivered, Virtel V4.58 defaults to having no customization mode active. All w2hparm values are defaulted to those listed in the Appendix. Neither "compatibility" mode or "option" mode are in effect. To turn one on these modes on the following actions must be performed.   
@@ -7188,6 +7187,8 @@ In addition, the following non-standard HTTP headers, described in the IBM Tivol
                     input is inhibited
                 blank
                     input is allowed
+        TERMINAL
+            The DNS name of the connected terminal. Rquires DNS subtask to be active. See DNS paramter of TCPx statement in the TCT.            
         TRANSACTION-INTERNAL
             The internal name of the VIRTEL transaction
         TRANSACTION-EXTERNAL
@@ -7307,6 +7308,9 @@ Example of COPY$ SYSTEM-TO-VARIABLE:
     COPY$ SYSTEM-TO-VARIABLE,                                      X
         FIELD=(USER-SECURITY-PROFILE,WADEPT),                      X
         VAR='DEPT’
+     COPY$ SYSTEM-TO-VARIABLE,                                     X
+        FIELD=(NAME-OF,TERMINAL),                                  X
+        VAR='TERMINAL’    
 
 The following table shows a possible result of this example scenario when used in conjunction with the URL:-
 
@@ -12213,7 +12217,7 @@ writing a VIRTEL structured field. This section describes some techniques that y
 communicating with VIRTEL pseudo-terminal or with a regular 3270 terminal.
 
 Use a different transaction code
---------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By defining two different transaction codes which invoke the same CICS application program (for example, DEMO for
 3270, and VEMO for VIRTEL), the application can test the field EIBTRNID to determine if it is running under VIRTEL.
@@ -12271,7 +12275,7 @@ based upon the CICS transaction code:
    pair: Including Parameters; Programming Interfaces
 
 Include parameters after the transaction code
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By adding additional data after the transaction code when the transaction is invoked by VIRTEL, the application can
 receive the parameter data to verify whether it is running under VIRTEL. In the following example we add a V after the
@@ -12327,7 +12331,7 @@ field contains spaces:
    pair: Including Specific Terminal Ranges; Programming Interfaces
 
 Use a specific range of terminal names
---------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since all VIRTEL requests are made from the VIRTEL terminal pool, the application program can test the CICS terminal
 id or the VTAM LU name to determine if it is running under VIRTEL, as shown in the following example:

@@ -2455,12 +2455,106 @@ USSTAB Support
 USSTAB Support for 3270 terminals
 """"""""""""""""""""""""""""""""" 
 
-USSTAB support is provided by VIRTEL either as a JavaScript template or by loading the users existing VTAM MSG10 USS buffer. For further information on these two options see the following Technical Newsletters:-
+USSTAB support is provided by VIRTEL either as a JavaScript template or by loading the users existing VTAM MSG10 USS buffer.
+
+.. index::
+   pair: Support for USSTAB; Using Javascript
+
+USSTAB support using Javascript.
+""""""""""""""""""""""""""""""""
+For further information on this options see the following Technical Newsletters:-
 
 - TN201411 Building a VTAM USSTAB using Virtel's Web Access Facility.
-- TN201519 Processing the VTAM USS MSG10 buffer. 
 
-The latest versions of these documents can be found online at http://virtel.readthedocs.io/en/latest/
+The latest versions of these newsletter documents can be found online at http://virtel.readthedocs.io/en/latest/
+
+.. index::
+   pair: Support for USSTAB; VTAM MSG10 USS interface
+
+USSTAB Support for VTAM MSG10
+"""""""""""""""""""""""""""""
+
+The USSMSG MSG10 support is implemented by the the VIRTEL VIR0021W USSTAB menu program. This program will interrogate the customers VTAM USSTAB MSG10 module and create an equivalent 3270 MAP. The MAP will be passed to the VIR0010 routine where it will subsequently be converted into a HTML template and served to the browser. The generated template will provide similar functionality to that of the VTAM USSMSG10, that being a presentation screen and support for USSCMD and USSPARM entries. This allows customers to maintain their USSTAB MSG10 presentation for both VTAM and VIRTEL users without modification. The customers assembled USSTAB module, normally found in USER.VTAMLIB or an equivalent library, must be made available to VIRTEL. This can be done by either copying the module to a VIRTEL steplib library or concatenating the USER.VTAMLIB library into the VIRTEL started procedure.
+
+To support this interface a transaction must be added to the Entry point defining the USSTAB module to be used. Here is an example:-
+
+::
+
+	TRANSACT ID=CLI-16A, -
+    NAME=VTAMUSS, -
+    DESC='Logon through USSTAB', -
+    APPL=VIR0021W, -
+    TYPE=2, -
+    TERMINAL=CLVTA, -
+    STARTUP=1, -
+    SECURITY=1, -
+    LOGMSG='usstab=USSVIRT'
+
+|image3|
+
+**System Symbolic support**
+
+VIR0021W supports system symbolics within the MSG10 area and in the usstab= keyword. For example in the MSG10 buffer definition any area that has a symbolic will be translated using the values defined in the SYS1.PARMLIB member IEASYMXX. The z/OS command *D SYMBOLS* can be use to list the defined system symbolics. 
+
+::
+ 
+            DC CL80' This is system &&SYSNAME. running on SYSPLEX &&SYSPLEX.'
+
+would be translated and displayed as:-
+
+::
+
+            DC CL80' This is system ZAMVS1 running on SYSPLEX PLEX1'
+
+In the usstab=keyword, in the transaction definition, a symbolic can form part of the usstab name. This enables different usstabs to be loaded depending on the system. For example the following would load USSTAB1A if the symbolic &SYSCLONE. was defined as 1A.
+
+::
+ 
+     usstab=usstab&SYSCLONE.
+
+**Feedback support**
+
+The errmsg=y keyword can be appended to usstab=name. This additional keyword has been added to support feedback within the support module. If errmsg=y is coded then any error messages will be displayed on line 24. If the USSTAB uses row 24 for internal presentation purposes then the errmsg= keyword should not be used. Feedback will report on invalid application selection and invalid key usage. Any other error messqges will be reported to the Virtel SYSLOG. For example:-
+
+::
+ 
+     usstab=usstab&Sysclone.,errmsg=y 
+
+Will load a USSTAB module depending on the &SYSCLONE. system symbolic value and report error messages to line 24. 
+
+**Default USSTAB module USSVIRT**
+A default USSTAB module is shipped in the VIRTEL loadlib called USSVIRT. This USS module is loaded by default should the user's USSTAB fail to load. The default USSTAB looks like:- The source is maintained in the SAMPLIB library.
+
+|image4| 
+
+**Constraints**
+
+The user USSTAB MSG10 module that VIR0021W processes must adhere to certian constraints else results will be unpredicatble. The constraints are:-
+
+- VIR0021W attempts to simulate the functionality of USSMSG10 processing. It doesn’t distinguished between PL1 and BAL code strings. So, for example, it will process either  LOGON APPLID(TSO) or LOGON APPLID=TSO. Both would be accepted. 
+
+- Use only SBA Buffer addresses. Do not use displacement addresses such as AL2(((24-1)*80)+(80-1)).
+
+- The USSTAB module should only have ONE UNPROTECTED output field. This is used for the command area. It should not exceed 78 bytes. Use the tab key to check only one input area is defined.
+
+- Use extended attribute options rather than the basic field attributes to control colours. Some of the basic attributes imply unprotected fields.  
+
+- The SCAN parameter must be included on the BUFFER statement:-
+
+::
+
+	MSG10    USSMSG  MSG=10,BUFFER=(MSG10BUF,SCAN)
+
+- The cursor position must be preceded by a SBA and terminated with a SF:-
+
+::
+
+	DC    X'115B5F'                    R=22,C=80
+	DC    X'1D40'                      UNPROTECTED ON 23
+	DC    X'13'                        INSERTCURSOR
+	DC    50C' '                       Blank command area
+	DC    X'1D60'                      End of command line
+
 
 .. index::
    pair: VTAM Definitions; USSTAB for VIRTEL/PC
@@ -4198,11 +4292,13 @@ TCP1 parameter
 ::
 
 	TCP1=tcpname Default=no TCP/IP connection
-	TCP1=([tcpname],,,[maxsock],[pgmname],[adsname])
+	TCP1=([tcpname],,[DNS],[maxsock],[pgmname],[adsname])
 
 This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP1.
 
 **tcpname** - The name of the TCP/IP stack. This name should match the TCPIPJOBNAME parameter in the TCPIP.TCPIP.DATA file of the TCP/IP stack, or the name of the TCP/IP started task itself if TCPIPJOBNAME is not specified. The value ANY indicates that a connection can be established which any TCP/IP stack. This parameter is ignored by the TCP/IP for z/VSE stack.
+
+**DNS** -  Start the DNS subtask VIRDNS1. This subtask supports the use of an asynchronous GETNAMEINFO function from within a scenario. See COPY$ NAME-OF-TERMINAL in the Virtel Users Guide for further information.
 
 **maxsock** - In z/OS, this is the maximum number of sockets for each type TCP1 line defined in VIRTEL. If this subparameter is not specified, TCP/IP determines the number (50 by default). The maximum value allowed by VIRTEL is 65535. However, for customers using older versions of z/OS (z/OS V1R4 or earlier), the TCP/IP stack enforces an upper limit of 2000 on this subparameter. Also, the value of the MAXFILEPROC parameter in PARMLIB member BPXPRMxx must exceed the maxsock value. In z/VSE, this is the total maximum number of sockets for all VIRTEL lines of type TCP1. The TCP/IP for z/VSE stack currently ignores the value specified here, and uses a fixed value of 8001 instead.
 
@@ -4220,7 +4316,7 @@ TCP2 parameter
 ::
 
 	TCP2=tcpname Default=no 2nd TCP/IP connection
-	TCP2=([tcpname],,,[maxsock],[pgmname],[adsname])
+	TCP2=([tcpname],,[DNS],[maxsock],[pgmname],[adsname])
 
 This parameter defines the characteristics of the connection to the TCP/IP stack used by all lines which specify type TCP2. The subparameters are the same as those of TCP1.
 
@@ -4457,6 +4553,40 @@ These parameters define the VSAM files used by VIRTEL for HTML directories. Each
 The UFILEx parameters must be defined in sequence with no intervening gaps in the suffix number x.
 
 .. index::
+   pair: Virtel TCT; UPARMS parameter  
+
+UPARMS parameter
+^^^^^^^^^^^^^^^^
+
+The keyword enables the centralized saving of user settings on the host. Based upon a userid key, user settings can be maintained in a mainframe repository identified bu the name specified in the UPARMS parameter. For example UPARMS=(USERPARM). Here, the value USERPARM would be a Virtel transaction that identfied the repository. A sub-directory definition of the same name is also required to aasociate the repositry with a physical VSAM file. See the sample definitions below. The ARBOLOAD JCL can be used to load sample definitions into the ARBO through the USERPARM=YES option.
+
+::
+
+	UPARMS=(name)
+
+**name** must be a value name supported by a directory and transaction definition.  
+
+Sample ARBO definitions to support the USERPARM feature:-
+
+::
+
+	SUBDIR   ID=USERPARM,              /* Specified in UPARMS TCT keyword  */    
+         DESC='USERPARM directory',             
+         DDNAME=USERTRSF,              /* Note. Could point to HTMLTRSF */
+         KEY=UPRMS,                      
+         NAMELEN=0064,                   
+         AUTHUP=X,                       
+         AUTHDOWN=X,                     
+         AUTHDEL=X                       
+
+	TRANSACT ID=XXX-00P,                 /* Required for each EP - W2H, CLI  */       
+         DESC='User Parameters directory',     
+         NAME=USERPARM,                  /* Specified in UPARMS TCT keyword  */  
+         APPL=USERPARM,                  /* Specified in UPARMS TCT keyword  */  
+         TYPE=4,                           
+         TERMINAL=DELOC                    
+
+.. index::
    pair: Virtel TCT; VIRSECU parameter  
 
 VIRSECU parameter
@@ -4492,15 +4622,22 @@ VSAMTYP parameter
 
 ::
 
-	VSAMTYP=READONLY Default=NORMAL
+	VSAMTYP=[READONLY|NORMAL|WRITER] Default=NORMAL
 
 **READONLY** - This parameter, if specified in the VIRTCT, allows the VIRTEL started task to be run in read-only mode for VSAM files,to be used in production mode, especially in a sysplex environment. Except for the VIRSWAP work file, all other VSAM files used by VIRTEL can be opened in read-only mode.
+
+**WRITER** - This parameter, if specified in the VIRTCT, allows updates in a Virplex without necessitating the stop of other, read-only, Virtel instances.
 
 **NORMAL** - By default VIRTEL opens files in read/write mode to allow the possibility of updating certain VSAM files, such as the VIRARBO file for example.
 
 .. note::
 
-	VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see “Additional parameters for VSAM files”, page 78) and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see “UFILE1 to UFILE20”, page 75).
+	VSAMTYP=READONLY takes effect only if the appropriate values have been specified in the MACRF parameter of the ACB (see “Additional parameters for VSAM files”, page 78) and in the MODE subparameter of the UFILEx parameter of the VIRTCT (see “UFILE1 to UFILE20”).
+
+.. note::
+
+	VSAMTYP=WRITER should be used to suppport the Virplex writer instance of Virtel. See the Virplex section in the Virtel Connectivity Guide.
+
 
 .. index::
    pair: Virtel TCT; VTKEYS parameter  
@@ -6633,3 +6770,5 @@ Other company, product, or service names may be trademarks or service names of o
 
 .. |image1| image:: images/media/logo_virtel_web.png
             :scale: 50 % 
+.. |image3| image:: images/media/image3.png
+.. |image4| image:: images/media/image4.png          			
