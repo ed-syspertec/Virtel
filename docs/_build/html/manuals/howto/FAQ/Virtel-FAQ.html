@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Miscellaneous" href="../../../howto.html"/>
-        <link rel="next" title="How To - Virtel Nailing" href="../LU-Nailing/Virtel-LU-Nailing-Howto.html"/>
-        <link rel="prev" title="How To - AT-TLS" href="../AT-TLS/Virtel-AT-TLS-Howto.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="How To - Virtel Nailing" href="../LU-Nailing/Virtel-LU-Nailing-Howto.html" />
+    <link rel="prev" title="How To - AT-TLS" href="../AT-TLS/Virtel-AT-TLS-Howto.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -121,7 +114,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -129,9 +122,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -179,7 +173,7 @@
 </div>
 <div class="section" id="virtel-faqs">
 <span id="virtel-faq"></span><h1>Virtel FAQs<a class="headerlink" href="#virtel-faqs" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web1.png"><img alt="image1" src="../../../_images/logo_virtel_web1.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web.png"><img alt="image1" src="../../../_images/logo_virtel_web.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Frequently asked Questions</strong></p>
 <p>Release Date : 24 May 2018. Publication Date : 08/01/2018</p>
 <p>Syspertec Communication</p>
@@ -206,7 +200,7 @@ their respective owners.</p>
 <div class="section" id="how-to-deactivate-the-virtel-status-bar">
 <h3>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h3>
 <p>To deativate the status bar create a ccs rule and add it to your custom css file. For example in custCSS.test1.css add the following statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">div</span><span class="c1">#statusbar {display:none!important}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">div</span><span class="c1">#statusbar {display:none!important}</span>
 </pre></div>
 </div>
 </div>
@@ -223,7 +217,7 @@ their respective owners.</p>
 <h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
 <p>The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in custom.js.</p>
 <p>For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in a custom.js file would be:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>function after_responseHandle(o, url, xtim) {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function after_responseHandle(o, url, xtim) {
 VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;
 }
 </pre></div>
@@ -234,9 +228,7 @@ VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -245,7 +237,7 @@ VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{
         <a href="../LU-Nailing/Virtel-LU-Nailing-Howto.html" class="btn btn-neutral float-right" title="How To - Virtel Nailing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../AT-TLS/Virtel-AT-TLS-Howto.html" class="btn btn-neutral" title="How To - AT-TLS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../AT-TLS/Virtel-AT-TLS-Howto.html" class="btn btn-neutral float-left" title="How To - AT-TLS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -254,11 +246,11 @@ VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -271,36 +263,15 @@ VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

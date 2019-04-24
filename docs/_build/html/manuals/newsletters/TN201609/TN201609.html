@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Customizing Virtel in V4.56" href="../TN201611/TN201611.html"/>
-        <link rel="prev" title="Installing Virtel V4.56 from scratch" href="../TN201608/TN201608.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Customizing Virtel in V4.56" href="../TN201611/TN201611.html" />
+    <link rel="prev" title="Installing Virtel V4.56 from scratch" href="../TN201608/TN201608.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -129,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -137,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -198,7 +192,7 @@ using this LUNAME. If the DNS validation is unsuccessful the the session
 uses a normal LUNAME from the default Virtel pool associated with the
 transaction.</p>
 <p>For example, given the following two examples:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Computer</span> <span class="n">name</span><span class="o">=</span><span class="n">TE202B77</span> <span class="n">DNS</span> <span class="n">name</span><span class="o">=</span><span class="n">te202b77</span><span class="o">.</span><span class="n">myCompany</span><span class="o">.</span><span class="n">com</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.127</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Computer</span> <span class="n">name</span><span class="o">=</span><span class="n">TE202B77</span> <span class="n">DNS</span> <span class="n">name</span><span class="o">=</span><span class="n">te202b77</span><span class="o">.</span><span class="n">myCompany</span><span class="o">.</span><span class="n">com</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.127</span>
 <span class="n">Computer</span> <span class="n">name</span><span class="o">=</span><span class="n">TE202B78</span> <span class="n">DNS</span> <span class="n">name</span><span class="o">=</span><span class="n">temppc</span><span class="o">.</span><span class="n">myCompany</span><span class="o">.</span><span class="n">com</span>   <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.128</span>
 </pre></div>
 </div>
@@ -211,13 +205,13 @@ applications only.</p>
 <p>User A accesses the 3270 session monitor application using a .bat file
 the extracts the computer name and build a URL. The URL is sent to
 Virtel.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">70.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mytpx</span><span class="o">+</span><span class="n">TE202B77</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">70.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mytpx</span><span class="o">+</span><span class="n">TE202B77</span>
 </pre></div>
 </div>
 <p>The Virtel identification scenario traps the inbound call and validates
 the computer name against the IP address of the calling computer through
 a DNS lookup. In the Virtel log we will see something like:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA009</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">001.127</span><span class="p">:</span><span class="mi">53411</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA009</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">001.127</span><span class="p">:</span><span class="mi">53411</span>
 <span class="n">Calling</span> <span class="n">SERV3BNK</span> <span class="n">WITH</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">001.127</span><span class="p">,</span><span class="n">LU</span><span class="o">=*</span><span class="n">W2HPOOL</span><span class="p">,</span><span class="n">TERMINAL</span><span class="o">=</span><span class="p">,</span><span class="n">ROUTING</span><span class="o">=</span><span class="n">TE202B77</span>
 <span class="n">DNS</span><span class="o">=</span><span class="n">te202b77</span><span class="o">.</span><span class="n">mycompany</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="n">TERMINAL</span><span class="o">=</span><span class="n">TE202B77</span> <span class="n">LUNAME</span><span class="o">=</span><span class="n">VE202B77</span>
 <span class="n">VIR0919I</span> <span class="n">CLVTA009</span> <span class="n">RELAY</span> <span class="n">VE202B77</span><span class="p">(</span><span class="n">W2HTP077</span><span class="p">)</span> <span class="n">ACTIVATED</span>
@@ -228,11 +222,11 @@ a DNS lookup. In the Virtel log we will see something like:-</p>
 created and will be used to establish a session with the session manager
 identified as transaction MYTPX.</p>
 <p>User B accesses the 3270 session monitor with the following URI</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">70.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mytpx</span><span class="o">+</span><span class="n">TE202B78</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">70.33</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">web2ajax</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mytpx</span><span class="o">+</span><span class="n">TE202B78</span>
 </pre></div>
 </div>
 <p>The following messages appear in the log:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA009</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">001.128</span><span class="p">:</span><span class="mi">53622</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA009</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">001.128</span><span class="p">:</span><span class="mi">53622</span>
 <span class="n">Calling</span> <span class="n">SERV3BNK</span> <span class="n">WITH</span> <span class="n">IP</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">001.128</span><span class="p">,</span><span class="n">LU</span><span class="o">=*</span><span class="n">W2HPOOL</span><span class="p">,</span><span class="n">TERMINAL</span><span class="o">=</span><span class="p">,</span><span class="n">ROUTING</span><span class="o">=</span><span class="n">TE202B78</span>
 <span class="n">DNS</span><span class="o">=</span><span class="n">temppc</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">com</span><span class="p">,</span><span class="n">TERMINAL</span><span class="o">=</span><span class="n">TE202B78</span>
 <span class="n">VIR0919I</span> <span class="n">CLVTA009</span> <span class="n">RELAY</span> <span class="n">REHVT000</span><span class="p">(</span><span class="n">W2HTP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
@@ -247,19 +241,16 @@ will be the next free LU in the pool associated with the transaction.</p>
 applications listed.</p>
 <p><strong>Installation</strong></p>
 <ol class="arabic">
-<li><p class="first">Install Virtel V4.56. This is required to support the Identification scenario delivered in this package. See the Technical Newsletter - <a class="reference internal" href="../TN201608/TN201608.html#tn201608"><span class="std std-ref">“Installing Virtel V4.56 from scratch”</span></a> for further information.</p>
-</li>
-<li><p class="first">Download TBANKEN.TRS from the Virtel FTP Server or save the TRS file if sent via email.</p>
-</li>
-<li><p class="first">Upload to the mainframe into a dataset with the following DCB attributes:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LRECL</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">HLQ</span><span class="o">.</span><span class="n">TBANKEN</span><span class="o">.</span><span class="n">TRS</span>
+<li><p>Install Virtel V4.56. This is required to support the Identification scenario delivered in this package. See the Technical Newsletter - <a class="reference internal" href="../TN201608/TN201608.html#tn201608"><span class="std std-ref">“Installing Virtel V4.56 from scratch”</span></a> for further information.</p></li>
+<li><p>Download TBANKEN.TRS from the Virtel FTP Server or save the TRS file if sent via email.</p></li>
+<li><p>Upload to the mainframe into a dataset with the following DCB attributes:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LRECL</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">HLQ</span><span class="o">.</span><span class="n">TBANKEN</span><span class="o">.</span><span class="n">TRS</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Run the following job. This will unterse the file and install the package libraries that are associated with this newsletter. Here is some sample JCL. Change accordingly.</p>
-</li>
+<li><p>Run the following job. This will unterse the file and install the package libraries that are associated with this newsletter. Here is some sample JCL. Change accordingly.</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">jobcard</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;ED...HOLT...&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">jobcard</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;ED...HOLT...&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
 <span class="o">//</span><span class="n">DDA</span> <span class="n">DD</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">DSN</span><span class="o">=</span><span class="n">HLQ</span><span class="o">.</span><span class="n">TBANKEN</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">MOD</span><span class="p">,</span><span class="n">DELETE</span><span class="p">),</span>
@@ -284,15 +275,15 @@ applications listed.</p>
 </pre></div>
 </div>
 <p>The following two libraries should now exist:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">userid</span><span class="o">.</span><span class="n">TBANKEN</span><span class="o">.</span><span class="n">LOADLIB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">userid</span><span class="o">.</span><span class="n">TBANKEN</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="n">userid</span><span class="o">.</span><span class="n">TBANKEN</span><span class="o">.</span><span class="n">CNTL</span>
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li>Copy the members in userid.TBANKEN.LOADLIB to your Virtel 4.56
-library. There should be three members:-</li>
+<li><p>Copy the members in userid.TBANKEN.LOADLIB to your Virtel 4.56
+library. There should be three members:-</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SCEN3BNK</span> <span class="o">-</span> <span class="n">Assembled</span> <span class="n">Identification</span> <span class="n">Scenario</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SCEN3BNK</span> <span class="o">-</span> <span class="n">Assembled</span> <span class="n">Identification</span> <span class="n">Scenario</span>
 <span class="n">SERV3BNK</span> <span class="o">-</span> <span class="n">Service</span> <span class="n">program</span> <span class="n">called</span> <span class="k">with</span> <span class="n">the</span> <span class="n">Identification</span> <span class="n">Scenario</span>
 <span class="n">VIRT3BNK</span> <span class="o">-</span> <span class="n">Virtel</span> <span class="n">utility</span> <span class="n">program</span> <span class="n">that</span> <span class="n">contains</span> <span class="n">the</span> <span class="n">following</span> <span class="n">functions</span><span class="p">:</span><span class="o">-</span>
 
@@ -301,10 +292,10 @@ library. There should be three members:-</li>
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li>The userid.TBANKEN.CNTL contains the Identification Scenario source
+<li><p>The userid.TBANKEN.CNTL contains the Identification Scenario source
 and some utility jobs. See the Scenario section for a listing of the
 Identification Scenario. Copy the scenario source (SCEN3BNK) to your
-userid .VIRTEL.CNTL library</li>
+userid .VIRTEL.CNTL library</p></li>
 </ol>
 <p><strong>Virtel Configuration</strong></p>
 <p><em>Identification Scenario</em></p>
@@ -324,7 +315,7 @@ VE202B00-FF and VE202C00-FF.</p>
 <p>The identification scenario is responsible for validating the computer
 name passed in the URI as the userdata parameter. The following is an
 extract from the SCEN3BNK scenario which handles the DNS validation:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>* ---------------------------------------------------------------------
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* ---------------------------------------------------------------------
 * Call GETHOSTBA function to retrieve DNS name given IP address -
 * ---------------------------------------------------------------------
         COPY$ VALUE-TO-VARIABLE,VAR=&#39;FUNCTION&#39;,VALUE=&#39;GETHOSTBA&#39;                 &lt; 1
@@ -374,40 +365,40 @@ FINISH  EQU *
 </div>
 <p><strong>Logic</strong></p>
 <ol class="arabic simple">
-<li>Create variable FUNCTION and set to GETHOSTBA. This is the
+<li><p>Create variable FUNCTION and set to GETHOSTBA. This is the
 GetHostByAddress utility function that will called from within the
-VIRTUTIL utility module.</li>
-<li>Get the callers IP Address and place in variable PARM1.</li>
-<li>Get the callers allocated LUNAME pool and place in variable PARM2.</li>
-<li>Get the callers query parameters and place in variable PARM3.</li>
-<li>Get the callers terminal name(userdata) and place in variable PARM4.</li>
-<li>Get the callers transaction and place in variable TRANSACTION.</li>
-<li>If TRANSACTION begins with TSO continue, else exit scenario.</li>
+VIRTUTIL utility module.</p></li>
+<li><p>Get the callers IP Address and place in variable PARM1.</p></li>
+<li><p>Get the callers allocated LUNAME pool and place in variable PARM2.</p></li>
+<li><p>Get the callers query parameters and place in variable PARM3.</p></li>
+<li><p>Get the callers terminal name(userdata) and place in variable PARM4.</p></li>
+<li><p>Get the callers transaction and place in variable TRANSACTION.</p></li>
+<li><p>If TRANSACTION begins with TSO continue, else exit scenario.</p></li>
 </ol>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This will have to be changed to support the transaction you want to nail LUs to.</p>
+<p class="admonition-title">Note</p>
+<p>This will have to be changed to support the transaction you want to nail LUs to.</p>
 </div>
 <ol class="arabic simple" start="8">
-<li>Debugging message.</li>
-<li>Call VIRSV program and pass parameters. This will call program
+<li><p>Debugging message.</p></li>
+<li><p>Call VIRSV program and pass parameters. This will call program
 SCEN3BNK which will interface with the VIRTEL Utility program
 VIRT3BNK. The RESULT variable will contain the result of the
 GETHOSTBA call. If a non-zero return code is returned then the
-Identification Scenario is terminated.</li>
-<li>Debugging message.</li>
-<li>Convert RESULT to uppercase.</li>
-<li>Convert PARM4 to uppercase.</li>
-<li>Validate the terminal name against the returned DNS name. If successful continue else exit Identification Scenario.</li>
-<li>Copy characters 1-7 of terminal name to variable MYSUFFIX.</li>
-<li>Prefix MYSUFFIX variable with character ‘V’ and create variable MYLUNAME.</li>
-<li>Debugging message.</li>
-<li>Set System variable ROUTING-PARAMETER with the contents of variable MYLUNAME.</li>
-<li>Exit Identification Scenario.</li>
+Identification Scenario is terminated.</p></li>
+<li><p>Debugging message.</p></li>
+<li><p>Convert RESULT to uppercase.</p></li>
+<li><p>Convert PARM4 to uppercase.</p></li>
+<li><p>Validate the terminal name against the returned DNS name. If successful continue else exit Identification Scenario.</p></li>
+<li><p>Copy characters 1-7 of terminal name to variable MYSUFFIX.</p></li>
+<li><p>Prefix MYSUFFIX variable with character ‘V’ and create variable MYLUNAME.</p></li>
+<li><p>Debugging message.</p></li>
+<li><p>Set System variable ROUTING-PARAMETER with the contents of variable MYLUNAME.</p></li>
+<li><p>Exit Identification Scenario.</p></li>
 </ol>
 <p><strong>Calling the browser</strong></p>
 <p>The following *.bat file obtains the computer name and takes the first 8 characters and places them into the URI before calling the browsers.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="mi">3</span><span class="n">Banken</span> <span class="n">Sample</span> <span class="n">bat</span> <span class="n">file</span> <span class="n">passing</span> <span class="n">the</span> <span class="n">terminal</span> <span class="n">name</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">title</span> <span class="mi">3</span><span class="n">Banken</span> <span class="n">Sample</span> <span class="n">bat</span> <span class="n">file</span> <span class="n">passing</span> <span class="n">the</span> <span class="n">terminal</span> <span class="n">name</span>
 <span class="nd">@echo</span> <span class="n">on</span>
 <span class="n">color</span> <span class="mi">1</span><span class="n">f</span>
 <span class="bp">cls</span>
@@ -427,16 +418,14 @@ Identification Scenario is terminated.</li>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Change the transaction to the transaction that you wish to nail LUs to. In this example the transaction is mytpx.*</p>
+<p class="admonition-title">Note</p>
+<p>Change the transaction to the transaction that you wish to nail LUs to. In this example the transaction is mytpx.*</p>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -445,7 +434,7 @@ Identification Scenario is terminated.</li>
         <a href="../TN201611/TN201611.html" class="btn btn-neutral float-right" title="Customizing Virtel in V4.56" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201608/TN201608.html" class="btn btn-neutral" title="Installing Virtel V4.56 from scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201608/TN201608.html" class="btn btn-neutral float-left" title="Installing Virtel V4.56 from scratch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -454,11 +443,11 @@ Identification Scenario is terminated.</li>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -471,36 +460,15 @@ Identification Scenario is terminated.</li>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

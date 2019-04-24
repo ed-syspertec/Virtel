@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Installing Virtel V4.53 from scratch" href="../TN201602/TN201602.html"/>
-        <link rel="prev" title="What’s new in Virtel 4.55" href="../TN201522/TN201522.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Installing Virtel V4.53 from scratch" href="../TN201602/TN201602.html" />
+    <link rel="prev" title="What’s new in Virtel 4.55" href="../TN201522/TN201522.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -129,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -137,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -208,7 +202,7 @@ rules that you wish to customize. These will override the defaults in
 WEB3270.CSS. The customised CSS rules must be placed in the CLI-DIR.</p>
 <p>For example to change the colour RED to GREEN code the following CSS
 rules in your <em>custom.css</em> file and upload it to the CLI-DIR directory:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*
 * VIRTEL Web Access 3270 style sheet
 * (c)Copyright SysperTec Communication 2010 All Rights Reserved
 * $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $
@@ -255,7 +249,7 @@ distributed in the source.zip file.</p>
 <p>Create the custom.js file(s) that will be used to select the CSS
 defaults. These files(s) will be displayed in the Web Access Settings
 panel. See the example javascript below:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">typeof</span> <span class="n">w2hparm</span> <span class="o">!==</span><span class="s2">&quot;undefined&quot;</span><span class="p">)</span> <span class="p">{</span>
    <span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
    <span class="n">w2hparm</span><span class="o">.</span><span class="n">synchronizeVirtelMacros</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
@@ -370,7 +364,7 @@ transaction level which provides better functionality for customising
 web elements such as CSS rules.</p>
 <p><strong>Appendix A</strong></p>
 <p>Default 3270 style sheet WEB3270.CSS. Can be found within sources.zip. See Administration portal to download file.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*
 * VIRTEL Web Access 3270 style sheet
 * (c)Copyright SysperTec Communication 2010 All Rights Reserved
 * $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $
@@ -527,9 +521,7 @@ input, #classic input {
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -538,7 +530,7 @@ input, #classic input {
         <a href="../TN201602/TN201602.html" class="btn btn-neutral float-right" title="Installing Virtel V4.53 from scratch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201522/TN201522.html" class="btn btn-neutral" title="What’s new in Virtel 4.55" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201522/TN201522.html" class="btn btn-neutral float-left" title="What’s new in Virtel 4.55" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -547,11 +539,11 @@ input, #classic input {
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -564,36 +556,15 @@ input, #classic input {
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

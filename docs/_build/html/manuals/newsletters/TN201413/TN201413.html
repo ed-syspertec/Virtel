@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="CICS Printing problem" href="../TN201414/TN201414.html"/>
-        <link rel="prev" title="Sharing user macros across multiple instances of Virtel" href="../TN201412/TN201412.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="CICS Printing problem" href="../TN201414/TN201414.html" />
+    <link rel="prev" title="Sharing user macros across multiple instances of Virtel" href="../TN201412/TN201412.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -131,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -139,9 +132,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -212,7 +206,7 @@ on SNA formats and Data Flow</em>.</p>
 <p><strong>Session establishment</strong></p>
 <p>A session is establish through a user opening a browser window to a
 defined Virtel URL. For example http:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>http://192.168.170.15:41002/w2h/WEB2AJAX.htm+TSO1A?logmode=D4A32XX3&amp;rows=52&amp;cols=132
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://192.168.170.15:41002/w2h/WEB2AJAX.htm+TSO1A?logmode=D4A32XX3&amp;rows=52&amp;cols=132
 </pre></div>
 </div>
 <p>It is the URI which determines what Virtel is to do on behalf of the
@@ -295,7 +289,7 @@ between two TCP/IP target stacks running on separate LPARS.</p>
 <p>Each LPAR runs an instance of Virtel. The CLI access port is defined as
 170.15/24 in both the SPVIR1A and SPVIR2A ARBO definitions.</p>
 <p>The TCPIP VIPA definitions in MVS1A look like:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span> <span class="n">SPVIRMAN</span> <span class="k">for</span> <span class="n">VIPARANGE</span> <span class="n">test</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span> <span class="n">SPVIRMAN</span> <span class="k">for</span> <span class="n">VIPARANGE</span> <span class="n">test</span>
 <span class="p">;</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span> <span class="n">VIPA</span> <span class="k">for</span> <span class="n">SPVIR1A</span> <span class="ow">and</span> <span class="n">SPVIR2A</span> <span class="n">distribution</span> <span class="n">tests</span>
 
 <span class="n">VIPADYNAMIC</span>
@@ -308,7 +302,7 @@ between two TCP/IP target stacks running on separate LPARS.</p>
 </div>
 <p>The TCPIP VIPA definitions in MVS2A look like. It is a target for
 170.15/24. Nothing special is defined.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
     <span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPT</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span>
 <span class="n">ENDVIPADYNAMIC</span>
 </pre></div>
@@ -317,13 +311,13 @@ between two TCP/IP target stacks running on separate LPARS.</p>
 in a round robin fashion. Not that this based up a new IP address not a
 new browser session.</p>
 <p><strong>IP Schematic</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>                           +------&gt; TCP/IP (92.161/24) MVS1A - &gt; VTAM – SPVIR1A
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                           +------&gt; TCP/IP (92.161/24) MVS1A - &gt; VTAM – SPVIR1A
 Terminal -&gt; SD (170.15/24) |
                            +------&gt; TCP/IP (92.162/24) MVS1B - &gt; VTAM – SPVIR2A
 </pre></div>
 </div>
 <p><strong>zOS setup</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MVS1A</span> <span class="n">SPVIR1A</span><span class="p">(</span><span class="n">STC</span><span class="p">),</span> <span class="n">SPCICSH</span><span class="p">(</span><span class="n">STC</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MVS1A</span> <span class="n">SPVIR1A</span><span class="p">(</span><span class="n">STC</span><span class="p">),</span> <span class="n">SPCICSH</span><span class="p">(</span><span class="n">STC</span><span class="p">)</span>
 <span class="n">MVS1B</span> <span class="n">SPVIR2A</span><span class="p">(</span><span class="n">STC</span><span class="p">)</span>
 
 <span class="n">SPVIR1A</span> <span class="n">ACB</span> <span class="o">=</span> <span class="n">VIRTEL1A</span> <span class="p">(</span><span class="n">Only</span> <span class="n">used</span> <span class="k">for</span> <span class="n">Admin</span><span class="o">.</span> <span class="n">Functions</span><span class="p">)</span>
@@ -381,7 +375,7 @@ R2AIM000(Printer). Session status for CICS in VTAM looks like this:</p>
 <p><a class="reference internal" href="../../../_images/image122.png"><img alt="image11" src="../../../_images/image122.png" style="width: 7.19792in; height: 1.09375in;" /></a></p>
 <p>Finally, to summarize; the end-to-end session for this particular Virtel
 session looks like this :-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Term. &lt;---&gt; VIRTEL/IP &lt;---&gt; VIRTEL/SNA &lt;–--&gt; R2AVT000 &lt;---&gt; SPCICSH
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Term. &lt;---&gt; VIRTEL/IP &lt;---&gt; VIRTEL/SNA &lt;–--&gt; R2AVT000 &lt;---&gt; SPCICSH
 
             &lt;----- VIRTEL STC ------&gt;        &lt;----- CICS STC -----&gt;
 
@@ -394,9 +388,7 @@ session looks like this :-</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -405,7 +397,7 @@ session looks like this :-</p>
         <a href="../TN201414/TN201414.html" class="btn btn-neutral float-right" title="CICS Printing problem" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201412/TN201412.html" class="btn btn-neutral" title="Sharing user macros across multiple instances of Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201412/TN201412.html" class="btn btn-neutral float-left" title="Sharing user macros across multiple instances of Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -414,11 +406,11 @@ session looks like this :-</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -431,36 +423,15 @@ session looks like this :-</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

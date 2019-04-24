@@ -5,6 +5,7 @@
    \let\sphinxpxdimen\pdfpxdimen\else\newdimen\sphinxpxdimen
 \fi \sphinxpxdimen=.75bp\relax
 
+\PassOptionsToPackage{warn}{textcomp}
 
 
 \usepackage{cmap}
@@ -12,9 +13,13 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
-\usepackage[Bjarne]{fncychap}
-\usepackage[dontkeepoldnames]{sphinx}
 
+
+
+\usepackage[Bjarne]{fncychap}
+\usepackage[,numfigreset=1,mathnumfig]{sphinx}
+
+\fvset{fontsize=\small}
 \usepackage{geometry}
 
 % Include hyperref last.
@@ -25,15 +30,7 @@
 \urlstyle{same}
 \addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents:}}
 
-\addto\captionsenglish{\renewcommand{\figurename}{Fig.}}
-\addto\captionsenglish{\renewcommand{\tablename}{Table}}
-\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
-
-\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
-\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
-
-\addto\extrasenglish{\def\pageautorefname{page}}
-
+\usepackage{sphinxmessages}
 \setcounter{tocdepth}{2}
 
 
@@ -45,17 +42,19 @@
 
 
 \title{Virtel Messages}
-\date{Jul 10, 2018}
+\date{Apr 24, 2019}
 \release{4.57}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
 \renewcommand{\releasename}{Release}
 \makeindex
-
 \begin{document}
 
-\maketitle
+\pagestyle{empty}
+\sphinxmaketitle
+\pagestyle{plain}
 \sphinxtableofcontents
+\pagestyle{normal}
 \phantomsection\label{\detokenize{messages::doc}}
 
 
@@ -69,7 +68,7 @@ This book is a beta version.
 
 Version : 4.57
 
-Release Date : 01 Jul 2017 Publication Date : 01/07/2017
+Release Date : 01 Jul 2019 Publication Date : 01/07/2019
 
 Syspertec Communication
 
@@ -98,7 +97,7 @@ their respective owners.
 
 
 \chapter{Virtel Messages}
-\label{\detokenize{messages:v457mg-introduction}}\label{\detokenize{messages:virtel457mg}}\label{\detokenize{messages:messages-v4-57}}\label{\detokenize{messages:virtel-messages}}
+\label{\detokenize{messages:virtel-messages}}\label{\detokenize{messages:v457mg-introduction}}
 
 \section{Virtel user messages}
 \label{\detokenize{messages:virtel-user-messages}}
@@ -5914,6 +5913,34 @@ None.
 
 \subsection{Messages VIR60xxx}
 \label{\detokenize{messages:messages-vir60xxx}}
+
+\subsubsection{VIR6010E VIRSV ERROR VSVPCMDE RC=x}
+\label{\detokenize{messages:vir6010e-virsv-error-vsvpcmde-rc-x}}\begin{description}
+\item[{Module}] \leavevmode
+VIR6000
+
+\item[{Meaning}] \leavevmode
+VIRSV subtask terminates with RC=x. If RC is greater than 0 then an error has occurred.
+
+\item[{Action}] \leavevmode
+Contact Syspertec Support if RC is greater than 0.
+
+\end{description}
+
+
+\subsubsection{VIR6016I VIRTEL TERMINATED}
+\label{\detokenize{messages:vir6016i-virtel-terminated}}\begin{description}
+\item[{Module}] \leavevmode
+VIR6000
+
+\item[{Meaning}] \leavevmode
+The main Virtel task has terminated.
+
+\item[{Action}] \leavevmode
+None.
+
+\end{description}
+
 
 \subsubsection{VIR6017I FORCIBLY DETACHING VIRTEL}
 \label{\detokenize{messages:vir6017i-forcibly-detaching-virtel}}\begin{description}

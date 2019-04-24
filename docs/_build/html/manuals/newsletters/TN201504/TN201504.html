@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Virtel Macros in Virtel 4.53" href="../TN201505/TN201505.html"/>
-        <link rel="prev" title="Dynamic Directory Interface (DDI)" href="../TN201501/TN201501.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Virtel Macros in Virtel 4.53" href="../TN201505/TN201505.html" />
+    <link rel="prev" title="Dynamic Directory Interface (DDI)" href="../TN201501/TN201501.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -129,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -137,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -214,7 +208,7 @@ VTAM generic resources. See the IBM Network Implementation Guide for
 further information on configuring the CFRM.</p>
 <p>Use the following command to display coupling allocation details for
 ISTGENERIC.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">XCF</span><span class="p">,</span><span class="n">STR</span><span class="p">,</span><span class="n">STRNM</span><span class="o">=</span><span class="n">ISTGENERIC</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">XCF</span><span class="p">,</span><span class="n">STR</span><span class="p">,</span><span class="n">STRNM</span><span class="o">=</span><span class="n">ISTGENERIC</span>
 </pre></div>
 </div>
 <p><strong>VTAM displayof the generic resource</strong></p>
@@ -222,7 +216,7 @@ ISTGENERIC.</p>
 instances which are grouped into the generic resource name VIRTPLEX. The
 example below shows VIRTEL1A and VIRTEL2A as participating in the
 VIRTRPLEX resource name group.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTPLEX</span><span class="p">,</span><span class="n">E</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTPLEX</span><span class="p">,</span><span class="n">E</span>
 
 <span class="n">IST097I</span> <span class="n">DISPLAY</span> <span class="n">ACCEPTED</span>
 <span class="n">IST075I</span> <span class="n">NAME</span> <span class="o">=</span> <span class="n">VIRTPLEX</span><span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="mi">917</span>
@@ -237,7 +231,7 @@ VIRTRPLEX resource name group.</p>
 </div>
 <p>When the VIRTEL*A application is display in VTAM the following messages
 are written to the console log:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTEL1A</span><span class="p">,</span><span class="n">E</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">NET</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTEL1A</span><span class="p">,</span><span class="n">E</span>
 <span class="n">IST097I</span> <span class="n">DISPLAY</span> <span class="n">ACCEPTED</span>
 <span class="n">IST075I</span> <span class="n">NAME</span> <span class="o">=</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">VIRTEL1A</span><span class="p">,</span> <span class="n">TYPE</span> <span class="o">=</span> <span class="n">APPL</span> <span class="mi">925</span>
 <span class="n">IST486I</span> <span class="n">STATUS</span><span class="o">=</span> <span class="n">ACT</span><span class="o">/</span><span class="n">S</span><span class="p">,</span> <span class="n">DESIRED</span> <span class="n">STATE</span><span class="o">=</span> <span class="n">ACTIV</span>
@@ -284,20 +278,20 @@ transaction which targets CICSZ as the VTAM application, i.e. the VTAM
 Generic Resource or CICSPLEX group name.</p>
 <p><strong>Sharing the ARBO and other VSAM files</strong></p>
 <p>In a SYSPLEX or sharing environment the VSAM files, like the ARBO file, must be shared only in READ mode. To support this the following TCT parameter should be coded:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VSAMTYP</span><span class="o">=</span><span class="n">READONLY</span>
 </pre></div>
 </div>
 <p>This VIRTCT parameter allows the setup of ‘READ-ONLY’ Virtels, to be used in production or in a Sysplex. Almost all Virtel VSAM files may be set to read-only mode. (But note that the VIRSWAP file; being a work file it cannot be read-only.)</p>
 <p>If this TCT value is coded then the following changes should also be made to the TCT.</p>
 <ul class="simple">
-<li>The MACRF statements should be amended from MACRF=(SEQ,DIR,OUT,LSR) to MACRF=(SEQ,DIR,LSR).</li>
-<li>The UFILE parameter string should also be changed from 0,10,01 to 0,10,05. For example:-</li>
+<li><p>The MACRF statements should be amended from MACRF=(SEQ,DIR,OUT,LSR) to MACRF=(SEQ,DIR,LSR).</p></li>
+<li><p>The UFILE parameter string should also be changed from 0,10,01 to 0,10,05. For example:-</p></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span> <span class="n">becomes</span> <span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span> <span class="n">becomes</span> <span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span>
 </pre></div>
 </div>
 <p>This will ensure the integrity of the VSAM files across a SYSPLEX or shared environment. When Virtel is started the following messages will be issued:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0093I</span> <span class="n">VTAM</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="n">NAME</span> <span class="n">IS</span> <span class="n">VIRTPLEX</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0093I</span> <span class="n">VTAM</span> <span class="n">GENERIC</span> <span class="n">RESOURCE</span> <span class="n">NAME</span> <span class="n">IS</span> <span class="n">VIRTPLEX</span>
 <span class="n">VIR0024I</span> <span class="n">OPENING</span> <span class="n">FILE</span> <span class="n">VIRARBO</span>
 <span class="n">VIR0024I</span> <span class="n">READ</span> <span class="n">ONLY</span>
 <span class="n">VIR0024I</span> <span class="n">OPENING</span> <span class="n">FILE</span> <span class="n">VIRSWAP</span>
@@ -311,8 +305,8 @@ Generic Resource or CICSPLEX group name.</p>
 </pre></div>
 </div>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Do not set the SHROPTIONS to (4,3) as this will have undesirable results!</p>
+<p class="admonition-title">Danger</p>
+<p>Do not set the SHROPTIONS to (4,3) as this will have undesirable results!</p>
 </div>
 <p>Using a READ only environment enables you to not only share the ARBO file but also the SAMP and HTML TRSF files.</p>
 <p><strong>Virtel naming conventions with multiple tasks</strong></p>
@@ -330,7 +324,7 @@ The relay definitions utilize the system symbolic SYSCLONE value in the
 IEASYMxx member of PARMLIB. The clone value is taken from the system
 symbolic &amp;SYSCLONE and is identified in the VIRTEL definitions through
 the + (plus) character:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LIST</span> <span class="n">of</span> <span class="n">TERMINALS</span> <span class="o">----------------------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">VIRTEL1A</span> <span class="mi">15</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">01</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LIST</span> <span class="n">of</span> <span class="n">TERMINALS</span> <span class="o">----------------------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">VIRTEL1A</span> <span class="mi">15</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">01</span>
 <span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>      <span class="mi">2</span><span class="n">nd</span>  <span class="n">Relay</span>
 <span class="n">CLLOC000</span>  <span class="mi">0050</span>                            <span class="mi">3</span>      <span class="mi">3</span>
 <span class="n">CLVTA000</span>  <span class="mi">0080</span>     <span class="o">*</span><span class="n">W2HPOOL</span>               <span class="mi">3</span>      <span class="mi">3</span>
@@ -345,7 +339,7 @@ the + (plus) character:</p>
 different LPARS whose &amp;SYSCLONE values are 1A and 2A. With the same TCT
 being used for both VIRTEL1A and VIRTEL2A the following is specified in
 the common TCT:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">+</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span><span class="o">+</span><span class="p">,</span>
 <span class="n">SYSPLUS</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -355,7 +349,7 @@ LPAR 1A, and R2AVT000-079 for LPAR 2A.</p>
 <p>Note: It is recommended that only the ARBO file can be shared in this
 configuration.</p>
 <p>The VTAM definition to support this configuration would like:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>APPLVIPX VBUILD TYPE=APPL
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>APPLVIPX VBUILD TYPE=APPL
 * ------------------------------------------------------------------ *
 * Product : VIRTEL                                                   *
 * Description : APPL for VIRTEL SYSPLEX (SPVIR1A and SPVIR2A)        *
@@ -377,7 +371,7 @@ R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
 </pre></div>
 </div>
 <p>Because this naming convention could be constraining if you want to use 4-character LU names, there is a second method which allows you to freely choose the LU names without the need to include the SYSCLONE   characters as part of the LU name. In the next example two pools are defined. Pool *W1APOOL has relay names J000-J999, K000-K999, L000-L999 for LPAR 1 (with printer names Pnnn,Qnnn,Rnnn), and pool *W2APOOL has relay names M000-M999, N000-N999, O000-O999 (with printer names Snnn,Tnnn,Unnn) for LPAR 2:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>     <span class="mi">2</span><span class="n">nd</span>  <span class="n">Relay</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Terminal</span>  <span class="n">Repeated</span> <span class="n">Relay</span>     <span class="n">Entry</span>        <span class="n">Type</span>   <span class="n">I</span><span class="o">/</span><span class="n">O</span>  <span class="n">Pool</span>     <span class="mi">2</span><span class="n">nd</span>  <span class="n">Relay</span>
 <span class="n">CLLOC000</span>  <span class="mi">0500</span>                            <span class="mi">3</span>      <span class="mi">3</span>
 <span class="n">CLVTA000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
 <span class="n">CLVTB000</span>  <span class="mi">1000</span>     <span class="o">*</span><span class="n">W</span><span class="o">+</span><span class="n">POOL</span>                <span class="mi">3</span>      <span class="mi">3</span>
@@ -399,7 +393,7 @@ R&amp;SYSCLONE.IP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,               *
 </pre></div>
 </div>
 <p>The VTAM definitions would be similar to those from the previous example except the &amp;SYSCLONE would be replaced by the relay characters.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>APVIRT&amp;SYSCLONE. VBUILD TYPE=APPL
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>APVIRT&amp;SYSCLONE. VBUILD TYPE=APPL
 * ------------------------------------------------------------------*
 * Product     :  VIRTEL                                             *
 * Description :  Main ACB for VIRTEL application                    *
@@ -441,7 +435,7 @@ tasks is through using distributed VIPA address which is defined in a
 TCPIP profile. In the configuration above it is defined as
 192.168.170.15. The relevant PROFILE definitions for TCPIP would look
 like:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIPADYNAMIC</span>
 <span class="n">VIPARANGE</span> <span class="n">DEFINE</span> <span class="n">MOVEABLE</span> <span class="n">NONDISRUPTIVE</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.20</span>
 <span class="n">VIPADEFINE</span> <span class="n">MOVE</span> <span class="n">IMMED</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span>
 <span class="n">VIPADISTRIBUTE</span> <span class="n">DEFINE</span> <span class="n">TIMEDAFF</span> <span class="mi">300</span> <span class="n">DISTMETHOD</span> <span class="n">ROUNDROBIN</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.15</span>
@@ -465,7 +459,7 @@ number. For example:</p>
 <p>Local ident ==&gt; 0:41002</p>
 <p>This will ensure the Virtel doesn’t associate itself with a particular IP address.</p>
 <p>The Virtel Line display command displays this configuration:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LINES</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LINES</span>
 <span class="n">VIR0200I</span> <span class="n">LINES</span>
 <span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.54</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL1A</span> <span class="n">LINES</span>
 <span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
@@ -480,7 +474,7 @@ number. For example:</p>
 <p>Another way of balancing workloads across multiple Virtel instances is through an Apache Reverse Proxy Server. In this setup the proxy server load balances IP sessions across the known TCPIP stacks, very much like IBM’s Sysplex Distributor.</p>
 <p><a class="reference internal" href="../../../_images/image32.jpeg"><img alt="image3" src="../../../_images/image32.jpeg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>Again, to maintain session affinity the correct load balancing parameters must be used. An example from the http.conf looks like this:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># Virtel</span>
 <span class="c1">#</span>
 <span class="n">ProxyPass</span> <span class="o">/</span> <span class="n">balancer</span><span class="p">:</span><span class="o">//</span><span class="n">hostcluster</span><span class="o">/</span>
@@ -494,7 +488,7 @@ number. For example:</p>
 </div>
 <p>For more information on setting up an Apache Proxy Server visit <a class="reference external" href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html">http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html</a></p>
 <p>To use Apache as a Proxy Server it is essential that the correct configuration modules are loaded at startup:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#LoadModule foo_module modules/mod_foo.so</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#LoadModule foo_module modules/mod_foo.so</span>
 <span class="n">LoadModule</span> <span class="n">authz_host_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authz_host</span><span class="o">.</span><span class="n">so</span>
 <span class="n">LoadModule</span> <span class="n">auth_basic_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_auth_basic</span><span class="o">.</span><span class="n">so</span>
 <span class="n">LoadModule</span> <span class="n">authn_file_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod_authn_file</span><span class="o">.</span><span class="n">so</span>
@@ -530,7 +524,7 @@ number. For example:</p>
 </pre></div>
 </div>
 <p>Some other recommendations are:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Timeouts</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">Timeouts</span>
 <span class="n">SSLDisable</span>
 <span class="n">SSLV3Timeout</span> <span class="mi">18010</span>
 <span class="o">*</span> <span class="n">Format</span> <span class="n">log</span> <span class="k">with</span> <span class="n">router</span> <span class="n">information</span>
@@ -546,9 +540,7 @@ number. For example:</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -557,7 +549,7 @@ number. For example:</p>
         <a href="../TN201505/TN201505.html" class="btn btn-neutral float-right" title="Virtel Macros in Virtel 4.53" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201501/TN201501.html" class="btn btn-neutral" title="Dynamic Directory Interface (DDI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201501/TN201501.html" class="btn btn-neutral float-left" title="Dynamic Directory Interface (DDI)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -566,11 +558,11 @@ number. For example:</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -583,36 +575,15 @@ number. For example:</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

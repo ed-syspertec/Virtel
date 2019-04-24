@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Nailing LUS with an Identification scenario" href="../TN201609/TN201609.html"/>
-        <link rel="prev" title="What’s new in Virtel 4.56 (September 2016)" href="../TN201607/TN201607.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Nailing LUS with an Identification scenario" href="../TN201609/TN201609.html" />
+    <link rel="prev" title="What’s new in Virtel 4.56 (September 2016)" href="../TN201607/TN201607.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -129,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -137,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,7 +182,7 @@
 <p><strong>Cleaning up from a previous installation.</strong></p>
 <p>If you want to delete all the files from a previous installation use the
 following job:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S00</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADRDSSU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S00</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADRDSSU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">M</span>
 <span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="o">//</span><span class="n">TEMP</span> <span class="n">DD</span> <span class="n">DUMMY</span>
  <span class="n">DUMP</span> <span class="n">DATASET</span> <span class="o">-</span>
@@ -203,40 +197,40 @@ following job:-</p>
 </div>
 <p><strong>Getting the software</strong></p>
 <ol class="arabic simple">
-<li>Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></li>
+<li><p>Download relevant files from the FTP server: <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></p></li>
 </ol>
 <ul class="simple">
-<li>/VIRTEL 4.56/Produits/virtel456mvs.zip</li>
-<li>/VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt</li>
-<li>/VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip</li>
+<li><p>/VIRTEL 4.56/Produits/virtel456mvs.zip</p></li>
+<li><p>/VIRTEL 4.56/PTFS and Updates/allptfs-mvs456.txt</p></li>
+<li><p>/VIRTEL 4.56/PTFS and Updates/virtel456updtxxxx.zip</p></li>
 </ul>
 <ol class="arabic simple">
-<li>Unzip “virtel456mvs.zip” into a folder on your workstation.</li>
-<li>Print off the “install.txt” document.</li>
-<li>Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on your workstation.</li>
-<li>Print off the readme document.</li>
+<li><p>Unzip “virtel456mvs.zip” into a folder on your workstation.</p></li>
+<li><p>Print off the “install.txt” document.</p></li>
+<li><p>Unzip “/VIRTEL 4.56/Produits/virtel456updtxxxx.zip” into a folder on your workstation.</p></li>
+<li><p>Print off the readme document.</p></li>
 </ol>
 <p><strong>Installing the software</strong></p>
 <ol class="arabic simple">
-<li>Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.</li>
-<li>Upload the XMIT file virt456.xmit to the file allocated by $alocdsu.</li>
-<li>Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.</li>
-<li>Upload text file allptfs-mvs456.txt to <em>yourqual.VIRT456.CNTL(PTF456MV).</em></li>
-<li>Modify and run job <em>yourqual.VIRT456.CNTL(ZAPJCL)</em>. This will apply maintenance to the VIRTEL load library.</li>
-<li>Authorize the VIRTEL load library. Use the z/OS SETPROG APF command</li>
+<li><p>Upload to the mainframe and edit the text file $alocdsu. Run it to allocate a XMIT file.</p></li>
+<li><p>Upload the XMIT file virt456.xmit to the file allocated by $alocdsu.</p></li>
+<li><p>Upload to the mainframe and edit the text file $restdsu. Run it to restore and install VIRTEL from the uploaded XMIT file.</p></li>
+<li><p>Upload text file allptfs-mvs456.txt to <em>yourqual.VIRT456.CNTL(PTF456MV).</em></p></li>
+<li><p>Modify and run job <em>yourqual.VIRT456.CNTL(ZAPJCL)</em>. This will apply maintenance to the VIRTEL load library.</p></li>
+<li><p>Authorize the VIRTEL load library. Use the z/OS SETPROG APF command</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SETPROG</span> <span class="n">APF</span><span class="p">,</span><span class="n">ADD</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span>\ <span class="o">*</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT456</span><span class="o">.</span><span class="n">LOADLIB</span><span class="o">*</span><span class="p">,[</span><span class="n">VOL</span><span class="o">=</span><span class="n">volser</span> \<span class="o">|</span> <span class="n">SMS</span> <span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SETPROG</span> <span class="n">APF</span><span class="p">,</span><span class="n">ADD</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span>\ <span class="o">*</span><span class="n">yourqual</span><span class="o">.</span><span class="n">VIRT456</span><span class="o">.</span><span class="n">LOADLIB</span><span class="o">*</span><span class="p">,[</span><span class="n">VOL</span><span class="o">=</span><span class="n">volser</span> \<span class="o">|</span> <span class="n">SMS</span> <span class="p">]</span>
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li>Edit the VIRTEL TCT member <em>yourqual.VIRT456.CNTL(VIRTCT01</em>) and assemble using <em>yourqual.VIRT456.CNTL(ASMTCT).</em> See note 6 of “install.txt” for further information.</li>
-<li>Edit <em>yourqual.VIRT456.CNTL(ARBOLOAD)</em> and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.</li>
-<li>Copy <em>yourqual.VIRT456.CNTL(member)</em> to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.</li>
-<li>Edit member <em>yourqual.VIRT456.CNTL(VIRTEL4)</em> and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</li>
-<li>Start Virtel.</li>
+<li><p>Edit the VIRTEL TCT member <em>yourqual.VIRT456.CNTL(VIRTCT01</em>) and assemble using <em>yourqual.VIRT456.CNTL(ASMTCT).</em> See note 6 of “install.txt” for further information.</p></li>
+<li><p>Edit <em>yourqual.VIRT456.CNTL(ARBOLOAD)</em> and submit the job. This builds the default configuration and sample VTAMLST member. See note 8 of the “install.txt” for further information.</p></li>
+<li><p>Copy <em>yourqual.VIRT456.CNTL(member)</em> to SYS1.VTAMLST. Member is either VIRTAPPL, the default member name, or the VTAM applid specified in the ARBOLOAD job on the NODEAPPL= statement. Activate the “member” with the z/OS command V NET,ACT,ID=member.</p></li>
+<li><p>Edit member <em>yourqual.VIRT456.CNTL(VIRTEL4)</em> and copy to SYS1.PROCLIB as member VIRTEL. See notes 11,12 of the “install.txt”.</p></li>
+<li><p>Start Virtel.</p></li>
 </ol>
 <p>You can run VIRTEL as a JOB rather than a STC. This can be useful during testing. See the JCL below for an example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTV</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTV</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;VIRTEL&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">VIRTEL</span> <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT456</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">TCT</span><span class="o">=</span><span class="mi">01</span> <span class="o">=</span> <span class="n">Change</span> <span class="n">to</span> <span class="mi">01</span>
 <span class="o">//*-------------------------------------------------------------------*</span>
@@ -262,11 +256,11 @@ following job:-</p>
 </div>
 <p>Once Virtel is started check that VIRTEL is running correctly and has
 opened sessions ports 41001 and 41002. Issue the following command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
 </pre></div>
 </div>
 <p>The output should be similar to:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINES</span>
 <span class="o">+</span><span class="n">VIR0200I</span> <span class="n">LINES</span>
 <span class="o">+</span><span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.56</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span> <span class="n">LINES</span>
 <span class="o">+</span><span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span> <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
@@ -281,7 +275,7 @@ opened sessions ports 41001 and 41002. Issue the following command:-</p>
 <p>Using a Chrome Browser navigate to the Administration Virtel Portal
 which can be accessed through port 41001. The Drag and Drop upload
 feature is supported by Chrome and Firefox only.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>The following screen image should appear:-</p>
@@ -318,9 +312,7 @@ information.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -329,7 +321,7 @@ information.</p>
         <a href="../TN201609/TN201609.html" class="btn btn-neutral float-right" title="Nailing LUS with an Identification scenario" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201607/TN201607.html" class="btn btn-neutral" title="What’s new in Virtel 4.56 (September 2016)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201607/TN201607.html" class="btn btn-neutral float-left" title="What’s new in Virtel 4.56 (September 2016)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -338,11 +330,11 @@ information.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -355,36 +347,15 @@ information.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

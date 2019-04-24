@@ -16,7 +16,7 @@ Messages V4.57
 
 Version : 4.57
 
-Release Date : 01 Jul 2017 Publication Date : 01/07/2017
+Release Date : 01 Jul 2019 Publication Date : 01/07/2019
 
 Syspertec Communication
 
@@ -3873,7 +3873,25 @@ Action
     None.
 
 Messages VIR60xxx
-^^^^^^^^^^^^^^^^^ 
+^^^^^^^^^^^^^^^^^
+
+VIR6010E VIRSV ERROR VSVPCMDE RC=x
+""""""""""""""""""""""""""""""""""
+Module
+    VIR6000
+Meaning
+    VIRSV subtask terminates with RC=x. If RC is greater than 0 then an error has occurred.
+Action
+    Contact Syspertec Support if RC is greater than 0.
+
+VIR6016I VIRTEL TERMINATED
+""""""""""""""""""""""""""
+Module
+    VIR6000
+Meaning
+    The main Virtel task has terminated.
+Action
+    None.
 
 VIR6017I FORCIBLY DETACHING VIRTEL
 """"""""""""""""""""""""""""""""""

@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="What’s new in Virtel 4.55" href="../TN201522/TN201522.html"/>
-        <link rel="prev" title="Processing the VTAM USS MSG10 buffer" href="../TN201519/TN201519.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="What’s new in Virtel 4.55" href="../TN201522/TN201522.html" />
+    <link rel="prev" title="Processing the VTAM USS MSG10 buffer" href="../TN201519/TN201519.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -129,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -137,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -194,7 +188,7 @@ HLQ.VIRTEL.LOADLIB is compatible with the VIRTEM MACLIB in HLQ.VIRTEL.MACLIB(VIR
 <p>When you start Virtel it will attempt to connect to the predefined
 Virtel logstream. If the logstream doesn’t exists one will be created
 automatically. The following messages will appear in the log:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0024I</span> <span class="n">ATTACHING</span> <span class="n">SUBTASKS</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0024I</span> <span class="n">ATTACHING</span> <span class="n">SUBTASKS</span>
 <span class="n">IXC582I</span> <span class="n">STRUCTURE</span> <span class="n">VIRTEL</span>\<span class="n">_LOG</span>\<span class="n">_1</span> <span class="n">ALLOCATED</span> <span class="n">BY</span> <span class="n">SIZE</span><span class="o">/</span><span class="n">RATIOS</span><span class="o">.</span> <span class="mi">596</span>
 <span class="n">PHYSICAL</span> <span class="n">STRUCTURE</span> <span class="n">VERSION</span><span class="p">:</span> <span class="n">CFF8ABE4</span> <span class="mi">1865</span><span class="n">AA81</span>
 <span class="n">STRUCTURE</span> <span class="n">TYPE</span><span class="p">:</span> <span class="n">LIST</span>
@@ -225,14 +219,14 @@ automatically. The following messages will appear in the log:-</p>
 <p>After this point all messages will be written to the logger, even
 responses to commands. Each Virtel that has LOG=LOGGER will connect to
 the structure. The last message you will see is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0000I</span> <span class="n">SMTP</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Wed</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Dec</span> <span class="mi">2015</span> <span class="mi">22</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">0100</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0000I</span> <span class="n">SMTP</span> <span class="n">Date</span><span class="p">:</span> <span class="n">Wed</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Dec</span> <span class="mi">2015</span> <span class="mi">22</span><span class="p">:</span><span class="mi">34</span><span class="p">:</span><span class="mi">57</span> <span class="o">+</span><span class="mi">0100</span>
 </pre></div>
 </div>
 <p>Fortunately there is a print program that can be used to format and
 print off the log records. This is VIR00002B. When the logstream reaches
 a particular threshold is spools off a dataset. The following messages
 will appear in the log:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">IEF196I</span> <span class="n">IGD100I</span> <span class="mi">0</span><span class="n">AA8</span> <span class="n">ALLOCATED</span> <span class="n">TO</span> <span class="n">DDNAME</span> <span class="n">SYS00008</span> <span class="n">DATACLAS</span> <span class="p">(</span> <span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IEF196I</span> <span class="n">IGD100I</span> <span class="mi">0</span><span class="n">AA8</span> <span class="n">ALLOCATED</span> <span class="n">TO</span> <span class="n">DDNAME</span> <span class="n">SYS00008</span> <span class="n">DATACLAS</span> <span class="p">(</span> <span class="p">)</span>
 <span class="n">IXG283I</span> <span class="n">OFFLOAD</span> <span class="n">DATASET</span> <span class="n">IXGLOGR</span><span class="o">.</span><span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">A0000005</span> <span class="mi">897</span>
 <span class="n">ALLOCATED</span> <span class="n">NEW</span> <span class="n">FOR</span> <span class="n">LOGSTREAM</span> <span class="n">LOGGER</span><span class="o">.</span><span class="n">VIRTEL</span>
 <span class="n">CISIZE</span><span class="o">=</span><span class="mi">4</span><span class="n">K</span><span class="p">,</span> <span class="n">SIZE</span><span class="o">=</span><span class="mi">147456</span>
@@ -250,7 +244,7 @@ will appear in the log:-</p>
 </div>
 <p>To list the logstream, structure and its associated offload datasets,
 use the following JCL:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTL</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTL</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IXCMIAPU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">4</span><span class="n">M</span>
 <span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="n">DATA</span> <span class="n">TYPE</span><span class="p">(</span><span class="n">LOGR</span><span class="p">)</span> <span class="n">REPORT</span><span class="p">(</span><span class="n">NO</span><span class="p">)</span>
@@ -259,7 +253,7 @@ use the following JCL:-</p>
 </pre></div>
 </div>
 <p>The output will look something like this:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Ext</span><span class="o">.</span> <span class="o">&lt;</span><span class="n">SEQ</span><span class="c1">#&gt; Lowest Blockid / Highest GMT / Highest Local / Status Highest Blockid Highest RBA System Name</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ext</span><span class="o">.</span> <span class="o">&lt;</span><span class="n">SEQ</span><span class="c1">#&gt; Lowest Blockid / Highest GMT / Highest Local / Status Highest Blockid Highest RBA System Name</span>
 <span class="o">-----</span> <span class="o">--------</span> <span class="o">----------------</span> <span class="o">-----------------</span> <span class="o">------------------------</span>
 
 <span class="n">A0000001</span> <span class="mi">0000000000023</span><span class="n">F64</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">19</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">35</span> <span class="mi">12</span><span class="o">/</span><span class="mi">03</span><span class="o">/</span><span class="mi">14</span> <span class="mi">20</span><span class="p">:</span><span class="mi">32</span><span class="p">:</span><span class="mi">35</span> <span class="mf">0000000000047E76</span> <span class="mi">00023</span><span class="n">F98</span> <span class="n">ZAMVS1</span>
@@ -271,7 +265,7 @@ use the following JCL:-</p>
 </pre></div>
 </div>
 <p>To delete the structure, run the following job:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTC</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTC</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IXCMIAPU</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">4</span><span class="n">M</span>
 <span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="n">DATA</span> <span class="n">TYPE</span><span class="p">(</span><span class="n">LOGR</span><span class="p">)</span> <span class="n">REPORT</span><span class="p">(</span><span class="n">NO</span><span class="p">)</span>
@@ -282,12 +276,12 @@ use the following JCL:-</p>
 <p><strong>Reverting back to the console</strong></p>
 <p>To revert back to console logging, the normal logging behaviour for
 Virtel, issue the following command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>
 </pre></div>
 </div>
 <p>After this all Virtel messages will be written to the console.</p>
 <p>Example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>
 <span class="n">VIR0238I</span> <span class="n">VIRTEL</span> <span class="n">LOG</span> <span class="n">RECORDING</span> <span class="n">TO</span> <span class="n">CONSOLE</span>
 <span class="n">F</span> <span class="n">SPVIR1A</span><span class="p">,</span><span class="n">LINES</span>
 <span class="n">VIR0200I</span> <span class="n">LINES</span>
@@ -302,7 +296,7 @@ Virtel, issue the following command:-</p>
 <p><strong>The VIR0002B Logger print program.</strong></p>
 <p>This program currently resides in SPTHOLT.VIRTEL.DEV.LOADLIB</p>
 <p>Example JCL:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span>
 <span class="o">//*</span> <span class="n">DESCRIPTION</span>
 <span class="o">//*</span>
 <span class="o">//</span><span class="n">LOGGER</span> <span class="n">PROC</span> <span class="n">P</span><span class="o">=</span>
@@ -320,14 +314,14 @@ Virtel, issue the following command:-</p>
 </pre></div>
 </div>
 <p>The parameters are as follows:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">COPY</span><span class="p">([</span><span class="n">start_date</span><span class="p">][,</span><span class="n">end_date</span><span class="p">]),</span> <span class="n">DELETE</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">COPY</span><span class="p">([</span><span class="n">start_date</span><span class="p">][,</span><span class="n">end_date</span><span class="p">]),</span> <span class="n">DELETE</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
          <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>                  <span class="p">(</span><span class="o">&gt;</span><span class="n">nnn</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>COPY</strong></p>
 <p>Records are to be copied to the SYSLOG-format file. If COPY is not
 specified, no records are copied.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span>
 </pre></div>
 </div>
 <p>The starting and ending dates of the time span, both in the format
@@ -339,7 +333,7 @@ start_date and end_date are allowed to default, the parentheses after
 COPY may be omitted. If you specify a start date of today, you must also
 specify the end date of today, otherwise the program will assume an end
 date of yesterday and abend.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nnn</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nnn</span>
 </pre></div>
 </div>
 <p>Indicates that records dated more than nnn days before today are to be
@@ -396,9 +390,7 @@ leaving something over 24 hours’ worth of records in the log each time.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -407,7 +399,7 @@ leaving something over 24 hours’ worth of records in the log each time.</p>
         <a href="../TN201522/TN201522.html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.55" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201519/TN201519.html" class="btn btn-neutral" title="Processing the VTAM USS MSG10 buffer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201519/TN201519.html" class="btn btn-neutral float-left" title="Processing the VTAM USS MSG10 buffer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -416,11 +408,11 @@ leaving something over 24 hours’ worth of records in the log each time.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -433,36 +425,15 @@ leaving something over 24 hours’ worth of records in the log each time.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

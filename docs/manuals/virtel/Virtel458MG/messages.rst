@@ -3875,6 +3875,24 @@ Action
 Messages VIR60xxx
 ^^^^^^^^^^^^^^^^^ 
 
+VIR6010E VIRSV ERROR VSVPCMDE RC=x
+""""""""""""""""""""""""""""""""""
+Module
+    VIR6000
+Meaning
+    VIRSV subtask terminates with RC=x. If RC is greater than 0 then an error has occurred.
+Action
+    Contact Syspertec Support if RC is greater than 0.
+
+VIR6016I VIRTEL TERMINATED
+""""""""""""""""""""""""""
+Module
+    VIR6000
+Meaning
+    The main Virtel task has terminated.
+Action
+    None.
+
 VIR6017I FORCIBLY DETACHING VIRTEL
 """"""""""""""""""""""""""""""""""
 Module

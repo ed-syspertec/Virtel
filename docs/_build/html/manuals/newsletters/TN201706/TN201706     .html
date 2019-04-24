@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Virtel Batch Maintenance" href="../TN201709/TN201709.html"/>
-        <link rel="prev" title="Printing PCL files with NodeJS" href="../TN201705/TN201705     .html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Virtel Batch Maintenance" href="../TN201709/TN201709.html" />
+    <link rel="prev" title="Printing PCL files with NodeJS" href="../TN201705/TN201705     .html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -135,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -143,9 +136,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -200,7 +194,7 @@
 mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting options and customization. As of Virtel V4.56 this is the preferred mode for Virtel customisation. By default, neither mode is active. Certain steps must be followed to activate either “compatibility” or “option” mode. As distributed Virtel will use programmatically set defaults and search for customization elements from the W2H directories. See the default transactions shipped with Virtel for custom.js, custom.css, w2hparm.js elements.</p>
 <p>The previous “Compatibility “ mode is still supported. But requires users to re-assemble their TCTs with the ‘Option-default-compatibility’ keyword in the TCT. This will maintain previous customised behaviour for the custom.css, w2hparm.js and custom.js files.</p>
 <p><em>TCT keyword for compatibility mode</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span> <span class="o">=</span> <span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="o">/*</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mi">4</span> <span class="o">*/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTSETn</span> <span class="o">=</span> <span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="o">/*</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mi">4</span> <span class="o">*/</span>
 </pre></div>
 </div>
 <p>The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customised versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56. To operate in “option mode” requires changes to the ARBO file with the additional of two new transactions to support the “option” pathname. See the ARBOLOAD (Option=YES) or ARBOMIGR in the SAMPLIB file for details on how to include these new transactions.</p>
@@ -210,8 +204,8 @@ the /option/ pathname. Two new transactions have been added to support
 the /option/ pathname. See the <em>Virtel Users Guide, Customizing Virtel using the Option mode.</em></p>
 <p>Further details can also be found in the Virtel technical newsletter <em>TN2016-11 Customising Virtel in V4.56</em>.</p>
 <div class="admonition danger">
-<p class="first admonition-title">Danger</p>
-<p class="last">Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
+<p class="admonition-title">Danger</p>
+<p>Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
 </div>
 </div>
 </div>
@@ -238,13 +232,13 @@ from ‘left to right’ to ‘right to left’ and return. This is the way some
 countries support 3270 Arabic.</p>
 <p>Note:-</p>
 <ul class="simple">
-<li>The Alt-ENTER is active only if the ‘Bidirectional data’ Display
-option is set.</li>
-<li>The Alt-ENTER key may be unset by going to w2h key mappings options.</li>
-<li>The w2hparm.mirrorMode may be set in a w2hparm.js file to preset the
-option:-</li>
+<li><p>The Alt-ENTER is active only if the ‘Bidirectional data’ Display
+option is set.</p></li>
+<li><p>The Alt-ENTER key may be unset by going to w2h key mappings options.</p></li>
+<li><p>The w2hparm.mirrorMode may be set in a w2hparm.js file to preset the
+option:-</p></li>
 </ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">mirrorMode</span> <span class="o">=</span> <span class="n">true</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">mirrorMode</span> <span class="o">=</span> <span class="n">true</span>
 </pre></div>
 </div>
 <p><img alt="image3" src="../../../_images/image329.png" /></p>
@@ -254,7 +248,7 @@ option:-</li>
 it is the continuation of a field. For example when the 3270 continues
 after the end of a line and/or the screen.</p>
 <p>Example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;printReady&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mainFont&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">vt</span><span class="o">=</span><span class="s2">&quot;I&quot;</span> <span class="n">continuing</span><span class="o">=</span><span class="s2">&quot;YES&quot;</span> <span class="n">vp</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">vr</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">vc</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">vl</span><span class="o">=</span><span class="s2">&quot;1760&quot;</span> <span class="n">vn</span><span class="o">=</span><span class="s2">&quot;V0000000&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;NGREEN2&quot;</span> <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;printReady&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;mainFont&quot;</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">vt</span><span class="o">=</span><span class="s2">&quot;I&quot;</span> <span class="n">continuing</span><span class="o">=</span><span class="s2">&quot;YES&quot;</span> <span class="n">vp</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">vr</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">vc</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">vl</span><span class="o">=</span><span class="s2">&quot;1760&quot;</span> <span class="n">vn</span><span class="o">=</span><span class="s2">&quot;V0000000&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;NGREEN2&quot;</span> <span class="o">*</span>
 </pre></div>
 </div>
 <p><strong>5512 Screen stretching</strong></p>
@@ -266,7 +260,7 @@ after the end of a line and/or the screen.</p>
 <p>Use RACF to validate the name of a LU specified on the ForceLUNAME
 parameter. The TCT keyword RTERM= has been added.</p>
 <p>Example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>RTERM=class (class=resource class for terminals - Facility)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>RTERM=class (class=resource class for terminals - Facility)
 </pre></div>
 </div>
 <p>In the entry point definition specify an “X” in the Mandatory
@@ -288,11 +282,11 @@ been added. This update also transposes update 4196 RACF mixed-case
 passwords to Top Secret to allow automatic detection of mixed case
 support.</p>
 <p>Example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">MIXEDCASE</span><span class="p">),</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">MIXEDCASE</span><span class="p">),</span>
 </pre></div>
 </div>
 <p>New Messages:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR08x3I</span> <span class="n">MIXED</span><span class="o">-</span><span class="n">CASE</span> <span class="n">PASSWORD</span> <span class="n">SUPPORT</span> <span class="n">IS</span> <span class="n">ACTIVE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR08x3I</span> <span class="n">MIXED</span><span class="o">-</span><span class="n">CASE</span> <span class="n">PASSWORD</span> <span class="n">SUPPORT</span> <span class="n">IS</span> <span class="n">ACTIVE</span>
 </pre></div>
 </div>
 <p>Indicates MIXEDCASE option has been set by user. X = 4 for Top Secret
@@ -301,7 +295,7 @@ and 6 for RACF.</p>
 <p>New external modules IBM0838 and IBM1160. IBM1160 contains the euro sign
 where IBM0838 does not.</p>
 <p>Example in the TCT code:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CHARSET</span><span class="o">=</span><span class="p">(</span><span class="n">IBM0838</span><span class="p">,</span><span class="n">IBM1160</span><span class="p">),</span> <span class="o">*</span> <span class="n">load</span> <span class="n">Thai</span> <span class="n">Charsets</span>      <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CHARSET</span><span class="o">=</span><span class="p">(</span><span class="n">IBM0838</span><span class="p">,</span><span class="n">IBM1160</span><span class="p">),</span> <span class="o">*</span> <span class="n">load</span> <span class="n">Thai</span> <span class="n">Charsets</span>      <span class="o">*</span>
 <span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1160</span><span class="p">,</span>           <span class="o">*</span> <span class="n">default</span> <span class="n">to</span> <span class="n">Thai</span> <span class="n">Charset</span> <span class="o">*</span>
 </pre></div>
 </div>
@@ -322,7 +316,7 @@ made aware in advanced when the Virtel licence is about to expire. The
 new TCT option “WARNING=” determines the number of days prior to issuing
 a licence warning message.</p>
 <p>Example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">WARNING</span> <span class="n">IF</span> <span class="n">EXPIRE</span> <span class="n">WITHIN</span> <span class="mi">7</span> <span class="n">DAYS</span> <span class="p">(</span><span class="n">DEFAULT</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">WARNING</span> <span class="n">IF</span> <span class="n">EXPIRE</span> <span class="n">WITHIN</span> <span class="mi">7</span> <span class="n">DAYS</span> <span class="p">(</span><span class="n">DEFAULT</span><span class="p">)</span>
                 <span class="n">COMPANY</span><span class="o">=</span><span class="s1">&#39;SYSPERTEC COMMUNICATION VIRTEL 5 MVS&#39;</span><span class="p">,</span> <span class="o">*</span>    <span class="n">X</span>
                 <span class="n">ADDR1</span><span class="o">=</span><span class="s1">&#39;196 BUREAUX DE LA COLLINE&#39;</span><span class="p">,</span>      <span class="o">*</span>            <span class="n">X</span>
                 <span class="n">ADDR2</span><span class="o">=</span><span class="s1">&#39;92213 SAINT-CLOUD CEDEX FRANCE&#39;</span><span class="p">,</span> <span class="o">*</span>            <span class="n">X</span>
@@ -332,7 +326,7 @@ a licence warning message.</p>
 </pre></div>
 </div>
 <p>The following messages will appear in the Virtel log:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">00.00</span><span class="o">.</span><span class="mi">01</span> <span class="n">JOB01373</span> <span class="o">----</span> <span class="n">FRIDAY</span><span class="p">,</span> <span class="mi">05</span> <span class="n">MAY</span> <span class="mi">2017</span> <span class="o">----</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">00.00</span><span class="o">.</span><span class="mi">01</span> <span class="n">JOB01373</span> <span class="o">----</span> <span class="n">FRIDAY</span><span class="p">,</span> <span class="mi">05</span> <span class="n">MAY</span> <span class="mi">2017</span> <span class="o">----</span>
 <span class="mf">00.00</span><span class="o">.</span><span class="mi">01</span> <span class="n">JOB01373</span> <span class="n">VIR0900I</span> <span class="n">LICENCE</span> <span class="n">VIRTEL</span> <span class="n">MINITEL</span> <span class="mi">001099900</span> <span class="p">(</span><span class="mi">2017</span> <span class="o">-</span> <span class="mi">05</span> <span class="o">-</span> <span class="mi">05</span><span class="p">)</span>
 <span class="mf">00.00</span><span class="o">.</span><span class="mi">01</span> <span class="n">JOB01373</span> <span class="n">VIR0901W</span> <span class="n">LICENCE</span> <span class="n">IS</span> <span class="n">ABOUT</span> <span class="n">TO</span> <span class="n">EXPIRE</span>
 </pre></div>
@@ -343,7 +337,7 @@ a licence warning message.</p>
 <p>A new external module IBM0276 has been added to support French Canadian
 translate tables.</p>
 <p>Example in the TCT code the following:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CHARSET</span><span class="o">=</span><span class="n">IBM0276</span><span class="p">,</span> <span class="n">load</span> <span class="n">French</span> <span class="n">Canadian</span> <span class="n">table</span>   <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CHARSET</span><span class="o">=</span><span class="n">IBM0276</span><span class="p">,</span> <span class="n">load</span> <span class="n">French</span> <span class="n">Canadian</span> <span class="n">table</span>   <span class="o">*</span>
 <span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM0276</span><span class="p">,</span> <span class="n">default</span> <span class="n">translate</span> <span class="n">table</span>      <span class="o">*</span>
 </pre></div>
 </div>
@@ -378,9 +372,9 @@ corresponding ADMVWM.JS module.</p>
 <p>This fix implements several new macro and DDI features. It incorporates
 the following changes:-</p>
 <ul class="simple">
-<li>A “Refresh” button has been added to the Global panel.</li>
-<li>Fix a bug in removing records.</li>
-<li>Improved keyboard mapping graphics.</li>
+<li><p>A “Refresh” button has been added to the Global panel.</p></li>
+<li><p>Fix a bug in removing records.</p></li>
+<li><p>Improved keyboard mapping graphics.</p></li>
 </ul>
 <p><strong>5484 Hotkey support for DDI macros</strong></p>
 <p>Hotkey key mapping support for VIRTEL DDI macros.</p>
@@ -392,11 +386,11 @@ TOMY).</p>
 <p>To improve the synchronicity of macros stored within a user’s local
 storage and those maintained on the mainframe. The following options are
 now available in the w2hparm.js member:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
 </pre></div>
 </div>
 <p>Where value can be:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>“never” [default] | “once” | “daily” | “session”
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>“never” [default] | “once” | “daily” | “session”
 </pre></div>
 </div>
 <p><strong>5490 Disable Long Poll</strong></p>
@@ -419,16 +413,16 @@ creation of a dummy input field.</p>
 <p>Allows an IDENTIFICATION scenario to override the name of the relay
 chosen by Virtel.</p>
 <p>For example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ VARIABLE-TO-SYSTEM,VAR=&#39;VAR1&#39;,FIELD=(NAME-OF,RELAY)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ VARIABLE-TO-SYSTEM,VAR=&#39;VAR1&#39;,FIELD=(NAME-OF,RELAY)
 </pre></div>
 </div>
 <p>An alternative is to use:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">VALUE</span><span class="o">-</span><span class="n">OF</span><span class="p">,</span><span class="n">ROUTING</span><span class="o">-</span><span class="n">PARAMETER</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">VALUE</span><span class="o">-</span><span class="n">OF</span><span class="p">,</span><span class="n">ROUTING</span><span class="o">-</span><span class="n">PARAMETER</span><span class="p">)</span>
 </pre></div>
 </div>
 <p><strong>5475 COPY$ NAME-OF TERMINAL</strong></p>
 <p>Implement a new variant of COPY$:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TERMINAL&#39;, *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TERMINAL&#39;, *
 FIELD=(NAME-OF,TERMINAL)
 </pre></div>
 </div>
@@ -438,22 +432,22 @@ DNS look up facility.</p>
 sub-parameter of the TCP1= (or TCP2=) parameter in the VIRTCT. (Any
 value may be specified). Not yet implemented in VSE.</p>
 <p>Example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TCP1</span><span class="o">=</span><span class="p">(</span><span class="n">TCPIP</span><span class="p">,,</span><span class="n">DNS</span><span class="p">,</span><span class="mi">65535</span><span class="p">),</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TCP1</span><span class="o">=</span><span class="p">(</span><span class="n">TCPIP</span><span class="p">,,</span><span class="n">DNS</span><span class="p">,</span><span class="mi">65535</span><span class="p">),</span>
 </pre></div>
 </div>
 <p>During Virtel startup, the following messages will appear:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">VIRDNS1W</span> <span class="n">TKP1</span> <span class="n">DNS</span> <span class="n">SUBTASK</span> <span class="n">DNS</span> <span class="n">STARTING</span> <span class="n">VIRDNS1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span><span class="n">VIRDNS1W</span> <span class="n">TKP1</span> <span class="n">DNS</span> <span class="n">SUBTASK</span> <span class="n">DNS</span> <span class="n">STARTING</span> <span class="n">VIRDNS1</span>
 <span class="o">+</span><span class="n">VIRDNS2W</span> <span class="n">TKP1</span> <span class="n">DNS</span> <span class="n">SUBTASK</span> <span class="n">VIRDNS1</span> <span class="n">STARTED</span>
 </pre></div>
 </div>
 <p>Sample scenario:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TERMINAL&#39;,                  *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;TERMINAL&#39;,                  *
 FIELD=(NAME-OF,TERMINAL)
 ERROR$ 0,&#39;TERMINAL: &#39;,&#39;*TERMINAL&#39;
 </pre></div>
 </div>
 <p>Sample output:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">DEMOHTTP</span> <span class="n">CONNECTING</span> <span class="n">HTLOC005</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.058</span><span class="p">:</span><span class="mi">53786</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">DEMOHTTP</span> <span class="n">CONNECTING</span> <span class="n">HTLOC005</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.058</span><span class="p">:</span><span class="mi">53786</span>
 <span class="n">TERMINAL</span><span class="p">:</span> <span class="n">w8</span><span class="o">-</span><span class="n">jmsaby</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
@@ -462,65 +456,63 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
 <p><strong>5486 NAME-OF GROUP support</strong></p>
 <p>Scenario NAME-OF construct now supports the GROUP option.</p>
 <p>Example:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">LINE</span><span class="o">-</span><span class="n">EXTERNAL</span><span class="p">)}}}</span>             <span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">LINE</span><span class="o">-</span><span class="n">EXTERNAL</span><span class="p">)}}}</span>             <span class="o">*</span>
 <span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">USER</span><span class="p">)}}}</span>                      <span class="o">*</span>
 <span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">GROUP</span><span class="p">)}}}</span>                     <span class="o">*</span>
 <span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">USER</span><span class="o">-</span><span class="n">IP</span><span class="o">-</span><span class="n">ADDRESS</span><span class="p">)}}}</span>           <span class="o">*</span>
 </pre></div>
 </div>
 <p>Will produce:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span>\<span class="o">*</span> <span class="n">SPTSABY</span>\<span class="o">*</span> <span class="n">SPGPTECH</span>\<span class="o">*</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.091</span>\<span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span>\<span class="o">*</span> <span class="n">SPTSABY</span>\<span class="o">*</span> <span class="n">SPGPTECH</span>\<span class="o">*</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.091</span>\<span class="o">*</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="bug-fixes">
 <h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>5435 Global variable conflict between.</li>
-<li>5436 Fix problem with OCCURS-UNLIMITED when analysing JSON objects.</li>
-<li>5437 VSE - corrects TCT command display of BFVSAM and BUFDATA.</li>
-<li>5438 Correct TCT command display and multi-line WTO</li>
-<li>5440 ASRA abend entering Network Management sub-application (PA2 + PF6)</li>
-<li>5445 TRACE SCENARIO statement produces spurious character in WTO</li>
-<li>5446 url HOTSPOT in wrong position for multi-line output</li>
-<li>5448 Error if password contains a non-alphanumeric character.</li>
-<li>5448a Correct IE8 display. Potential blocking error.</li>
-<li>5449 Macro check box not rendered correctly.</li>
-<li>5450 Corrects updt5447. German translation was missing.</li>
-<li>5451 Re-instate w2hparm.js default behaviour.</li>
-<li>5455 Correct ADMIN HTML Rules display.</li>
-<li>5460 Compatibility fix for settings panel.</li>
-<li>5461 Avoid blank settings page with master/slave settings in screen capture.</li>
-<li>5462 Files larger than 30K are incorrectly retrieved from CACHE.</li>
-<li>5463 Correct processing of HTTP pseudo terminal with an &#64;EIB.</li>
-<li>5465 IE8 corrections for DDI and macro support.</li>
-<li>5466 Correct macro API which blocked “Save” button.</li>
-<li>5464 VIRSV Improve initialisation messages.</li>
-<li>5470 Correct first line of screen when using logmode SNX32705</li>
-<li>5471 Fix D23-002 ABEND due to incorrect URL</li>
-<li>5472 Correct time column alignment in DDI display.</li>
-<li>5478 Fix C03 ABEND on shutdown.</li>
-<li>5479 Fix DDI “delete” bug.</li>
-<li>5488 Fix DDI “save” bug.</li>
-<li>5489 Corrections to the DDI macro interface.</li>
-<li>5492 Support % character in HTML Signon password field.</li>
-<li>5493 Fix ABEND878-10 ABEND.</li>
-<li>5494 Correct ICON protocol. Issues incorrect NACK in some situations.</li>
-<li>5495 Correct AutoPrint feature. Problem with printing multiple pages.</li>
-<li>5497 Correct MIME error after upload.</li>
-<li>5499 Correct CLONE= parameter to support either 1 or 2 characters.</li>
-<li>5500 Fix bug in VIR0021W, USS MSGTAB10 processor.</li>
-<li>5505 Correct Loop when ATTN key is pressed.</li>
-<li>5506 Fix clean-up processing in VIR0021W. Stop LOAD failure.</li>
+<li><p>5435 Global variable conflict between.</p></li>
+<li><p>5436 Fix problem with OCCURS-UNLIMITED when analysing JSON objects.</p></li>
+<li><p>5437 VSE - corrects TCT command display of BFVSAM and BUFDATA.</p></li>
+<li><p>5438 Correct TCT command display and multi-line WTO</p></li>
+<li><p>5440 ASRA abend entering Network Management sub-application (PA2 + PF6)</p></li>
+<li><p>5445 TRACE SCENARIO statement produces spurious character in WTO</p></li>
+<li><p>5446 url HOTSPOT in wrong position for multi-line output</p></li>
+<li><p>5448 Error if password contains a non-alphanumeric character.</p></li>
+<li><p>5448a Correct IE8 display. Potential blocking error.</p></li>
+<li><p>5449 Macro check box not rendered correctly.</p></li>
+<li><p>5450 Corrects updt5447. German translation was missing.</p></li>
+<li><p>5451 Re-instate w2hparm.js default behaviour.</p></li>
+<li><p>5455 Correct ADMIN HTML Rules display.</p></li>
+<li><p>5460 Compatibility fix for settings panel.</p></li>
+<li><p>5461 Avoid blank settings page with master/slave settings in screen capture.</p></li>
+<li><p>5462 Files larger than 30K are incorrectly retrieved from CACHE.</p></li>
+<li><p>5463 Correct processing of HTTP pseudo terminal with an &#64;EIB.</p></li>
+<li><p>5465 IE8 corrections for DDI and macro support.</p></li>
+<li><p>5466 Correct macro API which blocked “Save” button.</p></li>
+<li><p>5464 VIRSV Improve initialisation messages.</p></li>
+<li><p>5470 Correct first line of screen when using logmode SNX32705</p></li>
+<li><p>5471 Fix D23-002 ABEND due to incorrect URL</p></li>
+<li><p>5472 Correct time column alignment in DDI display.</p></li>
+<li><p>5478 Fix C03 ABEND on shutdown.</p></li>
+<li><p>5479 Fix DDI “delete” bug.</p></li>
+<li><p>5488 Fix DDI “save” bug.</p></li>
+<li><p>5489 Corrections to the DDI macro interface.</p></li>
+<li><p>5492 Support % character in HTML Signon password field.</p></li>
+<li><p>5493 Fix ABEND878-10 ABEND.</p></li>
+<li><p>5494 Correct ICON protocol. Issues incorrect NACK in some situations.</p></li>
+<li><p>5495 Correct AutoPrint feature. Problem with printing multiple pages.</p></li>
+<li><p>5497 Correct MIME error after upload.</p></li>
+<li><p>5499 Correct CLONE= parameter to support either 1 or 2 characters.</p></li>
+<li><p>5500 Fix bug in VIR0021W, USS MSGTAB10 processor.</p></li>
+<li><p>5505 Correct Loop when ATTN key is pressed.</p></li>
+<li><p>5506 Fix clean-up processing in VIR0021W. Stop LOAD failure.</p></li>
 </ul>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -529,7 +521,7 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
         <a href="../TN201709/TN201709.html" class="btn btn-neutral float-right" title="Virtel Batch Maintenance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201705/TN201705     .html" class="btn btn-neutral" title="Printing PCL files with NodeJS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201705/TN201705     .html" class="btn btn-neutral float-left" title="Printing PCL files with NodeJS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -538,11 +530,11 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -555,36 +547,15 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

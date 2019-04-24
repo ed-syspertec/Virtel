@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Sharing user macros across multiple instances of Virtel" href="../TN201412/TN201412.html"/>
-        <link rel="prev" title="Taking a VTAM trace" href="../TN201410/TN201410.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Sharing user macros across multiple instances of Virtel" href="../TN201412/TN201412.html" />
+    <link rel="prev" title="Taking a VTAM trace" href="../TN201410/TN201410.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -131,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -139,9 +132,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -190,9 +184,9 @@
 <p>This technical newsletter describes how to build a VTAM USSTAB
 equivalent using Web Access facility. The process will cover:-</p>
 <ul class="simple">
-<li>Modifying the tool bar.</li>
-<li>Setting the correct fonts and keys.</li>
-<li>Building a template to act as the USSTAB screen.</li>
+<li><p>Modifying the tool bar.</p></li>
+<li><p>Setting the correct fonts and keys.</p></li>
+<li><p>Building a template to act as the USSTAB screen.</p></li>
 </ul>
 <p>All of these modifications are customised Java Script and HTML modules
 which will be kept in the default directory for the relevant Entry
@@ -282,7 +276,7 @@ code pulls these two modules from the users default directory associated
 with the entry point.</p>
 <p>The modifications made to <em>custom.js</em> are shown in the following piece
 of code:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="n">Copyright</span> <span class="n">SysperTec</span> <span class="n">Communication</span> <span class="mi">2012</span> <span class="n">All</span> <span class="n">Rights</span> <span class="n">Reserved</span>
 <span class="o">*</span> <span class="n">VIRTEL</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">customer</span><span class="o">-</span><span class="n">specific</span> <span class="n">javascript</span> <span class="n">functions</span>
 <span class="o">*/</span>
@@ -298,7 +292,7 @@ and “playback” tools from the tool bar.</p>
 <p>Also, the <em>w2hparm.js</em> module has been modified to change the fonts and
 keys from the defaults. The following is an example of <em>w2hparm.js</em> as
 used with USSHSYSP.HTML:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Default</span> <span class="n">Virtel</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">USSHSYSP</span><span class="o">.</span><span class="n">HTML</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Default</span> <span class="n">Virtel</span> <span class="n">Web</span> <span class="n">Access</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">USSHSYSP</span><span class="o">.</span><span class="n">HTML</span>
 <span class="o">//</span> <span class="n">see</span> <span class="n">w2hparmdefns</span> <span class="ow">in</span> <span class="n">js01</span><span class="o">.</span><span class="n">js</span> <span class="k">for</span> <span class="n">parameters</span> <span class="ow">and</span> <span class="n">allowable</span> <span class="n">values</span>
 <span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
@@ -341,7 +335,7 @@ include <em>custom.js</em> and <em>w2hparm.js</em> from the distributed ../<em>w
 directory and not from your default EntryPoint directory.</p>
 <p><strong>Appendix A</strong></p>
 <p>Code for template USSWSYSP.HTML</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01//EN&quot;
 &quot;http://www.w3.org/TR/html4/strict.dtd&quot;&gt;
    &lt;html&gt;
       &lt;head&gt; &lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
@@ -462,8 +456,8 @@ directory and not from your default EntryPoint directory.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The blankLine variable has 80 blanks between the quotes.</p>
+<p class="admonition-title">Note</p>
+<p>The blankLine variable has 80 blanks between the quotes.</p>
 </div>
 <p><strong>Related material</strong></p>
 <p><a class="reference internal" href="../TN201519/TN201519.html"><span class="doc">Processing the VTAM USS MSG10 buffer</span></a></p>
@@ -471,9 +465,7 @@ directory and not from your default EntryPoint directory.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -482,7 +474,7 @@ directory and not from your default EntryPoint directory.</p>
         <a href="../TN201412/TN201412.html" class="btn btn-neutral float-right" title="Sharing user macros across multiple instances of Virtel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201410/TN201410.html" class="btn btn-neutral" title="Taking a VTAM trace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201410/TN201410.html" class="btn btn-neutral float-left" title="Taking a VTAM trace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -491,11 +483,11 @@ directory and not from your default EntryPoint directory.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -508,36 +500,15 @@ directory and not from your default EntryPoint directory.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

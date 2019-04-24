@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Virtel Security. Using server and client certificates" href="../TN201416/TN201416.html"/>
-        <link rel="prev" title="CICS Printing problem" href="../TN201414/TN201414.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Virtel Security. Using server and client certificates" href="../TN201416/TN201416.html" />
+    <link rel="prev" title="CICS Printing problem" href="../TN201414/TN201414.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -131,7 +124,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -139,9 +132,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -188,8 +182,8 @@
   <div class="section" id="virtel-jes-writer-program">
 <span id="tn201415"></span><h1>Virtel JES Writer program<a class="headerlink" href="#virtel-jes-writer-program" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This program is an internal development project and is very much a POC idea. It is not officially supported.</p>
+<p class="admonition-title">Note</p>
+<p>This program is an internal development project and is very much a POC idea. It is not officially supported.</p>
 </div>
 <p>The Virtel JES Writer utility extracts JES2 output and writes to a
 Virtel printer relay tasks via a Virtel transaction. The JES output is
@@ -197,19 +191,19 @@ converted to a PDF by an input scenario and the PDF can then be printed
 or saved at the user’s workstation.</p>
 <p><strong>Installation</strong></p>
 <ol class="arabic simple">
-<li>Download VJRS.TRS from the Virtel FTP Server.</li>
-<li>Upload to the mainframe into a dataset with the following DCB
-attributes:-</li>
+<li><p>Download VJRS.TRS from the Virtel FTP Server.</p></li>
+<li><p>Upload to the mainframe into a dataset with the following DCB
+attributes:-</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LRECL</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">HLQ</span><span class="o">.</span><span class="n">VJRS</span><span class="o">.</span><span class="n">TRS</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LRECL</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">HLQ</span><span class="o">.</span><span class="n">VJRS</span><span class="o">.</span><span class="n">TRS</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Run the following JCL. This will unterse the file and install the
+<li><p>Run the following JCL. This will unterse the file and install the
 VJRS load library. Here is a sample of what I use. Change
-accordingly.</li>
+accordingly.</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">jobcard</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;ED...HOLT...&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">jobcard</span> <span class="n">JOB</span> <span class="mi">9000</span><span class="p">,</span><span class="s1">&#39;ED...HOLT...&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
 <span class="o">//</span><span class="n">DDA</span> <span class="n">DD</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">DSN</span><span class="o">=</span><span class="n">HLQ</span><span class="o">.</span><span class="n">VJRS</span><span class="o">.</span><span class="n">TEMP</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">MOD</span><span class="p">,</span><span class="n">DELETE</span><span class="p">),</span>
@@ -234,15 +228,15 @@ accordingly.</li>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Authorise the load library. Use the following command:-</li>
+<li><p>Authorise the load library. Use the following command:-</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SETPROG</span> <span class="n">APF</span><span class="p">,</span><span class="n">ADD</span><span class="p">,</span><span class="n">DSNAME</span><span class="o">=</span><span class="n">hlq</span><span class="o">.</span><span class="n">VJRS</span><span class="o">.</span><span class="n">LOAD</span><span class="p">,</span><span class="n">VOL</span><span class="o">=</span><span class="n">vvvvvv</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SETPROG</span> <span class="n">APF</span><span class="p">,</span><span class="n">ADD</span><span class="p">,</span><span class="n">DSNAME</span><span class="o">=</span><span class="n">hlq</span><span class="o">.</span><span class="n">VJRS</span><span class="o">.</span><span class="n">LOAD</span><span class="p">,</span><span class="n">VOL</span><span class="o">=</span><span class="n">vvvvvv</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>Add the following JCL to SYS1.PROCLIB:-</li>
+<li><p>Add the following JCL to SYS1.PROCLIB:-</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VJRS</span> <span class="n">PROC</span> <span class="n">MAXTASKS</span><span class="o">=</span><span class="mi">02</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">VJRS</span> <span class="n">PROC</span> <span class="n">MAXTASKS</span><span class="o">=</span><span class="mi">02</span>
 <span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VJES0100</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;MAXTASKS=&amp;MAXTASKS&#39;</span>
 <span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">hlq</span><span class="o">.</span><span class="n">VJRS</span><span class="o">.</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
 <span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
@@ -250,9 +244,9 @@ accordingly.</li>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>Add the following VTAMLST as member APPLVJRS definition for VJRP:-</li>
+<li><p>Add the following VTAMLST as member APPLVJRS definition for VJRP:-</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">APPLVJRS</span> <span class="n">VBUILD</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">APPL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APPLVJRS</span> <span class="n">VBUILD</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">APPL</span>
 <span class="o">*</span> <span class="o">-----------------------------------------------------------------</span>
 <span class="o">*</span>
 <span class="o">*</span> <span class="n">Product</span> <span class="p">:</span> <span class="n">Virtel</span> <span class="n">Printer</span> <span class="o">*</span>
@@ -263,10 +257,10 @@ accordingly.</li>
 </pre></div>
 </div>
 <ol class="arabic simple" start="7">
-<li>Add the following configuration statements to SYS1.PARMLIB as member
-VJRSPRNT</li>
+<li><p>Add the following configuration statements to SYS1.PARMLIB as member
+VJRSPRNT</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*----------------------------------------------------------------------------*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*----------------------------------------------------------------------------*</span>
 <span class="o">*-</span> <span class="n">PRINTER</span> <span class="n">CONTROL</span> <span class="n">STATEMETS</span> <span class="n">FOR</span> <span class="n">VJRS</span> <span class="n">UTILITY</span><span class="o">.</span> <span class="o">-*</span>
 <span class="o">*-</span> <span class="o">-*</span>
 <span class="o">*-</span> <span class="n">COL</span> <span class="mi">1</span> <span class="n">JES</span> <span class="n">DESTID</span> <span class="o">-*</span>
@@ -281,10 +275,10 @@ VJRSPRNT</li>
 </pre></div>
 </div>
 <ol class="arabic simple" start="8">
-<li>Concatenate the hlq.VJRS.LOAD to the SERVLIB DD statement in the
-VIRTEL proc.</li>
+<li><p>Concatenate the hlq.VJRS.LOAD to the SERVLIB DD statement in the
+VIRTEL proc.</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">......</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">......</span>
 <span class="o">//</span><span class="n">SERVLIB</span> <span class="n">DD</span> <span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">hlq</span><span class="o">.</span><span class="n">VJRS</span><span class="o">.</span><span class="n">LOAD</span>
 <span class="o">//</span> <span class="n">DD</span> <span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span><span class="p">,</span><span class="n">DSN</span><span class="o">=</span><span class="n">hlq</span><span class="o">.</span><span class="n">VIRTEL</span><span class="o">.</span><span class="n">SERVLIB</span>
 <span class="o">......</span>
@@ -309,7 +303,7 @@ produces portrait output.</p>
 ZMAKEPDF program. The following files, found in vjrs.zip distribution
 file, must be uploaded to the Virtel W2H directory through the standard
 Virtel upload process.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Portrait</span> <span class="n">files</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Portrait</span> <span class="n">files</span>
     <span class="n">scenvjrs</span><span class="o">-</span><span class="n">docopt</span><span class="o">.</span><span class="n">txt</span>
     <span class="n">scenvjrs</span><span class="o">-</span><span class="n">layout</span><span class="o">.</span><span class="n">txt</span>
     <span class="n">scenvjrs</span><span class="o">-</span><span class="nb">input</span><span class="o">.</span><span class="n">txt</span>
@@ -338,7 +332,7 @@ the terminal session, and REHIM000 the printer session. VJRS will
 establish a VTAM session with REHIM000. Also, in the URL the transaction
 name of TSO1A has been defined. This associates the input scenario
 SCVJRS01 with the session.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">URL</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">TSO1A</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">TSO1A</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../../../_images/image211.png"><img alt="image1" src="../../../_images/image211.png" style="width: 6.30000in; height: 4.82708in;" /></a></p>
@@ -348,24 +342,24 @@ The printer relay LU is used by VJRS to transmit the data from JES to
 VIRTEL.</p>
 <p><strong>Using VJRS</strong></p>
 <ol class="arabic">
-<li><p class="first">Activate the VTAM node</p>
+<li><p>Activate the VTAM node</p>
 <blockquote>
 <div><p>Issue the following z/OS command to activate the VJRS VTAM
 definition:-</p>
 </div></blockquote>
 </li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="n">NET</span><span class="p">,</span><span class="n">ACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">APPLVJRS</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="n">NET</span><span class="p">,</span><span class="n">ACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">APPLVJRS</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>Start the VJRS printer tasks</li>
+<li><p>Start the VJRS printer tasks</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">VJRS</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">VJRS</span>
 </pre></div>
 </div>
 <p>The output from the started task should look like this:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>V NET,INACT,ID=APPLVJRS,I
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>V NET,INACT,ID=APPLVJRS,I
 IST097I VARY ACCEPTED
 IST105I APPLVJRS NODE NOW INACTIVE
 V NET,ACT,ID=APPLVJRS
@@ -381,11 +375,11 @@ VJRS001I - VIRTEL JES WRITER READY
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Create some output in JES2 by running a batch job. Output should go
+<li><p>Create some output in JES2 by running a batch job. Output should go
 to one of the defined destinations that VJRS is serving. Example
-batch job:-</li>
+batch job:-</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTP</span> <span class="n">JOB</span> <span class="s1">&#39;JRPTEST1&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=</span><span class="n">SPTHOLT</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTP</span> <span class="n">JOB</span> <span class="s1">&#39;JRPTEST1&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=</span><span class="n">SPTHOLT</span>
 <span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEBGENER</span>
 <span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">DUMMY</span>
 <span class="o">//</span><span class="n">SYSUT2</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">DEST</span><span class="o">=</span><span class="n">EDSPRT</span>
@@ -394,17 +388,16 @@ batch job:-</li>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The MSGCLASS=Z ensures that only the Class A output is left on
+<p class="admonition-title">Note</p>
+<p>The MSGCLASS=Z ensures that only the Class A output is left on
 the JES queue with an associated destination of EDSPRT for the
 submitted job.</p>
 </div>
 <ol class="arabic" start="4">
-<li><p class="first">After the job has run, output will appear on JES with a DESTID of
+<li><p>After the job has run, output will appear on JES with a DESTID of
 EDSPRT. This will be captured by VJRS, via the JES2 SAPI interface,
-and sent to the associated Virtel LU relay. In this case LU REHIM000</p>
-</li>
-<li><p class="first">Virtel will indicate that Print Output is available by presenting the
+and sent to the associated Virtel LU relay. In this case LU REHIM000</p></li>
+<li><p>Virtel will indicate that Print Output is available by presenting the
 user with a Printer ICON in the Operator Interface Area or Taskbar on
 the Virtel Terminal screen.</p>
 <blockquote>
@@ -435,7 +428,7 @@ convert it to a PDF.</p>
 <p>Setting up VIRTEL to use the LOG sysout facility requires a change
 to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT
 code the following statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOG</span><span class="o">=</span><span class="p">(</span><span class="n">SYSOUT</span><span class="p">,</span><span class="n">class</span><span class="p">,</span><span class="n">destination</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For example, LOG=(SYSOUT,A,EDSPRT)</p>
@@ -443,20 +436,20 @@ code the following statement:-</p>
 console log (SYSLOG). If you want WTO messages going to both the
 system console and a SYSOUT dataset than issue the following VIRTEL
 command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">BOTH</span>
 </pre></div>
 </div>
 <p>The LOG feature in Virtel 4.54 is controlled by the TCT parameters
 and a new LOG command. The new LOG command has the following
 format:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> \<span class="o">|</span> <span class="n">SYSOUT</span> \<span class="o">|</span> <span class="n">BOTH</span> \<span class="o">|</span> <span class="n">SPIN</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span> \<span class="o">|</span> <span class="n">SYSOUT</span> \<span class="o">|</span> <span class="n">BOTH</span> \<span class="o">|</span> <span class="n">SPIN</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>LOG=CONSOLE routes all WTO message to the system console. This isthe default action.</li>
-<li>LOG=SYSOUT routes all WTO messages to a VIRTEL SYSOUT dataset whichis dynamically allocated.</li>
-<li>LOG=BOTH routes all WTO messages to both the system console and a dynamically allocated SYSOUT dataset.</li>
-<li>LOG=SPIN forces Virtel to release the current SYSOUT dataset for further processing and allocates a new SYSOUT dataset.</li>
+<li><p>LOG=CONSOLE routes all WTO message to the system console. This isthe default action.</p></li>
+<li><p>LOG=SYSOUT routes all WTO messages to a VIRTEL SYSOUT dataset whichis dynamically allocated.</p></li>
+<li><p>LOG=BOTH routes all WTO messages to both the system console and a dynamically allocated SYSOUT dataset.</p></li>
+<li><p>LOG=SPIN forces Virtel to release the current SYSOUT dataset for further processing and allocates a new SYSOUT dataset.</p></li>
 </ul>
 <p>Virtel will direct messages to an allocated SYSOUT data set and | or the console (default). If SYSOUT processing is being used you
 will see a dynamically allocated dataset in the SDSF display panel.</p>
@@ -472,7 +465,7 @@ VJRS will then capture it and send it to its destination which is
 EDSPRT. EDSPRT just happens to be the relay LU defined in VIRTEL and
 associated with the printer REHIM000.</p>
 <p>In the VIRTEL 3270 session issue the command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">SPIN</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LOG</span><span class="o">=</span><span class="n">SPIN</span>
 </pre></div>
 </div>
 <p>In the top right of the VIRTEL window, next to the language
@@ -484,7 +477,7 @@ will then be display. The message log can then be saved as a PDF
 file.</p>
 <p><a class="reference internal" href="../../../_images/image91.png"><img alt="image8" src="../../../_images/image91.png" style="width: 6.30000in; height: 4.39792in;" /></a></p>
 <p><strong>Messages and Abends</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Module VJES0100
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Module VJES0100
 
     VJRS001I - VIRTEL JES WRITER READY
     VJRS has established a SAPI interface with JES2 and is ready to receive output.
@@ -587,7 +580,7 @@ Module VJRES0101
 </pre></div>
 </div>
 <p>Abends</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">U800</span> <span class="n">VJES0101</span> <span class="n">Dynamic</span> <span class="n">allocation</span> <span class="n">error</span><span class="o">.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">U800</span> <span class="n">VJES0101</span> <span class="n">Dynamic</span> <span class="n">allocation</span> <span class="n">error</span><span class="o">.</span>
 <span class="n">U801</span> <span class="n">VJES0101</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">Error</span> <span class="n">reading</span> <span class="n">JES2</span> <span class="n">dataset</span><span class="o">.</span>
 <span class="n">U802</span> <span class="n">VJES0100</span> <span class="n">VTAM</span> <span class="n">ACB</span> <span class="n">failed</span> <span class="n">to</span> <span class="nb">open</span><span class="o">.</span>
 <span class="n">U803</span> <span class="n">VJES0101</span> <span class="n">VTAM</span> <span class="n">OPNDST</span> <span class="n">failed</span><span class="o">.</span>
@@ -603,9 +596,9 @@ Module VJRES0101
 <p>Bugs and Restrictions</p>
 <p>Release 0.0</p>
 <ol class="arabic simple">
-<li>VJRS doesn’t recover from VTAM or network issues. SNA sense code 087D0001.</li>
+<li><p>VJRS doesn’t recover from VTAM or network issues. SNA sense code 087D0001.</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$HASP373 VJRS STARTED
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$HASP373 VJRS STARTED
 IEF403I VJRS - STARTED - TIME=13.44.35
 VJRS001I - VIRTEL JES WRITER READY
 VJRS103I - (0001:0001) JES WRITER STARTING FOR EDSPRT (SPTHOLTP:JOB05920)
@@ -624,7 +617,7 @@ VIR0009I APPLHOLT : SHUT DOWN IN PROGRESS
 </pre></div>
 </div>
 <p>Solution:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Stop Virtel
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Stop Virtel
 Stop VJRS
 Delete any output on JES2 that is targeted for Virtel
 Restart VIRTEL
@@ -634,21 +627,21 @@ Run print job again.
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li>VJRS doesn’t recover from Virtel Timeout. When Virtel terminal session times out VJRS fails to reconnect successfully to printer.</li>
+<li><p>VJRS doesn’t recover from Virtel Timeout. When Virtel terminal session times out VJRS fails to reconnect successfully to printer.</p></li>
 </ol>
 <p>Solution:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">See</span> <span class="n">problem</span> <span class="n">number</span> <span class="mf">1.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">See</span> <span class="n">problem</span> <span class="n">number</span> <span class="mf">1.</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li>Abend0C7 on Startup</li>
+<li><p>Abend0C7 on Startup</p></li>
 </ol>
 <p>Solution:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MAXTASKS</span> <span class="n">must</span> <span class="n">be</span> <span class="n">two</span> <span class="n">digits</span><span class="o">.</span> <span class="mi">01</span> <span class="n">through</span> <span class="n">to</span> <span class="mf">99.</span> <span class="n">Default</span> <span class="ow">is</span> <span class="mf">05.</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MAXTASKS</span> <span class="n">must</span> <span class="n">be</span> <span class="n">two</span> <span class="n">digits</span><span class="o">.</span> <span class="mi">01</span> <span class="n">through</span> <span class="n">to</span> <span class="mf">99.</span> <span class="n">Default</span> <span class="ow">is</span> <span class="mf">05.</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>Fix multi page support</li>
+<li><p>Fix multi page support</p></li>
 </ol>
 <p>Release 0.1 11/2014</p>
 <p>1. MakePDF doesn’t support x’00’ in the data stream and issues an error
@@ -663,9 +656,7 @@ has been modified so that the watermark is not printed.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -674,7 +665,7 @@ has been modified so that the watermark is not printed.</p>
         <a href="../TN201416/TN201416.html" class="btn btn-neutral float-right" title="Virtel Security. Using server and client certificates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201414/TN201414.html" class="btn btn-neutral" title="CICS Printing problem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201414/TN201414.html" class="btn btn-neutral float-left" title="CICS Printing problem" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -683,11 +674,11 @@ has been modified so that the watermark is not printed.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -700,36 +691,15 @@ has been modified so that the watermark is not printed.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

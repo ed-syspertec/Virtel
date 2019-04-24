@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="Protecting Virtel Applications with Shibboleth" href="../TN201702/TN201702.html"/>
-        <link rel="prev" title="Customizing Virtel in V4.56" href="../TN201611/TN201611.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Protecting Virtel Applications with Shibboleth" href="../TN201702/TN201702.html" />
+    <link rel="prev" title="Customizing Virtel in V4.56" href="../TN201611/TN201611.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -126,7 +119,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -134,9 +127,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -212,7 +206,7 @@ should only be through the proxy server and not any other IP address.</p>
 doesn’t match with the rule then the user will be re-directed to another
 Virtel entry point. To implement this protection we use the following
 ARBO statements for each line, 41002 and 41003:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000100</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RULE</span> <span class="n">ID</span><span class="o">=</span><span class="n">R0000100</span><span class="p">,</span>
 <span class="n">RULESET</span><span class="o">=</span><span class="n">C</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                <span class="o">&lt;</span> <span class="n">Our</span> <span class="n">Line</span> <span class="mi">41002</span>
 <span class="n">STATUS</span><span class="o">=</span><span class="n">ACTIVE</span><span class="p">,</span>
 <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP access (Test calling address)&#39;</span><span class="p">,</span>
@@ -279,7 +273,7 @@ with a line is normally the internal name of the line – C-HTTP for
 example. How the rejected session is handled is up to the user. In the
 following example, the default template EPREJECT.HTM, which is
 associated with the entry point EPREJECT, looks like this:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;
 &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
 &lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot; --&gt;
 &lt;html&gt;
@@ -294,7 +288,7 @@ window.location.replace(&quot;http://www.mycompany.com&quot;);
 Entry Point EPREJECT expects to find them. When the template is served
 it will display the companies “public” web site.</p>
 <p>To upload the ARBO statements to your ARBO use the following JCL:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT456</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH0</span><span class="o">.</span><span class="n">ARBO1A</span>
 <span class="o">//*</span>
@@ -323,9 +317,7 @@ it will display the companies “public” web site.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -334,7 +326,7 @@ it will display the companies “public” web site.</p>
         <a href="../TN201702/TN201702.html" class="btn btn-neutral float-right" title="Protecting Virtel Applications with Shibboleth" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201611/TN201611.html" class="btn btn-neutral" title="Customizing Virtel in V4.56" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201611/TN201611.html" class="btn btn-neutral float-left" title="Customizing Virtel in V4.56" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -343,11 +335,11 @@ it will display the companies “public” web site.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -360,36 +352,15 @@ it will display the companies “public” web site.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -17,43 +17,36 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="Virtel 7 documentation" href="../../../index.html"/>
-        <link rel="up" title="Technical Newsletters" href="../../../newsletters.html"/>
-        <link rel="next" title="What’s new in Virtel 4.57 (July 2017)" href="../TN201706/TN201706     .html"/>
-        <link rel="prev" title="Virtel Macros" href="../TN201704/TN201704.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="What’s new in Virtel 4.57 (July 2017)" href="../TN201706/TN201706     .html" />
+    <link rel="prev" title="Virtel Macros" href="../TN201704/TN201704.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -62,7 +55,7 @@
 
           
             
-            <img src="../../../_static/logo_virtel_web.png" class="logo" />
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -129,7 +122,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">Virtel</a>
@@ -137,9 +130,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -228,7 +222,7 @@ installed. See below.</p>
 <p>Figure 2 Required Windows features</p>
 <p>Validation of these requisites can be done by issuing the following two
 commands.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>node –version Determine node is installed and accessible.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>node –version Determine node is installed and accessible.
 lpr The print route program is installed and accessible
 </pre></div>
 </div>
@@ -241,7 +235,7 @@ script and relevant nodeJS components. In our example we will create a
 directory called c:\virtel\VirtelSpooler where we will install the
 necessary nodeJS script and bat files. Open a command window in this
 directory and type the following command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">chokidar</span> <span class="o">--</span><span class="n">save</span> <span class="o">**</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">chokidar</span> <span class="o">--</span><span class="n">save</span> <span class="o">**</span>
 </pre></div>
 </div>
 <p>This will download a bunch of modules required by the Virtel Spooler
@@ -252,12 +246,12 @@ printPCL.bat. This is also listed Appendix A.</p>
 <p>Now we are ready to go!</p>
 <p><strong>Starting the Virtel Spooler</strong></p>
 <p>The Virtel Spooler script is started with the following commands:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
 <span class="n">node</span> <span class="n">main</span><span class="o">.</span><span class="n">js</span> <span class="n">myServer</span> <span class="n">myPrinter</span> <span class="n">myDownloadDirectory</span>
 </pre></div>
 </div>
 <p>So, for example, in my installation I use the following commands:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
 <span class="n">node</span> <span class="n">main</span><span class="o">.</span><span class="n">js</span> <span class="n">CSD</span> <span class="n">KONICA</span>\<span class="n">_Couleur</span>\<span class="n">_C284e</span> <span class="n">d</span><span class="p">:</span>\\<span class="n">downloads</span>
 </pre></div>
 </div>
@@ -301,7 +295,7 @@ c:\virtel\VirtelSpooler. All worked fine after that.</p>
 <div class="section" id="appendix-a">
 <h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
 <p><strong>main.js</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/* Virtel PCL Print Spooler.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Virtel PCL Print Spooler.
  * Monitors spool directory and automatically sends PCL file to network printer.
  *
  * npm install chokidar –save
@@ -357,7 +351,7 @@ watcher.on(&#39;add&#39;, path =&gt; execBatFile(\`${path}\`));
 </pre></div>
 </div>
 <p><strong>printPCL.bat</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@Echo</span> <span class="n">off</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Echo</span> <span class="n">off</span>
 <span class="nb">set</span> <span class="n">arg1</span><span class="o">=%</span><span class="mi">1</span>
 <span class="nb">set</span> <span class="n">arg2</span><span class="o">=%</span><span class="mi">2</span>
 <span class="nb">set</span> <span class="n">arg3</span><span class="o">=%</span><span class="mi">3</span>
@@ -371,9 +365,7 @@ watcher.on(&#39;add&#39;, path =&gt; execBatFile(\`${path}\`));
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -382,7 +374,7 @@ watcher.on(&#39;add&#39;, path =&gt; execBatFile(\`${path}\`));
         <a href="../TN201706/TN201706     .html" class="btn btn-neutral float-right" title="What’s new in Virtel 4.57 (July 2017)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../TN201704/TN201704.html" class="btn btn-neutral" title="Virtel Macros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../TN201704/TN201704.html" class="btn btn-neutral float-left" title="Virtel Macros" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -391,11 +383,11 @@ watcher.on(&#39;add&#39;, path =&gt; execBatFile(\`${path}\`));
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Syspertec. All rights reserved.
+        &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -408,36 +400,15 @@ watcher.on(&#39;add&#39;, path =&gt; execBatFile(\`${path}\`));
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'7',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
