@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -260,7 +269,7 @@ free to copy elements into any DDI structure level. For purposes of
 design it might be wise to consider DDI as a hierarchical structure
 although, as mentioned before, this is not enforced by Virtel. A DDI
 layout could look something like:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                           <span class="n">Global</span><span class="o">/</span><span class="n">Public</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>                           <span class="n">Global</span><span class="o">/</span><span class="n">Public</span>
                                  <span class="o">|</span>
                                  <span class="o">|</span>
     <span class="n">Group</span> <span class="n">A</span> <span class="o">-----------------</span> <span class="n">Group</span> <span class="n">B</span> <span class="o">--------------------</span> <span class="n">Group</span> <span class="n">C</span>
@@ -275,31 +284,34 @@ of the SAMPLIB(ARBOLOAD) member. You must customize the JCL and change
 the SET VMACROS=NO statement to SET VMACROS=YES to install the DDI
 constructs to your ARBO file.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <p><em>Release V4.53 users of Macros</em>
 For users who implemented DDI in Virtel V4.53 (VMACROS=YES on the
 ARBOLOAD) there are some changes that have to be made to the ARBO file
 to work with DDI as distributed with V4.54. New constructs must be added
 to the ARBO file and previous DDI constructs must be removed:-</p>
 <ol class="arabic">
-<li><dl class="simple">
-<dt><em>Backup</em></dt><dd><p>Secure a copy of your macros.json from the /maclib directories.</p>
+<li><dl class="first docutils">
+<dt><em>Backup</em></dt>
+<dd><p class="first last">Secure a copy of your macros.json from the /maclib directories.</p>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt><em>Remove</em></dt><dd><p>DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
-<p>These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
+<li><dl class="first docutils">
+<dt><em>Remove</em></dt>
+<dd><p class="first">DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
+<p class="last">These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
 portal.</p>
 </dd>
 </dl>
 </li>
 </ol>
-<ol class="arabic">
-<li><dl>
-<dt><em>Add</em></dt><dd><p>Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
+<ol class="last arabic">
+<li><dl class="first docutils">
+<dt><em>Add</em></dt>
+<dd><p class="first">Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
 <p>See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.</p>
-<p>If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
+<p class="last">If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
 </dd>
 </dl>
 </li>
@@ -309,7 +321,7 @@ portal.</p>
 <p>RACF profiles must also be defined to restrict DDI usage to Virtel
 administrators. In our example VIRTEL administrators are defined in the
 RACF group SPGPTECH. See the JCL below:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*---------------------------------------------------------*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*---------------------------------------------------------*</span>
 <span class="o">//*</span> <span class="n">RACF</span> <span class="p">:</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">VIRTEL</span> <span class="n">DDI</span> <span class="o">*</span>
 <span class="o">//*---------------------------------------------------------*</span>
 <span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
@@ -389,7 +401,7 @@ group directories:-</p>
 <p><a class="reference internal" href="../../../_images/image93.png"><img alt="image8" src="../../../_images/image93.png" style="width: 6.30000in; height: 4.20000in;" /></a></p>
 <p><strong>Accessing HTML DDI</strong></p>
 <p>Access to HTML DDI is through the Virtel Administration portal. The Virtel Portal is normally accessible via the url:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">.</span><span class="n">virtel</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">41001</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">my</span><span class="o">.</span><span class="n">virtel</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">41001</span>
 </pre></div>
 </div>
 <p>Where 41001 is the port defined for the W-HTTP line associated with entry point WEB2HOST. When you access the Virtel Portal you are presented with the following screen:</p>
@@ -448,8 +460,8 @@ GROUP directory by perform an Add function.</p>
 <p>The download option enables the download of a DDI element to the default
 download directory of the associated browser.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Do not download a Virtel Template (HTML file with imbedded VIRTEL
+<p class="first admonition-title">Note</p>
+<p class="last">Do not download a Virtel Template (HTML file with imbedded VIRTEL
 tags). The tags will be interpreted before the download destroying the
 original source version.</p>
 </div>

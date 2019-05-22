@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -202,7 +211,7 @@ rules that you wish to customize. These will override the defaults in
 WEB3270.CSS. The customised CSS rules must be placed in the CLI-DIR.</p>
 <p>For example to change the colour RED to GREEN code the following CSS
 rules in your <em>custom.css</em> file and upload it to the CLI-DIR directory:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*
+<div class="highlight-default"><div class="highlight"><pre><span></span>/*
 * VIRTEL Web Access 3270 style sheet
 * (c)Copyright SysperTec Communication 2010 All Rights Reserved
 * $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $
@@ -249,7 +258,7 @@ distributed in the source.zip file.</p>
 <p>Create the custom.js file(s) that will be used to select the CSS
 defaults. These files(s) will be displayed in the Web Access Settings
 panel. See the example javascript below:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">typeof</span> <span class="n">w2hparm</span> <span class="o">!==</span><span class="s2">&quot;undefined&quot;</span><span class="p">)</span> <span class="p">{</span>
    <span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
    <span class="n">w2hparm</span><span class="o">.</span><span class="n">synchronizeVirtelMacros</span> <span class="o">=</span> <span class="n">true</span><span class="p">;</span>
@@ -364,7 +373,7 @@ transaction level which provides better functionality for customising
 web elements such as CSS rules.</p>
 <p><strong>Appendix A</strong></p>
 <p>Default 3270 style sheet WEB3270.CSS. Can be found within sources.zip. See Administration portal to download file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*
+<div class="highlight-default"><div class="highlight"><pre><span></span>/*
 * VIRTEL Web Access 3270 style sheet
 * (c)Copyright SysperTec Communication 2010 All Rights Reserved
 * $Id: //depot/virtel/htmltools/w2h/WEB3270.css#18 $

@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -196,7 +205,7 @@ the SSO Proxy Server and two, that the server will modify the HTTP
 headers to provide addition information, that being the source IP
 address and the user id.</p>
 <p>A Virtel line trace will reveal these additional headers.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET /w2h/WEB2SUB.HTML++VirtelSession=AFo0JQAAAAMeuCAo+disconnect=1?pf=DISCONNECT HTTP/1.1
+<div class="highlight-default"><div class="highlight"><pre><span></span>GET /w2h/WEB2SUB.HTML++VirtelSession=AFo0JQAAAAMeuCAo+disconnect=1?pf=DISCONNECT HTTP/1.1
 Host: 192.168.170.30:41002
 User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:27.0) Gecko/20100101 Firefox/27.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,\*/\*;q=0.8
@@ -236,7 +245,7 @@ behalf of the caller using a userid passed by the SSO Proxy and a generated Pass
 SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RACF definitions required to support the generation of PassTickets for the target application APPL SPCICSH.</p>
 <p><em>Sample RACF job to define the Pass Ticket RACF profiles.</em></p>
 <p>This job will have to be modified to a customer’s RACF setup. Some profiles may already be defined! If the PERMIT statements do not run then that probably means that some of the RDEFINE entries already exist in the RACF database - these need to be removed, or an RDELETE added to delete the profile entry, in order for the job to complete successfully. It should produce a RC=0. See the output in SDSF.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT1A</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span>
 <span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=*</span>
 <span class="o">//</span><span class="n">SYSTSIN</span> <span class="n">DD</span> <span class="o">*</span>
         <span class="n">SETROPTS</span> <span class="n">CLASSACT</span><span class="p">(</span><span class="n">APPL</span><span class="p">)</span>
@@ -254,32 +263,32 @@ SPCICSH. Our Virtel task runs under the RACF userid of SPVIRSTC. Here are the RA
 </pre></div>
 </div>
 <p>Three distinct RACF profiles are required to use RACF pass tickets:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>FACILITY IRR.RTICKETSERV           * Can use PassTickets *
+<div class="highlight-default"><div class="highlight"><pre><span></span>FACILITY IRR.RTICKETSERV           * Can use PassTickets *
 PTKTDATA IRRPTAUTH.passTicketName. * Let’s VIRETL generate PassTickets on behalf of an application for all users. * or *userid*
 PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 </pre></div>
 </div>
 <p><em>Virtel Name correlation</em></p>
 <ul class="simple">
-<li><p>passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.</p></li>
-<li><p>profile_name must equal the VTAM application name defined in the VIRTEL transaction.</p></li>
+<li>passTicketName must equal the PassTicket Name defined in the VIRTEL transaction.</li>
+<li>profile_name must equal the VTAM application name defined in the VIRTEL transaction.</li>
 </ul>
 <p>These names are normally the same, but they do not have to be. See the <a class="reference internal" href="#tn201407-bookmark01"><span class="std std-ref">“RACF profiles related to Pass Tickets”</span></a> section for further information.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you are running separate RACF databases across LPARS the KEYMASKED must be the same in each RACF database or else the wrong password will be generated and the logon will fail.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">If you are running separate RACF databases across LPARS the KEYMASKED must be the same in each RACF database or else the wrong password will be generated and the logon will fail.</p>
 </div>
 <p id="tn201407-bookmark01"><em>RACF Profiles related to Virtel and Pass Tickets.</em></p>
 <p>As mentioned RACF needs to have some profiles set up to allow Virtel to use Pass Tickets. The first profile is the FACILITY Class profile with the IRR.RTICKETSERV name. The Virtel STC userid must have READ access to this profile.</p>
 <p><img alt="image9" src="../../../_images/image10.png" /> <em>Fig. 10 - RACF profile to allow Virtel to use Pass Tickets</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">FACILITY</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">FACILITY</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span>
 <span class="n">PERMIT</span> <span class="n">IRR</span><span class="o">.</span><span class="n">RTICKETSERV</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>To allow Virtel to generate Pass Tickets for a particular application we must define any entry in the PTKTDATA class. This entry has the name “IRRPTAUTH.passTicketName.*”” and is a Group Entry. The Virtel USERID
 should have update authority to this profile.</p>
 <p><img alt="image10" src="../../../_images/image11.png" /> <em>Fig. 11 - Seting Virtel up with RACF access to PTKTDATA class.</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 <span class="n">PERMIT</span> <span class="n">IRRPTAUTH</span><span class="o">.</span><span class="n">SPCICSH</span><span class="o">.*</span> <span class="n">CL</span><span class="p">(</span><span class="n">PTKTDATA</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPVIRSTC</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">UPDATE</span><span class="p">)</span>
 <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 </pre></div>
@@ -288,7 +297,7 @@ should have update authority to this profile.</p>
 <p>This may be different to the VTAM application name.</p>
 <p>Finally, define a PTKTDATA profile entry that matches the Virtel Transaction <strong>APPLICATION</strong> name. In this case it is SPCICSH. Virtel passes this APPLNAME to RACF via a RACROUTE REQUEST=VERIFY.</p>
 <p><img alt="image11" src="../../../_images/image12.png" /> <em>Fig. 12 - Setting the Pass Ticket name in the Virtel transaction.</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">SPCICSH</span> <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="o">+</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">SPCICSH</span> <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="o">+</span>
 <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -301,7 +310,7 @@ needn’t be!</p>
 <p>The TIOA sign on field waits for the initial CICS sign on screen to appear and then plugs in the userid (&amp;U) and PassTicket generated password (&amp;P) into their respective locations. The screen is then “forwarded” to the CICS application with the USERID and PASSWORDS fields completed.</p>
 <p id="tn201407-bookmark02"><em>Identification Scenario</em></p>
 <p>To obtain the “SM_User” value and set the userid in the Virtel System USER variable an identification scenario is used. The following is an example of such a scenario:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCENSITE SCREENS APPL=SCENSITE,EXEC=NO
+<div class="highlight-default"><div class="highlight"><pre><span></span>SCENSITE SCREENS APPL=SCENSITE,EXEC=NO
 *
 * SCENARIO for SiteMinder
 *
@@ -332,7 +341,7 @@ NOUSER1 DS 0H
 scenario sets the Virtel system USER variable which will be used in the PassTicket generation.</p>
 <p><em>TCT Considerations</em></p>
 <p>The TCT has to include the following parameters if HTTP User Headers and PassTicket generation is required. The parameters are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTHEADR</span><span class="o">=</span><span class="p">(</span><span class="n">SM_USER</span><span class="p">),</span>                              <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTHEADR</span><span class="o">=</span><span class="p">(</span><span class="n">SM_USER</span><span class="p">),</span>                              <span class="o">*</span>
 <span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span>              <span class="o">*</span>
 <span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span>   <span class="o">*</span>  <span class="o">&lt;</span> <span class="n">CHANGE</span> <span class="n">PRFSECU</span> <span class="n">to</span> <span class="n">your</span> <span class="n">RACF</span> <span class="n">setup</span>
 <span class="n">PASSTCK</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span>                                    <span class="o">*</span>
@@ -346,8 +355,8 @@ scenario sets the Virtel system USER variable which will be used in the PassTick
 <p><img alt="image7" src="../../../_images/image8.jpeg" /> <em>Fig. 8 - Rule C100PROX to test Proxy IP Address</em></p>
 <p>If the IP address of the SSO Proxy matches the Caller DTE address we have specified in the rule than the Entry Point CLIWHOST will be associated with line and the transactions defined under that entry point, CLIWHOST in this case, can be invoked. If the address match fails then the next rule will be called. In our case this will be rule C999REJ which will invoke transaction EPREJECT, the default transaction for Entry Point EPREJECT.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>It is important that you use option 3 “STARTS WITH” when defining the Calling DTE option.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">It is important that you use option 3 “STARTS WITH” when defining the Calling DTE option.</p>
 </div>
 <p><img alt="image8" src="../../../_images/image9.jpeg" /> <em>Fig. 9 - Rule C999REJ to reject the session request</em></p>
 <p>This rule does no more than to establish the entry point EPREJECT. EPREJECT will have a default transaction which just returns an error page to the caller.</p>
@@ -359,36 +368,36 @@ shows the name of the resource to which VIRTEL must be granted access.</p>
 <p><strong>Action</strong></p>
 <p>Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.</p>
 <p>For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services Chapter 2 “R_ticketserv”. Some common codes are:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 7%" />
-<col style="width: 9%" />
-<col style="width: 10%" />
-<col style="width: 75%" />
+<col width="7%" />
+<col width="9%" />
+<col width="10%" />
+<col width="75%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>SAF RC</p></th>
-<th class="head"><p>RACF RETC</p></th>
-<th class="head"><p>RACF Reason</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">SAF RC</th>
+<th class="head">RACF RETC</th>
+<th class="head">RACF Reason</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>8</p></td>
-<td><p>4</p></td>
-<td><p>Paramlist error. Ensure that the SCENSITE scenario is available to process the sm_header.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>8</td>
+<td>8</td>
+<td>4</td>
+<td>Paramlist error. Ensure that the SCENSITE scenario is available to process the sm_header.</td>
 </tr>
-<tr class="row-odd"><td><p>8</p></td>
-<td><p>8</p></td>
-<td><p>16</p></td>
-<td><p>VIRTEL is not authorized to generate passtickets, or is not authorized to generate passtickets for this
-application. See preceding ICH408I message in the log.</p></td>
+<tr class="row-odd"><td>8</td>
+<td>8</td>
+<td>16</td>
+<td>VIRTEL is not authorized to generate passtickets, or is not authorized to generate passtickets for this
+application. See preceding ICH408I message in the log.</td>
 </tr>
-<tr class="row-even"><td><p>8</p></td>
-<td><p>16</p></td>
-<td><p>28</p></td>
-<td><p>There is no profile in the PTKTDATA class for this application or the PTKTDATA class is not active.</p></td>
+<tr class="row-even"><td>8</td>
+<td>16</td>
+<td>28</td>
+<td>There is no profile in the PTKTDATA class for this application or the PTKTDATA class is not active.</td>
 </tr>
 </tbody>
 </table>

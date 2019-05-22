@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -193,16 +202,16 @@ printing and provides some guidance on how to implement them.</p>
 <p>In the scenarios that follow user involvement is required. The supported Virtel LU printer types are LU Type 1(SNA SCS) and LU Type 0/3(3270 datastream).</p>
 <p>Depending on the Virtel printer configuration one of several things can happen at the browser end:-</p>
 <ul>
-<li><p>Printer Type LU0 or LU3 (Non SNA/3270 data streams)</p>
+<li><p class="first">Printer Type LU0 or LU3 (Non SNA/3270 data streams)</p>
 <blockquote>
 <div><p>Print data will be sent to the Virtel client and will appear in a new browser window. (<em>Default action.</em>)</p>
-<p>Virtel Option:  If AutoPrint is set on in the Virtel settings.</p>
+<p>Virtel Option: &nbsp;If AutoPrint is set on in the Virtel settings.</p>
 <p>A Windows “Print” window will automatically open and the print data will be displayed. The user can then select to print the output data.</p>
 </div></blockquote>
 </li>
-<li><p>Printer Type LU1 (SNA/SCS)</p>
+<li><p class="first">Printer Type LU1 (SNA/SCS)</p>
 <blockquote>
-<div><p>Print data will be sent to Virtel as an attached file. This will drive a Windows “Save As or Open” window which will enable the user to open the file or save it. This file contains the RAW print data. This of course could include PCL data which could be further processed by external programs or printed by a printer that supports PCL datastreams. For example, the file could be converted to a PDF. There are many PCL to PDF conversion products on the open market. Virtel can also process the PCL data and convert it to a PDF either through a remote print server or through calling an internal service program called MAKEPDF.</p>
+<div><p>Print data will be sent to Virtel as an attached file. This will drive a Windows “Save As or Open”&nbsp;window which will enable the user to open the file or save it. This file contains the RAW print data. This of course could include PCL data which could be further processed by external programs or printed by a printer that supports PCL datastreams. For example, the file could be converted to a PDF. There are many PCL to PDF conversion products on the open market. Virtel can also process the PCL data and convert it to a PDF either through a remote print server or through calling an internal service program called MAKEPDF.</p>
 </div></blockquote>
 </li>
 </ul>
@@ -214,14 +223,14 @@ printing and provides some guidance on how to implement them.</p>
 <p><img alt="image0" src="../../../_images/image11.jpeg" /> <em>Fig. 1 - Printing LU3</em></p>
 <p>Virtel pretends to be that remote 3270 printer through its relay LU associated with a user’s terminal session. In our case the printer name is REHIP000. This is set up in the terminal section of Virtel which can be accessed using F2 from the Virtel Configuration Menu. The following screen shot shows a terminal definition screen in Virtel. I’m using a prefix of REH in my example. The shipped defaults are prefixed RHT.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the *W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the *W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
 </div>
 <p>In the shipped sample definitions the LU Type 1 (RHTIM000) is associated with the relay terminal definition RHTVT000. To use LU T3 (3270 datastream) the RHTVT000 definition must be updated to associate the
 printer terminal RHTIP000 with RHTVT000.</p>
 <p><img alt="image1" src="../../../_images/image2.jpeg" /> <em>Fig. 2 - Example of Virtel terminal definitions.</em></p>
 <p>The virtual relay definitions that Virtel uses to support VTAM terminals and applications are defined in the VIRTAPPL VTAM definition. This can be found in the shipped VIRTEL.CNTL library. Here is an example:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VIRTAPPL VBUILD TYPE=APPL
+<div class="highlight-default"><div class="highlight"><pre><span></span>VIRTAPPL VBUILD TYPE=APPL
 *  ------------------------------------------------------------------ *
 *  Product : VIRTEL                                                   *
 *  Description : Main ACB for VIRTEL application                      *
@@ -239,20 +248,20 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Do not modify the ??? to a numeric number. These are VTAM model APPL definitions and the ??? is a valid string in this context.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not modify the ??? to a numeric number. These are VTAM model APPL definitions and the ??? is a valid string in this context.</p>
 </div>
 <p>There is no need to modify this definition. It should be copied to the VTAMLST library and activated with the V NET,ACT,ID= VTAM command.</p>
 <p>When Virtel detects that is has printer output, it will collect it from the printer relay LU and send it to the associated terminal session. When the session receives the output it will be displayed in a new
 browser window. Here is a screen shot of my terminal session before sending any output.</p>
 <p><img alt="image2" src="../../../_images/image3.jpeg" /> <em>Fig. 3 - Example of Virtel Browser screen before print data has been sent.</em></p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In the bottom corner you can see the two virtual SNA LUs that Virtel is using to represent this browser session to VTAM. Theses are the Virtel Relays. The first name, REHVT000, is the 3270 terminal LU and the second, REHIP000, is the associated SNA printer attached to REHVT000.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">In the bottom corner you can see the two virtual SNA LUs that Virtel is using to represent this browser session to VTAM. Theses are the Virtel Relays. The first name, REHVT000, is the 3270 terminal LU and the second, REHIP000, is the associated SNA printer attached to REHVT000.</p>
 </div>
 <p>The Virtel VJRS utility program is used to emulate a VTAM printer interface and is run as a started task. When it detects output destined for one of its defined printers it will grab the spooled output from JES2 and drive the virtual printer REHIP000.</p>
 <p>The VJRS definition looks like:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">----------------------------------------------------------------------------*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">----------------------------------------------------------------------------*</span>
 <span class="o">*</span> <span class="o">-</span> <span class="n">PRINTER</span> <span class="n">CONTROL</span> <span class="n">STATEMETS</span> <span class="n">FOR</span> <span class="n">VJRS</span> <span class="n">UTILITY</span><span class="o">.</span>                              <span class="o">-*</span>
 <span class="o">*</span> <span class="o">-</span>                                                                          <span class="o">-*</span>
 <span class="o">*</span> <span class="o">-</span> <span class="n">COL</span> <span class="mi">1</span> <span class="n">JES</span> <span class="n">DESTID</span>                                                         <span class="o">-*</span>
@@ -267,7 +276,7 @@ browser window. Here is a screen shot of my terminal session before sending any 
 </pre></div>
 </div>
 <p>The Virtel relay LU printer name REHIP000 has been associated with JES2 destination EDSPRT. The following JCL is used to print some data to the JES2 destination EDSPRT.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTP</span> <span class="n">JOB</span> <span class="s1">&#39;VJRSTEST&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=</span><span class="n">SPTHOLT</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTP</span> <span class="n">JOB</span> <span class="s1">&#39;VJRSTEST&#39;</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">Z</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=</span><span class="n">SPTHOLT</span>
 <span class="o">//</span><span class="n">STEP1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEBGENER</span>
 <span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span> <span class="n">DUMMY</span>
 <span class="o">//</span><span class="n">SYSUT2</span> <span class="n">DD</span> <span class="n">SYSOUT</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">DEST</span><span class="o">=</span><span class="n">EDSPRT</span>
@@ -277,8 +286,8 @@ browser window. Here is a screen shot of my terminal session before sending any 
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The JRP utility program in the <a class="reference external" href="http://www.cbttape.org/cbtdowns.htm">CBT archive - File 755</a> can be used in place of the Virtel VJRS utility. This is freely available under the terms and conditions of CBT.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">The JRP utility program in the <a class="reference external" href="http://www.cbttape.org/cbtdowns.htm">CBT archive - File 755</a> can be used in place of the Virtel VJRS utility. This is freely available under the terms and conditions of CBT.</p>
 </div>
 <p>Once Virtel detects output on its relay LU it will send it to the browser. This can be seen by the fact that a small printer icon will appear in the task bar. See the screen shot below:-</p>
 <p><img alt="image3" src="../../../_images/image41.jpeg" /> <em>Fig. 4 - Print data received by browser. Printer ICON displayed in Task Bar.</em></p>
@@ -349,12 +358,12 @@ found in the IBM’s GDDM Administration Guide – SC33-0871-02.</p>
 build the request queues. In this example REHIP000 is a LU3 3270 printer
 and REHIM000 is a LU1 SCS printer. These should exist as VTAM APPLS and
 should be installed as part of the Virtel installation:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>REHIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
+<div class="highlight-default"><div class="highlight"><pre><span></span>REHIM??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SCS,EAS=1
 REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <p>The printer definitions for ADMPRINT should look like this:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">**********************************************************************</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="o">**********************************************************************</span>
 <span class="o">*</span>                                                                      <span class="o">*</span>
 <span class="o">*</span>  <span class="n">CONTROL</span> <span class="n">STATEMENTS</span>                                                  <span class="o">*</span>
 <span class="o">*</span>                                                                      <span class="o">*</span>
@@ -378,7 +387,7 @@ REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <p>Activate the GDDM ADMOPUT VTAM APPL:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GDDMAPPL</span> <span class="n">VBUILD</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">APPL</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">GDDMAPPL</span> <span class="n">VBUILD</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">APPL</span>
 <span class="o">*</span>  <span class="o">------------------------------------------------------------------</span> <span class="o">*</span>
 <span class="o">*</span>  <span class="n">GDDM</span> <span class="p">:</span> <span class="n">ADMOPUT</span> <span class="n">GDDM</span> <span class="n">ACB</span> <span class="o">*</span>
 <span class="o">*</span>  <span class="o">------------------------------------------------------------------</span> <span class="o">*</span>
@@ -386,7 +395,7 @@ REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <p>Start the GDDM ADMOPUT task. The VTAM APPL must be active. The following JCL is an example:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTG</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">64</span><span class="n">M</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTG</span> <span class="n">JOB</span> <span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">64</span><span class="n">M</span>
 <span class="o">//</span><span class="n">GDDMPRT1</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">ADMOPUT</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="n">N</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">0</span><span class="n">K</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;NAME=GDDM,MAXPRTRS=0010&#39;</span>
 <span class="o">//</span><span class="n">STEPLIB</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=</span><span class="n">GDDM</span><span class="o">.</span><span class="n">SADMMOD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
@@ -398,7 +407,7 @@ REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <p>When the ADMOPUT successfully starts it will write a message to the console log:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@19</span> <span class="n">ADM2000</span> <span class="n">I</span> <span class="n">ADMOPUT</span><span class="p">(</span><span class="n">GDDM</span><span class="p">)</span><span class="o">.</span> <span class="n">TO</span> <span class="n">TERMINATE</span><span class="p">,</span> <span class="n">REPLY</span> <span class="s1">&#39;STOP&#39;</span><span class="p">,</span> <span class="s1">&#39;STOPQ&#39;</span><span class="p">,</span> <span class="n">OR</span> <span class="s1">&#39;STOPS&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@19</span> <span class="n">ADM2000</span> <span class="n">I</span> <span class="n">ADMOPUT</span><span class="p">(</span><span class="n">GDDM</span><span class="p">)</span><span class="o">.</span> <span class="n">TO</span> <span class="n">TERMINATE</span><span class="p">,</span> <span class="n">REPLY</span> <span class="s1">&#39;STOP&#39;</span><span class="p">,</span> <span class="s1">&#39;STOPQ&#39;</span><span class="p">,</span> <span class="n">OR</span> <span class="s1">&#39;STOPS&#39;</span>
 </pre></div>
 </div>
 <p>Now we can start Virtel making sure that we have a second relay printer
@@ -407,13 +416,13 @@ can see that the TSO 3270 screen REHVT000 is associated with printer
 REHIP000.</p>
 <p><img alt="image10" src="../../../_images/image111.png" /> <em>Fig. 11 - 3270 LU with relay printer REHIP000</em></p>
 <p>Next, we allocate the queue file to our TSO session with an allocate command:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">ZAMVS1</span><span class="o">.</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">ZAMVS1</span><span class="o">.</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
 </pre></div>
 </div>
 <p>This is the same file that is allocated in the ADMOPUT task. Next we
 place a print request into the print queue by call ADMOPRT from within
 our TSO session:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Call</span> <span class="s1">&#39;gddm.sadmmod(admoprt)&#39;</span> <span class="s1">&#39;gddm.smallfle on rehip000 (nocc&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Call</span> <span class="s1">&#39;gddm.sadmmod(admoprt)&#39;</span> <span class="s1">&#39;gddm.smallfle on rehip000 (nocc&#39;</span>
 </pre></div>
 </div>
 <p>This will place a request to print the file myhlq.gddm.smallfle to the
@@ -450,7 +459,7 @@ Three separate files are involved – the DOCOPT, INPUT and LAYOUT files.
 These files are created by the user and the uploaded to the SAMPTRSF W2H
 directory. Samples are provided below. These work with the SCENFLND
 scenarion. See <a class="reference internal" href="#appendix-b"><span class="std std-ref">Appendix B</span></a>:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>scenvjrs-docopt_l.txt
+<div class="highlight-default"><div class="highlight"><pre><span></span>scenvjrs-docopt_l.txt
 
 &lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot;--&gt;
 {{{CREATE-VARIABLE-IF(APPLICATION-IS-CONNECTED) &quot;$PDFAPP$&quot;}}}
@@ -580,7 +589,7 @@ ICON to the task bar and associate a function which will be executed
 when the user presses the print ICON. Our custJS.CICSPRNT.js looks like
 this. Details about toolbar customization can be found in the Virtel
 User Guide:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 <span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
 <span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do_print</span><span class="p">);</span>
 <span class="p">}</span>
@@ -596,14 +605,14 @@ User Guide:-</p>
 <div class="section" id="chrome-seamless-browser-printing-using-the-kiosk-options">
 <h3>Chrome: Seamless browser printing using the kiosk options.<a class="headerlink" href="#chrome-seamless-browser-printing-using-the-kiosk-options" title="Permalink to this headline">¶</a></h3>
 <p>The same behavior can be displayed in Chrome if we start Chrome with the –kiosk-printing option:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>“C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing
+<div class="highlight-default"><div class="highlight"><pre><span></span>“C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing
 </pre></div>
 </div>
 <p>When the press the Print ICON the browser image appears on the default
 printer. There is no intervening “setup” window. We can also use the
 –kiosk option to hide the URL bar and specify the target URL in the
 command line:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>C:\\nodeJS&gt;&quot;C:\\Program Files(x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing –kiosk http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics
+<div class="highlight-default"><div class="highlight"><pre><span></span>C:\\nodeJS&gt;&quot;C:\\Program Files(x86)\\Google\\Chrome\\Application\\chrome.exe&quot; --kiosk-printing –kiosk http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics
 </pre></div>
 </div>
 <p><img alt="image19" src="../../../_images/image20.png" /> <em>Fig. 20 - Full screen kiosk display with Chrome</em></p>
@@ -614,7 +623,7 @@ command line:-</p>
 <h2>Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="appendix-a">
 <h3>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCENPPDF SCREENS APPL=SCENPPDF
+<div class="highlight-default"><div class="highlight"><pre><span></span>SCENPPDF SCREENS APPL=SCENPPDF
 *
 * SCENARIO TO CONVERT PCL TO PDF AND SEND TO PRINT SERVER
 *
@@ -767,7 +776,7 @@ END
 </div>
 <div class="section" id="appendix-b">
 <span id="id1"></span><h3>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCENFLND SCREENS APPL=SCENFLND
+<div class="highlight-default"><div class="highlight"><pre><span></span>SCENFLND SCREENS APPL=SCENFLND
 *
 *  SCENARIO TO CONVERT £PRINT£ FROM TO PDF. LANDSCAPE
 *

@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -217,10 +226,10 @@ address or upon a cookie presented by the user’s browser.</p>
 <p><strong>1.4 What are the different types of LU nailing?</strong></p>
 <p>This document describes the following types of LU nailing:</p>
 <ul class="simple">
-<li><p>LU nailing by IP address</p></li>
-<li><p>LU nailing by cookie delivered by e-mail</p></li>
-<li><p>LU nailing by cookie obtained by self-registration</p></li>
-<li><p>LU nailing by URL</p></li>
+<li>LU nailing by IP address</li>
+<li>LU nailing by cookie delivered by e-mail</li>
+<li>LU nailing by cookie obtained by self-registration</li>
+<li>LU nailing by URL</li>
 </ul>
 </div>
 <div class="section" id="how-to-activate-lu-nailing-by-ip-address">
@@ -238,25 +247,25 @@ names.</p>
 <p><strong>2.2 Mapping individual IP addresses to LU names</strong></p>
 <p>In this example we will choose three IP addresses and map each one to a
 specific LU name, as shown in the table below:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 55%" />
-<col style="width: 45%" />
+<col width="55%" />
+<col width="45%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>IP address</strong></p></th>
-<th class="head"><p><strong>LU name</strong></p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>IP address</strong></th>
+<th class="head"><strong>LU name</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>192.168.0.39</p></td>
-<td><p>RHTVT001</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>192.168.0.39</td>
+<td>RHTVT001</td>
 </tr>
-<tr class="row-odd"><td><p>192.168.0.147</p></td>
-<td><p>RHTVT002</p></td>
+<tr class="row-odd"><td>192.168.0.147</td>
+<td>RHTVT002</td>
 </tr>
-<tr class="row-even"><td><p>192.168.0.45</p></td>
-<td><p>RHTVT003</p></td>
+<tr class="row-even"><td>192.168.0.45</td>
+<td>RHTVT003</td>
 </tr>
 </tbody>
 </table>
@@ -315,19 +324,19 @@ LU names. We will add an additional rule which will ensure that all
 connections in the network 192.168.100.0 through 192.168.100.255 will be
 assigned the next unused LU name in the range RHTVT1xx, as shown in the
 table below:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 56%" />
-<col style="width: 44%" />
+<col width="56%" />
+<col width="44%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p><strong>IP address</strong></p></th>
-<th class="head"><p><strong>LU name</strong></p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><strong>IP address</strong></th>
+<th class="head"><strong>LU name</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>192.168.100.nnn</p></td>
-<td><p>RHTVT1xx</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>192.168.100.nnn</td>
+<td>RHTVT1xx</td>
 </tr>
 </tbody>
 </table>
@@ -388,7 +397,7 @@ Fill in the “description” field as defined in the <em>VIRTEL Connectivity
 Reference</em> manual.</p>
 <p>Press F1 to save the updated line definition. Then stop and start the</p>
 <p>SMTP line using these MVS commands:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINE</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span><span class="p">,</span><span class="n">P</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINE</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span><span class="p">,</span><span class="n">P</span>
 
 <span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">LINE</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span><span class="p">,</span><span class="n">S</span>
 </pre></div>
@@ -446,7 +455,7 @@ cookie to the user via the SMTP server.</p>
 then it is quite possible that it will fail if the configuration is not
 yet correct. If the e-mail does not arrive at the user’s workstation,
 then enter the following MVS command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">L</span><span class="o">=</span><span class="n">S</span><span class="o">-</span><span class="n">SMTP</span>
 </pre></div>
 </div>
 <p>then press F4=Activate again to generate a trace of VIRTEL’s dialog with
@@ -454,8 +463,8 @@ the SMTP server. The dialog is traced in the SYSPRINT dataset of the
 VIRTEL started task (use SDSF to see it). From this you should be able
 to see what the problem is. Common problems are:</p>
 <ul class="simple">
-<li><p>codepage problem (the e-mail address in the MAIL TO command should contain an &#64; sign. If it does not, then check that the COUNTRY parameter in the VIRTCT matches your host codepage)</p></li>
-<li><p>the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command, check that the userid and hostname specified in the “description” field of the S-SMTP line are values which are acceptable to your mailserver. You may need to liaise with the company’s e-mail administrator to agree on appropriate values.</p></li>
+<li>codepage problem (the e-mail address in the MAIL TO command should contain an &#64; sign. If it does not, then check that the COUNTRY parameter in the VIRTCT matches your host codepage)</li>
+<li>the SMTP server does not accept VIRTEL’s HELO or MAIL FROM command, check that the userid and hostname specified in the “description” field of the S-SMTP line are values which are acceptable to your mailserver. You may need to liaise with the company’s e-mail administrator to agree on appropriate values.</li>
 </ul>
 <p><strong>3.6 Installing the cookie on the browser</strong></p>
 <p>When the e-mail arrives at the user’s workstation, it will contain a
@@ -572,7 +581,7 @@ support self-registration.</p>
 <p><a class="reference internal" href="../../../_images/image60.jpeg"><img alt="image60" src="../../../_images/image60.jpeg" style="width: 6.59375in; height: 6.46875in;" /></a></p>
 <p><strong>Figure 6.0 - Overview of Self Registration</strong></p>
 <p><em>6.2.1 The Line definition</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
         <span class="n">LINE</span> <span class="n">ID</span><span class="o">=</span><span class="n">X</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>
         <span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">EXC</span><span class="p">,</span>
         <span class="n">LOCADDR</span><span class="o">=</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.33</span><span class="p">:</span><span class="mi">41003</span><span class="p">,</span>
@@ -592,7 +601,7 @@ support self-registration.</p>
 terminal definitions are prefixed with the characters XL. The internal
 name for the line is X-HTTP and the external name HTTP-EXEC.</p>
 <p><em>6.2.2 The terminal definitions</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
         <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">XLPC0000</span><span class="p">,</span>
         <span class="n">RELAY</span><span class="o">=</span><span class="n">HOLTWIN7</span><span class="p">,</span>
         <span class="n">POOL</span><span class="o">=*</span><span class="n">XLCPOOL</span><span class="p">,</span>
@@ -648,7 +657,7 @@ self-registration process. Self-registration users are controlled
 through rules attached to the line. The rules attached to the X-HTTP
 line are as follows.</p>
 <p><em>6.2.3 The Rule definitions</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        RULE ID=R0000100,
+<div class="highlight-default"><div class="highlight"><pre><span></span>        RULE ID=R0000100,
         LINE=X-HTTP,
         STATUS=ACTIVE,
         DESC=&#39;Local HTTP access (users authorised by cookie)&#39;,
@@ -683,9 +692,10 @@ self-registered the call in will conatin a cookie in the HTTP request.
 This will be trapped by rule R0000100 and passed to entry point
 EXCWHOST.</p>
 <p><em>6.2.4 The Entry Points</em></p>
-<dl class="simple">
-<dt>::</dt><dd><ul class="simple">
-<li><p>ENTRY ID=EPREJECT,
+<dl class="docutils">
+<dt>::</dt>
+<dd><ul class="first last simple">
+<li>ENTRY ID=EPREJECT,
 DESC=’Entry point for unauthorized HTTP users’,
 TRANSACT=REJ,
 TIMEOUT=0720,
@@ -711,7 +721,7 @@ ACTION=0,
 EMUL=HTML,
 SIGNON=VIR0020V,
 MENU=VIR0021B,
-EXTCOLOR=X</p></li>
+EXTCOLOR=X</li>
 </ul>
 </dd>
 </dl>
@@ -725,7 +735,7 @@ transaction will always equal the name of the entry point.</p>
 <p>Transactions are associated with entry points by a common prefix
 identified in the Entry point through the TRANSACT= keyword.</p>
 <p>The transactions for EPREJECT are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
         <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">REJ</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
         <span class="n">NAME</span><span class="o">=</span><span class="n">EPREJECT</span><span class="p">,</span>
         <span class="n">DESC</span><span class="o">=</span><span class="s2">&quot;Default directory = entry point name&quot;</span><span class="p">,</span>
@@ -740,7 +750,7 @@ identified in the Entry point through the TRANSACT= keyword.</p>
 will search for a page called EPREJECT.HTM in the W2H-DIR directory and
 server it to the user.</p>
 <p>The transactions for INITVTAM are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">INITV</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">INITV</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
         <span class="n">NAME</span><span class="o">=</span><span class="n">INITVTAM</span><span class="p">,</span>
         <span class="p">(</span><span class="n">EN</span><span class="p">)</span> <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Directory for LU NAILING&#39;</span><span class="p">,</span>
         <span class="n">APPL</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
@@ -778,7 +788,7 @@ can be found in the EXC-DIR directory. During self-registration a user
 will click one of two options to complete the self-registration process
 from the INITVTAM.HTM page.</p>
 <p>The transactions for EXCWHOST are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">EXCW</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>        <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">EXCW</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>
         <span class="n">NAME</span><span class="o">=</span><span class="n">EXCWHOST</span><span class="p">,</span>
         <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTML page directory (default access)&#39;</span><span class="p">,</span>
         <span class="n">APPL</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
@@ -823,7 +833,7 @@ These transaction are accessed via hard coded links in the EXCWHOST.HTM
 page but equally could be part of an APPLIST menu display.</p>
 <p><em>6.2.6 The Sub Directory and related web pages</em></p>
 <p>Self-Registration requires a group of web elements:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
         <span class="n">CommandandGo</span><span class="o">.</span><span class="n">htm</span>
         <span class="n">CommandandWait</span><span class="o">.</span><span class="n">htm</span>
         <span class="n">CustomFunctions</span><span class="o">.</span><span class="n">js</span>
@@ -833,7 +843,7 @@ page but equally could be part of an APPLIST menu display.</p>
 </div>
 <p>These elements are uploaded into the EXC-DIR sub directory. Within the
 ARBO configuration the sub-directory is defined as:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
         <span class="n">SUBDIR</span> <span class="n">ID</span><span class="o">=</span><span class="n">EXC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
         <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Pages for EXCWHOST&#39;</span><span class="p">,</span>
         <span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span>
@@ -847,7 +857,7 @@ ARBO configuration the sub-directory is defined as:-</p>
 <p>To be able to upload web elements to this sub-direction requires the
 services of an internal Virtel upload transaction. This is defined in
 the W2H-DIR as:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span>
         <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">83</span><span class="p">,</span>
         <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;uplexc&#39;</span><span class="p">,</span>
         <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Upload HTML pages (EXC-DIR directory)&#39;</span><span class="p">,</span>
@@ -925,7 +935,7 @@ For HOLT-WIN7/ see the terminal definition XLPC0000.</p>
 <p><em>6.3.2 The Correspondent Application Options</em></p>
 <p>From within the Correspondent Application self-registered users can be
 managed. The following option are available:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PF</span><span class="o">=</span><span class="mi">1</span>    <span class="n">Update</span> <span class="n">an</span> <span class="n">Entry</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PF</span><span class="o">=</span><span class="mi">1</span>    <span class="n">Update</span> <span class="n">an</span> <span class="n">Entry</span>
 <span class="n">Enter</span>   <span class="n">Add</span> <span class="n">an</span> <span class="n">Entry</span>
 <span class="n">PF</span><span class="o">=</span><span class="mi">4</span>    <span class="n">Activate</span> <span class="n">a</span> <span class="n">disabled</span> <span class="n">entry</span>
 <span class="n">PF</span><span class="o">=</span><span class="mi">5</span>    <span class="n">Deactivate</span> <span class="n">an</span> <span class="n">Active</span> <span class="n">Entry</span>
@@ -956,8 +966,8 @@ contained with the cookie.</p>
 <div class="section" id="related-material">
 <h2>7 Related Material<a class="headerlink" href="#related-material" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="../../newsletters/TN201604/TN201604.html#tn201604"><span class="std std-ref">Controlling LU Names</span></a></p></li>
-<li><p><a class="reference internal" href="../../newsletters/TN201609/TN201609.html#tn201609"><span class="std std-ref">Nailing LUs with an Identification Scenario</span></a></p></li>
+<li><a class="reference internal" href="../../newsletters/TN201604/TN201604.html#tn201604"><span class="std std-ref">Controlling LU Names</span></a></li>
+<li><a class="reference internal" href="../../newsletters/TN201609/TN201609.html#tn201609"><span class="std std-ref">Nailing LUs with an Identification Scenario</span></a></li>
 </ul>
 </div>
 </div>
