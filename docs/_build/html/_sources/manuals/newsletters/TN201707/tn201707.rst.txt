@@ -1,0 +1,455 @@
+#####################################
+TN2017/07 Getting started with Sphinx
+#####################################
+Software Requirements. [not all may be required]
+
+*Most of the software and related PDFs can be found on \\\HOLT-WIN7\\Partage\\readthedocs*
+
+- Pandoc.
+    Convert word documents to RST format
+- Python.
+    Install 2.7
+- PIP
+    Python installer
+- Sphinx
+    Requires Python
+- RTD
+    Read-The-Docs theme template
+- Microsoft C++
+    Compiler package for Python 2.7
+- Basic-MiTex
+    Latex and PDF generator. Incorporates TexWorks Application.
+
+**Installation**
+
+#. Install Python
+        Go to https://www.python.org and install Python on your PC. Ensure you tick the “SET PATH” environment box.
+#. Install PIP
+        To install pip, download https://bootstrap.pypa.io/get-pip.py and save it somewhere. After download, invoke the command prompt, go to the directory with get-pip.py and run this command: python get-pip.py
+#. Install Sphinx
+    Type this into a command line: *pip install sphinx*
+
+    To validate the installation, type in the following: *sphinx-build -h*
+#. Install Basic-MiTex application. 
+    You'll need this to generate PDFs from the LATEX files that Sphinx produces.
+
+**Sphinx Project**
+
+That's the software installation done. Now let's set up our first sphinx project.
+
+#. Go to your route drive, something like c:\\ or a directory c:\\mystuff
+#. Enter sphinx-quickstart
+#. On the first prompt (root directory) enter myDocument
+#. Answer the questions. In most case take the defaults except for things like name of project etc. Note, be sure to say **yes** to the “autodoc” extension.
+#. You should end up with a myDocuments folder with a bunch of files.
+
+**Health Check**
+
+*Testing the HTML builder*
+
+Goto your myDocument folder and type *make html*. This will build a html document located within the _build\\html directory. Go to that directory.
+Click on index.html and you browser should open the document we have just built. It will use the default Sphinx template. There will not be much in there but you should see a search field and a bunch of links.
+
+*Testing the Latex builder*
+
+Goto your myDocument folder and type *make latex*. This will build a html document located within the _build\\latex directory. Go to that directory.
+You should have a bunch of latex related files, in particular a TEX file. We will need this to build the PDF.
+
+*Build the PDF with TexWorks*
+
+Open the TexWorks application and in the File dialog open the TEX file located in the _build\\latex directory. Next to the green button icon make sure you select:  LuaLatex+MakeIndex+BibTex
+Press the green button and the builder process will start. When it's finished a PDF will appear in another window. This PDF will be located in the _build\\latex directory.
+
+If the above all works than we have proven the software and we can now continue to play witrh the Restructured text markup language which is what Sphinx uses as input. The full documentation can be found at http://docutils.sourceforg.net/rst.html. 
+
+**Starting out with the ReSTructured Language**
+
+If you viewing this document as a PDF or online as a HTML page then you are about to embark on a learning exercise that will teach you how to create PDFs and online documents using a bunch of tools such as Sphinx and Latex. The source document for both the PDF and HTML outputs is the same; a ReSTructured document. The source material for this newsletter is a ReSTructured or RST file that can be found on the server at :file:`\\\\\HOLT-WIN7\\Partage\\readthedocs\\TN201707.RST`. So lets start with your first document. 
+
+Create a document called mydocument.rst in your myDocument folder and copy in the following text:
+
+**Paragraphs**
+::
+    
+    Restruced text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.
+
+    This is paragraph 1
+
+    This is paragraph 2
+
+    This is paragraph 3.
+    This is not a paragraph as no is no blank line between these two lines.    
+
+Reissue ``make latex`` in your command prompt to create the tex file. Now press the green build ICON in TexWorks to rebuild the PDF. You should see that you have the following.
+
+Restruced text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.  
+
+This is paragraph 1
+
+This is paragraph 2
+    
+This is paragraph 3.
+This is not a paragraph as no is no blank line between these two lines.     
+
+Look what happens with paragraph 3. The two sentences are combined onto the same line.
+
+**Indentation**
+
+Hello.
+
+    I am indented.
+
+**Inline markup**
+
+The standard reST inline markup is quite simple: use
+::
+
+    one asterisk: *text* for emphasis (italics),
+    two asterisks: **text** for strong emphasis (boldface), and
+    backquotes: ``text`` for code samples.
+
+This is **bold**.
+
+This is *italics*.
+
+This is ``code samples``.  
+
+If you need to code \*this is not bold\* in your text you will to escape the asterisks with a \\ to avoid the conversion to italics.  
+
+Add the following markup text inyo your document:-
+
+::
+
+    **Indentation**
+
+    Hello.
+
+        I am indented.
+
+    **Inline markup**
+
+    The standard reST inline markup is quite simple: use
+    ::
+
+        one asterisk: *text* for emphasis (italics),
+        two asterisks: **text** for strong emphasis (boldface), and
+        backquotes: ``text`` for code samples.
+
+    This is **bold**.
+
+    This is *italics*.
+
+    This is ``code samples``.  
+
+    If you need to code \*this is not bold\* in your text you will to escape the asterisks with a \\ to avoid the conversion to italics.  
+
+Recreate the TEX file by entering ``make latex`` in the command prompt and then recreate the PDF by pressing the rebuild ICON in TexWorks. The PDF will be redisplayed in the window with the markup text applied to your document. 
+
+What is the significance of the :: in column 1? This indicates that the next paragraph(s) should not be "marked-up" but left as is. The text must be indented. It is referred to as a literal block and is described :ref:`"below"<#_literalBlock>`. If you place the cursor over the word below it will indicate the page of the reference target. If we click it then we go to the target page. The format of the reference markup is as follows::
+
+    is described :ref:`"below"<#_literalBlock>`.   
+
+
+**Lists and Quote-like blocks**
+
+List markup is natural: just place an asterisk at the start of a paragraph and indent properly. The same goes for numbered lists; they can also be autonumbered using a # sign: Here are some examples to try in your document.
+
+::
+
+    * This is a bulleted list.
+    * It has two items, the second
+      item uses two lines.
+
+    1. This is a numbered list.
+    2. It has two items too.
+
+    #. This is a numbered list.
+    #. It has two items too.
+
+* This is a bulleted list.
+* It has two items, the second
+  item uses two lines.
+
+1. This is a numbered list.
+2. It has two items too.
+
+#. This is a numbered list.
+#. It has two items too.
+
+Nested lists are possible, but be aware that they must be separated from the parent list items by blank lines:
+
+::
+
+    * this is
+    * a list
+
+        * with a nested list
+        * and some subitems
+
+    * and here the parent list continues
+
+* this is
+* a list
+
+    * with a nested list
+    * and some subitems
+
+* and here the parent list continues    
+
+**Definition List**
+
+Here is a defintion list.
+
+::
+
+    Definition lists are created as follows:
+
+    term (up to a line of text)
+        Definition of the term, which must be indented
+
+        and can even consist of multiple paragraphs
+
+    next term
+        Description.
+
+Definition lists are created as follows:
+
+    term (up to a line of text)
+        Definition of the term, which must be indented
+
+        and can even consist of multiple paragraphs
+
+    next term
+        Description.    
+
+**Line Blocks**
+
+::
+
+    | These lines are
+    | broken exactly like in
+    | the source file.
+
+| These lines are
+| broken exactly like in
+| the source file.
+
+**Bookmarks and refrences**
+
+The literal block has the following bookmark before the title. It is not printed. It ties up with the reference above. It identifies the target of the reference. The format of the bookmark is::
+
+    .. _#_literalBlock:
+
+.. _#_literalBlock:
+
+**Literal block (::)**
+
+Literal code blocks are introduced by ending a paragraph with the special marker \:\:. The literal block must be indented (and, like all paragraphs, separated from the surrounding ones by blank lines): Copy in the following code and rebuild the PDF. Don't forget to ``make latex`` before rebuilding the PDF.
+
+::
+
+    This is a normal text paragraph. The next paragraph is a code sample::
+
+        It is not processed in any way, except
+        that the indentation is removed.
+
+        It can span multiple lines.
+
+    This is a normal text paragraph again.
+ 
+The handling of the :: marker is smart:
+
+- If it occurs as a paragraph of its own, that paragraph is completely left out of the document.
+- If it is preceded by whitespace, the marker is removed.
+- If it is preceded by non-whitespace, the marker is replaced by a single colon.
+
+That way, the second sentence in the above example’s first paragraph would be rendered as “The next paragraph is a code sample:”.
+
+This is a normal text paragraph. The next paragraph is a code sample::
+
+    It is not processed in any way, except
+    that the indentation is removed.
+
+    It can span multiple lines.
+
+This is a normal text paragraph again.
+
+**Tables**
+
+For grid tables, you have to “paint” the cell grid yourself. They look like this::
+
+    +------------------------+------------+----------+----------+
+    | Header row, column 1   | Header 2   | Header 3 | Header 4 |
+    | (header rows optional) |            |          |          |
+    +========================+============+==========+==========+
+    | body row 1, column 1   | column 2   | column 3 | column 4 |
+    +------------------------+------------+----------+----------+
+    | body row 2             | ...        | ...      |          |
+    +------------------------+------------+----------+----------+
+
+Simple tables are easier to write, but limited: they must contain more than one row, and the first column cells cannot contain multiple lines. They look like this:
+
+=====  =====  =======
+A      B      A and B
+=====  =====  =======
+False  False  False
+True   False  False
+False  True   False
+True   True   True
+=====  =====  =======
+
+Two more syntaxes are supported: CSV tables and List tables. They use an explicit markup block, see  `reST online <http://docutils.sourceforge.net/rst.html>`_ further information. Note the use of the external link reference. Clicking on the link will take us to the target URL. The format of the link is::  
+
+    see  `reST online <http://docutils.sourceforge.net/rst.html>`_ further 
+
+.. note ::    
+    There must be a space before the <
+
+The above was an **admonition**. In this case a 'note'. Here is the full text::
+
+    .. note ::    
+        There must be a space before the <
+
+Supported admonitions are: attention, caution, danger, error, hint, important, note, tip, warning and the generic admonition. (Most themes style only “note” and “warning” specially.). Here is a danger example:
+
+.. danger ::
+    This is a dangerous piece of code.
+
+**Sections**
+
+Section headers are created by underlining (and optionally overlining) the section title with a punctuation character, at least as long as the text::
+
+    =================
+    This is a chapter
+    =================
+
+=================
+This is a chapter
+=================
+
+- # with overline, for parts
+- \* with overline, for chapters
+- =, for sections
+- -, for subsections
+- ^, for subsubsections
+- ", for paragraphs
+
+Here is an example of sections::
+
+    =========
+    A Chapter
+    =========
+
+    A section within a chapter
+    ==========================
+
+    A subsection within a section
+    -----------------------------
+
+    A subsubsection within a section
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    A paragraph
+    """""""""""
+
+================
+A second chapter
+================
+
+A section within a chapter
+==========================
+
+A subsection within a section
+-----------------------------
+
+A subsubsection within a section
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A paragraph
+"""""""""""
+
+If we look at the index.rst file we can see the following::
+
+    .. myDocument documentation master file, created by
+    sphinx-quickstart on Thu Jul 06 17:06:23 2017.
+    You can adapt this file completely to your liking, but it should at least
+    contain the root `toctree` directive.
+
+    Welcome to myDocument's documentation!
+    ======================================
+
+    .. toctree::
+        :maxdepth: 2
+        :caption: Contents:
+
+        myDocument
+
+    Indices and tables
+    ==================
+
+    * :ref:`genindex`
+    * :ref:`modindex`
+    * :ref:`search`
+
+The maxdepth determines the numbering level of sections. By default 2 is specified which means we get 1, 1.1, 1.2, 2, 2.1 2.2 etc. This is the chapter and section levels which will appear in the table of contents. 
+
+Change the maxdepth value to 4 and reproduce the PDF. You will see that the table of contents now includes further levels.
+
+**Images**
+
+To include an image in your document use the image directive::
+
+    .. image:: images/newsletter.png 
+
+.. image:: images/newsletter.png
+   :alt: The generated HTML newsletter 
+   
+
+Images can also be referenced from within a document through the substitution markup. For example::
+
+    Some text....
+    
+    |myImage1|
+
+    more text .....
+
+    at end of the document:
+
+    .. |myImage1| image:: images/pdfimage.jpg
+
+
+The image directive has various resizing options, see the `reST online <http://docutils.sourceforge.net/rst.html>`_ for further information. 
+
+Some text....
+    
+|myImage1|
+
+more text .....
+
+at end of the document:
+
+**Creating an index**
+
+Indexing is controlled through the index directive. The format is::
+
+    .. index:: <entries>
+
+Each entry consists of a type and value separated by a colon. Normally you xould have a index directive before each paragraph.
+
+.. index:: A-VOID, B-VOID, capacitor
+
+The A-VOID injector must not be fused before the B-VOID injector has reached optimum temperature in the flux capacitor.
+
+.. index::
+    pair: capacitor;tatanium
+    single: P-3567
+
+The flux capacitor must be serviced with P-3567 tatanium extract every 200 years. Failure to do so will invalidate the warranty.           
+
+Links can also be set within the text: For example::
+
+    This is a normal reST :index:`paragraph` that contains several :index:`index entries <pair: index;entry>`.
+
+This is a normal reST :index:`paragraph` that contains several :index:`index entries <pair: index;entry>`.
+
+.. |myImage1| image:: images/pdfimage.jpg 

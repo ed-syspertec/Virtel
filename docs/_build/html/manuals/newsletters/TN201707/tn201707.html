@@ -1,0 +1,671 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>TN2017/07 Getting started with Sphinx &mdash; Virtel 7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Virtel Batch Maintenance" href="../TN201709/TN201709.html" />
+    <link rel="prev" title="What’s new in Virtel 4.57 (July 2017)" href="../TN201706/TN201706     .html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Virtel
+          
+
+          
+            
+            <img src="../../../_static/logo_virtel_web.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                4.57
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id1">2014</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id2">2015</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id3">2016</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id4">2017</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../TN201701/TN201701.html">Protecting business assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201702/TN201702.html">Protecting Virtel Applications with Shibboleth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201703/TN201703.html">Passticket support with CA Top Secret</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201704/TN201704.html">Virtel Macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201705/TN201705     .html">Printing PCL files with NodeJS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201706/TN201706     .html">What’s new in Virtel 4.57 (July 2017)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">TN2017/07 Getting started with Sphinx</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#this-is-a-chapter">This is a chapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#a-second-chapter">A second chapter</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201709/TN201709.html">Virtel Batch Maintenance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Virtel</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
+        
+      <li>TN2017/07 Getting started with Sphinx</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/manuals/newsletters/TN201707/tn201707.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tn2017-07-getting-started-with-sphinx">
+<h1>TN2017/07 Getting started with Sphinx<a class="headerlink" href="#tn2017-07-getting-started-with-sphinx" title="Permalink to this headline">¶</a></h1>
+<p>Software Requirements. [not all may be required]</p>
+<p><em>Most of the software and related PDFs can be found on \HOLT-WIN7\Partage\readthedocs</em></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Pandoc.</dt><dd><p>Convert word documents to RST format</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Python.</dt><dd><p>Install 2.7</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PIP</dt><dd><p>Python installer</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Sphinx</dt><dd><p>Requires Python</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>RTD</dt><dd><p>Read-The-Docs theme template</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Microsoft C++</dt><dd><p>Compiler package for Python 2.7</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Basic-MiTex</dt><dd><p>Latex and PDF generator. Incorporates TexWorks Application.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Installation</strong></p>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>Install Python</dt><dd><p>Go to <a class="reference external" href="https://www.python.org">https://www.python.org</a> and install Python on your PC. Ensure you tick the “SET PATH” environment box.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Install PIP</dt><dd><p>To install pip, download <a class="reference external" href="https://bootstrap.pypa.io/get-pip.py">https://bootstrap.pypa.io/get-pip.py</a> and save it somewhere. After download, invoke the command prompt, go to the directory with get-pip.py and run this command: python get-pip.py</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>Install Sphinx</dt><dd><p>Type this into a command line: <em>pip install sphinx</em></p>
+<p>To validate the installation, type in the following: <em>sphinx-build -h</em></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Install Basic-MiTex application.</dt><dd><p>You’ll need this to generate PDFs from the LATEX files that Sphinx produces.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>Sphinx Project</strong></p>
+<p>That’s the software installation done. Now let’s set up our first sphinx project.</p>
+<ol class="arabic simple">
+<li><p>Go to your route drive, something like c:\ or a directory c:\mystuff</p></li>
+<li><p>Enter sphinx-quickstart</p></li>
+<li><p>On the first prompt (root directory) enter myDocument</p></li>
+<li><p>Answer the questions. In most case take the defaults except for things like name of project etc. Note, be sure to say <strong>yes</strong> to the “autodoc” extension.</p></li>
+<li><p>You should end up with a myDocuments folder with a bunch of files.</p></li>
+</ol>
+<p><strong>Health Check</strong></p>
+<p><em>Testing the HTML builder</em></p>
+<p>Goto your myDocument folder and type <em>make html</em>. This will build a html document located within the _build\html directory. Go to that directory.
+Click on index.html and you browser should open the document we have just built. It will use the default Sphinx template. There will not be much in there but you should see a search field and a bunch of links.</p>
+<p><em>Testing the Latex builder</em></p>
+<p>Goto your myDocument folder and type <em>make latex</em>. This will build a html document located within the _build\latex directory. Go to that directory.
+You should have a bunch of latex related files, in particular a TEX file. We will need this to build the PDF.</p>
+<p><em>Build the PDF with TexWorks</em></p>
+<p>Open the TexWorks application and in the File dialog open the TEX file located in the _build\latex directory. Next to the green button icon make sure you select:  LuaLatex+MakeIndex+BibTex
+Press the green button and the builder process will start. When it’s finished a PDF will appear in another window. This PDF will be located in the _build\latex directory.</p>
+<p>If the above all works than we have proven the software and we can now continue to play witrh the Restructured text markup language which is what Sphinx uses as input. The full documentation can be found at <a class="reference external" href="http://docutils.sourceforg.net/rst.html">http://docutils.sourceforg.net/rst.html</a>.</p>
+<p><strong>Starting out with the ReSTructured Language</strong></p>
+<p>If you viewing this document as a PDF or online as a HTML page then you are about to embark on a learning exercise that will teach you how to create PDFs and online documents using a bunch of tools such as Sphinx and Latex. The source document for both the PDF and HTML outputs is the same; a ReSTructured document. The source material for this newsletter is a ReSTructured or RST file that can be found on the server at <code class="file docutils literal notranslate"><span class="pre">\HOLT-WIN7\Partage\readthedocs\TN201707.RST</span></code>. So lets start with your first document.</p>
+<p>Create a document called mydocument.rst in your myDocument folder and copy in the following text:</p>
+<p><strong>Paragraphs</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Restruced</span> <span class="n">text</span><span class="o">.</span> <span class="n">A</span> <span class="n">paragraph</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">most</span> <span class="n">basic</span> <span class="n">building</span> <span class="n">block</span> <span class="k">with</span> <span class="n">a</span> <span class="n">reST</span> <span class="n">document</span><span class="o">.</span> <span class="n">Paragraphs</span> <span class="n">are</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">a</span> <span class="n">blank</span> <span class="n">line</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="mi">1</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="mi">2</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="mf">3.</span>
+<span class="n">This</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">paragraph</span> <span class="k">as</span> <span class="n">no</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">blank</span> <span class="n">line</span> <span class="n">between</span> <span class="n">these</span> <span class="n">two</span> <span class="n">lines</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Reissue <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latex</span></code> in your command prompt to create the tex file. Now press the green build ICON in TexWorks to rebuild the PDF. You should see that you have the following.</p>
+<p>Restruced text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.</p>
+<p>This is paragraph 1</p>
+<p>This is paragraph 2</p>
+<p>This is paragraph 3.
+This is not a paragraph as no is no blank line between these two lines.</p>
+<p>Look what happens with paragraph 3. The two sentences are combined onto the same line.</p>
+<p><strong>Indentation</strong></p>
+<p>Hello.</p>
+<blockquote>
+<div><p>I am indented.</p>
+</div></blockquote>
+<p><strong>Inline markup</strong></p>
+<p>The standard reST inline markup is quite simple: use</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>one asterisk: *text* for emphasis (italics),
+two asterisks: **text** for strong emphasis (boldface), and
+backquotes: ``text`` for code samples.
+</pre></div>
+</div>
+<p>This is <strong>bold</strong>.</p>
+<p>This is <em>italics</em>.</p>
+<p>This is <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">samples</span></code>.</p>
+<p>If you need to code *this is not bold* in your text you will to escape the asterisks with a \ to avoid the conversion to italics.</p>
+<p>Add the following markup text inyo your document:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>**Indentation**
+
+Hello.
+
+    I am indented.
+
+**Inline markup**
+
+The standard reST inline markup is quite simple: use
+::
+
+    one asterisk: *text* for emphasis (italics),
+    two asterisks: **text** for strong emphasis (boldface), and
+    backquotes: ``text`` for code samples.
+
+This is **bold**.
+
+This is *italics*.
+
+This is ``code samples``.
+
+If you need to code \*this is not bold\* in your text you will to escape the asterisks with a \\ to avoid the conversion to italics.
+</pre></div>
+</div>
+<p>Recreate the TEX file by entering <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latex</span></code> in the command prompt and then recreate the PDF by pressing the rebuild ICON in TexWorks. The PDF will be redisplayed in the window with the markup text applied to your document.</p>
+<p>What is the significance of the :: in column 1? This indicates that the next paragraph(s) should not be “marked-up” but left as is. The text must be indented. It is referred to as a literal block and is described <a class="reference internal" href="#literalblock"><span class="std std-ref">“below”</span></a>. If you place the cursor over the word below it will indicate the page of the reference target. If we click it then we go to the target page. The format of the reference markup is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>is described :ref:`&quot;below&quot;&lt;#_literalBlock&gt;`.
+</pre></div>
+</div>
+<p><strong>Lists and Quote-like blocks</strong></p>
+<p>List markup is natural: just place an asterisk at the start of a paragraph and indent properly. The same goes for numbered lists; they can also be autonumbered using a # sign: Here are some examples to try in your document.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">bulleted</span> <span class="nb">list</span><span class="o">.</span>
+<span class="o">*</span> <span class="n">It</span> <span class="n">has</span> <span class="n">two</span> <span class="n">items</span><span class="p">,</span> <span class="n">the</span> <span class="n">second</span>
+  <span class="n">item</span> <span class="n">uses</span> <span class="n">two</span> <span class="n">lines</span><span class="o">.</span>
+
+<span class="mf">1.</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">numbered</span> <span class="nb">list</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">It</span> <span class="n">has</span> <span class="n">two</span> <span class="n">items</span> <span class="n">too</span><span class="o">.</span>
+
+<span class="c1">#. This is a numbered list.</span>
+<span class="c1">#. It has two items too.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This is a bulleted list.</p></li>
+<li><p>It has two items, the second
+item uses two lines.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>This is a numbered list.</p></li>
+<li><p>It has two items too.</p></li>
+<li><p>This is a numbered list.</p></li>
+<li><p>It has two items too.</p></li>
+</ol>
+<p>Nested lists are possible, but be aware that they must be separated from the parent list items by blank lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">this</span> <span class="ow">is</span>
+<span class="o">*</span> <span class="n">a</span> <span class="nb">list</span>
+
+    <span class="o">*</span> <span class="k">with</span> <span class="n">a</span> <span class="n">nested</span> <span class="nb">list</span>
+    <span class="o">*</span> <span class="ow">and</span> <span class="n">some</span> <span class="n">subitems</span>
+
+<span class="o">*</span> <span class="ow">and</span> <span class="n">here</span> <span class="n">the</span> <span class="n">parent</span> <span class="nb">list</span> <span class="n">continues</span>
+</pre></div>
+</div>
+<ul>
+<li><p>this is</p></li>
+<li><p>a list</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>with a nested list</p></li>
+<li><p>and some subitems</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>and here the parent list continues</p></li>
+</ul>
+<p><strong>Definition List</strong></p>
+<p>Here is a defintion list.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Definition</span> <span class="n">lists</span> <span class="n">are</span> <span class="n">created</span> <span class="k">as</span> <span class="n">follows</span><span class="p">:</span>
+
+<span class="n">term</span> <span class="p">(</span><span class="n">up</span> <span class="n">to</span> <span class="n">a</span> <span class="n">line</span> <span class="n">of</span> <span class="n">text</span><span class="p">)</span>
+    <span class="n">Definition</span> <span class="n">of</span> <span class="n">the</span> <span class="n">term</span><span class="p">,</span> <span class="n">which</span> <span class="n">must</span> <span class="n">be</span> <span class="n">indented</span>
+
+    <span class="ow">and</span> <span class="n">can</span> <span class="n">even</span> <span class="n">consist</span> <span class="n">of</span> <span class="n">multiple</span> <span class="n">paragraphs</span>
+
+<span class="nb">next</span> <span class="n">term</span>
+    <span class="n">Description</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Definition lists are created as follows:</p>
+<blockquote>
+<div><dl>
+<dt>term (up to a line of text)</dt><dd><p>Definition of the term, which must be indented</p>
+<p>and can even consist of multiple paragraphs</p>
+</dd>
+<dt>next term</dt><dd><p>Description.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>Line Blocks</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span> <span class="n">These</span> <span class="n">lines</span> <span class="n">are</span>
+<span class="o">|</span> <span class="n">broken</span> <span class="n">exactly</span> <span class="n">like</span> <span class="ow">in</span>
+<span class="o">|</span> <span class="n">the</span> <span class="n">source</span> <span class="n">file</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">These lines are</div>
+<div class="line">broken exactly like in</div>
+<div class="line">the source file.</div>
+</div>
+<p><strong>Bookmarks and refrences</strong></p>
+<p>The literal block has the following bookmark before the title. It is not printed. It ties up with the reference above. It identifies the target of the reference. The format of the bookmark is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">_</span><span class="c1">#_literalBlock:</span>
+</pre></div>
+</div>
+<p id="literalblock"><strong>Literal block (::)</strong></p>
+<p>Literal code blocks are introduced by ending a paragraph with the special marker ::. The literal block must be indented (and, like all paragraphs, separated from the surrounding ones by blank lines): Copy in the following code and rebuild the PDF. Don’t forget to <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">latex</span></code> before rebuilding the PDF.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">normal</span> <span class="n">text</span> <span class="n">paragraph</span><span class="o">.</span> <span class="n">The</span> <span class="nb">next</span> <span class="n">paragraph</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">code</span> <span class="n">sample</span><span class="p">::</span>
+
+    <span class="n">It</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">processed</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">way</span><span class="p">,</span> <span class="k">except</span>
+    <span class="n">that</span> <span class="n">the</span> <span class="n">indentation</span> <span class="ow">is</span> <span class="n">removed</span><span class="o">.</span>
+
+    <span class="n">It</span> <span class="n">can</span> <span class="n">span</span> <span class="n">multiple</span> <span class="n">lines</span><span class="o">.</span>
+
+<span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">normal</span> <span class="n">text</span> <span class="n">paragraph</span> <span class="n">again</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The handling of the :: marker is smart:</p>
+<ul class="simple">
+<li><p>If it occurs as a paragraph of its own, that paragraph is completely left out of the document.</p></li>
+<li><p>If it is preceded by whitespace, the marker is removed.</p></li>
+<li><p>If it is preceded by non-whitespace, the marker is replaced by a single colon.</p></li>
+</ul>
+<p>That way, the second sentence in the above example’s first paragraph would be rendered as “The next paragraph is a code sample:”.</p>
+<p>This is a normal text paragraph. The next paragraph is a code sample:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">It</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">processed</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">way</span><span class="p">,</span> <span class="k">except</span>
+<span class="n">that</span> <span class="n">the</span> <span class="n">indentation</span> <span class="ow">is</span> <span class="n">removed</span><span class="o">.</span>
+
+<span class="n">It</span> <span class="n">can</span> <span class="n">span</span> <span class="n">multiple</span> <span class="n">lines</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>This is a normal text paragraph again.</p>
+<p><strong>Tables</strong></p>
+<p>For grid tables, you have to “paint” the cell grid yourself. They look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------------+------------+----------+----------+</span>
+<span class="o">|</span> <span class="n">Header</span> <span class="n">row</span><span class="p">,</span> <span class="n">column</span> <span class="mi">1</span>   <span class="o">|</span> <span class="n">Header</span> <span class="mi">2</span>   <span class="o">|</span> <span class="n">Header</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">Header</span> <span class="mi">4</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">(</span><span class="n">header</span> <span class="n">rows</span> <span class="n">optional</span><span class="p">)</span> <span class="o">|</span>            <span class="o">|</span>          <span class="o">|</span>          <span class="o">|</span>
+<span class="o">+========================+============+==========+==========+</span>
+<span class="o">|</span> <span class="n">body</span> <span class="n">row</span> <span class="mi">1</span><span class="p">,</span> <span class="n">column</span> <span class="mi">1</span>   <span class="o">|</span> <span class="n">column</span> <span class="mi">2</span>   <span class="o">|</span> <span class="n">column</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">column</span> <span class="mi">4</span> <span class="o">|</span>
+<span class="o">+------------------------+------------+----------+----------+</span>
+<span class="o">|</span> <span class="n">body</span> <span class="n">row</span> <span class="mi">2</span>             <span class="o">|</span> <span class="o">...</span>        <span class="o">|</span> <span class="o">...</span>      <span class="o">|</span>          <span class="o">|</span>
+<span class="o">+------------------------+------------+----------+----------+</span>
+</pre></div>
+</div>
+<p>Simple tables are easier to write, but limited: they must contain more than one row, and the first column cells cannot contain multiple lines. They look like this:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 29%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>A and B</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<p>Two more syntaxes are supported: CSV tables and List tables. They use an explicit markup block, see  <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reST online</a> further information. Note the use of the external link reference. Clicking on the link will take us to the target URL. The format of the link is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>see  `reST online &lt;http://docutils.sourceforge.net/rst.html&gt;`_ further
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There must be a space before the &lt;</p>
+</div>
+<p>The above was an <strong>admonition</strong>. In this case a ‘note’. Here is the full text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">note</span> <span class="p">::</span>
+    <span class="n">There</span> <span class="n">must</span> <span class="n">be</span> <span class="n">a</span> <span class="n">space</span> <span class="n">before</span> <span class="n">the</span> <span class="o">&lt;</span>
+</pre></div>
+</div>
+<p>Supported admonitions are: attention, caution, danger, error, hint, important, note, tip, warning and the generic admonition. (Most themes style only “note” and “warning” specially.). Here is a danger example:</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>This is a dangerous piece of code.</p>
+</div>
+<p><strong>Sections</strong></p>
+<p>Section headers are created by underlining (and optionally overlining) the section title with a punctuation character, at least as long as the text:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=================</span>
+<span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">chapter</span>
+<span class="o">=================</span>
+</pre></div>
+</div>
+<div class="section" id="this-is-a-chapter">
+<h2>This is a chapter<a class="headerlink" href="#this-is-a-chapter" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p># with overline, for parts</p></li>
+<li><p>* with overline, for chapters</p></li>
+<li><p>=, for sections</p></li>
+<li><p>-, for subsections</p></li>
+<li><p>^, for subsubsections</p></li>
+<li><p>“, for paragraphs</p></li>
+</ul>
+<p>Here is an example of sections:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">=========</span>
+<span class="n">A</span> <span class="n">Chapter</span>
+<span class="o">=========</span>
+
+<span class="n">A</span> <span class="n">section</span> <span class="n">within</span> <span class="n">a</span> <span class="n">chapter</span>
+<span class="o">==========================</span>
+
+<span class="n">A</span> <span class="n">subsection</span> <span class="n">within</span> <span class="n">a</span> <span class="n">section</span>
+<span class="o">-----------------------------</span>
+
+<span class="n">A</span> <span class="n">subsubsection</span> <span class="n">within</span> <span class="n">a</span> <span class="n">section</span>
+<span class="o">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+
+<span class="n">A</span> <span class="n">paragraph</span>
+<span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="s2">&quot;&quot;&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-second-chapter">
+<h2>A second chapter<a class="headerlink" href="#a-second-chapter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-section-within-a-chapter">
+<h3>A section within a chapter<a class="headerlink" href="#a-section-within-a-chapter" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="a-subsection-within-a-section">
+<h4>A subsection within a section<a class="headerlink" href="#a-subsection-within-a-section" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="a-subsubsection-within-a-section">
+<h5>A subsubsection within a section<a class="headerlink" href="#a-subsubsection-within-a-section" title="Permalink to this headline">¶</a></h5>
+<div class="section" id="a-paragraph">
+<h6>A paragraph<a class="headerlink" href="#a-paragraph" title="Permalink to this headline">¶</a></h6>
+<p>If we look at the index.rst file we can see the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>.. myDocument documentation master file, created by
+sphinx-quickstart on Thu Jul 06 17:06:23 2017.
+You can adapt this file completely to your liking, but it should at least
+contain the root `toctree` directive.
+
+Welcome to myDocument&#39;s documentation!
+======================================
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Contents:
+
+    myDocument
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+</pre></div>
+</div>
+<p>The maxdepth determines the numbering level of sections. By default 2 is specified which means we get 1, 1.1, 1.2, 2, 2.1 2.2 etc. This is the chapter and section levels which will appear in the table of contents.</p>
+<p>Change the maxdepth value to 4 and reproduce the PDF. You will see that the table of contents now includes further levels.</p>
+<p><strong>Images</strong></p>
+<p>To include an image in your document use the image directive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">image</span><span class="p">::</span> <span class="n">images</span><span class="o">/</span><span class="n">newsletter</span><span class="o">.</span><span class="n">png</span>
+</pre></div>
+</div>
+<img alt="The generated HTML newsletter" src="manuals\newsletters\TN201707\images/newsletter.png" />
+<p>Images can also be referenced from within a document through the substitution markup. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Some</span> <span class="n">text</span><span class="o">....</span>
+
+<span class="o">|</span><span class="n">myImage1</span><span class="o">|</span>
+
+<span class="n">more</span> <span class="n">text</span> <span class="o">.....</span>
+
+<span class="n">at</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">document</span><span class="p">:</span>
+
+<span class="o">..</span> <span class="o">|</span><span class="n">myImage1</span><span class="o">|</span> <span class="n">image</span><span class="p">::</span> <span class="n">images</span><span class="o">/</span><span class="n">pdfimage</span><span class="o">.</span><span class="n">jpg</span>
+</pre></div>
+</div>
+<p>The image directive has various resizing options, see the <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reST online</a> for further information.</p>
+<p>Some text….</p>
+<p><img alt="myImage1" src="manuals\newsletters\TN201707\images/pdfimage.jpg" /></p>
+<p>more text …..</p>
+<p>at end of the document:</p>
+<p><strong>Creating an index</strong></p>
+<p>Indexing is controlled through the index directive. The format is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">index</span><span class="p">::</span> <span class="o">&lt;</span><span class="n">entries</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Each entry consists of a type and value separated by a colon. Normally you xould have a index directive before each paragraph.</p>
+<p id="index-0">The A-VOID injector must not be fused before the B-VOID injector has reached optimum temperature in the flux capacitor.</p>
+<p id="index-1">The flux capacitor must be serviced with P-3567 tatanium extract every 200 years. Failure to do so will invalidate the warranty.</p>
+<p>Links can also be set within the text: For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>This is a normal reST :index:`paragraph` that contains several :index:`index entries &lt;pair: index;entry&gt;`.
+</pre></div>
+</div>
+<p>This is a normal reST <span class="target" id="index-2"></span>paragraph that contains several <span class="target" id="index-3"></span>index entries.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TN201709/TN201709.html" class="btn btn-neutral float-right" title="Virtel Batch Maintenance" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../TN201706/TN201706     .html" class="btn btn-neutral float-left" title="What’s new in Virtel 4.57 (July 2017)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Syspertec. All rights reserved
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
