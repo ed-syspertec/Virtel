@@ -30,6 +30,8 @@ Software Requirements. [not all may be required]
     Type this into a command line: *pip install sphinx*
 
     To validate the installation, type in the following: *sphinx-build -h*
+#. Install Sphinx Read-The-Docs theme template (RTD)
+    Type this into a command line: *pip install sphinx_rtd_theme*
 #. Install Basic-MiTex application. 
     You'll need this to generate PDFs from the LATEX files that Sphinx produces.
 
@@ -60,7 +62,7 @@ You should have a bunch of latex related files, in particular a TEX file. We wil
 Open the TexWorks application and in the File dialog open the TEX file located in the _build\\latex directory. Next to the green button icon make sure you select:  LuaLatex+MakeIndex+BibTex
 Press the green button and the builder process will start. When it's finished a PDF will appear in another window. This PDF will be located in the _build\\latex directory.
 
-If the above all works than we have proven the software and we can now continue to play witrh the Restructured text markup language which is what Sphinx uses as input. The full documentation can be found at http://docutils.sourceforg.net/rst.html. 
+If the above all works than we have proven the software and we can now continue to play with the Restructured text markup language which is what Sphinx uses as input. The full documentation can be found at http://docutils.sourceforg.net/rst.html. 
 
 **Starting out with the ReSTructured Language**
 
@@ -71,7 +73,7 @@ Create a document called mydocument.rst in your myDocument folder and copy in th
 **Paragraphs**
 ::
     
-    Restruced text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.
+    Restructured text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.
 
     This is paragraph 1
 
@@ -82,7 +84,7 @@ Create a document called mydocument.rst in your myDocument folder and copy in th
 
 Reissue ``make latex`` in your command prompt to create the tex file. Now press the green build ICON in TexWorks to rebuild the PDF. You should see that you have the following.
 
-Restruced text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.  
+Restructured text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.  
 
 This is paragraph 1
 

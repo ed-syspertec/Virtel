@@ -251,6 +251,12 @@
 </dl>
 </li>
 <li><dl class="first docutils">
+<dt>Install Sphinx Read-The-Docs theme template (RTD)</dt>
+<dd><p class="first last">Type this into a command line: <em>pip install sphinx_rtd_theme</em></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
 <dt>Install Basic-MiTex application.</dt>
 <dd><p class="first last">You’ll need this to generate PDFs from the LATEX files that Sphinx produces.</p>
 </dd>
@@ -276,12 +282,12 @@ You should have a bunch of latex related files, in particular a TEX file. We wil
 <p><em>Build the PDF with TexWorks</em></p>
 <p>Open the TexWorks application and in the File dialog open the TEX file located in the _build\latex directory. Next to the green button icon make sure you select:  LuaLatex+MakeIndex+BibTex
 Press the green button and the builder process will start. When it’s finished a PDF will appear in another window. This PDF will be located in the _build\latex directory.</p>
-<p>If the above all works than we have proven the software and we can now continue to play witrh the Restructured text markup language which is what Sphinx uses as input. The full documentation can be found at <a class="reference external" href="http://docutils.sourceforg.net/rst.html">http://docutils.sourceforg.net/rst.html</a>.</p>
+<p>If the above all works than we have proven the software and we can now continue to play with the Restructured text markup language which is what Sphinx uses as input. The full documentation can be found at <a class="reference external" href="http://docutils.sourceforg.net/rst.html">http://docutils.sourceforg.net/rst.html</a>.</p>
 <p><strong>Starting out with the ReSTructured Language</strong></p>
 <p>If you viewing this document as a PDF or online as a HTML page then you are about to embark on a learning exercise that will teach you how to create PDFs and online documents using a bunch of tools such as Sphinx and Latex. The source document for both the PDF and HTML outputs is the same; a ReSTructured document. The source material for this newsletter is a ReSTructured or RST file that can be found on the server at <code class="file docutils literal"><span class="pre">\\HOLT-WIN7\Partage\readthedocs\TN201707.RST</span></code>. So lets start with your first document.</p>
 <p>Create a document called mydocument.rst in your myDocument folder and copy in the following text:</p>
 <p><strong>Paragraphs</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Restruced</span> <span class="n">text</span><span class="o">.</span> <span class="n">A</span> <span class="n">paragraph</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">most</span> <span class="n">basic</span> <span class="n">building</span> <span class="n">block</span> <span class="k">with</span> <span class="n">a</span> <span class="n">reST</span> <span class="n">document</span><span class="o">.</span> <span class="n">Paragraphs</span> <span class="n">are</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">a</span> <span class="n">blank</span> <span class="n">line</span><span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Restructured</span> <span class="n">text</span><span class="o">.</span> <span class="n">A</span> <span class="n">paragraph</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">most</span> <span class="n">basic</span> <span class="n">building</span> <span class="n">block</span> <span class="k">with</span> <span class="n">a</span> <span class="n">reST</span> <span class="n">document</span><span class="o">.</span> <span class="n">Paragraphs</span> <span class="n">are</span> <span class="n">separated</span> <span class="n">by</span> <span class="n">a</span> <span class="n">blank</span> <span class="n">line</span><span class="o">.</span>
 
 <span class="n">This</span> <span class="ow">is</span> <span class="n">paragraph</span> <span class="mi">1</span>
 
@@ -292,7 +298,7 @@ Press the green button and the builder process will start. When it’s finished 
 </pre></div>
 </div>
 <p>Reissue <code class="docutils literal"><span class="pre">make</span> <span class="pre">latex</span></code> in your command prompt to create the tex file. Now press the green build ICON in TexWorks to rebuild the PDF. You should see that you have the following.</p>
-<p>Restruced text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.</p>
+<p>Restructured text. A paragraph is the most basic building block with a reST document. Paragraphs are separated by a blank line.</p>
 <p>This is paragraph 1</p>
 <p>This is paragraph 2</p>
 <p>This is paragraph 3.
