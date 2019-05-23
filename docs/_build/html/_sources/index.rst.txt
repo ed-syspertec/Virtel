@@ -1,5 +1,5 @@
-Virtel Technical Newsletters
-============================
+Virtel Documentation
+====================
 
 .. toctree::
    :maxdepth: 2
