@@ -57,6 +57,8 @@ Click on index.html and you browser should open the document we have just built.
 Goto your myDocument folder and type *make latex*. This will build a html document located within the _build\\latex directory. Go to that directory.
 You should have a bunch of latex related files, in particular a TEX file. We will need this to build the PDF.
 
+The *make latex* command will build a single TEX file for all the manuals in the directory. In order to build a TEX file for just one manual, go the the directory containing the rst file to be converted to PDF and enter *sphinx-build -b latex . latex*. This requires that a *conf.py* is present within the directory.
+
 *Build the PDF with TexWorks*
 
 Open the TexWorks application and in the File dialog open the TEX file located in the _build\\latex directory. Next to the green button icon make sure you select:  LuaLatex+MakeIndex+BibTex
