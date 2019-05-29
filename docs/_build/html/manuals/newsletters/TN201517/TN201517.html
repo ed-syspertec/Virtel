@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -221,19 +230,19 @@ capable of supporting DBCS. As we shall see in the TSO ISPF example this
 is a consideration that must be configured. For the IMS application, the
 requirements were:-</p>
 <p>In the IMS GEN:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">Macro</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">Macro</span>
 <span class="n">EDIT</span><span class="o">=</span><span class="n">ULC</span> <span class="n">Must</span> <span class="n">be</span> <span class="n">specified</span>
 <span class="n">TERMINAL</span> <span class="n">Macro</span>
     <span class="n">OPTIONS</span><span class="o">=</span><span class="p">(</span><span class="n">NOTRSOSI</span><span class="p">)</span> <span class="p">(</span><span class="n">Must</span> <span class="n">be</span> <span class="n">specified</span> <span class="k">for</span> <span class="n">VIRTEL</span> <span class="n">relay</span> <span class="n">LUs</span> <span class="ow">and</span> <span class="n">other</span> <span class="n">DBCS</span> <span class="n">terminals</span><span class="o">.</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This IMS applications also uses the following display formats:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">APT510O</span><span class="p">,</span> <span class="n">APT520O</span> <span class="ow">and</span> <span class="n">APT530O</span><span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">APT510O</span><span class="p">,</span> <span class="n">APT520O</span> <span class="ow">and</span> <span class="n">APT530O</span><span class="o">.</span>
 </pre></div>
 </div>
 <p>These will need to be assembled and installed into the IMS environment we will be testing against. The source and JCL to compile and install these modules can be found in <em>SP000.IMS.SOURCE</em> or obtained from the Syspertec FTP website.</p>
 <p>IMS installation jobs:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MFSJCL</span>    <span class="o">-</span> <span class="n">Compile</span> <span class="n">formats</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MFSJCL</span>    <span class="o">-</span> <span class="n">Compile</span> <span class="n">formats</span>
 <span class="n">MFSSTAGE</span>  <span class="o">-</span> <span class="n">Install</span> <span class="n">into</span> <span class="n">IMS</span>
 <span class="n">Source</span>    <span class="o">-</span> <span class="n">APT510</span><span class="p">,</span> <span class="n">APT520</span><span class="p">,</span> <span class="n">APT530</span>
 </pre></div>
@@ -253,7 +262,7 @@ MODE.</p>
 <p>This is defined in the default logmode table for VTAM – ISTINCLM. The
 assembler source for this module can be found in SYS1.SAMPLIB. The
 sample entry looks like:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TITLE</span> <span class="s1">&#39;D4A32XX3&#39;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TITLE</span> <span class="s1">&#39;D4A32XX3&#39;</span>
 <span class="o">**********************************************************************</span>
 <span class="o">*</span>                                                                    <span class="o">*</span>
 <span class="o">*</span> <span class="mi">3274</span> <span class="n">MODEL</span> <span class="mi">1</span><span class="n">A</span> <span class="p">(</span><span class="n">LOCAL</span> <span class="n">SNA</span><span class="p">)</span> <span class="nd">@OY02946</span>                                 <span class="o">*</span>
@@ -272,7 +281,7 @@ sample entry looks like:-</p>
 altered and recompiled and the Transaction Entry point and transactions
 altered/added to the ARBO file.</p>
 <ol class="arabic">
-<li><p><strong>Virtel TCT Modifications</strong></p>
+<li><p class="first"><strong>Virtel TCT Modifications</strong></p>
 <blockquote>
 <div><p>In the TCT modify the CHARSET key word to include the Chinese DBCS
 Codepage. In the example that follows we have modified the character
@@ -282,7 +291,7 @@ Codepage used by Virtel:-</p>
 </div></blockquote>
 </li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1388</span><span class="p">,</span> <span class="n">DEFAULT</span> <span class="n">OUTPUT</span> <span class="n">ENCODING</span> <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DEFUTF8</span><span class="o">=</span><span class="n">IBM1388</span><span class="p">,</span> <span class="n">DEFAULT</span> <span class="n">OUTPUT</span> <span class="n">ENCODING</span> <span class="o">*</span>
 <span class="n">CHARSET</span><span class="o">=</span><span class="p">(</span><span class="n">IBM1388</span><span class="p">,</span> <span class="n">CHINESE</span> <span class="n">SIMPLIFIED</span> <span class="o">*</span>
 <span class="n">IBM1047</span><span class="p">,</span> <span class="n">US</span> <span class="n">OPEN</span> <span class="n">SYSTEMS</span> <span class="o">*</span>
 <span class="n">IBM933A</span><span class="p">,</span> <span class="n">KOREAN</span> <span class="o">*</span>
@@ -291,7 +300,7 @@ Codepage used by Virtel:-</p>
 </pre></div>
 </div>
 <ol class="arabic" start="2">
-<li><p><strong>Virtel Transaction Modifications</strong></p>
+<li><p class="first"><strong>Virtel Transaction Modifications</strong></p>
 <blockquote>
 <div><p>To support DBCS the entry type that is being used by VIRTEL must be
 configured with the EXTCOLOR=X option. In our example we are using
@@ -306,27 +315,28 @@ Transactions, Sub directories and Entry changes. The changes to the
 ARBO are as follows:-</p>
 </div></blockquote>
 </li>
-<li><p><strong>New Transactions</strong></p></li>
+<li><p class="first"><strong>New Transactions</strong></p>
+</li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">C</span> <span class="n">Enable</span> <span class="n">upload</span> <span class="n">of</span> <span class="n">pages</span> <span class="n">to</span> <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span> <span class="n">directory</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">C</span> <span class="n">Enable</span> <span class="n">upload</span> <span class="n">of</span> <span class="n">pages</span> <span class="n">to</span> <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span> <span class="n">directory</span>
 <span class="n">CLI</span><span class="o">-</span><span class="mi">07</span> <span class="n">Support</span> <span class="n">English</span> <span class="n">display</span> <span class="n">of</span> <span class="n">IMS</span> <span class="n">screens</span>
 <span class="n">CLI</span><span class="o">-</span><span class="mi">08</span> <span class="n">Support</span> <span class="n">Chinese</span> <span class="n">display</span> <span class="n">of</span> <span class="n">IMS</span> <span class="n">screens</span>
 <span class="n">CLI</span><span class="o">-</span><span class="mi">59</span> <span class="n">IMS</span> <span class="n">Access</span> <span class="n">to</span> <span class="n">IMS</span> <span class="n">Application</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p><strong>New Sub-Directory</strong></p></li>
+<li><strong>New Sub-Directory</strong></li>
 </ol>
 <p>A new sub directory is required, CHI-DIR, to hold the Chinese pages produced by Virtel Screen Redesigner</p>
 <p><strong>Updated Transaction Entry</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Transaction</span> <span class="n">CLIWHOST</span><span class="p">:</span><span class="o">-</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Transaction</span> <span class="n">CLIWHOST</span><span class="p">:</span><span class="o">-</span>
 
     <span class="n">Add</span> <span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">X</span>              <span class="n">To</span> <span class="n">support</span> <span class="n">DBCS</span> <span class="n">characters</span><span class="o">.</span>
     <span class="n">SCENDIR</span><span class="o">=</span><span class="n">SCE</span><span class="o">-</span><span class="n">DIR</span>             <span class="n">To</span> <span class="n">enable</span> <span class="n">load</span> <span class="n">of</span> <span class="n">scenario</span> <span class="kn">from</span> <span class="nn">the</span>  <span class="n">SCE</span><span class="o">-</span><span class="n">DIR</span><span class="o">.</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p><strong>Virtel TRSF changes</strong></p></li>
+<li><strong>Virtel TRSF changes</strong></li>
 </ol>
 <p>The relevant templates and scenarios used in the IMS demonstration
 must be uploaded to the TRSF. These web elements can be found in the
@@ -337,9 +347,8 @@ product must be uploaded to the relevant sub directories. Unless
 stated all source references are directories and all members must be
 copied up.</p>
 <blockquote>
-<div><p><strong>Source Target Directory</strong></p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">svn</span>\<span class="n">sysper</span>\<span class="n">carcomp</span>\<span class="n">GAP</span> <span class="n">POC</span>\<span class="n">carcomp</span> <span class="n">VirtelSR</span>\<span class="n">upload</span>                 <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
+<div><strong>Source Target Directory</strong></div></blockquote>
+<div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="n">svn</span>\<span class="n">sysper</span>\<span class="n">carcomp</span>\<span class="n">GAP</span> <span class="n">POC</span>\<span class="n">carcomp</span> <span class="n">VirtelSR</span>\<span class="n">upload</span>                 <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 \<span class="n">svn</span>\<span class="n">sysper</span>\<span class="n">carcomp</span>\<span class="n">GAP</span> <span class="n">POC</span>\<span class="n">carcomp</span> <span class="n">VirtelSR</span>\\<span class="n">VSRwithOwn</span>\\<span class="n">upload</span>    <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
 \<span class="n">svn</span>\<span class="n">sysper</span>\<span class="n">carcomp</span>\<span class="n">GAP</span> <span class="n">POC</span>\<span class="n">carcomp</span>
 <span class="n">VirtelSR</span>\<span class="n">VSRwithOwn</span>\<span class="n">upload</span>\<span class="n">images</span>                                   <span class="n">CHI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span>
@@ -350,7 +359,7 @@ copied up.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li><p><strong>Scenario GAPPOCSC</strong></p></li>
+<li><strong>Scenario GAPPOCSC</strong></li>
 </ol>
 <p>The source for the scenario is listed in Appendix C. This can be
 used to create a load module version of the scenario rather than a
@@ -358,7 +367,7 @@ used to create a load module version of the scenario rather than a
 VIRTEL LOADLIB rather than maintained in a SCE-DIR directory.</p>
 <p><strong>Running the IMS demo</strong></p>
 <p>Point your VIRTEL at the initial template using the following url:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">cn</span><span class="o">/</span><span class="n">carcompPOC</span><span class="o">.</span><span class="n">htm</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">cn</span><span class="o">/</span><span class="n">carcompPOC</span><span class="o">.</span><span class="n">htm</span>
 </pre></div>
 </div>
 <p>The following screen will appear</p>
@@ -413,7 +422,7 @@ into the file.</p>
 <p><strong>Appendix A. Example of VIRCONF</strong></p>
 <p>Example of the batch VIRCONF job required to support Chinese Character
 tests. This job must be run against the ARBO file when Virtel is down.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTA</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTA</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT453</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH</span><span class="o">.</span><span class="n">ARBO</span>
 <span class="o">//</span><span class="n">CONFIG</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">LOAD</span>
@@ -491,7 +500,7 @@ size. This can be done by changing the number of rows from 52 to 43.
 With this configuration we no longer have the TGET error.</p>
 <p><a class="reference internal" href="../../../_images/image171.png"><img alt="image16" src="../../../_images/image171.png" style="width: 6.30000in; height: 2.36319in;" /></a></p>
 <p><strong>Appendix C. Source for scenario GAPSOCSC</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* ---------------------------------------------------------------------
+<div class="highlight-default"><div class="highlight"><pre><span></span>* ---------------------------------------------------------------------
 * SCENARIO FOR carcomp POC (Global Account Payable)
 * checks the screen to send the related template
 * ---------------------------------------------------------------------

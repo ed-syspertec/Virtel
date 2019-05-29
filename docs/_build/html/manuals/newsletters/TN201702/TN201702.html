@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -191,8 +200,9 @@ reference.</p>
 <p><a class="reference internal" href="../../../_images/image18.jpg"><img alt="image0" src="../../../_images/image18.jpg" style="width: 6.26806in; height: 3.68681in;" /></a></p>
 <p>Fig.1 - Overview of logon sequence</p>
 <ol class="arabic">
-<li><p>User accesses Virtel entity through the protected URL <a class="reference external" href="https://sp.syspertec.com/Virtel">https://sp.syspertec.com/Virtel</a></p></li>
-<li><p>Service provider requests userid and password through logon template:-</p>
+<li><p class="first">User accesses Virtel entity through the protected URL <a class="reference external" href="https://sp.syspertec.com/Virtel">https://sp.syspertec.com/Virtel</a></p>
+</li>
+<li><p class="first">Service provider requests userid and password through logon template:-</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image232.png"><img alt="image1" src="../../../_images/image232.png" style="width: 4.79057in; height: 3.17708in;" /></a></p>
 </div></blockquote>
@@ -200,10 +210,13 @@ reference.</p>
 </ol>
 <p>Fig.2 - Identity Provider logon</p>
 <ol class="arabic" start="3">
-<li><p>IDP validates user credentials against LDAP attributes.</p></li>
-<li><p>IDP returns selected attributes to SP. In this case only the UID, representing the UID, is required.</p></li>
-<li><p>SP redirects user to Virtel APPMENU transaction passing the UID information, the USERID, as a header in  the HTTP request – SM_USER.</p></li>
-<li><p>Virtel presents application menu.</p>
+<li><p class="first">IDP validates user credentials against LDAP attributes.</p>
+</li>
+<li><p class="first">IDP returns selected attributes to SP. In this case only the UID, representing the UID, is required.</p>
+</li>
+<li><p class="first">SP redirects user to Virtel APPMENU transaction passing the UID information, the USERID, as a header in  the HTTP request – SM_USER.</p>
+</li>
+<li><p class="first">Virtel presents application menu.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image326.png"><img alt="image2" src="../../../_images/image326.png" style="width: 5.26604in; height: 4.00000in;" /></a></p>
 </div></blockquote>
@@ -211,7 +224,7 @@ reference.</p>
 </ol>
 <p>Fig.3 - Virtel application menu</p>
 <ol class="arabic" start="7">
-<li><p>User selects applications and logs on without specifying userid or password. Virtel uses the SM_USER header and generates a PASSTICKET to associate with the userid.</p>
+<li><p class="first">User selects applications and logs on without specifying userid or password. Virtel uses the SM_USER header and generates a PASSTICKET to associate with the userid.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image419.png"><img alt="image3" src="../../../_images/image419.png" style="width: 5.30208in; height: 4.04323in;" /></a></p>
 </div></blockquote>
@@ -221,7 +234,7 @@ reference.</p>
 <p><strong>Setting up the IDP environment</strong></p>
 <p><em>IDP Version 3</em></p>
 <p>The Shibboleth IDP is a Java web application that runs within a Servet container - In our case we use Tomcat. Tomcat runs on the Milan server which is has an IP address of Milan is 192.168.92.190. Using V3 is problematic as most of the “user install” documentation refers to V2. There are a lot of differences! Here are the varibales and paths we use.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>IDP         https://idp.syspertec.com/idp
+<div class="highlight-default"><div class="highlight"><pre><span></span>IDP         https://idp.syspertec.com/idp
 IDP_HOME    /opt/shibboleth-idp
 IDP Configuration files $IDP_HOME/conf
 TOMCAT      http://idp.syspertec.com:8081     Tomcat Web Page
@@ -232,7 +245,7 @@ Tomcat Configuration files $TOMCAT\_HOME/conf
 </div>
 <p>The IDP is enabled for SSL and has a keystore containing the necessary security credentials. The idea behind this is that traffic is secure on the login and any communication between the SP and IDP. The keystore is called idpself.keystore - the pass phrase is “VirtelIsGreat”.</p>
 <p>The keystore was generated with the “keytool” program:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd $TOMCAT-HOME</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># cd $TOMCAT-HOME</span>
 <span class="c1"># mkdir credentials</span>
 <span class="c1"># cd credentials</span>
 <span class="c1"># keytool –genkey –alias tomcat –keyalg RSA –keystore idpself.keystore</span>
@@ -248,7 +261,7 @@ $IDP_HOME/conf/authn.</p>
 <p>The IDP Configuration maintained on the Milan Server:-</p>
 <p><em>File= /opt/shibboleth-idp/conf/idp.properties</em></p>
 <p>In this file we define the entity ID of our IDP server:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the entityID of the IdP</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Set the entityID of the IdP</span>
 <span class="n">idp</span><span class="o">.</span><span class="n">entityID</span><span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">idp</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">idp</span><span class="o">/</span><span class="n">Shibboleth</span>                    <span class="o">&lt;&lt;&lt;</span> <span class="n">Our</span> <span class="n">IDP</span> <span class="n">entity</span><span class="o">**</span>
 <span class="c1"># Set the scope used in the attribute resolver for scoped attributes</span>
 <span class="n">idp</span><span class="o">.</span><span class="n">scope</span><span class="o">=</span> <span class="n">syspertec</span><span class="o">.</span><span class="n">com</span>
@@ -257,7 +270,7 @@ $IDP_HOME/conf/authn.</p>
 <p><em>File = /opt/shibboleth-idp/attribute-filter.xml</em></p>
 <p>In this file we configure what security attributes are passed to the SP. Within the &lt;AttributeFilterPolicyGroup&gt; the following filter policy was
 added:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!-- Release some attributes to an SP. --&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!-- Release some attributes to an SP. --&gt;
 &lt;AttributeFilterPolicy id=&quot;example1&quot;&gt;
     &lt;PolicyRequirementRule xsi:type=&quot;Requester&quot;
     value=&quot;https://sp.syspertec.com/shibboleth&quot; /&gt;
@@ -277,7 +290,7 @@ added:-</p>
 <p>In this file we configure what security attributes are passed to the SP. Within the &lt;AttributeFilterPolicyGroup&gt; the following filter policy was added:-</p>
 <p><em>File = /opt/shibboleth-idp/conf/ldap.properties</em></p>
 <p>In this file we identify the LDAP server that the IDP will use. We also set the TLS security flag to true and identify the Java trustStore.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Connection properties ##</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">## Connection properties ##</span>
 <span class="n">idp</span><span class="o">.</span><span class="n">authn</span><span class="o">.</span><span class="n">LDAP</span><span class="o">.</span><span class="n">ldapURL</span> <span class="o">=</span> <span class="n">ldap</span><span class="p">:</span><span class="o">//</span><span class="n">milan</span><span class="p">:</span><span class="mi">10389</span> <span class="o">**&lt;&lt;&lt;</span> <span class="n">Our</span> <span class="n">LDAP</span> <span class="n">Server</span><span class="o">**</span>
 <span class="n">idp</span><span class="o">.</span><span class="n">authn</span><span class="o">.</span><span class="n">LDAP</span><span class="o">.</span><span class="n">useStartTLS</span> <span class="o">=</span> <span class="n">true</span>
 <span class="c1">## SSL configuration, either jvmTrust, certificateTrust, or keyStoreTrust</span>
@@ -287,7 +300,7 @@ added:-</p>
 </div>
 <p><em>File=/opt/shibboleth-idp/conf/metadata-providers.xml</em></p>
 <p>In this file we identity the location of the metadata that represents our SP.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">MetadataProvider</span> <span class="n">xsi</span><span class="p">:</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;FilesystemMetadataProvider&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;SPMETADATA&quot;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">MetadataProvider</span> <span class="n">xsi</span><span class="p">:</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;FilesystemMetadataProvider&quot;</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;SPMETADATA&quot;</span>
 <span class="n">metadataFile</span><span class="o">=</span><span class="s2">&quot;/opt/shibboleth-idp/metadata/sp-metadata.xml&quot;</span><span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">MetadataProvider</span><span class="o">&gt;</span>
 </pre></div>
@@ -298,7 +311,7 @@ added:-</p>
 provides an Apache container from which we can use and configure
 Shibboleth SP V2. The Apache Server runs as a reverse proxy redirecting
 request towards Virtel. Here are some of the paths and variables setto support the Shibboleth SP.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SP                              sp.syspertec.com
+<div class="highlight-default"><div class="highlight"><pre><span></span>SP                              sp.syspertec.com
 SP_HOME (distribution)          C:\\opt\\shibboleth-sp
 SP Configuration files          $SP\HOME\\etc
 Apache Home Page                http://sp.syspertec.com
@@ -314,7 +327,7 @@ SP Configuration files          C:\\xampp\\apache\\conf\\extra
 <p>The files modified in the Shibboleth setup for the SP are as follows:-</p>
 <p><em>File = C:\opt\shibboleth-sp\etc\Shibboleth2.xml</em></p>
 <p>This is the main shibboleth configuration file. Here are some of the elements that were modified.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ApplicationDefaults</span> <span class="n">entityID</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sp</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">shibboleth</span>                <span class="o">&lt;&lt;&lt;</span> <span class="n">Entity</span> <span class="n">ID</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">ApplicationDefaults</span> <span class="n">entityID</span><span class="o">=</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">sp</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">shibboleth</span>                <span class="o">&lt;&lt;&lt;</span> <span class="n">Entity</span> <span class="n">ID</span>
       <span class="n">REMOTE_USER</span><span class="o">=</span><span class="s2">&quot;uid eppn persistent-id targeted-id&quot;</span>                           <span class="o">&lt;&lt;&lt;</span> <span class="n">UID</span>
       <span class="n">cipherSuites</span><span class="o">=</span><span class="s2">&quot;ECDHE+AESGCM:ECDHE:!aNULL:!eNULL:!LOW:!EXPORT:!RC4:!SHA:!SSLv2&quot;</span><span class="o">&gt;</span>
 
@@ -335,7 +348,7 @@ SP Configuration files          C:\\xampp\\apache\\conf\\extra
 </div>
 <p><em>File = C:\opt\shibboleth-sp\etc\attribute-map.xml</em></p>
 <p>The UID attribute was uncommented in the attribute-map.xml file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>--&gt;
+<div class="highlight-default"><div class="highlight"><pre><span></span>--&gt;
 &lt;Attribute name=&quot;urn:oid:0.9.2342.19200300.100.1.1&quot; id=&quot;uid&quot;/&gt;
 &lt;!—
 </pre></div>
@@ -348,18 +361,18 @@ SP Configuration files          C:\\xampp\\apache\\conf\\extra
 <p><em>File =C:\XAMPP\Apache\Conf\httpd.conf</em></p>
 <p>This is the standard Apache HTTP configuration file. In here we configure the protected resources and configure the Shibboleth SP. The following statements are added or modified:-</p>
 <p>Set the Server name for the Apache Server:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ServerName</span> <span class="n">sp</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">80</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ServerName</span> <span class="n">sp</span><span class="o">.</span><span class="n">syspertec</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="mi">80</span>
 </pre></div>
 </div>
 <p>Set the required Proxy Modules:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span><span class="o">.</span><span class="n">so</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span><span class="o">.</span><span class="n">so</span>
 <span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_ajp</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_ajp</span><span class="o">.</span><span class="n">so</span>
 <span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_balancer</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_balancer</span><span class="o">.</span><span class="n">so</span>
 <span class="n">LoadModule</span> <span class="n">proxy</span>\<span class="n">_connect</span>\<span class="n">_module</span> <span class="n">modules</span><span class="o">/</span><span class="n">mod</span>\<span class="n">_proxy</span>\<span class="n">_connect</span><span class="o">.</span><span class="n">so</span>
 </pre></div>
 </div>
 <p>Set redirect on to support redirect request within Virtel HTTP responses:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">alias</span>\<span class="n">_module</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">alias</span>\<span class="n">_module</span><span class="o">&gt;</span>
    <span class="c1">#Send /w2h request to /xampp/htdocs/virtel</span>
    <span class="n">Redirect</span> <span class="o">/</span><span class="n">w2h</span> <span class="o">/</span><span class="n">virtel</span><span class="o">/</span><span class="n">w2h</span>                                 <span class="o">&lt;&lt;&lt;</span> <span class="n">Virtel</span> <span class="n">Redirect</span>
    <span class="n">ScriptAlias</span> <span class="o">/</span><span class="n">cgi</span><span class="o">-</span><span class="nb">bin</span><span class="o">/</span> <span class="s2">&quot;C:/xampp/cgi-bin/&quot;</span>
@@ -367,7 +380,7 @@ SP Configuration files          C:\\xampp\\apache\\conf\\extra
 </pre></div>
 </div>
 <p>Add the include for the Shibboleth HTTP configuration file:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Shibboleth</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#Shibboleth</span>
 <span class="c1">#include &#39;C:\\opt\\shibboleth-sp\\etc\\shibboleth\\apache24.config&#39;</span>
 <span class="n">include</span> <span class="s2">&quot;conf/extra/httpd-shibboleth.conf</span>
 </pre></div>
@@ -375,7 +388,7 @@ SP Configuration files          C:\\xampp\\apache\\conf\\extra
 <p><em>File = C:\XAMPP\Apache\Conf\extra\httpd-shibboleth.conf</em></p>
 <p>Within this file we add the location “Virtel” as a protected resource. Any access to the Virtel application we have to be validated through the IDP and SP interface. The SP will set the variable REMOTE_USER using the IUD attribute (USERID) as returned by the IDP on successful validation. This value will be passed through to Virtel in the SM_USER header and wll be used to generate a PASSTICKET. The
 userid /PASSTICKET combination will then be used to sign on to any secure applications definied within the Virtel APPMENU list.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Connect using HTTPS to SPVIRSSL on ZAMVS2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Connect using HTTPS to SPVIRSSL on ZAMVS2</span>
 <span class="o">&lt;</span><span class="n">Location</span> <span class="o">/</span><span class="n">virtel</span><span class="o">&gt;</span>
  <span class="n">AuthType</span> <span class="n">shibboleth</span>
  <span class="n">ShibRequestSetting</span> <span class="n">requireSession</span> <span class="mi">1</span>

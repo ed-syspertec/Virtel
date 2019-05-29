@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -182,8 +191,8 @@
   <div class="section" id="virtel-macros">
 <span id="tn201704"></span><h1>Virtel Macros<a class="headerlink" href="#virtel-macros" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This Newsletter applies to Virtel 4.56 (updt5484 and above)
+<p class="first admonition-title">Note</p>
+<p class="last">This Newsletter applies to Virtel 4.56 (updt5484 and above)
 running with default parameters or in “Compatibility mode”. References
 to the file w2hparm.js refer to the default file distributed in the W2H
 directory. This file can be found in the distributed sources.zip file
@@ -197,7 +206,7 @@ used to automate 3270 functions. These user captured macros are stored
 within a file called macros.json. This file is a JavaScript array of
 JSON objects, with each object representing a user macro. Here is an
 example:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
 <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;mylogon&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;sptholt&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;password&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">],</span><span class="s2">&quot;mapping&quot;</span><span class="p">:{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;ctrl&quot;</span><span class="p">,</span><span class="s2">&quot;keycode&quot;</span><span class="p">:</span><span class="mi">76</span><span class="p">}},</span>
 <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;logoff&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;=x&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;logoff&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">],</span><span class="s2">&quot;mapping&quot;</span><span class="p">:{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;ctrl&quot;</span><span class="p">,</span><span class="s2">&quot;keycode&quot;</span><span class="p">:</span><span class="mi">79</span><span class="p">}},</span>
 <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;logon&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="s2">&quot;Tab&quot;</span><span class="p">,</span><span class="s2">&quot;Down&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;sptholx&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;PASSWORD&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">],</span><span class="s2">&quot;mapping&quot;</span><span class="p">:{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span><span class="s2">&quot;alt&quot;</span><span class="p">,</span><span class="s2">&quot;keycode&quot;</span><span class="p">:</span><span class="mi">76</span><span class="p">}}</span>
@@ -209,7 +218,7 @@ example:-</p>
 <p><strong>Getting started</strong></p>
 <p>Although local macros will work “out of the box” most users would probably want to have the key mapping option set. To use this function the global options parameters must be customized to add the w2hparm.keymapping=true to the w2hparm options file. The following instructions can be used as an example as to how to set up global w2hparm customization for the CLI port 41002.</p>
 <p>Add the option directory using the Administration portal or through a batch job. Also modify the CLI-03P so that the default directory is CLI-DIR and not the default W2H-DIR.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*--------------------------------------------------------------*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*--------------------------------------------------------------*</span>
 <span class="o">//*</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT457</span><span class="o">.</span><span class="n">LOADLIB</span>
 <span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT457</span><span class="o">.</span><span class="n">ARBO</span>
@@ -241,7 +250,7 @@ example:-</p>
 </pre></div>
 </div>
 <p>Create the following two JavaScript members and upload them to the CLI-DIR directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
      <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
         <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span><span class="p">,</span>
      <span class="p">}</span>
@@ -249,7 +258,7 @@ example:-</p>
 </pre></div>
 </div>
 <p><em>w2hparm.js</em></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Global</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Global</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
 <span class="n">w2hparm</span><span class="o">.</span><span class="n">switchToolBarDisplay</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
 <span class="n">w2hparm</span><span class="o">.</span><span class="n">font</span><span class="o">=</span><span class="s2">&quot;Consolas&quot;</span><span class="p">;</span>
 <span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span><span class="o">=</span> <span class="p">{</span>
@@ -293,7 +302,7 @@ only invoke the refresh option and not the Virtel macro. Keyboard
 mapping is a feature that is turned on through a parameter in the
 w2hparm.js file. By default, keyboard mapping is set to false. To turn
 on keyboard mapping specify the following in the w2hparm.js member:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span>
 </pre></div>
 </div>
 <p>With keyboard mapping enabled the macro interface will display the
@@ -320,45 +329,45 @@ CLI directory. The transaction should be updated so the path w2h/w2hparm-js poin
 <p><a class="reference internal" href="../../../_images/image519.png"><img alt="image4" src="../../../_images/image519.png" style="width: 4.71111in; height: 4.41667in;" /></a></p>
 <p>Fig. 4 - Modified CLI-03P transaction</p>
 <p>To use the DDI interface the options must be set in the w2hparm.js member. The various options control the synchronisation between the user’s local macro storage and the DDI central repository. Specify one of the following options to turn on DDI or remote macro mode:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
 </pre></div>
 </div>
 <p>Where value can be:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>“never” [default] | “once” | “daily” | “session”
+<div class="highlight-default"><div class="highlight"><pre><span></span>“never” [default] | “once” | “daily” | “session”
 </pre></div>
 </div>
 <p>Macro options:</p>
-<table class="docutils align-center">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 13%" />
-<col style="width: 87%" />
+<col width="13%" />
+<col width="87%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Option</p></th>
-<th class="head"><p>Description</p></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>Never</p></td>
-<td><p>Do not synchronise with DDI unless the user presses the refresh button.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>Never</td>
+<td>Do not synchronise with DDI unless the user presses the refresh button.</td>
 </tr>
-<tr class="row-odd"><td><p>Once</p></td>
-<td><p>Synchronise with DDI only when local storage hasn’t been initialised</p></td>
+<tr class="row-odd"><td>Once</td>
+<td>Synchronise with DDI only when local storage hasn’t been initialised</td>
 </tr>
-<tr class="row-even"><td><p>Daily</p></td>
-<td><p>Once a day</p></td>
+<tr class="row-even"><td>Daily</td>
+<td>Once a day</td>
 </tr>
-<tr class="row-odd"><td><p>Session</p></td>
-<td><p>Every time a new browser session is opened</p></td>
+<tr class="row-odd"><td>Session</td>
+<td>Every time a new browser session is opened</td>
 </tr>
 </tbody>
 </table>
 <p>Examples:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">}};</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">}};</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>var w2hparm = {
+<div class="highlight-default"><div class="highlight"><pre><span></span>var w2hparm = {
 &quot;ctrl&quot;:&quot;Newline&quot;,
 &quot;enter&quot;:&quot;ENTER&quot;,
 &quot;pgup&quot;:&quot;PA1&quot;,
@@ -379,7 +388,7 @@ w2hparm.keymapping=true;
 <h2>Update Security profiles<a class="headerlink" href="#update-security-profiles" title="Permalink to this headline">¶</a></h2>
 <p><strong>Administrators</strong>
 The final step is optional and depends on the security setup. If you are an administrator and have global access to all the Virtel resouces definied under the security profile, as defined in the TCT (RAPPL=FACILITY,PRFSECU=*value*), then no further action should be required. However, if you do not have global access you will need to define the following security profiles and provide READ access.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PRFSECU</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PRFSECU</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span>
@@ -394,7 +403,7 @@ The final step is optional and depends on the security setup. If you are an admi
 </div>
 <p><strong>Users</strong>
 Aa well as administrators, users will require READ access to the following profiles to use DDI. It is recommended to use a group profile rather than individual user profiles.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PRFSECU</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PRFSECU</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span>
@@ -480,7 +489,7 @@ drop interface. Do not use the Administration drag and drop interface.</p>
 <p>The “SAVE AS” function does not have the ability to re-assign key
 mapping. This can only be done through the macro editor. To clone a
 macro with a new key mapping perform the following operations:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Open macro “A”
+<div class="highlight-default"><div class="highlight"><pre><span></span>Open macro “A”
 Save as “B”
 Open macro “B” in Editor.
 Save with key board mapping.
@@ -501,7 +510,7 @@ arrangement, using separate HTMLTRSF files then the
 that macro changes are reflected in all DDI repositories and
 consequently associated local storage. Update the w2hparm.js file to
 include:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">},</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">},</span>
 <span class="s2">&quot;synchronizeVirtelMacros&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
 </pre></div>
 </div>
@@ -509,13 +518,13 @@ include:-</p>
 <p><strong>Macro format and commands</strong></p>
 <p>The format of the macro.json is embedded JSON structures. Each name
 structure represents a keystroke macro identified by the “name” keyword.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>name    : The name of the macro entry.
+<div class="highlight-default"><div class="highlight"><pre><span></span>name    : The name of the macro entry.
 Rev     : The “rev” is a user revision keyword.
 Def     : The “def” keyword identifies the commands and entry values.
 </pre></div>
 </div>
 <p>The macro editor supports the following commands:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="s2">&quot;any string of characters to input into 3270 screen&quot;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="s2">&quot;any string of characters to input into 3270 screen&quot;</span>
 <span class="o">-</span>  <span class="n">move</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
 <span class="o">-</span>  <span class="n">copy</span><span class="p">(</span><span class="n">startRow</span><span class="p">,</span><span class="n">startCol</span><span class="p">,</span><span class="n">endRow</span><span class="p">,</span><span class="n">endCol</span><span class="p">)</span>
 <span class="o">-</span>  <span class="n">paste</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
@@ -524,7 +533,7 @@ Def     : The “def” keyword identifies the commands and entry values.
 </pre></div>
 </div>
 <p><strong>Macro example</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
 <span class="p">{</span>
 <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSFLOG&quot;</span><span class="p">,</span>
 <span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
@@ -540,7 +549,7 @@ Def     : The “def” keyword identifies the commands and entry values.
 </div>
 <p id="tn201704-appendix-b"><strong>Appendix – B</strong></p>
 <p><strong>Distributed w2hparm.js</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
 <span class="s2">&quot;settingsGUI&quot;</span><span class="p">:{</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;v2&quot;</span><span class="p">},</span>
 <span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;Droid Sans Mono&quot;</span><span class="p">,</span>
 <span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
@@ -563,24 +572,24 @@ Def     : The “def” keyword identifies the commands and entry values.
 <p><strong>Appendix C</strong></p>
 <p><strong>FAQ</strong></p>
 <ol class="arabic simple">
-<li><p>Why do I get the following error message after setting</p></li>
+<li>Why do I get the following error message after setting</li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../../../_images/image1310.png"><img alt="image12" src="../../../_images/image1310.png" style="width: 4.53125in; height: 5.27097in;" /></a></p>
 <p><em>Answer.</em>
 You have turned on DDI macro support (BLUE interface ICON) but the application you are accessing is not secured. DDI is unable to determine the userid associated with the transaction. DDI only supports secure transactions.</p>
 <ol class="arabic simple" start="2">
-<li><p>Why do I get the following error message after setting</p></li>
+<li>Why do I get the following error message after setting</li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
 </pre></div>
 </div>
 <p><a class="reference internal" href="../../../_images/image146.png"><img alt="image14" src="../../../_images/image146.png" style="width: 4.53125in; height: 5.27097in;" /></a></p>
 <p><em>Answer.</em>
 No security profiles exist for the relevant DDI resources. The following profiles will require a default security definition with READ access.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PRFSECU</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PRFSECU</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span>
 <span class="n">PRFSECU</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span>
@@ -605,7 +614,7 @@ feature the following ARBO updates are required. Run this JCL to update
 your 4.53 ARBO to include the directories and transactions required for
 macros. You will also need to update transaction W2H-20 in WEB2HOST and
 changing the output scenario to ADMINVWM.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//VIRARBLD JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID
+<div class="highlight-default"><div class="highlight"><pre><span></span>//VIRARBLD JOB 1,ARBOLOAD,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID
 //*--------------------------------------------------------------*
 // SET LANG=EN
 // SET LOAD=SP000.VIRT453.LOADLIB

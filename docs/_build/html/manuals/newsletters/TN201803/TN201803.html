@@ -20,11 +20,20 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'7',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -190,7 +199,7 @@
 <h2>Installation changes<a class="headerlink" href="#installation-changes" title="Permalink to this headline">¶</a></h2>
 <p><strong>Customization - OPTION Mode is now the preferred default</strong></p>
 <p>As of Virtel 4.58 the transactions to support compatibility mode have been deprecated and are no longer installed by default. These transactions have been moved to the COMPAT section in the ARBOLOAD JCL deck. The transactions are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">CH</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">CH</span>
 <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">CC</span>
 <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">CJ</span>
 <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">CH</span>
@@ -206,7 +215,7 @@
 <div class="section" id="samplib-additions">
 <h2>SAMPLIB additions<a class="headerlink" href="#samplib-additions" title="Permalink to this headline">¶</a></h2>
 <p>New members have been added to SAMPLIB to support the VIRPLEX configuration. These members are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRPLEX</span>     <span class="n">A</span> <span class="n">sample</span> <span class="n">job</span> <span class="n">to</span> <span class="n">configure</span> <span class="n">Virtel</span> <span class="n">to</span> <span class="n">support</span> <span class="n">Virplex</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRPLEX</span>     <span class="n">A</span> <span class="n">sample</span> <span class="n">job</span> <span class="n">to</span> <span class="n">configure</span> <span class="n">Virtel</span> <span class="n">to</span> <span class="n">support</span> <span class="n">Virplex</span>
 <span class="n">VIRTELZ</span>     <span class="n">A</span> <span class="n">STC</span> <span class="n">procedure</span> <span class="n">to</span> <span class="n">support</span> <span class="n">the</span> <span class="n">Virtel</span> <span class="n">Reader</span> <span class="ow">and</span> <span class="n">Writer</span> <span class="n">instances</span>
 <span class="n">VIRTCT00</span>    <span class="n">A</span> <span class="n">sample</span> <span class="n">TCT</span> <span class="k">for</span> <span class="n">Reader</span> <span class="n">tasks</span>
 <span class="n">VIRTCT99</span>    <span class="n">A</span> <span class="n">sample</span> <span class="n">TCT</span> <span class="k">for</span> <span class="n">Writer</span> <span class="n">tasks</span>
@@ -224,14 +233,14 @@
 <p>As of Virtel 4.56 two modes of customization were available, the ‘option mode’ and the older ‘compatibility’ mode. The new ‘option’ mode enables better granularity in setting global options and bespoke customization. With Virtel V4.58, option mode is the preferred mode for Virtel customization. By default, neither mode is active.</p>
 <p>Certain steps must be followed to activate either “compatibility” or “option” mode. As distributed, Virtel will use parameter defaults set programmatically. See Appendix A in the Virtel User guide foe a list of the defaults. The w2hparm.js members in W2H-DIR and CLI-DIR are now dummy entries.</p>
 <p>“Compatibility “ mode is still supported but requires users to re-assemble their TCTs with the ‘Option-default-compatibility’ keyword in the TCT and to run the ARBOLOAD job with COMPAT=YES. This will maintain previous customized behavior for the custom.css, w2hparm.js and custom.js files. For compatibility mode the option is:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTSETn</span> <span class="o">=</span> <span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="o">/*</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mi">4</span> <span class="o">*/</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HTSETn</span> <span class="o">=</span> <span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">)</span> <span class="o">/*</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="mi">4</span> <span class="o">*/</span>
 </pre></div>
 </div>
 <p>The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customized versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56.</p>
 <p>Customers are advised to migrate old customization elements to the new “option” mode enabling those elements to be located through the use of the /option/ pathname. New transactions have been added to support the /option/ pathname. See the ‘Option Mode’ section in <em>Customizing Virtel</em> in the <strong>Virtel User Guide</strong> and the Virtel Technical Newsletter <em>TN2016-11 Customizing Virtel in V4.56</em>.</p>
 <div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
+<p class="first admonition-title">Danger</p>
+<p class="last">Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
 </div>
 </div>
 </div>
@@ -307,7 +316,7 @@ The initialization of the Virtel JavaScript browser client has been enhanced.</p
 <p>IF$ OIA-STATUS-IS-INHIBITED,THEN=…,ELSE=…</p>
 <p><strong>5577 Update to COPY$ to support multiple fields.</strong></p>
 <p>COPY$ has been updated to support multiple fields. The NUMBER-OF value and SCREEN-INPUT-FIELDS/SCREEN-FIELDS can be used within a scenario to process multiple fields in a template. This feature can be useful in translation of HOD HA scripts to a Virtel scenarios.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HASCRIPT</span> <span class="n">Example</span><span class="p">:</span><span class="o">-</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HASCRIPT</span> <span class="n">Example</span><span class="p">:</span><span class="o">-</span>
 
       <span class="o">&lt;</span><span class="n">numfields</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="n">optional</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">invertmatch</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="o">/&gt;</span>
       <span class="o">&lt;</span><span class="n">numinputfields</span> <span class="n">number</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="n">optional</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">invertmatch</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="o">/&gt;</span>
@@ -316,17 +325,18 @@ The initialization of the Virtel JavaScript browser client has been enhanced.</p
 <p>Which allows checking if a screen has two fields total and two input-fields.</p>
 <p>In Virtel:-</p>
 <p>Scenario Example</p>
-<dl class="simple">
-<dt>::</dt><dd><dl class="simple">
-<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt><dd><p>FIELD=(NUMBER-OF,SCREEN-INPUT-FIELDS)</p>
-</dd>
-<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt><dd><p>FIELD=(NUMBER-OF,SCREEN-FIELDS)</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd><dl class="first last docutils">
+<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt>
+<dd>FIELD=(NUMBER-OF,SCREEN-INPUT-FIELDS)</dd>
+<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt>
+<dd>FIELD=(NUMBER-OF,SCREEN-FIELDS)</dd>
 </dl>
 </dd>
 </dl>
 <p>Template Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NUMBER</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">SCREEN</span><span class="o">-</span><span class="n">INPUT</span><span class="o">-</span><span class="n">FIELDS</span><span class="p">)}}}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NUMBER</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">SCREEN</span><span class="o">-</span><span class="n">INPUT</span><span class="o">-</span><span class="n">FIELDS</span><span class="p">)}}}</span>
 
 <span class="p">{{{</span><span class="n">NUMBER</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">SCREEN</span><span class="o">-</span><span class="n">FIELDS</span><span class="p">)}}}</span>
 </pre></div>
@@ -334,17 +344,17 @@ The initialization of the Virtel JavaScript browser client has been enhanced.</p
 <p><strong>5580 ACTION$ SEND= and KEY=</strong></p>
 <p>Enhancement to the ACTION$ TO-APPLICATION instruction to</p>
 <ul class="simple">
-<li><p>Allow user friendly KEY= keyword values</p></li>
-<li><p>Add a new SEND= parameter which can contain data to be copied to the screen before transmitting.</p></li>
+<li>Allow user friendly KEY= keyword values</li>
+<li>Add a new SEND= parameter which can contain data to be copied to the screen before transmitting.</li>
 </ul>
 <p>Example 1:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ACTION$  TO-APPLICATION,KEY=pf18,
+<div class="highlight-default"><div class="highlight"><pre><span></span>ACTION$  TO-APPLICATION,KEY=pf18,
       SEND=&#39;s&#39;,SCREEN=(23,79),
       AND=(PROCESS-RESPONSE)
 </pre></div>
 </div>
 <p>Example 2:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ACTION$  TO-APPLICATION,
+<div class="highlight-default"><div class="highlight"><pre><span></span>ACTION$  TO-APPLICATION,
    SEND=&#39;[delete][tab]s[pf18]&#39;,SCREEN=(23,79),
    AND=(PROCESS-RESPONSE)
 </pre></div>
@@ -352,29 +362,28 @@ The initialization of the Virtel JavaScript browser client has been enhanced.</p
 <p>The KEY= parameter was previously restricted to the low level one byte code for the pf key. It may now also have an uppercase or lowercase mnemonic for the function key (not mixed case).</p>
 <p>For example:</p>
 <blockquote>
-<div><p>pf2 or PF2 or ‘pf2’ or F2 are all valid. Previously only F2 was valid.</p>
-</div></blockquote>
+<div>pf2 or PF2 or ‘pf2’ or F2 are all valid. Previously only F2 was valid.</div></blockquote>
 <p>Also valid are : pa1, PA1, clear, CLEAR, attn, ATTN etc. As an example, the following idnode://8642HASCRIPT example:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">actions</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">actions</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">mouseclick</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;9&quot;</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="o">/&gt;</span>
 <span class="o">&lt;</span><span class="nb">input</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;s[pf18]&quot;</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">movecursor</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>  <span class="n">xlatehostkeys</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">encrypted</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">actions</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>Could be translated into a Virtel scenario:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ACTION$ TO-APPLICATION,SEND=&#39;s[pf18]&#39;,                        *
+<div class="highlight-default"><div class="highlight"><pre><span></span>ACTION$ TO-APPLICATION,SEND=&#39;s[pf18]&#39;,                        *
         SCREEN=(9,2),AND=(PROCESS-RESPONSE)
 </pre></div>
 </div>
 <p>Or, you could replace a HASCRIPT statement with encrypted=”true” :-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">actions</span><span class="o">&gt;</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">actions</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="n">mouseclick</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;11&quot;</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;20&quot;</span> <span class="o">/&gt;</span>
     <span class="o">&lt;</span><span class="nb">input</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;UNz6xMt6Qr8=&quot;</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;0&quot;</span> <span class="n">movecursor</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">xlatehostkeys</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">encrypted</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">actions</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>With a Virtel scenario using a PassTicket:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;MYPTK&#39;,                         *
+<div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;MYPTK&#39;,                         *
       FIELD=(NEW-PASSTICKET-FOR-TRANSACTION,MYTRAN)
 COPY$ VARIABLE-TO-SCREEN,VAR=&#39;MYPTK&#39;,SCREEN=(11,20)
 ACTION$ TO-APPLICATION,KEY=enter,                             *
@@ -394,11 +403,11 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
 <p><strong>Security Certificate Retrieval Feature</strong></p>
 <p>The format of the request:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F3</span> <span class="n">llll</span> <span class="n">FAC2</span> <span class="n">t1</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F3</span> <span class="n">llll</span> <span class="n">FAC2</span> <span class="n">t1</span>
 </pre></div>
 </div>
 <p>where</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">llll</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">segment</span> <span class="p">(</span><span class="mi">0005</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">llll</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">segment</span> <span class="p">(</span><span class="mi">0005</span><span class="p">)</span>
 <span class="n">t1</span> <span class="ow">is</span> <span class="n">what</span> <span class="ow">is</span> <span class="n">requested</span><span class="p">:</span>
 <span class="n">X</span><span class="s1">&#39;01&#39;</span>                   <span class="n">Get</span> <span class="n">user</span> <span class="n">name</span> <span class="p">(</span><span class="n">N</span><span class="o">/</span><span class="n">A</span> <span class="n">to</span> <span class="n">VSE</span><span class="p">)</span>
 <span class="n">X</span><span class="s1">&#39;02&#39;</span>                   <span class="n">Get</span> <span class="n">user</span> <span class="n">certificate</span>
@@ -407,15 +416,15 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 </pre></div>
 </div>
 <p>Example of request:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F30005FA</span> <span class="n">C202</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F30005FA</span> <span class="n">C202</span>
 </pre></div>
 </div>
 <p>The format of the response:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">88</span> <span class="n">llll</span> <span class="n">FAC2</span> <span class="n">t1</span> <span class="n">dddd</span> <span class="n">n</span><span class="o">...</span> <span class="n">t2</span> <span class="n">dddd</span> <span class="n">m</span><span class="o">...</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">88</span> <span class="n">llll</span> <span class="n">FAC2</span> <span class="n">t1</span> <span class="n">dddd</span> <span class="n">n</span><span class="o">...</span> <span class="n">t2</span> <span class="n">dddd</span> <span class="n">m</span><span class="o">...</span>
 </pre></div>
 </div>
 <p>where</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">llll</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">segment</span> <span class="p">(</span><span class="n">eg</span> <span class="mi">0007</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">llll</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">segment</span> <span class="p">(</span><span class="n">eg</span> <span class="mi">0007</span><span class="p">)</span>
 
 <span class="n">t1</span> <span class="p">(</span><span class="ow">or</span> <span class="n">t2</span><span class="o">...</span><span class="p">)</span> <span class="ow">is</span> <span class="n">the</span> <span class="nb">type</span><span class="p">:</span>
 <span class="n">X</span><span class="s1">&#39;EE&#39;</span>                   <span class="n">Error</span>
@@ -443,7 +452,7 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <p><strong>LOGFILE Support</strong></p>
 <p>LOG=FILE</p>
 <p>A LOGFILE must be set up prior to starting Virtel and the TCT should specify LOG=FILE. The recommendations are:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FILE</span> <span class="n">ID</span><span class="p">:</span>                  <span class="n">VIRTEL</span><span class="o">.</span><span class="n">Vnnn</span><span class="o">.</span><span class="n">LOGFILE</span>             <span class="n">FILE</span> <span class="n">NAME</span><span class="p">:</span> <span class="n">LOGFILE</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FILE</span> <span class="n">ID</span><span class="p">:</span>                  <span class="n">VIRTEL</span><span class="o">.</span><span class="n">Vnnn</span><span class="o">.</span><span class="n">LOGFILE</span>             <span class="n">FILE</span> <span class="n">NAME</span><span class="p">:</span> <span class="n">LOGFILE</span>
 <span class="n">ORG</span><span class="p">:</span>                       <span class="mi">5</span> <span class="p">(</span><span class="n">SAM</span> <span class="n">EDS</span><span class="p">)</span>                    <span class="n">USAGE</span><span class="p">:</span> <span class="mi">2</span> <span class="p">(</span><span class="n">REUSE</span><span class="p">)</span>
 <span class="n">RECORD</span> <span class="n">FORMAT</span><span class="p">:</span>    <span class="mi">4</span> <span class="n">VB</span>
 <span class="n">AVG</span><span class="o">.</span> <span class="n">RECORD</span> <span class="n">SIZE</span><span class="p">:</span> <span class="mi">165</span>
@@ -451,7 +460,7 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 </pre></div>
 </div>
 <p>In the VIRTEL startup JCL add the following statements to support the LOGFILE:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">DLBL</span> <span class="n">SYS001</span><span class="p">,</span><span class="s1">&#39;VIRTEL.V458.LOGFILE&#39;</span><span class="p">,,</span><span class="n">VSAM</span><span class="p">,</span>                            <span class="n">X</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">DLBL</span> <span class="n">SYS001</span><span class="p">,</span><span class="s1">&#39;VIRTEL.V458.LOGFILE&#39;</span><span class="p">,,</span><span class="n">VSAM</span><span class="p">,</span>                            <span class="n">X</span>
             <span class="n">CAT</span><span class="o">=</span><span class="n">SYSPUC1</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(</span><span class="n">NEW</span><span class="p">,</span><span class="n">KEEP</span><span class="p">,</span><span class="n">DELETE</span><span class="p">)</span>
 
 <span class="n">At</span> <span class="n">the</span> <span class="n">follow</span> <span class="n">step</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">startup</span> <span class="n">JCL</span> <span class="n">to</span> <span class="n">process</span> <span class="n">the</span> <span class="n">log</span><span class="p">:</span><span class="o">-</span>
@@ -468,12 +477,12 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 </div>
 <p>LOG=SYSOUT</p>
 <p>For LOG=SYSOUT add the following statement to the Virtel startup JCL:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">ASSGN</span> <span class="n">SYS002</span><span class="p">,</span><span class="n">SYSLST</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">ASSGN</span> <span class="n">SYS002</span><span class="p">,</span><span class="n">SYSLST</span>
 </pre></div>
 </div>
 <p>VSE LOG Commands</p>
 <p>The following commands are available to control the Virtel log:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">XX</span><span class="p">,</span><span class="n">DATA</span><span class="o">=</span>      <span class="n">LOG</span><span class="p">,</span><span class="n">D</span>                   <span class="n">Display</span> <span class="n">logging</span> <span class="n">status</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MSG</span> <span class="n">XX</span><span class="p">,</span><span class="n">DATA</span><span class="o">=</span>      <span class="n">LOG</span><span class="p">,</span><span class="n">D</span>                   <span class="n">Display</span> <span class="n">logging</span> <span class="n">status</span>
                   <span class="n">LOG</span><span class="o">=</span><span class="n">CONSOLE</span>     <span class="n">Switch</span> <span class="n">to</span> <span class="n">console</span> <span class="n">mode</span> <span class="n">only</span>
                   <span class="n">LOG</span><span class="o">=</span><span class="n">SYSOUT</span>              <span class="n">Switch</span> <span class="n">to</span> <span class="n">sysout</span> <span class="n">mode</span> <span class="n">only</span>
 </pre></div>
@@ -484,22 +493,22 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <div class="section" id="appendix-c">
 <h2>Appendix C<a class="headerlink" href="#appendix-c" title="Permalink to this headline">¶</a></h2>
 <p><strong>TCT Parameter Changes</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UPARMS</span><span class="o">=</span><span class="p">(</span><span class="n">USERPARM</span><span class="p">),</span>                <span class="n">Name</span> <span class="n">of</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">user</span> <span class="n">data</span> <span class="o">-</span> <span class="n">USERPARM</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UPARMS</span><span class="o">=</span><span class="p">(</span><span class="n">USERPARM</span><span class="p">),</span>                <span class="n">Name</span> <span class="n">of</span> <span class="n">directory</span> <span class="k">for</span> <span class="n">user</span> <span class="n">data</span> <span class="o">-</span> <span class="n">USERPARM</span>
 </pre></div>
 </div>
 <p>If setting up a separate physical VSAM file for the USERPARM directory, the following TCT definitions must be defined, otherwise, use the HTMLTRSF as your USERPARM repository.</p>
 <p>Additional TCT statements required to add a new VSAM TRSF file to support USERPARM:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span><span class="p">),</span>   <span class="n">VSAM</span> <span class="n">File</span> <span class="k">for</span> <span class="n">USERPARM</span><span class="o">.</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">05</span><span class="p">),</span>   <span class="n">VSAM</span> <span class="n">File</span> <span class="k">for</span> <span class="n">USERPARM</span><span class="o">.</span> <span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span>
 </pre></div>
 </div>
 <p>Also add an ACB to support new directory file at the bottom of the TCT definitions:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ACBH3</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">),</span>             <span class="o">*</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ACBH3</span>    <span class="n">ACB</span>   <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">),</span>             <span class="o">*</span>
             <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
 </pre></div>
 </div>
 <p><strong>ARBO Changes</strong></p>
 <p>To support this feature a new subdirectory and associated transactions are added. The USERPARM member in VIRTEL.SAMPLIB provides an example of the transactions that are required to support the USERPARM feature. Running the ARBOLOAD JCL in the CNTL file with USERPARM=YES will add the relevant entries to the ARBO.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">TRSF</span> <span class="n">VSAM</span> <span class="n">file</span> <span class="k">for</span> <span class="n">USERPARM</span> <span class="n">definitions</span><span class="o">.</span> <span class="n">See</span> <span class="n">USERPARM</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">SAMPLIB</span><span class="o">.</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Allocate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">TRSF</span> <span class="n">VSAM</span> <span class="n">file</span> <span class="k">for</span> <span class="n">USERPARM</span> <span class="n">definitions</span><span class="o">.</span> <span class="n">See</span> <span class="n">USERPARM</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">SAMPLIB</span><span class="o">.</span>
 <span class="mf">2.</span> <span class="n">Run</span> <span class="n">ARBOLOAD</span><span class="p">(</span><span class="n">CNTL</span><span class="p">)</span> <span class="k">with</span> <span class="n">USERPARM</span><span class="o">=</span><span class="n">YES</span> <span class="n">to</span> <span class="n">allocate</span> <span class="n">a</span> <span class="n">new</span> <span class="n">SUB</span><span class="o">-</span><span class="n">DIR</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">the</span> <span class="n">associated</span> <span class="n">transactions</span><span class="o">.</span>
 <span class="mf">3.</span> <span class="n">Update</span> <span class="n">the</span> <span class="n">TCT</span><span class="o">.</span> <span class="n">See</span> <span class="n">above</span><span class="o">.</span>
 <span class="mf">4.</span> <span class="n">Restart</span> <span class="n">Virtel</span><span class="o">.</span>
@@ -509,17 +518,17 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <p><strong>Scenario and Template updates</strong></p>
 <p>To access the name of the parameter directory:-</p>
 <p>Scenario</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;PRMDIR&#39;,
+<div class="highlight-default"><div class="highlight"><pre><span></span>COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;PRMDIR&#39;,
       FIELD=(NAME-OF,USER-PARMS-DIRECTORY)
 </pre></div>
 </div>
 <p>Template</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">USER</span><span class="o">-</span><span class="n">PARMS</span><span class="o">-</span><span class="n">DIRECTORY</span><span class="p">)}}}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">USER</span><span class="o">-</span><span class="n">PARMS</span><span class="o">-</span><span class="n">DIRECTORY</span><span class="p">)}}}</span>
 </pre></div>
 </div>
 <p><strong>Security</strong></p>
 <p>The following security definitions will be needed to support this feature. For example, for RACF the following FACILITY profile definitions need to be added and users given READ access.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">USERPARM</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>     <span class="o">/*</span> <span class="n">Directory</span> <span class="o">*/</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">USERPARM</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>     <span class="o">/*</span> <span class="n">Directory</span> <span class="o">*/</span>
 <span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">USERPARM</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
 <span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">USERPARM</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
 <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">74</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>       <span class="o">/*</span> <span class="n">UPLOAD</span> <span class="o">*/</span>
@@ -530,13 +539,13 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <p><strong>Sanity check</strong></p>
 <blockquote>
 <div><p>A ‘sanity check’ template is provided to validate the USERPARM environment at the transaction level. For example:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">myVirtel</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">myPort</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">checkCentralizedSettings</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">myTransaction</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">myVirtel</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">myPort</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">checkCentralizedSettings</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">myTransaction</span>
 </pre></div>
 </div>
 </div></blockquote>
 <p><strong>Testing</strong></p>
 <p>To test the feature:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">logon</span> <span class="n">to</span> <span class="n">a</span> <span class="mi">3270</span> <span class="n">application</span><span class="p">,</span> <span class="n">say</span> <span class="n">TSO</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">logon</span> <span class="n">to</span> <span class="n">a</span> <span class="mi">3270</span> <span class="n">application</span><span class="p">,</span> <span class="n">say</span> <span class="n">TSO</span>
 <span class="mf">2.</span> <span class="n">Open</span> <span class="n">the</span> <span class="n">settings</span> <span class="n">dialog</span>
 <span class="mf">3.</span> <span class="n">Change</span> <span class="n">the</span> <span class="s2">&quot;Display Style&quot;</span> <span class="n">to</span> <span class="n">Gray</span> <span class="ow">and</span> <span class="n">save</span><span class="o">.</span> <span class="n">The</span> <span class="n">back</span> <span class="n">ground</span> <span class="n">colour</span> <span class="n">should</span> <span class="n">change</span> <span class="n">to</span> <span class="n">gray</span><span class="o">.</span>
 <span class="mf">4.</span> <span class="n">Disconnect</span> <span class="kn">from</span> <span class="nn">Virtel</span> <span class="n">using</span> <span class="n">the</span> <span class="n">Red</span> <span class="n">button</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">tool</span> <span class="n">bar</span><span class="o">.</span>
@@ -546,7 +555,7 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 </pre></div>
 </div>
 <p>In the console log you should see an ‘UPLOAD’ message:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">13.47</span><span class="o">.</span><span class="mi">18</span> <span class="n">JOB03449</span>  <span class="n">VIRU122I</span> <span class="n">DEVTA014</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;WEB2HOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP  139</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">13.47</span><span class="o">.</span><span class="mi">18</span> <span class="n">JOB03449</span>  <span class="n">VIRU122I</span> <span class="n">DEVTA014</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;WEB2HOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP  139</span>
 <span class="mi">139</span>             <span class="n">ARM</span><span class="s1">&#39; USER &#39;</span><span class="n">SPTHOLT</span>             <span class="s1">&#39;</span>
 <span class="mi">139</span>                    <span class="n">FILE</span> <span class="p">:</span> <span class="s1">&#39;CAB2755C7863A11EF8031C73FB634E9C&#39;</span>
 </pre></div>
@@ -554,15 +563,16 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <p><strong>Scenario enhancements</strong></p>
 <p>The Virtel scenario and template languages have been enhanced to support this feature. To obtain the name of the User directory</p>
 <p>In a scenario:</p>
-<dl class="simple">
-<dt>::</dt><dd><dl class="simple">
-<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’PRMDIR’,</dt><dd><p>FIELD=(NAME-OF,USER-PARMS-DIRECTORY)</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd><dl class="first last docutils">
+<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’PRMDIR’,</dt>
+<dd>FIELD=(NAME-OF,USER-PARMS-DIRECTORY)</dd>
 </dl>
 </dd>
 </dl>
 <p>In a template:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">USER</span><span class="o">-</span><span class="n">PARMS</span><span class="o">-</span><span class="n">DIRECTORY</span><span class="p">)}}}</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{{{</span><span class="n">NAME</span><span class="o">-</span><span class="n">OF</span> <span class="p">(</span><span class="n">USER</span><span class="o">-</span><span class="n">PARMS</span><span class="o">-</span><span class="n">DIRECTORY</span><span class="p">)}}}</span>
 </pre></div>
 </div>
 </div>
@@ -571,23 +581,23 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <p>The VWA API supports the following methods:-</p>
 <p><em>vwaAPI.getApplicationName</em></p>
 <p>A method that returns the application name:-</p>
-<dl class="simple">
-<dt>::</dt><dd><p>var n = vwaAPI.getApplicationName();</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd>var n = vwaAPI.getApplicationName();</dd>
 </dl>
 <p><em>vwaAPI.getUserId</em></p>
 <p>A method that returns the user id:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">u</span> <span class="o">=</span> <span class="n">vwaAPI</span><span class="o">.</span><span class="n">getUserId</span><span class="p">();</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">u</span> <span class="o">=</span> <span class="n">vwaAPI</span><span class="o">.</span><span class="n">getUserId</span><span class="p">();</span>
 </pre></div>
 </div>
 <p><em>vwaAPI.submitForm</em></p>
 <p>A method that submits the current VWA form with the pf key given as parameter.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vwaAPI</span><span class="o">.</span><span class="n">submitForm</span><span class="p">(</span><span class="s1">&#39;PF3&#39;</span><span class="p">);</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vwaAPI</span><span class="o">.</span><span class="n">submitForm</span><span class="p">(</span><span class="s1">&#39;PF3&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p><em>vwaAPI.customizeBuildTitle</em></p>
 <p>A method that takes a customized way of building the title into account. You define a function (e.g. myTitleBuilder) that returns a string (=the title). You provide this function as parameter:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vwaAPI</span><span class="o">.</span><span class="n">customizeBuildTitle</span> <span class="p">(</span><span class="n">myTitleBuilder</span><span class="p">);</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">vwaAPI</span><span class="o">.</span><span class="n">customizeBuildTitle</span> <span class="p">(</span><span class="n">myTitleBuilder</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -595,175 +605,175 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <h2>Appendix E<a class="headerlink" href="#appendix-e" title="Permalink to this headline">¶</a></h2>
 <p><strong>Maintenance list</strong></p>
 <ul class="simple">
-<li><p>5527 context/focus switch problem</p></li>
-<li><p>5528 Ctrl+V and Insert and PasteBy Typing</p></li>
-<li><p>5530 Virtel initialisation message VIR0099I must go to the console</p></li>
-<li><p>5531 Abend S0C4 in VSVTINIT on shutting down Virtel</p></li>
-<li><p>5532 Possible ‘parsing error’ loading w2h settings in Italian</p></li>
-<li><p>5533 In ‘stretch’ mode, W2H may misalign some characters</p></li>
-<li><p>5534 Help pages for V2 W2H admin</p></li>
-<li><p>5535 BLINK attribute no longer work in Chrome and Firefox</p></li>
-<li><p>5536 Prevent Alert Box in IE8</p></li>
-<li><p>5537 Correct Import/export in VWA</p></li>
-<li><p>5538 Pop-up menu correction for IE.</p></li>
-<li><p>5539 Show/Hide tool bar option</p></li>
-<li><p>5540 remove w2h setting to omit nulls from input</p></li>
-<li><p>5541 Correct HTML return with “/” in passwd.html.</p></li>
-<li><p>5542 Update VWA Settings messages-</p></li>
-<li><p>5543 Backup W2H parameters. Fix problem with Toolbar display</p></li>
-<li><p>5544 Correct display problems</p></li>
-<li><p>5545 Correct ARBOLOAD installation job-</p></li>
-<li><p>5546 Cursor not visible on highlighted field</p></li>
-<li><p>5547 EDGE browser display problem with Tool Bar</p></li>
-<li><p>5548 Correct Import/export in VWA</p></li>
-<li><p>5549 REQSESS fails if Logmode in URL is less than eight characters</p></li>
-<li><p>5550 Correct time display in directory list</p></li>
-<li><p>5551 Correct JavaScript to avoid Drag &amp; Drop Failure</p></li>
-<li><p>5552 Add PCDOS (CP437) support to IND$FILE</p></li>
-<li><p>5553 CLIPBOARD events</p></li>
-<li><p>5554 Spell Checking incorrectly turned on in IE</p></li>
-<li><p>5555 show/Hide toolbar by keypress</p></li>
-<li><p>5556 PRINT extra blank page at end</p></li>
-<li><p>5557 PRINT missing EOL at EOM</p></li>
-<li><p>5558 cucumber test blocks on CLEAR</p></li>
-<li><p>5559 IBM0276 update</p></li>
-<li><p>5560 DDI JavaScript error in macros_Problems.js</p></li>
-<li><p>5561 Update VIR0021Wto correctly handle SFE codes</p></li>
-<li><p>5562 VIROOPE force free of user memory</p></li>
-<li><p>5563 Error loading custom.css</p></li>
-<li><p>5564 VXMW96E VIRPASS /XMHSAE ABEND=3202 UM REASONW</p></li>
-<li><p>5565 VIRTEL Abend 878-10 after multiple VSVPSYNL SAE2HOZ1</p></li>
-<li><p>5566 Increase default Maxsockets to 5000 from 250</p></li>
-<li><p>5567 PRINT extra blank page at end</p></li>
-<li><p>5568 VIRSV forces TRAP(0FF) for service programs</p></li>
-<li><p>5569 VIRPLEX do not ignore URL path before VPLEX= key</p></li>
-<li><p>5570 VSVRTMSG Initialization LENGTH OFF LE. MSG=00141</p></li>
-<li><p>5571 CLIPBOARD paste continue / copy append</p></li>
-<li><p>5572 CLIPBOARD spellcheck</p></li>
-<li><p>5573 Add LOG=FILE to Virtel logging</p></li>
-<li><p>5574 JS01.js should not contain {{{ Virtel statements</p></li>
-<li><p>5575 Add explicit /w2h paths in web2sub.html and js01.js</p></li>
-<li><p>5576 IF$ OlA STATUS IS INHIBITED</p></li>
-<li><p>5577 COPYS NUMBER-OF.SCREEN-lNPUT-FIELDS</p></li>
-<li><p>5578 CTRL key has no effect under Epiphany browser under Linux</p></li>
-<li><p>5579 i4WEB - Out of Memory due to X-SYSTEM not enforced</p></li>
-<li><p>5580 Enhance ACTION$ SEND= and KEY=</p></li>
-<li><p>5581 Fix Black screen in IE8</p></li>
-<li><p>5582 Hotspot Error in IE8 JavaScript</p></li>
-<li><p>5583 FIRST-PASS may be set on second pass into a SCENARIO INPUT</p></li>
-<li><p>5584 Update Version number</p></li>
-<li><p>5585 Correct ‘unde?ned’ error when tool bar removed</p></li>
-<li><p>5586 Paste-Continue button should not be on the toolbar when not using clipboard event</p></li>
-<li><p>5587 Correct stretch in IE when in compatibility mode</p></li>
-<li><p>5588 Correct ‘GetAttribute’ inVIR3270.js</p></li>
-<li><p>5589 Implement ASYNC NOLONGPOLL using SNASTAT</p></li>
-<li><p>5590 Avoid duplicate PF=DISCONNECT after refresh</p></li>
-<li><p>5591 Restore PF5 behaviour for IE8</p></li>
-<li><p>5592 Correct CCP Append behaviour</p></li>
-<li><p>5593 Correct Context/Focus Switch Problem</p></li>
-<li><p>5594 Fix Virtel Studio DEBUGS TRACE</p></li>
-<li><p>5595 Correct Hot Key problem with CTRL key</p></li>
-<li><p>5596 Do not print extra blank line at EOM if EOL</p></li>
-<li><p>5597 Adapt consistent ?le name for i4web</p></li>
-<li><p>5598 Possible ABEND S0C4 alter MQ response is desynchronized</p></li>
-<li><p>5599 SET-INITIAL-TIMEOUT modified from 10 to 101</p></li>
-<li><p>5600 HOTSPOT identifies wrong location in a long output ?eld</p></li>
-<li><p>5601 HOTSPOT traps multiple entries in a template.</p></li>
-<li><p>5602 SYSCLONE substitution incorrectly appears in the VIRARBO ?le definitions</p></li>
-<li><p>5603 IE11 Import/Export Macro Button Fix</p></li>
-<li><p>5604 IE11 Stretch Bug</p></li>
-<li><p>5605 Scenario Abend due to missing SCENARIO END</p></li>
-<li><p>5606 WEB2VIRTAJAX has JavaScript errors</p></li>
-<li><p>5607 3270 Introduce new structured ?eld to allow a applications to obtain user certi?cate</p></li>
-<li><p>5608 W2H Allow PGUP key as PA3</p></li>
-<li><p>5609 PA3 incorrectly sent with length 3 instead of 1</p></li>
-<li><p>5610 MAP$ in a SCENARIO SUBROUTINE</p></li>
-<li><p>5611 Update Virtel Sub-Application Menu</p></li>
-<li><p>5612 HTTP correct pointer from session to pseudo terminal</p></li>
-<li><p>5613 HTTP possible Abend due to large content-length</p></li>
-<li><p>5615 Add WEB2ZVIRJ.htm template for Japanese language support</p></li>
-<li><p>5616 ACTION$ instruction may be rejected due to an error in UPDT5580</p></li>
-<li><p>5617 Adapts UPDT5607 for VSE</p></li>
-<li><p>5618 Correct screen presentation</p></li>
-<li><p>5619 IBM1097A Iranian Farsi translation table</p></li>
-<li><p>5620 User Parms on host -1- USER-PARMS�DIRECTORY</p></li>
-<li><p>5621 Correct IE problem - SCRIPT16389</p></li>
-<li><p>5622 Redesign JavaScript initialization</p></li>
-<li><p>5623 Abend S202trying to restart a LINE to VIRXM</p></li>
-<li><p>5624 Context Menu display errors</p></li>
-<li><p>5626 VSE Abend in RACROUTE REGUEST=EXTRACT routine</p></li>
-<li><p>5627 Change Virtel long poll response to add a Content-Length header</p></li>
-<li><p>5628 Minor changes to V4.58 JavaScript</p></li>
-<li><p>5629 ‘//’ slash characters in w2h parameter settings window</p></li>
-<li><p>5630 Save VWA Parms. User on the Host � Centralised Parameter Feature</p></li>
-<li><p>5631 IBM0274 0ld Belgium translation table</p></li>
-<li><p>5632 3270 structured ?eld to retrieve user IP address</p></li>
-<li><p>5633 3270 certi?cate structured ?eld always return same certi?cate</p></li>
-<li><p>5634 3270 structured ?eld - possible ASRA</p></li>
-<li><p>5635 VSE LOGFILE Support</p></li>
-<li><p>5636 Apply minor modi?cations</p></li>
-<li><p>5637 MQ response line no longer read alter a timeout</p></li>
-<li><p>5638 Correct CCP and SmartCursor issues</p></li>
-<li><p>5639 Update VSE tape build</p></li>
-<li><p>5640 Update VIR0002A to support VSE SYSLST</p></li>
-<li><p>5642 Save VWA Parms. Enhancement - Part 2</p></li>
-<li><p>5644 Correct MAP length in VIR0021W</p></li>
-<li><p>5645 Save VWA Parms. Enhancement - Part3</p></li>
-<li><p>5646 Complete keypad.css for TBT</p></li>
-<li><p>5647 Change compress/WEB2AJAXC.bat to allow compress from SVN</p></li>
-<li><p>5648 Save VWA Parms. Enhancement - Part4</p></li>
-<li><p>5649 Hotspot and Settings corrections</p></li>
-<li><p>5650 Correct Toolbar to display Virtel Information</p></li>
-<li><p>5651 Correct PassPhrase decrypt</p></li>
-<li><p>5652 Correct cursor position with unformatted screen</p></li>
-<li><p>5653 Some DBCS Characters are lost at end of a ?eld</p></li>
-<li><p>5654 Hotspot, CCP and Centralized Setting updates</p></li>
-<li><p>5655 Minor corrections and fixes I</p></li>
-<li><p>5656 compressed js and others</p></li>
-<li><p>5657 VWA perms on host for security type 4</p></li>
-<li><p>5658 Hotspots In INPUT fields</p></li>
-<li><p>5659 correct PTFGEN</p></li>
-<li><p>5660 DFHMDF map generation may be wrong due to binary zeroes in the screen</p></li>
-<li><p>5661 Minor corrections and fixes II</p></li>
-<li><p>5662 Centralized Parms update</p></li>
-<li><p>5663 Correct bug In Macro backup</p></li>
-<li><p>5664 Increase password length In PASSWD HTML</p></li>
-<li><p>5665 Web2ajax.htm now loads web2ajaxcjs</p></li>
-<li><p>5666 Videl update number missing in vwa toolbar</p></li>
-<li><p>5667 Correct bug In centralised settings with security—O</p></li>
-<li><p>5668 Correct defautt font setting in settings panel</p></li>
-<li><p>5669 Correct synchronization settings</p></li>
-<li><p>5670 Minor corrections and fixes III</p></li>
-<li><p>5671 Correct Macro bug</p></li>
-<li><p>5672 Minor corrections and fixes IV</p></li>
-<li><p>5673 Create UPDT5673</p></li>
-<li><p>5674 FIX appmenu htm</p></li>
-<li><p>5675 correct VIRHTML abend</p></li>
-<li><p>5676 Correct switch problem</p></li>
-<li><p>5677 VIRPLEX at startup. we may see a series of VIRQLK51 messages</p></li>
-<li><p>5678 VIRPLEX supcn)rt for perms on host for READONLY servers</p></li>
-<li><p>5679 fix. Macro bug and other minor fixes</p></li>
-<li><p>5680 possible abend connecting to a VTAM application</p></li>
-<li><p>5681 Refactor of SVN 4800 and 4807</p></li>
-<li><p>5682 Updates to installation changes to defaults</p></li>
-<li><p>5683 various javascfipt fixes from SVN</p></li>
-<li><p>5684 more javascfipt fixes</p></li>
-<li><p>5685 Centralized Parms wrong VPLEX code sent by W2H-Settings</p></li>
-<li><p>5686 pseudo terminal not freed after close of the window</p></li>
-<li><p>5687 Centralized Parmy error with IE8</p></li>
-<li><p>5688 It-I VIR0021W causes ASRA/ABENDCC4 abends</p></li>
-<li><p>5689 Cleanup correctly following a REGS ESS failure In VIR0021W</p></li>
-<li><p>5690 V458 Installation updates</p></li>
-<li><p>5691 memory oveday after using VIR0021W USSTAB</p></li>
-<li><p>5692 Javascript fixes</p></li>
-<li><p>5693 set-local-option (use-htmini)</p></li>
-<li><p>5694 Loop with Trace option (Y,Y,Y)</p></li>
-<li><p>5695 some pseudos not released when closing several tabs</p></li>
-<li><p>5696 Virplex - error message if BROADCAST cannot be done</p></li>
-<li><p>5697 Incorrect 403 signon suspended error when signon is not suspended</p></li>
-<li><p>5698 selection box at wrong gn)sition In no stretch mode</p></li>
-<li><p>5699 VIR1728E ERROR: CANNOT OPEN message</p></li>
-<li><p>5700 Remove compressed option from appmenu htm</p></li>
+<li>5527 context/focus switch problem</li>
+<li>5528 Ctrl+V and Insert and PasteBy Typing</li>
+<li>5530 Virtel initialisation message VIR0099I must go to the console</li>
+<li>5531 Abend S0C4 in VSVTINIT on shutting down Virtel</li>
+<li>5532 Possible ‘parsing error’ loading w2h settings in Italian</li>
+<li>5533 In ‘stretch’ mode, W2H may misalign some characters</li>
+<li>5534 Help pages for V2 W2H admin</li>
+<li>5535 BLINK attribute no longer work in Chrome and Firefox</li>
+<li>5536 Prevent Alert Box in IE8</li>
+<li>5537 Correct Import/export in VWA</li>
+<li>5538 Pop-up menu correction for IE.</li>
+<li>5539 Show/Hide tool bar option</li>
+<li>5540 remove w2h setting to omit nulls from input</li>
+<li>5541 Correct HTML return with “/” in passwd.html.</li>
+<li>5542 Update VWA Settings messages-</li>
+<li>5543 Backup W2H parameters. Fix problem with Toolbar display</li>
+<li>5544 Correct display problems</li>
+<li>5545 Correct ARBOLOAD installation job-</li>
+<li>5546 Cursor not visible on highlighted field</li>
+<li>5547 EDGE browser display problem with Tool Bar</li>
+<li>5548 Correct Import/export in VWA</li>
+<li>5549 REQSESS fails if Logmode in URL is less than eight characters</li>
+<li>5550 Correct time display in directory list</li>
+<li>5551 Correct JavaScript to avoid Drag &amp; Drop Failure</li>
+<li>5552 Add PCDOS (CP437) support to IND$FILE</li>
+<li>5553 CLIPBOARD events</li>
+<li>5554 Spell Checking incorrectly turned on in IE</li>
+<li>5555 show/Hide toolbar by keypress</li>
+<li>5556 PRINT extra blank page at end</li>
+<li>5557 PRINT missing EOL at EOM</li>
+<li>5558 cucumber test blocks on CLEAR</li>
+<li>5559 IBM0276 update</li>
+<li>5560 DDI JavaScript error in macros_Problems.js</li>
+<li>5561 Update VIR0021Wto correctly handle SFE codes</li>
+<li>5562 VIROOPE force free of user memory</li>
+<li>5563 Error loading custom.css</li>
+<li>5564 VXMW96E VIRPASS /XMHSAE ABEND=3202 UM REASONW</li>
+<li>5565 VIRTEL Abend 878-10 after multiple VSVPSYNL SAE2HOZ1</li>
+<li>5566 Increase default Maxsockets to 5000 from 250</li>
+<li>5567 PRINT extra blank page at end</li>
+<li>5568 VIRSV forces TRAP(0FF) for service programs</li>
+<li>5569 VIRPLEX do not ignore URL path before VPLEX= key</li>
+<li>5570 VSVRTMSG Initialization LENGTH OFF LE. MSG=00141</li>
+<li>5571 CLIPBOARD paste continue / copy append</li>
+<li>5572 CLIPBOARD spellcheck</li>
+<li>5573 Add LOG=FILE to Virtel logging</li>
+<li>5574 JS01.js should not contain {{{ Virtel statements</li>
+<li>5575 Add explicit /w2h paths in web2sub.html and js01.js</li>
+<li>5576 IF$ OlA STATUS IS INHIBITED</li>
+<li>5577 COPYS NUMBER-OF.SCREEN-lNPUT-FIELDS</li>
+<li>5578 CTRL key has no effect under Epiphany browser under Linux</li>
+<li>5579 i4WEB - Out of Memory due to X-SYSTEM not enforced</li>
+<li>5580 Enhance ACTION$ SEND= and KEY=</li>
+<li>5581 Fix Black screen in IE8</li>
+<li>5582 Hotspot Error in IE8 JavaScript</li>
+<li>5583 FIRST-PASS may be set on second pass into a SCENARIO INPUT</li>
+<li>5584 Update Version number</li>
+<li>5585 Correct ‘unde?ned’ error when tool bar removed</li>
+<li>5586 Paste-Continue button should not be on the toolbar when not using clipboard event</li>
+<li>5587 Correct stretch in IE when in compatibility mode</li>
+<li>5588 Correct ‘GetAttribute’ inVIR3270.js</li>
+<li>5589 Implement ASYNC NOLONGPOLL using SNASTAT</li>
+<li>5590 Avoid duplicate PF=DISCONNECT after refresh</li>
+<li>5591 Restore PF5 behaviour for IE8</li>
+<li>5592 Correct CCP Append behaviour</li>
+<li>5593 Correct Context/Focus Switch Problem</li>
+<li>5594 Fix Virtel Studio DEBUGS TRACE</li>
+<li>5595 Correct Hot Key problem with CTRL key</li>
+<li>5596 Do not print extra blank line at EOM if EOL</li>
+<li>5597 Adapt consistent ?le name for i4web</li>
+<li>5598 Possible ABEND S0C4 alter MQ response is desynchronized</li>
+<li>5599 SET-INITIAL-TIMEOUT modified from 10 to 101</li>
+<li>5600 HOTSPOT identifies wrong location in a long output ?eld</li>
+<li>5601 HOTSPOT traps multiple entries in a template.</li>
+<li>5602 SYSCLONE substitution incorrectly appears in the VIRARBO ?le definitions</li>
+<li>5603 IE11 Import/Export Macro Button Fix</li>
+<li>5604 IE11 Stretch Bug</li>
+<li>5605 Scenario Abend due to missing SCENARIO END</li>
+<li>5606 WEB2VIRTAJAX has JavaScript errors</li>
+<li>5607 3270 Introduce new structured ?eld to allow a applications to obtain user certi?cate</li>
+<li>5608 W2H Allow PGUP key as PA3</li>
+<li>5609 PA3 incorrectly sent with length 3 instead of 1</li>
+<li>5610 MAP$ in a SCENARIO SUBROUTINE</li>
+<li>5611 Update Virtel Sub-Application Menu</li>
+<li>5612 HTTP correct pointer from session to pseudo terminal</li>
+<li>5613 HTTP possible Abend due to large content-length</li>
+<li>5615 Add WEB2ZVIRJ.htm template for Japanese language support</li>
+<li>5616 ACTION$ instruction may be rejected due to an error in UPDT5580</li>
+<li>5617 Adapts UPDT5607 for VSE</li>
+<li>5618 Correct screen presentation</li>
+<li>5619 IBM1097A Iranian Farsi translation table</li>
+<li>5620 User Parms on host -1- USER-PARMS�DIRECTORY</li>
+<li>5621 Correct IE problem - SCRIPT16389</li>
+<li>5622 Redesign JavaScript initialization</li>
+<li>5623 Abend S202trying to restart a LINE to VIRXM</li>
+<li>5624 Context Menu display errors</li>
+<li>5626 VSE Abend in RACROUTE REGUEST=EXTRACT routine</li>
+<li>5627 Change Virtel long poll response to add a Content-Length header</li>
+<li>5628 Minor changes to V4.58 JavaScript</li>
+<li>5629 ‘//’ slash characters in w2h parameter settings window</li>
+<li>5630 Save VWA Parms. User on the Host � Centralised Parameter Feature</li>
+<li>5631 IBM0274 0ld Belgium translation table</li>
+<li>5632 3270 structured ?eld to retrieve user IP address</li>
+<li>5633 3270 certi?cate structured ?eld always return same certi?cate</li>
+<li>5634 3270 structured ?eld - possible ASRA</li>
+<li>5635 VSE LOGFILE Support</li>
+<li>5636 Apply minor modi?cations</li>
+<li>5637 MQ response line no longer read alter a timeout</li>
+<li>5638 Correct CCP and SmartCursor issues</li>
+<li>5639 Update VSE tape build</li>
+<li>5640 Update VIR0002A to support VSE SYSLST</li>
+<li>5642 Save VWA Parms. Enhancement - Part 2</li>
+<li>5644 Correct MAP length in VIR0021W</li>
+<li>5645 Save VWA Parms. Enhancement - Part3</li>
+<li>5646 Complete keypad.css for TBT</li>
+<li>5647 Change compress/WEB2AJAXC.bat to allow compress from SVN</li>
+<li>5648 Save VWA Parms. Enhancement - Part4</li>
+<li>5649 Hotspot and Settings corrections</li>
+<li>5650 Correct Toolbar to display Virtel Information</li>
+<li>5651 Correct PassPhrase decrypt</li>
+<li>5652 Correct cursor position with unformatted screen</li>
+<li>5653 Some DBCS Characters are lost at end of a ?eld</li>
+<li>5654 Hotspot, CCP and Centralized Setting updates</li>
+<li>5655 Minor corrections and fixes I</li>
+<li>5656 compressed js and others</li>
+<li>5657 VWA perms on host for security type 4</li>
+<li>5658 Hotspots In INPUT fields</li>
+<li>5659 correct PTFGEN</li>
+<li>5660 DFHMDF map generation may be wrong due to binary zeroes in the screen</li>
+<li>5661 Minor corrections and fixes II</li>
+<li>5662 Centralized Parms update</li>
+<li>5663 Correct bug In Macro backup</li>
+<li>5664 Increase password length In PASSWD HTML</li>
+<li>5665 Web2ajax.htm now loads web2ajaxcjs</li>
+<li>5666 Videl update number missing in vwa toolbar</li>
+<li>5667 Correct bug In centralised settings with security—O</li>
+<li>5668 Correct defautt font setting in settings panel</li>
+<li>5669 Correct synchronization settings</li>
+<li>5670 Minor corrections and fixes III</li>
+<li>5671 Correct Macro bug</li>
+<li>5672 Minor corrections and fixes IV</li>
+<li>5673 Create UPDT5673</li>
+<li>5674 FIX appmenu htm</li>
+<li>5675 correct VIRHTML abend</li>
+<li>5676 Correct switch problem</li>
+<li>5677 VIRPLEX at startup. we may see a series of VIRQLK51 messages</li>
+<li>5678 VIRPLEX supcn)rt for perms on host for READONLY servers</li>
+<li>5679 fix. Macro bug and other minor fixes</li>
+<li>5680 possible abend connecting to a VTAM application</li>
+<li>5681 Refactor of SVN 4800 and 4807</li>
+<li>5682 Updates to installation changes to defaults</li>
+<li>5683 various javascfipt fixes from SVN</li>
+<li>5684 more javascfipt fixes</li>
+<li>5685 Centralized Parms wrong VPLEX code sent by W2H-Settings</li>
+<li>5686 pseudo terminal not freed after close of the window</li>
+<li>5687 Centralized Parmy error with IE8</li>
+<li>5688 It-I VIR0021W causes ASRA/ABENDCC4 abends</li>
+<li>5689 Cleanup correctly following a REGS ESS failure In VIR0021W</li>
+<li>5690 V458 Installation updates</li>
+<li>5691 memory oveday after using VIR0021W USSTAB</li>
+<li>5692 Javascript fixes</li>
+<li>5693 set-local-option (use-htmini)</li>
+<li>5694 Loop with Trace option (Y,Y,Y)</li>
+<li>5695 some pseudos not released when closing several tabs</li>
+<li>5696 Virplex - error message if BROADCAST cannot be done</li>
+<li>5697 Incorrect 403 signon suspended error when signon is not suspended</li>
+<li>5698 selection box at wrong gn)sition In no stretch mode</li>
+<li>5699 VIR1728E ERROR: CANNOT OPEN message</li>
+<li>5700 Remove compressed option from appmenu htm</li>
 </ul>
 </div>
 </div>
