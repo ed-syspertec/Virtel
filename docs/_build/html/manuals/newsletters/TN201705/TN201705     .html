@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -232,7 +223,7 @@ installed. See below.</p>
 <p>Figure 2 Required Windows features</p>
 <p>Validation of these requisites can be done by issuing the following two
 commands.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>node –version Determine node is installed and accessible.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>node –version Determine node is installed and accessible.
 lpr The print route program is installed and accessible
 </pre></div>
 </div>
@@ -245,7 +236,7 @@ script and relevant nodeJS components. In our example we will create a
 directory called c:\virtel\VirtelSpooler where we will install the
 necessary nodeJS script and bat files. Open a command window in this
 directory and type the following command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">chokidar</span> <span class="o">--</span><span class="n">save</span> <span class="o">**</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">npm</span> <span class="n">install</span> <span class="n">chokidar</span> <span class="o">--</span><span class="n">save</span> <span class="o">**</span>
 </pre></div>
 </div>
 <p>This will download a bunch of modules required by the Virtel Spooler
@@ -256,12 +247,12 @@ printPCL.bat. This is also listed Appendix A.</p>
 <p>Now we are ready to go!</p>
 <p><strong>Starting the Virtel Spooler</strong></p>
 <p>The Virtel Spooler script is started with the following commands:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
 <span class="n">node</span> <span class="n">main</span><span class="o">.</span><span class="n">js</span> <span class="n">myServer</span> <span class="n">myPrinter</span> <span class="n">myDownloadDirectory</span>
 </pre></div>
 </div>
 <p>So, for example, in my installation I use the following commands:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">c</span><span class="p">:</span>\\<span class="n">virtel</span>\\<span class="n">VirtelSpooler</span>
 <span class="n">node</span> <span class="n">main</span><span class="o">.</span><span class="n">js</span> <span class="n">CSD</span> <span class="n">KONICA</span>\<span class="n">_Couleur</span>\<span class="n">_C284e</span> <span class="n">d</span><span class="p">:</span>\\<span class="n">downloads</span>
 </pre></div>
 </div>
@@ -305,7 +296,7 @@ c:\virtel\VirtelSpooler. All worked fine after that.</p>
 <div class="section" id="appendix-a">
 <h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
 <p><strong>main.js</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/* Virtel PCL Print Spooler.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/* Virtel PCL Print Spooler.
  * Monitors spool directory and automatically sends PCL file to network printer.
  *
  * npm install chokidar –save
@@ -361,7 +352,7 @@ watcher.on(&#39;add&#39;, path =&gt; execBatFile(\`${path}\`));
 </pre></div>
 </div>
 <p><strong>printPCL.bat</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@Echo</span> <span class="n">off</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@Echo</span> <span class="n">off</span>
 <span class="nb">set</span> <span class="n">arg1</span><span class="o">=%</span><span class="mi">1</span>
 <span class="nb">set</span> <span class="n">arg2</span><span class="o">=%</span><span class="mi">2</span>
 <span class="nb">set</span> <span class="n">arg3</span><span class="o">=%</span><span class="mi">3</span>

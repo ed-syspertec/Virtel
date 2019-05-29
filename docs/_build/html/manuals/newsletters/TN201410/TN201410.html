@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -200,8 +191,8 @@
 trace and the VTAM internal trace. Both will write GTF USR records to a
 GTF trace data set. Trace records can be identified as:-</p>
 <ul class="simple">
-<li>Type FE1 VTAM INTERNAL TRACE</li>
-<li>Type FEF VTAM BUFFER TRACE</li>
+<li><p>Type FE1 VTAM INTERNAL TRACE</p></li>
+<li><p>Type FEF VTAM BUFFER TRACE</p></li>
 </ul>
 <div class="section" id="security">
 <h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
@@ -210,19 +201,19 @@ CONFTXT=YES in the TSOKEY00 member of SYS1.PARMLIB before starting
 TSO/VTAM.</p>
 <p><strong>Start GTF</strong></p>
 <p>First we need to start GTF. Use the following z/OS start command.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">GTF</span><span class="o">.</span><span class="n">GTF</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">S</span> <span class="n">GTF</span><span class="o">.</span><span class="n">GTF</span>
 </pre></div>
 </div>
 <p>By default all USR records will be traced. This is specified in the
 GTFPARM member of USER.PARMLIB. This member has the following
 statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="o">=</span><span class="n">USR</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TRACE</span><span class="o">=</span><span class="n">USR</span>
 </pre></div>
 </div>
 <p>GTF will issue a WTO. Further trace options can be specified.
 Reply “U” to message AHL125A to activate the GTF trace. Here is an
 example from the console log of starting up GTF:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>$HASP100 GTF ON STCINRDR
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$HASP100 GTF ON STCINRDR
 IEF695I START GTF WITH JOBNAME GTF IS ASSIGNED TO USER START2
 , GROUP SYS1
 $HASP373 GTF STARTED
@@ -252,13 +243,13 @@ AHL031I GTF INITIALIZATION COMPLETE
 instance we are only interested in the VTAM Buffer trace against
 particular LUs. The following VTAM commands should be issued to start
 tracing against those relevant VTAM logical units. In our case a session manager and TSO.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">TSO</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">TSO</span>
 <span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">EMSYAS01</span>
 </pre></div>
 </div>
 <p>Next, we need to enable VTAM to write all trace records to GTF. Issue
 the following command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">MODE</span><span class="o">=</span><span class="n">EXT</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">VTAM</span><span class="p">,</span><span class="n">OPTION</span><span class="o">=</span><span class="n">ALL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">MODE</span><span class="o">=</span><span class="n">EXT</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">VTAM</span><span class="p">,</span><span class="n">OPTION</span><span class="o">=</span><span class="n">ALL</span>
 </pre></div>
 </div>
 <p>Note: We haven’t issues a buffer trace against the Virtel Relay node
@@ -269,13 +260,13 @@ Virtel the Virtel Relay LU REHVIT000 will be establish a session and then the  t
 issued.</p>
 <p>Connect Virtel to NVAS and then issue the following command to buffer
 trace the Virtel Relay Session.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT000</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">AMOUNT</span><span class="o">=</span><span class="n">FULL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">REHVT000</span>
 </pre></div>
 </div>
 <p><strong>Stopping GTF and VTAM traces</strong></p>
 <p>Once the diagnostic work has been completed GTF and the traces need to
 be terminated. Issue the following commands:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">GTF</span>                                                                   <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">GTF</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="n">GTF</span>                                                                   <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">GTF</span>
 <span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">BUF</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">x</span>                    <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">VTAM</span> <span class="n">buffer</span> <span class="n">trace</span>
 <span class="n">F</span> <span class="n">VTAM</span><span class="p">,</span><span class="n">NOTRACE</span><span class="p">,</span><span class="n">TYPE</span><span class="o">=</span><span class="n">VTAM</span>                                <span class="o">&lt;===</span> <span class="n">Stop</span> <span class="n">VTAM</span> <span class="n">tracing</span>
 </pre></div>
@@ -286,7 +277,7 @@ trace records. The first is to use IPCS to print the records. This
 assumes that you are set up with the necessary IPCS directory file. The
 following JCL will print the VTAM trace records that have been collected
 in the SYS1.TRACE GTF file.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTD</span> <span class="n">JOB</span> <span class="n">ACCT</span><span class="c1">#, JOB05832</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTD</span> <span class="n">JOB</span> <span class="n">ACCT</span><span class="c1">#, JOB05832</span>
 <span class="o">//</span> <span class="n">SPTHOLT</span><span class="p">,</span> <span class="o">**</span><span class="n">JOB</span> <span class="n">STATEMENT</span> <span class="n">GENERATED</span> <span class="n">BY</span> <span class="n">SUBMIT</span><span class="o">**</span>
 <span class="o">//</span> <span class="n">NOTIFY</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">MSGLEVEL</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -307,7 +298,7 @@ in the SYS1.TRACE GTF file.</p>
 </pre></div>
 </div>
 <p><strong>An example of the IPCS Output</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">USRFD</span> <span class="n">FEF</span> <span class="n">ASCB</span> <span class="mi">00</span><span class="n">FB2480</span> <span class="n">JOBN</span> <span class="n">VTAM</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">USRFD</span> <span class="n">FEF</span> <span class="n">ASCB</span> <span class="mi">00</span><span class="n">FB2480</span> <span class="n">JOBN</span> <span class="n">VTAM</span>
         <span class="n">BUFF</span> <span class="n">SPNET</span><span class="o">.</span><span class="n">EMSYAS01</span> <span class="o">/</span><span class="n">SPNET</span><span class="o">.</span><span class="n">VTAM</span> <span class="n">LRC</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="mi">000</span><span class="p">)</span> <span class="n">OUTBOUND</span> <span class="n">COMPLETE</span> <span class="n">SEGMENT</span>
         <span class="n">VTAM</span> <span class="n">TH</span><span class="o">=</span><span class="mi">40000000</span> <span class="mi">00000000</span> <span class="mi">0000000</span><span class="n">B</span> <span class="mi">0000000</span><span class="n">B</span> <span class="mi">1</span><span class="n">C0000AD</span> <span class="mi">0001061</span><span class="n">C</span> <span class="mi">0152</span>     <span class="n">RH</span><span class="o">=</span><span class="mi">0</span><span class="n">B8000</span>
                                         <span class="mi">81060100</span> <span class="mf">4E000000</span> <span class="mi">0000002</span><span class="n">F</span> <span class="mi">010303</span><span class="n">B1</span> <span class="mi">90308000</span> <span class="o">*</span><span class="n">a</span><span class="o">...+...............*</span>
@@ -361,7 +352,7 @@ in the SYS1.TRACE GTF file.</p>
 It is used to process VTAM USR records in a GTF file. The following is
 an example of the JCL used to run the ACFTAP program. This can be found
 in SYS1.SAMPLIB.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ACFTAP</span> <span class="n">JCL</span> <span class="n">Example</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ACFTAP</span> <span class="n">JCL</span> <span class="n">Example</span>
 
 <span class="o">//</span><span class="n">SPTHOLTA</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">ASMSCEN</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">ACFTAP</span> <span class="n">PROC</span>
@@ -410,7 +401,7 @@ in SYS1.SAMPLIB.</p>
 <p>ACFTAP has several different reports. It is best to set up a PARMLIB
 member and read the ACFTAP control statements from there. This way you
 have control over what reports to print.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Member</span> <span class="n">ACFTAP</span> <span class="ow">in</span> <span class="n">USER</span><span class="o">.</span><span class="n">PARMLIB</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Member</span> <span class="n">ACFTAP</span> <span class="ow">in</span> <span class="n">USER</span><span class="o">.</span><span class="n">PARMLIB</span>
 
 <span class="n">SSPRT</span><span class="o">=</span><span class="n">YES</span>
 <span class="n">NEPRT</span><span class="o">=</span><span class="n">NO</span>
@@ -436,7 +427,7 @@ Fig.1 - Example of SDPRT detail report.</p>
 Fig.2 - Example of SSPRT summary report.</p>
 <p><strong>Tracing with z/VSE</strong></p>
 <p>The approach to obtaining a buffer trace with z/VSE is slightly different. The following command sequence should provide enough information to capture a trace in z/VSE.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>F NET,TRACE,TYPE=BUF,ID=luname                     &lt;- Start the Buffer trace
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>F NET,TRACE,TYPE=BUF,ID=luname                     &lt;- Start the Buffer trace
 
 AR 0015 1C39I COMMAND PASSED TO ACF/VTAM
 F3 0003 IST097I MODIFY ACCEPTED

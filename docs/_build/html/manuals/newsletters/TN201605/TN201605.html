@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -215,8 +206,8 @@ settings are associated with the printer’s Terminal and Typterm CICS
 table entries.</p>
 <p>Two issues associated with CICS printing are:-</p>
 <ol class="arabic simple">
-<li>The formatting considerations.</li>
-<li>Associating a task to the printer.</li>
+<li><p>The formatting considerations.</p></li>
+<li><p>Associating a task to the printer.</p></li>
 </ol>
 <p>In our examples there are no formatting considerations other than
 pagination and newline processing. This is taken care of by the CICS
@@ -274,7 +265,7 @@ Typeterm definition is also associated with a Device type of 3270P.</p>
 <p>The CICS application we use is a simple customer inquiry application
 which has a print facility. Logging onto the application using Virtel
 produces the following messages in the Virtel log.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA079</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49318</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLVTA079</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49318</span>
 <span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHVT000</span><span class="p">(</span><span class="n">W2HTP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
 <span class="n">VIR0919I</span> <span class="n">CLVTA079</span> <span class="n">RELAY</span> <span class="n">REHIP000</span><span class="p">(</span><span class="n">W2HIP000</span><span class="p">)</span> <span class="n">ACTIVATED</span>
 </pre></div>
@@ -303,7 +294,7 @@ request has been sent to printed id EHS0.</p>
 <p><a class="reference internal" href="../../../_images/image97.png"><img alt="image8" src="../../../_images/image97.png" style="width: 5.54587in; height: 4.23958in;" /></a></p>
 <p><em>Fig. 9 - Print request acknowledgment</em></p>
 <p>If we look at the Virtel log we can see the following messages.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">00</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">00</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
 </pre></div>
 </div>
 <p>This indicates that Virtel has received the 3270 print data stream from
@@ -346,11 +337,11 @@ after completing the print request in the CICS application.</p>
 <p>From within TSO we issue the following commands to drive a GDDM print
 request towards REHIP000.</p>
 <p># Allocate the GDDM print queue.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alloc</span> <span class="n">f</span><span class="p">(</span><span class="n">ADMPRNTQ</span><span class="p">)</span> <span class="n">DA</span><span class="p">(</span><span class="n">REQUEST</span><span class="o">.</span><span class="n">QUEUE</span><span class="p">)</span> <span class="n">SHR</span> <span class="n">REUSE</span>
 </pre></div>
 </div>
 <p># Send a print request.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Call</span> <span class="s1">&#39;gddm.sadmmod(admoprt)&#39;</span> <span class="s1">&#39;gddm.smallprt on rehip000&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Call</span> <span class="s1">&#39;gddm.sadmmod(admoprt)&#39;</span> <span class="s1">&#39;gddm.smallprt on rehip000&#39;</span>
 </pre></div>
 </div>
 <p>Once GDDM determines that there is a pending print request in the queue
@@ -363,7 +354,7 @@ from GDDM and not CICS.</p>
 <p><em>Fig. 15 - Printer Sharing</em></p>
 <p>In the Virtel log we can see the following messages. This time it is
 application GDDMPRTS that is connecting to the printer and not SPCICST.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49408</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49408</span>
 <span class="n">VIR0906I</span> <span class="n">GDDMPRTS</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">00</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
 </pre></div>
 </div>
@@ -399,10 +390,10 @@ then the print request will more than likely fail. For example in the
 following scenario we have modified CICS so that printer EHS0 is now a
 SCS printer. We did this by executing the following CICS commands.</p>
 <ol class="arabic simple">
-<li>Change the TypeTerm definition from IMP3270P to SCS on the CICS EHS0
-terminal definition.</li>
-<li>Place EHS0 out of service.</li>
-<li>Install EHS0.</li>
+<li><p>Change the TypeTerm definition from IMP3270P to SCS on the CICS EHS0
+terminal definition.</p></li>
+<li><p>Place EHS0 out of service.</p></li>
+<li><p>Install EHS0.</p></li>
 </ol>
 <p>When will select PF9 from the CICS application Virtel pops up a box
 which indicates a print failure. Note that different printer ICON. This
@@ -410,7 +401,7 @@ indicates a SCS print.</p>
 <p><a class="reference internal" href="../../../_images/image162.png"><img alt="image15" src="../../../_images/image162.png" style="width: 6.26806in; height: 4.77917in;" /></a></p>
 <p><em>Fig. 16 - Failed SCS print request</em></p>
 <p>If we look into the Virtel log we can see the following messages.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">01</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">01</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
 <span class="n">VIRC122E</span> <span class="n">ERROR</span> <span class="n">CLVTA079</span> <span class="n">IS</span> <span class="n">SENDING</span> <span class="n">A</span> <span class="n">SCENARIO</span> <span class="n">PF</span> <span class="n">KEY</span> <span class="n">BUT</span> <span class="n">SCENARIO</span> <span class="n">IS</span>
 <span class="n">MISSING</span> <span class="n">IN</span> <span class="n">TRANSACTION</span> <span class="s1">&#39;CLI-10 &#39;</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span>
 </pre></div>
@@ -426,10 +417,10 @@ display.</p>
 <p>We can see that no input scenario is associated this application. SCS
 printing will require a scenario. Three scenarios are available:-</p>
 <ol class="arabic simple">
-<li>SCENFPDF Converts SCS data stream into PDF document.</li>
-<li>SCENFPCL Downloads raw data as a file.</li>
-<li>SCENPPDF Sends SCS data to external server to be converted to a PDF.
-PDF file is returned to Virtel as an attachment.</li>
+<li><p>SCENFPDF Converts SCS data stream into PDF document.</p></li>
+<li><p>SCENFPCL Downloads raw data as a file.</p></li>
+<li><p>SCENPPDF Sends SCS data to external server to be converted to a PDF.
+PDF file is returned to Virtel as an attachment.</p></li>
 </ol>
 <p>Attaching SCENFPCL as an input scenario to the CICS transaction will
 enable Virtel to process the print request sent by CICS. We update our
@@ -442,7 +433,7 @@ a file of file type PCL.</p>
 <p><a class="reference internal" href="../../../_images/image191.png"><img alt="image18" src="../../../_images/image191.png" style="width: 6.26806in; height: 3.89653in;" /></a></p>
 <p><em>Fig. 19 - Successful print with SCS</em></p>
 <p>In the Virtel log we can see the following messages.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">01</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0906I</span> <span class="n">SPCICST</span> <span class="n">CONNECTING</span> <span class="n">LUTYPE</span> <span class="mi">01</span> <span class="n">PRINTER</span> <span class="n">W2HIP000</span><span class="p">(</span><span class="n">REHIP000</span><span class="p">)</span> <span class="n">TO</span> <span class="n">CLVTA079</span>
 <span class="n">VIRT922W</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00010000</span> <span class="n">ENDED</span> <span class="n">FOR</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49920</span>
 <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.056</span><span class="p">:</span><span class="mi">49938</span>
 <span class="n">APPLHOLT</span> <span class="n">CLVTA079</span> <span class="n">REHIP000</span> <span class="n">SCENFPCL</span> <span class="n">DELIVERED</span> <span class="n">DOCUMENT</span> <span class="n">REHIP000</span><span class="o">-</span><span class="mi">20160510</span> <span class="mi">135830</span> <span class="n">TO</span> <span class="n">TERMINAL</span>

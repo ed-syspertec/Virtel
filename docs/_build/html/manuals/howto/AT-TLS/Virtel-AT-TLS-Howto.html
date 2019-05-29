@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -182,13 +173,12 @@
 <span id="howtoatls"></span><h1>How To - AT-TLS<a class="headerlink" href="#how-to-at-tls" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="how-to-activate-virtel-https-using-at-tls-on-z-os">
 <h2>1. How to activate VIRTEL https using AT-TLS on z/OS<a class="headerlink" href="#how-to-activate-virtel-https-using-at-tls-on-z-os" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt><strong>1.1 Software pre-requisites</strong></dt>
-<dd><p class="first">To provide secure HTTP (https) sessions to client browsers, VIRTEL
+<dl>
+<dt><strong>1.1 Software pre-requisites</strong></dt><dd><p>To provide secure HTTP (https) sessions to client browsers, VIRTEL
 uses the Application Transparent Transport Layer Security (AT-TLS)
 feature of z/OS Communication Server. AT-TLS is included with z/OS
 V1R7 and later releases.</p>
-<p class="last">AT-TLS allows socket applications to access encrypted sessions by
+<p>AT-TLS allows socket applications to access encrypted sessions by
 invoking system SSL within the transport layer of the TCP/IP stack.
 The Policy Agent decides which connections are to use AT-TLS, and
 provides system SSL configuration for those connections. The
@@ -198,16 +188,17 @@ The supported protocols are TLS, SSLv3, and SSLv2.</p>
 </dd>
 </dl>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.</p>
+<p class="admonition-title">Warning</p>
+<p>Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.</p>
 </div>
 <p><strong>1.2 Installation steps</strong></p>
 <p><em>1.2.1 Install Policy Agent procedure</em></p>
 <blockquote>
-<div>If you do not already have the Communications Server Policy Agent
+<div><p>If you do not already have the Communications Server Policy Agent
 (PAGENT) active in your z/OS system, copy the cataloged procedure
 EZAPAGSP from TCPIP.SEZAINST into your proclib, renaming it as
-PAGENT.</div></blockquote>
+PAGENT.</p>
+</div></blockquote>
 <p><em>1.2.2 Create the Policy Agent configuration file</em></p>
 <blockquote>
 <div><p>If you do not already run the Policy Agent, you will need to create
@@ -218,19 +209,20 @@ existing configuration file and add the TTLS definitions to it.</p>
 configuration. The following changes should be made:</p>
 </div></blockquote>
 <ul class="simple">
-<li>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP
-line 70)</li>
-<li>Replace <em>41000-41002</em> by <em>41002</em> in the LocalPortRange parameter
-(SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP</li>
-<li>Replace <em>ServerWithClientAuth</em> by <em>Server</em> in the HandshakeRole
+<li><p>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP
+line 70)</p></li>
+<li><p>Replace <em>41000-41002</em> by <em>41002</em> in the LocalPortRange parameter
+(SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP</p></li>
+<li><p>Replace <em>ServerWithClientAuth</em> by <em>Server</em> in the HandshakeRole
 parameter (SSLSETUP line 82) as we will not be using Client
-Certificates.</li>
+Certificates.</p></li>
 </ul>
 <p><em>1.2.3 Allow the Policy Agent to run during TCP/IP initialization</em></p>
 <blockquote>
-<div>The Policy Agent must be given READ access to the resource
+<div><p>The Policy Agent must be given READ access to the resource
 EZB.INITSTACK.* in RACF class SERVAUTH. See step EZBAUTH in the
-SSLSETUP sample job (delivered in VIRTEL SAMPLIB).</div></blockquote>
+SSLSETUP sample job (delivered in VIRTEL SAMPLIB).</p>
+</div></blockquote>
 <p><em>1.2.4 Create the server certificate</em></p>
 <blockquote>
 <div><p>A server certificate for VIRTEL must be created, signed by a
@@ -244,18 +236,21 @@ the VIRTEL host (for example, virtssl.syspertec.com)</p>
 </div></blockquote>
 <p><em>1.2.5 Add the certificate to the keyring</em></p>
 <blockquote>
-<div>The server certificate must be added to the VIRTRING keyring. See
-step CCERTIF in the SSLSETUP sample job.</div></blockquote>
+<div><p>The server certificate must be added to the VIRTRING keyring. See
+step CCERTIF in the SSLSETUP sample job.</p>
+</div></blockquote>
 <p><em>1.2.6 Allow VIRTEL to access its own certificate</em></p>
 <blockquote>
-<div>To allow VIRTEL to access its own keyring and server certificate,
+<div><p>To allow VIRTEL to access its own keyring and server certificate,
 the VIRTEL started task must have READ access to the resource
 IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH
-in the SSLSETUP sample job.</div></blockquote>
+in the SSLSETUP sample job.</p>
+</div></blockquote>
 <p><em>1.2.7 Activate AT-TLS</em></p>
 <blockquote>
-<div>To activate AT-TLS, add the following statements to TCPIP PROFILE:</div></blockquote>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">TCPCONFIG</span> <span class="n">TTLS</span>
+<div><p>To activate AT-TLS, add the following statements to TCPIP PROFILE:</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TCPCONFIG</span> <span class="n">TTLS</span>
 
 <span class="n">AUTOLOG</span> <span class="mi">5</span> <span class="n">PAGENT</span> <span class="n">ENDAUTOLOG</span>
 </pre></div>
@@ -297,9 +292,10 @@ MVS command F PAGENT,REFRESH to force PAGENT to reread the file.</p>
 <p><strong>1.4 Problem determination</strong></p>
 <p><em>1.4.1 Policy Agent log file</em></p>
 <blockquote>
-<div>Policy Agent startup messages are written to the /tmp/pagent.log
+<div><p>Policy Agent startup messages are written to the /tmp/pagent.log
 file of z/OS Unix System Services. You can use the TSO ISHELL
-command to browse this file from ISPF.</div></blockquote>
+command to browse this file from ISPF.</p>
+</div></blockquote>
 <p><em>1.4.2 Common error messages</em></p>
 <p>Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:</p>
 <blockquote>
@@ -330,25 +326,25 @@ In the normal case, you should specify HandshakeRole Server, ClientAuthType Full
 <p>If you still get an error when you have ApplicationControlled Off then we will need to see the SYSLOG (for the EZD TTLS messages), the JESMSGLG from the VIRTEL started task, and the SYSPRINT resulting from a z/OS command F VIRTEL,SNAP immediately after the error occurs. We would also like to see the exact URL which was entered at the browser, as well as the AT-TLS pagent.conf file.</p>
 <p><em>1.4.3 Verifying AT-TLS is active</em></p>
 <p>To verify that AT-TLS is still activated, you can submit this MVS command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">TCPIP</span><span class="p">,,</span><span class="n">N</span><span class="p">,</span><span class="n">TTLS</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="n">TCPIP</span><span class="p">,,</span><span class="n">N</span><span class="p">,</span><span class="n">TTLS</span>
 </pre></div>
 </div>
 <p>The response is:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">EZD0101I</span> <span class="n">NETSTAT</span> <span class="n">CS</span> <span class="n">V1R12</span> <span class="n">TCPIP</span> <span class="mi">378</span> <span class="n">TTLSGRPACTION</span> <span class="n">GROUP</span> <span class="n">ID</span> <span class="n">CONNS</span> <span class="n">VIRTELGROUP</span> <span class="mi">00000002</span> <span class="mi">0</span> <span class="mi">1</span> <span class="n">OF</span> <span class="mi">1</span> <span class="n">RECORDS</span> <span class="n">DISPLAYED</span> <span class="n">END</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">REPORT</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EZD0101I</span> <span class="n">NETSTAT</span> <span class="n">CS</span> <span class="n">V1R12</span> <span class="n">TCPIP</span> <span class="mi">378</span> <span class="n">TTLSGRPACTION</span> <span class="n">GROUP</span> <span class="n">ID</span> <span class="n">CONNS</span> <span class="n">VIRTELGROUP</span> <span class="mi">00000002</span> <span class="mi">0</span> <span class="mi">1</span> <span class="n">OF</span> <span class="mi">1</span> <span class="n">RECORDS</span> <span class="n">DISPLAYED</span> <span class="n">END</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">REPORT</span>
 </pre></div>
 </div>
 <p>The UNIX command</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pasearch</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pasearch</span>
 </pre></div>
 </div>
 <p>displays the parameters used by PAGENT from /etc/pagent.conf</p>
 <p>The TSO command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="n">conn</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="n">conn</span>
 </pre></div>
 </div>
 <p>displays active connexions for the VIRTEL STC.</p>
 <p>Once a connexion has been established between a client and a Virtel port, the TSO command:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="n">ttls</span> <span class="n">conn</span> <span class="n">nnnn</span> <span class="n">detail</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="n">ttls</span> <span class="n">conn</span> <span class="n">nnnn</span> <span class="n">detail</span>
 </pre></div>
 </div>
 <p>where nnnn is the identification of the connexion will display the AT-TLS parameters used in the Virtel connexion.</p>
@@ -376,17 +372,17 @@ and 128-bit or higher cipher suites are enabled.</p>
 <p><em>1.5.1 Extracting the userid from a client certificate</em></p>
 <p>Virtel can extract the userid of a user from a client certificate presented to Virtel during the SSL handshake. For this to occur the following must be true:-</p>
 <ul class="simple">
-<li>The HTTP session is secured using AT-TLS. URL = <a class="reference external" href="https://">https://</a>….</li>
-<li>The Policy Agent TTLSConnectionAction or TTLSEnvironmentAction statement contains the parameter “HandShakeRole ServerWithClientAuth”</li>
-<li>The client has provided a valid certificate.</li>
-<li>The security subsystem has validate the certificate as belonging to a user.</li>
-<li>The Virtel transaction has Security = 3 defined.</li>
+<li><p>The HTTP session is secured using AT-TLS. URL = <a class="reference external" href="https://">https://</a>….</p></li>
+<li><p>The Policy Agent TTLSConnectionAction or TTLSEnvironmentAction statement contains the parameter “HandShakeRole ServerWithClientAuth”</p></li>
+<li><p>The client has provided a valid certificate.</p></li>
+<li><p>The security subsystem has validate the certificate as belonging to a user.</p></li>
+<li><p>The Virtel transaction has Security = 3 defined.</p></li>
 </ul>
 <p>If these conditions are met then the userid contained within the clients digital certificate can be extracted by Virtel and used in the signon process. In this process it is normal that a PASS Ticket is generated and associated with the extracted userid.</p>
 <p><em>1.5.2 Example members</em></p>
 <p>See the SAMPLIB members SSLSETUP and SSLUCERT for examples on setting up AT-TLS and client certificates.</p>
 <p><strong>1.6 Bibliography</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="n">SA22</span><span class="o">-</span><span class="mi">7683</span><span class="o">-</span><span class="mi">07</span> <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">V1R7</span> <span class="n">Security</span> <span class="n">Server</span><span class="p">:</span> <span class="n">RACF</span> <span class="n">Security</span> <span class="n">Administrator</span><span class="s1">&#39;s Guide</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span>  <span class="n">SA22</span><span class="o">-</span><span class="mi">7683</span><span class="o">-</span><span class="mi">07</span> <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">V1R7</span> <span class="n">Security</span> <span class="n">Server</span><span class="p">:</span> <span class="n">RACF</span> <span class="n">Security</span> <span class="n">Administrator</span><span class="s1">&#39;s Guide</span>
    <span class="n">Chapter</span> <span class="mf">21.</span> <span class="n">RACF</span> <span class="ow">and</span> <span class="n">Digital</span> <span class="n">Certificates</span>
 
 <span class="o">-</span>  <span class="n">SC24</span><span class="o">-</span><span class="mi">5901</span><span class="o">-</span><span class="mi">04</span> <span class="n">z</span><span class="o">/</span><span class="n">OS</span> <span class="n">V1R6</span> <span class="n">Cryptographic</span> <span class="n">Services</span><span class="p">:</span> <span class="n">System</span> <span class="n">SSL</span> <span class="n">Programming</span>
@@ -406,8 +402,8 @@ and 128-bit or higher cipher suites are enabled.</p>
 </div>
 <p><strong>1.7 Related Material</strong></p>
 <ul class="simple">
-<li><a class="reference internal" href="../../newsletters/TN201407/TN201407.html#tn201407"><span class="std std-ref">Pass tickets and supporting Proxy Servers – CA-SiteMinder© &amp; IBM Tivoli WebSeal©</span></a></li>
-<li><a class="reference internal" href="../../newsletters/TN201416/TN201416.html#tn201416"><span class="std std-ref">Virtel TLS/SSL Security: Signing on using server and client certificates</span></a></li>
+<li><p><a class="reference internal" href="../../newsletters/TN201407/TN201407.html#tn201407"><span class="std std-ref">Pass tickets and supporting Proxy Servers – CA-SiteMinder© &amp; IBM Tivoli WebSeal©</span></a></p></li>
+<li><p><a class="reference internal" href="../../newsletters/TN201416/TN201416.html#tn201416"><span class="std std-ref">Virtel TLS/SSL Security: Signing on using server and client certificates</span></a></p></li>
 </ul>
 </div>
 </div>

@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -189,37 +180,37 @@
 <p>Supporting pass tickets with CA Top Secret requires the following
 definitions.</p>
 <ol class="arabic simple">
-<li>Add the PTKTDATA class to the RDT</li>
+<li><p>Add the PTKTDATA class to the RDT</p></li>
 </ol>
 <p>TSS ADDTO(RDT) RESCLASS(PTKTDATA) RESCODE(n) ACLST(ALL,READ,UPDATE)
 MAXLEN(37)</p>
 <p>Note: RESCODE should be in the range 101 to 13F to ensure that PTKTDATA
 is a prefixed resource class.</p>
 <ol class="arabic simple" start="2">
-<li>Add the ownership of the PassTicket resource (IRRPTAUTH)</li>
+<li><p>Add the ownership of the PassTicket resource (IRRPTAUTH)</p></li>
 </ol>
 <p>TSS ADDTO(owner) PTKTDATA(IRRPTAUTH)</p>
 <ol class="arabic simple" start="3">
-<li>Define the application session key</li>
+<li><p>Define the application session key</p></li>
 </ol>
 <p>TSS ADDTO(NDT) PSTKAPPL(name) SESSKEY(0123456789ABCDEF) SIGNMULTI</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The name must equal the value of the “Name” field linked to the “Passticket” field as defined in the Virtel transaction definition screen. This can be different to the ACB of the targeted Application name defined in “Application” field.</p>
+<p class="admonition-title">Note</p>
+<p>The name must equal the value of the “Name” field linked to the “Passticket” field as defined in the Virtel transaction definition screen. This can be different to the ACB of the targeted Application name defined in “Application” field.</p>
 </div>
 <p><a class="reference internal" href="../../../_images/image001.png"><img alt="image0" src="../../../_images/image001.png" style="width: 6.26806in; height: 3.68681in;" /></a></p>
 <ol class="arabic simple" start="4">
-<li>Permit access to the PassTicket resource</li>
+<li><p>Permit access to the PassTicket resource</p></li>
 </ol>
 <p>TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.name) ACCESS(UPDATE)</p>
 <p>Or</p>
 <p>TSS PERMIT(stc‐userid) PTKTDATA(IRRPTAUTH.name.userid) ACCESS(UPDATE)</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<ul class="last simple">
-<li>The stc-userid is the ACID of any started task that requires access to the PassTicket resource such as CA LDAP.</li>
-<li>The name is the same as in section 3.</li>
-<li>The userid (if used) enables and controls PassTicket generation for specific users</li>
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The stc-userid is the ACID of any started task that requires access to the PassTicket resource such as CA LDAP.</p></li>
+<li><p>The name is the same as in section 3.</p></li>
+<li><p>The userid (if used) enables and controls PassTicket generation for specific users</p></li>
 </ul>
 </div>
 <p>Reference: <a class="reference external" href="https://www.ca.com/us/services-support/ca-support/ca-support-online/support-by-product/ca-top-secret-for-zos.html">CA Top Secret for z/OS</a></p>

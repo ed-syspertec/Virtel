@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -194,7 +185,7 @@
 the transaction W2H-10 is a resource that can be protected by the
 profile VIRTEL.W2H-10. The suffix VIRTEL is defined in the in the TCT
 through the PRFSECU keyword on the SECUR parameter.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span><span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">VIRTEL</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span><span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">VIRTEL</span>
 </pre></div>
 </div>
 <p>By default the profiles are maintained in the RACF default FACILITY
@@ -202,12 +193,12 @@ class held within the class descriptor table or CDT. For each profile a
 user is granted access rights to the transaction through an associated
 access list.</p>
 <p><strong>Transaction RACF Profile Access List</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">USER</span> <span class="n">A</span><span class="p">,</span> <span class="n">GROUP</span> <span class="n">B</span><span class="p">,</span> <span class="n">USER</span> <span class="n">C</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">USER</span> <span class="n">A</span><span class="p">,</span> <span class="n">GROUP</span> <span class="n">B</span><span class="p">,</span> <span class="n">USER</span> <span class="n">C</span>
 <span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">USER</span> <span class="n">A</span><span class="p">,</span> <span class="n">GROUP</span> <span class="n">B</span><span class="p">,</span> <span class="n">USER</span> <span class="n">C</span>
 </pre></div>
 </div>
 <p>The RACF commands required to build the above access lists would be</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 <span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">USERA</span><span class="p">,</span><span class="n">GROUPB</span><span class="p">,</span><span class="n">USERC</span><span class="p">)</span>
 <span class="n">PE</span> <span class="n">VIRTEL</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">10</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">USERA</span><span class="p">,</span><span class="n">GROUPB</span><span class="p">,</span><span class="n">USERC</span><span class="p">)</span>
@@ -244,7 +235,7 @@ the class descriptor table.</p>
 <p><strong>Defining the grouping and member classes</strong></p>
 <p>The following statements are used to define the grouping class $GVIRTEL
 and member class $VIRTEL to RACF.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>RDEFINE CDT $GVIRTEL UACC(NONE) CDTINFO( -
         CASE(UPPER) -
         FIRST(ALPHA) -
         OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -
@@ -262,7 +253,7 @@ and member class $VIRTEL to RACF.</p>
 )
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>RDEFINE CDT $VIRTEL UACC(NONE) CDTINFO( -
         CASE(UPPER) -
         FIRST(ALPHA) -
         OTHER(ALPHA,NUMERIC,NATIONAL,SPECIAL) -
@@ -287,7 +278,7 @@ be added to a member class list. In this example the member class list
 is called VIRTEL_A. It is this profile that contains an access list
 which will be cloned to each member of the grouping class when RACF
 starts.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>RDEFINE $GVIRTEL VIRTEL_A OWNER(SYS1) UACC(NONE)
 RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.W2H-20) UACC(NONE)
 RALTER $GVIRTEL VIRTEL_A ADDMEM(VIRTEL.CLI-90) UACC(NONE)
 </pre></div>
@@ -298,7 +289,7 @@ Effectively the above statements are adding a transaction member to the
 member class associated with a group class and protecting that member
 profile with the access list associated with the group class. The
 following statement defines an access list at the group level.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>PE VIRTEL_A CLASS($GVIRTEL) ID(USERA,GROUPB,USERC) ACCESS(READ)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>PE VIRTEL_A CLASS($GVIRTEL) ID(USERA,GROUPB,USERC) ACCESS(READ)
 </pre></div>
 </div>
 <p>When a new transaction needs to be protected it can be added to the
@@ -309,7 +300,7 @@ transactions.</p>
 <p><strong>VIRTEL definitions.</strong></p>
 <p>To support the RACF grouping class the VIRTEL SECUR parameter in the TCT
 has to define the member class as its RAPPL and RNODE class name.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>VIRSECU=YES,SECUR=(RACROUTE,RACF),
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>VIRSECU=YES,SECUR=(RACROUTE,RACF),
 RAPPL=$VIRTEL,RNODE=$VIRTEL,PRFSECU=VIRTEL,
 </pre></div>
 </div>
@@ -328,11 +319,11 @@ member name and not the group name.</p>
 <p>The following job defines the group and member classes and permits
 access to Virtel transactions.</p>
 <p><strong>Transactions Description Users</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">Web</span> <span class="n">Connection</span> <span class="n">SPTHOLT</span><span class="p">,</span><span class="n">VIRGROUP</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CLI</span><span class="o">-</span><span class="mi">90</span> <span class="n">Web</span> <span class="n">Connection</span> <span class="n">SPTHOLT</span><span class="p">,</span><span class="n">VIRGROUP</span>
 <span class="n">CLI</span><span class="o">-</span><span class="mi">20</span> <span class="n">Virtel</span> <span class="n">Admin</span><span class="p">(</span><span class="n">HTML</span><span class="p">)</span> <span class="n">SPTHOLT</span><span class="p">,</span><span class="n">VIRGROUP</span>
 </pre></div>
 </div>
-<div class="highlight-default"><div class="highlight"><pre><span></span>//SPTHOLTA JOB SYST,&amp;SYSUID,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//SPTHOLTA JOB SYST,&amp;SYSUID,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,
 // REGION=0M
 //*---------------------------------------------------------*
 //* RACF : PROCEDURE TO ADD CLASS TO DYNAMIC CDT *

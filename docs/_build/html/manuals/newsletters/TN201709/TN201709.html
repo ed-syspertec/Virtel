@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -190,9 +181,9 @@
 <p><strong>Installing the maintenance package</strong></p>
 <p>The maintenance package is delivered to the customer as a zip file. It contains the following members:-</p>
 <ul class="simple">
-<li>updtnnnn.trs File to be uploaded to mainframe</li>
-<li>Newsletter PDF on how to install maintenance packages</li>
-<li>readme-updtnnnn.txt Fix details contained within the package</li>
+<li><p>updtnnnn.trs File to be uploaded to mainframe</p></li>
+<li><p>Newsletter PDF on how to install maintenance packages</p></li>
+<li><p>readme-updtnnnn.txt Fix details contained within the package</p></li>
 </ul>
 <p><strong>Control members to be uploaded to the VIRTEL CNTL library:-</strong></p>
 <p>BATCH Batch control member</p>
@@ -202,19 +193,19 @@
 <p>VIRTCTBT.ASM Example Batch TCT</p>
 <p>SCENLOAD.ASM Batch SCENARIO</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">These control members need only to be uploaded once unless instructed otherwise.</p>
+<p class="admonition-title">Note</p>
+<p>These control members need only to be uploaded once unless instructed otherwise.</p>
 </div>
 <ol class="arabic simple">
-<li>Upload and copy members BATCH, EOJ, UPLMAINT.JCL, VIRTELUP.JCL, VIRTCTBT.ASM,SCENLOAD.ASM to the VIRTEL CNTL library.</li>
+<li><p>Upload and copy members BATCH, EOJ, UPLMAINT.JCL, VIRTELUP.JCL, VIRTCTBT.ASM,SCENLOAD.ASM to the VIRTEL CNTL library.</p></li>
 </ol>
 <p><em>These members are also listed in Appendix A of this newsletter. The JCL members and TCT will need modifying to conform to you standards. For the TCT, areas that need to be changed are highlighted in RED.</em></p>
 <ol class="arabic simple" start="2">
-<li>Assemble the modified TCT and SCENLOAD into the VIRTEL LOADLIB using the ASMTCT and ASMSCEN procedures located in the VIRTEL CNTL library.</li>
+<li><p>Assemble the modified TCT and SCENLOAD into the VIRTEL LOADLIB using the ASMTCT and ASMSCEN procedures located in the VIRTEL CNTL library.</p></li>
 </ol>
 <ol class="arabic" start="2">
-<li><p class="first">Upload the TRS dataset updtnnnn.TRS to a pre-allocated TRS file. Use the sample JCL below to allocate the file:-:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
+<li><p>Upload the TRS dataset updtnnnn.TRS to a pre-allocated TRS file. Use the sample JCL below to allocate the file:-:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IEFBR14</span>
 <span class="o">//</span><span class="n">OUTFILE</span> <span class="n">DD</span> <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="o">..</span><span class="n">MAINT</span><span class="o">.</span><span class="n">UPDTNNNN</span><span class="o">.</span><span class="n">TRS</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="p">(,</span><span class="n">CATLG</span><span class="p">),</span>
 <span class="o">//</span> <span class="n">UNIT</span><span class="o">=</span><span class="n">SYSDA</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">DCB</span><span class="o">=</span><span class="p">(</span><span class="n">LRECL</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span><span class="n">BLKSIZE</span><span class="o">=</span><span class="mi">6144</span><span class="p">,</span><span class="n">RECFM</span><span class="o">=</span><span class="n">FB</span><span class="p">),</span>
@@ -224,11 +215,11 @@
 </li>
 </ol>
 <ol class="arabic simple" start="4">
-<li>After modifying the JCL in UPLMAINT.JCL and VIRTELUP.JCL to you site standards, submit the job VIRTELUP. This will upload the maintenance fixes to the destination SAMP TRSF as identified in the UPLMAINT procedure. This procedure also uses a temporary ARBO file which has been configured to support only BATCH updates.</li>
+<li><p>After modifying the JCL in UPLMAINT.JCL and VIRTELUP.JCL to you site standards, submit the job VIRTELUP. This will upload the maintenance fixes to the destination SAMP TRSF as identified in the UPLMAINT procedure. This procedure also uses a temporary ARBO file which has been configured to support only BATCH updates.</p></li>
 </ol>
 <p><strong>Appendix A</strong></p>
 <p><em>Member VIRTCTBT</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>    <span class="n">TITLE</span> <span class="s1">&#39;VIRTEL TCT FOR BATCH&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">TITLE</span> <span class="s1">&#39;VIRTEL TCT FOR BATCH&#39;</span>
     <span class="n">PRINT</span> <span class="n">NOGEN</span>
 <span class="o">*</span> <span class="n">Change</span> <span class="n">lines</span> <span class="n">identified</span> <span class="n">by</span> <span class="o">&lt;</span>
     <span class="n">VIRTERM</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">INITIAL</span><span class="p">,</span><span class="n">APPLID</span><span class="o">=</span><span class="n">APPLHOLT</span><span class="p">,</span>                   <span class="o">*</span> <span class="o">&lt;</span>
@@ -307,7 +298,7 @@
 </pre></div>
 </div>
 <p><em>Member SCENLOAD</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SCENLOAD SCREENS APPL=SCENLOAD
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCENLOAD SCREENS APPL=SCENLOAD
 *
 * SCENARIO TO load/download a page
 * normally used in BATCH Virtel.
@@ -378,11 +369,11 @@ DONE LABEL$
 </pre></div>
 </div>
 <p><em>Member EOJ</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">EOJ</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">EOJ</span>
 </pre></div>
 </div>
 <p><em>Member BATCH</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>*--------------------------------------------------------------*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*--------------------------------------------------------------*
 * BATCH INTERFACE TRANSACTIONS -                               *
 *--------------------------------------------------------------*
 SUBDIR  ID=W2H-DIR,

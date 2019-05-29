@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -220,7 +211,7 @@ web service hosted by <a class="reference external" href="http://www.webservicex
 <p>Breaking down the individual actions we can anaylze the components
 involved.</p>
 <ol class="arabic simple">
-<li>Connection to the Virtel Server is through a batch application. In
+<li><p>Connection to the Virtel Server is through a batch application. In
 this case we are using REXX to connect to the Virtel server using
 REXX socket fuctions. The batch application runs as a batch task
 invoking TCPIP to initialize and connect a socket to VIRTEL. The
@@ -228,9 +219,9 @@ batch application sends a URL request to VIRTEL, effectively
 emulatiing a browser. The URL request identifies the VIRTEL line,
 template and transaction. Virtel is unaware that it is conversing
 with a batch program. The following is the JCL that invokes the REXX
-batch application.</li>
+batch application.</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span>//LIBS JCLLIB ORDER=SPTHOLT.VIRTEL.REXX
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//LIBS JCLLIB ORDER=SPTHOLT.VIRTEL.REXX
 //*
 //* LINE 41002 CLIHOST
 //* LINE 41102 EDSHOST
@@ -246,7 +237,7 @@ ISPSTART CMD(%RXCVIRT)
 </div>
 <p>When running the REXX batch application the following URL is sent to
 Virtel:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SEND-&gt; GET /WS1.HTML+WS3?FROMCURRENCY=EUR&amp;TOCURRENCY=GBP
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEND-&gt; GET /WS1.HTML+WS3?FROMCURRENCY=EUR&amp;TOCURRENCY=GBP
     HTTP/1.1 Host: 192.168.170.30:41002
     Connection: keep-Accept:text/html,application/xhtml+xml,
     application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -262,7 +253,7 @@ Parameters: FROMCURRENCY=EUR,TOCURRENCY=GBP
 </pre></div>
 </div>
 <ol class="arabic" start="2">
-<li><p class="first">When Virtel receives the URL it invokes the transaction associated
+<li><p>When Virtel receives the URL it invokes the transaction associated
 with the Line related to the IP address and port. In this case it is
 line E-HTTP which has an entry point of EDSPOINT. Within that entry
 point, transaction WS3 is defined which has an initial scenario of
@@ -283,7 +274,7 @@ elements. The template looks like this:-</p>
 </li>
 </ol>
 <p><strong>WS1.HTML</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
 &lt;!--
 To change this license header, choose License Headers in Project
 Properties.
@@ -311,7 +302,7 @@ Virtel sends the response to the initial URL that was initial posted
 by the REXX batch application. If we trace the Virtel line E-HTTP
 when we run the batch application we can see the data flow.</p>
 <p><strong>Outbound Message from batch application</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>E-HTTP HTTP REQUEST FROM 192.168.170.030:02027
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>E-HTTP HTTP REQUEST FROM 192.168.170.030:02027
 13:03:57.12
 
 00000 47455420 2F575331 2E48544D 4C2B5753 333F4652 4F4D4355 5252454E 43593D45 *GET /WS1.HTML+WS3?FROMCURRENCY=E*
@@ -324,7 +315,7 @@ when we run the batch application we can see the data flow.</p>
 </pre></div>
 </div>
 <p><strong>Inbound Message flow to batch application</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span> <span class="n">RESPONSE</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.030</span><span class="p">:</span><span class="mi">02027</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span> <span class="n">HTTP</span> <span class="n">RESPONSE</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.030</span><span class="p">:</span><span class="mi">02027</span>
 <span class="mi">13</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mf">57.62</span>
 
 <span class="mi">00000</span> <span class="mi">48545450</span> <span class="mi">2</span><span class="n">F312E31</span> <span class="mi">20323030</span> <span class="mi">204</span><span class="n">F6B0D</span> <span class="mi">0</span><span class="n">A536572</span> <span class="mi">7665723</span><span class="n">A</span> <span class="mi">20566972</span> <span class="mi">74656</span><span class="n">C2F</span> <span class="o">*</span><span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">Ok</span><span class="o">..</span><span class="n">Server</span><span class="p">:</span> <span class="n">Virtel</span><span class="o">/*</span>
@@ -335,11 +326,11 @@ when we run the batch application we can see the data flow.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The inbound message is not using the template WS1.HTML in the above example, but rather just returning the CANSWER variable.</p>
+<p class="admonition-title">Note</p>
+<p>The inbound message is not using the template WS1.HTML in the above example, but rather just returning the CANSWER variable.</p>
 </div>
 <ol class="arabic" start="3">
-<li><p class="first">The scenario associated with the transaction WS3 is a Virtel initial
+<li><p>The scenario associated with the transaction WS3 is a Virtel initial
 scenario. It is defined with the following attributes:-</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image313.png"><img alt="image2" src="../../../_images/image313.png" style="width: 6.26806in; height: 4.04236in;" /></a>
@@ -359,23 +350,23 @@ can be defined as an output structure, defined between the OUTPUT
 MAP$ and OUTPUT MAP$ END, followed by the SCENARIO logic. The logic
 steps of the scenario can be broken down thus:-</p>
 <ol class="loweralpha simple">
-<li>Create variables from URL – FROMCURRENCY, TOCURRENCY</li>
-<li>Set variable SITE to URL of web services provider and access port - <a class="reference external" href="http://www.webservices.net:80">www.webservices.net:80</a></li>
-<li>Read in SOAP template from Virtel TRSF file – exchange.xml.</li>
-<li>Build options file for $POST SOAP request – OPTION$ in Virtel variable REQP.</li>
-<li>Send SOAP request to web services provider.</li>
-<li>Test results and depending on return code take appropriate action. This is achieved using a Virtel CASE$ statement.</li>
-<li>Copy Virtel ANSWER variable to a COMMAREA as mapped by the OUTPUT map area.</li>
-<li>Copy the formatted COMMAREA to a Virtel variable called CANSWER.</li>
-<li>Send template with CANSWER. This will cause the tagged area of the template WS1.HTML to be populated with the CANSWER variable or just send CANSWER variable.</li>
-<li>Disconnect the session with the batch application.</li>
+<li><p>Create variables from URL – FROMCURRENCY, TOCURRENCY</p></li>
+<li><p>Set variable SITE to URL of web services provider and access port - <a class="reference external" href="http://www.webservices.net:80">www.webservices.net:80</a></p></li>
+<li><p>Read in SOAP template from Virtel TRSF file – exchange.xml.</p></li>
+<li><p>Build options file for $POST SOAP request – OPTION$ in Virtel variable REQP.</p></li>
+<li><p>Send SOAP request to web services provider.</p></li>
+<li><p>Test results and depending on return code take appropriate action. This is achieved using a Virtel CASE$ statement.</p></li>
+<li><p>Copy Virtel ANSWER variable to a COMMAREA as mapped by the OUTPUT map area.</p></li>
+<li><p>Copy the formatted COMMAREA to a Virtel variable called CANSWER.</p></li>
+<li><p>Send template with CANSWER. This will cause the tagged area of the template WS1.HTML to be populated with the CANSWER variable or just send CANSWER variable.</p></li>
+<li><p>Disconnect the session with the batch application.</p></li>
 </ol>
 </div></blockquote>
 </li>
 </ol>
 <p>The user elements involved in the SOAP message request is template exchange.xml. The XML file looks like:-</p>
 <p><strong>exchange.xml</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;!--VIRTEL start=&quot;{{{&quot; end=&quot;}}}&quot;
 --&gt;{{{ SET-CONTENT-TYPE &quot;text/xml&quot;}}}{{{SET-OUTPUT-ENCODING-UTF-8
 &quot;&quot;}}}{{{SET-LOCAL-OPTIONS (XML-ESCAPES)}}}
 &lt;soap12:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
@@ -395,7 +386,7 @@ variables. This is an example of how Virtel’s integration works; through
 a combination of scenario programmable elements and an Initial scenario.
 The following is an extract from the scenario showing the relevant COPY$
 statements:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>START       SET$ ENCODING,UTF-8,&#39;IBM1147&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>START       SET$ ENCODING,UTF-8,&#39;IBM1147&#39;
             COPY$ INPUT-TO-VARIABLE,FIELD=&#39;FROMCURRENCY&#39;,             *
                 VAR=&#39;FROMCURRENCY&#39;,                                   *
                 TYPE=REPLACE
@@ -412,7 +403,7 @@ of statements extract the values from the Virtel variables and place
 them in the XML SOAP message template.</p>
 <p>The OPTION$ and SEND$ complete the SOAP message, sending it to the web
 service via the O-HHTP line, as identified in the SEND$ statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SENDREQ OPTION$ FOR-HTTP,(METHOD,&#39;POST&#39;),(SITE,&#39;*SITE&#39;),(TO,            *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SENDREQ OPTION$ FOR-HTTP,(METHOD,&#39;POST&#39;),(SITE,&#39;*SITE&#39;),(TO,            *
                 &#39;/CurrencyConvertor.asmx&#39;),                             *
                 (HEADER,&#39;Content-Type: application/soap+xml&#39;),          *
                 (FILE-OUT,&#39;REQFILE&#39;),(FILE-IN,                          *
@@ -423,7 +414,7 @@ service via the O-HHTP line, as identified in the SEND$ statement:-</p>
 </div>
 <p>An analysis of the VIRTEL LOG can see the request being sent out to the
 web services provider.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mf">13.02</span><span class="o">.</span><span class="mi">15</span> <span class="n">STC05752</span> <span class="n">VIR0200I</span> <span class="n">LINE</span><span class="o">=</span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">TRACE</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">13.02</span><span class="o">.</span><span class="mi">15</span> <span class="n">STC05752</span> <span class="n">VIR0200I</span> <span class="n">LINE</span><span class="o">=</span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span><span class="n">TRACE</span>
 <span class="mf">13.02</span><span class="o">.</span><span class="mi">15</span> <span class="n">STC05752</span> <span class="n">VIR0062I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">TRACE</span> <span class="n">ACTIVE</span>
 <span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">SOCKET</span> <span class="mi">00020000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.030</span><span class="p">:</span><span class="mi">02027</span>
 <span class="mf">13.03</span><span class="o">.</span><span class="mi">57</span> <span class="n">STC05752</span> <span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">EDS</span> <span class="n">CONNECTING</span> <span class="n">EHLOC015</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.030</span><span class="p">:</span><span class="mi">02027</span>
@@ -438,7 +429,7 @@ web service and determines the appropriate action. Return codes
 beginning with 2 or 5 are accepted as OK, whereas anything else is
 considered not OK. The ANSWER variable is filled with the data returned
 from the web service:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>        CASE$ &#39;RETCODE&#39;,(BEGIN,&#39;2&#39;,OK),(BEGIN,&#39;5&#39;,OK),                  *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        CASE$ &#39;RETCODE&#39;,(BEGIN,&#39;2&#39;,OK),(BEGIN,&#39;5&#39;,OK),                  *
                 ELSE=NOTOK
 *
 NOTOK COPY$ VALUE-TO-VARIABLE,VAR=&#39;ANSWER&#39;,VALUE=&#39;KO&#39;,TYPE=REPLACE
@@ -449,7 +440,7 @@ OK    EQU *
 converted to EBCDIC and then copied to the COMMAREA variable. The
 COMMAREA variable is then copied to a Virtel CANSWER variable and passed
 back to the batch application through the template WS1.HTML:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>        CONVERT$ ASCII-TO-EBCDIC,VAR=&#39;ANSWER&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        CONVERT$ ASCII-TO-EBCDIC,VAR=&#39;ANSWER&#39;
 OUTPUT  MAP$ FROM-VARIABLE,VAR=&#39;ANSWER&#39;           Answer -&gt; Commarea
 OUTPUT  MAP$ TO-VARIABLE,VAR=&#39;CANSWER&#39;            Commarea -&gt; Variable
         CONVERT$ EBCDIC-TO-ASCII,VAR=&#39;CANSWER&#39;
@@ -468,7 +459,7 @@ between Virtel and COMMAREA related programs.</p>
 <p>In the Virtel line trace for the line O-HTTP the SOAP messages can be
 traced:-</p>
 <p><strong>Outbound SOAP message to web services server</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>*POST /CurrencyConvertor.asmx HTT*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*POST /CurrencyConvertor.asmx HTT*
 *P/1.1..Host: www.webservicex.net*
 *:80..Content-Type: application/s*
 *oap+xml..Content-length: 0000042*
@@ -489,7 +480,7 @@ traced:-</p>
 </pre></div>
 </div>
 <p><strong>Inbound SOAP message from web services server</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>*HTTP/1.1 200 OK..Cache-Control: *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>*HTTP/1.1 200 OK..Cache-Control: *
 *private, max-age=0..Content-Leng*
 *th: 380..Content-Type: applicati*
 *on/soap+xml; charset=utf-8..Serv*
@@ -512,7 +503,7 @@ traced:-</p>
 </pre></div>
 </div>
 <ol class="arabic" start="4">
-<li><p class="first">The web services provided by
+<li><p>The web services provided by
 <a class="reference external" href="http://www.webserviceX.net">www.webserviceX.net</a> can be
 discovered and exploited by analysis of the associated WSDLs. The
 home page of the site lists the most popular web services that the
@@ -528,7 +519,7 @@ for a large number of global currencies. If we view the WSDL of the
 Currency convertor we can see the operations provided by this
 particular service. The WSDL can be seen by using the following
 URL:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>http://www.webservicex.net/CurrencyConvertor.asmx?WSDL
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://www.webservicex.net/CurrencyConvertor.asmx?WSDL
 </pre></div>
 </div>
 <p>In the service element of the WSDL we can see that the web service
@@ -536,7 +527,7 @@ supports different protocols to the same service, that being
 CurrencyConvertor. The web service supports SOAP 1.0, SOAP 1.2, HTTP
 GET and HTTP POST. In this example the SOAP 1.2 POST implementation
 of CurrencyConvertor is being used:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">wsdl</span><span class="p">:</span><span class="n">service</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CurrencyConvertor&quot;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">wsdl</span><span class="p">:</span><span class="n">service</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CurrencyConvertor&quot;</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">wsdl</span><span class="p">:</span><span class="n">port</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CurrencyConvertorSoap&quot;</span> <span class="n">binding</span><span class="o">=</span><span class="s2">&quot;tns:CurrencyConvertorSoap&quot;</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">soap</span><span class="p">:</span><span class="n">address</span> <span class="n">location</span><span class="o">=</span><span class="s2">&quot;http://www.webservicex.net/CurrencyConvertor.asmx&quot;</span><span class="o">/&gt;</span>
 <span class="o">&lt;/</span><span class="n">wsdl</span><span class="p">:</span><span class="n">port</span><span class="o">&gt;</span>
@@ -555,16 +546,16 @@ of CurrencyConvertor is being used:-</p>
 <p>It is not the intention of the newsletter to delve into the WSDL
 structure, there are many excellent books, journals and internet
 pages devoted to this subject. The following URL,</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>http://www.webservicex.net/CurrencyConvertor.asmx?op=ConversionRate
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://www.webservicex.net/CurrencyConvertor.asmx?op=ConversionRate
 </pre></div>
 </div>
 <p>provides details on the structure on the SOAP request and response
 messages. This is useful for building the exchange.xml template and
 for analysing the response message within the scenario.</p>
 <p><strong>SOAP 1.2 Example</strong></p>
-<p>The following is a sample SOAP 1.2 request and response. The placeholders&nbsp;shown need to be replaced with actual values.</p>
+<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.</p>
 <p><em>REQUEST message</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>POST /CurrencyConvertor.asmx HTTP/1.1
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /CurrencyConvertor.asmx HTTP/1.1
 Host: www.webservicex.net
 Content-Type: application/soap+xml; charset=utf-8
 Content-Length: length
@@ -584,7 +575,7 @@ xmlns:soap12=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;
 </pre></div>
 </div>
 <p><em>RESPONSE message</em></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
 &lt;soap12:Envelope
 xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
 xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
@@ -598,23 +589,23 @@ xmlns:soap12=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li>After receiving the SOAP response the scenario will search for the
+<li><p>After receiving the SOAP response the scenario will search for the
 element ConversionRateResult and extract the value and placing in to
 the Virtel ANSWER variable. If there is an error, the
 ConversionRateResult value will contain details of the web services
 error. The scenario will copy this error message to the ANSWER
 variable. In both cases the results are contained within the
 ConversionRateResult element. These operations are executed through
-the MAP$ EVENTUAL-AREA statement:-</li>
+the MAP$ EVENTUAL-AREA statement:-</p></li>
 </ol>
-<div class="highlight-default"><div class="highlight"><pre><span></span>MAP$ EVENTUAL-AREA,FROM-CONSTANT,&#39;0&#39;,WHEN=(ELEMENT,              *
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ EVENTUAL-AREA,FROM-CONSTANT,&#39;0&#39;,WHEN=(ELEMENT,              *
     &#39;ConversionRateResult&#39;),EVENT=&#39;Response&#39;,LENGTH=6
 </pre></div>
 </div>
 <p>The RESPONSE format area is designated by the O00000001 MAP$ BEGIN,
 EVENT=RESPONSE and terminated by the O00000001 MAP$ END. The value
 is mapped by the MAP$ AREA,WITH ‘ConversionRateResult’ statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>O0000001    MAP$ BEGIN,EVENT=&#39;Response&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>O0000001    MAP$ BEGIN,EVENT=&#39;Response&#39;
             MAP$ AREA,WITH=&#39;ConversionRateResult&#39;,TYPE=9,LENGTH=6
 O0000001    MAP$ END
 </pre></div>
@@ -624,7 +615,7 @@ element ConversionRateResult then the OFAULT area is mapped out
 within an XML structure in preparation to return to the batch
 application. The ‘fault’ elements will be extracted from the SOAP
 response:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>OFAULT      MAP$ BEGIN,EVENT=&#39;Fault&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>OFAULT      MAP$ BEGIN,EVENT=&#39;Fault&#39;
             MAP$ AREA,WITH=&#39;faultcode&#39;,TYPE=X,LENGTH=32
             MAP$ AREA,WITH=&#39;faultstring&#39;,TYPE=X,LENGTH=32
             MAP$ AREA,WITH=&#39;faultactor&#39;,TYPE=X,LENGTH=32
@@ -633,14 +624,14 @@ OFAULT      MAP$ END
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li>When the batch application receives the response to the original URI
+<li><p>When the batch application receives the response to the original URI
 request the answer will be contained within the WS1.HTML template,
 where the CANSWER area has been captured. The first character of the
 CANSWER area, as posted by the scenario, will either be a 0 or a 1. A
-zero indicates success, a one indicates an error:-</li>
+zero indicates success, a one indicates an error:-</p></li>
 </ol>
 <p><strong>Result:</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>!DOCTYPE html&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!DOCTYPE html&gt;
 
 &lt;!-- To change this license header, choose License Headers in
 Project Properties. To change this template file, choose Tools \|
@@ -660,7 +651,7 @@ Templates and open the template in the editor. --&gt;
 <p>Instead of returning the template, the scenario can just return the
 CANSWER variable within a HTTP response. This is achieved by adding
 the following three lines to the scenario:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>label       CONVERT$ EBCDIC-TO-ASCII,VAR=&#39;CANSWER&#39;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>label       CONVERT$ EBCDIC-TO-ASCII,VAR=&#39;CANSWER&#39;
             SEND$ AS-ANSWER,VAR=&#39;CANSWER&#39;,TYPE=&#39;text/html&#39;
             ACTION$ DISCONNECT
 </pre></div>
@@ -668,17 +659,17 @@ the following three lines to the scenario:-</p>
 <p>Instead of returning the template, the HTTP response will now just
 contain the variable CANSWER, which is all that is required by the
 batch application.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ISPSTART</span> <span class="n">CMD</span><span class="p">(</span><span class="o">%</span><span class="n">RXCVIRT</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ISPSTART</span> <span class="n">CMD</span><span class="p">(</span><span class="o">%</span><span class="n">RXCVIRT</span><span class="p">)</span>
     <span class="n">Result</span><span class="p">:</span> <span class="mf">0.7312</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">All the source related to this newsletter can be downloaded from the
+<p class="admonition-title">Note</p>
+<p>All the source related to this newsletter can be downloaded from the
 Virtel FTP web site. The file name is zostn2501506.zip.</p>
 </div>
 <p><strong>Appendix A SCENRATE Scenario</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>SCENRATE    SCREENS APPL=SCENRATE,EXEC=NO
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SCENRATE    SCREENS APPL=SCENRATE,EXEC=NO
             SCENARIO INITIAL
 *
 * Output structure definition
@@ -748,7 +739,7 @@ OUTPUT      MAP$ TO-VARIABLE,VAR=&#39;CANSWER&#39; Commarea -&gt; Variable
 </pre></div>
 </div>
 <p><strong>Appendix B RXCVIRT REXX CLIST</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/*Rexx------------------------------------------------------------------
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*Rexx------------------------------------------------------------------
 
  Syspertec
  www.syspertec.com

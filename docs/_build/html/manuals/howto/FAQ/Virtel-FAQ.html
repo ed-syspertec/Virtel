@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -182,7 +173,7 @@
 </div>
 <div class="section" id="virtel-faqs">
 <span id="virtel-faq"></span><h1>Virtel FAQs<a class="headerlink" href="#virtel-faqs" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web1.png"><img alt="image1" src="../../../_images/logo_virtel_web1.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web.png"><img alt="image1" src="../../../_images/logo_virtel_web.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Frequently asked Questions</strong></p>
 <p>Release Date : 24 May 2018. Publication Date : 08/01/2018</p>
 <p>Syspertec Communication</p>
@@ -209,7 +200,7 @@ their respective owners.</p>
 <div class="section" id="how-to-deactivate-the-virtel-status-bar">
 <h3>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h3>
 <p>To deativate the status bar create a ccs rule and add it to your custom css file. For example in custCSS.test1.css add the following statement:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">div</span><span class="c1">#statusbar {display:none!important}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">div</span><span class="c1">#statusbar {display:none!important}</span>
 </pre></div>
 </div>
 </div>
@@ -226,7 +217,7 @@ their respective owners.</p>
 <h3>Can I customize hotspot recognition<a class="headerlink" href="#can-i-customize-hotspot-recognition" title="Permalink to this headline">¶</a></h3>
 <p>The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in custom.js.</p>
 <p>For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in a custom.js file would be:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>function after_responseHandle(o, url, xtim) {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>function after_responseHandle(o, url, xtim) {
 VIR3270.customPfKeysHotspotRegex = /(P?F\d{1,2}|PA[1-3]|ENTER|CLEAR)((?:\/P?F\d{1,2})?\s*[=:-])/;
 }
 </pre></div>

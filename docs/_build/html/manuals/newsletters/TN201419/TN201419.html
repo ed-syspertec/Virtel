@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -223,7 +214,7 @@ to provide the ADMINVWM tool is defined as follows:-</p>
 <p><a class="reference internal" href="../../../_images/image114.png"><img alt="image0" src="../../../_images/image114.png" style="width: 6.30000in; height: 4.24931in;" /></a></p>
 <p>Once this has been defined to VIRTEL we can access the tool with the
 following URL:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">ADMVWM</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">ADMINVWM</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">ADMVWM</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">ADMINVWM</span>
 </pre></div>
 </div>
 <p>This will present the developer with the Administrations tool panel and
@@ -251,7 +242,7 @@ development infrastructure.</p>
 <p><strong>Allocating a pre-production VSAM file and allocating it to SPVIR1A</strong></p>
 <p>Before using a directory in Virtel we have to allocate a VSAM TRSF file
 and initialize it. The following JCL can be used:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>//*----------------------------------------------------------------*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//*----------------------------------------------------------------*
 //* DEFINITION OF A VSAM TRSF FILE *
 //*----------------------------------------------------------------*
 //* STEP 1 : DEFINITION DU FICHIER CUSTTRSF *
@@ -293,7 +284,7 @@ point to this VSAM TRSF file. We also need to a VSAM definition to the
 VIRTEL TCT and reassemble. Two definitions are required in the TCT. Once
 this has been done VIRTEL can be restarted and the VSAM file can be
 allocated to the pre-production directory.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span> <span class="o">....</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">....</span>
       <span class="n">PASSTCK</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span> <span class="o">*</span>
       <span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
       <span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                       <span class="o">*</span>
@@ -378,7 +369,7 @@ SPVIR1A in ZAMVS1 and a production VIRTEL is known as SPVIR2A in ZAMVS2.</p>
 <p><strong>Initial Setup</strong></p>
 <p>The following jobs will set up the GDG structures required at both
 ZAMVS1 and ZAMVS2. For ZAMVS1 we run the following JCL:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
 <span class="o">//*</span>                                                                 <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">DEFINE</span> <span class="n">DEVELOPMENT</span> <span class="n">TRSF</span> <span class="n">FILESET</span> <span class="n">GDG</span><span class="o">.</span> <span class="n">USED</span> <span class="n">BY</span> <span class="n">DEVELOPERS</span> <span class="n">TO</span> <span class="n">SAVE</span> <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">TRSF</span> <span class="n">UPDATES</span> <span class="n">TO</span> <span class="n">TRSF</span> <span class="n">FILES</span> <span class="o">-</span> <span class="n">SCENARIO</span><span class="p">,</span> <span class="n">HTML</span> <span class="n">AND</span> <span class="n">SAMP</span>            <span class="o">*/</span>
@@ -405,7 +396,7 @@ ZAMVS1 and ZAMVS2. For ZAMVS1 we run the following JCL:-</p>
 </pre></div>
 </div>
 <p>For ZAMVS2 we run the following JCL:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
 <span class="o">//*</span>                                                                 <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">DEFINE</span> <span class="n">PRODUCTION</span> <span class="n">TRSF</span> <span class="n">FILESETS</span><span class="o">.</span> <span class="n">USED</span> <span class="n">BY</span> <span class="n">OPERATIONS</span> <span class="n">TO</span> <span class="n">SAVE</span> <span class="n">TRSF</span><span class="o">*/</span>
 <span class="o">//*</span> <span class="n">UPDATES</span> <span class="n">FROM</span> <span class="n">DEVELOPMENT</span> <span class="n">INFRASTRUCTURE</span><span class="o">.</span>                        <span class="o">*/</span>
@@ -443,10 +434,10 @@ is used by the restore process to provide independence between
 development and production centre GDGs.</p>
 <p><strong>Process overview</strong></p>
 <ol class="arabic simple">
-<li>A daily job is run in ZAMVS1 to dump the current SPVIR1A TRSF files
+<li><p>A daily job is run in ZAMVS1 to dump the current SPVIR1A TRSF files
 to a GDG. This is run after the development VIRTEL SPVIR1A has been
-shut down. This avoids shipping OPEN VSAM datasets.</li>
-<li>After successfully dumping the relevant TRSF file set a job is
+shut down. This avoids shipping OPEN VSAM datasets.</p></li>
+<li><p>After successfully dumping the relevant TRSF file set a job is
 submitted, via FTP, to the production centre ZAMVS2. This job
 initiates a batch FTP GET from ZAMVS2 to copy across the latest GDG
 TRSF file set to a holding file – SP000.SPVIR2A.PEND.GDG. At any one
@@ -454,20 +445,20 @@ time this holding file always contains they latest TRSF file set
 produced at the development centre - GDG 0. It may or may not be
 promoted to production. We GET from ZAMVS2 rather than PUT from
 ZAMVS1 as developers have no access to production datasets whereas
-production can access development datasets.</li>
-<li>As and when required, the holding file is promoted to the VIRTEL
+production can access development datasets.</p></li>
+<li><p>As and when required, the holding file is promoted to the VIRTEL
 production TRSF file set. Again a GDG structure is used to provide a
-back out capability should it be required.</li>
-<li>Before starting VIRTEL a control step is run. This prepares the TRSF
+back out capability should it be required.</p></li>
+<li><p>Before starting VIRTEL a control step is run. This prepares the TRSF
 file set that the production VIRTEL will use. Depending on the
 parameters passed to step control step in the VIRTEL JCL will dictate
-which TRSF file set will be used and restore a file set if necessary.</li>
-<li>In our example, the batch FTP job to get the latest development TRSF
+which TRSF file set will be used and restore a file set if necessary.</p></li>
+<li><p>In our example, the batch FTP job to get the latest development TRSF
 file set is run every day but the production TRSF file set is only
 promoted one a week, on a Friday. If that fails the previous
 production GDG (-1) is used to restore the TRSF file set. Effectively
 our production environment provides 5 weekly restore points and are
-development GDG 5 daily restore points.</li>
+development GDG 5 daily restore points.</p></li>
 </ol>
 <p><strong>The Development Process</strong></p>
 <p><strong>TRSFMNT2</strong></p>
@@ -483,7 +474,7 @@ restore from an older version is possible should it be required. This
 GDG is independent of the production TRSF GDG file set.</p>
 <p><a class="reference internal" href="../../../_images/image12.jpg"><img alt="image11" src="../../../_images/image12.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>TRSFMNT2 Sample JCL</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>//*******************************************************************/
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//*******************************************************************/
 //*                                                                 */
 //* DUMP DEVELOPMENT TRSF FILESET AND INSTRUCT PRODUCTION TO PULL   */
 //* LATEST TRSF UPDATES OVER. SHOULD BE CONTROLLED THROUGH A        */
@@ -530,7 +521,7 @@ centre.</p>
 <p>This job consists of one step:-</p>
 <p>‘FTP Get’ the latest pre-production TRSF file set GDG from ZAMVS1 and copy
 to the pending file.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*******************************************************************/</span>
 <span class="o">//*</span>                                                                 <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">INVOKE</span> <span class="n">BY</span> <span class="n">DEVELOPMENT</span> <span class="n">FTP</span> <span class="n">JOB</span> <span class="n">TRSFMNT2</span><span class="o">.</span> <span class="n">THIS</span> <span class="n">JOB</span> <span class="n">RUNS</span> <span class="n">ON</span> <span class="n">THE</span>    <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">PRODUCTION</span> <span class="n">SYSTEM</span> <span class="n">TO</span> <span class="n">PULL</span> <span class="n">OVER</span> <span class="n">THE</span> <span class="n">LATEST</span> <span class="n">TRSF</span> <span class="n">FILESET</span> <span class="n">UPDATES</span><span class="o">.</span> <span class="o">*/</span>
@@ -567,7 +558,7 @@ procedure to restore a particular GDG historic TRSF file set. The GDG
 number indicates which GDD level is to be restored.</p>
 <p><a class="reference internal" href="../../../_images/image13.jpg"><img alt="image12" src="../../../_images/image13.jpg" style="width: 6.30000in; height: 3.54375in;" /></a></p>
 <p>TRSFREXX Example JCL</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//******************************************************************/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//******************************************************************/</span>
 <span class="o">//*</span> <span class="n">THIS</span> <span class="n">CONTROL</span> <span class="n">JOB</span> <span class="n">PREPARES</span> <span class="n">THE</span> <span class="n">TRSF</span> <span class="n">FILES</span> <span class="n">FOR</span> <span class="n">VIRTEL</span><span class="o">.</span> <span class="n">IT</span> <span class="n">IS</span>     <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">CONTROLLED</span> <span class="n">BY</span> <span class="n">A</span> <span class="n">RC</span> <span class="n">SET</span> <span class="n">VIA</span> <span class="n">A</span> <span class="n">JCL</span> <span class="n">SYMBOLIC</span><span class="o">.</span>                     <span class="o">*/</span>
 <span class="o">//*</span>                                                                <span class="o">*/</span>
@@ -610,7 +601,7 @@ file set.</p>
 <p>DELETE Delete the current VSAM TRSF files</p>
 <p>TRSFDUMP Restore from the new GDG the TRSF file set renaming the VSAM
 files to production dataset names.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">TRSFUPDT</span> <span class="n">PROC</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">TRSFUPDT</span> <span class="n">PROC</span>
 <span class="o">//********************************************************************/</span>
 <span class="o">//*</span> <span class="o">*/</span>
 <span class="o">//*</span> <span class="n">PROCEDURE</span> <span class="n">TO</span> <span class="n">RESTORE</span> <span class="n">THE</span> <span class="n">LATEST</span> <span class="n">PENDING</span> <span class="n">GDG</span> <span class="n">FILE</span> <span class="n">AS</span> <span class="n">OBTAINED</span> <span class="n">BY</span> <span class="o">*/</span>
@@ -641,7 +632,7 @@ backup.</p>
 <p>DELBACK Delete the current VSAM TRSF files</p>
 <p>TRSFREST Restore from an older GDG the TRSF file set, renaming the VSAM
 files to production dataset names.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">TRSFBACK</span> <span class="n">PROC</span> <span class="n">GDG</span><span class="o">=</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">TRSFBACK</span> <span class="n">PROC</span> <span class="n">GDG</span><span class="o">=</span>
 <span class="o">//***************************************************************</span>
 <span class="o">//*</span> <span class="o">*</span>
 <span class="o">//*</span> <span class="n">PROCEDURE</span> <span class="n">TO</span> <span class="n">RESTORE</span> <span class="n">TRSF</span> <span class="n">FILES</span> <span class="n">FROM</span> <span class="n">A</span> <span class="n">PREVIOUS</span> <span class="n">GDG</span> <span class="n">LEVEL</span> <span class="o">*</span>
@@ -660,7 +651,7 @@ files to production dataset names.</p>
 </pre></div>
 </div>
 <p><strong>Rexx Procedure REXXCC</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">REXX</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">REXX</span>
 <span class="o">*****************************************************************/</span>
 <span class="o">/*</span> <span class="n">A</span> <span class="n">little</span> <span class="n">REXX</span> <span class="n">EXEC</span> <span class="n">to</span> <span class="k">return</span> <span class="n">a</span> <span class="n">RC</span> <span class="k">as</span> <span class="nb">set</span> <span class="n">by</span> <span class="n">a</span> <span class="n">PARM</span> <span class="n">value</span><span class="o">.</span>    <span class="o">*/</span>
 <span class="o">/****************************************************************/</span>
@@ -670,7 +661,7 @@ files to production dataset names.</p>
 </pre></div>
 </div>
 <p><strong>Control Statements TRSFREST</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">RESTORE</span> <span class="n">DS</span><span class="p">(</span><span class="n">INCLUDE</span><span class="p">(</span> <span class="o">-</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RESTORE</span> <span class="n">DS</span><span class="p">(</span><span class="n">INCLUDE</span><span class="p">(</span> <span class="o">-</span>
 <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.**.</span><span class="n">PROD</span><span class="o">.</span><span class="n">TRSF</span> <span class="o">-</span>
 <span class="p">)</span> <span class="p">)</span> <span class="o">-</span>
 <span class="n">RENAMEU</span><span class="p">(</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR1A</span><span class="o">.**</span><span class="p">,</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.**</span><span class="p">)</span> <span class="o">-</span>
@@ -679,7 +670,7 @@ files to production dataset names.</p>
 </pre></div>
 </div>
 <p><strong>Control Statements TRSFDEL</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">SCENARIO</span><span class="o">.</span><span class="n">PROD</span><span class="o">.</span><span class="n">TRSF</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">SP000</span><span class="o">.</span><span class="n">SPVIR2A</span><span class="o">.</span><span class="n">SCENARIO</span><span class="o">.</span><span class="n">PROD</span><span class="o">.</span><span class="n">TRSF</span>
 <span class="n">SET</span> <span class="n">MAXCC</span><span class="o">=</span><span class="mi">0</span>
 </pre></div>
 </div>

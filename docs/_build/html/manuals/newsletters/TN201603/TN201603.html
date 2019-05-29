@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -197,7 +188,7 @@ This is the sequence of events:-</p>
 <p>#. The browser user clicks on a VIRTEL URL to request connection to a
 host application</p>
 <ol class="arabic simple">
-<li>VIRTEL generates a random temporary public/private key pair</li>
+<li><p>VIRTEL generates a random temporary public/private key pair</p></li>
 </ol>
 <p>#. VIRTEL sends to the browser an HTML signon form together with the
 public key</p>
@@ -206,9 +197,9 @@ is a non-display field)</p>
 <p>#. The browser encrypts the userid and password before sending the form
 to VIRTEL</p>
 <ol class="arabic simple">
-<li>VIRTEL uses the private key to decrypt the userid and password</li>
-<li>VIRTEL signs on to the application with the clear userid and password</li>
-<li>The session continues as a regular unencrypted HTTP session</li>
+<li><p>VIRTEL uses the private key to decrypt the userid and password</p></li>
+<li><p>VIRTEL signs on to the application with the clear userid and password</p></li>
+<li><p>The session continues as a regular unencrypted HTTP session</p></li>
 </ol>
 <p>In this way the userid and password are encrypted when they travel
 across the network, and they only appear in the clear on the internal
@@ -224,7 +215,7 @@ string. See below:-</p>
 <p><strong>A line trace using no CRYPTn parameters:-</strong></p>
 <p>Without any encryption the field will be clear text as shown in the
 following example where the password is clearly visible:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ssion</span><span class="o">=</span><span class="n">AD1ctgAAAAQevFSI</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.*</span>
 <span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Ori</span><span class="o">*</span>
 <span class="o">*</span><span class="n">gin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.160</span><span class="o">..</span><span class="n">X</span><span class="o">-</span><span class="n">Vi</span><span class="o">*</span>
@@ -255,7 +246,7 @@ following example where the password is clearly visible:-</p>
 ND field is displayed as a hex string. Not fool proof but better than
 clear text. The non displayable field (V0000243) is shown as a hex
 string as in the following line trace:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ssion</span><span class="o">=</span><span class="n">ADzf4wAAAAQevFSI</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.*</span>
 <span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Con</span><span class="o">*</span>
 <span class="o">*</span><span class="n">nection</span><span class="p">:</span> <span class="n">keep</span><span class="o">-</span><span class="n">alive</span><span class="o">..</span><span class="n">Content</span><span class="o">-</span><span class="n">Len</span><span class="o">*</span>
@@ -282,12 +273,12 @@ string as in the following line trace:-</p>
 <p>With ICSF facility, Virtel can use the ICSF API to obtain the private
 and public keys and use those to encrypt / decrypt the fields. The
 following is an example of the CRPYTn parameter that uses ICSF:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CRYPT1</span><span class="o">=</span><span class="p">(</span><span class="n">CRYPT3270</span><span class="p">,</span><span class="mi">3</span><span class="n">TDEA</span><span class="p">,</span><span class="n">RSA</span><span class="o">-</span><span class="mi">1024</span><span class="p">,</span><span class="n">ICSF</span><span class="p">,</span><span class="n">HEX</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CRYPT1</span><span class="o">=</span><span class="p">(</span><span class="n">CRYPT3270</span><span class="p">,</span><span class="mi">3</span><span class="n">TDEA</span><span class="p">,</span><span class="n">RSA</span><span class="o">-</span><span class="mi">1024</span><span class="p">,</span><span class="n">ICSF</span><span class="p">,</span><span class="n">HEX</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>When we start up Virtel we can see that Virtel has connected to ICSF
 through the API.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">VIR0024I</span> <span class="n">STARTING</span> <span class="n">CRYPT1</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIR0024I</span> <span class="n">STARTING</span> <span class="n">CRYPT1</span>
 <span class="n">VIRCA11W</span> <span class="n">CRY1</span> <span class="n">INITIALISING</span> <span class="n">CRYPTOGRAPHY</span> <span class="n">WITH</span> <span class="n">PARAMETERS</span><span class="p">:</span>
 <span class="s1">&#39;CRYPT3270&#39;</span><span class="p">,</span><span class="s1">&#39;3TDEA&#39;</span><span class="p">,</span><span class="s1">&#39;RSA-1024&#39;</span><span class="p">,</span><span class="s1">&#39;ICSF&#39;</span><span class="p">,</span><span class="s1">&#39;HEX&#39;</span><span class="p">,</span><span class="s1">&#39;CBC&#39;</span><span class="p">,</span><span class="s1">&#39;PKCS7&#39;</span>
 <span class="o">+</span><span class="n">VIRCT12W</span> <span class="n">CRY1</span> <span class="s1">&#39;ICSF&#39;</span> <span class="n">SUBTASK</span> <span class="n">STARTED</span>
@@ -300,7 +291,7 @@ through the API.</p>
 </pre></div>
 </div>
 <p>In the line trace we can see that the field has been encrypted:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="n">POST</span> <span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2SUB</span><span class="o">.</span><span class="n">HTML</span><span class="o">++</span><span class="n">VirtelSe</span><span class="o">*</span>
 <span class="o">*</span><span class="n">ssion</span><span class="o">=</span><span class="n">AELoKQAAAAQevHSI</span> <span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span><span class="o">.*</span>
 <span class="o">*.</span><span class="n">Host</span><span class="p">:</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">92.161</span><span class="p">:</span><span class="mf">41001.</span><span class="o">.</span><span class="n">Ori</span><span class="o">*</span>
 <span class="o">*</span><span class="n">gin</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">92.160</span><span class="o">..</span><span class="n">X</span><span class="o">-</span><span class="n">Vi</span><span class="o">*</span>
@@ -334,7 +325,7 @@ cryptographic parameters are acquired and used within the context of a
 template and fields within a subpage.</p>
 <p>In the &lt;body&gt; tag the ICSF parameters are obtained and inserted by
 VIRTEL prior to serving the page to the browser:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;body class=&quot;{{{CURRENT-VALUE-OF &quot;$$APP&quot;}}}&quot;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;body class=&quot;{{{CURRENT-VALUE-OF &quot;$$APP&quot;}}}&quot;
 onload=&quot;js01onload();pageSetup();
 initWEB2AJAX([
 &#39;{{{PUBLIC-KEY (EXPONENT) &quot;CRYPT3270&quot;}}}&#39;,
@@ -346,7 +337,7 @@ initWEB2AJAX([
 <p>With the &lt;form&gt; which effectively represents the 3270 response through
 an HTTP POST we can see that how specific fields, non-displayable in our
 case, are identified as candidates for encryption.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;virsubpage&quot;</span><span class="o">&gt;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">div</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;virsubpage&quot;</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">form</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;virtelForm&quot;</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;{{{VIRPLEX-CODE}}}WEB2SUB.html++{{{AJAX-SESSION-CODE}}}&quot;</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span><span class="o">&gt;</span>
         <span class="p">{{{</span> <span class="n">DEFINE</span><span class="o">-</span><span class="n">HTML</span><span class="o">-</span><span class="n">PFKEY</span> <span class="s2">&quot;pf&quot;</span> <span class="p">}}}</span><span class="o">&lt;</span><span class="nb">input</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pf&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;HIDDEN&quot;</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;ENTER&quot;</span><span class="o">&gt;</span>
         <span class="p">{{{</span><span class="n">DECLARE</span><span class="o">-</span><span class="n">FIELD</span><span class="o">-</span><span class="n">AS</span> <span class="p">(</span><span class="n">CRYPTO</span><span class="o">-</span><span class="n">SESSION</span><span class="o">-</span><span class="n">KEY</span><span class="p">)</span> <span class="s2">&quot;SESSKEY&quot;</span><span class="p">}}}</span><span class="o">&lt;</span><span class="nb">input</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SESSKEY&quot;</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;HIDDEN&quot;</span><span class="o">&gt;</span>

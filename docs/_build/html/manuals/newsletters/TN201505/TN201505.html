@@ -20,20 +20,11 @@
   <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
   
     
-      <script type="text/javascript">
-          var DOCUMENTATION_OPTIONS = {
-              URL_ROOT:'../../../',
-              VERSION:'7',
-              LANGUAGE:'None',
-              COLLAPSE_INDEX:false,
-              FILE_SUFFIX:'.html',
-              HAS_SOURCE:  true,
-              SOURCELINK_SUFFIX: '.txt'
-          };
-      </script>
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script type="text/javascript" src="../../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -191,7 +182,7 @@
 <p>Virtel macros capture keystroke operations which can subsequently be
 used to automate 3270 functions. By default, macros are held within a JSON object and saved as a file in a users local storage. These file are suffixed with the .json qualifier. An example
 of a JSON macro file is shown below:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSF&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="s2">&quot;move(435)&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;=M&quot;</span><span class="p">},</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;6&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">]}],</span><span class="s2">&quot;desc&quot;</span><span class="p">:</span><span class="s2">&quot;user</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSF&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="s2">&quot;move(435)&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;=M&quot;</span><span class="p">},</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,{</span><span class="s2">&quot;txt&quot;</span><span class="p">:</span><span class="s2">&quot;6&quot;</span><span class="p">},</span><span class="s2">&quot;ENTER&quot;</span><span class="p">]}],</span><span class="s2">&quot;desc&quot;</span><span class="p">:</span><span class="s2">&quot;user</span>
 <span class="n">macros</span><span class="s2">&quot;,&quot;</span><span class="n">fmt</span><span class="s2">&quot;:1,&quot;</span><span class="n">user</span><span class="s2">&quot;:&quot;</span><span class="n">SPTHOLT</span><span class="s2">&quot;}</span>
 </pre></div>
 </div>
@@ -199,7 +190,7 @@ of a JSON macro file is shown below:-</p>
 <p><strong>Updating custom.js to use Virtel Macros in DDI mode.</strong></p>
 <p>Before you can use the DDI  Virtel macro facility a custom.js file must be created or updated and placed in the CLI-DIR. The useVirtelMacros flag must be added and set to true. Also, the transaction CLI-03CJ must be modified so that the Application field points to CLI-DIR and not W2H-DIR.</p>
 <p>The following is an example of a customised custom.js:-</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>/*
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>/*
 * (c)Copyright SysperTec Communication 2014 All Rights Reserved
 * VIRTEL Web Access customer-specific javascript functions
 */
@@ -254,7 +245,7 @@ user macro as shown below:-</p>
 <p><a class="reference internal" href="../../../_images/image47.png"><img alt="image3" src="../../../_images/image47.png" style="width: 2.81250in; height: 4.00700in;" /></a></p>
 <p><strong>Macro format and commands</strong></p>
 <p>The format of the macro.json is embedded JSON structures. Each name structure represents a keystroke macro identified by the “name” keyword.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span>Name:    The name of the macro entry.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Name:    The name of the macro entry.
 Rev:     The “rev” is a user revision keyword.
 Def:     The “def” keyword identifies the commands and entry values. The macro editor supports the following commands:-
 
@@ -267,7 +258,7 @@ Def:     The “def” keyword identifies the commands and entry values. The mac
 </pre></div>
 </div>
 <p><strong>Macro example</strong></p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[</span>
 <span class="p">{</span>
 <span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSFLOG&quot;</span><span class="p">,</span>
 <span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
