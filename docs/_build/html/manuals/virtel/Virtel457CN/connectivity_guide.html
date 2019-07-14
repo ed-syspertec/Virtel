@@ -1297,7 +1297,7 @@ END
 <blockquote>
 <div><p>Messages sent from an IMS application to VIRTEL may be prefixed by a 12-byte header. The format of the header is shown in the figure below:</p>
 </div></blockquote>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 7%" />
 <col style="width: 7%" />
@@ -1549,7 +1549,7 @@ of the line) for this type of terminal.</p>
 <div class="section" id="index-41">
 <span id="id15"></span><h4>Message format<a class="headerlink" href="#index-41" title="Permalink to this headline">¶</a></h4>
 <p>All messages sent on a NATIVE TCP/IP conversation are prefixed by a 2-byte or 4-byte header. The format of the header for the NATIVE2 protocol is shown in the figure below:</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 10%" />
@@ -1576,7 +1576,7 @@ This is a 16-bit unsigned binary number in big-endian format
 </table>
 <p><em>Format of NATIVE2 message header</em></p>
 <p>The format of the header for the NATIVE4 protocol is shown in the figure below:</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
 <col style="width: 10%" />
@@ -1674,7 +1674,7 @@ line” field in the relay definition must contain the value X25VIRPA (or E25TCP
 </dd>
 </dl>
 <p>A VIRPASS TCP connection with a VIRNT system can use up to two sub-groups of terminals. The first sub-group is dedicated to incoming calls and has an associated relay. The second sub-group is dedicated to outgoing calls and has no associated relay. The two sub-groups have a common prefix which associates them with the line. Either explicit or repeated terminal definitions may be used.</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 24%" />
 <col style="width: 18%" />
@@ -3355,7 +3355,7 @@ Application type 3: For transactions associated with an entry point which specif
 <div class="section" id="transmission-and-filter-commands">
 <span id="index-118"></span><h4>Transmission and filter commands<a class="headerlink" href="#transmission-and-filter-commands" title="Permalink to this headline">¶</a></h4>
 <p>The command acts upon the data which precedes it. The commands are as follows:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 91%" />
 <col style="width: 9%" />
@@ -3396,7 +3396,7 @@ Application type 3: For transactions associated with an entry point which specif
 <span id="index-119"></span><h4>System variables<a class="headerlink" href="#system-variables" title="Permalink to this headline">¶</a></h4>
 <p>System variables are information known only to VIRTEL at the time of accessing an application. These variables are in the format &amp;n where “n” represents the desired variable.
 Available information Corresponding variable:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 52%" />
 <col style="width: 48%" />
@@ -3455,7 +3455,7 @@ Available information Corresponding variable:-</p>
 <div class="section" id="orders">
 <span id="index-120"></span><h4>Orders<a class="headerlink" href="#orders" title="Permalink to this headline">¶</a></h4>
 <p>Orders may be embedded in the clause data. Orders are used to set the 3270 (or Minitel) attention key to be sent by the following &amp;/A command, to embed hexadecimal or special values in the data, or to cause the script to wait for the first message from the application, or to process a scenario.</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 45%" />
 <col style="width: 55%" />
@@ -4347,7 +4347,7 @@ NETMASK=255.255.255.255
 </div>
 <div class="section" id="comparison-table">
 <span id="index-155"></span><h3>Comparison Table<a class="headerlink" href="#comparison-table" title="Permalink to this headline">¶</a></h3>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 26%" />
 <col style="width: 23%" />
@@ -4779,7 +4779,7 @@ NOUSER1 DS 0H
 <p><strong>Action</strong></p>
 <p>Examine the SAF and RACF return codes and the RACF reason code to determine the cause. Check that VIRTEL has access to resource IRR.RTICKETSERV in the FACILITY class, and also to resource IRRPTAUTH.applname.userid in the PTKTDATA class. The generic resource IRRPTAUTH.** may be used to permit VIRTEL to generate passtickets for all applications.</p>
 <p>For an explanation of the return codes and reason codes, see z/OS Security Server RACF Callable Services Chapter 2 “R_ticketserv”. Some common codes are:</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 7%" />
 <col style="width: 9%" />

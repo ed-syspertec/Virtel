@@ -41,3 +41,10 @@ Technical Newsletters
    
    manuals/newsletters/TN2018*/*
 
+2019
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2019*/*

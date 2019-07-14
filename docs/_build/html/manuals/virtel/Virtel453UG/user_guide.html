@@ -1247,7 +1247,7 @@ The GENERATE-VIR3270 tag functions like GENERATE-HTML except that, instead of ge
 </dd>
 </dl>
 <p>The table below shows the HTML attributes generated for each field and 3270 attribute position on the screen:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 18%" />
 <col style="width: 18%" />
@@ -1558,7 +1558,7 @@ function submitform(pfkey)
 </pre></div>
 </div>
 <p>The function keys may be defined in the following manner in the “value” keyword of the INPUT TYPE=BUTTON field.</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 23%" />
 <col style="width: 77%" />
@@ -1704,7 +1704,7 @@ page, and take effect from the point in the page at which they appear.</p>
 <p>The CURRENT-VALUE-OF tag also allows variables to be inserted in a template page outside of a FOR-EACH-VALUE-IN loop. In this case, the variable varname must have been created from the HTTP request by an INPUT scenario by means of the COPY$ INPUT-TO-VARIABLE instruction.</p>
 <p>The local options HTML-ESCAPES, JAVASCRIPT-ESCAPES, JSON-ESCAPES, NO-ESCAPES, and XML-ESCAPES (see <a class="reference internal" href="#v453ug-setting-local-options"><span class="std std-ref">“Setting and unsetting local options”</span></a>) may affect the processing of this tag.</p>
 <p>If the HTML-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding HTML escape sequence as shown in the table below:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 37%" />
 <col style="width: 63%" />
@@ -1730,7 +1730,7 @@ page, and take effect from the point in the page at which they appear.</p>
 </tbody>
 </table>
 <p>If the JAVASCRIPT-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding JavaScript escape sequence as shown in the table below:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1753,7 +1753,7 @@ page, and take effect from the point in the page at which they appear.</p>
 </tbody>
 </table>
 <p>If the JSON-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding JSON escape sequence as shown in the table below:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -1776,7 +1776,7 @@ page, and take effect from the point in the page at which they appear.</p>
 </tbody>
 </table>
 <p>If the XML-ESCAPES local option is set, special characters in the value of the variable will be replaced by the corresponding XML escape sequence as shown in the table below:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -2225,7 +2225,7 @@ tag activates encryption for selected fields that are sent and received in HTML 
 <p>The SET-COUNTRY-CODE tag allows the 3270 host application data to be translated to ISO-8859-1 according to an EBCDIC codepage other than the default codepage implied by the COUNTRY parameter in the VIRTCT. It may also be used to translate from the French EBCDIC codepage to ASCII Western European codepage 850, or to translate from Latin-2 EBCDIC Multilingual (CP870) to either ISO-8859-2 Latin-2 (CP912) or PC Latin-2 (CP852).</p>
 <p>This tag takes effect starting from the point where it appears in the template page, and it may appear multiple times in
 a single page. The possible values for the countryname parameter are shown in the table below:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 37%" />
@@ -3017,7 +3017,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <p><em>Upload summary report</em></p>
 <p><strong>1.6.5.4. Extracting upload results as an Excel spreadsheet</strong></p>
 <p><a class="reference internal" href="../../../_images/image165.png"><img alt="image16" src="../../../_images/image165.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 17%" />
 <col style="width: 24%" />
@@ -3477,7 +3477,7 @@ are explicit enough to not require more precision.</p>
 </div>
 <p>After modifying the w2hparm.js file, it must be uploaded to VIRTEL’s CLI-DIR directory by means of the “Upload” link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>). Then you must check the Entry Point (usually CLIWHOST) and check that the transaction whose “External name” is w2h and whose “Check URL Prefix” field is set to /w2h/w2hparm-js specifies CLI-DIR in the “Application” field. For the CLIWHOST entry point this is transaction CLI-03P.</p>
 <p>The list of keywords and possible values which can be coded in the w2hparm.js file is shown below:</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 17%" />
 <col style="width: 26%" />
@@ -3927,7 +3927,7 @@ REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 <div class="section" id="cics-definitions-for-virtual-printers">
 <h4>1.9.5. CICS definitions for virtual printers<a class="headerlink" href="#cics-definitions-for-virtual-printers" title="Permalink to this headline">¶</a></h4>
 <p>If the virtual printer is defined to CICS via RDO, use an appropriate TYPETERM as shown in the table below:</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 26%" />
@@ -4585,7 +4585,7 @@ The status bar text is an object which can therefore be modified using an API.</
 <p><em>Example custom.js to modify the text of the status bar</em></p>
 <p>With this method, an API is provided which allows code in custom.js to change some fields in the status bar without having to manipulate the DOM of the page. The “vwaStatusBar” object can be used to do this.</p>
 <p>The editing functions are:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 35%" />
 <col style="width: 65%" />
@@ -4612,7 +4612,7 @@ The status bar text is an object which can therefore be modified using an API.</
 </table>
 <p>If the parameter is empty or undefined, the corresponding field is not displayed. If the content is too long, it is truncated to the right.</p>
 <p>The query functions are:-</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 60%" />
@@ -5313,7 +5313,7 @@ LASTMSG=YES,ASYNCH=YES
 </div>
 <dl>
 <dt>pfkey</dt><dd><p>a 3270 AID key. The allowable values are:</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 31%" />
 <col style="width: 69%" />
@@ -5950,7 +5950,7 @@ COPY$ SYSTEM-TO-VARIABLE,                                      X
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://192.168.235.30:41001/w2h/WEB2AJAX.htm+Tso+model2?u=rxb&amp;g=sys1
 </pre></div>
 </div>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 19%" />
 <col style="width: 81%" />
@@ -8143,7 +8143,7 @@ this screen, the AUTOREFRESH variable is set to “2” which causes the browser
 seconds to ask VIRTEL if the screen has been updated. A positive response from VIRTEL triggers a request to refresh
 the screen.</p>
 <p>The following table shows the permissible values for the AUTOREFRESH variable:</p>
-<table class="docutils align-center">
+<table class="docutils align-default">
 <colgroup>
 <col style="width: 24%" />
 <col style="width: 76%" />
