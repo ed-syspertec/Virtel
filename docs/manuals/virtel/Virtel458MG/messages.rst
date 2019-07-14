@@ -12,8 +12,6 @@ Messages V4.58
 
 **VIRTEL Messages Guide**
 
-.. warning:: This book is a beta version.
-
 Version : 4.58
 
 Release Date : 01 Nov 2018 Publication Date : 01/11/2018

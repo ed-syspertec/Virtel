@@ -13,8 +13,6 @@ Connectivity Reference V4.58
 
 **VIRTEL Connectivity Reference**
 
-.. warning:: This book is currently under construction. This is a draft version!
-
 Version : 4.58
 
 Release Date : 01 Jul 2017 Publication Date : 01/07/2017

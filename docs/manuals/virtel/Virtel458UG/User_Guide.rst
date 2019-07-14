@@ -12,8 +12,6 @@ User Guide V4.58
 
 **VIRTEL User Guide**
 
-.. warning:: This is a draft version of the document.
-
 Version : 4.58
 
 Release Date : 08 Jan 2018. Publication Date : 08/01/2019

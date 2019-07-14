@@ -12,8 +12,6 @@ Installation Guide V4.58
 
 **VIRTEL Installation Guide**
 
-.. warning:: This is a draft version of the document.
-
 Version : 4.58
 
 Release Date : 01 Oct 2018. Publication Date : 01/10/2018

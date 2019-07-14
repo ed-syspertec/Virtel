@@ -119,6 +119,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../Virtel458UG/User_Guide.html">User Guide V4.58</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
@@ -195,10 +196,6 @@
 <span id="virtel458cn"></span><h1>Connectivity Reference V4.58<a class="headerlink" href="#connectivity-reference-v4-58" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference internal" href="../../../_images/logo_virtel_web11.png"><img alt="image00" src="../../../_images/logo_virtel_web11.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Connectivity Reference</strong></p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This book is currently under construction. This is a draft version!</p>
-</div>
 <p>Version : 4.58</p>
 <p>Release Date : 01 Jul 2017 Publication Date : 01/07/2017</p>
 <p>Syspertec Communication</p>
@@ -926,7 +923,7 @@ default delay is 2 seconds.</p>
 <dt>Remote ident</dt><dd><p>Always blank.</p>
 </dd>
 <dt>Local ident</dt><dd><p>This is the VIRTEL IP address and port number which browser users must specify in order to connect to VIRTEL. If the port number is omitted then the default is port 80. See the description of the
-“Local ident” field under the heading <a class="reference internal" href="#bookmark13"><span class="std std-ref">“Line Parameters”,</span></a> for more details about how to code this field.</p>
+“Local ident” field under the heading <a class="reference internal" href="../Virtel459CN/connectivity_guide.html#bookmark13"><span class="std std-ref">“Line Parameters”,</span></a> for more details about how to code this field.</p>
 </dd>
 <dt>Prefix</dt><dd><p>Terminal name prefix (see below).</p>
 </dd>
@@ -1084,7 +1081,7 @@ IP address and pppp is the port number. The port number (normallyport 80) must b
 <dl>
 <dt>Remote ident</dt><dd><p>This field is required and represents the IP address and port number of the SMTP server to which VIRTEL sends outgoing mail.</p>
 </dd>
-<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming mail. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="#bookmark13"><span class="std std-ref">“Line Parameters”,</span></a>.</p>
+<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming mail. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="../Virtel459CN/connectivity_guide.html#bookmark13"><span class="std std-ref">“Line Parameters”,</span></a>.</p>
 </dd>
 <dt>Description</dt><dd><p>The sender name generated in outgoing e-mails. Not used for incoming e-mails.</p>
 <p>Generally, the description field does not contain any significant information. However, in the case of an SMTP line, the contents of this field are used by VIRTEL.</p>
@@ -1462,7 +1459,7 @@ VIRTEL Installation Guide for details of the MQn parameter.</p>
 <dl class="simple">
 <dt>Remote ident</dt><dd><p>Not used for a NATIVE TCP/IP line.</p>
 </dd>
-<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="#bookmark13"><span class="std std-ref">“Line Parameters”</span></a>.</p>
+<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="../Virtel459CN/connectivity_guide.html#bookmark13"><span class="std std-ref">“Line Parameters”</span></a>.</p>
 </dd>
 <dt>Prefix</dt><dd><p>Terminal name prefix (see below).</p>
 </dd>
@@ -1812,7 +1809,7 @@ address.</p>
 </pre></div>
 </div>
 </dd>
-<dt>Local ident</dt><dd><p>The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="#bookmark13"><span class="std std-ref">“Line Parameters”,</span></a>.</p>
+<dt>Local ident</dt><dd><p>The IP address and port number on the VIRTEL side. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="../Virtel459CN/connectivity_guide.html#bookmark13"><span class="std std-ref">“Line Parameters”,</span></a>.</p>
 <p>The port number must be 1998. This port number is fixed by the XOT protocol, and the router does not provide any configuration statement which allows the port number to be altered.</p>
 <p>From VIRTEL version 4.24 onwards, multiple XOT lines with the same local IP address and port number can be defined within a single instance of VIRTEL. As explained above, VIRTEL uses the router IP address (“Remote ident”) to match calls from a router with the correct XOT line. However, if multiple instances of VIRTEL are started on a single MVS system, each VIRTEL must have its own distinct IP address for XOT. The use of VIPA allows multiple IP addresses to be defined within a single TCP/IP stack (see the IBM manual z/OS Communications Server IP Configuration Guide for details of VIPA).</p>
 </dd>
@@ -1892,7 +1889,7 @@ VTAM application major node, as shown in the example below:</p>
 <dl>
 <dt>Remote ident</dt><dd><p>(optional) IP address and port number of the default partner (for outbound calls when the external server does not specify a partner IP address).</p>
 </dd>
-<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="#bookmark13"><span class="std std-ref">“Line Parameters”</span></a>.</p>
+<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="../Virtel459CN/connectivity_guide.html#bookmark13"><span class="std std-ref">“Line Parameters”</span></a>.</p>
 </dd>
 <dt>Prefix</dt><dd><p>Terminal name prefix (see below).</p>
 </dd>
@@ -1937,7 +1934,7 @@ of the line) for this type of terminal.</p>
 <div class="section" id="index-59">
 <span id="id26"></span><h4>Parameters<a class="headerlink" href="#index-59" title="Permalink to this headline">¶</a></h4>
 <dl>
-<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="#bookmark13"><span class="std std-ref">“Line Parameters”</span></a>.</p>
+<dt>Local ident</dt><dd><p>The IP address and port number on which VIRTEL listens for incoming connections from the partner application. For details of how to code this field, refer to “Local ident” under the heading <a class="reference internal" href="../Virtel459CN/connectivity_guide.html#bookmark13"><span class="std std-ref">“Line Parameters”</span></a>.</p>
 </dd>
 <dt>Prefix</dt><dd><p>Terminal name prefix (see below).</p>
 </dd>
