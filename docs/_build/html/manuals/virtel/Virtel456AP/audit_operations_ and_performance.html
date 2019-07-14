@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Connectivity Reference V4.56" href="../Virtel456CN/connectivity_guide.html" />
-    <link rel="prev" title="User Guide V4.53" href="../Virtel453UG/user_guide.html" /> 
+    <link rel="prev" title="Virtel Manuals" href="../../../virtel.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,7 +90,6 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Audit, Operations and Performance V4.56</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#monitoring">1. Monitoring</a></li>
@@ -238,7 +237,7 @@ their respective owners.</p>
 <p>When the security subsystem is active, access to Line Status sub-application from the Configuration Menu or the Sub- Application Menu is controlled by the resource $$UTIL$$.
 When accessed by a transaction, normal transaction security rules will apply. Security management is described in chapter 4 of the VIRTEL Technical Documentation.</p>
 <p>The sub-application begins by displaying the Line Status Display screen. Started lines are displayed in high-intensity or white text, stopped lines are displayed in low intensity or blue text.</p>
-<p><img alt="image_01" src="../../../_images/image012.png" /></p>
+<p><img alt="image_01" src="../../../_images/image011.png" /></p>
 <p><em>Fig.1 - Line Status Display screen</em></p>
 <dl class="simple">
 <dt>STATUS OF-LINES</dt><dd><p>Allows the administrator to display a subset of lines, by typing the
@@ -299,7 +298,7 @@ Display screen and press [PF12].</p>
 <p>Security rules are the same as those which apply to the previous screen.</p>
 <p>This sub-application begins by displaying the terminal usage for the selected line, as shown in the example below:</p>
 </div></blockquote>
-<p><img alt="image_02" src="../../../_images/image022.png" /></p>
+<p><img alt="image_02" src="../../../_images/image021.png" /></p>
 <p><em>Fig.2 - Line Usage Detail Display screen</em></p>
 <dl>
 <dt>ACTIVE TERMINALS for LINE</dt><dd><p>Indicates the internal name of the line whose virtual circuits are being displayed.</p>
@@ -560,7 +559,7 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 </dd>
 </dl>
 <p>It is often easier to identify the relay used whose name appears at the bottom of the 3270 session screen as shown below.</p>
-<p><img alt="image_03" src="../../../_images/image031.png" />
+<p><img alt="image_03" src="../../../_images/image03.png" />
 <em>Fig.3 - Associated relay names</em></p>
 <dl class="simple">
 <dt>linename</dt><dd><p>Internal or external name of the line</p>
@@ -729,7 +728,7 @@ lines”. These commands may only be issued for line types AntiGATE, AntiPCNE, A
 <p class="admonition-title">Note</p>
 <p>The SILENCE=YES parameter in the VIRTCT allows the suppression of certain console messages relating to the connection and disconnection of terminals.</p>
 </div>
-<p><img alt="image_04" src="../../../_images/image041.png" />
+<p><img alt="image_04" src="../../../_images/image04.png" />
 <em>Fig. 4 Example of CONSOLE file</em></p>
 </div>
 <div class="section" id="the-virlog-file">
@@ -1060,7 +1059,7 @@ In <strong>z/VSE environment</strong>, the SNAP output is written to the POWER L
 <p class="admonition-title">Note</p>
 <p>Several SNAP commands may be issued during a single run of VIRTEL. The output file may thus contain successive SNAP listings concatenated one after the other.</p>
 </div>
-<p><img alt="image_05" src="../../../_images/image051.png" /></p>
+<p><img alt="image_05" src="../../../_images/image05.png" /></p>
 <p><em>Fig. 12 Example of SNAP listing</em></p>
 <p>3.3.1 Message-triggered SNAPMSG</p>
 <p>The SNAPMSG command requests VIRTEL to generate an automatic SNAP after certain messages (VIRI902W, VIR0026W, VIR0052I, VIR1552I, VIR0526W or VIR1952I).</p>
@@ -1547,7 +1546,7 @@ which shows the allocation of VIRTEL memory by function. VIRTEL manages its own 
 by the administrator to help understand VIRTEL’s memory requirements during normal operation.</p>
 <p>To invoke the memory management sub-application, press [PA2] in the Configuration Menu to display the Sub- Application Menu, then press [PF4] in the Sub-Application Menu. The sub-application displays a
 screen similar to the example shown below. This screen represents the contents of the VIRTEL address space after deducting the space  occupied by the VIRTEL kernel modules.</p>
-<p><img alt="image_06" src="../../../_images/image061.png" /></p>
+<p><img alt="image_06" src="../../../_images/image06.png" /></p>
 <p><em>Fig 25. Memory display of VIRTEL address space</em></p>
 <p>Each screen position represents a 2K memory block (if MEMORY=BELOW is specified in the VIRTCT), or a 64K memory block (if MEMORY=ABOVE). The address displayed at the start of each line is the virtual address represented by the first position in the line. Each free memory block is represented by a dot. Lines which consist entirely of dots are not displayed.</p>
 <p>Permanently allocated memory blocks are represented by the following character types:</p>
@@ -1565,7 +1564,7 @@ screen similar to the example shown below. This screen represents the contents o
 <div class="section" id="memory-display-in-memory-test-mode">
 <h3>4.4.2 Memory display in Memory=Test mode.<a class="headerlink" href="#memory-display-in-memory-test-mode" title="Permalink to this headline">¶</a></h3>
 <p>If MEMORY=TEST is specified in the VIRTCT, the memory management sub-application displays its results in a different format. MEMORY=TEST mode allows support technicians to analyse memory occupation by module, as a debugging aid for possible memory shortage problems.</p>
-<p><img alt="image_08" src="../../../_images/image081.png" /></p>
+<p><img alt="image_08" src="../../../_images/image08.png" /></p>
 <p><em>Fig. 26 - Memory display in MEMORY=TEST mode</em></p>
 <p>Each line of the screen represents one VIRTEL module which has obtained one or more memory blocks. The first column represents the number of bytes of memory (en hexadecimal) currently allocated by the module. The first 16 modules are displayed, in descending order of memory utilisation.</p>
 <p>Where the memory display occupies more than one screen, you can press [PF8] to view the following page, [PF7] to view the previous page, and [PF6] to go back to the first page.</p>
@@ -1624,7 +1623,7 @@ screen similar to the example shown below. This screen represents the contents o
 <p>A memory trace can be activated from the VIRTCT by using MEMORY=TEST or MEMORY=(ABOVE,TRACE) parameter. In such case, the is no message VIR0218I display in the log, but only the benefit of recording the history of memory allocations is kept in the SNAP.</p>
 <p>Since it is not possible to stop a trace initialized in this way, it is best to only use this method to perform an analysis of the memory allocation during the startup phase.
 Once a memory trace activated, issuing a SNAP command produce a report of the memory allocations history in the SNAP listing.</p>
-<p><img alt="image_07" src="../../../_images/image071.png" /></p>
+<p><img alt="image_07" src="../../../_images/image07.png" /></p>
 <p><em>Fig. 27 Example of a memory allocataion history</em></p>
 <dl class="simple">
 <dt>Column Explanations</dt><dd><ol class="arabic simple">
@@ -1690,7 +1689,7 @@ Once a memory trace activated, issuing a SNAP command produce a report of the me
         <a href="../Virtel456CN/connectivity_guide.html" class="btn btn-neutral float-right" title="Connectivity Reference V4.56" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel453UG/user_guide.html" class="btn btn-neutral float-left" title="User Guide V4.53" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../../virtel.html" class="btn btn-neutral float-left" title="Virtel Manuals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

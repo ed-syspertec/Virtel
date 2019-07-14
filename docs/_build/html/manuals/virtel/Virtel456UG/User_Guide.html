@@ -90,7 +90,6 @@
               <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../../virtel.html">Virtel Manuals</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../../../virtel.html#v4-53">V4.53</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-56">V4.56</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../Virtel456AP/audit_operations_ and_performance.html">Audit, Operations and Performance V4.56</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel456CN/connectivity_guide.html">Connectivity Reference V4.56</a></li>
@@ -417,11 +416,11 @@ first such matching transaction found under the entry point.</p>
 </div></blockquote>
 <p><strong>1.2.2.1. Examples</strong></p>
 <p>Assume that entry point WEB2HOST contains the following transactions:</p>
-<p><img alt="image67" src="../../../_images/image674.png" />
+<p><img alt="image67" src="../../../_images/image672.png" />
 <em>Figure 1.1 - Transactions under entry point WEB2HOST</em></p>
 <p>In this example, transactions W2H-00, W2H-03*, W2H-05* are  “application type 4” (directory transactions). Other transactions, such as “application type 1” (processing transactions i.e. TSO, CICS, etc.) play no part in the directory selection process.</p>
 <p>The figure below shows an example of the detail of a directory transaction:-</p>
-<p><img alt="image68" src="../../../_images/image684.png" />
+<p><img alt="image68" src="../../../_images/image682.png" />
 <em>Figure 1.2 Example of a directory transaction</em></p>
 <p><strong>1.2.2.2. Example 1: Neither pathname nor pagename specified</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">ipaddr</span><span class="p">:</span><span class="n">port</span>
@@ -470,9 +469,9 @@ first such matching transaction found under the entry point.</p>
 </pre></div>
 </div>
 <p>had been specified.</p>
-<p><img alt="image69" src="../../../_images/image692.png" /> <em>Figure 1.3 Example of a default transaction with default URL</em></p>
+<p><img alt="image69" src="../../../_images/image691.png" /> <em>Figure 1.3 Example of a default transaction with default URL</em></p>
 <p>The entry point CLIWHOST can access the w2h directory through a directory definition specifing the external directory path as an external name in the transaction. Here the transaction needs access to web elements located in the W2H-DIR. The /w2h/ pathname in w2h/appmenu.htm matches the external name of the diectory transaction CLI-03W. This match defines a path to the W2H-DIR:-</p>
-<p><img alt="image70" src="../../../_images/image701.png" /> <em>Figure 1.4 Providing access to a directory through a transactions external name</em></p>
+<p><img alt="image70" src="../../../_images/image70.png" /> <em>Figure 1.4 Providing access to a directory through a transactions external name</em></p>
 </div>
 <div class="section" id="dynamic-pages">
 <h4>1.2.3. Dynamic pages<a class="headerlink" href="#dynamic-pages" title="Permalink to this headline">¶</a></h4>
@@ -784,7 +783,7 @@ followed by option 3, or from the VIRTEL Multi-Session menu via a transaction wh
 <div class="section" id="creating-modifying-and-deleting-directories">
 <h4>1.3.3. Creating, modifying, and deleting directories<a class="headerlink" href="#creating-modifying-and-deleting-directories" title="Permalink to this headline">¶</a></h4>
 <p>When the directory management sub-application is invoked, it displays a list of the directories already defined in the system:-</p>
-<p><img alt="image71" src="../../../_images/image717.png" /> <em>Figure 1.6 Directory management summary screen</em></p>
+<p><img alt="image71" src="../../../_images/image714.png" /> <em>Figure 1.6 Directory management summary screen</em></p>
 </div>
 <div class="section" id="using-the-associated-admin-3270-functions">
 <h4>1.3.4. Using the associated Admin(3270) functions<a class="headerlink" href="#using-the-associated-admin-3270-functions" title="Permalink to this headline">¶</a></h4>
@@ -803,7 +802,7 @@ followed by option 3, or from the VIRTEL Multi-Session menu via a transaction wh
 <div class="section" id="defining-directory-parameters">
 <h4>1.3.5. Defining directory parameters<a class="headerlink" href="#defining-directory-parameters" title="Permalink to this headline">¶</a></h4>
 <p>To access the detail screen for any directory, place the cursor on the directory name and press [PF12]:</p>
-<p><img alt="image72" src="../../../_images/image722.png" /> <em>Figure 1.7 Directory management detail screen</em></p>
+<p><img alt="image72" src="../../../_images/image721.png" /> <em>Figure 1.7 Directory management detail screen</em></p>
 <dl>
 <dt>Name</dt><dd><p>The name of the directory as known by VIRTEL. If security is active,
 this name must also be defined as a resource to which the user must
@@ -831,7 +830,7 @@ started task JCL.</p>
 <p>After pressing [PF4] at the directory management summary screen or detail screen, VIRTEL displays a list of the files in the directory:</p>
 </dd>
 </dl>
-<p><img alt="image73" src="../../../_images/image732.png" /> <em>Figure 1.8 Directory contents management screen</em></p>
+<p><img alt="image73" src="../../../_images/image731.png" /> <em>Figure 1.8 Directory contents management screen</em></p>
 </div>
 <div class="section" id="associated-functions">
 <h4>1.3.7. Associated functions<a class="headerlink" href="#associated-functions" title="Permalink to this headline">¶</a></h4>
@@ -2593,9 +2592,9 @@ Security management is described under the heading “Security” 282.</p>
 <h4>1.5.4. Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">¶</a></h4>
 <p>This sub-application initially displays a summary screen of existing definitions presented in alphanumeric order. Access
 to the detail of a correspondent is achieved by positioning the cursor and pressing [PF12].</p>
-<p><img alt="image74" src="../../../_images/image742.png" /></p>
+<p><img alt="image74" src="../../../_images/image741.png" /></p>
 <p><em>Summary of correspondence</em></p>
-<p><img alt="image75" src="../../../_images/image752.png" />
+<p><img alt="image75" src="../../../_images/image751.png" />
 <em>Correspondent detail screen (e-mail correspondent)</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CORRESPONDENT</span> <span class="n">DETAIL</span> <span class="n">DEFINITION</span> <span class="o">--------------------</span> <span class="n">Applid</span><span class="p">:</span> <span class="n">SPVIRE2</span> <span class="mi">16</span><span class="p">:</span><span class="mi">40</span><span class="p">:</span><span class="mi">04</span>
 <span class="n">Id</span>                 <span class="o">===&gt;</span> <span class="n">WKSTN</span><span class="o">-</span><span class="n">A2FE</span><span class="o">/</span><span class="n">SYSPERTEC</span>
@@ -2789,7 +2788,7 @@ directory using the existing SMTP upload method.</p>
 <p>1. In entry point WEB2HOST, define a new transaction W2H–70, with external name upload. This transaction specifies
 VIR0041C as the application name and application type 2. The “Logon message” field is blank to indicate to VIRTEL
 that the name of the target directory is to be found in the definition of the e-mail correspondent:</p>
-<p><img alt="image76" src="../../../_images/image762.png" /></p>
+<p><img alt="image76" src="../../../_images/image761.png" /></p>
 <p><em>Page upload by HTTP with cookie : Creating the ‘upload’ transaction</em></p>
 <ol class="arabic simple" start="2">
 <li><p>Check the definition of your SMTP line (F1 then F12 from the Configuration Menu, see the VIRTEL Connectivity Reference documentation).</p></li>
@@ -2933,22 +2932,22 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <ol class="arabic simple" start="2">
 <li><p>Click the link in the e-mail to open the upload.htm page:</p></li>
 </ol>
-<p><a class="reference internal" href="../../../_images/image427.png"><img alt="image4" src="../../../_images/image427.png" style="width: 5.13354in; height: 3.56187in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image424.png"><img alt="image4" src="../../../_images/image424.png" style="width: 5.13354in; height: 3.56187in;" /></a></p>
 <p><em>Page upload by HTTP with cookie : Displaying the upload.htm page</em></p>
 <ol class="arabic simple" start="3">
 <li><p>Click the “Browse” button and the file selection dialog will be displayed:</p></li>
 </ol>
-<p><img alt="image5" src="../../../_images/image526.png" /></p>
+<p><img alt="image5" src="../../../_images/image522.png" /></p>
 <p><em>Page upload by HTTP with cookie : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
 <li><p>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</p></li>
 </ol>
-<p><img alt="image6" src="../../../_images/image630.png" /></p>
+<p><img alt="image6" src="../../../_images/image628.png" /></p>
 <p><em>Page upload by HTTP with cookie : Sending the file</em></p>
 <ol class="arabic simple" start="5">
 <li><p>Press the “Send File” button to upload the file to VIRTEL. VIRTEL stores the file in the directory (W2H-DIR in this example) specified in the definition of the correspondent associated with the cookie. VIRTEL then displays the result of the upload:</p></li>
 </ol>
-<p><img alt="image7" src="../../../_images/image718.png" /></p>
+<p><img alt="image7" src="../../../_images/image715.png" /></p>
 <p><em>Page upload by HTTP with cookie : Confirmation of file uploadr</em></p>
 <p>From now on, the cookies are managed automatically. After each upload, VIRTEL sends a new cookie to the browser, as indicated by the message “Upload code was set by the remote host”.</p>
 <p>Depending on the values specified in the directory definition, VIRTEL may convert the file name to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
@@ -2962,14 +2961,14 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <ol class="arabic simple">
 <li><p>In entry point WEB2HOST, define a new transaction W2H-68 with external name dirlist, application name VIR0041S and application type 2:</p></li>
 </ol>
-<p><img alt="image77" src="../../../_images/image772.png" />
+<p><img alt="image77" src="../../../_images/image771.png" />
 <em>Page upload by HTTP with signon : Transaction dirlist</em></p>
 <ol class="arabic simple" start="2">
 <li><p>Still in entry point WEB2HOST, define three new transactions W2H–71, W2H-72, W2H-73 with external names uplbas, uplw2h, and uplcli. Each of these transactions specifies VIR0041C as the application name and application type 2. The “Logon message” field contains the name of the target directory: HTMLBAS for transaction uplbas, W2HDIR for transaction uplw2h, and CLI-DIR for uplcli :</p></li>
 </ol>
-<p><img alt="image78" src="../../../_images/image782.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
-<p><img alt="image79" src="../../../_images/image792.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
-<p><img alt="image80" src="../../../_images/image801.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
+<p><img alt="image78" src="../../../_images/image781.png" /> <em>Page upload by HTTP with signon : Directory HTMLBAS</em></p>
+<p><img alt="image79" src="../../../_images/image791.png" /> <em>Page upload by HTTP with signon : Directory W2HDIR</em></p>
+<p><img alt="image80" src="../../../_images/image80.png" /> <em>Page upload by HTTP with signon : Directory CLIDIR</em></p>
 <ol class="arabic simple" start="3">
 <li><p>Use your security package (VIRTEL/SECURITE, RACF, TOP SECRET, ACF2) to grant access to resources W2H-71 and HTMLBAS (for users authorized to upload pages to the HTMLBAS directory) and/or to resources W2H-72 and W2HDIR (for users authorized to upload pages to the W2H-DIR directory) and/or to resources W2H-73 and CLI-DIR (for users authorized to upload pages to the CLI-DIR directory). For more details, refer to the “VIRTEL Security Guide” manual.</p></li>
 </ol>
@@ -2977,28 +2976,28 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <ol class="arabic simple">
 <li><p>Display the upload4.htm page by entering the URL <a class="reference external" href="http://ipaddr:port/SECURE/upload4.htm+dirlist">http://ipaddr:port/SECURE/upload4.htm+dirlist</a> in your browser, or by clicking the “Upload” link on the VIRTEL Web2Host welcome page. Because the directory named SECURE is defined as a secure transaction, VIRTEL first requests the browser to display the password dialog box shown below:</p></li>
 </ol>
-<p><img alt="image8" src="../../../_images/image816.png" /></p>
+<p><img alt="image8" src="../../../_images/image813.png" /></p>
 <p><em>Page upload by HTTP with signon : Entering the userid and password</em></p>
 <p>The user must have authority to access the resource represented by the internal name of the page upload transaction for the desired directory.</p>
 <ol class="arabic simple" start="2">
 <li><p>After entering the user name and password, the upload4.htm page will be displayed:</p></li>
 </ol>
-<p><img alt="image9" src="../../../_images/image914.png" /></p>
+<p><img alt="image9" src="../../../_images/image911.png" /></p>
 <p><em>Page upload by HTTP with signon : Displaying the upload4.htm page</em></p>
 <ol class="arabic simple" start="3">
 <li><p>Press the “Browse” button to display the file selection dialog:</p></li>
 </ol>
-<p><img alt="image10" src="../../../_images/image1013.png" /></p>
+<p><img alt="image10" src="../../../_images/image1011.png" /></p>
 <p><em>Page upload by HTTP with signon : File selection dialog</em></p>
 <ol class="arabic simple" start="4">
 <li><p>Select the file you want to upload, then press the “Open” button. The name of the selected file will be displayed in the input field:</p></li>
 </ol>
-<p><img alt="image11" src="../../../_images/image1118.png" /></p>
+<p><img alt="image11" src="../../../_images/image1116.png" /></p>
 <p><em>Page upload by HTTP with signon : Sending the file</em></p>
 <ol class="arabic simple" start="5">
 <li><p>Press the button corresponding to the target directory (W2H-DIR in this example) to upload the file to VIRTEL. VIRTEL stores the file in the chosen directory, and displays the result:</p></li>
 </ol>
-<p><img alt="image12" src="../../../_images/image1216.png" /></p>
+<p><img alt="image12" src="../../../_images/image1214.png" /></p>
 <p><em>Page upload by HTTP with signon : Confirmation of file upload</em></p>
 <p>Depending on the values specified in the directory definition, VIRTEL may convert the filename to upper case, and truncate the filename to a maximum length, before storing it in the directory. The filename after conversion and truncation must not duplicate any other filename in the directory. For example, when uploading to a directory defined using the default parameters (not case sensitive, with maximum filename length 8), the file links.gif would be stored under the name LINKS.GI</p>
 </div>
@@ -3007,21 +3006,21 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 <p>The VIRTEL administrator can upload pages to a VIRTEL directory using the drag and drop upload interface with the Firefox or Chrome browser. This method has the advantage that multiple pages can be uploaded to a VIRTEL directory (for example, W2H-DIR) in a single operation.</p>
 <p><strong>1.6.5.1. Upload interface in the VIRTEL menu</strong></p>
 <p>After clicking on the Drag &amp; Drop Upload link on the VIRTEL Web Access menu (URL <a class="reference external" href="http://n.n.n.n:41001">http://n.n.n.n:41001</a>), the VIRTEL administrator will be presented with a signon screen, followed by the drag and drop upload interface screen shown below:</p>
-<p><img alt="image13" src="../../../_images/image1314.png" /></p>
+<p><img alt="image13" src="../../../_images/image1312.png" /></p>
 <p><em>Drag and drop upload interface</em></p>
 <p>The administrator can then select one or more files using the workstation graphical user interface, drag them to the upload interface screen, and drop them on the button representing the VIRTEL directory (for example, CLI-DIR). Files in zipped archive may need to be extracted to a temporary directory first.</p>
 <p><strong>1.6.5.2. Displaying upload results</strong></p>
-<p><img alt="image14" src="../../../_images/image1413.png" /></p>
+<p><img alt="image14" src="../../../_images/image1411.png" /></p>
 <p><em>Displaying upload results</em></p>
 <p>The results of the upload are displayed on the screen with a return code for each file uploaded. Each file should produce the message RETURN CODE IS: 00 In addition, by clicking on + or -, the administrator can open and close the detail display for each file uploaded.</p>
 <p><strong>1.6.5.3. Upload summary report</strong></p>
 <p>After multiple files have been uploaded, the drag and drop upload interface will display a summary showing the number of files processed with return code 00, and, in case of error, the number of files which failed to upload nonzero return codes.</p>
 <p>The summary is not displayed when files are dragged and dropped one at a time.</p>
 <p>In this example, one file has failed to upload because of an invalid VIRTEL tag, and the user has clicked on the + sign to the left of the file to expand the error messages:</p>
-<p><img alt="image15" src="../../../_images/image159.png" /></p>
+<p><img alt="image15" src="../../../_images/image157.png" /></p>
 <p><em>Upload summary report</em></p>
 <p><strong>1.6.5.4. Extracting upload results as an Excel spreadsheet</strong></p>
-<p><a class="reference internal" href="../../../_images/image167.png"><img alt="image16" src="../../../_images/image167.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
+<p><a class="reference internal" href="../../../_images/image165.png"><img alt="image16" src="../../../_images/image165.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Excel button allows the administrator to export the results log as a .SLK file which can be opened as an Excel spreadsheet.</p>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -3049,7 +3048,7 @@ P4=Activate                        P5=Inactivate                P12=Entry P.
 </tr>
 </tbody>
 </table>
-<p><a class="reference internal" href="../../../_images/image177.png"><img alt="image17" src="../../../_images/image177.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Delete button allows the administrator to clear the results log.</p>
+<p><a class="reference internal" href="../../../_images/image175.png"><img alt="image17" src="../../../_images/image175.png" style="width: 0.22500in; height: 0.22500in;" /></a> The Delete button allows the administrator to clear the results log.</p>
 </div>
 <div class="section" id="uploading-pages-in-batch">
 <h4>1.6.6. Uploading pages in batch<a class="headerlink" href="#uploading-pages-in-batch" title="Permalink to this headline">¶</a></h4>
@@ -3149,12 +3148,12 @@ not deleted from the workstation. The settings stored in the user’s local stor
 VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="reference internal" href="#v456ug-global-modifications"><span class="std std-ref">“Global modification of Web Access settings”</span></a>.</p>
 <div class="section" id="web-access-settings-menu">
 <span id="v456ug-settings-menu"></span><h4>1.7.1. Web Access Settings menu<a class="headerlink" href="#web-access-settings-menu" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference internal" href="../../../_images/image181.jpeg"><img alt="image18" src="../../../_images/image181.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a> When the user clicks this button on the VIRTEL Web Access toolbar, the window shown below opens:</p>
-<p><img alt="image19" src="../../../_images/image196.png" /></p>
+<p><a class="reference internal" href="../../../_images/image18.jpeg"><img alt="image18" src="../../../_images/image18.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a> When the user clicks this button on the VIRTEL Web Access toolbar, the window shown below opens:</p>
+<p><img alt="image19" src="../../../_images/image194.png" /></p>
 <p><em>VIRTEL Web Access Settings menu (part 1 of 3)</em></p>
-<p><img alt="image20" src="../../../_images/image206.png" /></p>
+<p><img alt="image20" src="../../../_images/image204.png" /></p>
 <p><em>VIRTEL Web Access Settings menu (part 2 of 3)</em></p>
-<p><img alt="image21" src="../../../_images/image2115.png" /></p>
+<p><img alt="image21" src="../../../_images/image2113.png" /></p>
 <p>VIRTEL Web Access Settings menu (part 3 of 3)</p>
 </div>
 <div class="section" id="id5">
@@ -3283,15 +3282,15 @@ VIRTEL Web Access which are stored in the w2hparm.js file. See <a class="referen
 </div>
 <div class="section" id="id7">
 <h4>1.7.4. Web Access Settings menu<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference internal" href="../../../_images/image222.jpeg"><img alt="image22" src="../../../_images/image222.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image22.jpeg"><img alt="image22" src="../../../_images/image22.jpeg" style="width: 0.22917in; height: 0.22917in;" /></a></p>
 <p>When the user clicks this button on the VIRTEL Web Access toolbar the window shown below opens.</p>
-<p><img alt="image23" src="../../../_images/image2311.png" /></p>
+<p><img alt="image23" src="../../../_images/image238.png" /></p>
 <p>VIRTEL Web Access Settings menu (Display tab)</p>
-<p><img alt="image24" src="../../../_images/image245.png" /></p>
+<p><img alt="image24" src="../../../_images/image243.png" /></p>
 <p>VIRTEL Web Access Settings menu (Miscellaneous tab)</p>
-<p><img alt="image25" src="../../../_images/image255.png" /></p>
+<p><img alt="image25" src="../../../_images/image253.png" /></p>
 <p>VIRTEL Web Access Settings menu (Key Mappings tab)</p>
-<p><img alt="image26" src="../../../_images/image265.png" /></p>
+<p><img alt="image26" src="../../../_images/image263.png" /></p>
 <p>VIRTEL Web Access Settings menu (Import tab)</p>
 <p><strong>1.7.4.1. Display tab parameters</strong></p>
 <dl>
@@ -3813,7 +3812,7 @@ are explicit enough to not require more precision.</p>
 <div class="section" id="contents-of-menu">
 <h4>1.8.1. Contents of menu<a class="headerlink" href="#contents-of-menu" title="Permalink to this headline">¶</a></h4>
 <p>An example of the application selection menu is shown in the figure below:</p>
-<p><img alt="image27" src="../../../_images/image271.jpeg" /></p>
+<p><img alt="image27" src="../../../_images/image27.jpeg" /></p>
 <p>Application selection menu</p>
 <p>The application selection menu contains clickable links to the transactions defined under the entry point. A transaction will appear in the menu if all of the following conditions are met:
 • The “Application type” is 1 (VTAM) or 2 (VIRTEL)
@@ -3855,7 +3854,7 @@ VIR0021S and application type 2. Security type 1 requires the user to sign on so
 which applications the user is authorized to. The user must also be authorized to the applist transaction itself by its
 internal name (W2H-90 or CLI-90).</p>
 <p>The figure below shows the definition of the applist transaction CLI-90:</p>
-<p><img alt="image81" src="../../../_images/image817.png" />
+<p><img alt="image81" src="../../../_images/image814.png" />
 Definition of applist transaction</p>
 </div>
 <div class="section" id="application-menu-as-the-default-transaction-for-the-entry-point">
@@ -3865,7 +3864,7 @@ point, the application selection menu will be displayed whenever the user access
 (for example, <a class="reference external" href="http://n.n.n.n:41002">http://n.n.n.n:41002</a> for line C-HTTP).</p>
 <p>The default transaction is the transaction whose external name is the same as the entry point name, and the example
 below shows the default transaction for the CLIWHOST entry point:</p>
-<p><img alt="image82" src="../../../_images/image822.png" />
+<p><img alt="image82" src="../../../_images/image821.png" />
 Specifying the application selection menu in the default transaction</p>
 </div>
 </div>
@@ -3875,7 +3874,7 @@ Specifying the application selection menu in the default transaction</p>
 has a virtual 3287 printer associated with the user’s 3270 display terminal. The name of the virtual printer is displayed
 in the status bar at the bottom of the Web Access window. Data sent to the virtual printer from a host application (for
 example, CICS, QMF, or VPS) is captured by VIRTEL and is saved in virtual storage.</p>
-<p><img alt="image28" src="../../../_images/image284.png" /> A printer icon appears in the Web Access toolbar to notify the user that print data is available.</p>
+<p><img alt="image28" src="../../../_images/image282.png" /> A printer icon appears in the Web Access toolbar to notify the user that print data is available.</p>
 <p>When the user clicks on this icon, VIRTEL sends the print data to the user’s browser, either as an attached file or in a
 pop-up window.
 Two types of virtual printer are supported:
@@ -3886,11 +3885,11 @@ Two types of virtual printer are supported:
 <p>In the VIRTEL configuration file, LUTYPE1 virtual printers are defined with the “Terminal type” field set to 1 or S. The
 “Relay” field contains the VTAM LU name known to the host application. The figure below shows an example definition
 of 80 LUTYPE1 virtual printers with LU names REHIM000 to REHIM079:</p>
-<p><img alt="image83" src="../../../_images/image832.png" />
+<p><img alt="image83" src="../../../_images/image831.png" />
 VIRTEL definition of LUTYPE1 virtual printers</p>
 <p>Similarly, LUTYPE3 virtual printers are defined with the “Terminal type” field set to 2 or P. The figure below shows an
 example definition of 80 LUTYPE3 virtual printers with LU names REHIP000 to REHIP079:</p>
-<p><img alt="image84" src="../../../_images/image842.png" />
+<p><img alt="image84" src="../../../_images/image841.png" />
 VIRTEL definition of LUTYPE3 virtual printers</p>
 </div>
 <div class="section" id="associating-virtual-printers-with-terminals">
@@ -3899,7 +3898,7 @@ VIRTEL definition of LUTYPE3 virtual printers</p>
 field of the terminal pool definition. In the example below, Web Access terminals with LU names REHVT000-079 are
 associated with virtual printer LU names REHIM000-079 (LUTYPE3). There is a one-for-one correspondence between
 the display terminal’s LU name and the printer LU name.</p>
-<p><img alt="image85" src="../../../_images/image852.png" />
+<p><img alt="image85" src="../../../_images/image851.png" />
 VIRTEL terminal definitions for virtual printers</p>
 </div>
 <div class="section" id="autoconnect-for-virtual-printers">
@@ -3913,9 +3912,9 @@ definition should contain the name of an entry point which specifies VIR0021B as
 must have one transaction whose “Application” field contains the name of the host application to which the printer is
 to be connected.
 The example below shows an entry point definition for connecting printers to CICS:</p>
-<p><img alt="image86" src="../../../_images/image862.png" />
+<p><img alt="image86" src="../../../_images/image861.png" />
 Entry point definition for virtual printer autoconnect</p>
-<p><img alt="image87" src="../../../_images/image872.png" />
+<p><img alt="image87" src="../../../_images/image871.png" />
 Transaction definition for virtual printer autoconnect</p>
 </div>
 <div class="section" id="vtam-definitions-for-virtual-printers">
@@ -3969,7 +3968,7 @@ DFH3270P</p></td>
 offers printing must indicate the name of an “Input Scenario”. The scenario processes the HTTP request containing a
 PF=SCENARIO-PRINT parameter which is issued when the user presses the “Get print data” icon (below) on the VIRTEL
 Web Access toolbar.</p>
-<p><img alt="image28" src="../../../_images/image284.png" /></p>
+<p><img alt="image28" src="../../../_images/image282.png" /></p>
 <p>The scenario accesses the SCS print data which is accumulated in a VIRTEL variable called $PRINT$, and instructs
 VIRTEL to send the print data to the browser as an attached file.
 Several suitable scenarios are delivered as standard in the VIRTEL SAMPLIB and LOADLIB:</p>
@@ -4008,7 +4007,7 @@ delivered to the workstation as PDF documents.</p>
 <p>The SCENPPDF scenario captures PCL data and sends it to an external server for conversion. The external server is a
 Windows Server 2008R2 platform running the Syspertec PCL2PDF application. The VIRTEL configuration must include a
 line with external name PCL2PDF which defines the IP address of the Windows server, as shown in the example below:</p>
-<p><img alt="image88" src="../../../_images/image882.png" />
+<p><img alt="image88" src="../../../_images/image881.png" />
 VIRTEL line definition for PCL2PDF server</p>
 <p>A batch job, supplied as member PCL2PDF of the VIRTEL SAMPLIB, allows the definition of the PCL2PDF line to be
 added to the VIRTEL configuration.</p>
@@ -4022,7 +4021,7 @@ added to the VIRTEL configuration.</p>
 <p>To activate the file transfer function you must access TSO via a VIRTEL transaction which specifies SCENINDT in both
 the “Input scenario” and the “Output scenario” fields of the transaction definition. The figure below shows the sample
 TSO transaction W2H-13 supplied with VIRTEL:</p>
-<p><img alt="image89" src="../../../_images/image892.png" />
+<p><img alt="image89" src="../../../_images/image891.png" />
 TSO transaction definition for file transfer</p>
 <p>The source code of the SCENINDT scenario is supplied in the VIRTEL SAMPLIB.
 To activate the file transfer function when a user-written scenario is specified in the transaction definition, the
@@ -4032,42 +4031,42 @@ INDSCEN$ macro instruction must be added to both the input and output sections o
 <h4>1.10.2. Toolbar icons for file transfer<a class="headerlink" href="#toolbar-icons-for-file-transfer" title="Permalink to this headline">¶</a></h4>
 <p>When file transfer is activated, two new icons (receive file) and (send file) appear on the VIRTEL Web Access toolbar:
 VIRTEL Web Access toolbar for TSO file transfer:-</p>
-<p><img alt="image90" src="../../../_images/image901.png" />
+<p><img alt="image90" src="../../../_images/image90.png" />
 <em>VIRTEL Web Access toolbar for TSO file transfer</em></p>
 </div>
 <div class="section" id="receiving-a-file">
 <h4>1.10.3. Receiving a file<a class="headerlink" href="#receiving-a-file" title="Permalink to this headline">¶</a></h4>
 <p>To transfer a file from TSO to your workstation, go to ISPF option 6 (or TSO READY) and click the “Receive” icon on the
 toolbar. The “Receive File” dialog will open:</p>
-<p><img alt="image30" src="../../../_images/image301.jpeg" />
+<p><img alt="image30" src="../../../_images/image30.jpeg" />
 VIRTEL IND$FILE receive dialog (part 1)</p>
 <p>Specify the TSO dataset name, surrounded by quotes if necessary. Dataset names without quotes will be prefixed by
 your TSO prefix (usually your userid). Click either “Text” or “Binary”. “Text” translates the file from EBCDIC to ASCII and
 inserts carriage return line feed sequences (x’0D0A’) at the end of each record. “Binary” performs no translation.
 Finally click “Receive” to start the transfer.
 When the file transfer is complete, the browser’s “Download” dialog appears:</p>
-<p><img alt="image31" src="../../../_images/image312.jpeg" />
+<p><img alt="image31" src="../../../_images/image311.jpeg" />
 VIRTEL IND$FILE receive dialog (part 2)</p>
 <p>Click “Save”. The “Save As” dialog will open to allow you to specify the name and location of the destination file on
 your workstation:</p>
-<p><img alt="image32" src="../../../_images/image322.jpeg" />
+<p><img alt="image32" src="../../../_images/image321.jpeg" />
 VIRTEL IND$FILE receive dialog (part 3)</p>
 <p>Now select the destination file and click “Save”. If the file already exists you will be prompted for permission to
 overwrite it. The “Download Complete” dialog appears when the file has been saved:</p>
-<p><img alt="image33" src="../../../_images/image331.jpeg" />
+<p><img alt="image33" src="../../../_images/image33.jpeg" />
 VIRTEL IND$FILE receive dialog (part 4)</p>
 </div>
 <div class="section" id="sending-a-file">
 <h4>1.10.4. Sending a file<a class="headerlink" href="#sending-a-file" title="Permalink to this headline">¶</a></h4>
 <p>To transfer a file from your workstation to TSO, go to ISPF option 6 (or TSO READY) and click the “Send” icon on the
 toolbar. The “Send File” dialog will open:</p>
-<p><img alt="image34" src="../../../_images/image341.jpeg" />
+<p><img alt="image34" src="../../../_images/image34.jpeg" />
 VIRTEL IND$FILE send dialog (part 1)</p>
 <p>Click the “Browse…” button and the “Choose File to Upload” dialog will appear:</p>
-<p><img alt="image35" src="../../../_images/image351.jpeg" />
+<p><img alt="image35" src="../../../_images/image35.jpeg" />
 VIRTEL IND$FILE send dialog (part 2)</p>
 <p>Choose the file you want to upload, and click “Open” to return to the “Send File” dialog:</p>
-<p><img alt="image36" src="../../../_images/image361.jpeg" /></p>
+<p><img alt="image36" src="../../../_images/image36.jpeg" /></p>
 <p>VIRTEL IND$FILE send dialog (part 3)</p>
 <p>Specify the TSO dataset name, surrounded by quotes if necessary. Dataset names without quotes will be prefixed by
 your TSO prefix (usually your userid).</p>
@@ -4079,7 +4078,7 @@ the TSO file must not already exist.</p>
 <p>Click either “Text” or “Binary”. “Text” translates the file from ASCII to EBCDIC and treats carriage return line feed
 sequences (x’0D0A’) as end of each record markers. “Binary” performs no translation. Finally click “Send” to start the
 transfer.</p>
-<p><img alt="image37" src="../../../_images/image371.jpeg" /></p>
+<p><img alt="image37" src="../../../_images/image37.jpeg" /></p>
 <p>VIRTEL IND$FILE send dialog (part 4)</p>
 <p>The message “File transfer complete” is displayed upon successful completion of the upload.</p>
 </div>
@@ -4098,11 +4097,11 @@ different, by default the BE-850 table will be used to support CECP 500 internat
 1.10.6. Saving and reusing file transfer parameters
 Users who frequently carry out the same or similar file transfers can save the file transfer parameters for later reuse.
 To save a file transfer, enter the dataset name and the type of transfer, then click the “Save” button:</p>
-<p><img alt="image38" src="../../../_images/image384.png" />
+<p><img alt="image38" src="../../../_images/image382.png" />
 VIRTEL IND$FILE Receive dialog (saved transfers)</p>
 <p>The user can then choose a name for the saved transfer, and click “OK” to save the parameters. At the next transfer,
 the user clicks the name of the saved transfer to retrieve the parameters, then clicks “Receive” to start the transfer.</p>
-<p><img alt="image39" src="../../../_images/image394.png" />
+<p><img alt="image39" src="../../../_images/image392.png" />
 VIRTEL IND$FILE Saving the file transfer parameters</p>
 <p>Users can save transfer parameters for both “Send” and “Receive”. The paramters are saved in browser local storage.
 The number of sets of parameters which can be saved is limited only by the amount of local storage available.</p>
@@ -4123,7 +4122,7 @@ enter its URL directly:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">VTAM</span>
 </pre></div>
 </div>
-<p><img alt="image91" src="../../../_images/image915.png" />
+<p><img alt="image91" src="../../../_images/image912.png" />
 <em>VTAM logon screen in VIRTEL Web Access mode</em></p>
 <p>To access, for example, TSO with logmode SNX32705, type TSO in the “LOGON APPLID” field and SNX32705 in the
 “LOGMODE” field, then press enter.</p>
@@ -4142,7 +4141,7 @@ before the screen is displayed.</p>
 value of the PRFSECU parameter in the VIRTCT) in the RACF FACILITY class. Provided the “Security” field is set to 1, and
 security is activated in the VIRTCT, only those users having READ access to the resource can obtain the VTAM logon
 screen.</p>
-<p><img alt="image41" src="../../../_images/image4113.png" />
+<p><img alt="image41" src="../../../_images/image4111.png" />
 <em>Example VIRTEL transaction for VTAM logon via Web Access</em></p>
 </div>
 </div>
@@ -4190,9 +4189,9 @@ the file custom.css.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for coloring the toolbar according to CICS region</em></p>
-<p><img alt="image42" src="../../../_images/image422.jpeg" />
+<p><img alt="image42" src="../../../_images/image421.jpeg" />
 Web Access screen with yellow toolbar for SPCICSP</p>
-<p><img alt="image43" src="../../../_images/image431.jpeg" />
+<p><img alt="image43" src="../../../_images/image43.jpeg" />
 Web Access screen with pink toolbar for SPCICSQ</p>
 </div>
 <div class="section" id="adding-custom-text-to-the-toolbar">
@@ -4229,7 +4228,7 @@ displayed for application TSO2A.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the toolbar</em></p>
-<p><img alt="image44" src="../../../_images/image441.jpeg" />
+<p><img alt="image44" src="../../../_images/image44.jpeg" />
 <em>Web Access screen with custom text in the toolbar</em></p>
 </div>
 <div class="section" id="showing-hiding-server-informations">
@@ -4238,7 +4237,7 @@ displayed for application TSO2A.</p>
 maintenace level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is
 displayed at the top-right of the toolbar as shown below. This information is followed by the running version number
 and the VIRTEL Web access level of maintenance used. This last information is enclosed in parentheses.</p>
-<p><img alt="image45" src="../../../_images/image451.jpeg" /></p>
+<p><img alt="image45" src="../../../_images/image45.jpeg" /></p>
 <p>The running version and the level of maintenance cannot be hidden, only the server name can be permanently
 removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -4708,7 +4707,7 @@ VIR3270.customPfKeysHotspotRegex =
 </pre></div>
 </div>
 <p><em>Example custom.css to define the style of the watermark</em></p>
-<p><img alt="image46" src="../../../_images/image464.png" />
+<p><img alt="image46" src="../../../_images/image462.png" />
 <em>Web Access screen with application name as watermark</em></p>
 </div>
 <div class="section" id="modifying-web-access-settings">
@@ -4733,14 +4732,14 @@ The example shown below replaces the list of fonts, and adds two extra values �
 <div class="section" id="site-customization-the-help-page">
 <h3>1.14. Site Customization - The Help Page<a class="headerlink" href="#site-customization-the-help-page" title="Permalink to this headline">¶</a></h3>
 <p>Users can obtain help on VIRTEL Web Access functions by clicking the help icon in the Web Access toolbar:</p>
-<p><img alt="image47" src="../../../_images/image474.png" /></p>
+<p><img alt="image47" src="../../../_images/image472.png" /></p>
 <p>which causes the browser to display the page /w2h/custom-help/help.html delivered as standard with VIRTEL Web Access.
 The administrator can create a custom version of the help.html page and upload it to a VIRTEL directory destined for
 site-specific pages, such as CLI-DIR.</p>
 <div class="section" id="standard-help-page">
 <h4>1.14.1. Standard help page<a class="headerlink" href="#standard-help-page" title="Permalink to this headline">¶</a></h4>
 <p>The standard help.html page is shown below:</p>
-<p><img alt="image48" src="../../../_images/image481.jpeg" />
+<p><img alt="image48" src="../../../_images/image48.jpeg" />
 <em>Standard Virtel help page for Web Access</em></p>
 </div>
 <div class="section" id="installing-a-custom-help-page">
@@ -4771,10 +4770,10 @@ domain. The ADDON is available for download at the following address:</p>
 <p><a class="reference external" href="https://addons.mozilla.org/fr/firefox/addon/virtel-webaccess-add-on/">https://addons.mozilla.org/fr/firefox/addon/virtel-webaccess-add-on/</a></p>
 <p>If the browser version is compatible with the latest version of ADDON published click the “+ Add to Firefox” icon. Any
 additional window will open to confirm the installation.</p>
-<p><img alt="image49" src="../../../_images/image491.jpeg" /></p>
+<p><img alt="image49" src="../../../_images/image49.jpeg" /></p>
 <p>If the browser version is too old to be supported by the latest version of ADDON published, the link “+ Add to Firefox”
 will not be available. Click on the link “View full history version”at the bottom of the page as shown below.</p>
-<p><img alt="image50" src="../../../_images/image501.jpeg" /></p>
+<p><img alt="image50" src="../../../_images/image50.jpeg" /></p>
 <p>On the next page, select the ADDON version of the most compatible version available for the browser in use. Click “+
 Add to Firefox”. Several versions of the ADDON can be installed in parallel, however, only one must be active at any
 given time.</p>
@@ -4783,7 +4782,7 @@ given time.</p>
 domain. The extension can be obtained on the Chrome WebStore at the following address:-</p>
 <p><a class="reference external" href="https://chrome.google.com/webstore/category/apps?hl=en-GB">https://chrome.google.com/webstore/category/apps?hl=en-GB</a></p>
 <p>Enter “Virtel Extender WebAccess” in the search field and launch the search. The extension appears in the “Extensions” list.</p>
-<p><img alt="image51" src="../../../_images/image512.jpeg" /></p>
+<p><img alt="image51" src="../../../_images/image511.jpeg" /></p>
 <p>Click on the extension item and then, on the next page, click “Add to Chrome”.</p>
 </div>
 <div class="section" id="id8">
@@ -4793,11 +4792,11 @@ domain. The extension can be obtained on the Chrome WebStore at the following ad
 <p>On the toolbar, click on the “Menu” in the upper right (1) icon, then click on “Modules” (2). If this section does not
 appear directly in the tool window, click on “Customise” (3) tool to add “Modules” in the menu. It is also possible to
 directly access the extension manager by typing “about: addons” in the URL bar of the browser.</p>
-<p><img alt="image52" src="../../../_images/image527.png" /></p>
+<p><img alt="image52" src="../../../_images/image523.png" /></p>
 <p>On the ADDONS page, select “Extension” to display the VIRTEL extension. Click on the “Options” button to display a
 setup screen similar to the one shown below.</p>
-<p><img alt="image53" src="../../../_images/image531.jpeg" /></p>
-<p><img alt="image54" src="../../../_images/image541.jpeg" /></p>
+<p><img alt="image53" src="../../../_images/image53.jpeg" /></p>
+<p><img alt="image54" src="../../../_images/image54.jpeg" /></p>
 <p>The following options should be set</p>
 <dl class="simple">
 <dt>Automatic update</dt><dd><ul class="simple">
@@ -4829,12 +4828,12 @@ setup screen similar to the one shown below.</p>
 </dl>
 <p><strong>1.15.2.2. Chrome</strong></p>
 <p>On the toolbar, click on the “Customize and control Google Chrome” icon in the upper right (1), then click on the “Settings” (2), then the extensions section. It is also possible to directly access the extension manager by typing “chrome://extensions” in the URL bar of the browser. From the extensions page, select “Extension” to display the VIRTEL extension.</p>
-<p><img alt="image55" src="../../../_images/image551.jpeg" /></p>
+<p><img alt="image55" src="../../../_images/image55.jpeg" /></p>
 <p>Verify that the extension is activated and click on the “Options” link.</p>
-<p><img alt="image56" src="../../../_images/image561.jpeg" /></p>
+<p><img alt="image56" src="../../../_images/image56.jpeg" /></p>
 <p>The following options should be set:</p>
-<p><img alt="image57" src="../../../_images/image571.jpeg" /></p>
-<p><img alt="image58" src="../../../_images/image584.png" /></p>
+<p><img alt="image57" src="../../../_images/image57.jpeg" /></p>
+<p><img alt="image58" src="../../../_images/image582.png" /></p>
 <dl>
 <dt>Allow copy / paste operation:</dt><dd><p>Allows operations copy / cut / paste on the domains specified in the definitions parameter.</p>
 <dl class="simple">
@@ -4867,11 +4866,11 @@ settings.</p>
 <h4>1.15.3. Operational audit<a class="headerlink" href="#operational-audit" title="Permalink to this headline">¶</a></h4>
 <p>Firefox and Chrome. Use the right mouse button to open a selection menu for copy / cut / paste operations. The
 operational status of this feature is displayed in an ICON in top right.</p>
-<p><a class="reference internal" href="../../../_images/image594.png"><img alt="image59" src="../../../_images/image594.png" style="width: 1.95686in; height: 1.92531in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image592.png"><img alt="image59" src="../../../_images/image592.png" style="width: 1.95686in; height: 1.92531in;" /></a></p>
 <p><em>Green: Indicates that the module is properly installed and that the field is allowed.</em></p>
-<p><a class="reference internal" href="../../../_images/image603.png"><img alt="image60" src="../../../_images/image603.png" style="width: 1.95686in; height: 1.93583in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image601.png"><img alt="image60" src="../../../_images/image601.png" style="width: 1.95686in; height: 1.93583in;" /></a></p>
 <p><em>Orange: Indicates that the module is installed correctly but the field is not defined as an authorized domain. (Available only for Chrome).</em></p>
-<p><a class="reference internal" href="../../../_images/image6113.png"><img alt="image61" src="../../../_images/image6113.png" style="width: 1.96740in; height: 1.94635in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image6111.png"><img alt="image61" src="../../../_images/image6111.png" style="width: 1.96740in; height: 1.94635in;" /></a></p>
 <p><em>Red: The expansion module is not installed. For Firefox, it may also indicate that the field is not allowed, or that the navigation is done in private mode. If running in private mode, the function is supported from version 0.6.33.1 and above.</em></p>
 </div>
 </div>
@@ -4888,8 +4887,8 @@ second click on the REC button terminates the recording and allows the user to a
 been recorded.
 The PLAY button on the toolbar allows the user to display a list of macros already recorded, and to replay or delete a
 macro.</p>
-<p><a class="reference internal" href="../../../_images/image622.jpeg"><img alt="image62" src="../../../_images/image622.jpeg" style="width: 0.34375in; height: 0.40625in;" /></a> REC button</p>
-<p><a class="reference internal" href="../../../_images/image634.png"><img alt="image63" src="../../../_images/image634.png" style="width: 0.34375in; height: 0.33333in;" /></a> PLAY button</p>
+<p><a class="reference internal" href="../../../_images/image621.jpeg"><img alt="image62" src="../../../_images/image621.jpeg" style="width: 0.34375in; height: 0.40625in;" /></a> REC button</p>
+<p><a class="reference internal" href="../../../_images/image632.png"><img alt="image63" src="../../../_images/image632.png" style="width: 0.34375in; height: 0.33333in;" /></a> PLAY button</p>
 <div class="section" id="storing-the-macros">
 <h4>1.16.1. Storing the Macros<a class="headerlink" href="#storing-the-macros" title="Permalink to this headline">¶</a></h4>
 <p>Depending on the version of VIRTEL, the macros can be saved in:
@@ -4969,7 +4968,7 @@ To create the file, the user only has to sign on to VIRTEL Web Access and record
 saved with a user-specified name, the macros.json file is automatically uploaded into VIRTEL’s USR-DIR directory.
 For subsequent Web Access sessions, the macros.json file is automatically loaded and the user’s macros are displayed
 in the macro window</p>
-<p><a class="reference internal" href="../../../_images/image644.png"><img alt="image64" src="../../../_images/image644.png" style="width: 3.88219in; height: 3.16677in;" /></a>
+<p><a class="reference internal" href="../../../_images/image642.png"><img alt="image64" src="../../../_images/image642.png" style="width: 3.88219in; height: 3.16677in;" /></a>
 <em>Display macros for VirtelMacros function</em></p>
 <p>To execute a macro, just double-click on it. To delete a macro, click on the red icon and confirm deletion. To delete, edit
 or copy a macro, just right-click on the macro and choose the desired function. For macro edition, see <a class="reference internal" href="#v456ug-macro-commands"><span class="std std-ref">“Available Macro Commands”</span></a> below.</p>
@@ -10827,7 +10826,7 @@ and password. VIRTEL passes the userid and password to the security manager (RAC
 also propagate the userid and password to other applications (for example, CICS) by means of connection /
 disconnection scripts defined in the transaction (see the “VIRTEL Connectivity Reference” manual for details).
 Depending on the userid, the security manager may authorize or deny access to the requested transaction.</p>
-<p><img alt="image65" src="../../../_images/image654.png" /></p>
+<p><img alt="image65" src="../../../_images/image652.png" /></p>
 <p><em>Example of signon dialog box displayed by browser</em></p>
 </div>
 <div class="section" id="specifying-security-in-the-transaction">
