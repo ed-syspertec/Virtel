@@ -16,7 +16,7 @@ User Guide V4.58
 
 Version : 4.58
 
-Release Date : 08 Jan 2018. Publication Date : 08/01/2018
+Release Date : 08 Jan 2018. Publication Date : 08/01/2019
 
 Syspertec Communication
 
