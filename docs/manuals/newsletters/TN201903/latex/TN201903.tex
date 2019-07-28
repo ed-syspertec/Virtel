@@ -42,7 +42,7 @@
 
 \title{Maintaining centralized macros with batch scripts}
 \date{Jul 28, 2019}
-\release{4.59}
+\release{1.00}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
 \renewcommand{\releasename}{Release}
@@ -59,7 +59,7 @@
 
 The following newsletter documents how to maintain centralized macros using a batch process. The process uses the “CURL” program, a browser client, to interface with Virtel and to upload the macros from a PC. The benefits of using a batch process is macros can be managed on a PC and uploaded to the relevant Virtel directories as a batch process rather than the default “Drag and Drop”.
 
-The following steps are implemented to support this process. A CURL request is made to Virtel to obtain they key for either the GROUP id, USER id or the GLOBAL DDI directory. The key is then in a subsequent HTTP POST to upload a macros.json file to that directory. This is effectively what occurs when you perform the same process using the standard Drag and Drop technique.
+The following steps are implemented to support this process. A CURL request is made to Virtel to obtain they key for either the GROUP id, USER id or the GLOBAL DDI directory. The key is then used in a subsequent HTTP POST to upload a macros.json file to that directory indexed by the key. This is effectively what occurs when you perform the same process using the standard Drag and Drop technique.
 
 The process is driven through batch scripts which are generated and downloaded from the mainframe following a extract from the RACF database. The extract provides the GROUP and USERID relationship required by the upload process.
 
