@@ -11702,7 +11702,7 @@ Batch Entry Point, and the Transactions which will be executed by the VIRTEL Bat
             SET MAXCC = 0
             DEFINE CLUSTER(NAME(yourqual.VIRBATCH.ARBO) -
                 KEYS(9 0) RECSZ(100 4089) FSPC(10 10) -
-                VOL(XXXXXX) REC(250,50) SHR(4) SPEED) -
+                VOL(XXXXXX) REC(250,50) SHR(2) SPEED) -
             DATA(NAME(yourqual.VIRBATCH.ARBO.DATA) CISZ(4096)) -
             INDEX(NAME(yourqual.VIRBATCH.ARBO.INDEX))
         //CONFIG EXEC PGM=VIRCONF,COND=(0,NE),PARM='LOAD,LANG=&LANG'
@@ -11808,7 +11808,7 @@ VIRBATAW, which is an example job to allocate these files:
             INDEX (NAME(yourqual.VIRBATCH.SWAP.INDEX))
             DEFINE CLUSTER (NAME(yourqual.VIRBATCH.HTML) -
                 VOL(XXXXXX) KEYS(64 0) REC(5 5) RECSZ(1000 4089) -
-                FSPC(10 10) SHR(4) SPEED) -
+                FSPC(10 10) SHR(2) SPEED) -
             DATA (NAME(yourqual.VIRBATCH.HTML.DATA) CISZ(4096)) -
             INDEX (NAME(yourqual.VIRBATCH.HTML.INDEX))
         //*----------------------------------------------------------------*
