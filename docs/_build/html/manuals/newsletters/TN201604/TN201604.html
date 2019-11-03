@@ -111,7 +111,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
             
@@ -353,7 +352,7 @@ Virtel:-</p>
 <p>Figure 1 Passing User Data toVirtel</p>
 <p>When a transaction is selected from the menu list the RULE will be
 invoked to allocate the correct LUNAME.</p>
-<p><a class="reference internal" href="../../../_images/image222.png"><img alt="image1" src="../../../_images/image222.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image216.png"><img alt="image1" src="../../../_images/image216.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
 <p>Figure 2 Selecting a LU name through a rule and work station id in the
 URL</p>
 <p>The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from
@@ -413,7 +412,7 @@ NETMASK=255.255.255.255
 </pre></div>
 </div>
 <p>We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.</p>
-<p><a class="reference internal" href="../../../_images/image320.png"><img alt="image2" src="../../../_images/image320.png" style="width: 6.26806in; height: 4.76736in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image317.png"><img alt="image2" src="../../../_images/image317.png" style="width: 6.26806in; height: 4.76736in;" /></a></p>
 <p>Figure 3Using $URL$ to pass a LU name in the URL.</p>
 <p>The user data in the URL, in this case EHPMA00*, will be added to each
 transaction in the APPLIST menu and used as the Virtel relay LUNAME.
@@ -439,13 +438,13 @@ are:-</p>
 <p><a class="reference internal" href="../../../_images/image414.png"><img alt="image3" src="../../../_images/image414.png" style="width: 4.66650in; height: 3.16667in;" /></a></p>
 <p>Figure 4 Line definition for non-predefined LU names.</p>
 <p>And the Pool definition:-</p>
-<p><a class="reference internal" href="../../../_images/image516.png"><img alt="image4" src="../../../_images/image516.png" style="width: 4.68750in; height: 3.15287in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image512.png"><img alt="image4" src="../../../_images/image512.png" style="width: 4.68750in; height: 3.15287in;" /></a></p>
 <p>Figure 5 Pool definition for non-predefined LU Names</p>
 <p>And an example of a transaction definition. Note that the
 Psuedo-Terminal is defined as $LINE$. We have also assign a printer
 definition to this setup. So if our LU relay name was HOLTWIN7 then our
 associated printer LU would be HOLTWINP.</p>
-<p><a class="reference internal" href="../../../_images/image621.png"><img alt="image5" src="../../../_images/image621.png" style="width: 4.82292in; height: 3.24663in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image611.png"><img alt="image5" src="../../../_images/image611.png" style="width: 4.82292in; height: 3.24663in;" /></a></p>
 <p>Figure 6 Transaction definition for non-predefined LU Names</p>
 <p>Accessing the transaction TSOF would be through the following URL
 forcing the relay LU NAME to HOLTWIN7. We would still have to define a

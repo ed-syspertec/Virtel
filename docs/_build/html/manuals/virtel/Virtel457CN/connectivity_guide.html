@@ -122,7 +122,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
             
@@ -193,7 +192,7 @@
 </div>
 <div class="section" id="connectivity-reference-v4-57">
 <span id="virtel457cn"></span><h1>Connectivity Reference V4.57<a class="headerlink" href="#connectivity-reference-v4-57" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../../../_images/logo_virtel_web7.png"><img alt="image00" src="../../../_images/logo_virtel_web7.png" style="width: 275.0px; height: 102.0px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/logo_virtel_web6.png"><img alt="image00" src="../../../_images/logo_virtel_web6.png" style="width: 275.0px; height: 102.0px;" /></a></p>
 <p><strong>VIRTEL Connectivity Reference</strong></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -574,7 +573,7 @@ invoked from the Configuration Menu, gives access to all of the sub-applications
 <div class="section" id="configuration-menu">
 <span id="index-1"></span><h4>Configuration Menu<a class="headerlink" href="#configuration-menu" title="Permalink to this headline">¶</a></h4>
 <p>The configuration Menu presents a list of sub applications which can be invoked to manage various Virtel entities such as lines, terminals, entry points etc.</p>
-<p><a class="reference internal" href="../../../_images/image240.png"><img alt="image2" src="../../../_images/image240.png" style="width: 6.49562in; height: 4.01500in;" /></a>
+<p><a class="reference internal" href="../../../_images/image235.png"><img alt="image2" src="../../../_images/image235.png" style="width: 6.49562in; height: 4.01500in;" /></a>
 <em>Configuration Menu</em></p>
 <p>To invoke a sub-application, press one of the function keys shown in the menu (for example, F1 – Lines). To exit from the Configuration Menu and return to the Multi-Session menu, press CLEAR.</p>
 <p>From within the configuration Menu a further set of sub-applications can be accessible by pressing [PA2]</p>
@@ -582,7 +581,7 @@ invoked from the Configuration Menu, gives access to all of the sub-applications
 <div class="section" id="sub-application-menu">
 <span id="index-2"></span><h4>Sub-Application Menu<a class="headerlink" href="#sub-application-menu" title="Permalink to this headline">¶</a></h4>
 <p>This menu presents a menu of additional sub-applications that can be used to manage Virtel.</p>
-<p><a class="reference internal" href="../../../_images/image332.png"><img alt="image3" src="../../../_images/image332.png" style="width: 6.49562in; height: 4.01500in;" /></a>
+<p><a class="reference internal" href="../../../_images/image330.png"><img alt="image3" src="../../../_images/image330.png" style="width: 6.49562in; height: 4.01500in;" /></a>
 <em>Sub-Application Menu</em></p>
 <p>To invoke a sub-application from this menu, press one of the function keys shown in the menu (for example, F7 – Videotex Definitions). To exit from the Sub-Application Menu and return to the Configuration Menu, press CLEAR or PA2.</p>
 </div>
@@ -653,7 +652,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 <div class="section" id="detail-display">
 <span id="index-7"></span><h4>Detail Display<a class="headerlink" href="#detail-display" title="Permalink to this headline">¶</a></h4>
 <p>The Line detail display is accessed from the Line summary screen via PF12(EDIT) on a selected line identified by the cursor position. The screen shows a line detail display.</p>
-<p><img alt="image5" src="../../../_images/image525.png" />
+<p><img alt="image5" src="../../../_images/image520.png" />
 <em>Line Detail Display</em></p>
 <div class="section" id="id1">
 <h5>Navigation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
@@ -920,7 +919,7 @@ default delay is 2 seconds.</p>
 <div class="section" id="http-inbound-line">
 <span id="index-10"></span><h3>HTTP Inbound line<a class="headerlink" href="#http-inbound-line" title="Permalink to this headline">¶</a></h3>
 <p>When an HTTP line is started, VIRTEL becomes an HTTP server, authorising connections from a web browser to applications at the host site. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT, as well as to a definition providing linkage to a file containing the HTML pages.</p>
-<p><img alt="image6" src="../../../_images/image630.png" />
+<p><img alt="image6" src="../../../_images/image622.png" />
 <em>Definition of an HTTP line</em></p>
 <dl id="index-11">
 <dt>Remote ident</dt><dd><p>Always blank.</p>
@@ -1244,7 +1243,7 @@ processing requests from IMS.</p>
 <div class="section" id="transactions">
 <span id="index-25"></span><h4>Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline">¶</a></h4>
 <p>Each IMS Connect entry point must have one or more associated transactions. Press [PF4] at the Entry Point Detail Definition screen to display the list of transactions associated with an IMS Connect entry point. The transaction definition specifies the name of the scenario which will be invoked to process an incoming request from IMS. If the incoming request does not specify a transaction name, or if the specified transaction name is not defined in the entry point, then VIRTEL will invoke the transaction whose external name is the same as the entry point name. If there is no such default transaction, then the request is rejected and VIRTEL issues message VIRIC57E.</p>
-<p><img alt="image21" src="../../../_images/image2115.png" />
+<p><img alt="image21" src="../../../_images/image2114.png" />
 <em>Definition of a transaction associated with an IMS Connect entry point</em></p>
 <dl class="simple">
 <dt>Internal name</dt><dd><p>Must match the transaction prefix specified in the entry point.</p>
@@ -1641,14 +1640,14 @@ This is a 32-bit unsigned binary number in big-endian format
 <div><p>A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type of
 line” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.</p>
 </div></blockquote>
-<p><img alt="image32" src="../../../_images/image3212.png" />
+<p><img alt="image32" src="../../../_images/image3210.png" />
 <em>Terminals on a VIRPASS TCP line for VIRKIX</em></p>
 </div>
 </div>
 <div class="section" id="virpass-tcp-line-virnt">
 <span id="index-45"></span><h3>VIRPASS TCP line (VIRNT)<a class="headerlink" href="#virpass-tcp-line-virnt" title="Permalink to this headline">¶</a></h3>
 <p>A VIRNT system can be connected to VIRTEL to act as an X25 gateway handling incoming and outgoing connections to and from VIRTEL, or to act as a LECAM server. Communication between VIRTEL and VIRNT can be established using either an APPC line or a TCP/IP line. This section describes TCP/IP mode.</p>
-<p><img alt="image33" src="../../../_images/image333.png" /></p>
+<p><img alt="image33" src="../../../_images/image332.png" /></p>
 <div class="section" id="index-46">
 <span id="id18"></span><h4>Parameters<a class="headerlink" href="#index-46" title="Permalink to this headline">¶</a></h4>
 <dl class="simple">
@@ -1842,7 +1841,7 @@ address.</p>
 <blockquote>
 <div><p>Press [PF4] at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.</p>
 </div></blockquote>
-<p><img alt="image23" src="../../../_images/image2310.png" /></p>
+<p><img alt="image23" src="../../../_images/image236.png" /></p>
 <p><em>Definition of terminals associated with an XOT line</em></p>
 <dl class="simple">
 <dt>Terminal</dt><dd><p>The terminal name must match the prefix of the line.</p>
@@ -2471,9 +2470,9 @@ macro in the NCP). This LU must be defined by a VTAM APPL statement.</p>
 <p>The first sub-group is used for outgoing calls (from the point of view of the application), and consists of explicitly defined  terminals with the “Possible calls” field set to 1. Each terminal in this first sub-group corresponds to a single remote partner. The “Relay” field of each terminal in this first sub-group must contain the LU name which the application uses to make outgoing calls to the remote partner concerned. The entry point specified by the rules of the line contains a type-3 transaction which specifies “&amp;R” as the
 application name. This makes the link with an external server whose name is identical to the Relay LU name. The external server contains the call parameters (X25 number, etc) needed to route calls to the required partner.</p>
 <p>The example below shows the definition of an AntiPCNE terminal for outbound calls made using LU name AP1LU01O, and the associated external server containing the X25 call parameters:</p>
-<p><img alt="image51" src="../../../_images/image5111.png" />
+<p><img alt="image51" src="../../../_images/image5110.png" />
 <em>Outbound Terminal Definition for X25 AntiPCNE</em></p>
-<p><img alt="image52" src="../../../_images/image526.png" />
+<p><img alt="image52" src="../../../_images/image523.png" />
 <em>External server definition for X25 AntiPCNE</em></p>
 <p>The second sub-group is used for incoming calls (from the point of view of the application). In this sub-group, the “Possible calls” field is set to 2. Either explicit or repeated terminal definitions may be used for this second sub-group, and no entry point is necessary. Each terminal in the second sub-group can be used for calls originating from any remote partner. This method is suitable for applications such as CFT which do not verify the LU name for incoming calls.</p>
 <p><img alt="image53" src="../../../_images/image532.png" />
@@ -2991,7 +2990,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 <div class="section" id="index-108">
 <span id="id58"></span><h4>Detail Display<a class="headerlink" href="#index-108" title="Permalink to this headline">¶</a></h4>
 <p>To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press [PF12].</p>
-<p><img alt="image61" src="../../../_images/image6112.png" />
+<p><img alt="image61" src="../../../_images/image6110.png" />
 <em>Entry point detail display</em></p>
 </div>
 <div class="section" id="index-109">
@@ -3136,7 +3135,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 <div class="section" id="index-113">
 <span id="id62"></span><h4>Summary Display<a class="headerlink" href="#index-113" title="Permalink to this headline">¶</a></h4>
 <p>Press [PF4] at the entry point detail screen to display the list of associated transactions:</p>
-<p><img alt="image62" src="../../../_images/image6210.png" />
+<p><img alt="image62" src="../../../_images/image623.png" />
 <em>Transaction Summary Display</em></p>
 <p><strong>Field Contents</strong></p>
 <dl class="simple">

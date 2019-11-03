@@ -113,7 +113,6 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
             
@@ -280,7 +279,7 @@ displayed asking for the name of the macro entry. Note that an ENTER/PFK
 key must be pressed at least once, i.e. data must be sent by some key
 operation in order to create and save an entry within the macro.JSON
 file.</p>
-<p><a class="reference internal" href="../../../_images/image233.png"><img alt="image1" src="../../../_images/image233.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image227.png"><img alt="image1" src="../../../_images/image227.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
 <p>Fig. 2 - Saving a macro</p>
 <p><strong>Keyboard Mapping</strong></p>
 <p>When saving the macro you have the option of assigning a “hot key” or
@@ -299,7 +298,7 @@ on keyboard mapping specify the following in the w2hparm.js member:-</p>
 </div>
 <p>With keyboard mapping enabled the macro interface will display the
 associated key mapping against the macro.</p>
-<p><a class="reference internal" href="../../../_images/image327.png"><img alt="image2" src="../../../_images/image327.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image324.png"><img alt="image2" src="../../../_images/image324.png" style="width: 5.76122in; height: 5.72997in;" /></a></p>
 <p>Fig. 2a - Keymapping association</p>
 <p><strong>The Display button</strong></p>
 <p>The green triangular button will display the local storage macros. From
@@ -318,7 +317,7 @@ upload the relevant macros.json file through the DDI interface. See: <a class="r
 <p><strong>DDI Installation</strong></p>
 <p>In this example the DDI macro interface is turned on for transactions defined in the CLI custom directory, normally associated with port 41002. By default, the transaction CLI-03P identifies the w2hparm.js as belonging to the W2H directory. This transaction needs to be modified so that the directory for w2hparm.js (Application field) will now be the
 CLI directory. The transaction should be updated so the path w2h/w2hparm-js points to the CLI-DIR directory. A modified w2hparm.js file, with the macros enabled option set, should then be uploaded to the CLI directory. We use the CLI directory for customer modifications to avoid any changes being lost during a Virtel upgrade.</p>
-<p><a class="reference internal" href="../../../_images/image519.png"><img alt="image4" src="../../../_images/image519.png" style="width: 4.71111in; height: 4.41667in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image515.png"><img alt="image4" src="../../../_images/image515.png" style="width: 4.71111in; height: 4.41667in;" /></a></p>
 <p>Fig. 4 - Modified CLI-03P transaction</p>
 <p>To use the DDI interface the options must be set in the w2hparm.js member. The various options control the synchronisation between the user’s local macro storage and the DDI central repository. Specify one of the following options to turn on DDI or remote macro mode:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;value&quot;</span><span class="p">};</span>
@@ -409,7 +408,7 @@ Aa well as administrators, users will require READ access to the following profi
 Drag the macros.json file into the area designated by a series of dotted
 lines. This will initiate a file upload into the global directory of the
 macro repository:-</p>
-<p><a class="reference internal" href="../../../_images/image625.png"><img alt="image5" src="../../../_images/image625.png" style="width: 4.51042in; height: 3.34652in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image615.png"><img alt="image5" src="../../../_images/image615.png" style="width: 4.51042in; height: 3.34652in;" /></a></p>
 <p>Fig. 5 - The DDI Global Upload</p>
 <p>Once you have a copy in the global area, right click on the macros.json
 file to open a context menu. This menu provides some additional

@@ -52,10 +52,15 @@ Syspertec Communication
 Summary of Amendments
 =====================
 
-Virtel version 4.59 (1st Oct 2018)
+Virtel version 4.59 (12th Jul 2019)
+-----------------------------------
+
+.. note:: For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.
+
+Virtel version 4.58 (1st Oct 2018)
 ----------------------------------
 
-.. note:: For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.57.
+.. note:: For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.58.
 
 Virtel version 4.57 (1st Jul 2017)
 ----------------------------------

@@ -42,7 +42,7 @@
 
 
 \title{Virtel Installation Guide}
-\date{Jul 14, 2019}
+\date{Oct 22, 2019}
 \release{4.59}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -101,10 +101,17 @@ their respective owners.
 \chapter{Summary of Amendments}
 \label{\detokenize{Installation_Guide:summary-of-amendments}}\label{\detokenize{Installation_Guide:vvrrig59-summary-of-ammendments}}
 
-\section{Virtel version 4.59 (1st Oct 2018)}
-\label{\detokenize{Installation_Guide:virtel-version-4-59-1st-oct-2018}}
+\section{Virtel version 4.59 (12th Jul 2019)}
+\label{\detokenize{Installation_Guide:virtel-version-4-59-12th-jul-2019}}
 \begin{sphinxadmonition}{note}{Note:}
-For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.57.
+For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.
+\end{sphinxadmonition}
+
+
+\section{Virtel version 4.58 (1st Oct 2018)}
+\label{\detokenize{Installation_Guide:virtel-version-4-58-1st-oct-2018}}
+\begin{sphinxadmonition}{note}{Note:}
+For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.58.
 \end{sphinxadmonition}
 
 
@@ -1073,9 +1080,7 @@ Here is a standard “check-list” to start the WEB to HOST VIRTEL function:
 If you are upgrading to a new version of Virtel, plan to move any user transactions or customisations out of W2H-DIR as this directory will be overriden as part of the installation process.
 \end{sphinxadmonition}
 \begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 Download the following files from our FTP server \sphinxhref{http://ftp.syspertec.com/}{http://ftp.syspertec.com}
 \begin{itemize}
@@ -1111,16 +1116,12 @@ Use the SETPROG APF command to add the VIRTEL LOADLIB to your system APF authori
 \PYG{n}{SETPROG} \PYG{n}{APF}\PYG{p}{,}\PYG{n}{ADD}\PYG{p}{,}\PYG{n}{DSN}\PYG{o}{=}\PYG{n}{yourqual}\PYG{o}{.}\PYG{n}{VIRTvrr}\PYG{o}{.}\PYG{n}{LOADLIB}\PYG{p}{,}\PYG{n}{VOL}\PYG{o}{=}\PYG{n}{volser}
 \end{sphinxVerbatim}
 \begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{6}
 \item {} 
 Edit member VIRTCT01 in the VIRTEL CNTL library:-
 \begin{enumerate}
-\def\theenumii{\alph{enumii}}
-\def\labelenumii{\theenumii )}
-\makeatletter\def\p@enumiii{\p@enumii \theenumii )}\makeatother
+\sphinxsetlistlabels{\alph}{enumii}{enumiii}{}{)}%
 \item {} 
 Set the APPLID= parameter to the VTAM ACBNAME you will use to log on to VIRTEL (the suggested value is APPLID=VIRTEL)
 
@@ -1144,9 +1145,7 @@ Run the job ASMTCT in the VIRTEL CNTL library to assemble VIRTCT01 into VIRTvrr.
 \item {} 
 Edit member ARBOLOAD in the VIRTEL CNTL library:
 \begin{enumerate}
-\def\theenumii{\alph{enumii}}
-\def\labelenumii{\theenumii )}
-\makeatletter\def\p@enumiii{\p@enumii \theenumii )}\makeatother
+\sphinxsetlistlabels{\alph}{enumii}{enumiii}{}{)}%
 \item {} 
 Change LANG=EN to LANG=FR if French language is desired
 
@@ -1178,9 +1177,7 @@ If you need to rerun the ARBOLOAD job, you must change PARM=’LOAD,NOREPL’ to
 \end{sphinxadmonition}
 \end{quote}
 \begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{9}
 \item {} 
 Submit the job ASMMOD from the VIRTEL CNTL library. This job assembles the VIRTEL logon mode table (MODVIRT) into your SYS1.VTAMLIB dataset. You will need to set the QUAL= parameter to match the high-level qualifiers of your SAMPLIB dataset.
@@ -1194,9 +1191,7 @@ Copy the VIRTAPPL member (created by the ARBOLOAD job in step 8) from the VIRTEL
 \PYG{n}{V} \PYG{n}{NET}\PYG{p}{,}\PYG{n}{ACT}\PYG{p}{,}\PYG{n}{ID}\PYG{o}{=}\PYG{n}{VIRTAPPL}
 \end{sphinxVerbatim}
 \begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{11}
 \item {} 
 Edit the procedure VIRTEL4 in your VIRTEL CNTL library so that the high-level qualifiers match the names you used when you loaded the files in step 4. Copy the procedure to your system PROCLIB, renaming it as VIRTEL.
@@ -1211,9 +1206,7 @@ Start VIRTEL
 
 You can now logon to VIRTEL from a 3270 terminal using the APPLID specified in the VIRTCT01, and you can display the VIRTEL Web Access menu in your web browser using URL \sphinxurl{http://n.n.n.n:41001} where n.n.n.n is the IP address of your z/OS system.
 \begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{14}
 \item {} 
 Apply any Virtel Web Access (See VWA maintenance) according the instructions in the Readme-updtnnnn.txt file included in the zip file. If the zip file does not exist, skip this step. If yo do apply maintenance then refresh the browser (CTRL-R) after updating the relevant TRSF directories. Check that the updtnnn is the correct number in the Administration Portal Screen.
@@ -1531,9 +1524,7 @@ The procedure for upgrading from a previous version of VIRTEL (version 4.00 or l
 If you have modified default settings or added customized elements to the W2H-DIR directory these will be overridden when upgrading. The upgrade process installs a new SAMP.TRSF VSAM file which is the VSAM file associated with W2H-DIR. See note 9. You are advised not to use the Administration port 41001 for user transasctions as this port is reserved for Virtel administration and is tied to web elements distributed in W2H-DIR. User transaction should be associated with another port. The sample provide is port 41002 which is associated with the CLI-DIR directory. This directory is not affected by an upgrade.
 \end{sphinxadmonition}
 \begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 Upload and unpack the virtelnnnmvs.xmit file as described in the previous section.
 
@@ -1754,9 +1745,7 @@ The value specified must be placed in the third position of the PARM card.
 \label{\detokenize{Installation_Guide:ip-parameter}}\label{\detokenize{Installation_Guide:index-14}}
 Currently the IP address used by VIRTEL for a particular line can be derived from being:-
 \begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 Explicitly defined in the LINE definition in the ARBO statements
 
@@ -5638,7 +5627,7 @@ At the end of the VIRTCT, define the VTDYNAM table with the rules for substituti
 \PYG{n}{MQ22}    \PYG{n}{VTOVER} \PYG{n}{PARM}\PYG{o}{=}\PYG{p}{(}\PYG{n}{MQ2}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{p}{,}\PYG{n}{TARGET}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZpc{}\PYGZpc{}}\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{,}\PYG{n}{FROM}\PYG{o}{=}\PYG{l+m+mi}{2}
 \end{sphinxVerbatim}
 
-With these definitions and VTOVER=‘12345’, the MQ1 and MQ2 parameters of the VIRTCT will have the values shown below:
+With these definitions and VTOVER=’12345’, the MQ1 and MQ2 parameters of the VIRTCT will have the values shown below:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{MQ1}\PYG{o}{=}\PYG{n}{CSQ1}\PYG{p}{,}
@@ -5757,7 +5746,7 @@ z/OS
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPRINT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
         \PYG{n}{DEFINE} \PYG{n}{CLUSTER}\PYG{p}{(}\PYG{n}{NAME}\PYG{p}{(}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
             \PYG{n}{KEYS}\PYG{p}{(}\PYG{l+m+mi}{9} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{RECSZ}\PYG{p}{(}\PYG{l+m+mi}{100} \PYG{l+m+mi}{4089}\PYG{p}{)} \PYG{n}{FSPC}\PYG{p}{(}\PYG{l+m+mi}{10} \PYG{l+m+mi}{10}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
-            \PYG{n}{VOL}\PYG{p}{(}\PYG{n}{SPT001}\PYG{p}{)} \PYG{n}{REC}\PYG{p}{(}\PYG{l+m+mi}{250}\PYG{p}{,}\PYG{l+m+mi}{50}\PYG{p}{)} \PYG{n}{SHR}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)} \PYG{n}{SPEED}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
+            \PYG{n}{VOL}\PYG{p}{(}\PYG{n}{SPT001}\PYG{p}{)} \PYG{n}{REC}\PYG{p}{(}\PYG{l+m+mi}{250}\PYG{p}{,}\PYG{l+m+mi}{50}\PYG{p}{)} \PYG{n}{SHR}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{n}{SPEED}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
         \PYG{n}{DATA} \PYG{p}{(}\PYG{n}{NAME}\PYG{p}{(}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{o}{.}\PYG{n}{DATA}\PYG{p}{)} \PYG{n}{CISZ}\PYG{p}{(}\PYG{l+m+mi}{4096}\PYG{p}{)}\PYG{p}{)} \PYG{o}{\PYGZhy{}}
         \PYG{n}{INDEX} \PYG{p}{(}\PYG{n}{NAME}\PYG{p}{(}\PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{TEST}\PYG{o}{.}\PYG{n}{ARBO}\PYG{o}{.}\PYG{n}{INDEX}\PYG{p}{)}\PYG{p}{)}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{RELOAD} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{VIRCONF}\PYG{p}{,}\PYG{n}{COND}\PYG{o}{=}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{NE}\PYG{p}{,}\PYG{n}{DEFARBO}\PYG{p}{)}\PYG{p}{,}\PYG{n}{PARM}\PYG{o}{=}\PYG{n}{LOAD}

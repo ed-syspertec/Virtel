@@ -36,7 +36,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Messages V4.59" href="../Virtel459MG/messages.html" />
-    <link rel="prev" title="Connectivity Reference V4.59" href="../Virtel459CN/connectivity_guide.html" /> 
+    <link rel="prev" title="How To Guide V4.59" href="../Virtel459CS/Customization.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -96,6 +96,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../virtel.html#v4-59">V4.59</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../Virtel459AP/audit_operations_ and_performance.html">Audit, Administration, Operations and Performance V4.59</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Virtel459CN/connectivity_guide.html">Connectivity Reference V4.59</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Virtel459CS/Customization.html">How To Guide V4.59</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Installation Guide V4.59</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#summary-of-amendments">Summary of Amendments</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -116,7 +117,6 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../newsletters.html">Technical Newsletters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../howto.html">Miscellaneous</a></li>
 </ul>
 
             
@@ -216,11 +216,18 @@ their respective owners.</p>
 </div>
 <div class="section" id="summary-of-amendments">
 <span id="vvrrig59-summary-of-ammendments"></span><h2>Summary of Amendments<a class="headerlink" href="#summary-of-amendments" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="virtel-version-4-59-1st-oct-2018">
-<h3>Virtel version 4.59 (1st Oct 2018)<a class="headerlink" href="#virtel-version-4-59-1st-oct-2018" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="virtel-version-4-59-12th-jul-2019">
+<h3>Virtel version 4.59 (12th Jul 2019)<a class="headerlink" href="#virtel-version-4-59-12th-jul-2019" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.57.</p>
+<p>For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.</p>
+</div>
+</div>
+<div class="section" id="virtel-version-4-58-1st-oct-2018">
+<h3>Virtel version 4.58 (1st Oct 2018)<a class="headerlink" href="#virtel-version-4-58-1st-oct-2018" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For further details see the Virtel Technical Newsletter TN201803: Whats new in Virtel 4.58.</p>
 </div>
 </div>
 <div class="section" id="virtel-version-4-57-1st-jul-2017">
@@ -2174,7 +2181,7 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 <span class="n">LOGMSG</span><span class="o">=</span><span class="s1">&#39;usstab=USSVIRT&#39;</span>
 </pre></div>
 </div>
-<p><img alt="image3" src="../../../_images/image339.png" /></p>
+<p><img alt="image3" src="../../../_images/image340.png" /></p>
 <p><strong>System Symbolic support</strong></p>
 <p>VIR0021W supports system symbolics within the MSG10 area and in the usstab= keyword. For example in the MSG10 buffer definition any area that has a symbolic will be translated using the values defined in the SYS1.PARMLIB member IEASYMXX. The z/OS command <em>D SYMBOLS</em> can be use to list the defined system symbolics.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DC</span> <span class="n">CL80</span><span class="s1">&#39; This is system &amp;&amp;SYSNAME. running on SYSPLEX &amp;&amp;SYSPLEX.&#39;</span>
@@ -2196,7 +2203,7 @@ VIRTEL APPL AUTH=(PASS,ACQ,SPO)
 <p>Will load a USSTAB module depending on the &amp;SYSCLONE. system symbolic value and report error messages to line 24.</p>
 <p><strong>Default USSTAB module USSVIRT</strong>
 A default USSTAB module is shipped in the VIRTEL loadlib called USSVIRT. This USS module is loaded by default should the user’s USSTAB fail to load. The default USSTAB looks like:- The source is maintained in the SAMPLIB library.</p>
-<p><img alt="image4" src="../../../_images/image437.png" /></p>
+<p><img alt="image4" src="../../../_images/image439.png" /></p>
 <p><strong>Constraints</strong></p>
 <p>The user USSTAB MSG10 module that VIR0021W processes must adhere to certian constraints else results will be unpredicatble. The constraints are:-</p>
 <ul class="simple">
@@ -6004,7 +6011,7 @@ Java and all Java-based trademarks and logos are trademarks or registered tradem
         <a href="../Virtel459MG/messages.html" class="btn btn-neutral float-right" title="Messages V4.59" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Virtel459CN/connectivity_guide.html" class="btn btn-neutral float-left" title="Connectivity Reference V4.59" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Virtel459CS/Customization.html" class="btn btn-neutral float-left" title="How To Guide V4.59" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
