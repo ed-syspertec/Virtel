@@ -43,7 +43,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The master toctree document.
-master_doc = 'connectivity_guide'
+master_doc = 'Administration_Guide'
 
 # General information about the project.
 project = 'Virtel'
