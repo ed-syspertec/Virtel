@@ -42,7 +42,7 @@
 
 
 \title{Virtel Customization}
-\date{Nov 03, 2019}
+\date{Nov 12, 2019}
 \release{4.59}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -108,15 +108,15 @@ For further details see the Virtel Technical Newsletter TN201902: Whats new in V
 \end{sphinxadmonition}
 
 
-\chapter{Customizing}
-\label{\detokenize{Customization:customizing}}
+\chapter{Customization}
+\label{\detokenize{Customization:customization}}
 Customization of Virtel can be implemented through customization of the following elements:
 \begin{itemize}
 \item {} 
 Custom CSS files, including Print Style CSS files.
 
 \item {} 
-Custom Javascript files.
+Custom JavaScript files.
 
 \item {} 
 Custom setting parameters.
@@ -133,11 +133,12 @@ As delivered, Virtel provides a dummy settings member, W2HPARM.JS, which is loca
 \label{\detokenize{Customization:levels-of-customization}}
 Depending on how Virtel is implemented at a site will determine what level of customization is required. For most users, simple modification of the default settings may be all that is required. This can be achieved just by modifying the supplied dummy W2HPARM.JS in the CLI-DIR assuming that this is the only directory in use for any “user” transactions. The setting defaults are listed in Appendix A of the Virtel User Guide.
 
-More complex installations may require different levels of customization invoking bespoke CSS and Javascript members. Furthermore, different customization levels may be required for different Entry points and underlying transactions. The “Option” level of customization meets these requirements.
+More complex installations may require different levels of customization invoking bespoke CSS and JavaScript members. Furthermore, different customization levels may be required for different Entry points and underlying transactions. The “Option” level of customization meets these requirements.
 
+\index{Customization@\spxentry{Customization}!W2HPARM.JS@\spxentry{W2HPARM.JS}}\ignorespaces 
 
 \subsection{Settings member W2HPARM.JS}
-\label{\detokenize{Customization:settings-member-w2hparm-js}}
+\label{\detokenize{Customization:settings-member-w2hparm-js}}\label{\detokenize{Customization:index-0}}
 The Virtel settings member is a JavaScript object consisting of a key:value construct. The key representing the Virtel setting and the value the associated setting. Note that a key value can be another object as is the case in the “global-settings” and “useVirtelMacros” values. Keys names are case sensitive - key “w2hparm” is different to “W2hparm”. Invalid keys name will be ignored by Virtel. Key names are enclosed in quotes when defined within the w2hparm object, for example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -154,9 +155,10 @@ but if a property is defined outside of the object definition, no quotes are spe
 
 See Appendix A of the Virtel Users Guide for a full list of “key” names and associated default values.
 
+\index{Customization@\spxentry{Customization}!Displaying customized members@\spxentry{Displaying customized members}}\ignorespaces 
 
 \subsection{Displaying customized members}
-\label{\detokenize{Customization:displaying-customized-members}}
+\label{\detokenize{Customization:displaying-customized-members}}\label{\detokenize{Customization:index-1}}
 To display a settings member use the following URLs as examples:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -173,12 +175,13 @@ To display a customized option member use the following URL:
 
 \sphinxstyleemphasis{Example of displaying a global option member}
 
+\index{Customization@\spxentry{Customization}!Common settings member@\spxentry{Common settings member}}\ignorespaces 
 
 \subsection{Common settings member}
-\label{\detokenize{Customization:common-settings-member}}
+\label{\detokenize{Customization:common-settings-member}}\label{\detokenize{Customization:index-2}}
 If it is required that a common set of settings member be used for both W2H-DIR and CLI-DIR than a small modification to the W2H-DIR transaction, W2H-03P, is required. Changing the location directory from W2H-DIR to CLI-DIR will ensure that settings will be derived from the CLI-DIR W2HPARM.JS member. For example if you modify a key settings, which keyboard key reflects they “ENTER” key for example, than this change can used by both W2H and CLI transactions. An example of a modified W2H-03P transaction is displayed below:
 
-{\color{red}\bfseries{}\textbar{}imagexx\textbar{}}
+\sphinxincludegraphics{{image56}.png}
 
 \sphinxstyleemphasis{Example of W2H-03P pointing at the CLI-DIR}
 
@@ -209,9 +212,10 @@ Virtel must not be running when using the VIRCONF program to update transactions
      \PYG{n}{LOGMSG}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{/w2h/w2hparm\PYGZhy{}js}\PYG{l+s+s1}{\PYGZsq{}}
 \end{sphinxVerbatim}
 
+\index{Customization@\spxentry{Customization}!Global Level Options@\spxentry{Global Level Options}}\ignorespaces 
 
-\section{Global Options}
-\label{\detokenize{Customization:global-options}}
+\section{Global Level Options}
+\label{\detokenize{Customization:global-level-options}}\label{\detokenize{Customization:index-3}}
 Virtel implements a “global” option customized level whereby all customized elements apply to all transactions of a particular Entry Point. Each Entry Point may have its own “global” options. To implement global option customization, the W2HPARM.JS settings member is modified to contain a global settings object whose attributes point to members located in the options directory OPT-DIR.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -281,12 +285,13 @@ The output from this display should show the DDI/Macros options that we used in 
 
 \sphinxstyleemphasis{Example of a wh2parm.global.js member}
 
+\index{Customization@\spxentry{Customization}!Transaction Level Options@\spxentry{Transaction Level Options}}\ignorespaces 
 
-\section{Transaction Options}
-\label{\detokenize{Customization:transaction-options}}
-Some transactions may require a different set of options or settings than those defined at the Entry Point or Global level. For example, certain transactions may have a modified tool bar containing a Printer Icon. Transactions which require such specific customization should have a unique option identifier or “Id” associated with the transaction definition. This “id” will pull in a different set of options “key”:”values” settings and will override the “global” settings. The option “id” will be used to associate customized elements against specific transaction(s).
+\section{Transaction Level Options}
+\label{\detokenize{Customization:transaction-level-options}}\label{\detokenize{Customization:index-4}}
+Some transactions may require a different set of options or settings than those defined at the Entry Point or Global level. For example, certain transactions may have a modified Tool Bar containing a Printer Icon. Transactions which require such specific customization should have a unique option identifier or “Id” associated with the transaction definition. This “id” will pull in a different set of options “key”:”values” settings and will override the “global” settings. The option “id” will be used to associate customized elements against specific transaction(s).
 
-In the following example the value “myOptions” has been chosen as an “id” for a particular transaction. A transaction level “core option file”, using the format “option.id.js”, will be used to locate they customized elements. In this example we are using a customized JavaScript member to add a “Printer Icon” to the Virtel Toolbar. Using the option “id” of “myOptions” a javascript file will be created called “option.myOptions.js”. This will be uploaded to CLI-DIR. Customized settings for transactions are held in a Javascript object called “oCustom”. Here is an example of the myOptions Javascript file:
+In the following example the value “myOptions” has been chosen as an “id” for a particular transaction. A transaction level “core option file”, using the format “option.id.js”, will be used to locate they customized elements. In this example we are using a customized JavaScript member to add a “Printer Icon” to the Virtel Toolbar. Using the option “id” of “myOptions” a javascript file will be created called “option.myOptions.js”. This will be uploaded to CLI-DIR. Customized settings for transactions are held in a JavaScript object called “oCustom”. Here is an example of the myOptions JavaScript file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{o}{\PYGZhy{}} \PYG{n}{option}\PYG{o}{.}\PYG{n}{myOptions}\PYG{o}{.}\PYG{n}{js}\PYG{o}{.} \PYG{n}{Transaction} \PYG{n}{level} \PYG{n}{core} \PYG{n}{option} \PYG{n}{file}
@@ -297,13 +302,13 @@ In the following example the value “myOptions” has been chosen as an “id�
 
 \sphinxstyleemphasis{Example of a core option file for customized JavaScript}
 
-This “”core option file” points to our customized JavaScript member for this transaction. This member contains the Virtel Javascript function “after\_standardInit” which will be called after initialization to modify the standard Virtel tool bar:
+This “”core option file” points to our customized JavaScript member for this transaction. This member contains the Virtel JavaScript function “after\_standardInit” which will be called after initialization to modify the standard Virtel Tool Bar:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{o}{\PYGZhy{}} \PYG{n}{custJS}\PYG{o}{.}\PYG{n}{myOptions}\PYG{o}{.}\PYG{n}{js}
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{Add} \PYG{n}{Print} \PYG{n}{Button} \PYG{n}{To} \PYG{n}{Toolbar}
 \PYG{n}{function} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n}{addtoolbarbutton}\PYG{p}{(}\PYG{l+m+mi}{000}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../print.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Print Screen}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{do\PYGZus{}print}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{addTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{l+m+mi}{000}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{../print.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Print Screen}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{do\PYGZus{}print}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
 \PYG{n}{function} \PYG{n}{do\PYGZus{}print}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -311,7 +316,7 @@ This “”core option file” points to our customized JavaScript member for th
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example of customized Javascript element associated with a transaction}
+\sphinxstyleemphasis{Example of customized JavaScript element associated with a transaction}
 
 To support this customized transaction the following two files are uploaded to the OPT-DIR or options directory:
 \begin{description}
@@ -325,40 +330,96 @@ custjJS.myOptions.js - customized java script file for “myOptions”.
 More than one transaction within an Entry Point can point to the same “id” option files.
 \end{sphinxadmonition}
 
+\index{Customization@\spxentry{Customization}!Transaction Level Options@\spxentry{Transaction Level Options}}\index{Transaction Level Options@\spxentry{Transaction Level Options}!Customization@\spxentry{Customization}}\ignorespaces 
 
-\section{Defining Transaction customization}
-\label{\detokenize{Customization:defining-transaction-customization}}
-The Virtel User Guide contains further information on how to use GUI based controls to create the necessary customization members and associated files for transaction customization. See the section “Defining Transaction Options” in the Customization section for further details.
+\section{Defining Transaction Options}
+\label{\detokenize{Customization:defining-transaction-options}}\label{\detokenize{Customization:index-5}}
+The Virtel User Guide contains further information on how to use GUI based controls to create the necessary customization members and associated files for transaction settings customization. See the section “Defining Transaction Options” in the Customization section for further details.
 
+\index{Customization@\spxentry{Customization}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!Customization@\spxentry{Customization}}\ignorespaces 
 
-\section{Customizable JavaScript functions}
-\label{\detokenize{Customization:customizable-javascript-functions}}
-Virtel provides the following Javascript functions that can be customized to give bespoke behavior:
-\begin{itemize}
+\section{Customizable JavaScript User Exits}
+\label{\detokenize{Customization:customizable-javascript-user-exits}}\label{\detokenize{Customization:index-6}}
+Virtel provides the following JavaScript functions that can be customized to give bespoke behavior. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
+
+\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!before\_submitForm@\spxentry{before\_submitForm}}\index{before\_submitForm@\spxentry{before\_submitForm}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
 \item {} 
-after\_standardInit
+\sphinxstylestrong{before\_submitForm(pfKey,oFrom)} - Called before submitting a Virtel request.
 
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Arguments}   \PYG{o}{*}\PYG{n}{pfKey}\PYG{o}{*} \PYG{n}{The} \PYG{n}{Name} \PYG{n}{of} \PYG{n}{the} \PYG{n}{key} \PYG{n}{pressed}\PYG{o}{.} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ENTER}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{PF1}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}\PYG{n}{etc}\PYG{o}{.}
+            \PYG{o}{*}\PYG{n}{oForm}\PYG{o}{*} \PYG{n}{Form} \PYG{n}{DOM} \PYG{n+nb}{object} \PYG{n}{to} \PYG{n}{be} \PYG{n}{submitted}\PYG{o}{.} \PYG{p}{(}\PYG{n}{usually} \PYG{n}{document}\PYG{o}{.}\PYG{n}{virtelForm}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\end{itemize}
+
+\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!after\_standardInit@\spxentry{after\_standardInit}}\index{after\_standardInit@\spxentry{after\_standardInit}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
 \item {} 
-after\_reponseHandle
+\sphinxstylestrong{after\_standardInit()} - Called after a session with the host application has started.
+
+\end{itemize}
+
+\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!after\_responseHandle@\spxentry{after\_responseHandle}}\index{after\_responseHandle@\spxentry{after\_responseHandle}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
+\item {} 
+\sphinxstylestrong{after\_responseHandle(o,url,xtim)} - Called after receiving a response from the VIRTEL server.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Arguments}   \PYG{o}{*}\PYG{n}{o}\PYG{o}{*}     \PYG{n}{XMLHttpRequest} \PYG{n+nb}{object} \PYG{p}{(}\PYG{n}{status} \PYG{o+ow}{and} \PYG{n}{responseText}\PYG{p}{)}
+            \PYG{o}{*}\PYG{n}{url}\PYG{o}{*}   \PYG{n}{The} \PYG{n}{URL} \PYG{n}{which} \PYG{n}{was} \PYG{n}{used} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{request}
+            \PYG{o}{*}\PYG{n}{xtim}\PYG{o}{*}  \PYG{n}{JavaScript} \PYG{n}{Date} \PYG{n+nb}{object} \PYG{n}{of} \PYG{n}{time} \PYG{n}{request} \PYG{n}{was} \PYG{n}{sent} \PYG{n}{to} \PYG{n}{the} \PYG{n}{server}
+\end{sphinxVerbatim}
+
+\end{itemize}
+
+\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!modify\_settings@\spxentry{modify\_settings}}\index{modify\_settings@\spxentry{modify\_settings}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
+\item {} 
+\sphinxstylestrong{modify\_settingsValues(name,values)} -  Allows modification of settings before parameters are displayed in the Settings Menu. It allows the list of values to be modified.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Arguments}   \PYG{o}{*}\PYG{n}{name}\PYG{o}{*}  \PYG{n}{The} \PYG{n}{parameter} \PYG{n}{name}
+            \PYG{o}{*}\PYG{n}{values}\PYG{o}{*} \PYG{n}{The} \PYG{n+nb}{list} \PYG{n}{of} \PYG{n}{possible} \PYG{n}{values}\PYG{o}{.}
+
+\PYG{n}{The} \PYG{k}{return} \PYG{n}{value} \PYG{o+ow}{is} \PYG{n}{treated} \PYG{k}{as} \PYG{n}{the} \PYG{n}{new} \PYG{n}{value}\PYG{o}{.} \PYG{n}{If} \PYG{n}{the} \PYG{n}{function} \PYG{n}{returns}
+\PYG{n}{null} \PYG{o+ow}{or} \PYG{n}{undefined}\PYG{p}{,} \PYG{n}{the} \PYG{n+nb}{list} \PYG{n}{remains} \PYG{n}{unchanged}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\end{itemize}
+
+\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!when\_init()@\spxentry{when\_init()}}\index{when\_init()@\spxentry{when\_init()}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
+\item {} 
+\sphinxstylestrong{when\_init()} - Called for each sub-page after vir3270 initialisation.
+
+\end{itemize}
+
+\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!when\_focusGained@\spxentry{when\_focusGained}}\index{when\_focusGained@\spxentry{when\_focusGained}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
+\item {} 
+\sphinxstylestrong{when\_focusGained()} - Called whenever the 3270 window gains focus.
+
+\end{itemize}
+
+\index{JavaScript User Exits@\spxentry{JavaScript User Exits}!when\_focusLost@\spxentry{when\_focusLost}}\index{when\_focusLost@\spxentry{when\_focusLost}!JavaScript User Exits@\spxentry{JavaScript User Exits}}\ignorespaces \begin{itemize}
+\item {} 
+\sphinxstylestrong{when\_focusLost()} - Called whenever the 3270 window loses focus.
 
 \end{itemize}
 
 
 \chapter{Virtel Web Access}
 \label{\detokenize{Customization:virtel-web-access}}
+\index{Virtel Web Access@\spxentry{Virtel Web Access}!VWA User Interface@\spxentry{VWA User Interface}}\ignorespaces 
 
 \section{VWA User Interface}
-\label{\detokenize{Customization:vwa-user-interface}}
+\label{\detokenize{Customization:vwa-user-interface}}\label{\detokenize{Customization:index-14}}
 The VIRTEL Web Access user interface is in the form of a conventional 3270 screen divided into three areas:
 \begin{itemize}
 \item {} 
-The toolbar located in the upper of the screen contains the icons of functions (1), the information environment (2),the language selection (3).
+The Tool Bar located in the upper of the screen contains the icons of functions (1), the information environment (2),the language selection (3).
 
 \item {} 
 The status line at the bottom includes the monitoring zone (4), particulars of the terminals associated with the session(5), mode and cursor position (6).
 
 \item {} 
-The area between the toolbar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.
+The area between the Tool Bar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.
 
 \end{itemize}
 
@@ -368,10 +429,11 @@ The area between the toolbar and the status bar is used to display the contents 
 
 \subsection{Title}
 \label{\detokenize{Customization:title}}
+\index{Customization@\spxentry{Customization}!Add User Name to Title Tab@\spxentry{Add User Name to Title Tab}}\ignorespaces 
 
-\subsubsection{Add the User Name in the title Tab}
-\label{\detokenize{Customization:add-the-user-name-in-the-title-tab}}
-You can add the User Name in the title tab by using the following order included in a custom.js file:
+\subsubsection{Add User Name to Title Tab}
+\label{\detokenize{Customization:add-user-name-to-title-tab}}\label{\detokenize{Customization:index-15}}
+You can add the User Name into the title tab by using the following function in a custom.js file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 function after\PYGZus{}responseHandle() \PYGZob{}
@@ -379,160 +441,166 @@ function after\PYGZus{}responseHandle() \PYGZob{}
 \PYGZcb{}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example to add the User Name in the Title tab.}
+\sphinxstyleemphasis{Example to add User Name to Title Tab.}
 
 
-\subsection{Toolbar}
-\label{\detokenize{Customization:toolbar}}
-The toolbar is located at the top of the 3270 screen. It contains, icons, language selection tool and environment
+\subsection{Tool bar}
+\label{\detokenize{Customization:tool-bar}}
+The Tool Bar is located at the top of the 3270 screen. It contains, icons, language selection tool and environment
 information. Some of those component can be removed, added or modified.
 
+\index{Customization@\spxentry{Customization}!Hide Tool Bar {[}Settings{]}@\spxentry{Hide Tool Bar {[}Settings{]}}}\index{Tool Bar@\spxentry{Tool Bar}!Hide@\spxentry{Hide}}\ignorespaces 
 
-\subsubsection{How to permanently hide the toolbar}
-\label{\detokenize{Customization:how-to-permanently-hide-the-toolbar}}
-The administrator may wish to prevent users from accessing features like copy/paste, print, and settings by removing correponding icons, or by hidding the toolbar. This example shows how to hide the toolbar using a custom.css file:
+\subsubsection{Hiding the Tool Bar}
+\label{\detokenize{Customization:hiding-the-tool-bar}}\label{\detokenize{Customization:index-16}}
+The administrator may prevent access to features like copy/paste, print, and settings by removing the corresponding Tool Bar icons, or by hiding the Tool Bar altogether. This example shows how to hide the Tool Bar using a custom.css file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{k}{for} \PYG{n}{site} \PYG{n}{customization}
 \PYG{o}{*} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2007}\PYG{p}{,}\PYG{l+m+mi}{2010} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*}\PYG{o}{/}
- \PYG{c+c1}{\PYGZsh{}toolbar \PYGZob{}display:none;\PYGZcb{}}
+ \PYG{c+c1}{\PYGZsh{}Tool Bar \PYGZob{}display:none;\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.css for hiding the toolbar}
+\sphinxstyleemphasis{Example custom.css for hiding the Tool Bar}
 
-You can also use custom.js to remove icons individually from the toolbar, see “Removing unwanted toolbar icons” on page 11.
+You can also use custom.js to remove individual icons from the Tool Bar, see “Removing unwanted Tool Bar icons” on page 11.
 
+\index{Customization@\spxentry{Customization}!Enable/Disable the Tool Bar display@\spxentry{Enable/Disable the Tool Bar display}}\index{Tool Bar@\spxentry{Tool Bar}!Enable and Disable Display@\spxentry{Enable and Disable Display}}\ignorespaces 
 
-\subsubsection{Let users hide/show the toolbar at their convenience}
-\label{\detokenize{Customization:let-users-hide-show-the-toolbar-at-their-convenience}}
-The administrator may want to let users hide/show the toolbar at their convenience:
+\subsubsection{Enable/Disable the Tool Bar display}
+\label{\detokenize{Customization:enable-disable-the-tool-bar-display}}\label{\detokenize{Customization:index-17}}
+The administrator can provide users with controls that enable or disable the display of the Tool Bar.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
- \PYG{o}{*} \PYG{n}{Configuration} \PYG{n}{to} \PYG{n}{allow} \PYG{n}{the} \PYG{n}{user} \PYG{n}{to} \PYG{n}{manage} \PYG{n}{show}\PYG{o}{/}\PYG{n}{hide} \PYG{n}{toolbar} \PYG{n}{by} \PYG{n}{himself}\PYG{o}{.}
+ \PYG{o}{*} \PYG{n}{Configuration} \PYG{n}{to} \PYG{n}{allow} \PYG{n}{the} \PYG{n}{user} \PYG{n}{to} \PYG{n}{manage} \PYG{n}{show}\PYG{o}{/}\PYG{n}{hide} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{n}{by} \PYG{n}{himself}\PYG{o}{.}
  \PYG{o}{*}\PYG{o}{/}
 \PYG{n}{w2hparm}\PYG{o}{.}\PYG{n}{switchToolBarDisplay} \PYG{o}{=} \PYG{n}{true}\PYG{p}{;}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example w2hparm.js to allow users to manage the hide / show feature of the toolbar by themselves.}
+\sphinxstyleemphasis{Example w2hparm.js to allow users to enable/disable the Tool Bar display}
 
-If this option is enabled, the “Alt + Insert” and “Alt + Home” keys present in the Key Mappings tab are enhanced with the “Toolbar” option. The user can then assign either of these two keys in order to to hide/show the toolbar at its convenience.
+If this option is enabled, the “Alt + Insert” and “Alt + Home” keys in the Key Mappings tab control the “Tool bar” display. The user can these key assignments to control the Tool Bar display.
 
 \sphinxincludegraphics[scale=0.75]{{image2}.png}
 
 \sphinxstyleemphasis{Key Mappings Setting Tab}
 
+\index{Customization@\spxentry{Customization}!Tool Bar key assignment@\spxentry{Tool Bar key assignment}}\ignorespaces 
 These two assignments can also be predefined in the w2hparm.js file by using the commands:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
-\PYG{o}{*} \PYG{n}{Configuration} \PYG{n}{to} \PYG{n}{assign} \PYG{n}{Alt}\PYG{o}{+}\PYG{n}{Insert} \PYG{o+ow}{and}\PYG{o}{/}\PYG{o+ow}{or} \PYG{n}{Alt}\PYG{o}{+}\PYG{n}{Home} \PYG{n}{key} \PYG{n}{to} \PYG{n}{show}\PYG{o}{/}\PYG{n}{hide} \PYG{n}{toolbar}\PYG{o}{.}
+\PYG{o}{*} \PYG{n}{Configuration} \PYG{n}{to} \PYG{n}{assign} \PYG{n}{Alt}\PYG{o}{+}\PYG{n}{Insert} \PYG{o+ow}{and}\PYG{o}{/}\PYG{o+ow}{or} \PYG{n}{Alt}\PYG{o}{+}\PYG{n}{Home} \PYG{n}{key} \PYG{n}{to} \PYG{n}{show}\PYG{o}{/}\PYG{n}{hide} \PYG{n}{Tool} \PYG{n}{Bar}\PYG{o}{.}
 \PYG{o}{*}\PYG{o}{/}
 \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{altins}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ToolBar}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o+ow}{and}\PYG{o}{/}\PYG{o+ow}{or}
 \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{althome}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ToolBar}\PYG{l+s+s2}{\PYGZdq{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example w2hparm.js to assign Alt+Insert and/or Alt+Home key to show/hide toolbar.}
+\sphinxstyleemphasis{Example w2hparm.js to assign Alt+Insert and/or Alt+Home key to show/hide Tool Bar.}
 
-The toolbar can be automatically masked at each new session opening by using the following command in w2hparm.js
+\index{Customization@\spxentry{Customization}!Hide Tool Bar {[}User{]}@\spxentry{Hide Tool Bar {[}User{]}}}\index{Tool Bar@\spxentry{Tool Bar}!Enable and Disable Display {[}User{]}@\spxentry{Enable and Disable Display {[}User{]}}}\ignorespaces 
+The Tool Bar can be automatically disabled at each new session opening by using the following command in w2hparm.js
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
-\PYG{o}{*} \PYG{n}{Configuration} \PYG{n}{to} \PYG{n}{automatically} \PYG{n}{hide} \PYG{n}{the} \PYG{n}{toolbar} \PYG{n}{when} \PYG{n}{opening} \PYG{n}{a} \PYG{n}{new} \PYG{n}{session}\PYG{o}{.}
+\PYG{o}{*} \PYG{n}{Configuration} \PYG{n}{to} \PYG{n}{automatically} \PYG{n}{hide} \PYG{n}{the} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{n}{when} \PYG{n}{opening} \PYG{n}{a} \PYG{n}{new} \PYG{n}{session}\PYG{o}{.}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hidetoolbar}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{true}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{hideTool Bar}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{true}\PYG{l+s+s2}{\PYGZdq{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example w2hparm.js to automatically hide the toolbar when opening a new session.}
+\sphinxstyleemphasis{Example w2hparm.js to automatically hide the Tool Bar when opening a new session.}
 
 Under Virtel 4.57, those features require update \#5555 or above to be applied.
 
+\index{Customization@\spxentry{Customization}!Hide Tool Bar Maintenance Level@\spxentry{Hide Tool Bar Maintenance Level}}\index{Tool Bar@\spxentry{Tool Bar}!Hide Maintenance Level@\spxentry{Hide Maintenance Level}}\ignorespaces 
 
-\subsubsection{Showing / Hiding running version and maintenance level}
-\label{\detokenize{Customization:showing-hiding-running-version-and-maintenance-level}}
-On the right side of the toolbar, the running version and the level of maintenance of VIRTEL is shown. As this information is important and very helpful in case of troubleshooting, those information cannot be hidden except when the \sphinxstyleemphasis{w2hparm.switchToolBarDisplay = true;} feature is implemented and if the user hides the toolbar by themself.
+\subsubsection{Enable / Disable Maintenance Level}
+\label{\detokenize{Customization:enable-disable-maintenance-level}}\label{\detokenize{Customization:index-20}}
+On the right side of the Tool Bar, the running version and the level of maintenance of VIRTEL is shown. This information is important in diagnosing problems. It can be hidden if the \sphinxstyleemphasis{w2hparm.switchToolBarDisplay = true;} option is set or the user selects to disable to Tool Bar.
 
 
-\subsubsection{Changing background color of the toolbar buttons}
-\label{\detokenize{Customization:changing-background-color-of-the-toolbar-buttons}}
-This example shows how to change the background color of the toolbar buttons by adding orders in the custom.css file:
+\subsubsection{Changing background color of the Tool Bar buttons}
+\label{\detokenize{Customization:changing-background-color-of-the-tool-bar-buttons}}
+This example shows how to change the background color of the Tool Bar buttons by adding CSS orders in the custom.css file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
-\PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{n}{customization} \PYG{n}{the} \PYG{n}{background} \PYG{n}{of} \PYG{n}{the} \PYG{n}{toolbar}
+\PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{n}{customization} \PYG{n}{the} \PYG{n}{background} \PYG{n}{of} \PYG{n}{the} \PYG{n}{Tool} \PYG{n}{Bar}
 \PYG{o}{*} \PYG{n}{buttons}\PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2014} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*}\PYG{o}{/}
 \PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}} \PYG{n}{transparent} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{at rest}\PYG{l+s+s2}{\PYGZdq{}}
 \PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}} \PYG{n}{white} \PYG{n}{when} \PYG{n}{cursor} \PYG{n}{moves} \PYG{n}{on}
 \PYG{o}{\textbar{}}\PYG{o}{\PYGZhy{}} \PYG{n}{yellow} \PYG{n}{when} \PYG{n}{button} \PYG{o+ow}{is} \PYG{n}{clicked}
-\PYG{c+c1}{\PYGZsh{}toolbar td .tbButton \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td .tbButton \PYGZob{}}
 \PYG{n}{background}\PYG{o}{\PYGZhy{}}\PYG{n}{color}\PYG{p}{:} \PYG{n}{inherit}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{\PYGZsh{}toolbar td .tbButton:hover \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td .tbButton:hover \PYGZob{}}
 \PYG{n}{background}\PYG{o}{\PYGZhy{}}\PYG{n}{color}\PYG{p}{:} \PYG{n}{white}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
-\PYG{c+c1}{\PYGZsh{}toolbar td .tbButton:active \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td .tbButton:active \PYGZob{}}
 \PYG{n}{background}\PYG{o}{\PYGZhy{}}\PYG{n}{color}\PYG{p}{:} \PYG{n}{yellow}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
     \PYG{o}{\textbar{}} \PYG{n}{To} \PYG{n}{remove} \PYG{n}{the} \PYG{n}{background} \PYG{n}{color} \PYG{o+ow}{and} \PYG{n}{the} \PYG{n}{border} \PYG{n}{of} \PYG{n}{buttons} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{at rest}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}
-\PYG{c+c1}{\PYGZsh{}toolbar td .tbButton \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td .tbButton \PYGZob{}}
 \PYG{n}{background}\PYG{o}{\PYGZhy{}}\PYG{n}{color}\PYG{p}{:} \PYG{n}{inherit}\PYG{p}{;}
 \PYG{n}{border}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{n}{px} \PYG{n}{solid} \PYG{n}{transparent}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.css managing the background color of the toolbar buttons}
+\sphinxstyleemphasis{Example custom.css managing the background color of the Tool Bar buttons}
 
+\index{Customization@\spxentry{Customization}!Customize the Tool Bar by application@\spxentry{Customize the Tool Bar by application}}\index{Tool Bar@\spxentry{Tool Bar}!Customize by color@\spxentry{Customize by color}}\ignorespaces 
 
-\subsubsection{Customizing the toolbar color by application}
-\label{\detokenize{Customization:customizing-the-toolbar-color-by-application}}
-It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This
-example shows how to set the color of the toolbar to yellow for SPCICSP and pink for SPCICSQ.
+\subsubsection{Customize the Tool Bar color by application}
+\label{\detokenize{Customization:customize-the-tool-bar-color-by-application}}\label{\detokenize{Customization:index-21}}
+It is sometimes useful for the user to have a clear visual indication of which system they are logged on to. This example shows how to set the color of the Tool Bar to yellow for SPCICSP and pink for SPCICSQ.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{k}{for} \PYG{n}{site} \PYG{n}{customization}
 \PYG{o}{*} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2007}\PYG{p}{,}\PYG{l+m+mi}{2010} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*}\PYG{o}{/}
 
-\PYG{o}{.}\PYG{n}{SPCICSP} \PYG{c+c1}{\PYGZsh{}toolbar \PYGZob{}background\PYGZhy{}color:yellow;\PYGZcb{}}
-\PYG{o}{.}\PYG{n}{SPCICSQ} \PYG{c+c1}{\PYGZsh{}toolbar \PYGZob{}background\PYGZhy{}color:pink;\PYGZcb{}}
+\PYG{o}{.}\PYG{n}{SPCICSP} \PYG{c+c1}{\PYGZsh{}Tool Bar \PYGZob{}background\PYGZhy{}color:yellow;\PYGZcb{}}
+\PYG{o}{.}\PYG{n}{SPCICSQ} \PYG{c+c1}{\PYGZsh{}Tool Bar \PYGZob{}background\PYGZhy{}color:pink;\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.css for coloring the toolbar according to CICS region}
+\sphinxstyleemphasis{Example custom.css for coloring the Tool Bar according to CICS region}
 
 \sphinxincludegraphics{{image3}.png}
-\sphinxstyleemphasis{Web Access screen with yellow toolbar for SPCICSP}
+\sphinxstyleemphasis{Web Access screen with yellow Tool Bar for SPCICSP}
 
 \sphinxincludegraphics{{image4}.png}
-\sphinxstyleemphasis{Web Access screen with pink toolbar for SPCICSQ}
+\sphinxstyleemphasis{Web Access screen with pink Tool Bar for SPCICSQ}
 
+\index{Customization@\spxentry{Customization}!Add a Web Link in the Tool Bar@\spxentry{Add a Web Link in the Tool Bar}}\index{Tool Bar@\spxentry{Tool Bar}!Add web link@\spxentry{Add web link}}\ignorespaces 
 
-\subsubsection{Add a web link in the toolbar}
-\label{\detokenize{Customization:add-a-web-link-in-the-toolbar}}
-You can add a web link in the toolbar by using the following order included in a custom.js file:
+\subsubsection{Add a Web Link in the Tool Bar}
+\label{\detokenize{Customization:add-a-web-link-in-the-tool-bar}}\label{\detokenize{Customization:index-22}}
+You can add a web link in the Tool Bar by using the following order included in a custom.js file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{function} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{o}{*} \PYG{n}{Adds} \PYG{n}{a} \PYG{n}{button} \PYG{n}{to} \PYG{n}{the} \PYG{n}{toolbar} \PYG{n}{which} \PYG{n}{performs} \PYG{n}{a} \PYG{n}{Google} \PYG{n}{search}
-    \PYG{n}{addtoolbarbutton}\PYG{p}{(}\PYG{n}{position}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{http://www.yourtargetsit.com/favicon.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYG{o}{*} \PYG{n}{Adds} \PYG{n}{a} \PYG{n}{button} \PYG{n}{to} \PYG{n}{the} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{n}{which} \PYG{n}{performs} \PYG{n}{a} \PYG{n}{Google} \PYG{n}{search}
+    \PYG{n}{addTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{n}{position}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{http://www.yourtargetsit.com/favicon.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
     \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Title}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{linked\PYGZus{}function}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example to add a web link in the toolbar.}
+\sphinxstyleemphasis{Example to add a web link in the Tool Bar.}
 
 
-\subsubsection{Example : Add a Google Search link in the toolbar}
-\label{\detokenize{Customization:example-add-a-google-search-link-in-the-toolbar}}
+\subsubsection{Example : Add a Google Search link into the Tool Bar}
+\label{\detokenize{Customization:example-add-a-google-search-link-into-the-tool-bar}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{function} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
 \PYG{o}{/}\PYG{o}{*}
-\PYG{o}{*} \PYG{n}{Adds} \PYG{n}{a} \PYG{n}{button} \PYG{n}{to} \PYG{n}{the} \PYG{n}{toolbar} \PYG{n}{which} \PYG{n}{performs} \PYG{n}{a} \PYG{n}{Google} \PYG{n}{search} \PYG{k}{for}
+\PYG{o}{*} \PYG{n}{Adds} \PYG{n}{a} \PYG{n}{button} \PYG{n}{to} \PYG{n}{the} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{n}{which} \PYG{n}{performs} \PYG{n}{a} \PYG{n}{Google} \PYG{n}{search} \PYG{k}{for}
 \PYG{o}{*} \PYG{n}{the} \PYG{n}{text} \PYG{n}{selected} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{red} \PYG{n}{box} \PYG{o+ow}{in} \PYG{n}{the} \PYG{l+m+mi}{3270} \PYG{n}{screen}\PYG{p}{,} \PYG{o+ow}{or} \PYG{k}{for} \PYG{n}{the}
 \PYG{o}{*} \PYG{n}{word} \PYG{n}{at} \PYG{n}{the} \PYG{n}{cursor} \PYG{k}{if} \PYG{n}{no} \PYG{n}{box} \PYG{o+ow}{is} \PYG{n}{drawn}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{n}{addtoolbarbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{http://www.google.com/favicon.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{n}{addTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{http://www.google.com/favicon.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
 \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Search engine query}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{do\PYGZus{}search}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \PYG{n}{function} \PYG{n}{do\PYGZus{}search}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -542,23 +610,24 @@ You can add a web link in the toolbar by using the following order included in a
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{searcharg}\PYG{p}{)} \PYG{n}{searchURL} \PYG{o}{+}\PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/search?q=}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{+}
         \PYG{n}{encodeURIComponent}\PYG{p}{(}\PYG{n}{searcharg}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{o}{/}\PYGZbs{}\PYG{n}{s}\PYG{o}{+}\PYG{o}{/}\PYG{n}{g}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
     \PYG{n}{var} \PYG{n}{windowopts} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{location=yes,status=yes,resizable=yes,}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{+}
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{scrollbars=yes,toolbar=yes,menubar=yes,width=640,height=480}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{scrollbars=yes,Tool Bar=yes,menubar=yes,width=640,height=480}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
     \PYG{n}{var} \PYG{n}{searchwin} \PYG{o}{=} \PYG{n}{window}\PYG{o}{.}\PYG{n}{open}\PYG{p}{(}\PYG{n}{searchURL}\PYG{p}{,} \PYG{n}{windowname}\PYG{p}{,} \PYG{n}{windowopts}\PYG{p}{)}\PYG{p}{;}
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{searchwin}\PYG{p}{)} \PYG{n}{searchwin}\PYG{o}{.}\PYG{n}{focus}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
+\index{Customization@\spxentry{Customization}!Add a Company Logo into the Tool Bar@\spxentry{Add a Company Logo into the Tool Bar}}\index{Tool Bar@\spxentry{Tool Bar}!Add Company Logo@\spxentry{Add Company Logo}}\ignorespaces 
 
-\subsubsection{Adding a company logo}
-\label{\detokenize{Customization:adding-a-company-logo}}
-This example shows how to display an icon (for example, a company logo) at the left of the toolbar:
+\subsubsection{Adding a Company Logo}
+\label{\detokenize{Customization:adding-a-company-logo}}\label{\detokenize{Customization:index-23}}
+This example shows how to display an icon (for example, a company logo) at the left of the Tool Bar:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
 \PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{n}{customisation} \PYG{k}{for} \PYG{n}{company} \PYG{n}{logo}
 \PYG{o}{*} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2012} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}toolbar td\PYGZsh{}companyIcon \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td\PYGZsh{}companyIcon \PYGZob{}}
 \PYG{n}{height}\PYG{p}{:}\PYG{l+m+mi}{30}\PYG{n}{px}\PYG{p}{;}
 \PYG{n}{display}\PYG{p}{:}\PYG{n}{table}\PYG{o}{\PYGZhy{}}\PYG{n}{cell}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
@@ -572,8 +641,9 @@ This example shows how to display an icon (for example, a company logo) at the l
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.css for displaying company logo in the toolbar}
+\sphinxstyleemphasis{Example custom.css for displaying company logo in the Tool Bar}
 
+\index{Customization@\spxentry{Customization}!Replace the Virtel Logo in the Tool Bar@\spxentry{Replace the Virtel Logo in the Tool Bar}}\index{Tool Bar@\spxentry{Tool Bar}!Replace Virtel Logo@\spxentry{Replace Virtel Logo}}\ignorespaces 
 This example shows how to replace the Virtel logo in the VIRTEL Web Access menu and the Application menu by your company logo:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -596,12 +666,13 @@ If no explicit path is given, the company logo will be loaded from the same dire
 \end{sphinxadmonition}
 
 
-\subsection{Toolbar Icons}
-\label{\detokenize{Customization:toolbar-icons}}
+\subsection{Tool Bar Icons}
+\label{\detokenize{Customization:tool-bar-icons}}
+\index{Customization@\spxentry{Customization}!Adding Tool Bar Icons@\spxentry{Adding Tool Bar Icons}}\index{Tool Bar@\spxentry{Tool Bar}!Add Icons@\spxentry{Add Icons}}\ignorespaces 
 
-\subsubsection{Adding a toolbar icon}
-\label{\detokenize{Customization:adding-a-toolbar-icon}}
-This example uses the after\_standardInit function to insert additional icons into the toolbar when the session is started. Icons may subsequently be added or removed from the toolbar after each screen by means of the after\_responseHandle function.
+\subsubsection{Adding a Tool Bar icon}
+\label{\detokenize{Customization:adding-a-tool-bar-icon}}\label{\detokenize{Customization:index-25}}
+This example uses the after\_standardInit function to insert additional icons into the Tool Bar when the session is started. Icons may subsequently be added or removed from the Tool Bar after each screen by means of the after\_responseHandle function.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
@@ -609,14 +680,14 @@ This example uses the after\_standardInit function to insert additional icons in
 \PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{customer}\PYG{o}{\PYGZhy{}}\PYG{n}{specific} \PYG{n}{javascript} \PYG{n}{functions}
 \PYG{o}{*}\PYG{o}{/}
 \PYG{o}{/}\PYG{o}{*}
-\PYG{o}{*} \PYG{n}{Adds} \PYG{n}{a} \PYG{n}{button} \PYG{n}{to} \PYG{n}{the} \PYG{n}{toolbar} \PYG{n}{which} \PYG{n}{performs} \PYG{n}{a} \PYG{n}{Google} \PYG{n}{search} \PYG{k}{for}
+\PYG{o}{*} \PYG{n}{Adds} \PYG{n}{a} \PYG{n}{button} \PYG{n}{to} \PYG{n}{the} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{n}{which} \PYG{n}{performs} \PYG{n}{a} \PYG{n}{Google} \PYG{n}{search} \PYG{k}{for}
 \PYG{o}{*} \PYG{n}{the} \PYG{n}{text} \PYG{n}{selected} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{red} \PYG{n}{box} \PYG{o+ow}{in} \PYG{n}{the} \PYG{l+m+mi}{3270} \PYG{n}{screen}\PYG{p}{,} \PYG{o+ow}{or} \PYG{k}{for} \PYG{n}{the}
 \PYG{o}{*} \PYG{n}{word} \PYG{n}{at} \PYG{n}{the} \PYG{n}{cursor} \PYG{k}{if} \PYG{n}{no} \PYG{n}{box} \PYG{o+ow}{is} \PYG{n}{drawn}
 \PYG{o}{*} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{n}{function} \PYG{n}{must} \PYG{n}{be} \PYG{n}{implemented} \PYG{o+ow}{in} \PYG{n}{a} \PYG{n}{custom}\PYG{o}{.}\PYG{n}{js} \PYG{n}{file}
 \PYG{o}{*}\PYG{o}{/}
 
 \PYG{n}{function} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{n}{addtoolbarbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{http://www.google.com/favicon.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+    \PYG{n}{addTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{http://www.google.com/favicon.ico}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
     \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Search engine query}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{n}{do\PYGZus{}search}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 
@@ -627,18 +698,19 @@ This example uses the after\_standardInit function to insert additional icons in
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{searcharg}\PYG{p}{)} \PYG{n}{searchURL} \PYG{o}{+}\PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/search?q=}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{+}
         \PYG{n}{encodeURIComponent}\PYG{p}{(}\PYG{n}{searcharg}\PYG{o}{.}\PYG{n}{replace}\PYG{p}{(}\PYG{o}{/}\PYGZbs{}\PYG{n}{s}\PYG{o}{+}\PYG{o}{/}\PYG{n}{g}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{)}\PYG{p}{;}
     \PYG{n}{var} \PYG{n}{windowopts} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{location=yes,status=yes,resizable=yes,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{o}{+}
-    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{scrollbars=yes,toolbar=yes,menubar=yes,width=640,height=480}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
+    \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{scrollbars=yes,Tool Bar=yes,menubar=yes,width=640,height=480}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
     \PYG{n}{var} \PYG{n}{searchwin} \PYG{o}{=} \PYG{n}{window}\PYG{o}{.}\PYG{n}{open}\PYG{p}{(}\PYG{n}{searchURL}\PYG{p}{,} \PYG{n}{windowname}\PYG{p}{,} \PYG{n}{windowopts}\PYG{p}{)}\PYG{p}{;}
     \PYG{k}{if} \PYG{p}{(}\PYG{n}{searchwin}\PYG{p}{)} \PYG{n}{searchwin}\PYG{o}{.}\PYG{n}{focus}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.js to customize the toolbar icons}
+\sphinxstyleemphasis{Example custom.js to customize the Tool Bar icons}
 
+\index{Customization@\spxentry{Customization}!Removing Tool Bar Icons@\spxentry{Removing Tool Bar Icons}}\index{Tool Bar@\spxentry{Tool Bar}!Remove Icons@\spxentry{Remove Icons}}\ignorespaces 
 
-\subsubsection{Removing unwanted toolbar icons}
-\label{\detokenize{Customization:removing-unwanted-toolbar-icons}}
-This example uses the after\_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.
+\subsubsection{Removing unwanted Tool Bar icons}
+\label{\detokenize{Customization:removing-unwanted-tool-bar-icons}}\label{\detokenize{Customization:index-26}}
+This example uses the after\_standardInit function to disable macro functions by removing the corresponding icons from the Tool Bar.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
@@ -647,15 +719,15 @@ This example uses the after\_standardInit function to disable macro functions by
 \PYG{o}{*} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{n}{function} \PYG{n}{must} \PYG{n}{be} \PYG{n}{implemented} \PYG{o+ow}{in} \PYG{n}{a} \PYG{n}{custom}\PYG{o}{.}\PYG{n}{js} \PYG{n}{file}
 \PYG{o}{*}\PYG{o}{/}
 \PYG{n}{function} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
-    \PYG{o}{/}\PYG{o}{*} \PYG{n}{Remove} \PYG{n}{macro} \PYG{n}{buttons} \PYG{k+kn}{from} \PYG{n+nn}{the} \PYG{n}{toolbar} \PYG{o}{*}\PYG{o}{/}
-    \PYG{n}{removetoolbarbutton}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{startrecording}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
-    \PYG{n}{removetoolbarbutton}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{playback}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+    \PYG{o}{/}\PYG{o}{*} \PYG{n}{Remove} \PYG{n}{macro} \PYG{n}{buttons} \PYG{k+kn}{from} \PYG{n+nn}{the} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{o}{*}\PYG{o}{/}
+    \PYG{n}{removeTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{startrecording}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
+    \PYG{n}{removeTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{playback}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.js to remove selected toolbar icons}
+\sphinxstyleemphasis{Example custom.js to remove selected Tool Bar icons}
 
-The names of the other toolbar icons which can be removed in this way are:
+The names of the other Tool Bar icons which can be removed in this way are:
 \begin{itemize}
 \item {} 
 capture,
@@ -711,27 +783,40 @@ startrecording.
 (settingsV2 is présent only if w2hparms.js contains “settingsGUI”:\{“version”:”V2”\}, or “settingsGUI”:\{“version”:”V1+V2”\},)
 \end{sphinxadmonition}
 
-To hide the toolbar completely, see “Hiding the toolbar” on page 6. To hide only the Virtel Application name, see “Showing / Hiding server information”, on page 15.
+\index{Removing 3D/Hover effects from Tool Bar buttons@\spxentry{Removing 3D/Hover effects from Tool Bar buttons}}\index{Tool Bar@\spxentry{Tool Bar}!Remove Button effects@\spxentry{Remove Button effects}}\ignorespaces 
+\index{Customization@\spxentry{Customization}!File Transfer Icons@\spxentry{File Transfer Icons}}\index{Tool Bar@\spxentry{Tool Bar}!File Transfer Icons@\spxentry{File Transfer Icons}}\ignorespaces 
+
+\subsection{File Transfer icons}
+\label{\detokenize{Customization:file-transfer-icons}}\label{\detokenize{Customization:index-28}}
+The File Transfer icons are present in the Tool Bar only for access to TSO and if the transaction includes an INPUT and/or OUTPUT scenario with a call to the INDSCEN\$ macro (See “TSO File Transfer” in “Virtel Web Access User Guide”).
+
+\index{Customization@\spxentry{Customization}!Removing File Transfer Icons@\spxentry{Removing File Transfer Icons}}\index{Tool Bar@\spxentry{Tool Bar}!Remove File Transfer Icons@\spxentry{Remove File Transfer Icons}}\ignorespaces 
+
+\subsubsection{Removing File Transfer Icons}
+\label{\detokenize{Customization:removing-file-transfer-icons}}\label{\detokenize{Customization:index-29}}
+VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND\$FILE protocol. The function is activated displayed only for the transaction defined with the SCENINDT scenario entered in Input and Output scenario fields. For some specific users, it may be necessary to remove the file transfer icons from the Tool Bar.
+This can be done by using the removeTool Barbutton function using the appropriate variable name.(see “Removing unwanted Tool Bar icons”, page 11.)
+
+\index{Customization@\spxentry{Customization}!Macro Icons@\spxentry{Macro Icons}}\index{Tool Bar@\spxentry{Tool Bar}!Macro Icons@\spxentry{Macro Icons}}\ignorespaces 
+
+\subsection{Macro Icons}
+\label{\detokenize{Customization:macro-icons}}\label{\detokenize{Customization:index-30}}
+\index{Customization@\spxentry{Customization}!Removing Macro Icons@\spxentry{Removing Macro Icons}}\index{Tool Bar@\spxentry{Tool Bar}!Remove Macro Icons@\spxentry{Remove Macro Icons}}\ignorespaces 
+
+\subsubsection{Removing Macro Icons}
+\label{\detokenize{Customization:removing-macro-icons}}\label{\detokenize{Customization:index-31}}
+See “Removing unwanted Tool Bar icons”, page 11.
+
+To hide the Tool Bar completely, see “Hiding the Tool Bar” on page 6. To hide only the Virtel Application name, see “Showing / Hiding server information”, on page 15.
 
 
-\subsubsection{Removing file transfer icons}
-\label{\detokenize{Customization:removing-file-transfer-icons}}
-VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND\$FILE protocol. The function is activated displayed only for the transaction defined with the SCENINDT scenario entered in Input and Output scenario fields. For some specific users, it may be necessary to remove the file transfer icons from the toolbar.
-This can be done by using the “removetoolbarbutton” function using the appropriate variable name.(See “Removing unwanted toolbar icons”, page 11.)
-
-
-\subsubsection{Removing macro icons}
-\label{\detokenize{Customization:removing-macro-icons}}
-Icons for recording or executing a Macro are automatically present in the toolbar. To make them unavailable you should use the “removetoolbarbutton” function using the appropriate variable name.(See “Removing unwanted toolbar icons”, page 11.)
-
-
-\subsubsection{Positioning toolbar icons}
-\label{\detokenize{Customization:positioning-toolbar-icons}}
+\subsubsection{Positioning Tool Bar Icons}
+\label{\detokenize{Customization:positioning-tool-bar-icons}}
 In certain circumstances, the default position of an icon may not be at the user’s convenience. Is possible to change an icon’s position based on the position of another icon.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
-\PYG{o}{*} \PYG{n}{Customize} \PYG{n}{the} \PYG{n}{location} \PYG{n}{of} \PYG{n}{dynamic} \PYG{n}{toolbar} \PYG{n}{buttons}\PYG{o}{.}
+\PYG{o}{*} \PYG{n}{Customize} \PYG{n}{the} \PYG{n}{location} \PYG{n}{of} \PYG{n}{dynamic} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{n}{buttons}\PYG{o}{.}
 \PYG{o}{*} \PYG{n}{The} \PYG{n}{calls} \PYG{n}{to} \PYG{n}{this} \PYG{n}{function} \PYG{n}{are} \PYG{n}{ignored} \PYG{n}{when} \PYG{n}{they}
 \PYG{o}{*} \PYG{k}{return} \PYG{n}{nothing}\PYG{p}{,} \PYG{o+ow}{or} \PYG{n}{an} \PYG{n}{integer} \PYG{o+ow}{not} \PYG{n}{greater} \PYG{n}{than} \PYG{l+m+mf}{0.}
 \PYG{o}{*}
@@ -742,7 +827,7 @@ In certain circumstances, the default position of an icon may not be at the user
 \PYG{o}{*} \PYG{o}{\PYGZgt{}} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{file\PYGZhy{}recv}\PYG{l+s+s1}{\PYGZsq{}}
 \PYG{o}{*} \PYG{o}{\PYGZgt{}} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{printer}\PYG{l+s+s1}{\PYGZsq{}}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{n}{function} \PYG{n}{customize\PYGZus{}toolbarButtonIndex}\PYG{p}{(}\PYG{n+nb}{id}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{n}{function} \PYG{n}{customize\PYGZus{}Tool} \PYG{n}{BarButtonIndex}\PYG{p}{(}\PYG{n+nb}{id}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{if} \PYG{p}{(}\PYG{n+nb}{id}\PYG{o}{==}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{printer}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o}{\textbar{}}\PYG{o}{\textbar{}} \PYG{n+nb}{id}\PYG{o}{==}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{document\PYGZhy{}print\PYGZhy{}preview}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{p}{\PYGZob{}}
     \PYG{k}{return} \PYG{n}{getToolbarButtonIndex}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{disconnect}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
     \PYG{p}{\PYGZcb{}}
@@ -751,36 +836,37 @@ In certain circumstances, the default position of an icon may not be at the user
 
 \sphinxstyleemphasis{Example custom.js to select a position for printer icon}
 
+\index{Customization@\spxentry{Customization}!Center User Icons@\spxentry{Center User Icons}}\index{Tool Bar@\spxentry{Tool Bar}!Center User Icons@\spxentry{Center User Icons}}\ignorespaces 
 
-\subsubsection{Centering non standard icons}
-\label{\detokenize{Customization:centering-non-standard-icons}}
-The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribute passed within the “addtoolbarbutton” function in conjunction of using a specific css attribute.
+\subsubsection{Centering User Icons}
+\label{\detokenize{Customization:centering-user-icons}}\label{\detokenize{Customization:index-32}}
+The recommended size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering by modifying the content of the CSS class attribute passed within the “addTool Barbutton” function.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
 \PYG{o}{*} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2014} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{customer}\PYG{o}{\PYGZhy{}}\PYG{n}{specific} \PYG{n}{javascript} \PYG{n}{functions}
-\PYG{o}{*} \PYG{n}{Resizing} \PYG{n}{a} \PYG{n}{too} \PYG{n}{small} \PYG{o+ow}{or} \PYG{n}{too} \PYG{n}{big} \PYG{n}{toolbar} \PYG{n}{icon}\PYG{o}{.}
+\PYG{o}{*} \PYG{n}{Resizing} \PYG{n}{a} \PYG{n}{too} \PYG{n}{small} \PYG{o+ow}{or} \PYG{n}{too} \PYG{n}{big} \PYG{n}{Tool} \PYG{n}{Bar} \PYG{n}{icon}\PYG{o}{.}
 \PYG{o}{*} \PYG{n}{For} \PYG{n}{example} \PYG{n}{toosmall\PYGZus{}pic}\PYG{o}{.}\PYG{n}{png}\PYG{o}{=}\PYG{l+m+mi}{22}\PYG{n}{x22} \PYG{o+ow}{and} \PYG{n}{toobig\PYGZus{}pic}\PYG{o}{.}\PYG{n}{jpg}\PYG{o}{=}\PYG{l+m+mi}{145}\PYG{n}{x30}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{n}{addtoolbarbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/w2h/toosmall\PYGZus{}pic.png}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Custom button \PYGZsh{}1 tooltip}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{n}{addTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/w2h/toosmall\PYGZus{}pic.png}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Custom button \PYGZsh{}1 tooltip}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
     \PYG{n}{do\PYGZus{}search}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tbButton size22x22}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
-\PYG{n}{addtoolbarbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/w2h/toobig\PYGZus{}pic.jpg}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Custom button \PYGZsh{}2 tooltip}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
+\PYG{n}{addTool} \PYG{n}{Barbutton}\PYG{p}{(}\PYG{l+m+mi}{999}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{/w2h/toobig\PYGZus{}pic.jpg}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Custom button \PYGZsh{}2 tooltip}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{,}
     \PYG{n}{do\PYGZus{}search}\PYG{p}{,} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{tbButton size145x30}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}\PYG{p}{;}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.js to specify the toolbar icon size}
+\sphinxstyleemphasis{Example custom.js to specify the Tool Bar icon size}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
-\PYG{c+c1}{\PYGZsh{}toolbar td img.tbButton.size22x22 \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td img.tbButton.size22x22 \PYGZob{}}
     \PYG{n}{width}\PYG{p}{:} \PYG{l+m+mi}{22}\PYG{n}{px}\PYG{p}{;}
     \PYG{n}{height}\PYG{p}{:} \PYG{l+m+mi}{22}\PYG{n}{px}\PYG{p}{;}
     \PYG{n}{padding}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{n}{px}\PYG{p}{;} \PYG{o}{/}\PYG{o}{*} \PYG{n}{padding} \PYG{o+ow}{is} \PYG{n}{calculated} \PYG{n}{to} \PYG{n}{center} \PYG{n}{the} \PYG{n}{picture} \PYG{n}{horizontaly}
     \PYG{o+ow}{and} \PYG{n}{verticaly} \PYG{o+ow}{in} \PYG{n}{the} \PYG{l+m+mi}{32}\PYG{n}{x32} \PYG{n}{allocated} \PYG{n}{area}\PYG{o}{.} \PYG{p}{(}\PYG{l+m+mi}{5}\PYG{o}{+}\PYG{l+m+mi}{22}\PYG{o}{+}\PYG{l+m+mi}{5} \PYG{o}{=} \PYG{l+m+mi}{32}\PYG{p}{)} \PYG{o}{*}\PYG{o}{/}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{c+c1}{\PYGZsh{}toolbar td img.tbButton.size145x30 \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td img.tbButton.size145x30 \PYGZob{}}
     \PYG{n}{width}\PYG{p}{:} \PYG{l+m+mi}{145}\PYG{n}{px}\PYG{p}{;}
     \PYG{n}{height}\PYG{p}{:} \PYG{l+m+mi}{30}\PYG{n}{px}\PYG{p}{;}
     \PYG{n}{padding}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{n}{px} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{o}{/}\PYG{o}{*} \PYG{n}{padding} \PYG{o+ow}{is} \PYG{n}{calculated} \PYG{n}{to} \PYG{n}{center} \PYG{n}{the} \PYG{n}{picture} \PYG{n}{verticaly}
@@ -788,21 +874,22 @@ The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possi
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.css to manage a toolbar icon with a non standard size}
+\sphinxstyleemphasis{Example custom.css to manage a Tool Bar icon with a non standard size}
 
+\index{Customization@\spxentry{Customization}!Removing 3D/Hover effects from Tool Bar buttons@\spxentry{Removing 3D/Hover effects from Tool Bar buttons}}\index{Tool Bar@\spxentry{Tool Bar}!Customize effects@\spxentry{Customize effects}}\ignorespaces 
 
-\subsubsection{Removing 3D/hover effects on the toolbar buttons}
-\label{\detokenize{Customization:removing-3d-hover-effects-on-the-toolbar-buttons}}
-This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:
+\subsubsection{Removing 3D/hover effects on the Tool Bar buttons}
+\label{\detokenize{Customization:removing-3d-hover-effects-on-the-tool-bar-buttons}}\label{\detokenize{Customization:index-33}}
+This example shows how to remove the 3D/hover effects on Tool Bar buttons by adding orders in a Custom.CSS file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
 \PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{n}{customisation} \PYG{k}{for} \PYG{n}{removing} \PYG{l+m+mi}{3}\PYG{n}{D}\PYG{o}{/}\PYG{n}{hover} \PYG{n}{effects}
 \PYG{o}{*} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2014} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}toolbar td .tbButton,}
-\PYG{c+c1}{\PYGZsh{}toolbar td .tbButton:hover,}
-\PYG{c+c1}{\PYGZsh{}toolbar td .tbButton:active \PYGZob{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td .tbButton,}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td .tbButton:hover,}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td .tbButton:active \PYGZob{}}
     \PYG{n}{background}\PYG{o}{\PYGZhy{}}\PYG{n}{color}\PYG{p}{:} \PYG{n}{inherit}\PYG{p}{;}
     \PYG{n}{border}\PYG{p}{:} \PYG{n}{inherit}\PYG{p}{;}
     \PYG{n}{box}\PYG{o}{\PYGZhy{}}\PYG{n}{shadow}\PYG{p}{:} \PYG{n}{inherit}\PYG{p}{;}
@@ -811,47 +898,30 @@ This example shows how to remove the 3D/hover effects on toolbar buttons by addi
 
 \sphinxstyleemphasis{Example custom.css for removing 3D/hover effects on buttons}
 
-
-\subsection{File Transfer icons}
-\label{\detokenize{Customization:file-transfer-icons}}
-The File Transfer icons are present in the toolbar only for access to TSO and if the transaction includes an INPUT and/or OUTPUT scenario with a call to the INDSCEN\$ macro (See “TSO File Transfer” in “Virtel Web Access User Guide”).
-
-
-\subsubsection{Removing file transfer icons}
-\label{\detokenize{Customization:id1}}
-VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND\$FILE protocol. The function is activated displayed only for the transaction defined with the SCENINDT scenario entered in Input and Output scenario fields. For some specific users, it may be necessary to remove the file transfer icons from the toolbar.
-This can be done by using the removetoolbarbutton function using the appropriate variable name.(see “Removing unwanted toolbar icons”, page 11.)
-
-
-\subsection{Macro Icons}
-\label{\detokenize{Customization:macro-icons}}
-
-\subsubsection{Removing Macro icons}
-\label{\detokenize{Customization:id2}}
-See “Removing unwanted toolbar icons”, page 11.
-
+\index{Customization@\spxentry{Customization}!Icon display troubleshooting@\spxentry{Icon display troubleshooting}}\index{Tool Bar@\spxentry{Tool Bar}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{Icon display troubleshooting}
-\label{\detokenize{Customization:icon-display-troubleshooting}}
-If some icons on the toolbar are displayed with some parasites on the border, please check that the browser is not in a zoom mode greater than 100\%.
+\label{\detokenize{Customization:icon-display-troubleshooting}}\label{\detokenize{Customization:index-34}}
+If Icons on the Tool Bar are not rendered correctly, check that the browser is not in a zoom mode greater than 100\%.
 
 
 \subsection{Background information}
 \label{\detokenize{Customization:background-information}}
+\index{Customization@\spxentry{Customization}!Adding Application customized text to the Tool Bar@\spxentry{Adding Application customized text to the Tool Bar}}\index{Tool Bar@\spxentry{Tool Bar}!Adding customized text@\spxentry{Adding customized text}}\ignorespaces 
 
-\subsubsection{Adding custom text by application to the toolbar}
-\label{\detokenize{Customization:adding-custom-text-by-application-to-the-toolbar}}
-Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to the toolbar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is displayed for application TSO2A.
+\subsubsection{Adding Application customized text to the Tool Bar}
+\label{\detokenize{Customization:adding-application-customized-text-to-the-tool-bar}}\label{\detokenize{Customization:index-35}}
+Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to the Tool Bar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is displayed for application TSO2A.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
 \PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{k}{for} \PYG{n}{site} \PYG{n}{customisation}
 \PYG{o}{*} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2007}\PYG{p}{,}\PYG{l+m+mi}{2010} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{.}\PYG{n}{toolbarLast}\PYG{p}{\PYGZob{}}
+\PYG{o}{.}\PYG{n}{Tool} \PYG{n}{BarLast}\PYG{p}{\PYGZob{}}
     \PYG{n}{text}\PYG{o}{\PYGZhy{}}\PYG{n}{align}\PYG{p}{:} \PYG{n}{right}\PYG{p}{;} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Text} \PYG{n}{alignement} \PYG{o}{*}\PYG{o}{/}
 \PYG{p}{\PYGZcb{}}
-\PYG{o}{.}\PYG{n}{TSO1A} \PYG{o}{.}\PYG{n}{toolbarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
+\PYG{o}{.}\PYG{n}{TSO1A} \PYG{o}{.}\PYG{n}{Tool} \PYG{n}{BarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
     \PYG{n}{content}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{MVS1}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
     \PYG{n}{opacity}\PYG{p}{:} \PYG{l+m+mf}{0.25}\PYG{p}{;}
     \PYG{n}{font}\PYG{o}{\PYGZhy{}}\PYG{n}{size}\PYG{p}{:} \PYG{l+m+mi}{30}\PYG{n}{px}\PYG{p}{;}
@@ -861,7 +931,7 @@ Another way of providing a clear visual indication of which application the user
     \PYG{n}{padding}\PYG{o}{\PYGZhy{}}\PYG{n}{right}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{n}{px}\PYG{p}{;} \PYG{o}{/}\PYG{o}{*} \PYG{n}{To} \PYG{n}{separate} \PYG{n}{cells} \PYG{o}{*}\PYG{o}{/}
 \PYG{p}{\PYGZcb{}}
 
-\PYG{o}{.}\PYG{n}{TSO2A} \PYG{o}{.}\PYG{n}{toolbarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
+\PYG{o}{.}\PYG{n}{TSO2A} \PYG{o}{.}\PYG{n}{Tool} \PYG{n}{BarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
     \PYG{n}{content}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{MVS2}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
     \PYG{n}{opacity}\PYG{p}{:} \PYG{l+m+mf}{0.25}\PYG{p}{;}
     \PYG{n}{font}\PYG{o}{\PYGZhy{}}\PYG{n}{size}\PYG{p}{:} \PYG{l+m+mi}{30}\PYG{n}{px}\PYG{p}{;}
@@ -872,25 +942,26 @@ Another way of providing a clear visual indication of which application the user
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.css for adding custom text to the toolbar}
+\sphinxstyleemphasis{Example custom.css for adding custom text to the Tool Bar}
 
 \sphinxincludegraphics{{image5}.png}
-\sphinxstyleemphasis{Web Access screen with custom text in the toolbar}
+\sphinxstyleemphasis{Web Access screen with custom text in the Tool Bar}
 
+\index{Customization@\spxentry{Customization}!Adding Transaction Application Name to the Tool Bar@\spxentry{Adding Transaction Application Name to the Tool Bar}}\index{Tool Bar@\spxentry{Tool Bar}!Adding Transaction Application Name@\spxentry{Adding Transaction Application Name}}\ignorespaces 
 
-\subsubsection{Adding application name to the toolbar}
-\label{\detokenize{Customization:adding-application-name-to-the-toolbar}}
-Another way of providing a clear visual indication of which application the user is logged on to is to add the application name label to the toolbar. In this example the text “TSO” is displayed when logged on to application TSO, and “SPCICSH” is displayed for application SPCICSH.
+\subsubsection{Adding Transaction Application name to the Tool Bar}
+\label{\detokenize{Customization:adding-transaction-application-name-to-the-tool-bar}}\label{\detokenize{Customization:index-36}}
+Adding Application Name from the transaction definition to the Tool Bar. In this example the text “TSO” is displayed when logged on to application TSO, and “SPCICSH” is displayed for application SPCICSH. Again, this is another way to provide feedback information to the user as to which system they are connected to.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
 \PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access} \PYG{n}{style} \PYG{n}{sheet} \PYG{k}{for} \PYG{n}{site} \PYG{n}{customisation}
 \PYG{o}{*} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)}\PYG{n}{Copyright} \PYG{n}{SysperTec} \PYG{n}{Communication} \PYG{l+m+mi}{2007}\PYG{p}{,}\PYG{l+m+mi}{2010} \PYG{n}{All} \PYG{n}{Rights} \PYG{n}{Reserved}
 \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{.}\PYG{n}{toolbarLast}\PYG{p}{\PYGZob{}}
+\PYG{o}{.}\PYG{n}{Tool} \PYG{n}{BarLast}\PYG{p}{\PYGZob{}}
     \PYG{n}{text}\PYG{o}{\PYGZhy{}}\PYG{n}{align}\PYG{p}{:} \PYG{n}{right}\PYG{p}{;} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Text} \PYG{n}{alignment} \PYG{o}{*}\PYG{o}{/}
 \PYG{p}{\PYGZcb{}}
-\PYG{o}{.}\PYG{n}{TSO} \PYG{o}{.}\PYG{n}{toolbarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
+\PYG{o}{.}\PYG{n}{TSO} \PYG{o}{.}\PYG{n}{Tool} \PYG{n}{BarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
     \PYG{n}{content}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{TSO}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
     \PYG{n}{opacity}\PYG{p}{:} \PYG{l+m+mf}{0.25}\PYG{p}{;}
     \PYG{n}{font}\PYG{o}{\PYGZhy{}}\PYG{n}{size}\PYG{p}{:} \PYG{l+m+mi}{30}\PYG{n}{px}\PYG{p}{;}
@@ -899,7 +970,7 @@ Another way of providing a clear visual indication of which application the user
     \PYG{o}{\PYGZhy{}}\PYG{n}{webkit}\PYG{o}{\PYGZhy{}}\PYG{n}{text}\PYG{o}{\PYGZhy{}}\PYG{n}{stroke}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{n}{px} \PYG{n}{red}\PYG{p}{;} \PYG{o}{/}\PYG{o}{*} \PYG{n}{Select} \PYG{n}{color} \PYG{o}{*}\PYG{o}{/}
     \PYG{n}{padding}\PYG{o}{\PYGZhy{}}\PYG{n}{right}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{n}{px}\PYG{p}{;} \PYG{o}{/}\PYG{o}{*} \PYG{n}{To} \PYG{n}{separate} \PYG{n}{cells} \PYG{o}{*}\PYG{o}{/}
 \PYG{p}{\PYGZcb{}}
-\PYG{o}{.}\PYG{n}{SPCICSH} \PYG{o}{.}\PYG{n}{toolbarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
+\PYG{o}{.}\PYG{n}{SPCICSH} \PYG{o}{.}\PYG{n}{Tool} \PYG{n}{BarLast}\PYG{p}{:}\PYG{n}{before} \PYG{p}{\PYGZob{}}
     \PYG{n}{content}\PYG{p}{:} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{SPCICSH}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
     \PYG{n}{opacity}\PYG{p}{:} \PYG{l+m+mf}{0.25}\PYG{p}{;}
     \PYG{n}{font}\PYG{o}{\PYGZhy{}}\PYG{n}{size}\PYG{p}{:} \PYG{l+m+mi}{30}\PYG{n}{px}\PYG{p}{;}
@@ -910,19 +981,20 @@ Another way of providing a clear visual indication of which application the user
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example custom.css for adding custom text to the toolbar}
+\sphinxstyleemphasis{Example custom.css for adding custom text to the Tool Bar}
 
 \sphinxincludegraphics{{image6}.png}
-\sphinxstyleemphasis{Web Access screen with custom application name in the toolbar}
+\sphinxstyleemphasis{Web Access screen with custom application name in the Tool Bar}
 
+\index{Customization@\spxentry{Customization}!Showing/Hiding Server Information@\spxentry{Showing/Hiding Server Information}}\index{Tool Bar@\spxentry{Tool Bar}!Server Information@\spxentry{Server Information}}\ignorespaces 
 
-\subsubsection{Showing / Hiding server informations}
-\label{\detokenize{Customization:showing-hiding-server-informations}}
-It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the toolbar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.
+\subsubsection{Showing / Hiding server information}
+\label{\detokenize{Customization:showing-hiding-server-information}}\label{\detokenize{Customization:index-37}}
+It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the Tool Bar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.
 
 \sphinxincludegraphics{{image7}.png}
 
-The running version and the level of maintenance cannot be hidden, only the server name can be \sphinxstylestrong{permanently} removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:
+The running version and the level of maintenance cannot be hidden, only the server name can be \sphinxstylestrong{permanently} removed by modifying the w2hparm.hideinfo property in a customized w2hparms.js file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
@@ -933,32 +1005,29 @@ The running version and the level of maintenance cannot be hidden, only the serv
 
 \sphinxstyleemphasis{Example w2hparm.js for hiding the mainframe application name on which a user is connected to.}
 
-If the default value is preserved, the user can hide this information for his own usage by checking “Hide Virtel information in toolbar” in the Display tab of the settings panel.
-
-
-\subsubsection{Showing / Hiding running version and maintenance level}
-\label{\detokenize{Customization:id3}}
-On the right side of the toolbar, the running version and the level of maintenance of VIRTEL is shown. As this information is important and very helpful in case of troubleshooting, those information cannot be hidden.
+If the default value is preserved, the user can hide this information for his own usage by checking “Hide Virtel information in Tool Bar” in the Display tab of the settings panel. On the right side of the Tool Bar, the running version and the level of maintenance of VIRTEL is shown. As this information is important and very helpful in case of troubleshooting, those information cannot be hidden.
 
 
 \subsection{Language}
 \label{\detokenize{Customization:language}}
+\index{Customization@\spxentry{Customization}!Hiding the Language Icon@\spxentry{Hiding the Language Icon}}\index{Tool Bar@\spxentry{Tool Bar}!Hiding Language Icon@\spxentry{Hiding Language Icon}}\ignorespaces 
 
 \subsubsection{Hide the Language Icon}
-\label{\detokenize{Customization:hide-the-language-icon}}
-You can hide the language icon by using the following orders included in a custom.css file:
+\label{\detokenize{Customization:hide-the-language-icon}}\label{\detokenize{Customization:index-38}}
+You can hide the language icon by using the following CSS orders included in a customized custom.css file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{\PYGZsh{}toolbar td\PYGZsh{}toolbar\PYGZhy{}lang \PYGZob{} width: 1px; \PYGZcb{}}
-\PYG{c+c1}{\PYGZsh{}toolbar td\PYGZsh{}toolbar\PYGZhy{}lang a \PYGZob{} display: none; \PYGZcb{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td\PYGZsh{}Tool Bar\PYGZhy{}lang \PYGZob{} width: 1px; \PYGZcb{}}
+\PYG{c+c1}{\PYGZsh{}Tool Bar td\PYGZsh{}Tool Bar\PYGZhy{}lang a \PYGZob{} display: none; \PYGZcb{}}
 \end{sphinxVerbatim}
 
 \sphinxstyleemphasis{Example to hide the language icon}
 
+\index{Customization@\spxentry{Customization}!Assign Default Language {[}With User Option{]}@\spxentry{Assign Default Language {[}With User Option{]}}}\index{Language@\spxentry{Language}!Default Language {[}With User Option{]}@\spxentry{Default Language {[}With User Option{]}}}\ignorespaces 
 
 \subsubsection{Assign a default language}
-\label{\detokenize{Customization:assign-a-default-language}}
-You can force default language and leave to the customer the possibility to select another one if necessary by using the following order included in a custom.js file:
+\label{\detokenize{Customization:assign-a-default-language}}\label{\detokenize{Customization:index-39}}
+You can set a default language by using the following CSS order included in a customized custom.js file. The ability to select other languages is through a selection drop down GUI widget. :
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{function} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -993,10 +1062,11 @@ IT for Italian
 
 They must be entered in lower case.
 
+\index{Customization@\spxentry{Customization}!Assign Default Language {[}Without User Option{]}@\spxentry{Assign Default Language {[}Without User Option{]}}}\index{Language@\spxentry{Language}!Default Language {[}Without User Option{]}@\spxentry{Default Language {[}Without User Option{]}}}\ignorespaces 
 
 \subsubsection{Assign a permanent default language}
-\label{\detokenize{Customization:assign-a-permanent-default-language}}
-You can force default language and not allow the customer to select another one. You can do it by using the following order included in a custom.js file:
+\label{\detokenize{Customization:assign-a-permanent-default-language}}\label{\detokenize{Customization:index-40}}
+You can set a permanent language by including the following CSS order in a customized custom.js file. In this case, the user has no ptions to override the default language.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{function} \PYG{n}{after\PYGZus{}standardInit}\PYG{p}{(}\PYG{p}{)} \PYG{p}{\PYGZob{}}
@@ -1031,18 +1101,20 @@ IT for Italian
 
 They must be entered in lower case.
 
+\index{Status Bar@\spxentry{Status Bar}}\ignorespaces 
 
 \section{Status bar}
-\label{\detokenize{Customization:status-bar}}
+\label{\detokenize{Customization:status-bar}}\label{\detokenize{Customization:index-41}}
 The status bar of the VWA user interface is located at the bottom and includes the monitoring zone (4), particulars of the terminals associated with the session (5), mode and cursor position (6).
 
 \sphinxincludegraphics{{image7}.png}
 \sphinxstyleemphasis{The VWA 3270 screen’s areas}
 
+\index{Status Bar@\spxentry{Status Bar}!Deactivate@\spxentry{Deactivate}}\ignorespaces 
 
 \subsection{How to deactivate the Virtel status bar}
-\label{\detokenize{Customization:how-to-deactivate-the-virtel-status-bar}}
-To deativate the status bar create a ccs rule and add it to a custom css file. For example to deactivate it fo transactions associated with the iptions id “test1” create a “e in
+\label{\detokenize{Customization:how-to-deactivate-the-virtel-status-bar}}\label{\detokenize{Customization:index-42}}
+To deactivate the status bar create a ccs rule and add it to a customized custom.css file. For example, to deactivate it for a transactions associated with the the options “ID” “myOptions” create a “myoptions” core file called option.myOptions.css.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{CLI}\PYG{o}{\PYGZhy{}}\PYG{n}{DIR} \PYG{o}{\PYGZhy{}} \PYG{n}{option}\PYG{o}{.}\PYG{n}{myOptions}\PYG{o}{.}\PYG{n}{css}\PYG{o}{.} \PYG{n}{Transaction} \PYG{n}{level} \PYG{n}{core} \PYG{n}{option} \PYG{n}{file}
@@ -1053,7 +1125,7 @@ To deativate the status bar create a ccs rule and add it to a custom css file. F
 
 \sphinxstyleemphasis{Example of a core option file for customized CSS file}
 
-This “”core option file” points to our customized CSS member for transactions which have the option=”myOptions” defined. This member contains a CSS style statement:
+This “core option file” points to a customized CSS file called “custCSS.myOptions.css”. This is used by transactions which have the option=”myOptions” defined. This file contains a CSS style statement:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{div}\PYG{c+c1}{\PYGZsh{}statusbar \PYGZob{}display:none!important\PYGZcb{}}
@@ -1061,12 +1133,14 @@ This “”core option file” points to our customized CSS member for transacti
 
 \sphinxstyleemphasis{Example of customized CSS element}
 
+\index{Relay and Printer Names@\spxentry{Relay and Printer Names}}\ignorespaces 
 
-\subsection{Relay and Printer name}
-\label{\detokenize{Customization:relay-and-printer-name}}
+\subsection{Relay and Printer Name}
+\label{\detokenize{Customization:relay-and-printer-name}}\label{\detokenize{Customization:index-43}}
+\index{Customization@\spxentry{Customization}!Relay and Printer@\spxentry{Relay and Printer}}\index{Relay and Printer Name@\spxentry{Relay and Printer Name}!Functions@\spxentry{Functions}}\ignorespaces 
 
 \subsubsection{Managing Relay and Printer name area}
-\label{\detokenize{Customization:managing-relay-and-printer-name-area}}
+\label{\detokenize{Customization:managing-relay-and-printer-name-area}}\label{\detokenize{Customization:index-44}}
 The area (5) of the VWA user interface contains information about the terminals used during the session. The name of the 3270 relay terminal is shown in the leftmost portion of the area while the name of the virtual printer terminal is shown in the rightmost portion of the area. The presence of a printer device is optional and depends on the terminal
 definition itself. The information in this area can be managed using the following functions:
 \begin{itemize}
@@ -1094,13 +1168,13 @@ vwaStatusBar.getPrintRelay(P1) to retrieve the content of the print relay area
 
 \end{itemize}
 
-For the retrieval function, if the value of the parameter P1 is “true” (without the double quotes), the information returned is the value of “Relay or Printer” as valued at the time the command executes. If the P1 is undefined or if its value is different from “true” the information returned is the value of “Relay or Printer” as existed at the time the page
+For the retrieval function, if the value of the parameter P1 is “true” (without the double quotes), the information returned is the value of “Relay or Printer” as valid at the time the command executes. If the P1 is undefined or if its value is different from “true” the information returned is the value of “Relay or Printer” as existed at the time the page
 was sent by VWA to the browser.
 
 
 \subsubsection{Relay name area}
 \label{\detokenize{Customization:relay-name-area}}
-You can manage the content of the relay name area by adding appropriate orders in after\_responseHandle function.
+You can manage the content of the relay name area by adding calling related functions from within the after\_responseHandle function.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
@@ -1116,10 +1190,11 @@ You can manage the content of the relay name area by adding appropriate orders i
 
 \sphinxstyleemphasis{Example custom.js to customize the content of the relay name area}
 
+\index{Customization@\spxentry{Customization}!Hiding the Relay Name@\spxentry{Hiding the Relay Name}}\index{Relay and Printer Name@\spxentry{Relay and Printer Name}!Hiding the Relay Name@\spxentry{Hiding the Relay Name}}\ignorespaces 
 
-\subsubsection{Hide Relay name area content}
-\label{\detokenize{Customization:hide-relay-name-area-content}}
-You can hide the content of the realy name by replacing its content by spaces.
+\subsubsection{Hiding the Relay Name}
+\label{\detokenize{Customization:hiding-the-relay-name}}\label{\detokenize{Customization:index-45}}
+You can hide the the relay name by replacing its content by spaces.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*}
@@ -1152,9 +1227,10 @@ You can manage the content of the printer name area by adding appropriate orders
 
 \sphinxstyleemphasis{Example custom.js to customize the content of the printer name area}
 
+\index{Customization@\spxentry{Customization}!Hiding the Printer Name@\spxentry{Hiding the Printer Name}}\index{Relay and Printer Name@\spxentry{Relay and Printer Name}!Hiding the Printer Name@\spxentry{Hiding the Printer Name}}\ignorespaces 
 
-\subsubsection{Hide Printer name area content}
-\label{\detokenize{Customization:hide-printer-name-area-content}}
+\subsubsection{Hide Printer Name}
+\label{\detokenize{Customization:hide-printer-name}}\label{\detokenize{Customization:index-46}}
 You can hide the content of the printer name by replacing its content by spaces.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1170,29 +1246,34 @@ You can hide the content of the printer name by replacing its content by spaces.
 
 \sphinxstyleemphasis{Example custom.js to hide the content of the printer name area}
 
+\index{Dynamic Directory Interface@\spxentry{Dynamic Directory Interface}}\ignorespaces 
 
 \chapter{Dynamic Directory Interface (DDI)}
-\label{\detokenize{Customization:dynamic-directory-interface-ddi}}
-The Dynamic Directory Interface is intended for the administrator, to enable the users to deal with dynamic directories including those dedicated to various users and groups. The DDI application is accessible from the link “Dynamic directory interface” present in the main page associated with the Administration portal supported by the W-HTTP line.
+\label{\detokenize{Customization:dynamic-directory-interface-ddi}}\label{\detokenize{Customization:index-47}}
+The Dynamic Directory Interface is intended for use by Virtel Administrators in managing dynamic directories dedicated to supporting centralized macros associated with users and user groups. The DDI interface is accessible from the Administration Portal, normally served by port 40001 and the associated W-HTTP line.
 
 \sphinxincludegraphics{{image26}.png}
 
 \sphinxstyleemphasis{Accessing the Dynamic Directory Interface}
 
+\index{Virtel Lines@\spxentry{Virtel Lines}}\ignorespaces 
 
-\chapter{Lines}
-\label{\detokenize{Customization:lines}}
+\chapter{Virtel Lines}
+\label{\detokenize{Customization:virtel-lines}}\label{\detokenize{Customization:index-48}}
+\index{Virtel Lines@\spxentry{Virtel Lines}!Controlling@\spxentry{Controlling}}\ignorespaces 
 
 \section{Starting and stopping a line}
-\label{\detokenize{Customization:starting-and-stopping-a-line}}
+\label{\detokenize{Customization:starting-and-stopping-a-line}}\label{\detokenize{Customization:index-49}}
 By default, a line is automatically initialized at Virtel startup, and is terminated when Virtel stops. In some cases, the handling of line initialization/termination needs to be managed differently:
-Initialization of a line is determined by the “Possible Calls” parameter of the line definition.
+
+\index{Virtel Lines@\spxentry{Virtel Lines}!Controlling initial state with ""Possible Calls"" parameter@\spxentry{Controlling initial state with ""Possible Calls"" parameter}}\ignorespaces 
+Determining the initial state of a line is determined by the “Possible Calls” parameter of the line definition.
 
 \sphinxincludegraphics{{image27}.png}
 
 \sphinxstyleemphasis{Line definition - Possible Calls Parameter}
 
-\sphinxstylestrong{Initilaization through “Possible Calls” definition}
+\sphinxstylestrong{Initialization through “Possible Calls” definition}
 
 A “Possible Calls” determines the possible direction of communication and can have one of four values:-
 \begin{itemize}
@@ -1212,10 +1293,12 @@ A “Possible Calls” determines the possible direction of communication and ca
 
 If the value is 0 then the line is not initialized at Virtel start-up. It must be started manually. For values 1, 2, 3 the line is initialized automatically at Virtel start-up except for the cases below.
 
-\sphinxstylestrong{Initialization permanately completely inhibited}
+\sphinxstylestrong{Initialization permanently completely inhibited}
 
+\index{Virtel Lines@\spxentry{Virtel Lines}!Controlling state with TCT IGNLU keyword@\spxentry{Controlling state with TCT IGNLU keyword}}\ignorespaces 
 If the VIRTCT contains a parameter IGNLU that references the line, then this line shall not be initialized automatically at Virtel start-up. In this case it will no longer be possible to start this line manually after Virtel has started.
 
+\index{Virtel Lines@\spxentry{Virtel Lines}!Controlling line state conditionally@\spxentry{Controlling line state conditionally}}\ignorespaces 
 \sphinxstylestrong{Conditional initialization of a line}
 
 It is possible to condition the initialization of a line to that of another line. This can be necessary for example when an application communicates with Virtel via MQ/Series, with one line that accepts inbound messages and another line that handles outbound messages. In this case, it is useful to wait until the communication with the partner has been
@@ -1244,10 +1327,12 @@ established before accepting inbound messages.
     \PYG{n}{RULESET}\PYG{o}{=}\PYG{n}{M}\PYG{o}{\PYGZhy{}}\PYG{n}{MQ2}
 \end{sphinxVerbatim}
 
+\index{Virtel Lines@\spxentry{Virtel Lines}!Deferring initialization@\spxentry{Deferring initialization}}\ignorespaces 
 \sphinxstylestrong{Deferred initialization}
 
-The “Possible calls” field must be set to 0. The line may subsequently be started by a START command. It must not be referenced by an IGNLU parameter in the VIRTCT.
+The “Possible calls” field must be set to 0. The line may subsequently be started by a START command. It must not be referenced by an IGNLU parameter in the VIRTCT. Automation could be used to start the line when a particular event occurs and can be trapped by some automation software.
 
+\index{Virtel Lines@\spxentry{Virtel Lines}!Start and Stop Commands@\spxentry{Start and Stop Commands}}\index{Commands@\spxentry{Commands}!Start and Stop lines@\spxentry{Start and Stop lines}}\ignorespaces 
 \sphinxstylestrong{Virtel Line Commands}
 
 Using commands at the system console Lines can be used to start or stop a line by entering the appropriate command at the console. For further information on how to issue Virtel commands, see the Virtel “Audit, Operation And Performance” manuel.
@@ -1261,9 +1346,10 @@ Using commands at the system console Lines can be used to start or stop a line b
 
 The LINE START and LINE STOP commands perform the same function as using the “S” and “P” commands on the “Status of lines” application panel. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.
 
+\index{Terminals@\spxentry{Terminals}}\index{Terminals@\spxentry{Terminals}!Lu Nailing@\spxentry{Lu Nailing}}\ignorespaces 
 
 \chapter{Terminal LU Nailing}
-\label{\detokenize{Customization:terminal-lu-nailing}}
+\label{\detokenize{Customization:terminal-lu-nailing}}\label{\detokenize{Customization:index-55}}
 When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a Logical Unit or LU, and each LU has a unique eight character name (LU name). VIRTEL has at its disposal a pool of LUs known to VTAM,
 whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
 While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based upon the user’s IP address or upon a cookie presented by the user’s browser. In this section we describes the following types of LU nailing:
@@ -1288,9 +1374,10 @@ LU nailing by URL
 
 \end{itemize}
 
+\index{Terminals@\spxentry{Terminals}!Lu Nailing using work station name@\spxentry{Lu Nailing using work station name}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a work station name@\spxentry{Using a work station name}}\ignorespaces 
 
 \section{LU nailing using the work station name (Predefined terminals)}
-\label{\detokenize{Customization:lu-nailing-using-the-work-station-name-predefined-terminals}}
+\label{\detokenize{Customization:lu-nailing-using-the-work-station-name-predefined-terminals}}\label{\detokenize{Customization:index-56}}
 In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1486,9 +1573,10 @@ IST635I TSO1A005 ACTIV\PYGZhy{}P CA7B8B52114E7A85 0000 0002 SPNET
 IST314I END
 \end{sphinxVerbatim}
 
+\index{Terminals@\spxentry{Terminals}!Lu Nailing using an LU Name@\spxentry{Lu Nailing using an LU Name}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a LU Name (Predefined)@\spxentry{Using a LU Name}\spxextra{Predefined}}\ignorespaces 
 
 \section{LU nailing using an LU name (Predefined Terminal)}
-\label{\detokenize{Customization:lu-nailing-using-an-lu-name-predefined-terminal}}
+\label{\detokenize{Customization:lu-nailing-using-an-lu-name-predefined-terminal}}\label{\detokenize{Customization:index-57}}
 Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name. For this example the rule looks like:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1507,9 +1595,10 @@ We use the special PARAM=\$URL\$ which indicates that the VTAM LU Name to be use
 
 The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009
 
+\index{Terminals@\spxentry{Terminals}!Lu Nailing using an LU Name@\spxentry{Lu Nailing using an LU Name}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a LU Name (Not Predefined)@\spxentry{Using a LU Name}\spxextra{Not Predefined}}\ignorespaces 
 
 \section{Lu Nailing using an LU Name (No predefined terminal)}
-\label{\detokenize{Customization:lu-nailing-using-an-lu-name-no-predefined-terminal}}
+\label{\detokenize{Customization:lu-nailing-using-an-lu-name-no-predefined-terminal}}\label{\detokenize{Customization:index-58}}
 Both of the above techniques require that a relay terminal be predefined for each terminal. For some installations this could be a maintenance headache and doesn’t scale up very well. Virtel provides a feature whereby predefined names are not necessary. In this next example we look at a technique that doesn’t require terminal predefinition. Virtel will
 grab a terminal entry from a pool and use the LU name passed in the URL as the relay LU name. To use this set-up certain conditions must be in place. Also note that no rules are required. Those definitions required are:
 \begin{itemize}
@@ -1542,14 +1631,16 @@ Note that the Pseudo-Terminal is defined as \$LINE\$. We have also assign a prin
 
 \sphinxincludegraphics{{image15}.png}
 
+\index{Terminals@\spxentry{Terminals}!Lu Nailing using a cookie@\spxentry{Lu Nailing using a cookie}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using a cookie@\spxentry{Using a cookie}}\ignorespaces 
 
 \section{Lu Nailing using a cookie (Correspondent Sub Application)}
-\label{\detokenize{Customization:lu-nailing-using-a-cookie-correspondent-sub-application}}
+\label{\detokenize{Customization:lu-nailing-using-a-cookie-correspondent-sub-application}}\label{\detokenize{Customization:index-59}}
 Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see Virtel \textendash{} How to Activate LU Nailing.
 
+\index{Terminals@\spxentry{Terminals}!Lu Nailing by IP address@\spxentry{Lu Nailing by IP address}}\index{Lu Nailing@\spxentry{Lu Nailing}!Using an IP address@\spxentry{Using an IP address}}\ignorespaces 
 
 \section{LU Nailing by IP}
-\label{\detokenize{Customization:lu-nailing-by-ip}}
+\label{\detokenize{Customization:lu-nailing-by-ip}}\label{\detokenize{Customization:index-60}}
 This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool. Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx. The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
 
 \sphinxstylestrong{Comparison Table}
@@ -1559,12 +1650,12 @@ This technique uses a rule to associate an IP address with an LU Name. The rule 
 \centering
 \begin{tabulary}{\linewidth}[t]{|T|T|T|T|}
 \hline
-\sphinxstyletheadfamily &\sphinxstyletheadfamily 
-Rule defintion
-&\sphinxstyletheadfamily 
-Terminal Definition
-&\sphinxstyletheadfamily 
-Cookies Used
+\sphinxstyletheadfamily &\sphinxstartmulticolumn{3}%
+\begin{varwidth}[t]{\sphinxcolwidth{3}{4}}
+\sphinxstyletheadfamily Rule definition                  \textbar{}    Terminal Definition            \textbar{}  Cookies Used
+\par
+\vskip-\baselineskip\vbox{\hbox{\strut}}\end{varwidth}%
+\sphinxstopmulticolumn
 \\
 \hline
 Work Station Name in URL
@@ -1594,7 +1685,7 @@ Pool Only
 No
 \\
 \hline
-Correspondant
+Correspondent
 &
 \sphinxstylestrong{Yes}
 &
@@ -1616,12 +1707,14 @@ No
 \par
 \sphinxattableend\end{savenotes}
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}}\ignorespaces 
 
-\chapter{Transactions \& Applications}
-\label{\detokenize{Customization:transactions-applications}}
+\chapter{Virtel Transactions}
+\label{\detokenize{Customization:virtel-transactions}}\label{\detokenize{Customization:index-61}}
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Multi-Session Feature@\spxentry{Multi-Session Feature}}\ignorespaces 
 
 \section{Virtel Multi-session Within Virtel Web Access}
-\label{\detokenize{Customization:virtel-multi-session-within-virtel-web-access}}
+\label{\detokenize{Customization:virtel-multi-session-within-virtel-web-access}}\label{\detokenize{Customization:index-62}}
 In some situations, it is necessary to allow a group of users to simultaneously access several distinct 3270 applications. This can be solved by using the “appmenu.htm” associated with the “applist” transaction, or by using the 3270 Multi-session function of Virtel. In the first situation, for a same original calling terminal, Virtel uses as many relays as VTAM open sessions, in the second configuration, a single relay is used for all sessions, Virtel ensuring the swapping between the opened session. To access the Multi-session function of Virtel, you must define a transaction whose application name is the same as the main Virtel ACB name. This transaction is accessible in the same way as any other VTAM application. As the first screen shown is a signature screen, the transaction does not necessarily need to be secured. The lists of applications presented to the user depends on the selected parameter setting (See the Virtel Multi-session documented section for further information on this subject). Use of the multi-session Virtel module, even in a VWA context, requires an appropriate license agreement.
 
 \sphinxincludegraphics{{image29}.png}
@@ -1629,15 +1722,16 @@ In some situations, it is necessary to allow a group of users to simultaneously 
 \sphinxstyleemphasis{Transaction definition for the Virtel Multi-session module}
 
 
-\section{How To Access A Host Application Directly}
-\label{\detokenize{Customization:how-to-access-a-host-application-directly}}
+\section{Directly access host Applications by URL}
+\label{\detokenize{Customization:directly-access-host-applications-by-url}}
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Application access by URL@\spxentry{Application access by URL}}\index{URL Formats@\spxentry{URL Formats}!URL specifying target application@\spxentry{URL specifying target application}}\ignorespaces 
 It is not always necessary to pass via an application selection menu to connect to a host application. A host application may be accessed directly by opening the URL containing the complete path to the application. This URL may result in the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a
 subsequent screen sent by the application. For more information about how VIRTEL can be used to automate the process of connection to a host application, see Virtel URL formats in the Virtel Web Access Reference manual, and “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual.
 
 
 \subsection{Full path URL}
 \label{\detokenize{Customization:full-path-url}}
-For example, you can access the VIRTEL transaction whose external name is “Cics” by pointing the browser at a URL of the following format:
+For example, you can access the VIRTEL transaction whose external name is “CICS” by pointing the browser at a URL of the following format:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{WEB2AJAX}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{Cics}
@@ -1645,16 +1739,17 @@ For example, you can access the VIRTEL transaction whose external name is “Cic
 
 At the end of the session with the host application, VIRTEL examines the “Last page” field (see previous section) to decide whether to return to the desktop or to redisplay the application selection menu.
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Application access by Entry Point@\spxentry{Application access by Entry Point}}\index{URL Formats@\spxentry{URL Formats}!Default Entry Point URL@\spxentry{Default Entry Point URL}}\ignorespaces 
 
 \subsection{Default URL for the entry point}
-\label{\detokenize{Customization:default-url-for-the-entry-point}}
+\label{\detokenize{Customization:default-url-for-the-entry-point}}\label{\detokenize{Customization:index-64}}
 An application URL may be coded in the “TIOA at logon” field of the default transaction for the entry point (the default transaction is the transaction whose external name is the same as the entry point name). This allows the user to go directly to the host application simply by entering a URL of the format:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41001}
 \end{sphinxVerbatim}
 
-The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “Cics”:
+The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “CICS”:
 
 \sphinxincludegraphics{{image30}.png}
 
@@ -1662,9 +1757,10 @@ The example below shows the default transaction for the WEB2HOST entry point set
 
 For more information see Virtel URL formats in the Virtel Web Access Users Guide.
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Specifying screen size and attributes@\spxentry{Specifying screen size and attributes}}\index{Application customization@\spxentry{Application customization}!Specifying screen size and attributes@\spxentry{Specifying screen size and attributes}}\ignorespaces 
 
 \subsection{How To Use Different Screen Sizes}
-\label{\detokenize{Customization:how-to-use-different-screen-sizes}}
+\label{\detokenize{Customization:how-to-use-different-screen-sizes}}\label{\detokenize{Customization:index-65}}
 Although the standard 3270 screen size is 24 rows by 80 columns, certain applications benefit from the use of terminals with larger screen sizes. The screen size is determined by the LOGMODE used for the session between VIRTEL and the host application. VTAM offers logmodes for the following standard screen sizes:
 \begin{itemize}
 \item {} 
@@ -1691,9 +1787,10 @@ Group the VTAM relay LUs into pools, each pool having a different logmode, and a
 
 \end{itemize}
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Specifying default logmode@\spxentry{Specifying default logmode}}\index{Application customization@\spxentry{Application customization}!Specifying default logmode@\spxentry{Specifying default logmode}}\ignorespaces 
 
 \subsection{LOGMODE defined by the transaction}
-\label{\detokenize{Customization:logmode-defined-by-the-transaction}}
+\label{\detokenize{Customization:logmode-defined-by-the-transaction}}\label{\detokenize{Customization:index-66}}
 With this method, the administrator defines multiple VIRTEL transactions for a single application, each transaction specifying a different logmode. For example, transactions Tso2 and Tso5 delivered in the sample configuration both define TSO as the target application, but specify different logmodes SNX32702 and SNX32705 respectively. The user selects the desired transaction from the applist menu displayed by the “Other applications” link in the VIRTEL Web Access menu.
 
 The figure below shows the definition of the Tso5 transaction defined under the WEB2HOST entry point:
@@ -1708,9 +1805,10 @@ The URL to access this transaction could be of the format:
 \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{o}{.}\PYG{n}{n}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{WEB3270}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{Tso5}
 \end{sphinxVerbatim}
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Specifying logmode in the URL@\spxentry{Specifying logmode in the URL}}\index{Application customization@\spxentry{Application customization}!Specifying logmode in the URL@\spxentry{Specifying logmode in the URL}}\index{URL Formats@\spxentry{URL Formats}!Specifying the logmode@\spxentry{Specifying the logmode}}\ignorespaces 
 
 \subsection{Assigning a LOGMODE by URL parameter}
-\label{\detokenize{Customization:assigning-a-logmode-by-url-parameter}}
+\label{\detokenize{Customization:assigning-a-logmode-by-url-parameter}}\label{\detokenize{Customization:index-67}}
 The URL which allows the browser to connect to a host application via VIRTEL may contain a parameter, such as “model5” as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1761,8 +1859,7 @@ The screen below shows an example rule which assigns a relay LU from the range R
 
 \newpage
 
-The LU name (RHTVT5nn) assigned by the rule must belong to the LU pool shared assigned to the HTTP line, as shown
-in the example below :-
+The LU name (RHTVT5nn) assigned by the rule must belong to the LU pool shared assigned to the HTTP line, as shown in the example below :-
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 TERMINAL DETAIL DEFINITION \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} Applid: VIRTEL 13:32:28
@@ -1791,9 +1888,10 @@ P1=Update               P3=Return                           Enter=Add
 
 \sphinxstyleemphasis{Definition of model 5 terminals in the W2HPOOL pool}
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Overriding a default scenario logmode@\spxentry{Overriding a default scenario logmode}}\index{Application customization@\spxentry{Application customization}!Overriding a default scenario logmode@\spxentry{Overriding a default scenario logmode}}\index{URL Formats@\spxentry{URL Formats}!Overriding a default logmode@\spxentry{Overriding a default logmode}}\index{Scenarios@\spxentry{Scenarios}!SCENLOGM - Logmode defaults@\spxentry{SCENLOGM - Logmode defaults}}\ignorespaces 
 
 \subsection{User-specified LOGMODE}
-\label{\detokenize{Customization:user-specified-logmode}}
+\label{\detokenize{Customization:user-specified-logmode}}\label{\detokenize{Customization:index-68}}
 When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may override the default logmode by appending an additional parameter LOGMODE=modename to the URL, as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1806,9 +1904,10 @@ The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.
 To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition).
 \end{sphinxadmonition}
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\index{Application customization@\spxentry{Application customization}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\index{URL Formats@\spxentry{URL Formats}!Setting dynamic logmode and user screen sizes@\spxentry{Setting dynamic logmode and user screen sizes}}\ignorespaces 
 
 \subsection{Dynamic logmode with user-specified screen size}
-\label{\detokenize{Customization:dynamic-logmode-with-user-specified-screen-size}}
+\label{\detokenize{Customization:dynamic-logmode-with-user-specified-screen-size}}\label{\detokenize{Customization:index-69}}
 VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32XX3, which allow the user to specify a non-standard alternate screen size. When the entry point definition specifies SCENLOGM in the “Identification scenario” field, the user may also append ROWS and COLS parameters to the URL, as shown in this example:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -1817,15 +1916,17 @@ http://n.n.n.n:41001/w2h/WEB3270.htm+Tso?logmode=D4A32XX3\PYGZam{}rows=54\PYGZam
 
 VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host application must also support the use of non-standard screen sizes.
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!The Application Menu List@\spxentry{The Application Menu List}}\index{Session Management@\spxentry{Session Management}!The Application Menu list@\spxentry{The Application Menu list}}\ignorespaces 
 
 \subsection{Session Management In The Application Menu List}
-\label{\detokenize{Customization:session-management-in-the-application-menu-list}}
-When the user connects to the “Application Selection Menu” described ine the “Virtel Web Access User Guide”, by default, clicking on an available application will open the session in the current tab replacing the APPMENU application list. You may want to operate differently.
+\label{\detokenize{Customization:session-management-in-the-application-menu-list}}\label{\detokenize{Customization:index-70}}
+By default, when a user selects an application from the “Application Selection Menu” the target application will replace the APPMENU application list display. Different behaviour may be required. The following sections look at some options.
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Open a session in a separate tab@\spxentry{Open a session in a separate tab}}\index{Session Management@\spxentry{Session Management}!Open a session in a separate tab@\spxentry{Open a session in a separate tab}}\ignorespaces 
 
 \subsection{Open session in separate tab}
-\label{\detokenize{Customization:open-session-in-separate-tab}}
-To open each session in separate tabs and keep the application menu available, add the following code in a “custom.js” file:
+\label{\detokenize{Customization:open-session-in-separate-tab}}\label{\detokenize{Customization:index-71}}
+To open each session in separate tabs and keep the application menu available, add the following code in a customized Javascript “custom.js” file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{/}\PYG{o}{*} \PYG{n}{To} \PYG{n+nb}{open} \PYG{n}{an} \PYG{n}{application} \PYG{p}{(}\PYG{n}{issued} \PYG{k+kn}{from} \PYG{n+nn}{applist} \PYG{n}{transaction}\PYG{p}{)} \PYG{o+ow}{in} \PYG{n}{a} \PYG{n}{new} \PYG{n}{TAB} \PYG{n}{instead} \PYG{n}{of} \PYG{n}{the} \PYG{n}{same} \PYG{n}{window} \PYG{o}{*}\PYG{o}{/}
@@ -1837,7 +1938,7 @@ To open each session in separate tabs and keep the application menu available, a
 \PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
-\sphinxstyleemphasis{Example of Javascript code to open different sessions in separate tabs}
+\sphinxstyleemphasis{Example of JavaScript code to open different sessions in separate tabs}
 
 
 \subsubsection{Restrictions}
@@ -1852,9 +1953,10 @@ Each new session gives rise to the opening of a specific IP socket, and therefor
 
 \end{itemize}
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Handling Session termination@\spxentry{Handling Session termination}}\index{Session Management@\spxentry{Session Management}!Handling Session termination@\spxentry{Handling Session termination}}\ignorespaces 
 
 \section{How To Handle Host Session Termination}
-\label{\detokenize{Customization:how-to-handle-host-session-termination}}
+\label{\detokenize{Customization:how-to-handle-host-session-termination}}\label{\detokenize{Customization:index-72}}
 When the user terminates the application session by pressing the “Disconnect” button in the browser, various options are available: -
 \begin{itemize}
 \item {} 
@@ -1870,31 +1972,36 @@ Close the browser window and return to the desktop
 
 Remember that it is always best to exit cleanly from the host application by pressing the “Disconnect” button, rather than closing the browser window. If the browser window is closed abruptly, the host session resources may not be freed until the expiry of the time-out period specified in the entry point definition.
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Return to the Application Selection Menu@\spxentry{Return to the Application Selection Menu}}\index{Session Management@\spxentry{Session Management}!Return to the Application Selection Menu@\spxentry{Return to the Application Selection Menu}}\ignorespaces 
 
 \subsection{Return to the application selection menu}
-\label{\detokenize{Customization:return-to-the-application-selection-menu}}
+\label{\detokenize{Customization:return-to-the-application-selection-menu}}\label{\detokenize{Customization:index-73}}
 When a “Disconnect” request is received, VIRTEL returns to the root URL and displays the default page for the line, which will normally be an application selection menu. For detailed information, see “Virtel URL formats”, page 1. The user can then choose to connect to the same or a different application by clicking on the appropriate link in the
 application selection menu.
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Display a specific page on Disconnection@\spxentry{Display a specific page on Disconnection}}\index{Session Management@\spxentry{Session Management}!Display a specific page on Disconnection@\spxentry{Display a specific page on Disconnection}}\ignorespaces 
 
 \subsection{Displaying a specific page on disconnection}
-\label{\detokenize{Customization:displaying-a-specific-page-on-disconnection}}
+\label{\detokenize{Customization:displaying-a-specific-page-on-disconnection}}\label{\detokenize{Customization:index-74}}
 Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file
-must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the URL specifies /w2h/WEB3270.htm). The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.)
+must be uploaded to the same directory as specified in the URL for the host application (for example CLI-DIR if the URL specifies /w2h/web2ajax.htm). The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.).
 
+\index{Virtel Transactions@\spxentry{Virtel Transactions}!Closing the browser on Disconnection@\spxentry{Closing the browser on Disconnection}}\index{Session Management@\spxentry{Session Management}!Closing the browser on Disconnection@\spxentry{Closing the browser on Disconnection}}\ignorespaces 
 
 \subsection{Closing the browser window automatically}
-\label{\detokenize{Customization:closing-the-browser-window-automatically}}
-Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required.
+\label{\detokenize{Customization:closing-the-browser-window-automatically}}\label{\detokenize{Customization:index-75}}
+Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.
+
 The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:
 
 \sphinxincludegraphics{{image32}.png}
 
 \sphinxstyleemphasis{Example of entry point with last page}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}}\ignorespaces 
 
-\chapter{Macros}
-\label{\detokenize{Customization:macros}}
+\chapter{Virtel Macros}
+\label{\detokenize{Customization:virtel-macros}}\label{\detokenize{Customization:index-76}}
 
 \section{Introduction}
 \label{\detokenize{Customization:introduction}}
@@ -1924,20 +2031,22 @@ Virtel macros capture keystroke operations which can subsequently be used to aut
 \PYG{p}{]}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fmt}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+m+mi}{2}\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!User Interface@\spxentry{User Interface}}\ignorespaces 
 
 \section{Macro modes}
-\label{\detokenize{Customization:macro-modes}}
+\label{\detokenize{Customization:macro-modes}}\label{\detokenize{Customization:index-77}}
 
-\subsection{Local mode}
-\label{\detokenize{Customization:local-mode}}
-All user macros are objects within a file called MACROS.JSON and with suitable knowledge this file can be maintained locally, known as local mode. The MACROS.JSON file is maintained through either the local macro interface, as launched by the user from the Virtel toolbar, or can be imported from a flat file where the MACROS.JSON file can be edited outside of these interfaces but this is not recommended unless you understand the macro structure and are familiar with JavaScript. By default Virtel maintains macros in local mode with the contents of the MACROS.JSON file being stored in the browsers local storage.
+\subsection{Local Macro mode}
+\label{\detokenize{Customization:local-macro-mode}}
+All user macros are objects within a file called MACROS.JSON and with suitable knowledge this file can be maintained locally, known as local mode. The MACROS.JSON file is maintained through either the local macro interface, as launched by the user from the Virtel Tool Bar, or can be imported from a flat file where the MACROS.JSON file can be edited outside of these interfaces but this is not recommended unless you understand the macro structure and are familiar with JavaScript. By default Virtel maintains macros in local mode with the contents of the MACROS.JSON file being stored in the browsers local storage.
 
 
 \subsubsection{User Interface}
 \label{\detokenize{Customization:user-interface}}
+\index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!Creating a new macro@\spxentry{Creating a new macro}}\ignorespaces 
 \sphinxstylestrong{Macro functions}
 
-You can capture and list macros by using the two macro ICON functions displayed in the Virtel tool bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.
+You can capture and list macros by using the two macro ICON functions displayed in the Virtel Tool Bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.
 
 \sphinxincludegraphics{{image34}.png}
 
@@ -1949,6 +2058,7 @@ The record function is an on/off button that will record key strokes. When recor
 
 \sphinxstyleemphasis{Creating a new macro}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!Keyboard mapping@\spxentry{Keyboard mapping}}\ignorespaces 
 \sphinxstylestrong{Keyboard mapping}
 
 When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will only invoke the refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:
@@ -1963,6 +2073,7 @@ With keyboard mapping enabled the macro interface will display the associated ke
 
 \sphinxstyleemphasis{Saving a macro with keyboard mapping}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!Keyboard Mapping Option@\spxentry{Keyboard Mapping Option}}\ignorespaces 
 \sphinxstylestrong{Settings for macros}
 
 Although local macros will work “out of the box” most users would probably want to have the key mapping option set. To use this function the global options parameters must be customized to add the w2hparm.keymapping=true to the w2hparm options file. The following instructions can be used as an example as to how to set up global w2hparm customization for the CLI port 41002. Create the following two JavaScript members and upload them to the CLI-DIR directory:
@@ -1986,7 +2097,8 @@ w2hparm.keymapping=true;
 
 These setup will use the customized w2hparms for CLI from the member w2hparms.global.js. The keymapping property has been set to true.
 
-\sphinxstylestrong{The Display Play/Display Button}
+\index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!Record/Play Buttons@\spxentry{Record/Play Buttons}}\ignorespaces 
+\sphinxstylestrong{The Display Record/Play Buttons}
 
 The green triangular button will display the local storage macros. From here a context menu can be opened against each macro using the mouse right click. This will provide delete, edit, save as and run functions.
 
@@ -1994,13 +2106,15 @@ The green triangular button will display the local storage macros. From here a c
 
 \sphinxstyleemphasis{Displaying the local macros}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Local Macro mode@\spxentry{Local Macro mode}}\index{Local Macro mode@\spxentry{Local Macro mode}!Export/Import Options@\spxentry{Export/Import Options}}\ignorespaces 
 \sphinxstylestrong{Export and Import Options}
 
 Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\ignorespaces 
 
 \subsection{Centralised Macros - DDI mode}
-\label{\detokenize{Customization:centralised-macros-ddi-mode}}
+\label{\detokenize{Customization:centralised-macros-ddi-mode}}\label{\detokenize{Customization:index-83}}
 The MACROS.JSON file can be automatically downloaded from a centralized repository on the host through the Virtel Dynamic Directory Interface (DDI). This is known as remote or DDI mode. The browser’s local storage is synchronized, via a date stamp, with the centralized VSAM repository. Management of the centralised repository is through the DDI GUI interface accessed and managed by the Virtel Administrator within the Administration Portal, normally located via port 41001. In DDI mode the macro definitions are initially initialized through an imported MACROS.JSON file. The actual centralized repository normally resides within the HTMLTRSF VSAM file made up of user, group and global directories.
 
 The advantage of maintaining macros in a central repository is that the administrator has control over the business logic defined by the macros and can also control who has access to them through Group, Global and User profiles. As part of their Virtel interface a user can now only access site controlled macros. Each user has access to three distinct levels of a macro - User, Group and global. A user’s user and group level are assigned based upon their corresponding security subsystem security profiles whereas all macros are available at the global level. A user can maintain macros at their user level.
@@ -2009,9 +2123,10 @@ The advantage of maintaining macros in a central repository is that the administ
 To use centralized DDI mode users have a userid and group defined within a security subsystem such as RACF.
 \end{sphinxadmonition}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Implementation@\spxentry{Implementation}}\ignorespaces 
 
 \subsubsection{Implementation}
-\label{\detokenize{Customization:implementation}}
+\label{\detokenize{Customization:implementation}}\label{\detokenize{Customization:index-84}}
 To use Centralised Macros users and Administrators must have “READ” access to the relevant DDI security resources. All transactions that use DDI must be defined with at least Security=1 (Basic Security) in order that the security context can be established for the user.  Stop Virtel and run the following JCL to create these resources:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2055,12 +2170,14 @@ To use Centralised Macros users and Administrators must have “READ” access t
 
 \sphinxstyleemphasis{Security Resources required for DDI}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Directories@\spxentry{Directories}}\ignorespaces 
 Additional Virtel transactions and directories are required to support DDI. These can be implemented by running the ARBOLOAD job, located in the Virtel CNTL library, with VMACROS=YES. After executing this job start Virtel and access the Drag and Drop GUI from the Administration Portal on 41001. You should now see additional GRP-DIR, GLB-DIR and USR-DIR directories.
 
 \sphinxincludegraphics{{image38}.png}
 
 \sphinxstyleemphasis{DDI Directories}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Setting options@\spxentry{Setting options}}\ignorespaces 
 Once the DDI directories are set up will can configure the necessary settings to invoke DDI. A w2hParm.global.js object is uploaded to the CLI\_DIR and will contain the the DDI settings. We also need to ensure that our global-settings object is defined in the wh2parm.js member. The w2hparm.js in CLI-DIR looks like this:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2098,6 +2215,7 @@ The “useVirtelMacros” is the key property required for DDI. The various valu
 \PYGZdq{}w2hparm.useVirtelMacros\PYGZdq{}:\PYGZob{}“macrosAutoRefresh”: “never” \textbar{} “once” \textbar{} “daily” \textbar{} “session” \PYGZcb{}
 \end{sphinxVerbatim}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Setting options {[}useVirtelMacros{]}@\spxentry{Setting options {[}useVirtelMacros{]}}}\ignorespaces 
 \sphinxstylestrong{Macro Options}
 
 
@@ -2153,9 +2271,10 @@ If you are running multiple images of Virtel, say in a SYSPLEX arrangement using
 
 \end{itemize}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!DDI Validation@\spxentry{DDI Validation}}\ignorespaces 
 
 \subsection{Centralised DDI validation}
-\label{\detokenize{Customization:centralised-ddi-validation}}
+\label{\detokenize{Customization:centralised-ddi-validation}}\label{\detokenize{Customization:index-88}}
 After uploading the settings objects stop and restart Virtel and then open a TSO or CICS session through the client port 41002.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2174,9 +2293,10 @@ Pressing the Blue ICON should display an empty macro list:
 
 \sphinxstyleemphasis{Empty Macro list}
 
-\sphinxstyleemphasis{Configuring the Centralised Repository}
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Configuring the Centralised Repository@\spxentry{Configuring the Centralised Repository}}\ignorespaces 
+Configuring the Centralised Repository
 
-To configure the centralised DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, which is what we would also expect as DDI is not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember, that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros.
+To configure the centralised DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{http}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.48}\PYG{p}{:}\PYG{l+m+mi}{41001}\PYG{o}{/}\PYG{n}{w2h}\PYG{o}{/}\PYG{n}{WEB2AJAX}\PYG{o}{.}\PYG{n}{htm}\PYG{o}{+}\PYG{n}{Tso}
@@ -2186,9 +2306,10 @@ To configure the centralised DDI repository we need to create an “initial” M
 
 \sphinxstyleemphasis{Accessing a local macro facility -  Green ICON}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating an initial macro@\spxentry{Creating an initial macro}}\ignorespaces 
 
 \subsection{Creating an initial macro}
-\label{\detokenize{Customization:creating-an-initial-macro}}
+\label{\detokenize{Customization:creating-an-initial-macro}}\label{\detokenize{Customization:index-90}}
 
 \subsubsection{SDSF test macro}
 \label{\detokenize{Customization:sdsf-test-macro}}
@@ -2214,9 +2335,10 @@ Saved the macro with the name SDSF. Now, press the Green ICON. The macro should 
 
 Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we have just created.
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Uploading macros through the DDI interface@\spxentry{Uploading macros through the DDI interface}}\ignorespaces 
 
 \subsubsection{Uploading macros to the centralized repository}
-\label{\detokenize{Customization:uploading-macros-to-the-centralized-repository}}
+\label{\detokenize{Customization:uploading-macros-to-the-centralized-repository}}\label{\detokenize{Customization:index-91}}
 To upload any MACROS.JSON file to the centralized repository we must first create a “local” export version. In the “Local Macros” popup export the SDSF macro using the export option. This will create a local “macros.json” file. The “MACROS.JSON” file will be exported to your default “download” directory on your PC.
 
 If you view the file the following will be displayed:
@@ -2246,9 +2368,10 @@ Refresh the GLOBAL directory by clicking the broken circled arrow in the top lef
 
 To run the macro, enter the ISPF primary menu and then press the Green “ARROW” next to the SDSF name. The SDSF log display should appear.
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Creating user macros@\spxentry{Creating user macros}}\ignorespaces 
 
 \subsection{Creating a user macro}
-\label{\detokenize{Customization:creating-a-user-macro}}
+\label{\detokenize{Customization:creating-a-user-macro}}\label{\detokenize{Customization:index-92}}
 With centralized macros, users can create “local” macros which will by synchronized with the centralized repository. They will not have the ability to import/export any macro.
 Creating a “user” macro follows the same process as before. The user clicks the “record” button, records their macro, stops recording by pressing the record button again. As before, a popup window will open allowing the user to name the macro and associate with a “keyboard mapping” if that option has been set. The macro will then appear in the users list of macros.
 
@@ -2256,9 +2379,10 @@ Here is an example of a user macro called “CUSTINQ” which drives a sequence 
 
 \sphinxincludegraphics{{image47}.png}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro panel options@\spxentry{Macro panel options}}\ignorespaces 
 
 \subsection{Macro Options}
-\label{\detokenize{Customization:macro-options}}
+\label{\detokenize{Customization:macro-options}}\label{\detokenize{Customization:index-93}}
 Pressing the “right click” button against the macro name will reveal a small popup which provides the user with some options.
 
 \sphinxincludegraphics{{image48}.png}
@@ -2269,14 +2393,16 @@ The user has the ability to “DELETE”, RENAME (“Save As”), EDIT or RUN th
 The “Edit” feature is for viewing only.
 \end{sphinxadmonition}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Directory and Macro Administration@\spxentry{Directory and Macro Administration}}\ignorespaces 
 
 \subsection{Directory and Macro Administration}
-\label{\detokenize{Customization:directory-and-macro-administration}}
+\label{\detokenize{Customization:directory-and-macro-administration}}\label{\detokenize{Customization:index-94}}
 Users do not have the ability to create macros. This function is performed by the Virtel Administrator. The Administrator would develop macros using a “local” facility and export these up into the central repository to make them available to users at a Global, Group and User level.
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Making macros available@\spxentry{Making macros available}}\ignorespaces 
 
 \subsubsection{Making a user’s DDI macro available to a DDI Group}
-\label{\detokenize{Customization:making-a-user-s-ddi-macro-available-to-a-ddi-group}}
+\label{\detokenize{Customization:making-a-user-s-ddi-macro-available-to-a-ddi-group}}\label{\detokenize{Customization:index-95}}
 The following procedure describes how to move a user’s DDI macro to a DDI GROUP level. Start by opening the DDI interface from the main Administration Portal and select the USER tab;specify the userid in the user name field. Press the Green tick. The macros associated with the userid will be listed.
 
 \sphinxincludegraphics{{image49}.png}
@@ -2320,9 +2446,10 @@ It is not necessary to export a “dummy” macro from a “local mode” setup 
 
 \sphinxstyleemphasis{Dummy MACROS.JSON file}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
-\subsection{Centralized DDI Problems}
-\label{\detokenize{Customization:centralized-ddi-problems}}
+\subsection{Centralized DDI Troubleshooting}
+\label{\detokenize{Customization:centralized-ddi-troubleshooting}}\label{\detokenize{Customization:index-96}}
 
 \subsubsection{Out of Sync condition or no transaction security}
 \label{\detokenize{Customization:out-of-sync-condition-or-no-transaction-security}}
@@ -2345,9 +2472,10 @@ CTRL R
 
 \end{itemize}
 
+\index{Virtel Macros@\spxentry{Virtel Macros}!Centralised Macro mode@\spxentry{Centralised Macro mode}}\index{Centralised Macro mode@\spxentry{Centralised Macro mode}!Macro Formats@\spxentry{Macro Formats}}\ignorespaces 
 
 \subsection{Macro formats and Commands}
-\label{\detokenize{Customization:macro-formats-and-commands}}
+\label{\detokenize{Customization:macro-formats-and-commands}}\label{\detokenize{Customization:index-97}}
 The format of the MACROS.JSON file is an embedded JSON structure. Each name structure represents a keystroke macro identified by the “name” keyword.
 \begin{itemize}
 \item {} 
@@ -2386,9 +2514,10 @@ The macro editor supports the following commands:-
 \PYG{p}{]}\PYG{p}{,}\PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{fmt}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{p}{\PYGZcb{}}
 \end{sphinxVerbatim}
 
+\index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Setup@\spxentry{Setup}}\ignorespaces 
 
 \chapter{Centralised User Parameters}
-\label{\detokenize{Customization:centralised-user-parameters}}
+\label{\detokenize{Customization:centralised-user-parameters}}\label{\detokenize{Customization:index-98}}
 Centralized USERPARM provides the ability to save user settings in a centralized VSAM file on the mainframe. The user settings with be synchronized with the browser whenever a user logs on, regardless of the device they are using. Users must have a RACF or equivalent userid.
 
 
@@ -2458,15 +2587,16 @@ If every has been configured correctly you should get a “GREEN” light.
 
 \sphinxstyleemphasis{Example of a Sanity Check after setting up USERPARM}
 
+\index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Validation@\spxentry{Validation}}\ignorespaces 
 
 \subsection{Testing the USERPARM feature}
-\label{\detokenize{Customization:testing-the-userparm-feature}}
+\label{\detokenize{Customization:testing-the-userparm-feature}}\label{\detokenize{Customization:index-99}}
 To test the USERPARM feature follow the procedure below :-
 
 1   Logon to a 3270 application, say TSO
 2   Open the settings dialog
 3   Change the “Display Style” to Grey and save. The background colour should change to grey.
-4   Disconnect from Virtel using the Red button in the tool bar.
+4   Disconnect from Virtel using the Red button in the Tool Bar.
 5   Reconnect to Virtel, using a different browser and open a 3270 session.
 6   The background colour should still be set to grey.
 7   Open the settings dialogue and confirm that Grey button is still highlighted.
@@ -2479,9 +2609,10 @@ In the Virtel log you should see the following “upload” message:-
         \PYG{n}{FILE} \PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{8393DD4A16F0E1C9723F9D9CFA2C39F1}\PYG{l+s+s1}{\PYGZsq{}}
 \end{sphinxVerbatim}
 
+\index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Removing a users settings@\spxentry{Removing a users settings}}\ignorespaces 
 
 \subsection{Removing a user’s settings}
-\label{\detokenize{Customization:removing-a-user-s-settings}}
+\label{\detokenize{Customization:removing-a-user-s-settings}}\label{\detokenize{Customization:index-100}}
 This can be done by deleting the key associated with the user from the USERPARM directory. For example, the key associated with SPTHOLT is C6D24022819C599803A86BB3C42298B6. If we look at USERPARM directory in the Administration portal on line 41001 we can see it listed:
 
 \sphinxincludegraphics{{image55}.png}
@@ -2490,9 +2621,10 @@ This can be done by deleting the key associated with the user from the USERPARM 
 
 We can remove the entry by using the delete option. This will remove any user settings. The user will then have to “restore defaults” to correctly pickup up the default user parameters as defined by the Administrator.
 
+\index{Userparms@\spxentry{Userparms}!Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}}\index{Centralized USERPARM mode@\spxentry{Centralized USERPARM mode}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{USERPARM Problems}
-\label{\detokenize{Customization:userparm-problems}}
+\label{\detokenize{Customization:userparm-problems}}\label{\detokenize{Customization:index-101}}
 When I try to save my settings, I get the following dialog box and the following messages in the Virtel log.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2546,17 +2678,19 @@ Changed defaults not updated in another browser session.
 
 This is normally related to configuration. Try the “sanity” URL test to make sure that the setup is correct for the line in use.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!How to activate@\spxentry{How to activate}}\ignorespaces 
 
 \chapter{Security}
-\label{\detokenize{Customization:security}}
+\label{\detokenize{Customization:security}}\label{\detokenize{Customization:index-102}}
 
-\section{How To Activate SSL Using AT-TLS}
-\label{\detokenize{Customization:how-to-activate-ssl-using-at-tls}}
+\section{How To Activate SSL AT-TLS}
+\label{\detokenize{Customization:how-to-activate-ssl-at-tls}}
 To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases. AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Installation@\spxentry{Installation}}\ignorespaces 
 
 \subsection{Installation steps}
-\label{\detokenize{Customization:installation-steps}}
+\label{\detokenize{Customization:installation-steps}}\label{\detokenize{Customization:index-103}}
 
 \subsubsection{Install Policy Agent procedure}
 \label{\detokenize{Customization:install-policy-agent-procedure}}
@@ -2583,9 +2717,10 @@ Replace ServerWithClientAuth by Server in the HandshakeRole parameter (SSLSETUP 
 \label{\detokenize{Customization:allow-the-policy-agent-to-run-during-tcp-ip-initialization}}
 The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RACF class SERVAUTH. See step EZBAUTH in the SSLSETUP sample job (delivered in VIRTEL SAMPLIB).
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Certificates@\spxentry{Certificates}}\ignorespaces 
 
 \subsubsection{Create the server certificate}
-\label{\detokenize{Customization:create-the-server-certificate}}
+\label{\detokenize{Customization:create-the-server-certificate}}\label{\detokenize{Customization:index-104}}
 A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into
 RACF. At SSLSETUP line 228, replace \%virtssl\% by the DNS name assigned to the VIRTEL host (for example, virtssl.syspertec.com)
 
@@ -2599,9 +2734,10 @@ The server certificate must be added to the VIRTRING keyring. See step CCERTIF i
 \label{\detokenize{Customization:allow-virtel-to-access-its-own-certificate}}
 To allow VIRTEL to access its own keyring and server certificate, the VIRTEL started task must have READ access to the resource IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH in the SSLSETUP sample job.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!TCPIP definitions@\spxentry{TCPIP definitions}}\ignorespaces 
 
-\subsubsection{Activate AT-TLS}
-\label{\detokenize{Customization:activate-at-tls}}
+\subsubsection{TCPIP Definitions for AT-TLS}
+\label{\detokenize{Customization:tcpip-definitions-for-at-tls}}\label{\detokenize{Customization:index-105}}
 To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2611,9 +2747,10 @@ To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
 Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AUTOLOG statement will cause the PAGENT procedure to be started automatically during TCP/IP initialization.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Operations@\spxentry{Operations}}\ignorespaces 
 
 \subsection{Operations}
-\label{\detokenize{Customization:operations}}
+\label{\detokenize{Customization:operations}}\label{\detokenize{Customization:index-106}}
 
 \subsubsection{Starting the Policy Agent}
 \label{\detokenize{Customization:starting-the-policy-agent}}
@@ -2639,9 +2776,10 @@ To access VIRTEL line C-HTTP you must now use URL \sphinxurl{https://n.n.n.n:410
 \label{\detokenize{Customization:policy-agent-log-file}}
 Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshootings@\spxentry{Troubleshootings}}\ignorespaces 
 
 \subsubsection{Common error messages}
-\label{\detokenize{Customization:common-error-messages}}
+\label{\detokenize{Customization:common-error-messages}}\label{\detokenize{Customization:index-107}}
 Error messages relating to session setup are written to the MVS SYSLOG. The most common error message is:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2714,9 +2852,10 @@ SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) C
 
 \end{itemize}
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Using Server and Client certificates@\spxentry{Using Server and Client certificates}}\ignorespaces 
 
 \subsection{SSL - Signing On Using Server And Client Certificates}
-\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}
+\label{\detokenize{Customization:ssl-signing-on-using-server-and-client-certificates}}\label{\detokenize{Customization:index-108}}
 In this section we look at setting up Virtel to work with client and user certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients. First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a
 public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT\_TLS inserts itself in the connection between the application and browser. This means that the application will send and receive clear text over the socket interface, but data over the network is encrypted by system SSL. System SSL has three supported protocol levels:
 \begin{itemize}
@@ -2755,12 +2894,13 @@ An encryption algorithm and single key is chosen to encrypt / decrypt data The p
 
 \end{enumerate}
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!What is a X.509 certificate@\spxentry{What is a X.509 certificate}}\ignorespaces 
 
-\subsection{Certificates}
-\label{\detokenize{Customization:certificates}}
+\subsection{What is a Certificates}
+\label{\detokenize{Customization:what-is-a-certificates}}\label{\detokenize{Customization:index-109}}
 
-\subsubsection{What’s in a X.509 certificate?}
-\label{\detokenize{Customization:whats-in-a-x-509-certificate}}
+\subsubsection{X.509 certificate?}
+\label{\detokenize{Customization:x-509-certificate}}
 Amongst other things it includes the Distinguished Name of the Server (DNS), the public key of the Server, Distinguished Name of the Server organization issuing the certificate and the issuer’s signature. If we look at a certificate held with RACF we can see this information. Certificates are identified by a combination of LABEL, USERID or Certification Authority (CA).
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2811,9 +2951,10 @@ RACF signing certificate
 
 In this configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring certificates@\spxentry{Configuring certificates}}\index{RACF@\spxentry{RACF}!Configuring a X.509 certificate@\spxentry{Configuring a X.509 certificate}}\ignorespaces 
 
 \subsubsection{Configuring the certificates}
-\label{\detokenize{Customization:configuring-the-certificates}}
+\label{\detokenize{Customization:configuring-the-certificates}}\label{\detokenize{Customization:index-110}}
 The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access. The following is the certificate generation statement for the RACF signing certificate.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2895,9 +3036,10 @@ The key usage identifies this certificate as a signing certificate. This certifi
 
 Note how we identify the signing certificate with the SIGNWITH parameter using the same label information that we used when defining the RACF signing certificate.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Configuring key rings@\spxentry{Configuring key rings}}\index{RACF@\spxentry{RACF}!Configuring key rings@\spxentry{Configuring key rings}}\ignorespaces 
 
 \subsection{Cerificates and Key rings}
-\label{\detokenize{Customization:cerificates-and-key-rings}}
+\label{\detokenize{Customization:cerificates-and-key-rings}}\label{\detokenize{Customization:index-111}}
 Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2919,9 +3061,10 @@ Having generated two of our certificates we now need a place to keep them. We pl
 
 Again it is the label that identifies the key(certificate) that we want to add to the key ring owned by user SPVIRSTC.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!User certificates@\spxentry{User certificates}}\index{RACF@\spxentry{RACF}!User certificates@\spxentry{User certificates}}\ignorespaces 
 
 \subsubsection{User Certificate}
-\label{\detokenize{Customization:user-certificate}}
+\label{\detokenize{Customization:user-certificate}}\label{\detokenize{Customization:index-112}}
 The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2969,9 +3112,10 @@ The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate and 
 \PYG{n}{SSL} \PYG{n}{client} \PYG{n}{certificate}              \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPTHOLT}\PYG{p}{)}    \PYG{n}{CERTAUTH}     \PYG{n}{NO}
 \end{sphinxVerbatim}
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Importing certificates@\spxentry{Importing certificates}}\index{RACF@\spxentry{RACF}!Importing certificates@\spxentry{Importing certificates}}\ignorespaces 
 
 \subsubsection{Importing the certificate on the client work station.}
-\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}
+\label{\detokenize{Customization:importing-the-certificate-on-the-client-work-station}}\label{\detokenize{Customization:index-113}}
 To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.
 
@@ -2983,9 +3127,10 @@ After importing the following panel is displayed:
 
 At this stage we have completed our certificate generation. Through the use of the certificates we will be able to initiate a secure session (https) with an application and obtain a user id.
 
+\index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Setting up RACF for Passtick@\spxentry{Setting up RACF for Passtick}}\ignorespaces 
 
 \subsection{PassTicket support}
-\label{\detokenize{Customization:passticket-support}}
+\label{\detokenize{Customization:passticket-support}}\label{\detokenize{Customization:index-114}}
 The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
 accordingly:
 
@@ -3014,9 +3159,10 @@ accordingly:
 
 In order for Virtel to generate PassTickets, you must also modify your VIRTCT to include the parameter PASSTCK=YES and then reassemble the VIRTCT. See chapter 6 of the Virtel Installation Guide for more details on the Virtel VIRTCT.
 
+\index{Security@\spxentry{Security}!PassTicket Support@\spxentry{PassTicket Support}}\index{PassTicket Support@\spxentry{PassTicket Support}!Pagent Configuration@\spxentry{Pagent Configuration}}\ignorespaces 
 
 \subsection{PAGENT Configuration}
-\label{\detokenize{Customization:pagent-configuration}}
+\label{\detokenize{Customization:pagent-configuration}}\label{\detokenize{Customization:index-115}}
 To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3079,9 +3225,10 @@ you have made changes you can issue the following z/OS command:
 \PYG{n}{F} \PYG{n}{PAGENT}\PYG{p}{,}\PYG{n}{REFRESH}
 \end{sphinxVerbatim}
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Example of Passtick support with CICS@\spxentry{Example of Passtick support with CICS}}\ignorespaces 
 
 \subsection{Configuring Virtel - CICS Example}
-\label{\detokenize{Customization:configuring-virtel-cics-example}}
+\label{\detokenize{Customization:configuring-virtel-cics-example}}\label{\detokenize{Customization:index-116}}
 The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.
 
 \sphinxincludegraphics{{image21}.png}
@@ -3112,9 +3259,10 @@ We select the “Proceed” link.
 
 We are signed into CICS without having to specify any user id or password.
 
+\index{Security@\spxentry{Security}!AT-TLS@\spxentry{AT-TLS}}\index{AT-TLS@\spxentry{AT-TLS}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
 \subsection{AT-TLS Problems}
-\label{\detokenize{Customization:at-tls-problems}}
+\label{\detokenize{Customization:at-tls-problems}}\label{\detokenize{Customization:index-117}}
 It is easy to miss something when configuring user certificate sign on. Here are some general guidelines that should help in debugging configuration errors.
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
@@ -3252,9 +3400,10 @@ VIRTEL Web Access Guide Security \textendash{} Data encryption by SSL
 
 \end{itemize}
 
+\index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\ignorespaces 
 
 \section{NTLM Support}
-\label{\detokenize{Customization:ntlm-support}}
+\label{\detokenize{Customization:ntlm-support}}\label{\detokenize{Customization:index-118}}
 Windows Integrated Authentication allows a users’ Active Directory credentials to pass through their browser to a web server. The NTLM support is automatically activated whenever the Virtel transaction invoked is defined with type 2 security (NTLM). The NTLM support allows to retrieve the Windows userid but NOT the associated password. It could be therefore appropriate to complete the signon process by obtaining a password using a PASSTICKET request. Windows Integrated Authentication is enabled by default for Internet Explorer but not necessarily for Google Chrome or Mozilla Firefox. Users who use the non-Microsoft browsers will receive a pop-up box to enter their Mainframe credentials before continuing to the Virtel Web Access website. In an effort to make this process as easy as possible for end-users and if the Mainframe and Active Directory userid are the same it could be efficient to enable Windows Integrated Authentication for the browser. This can be done with Chrome and Firefox with a few additional steps.
 
 
@@ -3424,9 +3573,10 @@ You will see a list of preferences listed. Find the settings below by browsing t
     \PYG{n}{network}\PYG{o}{.}\PYG{n}{negotiate}\PYG{o}{\PYGZhy{}}\PYG{n}{auth}\PYG{o}{.}\PYG{n}{allow}\PYG{o}{\PYGZhy{}}\PYG{n}{proxies} \PYG{k+kc}{True}
 \end{sphinxVerbatim}
 
+\index{Security@\spxentry{Security}!NTLM Support@\spxentry{NTLM Support}}\index{NTLM Support@\spxentry{NTLM Support}!Troubleshooting@\spxentry{Troubleshooting}}\ignorespaces 
 
-\subsection{Problem determination}
-\label{\detokenize{Customization:id4}}
+\subsection{NTLM Troubleshooting}
+\label{\detokenize{Customization:ntlm-troubleshooting}}\label{\detokenize{Customization:index-119}}
 
 \subsubsection{Still receiving login prompt}
 \label{\detokenize{Customization:still-receiving-login-prompt}}
@@ -3440,12 +3590,14 @@ The invoked Virtel transaction is not defined with security = 2.
 
 \end{itemize}
 
+\index{System Managment@\spxentry{System Managment}}\ignorespaces 
 
 \chapter{System Management}
-\label{\detokenize{Customization:system-management}}
+\label{\detokenize{Customization:system-management}}\label{\detokenize{Customization:index-120}}
+\index{System Management@\spxentry{System Management}!Message controls@\spxentry{Message controls}}\index{Message controls@\spxentry{Message controls}!Messages to SYSOUT@\spxentry{Messages to SYSOUT}}\ignorespaces 
 
-\section{Suppress Messages From SYSLOG}
-\label{\detokenize{Customization:suppress-messages-from-syslog}}
+\section{Virtel Message Controls}
+\label{\detokenize{Customization:virtel-message-controls}}\label{\detokenize{Customization:index-121}}
 By default, the system messages prefixed by VIR issued by VIRTEL and the messages issued from the scenarios are written both in the STC SYSOUT or the JOB as well as on the system console. If certain messages prefixed by VIR can be deleted using the parameter (or command line) SILENCE of the VIRTCT, it may sometimes be necessary to stop the
 message issuance to SYSLOG or restrict their diffusion to another direction. From Virtel 4.54 (not available until 2015/Q1) the LOG feature enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:
 
@@ -3459,6 +3611,7 @@ For example, \sphinxstyleemphasis{LOG=(SYSOUT,A,EDSPRT)} directs all WTOs to a S
 \PYG{n}{F} \PYG{n}{VIRTEL}\PYG{p}{,}\PYG{n}{LOG}\PYG{o}{=}\PYG{n}{BOTH}
 \end{sphinxVerbatim}
 
+\index{System Management@\spxentry{System Management}!Message controls@\spxentry{Message controls}}\index{Message controls@\spxentry{Message controls}!Messages control options@\spxentry{Messages control options}}\ignorespaces 
 The LOG feature in Virtel 4.54 is controlled by the TCT parameters and a new LOG command. The new LOG command has the following format:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -3539,15 +3692,18 @@ The display of message VIR0099I requires the PTF 5530 be applied. Similarly the 
 \PYG{l+m+mf}{15.21}\PYG{o}{.}\PYG{l+m+mi}{50} \PYG{n}{STC07592} \PYG{n}{VIR0003I} \PYG{n}{SPVIRDOC} \PYG{n}{ENDED}
 \end{sphinxVerbatim}
 
+\index{System Management@\spxentry{System Management}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Running@\spxentry{Running}}\ignorespaces 
 
 \section{VIRCONF Usage}
-\label{\detokenize{Customization:virconf-usage}}
+\label{\detokenize{Customization:virconf-usage}}\label{\detokenize{Customization:index-123}}
 VIRCONF is a batch facilty you can use to add, update or delete definition strored in the ARBO file.
 
 \sphinxstylestrong{VIRCONF does not open the ARBO for output.}
 
 If you run VIRCONF when Virtel is active you can get IEC161I error messages. The reason for this error is that the VIRCONF program requires an exclusive control on the ARBO file and following the performance improvements through the introduction of VSAM LSR the VIRCONF is no longer able to access the ARBO VSAM file when VIRTEL is running. To avoid this problem a new feature was added to V4.56 which enables a VIRCONF UNLOAD through an operator command :
 
+\index{System Management@\spxentry{System Management}!VIRCONF Utility@\spxentry{VIRCONF Utility}}\index{VIRCONF Utility@\spxentry{VIRCONF Utility}!Virtel Unload Command@\spxentry{Virtel Unload Command}}\ignorespaces 
+\def\sphinxLiteralBlockLabel{\label{\detokenize{Customization:index-124}}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{F} \PYG{n}{virtel}\PYG{p}{,}\PYG{n}{unload}
 \end{sphinxVerbatim}
@@ -3566,9 +3722,10 @@ Or alternatively:
 \PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSPUNCH} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{n}{B}
 \end{sphinxVerbatim}
 
+\index{FAQ Questions@\spxentry{FAQ Questions}!OMVS panel@\spxentry{OMVS panel}}\ignorespaces 
 
 \chapter{FAQ}
-\label{\detokenize{Customization:faq}}
+\label{\detokenize{Customization:faq}}\label{\detokenize{Customization:index-125}}
 
 \section{How to use the TSO OMVS panel command with VWA}
 \label{\detokenize{Customization:how-to-use-the-tso-omvs-panel-command-with-vwa}}
@@ -3576,14 +3733,16 @@ TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING 
 
 Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.
 
+\index{FAQ Questions@\spxentry{FAQ Questions}!z/OS Consoles@\spxentry{z/OS Consoles}}\ignorespaces 
 
 \section{Can VIRTEL WEB ACCESS emulate z/OS Operator consoles}
-\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}
+\label{\detokenize{Customization:can-virtel-web-access-emulate-z-os-operator-consoles}}\label{\detokenize{Customization:index-126}}
 Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.
 
+\index{FAQ Questions@\spxentry{FAQ Questions}!Hotspot recognition with regular expressions@\spxentry{Hotspot recognition with regular expressions}}\ignorespaces 
 
 \section{Can I customize hotspot recognition}
-\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}
+\label{\detokenize{Customization:can-i-customize-hotspot-recognition}}\label{\detokenize{Customization:index-127}}
 The regular expressions which control hotspot recognition may be overridden by setting VIR3270.customPfKeysHotspotRegex and/or VIR3270.customUrlHotspotsRegex in a customized javascript member. For example, an application requires strings of the format “PFnn-caption” to be recognized as PF hotspots. The customized code in the javascript member would look like would be:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
