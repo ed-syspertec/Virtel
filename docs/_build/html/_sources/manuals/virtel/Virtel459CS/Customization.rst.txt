@@ -2500,9 +2500,9 @@ USERPARM Setup
 
     ::
     
-        UPARMS=(USERPARM),                                      		*
-        UFILE3=(USERTRSF,ACBH3,0,10,01),                        		*
-        ACBH3    ACB   AM=VSAM,DDNAME=USERTRSF,MACRF=(SEQ,DIR,OUT),  	*  
+        UPARMS=(USERPARM),                                              *
+        UFILE3=(USERTRSF,ACBH3,0,10,01),                                *
+        ACBH3    ACB   AM=VSAM,DDNAME=USERTRSF,MACRF=(SEQ,DIR,OUT),     *  
                STRNO=3                                                  
 
 2   Run HLQ.VIRTxxx.SAMPLIB(USERPARM)
