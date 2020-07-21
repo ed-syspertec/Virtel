@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Customising Virtel" href="../TN201507/TN201507.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -116,6 +118,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +157,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -211,7 +214,7 @@ web service hosted by <a class="reference external" href="http://www.webservicex
 <p>Breaking down the individual actions we can anaylze the components
 involved.</p>
 <ol class="arabic simple">
-<li><p>Connection to the Virtel Server is through a batch application. In
+<li>Connection to the Virtel Server is through a batch application. In
 this case we are using REXX to connect to the Virtel server using
 REXX socket fuctions. The batch application runs as a batch task
 invoking TCPIP to initialize and connect a socket to VIRTEL. The
@@ -219,7 +222,7 @@ batch application sends a URL request to VIRTEL, effectively
 emulatiing a browser. The URL request identifies the VIRTEL line,
 template and transaction. Virtel is unaware that it is conversing
 with a batch program. The following is the JCL that invokes the REXX
-batch application.</p></li>
+batch application.</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//LIBS JCLLIB ORDER=SPTHOLT.VIRTEL.REXX
 //*
@@ -253,7 +256,7 @@ Parameters: FROMCURRENCY=EUR,TOCURRENCY=GBP
 </pre></div>
 </div>
 <ol class="arabic" start="2">
-<li><p>When Virtel receives the URL it invokes the transaction associated
+<li><p class="first">When Virtel receives the URL it invokes the transaction associated
 with the Line related to the IP address and port. In this case it is
 line E-HTTP which has an entry point of EDSPOINT. Within that entry
 point, transaction WS3 is defined which has an initial scenario of
@@ -326,11 +329,11 @@ when we run the batch application we can see the data flow.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The inbound message is not using the template WS1.HTML in the above example, but rather just returning the CANSWER variable.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">The inbound message is not using the template WS1.HTML in the above example, but rather just returning the CANSWER variable.</p>
 </div>
 <ol class="arabic" start="3">
-<li><p>The scenario associated with the transaction WS3 is a Virtel initial
+<li><p class="first">The scenario associated with the transaction WS3 is a Virtel initial
 scenario. It is defined with the following attributes:-</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image310.png"><img alt="image2" src="../../../_images/image310.png" style="width: 6.26806in; height: 4.04236in;" /></a>
@@ -350,16 +353,16 @@ can be defined as an output structure, defined between the OUTPUT
 MAP$ and OUTPUT MAP$ END, followed by the SCENARIO logic. The logic
 steps of the scenario can be broken down thus:-</p>
 <ol class="loweralpha simple">
-<li><p>Create variables from URL – FROMCURRENCY, TOCURRENCY</p></li>
-<li><p>Set variable SITE to URL of web services provider and access port - <a class="reference external" href="http://www.webservices.net:80">www.webservices.net:80</a></p></li>
-<li><p>Read in SOAP template from Virtel TRSF file – exchange.xml.</p></li>
-<li><p>Build options file for $POST SOAP request – OPTION$ in Virtel variable REQP.</p></li>
-<li><p>Send SOAP request to web services provider.</p></li>
-<li><p>Test results and depending on return code take appropriate action. This is achieved using a Virtel CASE$ statement.</p></li>
-<li><p>Copy Virtel ANSWER variable to a COMMAREA as mapped by the OUTPUT map area.</p></li>
-<li><p>Copy the formatted COMMAREA to a Virtel variable called CANSWER.</p></li>
-<li><p>Send template with CANSWER. This will cause the tagged area of the template WS1.HTML to be populated with the CANSWER variable or just send CANSWER variable.</p></li>
-<li><p>Disconnect the session with the batch application.</p></li>
+<li>Create variables from URL – FROMCURRENCY, TOCURRENCY</li>
+<li>Set variable SITE to URL of web services provider and access port - <a class="reference external" href="http://www.webservices.net:80">www.webservices.net:80</a></li>
+<li>Read in SOAP template from Virtel TRSF file – exchange.xml.</li>
+<li>Build options file for $POST SOAP request – OPTION$ in Virtel variable REQP.</li>
+<li>Send SOAP request to web services provider.</li>
+<li>Test results and depending on return code take appropriate action. This is achieved using a Virtel CASE$ statement.</li>
+<li>Copy Virtel ANSWER variable to a COMMAREA as mapped by the OUTPUT map area.</li>
+<li>Copy the formatted COMMAREA to a Virtel variable called CANSWER.</li>
+<li>Send template with CANSWER. This will cause the tagged area of the template WS1.HTML to be populated with the CANSWER variable or just send CANSWER variable.</li>
+<li>Disconnect the session with the batch application.</li>
 </ol>
 </div></blockquote>
 </li>
@@ -503,7 +506,7 @@ traced:-</p>
 </pre></div>
 </div>
 <ol class="arabic" start="4">
-<li><p>The web services provided by
+<li><p class="first">The web services provided by
 <a class="reference external" href="http://www.webserviceX.net">www.webserviceX.net</a> can be
 discovered and exploited by analysis of the associated WSDLs. The
 home page of the site lists the most popular web services that the
@@ -553,7 +556,7 @@ pages devoted to this subject. The following URL,</p>
 messages. This is useful for building the exchange.xml template and
 for analysing the response message within the scenario.</p>
 <p><strong>SOAP 1.2 Example</strong></p>
-<p>The following is a sample SOAP 1.2 request and response. The placeholders shown need to be replaced with actual values.</p>
+<p>The following is a sample SOAP 1.2 request and response. The placeholders&nbsp;shown need to be replaced with actual values.</p>
 <p><em>REQUEST message</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>POST /CurrencyConvertor.asmx HTTP/1.1
 Host: www.webservicex.net
@@ -589,14 +592,14 @@ xmlns:soap12=&quot;http://www.w3.org/2003/05/soap-envelope&quot;&gt;
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>After receiving the SOAP response the scenario will search for the
+<li>After receiving the SOAP response the scenario will search for the
 element ConversionRateResult and extract the value and placing in to
 the Virtel ANSWER variable. If there is an error, the
 ConversionRateResult value will contain details of the web services
 error. The scenario will copy this error message to the ANSWER
 variable. In both cases the results are contained within the
 ConversionRateResult element. These operations are executed through
-the MAP$ EVENTUAL-AREA statement:-</p></li>
+the MAP$ EVENTUAL-AREA statement:-</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>MAP$ EVENTUAL-AREA,FROM-CONSTANT,&#39;0&#39;,WHEN=(ELEMENT,              *
     &#39;ConversionRateResult&#39;),EVENT=&#39;Response&#39;,LENGTH=6
@@ -624,11 +627,11 @@ OFAULT      MAP$ END
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li><p>When the batch application receives the response to the original URI
+<li>When the batch application receives the response to the original URI
 request the answer will be contained within the WS1.HTML template,
 where the CANSWER area has been captured. The first character of the
 CANSWER area, as posted by the scenario, will either be a 0 or a 1. A
-zero indicates success, a one indicates an error:-</p></li>
+zero indicates success, a one indicates an error:-</li>
 </ol>
 <p><strong>Result:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!DOCTYPE html&gt;
@@ -664,8 +667,8 @@ batch application.</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>All the source related to this newsletter can be downloaded from the
+<p class="first admonition-title">Note</p>
+<p class="last">All the source related to this newsletter can be downloaded from the
 Virtel FTP web site. The file name is zostn2501506.zip.</p>
 </div>
 <p><strong>Appendix A SCENRATE Scenario</strong></p>
@@ -1044,11 +1047,19 @@ e2atab = &#39;00010203 04050607 08090A0B 0C0D0E0F&#39;x || ,
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1059,7 +1070,6 @@ e2atab = &#39;00010203 04050607 08090A0B 0C0D0E0F&#39;x || ,
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

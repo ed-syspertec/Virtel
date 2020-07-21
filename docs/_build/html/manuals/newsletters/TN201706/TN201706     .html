@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Getting started with Sphinx and ReadTheDocs" href="../TN201707/tn201707.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -123,6 +125,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -161,7 +164,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -205,8 +208,8 @@ the /option/ pathname. Two new transactions have been added to support
 the /option/ pathname. See the <em>Virtel Users Guide, Customizing Virtel using the Option mode.</em></p>
 <p>Further details can also be found in the Virtel technical newsletter <em>TN2016-11 Customising Virtel in V4.56</em>.</p>
 <div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
+<p class="first admonition-title">Danger</p>
+<p class="last">Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
 </div>
 </div>
 </div>
@@ -233,11 +236,11 @@ from ‘left to right’ to ‘right to left’ and return. This is the way some
 countries support 3270 Arabic.</p>
 <p>Note:-</p>
 <ul class="simple">
-<li><p>The Alt-ENTER is active only if the ‘Bidirectional data’ Display
-option is set.</p></li>
-<li><p>The Alt-ENTER key may be unset by going to w2h key mappings options.</p></li>
-<li><p>The w2hparm.mirrorMode may be set in a w2hparm.js file to preset the
-option:-</p></li>
+<li>The Alt-ENTER is active only if the ‘Bidirectional data’ Display
+option is set.</li>
+<li>The Alt-ENTER key may be unset by going to w2h key mappings options.</li>
+<li>The w2hparm.mirrorMode may be set in a w2hparm.js file to preset the
+option:-</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">mirrorMode</span> <span class="o">=</span> <span class="n">true</span>
 </pre></div>
@@ -373,9 +376,9 @@ corresponding ADMVWM.JS module.</p>
 <p>This fix implements several new macro and DDI features. It incorporates
 the following changes:-</p>
 <ul class="simple">
-<li><p>A “Refresh” button has been added to the Global panel.</p></li>
-<li><p>Fix a bug in removing records.</p></li>
-<li><p>Improved keyboard mapping graphics.</p></li>
+<li>A “Refresh” button has been added to the Global panel.</li>
+<li>Fix a bug in removing records.</li>
+<li>Improved keyboard mapping graphics.</li>
 </ul>
 <p><strong>5484 Hotkey support for DDI macros</strong></p>
 <p>Hotkey key mapping support for VIRTEL DDI macros.</p>
@@ -471,42 +474,42 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
 <div class="section" id="bug-fixes">
 <h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>5435 Global variable conflict between.</p></li>
-<li><p>5436 Fix problem with OCCURS-UNLIMITED when analysing JSON objects.</p></li>
-<li><p>5437 VSE - corrects TCT command display of BFVSAM and BUFDATA.</p></li>
-<li><p>5438 Correct TCT command display and multi-line WTO</p></li>
-<li><p>5440 ASRA abend entering Network Management sub-application (PA2 + PF6)</p></li>
-<li><p>5445 TRACE SCENARIO statement produces spurious character in WTO</p></li>
-<li><p>5446 url HOTSPOT in wrong position for multi-line output</p></li>
-<li><p>5448 Error if password contains a non-alphanumeric character.</p></li>
-<li><p>5448a Correct IE8 display. Potential blocking error.</p></li>
-<li><p>5449 Macro check box not rendered correctly.</p></li>
-<li><p>5450 Corrects updt5447. German translation was missing.</p></li>
-<li><p>5451 Re-instate w2hparm.js default behaviour.</p></li>
-<li><p>5455 Correct ADMIN HTML Rules display.</p></li>
-<li><p>5460 Compatibility fix for settings panel.</p></li>
-<li><p>5461 Avoid blank settings page with master/slave settings in screen capture.</p></li>
-<li><p>5462 Files larger than 30K are incorrectly retrieved from CACHE.</p></li>
-<li><p>5463 Correct processing of HTTP pseudo terminal with an &#64;EIB.</p></li>
-<li><p>5465 IE8 corrections for DDI and macro support.</p></li>
-<li><p>5466 Correct macro API which blocked “Save” button.</p></li>
-<li><p>5464 VIRSV Improve initialisation messages.</p></li>
-<li><p>5470 Correct first line of screen when using logmode SNX32705</p></li>
-<li><p>5471 Fix D23-002 ABEND due to incorrect URL</p></li>
-<li><p>5472 Correct time column alignment in DDI display.</p></li>
-<li><p>5478 Fix C03 ABEND on shutdown.</p></li>
-<li><p>5479 Fix DDI “delete” bug.</p></li>
-<li><p>5488 Fix DDI “save” bug.</p></li>
-<li><p>5489 Corrections to the DDI macro interface.</p></li>
-<li><p>5492 Support % character in HTML Signon password field.</p></li>
-<li><p>5493 Fix ABEND878-10 ABEND.</p></li>
-<li><p>5494 Correct ICON protocol. Issues incorrect NACK in some situations.</p></li>
-<li><p>5495 Correct AutoPrint feature. Problem with printing multiple pages.</p></li>
-<li><p>5497 Correct MIME error after upload.</p></li>
-<li><p>5499 Correct CLONE= parameter to support either 1 or 2 characters.</p></li>
-<li><p>5500 Fix bug in VIR0021W, USS MSGTAB10 processor.</p></li>
-<li><p>5505 Correct Loop when ATTN key is pressed.</p></li>
-<li><p>5506 Fix clean-up processing in VIR0021W. Stop LOAD failure.</p></li>
+<li>5435 Global variable conflict between.</li>
+<li>5436 Fix problem with OCCURS-UNLIMITED when analysing JSON objects.</li>
+<li>5437 VSE - corrects TCT command display of BFVSAM and BUFDATA.</li>
+<li>5438 Correct TCT command display and multi-line WTO</li>
+<li>5440 ASRA abend entering Network Management sub-application (PA2 + PF6)</li>
+<li>5445 TRACE SCENARIO statement produces spurious character in WTO</li>
+<li>5446 url HOTSPOT in wrong position for multi-line output</li>
+<li>5448 Error if password contains a non-alphanumeric character.</li>
+<li>5448a Correct IE8 display. Potential blocking error.</li>
+<li>5449 Macro check box not rendered correctly.</li>
+<li>5450 Corrects updt5447. German translation was missing.</li>
+<li>5451 Re-instate w2hparm.js default behaviour.</li>
+<li>5455 Correct ADMIN HTML Rules display.</li>
+<li>5460 Compatibility fix for settings panel.</li>
+<li>5461 Avoid blank settings page with master/slave settings in screen capture.</li>
+<li>5462 Files larger than 30K are incorrectly retrieved from CACHE.</li>
+<li>5463 Correct processing of HTTP pseudo terminal with an &#64;EIB.</li>
+<li>5465 IE8 corrections for DDI and macro support.</li>
+<li>5466 Correct macro API which blocked “Save” button.</li>
+<li>5464 VIRSV Improve initialisation messages.</li>
+<li>5470 Correct first line of screen when using logmode SNX32705</li>
+<li>5471 Fix D23-002 ABEND due to incorrect URL</li>
+<li>5472 Correct time column alignment in DDI display.</li>
+<li>5478 Fix C03 ABEND on shutdown.</li>
+<li>5479 Fix DDI “delete” bug.</li>
+<li>5488 Fix DDI “save” bug.</li>
+<li>5489 Corrections to the DDI macro interface.</li>
+<li>5492 Support % character in HTML Signon password field.</li>
+<li>5493 Fix ABEND878-10 ABEND.</li>
+<li>5494 Correct ICON protocol. Issues incorrect NACK in some situations.</li>
+<li>5495 Correct AutoPrint feature. Problem with printing multiple pages.</li>
+<li>5497 Correct MIME error after upload.</li>
+<li>5499 Correct CLONE= parameter to support either 1 or 2 characters.</li>
+<li>5500 Fix bug in VIR0021W, USS MSGTAB10 processor.</li>
+<li>5505 Correct Loop when ATTN key is pressed.</li>
+<li>5506 Fix clean-up processing in VIR0021W. Stop LOAD failure.</li>
 </ul>
 </div>
 </div>
@@ -531,11 +534,19 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -546,7 +557,6 @@ an asynchronous use of the IBM GETNAMEINFO EZASMI API.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

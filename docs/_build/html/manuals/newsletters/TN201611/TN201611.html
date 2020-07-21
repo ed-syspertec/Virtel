@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Protecting business assets" href="../TN201701/TN201701.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -116,6 +118,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +157,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -219,54 +222,54 @@ points. It is referenced by the W2H-03P and CLI-03P transaction for the
 pathname “/w2h/w2hparm-js”.</p>
 <p>The following shipped transactions are associated with the customization
 settings support.</p>
-<table class="docutils align-default">
+<table border="1" class="docutils">
 <colgroup>
-<col style="width: 15%" />
-<col style="width: 11%" />
-<col style="width: 29%" />
-<col style="width: 15%" />
-<col style="width: 30%" />
+<col width="15%" />
+<col width="11%" />
+<col width="29%" />
+<col width="15%" />
+<col width="30%" />
 </colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Entry Point</p></th>
-<th class="head"><p>Transaction</p></th>
-<th class="head"><p>Prefix</p></th>
-<th class="head"><p>Default Directory</p></th>
-<th class="head"></th>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Entry Point</th>
+<th class="head">Transaction</th>
+<th class="head">Prefix</th>
+<th class="head">Default Directory</th>
+<th class="head">&#160;</th>
 </tr>
 </thead>
-<tbody>
-<tr class="row-even"><td><p>CLIWHOST</p></td>
-<td><p>CLI-03P</p></td>
-<td><p>Defines pointer to w2hparm.js
-through path /w2h/w2hparm-js.</p></td>
-<td><p>W2H-DIR</p></td>
-<td><p>Requires customization to direct
-search to user directory.</p></td>
+<tbody valign="top">
+<tr class="row-even"><td>CLIWHOST</td>
+<td>CLI-03P</td>
+<td>Defines pointer to w2hparm.js
+through path /w2h/w2hparm-js.</td>
+<td>W2H-DIR</td>
+<td>Requires customization to direct
+search to user directory.</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>CLI-03CO</p></td>
-<td><p>Defines option directory
-using path /option/.</p></td>
-<td><p>CLI-DIR</p></td>
-<td><p>Directory containing customized
-components.</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>CLI-03CO</td>
+<td>Defines option directory
+using path /option/.</td>
+<td>CLI-DIR</td>
+<td>Directory containing customized
+components.</td>
 </tr>
-<tr class="row-even"><td><p>WEB2HOST</p></td>
-<td><p>W2H-03P</p></td>
-<td><p>Defines pointer to w2hparm.js
-through path /w2h/w2hparm.js.</p></td>
-<td><p>W2H-DIR</p></td>
-<td><p>Requires customization to direct
-search to a user directory.</p></td>
+<tr class="row-even"><td>WEB2HOST</td>
+<td>W2H-03P</td>
+<td>Defines pointer to w2hparm.js
+through path /w2h/w2hparm.js.</td>
+<td>W2H-DIR</td>
+<td>Requires customization to direct
+search to a user directory.</td>
 </tr>
-<tr class="row-odd"><td></td>
-<td><p>W2H-03CO</p></td>
-<td><p>Defines option directory
-using path /option/.</p></td>
-<td><p>CLI-DIR</p></td>
-<td><p>Directory containing customized
-components.</p></td>
+<tr class="row-odd"><td>&#160;</td>
+<td>W2H-03CO</td>
+<td>Defines option directory
+using path /option/.</td>
+<td>CLI-DIR</td>
+<td>Directory containing customized
+components.</td>
 </tr>
 </tbody>
 </table>
@@ -473,13 +476,13 @@ the “test” option using the follow option stub file:-</p>
 <p>The results of using these customized elements for this transaction is
 that:-</p>
 <ul class="simple">
-<li><p>The CSS rule has been modified to change the text to RED with a black
-background. This is the default setting for CSS class NRED1</p></li>
-<li><p>The tool bar has been reverted to the default. The Printer ICON is no
-longer present.</p></li>
-<li><p>The “Help” page defaults to the Virtel distributed “Help” template.</p></li>
-<li><p>The “Enter” key has been given a value of “Enter”. The default is
-“Newline”.</p></li>
+<li>The CSS rule has been modified to change the text to RED with a black
+background. This is the default setting for CSS class NRED1</li>
+<li>The tool bar has been reverted to the default. The Printer ICON is no
+longer present.</li>
+<li>The “Help” page defaults to the Virtel distributed “Help” template.</li>
+<li>The “Enter” key has been given a value of “Enter”. The default is
+“Newline”.</li>
 </ul>
 <p><strong>Compatibility mode</strong></p>
 <p>To maintain compatibility with previous versions of Virtel a
@@ -518,7 +521,7 @@ versions of Virtel:-</p>
 </pre></div>
 </div>
 <p><strong>Customizing elements.</strong></p>
-<p>CSS (pathToCssCustom - key of oCustom)</p>
+<p>CSS (pathToCssCustom&nbsp;- key of oCustom)</p>
 <p>This module effects the presentation of web pages. The VIRTEL
 administrator can customize the color settings for all applications or
 for specific applications. The custom settings are defined in a style
@@ -526,12 +529,12 @@ sheet called custom.css which the administrator uploads to a VIRTEL
 directory designated for storage of customer files (usually CLI-DIR).
 For more information see <em>Virtel Web Access User Guide, Chapter 1.12,
 Site Customization of Colors and Logo.</em></p>
-<p>JavaScript (pathToJsCustom - key of oCustom)</p>
+<p>JavaScript (pathToJsCustom&nbsp;- key of oCustom)</p>
 <p>To take into account site-specific JavaScript extensions for Web Access,
 the WEB2AJAX.htm page template loads a customized JavaScript file when a
 session is started. See <em>Virtel Web Access User Guide, Chapter 1.13,
 Site Customization of JavaScript functions.</em></p>
-<p>w2hparm (pathToW2hparm - key of oCustom)</p>
+<p>w2hparm (pathToW2hparm&nbsp;- key of oCustom)</p>
 <p>The VIRTEL Web Access user can use the Settings menu to modify certain
 options such as font size, 3270 key mappings, and color schemes. The
 user’s settings are stored in a browser local storage which remains
@@ -542,13 +545,13 @@ modification of Web Access settings</em>”, in the <em>Virtel Web Access User
 Guide, chapter 1.7</em> for further details. The migration of w2hparm can
 come from several sources:- user local storage, transaction option, line
 option w2hparm.js (CLI or other), global option w2hparm.js (W2H).</p>
-<p>print style sheet (pathToPrintCss - key of oCustom)</p>
+<p>print style sheet (pathToPrintCss&nbsp;- key of oCustom)</p>
 <p>Customize the print style.</p>
-<p>help page (pathToHelp - key of oCustom)</p>
+<p>help page (pathToHelp&nbsp;- key of oCustom)</p>
 <p>Customize the help page.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For compatibility mode empty custom.js and custom.css files are delivered with Virtel along with the relevant transactions.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">For compatibility mode empty custom.js and custom.css files are delivered with Virtel along with the relevant transactions.</p>
 </div>
 <p><strong>Custom directory CLI-DIR</strong></p>
 <p>It is strongly recommended that any customized elements are located in
@@ -585,11 +588,19 @@ application menu.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -600,7 +611,6 @@ application menu.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

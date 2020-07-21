@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,12 +34,9 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="How to intergrate DB2 and Virtel" href="../TN201904/TN201904.html" />
     <link rel="prev" title="What’s new in Virtel 4.59 (August 2019) Beta Release" href="../TN201902/TN201902.html" /> 
 </head>
 
@@ -49,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -79,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -105,6 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#appendix-c">Appendix C</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201904/TN201904.html">How to intergrate DB2 and Virtel</a></li>
 </ul>
 </li>
 </ul>
@@ -114,6 +118,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -152,7 +157,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -240,8 +245,8 @@
 </div>
 <p>Creating these macros is best done through Virtel. Use a local macro environment to create your macros. For example, from within a TSO or a CICS application within the Administration portal. After creating the macros, export them to a file as a JSON structure. Copy the file to the relevant batch sub-directory. In all cases the file must be called macros.json. Alternatively, get you users to create the own “macros.json”, and ship them to you.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You cannot export macros from a centralized DDI macro environment.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot export macros from a centralized DDI macro environment.</p>
 </div>
 </div>
 </div>
@@ -306,12 +311,12 @@
 <p>The arguments passed to the “ddiMacro” script are :-</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>RACF GROUP</p></li>
-<li><p>RACF USERID</p></li>
-<li><p>Global Option</p></li>
-<li><p>URL address of Virtel</p></li>
-<li><p>Local PC sub-directory for group containing macros.json file.</p></li>
-<li><p>Local PC sub-directory for user containing macros.json file.</p></li>
+<li>RACF GROUP</li>
+<li>RACF USERID</li>
+<li>Global Option</li>
+<li>URL address of Virtel</li>
+<li>Local PC sub-directory for group containing macros.json file.</li>
+<li>Local PC sub-directory for user containing macros.json file.</li>
 </ol>
 </div></blockquote>
 <p>By default, the upload.bat job does not upload a macros.json file from the global sub-directory. To alter this behavior modify the first “call” statement and change option ‘3’ to “Y”. This will force and upload to the Virtel globals macro directory from the local global sub-directory.</p>
@@ -578,6 +583,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../TN201904/TN201904.html" class="btn btn-neutral float-right" title="How to intergrate DB2 and Virtel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
       
         <a href="../TN201902/TN201902.html" class="btn btn-neutral float-left" title="What’s new in Virtel 4.59 (August 2019) Beta Release" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
@@ -588,11 +595,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -603,7 +618,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

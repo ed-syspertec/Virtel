@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Taking a VTAM trace" href="../TN201410/TN201410.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -125,6 +127,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -163,7 +166,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -193,16 +196,16 @@ printing and provides some guidance on how to implement them.</p>
 <p>In the scenarios that follow user involvement is required. The supported Virtel LU printer types are LU Type 1(SNA SCS) and LU Type 0/3(3270 datastream).</p>
 <p>Depending on the Virtel printer configuration one of several things can happen at the browser end:-</p>
 <ul>
-<li><p>Printer Type LU0 or LU3 (Non SNA/3270 data streams)</p>
+<li><p class="first">Printer Type LU0 or LU3 (Non SNA/3270 data streams)</p>
 <blockquote>
 <div><p>Print data will be sent to the Virtel client and will appear in a new browser window. (<em>Default action.</em>)</p>
-<p>Virtel Option:  If AutoPrint is set on in the Virtel settings.</p>
+<p>Virtel Option: &nbsp;If AutoPrint is set on in the Virtel settings.</p>
 <p>A Windows “Print” window will automatically open and the print data will be displayed. The user can then select to print the output data.</p>
 </div></blockquote>
 </li>
-<li><p>Printer Type LU1 (SNA/SCS)</p>
+<li><p class="first">Printer Type LU1 (SNA/SCS)</p>
 <blockquote>
-<div><p>Print data will be sent to Virtel as an attached file. This will drive a Windows “Save As or Open” window which will enable the user to open the file or save it. This file contains the RAW print data. This of course could include PCL data which could be further processed by external programs or printed by a printer that supports PCL datastreams. For example, the file could be converted to a PDF. There are many PCL to PDF conversion products on the open market. Virtel can also process the PCL data and convert it to a PDF either through a remote print server or through calling an internal service program called MAKEPDF.</p>
+<div><p>Print data will be sent to Virtel as an attached file. This will drive a Windows “Save As or Open”&nbsp;window which will enable the user to open the file or save it. This file contains the RAW print data. This of course could include PCL data which could be further processed by external programs or printed by a printer that supports PCL datastreams. For example, the file could be converted to a PDF. There are many PCL to PDF conversion products on the open market. Virtel can also process the PCL data and convert it to a PDF either through a remote print server or through calling an internal service program called MAKEPDF.</p>
 </div></blockquote>
 </li>
 </ul>
@@ -214,8 +217,8 @@ printing and provides some guidance on how to implement them.</p>
 <p><img alt="image0" src="../../../_images/image11.jpeg" /> <em>Fig. 1 - Printing LU3</em></p>
 <p>Virtel pretends to be that remote 3270 printer through its relay LU associated with a user’s terminal session. In our case the printer name is REHIP000. This is set up in the terminal section of Virtel which can be accessed using F2 from the Virtel Configuration Menu. The following screen shot shows a terminal definition screen in Virtel. I’m using a prefix of REH in my example. The shipped defaults are prefixed RHT.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the *W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">Terminal REHIP000 is a second relay associated with terminal relay REHVT000, both of which are located within the *W2HPOOL. REHVIP000 is designated as type “P” – LU3 3270 printer.</p>
 </div>
 <p>In the shipped sample definitions the LU Type 1 (RHTIM000) is associated with the relay terminal definition RHTVT000. To use LU T3 (3270 datastream) the RHTVT000 definition must be updated to associate the
 printer terminal RHTIP000 with RHTVT000.</p>
@@ -239,16 +242,16 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Do not modify the ??? to a numeric number. These are VTAM model APPL definitions and the ??? is a valid string in this context.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">Do not modify the ??? to a numeric number. These are VTAM model APPL definitions and the ??? is a valid string in this context.</p>
 </div>
 <p>There is no need to modify this definition. It should be copied to the VTAMLST library and activated with the V NET,ACT,ID= VTAM command.</p>
 <p>When Virtel detects that is has printer output, it will collect it from the printer relay LU and send it to the associated terminal session. When the session receives the output it will be displayed in a new
 browser window. Here is a screen shot of my terminal session before sending any output.</p>
 <p><img alt="image2" src="../../../_images/image3.jpeg" /> <em>Fig. 3 - Example of Virtel Browser screen before print data has been sent.</em></p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In the bottom corner you can see the two virtual SNA LUs that Virtel is using to represent this browser session to VTAM. Theses are the Virtel Relays. The first name, REHVT000, is the 3270 terminal LU and the second, REHIP000, is the associated SNA printer attached to REHVT000.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">In the bottom corner you can see the two virtual SNA LUs that Virtel is using to represent this browser session to VTAM. Theses are the Virtel Relays. The first name, REHVT000, is the 3270 terminal LU and the second, REHIP000, is the associated SNA printer attached to REHVT000.</p>
 </div>
 <p>The Virtel VJRS utility program is used to emulate a VTAM printer interface and is run as a started task. When it detects output destined for one of its defined printers it will grab the spooled output from JES2 and drive the virtual printer REHIP000.</p>
 <p>The VJRS definition looks like:-</p>
@@ -277,8 +280,8 @@ browser window. Here is a screen shot of my terminal session before sending any 
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The JRP utility program in the <a class="reference external" href="http://www.cbttape.org/cbtdowns.htm">CBT archive - File 755</a> can be used in place of the Virtel VJRS utility. This is freely available under the terms and conditions of CBT.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">The JRP utility program in the <a class="reference external" href="http://www.cbttape.org/cbtdowns.htm">CBT archive - File 755</a> can be used in place of the Virtel VJRS utility. This is freely available under the terms and conditions of CBT.</p>
 </div>
 <p>Once Virtel detects output on its relay LU it will send it to the browser. This can be seen by the fact that a small printer icon will appear in the task bar. See the screen shot below:-</p>
 <p><img alt="image3" src="../../../_images/image41.jpeg" /> <em>Fig. 4 - Print data received by browser. Printer ICON displayed in Task Bar.</em></p>
@@ -398,7 +401,7 @@ REHIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <p>When the ADMOPUT successfully starts it will write a message to the console log:-</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@19</span> <span class="n">ADM2000</span> <span class="n">I</span> <span class="n">ADMOPUT</span><span class="p">(</span><span class="n">GDDM</span><span class="p">)</span><span class="o">.</span> <span class="n">TO</span> <span class="n">TERMINATE</span><span class="p">,</span> <span class="n">REPLY</span> <span class="s1">&#39;STOP&#39;</span><span class="p">,</span> <span class="s1">&#39;STOPQ&#39;</span><span class="p">,</span> <span class="n">OR</span> <span class="s1">&#39;STOPS&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">@</span><span class="mi">19</span> <span class="n">ADM2000</span> <span class="n">I</span> <span class="n">ADMOPUT</span><span class="p">(</span><span class="n">GDDM</span><span class="p">)</span><span class="o">.</span> <span class="n">TO</span> <span class="n">TERMINATE</span><span class="p">,</span> <span class="n">REPLY</span> <span class="s1">&#39;STOP&#39;</span><span class="p">,</span> <span class="s1">&#39;STOPQ&#39;</span><span class="p">,</span> <span class="n">OR</span> <span class="s1">&#39;STOPS&#39;</span>
 </pre></div>
 </div>
 <p>Now we can start Virtel making sure that we have a second relay printer
@@ -881,11 +884,19 @@ END
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -896,7 +907,6 @@ END
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -57,13 +57,13 @@ Virtel version 4.59 (27th Oct 2019)
 
 .. note:: For further details see the Virtel Technical Newsletter TN201902: Whats new in Virtel 4.59.
 
-Customizing
-===========
+Customization
+=============
 
 Customization of Virtel can be implemented through customization of the following elements: 
 
 *   Custom CSS files, including Print Style CSS files.
-*   Custom Javascript files.
+*   Custom JavaScript files.
 *   Custom setting parameters.
 *   Custom Help pages.
 
@@ -74,7 +74,10 @@ Levels of customization
 
 Depending on how Virtel is implemented at a site will determine what level of customization is required. For most users, simple modification of the default settings may be all that is required. This can be achieved just by modifying the supplied dummy W2HPARM.JS in the CLI-DIR assuming that this is the only directory in use for any "user" transactions. The setting defaults are listed in Appendix A of the Virtel User Guide.  
 
-More complex installations may require different levels of customization invoking bespoke CSS and Javascript members. Furthermore, different customization levels may be required for different Entry points and underlying transactions. The "Option" level of customization meets these requirements.
+More complex installations may require different levels of customization invoking bespoke CSS and JavaScript members. Furthermore, different customization levels may be required for different Entry points and underlying transactions. The "Option" level of customization meets these requirements.
+
+.. index::     
+   single: Customization; W2HPARM.JS 
     
 Settings member W2HPARM.JS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -95,6 +98,9 @@ but if a property is defined outside of the object definition, no quotes are spe
 
 See Appendix A of the Virtel Users Guide for a full list of "key" names and associated default values.
 
+.. index::     
+   single: Customization; Displaying customized members 
+
 Displaying customized members
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -114,12 +120,15 @@ To display a customized option member use the following URL:
 
 *Example of displaying a global option member*
 
+.. index::     
+   single: Customization; Common settings member 
+
 Common settings member
 ^^^^^^^^^^^^^^^^^^^^^^
 
 If it is required that a common set of settings member be used for both W2H-DIR and CLI-DIR than a small modification to the W2H-DIR transaction, W2H-03P, is required. Changing the location directory from W2H-DIR to CLI-DIR will ensure that settings will be derived from the CLI-DIR W2HPARM.JS member. For example if you modify a key settings, which keyboard key reflects they "ENTER" key for example, than this change can used by both W2H and CLI transactions. An example of a modified W2H-03P transaction is displayed below:
 
-|imagexx|
+|image56|
 
 *Example of W2H-03P pointing at the CLI-DIR*
 
@@ -150,9 +159,11 @@ The following JCL may also be used to modify the W2H-03P transaction.
          SECURITY=0,                                              
          LOGMSG='/w2h/w2hparm-js'    
 
+.. index::     
+   single: Customization; Global Level Options 
 
-Global Options
---------------
+Global Level Options
+--------------------
 
 Virtel implements a "global" option customized level whereby all customized elements apply to all transactions of a particular Entry Point. Each Entry Point may have its own "global" options. To implement global option customization, the W2HPARM.JS settings member is modified to contain a global settings object whose attributes point to members located in the options directory OPT-DIR. 
 ::
@@ -224,12 +235,15 @@ The output from this display should show the DDI/Macros options that we used in 
 
 *Example of a wh2parm.global.js member*
 
-Transaction Options
--------------------
+.. index::     
+   single: Customization; Transaction Level Options 
 
-Some transactions may require a different set of options or settings than those defined at the Entry Point or Global level. For example, certain transactions may have a modified tool bar containing a Printer Icon. Transactions which require such specific customization should have a unique option identifier or "Id" associated with the transaction definition. This "id" will pull in a different set of options "key":"values" settings and will override the "global" settings. The option "id" will be used to associate customized elements against specific transaction(s). 
+Transaction Level Options
+-------------------------
 
-In the following example the value “myOptions” has been chosen as an "id" for a particular transaction. A transaction level “core option file”, using the format “option.id.js”, will be used to locate they customized elements. In this example we are using a customized JavaScript member to add a "Printer Icon" to the Virtel Toolbar. Using the option "id" of "myOptions” a javascript file will be created called "option.myOptions.js". This will be uploaded to CLI-DIR. Customized settings for transactions are held in a Javascript object called "oCustom". Here is an example of the myOptions Javascript file:
+Some transactions may require a different set of options or settings than those defined at the Entry Point or Global level. For example, certain transactions may have a modified Tool Bar containing a Printer Icon. Transactions which require such specific customization should have a unique option identifier or "Id" associated with the transaction definition. This "id" will pull in a different set of options "key":"values" settings and will override the "global" settings. The option "id" will be used to associate customized elements against specific transaction(s). 
+
+In the following example the value “myOptions” has been chosen as an "id" for a particular transaction. A transaction level “core option file”, using the format “option.id.js”, will be used to locate they customized elements. In this example we are using a customized JavaScript member to add a "Printer Icon" to the Virtel Toolbar. Using the option "id" of "myOptions” a javascript file will be created called "option.myOptions.js". This will be uploaded to CLI-DIR. Customized settings for transactions are held in a JavaScript object called "oCustom". Here is an example of the myOptions JavaScript file:
 
 ::
 
@@ -240,21 +254,21 @@ In the following example the value “myOptions” has been chosen as an "id" fo
 
 *Example of a core option file for customized JavaScript*
 
-This ""core option file" points to our customized JavaScript member for this transaction. This member contains the Virtel Javascript function "after_standardInit" which will be called after initialization to modify the standard Virtel tool bar:
+This ""core option file" points to our customized JavaScript member for this transaction. This member contains the Virtel JavaScript function "after_standardInit" which will be called after initialization to modify the standard Virtel Tool Bar:
 
 ::
 
     //CLI-DIR - custJS.myOptions.js
     //Add Print Button To Toolbar
     function after_standardInit() {
-        addtoolbarbutton(000,"../print.ico","Print Screen",do_print);
+        addTool Barbutton(000,"../print.ico","Print Screen",do_print);
     }
 
     function do_print() {
     // do_print function
     }
 
-*Example of customized Javascript element associated with a transaction* 
+*Example of customized JavaScript element associated with a transaction* 
 
 To support this customized transaction the following two files are uploaded to the OPT-DIR or options directory:   
 
@@ -266,32 +280,90 @@ To support this customized transaction the following two files are uploaded to t
 
     More than one transaction within an Entry Point can point to the same "id" option files.
 
+.. index::     
+   pair: Customization; Transaction Level Options 
 
-Defining Transaction customization
+Defining Transaction Options
+----------------------------
+
+The Virtel User Guide contains further information on how to use GUI based controls to create the necessary customization members and associated files for transaction settings customization. See the section "Defining Transaction Options" in the Customization section for further details.
+
+.. index::     
+   pair: Customization; JavaScript User Exits 
+
+Customizable JavaScript User Exits
 ----------------------------------
 
-The Virtel User Guide contains further information on how to use GUI based controls to create the necessary customization members and associated files for transaction customization. See the section "Defining Transaction Options" in the Customization section for further details.
+Virtel provides the following JavaScript functions that can be customized to give bespoke behavior. The custom.js file is load when a session started. This function, which is normally empty, can contain bespoke javascript functions which are called at strategic exits points during the life of a Virtel transaction. The functions are:
 
-Customizable JavaScript functions
----------------------------------
+.. index::     
+   pair: JavaScript User Exits;before_submitForm 
 
-Virtel provides the following Javascript functions that can be customized to give bespoke behavior:
+*   **before_submitForm(pfKey,oFrom)** - Called before submitting a Virtel request.
 
-*   after_standardInit
-*   after_reponseHandle
+    ::
 
+        Arguments   *pfKey* The Name of the key pressed. "ENTER","PF1",etc.
+                    *oForm* Form DOM object to be submitted. (usually document.virtelForm)
+
+.. index::     
+   pair: JavaScript User Exits;after_standardInit 
+
+*   **after_standardInit()** - Called after a session with the host application has started.
+
+.. index::     
+   pair: JavaScript User Exits;after_responseHandle 
+
+*   **after_responseHandle(o,url,xtim)** - Called after receiving a response from the VIRTEL server.
+
+    ::
+
+        Arguments   *o*     XMLHttpRequest object (status and responseText)
+                    *url*   The URL which was used in the request
+                    *xtim*  JavaScript Date object of time request was sent to the server
+
+.. index::     
+   pair: JavaScript User Exits;modify_settings 
+
+*   **modify_settingsValues(name,values)** -  Allows modification of settings before parameters are displayed in the Settings Menu. It allows the list of values to be modified.
+
+    ::
+
+        Arguments   *name*  The parameter name
+                    *values* The list of possible values.                
+        
+        The return value is treated as the new value. If the function returns 
+        null or undefined, the list remains unchanged.
+
+.. index::     
+   pair: JavaScript User Exits;when_init() 
+
+*   **when_init()** - Called for each sub-page after vir3270 initialisation.
+
+.. index::     
+   pair: JavaScript User Exits;when_focusGained 
+
+*   **when_focusGained()** - Called whenever the 3270 window gains focus.
+
+.. index::     
+   pair: JavaScript User Exits;when_focusLost 
+
+*   **when_focusLost()** - Called whenever the 3270 window loses focus.
 
 Virtel Web Access
 =================
+
+.. index::     
+   single: Virtel Web Access; VWA User Interface 
 
 VWA User Interface
 ------------------
 
 The VIRTEL Web Access user interface is in the form of a conventional 3270 screen divided into three areas:
 
-*   The toolbar located in the upper of the screen contains the icons of functions (1), the information environment (2),the language selection (3).
+*   The Tool Bar located in the upper of the screen contains the icons of functions (1), the information environment (2),the language selection (3).
 *   The status line at the bottom includes the monitoring zone (4), particulars of the terminals associated with the session(5), mode and cursor position (6).
-*   The area between the toolbar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.
+*   The area between the Tool Bar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.
 
 
 |image1|
@@ -300,10 +372,14 @@ The VIRTEL Web Access user interface is in the form of a conventional 3270 scree
 Title
 ^^^^^
 
-Add the User Name in the title Tab
-""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Add User Name to Title Tab 
 
-You can add the User Name in the title tab by using the following order included in a custom.js file:
+
+Add User Name to Title Tab
+""""""""""""""""""""""""""
+
+You can add the User Name into the title tab by using the following function in a custom.js file:
 
 ::
 
@@ -311,115 +387,141 @@ You can add the User Name in the title tab by using the following order included
         document.title =document.body.className + “-“ + getUserId();
     }
 
-*Example to add the User Name in the Title tab.*
+*Example to add User Name to Title Tab.*
 
-Toolbar
-^^^^^^^
-The toolbar is located at the top of the 3270 screen. It contains, icons, language selection tool and environment
+
+Tool bar
+^^^^^^^^
+The Tool Bar is located at the top of the 3270 screen. It contains, icons, language selection tool and environment
 information. Some of those component can be removed, added or modified.
 
-How to permanently hide the toolbar
-"""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Hide Tool Bar [Settings]
+   single: Tool Bar; Hide   
+ 
 
-The administrator may wish to prevent users from accessing features like copy/paste, print, and settings by removing correponding icons, or by hidding the toolbar. This example shows how to hide the toolbar using a custom.css file:
+Hiding the Tool Bar
+"""""""""""""""""""
+
+The administrator may prevent access to features like copy/paste, print, and settings by removing the corresponding Tool Bar icons, or by hiding the Tool Bar altogether. This example shows how to hide the Tool Bar using a custom.css file:
 
 ::
 
     /* VIRTEL Web Access style sheet for site customization
     * (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
     */
-     #toolbar {display:none;}
+     #Tool Bar {display:none;}
  
-*Example custom.css for hiding the toolbar*
+*Example custom.css for hiding the Tool Bar*
 
-You can also use custom.js to remove icons individually from the toolbar, see “Removing unwanted toolbar icons” on page 11.
+You can also use custom.js to remove individual icons from the Tool Bar, see “Removing unwanted Tool Bar icons” on page 11.
 
-Let users hide/show the toolbar at their convenience
-""""""""""""""""""""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Enable/Disable the Tool Bar display
+   single: Tool Bar; Enable and Disable Display 
 
-The administrator may want to let users hide/show the toolbar at their convenience:
+
+Enable/Disable the Tool Bar display
+"""""""""""""""""""""""""""""""""""
+
+The administrator can provide users with controls that enable or disable the display of the Tool Bar.
 
 ::
 
     /*
-     * Configuration to allow the user to manage show/hide toolbar by himself.
+     * Configuration to allow the user to manage show/hide Tool Bar by himself.
      */
     w2hparm.switchToolBarDisplay = true;
 
-*Example w2hparm.js to allow users to manage the hide / show feature of the toolbar by themselves.*
+*Example w2hparm.js to allow users to enable/disable the Tool Bar display*
 
-If this option is enabled, the "Alt + Insert" and "Alt + Home" keys present in the Key Mappings tab are enhanced with the "Toolbar" option. The user can then assign either of these two keys in order to to hide/show the toolbar at its convenience.
+If this option is enabled, the "Alt + Insert" and "Alt + Home" keys in the Key Mappings tab control the "Tool bar" display. The user can these key assignments to control the Tool Bar display.
 
 |image2|
 
 *Key Mappings Setting Tab* 
+
+.. index::     
+   single: Customization; Tool Bar key assignment 
 
 These two assignments can also be predefined in the w2hparm.js file by using the commands:
 
 ::
 
     /*
-    * Configuration to assign Alt+Insert and/or Alt+Home key to show/hide toolbar.
+    * Configuration to assign Alt+Insert and/or Alt+Home key to show/hide Tool Bar.
     */
     "altins":"ToolBar" and/or
     "althome":"ToolBar"
 
-*Example w2hparm.js to assign Alt+Insert and/or Alt+Home key to show/hide toolbar.*
+*Example w2hparm.js to assign Alt+Insert and/or Alt+Home key to show/hide Tool Bar.*
 
-The toolbar can be automatically masked at each new session opening by using the following command in w2hparm.js
+.. index::     
+   single: Customization; Hide Tool Bar [User]
+   single: Tool Bar; Enable and Disable Display [User]
+
+
+The Tool Bar can be automatically disabled at each new session opening by using the following command in w2hparm.js
 
 ::
 
     /*
-    * Configuration to automatically hide the toolbar when opening a new session.
+    * Configuration to automatically hide the Tool Bar when opening a new session.
     */
-    "hidetoolbar":"true"
+    "hideTool Bar":"true"
 
-*Example w2hparm.js to automatically hide the toolbar when opening a new session.*
+*Example w2hparm.js to automatically hide the Tool Bar when opening a new session.*
 
 Under Virtel 4.57, those features require update #5555 or above to be applied.
 
-Showing / Hiding running version and maintenance level
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Hide Tool Bar Maintenance Level
+   single: Tool Bar; Hide Maintenance Level 
 
-On the right side of the toolbar, the running version and the level of maintenance of VIRTEL is shown. As this information is important and very helpful in case of troubleshooting, those information cannot be hidden except when the *w2hparm.switchToolBarDisplay = true;* feature is implemented and if the user hides the toolbar by themself.
+Enable / Disable Maintenance Level
+""""""""""""""""""""""""""""""""""
 
-Changing background color of the toolbar buttons
-""""""""""""""""""""""""""""""""""""""""""""""""
+On the right side of the Tool Bar, the running version and the level of maintenance of VIRTEL is shown. This information is important in diagnosing problems. It can be hidden if the *w2hparm.switchToolBarDisplay = true;* option is set or the user selects to disable to Tool Bar.
 
-This example shows how to change the background color of the toolbar buttons by adding orders in the custom.css file:
+Changing background color of the Tool Bar buttons
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+This example shows how to change the background color of the Tool Bar buttons by adding CSS orders in the custom.css file:
 
 ::
 
     /*
-    * VIRTEL Web Access style sheet customization the background of the toolbar
+    * VIRTEL Web Access style sheet customization the background of the Tool Bar
     * buttons(c)Copyright SysperTec Communication 2014 All Rights Reserved
     */
     |- transparent "at rest"
     |- white when cursor moves on
     |- yellow when button is clicked
-    #toolbar td .tbButton {
+    #Tool Bar td .tbButton {
     background-color: inherit;
     }
-    #toolbar td .tbButton:hover {
+    #Tool Bar td .tbButton:hover {
     background-color: white;
     }
-    #toolbar td .tbButton:active {
+    #Tool Bar td .tbButton:active {
     background-color: yellow;
     }
         | To remove the background color and the border of buttons "at rest":
-    #toolbar td .tbButton {
+    #Tool Bar td .tbButton {
     background-color: inherit;
     border: 1px solid transparent;
     }
 
-*Example custom.css managing the background color of the toolbar buttons*
+*Example custom.css managing the background color of the Tool Bar buttons*
 
-Customizing the toolbar color by application
-""""""""""""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Customize the Tool Bar by application
+   single: Tool Bar; Customize by color  
 
-It is sometimes useful for the user to have a clear visual indication of which system he or she is logged on to. This
-example shows how to set the color of the toolbar to yellow for SPCICSP and pink for SPCICSQ.
+Customize the Tool Bar color by application
+"""""""""""""""""""""""""""""""""""""""""""
+
+It is sometimes useful for the user to have a clear visual indication of which system they are logged on to. This example shows how to set the color of the Tool Bar to yellow for SPCICSP and pink for SPCICSQ. Note that these names are the APPLID names that the transactions will connect to, they are not the transaction names. 
 
 ::
 
@@ -430,41 +532,45 @@ example shows how to set the color of the toolbar to yellow for SPCICSP and pink
     .SPCICSP #toolbar {background-color:yellow;}
     .SPCICSQ #toolbar {background-color:pink;}
 
-*Example custom.css for coloring the toolbar according to CICS region*
+*Example custom.css for coloring the Tool Bar according to CICS region*
 
 |image3|
-*Web Access screen with yellow toolbar for SPCICSP*
+*Web Access screen with yellow Tool Bar for SPCICSP*
 
 |image4|
-*Web Access screen with pink toolbar for SPCICSQ*
+*Web Access screen with pink Tool Bar for SPCICSQ*
 
-Add a web link in the toolbar
-"""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Add a Web Link in the Tool Bar
+   single: Tool Bar; Add web link  
 
-You can add a web link in the toolbar by using the following order included in a custom.js file:
+Add a Web Link in the Tool Bar
+""""""""""""""""""""""""""""""
+
+You can add a web link in the Tool Bar by using the following order included in a custom.js file:
 
 ::
 
     function after_standardInit() {
-        * Adds a button to the toolbar which performs a Google search
-        addtoolbarbutton(position, "http://www.yourtargetsit.com/favicon.ico",
+        * Adds a button to the Tool Bar which performs a Google search
+        addTool Barbutton(position, "http://www.yourtargetsit.com/favicon.ico",
         "Title", linked_function);
     }
 
-*Example to add a web link in the toolbar.*
+*Example to add a web link in the Tool Bar.*
 
-Example : Add a Google Search link in the toolbar
-"""""""""""""""""""""""""""""""""""""""""""""""""
+Example : Add a Google Search link into the Tool Bar
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ::
 
     function after_standardInit() {
     /*
-    * Adds a button to the toolbar which performs a Google search for
+    * Adds a button to the Tool Bar which performs a Google search for
     * the text selected in the red box in the 3270 screen, or for the
     * word at the cursor if no box is drawn
     */
-    addtoolbarbutton(999, "http://www.google.com/favicon.ico",
+    addTool Barbutton(999, "http://www.google.com/favicon.ico",
     "Search engine query", do_search);
     }
     function do_search() {
@@ -474,16 +580,19 @@ Example : Add a Google Search link in the toolbar
         if (searcharg) searchURL += "/search?q=" +
             encodeURIComponent(searcharg.replace(/\s+/g, ""));
         var windowopts = "location=yes,status=yes,resizable=yes," +
-        "scrollbars=yes,toolbar=yes,menubar=yes,width=640,height=480";
+        "scrollbars=yes,Tool Bar=yes,menubar=yes,width=640,height=480";
         var searchwin = window.open(searchURL, windowname, windowopts);
         if (searchwin) searchwin.focus();    
     }
 
+.. index::     
+   single: Customization; Add a Company Logo into the Tool Bar
+   single: Tool Bar; Add Company Logo   
 
-Adding a company logo
+Adding a Company Logo
 """""""""""""""""""""
 
-This example shows how to display an icon (for example, a company logo) at the left of the toolbar:
+This example shows how to display an icon (for example, a company logo) at the left of the Tool Bar:
 
 ::
 
@@ -491,7 +600,7 @@ This example shows how to display an icon (for example, a company logo) at the l
     * VIRTEL Web Access style sheet customisation for company logo
     * (c)Copyright SysperTec Communication 2012 All Rights Reserved
     */
-    #toolbar td#companyIcon {
+    #Tool Bar td#companyIcon {
     height:30px;
     display:table-cell;
     }
@@ -504,7 +613,11 @@ This example shows how to display an icon (for example, a company logo) at the l
         width:145px;
     }
 
-*Example custom.css for displaying company logo in the toolbar*
+*Example custom.css for displaying company logo in the Tool Bar*
+
+.. index::     
+   single: Customization; Replace the Virtel Logo in the Tool Bar
+   single: Tool Bar; Replace Virtel Logo   
 
 This example shows how to replace the Virtel logo in the VIRTEL Web Access menu and the Application menu by your company logo:
 
@@ -526,13 +639,17 @@ This example shows how to replace the Virtel logo in the VIRTEL Web Access menu 
 .. note::
     If no explicit path is given, the company logo will be loaded from the same directory as the custom.css file.
 
-Toolbar Icons
-^^^^^^^^^^^^^
+Tool Bar Icons
+^^^^^^^^^^^^^^
 
-Adding a toolbar icon
-"""""""""""""""""""""
+.. index::     
+   single: Customization; Adding Tool Bar Icons
+   single: Tool Bar; Add Icons    
 
-This example uses the after_standardInit function to insert additional icons into the toolbar when the session is started. Icons may subsequently be added or removed from the toolbar after each screen by means of the after_responseHandle function.
+Adding a Tool Bar icon
+""""""""""""""""""""""
+
+This example uses the after_standardInit function to insert additional icons into the Tool Bar when the session is started. Icons may subsequently be added or removed from the Tool Bar after each screen by means of the after_responseHandle function.
 
 ::
 
@@ -541,14 +658,14 @@ This example uses the after_standardInit function to insert additional icons int
     * VIRTEL Web Access customer-specific javascript functions
     */
     /*
-    * Adds a button to the toolbar which performs a Google search for
+    * Adds a button to the Tool Bar which performs a Google search for
     * the text selected in the red box in the 3270 screen, or for the
     * word at the cursor if no box is drawn
     * after_standardInit() function must be implemented in a custom.js file
     */
 
     function after_standardInit() {
-        addtoolbarbutton(999, "http://www.google.com/favicon.ico",
+        addTool Barbutton(999, "http://www.google.com/favicon.ico",
         "Search engine query", do_search);
     }
 
@@ -559,17 +676,21 @@ This example uses the after_standardInit function to insert additional icons int
         if (searcharg) searchURL += "/search?q=" +
             encodeURIComponent(searcharg.replace(/\s+/g," "));
         var windowopts = "location=yes,status=yes,resizable=yes,"+
-        "scrollbars=yes,toolbar=yes,menubar=yes,width=640,height=480";
+        "scrollbars=yes,Tool Bar=yes,menubar=yes,width=640,height=480";
         var searchwin = window.open(searchURL, windowname, windowopts);
         if (searchwin) searchwin.focus();
     }
 
-*Example custom.js to customize the toolbar icons*
+*Example custom.js to customize the Tool Bar icons*
 
-Removing unwanted toolbar icons
-"""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Removing Tool Bar Icons
+   single: Tool Bar; Remove Icons    
 
-This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the toolbar.
+Removing unwanted Tool Bar icons
+""""""""""""""""""""""""""""""""
+
+This example uses the after_standardInit function to disable macro functions by removing the corresponding icons from the Tool Bar.
 
 ::
 
@@ -579,14 +700,14 @@ This example uses the after_standardInit function to disable macro functions by 
     * after_standardInit() function must be implemented in a custom.js file
     */
     function after_standardInit() {
-        /* Remove macro buttons from the toolbar */
+        /* Remove macro buttons from the Tool Bar */
         removetoolbarbutton("startrecording");
         removetoolbarbutton("playback");
     }
 
-*Example custom.js to remove selected toolbar icons*
+*Example custom.js to remove selected Tool Bar icons*
 
-The names of the other toolbar icons which can be removed in this way are:
+The names of the other Tool Bar icons which can be removed in this way are:
 
 *   capture,
 *   disconnect,
@@ -608,20 +729,51 @@ The names of the other toolbar icons which can be removed in this way are:
 .. note::
     (settingsV2 is présent only if w2hparms.js contains "settingsGUI":{"version":"V2"}, or "settingsGUI":{"version":"V1+V2"},)
 
-To hide the toolbar completely, see “Hiding the toolbar” on page 6. To hide only the Virtel Application name, see “Showing / Hiding server information”, on page 15.
+.. index::     
+   single: Removing 3D/Hover effects from Tool Bar buttons
+   single: Tool Bar; Remove Button effects    
+ 
 
-Removing file transfer icons
+.. index::     
+   single: Customization; File Transfer Icons
+   single: Tool Bar; File Transfer Icons    
+ 
+
+File Transfer icons
+^^^^^^^^^^^^^^^^^^^
+
+The File Transfer icons are present in the Tool Bar only for access to TSO and if the transaction includes an INPUT and/or OUTPUT scenario with a call to the INDSCEN$ macro (See "TSO File Transfer" in "Virtel Web Access User Guide").
+
+.. index::     
+   single: Customization; Removing File Transfer Icons
+   single: Tool Bar; Remove File Transfer Icons     
+
+Removing File Transfer Icons
 """"""""""""""""""""""""""""
 
-VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND$FILE protocol. The function is activated displayed only for the transaction defined with the SCENINDT scenario entered in Input and Output scenario fields. For some specific users, it may be necessary to remove the file transfer icons from the toolbar.
-This can be done by using the "removetoolbarbutton" function using the appropriate variable name.(See “Removing unwanted toolbar icons”, page 11.)
+VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND$FILE protocol. The function is activated displayed only for the transaction defined with the SCENINDT scenario entered in Input and Output scenario fields. For some specific users, it may be necessary to remove the file transfer icons from the Tool Bar.
+This can be done by using the removetoolbarbutton function using the appropriate variable name.(see “Removing unwanted Tool Bar icons”, page 11.)
 
-Removing macro icons
+.. index::     
+   single: Customization; Macro Icons
+   single: Tool Bar; Macro Icons     
+ 
+
+Macro Icons
+^^^^^^^^^^^
+
+.. index::     
+   single: Customization; Removing Macro Icons
+   single: Tool Bar; Remove Macro Icons
+
+Removing Macro Icons
 """"""""""""""""""""
 
-Icons for recording or executing a Macro are automatically present in the toolbar. To make them unavailable you should use the "removetoolbarbutton" function using the appropriate variable name.(See “Removing unwanted toolbar icons”, page 11.)
+See “Removing unwanted Tool Bar icons”, page 11.     
 
-Positioning toolbar icons
+To hide the Tool Bar completely, see “Hiding the Tool Bar” on page 6. To hide only the Virtel Application name, see “Showing / Hiding server information”, on page 15.
+
+Positioning Tool Bar Icons
 """"""""""""""""""""""""""
 
 In certain circumstances, the default position of an icon may not be at the user's convenience. Is possible to change an icon's position based on the position of another icon.
@@ -629,7 +781,7 @@ In certain circumstances, the default position of an icon may not be at the user
 ::
 
     /*
-    * Customize the location of dynamic toolbar buttons.
+    * Customize the location of dynamic Tool Bar buttons.
     * The calls to this function are ignored when they
     * return nothing, or an integer not greater than 0.
     *   
@@ -640,7 +792,7 @@ In certain circumstances, the default position of an icon may not be at the user
     * > 'file-recv'
     * > 'printer'
     */
-    function customize_toolbarButtonIndex(id) {
+    function customize_Tool BarButtonIndex(id) {
         if (id==='printer' || id==='document-print-preview') {
         return getToolbarButtonIndex('disconnect') + 1;
         }
@@ -648,51 +800,57 @@ In certain circumstances, the default position of an icon may not be at the user
 
 *Example custom.js to select a position for printer icon*
 
-Centering non standard icons
-""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Center User Icons
+   single: Tool Bar; Center User Icons 
 
-The best size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering in modifying the content of the class attribute passed within the "addtoolbarbutton" function in conjunction of using a specific css attribute. 
+Centring User Icons
+""""""""""""""""""""
+
+The recommended size for an icon is 32x32 pixels. For bigger or smaller icons, it possible to offer better center rendering by modifying the content of the CSS class attribute passed within the "addTool Barbutton" function. 
 
 ::
 
     /*
     * (c)Copyright SysperTec Communication 2014 All Rights Reserved
     * VIRTEL Web Access customer-specific javascript functions
-    * Resizing a too small or too big toolbar icon.
+    * Resizing a too small or too big Tool Bar icon.
     * For example toosmall_pic.png=22x22 and toobig_pic.jpg=145x30
     */
-    addtoolbarbutton(999, "/w2h/toosmall_pic.png", "Custom button #1 tooltip",
+    addTool Barbutton(999, "/w2h/toosmall_pic.png", "Custom button #1 tooltip",
         do_search, "tbButton size22x22");
-    addtoolbarbutton(999, "/w2h/toobig_pic.jpg", "Custom button #2 tooltip",
+    addTool Barbutton(999, "/w2h/toobig_pic.jpg", "Custom button #2 tooltip",
         do_search, "tbButton size145x30");
 
-*Example custom.js to specify the toolbar icon size*
-
-
+*Example custom.js to specify the Tool Bar icon size*
 
 ::
 
     /*
-    #toolbar td img.tbButton.size22x22 {
+    #Tool Bar td img.tbButton.size22x22 {
         width: 22px;
         height: 22px;
         padding: 5px; /* padding is calculated to center the picture horizontaly
         and verticaly in the 32x32 allocated area. (5+22+5 = 32) */
     }
 
-    #toolbar td img.tbButton.size145x30 {
+    #Tool Bar td img.tbButton.size145x30 {
         width: 145px;
         height: 30px;
         padding: 1px 0; /* padding is calculated to center the picture verticaly
         in the 32x32 allocated area (1+30+1 = 32) without any horizontaly padding */
     }
 
-*Example custom.css to manage a toolbar icon with a non standard size*
+*Example custom.css to manage a Tool Bar icon with a non standard size*
 
-Removing 3D/hover effects on the toolbar buttons
-""""""""""""""""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Removing 3D/Hover effects from Tool Bar buttons
+    single: Tool Bar; Customize effects 
 
-This example shows how to remove the 3D/hover effects on toolbar buttons by adding orders in the custom.css file:
+Removing 3D/hover effects on the Tool Bar buttons
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+This example shows how to remove the 3D/hover effects on Tool Bar buttons by adding orders in a Custom.CSS file:
 
 ::
 
@@ -700,9 +858,9 @@ This example shows how to remove the 3D/hover effects on toolbar buttons by addi
     * VIRTEL Web Access style sheet customisation for removing 3D/hover effects
     * (c)Copyright SysperTec Communication 2014 All Rights Reserved
     */
-    #toolbar td .tbButton,
-    #toolbar td .tbButton:hover,
-    #toolbar td .tbButton:active {
+    #Tool Bar td .tbButton,
+    #Tool Bar td .tbButton:hover,
+    #Tool Bar td .tbButton:active {
         background-color: inherit;
         border: inherit;
         box-shadow: inherit;
@@ -710,37 +868,26 @@ This example shows how to remove the 3D/hover effects on toolbar buttons by addi
 
 *Example custom.css for removing 3D/hover effects on buttons*
 
-File Transfer icons
-^^^^^^^^^^^^^^^^^^^
-
-The File Transfer icons are present in the toolbar only for access to TSO and if the transaction includes an INPUT and/or OUTPUT scenario with a call to the INDSCEN$ macro (See "TSO File Transfer" in "Virtel Web Access User Guide").
-
-Removing file transfer icons
-""""""""""""""""""""""""""""
-
-VIRTEL Web Access supports transfer of files between the browser and a TSO session using the IND$FILE protocol. The function is activated displayed only for the transaction defined with the SCENINDT scenario entered in Input and Output scenario fields. For some specific users, it may be necessary to remove the file transfer icons from the toolbar.
-This can be done by using the removetoolbarbutton function using the appropriate variable name.(see “Removing unwanted toolbar icons”, page 11.)
-
-Macro Icons
-^^^^^^^^^^^
-
-Removing Macro icons
-""""""""""""""""""""
-
-See “Removing unwanted toolbar icons”, page 11. 
+.. index::     
+   single: Customization; Icon display troubleshooting
+   single: Tool Bar; Troubleshooting 
 
 Icon display troubleshooting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If some icons on the toolbar are displayed with some parasites on the border, please check that the browser is not in a zoom mode greater than 100%.
+If Icons on the Tool Bar are not rendered correctly, check that the browser is not in a zoom mode greater than 100%.
 
 Background information
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Adding custom text by application to the toolbar
-""""""""""""""""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Adding Application customized text to the Tool Bar
+   single: Tool Bar; Adding customized text
 
-Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to the toolbar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is displayed for application TSO2A. 
+Adding Application customized text to the Tool Bar
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Another way of providing a clear visual indication of which application the user is logged on to is to add a text label to the Tool Bar. In this example the text “MVS1” is displayed when logged on to application TSO1A, and “MVS2” is displayed for application TSO2A. 
 
 ::
 
@@ -749,7 +896,7 @@ Another way of providing a clear visual indication of which application the user
     * (c)Copyright SysperTec Communication 2007,2010 All Rights Reserved
     */
     .toolbarLast{
-        text-align: right; /* Text alignement */
+        text-align: right; /* Text alignment */
     }
     .TSO1A .toolbarLast:before {
         content: "MVS1";
@@ -771,15 +918,19 @@ Another way of providing a clear visual indication of which application the user
         padding-right: 5px; /* To separate cells */
     }
 
-*Example custom.css for adding custom text to the toolbar*
+*Example custom.css for adding custom text to the Tool Bar*
 
 |image5|
-*Web Access screen with custom text in the toolbar*
+*Web Access screen with custom text in the Tool Bar*
 
-Adding application name to the toolbar
-""""""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Adding Transaction Application Name to the Tool Bar
+   single: Tool Bar; Adding Transaction Application Name 
 
-Another way of providing a clear visual indication of which application the user is logged on to is to add the application name label to the toolbar. In this example the text “TSO” is displayed when logged on to application TSO, and “SPCICSH” is displayed for application SPCICSH.
+Adding Transaction Application name to the Tool Bar
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Adding Application Name from the transaction definition to the Tool Bar. In this example the text “TSO” is displayed when logged on to application TSO, and “SPCICSH” is displayed for application SPCICSH. Again, this is another way to provide feedback information to the user as to which system they are connected to.
 
 ::
 
@@ -809,19 +960,23 @@ Another way of providing a clear visual indication of which application the user
         padding-right: 5px; /* To separate cells */
     }
 
-*Example custom.css for adding custom text to the toolbar*
+*Example custom.css for adding custom text to the Tool Bar*
 
 |image6|
-*Web Access screen with custom application name in the toolbar*
+*Web Access screen with custom application name in the Tool Bar*
 
-Showing / Hiding server informations
-""""""""""""""""""""""""""""""""""""
+.. index::     
+   single: Customization; Showing/Hiding Server Information
+   single: Tool Bar; Server Information  
 
-It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the toolbar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.
+Showing / Hiding server information
+"""""""""""""""""""""""""""""""""""
+
+It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the Tool Bar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.
 
 |image7|
 
-The running version and the level of maintenance cannot be hidden, only the server name can be **permanently** removed by modifying the w2hparm.hideinfo attribut present in the customized w2hparms.js file:
+The running version and the level of maintenance cannot be hidden, only the server name can be **permanently** removed by modifying the w2hparm.hideinfo property in a customized w2hparms.js file:
 
 ::
 
@@ -832,32 +987,35 @@ The running version and the level of maintenance cannot be hidden, only the serv
 
 *Example w2hparm.js for hiding the mainframe application name on which a user is connected to.*
 
-If the default value is preserved, the user can hide this information for his own usage by checking "Hide Virtel information in toolbar" in the Display tab of the settings panel.
-
-Showing / Hiding running version and maintenance level
-""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-On the right side of the toolbar, the running version and the level of maintenance of VIRTEL is shown. As this information is important and very helpful in case of troubleshooting, those information cannot be hidden.
+If the default value is preserved, the user can hide this information for his own usage by checking "Hide Virtel information in Tool Bar" in the Display tab of the settings panel. On the right side of the Tool Bar, the running version and the level of maintenance of VIRTEL is shown. As this information is important and very helpful in case of troubleshooting, those information cannot be hidden.
 
 Language
 ^^^^^^^^
 
+.. index::     
+   single: Customization; Hiding the Language Icon
+   single: Tool Bar; Hiding Language Icon   
+
 Hide the Language Icon
 """"""""""""""""""""""
 
-You can hide the language icon by using the following orders included in a custom.css file:
+You can hide the language icon by using the following CSS orders included in a customized custom.css file:
 
 ::
 
-    #toolbar td#toolbar-lang { width: 1px; }
-    #toolbar td#toolbar-lang a { display: none; }
+    #Tool Bar td#Tool Bar-lang { width: 1px; }
+    #Tool Bar td#Tool Bar-lang a { display: none; }
 
 *Example to hide the language icon*
+
+.. index::     
+   single: Customization; Assign Default Language [With User Option]
+   single: Language; Default Language [With User Option]    
 
 Assign a default language
 """""""""""""""""""""""""
 
-You can force default language and leave to the customer the possibility to select another one if necessary by using the following order included in a custom.js file:
+You can set a default language by using the following CSS order included in a customized custom.js file. The ability to select other languages is through a selection drop down GUI widget. :
 
 ::
 
@@ -879,10 +1037,14 @@ Possible values for the language code are:
 
 They must be entered in lower case.
 
+.. index::     
+   single: Customization; Assign Default Language [Without User Option]
+   single: Language; Default Language [Without User Option]   
+
 Assign a permanent default language
 """""""""""""""""""""""""""""""""""
 
-You can force default language and not allow the customer to select another one. You can do it by using the following order included in a custom.js file:
+You can set a permanent language by including the following CSS order in a customized custom.js file. In this case, the user has no ptions to override the default language.
 
 ::
 
@@ -904,6 +1066,9 @@ Possible values for the language code are:
 
 They must be entered in lower case.
 
+.. index::     
+   single: Status Bar 
+
 Status bar
 ----------
 
@@ -912,9 +1077,12 @@ The status bar of the VWA user interface is located at the bottom and includes t
 |image7|
 *The VWA 3270 screen's areas*
 
+.. index::     
+   single: Status Bar; Deactivate 
+
 How to deactivate the Virtel status bar
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-To deativate the status bar create a ccs rule and add it to a custom css file. For example to deactivate it fo transactions associated with the iptions id "test1" create a "e in 
+To deactivate the status bar create a ccs rule and add it to a customized custom.css file. For example, to deactivate it for a transactions associated with the the options "ID" "myOptions" create a "myoptions" core file called option.myOptions.css. 
 
 ::
 
@@ -925,7 +1093,7 @@ To deativate the status bar create a ccs rule and add it to a custom css file. F
 
 *Example of a core option file for customized CSS file*
 
-This ""core option file" points to our customized CSS member for transactions which have the option="myOptions" defined. This member contains a CSS style statement:
+This "core option file" points to a customized CSS file called "custCSS.myOptions.css". This is used by transactions which have the option="myOptions" defined. This file contains a CSS style statement:
 
 ::
 
@@ -934,8 +1102,15 @@ This ""core option file" points to our customized CSS member for transactions wh
     
 *Example of customized CSS element* 
 
-Relay and Printer name
+.. index::     
+   single: Relay and Printer Names 
+
+Relay and Printer Name
 ^^^^^^^^^^^^^^^^^^^^^^
+
+.. index:: 
+   single: Customization;Relay and Printer      
+   single: Relay and Printer Name;Functions    
 
 Managing Relay and Printer name area
 """"""""""""""""""""""""""""""""""""
@@ -953,13 +1128,13 @@ definition itself. The information in this area can be managed using the followi
     *   vwaStatusBar.getRelay(P1) to retrieve the content of the 3270 relay area
     *   vwaStatusBar.getPrintRelay(P1) to retrieve the content of the print relay area
 
-For the retrieval function, if the value of the parameter P1 is "true" (without the double quotes), the information returned is the value of "Relay or Printer" as valued at the time the command executes. If the P1 is undefined or if its value is different from "true" the information returned is the value of "Relay or Printer" as existed at the time the page
+For the retrieval function, if the value of the parameter P1 is "true" (without the double quotes), the information returned is the value of "Relay or Printer" as valid at the time the command executes. If the P1 is undefined or if its value is different from "true" the information returned is the value of "Relay or Printer" as existed at the time the page
 was sent by VWA to the browser.
 
 Relay name area
 """""""""""""""
 
-You can manage the content of the relay name area by adding appropriate orders in after_responseHandle function.
+You can manage the content of the relay name area by adding calling related functions from within the after_responseHandle function.
 
 ::
 
@@ -975,10 +1150,14 @@ You can manage the content of the relay name area by adding appropriate orders i
 
 *Example custom.js to customize the content of the relay name area*
 
-Hide Relay name area content
-""""""""""""""""""""""""""""
+.. index:: 
+   single: Customization;Hiding the Relay Name      
+   single: Relay and Printer Name;Hiding the Relay Name    
 
-You can hide the content of the realy name by replacing its content by spaces.
+Hiding the Relay Name
+"""""""""""""""""""""
+
+You can hide the the relay name by replacing its content by spaces.
 
 ::
 
@@ -1012,8 +1191,12 @@ You can manage the content of the printer name area by adding appropriate orders
 
 *Example custom.js to customize the content of the printer name area*
 
-Hide Printer name area content
-""""""""""""""""""""""""""""""
+.. index:: 
+   single: Customization;Hiding the Printer Name      
+   single: Relay and Printer Name;Hiding the Printer Name   
+
+Hide Printer Name
+"""""""""""""""""
 
 You can hide the content of the printer name by replacing its content by spaces.
 
@@ -1030,29 +1213,43 @@ You can hide the content of the printer name by replacing its content by spaces.
 
 *Example custom.js to hide the content of the printer name area*
 
+.. index:: 
+   Dynamic Directory Interface   
+
+
 Dynamic Directory Interface (DDI)
 =================================
 
-The Dynamic Directory Interface is intended for the administrator, to enable the users to deal with dynamic directories including those dedicated to various users and groups. The DDI application is accessible from the link "Dynamic directory interface" present in the main page associated with the Administration portal supported by the W-HTTP line.
+The Dynamic Directory Interface is intended for use by Virtel Administrators in managing dynamic directories dedicated to supporting centralized macros associated with users and user groups. The DDI interface is accessible from the Administration Portal, normally served by port 40001 and the associated W-HTTP line.
 
 |image26|
 
 *Accessing the Dynamic Directory Interface*
 
-Lines
-=====
+.. index:: 
+   Virtel Lines   
+
+Virtel Lines
+============
+
+.. index:: 
+   single: Virtel Lines;Controlling      
 
 Starting and stopping a line
 ----------------------------
 
 By default, a line is automatically initialized at Virtel startup, and is terminated when Virtel stops. In some cases, the handling of line initialization/termination needs to be managed differently:
-Initialization of a line is determined by the “Possible Calls” parameter of the line definition.
+
+.. index:: 
+   single: Virtel Lines;Controlling initial state with "Possible Calls" parameter      
+
+Determining the initial state of a line is determined by the “Possible Calls” parameter of the line definition.
 
 |image27|
 
 *Line definition - Possible Calls Parameter*
 
-**Initilaization through "Possible Calls" definition** 
+**Initialization through "Possible Calls" definition** 
 
 A "Possible Calls" determines the possible direction of communication and can have one of four values:-
 
@@ -1063,9 +1260,15 @@ A "Possible Calls" determines the possible direction of communication and can ha
 
 If the value is 0 then the line is not initialized at Virtel start-up. It must be started manually. For values 1, 2, 3 the line is initialized automatically at Virtel start-up except for the cases below.
 
-**Initialization permanately completely inhibited**
+**Initialization permanently completely inhibited**
+
+.. index:: 
+   single: Virtel Lines;Controlling state with TCT IGNLU keyword 
 
 If the VIRTCT contains a parameter IGNLU that references the line, then this line shall not be initialized automatically at Virtel start-up. In this case it will no longer be possible to start this line manually after Virtel has started.
+
+.. index:: 
+   single: Virtel Lines;Controlling line state conditionally 
 
 **Conditional initialization of a line**
 
@@ -1095,9 +1298,16 @@ established before accepting inbound messages.
         PROTOCOL=PREFIXED, -
         RULESET=M-MQ2
 
+.. index:: 
+   single: Virtel Lines;Deferring initialization 
+
 **Deferred initialization**
 
-The “Possible calls” field must be set to 0. The line may subsequently be started by a START command. It must not be referenced by an IGNLU parameter in the VIRTCT.
+The “Possible calls” field must be set to 0. The line may subsequently be started by a START command. It must not be referenced by an IGNLU parameter in the VIRTCT. Automation could be used to start the line when a particular event occurs and can be trapped by some automation software. 
+
+.. index:: 
+   single: Virtel Lines;Start and Stop Commands
+   single: Commands; Start and Stop lines
 
 **Virtel Line Commands**
 
@@ -1112,6 +1322,10 @@ Using commands at the system console Lines can be used to start or stop a line b
 
 The LINE START and LINE STOP commands perform the same function as using the “S” and “P” commands on the “Status of lines” application panel. These commands may only be issued for line types AntiGATE, AntiPCNE, AntiFASTC, and TCP/IP.
 
+.. index:: 
+   single: Terminals
+   single: Terminals; Lu Nailing
+   
 Terminal LU Nailing
 ===================
 
@@ -1125,6 +1339,10 @@ While most mainframe applications will accept a connection from any LU name, cer
 *   LU nailing by IP address
 *   LU nailing by cookie
 *   LU nailing by URL
+
+.. index:: 
+   single: Terminals; Lu Nailing using work station name
+   single: Lu Nailing; Using a work station name
 
 LU nailing using the work station name (Predefined terminals)
 -------------------------------------------------------------
@@ -1317,6 +1535,10 @@ The Virtel RULE has forced an LU name prefixed EHPMA00* to be used from the the 
     IST635I TSO1A005 ACTIV-P CA7B8B52114E7A85 0000 0002 SPNET
     IST314I END
 
+.. index:: 
+   single: Terminals; Lu Nailing using an LU Name
+   single: Lu Nailing; Using a LU Name (Predefined)
+
 LU nailing using an LU name (Predefined Terminal)
 -------------------------------------------------
 
@@ -1337,6 +1559,10 @@ We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used 
 |image28|
 
 The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009
+
+.. index:: 
+   single: Terminals; Lu Nailing using an LU Name
+   single: Lu Nailing; Using a LU Name (Not Predefined)
 
 Lu Nailing using an LU Name (No predefined terminal)
 ----------------------------------------------------
@@ -1366,10 +1592,18 @@ Line definition
 
 |image15|
 
+.. index:: 
+   single: Terminals; Lu Nailing using a cookie
+   single: Lu Nailing; Using a cookie
+
 Lu Nailing using a cookie (Correspondent Sub Application)
 ---------------------------------------------------------
 
 Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see Virtel – How to Activate LU Nailing.
+
+.. index:: 
+   single: Terminals; Lu Nailing by IP address
+   single: Lu Nailing; Using an IP address
 
 LU Nailing by IP
 ----------------
@@ -1379,7 +1613,7 @@ This technique uses a rule to associate an IP address with an LU Name. The rule 
 **Comparison Table**
 
 +---------------------------------------+-------------------------------------+-----------------------------------+-------------------------+
-|                                       |     Rule defintion                  |    Terminal Definition            |  Cookies Used           |
+|                                       |     Rule definition                  |    Terminal Definition            |  Cookies Used          |
 +=======================================+=====================================+===================================+=========================+
 | Work Station Name in URL              |  **Yes. 1 per work station**        | **Yes. Individual or Group**      |   No                    |
 +---------------------------------------+-------------------------------------+-----------------------------------+-------------------------+
@@ -1387,13 +1621,20 @@ This technique uses a rule to associate an IP address with an LU Name. The rule 
 +---------------------------------------+-------------------------------------+-----------------------------------+-------------------------+
 | Using Forced LU                       |  No                                 | Pool Only                         |   No                    |
 +---------------------------------------+-------------------------------------+-----------------------------------+-------------------------+
-| Correspondant                         |  **Yes**                            | **Yes**                           |   **Yes**               |
+| Correspondent                         |  **Yes**                            | **Yes**                           |   **Yes**               |
 +---------------------------------------+-------------------------------------+-----------------------------------+-------------------------+
 | By IP                                 |  **Yes**                            | **Yes**                           |   No                    |
 +---------------------------------------+-------------------------------------+-----------------------------------+-------------------------+
 
-Transactions & Applications
-===========================
+.. index:: 
+   single: Virtel Transactions
+
+Virtel Transactions
+===================
+
+.. index:: 
+   single: Virtel Transactions; Multi-Session Feature
+
 
 Virtel Multi-session Within Virtel Web Access
 ---------------------------------------------
@@ -1404,8 +1645,13 @@ In some situations, it is necessary to allow a group of users to simultaneously 
 
 *Transaction definition for the Virtel Multi-session module*
 
-How To Access A Host Application Directly
------------------------------------------
+Directly access host Applications by URL
+----------------------------------------
+
+.. index:: 
+   single: Virtel Transactions; Application access by URL
+    single: URL Formats; URL specifying target application
+
 
 It is not always necessary to pass via an application selection menu to connect to a host application. A host application may be accessed directly by opening the URL containing the complete path to the application. This URL may result in the display of the host signon screen, the first application screen, or possibly (if a script or scenario is used), a
 subsequent screen sent by the application. For more information about how VIRTEL can be used to automate the process of connection to a host application, see Virtel URL formats in the Virtel Web Access Reference manual, and “Connection/Disconnection Scripts” in the VIRTEL Connectivity Reference manual.
@@ -1413,13 +1659,17 @@ subsequent screen sent by the application. For more information about how VIRTEL
 Full path URL
 ^^^^^^^^^^^^^
 
-For example, you can access the VIRTEL transaction whose external name is “Cics” by pointing the browser at a URL of the following format:
+For example, you can access the VIRTEL transaction whose external name is “CICS” by pointing the browser at a URL of the following format:
 
 ::
 
     http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Cics
 
 At the end of the session with the host application, VIRTEL examines the “Last page” field (see previous section) to decide whether to return to the desktop or to redisplay the application selection menu.
+
+.. index:: 
+   single: Virtel Transactions; Application access by Entry Point
+   single: URL Formats; Default Entry Point URL
 
 Default URL for the entry point
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1430,13 +1680,17 @@ An application URL may be coded in the “TIOA at logon” field of the default 
 
     http://n.n.n.n:41001
 
-The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “Cics”:
+The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “CICS”:
 
 |image30|
 
 *Example of default URL*
 
 For more information see Virtel URL formats in the Virtel Web Access Users Guide.
+
+.. index:: 
+   single: Virtel Transactions; Specifying screen size and attributes
+   single: Application customization; Specifying screen size and attributes
 
 How To Use Different Screen Sizes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1452,6 +1706,10 @@ There are two different ways that the VIRTEL administrator can set up the config
 
 *   Define a separate VIRTEL transaction for each screen size, and allow the user to select the appropriate transaction.
 *   Group the VTAM relay LUs into pools, each pool having a different logmode, and allow the user to select the pool by coding an appropriate parameter on the URL.
+
+.. index:: 
+   single: Virtel Transactions; Specifying default logmode
+   single: Application customization; Specifying default logmode
 
 LOGMODE defined by the transaction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1469,6 +1727,11 @@ The URL to access this transaction could be of the format:
 ::
 
     http://n.n.n.n:41001/w2h/WEB3270.htm+Tso5
+
+.. index:: 
+   single: Virtel Transactions; Specifying logmode in the URL
+   single: Application customization; Specifying logmode in the URL
+   single: URL Formats; Specifying the logmode
 
 
 Assigning a LOGMODE by URL parameter
@@ -1527,8 +1790,7 @@ The screen below shows an example rule which assigns a relay LU from the range R
 
     \newpage    
 
-The LU name (RHTVT5nn) assigned by the rule must belong to the LU pool shared assigned to the HTTP line, as shown
-in the example below :-
+The LU name (RHTVT5nn) assigned by the rule must belong to the LU pool shared assigned to the HTTP line, as shown in the example below :-
 
 ::
 
@@ -1557,6 +1819,12 @@ in the example below :-
 
 *Definition of model 5 terminals in the W2HPOOL pool*
 
+.. index:: 
+   single: Virtel Transactions; Overriding a default scenario logmode
+   single: Application customization; Overriding a default scenario logmode
+   single: URL Formats; Overriding a default logmode
+   single: Scenarios; SCENLOGM - Logmode defaults
+
 User-specified LOGMODE
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1572,6 +1840,11 @@ The source code for the SCENLOGM scenario is supplied in the VIRTEL SAMPLIB.
 
     To activate this functionality, SCENLOGM must be specified in the “Identification scenario” field of the ENTRY POINT (not the transaction definition).
 
+.. index:: 
+   single: Virtel Transactions; Setting dynamic logmode and user screen sizes
+   single: Application customization; Setting dynamic logmode and user screen sizes
+   single: URL Formats; Setting dynamic logmode and user screen sizes   
+
 Dynamic logmode with user-specified screen size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1583,18 +1856,25 @@ VIRTEL Web Access also supports the use of “dynamic” logmodes, such as D4A32
 
 VIRTEL allows a maximum screen size of 62 rows by 160 columns. The host application must also support the use of non-standard screen sizes.
 
+.. index:: 
+   single: Virtel Transactions; The Application Menu List
+   single: Session Management; The Application Menu list  
+
 Session Management In The Application Menu List
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When the user connects to the "Application Selection Menu" described ine the "Virtel Web Access User Guide", by default, clicking on an available application will open the session in the current tab replacing the APPMENU application list. You may want to operate differently.
+By default, when a user selects an application from the "Application Selection Menu" the target application will replace the APPMENU application list display. Different behaviour may be required. The following sections look at some options.
+
+.. index:: 
+   single: Virtel Transactions; Open a session in a separate tab
+   single: Session Management; Open a session in a separate tab
 
 Open session in separate tab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To open each session in separate tabs and keep the application menu available, add the following code in a "custom.js" file:
+To open each session in separate tabs and keep the application menu available, add the following code in a customized Javascript "custom.js" file:
 
 ::
-
 
     /* To open an application (issued from applist transaction) in a new TAB instead of the same window */
     function before_launchApplink(href) {
@@ -1604,7 +1884,7 @@ To open each session in separate tabs and keep the application menu available, a
         };
     }
 
-*Example of Javascript code to open different sessions in separate tabs*
+*Example of JavaScript code to open different sessions in separate tabs*
 
 Restrictions
 """"""""""""
@@ -1613,6 +1893,10 @@ Opening simultaneous sessions in different tabs imposes certain restrictions:
 
 *   Browsers deliberately limit the opening of multiple simultaneous HTTP sessions on the same domain. This number varies depending on the browser itself and the version used. A detailed census is available on the BrowserScope website.
 *   Each new session gives rise to the opening of a specific IP socket, and therefore the use of a separate relay terminal for each session. The LU Nailing is therefore not always possible or easy to implement in such situation.
+
+.. index:: 
+   single: Virtel Transactions; Handling Session termination
+   single: Session Management; Handling Session termination
 
 How To Handle Host Session Termination
 --------------------------------------
@@ -1625,30 +1909,47 @@ When the user terminates the application session by pressing the “Disconnect�
 
 Remember that it is always best to exit cleanly from the host application by pressing the “Disconnect” button, rather than closing the browser window. If the browser window is closed abruptly, the host session resources may not be freed until the expiry of the time-out period specified in the entry point definition.
 
+.. index:: 
+   single: Virtel Transactions; Return to the Application Selection Menu
+   single: Session Management; Return to the Application Selection Menu
+
 Return to the application selection menu
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When a “Disconnect” request is received, VIRTEL returns to the root URL and displays the default page for the line, which will normally be an application selection menu. For detailed information, see “Virtel URL formats”, page 1. The user can then choose to connect to the same or a different application by clicking on the appropriate link in the
 application selection menu.
 
+.. index:: 
+   single: Virtel Transactions; Display a specific page on Disconnection
+   single: Session Management; Display a specific page on Disconnection
+
 Displaying a specific page on disconnection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Those sites wishing to display a specific page at the end of a session may use the “Last page” field in the definition of the entry point associated with the HTTP line or the entry point selected by the rules of the line. The “Last page” field indicates the name of the page to be displayed following disconnection from the host application. The indicated file
-must be uploaded to the same directory as specified in the URL for the host application (for example W2H-DIR if the URL specifies /w2h/WEB3270.htm). The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.)
+must be uploaded to the same directory as specified in the URL for the host application (for example CLI-DIR if the URL specifies /w2h/web2ajax.htm). The “Last page” may contain instructions to the user and may include system information provided by VIRTEL (such as the application and terminal name, date and time, etc.).
+
+.. index:: 
+   single: Virtel Transactions; Closing the browser on Disconnection
+   single: Session Management; Closing the browser on Disconnection
+
 
 Closing the browser window automatically
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required.
+Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.
+
 The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:
 
 |image32|
 
 *Example of entry point with last page*
 
-Macros
-======
+.. index:: 
+   single: Virtel Macros
+
+Virtel Macros
+=============
 
 Introduction
 ------------
@@ -1679,20 +1980,29 @@ Virtel macros capture keystroke operations which can subsequently be used to aut
             }
     ],"fmt":2}
 
+.. index:: 
+   single: Virtel Macros; Local Macro mode
+   single: Local Macro mode; User Interface    
+
 Macro modes
 -----------
 
-Local mode
-^^^^^^^^^^
+Local Macro mode
+^^^^^^^^^^^^^^^^
 
-All user macros are objects within a file called MACROS.JSON and with suitable knowledge this file can be maintained locally, known as local mode. The MACROS.JSON file is maintained through either the local macro interface, as launched by the user from the Virtel toolbar, or can be imported from a flat file where the MACROS.JSON file can be edited outside of these interfaces but this is not recommended unless you understand the macro structure and are familiar with JavaScript. By default Virtel maintains macros in local mode with the contents of the MACROS.JSON file being stored in the browsers local storage.
+All user macros are objects within a file called MACROS.JSON and with suitable knowledge this file can be maintained locally, known as local mode. The MACROS.JSON file is maintained through either the local macro interface, as launched by the user from the Virtel Tool Bar, or can be imported from a flat file where the MACROS.JSON file can be edited outside of these interfaces but this is not recommended unless you understand the macro structure and are familiar with JavaScript. By default Virtel maintains macros in local mode with the contents of the MACROS.JSON file being stored in the browsers local storage.
 
 User Interface
 """"""""""""""
 
+.. index:: 
+   single: Virtel Macros; Local Macro mode
+   single: Local Macro mode; Creating a new macro  
+
+
 **Macro functions**
 
-You can capture and list macros by using the two macro ICON functions displayed in the Virtel tool bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.
+You can capture and list macros by using the two macro ICON functions displayed in the Virtel Tool Bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.
 
 |image34|
 
@@ -1703,6 +2013,11 @@ The record function is an on/off button that will record key strokes. When recor
 |image35|
 
 *Creating a new macro*
+
+.. index:: 
+   single: Virtel Macros; Local Macro mode
+   single: Local Macro mode; Keyboard mapping  
+
 
 **Keyboard mapping**
 
@@ -1717,6 +2032,10 @@ With keyboard mapping enabled the macro interface will display the associated ke
 |image36|
 
 *Saving a macro with keyboard mapping*
+
+.. index:: 
+   single: Virtel Macros; Local Macro mode
+   single: Local Macro mode; Keyboard Mapping Option 
 
 **Settings for macros**
 
@@ -1739,7 +2058,11 @@ Although local macros will work “out of the box” most users would probably w
 
 These setup will use the customized w2hparms for CLI from the member w2hparms.global.js. The keymapping property has been set to true. 
 
-**The Display Play/Display Button**
+.. index:: 
+   single: Virtel Macros; Local Macro mode
+   single: Local Macro mode; Record/Play Buttons 
+
+**The Display Record/Play Buttons**
 
 The green triangular button will display the local storage macros. From here a context menu can be opened against each macro using the mouse right click. This will provide delete, edit, save as and run functions.
 
@@ -1747,10 +2070,17 @@ The green triangular button will display the local storage macros. From here a c
 
 *Displaying the local macros*
 
+.. index:: 
+   single: Virtel Macros; Local Macro mode
+   single: Local Macro mode; Export/Import Options 
+
 **Export and Import Options**
 
 Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.
 
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   
 Centralised Macros - DDI mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1761,6 +2091,11 @@ The advantage of maintaining macros in a central repository is that the administ
 .. note::
 
     To use centralized DDI mode users have a userid and group defined within a security subsystem such as RACF. 
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Implementation 
+
 
 Implementation
 """"""""""""""
@@ -1808,11 +2143,19 @@ To use Centralised Macros users and Administrators must have "READ" access to th
 
 *Security Resources required for DDI*
 
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Directories 
+
 Additional Virtel transactions and directories are required to support DDI. These can be implemented by running the ARBOLOAD job, located in the Virtel CNTL library, with VMACROS=YES. After executing this job start Virtel and access the Drag and Drop GUI from the Administration Portal on 41001. You should now see additional GRP-DIR, GLB-DIR and USR-DIR directories.
 
 |image38|
 
 *DDI Directories*
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Setting options 
 
 Once the DDI directories are set up will can configure the necessary settings to invoke DDI. A w2hParm.global.js object is uploaded to the CLI_DIR and will contain the the DDI settings. We also need to ensure that our global-settings object is defined in the wh2parm.js member. The w2hparm.js in CLI-DIR looks like this: 
 
@@ -1851,6 +2194,10 @@ The "useVirtelMacros" is the key property required for DDI. The various values f
 
     "w2hparm.useVirtelMacros":{“macrosAutoRefresh”: “never” | “once” | “daily” | “session” }
 
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Setting options [useVirtelMacros] 
+
 **Macro Options**
 
 +------------+---------------------------------------------------------------------------------------+
@@ -1875,6 +2222,10 @@ Two other settings that can be used with DDI are: -
 
     If you are running multiple images of Virtel, say in a SYSPLEX arrangement using separate centralized repositories then the “synchronizeVirtelMacros” option should be set to true. This ensures that macro changes are reflected in all DDI repositories and associated local storage. 
 
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; DDI Validation     
+
 Centralised DDI validation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1896,9 +2247,13 @@ Pressing the Blue ICON should display an empty macro list:
 
 *Empty Macro list*
 
-*Configuring the Centralised Repository*
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode;Configuring the Centralised Repository 
 
-To configure the centralised DDI repository we need to create an "initial" MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, which is what we would also expect as DDI is not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember, that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of "writing" or exporting their own macros. 
+Configuring the Centralised Repository
+
+To configure the centralised DDI repository we need to create an "initial" MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of "writing" or exporting their own macros up to the repository. This is administered by the Virtel administrator. 
 
 ::
 
@@ -1907,6 +2262,10 @@ To configure the centralised DDI repository we need to create an "initial" MACRO
 |image41|
 
 *Accessing a local macro facility -  Green ICON* 
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Creating an initial macro
 
 Creating an initial macro
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1935,6 +2294,10 @@ Saved the macro with the name SDSF. Now, press the Green ICON. The macro should 
 |image43|
 
 Next, we need to create a "MACROS.JSON" file by exporting the SDSF macro we have just created. 
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Uploading macros through the DDI interface
 
 Uploading macros to the centralized repository
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -1967,6 +2330,10 @@ Refresh the GLOBAL directory by clicking the broken circled arrow in the top lef
 *Uploaded Global Macro*
  
 To run the macro, enter the ISPF primary menu and then press the Green “ARROW” next to the SDSF name. The SDSF log display should appear. 
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Creating user macros
  
 Creating a user macro
 ^^^^^^^^^^^^^^^^^^^^^
@@ -1977,6 +2344,10 @@ Creating a “user” macro follows the same process as before. The user clicks 
 Here is an example of a user macro called “CUSTINQ” which drives a sequence of CICS keyboard sequences to display a customer Inquiry panel within a CICS transaction. The macro has been associated with key mapping “ALT+6”.
 
 |image47| 
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Macro panel options
 
 
 Macro Options
@@ -1992,11 +2363,18 @@ The user has the ability to “DELETE”, RENAME (“Save As”), EDIT or RUN th
     
     The “Edit” feature is for viewing only.
 
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Directory and Macro Administration
  
 Directory and Macro Administration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Users do not have the ability to create macros. This function is performed by the Virtel Administrator. The Administrator would develop macros using a "local" facility and export these up into the central repository to make them available to users at a Global, Group and User level. 
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Making macros available
 
 Making a user's DDI macro available to a DDI Group
 """"""""""""""""""""""""""""""""""""""""""""""""""
@@ -2043,9 +2421,12 @@ It is not necessary to export a "dummy" macro from a "local mode" setup to get s
 
 *Dummy MACROS.JSON file*
 
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Troubleshooting
  
-Centralized DDI Problems
-^^^^^^^^^^^^^^^^^^^^^^^^
+Centralized DDI Troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Out of Sync condition or no transaction security
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -2063,6 +2444,10 @@ If the Virtel cache is out of sync with the DDI/macro settings or you are trying
     
     CTRL-SHIFT-DEL
     CTRL R
+
+.. index:: 
+   single: Virtel Macros; Centralised Macro mode
+   single: Centralised Macro mode; Macro Formats
 
 Macro formats and Commands
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2097,6 +2482,11 @@ The macro editor supports the following commands:-
             "def":[77,"ENTER",53,"ENTER",100,97,"ENTER"]
         }
     ],"fmt":1}
+
+.. index:: 
+   single: Userparms; Centralized USERPARM mode
+   single: Centralized USERPARM mode; Setup
+
 
 Centralised User Parameters
 ===========================
@@ -2160,6 +2550,10 @@ USERPARM Setup
 
 *Example of a Sanity Check after setting up USERPARM*
 
+.. index:: 
+   single: Userparms; Centralized USERPARM mode
+   single: Centralized USERPARM mode; Validation
+
  
 Testing the USERPARM feature
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2169,7 +2563,7 @@ To test the USERPARM feature follow the procedure below :-
 1   Logon to a 3270 application, say TSO
 2   Open the settings dialog
 3   Change the "Display Style" to Grey and save. The background colour should change to grey.
-4   Disconnect from Virtel using the Red button in the tool bar.
+4   Disconnect from Virtel using the Red button in the Tool Bar.
 5   Reconnect to Virtel, using a different browser and open a 3270 session.
 6   The background colour should still be set to grey.
 7   Open the settings dialogue and confirm that Grey button is still highlighted.
@@ -2180,7 +2574,12 @@ In the Virtel log you should see the following “upload” message:-
 
     VIRU122I CLVTA079 FILE UPLOAD : ENTRY POINT 'CLIWHOST' DIRECTORY 'USERP  882
     ARM' USER 'SPTHOLT             '                                            
-            FILE : '8393DD4A16F0E1C9723F9D9CFA2C39F1'                            
+            FILE : '8393DD4A16F0E1C9723F9D9CFA2C39F1'      
+
+.. index:: 
+   single: Userparms; Centralized USERPARM mode
+   single: Centralized USERPARM mode; Removing a users settings
+
 
 Removing a user's settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -2193,6 +2592,9 @@ This can be done by deleting the key associated with the user from the USERPARM 
 
 We can remove the entry by using the delete option. This will remove any user settings. The user will then have to “restore defaults” to correctly pickup up the default user parameters as defined by the Administrator.  
 
+.. index:: 
+   single: Userparms; Centralized USERPARM mode
+   single: Centralized USERPARM mode; Troubleshooting
  
 USERPARM Problems
 ^^^^^^^^^^^^^^^^^
@@ -2253,23 +2655,22 @@ Changed defaults not updated in another browser session.
 
 This is normally related to configuration. Try the “sanity” URL test to make sure that the setup is correct for the line in use.
 
- 
-
-
-
-
-
-
-
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; How to activate
 
 
 Security
 ========
 
-How To Activate SSL Using AT-TLS
+How To Activate SSL AT-TLS
 --------------------------------
 
 To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases. AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.
+
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Installation
 
 Installation steps
 ^^^^^^^^^^^^^^^^^^
@@ -2293,6 +2694,10 @@ Allow the Policy Agent to run during TCP/IP initialization
 
 The Policy Agent must be given READ access to the resource EZB.INITSTACK.* in RACF class SERVAUTH. See step EZBAUTH in the SSLSETUP sample job (delivered in VIRTEL SAMPLIB).
 
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Certificates
+
 Create the server certificate
 """""""""""""""""""""""""""""
 A server certificate for VIRTEL must be created, signed by a certificate authority, and stored in the RACF database. In the SSLSETUP sample job we create a signing certificate and use RACF itself as the certificate authority. Alternatively, you may use an external certificate authority such as Verisign to create and sign the certificate, then import it into
@@ -2308,8 +2713,12 @@ Allow VIRTEL to access its own certificate
 
 To allow VIRTEL to access its own keyring and server certificate, the VIRTEL started task must have READ access to the resource IRR.DIGTCERT.LISTRING in the RACF class FACILITY. See step IRRAUTH in the SSLSETUP sample job.
 
-Activate AT-TLS
-"""""""""""""""
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; TCPIP definitions
+
+TCPIP Definitions for AT-TLS
+""""""""""""""""""""""""""""
 
 To activate AT-TLS, add the following statements to TCPIP PROFILE:
 
@@ -2319,6 +2728,10 @@ To activate AT-TLS, add the following statements to TCPIP PROFILE:
     AUTOLOG 5 PAGENT ENDAUTOLOG
 
 Stop and restart TCP/IP to activate the TCPCONFIG TTLS profile statement. The AUTOLOG statement will cause the PAGENT procedure to be started automatically during TCP/IP initialization.
+
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Operations
 
 Operations
 ^^^^^^^^^^
@@ -2346,6 +2759,10 @@ Problem determination
 Policy Agent log file
 """""""""""""""""""""
 Policy Agent startup messages are written to the /tmp/pagent.log file of z/OS Unix System Services. You can use the TSO ISHELL command to browse this file from ISPF.
+
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Troubleshootings
 
 Common error messages
 """""""""""""""""""""
@@ -2386,6 +2803,10 @@ Bibliography
 *   GC31-8782-06 z/OS V1R7 Communications Server: IP Diagnosis Guide Chapter 28. Diagnosing Application Transparent Transport Layer Security (AT-TLS)
 *   SC31-8784-05 z/OS V1R7 Communications Server: IP Messages: Volume 2 (EZB, EZD) Chapter 10. EZD1xxxx messages
 
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Using Server and Client certificates
+
 SSL - Signing On Using Server And Client Certificates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2406,11 +2827,15 @@ the following SSL protocol or handshake during the “hello” phase of establis
 5.  Client authentication is performed by the Server ;
 6.  An encryption algorithm and single key is chosen to encrypt / decrypt data The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in Appendix B. TLS/SSL Security z/OS Communications Server: IP Configuration Guide.
 
-Certificates
-^^^^^^^^^^^^
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; What is a X.509 certificate
 
-What’s in a X.509 certificate?
-""""""""""""""""""""""""""""""
+What is a Certificates
+^^^^^^^^^^^^^^^^^^^^^^
+
+X.509 certificate?
+""""""""""""""""""
 
 Amongst other things it includes the Distinguished Name of the Server (DNS), the public key of the Server, Distinguished Name of the Server organization issuing the certificate and the issuer’s signature. If we look at a certificate held with RACF we can see this information. Certificates are identified by a combination of LABEL, USERID or Certification Authority (CA).
 
@@ -2453,6 +2878,11 @@ Types of certificates
 *   RACF signing certificate
 
 In this configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.
+
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Configuring certificates
+   single: RACF; Configuring a X.509 certificate
 
 Configuring the certificates
 """"""""""""""""""""""""""""
@@ -2538,6 +2968,12 @@ The key usage identifies this certificate as a signing certificate. This certifi
 
 Note how we identify the signing certificate with the SIGNWITH parameter using the same label information that we used when defining the RACF signing certificate. 
 
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Configuring key rings
+   single: RACF; Configuring key rings
+
+
 Cerificates and Key rings
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2561,6 +2997,11 @@ Having generated two of our certificates we now need a place to keep them. We pl
     DEFAULT)
 
 Again it is the label that identifies the key(certificate) that we want to add to the key ring owned by user SPVIRSTC.
+
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; User certificates
+   single: RACF; User certificates
 
 User Certificate
 """"""""""""""""
@@ -2612,6 +3053,11 @@ The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate and 
     z/OS signing certificate            CERTAUTH       CERTAUTH     NO
     SSL client certificate              ID(SPTHOLT)    CERTAUTH     NO
 
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Importing certificates
+   single: RACF; Importing certificates
+
 Importing the certificate on the client work station.
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -2625,6 +3071,10 @@ After importing the following panel is displayed:
 |image20|
 
 At this stage we have completed our certificate generation. Through the use of the certificates we will be able to initiate a secure session (https) with an application and obtain a user id.
+
+.. index:: 
+   single: Security; PassTicket Support
+   single: PassTicket Support; Setting up RACF for Passtick
 
 PassTicket support
 ^^^^^^^^^^^^^^^^^^
@@ -2656,6 +3106,10 @@ accordingly:
      SETROPTS REFRESH RACLIST(FACILITY)
 
 In order for Virtel to generate PassTickets, you must also modify your VIRTCT to include the parameter PASSTCK=YES and then reassemble the VIRTCT. See chapter 6 of the Virtel Installation Guide for more details on the Virtel VIRTCT.
+
+.. index:: 
+   single: Security; PassTicket Support
+   single: PassTicket Support; Pagent Configuration
 
 PAGENT Configuration
 ^^^^^^^^^^^^^^^^^^^^
@@ -2722,6 +3176,10 @@ you have made changes you can issue the following z/OS command:
 
     F PAGENT,REFRESH
 
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Example of Passtick support with CICS  
+
 Configuring Virtel - CICS Example
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -2755,6 +3213,10 @@ We select the “Proceed” link.
 |image25|
 
 We are signed into CICS without having to specify any user id or password.
+
+.. index:: 
+   single: Security; AT-TLS
+   single: AT-TLS; Troubleshooting  
 
 AT-TLS Problems
 ^^^^^^^^^^^^^^^
@@ -2842,6 +3304,9 @@ Virtel References
 *   VIRTEL Installation Guide PASSTCK parameter
 *   VIRTEL Connectivity Reference Transactions – PassTicket Parameter / Transactions – Security Parameter
 *   VIRTEL Web Access Guide Security – Data encryption by SSL
+
+.. index:: 
+   single: Security; NTLM Support
 
 NTLM Support
 ------------
@@ -2937,8 +3402,13 @@ Enable Windows Integrated Authentication for Mozilla Firefox
 
         network.negotiate-auth.allow-proxies True
 
-Problem determination
-^^^^^^^^^^^^^^^^^^^^^
+.. index:: 
+   single: Security; NTLM Support
+   single: NTLM Support; Troubleshooting
+
+
+NTLM Troubleshooting
+^^^^^^^^^^^^^^^^^^^^
 
 Still receiving login prompt
 """"""""""""""""""""""""""""
@@ -2948,11 +3418,18 @@ If you still continue to receive logon prompt, please check your configuration. 
 *   The accessed server is not listed in the NTLM trusted uris section (Local Intranet Area for Internet Explorer).
 *   The invoked Virtel transaction is not defined with security = 2.
 
+.. index:: 
+   single: System Managment
+
 System Management
 =================
 
-Suppress Messages From SYSLOG
------------------------------
+.. index:: 
+   single: System Management; Message controls
+   single: Message controls; Messages to SYSOUT
+
+Virtel Message Controls
+-----------------------
 
 By default, the system messages prefixed by VIR issued by VIRTEL and the messages issued from the scenarios are written both in the STC SYSOUT or the JOB as well as on the system console. If certain messages prefixed by VIR can be deleted using the parameter (or command line) SILENCE of the VIRTCT, it may sometimes be necessary to stop the
 message issuance to SYSLOG or restrict their diffusion to another direction. From Virtel 4.54 (not available until 2015/Q1) the LOG feature enables the VIRTEL log to be spun off to JES2. Setting up VIRTEL to use the LOG sysout facility requires a change to the TCT definition to direct WTOs to a SYSOUT dataset. In the TCT code the following statement:
@@ -2966,6 +3443,10 @@ For example, *LOG=(SYSOUT,A,EDSPRT)* directs all WTOs to a SYSOUT dataset rather
 ::
 
     F VIRTEL,LOG=BOTH
+
+.. index:: 
+   single: System Management; Message controls
+   single: Message controls; Messages control options
 
 The LOG feature in Virtel 4.54 is controlled by the TCT parameters and a new LOG command. The new LOG command has the following format:
 
@@ -3038,6 +3519,12 @@ The display of message VIR0099I requires the PTF 5530 be applied. Similarly the 
     15.21.49 STC07592 VIR0006I CLOSING VIRSV
     15.21.50 STC07592 VIR0003I SPVIRDOC ENDED
 
+.. index:: 
+   single: System Management; VIRCONF Utility
+   single: VIRCONF Utility; Running
+
+
+
 VIRCONF Usage
 -------------
 
@@ -3046,6 +3533,10 @@ VIRCONF is a batch facilty you can use to add, update or delete definition stror
 **VIRCONF does not open the ARBO for output.**
 
 If you run VIRCONF when Virtel is active you can get IEC161I error messages. The reason for this error is that the VIRCONF program requires an exclusive control on the ARBO file and following the performance improvements through the introduction of VSAM LSR the VIRCONF is no longer able to access the ARBO VSAM file when VIRTEL is running. To avoid this problem a new feature was added to V4.56 which enables a VIRCONF UNLOAD through an operator command :
+
+.. index:: 
+   single: System Management; VIRCONF Utility
+   single: VIRCONF Utility; Virtel Unload Command
 
 ::
 
@@ -3065,6 +3556,9 @@ Or alternatively:
 
     //SYSPUNCH DD SYSOUT=B
 
+.. index::   
+   single: FAQ Questions; OMVS panel
+
 FAQ
 ===
 
@@ -3075,10 +3569,16 @@ TSO OMVS writes to the screen after 20 seconds changing the status from RUNNING 
 
 Another solution is to use PuTTY to connect to the OMVS shell via rlogin to port 513. This solution avoids many of the other usability problems which are inherent in the OMVS shell.
 
+.. index::  
+   single: FAQ Questions; z/OS Consoles
+
 Can VIRTEL WEB ACCESS emulate z/OS Operator consoles
 ----------------------------------------------------
 
 Technically VIRTEL does not support the OSA-ICC console server because it is based on the tn3270 protocol which VIRTEL does not use. But in any case it probably would not make sense to put consoles under VIRTEL control because the consoles need to be operational during IPL before TCP/IP and VIRTEL are started. So we would expect customers to continue to run tn3270 emulators on those PCs which are used as z/OS operator consoles.
+
+.. index::  
+   single: FAQ Questions; Hotspot recognition with regular expressions
 
 Can I customize hotspot recognition
 -----------------------------------
@@ -3174,3 +3674,4 @@ Other company, product, or service names may be trademarks or service names of o
 .. |image53| image:: images/media/image53.png
 .. |image54| image:: images/media/image54.png
 .. |image55| image:: images/media/image55.png
+.. |image56| image:: images/media/image56.png

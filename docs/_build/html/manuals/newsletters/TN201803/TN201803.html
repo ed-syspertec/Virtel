@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="What’s new in Virtel 4.59 (August 2019) Beta Release" href="../TN201902/TN201902.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -122,6 +124,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -160,7 +163,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -230,8 +233,8 @@
 <p>The new “option” mode enables customization at a transaction level as well as the more global entry point or line level. The logic of using CLI-DIR to store customized versions of custom.js, w2hparm.js, custom.css etc. in the CLI-DIR has been deprecated as of release V4.56.</p>
 <p>Customers are advised to migrate old customization elements to the new “option” mode enabling those elements to be located through the use of the /option/ pathname. New transactions have been added to support the /option/ pathname. See the ‘Option Mode’ section in <em>Customizing Virtel</em> in the <strong>Virtel User Guide</strong> and the Virtel Technical Newsletter <em>TN2016-11 Customizing Virtel in V4.56</em>.</p>
 <div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
+<p class="first admonition-title">Danger</p>
+<p class="last">Customers who have customized elements in the W2H-DIR stand the risks of having these overwritten by subsequent maintenance and Virtel release updates.</p>
 </div>
 </div>
 </div>
@@ -316,12 +319,13 @@ The initialization of the Virtel JavaScript browser client has been enhanced.</p
 <p>Which allows checking if a screen has two fields total and two input-fields.</p>
 <p>In Virtel:-</p>
 <p>Scenario Example</p>
-<dl class="simple">
-<dt>::</dt><dd><dl class="simple">
-<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt><dd><p>FIELD=(NUMBER-OF,SCREEN-INPUT-FIELDS)</p>
-</dd>
-<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt><dd><p>FIELD=(NUMBER-OF,SCREEN-FIELDS)</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd><dl class="first last docutils">
+<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt>
+<dd>FIELD=(NUMBER-OF,SCREEN-INPUT-FIELDS)</dd>
+<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’VAR1’,</dt>
+<dd>FIELD=(NUMBER-OF,SCREEN-FIELDS)</dd>
 </dl>
 </dd>
 </dl>
@@ -334,8 +338,8 @@ The initialization of the Virtel JavaScript browser client has been enhanced.</p
 <p><strong>5580 ACTION$ SEND= and KEY=</strong></p>
 <p>Enhancement to the ACTION$ TO-APPLICATION instruction to</p>
 <ul class="simple">
-<li><p>Allow user friendly KEY= keyword values</p></li>
-<li><p>Add a new SEND= parameter which can contain data to be copied to the screen before transmitting.</p></li>
+<li>Allow user friendly KEY= keyword values</li>
+<li>Add a new SEND= parameter which can contain data to be copied to the screen before transmitting.</li>
 </ul>
 <p>Example 1:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ACTION$  TO-APPLICATION,KEY=pf18,
@@ -352,8 +356,7 @@ The initialization of the Virtel JavaScript browser client has been enhanced.</p
 <p>The KEY= parameter was previously restricted to the low level one byte code for the pf key. It may now also have an uppercase or lowercase mnemonic for the function key (not mixed case).</p>
 <p>For example:</p>
 <blockquote>
-<div><p>pf2 or PF2 or ‘pf2’ or F2 are all valid. Previously only F2 was valid.</p>
-</div></blockquote>
+<div>pf2 or PF2 or ‘pf2’ or F2 are all valid. Previously only F2 was valid.</div></blockquote>
 <p>Also valid are : pa1, PA1, clear, CLEAR, attn, ATTN etc. As an example, the following idnode://8642HASCRIPT example:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">actions</span><span class="o">&gt;</span>
 <span class="o">&lt;</span><span class="n">mouseclick</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;9&quot;</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;2&quot;</span> <span class="o">/&gt;</span>
@@ -554,10 +557,11 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <p><strong>Scenario enhancements</strong></p>
 <p>The Virtel scenario and template languages have been enhanced to support this feature. To obtain the name of the User directory</p>
 <p>In a scenario:</p>
-<dl class="simple">
-<dt>::</dt><dd><dl class="simple">
-<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’PRMDIR’,</dt><dd><p>FIELD=(NAME-OF,USER-PARMS-DIRECTORY)</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd><dl class="first last docutils">
+<dt>COPY$ SYSTEM-TO-VARIABLE,VAR=’PRMDIR’,</dt>
+<dd>FIELD=(NAME-OF,USER-PARMS-DIRECTORY)</dd>
 </dl>
 </dd>
 </dl>
@@ -571,9 +575,9 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <p>The VWA API supports the following methods:-</p>
 <p><em>vwaAPI.getApplicationName</em></p>
 <p>A method that returns the application name:-</p>
-<dl class="simple">
-<dt>::</dt><dd><p>var n = vwaAPI.getApplicationName();</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd>var n = vwaAPI.getApplicationName();</dd>
 </dl>
 <p><em>vwaAPI.getUserId</em></p>
 <p>A method that returns the user id:-</p>
@@ -595,175 +599,175 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 <h2>Appendix E<a class="headerlink" href="#appendix-e" title="Permalink to this headline">¶</a></h2>
 <p><strong>Maintenance list</strong></p>
 <ul class="simple">
-<li><p>5527 context/focus switch problem</p></li>
-<li><p>5528 Ctrl+V and Insert and PasteBy Typing</p></li>
-<li><p>5530 Virtel initialisation message VIR0099I must go to the console</p></li>
-<li><p>5531 Abend S0C4 in VSVTINIT on shutting down Virtel</p></li>
-<li><p>5532 Possible ‘parsing error’ loading w2h settings in Italian</p></li>
-<li><p>5533 In ‘stretch’ mode, W2H may misalign some characters</p></li>
-<li><p>5534 Help pages for V2 W2H admin</p></li>
-<li><p>5535 BLINK attribute no longer work in Chrome and Firefox</p></li>
-<li><p>5536 Prevent Alert Box in IE8</p></li>
-<li><p>5537 Correct Import/export in VWA</p></li>
-<li><p>5538 Pop-up menu correction for IE.</p></li>
-<li><p>5539 Show/Hide tool bar option</p></li>
-<li><p>5540 remove w2h setting to omit nulls from input</p></li>
-<li><p>5541 Correct HTML return with “/” in passwd.html.</p></li>
-<li><p>5542 Update VWA Settings messages-</p></li>
-<li><p>5543 Backup W2H parameters. Fix problem with Toolbar display</p></li>
-<li><p>5544 Correct display problems</p></li>
-<li><p>5545 Correct ARBOLOAD installation job-</p></li>
-<li><p>5546 Cursor not visible on highlighted field</p></li>
-<li><p>5547 EDGE browser display problem with Tool Bar</p></li>
-<li><p>5548 Correct Import/export in VWA</p></li>
-<li><p>5549 REQSESS fails if Logmode in URL is less than eight characters</p></li>
-<li><p>5550 Correct time display in directory list</p></li>
-<li><p>5551 Correct JavaScript to avoid Drag &amp; Drop Failure</p></li>
-<li><p>5552 Add PCDOS (CP437) support to IND$FILE</p></li>
-<li><p>5553 CLIPBOARD events</p></li>
-<li><p>5554 Spell Checking incorrectly turned on in IE</p></li>
-<li><p>5555 show/Hide toolbar by keypress</p></li>
-<li><p>5556 PRINT extra blank page at end</p></li>
-<li><p>5557 PRINT missing EOL at EOM</p></li>
-<li><p>5558 cucumber test blocks on CLEAR</p></li>
-<li><p>5559 IBM0276 update</p></li>
-<li><p>5560 DDI JavaScript error in macros_Problems.js</p></li>
-<li><p>5561 Update VIR0021Wto correctly handle SFE codes</p></li>
-<li><p>5562 VIROOPE force free of user memory</p></li>
-<li><p>5563 Error loading custom.css</p></li>
-<li><p>5564 VXMW96E VIRPASS /XMHSAE ABEND=3202 UM REASONW</p></li>
-<li><p>5565 VIRTEL Abend 878-10 after multiple VSVPSYNL SAE2HOZ1</p></li>
-<li><p>5566 Increase default Maxsockets to 5000 from 250</p></li>
-<li><p>5567 PRINT extra blank page at end</p></li>
-<li><p>5568 VIRSV forces TRAP(0FF) for service programs</p></li>
-<li><p>5569 VIRPLEX do not ignore URL path before VPLEX= key</p></li>
-<li><p>5570 VSVRTMSG Initialization LENGTH OFF LE. MSG=00141</p></li>
-<li><p>5571 CLIPBOARD paste continue / copy append</p></li>
-<li><p>5572 CLIPBOARD spellcheck</p></li>
-<li><p>5573 Add LOG=FILE to Virtel logging</p></li>
-<li><p>5574 JS01.js should not contain {{{ Virtel statements</p></li>
-<li><p>5575 Add explicit /w2h paths in web2sub.html and js01.js</p></li>
-<li><p>5576 IF$ OlA STATUS IS INHIBITED</p></li>
-<li><p>5577 COPYS NUMBER-OF.SCREEN-lNPUT-FIELDS</p></li>
-<li><p>5578 CTRL key has no effect under Epiphany browser under Linux</p></li>
-<li><p>5579 i4WEB - Out of Memory due to X-SYSTEM not enforced</p></li>
-<li><p>5580 Enhance ACTION$ SEND= and KEY=</p></li>
-<li><p>5581 Fix Black screen in IE8</p></li>
-<li><p>5582 Hotspot Error in IE8 JavaScript</p></li>
-<li><p>5583 FIRST-PASS may be set on second pass into a SCENARIO INPUT</p></li>
-<li><p>5584 Update Version number</p></li>
-<li><p>5585 Correct ‘unde?ned’ error when tool bar removed</p></li>
-<li><p>5586 Paste-Continue button should not be on the toolbar when not using clipboard event</p></li>
-<li><p>5587 Correct stretch in IE when in compatibility mode</p></li>
-<li><p>5588 Correct ‘GetAttribute’ inVIR3270.js</p></li>
-<li><p>5589 Implement ASYNC NOLONGPOLL using SNASTAT</p></li>
-<li><p>5590 Avoid duplicate PF=DISCONNECT after refresh</p></li>
-<li><p>5591 Restore PF5 behaviour for IE8</p></li>
-<li><p>5592 Correct CCP Append behaviour</p></li>
-<li><p>5593 Correct Context/Focus Switch Problem</p></li>
-<li><p>5594 Fix Virtel Studio DEBUGS TRACE</p></li>
-<li><p>5595 Correct Hot Key problem with CTRL key</p></li>
-<li><p>5596 Do not print extra blank line at EOM if EOL</p></li>
-<li><p>5597 Adapt consistent ?le name for i4web</p></li>
-<li><p>5598 Possible ABEND S0C4 alter MQ response is desynchronized</p></li>
-<li><p>5599 SET-INITIAL-TIMEOUT modified from 10 to 101</p></li>
-<li><p>5600 HOTSPOT identifies wrong location in a long output ?eld</p></li>
-<li><p>5601 HOTSPOT traps multiple entries in a template.</p></li>
-<li><p>5602 SYSCLONE substitution incorrectly appears in the VIRARBO ?le definitions</p></li>
-<li><p>5603 IE11 Import/Export Macro Button Fix</p></li>
-<li><p>5604 IE11 Stretch Bug</p></li>
-<li><p>5605 Scenario Abend due to missing SCENARIO END</p></li>
-<li><p>5606 WEB2VIRTAJAX has JavaScript errors</p></li>
-<li><p>5607 3270 Introduce new structured ?eld to allow a applications to obtain user certi?cate</p></li>
-<li><p>5608 W2H Allow PGUP key as PA3</p></li>
-<li><p>5609 PA3 incorrectly sent with length 3 instead of 1</p></li>
-<li><p>5610 MAP$ in a SCENARIO SUBROUTINE</p></li>
-<li><p>5611 Update Virtel Sub-Application Menu</p></li>
-<li><p>5612 HTTP correct pointer from session to pseudo terminal</p></li>
-<li><p>5613 HTTP possible Abend due to large content-length</p></li>
-<li><p>5615 Add WEB2ZVIRJ.htm template for Japanese language support</p></li>
-<li><p>5616 ACTION$ instruction may be rejected due to an error in UPDT5580</p></li>
-<li><p>5617 Adapts UPDT5607 for VSE</p></li>
-<li><p>5618 Correct screen presentation</p></li>
-<li><p>5619 IBM1097A Iranian Farsi translation table</p></li>
-<li><p>5620 User Parms on host -1- USER-PARMS�DIRECTORY</p></li>
-<li><p>5621 Correct IE problem - SCRIPT16389</p></li>
-<li><p>5622 Redesign JavaScript initialization</p></li>
-<li><p>5623 Abend S202trying to restart a LINE to VIRXM</p></li>
-<li><p>5624 Context Menu display errors</p></li>
-<li><p>5626 VSE Abend in RACROUTE REGUEST=EXTRACT routine</p></li>
-<li><p>5627 Change Virtel long poll response to add a Content-Length header</p></li>
-<li><p>5628 Minor changes to V4.58 JavaScript</p></li>
-<li><p>5629 ‘//’ slash characters in w2h parameter settings window</p></li>
-<li><p>5630 Save VWA Parms. User on the Host � Centralised Parameter Feature</p></li>
-<li><p>5631 IBM0274 0ld Belgium translation table</p></li>
-<li><p>5632 3270 structured ?eld to retrieve user IP address</p></li>
-<li><p>5633 3270 certi?cate structured ?eld always return same certi?cate</p></li>
-<li><p>5634 3270 structured ?eld - possible ASRA</p></li>
-<li><p>5635 VSE LOGFILE Support</p></li>
-<li><p>5636 Apply minor modi?cations</p></li>
-<li><p>5637 MQ response line no longer read alter a timeout</p></li>
-<li><p>5638 Correct CCP and SmartCursor issues</p></li>
-<li><p>5639 Update VSE tape build</p></li>
-<li><p>5640 Update VIR0002A to support VSE SYSLST</p></li>
-<li><p>5642 Save VWA Parms. Enhancement - Part 2</p></li>
-<li><p>5644 Correct MAP length in VIR0021W</p></li>
-<li><p>5645 Save VWA Parms. Enhancement - Part3</p></li>
-<li><p>5646 Complete keypad.css for TBT</p></li>
-<li><p>5647 Change compress/WEB2AJAXC.bat to allow compress from SVN</p></li>
-<li><p>5648 Save VWA Parms. Enhancement - Part4</p></li>
-<li><p>5649 Hotspot and Settings corrections</p></li>
-<li><p>5650 Correct Toolbar to display Virtel Information</p></li>
-<li><p>5651 Correct PassPhrase decrypt</p></li>
-<li><p>5652 Correct cursor position with unformatted screen</p></li>
-<li><p>5653 Some DBCS Characters are lost at end of a ?eld</p></li>
-<li><p>5654 Hotspot, CCP and Centralized Setting updates</p></li>
-<li><p>5655 Minor corrections and fixes I</p></li>
-<li><p>5656 compressed js and others</p></li>
-<li><p>5657 VWA perms on host for security type 4</p></li>
-<li><p>5658 Hotspots In INPUT fields</p></li>
-<li><p>5659 correct PTFGEN</p></li>
-<li><p>5660 DFHMDF map generation may be wrong due to binary zeroes in the screen</p></li>
-<li><p>5661 Minor corrections and fixes II</p></li>
-<li><p>5662 Centralized Parms update</p></li>
-<li><p>5663 Correct bug In Macro backup</p></li>
-<li><p>5664 Increase password length In PASSWD HTML</p></li>
-<li><p>5665 Web2ajax.htm now loads web2ajaxcjs</p></li>
-<li><p>5666 Videl update number missing in vwa toolbar</p></li>
-<li><p>5667 Correct bug In centralised settings with security—O</p></li>
-<li><p>5668 Correct defautt font setting in settings panel</p></li>
-<li><p>5669 Correct synchronization settings</p></li>
-<li><p>5670 Minor corrections and fixes III</p></li>
-<li><p>5671 Correct Macro bug</p></li>
-<li><p>5672 Minor corrections and fixes IV</p></li>
-<li><p>5673 Create UPDT5673</p></li>
-<li><p>5674 FIX appmenu htm</p></li>
-<li><p>5675 correct VIRHTML abend</p></li>
-<li><p>5676 Correct switch problem</p></li>
-<li><p>5677 VIRPLEX at startup. we may see a series of VIRQLK51 messages</p></li>
-<li><p>5678 VIRPLEX supcn)rt for perms on host for READONLY servers</p></li>
-<li><p>5679 fix. Macro bug and other minor fixes</p></li>
-<li><p>5680 possible abend connecting to a VTAM application</p></li>
-<li><p>5681 Refactor of SVN 4800 and 4807</p></li>
-<li><p>5682 Updates to installation changes to defaults</p></li>
-<li><p>5683 various javascfipt fixes from SVN</p></li>
-<li><p>5684 more javascfipt fixes</p></li>
-<li><p>5685 Centralized Parms wrong VPLEX code sent by W2H-Settings</p></li>
-<li><p>5686 pseudo terminal not freed after close of the window</p></li>
-<li><p>5687 Centralized Parmy error with IE8</p></li>
-<li><p>5688 It-I VIR0021W causes ASRA/ABENDCC4 abends</p></li>
-<li><p>5689 Cleanup correctly following a REGS ESS failure In VIR0021W</p></li>
-<li><p>5690 V458 Installation updates</p></li>
-<li><p>5691 memory oveday after using VIR0021W USSTAB</p></li>
-<li><p>5692 Javascript fixes</p></li>
-<li><p>5693 set-local-option (use-htmini)</p></li>
-<li><p>5694 Loop with Trace option (Y,Y,Y)</p></li>
-<li><p>5695 some pseudos not released when closing several tabs</p></li>
-<li><p>5696 Virplex - error message if BROADCAST cannot be done</p></li>
-<li><p>5697 Incorrect 403 signon suspended error when signon is not suspended</p></li>
-<li><p>5698 selection box at wrong gn)sition In no stretch mode</p></li>
-<li><p>5699 VIR1728E ERROR: CANNOT OPEN message</p></li>
-<li><p>5700 Remove compressed option from appmenu htm</p></li>
+<li>5527 context/focus switch problem</li>
+<li>5528 Ctrl+V and Insert and PasteBy Typing</li>
+<li>5530 Virtel initialisation message VIR0099I must go to the console</li>
+<li>5531 Abend S0C4 in VSVTINIT on shutting down Virtel</li>
+<li>5532 Possible ‘parsing error’ loading w2h settings in Italian</li>
+<li>5533 In ‘stretch’ mode, W2H may misalign some characters</li>
+<li>5534 Help pages for V2 W2H admin</li>
+<li>5535 BLINK attribute no longer work in Chrome and Firefox</li>
+<li>5536 Prevent Alert Box in IE8</li>
+<li>5537 Correct Import/export in VWA</li>
+<li>5538 Pop-up menu correction for IE.</li>
+<li>5539 Show/Hide tool bar option</li>
+<li>5540 remove w2h setting to omit nulls from input</li>
+<li>5541 Correct HTML return with “/” in passwd.html.</li>
+<li>5542 Update VWA Settings messages-</li>
+<li>5543 Backup W2H parameters. Fix problem with Toolbar display</li>
+<li>5544 Correct display problems</li>
+<li>5545 Correct ARBOLOAD installation job-</li>
+<li>5546 Cursor not visible on highlighted field</li>
+<li>5547 EDGE browser display problem with Tool Bar</li>
+<li>5548 Correct Import/export in VWA</li>
+<li>5549 REQSESS fails if Logmode in URL is less than eight characters</li>
+<li>5550 Correct time display in directory list</li>
+<li>5551 Correct JavaScript to avoid Drag &amp; Drop Failure</li>
+<li>5552 Add PCDOS (CP437) support to IND$FILE</li>
+<li>5553 CLIPBOARD events</li>
+<li>5554 Spell Checking incorrectly turned on in IE</li>
+<li>5555 show/Hide toolbar by keypress</li>
+<li>5556 PRINT extra blank page at end</li>
+<li>5557 PRINT missing EOL at EOM</li>
+<li>5558 cucumber test blocks on CLEAR</li>
+<li>5559 IBM0276 update</li>
+<li>5560 DDI JavaScript error in macros_Problems.js</li>
+<li>5561 Update VIR0021Wto correctly handle SFE codes</li>
+<li>5562 VIROOPE force free of user memory</li>
+<li>5563 Error loading custom.css</li>
+<li>5564 VXMW96E VIRPASS /XMHSAE ABEND=3202 UM REASONW</li>
+<li>5565 VIRTEL Abend 878-10 after multiple VSVPSYNL SAE2HOZ1</li>
+<li>5566 Increase default Maxsockets to 5000 from 250</li>
+<li>5567 PRINT extra blank page at end</li>
+<li>5568 VIRSV forces TRAP(0FF) for service programs</li>
+<li>5569 VIRPLEX do not ignore URL path before VPLEX= key</li>
+<li>5570 VSVRTMSG Initialization LENGTH OFF LE. MSG=00141</li>
+<li>5571 CLIPBOARD paste continue / copy append</li>
+<li>5572 CLIPBOARD spellcheck</li>
+<li>5573 Add LOG=FILE to Virtel logging</li>
+<li>5574 JS01.js should not contain {{{ Virtel statements</li>
+<li>5575 Add explicit /w2h paths in web2sub.html and js01.js</li>
+<li>5576 IF$ OlA STATUS IS INHIBITED</li>
+<li>5577 COPYS NUMBER-OF.SCREEN-lNPUT-FIELDS</li>
+<li>5578 CTRL key has no effect under Epiphany browser under Linux</li>
+<li>5579 i4WEB - Out of Memory due to X-SYSTEM not enforced</li>
+<li>5580 Enhance ACTION$ SEND= and KEY=</li>
+<li>5581 Fix Black screen in IE8</li>
+<li>5582 Hotspot Error in IE8 JavaScript</li>
+<li>5583 FIRST-PASS may be set on second pass into a SCENARIO INPUT</li>
+<li>5584 Update Version number</li>
+<li>5585 Correct ‘unde?ned’ error when tool bar removed</li>
+<li>5586 Paste-Continue button should not be on the toolbar when not using clipboard event</li>
+<li>5587 Correct stretch in IE when in compatibility mode</li>
+<li>5588 Correct ‘GetAttribute’ inVIR3270.js</li>
+<li>5589 Implement ASYNC NOLONGPOLL using SNASTAT</li>
+<li>5590 Avoid duplicate PF=DISCONNECT after refresh</li>
+<li>5591 Restore PF5 behaviour for IE8</li>
+<li>5592 Correct CCP Append behaviour</li>
+<li>5593 Correct Context/Focus Switch Problem</li>
+<li>5594 Fix Virtel Studio DEBUGS TRACE</li>
+<li>5595 Correct Hot Key problem with CTRL key</li>
+<li>5596 Do not print extra blank line at EOM if EOL</li>
+<li>5597 Adapt consistent ?le name for i4web</li>
+<li>5598 Possible ABEND S0C4 alter MQ response is desynchronized</li>
+<li>5599 SET-INITIAL-TIMEOUT modified from 10 to 101</li>
+<li>5600 HOTSPOT identifies wrong location in a long output ?eld</li>
+<li>5601 HOTSPOT traps multiple entries in a template.</li>
+<li>5602 SYSCLONE substitution incorrectly appears in the VIRARBO ?le definitions</li>
+<li>5603 IE11 Import/Export Macro Button Fix</li>
+<li>5604 IE11 Stretch Bug</li>
+<li>5605 Scenario Abend due to missing SCENARIO END</li>
+<li>5606 WEB2VIRTAJAX has JavaScript errors</li>
+<li>5607 3270 Introduce new structured ?eld to allow a applications to obtain user certi?cate</li>
+<li>5608 W2H Allow PGUP key as PA3</li>
+<li>5609 PA3 incorrectly sent with length 3 instead of 1</li>
+<li>5610 MAP$ in a SCENARIO SUBROUTINE</li>
+<li>5611 Update Virtel Sub-Application Menu</li>
+<li>5612 HTTP correct pointer from session to pseudo terminal</li>
+<li>5613 HTTP possible Abend due to large content-length</li>
+<li>5615 Add WEB2ZVIRJ.htm template for Japanese language support</li>
+<li>5616 ACTION$ instruction may be rejected due to an error in UPDT5580</li>
+<li>5617 Adapts UPDT5607 for VSE</li>
+<li>5618 Correct screen presentation</li>
+<li>5619 IBM1097A Iranian Farsi translation table</li>
+<li>5620 User Parms on host -1- USER-PARMS�DIRECTORY</li>
+<li>5621 Correct IE problem - SCRIPT16389</li>
+<li>5622 Redesign JavaScript initialization</li>
+<li>5623 Abend S202trying to restart a LINE to VIRXM</li>
+<li>5624 Context Menu display errors</li>
+<li>5626 VSE Abend in RACROUTE REGUEST=EXTRACT routine</li>
+<li>5627 Change Virtel long poll response to add a Content-Length header</li>
+<li>5628 Minor changes to V4.58 JavaScript</li>
+<li>5629 ‘//’ slash characters in w2h parameter settings window</li>
+<li>5630 Save VWA Parms. User on the Host � Centralised Parameter Feature</li>
+<li>5631 IBM0274 0ld Belgium translation table</li>
+<li>5632 3270 structured ?eld to retrieve user IP address</li>
+<li>5633 3270 certi?cate structured ?eld always return same certi?cate</li>
+<li>5634 3270 structured ?eld - possible ASRA</li>
+<li>5635 VSE LOGFILE Support</li>
+<li>5636 Apply minor modi?cations</li>
+<li>5637 MQ response line no longer read alter a timeout</li>
+<li>5638 Correct CCP and SmartCursor issues</li>
+<li>5639 Update VSE tape build</li>
+<li>5640 Update VIR0002A to support VSE SYSLST</li>
+<li>5642 Save VWA Parms. Enhancement - Part 2</li>
+<li>5644 Correct MAP length in VIR0021W</li>
+<li>5645 Save VWA Parms. Enhancement - Part3</li>
+<li>5646 Complete keypad.css for TBT</li>
+<li>5647 Change compress/WEB2AJAXC.bat to allow compress from SVN</li>
+<li>5648 Save VWA Parms. Enhancement - Part4</li>
+<li>5649 Hotspot and Settings corrections</li>
+<li>5650 Correct Toolbar to display Virtel Information</li>
+<li>5651 Correct PassPhrase decrypt</li>
+<li>5652 Correct cursor position with unformatted screen</li>
+<li>5653 Some DBCS Characters are lost at end of a ?eld</li>
+<li>5654 Hotspot, CCP and Centralized Setting updates</li>
+<li>5655 Minor corrections and fixes I</li>
+<li>5656 compressed js and others</li>
+<li>5657 VWA perms on host for security type 4</li>
+<li>5658 Hotspots In INPUT fields</li>
+<li>5659 correct PTFGEN</li>
+<li>5660 DFHMDF map generation may be wrong due to binary zeroes in the screen</li>
+<li>5661 Minor corrections and fixes II</li>
+<li>5662 Centralized Parms update</li>
+<li>5663 Correct bug In Macro backup</li>
+<li>5664 Increase password length In PASSWD HTML</li>
+<li>5665 Web2ajax.htm now loads web2ajaxcjs</li>
+<li>5666 Videl update number missing in vwa toolbar</li>
+<li>5667 Correct bug In centralised settings with security—O</li>
+<li>5668 Correct defautt font setting in settings panel</li>
+<li>5669 Correct synchronization settings</li>
+<li>5670 Minor corrections and fixes III</li>
+<li>5671 Correct Macro bug</li>
+<li>5672 Minor corrections and fixes IV</li>
+<li>5673 Create UPDT5673</li>
+<li>5674 FIX appmenu htm</li>
+<li>5675 correct VIRHTML abend</li>
+<li>5676 Correct switch problem</li>
+<li>5677 VIRPLEX at startup. we may see a series of VIRQLK51 messages</li>
+<li>5678 VIRPLEX supcn)rt for perms on host for READONLY servers</li>
+<li>5679 fix. Macro bug and other minor fixes</li>
+<li>5680 possible abend connecting to a VTAM application</li>
+<li>5681 Refactor of SVN 4800 and 4807</li>
+<li>5682 Updates to installation changes to defaults</li>
+<li>5683 various javascfipt fixes from SVN</li>
+<li>5684 more javascfipt fixes</li>
+<li>5685 Centralized Parms wrong VPLEX code sent by W2H-Settings</li>
+<li>5686 pseudo terminal not freed after close of the window</li>
+<li>5687 Centralized Parmy error with IE8</li>
+<li>5688 It-I VIR0021W causes ASRA/ABENDCC4 abends</li>
+<li>5689 Cleanup correctly following a REGS ESS failure In VIR0021W</li>
+<li>5690 V458 Installation updates</li>
+<li>5691 memory oveday after using VIR0021W USSTAB</li>
+<li>5692 Javascript fixes</li>
+<li>5693 set-local-option (use-htmini)</li>
+<li>5694 Loop with Trace option (Y,Y,Y)</li>
+<li>5695 some pseudos not released when closing several tabs</li>
+<li>5696 Virplex - error message if BROADCAST cannot be done</li>
+<li>5697 Incorrect 403 signon suspended error when signon is not suspended</li>
+<li>5698 selection box at wrong gn)sition In no stretch mode</li>
+<li>5699 VIR1728E ERROR: CANNOT OPEN message</li>
+<li>5700 Remove compressed option from appmenu htm</li>
 </ul>
 </div>
 </div>
@@ -788,11 +792,19 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -803,7 +815,6 @@ ACTION$ TO-APPLICATION,KEY=enter,                             *
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

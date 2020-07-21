@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Customizing colours with CSS in Virtel 4.53" href="../TN201601/TN201601.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -116,6 +118,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +157,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -289,8 +292,8 @@ This would convert the JSON input to variables with the names specified in the J
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This new form of the instruction alleviates the need for an OCCURS=UNLIMITED at the end of a description.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">This new form of the instruction alleviates the need for an OCCURS=UNLIMITED at the end of a description.</p>
 </div>
 <p><strong>Allow re-execution of a MAP$ FROM-INPUT</strong></p>
 <p>In the following scenario, the two ‘MAP$ FROM-INPUT’ will produce the same output.</p>
@@ -354,9 +357,9 @@ SCENARIO END
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <p>1: CASE$ do not change the contents of the variables or parts of the screen being compared.</p>
-<p>2: If the variable being tested does not exist, (eg ‘MYVAR’ does not exist), it is not considered empty. Rather, the CASE$ branches at the ELSE= label.</p>
+<p class="last">2: If the variable being tested does not exist, (eg ‘MYVAR’ does not exist), it is not considered empty. Rather, the CASE$ branches at the ELSE= label.</p>
 </div>
 <p>LTRIM and RTRIM will trim both the value being tested (variable or part of the screen buffer) and the variable arguments, but not the static arguments.</p>
 <p>For example:-</p>
@@ -525,9 +528,9 @@ COPY$ SYSTEM-TO-VARIABLE,VAR=&#39;H1&#39;,                                *
 <p>Module : VIR0000
 Meaning : The Virtel memory request is invalid because:-</p>
 <ul class="simple">
-<li><p>The subpool is invalid.</p></li>
-<li><p>The address to be freed is outside the associated subpool pages.</p></li>
-<li><p>The address to be freed is not found in the DSA table.</p></li>
+<li>The subpool is invalid.</li>
+<li>The address to be freed is outside the associated subpool pages.</li>
+<li>The address to be freed is not found in the DSA table.</li>
 </ul>
 <p>Action : Virtel continues. If you get a significant number of these messages you consider a schedule a restart of Virtel.</p>
 <p><strong>VIRT0086E</strong> GETMAIN FAILED. MEMORY DSA DISABLED.</p>
@@ -566,10 +569,10 @@ services. This will depend on VIRTEL demand.</p>
 <p>Default action is SNAP</p>
 <p>Constraints:</p>
 <ul class="simple">
-<li><p>All msgno are 8 characters.</p></li>
-<li><p>The search field has is restricted to a maximum of 10 Characters. Anything beyond this will be ignored.</p></li>
-<li><p>Actions: S = SNAP or A = ABEND.</p></li>
-<li><p>Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</p></li>
+<li>All msgno are 8 characters.</li>
+<li>The search field has is restricted to a maximum of 10 Characters. Anything beyond this will be ignored.</li>
+<li>Actions: S = SNAP or A = ABEND.</li>
+<li>Virtel will abend with a U0999 abend code, reason code 15 if the ABEND action is used.</li>
 </ul>
 <p><em>Messages</em></p>
 <p><strong>‘VIR0262W</strong> SNAPMSG TRIGGERED - VIRTEL ABENDED | SNAP TAKEN’,</p>
@@ -690,8 +693,8 @@ Response:-
 <p><em>IP=nnn.nnn.nnn.nnn keyword</em></p>
 <p>Currently the IP address used by VIRTEL for a particular line can be derived from being:-</p>
 <ul class="simple">
-<li><p>Explicitly defined in the LINE definition in the ARBO statements</p></li>
-<li><p>Defaults to the IP stack HOME address. The TCP/IP GETHOSTID function is used to obtain this address.</p></li>
+<li>Explicitly defined in the LINE definition in the ARBO statements</li>
+<li>Defaults to the IP stack HOME address. The TCP/IP GETHOSTID function is used to obtain this address.</li>
 </ul>
 <p>This change implements the possibility to override option (b) with the ability to specify the IP address as a keyword in the JCL PARM field. As an example:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIR0000</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s2">&quot;01,MYAPPL,,192.168.0.123&quot;</span>
@@ -755,10 +758,10 @@ external storage above the 2GB storage bar. When taking a snap all trace buffers
 <p>The external or historical trace facility is controlled by the TCT TRACEON= parameter or the VIRTEL TRACE command. The Virtel Internal Tracing (VIT) has several categories which control the amount of trace
 data. The categories are:-</p>
 <ul class="simple">
-<li><p>No tracing</p></li>
-<li><p>Minimal tracing. No data elements</p></li>
-<li><p>Tracing with data elements</p></li>
-<li><p>Tracing with data elements and external archive</p></li>
+<li>No tracing</li>
+<li>Minimal tracing. No data elements</li>
+<li>Tracing with data elements</li>
+<li>Tracing with data elements and external archive</li>
 </ul>
 <p>The active tracing category is displayed in the TRACE display message:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">VIRTEL</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">DISPLAY</span> <span class="ow">or</span> <span class="n">F</span> <span class="n">SPVIREH</span><span class="p">,</span><span class="n">TRACE</span><span class="p">,</span><span class="n">D</span>
@@ -849,8 +852,8 @@ identified in message VIR0208I, or through an operator command:</p>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If external buffering is not active any offload command will be rejected as invalid.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">If external buffering is not active any offload command will be rejected as invalid.</p>
 </div>
 <p><em>Messages</em></p>
 <p><strong>VIR0208I</strong> VIRTEL INTERNAL TRACE = xxx. EXT. BUFFERS = yyyy/zzzz.</p>
@@ -879,8 +882,8 @@ identified in message VIR0208I, or through an operator command:</p>
 <p>VIRTEL 4.55 now implements the VIR0021W USSTAB menu program. This program will interrogate the customers USSTAB module and create an equivalent 3270 MAP. The MAP will be passed to the VIR0010 routine where
 it will subsequently be converted into a HTML template and served to the browser. The generated template will provide similar functionality to that of the VTAM USSMSG10, that being a presentation screen and support for USSCMD and USSPARM entries. This allows customers to maintain their USSTAB MSG10 presentation for both VTAM and VIRTEL users without modification. The customers assembled USSTAB module, normally found in USER.VTAMLIB or an equivalent library, must be made available to VIRTEL. This can be done by either copying the module to a VIRTEL steplib library or concatenating the USER.VTAMLIB library into the VIRTEL started procedure. SAMPLIB member USSVIRT can be used to generate the default Virtel USSTAB USSVIRT.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is a chargeable feature and you should contact your sales representative for further details.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">This is a chargeable feature and you should contact your sales representative for further details.</p>
 </div>
 </div>
 
@@ -904,11 +907,19 @@ it will subsequently be converted into a HTML template and served to the browser
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -919,7 +930,6 @@ it will subsequently be converted into a HTML template and served to the browser
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
