@@ -43,7 +43,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The master toctree document.
-master_doc = 'TN201903'
+master_doc = 'TN201904'
 
 # General information about the project.
 project = 'Virtel'
@@ -146,7 +146,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'TN201903.tex', "Maintaining centralized macros with batch scripts",
+    (master_doc, 'TN201904.tex', "Using VBA macros with Virtel",
      'Syspertec Communications', 'manual'),
 ]
 

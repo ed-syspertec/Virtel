@@ -48,3 +48,12 @@ Technical Newsletters
    :maxdepth: 1   
    
    manuals/newsletters/TN2019*/*
+
+2020
+----
+.. toctree::
+   :glob:
+   :maxdepth: 1   
+   
+   manuals/newsletters/TN2020*/*
+
