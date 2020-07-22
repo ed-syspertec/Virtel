@@ -107,15 +107,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#installing-and-configuring-the-ftp-function">Installing and configuring the FTP function</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#how-to-use-the-virtel-ftp-function">How to use the Virtel FTP function</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#showing-hiding-ftp-file-transfer">Showing / Hiding FTP File Transfer</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#appendix-a">Appendix A</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#appendix-b">Appendix B</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-a">Appendix A</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-b">Appendix B</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#debugging">Debugging</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#appendix-c">Appendix C</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#advanced-features">Advanced Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-c">Appendix C</a></li>
 </ul>
 </li>
 </ul>
@@ -396,9 +391,8 @@ FTPLIST[1] = alink;
 <p><em>Example w2hparm.js for hiding FTP File Transfer.</em></p>
 <p>If the default value is used, users can show this function for their own usage by checking “Show the toggle button for VirtelFtp” in the Display tab of the settings panel.</p>
 </div>
-</div>
 <div class="section" id="appendix-a">
-<h1>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h1>
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
 <p>The FTP feature interfaces with the client FTP program provided by Windows. The following four files must be installed into a Virtel FTP folder on your workstation. For example c:Virtelftp. The four files are available within the UPDT5799 update package.</p>
 <p>Ancillary files used are used by Virtel FTP and may be customized by a user for their own site requirements.</p>
 <ol class="arabic simple">
@@ -433,7 +427,8 @@ rem del %HOMEDRIVE%%HomePath%\Downloads\FTPPARAM.txt
 </div>
 </div>
 <div class="section" id="appendix-b">
-<h1>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h1>
+<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="debugging">
 <h2>Debugging<a class="headerlink" href="#debugging" title="Permalink to this headline">¶</a></h2>
 <p><strong>Power Shell authority</strong></p>
@@ -441,15 +436,14 @@ rem del %HOMEDRIVE%%HomePath%\Downloads\FTPPARAM.txt
 <p><img alt="image12" src="../../../_images/image1213.png" /></p>
 <p>This can be corrected by issuing the Windows command: <strong>Set-ExecutionPolicy Bypass</strong></p>
 </div>
-</div>
 <div class="section" id="appendix-c">
-<h1>Appendix C<a class="headerlink" href="#appendix-c" title="Permalink to this headline">¶</a></h1>
+<h2>Appendix C<a class="headerlink" href="#appendix-c" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="advanced-features">
-<h2>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h2>
+<h3>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h3>
 <p>The UPDT5799 package ships with an electron directory which contains a Node JS electron program that can monitor the uses Download directory. When a FTPPARAM.TXT file arrives from the -browser- the batch file PSVirtelNodeFtp.bat is automatically invoked to perform the FTP transfer. This functionality removes the need for the user to manually trigger the FTP processes through a desktop shortcut.</p>
 <p>To install this feature you must be familiar with Node JS, NPM and Electron web tools. This knowledge is outside the remit of this newsletter.</p>
 <div class="section" id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h3>
+<h4>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li>Copy the files in the electron directory to c:VirtelFtp.</li>
 <li>Issue the command NPM INSTALL to created the Node JS/Electron environment.</li>
@@ -464,6 +458,7 @@ rem del %HOMEDRIVE%%HomePath%\Downloads\FTPPARAM.txt
 <span class="n">c</span><span class="p">:</span>\<span class="n">virtel</span>\<span class="n">ftp</span><span class="o">&gt;</span><span class="n">echo</span> <span class="n">off</span>
 <span class="n">Child</span> <span class="n">exited</span> <span class="k">with</span> <span class="n">code</span> <span class="mi">0</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>

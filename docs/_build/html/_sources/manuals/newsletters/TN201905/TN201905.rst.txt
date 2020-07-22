@@ -253,7 +253,7 @@ The administrator may wish to prevent users from accessing features like FTP Fil
 If the default value is used, users can show this function for their own usage by checking "Show the toggle button for VirtelFtp" in the Display tab of the settings panel.
 
 Appendix A
-==========
+----------
 
 The FTP feature interfaces with the client FTP program provided by Windows. The following four files must be installed into a Virtel FTP folder on your workstation. For example c:\Virtel\ftp. The four files are available within the UPDT5799 update package.
 
@@ -293,7 +293,7 @@ Should be defined as a short-cut on the desktop. Will process the FTPPARM.TXT fi
    rem del %USERPROFILE%\Downloads\ftpparam.txt 
 
 Appendix B
-==========
+----------
 
 Debugging
 ---------
@@ -307,17 +307,17 @@ Users may find that the following error message appears when invoking the Power 
 This can be corrected by issuing the Windows command: **Set-ExecutionPolicy Bypass**
 
 Appendix C
-==========
+----------
 
 Advanced Features
------------------
+^^^^^^^^^^^^^^^^^
 
 The UPDT5799 package ships with an electron directory which contains a Node JS electron program that can monitor the uses Download directory. When a FTPPARAM.TXT file arrives from the -browser- the batch file PSVirtelNodeFtp.bat is automatically invoked to perform the FTP transfer. This functionality removes the need for the user to manually trigger the FTP processes through a desktop shortcut.
 
 To install this feature you must be familiar with Node JS, NPM and Electron web tools. This knowledge is outside the remit of this newsletter.
 
 Installation
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 #. Copy the files in the electron directory to c:\Virtel\Ftp.
 #. Issue the command NPM INSTALL to created the Node JS/Electron environment.
