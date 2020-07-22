@@ -564,7 +564,7 @@ information. Some of those component can be removed, added or modified.</p>
 <p><em>Example custom.css for coloring the Tool Bar according to CICS region</em></p>
 <p><img alt="image3" src="../../../_images/image339.png" />
 <em>Web Access screen with yellow Tool Bar for SPCICSP</em></p>
-<p><img alt="image4" src="../../../_images/image437.png" />
+<p><img alt="image4" src="../../../_images/image438.png" />
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
@@ -854,7 +854,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 </pre></div>
 </div>
 <p><em>Example custom.css for adding custom text to the Tool Bar</em></p>
-<p><img alt="image5" src="../../../_images/image535.png" />
+<p><img alt="image5" src="../../../_images/image536.png" />
 <em>Web Access screen with custom text in the Tool Bar</em></p>
 </div>
 <div class="section" id="adding-transaction-application-name-to-the-tool-bar">
@@ -1274,7 +1274,7 @@ EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 </div>
 <p><em>Example of a batch job to pass the work station name</em></p>
 <p>The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:</p>
-<p><img alt="image10" src="../../../_images/image1020.png" /></p>
+<p><img alt="image10" src="../../../_images/image1024.png" /></p>
 <p>When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.</p>
 <p><img alt="image11" src="../../../_images/image1128.png" /></p>
 <p>The Virtel RULE has forced an LU name prefixed EHPMA00* to be used from the the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated. In the VTAM display we can see that a session has been set up using that LU name:</p>
@@ -1336,7 +1336,7 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <li>Transactions must specify $LINE$ in the “Pseudo-terminals” field.</li>
 </ul>
 <p>Line definition</p>
-<p><img alt="image12" src="../../../_images/image1221.png" /></p>
+<p><img alt="image12" src="../../../_images/image1222.png" /></p>
 <p><em>Pool definition for non-predefined LU Names</em></p>
 <p><img alt="image13" src="../../../_images/image1319.png" /></p>
 <p><em>Transaction definition</em></p>
@@ -1345,7 +1345,7 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <p class="first admonition-title">Note</p>
 <p class="last">Note that the Pseudo-Terminal is defined as $LINE$. We have also assign a printer definition to this set-up. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for DYNPOOL,but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.</p>
 </div>
-<p><img alt="image15" src="../../../_images/image1514.png" /></p>
+<p><img alt="image15" src="../../../_images/image1515.png" /></p>
 </div>
 <div class="section" id="lu-nailing-using-a-cookie-correspondent-sub-application">
 <span id="index-59"></span><h3>Lu Nailing using a cookie (Correspondent Sub Application)<a class="headerlink" href="#lu-nailing-using-a-cookie-correspondent-sub-application" title="Permalink to this headline">¶</a></h3>
@@ -1594,7 +1594,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <span id="index-75"></span><h4>Closing the browser window automatically<a class="headerlink" href="#closing-the-browser-window-automatically" title="Permalink to this headline">¶</a></h4>
 <p>Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.</p>
 <p>The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:</p>
-<p><img alt="image32" src="../../../_images/image3215.png" /></p>
+<p><img alt="image32" src="../../../_images/image3216.png" /></p>
 <p><em>Example of entry point with last page</em></p>
 </div>
 </div>
@@ -1834,7 +1834,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p><img alt="image42" src="../../../_images/image4212.png" /></p>
 <p><em>Creating a MACROS.JSON file</em></p>
 <p>Saved the macro with the name SDSF. Now, press the Green ICON. The macro should appear in the local list and would have been saved to local browser storage. To run the macro press the green arrow to the left of the macro name SDSF.</p>
-<p><img alt="image43" src="../../../_images/image438.png" /></p>
+<p><img alt="image43" src="../../../_images/image439.png" /></p>
 <p>Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we have just created.</p>
 </div>
 <div class="section" id="uploading-macros-to-the-centralized-repository">
@@ -2009,7 +2009,7 @@ CTRL R</p>
 </div>
 <p>If every has been configured correctly you should get a “GREEN” light.</p>
 </div></blockquote>
-<p><img alt="image53" src="../../../_images/image536.png" /></p>
+<p><img alt="image53" src="../../../_images/image537.png" /></p>
 <p><em>Example of a Sanity Check after setting up USERPARM</em></p>
 <div class="section" id="testing-the-userparm-feature">
 <span id="index-99"></span><h4>Testing the USERPARM feature<a class="headerlink" href="#testing-the-userparm-feature" title="Permalink to this headline">¶</a></h4>
@@ -2493,7 +2493,7 @@ obtained.</p>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
 <p><img alt="image22" src="../../../_images/image2219.png" /></p>
 <p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifes that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certifcate.</p>
-<p><img alt="image23" src="../../../_images/image2312.png" /></p>
+<p><img alt="image23" src="../../../_images/image2313.png" /></p>
 <p>We select Advanced and are then presented with information about the certificate.</p>
 <p><img alt="image24" src="../../../_images/image2410.png" /></p>
 <p>We select the “Proceed” link.</p>

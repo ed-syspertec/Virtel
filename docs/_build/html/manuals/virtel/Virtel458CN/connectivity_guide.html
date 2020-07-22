@@ -324,7 +324,7 @@ their respective owners.</p>
 <div class="section" id="entry-point-element">
 <h4>Entry Point Element<a class="headerlink" href="#entry-point-element" title="Permalink to this headline">¶</a></h4>
 <p>The Entry point element is associated with a group of transactions. Transactions are the interface to external components like VTAM applications (CICS, TSO, IMS etc.) or external servers. Transactions are also used to define internal Virtel tasks and configuration elements like directory entries, upload programs, menu programs, signon programs. A line can be associated with any entry point defined within the configuration. Every line must have a default entry point. Virtel Rule definitions can be used to assign a different Entry point to a call in request based upon a range of criteria - incoming IP Address, Work Station Name, Userid etc.</p>
-<p><img alt="image71" src="../../../_images/image7110.png" />
+<p><img alt="image71" src="../../../_images/image7111.png" />
 <em>Entry Point Definition</em></p>
 <p>It can also defined with the Arbo Configuration statements:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span>                                      <span class="o">-</span>
@@ -573,7 +573,7 @@ invoked from the Configuration Menu, gives access to all of the sub-applications
 <div class="section" id="configuration-menu">
 <span id="index-1"></span><h4>Configuration Menu<a class="headerlink" href="#configuration-menu" title="Permalink to this headline">¶</a></h4>
 <p>The configuration Menu presents a list of sub applications which can be invoked to manage various Virtel entities such as lines, terminals, entry points etc.</p>
-<p><a class="reference internal" href="../../../_images/image238.png"><img alt="image2" src="../../../_images/image238.png" style="width: 6.49562in; height: 4.01500in;" /></a>
+<p><a class="reference internal" href="../../../_images/image239.png"><img alt="image2" src="../../../_images/image239.png" style="width: 6.49562in; height: 4.01500in;" /></a>
 <em>Configuration Menu</em></p>
 <p>To invoke a sub-application, press one of the function keys shown in the menu (for example, F1 – Lines). To exit from the Configuration Menu and return to the Multi-Session menu, press CLEAR.</p>
 <p>From within the configuration Menu a further set of sub-applications can be accessible by pressing [PA2]</p>
@@ -622,7 +622,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 <div class="section" id="summary-display">
 <span id="index-6"></span><h4>Summary Display<a class="headerlink" href="#summary-display" title="Permalink to this headline">¶</a></h4>
 <p>The first screen shows a summay of existing line definitions in alphanumeric order:</p>
-<p><img alt="image4" src="../../../_images/image429.png" />
+<p><img alt="image4" src="../../../_images/image430.png" />
 <em>Line Summary Display</em></p>
 <div class="section" id="navigation">
 <h5>Navigation<a class="headerlink" href="#navigation" title="Permalink to this headline">¶</a></h5>
@@ -652,7 +652,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 <div class="section" id="detail-display">
 <span id="index-7"></span><h4>Detail Display<a class="headerlink" href="#detail-display" title="Permalink to this headline">¶</a></h4>
 <p>The Line detail display is accessed from the Line summary screen via PF12(EDIT) on a selected line identified by the cursor position. The screen shows a line detail display.</p>
-<p><img alt="image5" src="../../../_images/image526.png" />
+<p><img alt="image5" src="../../../_images/image527.png" />
 <em>Line Detail Display</em></p>
 <div class="section" id="id1">
 <h5>Navigation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
@@ -994,11 +994,11 @@ server.</p>
 terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the terminal name is an internal name used only within VIRTEL, while the relay name is an LU name defined by a VTAM APPL statement. The relay LU name is the name by which the terminal is known to CICS or other VTAM applications.</p>
 <p><img alt="image7" src="../../../_images/image725.png" />
 <em>Terminals associated with an HTTP line</em></p>
-<p><img alt="image8" src="../../../_images/image820.png" />
+<p><img alt="image8" src="../../../_images/image823.png" />
 <em>HTTP terminals without relay</em></p>
-<p><img alt="image9" src="../../../_images/image918.png" />
+<p><img alt="image9" src="../../../_images/image919.png" />
 <em>HTTP terminals with relay</em></p>
-<p><img alt="image10" src="../../../_images/image1016.png" />
+<p><img alt="image10" src="../../../_images/image1017.png" />
 <em>logical pool of relays for HTTP</em></p>
 <p><img alt="image11" src="../../../_images/image1122.png" />
 <em>Associated printer relays for HTTP</em></p>
@@ -1064,7 +1064,7 @@ terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the termina
 <span id="v458cn-httpoutbound"></span><span id="index-15"></span><h3>HTTP Outbound line<a class="headerlink" href="#http-outbound-line" title="Permalink to this headline">¶</a></h3>
 <p>An HTTP Outbound line allows VIRTEL to act as an HTTP requester. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT.</p>
 <p>By means of the OPTION$ FOR-HTTP and SEND$ TO-LINE instructions, a VIRTEL scenario can make requests to the remote HTTP server whose address is specified in the HTTP Outbound line definition. Multiple HTTP Outbound lines may be defined to allow requests to be sent to different HTTP servers. Refer to “VIRTEL Web Modernisation Scenarios” in the VIRTEL Web Access Guide for examples of the OPTION$ FOR-HTTP instruction. The $SITE$ defines the IP address of the outbound server. It is passed via a sceanrio. See the OPTION$ FOR-HTTP scenario instruction.</p>
-<p><img alt="image15" src="../../../_images/image1511.png" />
+<p><img alt="image15" src="../../../_images/image1512.png" />
 <em>Definition of an HTTP Outbound line</em></p>
 <div class="section" id="index-16">
 <span id="id2"></span><h4>Parameters<a class="headerlink" href="#index-16" title="Permalink to this headline">¶</a></h4>
@@ -1666,7 +1666,7 @@ This is a 32-bit unsigned binary number in big-endian format
 <blockquote>
 <div>A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type of
 line” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.</div></blockquote>
-<p><img alt="image32" src="../../../_images/image3212.png" />
+<p><img alt="image32" src="../../../_images/image3213.png" />
 <em>Terminals on a VIRPASS TCP line for VIRKIX</em></p>
 </div>
 </div>
@@ -1869,7 +1869,7 @@ address.</p>
 <span id="id23"></span><h4>Terminal Definitions<a class="headerlink" href="#index-53" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div>Press [PF4] at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.</div></blockquote>
-<p><img alt="image23" src="../../../_images/image239.png" /></p>
+<p><img alt="image23" src="../../../_images/image2310.png" /></p>
 <p><em>Definition of terminals associated with an XOT line</em></p>
 <dl class="docutils">
 <dt>Terminal</dt>
@@ -2504,7 +2504,7 @@ application name. This makes the link with an external server whose name is iden
 <p>The example below shows the definition of an AntiPCNE terminal for outbound calls made using LU name AP1LU01O, and the associated external server containing the X25 call parameters:</p>
 <p><img alt="image51" src="../../../_images/image5111.png" />
 <em>Outbound Terminal Definition for X25 AntiPCNE</em></p>
-<p><img alt="image52" src="../../../_images/image527.png" />
+<p><img alt="image52" src="../../../_images/image528.png" />
 <em>External server definition for X25 AntiPCNE</em></p>
 <p>The second sub-group is used for incoming calls (from the point of view of the application). In this sub-group, the “Possible calls” field is set to 2. Either explicit or repeated terminal definitions may be used for this second sub-group, and no entry point is necessary. Each terminal in the second sub-group can be used for calls originating from any remote partner. This method is suitable for applications such as CFT which do not verify the LU name for incoming calls.</p>
 <p><img alt="image53" src="../../../_images/image533.png" />
@@ -3034,7 +3034,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 <div class="section" id="index-108">
 <span id="id58"></span><h4>Detail Display<a class="headerlink" href="#index-108" title="Permalink to this headline">¶</a></h4>
 <p>To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press [PF12].</p>
-<p><img alt="image61" src="../../../_images/image6112.png" />
+<p><img alt="image61" src="../../../_images/image6113.png" />
 <em>Entry point detail display</em></p>
 </div>
 <div class="section" id="index-109">
@@ -4293,7 +4293,7 @@ data parameter. Here is an example:-</p>
 </pre></div>
 </div>
 <p>The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:-</p>
-<p><a class="reference internal" href="../../../_images/image919.png"><img alt="image91" src="../../../_images/image919.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image9110.png"><img alt="image91" src="../../../_images/image9110.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
 <p><em>Passing User Data to Virtel</em></p>
 <p>When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.</p>
 <p><a class="reference internal" href="../../../_images/image923.png"><img alt="image92" src="../../../_images/image923.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
@@ -4335,7 +4335,7 @@ NETMASK=255.255.255.255
 </ul>
 <p>The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.</p>
 <p>In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:</p>
-<p><img alt="image12" src="../../../_images/image1218.png" />
+<p><img alt="image12" src="../../../_images/image1219.png" />
 <em>Transaction definition using non-predefined LU names</em></p>
 <p>The definition of line C-HTTP on port 41002 specifies *MYPOOL as the line pool name:</p>
 <p><img alt="image13" src="../../../_images/image1316.png" />
@@ -4694,7 +4694,7 @@ Server: Virtel/4.53
 <div class="section" id="adding-headers-to-the-http-request">
 <span id="index-164"></span><h3>Adding headers to the HTTP request<a class="headerlink" href="#adding-headers-to-the-http-request" title="Permalink to this headline">¶</a></h3>
 <p>Access the CICS application using FireFox. Use the FireFox “AddIn” Modify Headers to add the headers to the HTTP request. After adding the headers you will need to “START” the addIn to get the headers added.</p>
-<p><img alt="image101" src="../../../_images/image1017.png" /> <em>Using the Firefox “Modify Headers” addin.</em></p>
+<p><img alt="image101" src="../../../_images/image1018.png" /> <em>Using the Firefox “Modify Headers” addin.</em></p>
 <p>When access the CICS system make sure the “Modify Headers” has started. The ICON should be red.</p>
 <p><img alt="image102" src="../../../_images/image1022.png" /></p>
 <p><em>Modify Header active - red ICON</em></p>
@@ -4758,7 +4758,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 </div>
 <p>The name in IRRPTAUTH.passTicketName.* profile must match the name in the Virtel Transaction definition. The PassTicket Name is the name of the application as known to RACF for the generation of Passtickets. This may be different to the VTAM application name.</p>
 <p>Finally, define a PTKTDATA profile entry that matches the Virtel Transaction <strong>APPLICATION</strong> name. In this case it is SPCICSH. Virtel passes this APPLNAME to RACF via a RACROUTE REQUEST=VERIFY.</p>
-<p><img alt="image111" src="../../../_images/image11111.png" /> <em>Setting the Pass Ticket name in the Virtel transaction.</em></p>
+<p><img alt="image111" src="../../../_images/image11112.png" /> <em>Setting the Pass Ticket name in the Virtel transaction.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">SPCICSH</span> <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="o">+</span>
 <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 </pre></div>

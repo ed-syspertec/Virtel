@@ -329,7 +329,7 @@ their respective owners.</p>
 <div class="section" id="entry-point-element">
 <h4>Entry Point Element<a class="headerlink" href="#entry-point-element" title="Permalink to this headline">¶</a></h4>
 <p>The Entry point element is associated with a group of transactions. Transactions are the interface to external components like VTAM applications (CICS, TSO, IMS etc.) or external servers. Transactions are also used to define internal Virtel tasks and configuration elements like directory entries, upload programs, menu programs, signon programs. A line can be associated with any entry point defined within the configuration. Every line must have a default entry point. Virtel Rule definitions can be used to assign a different Entry point to a call in request based upon a range of criteria - incoming IP Address, Work Station Name, Userid etc.</p>
-<p><img alt="image71" src="../../../_images/image7112.png" />
+<p><img alt="image71" src="../../../_images/image7113.png" />
 <em>Entry Point Definition</em></p>
 <p>It can also defined with the Arbo Configuration statements:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ENTRY</span> <span class="n">ID</span><span class="o">=</span><span class="n">CLIWHOST</span><span class="p">,</span>                                      <span class="o">-</span>
@@ -627,7 +627,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 <div class="section" id="summary-display">
 <span id="index-6"></span><h4>Summary Display<a class="headerlink" href="#summary-display" title="Permalink to this headline">¶</a></h4>
 <p>The first screen shows a summay of existing line definitions in alphanumeric order:</p>
-<p><img alt="image4" src="../../../_images/image435.png" />
+<p><img alt="image4" src="../../../_images/image436.png" />
 <em>Line Summary Display</em></p>
 <div class="section" id="navigation">
 <h5>Navigation<a class="headerlink" href="#navigation" title="Permalink to this headline">¶</a></h5>
@@ -657,7 +657,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 <div class="section" id="detail-display">
 <span id="index-7"></span><h4>Detail Display<a class="headerlink" href="#detail-display" title="Permalink to this headline">¶</a></h4>
 <p>The Line detail display is accessed from the Line summary screen via PF12(EDIT) on a selected line identified by the cursor position. The screen shows a line detail display.</p>
-<p><img alt="image5" src="../../../_images/image530.png" />
+<p><img alt="image5" src="../../../_images/image534.png" />
 <em>Line Detail Display</em></p>
 <div class="section" id="id1">
 <h5>Navigation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
@@ -999,11 +999,11 @@ server.</p>
 terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the terminal name is an internal name used only within VIRTEL, while the relay name is an LU name defined by a VTAM APPL statement. The relay LU name is the name by which the terminal is known to CICS or other VTAM applications.</p>
 <p><img alt="image7" src="../../../_images/image729.png" />
 <em>Terminals associated with an HTTP line</em></p>
-<p><img alt="image8" src="../../../_images/image825.png" />
+<p><img alt="image8" src="../../../_images/image826.png" />
 <em>HTTP terminals without relay</em></p>
 <p><img alt="image9" src="../../../_images/image925.png" />
 <em>HTTP terminals with relay</em></p>
-<p><img alt="image10" src="../../../_images/image1019.png" />
+<p><img alt="image10" src="../../../_images/image1020.png" />
 <em>logical pool of relays for HTTP</em></p>
 <p><img alt="image11" src="../../../_images/image1126.png" />
 <em>Associated printer relays for HTTP</em></p>
@@ -1069,7 +1069,7 @@ terminal names W2HIP000-079 and LU names REHIP000-079. In each case, the termina
 <span id="v459cn-httpoutbound"></span><span id="index-15"></span><h3>HTTP Outbound line<a class="headerlink" href="#http-outbound-line" title="Permalink to this headline">¶</a></h3>
 <p>An HTTP Outbound line allows VIRTEL to act as an HTTP requester. Activation of this type of line is subject to the presence of the TCP1 parameter in the VIRTCT.</p>
 <p>By means of the OPTION$ FOR-HTTP and SEND$ TO-LINE instructions, a VIRTEL scenario can make requests to the remote HTTP server whose address is specified in the HTTP Outbound line definition. Multiple HTTP Outbound lines may be defined to allow requests to be sent to different HTTP servers. Refer to “VIRTEL Web Modernisation Scenarios” in the VIRTEL Web Access Guide for examples of the OPTION$ FOR-HTTP instruction. The $SITE$ defines the IP address of the outbound server. It is passed via a sceanrio. See the OPTION$ FOR-HTTP scenario instruction.</p>
-<p><img alt="image15" src="../../../_images/image1513.png" />
+<p><img alt="image15" src="../../../_images/image1514.png" />
 <em>Definition of an HTTP Outbound line</em></p>
 <div class="section" id="index-16">
 <span id="id2"></span><h4>Parameters<a class="headerlink" href="#index-16" title="Permalink to this headline">¶</a></h4>
@@ -1671,7 +1671,7 @@ This is a 32-bit unsigned binary number in big-endian format
 <blockquote>
 <div>A VIRPASS TCP line for communication with VIRKIX uses a single sub-group of terminals dedicated to outgoing calls. Either explicit or repeated definitions can be used. The terminals are defined as type 3, compression 2, and the “Possible calls” field must be set to 2. The “Relay” field in the terminal definition must contain the name of the VIRKIX relay which will be activated at connection time. In the case of incoming X25 calls this relay is defined in the VIRKIX menu “Interface X25” – “Appels X25 entrant”. The “Type of
 line” field in the relay definition must contain the value X25VIRPA (or E25TCPIP in previous versions of VIRKIX). Unlike other terminal types, the relay name specified here is not the name of a VTAM LU.</div></blockquote>
-<p><img alt="image32" src="../../../_images/image3214.png" />
+<p><img alt="image32" src="../../../_images/image3215.png" />
 <em>Terminals on a VIRPASS TCP line for VIRKIX</em></p>
 </div>
 </div>
@@ -1874,7 +1874,7 @@ address.</p>
 <span id="id23"></span><h4>Terminal Definitions<a class="headerlink" href="#index-53" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div>Press [PF4] at the line definition screen to display the list of terminals associated with an XOT line. An XOT line uses a single sub-group of type-3 terminals having a common prefix (XOTF in this example). Each terminal may be associated with an application relay defined by a VTAM APPL statement. The number of terminals defined determines the maximum number of simultaneous sessions (or virtual circuits) between the router and VIRTEL.</div></blockquote>
-<p><img alt="image23" src="../../../_images/image2311.png" /></p>
+<p><img alt="image23" src="../../../_images/image2312.png" /></p>
 <p><em>Definition of terminals associated with an XOT line</em></p>
 <dl class="docutils">
 <dt>Terminal</dt>
@@ -2045,7 +2045,7 @@ identical to the virtual circuit LU names generated by NPSI.</dd>
 <p>From VIRTEL version 4.15 onwards, TRAN must be blank if TRAN=EVEN is specified in the NPSI definition.</p>
 <p>An X25 GATE Non Fast-Connect line uses a single sub-group of terminals dedicated to the management of sessions between VIRTEL and the switched virtual circuits on the one hand, and between VIRTEL and the host applications on the other hand. Each terminal is associated with an application relay defined by a VTAM APPL statement.</p>
 <p>The relay name is compulsory for this type of terminal.</p>
-<p><img alt="image43" src="../../../_images/image436.png" /></p>
+<p><img alt="image43" src="../../../_images/image437.png" /></p>
 </div>
 <div class="section" id="index-63">
 <span id="id29"></span><h4>Terminal Definitions<a class="headerlink" href="#index-63" title="Permalink to this headline">¶</a></h4>
@@ -2512,7 +2512,7 @@ application name. This makes the link with an external server whose name is iden
 <p><img alt="image52" src="../../../_images/image5210.png" />
 <em>External server definition for X25 AntiPCNE</em></p>
 <p>The second sub-group is used for incoming calls (from the point of view of the application). In this sub-group, the “Possible calls” field is set to 2. Either explicit or repeated terminal definitions may be used for this second sub-group, and no entry point is necessary. Each terminal in the second sub-group can be used for calls originating from any remote partner. This method is suitable for applications such as CFT which do not verify the LU name for incoming calls.</p>
-<p><img alt="image53" src="../../../_images/image534.png" />
+<p><img alt="image53" src="../../../_images/image535.png" />
 <em>Inbound terminal definition for X25 AntiPCNE (method 1)</em></p>
 <p>A second method of defining AntiPCNE terminals allows the administrator to specify the selection of an LU name according to the characteristics of the incoming call. This method is suitable for applications such as Inter.PEL which require incoming calls to arrive on specific LU names according to the identity of the partner which originated the call. In this case, the terminals in the second sub-group specify the name of a logical pool instead of a relay LU name (see <a class="reference internal" href="#v459cn-logicalpool"><span class="std std-ref">“logical pool of relays”</span></a>). The terminals in the logical pool contain the relay LU’s. The selection of an LU is done by means of the rule which routes the incoming call, by specifying the required LU name in the “Parameter” field of the rule. Note that the rules which route incoming calls are those attached to the line on which the call arrives (for example, an XOT line) and not those attached to the AntiPCNE line.</p>
 <p>The example below shows the definition of a set of inbound terminals (PCN1TM51-54) attached to an AntiPCNE line. These terminals, which are defined using the repeated method, all refer to a logical pool *POOLPCN. Terminal Definitions PCNETM51-54 are explicitly defined and constitute the logical pool. The relay names AP30LU51-54 are defined in the logical pool. A set of rules attached to the XOT line on which incoming calls arrive assigns an LU from the pool to each incoming call according to the contents of the CUD0 field in the incoming call packet.</p>
@@ -3039,7 +3039,7 @@ rules attached to the incoming line (X25 GATE, FASTC, XOT) and not by the rules 
 <div class="section" id="index-108">
 <span id="id58"></span><h4>Detail Display<a class="headerlink" href="#index-108" title="Permalink to this headline">¶</a></h4>
 <p>To display the details of an entry point, position the cursor on the desired entry point in the summary screen and press [PF12].</p>
-<p><img alt="image61" src="../../../_images/image6114.png" />
+<p><img alt="image61" src="../../../_images/image6115.png" />
 <em>Entry point detail display</em></p>
 </div>
 <div class="section" id="index-109">
@@ -4298,7 +4298,7 @@ data parameter. Here is an example:-</p>
 </pre></div>
 </div>
 <p>The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:-</p>
-<p><a class="reference internal" href="../../../_images/image9111.png"><img alt="image91" src="../../../_images/image9111.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image9112.png"><img alt="image91" src="../../../_images/image9112.png" style="width: 5.16667in; height: 3.98405in;" /></a></p>
 <p><em>Passing User Data to Virtel</em></p>
 <p>When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.</p>
 <p><a class="reference internal" href="../../../_images/image926.png"><img alt="image92" src="../../../_images/image926.png" style="width: 5.16667in; height: 3.93654in;" /></a></p>
@@ -4340,7 +4340,7 @@ NETMASK=255.255.255.255
 </ul>
 <p>The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.</p>
 <p>In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:</p>
-<p><img alt="image12" src="../../../_images/image1220.png" />
+<p><img alt="image12" src="../../../_images/image1221.png" />
 <em>Transaction definition using non-predefined LU names</em></p>
 <p>The definition of line C-HTTP on port 41002 specifies *MYPOOL as the line pool name:</p>
 <p><img alt="image13" src="../../../_images/image1318.png" />
@@ -4763,7 +4763,7 @@ PTKTDATA profile_name              * APPLNAME used by RACROUTE REQUEST=VERIFY *
 </div>
 <p>The name in IRRPTAUTH.passTicketName.* profile must match the name in the Virtel Transaction definition. The PassTicket Name is the name of the application as known to RACF for the generation of Passtickets. This may be different to the VTAM application name.</p>
 <p>Finally, define a PTKTDATA profile entry that matches the Virtel Transaction <strong>APPLICATION</strong> name. In this case it is SPCICSH. Virtel passes this APPLNAME to RACF via a RACROUTE REQUEST=VERIFY.</p>
-<p><img alt="image111" src="../../../_images/image11113.png" /> <em>Setting the Pass Ticket name in the Virtel transaction.</em></p>
+<p><img alt="image111" src="../../../_images/image11114.png" /> <em>Setting the Pass Ticket name in the Virtel transaction.</em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RDEFINE</span> <span class="n">PTKTDATA</span> <span class="n">SPCICSH</span> <span class="n">SSIGNON</span><span class="p">(</span><span class="n">KEYMASKED</span><span class="p">(</span><span class="mi">998</span><span class="n">A654FEBCDA123</span><span class="p">))</span> <span class="o">+</span>
 <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>
 </pre></div>
