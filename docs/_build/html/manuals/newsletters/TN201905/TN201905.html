@@ -36,7 +36,7 @@
     
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Converting a VBA macro" href="../TN202001/TN202001.html" />
+    <link rel="next" title="Integrating DB2 and Virtel" href="../TN201906/TN201906.html" />
     <link rel="prev" title="Using VBA Macros with Virtel" href="../TN201904/TN201904.html" /> 
 </head>
 
@@ -113,6 +113,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#appendix-c">Appendix C</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../TN201906/TN201906.html">Integrating DB2 and Virtel</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
@@ -242,7 +243,7 @@ Add the following Virtel transactions: -</p>
 </pre></div>
 </div>
 <p>The new transactions will provide the support for the FTP feature. The external/internal is FTPPARM</p>
-<p><a class="reference internal" href="../../../_images/image149.png"><img alt="image1" src="../../../_images/image149.png" style="width: 16.0cm; height: 9.5cm;" /></a>
+<p><a class="reference internal" href="../../../_images/image150.png"><img alt="image1" src="../../../_images/image150.png" style="width: 16.0cm; height: 9.5cm;" /></a>
 <em>FTP transaction definition for FTP file transfer</em></p>
 <p>The FTPPARM scenario, FTPPARM.390, should be loaded up into the SCE directory. It is a part of the UPDT5799 update.</p>
 <div class="section" id="defining-the-ftp-templates">
@@ -307,7 +308,7 @@ FTPLIST[1] = alink;
 <div class="section" id="activate-the-toolbar-icons-for-file-transfer">
 <h3>Activate the Toolbar icons for file transfer<a class="headerlink" href="#activate-the-toolbar-icons-for-file-transfer" title="Permalink to this headline">¶</a></h3>
 <p>A new icon for FTP parameter generation can be displayed on the VIRTEL Web Access toolbar via a setting in the user parameter settings dialog. When the settings Option “Show the toggle button for VirtelFtp” is checked, a blue FTP icon will appear, as shown below:</p>
-<p><img alt="image2" src="../../../_images/image230.png" />
+<p><img alt="image2" src="../../../_images/image232.png" />
 <em>VIRTEL Web Access toolbar for FTP file transfer</em></p>
 </div>
 <div class="section" id="installing-the-bat-files-shortcut-and-ancillary-programs">
@@ -316,7 +317,7 @@ FTPLIST[1] = alink;
 <div class="section" id="set-up-a-shortcut-on-your-desktop">
 <h4>Set up a shortcut on your desktop<a class="headerlink" href="#set-up-a-shortcut-on-your-desktop" title="Permalink to this headline">¶</a></h4>
 <p>For ease of operation set up a shortcut on your directory, pointing to the .bat file in c:virtelftp. Once the FTP parameters have been built by Virtel FTP, clicking this shortcut will invoke the FTP file transfer.</p>
-<p><img alt="image3" src="../../../_images/image327.png" /></p>
+<p><img alt="image3" src="../../../_images/image328.png" /></p>
 <p><em>Example of the desktop shortcut</em></p>
 </div>
 </div>
@@ -326,7 +327,7 @@ FTPLIST[1] = alink;
 <div class="section" id="sending-a-file">
 <h3>Sending a file<a class="headerlink" href="#sending-a-file" title="Permalink to this headline">¶</a></h3>
 <p>To send a file from your workstation to a target FTP site, click the FTP icon on the Virtel toolbar. The -VIRTEL FTP- dialog will open:</p>
-<p><img alt="image4" src="../../../_images/image422.png" />
+<p><img alt="image4" src="../../../_images/image423.png" />
 <em>VIRTEL FTP dialog (part 1)</em></p>
 <ol class="arabic simple">
 <li>Select –Send ip Target– in the action list box.</li>
@@ -346,7 +347,7 @@ FTPLIST[1] = alink;
 <li>Finally click -Build- to generate the FTP parameter file.</li>
 </ol>
 <p>When the Generate Parameter is complete, the browser’s <em>VIRTEL FTP Save Parameter</em> dialog appears:</p>
-<p><img alt="image5" src="../../../_images/image516.png" /></p>
+<p><img alt="image5" src="../../../_images/image517.png" /></p>
 <p><em>VIRTEL FTP receive dialog (part 2)</em></p>
 <p>Click <strong>Save</strong>. The <em>Save As</em> dialog will open to allow you to specify the name and location of the destination file on your workstation:</p>
 <p><img alt="image6" src="../../../_images/image616.png" /></p>
@@ -472,7 +473,7 @@ rem del %HOMEDRIVE%%HomePath%\Downloads\FTPPARAM.txt
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../TN202001/TN202001.html" class="btn btn-neutral float-right" title="Converting a VBA macro" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../TN201906/TN201906.html" class="btn btn-neutral float-right" title="Integrating DB2 and Virtel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../TN201904/TN201904.html" class="btn btn-neutral float-left" title="Using VBA Macros with Virtel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

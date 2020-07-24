@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Customising Virtel V4.59 from scratch &mdash; Virtel 7 documentation</title>
+  <title>Customizing Virtel V4.59 from scratch &mdash; Virtel 7 documentation</title>
   
 
   
@@ -100,7 +100,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../newsletters.html#id7">2020</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../TN202001/TN202001.html">Converting a VBA macro</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Customising Virtel V4.59 from scratch</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Customizing Virtel V4.59 from scratch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customization">Customization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#userparm-feature">USERPARM feature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-for-centralized-macros-and-ddi">Setting up for Centralized macros and DDI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-https-and-setting-up-a-secure-link">Using HTTPS and setting up a secure link</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-a">Appendix A</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-b">Appendix B</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#appendix-c">Appendix C</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -153,7 +163,7 @@
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
-      <li>Customising Virtel V4.59 from scratch</li>
+      <li>Customizing Virtel V4.59 from scratch</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -172,9 +182,1460 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="customising-virtel-v4-59-from-scratch">
-<span id="tn202002"></span><h1>Customising Virtel V4.59 from scratch<a class="headerlink" href="#customising-virtel-v4-59-from-scratch" title="Permalink to this headline">¶</a></h1>
-<p>TBD</p>
+  <div class="section" id="customizing-virtel-v4-59-from-scratch">
+<span id="tn202002"></span><h1>Customizing Virtel V4.59 from scratch<a class="headerlink" href="#customizing-virtel-v4-59-from-scratch" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In this newsletter we discuss the various customization options and features that can be applied to Virtel following a clean installation.</p>
+</div>
+<div class="section" id="customization">
+<h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
+<p>In this section we see how to customize Virtel to use customized parameters and introduce the “option” mode. We show how to set up some “global” parameter settings which will override the Virtel internal defaults. Customization comes in the form of setting user options, introducing user CSS style sheets and executing user Javascript scripts.</p>
+<p>With regard to customization, Virtel supports three modes of operation: -</p>
+<blockquote>
+<div><ul class="simple">
+<li>Default mode:      Delivered mode of operation</li>
+<li>Option mode:       Recommended mode of operation. V4.56 upwards.</li>
+<li>Compatibility mode:  To provide “backward” compatibility for older versions of Virtel (V4.56 and less).</li>
+</ul>
+</div></blockquote>
+<div class="section" id="compatibility-mode">
+<h3>Compatibility Mode<a class="headerlink" href="#compatibility-mode" title="Permalink to this headline">¶</a></h3>
+<p>From Virtel V.56 onwards, compatibility mode is enforced through the following statement in the TCT:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">HTSET1</span><span class="o">=</span><span class="p">(</span><span class="n">OPTION</span><span class="o">-</span><span class="n">DEFAULT</span><span class="o">-</span><span class="n">COMPATIBILITY</span><span class="p">),</span>                  <span class="o">*</span>
+</pre></div>
+</div>
+<p>Compatibility mode changes the search order Virtel uses when locating customized parameters, CSS, JavaScript and Help elements. Compatibility mode is used to support older versions of Virtel and also provides backward level support when migrating to new versions of Virtel. It is recommended that “compatibility” users migrate to the “Option” mode to take advantage of new Virtel features.</p>
+</div>
+<div class="section" id="default-mode">
+<h3>Default Mode<a class="headerlink" href="#default-mode" title="Permalink to this headline">¶</a></h3>
+<p>The default mode is running Virtel without implementing “compatibility” or “option” mode. Changes are directly made to the default entities (parameter objects, CSS styles and JavaScript scripts) and without modifying the default search orders.</p>
+</div>
+<div class="section" id="option-mode">
+<h3>Option Mode<a class="headerlink" href="#option-mode" title="Permalink to this headline">¶</a></h3>
+<p>Option mode provides a comprehensive customization solution which provides the ability to customized down to transaction level. Default and Compatibility only provide customization at the Entry Point level.</p>
+</div>
+<div class="section" id="what-can-be-customized">
+<h3>What can be customized<a class="headerlink" href="#what-can-be-customized" title="Permalink to this headline">¶</a></h3>
+<p>There are several HTML entities that can be customized to provide features and functions that are site specific. For example, company logos in some of the presentation templates, customized ICONS on the Virtel tool bar that can launched bespoke JavaScript procedure and user Fonts and display styles. These and many more options can be set through customized JavaScript, Virtel Parameters, Cascading Style Sheets (CSS) and Help templates.</p>
+</div>
+<div class="section" id="default-ports">
+<h3>Default Ports<a class="headerlink" href="#default-ports" title="Permalink to this headline">¶</a></h3>
+<p>As delivered, Virtel defines two access ports, 41001 and 41002. It is important to note that 41001, by default, should only be used for the Administration of Virtel. It should not be used to support customer transactions. Port 41002, and any other port, can be used to support customer transactions. Port 41002 is delivered as a “customized” access point to support customers legacy 3270 applications. For example, CICS, TSO and IMS based applications. Each port is associated with an Entry Point - 41001 uses the Entry Point WEB2HOST and port 41002 uses CLIWHOST.</p>
+</div>
+<div class="section" id="virtel-parameters">
+<h3>Virtel Parameters<a class="headerlink" href="#virtel-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Customisation of Virtel begins with understanding that the defaults are programmatically set by Virtel. These are listed in “Appendix A” of this guide. Most of the Virtel parameter defaults can be overridden by setting attributes within a JavaScript object called w2hParm which resides in a javascript member called w2hparm.js. Users can override the default options by coding a user w2hparm.js. A sample w2hparm.js file can be found in both the delivered CLI-DIR and W2H-DIR directories. The following URLs can be used to show the contents of the default w2hparm.js member.</p>
+<p>For the W2H Administration port (41001) use the following URL  :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>Any example of the default w2hparm.js would look like :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">w2h</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">override</span> <span class="ow">or</span> <span class="n">hide</span><span class="o">.</span>
+<span class="o">//</span>
+<span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sample</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">replaced</span> <span class="n">after</span> <span class="n">a</span> <span class="n">new</span> <span class="n">install</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">possible</span> <span class="n">parameter</span> <span class="n">values</span>
+<span class="o">//</span> <span class="ow">and</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">this</span> <span class="n">file</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span>
+<span class="o">//</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{};</span>      <span class="o">//</span> <span class="o">&lt;===</span> <span class="n">empty</span> <span class="nb">object</span><span class="p">:</span> <span class="n">no</span> <span class="n">overrides</span>
+<span class="o">//</span>
+<span class="o">//</span> <span class="n">sample</span> <span class="n">values</span><span class="p">:</span>
+<span class="o">//</span>  <span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;Droid Sans Mono&quot;</span><span class="p">,</span>
+<span class="o">//</span>  <span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="o">//</span>  <span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="o">//</span>  <span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="o">//</span>  <span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="o">//</span> <span class="n">sample</span><span class="p">:</span>
+<span class="o">//</span> <span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;no&quot;</span><span class="p">,</span><span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">};</span>
+<span class="o">//</span>
+<span class="o">//</span> <span class="n">w2hparm</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">hide</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span> <span class="s2">&quot;home&quot;</span> <span class="ow">and</span> <span class="s2">&quot;shiftins&quot;</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Remove</span> <span class="n">the</span> <span class="o">//</span> <span class="ow">and</span> <span class="n">update</span> <span class="n">the</span> <span class="n">items</span>
+<span class="o">//</span> <span class="n">var</span> <span class="n">w2hparmHide</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;home&quot;</span><span class="p">,</span><span class="s2">&quot;shiftins&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>Here you can see that an empty object is defined with no overriding defaults.  For the customer port, or the CLI User line (41002), use the following URL :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>Here is what we get.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">w2hparm</span> <span class="n">default</span> <span class="n">values</span>
+<span class="o">//</span> <span class="n">see</span> <span class="n">w2hparmdefns</span> <span class="ow">in</span> <span class="n">js01</span><span class="o">.</span><span class="n">js</span> <span class="k">for</span> <span class="n">parameters</span> <span class="ow">and</span> <span class="n">allowable</span> <span class="n">values</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;settingsGUI&quot;</span><span class="p">:{</span><span class="s2">&quot;version&quot;</span><span class="p">:</span><span class="s2">&quot;v2&quot;</span><span class="p">},</span>
+<span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;Droid Sans Mono&quot;</span><span class="p">,</span>
+<span class="s2">&quot;fontsize&quot;</span><span class="p">:</span><span class="s2">&quot;window&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;home&quot;</span><span class="p">:</span><span class="s2">&quot;Home&quot;</span><span class="p">,</span>
+<span class="s2">&quot;end&quot;</span><span class="p">:</span><span class="s2">&quot;ErEof&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftins&quot;</span><span class="p">:</span><span class="s2">&quot;Dup&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shifthome&quot;</span><span class="p">:</span><span class="s2">&quot;FieldMark&quot;</span><span class="p">,</span>
+<span class="s2">&quot;shiftend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlins&quot;</span><span class="p">:</span><span class="s2">&quot;PA1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrldel&quot;</span><span class="p">:</span><span class="s2">&quot;PA2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;ctrlend&quot;</span><span class="p">:</span><span class="s2">&quot;End&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgup&quot;</span><span class="p">:</span><span class="s2">&quot;PF7&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PF8&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pause&quot;</span><span class="p">:</span><span class="s2">&quot;CLEAR&quot;</span><span class="p">,</span>
+<span class="s2">&quot;style&quot;</span><span class="p">:</span><span class="s2">&quot;3270&quot;</span><span class="p">};</span>
+<span class="o">//</span> <span class="n">w2hparm</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">hide</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span> <span class="s2">&quot;home&quot;</span> <span class="ow">and</span> <span class="s2">&quot;shiftins&quot;</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">Remove</span> <span class="n">the</span> <span class="o">//</span> <span class="ow">and</span> <span class="n">update</span> <span class="n">the</span> <span class="n">items</span>
+<span class="o">//</span> <span class="n">var</span> <span class="n">w2hparmHide</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;home&quot;</span><span class="p">,</span><span class="s2">&quot;shiftins&quot;</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>You can see that some of the defaults have been overridden with “customer” options and settings. At this point line 41001 and 41002 both have different w2hparm settings. For line 41001 we have no overrides, and for 41002, we have set some specific customer options. In the following sections we look at this can be altered so that common Virtel parameters can be set globally, or set at a line or port level, or even at a transaction level.</p>
+</div>
+<div class="section" id="defining-the-w2hparm-js-parameter-location">
+<h3>Defining the w2hparm.js parameter location<a class="headerlink" href="#defining-the-w2hparm-js-parameter-location" title="Permalink to this headline">¶</a></h3>
+<p>For any Virtel Entry Point/Port, the location of w2hparm.js file is determined by the transaction <strong>XXX-03P</strong> where <strong>XXX</strong> defines the entry point transaction prefix. As delivered, there are two main entry points, WEB2HOST which has a transaction prefix of W2H, and CLIWHOST with a transaction prefix of CLI. Within these Entry Points we will find the W2H-03P and CLI-03P transactions.</p>
+<p><a class="reference internal" href="../../../_images/image158.png"><img alt="image1" src="../../../_images/image158.png" style="width: 955.0px; height: 517.0px;" /></a>
+<em>Figure 1 -  Example of CLI-03P transaction</em></p>
+<p>CLI-03P defines the location of w2hparm.js within the CLI-DIR, as defined in the Application setting. By default, for the W2H-03P transaction, the w2hparm.js file will be found in the W2H-DIR directory. To use only one copy of the parameter file w2hparm.js, for both CLI and W2H directories, we can modify the Application setting in W2H-03P transaction and set the location as being CLI-DIR. Now there will be one parameter file for both W2H and CLI transactions and that parameter file will be located in the CLI directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">ARBO</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">CONFIG</span>  <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,REPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span>      <span class="n">DD</span> <span class="o">*</span>
+         <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">P</span><span class="p">,</span>
+         <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;w2h&#39;</span><span class="p">,</span>
+         <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Directory for w2hparm.js&#39;</span><span class="p">,</span>
+         <span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>
+         <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+         <span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span><span class="p">,</span>
+         <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+         <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+         <span class="n">LOGMSG</span><span class="o">=</span><span class="s1">&#39;/w2h/w2hparm-js&#39;</span>
+</pre></div>
+</div>
+<p>To run this job, stop Virtel first. Also, after making any changes, refresh the browser cache to pull in any new updates. [CTRL-R or CTRL+SHIFT+DEL]</p>
+<p>After updating the W2H-03P transaction, all W2H transactions and CLI transactions will use the w2hparm settings of the w2hparm.js file located in CLI-DIR. This can be considered the default position with regard to customization. Any future Virtel upgrades or migrations will not affect the customised settings.</p>
+<p>At this point both Ports 41001 and 41002 will be using a common set of Virtel parameters. The default options and those overrides defined in the w2hparm.js file, maintained in the CLI-DIR directory. For some customers this is all that is required from the requirement to have a global set of Virtel Parameters, therefore no further customization is necessary. If a new line and Entry point are added, then the XXX-03P transaction within the new Entry point just needs to refer to CLI-DIR to pick up the global parameters. In the following sections we look how to further expand setting parameters at both the Entry point (“Global”) level and transaction level using the “option” mode.</p>
+</div>
+<div class="section" id="customizing-parameter-options">
+<h3>Customizing parameter options.<a class="headerlink" href="#customizing-parameter-options" title="Permalink to this headline">¶</a></h3>
+<p>The simplest way to customize Virtel is just to modify the default w2hparm.js members in the CLI and W2H directories with user options and upload the modified w2hparm.js file to the relevant directory. This approach, however, has its drawbacks. Firstly you have to maintain separate w2hparm.js entities for each port, and secondly the w2hparm.js in the W2H directory will get overwritten during a migration/update and finally, the w2h parameters cannot be tailored to individual transaction requirements; they are global and apply to all transactions belong to a particular line/entry point.</p>
+<p>Since Virtel V4.56, the “option” mode was introduced to overcome these issues. We have already discussed how we can define one set of parameters and have each line/entry point point to that w2hparm.js member by modifying the XXX-03P transaction. Now we will look at the customization of parameters through the use of the ‘option’ mode.</p>
+</div>
+<div class="section" id="defining-the-option-mode">
+<h3>Defining the “Option” mode<a class="headerlink" href="#defining-the-option-mode" title="Permalink to this headline">¶</a></h3>
+<p>By using “option” mode we can target Virtel entities at an Entry Point level and Transaction level. The “option” mode provides greater flexibility and granularity on the entity values allows us to configuring parameters for specific needs. First, we will look at setting up a “Global” settings environment using Global “Option” mode definitions. The option mode allows us to set options which target :-</p>
+<blockquote>
+<div><ul class="simple">
+<li>All transactions within an Entry point. Global option.</li>
+<li>Specific transactions within an entry point. Transaction option. This merges and/or overrides the global options settings.</li>
+<li>A special option member for the APPLIST transaction.</li>
+</ul>
+</div></blockquote>
+<p>Each option has a supporting Javascript object which contains properties or pointers to bespoke customization entities - CSS style sheets, Javascript scripts, etc. If you are defining the global option settings then these properties are defined within an object called “global-settings” which itself is a property of the w2hparm object. If you are defining a transaction option setting, the settings are defined within an object called oCustom.</p>
+<p>Virtel stores option definitions in the “Option” directory which is defined by the XXX-03CO transaction.</p>
+<p>The following is the list of properties that can be defined. They are always prefixed with the “pathTo” identifier.</p>
+<div class="section" id="global-option-settings-example">
+<h4>Global ‘Option’ Settings Example<a class="headerlink" href="#global-option-settings-example" title="Permalink to this headline">¶</a></h4>
+<p>The following is and example of setting the global-settings path for parameters, JavaScript, CSS and Help templates in the w2hparm.js file. The global-settings object is a property of w2hparm object.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">My</span> <span class="n">Global</span> <span class="n">options</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/w2hparm.global.js&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/custCSS.global.css&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/myHelp.html&quot;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We modify our w2hparm.js file, located in the CLI_DIR directory, to include a “global-settings” object and remove the other parameter overrides. This w2hparm.js file now only defines the path to our global w2hparm overrides. The w2hparm.js file now looks like this :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>As you can see, it has a “global” array which directs us to the /option/ directory. The “option” directory is already predefined as part of the Virtel deliverable. It is defined as transaction CLI-03CO within the CLIWHOST entry point :-</p>
+<p><img alt="image2" src="../../../_images/image235.png" />
+Figure 2 - Option Directory Transaction</p>
+<p>The “option” directory stores related settings within the CLI-DIR which is phyisically associated with the HTMLTRSF VSAM file. We know this because if we list the directories, we can see that HTMLTRSF is the physical DDNAME associated with the Virtel directory CLI-DIR :-</p>
+<p><img alt="image3" src="../../../_images/image331.png" />
+Figure 3 - DDNames associated with Virtel Directories</p>
+<p>We now need to create a global parameters file called w2hparm.global.js. This parameter file will be the equivalent to the our original w2hparm.js file, and will contain the same Virtel parameter overrides.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">w2h</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">override</span> <span class="n">defaults</span><span class="o">.</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;DejaVu Sans Mono&quot;</span><span class="p">,</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>The w2hparm.global.js and w2hparm.js files are both uploaded to the CLI-DIR, the directory associated with the “option” transaction CLI-03CO. Stop and restart Virtel and refresh the cache (CTRL-R) and then check that the new w2hparm.js parameter file is being used on the W2H entry point. As before, use the URL that was used before to display the w2hparm.js file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+
+<span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sample</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">replaced</span> <span class="n">after</span> <span class="n">a</span> <span class="n">new</span> <span class="n">install</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">possible</span> <span class="n">parameter</span> <span class="n">values</span>
+<span class="o">//</span> <span class="ow">and</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">this</span> <span class="n">file</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span>
+<span class="o">//</span>
+<span class="o">//</span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Now our new “Global” path is in play, pointing to our wh2hparm.global parameter file, we can also check that the correct global parameter file is loaded when accessing the CLI port, 41002, using the following URL.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>The output from this display should show the options defined in the w2hparm.global.js.</p>
+<p><img alt="image4" src="../../../_images/image426.png" />
+Figure 4: Display of global w2hparm options</p>
+<p>As an example, the following modifies the “enter” key default and adds a print ICON to the tool bar. As this is a global modification it will apply to all transactions running under the CLIWHOST entry point. The following actions are taken.</p>
+<p>1. Update the default w2hparm.js to include a global setting for pathToW2hparm (“Enter key”) and pathToJsCustom (“Print ICON”). The w2hparm.js should be uploaded to the CLI-DIR directory. The transaction CLI-03P application field will also have to be updated to point to locate w2hparm.js from the CLI-DIR:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+         <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span><span class="p">,</span>
+         <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Create the file w2hparm.global.js file and define the required “Enter key” changes. Upload this file to CLI-DIR. To modify the keyboard Enter key:-</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+    <span class="o">/*</span>
+     <span class="o">*</span> <span class="n">Override</span> <span class="n">default</span> <span class="n">w2hparm</span> <span class="n">values</span><span class="o">.</span> <span class="n">Change</span> <span class="n">Enter</span> <span class="n">key</span> <span class="n">to</span> <span class="n">equal</span> <span class="s2">&quot;Enter&quot;</span><span class="o">.</span> <span class="n">Default</span> <span class="o">=</span> <span class="s2">&quot;Newline&quot;</span> <span class="n">key</span><span class="o">.</span>
+    <span class="o">*/</span>
+
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">enter</span><span class="o">=</span><span class="s2">&quot;ENTER&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Create the file custJS.global.js file and define the required changes. Upload this file to CLI-DIR. This change will run a user script to add the “PRINT” ICON to the Virtel tool bar:-</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">custJS</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+<span class="o">//</span> <span class="n">Add</span> <span class="n">Print</span> <span class="n">Button</span> <span class="n">To</span> <span class="n">Toolbar</span>
+ <span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+     <span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;../print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do_print</span><span class="p">);</span>
+ <span class="p">}</span>
+
+ <span class="n">function</span> <span class="n">do_print</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">window</span><span class="o">.</span><span class="n">print</span><span class="p">();</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The print.ico should also be uploaded to the CLI-DIR directory.</p>
+</div>
+<p>This has the effect of changing the tool bar for all transactions which locate w2hparm.js through the XXX-03P transaction. This would include W2h and CLI transactions as both target the w2hparm.js in the CLI-DIR. This is not what is required. We only want transactions under CLI to have these “modified” options. Transactions under WEB2HOST will require their option fields to be set to “compatibility” to ensure that the default tool bar is shown. Alternatively, we could target the requirement to apply only to certain transactions in the CLI entry point by  setting up “transaction options”.</p>
+<p><img alt="image33" src="../../../_images/image332.png" />
+<em>Figurexx - Setting compatibility mode in a transaction</em></p>
+</div>
+</div>
+<div class="section" id="transaction-option-settings">
+<h3>Transaction ‘Option’ settings<a class="headerlink" href="#transaction-option-settings" title="Permalink to this headline">¶</a></h3>
+<p>Transaction “option” settings use a unique “option” identifier to associate changes with a particular transaction. This identifier is defined in the transaction. For example, if only certain transactions should have the modified tool bar, as described above, then set a unique option identifiers for those transactions. The “option” identifier will be used to associate customized elements against specific transaction(s). In the following example we use the identifier “myOptions”. A transaction level “core option file”, using the format “option.*identifier*.js”, will be used to locate customized elements. Using the option identifier “myOptions” the file will be called option.myOptions.js. It should be created and uploaded to CLI-DIR. The customized settings are held in a Javascript variable named oCustom. The following actions are taken :-</p>
+<ol class="arabic simple">
+<li>Define a option.myOptions.js file to target the transaction settings. In this example we are only introducing some user javascript code to add the Print ICON to the tool bar.</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">option</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">js</span><span class="o">.</span> <span class="n">Transaction</span> <span class="n">level</span> <span class="n">core</span> <span class="n">option</span> <span class="n">file</span>
+<span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.myOptions.js&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>A file called custJS.myOptions.js is created which will contain the tool bar JavaScript modification code. This too is also uploaded to the CLI-DIR directory :-</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">custJS</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">js</span>
+<span class="o">//</span><span class="n">Add</span> <span class="n">Print</span> <span class="n">Button</span> <span class="n">To</span> <span class="n">Toolbar</span>
+<span class="n">function</span> <span class="n">after_standardInit</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">addtoolbarbutton</span><span class="p">(</span><span class="mi">000</span><span class="p">,</span><span class="s2">&quot;../print.ico&quot;</span><span class="p">,</span><span class="s2">&quot;Print Screen&quot;</span><span class="p">,</span><span class="n">do_print</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Using “option” mode in the above example will show the Print ICON on the tool bar for any transaction that implement “myOptions” as a options identifier. Other transactions will be subjected to changes defined through the “global” settings option. Transactions which have the option id set to “myOptions” will have any customized changes located through the core option file “option.myOption.js”. These will override any “global” settings. The following files are created and copied to CLI-DIR:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">option</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">js</span>  <span class="o">-</span> <span class="n">core</span> <span class="n">option</span> <span class="n">file</span> <span class="k">for</span> <span class="n">identifier</span> <span class="s2">&quot;myOptions&quot;</span>
+<span class="n">custjJS</span><span class="o">.</span><span class="n">myOptions</span><span class="o">.</span><span class="n">js</span> <span class="o">-</span> <span class="n">customized</span> <span class="n">java</span> <span class="n">script</span> <span class="n">file</span> <span class="k">for</span> <span class="s2">&quot;myOptions&quot;</span><span class="o">.</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>           <span class="o">-</span> <span class="n">contains</span> <span class="s2">&quot;global-settings&quot;</span> <span class="n">attribute</span><span class="o">.</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>    <span class="o">-</span> <span class="k">global</span> <span class="n">settings</span>
+</pre></div>
+</div>
+<p>Files defined in the core option files “option.*identifier*.js” with the keys pathTo[key] are copied to the CLI-DIR. They will be located through the /option/ pathname. The values associated the the keys pathTo[key] can be any file name and not necessarily the names used in the examples. The /option/ path is always required. For example:-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="o">-</span> <span class="n">option</span><span class="o">.</span><span class="n">myTest</span><span class="o">.</span><span class="n">js</span><span class="o">.</span> <span class="n">Transaction</span> <span class="n">level</span> <span class="n">option</span> <span class="n">settings</span>
+<span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/my_parms.js&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compatibility-option">
+<h3>Compatibility “Option”<a class="headerlink" href="#compatibility-option" title="Permalink to this headline">¶</a></h3>
+<p>Transactions can set the “option” identifier to compatibility to force the “compatibility” mode of operation. Customized element search would be through the “old” location search. for example, the file “custom.css” would be located through the transaction XXX-03CJ.</p>
+</div>
+<div class="section" id="appmenu-option-mode">
+<h3>Appmenu “Option” mode<a class="headerlink" href="#appmenu-option-mode" title="Permalink to this headline">¶</a></h3>
+<p>A special case with Virtel is the customization of the application menu. Any bespoke changes to the appmenu presentation can be defined in an option.appmenu.js file. In the following example we demonstrate how to change appmenu presentation by modifying the associated appmenu CSS. First, create the option.appmenu.js file with the following CSS entry :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">option</span><span class="o">=</span><span class="n">appmenu</span>
+<span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custCSS.appmenu.css&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Upload it to the OPT directory. Now create the following CSS file custCSS.appmenu.css and upload that to the OPT directory. In this customized CSS we have hidden the transaction application name. Our custCSS.appmenu.css should contain the following statements :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">Hide</span> <span class="n">application</span> <span class="n">name</span> <span class="k">for</span> <span class="n">Appmenu</span> <span class="n">Display</span> <span class="o">*/</span>
+<span class="s2">&quot;tr.appmenuitem td:nth-child(4) {display:none}</span>
+</pre></div>
+</div>
+<p>Now, when displaying the appmenu, we have the following display. The application name has been removed and only the transaction description along with the external name is shown.</p>
+<p><img alt="image5" src="../../../_images/image519.png" />
+<em>Figure 5: Modified Appmenu</em></p>
+</div>
+<div class="section" id="using-the-transaction-html-interface-to-define-transaction-option-settings">
+<h3>Using the “Transaction” HTML interface to define transaction “option” settings.<a class="headerlink" href="#using-the-transaction-html-interface-to-define-transaction-option-settings" title="Permalink to this headline">¶</a></h3>
+<p>Using the HTML transaction display a user can click on the “Spanner” ICON to help in setting up the option files. This include building the “core option file” and the relevant Javascript and CSS files. The transaction option identfier is specified on the transaction page :-</p>
+<p><img alt="image34" src="../../../_images/image341.png" />
+<em>Figure xx - Specifying the option identifier</em></p>
+<p>On clicking the “spanner” icon a tabbed “Option” panel will be displayed. A pre-allocated core option environment, based upon the “option” field value, will be built. Two tabbed options are available, “BASIC” and “ADVANCED”:-</p>
+<p><img alt="image35" src="../../../_images/image351.png" />
+<em>Figure xx - Defining the core option file</em></p>
+<div class="section" id="basic-mode">
+<h4>Basic Mode<a class="headerlink" href="#basic-mode" title="Permalink to this headline">¶</a></h4>
+<p>Within the Basic mode of operation, the Validate button will create a core option file and upload it to the CLIDIR directory. Within this file, Javascript and CSS settings keys, if selected, will point to the customisation files as defined by the “option” field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file option.myOptions.js which will be loaded up to the CLI_DIR. Within this core option file the key elements pathToJsCustom and pathtoCssCustom will be generated. These will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css.</p>
+<p><img alt="image36" src="../../../_images/image361.png" />
+<em>Figure xx - Validating the core option file</em></p>
+<p>The generated core option file option.myOptions.js will look like this :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">customization</span> <span class="k">for</span> <span class="n">option</span><span class="o">=</span><span class="n">myOptions</span>
+<span class="n">var</span> <span class="n">oCustom</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custCSS.myOptions.css&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.myOptions.js&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>This can be modified to add other custom elements such as PrintCSS, Parm or Help. The option/custCSS/myOptions.css and option/custJS/myOptions.js would have to be created and uploaded to the CLI directory.</p>
+</div>
+<div class="section" id="advanced-mode">
+<h4>Advanced Mode<a class="headerlink" href="#advanced-mode" title="Permalink to this headline">¶</a></h4>
+<p>By selecting the “Advanced” mode tab, the core option file can be downloaded in preparation for further modification.</p>
+<p><img alt="image37" src="../../../_images/image371.png" />
+<em>Figure xx - Advanced mode of operation</em></p>
+</div>
+</div>
+<div class="section" id="user-parameter-settings">
+<h3>User parameter settings<a class="headerlink" href="#user-parameter-settings" title="Permalink to this headline">¶</a></h3>
+<p>By default, the majority of settings listed in “Appendix A” can be set by each user through the Virtel Access Settings control panel. The settings ICON, a geared wheel located on the Virtel Toolbar, is normally displayed on 3270 based application displays. Selecting this ICON will open the Access settings display.</p>
+<p><img alt="image6" src="../../../_images/image618.png" />
+<em>Figure 6: Virtel Web Access Settings Panel</em></p>
+<p>When a user changes a setting, the change is preserved in the browser “local Storage” so that the next time the browser is opened the changed setting can be loaded from “local Storage” and used to support the new Virtel sessions. Changes made “locally” by a user will override any “global settings”.</p>
+<p>Although settings are persisted in the browser”s local storage, they aren”t necessarily protected from being destroyed. For example, if the browsers cache is cleared the settings will be lost. Also, each browser has its own local storage so settings could well be different if a user opens a browser in “Firefox” and another in “Chrome”.</p>
+<p>To get around these problems of preserving user settings, two options are available :-</p>
+<blockquote>
+<div><ul class="simple">
+<li>Export/Import Settings</li>
+<li>Setup the USERPARM feature</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="export-import-settings">
+<h3>Export/Import settings<a class="headerlink" href="#export-import-settings" title="Permalink to this headline">¶</a></h3>
+<p>Settings can be exported to a “flat file” and then subsequently “imported”.</p>
+<div class="section" id="exporting-to-a-local-file">
+<h4>Exporting to a local file<a class="headerlink" href="#exporting-to-a-local-file" title="Permalink to this headline">¶</a></h4>
+<p>Use the EXPORT option in the settings dialogue to export settings to a flat file. When exporting settings, a file called VWA-settings.json will be written to the browser”s default download file directory. For security, this directory is the only directory that the browser has write access to.</p>
+</div>
+<div class="section" id="import-from-a-local-file">
+<h4>Import from a local file<a class="headerlink" href="#import-from-a-local-file" title="Permalink to this headline">¶</a></h4>
+<p>To import the settings file, click the IMPORT button. A filesystem dialog will open allowing you to select the directory where settings JSON file to be imported resides.
+The contents of the JSON settings file will look very much like an object definition. Here is the contents of VWA-settings.json after changing the “Cursor” attribute to “”Bar”.</p>
+<p><img alt="image7" src="../../../_images/image715.png" />
+<em>Figure 7: Example of an exported settings file</em></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only the settings that the user has modified are saved in local storage or an exported settings file.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="userparm-feature">
+<h2>USERPARM feature<a class="headerlink" href="#userparm-feature" title="Permalink to this headline">¶</a></h2>
+<p>Another option to persist user settings is through the use of the Virtel”s USERPARM feature. This has the advantage in that settings are not held in the browser’s local storage, instead, the user’s settings are held on the mainframe within a Virtel directory, backed by a physical VSAM file. When a user connects, the settings will be downloaded to the browser. Equally, if a user updates their settings, any changes will be uploaded to the mainframe for persistence. So, regardless of the physical connection being used, the user will always get <strong>their</strong> settings.</p>
+<p>A timestamp compare is used to synchronize between the browser and the mainframe. This will determine whether settings should be downloaded to the browser session, or uploaded to the mainframe.</p>
+<p>The only caveat to using the USERPARM feature is that the user must be known to the security subsystem, so any invoked Virtel transactions must be secure transactions - i.e. have at least basic security set, security=1 defined, within the transaction. Virtel uses the user”s USERID as a key to locate the settings within the Virtel directory on the mainframe.</p>
+<div class="section" id="setting-up-to-run-userparm">
+<h3>Setting up to run USERPARM<a class="headerlink" href="#setting-up-to-run-userparm" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Run the following JCL: -</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//        SET  LOAD=SPTHOLT.VIRT459.LOADLIB
+//        SET  ARBO=SPTHOLT.VIRT459.ARBO
+//*----------------------------------------------------------------*
+//* JCL required to allocate a USERPARM TRSF file.                 *
+//*----------------------------------------------------------------*
+//*                                                                *
+//* Before execution, change the following:-                       *
+//*      &#39;vvvvvv&#39;   The name of the volume for the USERPARM TRSF   *
+//*      &#39;SPTHOLT&#39;  Your high level qualifer                       *
+//*      &#39;nnn&#39;    &#39; The Virtel release. For example 459            *
+//*                                                                *
+//*----------------------------------------------------------------*
+//*                                                                *
+//* Post tasks                                                     *
+//*                                                                *
+//* After running this job you must add the VSAM definitions for   *
+//* USER.TRSF to the TCT.                                          *
+//*                                                                *
+//* Add:-                                                          *
+//*            UFILE3=(USERTRSF,ACBH3,0,10,05),                    *
+//*            ...                                                 *
+//*   ACBH3    ACB   AM=VSAM,DDNAME=USERTRSF,MACRF=(SEQ,DIR),      *
+//*            STRNO=3                                             *
+//*                                                                *
+//*----------------------------------------------------------------*
+//* STEP 1 : Define the USERPARM TRSF                              *
+//*----------------------------------------------------------------*
+//STEP1   EXEC PGM=IDCAMS
+//SYSPRINT DD  SYSOUT=*
+//SYSIN    DD  *
+DELETE  (SPTHOLT.VIRT459.USER.TRSF) CLUSTER PURGE
+SET MAXCC = 0
+DEFINE CLUSTER (-
+      NAME (SPTHOLT.VIRT459.USER.TRSF) -
+      VOL (SPT30B) -
+      SHR (2) -
+      KEYS (16 0) -
+      RECSZ (100 32758)) -
+   DATA (NAME(SPTHOLT.VIRT459.USER.TRSF.DATA) -
+         SPANNED -
+         TRACKS(200 200) -
+         CISZ(32768)) -
+   INDEX (NAME(SPTHOLT.VIRT459.USER.TRSF.INDEX) -
+         CISZ(512))
+/*
+//*----------------------------------------------------------------*
+//* STEP 2 : INITIALIZE THE TRSF                                   *
+//*----------------------------------------------------------------*
+//STEP2   EXEC PGM=IDCAMS
+//SYSPRINT DD  SYSOUT=*
+//INIT     DD  DATA,DLM=AA
+$$$$IWS.WORKREC.INW$TEMP
+AA
+/*
+//TRSF     DD DSN=SPTHOLT.VIRT459.USER.TRSF,DISP=SHR
+//SYSIN    DD *
+REPRO INFILE(INIT) OUTFILE(TRSF)
+/*
+//VIRLOAD EXEC PGM=VIRCONF,PARM=&#39;LOAD,REPL&#39;,REGION=2M
+//STEPLIB  DD  DISP=SHR,DSN=&amp;LOAD
+//VIRARBO  DD  DISP=SHR,DSN=&amp;ARBO
+//SYSPRINT DD  SYSOUT=*
+      SUBDIR   ID=USERPARM,
+               DESC=&#39;USERPARM directory&#39;,
+               DDNAME=USERTRSF,
+               KEY=UPRMS,
+               NAMELEN=0064,
+               AUTHUP=X,
+               AUTHDOWN=X,
+               FSTYPE=V,
+               AUTHDEL=X
+      TRANSACT ID=W2H-00P,
+               DESC=&#39;User Parameters directory&#39;,
+               NAME=USERPARM,
+               APPL=USERPARM,
+               TYPE=4,
+               TERMINAL=DELOC
+      TRANSACT ID=W2H-74,
+               DESC=&#39;Upload to USERPARM directory&#39;,
+               NAME=uplparms,
+               APPL=VIR0041C,
+               TYPE=2,
+               TERMINAL=DELOC,
+               STARTUP=2,
+               SECURITY=1,
+               LOGMSG=USERPARM
+      TRANSACT ID=CLI-00P,
+               DESC=&#39;User Parameters directory&#39;,
+               NAME=USERPARM,
+               APPL=USERPARM,
+               TYPE=4,
+               TERMINAL=CLLOC
+/*
+</pre></div>
+</div>
+<p>This will add the centralized USERPARM settings required to save user definitions to the USERTRSF VSAM file on the mainframe. This includes a new USERPARM directory - identifying the USERTRSF file, some transactions and the allocation of the new TRSF VSAM  file.</p>
+<ol class="arabic simple" start="2">
+<li>Next, update and assemble the TCT to include the definitions to support the new VSAM TRSF file.</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="o">*</span>
+             <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+            <span class="n">VIRSECU</span><span class="o">=</span><span class="n">YES</span><span class="p">,</span><span class="n">SECUR</span><span class="o">=</span><span class="p">(</span><span class="n">RACROUTE</span><span class="p">,</span><span class="n">RACF</span><span class="p">),</span>                   <span class="o">*</span>
+            <span class="n">UPARMS</span><span class="o">=</span><span class="p">(</span><span class="n">USERPARM</span><span class="p">),</span>                                   <span class="o">*</span>
+            <span class="n">RAPPL</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">RNODE</span><span class="o">=</span><span class="n">FACILITY</span><span class="p">,</span><span class="n">PRFSECU</span><span class="o">=</span><span class="n">VIRTEL</span><span class="p">,</span>        <span class="o">*</span>
+            <span class="n">UFILE1</span><span class="o">=</span><span class="p">(</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">ACBH1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                     <span class="o">*</span>
+            <span class="n">UFILE2</span><span class="o">=</span><span class="p">(</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">ACBH2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                     <span class="o">*</span>
+            <span class="n">UFILE3</span><span class="o">=</span><span class="p">(</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">ACBH3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">01</span><span class="p">),</span>                     <span class="o">*</span>
+            <span class="n">GATE</span><span class="o">=</span><span class="n">GENERAL</span><span class="p">,</span>                                        <span class="o">*</span>
+             <span class="o">.</span> <span class="o">.</span> <span class="o">.</span>
+
+<span class="o">*</span> <span class="o">============================================================</span>
+<span class="n">ACBH1</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">SAMPTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>       <span class="o">*</span>
+               <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH2</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>       <span class="o">*</span>
+               <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">ACBH3</span> <span class="n">ACB</span> <span class="n">AM</span><span class="o">=</span><span class="n">VSAM</span><span class="p">,</span><span class="n">DDNAME</span><span class="o">=</span><span class="n">USERTRSF</span><span class="p">,</span><span class="n">MACRF</span><span class="o">=</span><span class="p">(</span><span class="n">SEQ</span><span class="p">,</span><span class="n">DIR</span><span class="p">,</span><span class="n">OUT</span><span class="p">,</span><span class="n">LSR</span><span class="p">),</span>       <span class="o">*</span>
+               <span class="n">STRNO</span><span class="o">=</span><span class="mi">3</span>
+         <span class="n">END</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Stop Virtel and add the USERTRSF DD statement to the JCL, pointing to the newly allocated TRSF file.</li>
+<li>Restart Virtel. Refresh the cache (CTRL+SHIFT+DEL).</li>
+<li>Open a secure 3270 session, in our example we use TSO transaction in CLIWHOST. The security credentials are entered and we are logged into TSO.</li>
+<li>A change is then made to the Virtel settings. In this example we set the cursor display from BOX back to BLOCK.</li>
+</ol>
+<p>In the Virtel log we can see that the change has been uploaded and logged into the USERPARM TRSF :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRU122I</span> <span class="n">CLVTA079</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERPARM&#39;</span> <span class="n">USER</span> <span class="s1">&#39;SPTHOLT&#39;</span>
+     <span class="n">FILE</span> <span class="p">:</span> <span class="s1">&#39;8393DD4A16F0E1C9723F9D9CFA2C39F1&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>We then shut the browser, restart it, refresh the cache, and then load our TSO application from the APPSTAT menu on 41002 - the CLIWHOST entry point. On displaying the settings, it still shows “Cursor=BLOCK” which is what we want. This setting could only have come down from the mainframe when we established our TSO session. It is not the default setting for “Cursor” and local storage had been cleared through the refresh of the cache. It could have only come from the USERTRSF file.</li>
+<li>If we look at the local storage using the developer tools option of the browser, we can see it has been populated with our settings from the mainframe :-</li>
+</ol>
+<p><img alt="image8" src="../../../_images/image814.png" />
+<em>Figure 8 - Display of local storage</em></p>
+</div>
+<div class="section" id="example-of-changing-the-global-settings">
+<h3>Example of changing the global settings<a class="headerlink" href="#example-of-changing-the-global-settings" title="Permalink to this headline">¶</a></h3>
+<p>Open a session browser and display the current settings. In the browser debugger (Developer Tools - PF12 in the URL bar) we can see that we have a dummy w2hparm object ” w2hparm  {}.</p>
+<p><img alt="image9" src="../../../_images/image912.png" />
+<em>Figure 9 - w2hparm default settings</em></p>
+<p>If we make a change in the settings dialogue, these will override any administrator settings :-</p>
+<p><img alt="image10" src="../../../_images/image1012.png" />
+<em>Figure 10 - Settings Dialogue</em></p>
+<p>For example, lets assume that an Virtel administrator has set some new defaults by creating a new w2h.global.js file. The w2h.global.js file looks like :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">w2h</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">override</span> <span class="n">defaults</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">DDI</span> <span class="n">macro</span> <span class="n">support</span><span class="o">.</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgup&quot;</span><span class="p">:</span><span class="s2">&quot;PF7&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PF8&quot;</span><span class="p">,</span>
+<span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">}};</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="o">//</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">synchronizeVirtelMacros</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>These are uploaded to CLI-DIR. The following messages would be seen in the Virtel console log after the upload has completed :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">CONNECTING</span> <span class="n">DELOC049</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.057</span><span class="p">:</span><span class="mi">58301</span>
+<span class="n">VIRU122I</span> <span class="n">DELOC049</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;WEB2HOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;CLI-D</span>
+<span class="mi">916</span>
+<span class="n">IR</span> <span class="s1">&#39; USER &#39;</span><span class="n">SPTHOLT</span>             <span class="s1">&#39;</span>
+      <span class="n">FILE</span> <span class="p">:</span> <span class="s1">&#39;W2HPARM.GLOBAL.JS&#39;</span>
+<span class="n">VIR0052I</span> <span class="n">DELOC049</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span>   <span class="mi">0</span> <span class="n">MINUTES</span>
+</pre></div>
+</div>
+<p>A user open’s a new browser session (EDGE), and will see the new default changes reflected in the settings dialog. PGUp and PGDown have been set to PF7 and PF8. These global settings have overridden the Virtel default settings which would have been PA1/PA2.</p>
+<p><a class="reference internal" href="../../../_images/image1116.png"><img alt="image11" src="../../../_images/image1116.png" style="width: 339.5px; height: 504.5px;" /></a></p>
+<p><em>Figure 11 - Updated global settings</em></p>
+<p>Our user wishes to override these global settings with the original PA1/PA2 settings. The user changes the settings to reflect this; the changes will be uploaded to the mainframe and the following messages will be seen in the Virtel console log.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRT906I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">SOCKET</span> <span class="mi">00030000</span> <span class="n">CALL</span> <span class="n">FROM</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.065</span><span class="p">:</span><span class="mi">50426</span>
+<span class="n">VIRHT51I</span> <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">CONNECTING</span> <span class="n">CLLOC009</span> <span class="n">TO</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">092.065</span><span class="p">:</span><span class="mi">50426</span>
+<span class="n">VIR0052I</span> <span class="n">CLLOC009</span> <span class="n">DISCONNECTED</span> <span class="n">AFTER</span>   <span class="mi">0</span> <span class="n">MINUTES</span>
+<span class="n">VIRU122I</span> <span class="n">CLVTA078</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP</span>
+<span class="mi">285</span>
+<span class="n">ARM</span><span class="s1">&#39; USER &#39;</span><span class="n">CTKHOLT</span>             <span class="s1">&#39;</span>
+      <span class="n">FILE</span> <span class="p">:</span> <span class="s1">&#39;8A4B86A3A108399F5866624546DA28C6&#39;</span>
+</pre></div>
+</div>
+<p>Here the PGUp/PGDown settings have been modified by the user and a display of settings panel now shows the user settings in force, not the global options. The users settings will be saved in the USERPARM directory using a unique index. In our example the is 8A4B86A3A108399F5866624546DA28C6.</p>
+<p><a class="reference internal" href="../../../_images/image1214.png"><img alt="image12" src="../../../_images/image1214.png" style="width: 263.0px; height: 401.0px;" /></a></p>
+<p><em>Figure 12 - Users new settings</em></p>
+<p>To restore to the administrator”s global settings, we just press the “Defaults” button. This will download the global settings from the mainframe. A redisplay of the settings will show the restore global settings. The change also drives an upload to the mainframe so that the changes are recorded in the USERPARM directory.</p>
+<p><a class="reference internal" href="../../../_images/image1311.png"><img alt="image13" src="../../../_images/image1311.png" style="width: 278.0px; height: 414.5px;" /></a></p>
+<p><em>Figure 13 - Restored global settings</em></p>
+</div>
+<div class="section" id="removing-a-user-s-default-settings">
+<h3>Removing a USER”s default settings<a class="headerlink" href="#removing-a-user-s-default-settings" title="Permalink to this headline">¶</a></h3>
+<p>A user”s settings can be removed from the USERPARM directory by deleting the key associated with the user from the USERPARM directory. For example, the key associated with userid CTKHOLT is 8A4B86A3A108399F5866624546DA28C6. If we look at USERPARM directory in the Admin portal (41001) we can see it listed.</p>
+<p><img alt="image14" src="../../../_images/image1410.png" />
+<em>Figure 14 - USERPARM directory listing</em></p>
+<p>We can remove the user’s key entry by using the delete option. This will remove any user settings. The user will then have to “restore defaults” to correctly pickup up the global default parameters as defined by the Administrator.</p>
+<p><strong>Message VIRU122I</strong></p>
+<p>Running the USERPARM option can add additional message logging. The VIRU122I message can be silenced through the use of the F Virtel, SILENCE command.</p>
+</div>
+<div class="section" id="userparm-problems">
+<h3>USERPARM Problems<a class="headerlink" href="#userparm-problems" title="Permalink to this headline">¶</a></h3>
+<p><strong>Problem</strong></p>
+<p>When I try to save my settings, I get the following dialog box.</p>
+<p><img alt="image15" src="../../../_images/image159.png" /></p>
+<p>In the Virtel log I also see the follow messages:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VIRU122I</span> <span class="n">CLVTA079</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;USERP</span>
+<span class="mi">330</span>
+<span class="n">ARM</span><span class="s1">&#39; USER &#39;</span><span class="n">SPTHOLT</span>             <span class="s1">&#39;</span>
+      <span class="n">FILE</span> <span class="p">:</span> <span class="s1">&#39;9346CCEF695D8FF2D7C1B2DA6C81CFC8&#39;</span>
+<span class="n">VIRC121E</span> <span class="n">PAGE</span> <span class="n">NOT</span> <span class="n">FOUND</span> <span class="n">FOR</span> <span class="n">CLVTA079</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span> <span class="s1">&#39;</span>
+<span class="mi">331</span>
+<span class="n">W2H</span>     <span class="s1">&#39;(W2H-DIR  W2H-KEY )</span>
+      <span class="n">PAGE</span> <span class="p">:</span> <span class="s1">&#39;VPLEX=UNDEFINEDPARAMETERS-CODE.TXT&#39;</span> <span class="n">URL</span> <span class="p">:</span> <span class="s1">&#39;/w2h/VPLEX=un</span>
+<span class="n">definedPARAMETERS</span><span class="o">-</span><span class="n">CODE</span><span class="o">.</span><span class="n">txt</span><span class="o">++</span><span class="n">AjaxSession</span><span class="o">=</span><span class="n">ADvzWAAAAAAeu</span>
+</pre></div>
+</div>
+<p><em>Probable Cause</em></p>
+<p>Maintenance level too low. Apply the latest maintenance. You must be at UPDT5708 or higher.</p>
+<p><strong>Problem</strong></p>
+<p>I save my user parameter changes but when I use a different PC or browser I am reverted back to my old or default settings.</p>
+<p><em>Probable Cause</em></p>
+<p>Insufficient RACF security. Check the Virtel log and look for any RACF violations that may be preventing a user from uploading their user parameters definitions to the mainframe repository. In the console log you may well see RACF error messages :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ICH408I</span> <span class="n">USER</span><span class="p">(</span><span class="n">CTKHOLT</span> <span class="p">)</span> <span class="n">GROUP</span><span class="p">(</span><span class="n">CTKGROUP</span><span class="p">)</span> <span class="n">NAME</span><span class="p">(</span><span class="n">ED</span> <span class="n">HOLT</span>             <span class="p">)</span> <span class="mi">451</span>
+<span class="n">SPVIREH</span><span class="o">.</span><span class="n">USERPARM</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span>
+<span class="n">INSUFFICIENT</span> <span class="n">ACCESS</span> <span class="n">AUTHORITY</span>
+<span class="n">ACCESS</span> <span class="n">INTENT</span><span class="p">(</span><span class="n">READ</span>   <span class="p">)</span>  <span class="n">ACCESS</span> <span class="n">ALLOWED</span><span class="p">(</span><span class="n">NONE</span>   <span class="p">)</span>
+<span class="n">VIRU121E</span> <span class="n">CLVTA079</span> <span class="n">FILE</span> <span class="n">UPLOAD</span> <span class="n">FAILED</span> <span class="p">:</span> <span class="n">ENTRY</span> <span class="n">POINT</span> <span class="s1">&#39;CLIWHOST&#39;</span> <span class="n">DIRECTORY</span>
+<span class="mi">452</span>
+<span class="s1">&#39;USERPARM&#39;</span> <span class="n">USER</span> <span class="s1">&#39;CTKHOLT             &#39;</span>
+      <span class="n">FILE</span> <span class="p">:</span> <span class="s1">&#39;C6D24022819C599803A86BB3C42298B6&#39;</span>
+</pre></div>
+</div>
+<p><strong>Problem</strong></p>
+<p>Changed defaults not reflected in settings.</p>
+<p><em>Probable cause</em></p>
+<p>XXX-03P Transaction error. Make sure that all the xxx-03P transactions point to the same directory i.e. CLI-DIR, which should contain your default w2hparm.js transaction location.</p>
+<p>To list you w2hparm.js file use the following URL :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">4100</span><span class="n">x</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">-</span><span class="n">js</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">js</span>
+
+<span class="o">//</span> <span class="n">NOTE</span><span class="p">:</span> <span class="n">this</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sample</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">be</span> <span class="n">replaced</span> <span class="n">after</span> <span class="n">a</span> <span class="n">new</span> <span class="n">install</span><span class="o">.</span>
+<span class="o">//</span> <span class="n">please</span> <span class="n">see</span> <span class="n">the</span> <span class="n">documentation</span> <span class="n">on</span> <span class="n">possible</span> <span class="n">parameter</span> <span class="n">values</span>
+<span class="o">//</span> <span class="ow">and</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">this</span> <span class="n">file</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span>
+<span class="o">//</span>
+<span class="o">//</span><span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;global-settings&quot;</span><span class="p">:{</span>
+      <span class="s2">&quot;pathToW2hparm&quot;</span><span class="p">:</span><span class="s2">&quot;../option/w2hparm.global.js&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToCssCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custCSS.global.css&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToHelp&quot;</span><span class="p">:</span> <span class="s2">&quot;../option/myHelp.html&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;pathToJsCustom&quot;</span><span class="p">:</span><span class="s2">&quot;../option/custJS.global.js&quot;</span>
+   <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This will list your “global” locations. You can use the following URL to list the global w2hparm.global.js file which should contain your global parameter overrides.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+
+<span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">w2h</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">override</span> <span class="n">defaults</span> <span class="ow">and</span> <span class="n">add</span> <span class="n">DDI</span> <span class="n">macro</span> <span class="n">support</span><span class="o">.</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;enter&quot;</span><span class="p">:</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgup&quot;</span><span class="p">:</span><span class="s2">&quot;PA1&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pgdn&quot;</span><span class="p">:</span><span class="s2">&quot;PA2&quot;</span><span class="p">,</span>
+<span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">}};</span>
+<span class="n">w2hparm</span><span class="o">.</span><span class="n">keymapping</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+<span class="o">//</span><span class="n">w2hparm</span><span class="o">.</span><span class="n">synchronizeVirtelMacros</span><span class="o">=</span><span class="n">true</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="setting-up-for-centralized-macros-and-ddi">
+<h2>Setting up for Centralized macros and DDI<a class="headerlink" href="#setting-up-for-centralized-macros-and-ddi" title="Permalink to this headline">¶</a></h2>
+<p>The following section provides details on how to implement centralized macros through Virtel”s DDI feature.</p>
+<div class="section" id="getting-ready-for-centralized-macros">
+<h3>Getting ready for Centralized Macros.<a class="headerlink" href="#getting-ready-for-centralized-macros" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Stop Virtel</li>
+<li>Create and install additional RACF profiles to support DDI. The following is a sample RACF job to update RACF with the necessary profiles. It should be modified accordingly :-</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Change</span> <span class="n">SPVIREH</span> <span class="n">to</span> <span class="n">the</span> <span class="n">value</span> <span class="n">specified</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">TCT</span> <span class="n">PRFSECU</span><span class="o">=</span> <span class="n">option</span><span class="o">.</span>
+<span class="n">Change</span> <span class="n">SPGPTECH</span> <span class="n">to</span> <span class="n">the</span> <span class="n">administration</span> <span class="n">group</span> <span class="k">for</span> <span class="n">Virtel</span><span class="o">.</span>
+
+<span class="o">//</span><span class="n">STEP0</span>   <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">IKJEFT01</span><span class="p">,</span><span class="n">DYNAMNBR</span><span class="o">=</span><span class="mi">20</span> <span class="n">COND</span><span class="o">=</span><span class="n">ONLY</span>
+<span class="o">//</span><span class="n">SYSTSPRT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSTSIN</span>  <span class="n">DD</span>  <span class="o">*</span>
+   <span class="o">/*-------------------------------------------------------*/</span>
+   <span class="o">/*</span> <span class="n">Directory</span> <span class="n">Access</span>                                      <span class="o">*/</span>
+   <span class="o">/*-------------------------------------------------------*/</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">Global</span> <span class="n">Dir</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">Group</span> <span class="n">Dir</span><span class="o">.</span>  <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">Global</span> <span class="n">Dir</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">USR</span><span class="o">-</span><span class="n">DIR</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+   <span class="o">/*-------------------------------------------------------*/</span>
+   <span class="o">/*</span> <span class="n">DDI</span> <span class="o">/</span> <span class="n">Capability</span>                                      <span class="o">*/</span>
+   <span class="o">/*-------------------------------------------------------*/</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">07</span>  <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>  <span class="o">/*</span> <span class="n">DDI</span>         <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">07</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">07</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">66</span>  <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span>  <span class="o">/*</span> <span class="n">DDI</span>         <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">66</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">66</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+   <span class="o">/*-------------------------------------------------------*/</span>
+   <span class="o">/*</span> <span class="n">Administrators</span> <span class="n">Upload</span>                                 <span class="o">*/</span>
+   <span class="o">/*-------------------------------------------------------*/</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">A</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">Global</span> <span class="n">Dir</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">A</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">G</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">Global</span> <span class="n">Dir</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">G</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+   <span class="n">RDEF</span> <span class="n">FACILITY</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span> <span class="n">UACC</span><span class="p">(</span><span class="n">NONE</span><span class="p">)</span> <span class="o">/*</span> <span class="n">Global</span> <span class="n">Dir</span><span class="o">.</span> <span class="o">*/</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">RESET</span>
+   <span class="n">PE</span> <span class="n">SPVIREH</span><span class="o">.</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span> <span class="n">CL</span><span class="p">(</span><span class="n">FACILITY</span><span class="p">)</span> <span class="n">ACC</span><span class="p">(</span><span class="n">READ</span><span class="p">)</span> <span class="n">ID</span><span class="p">(</span><span class="n">SPGPTECH</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Rerun the ARBOLOAD job and specify VMACROS=YES. This will install additional transactions and directories to support centralized macros. You should see something the the following in the output.</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUBDIR</span>   <span class="n">GLB</span><span class="o">-</span><span class="n">DIR</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">SUBDIR</span>   <span class="n">GRP</span><span class="o">-</span><span class="n">DIR</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">SUBDIR</span>   <span class="n">USR</span><span class="o">-</span><span class="n">DIR</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">07</span>   <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">66</span>   <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">A</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">G</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">A</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">G</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">CLI</span><span class="o">-</span><span class="mi">03</span><span class="n">U</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+<span class="n">TRANSACT</span> <span class="n">CLI</span><span class="o">-</span><span class="mi">80</span><span class="n">U</span>  <span class="n">WAS</span> <span class="n">SUCCESSFULLY</span> <span class="n">ADDED</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>After updating the ARBO with the new transactions, restart Virtel. Check that the new directories are accessible. Go to the Administration panel and bring up the Drag and Drop Interface. Three new directories should be visible ” GLB-DIR, GRP-DIR and USR-DIR.</li>
+</ol>
+<p><img alt="image16" src="../../../_images/image164.png" /></p>
+<p><em>Figure 16 - New directories to support centralised macros</em></p>
+<ol class="arabic simple" start="5">
+<li>Update w2hparm.js</li>
+</ol>
+<p>Next will need to add some w2hparm parameters to the w2hparm.js file. Make the changes to your w2hparm.js member and upload to the w2hparm Directory. Most likely CLI-DIR.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">},</span>
+<span class="s2">&quot;keymapping&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>These changes turn on the centralized macro support plus the additional keymapping option. After uploading, refresh the cache (CTR-SHIFT-DEL). To check that you have the correct settings redisplay the w2hparm.js member using the following URL :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41002</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+
+<span class="o">//</span> <span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span> <span class="p">(</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">w2h</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">override</span> <span class="n">defaults</span><span class="o">.</span>
+<span class="n">var</span> <span class="n">w2hparm</span> <span class="o">=</span> <span class="p">{</span>
+<span class="s2">&quot;ctrl&quot;</span><span class="p">:</span><span class="s2">&quot;Newline&quot;</span><span class="p">,</span>
+<span class="s2">&quot;font&quot;</span><span class="p">:</span><span class="s2">&quot;DejaVu Sans Mono&quot;</span><span class="p">,</span>
+<span class="s2">&quot;useVirtelMacros&quot;</span><span class="p">:{</span><span class="s2">&quot;macrosAutoRefresh&quot;</span><span class="p">:</span><span class="s2">&quot;session&quot;</span><span class="p">},</span>
+<span class="s2">&quot;keymapping&quot;</span><span class="p">:</span><span class="n">true</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>This shows that our updated w2hparm.global.js has been installed and can be located within the CLI-DIR. If you are using one w2hparm setting check that the same member is located through W2H by using the following URL :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">option</span><span class="o">/</span><span class="n">w2hparm</span><span class="o">.</span><span class="k">global</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>If the output is same it means that both line 41001 (W2H) and 41002 (CLI) are locating the same w2hparm.global.js definitions correclty.</p>
+<p>You can also look at the console log in the developer”s tool kit (PF12 in the URL area) and should see the following messages in the ‘console’ tab :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Centralized</span> <span class="n">settings</span> <span class="n">date</span><span class="p">:</span> <span class="mi">20200329194920</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1402</span> <span class="n">No</span> <span class="n">valid</span> <span class="n">settings</span> <span class="ow">in</span> <span class="n">local</span> <span class="n">storage</span><span class="o">.</span> <span class="n">Settings</span> <span class="n">are</span> <span class="n">being</span> <span class="n">copied</span> <span class="kn">from</span> <span class="nn">centralized</span> <span class="n">saving</span><span class="o">.</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1501</span> <span class="mi">19</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">776</span> <span class="o">-</span> <span class="n">initSynchro</span><span class="p">(</span><span class="n">mainpageloaded</span><span class="p">)</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1538</span> <span class="n">mainpageloaded</span><span class="p">:</span> <span class="n">perform</span> <span class="n">vwa_initAdminJS</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1501</span> <span class="mi">19</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">776</span> <span class="o">-</span> <span class="n">initSynchro</span><span class="p">(</span><span class="n">customjsloaded</span><span class="p">)</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1215</span> <span class="n">saving</span> <span class="n">to</span> <span class="n">local</span> <span class="n">storage</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">4898</span> <span class="n">load</span> <span class="n">css</span> <span class="n">pour</span> <span class="mi">3270</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1501</span> <span class="mi">19</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">821</span> <span class="o">-</span> <span class="n">initSynchro</span><span class="p">(</span><span class="n">w2hparminitialized</span><span class="p">)</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1538</span> <span class="n">w2hparminitialized</span><span class="p">:</span> <span class="n">perform</span> <span class="n">initDOM</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">4129</span> <span class="n">w2hparm</span><span class="o">.</span><span class="n">useVirtelMacros</span><span class="o">.</span><span class="n">macrosAutoRefresh</span><span class="o">=</span><span class="n">session</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">4154</span> <span class="n">First</span> <span class="n">access</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">browser</span> <span class="n">session</span> <span class="p">:</span> <span class="n">retrieve</span> <span class="n">the</span> <span class="n">VIRTEL</span> <span class="n">macros</span> <span class="k">with</span> <span class="s1">&#39;session&#39;</span> <span class="n">option</span><span class="o">.</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1538</span> <span class="n">w2hparminitialized</span><span class="p">:</span> <span class="n">perform</span> <span class="n">initWEB2AJAX</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1501</span> <span class="mi">19</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">869</span> <span class="o">-</span> <span class="n">initSynchro</span><span class="p">(</span><span class="mi">3270</span><span class="n">cssloaded</span><span class="p">)</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1538</span> <span class="mi">3270</span><span class="n">cssloaded</span><span class="p">:</span> <span class="n">perform</span> <span class="n">vwa_initAdminCSS</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1501</span> <span class="mi">19</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">870</span> <span class="o">-</span> <span class="n">initSynchro</span><span class="p">(</span><span class="n">customcssloaded</span><span class="p">)</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">7335</span> <span class="mi">3278</span><span class="n">T</span> <span class="n">graphic</span> <span class="n">characters</span> <span class="n">escaping</span> <span class="n">deactivated</span><span class="o">.</span>
+<span class="n">web2ajaxc</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">1501</span> <span class="mi">19</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">915</span> <span class="o">-</span> <span class="n">initSynchro</span><span class="p">(</span><span class="n">first3270data</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Check the DDI is active. You can do this by launching a TSO session in both W2H and CLI. In each case, check that the Macro ICON in the tool bar is blue, indicating DDI is on, and not Green, which means that DDI disabled/not implemented.</li>
+</ol>
+<p><img alt="image17" src="../../../_images/image174.png" />
+<em>Figure 17 - Blue ICON to indicate DDI active</em></p>
+<p>Create a test macro using the macro record button. When you go to save the macro, you will be given the option to associate the macro with a key sequence. Enter a macro name and press the save key.</p>
+<p><img alt="image18" src="../../../_images/image183.png" />
+<em>Figure 18 - Test macro</em></p>
+<p>The macro will be saved to your local storage/user directory. The following panel will be displayed :-</p>
+<p><img alt="image19" src="../../../_images/image193.png" />
+<em>Figure 19 - Macro saved to user directory</em></p>
+<p>With DDI/macro support you do not have the ability to export/import macros. For security reasons macros are only administered by the Virtel administrator(s). Getting macros into the DDI repository directories is performed through the DDI import feature. In the next section we will create a dummy macro, and import it into the global directory of the DDI repository.</p>
+</div>
+<div class="section" id="creating-a-global-macro">
+<h3>Creating a Global macro<a class="headerlink" href="#creating-a-global-macro" title="Permalink to this headline">¶</a></h3>
+<p>To create a global macro, we will setup a Virtel line which is not running DDI so we have access to the import/export option. We can easily do this by setting the Administration line 41001 back to the original w2hparm.js defaults, thereby disabling the DDI/macro functionality, and providing the import/export feature.</p>
+<p>Open up the Admin portal on 41001 and change the W2H-03P transaction to point back to W2H-DIR, refresh the cache. The Macro ICON should now be back to Green and if we look at the Macro panel we will see that we have the Import/Export feature back. We can use this environment to create and export macros. These macros can then be imported into the DDI/macro repository.</p>
+<p><img alt="image20" src="../../../_images/image203.png" />
+<em>Figure 20 - Non DDI macro interface</em></p>
+<ol class="arabic simple">
+<li>We create a local macro called SDSF which, from the primary ISPF option menu, invokes SDSF, issues a LOG command, and then a SDSF TOP command.</li>
+<li>We save the macro and call it SDSF</li>
+<li>We select the EXPORT button to export the macro. All exported macros are called macros.json and will be written to the browser”s default download directory.</li>
+</ol>
+<p>The exported file will look like this :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;macros&quot;</span><span class="p">:[{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;SDSF&quot;</span><span class="p">,</span><span class="s2">&quot;rev&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;def&quot;</span><span class="p">:[</span><span class="mi">61</span><span class="p">,</span><span class="mi">115</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">103</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">,</span><span class="mi">116</span><span class="p">,</span><span class="mi">111</span><span class="p">,</span><span class="mi">112</span><span class="p">,</span><span class="s2">&quot;ENTER&quot;</span><span class="p">]}],</span><span class="s2">&quot;fmt&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we want to import this macro.json file into the Global directory of our DDI repository and make it available to everyone. To do that we have to open the DDI interface from the Administration Port and “Drag &amp; Drop” the macros.json file into the Global Directory.</p>
+<p>Open the DDI interface from the Administration Portal (41001) and select the Global Tab.</p>
+<p><img alt="image21" src="../../../_images/image2111.png" />
+<em>Figure 21 Global directory zone of the DDI interface</em></p>
+<blockquote>
+<div>Drag and drop the macros.json file into the D&amp;D area (Area surrounded by dotted lines). Refresh the area by clicking the Refresh ICON button - button in the Top Left of the Global Tab. You should now be presented with the refreshed Global Directory which now contains the macros contained within the macros.json file - in our case just one macro called SDSF.</div></blockquote>
+<p><img alt="image22" src="../../../_images/image2210.png" />
+<em>Figure 22: Global Directory with macros.json file</em></p>
+<p>If we open up a TSO or CICS session with an active DDI (blue ICON), for example under 41002, we should see that our Global Macro Area has now been populated with the SDSF macro.</p>
+<p><img alt="image23" src="../../../_images/image236.png" />
+<em>Figure 23: Global Macro display</em></p>
+<p>We also have some other “user macros” that this user is maintaining - “logon” and “logoff”.</p>
+</div>
+<div class="section" id="creating-a-group-macro">
+<h3>Creating a Group macro<a class="headerlink" href="#creating-a-group-macro" title="Permalink to this headline">¶</a></h3>
+<p>A Group macro is associated with a particular RACF group and will only be displayed in the Group Macro list if the user is a member or connected to that Group. Creating a Group macro follows along with the same process as creating a Global macro. We create a macros.json file, using the Export/Import functions of a non-DDI macro interface (Port 41001), which will contain our group macros. We then export the group macros as a macros.json file and then import it into the Group directory of the DDI repository using the drag and drop area.</p>
+<p>The difference with Group macros is that we have to specify the Group that the macros.json file will belong to when opening up the Group area in the DDI interface. When selecting the Group Tab of the DDI area we specify the Group :-</p>
+<p><img alt="image24" src="../../../_images/image242.png" />
+<em>Figure 24: Enter Group Name for Group macros</em></p>
+<p>In our example we enter a group name, press the green tick, and then drag and drop our group macros.json file into the Group DDI zone area. That will initiate an upload of the file :-</p>
+<p><img alt="image25" src="../../../_images/image252.png" />
+<em>Figure 25: Adding a group macro</em></p>
+<p>Once we refresh the DDI zone area, the macros located within the macros.json file will be listed. When can now display the available macros in our TSO 3270 session. If we refresh the macro display by hitting the refresh button, we should see all the macros listed in the group section :-</p>
+<p><a class="reference internal" href="../../../_images/image262.png"><img alt="image26" src="../../../_images/image262.png" style="width: 338.0px; height: 379.5px;" /></a>
+<em>Figure 26: Group Macro display</em></p>
+</div>
+<div class="section" id="administration-functions">
+<h3>Administration Functions<a class="headerlink" href="#administration-functions" title="Permalink to this headline">¶</a></h3>
+<p>Regardless of which of the three directories you are working on, USER, GROUP and GLOBAL, the macros are awlays contained in a file called macros.json. There will be one such file for the GLOBAL directory, one for each GROUP and one for each USER. The macros.json file contains all the macros for that particular DDI entity - USER, GROUP or GLOBAL directory.</p>
+<p>As a Virtel Administration you have various functions available to you that you can use to manage the contents of these macros.json files. If you right click on the macros.json file within the DDI list you will see a Pop-Up box providing various administration tools. These include :-</p>
+<p><img alt="image27" src="../../../_images/image271.png" />
+<em>Figure 27: Administrator Options</em></p>
+<ul class="simple">
+<li>Download ” You can download a macros.json file and edit it to add additional macro entries manually. This can then be uploaded back into the DDI repository.</li>
+<li>Copy ” Copy is not really applicable here as all macros.json files must reside in the USR-DIR. You can use this function to copy the macros.json files to a backup directory. The back-directory would have to be pre-allocated using the similar JCL that was used to create the USR-DIR VSAM file.</li>
+<li>Delete ” Delete the macros.json file.</li>
+<li>Edit ” Edit the contents of the macros.json file.</li>
+</ul>
+<p><img alt="image28" src="../../../_images/image281.png" />
+<em>Figure 28: Editing a macro within DDI</em></p>
+<p><strong>Problems</strong></p>
+<p>I get the message - Virtel is not configured for dynamic directories message.</p>
+<p><a class="reference internal" href="../../../_images/image291.png"><img alt="image29" src="../../../_images/image291.png" style="width: 680.0px; height: 455.5px;" /></a></p>
+<p><em>Probable cause</em></p>
+<p>You have not run the ARBOLOAD with VMACROS=YES.</p>
+<p><em>Solution</em></p>
+<p>Make sure you are using a transaction with security set. Refresh the cache with the following commands :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">-</span><span class="n">SHIFT</span><span class="o">-</span><span class="n">DEL</span>
+<span class="n">CTRL</span> <span class="n">R</span>
+</pre></div>
+</div>
+<p>I get the message - Cannot access the directory XXX-DIR</p>
+<p><img alt="image30" src="../../../_images/image30.png" /></p>
+<p><em>Probable cause</em></p>
+<p>Out of Sync condition or no transaction security.</p>
+<p>If the Virtel cache is out of sync with the DDI/macro settings or you are trying to access DDI macros using a non-secure transaction i.e. TRANSACTION SECURITY=0 ,  then the following page can appear when pressing the macro ICON button.</p>
+<p><em>Solution</em></p>
+<p>Make sure you are using a transactions with security set. DDI will not work if it cannot identify a user by their userid. Refresh the cache with the following commands :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CTRL</span><span class="o">-</span><span class="n">SHIFT</span><span class="o">-</span><span class="n">DEL</span>
+<span class="n">CTRL</span> <span class="n">R</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-https-and-setting-up-a-secure-link">
+<h2>Using HTTPS and setting up a secure link<a class="headerlink" href="#using-https-and-setting-up-a-secure-link" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="defining-a-new-line-and-transaction">
+<h3>Defining a new line and transaction<a class="headerlink" href="#defining-a-new-line-and-transaction" title="Permalink to this headline">¶</a></h3>
+<p>In this section we look at setting up a secure HTTPS link to Virtel. We will be using a STC procedure called SPVIREHV which has been assigned a RACF userid and group. We will need the STC userid when defining the RACF definitions for the KEYRING etc. We will define a new line, along with its related Virtel components such as Entry Points, transactions and terminals. This new line will be bound to port 41003 and will use the services of AT-TLS to secure the connection between the browser and the mainframe. The link will access only one CICS application.</p>
+</div>
+<div class="section" id="creating-the-new-virtel-line">
+<h3>Creating the new Virtel line<a class="headerlink" href="#creating-the-new-virtel-line" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Run the sample template job as listed in Appendix B.</li>
+</ol>
+<p>Modify accordingly to your site standards. In the template example we define a line on Port 41003 with the following Virtel details :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Directory</span><span class="p">:</span>             <span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span>
+<span class="n">Entry</span> <span class="n">Point</span><span class="p">:</span>           <span class="n">SECHOST</span>
+<span class="n">Transaction</span> <span class="n">Prefix</span><span class="p">:</span>    <span class="n">SEC</span>
+<span class="n">Default</span> <span class="n">terminal</span> <span class="n">pool</span><span class="p">:</span> <span class="o">*</span><span class="n">W2HPOOL</span>
+<span class="n">VTAM</span> <span class="n">Relay</span> <span class="n">prefix</span><span class="p">:</span>     <span class="n">SEVTA</span>
+<span class="n">Terminal</span> <span class="n">prefix</span><span class="p">:</span>       <span class="n">SELOC</span>
+<span class="n">Transactions</span><span class="p">:</span>          <span class="n">SEC</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span> <span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">W</span><span class="p">,</span> <span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">P</span><span class="p">,</span> <span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">X</span><span class="p">,</span> <span class="n">SEC</span><span class="o">-</span><span class="mi">04</span><span class="p">,</span> <span class="n">SEC</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">S</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Add the following definition to the Virtel VTAM major node member in VTAMLST</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SEVTA??? APPL  AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32703,EAS=1
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Start up Virtel and display the lines with the following Virtel command :-</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">Virtel</span><span class="p">,</span><span class="n">Lines</span>
+</pre></div>
+</div>
+<p>We should see that the new lines are OPEN and connected to TCP/IP.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">SPTHOLTV</span><span class="p">,</span><span class="n">LINES</span>
+<span class="n">VIR0200I</span> <span class="n">LINES</span>
+<span class="n">VIR0201I</span> <span class="n">VIRTEL</span> <span class="mf">4.59</span> <span class="n">APPLID</span><span class="o">=</span><span class="n">VIRTEL</span>   <span class="n">LINES</span>
+<span class="n">VIR0202I</span> <span class="n">ALLOCATED</span> <span class="n">IP</span> <span class="n">ADDRESS</span> <span class="o">=</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">170.048</span>
+<span class="n">VIR0202I</span> <span class="n">INT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">EXT</span><span class="o">.</span><span class="n">NAME</span> <span class="n">TYPE</span>  <span class="n">ACB</span> <span class="n">OR</span> <span class="n">IP</span>
+<span class="n">VIR0202I</span> <span class="o">--------</span> <span class="o">--------</span> <span class="o">-----</span> <span class="o">---------</span>
+<span class="n">VIR0202I</span> <span class="n">C</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">CLI</span> <span class="n">TCP1</span>  <span class="p">:</span><span class="mi">41002</span>
+<span class="n">VIR0202I</span> <span class="n">E</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">SEC</span> <span class="n">TCP1</span>  <span class="p">:</span><span class="mi">41003</span>
+<span class="n">VIR0202I</span> <span class="n">W</span><span class="o">-</span><span class="n">HTTP</span>   <span class="n">HTTP</span><span class="o">-</span><span class="n">W2H</span> <span class="n">TCP1</span>  <span class="p">:</span><span class="mi">41001</span>
+<span class="n">VIR0202I</span> <span class="o">---</span><span class="n">END</span> <span class="n">OF</span> <span class="n">LIST</span><span class="o">---</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Open a Virtel session on line 41003 with the following URL - 192.168.170.48:41003.</li>
+</ol>
+<p>The APPSTAT menu should appear with just one entry for SPCICST.</p>
+<p><img alt="image31" src="../../../_images/image3110.png" />
+<em>Figure 31 : CICS application under 41003</em></p>
+<p>At this point we have defined a CICS application which is supported by our new line definition. It is still accessed through a unsecured HTTP URL. In the next section we see how to install AT-TLS and secure our new line and any traffic that passes through.</p>
+</div>
+<div class="section" id="configuring-at-tls-to-secure-a-line">
+<h3>Configuring AT-TLS to secure a line<a class="headerlink" href="#configuring-at-tls-to-secure-a-line" title="Permalink to this headline">¶</a></h3>
+<p>To provide secure HTTP (https) sessions between the mainframe and client browsers, VIRTEL uses the services of the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.  AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. The Policy Agent decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. The application continues to send and receive clear text over the socket, but data sent over the network is protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.</p>
+<div class="section" id="tcp-ip-profile">
+<h4>TCP/IP Profile<a class="headerlink" href="#tcp-ip-profile" title="Permalink to this headline">¶</a></h4>
+<p>You need to add the TTLS statement to your TCP/IP profile : -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TCPCONFIG</span>
+   <span class="n">RESTRICTLOWPORTS</span>
+   <span class="n">TTLS</span> <span class="p">;</span> <span class="n">Activate</span> <span class="n">AT</span><span class="o">-</span><span class="n">TLS</span> <span class="p">(</span><span class="n">Application</span> <span class="n">Transparent</span> <span class="n">Transport</span> <span class="n">Layer</span> <span class="n">Security</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-policy-agent">
+<h4>The Policy Agent<a class="headerlink" href="#the-policy-agent" title="Permalink to this headline">¶</a></h4>
+<p>The Policy Agent (PAGENT) is a started task the provides the configuration details required bt AT-TLS to support secure sessions. If you do not already have the Communications Server Policy Agent (PAGENT) active in your z/OS system, copy the catalogued procedure EZAPAGSP from TCPIP.SEZAINST into your PROCLIB, renaming it as PAGENT.</p>
+</div>
+<div class="section" id="setting-up-to-run-at-tls-and-pagent">
+<h4>Setting up to run AT-TLS and PAGENT<a class="headerlink" href="#setting-up-to-run-at-tls-and-pagent" title="Permalink to this headline">¶</a></h4>
+<p>If you do not already run the Policy Agent, you will need to create a configuration file /etc/pagent.conf using z/OS Unix System Services. See the SSLSETUP job in VIRTEL SAMPLIB library.</p>
+<p>This job performs the following steps :-</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">STEP</span> <span class="n">EZBAUTH</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">AT</span><span class="o">-</span><span class="n">TLS</span>
+<span class="n">STEP</span> <span class="n">PROCLIB</span> <span class="p">:</span>   <span class="n">COPY</span> <span class="n">POLICY</span> <span class="n">AGENT</span> <span class="n">PROCEDURE</span>
+<span class="n">STEP</span> <span class="n">IRRAUTH</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">AUTHORIZATIONS</span> <span class="n">FOR</span> <span class="n">CERTIFICATE</span> <span class="n">MANAGEMENT</span>
+<span class="n">STEP</span> <span class="n">DCERTCA</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">DELETE</span> <span class="n">PREVIOUS</span> <span class="n">SIGNING</span> <span class="n">CERTIFICATE</span>
+<span class="n">STEP</span> <span class="n">CCERTCA</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">CREATE</span> <span class="n">SIGNING</span> <span class="n">CERTIFICATE</span>
+<span class="n">STEP</span> <span class="n">DCERTIF</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">DELETE</span> <span class="n">PREVIOUS</span> <span class="n">VIRTEL</span> <span class="n">SERVER</span> <span class="n">CERTIFICATE</span> <span class="n">AND</span> <span class="n">KEYRING</span>
+<span class="n">STEP</span> <span class="n">CCERTIF</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">CREATE</span> <span class="n">VIRTEL</span> <span class="n">SERVER</span> <span class="n">CERTIFICATE</span> <span class="n">AND</span> <span class="n">KEYRING</span>
+<span class="n">STEP</span> <span class="n">LCERTIF</span> <span class="p">:</span>   <span class="n">RACF</span> <span class="n">DISPLAY</span> <span class="n">DIGITAL</span> <span class="n">CERTIFICATES</span> <span class="n">AND</span> <span class="n">KEYRINGS</span>
+</pre></div>
+</div>
+<p>If you already run Policy Agent, you will need to find the existing configuration file and add the Virtel TTLS definitions to it. A sample configuration file can be found in the SAMPLIB library.See the member SSLSETUP.</p>
+<p>Step PCONFIG in the SSLSETUP sample job contains a starter configuration. In both case the following changes should be made :-</p>
+<blockquote>
+<div><ul class="simple">
+<li>Replace %virtjob% by the name of your VIRTEL started task (SSLSETUP line 70)</li>
+<li>Replace 41000-41002 by 41002 in the LocalPortRange parameter (SSLSETUP line 71) to activate AT-TLS for VIRTEL line C-HTTP.</li>
+<li>Replace “ServerWithClientAuth” by “Server” in the HandshakeRole parameter (SSLSETUP line 82). We will not be using Client Certificates at this stage.</li>
+</ul>
+</div></blockquote>
+<p>After changing the PAGENT configuration start the PAGENT task or refresh it with F PAGENT,REFRESH. You Should see the following messages in the SYSLOG: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="n">PAGENT</span><span class="p">,</span><span class="n">REFRESH</span>
+<span class="n">EZZ8771I</span> <span class="n">PAGENT</span> <span class="n">CONFIG</span> <span class="n">POLICY</span> <span class="n">PROCESSING</span> <span class="n">COMPLETE</span> <span class="n">FOR</span> <span class="n">TCPIP</span> <span class="p">:</span> <span class="n">TTLS</span>
+<span class="n">EZZ8443I</span> <span class="n">PAGENT</span> <span class="n">MODIFY</span> <span class="n">COMMAND</span> <span class="n">ACCEPTED</span>
+</pre></div>
+</div>
+<p>Now, when we access the port 41003 with the URL <a class="reference external" href="https://192.168.170.48:41003">https://192.168.170.48:41003</a> we will be presented with some certificate warning errors because of the “Self-Signed” CA certificate we are using. We continue to proceed to the address identified in the browser certificate warning page. Eventually we are presented with the APPLIST for 41003 which includes are CICS transaction :-</p>
+<p><img alt="image32" src="../../../_images/image3210.png" />
+<em>Figure 32: Secure transaction with HTTPS</em></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The “Not Secure” warning. This will not appear if you are not using an approved CA certificate.</p>
+</div>
+<p><strong>Problems</strong></p>
+<p>Is AT-TLS Service active in TCP/IP? Issue the following z/OS command ” D TCPIP,,N,TTLS. The response should be: -</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">EZD0101I</span> <span class="n">NETSTAT</span> <span class="n">CS</span> <span class="n">V1R13</span> <span class="n">TCPIP</span> <span class="mi">706</span>
+<span class="n">TTLSGRPACTION</span> <span class="n">GROUP</span> <span class="n">ID</span> <span class="n">CONNS</span>
+<span class="n">VIRTELGROUP</span> <span class="mi">00000002</span> <span class="mi">3</span>
+<span class="mi">1</span> <span class="n">OF</span> <span class="mi">1</span> <span class="n">RECORDS</span> <span class="n">DISPLAYED</span>
+<span class="n">END</span> <span class="n">OF</span> <span class="n">THE</span> <span class="n">REPORT</span>
+</pre></div>
+</div>
+<p><strong>Some common Pagent Error codes</strong></p>
+<p>The following is a list of common Pagent Error codes that can be seen in the SYSLOG: -</p>
+<blockquote>
+<div><ul class="simple">
+<li>7      No certificate</li>
+<li>8      Certificate not trusted</li>
+<li>109    No CA certificates on ring</li>
+<li>202    Keyring does not exists</li>
+<li>401    Certificate expired</li>
+<li>402/12 Client and server cannot agree cipher suite</li>
+<li>416    Virtel does not have permission to list keyring</li>
+<li>431    Certificate is revoked</li>
+<li>434    Certificate key not compatible with cipher suite</li>
+<li>435    Certificate authority unknown</li>
+<li>5003   Browser sent clear text. HTTP instead of HTTPS used in URL.</li>
+</ul>
+</div></blockquote>
+<p><strong>Virtel Messages</strong></p>
+<p><em>VIRHT57E LINE IS NOT SET UP FOR HTTPS</em></p>
+<p>This means that the browser has sent encypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven”t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line setup required by Virtel.  Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to through to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate.</p>
+</div>
+</div>
+</div>
+<div class="section" id="appendix-a">
+<h2>Appendix A<a class="headerlink" href="#appendix-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="default-w2hparm-parameter-values">
+<h3>Default w2hparm parameter values<a class="headerlink" href="#default-w2hparm-parameter-values" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="25%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyword</th>
+<th class="head">Caption</th>
+<th class="head">Possible values</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>“fontsize”</td>
+<td>Font size</td>
+<td>“window”, “screen”, “8”, “10”, “12”, “14”, “16”</td>
+</tr>
+<tr class="row-odd"><td>“font”</td>
+<td>Font family</td>
+<td>“font name”</td>
+</tr>
+<tr class="row-even"><td>“autocapture”</td>
+<td>Auto-capture</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“autoprint”</td>
+<td>Auto-print</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“cursor”</td>
+<td>Cursor “Bar”,</td>
+<td>“Blink”, “Block”</td>
+</tr>
+<tr class="row-odd"><td>“vline”</td>
+<td>Vertical line</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“hline”</td>
+<td>Horiz line</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“esc”</td>
+<td>Esc key</td>
+<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
+</tr>
+<tr class="row-even"><td>“ctrl”</td>
+<td>Ctrl key</td>
+<td>“no”, “ENTER”, “Newline”</td>
+</tr>
+<tr class="row-odd"><td>“cmdleft”</td>
+<td>Left Cmd key</td>
+<td>“no”, “Reset”</td>
+</tr>
+<tr class="row-even"><td>“cmdright”</td>
+<td>Right Cmd key</td>
+<td>“no”, “ENTER”</td>
+</tr>
+<tr class="row-odd"><td>“enter”</td>
+<td>Enter key</td>
+<td>“ENTER”, “Newline”</td>
+</tr>
+<tr class="row-even"><td>“home”</td>
+<td>Home key</td>
+<td>“no”, “Home”</td>
+</tr>
+<tr class="row-odd"><td>“end”</td>
+<td>End key</td>
+<td>“no”, “ErEof”, “End”</td>
+</tr>
+<tr class="row-even"><td>“pgup”</td>
+<td>PageUp key</td>
+<td>“PF7”, “PF19”, “PA1”, “no”</td>
+</tr>
+<tr class="row-odd"><td>“pgdn”</td>
+<td>PageDown key</td>
+<td>“PF8”, “PF20”, “PA2”, “no”</td>
+</tr>
+<tr class="row-even"><td>“pause”</td>
+<td>Pause key</td>
+<td>“CLEAR”, “ATTN”, “PA3”, “no”</td>
+</tr>
+<tr class="row-odd"><td>“kpenter”</td>
+<td>Keypad Enter</td>
+<td>“ENTER”, “Newline”</td>
+</tr>
+<tr class="row-even"><td>“shiftenter”</td>
+<td>Shift+Enter</td>
+<td>“no”,”ENTER”, “Newline”</td>
+</tr>
+<tr class="row-odd"><td>“shiftesc”</td>
+<td>Shift+Esc</td>
+<td>“no”, “ATTN”, “CLEAR”, “Reset”</td>
+</tr>
+<tr class="row-even"><td>“shiftins”</td>
+<td>Shift+Insert</td>
+<td>“no”, “Dup”</td>
+</tr>
+<tr class="row-odd"><td>“shiftdel”</td>
+<td>Shift+Delete</td>
+<td>“no”, “ErEof”</td>
+</tr>
+<tr class="row-even"><td>“shifthome”</td>
+<td>Shift+Home</td>
+<td>“no”, “FieldMark”, “Home”</td>
+</tr>
+<tr class="row-odd"><td>“shiftend”</td>
+<td>Shift+End</td>
+<td>“no”, “ErEof”, “End”</td>
+</tr>
+<tr class="row-even"><td>“shiftpgdn”</td>
+<td>Shift+PageDown</td>
+<td>“no”, “PA3”</td>
+</tr>
+<tr class="row-odd"><td>“ctrlenter”</td>
+<td>Ctrl+Enter</td>
+<td>“no”,”ENTER”, “Newline”</td>
+</tr>
+<tr class="row-even"><td>“ctrlins”</td>
+<td>Ctrl+Insert</td>
+<td>“no”, “PA1”</td>
+</tr>
+<tr class="row-odd"><td>“ctrldel”</td>
+<td>Ctrl+Delete</td>
+<td>“no”, “PA2”, “ErEof”</td>
+</tr>
+<tr class="row-even"><td>“ctrlhome”</td>
+<td>Ctrl+Home</td>
+<td>“no”, “PA3”, “Home”, “ChgCur”</td>
+</tr>
+<tr class="row-odd"><td>“ctrlend”</td>
+<td>Ctrl+End</td>
+<td>“no”, “ErEof”, “End”</td>
+</tr>
+<tr class="row-even"><td>“altins”</td>
+<td>Alt+Ins</td>
+<td>“no”, “PA1”</td>
+</tr>
+<tr class="row-odd"><td>“althome”</td>
+<td>Alt+Home</td>
+<td>“no”, “PA2”</td>
+</tr>
+<tr class="row-even"><td>“altpgup”</td>
+<td>Alt+PageUp</td>
+<td>“no”, “PA1”</td>
+</tr>
+<tr class="row-odd"><td rowspan="2">“altpgdn”</td>
+<td rowspan="2">Alt+PageDown</td>
+<td rowspan="2">“no”, “PA2”</td>
+</tr>
+<tr class="row-even"></tr>
+<tr class="row-odd"><td>“altpause”</td>
+<td>Alt+Pause</td>
+<td>“no”, “ATTN”, “CLEAR”, “PA3”</td>
+</tr>
+<tr class="row-even"><td>“altf1”</td>
+<td>Alt+F1</td>
+<td>“no”, “PA1”, “ENTER”</td>
+</tr>
+<tr class="row-odd"><td>“altf2”</td>
+<td>Alt+F2</td>
+<td>“no”, “PA2”</td>
+</tr>
+<tr class="row-even"><td>“altf3”</td>
+<td>Alt+F3</td>
+<td>“no”, “PA3”, “ChgCur”</td>
+</tr>
+<tr class="row-odd"><td>“kpslash”</td>
+<td>Keypad /</td>
+<td>“/”, “PA1”</td>
+</tr>
+<tr class="row-even"><td>“kpaster”</td>
+<td>Keypad *</td>
+<td>“*”, “PA2”</td>
+</tr>
+<tr class="row-odd"><td>“kpminus”</td>
+<td>Keypad -</td>
+<td>“-“, “Backtab”</td>
+</tr>
+<tr class="row-even"><td>“kpplus”</td>
+<td>Keypad +</td>
+<td>“+”, “Tab”, “Newline”</td>
+</tr>
+<tr class="row-odd"><td>“kpdot”</td>
+<td>Keypad .</td>
+<td>“.”, “,”</td>
+</tr>
+<tr class="row-even"><td>“dblclick”</td>
+<td>Double Click</td>
+<td>“Word”, “ENTER”, “no”</td>
+</tr>
+<tr class="row-odd"><td>“urlhotspot”</td>
+<td>URL hotspots</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“pfkhotspot”</td>
+<td>PF key hotspots</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“pasteereof”</td>
+<td>Paste erase EOF</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“pastetyping”</td>
+<td>Map Ctrl+V to Paste
+by Typing</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“movecursor”</td>
+<td>Move cursor on activat</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“style”</td>
+<td>Style</td>
+<td>“3270”, “gray”, “white”</td>
+</tr>
+<tr class="row-odd"><td>“printstyle”</td>
+<td>Print style</td>
+<td>“3270”, “color”, “white”</td>
+</tr>
+<tr class="row-even"><td>“rtm”</td>
+<td>Response time monitor</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“omitnulls”</td>
+<td>Omit nulls from input</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“keepmacpad”</td>
+<td>Keep macro pad open</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“keepkeypad”</td>
+<td>Keep keypad open</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“hiliteinput”</td>
+<td>Highlight input fields</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“caretnot”</td>
+<td>Remap ^ to logical not</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“adaptfontratio”</td>
+<td>Adapt font size ratio</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“charspace”</td>
+<td>Character spacing</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“linespace”</td>
+<td>Line spacing</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“settingsGUI”</td>
+<td>Uuser interface type</td>
+<td>v2</td>
+</tr>
+<tr class="row-even"><td>“preservein”</td>
+<td>Preserve insert mode</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“nolongpoll”</td>
+<td>AsynchSupport</td>
+<td>true, false</td>
+</tr>
+<tr class="row-even"><td>“MirrorMode”</td>
+<td>BiDirectional mode</td>
+<td>true, false</td>
+</tr>
+<tr class="row-odd"><td>“NOstretch”</td>
+<td>Font Size Stretch</td>
+<td>true, false</td>
+</tr>
+</tbody>
+</table>
+<p><em>Default W2H parameters: List of keywords and possible values</em></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some settings my be deprecated and therefore may no longer be in use. They remain for reasons of downward compatibility.</p>
+</div>
+</div>
+</div>
+<div class="section" id="appendix-b">
+<h2>Appendix B<a class="headerlink" href="#appendix-b" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="template-job-for-adding-a-new-line-to-virtel">
+<h3>Template job for adding a new line to Virtel.<a class="headerlink" href="#template-job-for-adding-a-new-line-to-virtel" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">ARBO</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">CONFIG</span>  <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,NOREPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span>      <span class="n">DD</span> <span class="o">*</span>
+      <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">SELOC000</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Psuedo Terminals&#39;</span><span class="p">,</span>                                <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                <span class="o">-</span>
+               <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0016</span>
+      <span class="n">TERMINAL</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEVTA000</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">RELAY</span><span class="o">=*</span><span class="n">W2HPOOL</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP terminals (with relay)&#39;</span><span class="p">,</span>                     <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">COMPRESS</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">INOUT</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>                                                <span class="o">-</span>
+               <span class="n">STATS</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span>                                               <span class="o">-</span>
+               <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0016</span>
+      <span class="n">SUBDIR</span>   <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SEC directory&#39;</span><span class="p">,</span>                                   <span class="o">-</span>
+               <span class="n">DDNAME</span><span class="o">=</span><span class="n">HTMLTRSF</span><span class="p">,</span>                                        <span class="o">-</span>
+               <span class="n">KEY</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="n">KEY</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">NAMELEN</span><span class="o">=</span><span class="mi">0064</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">AUTHUP</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>                                               <span class="o">-</span>
+               <span class="n">AUTHDOWN</span><span class="o">=</span><span class="n">X</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">AUTHDEL</span><span class="o">=</span><span class="n">X</span>
+      <span class="n">ENTRY</span>    <span class="n">ID</span><span class="o">=</span><span class="n">SECHOST</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTPS entry point (Secure applications)&#39;</span><span class="p">,</span>         <span class="o">-</span>
+               <span class="n">TRANSACT</span><span class="o">=</span><span class="n">SEC</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0720</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+               <span class="n">EMUL</span><span class="o">=</span><span class="n">HTML</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SIGNON</span><span class="o">=</span><span class="n">VIR0020H</span><span class="p">,</span>                                        <span class="o">-</span>
+               <span class="n">MENU</span><span class="o">=</span><span class="n">VIR0021A</span><span class="p">,</span>                                          <span class="o">-</span>
+               <span class="n">IDENT</span><span class="o">=</span><span class="n">SCENLOGM</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">SCENDIR</span><span class="o">=</span><span class="n">SCE</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                        <span class="o">-</span>
+               <span class="n">EXTCOLOR</span><span class="o">=</span><span class="n">E</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">00</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="n">SECHOST</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Default Directory&#39;</span><span class="p">,</span>                               <span class="o">-</span>
+               <span class="n">APPL</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">TERMINAL</span><span class="o">=</span><span class="n">SELOC</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">TIOASTA</span><span class="o">=</span><span class="s1">&#39;/w2h/appmenu.htm+applist&#39;</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">CO</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="n">OPTION</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Path to the OPT-DIR directory&#39;</span><span class="p">,</span>                   <span class="o">-</span>
+               <span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">TERMINAL</span><span class="o">=</span><span class="n">SELOC</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">P</span><span class="p">,</span>                                             <span class="o">-</span>
+            <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;w2h&#39;</span><span class="p">,</span>                                             <span class="o">-</span>
+            <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Directory for w2hparm&#39;</span><span class="p">,</span>                           <span class="o">-</span>
+            <span class="n">APPL</span><span class="o">=</span><span class="n">CLI</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                           <span class="o">-</span>
+            <span class="n">PASSTCKT</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                             <span class="o">-</span>
+            <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>                                                 <span class="o">-</span>
+            <span class="n">TERMINAL</span><span class="o">=</span><span class="n">SELOC</span><span class="p">,</span>                                         <span class="o">-</span>
+            <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                              <span class="o">-</span>
+            <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                             <span class="o">-</span>
+            <span class="n">LOGMSG</span><span class="o">=</span><span class="s1">&#39;/w2h/w2hparm-js&#39;</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">W</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;w2h&#39;</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;W2H toolkit directory (/w2h)&#39;</span><span class="p">,</span>                    <span class="o">-</span>
+               <span class="n">APPL</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">X</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;SEC&#39;</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;SEC directory (/SEC)&#39;</span><span class="p">,</span>                            <span class="o">-</span>
+               <span class="n">APPL</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">04</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;CICS&#39;</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;CICS&#39;</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">APPL</span><span class="o">=</span><span class="n">SPCICST</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">TERMINAL</span><span class="o">=</span><span class="n">SEVTA</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">STARTUP</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SECURITY</span><span class="o">=</span><span class="mi">0</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;applist&#39;</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;List of applications for appmenu.htm&#39;</span><span class="p">,</span>            <span class="o">-</span>
+               <span class="n">APPL</span><span class="o">=</span><span class="n">VIR0021S</span><span class="p">,</span>                                          <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">TERMINAL</span><span class="o">=</span><span class="n">SELOC</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span>
+      <span class="n">TRANSACT</span> <span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">S</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="s1">&#39;uplSEC&#39;</span><span class="p">,</span>                                          <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;Upload macros (SEC-DIR directory)&#39;</span><span class="p">,</span>               <span class="o">-</span>
+               <span class="n">APPL</span><span class="o">=</span><span class="n">VIR0041C</span><span class="p">,</span>                                          <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                                 <span class="o">-</span>
+               <span class="n">TERMINAL</span><span class="o">=</span><span class="n">DELOC</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">STARTUP</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">SECURITY</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">LOGMSG</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span>
+      <span class="n">LINE</span>     <span class="n">ID</span><span class="o">=</span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">NAME</span><span class="o">=</span><span class="n">HTTP</span><span class="o">-</span><span class="n">SEC</span><span class="p">,</span>                                          <span class="o">-</span>
+               <span class="n">LOCADDR</span><span class="o">=</span><span class="p">:</span><span class="mi">41003</span><span class="p">,</span>                                         <span class="o">-</span>
+               <span class="n">DESC</span><span class="o">=</span><span class="s1">&#39;HTTP line (entry point SECHOST)&#39;</span><span class="p">,</span>                 <span class="o">-</span>
+               <span class="n">TERMINAL</span><span class="o">=</span><span class="n">SE</span><span class="p">,</span>                                            <span class="o">-</span>
+               <span class="n">ENTRY</span><span class="o">=</span><span class="n">SECHOST</span><span class="p">,</span>                                          <span class="o">-</span>
+               <span class="n">TYPE</span><span class="o">=</span><span class="n">TCP1</span><span class="p">,</span>                                              <span class="o">-</span>
+               <span class="n">INOUT</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>                                                <span class="o">-</span>
+               <span class="n">PROTOCOL</span><span class="o">=</span><span class="n">VIRHTTP</span><span class="p">,</span>                                       <span class="o">-</span>
+               <span class="n">TIMEOUT</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                           <span class="o">-</span>
+               <span class="n">ACTION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>                                               <span class="o">-</span>
+               <span class="n">WINSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">PKTSZ</span><span class="o">=</span><span class="mi">0000</span><span class="p">,</span>                                             <span class="o">-</span>
+               <span class="n">RETRY</span><span class="o">=</span><span class="mi">0010</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="appendix-c">
+<h2>Appendix C<a class="headerlink" href="#appendix-c" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="template-job-for-deleting-a-virtel-line">
+<h3>Template job for deleting a Virtel line.<a class="headerlink" href="#template-job-for-deleting-a-virtel-line" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">LOAD</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">LOADLIB</span>
+<span class="o">//</span> <span class="n">SET</span> <span class="n">ARBO</span><span class="o">=</span><span class="n">SPTHOLT</span><span class="o">.</span><span class="n">VIRT459</span><span class="o">.</span><span class="n">ARBO</span>
+<span class="o">//*</span>
+<span class="o">//</span><span class="n">CONFIG</span>  <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">VIRCONF</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="s1">&#39;LOAD,REPL&#39;</span><span class="p">,</span><span class="n">REGION</span><span class="o">=</span><span class="mi">2</span><span class="n">M</span>
+<span class="o">//</span><span class="n">STEPLIB</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">LOAD</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSPRINT</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">SYSUDUMP</span> <span class="n">DD</span>  <span class="n">SYSOUT</span><span class="o">=*</span>
+<span class="o">//</span><span class="n">VIRARBO</span>  <span class="n">DD</span>  <span class="n">DSN</span><span class="o">=&amp;</span><span class="n">ARBO</span><span class="p">,</span><span class="n">DISP</span><span class="o">=</span><span class="n">SHR</span>
+<span class="o">//</span><span class="n">SYSIN</span>      <span class="n">DD</span> <span class="o">*</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">00</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">P</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">CO</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">W</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">03</span><span class="n">X</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">04</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="mi">90</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TRANSACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">W2H</span><span class="o">-</span><span class="mi">80</span><span class="n">S</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TERMINAL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SELOC000</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">TERMINAL</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEVTA000</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">ENTRY</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SECHOST</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">LINE</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">E</span><span class="o">-</span><span class="n">HTTP</span>
+<span class="n">DELETE</span> <span class="n">TYPE</span><span class="o">=</span><span class="n">SUBDIR</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">SEC</span><span class="o">-</span><span class="n">DIR</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 
 

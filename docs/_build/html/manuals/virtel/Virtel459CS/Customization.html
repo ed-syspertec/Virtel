@@ -319,7 +319,7 @@ their respective owners.</p>
 </pre></div>
 </div>
 <p>The “option” pathname is normally associated with the OPT-DIR. The directory is pointed to by the OPTION transaction CLI-03CO and by default is the CLI-DIR:</p>
-<p><img alt="image33" src="../../../_images/image338.png" /></p>
+<p><img alt="image33" src="../../../_images/image3311.png" /></p>
 <p><em>Example of option transaction</em></p>
 <p>Each property of the global-settings object uses a “pathTo” property which has the following pattern:- “pathTo.key.id.type” where:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">key</span>     <span class="o">=</span> <span class="n">W2hparm</span> <span class="o">|</span> <span class="n">CssCustom</span> <span class="o">|</span> <span class="n">JSCustom</span> <span class="o">|</span> <span class="n">PrintCss</span> <span class="o">|</span> <span class="n">Help</span>  <span class="n">Case</span> <span class="n">sensitive</span><span class="o">.</span>
@@ -455,7 +455,7 @@ custjJS.myOptions.js - customized java script file for “myOptions”.</dd>
 <li>The status line at the bottom includes the monitoring zone (4), particulars of the terminals associated with the session(5), mode and cursor position (6).</li>
 <li>The area between the Tool Bar and the status bar is used to display the contents of 3270 screens, it can be of variable size between 24x80 and 62x132.</li>
 </ul>
-<p><img alt="image1" src="../../../_images/image180.png" />
+<p><img alt="image1" src="../../../_images/image188.png" />
 <em>The VWA 3270 screen areas</em></p>
 <div class="section" id="title">
 <h4>Title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h4>
@@ -497,7 +497,7 @@ information. Some of those component can be removed, added or modified.</p>
 </div>
 <p><em>Example w2hparm.js to allow users to enable/disable the Tool Bar display</em></p>
 <p>If this option is enabled, the “Alt + Insert” and “Alt + Home” keys in the Key Mappings tab control the “Tool bar” display. The user can these key assignments to control the Tool Bar display.</p>
-<p><a class="reference internal" href="../../../_images/image250.png"><img alt="image2" src="../../../_images/image250.png" style="width: 390.0px; height: 592.5px;" /></a></p>
+<p><a class="reference internal" href="../../../_images/image260.png"><img alt="image2" src="../../../_images/image260.png" style="width: 390.0px; height: 592.5px;" /></a></p>
 <p><em>Key Mappings Setting Tab</em></p>
 <p id="index-18">These two assignments can also be predefined in the w2hparm.js file by using the commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
@@ -562,9 +562,9 @@ information. Some of those component can be removed, added or modified.</p>
 </pre></div>
 </div>
 <p><em>Example custom.css for coloring the Tool Bar according to CICS region</em></p>
-<p><img alt="image3" src="../../../_images/image339.png" />
+<p><img alt="image3" src="../../../_images/image346.png" />
 <em>Web Access screen with yellow Tool Bar for SPCICSP</em></p>
-<p><img alt="image4" src="../../../_images/image438.png" />
+<p><img alt="image4" src="../../../_images/image440.png" />
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
@@ -894,7 +894,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <div class="section" id="showing-hiding-server-information">
 <span id="index-37"></span><h5>Showing / Hiding server information<a class="headerlink" href="#showing-hiding-server-information" title="Permalink to this headline">¶</a></h5>
 <p>It is sometimes useful to have a clear visual indication of which server a user is logged on to, its version and the maintenance level applied on the system. By default, the value specified into the APPLID parameter of the VIRTCT is displayed at the top-right of the Tool Bar as shown below. This information is followed by the running version number and the Virtel Web access level of maintenance used. This last information is enclosed in parentheses.</p>
-<p><img alt="image7" src="../../../_images/image730.png" /></p>
+<p><img alt="image7" src="../../../_images/image737.png" /></p>
 <p>The running version and the level of maintenance cannot be hidden, only the server name can be <strong>permanently</strong> removed by modifying the w2hparm.hideinfo property in a customized w2hparms.js file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
 <span class="o">*</span> <span class="n">Configuration</span> <span class="n">of</span> <span class="n">the</span> <span class="n">server</span> <span class="n">name</span> <span class="n">connected</span> <span class="n">to</span><span class="o">.</span>
@@ -964,7 +964,7 @@ This can be done by using the removetoolbarbutton function using the appropriate
 <div class="section" id="status-bar">
 <span id="index-41"></span><h3>Status bar<a class="headerlink" href="#status-bar" title="Permalink to this headline">¶</a></h3>
 <p>The status bar of the VWA user interface is located at the bottom and includes the monitoring zone (4), particulars of the terminals associated with the session (5), mode and cursor position (6).</p>
-<p><img alt="image7" src="../../../_images/image730.png" />
+<p><img alt="image7" src="../../../_images/image737.png" />
 <em>The VWA 3270 screen’s areas</em></p>
 <div class="section" id="how-to-deactivate-the-virtel-status-bar">
 <span id="index-42"></span><h4>How to deactivate the Virtel status bar<a class="headerlink" href="#how-to-deactivate-the-virtel-status-bar" title="Permalink to this headline">¶</a></h4>
@@ -1070,7 +1070,7 @@ was sent by VWA to the browser.</p>
 <div class="section" id="dynamic-directory-interface-ddi">
 <span id="index-47"></span><h2>Dynamic Directory Interface (DDI)<a class="headerlink" href="#dynamic-directory-interface-ddi" title="Permalink to this headline">¶</a></h2>
 <p>The Dynamic Directory Interface is intended for use by Virtel Administrators in managing dynamic directories dedicated to supporting centralized macros associated with users and user groups. The DDI interface is accessible from the Administration Portal, normally served by port 40001 and the associated W-HTTP line.</p>
-<p><img alt="image26" src="../../../_images/image2610.png" /></p>
+<p><img alt="image26" src="../../../_images/image2611.png" /></p>
 <p><em>Accessing the Dynamic Directory Interface</em></p>
 </div>
 <div class="section" id="virtel-lines">
@@ -1079,7 +1079,7 @@ was sent by VWA to the browser.</p>
 <span id="index-49"></span><h3>Starting and stopping a line<a class="headerlink" href="#starting-and-stopping-a-line" title="Permalink to this headline">¶</a></h3>
 <p>By default, a line is automatically initialized at Virtel startup, and is terminated when Virtel stops. In some cases, the handling of line initialization/termination needs to be managed differently:</p>
 <p id="index-50">Determining the initial state of a line is determined by the “Possible Calls” parameter of the line definition.</p>
-<p><img alt="image27" src="../../../_images/image2710.png" /></p>
+<p><img alt="image27" src="../../../_images/image2711.png" /></p>
 <p><em>Line definition - Possible Calls Parameter</em></p>
 <p><strong>Initialization through “Possible Calls” definition</strong></p>
 <p>A “Possible Calls” determines the possible direction of communication and can have one of four values:-</p>
@@ -1274,9 +1274,9 @@ EHPMA00? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=SNX32702,EAS=1
 </div>
 <p><em>Example of a batch job to pass the work station name</em></p>
 <p>The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:</p>
-<p><img alt="image10" src="../../../_images/image1024.png" /></p>
+<p><img alt="image10" src="../../../_images/image1025.png" /></p>
 <p>When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.</p>
-<p><img alt="image11" src="../../../_images/image1128.png" /></p>
+<p><img alt="image11" src="../../../_images/image1129.png" /></p>
 <p>The Virtel RULE has forced an LU name prefixed EHPMA00* to be used from the the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated. In the VTAM display we can see that a session has been set up using that LU name:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>D NET,ID=EHPMA000,E
 IST097I DISPLAY ACCEPTED
@@ -1323,7 +1323,7 @@ NETMASK=255.255.255.255
 </pre></div>
 </div>
 <p>We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.</p>
-<p><img alt="image28" src="../../../_images/image2811.png" /></p>
+<p><img alt="image28" src="../../../_images/image2812.png" /></p>
 <p>The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME (This could support a range from EHPMA000 through to EHPMA009</p>
 </div>
 <div class="section" id="lu-nailing-using-an-lu-name-no-predefined-terminal">
@@ -1336,16 +1336,16 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <li>Transactions must specify $LINE$ in the “Pseudo-terminals” field.</li>
 </ul>
 <p>Line definition</p>
-<p><img alt="image12" src="../../../_images/image1222.png" /></p>
+<p><img alt="image12" src="../../../_images/image1223.png" /></p>
 <p><em>Pool definition for non-predefined LU Names</em></p>
-<p><img alt="image13" src="../../../_images/image1319.png" /></p>
+<p><img alt="image13" src="../../../_images/image1320.png" /></p>
 <p><em>Transaction definition</em></p>
-<p><img alt="image14" src="../../../_images/image1418.png" /></p>
+<p><img alt="image14" src="../../../_images/image1419.png" /></p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Note that the Pseudo-Terminal is defined as $LINE$. We have also assign a printer definition to this set-up. So if our LU relay name was HOLTWIN7 then our associated printer LU would be HOLTWINP.Accessing the transaction TSOF would be through the following URL forcing the relay LU NAME to HOLTWIN7. We would still have to define a terminal pool for DYNPOOL,but we avoid having to define individual terminal definitions, or ranges of, for every static terminals.</p>
 </div>
-<p><img alt="image15" src="../../../_images/image1515.png" /></p>
+<p><img alt="image15" src="../../../_images/image1518.png" /></p>
 </div>
 <div class="section" id="lu-nailing-using-a-cookie-correspondent-sub-application">
 <span id="index-59"></span><h3>Lu Nailing using a cookie (Correspondent Sub Application)<a class="headerlink" href="#lu-nailing-using-a-cookie-correspondent-sub-application" title="Permalink to this headline">¶</a></h3>
@@ -1402,7 +1402,7 @@ grab a terminal entry from a pool and use the LU name passed in the URL as the r
 <div class="section" id="virtel-multi-session-within-virtel-web-access">
 <span id="index-62"></span><h3>Virtel Multi-session Within Virtel Web Access<a class="headerlink" href="#virtel-multi-session-within-virtel-web-access" title="Permalink to this headline">¶</a></h3>
 <p>In some situations, it is necessary to allow a group of users to simultaneously access several distinct 3270 applications. This can be solved by using the “appmenu.htm” associated with the “applist” transaction, or by using the 3270 Multi-session function of Virtel. In the first situation, for a same original calling terminal, Virtel uses as many relays as VTAM open sessions, in the second configuration, a single relay is used for all sessions, Virtel ensuring the swapping between the opened session. To access the Multi-session function of Virtel, you must define a transaction whose application name is the same as the main Virtel ACB name. This transaction is accessible in the same way as any other VTAM application. As the first screen shown is a signature screen, the transaction does not necessarily need to be secured. The lists of applications presented to the user depends on the selected parameter setting (See the Virtel Multi-session documented section for further information on this subject). Use of the multi-session Virtel module, even in a VWA context, requires an appropriate license agreement.</p>
-<p><img alt="image29" src="../../../_images/image298.png" /></p>
+<p><img alt="image29" src="../../../_images/image299.png" /></p>
 <p><em>Transaction definition for the Virtel Multi-session module</em></p>
 </div>
 <div class="section" id="directly-access-host-applications-by-url">
@@ -1424,7 +1424,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 </pre></div>
 </div>
 <p>The example below shows the default transaction for the WEB2HOST entry point set up to go directly to the transaction whose external name is “CICS”:</p>
-<p><img alt="image30" src="../../../_images/image307.png" /></p>
+<p><img alt="image30" src="../../../_images/image308.png" /></p>
 <p><em>Example of default URL</em></p>
 <p>For more information see Virtel URL formats in the Virtel Web Access Users Guide.</p>
 </div>
@@ -1447,7 +1447,7 @@ subsequent screen sent by the application. For more information about how VIRTEL
 <span id="index-66"></span><h4>LOGMODE defined by the transaction<a class="headerlink" href="#logmode-defined-by-the-transaction" title="Permalink to this headline">¶</a></h4>
 <p>With this method, the administrator defines multiple VIRTEL transactions for a single application, each transaction specifying a different logmode. For example, transactions Tso2 and Tso5 delivered in the sample configuration both define TSO as the target application, but specify different logmodes SNX32702 and SNX32705 respectively. The user selects the desired transaction from the applist menu displayed by the “Other applications” link in the VIRTEL Web Access menu.</p>
 <p>The figure below shows the definition of the Tso5 transaction defined under the WEB2HOST entry point:</p>
-<p><img alt="image31" src="../../../_images/image3117.png" /></p>
+<p><img alt="image31" src="../../../_images/image3118.png" /></p>
 <p><em>Example of TSO transaction TSO specifying logmode SNX32705</em></p>
 <p>The URL to access this transaction could be of the format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">n</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB3270</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso5</span>
@@ -1594,7 +1594,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <span id="index-75"></span><h4>Closing the browser window automatically<a class="headerlink" href="#closing-the-browser-window-automatically" title="Permalink to this headline">¶</a></h4>
 <p>Sites who wish to close the browser window and return to the desktop when the user disconnects from the host application may specify close.htm in the “Last page” field of the entry point definition. This page contains JavaScript code which will attempt to close the current browser window. Depending on the browser version and security settings, the window may close, a prompt may be issued, or the window may remain open. The close.htm page is delivered as standard in the W2H-DIR directory but may be copied to another directory if required, for example CLI-DIR.</p>
 <p>The figure below shows an example of an entry point definition with close.htm specified as the “Last page”:</p>
-<p><img alt="image32" src="../../../_images/image3216.png" /></p>
+<p><img alt="image32" src="../../../_images/image3218.png" /></p>
 <p><em>Example of entry point with last page</em></p>
 </div>
 </div>
@@ -1637,10 +1637,10 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <h5>User Interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h5>
 <p id="index-78"><strong>Macro functions</strong></p>
 <p>You can capture and list macros by using the two macro ICON functions displayed in the Virtel Tool Bar. These are the red record/stop button and the green triangular play/display button. Green indicates local mode and will display the macros held in local storage.</p>
-<p><img alt="image34" src="../../../_images/image345.png" /></p>
+<p><img alt="image34" src="../../../_images/image347.png" /></p>
 <p><em>The local storage record and play/display macro buttons</em></p>
 <p>The record function is an on/off button that will record key strokes. When recording, the ICON will flash until it is clicked at which point it will stop recording and save the key strokes. A save panel will be displayed asking for the name of the macro entry. Note that an ENTER/PFK key must be pressed at least once, i.e. data must be sent by some key operation in order to create and save an entry within the macro.JSON file.</p>
-<p><img alt="image35" src="../../../_images/image355.png" /></p>
+<p><img alt="image35" src="../../../_images/image356.png" /></p>
 <p><em>Creating a new macro</em></p>
 <p id="index-79"><strong>Keyboard mapping</strong></p>
 <p>When saving the macro you have the option of assigning a “hot key” or shortcut to the macro through keyboard mapping. Keyboard mapping can be a combination of ALT or CTRL keys and another keyboard key (F1 thru F12, A thru to Z, 1 thru 9). Beware that some keyboard combinations may be reserved for the operating system or Virtel functions. For example, CTRL-R is a browser refresh option. Allocating this combination as a hotkey will only invoke the refresh option and not the Virtel macro. Keyboard mapping is a feature that is turned on through a parameter in the w2hparm.js file. By default, keyboard mapping is set to false. To turn on keyboard mapping specify the following in the w2hparm.js member:</p>
@@ -1648,7 +1648,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>With keyboard mapping enabled the macro interface will display the associated key mapping against the macro.</p>
-<p><img alt="image36" src="../../../_images/image365.png" /></p>
+<p><img alt="image36" src="../../../_images/image366.png" /></p>
 <p><em>Saving a macro with keyboard mapping</em></p>
 <p id="index-80"><strong>Settings for macros</strong></p>
 <p>Although local macros will work “out of the box” most users would probably want to have the key mapping option set. To use this function the global options parameters must be customized to add the w2hparm.keymapping=true to the w2hparm options file. The following instructions can be used as an example as to how to set up global w2hparm customization for the CLI port 41002. Create the following two JavaScript members and upload them to the CLI-DIR directory:</p>
@@ -1668,7 +1668,7 @@ must be uploaded to the same directory as specified in the URL for the host appl
 <p>These setup will use the customized w2hparms for CLI from the member w2hparms.global.js. The keymapping property has been set to true.</p>
 <p id="index-81"><strong>The Display Record/Play Buttons</strong></p>
 <p>The green triangular button will display the local storage macros. From here a context menu can be opened against each macro using the mouse right click. This will provide delete, edit, save as and run functions.</p>
-<p><img alt="image37" src="../../../_images/image375.png" /></p>
+<p><img alt="image37" src="../../../_images/image376.png" /></p>
 <p><em>Displaying the local macros</em></p>
 <p id="index-82"><strong>Export and Import Options</strong></p>
 <p>Macros can be exported or imported using the Export and Import buttons. On export, the MACROS.JSON file will be created. If you plan to migrate to using the DDI option you will need to export the macros and then upload the relevant MACROS.JSON file through the DDI interface.</p>
@@ -1831,10 +1831,10 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>The following panel should now pop up:</p>
-<p><img alt="image42" src="../../../_images/image4212.png" /></p>
+<p><img alt="image42" src="../../../_images/image4213.png" /></p>
 <p><em>Creating a MACROS.JSON file</em></p>
 <p>Saved the macro with the name SDSF. Now, press the Green ICON. The macro should appear in the local list and would have been saved to local browser storage. To run the macro press the green arrow to the left of the macro name SDSF.</p>
-<p><img alt="image43" src="../../../_images/image439.png" /></p>
+<p><img alt="image43" src="../../../_images/image4311.png" /></p>
 <p>Next, we need to create a “MACROS.JSON” file by exporting the SDSF macro we have just created.</p>
 </div>
 <div class="section" id="uploading-macros-to-the-centralized-repository">
@@ -1895,7 +1895,7 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <p class="first admonition-title">Note</p>
 <p class="last">Press the Refresh button after “deleting” the user macro.</p>
 </div>
-<p><img alt="image51" src="../../../_images/image5113.png" />
+<p><img alt="image51" src="../../../_images/image5114.png" />
 <em>Deleting macros from user’s list</em></p>
 <p>The process of moving macros between the various DDI levels, USER, GROUP and GLOBAL, can be applied using the procedure described above. You must “download” and then “upload” using the DDI drag and drop interface to move macros between levels. Also, remember that all macros are associated with a JSON file – MACROS.JSON. One such file will exist for each USER,  GROUP and there will be only one global MARCOS.JSON file available to all users.</p>
 <p>It is not recommended that you EDIT a downloaded MACROS.JSON file unless you have an understanding of JavaScript and JSON objects. It is better the use the online “EDIT” functions associated with the DDI interface or that of the Macro display list. Right click either against the MACROS.JSON file or the individual Macros listed in the TSO session will bring up the Editor function.</p>
@@ -1914,7 +1914,7 @@ Note, the “COPY” option cannot be used to move MACRO.JSON files to another d
 <div class="section" id="out-of-sync-condition-or-no-transaction-security">
 <h5>Out of Sync condition or no transaction security<a class="headerlink" href="#out-of-sync-condition-or-no-transaction-security" title="Permalink to this headline">¶</a></h5>
 <p>If the Virtel cache is out of sync with the DDI/macro settings or you are trying to access DDI macros using a non-secure transaction i.e. TRANSACTION SECURITY=0  then following page can appear when pressing the macro ICON:-</p>
-<p><img alt="image52" src="../../../_images/image5211.png" /></p>
+<p><img alt="image52" src="../../../_images/image5213.png" /></p>
 <p><em>Out of Sync. Problem</em></p>
 <p><strong>Solution</strong></p>
 <ul>
@@ -2234,7 +2234,7 @@ the following SSL protocol or handshake during the “hello” phase of establis
 </pre></div>
 </div>
 <p>Similar details can be found in the browser settings. For example here is what Chrome displays in the HTTPS/SSL certificate database.</p>
-<p><img alt="image18" src="../../../_images/image187.png" /></p>
+<p><img alt="image18" src="../../../_images/image189.png" /></p>
 </div>
 <div class="section" id="types-of-certificates">
 <h5>Types of certificates<a class="headerlink" href="#types-of-certificates" title="Permalink to this headline">¶</a></h5>
@@ -2394,9 +2394,9 @@ the following SSL protocol or handshake during the “hello” phase of establis
 <span id="index-113"></span><h5>Importing the certificate on the client work station.<a class="headerlink" href="#importing-the-certificate-on-the-client-work-station" title="Permalink to this headline">¶</a></h5>
 <p>To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the
 certificate import wizard is run to import the certificate.</p>
-<p><img alt="image19" src="../../../_images/image1910.png" /></p>
+<p><img alt="image19" src="../../../_images/image1911.png" /></p>
 <p>After importing the following panel is displayed:</p>
-<p><img alt="image20" src="../../../_images/image2010.png" /></p>
+<p><img alt="image20" src="../../../_images/image2011.png" /></p>
 <p>At this stage we have completed our certificate generation. Through the use of the certificates we will be able to initiate a secure session (https) with an application and obtain a user id.</p>
 </div>
 </div>
@@ -2484,20 +2484,20 @@ you have made changes you can issue the following z/OS command:</p>
 <div class="section" id="configuring-virtel-cics-example">
 <span id="index-116"></span><h4>Configuring Virtel - CICS Example<a class="headerlink" href="#configuring-virtel-cics-example" title="Permalink to this headline">¶</a></h4>
 <p>The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.</p>
-<p><img alt="image21" src="../../../_images/image2121.png" /></p>
+<p><img alt="image21" src="../../../_images/image2122.png" /></p>
 <p><em>Note that PassTicket is set to 2.</em> This will enable Virtel to generate a temporary password. Security is set to 3. This indicates that Virtel will receive a USERID based upon the user certificate used in the authentication process. The TIOA at logon is a string that will logon to the CICS application using the user id and password values that Virtel has
 obtained.</p>
 <p>With this configuration we can logon to our CICS application without the user presenting any user id or password. This is very much like the Express Logon Facility implemented in our Telnet clients.</p>
 <div class="section" id="logon-example">
 <h5>Logon Example<a class="headerlink" href="#logon-example" title="Permalink to this headline">¶</a></h5>
 <p>In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is <a class="reference external" href="https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS">https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS</a>; you will replace the IP address with your own installation IP address or domain name.</p>
-<p><img alt="image22" src="../../../_images/image2219.png" /></p>
+<p><img alt="image22" src="../../../_images/image2220.png" /></p>
 <p>We are presented with a « Select a certificate » window from the browser requesting the certificate we wish to user for authenication purposes. We select the certificate we downloaded. The next panel is a warning panel which identifes that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certifcate.</p>
-<p><img alt="image23" src="../../../_images/image2313.png" /></p>
+<p><img alt="image23" src="../../../_images/image2316.png" /></p>
 <p>We select Advanced and are then presented with information about the certificate.</p>
-<p><img alt="image24" src="../../../_images/image2410.png" /></p>
+<p><img alt="image24" src="../../../_images/image2412.png" /></p>
 <p>We select the “Proceed” link.</p>
-<p><img alt="image25" src="../../../_images/image2510.png" /></p>
+<p><img alt="image25" src="../../../_images/image2511.png" /></p>
 <p>We are signed into CICS without having to specify any user id or password.</p>
 </div>
 </div>
