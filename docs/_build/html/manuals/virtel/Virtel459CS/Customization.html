@@ -564,7 +564,7 @@ information. Some of those component can be removed, added or modified.</p>
 <p><em>Example custom.css for coloring the Tool Bar according to CICS region</em></p>
 <p><img alt="image3" src="../../../_images/image346.png" />
 <em>Web Access screen with yellow Tool Bar for SPCICSP</em></p>
-<p><img alt="image4" src="../../../_images/image440.png" />
+<p><img alt="image4" src="../../../_images/image447.png" />
 <em>Web Access screen with pink Tool Bar for SPCICSQ</em></p>
 </div>
 <div class="section" id="add-a-web-link-in-the-tool-bar">
@@ -1805,17 +1805,17 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>The macro ICON should now be blue, indicating centralised DDI has been correctly configured. In local mode this ICON is green.</p>
-<p><img alt="image39" src="../../../_images/image398.png" /></p>
+<p><img alt="image39" src="../../../_images/image399.png" /></p>
 <p><em>Centralized DDI is active - ICON is blue</em></p>
 <p>Pressing the Blue ICON should display an empty macro list:</p>
-<p><img alt="image40" src="../../../_images/image404.png" /></p>
+<p><img alt="image40" src="../../../_images/image405.png" /></p>
 <p><em>Empty Macro list</em></p>
 <p id="index-89">Configuring the Centralised Repository</p>
 <p>To configure the centralised DDI repository we need to create an “initial” MACROS.JSON file. If we load up a TSO or CICS transaction on the W2H line (41001) we can see that the Macro ICON is green, its running in local mode, which is what we would also expect as centralized macros are not active on this port. We will use this line to create some initial macros to load up into our centralized repository on the mainframe. Remember that in centralized DDI mode, macros are downloaded from the repository. Users do not have any capability of “writing” or exporting their own macros up to the repository. This is administered by the Virtel administrator.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.48</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">Tso</span>
 </pre></div>
 </div>
-<p><img alt="image41" src="../../../_images/image4117.png" /></p>
+<p><img alt="image41" src="../../../_images/image4118.png" /></p>
 <p><em>Accessing a local macro facility -  Green ICON</em></p>
 </div>
 <div class="section" id="creating-an-initial-macro">
@@ -1848,12 +1848,12 @@ must be uploaded to the same directory as specified in the URL for the host appl
 </pre></div>
 </div>
 <p>We now have a macro which we can import to the centralized repository. From the Administration portal, select the Dynamic Directory Interface option:</p>
-<p><img alt="image44" src="../../../_images/image445.png" /></p>
+<p><img alt="image44" src="../../../_images/image448.png" /></p>
 <p>This will open the Dynamic directories main panel. Select the Global tab. The Global Drag and Drop area will be displayed. Drag the MACROS.JSON file from the “downloads” folder on to the Global D&amp;D upload zone delineated by a dotted line. The MACROS.JSON file will be uploaded to the GLOBAL-DIR. The upload results will be shown on the D&amp;D zone area.</p>
-<p><img alt="image45" src="../../../_images/image455.png" /></p>
+<p><img alt="image45" src="../../../_images/image456.png" /></p>
 <p><em>Global DDI Upload</em></p>
 <p>Refresh the GLOBAL directory by clicking the broken circled arrow in the top left of the screen. The MACROS.JSON file will be displayed. We can validate the Global macro upload by opening a TSO or CICS session with the DDI configured line (41002). Press the “Blue” ICON to display all available macros. It should now show that the SDSF macro has indeed been imported to the GLOBAL area.</p>
-<p><img alt="image46" src="../../../_images/image468.png" /></p>
+<p><img alt="image46" src="../../../_images/image469.png" /></p>
 <p><em>Uploaded Global Macro</em></p>
 <p>To run the macro, enter the ISPF primary menu and then press the Green “ARROW” next to the SDSF name. The SDSF log display should appear.</p>
 </div>

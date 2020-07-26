@@ -1450,6 +1450,425 @@ Now, when we access the port 41003 with the URL \sphinxurl{https://192.168.170.4
 The “Not Secure” warning. This will not appear if you are not using an approved CA certificate.
 \end{sphinxadmonition}
 
+
+\section{Using Server and Client certificates}
+\label{\detokenize{TN202002:using-server-and-client-certificates}}
+In this section we look at setting up Virtel to work with client and server certificates and to effectively remove the need for a user to provide a user id and password. This is equivalent to the Express Logon Feature (ELF) provided by Host on Demand and other Telnet clients.
+
+First, let’s review what is going on behind the scenes with certificate authentication and X.509 certificate validation within TLS/SSL. The guiding principle here is that Public Key Infrastructure (PKI) requires that data encrypted with a public key can only be decrypted with a private key and data encrypted with a private key can only be decrypted with a public key. The secure session (https) that runs between the browser and Virtel uses the Application Transparent Transport Layer Security feature of z/OS Communications Server, also known as AT-TLS. AT-TLS allows socket
+applications to access encrypted sessions by invoking Secure Socket Layer (SSL) within the transport layer of the TCP/IP stack. A policy agent (PAGENT) is used to configure AT-TLS using parameter statements which will determine which sessions are to use AT-TLS. AT\_TLS inserts itself in the connection between the application and browser. This means that the application will send
+and receive clear text over the socket interface, but data over the network is encrypted by system SSL.
+
+System SSL has three supported protocol levels:
+• TLSv1
+• SSLv2
+• SSLv3
+In this configuration we will be using SSLv3.
+
+
+\subsection{Handshake protocol}
+\label{\detokenize{TN202002:handshake-protocol}}
+The server / client process, which in Virtel’s case is the Virtel started task (server) and the browser (client), implements the following SSL protocol or handshake during the “hello” phase of establishing a secure session:
+\begin{enumerate}
+\def\theenumi{\arabic{enumi}}
+\def\labelenumi{\theenumi .}
+\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
+\item {} 
+The Client contacts the Server ;
+
+\item {} 
+The Server sends a certificate;
+
+\item {} 
+Server authentication is performed by the Client ;
+
+\item {} 
+Client sends the certificate;
+
+\item {} 
+Client authentication is performed by the Server ;
+
+\item {} 
+An encryption algorithm and single key is chosen to encrypt / decrypt data
+
+\end{enumerate}
+
+The purpose of the authentication is to ensure that the server/client are in fact who they say they are. This is to ensure that they server/client private and public keys haven’t been stolen and are purporting to be an entity that they aren’t and thereby compromising security. Authentication uses X.509 digital certificates. Further details of this handshake and the certificate exchange can be found in the IBM Manual z/OS Communications Server: IP Configuration Guide, Appendix B. TLS/SSL Security.
+
+
+\subsection{Certificates}
+\label{\detokenize{TN202002:certificates}}
+What’s in a X.509 certificate? Amongst other things it includes the Distinguished Name of the Server (DNS), the public key of the Server, Distinguished Name of the Server organization issuing the certificate and the issuer’s signature. If we look at a certificate held with RACF we can see this information. Certificates are identified by a combination of LABEL, USERID or
+Certification Authority (CA).
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{READY}
+\PYG{n}{RACDCERT} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{LIST}\PYG{p}{(}\PYG{n}{LABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{VIRTEL SSL DEMO}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}
+\PYG{n}{Digital} \PYG{n}{certificate} \PYG{n}{information} \PYG{k}{for} \PYG{n}{user} \PYG{n}{SPVIRSTC}\PYG{p}{:}
+\PYG{n}{Label}\PYG{p}{:} \PYG{n}{VIRTEL} \PYG{n}{SSL} \PYG{n}{DEMO}
+\PYG{n}{Certificate} \PYG{n}{ID}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{n}{Qji1}\PYG{o}{+}\PYG{n}{XJ2eLjw}\PYG{o}{+}\PYG{n}{XJ2ePF00Di4tNAxMXU1kBA}
+\PYG{n}{Status}\PYG{p}{:} \PYG{n}{TRUST}
+\PYG{n}{Start} \PYG{n}{Date}\PYG{p}{:} \PYG{l+m+mi}{2014}\PYG{o}{/}\PYG{l+m+mi}{07}\PYG{o}{/}\PYG{l+m+mi}{08} \PYG{l+m+mi}{00}\PYG{p}{:}\PYG{l+m+mi}{00}\PYG{p}{:}\PYG{l+m+mi}{00}
+\PYG{n}{End} \PYG{n}{Date}\PYG{p}{:} \PYG{l+m+mi}{2015}\PYG{o}{/}\PYG{l+m+mi}{07}\PYG{o}{/}\PYG{l+m+mi}{08} \PYG{l+m+mi}{23}\PYG{p}{:}\PYG{l+m+mi}{59}\PYG{p}{:}\PYG{l+m+mi}{59}
+\PYG{n}{Serial} \PYG{n}{Number}\PYG{p}{:}
+\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{05}\PYG{o}{\PYGZlt{}}
+\PYG{n}{Issuer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Name:}
+\PYG{o}{\PYGZgt{}}\PYG{n}{CN}\PYG{o}{=}\PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{Security} \PYG{n}{Server}\PYG{o}{.}\PYG{n}{O}\PYG{o}{=}\PYG{n}{SYSPERTEC}\PYG{o}{.}\PYG{n}{C}\PYG{o}{=}\PYG{n}{FR}\PYG{o}{\PYGZlt{}}
+\PYG{n}{Subject}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Name:}
+\PYG{o}{\PYGZgt{}}\PYG{n}{CN}\PYG{o}{=}\PYG{n}{RECETTE} \PYG{n}{VIRTEL}\PYG{o}{.}\PYG{n}{T}\PYG{o}{=}\PYG{n}{VIRTEL} \PYG{n}{Web} \PYG{n}{Access}\PYG{o}{.}\PYG{n}{O}\PYG{o}{=}\PYG{n}{SYSPERTEC}\PYG{o}{.}\PYG{n}{C}\PYG{o}{=}\PYG{n}{FR}\PYG{o}{\PYGZlt{}}
+\PYG{n}{Key} \PYG{n}{Usage}\PYG{p}{:} \PYG{n}{HANDSHAKE}\PYG{p}{,} \PYG{n}{DATAENCRYPT}
+\PYG{n}{Key} \PYG{n}{Type}\PYG{p}{:} \PYG{n}{RSA}
+\PYG{n}{Key} \PYG{n}{Size}\PYG{p}{:} \PYG{l+m+mi}{1024}
+\PYG{n}{Private} \PYG{n}{Key}\PYG{p}{:} \PYG{n}{YES}
+\PYG{n}{Ring} \PYG{n}{Associations}\PYG{p}{:}
+\PYG{n}{Ring} \PYG{n}{Owner}\PYG{p}{:} \PYG{n}{SPVIRSTC}
+\PYG{n}{Ring}\PYG{p}{:}
+\PYG{o}{\PYGZgt{}}\PYG{n}{VIRTRING}\PYG{o}{\PYGZlt{}}
+\end{sphinxVerbatim}
+
+Similar details can be found in the browser settings. For example here is what Chrome displays in the HTTPS/SSL certificate database.
+
+\sphinxincludegraphics{{image39}.png}
+
+\sphinxstyleemphasis{Figure 36: Certificate display within a browser}
+
+
+\subsection{Types of Certificates}
+\label{\detokenize{TN202002:types-of-certificates}}
+There are several types of certificates, most of which are required when defining secure sessions.
+\begin{itemize}
+\item {} 
+Client certificate
+
+\item {} 
+Server certificate
+
+\item {} 
+Well-known Certificate Authority (CA) Signing certificate
+
+\item {} 
+RACF signing certificate
+
+\end{itemize}
+
+In our test configuration we will be using self-signed server and client certificates. In most installation you would use server and client certificates signed by a well-known CA. These well-known CA certificates are normally available in the RACF and browser key data bases.
+
+
+\subsection{Configuring the certificates}
+\label{\detokenize{TN202002:configuring-the-certificates}}
+The first step is to create the necessary certificates. We require a server certificate, a RACF signing certificate and a user certificate. In the Virtel SAMPLIB there is a member called SSLSETUP. This will initialize the SSL environment and create the RACF signing certificate. Some of the steps may or may not be relevant so you will need to customize SSLSETUP accordingly. For example, you might already be running the PAGENT started task and have RACF definitions in place to support the required SSL access.
+
+The following is the certificate generation statement for the RACF signing certificate.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{DCERTCA} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT01}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Delete} \PYG{n}{previous} \PYG{n}{signing} \PYG{n}{certificate} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+ \PYG{n}{RACDCERT} \PYG{n}{CERTAUTH} \PYG{o}{+}
+ \PYG{n}{DELETE}\PYG{p}{(}\PYG{n}{LABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{z/OS signing certificate}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{CCERTCA} \PYG{p}{:} \PYG{n}{CREATE} \PYG{n}{SIGNING} \PYG{n}{CERTIFICATE} \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{CCERTCA} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT1A}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Create} \PYG{n}{a} \PYG{n}{signing} \PYG{n}{certificate} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+ \PYG{n}{RACDCERT} \PYG{n}{CERTAUTH} \PYG{o}{+}
+ \PYG{n}{GENCERT} \PYG{o}{+}
+ \PYG{n}{WITHLABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{z/OS signing certificate}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{SUBJECTSDN}\PYG{p}{(} \PYG{o}{+}
+ \PYG{n}{CN}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{z/OS Security Server}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{O}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SYSPERTEC}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{C}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{FR}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{KEYUSAGE}\PYG{p}{(}\PYG{n}{CERTSIGN}\PYG{p}{)} \PYG{n}{SIZE}\PYG{p}{(}\PYG{l+m+mi}{1024}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{NOTAFTER}\PYG{p}{(}\PYG{n}{DATE}\PYG{p}{(}\PYG{l+m+mi}{2026}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{06}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{30}\PYG{p}{)}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+If we list this certificate after we have created it will get the following:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{READY}
+\PYG{n}{RACDCERT} \PYG{n}{CERTAUTH} \PYG{n}{LIST}\PYG{p}{(}\PYG{n}{LABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{z/OS signing certificate}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)}
+\PYG{n}{Digital} \PYG{n}{certificate} \PYG{n}{information} \PYG{k}{for} \PYG{n}{CERTAUTH}\PYG{p}{:}
+\PYG{n}{Label}\PYG{p}{:} \PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{signing} \PYG{n}{certificate}
+\PYG{n}{Certificate} \PYG{n}{ID}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{n}{QiJmZmDhZmjgalh1uJAoomHlYmVh0CDhZmjiYaJg4GjhUBA}
+\PYG{n}{Status}\PYG{p}{:} \PYG{n}{TRUST}
+\PYG{n}{Start} \PYG{n}{Date}\PYG{p}{:} \PYG{l+m+mi}{2013}\PYG{o}{/}\PYG{l+m+mi}{07}\PYG{o}{/}\PYG{l+m+mi}{03} \PYG{l+m+mi}{00}\PYG{p}{:}\PYG{l+m+mi}{00}\PYG{p}{:}\PYG{l+m+mi}{00}
+\PYG{n}{End} \PYG{n}{Date}\PYG{p}{:} \PYG{l+m+mi}{2026}\PYG{o}{/}\PYG{l+m+mi}{06}\PYG{o}{/}\PYG{l+m+mi}{30} \PYG{l+m+mi}{23}\PYG{p}{:}\PYG{l+m+mi}{59}\PYG{p}{:}\PYG{l+m+mi}{59}
+\PYG{n}{Serial} \PYG{n}{Number}\PYG{p}{:}
+\PYG{o}{\PYGZgt{}}\PYG{l+m+mi}{00}\PYG{o}{\PYGZlt{}}
+\PYG{n}{Issuer}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Name:}
+   \PYG{o}{\PYGZgt{}}\PYG{n}{CN}\PYG{o}{=}\PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{Security} \PYG{n}{Server}\PYG{o}{.}\PYG{n}{O}\PYG{o}{=}\PYG{n}{SYSPERTEC}\PYG{o}{.}\PYG{n}{C}\PYG{o}{=}\PYG{n}{FR}\PYG{o}{\PYGZlt{}}
+\PYG{n}{Subject}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Name:}
+   \PYG{o}{\PYGZgt{}}\PYG{n}{CN}\PYG{o}{=}\PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{Security} \PYG{n}{Server}\PYG{o}{.}\PYG{n}{O}\PYG{o}{=}\PYG{n}{SYSPERTEC}\PYG{o}{.}\PYG{n}{C}\PYG{o}{=}\PYG{n}{FR}\PYG{o}{\PYGZlt{}}
+\PYG{n}{Key} \PYG{n}{Usage}\PYG{p}{:} \PYG{n}{CERTSIGN}
+\PYG{n}{Key} \PYG{n}{Type}\PYG{p}{:} \PYG{n}{RSA}
+\PYG{n}{Key} \PYG{n}{Size}\PYG{p}{:} \PYG{l+m+mi}{1024}
+\PYG{n}{Private} \PYG{n}{Key}\PYG{p}{:} \PYG{n}{YES}
+\PYG{n}{Ring} \PYG{n}{Associations}\PYG{p}{:}
+\PYG{n}{Ring} \PYG{n}{Owner}\PYG{p}{:} \PYG{n}{SPVIRSTC}
+\PYG{n}{Ring}\PYG{p}{:}
+\PYG{o}{\PYGZgt{}}\PYG{n}{VIRTRING}\PYG{o}{\PYGZlt{}}
+\end{sphinxVerbatim}
+
+The key usage identifies this certificate as a signing certificate. This certificate will be used to sign other certificates
+that we generate.
+
+Next is the server certificate. Again we use RACF to generate the certificate and use the RACF signing certificate to
+“sign” it. The following extract is from the Virtel SAMPLIB member SSLUCERT.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{CCERTIF} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT1A}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Create} \PYG{n}{a} \PYG{n}{digital} \PYG{n}{certificate} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+ \PYG{n}{RACDCERT} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{userid} \PYG{o}{*}\PYG{o}{/} \PYG{o}{+}
+ \PYG{n}{GENCERT} \PYG{o}{+}
+ \PYG{n}{WITHLABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{VIRTEL SSL DEMO}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{SIGNWITH}\PYG{p}{(}\PYG{n}{CERTAUTH} \PYG{n}{LABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{z/OS signing certificate}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{SUBJECTSDN}\PYG{p}{(} \PYG{o}{+}
+   \PYG{n}{CN}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{RECETTE VIRTEL}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+   \PYG{n}{T}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{VIRTEL Web Access}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+   \PYG{n}{O}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SYSPERTEC}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+   \PYG{n}{C}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{FR}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{KEYUSAGE}\PYG{p}{(}\PYG{n}{HANDSHAKE} \PYG{n}{DATAENCRYPT}\PYG{p}{)} \PYG{n}{SIZE}\PYG{p}{(}\PYG{l+m+mi}{1024}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\begin{sphinxadmonition}{note}{Note:}
+We identify the signing certificate with the SIGNWITH parameter using the same label information that we used when defining the RACF signing certificate.
+\end{sphinxadmonition}
+
+
+\subsection{Key Rings}
+\label{\detokenize{TN202002:key-rings}}
+Having generated two of our certificates we now need a place to keep them. We place the certificates on a key ring and associate the key ring with the VIRTEL server RACF user id (in our case SPVIRSTC). The member SSLSETUP has some RACF commands to perform the key ring generation. Here is an extract:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Create} \PYG{n}{a} \PYG{n}{keyring} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+ \PYG{n}{RACDCERT} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{userid} \PYG{o}{*}\PYG{o}{/} \PYG{o}{+}
+ \PYG{n}{ADDRING}\PYG{p}{(}\PYG{n}{VIRTRING}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Add} \PYG{n}{the} \PYG{n}{certificate} \PYG{n}{to} \PYG{n}{the} \PYG{n}{keyring} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+ \PYG{n}{RACDCERT} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{VIRTEL} \PYG{n}{userid} \PYG{o}{*}\PYG{o}{/} \PYG{o}{+}
+ \PYG{n}{CONNECT}\PYG{p}{(} \PYG{o}{+}
+ \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{LABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{VIRTEL SSL DEMO}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{RING}\PYG{p}{(}\PYG{n}{VIRTRING}\PYG{p}{)} \PYG{o}{+}
+ \PYG{n}{DEFAULT}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+Again it is the label that identifies the key(certificate) that we want to add to the key ring owned by user SPVIRSTC.
+
+
+\subsection{User Certificate}
+\label{\detokenize{TN202002:user-certificate}}
+The next step is to create a user certificate which we will export and import into our browser’s key data base. In the Virtel SAMPLIB member SSLUCERT performs the task of creating the user certificate and creating an “exportable” file.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{Associate} \PYG{n}{certificate} \PYG{k}{with} \PYG{n}{user} \PYG{n+nb}{id} \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{UCERTIF} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT1A}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Add} \PYG{n}{certificate} \PYG{n}{to} \PYG{n}{Server} \PYG{n}{ring} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{n}{RACDCERT} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{client} \PYG{n}{userid} \PYG{o}{*}\PYG{o}{/} \PYG{o}{+}
+\PYG{n}{CONNECT} \PYG{p}{(}\PYG{n}{CERTAUTH} \PYG{o}{+}
+\PYG{n}{LABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{z/OS signing certificate}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{RING}\PYG{p}{(}\PYG{n}{VIRTRING}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{USAGE}\PYG{p}{(}\PYG{n}{CERTAUTH}\PYG{p}{)}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Add} \PYG{n}{certificate} \PYG{n}{to} \PYG{n}{Server} \PYG{n}{ring} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{n}{RACDCERT} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{o}{/}\PYG{o}{*} \PYG{n}{client} \PYG{n}{userid} \PYG{o}{*}\PYG{o}{/} \PYG{o}{+}
+\PYG{n}{CONNECT} \PYG{p}{(}\PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPTHOLT}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{LABEL}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{SSL client certificate}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{RING}\PYG{p}{(}\PYG{n}{VIRTRING}\PYG{p}{)} \PYG{o}{+}
+\PYG{n}{USAGE}\PYG{p}{(}\PYG{n}{CERTAUTH}\PYG{p}{)}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*} \PYG{n}{Refresh} \PYG{n}{the} \PYG{n}{RACF} \PYG{n}{profiles} \PYG{o}{*}\PYG{o}{/}
+\PYG{o}{/}\PYG{o}{*}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{*}\PYG{o}{/}
+\PYG{n}{SETROPTS} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{DIGTRING}\PYG{p}{)} \PYG{n}{REFRESH}
+\PYG{n}{SETROPTS} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{DIGTCERT}\PYG{p}{)} \PYG{n}{REFRESH}
+\end{sphinxVerbatim}
+
+The “CONNECT CERTAUTH” tells RACF that this is a signing CA certificate and the “CONNECT ID(SPTHOLT) indicates that the certificate labelled ‘SSL client certificate’ is associated with USERID SPTHOLT. This is how Virtel obtains the USERID. Also, note that we refresh the RACF profiles related to certificates and key rings.
+
+If we list our key ring for user SPVIRSTC we should have three certificates.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{READY}
+\PYG{n}{RACDCERT} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{LISTRING}\PYG{p}{(}\PYG{n}{VIRTRING}\PYG{p}{)}
+\PYG{n}{Digital} \PYG{n}{ring} \PYG{n}{information} \PYG{k}{for} \PYG{n}{user} \PYG{n}{SPVIRSTC}\PYG{p}{:}
+\PYG{n}{Ring}\PYG{p}{:}
+\PYG{o}{\PYGZgt{}}\PYG{n}{VIRTRING}\PYG{o}{\PYGZlt{}}
+\PYG{n}{Certificate} \PYG{n}{Label} \PYG{n}{Name} \PYG{n}{Cert} \PYG{n}{Owner} \PYG{n}{USAGE} \PYG{n}{DEFAULT}
+\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}
+\PYG{n}{VIRTEL} \PYG{n}{SSL} \PYG{n}{DEMO} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{PERSONAL} \PYG{n}{YES}
+\PYG{n}{z}\PYG{o}{/}\PYG{n}{OS} \PYG{n}{signing} \PYG{n}{certificate} \PYG{n}{CERTAUTH} \PYG{n}{CERTAUTH} \PYG{n}{NO}
+\PYG{n}{SSL} \PYG{n}{client} \PYG{n}{certificate} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPTHOLT}\PYG{p}{)} \PYG{n}{CERTAUTH} \PYG{n}{NO}
+\end{sphinxVerbatim}
+
+
+\subsection{Importing a client/user certificate into the browser.}
+\label{\detokenize{TN202002:importing-a-client-user-certificate-into-the-browser}}
+To import the user certificate into the client workstation the P12 file must be downloaded in binary and then the certificate import wizard is run on the browser to import the certificate.
+
+\sphinxincludegraphics{{image40}.png}
+
+\sphinxstyleemphasis{Figure 37: Importing a user/client certificate into the browser}
+
+After importing the following panel is displayed:
+
+\sphinxincludegraphics{{image41}.png}
+
+\sphinxstyleemphasis{Figure 38: An imported user/client certificate}
+
+At this stage we have completed our certificate generation. Through the use of the certificates we will be able to initiate a secure session (https) with an application and obtain a user id.
+
+
+\subsection{PassTicket support}
+\label{\detokenize{TN202002:passticket-support}}
+The next step is to obtain a pass ticket in place of a password so that Virtel can log on to the target application and present a user id and password combination on behalf of the user. The following job will enable PassTicket support for our target application SPCICSH and using user id SPVIRSTC, out Virtel server user id. This job will have to be customized
+accordingly:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEP1} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT1A}\PYG{p}{,}\PYG{n}{DYNAMNBR}\PYG{o}{=}\PYG{l+m+mi}{20}
+\PYG{o}{/}\PYG{o}{/}\PYG{o}{*} \PYG{n}{RDEFINE} \PYG{n}{FACILITY} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RTICKETSERV}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
+ \PYG{n}{SETROPTS} \PYG{n}{CLASSACT}\PYG{p}{(}\PYG{n}{APPL}\PYG{p}{)}
+ \PYG{n}{SETROPTS} \PYG{n}{CLASSACT}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+ \PYG{n}{SETROPTS} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+ \PYG{n}{SETROPTS} \PYG{n}{GENERIC}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+ \PYG{n}{RDELETE} \PYG{n}{PTKTDATA} \PYG{n}{SPCICSH}
+ \PYG{n}{RDELETE} \PYG{n}{PTKTDATA} \PYG{n}{IRRPTAUTH}\PYG{o}{.}\PYG{n}{SPCICSH}\PYG{o}{.}\PYG{o}{*}
+ \PYG{n}{RDEFINE} \PYG{n}{PTKTDATA} \PYG{n}{IRRPTAUTH}\PYG{o}{.}\PYG{n}{SPCICSH}\PYG{o}{.}\PYG{o}{*} \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)}
+ \PYG{n}{RDEFINE} \PYG{n}{PTKTDATA} \PYG{n}{SPCICSH} \PYG{n}{SSIGNON}\PYG{p}{(}\PYG{n}{KEYMASKED}\PYG{p}{(}\PYG{l+m+mi}{998}\PYG{n}{A654FEBCDA123}\PYG{p}{)}\PYG{p}{)} \PYG{o}{+}
+  \PYG{n}{UACC}\PYG{p}{(}\PYG{n}{NONE}\PYG{p}{)}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{STEP1} \PYG{n}{EXEC} \PYG{n}{PGM}\PYG{o}{=}\PYG{n}{IKJEFT1A}\PYG{p}{,}\PYG{n}{DYNAMNBR}\PYG{o}{=}\PYG{l+m+mi}{20}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSPRT} \PYG{n}{DD} \PYG{n}{SYSOUT}\PYG{o}{=}\PYG{o}{*}
+\PYG{o}{/}\PYG{o}{/}\PYG{n}{SYSTSIN} \PYG{n}{DD} \PYG{o}{*}
+ \PYG{n}{PERMIT} \PYG{n}{IRR}\PYG{o}{.}\PYG{n}{RTICKETSERV} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{READ}\PYG{p}{)}
+ \PYG{n}{PERMIT} \PYG{n}{IRRPTAUTH}\PYG{o}{.}\PYG{n}{SPCICSH}\PYG{o}{.}\PYG{o}{*} \PYG{n}{CL}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)} \PYG{n}{ID}\PYG{p}{(}\PYG{n}{SPVIRSTC}\PYG{p}{)} \PYG{n}{ACC}\PYG{p}{(}\PYG{n}{UPDATE}\PYG{p}{)}
+ \PYG{n}{SETROPTS} \PYG{n}{REFRESH} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{PTKTDATA}\PYG{p}{)}
+ \PYG{n}{SETROPTS} \PYG{n}{REFRESH} \PYG{n}{RACLIST}\PYG{p}{(}\PYG{n}{FACILITY}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+In order for Virtel to generate PassTickets, you must also modify your VIRTCT to include the parameter PASSTCK=YES and then reassemble the VIRTCT. See chapter 6 of the Virtel Installation Guide for more details on the Virtel VIRTCT.
+
+
+\subsection{PAGENT Configuration}
+\label{\detokenize{TN202002:pagent-configuration}}
+To enable system SSL sessions to take place between the browser and the application we have to tell AT-TLS and SSL which sockets to intercept. This is configured in the pagent configuration file which can be found in /etc/pagent.conf. The two areas that we are interested in are the TTLSEnvironmentAction section and the TTLSRule section.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TTLSEnvironmentAction} \PYG{n}{VIRTELenvir\PYGZus{}inSec}
+\PYG{p}{\PYGZob{}}
+   \PYG{n}{HandshakeRole} \PYG{n}{ServerWithClientAuth}
+   \PYG{n}{Trace} \PYG{l+m+mi}{7}
+   \PYG{n}{TTLSKeyringParms}
+   \PYG{p}{\PYGZob{}}
+      \PYG{n}{Keyring} \PYG{n}{VIRTRING}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{n}{TTLSEnvironmentAdvancedParms}
+   \PYG{p}{\PYGZob{}}
+      \PYG{n}{SSLv2} \PYG{n}{On}
+      \PYG{n}{SSLv3} \PYG{n}{On}
+      \PYG{n}{TLSv1} \PYG{n}{On}
+      \PYG{n}{ClientAuthType} \PYG{n}{SAFCheck}
+   \PYG{p}{\PYGZcb{}}
+   \PYG{n}{TTLSCipherParmsRef} \PYG{n}{VIRTELcipher}
+\PYG{p}{\PYGZcb{}}
+\PYG{o}{.}\PYG{o}{.}\PYG{o}{/}\PYG{o}{.}\PYG{o}{.}
+\PYG{n}{TTLSRule} \PYG{n}{VIRTELrule\PYGZus{}in\PYGZus{}eh}
+\PYG{p}{\PYGZob{}}
+   \PYG{n}{Jobname} \PYG{n}{SPVIREH}
+   \PYG{n}{LocalPortRange} \PYG{l+m+mi}{41002}
+   \PYG{n}{Direction} \PYG{n}{Inbound}
+   \PYG{n}{TTLSGroupActionRef} \PYG{n}{VIRTELgroup}
+   \PYG{n}{TTLSEnvironmentActionRef} \PYG{n}{VIRTELenvir\PYGZus{}inSec}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
+
+The TTLS Rule identifies Virtel Started task name via the Jobname parameter and also the port number that can support secured sessions - https. In this case it is port 41002.
+The rules section also identifies the environmental section. In this case we have selected an environment section called VIRTELenvir\_insec.
+
+In VIRTELenvir\_insec we identify that we want to use both server and client certificates
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{HandShakeRole} \PYG{n}{ServerWithClientAuth}
+\end{sphinxVerbatim}
+
+That the user certificate must be associated with a valid RACF userid
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ClientAuthType} \PYG{n}{SAFCheck}
+\end{sphinxVerbatim}
+
+The name of the keyring that holds the keys(certificates)
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Keyring} \PYG{n}{VIRTRING}
+\end{sphinxVerbatim}
+
+A default pagent.conf is shipped with the SAMPLIB member SSLSETUP which you can use to modify accordingly to define the above SSL sections. To refresh a pagent.conf profile after you have made changes you can issue the following z/OS command:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{F} \PYG{n}{PAGENT}\PYG{p}{,}\PYG{n}{REFRESH}
+\end{sphinxVerbatim}
+
+
+\subsection{Virtel Configuration}
+\label{\detokenize{TN202002:virtel-configuration}}
+The final part in our configuration is to configure Virtel to use SSL to obtain the user id and PassTicket support to create a password. We configure Virtel in the transaction associated with our target application, in this case the CICS application called SPCICSH.
+
+\sphinxincludegraphics{{image42}.png}
+
+\sphinxstyleemphasis{Figure 39: Virtel Transaction using PassTickets}
+
+Note that PassTicket is set to 2. This will enable Virtel to generate a temporary password. Security is set to 3. This indicates that Virtel will receive a USERID based upon the user certificate used in the authentication process. The TIOA at logon is a string that will logon to the CICS application using the user id and password values that Virtel has obtained. With this configuration we can logon to our CICS application without the user presenting any user id or password. This is very much like the Express Logon Facility implemented in our Telnet clients.
+
+
+\subsection{Logon Example}
+\label{\detokenize{TN202002:logon-example}}
+In the following screen shots we demonstrate logging into a CICS application via a secure session (https) without specifying any user id/password. Our initial URL is \sphinxurl{https://192.168.170.30:41002/w2h/WEB2AJAX.htm+CICS}; you will replace the IP address with your own installation IP address or domain name.
+
+\sphinxincludegraphics{{image43}.png}
+
+\sphinxstyleemphasis{Figure 40: User certificate request from browser}
+
+We are presented with a “Select a certificate” window from the browser requesting the certificate we wish to user for authentication purposes. We select the certificate we downloaded.
+The next panel is a warning panel which identifies that the certificate we are using has not been authenticated by a well-known CA authority. We are of course aware of this as we are using a RACF self signed certificate.
+
+\sphinxincludegraphics{{image44}.png}
+
+\sphinxstyleemphasis{Figure 41: Browser warning when using self-authenticated certificates}
+
+We select Advanced and are then presented with information about the certificate.
+
+\sphinxincludegraphics{{image45}.png}
+
+\sphinxstyleemphasis{Figure 42: Browser provides certificate details}
+
+We select the “Proceed” link and then we are logged on to our CICS application without having to specify any user id or password.
+
+\sphinxincludegraphics{{image46}.png}
+
+\sphinxstyleemphasis{Figure 43: Logged into CICS using PassTickets}
+
 \newpage
 
 
@@ -1480,15 +1899,31 @@ Is AT-TLS Service active in TCP/IP? Issue the following z/OS command ” D TCPIP
 \PYG{l+m+mi}{1} \PYG{n}{OF} \PYG{l+m+mi}{1} \PYG{n}{RECORDS} \PYG{n}{DISPLAYED}
 \PYG{n}{END} \PYG{n}{OF} \PYG{n}{THE} \PYG{n}{REPORT}
 \end{sphinxVerbatim}
-\begin{enumerate}
-\def\theenumi{\arabic{enumi}}
-\def\labelenumi{\theenumi .}
-\makeatletter\def\p@enumii{\p@enumi \theenumi .}\makeatother
-\setcounter{enumi}{1}
-\item {} 
-Check that you have defined the correct STC name and port in the PAGENT definitions. Also check the SYSLOG for any PAGENT error messages which may well include an error code.
 
-\end{enumerate}
+2. Check that you have defined the correct STC name and port in the PAGENT definitions. Also check the SYSLOG for any PAGENT error messages which may well include an error code. Common session startup/handshake errors are reported through messqge EZD1287I. In the example below we can see that the handshake has failed with a return code of 5003. Return codes under 5000 are generated by
+System SSL and are defined in the System SSL Programming manual. Return codes over 5000 are generated by AT-TLS and are defined in the IP Diagnosis Guide. In the following the 5013 suggests that the browser has sent clear text; in other words, http was used instead of https in the URL.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{BPXF024I} \PYG{p}{(}\PYG{n}{TCPIP}\PYG{p}{)} \PYG{n}{Oct} \PYG{l+m+mi}{7} \PYG{l+m+mi}{13}\PYG{p}{:}\PYG{l+m+mi}{33}\PYG{p}{:}\PYG{l+m+mi}{08} \PYG{n}{TTLS} \PYG{l+m+mi}{83951769} \PYG{p}{:} \PYG{l+m+mi}{15}\PYG{p}{:}\PYG{l+m+mi}{33}\PYG{p}{:}\PYG{l+m+mi}{08} \PYG{n}{TCPIP} \PYG{l+m+mi}{367}
+\PYG{n}{EZD1281I} \PYG{n}{TTLS} \PYG{n}{Map} \PYG{n}{CONNID}\PYG{p}{:} \PYG{l+m+mi}{000006}\PYG{n}{A2} \PYG{n}{LOCAL}\PYG{p}{:} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.30}\PYG{o}{.}\PYG{o}{.}\PYG{l+m+mi}{41002}
+\PYG{n}{REMOTE}\PYG{p}{:} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{92.62}\PYG{o}{.}\PYG{o}{.}\PYG{l+m+mi}{57545} \PYG{n}{JOBNAME}\PYG{p}{:} \PYG{n}{SPVIREH} \PYG{n}{USERID}\PYG{p}{:} \PYG{n}{SPVIRSTC} \PYG{n}{TYPE}\PYG{p}{:}
+\PYG{n}{InBound} \PYG{n}{STATUS}\PYG{p}{:} \PYG{n}{Enabled} \PYG{n}{RULE}\PYG{p}{:} \PYG{n}{VIRTELrule\PYGZus{}in\PYGZus{}eh} \PYG{n}{ACTIONS}\PYG{p}{:} \PYG{n}{VIRTELgroup}
+\PYG{n}{VIRTELenvir\PYGZus{}inSec} \PYG{o}{*}\PYG{o}{*}\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}\PYG{o}{*}\PYG{o}{*}
+\PYG{n}{BPXF024I} \PYG{p}{(}\PYG{n}{TCPIP}\PYG{p}{)} \PYG{n}{Oct} \PYG{l+m+mi}{7} \PYG{l+m+mi}{13}\PYG{p}{:}\PYG{l+m+mi}{33}\PYG{p}{:}\PYG{l+m+mi}{08} \PYG{n}{TTLS} \PYG{l+m+mi}{83951769} \PYG{p}{:} \PYG{l+m+mi}{15}\PYG{p}{:}\PYG{l+m+mi}{33}\PYG{p}{:}\PYG{l+m+mi}{08} \PYG{n}{TCPIP} \PYG{l+m+mi}{368}
+\PYG{n}{EZD1286I} \PYG{n}{TTLS} \PYG{n}{Error} \PYG{n}{GRPID}\PYG{p}{:} \PYG{l+m+mi}{00000002} \PYG{n}{ENVID}\PYG{p}{:} \PYG{l+m+mi}{00000000} \PYG{n}{CONNID}\PYG{p}{:} \PYG{l+m+mi}{000006}\PYG{n}{A2}
+\PYG{n}{LOCAL}\PYG{p}{:} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.30}\PYG{o}{.}\PYG{o}{.}\PYG{l+m+mi}{41002}
+\PYG{n}{REMOTE}\PYG{p}{:} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{92.62}\PYG{o}{.}\PYG{o}{.}\PYG{l+m+mi}{57545}
+\PYG{n}{JOBNAME}\PYG{p}{:} \PYG{n}{SPVIREH} \PYG{n}{USERID}\PYG{p}{:} \PYG{n}{SPVIRSTC}
+\PYG{n}{RULE}\PYG{p}{:} \PYG{n}{VIRTELrule\PYGZus{}in\PYGZus{}eh}
+\PYG{n}{RC}\PYG{p}{:} \PYG{l+m+mi}{5003} \PYG{n}{Data} \PYG{n}{Decryption} \PYG{n}{EZD1287I} \PYG{n}{TTLS} \PYG{n}{Error} \PYG{n}{RC}\PYG{p}{:} \PYG{l+m+mi}{5003} \PYG{n}{Data} \PYG{n}{Decryption} \PYG{l+m+mi}{369}    \PYG{o}{\PYGZlt{}}\PYG{o}{==}\PYG{o}{==}\PYG{o}{==}\PYG{o}{=}
+\PYG{n}{LOCAL}\PYG{p}{:} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{170.30}\PYG{o}{.}\PYG{o}{.}\PYG{l+m+mi}{41002}
+\PYG{n}{REMOTE}\PYG{p}{:} \PYG{l+m+mf}{192.168}\PYG{o}{.}\PYG{l+m+mf}{92.62}\PYG{o}{.}\PYG{o}{.}\PYG{l+m+mi}{57545}
+\PYG{n}{JOBNAME}\PYG{p}{:} \PYG{n}{SPVIREH} \PYG{n}{RULE}\PYG{p}{:}
+\PYG{n}{VIRTELrule\PYGZus{}in\PYGZus{}eh} \PYG{n}{USERID}\PYG{p}{:}
+\PYG{n}{SPVIRSTC} \PYG{n}{GRPID}\PYG{p}{:} \PYG{l+m+mi}{00000002}
+\PYG{n}{ENVID}\PYG{p}{:} \PYG{l+m+mi}{00000000}
+\PYG{n}{CONNID}\PYG{p}{:} \PYG{l+m+mi}{000006}\PYG{n}{A2}
+\end{sphinxVerbatim}
 
 The following is a list of common Pagent Error codes that can be seen in the SYSLOG: -
 \begin{itemize}
