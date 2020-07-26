@@ -13,14 +13,27 @@ Customization
 
 In this section we see how to customize Virtel to use customized parameters and introduce the "option" mode. We show how to set up some "global" parameter settings which will override the Virtel internal defaults. Customization comes in the form of setting user options, introducing user CSS style sheets and executing user Javascript scripts.
 
-With regard to customization, Virtel supports three modes of operation: -
+With regard to customization, Virtel supports three modes of customization: -
 
    - Default mode:	Delivered mode of operation	
    - Option mode:	Recommended mode of operation. V4.56 upwards.	
    - Compatibility mode:  To provide "backward" compatibility for older versions of Virtel (V4.56 and less).
 
+Default Mode
+^^^^^^^^^^^^
+
+The default mode is running Virtel without implementing "compatibility" or "option" mode. Changes are directly made to the default entities within their delivered directories - (parameter objects, CSS styles and JavaScript scripts). The default search orders is not modified in this mode of operation.  
+
+Option Mode
+^^^^^^^^^^^
+
+Option mode provides a comprehensive customization solution which provides the ability to provide customization at the transaction level. For example, a TSO transaction may present a different screen presentation to a CICS transaction. In comparison, Default and Compatibility mode only provide customization at the Entry Point level at applies to all the transactions supported by that Entry point. 
+
+
 Compatibility Mode
 ^^^^^^^^^^^^^^^^^^
+
+Compatibility mode changes the search order Virtel uses when locating customized parameters, CSS, JavaScript and Help elements. Compatibility mode is used to support older versions of Virtel and also provides backward level support when migrating to new versions of Virtel. It is recommended that "compatibility" users migrate to the "Option" mode to take advantage of new Virtel features.
 
 From Virtel V.56 onwards, compatibility mode is enforced through the following statement in the TCT:-
 
@@ -28,32 +41,21 @@ From Virtel V.56 onwards, compatibility mode is enforced through the following s
 
    HTSET1=(OPTION-DEFAULT-COMPATIBILITY),                  *  
 
-Compatibility mode changes the search order Virtel uses when locating customized parameters, CSS, JavaScript and Help elements. Compatibility mode is used to support older versions of Virtel and also provides backward level support when migrating to new versions of Virtel. It is recommended that "compatibility" users migrate to the "Option" mode to take advantage of new Virtel features.
-
-Default Mode
-^^^^^^^^^^^^
-
-The default mode is running Virtel without implementing "compatibility" or "option" mode. Changes are directly made to the default entities (parameter objects, CSS styles and JavaScript scripts) and without modifying the default search orders.  
-
-Option Mode
-^^^^^^^^^^^
-
-Option mode provides a comprehensive customization solution which provides the ability to customized down to transaction level. Default and Compatibility only provide customization at the Entry Point level. 
 
 What can be customized
 ^^^^^^^^^^^^^^^^^^^^^^
 
-There are several HTML entities that can be customized to provide features and functions that are site specific. For example, company logos in some of the presentation templates, customized ICONS on the Virtel tool bar that can launched bespoke JavaScript procedure and user Fonts and display styles. These and many more options can be set through customized JavaScript, Virtel Parameters, Cascading Style Sheets (CSS) and Help templates. 
+There are several HTML entities that can be customized to provide features and functions that are user or site specific. For example, company logos in some of the presentation templates, customized ICONS on the Virtel tool bar that can launched bespoke JavaScript procedure and user Fonts and display styles. These and many more options can be set through customized JavaScript, Virtel Parameters, Cascading Style Sheets (CSS) and Help templates. 
 
 Default Ports
 ^^^^^^^^^^^^^
 
-As delivered, Virtel defines two access ports, 41001 and 41002. It is important to note that 41001, by default, should only be used for the Administration of Virtel. It should not be used to support customer transactions. Port 41002, and any other port, can be used to support customer transactions. Port 41002 is delivered as a "customized" access point to support customers legacy 3270 applications. For example, CICS, TSO and IMS based applications. Each port is associated with an Entry Point - 41001 uses the Entry Point WEB2HOST and port 41002 uses CLIWHOST. 
+As delivered, Virtel defines two access ports, 41001 and 41002. It is important to note that 41001, by default, should only be used for the Administration of Virtel. It should not be used to support customer transactions or customized entities. Port 41002, and any other port, can be used to support customer transactions. Port 41002 is delivered as a "customized" access point to support customers legacy 3270 applications. For example, CICS, TSO and IMS based applications. Each port is associated with an Entry Point - 41001 uses the Entry Point WEB2HOST and port 41002 uses CLIWHOST. 
 
-Virtel Parameters
-^^^^^^^^^^^^^^^^^
+W2H Parameters
+^^^^^^^^^^^^^^
 
-Customisation of Virtel begins with understanding that the defaults are programmatically set by Virtel. These are listed in "Appendix A" of this guide. Most of the Virtel parameter defaults can be overridden by setting attributes within a JavaScript object called w2hParm which resides in a javascript member called w2hparm.js. Users can override the default options by coding a user w2hparm.js. A sample w2hparm.js file can be found in both the delivered CLI-DIR and W2H-DIR directories. The following URLs can be used to show the contents of the default w2hparm.js member.
+Customisation of Virtel begins with understanding that the defaults are programmatically set by Virtel. These are listed in "Appendix A" of this newsletter. Most of the Virtel parameter defaults can be overridden by setting properties within a JavaScript object called w2hParm. This object is defined in a javascript member called w2hparm.js. By default it is null. Users can override the default options by coding a user w2hparm.js. A sample w2hparm.js file can be found in the delivered CLI-DIR. The following URLs can be used to show the contents of the default w2hparm.js member.
 
 For the W2H Administration port (41001) use the following URL  :-
 
@@ -122,7 +124,7 @@ Here is what we get.
    // Remove the // and update the items
    // var w2hparmHide = ["home","shiftins"];
 
-You can see that some of the defaults have been overridden with "customer" options and settings. At this point line 41001 and 41002 both have different w2hparm settings. For line 41001 we have no overrides, and for 41002, we have set some specific customer options. In the following sections we look at this can be altered so that common Virtel parameters can be set globally, or set at a line or port level, or even at a transaction level.  
+You can see that some of the defaults have been overridden with "customer" options and settings. At this point line 41001 and 41002 both have different w2hparm settings. For line 41001 we have no overrides, and for 41002, we have set some specific customer options. In the following sections we look at how this can be altered so that common Virtel parameters can be set globally; set at a line or port level, or even at a transaction level using transaction "option" mode.  
 
 Defining the w2hparm.js parameter location
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,9 +134,11 @@ For any Virtel Entry Point/Port, the location of w2hparm.js file is determined b
 |image1|
 *Figure 1 -  Example of CLI-03P transaction*
 
-CLI-03P defines the location of w2hparm.js within the CLI-DIR, as defined in the Application setting. By default, for the W2H-03P transaction, the w2hparm.js file will be found in the W2H-DIR directory. To use only one copy of the parameter file w2hparm.js, for both CLI and W2H directories, we can modify the Application setting in W2H-03P transaction and set the location as being CLI-DIR. Now there will be one parameter file for both W2H and CLI transactions and that parameter file will be located in the CLI directory.
+CLI-03P defines the location of w2hparm.js within the CLI-DIR, as defined in the Application setting. By default, for the W2H-03P transaction, the w2hparm.js file will be found in the W2H-DIR directory. Keeping separate w2hparm entities may not be what is required. Some clients want to use only one w3hparm set up. To use only one copy of the parameter file w2hparm.js, for both CLI and W2H directories, we can modify the Application setting in W2H-03P transaction and set the location as being CLI-DIR, and not the default W2H-DIR. Now there will be one parameter file for both W2H and CLI transactions and that parameter file will be located in the CLI directory.
 
-.. note::It is recommended that the Application parameter for the W2H-03P transaction be modified to point to the CLI-DIR after installation. This safeguards against potential loss of customized parameters following any future virtel migration or upgrade. The CLI-DIR is associated with the HTMLTRSF VSAM file which is not overwritten during a migration process, whereas the W2H-DIR is associated with the SAMPTRSF VSAM file which is updated during migration or upgrade, so any changes here would be lost. To modify the W2H-03P transaction use either the online Administration Portal, found on port 41001, or run the following batch job. If you are running the batch job Virtel must be down :-
+.. note::It is recommended that the Application parameter for the W2H-03P transaction be modified to point to the CLI-DIR after installation. This safeguards against potential loss of customized parameters following any future virtel migration or upgrade. The CLI-DIR is associated with the HTMLTRSF VSAM file, a file which is not overwritten during a migration process, whereas the W2H-DIR is associated with the SAMPTRSF VSAM file, file which is updated during migration or upgrade, so any changes here would be lost.
+
+To modify the W2H-03P transaction use either the online Administration Portal, found on port 41001, or run the following batch job. If you are running the batch job Virtel must be down :-
 
 ::
 
@@ -160,31 +164,36 @@ CLI-03P defines the location of w2hparm.js within the CLI-DIR, as defined in the
 
 To run this job, stop Virtel first. Also, after making any changes, refresh the browser cache to pull in any new updates. [CTRL-R or CTRL+SHIFT+DEL] 
 
-After updating the W2H-03P transaction, all W2H transactions and CLI transactions will use the w2hparm settings of the w2hparm.js file located in CLI-DIR. This can be considered the default position with regard to customization. Any future Virtel upgrades or migrations will not affect the customised settings.  
+After updating the W2H-03P transaction, all W2H transactions and CLI transactions will use the w2hparm settings of the w2hparm.js file located in CLI-DIR. This can now be considered the default position with regard to customization. Any future Virtel upgrades or migrations will not affect these customised settings.  
 
-At this point both Ports 41001 and 41002 will be using a common set of Virtel parameters. The default options and those overrides defined in the w2hparm.js file, maintained in the CLI-DIR directory. For some customers this is all that is required from the requirement to have a global set of Virtel Parameters, therefore no further customization is necessary. If a new line and Entry point are added, then the XXX-03P transaction within the new Entry point just needs to refer to CLI-DIR to pick up the global parameters. In the following sections we look how to further expand setting parameters at both the Entry point ("Global") level and transaction level using the "option" mode. 
+At this point both Ports 41001 and 41002 will be using a common set of Virtel parameters. The default programmatically set options and the overrides defined in the w2hparm.js file, maintained in the CLI-DIR directory. For some customers this is all that is required to meet the requirement to have a global set of Virtel Parameters; no further customization is necessary. If a new line and Entry point are added, then the XXX-03P transaction within the new Entry point just needs to refer to CLI-DIR to pick up the global parameters. In the following sections we look how to further expand setting parameters at both the Entry point ("Global") level and transaction level using the "option" mode. 
 
-Customizing parameter options.
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Basic customization
+^^^^^^^^^^^^^^^^^^^
 
-The simplest way to customize Virtel is just to modify the default w2hparm.js members in the CLI and W2H directories with user options and upload the modified w2hparm.js file to the relevant directory. This approach, however, has its drawbacks. Firstly you have to maintain separate w2hparm.js entities for each port, and secondly the w2hparm.js in the W2H directory will get overwritten during a migration/update and finally, the w2h parameters cannot be tailored to individual transaction requirements; they are global and apply to all transactions belong to a particular line/entry point.  
+The simplest way to customize Virtel is just to modify the default w2hparm.js members in the CLI and W2H directories with user options and upload the modified w2hparm.js file to the relevant directory. This approach, however, has its drawbacks. Firstly, you have to maintain separate w2hparm.js entities for each port/entry name; secondly the w2hparm.js in the W2H directory will get overwritten during a migration/update and finally, the w2h parameters cannot be tailored to individual transaction requirements; they are global and apply to all transactions belonging to a particular line/entry point.  
 
-Since Virtel V4.56, the "option" mode was introduced to overcome these issues. We have already discussed how we can define one set of parameters and have each line/entry point point to that w2hparm.js member by modifying the XXX-03P transaction. Now we will look at the customization of parameters through the use of the 'option' mode.  
+Since Virtel V4.56, the "option" mode was introduced to overcome these issues. We have already discussed how we can define a common set of parameters and have each line/entry point point locate it through the XXX-03P transaction. Now we will look at the customization of parameters through the use of the 'option' mode which provides further customization granularity.  
 
 Defining the "Option" mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By using "option" mode we can target Virtel entities at an Entry Point level and Transaction level. The "option" mode provides greater flexibility and granularity on the entity values allows us to configuring parameters for specific needs. First, we will look at setting up a "Global" settings environment using Global "Option" mode definitions. The option mode allows us to set options which target :-
+By using "option" mode we can target Virtel entities at an Entry Point level and Transaction level. The "option" mode provides greater flexibility and granularity on the custmization entities and  allows us to configuring parameters for specific needs down to a transaction level.
+
+The option mode allows us to set options which target :-
 
    - All transactions within an Entry point. Global option.
    - Specific transactions within an entry point. Transaction option. This merges and/or overrides the global options settings.
    - A special option member for the APPLIST transaction.
 
-Each option has a supporting Javascript object which contains properties or pointers to bespoke customization entities - CSS style sheets, Javascript scripts, etc. If you are defining the global option settings then these properties are defined within an object called "global-settings" which itself is a property of the w2hparm object. If you are defining a transaction option setting, the settings are defined within an object called oCustom. 
+Global 'Option' Settings
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Each 'option' is identified by a unique identifier and every option has a supporting Javascript object which contains properties or pointers to bespoke customization entities. For example CSS style sheets, Javascript scripts, etc. If you are defining the 'global' option settings, the identifier is labelled 'global' and within that option we defined an object called "global-settings" which in itself is a property of the w2hparm object. If you are defining a transaction option setting, the settings are defined within an object called oCustom. 
 
 Virtel stores option definitions in the "Option" directory which is defined by the XXX-03CO transaction. 
 
-The following is the list of properties that can be defined. They are always prefixed with the "pathTo" identifier.
+The following is the list of properties that can be defined within a option object. They are always prefixed with the "pathTo" identifier.
 
 .. note::The names of the attributes are "case sensitive" :-
 
@@ -197,7 +206,7 @@ The following is the list of properties that can be defined. They are always pre
 Global 'Option' Settings Example
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The following is and example of setting the global-settings path for parameters, JavaScript, CSS and Help templates in the w2hparm.js file. The global-settings object is a property of w2hparm object.
+The following is and example of setting the global-settings properties for Parameters, JavaScript, CSS and Help templates in the w2hparm.js file. The global-settings object is a property of w2hparm object. You can see that each pathTo property defines a file. Within these files we will find the customized elements.
 
 ::
 
@@ -211,7 +220,7 @@ The following is and example of setting the global-settings path for parameters,
       }
    }
 
-We modify our w2hparm.js file, located in the CLI_DIR directory, to include a "global-settings" object and remove the other parameter overrides. This w2hparm.js file now only defines the path to our global w2hparm overrides. The w2hparm.js file now looks like this :-
+We modify our w2hparm.js file, located in the CLI_DIR directory, to include a "global-settings" object and remove any other parameter overrides - these will be paced in the new w2hparm.global.js file. This w2hparm.js file now only defines a path to our global w2hparm overrides. The w2hparm.js file now looks like this :-
 
 ::
 
@@ -222,12 +231,12 @@ We modify our w2hparm.js file, located in the CLI_DIR directory, to include a "g
       }
    };                 
 
-As you can see, it has a "global" array which directs us to the /option/ directory. The "option" directory is already predefined as part of the Virtel deliverable. It is defined as transaction CLI-03CO within the CLIWHOST entry point :-
+As you can see, it has a "global-settings" object containing one "pathTo" property which directs us to a file located in the /option/ directory. The "option" directory is already predefined as part of the Virtel deliverable. See transaction CLI-03CO within the CLIWHOST entry point: -
 
 |image2|
 Figure 2 - Option Directory Transaction
 
-The "option" directory stores related settings within the CLI-DIR which is phyisically associated with the HTMLTRSF VSAM file. We know this because if we list the directories, we can see that HTMLTRSF is the physical DDNAME associated with the Virtel directory CLI-DIR :-
+The "option" directory holds related settings within the CLI-DIR which is physically associated with the HTMLTRSF VSAM file. We know this because if we list the directories, we can see that HTMLTRSF is the physical DDNAME associated with the Virtel directory CLI-DIR :-
 
 |image3|
 Figure 3 - DDNames associated with Virtel Directories
@@ -243,7 +252,7 @@ We now need to create a global parameters file called w2hparm.global.js. This pa
    "font":"DejaVu Sans Mono",
    };
 
-The w2hparm.global.js and w2hparm.js files are both uploaded to the CLI-DIR, the directory associated with the "option" transaction CLI-03CO. Stop and restart Virtel and refresh the cache (CTRL-R) and then check that the new w2hparm.js parameter file is being used on the W2H entry point. As before, use the URL that was used before to display the w2hparm.js file.
+The newly created w2hparm.global.js and the modified w2hparm.js files are both uploaded to the CLI-DIR, the directory associated with the "option" transaction CLI-03CO. Stop and restart Virtel and refresh the cache (CTRL-R). Now check that the new w2hparm.js parameter file is being used on both the W2H and CLI entry point. As before, we use the following URL to display the W2H related w2hparm.js file.
 
 ::
 
@@ -260,15 +269,16 @@ The w2hparm.global.js and w2hparm.js files are both uploaded to the CLI-DIR, the
       }
    };
 
-Now our new "Global" path is in play, pointing to our wh2hparm.global parameter file, we can also check that the correct global parameter file is loaded when accessing the CLI port, 41002, using the following URL.
+Now our new "Global" path is in play, pointing to our wh2hparm.global.js parameter file, we can also check that the correct global parameter file is loaded when accessing the CLI port, 41002, using the following URL.
 
 ::
 
    http://192.168.170.48:41002/option/w2hparm.global.js
 
-The output from this display should show the options defined in the w2hparm.global.js.
+The output from this display should show the the same options, as defined in the w2hparm.global.js.
 
 |image4|
+
 Figure 4: Display of global w2hparm options                               
 
 As an example, the following modifies the "enter" key default and adds a print ICON to the tool bar. As this is a global modification it will apply to all transactions running under the CLIWHOST entry point. The following actions are taken. 
@@ -315,7 +325,7 @@ As an example, the following modifies the "enter" key default and adds a print I
 This has the effect of changing the tool bar for all transactions which locate w2hparm.js through the XXX-03P transaction. This would include W2h and CLI transactions as both target the w2hparm.js in the CLI-DIR. This is not what is required. We only want transactions under CLI to have these "modified" options. Transactions under WEB2HOST will require their option fields to be set to "compatibility" to ensure that the default tool bar is shown. Alternatively, we could target the requirement to apply only to certain transactions in the CLI entry point by  setting up "transaction options". 
 
 |image33|
-*Figurexx - Setting compatibility mode in a transaction*
+*Figure 5: - Setting compatibility mode in a transaction*
 
 
 Transaction 'Option' settings
@@ -386,7 +396,7 @@ Upload it to the OPT directory. Now create the following CSS file custCSS.appmen
 Now, when displaying the appmenu, we have the following display. The application name has been removed and only the transaction description along with the external name is shown. 
 
 |image5|
-*Figure 5: Modified Appmenu*
+*Figure 6: Modified Appmenu*
 
 Using the "Transaction" HTML interface to define transaction "option" settings.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -394,12 +404,12 @@ Using the "Transaction" HTML interface to define transaction "option" settings.
 Using the HTML transaction display a user can click on the “Spanner” ICON to help in setting up the option files. This include building the "core option file" and the relevant Javascript and CSS files. The transaction option identfier is specified on the transaction page :-
 
 |image34|
-*Figure xx - Specifying the option identifier*
+*Figure 7: - Specifying the option identifier*
 
 On clicking the “spanner” icon a tabbed “Option” panel will be displayed. A pre-allocated core option environment, based upon the “option” field value, will be built. Two tabbed options are available, “BASIC” and “ADVANCED”:-
 
 |image35|
-*Figure xx - Defining the core option file*
+*Figure 8: - Defining the core option file*
 
 Basic Mode
 ~~~~~~~~~~
@@ -407,7 +417,7 @@ Basic Mode
 Within the Basic mode of operation, the Validate button will create a core option file and upload it to the CLIDIR directory. Within this file, Javascript and CSS settings keys, if selected, will point to the customisation files as defined by the “option” field. In the example below the Javascript and CSS customization files have been selected. This will effectively create a core option file option.myOptions.js which will be loaded up to the CLI_DIR. Within this core option file the key elements pathToJsCustom and pathtoCssCustom will be generated. These will point to files /option/custJS.myOptions.js and /option/custCSS.myOptions.css.
 
 |image36|
-*Figure xx - Validating the core option file*
+*Figure 9: - Validating the core option file*
 
 The generated core option file option.myOptions.js will look like this :-
 
@@ -425,7 +435,7 @@ Advanced Mode
 By selecting the "Advanced" mode tab, the core option file can be downloaded in preparation for further modification.
 
 |image37|
-*Figure xx - Advanced mode of operation*
+*Figure 10: - Advanced mode of operation*
 
 User parameter settings
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -433,7 +443,7 @@ User parameter settings
 By default, the majority of settings listed in "Appendix A" can be set by each user through the Virtel Access Settings control panel. The settings ICON, a geared wheel located on the Virtel Toolbar, is normally displayed on 3270 based application displays. Selecting this ICON will open the Access settings display.
 
 |image6| 
-*Figure 6: Virtel Web Access Settings Panel*
+*Figure 11: Virtel Web Access Settings Panel*
 
 When a user changes a setting, the change is preserved in the browser "local Storage" so that the next time the browser is opened the changed setting can be loaded from "local Storage" and used to support the new Virtel sessions. Changes made "locally" by a user will override any "global settings".
 
@@ -461,7 +471,8 @@ To import the settings file, click the IMPORT button. A filesystem dialog will o
 The contents of the JSON settings file will look very much like an object definition. Here is the contents of VWA-settings.json after changing the "Cursor" attribute to ""Bar".
 
 |image7| 
-*Figure 7: Example of an exported settings file*
+
+*Figure 12: Example of an exported settings file*
 
 .. note:: Only the settings that the user has modified are saved in local storage or an exported settings file.
 
@@ -617,7 +628,7 @@ In the Virtel log we can see that the change has been uploaded and logged into t
 8. If we look at the local storage using the developer tools option of the browser, we can see it has been populated with our settings from the mainframe :-
 
 |image8|
-*Figure 8 - Display of local storage*
+*Figure 13: - Display of local storage*
  
 
 Example of changing the global settings
@@ -626,12 +637,12 @@ Example of changing the global settings
 Open a session browser and display the current settings. In the browser debugger (Developer Tools - PF12 in the URL bar) we can see that we have a dummy w2hparm object " w2hparm  {}.
 
 |image9|
-*Figure 9 - w2hparm default settings*
+*Figure 14: - w2hparm default settings*
 
 If we make a change in the settings dialogue, these will override any administrator settings :-
 
 |image10|
-*Figure 10 - Settings Dialogue*
+*Figure 15: - Settings Dialogue*
 
 For example, lets assume that an Virtel administrator has set some new defaults by creating a new w2h.global.js file. The w2h.global.js file looks like :-
 
@@ -658,11 +669,11 @@ These are uploaded to CLI-DIR. The following messages would be seen in the Virte
          FILE : 'W2HPARM.GLOBAL.JS'                                      
    VIR0052I DELOC049 DISCONNECTED AFTER   0 MINUTES                       
 
-A user open's a new browser session (EDGE), and will see the new default changes reflected in the settings dialog. PGUp and PGDown have been set to PF7 and PF8. These global settings have overridden the Virtel default settings which would have been PA1/PA2.
+A user opens a new browser session (EDGE), and will see the new default changes reflected in the settings dialogue. PGUp and PGDown have been set to PF7 and PF8. These global settings have overridden the Virtel default settings which would have been PA1/PA2.
 
 |image11|
 
-*Figure 11 - Updated global settings*
+*Figure 16: - Updated global settings*
 
 Our user wishes to override these global settings with the original PA1/PA2 settings. The user changes the settings to reflect this; the changes will be uploaded to the mainframe and the following messages will be seen in the Virtel console log.
 
@@ -681,13 +692,13 @@ Here the PGUp/PGDown settings have been modified by the user and a display of se
 
 |image12|
 
-*Figure 12 - Users new settings*
+*Figure 17: - Users new settings*
 
 To restore to the administrator"s global settings, we just press the "Defaults" button. This will download the global settings from the mainframe. A redisplay of the settings will show the restore global settings. The change also drives an upload to the mainframe so that the changes are recorded in the USERPARM directory.
 
 |image13|
 
-*Figure 13 - Restored global settings*
+*Figure 18: - Restored global settings*
 
 .. note::It is important to refresh the cache after settings have been updated using the CTLR-R and CTRL-SHIFT-DEL key combinations.
 
@@ -697,7 +708,7 @@ Removing a USER"s default settings
 A user"s settings can be removed from the USERPARM directory by deleting the key associated with the user from the USERPARM directory. For example, the key associated with userid CTKHOLT is 8A4B86A3A108399F5866624546DA28C6. If we look at USERPARM directory in the Admin portal (41001) we can see it listed.
 
 |image14|
-*Figure 14 - USERPARM directory listing*
+*Figure 19: - USERPARM directory listing*
 
 We can remove the user's key entry by using the delete option. This will remove any user settings. The user will then have to "restore defaults" to correctly pickup up the global default parameters as defined by the Administrator.
 
@@ -705,13 +716,16 @@ We can remove the user's key entry by using the delete option. This will remove 
 
 Running the USERPARM option can add additional message logging. The VIRU122I message can be silenced through the use of the F Virtel, SILENCE command.
 
+.. raw:: latex
+
+    \newpage    
 
 USERPARM Problems
 ^^^^^^^^^^^^^^^^^
 
 **Problem**
 
-When I try to save my settings, I get the following dialog box.
+When I try to save my settings, I get the following dialogue box.
 
 |image15|
 
@@ -733,6 +747,13 @@ In the Virtel log I also see the follow messages:
 
 Maintenance level too low. Apply the latest maintenance. You must be at UPDT5708 or higher.
 
+.. raw:: latex
+
+    \newpage 
+
+Problems
+^^^^^^^^ 
+
 **Problem**
 
 I save my user parameter changes but when I use a different PC or browser I am reverted back to my old or default settings.
@@ -751,6 +772,8 @@ Insufficient RACF security. Check the Virtel log and look for any RACF violation
    452                                                                    
    'USERPARM' USER 'CTKHOLT             '                                
          FILE : 'C6D24022819C599803A86BB3C42298B6'           
+
+|
 
 **Problem**
 
@@ -796,8 +819,8 @@ This will list your "global" locations. You can use the following URL to list th
    w2hparm.keymapping=true;
    //w2hparm.synchronizeVirtelMacros=true;
 
-Setting up for Centralized macros and DDI
------------------------------------------
+Centralized macros and DDI
+--------------------------
 
 The following section provides details on how to implement centralized macros through Virtel"s DDI feature.
 
@@ -875,7 +898,7 @@ Getting ready for Centralized Macros.
 
 |image16|
 
-*Figure 16 - New directories to support centralised macros*
+*Figure 20: - New directories to support centralised macros*
 
 5. Update w2hparm.js
 
@@ -909,7 +932,7 @@ This shows that our updated w2hparm.global.js has been installed and can be loca
    http://192.168.170.48:41001/option/w2hparm.global.js
 
 
-If the output is same it means that both line 41001 (W2H) and 41002 (CLI) are locating the same w2hparm.global.js definitions correclty.
+If the output is same it means that both line 41001 (W2H) and 41002 (CLI) are locating the same w2hparm.global.js definitions correctly.
 
 You can also look at the console log in the developer"s tool kit (PF12 in the URL area) and should see the following messages in the 'console' tab :-
 
@@ -936,19 +959,30 @@ You can also look at the console log in the developer"s tool kit (PF12 in the UR
 6. Check the DDI is active. You can do this by launching a TSO session in both W2H and CLI. In each case, check that the Macro ICON in the tool bar is blue, indicating DDI is on, and not Green, which means that DDI disabled/not implemented.
 
 |image17|
-*Figure 17 - Blue ICON to indicate DDI active*
+*Figure 21: - Blue ICON to indicate DDI active*
+
+Creating a User macro
+^^^^^^^^^^^^^^^^^^^^^
 
 Create a test macro using the macro record button. When you go to save the macro, you will be given the option to associate the macro with a key sequence. Enter a macro name and press the save key. 
 
 |image18|
-*Figure 18 - Test macro*
+
+*Figure 22: - Test macro*
 
 The macro will be saved to your local storage/user directory. The following panel will be displayed :-
 
 |image19|
-*Figure 19 - Macro saved to user directory*
 
-With DDI/macro support you do not have the ability to export/import macros. For security reasons macros are only administered by the Virtel administrator(s). Getting macros into the DDI repository directories is performed through the DDI import feature. In the next section we will create a dummy macro, and import it into the global directory of the DDI repository.
+*Figure 23: - Macro saved to user directory*
+
+The following upload message, VIRU122I, should also appear the the system log :-
+
+|image38|
+
+*Figure 24: - Upload message with User macro*
+
+With DDI/macro support you do not have the ability to export or import macros. This function can only be performed in a non-centralized mode. For security reasons group and global macros can only be administered by the Virtel administrator(s). Users can only maintaining their own user macros, they cannot create Group or Global macros. Getting macros into the DDI repository directories is performed through the DDI import feature. In the next section we will create a dummy macro, and import it into the global directory of the DDI repository.
 
 Creating a Global macro
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -958,7 +992,7 @@ To create a global macro, we will setup a Virtel line which is not running DDI s
 Open up the Admin portal on 41001 and change the W2H-03P transaction to point back to W2H-DIR, refresh the cache. The Macro ICON should now be back to Green and if we look at the Macro panel we will see that we have the Import/Export feature back. We can use this environment to create and export macros. These macros can then be imported into the DDI/macro repository.
 
 |image20|
-*Figure 20 - Non DDI macro interface*
+*Figure 25: - Non DDI macro interface*
 
 1. We create a local macro called SDSF which, from the primary ISPF option menu, invokes SDSF, issues a LOG command, and then a SDSF TOP command.
 2. We save the macro and call it SDSF
@@ -975,17 +1009,17 @@ Now we want to import this macro.json file into the Global directory of our DDI 
 Open the DDI interface from the Administration Portal (41001) and select the Global Tab.
 
 |image21|
-*Figure 21 Global directory zone of the DDI interface*
+*Figure 26: Global directory zone of the DDI interface*
 
  Drag and drop the macros.json file into the D&D area (Area surrounded by dotted lines). Refresh the area by clicking the Refresh ICON button - button in the Top Left of the Global Tab. You should now be presented with the refreshed Global Directory which now contains the macros contained within the macros.json file - in our case just one macro called SDSF.
 
 |image22|
-*Figure 22: Global Directory with macros.json file*
+*Figure 27: Global Directory with macros.json file*
 
 If we open up a TSO or CICS session with an active DDI (blue ICON), for example under 41002, we should see that our Global Macro Area has now been populated with the SDSF macro.
 
 |image23|
-*Figure 23: Global Macro display*
+*Figure 28: Global Macro display*
 
 We also have some other "user macros" that this user is maintaining - "logon" and "logoff".
 
@@ -997,17 +1031,18 @@ A Group macro is associated with a particular RACF group and will only be displa
 The difference with Group macros is that we have to specify the Group that the macros.json file will belong to when opening up the Group area in the DDI interface. When selecting the Group Tab of the DDI area we specify the Group :-
 
 |image24|
-*Figure 24: Enter Group Name for Group macros*
+*Figure 29: Enter Group Name for Group macros*
 
 In our example we enter a group name, press the green tick, and then drag and drop our group macros.json file into the Group DDI zone area. That will initiate an upload of the file :-
 
 |image25|
-*Figure 25: Adding a group macro*
+*Figure 30: Adding a group macro*
 
 Once we refresh the DDI zone area, the macros located within the macros.json file will be listed. When can now display the available macros in our TSO 3270 session. If we refresh the macro display by hitting the refresh button, we should see all the macros listed in the group section :-
 
 |image26|
-*Figure 26: Group Macro display*
+
+*Figure 31: Group Macro display*
 
 Administration Functions
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1017,7 +1052,7 @@ Regardless of which of the three directories you are working on, USER, GROUP and
 As a Virtel Administration you have various functions available to you that you can use to manage the contents of these macros.json files. If you right click on the macros.json file within the DDI list you will see a Pop-Up box providing various administration tools. These include :-
 
 |image27|
-*Figure 27: Administrator Options*
+*Figure 32: Administrator Options*
 
 - Download " You can download a macros.json file and edit it to add additional macro entries manually. This can then be uploaded back into the DDI repository.
 - Copy " Copy is not really applicable here as all macros.json files must reside in the USR-DIR. You can use this function to copy the macros.json files to a backup directory. The back-directory would have to be pre-allocated using the similar JCL that was used to create the USR-DIR VSAM file. 
@@ -1025,9 +1060,16 @@ As a Virtel Administration you have various functions available to you that you 
 - Edit " Edit the contents of the macros.json file.
  
 |image28|
-*Figure 28: Editing a macro within DDI*
+*Figure 33: Editing a macro within DDI*
 
-**Problems**
+.. raw:: latex
+
+    \newpage
+
+Problems
+^^^^^^^^ 
+
+**Problem**
 
 I get the message - Virtel is not configured for dynamic directories message.
 
@@ -1046,6 +1088,7 @@ Make sure you are using a transaction with security set. Refresh the cache with 
    CTRL-SHIFT-DEL
    CTRL R
 
+**Problem**
 
 I get the message - Cannot access the directory XXX-DIR
 
@@ -1066,8 +1109,8 @@ Make sure you are using a transactions with security set. DDI will not work if i
    CTRL-SHIFT-DEL
    CTRL R
 
-Using HTTPS and setting up a secure link
-----------------------------------------
+HTTPS and setting up a secure link
+----------------------------------
 
 Defining a new line and transaction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1123,7 +1166,7 @@ We should see that the new lines are OPEN and connected to TCP/IP.
 The APPSTAT menu should appear with just one entry for SPCICST.
 
 |image31|
-*Figure 31 : CICS application under 41003*
+*Figure 34: CICS application under 41003*
 
 At this point we have defined a CICS application which is supported by our new line definition. It is still accessed through a unsecured HTTP URL. In the next section we see how to install AT-TLS and secure our new line and any traffic that passes through.      
 
@@ -1187,16 +1230,30 @@ After changing the PAGENT configuration start the PAGENT task or refresh it with
 Now, when we access the port 41003 with the URL https://192.168.170.48:41003 we will be presented with some certificate warning errors because of the "Self-Signed" CA certificate we are using. We continue to proceed to the address identified in the browser certificate warning page. Eventually we are presented with the APPLIST for 41003 which includes are CICS transaction :-
 
 |image32|
-*Figure 32: Secure transaction with HTTPS*
+*Figure 35: Secure transaction with HTTPS*
 
-.. Note:: The "Not Secure" warning. This will not appear if you are not using an approved CA certificate.     
+.. Note:: The "Not Secure" warning. This will not appear if you are not using an approved CA certificate. 
 
-**Problems**
+.. raw:: latex
 
-Is AT-TLS Service active in TCP/IP? Issue the following z/OS command " D TCPIP,,N,TTLS. The response should be: - 
+    \newpage 
+
+Problems
+^^^^^^^^    
+
+**Problem**
+
+I get message VIRHT57E LINE IS NOT SET UP FOR HTTPS in the Virtel log.
+
+*Cause*
+
+This means that the browser has sent encrypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven"t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line set-up required by Virtel.  Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to through to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate.
+
+Check the following :- 
+
+1. Is AT-TLS Service active in TCP/IP? Issue the following z/OS command " D TCPIP,,N,TTLS. The response should be: - 
 
 ::
-
 
    EZD0101I NETSTAT CS V1R13 TCPIP 706 
    TTLSGRPACTION GROUP ID CONNS 
@@ -1204,7 +1261,7 @@ Is AT-TLS Service active in TCP/IP? Issue the following z/OS command " D TCPIP,,
    1 OF 1 RECORDS DISPLAYED 
    END OF THE REPORT
 
-**Some common Pagent Error codes**
+2. Check that you have defined the correct STC name and port in the PAGENT definitions. Also check the SYSLOG for any PAGENT error messages which may well include an error code. 
 
 The following is a list of common Pagent Error codes that can be seen in the SYSLOG: - 
 
@@ -1219,13 +1276,6 @@ The following is a list of common Pagent Error codes that can be seen in the SYS
    - 434    Certificate key not compatible with cipher suite 
    - 435    Certificate authority unknown 
    - 5003   Browser sent clear text. HTTP instead of HTTPS used in URL.
-
-**Virtel Messages**
-
-*VIRHT57E LINE IS NOT SET UP FOR HTTPS* 
-
-This means that the browser has sent encypted text (https) but that AT-TLS has not decrypted it before sending it to VIRTEL. The PAGENT rules haven"t correctly identified this port as a SSL jobname/port. Check the /etc/pagent.conf member. The message is a bit misleading as there is no line setup required by Virtel.  Normally AT-TLS is transparent to VIRTEL. AT-TLS performs the decryption and transforms the https request into an http request before passing it to through to VIRTEL. The only case where VIRTEL is AT-TLS aware is when the VIRTEL transaction definition specifies SECURITY=3 (TLS) and in this case VIRTEL will check that the session has been processed by AT-TLS and will issue an IOCTL to obtain the userid associated with the certificate.
-
 
 Appendix A
 ----------
@@ -1504,9 +1554,6 @@ Template job for adding a new line to Virtel.
                   RETRY=0010                                               
 
 
-Appendix C
-----------
-
 Template job for deleting a Virtel line.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ::
@@ -1578,3 +1625,4 @@ Template job for deleting a Virtel line.
 .. |image35| image:: images/media/image35.png
 .. |image36| image:: images/media/image36.png
 .. |image37| image:: images/media/image37.png
+.. |image38| image:: images/media/image38.png
