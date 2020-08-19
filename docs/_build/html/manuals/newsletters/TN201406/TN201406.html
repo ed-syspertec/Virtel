@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Pass tickets and supporting Proxy Servers" href="../TN201407/TN201407.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -111,6 +113,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
 </ul>
 </li>
 </ul>
@@ -118,6 +121,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -156,7 +160,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -184,13 +188,14 @@
 <p>Taking a VIRTEL terminal trace enables the capture of 3270 data streams between the VIRTEL 3270 relay terminal and the customers VTAM application. The following demonstrates how to run such a trace using VIRTEL running in batch. Please note that VIRTEL does not need to be authorized, does not need to run as a started task or need any special security setup. The only requirement from a customer’s perspective is that VIRTEL does need a VTAM ACB so an entry in SYS1.VTAMLST will be required. This is the only setup that your customer will have to do outside of installing the base product.</p>
 <p>Procedure</p>
 <ol class="arabic">
-<li><p>Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the <cite>Virtel Installation Guide</cite> for details on how to download and install VIRTEL from the <a class="reference external" href="http://ftp.syspertec.com">SYSPERTEC ftp site</a>. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.</p>
+<li><p class="first">Install the VIRTEL product by running the $ALOCDSU and $RESTDSU jobs. See the <cite>Virtel Installation Guide</cite> for details on how to download and install VIRTEL from the <a class="reference external" href="http://ftp.syspertec.com">SYSPERTEC ftp site</a>. Note that you can bypass “Step 5” in section 2.3 of the MVS Installation Checklist because at this stage we are not running VIRTEL authorized. When running the ARBOLOAD job point the “SET VTAMLST” to your CNTL library. ARBOLOAD will create the VTAMLST application definition member called VIRTAPPL. This can be copied to SYS1.VTAMLST and activated in the next step.</p>
 <blockquote>
 <div><p>“Step 6” Edit member VIRTCT01 can be bypassed if the default TCT options are acceptable. For the purposes of just running a 3270 terminal trace this should be the case.</p>
 <p>“Steps 9 through to Steps 15” of the MVS installation guide can be ignored.</p>
 </div></blockquote>
 </li>
-<li><p>Copy the VTAM application definition created by ARBOLOAD to SYS1.VTAMLST. The example I use is listed below. This member can be found in the CNTL library after running the ARBOLOAD job. By default the member name is VIRTAPPL. The member should activated by issuing the following z/OS command:-</p></li>
+<li><p class="first">Copy the VTAM application definition created by ARBOLOAD to SYS1.VTAMLST. The example I use is listed below. This member can be found in the CNTL library after running the ARBOLOAD job. By default the member name is VIRTAPPL. The member should activated by issuing the following z/OS command:-</p>
+</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">V</span> <span class="n">NET</span><span class="p">,</span><span class="n">ACT</span><span class="p">,</span><span class="n">ID</span><span class="o">=</span><span class="n">VIRTAPPL</span>
 </pre></div>
@@ -215,7 +220,7 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Before running VIRTEL as a batch job modify the program name to VIR0000 from VIR60000. Here is an example of the batch procedure I use. VIR6000 requires an authorized library whereas VIR0000 doesn’t.</p></li>
+<li>Before running VIRTEL as a batch job modify the program name to VIR0000 from VIR60000. Here is an example of the batch procedure I use. VIR6000 requires an authorized library whereas VIR0000 doesn’t.</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTA</span> <span class="n">JOB</span> <span class="mi">1</span><span class="p">,</span><span class="n">EDHOLT</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">VIRTEL</span> <span class="n">PROC</span> <span class="n">QUAL</span><span class="o">=</span><span class="n">SP000</span><span class="o">.</span><span class="n">SPVIREH</span><span class="p">,</span>
@@ -242,7 +247,7 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One of these defaults is the installation of standard VTAM applications like CICS, IMS, NVAS and TSO. What follows is an example of tracing a VIRTEL web to host (W2H) session between a browser and TSO. To begin with we need to identify the related W2H line that will support the session. The command “F jobname,lines” will display the active lines. I’m interested in default web to host (W2H) line so I’m looking for the W2H line. Here is the results of my display:-</p></li>
+<li>Tracing an application. The ARBOLOAD sets up defaults for VIRTEL. One of these defaults is the installation of standard VTAM applications like CICS, IMS, NVAS and TSO. What follows is an example of tracing a VIRTEL web to host (W2H) session between a browser and TSO. To begin with we need to identify the related W2H line that will support the session. The command “F jobname,lines” will display the active lines. I’m interested in default web to host (W2H) line so I’m looking for the W2H line. Here is the results of my display:-</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>F SPTHOLTA,LINES
 +VIR0200I LINES
@@ -288,8 +293,8 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can modify the ARBOLOAD to reflect your customer’s applications. For example, if you are using a different session manager to the default session manager APPLID NVAS, modify APPL= keyword in the W2H-15X TRANSACT entry in the ARBOLOAD control file. Change it to the VTAM APPLID of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file. Virtel must be down when updating the ARBO file.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">You can modify the ARBOLOAD to reflect your customer’s applications. For example, if you are using a different session manager to the default session manager APPLID NVAS, modify APPL= keyword in the W2H-15X TRANSACT entry in the ARBOLOAD control file. Change it to the VTAM APPLID of your session manager. Rerun the ARBLOAD job to rebuild the ARBO file. Virtel must be down when updating the ARBO file.</p>
 </div>
 <p>Resubmit the VIRTEL batch job and open a webpage with the following url:-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">170.30</span><span class="p">:</span><span class="mi">41001</span><span class="o">/</span><span class="n">w2h</span><span class="o">/</span><span class="n">WEB2AJAX</span><span class="o">.</span><span class="n">htm</span><span class="o">+</span><span class="n">mySessmgr</span>
@@ -317,11 +322,19 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -332,7 +345,6 @@ RHTIP??? APPL AUTH=(ACQ,PASS),MODETAB=ISTINCLM,DLOGMOD=DSILGMOD,EAS=1
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

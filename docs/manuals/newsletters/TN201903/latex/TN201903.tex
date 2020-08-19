@@ -13,9 +13,6 @@
 \usepackage{amsmath,amssymb,amstext}
 \usepackage{babel}
 
-
-
-
 \usepackage[Bjarne]{fncychap}
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 
@@ -29,7 +26,24 @@
 % Set up styles of URL: it should be placed after hyperref.
 \urlstyle{same}
 
-\usepackage{sphinxmessages}
+\addto\captionsenglish{\renewcommand{\figurename}{Fig.\@ }}
+\makeatletter
+\def\fnum@figure{\figurename\thefigure{}}
+\makeatother
+\addto\captionsenglish{\renewcommand{\tablename}{Table }}
+\makeatletter
+\def\fnum@table{\tablename\thetable{}}
+\makeatother
+\addto\captionsenglish{\renewcommand{\literalblockname}{Listing}}
+
+\addto\captionsenglish{\renewcommand{\literalblockcontinuedname}{continued from previous page}}
+\addto\captionsenglish{\renewcommand{\literalblockcontinuesname}{continues on next page}}
+\addto\captionsenglish{\renewcommand{\sphinxnonalphabeticalgroupname}{Non-alphabetical}}
+\addto\captionsenglish{\renewcommand{\sphinxsymbolsname}{Symbols}}
+\addto\captionsenglish{\renewcommand{\sphinxnumbersname}{Numbers}}
+
+\addto\extrasenglish{\def\pageautorefname{page}}
+
 
 
 
@@ -41,7 +55,7 @@
 
 
 \title{Maintaining centralized macros with batch scripts}
-\date{Jul 28, 2019}
+\date{Jul 21, 2020}
 \release{1.00}
 \author{Syspertec Communications}
 \newcommand{\sphinxlogo}{\vbox{}}

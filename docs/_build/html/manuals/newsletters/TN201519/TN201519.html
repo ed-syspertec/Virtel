@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Using the IBM System Logger with Virtel" href="../TN201520/TN201520.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -112,6 +114,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
 </ul>
 </li>
 </ul>
@@ -119,6 +122,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -157,7 +161,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -196,16 +200,16 @@ available to VIRTEL. This can be done by either copying the module to a
 VIRTEL steplib library or concatenating the USER.VTAMLIB library into
 the VIRTEL started procedure.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Replace SPTHOLT with your HLQ.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">Replace SPTHOLT with your HLQ.</p>
 </div>
 <p><strong>Installation instructions</strong></p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The following outlines the installation procedure for Virtel 4.53 onwards. For installation with Virtel 4.55 and subsequent later relaease, steps 1 through to 5 are not required as the modules will be delivered as part of the Virtel 4.55 installation.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">The following outlines the installation procedure for Virtel 4.53 onwards. For installation with Virtel 4.55 and subsequent later relaease, steps 1 through to 5 are not required as the modules will be delivered as part of the Virtel 4.55 installation.</p>
 </div>
 <ol class="arabic simple">
-<li><p>Allocate a TRS file on the mainframe with the following JCL:</p></li>
+<li>Allocate a TRS file on the mainframe with the following JCL:</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTT</span> <span class="n">JOB</span> <span class="p">(</span><span class="mi">9000</span><span class="p">),</span><span class="s1">&#39;ED...HOLT...&#39;</span><span class="p">,</span>
 <span class="o">//</span> <span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span><span class="p">,</span><span class="n">RESTART</span><span class="o">=*</span><span class="p">,</span>
@@ -229,8 +233,8 @@ the VIRTEL started procedure.</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Upload the binary TRS file ptf5325-mvs453.trs to the mainframe and unterse the TRS file. The file can be found on the FTP website in the PUBLIC directory under /VIRTEL 4.53/PTFS. The following is an example
-of the JCL required to unterse the file.</p></li>
+<li>Upload the binary TRS file ptf5325-mvs453.trs to the mainframe and unterse the TRS file. The file can be found on the FTP website in the PUBLIC directory under /VIRTEL 4.53/PTFS. The following is an example
+of the JCL required to unterse the file.</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">SPTHOLTD</span> <span class="n">JOB</span> <span class="n">DSSDUMP</span><span class="p">,</span><span class="n">CLASS</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">MSGCLASS</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">NOTIFY</span><span class="o">=&amp;</span><span class="n">SYSUID</span>
 <span class="o">//</span><span class="n">S01</span> <span class="n">EXEC</span> <span class="n">PGM</span><span class="o">=</span><span class="n">TRSMAIN</span><span class="p">,</span><span class="n">PARM</span><span class="o">=</span><span class="n">UNPACK</span>
@@ -240,22 +244,22 @@ of the JCL required to unterse the file.</p></li>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Receive the untersed file using the TSO RECEIVE command.</p></li>
+<li>Receive the untersed file using the TSO RECEIVE command.</li>
 </ol>
-<dl class="simple">
-<dt>::</dt><dd><p>receive indsn(XMIT.LOADLIB.BIN)</p>
-</dd>
+<dl class="docutils">
+<dt>::</dt>
+<dd>receive indsn(XMIT.LOADLIB.BIN)</dd>
 </dl>
 <p>This will create the LOAD library SPTHOLT.XMIT.LOADLIB which should contain the following members:-</p>
-<dl class="simple">
-<dt>::</dt><dd><p>USSVIRT Default VIRTEL USSTAB
+<dl class="docutils">
+<dt>::</dt>
+<dd>USSVIRT Default VIRTEL USSTAB
 VIR0021W Virtel USSTAB program
-EIRM00W Dummy MAP module required by VIR0021W</p>
-</dd>
+EIRM00W Dummy MAP module required by VIR0021W</dd>
 </dl>
 <ol class="arabic simple" start="4">
-<li><p>Copy these load members into your VIRTEL load library. They are all new members.</p></li>
-<li><p>Apply the following zaps to the VIRTEL module VIR0010. This fix can also be found on the FTP website in the allpts-mvs453 member in the PUBLIC directory under /VIRTEL 4.53/PTFS.</p></li>
+<li>Copy these load members into your VIRTEL load library. They are all new members.</li>
+<li>Apply the following zaps to the VIRTEL module VIR0010. This fix can also be found on the FTP website in the allpts-mvs453 member in the PUBLIC directory under /VIRTEL 4.53/PTFS.</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*********************************************************************</span>
 <span class="o">*</span> <span class="o">*</span> <span class="n">PTF5325</span> <span class="n">MVS453</span> <span class="o">*</span>
@@ -343,7 +347,7 @@ EIRM00W Dummy MAP module required by VIR0021W</p>
 </pre></div>
 </div>
 <ol class="arabic simple" start="6">
-<li><p>Run the following ARBO update job to add some definitions to support USSMSG10. Here we are adding new line/entry point/terminals/transaction definitions. <em>Change LOCADDR IP address!</em>. Transaction EDS-16A adds the support for VIR0021W which is the USSTAB support module.</p></li>
+<li>Run the following ARBO update job to add some definitions to support USSMSG10. Here we are adding new line/entry point/terminals/transaction definitions. <em>Change LOCADDR IP address!</em>. Transaction EDS-16A adds the support for VIR0021W which is the USSTAB support module.</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//SPTHOLTA JOB 9000,&#39;UPGRADE&#39;,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID,
 // REGION=0M,RESTART=*
@@ -424,35 +428,30 @@ LOGMSG=&#39;usstab=usloc00&#39;
 </pre></div>
 </div>
 <ol class="arabic" start="7">
-<li><p>After the ARBO update, start VIRTEL and check out the new definitions. In the following example a new Line using port 41003 and entry point EDSHOST is created in order to separate general Virtel users from those who will be restricted to only applications supported by the USSTAB. The new Entry Points “TIOA at Logon” to redisplay the VTAM USS tab after a user exits an application. The Entry point is restricted to only three transactions.</p>
+<li><p class="first">After the ARBO update, start VIRTEL and check out the new definitions. In the following example a new Line using port 41003 and entry point EDSHOST is created in order to separate general Virtel users from those who will be restricted to only applications supported by the USSTAB. The new Entry Points “TIOA at Logon” to redisplay the VTAM USS tab after a user exits an application. The Entry point is restricted to only three transactions.</p>
 <p><a class="reference internal" href="../../../_images/image120.png"><img alt="image0" src="../../../_images/image120.png" style="width: 5.31250in; height: 3.06060in;" /></a></p>
 </li>
 </ol>
 <p><em>Fig 1. - Line Entry</em></p>
 <p>The related terminal pool should be defined with a definitions to support the LUs that will maintain sessions with the VTAM applications. The terminal pool definitions look like:-</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image213.png"><img alt="image1" src="../../../_images/image213.png" style="width: 5.33850in; height: 3.16667in;" /></a></p>
-</div></blockquote>
+<div><a class="reference internal" href="../../../_images/image213.png"><img alt="image1" src="../../../_images/image213.png" style="width: 5.33850in; height: 3.16667in;" /></a></div></blockquote>
 <p><em>Fig 2. - Terminal definitions</em></p>
 <p>The Entry Point definition looks like the following:-</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image314.png"><img alt="image2" src="../../../_images/image314.png" style="width: 5.29167in; height: 3.03219in;" /></a></p>
-</div></blockquote>
+<div><a class="reference internal" href="../../../_images/image314.png"><img alt="image2" src="../../../_images/image314.png" style="width: 5.29167in; height: 3.03219in;" /></a></div></blockquote>
 <p><em>Fig 3. - Entry point definitions</em></p>
 <p>The transactions that are supported by this entry point are listed below:-</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image411.png"><img alt="image3" src="../../../_images/image411.png" style="width: 5.33333in; height: 3.68063in;" /></a></p>
-</div></blockquote>
+<div><a class="reference internal" href="../../../_images/image411.png"><img alt="image3" src="../../../_images/image411.png" style="width: 5.33333in; height: 3.68063in;" /></a></div></blockquote>
 <p><em>Fig 4. - Transaction list for the entry point</em></p>
 <p>The first is the default transaction for the entry point – the same name as the entry point. Virtel, by default, will return here whenever we exit an application. To re-display the USSTAB we set the “TIOA at logon” field to point to the VTAMUSS transaction EDS-16A.</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image59.png"><img alt="image4" src="../../../_images/image59.png" style="width: 5.76517in; height: 3.34375in;" /></a></p>
-</div></blockquote>
+<div><a class="reference internal" href="../../../_images/image59.png"><img alt="image4" src="../../../_images/image59.png" style="width: 5.76517in; height: 3.34375in;" /></a></div></blockquote>
 <p><em>Fig 5. - Entry Point Transaction</em></p>
 <p>The second transaction, EDS-03W, is a transaction the enables VIRTEL to access the W2H directory from this entry point. This is required so that web elements can be served from the W2H directory. For example the HTML page “w2h/WEB2AJAX.htm”</p>
 <blockquote>
-<div><p><a class="reference internal" href="../../../_images/image69.png"><img alt="image5" src="../../../_images/image69.png" style="width: 5.75000in; height: 3.92804in;" /></a></p>
-</div></blockquote>
+<div><a class="reference internal" href="../../../_images/image69.png"><img alt="image5" src="../../../_images/image69.png" style="width: 5.75000in; height: 3.92804in;" /></a></div></blockquote>
 <p><em>Fig 6. - Directory Transaction for w2h</em></p>
 <blockquote>
 <div><p>The third and final transaction in our entry point list is the
@@ -463,11 +462,11 @@ similar page in HTML. The transaction definition looks like:-</p>
 </div></blockquote>
 <p><em>Fig 7. - VTAMUSS transaction</em></p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>“Security=1” is set which will force users to logon before the USSTAB is displayed. Change this to 0 if you wish to bypass this security check.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">“Security=1” is set which will force users to logon before the USSTAB is displayed. Change this to 0 if you wish to bypass this security check.</p>
 </div>
 <ol class="arabic" start="8">
-<li><p>From a browser access the VTAMUSS transaction. This can be from the VIRTEL Menu Screen or with a direct URL such as <a class="reference external" href="http://192.168.170.30:41003">http://192.168.170.30:41003</a>. By default the TIOA logon script associated with this entry point will call the VTAMUSS transaction which will then display the default USSTAB. This is just a sanity check to make sure that the VIR0021W module has been installed and is working correctly. See below for an example of the Virtel default USSTAB.</p>
+<li><p class="first">From a browser access the VTAMUSS transaction. This can be from the VIRTEL Menu Screen or with a direct URL such as <a class="reference external" href="http://192.168.170.30:41003">http://192.168.170.30:41003</a>. By default the TIOA logon script associated with this entry point will call the VTAMUSS transaction which will then display the default USSTAB. This is just a sanity check to make sure that the VIR0021W module has been installed and is working correctly. See below for an example of the Virtel default USSTAB.</p>
 <blockquote>
 <div><p><a class="reference internal" href="../../../_images/image87.png"><img alt="image7" src="../../../_images/image87.png" style="width: 5.67708in; height: 3.77382in;" /></a></p>
 </div></blockquote>
@@ -475,22 +474,23 @@ similar page in HTML. The transaction definition looks like:-</p>
 </ol>
 <p><em>Fig 8. - Default USSTAB</em></p>
 <ol class="arabic" start="9">
-<li><p>Access an application through the following command LOGON APPLID=application. For example LOGON APPLID=MYTSO. This should take you the application specified. On exiting the application you will be
-returned to the VIRTEL menu and not the VTAM screen. This can be changed. See note 12.</p></li>
-<li><p>Update the VTAMUSS transaction in the Entry Point to pass the name of your USSTAB to VIR0021W. This is done by coding the following string in the logon field. See screen shot below:-</p>
+<li><p class="first">Access an application through the following command LOGON APPLID=application. For example LOGON APPLID=MYTSO. This should take you the application specified. On exiting the application you will be
+returned to the VIRTEL menu and not the VTAM screen. This can be changed. See note 12.</p>
+</li>
+<li><p class="first">Update the VTAMUSS transaction in the Entry Point to pass the name of your USSTAB to VIR0021W. This is done by coding the following string in the logon field. See screen shot below:-</p>
 <p><a class="reference internal" href="../../../_images/image95.png"><img alt="image8" src="../../../_images/image95.png" style="width: 5.59010in; height: 3.80208in;" /></a></p>
 </li>
 </ol>
 <p><em>Fig 9. - Defining the USSTAB name in the transaction</em></p>
 <p>Press PF1, PF3, PF3, PF1 to save the changes. The “usstab=ussn” string will be passed through to the VIRTEL application VIR0021W. This application will load the VTAM USSTAB, interrogate it and build the necessary template to display the USSMSG10 buffer in the browser.</p>
 <ol class="arabic" start="11">
-<li><p>By reloading the <a class="reference external" href="http://192.168.170.30:41003">http://192.168.170.30:41003</a> URL again the USSVTAM transaction will display the VTAM USS table identified in the “usstab=” keyword. Here is an example of the USSTAB USSN that was specified in the Logon message field.</p>
+<li><p class="first">By reloading the <a class="reference external" href="http://192.168.170.30:41003">http://192.168.170.30:41003</a> URL again the USSVTAM transaction will display the VTAM USS table identified in the “usstab=” keyword. Here is an example of the USSTAB USSN that was specified in the Logon message field.</p>
 <p><a class="reference internal" href="../../../_images/image105.png"><img alt="image9" src="../../../_images/image105.png" style="width: 5.46875in; height: 3.62927in;" /></a></p>
 </li>
 </ol>
 <p><em>Fig 10. - USSN Example</em></p>
 <ol class="arabic simple" start="12">
-<li><p>If the default Virtel USSTAB appears than VIRTEL hasn’t be able to locate your USSTAB load module. Check that it is either concatenated into the VIRTEL steplib or copied into the VIRTEL load library. Check the Virtel log for any error messages.</p></li>
+<li>If the default Virtel USSTAB appears than VIRTEL hasn’t be able to locate your USSTAB load module. Check that it is either concatenated into the VIRTEL steplib or copied into the VIRTEL load library. Check the Virtel log for any error messages.</li>
 </ol>
 <div class="section" id="version-1-1">
 <h2>Version 1.1<a class="headerlink" href="#version-1-1" title="Permalink to this headline">¶</a></h2>
@@ -568,11 +568,19 @@ APPLID=TSO. Both would be accepted.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -583,7 +591,6 @@ APPLID=TSO. Both would be accepted.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

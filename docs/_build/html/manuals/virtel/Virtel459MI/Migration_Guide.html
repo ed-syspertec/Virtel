@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="User Guide V4.59" href="../Virtel459UG/User_Guide.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -117,6 +119,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -155,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../virtel.html">Virtel Manuals</a> &raquo;</li>
         
@@ -184,8 +187,8 @@
 <span id="virtel459mi"></span><h1>Migration Guide V4.59<a class="headerlink" href="#migration-guide-v4-59" title="Permalink to this headline">¶</a></h1>
 <p><strong>VIRTEL Migration Guide</strong></p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>This is a draft version of the document.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">This is a draft version of the document.</p>
 </div>
 <p>Version : 4.59 Draft</p>
 <p>Release Date : 12 July 2019. Publication Date : 12/07/2019</p>
@@ -215,8 +218,8 @@ their respective owners.</p>
 <p>The upgrade procedure detailed below will restore a complete “new” system on the mainframe.</p>
 <p>Once restored you will have to integrate/migrate to the new librairies (sources or binaries), except for the ARBO (user configuration data) and HTML.TRSF (customisation data). Depending on your current Virtel level will dictate the migration path and consequently the updates you will need to do as part of the upgrade process.</p>
 <ul class="simple">
-<li><p>The SAMP.TRSF VSAM file will be completely replaced as part of the upgrade process. Any user directories located within the SAMP.TRSF VSAM file must be migrated to another TRSF file before beginning migration.</p></li>
-<li><p>Similarly, you must ensure that you have not saved any customized elements into the SAMP.TRSF directories, a modified w2hparm.js for example. If this is the case, you must move these customisations to a directory hosted on another VSAM file and restore them back after the upgrade processes. Where possible, it is advisable than user modifications should not be kept in the SAMP.TRSF. Migrate them to another directory such as CLI-DIR, located on the HTML.TRSF VSAM file. This VSAM file is not affected by the migration process.</p></li>
+<li>The SAMP.TRSF VSAM file will be completely replaced as part of the upgrade process. Any user directories located within the SAMP.TRSF VSAM file must be migrated to another TRSF file before beginning migration.</li>
+<li>Similarly, you must ensure that you have not saved any customized elements into the SAMP.TRSF directories, a modified w2hparm.js for example. If this is the case, you must move these customisations to a directory hosted on another VSAM file and restore them back after the upgrade processes. Where possible, it is advisable than user modifications should not be kept in the SAMP.TRSF. Migrate them to another directory such as CLI-DIR, located on the HTML.TRSF VSAM file. This VSAM file is not affected by the migration process.</li>
 </ul>
 </div>
 <div class="section" id="upgrade-procedure">
@@ -224,40 +227,40 @@ their respective owners.</p>
 <p>Before starting the upgrade read through this document first and build a migration plan. Depending on your current release and configuration some of the migration steps may not be applicable.</p>
 <p>Download from our file server at <a class="reference external" href="http://ftp.syspertec.com">http://ftp.syspertec.com</a></p>
 <ul class="simple">
-<li><p>/VIRTEL 4.59/Produits/virtel459mvs.zip</p></li>
-<li><p>/VIRTEL 4.59/PTFS/allptfs-mvs459.txt</p></li>
-<li><p>/VIRTEL 4.59/PTFS/virtel459updtnnnn.zip</p></li>
+<li>/VIRTEL 4.59/Produits/virtel459mvs.zip</li>
+<li>/VIRTEL 4.59/PTFS/allptfs-mvs459.txt</li>
+<li>/VIRTEL 4.59/PTFS/virtel459updtnnnn.zip</li>
 </ul>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>All jobs must be customized to your site standards before running. Backup and keep your existing HTML.TRSF and ARBO VSAM files.</p>
+<p class="first admonition-title">Warning</p>
+<p class="last">All jobs must be customized to your site standards before running. Backup and keep your existing HTML.TRSF and ARBO VSAM files.</p>
 </div>
 <p>The procedure for upgrading from a previous release of VIRTEL (version 4.00 or later) is as follows:</p>
 <ol class="arabic simple">
-<li><p>Download and unzip virtel459mvs.zip.</p></li>
-<li><p>Upload and run job $ALOCDSU. This will allocate a XMIT file on the mainframe.</p></li>
-<li><p>Upload virtel459mvs.xmit to the file allocated by $ALOCDSU.</p></li>
-<li><p>Upload and run job $RESTDSU. This will allocate and install the new Virtel 4.59 libraries.</p></li>
-<li><p>Apply any PTFs using AMASPZAP,PARM=IGNIDRFULL (job ZAPJCL from the new VIRT459.SAMPLIB). The input file is allptfs-mvs459.txt.</p></li>
-<li><p>Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new VIRT459.CNTL</p></li>
-<li><p>Reassemble your VIRTCTnn module using the ASMTCT job in VIRT459.CNTL</p></li>
-<li><p>If you have any user scenario or user exit modules, copy them to the VIRT459.CNTL library and reassemble them using the ASMSCEN and ASMEXIT jobs respectively.</p></li>
-<li><p>Add the new VIRT459.LOADLIB library to the system APF list in the MVS PARMLIB and use the SETPROG command to authorize the VIRT459.LOADLIB library.</p></li>
-<li><p>Edit your VIRTEL procedure in the MVS PROCLIB, to ensure that:</p></li>
+<li>Download and unzip virtel459mvs.zip.</li>
+<li>Upload and run job $ALOCDSU. This will allocate a XMIT file on the mainframe.</li>
+<li>Upload virtel459mvs.xmit to the file allocated by $ALOCDSU.</li>
+<li>Upload and run job $RESTDSU. This will allocate and install the new Virtel 4.59 libraries.</li>
+<li>Apply any PTFs using AMASPZAP,PARM=IGNIDRFULL (job ZAPJCL from the new VIRT459.SAMPLIB). The input file is allptfs-mvs459.txt.</li>
+<li>Copy your VIRTCTnn from the old VIRTnnn.CNTL library to the new VIRT459.CNTL</li>
+<li>Reassemble your VIRTCTnn module using the ASMTCT job in VIRT459.CNTL</li>
+<li>If you have any user scenario or user exit modules, copy them to the VIRT459.CNTL library and reassemble them using the ASMSCEN and ASMEXIT jobs respectively.</li>
+<li>Add the new VIRT459.LOADLIB library to the system APF list in the MVS PARMLIB and use the SETPROG command to authorize the VIRT459.LOADLIB library.</li>
+<li>Edit your VIRTEL procedure in the MVS PROCLIB, to ensure that:</li>
 </ol>
 <blockquote>
 <div><ul class="simple">
-<li><p>The STEPLIB and DFHRPL DD statements reference the new VIRTxxx.LOADLIB</p></li>
-<li><p>The SERVLIB DD statement references the new VIRTxxx.SERVLIB</p></li>
-<li><p>The SAMPTRSF DD statement references the new VIRTxxx.SAMP.TRSF</p></li>
+<li>The STEPLIB and DFHRPL DD statements reference the new VIRTxxx.LOADLIB</li>
+<li>The SERVLIB DD statement references the new VIRTxxx.SERVLIB</li>
+<li>The SAMPTRSF DD statement references the new VIRTxxx.SAMP.TRSF</li>
 </ul>
 </div></blockquote>
 <ol class="arabic simple" start="11">
-<li><p>Apply recommandations as shown below in “Check list and precautions”.</p></li>
+<li>Apply recommandations as shown below in “Check list and precautions”.</li>
 </ol>
 <ol class="arabic simple" start="12">
-<li><p>Apply any “update” maintenance (virtel459updtnnnn.zip), if any according to the instructions in the Readme-updtnnnn.txt file in the zip.</p></li>
-<li><p>Stop and restart Virtel. If you want to create new copies of your existing ARBO and HTML.TRSF files, and rename them to your V4.59 HLQ, use the JCl shown below. This will preserve any configurational and customized elements you have. For example w2hparm.js, custom.js, custom.css and any customized option members:-</p></li>
+<li>Apply any “update” maintenance (virtel459updtnnnn.zip), if any according to the instructions in the Readme-updtnnnn.txt file in the zip.</li>
+<li>Stop and restart Virtel. If you want to create new copies of your existing ARBO and HTML.TRSF files, and rename them to your V4.59 HLQ, use the JCl shown below. This will preserve any configurational and customized elements you have. For example w2hparm.js, custom.js, custom.css and any customized option members:-</li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//$VSAMCPY JOB 9000,&#39;COPY FILES&#39;,CLASS=A,MSGCLASS=X,NOTIFY=SPTHOLT
 //STEP0   EXEC PGM=ADRDSSU,REGION=0M PARM=(&#39;TYPRUN=NORUN&#39;)
@@ -303,35 +306,35 @@ their respective owners.</p>
 <div class="section" id="all-versions">
 <h3>All versions<a class="headerlink" href="#all-versions" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>You MUST backup and save a copy of your original configuartion ARBO file as this file will be migrated to Virtel 4.59. This can be done using the example JCL procedure above. Alternatively, you can use a VIRCONF UNLOAD process to unload and reload to the new distributed V4.59 ARBO file. See “VIRCONF - Unloading a VIRARBO file” in your CURRENT Virtelxxx_Installation_User_Guide.</p></li>
-<li><p>If you are not using the new ‘option customization’ mode you will need to update your TCT to include the HTSET1=(OPTION-DEFAULT-COMPATIBILITY) TCT parameter. This maintains configuration compatibility with Virtel versions prior to V4.56 for users who have chosen to stay with the old “Compatibility Mode” of operation.</p></li>
-<li><p>If you using some “custom” files or options files (“custom.js”, “customs.css”,custom “w2hparm.js” or any option related files) you MUST check that they are stored in a directory other than W2H-DIR. If not you must store your “custom” files in another directory (CLI-DIR for example).</p></li>
-<li><p>Ensure that the directory on which “custom” file are stored is not the W2H-DIR directory as this directory is allocated to the VIRTxxx.SAMP.TRSF VSAM file. VIRTxxx.SAMP.TRSF is completely replaced as part of the migration procedure. Any customized elements will be lost or overwritten. See SAMPLIB(CUSTCSS) as a sample job to point the relevant transactions to a directory other than W2H-DIR. The suggested directory should be CLI-DIR. For further information on customization see the section “Virtel customization Modes” in the Virtel User Guide.</p></li>
+<li>You MUST backup and save a copy of your original configuartion ARBO file as this file will be migrated to Virtel 4.59. This can be done using the example JCL procedure above. Alternatively, you can use a VIRCONF UNLOAD process to unload and reload to the new distributed V4.59 ARBO file. See “VIRCONF - Unloading a VIRARBO file” in your CURRENT Virtelxxx_Installation_User_Guide.</li>
+<li>If you are not using the new ‘option customization’ mode you will need to update your TCT to include the HTSET1=(OPTION-DEFAULT-COMPATIBILITY) TCT parameter. This maintains configuration compatibility with Virtel versions prior to V4.56 for users who have chosen to stay with the old “Compatibility Mode” of operation.</li>
+<li>If you using some “custom” files or options files (“custom.js”, “customs.css”,custom “w2hparm.js” or any option related files) you MUST check that they are stored in a directory other than W2H-DIR. If not you must store your “custom” files in another directory (CLI-DIR for example).</li>
+<li>Ensure that the directory on which “custom” file are stored is not the W2H-DIR directory as this directory is allocated to the VIRTxxx.SAMP.TRSF VSAM file. VIRTxxx.SAMP.TRSF is completely replaced as part of the migration procedure. Any customized elements will be lost or overwritten. See SAMPLIB(CUSTCSS) as a sample job to point the relevant transactions to a directory other than W2H-DIR. The suggested directory should be CLI-DIR. For further information on customization see the section “Virtel customization Modes” in the Virtel User Guide.</li>
 </ul>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For customers who wish to run in ‘Option Customization’ mode you must run the ARBOLOAD job in the CNTL library with OPTIONS=YES. This will add the relevant transactions to support the /option/ pathname. Also, the SAMPLIB(CUSTCSS) job should be modified and run. It should only include the W2H-03P and CLI-03P transactions. Option customization mode still maintains a global w2hparm.js in CLI-DIR. This needs to refelcted in the ARBO VSAM file. Any w2hparm changes should be made to w2hparm.js and stored in CLI-DIR.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">For customers who wish to run in ‘Option Customization’ mode you must run the ARBOLOAD job in the CNTL library with OPTIONS=YES. This will add the relevant transactions to support the /option/ pathname. Also, the SAMPLIB(CUSTCSS) job should be modified and run. It should only include the W2H-03P and CLI-03P transactions. Option customization mode still maintains a global w2hparm.js in CLI-DIR. This needs to refelcted in the ARBO VSAM file. Any w2hparm changes should be made to w2hparm.js and stored in CLI-DIR.</p>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>w2hparm.js as shipped is now a dummy file and no longer includes any default settings. Your customized w2hparm.js should only include changes that are required by your installation. See “Global modification of web Access settings” in the Virtel User Guide.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">w2hparm.js as shipped is now a dummy file and no longer includes any default settings. Your customized w2hparm.js should only include changes that are required by your installation. See “Global modification of web Access settings” in the Virtel User Guide.</p>
 </div>
 </div>
 <div class="section" id="upgrading-from-a-version-prior-to-4-53">
 <span id="index-3"></span><h3>Upgrading from a version prior to 4.53<a class="headerlink" href="#upgrading-from-a-version-prior-to-4-53" title="Permalink to this headline">¶</a></h3>
 <div class="admonition danger">
-<p class="admonition-title">Danger</p>
-<p>YOU MUST:</p>
+<p class="first admonition-title">Danger</p>
+<p class="last">YOU MUST:</p>
 </div>
 <ul class="simple">
-<li><p>Add (or modify) the BFVSAM parameter in the VIRTCT to specify BFVSAM=32768. An “OPEN ERROR DC” on the SAMP.TRSF file will occur at STC startup if this is notdone.</p></li>
-<li><p>Check the content of the transaction with external name = “Administ” - W2H-20 - present under the WEB2HOST entry point and enter “ADMINVWM” in the “Output Scenario” field if the current value is different.</p></li>
+<li>Add (or modify) the BFVSAM parameter in the VIRTCT to specify BFVSAM=32768. An “OPEN ERROR DC” on the SAMP.TRSF file will occur at STC startup if this is notdone.</li>
+<li>Check the content of the transaction with external name = “Administ” - W2H-20 - present under the WEB2HOST entry point and enter “ADMINVWM” in the “Output Scenario” field if the current value is different.</li>
 </ul>
 <p>For performance YOU CAN:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>Modify the Shareoptions of the ARBO File from (4 3) to (2 3). To do this, use job ALTERSHR from the new VIRT459.SAMPLIB.</p></li>
-<li><p>Increase the CISIZE of the data part of ALL existing TRSF file (except for the delivered SAMP.TRSF which is already correctly defined) to specify, CIZISE(32768) or CISIZE(16384) on the DATA part of the files. Use the job TRSFREOR from VIRT459.SAMPLIB.</p></li>
+<li>Modify the Shareoptions of the ARBO File from (4 3) to (2 3). To do this, use job ALTERSHR from the new VIRT459.SAMPLIB.</li>
+<li>Increase the CISIZE of the data part of ALL existing TRSF file (except for the delivered SAMP.TRSF which is already correctly defined) to specify, CIZISE(32768) or CISIZE(16384) on the DATA part of the files. Use the job TRSFREOR from VIRT459.SAMPLIB.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -339,8 +342,8 @@ their respective owners.</p>
 <span id="index-4"></span><h3>Upgrading from a version prior to 4.54<a class="headerlink" href="#upgrading-from-a-version-prior-to-4-54" title="Permalink to this headline">¶</a></h3>
 <p>In addition to the above instructions</p>
 <ul class="simple">
-<li><p>If the directory SCE-DIR does not exist in your environment, YOU MUST run the job MIGR454A found in the SAMPLIB library.</p></li>
-<li><p>If you are not using the dynamic directory interface (DDI) remove redundant ARBO elements. See sample JCL below.</p></li>
+<li>If the directory SCE-DIR does not exist in your environment, YOU MUST run the job MIGR454A found in the SAMPLIB library.</li>
+<li>If you are not using the dynamic directory interface (DDI) remove redundant ARBO elements. See sample JCL below.</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//$ARBODEL JOB 1,ARBODEL,CLASS=A,MSGCLASS=X,NOTIFY=&amp;SYSUID
 //*
@@ -374,9 +377,9 @@ their respective owners.</p>
 <div class="section" id="upgrading-from-a-version-prior-to-4-55">
 <span id="index-5"></span><h3>Upgrading from a version prior to 4.55<a class="headerlink" href="#upgrading-from-a-version-prior-to-4-55" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>If you have developed JavaScript code which manipulates the status bar located at the bottom of the 3270 screen, YOU MUST refer to “Example: Modifying the text of the status bar” in “VIRTEL Web Access” document and review your changes.</p></li>
-<li><p>You must modify the definition of the WEB2HOST entry point to reference the SCE-DIR in the field named DIRECTORY FOR SCENARIO. With Version V4.55 Virtel scenarios are now provided as objects in the SCE-DIR directory. Virtel scenarios located in the Virtel loadlib will no longer be maintained in future releases of Virtel. Customers who have users scenarios should consider migrating them to .390 objects using Virtel Studio and load them from SCE-DIR. Virtel will contain to still load scenarios from the Virtel loadlib providing the field name DIRECTORY FOR SCENARIO in the Entry point is blank.</p></li>
-<li><p>If you are using customized Virtel Web Access (VWA) elements, you must add the following parameter in your VIRTCT: HTSET1=(OPTION-DEFAULT-COMPATIBILITY) unless you are planning to migrate to “option configuration’ mode. For further information on customization see the section “Virtel customization Modes” in the Virtel User Guide.</p></li>
+<li>If you have developed JavaScript code which manipulates the status bar located at the bottom of the 3270 screen, YOU MUST refer to “Example: Modifying the text of the status bar” in “VIRTEL Web Access” document and review your changes.</li>
+<li>You must modify the definition of the WEB2HOST entry point to reference the SCE-DIR in the field named DIRECTORY FOR SCENARIO. With Version V4.55 Virtel scenarios are now provided as objects in the SCE-DIR directory. Virtel scenarios located in the Virtel loadlib will no longer be maintained in future releases of Virtel. Customers who have users scenarios should consider migrating them to .390 objects using Virtel Studio and load them from SCE-DIR. Virtel will contain to still load scenarios from the Virtel loadlib providing the field name DIRECTORY FOR SCENARIO in the Entry point is blank.</li>
+<li>If you are using customized Virtel Web Access (VWA) elements, you must add the following parameter in your VIRTCT: HTSET1=(OPTION-DEFAULT-COMPATIBILITY) unless you are planning to migrate to “option configuration’ mode. For further information on customization see the section “Virtel customization Modes” in the Virtel User Guide.</li>
 </ul>
 </div>
 <div class="section" id="upgrading-from-a-version-prior-to-4-56">
@@ -395,39 +398,39 @@ their respective owners.</p>
 <div class="section" id="running-under-vse">
 <span id="index-8"></span><h2>Running under VSE<a class="headerlink" href="#running-under-vse" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Send a request to <a class="reference external" href="mailto:support&#37;&#52;&#48;syspertec&#46;com">support<span>&#64;</span>syspertec<span>&#46;</span>com</a> for any missing JCL described above.</p></li>
-<li><p>You MUST modify the VIRTEL startup JCL to increase the SIZE parameter from 40K to 80K (// EXEC VIR0000,SIZE=80K,DSPACE=2M).</p></li>
+<li>Send a request to <a class="reference external" href="mailto:support&#37;&#52;&#48;syspertec&#46;com">support<span>&#64;</span>syspertec<span>&#46;</span>com</a> for any missing JCL described above.</li>
+<li>You MUST modify the VIRTEL startup JCL to increase the SIZE parameter from 40K to 80K (// EXEC VIR0000,SIZE=80K,DSPACE=2M).</li>
 </ul>
 </div>
 <div class="section" id="what-s-new-in-this-release">
 <span id="index-9"></span><h2>What’s new in this release<a class="headerlink" href="#what-s-new-in-this-release" title="Permalink to this headline">¶</a></h2>
 <p><em>VIRTEL Web Access:</em></p>
 <ul class="simple">
-<li><p>Support for native browser clipboard API</p></li>
-<li><p>Additional language and code page enhancements</p></li>
-<li><p>Centralised user parameter feature.</p></li>
-<li><p>Enhanced macro support features.</p></li>
-<li><p>New structured field to allow enable extraction of security certificate.</p></li>
-<li><p>Improved asynchronous support using SNASTAT indicator.</p></li>
-<li><p>LOGFILE feature for VSE.</p></li>
-<li><p>Hotspot enhancements including support for input fields.</p></li>
-<li><p>Virplex enhancements</p></li>
+<li>Support for native browser clipboard API</li>
+<li>Additional language and code page enhancements</li>
+<li>Centralised user parameter feature.</li>
+<li>Enhanced macro support features.</li>
+<li>New structured field to allow enable extraction of security certificate.</li>
+<li>Improved asynchronous support using SNASTAT indicator.</li>
+<li>LOGFILE feature for VSE.</li>
+<li>Hotspot enhancements including support for input fields.</li>
+<li>Virplex enhancements</li>
 </ul>
 <p><em>VIRTEL Web Modernisation &amp; Integration:</em></p>
 <ul class="simple">
-<li><p>Enhancements to COPY$ to support multiple fields.</p></li>
-<li><p>$IF can now interogate operator information area(OIA).</p></li>
-<li><p>ACTION$ SEND= and KEY= options.</p></li>
-<li><p>Same scenario can be used for both input and output.</p></li>
+<li>Enhancements to COPY$ to support multiple fields.</li>
+<li>$IF can now interogate operator information area(OIA).</li>
+<li>ACTION$ SEND= and KEY= options.</li>
+<li>Same scenario can be used for both input and output.</li>
 </ul>
 <p><em>Miscellaneous:</em></p>
 <ul class="simple">
-<li><p>Improved VWA Settings messages.</p></li>
-<li><p>Default MAXSOCKETS increased to 5000.</p></li>
-<li><p>Japanese template support.</p></li>
-<li><p>Show/Hide Virtel Tool bar option.</p></li>
-<li><p>PA3 can be mapped to PGUP.</p></li>
-<li><p>Virtel UP message VIR009I always written to syslog.</p></li>
+<li>Improved VWA Settings messages.</li>
+<li>Default MAXSOCKETS increased to 5000.</li>
+<li>Japanese template support.</li>
+<li>Show/Hide Virtel Tool bar option.</li>
+<li>PA3 can be mapped to PGUP.</li>
+<li>Virtel UP message VIR009I always written to syslog.</li>
 </ul>
 <p>Further details can be found in the “What’s new in Virtel V4.59” newsletter.</p>
 </div>
@@ -453,11 +456,19 @@ their respective owners.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -468,7 +479,6 @@ their respective owners.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

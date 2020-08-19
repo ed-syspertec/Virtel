@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Installing Virtel V4.56 from scratch" href="../TN201608/TN201608.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -109,6 +111,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
 </ul>
 </li>
 </ul>
@@ -116,6 +119,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -205,9 +209,9 @@ VIRTEL transaction. In previous releases of Virtel, Entry Point
 customization controlled features for all associated transactions
 through three files. Those being:-</p>
 <ul class="simple">
-<li><p>/w2h/custom-js</p></li>
-<li><p>/w2h/custom-css</p></li>
-<li><p>/w2h/custom-w2hparm</p></li>
+<li>/w2h/custom-js</li>
+<li>/w2h/custom-css</li>
+<li>/w2h/custom-w2hparm</li>
 </ul>
 <p>This meant that for every transaction customization features were
 accessed regardless of whether they were required.</p>
@@ -276,11 +280,11 @@ Input Scenario ===&gt; Output Scenario ===&gt;
 <p><strong>Enhancement to the SCENARIO statement</strong></p>
 <p>The SCENARIO statement has be enhanced to support the following options:-</p>
 <ul class="simple">
-<li><p>SCENARIO FAIL</p></li>
+<li>SCENARIO FAIL</li>
 </ul>
 <p>Scenario processing stops. On the next POST the scenario will be restarted at its entry point.</p>
 <ul class="simple">
-<li><p>SUCCESS SCENARIO</p></li>
+<li>SUCCESS SCENARIO</li>
 </ul>
 <p>Scenario continues normal purposing of the current message.</p>
 <p><strong>New TRSF directory entry - DOC</strong></p>
@@ -319,8 +323,8 @@ Input Scenario ===&gt; Output Scenario ===&gt;
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>FOREACH$ must have a label, and this label must match the ENDFOR$ parameter.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">FOREACH$ must have a label, and this label must match the ENDFOR$ parameter.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>FOREACH$ VALUE-IN-SCREEN updates CURRENT-SCREEN-POSITION (‘ = &#39; sign in COPY$ and CASE$).
 </pre></div>
@@ -359,8 +363,8 @@ like:-</p>
 <p><a class="reference internal" href="../../../_images/image220.png"><img alt="image1" src="../../../_images/image220.png" style="width: 6.26806in; height: 3.79444in;" /></a></p>
 <p>Figure 2 Entry Point display for WEB2HOST</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The scenario directory has to be SCE-DIR. Before the field was blank indicating that scenarios should be loaded from LOADLIB. Press PF1 to confirm they update and then Press PF3 and the CLEAR to return back to the portal screen. Press “CTRL-R” in your browser’s to refresh the browser cache. Now select Admin (HTML) from the Administration options and you should see the Administration panel.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">The scenario directory has to be SCE-DIR. Before the field was blank indicating that scenarios should be loaded from LOADLIB. Press PF1 to confirm they update and then Press PF3 and the CLEAR to return back to the portal screen. Press “CTRL-R” in your browser’s to refresh the browser cache. Now select Admin (HTML) from the Administration options and you should see the Administration panel.</p>
 </div>
 <p><a class="reference internal" href="../../../_images/image320.png"><img alt="image2" src="../../../_images/image320.png" style="width: 6.26806in; height: 2.43611in;" /></a></p>
 <p>Figure 3 Administration Portal</p>
@@ -382,8 +386,8 @@ parameter.</p>
 <p><em>Solution</em></p>
 <p>If your user scenarios were kept in the SCE-DIR directory than these would have been replaced by the new SCE-DIR within the SAMPTRSF VSAM file. Rebuild and upload you user scenarios to the new SCE-DIR.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is recommended that user scenarios are maintained in a separate directory associated with the HTMLTRSF VSAM file. In this way they will not be replaced with a new release of Virtel.</p>
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommended that user scenarios are maintained in a separate directory associated with the HTMLTRSF VSAM file. In this way they will not be replaced with a new release of Virtel.</p>
 </div>
 </div>
 
@@ -407,11 +411,19 @@ parameter.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -422,7 +434,6 @@ parameter.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

@@ -1,6 +1,12 @@
 Virtel documentation project
 ============================
 
+Installing the RTD theme template.
+
+Issue the following PIP command:-
+
+pip install sphinx-rtd-theme
+
 Converting PDFs to DOCX
 -----------------------
 
@@ -42,6 +48,9 @@ ed-syspertec/l7777
 
 make
 ----
+
+Use the make command to prepare the HTML for the Read The Docs Website.
+
 
 make clean	Clean directories
 make html	Build files

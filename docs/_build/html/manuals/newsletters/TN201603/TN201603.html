@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Controlling LU Names" href="../TN201604/TN201604.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -109,6 +111,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
 </ul>
 </li>
 </ul>
@@ -116,6 +119,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -188,7 +192,7 @@ This is the sequence of events:-</p>
 <p>#. The browser user clicks on a VIRTEL URL to request connection to a
 host application</p>
 <ol class="arabic simple">
-<li><p>VIRTEL generates a random temporary public/private key pair</p></li>
+<li>VIRTEL generates a random temporary public/private key pair</li>
 </ol>
 <p>#. VIRTEL sends to the browser an HTML signon form together with the
 public key</p>
@@ -197,9 +201,9 @@ is a non-display field)</p>
 <p>#. The browser encrypts the userid and password before sending the form
 to VIRTEL</p>
 <ol class="arabic simple">
-<li><p>VIRTEL uses the private key to decrypt the userid and password</p></li>
-<li><p>VIRTEL signs on to the application with the clear userid and password</p></li>
-<li><p>The session continues as a regular unencrypted HTTP session</p></li>
+<li>VIRTEL uses the private key to decrypt the userid and password</li>
+<li>VIRTEL signs on to the application with the clear userid and password</li>
+<li>The session continues as a regular unencrypted HTTP session</li>
 </ol>
 <p>In this way the userid and password are encrypted when they travel
 across the network, and they only appear in the clear on the internal
@@ -368,11 +372,19 @@ case, are identified as candidates for encryption.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -383,7 +395,6 @@ case, are identified as candidates for encryption.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

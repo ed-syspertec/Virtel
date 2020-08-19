@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html4" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -29,10 +34,6 @@
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Running multiple instances of Virtel" href="../TN201504/TN201504.html" />
@@ -50,7 +51,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> Virtel
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> Virtel
           
 
           
@@ -80,6 +81,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -109,6 +111,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id4">2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id5">2018</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id6">2019</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../newsletters.html#id7">2020</a></li>
 </ul>
 </li>
 </ul>
@@ -116,6 +119,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -154,7 +158,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../../newsletters.html">Technical Newsletters</a> &raquo;</li>
         
@@ -275,31 +279,34 @@ of the SAMPLIB(ARBOLOAD) member. You must customize the JCL and change
 the SET VMACROS=NO statement to SET VMACROS=YES to install the DDI
 constructs to your ARBO file.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="first admonition-title">Note</p>
 <p><em>Release V4.53 users of Macros</em>
 For users who implemented DDI in Virtel V4.53 (VMACROS=YES on the
 ARBOLOAD) there are some changes that have to be made to the ARBO file
 to work with DDI as distributed with V4.54. New constructs must be added
 to the ARBO file and previous DDI constructs must be removed:-</p>
 <ol class="arabic">
-<li><dl class="simple">
-<dt><em>Backup</em></dt><dd><p>Secure a copy of your macros.json from the /maclib directories.</p>
+<li><dl class="first docutils">
+<dt><em>Backup</em></dt>
+<dd><p class="first last">Secure a copy of your macros.json from the /maclib directories.</p>
 </dd>
 </dl>
 </li>
-<li><dl>
-<dt><em>Remove</em></dt><dd><p>DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
-<p>These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
+<li><dl class="first docutils">
+<dt><em>Remove</em></dt>
+<dd><p class="first">DDI constructs that used /maclib directory. 05A, 05U, 05G.</p>
+<p class="last">These were allocated a transaction range of W2H-05* (WEBHOST) and CLI-05* (CLIHOST) in previous Virtel releases. These will have to be deleted manually using either the 3270 or the HTML administration
 portal.</p>
 </dd>
 </dl>
 </li>
 </ol>
-<ol class="arabic">
-<li><dl>
-<dt><em>Add</em></dt><dd><p>Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
+<ol class="last arabic">
+<li><dl class="first docutils">
+<dt><em>Add</em></dt>
+<dd><p class="first">Add the new DDI constructs by running the latest SAMPLIB(ARBOLOAD) with just VMACROS=YES. This will create the new CLI-03* and W2H-03* constructs.</p>
 <p>See the entries in the VMACROS section of the V4.54 SAMPLIB(ARBOLOAD) member.</p>
-<p>If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
+<p class="last">If your macros are in local storage then they will automatically populated to the new DDI constructs – USER, GROUP and GLOBAL, otherwise upload (Drag and drop) them from you saved copies using the administration DDI and macros interface.</p>
 </dd>
 </dl>
 </li>
@@ -448,8 +455,8 @@ GROUP directory by perform an Add function.</p>
 <p>The download option enables the download of a DDI element to the default
 download directory of the associated browser.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Do not download a Virtel Template (HTML file with imbedded VIRTEL
+<p class="first admonition-title">Note</p>
+<p class="last">Do not download a Virtel Template (HTML file with imbedded VIRTEL
 tags). The tags will be interpreted before the download destroying the
 original source version.</p>
 </div>
@@ -475,11 +482,19 @@ original source version.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2017, Syspertec. All rights reserved
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -490,7 +505,6 @@ original source version.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
