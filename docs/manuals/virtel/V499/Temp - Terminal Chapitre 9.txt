@@ -1,0 +1,742 @@
+.. index::
+   single: Connection Modes 
+
+Connection Modes
+================
+
+There are various methods of connecting terminals to VIRTEL. This chapter includes the **WELCOME** and **RELAY** modes of connection
+
+.. index::
+   pair: Connection Modes; Welcome Mode
+
+WELCOME mode
+------------
+
+Exclusively for 3270 terminals, WELCOME mode allows 3270 terminals to connect to VIRTEL without being predefinied.
+There are two conditions which must be fulfilled:
+- The ACCUEIL parameter in the VIRTCT must be set to YES,
+- The connecting terminal must not match any existing fixed terminal definition or terminal pool definition.
+
+In this mode, terminals not defined in VIRTEL can connect, but they cannot benefit from compression or full Multi-
+Session functionality. The first screen displayed depends on the characteristics of the entry point used. If no entry
+point is used, each terminal connecting in WELCOME mode will see the VIRTEL sign-on screen, or the Multi-Session
+Menu, or the Configuration Menu depending on the options specified in the VIRTCT for the SECUR and MULTI
+parameters.
+
+If the Multi-Session Menu is accessible from a terminal connected in WELCOME mode, it is regarded simply as a
+selection screen. Thus, when an application is selected, VIRTEL connects the terminal directly to this application and
+relinquishes control of the terminal. In this case, VIRTEL functions somewhat like a dynamic USSTAB.
+
+.. index::
+   pair: Connection Modes; Relay Mode
+
+RELAY mode
+----------
+
+3270 terminals can be connected in RELAY mode if a suitable definition exists in the system. The relays are defined to VTAM by means of APPL statements. Each terminal connected in this way can benefit from VIRTEL compression and/or Multi-Session functionality. Whether a sign-on screen or a Multi-Session Menu is displayed depends on the characteristics associated with the entry point used. When no entry point is used, the rules described in the previous paragraph apply.
+
+.. index::
+   pair: Connection Modes; Terminal connection types
+
+Terminal Connection Types
+-------------------------
+
+The definition of a terminal / relay pair can be accomplished in various ways: by means of a fixed entry; by inclusion in a physical pool (which may be dynamic or non-dynamic); or by means of a reserved entry (logical pool). A fixed entry is a definition which can only be used by one specific terminal. A physical pool is a generic definition which can be shared by several different terminals. A logical pool is a reserved definition which is used not for connecting a terminal to VIRTEL, but for connection to a VTAM application. This definition allows the same physical terminal, for example a Minitel, to be presented to applications with different relays depending on the context. Each type of definition can be explicit or repeated.
+
+. index::
+   pair: Connection Modes; Explicit Fixed Terminal entries
+
+Explicit fixed entries
+^^^^^^^^^^^^^^^^^^^^^^
+
+Each terminal in the group is explicitly named within VIRTEL. This mode of definition is useful when a group of relays must be attached to a line via a common terminal name prefix, but the relay LU names do not follow a numeric pattern. The following example shows a group of terminals and corresponding relay LU names associated with a line via prefix PCN1:
+
+::
+
+    LIST of TERMINALS ---------------------------------- Applid: SPVIRH1 18:15:52
+    Terminal Repeated Relay Entry Type I/O Pool 2nd Relay
+    PCN1TM01 0001     PARIS       3    1
+    PCN1TM02 0001     ROMA        3    1
+    PCN1TM03 0001     BERLIN      3    1
+    PCN1TM04 0001     BRUSSEL     3    1
+    PCN1TM05 0001     DENHAAG     3    1
+    PCN1TM06 0001     KOBNHAVN    3    1
+    PCN1TM07 0001     LONDON      3    1
+    PCN1TM08 0001     DUBLIN      3    1
+    P1=Update        P2=Delete    P3=Return    P6=1st Page
+    P7=Page-1        P8=Page+1    P12=Details
+
+*Explicit fixed terminals*
+
+Repeated fixed entries
+""""""""""""""""""""""
+
+Only the first terminal in the list is defined. The repeat count indicates the number of terminals which VIRTEL will create. The numeric portion of the terminal name, relay name, and 2nd relay name (if supplied) are incremented for each occurrence of the terminal.
+
+.. note::
+    The repetition increment takes effect from the rightmost numeric character and continues until the next nonnumeric character to the left. The increment is decimal and not hexadecimal.
+
+**Examples**
+
+In the examples shown below:
+- Terminal TERM0001, relay RELAY001, repetition 0016 causes the creation of 16 terminals TERM0001 to TERM0016 with relays RELAY001 to RELAY016.
+- Terminal G001T001, relay RELAY200, repetition 0020 causes the creation of 20 terminals G001T001 to G001T020 with relays RELAY200 to RELAY219.
+- Terminal TER00LUA, relay REL00CVA, 2nd relay FIX00CVA, repetition 0100 causes the creation of 100 terminals TER00LUA to TER99LUA with relays REL00CVA to REL99CVA and 2nd relays FIC00CVA to FIC99CVA.
+- The remaining examples show invalid repetitions caused by improper definitions. In each case the size of the numeric portion of one or more of the names is insufficient to allow the generation of a unique name for each occurrence in the repeat range.
+
+::
+
+    LIST of TERMINALS ---------------------------------- Applid: SPVIRH1 18:13:49
+    Terminal Repeated Relay    Entry    Type I/O Pool     2nd Relay
+    TERM0001 0016     RELAY001 PC       2    3
+    G001T001 0020     RELAY200          3    3
+    TER00LUA 0100     REL00CVA          3    3            FIC00CVA
+    TERX0LUB 0015     REL00CVB          3    3            FIC00CVB
+    TER00LUC 0015     RELX0CVC          3    3            FIC00CVC
+    TER00LUD 0015     REL00CVD          3    3            FICX0CVD
+    TER90LUE 0015     REL00CVE          3    3
+    P1=Update         P2=Delete         P3=Return          P6=1st Page
+    P7=Page-1         P8=Page+1         P12=Details
+
+*Repeated fixed terminals*
+
+.. index::
+   pair: Connection Modes; Physical Terminal Pools
+
+Physical Terminal Pools
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Physical pools allow 3270 terminals to connect to VIRTEL and to be assigned a relay LU, without the need to create an individual defininition for each connecting terminal. A relay LU is assigned from the physical pool at the time the terminal connects to VIRTEL. There are two types of physical pool, dynamic and non-dynamic, as described later.
+
+Whether or not a pool is dynamic, the definition of a physical pool is indicated by the presence of a “?” character in the first position of the terminal name. The next three characters denote the characteristics of the pool. The last four characters are free-format and serve to distinguish one definition from another.
+
+A physical pool thus has a name in the format ?xxxyyyy.
+
+The concept of a physical pool only applies to 3270 terminals. Other types of terminal cannot be defined by means of a physical pool.
+
+Although a physical pool allows connection of a large number of terminals, it is sometimes necessary to restrict the connection to certain types of terminals This selection is done with the three characters represented by “x” in the name of the physical pool definition.
+
+1st character
+    Tests the terminal type.
+
+    \*
+        No restriction on terminal type
+    S
+        SNA terminal
+    N
+        Non SNA terminal
+
+2nd character
+    Tests the terminal model
+
+    \*
+        No restriction on model
+    2 to 5
+        Restricted to specified model
+
+3rd character
+    Tests colour support
+
+    \*
+        No restriction on colour support
+    C
+        Colour terminal
+    N
+        Monochrome terminal
+
+Examples:
+
+    - ?S\*\*YZABVIRTEL tests only if the terminal is SNA.
+    - ?S3CYZABVIRTEL tests if the terminal is SNA model 3 colour.
+
+.. index::
+   pair: Connection Modes; Dynamic Terminal Pools    
+
+Dynamic Terminal Pools
+^^^^^^^^^^^^^^^^^^^^^^
+
+In a dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters and “=” signs. Each “=” sign will be dynamically replaced by the value of the corresponding character in the name of the connecting
+terminal. 
+
+For example, for a definition specifying VIR===== as the relay name, each terminal connecting to VIRTEL will be allocated a relay whose first three characters are VIR and whose last five characters are the last five characters of the terminal LU name. VIRTEL must be able to open a VTAM application LU for each possible relay defined in the pool. The use of the VTAM generic character “?” allows all possible relay names to be defined to VTAM by a single APPL statement, as shown in the following example:
+
+::
+
+    VIR????? APPL AUTH=(ACQ,PASS)
+
+A single definition may be sufficient to connect all 3270 terminals in the network.
+
+.. index::
+   pair: Connection Modes; Non-Dynamic Terminal Pools  
+
+Non-Dynamic Terminal Pools
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In a non-dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters without “=” signs. A given terminal may be assigned a different relay on each connection according to availability. Each relay in the pool must be defined to VTAM by means of an APPL statement.
+
+It is advisable to define as many entries as there are terminals to be connected.
+
+.. index::
+   pair: Connection Modes; Terminal Pool Definition Examples  
+
+Terminal Pool Definition Examples
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Physical Pool
+"""""""""""""
+
+In the examples shown below, ?\*\*\*0000 is a dynamic physical pool which allows connection of an unlimited number of terminals. ?S5CTM01 is a non-dynamic physical pool which allows connection of up to 8 terminals (of type 3270-5 SNA Colour) which will be assigned relay names VIR5LU01 to VIR5LU08.
+
+::
+
+    LIST of TERMINALS ---------------------------------- Applid: SPVIRH1 18:13:49
+    Terminal Repeated   Relay    Entry   Type I/O Pool 2nd Relay
+    ?***0000            VIR===== PC      2    3
+    ?S5CTM01 0008       VIR5LU01 PC5     2    3
+  
+  
+    P1=Update           P2=Delete        P3=Return         P6=1st Page
+    P7=Page-1           P8=Page+1        P12=Details
+
+*Physical pools of terminals*
+
+.. _#_V499AG_LogicalPool:
+
+Logical pool
+""""""""""""
+
+A logical pool is a group of relays which are not permanently assigned to any terminal. Instead, the relays in the group are available for allocation by terminals as and when required. The logical pool is defined as a group of terminals (the definitions can be explicit or repeated) whose “\*Pool name” field contains a name prefixed preceded by the character “\*”. The terminal name is not significant, except to distinguish it from other terminal definitions. Terminals which use the pool specify the pool name (with the “\*” prefix) in their relay name field. The difference between a logical pool and a physical pool is that a relay in a physical pool is assigned when the requesting terminal connects, whereas a relay in a logical pool is assigned at the time the requesting terminal needs the relay to connect to a VTAM application.
+
+In the example shown below, W2HTP000 is a logical pool whose pool name is \*W2HPOOL. The logical pool contains 16 relay LU’s named RHDVT000 to RHDVT015, with associated printer LU’s named RHDIM000 to RHDIM015. The relays in 7. Terminals 117 the \*W2HPOOL logical pool are available for use by terminals CLVTA000-015, DEVTA000-015, and HTVTA000-015. Appropriate VTAM APPL statements must be provided for RHDVT??? And RHDIM???.
+
+::
+
+    LIST of TERMINALS ---------------------------------- Applid: SPVIRD1 18:02:53
+    Terminal Repeated    Relay       Entry    Type I/O  Pool      2nd Relay
+    ?***0000             RVTAM===    PC       2
+    CLLOC000 0010                             3    3
+    CLVTA000 0016        *W2HPOOL             3    3
+    DELOC000 0010                             3    3
+    DEVTA000 0016        *W2HPOOL             3    3
+    HTLOC000 0016                             3    3
+    HTVTA000 0016        *W2HPOOL             3    3
+    SMLOC000 0016                    SMTP     3    3
+    W2HIM000 0016        RHDIM000             S    1
+    W2HTP000 0016        RHDVT000             3    3    *W2HPOOL   RHDIM000
+ 
+ 
+ 
+    P1=Update            P2=Delete            P3=Return             P6=1st Page
+    P7=Page-1            P8=Page+1            P12=Details
+
+*Definition of a logical pool of terminals*
+
+Terminals using a logical pool are defined with a “Relay” field referencing the logical pool rather than a VTAM APPL statement.
+
+.. index::
+   pair: Connection Modes; Terminal Pool Selection  
+
+Terminal Pool Selection
+^^^^^^^^^^^^^^^^^^^^^^^
+
+When a 3270 terminal is defined to a physical pool, the selection of a pool is managed automatically by VIRTEL at connection time. It starts from the end of the list of defined terminals. When the characteristics of the terminal match those of the entry being processed, the terminal assumes an application relay.
+
+Rules for opening relay ACBs
+""""""""""""""""""""""""""""
+
+For explicit or repeated fixed entry definitions, the relay ACBs are opened at VIRTEL startup time. For terminals defined in a physical pool, the relay ACBs are opened at terminal connection time. For terminals which reference a logical pool, the relay ACB is opened only when accessing an application.
+
+Use of a terminal logical pool
+""""""""""""""""""""""""""""""
+
+When a single terminal must be presented under a different name according to the applications it logs on to across the same line, a logical pool must be used.
+
+.. note::
+    Logical pools are not usable on X25 Fast-Connect lines managed by NPSI. The following examples reference type 3 (Fast-Connect) terminals, used for example on an XOT line.
+
+As a concrete example, suppose that Minitels use an X25 line with 50 logical channels to logon to 3 distinct applications under different names according to sub-address or a specific user data value. The first two applications are accessible via the same entry point ENTRYP01, the third via entry point ENTRYP02. Applications APPLI01, APPLI02, APPLI03 must be accessed via relays with prefixes AP01R, BP02R and CP03R respectively. The first application only allows 5 simultaneous logons, the second has no limit, and the third allows 2 simultaneous logons. The set of VIRTEL definitions to resolve this problem is as follows.
+
+**Terminal Definitions**
+
+The definition of the physical terminals and their association with the 3 sub-groups of logical terminals belonging to the same pool is:
+
+::
+
+    DEFINITION OF X25 TERMINALS
+    Terminal Repeat    Relay    Entry    Type Compression 2nd Relay
+    
+    XOTF0001 0050      *POOL001 Libre    3    2           Vide
+    
+    DEFINITION OF 3 GROUPS OF RESERVED TERMINALS
+    Terminal Repeat    Relay    Entry    Type Compression 2nd Relay
+
+    ARESA001 0005      AP01R001 Libre    3    2           Libre
+    BRESA001 0050      BP02R001 Libre    3    2           Libre
+    CRESA001 0002      CP03R001 Libre    3    2           Libre
+
+.. note::
+    These 3 terminal groups contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they may be defined as fixed explicit or repeated entries, but they must not be placed in a logical pool.
+
+**Entry point definitions**
+
+The two entry points are assigned transactions TRPE01 and TRPE02 respectively.
+
+::
+
+    DEFINITION OF ENTRY POINTS
+    Name     Description                    Transactions
+    ENTRYP01 EP for APPLI01 and APPLI02     TRPE01
+    ENTRYP02 EP for APPLI03                 TRPE02
+
+*Transaction definitions and terminal selection*
+
+Transactions TRPE0101, TRPE0102 and TRPE0203 are defined as illustrated below.
+
+::
+
+    DEFINITION OF THE FIRST TRANSCACTION FOR ENTRYP01
+ 
+    Nom interne   ===> TRPE0101       Pour l'associer a un point d'entrée
+    Nom externe   ===> APPLI-01       Nom affiche dans le menu utilisateur
+    Description   ===> Application 01 avec terminaux ARESA
+    Application   ===> APPLI01        Application gérant la transaction
+    Alias         ===>                Nom suite a CLSDST PASS
+    Type d'application ===> 1         1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES
+    Terminaux          ===> ARESA     Préfixe des terminaux associés
+
+::    
+
+    DEFINITION OF THE SECOND TRANSCACTION FOR ENTRYP01
+ 
+    Nom interne    ===> TRPE0102      Pour l'associer a un point d'entrée
+    Nom externe    ===> APPLI-02      Nom affiche dans le menu utilisateur
+    Description    ===> Application 02 avec terminaux BRESA
+    Application    ===> APPLI02       Application gérant la transaction
+    Alias          ===>               Nom suite a CLSDST PASS
+    Type d'application  ===> 1        1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES
+    Terminaux           ===> BRESA    Préfixe des terminaux associés
+
+::
+
+    DEFINITION OF THE FIRST TRANSCACTION FOR ENTRYP02
+ 
+    Nom interne    ===> TRPE0201     Pour l'associer a un point d'entrée
+    Nom externe    ===> APPLI-03     Nom affiche dans le menu utilisateur
+    Description    ===> Application 03 avec terminaux CRESA
+    Application    ===> APPLI03      Application gérant la transaction
+    Alias ===>                       Nom suite a CLSDST PASS
+    Type d'application  ===> 1       1=VTAM 2=VIRTEL 3=SERVEUR 4=PAGES
+    Terminaux           ===> CRESA   Préfixe des terminaux associés
+
+.. index::
+   pair: Connection Modes; Virtel Terminal Connection Examples      
+
+Terminal Connection Examples
+----------------------------
+
+This section presents a number of examples covering the definitions relating to terminals and details the parameters required on the VIRTEL and VTAM sides. The list is not exhaustive.
+
+.. index::
+   pair: Connection Modes; WELCOME Mode Terminal Connection Example     
+
+3270 terminal in WELCOME mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This mode allows any terminal to logon to VIRTEL. The ACCUEIL parameter in the VIRTCT must be set to YES. There must be no definition which allows an application relay to be assigned to the terminal.
+
+.. index::
+   pair: Connection Modes; RELAY Mode Terminal Connection Example
+
+3270 terminal in RELAY mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
+
+::
+
+    DEFINITION EXPLICITE
+ 
+    Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
+    
+    TERM0001 0000    RELAY001  Libre     2    Libre       Vide
+    TERM0002 0000    RELAY003  Libre     2    Libre       Vide
+    TERM0003 0000    RELAY004  Libre     2    Libre       Vide
+    TERM0004 0000    RELAY005  Libre     2    Libre       Vide
+
+::
+
+    DEFINITION REPETEE
+ 
+    Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
+ 
+    TERM0001 0004    RELAY001  Libre     2    Libre       Vide
+
+::
+
+    DEFINITION DYNAMIQUE
+ 
+    Terminal Répété  Relais    Entrée    Type Compression 2eme Relais
+ 
+    ?***0001 0000    RELAY===  Libre     2    Libre       Vide
+
+::
+
+    DEFINITION EN POOL NON DYNAMIQUE
+
+    Terminal Répété Relais Entrée Type Compression 2eme Relais
+
+    ?***0001 0000 RELAY001 Libre 2 Libre Vide
+    ?***0002 0000 RELAY002 Libre 2 Libre Vide
+    ?***0003 0000 RELAY003 Libre 2 Libre Vide
+    ?***0004 0000 RELAY004 Libre 2 Libre Vide
+
+.. index::
+   pair: Connection Modes; X25 Asynchronous Terminal Connection Example    
+
+Asynchronous terminal on an X25 or XOT line
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A VTAM APPL statement must be defined for each terminal. If there is no such definition then message VIR0005W is issued at VIRTEL startup time. Example definitions:
+
+::
+
+    EXPLICIT DEFINITION WITHOUT PSEUDO-PRINTER
+
+    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
+
+    X25F0001 0000    RX25F001  Libre     3       2           Libre
+    X25F0002 0000    RX25F002  Libre     3       2           Libre
+    X25G0001 0000    RX25G001  Libre     1       2           Libre
+    X25G0002 0000    RX25G002  Libre     1       2           Libre
+
+::
+
+    REPEATED DEFINITION WITHOUT PSEUDO-PRINTER
+
+    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
+
+    X25F0001 0004    RX25F001  Libre     3       2           Libre
+    X25G0001 0004    RX25G001  Libre     3       2           Libre
+
+::
+
+    EXPLICIT DEFINITION WITH PSEUDO-PRINTER
+
+    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
+
+    FICTF001 0000    IMPRF001  Vide      2       0
+    FICTF002 0000    IMPRF002  Vide      2       0
+    FICTG001 0000    IMPRG001  Vide      2       0
+    FICTG002 0000    IMPRG002  Vide      2       0
+    X25F0001 0000    RX25F001  Libre     3       2           IMPRF001
+    X25F0002 0000    RX25F002  Libre     3       2           IMPRF002
+    X25G0001 0000    RX25G001  Libre     1       2           IMPRG001
+    X25G0002 0000    RX25G002  Libre     1       2           IMPRG002
+
+::
+
+    DEFINITION REPETEE AVEC IMPRIMANTE FICTIVE
+
+    Terminal Répété  Relais    Entrée    Type    Compression 2eme Relais
+
+    FICTF001 0002    IMPRF001  Vide      2       0
+    FICTG001 0002    IMPRG001  Vide      2       0
+    X25F0001 0002    RX25F001  Libre     3       2           IMPRF001
+    X25G0001 0002    RX25G001  Libre     1       2           IMPRG001
+
+The value entered in the “2nd Relay” field of an X25 terminal corresponds to the value in the “Relay” field of the pseudo-printer definition. Pseudo-printer definitions are type 2 and do not correspond to any terminal known to VTAM.
+
+.. index::
+   pair: Connection Modes; Logical Terminals
+
+Logical terminals
+^^^^^^^^^^^^^^^^^
+
+It is possible to assign a physical terminal to a relay when a transaction connects the terminal to an application, instead of when the terminal connects to VIRTEL. An example of such a definition is:
+
+::
+
+    PHYSICAL TERMINAL DEFINITION
+ 
+    Terminal Repeat  Relay    Entry    Type    Compression 2nd Relay
+
+    TERM0001 0050    *POOL001 Free     Free    2           Empty
+
+::
+
+    DEFINITION OF 3 GROUPS OF RESERVED TERMINALS
+
+    Terminal Repeat  Relay    Entry    Type    Compression 2nd Relay
+
+    TRESA001 0005    RELAYA01 Free     2 or 3  2           Free
+    TRESB001 0050    RELAYB01 Free     3 or 3  2           Free
+    TRESC001 0002    RELAYC01 Free     3 or 3  2           Free
+
+The 3 groups of terminals contain the value \*POOL001 under the heading “\*Pool name” in their definition. When virtual printers are associated with a logical pool, they must be defined as fixed explicit or repeated entries – they cannot be placed in a logical pool.
+
+.. index::
+   single: Controlling LUNAMEs
+
+.. _#_V499AG_ForceLUNAME:
+
+Controlling LUNAMEs
+===================
+
+Introduction
+------------
+
+In this section we look at how we can control LUNAME selection for inbound HTTP calls. When a user connects to a 3270 application through VIRTEL Web Access, VIRTEL makes it appear to the application as if the user is connecting from a virtual 3270 terminal. In VTAM terms a virtual 3270 terminal is called a *Logical Unit* or *LU*, and each LU has a unique eight character name (*LU name)*. VIRTEL has at its disposal a pool of LUs known to VTAM, whose names are specified in the VIRTEL configuration file (the VIRARBO file). Normally when a user connects to a 3270 application, VIRTEL chooses any available LU from the pool.
+
+While most mainframe applications will accept a connection from any LU name, certain applications (particularly applications which run under IMS) are sensitive to the LU name because they assign permissions to the user based upon the LU name of the user’s terminal. LU nailing allows VIRTEL to assign a particular LU name to a user based one of the following:- 
+
+-  By IP address
+
+-  By by cookie
+
+-  By by URL
+
+LU Nailing By URL
+-----------------
+
+The URL can contain information which can be used to force an LUNAME. This is done by by using either the FORCELUNAME= keyword or by using the *UserData* in the URL. 
+
+Using UserData to select an LU name requires that a rule be associated with the line whereas this is not required for the ForceLUNAME option. The rule is used to determine the action taken on processing the UserData. Coding the desired LU name, or alternatively an LU name prefix terminated by an asterisk, in the “Parameter” field of the Virtel Rule which selects the incoming HTTP request. Alternatively, if the value $URL$ is entered in the “Parameter” field of the Virtel rule, then the desired LU name will be taken from the userdata supplied in the caller’s URL (see “VIRTEL URL formats: Dynamic pages” in the VIRTEL Web Access Guide). 
+
+For example:-
+
+http://192.168.170.33:41003/w2h/appmenu.htm+applist+myluname            UserData example
+
+or 
+
+http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500          ForceLUNAME example 
+
+.. index::
+   pair: Controlling LUNAMEs; UserData example using a work station name
+
+UserData example using a work station name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In this example we use a batch job on the user’s PC to initiate a session with Virtel. The batch job obtains the terminal name of the work station, opens a browser window and passes the work station name through to Virtel. With a Virtel RULE we can test the name of the workstation and assign a particular relay LUNAME from a Virtel terminal POOL.
+
+Here is an example of a Virtel RULE. ::
+
+    RULE ID=ESH0000,
+    RULESET=E-HTTP,
+    STATUS=ACTIVE,
+    DESC='Rule for terminal EHPMA00',
+    ENTRY=EDSWHOST,
+    PARAM=EHPMA000, 
+    NETMASK=255.255.255.255,
+    USERDATA=(EQUAL,HOLT-W)
+
+The rule instructs Virtel to test the **UserData** field passed in a URL and if it matches the string HOLT-W than to assign an LU name prefix of EHPMA00 and directs the terminal call to use an entry point of EDSWHOST. A static rule would have to be built for each unique work station name.
+
+Getting the PC workstation name to Virtel is through a batch job which fires up the default browser and passes the work station name as a user
+data parameter. Here is an example:-
+
+::
+
+        title Test Propagation of Userdata Parameter
+        @echo on
+        color 1f
+        cls
+        SET P1=%COMPUTERNAME:~0,6%
+        start http://192.168.170.33:41003/w2h/appmenu.htm+applist+%P1% &goto:eof
+        :exit
+
+The SET command takes the first six characters of the work station name and passes it into the start command. Following the Virtel transaction I wish to execute which in this case is an APPLIST menu list. The start command will open a default browser window and connect to Virtel:-
+
+|image91|
+
+*Passing User Data to Virtel*
+
+When a transaction is selected from the menu list the RULE will be invoked to allocate the correct LUNAME.
+
+|image92|
+
+*Selecting a LU name through a rule and work station id in the URL*
+
+The Virtel RULE has forced an LU name prefixed EHPMA000 to be used from the VIRTEL terminal pool associated with the Virtel line. In this case relay LUNAME EHPMA000 has been allocated.
+
+.. index::
+   pair: Controlling LUNAMEs; UserData example using a LU Name
+
+UserData example using a LU Name
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Instead of passing a work station name in the user data field of the URL in this example we are passing an LU name. Again with a Virtel RULE we can extract the user data parameter from the URL and use that as the Virtel relay LUNAME name.
+
+http://192.168.170.33:41003/w2h/appmenu.htm+applist+EHPMA00*  
+
+For this example the rule looks like:-
+
+::
+
+        RULE ID=ESH0001,
+        RULESET=E-HTTP,
+        STATUS=ACTIVE,
+        DESC='Rule for terminal EHPMA00',
+        ENTRY=EDSWHOST,
+        PARAM=$URL$,
+        NETMASK=255.255.255.255
+
+We use the special PARAM=$URL$ which indicates that the VTAM LU Name to be used is the user data passed in the URL.
+
+|image93|
+
+*Using $URL$ to pass a LU name in the URL*
+
+The user data in the URL, in this case EHPMA00*, will be added to each transaction in the APPLIST menu and used as the Virtel relay LUNAME. When connecting to an application VIRTEL will use the LU name defined in the URL. In this example we are using a generic LUNAME which supports a range from EHPMA000 through to EHPMA009.
+
+.. index::
+   pair: Controlling LUNAMEs; Using an LU Name with no predefined terminal 
+
+ForceLUNAME Example
+^^^^^^^^^^^^^^^^^^^
+
+In the preceding examples both required that a terminals and relays be predefined. For some installations this could be a maintenance headache and doesn’t scale up very well. It is possible for an HTTP client to connect to VIRTEL with a parameter specifying an arbitrary VTAM LU name to be used as relay name for host applications. For this to work, four conditions must be fulfilled:-
+
+-  the VTAM LU name should be specified in the connection URL. For example, if the desired LU name is RLHVT500:
+
+::
+
+   http://n.n.n.n:41002/w2h/web2ajax.htm+IMS+ForceLUNAME=RLHVT500
+
+-  the VIRTEL transaction must specifiy $LINE$ in the “Pseudo-terminals” field instead of a terminal name prefix.
+
+-  the HTTP line must specify a pool name
+
+-  a terminal pool of the same name should be defined; only the pool is needed, not the predefined pseudo- terminals that are normaly defined alongside a pool. The terminal and printer pseudo-terminals will be automatically generated using the pool as a template together with the relay name specified in the ForceLUNAME parameter of the URL.
+
+The ForceLUNAME=luname parameter in the URL is valid only for transactions which specify TERMINAL=$LINE$ when attached to a line which has an associated terminal pool.
+
+In this example the transaction whose external name is IMS defined under entry point CLIWHOST. The terminal prefix in the transaction definition is $LINE$:
+
+|image12|
+*Transaction definition using non-predefined LU names*    
+
+The definition of line C-HTTP on port 41002 specifies \*MYPOOL as the line pool name:
+
+|image13|
+*HTTP line definition using non-predefined LU names*
+
+The definition of the terminal pool \*MYPOOL contains mask characters in the “Relay” and “2nd relay” fields. When a terminal is dynamically created, each “=” sign is substituted by the corresponding character in the ForceLUNAME parameter of the URL:
+
+|image14|
+*Terminal pool definition using non-predefined LU names*
+
+..note:
+
+    The name of the pool is only used to match the pool to its associated line.
+
+Using these definitions with URL parameter ForceLUNAME=RLHVT500 will dynamically generate two pseudo- terminals: RLHVT500 for the terminal session, and RLHPR500 for the associated printer.
+
+The TCT option RTERM= can be used to check that ForceLUNAME parameter. If RTERM=classname is specified in the TCT than a RACHECK against the ForcedLUNAME will be executed to ensure that the luname is allowed for a particular user.
+
+.. note::
+    The presence of a ForceLUNAME=luname parameter in the URL implies $UseCookieSession$. If a valid VirtelSession cookie is supplied, which corresponds to a currently active session, then the request will be reconnected to that session. If no VirtelSession cookie is present, or if the cookie does not correspond to any currently open session, then an LU name will be constructed by applying the value of the ForceLUNAME parameter with the mask specified in the pool associated with the line. If the LU name constructed in the preceding step is already in use then the request will be rejected with HTTP code 406. Otherwise a new session will be opened using the constructed LU name.
+
+.. raw:: latex
+
+    \newpage  
+
+.. index::
+   pair: Controlling LUNAMEs; LU Nailing by cookie    
+
+LU Nailing by cookie
+--------------------
+
+Virtel also can use cookies to select a relay LU name. Virtel uses a cookie as a part of the “Correspondence Sub Application’. Within the cookie sent to Virtel is a security token. This token is used to identify a user and their associated VTAM LU relay name. A Correspondent file is used to maintain the user details. The cookie can be sent to the use as part of an Email from which the User selects a link to access Virtel or it can be part of the ‘self-registration’ process. For further information see the How-To document *Virtel – How to Activate LU Nailing.*
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: Controlling LUNAMEs; Using an IP address    
+
+LU Nailing by IP address
+------------------------
+
+The Virtel Rules attached to the HTTP line allow the LU name to be selected according to the caller’s IP address, by using the fields “IP Subnet” and “Mask” in the rule to match with an IP address or range of IP addresses. The Virtel Rules associated with a user allow an LU name to be assigned according to a variety of different criteria. For example such as a user’s e-mail address [Correspondent Management] which in this case, the user is identified by a “Cookie” which the browser presents to VIRTEL with the HTTP request. See :ref:`“Virtel Rules”,<#_V499AG_VirtelRules>` for further information on Virtel Rules. 
+
+This technique uses a rule to associate an IP address with an LU Name. The rule is associated with a line. In the example below we define a rule on line W-HTTP which will force a terminal connecting with IP address 192.168.000.039 to use LU name RHTVT001. The LU name must be pre-defined in a Virtel terminal pool.
+
+::
+
+
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW     14:30:38
+    Name ===> WHT00110 Rule priority is per name
+    Status ===> ACTIVE 15 Feb 2010 14:30:35 SPTBOWL
+    Description ===> HTTP access from IP 192.168.0.39
+    Entry point ===> WEB2HOST Target Entry Point
+    Parameter ===> RHTVT001 &1 value or LUNAME
+    Trace ===> 1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    1 IP Subnet ===> 192.168.000.039 Mask ===> 255.255.255.255
+    0 Host ===>
+    0 eMail ===>
+    0 Calling DTE ===> Calling DTE address or proxy
+    0 Called ===> Called DTE address
+    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
+    0 User Data ===>
+    0 Days ===> M: T: W: T: F: S: S:
+    0 Start time ===> H: M: S: End time ===> H: M: S:
+    P1=Update P3=Return Enter=Add
+    P4=Activate P5=Inactivate P12=Entry P.
+
+*Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx*
+
+Multiple terminals can be defined with a rule by using the * suffix. In the following example a range of IP address is mapped to a pool of LU names. Address range 192.168.100.0 through to 192.168.100.255 will be assigned the next unused LU name in the range RHTVT1xx.
+
+::
+
+    DETAIL of RULE from RULE SET: W-HTTP ------------- Applid: SPVIRBW     17:53:56
+    Name ===> WHT00140 Rule priority is per name
+    Status ===> ACTIVE 15 Feb 2010 17:53:49 SPTBOWL
+    Description ===> HTTP access from IP 192.168.100.nnn
+    Entry point ===> WEB2HOST Target Entry Point
+    Parameter ===> RHTVT1* &1 value or LUNAME
+    Trace ===> 1=commands 2=data 3=partner
+    C : 0=IGNORE 1=IS 2=IS NOT 3=STARTS WITH 4=DOES NOT 5=ENDS WITH 6=DOES NOT
+    1 IP Subnet ===> 192.168.100.000 Mask ===> 255.255.255.000
+    0 Host ===>
+    0 eMail ===>
+    0 Calling DTE ===> Calling DTE address or proxy
+    0 Called ===> Called DTE address
+    0 CUD0 (Hex) ===> First 4 bytes of CUD (X25 protocol)
+    0 User Data ===>
+    0 Days ===> M: T: W: T: F: S: S:
+    0 Start time ===> H: M: S: End time ===> H: M: S:
+    P1=Update P3=Return Enter=Add  P4=Activate P5=Inactivate P12=Entry P.
+
+*Rule to map IP address 192.168.100.nnn to LU pool RHTVT1xx*
+
+The new rule is named WHT00140, the “IP Subnet” field specifies the IP address 192.168.100.000, and the “Mask” is set to 255.255.255.000 to indicate that only the first three octets of the IP address are tested to determine whether the rule matches the IP address of the client browser. The “parameter” field specifies a generic LU name RHTVT1* which signifies that any LU whose name begins with RHTVT1 may be assigned to clients whose IP address matches this rule.
+
+.. raw:: latex
+
+    \newpage 
+
+.. index::
+   pair: Controlling LUNAMEs; Comparison table
+
+Comparison Table
+----------------
+
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| Type                          | RULE Required             | TERMINAL Definition Reqd.  | COOKIES   | Terminal POOL Reqd.  |
++===============================+===========================+============================+===========+======================+
+| By UserData                   | Yes. 1 per work station   | Yes. Individual or group   | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| By $URL$ - LUNAME in URL      | Yes. 1 generic Rule.      | Yes. Individual or group   | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| ForceLUNAME                   | No                        | No                         | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| By IP (Correspondent)         | Yes                       | Yes                        | Yes       | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+| By IP                         | Yes                       | Yes                        | No        | Yes                  |
++-------------------------------+---------------------------+----------------------------+-----------+----------------------+
+
+.. index::
+   single: AT-TLS Secure Session
