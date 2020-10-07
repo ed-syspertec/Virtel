@@ -54,17 +54,17 @@ The VIRTEL configuration is stored in a VSAM file called the “ARBO file” (VI
 1. Real-time administration allows modifications to be taken into account immediately, 
 2. Batch mode requires system shutdown / restart. 
 
-Batch mode allows easiest method for cloning a configuration. This mode will also be preferred for mass modifications.
+Batch mode is the easiest method for cloning a configuration. This mode will also be preferred for mass modifications.
 
-Accessing real time configuration manager
------------------------------------------
+Accessing the real time configuration manager
+---------------------------------------------
 
-The configuration manager can be access in one of three ways.
+The configuration manager can be accessed in three ways.
 
 Virtel 3270 Application
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-1. By logging onto the Virtel application as defined by the APPLNAME in the TCT or at start up in the Virtel JCL parameters.
+1. By logging into the Virtel application as defined by the APPLNAME in the TCT or at start up in the Virtel JCL parameters.
 
 ::
 
@@ -74,7 +74,7 @@ The following main menu will appear:
 
 |image76|
 
-Enter you security credentials and the primary menu will appear.
+Enter your security credentials and the primary menu will appear.
 
 |image77|
 
@@ -89,7 +89,7 @@ Enter F1 to enter the configuration menu of the configuration manager.
 THe Web Portal (3270)
 ^^^^^^^^^^^^^^^^^^^^^
 
-2. By accessing Virtel through the administration port 41001.
+2. Access Virtel through the administration port 41001.
 
 ::
 
@@ -110,7 +110,7 @@ Click the Admin (3270) link and the configuration menu will appear.
 The Web Portal (GUI)
 ^^^^^^^^^^^^^^^^^^^^
 
-3. Accessing Virtel as in the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
+3. Access the Virtel administration port (41001) just as for the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
 
 |image81|
 
@@ -118,12 +118,10 @@ The Web Portal (GUI)
 
     \newpage  
 
-Using batch mode configuration manager
---------------------------------------
+Using the batch mode configuration manager
+------------------------------------------
 
-The Virtel program VIRCONF can be used to LOAD or UNLOAD the ARBO VSAM file which contains the configurable elements. The default statements that are used to build the initial ARBO VSAM file are contained in the CNTL library as member ARBOLOAD. This member contains every statement that could potentially be used when defining the Virtel ARBO VSAM file, including optional statements which may not be applicable. To unload the default ARBO VSAM file run the following JCL:-
-
-The UNLOAD command outputs a text file with 80 columns containing all the definitions in the VIRARBO files that make up the configurable Virtel elements.  
+The Virtel program VIRCONF can be used to LOAD or UNLOAD the ARBO VSAM file which contains the configurable elements. The default statements that are used to build the initial ARBO VSAM file are contained in the CNTL library member ARBOLOAD. This member contains every statement that can potentially be used when defining the Virtel ARBO VSAM file, including optional statements which may not be applicable to your configuration. To unload the default ARBO VSAM file run the following JCL:-
 
 ::
 
@@ -149,7 +147,9 @@ The UNLOAD command outputs a text file with 80 columns containing all the defini
 
 *The ARBO UNLOAD Job - See $ARBUNLD in yourqual.VIRTnnn.DOCUMENT.SAMPLIB.SOURCES*    
 
-The LOAD command will accept an input text file with 80 columns containing all the definitions to upload in the VIRARBO file.  
+The UNLOAD command outputs an 80 column text file containing all the definitions in the VIRARBO file, that make up the configurable Virtel elements.  
+
+The LOAD command, on the other hand, will accept an 80 column input text file, containing all the definitions to be uploaded into the VIRARBO file:
 
 ::
 
@@ -178,7 +178,7 @@ The LOAD command will accept an input text file with 80 columns containing all t
 
 .. note::
 
-The VIRCONF utility cannot be run with Virtel running. In this situation, you can UNLOAD the ARBO file by using the command:
+The VIRCONF utility cannot be run when Virtel is active. In this situation however, you can still UNLOAD the ARBO file by using the following command:
 
 ::
 
@@ -200,7 +200,7 @@ The VIRTEL configuration is stored in a VSAM file called the “ARBO file” (VI
 
 **LINES**
 
-A line (also sometimes called a link) represents a communication channel allowing a relationship to be established between a remote physical device (client or server) and VIRTEL. The parameters for defining a line make it possible to specify:
+A line (also sometimes called a link) represents a communication channel between a remote physical device (client or server) and VIRTEL. The parameters for defining a line are used to specify:
 
 - The communication protocol used,
 - The set of associated terminals,
@@ -209,7 +209,7 @@ A line (also sometimes called a link) represents a communication channel allowin
 
 **RULES**
 
-- A rule is a set of conditions which are applied to incoming calls in order to establish the appropriate entry point for the call
+- A rule is a set of conditions which are applied to incoming calls in order to establish the appropriate entry point for the call. These can be used to filter incoming calls.
 
 **TRANSACTION**
 
@@ -222,7 +222,7 @@ A transaction represents a communication channel between VIRTEL and one of the f
 
 **ENTRY POINT**
 
-An entry point defines how the call is processed by VIRTEL and bring together all the transactions necessary for the accomplishment of exchanges between an external partner and a central site application. The parameters for defining an entry point make it possible to specify:
+An entry point defines how the call is processed by VIRTEL and brings together all the transactions required for an external partner to access one or several central site applications. The parameters for defining an entry point are used to specify:
 
 - The type of emulation supported,
 - The possible mode of identification of "incoming" users,
@@ -231,10 +231,10 @@ An entry point defines how the call is processed by VIRTEL and bring together al
 
 **TERMINALS**
 
-A terminal is an component ensuring the link and the integrity of the exchanges between a user session located on the LINE side and a TRANSACTION. There are 2 types of terminals:
+A terminal is a component that controls the link and integrity of exchanges between a user session located on the LINE side and a TRANSACTION. There are 2 types of terminals:
 
-- The so-called LOCAL terminals used for transactions associated with VIRTEL modules or allowing access to a directory hosted on a VSAM file.
-- The so-called RELAY terminals used for communications between VIRTEL and a VTAM application. Each "relay" is represented by a VTAM definition of APPL type.
+- The so-called LOCAL terminals used for transactions associated with VIRTEL modules, or to access a directory hosted within a VSAM file.
+- The so-called RELAY terminals used for communications between VIRTEL and a VTAM application. Each "relay" is represented by a VTAM definition of type APPL.
 
 **DIRECTORIES**
 
@@ -242,11 +242,11 @@ A terminal is an component ensuring the link and the integrity of the exchanges 
 
 **EXTERNAL SERVERS**
 
-- External servers, which define the connection parameters used by VIRTEL to connect outgoing calls to other network entities.
+- External servers, which define the connection parameters used by VIRTEL to connect outgoing calls to other network components.
 
 .. note::
 
-    (This part is removed from the current documentation. Please refere to a previous version of VIRTEL CONNECTIVITY GUIDE for more details on this subject)
+    (This part is removed from the current documentation. Please refer to a previous version of the VIRTEL CONNECTIVITY GUIDE for more details on this subject)
 
 |image121|  
 
@@ -256,7 +256,9 @@ A terminal is an component ensuring the link and the integrity of the exchanges 
 
 *Configurable elements of Virtel*
 
-The diagram above describes the data flow between a TSO user accessing TSO on the mainframe. To support this session various Virtel configurable elements, which are maintained in the ARBO file, are used. The Virtel line definition represents an open port in TCP/IP which is the target of the browser's URL. The Virtel line is associated with a Virtel Entry point which in turn is associated with a list of Virtel transactions. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines the transaction to associate with this session call. In this example the transaction TSO has been identified in the URL string as a HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use several Virtel terminal definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention "LOC" terminals reflect units of work in supporting the browser and "VTA" terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.
+The diagram above describes the data flow between a TSO user accessing TSO on the mainframe. To support this session, Virtel relies on several configurable elements, that are maintained in the ARBO file. The Virtel **line** definition represents an open port in TCP/IP which is the target of the browser's URL. The Virtel line is associated with a Virtel **entry point** which in turn is associated with a list of Virtel **transactions**. One of these transactions is a VTAM application definition representing TSO. The incoming URL determines which transaction is to be associated with this session call. 
+
+In the above example the transaction TSO has been identified in the URL string as an HTTP parameter. When the Virtel engine processes the incoming call it will establish a SNA session with the TSO VTAM application. From the TSO VTAM application perspective it will be as if a user had connected using a standard LU2 type terminal (3270). Virtel will convert datastreams between 3270 and HTML in support of the underlying session between the browser and TSO. This conversion process will use several Virtel **terminal** definitions; 1 or more to represent the browser and another to represent the VTAM interface with TSO. By convention "LOC" terminals reflect units of work in supporting the browser and "VTA" terminals represent the interface to the VTAM applications. Virtel terminal definitions are associated with a Virtel line.
 
 .. raw:: latex
 
@@ -267,7 +269,7 @@ Line Element
 
 The Line element is the main control element in the definition hierarchy. 
 
-When Virtel receives a call in from a user, via their browser, it is targeted towards a particular port which is associated with a Line element.
+When Virtel receives a call in from a user, via their browser, it is targeted towards a particular IP port which is associated with a Line element.
 The Line element points to the default entry point and also identifies the listening port. 
 
 |image70|
@@ -293,13 +295,11 @@ It is also defined in the batch LINE statements:
                  PKTSZ=0000,                                             -
                  RETRY=0010                                               
 
-The same information is reflected in both. 
-
 The batch statements are used to build the ARBO VSAM file which the Virtel Sub Applications access to display, modify and delete configuration elements. 
 
-In the example above the prefix of CL means that this line will only use terminal beginning "CL".
+In the example shown above, the prefix CL means that this line will only use terminals beginning with "CL".
 
-By default, Virtel delivers two HTTP line elements in its default configuration. Line W-HTTP associated with port 41001 and Line C-HTTP associated with port 41002. 
+By default, Virtel delivers two HTTP line elements in its default configuration. Line W-HTTP, associated with port 41001 and line C-HTTP, associated with port 41002. 
 
 * Line W-HTTP(41001) is usually associated with administration functions and should be secured for administration use only. 
 * Line C-HTTP(41002) is an example of a line for for client applications. It is not advisable to use 41001 as your client port. Use 41002 or set-up another line using 41002 as a template, for example 41003.
@@ -317,12 +317,12 @@ Entry Point Element
 
 The Entry point element is associated with a group of transactions. 
 
-Transactions are the interface to external components like VTAM applications (CICS, TSO, IMS etc.) or external servers. Transactions are also used to define internal Virtel tasks and configuration elements like directory entries, upload programs, menu programs, signon programs. 
+Transactions are the interface to external components such as VTAM applications (CICS, TSO, IMS etc.) or external servers. Transactions are also used to define internal Virtel tasks and configuration elements such as directory entries, upload programs, menu programs, signon programs. 
 
 |image71|    
 *Entry Point Definition*
 
-It can also defined with the batch ENTRY statements:
+It can also be defined with the batch ENTRY statement:
 
 ::
     
@@ -337,15 +337,15 @@ It can also defined with the batch ENTRY statements:
                  IDENT=SCENLOGM,                                         -
                  EXTCOLOR=E                                               
 
-The salient point in the Entry Point element is the TRANSACT prefix. This associates transactions with a particular Entry point. In the sample above transactions that begin with CLI will be associated with entry point CLIWHOST which is the default entry point for line C-HTTP(41002). 
+The salient point in the Entry Point element is the TRANSACT prefix. This associates transactions with a particular Entry point. In the sample above, transactions that begin with CLI will be associated with entry point CLIWHOST, which is the default entry point for line C-HTTP(41002). 
 
-An example of using an Entry point is that you might want to associate productions users with line 41004 and other users with line 41005. In this example you would define two new lines, set default entry points PRODHOST and USERHOST. In those entry point definitions the prefix for production transactions would PRD and for user transactions USR.
+An example of using an Entry point is that you might want to associate production users with line 41004 and other users with line 41005. In this example you would define two new lines, set default entry points PRODHOST and USERHOST. In those entry point definitions the prefix for production transactions would PRD and for user transactions USR.
 
-Every line must have a default entry point and Virtel Rule definitions can be used to assign a different Entry point to a call in request based upon a range of criteria - incoming IP Address, Work Station Name, Userid etc. 
+Every line must have a default entry point and Virtel Rule definitions can be used to assign a different Entry point to a call-in request, based upon a range of criteria - incoming IP Address, Work Station Name, Userid etc. 
 
 .. warning::
 
-To associate an Entry Point to a Line, either by the default Entry Point field or by using a Rule, you must ensure that **the terminal prefix** used by the transactions attached to the Entry Point **is compatible with the terminal prefix associated to the Line**.
+To associate an Entry Point to a Line, either by the default Entry Point field or by using a Rule, you must ensure that **the terminal prefix** used by the transactions attached to the Entry Point **is compatible with the terminal prefix associated with the Line**.
 
 .. raw:: latex
 
@@ -356,21 +356,21 @@ Transaction Element
 
 Transactions define either: 
 
- * A programs that Virtel will run in order to support a session requirement. 
+ * A program that Virtel will run in order to support a session requirement. 
  * A VSAM directory containing WEB components such as HTML pages, Javascript, Images, or a VIRTEL Scenario
 
-Transactions that refers program are normally identified within the incoming URL. For example the following URL requests that Virtel starts a Virtel transaction called CICS:
+Transactions that refer to programs are normally identified within the incoming URL. For example the following URL requests that Virtel start a Virtel transaction called CICS:
 
 ::
 
     http://192.168.170.33:41002/w2h/WEB2AJAX.htm+Cics
 
-When the Virtel Engine receives this call-in it directs to line C-HTTP(41002) and established a session with the user's browser. Session initiation begins with the downloading of various Virtel web elements such as templates, JavasSrcipt and CSS pages. The line will invoke a transaction called CICS which will be associated with the entry point defined for this call-in. This normally would be a transaction associated with the default entry point CLIWHOST. However, Virtel Rules may well associate a different entry point depending on call-in criteria. The transaction CICS is an external name, the Virtel Internal name for this transactions is CLI-10. It is the internal name that is related to the transaction prefix defined in the Entry Point. 
+When the Virtel Engine receives this call-in, it directs to line C-HTTP(41002) and established a session with the user's browser. Session initiation begins with the downloading of various Virtel web elements such as templates, JavaScript and CSS pages. The line will invoke a transaction called CICS which will be associated with the entry point defined for the call-in. This normally would be a transaction associated with the default entry point CLIWHOST. However, Virtel Rules may well associate a different entry point depending on call-in criteria. The transaction CICS is an external name, the Virtel Internal name for this transaction is CLI-10. It is the internal name that is related to the transaction prefix defined in the Entry Point. 
 
 |image72|
 *Transaction Definition*
 
-It can also defined with the TRANSACT statements:
+It can also be defined with the TRANSACT statement:
 
 ::
 
@@ -383,11 +383,11 @@ It can also defined with the TRANSACT statements:
                  STARTUP=1,                                              -
                  SECURITY=1                                               
 
-The salient points here are the internal name or ID, CLI-10 which ties up with the Entry Point transaction prefix of transactions beginning "CLI", the external name, "CICS" relates to the transaction name identified in the call-in URL. The APPL keyword identifies a name that will be used depending on the transaction type. The transaction type for this particular transaction definition is a VTAM transaction, TYPE=1. Virtel will attempt to logon to VTAM application identified by the VTAM APPL name SPCICST. The final point is the terminal prefix which identifies what Virtel terminals should be used to support this connection. In this instance the terminals must be prefixed with the characters "CLVTA". 
+The salient points here are the internal name or ID, CLI-10 which ties up with the Entry Point transaction prefix of transactions beginning with "CLI". The external name "CICS" relates to the transaction name identified in the call-in URL. The APPL keyword identifies a name that will be used depending on the transaction type. The transaction type for this particular transaction definition is a VTAM transaction, TYPE=1. Virtel will attempt to logon to VTAM application identified by the VTAM APPL name SPCICST. The final point is the terminal prefix which identifies what Virtel terminals should be used to support this connection. In this instance the terminals must be prefixed with the characters "CLVTA". 
 
 .. warning::
 
-You must ensure that **the terminal prefix** used by the transactions attached to the Entry Point **is compatible with the terminal prefix associated to the Line** you will use to connect to.
+You must ensure that **the terminal prefix** used by the transactions attached to the Entry Point **is compatible with the terminal prefix associated with the Line** you will be connecting to.
 
 .. raw:: latex
 
@@ -403,17 +403,17 @@ Terminal elements are used to support units of work within Virtel such as runnin
 
 The terminal name is used to associate terminals with lines and transactions. 
 
-In the example for the line C-HTTP(41002) we had a terminal prefix of **CL**\. So terminals **CL**\LOC000-**CL**\LOC079 and **CL**\VTA000-**CL**\VTA079 will be associated with this line. 
+In the example for the line C-HTTP(41002) we have a terminal prefix of **CL**\. So terminals **CL**\LOC000-**CL**\LOC079 and **CL**\VTA000-**CL**\VTA079 will be associated with this line. 
 
 Our Transaction CLI-10 requires a terminal whose prefix is **CL**\VTA. CL terminals are allocated top down, meaning that the terminal allocated to the transaction will be the highest CLVTA079. 
 
 The display shows that CLLOC000-CLLOC079 are static terminal entries. 
-CLVTA000-CLVTA079 are dynamic entries and point to a pool called \*W2HPOOL. Whenever a terminal is required from a pool the terminal name returned will be the first free terminal within the pool. Defining pool terminals is through the use of the Pool name in the terminal definition. So in the pool \*W2HPOOL terminals whose name begin with W2HTP000-WH2HTP079 have been defined. So, when the TSO transaction is kicked off Virtel will request a terminal whose name begins CLVTA, CLVTA079 will be assigned. This will grab the first available terminal in the \*W2HPOOL as that is where CLVTA points to. The first available terminal in the pool will be W2HTP000. Virtel always works from the lowest free name entry when returning pool entries.
+CLVTA000-CLVTA079 are dynamic entries and point to a pool called \*W2HPOOL. Whenever a terminal is required from a pool the terminal name returned will be the first free terminal within the pool. Defining pool terminals is through the use of the Pool name in the terminal definition. So in the pool \*W2HPOOL, terminals whose names begin with W2HTP000-W2HTP079 have been defined. So when the TSO transaction is started, Virtel will request a terminal whose name begins with CLVTA, CLVTA079 will be assigned. This will take the first available terminal in the \*W2HPOOL, as that is where CLVTA points to. The first available terminal in the pool will be W2HTP000. Virtel always works from the lowest free name entry upwards when returning pool entries.
 
 |image74|
 *Terminal Pool definition*
 
-Terminal Definitions defined with TERMINAL statements:-
+Terminal Definitions are defined with TERMINAL statements:-
 
 ::
 
@@ -441,11 +441,11 @@ Terminal Definitions defined with TERMINAL statements:-
                  RELAY2=RHTIM000,                                        -                     
                  TYPE=3,                                                 -                              
                  COMPRESS=2,                                             -                
-                 INOUT=3,                                                -                                                -                             
+                 INOUT=3,                                                -                                      
                  STATS=26,                                               -                            
                  REPEAT=0080                                                        
 
-In the case of logging onto CICS, the Virtel transaction will request a CLVTA terminal(CLVTA079) and terminal WH2TP000 will be returned from \*W2HPOOL. This terminal has an association with a relay name represented by a VTAM terminal definition - in this case RHTVT000. This relay name should be defined to VTAM. Also, this terminal definition has a 2nd relay called RHTIM000. Again, this is a VTAM APPL definition which represents a SNA printer associated with the screen LU RHTVT000. This name must also be defined to VTAM. RHTIM000 is a relay name associated with the static terminal definitions beginning W2HIM000. In the logon to CICS we have three terminal names associated with the VTAM interface - CLVTA079, W2HTP000(RHTVT000) and W2HIM000(RHTIM000).
+In the case of logging into CICS, the Virtel transaction will request a CLVTA terminal(CLVTA079) and terminal WH2TP000 will be returned from \*W2HPOOL. This terminal has an association with a relay name represented by a VTAM terminal definition - in this case RHTVT000. This relay name should be defined to VTAM. Also, this terminal definition has a 2nd relay called RHTIM000. Again, this is a VTAM APPL definition which represents a SNA printer associated with the screen LU RHTVT000. This name must also be defined to VTAM. RHTIM000 is a relay name associated with the static terminal definitions beginning with W2HIM000. In the logon to CICS we have three terminal names associated with the VTAM interface - CLVTA079, W2HTP000(RHTVT000) and W2HIM000(RHTIM000).
 
 Here are the VTAM definitions:
 
@@ -483,10 +483,10 @@ Example of configurable Elements
 Adding new configurable elements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or via batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDSHOST has the following transactions:-
+Adding new configurable elements can be online, through the Virtel Portal (Port 41001), or in batch using the VIRCONF util. The following is an example of adding a new interface to Virtel. The interface is line E-HTTP(41003) which uses entry point EDSHOST. Entry point EDSHOST has the following transactions:-
 
 EDS-00
-    Transaction to support the Entry Point. Must have an external name the same as the Entry Point. In this case EDSHOST. Identifies the default transaction. That being what transaction should be initiated is none is specified in the URL.
+    Transaction to support the Entry Point. Must have an external name that is the same as the Entry Point, in this case EDSHOST. This also identifies the default transaction, that is the transaction that will be initiated if none is specified in the URL.
 
 EDS-03W
     Point to the w2h directory where all the Virtel web artifacts are maintained. In this case the W2H directory.
@@ -501,7 +501,7 @@ EDS-90
     Application menu transaction used as the default transaction and identified in the TIOA string in transaction EDS-00
 
 W2H-80S
-    A transaction added to the W2H Entry point to support uploading web articfacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this "upload" transaction the new directory will not appear in the administration portal display of in the directory summary display.
+    A transaction that must be added to the **W2H** Entry point to support uploading web artifacts to the EDS-DIR. When adding a new diorectory to Virtel you must also add a new upload transaction to the W2H transaction group. The external name and logmsg of the transaction should identify the directory. For example in this case name = upleds and logmsg = EDS-DIR. If you do not specify this "upload" transaction the new directory will not appear in the administration portal display of in the directory summary display.
 
 Apart from the LINE, Entry Point and Transaction there is one other configurable element which must also be added to support a new interface. This is the SUBDIR element. The SUBDIR element identifies a new directory.
 
@@ -657,12 +657,12 @@ If you log on to VIRTEL in 3270 mode using the default entry point (“PC”), t
 
 The first screen you will see is the Multi-Session menu:
 
-Real time configuration manager can be access in one of two ways.
+Real time configuration manager can be accessed in one of two ways.
 
 Virtel 3270 Application
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-1. By logging onto the Virtel application as defined by the APPLNAME in the TCT or at start up in the Virtel JCL parameters.
+1. By logging onto the Virtel application as defined by the APPLNAME in the TCT or at startup in the Virtel JCL parameters.
 
 ::
 
@@ -672,7 +672,7 @@ The following main menu will appear:
 
 |image76|
 
-Enter you security credentials and the primary menu will appear.
+Enter your security credentials and the primary menu will appear.
 
 |image77|
 
@@ -687,7 +687,7 @@ Enter F1 to enter the configuration menu of the configuration manager.
 THe Web Portal (3270)
 ^^^^^^^^^^^^^^^^^^^^^
 
-2. By accessing Virtel through the administration port 41001.
+2. Access Virtel through the administration port 41001.
 
 ::
 
@@ -708,13 +708,13 @@ Click the Admin (3270) link and the configuration menu will appear.
 The Web Portal (GUI)
 ^^^^^^^^^^^^^^^^^^^^
 
-3. Accessing Virtel as in the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
+3. Access the Virtel administration port (41001) just as for the Web Portal (3270) but instead of clicking Admin (3270) click Admin (GUI). You will be presented with a GUI view of the 3270 configuration screens.
 
 |image81|
 
 .. note:
 
-Only the 3270 screen modes are documentated, the GUI mode is not. 
+Only the 3270 screen modes are documented, the GUI mode is not. 
 
 .. raw:: latex
 
@@ -727,14 +727,14 @@ Only the 3270 screen modes are documentated, the GUI mode is not.
 Configuration Menu
 ^^^^^^^^^^^^^^^^^^^
 
-The configuration Menu presents a list of sub applications which can be invoked to manage various Virtel entities such as lines, terminals, entry points etc.
+The configuration Menu presents a list of sub applications which can be invoked to manage various Virtel components such as lines, terminals, entry points etc.
 
 |image80|
 *Configuration Menu*
 
 To invoke a sub-application, press one of the function keys shown in the menu (for example, F1 – Lines). To exit from the Configuration Menu and return to the Multi-Session menu, press CLEAR.
 
-From within the configuration Menu a further set of sub-applications can be accessible by pressing [PA2]
+From within the configuration Menu a further set of sub-applications can be accessed by pressing [PA2]
 
 .. raw:: latex
 
@@ -769,7 +769,7 @@ The sub-applications have certain common operational characteristics:
 
 - To display the detail screen for a particular element, place the cursor on the element name in the list and press [F12].
 
-- To alter the definition of an element, type the desired changes into the appropriate fields in the list and press [F1]. VIRTEL recognizes the changes only when you press [F1]. **If you change a transaction you must also press [F1] on ALL the entry points that the transaction belongs to**.
+- To alter the definition of an element, type the desired changes into the appropriate fields in the list and press [F1]. VIRTEL recognizes the changes only when you press [F1]. **If you change a transaction you must also press [F1] on ALL of the entry points that the transaction belongs to**.
 
 - To delete an element, place the cursor on the element name in the list and press [F2]. Then press [F2] again to confirm the deletion.
 
@@ -796,7 +796,7 @@ This chapter describes all the functions associated with the definition of lines
 this chapter for each type of line.
 
 .. note::
-    Definition of NPSI MCH, X25 router, X25 application (GATE, PCNE), VIRNT server are no longer documented in this documention. If you need informations about one of this type of line, please refer to a previous version of VIRTEL CONNECTIVITY GUIDE.
+    Definition of NPSI MCH, X25 router, X25 application (GATE, PCNE), VIRNT server are no longer documented in this documention. If you need information about one of these types of line, please refer to a previous version of the VIRTEL CONNECTIVITY GUIDE.
 
 .. index::
    pair: Lines; Line Management Sub-Application  
@@ -819,7 +819,7 @@ When accessed by a transaction, normal transaction security rules will apply. Se
 Summary Display
 ^^^^^^^^^^^^^^^
 
-The first screen shows a summay of existing line definitions in alphanumeric order:
+The first screen shows a summary of existing line definitions in alphanumeric order:
 
 |image4|
 *Line Summary Display*
@@ -915,7 +915,7 @@ Local ident
     nnn.nnn.nnn.nnn: pppp
         VIRTEL opens port pppp on the indicated IP address. nnn.nnn.nnn.nnn must be a valid HOME address defined in the host TCP/IP. For example, 192.168.0.100:2048
 
-    0: pppp
+    0:pppp
         VIRTEL opens port pppp without associating itself with a particular IP address. VIRTEL can receive calls on any HOME address defined in the host TCP/IP. For example, 0:2048 (or 0.0.0.0:2048)
 
         .. note::
@@ -1094,7 +1094,7 @@ Delay
 Line Overview Sub-Application
 -----------------------------
 
-The Lines Overview sub-application is invoked by: 
+The Lines Overview sub-application is invoked: 
 
 * by pressing [PF8] at the Configuration Menu or 
 * by pressing [PF15] at the Sub-Application Menu or
@@ -1215,7 +1215,7 @@ There are two categories of terminals:
 * So-called **LOCAL** terminals used by all non type-1 transactions, for example transaction associated with VIRTEL modules or to a directory hosted in a VSAM file.
 
 By default, when installing the VIRTEL web access suite, two HTTP lines are predefined. Each of these lines uses its own subset of terminals. The terminals with prefix “CL” belong to line C-HTTP, while the terminals with prefix “DE” belong to line W-HTTP.
-e square. Both RELAY groups share the same pool represented by the yellow square. This list was displayed by pressing [PF2] at the Configuration Menu.
+Both RELAY groups share the same pool represented by the yellow square. This list was displayed by pressing [PF2] at the Configuration Menu.
 
 |image7|
 *Terminals associated with HTTP lines*
@@ -1441,7 +1441,7 @@ Relay
 Entry point
     Leave blank. The entry point is defined in the line (or in the rules of the line) for this type of terminal.
 
-Type de terminal
+Terminal Type
     Always 3.
 
 Compression
@@ -1617,7 +1617,7 @@ Application type
     Always 2.
 
 Pseudo-terminal
-    Exceptionally, there is no terminal prefix associated with this type of transaction. Virtel himself decides which allocation and management is best suited.
+    Exceptionally, there is no terminal prefix associated with this type of transaction. Virtel decides which allocation and management is best suited for this type of application.
 
 Security
     Always 0.
@@ -1811,7 +1811,7 @@ Prefix
     Terminal name prefix (see below).
 
 Entry Point
-    When defining a batch line, it is obligatory to define a default entry point. This entry point is similar to the entry point used for an HTTP line. The entry point contains a list of transactions, and these transactions determine which directories are used to retrieve page templates, and which 3270 applications are accessible to the batch requests.
+    When defining a batch line, it is required to define a default entry point. This entry point is similar to the entry point used for an HTTP line. The entry point contains a list of transactions, and these transactions determine which directories are used to retrieve page templates, and which 3270 applications are accessible to the batch requests.
 
     Each transaction must refer to one of the terminal sub-groups associated with the batch line (see ”Batch terminals” below).
 
@@ -2268,7 +2268,7 @@ Introduction
 
 Each Virtel line can have a set of rules which allow the selection of an entry point for each incoming call according to the characteristics of the call and the rule criteria. 
 
-**Rules are processed in alphanumeric order of name**, so it is important that the name you choose gaurantees order of the rule processing. As sonn as a match is found within the definied rule criteria the designated entry point will be assigned to the caller. 
+**Rules are processed in alphanumeric order of name**, so it is important that the name you choose guarantees the correct order for rule processing. As soon as a match is found within the defined rule criteria the designated entry point will be assigned to the caller. 
 
 Rules are useful to force or nail Virtel Relay LU names or to establish different application lists depending on the incoming IP address. The last rule should be the "default" rule which is used to catch callers that didn't match with previous rules. If no default rule is present then the caller will drop through the rule processing and the connection will be closed. 
 
@@ -2283,7 +2283,7 @@ Management
 Summary Display
 ^^^^^^^^^^^^^^^
 
-Press [PF5] at the line detail definition screen to display the summary list of rules associated with the line:
+Press [PF5] on the line detail definition screen to display the summary list of rules associated with the line:
 
 |image38|
 *Rule Summary Display*
@@ -2455,7 +2455,7 @@ The following C-HTTP line rule redirects the call to the EPCUST02 entry point if
 Rule for a proxy server
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The following C-HTTP line rule redirects the call to the EPPROXY1 entry point for any call that has passed through the proxy having IP address 192.168.0.1.
+The following C-HTTP line rule redirects the call to the EPPROXY1 entry point for any call that has passed through a proxy with IP address 192.168.0.1.
 
 .. note::
     If RULE0005 and/or RULE0010 are active, and if client call with IP address 192.168.168.nnn passed through the concerned proxy server, RULE0005 and RULE0010 will be effective. Such client will never be redirected to the EPPROXY entry point. 
@@ -2481,7 +2481,7 @@ The following C-HTTP line rule redirects the call to the EPASSTKT entry point fo
 Rejection rule
 ^^^^^^^^^^^^^^
 
-The following C-HTTP line rule redirects the call to the EPREJECT entry point none of the previous rules (RULE0005 to RULE0100) were satisfied by the call request.
+The following C-HTTP line rule redirects the call to the EPREJECT entry point if none of the previous rules (RULE0005 to RULE0100) were satisfied by the call request.
 
 |image45|
 *Rule detail definition to reject a call*
@@ -2495,7 +2495,7 @@ The EPREJECT entry point contains only one transaction that displays a page name
 *REJ-00 transaction definition*
 
 .. warning::
-    When you redirect a call using a rule, **you must ensure** that the prefixes of the terminals associated with each transaction attached to the redirected to entry point are compatible with the prefix of the terminals associated with the line receiving the call.
+    When you redirect a call using a rule, **you must ensure** that the prefixes of the terminals associated with each transaction attached to the redirected entry point are compatible with the prefix of the terminals associated with the line receiving the call.
 
 .. index::
    single: Terminals   
@@ -2510,7 +2510,7 @@ A terminal is an essential element ensuring the link and the integrity of exchan
 There are two categories of terminals:
 
 * So-called **RELAY** terminals used **ONLY** by type-1 transactions associated with a VTAM application. Each terminal in this first sub-group represents one session between VIRTEL and a host application; in this sub-group, either a relay must be configured for each terminal, or the sub-group must refer to :ref:`“logical pool of relays”<#_V499AG_LogicalPool>`. Whichever method is chosen, each relay must be defined by an APPL statement in a VTAM node of type APPL. Either explicit or repeated terminal definitions may be used.
-* So-called **LOCAL** terminals used by all non type-1 transactions, for example transaction associated with VIRTEL modules or to a directory hosted in a VSAM file.
+* So-called **LOCAL** terminals are used by all non type-1 transactions, for example transaction associated with VIRTEL modules or to a directory hosted in a VSAM file.
 
 All terminals, whether physical or virtual, using the services of VIRTEL must be referenced. This chapter describes the group of functions associated with the management of the terminals as well as their existing relationship to other administration functions, for example, management of lines or entry points.
 
@@ -2627,7 +2627,7 @@ Terminal
         - For a physical pool: A sequence of 8 characters starting with “?” (see “Physical pool of terminals”).
 
         .. note::
-            If the “Repeat” field contains a value greater than 1, then the terminal name must contain a comptible pattern portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below).
+            If the “Repeat” field contains a value greater than 1, then the terminal name must contain a compatible pattern portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below).
 
 Relay
     (Optional) The name of the relay LU associated with this terminal. The relay name corresponds to a VTAM APPL statement. The same relay cannot be shared between multiple definitions or between multiple isntance of Virtel. It must be unique in a VTAM (cross) domain area.
@@ -2635,7 +2635,7 @@ Relay
     The “Relay” field may alternatively contain a name in the form \*POOLNAM which refers to the logical pool which has the same name \*POOLNAM specified in its “\*Pool name” field. In this case, a relay will be assigned dynamically from the specified logical pool each time a relay is required. See “logical pool of relays”. 
     
     .. note::
-        If the “Repeat” field contains a value greater than 1, then the relay name must contain a comptible pattern portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below) or it must refer to a logical pool.
+        If the “Repeat” field contains a value greater than 1, then the relay name must contain a compatible pattern portion which will be incremented for each occurrence of the terminal (see “Repeat” parameter below) or it must refer to a logical pool.
     
 .. note::
     If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any '+' character in termnal name or in the relay name will be replaced by:
@@ -2808,16 +2808,16 @@ RELAY mode
 Terminal definition types
 -------------------------
 
-There are two types of terminal definitions in VIRTEL. The definitions in which the RELAY zone is filled in, and those in which it is not.
+There are two types of terminal definitions in VIRTEL. The definitions in which the RELAY area is filled in, and those in which it is not.
 
-In the rest of this chapter, the *RELAY terminal* terms will refer to a definition in which the RELAY zone is filled in, the terms of *terminal without RELAY* or *LOCAL terminal* will refer to the definitions in which the RELAY zone is not filled in.
+In the rest of this chapter, the *RELAY terminal* terms will refer to a definition in which the RELAY area is filled in, the terms of *terminal without RELAY* or *LOCAL terminal* will refer to the definitions in which the RELAY area is not filled in.
 
 .. note:: 
-    There are 2 type of terminals so-called **RELAY** termainals or **LOCAL** terminals.
+    There are 2 type of terminals so-called **RELAY** terminals or **LOCAL** terminals.
 
 Regardless of the type of terminals concerned (RELAY or LOCAL), they can be defined as **FIXED** entries or as **POOL** entries.
 
-    - A **FIXED** entry is a définition which can only be used by one specific terminal.
+    - A **FIXED** entry is a definition which can only be used by one specific terminal.
     - A **PHYSICAL POOL** is a generic definition which can be shared by several different 3270 terminals. The definition of a Physical Pool is indicated bye the presence of a ? character in the first position of the terminal name. This type of definition is **exclusively reserved** for already existing 3270 VTAM terminals.
     - A **LOGICAL POOL** is a reserved wich is used NOT for connnecting a terminal to VIRTEL, but for connection to a VTAM application. This definition, allows the same physical terminal, for example a client web browser, to be presented to application with differents relays depending on the context.
       
@@ -2933,7 +2933,7 @@ Corresponding relay LU’s must be defined to VTAM by means of APPL statements i
 Non-Dynamic Physical Pool
 """""""""""""""""""""""""
 
-In a non-dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters **whitout** “=” signs. 
+In a non-dynamic physical pool, the associated relay is defined by a combination of alphanumeric characters **without** “=” signs. 
 
 |image51|
 *Non-Dynamic Physical Pool definition*
@@ -2963,10 +2963,10 @@ Corresponding relay LU’s must be defined to VTAM by means of APPL statements i
 Logical pool of relay
 ^^^^^^^^^^^^^^^^^^^^^
 
-A **LOGICAL POOL** is a reserved group wich is used NOT for connnecting a terminal to VIRTEL, but for connection to a VTAM application. This definition, allows the same physical terminal, for example a client web browser, to be presented to application with differents relays depending on the context.
-In such definition, group of relays are not permanently assigned to any terminal but are available for allocation by terminals as and when required. 
+A **LOGICAL POOL** is a reserved group which is NOT used for connecting a terminal to VIRTEL, but for connecting to a VTAM application. This definition, allows the same physical terminal, for example a client web browser, to be presented to an application with different relays depending on the context.
+In such definition, groups of relays are not permanently assigned to any terminal but are available for allocation by terminals as and when required. 
 
-The logical pool is defined as a group of terminals (the definitions can be explicit or repeated) whose “\*Pool name” field contains a name prefixed preceded by the character “\*”.
+The logical pool is defined as a group of terminals (the definitions can be explicit or repeated) whose “\*Pool name” field contains a name prefixed by the character “\*”.
 
 The terminal name is not significant, except to distinguish it from other terminal definitions. Terminals which use the pool specify the pool name (with the “\*” prefix) in their relay name field. 
 
@@ -2990,7 +2990,7 @@ An explicit logical pool is a set of definition in which:
 
 *Example of Explicit Logical pool*
 
-Most of the time, the presence of an explicit logical pool is due to the need of both following reasons:
+Most of the time, the use of an explicit logical pool is justified by one of the following reasons:
 
     - There is no matching rule between the internal name of a terminal and the associated relay and/or 2nd relay
     - There is a need of selecting a specific relay at connection time. (See LU'Nailing section below). 
@@ -2998,10 +2998,10 @@ Most of the time, the presence of an explicit logical pool is due to the need of
 |image53|
 *Explicit Logical Pool. (See TLG7POOL member in yourqual.VIRTnnn.DOCUMENT.SAMPLIB.SOURCES)*
 
-The explicit logical pool shown above is built by gathering multiple definition subgroups that reference all the \*LG7POOL pool name. Each of these subgroups (three of which are embodied in the groupings of green, purple and yellow) consists of a set 4 definitions. Three defintions for 3270 relay, all pointing to a printer relay common to the subgroup. 
+The explicit logical pool shown above is built by gathering multiple definition subgroups that all reference the \*LG7POOL pool name. Each of these subgroups (three of which are highlighted above in green, purple and yellow) consists of a set of 4 definitions. Three definitions are for 3270 relay, all pointing to a printer relay common to the subgroup. 
 
 .. note::
-    **Note** that the \*LG7POOL also contain a *repeated logical pool* of 80 entries mark with the Turquoise arrow.
+    **Note** that the \*LG7POOL also contains a *repeated logical pool* of 80 entries marked with the Turquoise arrow.
 
 Repeated logical pool
 """""""""""""""""""""
@@ -3014,8 +3014,8 @@ A repeated logical pool is at least one set definition in which:
 |image54|
 *Repeated Logical Pool. (See TLG6POOL member in yourqual.VIRTnnn.DOCUMENT.SAMPLIB.SOURCES*
 
-The repeated logical pool shown above is built 20000 relays by gathering multiple definition subgroups that reference all the \*LG6POOL pool name. 
-Each each of these subgroups creates a series of 5000 terminals.
+The repeated logical pool shown above builds 20000 relays by gathering multiple definition subgroups that all reference the \*LG6POOL pool name. 
+Each of these subgroups creates a series of 5000 terminals.
 
 .. warning::
     For performance reason and CPU consumption limitation, it is recommended that the number of relays associated with a line be limited to a maximum of 5000.
@@ -3023,7 +3023,7 @@ Each each of these subgroups creates a series of 5000 terminals.
 Sharing a logical pool
 """""""""""""""""""""
 By default, when installing the VIRTEL web access suite, two HTTP lines are predefined. Each of these lines uses its own subset of terminals. The terminals with prefix “CL” belong to line C-HTTP, while the terminals with prefix “DE” belong to line W-HTTP.
-e square. Both RELAY groups share the same pool represented by the yellow square.
+Both RELAY groups share the same pool represented by the yellow square.
 
 |image7|
 *Logical Pool Shared between mutiple HTTP lines*
@@ -3048,7 +3048,7 @@ Often, the terminal pool definition will take the following form:
 
 *Logical pool with pattern and repeat count*
 
-The portion pattern of a name, or relay name or 2nd relay name, is a group of characters that are either numeric or belong to all of the following special characters set:
+The pattern portion of a name, or relay name or 2nd relay name, is a group of characters that are either numeric or belong to all of the following set of special characters:
 
 :: 
 
@@ -3059,19 +3059,19 @@ The portion pattern of a name, or relay name or 2nd relay name, is a group of ch
 
 *Table of specials characters reserved for a pattern*
 
-Whatever type of pattern used, the repeat count 
+Whatever type of pattern is used, the repeat count sets the number of terminals to be defined.
 
 Numeric only Pattern
 """"""""""""""""""""
 
-A numeric pattern is always represented by the righ most contiguous suite of numbers, whatever their value. For example, in the following definitions, the numeric pattern are represented by the **boldface** part of the names.
+A numeric pattern is always represented by the rightmost contiguous sequence of numbers, whatever their value. For example, in the following definitions, the numeric patterns are represented by the **boldface** part of the names.
 
 :: 
 
     LOG1P**000**, or LOG**100**P, or LOG00A**77**
 
 .. note::
-    If a name has more than one portion of a numeric pattern, only the one to the right of the name is considered to be incrementable. For example, in the LOG00A**77** definition, only the part at the right of the character “A” is considered to be the pattern.
+    If a name has more than one numeric pattern, only the one to the right of the name is considered to be incrementable. For example, in the LOG00A**77** definition, only the part at the right of the character “A” is considered to be the pattern.
 
 To illustrate the repeat count effect, consider the following logical pool definitions (*See TLG1POOL member in yourqual.VIRTnnn.DOCUMENT.SAMPLIB.SOURCES*):
 
@@ -3099,9 +3099,9 @@ Depending on the repeat count value, the generated names will be:
 *Generated names depending on the repeat count value*
 
 .. warning::
-    With nnnn = 3000, VIRTEL will generate 3 times 1000 entries with names LOG1T000-LOG1T999, relay names RDO1T000-RDO1T999 and relay2 names RDO1P000-RDO1P999, so we will have some trouble when the 1001 em connection will be initiated, VIRTEL trying to allocate the relay whose name is defined in the 1001 nth cell in the table, namely RDO1T000, relay potentially currently used by terminal LOG1T000. It is therefore imperative to **ensure that the number of digits is sufficient in the patterns** of the terminal name, relay name and relay 2 name, to ensure the uniqueness of each of these names.
+    With nnnn = 3000, VIRTEL will generate 3 times 1000 entries with names LOG1T000-LOG1T999, relay names RDO1T000-RDO1T999 and relay2 names RDO1P000-RDO1P999, so we will have some trouble when the 1001th connection will be initiated, VIRTEL trying to allocate the relay whose name is defined in the 1001 nth cell in the table, namely RDO1T000, relay potentially currently used by terminal LOG1T000. It is therefore imperative to **ensure that the number of digits is consistent with the patterns** of the terminal name, relay name and relay 2 name, to ensure the uniqueness of each of these names.
 
-Depending on the length of the righ most numeric portion of a name, the maximum allowed repeat count value MUST BE limited to:
+Depending on the length of the rightmost numeric portion of a name, the maximum allowed repeat count value MUST BE limited to:
 
 +------------------------+-------------------------------+
 + Numeric pattern length +  Maximum repeat count value   +
@@ -3120,9 +3120,9 @@ Depending on the length of the righ most numeric portion of a name, the maximum 
 Alphanumeric Pattern
 """"""""""""""""""""
 
-In some situations, incrementing to a decimal format is not suited to the needs, for example, when an alphabetical sequencing is desired.
+In some situations, incrementing in decimal format is not suited to the needs, for example, when an alphabetical sequencing is desired.
 
-Terminal defininition whose repeat count is greather than 1 may contains special pattern characters in the "Terminal name", "Relay" and "2nd Relay" fields. Multiple instances of the terminal will be generated at Virtel startup by incrementaing the pattern characters according to the rules shown below. If the name contains no pattern characters, then Virtel will increment the rightmost numeric portion of the name.
+A terminal defininition with a repeat count greater than 1 may contains special pattern characters in the "Terminal name", "Relay" and "2nd Relay" fields. Multiple instances of the terminal will be generated at Virtel startup by incrementing the pattern characters according to the rules shown below. If the name contains no pattern characters, then Virtel will increment the rightmost numeric portion of the name.
 
 The possible pattern characters with their increment range are:
 
@@ -3146,25 +3146,27 @@ To illustrate the repeat count effect with special characters, consider the foll
 LOG9P000  nnnn     RD9?P%%0               P      1  
 LOG9T000  nnnn     RD9>T<<<               3      3    *LG9POOL RD9?P%%0
 
-Depending on the repaet count value, the generated names will be:
+Depending on the repeat count value, the generated names will be:
 
 +------+---------------------+---------------------+---------------------+
 + nnnn +  Name of terminals  +     Relay  name     +    2nd relay name   +
 +======+=====================+=====================+=====================+
 +  256 +  LOG9T000-LOG9T255  +  RD9AT000-RD9AT255  +  RD9AP000-RD9APFF0  +
++------+---------------------+---------------------+---------------------+
 + 1000 +  LOG9T000-LOG9T999  +  RD9AT000-RD9AT999  +  RD9AP000-RD9APFF0  +
 +      +                     +                     +  RD9BP000-RD9BPFF0  +
 +      +                     +                     +  RD9CP000-RD9CPFF0  +
 +      +                     +                     +  RD9DP000-RD9DPFF0  +
++------+---------------------+---------------------+---------------------+
 + 3000 +  LOG9T000-LOG9T999  +  RD9AT000-RD9AT999  +  RD9AP000-RD9APFF0  +
 +      +  LOG9T000-LOG9T999  +  RD9BT000-RD9BT999  +        ../..        +
 +      +  LOG9T000-LOG9T999  +  RD9CT000-RD9CT999  +  RD9LP000-RD9LPFF0  +
-+---------+------------------+---------------------+---------------------+   
++------+---------------------+---------------------+---------------------+   
 
 *Generated names depending on the repeat count value*
 
 .. note::
-    With nnnn = 3000 the relay2 names are a set of 12 groups RD9xP000-RD9xPFF0, x varying from A to L. Because of the use of specials characters we are sure to get a unique set of value for both primary and secondary relay names and the fact that in this case the internal names of the terminals will be present 3 times in the internal table of VIRTEL has no effect on the proper functioning of the system except to be sometimes confusing at the level of certain messages issued in the logs.
+    With nnnn = 3000 the relay2 names are a set of 12 groups RD9xP000-RD9xPFF0, x varying from A to L. Because of the use of special characters we are sure to get a unique set of values for both primary and secondary relay names and the fact that in this case the internal names of the terminals will be present 3 times in the internal table of VIRTEL has no effect on the proper operation of the Virtel system except to be sometimes confusing at the level of certain messages issued in the logs.
  
 .. warning::
     Once a pattern character is used in the "terminal" or "relay" or "2nd relay" field, the other "non patterned" characters are to be considered as "static value" 
@@ -3181,21 +3183,21 @@ will generate entries from RD9AT000 to RD9AT999, **BUT**
     
     LOG9T000  1000     RD9>T000               3      3    *LG9POOL RD9AP000
 
-will generate a serie like RD9**x**T000 x varying from A to Z, then from 0 to 9, then $, # and @, so a total of 39 relays, it is the reason why to generate the RD9AT000-RD9AT999 serie we have to replace tailing "000" by "<<<" 
+will generate a sequence of RD9**x**T000 terminals, with x varying from A to Z, then from 0 to 9, then $, # and @, so a total of 39 relays. For this reason, to generate the RD9AT000-RD9AT999 sequence we have to replace tailing "000" by "<<<" 
 
 :: 
     
     LOG9T000  1000     RD9>T<<<               3      3
 
-will generate the RD9AT000-RD9AT999 serie while 
+will generate the RD9AT000-RD9AT999 sequence
 
 :: 
 
     LOG9T000  1500     RD9>T<<<               3      3
 
-will generate the RD9AT000-RD9AT999 serie followed by the RD9BT000-RD9BT499 serie. 
+will generate the RD9AT000-RD9AT999 sequence, followed by the RD9BT000-RD9BT499 sequence. 
 
-The maximum value of the repeat count depends directly on the type of special character used in a pattern. The following table shows the maximum number of repeats allowed for each type of character.
+The maximum value of the repeat count depends on the type of special character used in a pattern. The following table shows the maximum number of repeats allowed for each type of character.
 
 +-------------------------------------------+-----------------------------+
 +             Pattern character             +  Maximum repeat count value +
@@ -3217,18 +3219,18 @@ The maximum value of the repeat count depends directly on the type of special ch
 Pattern with a + characters
 """""""""""""""""""""""""""
 
-If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any '+' character in a "relay" or "2nd relay" name will be replaced by the value of the SYSCLONE system symbol or by the positionnal CLONE parameter (if supplied) present in the parameter list passed within the STC job. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
+If SYSPLUS=YES is specified (see “Parameters of the VIRTCT” in the VIRTEL Installation Guide), any '+' character in a "relay" or "2nd relay" name will be replaced by the value of the SYSCLONE system symbol or by the positional CLONE parameter (if supplied) from the parameter list passed within the STC JCL. SYSCLONE is specified in the IEASYMxx member of SYS1.PARMLIB, and identifies the particular LPAR that VIRTEL is running on in a sysplex environment.
 
 Physical pool or logical pool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-A Physical Pool is a definition used by 3270 terminals to connect to VIRTEL. A Logical Pool i a group of Relay that can by used to connect a Non-3270 terminal to a VTAM application. The difference between a Logical Pool and a Physical Pool is that a relay in a physical pool is assigned when the requesting terminal connects, whereas a relay in a logical pool is assigned at the time the requesting terminal needs the relay to connect to a VTAM application.
+A Physical Pool is a definition used by 3270 terminals to connect to VIRTEL. A Logical Pool is a group of Relays that can by used to connect a Non-3270 terminal to a VTAM application. The difference between a Logical Pool and a Physical Pool is that a relay in a physical pool is assigned when the requesting terminal connects, whereas a relay in a logical pool is assigned at the time the requesting terminal needs the relay to connect to a VTAM application.
 
 .. index::
    pair: Connection Modes; Terminal Pool Selection  
 
 Terminal Pool Selection
 ^^^^^^^^^^^^^^^^^^^^^^^
-When a 3270 terminal is defined to a physical pool, the selection of a pool is managed automatically by VIRTEL at connection time. It starts from the end of the list of defined terminals. When the characteristics of the terminal match those of the entry being processed, the terminal assumes an application relay.
+When a 3270 terminal is defined to a physical pool, the selection of a pool is managed automatically by VIRTEL at connection time. It starts from the end of the list of defined terminals. When the characteristics of the terminal match those of the entry being processed, the terminal is used as an application relay.
 
 When a non-3270 terminal is defined to a logical pool, the selection of a pool is managed automatically by VIRTEL when the terminal connects to a VTAM application. If no specific rule is active and if no LU'Nailing system is effective, the first free available relay is assigned to the request.
 
@@ -3272,11 +3274,11 @@ Generic definition can be more complex, such as for example any 8 characters len
 Terminal troubleshooting
 ------------------------
 
-Here are some common troubleshooting trying to connect a 3270 application.
+Here are some common errors when trying to connect a 3270 application.
 
-- Terminal receive a "black" screen with error message "ERROR CONNECTING TO APPLICATION"
+- Terminal receives a "blank" screen with error message "ERROR CONNECTING TO APPLICATION"
   
-TO BE DEVELOPPED
+TO BE DEVELOPED
 
 .. raw:: latex
 
@@ -3668,7 +3670,7 @@ A transaction is a named entity that represents a channel of communication betwe
     * An external server.
 
     .. note::
-        External server being no longer used in modern environment, this type of transaction is no longer documented. For more information, refer to the “Virtel459_Connectivity_Guide” documentation.
+        External servers (in the Virtel sense) being no longer used in modern environments, this type of transaction is no longer documented. For more information, refer to the “Virtel459_Connectivity_Guide” documentation.
 
 Transactions are administered:
 
@@ -3679,7 +3681,7 @@ Each transaction is known to VIRTEL by its **internal name** and to the user by 
 
 When a security tool is used, and if the transaction is defined as SECURED, only the transactions defined as resources appearing in the profiles of a user are accessible by that user. 
 
-The entry point management sub-application allows the administrator to associate a group of transaction to an Entry Point.
+The entry point management sub-application allows the administrator to associate a group of transactions to an Entry Point.
 
 .. index::
    pair: Transactions; Summary Display 
@@ -3687,7 +3689,7 @@ The entry point management sub-application allows the administrator to associate
 Summary Display
 ^^^^^^^^^^^^^^^
 
-Press [PF4] at the entry point detail screen to display the list of associated transactions:
+Press [PF4] on the entry point detail screen to display the list of associated transactions:
 
 |image62|
 *Transaction Summary Display*
@@ -3698,7 +3700,7 @@ Internal name
     Indicates the internal name of the transaction as it is known to the system. If a security tool is used and if the transaction is SECURED, this name must be defined as a resource. Only those users with the resource in one of their profiles can access this transaction.
 
 .. note::
-     Note that on the Multi-Session Menu or in the Web Appmenu List, these transactions appear by alphanumeric order of their internal name.
+     Note that on the Multi-Session Menu or in the Web Appmenu List, these transactions appear in alphanumeric order of their internal name.
 
 External name
     Indicates the name of the transaction as it is known to the end user. This name appears in field [10] of the Multi-Session Menu, as shown in the chapter describing Multi-Session. This is also the name by which the transaction is referenced in an HTTP request.
@@ -3718,15 +3720,15 @@ Application
     * An external server. 
     
     .. note::
-        External server being no longer used in modern environment, this type of transaction is no longer documented here. For more information, refer to the “Virtel459_Connectivity_Guide” documentation.
+        External servers being no longer used in modern environment, this type of transaction is no longer documented here. For more information, refer to the “Virtel459_Connectivity_Guide” documentation.
 
 Navigation
 """"""""""
 
-The list can be positioned in the following ways:
+There are several ways to navigate within this list:
 
 Search
-    Type the name, or the partial name, of the desired entity in the first line of the first column and press [Enter].
+    Type the name, or the partial name, of the desired element in the first line of the first column and press [Enter].
 [PF6]
     Return to the first page of the list.
 [PF7]
@@ -3769,10 +3771,10 @@ External name
     The name of the transaction as it is presented to the user in the selection screen. This is also the name by which the transaction is referenced in an HTTP request (see “VIRTEL URL formats” in the VIRTEL Web Access Guide).
     
     .. warning::
-    The external name of a transaction must not start or contain any internal space or it cannot be used directly in a URL or from the Web Appmenu List. 
+    The external name of a transaction must not start with or contain any spaces, else it cannot be used directly in a URL or from the Web Appmenu List. 
 
 Description
-    The descriptive label associated with the transaction as it is presented to the user in the selection screen.
+    The label associated with the transaction as it is presented to the user in the selection screen.
 Application
     The name of the application associated with the transaction. 
     
@@ -3793,7 +3795,7 @@ PassTicket
             specifies that VIRTEL should generate a PassTicket, even if the user has not signed on to VIRTEL.
 
         .. note::
-            For value 1 or 2, the PASSTCK=YES parameter must also be specified in the VIRTCT. Passticket suport is describe in the "Virtel Security Reference Guide".
+            For value 1 or 2, the PASSTCK=YES parameter must also be specified in the VIRTCT. Passticket support is described in the "Virtel Security Reference Guide".
             The value 2 implies that the user has supplied the userid in some other way, for example by means of a scenario containing the COPY$ VARIABLE-TO-SYSTEM,FIELD=(NAME-OF,USER) instruction (see VIRTEL Web Access Guide)
 Name
     The name of the application as known to RACF for generation of PassTickets. This may be different from the VTAM application name.
@@ -3813,7 +3815,7 @@ Application Type
             for a reference to a VIRTEL line
 
 Pseudo Terminals
-    Specifies the prefix of the name of the terminal which will be used to connect to the application. The value assigned to this field depends directly on the type of accessed application.
+    Specifies the prefix of the name of the terminal which will be used to connect to the application. The value assigned to this field depends on the type of application being accessed.
 
     For a type 1 application, must be the prefix associated with the group of **relay terminals** attached to the line.
         .. warning::
@@ -3852,7 +3854,7 @@ Security
             Secure transaction (Basic security). A secure transaction is only available to a user if authorized by the active security tool. For HTTP access, the user is prompted, if necessary, for a userid and password.
 
             .. note::
-                If passphrase is not active then passwords will be truncated to the first 8 characters. Passphrase support is activated by the PASSPHRASE option of the SECUR keyword in the TCT. See the Virtel Installation Guide for further details. 
+                If passphrase support is not active then passwords will be truncated to the first 8 characters. Passphrase support is activated by the PASSPHRASE option of the SECUR keyword in the TCT. See the Virtel Installation Guide for further details. 
         2
             Secure transaction (NTLM security). For HTTP access only, security type 2 allows VIRTEL to obtain the Windows userid of the user, without prompting the user to signon again. The active security tool must recognize the userid and grant access to the transaction. This type of security should only be used on a LAN or on an encrypted session.
         3
@@ -3885,7 +3887,7 @@ Check URL Prefix
     Application type 4: If the pathname of a URL matches the character string specified in this field, then the pathname corresponds to the VIRTEL directory whose name is specified in the “Application” field. See “How the path name corresponds to a VIRTEL directory” in the “VIRTEL URL formats” section of the VIRTEL Web Access Guide.
 
 TIOA at logon
-    Application types 1: Script to be run at application connection time. Scripts are described under the heading “Connection – Disconnection Scripts”. Application type 4: For type 4 (HTML directory definition) transactions having the same name as an entry point, the “TIOA at logon” field contains the default URL for the entry point. Refer to the “VIRTEL URL formats” section of the VIRTEL Web Access Guide for further details.
+    Application type 1: Script to be run at application connection time. Scripts are described under the heading “Connection – Disconnection Scripts”. Application type 4: For type 4 (HTML directory definition) transactions having the same name as an entry point, the “TIOA at logon” field contains the default URL for the entry point. Refer to the “VIRTEL URL formats” section of the VIRTEL Web Access Guide for further details.
 
 TIOA at logoff
     Application types 1: Script to be run before disconnecting from the application.
@@ -3918,8 +3920,6 @@ LOGMODE reference can be present either in:
     - Transaction definition
     - In the *LOGMODE=* URL parameter
 
-Whether or not the APPL card includes a LOGMODE,
-
 If the VIRTEL transaction references a LOGMODE, this logmode will always take precedence over that present in the APPL card AND over that possibly passed in URL
 
 If the VIRTEL transaction does not refer to LOGMODE, then the one possibly passed in URL will take precedence over that present in the APPL CARD
@@ -3946,7 +3946,7 @@ An entry point is a named entity that groups certain information designed to aut
 Entry Point Management Sub-Application
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Entry Point Management sub-application is accessed by pressing [PF3] in the Configuration Menu, or [PF13] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This subapplication allows management of the parameters associated with each entry point.
+The Entry Point Management sub-application is accessed by pressing [PF3] in the Configuration Menu, or [PF13] in the Sub-Application Menu, or from the Multi-Session Menu via a transaction referencing module VIR0044. This sub-application is used to manage the parameters associated with each entry point.
 
 .. index::
    pair: Entry Point Management Sub-Application; Security
@@ -4705,9 +4705,9 @@ Introduction
 
 This section provides details on on to implement AT-TLS security. To provide secure HTTP (https) sessions to client browsers, VIRTEL uses the Application Transparent Transport Layer Security (AT-TLS) feature of z/OS Communication Server. AT-TLS is included with z/OS V1R7 and later releases.
 
-AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. A Policy Agent task decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. Virtel continues to send and receive clear text over the socket, but data sent over the network is encrypted and protected by system SSL. The supported protocols are TLS, SSLv3, and SSLv2.
+AT-TLS allows socket applications to access encrypted sessions by invoking system SSL within the transport layer of the TCP/IP stack. A Policy Agent task decides which connections are to use AT-TLS, and provides system SSL configuration for those connections. Virtel continues to send and receive clear text over the socket, but data sent over the network is encrypted and protected by system SSL. 
 
-.. warning:: Higher CPU usgage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.    
+.. warning:: Higher CPU usage will result in the TCP/IP address space if this feature is used without the services of a hardware Crypto Card.    
 
 .. index::
    pair: AT-TLS Secure Session; Installation
