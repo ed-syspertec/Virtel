@@ -32,11 +32,4 @@ V4.59
    :glob:
    
    manuals/virtel/Virtel459*/*        
-
-V4.99
------
-.. toctree::
-   :maxdepth: 4   
-   :glob:
    
-   manuals/virtel/V499/Virtel499*      
