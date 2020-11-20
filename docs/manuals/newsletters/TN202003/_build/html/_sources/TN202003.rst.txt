@@ -57,7 +57,24 @@ Presentation
 
 **5801 Insert Key support as a Joker Key**
 
-- Added possibility to map Insert Key to any function
+- Allows to redefine a key as the Insert key for keyboards that do not have an Insert key
+ 
+  - First set a Joker Key in w2hparm.js, for instance::
+
+         w2hparm.jokerkey = 192;  // leftmost key on second row of US keyboard     
+
+  - Then use user settings to change one of 'joker' or 'shiftjoker' or 'altjoker' to 'Ins'
+
+  - The administrator can preset these values in w2hparm with, for instance::
+
+         w2hparm.joker = "Ins"
+
+    or::
+
+         w2hparm.shiftjoker = "Ins"
+
+.. note ::
+  To determine the scancode of a key, one can use the scancode tester in the w2h directory, for instance: http://192.168.170.50:41001/w2h/scancode.htm         
 
 **5806 Correct error with data.js to avoid old D&D template**
 
@@ -69,7 +86,13 @@ Presentation
 
 **5820 CTRL left SHIFT as ENTER**
 
-- Added possibility to map Ctrl+Left Shift as Enter
+- Added support for SHIFT + left CTRL 
+
+  - If CTRL has been assigned to ENTER, pressing SHIFT + left CTRL will be processed as an ENTER key.
+
+  - You must press first SHIFT then CTRL for this to work consistently.
+
+  - Ctrl + shift is by default the 'change keyboard layout' hotkey for Windows. So you possibly would have to unset this in the Windows Settings.
 
 **5822 backspace and keypad +-**
 
@@ -90,7 +113,7 @@ Presentation
 
 **5829 incorrect display of a large template when using Virtel cache**
 
-- Correct Virtel caching of large page templates
+- Corrects Virtel caching of large page templates
 
 **5830 Update to Virtel Online Doc. and Capture fix.**
 
@@ -150,7 +173,7 @@ Base Components
 
 **5781 z 0 error**
 
-- Correct Virtel behaviour when a key is pressed during a temporary TCPIP disconnection, to avoid Z 0 errors.
+- Corrects Virtel behaviour when a key is pressed during a temporary TCPIP disconnection, to avoid Z 0 errors.
 
 **5783/5797/5810/5814/5836/5849/5850/5853 IPV6 support**
 
@@ -158,15 +181,15 @@ Base Components
 
 **5786 Service transaction terminals not reused**
 
-- Correct error in 5463 that prevented service transaction terminals from being reused
+- Corrects error in 5463 that prevented service transaction terminals from being reused
 
 **5787 TPX error LOGONID TOO LONG**
 
-- Correct bind to TPX to avoid too many characters from being read for LOGONID
+- Corrects bind to TPX to avoid too many characters from being read for LOGONID
 
 **5788 TPX: unsolicited BIND may arrive before TSO BIND**
 
-- Correct situation with TPX where user has to press Enter twice to access an application
+- Corrects situation with TPX where user has to press Enter twice to access an application
 
 **5789 Correct S0C4 in VIR0021W**
 
@@ -230,7 +253,7 @@ Base Components
 
 **5851 Correct settings and reconnection issues**
 
-- Fix loss of toolbar settings after reconnection to Virtel
+- Fixes loss of toolbar settings after reconnection to Virtel
 
 **5852 XWTO TRIM=Y parameter**
 
@@ -242,7 +265,7 @@ Base Components
 
 **5860 possible s0C4 for a looping page.**
 
-- Fix s0C4 abend for large "MANY-TO-ONE" screens in Virtel Web Modernization
+- Fixes s0C4 abend for large "MANY-TO-ONE" screens in Virtel Web Modernization
 
 **5863 possible loop processing one specific HTTP input**
 
@@ -259,7 +282,7 @@ Virtel Administration
 
 **5805 Calling DTE RULE fails if asked for '1=IS' address**
 
-- Fix RULE workflow for cases that worked with 1=STARTS-WITH but not 1=IS
+- Fixes RULE workflow for cases that worked with 1=STARTS-WITH but not 1=IS
 
 **5821 Support password and passphrase in Virtel Admin Application**
 
@@ -281,7 +304,7 @@ Virtel Administration
 
 **5842 VIRCONF - Fix DESC if > 48 chars.**
 
-- Fix situation where VIRCONF produced invalid control cards on UNLOAD if DESC is greater than 48 chars for TERMINAL statements.
+- Fixes situation where VIRCONF produced invalid control cards on UNLOAD if DESC is greater than 48 chars for TERMINAL statements.
 
 **5854 VIRCONF rejects square brackets**
 
@@ -438,13 +461,32 @@ Virtel 4.60 introduces support of IPv6.
 
 A Virtel line can now be defined to listen on a port associated with one of the following:
 
-- The default IP address of the Virtel instance: ``:41002``
+- The default IP address\* of the Virtel instance: ``:41002``
 - An explicit IPv4 address: ``192.168.170.80:41002``
 - An explicit IPv6 address: ``[fd10:15c1:1921:1000::129]:41002``
 - A DNS name: ``myvirtel.syspertec.com:41002``
 
+\* *The default IP address is specified via the IP= parameter of the Virtel startup JCL. This can be an IPv4 or IPv6 address, or a DNS name.*
+
 .. note ::
-    It is no longer necessary to left-pad the digits of IPv4 addresses with zeroes. Thus 192.168.092.080 can now be coded as 192.168.92.80.
+    **Characters [ and ] may be incorrectly displayed on the MVS console with VWA 4.60**
+
+    The character set used natively by the MVS console is CP1047. For this reason, VIRTEL uses this codepage to write its messages to the console.
+    
+    So, to be able to view them from VWA, the codepage used must also be IBM1047. If this is not the default Virtel codepage (as specified in the TCT), it can be forced directly in the calling URL: http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047
+
+    The entry point must refer to a scenario allowing to process the contents of the URL variable CODEPAGE.
+
+    By default the SCENLOGM scenario can be used.
+
+    If another identification scenario is implemented, it must contain the following lines::
+
+         COPY$ INPUT-TO-VARIABLE,FIELD='CODEPAGE',             * 
+               VAR='CODEPAGE'                                    
+         IF$ NOT-FOUND,THEN=NOCODEPG                             
+         SET$  ENCODING,UTF-8,'*CODEPAGE'                       
+
+
 
 One Virtel line can only listen on one IP address. Therefore if you want to be able to access one instance of Virtel in both IPv4 and IPv6, you will need to define separate lines for each IP address.
 
@@ -481,6 +523,10 @@ Here is an example of an ARBO definition that can be used to create a copy of th
                STATS=12,                                               -
                REPEAT=0016                                              
       
+.. note ::
+    It is no longer necessary to left-pad the digits of IPv4 addresses with zeroes. Thus 192.168.092.080 can now be coded as 192.168.92.80.
+
+Depending on the 
       
 
 .. |image0| image:: images/media/image1.png

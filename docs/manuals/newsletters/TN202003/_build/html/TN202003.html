@@ -217,9 +217,31 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <li><p>Enhanced version of Virtel FTP feature</p></li>
 </ul>
 <p><strong>5801 Insert Key support as a Joker Key</strong></p>
-<ul class="simple">
-<li><p>Added possibility to map Insert Key to any function</p></li>
+<ul>
+<li><p>Allows to redefine a key as the Insert key for keyboards that do not have an Insert key</p>
+<ul>
+<li><p>First set a Joker Key in w2hparm.js, for instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">jokerkey</span> <span class="o">=</span> <span class="mi">192</span><span class="p">;</span>  <span class="o">//</span> <span class="n">leftmost</span> <span class="n">key</span> <span class="n">on</span> <span class="n">second</span> <span class="n">row</span> <span class="n">of</span> <span class="n">US</span> <span class="n">keyboard</span>
+</pre></div>
+</div>
+</li>
+<li><p>Then use user settings to change one of ‘joker’ or ‘shiftjoker’ or ‘altjoker’ to ‘Ins’</p></li>
+<li><p>The administrator can preset these values in w2hparm with, for instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">joker</span> <span class="o">=</span> <span class="s2">&quot;Ins&quot;</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">w2hparm</span><span class="o">.</span><span class="n">shiftjoker</span> <span class="o">=</span> <span class="s2">&quot;Ins&quot;</span>
+</pre></div>
+</div>
+</li>
 </ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To determine the scancode of a key, one can use the scancode tester in the w2h directory, for instance: <a class="reference external" href="http://192.168.170.50:41001/w2h/scancode.htm">http://192.168.170.50:41001/w2h/scancode.htm</a></p>
+</div>
 <p><strong>5806 Correct error with data.js to avoid old D&amp;D template</strong></p>
 <ul class="simple">
 <li><p>Removed references to old drag and drop admin interface</p></li>
@@ -230,7 +252,13 @@ Depending on requirements not all actions may be applicable. These newsletters a
 </ul>
 <p><strong>5820 CTRL left SHIFT as ENTER</strong></p>
 <ul class="simple">
-<li><p>Added possibility to map Ctrl+Left Shift as Enter</p></li>
+<li><p>Added support for SHIFT + left CTRL</p>
+<ul>
+<li><p>If CTRL has been assigned to ENTER, pressing SHIFT + left CTRL will be processed as an ENTER key.</p></li>
+<li><p>You must press first SHIFT then CTRL for this to work consistently.</p></li>
+<li><p>Ctrl + shift is by default the ‘change keyboard layout’ hotkey for Windows. So you possibly would have to unset this in the Windows Settings.</p></li>
+</ul>
+</li>
 </ul>
 <p><strong>5822 backspace and keypad +-</strong></p>
 <ul class="simple">
@@ -251,7 +279,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 </ul>
 <p><strong>5829 incorrect display of a large template when using Virtel cache</strong></p>
 <ul class="simple">
-<li><p>Correct Virtel caching of large page templates</p></li>
+<li><p>Corrects Virtel caching of large page templates</p></li>
 </ul>
 <p><strong>5830 Update to Virtel Online Doc. and Capture fix.</strong></p>
 <ul class="simple">
@@ -306,7 +334,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 </ul>
 <p><strong>5781 z 0 error</strong></p>
 <ul class="simple">
-<li><p>Correct Virtel behaviour when a key is pressed during a temporary TCPIP disconnection, to avoid Z 0 errors.</p></li>
+<li><p>Corrects Virtel behaviour when a key is pressed during a temporary TCPIP disconnection, to avoid Z 0 errors.</p></li>
 </ul>
 <p><strong>5783/5797/5810/5814/5836/5849/5850/5853 IPV6 support</strong></p>
 <ul class="simple">
@@ -314,15 +342,15 @@ Depending on requirements not all actions may be applicable. These newsletters a
 </ul>
 <p><strong>5786 Service transaction terminals not reused</strong></p>
 <ul class="simple">
-<li><p>Correct error in 5463 that prevented service transaction terminals from being reused</p></li>
+<li><p>Corrects error in 5463 that prevented service transaction terminals from being reused</p></li>
 </ul>
 <p><strong>5787 TPX error LOGONID TOO LONG</strong></p>
 <ul class="simple">
-<li><p>Correct bind to TPX to avoid too many characters from being read for LOGONID</p></li>
+<li><p>Corrects bind to TPX to avoid too many characters from being read for LOGONID</p></li>
 </ul>
 <p><strong>5788 TPX: unsolicited BIND may arrive before TSO BIND</strong></p>
 <ul class="simple">
-<li><p>Correct situation with TPX where user has to press Enter twice to access an application</p></li>
+<li><p>Corrects situation with TPX where user has to press Enter twice to access an application</p></li>
 </ul>
 <p><strong>5789 Correct S0C4 in VIR0021W</strong></p>
 <ul class="simple">
@@ -386,7 +414,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 </ul>
 <p><strong>5851 Correct settings and reconnection issues</strong></p>
 <ul class="simple">
-<li><p>Fix loss of toolbar settings after reconnection to Virtel</p></li>
+<li><p>Fixes loss of toolbar settings after reconnection to Virtel</p></li>
 </ul>
 <p><strong>5852 XWTO TRIM=Y parameter</strong></p>
 <ul class="simple">
@@ -398,7 +426,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 </ul>
 <p><strong>5860 possible s0C4 for a looping page.</strong></p>
 <ul class="simple">
-<li><p>Fix s0C4 abend for large “MANY-TO-ONE” screens in Virtel Web Modernization</p></li>
+<li><p>Fixes s0C4 abend for large “MANY-TO-ONE” screens in Virtel Web Modernization</p></li>
 </ul>
 <p><strong>5863 possible loop processing one specific HTTP input</strong></p>
 <ul class="simple">
@@ -409,7 +437,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <h3>Virtel Administration<a class="headerlink" href="#virtel-administration" title="Permalink to this headline">¶</a></h3>
 <p><strong>5805 Calling DTE RULE fails if asked for ‘1=IS’ address</strong></p>
 <ul class="simple">
-<li><p>Fix RULE workflow for cases that worked with 1=STARTS-WITH but not 1=IS</p></li>
+<li><p>Fixes RULE workflow for cases that worked with 1=STARTS-WITH but not 1=IS</p></li>
 </ul>
 <p><strong>5821 Support password and passphrase in Virtel Admin Application</strong></p>
 <ul class="simple">
@@ -431,7 +459,7 @@ Depending on requirements not all actions may be applicable. These newsletters a
 </ul>
 <p><strong>5842 VIRCONF - Fix DESC if &gt; 48 chars.</strong></p>
 <ul class="simple">
-<li><p>Fix situation where VIRCONF produced invalid control cards on UNLOAD if DESC is greater than 48 chars for TERMINAL statements.</p></li>
+<li><p>Fixes situation where VIRCONF produced invalid control cards on UNLOAD if DESC is greater than 48 chars for TERMINAL statements.</p></li>
 </ul>
 <p><strong>5854 VIRCONF rejects square brackets</strong></p>
 <ul class="simple">
@@ -575,14 +603,26 @@ Depending on requirements not all actions may be applicable. These newsletters a
 <p>Virtel 4.60 introduces support of IPv6.</p>
 <p>A Virtel line can now be defined to listen on a port associated with one of the following:</p>
 <ul class="simple">
-<li><p>The default IP address of the Virtel instance: <code class="docutils literal notranslate"><span class="pre">:41002</span></code></p></li>
+<li><p>The default IP address* of the Virtel instance: <code class="docutils literal notranslate"><span class="pre">:41002</span></code></p></li>
 <li><p>An explicit IPv4 address: <code class="docutils literal notranslate"><span class="pre">192.168.170.80:41002</span></code></p></li>
 <li><p>An explicit IPv6 address: <code class="docutils literal notranslate"><span class="pre">[fd10:15c1:1921:1000::129]:41002</span></code></p></li>
 <li><p>A DNS name: <code class="docutils literal notranslate"><span class="pre">myvirtel.syspertec.com:41002</span></code></p></li>
 </ul>
+<p>* <em>The default IP address is specified via the IP= parameter of the Virtel startup JCL. This can be an IPv4 or IPv6 address, or a DNS name.</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is no longer necessary to left-pad the digits of IPv4 addresses with zeroes. Thus 192.168.092.080 can now be coded as 192.168.92.80.</p>
+<p><strong>Characters [ and ] may be incorrectly displayed on the MVS console with VWA 4.60</strong></p>
+<p>The character set used natively by the MVS console is CP1047. For this reason, VIRTEL uses this codepage to write its messages to the console.</p>
+<p>So, to be able to view them from VWA, the codepage used must also be IBM1047. If this is not the default Virtel codepage (as specified in the TCT), it can be forced directly in the calling URL: <a class="reference external" href="http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047">http://n.n.n.n:41001/w2h/WEB2AJAX.htm+Tso?codepage=IBM1047</a></p>
+<p>The entry point must refer to a scenario allowing to process the contents of the URL variable CODEPAGE.</p>
+<p>By default the SCENLOGM scenario can be used.</p>
+<p>If another identification scenario is implemented, it must contain the following lines:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>COPY$ INPUT-TO-VARIABLE,FIELD=&#39;CODEPAGE&#39;,             *
+      VAR=&#39;CODEPAGE&#39;
+IF$ NOT-FOUND,THEN=NOCODEPG
+SET$  ENCODING,UTF-8,&#39;*CODEPAGE&#39;
+</pre></div>
+</div>
 </div>
 <p>One Virtel line can only listen on one IP address. Therefore if you want to be able to access one instance of Virtel in both IPv4 and IPv6, you will need to define separate lines for each IP address.</p>
 <p>Here is an example of an ARBO definition that can be used to create a copy of the C-HTTP line, in IPv6 mode:</p>
@@ -618,6 +658,11 @@ Depending on requirements not all actions may be applicable. These newsletters a
          <span class="n">REPEAT</span><span class="o">=</span><span class="mi">0016</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is no longer necessary to left-pad the digits of IPv4 addresses with zeroes. Thus 192.168.092.080 can now be coded as 192.168.92.80.</p>
+</div>
+<p>Depending on the</p>
 </div>
 </div>
 
